@@ -1,0 +1,77 @@
+Mono path[0] = 'C:/Users/alexi/Documents/Cultist Simulator/CultistSimulator_Data/Managed'
+Mono path[1] = 'C:/Users/alexi/Documents/Cultist Simulator/CultistSimulator_Data/Mono'
+Mono config path = 'C:/Users/alexi/Documents/Cultist Simulator/CultistSimulator_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/alexi/Documents/Cultist Simulator/CultistSimulator_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55430
+Multi-casting "[IP] 192.168.1.103 [Port] 55430 [Flags] 3 [Guid] 670812652 [EditorId] 3621241121 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-DL4OQB1) [Debug] 1" to [225.0.0.222:54997]...
+Waiting for connection from host on [192.168.1.103:55430]...
+Timed out. Continuing without host connection.
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56652
+PlayerConnection already initialized - listening to [192.168.1.103:55430]
+Initialize engine version: 5.4.0f3 (a6d8d714de6f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon R9 200 Series (ID=0x67b0)
+    Vendor:   ATI
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.066 seconds
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\alexi\Documents\Cultist Simulator\CultistSimulator_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.174793 ms
+Starting
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UIManager_Script:Start() (at C:\Users\alexi\Documents\Cultist Simulator\Assets\UIManager_Script.cs:9)
+ 
+(Filename: C:/Users/alexi/Documents/Cultist Simulator/Assets/UIManager_Script.cs Line: 9)
+
+New
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+UIManager_Script:NewGame() (at C:\Users\alexi\Documents\Cultist Simulator\Assets\UIManager_Script.cs:18)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:630)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:765)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:523)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:422)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:410)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:277)
+ 
+(Filename: C:/Users/alexi/Documents/Cultist Simulator/Assets/UIManager_Script.cs Line: 18)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.963454 ms
+System memory in use before: 16.0 MB.
+System memory in use after: 16.0 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 151.
+Total: 0.102088 ms (FindLiveObjects: 0.006516 ms CreateObjectMapping: 0.005585 ms MarkObjects: 0.082229 ms  DeleteObjects: 0.007136 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 21dc -> priority: 1 
