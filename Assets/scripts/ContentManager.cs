@@ -2,22 +2,45 @@
 using System;
 
 using System.Collections;
+using ContentClasses;
+using JetBrains.Annotations;
 
 public class ContentManager : Singleton<ContentManager>
 {
 
-    public string Status = "aleph";
+    public string Status = "";
     private string logMsgs = "";
 
+    //public Verb createTestVerb(string d)
+    //{
+    //    Verb v=new Verb();
+    //    v.Id = d+ " i";
+    //    v.Description = d + " d";
+    //    v.Label = d + " l";
+    //    return v;
+    //}
 
-    public Hashtable ImportActionsFromJSON()
+    //public Verb[] createTestVerbArray()
+    //{
+    //    Verb v1 = createTestVerb("foo");
+    //    Verb v2 = createTestVerb("bar");
+    //    Verb[] va = new Verb[2];
+    //    va[0] = v1;
+    //    va[1] = v2;
+    //    return va;
+    //}
+
+
+    //public string SerializeVerbArray(Verb[] va)
+    //{
+    //    return JsonUtility.ToJson(va);
+    //}
+
+    public Hashtable ImportVerbs()
     {
-        TextAsset actionsJson = Resources.Load<TextAsset>("content/actions");
-       AddToLog("Importing Json string");
-        return SimpleJsonImporter.Import(actionsJson.text, false);
+        string json = Resources.Load<TextAsset>("content/verbs").text;
+        return SimpleJsonImporter.Import(json);
     }
-
-    
 
     private void AddToLog(string msg)
     {
