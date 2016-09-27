@@ -4,17 +4,12 @@ using System.Collections.Generic;
 
 namespace ContentClasses
 {
-    [Serializable]
+
     public class Verb
     {
-        public string Id;
-        public string Label;
-        public string Description;
+        public string Id { get; set; }
+        public string Label { get; set; }
+        public string Description { get; set; }
     }
 
-    [Serializable]
-    public class VerbList
-    {
-        public List<Verb> Actions =new List<Verb> ();
-    }
 }

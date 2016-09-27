@@ -11,30 +11,7 @@ public class ContentManager : Singleton<ContentManager>
     public string Status = "";
     private string logMsgs = "";
 
-    //public Verb createTestVerb(string d)
-    //{
-    //    Verb v=new Verb();
-    //    v.Id = d+ " i";
-    //    v.Description = d + " d";
-    //    v.Label = d + " l";
-    //    return v;
-    //}
 
-    //public Verb[] createTestVerbArray()
-    //{
-    //    Verb v1 = createTestVerb("foo");
-    //    Verb v2 = createTestVerb("bar");
-    //    Verb[] va = new Verb[2];
-    //    va[0] = v1;
-    //    va[1] = v2;
-    //    return va;
-    //}
-
-
-    //public string SerializeVerbArray(Verb[] va)
-    //{
-    //    return JsonUtility.ToJson(va);
-    //}
 
     public Hashtable ImportVerbs()
     {
@@ -42,7 +19,7 @@ public class ContentManager : Singleton<ContentManager>
         return SimpleJsonImporter.Import(json);
     }
 
-    private void AddToLog(string msg)
+    public void AddToLog(string msg)
     {
         Debug.Log(msg + "\n" + DateTime.Now.ToString("yyy/MM/dd hh:mm:ss.fff"));
 
