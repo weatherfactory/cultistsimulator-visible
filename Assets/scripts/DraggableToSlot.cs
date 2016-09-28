@@ -2,14 +2,20 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
+public class DraggableToSlot : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
 {
     private Vector3 startPosition;
     public static GameObject itemBeingDragged;
     private Transform startParent;
+    public Transform originSlot;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!originSlot)
+        { 
+            if(transform.parent)
+            originSlot = transform.parent; //so we can return this to its original slot later
+        }
         itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;

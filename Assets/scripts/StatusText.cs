@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using ContentClasses;
 using OrbCreationExtensions;
 using UnityEngine.EventSystems;
 
@@ -10,7 +9,7 @@ public class StatusText : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 {
     public static GameObject ItemBeingDragged;
     private Vector3 startPosition;
-
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Got it!");

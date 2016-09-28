@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 using UnityEngine.EventSystems;
 
 public class SlotReceiveVerb : MonoBehaviour, IDropHandler {
@@ -19,7 +20,17 @@ public class SlotReceiveVerb : MonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (!itemInSlot && DragHandler.itemBeingDragged.tag=="Verb")
-            DragHandler.itemBeingDragged.transform.SetParent(transform);
+        Debug.Log("OnDrop");
+        if (DraggableToSlot.itemBeingDragged.tag=="Verb")
+       {
+           if (itemInSlot && itemInSlot.GetComponent<DraggableToSlot>())
+           {
+               DraggableToSlot itemInSlotComponent = itemInSlot.GetComponent<DraggableToSlot>();
+                itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
+            }
+
+            
+            DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
+        }
     }
 }

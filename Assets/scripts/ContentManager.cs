@@ -2,7 +2,7 @@
 using System;
 
 using System.Collections;
-using ContentClasses;
+
 using JetBrains.Annotations;
 
 public class ContentManager : Singleton<ContentManager>

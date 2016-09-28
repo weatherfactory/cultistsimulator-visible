@@ -19,7 +19,7 @@ public class SlotReceiveElement : MonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (!itemInSlot && DragHandler.itemBeingDragged.tag == "Element")
-            DragHandler.itemBeingDragged.transform.SetParent(transform);
+        if (!itemInSlot && DraggableToSlot.itemBeingDragged.tag == "Element")
+            DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
     }
 }
