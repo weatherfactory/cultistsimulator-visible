@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class UIManager_Script : MonoBehaviour {
+public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

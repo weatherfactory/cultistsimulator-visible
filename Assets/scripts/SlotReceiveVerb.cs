@@ -28,9 +28,10 @@ public class SlotReceiveVerb : MonoBehaviour, IDropHandler {
                DraggableToSlot itemInSlotComponent = itemInSlot.GetComponent<DraggableToSlot>();
                 itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
             }
-
             
             DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
-        }
+            BoardManager.SetFirstElementVisibility(true);
+           
+       }
     }
 }
