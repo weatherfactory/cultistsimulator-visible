@@ -4,12 +4,13 @@ using System;
 using System.Collections;
 
 using JetBrains.Annotations;
+using UnityEditor.iOS.Xcode;
 
 public class ContentManager : Singleton<ContentManager>
 {
 
     public string Status = "";
-    private string logMsgs = "";
+    public ElementsCollection AllElements;
 
 
 
@@ -19,14 +20,20 @@ public class ContentManager : Singleton<ContentManager>
         return SimpleJsonImporter.Import(json);
     }
 
-    public void AddToLog(string msg)
+    public Hashtable ImportElements()
     {
-        Debug.Log(msg + "\n" + DateTime.Now.ToString("yyy/MM/dd hh:mm:ss.fff"));
+        string json = Resources.Load<TextAsset>("content/elements").text;
 
-        // for some silly reason the Editor will generate errors if the string is too long
-        int lenNeeded = msg.Length + 1;
-        if (logMsgs.Length + lenNeeded > 4096) logMsgs = logMsgs.Substring(0, 4096 - lenNeeded);
+        return SimpleJsonImporter.Import(json);
+    }
+}
 
-        logMsgs = logMsgs + "\n" + msg;
+public class ElementsCollection
+{
+    public Hashtable Members { get; set; }
+
+    public ElementsCollection(Hashtable initialMembers)
+    {
+        Members = initialMembers;
     }
 }

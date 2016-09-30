@@ -1,12 +1,10 @@
-/**
- * (c) 2016 Weather Factory Ltd
- */
-var resources=
+{"elements":
     [
         {
             id: "expedition",
             label: "Expedition",
-            isAspect: true //currently, isAspect just serves as a marker.
+			description: "Feed Followers to this.",
+            isAspect: true
         },
         {
             id: "edge",
@@ -106,7 +104,7 @@ var resources=
             id: "alockedmind",
             label: "A Locked Mind",
             aspects:{},
-            slots:
+            "slots":
         {
             quantity: 1,
                 required: {key: 1}
@@ -123,7 +121,7 @@ var resources=
             },
             maxvalue:1,
             description: "When your mouth waters, when your vision swims, you see the red cup; and now and then it will speak to you."
-            //this is removed at the end of each day where you can support your needs.
+            "notes": "this is removed at the end of each day in which you can support your needs."
         },
         {
             id: "emptyvessel",
@@ -243,7 +241,7 @@ var resources=
             },
             maxvalue:1,
             description: "A sombre man in dark blue has taken an interest in your endeavours.",
-            slots:
+            "slots":
             {
                 quantity: 1
             }
@@ -267,7 +265,7 @@ var resources=
                 lantern: CONVENTIONS.QUANTITY_GENEROUS
             },
             maxvalue:77,
-            description: "‚ÄúEach century in the Mansus is a great hall. The Hours feast in the thirty-sixth of its kind. In its last year, they'll close it up and move on. In our dreams, we can visit their abandoned halls. In our dreams.‚Äù"
+            description: "ìEach century in the Mansus is a great hall. The Hours feast in the thirty-sixth of its kind. In its last year, they'll close it up and move on. In our dreams, we can visit their abandoned halls. In our dreams.î"
         },
         {
             id: "revelation",
@@ -416,7 +414,7 @@ var resources=
             {
                 society: 1
             },
-            slots:
+            "slots":
             {
                 quantity: 3,
                 required: {ritual: 1, follower: 1},
@@ -432,7 +430,7 @@ var resources=
             {
                 society: 1
             },
-            slots:
+            "slots":
             {
                 quantity: 2,
                 required: {ritual: 1, follower: 1},
@@ -448,7 +446,7 @@ var resources=
             {
                 location: 1
             },
-            slots:
+            "slots":
             {
                 quantity: 2,
                 required: {},
@@ -464,7 +462,7 @@ var resources=
             {
                 location: 1
             },
-            slots:
+            "slots":
             {
                 quantity: 2,
                 required: {},
@@ -481,7 +479,7 @@ var resources=
                 location: 1,
                 forge: CONVENTIONS.QUANTITY_TINY
             },
-            slots:
+            "slots":
             {
                 quantity: 2,
                 required: {},
@@ -497,7 +495,7 @@ var resources=
                 forge: CONVENTIONS.QUANTITY_TINY,
                 ritual: 1
             },
-            slots: {
+            "slots": {
                 quantity: 2,
                 required: {},
                 forbidden: {location: 1, ritual: 1, society: 1},
@@ -512,7 +510,7 @@ var resources=
             {
                 ritual: 1
             },
-            slots:
+            "slots":
             {
                 quantity: 2,
                 required: {},
@@ -528,7 +526,7 @@ var resources=
             {
                 expedition: 1
             },
-            slots:
+            "slots":
             {
                 quantity: 1,
                 required: {follower: 1},
@@ -547,4 +545,5 @@ var resources=
             maxvalue: 77,
             description: "The least servant of the Red Grail, and still it will dazzle and dessicate. Offer water, offer blood, offer the secret fluids of your flesh."
         }
-];
+]
+};
