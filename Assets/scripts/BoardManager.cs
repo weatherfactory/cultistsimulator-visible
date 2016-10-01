@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour {
     [SerializeField]private InputField inputAdjustElementNamed;
     [SerializeField]private Text txtStatus;
-    
+    [SerializeField]private GameObject pnlResources;
+    [SerializeField] GameObject pnlElementSlot;
+
 
     public void SetFirstElementVisibility(bool visibility)
     {
@@ -21,7 +23,14 @@ public class BoardManager : MonoBehaviour {
     public string GetDebugElementName()
     {
         return  inputAdjustElementNamed.textComponent.text;
-;
+    }
 
+    public void AddElementToBoard(string elementId)
+    {
+        GameObject newElementSlot= Instantiate(pnlElementSlot, pnlResources.transform) as GameObject;
+        if (newElementSlot != null)
+            newElementSlot.GetComponent<ElementSlot>().SetElementId(elementId);
+        else
+        throw new ApplicationException("couldn't create a new element slot from prefab");
     }
 }

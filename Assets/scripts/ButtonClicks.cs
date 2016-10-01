@@ -7,7 +7,8 @@ public class ButtonClicks : BoardMonoBehaviour
     
     public void PlusOneElement()
     {
-        string elementName = BM.GetDebugElementName();
-        BM.SetStatusText(elementName);
+        string elementId = BM.GetDebugElementName();
+        BM.SetStatusText(elementId);
+        BM.AddElementToBoard(elementId);
     }
 }
