@@ -9,6 +9,7 @@ public class StatusText : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragH
 {
     public static GameObject ItemBeingDragged;
     private Vector3 startPosition;
+
     
     public void OnBeginDrag(PointerEventData eventData)
     {

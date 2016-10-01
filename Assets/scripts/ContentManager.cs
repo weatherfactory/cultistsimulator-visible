@@ -13,7 +13,6 @@ public class ContentManager : Singleton<ContentManager>
     public ElementsCollection AllElements;
 
 
-
     public Hashtable ImportVerbs()
     {
         string json = Resources.Load<TextAsset>("content/verbs").text;

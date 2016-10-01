@@ -2,10 +2,12 @@
 using System.Collections;
 
 
-public class ButtonClicks : MonoBehaviour {
-
+public class ButtonClicks : BoardMonoBehaviour
+{
+    
     public void PlusOneElement()
     {
-        BoardManager.SetStatusText("clicked");
+        string elementName = BM.GetDebugElementName();
+        BM.SetStatusText(elementName);
     }
 }

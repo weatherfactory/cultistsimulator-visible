@@ -30,7 +30,7 @@ public class SlotReceiveVerb : MonoBehaviour, IDropHandler {
             }
             
             DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
-            BoardManager.SetFirstElementVisibility(true);
+            //BoardManager.SetFirstElementVisibility(true);
            
        }
     }
