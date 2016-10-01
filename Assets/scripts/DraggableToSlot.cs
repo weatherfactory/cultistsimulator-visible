@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DraggableToSlot : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
+public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHandler
 {
     private Vector3 startPosition;
     public static GameObject itemBeingDragged;

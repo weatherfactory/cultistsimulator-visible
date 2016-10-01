@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class SlotReceiveElement : MonoBehaviour, IDropHandler {
+public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
 
     public GameObject itemInSlot
     {

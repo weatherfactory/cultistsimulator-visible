@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine.EventSystems;
 
-public class SlotReceiveVerb : MonoBehaviour, IDropHandler {
+public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
 
 
     public GameObject itemInSlot
@@ -30,7 +30,7 @@ public class SlotReceiveVerb : MonoBehaviour, IDropHandler {
             }
             
             DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
-            //BoardManager.SetFirstElementVisibility(true);
+         BM.SetFirstElementVisibility(true);
            
        }
     }
