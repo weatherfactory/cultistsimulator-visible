@@ -4,9 +4,14 @@ using UnityEngine.UI;
 
 public class ElementSlot : MonoBehaviour {
 
-    public void SetElementId(string id)
+    public void SetElementAppearance(string id)
     {
-        Text NameText = GetComponentsInChildren<Text>()[0];
-        NameText.text = id;
+        Text nameText = GetComponentsInChildren<Text>()[0];
+        nameText.text = id;
+        Image[] childImages = GetComponentsInChildren<Image>();
+        Image elementImage = childImages[2];
+        Sprite elementSprite = Resources.Load<Sprite>("FlatIcons/png/32px/" + id);
+        elementImage.sprite = elementSprite;
     }
+
 }

@@ -29,7 +29,9 @@ public class BoardManager : MonoBehaviour {
     {
         GameObject newElementSlot= Instantiate(pnlElementSlot, pnlResources.transform) as GameObject;
         if (newElementSlot != null)
-            newElementSlot.GetComponent<ElementSlot>().SetElementId(elementId);
+        { 
+            newElementSlot.GetComponent<ElementSlot>().SetElementAppearance(elementId);
+        }
         else
         throw new ApplicationException("couldn't create a new element slot from prefab");
     }
