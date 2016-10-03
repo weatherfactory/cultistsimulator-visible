@@ -13,6 +13,7 @@ public class ContentManager : Singleton<ContentManager>
     private const string CONST_CONTENTDIR = "content/";
     private const string CONST_ELEMENTS = "ELEMENTS";
     private const string CONST_ID = "id";
+    private const string CONST_LABEL = "label";
     private const string CONST_DESCRIPTION = "description";
 
     private Hashtable htElements;
@@ -30,21 +31,14 @@ public class ContentManager : Singleton<ContentManager>
         htElements = SimpleJsonImporter.Import(json);
     }
 
-    public string GetDescriptionForElementId(string id)
+    public Element PopulateElementForId(string id)
     {
         //find element in json
         //find description in element
-     Hashtable thisElement=htElements.GetNodeWithProperty(CONST_ID, id);
-        return thisElement.GetString(CONST_DESCRIPTION);
-    }
-}
-
-public class ElementsCollection
-{
-    public Hashtable Members { get; set; }
-
-    public ElementsCollection(Hashtable initialMembers)
-    {
-        Members = initialMembers;
+     Hashtable htElement=htElements.GetNodeWithProperty(CONST_ID, id);
+        Element element=new Element(id,
+           htElement.GetString(CONST_LABEL),
+            htElement.GetString(CONST_DESCRIPTION));
+        return element;
     }
 }
