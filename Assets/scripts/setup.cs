@@ -10,18 +10,10 @@ public class setup : MonoBehaviour
     void Start()
     {
 
-        Hashtable ht = ContentManager.Instance.ImportVerbs();
-        ArrayList AllVerbs = ht.GetArrayList("verbs");
-        Hashtable v = (Hashtable)AllVerbs[0];
-        string vDescription = v.GetString("description");
+
+   ContentManager.Instance.ImportElements();
 
 
-        Hashtable htElements = ContentManager.Instance.ImportElements();
-        ArrayList AllElements = htElements.GetArrayList("elements");
-        Hashtable firstElement = (Hashtable)AllElements[0];
-        string eDescription = firstElement.GetString("description");
-
-      Debug.Log("first verb: " + vDescription + ", first element: " + eDescription);
     }
 
     // Update is called once per frame

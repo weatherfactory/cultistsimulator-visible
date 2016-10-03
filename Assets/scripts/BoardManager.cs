@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+#pragma warning disable 649
 
 public class BoardManager : MonoBehaviour {
     [SerializeField]private InputField inputAdjustElementNamed;
@@ -30,7 +31,7 @@ public class BoardManager : MonoBehaviour {
         GameObject newElementSlot= Instantiate(pnlElementSlot, pnlResources.transform) as GameObject;
         if (newElementSlot != null)
         { 
-            newElementSlot.GetComponent<ElementSlot>().SetElementAppearance(elementId);
+            newElementSlot.GetComponent<ElementSlot>().SetElementValues(elementId, ContentManager.Instance);
         }
         else
         throw new ApplicationException("couldn't create a new element slot from prefab");
