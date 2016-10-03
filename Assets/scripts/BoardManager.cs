@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 using UnityEngine.UI;
 #pragma warning disable 649
 
@@ -10,6 +11,14 @@ public class BoardManager : MonoBehaviour {
     [SerializeField]private GameObject pnlResources;
     [SerializeField] GameObject pnlElementSlot;
 
+    public void Start()
+    {
+        ContentManager.Instance.ImportElements();
+        ChangeElementQuantityOnBoard("ordinarylife",1);
+        ChangeElementQuantityOnBoard("health", 10);
+        ChangeElementQuantityOnBoard("occultscrap", 1);
+
+    }
 
     public void SetFirstElementVisibility(bool visibility)
     {
@@ -26,14 +35,34 @@ public class BoardManager : MonoBehaviour {
         return  inputAdjustElementNamed.textComponent.text;
     }
 
-    public void AddElementToBoard(string elementId)
+    public void ChangeElementQuantityOnBoard(string elementId,int quantity)
     {
-        GameObject newElementSlot= Instantiate(pnlElementSlot, pnlResources.transform) as GameObject;
+        ElementSlot existingElement = GetElementSlotForId(elementId);
+        if(existingElement)
+            existingElement.ModifyQuantity(quantity);
+        else
+        {
+            AddElementToBoard(elementId,quantity);
+        }
+    }
+
+    private void AddElementToBoard(string elementId,int quantity)
+    {
+        GameObject newElementSlot = Instantiate(pnlElementSlot, pnlResources.transform) as GameObject;
         if (newElementSlot != null)
-        { 
-            newElementSlot.GetComponent<ElementSlot>().SetElementValues(elementId, ContentManager.Instance);
+        {
+            ElementSlot slot = newElementSlot.GetComponent<ElementSlot>();
+            slot.PopulateSlotValues(elementId, quantity,ContentManager.Instance);
         }
         else
-        throw new ApplicationException("couldn't create a new element slot from prefab");
+            throw new ApplicationException("couldn't create a new element slot from prefab");
+    }
+
+    private ElementSlot GetElementSlotForId(string elementId)
+    {
+        return 
+            pnlResources.GetComponentsInChildren<ElementSlot>().SingleOrDefault(e => e.ElementId == elementId);
+        
+
     }
 }

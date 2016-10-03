@@ -1,35 +1,61 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 
 public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     private Element element;
+    private int quantity;
     public string ElementId { get { return element.Id; } }
     public string Description { get { return element.Description; } }
+    public int Quantity { get { return quantity; }}
 
-    public void SetElementValues(string elementId, ContentManager cm)
+    public ElementSlot()
+    {
+        element=new Element("","","");
+    }
+
+    public void PopulateSlotValues(string elementId, int change, ContentManager cm)
     {
 
         element = cm.PopulateElementForId(elementId);
         DisplayName(element);
         DisplayIcon(element);
+        quantity = change;
+        DisplayQuantity(quantity);
     }
+
+    public void ModifyQuantity(int change)
+    {
+        quantity += change;
+        if(quantity<=0)
+            Destroy(gameObject);
+        DisplayQuantity(quantity);
+    }
+
 
     private void DisplayName(Element e)
     {
-        Text nameText = GetComponentsInChildren<Text>()[0];
+        Text nameText = GetComponentsInChildren<Text>().Single(t=>t.name=="txtElementName");
         nameText.text = e.Label;
     }
 
     private void DisplayIcon(Element e)
     {
-        Image[] childImages = GetComponentsInChildren<Image>();
-        Image elementImage = childImages[2];
+        Image elementImage = GetComponentsInChildren<Image>().Single(i => i.name=="imgElementIcon");
         Sprite elementSprite = Resources.Load<Sprite>("FlatIcons/png/32px/" + e.Id);
         elementImage.sprite = elementSprite;
+    }
+
+    private void DisplayQuantity(int quantity)
+    {
+        Text quantityText = GetComponentsInChildren<Text>().Single(t => t.name == "txtQuantity");
+        quantityText.text = quantity.ToString();
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -50,8 +76,8 @@ public class Element
     public Element(string id, string label, string description)
     {
         Id = id;
-        this.Label = label;
-        this.Description = description;
+        Label = label;
+        Description = description;
     }
 
     public string Id { get; set; }

@@ -8,7 +8,11 @@ public class ButtonClicks : BoardMonoBehaviour
     public void PlusOneElement()
     {
         string elementId = BM.GetDebugElementName();
-        BM.SetStatusText(elementId);
-        BM.AddElementToBoard(elementId);
+        BM.ChangeElementQuantityOnBoard(elementId,1);
+    }
+    public void MinusOneElement()
+    {
+        string elementId = BM.GetDebugElementName();
+        BM.ChangeElementQuantityOnBoard(elementId, -1);
     }
 }
