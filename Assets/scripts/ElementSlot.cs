@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using UnityEngine.EventSystems;
@@ -13,7 +14,7 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
     public string ElementId { get { return element.Id; } }
     public string Description { get { return element.Description; } }
     public int Quantity { get { return quantity; }}
-
+    
     public ElementSlot()
     {
         element=new Element("","","");
@@ -71,6 +72,10 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 
 public class Element
 {
+    public Dictionary<string,int> Aspects;
+    public string Id { get; set; }
+    public string Label { get; set; }
+    public string Description { get; set; }
 
 
     public Element(string id, string label, string description)
@@ -78,10 +83,14 @@ public class Element
         Id = id;
         Label = label;
         Description = description;
+       
     }
 
-    public string Id { get; set; }
-    public string Label { get; set; }
-    public string Description { get; set; }
+    
 
+    public void AddAspects(Hashtable htAspects)
+    {
+        Aspects = Noon.Utility.ReplaceConventionValues(htAspects);
+    }
+    
 }

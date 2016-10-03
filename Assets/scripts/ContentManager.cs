@@ -36,9 +36,13 @@ public class ContentManager : Singleton<ContentManager>
         //find element in json
         //find description in element
      Hashtable htElement=htElements.GetNodeWithProperty(CONST_ID, id);
+       Hashtable htAspects = htElement.GetHashtable("aspects");
+
         Element element=new Element(id,
            htElement.GetString(CONST_LABEL),
             htElement.GetString(CONST_DESCRIPTION));
+        element.AddAspects(htAspects);
+
         return element;
     }
 }
