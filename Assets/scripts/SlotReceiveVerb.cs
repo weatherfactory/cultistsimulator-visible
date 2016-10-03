@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 using UnityEngine.EventSystems;
 
 public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
