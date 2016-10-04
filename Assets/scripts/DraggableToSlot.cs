@@ -15,7 +15,7 @@ public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandle
             if(transform.parent)
             originSlot = transform.parent; //so we can return this to its original slot later
         }
-        BoardManager.itemBeingDragged = gameObject;
+        BM.itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
         if (GetComponent<CanvasGroup>() != null)
@@ -30,7 +30,7 @@ public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        BoardManager.itemBeingDragged = null;
+        BM.itemBeingDragged = null;
         if(transform.parent==startParent)
         transform.position = startPosition;
         if (GetComponent<CanvasGroup>() != null)

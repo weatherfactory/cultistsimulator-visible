@@ -20,7 +20,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (BoardManager.itemBeingDragged.tag == "Element")
+        if (BM.itemBeingDragged.tag == "Element")
         { 
             
             if (itemInSlot && itemInSlot.GetComponent<DraggableToSlot>())
@@ -28,12 +28,12 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
                 DraggableToSlot itemInSlotComponent = itemInSlot.GetComponent<DraggableToSlot>();
                 itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
             }
-            DraggableElementDisplay draggableElementDisplay = BoardManager.itemBeingDragged.GetComponent<DraggableElementDisplay>();
+            DraggableElementDisplay draggableElementDisplay = BM.itemBeingDragged.GetComponent<DraggableElementDisplay>();
             draggableElementDisplay.transform.SetParent(transform);
 
             foreach (KeyValuePair<string,int> kvp in draggableElementDisplay.Element.Aspects)
             {
-                Debug.Log(kvp.Key +": " + kvp.Value);
+                BM.ChangeAspectQuantityInDisplay(kvp.Key, kvp.Value);
             }
 
         }
