@@ -33,15 +33,15 @@ public class ContentManager : Singleton<ContentManager>
 
     public Element PopulateElementForId(string id)
     {
-        //find element in json
-        //find description in element
+        //find Element in json
+        //find description in Element
      Hashtable htElement=htElements.GetNodeWithProperty(CONST_ID, id);
        Hashtable htAspects = htElement.GetHashtable("aspects");
 
         Element element=new Element(id,
            htElement.GetString(CONST_LABEL),
             htElement.GetString(CONST_DESCRIPTION));
-        element.AddAspects(htAspects);
+        element.AddAspectsFromHashtable(htAspects);
 
         return element;
     }

@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHandler
 {
     private Vector3 startPosition;
-    public static GameObject itemBeingDragged;
     private Transform startParent;
     public Transform originSlot;
 
@@ -16,7 +15,7 @@ public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandle
             if(transform.parent)
             originSlot = transform.parent; //so we can return this to its original slot later
         }
-        itemBeingDragged = gameObject;
+        BoardManager.itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
         if (GetComponent<CanvasGroup>() != null)
@@ -31,7 +30,7 @@ public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        itemBeingDragged = null;
+        BoardManager.itemBeingDragged = null;
         if(transform.parent==startParent)
         transform.position = startPosition;
         if (GetComponent<CanvasGroup>() != null)

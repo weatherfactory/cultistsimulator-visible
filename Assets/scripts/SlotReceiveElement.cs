@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
 public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
@@ -19,7 +20,22 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (!itemInSlot && DraggableToSlot.itemBeingDragged.tag == "Element")
-            DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
+        if (BoardManager.itemBeingDragged.tag == "Element")
+        { 
+            
+            if (itemInSlot && itemInSlot.GetComponent<DraggableToSlot>())
+            {
+                DraggableToSlot itemInSlotComponent = itemInSlot.GetComponent<DraggableToSlot>();
+                itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
+            }
+            DraggableElementDisplay draggableElementDisplay = BoardManager.itemBeingDragged.GetComponent<DraggableElementDisplay>();
+            draggableElementDisplay.transform.SetParent(transform);
+
+            foreach (KeyValuePair<string,int> kvp in draggableElementDisplay.Element.Aspects)
+            {
+                Debug.Log(kvp.Key +": " + kvp.Value);
+            }
+
+        }
     }
 }

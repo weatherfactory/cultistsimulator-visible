@@ -19,8 +19,7 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop");
-        if (DraggableToSlot.itemBeingDragged.tag=="Verb")
+        if (BoardManager.itemBeingDragged.tag=="Verb")
        {
            if (itemInSlot && itemInSlot.GetComponent<DraggableToSlot>())
            {
@@ -28,7 +27,7 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
                 itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
             }
             
-            DraggableToSlot.itemBeingDragged.transform.SetParent(transform);
+            BoardManager.itemBeingDragged.transform.SetParent(transform);
          BM.SetFirstElementVisibility(true);
            
        }

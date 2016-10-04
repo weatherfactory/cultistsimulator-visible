@@ -234,7 +234,7 @@ namespace OrbCreationExtensions
                 object value = arr[a];
                 MoveToNewLineIfNeeded(ref str, level);
 
-                // since we dont know the type of the element, we need to test it
+                // since we dont know the type of the Element, we need to test it
                 if(value==null) {
                     str = str + "NULL";
                     str = str + "\n";
@@ -332,7 +332,7 @@ namespace OrbCreationExtensions
                 object value = arr[a];
                 for(int i=0;i<level;i++) str=str+"\t";
 
-                // since we dont know the type of the element, we need to test it
+                // since we dont know the type of the Element, we need to test it
                 if(value==null) {
                     str = str + "NULL";
                 } else if(value.GetType() == typeof(Hashtable)) {
@@ -371,7 +371,7 @@ namespace OrbCreationExtensions
                 if(node!=null) {
                     if(node.GetType() == typeof(Hashtable)) {
                         if(((Hashtable)node).ContainsKey(".tag.")) {
-                            // see if the element contains the special key ".tag." and test if it equals the path
+                            // see if the Element contains the special key ".tag." and test if it equals the path
                             if((string)((Hashtable)node)[".tag."] == aTag) {
                                 if(level == path.Length-1) {  // this is the last entry in path
                                     return node;  // found our guy
@@ -381,11 +381,11 @@ namespace OrbCreationExtensions
                                 }
                             }
                         } else {
-                            // pass the search on to the deeper element
+                            // pass the search on to the deeper Element
                             return GetNodeAtPath((Hashtable)node, path, level);
                         }
                     } else if(node.GetType() == typeof(ArrayList)) {
-                        // pass the search on to the deeper element
+                        // pass the search on to the deeper Element
                         return GetNodeAtPath((ArrayList)node, path, level);
                     }
                 }

@@ -10,6 +10,7 @@ public class BoardManager : MonoBehaviour {
     [SerializeField]private Text txtStatus;
     [SerializeField]private GameObject pnlResources;
     [SerializeField] GameObject pnlElementSlot;
+    public static GameObject itemBeingDragged;
 
     public void Start()
     {
@@ -52,10 +53,10 @@ public class BoardManager : MonoBehaviour {
         if (newElementSlot != null)
         {
             ElementSlot slot = newElementSlot.GetComponent<ElementSlot>();
-            slot.PopulateSlotValues(elementId, quantity,ContentManager.Instance);
+            slot.PopulateSlot(elementId, quantity,ContentManager.Instance);
         }
         else
-            throw new ApplicationException("couldn't create a new element slot from prefab");
+            throw new ApplicationException("couldn't create a new Element slot from prefab");
     }
 
     private ElementSlot GetElementSlotForId(string elementId)
