@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine.EventSystems;
 
 public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
@@ -26,15 +27,11 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler {
             if (itemInSlot && itemInSlot.GetComponent<DraggableToSlot>())
             {
                 DraggableToSlot itemInSlotComponent = itemInSlot.GetComponent<DraggableToSlot>();
-                itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
+              itemInSlotComponent.ReturnToOrigin();
             }
             DraggableElementDisplay draggableElementDisplay = BM.itemBeingDragged.GetComponent<DraggableElementDisplay>();
             draggableElementDisplay.transform.SetParent(transform);
-
-            foreach (KeyValuePair<string,int> kvp in draggableElementDisplay.Element.Aspects)
-            {
-                BM.ChangeAspectQuantityInDisplay(kvp.Key, kvp.Value);
-            }
+            BM.UpdateAspectDisplay();
 
         }
     }

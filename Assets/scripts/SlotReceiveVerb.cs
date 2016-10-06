@@ -28,7 +28,7 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
             }
 
             BM.itemBeingDragged.transform.SetParent(transform);
-         BM.SetFirstElementVisibility(true);
+         BM.MakeFirstSlotAvailable(true);
            
        }
     }

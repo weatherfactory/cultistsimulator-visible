@@ -36,4 +36,9 @@ public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandle
         if (GetComponent<CanvasGroup>() != null)
             GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
+
+    public void ReturnToOrigin()
+    {
+        transform.SetParent(originSlot);
+    }
 }

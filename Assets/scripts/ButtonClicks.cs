@@ -15,4 +15,9 @@ public class ButtonClicks : BoardMonoBehaviour
         string elementId = BM.GetDebugElementName();
         BM.ChangeElementQuantityOnBoard(elementId, -1);
     }
+
+    public void ClearWorkspaceElements()
+    {
+        BM.ClearWorkspaceElements();
+    }
 }

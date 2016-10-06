@@ -13,7 +13,7 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
     private int quantity;
     private DraggableElementDisplay draggableElementDisplay;
     public int Quantity { get { return quantity; }}
-    public string ElementId { get { return draggableElementDisplay.Element.Id; } }
+    public Element Element { get { return draggableElementDisplay.Element; } }
 
 
     public void Awake()
@@ -41,7 +41,7 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("entered" + draggableElementDisplay.Element.Description);
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
