@@ -43,6 +43,8 @@ public class ContentManager : Singleton<ContentManager>
             htElement.GetString(CONST_DESCRIPTION));
         element.AddAspectsFromHashtable(htAspects);
 
+
+
         return element;
     }
 }

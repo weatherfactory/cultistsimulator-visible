@@ -126,7 +126,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\EditorTest.cs" />
+    <Compile Include="Assets\Editor\NoonUtilityTests.cs" />
+    <Compile Include="Assets\Editor\Tests\ElementImportTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SimpleJson\ReadMe.txt" />
