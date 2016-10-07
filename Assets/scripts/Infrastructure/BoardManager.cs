@@ -27,7 +27,7 @@ public class BoardManager : MonoBehaviour
         GameObject newElementSlot = Instantiate(prefabElementSlot,pnlResources.transform) as GameObject;
         try
         {
-            ElementSlot slotScript = newElementSlot.GetComponent<ElementSlot>();
+            StorageSlot slotScript = newElementSlot.GetComponent<StorageSlot>();
             slotScript.PopulateSlot(elementId, quantity, ContentManager.Instance);
             
         }
@@ -44,10 +44,10 @@ public class BoardManager : MonoBehaviour
 
 
 
-    private ElementSlot GetElementSlotForId(string elementId)
+    private StorageSlot GetElementSlotForId(string elementId)
     {
         return
-            pnlResources.GetComponentsInChildren<ElementSlot>().SingleOrDefault(e => e.Element.Id == elementId);
+            pnlResources.GetComponentsInChildren<StorageSlot>().SingleOrDefault(e => e.Element.Id == elementId);
     }
 
 
@@ -92,7 +92,7 @@ public class BoardManager : MonoBehaviour
 
     public void ChangeElementQuantityOnBoard(string elementId,int quantity)
     {
-        ElementSlot existingElement = GetElementSlotForId(elementId);
+        StorageSlot existingElement = GetElementSlotForId(elementId);
         if(existingElement)
             existingElement.ModifyQuantity(quantity);
         else

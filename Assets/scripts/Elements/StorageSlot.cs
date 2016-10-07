@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
+public class StorageSlot : MonoBehaviour
 {
 
     private int quantity;
@@ -39,15 +39,6 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 
 
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-     
-    }
 }
 
 
