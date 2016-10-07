@@ -68,7 +68,12 @@ public class CurrentAspects : BoardMonoBehaviour
 
         }
 
+        DisplayRecipesForCurrentAspects();
 
+    }
 
+    private void DisplayRecipesForCurrentAspects()
+    {
+        BM.BoardLog("Checking recipes...");
     }
 }

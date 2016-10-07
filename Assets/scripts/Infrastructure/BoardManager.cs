@@ -58,12 +58,11 @@ public class BoardManager : MonoBehaviour
     public void Start()
     {
         ContentManager.Instance.ImportElements();
+        ContentManager.Instance.ImportRecipes();
         ChangeElementQuantityOnBoard("clique", 1);
         ChangeElementQuantityOnBoard("ordinarylife",1);
         ChangeElementQuantityOnBoard("health", 10);
         ChangeElementQuantityOnBoard("occultscrap", 1);
-        
-
     }
 
     public void BoardLog(string message)
