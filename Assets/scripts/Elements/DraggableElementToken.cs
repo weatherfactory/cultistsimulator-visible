@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class DraggableElementDisplay: DraggableToSlot
+public class DraggableElementToken: DraggableToken
     {
     public Element Element;
 
@@ -45,7 +45,10 @@ public class DraggableElementDisplay: DraggableToSlot
     }
 
 
-
-}
+        public bool HasChildSlots()
+        {
+            return Element.ChildSlots.Count > 0;
+        }
+    }
 
 

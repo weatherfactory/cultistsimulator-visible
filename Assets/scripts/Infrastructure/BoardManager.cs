@@ -13,20 +13,23 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private Text txtStatus;
     [SerializeField] private GameObject pnlResources;
     [SerializeField] GameObject pnlWorkspace;
-    [SerializeField] GameObject prefabElementSlot;
-    [SerializeField] GameObject prefabEmptyElementSlot;
     [SerializeField] GameObject pnlCurrentAspects;
     [SerializeField] GameObject imgAspectDisplay;
+    [SerializeField] private GameObject objLimbo;
+    [SerializeField]GameObject prefabElementSlot;
+    [SerializeField]GameObject prefabEmptyElementSlot;
+    [SerializeField]GameObject prefabChildSlotsOrganiser;
+
     public GameObject itemBeingDragged;
 
     private void addElementToBoard(string elementId, int quantity)
     {
-        GameObject newElementSlot = Instantiate(prefabElementSlot, pnlResources.transform) as GameObject;
+        GameObject newElementSlot = Instantiate(prefabElementSlot,pnlResources.transform) as GameObject;
         try
         {
             ElementSlot slotScript = newElementSlot.GetComponent<ElementSlot>();
-        
             slotScript.PopulateSlot(elementId, quantity, ContentManager.Instance);
+            
         }
         catch (NullReferenceException)
         {
@@ -38,17 +41,8 @@ public class BoardManager : MonoBehaviour
 
     }
 
-    private void addSlotToWorkspace()
-    {
-        GameObject newElementSlot = Instantiate(prefabEmptyElementSlot, pnlWorkspace.transform) as GameObject;
-       newElementSlot.transform.localPosition=new Vector3(75,-30);
 
-    }
-    private AspectDisplay GetAspectDisplayForId(string aspectId)
-    {
-        return
-            pnlCurrentAspects.GetComponentsInChildren<AspectDisplay>().SingleOrDefault(a => a.AspectId == aspectId);
-    }
+
 
     private ElementSlot GetElementSlotForId(string elementId)
     {
@@ -56,36 +50,19 @@ public class BoardManager : MonoBehaviour
             pnlResources.GetComponentsInChildren<ElementSlot>().SingleOrDefault(e => e.Element.Id == elementId);
     }
 
-    private void AddAspectToDisplay(string aspectId, int quantity)
-    {
-        GameObject newAspectDisplay = Instantiate(imgAspectDisplay, pnlCurrentAspects.transform) as GameObject;
-        if (newAspectDisplay != null)
-        {
-            AspectDisplay adScript = newAspectDisplay.GetComponent<AspectDisplay>();
-            adScript.PopulateDisplay(aspectId, quantity, ContentManager.Instance);
-        }
-    }
 
-    private void ChangeAspectQuantityInDisplay(string aspectId, int quantity)
-    {
-        AspectDisplay existingAspect = GetAspectDisplayForId(aspectId);
-        if (existingAspect)
-            existingAspect.ModifyQuantity(quantity);
-        else
-            AddAspectToDisplay(aspectId, quantity);
-    }
-    private void ResetAspectDisplay()
-    {
-        foreach(Transform child in pnlCurrentAspects.transform)
-    GameObject.Destroy(child.gameObject);
-    }
 
+    /// <summary>
+    /// This sets our starting elements
+    /// </summary>
     public void Start()
     {
         ContentManager.Instance.ImportElements();
+        ChangeElementQuantityOnBoard("clique", 1);
         ChangeElementQuantityOnBoard("ordinarylife",1);
         ChangeElementQuantityOnBoard("health", 10);
         ChangeElementQuantityOnBoard("occultscrap", 1);
+        
 
     }
 
@@ -94,9 +71,13 @@ public class BoardManager : MonoBehaviour
         Debug.Log(message);
     }
 
-    public void MakeFirstSlotAvailable(bool visibility)
+    public void MakeFirstSlotAvailable(Vector3 governorPosition)
     {
-        addSlotToWorkspace();
+        int governedStepRight = 50;
+        int nudgeDown = -10;
+        GameObject newElementSlot = Instantiate(prefabEmptyElementSlot, pnlWorkspace.transform, false) as GameObject;
+        Vector3 newSlotPosition = new Vector3(governorPosition.x + governedStepRight, governorPosition.y + nudgeDown);
+        newElementSlot.transform.localPosition = newSlotPosition;
     }
     public void SetStatusText(string statusText)
     {
@@ -120,40 +101,35 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-
-
-    public void UpdateAspectDisplay()
-    {
-        ResetAspectDisplay();
-
-        DraggableElementDisplay[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementDisplay>();
-
-        foreach (DraggableElementDisplay draggableElementDisplay in elements)
-        {
-
-            foreach (KeyValuePair<string, int> kvp in draggableElementDisplay.Element.Aspects)
-            {
-                ChangeAspectQuantityInDisplay(kvp.Key, kvp.Value);
-            }
-
-            Debug.Log("Slots in element " + draggableElementDisplay.Element.Label + " - " + draggableElementDisplay.Element.ChildSlots.Count);
-
-        }
-
-        
-
-    }
-
+    
 
     public void ClearWorkspaceElements()
     {
-        DraggableElementDisplay[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementDisplay>();
+        DraggableElementToken[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementToken>();
 
-        foreach (DraggableElementDisplay element in elements)
+        foreach (DraggableElementToken element in elements)
 
-  element.ReturnToOrigin();
+        element.ReturnToOrigin();
+     pnlCurrentAspects.GetComponent<CurrentAspects>().ResetAspects();
+    }
 
 
-        ResetAspectDisplay();
+    public void CreateChildSlotsOrganiser(SlotReceiveElement governingSlot, DraggableElementToken draggedElement)
+    {
+        
+        float governingSlotHeight = governingSlot.GetComponent<RectTransform>().rect.height;
+        Transform governingSlotTransform = governingSlot.transform;
+        governingSlot.ChildSlotOrganiser = Instantiate(prefabChildSlotsOrganiser, pnlWorkspace.transform, false) as GameObject;
+        Vector3 newSlotPosition = new Vector3(governingSlotTransform.localPosition.x, governingSlotTransform.localPosition.y - governingSlotHeight);
+        governingSlot.ChildSlotOrganiser.transform.localPosition = newSlotPosition;
+
+        governingSlot.ChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(draggedElement);
+
+
+    }
+
+    public void UpdateAspectDisplay()
+    {
+        pnlCurrentAspects.GetComponent<CurrentAspects>().UpdateAspects(pnlWorkspace);
     }
 }

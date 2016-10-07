@@ -21,14 +21,14 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
     {
         if (BM.itemBeingDragged.tag=="Verb")
        {
-           if (itemInSlot && itemInSlot.GetComponent<DraggableToSlot>())
+           if (itemInSlot && itemInSlot.GetComponent<DraggableToken>())
            {
-               DraggableToSlot itemInSlotComponent = itemInSlot.GetComponent<DraggableToSlot>();
+               DraggableToken itemInSlotComponent = itemInSlot.GetComponent<DraggableToken>();
                 itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
             }
 
             BM.itemBeingDragged.transform.SetParent(transform);
-         BM.MakeFirstSlotAvailable(true);
+         BM.MakeFirstSlotAvailable(transform.localPosition);
            
        }
     }

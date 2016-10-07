@@ -3,20 +3,11 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.UI;
 
-public class AspectDisplay : MonoBehaviour
+public class AspectFrame : MonoBehaviour
 {
     public string AspectId;
     public int Quantity;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void DisplayAspectImage(string aspectId)
     {
@@ -38,11 +29,12 @@ public class AspectDisplay : MonoBehaviour
         Quantity = aspectValue;
         DisplayAspectImage(AspectId);
         DisplayQuantity(aspectValue);
+        gameObject.name = "Aspect - " +aspectId;
 
     }
 
-    public void ModifyQuantity(int quantity)
+    public void ModifyQuantity(int quantityChange)
     {
-        throw new System.NotImplementedException();
+       DisplayQuantity(Quantity+quantityChange);
     }
 }

@@ -11,22 +11,22 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
 {
 
     private int quantity;
-    private DraggableElementDisplay draggableElementDisplay;
+    private DraggableElementToken draggableElementToken;
     public int Quantity { get { return quantity; }}
-    public Element Element { get { return draggableElementDisplay.Element; } }
+    public Element Element { get { return draggableElementToken.Element; } }
 
 
     public void Awake()
     {
-        draggableElementDisplay = GetComponentInChildren<DraggableElementDisplay>();
+        draggableElementToken = GetComponentInChildren<DraggableElementToken>();
     }
 
     public void PopulateSlot(string elementId, int change, ContentManager cm)
     {
-        draggableElementDisplay.PopulateForElementId(elementId,cm);
+        draggableElementToken.PopulateForElementId(elementId,cm);
 
         quantity = change;
-        draggableElementDisplay.DisplayQuantity(quantity);
+        draggableElementToken.DisplayQuantity(quantity);
     }
 
     public void ModifyQuantity(int change)
@@ -34,7 +34,7 @@ public class ElementSlot : MonoBehaviour,IPointerEnterHandler,IPointerExitHandle
         quantity += change;
         if(quantity<=0)
             Destroy(gameObject);
-        draggableElementDisplay.DisplayQuantity(quantity);
+        draggableElementToken.DisplayQuantity(quantity);
     }
 
 

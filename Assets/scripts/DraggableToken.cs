@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DraggableToSlot : BoardMonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHandler
+public class DraggableToken : BoardMonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHandler
 {
     private Vector3 startPosition;
     private Transform startParent;
