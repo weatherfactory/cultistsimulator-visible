@@ -84,8 +84,6 @@
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\IntExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
     <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
-    <Compile Include="Assets\Editor\Tests\ElementImportTests.cs" />
-    <Compile Include="Assets\Editor\NoonUtilityTests.cs" />
     <Compile Include="Assets\scripts\Aspects\AspectDisplay.cs" />
     <Compile Include="Assets\scripts\ButtonClicks.cs" />
     <Compile Include="Assets\scripts\DraggableToSlot.cs" />
@@ -105,6 +103,5 @@
   <ItemGroup>
     <None Include="Assets\SimpleJson\ReadMe.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
