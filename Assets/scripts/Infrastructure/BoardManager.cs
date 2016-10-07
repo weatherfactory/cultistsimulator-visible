@@ -4,25 +4,37 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+
 #pragma warning disable 649
 
-public class BoardManager : MonoBehaviour {
-    [SerializeField]private InputField inputAdjustElementNamed;
-    [SerializeField]private Text txtStatus;
-    [SerializeField]private GameObject pnlResources;
-    [SerializeField]GameObject pnlWorkspace;
+public class BoardManager : MonoBehaviour
+{
+    [SerializeField] private InputField inputAdjustElementNamed;
+    [SerializeField] private Text txtStatus;
+    [SerializeField] private GameObject pnlResources;
+    [SerializeField] GameObject pnlWorkspace;
     [SerializeField] GameObject prefabElementSlot;
-    [SerializeField]GameObject prefabEmptyElementSlot;
+    [SerializeField] GameObject prefabEmptyElementSlot;
     [SerializeField] GameObject pnlCurrentAspects;
-    [SerializeField]GameObject imgAspectDisplay;
+    [SerializeField] GameObject imgAspectDisplay;
     public GameObject itemBeingDragged;
 
     private void addElementToBoard(string elementId, int quantity)
     {
         GameObject newElementSlot = Instantiate(prefabElementSlot, pnlResources.transform) as GameObject;
-
+        try
+        {
             ElementSlot slotScript = newElementSlot.GetComponent<ElementSlot>();
+        
             slotScript.PopulateSlot(elementId, quantity, ContentManager.Instance);
+        }
+        catch (NullReferenceException)
+        {
+            
+            BoardLog("Couldn't create element with id " + elementId);
+            GameObject.Destroy(newElementSlot);
+        }
+            
 
     }
 
@@ -77,6 +89,11 @@ public class BoardManager : MonoBehaviour {
 
     }
 
+    public void BoardLog(string message)
+    {
+        Debug.Log(message);
+    }
+
     public void MakeFirstSlotAvailable(bool visibility)
     {
         addSlotToWorkspace();
@@ -111,17 +128,20 @@ public class BoardManager : MonoBehaviour {
 
         DraggableElementDisplay[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementDisplay>();
 
-        foreach (DraggableElementDisplay element in elements)
+        foreach (DraggableElementDisplay draggableElementDisplay in elements)
         {
 
-            foreach (KeyValuePair<string, int> kvp in element.Element.Aspects)
+            foreach (KeyValuePair<string, int> kvp in draggableElementDisplay.Element.Aspects)
             {
                 ChangeAspectQuantityInDisplay(kvp.Key, kvp.Value);
             }
 
+            Debug.Log("Slots in element " + draggableElementDisplay.Element.Label + " - " + draggableElementDisplay.Element.ChildSlots.Count);
+
         }
 
         
+
     }
 
 

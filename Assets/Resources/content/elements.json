@@ -104,7 +104,7 @@
             id: "alockedmind",
             label: "A Locked Mind",
             aspects:{},
-            "slots":
+            slots:
         {
             quantity: 1,
                 required: {key: 1}
@@ -241,7 +241,7 @@
             },
             maxvalue:1,
             description: "A sombre man in dark blue has taken an interest in your endeavours.",
-            "slots":
+            slots:
             {
                 quantity: 1
             }
@@ -414,7 +414,7 @@
             {
                 society: 1
             },
-            "slots":
+            slots:
             {
                 quantity: 3,
                 required: {ritual: 1, follower: 1},
@@ -430,7 +430,7 @@
             {
                 society: 1
             },
-            "slots":
+            slots:
             {
                 quantity: 2,
                 required: {ritual: 1, follower: 1},
@@ -446,7 +446,7 @@
             {
                 location: 1
             },
-            "slots":
+            slots:
             {
                 quantity: 2,
                 required: {},
@@ -462,7 +462,7 @@
             {
                 location: 1
             },
-            "slots":
+            slots:
             {
                 quantity: 2,
                 required: {},
@@ -479,7 +479,7 @@
                 location: 1,
                 forge: CONVENTIONS.QUANTITY_TINY
             },
-            "slots":
+            slots:
             {
                 quantity: 2,
                 required: {},
@@ -495,7 +495,7 @@
                 forge: CONVENTIONS.QUANTITY_TINY,
                 ritual: 1
             },
-            "slots": {
+            slots: {
                 quantity: 2,
                 required: {},
                 forbidden: {location: 1, ritual: 1, society: 1},
@@ -510,7 +510,7 @@
             {
                 ritual: 1
             },
-            "slots":
+            slots:
             {
                 quantity: 2,
                 required: {},
@@ -526,7 +526,7 @@
             {
                 expedition: 1
             },
-            "slots":
+            slots:
             {
                 quantity: 1,
                 required: {follower: 1},

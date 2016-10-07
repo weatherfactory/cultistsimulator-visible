@@ -37,11 +37,14 @@ public class ContentManager : Singleton<ContentManager>
         //find description in Element
      Hashtable htElement=htElements.GetNodeWithProperty(CONST_ID, id);
        Hashtable htAspects = htElement.GetHashtable("aspects");
+        Hashtable htSlots = htElement.GetHashtable("slots");
 
         Element element=new Element(id,
            htElement.GetString(CONST_LABEL),
             htElement.GetString(CONST_DESCRIPTION));
+
         element.AddAspectsFromHashtable(htAspects);
+        element.AddSlotsFromHashtable(htSlots);
 
         return element;
     }
