@@ -54,7 +54,7 @@ public class CurrentAspects : BoardMonoBehaviour
 
     public void UpdateAspects(GameObject pnlWorkspace)
     {
-      
+      ResetAspects();
 
         DraggableElementToken[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementToken>();
 
