@@ -43,7 +43,7 @@ public class CurrentAspectsTests
         [Test]
         public void CurrentAspectsReturnsPopulatedAspects()
         {
-          //  currentAspects.UpdateAspects();
+            currentAspects.UpdateAspects(elementContainers);
         }
 
     [Test]
