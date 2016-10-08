@@ -129,6 +129,6 @@ public class BoardManager : MonoBehaviour
 
     public void UpdateAspectDisplay()
     {
-        pnlCurrentAspects.GetComponent<CurrentAspects>().UpdateAspects(pnlWorkspace);
+            pnlCurrentAspects.GetComponent<CurrentAspects>().UpdateAspects(pnlWorkspace.GetComponentsInChildren<DraggableElementToken>());
     }
 }

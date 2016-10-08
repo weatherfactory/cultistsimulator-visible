@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 public class CurrentAspects : BoardMonoBehaviour
 {
@@ -35,6 +36,16 @@ public class CurrentAspects : BoardMonoBehaviour
     }
 
 
+    public Dictionary<string, int> AllAspects()
+    {
+        Dictionary<string, int> allAspects=new Dictionary<string, int>();
+        foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
+        {
+            allAspects.Add(a.AspectId,a.Quantity);
+        }
+        return allAspects;
+    }
+
 
     public void ResetAspects()
     {
@@ -52,16 +63,14 @@ public class CurrentAspects : BoardMonoBehaviour
         }
     }
 
-    public void UpdateAspects(GameObject pnlWorkspace)
+    public void UpdateAspects(IContainsElement[] elementContainers)
     {
-      ResetAspects();
+          ResetAspects();
 
-        DraggableElementToken[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementToken>();
-
-        foreach (DraggableElementToken draggableElementDisplay in elements)
+        foreach (IContainsElement elementContainer in elementContainers)
         {
 
-            foreach (KeyValuePair<string, int> kvp in draggableElementDisplay.Element.Aspects)
+            foreach (KeyValuePair<string, int> kvp in elementContainer.Element.Aspects)
             {
                 ChangeAspectQuantityInFrame(kvp.Key, kvp.Value);
             }
@@ -69,8 +78,8 @@ public class CurrentAspects : BoardMonoBehaviour
         }
 
         DisplayRecipesForCurrentAspects();
-
     }
+
 
     private void DisplayRecipesForCurrentAspects()
     {

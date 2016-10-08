@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class DraggableElementToken: DraggableToken
+public class DraggableElementToken: DraggableToken,IContainsElement
     {
-    public Element Element;
+    public Element Element { get; set; }
 
         public void Awake()
         {
@@ -50,5 +51,7 @@ public class DraggableElementToken: DraggableToken
             return Element.ChildSlots.Count > 0;
         }
     }
+
+
 
 

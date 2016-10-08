@@ -20,6 +20,7 @@ public class Element
         Label = label;
         Description = description;
         ChildSlots=new List<ChildSlot>();
+        Aspects=new Dictionary<string, int>();
     }
 
     public void AddAspectsFromHashtable(Hashtable htAspects)
