@@ -43,6 +43,11 @@ public class ContentManager : Singleton<ContentManager>
             Hashtable htEach = importedRecipes.GetHashtable(i);
             Recipe r = new Recipe
               { Id = htEach["id"].ToString() };
+            Hashtable htReqs = htEach.GetHashtable("requirements");
+            foreach (string k in htReqs.Keys)
+            {
+                r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
+            }
                recipesList.Add(r);
         }
 

@@ -15,6 +15,11 @@ public class RecipeCompendium
         recipes = allRecipes;
     }
 
+    public Recipe GetFirstRecipeForAspects(Dictionary<string, int> Aspects)
+    {
+        return null;
+    }
+
     public List<Recipe> GetAllRecipesAsList()
     {
         return recipes;
@@ -24,6 +29,11 @@ public class RecipeCompendium
 public class Recipe
 {
     public string Id { get; set; }
+    public Dictionary<string,int> Requirements { get; set; }
 
-   
+    public Recipe()
+    {
+        Requirements=new Dictionary<string, int>();
+    }
+ 
 }

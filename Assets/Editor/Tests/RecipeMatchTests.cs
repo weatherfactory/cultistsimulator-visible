@@ -29,6 +29,12 @@ namespace CS.Tests
         private Dictionary<string, int> TestAspects;
         private const string COOLTH = "coolth";
         private const string WARMTH = "warmth";
+        private Recipe NeverMatches;
+        private Recipe MatchesCoolth2;
+        private Recipe MatchesCoolth1;
+        private List<Recipe> Recipes;
+        private RecipeCompendium rc;
+        
 
         [SetUp]
         public void Setup()
@@ -36,11 +42,15 @@ namespace CS.Tests
 
             TestAspects = new Dictionary<string, int>()
             {
-                {COOLTH, 1},
-                {WARMTH, 1}
+                {COOLTH, 5},
+                {WARMTH, 5}
             };
 
-
+            NeverMatches=new Recipe() {Id="NeverMatches",Requirements = new Dictionary<string, int>() {{COOLTH,10} }};
+            MatchesCoolth2 = new Recipe() { Id = "NeverMatches", Requirements = new Dictionary<string, int>() { { COOLTH, 2 } } };
+            MatchesCoolth1 = new Recipe() { Id = "NeverMatches", Requirements = new Dictionary<string, int>() { { COOLTH, 1 } } };
+            Recipes=new List<Recipe>() {NeverMatches,MatchesCoolth2,MatchesCoolth1};
+            rc=new RecipeCompendium(Recipes);
 
         }
 
@@ -49,13 +59,15 @@ namespace CS.Tests
         [Test]
         public void NoAspectsPresentMatchesNoRecipe()
         {
-            throw new NotImplementedException();
+            Assert.Null(rc.GetFirstRecipeForAspects(new Dictionary<string, int>()));
         }
 
         [Test]
         public void OneAspectPresentMatchesHighestPriorityRecipe()
         {
-            throw new NotImplementedException();
+            Dictionary<string, int> aspects = new Dictionary<string, int> {{COOLTH, 2}};
+
+            Assert.AreEqual(MatchesCoolth2.Id,rc.GetFirstRecipeForAspects(aspects).Id);
         }
 
         [Test]
