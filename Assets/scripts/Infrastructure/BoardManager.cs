@@ -109,7 +109,7 @@ public class BoardManager : MonoBehaviour
         foreach (DraggableElementToken element in elements)
 
         element.ReturnToOrigin();
-     pnlCurrentAspects.GetComponent<CurrentAspects>().ResetAspects();
+     pnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().ResetAspects();
     }
 
 
@@ -129,6 +129,6 @@ public class BoardManager : MonoBehaviour
 
     public void UpdateAspectDisplay()
     {
-            pnlCurrentAspects.GetComponent<CurrentAspects>().UpdateAspects(pnlWorkspace.GetComponentsInChildren<DraggableElementToken>());
+            pnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().UpdateAspects(pnlWorkspace.GetComponentsInChildren<DraggableElementToken>());
     }
 }

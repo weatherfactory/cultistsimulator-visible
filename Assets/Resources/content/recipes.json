@@ -1,55 +1,4 @@
-/**
- * /**
- * (c) 2016 Weather Factory Ltd
- *
- {
-     id: "example",
-     label: "Example With Spaces And Things",
-     actionId: "dream", //any of the actions
-     //a recipe will activate if the verb matches, and all the requirements are fulfilled.
-     requirements: {
-         someaspect: CONVENTIONS.SOME_VALUE, //either a concrete resource in the workspace, or aspects there
-         someotheraspect: CONVENTIONS.SOME_OTHER_VALUE //this'll be the total of things in the workspace.
-     },
-     effects: {
-someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
-     },
-           alternativerecipes: //these will be completed in place of this recipe if (1) their requirements are satisfied *by concrete possessed resources, not considering those resources' aspects;
-           //and (2) if we roll <=chance on d100
-           //if additional=true, they'll execute as well as, not instead of, the original recipe
-        [{id: 'possiblerecipe', chance:50},
-        {id: 'definiterecipe', chance:100}], //it's OK to have something fall through, though; it just means no alternative recipes will trigger
-     startdescription: "This will appear when it's queued up",
-     description: "This'll appear when it completes",
-     warmup: CONVENTIONS.TIME_SIGNIFICANT, //this is how long it'll take to completes. NB doesn't apply to triggered recipes
-     storeCommitment{commitment: 'name'} //puts items from workspace into a named store, if they possess the aspect in withAspect
-     eraseCommitment{commitment: 'name'} //empties that named store
-     applyCommitment{commitment: 'name'} //returns resources in that named store to the game (emptying the store)
-     craftable: false, //will it appear in workspace list?
-     loop: recipeid //this, or another recipe, may begin when this completes. NB if an alternative recipe is triggered, the loop from that will apply instead.
- }
- template for convenience:
- {
-      id: "",
-      label: "",
-      actionId: "",
-      requirements: {
-
-      },
-      effects: {
-
-      },
-      alternativerecipes: [{id: '', chance:100}],
-      startdescription: "FNORD",
-      description: "FNORD",
-      warmup: CONVENTIONS.TIME_SIGNIFICANT,
-      craftable: true,
-      loop: ''
-  }
-
- */
-var recipes;
-recipes = [
+{"recipes": [
     {
         id: "keyoftheredgrail",
         label: "Craft the Key of the Red Grail",
@@ -900,11 +849,6 @@ recipes = [
         warmup: CONVENTIONS.TIME_QUICKEST,
         craftable: true
     },
-    ///below this line are non-craftable recipes.
-    //IMPORTANT: requirements for these recipes determine if they can be triggered by the alternativerecipe property.
-    //They only take account of concrete resources, not their aspects.
-    //This is by design: the workspace is a place to choose to consume aspects. The whole mash of aspects in the players' resources
-    //would be all over the place (and would need multiplying on numbers of individual resources).
     {
         id: "starvation",
         label: "Time, the sundial's shadow, passes.",

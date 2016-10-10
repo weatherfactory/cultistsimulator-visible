@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Mono.Security.Cryptography;
 
-public class CurrentAspects : BoardMonoBehaviour
+public class CurrentAspectsDisplay : BoardMonoBehaviour
 {
 
     [SerializeField] private GameObject objLimbo;
@@ -65,7 +66,7 @@ public class CurrentAspects : BoardMonoBehaviour
 
     public void UpdateAspects(IContainsElement[] elementContainers)
     {
-          ResetAspects();
+         ResetAspects();
 
         foreach (IContainsElement elementContainer in elementContainers)
         {
@@ -83,6 +84,13 @@ public class CurrentAspects : BoardMonoBehaviour
 
     private void DisplayRecipesForCurrentAspects()
     {
-        BM.BoardLog("Checking recipes...");
+       DebugLogAspects();
+    }
+
+    private void DebugLogAspects()
+    {
+        Dictionary<string, int> AllAspects = this.AllAspects();
+        foreach (KeyValuePair<string, int> kv in AllAspects)
+            BM.BoardLog(kv.Key + " - " + kv.Value);
     }
 }
