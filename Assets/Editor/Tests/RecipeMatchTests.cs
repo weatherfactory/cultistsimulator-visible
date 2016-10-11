@@ -29,9 +29,12 @@ namespace CS.Tests
         private Dictionary<string, int> TestAspects;
         private const string COOLTH = "coolth";
         private const string WARMTH = "warmth";
+        private const int COOLTH_VALUE = 5;
+        private const int WARMTH_VALUE = 5;
         private Recipe NeverMatches;
-        private Recipe MatchesCoolth2;
-        private Recipe MatchesCoolth1;
+        private Recipe MatchesCoolthAndWarmth;
+        private Recipe MatchesCoolthEqual;
+        private Recipe MatchesCoolthLess;
         private List<Recipe> Recipes;
         private RecipeCompendium rc;
         
@@ -40,16 +43,11 @@ namespace CS.Tests
         public void Setup()
         {
 
-            TestAspects = new Dictionary<string, int>()
-            {
-                {COOLTH, 5},
-                {WARMTH, 5}
-            };
-
-            NeverMatches=new Recipe() {Id="NeverMatches",Requirements = new Dictionary<string, int>() {{COOLTH,10} }};
-            MatchesCoolth2 = new Recipe() { Id = "NeverMatches", Requirements = new Dictionary<string, int>() { { COOLTH, 2 } } };
-            MatchesCoolth1 = new Recipe() { Id = "NeverMatches", Requirements = new Dictionary<string, int>() { { COOLTH, 1 } } };
-            Recipes=new List<Recipe>() {NeverMatches,MatchesCoolth2,MatchesCoolth1};
+            NeverMatches=new Recipe() {Id="NeverMatches",Requirements = new Dictionary<string, int>() {{COOLTH,COOLTH_VALUE+10} }};
+            MatchesCoolthAndWarmth = new Recipe() { Id = "MatchesCoolthAndWarmth", Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE }, {WARMTH,WARMTH_VALUE} } };
+            MatchesCoolthEqual = new Recipe() { Id = "MatchesCoolthEqual", Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE } } };
+            MatchesCoolthLess = new Recipe() { Id = "MatchesCoolthLess", Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE-1 } } };
+            Recipes=new List<Recipe>() {NeverMatches, MatchesCoolthAndWarmth, MatchesCoolthEqual, MatchesCoolthLess };
             rc=new RecipeCompendium(Recipes);
 
         }
@@ -65,21 +63,16 @@ namespace CS.Tests
         [Test]
         public void OneAspectPresentMatchesHighestPriorityRecipe()
         {
-            Dictionary<string, int> aspects = new Dictionary<string, int> {{COOLTH, 2}};
-
-            Assert.AreEqual(MatchesCoolth2.Id,rc.GetFirstRecipeForAspects(aspects).Id);
+            Dictionary<string, int> aspects = new Dictionary<string, int> {{COOLTH, COOLTH_VALUE } };
+            Assert.AreEqual(MatchesCoolthEqual.Id,rc.GetFirstRecipeForAspects(aspects).Id);
         }
 
         [Test]
         public void TwoAspectsPresentMatchesHighestPriority()
         {
-            throw new NotImplementedException();
+            Dictionary<string, int> aspects = new Dictionary<string, int> { { COOLTH, COOLTH_VALUE }, { WARMTH, WARMTH_VALUE } };
+            Assert.AreEqual(MatchesCoolthAndWarmth.Id, rc.GetFirstRecipeForAspects(aspects).Id);
         }
 
-        [Test]
-        public void TwoAspectsPresentOneAtLevelTwoMatchesHighestPriority()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
