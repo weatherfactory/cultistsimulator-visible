@@ -14,7 +14,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private GameObject pnlResources;
     [SerializeField] GameObject pnlWorkspace;
     [SerializeField] GameObject pnlCurrentAspects;
-    [SerializeField] GameObject imgAspectDisplay;
+    [SerializeField]GameObject pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementSlot;
     [SerializeField]GameObject prefabEmptyElementSlot;
@@ -130,5 +130,10 @@ public class BoardManager : MonoBehaviour
     public void UpdateAspectDisplay()
     {
             pnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().UpdateAspects(pnlWorkspace.GetComponentsInChildren<DraggableElementToken>());
+    }
+
+    public void DisplayCurrentRecipe(Recipe recipe)
+    {
+        pnlRecipeDisplay.GetComponent<RecipeDisplay>().DisplayRecipe(recipe);
     }
 }
