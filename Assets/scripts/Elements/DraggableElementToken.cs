@@ -38,7 +38,7 @@ public class DraggableElementToken: DraggableToken,IContainsElement
 
     }
 
-        public void PopulateForElementId(string elementId,ContentManager cm)
+        public void PopulateForElementId(string elementId,ContentRepository cm)
         {
         Element = cm.PopulateElementForId(elementId);
         DisplayName(Element);

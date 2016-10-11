@@ -23,7 +23,7 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
         if (newAspectDisplay != null)
         {
             AspectFrame aspectFrame = newAspectDisplay.GetComponent<AspectFrame>();
-            aspectFrame.PopulateDisplay(aspectId, quantity, ContentManager.Instance);
+            aspectFrame.PopulateDisplay(aspectId, quantity, ContentRepository.Instance);
         }
     }
 

@@ -21,7 +21,7 @@ public class StorageSlot : MonoBehaviour
         draggableElementToken = GetComponentInChildren<DraggableElementToken>();
     }
 
-    public void PopulateSlot(string elementId, int change, ContentManager cm)
+    public void PopulateSlot(string elementId, int change, ContentRepository cm)
     {
         draggableElementToken.PopulateForElementId(elementId,cm);
 

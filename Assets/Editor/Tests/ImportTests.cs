@@ -20,7 +20,7 @@ namespace CS.Tests
         [Test]
         public void RecipesImportFromHashtable()
         {
-            ContentManager cm=new ContentManager();
+            ContentRepository cm=new ContentRepository();
             ArrayList recipesToImport=new ArrayList();
             Hashtable htRecipe = new Hashtable();
             Hashtable htRequirements = new Hashtable();

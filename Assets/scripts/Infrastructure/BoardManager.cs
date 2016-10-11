@@ -28,7 +28,7 @@ public class BoardManager : MonoBehaviour
         try
         {
             StorageSlot slotScript = newElementSlot.GetComponent<StorageSlot>();
-            slotScript.PopulateSlot(elementId, quantity, ContentManager.Instance);
+            slotScript.PopulateSlot(elementId, quantity, ContentRepository.Instance);
             
         }
         catch (NullReferenceException)
@@ -57,8 +57,8 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     public void Start()
     {
-        ContentManager.Instance.ImportElements();
-        ContentManager.Instance.ImportRecipes();
+        ContentRepository.Instance.ImportElements();
+        ContentRepository.Instance.ImportRecipes();
         ChangeElementQuantityOnBoard("clique", 1);
         ChangeElementQuantityOnBoard("ordinarylife",1);
         ChangeElementQuantityOnBoard("health", 10);

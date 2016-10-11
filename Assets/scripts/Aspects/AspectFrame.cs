@@ -23,7 +23,7 @@ public class AspectFrame : MonoBehaviour
 
     }
 
-    public void PopulateDisplay(string aspectId, int aspectValue, ContentManager instance)
+    public void PopulateDisplay(string aspectId, int aspectValue, ContentRepository instance)
     {
         AspectId = aspectId;
         Quantity = aspectValue;

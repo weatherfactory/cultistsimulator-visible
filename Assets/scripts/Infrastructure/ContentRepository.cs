@@ -8,7 +8,7 @@ using OrbCreationExtensions;
 using UnityEditor;
 
 
-public class ContentManager : Singleton<ContentManager>
+public class ContentRepository : Singleton<ContentRepository>
 {
 
     private const string CONST_CONTENTDIR = "content/";

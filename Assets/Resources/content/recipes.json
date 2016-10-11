@@ -12,7 +12,7 @@
         },
         startdescription: "Now I will craft a shape of words to open me like an oyster.",
         description: "This is a key of the Mansus, not a Key to the Mansus. When I turn it, I will be opened.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -24,12 +24,12 @@
             keyoftheredgrail: 1      },
         effects: {
             riteofslaking: 1,
-            keyoftheredgrail: -CONVENTIONS.CHANGE_TINY,
+            keyoftheredgrail: -1,
             alockedmind: -1
         },
         startdescription: "Past this point, there is no turning back. Open your heart and soul to the hunger of the Grail.",
         description: "The RED joy of it! It CALLS me HOME! I know now the WORDS! When I have my DISCIPLES and our POWER I can BRING the THIRSTLY to our FINAL FEAST! [The Night of the Feast requires 3 Grail and 12 Follower aspect.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -49,7 +49,7 @@
         "This is the blood that trickles beneath doors. Here are the eyes made empty. Here is the moon that will rise red. Here is the map of the city, the spreading stain." +
         "Here am I, alone on the night of my victory, my end. The Grail has opened its mouth. It will not forget my savour. It will not forget." +
         "<br/><br/>[Congratulations. This amounts to a victory condition for the prototype. You have destroyed the city, and yourself, in the name of the Red Grail. If you enjoyed this prototype, or if you didn't, DISCUSS it on the subreddit below.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -59,11 +59,11 @@
         requirements: {grail: 1,
         lantern: 1},
         effects: {
-            emptyvessel: CONVENTIONS.CHANGE_MODERATE
+            emptyvessel: 3
         },
         startdescription: "The cup will preserve my graily hunger until the day it's required.",
         description: "An Empty Vessel: smooth, sweet, unstained as yet by feeding.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -76,7 +76,7 @@
         },
         startdescription: "FNORD this will do it",
         description: "FNORD it worked!",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -90,7 +90,7 @@
         },
         startdescription: "FNORD probably not enough.",
         description: "FNORD it worked!",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
 
@@ -100,12 +100,12 @@
         actionId: "work",
         requirements: {disciple: 1},
         effects: {
-            shilling:  CONVENTIONS.CHANGE_SMALL,
+            shilling:  2,
             disciple: 1
         },
         startdescription: "I'll send them to work in my place, and receive a portion of the proceeds.",
         description: "My Disciple has happily turned over most of their pay.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -114,12 +114,12 @@
         actionId: "work",
         requirements: {believer: 1},
         effects: {
-            shilling: CONVENTIONS.CHANGE_TINY,
+            shilling: 1,
             believer: 1
         },
         startdescription: "I'll send them to work in my place, and receive a portion of the proceeds.",
         description: "My Believer has grudgingly turned over a portion of their pay.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -128,11 +128,11 @@
         actionId: "work",
         requirements: {enthusiast: 1},
         effects: {
-            shilling: CONVENTIONS.CHANGE_TINY
+            shilling: 1
         },
         startdescription: "I can press them for donations, although it will end their enthusiasm.",
         description: "So reluctant to contribute so little to the Work! I shan't miss them.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -143,11 +143,11 @@
         alternativerecipes: [{id: 'labourwithromanticinterestpresent', chance:100},
             {id: 'labourmeetromanticinterest', chance:10}],
         effects: {
-            shilling: CONVENTIONS.CHANGE_MODERATE
+            shilling: 3
         },
         startdescription: "Petty, hateful work for petty, meagre pay.",
         description: "I am exhausted, but I've earned my pay.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -162,21 +162,21 @@
         },
         startdescription: "What shall I become?",
         description: "If I unlock myself, an Hour may enter.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT_PLUS,
+        warmup: 6_PLUS,
         craftable: true
     },
     {
         id: "dreamatlas",
         label: "Dream of the Halls of the Hours",
         actionId: "dream",
-        requirements: {lantern: CONVENTIONS.CHANGE_SMALL},
+        requirements: {lantern: 2},
         effects: {
-            atlasnotes: CONVENTIONS.CHANGE_TINY,
+            atlasnotes: 1,
             sanity: -1
         },
         startdescription: "In dreams I see the Mansus, the house of the Hours, grey and gold.",
         description: "To find the Hour I need, I must first find its hall. I'll need an Atlas.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true,
         loop: 'spineatlas'
     },
@@ -184,41 +184,41 @@
         id: "dreamtinylantern",
         label: "Dream of the House in the Wood",
         actionId: "dream",
-        requirements: {lantern: CONVENTIONS.QUANTITY_TINY},
+        requirements: {lantern: 1},
         effects: {
-            glimpse: CONVENTIONS.CHANGE_TINY,
+            glimpse: 1,
             sanity:-1
         },
         startdescription: "Sometimes, I see a kind of sunlight in sleep.",
         description: "Last night, I dreamt again of the Wood behind the world, and the dwelling-place at its heart.",
-        warmup: CONVENTIONS.TIME_MODERATE,
+        warmup: 30,
         craftable: true
     },
     {
         id: "dreamtinyheart",
         label: "Sleep deeply, dream softly",
         actionId: "dream",
-        requirements: {heart: CONVENTIONS.QUANTITY_TINY},
+        requirements: {heart: 1},
         effects: {
-            sanity: CONVENTIONS.CHANGE_SMALL
+            sanity: 2
         },
         startdescription: "I will set aside thoughts of uncanny things; read cheerful novels; drink cocoa before bed.",
         description: "Sleep has become a balm again. Perhaps I could live happily, if I abandoned the difficult dreams.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
         id: "talkromanticattention",
         label: "Begin an affair",
         actionId: "talk",
-        requirements: {romanticattention: CONVENTIONS.QUANTITY_TINY},
+        requirements: {romanticattention: 1},
         effects: {
-            sanity: CONVENTIONS.CHANGE_TINY,
-            romanticattention: CONVENTIONS.CHANGE_TINY //it'll be used up and returned
+            sanity: 1,
+            romanticattention: 1 //it'll be used up and returned
         },
         startdescription: "'Yes. Come to me.'",
         description: "'You're not what I expected. Stay with me a little longer.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT_PLUS,
+        warmup: 6_PLUS,
         craftable: true,
         loop: "spineaffair"
     },
@@ -229,10 +229,10 @@
         requirements: {follower: 6,
             lantern: 1},
         //this will require some sort of society and some sort of ritual to fit all these things in
-        effects: {sanity: -CONVENTIONS.CHANGE_TINY},
+        effects: {sanity: -1},
         startdescription: "My Order may outlast me, but it will remember me..",
         description: "My Order is established. My disciples bow their hears. I am <i>exalted.</i>",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true,
         loop: 'spineorder'
     },
@@ -242,15 +242,15 @@
         actionId: "talk",
         requirements: {
             clique: 1,
-            lantern: CONVENTIONS.QUANTITY_SMALL,
-            enthusiast: CONVENTIONS.QUANTITY_TINY
+            lantern: 2,
+            enthusiast: 1
         },
         effects: {
             believer: 1
         },
         startdescription: "This one is promising, and receptive.",
         description: "'Listen, my friend. There is more to this than you know.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -259,15 +259,15 @@
         actionId: "talk",
         requirements: {
             clique: 1,
-            secrethistories: CONVENTIONS.QUANTITY_SMALL,
-            enthusiast: CONVENTIONS.QUANTITY_TINY
+            secrethistories: 2,
+            enthusiast: 1
         },
         effects: {
             believer: 1
         },
         startdescription: "This one is promising, and receptive.",
         description: "'Listen, my friend. There is more to this than you know.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -276,15 +276,15 @@
         actionId: "talk",
         requirements: {
             clique: 1,
-            moth: CONVENTIONS.QUANTITY_SMALL,
-            enthusiast: CONVENTIONS.QUANTITY_TINY
+            moth: 2,
+            enthusiast: 1
         },
         effects: {
             believer: 1
         },
         startdescription: "This one is promising, and receptive.",
         description: "'Listen, my friend. There is more to this than you know.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -293,15 +293,15 @@
         actionId: "talk",
         requirements: {
             clique: 1,
-            forge: CONVENTIONS.QUANTITY_SMALL,
-            enthusiast: CONVENTIONS.QUANTITY_TINY
+            forge: 2,
+            enthusiast: 1
         },
         effects: {
             believer: 1
         },
         startdescription: "This one is promising, and receptive.",
         description: "'Listen, my friend. There is more to this than you know.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -310,15 +310,15 @@
         actionId: "talk",
         requirements: {
             clique: 1,
-            grail: CONVENTIONS.QUANTITY_SMALL,
-            enthusiast: CONVENTIONS.QUANTITY_TINY
+            grail: 2,
+            enthusiast: 1
         },
         effects: {
             believer: 1
         },
         startdescription: "This one is promising, and receptive.",
         description: "'Listen, my friend. There is more to this than you know.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
 
@@ -329,11 +329,11 @@
         requirements: {secrethistories: 1,
         enthusiast: 1},
         effects: {
-            believer: CONVENTIONS.CHANGE_TINY
+            believer: 1
         },
         startdescription: "Come closer, my friend. Let me whisper in your ear.",
         description: "I'm binding my Enthusiasts into a clique of Believers.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true,
         loop: 'spineclique'
     },
@@ -341,13 +341,13 @@
         id: "talkRecruitConspiracist",
         label: "Recruit an Aficionado of Conspiracies",
         actionId: "talk",
-        requirements: {secrethistories: CONVENTIONS.QUANTITY_TINY},
+        requirements: {secrethistories: 1},
         effects: {
-            enthusiast: CONVENTIONS.CHANGE_TINY
+            enthusiast: 1
         },
         startdescription: "This one will find my secrets irresistible.",
         description: "Their reluctance melts at my whispered stories. I will welcome them to the Know.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true,
         loop: 'societyspine'
     },
@@ -355,13 +355,13 @@
         id: "talkRecruitCurious",
         label: "Recruit a Curious Soul",
         actionId: "talk",
-        requirements: {moth: CONVENTIONS.QUANTITY_TINY},
+        requirements: {moth: 1},
         effects: {
-            enthusiast: CONVENTIONS.CHANGE_TINY
+            enthusiast: 1
         },
         startdescription: "I know something of a deeper truth.",
         description: "Now and then, I meet someone who *understands*.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true,
         loop: 'societyspine'
     },
@@ -369,13 +369,13 @@
         id: "talkRecruitAnarchist",
         label: "Recruit an Anarchist",
         actionId: "talk",
-        requirements: {forge: CONVENTIONS.QUANTITY_TINY},
+        requirements: {forge: 1},
         effects: {
-            enthusiast: CONVENTIONS.CHANGE_TINY
+            enthusiast: 1
         },
         startdescription: "Promises and threats are equally enticing to this recruit.",
         description: "Perhaps they don't understand my cause, but they're frighteningly willing to serve it.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true,
         loop: 'societyspine'
     },
@@ -383,26 +383,26 @@
         id: "talktinylantern",
         label: "Tell Fortunes",
         actionId: "talk",
-        requirements: {lantern: CONVENTIONS.QUANTITY_TINY},
+        requirements: {lantern: 1},
         effects: {
-            shilling: CONVENTIONS.CHANGE_TINY
+            shilling: 1
         },
         startdescription: "I know enough to cheer the gullible; or alarm them.",
         description: "My clients are not generous.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
         id: "talktinyheart",
         label: "Make Small Talk with Strangers",
         actionId: "talk",
-        requirements: {heart: CONVENTIONS.QUANTITY_TINY},
+        requirements: {heart: 1},
         effects: {
-            sanity: CONVENTIONS.CHANGE_TINY
+            sanity: 1
         },
         startdescription: "Perhaps I should get out more.",
         description: "A little chat with the little people, now and then, helps keep my brain inside my skull.",
-        warmup: CONVENTIONS.TIME_QUICKEST,
+        warmup: 20EST,
         craftable: true
     },
     {
@@ -419,7 +419,7 @@
         },
         startdescription: "The basalt door will open to a sufficiently compelling incantation.",
         description: "Brush the webs aside. Tip out the bones on the floor. Seize the treasure for which you came.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -433,7 +433,7 @@
         },
         startdescription: "They will give their lives if they must.",
         description: "The search for the Shrouded Crypt advances.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true,
         loop: 'spinecryptexpedition'
     },
@@ -449,34 +449,34 @@
         },
         startdescription: "I can't be the first person ever to know the world is wrong.",
         description: "The print is badly set, the covers scuffed, the pages curling. It's beautiful.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
         id: "exploretinyheart",
         label: "Find Suitable Premises",
         actionId: "explore",
-        requirements: {heart: CONVENTIONS.QUANTITY_TINY},
+        requirements: {heart: 1},
         effects: {
-            suitablepremises: CONVENTIONS.QUANTITY_TINY
+            suitablepremises: 1
         },
         startdescription: "I need somewhere that no-one goes.",
         description: "Daylight fingers the shadows. Rats scuttle. This will do, for now.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
         id: "exploreshilling",
         label: "Roam the Junk-Shops and Flea-Markets",
         actionId: "explore",
-        requirements: {shilling: CONVENTIONS.QUANTITY_TINY},
+        requirements: {shilling: 1},
         effects: {
         },
         alternativerecipes: [{id: 'exploreshillingcinnabar', chance:30},
             {id: 'exploreshillingfistulous', chance:43}],
         startdescription: "I'm unlikely to find anything valuable. But one never knows.",
         description: "What's this, now?",
-        warmup: CONVENTIONS.TIME_QUICKEST,
+        warmup: 20EST,
         craftable: true
     },
     {
@@ -490,7 +490,7 @@
         },
         startdescription: "What have I learnt? [This will consume my Atlas, without ever using it for a greater purpose.]",
         description: "The more I read, the more disjointed it seems. Hallucinatory. Impossible. What House has no walls? How can Time be so many? Who was the Sun?",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -503,7 +503,7 @@
         },
         startdescription: "FNORD",
         description: "FNORD",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -516,7 +516,7 @@
         },
         startdescription: "FNORD",
         description: "FNORD",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -529,7 +529,7 @@
         },
         startdescription: "Perhaps this really did originate in the springs of Noon.",
         description: "Its heat, its appetite! These have been set at the hearts of rituals to summon Caligines and Thirstlies alike. ",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -543,7 +543,7 @@
         },
         startdescription: "Am I a monster?",
         description: "Someone doesn't think so. Perhaps that means something.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -556,7 +556,7 @@
         },
         startdescription: "The markings are both cryptic and faint -",
         description: "This is the way to the Shrouded Crypt, where one of the Long was put to rest! They die with difficulty and infrequency. I will certainly find some treasured relic there.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true,
         loop: 'spinecryptexpedition'
     },
@@ -566,13 +566,13 @@
         actionId: "study",
         requirements: {locksmithsdream: 1},
         effects: {
-            glimpse: CONVENTIONS.QUANTITY_TINY,
-            fistulousinvocation: CONVENTIONS.QUANTITY_TINY
+            glimpse: 1,
+            fistulousinvocation: 1
         },
         startdescription: "'The Locksmith' is a pseudonym. No wonder he did not dare write of the Hours under his own name.",
         description: "In his introduction, he writes that there are thirty Hours, and thirty Keys. He had intended thirty chapters. " +
         "As he passes the twelfth chapter, his style becomes anxious, disjointed. At the eighteenth, it grows wild and ranting. The book ends abruptly at the end of chapter twenty-one.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -581,14 +581,14 @@
         actionId: "study",
         requirements: {thewaroftheroads: 1},
         effects: {
-            occultscrap: CONVENTIONS.QUANTITY_TINY,
-            glimpse: CONVENTIONS.QUANTITY_TINY,
-            incendiaryprayer: CONVENTIONS.QUANTITY_TINY
+            occultscrap: 1,
+            glimpse: 1,
+            incendiaryprayer: 1
         },
         startdescription: "This book speaks of only one History, but a significant one.",
         description: "In this past, a score or more of Longs were made. They brokered peace with the Forge of Days, long enough to set England on a path" +
         "of early conquest and eventual destruction. The Forge itself devoured the greatest among them.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -597,11 +597,11 @@
         actionId: "study",
         requirements: {health: 1},
         effects: {
-            health: CONVENTIONS.QUANTITY_TINY
+            health: 1
         },
         startdescription: "This half-helpless flesh.",
         description: "I have surveyed my state. This body is my only grip in the world... for now.",
-        warmup: CONVENTIONS.TIME_QUICKEST,
+        warmup: 20EST,
         craftable: true
     },
     {
@@ -610,11 +610,11 @@
         actionId: "study",
         requirements: {sanity: 1},
         effects: {
-            sanity: CONVENTIONS.QUANTITY_TINY
+            sanity: 1
         },
         startdescription: "The mind is a castle, or a garden...",
         description: "...but it must never become an ocean. If I lose all my Sanity, I will achieve nothing.",
-        warmup: CONVENTIONS.TIME_QUICKEST,
+        warmup: 20EST,
         craftable: true
     },
     {
@@ -623,90 +623,90 @@
         actionId: "study",
         requirements: {ordinarylife: 1},
         effects: {
-            sanity: -CONVENTIONS.CHANGE_TINY,
-        restlessness: CONVENTIONS.CHANGE_TINY
+            sanity: -1,
+        restlessness: 1
         },
         startdescription: "I will learn my limitations.",
         description: "These are the walls that hold me, despite my gifts and my ambition. Perhaps not for much longer.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
         id: "studylantern",
         label: "What is the Lantern?",
         actionId: "study",
-        requirements: {lantern: CONVENTIONS.QUANTITY_TINY},
+        requirements: {lantern: 1},
         effects: {
-            glimpse: CONVENTIONS.CHANGE_TINY
+            glimpse: 1
         },
         startdescription: "I might think about lantern-light.",
         description: "On the borders of our dreams we find the Mansus, where the Watchman walks the corridors. Light goes before him and shadow behind. He must not see you. [Lantern is the principle of Dreams and the Mansus.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
         id: "studymoth",
         label: "And what is Moth?",
         actionId: "study",
-        requirements: {moth: CONVENTIONS.QUANTITY_TINY},
+        requirements: {moth: 1},
         effects: {
-            restlessness: CONVENTIONS.CHANGE_TINY
+            restlessness: 1
         },
         startdescription: "We all know the beat of wings in the night.",
         description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of curiosity and yearning.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
         id: "studyforge",
         label: "Meditate on the Forge of Days",
         actionId: "study",
-        requirements: {forge: CONVENTIONS.QUANTITY_TINY},
+        requirements: {forge: 1},
         effects: {
-            incendiaryprayer: CONVENTIONS.CHANGE_TINY
+            incendiaryprayer: 1
         },
         startdescription: "Who understands fire?",
         description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The Forge of Days transforms and destroys.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
         id: "studysecrethistories",
         label: "Consider the Secret Histories.",
         actionId: "study",
-        requirements: {secrethistories:  CONVENTIONS.QUANTITY_TINY},
+        requirements: {secrethistories:  1},
         effects: {
-            occultscrap: CONVENTIONS.CHANGE_TINY
+            occultscrap: 1
         },
         startdescription: "I have glutted myself on learning that scholars tell me is lies.",
         description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.].",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
         id: "studygrail",
         label: "Think on hunger and the Red Grail",
         actionId: "study",
-        requirements: {grail: CONVENTIONS.QUANTITY_TINY},
+        requirements: {grail: 1},
         effects: {
-            hungry:  CONVENTIONS.CHANGE_TINY
+            hungry:  1
         },
         startdescription: "Oh, the rosy light of it -",
         description: "Hunger, lust, the drowning waters. [The principle of the Red Grail demands to be fed.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
         id: "studyheart",
         label: "What is the Heart Relentless?",
         actionId: "study",
-        requirements: {heart: CONVENTIONS.QUANTITY_TINY},
+        requirements: {heart: 1},
         effects: {
-            health:  CONVENTIONS.CHANGE_TINY
+            health:  1
         },
         startdescription: "The world will not be easily defeated.",
         description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle of certainty and safety.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -715,11 +715,11 @@
         actionId: "study",
         requirements: {knock: 1},
         effects: {
-            fistulousinvocation: CONVENTIONS.QUANTITY_TINY
+            fistulousinvocation: 1
         },
         startdescription: "I hear it in the moments before I wake.",
         description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and exposes horrible secrets.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -728,11 +728,11 @@
         actionId: "study",
         requirements: {society: 1},
         effects: {
-            occultscrap: CONVENTIONS.QUANTITY_TINY
+            occultscrap: 1
         },
         startdescription: "How can I use this?",
         description: "A society allows me to employ my followers to best advantage. It can contain Rituals and Followers.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -741,11 +741,11 @@
         actionId: "study",
         requirements: {ritual: 1},
         effects: {
-            occultscrap: CONVENTIONS.QUANTITY_TINY
+            occultscrap: 1
         },
         startdescription: "How can I use this?",
         description: "A Ritual can contain anything but a Location or another Ritual.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -754,11 +754,11 @@
         actionId: "study",
         requirements: {location: 1},
         effects: {
-            occultscrap: CONVENTIONS.QUANTITY_TINY
+            occultscrap: 1
         },
         startdescription: "How can I use this?",
         description: "Locations! Everyone must be somewhere, and I am here. A Location can contain anything except another Location.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true
     },
     {
@@ -771,7 +771,7 @@
         },
         startdescription: "Walk this place.",
         description: "As the Watchman walks the Mansus, so you, here. Space is multiplicity. Multiplicity is possibility.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: true
     },
     {
@@ -784,7 +784,7 @@
         },
         startdescription: "It's not so easy to end my ordinariness. I need a Key.",
         description: "My brain will boil in its shell.",
-        warmup: CONVENTIONS.TIME_QUICKEST,
+        warmup: 20EST,
         craftable: true
     },
     {
@@ -798,7 +798,7 @@
         },
         startdescription: "They will give their lives if they must.",
         description: "The search for the Shrouded Crypt advances.",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: true,
         loop: 'spinecryptexpedition'
     },
@@ -817,7 +817,7 @@
         applyCommitment: {commitment: "assignagainstinspectorcommitment"},
         startdescription: "Threats, blackmail, or secret violence: whatever is required. If you're lucky, this will suffice.",
         description: "The Inspector will trouble you no longer. Ask no questions.",
-        warmup: CONVENTIONS.TIME_MODERATE,
+        warmup: 30,
         craftable: true
     },
     {
@@ -833,7 +833,7 @@
         applyCommitment: {commitment: "assignagainstinspectorcommitment"},
         startdescription: "He will probably require a sterner intervention than this.",
         description: "The Inspector will trouble you no longer. Ask no questions.",
-        warmup: CONVENTIONS.TIME_MODERATE,
+        warmup: 30,
         craftable: true
     },
 
@@ -846,7 +846,7 @@
         },
         startdescription: "I'll end this thing.",
         description: "It's gone.",
-        warmup: CONVENTIONS.TIME_QUICKEST,
+        warmup: 20EST,
         craftable: true
     },
     {
@@ -863,7 +863,7 @@
          {id: 'sustenance', chance:100}],
         startdescription: ".",
         description: "I have grown neglectful of my health. Without money, I'll soon starve.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false,
         loop: 'starvation'
     },
@@ -936,7 +936,7 @@
         alternativerecipes: [{id: 'atlasnotesincrease', chance:100}],
         startdescription: "I will water my Atlas with tears, and with dreams of the Mansus.",
         description: "My work on the Atlas of Dreams has come to a standstill. [I must have Glimpses to feed it.] ",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     {
@@ -948,8 +948,8 @@
             sanity: -1
         },
         effects: {
-            atlasnotes: CONVENTIONS.CHANGE_TINY,
-            glimpse: -CONVENTIONS.CHANGE_TINY
+            atlasnotes: 1,
+            glimpse: -1
         },
         alternativerecipes: [{id: 'atlascomplete', chance:100}],
         startdescription: "",
@@ -963,16 +963,16 @@
         label: "The Atlas is complete",
         actionId: "",
         requirements: {
-            atlasnotes: CONVENTIONS.QUANTITY_EPISODE_END
+            atlasnotes: 7
         },
         effects: {
-            atlasnotes: -CONVENTIONS.QUANTITY_EPISODE_END,
+            atlasnotes: -7,
             atlas: 1,
             sanity:-1
         },
         startdescription: "Atlas complete startdesc",
         description: "The corridors of the Mansus are numberless as seconds. My Atlas only grazes their edge. But now I can find my Key.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     ////Crypt expedition
@@ -987,7 +987,7 @@
         alternativerecipes: [{id: 'completecryptexpedition', chance:100}],
         startdescription: "",
         description: "The Expedition I sent to find the Shrouded Crypt is struggling. If I don't send more followers, the expedition will be lost altogether.",
-        warmup: CONVENTIONS.TIME_LONG,
+        warmup: 600,
         craftable: false,
         loop: 'spinecryptexpedition'
     },
@@ -995,14 +995,14 @@
         id: "completecryptexpedition",
         label: "",
         actionId: "",
-        requirements: {cryptexpedition: CONVENTIONS.QUANTITY_EPISODE_END},
+        requirements: {cryptexpedition: 7},
         effects: {
             crypt: 1,
-            cryptexpedition: -CONVENTIONS.QUANTITY_EPISODE_END
+            cryptexpedition: -7
         },
         startdescription: "",
         description: "We've found the Shrouded Crypt!",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     ////end Crypt expedition
@@ -1013,13 +1013,13 @@
         actionId: "",
         requirements: {},
         effects: {
-            sanity: -CONVENTIONS.CHANGE_TINY,
-            believer: -CONVENTIONS.CHANGE_TINY
+            sanity: -1,
+            believer: -1
         },
         alternativerecipes: [{id: 'cliqueincrease', chance:100}],
         startdescription: "Enthusiasts will become Believers in my Clique.",
         description: "I am losing my followers' faith. [I must feed my Clique with Enthusiasts, and money] ",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     {
@@ -1031,14 +1031,14 @@
             shilling: 1
         },
         effects: {
-            enthusiast: -CONVENTIONS.CHANGE_TINY,
-            believer: CONVENTIONS.CHANGE_TINY,
-            shilling: -CONVENTIONS.CHANGE_TINY
+            enthusiast: -1,
+            believer: 1,
+            shilling: -1
         },
         alternativerecipes: [{id: 'cliquecomplete', chance:100}],
         startdescription: "Clique increase startdesc",
         description: "Another Believer has joined us.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false,
         loop: 'spineclique'
     },
@@ -1047,7 +1047,7 @@
         label: "My Clique is ready.",
         actionId: "",
         requirements: {
-            believer: CONVENTIONS.QUANTITY_EPISODE_END
+            believer: 7
         },
         effects: {
             clique: 1,
@@ -1055,7 +1055,7 @@
         },
         startdescription: "Clique complete startdesc",
         description: "And now I have a cadre of Believers. They think they understand. One day, they will.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     ////end clique creation
@@ -1066,14 +1066,14 @@
         actionId: "",
         requirements: {},
         effects: {
-            sanity: -CONVENTIONS.CHANGE_SMALL,
-            health: -CONVENTIONS.CHANGE_SMALL,
-            believer: -CONVENTIONS.CHANGE_TINY
+            sanity: -2,
+            health: -2,
+            believer: -1
         },
         alternativerecipes: [{id: 'orderincrease', chance:100}],
         startdescription: "I need not only Believers, but Disciples.",
         description: "The rites are punishing, and I need more recruits. My Believers lose faith. [I must feed my order with Believers, as well as with my own health and sanity.] ",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     {
@@ -1084,16 +1084,16 @@
             believer: 1
         },
         effects: {
-            believer: -CONVENTIONS.CHANGE_TINY,
-            disciple: CONVENTIONS.CHANGE_TINY,
-            shilling: CONVENTIONS.CHANGE_SMALL,
-            sanity: -CONVENTIONS.CHANGE_SMALL,
-            health: -CONVENTIONS.CHANGE_SMALL
+            believer: -1,
+            disciple: 1,
+            shilling: 2,
+            sanity: -2,
+            health: -2
         },
         alternativerecipes: [{id: 'ordercomplete', chance:100}],
         startdescription: "order increase startdesc",
         description: "My Order grows. The initiation rites are punishing, but at least my new members pay their fees.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false,
         loop: 'spineorder'
     },
@@ -1102,7 +1102,7 @@
         label: "My Order is established.",
         actionId: "",
         requirements: {
-            disciple: CONVENTIONS.QUANTITY_EPISODE_END
+            disciple: 7
         },
         effects: {
             order: 1,
@@ -1110,7 +1110,7 @@
         },
         startdescription: "order complete startdesc",
         description: "In this Order are we joined by blood and by secrets and by Hours. Welcome, my friends.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false
     },
     ////end Order creation
@@ -1125,7 +1125,7 @@
         },
         startdescription: "",
         description: "A high Sanity may disappoint followers. A low Sanity may attract them... as well as the authorities.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT_PLUS,
+        warmup: 6_PLUS,
         craftable: false,
         loop: 'societyspine'
     },
@@ -1146,7 +1146,7 @@
         },
         startdescription: "A high Sanity may disappoint followers. A low Sanity may attract them... as well as the authorities.",
         description: "This... this should not be visible.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT_PLUS,
+        warmup: 6_PLUS,
         craftable: false,
         loop: 'societyspine'
     },
@@ -1237,7 +1237,7 @@
         actionId: "",
         requirements: {},
         effects: {
-            thewaroftheroads: CONVENTIONS.QUANTITY_TINY
+            thewaroftheroads: 1
         },
         startdescription: "",
         description: "This is not only a phantasy. The author was condemned and excised, but I may go further.",
@@ -1250,7 +1250,7 @@
     actionId: "",
     requirements: {},
 effects: {
-    tatteredmap: CONVENTIONS.QUANTITY_TINY
+    tatteredmap: 1
 },
 startdescription: "",
     description: "This will show me the way to something better than treasure. [Study the Map to begin an Expedition.].",
@@ -1264,7 +1264,7 @@ startdescription: "",
         actionId: "",
         requirements: {},
         effects: {
-            cinnabaramulet: CONVENTIONS.QUANTITY_TINY
+            cinnabaramulet: 1
         },
         startdescription: "",
         description: "I've purchased a red talisman alive with crawling warmth.",
@@ -1278,7 +1278,7 @@ startdescription: "",
         actionId: "",
         requirements: {},
         effects: {
-            fistulousinvocation: CONVENTIONS.QUANTITY_TINY
+            fistulousinvocation: 1
         },
         startdescription: "",
         description: "I've purchased a curled scrap of vellum with an incantation in tiny, crabbed writing.",
@@ -1294,12 +1294,12 @@ startdescription: "",
         actionId: "",
         requirements: {},
         effects: {
-            sanity: -CONVENTIONS.CHANGE_SMALL,
-            fistulousinvocation: CONVENTIONS.CHANGE_TINY
+            sanity: -2,
+            fistulousinvocation: 1
         },
         startdescription: "These are the nightmares of which Hersault wrote - cramped dreams of a dark and musty space.",
         description: "The Hersault Nightmares reach their climax. I am compressed beneath wooden floor-boards like a hidden corpse. My mouth is full of splinters.",
-        warmup: CONVENTIONS.TIME_LONG,
+        warmup: 600,
         craftable: false
     },
     {
@@ -1308,11 +1308,11 @@ startdescription: "",
         actionId: "",
         requirements: {},
         effects: {
-            hungry:  CONVENTIONS.CHANGE_TINY
+            hungry:  1
         },
         startdescription: "The corners of shadows glow redly -",
         description: "Hunger, lust, the drowning waters. [The principle of the Red Grail demands to be fed.]",
-        warmup: CONVENTIONS.TIME_QUICK,
+        warmup: 20,
         craftable: false
     },
     //romance
@@ -1321,11 +1321,11 @@ startdescription: "",
         actionId: "work",
         requirements: {romanticattention: 1},
         effects: {
-            shilling: CONVENTIONS.CHANGE_MODERATE
+            shilling: 3
         },
         startdescription: "Petty, hateful work for petty, meagre pay.",
         description: "I am exhausted, but I've earned my pay.  And there is someone here who never fails to share a smile.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false},
 
     { id: "labourmeetromanticinterest",
@@ -1333,12 +1333,12 @@ startdescription: "",
         actionId: "work",
         requirements: {ordinarylife: 1},
         effects: {
-            shilling: CONVENTIONS.CHANGE_MODERATE,
+            shilling: 3,
             romanticattention: 1
         },
         startdescription: "Petty, hateful work for petty, meagre pay.",
         description: "I am exhausted, but I've earned my pay. And there's someone here who would like to know me better.",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT,
+        warmup: 6,
         craftable: false},
 
     {
@@ -1347,11 +1347,11 @@ startdescription: "",
         actionId: "",
         requirements: {},
         alternariverecipes:[{id:"affaircontinues",chance:100}],
-        effects: {sanity: -CONVENTIONS.CHANGE_TINY
+        effects: {sanity: -1
         },
         startdescription: "'I know it's unwise. But I want to see you again.'",
         description: "'I don't understand you. I never understood you. I think - I think that I have grown afraid of you. It's over. Goodbye.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT_PLUS,
+        warmup: 6_PLUS,
         craftable: false
     },
     {
@@ -1362,12 +1362,12 @@ startdescription: "",
             ordinarylife:1,
             romanticattention: 1
         },
-        effects: {sanity: CONVENTIONS.CHANGE_TINY
+        effects: {sanity: 1
 
         },
         startdescription: "",
         description: "'That was lovely. Think of me, until next time.'",
-        warmup: CONVENTIONS.TIME_SIGNIFICANT_PLUS,
+        warmup: 6_PLUS,
         loop: "spineaffair",
         craftable: false
     },
