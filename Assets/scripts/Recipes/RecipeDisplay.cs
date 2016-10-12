@@ -5,13 +5,21 @@ using UnityEngine.UI;
 public class RecipeDisplay : BoardMonoBehaviour {
 
     [SerializeField]private Text txtRecipe;
-
+    [SerializeField]private Button btnExecuteRecipe;
+    public Recipe CurrentRecipe;
     public void DisplayRecipe(Recipe r)
     {
         if (r == null)
-            txtRecipe.text = "No matching recipe...";
+        {
+            CurrentRecipe = null;
+        txtRecipe.text = "No matching recipe...";
+        btnExecuteRecipe.interactable = false;
+        }
         else
-
+        {
+            CurrentRecipe = r;
             txtRecipe.text = r.Label;
+            btnExecuteRecipe.interactable = true;
+        }
     }
 }

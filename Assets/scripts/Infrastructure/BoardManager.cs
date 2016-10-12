@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.scripts.Infrastructure;
 using UnityEngine.UI;
 
 #pragma warning disable 649
@@ -14,7 +15,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
     [SerializeField] GameObject pnlCurrentAspects;
-    [SerializeField]GameObject pnlRecipeDisplay;
+    [SerializeField]RecipeDisplay pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementSlot;
     [SerializeField]GameObject prefabEmptyElementSlot;
@@ -138,5 +139,10 @@ public class BoardManager : MonoBehaviour
     public string GetCurrentVerbId()
     {
         return pnlWorkspace.GetCurrentVerbId();
+    }
+
+    public void ExecuteRecipe()
+    {
+        SystemLog.Write(pnlRecipeDisplay.CurrentRecipe.StartDescription);
     }
 }

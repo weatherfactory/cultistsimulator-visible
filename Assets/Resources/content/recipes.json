@@ -162,7 +162,7 @@
         },
         startdescription: "What shall I become?",
         description: "If I unlock myself, an Hour may enter.",
-        warmup: 6_PLUS,
+        warmup: 240,
         craftable: true
     },
     {
@@ -214,11 +214,11 @@
         requirements: {romanticattention: 1},
         effects: {
             sanity: 1,
-            romanticattention: 1 //it'll be used up and returned
+            romanticattention: 1
         },
         startdescription: "'Yes. Come to me.'",
         description: "'You're not what I expected. Stay with me a little longer.'",
-        warmup: 6_PLUS,
+        warmup: 240,
         craftable: true,
         loop: "spineaffair"
     },
@@ -228,7 +228,6 @@
         actionId: "talk",
         requirements: {follower: 6,
             lantern: 1},
-        //this will require some sort of society and some sort of ritual to fit all these things in
         effects: {sanity: -1},
         startdescription: "My Order may outlast me, but it will remember me..",
         description: "My Order is established. My disciples bow their hears. I am <i>exalted.</i>",
@@ -402,7 +401,7 @@
         },
         startdescription: "Perhaps I should get out more.",
         description: "A little chat with the little people, now and then, helps keep my brain inside my skull.",
-        warmup: 20EST,
+        warmup: 10,
         craftable: true
     },
     {
@@ -476,7 +475,7 @@
             {id: 'exploreshillingfistulous', chance:43}],
         startdescription: "I'm unlikely to find anything valuable. But one never knows.",
         description: "What's this, now?",
-        warmup: 20EST,
+        warmup: 10,
         craftable: true
     },
     {
@@ -601,7 +600,7 @@
         },
         startdescription: "This half-helpless flesh.",
         description: "I have surveyed my state. This body is my only grip in the world... for now.",
-        warmup: 20EST,
+        warmup: 10,
         craftable: true
     },
     {
@@ -614,7 +613,7 @@
         },
         startdescription: "The mind is a castle, or a garden...",
         description: "...but it must never become an ocean. If I lose all my Sanity, I will achieve nothing.",
-        warmup: 20EST,
+        warmup: 10,
         craftable: true
     },
     {
@@ -784,7 +783,7 @@
         },
         startdescription: "It's not so easy to end my ordinariness. I need a Key.",
         description: "My brain will boil in its shell.",
-        warmup: 20EST,
+        warmup: 10,
         craftable: true
     },
     {
@@ -846,7 +845,7 @@
         },
         startdescription: "I'll end this thing.",
         description: "It's gone.",
-        warmup: 20EST,
+        warmup: 10,
         craftable: true
     },
     {
@@ -878,13 +877,12 @@
             shilling: -1,
             hungry: -1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "The body has its needs. Today, I have satisfied them.",
         warmup: 0,
         craftable: false,
         loop: 'starvation'
     },
-    //authorities and investigators!
     {
         id: "lawenforcement",
         label: "Law enforcement",
@@ -894,8 +892,8 @@
             {id: 'inspectorarrestsdisciple', chance:30}],
         effects: {
         },
-        startdescription: "",
-        description: "",
+        startdescription: "-",
+        description: "-",
         warmup: 0,
         craftable: false
     },
@@ -907,7 +905,7 @@
         effects: {
             believer: -1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "The Inspector has brought in one of your Believers for questioning.",
         warmup: 0,
         craftable: false
@@ -920,12 +918,11 @@
         effects: {
             disciple: -1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "The Inspector has arrested one of your Disciples.",
         warmup: 0,
         craftable: false
     },
-    //end authorities and investigators!
     {
         id: "spineatlas",
         label: "An Atlas of Dreams [needs Glimpses]",
@@ -952,7 +949,7 @@
             glimpse: -1
         },
         alternativerecipes: [{id: 'atlascomplete', chance:100}],
-        startdescription: "",
+        startdescription: "-",
         description: "I have transcribed another Glimpse into my Atlas. ",
         warmup: 0,
         craftable: false,
@@ -975,7 +972,6 @@
         warmup: 6,
         craftable: false
     },
-    ////Crypt expedition
     {
         id: "spinecryptexpedition",
         label: "The Search for the Shrouded Crypt. [Send followers on the Expedition to assist]",
@@ -985,7 +981,7 @@
             cryptexpedition: -1
         },
         alternativerecipes: [{id: 'completecryptexpedition', chance:100}],
-        startdescription: "",
+        startdescription: "-",
         description: "The Expedition I sent to find the Shrouded Crypt is struggling. If I don't send more followers, the expedition will be lost altogether.",
         warmup: 600,
         craftable: false,
@@ -1000,13 +996,11 @@
             crypt: 1,
             cryptexpedition: -7
         },
-        startdescription: "",
+        startdescription: "-",
         description: "We've found the Shrouded Crypt!",
         warmup: 6,
         craftable: false
     },
-    ////end Crypt expedition
-    ////creating a clique
     {
         id: "spineclique",
         label: "The beginnings of a Clique [needs Enthusiasts and Shillings]",
@@ -1058,8 +1052,6 @@
         warmup: 6,
         craftable: false
     },
-    ////end clique creation
-    ////creating an Order
     {
         id: "spineorder",
         label: "The initiation rites of a secret Order [needs Believers]",
@@ -1113,40 +1105,25 @@
         warmup: 6,
         craftable: false
     },
-    ////end Order creation
-    {
-        id: "enthusiastfearful",
-        //This is in for backwards-compatibility only
-        label: "Enthusiasts grow fearful.",
-        actionId: "x",
-        requirements: {},
-        effects: {
-            enthusiast: -1
-        },
-        startdescription: "",
-        description: "A high Sanity may disappoint followers. A low Sanity may attract them... as well as the authorities.",
-        warmup: 6_PLUS,
-        craftable: false,
-        loop: 'societyspine'
-    },
+
     {
         id: "societyspine",
         label: "Followers whisper.",
         actionId: "x",
         requirements: {},
-        alternativerecipes: [{id: 'enthusiastunimpressed', chance:30}, //sanity 7+
-            {id: 'societynoeffecthighsanity', chance:100}, //sanity 7+ break event
+        alternativerecipes: [{id: 'enthusiastunimpressed', chance:30, comment: "sanity 7+"}, 
+            {id: 'societynoeffecthighsanity', chance:100, comment: "sanity 7+ break event"},
             {id: 'inspectorattracted', chance:30},
             {id: 'donationattracted', chance:30},
             {id: 'enthusiastattracted', chance:30},
-            {id: 'societynoeffectlowsanity', chance:100}//base fallthrough
+            {id: 'societynoeffectlowsanity', chance:100, comment:"base fallthrough" }
             ],
         effects: {
             enthusiast: -1
         },
         startdescription: "A high Sanity may disappoint followers. A low Sanity may attract them... as well as the authorities.",
         description: "This... this should not be visible.",
-        warmup: 6_PLUS,
+        warmup: 240,
         craftable: false,
         loop: 'societyspine'
     },
@@ -1159,7 +1136,7 @@
         effects: {
             enthusiast: -1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "Do I seem calm? Apparently I am some sort of disappointment to my Enthusiasts. [Sometimes this will happen when your Sanity is high.]",
         warmup: 0,
         craftable: false,
@@ -1172,7 +1149,7 @@
         requirements: {sanity: 7},
         effects: {
         },
-        startdescription: "",
+        startdescription: "-",
         description: "I may seem calm, but my followers understand my dedication.",
         warmup: 0,
         craftable: false,
@@ -1185,7 +1162,7 @@
         requirements: {},
         effects: {
         },
-        startdescription: "",
+        startdescription: "-",
         description: "Yes, perhaps I have grown unpredictable. But today, no-one has noticed.",
         warmup: 0,
         craftable: false,
@@ -1198,7 +1175,7 @@
         requirements: {},
         effects: {aninspectorcalls: 1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "You generate unnerving rumours. They have attracted the attention of an inspector of police.",
         warmup: 0,
         craftable: false,
@@ -1211,7 +1188,7 @@
         requirements: {},
         effects: {shilling: 1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "You are a figure of eccentric menace. An admirer has sent you a small gift.",
         warmup: 0,
         craftable: false,
@@ -1224,13 +1201,12 @@
         requirements: {},
         effects: {enthusiast: 1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "You possess the allure of the bizarre. A callow stranger is impressed.",
         warmup: 0,
         craftable: false,
         loop: 'societyspine'
     },
-    //bookshop-prowling
     {
         id: "prowlbookshopwaroftheroads",
         label: "s",
@@ -1239,7 +1215,7 @@
         effects: {
             thewaroftheroads: 1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "This is not only a phantasy. The author was condemned and excised, but I may go further.",
         warmup: 0,
         craftable: false
@@ -1252,12 +1228,11 @@
 effects: {
     tatteredmap: 1
 },
-startdescription: "",
+startdescription: "-",
     description: "This will show me the way to something better than treasure. [Study the Map to begin an Expedition.].",
     warmup: 0,
     craftable: false
 },
-    //
     {
         id: "exploreshillingcinnabar",
         label: "-",
@@ -1266,12 +1241,11 @@ startdescription: "",
         effects: {
             cinnabaramulet: 1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "I've purchased a red talisman alive with crawling warmth.",
         warmup: 0,
         craftable: false
     },
-    //shilling-exploring
     {
         id: "exploreshillingfistulous",
         label: "-",
@@ -1280,14 +1254,12 @@ startdescription: "",
         effects: {
             fistulousinvocation: 1
         },
-        startdescription: "",
+        startdescription: "-",
         description: "I've purchased a curled scrap of vellum with an incantation in tiny, crabbed writing.",
         warmup: 0,
         craftable: false
     },
 
-    //end shilling-exploring
-    //resource events
     {
         id: "hersaultnightmares",
         label: "The Hersault Nightmares",
@@ -1315,7 +1287,6 @@ startdescription: "",
         warmup: 20,
         craftable: false
     },
-    //romance
     {        id: "labourwithromanticinterestpresent",
         label: "-",
         actionId: "work",
@@ -1346,12 +1317,12 @@ startdescription: "",
         label: "An Intermittent Affair",
         actionId: "x",
         requirements: {},
-        alternariverecipes:[{id:"affaircontinues",chance:100}],
+        alternativerecipes:[{id:"affaircontinues",chance:100}],
         effects: {sanity: -1
         },
         startdescription: "'I know it's unwise. But I want to see you again.'",
         description: "'I don't understand you. I never understood you. I think - I think that I have grown afraid of you. It's over. Goodbye.'",
-        warmup: 6_PLUS,
+        warmup: 240,
         craftable: false
     },
     {
@@ -1365,14 +1336,12 @@ startdescription: "",
         effects: {sanity: 1
 
         },
-        startdescription: "",
+        startdescription: "-",
         description: "'That was lovely. Think of me, until next time.'",
-        warmup: 6_PLUS,
+        warmup: 240,
         loop: "spineaffair",
         craftable: false
     },
-    //end romance
-    //failures!
     {
         id: "assignagainstinspectorfail",
         label: "-",
@@ -1380,7 +1349,7 @@ startdescription: "",
         requirements: {aninspectorcalls: 1},
         effects: {        },
         eraseCommitment: {commitment: "assignagainstinspectorcommitment"},
-        startdescription: "",
+        startdescription: "-",
         description: "FNORD inspector WINS",
         warmup: 0,
         craftable: false
@@ -1391,7 +1360,7 @@ startdescription: "",
         actionId: "x",
         requirements: {},
         effects: {},
-        startdescription: "",
+        startdescription: "-",
         description: "FNORD your follower wouldn't cooperate with being fed to the vessel",
         warmup: 0,
         craftable: false

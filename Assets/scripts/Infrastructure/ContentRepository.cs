@@ -50,13 +50,16 @@ public class ContentRepository : Singleton<ContentRepository>
                 r.Label = htEach["label"].ToString();
                 r.Craftable = Convert.ToBoolean(htEach["craftable"]);
                 r.ActionId = htEach["actionId"].ToString();
+                r.StartDescription = htEach["startdescription"].ToString();
+                r.Description = htEach["description"].ToString();
+                r.Warmup = Convert.ToInt32(htEach["warmup"]);
             }
-            catch (NullReferenceException)
+            catch (Exception e)
             {
                 if (htEach["id"] == null)
-                    SystemLog.Write("Problem importing recipe with unknown id");
+                    SystemLog.Write("Problem importing recipe with unknown id - " + e.Message);
                 else
-                    SystemLog.Write("Problem importing recipe '" + htEach["id"] + "'");
+                    SystemLog.Write("Problem importing recipe '" + htEach["id"] + "' - " + e.Message);
             }
 
             Hashtable htReqs = htEach.GetHashtable("requirements");

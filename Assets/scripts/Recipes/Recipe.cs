@@ -11,6 +11,9 @@ using System.Text;
         public Dictionary<string, int> Requirements { get; set; }
         public Boolean Craftable { get; set; }
         public string Label { get; set; }
+        public int Warmup { get; set; }
+        public string StartDescription { get; set; }
+        public string Description { get; set; }
 
         public Recipe()
         {
