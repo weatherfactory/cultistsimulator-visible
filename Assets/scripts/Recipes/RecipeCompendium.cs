@@ -16,10 +16,10 @@ public class RecipeCompendium
         _recipes = allRecipes;
     }
 
-    public Recipe GetFirstRecipeForAspects(Dictionary<string, int> aspects)
+    public Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb)
     {
         //for each recipe,
-        foreach (var recipe in _recipes)
+        foreach (var recipe in _recipes.Where(r=>r.ActionId==verb))
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
             bool matches = true;

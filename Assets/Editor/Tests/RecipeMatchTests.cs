@@ -31,7 +31,11 @@ namespace CS.Tests
         private const string WARMTH = "warmth";
         private const int COOLTH_VALUE = 5;
         private const int WARMTH_VALUE = 5;
-        private Recipe NeverMatches;
+        private const string MATCHING_VERB = "matchingverb";
+        private const string ODD_VERB = "oddverb";
+        private Recipe NeverMatchesOnAspects;
+        private Recipe MatchesCoolthButNotCraftable;
+        private Recipe EqualAspectsOddVerb;
         private Recipe MatchesCoolthAndWarmth;
         private Recipe MatchesCoolthEqual;
         private Recipe MatchesCoolthLess;
@@ -43,35 +47,53 @@ namespace CS.Tests
         public void Setup()
         {
 
-            NeverMatches=new Recipe() {Id="NeverMatches",Requirements = new Dictionary<string, int>() {{COOLTH,COOLTH_VALUE+10} }};
-            MatchesCoolthAndWarmth = new Recipe() { Id = "MatchesCoolthAndWarmth", Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE }, {WARMTH,WARMTH_VALUE} } };
-            MatchesCoolthEqual = new Recipe() { Id = "MatchesCoolthEqual", Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE } } };
-            MatchesCoolthLess = new Recipe() { Id = "MatchesCoolthLess", Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE-1 } } };
-            Recipes=new List<Recipe>() {NeverMatches, MatchesCoolthAndWarmth, MatchesCoolthEqual, MatchesCoolthLess };
+            NeverMatchesOnAspects=new Recipe() {Id="NeverMatchesOnAspects",ActionId=MATCHING_VERB,Craftable = true,Requirements = new Dictionary<string, int>() {{COOLTH,COOLTH_VALUE+10} }};
+            MatchesCoolthButNotCraftable = new Recipe() { Id = "MatchesCoolthButNotCraftable", ActionId = MATCHING_VERB, Craftable = false, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE - 1 } } };
+            EqualAspectsOddVerb = new Recipe() { Id = "EqualAspectsOddVerb", ActionId = ODD_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE-1} } };
+            MatchesCoolthAndWarmth = new Recipe() { Id = "MatchesCoolthAndWarmth", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE }, {WARMTH,WARMTH_VALUE} } };
+            MatchesCoolthEqual = new Recipe() { Id = "MatchesCoolthEqual", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE } } };
+            MatchesCoolthLess = new Recipe() { Id = "MatchesCoolthLess", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE-1 } } };
+            Recipes=new List<Recipe>() {NeverMatchesOnAspects, EqualAspectsOddVerb, MatchesCoolthAndWarmth, MatchesCoolthEqual, MatchesCoolthLess };
             rc=new RecipeCompendium(Recipes);
 
         }
 
 
-
         [Test]
         public void NoAspectsPresentMatchesNoRecipe()
         {
-            Assert.Null(rc.GetFirstRecipeForAspects(new Dictionary<string, int>()));
+            Assert.Null(rc.GetFirstRecipeForAspectsWithVerb(new Dictionary<string, int>(), MATCHING_VERB));
         }
+        [Test]
+        public void VerbMatchDistinguishesRecipe()
+        {
+            Dictionary<string, int> aspects = new Dictionary<string, int> { { COOLTH, COOLTH_VALUE } };
+            Recipe matchedOnUsualVerb = rc.GetFirstRecipeForAspectsWithVerb(aspects, MATCHING_VERB);
+            Recipe matchedOnOddVerb = rc.GetFirstRecipeForAspectsWithVerb(aspects, ODD_VERB);
+            Assert.AreEqual(matchedOnUsualVerb.Id, MatchesCoolthEqual.Id );
+            Assert.AreEqual(matchedOnOddVerb.Id, EqualAspectsOddVerb.Id);
+            
+        }
+        [Test]
+        public void NonCraftableRecipeIsntMatched()
+        {
+            Dictionary<string, int> aspects = new Dictionary<string, int> { { COOLTH, COOLTH_VALUE } };
+            Assert.AreNotEqual(MatchesCoolthButNotCraftable.Id,rc.GetFirstRecipeForAspectsWithVerb(aspects, MATCHING_VERB));
+        }
+
 
         [Test]
         public void OneAspectPresentMatchesHighestPriorityRecipe()
         {
             Dictionary<string, int> aspects = new Dictionary<string, int> {{COOLTH, COOLTH_VALUE } };
-            Assert.AreEqual(MatchesCoolthEqual.Id,rc.GetFirstRecipeForAspects(aspects).Id);
+            Assert.AreEqual(MatchesCoolthEqual.Id,rc.GetFirstRecipeForAspectsWithVerb(aspects, MATCHING_VERB).Id);
         }
 
         [Test]
         public void TwoAspectsPresentMatchesHighestPriority()
         {
             Dictionary<string, int> aspects = new Dictionary<string, int> { { COOLTH, COOLTH_VALUE }, { WARMTH, WARMTH_VALUE } };
-            Assert.AreEqual(MatchesCoolthAndWarmth.Id, rc.GetFirstRecipeForAspects(aspects).Id);
+            Assert.AreEqual(MatchesCoolthAndWarmth.Id, rc.GetFirstRecipeForAspectsWithVerb(aspects, MATCHING_VERB).Id);
         }
 
     }

@@ -84,7 +84,7 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
 
     private void DisplayRecipesForCurrentAspects()
     {
-        var recipe=ContentRepository.Instance.RecipeCompendium.GetFirstRecipeForAspects(AllCurrentAspects());
+        var recipe=ContentRepository.Instance.RecipeCompendium.GetFirstRecipeForAspectsWithVerb(AllCurrentAspects(),"");
        DebugLogAspects();
         
        BM.DisplayCurrentRecipe(recipe);
