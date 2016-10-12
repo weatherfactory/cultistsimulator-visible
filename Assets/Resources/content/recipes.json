@@ -852,7 +852,7 @@
     {
         id: "starvation",
         label: "Time, the sundial's shadow, passes.",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             health: -1,
@@ -870,7 +870,7 @@
     {
         id: "sustenance",
         label: "Sustenance",
-        actionId: "",
+        actionId: "x",
         requirements: {shilling: 1},
         effects: {
             health: 1,
@@ -888,7 +888,7 @@
     {
         id: "lawenforcement",
         label: "Law enforcement",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         alternativerecipes: [{id: 'inspectorarrestsbeliever', chance:30},
             {id: 'inspectorarrestsdisciple', chance:30}],
@@ -902,7 +902,7 @@
     {
         id: "inspectorarrestsbeliever",
         label: "Inspector arrests a Believer",
-        actionId: "",
+        actionId: "x",
         requirements: {aninspectorcalls: 1, believer: 1},
         effects: {
             believer: -1
@@ -915,7 +915,7 @@
     {
         id: "inspectorarrestsdisciple",
         label: "Inspector arrests a Disciple",
-        actionId: "",
+        actionId: "x",
         requirements: {aninspectorcalls: 1, disciple: 1},
         effects: {
             disciple: -1
@@ -929,7 +929,7 @@
     {
         id: "spineatlas",
         label: "An Atlas of Dreams [needs Glimpses]",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
         },
@@ -942,7 +942,7 @@
     {
         id: "atlasnotesincrease",
         label: "The Atlas grows",
-        actionId: "",
+        actionId: "x",
         requirements: {
             glimpse: 1,
             sanity: -1
@@ -961,7 +961,7 @@
     {
         id: "atlascomplete",
         label: "The Atlas is complete",
-        actionId: "",
+        actionId: "x",
         requirements: {
             atlasnotes: 7
         },
@@ -979,7 +979,7 @@
     {
         id: "spinecryptexpedition",
         label: "The Search for the Shrouded Crypt. [Send followers on the Expedition to assist]",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             cryptexpedition: -1
@@ -993,8 +993,8 @@
     },
     {
         id: "completecryptexpedition",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {cryptexpedition: 7},
         effects: {
             crypt: 1,
@@ -1010,7 +1010,7 @@
     {
         id: "spineclique",
         label: "The beginnings of a Clique [needs Enthusiasts and Shillings]",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             sanity: -1,
@@ -1025,7 +1025,7 @@
     {
         id: "cliqueincrease",
         label: "My Clique grows",
-        actionId: "",
+        actionId: "x",
         requirements: {
             enthusiast: 1,
             shilling: 1
@@ -1045,7 +1045,7 @@
     {
         id: "cliquecomplete",
         label: "My Clique is ready.",
-        actionId: "",
+        actionId: "x",
         requirements: {
             believer: 7
         },
@@ -1063,7 +1063,7 @@
     {
         id: "spineorder",
         label: "The initiation rites of a secret Order [needs Believers]",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             sanity: -2,
@@ -1079,7 +1079,7 @@
     {
         id: "orderincrease",
         label: "My Order grows",
-        actionId: "",
+        actionId: "x",
         requirements: {
             believer: 1
         },
@@ -1100,7 +1100,7 @@
     {
         id: "ordercomplete",
         label: "My Order is established.",
-        actionId: "",
+        actionId: "x",
         requirements: {
             disciple: 7
         },
@@ -1118,7 +1118,7 @@
         id: "enthusiastfearful",
         //This is in for backwards-compatibility only
         label: "Enthusiasts grow fearful.",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             enthusiast: -1
@@ -1132,7 +1132,7 @@
     {
         id: "societyspine",
         label: "Followers whisper.",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         alternativerecipes: [{id: 'enthusiastunimpressed', chance:30}, //sanity 7+
             {id: 'societynoeffecthighsanity', chance:100}, //sanity 7+ break event
@@ -1152,8 +1152,8 @@
     },
     {
         id: "enthusiastunimpressed",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {sanity:7,
         enthusiast: 1},
         effects: {
@@ -1167,8 +1167,8 @@
     },
     {
         id: "societynoeffecthighsanity",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {sanity: 7},
         effects: {
         },
@@ -1180,8 +1180,8 @@
     },
     {
         id: "societynoeffectlowsanity",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {
         },
@@ -1193,8 +1193,8 @@
     },
     {
         id: "inspectorattracted",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {aninspectorcalls: 1
         },
@@ -1206,8 +1206,8 @@
     },
     {
         id: "donationattracted",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {shilling: 1
         },
@@ -1219,8 +1219,8 @@
     },
     {
         id: "enthusiastattracted",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {enthusiast: 1
         },
@@ -1234,7 +1234,7 @@
     {
         id: "prowlbookshopwaroftheroads",
         label: "s",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             thewaroftheroads: 1
@@ -1246,8 +1246,8 @@
     },
     {
     id: "prowlbookshoptatteredmap",
-    label: "",
-    actionId: "",
+    label: "-",
+    actionId: "x",
     requirements: {},
 effects: {
     tatteredmap: 1
@@ -1260,8 +1260,8 @@ startdescription: "",
     //
     {
         id: "exploreshillingcinnabar",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {
             cinnabaramulet: 1
@@ -1274,8 +1274,8 @@ startdescription: "",
     //shilling-exploring
     {
         id: "exploreshillingfistulous",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {
             fistulousinvocation: 1
@@ -1291,7 +1291,7 @@ startdescription: "",
     {
         id: "hersaultnightmares",
         label: "The Hersault Nightmares",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             sanity: -2,
@@ -1305,7 +1305,7 @@ startdescription: "",
     {
         id: "grailhunger",
         label: "Ah, my appetite.",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         effects: {
             hungry:  1
@@ -1317,7 +1317,7 @@ startdescription: "",
     },
     //romance
     {        id: "labourwithromanticinterestpresent",
-        label: "",
+        label: "-",
         actionId: "work",
         requirements: {romanticattention: 1},
         effects: {
@@ -1329,7 +1329,7 @@ startdescription: "",
         craftable: false},
 
     { id: "labourmeetromanticinterest",
-        label: "",
+        label: "-",
         actionId: "work",
         requirements: {ordinarylife: 1},
         effects: {
@@ -1344,7 +1344,7 @@ startdescription: "",
     {
         id:"spineaffair",
         label: "An Intermittent Affair",
-        actionId: "",
+        actionId: "x",
         requirements: {},
         alternariverecipes:[{id:"affaircontinues",chance:100}],
         effects: {sanity: -1
@@ -1356,8 +1356,8 @@ startdescription: "",
     },
     {
         id:"affaircontinues",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {
             ordinarylife:1,
             romanticattention: 1
@@ -1375,7 +1375,7 @@ startdescription: "",
     //failures!
     {
         id: "assignagainstinspectorfail",
-        label: "",
+        label: "-",
         actionId: "assign",
         requirements: {aninspectorcalls: 1},
         effects: {        },
@@ -1387,8 +1387,8 @@ startdescription: "",
     },
     {
         id: "workfulfilledvesselfail",
-        label: "",
-        actionId: "",
+        label: "-",
+        actionId: "x",
         requirements: {},
         effects: {},
         startdescription: "",

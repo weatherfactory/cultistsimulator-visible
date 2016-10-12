@@ -5,13 +5,16 @@ using UnityEngine.EventSystems;
 public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
 
 
-    public GameObject itemInSlot
+    public DraggableVerbToken VerbTokenInSlot
     {
         get
         {
             if (transform.childCount > 0)
-                return transform.GetChild(0).gameObject;
-            else
+            {
+                Transform child = transform.GetChild(0);
+                return child.gameObject.GetComponent<DraggableVerbToken>();
+            }
+               
                 return null;
 
         }
@@ -21,15 +24,20 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
     {
         if (BM.itemBeingDragged.tag=="Verb")
        {
-           if (itemInSlot && itemInSlot.GetComponent<DraggableToken>())
+           if (VerbTokenInSlot && VerbTokenInSlot.GetComponent<DraggableToken>())
            {
-               DraggableToken itemInSlotComponent = itemInSlot.GetComponent<DraggableToken>();
-                itemInSlot.transform.SetParent(itemInSlotComponent.originSlot);
+               DraggableToken itemInSlotComponent = VerbTokenInSlot.GetComponent<DraggableToken>();
+                VerbTokenInSlot.transform.SetParent(itemInSlotComponent.originSlot);
             }
 
             BM.itemBeingDragged.transform.SetParent(transform);
-         BM.MakeFirstSlotAvailable(transform.localPosition);
-           
-       }
+             BM.MakeFirstSlotAvailable(transform.localPosition);
+            BM.UpdateAspectDisplay();
+        }
+    }
+
+    public string GetCurrentVerbId()
+    {
+        return VerbTokenInSlot.VerbId;
     }
 }

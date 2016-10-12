@@ -3,6 +3,7 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
+using Assets.scripts.Infrastructure;
 using JetBrains.Annotations;
 using OrbCreationExtensions;
 using UnityEditor;
@@ -41,18 +42,31 @@ public class ContentRepository : Singleton<ContentRepository>
         for(int i=0; i< importedRecipes.Count;i++)
         {
             Hashtable htEach = importedRecipes.GetHashtable(i);
-            Recipe r = new Recipe
+        
+                Recipe r = new Recipe();
+            try
             {
-                Id = htEach["id"].ToString(),
-                Craftable = Convert.ToBoolean(htEach["craftable"]),
-                ActionId = htEach["actionId"].ToString()
-            };
+                r.Id = htEach["id"].ToString();
+                r.Label = htEach["label"].ToString();
+                r.Craftable = Convert.ToBoolean(htEach["craftable"]);
+                r.ActionId = htEach["actionId"].ToString();
+            }
+            catch (NullReferenceException)
+            {
+                if (htEach["id"] == null)
+                    SystemLog.Write("Problem importing recipe with unknown id");
+                else
+                    SystemLog.Write("Problem importing recipe '" + htEach["id"] + "'");
+            }
+
             Hashtable htReqs = htEach.GetHashtable("requirements");
             foreach (string k in htReqs.Keys)
             {
                 r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
             }
+
                recipesList.Add(r);
+           
         }
 
         return new RecipeCompendium(recipesList);

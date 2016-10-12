@@ -10,6 +10,7 @@ using System.Text;
         public string ActionId { get; set; }
         public Dictionary<string, int> Requirements { get; set; }
         public Boolean Craftable { get; set; }
+        public string Label { get; set; }
 
         public Recipe()
         {

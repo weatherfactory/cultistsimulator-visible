@@ -8,6 +8,10 @@ public class RecipeDisplay : BoardMonoBehaviour {
 
     public void DisplayRecipe(Recipe r)
     {
-        txtRecipe.text = r.Id;
+        if (r == null)
+            txtRecipe.text = "No matching recipe...";
+        else
+
+            txtRecipe.text = r.Label;
     }
 }

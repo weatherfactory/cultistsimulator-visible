@@ -12,7 +12,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private Text txtStatus;
     [SerializeField] private GameObject pnlResources;
-    [SerializeField] GameObject pnlWorkspace;
+    [SerializeField] Workspace pnlWorkspace;
     [SerializeField] GameObject pnlCurrentAspects;
     [SerializeField]GameObject pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
@@ -20,7 +20,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
 
-    public GameObject itemBeingDragged;
+    public DraggableToken itemBeingDragged;
 
     private void addElementToBoard(string elementId, int quantity)
     {
@@ -40,8 +40,6 @@ public class BoardManager : MonoBehaviour
             
 
     }
-
-
 
 
     private StorageSlot GetElementSlotForId(string elementId)
@@ -135,5 +133,10 @@ public class BoardManager : MonoBehaviour
     public void DisplayCurrentRecipe(Recipe recipe)
     {
         pnlRecipeDisplay.GetComponent<RecipeDisplay>().DisplayRecipe(recipe);
+    }
+
+    public string GetCurrentVerbId()
+    {
+        return pnlWorkspace.GetCurrentVerbId();
     }
 }
