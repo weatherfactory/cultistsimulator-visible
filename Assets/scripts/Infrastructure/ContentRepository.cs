@@ -42,7 +42,11 @@ public class ContentRepository : Singleton<ContentRepository>
         {
             Hashtable htEach = importedRecipes.GetHashtable(i);
             Recipe r = new Recipe
-              { Id = htEach["id"].ToString() };
+            {
+                Id = htEach["id"].ToString(),
+                Craftable = Convert.ToBoolean(htEach["craftable"]),
+                ActionId = htEach["actionId"].ToString()
+            };
             Hashtable htReqs = htEach.GetHashtable("requirements");
             foreach (string k in htReqs.Keys)
             {

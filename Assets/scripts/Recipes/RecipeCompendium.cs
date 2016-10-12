@@ -42,14 +42,3 @@ public class RecipeCompendium
     }
 
 }
-public class Recipe
-{
-    public string Id { get; set; }
-    public Dictionary<string,int> Requirements { get; set; }
-
-    public Recipe()
-    {
-        Requirements=new Dictionary<string, int>();
-    }
- 
-}
