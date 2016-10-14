@@ -4,12 +4,12 @@ using System.Collections;
 public class Heartbeat : BoardMonoBehaviour {
 
 	void Start () {
-InvokeRepeating("UpdateQueue",0,1);	
+InvokeRepeating("Do",0,1);	
 
 	}
 
-    void UpdateQueue()
+    void Do()
     {
-      //  BM.Log("Updated");
+        BM.DoHeartbeat();
     }
 }

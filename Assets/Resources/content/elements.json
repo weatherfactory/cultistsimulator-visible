@@ -85,11 +85,6 @@
             label: "Summoned",
             isAspect: true
         },
-        {
-            id: "tool",
-            label: "Tool",
-            isAspect: true
-        },
 
         /////////////
         {
@@ -329,8 +324,7 @@
             aspects:
             {
                 forge: CONVENTIONS.QUANTITY_MODEST,
-                grail: CONVENTIONS.QUANTITY_MODEST,
-                tool: 1
+                grail: CONVENTIONS.QUANTITY_MODEST
             },
             maxvalue:77,
             description: "Hersault says the Red Grail split the sun. Coseley proposes it was the Forge of Days. They both agree that now, it's sunset at noon. "
@@ -340,8 +334,7 @@
             label: "A Cinnabar Amulet",
             aspects:
             {
-                forge: CONVENTIONS.QUANTITY_TINY,
-                tool: 1
+                forge: CONVENTIONS.QUANTITY_TINY
             },
             maxvalue:77,
             description: "There is fire locked in the orbits of the stone."
@@ -361,8 +354,7 @@
             label: "Tentacle Oil",
             aspects:
             {
-                moth: CONVENTIONS.QUANTITY_TINY,
-                tool: 1
+                moth: CONVENTIONS.QUANTITY_TINY
             },
             maxvalue:77,
             description: "Drawn from the most pliable of digits, to annoint the most receptive of tools."

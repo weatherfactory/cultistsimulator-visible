@@ -147,4 +147,9 @@ public class BoardManager : MonoBehaviour
     {
        pnlLog.Write(message);
     }
+
+    public void DoHeartbeat()
+    {
+    pnlWorld.DoHeartbeat();
+    }
 }

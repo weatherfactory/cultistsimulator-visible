@@ -8,17 +8,31 @@ public class TimerPanel : MonoBehaviour
 
     [SerializeField] private Image imgTimer;
     [SerializeField] private Text txtTimer;
-    [SerializeField] public Recipe RecipeWaiting;
-    public int TimeRemaining;
+    [SerializeField] public Recipe Recipe;
+    public float TimeRemaining;
 
+    private void UpdateTimerText()
+    {
+        txtTimer.text = "[" + TimeRemaining + "] " + Recipe.Label;
+    }
 
-    public void StartTimer(Recipe forRecipe)
+    public void StartTimer(Recipe r)
     {
         if(TimeRemaining>0)
-            throw new ApplicationException("already running a recipe (" + RecipeWaiting.Id + ")"); 
+            throw new ApplicationException("already running a recipe (" + Recipe.Id + ")");
 
-        RecipeWaiting = forRecipe;
-        txtTimer.text = forRecipe.Label;
+        Recipe = r;
+        TimeRemaining = r.Warmup;
+        UpdateTimerText();
+
+    }
+
+    public void DoHeartbeat()
+    {
+        UpdateTimerText();
+        TimeRemaining--;
+        
+        imgTimer.fillAmount = TimeRemaining/Recipe.Warmup;
     }
 
 }
