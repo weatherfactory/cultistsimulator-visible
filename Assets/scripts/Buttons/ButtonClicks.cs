@@ -20,8 +20,8 @@ public class ButtonClicks : BoardMonoBehaviour
     {
         BM.ClearWorkspaceElements();
     }
-    public void ExecuteRecipe()
+    public void ExecuteCurrentRecipe()
     {
-        BM.ExecuteRecipe();
+        BM.ExecuteCurrentRecipe();
     }
 }

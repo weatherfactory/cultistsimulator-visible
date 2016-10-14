@@ -13,6 +13,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private LogPanel pnlLog;
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
+    [SerializeField] private WorldPanel pnlWorld;
     [SerializeField] GameObject pnlCurrentAspects;
     [SerializeField]RecipeDisplay pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
@@ -135,9 +136,11 @@ public class BoardManager : MonoBehaviour
         return pnlWorkspace.GetCurrentVerbId();
     }
 
-    public void ExecuteRecipe()
+    public void ExecuteCurrentRecipe()
     {
+        Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription);
+        pnlWorld.AddTimer(currentRecipe);
     }
 
     public void Log(string message)

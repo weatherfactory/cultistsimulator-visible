@@ -18,7 +18,7 @@ public class RecipeDisplay : BoardMonoBehaviour {
         else
         {
             CurrentRecipe = r;
-            txtRecipe.text = r.Label;
+            txtRecipe.text = r.Label + " (" + r.StartDescription +")";
             btnExecuteRecipe.interactable = true;
         }
     }

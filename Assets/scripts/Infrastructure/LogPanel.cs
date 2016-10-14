@@ -8,6 +8,7 @@ public class LogPanel : MonoBehaviour
 {
 
     [SerializeField] private Text txtLog;
+
     private List<String> _messages=new List<string>();
     private const int MESSAGES_LIMIT = 8;
         public void Write(string newMessage)
