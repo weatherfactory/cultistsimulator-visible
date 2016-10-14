@@ -64,11 +64,13 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
         }
     }
 
-    public void UpdateAspects(IContainsElement[] elementContainers)
+    public void UpdateAspects(Workspace workspace)
     {
-         ResetAspects();
 
-        foreach (IContainsElement elementContainer in elementContainers)
+        ResetAspects();
+        DraggableElementToken[] elementContainers = workspace.GetCurrentElements();
+
+        foreach (DraggableElementToken elementContainer in elementContainers)
         {
 
             foreach (KeyValuePair<string, int> kvp in elementContainer.Element.Aspects)
@@ -77,7 +79,7 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
             }
 
         }
-
+   
         DisplayRecipesForCurrentAspects();
     }
 

@@ -26,7 +26,7 @@ namespace CS.Tests
 
     public class RecipeMatchTests
     {
-        private Dictionary<string, int> TestAspects;
+       
         private const string COOLTH = "coolth";
         private const string WARMTH = "warmth";
         private const int COOLTH_VALUE = 5;

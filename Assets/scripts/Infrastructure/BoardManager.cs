@@ -14,7 +14,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
     [SerializeField] private WorldPanel pnlWorld;
-    [SerializeField] GameObject pnlCurrentAspects;
+    [SerializeField] CurrentAspectsDisplay pnlCurrentAspects;
     [SerializeField]RecipeDisplay pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementSlot;
@@ -69,14 +69,6 @@ public class BoardManager : MonoBehaviour
         Debug.Log(message);
     }
 
-    public void MakeFirstSlotAvailable(Vector3 governorPosition)
-    {
-        int governedStepRight = 50;
-        int nudgeDown = -10;
-        GameObject newElementSlot = Instantiate(prefabEmptyElementSlot, pnlWorkspace.transform, false) as GameObject;
-        Vector3 newSlotPosition = new Vector3(governorPosition.x + governedStepRight, governorPosition.y + nudgeDown);
-        newElementSlot.transform.localPosition = newSlotPosition;
-    }
 
     public string GetDebugElementName()
     {
@@ -118,12 +110,11 @@ public class BoardManager : MonoBehaviour
 
         governingSlot.ChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(draggedElement);
 
-
     }
 
     public void UpdateAspectDisplay()
     {
-            pnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().UpdateAspects(pnlWorkspace.GetComponentsInChildren<DraggableElementToken>());
+            pnlCurrentAspects.UpdateAspects(pnlWorkspace);
     }
 
     public void DisplayCurrentRecipe(Recipe recipe)
@@ -165,7 +156,7 @@ public class BoardManager : MonoBehaviour
     public void VerbAddedToSlot(Transform verbSlotTransform)
     {
         CurrentDragItem.transform.SetParent(verbSlotTransform);
-        MakeFirstSlotAvailable(verbSlotTransform.localPosition);
+        pnlWorkspace.MakeFirstSlotAvailable(verbSlotTransform.localPosition,prefabEmptyElementSlot);
         UpdateAspectDisplay();
     }
 }
