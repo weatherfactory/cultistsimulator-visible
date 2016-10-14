@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class TimerPanel : MonoBehaviour
+public class TimerPanel : BoardMonoBehaviour
 {
 
     [SerializeField] private Image imgTimer;
@@ -31,8 +31,13 @@ public class TimerPanel : MonoBehaviour
     {
         UpdateTimerText();
         TimeRemaining--;
-        
         imgTimer.fillAmount = TimeRemaining/Recipe.Warmup;
+        if (TimeRemaining <= 0)
+        { 
+            BM.ExecuteRecipe(Recipe);
+            GameObject.Destroy(gameObject);
+        }
+        
     }
 
 }

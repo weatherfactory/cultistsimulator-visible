@@ -22,7 +22,7 @@ public class LogPanel : MonoBehaviour
                 txtLog.text = "";
                 foreach (var existingMessage in _messages)
             
-                txtLog.text += newMessage + "\n";
+                txtLog.text += existingMessage + "\n";
             
                 
 

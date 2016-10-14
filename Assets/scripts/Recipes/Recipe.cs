@@ -9,6 +9,7 @@ using System.Text;
         public string Id { get; set; }
         public string ActionId { get; set; }
         public Dictionary<string, int> Requirements { get; set; }
+    public Dictionary<string,int> Effects { get; set; }
         public Boolean Craftable { get; set; }
         public string Label { get; set; }
         public int Warmup { get; set; }
@@ -18,6 +19,7 @@ using System.Text;
         public Recipe()
         {
             Requirements = new Dictionary<string, int>();
+        Effects=new Dictionary<string, int>();
         }
 
     }

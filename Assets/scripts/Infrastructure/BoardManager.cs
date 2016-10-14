@@ -136,7 +136,7 @@ public class BoardManager : MonoBehaviour
         return pnlWorkspace.GetCurrentVerbId();
     }
 
-    public void ExecuteCurrentRecipe()
+    public void QueueCurrentRecipe()
     {
         Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription);
@@ -151,5 +151,10 @@ public class BoardManager : MonoBehaviour
     public void DoHeartbeat()
     {
     pnlWorld.DoHeartbeat();
+    }
+
+    public void ExecuteRecipe(Recipe recipe)
+    {
+        Log(recipe.Description);
     }
 }

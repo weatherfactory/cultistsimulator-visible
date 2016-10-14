@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class WorldPanel : MonoBehaviour {
 
@@ -20,7 +21,9 @@ public class WorldPanel : MonoBehaviour {
     {
         foreach (var t in CurrentTimers)
         {
-            t.DoHeartbeat();
+           t.DoHeartbeat();
         }
+        CurrentTimers.RemoveAll(t => t.TimeRemaining <= 0);
     }
 }
+

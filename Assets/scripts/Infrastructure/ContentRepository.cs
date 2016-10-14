@@ -67,6 +67,12 @@ public class ContentRepository : Singleton<ContentRepository>
                 r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
             }
 
+            Hashtable htEffects = htEach.GetHashtable("effects");
+            foreach (string k in htEffects.Keys)
+            {
+                r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
+            }
+
                recipesList.Add(r);
            
         }

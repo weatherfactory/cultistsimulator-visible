@@ -22,6 +22,6 @@ public class ButtonClicks : BoardMonoBehaviour
     }
     public void ExecuteCurrentRecipe()
     {
-        BM.ExecuteCurrentRecipe();
+        BM.QueueCurrentRecipe();
     }
 }
