@@ -7,26 +7,32 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class StorageSlot : MonoBehaviour
+public class StorageSlot : BoardMonoBehaviour,IDropHandler
 {
 
     private int quantity;
-    private DraggableElementToken draggableElementToken;
+    private DraggableElementToken elementTokenContained;
     public int Quantity { get { return quantity; }}
-    public Element Element { get { return draggableElementToken.Element; } }
+    public Element Element { get { return elementTokenContained.Element; } }
 
 
     public void Awake()
     {
-        draggableElementToken = GetComponentInChildren<DraggableElementToken>();
+        elementTokenContained = GetComponentInChildren<DraggableElementToken>();
     }
 
     public void PopulateSlot(string elementId, int change, ContentRepository cm)
     {
-        draggableElementToken.PopulateForElementId(elementId,cm);
-
+        elementTokenContained.PopulateForElementId(elementId,cm);
         quantity = change;
-        draggableElementToken.DisplayQuantity(quantity);
+        elementTokenContained.DisplayQuantity(quantity);
+    }
+
+    public void SplitContents(int numberRemoved)
+    {
+        GameObject newContents=Instantiate(elementTokenContained.gameObject,transform) as GameObject;
+        elementTokenContained = newContents.GetComponentInChildren<DraggableElementToken>();
+        ModifyQuantity(-numberRemoved);
     }
 
     public void ModifyQuantity(int change)
@@ -34,16 +40,33 @@ public class StorageSlot : MonoBehaviour
         quantity += change;
         if(quantity<=0)
             Destroy(gameObject);
-        draggableElementToken.DisplayQuantity(quantity);
+        elementTokenContained.DisplayQuantity(quantity);
     }
 
 
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (BM.CurrentDragItem.tag == "Element")
+        {
+
+            DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
+            ModifyQuantity(1);
+            BM.SendToLimbo(BM.CurrentDragItem.gameObject);
+            GameObject.Destroy(BM.CurrentDragItem.gameObject);
+
+            BM.UpdateAspectDisplay();
+           
+            //TODO: filter on correct element, or swap out
+            //TODO: clear child slots
+
+        }
+    }
 
 }
 
 
 
-    
 
 
-    
+
+

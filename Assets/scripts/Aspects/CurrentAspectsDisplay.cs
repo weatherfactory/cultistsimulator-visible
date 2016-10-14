@@ -87,16 +87,10 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
     private void DisplayRecipesForCurrentAspects()
     {
         var recipe=ContentRepository.Instance.RecipeCompendium.GetFirstRecipeForAspectsWithVerb(AllCurrentAspects(),BM.GetCurrentVerbId());
-       DebugLogAspects();
-        
+     
        BM.DisplayCurrentRecipe(recipe);
         
     }
 
-    private void DebugLogAspects()
-    {
-        Dictionary<string, int> AllAspects = this.AllCurrentAspects();
-        foreach (KeyValuePair<string, int> kv in AllAspects)
-            BM.BoardLog(kv.Key + " - " + kv.Value);
-    }
+
 }

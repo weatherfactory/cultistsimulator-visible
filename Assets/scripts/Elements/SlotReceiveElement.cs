@@ -16,7 +16,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             return  ItemInSlot.GetComponent<DraggableToken>();
     }
 
-    public void EmptySlot()
+    public void ClearThisSlot()
     {
         if (ChildSlotOrganiser != null)
             ChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Remove(); //this is potentially recursive
@@ -45,7 +45,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             
             if (ItemInSlot && ItemInSlot.GetComponent<DraggableToken>())
             {
-              EmptySlot();
+              ClearThisSlot();
             }
             DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
             draggableElementToken.transform.SetParent(transform);
@@ -57,4 +57,6 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 
         }
     }
+
+
 }

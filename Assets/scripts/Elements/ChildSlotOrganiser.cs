@@ -9,7 +9,7 @@ public class ChildSlotOrganiser : BoardMonoBehaviour
     {
         foreach (SlotReceiveElement slot in gameObject.GetComponentsInChildren<SlotReceiveElement>())
         {
-            slot.EmptySlot();
+            slot.ClearThisSlot();
         }
        Destroy(gameObject);
     }

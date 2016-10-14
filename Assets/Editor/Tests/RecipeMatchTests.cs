@@ -11,17 +11,6 @@ using NUnit.Framework;
 
 namespace CS.Tests
 {
-    public class TestElementContainer : IContainsElement
-    {
-        public Element Element { get; set; }
-
-        //This isn't in use, now that I have a separate RecipeMatch class, but 
-        //I'm keeping it around for the moment in case I make element storage/retrieval DI-based.
-        public TestElementContainer(string id, string label, string description)
-        {
-            Element = new Element(id, label, description);
-        }
-    }
 
 
     public class RecipeMatchTests

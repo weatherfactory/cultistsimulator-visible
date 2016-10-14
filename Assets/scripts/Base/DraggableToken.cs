@@ -2,43 +2,37 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DraggableToken : BoardMonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHandler
-{
-    private Vector3 startPosition;
-    private Transform startParent;
-    public Transform originSlot;
 
-    public void OnBeginDrag(PointerEventData eventData)
+
+public class DraggableToken : BoardMonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+{
+    public Vector3 StartPosition;
+    public Transform StartParent;
+    public Transform OriginTransform;
+
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
-        if (!originSlot)
-        { 
-            if(transform.parent)
-            originSlot = transform.parent; //so we can return this to its original slot later
-        }
-        BM.CurrentDragItem = gameObject.GetComponent<DraggableToken>();
-        startPosition = transform.position;
-        startParent = transform.parent;
-        if (GetComponent<CanvasGroup>() != null)
-            GetComponent<CanvasGroup>().blocksRaycasts = false;
+    
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
     }
 
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         BM.CurrentDragItem = null;
-        if(transform.parent==startParent)
-        transform.position = startPosition;
+        if (transform.parent == StartParent)
+            transform.position = StartPosition;
         if (GetComponent<CanvasGroup>() != null)
             GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
-    public void ReturnToOrigin()
+
+    public virtual void ReturnToOrigin()
     {
-        transform.SetParent(originSlot);
+        transform.SetParent(OriginTransform);
     }
 }

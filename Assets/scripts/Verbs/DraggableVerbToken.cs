@@ -3,10 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
-public class DraggableVerbToken: DraggableToken
+public class DraggableVerbToken : DraggableToken
+{
+    [SerializeField] public string VerbId;
+  
+
+    public override void OnBeginDrag(PointerEventData eventData)
     {
-        [SerializeField] public string VerbId;
+        if (OriginTransform == null)
+        {
+            if (transform.parent)
+                OriginTransform = transform.parent; //so we can return this to its original slot later
+        }
+        BM.CurrentDragItem = gameObject.GetComponent<DraggableToken>();
+        StartPosition = transform.position;
+        StartParent = transform.parent;
+        if (GetComponent<CanvasGroup>() != null)
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
+    
+
+ 
+}
 

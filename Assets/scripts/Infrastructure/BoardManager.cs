@@ -35,7 +35,7 @@ public class BoardManager : MonoBehaviour
         catch (NullReferenceException)
         {
             
-            BoardLog("Couldn't create element with id " + elementId);
+            Log("Couldn't create element with id " + elementId);
             GameObject.Destroy(newElementSlot);
         }
             
@@ -64,11 +64,11 @@ public class BoardManager : MonoBehaviour
         ChangeElementQuantityOnBoard("occultscrap", 1);
     }
 
-    public void BoardLog(string message)
-    {
-        Debug.Log(message);
-    }
 
+    public void SendToLimbo(GameObject target)
+    {
+        target.transform.SetParent(objLimbo.transform);
+    }
 
     public string GetDebugElementName()
     {
