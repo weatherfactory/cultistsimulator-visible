@@ -15,7 +15,7 @@ public class DraggableToken : BoardMonoBehaviour, IDragHandler,IBeginDragHandler
             if(transform.parent)
             originSlot = transform.parent; //so we can return this to its original slot later
         }
-        BM.itemBeingDragged = gameObject.GetComponent<DraggableToken>();
+        BM.CurrentDragItem = gameObject.GetComponent<DraggableToken>();
         startPosition = transform.position;
         startParent = transform.parent;
         if (GetComponent<CanvasGroup>() != null)
@@ -30,7 +30,7 @@ public class DraggableToken : BoardMonoBehaviour, IDragHandler,IBeginDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        BM.itemBeingDragged = null;
+        BM.CurrentDragItem = null;
         if(transform.parent==startParent)
         transform.position = startPosition;
         if (GetComponent<CanvasGroup>() != null)

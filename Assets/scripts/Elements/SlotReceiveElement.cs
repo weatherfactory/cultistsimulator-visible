@@ -40,14 +40,14 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (BM.itemBeingDragged.tag == "Element")
+        if (BM.CurrentDragItem.tag == "Element")
         { 
             
             if (ItemInSlot && ItemInSlot.GetComponent<DraggableToken>())
             {
               EmptySlot();
             }
-            DraggableElementToken draggableElementToken = BM.itemBeingDragged.GetComponent<DraggableElementToken>();
+            DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
             draggableElementToken.transform.SetParent(transform);
             BM.UpdateAspectDisplay();
 

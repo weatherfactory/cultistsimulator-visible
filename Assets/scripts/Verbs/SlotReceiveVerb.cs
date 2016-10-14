@@ -22,17 +22,15 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (BM.itemBeingDragged.tag=="Verb")
+        if (BM.CurrentDragItem.tag=="Verb")
        {
            if (VerbTokenInSlot && VerbTokenInSlot.GetComponent<DraggableToken>())
            {
                DraggableToken itemInSlotComponent = VerbTokenInSlot.GetComponent<DraggableToken>();
                 VerbTokenInSlot.transform.SetParent(itemInSlotComponent.originSlot);
             }
+           BM.VerbAddedToSlot(transform);
 
-            BM.itemBeingDragged.transform.SetParent(transform);
-             BM.MakeFirstSlotAvailable(transform.localPosition);
-            BM.UpdateAspectDisplay();
         }
     }
 

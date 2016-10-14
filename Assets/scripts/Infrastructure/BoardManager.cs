@@ -21,7 +21,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
 
-    public DraggableToken itemBeingDragged;
+    public DraggableToken CurrentDragItem;
 
     private void addElementToBoard(string elementId, int quantity)
     {
@@ -156,5 +156,16 @@ public class BoardManager : MonoBehaviour
     public void ExecuteRecipe(Recipe recipe)
     {
         Log(recipe.Description);
+        foreach (var e in recipe.Effects)
+            ChangeElementQuantityOnBoard(e.Key, e.Value);
+
+
+    }
+
+    public void VerbAddedToSlot(Transform verbSlotTransform)
+    {
+        CurrentDragItem.transform.SetParent(verbSlotTransform);
+        MakeFirstSlotAvailable(verbSlotTransform.localPosition);
+        UpdateAspectDisplay();
     }
 }
