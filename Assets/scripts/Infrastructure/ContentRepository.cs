@@ -3,7 +3,6 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
-using Assets.scripts.Infrastructure;
 using JetBrains.Annotations;
 using OrbCreationExtensions;
 using UnityEditor;
@@ -57,9 +56,9 @@ public class ContentRepository : Singleton<ContentRepository>
             catch (Exception e)
             {
                 if (htEach["id"] == null)
-                    SystemLog.Write("Problem importing recipe with unknown id - " + e.Message);
+                    Debug.Log("Problem importing recipe with unknown id - " + e.Message);
                 else
-                    SystemLog.Write("Problem importing recipe '" + htEach["id"] + "' - " + e.Message);
+                    Debug.Log("Problem importing recipe '" + htEach["id"] + "' - " + e.Message);
             }
 
             Hashtable htReqs = htEach.GetHashtable("requirements");

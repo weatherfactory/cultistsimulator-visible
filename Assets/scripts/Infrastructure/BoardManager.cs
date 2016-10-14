@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.scripts.Infrastructure;
 using UnityEngine.UI;
 
 #pragma warning disable 649
@@ -11,7 +10,7 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour
 {
     [SerializeField] private InputField inputAdjustElementNamed;
-    [SerializeField] private Text txtStatus;
+    [SerializeField] private LogPanel pnlLog;
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
     [SerializeField] GameObject pnlCurrentAspects;
@@ -77,11 +76,6 @@ public class BoardManager : MonoBehaviour
         Vector3 newSlotPosition = new Vector3(governorPosition.x + governedStepRight, governorPosition.y + nudgeDown);
         newElementSlot.transform.localPosition = newSlotPosition;
     }
-    public void SetStatusText(string statusText)
-    {
-
-        txtStatus.GetComponent<Text>().text = statusText;
-    }
 
     public string GetDebugElementName()
     {
@@ -143,6 +137,11 @@ public class BoardManager : MonoBehaviour
 
     public void ExecuteRecipe()
     {
-        SystemLog.Write(pnlRecipeDisplay.CurrentRecipe.StartDescription);
+        Log(pnlRecipeDisplay.CurrentRecipe.StartDescription);
+    }
+
+    public void Log(string message)
+    {
+       pnlLog.Write(message);
     }
 }
