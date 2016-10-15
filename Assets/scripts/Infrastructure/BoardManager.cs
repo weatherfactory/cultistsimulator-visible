@@ -17,36 +17,43 @@ public class BoardManager : MonoBehaviour
     [SerializeField] CurrentAspectsDisplay pnlCurrentAspects;
     [SerializeField]RecipeDisplay pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
-    [SerializeField]GameObject prefabElementSlot;
+    [SerializeField]GameObject prefabElementToken;
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
 
     public DraggableToken CurrentDragItem;
 
-    private void addElementToBoard(string elementId, int quantity)
+    private void addElementToBoard(string elementId, int quantity,int? sibingIndex)
     {
-        GameObject newElementSlot = Instantiate(prefabElementSlot,pnlResources.transform) as GameObject;
+        GameObject elementTokenGameObject = Instantiate(prefabElementToken,pnlResources.transform) as GameObject;
+
+        //in case we're replacing a token already on the board
+        if (sibingIndex!=null)
+         elementTokenGameObject.transform.SetSiblingIndex(sibingIndex.Value);
+
+        elementTokenGameObject.name = "Element token for " + elementId;
         try
         {
-            StorageSlot slotScript = newElementSlot.GetComponent<StorageSlot>();
-            slotScript.PopulateSlot(elementId, quantity, ContentRepository.Instance);
+            DraggableElementToken elementTokenScript = elementTokenGameObject.GetComponent<DraggableElementToken>();
+            elementTokenScript.PopulateForElementId(elementId, quantity, ContentRepository.Instance);
             
         }
         catch (NullReferenceException)
         {
             
             Log("Couldn't create element with id " + elementId);
-            GameObject.Destroy(newElementSlot);
+            GameObject.Destroy(elementTokenGameObject);
         }
             
 
     }
 
 
-    private StorageSlot GetElementSlotForId(string elementId)
+    private DraggableElementToken GetExistingElementForId(string elementId)
     {
+        DraggableElementToken[] existingElementTokens = pnlResources.GetComponentsInChildren<DraggableElementToken>();
         return
-            pnlResources.GetComponentsInChildren<StorageSlot>().SingleOrDefault(e => e.Element.Id == elementId);
+            existingElementTokens.SingleOrDefault(e => e.Element.Id == elementId);
     }
 
 
@@ -58,10 +65,10 @@ public class BoardManager : MonoBehaviour
     {
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
-        ChangeElementQuantityOnBoard("clique", 1);
-        ChangeElementQuantityOnBoard("ordinarylife",1);
-        ChangeElementQuantityOnBoard("health", 10);
-        ChangeElementQuantityOnBoard("occultscrap", 1);
+        ModifyElementQuantityOnBoard("clique", 1);
+        ModifyElementQuantityOnBoard("ordinarylife",1);
+        ModifyElementQuantityOnBoard("health", 10);
+        ModifyElementQuantityOnBoard("occultscrap", 1);
     }
 
 
@@ -75,14 +82,19 @@ public class BoardManager : MonoBehaviour
         return  inputAdjustElementNamed.textComponent.text;
     }
 
-    public void ChangeElementQuantityOnBoard(string elementId,int quantity)
+    public void ModifyElementQuantityOnBoard(string elementId, int quantity)
     {
-        StorageSlot existingElement = GetElementSlotForId(elementId);
+        ModifyElementQuantityOnBoard(elementId,quantity,null);
+    }
+
+    public void ModifyElementQuantityOnBoard(string elementId,int quantity,int? siblingIndex)
+    {
+        DraggableElementToken existingElement = GetExistingElementForId(elementId);
         if(existingElement)
             existingElement.ModifyQuantity(quantity);
         else
         {
-            addElementToBoard(elementId,quantity);
+            addElementToBoard(elementId,quantity,siblingIndex);
         }
     }
 
@@ -148,7 +160,7 @@ public class BoardManager : MonoBehaviour
     {
         Log(recipe.Description);
         foreach (var e in recipe.Effects)
-            ChangeElementQuantityOnBoard(e.Key, e.Value);
+            ModifyElementQuantityOnBoard(e.Key, e.Value);
 
 
     }

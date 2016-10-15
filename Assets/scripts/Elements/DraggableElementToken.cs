@@ -13,8 +13,10 @@ public class DraggableElementToken: DraggableToken
     {
 
     public Element Element { get; set; }
+    public int Quantity { get { return _quantity; } }
+    private int _quantity;
 
-        public void Awake()
+    public void Awake()
         {
             Element=new Element("","","");
         }
@@ -32,18 +34,20 @@ public class DraggableElementToken: DraggableToken
         elementImage.sprite = elementSprite;
     }
 
-    public void DisplayQuantity(int quantity)
+    private void displayQuantity(int quantity)
     {
         Text quantityText = GetComponentsInChildren<Text>().Single(t => t.name == "txtQuantity");
         quantityText.text = quantity.ToString();
 
     }
 
-        public void PopulateForElementId(string elementId,ContentRepository cm)
+        public void PopulateForElementId(string elementId,int change,ContentRepository cm)
         {
         Element = cm.PopulateElementForId(elementId);
         DisplayName(Element);
         DisplayIcon(Element);
+        _quantity = change;
+        displayQuantity(_quantity);
     }
 
 
@@ -53,21 +57,28 @@ public class DraggableElementToken: DraggableToken
         }
 
 
-  
+    private void TakeElementTokenOutOfResourcesPanel()
+    {
+        transform.SetParent(BM.transform, true);
+    }
+
 
     public override void OnBeginDrag(PointerEventData eventData)
     {
+        //create a stack to leave behind, of all the element in this token minus one.
         if (OriginTransform == null)
         {
-            StorageSlot originSlot = transform.parent.gameObject.GetComponent<StorageSlot>();
-            if (originSlot != null) //if we've just removed the token from a StorageSlot
+            if (_quantity > 1)
             {
-                transform.SetParent(BM.transform, true);
-                originSlot.SplitContents(1);
-                DraggableElementToken elementToken = GetComponentInChildren<DraggableElementToken>();
-                elementToken.DisplayQuantity(1);
+                int quantityRemaining = _quantity - 1;
+                int siblingIndexForNewStack = transform.GetSiblingIndex();
+                SetQuantity(1);
+                TakeElementTokenOutOfResourcesPanel();
+
+                BM.ModifyElementQuantityOnBoard(Element.Id,quantityRemaining, siblingIndexForNewStack);
+               
             }
-         
+
              OriginTransform = transform.parent; //so we can return this to its original slot later
             
         }
@@ -78,11 +89,28 @@ public class DraggableElementToken: DraggableToken
             GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
+
+
         public override void ReturnToOrigin()
         {
             base.ReturnToOrigin();
         }
 
+
+        public void ModifyQuantity(int change)
+        {
+        _quantity += change;
+        if (_quantity <= 0)
+            Destroy(gameObject);
+        displayQuantity(_quantity);
+    }
+    public void SetQuantity(int value)
+    {
+        _quantity = value;
+        if (_quantity <= 0)
+            Destroy(gameObject);
+        displayQuantity(_quantity);
+    }
 
 
 }
