@@ -93,7 +93,7 @@ public class DraggableElementToken: DraggableToken
 
         public override void ReturnToOrigin()
         {
-            base.ReturnToOrigin();
+         BM.ReturnElementTokenToStorage(GetComponent<DraggableElementToken>());
         }
 
 

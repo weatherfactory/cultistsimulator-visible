@@ -58,6 +58,7 @@ public class BoardManager : MonoBehaviour
 
 
 
+
     /// <summary>
     /// This sets our starting elements
     /// </summary>
@@ -110,8 +111,18 @@ public class BoardManager : MonoBehaviour
      pnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().ResetAspects();
     }
 
+    public void ReturnElementTokenToStorage(DraggableElementToken tokenToReturn)
+    {
 
-    public void CreateChildSlotsOrganiser(SlotReceiveElement governingSlot, DraggableElementToken draggedElement)
+        SendToLimbo(tokenToReturn.gameObject); //to prevent possible double-counting
+        ModifyElementQuantityOnBoard(tokenToReturn.Element.Id, tokenToReturn.Quantity);
+        GameObject.Destroy(tokenToReturn.gameObject);
+
+        UpdateAspectDisplay();
+    }
+
+
+    public void AddChildSlots(SlotReceiveElement governingSlot, DraggableElementToken draggedElement)
     {
         
         float governingSlotHeight = governingSlot.GetComponent<RectTransform>().rect.height;

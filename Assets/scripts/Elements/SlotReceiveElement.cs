@@ -8,12 +8,24 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 {
     public GameObject ChildSlotOrganiser;
 
-    private DraggableToken GetTokenInSlot()
+    private GameObject ItemInSlot
+    {
+        get
+        {
+            if (transform.childCount > 0)
+                return transform.GetChild(0).gameObject;
+            else
+
+                return null;
+        }
+    }
+
+    private DraggableElementToken GetTokenInSlot()
     {
         if (ItemInSlot == null)
             return null;
         else
-            return  ItemInSlot.GetComponent<DraggableToken>();
+            return  ItemInSlot.GetComponent<DraggableElementToken>();
     }
 
     public void ClearThisSlot()
@@ -21,29 +33,19 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         if (ChildSlotOrganiser != null)
             ChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Remove(); //this is potentially recursive
         
-        DraggableToken tokenToRemove = GetTokenInSlot();
+        DraggableElementToken tokenToRemove = GetTokenInSlot();
         if(tokenToRemove!=null)
             tokenToRemove.ReturnToOrigin();
     }
 
-    public GameObject ItemInSlot
-    {
-        get
-        {
-            if (transform.childCount > 0)
-                return transform.GetChild(0).gameObject;
-            else
-            
-                return null;
-        }
-    }
+
 
     public void OnDrop(PointerEventData eventData)
     {
         if (BM.CurrentDragItem.tag == "Element")
         { 
             
-            if (ItemInSlot && ItemInSlot.GetComponent<DraggableToken>())
+            if (GetTokenInSlot()!=null)
             {
               ClearThisSlot();
             }
@@ -52,7 +54,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             BM.UpdateAspectDisplay();
 
             if(draggableElementToken.HasChildSlots())
-                BM.CreateChildSlotsOrganiser(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
+                BM.AddChildSlots(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
 
 
         }

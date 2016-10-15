@@ -24,4 +24,14 @@ public class ButtonClicks : BoardMonoBehaviour
     {
         BM.QueueCurrentRecipe();
     }
+
+    public void Save()
+    {
+        PlayerPrefs.SetString("TestString","Foo");
+        BM.Log("Saved");
+    }
+    public void Load()
+    {
+        BM.Log(PlayerPrefs.GetString("TestString"));
+    }
 }
