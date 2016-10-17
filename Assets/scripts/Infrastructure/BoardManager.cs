@@ -23,6 +23,12 @@ public class BoardManager : MonoBehaviour
 
     public DraggableToken CurrentDragItem;
 
+    public CurrentAspectsDisplay PnlCurrentAspects
+    {
+        set { pnlCurrentAspects = value; }
+        get { return pnlCurrentAspects; }
+    }
+
     private void addElementToBoard(string elementId, int quantity,int? sibingIndex)
     {
         GameObject elementTokenGameObject = Instantiate(prefabElementToken,pnlResources.transform) as GameObject;
@@ -42,18 +48,29 @@ public class BoardManager : MonoBehaviour
         {
             
             Log("Couldn't create element with id " + elementId);
-            GameObject.Destroy(elementTokenGameObject);
+            ExileToLimboThenDestroy(elementTokenGameObject);
         }
             
 
     }
 
-
-    private DraggableElementToken GetExistingElementForId(string elementId)
+    /// <summary>
+    /// this is the element token in the relevant storage area, so it includes quantity. It doesn't address the workspace and it assumes only one panel holds the tokens.
+    /// </summary>
+    private DraggableElementToken GetStoredElementTokenForId(string elementId)
     {
-        DraggableElementToken[] existingElementTokens = pnlResources.GetComponentsInChildren<DraggableElementToken>();
+        DraggableElementToken[] existingElementTokens = GetAllStoredElementTokens();
         return
             existingElementTokens.SingleOrDefault(e => e.Element.Id == elementId);
+    }
+
+    /// <summary>
+    /// an array of all element tokens currently in the player's stockpile
+    /// </summary>
+    /// <returns></returns>
+    public DraggableElementToken[] GetAllStoredElementTokens()
+    {
+        return pnlResources.GetComponentsInChildren<DraggableElementToken>();
     }
 
 
@@ -72,10 +89,14 @@ public class BoardManager : MonoBehaviour
         ModifyElementQuantityOnBoard("occultscrap", 1);
     }
 
-
-    public void SendToLimbo(GameObject target)
+    /// <summary>
+    /// takes a gameobject out of the hierarchy before destroying it, in case we might otherwise interact with it in the current frame
+    /// </summary>
+    /// <param name="target"></param>
+    public void ExileToLimboThenDestroy(GameObject target)
     {
         target.transform.SetParent(objLimbo.transform);
+        GameObject.Destroy(target);
     }
 
     public string GetDebugElementName()
@@ -90,7 +111,7 @@ public class BoardManager : MonoBehaviour
 
     public void ModifyElementQuantityOnBoard(string elementId,int quantity,int? siblingIndex)
     {
-        DraggableElementToken existingElement = GetExistingElementForId(elementId);
+        DraggableElementToken existingElement = GetStoredElementTokenForId(elementId);
         if(existingElement)
             existingElement.ModifyQuantity(quantity);
         else
@@ -100,27 +121,22 @@ public class BoardManager : MonoBehaviour
     }
 
     
-
     public void ClearWorkspaceElements()
     {
-        DraggableElementToken[] elements = pnlWorkspace.GetComponentsInChildren<DraggableElementToken>();
-
-        foreach (DraggableElementToken element in elements)
-
-        element.ReturnToOrigin();
-     pnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().ResetAspects();
+        pnlWorkspace.ClearAllWorkspaceElements(this);
     }
 
     public void ReturnElementTokenToStorage(DraggableElementToken tokenToReturn)
     {
-
-        SendToLimbo(tokenToReturn.gameObject); //to prevent possible double-counting
-        ModifyElementQuantityOnBoard(tokenToReturn.Element.Id, tokenToReturn.Quantity);
-        GameObject.Destroy(tokenToReturn.gameObject);
+        //removes the element token from whereever it is currently and adds it to any existing stacks in its home panel
+        string elementId = tokenToReturn.Element.Id;
+        int elementQuantity = tokenToReturn.Quantity;
+        ExileToLimboThenDestroy(tokenToReturn.gameObject); //to prevent possible double-counting
+        ModifyElementQuantityOnBoard(elementId,elementQuantity);
+        
 
         UpdateAspectDisplay();
     }
-
 
     public void AddChildSlots(SlotReceiveElement governingSlot, DraggableElementToken draggedElement)
     {
@@ -181,5 +197,17 @@ public class BoardManager : MonoBehaviour
         CurrentDragItem.transform.SetParent(verbSlotTransform);
         pnlWorkspace.MakeFirstSlotAvailable(verbSlotTransform.localPosition,prefabEmptyElementSlot);
         UpdateAspectDisplay();
+    }
+    /// <summary>
+    /// DANGEROUS removes all elements from storage and workspace
+    /// </summary>
+    public void ClearBoard()
+    {
+        ClearWorkspaceElements();
+        DraggableElementToken[]  allElementTokens=GetAllStoredElementTokens();
+        foreach (DraggableElementToken e in allElementTokens)
+        {
+            e.SetQuantity(0);
+        }
     }
 }

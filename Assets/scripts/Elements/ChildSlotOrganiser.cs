@@ -11,7 +11,7 @@ public class ChildSlotOrganiser : BoardMonoBehaviour
         {
             slot.ClearThisSlot();
         }
-       Destroy(gameObject);
+        BM.ExileToLimboThenDestroy(gameObject);
     }
 
     public void Populate(DraggableElementToken draggedElement)

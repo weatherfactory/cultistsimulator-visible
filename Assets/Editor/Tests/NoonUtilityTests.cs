@@ -31,7 +31,7 @@ namespace CS.Tests
                 {ASPECT_ID + QUANTITY_EPISODE_END, "CONVENTIONS.QUANTITY_EPISODE_END"},
 
             };
-            Dictionary<string, int> Results = Noon.Utility.ReplaceConventionValues(htAspects);
+            Dictionary<string, int> Results = Noon.NoonUtility.ReplaceConventionValues(htAspects);
             Assert.AreEqual(Results[ASPECT_ID + QUANTITY_TINY], QUANTITY_TINY);
             Assert.AreEqual(Results[ASPECT_ID + QUANTITY_MODEST], QUANTITY_MODEST);
             Assert.AreEqual(Results[ASPECT_ID + QUANTITY_GENEROUS], QUANTITY_GENEROUS);
@@ -50,7 +50,7 @@ namespace CS.Tests
             {
                 {ASPECT_ID, QUANTITY_TINY.ToString()}
             };
-            Dictionary<string, int> result = Noon.Utility.JSONHashtableToIntValuesDictionary(htAspects);
+            Dictionary<string, int> result = Noon.NoonUtility.JSONHashtableToIntValuesDictionary(htAspects);
 
             Assert.AreEqual(result[ASPECT_ID], QUANTITY_TINY);
 

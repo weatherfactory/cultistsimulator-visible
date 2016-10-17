@@ -29,4 +29,14 @@ public class Workspace : BoardMonoBehaviour
         RootElementSlot.transform.localPosition = newSlotPosition;
         }
     }
+
+    public void ClearAllWorkspaceElements(BoardManager boardManager)
+    {
+        DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
+
+        foreach (DraggableElementToken element in elements)
+
+            element.ReturnToOrigin();
+        boardManager.PnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().ResetAspects();
+    }
 }

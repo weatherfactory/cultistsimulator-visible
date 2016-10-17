@@ -101,14 +101,15 @@ public class DraggableElementToken: DraggableToken
         {
         _quantity += change;
         if (_quantity <= 0)
-            Destroy(gameObject);
+
+          BM.ExileToLimboThenDestroy(gameObject);
         displayQuantity(_quantity);
     }
     public void SetQuantity(int value)
     {
         _quantity = value;
         if (_quantity <= 0)
-            Destroy(gameObject);
+            BM.ExileToLimboThenDestroy(gameObject);
         displayQuantity(_quantity);
     }
 

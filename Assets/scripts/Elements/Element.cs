@@ -25,7 +25,7 @@ public class Element
 
     public void AddAspectsFromHashtable(Hashtable htAspects)
     {
-        Aspects = Noon.Utility.ReplaceConventionValues(htAspects);
+        Aspects = Noon.NoonUtility.ReplaceConventionValues(htAspects);
     }
 
     public void AddSlotsFromHashtable(Hashtable slots)

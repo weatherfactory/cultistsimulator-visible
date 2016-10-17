@@ -19,5 +19,6 @@ public class ResourcesPanel : BoardMonoBehaviour,IDropHandler {
         }
 
     }
+
     }
 

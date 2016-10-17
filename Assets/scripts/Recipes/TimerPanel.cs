@@ -35,7 +35,8 @@ public class TimerPanel : BoardMonoBehaviour
         if (TimeRemaining <= 0)
         { 
             BM.ExecuteRecipe(Recipe);
-            GameObject.Destroy(gameObject);
+            BM.ExileToLimboThenDestroy(gameObject);
+            
         }
         
     }

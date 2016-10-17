@@ -7,8 +7,12 @@ using UnityEngine;
 
 namespace Noon
 {
-    public class Utility
+    public class NoonUtility
     {
+        public static string GetGameSavePath()
+        {
+            return Application.persistentDataPath + "\\savedgame.txt";
+        }
 
 
         public static Dictionary<string, int> JSONHashtableToIntValuesDictionary(Hashtable table)

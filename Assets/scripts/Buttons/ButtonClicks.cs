@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using System.IO;
+using OrbCreationExtensions;
 
 
 public class ButtonClicks : BoardMonoBehaviour
@@ -27,11 +30,32 @@ public class ButtonClicks : BoardMonoBehaviour
 
     public void Save()
     {
-        PlayerPrefs.SetString("TestString","Foo");
+        string exportJson;
+        
+        Hashtable htElementsPossessed=new Hashtable();
+        foreach (DraggableElementToken e in BM.GetAllStoredElementTokens())
+        {
+            htElementsPossessed.Add(e.Element.Id,e.Quantity);
+        }
+        exportJson= htElementsPossessed.JsonString();
+        System.IO.File.WriteAllText(Noon.NoonUtility.GetGameSavePath(), exportJson);
         BM.Log("Saved");
     }
+
     public void Load()
     {
-        BM.Log(PlayerPrefs.GetString("TestString"));
+        string importJson=File.ReadAllText(Noon.NoonUtility.GetGameSavePath());
+        Hashtable htElementsPossessed = SimpleJsonImporter.Import(importJson);
+
+
+        //check if it's all valid first
+        BM.ClearBoard();
+
+        foreach (string k in htElementsPossessed.Keys)
+        {
+            BM.ModifyElementQuantityOnBoard(k,Convert.ToInt32(htElementsPossessed[k]));
+        }
+
+        BM.Log("loaded");
     }
 }
