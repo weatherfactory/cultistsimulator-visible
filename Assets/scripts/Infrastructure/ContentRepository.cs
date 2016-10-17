@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using OrbCreationExtensions;
 using UnityEditor;
+using UnityEngine.Assertions;
 
 
 public class ContentRepository : Singleton<ContentRepository>
@@ -80,15 +81,31 @@ public class ContentRepository : Singleton<ContentRepository>
         return new RecipeCompendium(recipesList);
     }
 
-    public Element PopulateElementForId(string id)
+    public Boolean IsKnownElement(string elementId)
     {
-        //find Element in json
-        //find description in Element
-        Hashtable htElement = htElements.GetNodeWithProperty(CONST_ID, id);
+        Assert.IsNotNull(htElements, "Elements were never imported; IsKnownElement failed");
+
+        if (htElements==null)
+            throw new ApplicationException("Elements were never imported; IsKnownElement failed");
+        bool y= htElements.GetNodeWithProperty(CONST_ID, elementId) != null;
+        return y;
+
+    }
+
+    public Element PopulateElementForId(string elementId)
+    {
+        Assert.IsNotNull(htElements, "Elements were never imported; PopulateElementForId failed");
+        if (htElements == null)
+            throw new ApplicationException("Elements were never imported; PopulateElementForId failed");
+
+        if (!IsKnownElement(elementId))
+            return null;
+
+        Hashtable htElement = htElements.GetNodeWithProperty(CONST_ID, elementId);
         Hashtable htAspects = htElement.GetHashtable("aspects");
         Hashtable htSlots = htElement.GetHashtable("slots");
 
-        Element element = new Element(id,
+        Element element = new Element(elementId,
            htElement.GetString(CONST_LABEL),
             htElement.GetString(CONST_DESCRIPTION));
 

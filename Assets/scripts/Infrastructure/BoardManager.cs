@@ -2,7 +2,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using OrbCreationExtensions;
 using UnityEngine.UI;
 
 #pragma warning disable 649
@@ -208,6 +210,58 @@ public class BoardManager : MonoBehaviour
         foreach (DraggableElementToken e in allElementTokens)
         {
             e.SetQuantity(0);
+        }
+    }
+
+    public void SaveCurrentBoard()
+    {
+        try
+        {
+            string exportJson;
+
+
+            Hashtable htElementsPossessed = new Hashtable();
+            foreach (DraggableElementToken e in GetAllStoredElementTokens())
+            {
+                htElementsPossessed.Add(e.Element.Id, e.Quantity);
+            }
+            exportJson = htElementsPossessed.JsonString();
+            File.WriteAllText(Noon.NoonUtility.GetGameSavePath(), exportJson);
+            Log("Saved the game; but not the world.");
+        }
+        catch (Exception)
+        {
+            Log("Something horrible has happened. We couldn't save the game.");
+        }
+    }
+
+    public void LoadCurrentBoard()
+    {
+        try
+        {
+            string importJson = File.ReadAllText(Noon.NoonUtility.GetGameSavePath());
+            Hashtable htElementsPossessed = SimpleJsonImporter.Import(importJson);
+            //check if it's all valid first
+            foreach (string k in htElementsPossessed.Keys)
+            {
+                if (!ContentRepository.Instance.IsKnownElement(k))
+                {
+                    Log("Unknown element id: " + k);
+                    throw new ApplicationException("Unknown element id " + k + " in save file");
+                }
+            }
+            ClearBoard();
+
+            foreach (string k in htElementsPossessed.Keys)
+            {
+                ModifyElementQuantityOnBoard(k, Convert.ToInt32(htElementsPossessed[k]));
+            }
+
+            Log("Once more, for you, we have loaded the game.");
+        }
+        catch (Exception exception)
+        {
+            Log("Missing or invalid save file. Sorry! (" + exception.Message + ")");
         }
     }
 }
