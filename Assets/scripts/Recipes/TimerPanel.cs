@@ -8,37 +8,63 @@ public class TimerPanel : BoardMonoBehaviour
 
     [SerializeField] private Image imgTimer;
     [SerializeField] private Text txtTimer;
-    [SerializeField] public Recipe Recipe;
-    public float TimeRemaining;
+    public float TimeRemaining { get { return RecipeTimer.TimeRemaining; } }
+
+    public RecipeTimer RecipeTimer;
 
     private void UpdateTimerText()
     {
-        txtTimer.text = "[" + TimeRemaining + "] " + Recipe.Label;
+        txtTimer.text = "[" + RecipeTimer.TimeRemaining + "] " + RecipeTimer.Recipe.Label;
     }
 
     public void StartTimer(Recipe r)
     {
-        if(TimeRemaining>0)
-            throw new ApplicationException("already running a recipe (" + Recipe.Id + ")");
-
-        Recipe = r;
-        TimeRemaining = r.Warmup;
+        if (RecipeTimer!=null)
+            throw new ApplicationException("already running a recipe (" + RecipeTimer.Recipe.Id + ")");
+        RecipeTimer = new RecipeTimer(r);
+           
         UpdateTimerText();
 
     }
 
     public void DoHeartbeat()
     {
-        UpdateTimerText();
-        TimeRemaining--;
-        imgTimer.fillAmount = TimeRemaining/Recipe.Warmup;
-        if (TimeRemaining <= 0)
+
+        imgTimer.fillAmount = RecipeTimer.TimeRemaining / RecipeTimer.Recipe.Warmup;
+        RecipeTimerState timerState = RecipeTimer.DoHeartbeat();
+        if (timerState==RecipeTimerState.Complete)
         { 
-            BM.ExecuteRecipe(Recipe);
+            BM.ExecuteRecipe(RecipeTimer.Recipe);
             BM.ExileToLimboThenDestroy(gameObject);
             
         }
-        
+
+        UpdateTimerText();
+
     }
 
 }
+
+public class RecipeTimer
+{
+    public Recipe Recipe { get; set; }
+    public float TimeRemaining { get; set; }
+
+    public RecipeTimer(Recipe recipe)
+    {
+        Recipe = recipe;
+        TimeRemaining = recipe.Warmup;
+    }
+
+    public RecipeTimerState DoHeartbeat()
+    {
+        TimeRemaining--;
+        if(TimeRemaining<=0)
+            return RecipeTimerState.Complete;
+
+        return RecipeTimerState.Ongoing;
+    }
+}
+
+public enum RecipeTimerState{ Ongoing=1,Complete=10}
+    

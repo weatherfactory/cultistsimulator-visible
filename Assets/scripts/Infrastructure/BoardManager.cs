@@ -219,13 +219,18 @@ public class BoardManager : MonoBehaviour
         {
             string exportJson;
 
-
             Hashtable htElementsPossessed = new Hashtable();
             foreach (DraggableElementToken e in GetAllStoredElementTokens())
             {
                 htElementsPossessed.Add(e.Element.Id, e.Quantity);
             }
+
+
+            Hashtable htTimers = new Hashtable();
+
+
             exportJson = htElementsPossessed.JsonString();
+            
             File.WriteAllText(Noon.NoonUtility.GetGameSavePath(), exportJson);
             Log("Saved the game; but not the world.");
         }
