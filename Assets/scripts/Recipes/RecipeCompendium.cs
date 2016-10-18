@@ -41,4 +41,9 @@ public class RecipeCompendium
         return _recipes;
     }
 
+    public Recipe GetRecipeById(string recipeId)
+    {
+        return _recipes.SingleOrDefault(r => r.Id == recipeId);
+    }
+
 }

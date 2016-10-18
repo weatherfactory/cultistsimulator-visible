@@ -75,7 +75,10 @@ public class BoardManager : MonoBehaviour
         return pnlResources.GetComponentsInChildren<DraggableElementToken>();
     }
 
-
+    private IEnumerable<RecipeTimer> GetAllCurrentRecipeTimers()
+    {
+        return pnlWorld.GetCurrentRecipeTimers();
+    }
 
 
     /// <summary>
@@ -127,6 +130,10 @@ public class BoardManager : MonoBehaviour
     {
         pnlWorkspace.ClearAllWorkspaceElements(this);
     }
+    private void ClearRecipeTimers()
+    {
+        pnlWorld.ClearRecipeTimers();
+    }
 
     public void ReturnElementTokenToStorage(DraggableElementToken tokenToReturn)
     {
@@ -172,7 +179,7 @@ public class BoardManager : MonoBehaviour
     {
         Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription);
-        pnlWorld.AddTimer(currentRecipe);
+        pnlWorld.AddTimer(currentRecipe,null);
     }
 
     public void Log(string message)
@@ -211,7 +218,10 @@ public class BoardManager : MonoBehaviour
         {
             e.SetQuantity(0);
         }
+        ClearRecipeTimers();
     }
+
+    
 
     public void SaveCurrentBoard()
     {
@@ -226,10 +236,18 @@ public class BoardManager : MonoBehaviour
             }
 
 
-            Hashtable htTimers = new Hashtable();
+            Hashtable htRecipeTimers = new Hashtable();
+            foreach (RecipeTimer rt in GetAllCurrentRecipeTimers())
+            {
+                htRecipeTimers.Add(rt.Recipe.Id,rt.TimeRemaining);
+            }
 
+            Hashtable htSave=new Hashtable();
 
-            exportJson = htElementsPossessed.JsonString();
+            htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_ELEMENTSPOSSESSED,htElementsPossessed);
+            htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_RECIPETIMERS,htRecipeTimers);
+
+            exportJson = htSave.JsonString();
             
             File.WriteAllText(Noon.NoonUtility.GetGameSavePath(), exportJson);
             Log("Saved the game; but not the world.");
@@ -240,12 +258,17 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    
+
     public void LoadCurrentBoard()
     {
         try
         {
             string importJson = File.ReadAllText(Noon.NoonUtility.GetGameSavePath());
-            Hashtable htElementsPossessed = SimpleJsonImporter.Import(importJson);
+            Hashtable htSave = SimpleJsonImporter.Import(importJson);
+
+            Hashtable htElementsPossessed = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_ELEMENTSPOSSESSED);
+            Hashtable htRecipeTimers = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_RECIPETIMERS);
             //check if it's all valid first
             foreach (string k in htElementsPossessed.Keys)
             {
@@ -255,11 +278,18 @@ public class BoardManager : MonoBehaviour
                     throw new ApplicationException("Unknown element id " + k + " in save file");
                 }
             }
+
             ClearBoard();
 
             foreach (string k in htElementsPossessed.Keys)
             {
                 ModifyElementQuantityOnBoard(k, Convert.ToInt32(htElementsPossessed[k]));
+            }
+
+            foreach (string k in htRecipeTimers.Keys)
+            {
+                Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
+                pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()));
             }
 
             Log("Once more, for you, we have loaded the game.");

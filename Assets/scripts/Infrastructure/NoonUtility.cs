@@ -7,6 +7,12 @@ using UnityEngine;
 
 namespace Noon
 {
+
+    public class NoonUtilityConstants
+    {
+        public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
+        public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
+    }
     public class NoonUtility
     {
         public static string GetGameSavePath()

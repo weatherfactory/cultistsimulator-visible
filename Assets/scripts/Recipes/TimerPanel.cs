@@ -17,11 +17,11 @@ public class TimerPanel : BoardMonoBehaviour
         txtTimer.text = "[" + RecipeTimer.TimeRemaining + "] " + RecipeTimer.Recipe.Label;
     }
 
-    public void StartTimer(Recipe r)
+    public void StartTimer(Recipe r,float? timeRemaining)
     {
         if (RecipeTimer!=null)
             throw new ApplicationException("already running a recipe (" + RecipeTimer.Recipe.Id + ")");
-        RecipeTimer = new RecipeTimer(r);
+        RecipeTimer = new RecipeTimer(r, timeRemaining);
            
         UpdateTimerText();
 
@@ -45,26 +45,7 @@ public class TimerPanel : BoardMonoBehaviour
 
 }
 
-public class RecipeTimer
-{
-    public Recipe Recipe { get; set; }
-    public float TimeRemaining { get; set; }
 
-    public RecipeTimer(Recipe recipe)
-    {
-        Recipe = recipe;
-        TimeRemaining = recipe.Warmup;
-    }
-
-    public RecipeTimerState DoHeartbeat()
-    {
-        TimeRemaining--;
-        if(TimeRemaining<=0)
-            return RecipeTimerState.Complete;
-
-        return RecipeTimerState.Ongoing;
-    }
-}
 
 public enum RecipeTimerState{ Ongoing=1,Complete=10}
     
