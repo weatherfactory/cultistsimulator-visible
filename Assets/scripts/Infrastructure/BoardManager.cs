@@ -89,9 +89,20 @@ public class BoardManager : MonoBehaviour
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
         ModifyElementQuantityOnBoard("clique", 1);
-        ModifyElementQuantityOnBoard("ordinarylife",1);
+        ModifyElementQuantityOnBoard("ordinarylife", 1);
         ModifyElementQuantityOnBoard("health", 10);
         ModifyElementQuantityOnBoard("occultscrap", 1);
+        //ModifyElementQuantityOnBoard("alockedmind", 1);
+        //ModifyElementQuantityOnBoard("aninspectorcalls", 1);
+        //ModifyElementQuantityOnBoard("order", 1);
+        //ModifyElementQuantityOnBoard("suitablepremises", 1);
+        //ModifyElementQuantityOnBoard("crypt", 1);
+        //ModifyElementQuantityOnBoard("starshatteredfane", 1);
+        //ModifyElementQuantityOnBoard("minorremaking", 1);
+        //ModifyElementQuantityOnBoard("cryptexpedition", 1);
+        //ModifyElementQuantityOnBoard("riteofslaking", 1);
+
+
     }
 
     /// <summary>

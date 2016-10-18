@@ -33,8 +33,13 @@ public class Element
         if(slots!=null)
         { 
         //ultimately, each slot can be unique
-        for(int i=1; i<= Convert.ToInt32(slots["quantity"]);i++ )
-            ChildSlots.Add(new ChildSlot());
+        //for(int i=1; i<= Convert.ToInt32(slots["quantity"]);i++ )
+        //    ChildSlots.Add(new ChildSlot());
+            foreach (string k in slots.Keys)
+            {
+                Debug.Log(k);
+                ChildSlots.Add(new ChildSlot(k));
+            }
         }
 
     }
@@ -42,5 +47,12 @@ public class Element
 
 public class ChildSlot
 {
-    public string Name { get; set; }
+    public string Label { get; set; }
+    public Dictionary<string, int> Required { get; set; }
+    public Dictionary<string, int> Forbidden { get; set; }
+
+    public ChildSlot(string label)
+    {
+        Label = label;
+    }
 }

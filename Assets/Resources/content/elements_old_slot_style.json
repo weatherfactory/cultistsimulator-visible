@@ -85,6 +85,7 @@
             label: "Summoned",
             isAspect: true
         },
+
         {
             id: "ordinarylife",
             label: "An Ordinary Life",
@@ -99,8 +100,8 @@
             aspects:{},
             slots:
         {
-         "Key":
-		 {required: {key: 1}}
+            quantity: 1,
+                required: {key: 1}
             },
             maxvalue:77,
             description: "Somewhere, there's a key."
@@ -236,7 +237,7 @@
             description: "A sombre man in dark blue has taken an interest in your endeavours.",
             slots:
             {
-               "interviewee": {}
+                quantity: 1
             }
         },
 
@@ -406,13 +407,9 @@
             },
             slots:
             {
-			"attendant 1": {  required: {ritual: 1, follower: 1},
-                forbidden: {}},
-			"attendant 2": {  required: {ritual: 1, follower: 1},
-                forbidden: {}},
-				"attendant 3": {  required: {ritual: 1, follower: 1},
-                forbidden: {}}
-              
+                quantity: 3,
+                required: {ritual: 1, follower: 1},
+                forbidden: {}
             },
             maxvalue:1,
             description: "If a Clique is the skin of our purpose, the Order is the flexing sheath of muscle beneath."
@@ -424,16 +421,11 @@
             {
                 society: 1
             },
-          slots:
+            slots:
             {
-			"attendant": {
+                quantity: 2,
                 required: {ritual: 1, follower: 1},
                 forbidden: {}
-				},
-			"attendant 2": {
-                required: {ritual: 1, follower: 1},
-                forbidden: {}
-				},	
             },
             maxvalue:1,
             description: "An earnest and informal club. Set the correct rite at its heart, and it will grow to become both weapon and fortress."
@@ -447,13 +439,9 @@
             },
             slots:
             {
-			"attic":{
+                quantity: 2,
                 required: {},
-                forbidden: {location: 1} },
-				"cellar":{
-                required: {},
-                forbidden: {location: 1} },
-				
+                forbidden: {location: 1}
             },
             maxvalue:77,
             description: "Now, away from pricked ears and prying eyes, the Work can begin."
@@ -465,13 +453,11 @@
             {
                 location: 1
             },
-			slots: {
-  			"antechamber":{
+            slots:
+            {
+                quantity: 2,
                 required: {},
-                forbidden: {location: 1} },
-				"gate":{
-                required: {},
-                forbidden: {location: 1} }
+                forbidden: {location: 1}
             },
             maxvalue:1,
             description: "Sealed by the greater Arts and buried beneath basalt: still it must open."
@@ -484,14 +470,12 @@
                 location: 1,
                 forge: CONVENTIONS.QUANTITY_TINY
             },
-		slots: {
-  			"Chamber of Lights":{
+            slots:
+            {
+                quantity: 2,
                 required: {},
-                forbidden: {location: 1} },
-				"Chamber of Nights":{
-                required: {},
-                forbidden: {location: 1} }				
-			},
+                forbidden: {location: 1}
+            },
             maxvalue:77,
             description: "Here, the clock stops."
         },
@@ -503,19 +487,12 @@
                 ritual: 1
             },
             slots: {
-                "focus":
-				{
-                required: {},
-                forbidden: {location: 1, ritual: 1, society: 1}
-				},
-				"locus":
-				{
+                quantity: 2,
                 required: {},
                 forbidden: {location: 1, ritual: 1, society: 1},
-				}
+                description: "For a thing to begin, another must end. For each candle we light, a shadow must burn."
             },
-            maxvalue: 1,
-			description: "For a thing to begin, another must end. For each candle we light, a shadow must burn."
+            maxvalue: 1
         },
         {
             id: "riteofslaking",
@@ -526,14 +503,9 @@
             },
             slots:
             {
-             "First Course":{
+                quantity: 2,
                 required: {},
                 forbidden: {location: 1, ritual: 1, society: 1}
-				},
-				"Second Course":{
-                required: {},
-                forbidden: {location: 1, ritual: 1, society: 1}
-				}
             },
             maxvalue:1,
             description: "My dears, we face the Feast together, and our chins will run with its juices."
@@ -547,11 +519,9 @@
             },
             slots:
             {
-			"Recruit":
-				{
+                quantity: 1,
                 required: {follower: 1},
                 forbidden: {}
-				}
             },
             maxvalue: CONVENTIONS.QUANTITY_EPISODE_END,
             description: "The Long rarely die. When they do, their resting places are cursed by their kind or concealed by the Hours. Yet here it is."
