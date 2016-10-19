@@ -33,15 +33,29 @@ namespace CS.Tests
             const string SLOT_LABEL_1 = "slotlabel1";
             const string SLOT_LABEL_2 = "slotlabel2";
 
-            Hashtable slot1=new Hashtable()
+            Hashtable slot1Required = new Hashtable() //1 thing required
             {
-                {"forbidden", "foo1"},
-                {"permitted", "bar1"}
+                {"slot1ra", 1}
             };
+            Hashtable slot1Forbidden = new Hashtable(); //nothing is forbidden
+
+            Hashtable slot1 = new Hashtable()
+            {
+                {"forbidden", slot1Forbidden},
+                {"required", slot1Required}
+            };
+
+            Hashtable slot2Required = new Hashtable(); //nothing is required
+            Hashtable slot2Forbidden = new Hashtable() //two things forbidden
+            {  {"slot2fa", 1},
+                {"slot2fb", 1}
+            };
+
+
             Hashtable slot2 = new Hashtable()
             {
-                {"forbidden", "foo2"},
-                {"permitted", "bar2"}
+                {"required", slot2Required},
+                { "forbidden", slot2Forbidden}
             };
             Hashtable ht = new Hashtable()
             {
@@ -51,9 +65,21 @@ namespace CS.Tests
 
 
             Element.AddSlotsFromHashtable(ht);
+
             Assert.AreEqual(2, Element.ChildSlots.Count);
             Assert.AreEqual(SLOT_LABEL_1,Element.ChildSlots[0].Label);
             Assert.AreEqual(SLOT_LABEL_2, Element.ChildSlots[1].Label);
+
+            Assert.AreEqual(1, Element.ChildSlots[0].Required["slot1ra"]);
+            Assert.AreEqual(1, Element.ChildSlots[0].Required.Count);
+            Assert.AreEqual(0,Element.ChildSlots[0].Forbidden.Count);
+
+            Assert.AreEqual(0, Element.ChildSlots[1].Required.Count);
+            Assert.AreEqual(2, Element.ChildSlots[1].Forbidden.Count);
+            Assert.AreEqual(1, Element.ChildSlots[1].Forbidden["slot2fa"]);
+            Assert.AreEqual(1, Element.ChildSlots[1].Forbidden["slot2fb"]);
+
+
         }
     }
 }

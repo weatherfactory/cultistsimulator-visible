@@ -28,17 +28,30 @@ public class Element
         Aspects = Noon.NoonUtility.ReplaceConventionValues(htAspects);
     }
 
-    public void AddSlotsFromHashtable(Hashtable slots)
+    public void AddSlotsFromHashtable(Hashtable htSlots)
     {
-        if(slots!=null)
+        if(htSlots!=null)
         { 
-        //ultimately, each slot can be unique
-        //for(int i=1; i<= Convert.ToInt32(slots["quantity"]);i++ )
-        //    ChildSlots.Add(new ChildSlot());
-            foreach (string k in slots.Keys)
+        
+            foreach (string k in htSlots.Keys)
             {
                 Debug.Log(k);
                 ChildSlots.Add(new ChildSlot(k));
+
+                Hashtable htThisSlot = htSlots[k] as Hashtable;
+
+                Hashtable htRequired = htThisSlot["required"] as Hashtable;
+                if(htRequired!=null)
+                { 
+                foreach (string rk in htRequired.Keys)
+                ChildSlots[ChildSlots.Count-1].Required.Add(rk,1);
+                }
+                Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
+                if(htForbidden!=null)
+                { 
+                foreach (string fk in htForbidden.Keys)
+                    ChildSlots[ChildSlots.Count - 1].Forbidden.Add(fk, 1);
+                }
             }
         }
 
@@ -54,5 +67,7 @@ public class ChildSlot
     public ChildSlot(string label)
     {
         Label = label;
+        Required=new Dictionary<string, int>();
+        Forbidden=new Dictionary<string, int>();
     }
 }
