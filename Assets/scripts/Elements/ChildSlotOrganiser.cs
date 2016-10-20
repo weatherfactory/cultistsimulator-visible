@@ -17,9 +17,11 @@ public class ChildSlotOrganiser : BoardMonoBehaviour
     public void Populate(DraggableElementToken draggedElement)
     {
         name = "Organiser for " + draggedElement.Element.Id;
-        foreach (ChildSlot ci in draggedElement.Element.ChildSlots)
+        foreach (ChildSlotSpecification eachChildSlotSpecification in draggedElement.Element.ChildSlotSpecifications)
         {
-            Instantiate(PrefabEmptyElementSlot, gameObject.transform, false);
+            GameObject slotObject=Instantiate(PrefabEmptyElementSlot, gameObject.transform, false) as GameObject;
+            SlotReceiveElement childSlot = slotObject.GetComponent<SlotReceiveElement>();
+            childSlot.GoverningChildSlotSpecification = eachChildSlotSpecification;
 
         }
     }

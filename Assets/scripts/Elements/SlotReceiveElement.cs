@@ -6,7 +6,14 @@ using UnityEngine.EventSystems;
 
 public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 {
-    public GameObject ChildSlotOrganiser;
+    /// <summary>
+    /// If this slot contains an element which has slots, this slot has a dependent childslotorganiser
+    /// </summary>
+    public GameObject DependentChildSlotOrganiser;
+    /// <summary>
+    /// if this slot isn't the primary slot, it will have required and forbidden aspects; the ChildSlotSpecification governs them.
+    /// </summary>
+    public ChildSlotSpecification  GoverningChildSlotSpecification;
 
     private GameObject ItemInSlot
     {
@@ -30,8 +37,8 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 
     public void ClearThisSlot()
     {
-        if (ChildSlotOrganiser != null)
-            ChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Remove(); //this is potentially recursive
+        if (DependentChildSlotOrganiser != null)
+            DependentChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Remove(); //this is potentially recursive
         
         DraggableElementToken tokenToRemove = GetTokenInSlot();
         if(tokenToRemove!=null)
@@ -45,16 +52,26 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         if (BM.CurrentDragItem.tag == "Element")
         { 
             
+            //is there already a token in the slot?
             if (GetTokenInSlot()!=null)
             {
               ClearThisSlot();
             }
             DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
+
+            //does the element obey restrictions for the current slot?
+            GoverningChildSlotSpecification.GetElementSlotMatchFor(draggableElementToken.Element);
+
+            //settle the element in the slot, and update aspects
             draggableElementToken.transform.SetParent(transform);
             BM.UpdateAspectDisplay();
 
+            //add child slots for this token's element, if it has any
             if(draggableElementToken.HasChildSlots())
                 BM.AddChildSlots(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
+            
+
+           
 
 
         }

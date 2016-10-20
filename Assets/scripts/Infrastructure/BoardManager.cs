@@ -163,11 +163,11 @@ public class BoardManager : MonoBehaviour
         
         float governingSlotHeight = governingSlot.GetComponent<RectTransform>().rect.height;
         Transform governingSlotTransform = governingSlot.transform;
-        governingSlot.ChildSlotOrganiser = Instantiate(prefabChildSlotsOrganiser, pnlWorkspace.transform, false) as GameObject;
+        governingSlot.DependentChildSlotOrganiser = Instantiate(prefabChildSlotsOrganiser, pnlWorkspace.transform, false) as GameObject;
         Vector3 newSlotPosition = new Vector3(governingSlotTransform.localPosition.x, governingSlotTransform.localPosition.y - governingSlotHeight);
-        governingSlot.ChildSlotOrganiser.transform.localPosition = newSlotPosition;
+        governingSlot.DependentChildSlotOrganiser.transform.localPosition = newSlotPosition;
 
-        governingSlot.ChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(draggedElement);
+        governingSlot.DependentChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(draggedElement);
 
     }
 

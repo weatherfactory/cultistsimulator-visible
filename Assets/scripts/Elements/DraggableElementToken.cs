@@ -53,7 +53,7 @@ public class DraggableElementToken: DraggableToken
 
         public bool HasChildSlots()
         {
-            return Element.ChildSlots.Count > 0;
+            return Element.ChildSlotSpecifications.Count > 0;
         }
 
 

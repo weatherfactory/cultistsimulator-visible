@@ -11,7 +11,7 @@ public class Element
     public string Id { get; set; }
     public string Label { get; set; }
     public string Description { get; set; }
-    public List<ChildSlot> ChildSlots { get; set; }
+    public List<ChildSlotSpecification> ChildSlotSpecifications { get; set; }
 
 
     public Element(string id, string label, string description)
@@ -19,7 +19,7 @@ public class Element
         Id = id;
         Label = label;
         Description = description;
-        ChildSlots=new List<ChildSlot>();
+        ChildSlotSpecifications=new List<ChildSlotSpecification>();
         Aspects=new Dictionary<string, int>();
     }
 
@@ -36,7 +36,7 @@ public class Element
             foreach (string k in htSlots.Keys)
             {
                 Debug.Log(k);
-                ChildSlots.Add(new ChildSlot(k));
+                ChildSlotSpecifications.Add(new ChildSlotSpecification(k));
 
                 Hashtable htThisSlot = htSlots[k] as Hashtable;
 
@@ -44,13 +44,13 @@ public class Element
                 if(htRequired!=null)
                 { 
                 foreach (string rk in htRequired.Keys)
-                ChildSlots[ChildSlots.Count-1].Required.Add(rk,1);
+                ChildSlotSpecifications[ChildSlotSpecifications.Count-1].Required.Add(rk,1);
                 }
                 Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
                 if(htForbidden!=null)
                 { 
                 foreach (string fk in htForbidden.Keys)
-                    ChildSlots[ChildSlots.Count - 1].Forbidden.Add(fk, 1);
+                    ChildSlotSpecifications[ChildSlotSpecifications.Count - 1].Forbidden.Add(fk, 1);
                 }
             }
         }
@@ -58,16 +58,3 @@ public class Element
     }
 }
 
-public class ChildSlot
-{
-    public string Label { get; set; }
-    public Dictionary<string, int> Required { get; set; }
-    public Dictionary<string, int> Forbidden { get; set; }
-
-    public ChildSlot(string label)
-    {
-        Label = label;
-        Required=new Dictionary<string, int>();
-        Forbidden=new Dictionary<string, int>();
-    }
-}
