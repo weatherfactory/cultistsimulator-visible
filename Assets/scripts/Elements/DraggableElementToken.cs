@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.scripts.Infrastructure;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class DraggableElementToken: DraggableToken,IPointerClickHandler
+public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyLocator
     {
 
     public Element Element { get; set; }
@@ -116,7 +117,14 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler
 
         public void OnPointerClick(PointerEventData eventData)
         {
-           BM.DisplayText(Element.Label,Element.Description, Style.Assertive);
+           BM.Notify(Element.Label,Element.Description, gameObject.GetComponent<INotifyLocator>());
+        }
+
+        public Vector3 GetNotificationPosition()
+        {
+            Vector3 v3 = transform.position;
+            v3.x += 130;
+            return v3;
         }
     }
 

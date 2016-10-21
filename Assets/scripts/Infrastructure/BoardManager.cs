@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.scripts.Infrastructure;
 using OrbCreationExtensions;
 using UnityEngine.UI;
 
@@ -49,7 +50,7 @@ public class BoardManager : MonoBehaviour
         catch (NullReferenceException)
         {
             
-            DisplayText("Couldn't create element with id " + elementId, Style.Subtle);
+            Log("Couldn't create element with id " + elementId, Style.Subtle);
             ExileToLimboThenDestroy(elementTokenGameObject);
         }
             
@@ -189,28 +190,28 @@ public class BoardManager : MonoBehaviour
     public void QueueCurrentRecipe()
     {
         Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
-        DisplayText(pnlRecipeDisplay.CurrentRecipe.StartDescription,Style.Subtle);
+        Log(pnlRecipeDisplay.CurrentRecipe.StartDescription,Style.Subtle);
         pnlWorld.AddTimer(currentRecipe,null);
     }
 
-    public void DisplayText(string aside, string message,Style style)
+    public void Notify(string aside, string message, INotifyLocator notifyingGameObject)
     {
-        if (style == Style.Subtle)
-            pnlLog.Write(aside + message);
-        if (style == Style.Assertive)
-        {
             GameObject objNotificationPanel = Instantiate(prefabNotificationPanel, transform) as GameObject;
-            objNotificationPanel.transform.localPosition = new Vector3(0, 0);
+            
+            objNotificationPanel.transform.position = notifyingGameObject.GetNotificationPosition(); 
             NotificationPanel np = objNotificationPanel.GetComponent<NotificationPanel>();
              np.SetAside(aside);
             np.Lifespan = 3;
             np.SetBodyText(message);
-        }
+
     }
-    public void DisplayText(string message, Style style)
+
+
+    public void Log(string message, Style style)
     {
-        DisplayText("",message,style);
+        pnlLog.Write(message);
     }
+
 
     public void DoHeartbeat()
     {
@@ -219,7 +220,7 @@ public class BoardManager : MonoBehaviour
 
     public void ExecuteRecipe(Recipe recipe)
     {
-        DisplayText(recipe.Description, Style.Subtle);
+        Log(recipe.Description, Style.Subtle);
         foreach (var e in recipe.Effects)
             ModifyElementQuantityOnBoard(e.Key, e.Value);
 
@@ -275,11 +276,11 @@ public class BoardManager : MonoBehaviour
             exportJson = htSave.JsonString();
             
             File.WriteAllText(Noon.NoonUtility.GetGameSavePath(), exportJson);
-            DisplayText("Saved the game; but not the world.", Style.Subtle);
+            Log("Saved the game; but not the world.", Style.Subtle);
         }
         catch (Exception)
         {
-            DisplayText("Something horrible has happened. We couldn't save the game.", Style.Subtle);
+            Log("Something horrible has happened. We couldn't save the game.", Style.Subtle);
         }
     }
 
@@ -299,7 +300,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (!ContentRepository.Instance.IsKnownElement(k))
                 {
-                    DisplayText("Unknown element id: " + k, Style.Subtle);
+                    Log("Unknown element id: " + k, Style.Subtle);
                     throw new ApplicationException("Unknown element id " + k + " in save file");
                 }
             }
@@ -317,11 +318,11 @@ public class BoardManager : MonoBehaviour
                 pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()));
             }
 
-            DisplayText("Once more, for you, we have loaded the game.", Style.Subtle);
+            Log("Once more, for you, we have loaded the game.", Style.Subtle);
         }
         catch (Exception exception)
         {
-            DisplayText("Missing or invalid save file. Sorry! (" + exception.Message + ")", Style.Subtle);
+            Log("Missing or invalid save file. Sorry! (" + exception.Message + ")", Style.Subtle);
         }
     }
 }

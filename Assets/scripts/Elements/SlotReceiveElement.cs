@@ -65,14 +65,14 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             ElementSlotMatch elementSlotMatch= GoverningChildSlotSpecification.GetElementSlotMatchFor(draggableElementToken.Element);
             if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.ForbiddenAspectPresent)
             {
-                BM.DisplayText("Elements with the " + elementSlotMatch.ProblemAspectId + " are unacceptable here. *Unacceptable*.", Style.Assertive);
+                BM.Log("Elements with the " + elementSlotMatch.ProblemAspectId + " are unacceptable here. *Unacceptable*.", Style.Assertive);
                     draggableElementToken.ReturnToOrigin();
                     return;
                 }
 
             if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.RequiredAspectMissing)
             {
-                BM.DisplayText("Only elements with the " + elementSlotMatch.ProblemAspectId + " aspect can go here.", Style.Assertive);
+                BM.Log("Only elements with the " + elementSlotMatch.ProblemAspectId + " aspect can go here.", Style.Assertive);
                     draggableElementToken.ReturnToOrigin();
                 return;
             }
