@@ -30,7 +30,10 @@ namespace Noon
 
         public static Dictionary<string,int> ReplaceConventionValues(Hashtable htAspects)
         {
+
             Dictionary<string,int> Results=new Dictionary<string,int>();
+            if (htAspects == null)
+                return Results;
             foreach (string k in htAspects.Keys)
             {
                 string v = htAspects[k].ToString();

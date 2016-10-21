@@ -318,7 +318,7 @@ public class BoardManager : MonoBehaviour
                 pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()));
             }
 
-            Log("Once more, for you, we have loaded the game.", Style.Subtle);
+            Log("This is the game; I will be a pawn, or I will be a player.", Style.Subtle);
         }
         catch (Exception exception)
         {

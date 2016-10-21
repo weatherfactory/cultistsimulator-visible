@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using Assets.scripts.Infrastructure;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AspectFrame : MonoBehaviour
+public class AspectFrame : BoardMonoBehaviour,IPointerClickHandler,INotifyLocator
 {
-    public string AspectId;
     public int Quantity;
-
+    public Element Aspect;
 
     public void DisplayAspectImage(string aspectId)
     {
@@ -23,11 +24,11 @@ public class AspectFrame : MonoBehaviour
 
     }
 
-    public void PopulateDisplay(string aspectId, int aspectValue, ContentRepository instance)
+    public void PopulateDisplay(string aspectId, int aspectValue, ContentRepository cr)
     {
-        AspectId = aspectId;
+        Aspect = cr.PopulateElementForId(aspectId);
         Quantity = aspectValue;
-        DisplayAspectImage(AspectId);
+        DisplayAspectImage(aspectId);
         DisplayQuantity(aspectValue);
         gameObject.name = "Aspect - " +aspectId;
 
@@ -36,5 +37,17 @@ public class AspectFrame : MonoBehaviour
     public void ModifyQuantity(int quantityChange)
     {
        DisplayQuantity(Quantity+quantityChange);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        BM.Notify(Aspect.Label,Aspect.Description, gameObject.GetComponent<INotifyLocator>());
+   }
+
+    public Vector3 GetNotificationPosition()
+    {
+        Vector3 v3 = transform.position;
+        v3.x += 130;
+        return v3;
     }
 }

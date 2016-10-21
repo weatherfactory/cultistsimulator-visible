@@ -14,7 +14,7 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
     private AspectFrame GetAspectFrameForId(string aspectId)
     {
         return
-            GetComponentsInChildren<AspectFrame>().SingleOrDefault(a => a.AspectId == aspectId);
+            GetComponentsInChildren<AspectFrame>().SingleOrDefault(a => a.Aspect.Id == aspectId);
     }
 
     private void AddAspectToDisplay(string aspectId, int quantity)
@@ -42,7 +42,7 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
         Dictionary<string, int> allAspects=new Dictionary<string, int>();
         foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
         {
-            allAspects.Add(a.AspectId,a.Quantity);
+            allAspects.Add(a.Aspect.Id,a.Quantity);
         }
         return allAspects;
     }
