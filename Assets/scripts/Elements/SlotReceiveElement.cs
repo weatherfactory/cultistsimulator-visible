@@ -59,23 +59,36 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             }
             DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
 
+            if(GoverningChildSlotSpecification!=null)
+            { 
             //does the element obey restrictions for the current slot?
-            GoverningChildSlotSpecification.GetElementSlotMatchFor(draggableElementToken.Element);
+            ElementSlotMatch elementSlotMatch= GoverningChildSlotSpecification.GetElementSlotMatchFor(draggableElementToken.Element);
+            if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.ForbiddenAspectPresent)
+            {
+                BM.DisplayText("Elements with the " + elementSlotMatch.ProblemAspectId + " are unacceptable here. *Unacceptable*.", Style.Assertive);
+                    draggableElementToken.ReturnToOrigin();
+                    return;
+                }
 
-            //settle the element in the slot, and update aspects
-            draggableElementToken.transform.SetParent(transform);
-            BM.UpdateAspectDisplay();
-
-            //add child slots for this token's element, if it has any
-            if(draggableElementToken.HasChildSlots())
-                BM.AddChildSlots(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
-            
-
-           
-
-
+            if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.RequiredAspectMissing)
+            {
+                BM.DisplayText("Only elements with the " + elementSlotMatch.ProblemAspectId + " aspect can go here.", Style.Assertive);
+                    draggableElementToken.ReturnToOrigin();
+                return;
+            }
+            }
+            AddElementToSlot(draggableElementToken);
         }
     }
 
+    private void AddElementToSlot(DraggableElementToken draggableElementToken)
+    {
+//settle the element in the slot, and update aspects
+        draggableElementToken.transform.SetParent(transform);
+        BM.UpdateAspectDisplay();
 
+        //add child slots for this token's element, if it has any
+        if (draggableElementToken.HasChildSlots())
+            BM.AddChildSlots(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
+    }
 }

@@ -24,6 +24,12 @@ public class ChildSlotSpecification
                 return new ElementSlotMatch(k,ElementSlotSuitability.RequiredAspectMissing);
         }
 
+        foreach (string k in Forbidden.Keys)
+        {
+            if(element.Aspects.ContainsKey(k))
+                return new ElementSlotMatch(k,ElementSlotSuitability.ForbiddenAspectPresent);
+        }
+
         return new ElementSlotMatch(null,ElementSlotSuitability.Okay);
   
     }

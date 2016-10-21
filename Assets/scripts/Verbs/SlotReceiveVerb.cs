@@ -36,6 +36,8 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
 
     public string GetCurrentVerbId()
     {
-        return VerbTokenInSlot.VerbId;
+        if (VerbTokenInSlot != null)
+            return VerbTokenInSlot.VerbId;
+        else return "";
     }
 }

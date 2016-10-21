@@ -38,6 +38,18 @@ namespace CS.Tests
         }
 
         [Test]
+        public void ElementPossessingForbiddenAspectFailsChildSlotSpecification()
+        {
+            Element.Aspects.Add("forbiddenaspect", 1);
+
+            ChildSlotSpecification css = new ChildSlotSpecification("specificationtotest");
+            css.Forbidden.Add("forbiddenaspect", 1);
+            ElementSlotMatch esm = css.GetElementSlotMatchFor(Element);
+            Assert.AreEqual(ElementSlotSuitability.ForbiddenAspectPresent, esm.ElementSlotSuitability);
+            Assert.AreEqual("forbiddenaspect", esm.ProblemAspectId);
+        }
+
+        [Test]
         public void ElementSlotsArePopulated()
         {
 

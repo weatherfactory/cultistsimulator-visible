@@ -22,7 +22,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField]GameObject prefabElementToken;
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
-
+    [SerializeField] private GameObject prefabNotificationPanel;
     public DraggableToken CurrentDragItem;
 
     public CurrentAspectsDisplay PnlCurrentAspects
@@ -49,7 +49,7 @@ public class BoardManager : MonoBehaviour
         catch (NullReferenceException)
         {
             
-            Log("Couldn't create element with id " + elementId);
+            DisplayText("Couldn't create element with id " + elementId, Style.Subtle);
             ExileToLimboThenDestroy(elementTokenGameObject);
         }
             
@@ -189,13 +189,27 @@ public class BoardManager : MonoBehaviour
     public void QueueCurrentRecipe()
     {
         Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
-        Log(pnlRecipeDisplay.CurrentRecipe.StartDescription);
+        DisplayText(pnlRecipeDisplay.CurrentRecipe.StartDescription,Style.Subtle);
         pnlWorld.AddTimer(currentRecipe,null);
     }
 
-    public void Log(string message)
+    public void DisplayText(string aside, string message,Style style)
     {
-       pnlLog.Write(message);
+        if (style == Style.Subtle)
+            pnlLog.Write(aside + message);
+        if (style == Style.Assertive)
+        {
+            GameObject objNotificationPanel = Instantiate(prefabNotificationPanel, transform) as GameObject;
+            objNotificationPanel.transform.localPosition = new Vector3(0, 0);
+            NotificationPanel np = objNotificationPanel.GetComponent<NotificationPanel>();
+             np.SetAside(aside);
+            np.Lifespan = 3;
+            np.SetBodyText(message);
+        }
+    }
+    public void DisplayText(string message, Style style)
+    {
+        DisplayText("",message,style);
     }
 
     public void DoHeartbeat()
@@ -205,7 +219,7 @@ public class BoardManager : MonoBehaviour
 
     public void ExecuteRecipe(Recipe recipe)
     {
-        Log(recipe.Description);
+        DisplayText(recipe.Description, Style.Subtle);
         foreach (var e in recipe.Effects)
             ModifyElementQuantityOnBoard(e.Key, e.Value);
 
@@ -261,11 +275,11 @@ public class BoardManager : MonoBehaviour
             exportJson = htSave.JsonString();
             
             File.WriteAllText(Noon.NoonUtility.GetGameSavePath(), exportJson);
-            Log("Saved the game; but not the world.");
+            DisplayText("Saved the game; but not the world.", Style.Subtle);
         }
         catch (Exception)
         {
-            Log("Something horrible has happened. We couldn't save the game.");
+            DisplayText("Something horrible has happened. We couldn't save the game.", Style.Subtle);
         }
     }
 
@@ -285,7 +299,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (!ContentRepository.Instance.IsKnownElement(k))
                 {
-                    Log("Unknown element id: " + k);
+                    DisplayText("Unknown element id: " + k, Style.Subtle);
                     throw new ApplicationException("Unknown element id " + k + " in save file");
                 }
             }
@@ -303,11 +317,11 @@ public class BoardManager : MonoBehaviour
                 pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()));
             }
 
-            Log("Once more, for you, we have loaded the game.");
+            DisplayText("Once more, for you, we have loaded the game.", Style.Subtle);
         }
         catch (Exception exception)
         {
-            Log("Missing or invalid save file. Sorry! (" + exception.Message + ")");
+            DisplayText("Missing or invalid save file. Sorry! (" + exception.Message + ")", Style.Subtle);
         }
     }
 }

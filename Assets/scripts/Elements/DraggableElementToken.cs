@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class DraggableElementToken: DraggableToken
+public class DraggableElementToken: DraggableToken,IPointerClickHandler
     {
 
     public Element Element { get; set; }
@@ -114,7 +114,11 @@ public class DraggableElementToken: DraggableToken
     }
 
 
-}
+        public void OnPointerClick(PointerEventData eventData)
+        {
+           BM.DisplayText(Element.Label,Element.Description, Style.Assertive);
+        }
+    }
 
 
 
