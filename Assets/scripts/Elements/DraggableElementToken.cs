@@ -44,7 +44,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
 
         public void PopulateForElementId(string elementId,int change,ContentRepository cm)
         {
-        Element = cm.PopulateElementForId(elementId);
+        Element = cm.GetElementById(elementId);
         DisplayName(Element);
         DisplayIcon(Element);
         _quantity = change;

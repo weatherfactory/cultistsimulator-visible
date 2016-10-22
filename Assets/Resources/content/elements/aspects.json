@@ -1,0 +1,101 @@
+{"elements":
+    [
+ {
+            id: "expedition",
+            label: "Expedition",
+			description: "One must speculate, to accumulate.",
+            isAspect: true
+        },
+        {
+            id: "edge",
+            label: "Edge",
+			description: "All conquest occurs at the Edge. The one who dwells there cannot see and cannot hear; cannot be wounded and cannot be denied. [Edge is the principle of contention and of battle.]",
+            isAspect: true
+        },
+        {
+            id: "forge",
+            label: "Forge",
+			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The Forge of Days transforms and destroys.]",
+            isAspect: true
+        },
+        {
+            id: "follower",
+            label: "Follower",
+			description: "Student, helpmeet, defender, champion, dupe, sacrifice... companion.",
+            isAspect: true
+        },
+        {
+            id: "grail",
+            label: "Grail",
+			description: "Hunger, lust, the drowning waters. [The principle of the Red Grail demands to be fed.]",
+        isAspect: true,
+            triggers:
+            {
+                grailhunger: 10
+            }
+        },
+        {
+            id: "heart",
+            label: "Heart",
+			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle of certainty and safety.]",
+            isAspect: true
+        },
+        {
+            id: "key",
+            label: "Key",
+            isAspect: true
+        },
+        {
+            id: "knock",
+            label: "Knock",
+			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and exposes horrible secrets.]",
+            isAspect: true
+        },
+        {
+            id: "lantern",
+            label: "Lantern",
+			description: "On the borders of our dreams we find the Mansus, where the Watchman walks the corridors. Light goes before him and shadow behind. He must not see you. [Lantern is the principle of Dreams and the Mansus.]",
+            isAspect: true,
+            triggers:
+            {
+                hersaultnightmares: 10
+            }
+        },
+        {
+            id: "location",
+            label: "Location",
+			description: "Locations! Everyone must be somewhere, and I am here. A Location can contain anything except another Location.",
+        isAspect: true
+},
+        {
+        id: "moth",
+        label: "Moth",
+        isAspect: true,
+		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of curiosity and yearning.]",
+    },
+        {
+            id: "ritual",
+            label: "Ritual",
+			description: "A Ritual can contain anything but a Location or another Ritual.",
+            isAspect: true
+        },
+
+        {
+            id: "secrethistories",
+            label: "Secret Histories",
+			        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.]",
+            isAspect: true
+        },
+        {
+            id: "society",
+            label: "Society",
+			description: "A society allows me to employ my followers to best advantage. It can contain Rituals and Followers.",
+            isAspect: true
+        },
+        {
+            id: "summoned",
+            label: "Summoned",
+            isAspect: true
+        },
+]
+};

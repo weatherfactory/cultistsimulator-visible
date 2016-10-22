@@ -9,40 +9,83 @@ using OrbCreationExtensions;
 using UnityEditor;
 using UnityEngine.Assertions;
 
-
 public class ContentRepository : Singleton<ContentRepository>
 {
 
     private const string CONST_CONTENTDIR = "content/";
     private const string CONST_ELEMENTS = "elements";
-    private const string CONST_RECIPES = "recipes";
+    private const string CONST_RECIPES = "recipes/recipes";
     private const string CONST_VERBS = "verbs";
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
     private const string CONST_DESCRIPTION = "description";
 
-    private Hashtable htElements;
-    private ArrayList recipesArrayList;
-    private ArrayList verbsArrayList;
+    private ArrayList recipesArrayList=new ArrayList();
+    private ArrayList verbsArrayList=new ArrayList();
+    private Dictionary<string, Element> elements=new Dictionary<string, Element>();
     public RecipeCompendium RecipeCompendium;
 
     public void ImportElements()
     {
-        string json = Resources.Load<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS).text;
-        htElements = SimpleJsonImporter.Import(json);
+        TextAsset[] elementTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS);
+        foreach (TextAsset ta in elementTextAssets)
+        {
+            string json = ta.text;
+            Hashtable htElements = new Hashtable();
+            htElements = SimpleJsonImporter.Import(json);
+            PopulateElements(htElements);
+        }
+
+ 
     }
+
+    public void PopulateElements(Hashtable htElements)
+    {
+        Assert.IsNotNull(htElements, "Elements were never imported; PopulateElementForId failed");
+        if (htElements == null)
+            throw new ApplicationException("Elements were never imported; PopulateElementForId failed");
+
+        ArrayList alElements = htElements.GetArrayList("elements");
+        foreach (Hashtable htElement in alElements)
+        {
+            Hashtable htAspects = htElement.GetHashtable("aspects");
+            Hashtable htSlots = htElement.GetHashtable("slots");
+
+            Element element = new Element(htElement.GetString(CONST_ID),
+               htElement.GetString(CONST_LABEL),
+                htElement.GetString(CONST_DESCRIPTION));
+
+            element.AddAspectsFromHashtable(htAspects);
+            element.AddSlotsFromHashtable(htSlots);
+
+            elements.Add(element.Id,element);
+        }
+       
+    }
+
+
 
     public void ImportRecipes()
     {
-        string json = Resources.Load<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES).text;
-        recipesArrayList = SimpleJsonImporter.Import(json).GetArrayList("recipes");
-        RecipeCompendium = PopulateRecipeCompendium(recipesArrayList);
+TextAsset[] recipeTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        foreach (TextAsset ta in recipeTextAssets)
+        {
+            string json = ta.text;
+            recipesArrayList = SimpleJsonImporter.Import(json).GetArrayList("recipes");
+            RecipeCompendium = PopulateRecipeCompendium(recipesArrayList);
+        }
+
     }
 
     public void ImportVerbs()
     {
-        string json = Resources.Load<TextAsset>(CONST_CONTENTDIR + CONST_VERBS).text;
-        verbsArrayList = SimpleJsonImporter.Import(json).GetArrayList("verbs");
+        TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
+        foreach (TextAsset ta in verbTextAssets)
+        {
+            string json = ta.text;
+            verbsArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("verbs"));
+        }
+
     }
 
     public List<Verb> GetAllVerbs()
@@ -104,36 +147,14 @@ public class ContentRepository : Singleton<ContentRepository>
 
     public Boolean IsKnownElement(string elementId)
     {
-        Assert.IsNotNull(htElements, "Elements were never imported; IsKnownElement failed");
-
-        if (htElements==null)
-            throw new ApplicationException("Elements were never imported; IsKnownElement failed");
-        bool y= htElements.GetNodeWithProperty(CONST_ID, elementId) != null;
-        return y;
+        return elements.ContainsKey(elementId);
 
     }
 
-    public Element PopulateElementForId(string elementId)
+    public Element GetElementById(string elementId)
     {
-        Assert.IsNotNull(htElements, "Elements were never imported; PopulateElementForId failed");
-        if (htElements == null)
-            throw new ApplicationException("Elements were never imported; PopulateElementForId failed");
+        return elements[elementId];
 
-        if (!IsKnownElement(elementId))
-            return null;
-
-        Hashtable htElement = htElements.GetNodeWithProperty(CONST_ID, elementId);
-        Hashtable htAspects = htElement.GetHashtable("aspects");
-        Hashtable htSlots = htElement.GetHashtable("slots");
-
-        Element element = new Element(elementId,
-           htElement.GetString(CONST_LABEL),
-            htElement.GetString(CONST_DESCRIPTION));
-
-        element.AddAspectsFromHashtable(htAspects);
-        element.AddSlotsFromHashtable(htSlots);
-
-        return element;
     }
 
     public Sprite GetSpriteForVerb(string verbId)
