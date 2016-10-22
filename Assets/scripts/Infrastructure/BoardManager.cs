@@ -122,7 +122,7 @@ public class BoardManager : MonoBehaviour
         Sprite sprite = ContentRepository.Instance.GetSpriteForVerb(v.Id);
         image.sprite = sprite;
         DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
-        token.VerbId = v.Id;
+        token.Verb = v;
     }
 
     /// <summary>

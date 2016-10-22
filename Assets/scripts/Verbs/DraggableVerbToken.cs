@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 public class DraggableVerbToken : DraggableToken
 {
-    [SerializeField] public string VerbId;
+    public Verb Verb;
   
 
     public override void OnBeginDrag(PointerEventData eventData)

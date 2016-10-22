@@ -136,21 +136,6 @@
         craftable: true
     },
     {
-        id: "labour",
-        label: "Labour",
-        actionId: "work",
-        requirements: {heart: 1},
-        alternativerecipes: [{id: 'labourwithromanticinterestpresent', chance:100},
-            {id: 'labourmeetromanticinterest', chance:10}],
-        effects: {
-            shilling: 3
-        },
-        startdescription: "Petty, hateful work for petty, meagre pay.",
-        description: "I am exhausted, but I've earned my pay.",
-        warmup: 6,
-        craftable: true
-    },
-    {
         id: "lockedmindready",
         label: "Dream of the Door, Yourself",
         actionId: "dream",
@@ -1365,4 +1350,5 @@ startdescription: "-",
         warmup: 0,
         craftable: false
     }
-];
+]
+}

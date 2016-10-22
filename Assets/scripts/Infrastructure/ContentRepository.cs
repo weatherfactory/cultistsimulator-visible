@@ -14,14 +14,14 @@ public class ContentRepository : Singleton<ContentRepository>
 
     private const string CONST_CONTENTDIR = "content/";
     private const string CONST_ELEMENTS = "elements";
-    private const string CONST_RECIPES = "recipes/recipes";
+    private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
     private const string CONST_DESCRIPTION = "description";
 
-    private ArrayList recipesArrayList=new ArrayList();
-    private ArrayList verbsArrayList=new ArrayList();
+
+    private Dictionary<string,Verb> verbs=new Dictionary<string, Verb>();
     private Dictionary<string, Element> elements=new Dictionary<string, Element>();
     public RecipeCompendium RecipeCompendium;
 
@@ -63,22 +63,23 @@ public class ContentRepository : Singleton<ContentRepository>
        
     }
 
-
-
     public void ImportRecipes()
     {
-TextAsset[] recipeTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        TextAsset[] recipeTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        ArrayList recipesArrayList = new ArrayList();
+
         foreach (TextAsset ta in recipeTextAssets)
         {
             string json = ta.text;
-            recipesArrayList = SimpleJsonImporter.Import(json).GetArrayList("recipes");
-            RecipeCompendium = PopulateRecipeCompendium(recipesArrayList);
+            recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
+            
         }
-
+        RecipeCompendium = PopulateRecipeCompendium(recipesArrayList);
     }
 
     public void ImportVerbs()
     {
+        ArrayList verbsArrayList=new ArrayList();
         TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
         foreach (TextAsset ta in verbTextAssets)
         {
@@ -86,18 +87,24 @@ TextAsset[] recipeTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CON
             verbsArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("verbs"));
         }
 
+        foreach (Hashtable h in verbsArrayList)
+        {
+            Verb v = new Verb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString());
+            verbs.Add(v.Id,v);
+        }
+
     }
 
     public List<Verb> GetAllVerbs()
     {
-        List<Verb> verbs = new List<Verb>();
+        List<Verb> verbsList = new List<Verb>();
 
-        foreach (Hashtable h in verbsArrayList)
+        foreach (KeyValuePair<string, Verb> keyValuePair in verbs)
         {
-            Verb v=new Verb(h["id"].ToString(),h["label"].ToString(),h["description"].ToString());
-            verbs.Add(v);
+            verbsList.Add(keyValuePair.Value);
         }
-        return verbs;
+
+        return verbsList;
     }
 
     public RecipeCompendium PopulateRecipeCompendium(ArrayList importedRecipes)
