@@ -3,6 +3,7 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using JetBrains.Annotations;
 using OrbCreationExtensions;
 using UnityEditor;
@@ -15,12 +16,14 @@ public class ContentRepository : Singleton<ContentRepository>
     private const string CONST_CONTENTDIR = "content/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
+    private const string CONST_VERBS = "verbs";
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
     private const string CONST_DESCRIPTION = "description";
 
     private Hashtable htElements;
-    private ArrayList RecipesArrayList;
+    private ArrayList recipesArrayList;
+    private ArrayList verbsArrayList;
     public RecipeCompendium RecipeCompendium;
 
     public void ImportElements()
@@ -32,8 +35,26 @@ public class ContentRepository : Singleton<ContentRepository>
     public void ImportRecipes()
     {
         string json = Resources.Load<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES).text;
-        RecipesArrayList = SimpleJsonImporter.Import(json).GetArrayList("recipes");
-        RecipeCompendium = PopulateRecipeCompendium(RecipesArrayList);
+        recipesArrayList = SimpleJsonImporter.Import(json).GetArrayList("recipes");
+        RecipeCompendium = PopulateRecipeCompendium(recipesArrayList);
+    }
+
+    public void ImportVerbs()
+    {
+        string json = Resources.Load<TextAsset>(CONST_CONTENTDIR + CONST_VERBS).text;
+        verbsArrayList = SimpleJsonImporter.Import(json).GetArrayList("verbs");
+    }
+
+    public List<Verb> GetAllVerbs()
+    {
+        List<Verb> verbs = new List<Verb>();
+
+        foreach (Hashtable h in verbsArrayList)
+        {
+            Verb v=new Verb(h["id"].ToString(),h["label"].ToString(),h["description"].ToString());
+            verbs.Add(v);
+        }
+        return verbs;
     }
 
     public RecipeCompendium PopulateRecipeCompendium(ArrayList importedRecipes)
@@ -113,5 +134,15 @@ public class ContentRepository : Singleton<ContentRepository>
         element.AddSlotsFromHashtable(htSlots);
 
         return element;
+    }
+
+    public Sprite GetSpriteForVerb(string verbId)
+    {
+        return Resources.Load<Sprite>("icons40/verbs/" + verbId);
+    }
+
+    public Sprite GetSpriteForElement(string elementId)
+    {
+        return Resources.Load<Sprite>("FlatIcons/png/32px/" + elementId);
     }
 }

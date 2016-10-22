@@ -31,7 +31,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
     public void DisplayIcon(Element e)
     {
         Image elementImage = GetComponentsInChildren<Image>().Single(i => i.name == "imgElementIcon");
-        Sprite elementSprite = Resources.Load<Sprite>("FlatIcons/png/32px/" + e.Id);
+        Sprite elementSprite = ContentRepository.Instance.GetSpriteForElement(e.Id);
         elementImage.sprite = elementSprite;
     }
 

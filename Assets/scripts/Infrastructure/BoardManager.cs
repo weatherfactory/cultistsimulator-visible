@@ -14,6 +14,7 @@ public class BoardManager : MonoBehaviour
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
+    [SerializeField] private GameObject pnlVerbs;
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
     [SerializeField] private WorldPanel pnlWorld;
@@ -21,6 +22,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField]RecipeDisplay pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementToken;
+    [SerializeField]GameObject prefabVerbFrame;
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField] private GameObject prefabNotificationPanel;
@@ -87,12 +89,18 @@ public class BoardManager : MonoBehaviour
     /// </summary>
     public void Start()
     {
+        ContentRepository.Instance.ImportVerbs();
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
         ModifyElementQuantityOnBoard("clique", 1);
         ModifyElementQuantityOnBoard("ordinarylife", 1);
-        ModifyElementQuantityOnBoard("health", 10);
+        ModifyElementQuantityOnBoard("health", 3);
+        ModifyElementQuantityOnBoard("reason", 3);
         ModifyElementQuantityOnBoard("occultscrap", 1);
+        foreach(Verb v in ContentRepository.Instance.GetAllVerbs())
+        {
+            AddVerbToBoard(v);
+        }
         //ModifyElementQuantityOnBoard("alockedmind", 1);
         //ModifyElementQuantityOnBoard("aninspectorcalls", 1);
         //ModifyElementQuantityOnBoard("order", 1);
@@ -104,6 +112,17 @@ public class BoardManager : MonoBehaviour
         //ModifyElementQuantityOnBoard("riteofslaking", 1);
 
 
+    }
+
+    private void AddVerbToBoard(Verb v)
+    {
+        GameObject verbFrame = Instantiate(prefabVerbFrame, pnlVerbs.transform) as GameObject;
+        verbFrame.name = "Frame - " + v.Id;
+        Image image = verbFrame.GetComponentsInChildren<Image>().Single(i => i.name == "VerbToken");
+        Sprite sprite = ContentRepository.Instance.GetSpriteForVerb(v.Id);
+        image.sprite = sprite;
+        DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
+        token.VerbId = v.Id;
     }
 
     /// <summary>

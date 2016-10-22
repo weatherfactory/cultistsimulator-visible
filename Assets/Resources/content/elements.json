@@ -150,8 +150,8 @@
         },
 
         {
-            id: "sanity",
-            label: "Sanity",
+            id: "reason",
+            label: "Reason",
             aspects:
             {
                 lantern: CONVENTIONS.QUANTITY_TINY
@@ -172,7 +172,7 @@
         {
             id: "hubris",
             label: "Hubris",
-            //not currently in use. Can I get away with just Sanity?
+            "notes": "not currently in use",
             aspects:
             {
                 heart: CONVENTIONS.QUANTITY_TINY
