@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 using UnityEngine.UI;
 
 public class RecipeDisplay : BoardMonoBehaviour {
 
-    [SerializeField]private Text txtRecipe;
+    [SerializeField]private TextMeshProUGUI txtRecipe;
     [SerializeField]private Button btnExecuteRecipe;
     public Recipe CurrentRecipe;
     public void DisplayRecipe(Recipe r)
