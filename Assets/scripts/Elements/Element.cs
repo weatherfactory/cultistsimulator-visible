@@ -35,7 +35,6 @@ public class Element
         
             foreach (string k in htSlots.Keys)
             {
-                Debug.Log(k);
                 ChildSlotSpecifications.Add(new ChildSlotSpecification(k));
 
                 Hashtable htThisSlot = htSlots[k] as Hashtable;

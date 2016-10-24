@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.scripts.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class DraggableVerbToken : DraggableToken
+public class DraggableVerbToken : DraggableToken,IPointerClickHandler,INotifyLocator
 {
     public Verb Verb;
   
@@ -24,8 +25,19 @@ public class DraggableVerbToken : DraggableToken
         if (GetComponent<CanvasGroup>() != null)
             GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
-    
 
- 
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        BM.Notify(Verb.Label, Verb.Description, gameObject.GetComponent<INotifyLocator>());
+    }
+
+    public Vector3 GetNotificationPosition()
+    {
+        Vector3 v3 = transform.position;
+        v3.x += 80;
+        v3.y -= 100;
+        return v3;
+    }
 }
 

@@ -143,7 +143,7 @@
         effects: {
             ordinarylife:-1,
             alockedmind: 1,
-            sanity: -1
+            reason: -1
         },
         startdescription: "What shall I become?",
         description: "If I unlock myself, an Hour may enter.",
@@ -157,7 +157,7 @@
         requirements: {lantern: 2},
         effects: {
             atlasnotes: 1,
-            sanity: -1
+            reason: -1
         },
         startdescription: "In dreams I see the Mansus, the house of the Hours, grey and gold.",
         description: "To find the Hour I need, I must first find its hall. I'll need an Atlas.",
@@ -172,7 +172,7 @@
         requirements: {lantern: 1},
         effects: {
             glimpse: 1,
-            sanity:-1
+            reason:-1
         },
         startdescription: "Sometimes, I see a kind of sunlight in sleep.",
         description: "Last night, I dreamt again of the Wood behind the world, and the dwelling-place at its heart.",
@@ -181,11 +181,11 @@
     },
     {
         id: "dreamtinyheart",
-        label: "Sleep deeply, dream softly",
+        label: "Sleep Deeply, Dream Softly",
         actionId: "dream",
         requirements: {heart: 1},
         effects: {
-            sanity: 2
+            reason: 2
         },
         startdescription: "I will set aside thoughts of uncanny things; read cheerful novels; drink cocoa before bed.",
         description: "Sleep has become a balm again. Perhaps I could live happily, if I abandoned the difficult dreams.",
@@ -198,7 +198,7 @@
         actionId: "talk",
         requirements: {romanticattention: 1},
         effects: {
-            sanity: 1,
+            reason: 1,
             romanticattention: 1
         },
         startdescription: "'Yes. Come to me.'",
@@ -213,7 +213,7 @@
         actionId: "talk",
         requirements: {follower: 6,
             lantern: 1},
-        effects: {sanity: -1},
+        effects: {reason: -1},
         startdescription: "My Order may outlast me, but it will remember me..",
         description: "My Order is established. My disciples bow their hears. I am <i>exalted.</i>",
         warmup: 6,
@@ -382,7 +382,7 @@
         actionId: "talk",
         requirements: {heart: 1},
         effects: {
-            sanity: 1
+            reason: 1
         },
         startdescription: "Perhaps I should get out more.",
         description: "A little chat with the little people, now and then, helps keep my brain inside my skull.",
@@ -523,7 +523,7 @@
         requirements: {romanticattention: 1},
         effects: {
             romanticattention: 1,
-            sanity: 1
+            reason: 1
         },
         startdescription: "Am I a monster?",
         description: "Someone doesn't think so. Perhaps that means something.",
@@ -589,15 +589,15 @@
         craftable: true
     },
     {
-        id: "studysanity",
-        label: "Consider my Sanity",
+        id: "studyreason",
+        label: "Consider my reason",
         actionId: "study",
-        requirements: {sanity: 1},
+        requirements: {reason: 1},
         effects: {
-            sanity: 1
+            reason: 1
         },
         startdescription: "The mind is a castle, or a garden...",
-        description: "...but it must never become an ocean. If I lose all my Sanity, I will achieve nothing.",
+        description: "...but it must never become an ocean. If I lose all my reason, I will achieve nothing.",
         warmup: 10,
         craftable: true
     },
@@ -607,7 +607,7 @@
         actionId: "study",
         requirements: {ordinarylife: 1},
         effects: {
-            sanity: -1,
+            reason: -1,
         restlessness: 1
         },
         startdescription: "I will learn my limitations.",
@@ -764,7 +764,7 @@
         actionId: "renounce",
         requirements: {ordinarylife: 1},
         effects: {
-            sanity:-1
+            reason:-1
         },
         startdescription: "It's not so easy to end my ordinariness. I need a Key.",
         description: "My brain will boil in its shell.",
@@ -858,7 +858,7 @@
         requirements: {shilling: 1},
         effects: {
             health: 1,
-            sanity: 1,
+            reason: 1,
             shilling: -1,
             hungry: -1
         },
@@ -927,7 +927,7 @@
         actionId: "x",
         requirements: {
             glimpse: 1,
-            sanity: -1
+            reason: -1
         },
         effects: {
             atlasnotes: 1,
@@ -950,7 +950,7 @@
         effects: {
             atlasnotes: -7,
             atlas: 1,
-            sanity:-1
+            reason:-1
         },
         startdescription: "Atlas complete startdesc",
         description: "The corridors of the Mansus are numberless as seconds. My Atlas only grazes their edge. But now I can find my Key.",
@@ -992,7 +992,7 @@
         actionId: "x",
         requirements: {},
         effects: {
-            sanity: -1,
+            reason: -1,
             believer: -1
         },
         alternativerecipes: [{id: 'cliqueincrease', chance:100}],
@@ -1030,7 +1030,7 @@
         },
         effects: {
             clique: 1,
-            sanity: -1
+            reason: -1
         },
         startdescription: "Clique complete startdesc",
         description: "And now I have a cadre of Believers. They think they understand. One day, they will.",
@@ -1043,13 +1043,13 @@
         actionId: "x",
         requirements: {},
         effects: {
-            sanity: -2,
+            reason: -2,
             health: -2,
             believer: -1
         },
         alternativerecipes: [{id: 'orderincrease', chance:100}],
         startdescription: "I need not only Believers, but Disciples.",
-        description: "The rites are punishing, and I need more recruits. My Believers lose faith. [I must feed my order with Believers, as well as with my own health and sanity.] ",
+        description: "The rites are punishing, and I need more recruits. My Believers lose faith. [I must feed my order with Believers, as well as with my own health and reason.] ",
         warmup: 6,
         craftable: false
     },
@@ -1064,7 +1064,7 @@
             believer: -1,
             disciple: 1,
             shilling: 2,
-            sanity: -2,
+            reason: -2,
             health: -2
         },
         alternativerecipes: [{id: 'ordercomplete', chance:100}],
@@ -1083,7 +1083,7 @@
         },
         effects: {
             order: 1,
-            sanity: -1
+            reason: -1
         },
         startdescription: "order complete startdesc",
         description: "In this Order are we joined by blood and by secrets and by Hours. Welcome, my friends.",
@@ -1096,17 +1096,17 @@
         label: "Followers whisper.",
         actionId: "x",
         requirements: {},
-        alternativerecipes: [{id: 'enthusiastunimpressed', chance:30, comment: "sanity 7+"}, 
-            {id: 'societynoeffecthighsanity', chance:100, comment: "sanity 7+ break event"},
+        alternativerecipes: [{id: 'enthusiastunimpressed', chance:30, comment: "reason 7+"}, 
+            {id: 'societynoeffecthighreason', chance:100, comment: "reason 7+ break event"},
             {id: 'inspectorattracted', chance:30},
             {id: 'donationattracted', chance:30},
             {id: 'enthusiastattracted', chance:30},
-            {id: 'societynoeffectlowsanity', chance:100, comment:"base fallthrough" }
+            {id: 'societynoeffectlowreason', chance:100, comment:"base fallthrough" }
             ],
         effects: {
             enthusiast: -1
         },
-        startdescription: "A high Sanity may disappoint followers. A low Sanity may attract them... as well as the authorities.",
+        startdescription: "A high reason may disappoint followers. A low reason may attract them... as well as the authorities.",
         description: "This... this should not be visible.",
         warmup: 240,
         craftable: false,
@@ -1116,22 +1116,22 @@
         id: "enthusiastunimpressed",
         label: "-",
         actionId: "x",
-        requirements: {sanity:7,
+        requirements: {reason:7,
         enthusiast: 1},
         effects: {
             enthusiast: -1
         },
         startdescription: "-",
-        description: "Do I seem calm? Apparently I am some sort of disappointment to my Enthusiasts. [Sometimes this will happen when your Sanity is high.]",
+        description: "Do I seem calm? Apparently I am some sort of disappointment to my Enthusiasts. [Sometimes this will happen when your reason is high.]",
         warmup: 0,
         craftable: false,
         loop: 'societyspine'
     },
     {
-        id: "societynoeffecthighsanity",
+        id: "societynoeffecthighreason",
         label: "-",
         actionId: "x",
-        requirements: {sanity: 7},
+        requirements: {reason: 7},
         effects: {
         },
         startdescription: "-",
@@ -1141,7 +1141,7 @@
         loop: 'societyspine'
     },
     {
-        id: "societynoeffectlowsanity",
+        id: "societynoeffectlowreason",
         label: "-",
         actionId: "x",
         requirements: {},
@@ -1251,7 +1251,7 @@ startdescription: "-",
         actionId: "x",
         requirements: {},
         effects: {
-            sanity: -2,
+            reason: -2,
             fistulousinvocation: 1
         },
         startdescription: "These are the nightmares of which Hersault wrote - cramped dreams of a dark and musty space.",
@@ -1303,7 +1303,7 @@ startdescription: "-",
         actionId: "x",
         requirements: {},
         alternativerecipes:[{id:"affaircontinues",chance:100}],
-        effects: {sanity: -1
+        effects: {reason: -1
         },
         startdescription: "'I know it's unwise. But I want to see you again.'",
         description: "'I don't understand you. I never understood you. I think - I think that I have grown afraid of you. It's over. Goodbye.'",
@@ -1318,7 +1318,7 @@ startdescription: "-",
             ordinarylife:1,
             romanticattention: 1
         },
-        effects: {sanity: 1
+        effects: {reason: 1
 
         },
         startdescription: "-",

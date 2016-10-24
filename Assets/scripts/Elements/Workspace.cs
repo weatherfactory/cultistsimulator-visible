@@ -37,6 +37,6 @@ public class Workspace : BoardMonoBehaviour
         foreach (DraggableElementToken element in elements)
 
             element.ReturnToOrigin();
-        boardManager.PnlCurrentAspects.GetComponent<CurrentAspectsDisplay>().ResetAspects();
+        boardManager.PnlAspects.ResetAspects();
     }
 }

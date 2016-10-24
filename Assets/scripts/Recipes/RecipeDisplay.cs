@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class RecipeDisplay : BoardMonoBehaviour {
             CurrentRecipe = null;
         txtRecipe.text = "No matching recipe...";
         btnExecuteRecipe.interactable = false;
+            
         }
         else
         {
@@ -23,4 +25,5 @@ public class RecipeDisplay : BoardMonoBehaviour {
             btnExecuteRecipe.interactable = true;
         }
     }
+
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Mono.Security.Cryptography;
 
-public class CurrentAspectsDisplay : BoardMonoBehaviour
+public class AspectsDisplay : BoardMonoBehaviour
 {
 
     [SerializeField] private GameObject objLimbo;
@@ -27,7 +27,7 @@ public class CurrentAspectsDisplay : BoardMonoBehaviour
         }
     }
 
-    private void ChangeAspectQuantityInFrame(string aspectId, int quantity)
+    public void ChangeAspectQuantityInFrame(string aspectId, int quantity)
     {
         AspectFrame existingAspect = GetAspectFrameForId(aspectId);
         if (existingAspect)

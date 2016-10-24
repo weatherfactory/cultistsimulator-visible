@@ -10,6 +10,7 @@ namespace Noon
 
     public class NoonUtilityConstants
     {
+        public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
         public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
         public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
     }

@@ -18,7 +18,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
     [SerializeField] private WorldPanel pnlWorld;
-    [SerializeField] CurrentAspectsDisplay pnlCurrentAspects;
+    [SerializeField] AspectsDisplay pnlCurrentAspects;
     [SerializeField]RecipeDisplay pnlRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementToken;
@@ -27,8 +27,9 @@ public class BoardManager : MonoBehaviour
     [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField] private GameObject prefabNotificationPanel;
     public DraggableToken CurrentDragItem;
+    private Dictionary<string,Recipe> knownRecipes= new Dictionary<string, Recipe>();
 
-    public CurrentAspectsDisplay PnlCurrentAspects
+    public AspectsDisplay PnlAspects
     {
         set { pnlCurrentAspects = value; }
         get { return pnlCurrentAspects; }
@@ -211,6 +212,7 @@ public class BoardManager : MonoBehaviour
         Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription,Style.Subtle);
         pnlWorld.AddTimer(currentRecipe,null);
+        MarkRecipeAsKnown(currentRecipe);
     }
 
     public void Notify(string aside, string message, INotifyLocator notifyingGameObject)
@@ -225,6 +227,31 @@ public class BoardManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// return true if it was *already* known, false if it wasn't already known
+    /// </summary>
+    public Boolean MarkRecipeAsKnown(Recipe r)
+    {
+        if (knownRecipes.ContainsKey(r.Id))
+            return true;
+
+            knownRecipes.Add(r.Id,r);
+            return false;
+    }
+    /// <summary>
+    /// list of known recipes matching criterion
+    /// </summary>
+    /// <param name="withText">Empty string returns all known recipes; non-empty returns recipes whose labels match that substring</param>
+    /// <returns></returns>
+    public List<Recipe> GetKnownRecipes(string withText)
+    {
+       List<Recipe>matchingRecipes=new List<Recipe>();
+
+
+        matchingRecipes.AddRange(knownRecipes.Values.Where(v=>v.Label.ToLower().Contains(withText) || withText==""));
+
+        return matchingRecipes;
+    }
 
     public void Log(string message, Style style)
     {
@@ -242,7 +269,7 @@ public class BoardManager : MonoBehaviour
         Log(recipe.Description, Style.Subtle);
         foreach (var e in recipe.Effects)
             ModifyElementQuantityOnBoard(e.Key, e.Value);
-
+      
 
     }
 
@@ -287,10 +314,18 @@ public class BoardManager : MonoBehaviour
                 htRecipeTimers.Add(rt.Recipe.Id,rt.TimeRemaining);
             }
 
+            Hashtable htRecipesKnown=new Hashtable();
+            foreach (KeyValuePair<string,Recipe> kvpr in knownRecipes)
+            {
+                htRecipesKnown.Add(kvpr.Key, kvpr.Value);
+            }
+
+
             Hashtable htSave=new Hashtable();
 
             htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_ELEMENTSPOSSESSED,htElementsPossessed);
             htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_RECIPETIMERS,htRecipeTimers);
+            htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_RECIPESKNOWN,htRecipesKnown);
 
             exportJson = htSave.JsonString();
             
@@ -314,6 +349,8 @@ public class BoardManager : MonoBehaviour
 
             Hashtable htElementsPossessed = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_ELEMENTSPOSSESSED);
             Hashtable htRecipeTimers = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_RECIPETIMERS);
+            Hashtable htRecipesKnown = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_RECIPESKNOWN);
+
             //check if it's all valid first
             foreach (string k in htElementsPossessed.Keys)
             {
@@ -335,6 +372,12 @@ public class BoardManager : MonoBehaviour
             {
                 Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
                 pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()));
+            }
+
+            foreach (string k in htRecipesKnown.Keys)
+            {
+                Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
+                knownRecipes.Add(k,r);
             }
 
             Log("This is the game; I will be a pawn, or I will be a player.", Style.Subtle);

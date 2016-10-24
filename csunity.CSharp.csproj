@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -77,8 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\Infrastructure\NotifyLocator.cs" />
-    <Compile Include="Assets\scripts\Verbs\Verb.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -155,9 +151,8 @@
     <Compile Include="Assets\TextMesh Pro\Scripts\TextMeshPro.cs" />
     <Compile Include="Assets\TextMesh Pro\Scripts\TextMeshProUGUI.cs" />
     <Compile Include="Assets\scripts\Aspects\AspectFrame.cs" />
-    <Compile Include="Assets\scripts\Aspects\CurrentAspectsDisplay.cs" />
+    <Compile Include="Assets\scripts\Aspects\AspectsDisplay.cs" />
     <Compile Include="Assets\scripts\Base\DraggableToken.cs" />
-    <Compile Include="Assets\scripts\Buttons\ButtonClicks.cs" />
     <Compile Include="Assets\scripts\Elements\ChildSlotOrganiser.cs" />
     <Compile Include="Assets\scripts\Elements\ChildSlotSpecification.cs" />
     <Compile Include="Assets\scripts\Elements\DraggableElementToken.cs" />
@@ -174,15 +169,20 @@
     <Compile Include="Assets\scripts\Infrastructure\MenuManager.cs" />
     <Compile Include="Assets\scripts\Infrastructure\NoonUtility.cs" />
     <Compile Include="Assets\scripts\Infrastructure\NotificationPanel.cs" />
+    <Compile Include="Assets\scripts\Infrastructure\NotifyLocator.cs" />
     <Compile Include="Assets\scripts\Infrastructure\singleton.cs" />
+    <Compile Include="Assets\scripts\Recipes\KnownRecipeDisplay.cs" />
     <Compile Include="Assets\scripts\Recipes\Recipe.cs" />
     <Compile Include="Assets\scripts\Recipes\RecipeCompendium.cs" />
     <Compile Include="Assets\scripts\Recipes\RecipeDisplay.cs" />
     <Compile Include="Assets\scripts\Recipes\RecipeTimer.cs" />
     <Compile Include="Assets\scripts\Recipes\TimerPanel.cs" />
     <Compile Include="Assets\scripts\Recipes\WorldPanel.cs" />
+    <Compile Include="Assets\scripts\UIWiring\ButtonClicks.cs" />
     <Compile Include="Assets\scripts\Verbs\DraggableVerbToken.cs" />
     <Compile Include="Assets\scripts\Verbs\SlotReceiveVerb.cs" />
+    <Compile Include="Assets\scripts\Verbs\Verb.cs" />
+    <Compile Include="Assets\scripts\Verbs\VerbNeeded.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\content\recipe_notes.txt" />
