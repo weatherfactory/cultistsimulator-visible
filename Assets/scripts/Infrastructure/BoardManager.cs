@@ -345,9 +345,9 @@ public class BoardManager : MonoBehaviour
 
             Hashtable htSave=new Hashtable();
 
-            htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_ELEMENTSPOSSESSED,htElementsPossessed);
-            htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_RECIPETIMERS,htRecipeTimers);
-            htSave.Add(Noon.NoonUtilityConstants.CONST_SAVE_RECIPESKNOWN,htRecipesKnown);
+            htSave.Add(Noon.Constants.CONST_SAVE_ELEMENTSPOSSESSED,htElementsPossessed);
+            htSave.Add(Noon.Constants.CONST_SAVE_RECIPETIMERS,htRecipeTimers);
+            htSave.Add(Noon.Constants.CONST_SAVE_RECIPESKNOWN,htRecipesKnown);
 
             exportJson = htSave.JsonString();
             
@@ -369,9 +369,9 @@ public class BoardManager : MonoBehaviour
             string importJson = File.ReadAllText(Noon.NoonUtility.GetGameSavePath());
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
 
-            Hashtable htElementsPossessed = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_ELEMENTSPOSSESSED);
-            Hashtable htRecipeTimers = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_RECIPETIMERS);
-            Hashtable htRecipesKnown = htSave.GetHashtable(Noon.NoonUtilityConstants.CONST_SAVE_RECIPESKNOWN);
+            Hashtable htElementsPossessed = htSave.GetHashtable(Noon.Constants.CONST_SAVE_ELEMENTSPOSSESSED);
+            Hashtable htRecipeTimers = htSave.GetHashtable(Noon.Constants.CONST_SAVE_RECIPETIMERS);
+            Hashtable htRecipesKnown = htSave.GetHashtable(Noon.Constants.CONST_SAVE_RECIPESKNOWN);
 
             //check if it's all valid first
             foreach (string k in htElementsPossessed.Keys)

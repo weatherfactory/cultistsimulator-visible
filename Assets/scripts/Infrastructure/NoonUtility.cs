@@ -8,11 +8,26 @@ using UnityEngine;
 namespace Noon
 {
 
-    public class NoonUtilityConstants
+    public class Constants
     {
         public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
         public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
         public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
+        public const string KID = "id";
+        public const string KLABEL = "label";
+        public const string KACTIONID = "actionId";
+        public const string KCRAFTABLE = "craftable";
+        public const string KSTARTDESCRIPTION = "startDescription";
+        public const string KDESCRIPTION = "description";
+        public const string KWARMUP = "warmup";
+        public const string KREQUIREMENTS = "requirements";
+        public const string KEFFECTS = "effects";
+        public const string KALTERNATIVERECIPES = "alternativeRecipes";
+        public const string KCHANCE = "chance";
+        public const string KADDITIONAL = "additional";
+
+
+
     }
     public class NoonUtility
     {

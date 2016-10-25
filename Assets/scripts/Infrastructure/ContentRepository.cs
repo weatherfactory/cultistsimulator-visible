@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Permissions;
 using JetBrains.Annotations;
+using Noon;
 using OrbCreationExtensions;
 using UnityEditor;
 using UnityEngine.Assertions;
@@ -120,37 +121,47 @@ public class ContentRepository : Singleton<ContentRepository>
         List<Recipe> recipesList = new List<Recipe>();
         for(int i=0; i< importedRecipes.Count;i++)
         {
-            Hashtable htEach = importedRecipes.GetHashtable(i);
+            Hashtable htEachRecipe = importedRecipes.GetHashtable(i);
         
                 Recipe r = new Recipe();
             try
             {
-                r.Id = htEach["id"].ToString();
-                r.Label = htEach["label"].ToString();
-                r.Craftable = Convert.ToBoolean(htEach["craftable"]);
-                r.ActionId = htEach["actionId"].ToString();
-                r.StartDescription = htEach["startdescription"].ToString();
-                r.Description = htEach["description"].ToString();
-                r.Warmup = Convert.ToInt32(htEach["warmup"]);
+                r.Id = htEachRecipe[Constants.KID].ToString();
+                r.Label = htEachRecipe[Constants.KLABEL].ToString();
+                r.Craftable = Convert.ToBoolean(htEachRecipe[Constants.KCRAFTABLE]);
+                r.ActionId = htEachRecipe[Constants.KACTIONID].ToString();
+                r.StartDescription = htEachRecipe[Constants.KSTARTDESCRIPTION].ToString();
+                r.Description = htEachRecipe[Constants.KDESCRIPTION].ToString();
+                r.Warmup = Convert.ToInt32(htEachRecipe[Constants.KWARMUP]);
             }
             catch (Exception e)
             {
-                if (htEach["id"] == null)
+                if (htEachRecipe[Constants.KID] == null)
                     Debug.Log("Problem importing recipe with unknown id - " + e.Message);
                 else
-                    Debug.Log("Problem importing recipe '" + htEach["id"] + "' - " + e.Message);
+                    Debug.Log("Problem importing recipe '" + htEachRecipe[Constants.KID] + "' - " + e.Message);
             }
 
-            Hashtable htReqs = htEach.GetHashtable("requirements");
+            Hashtable htReqs = htEachRecipe.GetHashtable(Constants.KREQUIREMENTS);
             foreach (string k in htReqs.Keys)
             {
                 r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
             }
 
-            Hashtable htEffects = htEach.GetHashtable("effects");
+            Hashtable htEffects = htEachRecipe.GetHashtable(Constants.KEFFECTS);
             foreach (string k in htEffects.Keys)
             {
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
+            }
+
+            ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);
+            foreach (Hashtable ra in alRecipeAlternatives)
+            {
+                string raID = ra[Constants.KID].ToString();
+                int raChance = Convert.ToInt32(ra[Constants.KCHANCE]);
+                bool raAdditional = Convert.ToBoolean(ra[Constants.KADDITIONAL] ?? false);
+
+                r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
             }
 
                recipesList.Add(r);

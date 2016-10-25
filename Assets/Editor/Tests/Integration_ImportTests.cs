@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using Noon;
 using NUnit.Framework;
 
 namespace CS.Tests
@@ -26,52 +27,111 @@ namespace CS.Tests
         private const int EFFECT_1_VALUE = 9;
         private const string EFFECT_2_ID = "effect2id";
         private const int EFFECT_2_VALUE = -19;
-
+        private const string ALTERNATIVE_1_ID = "alternative1";
+        private const string ALTERNATIVE_2_ID = "alternative2";
+        private const int ALTERNATIVE_1_CHANCE = 10;
+        private const int ALTERNATIVE_2_CHANCE = 100;
 
         [Test]
         public void RecipesImportFromHashtable()
         {
-            ContentRepository cm=new ContentRepository();
-            ArrayList recipesToImport=new ArrayList();
+            ContentRepository cm = new ContentRepository();
+            ArrayList recipesToImport = new ArrayList();
             Hashtable htRecipe = new Hashtable();
             Hashtable htEffects = new Hashtable();
             Hashtable htRequirements = new Hashtable();
-            
+            ArrayList alAlternatives = new ArrayList();
+
             htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE);
             htRequirements.Add(ASPECT_2_ID, ASPECT_2_VALUE);
 
             htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE);
             htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE);
 
-            htRecipe.Add("id", RECIPE_1_ID);
-            htRecipe.Add("label", RECIPE_1_LABEL);
-            htRecipe.Add("actionId", RECIPE_1_ACTIONID);
-            htRecipe.Add("startdescription", RECIPE_1_START_DESCRIPTION);
-            htRecipe.Add("description", RECIPE_1_DESCRIPTION);
-            htRecipe.Add("warmup", RECIPE_1_WARMUP);
-            htRecipe.Add("craftable", RECIPE_1_CRAFTABLE);
-            htRecipe.Add("requirements", htRequirements);
-            htRecipe.Add("effects",htEffects);
+            Hashtable alternative1 = new Hashtable()
+            {
+                {Constants.KID,ALTERNATIVE_1_ID},
+                {Constants.KCHANCE,ALTERNATIVE_1_CHANCE }
+
+            };
+
+            Hashtable alternative2 = new Hashtable()
+                            {
+                {Constants.KID,ALTERNATIVE_2_ID},
+                {Constants.KCHANCE,ALTERNATIVE_2_CHANCE },
+                {Constants.KADDITIONAL,true }
+
+            };
+
+            alAlternatives.Add(alternative1);
+            alAlternatives.Add(alternative2);
+
+            htRecipe.Add(Constants.KID, RECIPE_1_ID);
+            htRecipe.Add(Constants.KLABEL, RECIPE_1_LABEL);
+            htRecipe.Add(Constants.KACTIONID, RECIPE_1_ACTIONID);
+            htRecipe.Add(Constants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
+            htRecipe.Add(Constants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
+            htRecipe.Add(Constants.KWARMUP, RECIPE_1_WARMUP);
+            htRecipe.Add(Constants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
+            htRecipe.Add(Constants.KREQUIREMENTS, htRequirements);
+            htRecipe.Add(Constants.KEFFECTS, htEffects);
+            htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
 
             recipesToImport.Add(htRecipe);
             RecipeCompendium rc = cm.PopulateRecipeCompendium(recipesToImport);
 
             List<Recipe> recipesImported = rc.GetAllRecipesAsList();
-            Assert.AreEqual(1,recipesImported.Count);
+
+            Assert.AreEqual(1, recipesImported.Count);
+            ConfirmRecipeTextImported(recipesImported);
+
+            ConfirmRecipeOtherPropertiesImported(recipesImported);
+
+            ConfirmRecipeRequirementsImported(recipesImported);
+
+            ConfirmRecipeEffectsImported(recipesImported);
+
+            ConfirmRecipeAlternativesImported(recipesImported);
+
+        }
+
+        private static void ConfirmRecipeAlternativesImported(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(ALTERNATIVE_1_ID, recipesImported.First().AlternativeRecipes[0].Id);
+            Assert.AreEqual(ALTERNATIVE_1_CHANCE, recipesImported.First().AlternativeRecipes[0].Chance);
+            Assert.IsFalse(recipesImported.First().AlternativeRecipes[0].Additional);
+
+            Assert.AreEqual(ALTERNATIVE_2_ID, recipesImported.First().AlternativeRecipes[1].Id);
+            Assert.AreEqual(ALTERNATIVE_2_CHANCE, recipesImported.First().AlternativeRecipes[1].Chance);
+            Assert.IsTrue(recipesImported.First().AlternativeRecipes[1].Additional);
+
+        }
+
+        private static void ConfirmRecipeEffectsImported(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(EFFECT_1_VALUE, recipesImported.First().Effects[EFFECT_1_ID]);
+            Assert.AreEqual(EFFECT_2_VALUE, recipesImported.First().Effects[EFFECT_2_ID]);
+        }
+
+        private static void ConfirmRecipeRequirementsImported(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(ASPECT_1_VALUE, recipesImported.First().Requirements[ASPECT_1_ID]);
+            Assert.AreEqual(ASPECT_2_VALUE, recipesImported.First().Requirements[ASPECT_2_ID]);
+        }
+
+        private static void ConfirmRecipeOtherPropertiesImported(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(Convert.ToInt32(RECIPE_1_WARMUP), recipesImported.First().Warmup);
+            Assert.AreEqual(RECIPE_1_ACTIONID, recipesImported.First().ActionId);
+            Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
+        }
+
+        private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)
+        {
             Assert.AreEqual(RECIPE_1_ID, recipesImported.First().Id);
             Assert.AreEqual(RECIPE_1_LABEL, recipesImported.First().Label);
             Assert.AreEqual(RECIPE_1_START_DESCRIPTION, recipesImported.First().StartDescription);
             Assert.AreEqual(RECIPE_1_DESCRIPTION, recipesImported.First().Description);
-            Assert.AreEqual(Convert.ToInt32(RECIPE_1_WARMUP), recipesImported.First().Warmup);
-            Assert.AreEqual(RECIPE_1_ACTIONID, recipesImported.First().ActionId);
-            Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
-            Assert.AreEqual(ASPECT_1_VALUE, recipesImported.First().Requirements[ASPECT_1_ID]);
-            Assert.AreEqual(ASPECT_2_VALUE, recipesImported.First().Requirements[ASPECT_2_ID]);
-            Assert.AreEqual(EFFECT_1_VALUE, recipesImported.First().Effects[EFFECT_1_ID]);
-            Assert.AreEqual(EFFECT_2_VALUE, recipesImported.First().Effects[EFFECT_2_ID]);
-
-
-
         }
     }
 }

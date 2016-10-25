@@ -16,7 +16,7 @@ public class KnownRecipeDisplay : BoardMonoBehaviour {
     private List<Recipe> currentMatchedKnownRecipes=new List<Recipe>();
     [SerializeField]private VerbNeeded pnlVerbNeeded;
     [SerializeField] private AspectsDisplay pnlAspectsNeeded;
-    public Dictionary<string, Recipe> knownRecipes = new Dictionary<string, Recipe>();
+
 
     public void MatchKnownRecipes(string textToMatch)
     {

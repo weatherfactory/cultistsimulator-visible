@@ -15,12 +15,45 @@ using System.Text;
         public int Warmup { get; set; }
         public string StartDescription { get; set; }
         public string Description { get; set; }
+        public List<RecipeAlternative> AlternativeRecipes { get; set; }
 
         public Recipe()
         {
             Requirements = new Dictionary<string, int>();
         Effects=new Dictionary<string, int>();
+        AlternativeRecipes=new List<RecipeAlternative>();
         }
 
     }
+
+public class RecipeAlternative
+{
+    private readonly bool _additional;
+    private readonly string _id;
+    private readonly int _chance;
+
+    public string Id
+    {
+        get { return _id; }
+    }
+
+    public int Chance
+    {
+        get { return _chance; }
+    }
+
+    public bool Additional
+    {
+        get { return _additional; }
+
+    }
+
+
+    public RecipeAlternative(string id, int chance, bool additional)
+    {
+        _additional = additional;
+        _id = id;
+        _chance = chance;
+    }
+}
 
