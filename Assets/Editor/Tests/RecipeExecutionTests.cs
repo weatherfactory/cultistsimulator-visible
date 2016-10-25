@@ -4,31 +4,75 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using NSubstitute;
+using NSubstitute.Exceptions;
 
 namespace CS.Tests
 {
 
-
-
+    
+    [TestFixture]
    public  class RecipeExecutionTests
     {
-        [Test]
-        public void AlternativeRecipeDoesntExecute_IfNoRequirements_AndDiceRollUnsatisfied()
-        {
-            INotifier notifier=Substitute.For<INotifier>();
-            IElementsContainer elementsContainer=Substitute.For<IElementsContainer>();
-            Recipe recipe=new Recipe();
-            recipe.Do(notifier,elementsContainer);
+        private INotifier notifier;
+        private IElementsContainer elementsContainer;
+        private Recipe primaryRecipe;
+        private Recipe secondaryRecipe;
+        private RecipeAlternative recipeAlternative;
+        private RecipeCompendium recipeCompendium;
+        private IDice mockDice;
+        
 
-            notifier.Received(1).Log(recipe.Description,Style.Subtle);
-            
-            
+
+        [SetUp]
+        public void Setup()
+        {
+            notifier = Substitute.For<INotifier>();
+            elementsContainer = Substitute.For<IElementsContainer>();
+            primaryRecipe = new Recipe {Id="primaryrecipe",
+                Description = "A primary sort of description."};
+            secondaryRecipe= new Recipe
+            {
+                Id = "secondaryrecipe",
+                Description = "A more secondary description."
+            };
+
+            primaryRecipe.Effects.Add("primaryrecipeeffect", 1);
+
+            recipeAlternative = new RecipeAlternative(secondaryRecipe.Id, 50, false);
+            primaryRecipe.AlternativeRecipes.Add(recipeAlternative);
+
+
+            List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe};
+            mockDice = Substitute.For<IDice>();
+
+            recipeCompendium=new RecipeCompendium(allRecipes,mockDice);
+
         }
+
+        [Test]
+        public void RecipeDoubleDispatches()
+        {
+            primaryRecipe.Do(notifier, elementsContainer);
+            notifier.Received(1).Log(primaryRecipe.Description, Style.Subtle);
+            elementsContainer.Received(1).ModifyElementQuantity(primaryRecipe.Effects.Single().Key, primaryRecipe.Effects.Single().Value);
+        }
+
 
         [Test]
         public void AlternateRecipeExecutes_IfNoRequirements_AndDiceRollSatisfied()
         {
-            throw new NotImplementedException();
+            mockDice.Rolld100().Returns(recipeAlternative.Chance);
+            List<Recipe> recipesToExecute=recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(secondaryRecipe.Id,recipesToExecute.Single().Id);
+        }
+
+
+        [Test]
+        public void AlternativeRecipeDoesntExecute_IfNoRequirements_AndDiceRollUnsatisfied()
+        {
+            mockDice.Rolld100().Returns(recipeAlternative.Chance+1);
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(primaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
 
@@ -36,14 +80,28 @@ namespace CS.Tests
         [Test]
         public void AlternateRecipeExecutes_IfRequirementsSatisfied()
         {
-            throw new NotImplementedException();
+            const string SECONDIUM = "secondium";
+            const int SECONDIUM_REQUIRED = 10;
+            mockDice.Rolld100().Returns(recipeAlternative.Chance);
+            secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
+            elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(SECONDIUM_REQUIRED);
+
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
 
         [Test]
-        public void AlternateRecipeDoesntExecute_IfDiceRollUnsatisfied()
+        public void AlternateRecipeDoesntExecute_IfRequirementsUnsatisfied()
         {
-            throw new NotImplementedException();
+            const string SECONDIUM = "secondium";
+            const int SECONDIUM_REQUIRED = 10;
+            mockDice.Rolld100().Returns(recipeAlternative.Chance);
+            secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
+            elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(SECONDIUM_REQUIRED-1);
+
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(primaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
 

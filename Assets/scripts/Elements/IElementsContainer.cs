@@ -7,5 +7,6 @@ using System.Text;
     {
         void ModifyElementQuantity(string elementId, int quantity);
         void ModifyElementQuantity(string elementId, int quantity, int? siblingIndex);
+        int GetCurrentElementQuantity(string elementId);
 
     }

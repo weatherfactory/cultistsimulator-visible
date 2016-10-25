@@ -171,7 +171,7 @@ public class ContentRepository : Singleton<ContentRepository>
            
         }
 
-        return new RecipeCompendium(recipesList);
+        return new RecipeCompendium(recipesList,new Dice());
     }
 
     public Boolean IsKnownElement(string elementId)

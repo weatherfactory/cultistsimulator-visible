@@ -65,26 +65,15 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
     /// <summary>
     /// this is the element token in the relevant storage area, so it includes quantity. It doesn't address the workspace and it assumes only one panel holds the tokens.
     /// </summary>
-    private DraggableElementToken GetStoredElementTokenForId(string elementId)
+    private DraggableElementToken getStoredElementTokenForId(string elementId)
     {
         DraggableElementToken[] existingElementTokens = GetAllStoredElementTokens();
         return
             existingElementTokens.SingleOrDefault(e => e.Element.Id == elementId);
     }
 
-    /// <summary>
-    /// an array of all element tokens currently in the player's stockpile
-    /// </summary>
-    /// <returns></returns>
-    public DraggableElementToken[] GetAllStoredElementTokens()
-    {
-        return pnlResources.GetComponentsInChildren<DraggableElementToken>();
-    }
 
-    private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
-    {
-        return pnlWorld.GetCurrentRecipeTimers();
-    }
+
 
 
     /// <summary>
@@ -128,6 +117,8 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         token.Verb = v;
     }
 
+
+
     public GameObject AddVerbTokenToParent(Verb v,Transform parentTransform)
     {
         GameObject verbToken=Instantiate(prefabVerbToken,parentTransform) as GameObject;
@@ -155,6 +146,32 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         return  inputAdjustElementNamed.textComponent.text;
     }
 
+    /// <summary>
+    ///WARNING: This does *not* currently address the workspace.
+    /// </summary>
+    public int GetCurrentElementQuantity(string elementId)
+    {
+        DraggableElementToken det = getStoredElementTokenForId(elementId);
+        if (det == null)
+            return 0;
+        return det.Quantity;
+    }
+
+    /// <summary>
+    /// an array of all element tokens currently in the player's stockpile
+    /// </summary>
+    /// <returns></returns>
+    public DraggableElementToken[] GetAllStoredElementTokens()
+    {
+        return pnlResources.GetComponentsInChildren<DraggableElementToken>();
+    }
+
+    private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
+    {
+        return pnlWorld.GetCurrentRecipeTimers();
+    }
+
+
     public void ModifyElementQuantity(string elementId, int quantity)
     {
         ModifyElementQuantity(elementId,quantity,null);
@@ -162,7 +179,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
 
     public void ModifyElementQuantity(string elementId,int quantity,int? siblingIndex)
     {
-        DraggableElementToken existingElement = GetStoredElementTokenForId(elementId);
+        DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
         if(existingElement)
             existingElement.ModifyQuantity(quantity);
         else

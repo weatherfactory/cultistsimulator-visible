@@ -43,7 +43,7 @@ namespace CS.Tests
             MatchesCoolthEqual = new Recipe() { Id = "MatchesCoolthEqual", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE } } };
             MatchesCoolthLess = new Recipe() { Id = "MatchesCoolthLess", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE-1 } } };
             Recipes=new List<Recipe>() {NeverMatchesOnAspects, EqualAspectsOddVerb, MatchesCoolthAndWarmth, MatchesCoolthEqual, MatchesCoolthLess };
-            rc=new RecipeCompendium(Recipes);
+            rc=new RecipeCompendium(Recipes,new Dice());
 
         }
 
