@@ -58,9 +58,7 @@ public class AspectsDisplay : BoardMonoBehaviour
         int childCount = transform.childCount;
         for (int i = childCount - 1; i >= 0; i--)
         {
-            Destroy(transform.GetChild(i).gameObject);
-            transform.GetChild(i).SetParent(objLimbo.transform);
-
+            BM.ExileToLimboThenDestroy(transform.GetChild(i).gameObject);
         }
     }
 

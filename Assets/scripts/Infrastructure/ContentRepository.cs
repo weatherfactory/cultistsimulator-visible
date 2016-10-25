@@ -107,6 +107,14 @@ public class ContentRepository : Singleton<ContentRepository>
         return verbsList;
     }
 
+    public Verb GetVerbById(string verbId)
+    {
+        if(!verbs.ContainsKey(verbId))
+            throw new ApplicationException("Couldn't find verb id " + verbId);
+        
+        return verbs[verbId];
+    }
+
     public RecipeCompendium PopulateRecipeCompendium(ArrayList importedRecipes)
     {
         List<Recipe> recipesList = new List<Recipe>();

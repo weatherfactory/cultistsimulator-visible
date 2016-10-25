@@ -14,7 +14,9 @@ public class KnownRecipeDisplay : BoardMonoBehaviour {
     private int displayedRecipeIndex;
     private Recipe displayedRecipe;
     private List<Recipe> currentMatchedKnownRecipes=new List<Recipe>();
+    [SerializeField]private VerbNeeded pnlVerbNeeded;
     [SerializeField] private AspectsDisplay pnlAspectsNeeded;
+    public Dictionary<string, Recipe> knownRecipes = new Dictionary<string, Recipe>();
 
     public void MatchKnownRecipes(string textToMatch)
     {
@@ -54,16 +56,22 @@ public class KnownRecipeDisplay : BoardMonoBehaviour {
             pnlAspectsNeeded.ChangeAspectQuantityInFrame(reqKeyValuePair.Key,reqKeyValuePair.Value);
         }
         
+        pnlVerbNeeded.SetVerb(displayedRecipe.ActionId);
     }
 
     public void Forward()
     {
-        if(currentMatchedKnownRecipes.Count>0)
+        if(currentMatchedKnownRecipes.Count>0 && (displayedRecipeIndex+1)<currentMatchedKnownRecipes.Count)
             SetDisplayIndex(displayedRecipeIndex+1);
     }
     public void Back()
     {
-        if (currentMatchedKnownRecipes.Count > 0)
+        if (currentMatchedKnownRecipes.Count > 0 && displayedRecipeIndex>0)
             SetDisplayIndex(displayedRecipeIndex - 1);
+    }
+
+    public void ToggleVisibility()
+    {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
     }
 }

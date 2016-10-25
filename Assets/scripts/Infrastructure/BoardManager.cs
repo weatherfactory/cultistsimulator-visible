@@ -20,12 +20,15 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private WorldPanel pnlWorld;
     [SerializeField] AspectsDisplay pnlCurrentAspects;
     [SerializeField]RecipeDisplay pnlRecipeDisplay;
+    [SerializeField] private KnownRecipeDisplay pnlKnownRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementToken;
     [SerializeField]GameObject prefabVerbFrame;
+    [SerializeField]GameObject prefabVerbToken;
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField] private GameObject prefabNotificationPanel;
+
     public DraggableToken CurrentDragItem;
     private Dictionary<string,Recipe> knownRecipes= new Dictionary<string, Recipe>();
 
@@ -125,6 +128,18 @@ public class BoardManager : MonoBehaviour
         DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
         token.Verb = v;
     }
+
+    public GameObject AddVerbTokenToParent(Verb v,Transform parentTransform)
+    {
+        GameObject verbToken=Instantiate(prefabVerbToken,parentTransform) as GameObject;
+        Image image = verbToken.GetComponent<Image>();
+        Sprite sprite = ContentRepository.Instance.GetSpriteForVerb(v.Id);
+        DraggableVerbToken token = verbToken.GetComponent<DraggableVerbToken>();
+        image.sprite = sprite;
+        return verbToken;
+    }
+
+
 
     /// <summary>
     /// takes a gameobject out of the hierarchy before destroying it, in case we might otherwise interact with it in the current frame
@@ -279,6 +294,13 @@ public class BoardManager : MonoBehaviour
         pnlWorkspace.MakeFirstSlotAvailable(verbSlotTransform.localPosition,prefabEmptyElementSlot);
         UpdateAspectDisplay();
     }
+
+    public void ToggleKnownRecipesPanel()
+    {
+        Log("foo",Style.Assertive);
+        pnlKnownRecipeDisplay.ToggleVisibility();
+    }
+
     /// <summary>
     /// DANGEROUS removes all elements from storage and workspace
     /// </summary>
