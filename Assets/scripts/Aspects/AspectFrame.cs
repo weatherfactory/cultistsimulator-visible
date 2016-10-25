@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
-using Assets.scripts.Infrastructure;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 

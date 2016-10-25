@@ -4,13 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Assets.scripts.Infrastructure;
 using OrbCreationExtensions;
 using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
@@ -82,7 +81,7 @@ public class BoardManager : MonoBehaviour
         return pnlResources.GetComponentsInChildren<DraggableElementToken>();
     }
 
-    private IEnumerable<RecipeTimer> GetAllCurrentRecipeTimers()
+    private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
     {
         return pnlWorld.GetCurrentRecipeTimers();
     }
@@ -96,11 +95,11 @@ public class BoardManager : MonoBehaviour
         ContentRepository.Instance.ImportVerbs();
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
-        ModifyElementQuantityOnBoard("clique", 1);
-        ModifyElementQuantityOnBoard("ordinarylife", 1);
-        ModifyElementQuantityOnBoard("health", 3);
-        ModifyElementQuantityOnBoard("reason", 3);
-        ModifyElementQuantityOnBoard("occultscrap", 1);
+        ModifyElementQuantity("clique", 1);
+        ModifyElementQuantity("ordinarylife", 1);
+        ModifyElementQuantity("health", 3);
+        ModifyElementQuantity("reason", 3);
+        ModifyElementQuantity("occultscrap", 1);
         foreach(Verb v in ContentRepository.Instance.GetAllVerbs())
         {
             AddVerbToBoard(v);
@@ -156,12 +155,12 @@ public class BoardManager : MonoBehaviour
         return  inputAdjustElementNamed.textComponent.text;
     }
 
-    public void ModifyElementQuantityOnBoard(string elementId, int quantity)
+    public void ModifyElementQuantity(string elementId, int quantity)
     {
-        ModifyElementQuantityOnBoard(elementId,quantity,null);
+        ModifyElementQuantity(elementId,quantity,null);
     }
 
-    public void ModifyElementQuantityOnBoard(string elementId,int quantity,int? siblingIndex)
+    public void ModifyElementQuantity(string elementId,int quantity,int? siblingIndex)
     {
         DraggableElementToken existingElement = GetStoredElementTokenForId(elementId);
         if(existingElement)
@@ -188,7 +187,7 @@ public class BoardManager : MonoBehaviour
         string elementId = tokenToReturn.Element.Id;
         int elementQuantity = tokenToReturn.Quantity;
         ExileToLimboThenDestroy(tokenToReturn.gameObject); //to prevent possible double-counting
-        ModifyElementQuantityOnBoard(elementId,elementQuantity);
+        ModifyElementQuantity(elementId,elementQuantity);
         
 
         UpdateAspectDisplay();
@@ -279,14 +278,6 @@ public class BoardManager : MonoBehaviour
     pnlWorld.DoHeartbeat();
     }
 
-    public void ExecuteRecipe(Recipe recipe)
-    {
-        Log(recipe.Description, Style.Subtle);
-        foreach (var e in recipe.Effects)
-            ModifyElementQuantityOnBoard(e.Key, e.Value);
-      
-
-    }
 
     public void VerbAddedToSlot(Transform verbSlotTransform)
     {
@@ -331,7 +322,7 @@ public class BoardManager : MonoBehaviour
 
 
             Hashtable htRecipeTimers = new Hashtable();
-            foreach (RecipeTimer rt in GetAllCurrentRecipeTimers())
+            foreach (RecipeSituation rt in GetAllCurrentRecipeTimers())
             {
                 htRecipeTimers.Add(rt.Recipe.Id,rt.TimeRemaining);
             }
@@ -387,7 +378,7 @@ public class BoardManager : MonoBehaviour
 
             foreach (string k in htElementsPossessed.Keys)
             {
-                ModifyElementQuantityOnBoard(k, Convert.ToInt32(htElementsPossessed[k]));
+                ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
             }
 
             foreach (string k in htRecipeTimers.Keys)

@@ -3,15 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using NSubstitute;
 
 namespace CS.Tests
 {
+
+
+
    public  class RecipeExecutionTests
     {
         [Test]
         public void AlternativeRecipeDoesntExecute_IfNoRequirements_AndDiceRollUnsatisfied()
         {
-            throw new NotImplementedException();
+            INotifier notifier=Substitute.For<INotifier>();
+            IElementsContainer elementsContainer=Substitute.For<IElementsContainer>();
+            Recipe recipe=new Recipe();
+            recipe.Do(notifier,elementsContainer);
+
+            notifier.Received(1).Log(recipe.Description,Style.Subtle);
+            
+            
         }
 
         [Test]

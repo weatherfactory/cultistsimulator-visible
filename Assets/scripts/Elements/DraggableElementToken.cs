@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.scripts.Infrastructure;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -76,7 +75,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
                 SetQuantity(1);
                 TakeElementTokenOutOfResourcesPanel();
 
-                BM.ModifyElementQuantityOnBoard(Element.Id,quantityRemaining, siblingIndexForNewStack);
+                BM.ModifyElementQuantity(Element.Id,quantityRemaining, siblingIndexForNewStack);
                
             }
 

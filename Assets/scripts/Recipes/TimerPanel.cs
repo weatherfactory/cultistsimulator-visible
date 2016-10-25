@@ -8,20 +8,20 @@ public class TimerPanel : BoardMonoBehaviour
 
     [SerializeField] private Image imgTimer;
     [SerializeField] private Text txtTimer;
-    public float TimeRemaining { get { return RecipeTimer.TimeRemaining; } }
+    public float TimeRemaining { get { return RecipeSituation.TimeRemaining; } }
 
-    public RecipeTimer RecipeTimer;
+    public RecipeSituation RecipeSituation;
 
     private void UpdateTimerText()
     {
-        txtTimer.text = "[" + RecipeTimer.TimeRemaining + "] " + RecipeTimer.Recipe.Label;
+        txtTimer.text = "[" + RecipeSituation.TimeRemaining + "] " + RecipeSituation.Recipe.Label;
     }
 
     public void StartTimer(Recipe r,float? timeRemaining)
     {
-        if (RecipeTimer!=null)
-            throw new ApplicationException("already running a recipe (" + RecipeTimer.Recipe.Id + ")");
-        RecipeTimer = new RecipeTimer(r, timeRemaining);
+        if (RecipeSituation!=null)
+            throw new ApplicationException("already running a recipe (" + RecipeSituation.Recipe.Id + ")");
+        RecipeSituation = new RecipeSituation(r, timeRemaining);
            
         UpdateTimerText();
 
@@ -30,11 +30,11 @@ public class TimerPanel : BoardMonoBehaviour
     public void DoHeartbeat()
     {
 
-        imgTimer.fillAmount = RecipeTimer.TimeRemaining / RecipeTimer.Recipe.Warmup;
-        RecipeTimerState timerState = RecipeTimer.DoHeartbeat();
+        imgTimer.fillAmount = RecipeSituation.TimeRemaining / RecipeSituation.Recipe.Warmup;
+        RecipeTimerState timerState = RecipeSituation.DoHeartbeat();
         if (timerState==RecipeTimerState.Complete)
         { 
-            BM.ExecuteRecipe(RecipeTimer.Recipe);
+            RecipeSituation.Recipe.Do(BM,BM);
             BM.ExileToLimboThenDestroy(gameObject);
             
         }

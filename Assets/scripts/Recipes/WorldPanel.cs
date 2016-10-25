@@ -26,14 +26,14 @@ public class WorldPanel : BoardMonoBehaviour
         CurrentTimerPanels.RemoveAll(t => t.TimeRemaining <= 0);
     }
 
-    public List<RecipeTimer> GetCurrentRecipeTimers()
+    public List<RecipeSituation> GetCurrentRecipeTimers()
     {
-        List<RecipeTimer> l =new List<RecipeTimer>();
+        List<RecipeSituation> l =new List<RecipeSituation>();
         foreach(TimerPanel tp in CurrentTimerPanels)
         {
             Assert.IsNotNull(tp,"somehow got a null timerpanel");
-            Assert.IsNotNull(tp.RecipeTimer, "somehow got a null recipetimer");
-            l.Add(tp.RecipeTimer);
+            Assert.IsNotNull(tp.RecipeSituation, "somehow got a null recipetimer");
+            l.Add(tp.RecipeSituation);
         }
 
         return l;

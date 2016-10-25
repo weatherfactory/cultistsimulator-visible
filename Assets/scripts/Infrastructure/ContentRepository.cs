@@ -155,16 +155,19 @@ public class ContentRepository : Singleton<ContentRepository>
             }
 
             ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);
-            foreach (Hashtable ra in alRecipeAlternatives)
-            {
-                string raID = ra[Constants.KID].ToString();
-                int raChance = Convert.ToInt32(ra[Constants.KCHANCE]);
-                bool raAdditional = Convert.ToBoolean(ra[Constants.KADDITIONAL] ?? false);
+            if(alRecipeAlternatives!=null)
+            { 
+                foreach (Hashtable ra in alRecipeAlternatives)
+                {
+                    string raID = ra[Constants.KID].ToString();
+                    int raChance = Convert.ToInt32(ra[Constants.KCHANCE]);
+                    bool raAdditional = Convert.ToBoolean(ra[Constants.KADDITIONAL] ?? false);
 
-                r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
+                    r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
+                }
             }
 
-               recipesList.Add(r);
+            recipesList.Add(r);
            
         }
 

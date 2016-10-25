@@ -24,6 +24,14 @@ using System.Text;
         AlternativeRecipes=new List<RecipeAlternative>();
         }
 
+        public void Do(INotifier notifier, IElementsContainer container)
+        {
+            notifier.Log(this.Description,Style.Subtle);
+        
+        foreach(var e in Effects)
+            container.ModifyElementQuantity(e.Key,e.Value);
+    }
+
     }
 
 public class RecipeAlternative
