@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class TimerPanel : BoardMonoBehaviour
@@ -33,8 +34,12 @@ public class TimerPanel : BoardMonoBehaviour
         imgTimer.fillAmount = RecipeSituation.TimeRemaining / RecipeSituation.Recipe.Warmup;
         RecipeTimerState timerState = RecipeSituation.DoHeartbeat();
         if (timerState==RecipeTimerState.Complete)
-        { 
-            RecipeSituation.Recipe.Do(BM,BM);
+        {
+            List<Recipe> recipesToExecute =
+                ContentRepository.Instance.RecipeCompendium.GetActualRecipesToExecute(RecipeSituation.Recipe, BM);
+            foreach(Recipe r in recipesToExecute)
+            r.Do(BM,BM);
+            
             BM.ExileToLimboThenDestroy(gameObject);
             
         }
