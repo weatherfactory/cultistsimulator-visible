@@ -35,10 +35,8 @@ public class TimerPanel : BoardMonoBehaviour
         RecipeTimerState timerState = RecipeSituation.DoHeartbeat();
         if (timerState==RecipeTimerState.Complete)
         {
-            List<Recipe> recipesToExecute =
-                ContentRepository.Instance.RecipeCompendium.GetActualRecipesToExecute(RecipeSituation.Recipe, BM);
-            foreach(Recipe r in recipesToExecute)
-            r.Do(BM,BM);
+            RecipeSituation.Complete(BM,BM,ContentRepository.Instance.RecipeCompendium);
+            
             
             BM.ExileToLimboThenDestroy(gameObject);
             

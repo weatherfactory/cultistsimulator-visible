@@ -9,6 +9,7 @@ using NUnit.Framework;
 
 namespace CS.Tests
 {
+    [TestFixture]
     public class Integration_ImportTests
     {
         //these are JSON integration tests
@@ -19,6 +20,7 @@ namespace CS.Tests
         private const string RECIPE_1_START_DESCRIPTION = "this # is the start!";
         private const string RECIPE_1_DESCRIPTION = "to play / us out...";
         private const string RECIPE_1_WARMUP = "6";
+        private const string RECIPE_1_LOOP = "someid";
         private const string ASPECT_1_ID="aspect1id";
         private const int ASPECT_1_VALUE =2;
         private const string ASPECT_2_ID = "aspect2id";
@@ -72,10 +74,12 @@ namespace CS.Tests
             htRecipe.Add(Constants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
             htRecipe.Add(Constants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
             htRecipe.Add(Constants.KWARMUP, RECIPE_1_WARMUP);
+            htRecipe.Add(Constants.KLOOP, RECIPE_1_LOOP);
             htRecipe.Add(Constants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(Constants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(Constants.KEFFECTS, htEffects);
             htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
+            
 
             recipesToImport.Add(htRecipe);
             RecipeCompendium rc = cm.PopulateRecipeCompendium(recipesToImport);
@@ -124,6 +128,7 @@ namespace CS.Tests
             Assert.AreEqual(Convert.ToInt32(RECIPE_1_WARMUP), recipesImported.First().Warmup);
             Assert.AreEqual(RECIPE_1_ACTIONID, recipesImported.First().ActionId);
             Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
+            Assert.AreEqual(RECIPE_1_LOOP,recipesImported.First().Loop);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

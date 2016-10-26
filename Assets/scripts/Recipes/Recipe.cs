@@ -16,6 +16,7 @@ using System.Text;
         public string StartDescription { get; set; }
         public string Description { get; set; }
         public List<RecipeAlternative> AlternativeRecipes { get; set; }
+        public string Loop { get; set; } //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
         public Recipe()
         {

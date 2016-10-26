@@ -135,7 +135,7 @@ namespace CS.Tests
         public void Non_Additional_Alternative_Takes_Precedence_Over_Original_Additional()
         {
             primaryRecipe.AlternativeRecipes [0] = new RecipeAlternative(secondaryRecipe.Id, 100, true); //additional to primary
-        primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id,100,false)); //substitutes for primary
+            primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id,100,false)); //substitutes for primary
             mockDice.Rolld100().Returns(1);
             List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute.Single().Id);
@@ -160,7 +160,6 @@ namespace CS.Tests
             mockDice.Rolld100().Returns(1);
             primaryRecipe.AlternativeRecipes[0]=new RecipeAlternative(secondaryRecipe.Id,100,true);
             List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
-            
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute[0].Id);
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute[1].Id);
         }

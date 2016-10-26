@@ -25,4 +25,17 @@ public class RecipeSituation
 
         return RecipeTimerState.Ongoing;
     }
+
+    public void Complete(INotifier notifier, IElementsContainer elementsContainer, RecipeCompendium compendium)
+    {
+        List<Recipe> recipesToExecute =
+                 compendium.GetActualRecipesToExecute(Recipe, elementsContainer);
+        foreach (Recipe r in recipesToExecute)
+            r.Do(notifier, elementsContainer);
+
+        if (Recipe.Loop != null)
+            Recipe = compendium.GetRecipeById(Recipe.Loop);
+        else
+            Recipe = null;
+    }
 }

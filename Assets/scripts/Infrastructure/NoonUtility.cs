@@ -11,6 +11,7 @@ namespace Noon
     public class Constants
     {
         public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
+        public static string KLOOP="loop";
         public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
         public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
         public const string KID = "id";
