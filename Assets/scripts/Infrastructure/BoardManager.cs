@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQuantityDisplay
+public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
@@ -27,6 +27,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField]private GameObject prefabNotificationPanel;
+    [SerializeField] private CharacterNamePanel characterNamePanel;
     [SerializeField]public Character Character;
 
     public DraggableToken CurrentDragItem;
@@ -75,7 +76,14 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
 
 
 
-
+    private Character CreateBlankCharacter()
+    {
+        Character character = new Character();
+        character.SubscribeDetailsDisplay(characterNamePanel);
+        character.SubscribeElementQuantityDisplay(this);
+        return character;
+        
+    }
 
     /// <summary>
     /// This sets our starting elements
@@ -85,14 +93,20 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
         ContentRepository.Instance.ImportVerbs();
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
-        Character = new Character();
-        Character.SubscribeElementQuantityDisplay(this);
-        ModifyElementQuantity("clique", 1);
-        ModifyElementQuantity("ordinarylife", 1);
-        ModifyElementQuantity("health", 3);
-        ModifyElementQuantity("reason", 3);
-        ModifyElementQuantity("occultscrap", 1);
-        ModifyElementQuantity("shilling", 10);
+
+        Character = CreateBlankCharacter();
+        Character.Title = "Mr";
+        Character.FirstName = "Vivian";
+        Character.LastName = "Keyes";
+
+        
+        Character.ModifyElementQuantity("clique", 1);
+        Character.ModifyElementQuantity("ordinarylife", 1);
+        Character.ModifyElementQuantity("health", 3);
+        Character.ModifyElementQuantity("reason", 3);
+        Character.ModifyElementQuantity("occultscrap", 1);
+        Character.ModifyElementQuantity("shilling", 10);
+
         foreach (Verb v in ContentRepository.Instance.GetAllVerbs())
         {
             AddVerbToBoard(v);
@@ -154,15 +168,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
         return det.Quantity;
     }
 
-    public Dictionary<string, int> GetAllCurrentElements()
-    {
-        Dictionary<string,int> elements=new Dictionary<string, int>();
-        foreach (DraggableElementToken det in GetAllStoredElementTokens())
-        {
-            elements.Add(det.Element.Id,det.Quantity);
-        }
-        return elements;
-    }
+
 
     /// <summary>
     /// an array of all element tokens currently in the player's stockpile
@@ -195,17 +201,6 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
         }
     }
 
-    public void ModifyElementQuantity(string elementId, int quantity)
-    {
-       Character.ModifyElementQuantity(elementId,quantity);
-        //DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
-        //if(existingElement)
-        //    existingElement.ModifyQuantity(quantity);
-        //else
-        //{
-        //    addElementToBoard(elementId,quantity,siblingIndex);
-        //}
-    }
 
 
     public void ClearWorkspaceElements()
@@ -223,7 +218,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
         string elementId = tokenToReturn.Element.Id;
         int elementQuantity = tokenToReturn.Quantity;
         ExileToLimboThenDestroy(tokenToReturn.gameObject); //to prevent possible double-counting
-        ModifyElementQuantity(elementId,elementQuantity);
+        Character.ModifyElementQuantity(elementId,elementQuantity);
         
 
         UpdateAspectDisplay();
@@ -338,7 +333,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
     /// </summary>
     public void ClearBoard()
     {
-        Character=new Character();
+        Character = CreateBlankCharacter();
         ClearWorkspaceElements();
         DraggableElementToken[]  allElementTokens=GetAllStoredElementTokens();
         foreach (DraggableElementToken e in allElementTokens)
@@ -362,7 +357,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
             string exportJson;
 
             Hashtable htElementsPossessed = new Hashtable();
-            foreach (KeyValuePair<string,int> e in GetAllCurrentElements())
+            foreach (KeyValuePair<string,int> e in Character.GetAllCurrentElements())
             {
                 htElementsPossessed.Add(e.Key,e.Value);
             }
@@ -380,12 +375,19 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
                 htRecipesKnown.Add(kvpr.Key, kvpr.Value);
             }
 
+            Hashtable htCharacter = new Hashtable()
+            {
+                {Noon.Constants.KCHARACTERTITLE, Character.Title},
+                {Noon.Constants.KCHARACTERFIRSTNAME, Character.FirstName},
+                {Noon.Constants.KCHARACTERLASTNAME, Character.LastName}
+            };
 
             Hashtable htSave=new Hashtable();
 
             htSave.Add(Noon.Constants.CONST_SAVE_ELEMENTSPOSSESSED,htElementsPossessed);
             htSave.Add(Noon.Constants.CONST_SAVE_RECIPETIMERS,htRecipeTimers);
             htSave.Add(Noon.Constants.CONST_SAVE_RECIPESKNOWN,htRecipesKnown);
+            htSave.Add(Noon.Constants.CONST_SAVE_CHARACTER_DETAILS, htCharacter);
 
             exportJson = htSave.JsonString();
             
@@ -410,6 +412,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
             Hashtable htElementsPossessed = htSave.GetHashtable(Noon.Constants.CONST_SAVE_ELEMENTSPOSSESSED);
             Hashtable htRecipeTimers = htSave.GetHashtable(Noon.Constants.CONST_SAVE_RECIPETIMERS);
             Hashtable htRecipesKnown = htSave.GetHashtable(Noon.Constants.CONST_SAVE_RECIPESKNOWN);
+            Hashtable htCharacter = htSave.GetHashtable(Noon.Constants.CONST_SAVE_CHARACTER_DETAILS);
 
             //check if it's all valid first
             foreach (string k in htElementsPossessed.Keys)
@@ -423,9 +426,13 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
 
             ClearBoard();
 
+            Character.Title = htCharacter[Noon.Constants.KCHARACTERTITLE].ToString();
+            Character.FirstName = htCharacter[Noon.Constants.KCHARACTERFIRSTNAME].ToString();
+            Character.LastName = htCharacter[Noon.Constants.KCHARACTERLASTNAME].ToString();
+
             foreach (string k in htElementsPossessed.Keys)
             {
-                ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
+               Character.ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
             }
 
             foreach (string k in htRecipeTimers.Keys)

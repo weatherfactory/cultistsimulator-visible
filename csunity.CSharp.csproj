@@ -83,10 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\Character\Character.cs" />
-    <Compile Include="Assets\scripts\Elements\IElementChangeSubscriber.cs" />
-    <Compile Include="Assets\scripts\Enums\RecipeTimerState.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\Dice.cs" />
+    <Compile Include="Assets\CharacterNamePanel.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -207,6 +204,7 @@
     <Compile Include="Assets\scripts\Aspects\AspectFrame.cs" />
     <Compile Include="Assets\scripts\Aspects\AspectsDisplay.cs" />
     <Compile Include="Assets\scripts\Base\DraggableToken.cs" />
+    <Compile Include="Assets\scripts\Character\Character.cs" />
     <Compile Include="Assets\scripts\Elements\ChildSlotOrganiser.cs" />
     <Compile Include="Assets\scripts\Elements\ChildSlotSpecification.cs" />
     <Compile Include="Assets\scripts\Elements\DraggableElementToken.cs" />
@@ -215,17 +213,19 @@
     <Compile Include="Assets\scripts\Elements\ResourcesPanel.cs" />
     <Compile Include="Assets\scripts\Elements\SlotReceiveElement.cs" />
     <Compile Include="Assets\scripts\Elements\Workspace.cs" />
+    <Compile Include="Assets\scripts\Enums\ContentRepository.cs" />
+    <Compile Include="Assets\scripts\Enums\RecipeTimerState.cs" />
     <Compile Include="Assets\scripts\Enums\Style.cs" />
     <Compile Include="Assets\scripts\Infrastructure\BoardManager.cs" />
     <Compile Include="Assets\scripts\Infrastructure\BoardMonoBehaviour.cs" />
-    <Compile Include="Assets\scripts\Enums\ContentRepository.cs" />
+    <Compile Include="Assets\scripts\Infrastructure\Dice.cs" />
     <Compile Include="Assets\scripts\Infrastructure\Heartbeat.cs" />
     <Compile Include="Assets\scripts\Infrastructure\INotifier.cs" />
+    <Compile Include="Assets\scripts\Infrastructure\INotifyLocator.cs" />
     <Compile Include="Assets\scripts\Infrastructure\LogPanel.cs" />
     <Compile Include="Assets\scripts\Infrastructure\MenuManager.cs" />
     <Compile Include="Assets\scripts\Infrastructure\NoonUtility.cs" />
     <Compile Include="Assets\scripts\Infrastructure\NotificationPanel.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\INotifyLocator.cs" />
     <Compile Include="Assets\scripts\Infrastructure\singleton.cs" />
     <Compile Include="Assets\scripts\Recipes\KnownRecipeDisplay.cs" />
     <Compile Include="Assets\scripts\Recipes\Recipe.cs" />
@@ -235,6 +235,8 @@
     <Compile Include="Assets\scripts\Recipes\TimerPanel.cs" />
     <Compile Include="Assets\scripts\Recipes\WorldPanel.cs" />
     <Compile Include="Assets\scripts\UIWiring\ButtonClicks.cs" />
+    <Compile Include="Assets\scripts\UIWiring\ICharacterDetailsDisplay.cs" />
+    <Compile Include="Assets\scripts\UIWiring\IElementChangeSubscriber.cs" />
     <Compile Include="Assets\scripts\Verbs\DraggableVerbToken.cs" />
     <Compile Include="Assets\scripts\Verbs\SlotReceiveVerb.cs" />
     <Compile Include="Assets\scripts\Verbs\Verb.cs" />

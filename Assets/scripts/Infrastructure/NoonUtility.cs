@@ -12,6 +12,7 @@ namespace Noon
     {
         public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
         public static string KLOOP="loop";
+        public static string CONST_SAVE_CHARACTER_DETAILS="characterDetails";
         public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
         public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
         public const string KID = "id";
@@ -26,6 +27,10 @@ namespace Noon
         public const string KALTERNATIVERECIPES = "alternativerecipes";
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
+
+        public const string KCHARACTERTITLE = "title";
+        public const string KCHARACTERFIRSTNAME= "firstname";
+        public const string KCHARACTERLASTNAME = "lastname";
 
 
 

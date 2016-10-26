@@ -11,13 +11,13 @@ public class ButtonClicks : BoardMonoBehaviour
     public void PlusOneElement()
     {
         string elementId = BM.GetDebugElementName();
-        BM.ModifyElementQuantity(elementId, 1);
+        BM.Character.ModifyElementQuantity(elementId, 1);
     }
 
     public void MinusOneElement()
     {
         string elementId = BM.GetDebugElementName();
-        BM.ModifyElementQuantity(elementId, -1);
+        BM.Character.ModifyElementQuantity(elementId, -1);
     }
 
     public void ClearWorkspaceElements()
