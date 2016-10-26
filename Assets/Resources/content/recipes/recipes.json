@@ -140,8 +140,8 @@
         label: "Labour",
         actionId: "work",
         requirements: {heart: 1},
-        alternativerecipes: [{id: 'labourwithromanticinterestpresent', chance:100},
-            {id: 'labourmeetromanticinterest', chance:10}],
+        alternativerecipes: [{id: "labourwithromanticinterestpresent", chance:100},
+            {id: "labourmeetromanticinterest", chance:10}],
         effects: {
             shilling: 3
         },
@@ -151,6 +151,34 @@
         craftable: true
     }
 	,
+		{
+        id: "testwork",
+        label: "Work test",
+        actionId: "work",
+        requirements: {secrethistories: 1},
+        alternativerecipes: [{id: "testworkalternative", chance:100,additional:true}],
+        effects: {
+            occultscrap: 7
+        },
+        startdescription: "Beginning test work",
+        description: "Completing test work",
+        warmup: 2,
+        craftable: true
+    }
+	,
+			{
+        id: "testworkalternative",
+        label: "Work test alternative",
+        actionId: "work",
+        requirements: {},
+        effects: {
+            shilling: 7
+        },
+        startdescription: "Beginning test work ALTERNATIVE",
+        description: "Completing test work  ALTERNATIVE",
+        warmup: 2,
+        craftable: false
+    }
     {
         id: "lockedmindready",
         label: "Dream of the Door, Yourself",

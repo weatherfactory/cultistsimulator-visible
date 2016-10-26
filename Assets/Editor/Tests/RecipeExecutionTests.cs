@@ -17,6 +17,7 @@ namespace CS.Tests
         private IElementsContainer elementsContainer;
         private Recipe primaryRecipe;
         private Recipe secondaryRecipe;
+        private Recipe tertiaryRecipe;
         private RecipeAlternative recipeAlternative;
         private RecipeCompendium recipeCompendium;
         private IDice mockDice;
@@ -36,13 +37,20 @@ namespace CS.Tests
                 Description = "A more secondary description."
             };
 
+            tertiaryRecipe = new Recipe
+            {
+                Id = "tertiaryrecipe",
+                Description = "And a tertiary description."
+            }; //this isn't normally added as an alternative
+
+
             primaryRecipe.Effects.Add("primaryrecipeeffect", 1);
 
             recipeAlternative = new RecipeAlternative(secondaryRecipe.Id, 50, false);
             primaryRecipe.AlternativeRecipes.Add(recipeAlternative);
 
 
-            List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe};
+            List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe,tertiaryRecipe};
             mockDice = Substitute.For<IDice>();
 
             recipeCompendium=new RecipeCompendium(allRecipes,mockDice);
@@ -105,11 +113,34 @@ namespace CS.Tests
 
         }
 
+        [Test]
+        public void AlternateRecipeMarkedAsAdditionalExecutesAfterFirst()
+        {
+            mockDice.Rolld100().Returns(1);
+            primaryRecipe.AlternativeRecipes[0]=new RecipeAlternative(secondaryRecipe.Id,100,true);
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            
+            Assert.AreEqual(primaryRecipe.Id, recipesToExecute[0].Id);
+            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute[1].Id);
+        }
 
+        [Test]
+        public void TwoAlternateRecipesMarkedAsAdditionalExecuteAfterFirst()
+        {
+            primaryRecipe.AlternativeRecipes[0] = new RecipeAlternative(secondaryRecipe.Id, 100, true);
+            primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id,100,true));
+            mockDice.Rolld100().Returns(1);
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(primaryRecipe.Id, recipesToExecute[0].Id);
+            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute[1].Id);
+            Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute[2].Id);
 
-        // alternativerecipes: //these will be completed in place of this recipe if (1) their requirements are satisfied *by concrete possessed resources, not considering those resources' aspects;
-        //and (2) if we roll <=chance on d100"
-        //if additional=true, they'll execute as well as, not instead of, the original recipe
-        //loop: recipeid //this, or another recipe, may begin when this completes. NB if an alternative recipe is triggered, the loop from that will apply instead.
+        }
+
+        [Test]
+        public void AlternativeToAnAlternative_ExecutesInPlaceOfTheOriginal()
+        { }
+
+        
     }
 }

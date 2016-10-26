@@ -50,13 +50,17 @@ public class RecipeCompendium
     }
 
     /// <summary>
-    ///Determines whether the original recipe, a substitute, or something else should actually be run
+    ///Determines whether the original recipe, an alternative, or something else should actually be run.
+    /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
+    /// Alternatives which match, but which specify additional are run after the original recipe.
+    /// There may be multiple additional alternatives.
+    /// However, if an alternative ever does *not* specify additional, it replaces the entire list (although it may have alternatives of its own)
     /// </summary>
 
-    /// <returns> this may be the original recipe, or it may be a substitute recipe, it may be any number of recipes possible including the original</returns>
+    /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
     public List<Recipe> GetActualRecipesToExecute(Recipe recipe, IElementsContainer elementsContainer)
     {
-        List<Recipe> actualRecipesToExecute=new List<Recipe>();
+        List<Recipe> actualRecipesToExecute=new List<Recipe>() { recipe }; ;
         if (recipe.AlternativeRecipes.Count == 0)
         {
             actualRecipesToExecute.Add(recipe);
@@ -71,13 +75,15 @@ public class RecipeCompendium
                 Recipe candidateRecipe = GetRecipeById(ar.Id);
                 if(candidateRecipeRequirementsAreSatisfied(candidateRecipe,elementsContainer))
                 { 
-                    actualRecipesToExecute.Add(candidateRecipe);
-                    return actualRecipesToExecute;
+                    if(ar.Additional)
+                        actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
+                    else
+                        return new List<Recipe>() {candidateRecipe}; //this recipe supersedes everything else! return it.
                 }
             }
         }
 
-        return new List<Recipe>() {recipe};
+        return actualRecipesToExecute; //we either found nothing, or added one or more additional recipes
     }
 
 
