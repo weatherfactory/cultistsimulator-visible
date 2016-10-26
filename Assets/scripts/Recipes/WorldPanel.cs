@@ -58,7 +58,6 @@ public class WorldPanel : BoardMonoBehaviour
     public void FastForward(int seconds)
     {
         for(int i=1;i<=seconds;i++)
-        foreach(var t in CurrentTimerPanels)
-                t.DoHeartbeat();
+            DoHeartbeat();
     }
 }

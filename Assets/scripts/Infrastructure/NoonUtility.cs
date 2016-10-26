@@ -13,6 +13,8 @@ namespace Noon
         public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
         public static string KLOOP="loop";
         public static string CONST_SAVE_CHARACTER_DETAILS="characterDetails";
+        public static string KENDING="ending";
+        public static string KCHARACTERSTATE="state";
         public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
         public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
         public const string KID = "id";

@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CharacterNamePanel.cs" />
+    <Compile Include="Assets\scripts\Enums\CharacterState.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -235,7 +236,7 @@
     <Compile Include="Assets\scripts\Recipes\TimerPanel.cs" />
     <Compile Include="Assets\scripts\Recipes\WorldPanel.cs" />
     <Compile Include="Assets\scripts\UIWiring\ButtonClicks.cs" />
-    <Compile Include="Assets\scripts\UIWiring\ICharacterDetailsDisplay.cs" />
+    <Compile Include="Assets\scripts\UIWiring\ICharacterInfoSubscriber.cs" />
     <Compile Include="Assets\scripts\UIWiring\IElementChangeSubscriber.cs" />
     <Compile Include="Assets\scripts\Verbs\DraggableVerbToken.cs" />
     <Compile Include="Assets\scripts\Verbs\SlotReceiveVerb.cs" />

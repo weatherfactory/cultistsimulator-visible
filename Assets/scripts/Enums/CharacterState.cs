@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-    public interface ICharacterDetailsDisplay
+
+    public enum CharacterState
     {
-        void UpdateDisplay(Character character);
+        Viable,Extinct
     }
 

@@ -37,19 +37,22 @@ public class Character:IElementsContainer
         }
         }
 
-        private Dictionary<string, int> _elements;
-        private List<IElementQuantityDisplay> _elementsDisplaySubscribers;
-        private List<ICharacterDetailsDisplay> _detailsSubscribers;
+        private readonly Dictionary<string, int> _elements;
+        private readonly List<IElementQuantityDisplay> _elementsDisplaySubscribers;
+        private readonly List<ICharacterInfoSubscriber> _detailsSubscribers;
         private string _title;
         private string _firstName;
         private string _lastName;
+        public CharacterState State { get; set; }
+        private string _endingTriggeredId;
 
 
         public Character()
         {
             _elements=new Dictionary<string, int>();
         _elementsDisplaySubscribers=new List<IElementQuantityDisplay>();
-        _detailsSubscribers=new List<ICharacterDetailsDisplay>();
+        _detailsSubscribers=new List<ICharacterInfoSubscriber>();
+            State = CharacterState.Viable;
 
         }
 
@@ -59,10 +62,10 @@ public class Character:IElementsContainer
             _elementsDisplaySubscribers.Add(elementQuantityDisplay);
         }
 
-        public void SubscribeDetailsDisplay(ICharacterDetailsDisplay characterDetailsDisplay)
+        public void SubscribeDetailsDisplay(ICharacterInfoSubscriber characterInfoSubscriber)
         {
-            if(!_detailsSubscribers.Contains(characterDetailsDisplay))
-            _detailsSubscribers.Add(characterDetailsDisplay);
+            if(!_detailsSubscribers.Contains(characterInfoSubscriber))
+            _detailsSubscribers.Add(characterInfoSubscriber);
         }
 
         public void NotifySubscribersOfElementQuantityChange(string elementId, int quantity)
@@ -76,7 +79,7 @@ public class Character:IElementsContainer
         public void NotifySubscribersOfDetailsChange()
         {
             foreach(var d in _detailsSubscribers)
-                d.UpdateDisplay(this);
+                d.ReceiveUpdate(this);
             
         }
 
@@ -99,6 +102,13 @@ public class Character:IElementsContainer
         public Dictionary<string, int> GetAllCurrentElements()
         {
             return _elements;
+        }
+
+        public void TriggerEnding(string endingId)
+        {
+            State=CharacterState.Extinct;
+            _endingTriggeredId = endingId;
+        NotifySubscribersOfDetailsChange();
         }
     }
 

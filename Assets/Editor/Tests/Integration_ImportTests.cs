@@ -21,6 +21,7 @@ namespace CS.Tests
         private const string RECIPE_1_DESCRIPTION = "to play / us out...";
         private const string RECIPE_1_WARMUP = "6";
         private const string RECIPE_1_LOOP = "someid";
+        private const string RECIPE_1_ENDING = "anending";
         private const string ASPECT_1_ID="aspect1id";
         private const int ASPECT_1_VALUE =2;
         private const string ASPECT_2_ID = "aspect2id";
@@ -33,6 +34,7 @@ namespace CS.Tests
         private const string ALTERNATIVE_2_ID = "alternative2";
         private const int ALTERNATIVE_1_CHANCE = 10;
         private const int ALTERNATIVE_2_CHANCE = 100;
+        
 
         [Test]
         public void RecipesImportFromHashtable()
@@ -46,7 +48,7 @@ namespace CS.Tests
 
             htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE);
             htRequirements.Add(ASPECT_2_ID, ASPECT_2_VALUE);
-
+            
             htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE);
             htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE);
 
@@ -75,12 +77,12 @@ namespace CS.Tests
             htRecipe.Add(Constants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
             htRecipe.Add(Constants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(Constants.KLOOP, RECIPE_1_LOOP);
+            htRecipe.Add(Constants.KENDING, RECIPE_1_ENDING);
             htRecipe.Add(Constants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(Constants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(Constants.KEFFECTS, htEffects);
             htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
             
-
             recipesToImport.Add(htRecipe);
             RecipeCompendium rc = cm.PopulateRecipeCompendium(recipesToImport);
 
@@ -129,6 +131,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_ACTIONID, recipesImported.First().ActionId);
             Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
             Assert.AreEqual(RECIPE_1_LOOP,recipesImported.First().Loop);
+            Assert.AreEqual(RECIPE_1_ENDING,recipesImported.First().Ending);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

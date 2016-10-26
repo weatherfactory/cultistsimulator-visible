@@ -2,7 +2,7 @@
 using System.Collections;
 using TMPro;
 
-public class CharacterNamePanel : MonoBehaviour,ICharacterDetailsDisplay
+public class CharacterNamePanel : MonoBehaviour,ICharacterInfoSubscriber
 {
     [SerializeField] private TextMeshProUGUI txtTitle;
     [SerializeField]
@@ -10,7 +10,7 @@ public class CharacterNamePanel : MonoBehaviour,ICharacterDetailsDisplay
     [SerializeField]
     private TextMeshProUGUI txtLastName;
 
-    public void UpdateDisplay(Character character)
+    public void ReceiveUpdate(Character character)
     {
         txtTitle.text = character.Title;
         txtFirstName.text = character.FirstName;

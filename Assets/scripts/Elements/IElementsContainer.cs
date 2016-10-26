@@ -8,4 +8,5 @@ using System.Text;
         void ModifyElementQuantity(string elementId, int quantity);
         int GetCurrentElementQuantity(string elementId);
         Dictionary<string, int> GetAllCurrentElements();
+        void TriggerEnding(string endingId);
     }

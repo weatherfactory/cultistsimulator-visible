@@ -29,6 +29,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
     [SerializeField]private GameObject prefabNotificationPanel;
     [SerializeField] private CharacterNamePanel characterNamePanel;
     [SerializeField]public Character Character;
+    [SerializeField] private Heartbeat heartbeat;
 
     public DraggableToken CurrentDragItem;
     private Dictionary<string,Recipe> knownRecipes= new Dictionary<string, Recipe>();
@@ -379,15 +380,18 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
             {
                 {Noon.Constants.KCHARACTERTITLE, Character.Title},
                 {Noon.Constants.KCHARACTERFIRSTNAME, Character.FirstName},
-                {Noon.Constants.KCHARACTERLASTNAME, Character.LastName}
+                {Noon.Constants.KCHARACTERLASTNAME, Character.LastName},
+                {Noon.Constants.KCHARACTERSTATE,Character.State.ToString() }
             };
 
-            Hashtable htSave=new Hashtable();
+            Hashtable htSave = new Hashtable
+            {
+                {Noon.Constants.CONST_SAVE_ELEMENTSPOSSESSED, htElementsPossessed},
+                {Noon.Constants.CONST_SAVE_RECIPETIMERS, htRecipeTimers},
+                {Noon.Constants.CONST_SAVE_RECIPESKNOWN, htRecipesKnown},
+                {Noon.Constants.CONST_SAVE_CHARACTER_DETAILS, htCharacter}
+            };
 
-            htSave.Add(Noon.Constants.CONST_SAVE_ELEMENTSPOSSESSED,htElementsPossessed);
-            htSave.Add(Noon.Constants.CONST_SAVE_RECIPETIMERS,htRecipeTimers);
-            htSave.Add(Noon.Constants.CONST_SAVE_RECIPESKNOWN,htRecipesKnown);
-            htSave.Add(Noon.Constants.CONST_SAVE_CHARACTER_DETAILS, htCharacter);
 
             exportJson = htSave.JsonString();
             
@@ -429,6 +433,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
             Character.Title = htCharacter[Noon.Constants.KCHARACTERTITLE].ToString();
             Character.FirstName = htCharacter[Noon.Constants.KCHARACTERFIRSTNAME].ToString();
             Character.LastName = htCharacter[Noon.Constants.KCHARACTERLASTNAME].ToString();
+            Character.State = (CharacterState)Enum.Parse(typeof(CharacterState), htCharacter[Noon.Constants.KCHARACTERSTATE].ToString());
 
             foreach (string k in htElementsPossessed.Keys)
             {
@@ -455,6 +460,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
             throw;
         }
     }
+
 
 
 }

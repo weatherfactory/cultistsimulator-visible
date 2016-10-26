@@ -72,6 +72,9 @@ namespace CS.Tests
             elementsContainer.Received(1).ModifyElementQuantity(primaryRecipe.Effects.Single().Key, primaryRecipe.Effects.Single().Value);
         }
 
+        [Test]
+        public void RecipeWithEnding_Triggers_EndingAction()
+        { }
 
         [Test]
         public void AlternateRecipeExecutes_IfNoRequirements_AndDiceRollSatisfied()
@@ -202,8 +205,9 @@ namespace CS.Tests
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute[0].Id);
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute[1].Id);
             Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute[2].Id);
-
         }
+
+
 
 
         

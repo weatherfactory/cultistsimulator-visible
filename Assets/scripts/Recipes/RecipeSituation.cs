@@ -49,7 +49,7 @@ public class RecipeSituation
             return Complete(notifier, elementsContainer, compendium);
 
         }
-        else return RecipeTimerState.Ongoing;
+         return RecipeTimerState.Ongoing;
     }
 
     private RecipeTimerState Complete(INotifier notifier, IElementsContainer elementsContainer,
