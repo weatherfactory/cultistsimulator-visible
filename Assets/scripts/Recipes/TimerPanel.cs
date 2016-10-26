@@ -32,23 +32,15 @@ public class TimerPanel : BoardMonoBehaviour
     {
 
         imgTimer.fillAmount = RecipeSituation.TimeRemaining / RecipeSituation.Recipe.Warmup;
-        RecipeTimerState timerState = RecipeSituation.DoHeartbeat();
-        if (timerState==RecipeTimerState.Complete)
-        {
-            RecipeSituation.Complete(BM,BM,ContentRepository.Instance.RecipeCompendium);
-            
-            
-            BM.ExileToLimboThenDestroy(gameObject);
-            
-        }
-
         UpdateTimerText();
-
+        RecipeTimerState state=RecipeSituation.DoHeartbeat(BM, BM, ContentRepository.Instance.RecipeCompendium);
+        if (state==RecipeTimerState.Complete)     
+            BM.ExileToLimboThenDestroy(gameObject);
+        
     }
 
 }
 
 
 
-public enum RecipeTimerState{ Ongoing=1,Complete=10}
     

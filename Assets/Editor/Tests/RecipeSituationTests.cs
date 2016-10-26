@@ -22,8 +22,8 @@ namespace  CS.Tests
      [SetUp]
     public void Setup()
         {
-         r1 = new Recipe() {Id="r1"}; //NSubstitute doesn't like returning null from mock properties?
-        r2 = new Recipe() { Id = "r2" }; //NSubstitute doesn't like returning null from mock properties?
+         r1 = new Recipe() {Id="r1",Warmup =1}; //NSubstitute doesn't like returning null from mock properties?
+        r2 = new Recipe() { Id = "r2", Warmup = 2 }; //NSubstitute doesn't like returning null from mock properties?
             rc = new RecipeCompendium(new List<Recipe>() {r1,r2},null);
 
 
@@ -39,10 +39,11 @@ namespace  CS.Tests
             RecipeSituation rs = new RecipeSituation(r1, 0);
 
 
-            rs.Complete(notifier, container,rc);
+            rs.DoHeartbeat(notifier, container,rc);
 
             Assert.IsNull(rs.Recipe);
-
+            Assert.AreEqual(RecipeTimerState.Complete,rs.TimerState);
+            Assert.AreEqual(0,rs.TimeRemaining);
 
         }
 
@@ -54,10 +55,11 @@ namespace  CS.Tests
 
             RecipeSituation rs = new RecipeSituation(r1, 0);
 
-            rs.Complete(notifier, container, rc);
+            rs.DoHeartbeat(notifier, container, rc);
 
             Assert.AreEqual(r2.Id, rs.Recipe.Id);
-
+            Assert.AreEqual(RecipeTimerState.Ongoing, rs.TimerState);
+            Assert.AreEqual(r2.Warmup, rs.TimeRemaining);
 
         }
     }

@@ -93,6 +93,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         {
             AddVerbToBoard(v);
         }
+        QueueRecipe(ContentRepository.Instance.RecipeCompendium.GetRecipeById("starvation"));
         //ModifyElementQuantityOnBoard("alockedmind", 1);
         //ModifyElementQuantityOnBoard("aninspectorcalls", 1);
         //ModifyElementQuantityOnBoard("order", 1);
@@ -241,10 +242,16 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
     public void QueueCurrentRecipe()
     {
         Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
-        Log(pnlRecipeDisplay.CurrentRecipe.StartDescription,Style.Subtle);
-        pnlWorld.AddTimer(currentRecipe,null);
-        MarkRecipeAsKnown(currentRecipe);
+        QueueRecipe(currentRecipe);
     }
+
+    public void QueueRecipe(Recipe r)
+    {
+        Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
+        pnlWorld.AddTimer(r, null);
+        MarkRecipeAsKnown(r);
+    }
+   
 
     public void Notify(string aside, string message, INotifyLocator notifyingGameObject)
     {
