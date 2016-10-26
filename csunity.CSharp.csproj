@@ -83,6 +83,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\scripts\Character\Character.cs" />
+    <Compile Include="Assets\scripts\Elements\IElementChangeSubscriber.cs" />
     <Compile Include="Assets\scripts\Enums\RecipeTimerState.cs" />
     <Compile Include="Assets\scripts\Infrastructure\Dice.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />

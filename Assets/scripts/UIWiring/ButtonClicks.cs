@@ -39,4 +39,9 @@ public class ButtonClicks : BoardMonoBehaviour
     {
         BM.LoadCurrentBoard();
     }
+
+    public void FastForward30()
+    {
+        BM.FastForward(30);
+    }
 }

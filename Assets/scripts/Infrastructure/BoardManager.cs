@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
+public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQuantityDisplay
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
@@ -26,7 +26,8 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
     [SerializeField]GameObject prefabVerbToken;
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
-    [SerializeField] private GameObject prefabNotificationPanel;
+    [SerializeField]private GameObject prefabNotificationPanel;
+    [SerializeField]public Character Character;
 
     public DraggableToken CurrentDragItem;
     private Dictionary<string,Recipe> knownRecipes= new Dictionary<string, Recipe>();
@@ -89,20 +90,14 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         ModifyElementQuantity("health", 3);
         ModifyElementQuantity("reason", 3);
         ModifyElementQuantity("occultscrap", 1);
-        foreach(Verb v in ContentRepository.Instance.GetAllVerbs())
+        ModifyElementQuantity("shilling", 10);
+        foreach (Verb v in ContentRepository.Instance.GetAllVerbs())
         {
             AddVerbToBoard(v);
         }
         QueueRecipe(ContentRepository.Instance.RecipeCompendium.GetRecipeById("starvation"));
-        //ModifyElementQuantityOnBoard("alockedmind", 1);
-        //ModifyElementQuantityOnBoard("aninspectorcalls", 1);
-        //ModifyElementQuantityOnBoard("order", 1);
-        //ModifyElementQuantityOnBoard("suitablepremises", 1);
-        //ModifyElementQuantityOnBoard("crypt", 1);
-        //ModifyElementQuantityOnBoard("starshatteredfane", 1);
-        //ModifyElementQuantityOnBoard("minorremaking", 1);
-        //ModifyElementQuantityOnBoard("cryptexpedition", 1);
-        //ModifyElementQuantityOnBoard("riteofslaking", 1);
+        Character=new Character();
+        Character.SubscribeElementQuantityDisplay(this);
 
 
     }
@@ -158,6 +153,16 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         return det.Quantity;
     }
 
+    public Dictionary<string, int> GetAllCurrentElements()
+    {
+        Dictionary<string,int> elements=new Dictionary<string, int>();
+        foreach (DraggableElementToken det in GetAllStoredElementTokens())
+        {
+            elements.Add(det.Element.Id,det.Quantity);
+        }
+        return elements;
+    }
+
     /// <summary>
     /// an array of all element tokens currently in the player's stockpile
     /// </summary>
@@ -172,6 +177,22 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         return pnlWorld.GetCurrentRecipeTimers();
     }
 
+
+    public void FastForward(int seconds)
+    {
+        pnlWorld.FastForward(seconds);
+    }
+
+    public void UpdateForElementQuantity(string elementId, int quantity)
+    {
+        DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
+        if (existingElement)
+            existingElement.SetQuantity(quantity);
+        else
+        {
+            addElementToBoard(elementId, quantity, null);
+        }
+    }
 
     public void ModifyElementQuantity(string elementId, int quantity)
     {
@@ -312,7 +333,6 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
 
     public void ToggleKnownRecipesPanel()
     {
-        Log("foo",Style.Assertive);
         pnlKnownRecipeDisplay.ToggleVisibility();
     }
 
@@ -328,9 +348,14 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
             e.SetQuantity(0);
         }
         ClearRecipeTimers();
+        ClearKnownRecipes();
     }
 
-    
+    private void ClearKnownRecipes()
+    {
+        knownRecipes.Clear();
+    }
+
 
     public void SaveCurrentBoard()
     {
@@ -339,9 +364,9 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
             string exportJson;
 
             Hashtable htElementsPossessed = new Hashtable();
-            foreach (DraggableElementToken e in GetAllStoredElementTokens())
+            foreach (KeyValuePair<string,int> e in GetAllCurrentElements())
             {
-                htElementsPossessed.Add(e.Element.Id, e.Quantity);
+                htElementsPossessed.Add(e.Key,e.Value);
             }
 
 
@@ -422,6 +447,9 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier
         catch (Exception exception)
         {
             Log("Missing or invalid save file. Sorry! (" + exception.Message + ")", Style.Subtle);
+            throw;
         }
     }
+
+
 }

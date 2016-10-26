@@ -133,7 +133,10 @@ public class ContentRepository : Singleton<ContentRepository>
                 r.StartDescription = htEachRecipe[Constants.KSTARTDESCRIPTION].ToString();
                 r.Description = htEachRecipe[Constants.KDESCRIPTION].ToString();
                 r.Warmup = Convert.ToInt32(htEachRecipe[Constants.KWARMUP]);
-                r.Loop = htEachRecipe[Constants.KLOOP].ToString();
+                if (htEachRecipe[Constants.KLOOP] == null)
+                    r.Loop = null;
+                else
+                    r.Loop = htEachRecipe[Constants.KLOOP].ToString();
             }
             catch (Exception e)
             {
