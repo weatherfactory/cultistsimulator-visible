@@ -10,7 +10,8 @@
             hungry: 1
         },
         alternativerecipes:
-        [{id: "lawenforcement", chance:100, additional: true},
+        [{id: "deathofthebody",chance:100},
+		{id: "lawenforcement", chance:100, additional: true},
          {id: "sustenance", chance:100}],
         startdescription: ".",
         description: "I have grown neglectful of my health. Without money, I'll soon starve.",

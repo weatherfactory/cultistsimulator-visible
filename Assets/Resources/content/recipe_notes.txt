@@ -15,6 +15,7 @@
 someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
      },
            alternativerecipes: //these will be completed in place of this recipe if (1) their requirements are satisfied *by concrete possessed resources, not considering those resources' aspects;
+		   //NB! -1 means 'there must be none of this resource'
            //and (2) if we roll <=chance on d100
            //if additional=true, they'll execute as well as, not instead of, the original recipe
         [{id: 'possiblerecipe', chance:50},

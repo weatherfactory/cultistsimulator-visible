@@ -107,6 +107,34 @@ namespace CS.Tests
         }
 
         [Test]
+        public void AlternateRecipeExecutes_IfAbsenceRequirementSatisfied()
+        {
+            const string SECONDIUM = "secondium";
+            const int SECONDIUM_REQUIRED = -1;
+            mockDice.Rolld100().Returns(recipeAlternative.Chance);
+            secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
+            elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(SECONDIUM_REQUIRED);
+
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);
+
+        }
+
+        [Test]
+        public void AlternateRecipeDoesNotExecute_IfAbsenceRequirementNotSatisfied()
+        {
+            const string SECONDIUM = "secondium";
+            const int SECONDIUM_REQUIRED = -1;
+            mockDice.Rolld100().Returns(recipeAlternative.Chance);
+            secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
+            elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(1);
+
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(primaryRecipe.Id, recipesToExecute.Single().Id);
+
+        }
+
+        [Test]
         public void AlternateRecipeDoesntExecute_IfRequirementsUnsatisfied()
         {
             const string SECONDIUM = "secondium";

@@ -186,6 +186,8 @@ public class ContentRepository : Singleton<ContentRepository>
 
     public Element GetElementById(string elementId)
     {
+        if (!elements.ContainsKey(elementId))
+            return null;
         return elements[elementId];
 
     }

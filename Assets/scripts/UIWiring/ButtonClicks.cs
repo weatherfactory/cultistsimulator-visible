@@ -11,13 +11,19 @@ public class ButtonClicks : BoardMonoBehaviour
     public void PlusOneElement()
     {
         string elementId = BM.GetDebugElementName();
+        if (ContentRepository.Instance.GetElementById(elementId) == null)
+            BM.Log("Can't find element with id " + elementId, Style.Assertive);
+        else
         BM.Character.ModifyElementQuantity(elementId, 1);
     }
 
     public void MinusOneElement()
     {
         string elementId = BM.GetDebugElementName();
-        BM.Character.ModifyElementQuantity(elementId, -1);
+        if(ContentRepository.Instance.GetElementById(elementId)==null)
+            BM.Log("Can't find element with id " + elementId,Style.Assertive);
+        else
+            BM.Character.ModifyElementQuantity(elementId, -1);
     }
 
     public void ClearWorkspaceElements()

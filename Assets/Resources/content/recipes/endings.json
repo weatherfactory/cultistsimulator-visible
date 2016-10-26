@@ -1,0 +1,18 @@
+{
+"recipes": [
+   {
+        id: "deathofthebody",
+        label: "No Health is left",
+        actionId: "x",
+        requirements: {health: -1},
+        effects: {
+        },
+        startdescription: ".",
+        description: "Where will they find me? I am not here.",
+        warmup: 0,
+        craftable: false,
+		ending: "deathofthebody"
+    },
+
+]
+}

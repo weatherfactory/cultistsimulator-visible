@@ -92,10 +92,19 @@ public class RecipeCompendium
 
     private bool candidateRecipeRequirementsAreSatisfied(Recipe candidateRecipe, IElementsContainer elementsContainer)
     {
+        //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
         foreach (var req in candidateRecipe.Requirements)
         {
-            if (!(elementsContainer.GetCurrentElementQuantity(req.Key) >= req.Value))
+            if (req.Value == -1) //req -1 means there must be none of the element
+            {
+                if (elementsContainer.GetCurrentElementQuantity(req.Key) > 0)
+                    return false;
+            }
+            else if (!(elementsContainer.GetCurrentElementQuantity(req.Key) >= req.Value))
+            { 
+                //req >0 means there must be >=req of the element
                 return false;
+            }
         }
         return true;
     }
