@@ -75,7 +75,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
                 SetQuantity(1);
                 TakeElementTokenOutOfResourcesPanel();
 
-                BM.ModifyElementQuantity(Element.Id,quantityRemaining, siblingIndexForNewStack);
+                BM.ModifyElementQuantity(Element.Id,quantityRemaining);
                
             }
 

@@ -85,6 +85,8 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
         ContentRepository.Instance.ImportVerbs();
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
+        Character = new Character();
+        Character.SubscribeElementQuantityDisplay(this);
         ModifyElementQuantity("clique", 1);
         ModifyElementQuantity("ordinarylife", 1);
         ModifyElementQuantity("health", 3);
@@ -96,8 +98,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
             AddVerbToBoard(v);
         }
         QueueRecipe(ContentRepository.Instance.RecipeCompendium.GetRecipeById("starvation"));
-        Character=new Character();
-        Character.SubscribeElementQuantityDisplay(this);
+        
 
 
     }
@@ -196,21 +197,17 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
 
     public void ModifyElementQuantity(string elementId, int quantity)
     {
-        ModifyElementQuantity(elementId,quantity,null);
+       Character.ModifyElementQuantity(elementId,quantity);
+        //DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
+        //if(existingElement)
+        //    existingElement.ModifyQuantity(quantity);
+        //else
+        //{
+        //    addElementToBoard(elementId,quantity,siblingIndex);
+        //}
     }
 
-    public void ModifyElementQuantity(string elementId,int quantity,int? siblingIndex)
-    {
-        DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
-        if(existingElement)
-            existingElement.ModifyQuantity(quantity);
-        else
-        {
-            addElementToBoard(elementId,quantity,siblingIndex);
-        }
-    }
 
-    
     public void ClearWorkspaceElements()
     {
         pnlWorkspace.ClearAllWorkspaceElements(this);
@@ -341,6 +338,7 @@ public class BoardManager : MonoBehaviour,IElementsContainer,INotifier,IElementQ
     /// </summary>
     public void ClearBoard()
     {
+        Character=new Character();
         ClearWorkspaceElements();
         DraggableElementToken[]  allElementTokens=GetAllStoredElementTokens();
         foreach (DraggableElementToken e in allElementTokens)

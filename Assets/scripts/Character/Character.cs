@@ -32,13 +32,13 @@ using System.Text;
             }
         }
 
-    public void ModifyElementQuantity(string elementId, int quantity)
+       public void ModifyElementQuantity(string elementId, int quantity)
         {
             if (!_elements.ContainsKey(elementId))
                 _elements.Add(elementId, quantity);
             else
                 _elements[elementId] = _elements[elementId] + quantity;
-
+            NotifySubscribers(elementId,quantity);
         }
 
         public int GetCurrentElementQuantity(string elementId)

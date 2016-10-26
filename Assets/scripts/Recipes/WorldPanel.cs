@@ -19,11 +19,15 @@ public class WorldPanel : BoardMonoBehaviour
 
     public void DoHeartbeat()
     {
-        foreach (var t in CurrentTimerPanels)
+        List<TimerPanel> timerPanelsToRun = new List<TimerPanel>();
+        timerPanelsToRun.AddRange(CurrentTimerPanels);
+        foreach (var t in timerPanelsToRun)
         {
-            t.DoHeartbeat();
+            RecipeTimerState timerState=t.DoHeartbeat();
+            if (timerState == RecipeTimerState.Complete)
+                CurrentTimerPanels.Remove(t);
         }
-        CurrentTimerPanels.RemoveAll(t => t.TimeRemaining <= 0);
+        
     }
 
     public List<RecipeSituation> GetCurrentRecipeTimers()
@@ -41,11 +45,14 @@ public class WorldPanel : BoardMonoBehaviour
 
     public void ClearRecipeTimers()
     {
-        foreach (TimerPanel tp in CurrentTimerPanels)
+        List<TimerPanel> timerPanelsToRemove = new List<TimerPanel>();
+        timerPanelsToRemove.AddRange(CurrentTimerPanels);
+        foreach (TimerPanel tp in timerPanelsToRemove)
         {
+            CurrentTimerPanels.Clear();
             BM.ExileToLimboThenDestroy(tp.gameObject);
         }
-        CurrentTimerPanels.Clear();
+        
     }
 
     public void FastForward(int seconds)

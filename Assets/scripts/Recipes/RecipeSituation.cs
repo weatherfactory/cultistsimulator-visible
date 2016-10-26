@@ -8,6 +8,7 @@ public class RecipeSituation
     private float _timeRemaining;
     public Recipe Recipe { get; set; }
 
+
     public float TimeRemaining
     {
         get

@@ -28,15 +28,20 @@ public class TimerPanel : BoardMonoBehaviour
 
     }
 
-    public void DoHeartbeat()
+    public RecipeTimerState DoHeartbeat()
     {
+        
 
-        imgTimer.fillAmount = RecipeSituation.TimeRemaining / RecipeSituation.Recipe.Warmup;
-        UpdateTimerText();
         RecipeTimerState state=RecipeSituation.DoHeartbeat(BM, BM, ContentRepository.Instance.RecipeCompendium);
         if (state==RecipeTimerState.Complete)     
             BM.ExileToLimboThenDestroy(gameObject);
-        
+        else
+        {
+            float fillAmount = RecipeSituation.TimeRemaining / RecipeSituation.Recipe.Warmup;
+            imgTimer.fillAmount = fillAmount;
+            UpdateTimerText();
+        }
+        return state;
     }
 
 }
