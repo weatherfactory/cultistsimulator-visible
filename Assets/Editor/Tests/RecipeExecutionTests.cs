@@ -18,6 +18,7 @@ namespace CS.Tests
         private Recipe primaryRecipe;
         private Recipe secondaryRecipe;
         private Recipe tertiaryRecipe;
+        private Recipe quaternaryRecipe;
         private RecipeAlternative recipeAlternative;
         private RecipeCompendium recipeCompendium;
         private IDice mockDice;
@@ -41,7 +42,13 @@ namespace CS.Tests
             {
                 Id = "tertiaryrecipe",
                 Description = "And a tertiary description."
-            }; //this isn't normally added as an alternative
+            }; //this isn't always added as an alternative
+
+            quaternaryRecipe = new Recipe
+            {
+                Id = "quaternaryrecipe",
+                Description = "And still they come (quaternary)"
+            }; //this isn't always added as an alternative
 
 
             primaryRecipe.Effects.Add("primaryrecipeeffect", 1);
@@ -50,7 +57,7 @@ namespace CS.Tests
             primaryRecipe.AlternativeRecipes.Add(recipeAlternative);
 
 
-            List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe,tertiaryRecipe};
+            List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe,tertiaryRecipe,quaternaryRecipe};
             mockDice = Substitute.For<IDice>();
 
             recipeCompendium=new RecipeCompendium(allRecipes,mockDice);
@@ -114,6 +121,40 @@ namespace CS.Tests
         }
 
         [Test]
+        public void AlternativeToAnAlternative_ExecutesInPlaceOfTheOriginal()
+        {
+            primaryRecipe.AlternativeRecipes = new List<RecipeAlternative>() { new RecipeAlternative(secondaryRecipe.Id, 100, false) };
+            secondaryRecipe.AlternativeRecipes = new List<RecipeAlternative>() { new RecipeAlternative(tertiaryRecipe.Id, 100, false) };
+
+            mockDice.Rolld100().Returns(recipeAlternative.Chance);
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute.Single().Id);
+        }
+
+        [Test]
+        public void Non_Additional_Alternative_Takes_Precedence_Over_Original_Additional()
+        {
+            primaryRecipe.AlternativeRecipes [0] = new RecipeAlternative(secondaryRecipe.Id, 100, true); //additional to primary
+        primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id,100,false)); //substitutes for primary
+            mockDice.Rolld100().Returns(1);
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute.Single().Id);
+        }
+
+
+        [Test]
+        public void Non_Additional_Alternative_WITH_ITS_OWN_ADDITIONAL_Takes_Precedence_Over_Original_Additional()
+        {
+            primaryRecipe.AlternativeRecipes[0] = new RecipeAlternative(secondaryRecipe.Id, 100, true); //additional to primary
+            primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id, 100, false)); //substitutes for primary
+            tertiaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(quaternaryRecipe.Id,100,true)); //the substitute has its own additional
+            mockDice.Rolld100().Returns(1);
+            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute[0].Id);
+            Assert.AreEqual(quaternaryRecipe.Id, recipesToExecute[1].Id);
+        }
+
+        [Test]
         public void AlternateRecipeMarkedAsAdditionalExecutesAfterFirst()
         {
             mockDice.Rolld100().Returns(1);
@@ -137,9 +178,6 @@ namespace CS.Tests
 
         }
 
-        [Test]
-        public void AlternativeToAnAlternative_ExecutesInPlaceOfTheOriginal()
-        { }
 
         
     }

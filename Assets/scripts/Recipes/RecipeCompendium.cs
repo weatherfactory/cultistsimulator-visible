@@ -55,6 +55,8 @@ public class RecipeCompendium
     /// Alternatives which match, but which specify additional are run after the original recipe.
     /// There may be multiple additional alternatives.
     /// However, if an alternative ever does *not* specify additional, it replaces the entire list (although it may have alternatives of its own)
+    /// Alternatives are recursive, and may have additionals of their own.
+    /// A non-additional alternative always takes precedence over everything earlier; if a recursive alternative has additionals of its own, they'll replace everything earlier in the execution sequence.
     /// </summary>
 
     /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
@@ -62,10 +64,8 @@ public class RecipeCompendium
     {
         List<Recipe> actualRecipesToExecute=new List<Recipe>() { recipe }; ;
         if (recipe.AlternativeRecipes.Count == 0)
-        {
-            actualRecipesToExecute.Add(recipe);
             return actualRecipesToExecute;
-        }
+
 
         foreach (var ar in recipe.AlternativeRecipes)
         {
@@ -78,12 +78,15 @@ public class RecipeCompendium
                     if(ar.Additional)
                         actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
                     else
-                        return new List<Recipe>() {candidateRecipe}; //this recipe supersedes everything else! return it.
+                    { List<Recipe> recursiveRange=GetActualRecipesToExecute(candidateRecipe,elementsContainer);//check if this recipe has any substitutes in turn, and then
+
+                        return recursiveRange;//this recipe, or its furtheralternatives, supersedes everything else! return it.
+                    }
                 }
             }
         }
 
-        return actualRecipesToExecute; //we either found nothing, or added one or more additional recipes
+        return actualRecipesToExecute; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
     }
 
 

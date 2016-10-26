@@ -156,7 +156,7 @@
         label: "Work test",
         actionId: "work",
         requirements: {secrethistories: 1},
-        alternativerecipes: [{id: "testworkalternative", chance:100,additional:true}],
+        alternativerecipes: [{id: "testworkalternative", chance:100,additional:false}],
         effects: {
             occultscrap: 7
         },
@@ -171,6 +171,7 @@
         label: "Work test alternative",
         actionId: "work",
         requirements: {},
+		        alternativerecipes: [{id: "testworkalternativegrandchild", chance:100,additional:false}],
         effects: {
             shilling: 7
         },
@@ -178,7 +179,20 @@
         description: "Completing test work  ALTERNATIVE",
         warmup: 2,
         craftable: false
-    }
+    },
+				{
+        id: "testworkalternativegrandchild",
+        label: "Work test alternative grandchild",
+        actionId: "work",
+        requirements: {},
+        effects: {
+            shilling: 21
+        },
+        startdescription: "Beginning test work ALT GRANDCHILD",
+        description: "Completing test work  ALT GRANDCHILD",
+        warmup: 2,
+        craftable: false
+    },
     {
         id: "lockedmindready",
         label: "Dream of the Door, Yourself",
