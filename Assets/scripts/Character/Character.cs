@@ -38,7 +38,7 @@ using System.Text;
                 _elements.Add(elementId, quantity);
             else
                 _elements[elementId] = _elements[elementId] + quantity;
-            NotifySubscribers(elementId,quantity);
+            NotifySubscribers(elementId, _elements[elementId]);
         }
 
         public int GetCurrentElementQuantity(string elementId)
