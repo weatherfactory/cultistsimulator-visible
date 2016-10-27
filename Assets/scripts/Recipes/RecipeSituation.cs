@@ -6,6 +6,7 @@ using System.Text;
 public class RecipeSituation
 {
     private float _timeRemaining;
+    private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
     public Recipe Recipe { get; set; }
 
 
@@ -34,6 +35,7 @@ public class RecipeSituation
     public RecipeSituation(Recipe recipe, float? timeremaining)
     {
         Recipe = recipe;
+
         if (timeremaining == null)
             TimeRemaining = recipe.Warmup;
         else
@@ -60,6 +62,9 @@ public class RecipeSituation
         foreach (Recipe r in recipesToExecute)
             r.Do(notifier, elementsContainer);
 
+        foreach(var s in _subscribers)
+            s.SituationComplete(Recipe);
+   
         if (Recipe.Loop != null)
         {
             Recipe = compendium.GetRecipeById(Recipe.Loop);
@@ -71,6 +76,11 @@ public class RecipeSituation
             Recipe = null;
             return RecipeTimerState.Complete;
         }
+    }
+
+    public void AddSubscriber(IRecipeSituationSubscriber subscriber)
+    {
+        _subscribers.Add(subscriber);
     }
 }
     

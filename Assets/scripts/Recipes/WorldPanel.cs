@@ -9,11 +9,12 @@ public class WorldPanel : BoardMonoBehaviour
     [SerializeField] private GameObject prefabTimerPanel;
     private List<TimerPanel> CurrentTimerPanels = new List<TimerPanel>();
 
-    public void AddTimer(Recipe forRecipe,float? timeRemaining)
+    public void AddTimer(Recipe forRecipe,float? timeRemaining,IRecipeSituationSubscriber s)
     {
         GameObject newTimerPanelGameObject = Instantiate(prefabTimerPanel, transform) as GameObject;
         TimerPanel newTimerPanel = newTimerPanelGameObject.GetComponent<TimerPanel>();
         newTimerPanel.StartTimer(forRecipe, timeRemaining);
+        newTimerPanel.RecipeSituation.AddSubscriber(s);
         CurrentTimerPanels.Add(newTimerPanel);
     }
 
@@ -25,7 +26,9 @@ public class WorldPanel : BoardMonoBehaviour
         {
             RecipeTimerState timerState=t.DoHeartbeat(c);
             if (timerState == RecipeTimerState.Complete)
+            { 
                 CurrentTimerPanels.Remove(t);
+            }
         }
 
         

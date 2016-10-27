@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
+public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRecipeSituationSubscriber
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
@@ -228,8 +228,9 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
     public void QueueRecipe(Recipe r)
     {
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
-        pnlWorld.AddTimer(r, null);
+        pnlWorld.AddTimer(r, null,this);
         MarkRecipeAsKnown(r);
+     
     }
    
 
@@ -430,7 +431,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
-                pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()));
+                pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()), this);
             }
 
             foreach (string k in htRecipesKnown.Keys)
@@ -448,6 +449,17 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
         }
     }
 
+    public void BlockVerb(string recipeActionId)
+    {
+        throw new NotImplementedException();
+    }
+    public void UnblockVerb(string recipeActionId)
+    {
+        throw new NotImplementedException();
+    }
 
-
+    public void SituationComplete(Recipe recipe)
+    {
+        throw new NotImplementedException();
+    }
 }
