@@ -28,10 +28,10 @@ public class TimerPanel : BoardMonoBehaviour
 
     }
 
-    public RecipeTimerState DoHeartbeat()
+    public RecipeTimerState DoHeartbeat(Character c)
     {
         
-        RecipeTimerState state=RecipeSituation.DoHeartbeat(BM, BM.Character, ContentRepository.Instance.RecipeCompendium);
+        RecipeTimerState state=RecipeSituation.DoHeartbeat(BM, c, ContentRepository.Instance.RecipeCompendium);
         if (state==RecipeTimerState.Complete)     
             BM.ExileToLimboThenDestroy(gameObject);
         else

@@ -34,10 +34,14 @@ public class Character:IElementsContainer
             {
                 _lastName = value;
             NotifySubscribersOfDetailsChange();
-        }
+         }
+
         }
 
-        private readonly Dictionary<string, int> _elements;
+    public string EndingTriggeredId
+    { get { return _endingTriggeredId; } }
+
+    private readonly Dictionary<string, int> _elements;
         private readonly List<IElementQuantityDisplay> _elementsDisplaySubscribers;
         private readonly List<ICharacterInfoSubscriber> _detailsSubscribers;
         private string _title;
@@ -62,7 +66,7 @@ public class Character:IElementsContainer
             _elementsDisplaySubscribers.Add(elementQuantityDisplay);
         }
 
-        public void SubscribeDetailsDisplay(ICharacterInfoSubscriber characterInfoSubscriber)
+        public void Subscribe(ICharacterInfoSubscriber characterInfoSubscriber)
         {
             if(!_detailsSubscribers.Contains(characterInfoSubscriber))
             _detailsSubscribers.Add(characterInfoSubscriber);
@@ -108,7 +112,7 @@ public class Character:IElementsContainer
         {
             State=CharacterState.Extinct;
             _endingTriggeredId = endingId;
-        NotifySubscribersOfDetailsChange();
+          NotifySubscribersOfDetailsChange();
         }
     }
 

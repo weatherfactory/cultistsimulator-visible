@@ -27,8 +27,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField]private GameObject prefabNotificationPanel;
-    [SerializeField] private CharacterNamePanel characterNamePanel;
-    [SerializeField]public Character Character;
+    [SerializeField] public CharacterNamePanel characterNamePanel;
     [SerializeField] private Heartbeat heartbeat;
 
     public DraggableToken CurrentDragItem;
@@ -77,48 +76,10 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
 
 
 
-    private Character CreateBlankCharacter()
-    {
-        Character character = new Character();
-        character.SubscribeDetailsDisplay(characterNamePanel);
-        character.SubscribeElementQuantityDisplay(this);
-        return character;
-        
-    }
-
-    /// <summary>
-    /// This sets our starting elements
-    /// </summary>
-    public void Start()
-    {
-        ContentRepository.Instance.ImportVerbs();
-        ContentRepository.Instance.ImportElements();
-        ContentRepository.Instance.ImportRecipes();
-
-        Character = CreateBlankCharacter();
-        Character.Title = "Mr";
-        Character.FirstName = "Vivian";
-        Character.LastName = "Keyes";
-
-        
-        Character.ModifyElementQuantity("clique", 1);
-        Character.ModifyElementQuantity("ordinarylife", 1);
-        Character.ModifyElementQuantity("health", 3);
-        Character.ModifyElementQuantity("reason", 3);
-        Character.ModifyElementQuantity("occultscrap", 1);
-        Character.ModifyElementQuantity("shilling", 10);
-
-        foreach (Verb v in ContentRepository.Instance.GetAllVerbs())
-        {
-            AddVerbToBoard(v);
-        }
-        QueueRecipe(ContentRepository.Instance.RecipeCompendium.GetRecipeById("starvation"));
-        
+ 
 
 
-    }
-
-    private void AddVerbToBoard(Verb v)
+    public void AddVerbToBoard(Verb v)
     {
         GameObject verbFrame = Instantiate(prefabVerbFrame, pnlVerbs.transform) as GameObject;
         verbFrame.name = "Frame - " + v.Id;
@@ -188,7 +149,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
 
     public void FastForward(int seconds)
     {
-        pnlWorld.FastForward(seconds);
+        pnlWorld.FastForward(seconds,heartbeat.Character);
     }
 
     public void UpdateForElementQuantity(string elementId, int quantity)
@@ -219,7 +180,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
         string elementId = tokenToReturn.Element.Id;
         int elementQuantity = tokenToReturn.Quantity;
         ExileToLimboThenDestroy(tokenToReturn.gameObject); //to prevent possible double-counting
-        Character.ModifyElementQuantity(elementId,elementQuantity);
+        heartbeat.Character.ModifyElementQuantity(elementId,elementQuantity);
         
 
         UpdateAspectDisplay();
@@ -236,6 +197,11 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
 
         governingSlot.DependentChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(draggedElement);
 
+    }
+
+    public void ModifyElementQuantity(string e, int q)
+    {
+        heartbeat.Character.ModifyElementQuantity(e,q);
     }
 
     public void UpdateAspectDisplay()
@@ -284,6 +250,9 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
     /// </summary>
     public Boolean MarkRecipeAsKnown(Recipe r)
     {
+        if (!r.Craftable)
+            return false;
+
         if (knownRecipes.ContainsKey(r.Id))
             return true;
 
@@ -311,9 +280,9 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
     }
 
 
-    public void DoHeartbeat()
+    public void DoHeartbeat(Character c)
     {
-    pnlWorld.DoHeartbeat();
+    pnlWorld.DoHeartbeat(c);
     }
 
 
@@ -334,7 +303,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
     /// </summary>
     public void ClearBoard()
     {
-        Character = CreateBlankCharacter();
+
         ClearWorkspaceElements();
         DraggableElementToken[]  allElementTokens=GetAllStoredElementTokens();
         foreach (DraggableElementToken e in allElementTokens)
@@ -343,6 +312,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
         }
         ClearRecipeTimers();
         ClearKnownRecipes();
+        heartbeat.Character = heartbeat.CreateBlankCharacter();
     }
 
     private void ClearKnownRecipes()
@@ -358,7 +328,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
             string exportJson;
 
             Hashtable htElementsPossessed = new Hashtable();
-            foreach (KeyValuePair<string,int> e in Character.GetAllCurrentElements())
+            foreach (KeyValuePair<string,int> e in heartbeat.Character.GetAllCurrentElements())
             {
                 htElementsPossessed.Add(e.Key,e.Value);
             }
@@ -378,11 +348,27 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
 
             Hashtable htCharacter = new Hashtable()
             {
-                {Noon.Constants.KCHARACTERTITLE, Character.Title},
-                {Noon.Constants.KCHARACTERFIRSTNAME, Character.FirstName},
-                {Noon.Constants.KCHARACTERLASTNAME, Character.LastName},
-                {Noon.Constants.KCHARACTERSTATE,Character.State.ToString() }
+                {Noon.Constants.KCHARACTERTITLE, heartbeat.Character.Title},
+                {Noon.Constants.KCHARACTERFIRSTNAME, heartbeat.Character.FirstName},
+                {Noon.Constants.KCHARACTERLASTNAME, heartbeat.Character.LastName},
+                {Noon.Constants.KCHARACTERSTATE,heartbeat.Character.State.ToString() }
             };
+
+            Hashtable htAdvice = new Hashtable()
+            {
+                {"Hello_from_AK", "Cultist Simulator has one save file, which is overwritten on character death."},
+                {"2", " If you want to keep multiple saves or reload after death, you can copy this file. "},
+                {
+                    "3",
+                    "All the values are also in an easy human-readable format, so you can feel free to give yourself more resources."
+                },
+                {"4", " Only you will ever know."},
+                {
+                    "5",
+                    "(You, and the White-Glass, in whom there is no concealment, and who will be observed at the end.)"
+                }
+            };
+
 
             Hashtable htSave = new Hashtable
             {
@@ -391,6 +377,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
                 {Noon.Constants.CONST_SAVE_RECIPESKNOWN, htRecipesKnown},
                 {Noon.Constants.CONST_SAVE_CHARACTER_DETAILS, htCharacter}
             };
+        htSave.Add("_",htAdvice);
 
 
             exportJson = htSave.JsonString();
@@ -430,14 +417,14 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay
 
             ClearBoard();
 
-            Character.Title = htCharacter[Noon.Constants.KCHARACTERTITLE].ToString();
-            Character.FirstName = htCharacter[Noon.Constants.KCHARACTERFIRSTNAME].ToString();
-            Character.LastName = htCharacter[Noon.Constants.KCHARACTERLASTNAME].ToString();
-            Character.State = (CharacterState)Enum.Parse(typeof(CharacterState), htCharacter[Noon.Constants.KCHARACTERSTATE].ToString());
+            heartbeat.Character.Title = htCharacter[Noon.Constants.KCHARACTERTITLE].ToString();
+            heartbeat.Character.FirstName = htCharacter[Noon.Constants.KCHARACTERFIRSTNAME].ToString();
+            heartbeat.Character.LastName = htCharacter[Noon.Constants.KCHARACTERLASTNAME].ToString();
+            heartbeat.Character.State = (CharacterState)Enum.Parse(typeof(CharacterState), htCharacter[Noon.Constants.KCHARACTERSTATE].ToString());
 
             foreach (string k in htElementsPossessed.Keys)
             {
-               Character.ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
+                heartbeat.Character.ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
             }
 
             foreach (string k in htRecipeTimers.Keys)

@@ -34,6 +34,8 @@ using System.Text;
         
         foreach(var e in Effects)
             container.ModifyElementQuantity(e.Key,e.Value);
+        if(Ending!=null)
+            container.TriggerEnding(Ending);
         }
 
     }

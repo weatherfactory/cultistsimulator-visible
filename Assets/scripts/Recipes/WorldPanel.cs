@@ -17,16 +17,17 @@ public class WorldPanel : BoardMonoBehaviour
         CurrentTimerPanels.Add(newTimerPanel);
     }
 
-    public void DoHeartbeat()
+    public void DoHeartbeat(Character c)
     {
         List<TimerPanel> timerPanelsToRun = new List<TimerPanel>();
         timerPanelsToRun.AddRange(CurrentTimerPanels);
         foreach (var t in timerPanelsToRun)
         {
-            RecipeTimerState timerState=t.DoHeartbeat();
+            RecipeTimerState timerState=t.DoHeartbeat(c);
             if (timerState == RecipeTimerState.Complete)
                 CurrentTimerPanels.Remove(t);
         }
+
         
     }
 
@@ -55,9 +56,9 @@ public class WorldPanel : BoardMonoBehaviour
         
     }
 
-    public void FastForward(int seconds)
+    public void FastForward(int seconds,Character c)
     {
         for(int i=1;i<=seconds;i++)
-            DoHeartbeat();
+            DoHeartbeat(c);
     }
 }
