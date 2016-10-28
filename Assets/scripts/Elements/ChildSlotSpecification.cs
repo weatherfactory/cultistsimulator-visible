@@ -32,6 +32,9 @@ public class ChildSlotSpecification
                 return new ElementSlotMatch(new List<string>() {k}, ElementSlotSuitability.ForbiddenAspectPresent);
             }
         }
+        
+        if(Required.Keys.Count==0)
+            return new ElementSlotMatch(null,ElementSlotSuitability.Okay);
 
         foreach (string k in Required.Keys) //only one needs to match
         {

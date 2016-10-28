@@ -41,6 +41,15 @@ namespace CS.Tests
         }
 
         [Test]
+        public void ElementWithAnyAspect_Fulfils_ChildSlotSpecification_WithOneAspect()
+        {
+            Element.Aspects.Add("someaspect",1);
+            ChildSlotSpecification css = new ChildSlotSpecification("specificationtotest");
+            ElementSlotMatch esm = css.GetElementSlotMatchFor(Element);
+            Assert.AreEqual(ElementSlotSuitability.Okay,esm.ElementSlotSuitability);
+        }
+
+        [Test]
         public void ElementWithMissingAllRequiredAspectsFailsChildSlotSpecification()
         {
             Element.Aspects.Add("notarequiredaspect",1);

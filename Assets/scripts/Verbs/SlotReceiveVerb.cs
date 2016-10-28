@@ -20,6 +20,12 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
         }
     }
 
+    public void ClearThisSlot()
+    {
+        if(VerbTokenInSlot!=null)
+            VerbTokenInSlot.ReturnToOrigin();
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (BM.CurrentDragItem.tag=="Verb")

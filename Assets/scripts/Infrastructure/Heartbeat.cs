@@ -19,8 +19,10 @@ public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
 
         character.ModifyElementQuantity("clique", 1);
         character.ModifyElementQuantity("ordinarylife", 1);
-       // character.ModifyElementQuantity("health", 3);
+        character.ModifyElementQuantity("suitablepremises", 1);
+        // character.ModifyElementQuantity("health", 3);
         character.ModifyElementQuantity("reason", 3);
+        character.ModifyElementQuantity("health", 1);
         character.ModifyElementQuantity("occultscrap", 1);
       //  character.ModifyElementQuantity("shilling", 10);
 

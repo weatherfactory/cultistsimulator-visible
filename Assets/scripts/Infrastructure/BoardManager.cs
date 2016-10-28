@@ -161,7 +161,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
 
     public void ClearWorkspace()
     {
-        pnlWorkspace.ReturnAllElementsToOrigin();
+        pnlWorkspace.ReturnEverythingToOrigin();
         pnlCurrentAspects.ResetAspects();
     }
     private void ClearRecipeTimers()
@@ -217,12 +217,14 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
 
     public void QueueRecipe(Recipe r)
     {
-        pnlVerbs.BlockVerb(r.ActionId);
-        pnlWorkspace.ConsumeElements();
+
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
         pnlWorld.AddTimer(r, null,this);
         MarkRecipeAsKnown(r);
-     
+        pnlWorkspace.ConsumeElements();
+        pnlVerbs.BlockVerb(r.ActionId);
+        
+
     }
    
 

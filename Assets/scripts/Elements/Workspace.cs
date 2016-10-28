@@ -30,12 +30,19 @@ public class Workspace : BoardMonoBehaviour
         }
     }
 
-    public void ReturnAllElementsToOrigin()
+    public void ReturnEverythingToOrigin()
     {
-        DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
+        SlotReceiveVerb verbSlot = this.GetComponentInChildren<SlotReceiveVerb>();
+        if(verbSlot!=null)
+            verbSlot.ClearThisSlot();
 
-        foreach (DraggableElementToken element in elements)
-            element.ReturnToOrigin();
+        SlotReceiveElement[] slots = this.GetComponentsInChildren<SlotReceiveElement>();
+        foreach(SlotReceiveElement slot in slots)
+            slot.ClearThisSlot();
+        //DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
+
+        //foreach (DraggableElementToken element in elements)
+        //    element.ReturnToOrigin();
 
     }
 
