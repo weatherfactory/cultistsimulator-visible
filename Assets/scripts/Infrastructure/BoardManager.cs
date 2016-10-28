@@ -13,7 +13,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
-    [SerializeField] private GameObject pnlVerbs;
+    [SerializeField] private VerbPanel pnlVerbs;
     [SerializeField] private GameObject pnlResources;
     [SerializeField] Workspace pnlWorkspace;
     [SerializeField] private WorldPanel pnlWorld;
@@ -22,7 +22,6 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
     [SerializeField] private KnownRecipeDisplay pnlKnownRecipeDisplay;
     [SerializeField] private GameObject objLimbo;
     [SerializeField]GameObject prefabElementToken;
-    [SerializeField]GameObject prefabVerbFrame;
     [SerializeField]GameObject prefabVerbToken;
     [SerializeField]GameObject prefabEmptyElementSlot;
     [SerializeField]GameObject prefabChildSlotsOrganiser;
@@ -81,13 +80,8 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
 
     public void AddVerbToBoard(Verb v)
     {
-        GameObject verbFrame = Instantiate(prefabVerbFrame, pnlVerbs.transform) as GameObject;
-        verbFrame.name = "Frame - " + v.Id;
-        Image image = verbFrame.GetComponentsInChildren<Image>().Single(i => i.name == "VerbToken");
-        Sprite sprite = ContentRepository.Instance.GetSpriteForVerb(v.Id);
-        image.sprite = sprite;
-        DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
-        token.Verb = v;
+        pnlVerbs.AddVerbToPanel(v);
+        
     }
 
 
@@ -219,14 +213,10 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         return pnlWorkspace.GetCurrentVerbId();
     }
 
-    public void QueueCurrentRecipe()
-    {
-        Recipe currentRecipe= pnlRecipeDisplay.CurrentRecipe;
-        QueueRecipe(currentRecipe);
-    }
 
     public void QueueRecipe(Recipe r)
     {
+        pnlVerbs.BlockVerb(r.ActionId);
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
         pnlWorld.AddTimer(r, null,this);
         MarkRecipeAsKnown(r);
@@ -455,11 +445,11 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
     }
     public void UnblockVerb(string recipeActionId)
     {
-        throw new NotImplementedException();
+        pnlVerbs.UnblockVerb(recipeActionId);
     }
 
     public void SituationComplete(Recipe recipe)
     {
-        throw new NotImplementedException();
+        UnblockVerb(recipe.ActionId);
     }
 }

@@ -42,7 +42,12 @@ namespace CS.Tests
             MatchesCoolthAndWarmth = new Recipe() { Id = "MatchesCoolthAndWarmth", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE }, {WARMTH,WARMTH_VALUE} } };
             MatchesCoolthEqual = new Recipe() { Id = "MatchesCoolthEqual", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE } } };
             MatchesCoolthLess = new Recipe() { Id = "MatchesCoolthLess", ActionId = MATCHING_VERB, Craftable = true, Requirements = new Dictionary<string, int>() { { COOLTH, COOLTH_VALUE-1 } } };
-            Recipes=new List<Recipe>() {NeverMatchesOnAspects, EqualAspectsOddVerb, MatchesCoolthAndWarmth, MatchesCoolthEqual, MatchesCoolthLess };
+            Recipes=new List<Recipe>() {NeverMatchesOnAspects,
+                MatchesCoolthButNotCraftable,
+                EqualAspectsOddVerb,
+                MatchesCoolthAndWarmth,
+                MatchesCoolthEqual,
+                MatchesCoolthLess };
             rc=new RecipeCompendium(Recipes,new Dice());
 
         }
@@ -67,7 +72,7 @@ namespace CS.Tests
         public void NonCraftableRecipeIsntMatched()
         {
             Dictionary<string, int> aspects = new Dictionary<string, int> { { COOLTH, COOLTH_VALUE } };
-            Assert.AreNotEqual(MatchesCoolthButNotCraftable.Id,rc.GetFirstRecipeForAspectsWithVerb(aspects, MATCHING_VERB));
+            Assert.AreNotEqual(MatchesCoolthButNotCraftable.Id,rc.GetFirstRecipeForAspectsWithVerb(aspects, MATCHING_VERB).Id);
         }
 
 

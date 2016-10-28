@@ -48,6 +48,8 @@ public class AspectsDisplay : BoardMonoBehaviour
     }
 
 
+
+
     public void ResetAspects()
     {
         //this drove me fucking nuts. It's my old nemesis: removing items from a collection as you go

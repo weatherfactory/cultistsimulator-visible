@@ -31,10 +31,6 @@ public class ButtonClicks : BoardMonoBehaviour
         BM.ClearWorkspaceElements();
     }
 
-    public void QueueCurrentRecipe()
-    {
-        BM.QueueCurrentRecipe();
-    }
 
     public void Save()
     {

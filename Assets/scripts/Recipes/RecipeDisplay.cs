@@ -26,4 +26,10 @@ public class RecipeDisplay : BoardMonoBehaviour {
         }
     }
 
+    public void QueueCurrentRecipe()
+    {
+        BM.QueueRecipe(CurrentRecipe);
+    }
+
+
 }

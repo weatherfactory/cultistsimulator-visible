@@ -22,7 +22,7 @@ public class RecipeCompendium
     public Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb)
     {
         //for each recipe,
-        foreach (var recipe in _recipes.Where(r=>r.ActionId==verb))
+        foreach (var recipe in _recipes.Where(r=>r.ActionId==verb && r.Craftable))
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
             bool matches = true;
