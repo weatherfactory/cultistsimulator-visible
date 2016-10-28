@@ -102,6 +102,8 @@ public class Character:IElementsContainer
 
    public bool ElementToWorkspace(string elementId, int plusQuantity)
    {
+       if (GetCurrentElementQuantity(elementId) < plusQuantity)
+           return false;
         if(!_elementsInWorkspace.ContainsKey(elementId))
             _elementsInWorkspace.Add(elementId,plusQuantity);
         else
@@ -111,6 +113,9 @@ public class Character:IElementsContainer
 
     public bool ElementFromWorkspace(string elementId, int minusQuantity)
     {
+        if (GetCurrentElementQuantityInWorkspace(elementId) < minusQuantity)
+            return false;
+
         if (!_elementsInWorkspace.ContainsKey(elementId))
             _elementsInWorkspace.Add(elementId, -minusQuantity);
         else
