@@ -30,13 +30,24 @@ public class Workspace : BoardMonoBehaviour
         }
     }
 
-    public void ClearAllWorkspaceElements(BoardManager boardManager)
+    public void ReturnAllElementsToOrigin()
     {
         DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
 
         foreach (DraggableElementToken element in elements)
-
             element.ReturnToOrigin();
-        boardManager.PnlAspects.ResetAspects();
+
+    }
+
+    public void ConsumeElements()
+    {
+        DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
+
+        foreach (DraggableElementToken element in elements)
+            if(!element.HasChildSlots())
+                element.SetQuantity(0);
+
+        BM.ClearWorkspace();
+          
     }
 }

@@ -65,20 +65,36 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             ElementSlotMatch elementSlotMatch= GoverningChildSlotSpecification.GetElementSlotMatchFor(draggableElementToken.Element);
             if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.ForbiddenAspectPresent)
             {
-                BM.Log("Elements with the " + elementSlotMatch.ProblemAspectId + " are unacceptable here. *Unacceptable*.", Style.Assertive);
+                string problemAspects = ProblemAspectsDescription(elementSlotMatch);
+
+                BM.Log("Elements with the " + problemAspects +" aspects are unacceptable here. *Unacceptable*.", Style.Assertive);
                     draggableElementToken.ReturnToOrigin();
                     return;
                 }
 
             if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.RequiredAspectMissing)
             {
-                BM.Log("Only elements with the " + elementSlotMatch.ProblemAspectId + " aspect can go here.", Style.Assertive);
+                    string problemAspects = ProblemAspectsDescription(elementSlotMatch);
+
+                    BM.Log("Only elements with the " + problemAspects + " aspects can go here.", Style.Assertive);
                     draggableElementToken.ReturnToOrigin();
                 return;
             }
             }
             AddElementToSlot(draggableElementToken);
         }
+    }
+
+    private static string ProblemAspectsDescription(ElementSlotMatch elementSlotMatch)
+    {
+        string problemAspects = "";
+        foreach (var problemAspectId in elementSlotMatch.ProblemAspectIds)
+        {
+            if (problemAspects != "")
+                problemAspects += " or ";
+            problemAspects += problemAspectId;
+        }
+        return problemAspects;
     }
 
     private void AddElementToSlot(DraggableElementToken draggableElementToken)

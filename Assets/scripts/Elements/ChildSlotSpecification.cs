@@ -6,7 +6,13 @@ using System.Text;
 public class ChildSlotSpecification
 {
     public string Label { get; set; }
+    /// <summary>
+    /// The element in this slot must possess at least one of these aspects
+    /// </summary>
     public Dictionary<string, int> Required { get; set; }
+    /// <summary>
+    /// The element in this slot cannot possess any of these aspects
+    /// </summary>
     public Dictionary<string, int> Forbidden { get; set; }
 
     public ChildSlotSpecification(string label)
@@ -18,31 +24,35 @@ public class ChildSlotSpecification
 
     public ElementSlotMatch GetElementSlotMatchFor(Element element)
     {
-        foreach (string k in Required.Keys)
-        {
-            if(!element.Aspects.ContainsKey(k))
-                return new ElementSlotMatch(k,ElementSlotSuitability.RequiredAspectMissing);
-        }
 
         foreach (string k in Forbidden.Keys)
         {
             if(element.Aspects.ContainsKey(k))
-                return new ElementSlotMatch(k,ElementSlotSuitability.ForbiddenAspectPresent);
+            {
+                return new ElementSlotMatch(new List<string>() {k}, ElementSlotSuitability.ForbiddenAspectPresent);
+            }
         }
 
-        return new ElementSlotMatch(null,ElementSlotSuitability.Okay);
-  
+        foreach (string k in Required.Keys) //only one needs to match
+        {
+            if (element.Aspects.ContainsKey(k))
+                return new ElementSlotMatch(null, ElementSlotSuitability.Okay);
+        }
+
+        return new ElementSlotMatch(Required.Keys, ElementSlotSuitability.RequiredAspectMissing);
+
+
     }
 }
 
 public class ElementSlotMatch
 {
-    public string ProblemAspectId { get; set; }
+    public  IEnumerable<string> ProblemAspectIds=new List<string>();
     public ElementSlotSuitability ElementSlotSuitability { get; set; }
 
-    public ElementSlotMatch(string problemAspectId, ElementSlotSuitability esm)
+    public ElementSlotMatch(IEnumerable<string> problemAspectIds, ElementSlotSuitability esm)
     {
-        ProblemAspectId = problemAspectId;
+        ProblemAspectIds = problemAspectIds;
         ElementSlotSuitability = esm;
     }    
 }

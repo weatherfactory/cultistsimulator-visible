@@ -28,7 +28,7 @@ public class ButtonClicks : BoardMonoBehaviour
 
     public void ClearWorkspaceElements()
     {
-        BM.ClearWorkspaceElements();
+        BM.ClearWorkspace();
     }
 
 

@@ -88,7 +88,7 @@ public class AspectsDisplay : BoardMonoBehaviour
     {
         var recipe=ContentRepository.Instance.RecipeCompendium.GetFirstRecipeForAspectsWithVerb(AllCurrentAspects(),BM.GetCurrentVerbId());
      
-       BM.DisplayCurrentRecipe(recipe);
+       BM.DisplayRecipe(recipe);
         
     }
 

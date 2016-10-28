@@ -159,9 +159,10 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
 
 
 
-    public void ClearWorkspaceElements()
+    public void ClearWorkspace()
     {
-        pnlWorkspace.ClearAllWorkspaceElements(this);
+        pnlWorkspace.ReturnAllElementsToOrigin();
+        pnlCurrentAspects.ResetAspects();
     }
     private void ClearRecipeTimers()
     {
@@ -203,7 +204,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
             pnlCurrentAspects.UpdateAspects(pnlWorkspace);
     }
 
-    public void DisplayCurrentRecipe(Recipe recipe)
+    public void DisplayRecipe(Recipe recipe)
     {
         pnlRecipeDisplay.GetComponent<RecipeDisplay>().DisplayRecipe(recipe);
     }
@@ -217,6 +218,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
     public void QueueRecipe(Recipe r)
     {
         pnlVerbs.BlockVerb(r.ActionId);
+        pnlWorkspace.ConsumeElements();
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
         pnlWorld.AddTimer(r, null,this);
         MarkRecipeAsKnown(r);
@@ -295,7 +297,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
     public void ClearBoard()
     {
 
-        ClearWorkspaceElements();
+        ClearWorkspace();
         DraggableElementToken[]  allElementTokens=GetAllStoredElementTokens();
         foreach (DraggableElementToken e in allElementTokens)
         {

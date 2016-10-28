@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using NUnit.Framework;
@@ -27,15 +28,30 @@ namespace CS.Tests
         }
 
         [Test]
-        public void ElementWithMissingRequiredAspectFailsChildSlotSpecification()
+        public void ElementPossessingOneRequiredAspectFulfilsChildSlotSpecification()
+        {
+            Element.Aspects.Add("notarequiredaspect", 1);
+            Element.Aspects.Add("requiredaspect", 1);
+
+            ChildSlotSpecification css = new ChildSlotSpecification("specificationtotest");
+            css.Required.Add("requiredaspect", 1);
+            css.Required.Add("otherrequiredaspect", 1);
+            ElementSlotMatch esm = css.GetElementSlotMatchFor(Element);
+            Assert.AreEqual(ElementSlotSuitability.Okay, esm.ElementSlotSuitability);
+        }
+
+        [Test]
+        public void ElementWithMissingAllRequiredAspectsFailsChildSlotSpecification()
         {
             Element.Aspects.Add("notarequiredaspect",1);
 
             ChildSlotSpecification css=new ChildSlotSpecification("specificationtotest");
             css.Required.Add("requiredaspect",1);
+            css.Required.Add("otherrequiredaspect", 1);
             ElementSlotMatch esm=css.GetElementSlotMatchFor(Element);
             Assert.AreEqual(ElementSlotSuitability.RequiredAspectMissing,esm.ElementSlotSuitability);
-            Assert.AreEqual("requiredaspect",esm.ProblemAspectId);
+            Assert.AreEqual("requiredaspect",esm.ProblemAspectIds.First());
+            Assert.AreEqual("otherrequiredaspect", esm.ProblemAspectIds.Last());
         }
 
         [Test]
@@ -47,7 +63,7 @@ namespace CS.Tests
             css.Forbidden.Add("forbiddenaspect", 1);
             ElementSlotMatch esm = css.GetElementSlotMatchFor(Element);
             Assert.AreEqual(ElementSlotSuitability.ForbiddenAspectPresent, esm.ElementSlotSuitability);
-            Assert.AreEqual("forbiddenaspect", esm.ProblemAspectId);
+            Assert.AreEqual("forbiddenaspect", esm.ProblemAspectIds.First());
         }
 
         [Test]
