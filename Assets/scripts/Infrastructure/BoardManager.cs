@@ -146,7 +146,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         pnlWorld.FastForward(seconds,heartbeat.Character);
     }
 
-    public void UpdateForElementQuantity(string elementId, int quantity)
+    public void UpdateElementQuantityInResources(string elementId, int quantity)
     {
         DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
         if (existingElement)

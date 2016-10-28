@@ -76,11 +76,11 @@ public class Character:IElementsContainer
             _detailsSubscribers.Add(characterInfoSubscriber);
         }
 
-        public void NotifySubscribersOfElementQuantityChange(string elementId, int quantity)
+        public void PublishElementQuantityInResources(string elementId, int quantity)
         {
             foreach (var elementQuantityDisplay in _elementsDisplaySubscribers)
             {
-                elementQuantityDisplay.UpdateForElementQuantity(elementId,quantity);
+                elementQuantityDisplay.UpdateElementQuantityInResources(elementId,quantity);
             }
         }
 
@@ -97,7 +97,7 @@ public class Character:IElementsContainer
                 _elements.Add(elementId, quantity);
             else
                 _elements[elementId] = _elements[elementId] + quantity;
-            NotifySubscribersOfElementQuantityChange(elementId, _elements[elementId]);
+            PublishElementQuantityInResources(elementId, GetCurrentElementQuantityInResources(elementId));
         }
 
    public bool ElementToWorkspace(string elementId, int plusQuantity)
