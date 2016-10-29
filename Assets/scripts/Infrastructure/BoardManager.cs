@@ -199,6 +199,11 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         heartbeat.Character.ModifyElementQuantity(e,q);
     }
 
+    public void ElementToWorkspace(string e, int q)
+    {
+        heartbeat.Character.ElementToWorkspace(e, q);
+    }
+
     public void UpdateAspectDisplay()
     {
             pnlCurrentAspects.UpdateAspects(pnlWorkspace);
@@ -318,6 +323,8 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
 
     public void SaveCurrentBoard()
     {
+        ClearWorkspace(); //we don't want to lose workspaced items; later we might entertain the hassle of saving them
+
         try
         {
             string exportJson;

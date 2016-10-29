@@ -43,6 +43,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         DraggableElementToken tokenToRemove = GetTokenInSlot();
         if(tokenToRemove!=null)
             tokenToRemove.ReturnToOrigin();
+
     }
 
 

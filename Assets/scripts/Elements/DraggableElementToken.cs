@@ -57,9 +57,10 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
         }
 
 
-    private void TakeElementTokenOutOfResourcesPanel()
+    private void TakeElementTokenOutOfResourcesPanel(int quantity)
     {
         transform.SetParent(BM.transform, true);
+        BM.ElementToWorkspace(Element.Id, quantity);
     }
 
 
@@ -70,11 +71,10 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
         {
             if (_quantity > 1)
             {
-                int quantityRemaining = _quantity - 1;
                 int siblingIndexForNewStack = transform.GetSiblingIndex();
                 SetQuantity(1);
-                TakeElementTokenOutOfResourcesPanel();
-                BM.ModifyElementQuantity(Element.Id,-1);
+                TakeElementTokenOutOfResourcesPanel(1);
+                
                
             }
 
@@ -96,14 +96,6 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
         }
 
 
-        public void ModifyQuantity(int change)
-        {
-        _quantity += change;
-        if (_quantity <= 0)
-
-          BM.ExileToLimboThenDestroy(gameObject);
-        displayQuantity(_quantity);
-    }
     public void SetQuantity(int value)
     {
         _quantity = value;

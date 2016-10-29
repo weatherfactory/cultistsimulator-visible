@@ -23,7 +23,7 @@ public class Character:IElementsContainer
             set
             {
                 _title = value;
-                NotifySubscribersOfDetailsChange();
+                PublishDetailsChange();
             }
         }
 
@@ -33,7 +33,7 @@ public class Character:IElementsContainer
             set
             {
                 _firstName = value;
-            NotifySubscribersOfDetailsChange();
+            PublishDetailsChange();
         }
         }
 
@@ -43,7 +43,7 @@ public class Character:IElementsContainer
             set
             {
                 _lastName = value;
-            NotifySubscribersOfDetailsChange();
+            PublishDetailsChange();
          }
 
         }
@@ -84,7 +84,7 @@ public class Character:IElementsContainer
             }
         }
 
-        public void NotifySubscribersOfDetailsChange()
+        public void PublishDetailsChange()
         {
             foreach(var d in _detailsSubscribers)
                 d.ReceiveUpdate(this);
@@ -108,7 +108,9 @@ public class Character:IElementsContainer
             _elementsInWorkspace.Add(elementId,plusQuantity);
         else
            _elementsInWorkspace[elementId] += plusQuantity;
-       return true;
+
+        PublishElementQuantityInResources(elementId, GetCurrentElementQuantityInResources(elementId));
+        return true;
    }
 
     public bool ElementFromWorkspace(string elementId, int minusQuantity)
@@ -120,6 +122,8 @@ public class Character:IElementsContainer
             _elementsInWorkspace.Add(elementId, -minusQuantity);
         else
             _elementsInWorkspace[elementId] -= minusQuantity;
+
+        PublishElementQuantityInResources(elementId, GetCurrentElementQuantityInResources(elementId));
         return true;
     }
 
@@ -154,7 +158,7 @@ public class Character:IElementsContainer
         {
             State=CharacterState.Extinct;
             _endingTriggeredId = endingId;
-          NotifySubscribersOfDetailsChange();
+          PublishDetailsChange();
         }
     }
 

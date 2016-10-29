@@ -32,17 +32,18 @@ public class Workspace : BoardMonoBehaviour
 
     public void ReturnEverythingToOrigin()
     {
-        SlotReceiveVerb verbSlot = this.GetComponentInChildren<SlotReceiveVerb>();
-        if(verbSlot!=null)
-            verbSlot.ClearThisSlot();
+        
 
         SlotReceiveElement[] slots = this.GetComponentsInChildren<SlotReceiveElement>();
         foreach(SlotReceiveElement slot in slots)
+        { 
             slot.ClearThisSlot();
-        //DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
-
-        //foreach (DraggableElementToken element in elements)
-        //    element.ReturnToOrigin();
+            BM.ExileToLimboThenDestroy(slot.gameObject);
+        }
+        SlotReceiveVerb verbSlot = this.GetComponentInChildren<SlotReceiveVerb>();
+        if (verbSlot != null)
+            verbSlot.ClearThisSlot();
+            
 
     }
 
