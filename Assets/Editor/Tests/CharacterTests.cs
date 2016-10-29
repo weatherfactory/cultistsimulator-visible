@@ -22,9 +22,9 @@ public class CharacterTests
     public void AddingElement_AffectsResourcesCount()
     {
         Character c = new Character();
-        Assert.AreEqual(0, c.GetCurrentElementQuantityInResources(EL1));
+        Assert.AreEqual(0, c.GetCurrentElementQuantityInStockpile(EL1));
         c.ModifyElementQuantity(EL1, 1);
-        Assert.AreEqual(1, c.GetCurrentElementQuantityInResources(EL1));
+        Assert.AreEqual(1, c.GetCurrentElementQuantityInStockpile(EL1));
     }
 
     [Test]
@@ -41,24 +41,24 @@ public class CharacterTests
     {
         Character c = new Character();
         c.ModifyElementQuantity(EL1, 10);
-        c.ElementToWorkspace(EL1, 3);
+        c.ElementOutOfStockpile(EL1, 3);
         Assert.AreEqual(3, c.GetCurrentElementQuantityInWorkspace(EL1));
-        Assert.AreEqual(7, c.GetCurrentElementQuantityInResources(EL1));
+        Assert.AreEqual(7, c.GetCurrentElementQuantityInStockpile(EL1));
         Assert.AreEqual(10, c.GetCurrentElementQuantity(EL1));
- 
+
     }
 
     [Test]
     public void ElementFromWorkspace_IsReflectedInCounts()
     {
         Character c = new Character();
-        c.ModifyElementQuantity(EL1,10);
-        c.ElementToWorkspace(EL1, 3);
+        c.ModifyElementQuantity(EL1, 10);
+        c.ElementOutOfStockpile(EL1, 3);
         Assert.AreEqual(3, c.GetCurrentElementQuantityInWorkspace(EL1));
-        Assert.AreEqual(7, c.GetCurrentElementQuantityInResources(EL1));
+        Assert.AreEqual(7, c.GetCurrentElementQuantityInStockpile(EL1));
         Assert.AreEqual(10, c.GetCurrentElementQuantity(EL1));
-        c.ElementFromWorkspace(EL1, 1);
-        Assert.AreEqual(8, c.GetCurrentElementQuantityInResources(EL1));
+        c.ElementIntoStockpile(EL1, 1);
+        Assert.AreEqual(8, c.GetCurrentElementQuantityInStockpile(EL1));
         Assert.AreEqual(2, c.GetCurrentElementQuantityInWorkspace(EL1));
         Assert.AreEqual(10, c.GetCurrentElementQuantity(EL1));
     }
@@ -67,13 +67,13 @@ public class CharacterTests
     public void ElementToWorkspace_FailsWithInsufficientElementQuantity()
     {
         Character c = new Character();
-       Assert.IsFalse(c.ElementToWorkspace(EL1, 1));
+        Assert.IsFalse(c.ElementOutOfStockpile(EL1, 1));
         Assert.AreEqual(0, c.GetCurrentElementQuantityInWorkspace(EL1));
-        c.ModifyElementQuantity(EL1,1);
-        Assert.IsFalse(c.ElementToWorkspace(EL1, 2));
+        c.ModifyElementQuantity(EL1, 1);
+        Assert.IsFalse(c.ElementOutOfStockpile(EL1, 2));
         Assert.AreEqual(0, c.GetCurrentElementQuantityInWorkspace(EL1));
         c.ModifyElementQuantity(EL1, 1); //total element quantity should now be 2
-        Assert.IsFalse(c.ElementToWorkspace(EL1, 3));
+        Assert.IsFalse(c.ElementOutOfStockpile(EL1, 3));
         Assert.AreEqual(0, c.GetCurrentElementQuantityInWorkspace(EL1));
     }
 
@@ -82,14 +82,38 @@ public class CharacterTests
     {
         Character c = new Character();
         c.ModifyElementQuantity(EL1, 5);
-        Assert.IsFalse(c.ElementFromWorkspace(EL1, 1));
-        Assert.AreEqual(5, c.GetCurrentElementQuantityInResources(EL1));
-        c.ElementToWorkspace(EL1, 1); //1 total in workspace
-        Assert.IsFalse(c.ElementFromWorkspace(EL1, 2));
-        Assert.AreEqual(4, c.GetCurrentElementQuantityInResources(EL1));
-        c.ElementToWorkspace(EL1, 1); //2 total in workspace
-        Assert.IsFalse(c.ElementFromWorkspace(EL1, 3));
-        Assert.AreEqual(3, c.GetCurrentElementQuantityInResources(EL1));
+        Assert.IsFalse(c.ElementIntoStockpile(EL1, 1));
+        Assert.AreEqual(5, c.GetCurrentElementQuantityInStockpile(EL1));
+        c.ElementOutOfStockpile(EL1, 1); //1 total in workspace
+        Assert.IsFalse(c.ElementIntoStockpile(EL1, 2));
+        Assert.AreEqual(4, c.GetCurrentElementQuantityInStockpile(EL1));
+        c.ElementOutOfStockpile(EL1, 1); //2 total in workspace
+        Assert.IsFalse(c.ElementIntoStockpile(EL1, 3));
+        Assert.AreEqual(3, c.GetCurrentElementQuantityInStockpile(EL1));
+    }
+
+    [Test]
+    public void RemovingElement_AffectsWorkspaceQuantityLast()
+    {
+        Character c = new Character();
+        c.ModifyElementQuantity(EL1, 5);
+        c.ElementOutOfStockpile(EL1, 1);
+        c.ModifyElementQuantity(EL1, -4);
+        Assert.AreEqual(0, c.GetCurrentElementQuantityInStockpile(EL1));
+        Assert.AreEqual(1, c.GetCurrentElementQuantityInWorkspace(EL1));
+        Assert.AreEqual(1, c.GetCurrentElementQuantity(EL1));
+    }
+
+    [Test]
+    public void RemovingElement_AffectsWorkspaceQuantity_OnceResourceQuantityConsumed()
+    {
+        Character c = new Character();
+        c.ModifyElementQuantity(EL1, 5);
+        c.ElementOutOfStockpile(EL1, 3); //2 left in resources, 3 in workspace, 5 total
+        c.ModifyElementQuantity(EL1, -3); //should leave 0 in resources, 2 in workspace, 2 total
+        Assert.AreEqual(0, c.GetCurrentElementQuantityInStockpile(EL1));
+        Assert.AreEqual(2, c.GetCurrentElementQuantityInWorkspace(EL1));
+        Assert.AreEqual(2, c.GetCurrentElementQuantity(EL1));
     }
 }
 

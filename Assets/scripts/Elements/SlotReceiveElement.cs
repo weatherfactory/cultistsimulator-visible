@@ -27,7 +27,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         }
     }
 
-    private DraggableElementToken GetTokenInSlot()
+    public DraggableElementToken GetTokenInSlot()
     {
         if (ItemInSlot == null)
             return null;

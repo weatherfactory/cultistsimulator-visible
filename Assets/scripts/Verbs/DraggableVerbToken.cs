@@ -9,20 +9,27 @@ using UnityEngine.EventSystems;
 public class DraggableVerbToken : DraggableToken,IPointerClickHandler,INotifyLocator
 {
     public Verb Verb;
-  
+    public GameObject HomeFrame { get; set; }
+
 
     public override void OnBeginDrag(PointerEventData eventData)
     {
-        if (OriginTransform == null)
-        {
-            if (transform.parent)
-                OriginTransform = transform.parent; //so we can return this to its original slot later
-        }
+
         BM.CurrentDragItem = gameObject.GetComponent<DraggableToken>();
         StartPosition = transform.position;
         StartParent = transform.parent;
         if (GetComponent<CanvasGroup>() != null)
             GetComponent<CanvasGroup>().blocksRaycasts = false;
+    }
+
+    public override bool DestroyIfContainsElementId(string elementId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ReturnToOrigin()
+    {
+      transform.SetParent(HomeFrame.transform);
     }
 
 

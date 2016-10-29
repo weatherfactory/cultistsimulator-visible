@@ -42,5 +42,6 @@ public class VerbPanel : MonoBehaviour {
         image.sprite = sprite;
         DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
         token.Verb = v;
+        token.HomeFrame = verbFrame;
     }
 }

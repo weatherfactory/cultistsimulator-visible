@@ -1,19 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
 
 
-public class DraggableToken : BoardMonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public abstract class DraggableToken : BoardMonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public Vector3 StartPosition;
     public Transform StartParent;
-    public Transform OriginTransform;
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
     
     }
+
+    public abstract Boolean DestroyIfContainsElementId(string elementId);
 
     public virtual void OnDrag(PointerEventData eventData)
     {
@@ -31,8 +33,6 @@ public class DraggableToken : BoardMonoBehaviour, IDragHandler, IBeginDragHandle
     }
 
 
-    public virtual void ReturnToOrigin()
-    {
-        transform.SetParent(OriginTransform);
-    }
+    public abstract void ReturnToOrigin();
+
 }

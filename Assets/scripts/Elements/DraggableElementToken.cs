@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -57,30 +58,29 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
         }
 
 
-    private void TakeElementTokenOutOfResourcesPanel(int quantity)
+    private void TakeElementTokenOutOfStockpile(int quantity)
     {
         transform.SetParent(BM.transform, true);
-        BM.ElementToWorkspace(Element.Id, quantity);
+        BM.ElementOutOfStockpile(Element.Id, quantity);
     }
 
 
     public override void OnBeginDrag(PointerEventData eventData)
     {
-        //create a stack to leave behind, of all the element in this token minus one.
-        if (OriginTransform == null)
-        {
-            if (_quantity > 1)
-            {
-                int siblingIndexForNewStack = transform.GetSiblingIndex();
-                SetQuantity(1);
-                TakeElementTokenOutOfResourcesPanel(1);
-                
-               
-            }
+        
 
-             OriginTransform = transform.parent; //so we can return this to its original slot later
-            
+        if (GetComponentInParent<IStockpileLocation>()!=null)
+            TakeElementTokenOutOfStockpile(1);
+        else
+            Assert.IsFalse(_quantity>1); //we aren't set up to cater for a >1 quantity if this hasn't come from a stockpile
+
+        //create a stack to leave behind, of all the element in this token minus one.
+        if (_quantity > 1)
+        {
+            SetQuantity(1); //we never take more than one token out of a stack
         }
+
+
         BM.CurrentDragItem = gameObject.GetComponent<DraggableToken>();
         StartPosition = transform.position;
         StartParent = transform.parent;
@@ -88,6 +88,15 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
             GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
+        public override bool DestroyIfContainsElementId(string elementId)
+        {
+           if(Element.Id==elementId)
+        { 
+            SetQuantity(0);
+            return true;
+        }
+            return false;
+        }
 
 
         public override void ReturnToOrigin()

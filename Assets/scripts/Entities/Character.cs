@@ -8,7 +8,7 @@ using JetBrains.Annotations;
 public class Character:IElementsContainer
     {
     private readonly Dictionary<string, int> _elements;
-    private readonly Dictionary<string, int> _elementsInWorkspace;
+    private readonly Dictionary<string, int> _elementsInStockpile;
     private readonly List<IElementQuantityDisplay> _elementsDisplaySubscribers;
     private readonly List<ICharacterInfoSubscriber> _detailsSubscribers;
     private string _title;
@@ -57,7 +57,7 @@ public class Character:IElementsContainer
         public Character()
         {
             _elements=new Dictionary<string, int>();
-        _elementsInWorkspace=new Dictionary<string, int>();
+        _elementsInStockpile=new Dictionary<string, int>();
         _elementsDisplaySubscribers=new List<IElementQuantityDisplay>();
         _detailsSubscribers=new List<ICharacterInfoSubscriber>();
             State = CharacterState.Viable;
@@ -76,11 +76,18 @@ public class Character:IElementsContainer
             _detailsSubscribers.Add(characterInfoSubscriber);
         }
 
-        public void PublishElementQuantityInResources(string elementId, int quantity)
+
+    /// <summary>
+    /// update the UI with the current resource quantity, and also make any necessary adjustments to workspace/dragitem display (because we've had stockpile removed)
+    /// </summary>
+    /// <param name="elementId"></param>
+    /// <param name="quantityInstockpile"></param>
+    /// <param name="workspaceAdjustment"></param>
+        public void PublishElementQuantityUpdate(string elementId, int quantityInstockpile, int workspaceAdjustment)
         {
             foreach (var elementQuantityDisplay in _elementsDisplaySubscribers)
             {
-                elementQuantityDisplay.UpdateElementQuantityInResources(elementId,quantity);
+                elementQuantityDisplay.ElementQuantityUpdate(elementId,quantityInstockpile,workspaceAdjustment);
             }
         }
 
@@ -94,52 +101,74 @@ public class Character:IElementsContainer
        public void ModifyElementQuantity(string elementId, int quantity)
         {
             if (!_elements.ContainsKey(elementId))
+        { 
                 _elements.Add(elementId, quantity);
-            else
-                _elements[elementId] = _elements[elementId] + quantity;
-            PublishElementQuantityInResources(elementId, GetCurrentElementQuantityInResources(elementId));
+                PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), 0);
+
+        }
+        else
+            {
+                if (quantity < (0 - GetCurrentElementQuantityInStockpile(elementId)))
+                    //if quantity is negative, and more of it than we have in stockpile
+                {
+                    //move enough from the workspace back to stockpile to satisfy the consumption
+                    int removeFromWorkspace = quantity + GetCurrentElementQuantityInStockpile(elementId);
+                        //quantity here is negative
+                    ElementIntoStockpile(elementId, -removeFromWorkspace); //move it back into stockpile...
+                 _elements[elementId] = _elements[elementId] + quantity; //...and then subtract from total quantity
+                //the amount not offset by quantity in stockpile; nb we changed the sign here
+                PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), removeFromWorkspace);
+                }
+                else
+                {
+
+                    _elements[elementId] = _elements[elementId] + quantity;
+                    PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), 0);
+
+                }
+            }
         }
 
-   public bool ElementToWorkspace(string elementId, int plusQuantity)
+   public bool ElementOutOfStockpile(string elementId, int plusQuantity)
    {
        if (GetCurrentElementQuantity(elementId) < plusQuantity)
            return false;
-        if(!_elementsInWorkspace.ContainsKey(elementId))
-            _elementsInWorkspace.Add(elementId,plusQuantity);
+        if(!_elementsInStockpile.ContainsKey(elementId))
+            _elementsInStockpile.Add(elementId,plusQuantity);
         else
-           _elementsInWorkspace[elementId] += plusQuantity;
+           _elementsInStockpile[elementId] += plusQuantity;
 
-        PublishElementQuantityInResources(elementId, GetCurrentElementQuantityInResources(elementId));
+        PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId),0);
         return true;
    }
 
-    public bool ElementFromWorkspace(string elementId, int minusQuantity)
+    public bool ElementIntoStockpile(string elementId, int minusQuantity)
     {
         if (GetCurrentElementQuantityInWorkspace(elementId) < minusQuantity)
             return false;
 
-        if (!_elementsInWorkspace.ContainsKey(elementId))
-            _elementsInWorkspace.Add(elementId, -minusQuantity);
+        if (!_elementsInStockpile.ContainsKey(elementId))
+            _elementsInStockpile.Add(elementId, -minusQuantity);
         else
-            _elementsInWorkspace[elementId] -= minusQuantity;
+            _elementsInStockpile[elementId] -= minusQuantity;
 
-        PublishElementQuantityInResources(elementId, GetCurrentElementQuantityInResources(elementId));
+        PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId),0);
         return true;
     }
 
     public int GetCurrentElementQuantityInWorkspace(string elementId)
     {
-        return _elementsInWorkspace.ContainsKey(elementId) ? _elementsInWorkspace[elementId] : 0;
+        return _elementsInStockpile.ContainsKey(elementId) ? _elementsInStockpile[elementId] : 0;
     }
 
-        public int GetCurrentElementQuantityInResources(string elementId)
+        public int GetCurrentElementQuantityInStockpile(string elementId)
         {
-            var inResources = _elements.ContainsKey(elementId) ? _elements[elementId] : 0;
+            var instockpile = _elements.ContainsKey(elementId) ? _elements[elementId] : 0;
 
-            if (_elementsInWorkspace.ContainsKey(elementId))
-                inResources -= _elementsInWorkspace[elementId];
+            if (_elementsInStockpile.ContainsKey(elementId))
+                instockpile -= _elementsInStockpile[elementId];
 
-            return inResources;
+            return instockpile;
         }
 
         public int GetCurrentElementQuantity(string elementId)

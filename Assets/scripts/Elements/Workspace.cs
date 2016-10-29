@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class Workspace : BoardMonoBehaviour
@@ -33,7 +34,6 @@ public class Workspace : BoardMonoBehaviour
     public void ReturnEverythingToOrigin()
     {
         
-
         SlotReceiveElement[] slots = this.GetComponentsInChildren<SlotReceiveElement>();
         foreach(SlotReceiveElement slot in slots)
         { 
@@ -43,19 +43,47 @@ public class Workspace : BoardMonoBehaviour
         SlotReceiveVerb verbSlot = this.GetComponentInChildren<SlotReceiveVerb>();
         if (verbSlot != null)
             verbSlot.ClearThisSlot();
-            
-
+           
     }
 
     public void ConsumeElements()
     {
-        DraggableElementToken[] elements = this.GetComponentsInChildren<DraggableElementToken>();
+        DraggableElementToken[] eTokens = this.GetComponentsInChildren<DraggableElementToken>();
 
-        foreach (DraggableElementToken element in elements)
-            if(!element.HasChildSlots())
-                element.SetQuantity(0);
-
+        foreach (DraggableElementToken eToken in eTokens)
+            if (!eToken.HasChildSlots())
+            {
+                ConsumeElementToken(eToken);
+            }
         BM.ClearWorkspace();
-          
+    }
+
+    private void ConsumeElementToken(DraggableElementToken eToken)
+    {
+        BM.ElementIntoStockpile(eToken.Element.Id, 1);
+        BM.ModifyElementQuantity(eToken.Element.Id, -1);
+        eToken.SetQuantity(0);
+    }
+
+
+    /// <summary>
+    /// finds a slot with this element id; removes the token and clears the slot
+    /// This is for when an element has been destroyed elsewhere.
+    /// </summary>
+    /// <returns>true if an element has been removed/destroyed; false otherwise</returns>
+    public Boolean ElementInWorkspaceDestroyed(string elementId)
+    {
+        SlotReceiveElement[] slots = this.GetComponentsInChildren<SlotReceiveElement>();
+        foreach (SlotReceiveElement slot in slots)
+        {
+            DraggableElementToken eToken = slot.GetTokenInSlot();
+            if(eToken!=null && eToken.Element.Id==elementId)
+            { 
+                eToken.SetQuantity(0);
+                slot.ClearThisSlot();
+                return true;
+            }
+        }
+        return false;
     }
 }

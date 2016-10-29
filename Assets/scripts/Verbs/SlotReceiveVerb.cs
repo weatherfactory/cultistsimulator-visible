@@ -33,7 +33,7 @@ public class SlotReceiveVerb : BoardMonoBehaviour, IDropHandler {
            if (VerbTokenInSlot && VerbTokenInSlot.GetComponent<DraggableVerbToken>())
            {
                 DraggableVerbToken itemInSlotComponent = VerbTokenInSlot.GetComponent<DraggableVerbToken>();
-                VerbTokenInSlot.transform.SetParent(itemInSlotComponent.OriginTransform);
+                VerbTokenInSlot.ReturnToOrigin();
             }
            BM.VerbAddedToSlot(transform);
 

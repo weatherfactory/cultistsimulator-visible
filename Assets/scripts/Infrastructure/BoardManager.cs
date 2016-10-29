@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OrbCreationExtensions;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 #pragma warning disable 649
@@ -81,7 +82,6 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
     public void AddVerbToBoard(Verb v)
     {
         pnlVerbs.AddVerbToPanel(v);
-        
     }
 
 
@@ -146,14 +146,33 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         pnlWorld.FastForward(seconds,heartbeat.Character);
     }
 
-    public void UpdateElementQuantityInResources(string elementId, int quantity)
+    public void ElementQuantityUpdate(string elementId, int currentQuantityInResources,int workspaceQuantityAdjustment)
     {
         DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
         if (existingElement)
-            existingElement.SetQuantity(quantity);
+            existingElement.SetQuantity(currentQuantityInResources);
         else
         {
-            addElementToBoard(elementId, quantity, null);
+            addElementToBoard(elementId, currentQuantityInResources, null);
+        }
+
+        Log(elementId + " in stockpile: " + currentQuantityInResources,Style.Subtle);
+        //assertion: workspaceQuantityAdjustment is not positive
+        Assert.IsFalse(workspaceQuantityAdjustment > 0);
+        if(workspaceQuantityAdjustment<0)
+        { 
+        //attempt to remove elements from workspace; each destruction offsets the adjustment by 1
+        while (pnlWorkspace.ElementInWorkspaceDestroyed(elementId))
+            workspaceQuantityAdjustment++; 
+
+        //if there's still one left, check for it in draghandler
+        if(CurrentDragItem!=null)
+        { 
+        if (CurrentDragItem.DestroyIfContainsElementId(elementId))
+            workspaceQuantityAdjustment++;
+        }
+
+            //it's possible there'll be a quantity adjustment left after this, if someone lost a big chunk of elements; we're not bothered about that
         }
     }
 
@@ -175,7 +194,7 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         string elementId = tokenToReturn.Element.Id;
         int elementQuantity = tokenToReturn.Quantity;
         ExileToLimboThenDestroy(tokenToReturn.gameObject); //to prevent possible double-counting
-        heartbeat.Character.ModifyElementQuantity(elementId,elementQuantity);
+        heartbeat.Character.ElementIntoStockpile(elementId,elementQuantity);
         
 
         UpdateAspectDisplay();
@@ -199,9 +218,13 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         heartbeat.Character.ModifyElementQuantity(e,q);
     }
 
-    public void ElementToWorkspace(string e, int q)
+    public void ElementOutOfStockpile(string e, int q)
     {
-        heartbeat.Character.ElementToWorkspace(e, q);
+        heartbeat.Character.ElementOutOfStockpile(e, q);
+    }
+    public void ElementIntoStockpile(string e, int q)
+    {
+        heartbeat.Character.ElementIntoStockpile(e, q);
     }
 
     public void UpdateAspectDisplay()

@@ -5,7 +5,7 @@ using System.Text;
 
     public interface IElementsContainer
     {
-        void ModifyElementQuantity(string elementId, int quantity);
+        void ModifyElementQuantity(string elementId, int quantityChange);
         int GetCurrentElementQuantity(string elementId);
         Dictionary<string, int> GetAllCurrentElements();
         void TriggerEnding(string endingId);
