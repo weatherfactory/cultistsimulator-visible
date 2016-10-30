@@ -148,50 +148,35 @@
         startdescription: "Petty, hateful work for petty, meagre pay.",
         description: "I am exhausted, but I've earned my pay.",
         warmup: 6,
-        craftable: true
+        craftable: true,
+		loop: "labour"
     }
 	,
 		{
-        id: "testwork",
-        label: "Work test",
+        id: "begintestresearch",
+        label: "This sets up a Research situation. FNORD",
         actionId: "work",
-        requirements: {secrethistories: 1},
-        alternativerecipes: [{id: "testworkalternative", chance:100,additional:false}],
+        requirements: {secrethistories: 1,follower:1},
         effects: {
-            occultscrap: 7
         },
-        startdescription: "Beginning test work",
-        description: "Completing test work",
+        startdescription: "This will begin a research project.",
+        description: "Research project begun.",
         warmup: 2,
-        craftable: true
-    }
-	,
-			{
-        id: "testworkalternative",
-        label: "Work test alternative",
-        actionId: "work",
-        requirements: {},
-		        alternativerecipes: [{id: "testworkalternativegrandchild", chance:100,additional:false}],
-        effects: {
-            shilling: 7
-        },
-        startdescription: "Beginning test work ALTERNATIVE",
-        description: "Completing test work  ALTERNATIVE",
-        warmup: 2,
-        craftable: false
+        craftable: true,
+		createCommitment: "testresearchproject"
     },
-				{
-        id: "testworkalternativegrandchild",
-        label: "Work test alternative grandchild",
+			{
+        id: "testresearchproject",
+        label: "This sets up a Research situation. FNORD",
         actionId: "work",
-        requirements: {},
+        requirements: {secrethistories: 1,follower:1},
         effects: {
-            shilling: 21
         },
-        startdescription: "Beginning test work ALT GRANDCHILD",
-        description: "Completing test work  ALT GRANDCHILD",
+        startdescription: "This will begin a research project.",
+        description: "Research project begun.",
         warmup: 2,
-        craftable: false
+        craftable: true,
+		createCommitment: "testresearchproject"
     },
     {
         id: "lockedmindready",
@@ -848,7 +833,7 @@
         id: "assignagainstinspector",
         label: "Ensure the Inspector troubles me no further.",
         actionId: "assign",
-        storeCommitment: {commitment: "assignagainstinspectorcommitment", withAspect: "follower"},
+       createCommitment: {commitment: "assignagainstinspectorcommitment", withAspect: "follower"},
         alternativerecipes:
             [{id: "assignagainstinspectorfail", chance:30, additional: true}],
         requirements: {aninspectorcalls: 1,
@@ -856,7 +841,7 @@
         effects: {
             aninspectorcalls: -1
         },
-        applyCommitment: {commitment: "assignagainstinspectorcommitment"},
+     addToCommitment: {commitment: "assignagainstinspectorcommitment"},
         startdescription: "Threats, blackmail, or secret violence: whatever is required. If you're lucky, this will suffice.",
         description: "The Inspector will trouble you no longer. Ask no questions.",
         warmup: 30,
@@ -866,13 +851,13 @@
         id: "assignagainstinspectornotenough",
         label: "Make a clumsy attempt to deal with the Inspector",
         actionId: "assign",
-        storeCommitment: {commitment: "assignagainstinspectorcommitment"},
+        createCommitment: {commitment: "assignagainstinspectorcommitment"},
         requirements: {aninspectorcalls: 1,follower: 1},
         alternativerecipes:
             [{id: "assignagainstinspectorfail", chance:70, additional: true}],
         effects: {
         },
-        applyCommitment: {commitment: "assignagainstinspectorcommitment"},
+        addToCommitment: {commitment: "assignagainstinspectorcommitment"},
         startdescription: "He will probably require a sterner intervention than this.",
         description: "The Inspector will trouble you no longer. Ask no questions.",
         warmup: 30,
