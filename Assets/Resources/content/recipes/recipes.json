@@ -153,7 +153,7 @@
     }
 	,
 		{
-        id: "begintestresearch",
+        id: "testresearch",
         label: "This sets up a Research situation. FNORD",
         actionId: "work",
         requirements: {secrethistories: 1,follower:1},
@@ -163,20 +163,20 @@
         description: "Research project begun.",
         warmup: 2,
         craftable: true,
-		createCommitment: "testresearchproject"
+		persistIngredients: {secrethistories: 1, follower:1}
+		loop: "testresearchspine"
     },
 			{
-        id: "testresearchproject",
-        label: "This sets up a Research situation. FNORD",
-        actionId: "work",
-        requirements: {secrethistories: 1,follower:1},
-        effects: {
-        },
+        id: "testresearchspine",
+        label: "Project ongoing",
+        actionId: "x",
+        requirements: {},
+        effects: {},
         startdescription: "This will begin a research project.",
         description: "Research project begun.",
         warmup: 2,
-        craftable: true,
-		createCommitment: "testresearchproject"
+        craftable: false,
+		loop: "testresearchspine"
     },
     {
         id: "lockedmindready",

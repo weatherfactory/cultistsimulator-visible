@@ -4,10 +4,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-public class RecipeSituation
+public class RecipeSituation:IElementsContainer
 {
     private float _timeRemaining;
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
+    private readonly Dictionary<string, int> _elements=new Dictionary<string, int>();
     public Recipe Recipe { get; set; }
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
@@ -87,5 +88,30 @@ public class RecipeSituation
     {
         _subscribers.Add(subscriber);
     }
+
+    public void ModifyElementQuantity(string elementId, int quantityChange)
+    {
+        if (!_elements.ContainsKey(elementId))
+        
+            _elements.Add(elementId, quantityChange);
+        else
+        _elements[elementId]=_elements[elementId]+=quantityChange;
+        }
+
+    public int GetCurrentElementQuantity(string elementId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Dictionary<string, int> GetAllCurrentElements()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void TriggerSpecialEvent(string endingId)
+    {
+        throw new NotImplementedException();
+    }
+
 }
     

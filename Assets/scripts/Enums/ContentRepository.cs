@@ -158,6 +158,13 @@ public class ContentRepository : Singleton<ContentRepository>
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
             }
 
+            Hashtable htPersistIngredients = htEachRecipe.GetHashtable(Constants.KPERSISTINGREDIENTS);
+            foreach (string k in htPersistIngredients.Keys)
+            {
+                r.PersistedIngredients.Add(k, Convert.ToInt32(htPersistIngredients[k]));
+            }
+
+
             ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);
             if(alRecipeAlternatives!=null)
             { 

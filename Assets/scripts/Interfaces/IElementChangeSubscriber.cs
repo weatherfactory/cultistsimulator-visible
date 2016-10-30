@@ -6,6 +6,6 @@ using System.Text;
 
     public interface IElementQuantityDisplay
     {
-        void ElementQuantityUpdate(string elementId, int currentQuantityInResources, int workspaceQuantityAdjustment);
+        void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile, int workspaceQuantityAdjustment);
     }
 

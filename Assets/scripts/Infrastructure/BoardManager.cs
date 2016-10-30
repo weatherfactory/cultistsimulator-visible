@@ -146,17 +146,17 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         pnlWorld.FastForward(seconds,heartbeat.Character);
     }
 
-    public void ElementQuantityUpdate(string elementId, int currentQuantityInResources,int workspaceQuantityAdjustment)
+    public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile,int workspaceQuantityAdjustment)
     {
         DraggableElementToken existingElement = getStoredElementTokenForId(elementId);
         if (existingElement)
-            existingElement.SetQuantity(currentQuantityInResources);
+            existingElement.SetQuantity(currentQuantityInStockpile);
         else
         {
-            addElementToBoard(elementId, currentQuantityInResources, null);
+            addElementToBoard(elementId, currentQuantityInStockpile, null);
         }
 
-        Log(elementId + " in stockpile: " + currentQuantityInResources,Style.Subtle);
+        Log(elementId + " in stockpile: " + currentQuantityInStockpile,Style.Subtle);
         //assertion: workspaceQuantityAdjustment is not positive
         Assert.IsFalse(workspaceQuantityAdjustment > 0);
         if(workspaceQuantityAdjustment<0)

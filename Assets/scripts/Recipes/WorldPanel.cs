@@ -8,6 +8,7 @@ public class WorldPanel : BoardMonoBehaviour
 {
     [SerializeField] private GameObject prefabTimerPanel;
     private List<TimerPanel> CurrentTimerPanels = new List<TimerPanel>();
+    private List<RecipeSituation> CurrentRecipeSituations=new List<RecipeSituation>();
 
     public void AddTimer(Recipe forRecipe,float? timeRemaining,IRecipeSituationSubscriber s)
     {

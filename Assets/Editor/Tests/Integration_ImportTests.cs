@@ -26,6 +26,10 @@ namespace CS.Tests
         private const int ASPECT_1_VALUE =2;
         private const string ASPECT_2_ID = "aspect2id";
         private const int ASPECT_2_VALUE = -4;
+        private const string PI_ASPECT_1_ID = "persistedaspect1";
+        private const int PI_ASPECT_1_VALUE = 1;
+        private const string PI_ASPECT_2_ID = "persistedaspect2";
+        private const int PI_ASPECT_2_VALUE = 2;
         private const string EFFECT_1_ID = "effect1id";
         private const int EFFECT_1_VALUE = 9;
         private const string EFFECT_2_ID = "effect2id";
@@ -44,6 +48,7 @@ namespace CS.Tests
             Hashtable htRecipe = new Hashtable();
             Hashtable htEffects = new Hashtable();
             Hashtable htRequirements = new Hashtable();
+            Hashtable htPersistIngredients=new Hashtable();
             ArrayList alAlternatives = new ArrayList();
 
             htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE);
@@ -51,6 +56,9 @@ namespace CS.Tests
             
             htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE);
             htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE);
+
+            htPersistIngredients.Add(PI_ASPECT_1_ID,PI_ASPECT_1_VALUE);
+            htPersistIngredients.Add(PI_ASPECT_2_ID, PI_ASPECT_2_VALUE);
 
             Hashtable alternative1 = new Hashtable()
             {
@@ -81,6 +89,7 @@ namespace CS.Tests
             htRecipe.Add(Constants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(Constants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(Constants.KEFFECTS, htEffects);
+            htRecipe.Add(Constants.KPERSISTINGREDIENTS,htPersistIngredients);
             htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
             
             recipesToImport.Add(htRecipe);
@@ -97,8 +106,16 @@ namespace CS.Tests
 
             ConfirmRecipeEffectsImported(recipesImported);
 
+            ConfirmRecipePersistedIngredients(recipesImported);
+
             ConfirmRecipeAlternativesImported(recipesImported);
 
+        }
+
+        private void ConfirmRecipePersistedIngredients(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(PI_ASPECT_1_VALUE, recipesImported.First().PersistedIngredients[PI_ASPECT_1_ID]);
+                Assert.AreEqual(PI_ASPECT_2_VALUE, recipesImported.First().PersistedIngredients[PI_ASPECT_2_ID]);
         }
 
         private static void ConfirmRecipeAlternativesImported(List<Recipe> recipesImported)

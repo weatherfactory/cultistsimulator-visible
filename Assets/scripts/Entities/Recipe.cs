@@ -10,6 +10,7 @@ using System.Text;
         public string ActionId { get; set; }
         public Dictionary<string, int> Requirements { get; set; }
         public Dictionary<string,int> Effects { get; set; }
+    public Dictionary<string,int> PersistedIngredients { get; set; }
         public Boolean Craftable { get; set; }
         public string Label { get; set; }
         public int Warmup { get; set; }
@@ -26,6 +27,7 @@ using System.Text;
             Requirements = new Dictionary<string, int>();
         Effects=new Dictionary<string, int>();
         AlternativeRecipes=new List<RecipeAlternative>();
+        PersistedIngredients=new Dictionary<string, int>();
         }
 
         public void Do(INotifier notifier, IElementsContainer container)
@@ -35,7 +37,7 @@ using System.Text;
         foreach(var e in Effects)
             container.ModifyElementQuantity(e.Key,e.Value);
         if(Ending!=null)
-            container.TriggerEnding(Ending);
+            container.TriggerSpecialEvent(Ending);
         }
 
     }

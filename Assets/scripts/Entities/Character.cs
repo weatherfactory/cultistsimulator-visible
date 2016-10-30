@@ -91,7 +91,7 @@ public class Character:IElementsContainer
             }
         }
 
-        public void PublishDetailsChange()
+        private void PublishDetailsChange()
         {
             foreach(var d in _detailsSubscribers)
                 d.ReceiveUpdate(this);
@@ -183,7 +183,7 @@ public class Character:IElementsContainer
             return _elements;
         }
 
-        public void TriggerEnding(string endingId)
+        public void TriggerSpecialEvent(string endingId)
         {
             State=CharacterState.Extinct;
             _endingTriggeredId = endingId;
