@@ -9,4 +9,5 @@ using System.Text;
         int GetCurrentElementQuantity(string elementId);
         Dictionary<string, int> GetAllCurrentElements();
         void TriggerSpecialEvent(string endingId);
+        void PublishElementQuantityUpdate(string elementId, int quantityInstockpile, int workspaceAdjustment);
     }

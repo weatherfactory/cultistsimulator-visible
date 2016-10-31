@@ -5,12 +5,11 @@ using System.Text;
 using JetBrains.Annotations;
 
 
-public class Character:IElementsContainer
+public class Character: BaseElementsContainer, IElementsContainer
     {
-    private readonly Dictionary<string, int> _elements;
+
     private readonly Dictionary<string, int> _elementsInStockpile;
-    private readonly List<IElementQuantityDisplay> _elementsDisplaySubscribers;
-    private readonly List<ICharacterInfoSubscriber> _detailsSubscribers;
+
     private string _title;
     private string _firstName;
     private string _lastName;
@@ -77,19 +76,7 @@ public class Character:IElementsContainer
         }
 
 
-    /// <summary>
-    /// update the UI with the current resource quantity, and also make any necessary adjustments to workspace/dragitem display (because we've had stockpile removed)
-    /// </summary>
-    /// <param name="elementId"></param>
-    /// <param name="quantityInstockpile"></param>
-    /// <param name="workspaceAdjustment"></param>
-        public void PublishElementQuantityUpdate(string elementId, int quantityInstockpile, int workspaceAdjustment)
-        {
-            foreach (var elementQuantityDisplay in _elementsDisplaySubscribers)
-            {
-                elementQuantityDisplay.ElementQuantityUpdate(elementId,quantityInstockpile,workspaceAdjustment);
-            }
-        }
+
 
         private void PublishDetailsChange()
         {
@@ -98,7 +85,7 @@ public class Character:IElementsContainer
             
         }
 
-       public void ModifyElementQuantity(string elementId, int quantity)
+       public override void ModifyElementQuantity(string elementId, int quantity)
         {
             if (!_elements.ContainsKey(elementId))
         { 
@@ -171,19 +158,7 @@ public class Character:IElementsContainer
             return instockpile;
         }
 
-        public int GetCurrentElementQuantity(string elementId)
-        {
-            if (!_elements.ContainsKey(elementId))
-                return 0;
-            return Convert.ToInt32(_elements[elementId]);
-        }
-
-        public Dictionary<string, int> GetAllCurrentElements()
-        {
-            return _elements;
-        }
-
-        public void TriggerSpecialEvent(string endingId)
+        public override void TriggerSpecialEvent(string endingId)
         {
             State=CharacterState.Extinct;
             _endingTriggeredId = endingId;
