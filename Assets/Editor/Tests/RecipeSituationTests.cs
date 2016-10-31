@@ -30,17 +30,17 @@ namespace  CS.Tests
         }
 
         [Test]
-        public void Recipe_WithoutLoopProperty_RequestsContinuation()
+        public void Recipe_WithoutLoopProperty_DoesNotRequestContinuation()
         {
 
             r1.Loop = null;
-            RecipeSituation rs = new RecipeSituation(r1, 0);
+            RecipeSituation rs = new RecipeSituation(r1, 0, container);
 
 
-            rs.DoHeartbeat( container,rc);
+            rs.DoHeartbeat(rc);
 
             Assert.IsNull(rs.Recipe);
-            Assert.AreEqual(RecipeTimerState.Complete,rs.TimerState);
+            Assert.AreEqual(RecipeTimerState.Extinct,rs.TimerState);
             Assert.AreEqual(0,rs.TimeRemaining);
 
         }
@@ -51,9 +51,9 @@ namespace  CS.Tests
 
             r1.Loop = r2.Id;
 
-            RecipeSituation rs = new RecipeSituation(r1, 0);
+            RecipeSituation rs = new RecipeSituation(r1, 0, container);
 
-            rs.DoHeartbeat(container, rc);
+            rs.DoHeartbeat(rc);
 
             Assert.AreEqual(r2.Id, rs.Recipe.Id);
             Assert.AreEqual(RecipeTimerState.Ongoing, rs.TimerState);

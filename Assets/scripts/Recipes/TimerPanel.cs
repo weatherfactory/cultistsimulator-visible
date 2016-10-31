@@ -23,8 +23,6 @@ public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
         imgTimer.fillAmount = fillAmount;
         txtTimer.text = "[" + timeRemaining + "] " + recipe.Label;
         }
-
-
     }
 }
 

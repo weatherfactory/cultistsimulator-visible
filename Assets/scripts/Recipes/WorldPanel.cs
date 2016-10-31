@@ -9,10 +9,10 @@ public class WorldPanel : BoardMonoBehaviour
     [SerializeField] private GameObject prefabTimerPanel;
     private List<RecipeSituation> CurrentRecipeSituations=new List<RecipeSituation>();
 
-    public void AddSituation(Recipe forRecipe,float? timeRemaining,IRecipeSituationSubscriber s)
+    public void AddSituation(Recipe forRecipe,float? timeRemaining,IElementsContainer ec)
     {
 
-        RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining);
+        RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining,ec);
         GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
         TimerPanel newTP = newTPobj.GetComponent<TimerPanel>();
 
@@ -29,7 +29,7 @@ public class WorldPanel : BoardMonoBehaviour
 
         foreach (var rs in situationsToRun)
         {
-            rs.DoHeartbeat(c, ContentRepository.Instance.RecipeCompendium);
+            rs.DoHeartbeat(ContentRepository.Instance.RecipeCompendium);
             if (rs.TimerState == RecipeTimerState.Extinct)
                 CurrentRecipeSituations.Remove(rs);
         }

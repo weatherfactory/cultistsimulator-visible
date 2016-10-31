@@ -245,7 +245,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     public void QueueRecipe(Recipe r)
     {
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
-        pnlWorld.AddSituation(r, null,this);
+        pnlWorld.AddSituation(r, null,heartbeat.Character);
         MarkRecipeAsKnown(r);
         pnlWorkspace.ConsumeElements();
         pnlVerbs.BlockVerb(r.ActionId);
@@ -449,7 +449,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
-                pnlWorld.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), this);
+                pnlWorld.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), heartbeat.Character);
             }
 
             foreach (string k in htRecipesKnown.Keys)

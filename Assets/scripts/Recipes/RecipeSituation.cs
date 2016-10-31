@@ -4,12 +4,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-public class RecipeSituation:IElementsContainer
+public class RecipeSituation
 {
     private float _timeRemaining;
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
-    private readonly Dictionary<string, int> _elements=new Dictionary<string, int>();
     public Recipe Recipe { get; set; }
+    private IElementsContainer affectsElementsContainer;
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
     public string OriginalRecipeId { get; set; }
@@ -39,10 +39,12 @@ public class RecipeSituation:IElementsContainer
         }
     }
 
-    public RecipeSituation(Recipe recipe, float? timeremaining)
+    public RecipeSituation(Recipe recipe, float? timeremaining,IElementsContainer ec)
     {
         Recipe = recipe;
         OriginalRecipeId = recipe.Id;
+
+        affectsElementsContainer = ec;
 
         if (timeremaining == null)
             TimeRemaining = recipe.Warmup;
@@ -50,26 +52,24 @@ public class RecipeSituation:IElementsContainer
             TimeRemaining = timeremaining.Value;
     }
 
-    public void DoHeartbeat(IElementsContainer elementsContainer,
-        RecipeCompendium compendium)
+    public void DoHeartbeat(RecipeCompendium compendium)
     {
         _timeRemaining--;
         if (_timeRemaining <= 0)
         {
-            Complete(elementsContainer, compendium);
+            Complete(compendium);
         }
         publishUpdate();
     }
 
 
-    private void Complete(IElementsContainer elementsContainer,
-        RecipeCompendium compendium)
+    private void Complete(RecipeCompendium compendium)
     {
         List<Recipe> recipesToExecute =
-            compendium.GetActualRecipesToExecute(Recipe, elementsContainer);
+            compendium.GetActualRecipesToExecute(Recipe, affectsElementsContainer);
         foreach (Recipe r in recipesToExecute)
         {
-            r.Do(elementsContainer);
+            r.Do(affectsElementsContainer);
         }
 
         if (Recipe.Loop != null)
@@ -103,30 +103,6 @@ public class RecipeSituation:IElementsContainer
     {
         _subscribers.Add(subscriber);
         subscriber.ReceiveSituationUpdate(Recipe,TimerState,TimeRemaining);
-    }
-
-    public void ModifyElementQuantity(string elementId, int quantityChange)
-    {
-        if (!_elements.ContainsKey(elementId))
-        
-            _elements.Add(elementId, quantityChange);
-        else
-        _elements[elementId]=_elements[elementId]+=quantityChange;
-        }
-
-    public int GetCurrentElementQuantity(string elementId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Dictionary<string, int> GetAllCurrentElements()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void TriggerSpecialEvent(string endingId)
-    {
-        throw new NotImplementedException();
     }
 
 }
