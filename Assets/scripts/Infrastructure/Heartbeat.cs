@@ -7,6 +7,7 @@ public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
 
     private const string DO="Do"; //so we don't get a tiny daft typo with the Invoke
     public Character Character;
+    public World World;
     public Character CreateBlankCharacter()
     {
         Character character = new Character();
@@ -59,7 +60,7 @@ public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
     void Do()
     {
         if(Character.State==CharacterState.Viable)
-        BM.DoHeartbeat(Character);
+            World.DoHeartbeat();
     }
 
     public void ReceiveUpdate(Character character)
@@ -84,7 +85,10 @@ public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
         pnlEnding.gameObject.SetActive(false);
         BM.gameObject.SetActive(true);
 
+        World = new World();
+
         BM.ClearBoard();
+       
 
         BM.QueueRecipe(ContentRepository.Instance.RecipeCompendium.GetRecipeById("starvation"));
 

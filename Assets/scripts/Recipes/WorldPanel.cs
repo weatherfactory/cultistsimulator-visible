@@ -7,52 +7,44 @@ using UnityEngine.Assertions;
 public class WorldPanel : BoardMonoBehaviour
 {
     [SerializeField] private GameObject prefabTimerPanel;
-    private List<RecipeSituation> CurrentRecipeSituations=new List<RecipeSituation>();
+    private World World;
 
-    public void AddSituation(Recipe forRecipe,float? timeRemaining,IElementsContainer ec)
+
+
+    public void RegisterSituation(RecipeSituation rs)
     {
-
-        RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining,ec);
         GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
         TimerPanel newTP = newTPobj.GetComponent<TimerPanel>();
 
-        CurrentRecipeSituations.Add(rs);
-
-        rs.Subscribe(newTP);
+  rs.Subscribe(newTP);
     }
+    //public void AddSituation(Recipe forRecipe,float? timeRemaining,IElementsContainer ec)
+    //{
 
-    public void DoHeartbeat(Character c)
-    {
+        
+    //    GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
+    //    TimerPanel newTP = newTPobj.GetComponent<TimerPanel>();
 
-        List<RecipeSituation> situationsToRun=new List<RecipeSituation>();
-        situationsToRun.AddRange(CurrentRecipeSituations);
+    //    RecipeSituation newRS = World.AddSituation(forRecipe, timeRemaining, ec);
+    //    newRS.Subscribe(newTP);
+    //}
 
-        foreach (var rs in situationsToRun)
-        {
-            rs.DoHeartbeat(ContentRepository.Instance.RecipeCompendium);
-            if (rs.TimerState == RecipeTimerState.Extinct)
-                CurrentRecipeSituations.Remove(rs);
-        }
-
-    }
-
-    public IEnumerable<RecipeSituation> GetCurrentRecipeSituations()
-    {
-        return CurrentRecipeSituations;
-    }
+    //public void DoHeartbeat()
+    //{
+    //    World.DoHeartbeat();
+    //}
 
 
-    public void ClearWorld()
-    {
-      foreach(RecipeSituation rs in CurrentRecipeSituations)
-       rs.Extinguish();
 
-      CurrentRecipeSituations.Clear();
-    }
 
-    public void FastForward(int seconds,Character c)
-    {
-        for(int i=1;i<=seconds;i++)
-            DoHeartbeat(c);
-    }
+    //public void ClearWorld()
+    //{
+    //    World.Clear();
+    //}
+
+    //public void FastForward(int seconds,Character c)
+    //{
+    //    for(int i=1;i<=seconds;i++)
+    //        DoHeartbeat();
+    //}
 }

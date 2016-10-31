@@ -137,13 +137,13 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
     {
-        return pnlWorld.GetCurrentRecipeSituations();
+        return heartbeat.World.GetCurrentRecipeSituations();
     }
 
 
     public void FastForward(int seconds)
     {
-        pnlWorld.FastForward(seconds,heartbeat.Character);
+        heartbeat.World.FastForward(seconds,heartbeat.Character);
     }
 
     public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile,int workspaceQuantityAdjustment)
@@ -184,7 +184,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     }
     private void ClearRecipeTimers()
     {
-        pnlWorld.ClearWorld();
+        heartbeat.World.Clear();
     }
 
     public void ReturnElementTokenToStorage(DraggableElementToken tokenToReturn)
@@ -245,7 +245,8 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     public void QueueRecipe(Recipe r)
     {
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
-        pnlWorld.AddSituation(r, null,heartbeat.Character);
+        RecipeSituation rs=heartbeat.World.AddSituation(r, null,heartbeat.Character);
+        pnlWorld.RegisterSituation(rs);
         MarkRecipeAsKnown(r);
         pnlWorkspace.ConsumeElements();
         pnlVerbs.BlockVerb(r.ActionId);
@@ -296,11 +297,6 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         pnlLog.Write(message);
     }
 
-
-    public void DoHeartbeat(Character c)
-    {
-    pnlWorld.DoHeartbeat(c);
-    }
 
 
     public void VerbAddedToSlot(Transform verbSlotTransform)
@@ -449,7 +445,8 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
-                pnlWorld.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), heartbeat.Character);
+                RecipeSituation rs=  heartbeat.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), heartbeat.Character);
+                pnlWorld.RegisterSituation(rs);
             }
 
             foreach (string k in htRecipesKnown.Keys)
