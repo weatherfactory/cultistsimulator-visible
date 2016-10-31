@@ -15,7 +15,7 @@ public class VerbNeeded : BoardMonoBehaviour {
     public void SetVerb(string verbId)
     {
         ClearVerb();
-        Verb verb = ContentRepository.Instance.GetVerbById(verbId);
+        Verb verb = Heart.ContentRepository.GetVerbById(verbId);
         BM.AddVerbTokenToParent(verb, gameObject.transform);
     }
 }

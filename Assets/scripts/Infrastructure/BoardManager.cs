@@ -51,7 +51,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         try
         {
             DraggableElementToken elementTokenScript = elementTokenGameObject.GetComponent<DraggableElementToken>();
-            elementTokenScript.PopulateForElementId(elementId, quantity, ContentRepository.Instance);
+            elementTokenScript.PopulateForElementId(elementId, quantity, _heart.ContentRepository);
             
         }
         catch (NullReferenceException)
@@ -90,7 +90,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     {
         GameObject verbToken=Instantiate(prefabVerbToken,parentTransform) as GameObject;
         Image image = verbToken.GetComponent<Image>();
-        Sprite sprite = ContentRepository.Instance.GetSpriteForVerb(v.Id);
+        Sprite sprite = _heart.ContentRepository.GetSpriteForVerb(v.Id);
         DraggableVerbToken token = verbToken.GetComponent<DraggableVerbToken>();
         image.sprite = sprite;
         return verbToken;
@@ -428,7 +428,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             //check if it's all valid first
             foreach (string k in htElementsPossessed.Keys)
             {
-                if (!ContentRepository.Instance.IsKnownElement(k))
+                if (!_heart.ContentRepository.IsKnownElement(k))
                 {
                     Log("Unknown element id: " + k, Style.Subtle);
                     throw new ApplicationException("Unknown element id " + k + " in save file");
@@ -449,14 +449,14 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
             foreach (string k in htRecipeTimers.Keys)
             {
-                Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
+                Recipe r =  _heart.ContentRepository.RecipeCompendium.GetRecipeById(k);
                 RecipeSituation rs=  _heart.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), _heart.Character);
                 pnlWorld.RegisterSituation(rs);
             }
 
             foreach (string k in htRecipesKnown.Keys)
             {
-                Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
+                Recipe r = _heart.ContentRepository.RecipeCompendium.GetRecipeById(k);
                 knownRecipes.Add(k,r);
             }
 

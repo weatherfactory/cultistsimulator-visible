@@ -3,14 +3,12 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Permissions;
-using JetBrains.Annotations;
 using Noon;
 using OrbCreationExtensions;
 using UnityEditor;
 using UnityEngine.Assertions;
 
-public class ContentRepository : Singleton<ContentRepository>
+public class ContentRepository
 {
 
     private const string CONST_CONTENTDIR = "content/";

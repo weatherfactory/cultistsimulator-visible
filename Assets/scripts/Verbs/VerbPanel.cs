@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 
-public class VerbPanel : MonoBehaviour {
+public class VerbPanel : BoardMonoBehaviour {
 
     [SerializeField]
     GameObject prefabVerbFrame;
@@ -38,7 +38,7 @@ public class VerbPanel : MonoBehaviour {
         verbFrame.name = "Frame - " + v.Id;
         verbFrame.GetComponent<VerbFrame>().ForVerbId = v.Id;
         Image image = verbFrame.GetComponentsInChildren<Image>().Single(i => i.name == "VerbToken");
-        Sprite sprite = ContentRepository.Instance.GetSpriteForVerb(v.Id);
+        Sprite sprite = Heart.ContentRepository.GetSpriteForVerb(v.Id);
         image.sprite = sprite;
         DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
         token.Verb = v;

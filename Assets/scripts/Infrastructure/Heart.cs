@@ -6,6 +6,7 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 {
     [SerializeField] private EndingPanel pnlEnding;
     [SerializeField] private BoardManager BM;
+    public ContentRepository ContentRepository;
 
     private const string DO="Do"; //so we don't get a tiny daft typo with the Invoke
     public Character Character;
@@ -36,13 +37,15 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 
   
     void Start () {
-        ContentRepository.Instance.ImportVerbs();
-        ContentRepository.Instance.ImportElements();
-        ContentRepository.Instance.ImportRecipes();
+        ContentRepository=new ContentRepository();
+        ContentRepository.ImportVerbs();
+        ContentRepository.ImportElements();
+        ContentRepository.ImportRecipes();
+
 
            BM = GameObject.Find("Board").GetComponent<BoardManager>();
 
-        foreach (Verb v in ContentRepository.Instance.GetAllVerbs())
+        foreach (Verb v in ContentRepository.GetAllVerbs())
         {
             BM.AddVerbToBoard(v);
         }
@@ -89,12 +92,12 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
         pnlEnding.gameObject.SetActive(false);
         BM.gameObject.SetActive(true);
 
-        World = new World(ContentRepository.Instance.RecipeCompendium);
+        World = new World(ContentRepository.RecipeCompendium);
 
         BM.ClearBoard();
        
 
-        BM.QueueRecipe(ContentRepository.Instance.RecipeCompendium.GetRecipeById("starvation"));
+        BM.QueueRecipe(ContentRepository.RecipeCompendium.GetRecipeById("starvation"));
 
         BeginHeartbeat();
     }
