@@ -23,7 +23,6 @@ public class TimerPanel : BoardMonoBehaviour
         if (RecipeSituation!=null)
             throw new ApplicationException("already running a recipe (" + RecipeSituation.Recipe.Id + ")");
         RecipeSituation = new RecipeSituation(r, timeRemaining);
-           
         UpdateTimerText();
 
     }
@@ -31,7 +30,7 @@ public class TimerPanel : BoardMonoBehaviour
     public RecipeTimerState DoHeartbeat(Character c)
     {
         
-        RecipeTimerState state=RecipeSituation.DoHeartbeat(BM, c, ContentRepository.Instance.RecipeCompendium);
+        RecipeTimerState state=RecipeSituation.DoHeartbeat(c, ContentRepository.Instance.RecipeCompendium);
         if (state==RecipeTimerState.Complete)     
             BM.ExileToLimboThenDestroy(gameObject);
         else
@@ -43,6 +42,17 @@ public class TimerPanel : BoardMonoBehaviour
         return state;
     }
 
+    public void SituationComplete(Recipe recipe)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ReceiveUpdate(string text, int seconds)
+    {
+        float fillAmount = RecipeSituation.TimeRemaining / RecipeSituation.Recipe.Warmup;
+        imgTimer.fillAmount = fillAmount;
+        UpdateTimerText();
+    }
 }
 
 

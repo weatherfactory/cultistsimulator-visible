@@ -13,7 +13,6 @@ namespace CS.Tests
     [TestFixture]
    public  class RecipeExecutionTests
     {
-        private INotifier notifier;
         private IElementsContainer elementsContainer;
         private Recipe primaryRecipe;
         private Recipe secondaryRecipe;
@@ -28,7 +27,7 @@ namespace CS.Tests
         [SetUp]
         public void Setup()
         {
-            notifier = Substitute.For<INotifier>();
+
             elementsContainer = Substitute.For<IElementsContainer>();
             primaryRecipe = new Recipe {Id="primaryrecipe",
                 Description = "A primary sort of description."};
@@ -67,8 +66,7 @@ namespace CS.Tests
         [Test]
         public void RecipeDoubleDispatches()
         {
-            primaryRecipe.Do(notifier, elementsContainer);
-            notifier.Received(1).Log(primaryRecipe.Description, Style.Subtle);
+            primaryRecipe.Do(elementsContainer);
             elementsContainer.Received(1).ModifyElementQuantity(primaryRecipe.Effects.Single().Key, primaryRecipe.Effects.Single().Value);
         }
 

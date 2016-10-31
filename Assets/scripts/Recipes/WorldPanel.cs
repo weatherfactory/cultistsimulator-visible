@@ -17,6 +17,13 @@ public class WorldPanel : BoardMonoBehaviour
         newTimerPanel.StartTimer(forRecipe, timeRemaining);
         newTimerPanel.RecipeSituation.AddSubscriber(s);
         CurrentTimerPanels.Add(newTimerPanel);
+
+
+        //RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining);
+        //GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
+        //TimerPanel newTP = newTimerPanelGameObject.GetComponent<TimerPanel>();
+
+        //rs.AddSubscriber();
     }
 
     public void DoHeartbeat(Character c)
@@ -31,7 +38,6 @@ public class WorldPanel : BoardMonoBehaviour
                 CurrentTimerPanels.Remove(t);
             }
         }
-
         
     }
 

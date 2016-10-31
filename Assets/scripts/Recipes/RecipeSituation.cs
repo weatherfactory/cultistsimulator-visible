@@ -48,28 +48,29 @@ public class RecipeSituation:IElementsContainer
             TimeRemaining = timeremaining.Value;
     }
 
-    public RecipeTimerState DoHeartbeat(INotifier notifier, IElementsContainer elementsContainer,
+    public RecipeTimerState DoHeartbeat(IElementsContainer elementsContainer,
         RecipeCompendium compendium)
     {
         _timeRemaining--;
         if (_timeRemaining <= 0)
         {
-            return Complete(notifier, elementsContainer, compendium);
+            return Complete(elementsContainer, compendium);
 
         }
          return RecipeTimerState.Ongoing;
     }
 
-    private RecipeTimerState Complete(INotifier notifier, IElementsContainer elementsContainer,
+    private RecipeTimerState Complete(IElementsContainer elementsContainer,
         RecipeCompendium compendium)
     {
         List<Recipe> recipesToExecute =
             compendium.GetActualRecipesToExecute(Recipe, elementsContainer);
         foreach (Recipe r in recipesToExecute)
-            r.Do(notifier, elementsContainer);
-
-        foreach(var s in _subscribers)
-            s.SituationComplete(Recipe);
+        {
+            r.Do(elementsContainer);
+        }
+        foreach (var s in _subscribers)
+            s.ReceiveSituationUpdate(Recipe,TimerState, TimeRemaining);
    
         if (Recipe.Loop != null)
         {

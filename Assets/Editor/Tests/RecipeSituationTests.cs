@@ -16,7 +16,6 @@ namespace  CS.Tests
     private Recipe r1;
     private Recipe r2;
     private RecipeCompendium rc;
-    private INotifier notifier;
     private IElementsContainer container;
 
      [SetUp]
@@ -27,7 +26,6 @@ namespace  CS.Tests
             rc = new RecipeCompendium(new List<Recipe>() {r1,r2},null);
 
 
-            notifier = Substitute.For<INotifier>();
             container = Substitute.For<IElementsContainer>();
         }
 
@@ -39,7 +37,7 @@ namespace  CS.Tests
             RecipeSituation rs = new RecipeSituation(r1, 0);
 
 
-            rs.DoHeartbeat(notifier, container,rc);
+            rs.DoHeartbeat( container,rc);
 
             Assert.IsNull(rs.Recipe);
             Assert.AreEqual(RecipeTimerState.Complete,rs.TimerState);
@@ -55,7 +53,7 @@ namespace  CS.Tests
 
             RecipeSituation rs = new RecipeSituation(r1, 0);
 
-            rs.DoHeartbeat(notifier, container, rc);
+            rs.DoHeartbeat(container, rc);
 
             Assert.AreEqual(r2.Id, rs.Recipe.Id);
             Assert.AreEqual(RecipeTimerState.Ongoing, rs.TimerState);

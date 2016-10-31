@@ -6,6 +6,6 @@ using System.Text;
 
     public interface IRecipeSituationSubscriber
     {
-       void SituationComplete(Recipe recipe);
+       void ReceiveSituationUpdate(Recipe recipe,RecipeTimerState state,float timeRemaining);
     }
 

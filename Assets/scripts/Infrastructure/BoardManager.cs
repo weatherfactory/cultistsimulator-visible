@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 #pragma warning disable 649
 
-public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRecipeSituationSubscriber
+public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituationSubscriber
 {
     [SerializeField] private InputField inputAdjustElementNamed;
     [SerializeField] private LogPanel pnlLog;
@@ -156,7 +156,6 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
             addElementToBoard(elementId, currentQuantityInStockpile, null);
         }
 
-        Log(elementId + " in stockpile: " + currentQuantityInStockpile,Style.Subtle);
         //assertion: workspaceQuantityAdjustment is not positive
         Assert.IsFalse(workspaceQuantityAdjustment > 0);
         if(workspaceQuantityAdjustment<0)
@@ -482,8 +481,13 @@ public class BoardManager : MonoBehaviour,INotifier,IElementQuantityDisplay,IRec
         pnlVerbs.UnblockVerb(recipeActionId);
     }
 
-    public void SituationComplete(Recipe recipe)
+
+    public void ReceiveSituationUpdate(Recipe recipe, RecipeTimerState state, float timeRemaining)
     {
-        UnblockVerb(recipe.ActionId);
+        if(state == RecipeTimerState.Complete)
+        {
+            Log(recipe.Description,Style.Assertive);
+            UnblockVerb(recipe.ActionId);
+        }
     }
 }

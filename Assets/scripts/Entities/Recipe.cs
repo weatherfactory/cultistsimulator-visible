@@ -30,10 +30,8 @@ using System.Text;
         PersistedIngredients=new Dictionary<string, int>();
         }
 
-        public void Do(INotifier notifier, IElementsContainer container)
+        public void Do(IElementsContainer container)
         {
-            notifier.Log(this.Description,Style.Subtle);
-        
         foreach(var e in Effects)
             container.ModifyElementQuantity(e.Key,e.Value);
         if(Ending!=null)

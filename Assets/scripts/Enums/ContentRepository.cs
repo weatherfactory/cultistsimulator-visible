@@ -159,6 +159,7 @@ public class ContentRepository : Singleton<ContentRepository>
             }
 
             Hashtable htPersistIngredients = htEachRecipe.GetHashtable(Constants.KPERSISTINGREDIENTS);
+            if(htPersistIngredients!=null)
             foreach (string k in htPersistIngredients.Keys)
             {
                 r.PersistedIngredients.Add(k, Convert.ToInt32(htPersistIngredients[k]));
