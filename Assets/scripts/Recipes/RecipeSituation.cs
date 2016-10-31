@@ -30,6 +30,8 @@ public class RecipeSituation:IElementsContainer
     {
         get
         {
+            if(Recipe==null)
+                return RecipeTimerState.Extinct;
             if (TimeRemaining > 0)
                 return RecipeTimerState.Ongoing;
             else
@@ -48,19 +50,19 @@ public class RecipeSituation:IElementsContainer
             TimeRemaining = timeremaining.Value;
     }
 
-    public RecipeTimerState DoHeartbeat(IElementsContainer elementsContainer,
+    public void DoHeartbeat(IElementsContainer elementsContainer,
         RecipeCompendium compendium)
     {
         _timeRemaining--;
         if (_timeRemaining <= 0)
         {
-            return Complete(elementsContainer, compendium);
-
+            Complete(elementsContainer, compendium);
         }
-         return RecipeTimerState.Ongoing;
+        publishUpdate();
     }
 
-    private RecipeTimerState Complete(IElementsContainer elementsContainer,
+
+    private void Complete(IElementsContainer elementsContainer,
         RecipeCompendium compendium)
     {
         List<Recipe> recipesToExecute =
@@ -69,25 +71,38 @@ public class RecipeSituation:IElementsContainer
         {
             r.Do(elementsContainer);
         }
-        foreach (var s in _subscribers)
-            s.ReceiveSituationUpdate(Recipe,TimerState, TimeRemaining);
-   
+
         if (Recipe.Loop != null)
         {
-            Recipe = compendium.GetRecipeById(Recipe.Loop);
-            TimeRemaining = Recipe.Warmup;
-            return RecipeTimerState.Ongoing;
+            resetWithRecipe(compendium);
         }
         else
-        {
-            Recipe = null;
-            return RecipeTimerState.Complete;
-        }
+            Extinguish();
+
     }
 
-    public void AddSubscriber(IRecipeSituationSubscriber subscriber)
+    private void resetWithRecipe(RecipeCompendium compendium)
+    {
+        Recipe = compendium.GetRecipeById(Recipe.Loop);
+        TimeRemaining = Recipe.Warmup;
+        publishUpdate();
+    }
+
+    public void Extinguish()
+    {
+        Recipe = null;
+        publishUpdate();
+    }
+
+    private void publishUpdate()
+    {
+        foreach (var s in _subscribers)
+            s.ReceiveSituationUpdate(Recipe, TimerState, TimeRemaining);
+    }
+    public void Subscribe(IRecipeSituationSubscriber subscriber)
     {
         _subscribers.Add(subscriber);
+        subscriber.ReceiveSituationUpdate(Recipe,TimerState,TimeRemaining);
     }
 
     public void ModifyElementQuantity(string elementId, int quantityChange)

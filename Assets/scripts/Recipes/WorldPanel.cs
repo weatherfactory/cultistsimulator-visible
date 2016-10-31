@@ -7,63 +7,47 @@ using UnityEngine.Assertions;
 public class WorldPanel : BoardMonoBehaviour
 {
     [SerializeField] private GameObject prefabTimerPanel;
-    private List<TimerPanel> CurrentTimerPanels = new List<TimerPanel>();
     private List<RecipeSituation> CurrentRecipeSituations=new List<RecipeSituation>();
 
-    public void AddTimer(Recipe forRecipe,float? timeRemaining,IRecipeSituationSubscriber s)
+    public void AddSituation(Recipe forRecipe,float? timeRemaining,IRecipeSituationSubscriber s)
     {
-        GameObject newTimerPanelGameObject = Instantiate(prefabTimerPanel, transform) as GameObject;
-        TimerPanel newTimerPanel = newTimerPanelGameObject.GetComponent<TimerPanel>();
-        newTimerPanel.StartTimer(forRecipe, timeRemaining);
-        newTimerPanel.RecipeSituation.AddSubscriber(s);
-        CurrentTimerPanels.Add(newTimerPanel);
 
+        RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining);
+        GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
+        TimerPanel newTP = newTPobj.GetComponent<TimerPanel>();
 
-        //RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining);
-        //GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
-        //TimerPanel newTP = newTimerPanelGameObject.GetComponent<TimerPanel>();
+        CurrentRecipeSituations.Add(rs);
 
-        //rs.AddSubscriber();
+        rs.Subscribe(newTP);
     }
 
     public void DoHeartbeat(Character c)
     {
-        List<TimerPanel> timerPanelsToRun = new List<TimerPanel>();
-        timerPanelsToRun.AddRange(CurrentTimerPanels);
-        foreach (var t in timerPanelsToRun)
+
+        List<RecipeSituation> situationsToRun=new List<RecipeSituation>();
+        situationsToRun.AddRange(CurrentRecipeSituations);
+
+        foreach (var rs in situationsToRun)
         {
-            RecipeTimerState timerState=t.DoHeartbeat(c);
-            if (timerState == RecipeTimerState.Complete)
-            { 
-                CurrentTimerPanels.Remove(t);
-            }
+            rs.DoHeartbeat(c, ContentRepository.Instance.RecipeCompendium);
+            if (rs.TimerState == RecipeTimerState.Extinct)
+                CurrentRecipeSituations.Remove(rs);
         }
-        
+
     }
 
-    public List<RecipeSituation> GetCurrentRecipeTimers()
+    public IEnumerable<RecipeSituation> GetCurrentRecipeSituations()
     {
-        List<RecipeSituation> l =new List<RecipeSituation>();
-        foreach(TimerPanel tp in CurrentTimerPanels)
-        {
-            Assert.IsNotNull(tp,"somehow got a null timerpanel");
-            Assert.IsNotNull(tp.RecipeSituation, "somehow got a null recipetimer");
-            l.Add(tp.RecipeSituation);
-        }
-
-        return l;
+        return CurrentRecipeSituations;
     }
 
-    public void ClearRecipeTimers()
+
+    public void ClearWorld()
     {
-        List<TimerPanel> timerPanelsToRemove = new List<TimerPanel>();
-        timerPanelsToRemove.AddRange(CurrentTimerPanels);
-        foreach (TimerPanel tp in timerPanelsToRemove)
-        {
-            CurrentTimerPanels.Clear();
-            BM.ExileToLimboThenDestroy(tp.gameObject);
-        }
-        
+      foreach(RecipeSituation rs in CurrentRecipeSituations)
+       rs.Extinguish();
+
+      CurrentRecipeSituations.Clear();
     }
 
     public void FastForward(int seconds,Character c)

@@ -137,7 +137,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
     {
-        return pnlWorld.GetCurrentRecipeTimers();
+        return pnlWorld.GetCurrentRecipeSituations();
     }
 
 
@@ -184,7 +184,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     }
     private void ClearRecipeTimers()
     {
-        pnlWorld.ClearRecipeTimers();
+        pnlWorld.ClearWorld();
     }
 
     public void ReturnElementTokenToStorage(DraggableElementToken tokenToReturn)
@@ -244,21 +244,17 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void QueueRecipe(Recipe r)
     {
-
         Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
-        pnlWorld.AddTimer(r, null,this);
+        pnlWorld.AddSituation(r, null,this);
         MarkRecipeAsKnown(r);
         pnlWorkspace.ConsumeElements();
         pnlVerbs.BlockVerb(r.ActionId);
-        
-
     }
    
 
     public void Notify(string aside, string message, INotifyLocator notifyingGameObject)
     {
             GameObject objNotificationPanel = Instantiate(prefabNotificationPanel, transform) as GameObject;
-            
             objNotificationPanel.transform.position = notifyingGameObject.GetNotificationPosition(); 
             NotificationPanel np = objNotificationPanel.GetComponent<NotificationPanel>();
              np.SetAside(aside);
@@ -289,7 +285,6 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     public List<Recipe> GetKnownRecipes(string withText)
     {
        List<Recipe>matchingRecipes=new List<Recipe>();
-
 
         matchingRecipes.AddRange(knownRecipes.Values.Where(v=>v.Label.ToLower().Contains(withText) || withText==""));
 
@@ -454,7 +449,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
-                pnlWorld.AddTimer(r, float.Parse(htRecipeTimers[k].ToString()), this);
+                pnlWorld.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), this);
             }
 
             foreach (string k in htRecipesKnown.Keys)
