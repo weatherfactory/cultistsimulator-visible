@@ -7,18 +7,24 @@ using JetBrains.Annotations;
 
 public class World
     {
-    public List<RecipeSituation> CurrentRecipeSituations;
+    private List<RecipeSituation> currentRecipeSituations;
+        private RecipeCompendium recipeCompendium;
 
-        public World()
+        public World(RecipeCompendium rc)
         {
-        CurrentRecipeSituations = new List<RecipeSituation>();
-    }
+        currentRecipeSituations = new List<RecipeSituation>();
+            recipeCompendium = rc;
+        }
 
       public RecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
-        {
-        RecipeSituation rs = new RecipeSituation(forRecipe, timeRemaining, ec);
-        CurrentRecipeSituations.Add(rs);
-            return rs;
+      {
+        RecipeSituation newRecipeSituation = new RecipeSituation(forRecipe, timeRemaining, ec);
+
+        if (currentRecipeSituations.Exists(rs => rs.OriginalRecipeId == forRecipe.Id))
+              return null;
+
+       currentRecipeSituations.Add(newRecipeSituation);
+            return newRecipeSituation;
         }
 
 
@@ -26,31 +32,31 @@ public class World
         {
         
         List<RecipeSituation> situationsToRun = new List<RecipeSituation>();
-        situationsToRun.AddRange(CurrentRecipeSituations);
+        situationsToRun.AddRange(currentRecipeSituations);
 
         foreach (var rs in situationsToRun)
         {
-            rs.DoHeartbeat(ContentRepository.Instance.RecipeCompendium);
+            rs.DoHeartbeat(recipeCompendium);
             if (rs.TimerState == RecipeTimerState.Extinct)
-                CurrentRecipeSituations.Remove(rs);
+                currentRecipeSituations.Remove(rs);
         }
 
     }
 
         public void Clear()
         {
-        foreach (RecipeSituation rs in CurrentRecipeSituations)
+        foreach (RecipeSituation rs in currentRecipeSituations)
             rs.Extinguish();
 
-        CurrentRecipeSituations.Clear();
+        currentRecipeSituations.Clear();
         }
 
     public IEnumerable<RecipeSituation> GetCurrentRecipeSituations()
     {
-        return CurrentRecipeSituations;
+        return currentRecipeSituations;
     }
 
-    public void FastForward(int seconds, Character c)
+    public void FastForward(int seconds)
     {
         for (int i = 1; i <= seconds; i++)
             DoHeartbeat();

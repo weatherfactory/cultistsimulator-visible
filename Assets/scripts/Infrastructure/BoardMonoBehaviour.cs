@@ -8,8 +8,8 @@ using UnityEngine;
     public class BoardMonoBehaviour: MonoBehaviour
     {
         private static BoardManager board;
-    /// <summary>
-    /// Shortcut to get the BoardManager that contains references to a buncha typed UI objects.</summary>
+        private static Heart heart;
+
     public BoardManager BM
         {get
         {
@@ -20,4 +20,15 @@ using UnityEngine;
             return BoardMonoBehaviour.board;
         }
     }
+    public Heart Heart
+    {
+        get
+        {
+            if (BoardMonoBehaviour.heart != null)
+                return BoardMonoBehaviour.heart;
+
+            BoardMonoBehaviour.heart = GameObject.Find("Heart").GetComponent<Heart>();
+            return BoardMonoBehaviour.heart;
+        }
     }
+}

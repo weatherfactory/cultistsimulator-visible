@@ -8,7 +8,6 @@ using Mono.Security.Cryptography;
 public class AspectsDisplay : BoardMonoBehaviour
 {
 
-    [SerializeField] private GameObject objLimbo;
     [SerializeField]private GameObject prefabAspectFrame;
 
     private AspectFrame GetAspectFrameForId(string aspectId)

@@ -5,14 +5,14 @@ using TMPro;
 public class EndingPanel : MonoBehaviour
 {
 
-    [SerializeField] Heartbeat heartbeat;
+    [SerializeField] Heart _heart;
 [SerializeField]public TextMeshProUGUI TitleText;
     [SerializeField] public TextMeshProUGUI DetailText;
 
 
     public void NewGame()
     {
-        heartbeat.NewGame();
+        _heart.NewGame();
     }
 
     public void QuitApplication()
@@ -20,6 +20,6 @@ public class EndingPanel : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        heartbeat.QuitApplication();
+        _heart.QuitApplication();
     }
 }

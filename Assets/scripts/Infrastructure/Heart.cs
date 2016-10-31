@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
-public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
+public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 {
     [SerializeField] private EndingPanel pnlEnding;
+    [SerializeField] private BoardManager BM;
 
     private const string DO="Do"; //so we don't get a tiny daft typo with the Invoke
     public Character Character;
@@ -37,6 +39,8 @@ public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
         ContentRepository.Instance.ImportVerbs();
         ContentRepository.Instance.ImportElements();
         ContentRepository.Instance.ImportRecipes();
+
+           BM = GameObject.Find("Board").GetComponent<BoardManager>();
 
         foreach (Verb v in ContentRepository.Instance.GetAllVerbs())
         {
@@ -85,7 +89,7 @@ public class Heartbeat : BoardMonoBehaviour,ICharacterInfoSubscriber
         pnlEnding.gameObject.SetActive(false);
         BM.gameObject.SetActive(true);
 
-        World = new World();
+        World = new World(ContentRepository.Instance.RecipeCompendium);
 
         BM.ClearBoard();
        

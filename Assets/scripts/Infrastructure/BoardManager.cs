@@ -28,7 +28,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField]private GameObject prefabNotificationPanel;
     [SerializeField] public CharacterNamePanel characterNamePanel;
-    [SerializeField] private Heartbeat heartbeat;
+    [SerializeField] private Heart _heart;
 
     public DraggableToken CurrentDragItem;
     private Dictionary<string,Recipe> knownRecipes= new Dictionary<string, Recipe>();
@@ -137,13 +137,13 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
     {
-        return heartbeat.World.GetCurrentRecipeSituations();
+        return _heart.World.GetCurrentRecipeSituations();
     }
 
 
     public void FastForward(int seconds)
     {
-        heartbeat.World.FastForward(seconds,heartbeat.Character);
+        _heart.World.FastForward(seconds);
     }
 
     public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile,int workspaceQuantityAdjustment)
@@ -184,7 +184,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     }
     private void ClearRecipeTimers()
     {
-        heartbeat.World.Clear();
+        _heart.World.Clear();
     }
 
     public void ReturnElementTokenToStorage(DraggableElementToken tokenToReturn)
@@ -193,7 +193,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         string elementId = tokenToReturn.Element.Id;
         int elementQuantity = tokenToReturn.Quantity;
         ExileToLimboThenDestroy(tokenToReturn.gameObject); //to prevent possible double-counting
-        heartbeat.Character.ElementIntoStockpile(elementId,elementQuantity);
+        _heart.Character.ElementIntoStockpile(elementId,elementQuantity);
         
 
         UpdateAspectDisplay();
@@ -214,16 +214,16 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void ModifyElementQuantity(string e, int q)
     {
-        heartbeat.Character.ModifyElementQuantity(e,q);
+        _heart.Character.ModifyElementQuantity(e,q);
     }
 
     public void ElementOutOfStockpile(string e, int q)
     {
-        heartbeat.Character.ElementOutOfStockpile(e, q);
+        _heart.Character.ElementOutOfStockpile(e, q);
     }
     public void ElementIntoStockpile(string e, int q)
     {
-        heartbeat.Character.ElementIntoStockpile(e, q);
+        _heart.Character.ElementIntoStockpile(e, q);
     }
 
     public void UpdateAspectDisplay()
@@ -244,12 +244,17 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void QueueRecipe(Recipe r)
     {
-        Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
-        RecipeSituation rs=heartbeat.World.AddSituation(r, null,heartbeat.Character);
-        pnlWorld.RegisterSituation(rs);
-        MarkRecipeAsKnown(r);
-        pnlWorkspace.ConsumeElements();
-        pnlVerbs.BlockVerb(r.ActionId);
+        
+        RecipeSituation rs=_heart.World.AddSituation(r, null,_heart.Character);
+
+        if(rs!=null)
+        { 
+            Log(pnlRecipeDisplay.CurrentRecipe.StartDescription, Style.Subtle);
+            pnlWorld.RegisterSituation(rs);
+            MarkRecipeAsKnown(r);
+            pnlWorkspace.ConsumeElements();
+            pnlVerbs.BlockVerb(r.ActionId);
+        }
     }
    
 
@@ -325,7 +330,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         }
         ClearRecipeTimers();
         ClearKnownRecipes();
-        heartbeat.Character = heartbeat.CreateBlankCharacter();
+        _heart.Character = _heart.CreateBlankCharacter();
     }
 
     private void ClearKnownRecipes()
@@ -343,7 +348,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             string exportJson;
 
             Hashtable htElementsPossessed = new Hashtable();
-            foreach (KeyValuePair<string,int> e in heartbeat.Character.GetAllCurrentElements())
+            foreach (KeyValuePair<string,int> e in _heart.Character.GetAllCurrentElements())
             {
                 htElementsPossessed.Add(e.Key,e.Value);
             }
@@ -363,10 +368,10 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
             Hashtable htCharacter = new Hashtable()
             {
-                {Noon.Constants.KCHARACTERTITLE, heartbeat.Character.Title},
-                {Noon.Constants.KCHARACTERFIRSTNAME, heartbeat.Character.FirstName},
-                {Noon.Constants.KCHARACTERLASTNAME, heartbeat.Character.LastName},
-                {Noon.Constants.KCHARACTERSTATE,heartbeat.Character.State.ToString() }
+                {Noon.Constants.KCHARACTERTITLE, _heart.Character.Title},
+                {Noon.Constants.KCHARACTERFIRSTNAME, _heart.Character.FirstName},
+                {Noon.Constants.KCHARACTERLASTNAME, _heart.Character.LastName},
+                {Noon.Constants.KCHARACTERSTATE,_heart.Character.State.ToString() }
             };
 
             Hashtable htAdvice = new Hashtable()
@@ -432,20 +437,20 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
             ClearBoard();
 
-            heartbeat.Character.Title = htCharacter[Noon.Constants.KCHARACTERTITLE].ToString();
-            heartbeat.Character.FirstName = htCharacter[Noon.Constants.KCHARACTERFIRSTNAME].ToString();
-            heartbeat.Character.LastName = htCharacter[Noon.Constants.KCHARACTERLASTNAME].ToString();
-            heartbeat.Character.State = (CharacterState)Enum.Parse(typeof(CharacterState), htCharacter[Noon.Constants.KCHARACTERSTATE].ToString());
+            _heart.Character.Title = htCharacter[Noon.Constants.KCHARACTERTITLE].ToString();
+            _heart.Character.FirstName = htCharacter[Noon.Constants.KCHARACTERFIRSTNAME].ToString();
+            _heart.Character.LastName = htCharacter[Noon.Constants.KCHARACTERLASTNAME].ToString();
+            _heart.Character.State = (CharacterState)Enum.Parse(typeof(CharacterState), htCharacter[Noon.Constants.KCHARACTERSTATE].ToString());
 
             foreach (string k in htElementsPossessed.Keys)
             {
-                heartbeat.Character.ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
+                _heart.Character.ModifyElementQuantity(k, Convert.ToInt32(htElementsPossessed[k]));
             }
 
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r = ContentRepository.Instance.RecipeCompendium.GetRecipeById(k);
-                RecipeSituation rs=  heartbeat.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), heartbeat.Character);
+                RecipeSituation rs=  _heart.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), _heart.Character);
                 pnlWorld.RegisterSituation(rs);
             }
 
