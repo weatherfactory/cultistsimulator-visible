@@ -8,8 +8,7 @@ using JetBrains.Annotations;
 public class Character: BaseElementsContainer, IElementsContainer
     {
 
-    private readonly Dictionary<string, int> _elementsInStockpile;
-
+    private readonly Dictionary<string, int> _elementsInWorkspace;
     private string _title;
     private string _firstName;
     private string _lastName;
@@ -53,13 +52,12 @@ public class Character: BaseElementsContainer, IElementsContainer
 
 
 
-        public Character()
+        public Character():base()
         {
-            _elements=new Dictionary<string, int>();
-        _elementsInStockpile=new Dictionary<string, int>();
-        _elementsDisplaySubscribers=new List<IElementQuantityDisplay>();
-        _detailsSubscribers=new List<ICharacterInfoSubscriber>();
+            
+        _elementsInWorkspace=new Dictionary<string, int>();
             State = CharacterState.Viable;
+        
 
         }
 
@@ -108,10 +106,8 @@ public class Character: BaseElementsContainer, IElementsContainer
                 }
                 else
                 {
-
                     _elements[elementId] = _elements[elementId] + quantity;
                     PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), 0);
-
                 }
             }
         }
@@ -120,10 +116,10 @@ public class Character: BaseElementsContainer, IElementsContainer
    {
        if (GetCurrentElementQuantity(elementId) < plusQuantity)
            return false;
-        if(!_elementsInStockpile.ContainsKey(elementId))
-            _elementsInStockpile.Add(elementId,plusQuantity);
+        if(!_elementsInWorkspace.ContainsKey(elementId))
+            _elementsInWorkspace.Add(elementId,plusQuantity);
         else
-           _elementsInStockpile[elementId] += plusQuantity;
+           _elementsInWorkspace[elementId] += plusQuantity;
 
         PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId),0);
         return true;
@@ -134,29 +130,39 @@ public class Character: BaseElementsContainer, IElementsContainer
         if (GetCurrentElementQuantityInWorkspace(elementId) < minusQuantity)
             return false;
 
-        if (!_elementsInStockpile.ContainsKey(elementId))
-            _elementsInStockpile.Add(elementId, -minusQuantity);
+        if (!_elementsInWorkspace.ContainsKey(elementId))
+            _elementsInWorkspace.Add(elementId, -minusQuantity);
         else
-            _elementsInStockpile[elementId] -= minusQuantity;
+            _elementsInWorkspace[elementId] -= minusQuantity;
 
         PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId),0);
         return true;
     }
 
-    public int GetCurrentElementQuantityInWorkspace(string elementId)
+    public virtual int GetCurrentElementQuantityInWorkspace(string elementId)
     {
-        return _elementsInStockpile.ContainsKey(elementId) ? _elementsInStockpile[elementId] : 0;
+        return _elementsInWorkspace.ContainsKey(elementId) ? _elementsInWorkspace[elementId] : 0;
     }
 
-        public int GetCurrentElementQuantityInStockpile(string elementId)
-        {
+    public int GetCurrentElementQuantityInStockpile(string elementId)
+    {
             var instockpile = _elements.ContainsKey(elementId) ? _elements[elementId] : 0;
 
-            if (_elementsInStockpile.ContainsKey(elementId))
-                instockpile -= _elementsInStockpile[elementId];
+            if (_elementsInWorkspace.ContainsKey(elementId))
+                instockpile -= _elementsInWorkspace[elementId];
 
             return instockpile;
+    }
+
+        public override Dictionary<string, int> GetOutputElements()
+        {
+           Dictionary<string,int> outputElements=new Dictionary<string, int>();
+            foreach (string k in _elementsInWorkspace.Keys)
+               outputElements.Add(k, _elementsInWorkspace[k]);
+            
+            return outputElements;
         }
+
 
         public override void TriggerSpecialEvent(string endingId)
         {

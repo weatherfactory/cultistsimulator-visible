@@ -13,7 +13,16 @@ using System.Text;
         public abstract void ModifyElementQuantity(string elementId, int quantityChange);
         public abstract void TriggerSpecialEvent(string endingId);
 
-    public virtual int GetCurrentElementQuantity(string elementId)
+
+        protected BaseElementsContainer()
+        {
+        _elements = new Dictionary<string, int>();
+        _elementsDisplaySubscribers = new List<IElementQuantityDisplay>();
+        _detailsSubscribers = new List<ICharacterInfoSubscriber>();
+
+    }
+
+        public virtual int GetCurrentElementQuantity(string elementId)
         {
             if (!_elements.ContainsKey(elementId))
                 return 0;
@@ -24,6 +33,14 @@ using System.Text;
         {
         return _elements;
         }
+
+    /// <summary>
+    /// </summary>
+    /// <returns>Elements which have been made available for use by another actor</returns>
+    public virtual Dictionary<string, int> GetOutputElements()
+    {
+        return _elements;
+    }
 
 
     /// <summary>

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Assets.scripts.Entities;
 
 public class RecipeSituation
 {
     private float _timeRemaining;
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
     public Recipe Recipe { get; set; }
-    private IElementsContainer affectsElementsContainer;
+    public readonly IElementsContainer ElementsContainerAffected;
+
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
     public string OriginalRecipeId { get; set; }
-
 
     public float TimeRemaining
     {
@@ -44,12 +45,20 @@ public class RecipeSituation
         Recipe = recipe;
         OriginalRecipeId = recipe.Id;
 
-        affectsElementsContainer = ec;
 
         if (timeremaining == null)
             TimeRemaining = recipe.Warmup;
         else
             TimeRemaining = timeremaining.Value;
+
+        if (recipe.PersistedIngredients!=null)
+        { 
+            ElementsContainerAffected= new SituationElementContainer();
+        }
+        else
+            ElementsContainerAffected = ec;
+
+
     }
 
     public void DoHeartbeat(RecipeCompendium compendium)
@@ -66,10 +75,10 @@ public class RecipeSituation
     private void Complete(RecipeCompendium compendium)
     {
         List<Recipe> recipesToExecute =
-            compendium.GetActualRecipesToExecute(Recipe, affectsElementsContainer);
+            compendium.GetActualRecipesToExecute(Recipe, ElementsContainerAffected);
         foreach (Recipe r in recipesToExecute)
         {
-            r.Do(affectsElementsContainer);
+            r.Do(ElementsContainerAffected);
         }
 
         if (Recipe.Loop != null)

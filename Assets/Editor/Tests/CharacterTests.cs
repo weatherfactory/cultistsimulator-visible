@@ -8,6 +8,8 @@ using NUnit.Framework;
 public class CharacterTests
 {
     private const string EL1 = "el1";
+    private const string EL2 = "el2";
+    private const string EL3 = "el3";
 
     [Test]
     public void AddingElement_AffectsBasicCount()
@@ -114,6 +116,23 @@ public class CharacterTests
         Assert.AreEqual(0, c.GetCurrentElementQuantityInStockpile(EL1));
         Assert.AreEqual(2, c.GetCurrentElementQuantityInWorkspace(EL1));
         Assert.AreEqual(2, c.GetCurrentElementQuantity(EL1));
+    }
+
+    [Test]
+    public void GetOutputElements_ReturnsElementsPossessedButNotInStockpile()
+    {
+        Character c = new Character();
+        c.ModifyElementQuantity(EL1, 5);
+        c.ModifyElementQuantity(EL2, 5);
+        c.ModifyElementQuantity(EL3, 5);
+
+        c.ElementOutOfStockpile(EL1, 5); //all in workspace
+        c.ElementOutOfStockpile(EL2, 2); //2 into workspace
+                                         //EL3 not moved into workspace
+
+        Assert.AreEqual(5, c.GetOutputElements()[EL1]);
+        Assert.AreEqual(2,c.GetOutputElements()[EL2]);
+        Assert.IsFalse(c.GetOutputElements().ContainsKey(EL3));
     }
 }
 

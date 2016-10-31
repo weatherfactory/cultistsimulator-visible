@@ -15,6 +15,7 @@ namespace Assets.Editor.Tests
         private Recipe r1;
         private Character c;
         private Element ePossessed;
+        private const int EPOSSESSED_QUANTITY_IN_WORKSPACE = 3;
         private Element eAffected;
         private IDice dice;
         private const string ASPECT_1 = "A1";
@@ -38,7 +39,7 @@ namespace Assets.Editor.Tests
             rc = new RecipeCompendium(new List<Recipe>(){r1},dice );
             w = new World(rc);
             c = Substitute.For<Character>();
-
+            c.GetCurrentElementQuantityInWorkspace(ePossessed.Id).Returns(EPOSSESSED_QUANTITY_IN_WORKSPACE);
         }
 
         [Test]
@@ -52,11 +53,12 @@ namespace Assets.Editor.Tests
 
         }
         [Test]
-        public void RecipeWithPersistentIngredients_WillAddIngredientsToRecipeSituation()
+        public void RecipeWithPersistentIngredients_WillAddIngredientsToRecipeSituationElements()
         {
-            w.AddSituation(r1, r1.Warmup, c);
-            
-            throw new NotImplementedException();
+            RecipeSituation rs=w.AddSituation(r1, r1.Warmup, c);
+            Assert.AreEqual(EPOSSESSED_QUANTITY_IN_WORKSPACE,
+                rs.ElementsContainerAffected.GetCurrentElementQuantity(ePossessed.Id));
+
         }
     }
 }
