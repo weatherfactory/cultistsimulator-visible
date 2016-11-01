@@ -10,4 +10,9 @@ using System.Text;
         Dictionary<string, int> GetAllCurrentElements();
         void TriggerSpecialEvent(string endingId);
         void PublishElementQuantityUpdate(string elementId, int quantityInstockpile, int workspaceAdjustment);
+
+        /// <summary>
+        /// </summary>
+        /// <returns>Elements which have been made available for use by another actor</returns>
+        Dictionary<string, int> GetOutputElements();
     }

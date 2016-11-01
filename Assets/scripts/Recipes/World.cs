@@ -18,7 +18,7 @@ public class World
 
       public RecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
       {
-        RecipeSituation newRecipeSituation = new RecipeSituation(forRecipe, timeRemaining, ec);
+        RecipeSituation newRecipeSituation = new RecipeSituation(forRecipe, timeRemaining, ec,recipeCompendium);
 
         if (currentRecipeSituations.Exists(rs => rs.OriginalRecipeId == forRecipe.Id))
               return null;
@@ -36,7 +36,7 @@ public class World
 
         foreach (var rs in situationsToRun)
         {
-            rs.DoHeartbeat(recipeCompendium);
+            rs.DoHeartbeat();
             if (rs.TimerState == RecipeTimerState.Extinct)
                 currentRecipeSituations.Remove(rs);
         }

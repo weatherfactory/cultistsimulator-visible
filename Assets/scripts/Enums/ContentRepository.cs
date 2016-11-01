@@ -181,7 +181,7 @@ public class ContentRepository
            
         }
 
-        return new RecipeCompendium(recipesList,new Dice());
+        return new RecipeCompendium(recipesList,new Dice(),elements);
     }
 
     public Boolean IsKnownElement(string elementId)
@@ -206,5 +206,12 @@ public class ContentRepository
     public Sprite GetSpriteForElement(string elementId)
     {
         return Resources.Load<Sprite>("FlatIcons/png/32px/" + elementId);
+    }
+
+    public void Import()
+    {
+        ImportVerbs();
+        ImportElements();
+        ImportRecipes();
     }
 }

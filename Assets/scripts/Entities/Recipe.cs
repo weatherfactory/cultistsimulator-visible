@@ -10,7 +10,9 @@ using System.Text;
         public string ActionId { get; set; }
         public Dictionary<string, int> Requirements { get; set; }
         public Dictionary<string,int> Effects { get; set; }
-    public Dictionary<string,int> PersistedIngredients { get; set; }
+    ///specifies aspects which may import ingredients into the recipe situation. If any aspects are specified, then any ingredients matching
+    /// *any* of these aspects (it's a greedy filter) will go into the recipesituation. (NB 'ingredients' means 'consumed')
+        public Dictionary<string,int> PersistedIngredients { get; set; }
         public Boolean Craftable { get; set; }
         public string Label { get; set; }
         public int Warmup { get; set; }
@@ -38,6 +40,10 @@ using System.Text;
             container.TriggerSpecialEvent(Ending);
         }
 
+        public bool PersistsIngredients()
+        {
+            return PersistedIngredients.Count > 0;
+        }
     }
 
 public class RecipeAlternative

@@ -23,9 +23,7 @@ namespace  CS.Tests
         {
          r1 = new Recipe() {Id="r1",Warmup =1}; //NSubstitute doesn't like returning null from mock properties?
         r2 = new Recipe() { Id = "r2", Warmup = 2 }; //NSubstitute doesn't like returning null from mock properties?
-            rc = new RecipeCompendium(new List<Recipe>() {r1,r2},null);
-
-
+            rc = new RecipeCompendium(new List<Recipe>() {r1,r2},null,null);
             container = Substitute.For<IElementsContainer>();
         }
 
@@ -34,10 +32,10 @@ namespace  CS.Tests
         {
 
             r1.Loop = null;
-            RecipeSituation rs = new RecipeSituation(r1, 0, container);
+            RecipeSituation rs = new RecipeSituation(r1, 0, container, rc);
 
 
-            rs.DoHeartbeat(rc);
+            rs.DoHeartbeat();
 
             Assert.IsNull(rs.Recipe);
             Assert.AreEqual(RecipeTimerState.Extinct,rs.TimerState);
@@ -51,9 +49,9 @@ namespace  CS.Tests
 
             r1.Loop = r2.Id;
 
-            RecipeSituation rs = new RecipeSituation(r1, 0, container);
+            RecipeSituation rs = new RecipeSituation(r1, 0, container, rc);
 
-            rs.DoHeartbeat(rc);
+            rs.DoHeartbeat();
 
             Assert.AreEqual(r2.Id, rs.Recipe.Id);
             Assert.AreEqual(RecipeTimerState.Ongoing, rs.TimerState);

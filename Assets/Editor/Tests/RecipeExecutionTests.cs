@@ -59,7 +59,7 @@ namespace CS.Tests
             List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe,tertiaryRecipe,quaternaryRecipe};
             mockDice = Substitute.For<IDice>();
 
-            recipeCompendium=new RecipeCompendium(allRecipes,mockDice);
+            recipeCompendium=new RecipeCompendium(allRecipes,mockDice,null);
 
         }
 

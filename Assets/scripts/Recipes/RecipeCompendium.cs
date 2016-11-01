@@ -12,11 +12,13 @@ public class RecipeCompendium
 {
     private List<Recipe> _recipes;
     private IDice _dice;
+    private Dictionary<string, Element> _elements;
 
-    public RecipeCompendium(List<Recipe> allRecipes,IDice dice)
+    public RecipeCompendium(List<Recipe> allRecipes,IDice dice,Dictionary<string,Element> elements)
     {
         _recipes = allRecipes;
         _dice = dice;
+        _elements = elements;
     }
 
     public Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb)
@@ -48,6 +50,15 @@ public class RecipeCompendium
     {
         return _recipes.SingleOrDefault(r => r.Id == recipeId);   
     }
+
+    public Element GetElementById(string elementId)
+    {
+        if (!_elements.ContainsKey(elementId))
+            return null;
+        return _elements[elementId];
+
+    }
+
 
     /// <summary>
     ///Determines whether the original recipe, an alternative, or something else should actually be run.

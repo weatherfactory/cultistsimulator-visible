@@ -14,38 +14,53 @@ namespace Assets.Editor.Tests
         private RecipeCompendium rc;
         private Recipe r1;
         private Character c;
-        private Element ePossessed;
-        private const int EPOSSESSED_QUANTITY_IN_WORKSPACE = 3;
-        private Element eAffected;
+        private Element e1;
+        private Element e2;
+        private const int E1_QUANTITY_IN_WORKSPACE = 3;
+        private const int E2_QUANTITY_IN_WORKSPACE = 3;
+        private Element e3;
         private IDice dice;
-        private const string ASPECT_1 = "A1";
+        private const string PermittedAspect = "A1";
 
         [SetUp]
         public void S()
         {
-            ePossessed=new Element("E1","E1Label","E1Description");
-            eAffected = new Element("E2", "E2Label", "E2Description");
+            e1=new Element("E1","E1Label","E1Description");
+            e1.Aspects.Add(PermittedAspect, 1);
+            e2 = new Element("E2", "E2Label", "E2Description");
+            e3 = new Element("E3", "E3Label", "E3Description");
+
+            Dictionary<string, Element> elements = new Dictionary<string, Element>()
+            {
+                {e1.Id, e1},
+                {e2.Id, e2},
+                {e3.Id, e3}
+            };
 
             r1 = new Recipe()
             {
                 Id = "BasicRecipe",
                 Warmup = 1,
                 Loop="BasicRecipe",
-                Effects = new Dictionary<string, int>() { { eAffected.Id, 1 } },
-                PersistedIngredients = new Dictionary<string, int>() { { ASPECT_1,1} }
+                Effects = new Dictionary<string, int>() { { e3.Id, 1 } },
+                PersistedIngredients = new Dictionary<string, int>() { { PermittedAspect,1} }
 
         };
 
-            rc = new RecipeCompendium(new List<Recipe>(){r1},dice );
+            rc = new RecipeCompendium(new List<Recipe>(){r1},dice,elements);
             w = new World(rc);
             c = Substitute.For<Character>();
-            c.GetCurrentElementQuantityInWorkspace(ePossessed.Id).Returns(EPOSSESSED_QUANTITY_IN_WORKSPACE);
+
         }
 
         [Test]
         public void RecipeWillNotQueue_IfMatchingRecipeSituationExists()
         {
-
+            c.GetOutputElements().Returns(new Dictionary<string, int>()
+            {
+                { e1.Id,E1_QUANTITY_IN_WORKSPACE},
+                {e2.Id,E2_QUANTITY_IN_WORKSPACE }
+            });
             w.AddSituation(r1, r1.Warmup, c);
             w.FastForward(2);
             RecipeSituation rs=w.AddSituation(r1,r1.Warmup,c);
@@ -53,12 +68,56 @@ namespace Assets.Editor.Tests
 
         }
         [Test]
-        public void RecipeWithPersistentIngredients_WillAddIngredientsToRecipeSituationElements()
+        public void RecipeWithPersistentIngredients_WillAddIngredientsToRecipeSituationContents()
         {
-            RecipeSituation rs=w.AddSituation(r1, r1.Warmup, c);
-            Assert.AreEqual(EPOSSESSED_QUANTITY_IN_WORKSPACE,
-                rs.ElementsContainerAffected.GetCurrentElementQuantity(ePossessed.Id));
+            c.GetOutputElements().Returns(new Dictionary<string, int>()
+            {
+                { e1.Id,E1_QUANTITY_IN_WORKSPACE},
+                {e2.Id,E2_QUANTITY_IN_WORKSPACE }
+            });
 
+            RecipeSituation rs=w.AddSituation(r1, r1.Warmup, c);
+            Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
+                rs.ElementsContainerAffected.GetCurrentElementQuantity(e1.Id));
+
+        }
+
+        [Test]
+        public void RecipeWithPersistentIngredients_WillOnlyAddFilterMatchingIngredientsToRecipeSituationContents()
+        {
+            c.GetOutputElements().Returns(new Dictionary<string, int>()
+            {
+                { e1.Id,E1_QUANTITY_IN_WORKSPACE},
+                {e2.Id,E2_QUANTITY_IN_WORKSPACE }
+            });
+
+            RecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
+            Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
+                rs.ElementsContainerAffected.GetCurrentElementQuantity(e1.Id));
+            Assert.AreEqual(0,
+                rs.ElementsContainerAffected.GetCurrentElementQuantity(e2.Id));
+        }
+
+        [Test]
+        public void RecipeWithPersistentIngredients_WillOnlyMatchConsumableIngredientsToRecipeSituationContents()
+        {
+            //give the second element the permitted aspect, but also add a slot specification that means it won't be consumed
+            e2.Aspects.Add(PermittedAspect, 1);
+            e2.ChildSlotSpecifications.Add(new ChildSlotSpecification("1"));
+            
+
+            c.GetOutputElements().Returns(new Dictionary<string, int>()
+            {
+                { e1.Id,E1_QUANTITY_IN_WORKSPACE},
+                {e2.Id,E2_QUANTITY_IN_WORKSPACE }
+            });
+
+
+            RecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
+            Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
+                rs.ElementsContainerAffected.GetCurrentElementQuantity(e1.Id));
+            Assert.AreEqual(0,
+                rs.ElementsContainerAffected.GetCurrentElementQuantity(e2.Id));
         }
     }
 }

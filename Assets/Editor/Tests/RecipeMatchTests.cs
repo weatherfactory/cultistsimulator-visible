@@ -48,7 +48,7 @@ namespace CS.Tests
                 MatchesCoolthAndWarmth,
                 MatchesCoolthEqual,
                 MatchesCoolthLess };
-            rc=new RecipeCompendium(Recipes,new Dice());
+            rc=new RecipeCompendium(Recipes,new Dice(),null);
 
         }
 

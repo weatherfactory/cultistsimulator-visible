@@ -38,9 +38,8 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
   
     void Start () {
         ContentRepository=new ContentRepository();
-        ContentRepository.ImportVerbs();
-        ContentRepository.ImportElements();
-        ContentRepository.ImportRecipes();
+        ContentRepository.Import();
+
 
 
            BM = GameObject.Find("Board").GetComponent<BoardManager>();
