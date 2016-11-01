@@ -6,7 +6,6 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 {
     [SerializeField] private EndingPanel pnlEnding;
     [SerializeField] private BoardManager BM;
-    public ContentImporter ContentImporter;
     public Compendium Compendium;
     public ResourcesManager ResourcesManager;
 
@@ -40,9 +39,9 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
   
     void Start () {
         ResourcesManager=new ResourcesManager();
-        ContentImporter=new ContentImporter();
+     
         Compendium=new Compendium(new Dice());
-        ContentImporter.PopulateCompendium(Compendium);
+        RefreshContent();
         
          BM = GameObject.Find("Board").GetComponent<BoardManager>();
 
@@ -106,5 +105,11 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
     public void QuitApplication()
     {
         Application.Quit();
+    }
+
+    public void RefreshContent()
+    {
+        ContentImporter ContentImporter = new ContentImporter();
+        ContentImporter.PopulateCompendium(Compendium);
     }
 }

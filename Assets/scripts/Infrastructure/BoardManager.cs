@@ -490,6 +490,6 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void RefreshContent()
     {
-       
+        _heart.RefreshContent();
     }
 }

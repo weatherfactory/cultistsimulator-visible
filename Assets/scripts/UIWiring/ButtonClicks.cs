@@ -47,9 +47,5 @@ public class ButtonClicks : BoardMonoBehaviour
         BM.FastForward(30);
     }
 
-    public void RefreshContent()
-    {
-        BM.RefreshContent();
-    }
 
 }
