@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Mono.Security.Cryptography;
+using UnityEngine.UI;
 
 public class AspectsDisplay : BoardMonoBehaviour
 {
@@ -16,25 +17,30 @@ public class AspectsDisplay : BoardMonoBehaviour
             GetComponentsInChildren<AspectFrame>().SingleOrDefault(a => a.Aspect.Id == aspectId);
     }
 
-    private void AddAspectToDisplay(string aspectId, int quantity)
+    private void AddAspectToDisplay(string aspectId, int quantity,int frameDimensions)
     {
         GameObject newAspectDisplay = Instantiate(prefabAspectFrame, transform) as GameObject;
         if (newAspectDisplay != null)
         {
             AspectFrame aspectFrame = newAspectDisplay.GetComponent<AspectFrame>();
             aspectFrame.PopulateDisplay(aspectId, quantity, Heart.Compendium);
+            GridLayoutGroup glg = aspectFrame.GetComponent<GridLayoutGroup>();
+            glg.cellSize=new Vector2(frameDimensions, frameDimensions);
         }
     }
 
     public void ChangeAspectQuantity(string aspectId, int quantity)
     {
+           ChangeAspectQuantity(aspectId,quantity,40);
+    }
+    public void ChangeAspectQuantity(string aspectId, int quantity,int frameDimensions)
+    {
         AspectFrame existingAspect = GetAspectFrameForId(aspectId);
         if (existingAspect)
             existingAspect.ModifyQuantity(quantity);
         else
-            AddAspectToDisplay(aspectId, quantity);
+            AddAspectToDisplay(aspectId, quantity,frameDimensions);
     }
-
 
     public Dictionary<string, int> AllCurrentAspects()
     {

@@ -29,7 +29,7 @@ public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
             {
                 pnlContents.ResetAspects();
                 foreach(string k in info.Elements.Keys)
-                pnlContents.ChangeAspectQuantity(k,info.Elements[k]);
+                pnlContents.ChangeAspectQuantity(k,info.Elements[k],20);
             }
 
         }
