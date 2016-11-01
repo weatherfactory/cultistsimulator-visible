@@ -11,7 +11,7 @@ namespace Assets.Editor.Tests
     public class RecipeQueuingTests
     {
         private World w;
-        private RecipeCompendium rc;
+        private Compendium rc;
         private Recipe r1;
         private Character c;
         private Element e1;
@@ -47,7 +47,9 @@ namespace Assets.Editor.Tests
 
         };
 
-            rc = new RecipeCompendium(new List<Recipe>(){r1},dice,elements);
+            rc = new Compendium(dice);
+            rc.UpdateRecipes(new List<Recipe>() { r1 });
+            rc.UpdateElements(elements);
             w = new World(rc);
             c = Substitute.For<Character>();
 
@@ -78,7 +80,7 @@ namespace Assets.Editor.Tests
 
             RecipeSituation rs=w.AddSituation(r1, r1.Warmup, c);
             Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
-                rs.ElementsContainerAffected.GetCurrentElementQuantity(e1.Id));
+                rs.GetInternalElementQuantity(e1.Id));
 
         }
 
@@ -93,9 +95,9 @@ namespace Assets.Editor.Tests
 
             RecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
             Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
-                rs.ElementsContainerAffected.GetCurrentElementQuantity(e1.Id));
+                rs.GetInternalElementQuantity(e1.Id));
             Assert.AreEqual(0,
-                rs.ElementsContainerAffected.GetCurrentElementQuantity(e2.Id));
+                rs.GetInternalElementQuantity(e2.Id));
         }
 
         [Test]
@@ -115,9 +117,9 @@ namespace Assets.Editor.Tests
 
             RecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
             Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
-                rs.ElementsContainerAffected.GetCurrentElementQuantity(e1.Id));
+                rs.GetInternalElementQuantity(e1.Id));
             Assert.AreEqual(0,
-                rs.ElementsContainerAffected.GetCurrentElementQuantity(e2.Id));
+                rs.GetInternalElementQuantity(e2.Id));
         }
     }
 }

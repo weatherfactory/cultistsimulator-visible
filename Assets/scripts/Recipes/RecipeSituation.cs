@@ -10,9 +10,9 @@ public class RecipeSituation
 {
     private float _timeRemaining;
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
-    private RecipeCompendium _recipeCompendium;
+    private Compendium _compendium;
     public Recipe Recipe { get; set; }
-    public readonly IElementsContainer ElementsContainerAffected;
+    private readonly IElementsContainer ElementsContainerAffected;
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
     public string OriginalRecipeId { get; set; }
@@ -41,11 +41,22 @@ public class RecipeSituation
         }
     }
 
-    public RecipeSituation(Recipe recipe, float? timeremaining,IElementsContainer workspaceContainer,RecipeCompendium rc)
+    /// <summary>
+    /// if the situation contains its own elements, return the quantity for this one
+    /// </summary>
+    public int GetInternalElementQuantity(string forElementId)
+    {
+        if(ElementsContainerAffected.IsInternal())
+            return ElementsContainerAffected.GetCurrentElementQuantity(forElementId);
+
+        return 0;
+    }
+
+    public RecipeSituation(Recipe recipe, float? timeremaining,IElementsContainer workspaceContainer,Compendium rc)
     {
         Recipe = recipe;
         OriginalRecipeId = recipe.Id;
-        _recipeCompendium = rc;
+        _compendium = rc;
 
         if (timeremaining == null)
             TimeRemaining = recipe.Warmup;
@@ -77,7 +88,7 @@ public class RecipeSituation
     private bool shouldPersistInInternalContainer(string elementId, Recipe recipe)
     {
 
-        Element eToCheck = _recipeCompendium.GetElementById(elementId);
+        Element eToCheck = _compendium.GetElementById(elementId);
         Assert.IsNotNull(eToCheck,"invalid element id " + " checked in isPermittedByAspectFilter");
         foreach(string aspectFilterId in recipe.PersistedIngredients.Keys)
         { 
@@ -102,7 +113,7 @@ public class RecipeSituation
     private void Complete()
     {
         List<Recipe> recipesToExecute =
-            _recipeCompendium.GetActualRecipesToExecute(Recipe, ElementsContainerAffected);
+            _compendium.GetActualRecipesToExecute(Recipe, ElementsContainerAffected);
         foreach (Recipe r in recipesToExecute)
         {
             r.Do(ElementsContainerAffected);
@@ -110,14 +121,14 @@ public class RecipeSituation
 
         if (Recipe.Loop != null)
         {
-            resetWithRecipe(_recipeCompendium);
+            resetWithRecipe(_compendium);
         }
         else
             Extinguish();
 
     }
 
-    private void resetWithRecipe(RecipeCompendium compendium)
+    private void resetWithRecipe(Compendium compendium)
     {
         Recipe = compendium.GetRecipeById(Recipe.Loop);
         TimeRemaining = Recipe.Warmup;

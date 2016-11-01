@@ -19,7 +19,7 @@ namespace CS.Tests
         private Recipe tertiaryRecipe;
         private Recipe quaternaryRecipe;
         private RecipeAlternative recipeAlternative;
-        private RecipeCompendium recipeCompendium;
+        private Compendium _compendium;
         private IDice mockDice;
         
 
@@ -59,7 +59,8 @@ namespace CS.Tests
             List<Recipe> allRecipes=new List<Recipe>() {primaryRecipe,secondaryRecipe,tertiaryRecipe,quaternaryRecipe};
             mockDice = Substitute.For<IDice>();
 
-            recipeCompendium=new RecipeCompendium(allRecipes,mockDice,null);
+            _compendium=new Compendium(mockDice);
+            _compendium.UpdateRecipes(allRecipes);
 
         }
 
@@ -78,7 +79,7 @@ namespace CS.Tests
         public void AlternateRecipeExecutes_IfNoRequirements_AndDiceRollSatisfied()
         {
             mockDice.Rolld100().Returns(recipeAlternative.Chance);
-            List<Recipe> recipesToExecute=recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute=_compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(secondaryRecipe.Id,recipesToExecute.Single().Id);
         }
 
@@ -87,7 +88,7 @@ namespace CS.Tests
         public void AlternativeRecipeDoesntExecute_IfNoRequirements_AndDiceRollUnsatisfied()
         {
             mockDice.Rolld100().Returns(recipeAlternative.Chance+1);
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
@@ -102,7 +103,7 @@ namespace CS.Tests
             secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
             elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(SECONDIUM_REQUIRED);
 
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
@@ -116,7 +117,7 @@ namespace CS.Tests
             secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
             elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(SECONDIUM_REQUIRED);
 
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
@@ -130,7 +131,7 @@ namespace CS.Tests
             secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
             elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(1);
 
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
@@ -144,7 +145,7 @@ namespace CS.Tests
             secondaryRecipe.Requirements.Add(SECONDIUM, SECONDIUM_REQUIRED);
             elementsContainer.GetCurrentElementQuantity(SECONDIUM).Returns(SECONDIUM_REQUIRED-1);
 
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute.Single().Id);
 
         }
@@ -156,7 +157,7 @@ namespace CS.Tests
             secondaryRecipe.AlternativeRecipes = new List<RecipeAlternative>() { new RecipeAlternative(tertiaryRecipe.Id, 100, false) };
 
             mockDice.Rolld100().Returns(recipeAlternative.Chance);
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute.Single().Id);
         }
 
@@ -166,7 +167,7 @@ namespace CS.Tests
             primaryRecipe.AlternativeRecipes [0] = new RecipeAlternative(secondaryRecipe.Id, 100, true); //additional to primary
             primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id,100,false)); //substitutes for primary
             mockDice.Rolld100().Returns(1);
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute.Single().Id);
         }
 
@@ -178,7 +179,7 @@ namespace CS.Tests
             primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id, 100, false)); //substitutes for primary
             tertiaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(quaternaryRecipe.Id,100,true)); //the substitute has its own additional
             mockDice.Rolld100().Returns(1);
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute[0].Id);
             Assert.AreEqual(quaternaryRecipe.Id, recipesToExecute[1].Id);
         }
@@ -188,7 +189,7 @@ namespace CS.Tests
         {
             mockDice.Rolld100().Returns(1);
             primaryRecipe.AlternativeRecipes[0]=new RecipeAlternative(secondaryRecipe.Id,100,true);
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute[0].Id);
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute[1].Id);
         }
@@ -199,7 +200,7 @@ namespace CS.Tests
             primaryRecipe.AlternativeRecipes[0] = new RecipeAlternative(secondaryRecipe.Id, 100, true);
             primaryRecipe.AlternativeRecipes.Add(new RecipeAlternative(tertiaryRecipe.Id,100,true));
             mockDice.Rolld100().Returns(1);
-            List<Recipe> recipesToExecute = recipeCompendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
+            List<Recipe> recipesToExecute = _compendium.GetActualRecipesToExecute(primaryRecipe, elementsContainer);
             Assert.AreEqual(primaryRecipe.Id, recipesToExecute[0].Id);
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute[1].Id);
             Assert.AreEqual(tertiaryRecipe.Id, recipesToExecute[2].Id);

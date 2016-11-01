@@ -2,7 +2,7 @@
 
 namespace Assets.scripts.Entities
 {
-    public class SituationElementContainer: BaseElementsContainer, IElementsContainer
+    public class SituationElementContainer: BaseElementsContainer
     {
         public override void ModifyElementQuantity(string elementId, int quantityChange)
         {
@@ -18,6 +18,11 @@ namespace Assets.scripts.Entities
         public override void TriggerSpecialEvent(string endingId)
         {
             throw new NotImplementedException();
+        }
+
+        public override bool IsInternal()
+        {
+            return true;
         }
 
     }

@@ -23,9 +23,9 @@ public class AspectFrame : BoardMonoBehaviour,IPointerClickHandler,INotifyLocato
 
     }
 
-    public void PopulateDisplay(string aspectId, int aspectValue, ContentRepository cr)
+    public void PopulateDisplay(string aspectId, int aspectValue, Compendium cm)
     {
-        Aspect = cr.GetElementById(aspectId);
+        Aspect = cm.GetElementById(aspectId);
         Quantity = aspectValue;
         DisplayAspectImage(aspectId);
         DisplayQuantity(aspectValue);

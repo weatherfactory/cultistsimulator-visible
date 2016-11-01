@@ -10,6 +10,10 @@ using System.Text;
         Dictionary<string, int> GetAllCurrentElements();
         void TriggerSpecialEvent(string endingId);
         void PublishElementQuantityUpdate(string elementId, int quantityInstockpile, int workspaceAdjustment);
+    /// <summary>
+    /// does this container live in something else, like a situation?
+    /// </summary>
+        bool IsInternal();
 
         /// <summary>
         /// </summary>

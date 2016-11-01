@@ -15,7 +15,7 @@ namespace  CS.Tests
 {
     private Recipe r1;
     private Recipe r2;
-    private RecipeCompendium rc;
+    private Compendium rc;
     private IElementsContainer container;
 
      [SetUp]
@@ -23,7 +23,8 @@ namespace  CS.Tests
         {
          r1 = new Recipe() {Id="r1",Warmup =1}; //NSubstitute doesn't like returning null from mock properties?
         r2 = new Recipe() { Id = "r2", Warmup = 2 }; //NSubstitute doesn't like returning null from mock properties?
-            rc = new RecipeCompendium(new List<Recipe>() {r1,r2},null,null);
+            rc = new Compendium(null);
+            rc.UpdateRecipes(new List<Recipe>() { r1, r2 });
             container = Substitute.For<IElementsContainer>();
         }
 

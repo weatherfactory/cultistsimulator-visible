@@ -8,17 +8,17 @@ using JetBrains.Annotations;
 public class World
     {
     private List<RecipeSituation> currentRecipeSituations;
-        private RecipeCompendium recipeCompendium;
+        private Compendium _compendium;
 
-        public World(RecipeCompendium rc)
+        public World(Compendium rc)
         {
         currentRecipeSituations = new List<RecipeSituation>();
-            recipeCompendium = rc;
+            _compendium = rc;
         }
 
       public RecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
       {
-        RecipeSituation newRecipeSituation = new RecipeSituation(forRecipe, timeRemaining, ec,recipeCompendium);
+        RecipeSituation newRecipeSituation = new RecipeSituation(forRecipe, timeRemaining, ec,_compendium);
 
         if (currentRecipeSituations.Exists(rs => rs.OriginalRecipeId == forRecipe.Id))
               return null;

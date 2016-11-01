@@ -5,7 +5,7 @@ using System.Text;
 using JetBrains.Annotations;
 
 
-public class Character: BaseElementsContainer, IElementsContainer
+public class Character: BaseElementsContainer
     {
 
     private readonly Dictionary<string, int> _elementsInWorkspace;

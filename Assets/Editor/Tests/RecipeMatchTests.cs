@@ -29,7 +29,7 @@ namespace CS.Tests
         private Recipe MatchesCoolthEqual;
         private Recipe MatchesCoolthLess;
         private List<Recipe> Recipes;
-        private RecipeCompendium rc;
+        private Compendium rc;
         
 
         [SetUp]
@@ -48,7 +48,8 @@ namespace CS.Tests
                 MatchesCoolthAndWarmth,
                 MatchesCoolthEqual,
                 MatchesCoolthLess };
-            rc=new RecipeCompendium(Recipes,new Dice(),null);
+            rc=new Compendium(new Dice());
+            rc.UpdateRecipes(Recipes);
 
         }
 

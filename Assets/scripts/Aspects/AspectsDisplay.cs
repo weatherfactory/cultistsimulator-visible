@@ -22,7 +22,7 @@ public class AspectsDisplay : BoardMonoBehaviour
         if (newAspectDisplay != null)
         {
             AspectFrame aspectFrame = newAspectDisplay.GetComponent<AspectFrame>();
-            aspectFrame.PopulateDisplay(aspectId, quantity, Heart.ContentRepository);
+            aspectFrame.PopulateDisplay(aspectId, quantity, Heart.Compendium);
         }
     }
 
@@ -85,7 +85,7 @@ public class AspectsDisplay : BoardMonoBehaviour
 
     private void DisplayRecipesForCurrentAspects()
     {
-        var recipe= Heart.ContentRepository.RecipeCompendium.GetFirstRecipeForAspectsWithVerb(AllCurrentAspects(),BM.GetCurrentVerbId());
+        var recipe= Heart.Compendium.GetFirstRecipeForAspectsWithVerb(AllCurrentAspects(),BM.GetCurrentVerbId());
      
        BM.DisplayRecipe(recipe);
         

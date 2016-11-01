@@ -11,7 +11,7 @@ public class ButtonClicks : BoardMonoBehaviour
     public void PlusOneElement()
     {
         string elementId = BM.GetDebugElementName();
-        if (Heart.ContentRepository.GetElementById(elementId) == null)
+        if (Heart.Compendium.GetElementById(elementId) == null)
             BM.Log("Can't find element with id " + elementId, Style.Assertive);
         else
         BM.ModifyElementQuantity(elementId, 1);
@@ -20,7 +20,7 @@ public class ButtonClicks : BoardMonoBehaviour
     public void MinusOneElement()
     {
         string elementId = BM.GetDebugElementName();
-        if(Heart.ContentRepository.GetElementById(elementId)==null)
+        if(Heart.Compendium.GetElementById(elementId)==null)
             BM.Log("Can't find element with id " + elementId,Style.Assertive);
         else
             BM.ModifyElementQuantity(elementId, -1);
@@ -46,4 +46,10 @@ public class ButtonClicks : BoardMonoBehaviour
     {
         BM.FastForward(30);
     }
+
+    public void RefreshContent()
+    {
+        BM.RefreshContent();
+    }
+
 }

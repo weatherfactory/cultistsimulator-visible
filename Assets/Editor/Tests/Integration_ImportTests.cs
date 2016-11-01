@@ -43,7 +43,7 @@ namespace CS.Tests
         [Test]
         public void RecipesImportFromHashtable()
         {
-            ContentRepository cm = new ContentRepository();
+            ContentImporter cm = new ContentImporter();
             ArrayList recipesToImport = new ArrayList();
             Hashtable htRecipe = new Hashtable();
             Hashtable htEffects = new Hashtable();
@@ -93,9 +93,9 @@ namespace CS.Tests
             htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
             
             recipesToImport.Add(htRecipe);
-            RecipeCompendium rc = cm.PopulateRecipeCompendium(recipesToImport);
+            cm.PopulateRecipeList(recipesToImport);
 
-            List<Recipe> recipesImported = rc.GetAllRecipesAsList();
+            List<Recipe> recipesImported = cm.Recipes;
 
             Assert.AreEqual(1, recipesImported.Count);
             ConfirmRecipeTextImported(recipesImported);

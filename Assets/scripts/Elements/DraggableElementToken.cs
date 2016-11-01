@@ -31,7 +31,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
     public void DisplayIcon(Element e)
     {
         Image elementImage = GetComponentsInChildren<Image>().Single(i => i.name == "imgElementIcon");
-        Sprite elementSprite = Heart.ContentRepository.GetSpriteForElement(e.Id);
+        Sprite elementSprite = Heart.ResourcesManager.GetSpriteForElement(e.Id);
         elementImage.sprite = elementSprite;
     }
 
@@ -42,7 +42,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
 
     }
 
-        public void PopulateForElementId(string elementId,int change,ContentRepository cm)
+        public void PopulateForElementId(string elementId,int change,Compendium cm)
         {
         Element = cm.GetElementById(elementId);
         DisplayName(Element);

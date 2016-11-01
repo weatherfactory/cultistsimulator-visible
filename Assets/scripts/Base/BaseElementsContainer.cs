@@ -34,7 +34,12 @@ using System.Text;
         return _elements;
         }
 
-    /// <summary>
+        public virtual bool IsInternal()
+        {
+            return false;
+        }
+
+        /// <summary>
     /// </summary>
     /// <returns>Elements which have been made available for use by another actor</returns>
     public virtual Dictionary<string, int> GetOutputElements()

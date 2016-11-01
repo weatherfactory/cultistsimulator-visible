@@ -8,7 +8,7 @@ using OrbCreationExtensions;
 using UnityEditor;
 using UnityEngine.Assertions;
 
-public class ContentRepository
+public class ContentImporter
 {
 
     private const string CONST_CONTENTDIR = "content/";
@@ -20,9 +20,9 @@ public class ContentRepository
     private const string CONST_DESCRIPTION = "description";
 
 
-    private Dictionary<string,Verb> verbs=new Dictionary<string, Verb>();
-    private Dictionary<string, Element> elements=new Dictionary<string, Element>();
-    public RecipeCompendium RecipeCompendium;
+    public Dictionary<string,Verb> Verbs=new Dictionary<string, Verb>();
+    public Dictionary<string, Element> Elements=new Dictionary<string, Element>();
+    public List<Recipe> Recipes=new List<Recipe>();
 
     public void ImportElements()
     {
@@ -34,8 +34,6 @@ public class ContentRepository
             htElements = SimpleJsonImporter.Import(json);
             PopulateElements(htElements);
         }
-
- 
     }
 
     public void PopulateElements(Hashtable htElements)
@@ -57,7 +55,7 @@ public class ContentRepository
             element.AddAspectsFromHashtable(htAspects);
             element.AddSlotsFromHashtable(htSlots);
 
-            elements.Add(element.Id,element);
+            Elements.Add(element.Id,element);
         }
        
     }
@@ -73,7 +71,7 @@ public class ContentRepository
             recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
             
         }
-        RecipeCompendium = PopulateRecipeCompendium(recipesArrayList);
+        PopulateRecipeList(recipesArrayList);
     }
 
     public void ImportVerbs()
@@ -89,34 +87,14 @@ public class ContentRepository
         foreach (Hashtable h in verbsArrayList)
         {
             Verb v = new Verb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString());
-            verbs.Add(v.Id,v);
+            Verbs.Add(v.Id,v);
         }
 
     }
 
-    public List<Verb> GetAllVerbs()
+
+    public void PopulateRecipeList(ArrayList importedRecipes)
     {
-        List<Verb> verbsList = new List<Verb>();
-
-        foreach (KeyValuePair<string, Verb> keyValuePair in verbs)
-        {
-            verbsList.Add(keyValuePair.Value);
-        }
-
-        return verbsList;
-    }
-
-    public Verb GetVerbById(string verbId)
-    {
-        if(!verbs.ContainsKey(verbId))
-            throw new ApplicationException("Couldn't find verb id " + verbId);
-        
-        return verbs[verbId];
-    }
-
-    public RecipeCompendium PopulateRecipeCompendium(ArrayList importedRecipes)
-    {
-        List<Recipe> recipesList = new List<Recipe>();
         for(int i=0; i< importedRecipes.Count;i++)
         {
             Hashtable htEachRecipe = importedRecipes.GetHashtable(i);
@@ -177,41 +155,21 @@ public class ContentRepository
                 }
             }
 
-            recipesList.Add(r);
-           
+            Recipes.Add(r);
         }
 
-        return new RecipeCompendium(recipesList,new Dice(),elements);
-    }
-
-    public Boolean IsKnownElement(string elementId)
-    {
-        return elements.ContainsKey(elementId);
 
     }
 
-    public Element GetElementById(string elementId)
-    {
-        if (!elements.ContainsKey(elementId))
-            return null;
-        return elements[elementId];
-
-    }
-
-    public Sprite GetSpriteForVerb(string verbId)
-    {
-        return Resources.Load<Sprite>("icons40/verbs/" + verbId);
-    }
-
-    public Sprite GetSpriteForElement(string elementId)
-    {
-        return Resources.Load<Sprite>("FlatIcons/png/32px/" + elementId);
-    }
-
-    public void Import()
+    public void PopulateCompendium(Compendium compendium)
     {
         ImportVerbs();
         ImportElements();
         ImportRecipes();
+
+        compendium.UpdateRecipes(Recipes);
+        compendium.UpdateElements(Elements);
+        compendium.UpdateVerbs(Verbs);
+
     }
 }

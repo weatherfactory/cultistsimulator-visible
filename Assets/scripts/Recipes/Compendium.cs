@@ -8,18 +8,35 @@ using OrbCreationExtensions;
 using UnityEngine.Rendering;
 
 
-public class RecipeCompendium
+public class Compendium
 {
     private List<Recipe> _recipes;
-    private IDice _dice;
+    private readonly IDice _dice;
     private Dictionary<string, Element> _elements;
+    private Dictionary<string, Verb> _verbs;
 
-    public RecipeCompendium(List<Recipe> allRecipes,IDice dice,Dictionary<string,Element> elements)
+
+    public Compendium(IDice dice)
+    {
+        _dice = dice;
+    }
+
+    public void UpdateRecipes(List<Recipe> allRecipes)
     {
         _recipes = allRecipes;
-        _dice = dice;
+
+    }
+
+    public void UpdateElements(Dictionary<string, Element> elements)
+    {
         _elements = elements;
     }
+
+    public void UpdateVerbs(Dictionary<string, Verb> verbs)
+    {
+        _verbs = verbs;
+    }
+
 
     public Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb)
     {
@@ -59,6 +76,32 @@ public class RecipeCompendium
 
     }
 
+    public Boolean IsKnownElement(string elementId)
+    {
+        return _elements.ContainsKey(elementId);
+
+    }
+
+
+    public List<Verb> GetAllVerbs()
+    {
+        List<Verb> verbsList = new List<Verb>();
+
+        foreach (KeyValuePair<string, Verb> keyValuePair in _verbs)
+        {
+            verbsList.Add(keyValuePair.Value);
+        }
+
+        return verbsList;
+    }
+
+    public Verb GetVerbById(string verbId)
+    {
+        if (!_verbs.ContainsKey(verbId))
+            throw new ApplicationException("Couldn't find verb id " + verbId);
+
+        return _verbs[verbId];
+    }
 
     /// <summary>
     ///Determines whether the original recipe, an alternative, or something else should actually be run.
