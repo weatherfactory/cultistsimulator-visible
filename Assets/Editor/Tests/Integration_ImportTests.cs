@@ -114,8 +114,8 @@ namespace CS.Tests
 
         private void ConfirmRecipePersistedIngredients(List<Recipe> recipesImported)
         {
-            Assert.AreEqual(PI_ASPECT_1_VALUE, recipesImported.First().PersistedIngredients[PI_ASPECT_1_ID]);
-                Assert.AreEqual(PI_ASPECT_2_VALUE, recipesImported.First().PersistedIngredients[PI_ASPECT_2_ID]);
+            Assert.AreEqual(PI_ASPECT_1_VALUE, recipesImported.First().PersistsIngredientsWith[PI_ASPECT_1_ID]);
+                Assert.AreEqual(PI_ASPECT_2_VALUE, recipesImported.First().PersistsIngredientsWith[PI_ASPECT_2_ID]);
         }
 
         private static void ConfirmRecipeAlternativesImported(List<Recipe> recipesImported)

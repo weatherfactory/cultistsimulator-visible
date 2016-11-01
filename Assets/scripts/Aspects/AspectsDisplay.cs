@@ -26,7 +26,7 @@ public class AspectsDisplay : BoardMonoBehaviour
         }
     }
 
-    public void ChangeAspectQuantityInFrame(string aspectId, int quantity)
+    public void ChangeAspectQuantity(string aspectId, int quantity)
     {
         AspectFrame existingAspect = GetAspectFrameForId(aspectId);
         if (existingAspect)
@@ -45,8 +45,6 @@ public class AspectsDisplay : BoardMonoBehaviour
         }
         return allAspects;
     }
-
-
 
 
     public void ResetAspects()
@@ -74,7 +72,7 @@ public class AspectsDisplay : BoardMonoBehaviour
 
             foreach (KeyValuePair<string, int> kvp in elementContainer.Element.Aspects)
             {
-                ChangeAspectQuantityInFrame(kvp.Key, kvp.Value);
+                ChangeAspectQuantity(kvp.Key, kvp.Value);
             }
 
         }

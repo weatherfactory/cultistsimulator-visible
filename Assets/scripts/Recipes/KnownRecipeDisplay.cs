@@ -53,7 +53,7 @@ public class KnownRecipeDisplay : BoardMonoBehaviour {
         pnlAspectsNeeded.ResetAspects();
         foreach (KeyValuePair<string,int> reqKeyValuePair in displayedRecipe.Requirements)
         {
-            pnlAspectsNeeded.ChangeAspectQuantityInFrame(reqKeyValuePair.Key,reqKeyValuePair.Value);
+            pnlAspectsNeeded.ChangeAspectQuantity(reqKeyValuePair.Key,reqKeyValuePair.Value);
         }
         
         pnlVerbNeeded.SetVerb(displayedRecipe.ActionId);

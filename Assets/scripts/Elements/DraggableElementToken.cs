@@ -42,12 +42,12 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
 
     }
 
-        public void PopulateForElementId(string elementId,int change,Compendium cm)
+        public void PopulateForElementId(string elementId,int quantity,Compendium cm)
         {
         Element = cm.GetElementById(elementId);
         DisplayName(Element);
         DisplayIcon(Element);
-        _quantity = change;
+        _quantity = quantity;
         displayQuantity(_quantity);
     }
 

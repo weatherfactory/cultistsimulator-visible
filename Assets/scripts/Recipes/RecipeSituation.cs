@@ -12,7 +12,7 @@ public class RecipeSituation
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
     private Compendium _compendium;
     public Recipe Recipe { get; set; }
-    private readonly IElementsContainer ElementsContainerAffected;
+    private readonly IElementsContainer AffectsElements;
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
     public string OriginalRecipeId { get; set; }
@@ -46,8 +46,8 @@ public class RecipeSituation
     /// </summary>
     public int GetInternalElementQuantity(string forElementId)
     {
-        if(ElementsContainerAffected.IsInternal())
-            return ElementsContainerAffected.GetCurrentElementQuantity(forElementId);
+        if(AffectsElements.IsInternal())
+            return AffectsElements.GetCurrentElementQuantity(forElementId);
 
         return 0;
     }
@@ -65,38 +65,15 @@ public class RecipeSituation
 
         if (recipe.PersistsIngredients())
         { 
-            ElementsContainerAffected= new SituationElementContainer();
+            AffectsElements= new SituationElementContainer();
             Dictionary<string, int> potentiallyPersistableIngredients = workspaceContainer.GetOutputElements();
             if(potentiallyPersistableIngredients!=null) //if we have any suitable ingredients
-                AddIngredientsToInternalContainer(recipe, potentiallyPersistableIngredients,ElementsContainerAffected);
+                AddIngredientsToInternalContainer(recipe, potentiallyPersistableIngredients,AffectsElements);
         }
         else
-            ElementsContainerAffected = workspaceContainer;
+            AffectsElements = workspaceContainer;
 
 
-    }
-
-    private void AddIngredientsToInternalContainer(Recipe recipe, Dictionary<string, int> possiblyPersisted,IElementsContainer container)
-    {
-        foreach (var k in possiblyPersisted.Keys)
-        {
-            if (shouldPersistInInternalContainer(k, recipe))
-                container.ModifyElementQuantity(k, possiblyPersisted[k]);
-        }
-    }
-
-    private bool shouldPersistInInternalContainer(string elementId, Recipe recipe)
-    {
-
-        Element eToCheck = _compendium.GetElementById(elementId);
-        Assert.IsNotNull(eToCheck,"invalid element id " + " checked in isPermittedByAspectFilter");
-        foreach(string aspectFilterId in recipe.PersistedIngredients.Keys)
-        { 
-            if (eToCheck.ChildSlotSpecifications.Count==0 && eToCheck.Aspects.ContainsKey(aspectFilterId))
-                return true;
-        }
-        
-        return false;
     }
 
     public void DoHeartbeat()
@@ -110,13 +87,63 @@ public class RecipeSituation
     }
 
 
+    public void Extinguish()
+    {
+        Recipe = null;
+        publishUpdate();
+    }
+
+ 
+    public void Subscribe(IRecipeSituationSubscriber subscriber)
+    {
+        _subscribers.Add(subscriber);
+        subscriber.ReceiveSituationUpdate(Recipe,TimerState,TimeRemaining, GetCurrentSituationInfo());
+    }
+
+    private void publishUpdate()
+    {
+        foreach (var s in _subscribers)
+            s.ReceiveSituationUpdate(Recipe, TimerState, TimeRemaining, GetCurrentSituationInfo());
+    }
+
+    private SituationInfo GetCurrentSituationInfo()
+    {
+        SituationInfo info=new SituationInfo();
+        if (AffectsElements.IsInternal())
+        {
+            Dictionary<string, int> inSituation = AffectsElements.GetAllCurrentElements();
+            foreach (string k in inSituation.Keys)
+                info.Elements.Add(k,inSituation[k]);
+        }
+
+        return info;
+    }
+
+    private void AddIngredientsToInternalContainer(Recipe recipe, Dictionary<string, int> possiblyPersisted, IElementsContainer container)
+    {
+        foreach (var k in possiblyPersisted.Keys)
+        {
+            if (shouldPersistInInternalContainer(k, recipe))
+                container.ModifyElementQuantity(k, possiblyPersisted[k]);
+        }
+    }
+
+
+
+    private void resetWithRecipe(Compendium compendium)
+    {
+        Recipe = compendium.GetRecipeById(Recipe.Loop);
+        TimeRemaining = Recipe.Warmup;
+        publishUpdate();
+    }
+
     private void Complete()
     {
         List<Recipe> recipesToExecute =
-            _compendium.GetActualRecipesToExecute(Recipe, ElementsContainerAffected);
+            _compendium.GetActualRecipesToExecute(Recipe, AffectsElements);
         foreach (Recipe r in recipesToExecute)
         {
-            r.Do(ElementsContainerAffected);
+            r.Do(AffectsElements);
         }
 
         if (Recipe.Loop != null)
@@ -128,29 +155,22 @@ public class RecipeSituation
 
     }
 
-    private void resetWithRecipe(Compendium compendium)
+    private bool shouldPersistInInternalContainer(string elementId, Recipe recipe)
     {
-        Recipe = compendium.GetRecipeById(Recipe.Loop);
-        TimeRemaining = Recipe.Warmup;
-        publishUpdate();
-    }
 
-    public void Extinguish()
-    {
-        Recipe = null;
-        publishUpdate();
-    }
+        Element eToCheck = _compendium.GetElementById(elementId);
+        Assert.IsNotNull(eToCheck, "invalid element id " + " checked in isPermittedByAspectFilter");
 
-    private void publishUpdate()
-    {
-        foreach (var s in _subscribers)
-            s.ReceiveSituationUpdate(Recipe, TimerState, TimeRemaining);
-    }
-    public void Subscribe(IRecipeSituationSubscriber subscriber)
-    {
-        _subscribers.Add(subscriber);
-        subscriber.ReceiveSituationUpdate(Recipe,TimerState,TimeRemaining);
-    }
+        if (eToCheck.ChildSlotSpecifications.Count>0)
+            return false;
 
+        foreach (string aspectFilterId in recipe.PersistsIngredientsWith.Keys)
+        {
+            if (!eToCheck.Aspects.ContainsKey(aspectFilterId))
+                return false;
+        }
+
+        return true;
+    }
 }
     

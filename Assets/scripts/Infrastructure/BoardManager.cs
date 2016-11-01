@@ -471,15 +471,14 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void BlockVerb(string recipeActionId)
     {
-        throw new NotImplementedException();
+        pnlVerbs.BlockVerb(recipeActionId);
     }
     public void UnblockVerb(string recipeActionId)
     {
         pnlVerbs.UnblockVerb(recipeActionId);
     }
 
-
-    public void ReceiveSituationUpdate(Recipe recipe, RecipeTimerState state, float timeRemaining)
+    public void ReceiveSituationUpdate(Recipe recipe, RecipeTimerState state, float timeRemaining,SituationInfo info)
     {
         if(state == RecipeTimerState.Complete)
         {

@@ -43,7 +43,7 @@ namespace Assets.Editor.Tests
                 Warmup = 1,
                 Loop="BasicRecipe",
                 Effects = new Dictionary<string, int>() { { e3.Id, 1 } },
-                PersistedIngredients = new Dictionary<string, int>() { { PermittedAspect,1} }
+                PersistsIngredientsWith = new Dictionary<string, int>() { { PermittedAspect,1} }
 
         };
 
@@ -107,7 +107,6 @@ namespace Assets.Editor.Tests
             e2.Aspects.Add(PermittedAspect, 1);
             e2.ChildSlotSpecifications.Add(new ChildSlotSpecification("1"));
             
-
             c.GetOutputElements().Returns(new Dictionary<string, int>()
             {
                 { e1.Id,E1_QUANTITY_IN_WORKSPACE},

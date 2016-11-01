@@ -138,7 +138,7 @@ public class ContentImporter
             if(htPersistIngredients!=null)
             foreach (string k in htPersistIngredients.Keys)
             {
-                r.PersistedIngredients.Add(k, Convert.ToInt32(htPersistIngredients[k]));
+                r.PersistsIngredientsWith.Add(k, Convert.ToInt32(htPersistIngredients[k]));
             }
 
 
