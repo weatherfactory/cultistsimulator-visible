@@ -87,6 +87,8 @@
     <Compile Include="Assets\scripts\Base\BaseElementsContainer.cs" />
     <Compile Include="Assets\scripts\Entities\SituationElementContainer.cs" />
     <Compile Include="Assets\scripts\Infrastructure\ResourcesManager.cs" />
+    <Compile Include="Assets\scripts\Recipes\InteractiveRecipeSituation.cs" />
+    <Compile Include="Assets\scripts\Recipes\SealedRecipeSituation.cs" />
     <Compile Include="Assets\scripts\Recipes\SituationInfo.cs" />
     <Compile Include="Assets\scripts\Recipes\World.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
@@ -240,7 +242,7 @@
     <Compile Include="Assets\scripts\Recipes\KnownRecipeDisplay.cs" />
     <Compile Include="Assets\scripts\Recipes\Compendium.cs" />
     <Compile Include="Assets\scripts\Recipes\RecipeDisplay.cs" />
-    <Compile Include="Assets\scripts\Recipes\RecipeSituation.cs" />
+    <Compile Include="Assets\scripts\Recipes\BaseRecipeSituation.cs" />
     <Compile Include="Assets\scripts\Recipes\TimerPanel.cs" />
     <Compile Include="Assets\scripts\Recipes\WorldPanel.cs" />
     <Compile Include="Assets\scripts\UIWiring\ButtonClicks.cs" />

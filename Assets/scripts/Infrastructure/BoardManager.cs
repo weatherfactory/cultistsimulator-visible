@@ -135,7 +135,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         return pnlResources.GetComponentsInChildren<DraggableElementToken>();
     }
 
-    private IEnumerable<RecipeSituation> GetAllCurrentRecipeTimers()
+    private IEnumerable<BaseRecipeSituation> GetAllCurrentRecipeTimers()
     {
         return _heart.World.GetCurrentRecipeSituations();
     }
@@ -245,7 +245,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     public void QueueRecipe(Recipe r)
     {
         
-        RecipeSituation rs=_heart.World.AddSituation(r, null,_heart.Character);
+        BaseRecipeSituation rs=_heart.World.AddSituation(r, null,_heart.Character);
 
         if(rs!=null)
         { 
@@ -355,7 +355,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
 
             Hashtable htRecipeTimers = new Hashtable();
-            foreach (RecipeSituation rt in GetAllCurrentRecipeTimers())
+            foreach (BaseRecipeSituation rt in GetAllCurrentRecipeTimers())
             {
                 htRecipeTimers.Add(rt.CurrentRecipeId,rt.TimeRemaining);
             }
@@ -450,7 +450,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r =  _heart.Compendium.GetRecipeById(k);
-                RecipeSituation rs=  _heart.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), _heart.Character);
+                BaseRecipeSituation rs=  _heart.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), _heart.Character);
                 pnlWorld.RegisterSituation(rs);
             }
 

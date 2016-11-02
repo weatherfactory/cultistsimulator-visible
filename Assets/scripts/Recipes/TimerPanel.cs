@@ -12,7 +12,7 @@ public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
     [SerializeField] private AspectsDisplay pnlContents;
     [SerializeField]private GameObject elementToken;
 
-    public RecipeSituation RecipeSituation;
+    public BaseRecipeSituation BaseRecipeSituation;
 
 
     public void ReceiveSituationUpdate(SituationInfo info)

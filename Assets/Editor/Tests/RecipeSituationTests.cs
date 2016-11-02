@@ -35,7 +35,7 @@ namespace  CS.Tests
         {
 
             r1.Loop = null;
-            RecipeSituation rs = new RecipeSituation(r1, 0, container, rc);
+            BaseRecipeSituation rs = new SealedRecipeSituation(r1, 0, container, rc);
 
 
             rs.DoHeartbeat();
@@ -52,7 +52,7 @@ namespace  CS.Tests
 
             r1.Loop = r2.Id;
 
-            RecipeSituation rs = new RecipeSituation(r1, 0, container, rc);
+            BaseRecipeSituation rs = new SealedRecipeSituation(r1, 0, container, rc);
 
             rs.DoHeartbeat();
 
@@ -68,12 +68,10 @@ namespace  CS.Tests
         r1.Loop = r1.Id;
         r2.Loop = r2.Id;
             r1.AlternativeRecipes.Add(new RecipeAlternative(r2.Id,100,false));
-            RecipeSituation rs = new RecipeSituation(r1, 0, container, rc);
+            BaseRecipeSituation rs = new SealedRecipeSituation(r1, 0, container, rc);
             rs.DoHeartbeat();
             Assert.AreEqual(r2.Id,rs.CurrentRecipeId);
         }
-
-
 
 
     }

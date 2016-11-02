@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace Assets.scripts.Entities
-{
+
+
     public class SituationElementContainer: BaseElementsContainer
     {
         public override void ModifyElementQuantity(string elementId, int quantityChange)
@@ -26,5 +26,5 @@ namespace Assets.scripts.Entities
         }
 
     }
-}
+
 

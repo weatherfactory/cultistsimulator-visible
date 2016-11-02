@@ -23,10 +23,7 @@ public class SituationInfo
     ///seconds remaining on the situation timer
     /// </summary>
     public float TimeRemaining;
-    /// <summary>
-    ///any elements which have been taken from an internal container and should be applied elsewhere (eg to the character)
-    /// </summary>
-    public Dictionary<string,int> RetrievedContents=new Dictionary<string, int>();
+
 
     }
 

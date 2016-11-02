@@ -7,23 +7,28 @@ using JetBrains.Annotations;
 
 public class World
     {
-    private List<RecipeSituation> currentRecipeSituations;
+    private List<BaseRecipeSituation> currentRecipeSituations;
         private Compendium _compendium;
 
         public World(Compendium rc)
         {
-        currentRecipeSituations = new List<RecipeSituation>();
+        currentRecipeSituations = new List<BaseRecipeSituation>();
             _compendium = rc;
         }
 
-      public RecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
+      public BaseRecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
       {
-        RecipeSituation newRecipeSituation = new RecipeSituation(forRecipe, timeRemaining, ec,_compendium);
-
+        
         if (currentRecipeSituations.Exists(rs => rs.OriginalRecipeId == forRecipe.Id))
               return null;
 
-       currentRecipeSituations.Add(newRecipeSituation);
+          BaseRecipeSituation newRecipeSituation;
+        if(forRecipe.PersistsIngredients())            
+            newRecipeSituation = new InteractiveRecipeSituation(forRecipe, timeRemaining, ec, _compendium);
+        else
+            newRecipeSituation = new SealedRecipeSituation(forRecipe, timeRemaining, ec, _compendium);
+
+        currentRecipeSituations.Add(newRecipeSituation);
             return newRecipeSituation;
         }
 
@@ -31,7 +36,7 @@ public class World
         public void DoHeartbeat()
         {
         
-        List<RecipeSituation> situationsToRun = new List<RecipeSituation>();
+        List<BaseRecipeSituation> situationsToRun = new List<BaseRecipeSituation>();
         situationsToRun.AddRange(currentRecipeSituations);
 
         foreach (var rs in situationsToRun)
@@ -45,13 +50,13 @@ public class World
 
         public void Clear()
         {
-        foreach (RecipeSituation rs in currentRecipeSituations)
+        foreach (BaseRecipeSituation rs in currentRecipeSituations)
             rs.Extinguish();
 
         currentRecipeSituations.Clear();
         }
 
-    public IEnumerable<RecipeSituation> GetCurrentRecipeSituations()
+    public IEnumerable<BaseRecipeSituation> GetCurrentRecipeSituations()
     {
         return currentRecipeSituations;
     }

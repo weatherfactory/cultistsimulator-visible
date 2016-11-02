@@ -65,7 +65,7 @@ namespace Assets.Editor.Tests
             });
             w.AddSituation(r1, r1.Warmup, c);
             w.FastForward(2);
-            RecipeSituation rs=w.AddSituation(r1,r1.Warmup,c);
+            BaseRecipeSituation rs=w.AddSituation(r1,r1.Warmup,c);
             Assert.IsNull(rs);
 
         }
@@ -78,7 +78,7 @@ namespace Assets.Editor.Tests
                 {e2.Id,E2_QUANTITY_IN_WORKSPACE }
             });
 
-            RecipeSituation rs=w.AddSituation(r1, r1.Warmup, c);
+            BaseRecipeSituation rs=w.AddSituation(r1, r1.Warmup, c);
             Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
                 rs.GetInternalElementQuantity(e1.Id));
 
@@ -93,7 +93,7 @@ namespace Assets.Editor.Tests
                 {e2.Id,E2_QUANTITY_IN_WORKSPACE }
             });
 
-            RecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
+            BaseRecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
             Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
                 rs.GetInternalElementQuantity(e1.Id));
             Assert.AreEqual(0,
@@ -114,7 +114,7 @@ namespace Assets.Editor.Tests
             });
 
 
-            RecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
+            BaseRecipeSituation rs = w.AddSituation(r1, r1.Warmup, c);
             Assert.AreEqual(E1_QUANTITY_IN_WORKSPACE,
                 rs.GetInternalElementQuantity(e1.Id));
             Assert.AreEqual(0,
