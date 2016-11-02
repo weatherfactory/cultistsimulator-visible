@@ -85,7 +85,7 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
 
         foreach (string aspectFilterId in recipe.PersistsIngredientsWith.Keys)
         {
-            if (!eToCheck.Aspects.ContainsKey(aspectFilterId))
+            if (!eToCheck.AspectsIncludingSelf.ContainsKey(aspectFilterId))
                 return false;
         }
 

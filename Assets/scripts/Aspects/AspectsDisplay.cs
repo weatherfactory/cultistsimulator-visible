@@ -76,7 +76,7 @@ public class AspectsDisplay : BoardMonoBehaviour
         foreach (DraggableElementToken elementContainer in elementContainers)
         {
 
-            foreach (KeyValuePair<string, int> kvp in elementContainer.Element.Aspects)
+            foreach (KeyValuePair<string, int> kvp in elementContainer.Element.AspectsIncludingSelf)
             {
                 ChangeAspectQuantity(kvp.Key, kvp.Value);
             }

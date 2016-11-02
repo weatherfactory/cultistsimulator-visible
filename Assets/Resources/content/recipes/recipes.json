@@ -155,14 +155,14 @@
         id: "testresearch",
         label: "This sets up a Research situation. FNORD",
         actionId: "work",
-        requirements: {secrethistories: 1},
+        requirements: {occultscrap: 1},
         effects: {
         },
         startdescription: "This will begin a research project.",
         description: "Research project begun.",
         warmup: 2,
         craftable: true,
-		persistIngredientsWith: {secrethistories: 1},
+		persistIngredientsWith: {occultscrap: 1},
 		loop: "testresearchspine"
     },
 			{
