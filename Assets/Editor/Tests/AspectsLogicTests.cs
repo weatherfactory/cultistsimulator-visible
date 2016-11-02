@@ -12,11 +12,12 @@ namespace Assets.Editor.Tests
     {
         private Compendium c;
         private Dictionary<string, Element> elements;
+
         [SetUp]
         public void SetUp()
         {
-            c=new Compendium(null);
-            elements=TestObjectGenerator.ElementDictionary(1, 2);
+            c = new Compendium(null);
+            elements = TestObjectGenerator.ElementDictionary(1, 2);
             TestObjectGenerator.AddUniqueAspectsToElements(elements);
             c.UpdateElements(elements);
         }
@@ -24,34 +25,54 @@ namespace Assets.Editor.Tests
         [Test]
         public void AspectsMatchFilter_ExcludesNonMatches()
         {
-            string aspectId = elements["1"].Aspects.Keys.Single();
+            string aspectId = elements[TestObjectGenerator.GeneratedElementId(1)].Aspects.Keys.Single();
             Dictionary<string, int> filter = new Dictionary<string, int>()
                 {{aspectId, 1}};
 
-            Dictionary<string,int> elementsToFilter=new Dictionary<string, int>();
-            foreach(string k in elements.Keys)
-            { elementsToFilter.Add(k,10);}
+            Dictionary<string, int> elementsToFilter = new Dictionary<string, int>();
+            foreach (string k in elements.Keys)
+            {
+                elementsToFilter.Add(k, 10);
+            }
 
             Dictionary<string, int> filteredElements = NoonUtility.AspectMatchFilter(filter, elementsToFilter, c);
-            Assert.AreEqual(10,filteredElements["1"]);
-            Assert.IsFalse(filteredElements.ContainsKey("2"));
+            Assert.AreEqual(10, filteredElements[TestObjectGenerator.GeneratedElementId(1)]);
+            Assert.IsFalse(filteredElements.ContainsKey(TestObjectGenerator.GeneratedElementId(2)));
         }
 
         [Test]
         public void AspectsMatchFilter_ExcludesInsufficientAspectValues()
         {
-            string aspectId = elements["1"].Aspects.Keys.Single();
+            string aspectId = elements[TestObjectGenerator.GeneratedElementId(1)].Aspects.Keys.Single();
             Dictionary<string, int> filter = new Dictionary<string, int>()
                 {{aspectId, 2}}; //element 1 only has this aspect at 1
 
             Dictionary<string, int> elementsToFilter = new Dictionary<string, int>();
             foreach (string k in elements.Keys)
-            { elementsToFilter.Add(k, 10); }
+            {
+                elementsToFilter.Add(k, 10);
+            }
 
             Dictionary<string, int> filteredElements = NoonUtility.AspectMatchFilter(filter, elementsToFilter, c);
-            Assert.IsFalse(filteredElements.ContainsKey("1"));
-            Assert.IsFalse(filteredElements.ContainsKey("2"));
+            Assert.IsFalse(filteredElements.ContainsKey(TestObjectGenerator.GeneratedElementId(1)));
+            Assert.IsFalse(filteredElements.ContainsKey(TestObjectGenerator.GeneratedElementId(2)));
         }
 
+        [Test]
+        public void AspectsMatchFilter_UnderstandsElementsSpecifiedAsAspects()
+        {
+            Dictionary<string, int> filter = new Dictionary<string, int>()
+                {{elements[TestObjectGenerator.GeneratedElementId(1)].Id, 1}};
+
+            Dictionary<string, int> elementsToFilter = new Dictionary<string, int>();
+            foreach (string k in elements.Keys)
+            {
+                elementsToFilter.Add(k, 10);
+            }
+
+            Dictionary<string, int> filteredElements = NoonUtility.AspectMatchFilter(filter, elementsToFilter, c);
+            Assert.IsTrue(filteredElements.ContainsKey(TestObjectGenerator.GeneratedElementId(1)));
+            Assert.IsFalse(filteredElements.ContainsKey(TestObjectGenerator.GeneratedElementId(2)));
+        }
     }
 }

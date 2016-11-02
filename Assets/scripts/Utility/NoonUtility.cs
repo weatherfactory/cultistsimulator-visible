@@ -54,7 +54,7 @@ namespace Noon
             {
                 Element element = compendium.GetElementById(eKeyValuePair.Key);
 
-                if(element.Aspects.Any(a=>aspectsFilter.ContainsKey(a.Key) && aspectsFilter[a.Key]<=a.Value))
+                if(element.AspectsIncludingSelf.Any(a=>aspectsFilter.ContainsKey(a.Key) && aspectsFilter[a.Key]<=a.Value))
                   filteredElements.Add(eKeyValuePair.Key, eKeyValuePair.Value);
             }
             return filteredElements;

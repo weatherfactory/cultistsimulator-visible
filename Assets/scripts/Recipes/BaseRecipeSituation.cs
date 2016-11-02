@@ -5,7 +5,7 @@ using System.Linq;
 using Noon;
 using UnityEngine.Assertions;
 
-public abstract class BaseRecipeSituation
+public abstract class BaseRecipeSituation:IRecipeSituation
 {
     protected float _timeRemaining;
     protected List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();

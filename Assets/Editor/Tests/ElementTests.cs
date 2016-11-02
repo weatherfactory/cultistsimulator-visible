@@ -15,7 +15,7 @@ namespace CS.Tests
         [SetUp]
         public void Setup()
         {
-            Element = new Element("", "", "");
+            Element = TestObjectGenerator.CreateElement(1);
         }
 
         [Test]
@@ -47,6 +47,14 @@ namespace CS.Tests
             ChildSlotSpecification css = new ChildSlotSpecification("specificationtotest");
             ElementSlotMatch esm = css.GetElementSlotMatchFor(Element);
             Assert.AreEqual(ElementSlotSuitability.Okay,esm.ElementSlotSuitability);
+        }
+
+        [Test]
+        public void Element_AspectsIncludingSelf_IncludesSelf()
+        {
+            Element.Aspects.Add("actualaspect",1);
+            Assert.AreEqual(1,Element.AspectsIncludingSelf[Element.Id]);
+            Assert.AreEqual(1, Element.AspectsIncludingSelf["actualaspect"]);
         }
 
         [Test]

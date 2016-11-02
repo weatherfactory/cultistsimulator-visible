@@ -13,6 +13,19 @@ public class Element
     public string Description { get; set; }
     public List<ChildSlotSpecification> ChildSlotSpecifications { get; set; }
 
+    public Dictionary<string, int> AspectsIncludingSelf
+    {
+        get
+        {
+            Dictionary<string,int> aspectsIncludingElementItself=new Dictionary<string, int>();
+            foreach(string k in Aspects.Keys)
+                aspectsIncludingElementItself.Add(k,Aspects[k]);
+            if(!aspectsIncludingElementItself.ContainsKey(Id))
+                aspectsIncludingElementItself.Add(Id,1);
+            
+            return aspectsIncludingElementItself;
+        }
+    }
 
     public Element(string id, string label, string description)
     {

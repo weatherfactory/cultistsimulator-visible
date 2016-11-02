@@ -11,6 +11,11 @@ using System.Text;
             return new Element(key.ToString(), "label" + key, "description" + key);
         }
 
+        public static string GeneratedElementId(int index)
+        {
+            return index.ToString();
+        }
+
         public static Dictionary<string,Element> ElementDictionary(int minKey, int MaxKey)
         {
             Dictionary<string,Element> d =new Dictionary<string, Element>();
