@@ -27,7 +27,8 @@ namespace Noon
         public const string KREQUIREMENTS = "requirements";
         public const string KEFFECTS = "effects";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
-        public const string KPERSISTINGREDIENTS = "persistIngredientsWith";
+        public const string KPERSISTINGREDIENTSWITH = "persistIngredientsWith";
+        public static string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
 

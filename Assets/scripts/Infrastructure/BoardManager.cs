@@ -357,7 +357,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             Hashtable htRecipeTimers = new Hashtable();
             foreach (RecipeSituation rt in GetAllCurrentRecipeTimers())
             {
-                htRecipeTimers.Add(rt.Recipe.Id,rt.TimeRemaining);
+                htRecipeTimers.Add(rt.CurrentRecipeId,rt.TimeRemaining);
             }
 
             Hashtable htRecipesKnown=new Hashtable();

@@ -11,7 +11,18 @@ public class RecipeSituation
     private float _timeRemaining;
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
     private Compendium _compendium;
-    public Recipe Recipe { get; set; }
+    private Recipe currentRecipe;
+
+    public string CurrentRecipeId
+    {
+        get
+        {
+            if (currentRecipe == null)
+                return null;
+            return (currentRecipe.Id);
+        }
+    }
+
     private readonly IElementsContainer AffectsElements;
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
@@ -32,7 +43,7 @@ public class RecipeSituation
     {
         get
         {
-            if(Recipe==null)
+            if(currentRecipe==null)
                 return RecipeTimerState.Extinct;
             if (TimeRemaining > 0)
                 return RecipeTimerState.Ongoing;
@@ -54,26 +65,24 @@ public class RecipeSituation
 
     public RecipeSituation(Recipe recipe, float? timeremaining,IElementsContainer workspaceContainer,Compendium rc)
     {
-        Recipe = recipe;
-        OriginalRecipeId = recipe.Id;
+        currentRecipe = recipe;
+        OriginalRecipeId = currentRecipe.Id;
         _compendium = rc;
 
         if (timeremaining == null)
-            TimeRemaining = recipe.Warmup;
+            TimeRemaining = currentRecipe.Warmup;
         else
             TimeRemaining = timeremaining.Value;
 
-        if (recipe.PersistsIngredients())
+        if (currentRecipe.PersistsIngredients())
         { 
             AffectsElements= new SituationElementContainer();
             Dictionary<string, int> potentiallyPersistableIngredients = workspaceContainer.GetOutputElements();
             if(potentiallyPersistableIngredients!=null) //if we have any suitable ingredients
-                AddIngredientsToInternalContainer(recipe, potentiallyPersistableIngredients,AffectsElements);
+                AddIngredientsToInternalContainer(currentRecipe, potentiallyPersistableIngredients,AffectsElements);
         }
         else
             AffectsElements = workspaceContainer;
-
-
     }
 
     public void DoHeartbeat()
@@ -89,7 +98,7 @@ public class RecipeSituation
 
     public void Extinguish()
     {
-        Recipe = null;
+        currentRecipe = null;
         publishUpdate();
     }
 
@@ -97,13 +106,13 @@ public class RecipeSituation
     public void Subscribe(IRecipeSituationSubscriber subscriber)
     {
         _subscribers.Add(subscriber);
-        subscriber.ReceiveSituationUpdate(Recipe,TimerState,TimeRemaining, GetCurrentSituationInfo());
+        subscriber.ReceiveSituationUpdate(currentRecipe,TimerState,TimeRemaining, GetCurrentSituationInfo());
     }
 
     private void publishUpdate()
     {
         foreach (var s in _subscribers)
-            s.ReceiveSituationUpdate(Recipe, TimerState, TimeRemaining, GetCurrentSituationInfo());
+            s.ReceiveSituationUpdate(currentRecipe, TimerState, TimeRemaining, GetCurrentSituationInfo());
     }
 
     private SituationInfo GetCurrentSituationInfo()
@@ -132,21 +141,28 @@ public class RecipeSituation
 
     private void resetWithRecipe(Compendium compendium)
     {
-        Recipe = compendium.GetRecipeById(Recipe.Loop);
-        TimeRemaining = Recipe.Warmup;
+        currentRecipe = compendium.GetRecipeById(currentRecipe.Loop);
+        TimeRemaining = currentRecipe.Warmup;
         publishUpdate();
     }
 
     private void Complete()
     {
+        //find alternative recipe(s) - there may be additional recipes
         List<Recipe> recipesToExecute =
-            _compendium.GetActualRecipesToExecute(Recipe, AffectsElements);
+            _compendium.GetActualRecipesToExecute(currentRecipe, AffectsElements);
         foreach (Recipe r in recipesToExecute)
         {
             r.Do(AffectsElements);
         }
 
-        if (Recipe.Loop != null)
+        //if the first recipe in the list of alternatives is a different recipe, switch it.
+        //This can be important if the alternative recipe has a different loop.
+        if (recipesToExecute[0].Id != currentRecipe.Id)
+            currentRecipe = recipesToExecute[0];
+
+
+        if (currentRecipe.Loop != null)
         {
             resetWithRecipe(_compendium);
         }

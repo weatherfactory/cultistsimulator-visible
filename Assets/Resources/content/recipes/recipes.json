@@ -160,22 +160,35 @@
         },
         startdescription: "This will begin a research project.",
         description: "Research project begun.",
-        warmup: 60,
+        warmup: 2,
         craftable: true,
-		persistIngredientsWith: {secrethistories: 1}
+		persistIngredientsWith: {secrethistories: 1},
 		loop: "testresearchspine"
     },
 			{
         id: "testresearchspine",
         label: "Project ongoing",
         actionId: "x",
+		alternativerecipes: [{id: "testresearchcomplete", chance: 100}],
         requirements: {},
-        effects: {},
-        startdescription: "This will begin a research project.",
-        description: "Research project begun.",
-        warmup: 2,
+        effects: {occultscrap: 1},
+        startdescription: ".",
+        description: "Research is continuing",
+        warmup: 20,
         craftable: false,
 		loop: "testresearchspine"
+    },
+	{
+        id: "testresearchcomplete",
+        label: "Project complete",
+        actionId: "x",
+        requirements: {occultscrap: 3},
+        effects: {atlasnotes: 1},
+        startdescription: "..",
+        description: "Nearly finished!",
+        warmup: 20,
+        craftable: false,
+		retrievesContentsWith: {secrethistories: 1}
     },
     {
         id: "lockedmindready",

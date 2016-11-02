@@ -134,12 +134,19 @@ public class ContentImporter
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
             }
 
-            Hashtable htPersistIngredients = htEachRecipe.GetHashtable(Constants.KPERSISTINGREDIENTS);
+            Hashtable htPersistIngredients = htEachRecipe.GetHashtable(Constants.KPERSISTINGREDIENTSWITH);
             if(htPersistIngredients!=null)
             foreach (string k in htPersistIngredients.Keys)
             {
                 r.PersistsIngredientsWith.Add(k, Convert.ToInt32(htPersistIngredients[k]));
             }
+
+            Hashtable htRetrievesContentsWith = htEachRecipe.GetHashtable(Constants.KRETRIEVESCONTENTSWITH);
+            if (htRetrievesContentsWith != null)
+                foreach (string k in htRetrievesContentsWith.Keys)
+                {
+                    r.RetrievesContentsWith.Add(k, Convert.ToInt32(htRetrievesContentsWith[k]));
+                }
 
 
             ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);

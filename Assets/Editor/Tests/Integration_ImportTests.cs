@@ -30,6 +30,10 @@ namespace CS.Tests
         private const int PI_ASPECT_1_VALUE = 1;
         private const string PI_ASPECT_2_ID = "persistedaspect2";
         private const int PI_ASPECT_2_VALUE = 2;
+        private const string RC_ASPECT_1_ID = "retrievedaspect1";
+        private const int RC_ASPECT_1_VALUE = 1;
+        private const string RC_ASPECT_2_ID = "retrievedaspect2";
+        private const int RC_ASPECT_2_VALUE = 2;
         private const string EFFECT_1_ID = "effect1id";
         private const int EFFECT_1_VALUE = 9;
         private const string EFFECT_2_ID = "effect2id";
@@ -38,6 +42,7 @@ namespace CS.Tests
         private const string ALTERNATIVE_2_ID = "alternative2";
         private const int ALTERNATIVE_1_CHANCE = 10;
         private const int ALTERNATIVE_2_CHANCE = 100;
+
         
 
         [Test]
@@ -49,6 +54,7 @@ namespace CS.Tests
             Hashtable htEffects = new Hashtable();
             Hashtable htRequirements = new Hashtable();
             Hashtable htPersistIngredients=new Hashtable();
+            Hashtable htRetrievesContents = new Hashtable();
             ArrayList alAlternatives = new ArrayList();
 
             htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE);
@@ -59,6 +65,9 @@ namespace CS.Tests
 
             htPersistIngredients.Add(PI_ASPECT_1_ID,PI_ASPECT_1_VALUE);
             htPersistIngredients.Add(PI_ASPECT_2_ID, PI_ASPECT_2_VALUE);
+
+            htRetrievesContents.Add(RC_ASPECT_1_ID,RC_ASPECT_1_VALUE);
+            htRetrievesContents.Add(RC_ASPECT_2_ID, RC_ASPECT_2_VALUE);
 
             Hashtable alternative1 = new Hashtable()
             {
@@ -75,6 +84,8 @@ namespace CS.Tests
 
             };
 
+        
+
             alAlternatives.Add(alternative1);
             alAlternatives.Add(alternative2);
 
@@ -89,9 +100,12 @@ namespace CS.Tests
             htRecipe.Add(Constants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(Constants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(Constants.KEFFECTS, htEffects);
-            htRecipe.Add(Constants.KPERSISTINGREDIENTS,htPersistIngredients);
+            htRecipe.Add(Constants.KPERSISTINGREDIENTSWITH,htPersistIngredients);
+            htRecipe.Add(Constants.KRETRIEVESCONTENTSWITH, htRetrievesContents);
+
             htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
             
+
             recipesToImport.Add(htRecipe);
             cm.PopulateRecipeList(recipesToImport);
 
@@ -106,16 +120,19 @@ namespace CS.Tests
 
             ConfirmRecipeEffectsImported(recipesImported);
 
-            ConfirmRecipePersistedIngredients(recipesImported);
+            ConfirmRecipePersistedAndRetrievedElements(recipesImported);
 
             ConfirmRecipeAlternativesImported(recipesImported);
 
         }
 
-        private void ConfirmRecipePersistedIngredients(List<Recipe> recipesImported)
+        private void ConfirmRecipePersistedAndRetrievedElements(List<Recipe> recipesImported)
         {
             Assert.AreEqual(PI_ASPECT_1_VALUE, recipesImported.First().PersistsIngredientsWith[PI_ASPECT_1_ID]);
                 Assert.AreEqual(PI_ASPECT_2_VALUE, recipesImported.First().PersistsIngredientsWith[PI_ASPECT_2_ID]);
+
+            Assert.AreEqual(RC_ASPECT_1_VALUE, recipesImported.First().RetrievesContentsWith[RC_ASPECT_1_ID]);
+            Assert.AreEqual(RC_ASPECT_2_VALUE, recipesImported.First().RetrievesContentsWith[RC_ASPECT_2_ID]);
         }
 
         private static void ConfirmRecipeAlternativesImported(List<Recipe> recipesImported)
