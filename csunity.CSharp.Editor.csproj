@@ -140,7 +140,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\Tests\AspectsLogicTests.cs" />
     <Compile Include="Assets\Editor\Tests\CharacterTests.cs" />
+    <Compile Include="Assets\Editor\Tests\TestObjectGenerator.cs" />
     <Compile Include="Assets\Editor\Tests\ElementTests.cs" />
     <Compile Include="Assets\Editor\Tests\Integration_ImportTests.cs" />
     <Compile Include="Assets\Editor\Tests\NoonUtilityTests.cs" />

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using Assets.Editor.Tests;
 using NUnit.Framework;
 using NSubstitute;
 using UnityEngine;
@@ -71,9 +73,45 @@ namespace  CS.Tests
             Assert.AreEqual(r2.Id,rs.CurrentRecipeId);
         }
 
+
+
+        [Test]
+        public void RecipeWithRetrieveContents_RetrievesElements()
+        {
+
+
+            Dictionary<string, Element> elements = TestObjectGenerator.ElementDictionary(1, 3);
+            rc.UpdateElements(elements);
+            elements["1"].Aspects.Add("A1", 1);
+
+            r1.RetrievesContentsWith.Add(elements["1"].Aspects.Single().Key, elements["1"].Aspects.Single().Value);
+            RecipeSituation rs = new RecipeSituation(r1, 0, container, rc);
+
+            Dictionary<string,int> ElementsToReturn=new Dictionary<string, int>()
+            {
+                { "1",1},
+                {"2",2 },
+            };
+            container.GetAllCurrentElements().Returns(ElementsToReturn);
+
+            FakeRecipeSituationSubscriber subscriber = new FakeRecipeSituationSubscriber();
+            rs.Subscribe(subscriber);
+
+            rs.DoHeartbeat();
+            Assert.AreEqual(1,subscriber.SituationInfo.RetrievedContents.Count);
+
+        }
+
     }
 
 
+}
 
-
+public class FakeRecipeSituationSubscriber:IRecipeSituationSubscriber
+{
+    public SituationInfo SituationInfo=new SituationInfo();
+    public void ReceiveSituationUpdate(SituationInfo info)
+    {
+        SituationInfo = info;
+    }
 }

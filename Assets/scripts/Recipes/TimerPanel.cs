@@ -15,21 +15,21 @@ public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
     public RecipeSituation RecipeSituation;
 
 
-    public void ReceiveSituationUpdate(Recipe recipe, RecipeTimerState state, float timeRemaining,SituationInfo info)
+    public void ReceiveSituationUpdate(SituationInfo info)
     {
-        if (state == RecipeTimerState.Extinct)
+        if (info.State == RecipeTimerState.Extinct)
             DestroyObject(gameObject);
         else
         {
-        float fillAmount = timeRemaining / recipe.Warmup;
+        float fillAmount = info.TimeRemaining / info.CurrentRecipe.Warmup;
         imgTimer.fillAmount = fillAmount;
-        txtTimer.text = "[" + timeRemaining + "] " + recipe.Label;
+        txtTimer.text = "[" + info.TimeRemaining + "] " + info.CurrentRecipe.Label;
 
-            if (info.Elements.Count > 0)
+            if (info.ElementsInSituation.Count > 0)
             {
                 pnlContents.ResetAspects();
-                foreach(string k in info.Elements.Keys)
-                pnlContents.ChangeAspectQuantity(k,info.Elements[k],20);
+                foreach(string k in info.ElementsInSituation.Keys)
+                pnlContents.ChangeAspectQuantity(k,info.ElementsInSituation[k],20);
             }
 
         }

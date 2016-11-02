@@ -478,12 +478,12 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         pnlVerbs.UnblockVerb(recipeActionId);
     }
 
-    public void ReceiveSituationUpdate(Recipe recipe, RecipeTimerState state, float timeRemaining,SituationInfo info)
+    public void ReceiveSituationUpdate(SituationInfo info)
     {
-        if(state == RecipeTimerState.Complete)
+        if(info.State == RecipeTimerState.Complete)
         {
-            Log(recipe.Description,Style.Assertive);
-            UnblockVerb(recipe.ActionId);
+            Log(info.CurrentRecipe.Description,Style.Assertive);
+            UnblockVerb(info.CurrentRecipe.ActionId);
         }
     }
 
