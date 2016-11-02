@@ -13,7 +13,7 @@ public class RecipeSituation
     private List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
     private Compendium _compendium;
     private Recipe currentRecipe;
-
+    
     public string CurrentRecipeId
     {
         get
@@ -23,8 +23,14 @@ public class RecipeSituation
             return (currentRecipe.Id);
         }
     }
-
+    /// <summary>
+    /// This container is affected by the results of recipes running here
+    /// </summary>
     private readonly IElementsContainer AffectsElementsContainer;
+    /// <summary>
+    /// This container receives any elements which are retrieved from the situation - currently, this only means a character.
+    /// </summary>
+    private readonly IElementsContainer RetrieveToElementsContainer;
     ///this is the id of the *originating* recipe, although the recipe inside may change later.
     ///the original recipe may be important for ongoing situations
     public string OriginalRecipeId { get; set; }
@@ -78,6 +84,7 @@ public class RecipeSituation
         if (currentRecipe.PersistsIngredients())
         { 
             AffectsElementsContainer= new SituationElementContainer();
+            RetrieveToElementsContainer = workspaceContainer;
             Dictionary<string, int> potentiallyPersistableIngredients = workspaceContainer.GetOutputElements();
             if(potentiallyPersistableIngredients!=null) //if we have any suitable ingredients
                 AddIngredientsToInternalContainer(currentRecipe, potentiallyPersistableIngredients,AffectsElementsContainer);
@@ -125,22 +132,30 @@ public class RecipeSituation
     {
         SituationInfo info=new SituationInfo();
 
+
+        info.CurrentRecipe = currentRecipe;
+        info.TimeRemaining = TimeRemaining;
+        info.State = TimerState;
+
+        populateElementsInSituationInfo(info);
+
+        return info;
+    }
+
+    private void populateElementsInSituationInfo(SituationInfo info)
+    {
         //report on current elements only if the current element container is internal
         if (AffectsElementsContainer.IsInternal())
         {
             Dictionary<string, int> inSituation = AffectsElementsContainer.GetAllCurrentElements();
             foreach (string k in inSituation.Keys)
-                info.ElementsInSituation.Add(k,inSituation[k]);
+                info.ElementsInSituation.Add(k, inSituation[k]);
         }
-        info.CurrentRecipe = currentRecipe;
-        info.TimeRemaining = TimeRemaining;
-        info.State = TimerState;
-
-        return info;
     }
 
     private void AddIngredientsToInternalContainer(Recipe recipe, Dictionary<string, int> possiblyPersisted, IElementsContainer container)
     {
+        //dammit, can't just use the aspects match, because we also want to exclude elements with slots (which aren't consumed)
         foreach (var k in possiblyPersisted.Keys)
         {
             if (shouldPersistInInternalContainer(k, recipe))
@@ -159,16 +174,21 @@ public class RecipeSituation
 
     private void Complete()
     {
-        SituationInfo info = GetCurrentSituationInfo();
+        SituationInfo info = new SituationInfo();
         //find alternative recipe(s) - there may be additional recipes
         List<Recipe> recipesToExecute =
             _compendium.GetActualRecipesToExecute(currentRecipe, AffectsElementsContainer);
-        foreach (Recipe r in recipesToExecute)
+        foreach (Recipe executingRecipe in recipesToExecute)
         {
-            r.Do(AffectsElementsContainer);
-            if (r.RetrievesContents())
-                info.RetrievedContents = NoonUtility.AspectMatchFilter(currentRecipe.RetrievesContentsWith, 
+            executingRecipe.Do(AffectsElementsContainer);
+            if (executingRecipe.RetrievesContents() && RetrieveToElementsContainer!=null)
+            { 
+             Dictionary<string,int> retrieved = NoonUtility.AspectMatchFilter(executingRecipe.RetrievesContentsWith, 
                     AffectsElementsContainer.GetAllCurrentElements(),_compendium);
+
+                foreach(string k in retrieved.Keys)
+                    RetrieveToElementsContainer.ModifyElementQuantity(k,retrieved[k]);
+            }
         }
 
         //if the first recipe in the list of alternatives is a different recipe, switch it.
@@ -181,6 +201,10 @@ public class RecipeSituation
         else
             Extinguish();
 
+        info.CurrentRecipe = currentRecipe;
+        info.TimeRemaining = TimeRemaining;
+        info.State = TimerState;
+        populateElementsInSituationInfo(info);
 
         publishUpdate(info);
 

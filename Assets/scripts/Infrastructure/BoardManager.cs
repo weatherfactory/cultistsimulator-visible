@@ -480,7 +480,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void ReceiveSituationUpdate(SituationInfo info)
     {
-        if(info.State == RecipeTimerState.Complete)
+        if(info.State == RecipeTimerState.Complete || info.State==RecipeTimerState.Extinct)
         {
             Log(info.CurrentRecipe.Description,Style.Assertive);
             UnblockVerb(info.CurrentRecipe.ActionId);

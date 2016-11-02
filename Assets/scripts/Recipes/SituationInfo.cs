@@ -28,6 +28,5 @@ public class SituationInfo
     /// </summary>
     public Dictionary<string,int> RetrievedContents=new Dictionary<string, int>();
 
-
     }
 
