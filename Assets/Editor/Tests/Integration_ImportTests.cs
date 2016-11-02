@@ -43,6 +43,7 @@ namespace CS.Tests
         private const int ALTERNATIVE_1_CHANCE = 10;
         private const int ALTERNATIVE_2_CHANCE = 100;
 
+
         
 
         [Test]

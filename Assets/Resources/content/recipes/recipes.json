@@ -171,24 +171,31 @@
         actionId: "x",
 		alternativerecipes: [{id: "testresearchcomplete", chance: 100}],
         requirements: {},
-        effects: {occultscrap: 1},
+        effects: {atlasnotes: 1},
         startdescription: ".",
         description: "Research is continuing",
         warmup: 20,
         craftable: false,
-		loop: "testresearchspine"
+		loop: "testresearchspine",
+		 slots:
+            {
+			"assistant": {  required: {assistant:1},
+                forbidden: {}},
+			"material": {  required: {secrethistories:1},
+                forbidden: {}}
+			}
     },
 	{
         id: "testresearchcomplete",
         label: "Project complete",
         actionId: "x",
-        requirements: {occultscrap: 3},
-        effects: {atlasnotes: 1},
+        requirements: {atlasnotes: 3},
+        effects: {atlas: 1},
         startdescription: "..",
         description: "Nearly finished!",
         warmup: 20,
         craftable: false,
-		retrievesContentsWith: {occultscrap: 1}
+		retrievesContentsWith: {atlas: 1}
     },
     {
         id: "lockedmindready",

@@ -21,9 +21,9 @@ public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
             DestroyObject(gameObject);
         else
         {
-        float fillAmount = info.TimeRemaining / info.CurrentRecipe.Warmup;
+        float fillAmount = info.TimeRemaining / info.Warmup;
         imgTimer.fillAmount = fillAmount;
-        txtTimer.text = "[" + info.TimeRemaining + "] " + info.CurrentRecipe.Label;
+        txtTimer.text = "[" + info.TimeRemaining + "] " + info.Label;
 
             if (info.ElementsInSituation.Count > 0)
             {

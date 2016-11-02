@@ -16,7 +16,7 @@ public class World
             _compendium = rc;
         }
 
-      public BaseRecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
+      public IRecipeSituation AddSituation(Recipe forRecipe, float? timeRemaining, IElementsContainer ec)
       {
         
         if (currentRecipeSituations.Exists(rs => rs.OriginalRecipeId == forRecipe.Id))
@@ -29,6 +29,7 @@ public class World
             newRecipeSituation = new SealedRecipeSituation(forRecipe, timeRemaining, ec, _compendium);
 
         currentRecipeSituations.Add(newRecipeSituation);
+
             return newRecipeSituation;
         }
 

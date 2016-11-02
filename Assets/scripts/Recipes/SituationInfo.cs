@@ -14,7 +14,9 @@ public class SituationInfo
     /// <summary>
     ///the recipe currently driving the situation
     /// </summary>
-    public Recipe CurrentRecipe;
+
+    public string Label;
+    public int Warmup;
     /// <summary>
     ///the state of the situation: complete, extinct, ongoing
     /// </summary>
@@ -23,6 +25,8 @@ public class SituationInfo
     ///seconds remaining on the situation timer
     /// </summary>
     public float TimeRemaining;
+    public string OriginalActionId;
+    public string Message;
 
 
     }

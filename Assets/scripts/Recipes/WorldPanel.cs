@@ -8,7 +8,7 @@ public class WorldPanel : BoardMonoBehaviour
 {
     [SerializeField] private GameObject prefabTimerPanel;
 
-    public void RegisterSituation(BaseRecipeSituation rs)
+    public void RegisterSituation(IRecipeSituation rs)
     {
         GameObject newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
         TimerPanel newTP = newTPobj.GetComponent<TimerPanel>();

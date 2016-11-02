@@ -110,7 +110,8 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     {
         SituationInfo info=new SituationInfo();
 
-        info.CurrentRecipe = currentRecipe;
+        info.Label = currentRecipe.Label;
+        info.Warmup = currentRecipe.Warmup;
         info.TimeRemaining = TimeRemaining;
         info.State = TimerState;
 
@@ -132,13 +133,28 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     {
       
         currentRecipe=ProcessRecipe();
-        
-        if (currentRecipe.Loop != null)
-            resetWithRecipe(_compendium);
-        else
-            Extinguish();
 
-        SituationInfo info = GetCurrentSituationInfo();
+        SituationInfo info = new SituationInfo();
+
+
+
+
+        if (currentRecipe.Loop != null)
+        {
+            resetWithRecipe(_compendium);
+            info.Message = currentRecipe.Description;
+        }
+        else
+        {
+            info.Message = currentRecipe.Description;
+            Extinguish();
+        }
+
+
+
+        info.OriginalActionId = _compendium.GetRecipeById(OriginalRecipeId).ActionId;
+        info.State = TimerState;
+        info.TimeRemaining = TimeRemaining;
 
         publishUpdate(info);
 

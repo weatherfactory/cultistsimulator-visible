@@ -245,7 +245,9 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     public void QueueRecipe(Recipe r)
     {
         
-        BaseRecipeSituation rs=_heart.World.AddSituation(r, null,_heart.Character);
+        IRecipeSituation rs=_heart.World.AddSituation(r, null,_heart.Character);
+
+        rs.Subscribe(this);
 
         if(rs!=null)
         { 
@@ -450,7 +452,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
             foreach (string k in htRecipeTimers.Keys)
             {
                 Recipe r =  _heart.Compendium.GetRecipeById(k);
-                BaseRecipeSituation rs=  _heart.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), _heart.Character);
+                IRecipeSituation rs=  _heart.World.AddSituation(r, float.Parse(htRecipeTimers[k].ToString()), _heart.Character);
                 pnlWorld.RegisterSituation(rs);
             }
 
@@ -482,8 +484,8 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     {
         if(info.State == RecipeTimerState.Complete || info.State==RecipeTimerState.Extinct)
         {
-            Log(info.CurrentRecipe.Description,Style.Assertive);
-            UnblockVerb(info.CurrentRecipe.ActionId);
+            Log(info.Message,Style.Assertive);
+            UnblockVerb(info.OriginalActionId);
         }
     }
 

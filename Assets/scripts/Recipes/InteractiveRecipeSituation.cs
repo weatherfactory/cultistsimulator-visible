@@ -34,6 +34,17 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
         foreach (Recipe executingRecipe in recipesToExecute)
         {
             executingRecipe.Do(InternalContainer);
+            RetrieveContentsToCharacterAsPermitted(executingRecipe);
+        }
+        if (recipesToExecute[0].Id != currentRecipe.Id)
+                return recipesToExecute[0];
+            else
+                return currentRecipe;
+       
+        }
+
+        private void RetrieveContentsToCharacterAsPermitted(Recipe executingRecipe)
+        {
             if (executingRecipe.RetrievesContents())
             {
                 Dictionary<string, int> retrieved =
@@ -43,12 +54,6 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
                 foreach (string k in retrieved.Keys)
                     CharacterContainer.ModifyElementQuantity(k, retrieved[k]);
             }
-        }
-        if (recipesToExecute[0].Id != currentRecipe.Id)
-                return recipesToExecute[0];
-            else
-                return currentRecipe;
-       
         }
 
         protected override void publishUpdate(SituationInfo info)
