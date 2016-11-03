@@ -29,9 +29,11 @@ namespace Noon
         public const string KALTERNATIVERECIPES = "alternativerecipes";
         public const string KPERSISTINGREDIENTSWITH = "persistIngredientsWith";
         public static string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";
+        public static string KSLOTS="slots";
+        public static string KREQUIRED="required";
+        public static string KFORBIDDEN = "forbidden";
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
-
         public const string KCHARACTERTITLE = "title";
         public const string KCHARACTERFIRSTNAME= "firstname";
         public const string KCHARACTERLASTNAME = "lastname";

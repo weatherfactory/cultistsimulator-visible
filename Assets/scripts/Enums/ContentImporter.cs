@@ -24,6 +24,39 @@ public class ContentImporter
     public Dictionary<string, Element> Elements=new Dictionary<string, Element>();
     public List<Recipe> Recipes=new List<Recipe>();
 
+
+    public List<ChildSlotSpecification> AddSlotsFromHashtable(Hashtable htSlots)
+    {
+        List<ChildSlotSpecification> cssList=new List<ChildSlotSpecification>();
+
+        if (htSlots != null)
+        {
+
+            foreach (string k in htSlots.Keys)
+            {
+                cssList.Add(new ChildSlotSpecification(k));
+
+                Hashtable htThisSlot = htSlots[k] as Hashtable;
+
+                Hashtable htRequired = htThisSlot["required"] as Hashtable;
+                if (htRequired != null)
+                {
+                    foreach (string rk in htRequired.Keys)
+                        cssList[cssList.Count - 1].Required.Add(rk, 1);
+                }
+                Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
+                if (htForbidden != null)
+                {
+                    foreach (string fk in htForbidden.Keys)
+                        cssList[cssList.Count - 1].Forbidden.Add(fk, 1);
+                }
+            }
+        }
+
+        return cssList;
+
+    }
+
     public void ImportElements()
     {
         TextAsset[] elementTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS);
@@ -52,8 +85,8 @@ public class ContentImporter
                htElement.GetString(CONST_LABEL),
                 htElement.GetString(CONST_DESCRIPTION));
 
-            element.AddAspectsFromHashtable(htAspects);
-            element.AddSlotsFromHashtable(htSlots);
+            element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
+            element.ChildSlotSpecifications=AddSlotsFromHashtable(htSlots);
 
             Elements.Add(element.Id,element);
         }
@@ -110,7 +143,6 @@ public class ContentImporter
                 r.Description = htEachRecipe[Constants.KDESCRIPTION].ToString();
                 r.Warmup = Convert.ToInt32(htEachRecipe[Constants.KWARMUP]);
                 r.Loop = htEachRecipe[Constants.KLOOP] == null ? null : htEachRecipe[Constants.KLOOP].ToString();
-
                 r.Ending = htEachRecipe[Constants.KENDING] == null ? null : htEachRecipe[Constants.KENDING].ToString();
 
             }
@@ -148,6 +180,8 @@ public class ContentImporter
                     r.RetrievesContentsWith.Add(k, Convert.ToInt32(htRetrievesContentsWith[k]));
                 }
 
+            Hashtable htSlots = htEachRecipe.GetHashtable(Constants.KSLOTS);
+            r.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
 
             ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);
             if(alRecipeAlternatives!=null)
@@ -161,6 +195,7 @@ public class ContentImporter
                     r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
                 }
             }
+
 
             Recipes.Add(r);
         }

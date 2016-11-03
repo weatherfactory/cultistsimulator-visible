@@ -42,9 +42,14 @@ namespace CS.Tests
         private const string ALTERNATIVE_2_ID = "alternative2";
         private const int ALTERNATIVE_1_CHANCE = 10;
         private const int ALTERNATIVE_2_CHANCE = 100;
+        private const string SLOT_LABEL = "slotId";
+        private const string SLOT_REQUIRED_ASPECT_ID = "slotaspect1";
+        private const int SLOT_REQUIRED_ASPECT_VALUE = 1;
+        private const string SLOT_FORBIDDEN_ASPECT_ID = "slotaspect2";
+        private const int SLOT_FORBIDDEN_ASPECT_VALUE = 1;
 
 
-        
+
 
         [Test]
         public void RecipesImportFromHashtable()
@@ -55,6 +60,18 @@ namespace CS.Tests
             Hashtable htEffects = new Hashtable();
             Hashtable htRequirements = new Hashtable();
             Hashtable htPersistIngredients=new Hashtable();
+         
+            Hashtable htActualSlots = new Hashtable()
+        { { Constants.KREQUIRED,new Hashtable()
+        {
+            {SLOT_REQUIRED_ASPECT_ID,SLOT_REQUIRED_ASPECT_VALUE}
+        }},
+        { "forbidden",new Hashtable()
+        {
+            {SLOT_FORBIDDEN_ASPECT_ID,SLOT_FORBIDDEN_ASPECT_VALUE}
+        }}};
+            Hashtable htSlotOuterTable = new Hashtable() {{SLOT_LABEL, htActualSlots}};
+
             Hashtable htRetrievesContents = new Hashtable();
             ArrayList alAlternatives = new ArrayList();
 
@@ -82,10 +99,9 @@ namespace CS.Tests
                 {Constants.KID,ALTERNATIVE_2_ID},
                 {Constants.KCHANCE,ALTERNATIVE_2_CHANCE },
                 {Constants.KADDITIONAL,true }
-
             };
 
-        
+
 
             alAlternatives.Add(alternative1);
             alAlternatives.Add(alternative2);
@@ -103,6 +119,7 @@ namespace CS.Tests
             htRecipe.Add(Constants.KEFFECTS, htEffects);
             htRecipe.Add(Constants.KPERSISTINGREDIENTSWITH,htPersistIngredients);
             htRecipe.Add(Constants.KRETRIEVESCONTENTSWITH, htRetrievesContents);
+            htRecipe.Add(Constants.KSLOTS,htSlotOuterTable);
 
             htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
             
@@ -125,6 +142,20 @@ namespace CS.Tests
 
             ConfirmRecipeAlternativesImported(recipesImported);
 
+            ConfirmRecipeSlotsImported(recipesImported);
+
+
+        }
+
+        private void ConfirmRecipeSlotsImported(List<Recipe> recipesImported)
+        {
+            Recipe r = recipesImported.First(); //why didn't I do this elsewhere huh
+        Assert.AreEqual(1,r.ChildSlotSpecifications.Count);
+            Assert.AreEqual(SLOT_LABEL,r.ChildSlotSpecifications.Single().Label);
+            Assert.AreEqual(SLOT_REQUIRED_ASPECT_ID,r.ChildSlotSpecifications.Single().Required.Single().Key);
+            Assert.AreEqual(SLOT_REQUIRED_ASPECT_VALUE, r.ChildSlotSpecifications.Single().Required.Single().Value);
+            Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_ID, r.ChildSlotSpecifications.Single().Forbidden.Single().Key);
+            Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_VALUE, r.ChildSlotSpecifications.Single().Forbidden.Single().Value);
         }
 
         private void ConfirmRecipePersistedAndRetrievedElements(List<Recipe> recipesImported)

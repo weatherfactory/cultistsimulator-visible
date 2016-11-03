@@ -22,16 +22,18 @@ using System.Text;
         public List<RecipeAlternative> AlternativeRecipes { get; set; }
         public string Loop { get; set; }
         public string Ending { get; set; }
+    public List<ChildSlotSpecification> ChildSlotSpecifications { get; set; }
 
-//recipe to execute next; may be the loop recipe; this is null if no loop has been set
+    //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
-        public Recipe()
+    public Recipe()
         {
             Requirements = new Dictionary<string, int>();
         Effects=new Dictionary<string, int>();
         AlternativeRecipes=new List<RecipeAlternative>();
         PersistsIngredientsWith=new Dictionary<string, int>();
         RetrievesContentsWith=new Dictionary<string, int>();
+        ChildSlotSpecifications=new List<ChildSlotSpecification>();
         }
 
         public void Do(IElementsContainer container)

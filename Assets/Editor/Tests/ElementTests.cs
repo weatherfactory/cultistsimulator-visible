@@ -18,14 +18,6 @@ namespace CS.Tests
             Element = TestObjectGenerator.CreateElement(1);
         }
 
-        [Test]
-        public void ElementWithNoSlotsPopulatesSafely()
-        {
-
-            Assert.AreEqual(0, Element.ChildSlotSpecifications.Count);
-            Element.AddSlotsFromHashtable(null);
-            Assert.AreEqual(0, Element.ChildSlotSpecifications.Count);
-        }
 
         [Test]
         public void ElementPossessingOneRequiredAspectFulfilsChildSlotSpecification()
@@ -121,8 +113,8 @@ namespace CS.Tests
                 {SLOT_LABEL_2,slot2},
             };
 
-
-            Element.AddSlotsFromHashtable(ht);
+            ContentImporter ci=new ContentImporter();
+            Element.ChildSlotSpecifications=ci.AddSlotsFromHashtable(ht);
 
             Assert.AreEqual(2, Element.ChildSlotSpecifications.Count);
             Assert.AreEqual(SLOT_LABEL_1,Element.ChildSlotSpecifications[0].Label);
