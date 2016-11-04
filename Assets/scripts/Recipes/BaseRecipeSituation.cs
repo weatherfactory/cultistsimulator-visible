@@ -100,6 +100,8 @@ public abstract class BaseRecipeSituation:IRecipeSituation
         subscriber.ReceiveSituationUpdate(GetCurrentSituationInfo());
     }
 
+    public abstract bool IsInteractive();
+
     protected virtual void publishUpdate(SituationInfo info)
     {
         foreach (var s in _subscribers)

@@ -11,9 +11,8 @@ public class SituationInfo
     /// Elements currently inside the situation, to be displayed
     /// </summary>
    public Dictionary<string,int> ElementsInSituation=new Dictionary<string, int>();
-    /// <summary>
-    ///the recipe currently driving the situation
-    /// </summary>
+
+        public List<ChildSlotSpecification> ChildSlotSpecifications;
 
     public string Label;
     public int Warmup;

@@ -19,5 +19,10 @@ using System.Text;
 
             CharacterContainer = inputContainer;
     }
+
+        public override bool IsInteractive()
+        {
+            return false;
+        }
     }
 

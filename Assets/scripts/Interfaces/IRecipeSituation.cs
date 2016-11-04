@@ -12,4 +12,6 @@
     void DoHeartbeat();
     void Extinguish();
     void Subscribe(IRecipeSituationSubscriber subscriber);
+    bool IsInteractive();
+
 }

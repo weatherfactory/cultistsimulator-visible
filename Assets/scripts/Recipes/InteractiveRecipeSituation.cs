@@ -56,6 +56,11 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
             }
         }
 
+        public override bool IsInteractive()
+        {
+            return true;
+        }
+
         protected override void publishUpdate(SituationInfo info)
         {
             populateElementsInSituationInfo(info);
