@@ -1,14 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Assets.scripts.Interfaces;
 
-public class Workspace : BoardMonoBehaviour
+public class Workspace : BoardMonoBehaviour, IElementSlotEventSubscriber
 {
 
     [SerializeField] private SlotReceiveVerb VerbSlot;
-    private GameObject RootElementSlot;
+    private GameObject RootElementSlotObj;
 
-    public bool IsRootElementPresent { get { return RootElementSlot != null; } }
+    public bool IsRootElementPresent { get { return RootElementSlotObj != null; } }
     public string GetCurrentVerbId()
     {
         return VerbSlot.GetCurrentVerbId();
@@ -25,9 +26,11 @@ public class Workspace : BoardMonoBehaviour
         { 
         int governedStepRight = 50;
         int nudgeDown = -10;
-       RootElementSlot = Instantiate(prefabEmptyElementSlot, transform, false) as GameObject;
+       RootElementSlotObj = Instantiate(prefabEmptyElementSlot, transform, false) as GameObject;
         Vector3 newSlotPosition = new Vector3(governorPosition.x + governedStepRight, governorPosition.y + nudgeDown);
-        RootElementSlot.transform.localPosition = newSlotPosition;
+        RootElementSlotObj.transform.localPosition = newSlotPosition;
+            SlotReceiveElement elementSlot = RootElementSlotObj.GetComponent<SlotReceiveElement>();
+            elementSlot.AddSubscriber(this);
         }
     }
 
@@ -86,4 +89,11 @@ public class Workspace : BoardMonoBehaviour
         }
         return false;
     }
+
+    public void ElementAddedToSlot(Element element)
+    {
+        BM.UpdateAspectDisplay();
+    }
+
+
 }

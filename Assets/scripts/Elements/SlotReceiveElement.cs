@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Assets.scripts.Interfaces;
 using UnityEngine.EventSystems;
 
 public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
@@ -14,6 +15,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
     /// if this slot isn't the primary slot, it will have required and forbidden aspects; the ChildSlotSpecification governs them.
     /// </summary>
     public ChildSlotSpecification  GoverningChildSlotSpecification;
+    private List<IElementSlotEventSubscriber> _subscribers=new List<IElementSlotEventSubscriber>();
 
     private GameObject ItemInSlot
     {
@@ -21,7 +23,6 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         {
             if (transform.childCount > 0)
                 return transform.GetChild(0).gameObject;
-            else
 
                 return null;
         }
@@ -46,11 +47,17 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 
     }
 
+    public void AddSubscriber(IElementSlotEventSubscriber subscriber)
+    {
+        if(!_subscribers.Contains(subscriber))
+        _subscribers.Add(subscriber);
+    }
 
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (BM.CurrentDragItem.tag == "Element")
+        DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
+        if(draggableElementToken!=null)
         { 
             
             //is there already a token in the slot?
@@ -58,7 +65,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             {
               ClearThisSlot();
             }
-            DraggableElementToken draggableElementToken = BM.CurrentDragItem.GetComponent<DraggableElementToken>();
+           
 
             if(GoverningChildSlotSpecification!=null)
             { 
@@ -102,10 +109,19 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
     {
 //settle the element in the slot, and update aspects
         draggableElementToken.transform.SetParent(transform);
-        BM.UpdateAspectDisplay();
+        
+        PublishElementAddedToSlot(draggableElementToken.Element);
 
         //add child slots for this token's element, if it has any
         if (draggableElementToken.HasChildSlots())
             BM.AddChildSlots(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
+    }
+
+    private void PublishElementAddedToSlot(Element element)
+    {
+        foreach (var elementSlotEventSubscriber in _subscribers)
+        {
+            elementSlotEventSubscriber.ElementAddedToSlot(element);
+        }
     }
 }

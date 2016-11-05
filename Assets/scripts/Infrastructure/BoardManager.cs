@@ -13,6 +13,7 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituationSubscriber
 {
     [SerializeField] private InputField inputAdjustElementNamed;
+    [SerializeField] private GameObject pnlDebug;
     [SerializeField] private LogPanel pnlLog;
     [SerializeField] private VerbPanel pnlVerbs;
     [SerializeField] private GameObject pnlResources;
@@ -32,6 +33,12 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public DraggableToken CurrentDragItem;
     private Dictionary<string,Recipe> knownRecipes= new Dictionary<string, Recipe>();
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.BackQuote))
+            pnlDebug.SetActive(!pnlDebug.activeSelf);
+    }
 
     public AspectsDisplay PnlAspects
     {
