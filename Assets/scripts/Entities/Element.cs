@@ -36,6 +36,9 @@ public class Element
         Aspects=new Dictionary<string, int>();
     }
 
-    
+    public Boolean HasChildSlots()
+    {
+        return ChildSlotSpecifications.Count > 0;
+    }
 }
 

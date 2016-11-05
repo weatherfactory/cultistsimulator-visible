@@ -1,13 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
-using Assets.scripts.Interfaces;
+using Noon;
 
 public class Workspace : BoardMonoBehaviour, IElementSlotEventSubscriber
 {
 
     [SerializeField] private SlotReceiveVerb VerbSlot;
     private GameObject RootElementSlotObj;
+    [SerializeField]
+    GameObject prefabChildSlotsOrganiser;
 
     public bool IsRootElementPresent { get { return RootElementSlotObj != null; } }
     public string GetCurrentVerbId()
@@ -90,10 +92,43 @@ public class Workspace : BoardMonoBehaviour, IElementSlotEventSubscriber
         return false;
     }
 
-    public void ElementAddedToSlot(Element element)
+    public void ElementAddedToSlot(Element element,SlotReceiveElement slot)
     {
         BM.UpdateAspectDisplay();
+        //add child slots for this token's element, if it has any
+        if (element.HasChildSlots())
+            AddChildSlots(slot);
     }
 
+    private void AddChildSlots(SlotReceiveElement governingSlot)
+    {
 
+        float governingSlotHeight = governingSlot.gameObject.GetComponent<RectTransform>().rect.height;
+        Transform governingSlotTransform = governingSlot.gameObject.transform;
+        governingSlot.DependentChildSlotOrganiser = Instantiate(prefabChildSlotsOrganiser, transform, false) as GameObject;
+        Vector3 newSlotPosition = new Vector3(governingSlotTransform.localPosition.x, governingSlotTransform.localPosition.y - governingSlotHeight);
+        governingSlot.DependentChildSlotOrganiser.transform.localPosition = newSlotPosition;
+
+        governingSlot.DependentChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(governingSlot.GetTokenInSlot());
+
+    }
+
+    public void ElementCannotBeAddedToSlot(Element element, ElementSlotMatch match)
+    {
+        if (match.ElementSlotSuitability == ElementSlotSuitability.ForbiddenAspectPresent)
+        {
+            string problemAspects = NoonUtility.ProblemAspectsDescription(match);
+            BM.Log("Elements with the " + problemAspects + " aspects are unacceptable here. *Unacceptable*.", Style.Assertive);
+
+            return;
+        }
+
+        if (match.ElementSlotSuitability == ElementSlotSuitability.RequiredAspectMissing)
+        {
+            string problemAspects = NoonUtility.ProblemAspectsDescription(match);
+            BM.Log("Only elements with the " + problemAspects + " aspects can go here.", Style.Assertive);
+
+            return;
+        }
+    }
 }

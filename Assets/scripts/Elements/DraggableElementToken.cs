@@ -54,7 +54,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
 
         public bool HasChildSlots()
         {
-            return Element.ChildSlotSpecifications.Count > 0;
+            return Element.HasChildSlots();
         }
 
 

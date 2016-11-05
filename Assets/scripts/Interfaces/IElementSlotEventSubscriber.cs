@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.scripts.Interfaces
-{
+
     public interface IElementSlotEventSubscriber
     {
-        void ElementAddedToSlot(Element element);
+        void ElementAddedToSlot(Element element,SlotReceiveElement slot);
+        void ElementCannotBeAddedToSlot(Element element, ElementSlotMatch match);
     }
-}
+

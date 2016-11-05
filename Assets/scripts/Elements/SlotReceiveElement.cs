@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Assets.scripts.Interfaces;
 using UnityEngine.EventSystems;
 
 public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
@@ -15,7 +14,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
     /// if this slot isn't the primary slot, it will have required and forbidden aspects; the ChildSlotSpecification governs them.
     /// </summary>
     public ChildSlotSpecification  GoverningChildSlotSpecification;
-    private List<IElementSlotEventSubscriber> _subscribers=new List<IElementSlotEventSubscriber>();
+    private readonly List<IElementSlotEventSubscriber> _subscribers=new List<IElementSlotEventSubscriber>();
 
     private GameObject ItemInSlot
     {
@@ -67,43 +66,24 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
             }
            
 
-            if(GoverningChildSlotSpecification!=null)
+            if(GoverningChildSlotSpecification==null)
+                AddElementToSlot(draggableElementToken);
+            else
             { 
             //does the element obey restrictions for the current slot?
             ElementSlotMatch elementSlotMatch= GoverningChildSlotSpecification.GetElementSlotMatchFor(draggableElementToken.Element);
-            if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.ForbiddenAspectPresent)
-            {
-                string problemAspects = ProblemAspectsDescription(elementSlotMatch);
-
-                BM.Log("Elements with the " + problemAspects +" aspects are unacceptable here. *Unacceptable*.", Style.Assertive);
-                    draggableElementToken.ReturnToOrigin();
-                    return;
+                if(elementSlotMatch.ElementSlotSuitability==ElementSlotSuitability.Okay)
+                    AddElementToSlot(draggableElementToken);
+                else
+                { 
+                PublishElementCannotBeAddedToSlot(draggableElementToken.Element,elementSlotMatch);
+                draggableElementToken.ReturnToOrigin();
                 }
-
-            if (elementSlotMatch.ElementSlotSuitability == ElementSlotSuitability.RequiredAspectMissing)
-            {
-                    string problemAspects = ProblemAspectsDescription(elementSlotMatch);
-
-                    BM.Log("Only elements with the " + problemAspects + " aspects can go here.", Style.Assertive);
-                    draggableElementToken.ReturnToOrigin();
-                return;
             }
-            }
-            AddElementToSlot(draggableElementToken);
+            
         }
     }
 
-    private static string ProblemAspectsDescription(ElementSlotMatch elementSlotMatch)
-    {
-        string problemAspects = "";
-        foreach (var problemAspectId in elementSlotMatch.ProblemAspectIds)
-        {
-            if (problemAspects != "")
-                problemAspects += " or ";
-            problemAspects += problemAspectId;
-        }
-        return problemAspects;
-    }
 
     private void AddElementToSlot(DraggableElementToken draggableElementToken)
     {
@@ -112,16 +92,22 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         
         PublishElementAddedToSlot(draggableElementToken.Element);
 
-        //add child slots for this token's element, if it has any
-        if (draggableElementToken.HasChildSlots())
-            BM.AddChildSlots(gameObject.GetComponent<SlotReceiveElement>(), draggableElementToken);
+
     }
 
     private void PublishElementAddedToSlot(Element element)
     {
         foreach (var elementSlotEventSubscriber in _subscribers)
         {
-            elementSlotEventSubscriber.ElementAddedToSlot(element);
+            elementSlotEventSubscriber.ElementAddedToSlot(element,this);
+        }
+    }
+
+    private void PublishElementCannotBeAddedToSlot(Element element,ElementSlotMatch match)
+    {
+        foreach (var elementSlotEventSubscriber in _subscribers)
+        {
+            elementSlotEventSubscriber.ElementCannotBeAddedToSlot(element, match);
         }
     }
 }

@@ -43,6 +43,18 @@ namespace Noon
     }
     public class NoonUtility
     {
+
+        public static string ProblemAspectsDescription(ElementSlotMatch elementSlotMatch)
+        {
+            string problemAspects = "";
+            foreach (var problemAspectId in elementSlotMatch.ProblemAspectIds)
+            {
+                if (problemAspects != "")
+                    problemAspects += " or ";
+                problemAspects += problemAspectId;
+            }
+            return problemAspects;
+        }
         public static string GetGameSavePath()
         {
             return Application.persistentDataPath + "\\savedgame.txt";

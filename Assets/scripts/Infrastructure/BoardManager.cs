@@ -26,7 +26,6 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     [SerializeField]GameObject prefabElementToken;
     [SerializeField]GameObject prefabVerbToken;
     [SerializeField]GameObject prefabEmptyElementSlot;
-    [SerializeField]GameObject prefabChildSlotsOrganiser;
     [SerializeField]private GameObject prefabNotificationPanel;
     [SerializeField] public CharacterNamePanel characterNamePanel;
     [SerializeField] private Heart _heart;
@@ -206,18 +205,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         UpdateAspectDisplay();
     }
 
-    public void AddChildSlots(SlotReceiveElement governingSlot, DraggableElementToken draggedElement)
-    {
-        
-        float governingSlotHeight = governingSlot.GetComponent<RectTransform>().rect.height;
-        Transform governingSlotTransform = governingSlot.transform;
-        governingSlot.DependentChildSlotOrganiser = Instantiate(prefabChildSlotsOrganiser, pnlWorkspace.transform, false) as GameObject;
-        Vector3 newSlotPosition = new Vector3(governingSlotTransform.localPosition.x, governingSlotTransform.localPosition.y - governingSlotHeight);
-        governingSlot.DependentChildSlotOrganiser.transform.localPosition = newSlotPosition;
 
-        governingSlot.DependentChildSlotOrganiser.GetComponent<ChildSlotOrganiser>().Populate(draggedElement);
-
-    }
 
     public void ModifyElementQuantity(string e, int q)
     {
