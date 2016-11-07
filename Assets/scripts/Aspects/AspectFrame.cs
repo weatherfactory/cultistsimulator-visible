@@ -4,6 +4,9 @@ using System.Linq;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// GameObject which is instantiated with an Aspect to display. This is quite old code
+/// </summary>
 public class AspectFrame : BoardMonoBehaviour,IPointerClickHandler,INotifyLocator
 {
     public int Quantity;

@@ -2,11 +2,17 @@
 using System.Collections;
 using UnityEditor;
 
+/// <summary>
+/// Top-level object
+/// </summary>
 public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 {
     [SerializeField] private EndingPanel pnlEnding;
+    //BoardManager is the previous top-level object, which I'm gradually pulling things out of.
     [SerializeField] private BoardManager BM;
+    //Compendium contains all the config information on elements and recipes. It used to be just RecipeCompendium and may still be referred to that way
     public Compendium Compendium;
+    //wrapper for Resources folder
     public ResourcesManager ResourcesManager;
 
     private const string DO="Do"; //so we don't get a tiny daft typo with the Invoke
@@ -18,10 +24,14 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
         character.Subscribe(BM.characterNamePanel);
         character.Subscribe(this);
         character.SubscribeElementQuantityDisplay(BM);
+
+        //hard-coded; ultimately this will go in a config file
         character.Title = "Mr";
         character.FirstName = "Vivian";
         character.LastName = "Keyes";
 
+
+        //hard-coded; ultimately this will go in a config file
         character.ModifyElementQuantity("health", 3);
         character.ModifyElementQuantity("reason", 3);
         character.ModifyElementQuantity("clique", 1);
@@ -40,6 +50,7 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
     void Start () {
         ResourcesManager=new ResourcesManager();
      
+        //I don't have any dependency injection at the moand I want to unit-test Compendium, passing in Dice in the constructor so I can override it
         Compendium=new Compendium(new Dice());
         RefreshContent();
         
@@ -109,6 +120,7 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 
     public void RefreshContent()
     {
+        //ContentImporter goes through the JSON and does a (big, brittle, hard-coded) import to populate the compendium
         ContentImporter ContentImporter = new ContentImporter();
         ContentImporter.PopulateCompendium(Compendium);
     }
