@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-
+/// <summary>
+/// just so I can mock it in tests
+/// </summary>
    public class Dice: IDice
     {
     System.Random random = new System.Random();

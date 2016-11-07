@@ -4,6 +4,10 @@ using TMPro;
 using TMPro.Examples;
 using UnityEngine.UI;
 
+/// <summary>
+/// this is a crude first-pass way of displaying popups next to related objects.
+/// suggestions on better implementations welcome!
+/// </summary>
 public class NotificationPanel : MonoBehaviour
 {
     public float Lifespan;
@@ -30,7 +34,11 @@ public class NotificationPanel : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    /// <summary>
+    /// 'aside' as in 'a thing you say while saying something else, like a comment'
+    /// so this is 'set the value of the Aside field' not, like 'put aside'
+    /// </summary>
+    /// <param name="aside"></param>
     public void SetAside(string aside)
     {
         txtAside.text = aside;

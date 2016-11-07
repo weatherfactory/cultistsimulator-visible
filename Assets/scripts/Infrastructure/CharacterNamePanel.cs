@@ -2,6 +2,9 @@
 using System.Collections;
 using TMPro;
 
+/// <summary>
+/// This is completely dumb at the moment. I was going to make it editable when I added it, but didn't for non-interesting reasons
+/// </summary>
 public class CharacterNamePanel : MonoBehaviour,ICharacterInfoSubscriber
 {
     [SerializeField] private TextMeshProUGUI txtTitle;

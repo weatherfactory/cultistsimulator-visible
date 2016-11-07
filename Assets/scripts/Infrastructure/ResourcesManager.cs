@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-
+/// <summary>
+/// Martin pointed out this should be static; he's probably right
+/// </summary>
     public class ResourcesManager:MonoBehaviour
     {
     public Sprite GetSpriteForVerb(string verbId)

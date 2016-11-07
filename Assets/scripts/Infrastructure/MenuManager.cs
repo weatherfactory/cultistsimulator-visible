@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// this was the very first code I wrote! just when I was trying to understand how scenes work.
+/// </summary>
 public class MenuManager : MonoBehaviour {
 
 	// Use this for initialization

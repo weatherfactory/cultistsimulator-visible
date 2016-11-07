@@ -3,7 +3,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
+/// <summary>
+/// I would expect that a lot of stuff that currently goes through the log panel will also appear in popup notifications.
+/// </summary>
 public class LogPanel : MonoBehaviour
 {
 
