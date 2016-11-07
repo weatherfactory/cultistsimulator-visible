@@ -11,7 +11,7 @@ public class VerbBox : MonoBehaviour {
 	public string verbId { private set; get; }
 
 	public void SetVerb(string id, Compendium cm) {
-		name = "Verb" + id;
+		name = "Verb_" + id;
 
 		verbId = id;
 		var verb = cm.GetVerbById(id);

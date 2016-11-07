@@ -114,8 +114,10 @@ public class TabletopManager : MonoBehaviour {
 	void HandleOnElementCardClicked(ElementCard card) {
 		if (card.detailsWindow == null)
 			ShowElementDetails(card);
-		else
+		else {
+			card.transform.SetParent(cardHolder); // remove card from details window before hiding it, so it isn't removed
 			card.detailsWindow.Hide();
+		}
 	}
 
 	#endregion
