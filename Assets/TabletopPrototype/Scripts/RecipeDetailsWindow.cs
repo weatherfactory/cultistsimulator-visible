@@ -67,6 +67,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		slot.onCardDropped += HandleOnSlotDroppedOn;
 		slot.transform.SetParent(slotsHolder.transform);
 		slot.transform.localScale = Vector3.one;
+		slot.transform.localPosition = Vector3.zero;
 		return slot;
 	}
 

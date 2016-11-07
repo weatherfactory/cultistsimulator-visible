@@ -73,6 +73,7 @@ public class TabletopManager : MonoBehaviour {
 		box.transform.SetParent(cardHolder);
 		box.transform.localScale = Vector3.one;
 		box.transform.localPosition = Vector3.zero;
+		box.transform.localRotation = Quaternion.identity;
 		return box;
 	}
 
@@ -85,6 +86,7 @@ public class TabletopManager : MonoBehaviour {
 		card.transform.SetParent(cardHolder);
 		card.transform.localScale = Vector3.one;
 		card.transform.localPosition = Vector3.zero;
+		card.transform.localRotation = Quaternion.identity;
 		return card;
 	}
 
@@ -98,10 +100,11 @@ public class TabletopManager : MonoBehaviour {
 
 	// Ideally we pool and reuse these
 	ElementDetailsWindow BuildElementDetailsWindow() {
-		var card = Instantiate(elementDetailWindowPrefab) as ElementDetailsWindow;
-		card.transform.SetParent(windowParent);
-		card.transform.localScale = Vector3.one;
-		return card;
+		var window = Instantiate(elementDetailWindowPrefab) as ElementDetailsWindow;
+		window.transform.SetParent(windowParent);
+		window.transform.localScale = Vector3.one;
+		window.transform.localRotation = Quaternion.identity;
+		return window;
 	}
 
 	// Recipe Detail Windows
@@ -114,10 +117,11 @@ public class TabletopManager : MonoBehaviour {
 
 	// Ideally we pool and reuse these
 	RecipeDetailsWindow BuildRecipeDetailsWindow() {
-		var card = Instantiate(recipeDetailsWindowPrefab) as RecipeDetailsWindow;
-		card.transform.SetParent(windowParent);
-		card.transform.localScale = Vector3.one;
-		return card;
+		var window = Instantiate(recipeDetailsWindowPrefab) as RecipeDetailsWindow;
+		window.transform.SetParent(windowParent);
+		window.transform.localScale = Vector3.one;
+		window.transform.localRotation = Quaternion.identity;
+		return window;
 	}
 
 	#endregion
@@ -125,9 +129,11 @@ public class TabletopManager : MonoBehaviour {
 	#region -- INTERACTION ----------------------------------------------------
 
 	void HandleOnBackgroundDropped() {
+		// NOTE: This puts items back on the background. We need this in more cases. Should be a method
 		if (Draggable.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
 			Draggable.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
 			Draggable.itemBeingDragged.transform.SetParent(cardHolder); // Make sure to parent back to the tabletop
+			Draggable.itemBeingDragged.transform.localRotation = Quaternion.Euler(0f, 0f, Draggable.itemBeingDragged.transform.eulerAngles.z);
 		}
 	}
 
