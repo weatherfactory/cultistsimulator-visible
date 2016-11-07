@@ -5,7 +5,16 @@ using System.Text;
 using Noon;
 using UnityEngine.Assertions;
 
-
+/// <summary>
+/// InteractiveRecipeSituations: these are what we were calling 'Situations' in the early UI discussion.
+/// A RecipeSituation is the biz object that handles an ongoing recipe with a timer.
+/// An InteractiveRecipeSituation:
+/// - can persist some elements consumed from the workspace when the recipe is queued: 'You've started an expedition! I'll hang on to all these Followers, we may get them back later'
+/// - executes its recipes against *those* elements, not against stockpile elements: 'one of these followers has died, but they've found these Progress elements, but those are still in the recipe
+/// situation, not in your stockpile'
+/// - can retrieve some of those elements when it's done: 'The expedition has finished! Here are your followers back in your stockpile (but the Progress elements have just been thrown away now we've finished')
+/// - has a slot which can accept input of additional elements while the recipes inside the InteractiveSituation are looping (this is not implemented! it's what I'm working on now)
+/// </summary>
 public class InteractiveRecipeSituation: BaseRecipeSituation
     {
     private  IElementsContainer InternalContainer;
