@@ -10,15 +10,17 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     protected float _timeRemaining;
     protected List<IRecipeSituationSubscriber> _subscribers=new List<IRecipeSituationSubscriber>();
     protected Compendium _compendium;
-    protected Recipe currentRecipe;
+    private Recipe _currentRecipe;
+    private bool _fresh;
+
     
     public string CurrentRecipeId
     {
         get
         {
-            if (currentRecipe == null)
+            if (CurrentRecipe == null)
                 return null;
-            return (currentRecipe.Id);
+            return (CurrentRecipe.Id);
         }
     }
 
@@ -43,7 +45,14 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     {
         get
         {
-            if(currentRecipe==null)
+            if (_fresh)
+            {
+                _fresh = false;
+                return RecipeTimerState.Fresh;
+            }
+
+
+            if(CurrentRecipe==null)
                 return RecipeTimerState.Extinct;
             if (TimeRemaining > 0)
                 return RecipeTimerState.Ongoing;
@@ -52,6 +61,18 @@ public abstract class BaseRecipeSituation:IRecipeSituation
         }
     }
 
+    protected Recipe CurrentRecipe
+    {
+        get { return _currentRecipe; }
+        set
+        {
+            _fresh = true;
+            _currentRecipe = value;
+        }
+    }
+
+
+
     public virtual int GetInternalElementQuantity(string forElementId)
     {
         return 0;
@@ -59,16 +80,18 @@ public abstract class BaseRecipeSituation:IRecipeSituation
 
     public BaseRecipeSituation(Recipe recipe, float? timeremaining,IElementsContainer inputContainer,Compendium rc)
     {
-        currentRecipe = recipe;
-        OriginalRecipeId = currentRecipe.Id;
+        CurrentRecipe = recipe;
+        OriginalRecipeId = CurrentRecipe.Id;
         _compendium = rc;
 
         if (timeremaining == null)
-            TimeRemaining = currentRecipe.Warmup;
+            TimeRemaining = CurrentRecipe.Warmup;
         else
             TimeRemaining = timeremaining.Value;
 
          CharacterContainer = inputContainer;
+
+
     }
 
     public void DoHeartbeat()
@@ -83,21 +106,33 @@ public abstract class BaseRecipeSituation:IRecipeSituation
 
     private void Continue()
     {
-        SituationInfo info = GetCurrentSituationInfo();
+        SituationInfo info = new SituationInfo();
+
+        info.Label = CurrentRecipe.Label;
+        info.Warmup = CurrentRecipe.Warmup;
+        info.TimeRemaining = TimeRemaining;
+        info.State = TimerState;
+
         publishUpdate(info);
     }
 
 
     public void Extinguish()
     {
-        currentRecipe = null;
+        _currentRecipe = null;
     }
 
  
     public void Subscribe(IRecipeSituationSubscriber subscriber)
     {
         _subscribers.Add(subscriber);
-        subscriber.ReceiveSituationUpdate(GetCurrentSituationInfo());
+        SituationInfo info = new SituationInfo();
+
+        info.Label = CurrentRecipe.Label;
+        info.Warmup = CurrentRecipe.Warmup;
+        info.TimeRemaining = TimeRemaining;
+        info.State = TimerState;
+        subscriber.SituationUpdated(info);
     }
 
     public abstract bool IsInteractive();
@@ -105,19 +140,10 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     protected virtual void publishUpdate(SituationInfo info)
     {
         foreach (var s in _subscribers)
-            s.ReceiveSituationUpdate(info);
-    }
-
-    private SituationInfo GetCurrentSituationInfo()
-    {
-        SituationInfo info=new SituationInfo();
-
-        info.Label = currentRecipe.Label;
-        info.Warmup = currentRecipe.Warmup;
-        info.TimeRemaining = TimeRemaining;
-        info.State = TimerState;
-
-        return info;
+            if(info.State==RecipeTimerState.Fresh)
+                s.SituationBegins(info);
+        else
+            s.SituationUpdated(info);
     }
 
 
@@ -125,34 +151,29 @@ public abstract class BaseRecipeSituation:IRecipeSituation
 
     protected virtual void resetWithRecipe(Compendium compendium)
     {
-        currentRecipe = compendium.GetRecipeById(currentRecipe.Loop);
-        TimeRemaining = currentRecipe.Warmup;
+        CurrentRecipe = compendium.GetRecipeById(CurrentRecipe.Loop);
+        TimeRemaining = CurrentRecipe.Warmup;
         
     }
 
 
     protected void Complete()
     {
-      
-        currentRecipe=ProcessRecipe();
+
+        CurrentRecipe = ProcessRecipe();
 
         SituationInfo info = new SituationInfo();
 
-
-
-
-        if (currentRecipe.Loop != null)
+        if (CurrentRecipe.Loop != null)
         {
             resetWithRecipe(_compendium);
-            info.Message = currentRecipe.Description;
+            info.Message = CurrentRecipe.Description;
         }
         else
         {
-            info.Message = currentRecipe.Description;
+            info.Message = CurrentRecipe.Description;
             Extinguish();
         }
-
-
 
         info.OriginalActionId = _compendium.GetRecipeById(OriginalRecipeId).ActionId;
         info.State = TimerState;
@@ -166,7 +187,7 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     {
         //find alternative recipe(s) - there may be additional recipes
         List<Recipe> recipesToExecute =
-            _compendium.GetActualRecipesToExecute(currentRecipe, CharacterContainer);
+            _compendium.GetActualRecipesToExecute(CurrentRecipe, CharacterContainer);
 
         foreach (Recipe executingRecipe in recipesToExecute)
         {
@@ -177,10 +198,10 @@ public abstract class BaseRecipeSituation:IRecipeSituation
         //This can be important if the alternative recipe has a different loop.
 
 
-        if (recipesToExecute[0].Id != currentRecipe.Id)
+        if (recipesToExecute[0].Id != CurrentRecipe.Id)
             return recipesToExecute[0];
                 else
-            return currentRecipe;;
+            return CurrentRecipe;;
     }
 }
     

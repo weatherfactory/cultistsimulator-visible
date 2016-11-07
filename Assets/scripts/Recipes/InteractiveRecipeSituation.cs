@@ -25,7 +25,7 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
         CharacterContainer = inputContainer;
         Dictionary<string, int> potentiallyPersistableIngredients = inputContainer.GetOutputElements();
         if (potentiallyPersistableIngredients != null) //if we have any suitable ingredients
-            AddIngredientsToInternalContainer(currentRecipe, potentiallyPersistableIngredients);
+            AddIngredientsToInternalContainer(CurrentRecipe, potentiallyPersistableIngredients);
     }
 
         public override int GetInternalElementQuantity(string forElementId)
@@ -38,17 +38,17 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
         //find alternative recipe(s) - there may be additional recipes
         //nb we check on the content elements of this situation, not the character's elements
         List<Recipe> recipesToExecute =
-            _compendium.GetActualRecipesToExecute(currentRecipe, InternalContainer);
+            _compendium.GetActualRecipesToExecute(CurrentRecipe, InternalContainer);
         
         foreach (Recipe executingRecipe in recipesToExecute)
         {
             executingRecipe.Do(InternalContainer);
             RetrieveContentsToCharacterAsPermitted(executingRecipe);
         }
-        if (recipesToExecute[0].Id != currentRecipe.Id)
+        if (recipesToExecute[0].Id != CurrentRecipe.Id)
                 return recipesToExecute[0];
             else
-                return currentRecipe;
+                return CurrentRecipe;
        
         }
 
@@ -72,15 +72,17 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
 
         protected override void publishUpdate(SituationInfo info)
         {
-            populateElementsInSituationInfo(info);
+            AddInteractiveElementsToSituationInfo(info);
                base.publishUpdate(info);
         }
 
-    private void populateElementsInSituationInfo(SituationInfo info)
+    private void AddInteractiveElementsToSituationInfo(SituationInfo info)
     {
             Dictionary<string, int> inSituation = InternalContainer.GetAllCurrentElements();
             foreach (string k in inSituation.Keys)
-                info.ElementsInSituation.Add(k, inSituation[k]);
+                info.DisplayElementsInSituation.Add(k, inSituation[k]);
+
+            info.DisplayChildSlotSpecifications.AddRange(CurrentRecipe.ChildSlotSpecifications);
     }
 
     private void AddIngredientsToInternalContainer(Recipe recipe, Dictionary<string, int> possiblyPersisted)

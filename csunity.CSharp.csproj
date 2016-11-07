@@ -83,7 +83,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\Interfaces\IElementSlotEventSubscriber.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -231,6 +230,7 @@
     <Compile Include="Assets\scripts\Infrastructure\ResourcesManager.cs" />
     <Compile Include="Assets\scripts\Interfaces\ICharacterInfoSubscriber.cs" />
     <Compile Include="Assets\scripts\Interfaces\IElementQuantityDisplay.cs" />
+    <Compile Include="Assets\scripts\Interfaces\IElementSlotEventSubscriber.cs" />
     <Compile Include="Assets\scripts\Interfaces\IElementsContainer.cs" />
     <Compile Include="Assets\scripts\Interfaces\INotifyLocator.cs" />
     <Compile Include="Assets\scripts\Interfaces\IRecipeSituation.cs" />
@@ -242,6 +242,7 @@
     <Compile Include="Assets\scripts\Recipes\RecipeDisplay.cs" />
     <Compile Include="Assets\scripts\Recipes\SealedRecipeSituation.cs" />
     <Compile Include="Assets\scripts\Recipes\SituationInfo.cs" />
+    <Compile Include="Assets\scripts\Recipes\SlotsPanel.cs" />
     <Compile Include="Assets\scripts\Recipes\TimerPanel.cs" />
     <Compile Include="Assets\scripts\Recipes\World.cs" />
     <Compile Include="Assets\scripts\Recipes\WorldPanel.cs" />
