@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// Entity class: a child slot for an element
+/// </summary>
 public class ChildSlotSpecification
 {
     public string Label { get; set; }

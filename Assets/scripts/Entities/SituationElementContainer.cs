@@ -1,7 +1,9 @@
 ﻿using System;
 
 
-
+/// <summary>
+/// This is an internal container for SituationRecipes that have their own contents
+/// </summary>
     public class SituationElementContainer: BaseElementsContainer
     {
         public override void ModifyElementQuantity(string elementId, int quantityChange)

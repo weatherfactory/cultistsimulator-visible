@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+
+///this is a reference object stored in Compendium where we indicate aspects, child slots and other properties
 public class Element
 {
     public Dictionary<string, int> Aspects;

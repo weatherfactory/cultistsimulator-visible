@@ -4,7 +4,9 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 
-
+/// <summary>
+/// Base methods for verb and element tokens. This is very early code, hacked together from a tutorial sample
+/// </summary>
 public abstract class DraggableToken : BoardMonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public Vector3 StartPosition;

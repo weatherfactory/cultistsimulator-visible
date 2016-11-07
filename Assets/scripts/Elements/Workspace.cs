@@ -3,6 +3,10 @@ using UnityEngine;
 using System.Collections;
 using Noon;
 
+
+/// <summary>
+/// Current prototype assumes one workspace into which verbs are dragged; we currently plan to move away from this.
+/// </summary>
 public class Workspace : BoardMonoBehaviour, IElementSlotEventSubscriber
 {
 

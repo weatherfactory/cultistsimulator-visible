@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+/// <summary>
+/// ElementsContainers are given to Recipes. Currently, some recipes take the Character; other recipes
+/// (interactivesituations) have their own internal container
+/// </summary>
     public abstract class BaseElementsContainer: IElementsContainer
     {
     protected Dictionary<string, int> _elements;

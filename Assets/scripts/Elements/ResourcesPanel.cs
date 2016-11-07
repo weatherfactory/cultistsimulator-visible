@@ -2,6 +2,11 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
+
+/// <summary>
+/// displays all the elements the character currently possesses. This behaviour is quite buggy at the moment;
+/// stacks display with 0, stacks move when the player picks up one of their members. That's on the fix list
+/// </summary>
 public class ResourcesPanel : BoardMonoBehaviour,IDropHandler,IStockpileLocation {
 
     public void OnDrop(PointerEventData eventData)

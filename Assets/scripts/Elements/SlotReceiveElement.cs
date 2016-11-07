@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// This is used in the workspace, and it's *about* to be used in InteractiveSituations, which will receive elements while ongoing.
+/// </summary>
 public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 {
     /// <summary>

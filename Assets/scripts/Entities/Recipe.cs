@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// This is mostly a bundle of properties, but the Do method is core logic! - it's where element countss are actually changed
+/// </summary>
 [Serializable]
     public class Recipe
     {

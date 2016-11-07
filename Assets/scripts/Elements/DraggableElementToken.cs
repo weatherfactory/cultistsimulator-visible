@@ -9,7 +9,9 @@ using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// An element on the board. Old, much-refactored code that still needs some refactoring
+/// </summary>
 public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyLocator
     {
 

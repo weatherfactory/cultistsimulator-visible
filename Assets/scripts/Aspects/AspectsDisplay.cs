@@ -6,6 +6,9 @@ using System.Linq.Expressions;
 using Mono.Security.Cryptography;
 using UnityEngine.UI;
 
+/// <summary>
+/// displays a summary of aspects; used for the workspace display, and in the recipe book
+/// </summary>
 public class AspectsDisplay : BoardMonoBehaviour
 {
 

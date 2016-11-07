@@ -2,6 +2,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// property of DraggableElementToken, used to organise others in workspace
+/// </summary>
 public class ChildSlotOrganiser : BoardMonoBehaviour
 {
     [SerializeField]GameObject PrefabEmptyElementSlot;

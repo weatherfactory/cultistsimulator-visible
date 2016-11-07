@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+/// <summary>
+/// just a bundle of properties
+/// </summary>
     public class Verb
     {
         private string _id;
