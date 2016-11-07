@@ -19,7 +19,7 @@ public class ElementDetailsWindow : MonoBehaviour {
 	void OnEnable () {
 		Draggable.onChangeDragState += OnChangeDragState;
 	}
-	// Make sure we unsubscribe when this gets disabled or destroyed to avoid further calls
+	// Make sure we unsubscribe when this gets disabled or destroyed to avoid further
 	void OnDisable() {
 		Draggable.onChangeDragState -= OnChangeDragState;
 	}
@@ -42,9 +42,12 @@ public class ElementDetailsWindow : MonoBehaviour {
 		description.text = "Test Description for "+card.elementId; 
 		slots.text = "Test Slots for "+card.elementId; 
 		aspects.text = "Test Aspects for "+card.elementId;
+
+		linkedCard.detailsWindow = this; // this is hacky. We're saving the window in the card so we don't double-open windows.
 	}
 
 	public void Hide() {
+		linkedCard.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
 		GameObject.Destroy(gameObject);
 	}
 

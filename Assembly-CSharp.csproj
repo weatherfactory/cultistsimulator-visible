@@ -59,6 +59,7 @@
      <Compile Include="Assets\TabletopPrototype\Scripts\ElementDetailsWindow.cs" />
      <Compile Include="Assets\TabletopPrototype\Scripts\TabletopBackground.cs" />
      <Compile Include="Assets\TabletopPrototype\Scripts\TabletopManager.cs" />
+     <Compile Include="Assets\TabletopPrototype\Scripts\VerbBox.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />
@@ -198,7 +199,7 @@
      <Compile Include="Assets\scripts\Infrastructure\NotificationPanel.cs" />
      <Compile Include="Assets\scripts\Infrastructure\ResourcesManager.cs" />
      <Compile Include="Assets\scripts\Interfaces\ICharacterInfoSubscriber.cs" />
-     <Compile Include="Assets\scripts\Interfaces\IElementChangeSubscriber.cs" />
+     <Compile Include="Assets\scripts\Interfaces\IElementQuantityDisplay.cs" />
      <Compile Include="Assets\scripts\Interfaces\IElementSlotEventSubscriber.cs" />
      <Compile Include="Assets\scripts\Interfaces\IElementsContainer.cs" />
      <Compile Include="Assets\scripts\Interfaces\INotifyLocator.cs" />

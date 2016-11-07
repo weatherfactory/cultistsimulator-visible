@@ -10,6 +10,7 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 	[SerializeField] TextMeshProUGUI text;
 
 	public string elementId { private set; get; }
+	public ElementDetailsWindow detailsWindow;
 
 	public void SetElement(string id, int quantity, Compendium cm) {
 		name = "Card_" + id;
@@ -29,8 +30,8 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 	}
 
 	private void DisplayIcon(Element e) {
-		Sprite elementSprite = ResourcesManager.GetSpriteForElement(e.Id);
-		artwork.sprite = elementSprite;
+		Sprite sprite = ResourcesManager.GetSpriteForElement(e.Id);
+		artwork.sprite = sprite;
 	}
 
 	public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile, int workspaceQuantityAdjustment) {
