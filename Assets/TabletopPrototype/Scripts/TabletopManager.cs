@@ -5,13 +5,16 @@ using System.Collections.Generic;
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 public class TabletopManager : MonoBehaviour {
 
+	[Header("Existing Objects")]
 	[SerializeField] Transform cardHolder;
 	[SerializeField] Transform windowParent;
-	[SerializeField] ElementCardClickable elementCardPrefab;
-	[SerializeField] VerbBox verbBox;
-	[SerializeField] ElementDetailsWindow elementDetailWindowPrefab;
-
 	[SerializeField] TabletopBackground background;
+
+	[Header("Prefabs")]
+	[SerializeField] ElementCardClickable elementCardPrefab;
+	[SerializeField] ElementDetailsWindow elementDetailWindowPrefab;
+	[SerializeField] VerbBox verbBoxPrefab;
+	[SerializeField] RecipeDetailsWindow recipeDetailsWindowPrefab;
 
 	private Compendium compendium;
 
@@ -65,7 +68,8 @@ public class TabletopManager : MonoBehaviour {
 
 	// Ideally we pool and reuse these
 	VerbBox BuildVerbBox() {
-		var box = Instantiate(verbBox) as VerbBox;
+		var box = Instantiate(verbBoxPrefab) as VerbBox;
+		box.onVerbBoxClicked += HandleOnVerbBoxClicked;
 		box.transform.SetParent(cardHolder);
 		box.transform.localScale = Vector3.one;
 		box.transform.localPosition = Vector3.zero;
@@ -100,6 +104,22 @@ public class TabletopManager : MonoBehaviour {
 		return card;
 	}
 
+	// Recipe Detail Windows
+
+	void ShowRecipeDetails(VerbBox card) {
+		var window = BuildRecipeDetailsWindow();
+		window.transform.position = card.transform.position;
+		window.SetVerb(card);
+	}
+
+	// Ideally we pool and reuse these
+	RecipeDetailsWindow BuildRecipeDetailsWindow() {
+		var card = Instantiate(recipeDetailsWindowPrefab) as RecipeDetailsWindow;
+		card.transform.SetParent(windowParent);
+		card.transform.localScale = Vector3.one;
+		return card;
+	}
+
 	#endregion
 
 	#region -- INTERACTION ----------------------------------------------------
@@ -117,6 +137,21 @@ public class TabletopManager : MonoBehaviour {
 		else {
 			card.transform.SetParent(cardHolder); // remove card from details window before hiding it, so it isn't removed
 			card.detailsWindow.Hide();
+		}
+	}
+
+	void HandleOnVerbBoxClicked(VerbBox box) {
+		if (box.detailsWindow == null)
+			ShowRecipeDetails(box);
+		else {
+			box.transform.SetParent(cardHolder); // remove verb from details window before hiding it, so it isn't removed
+
+			var heldCards = box.detailsWindow.GetAllHeldCards();
+
+			foreach (var item in heldCards) 
+				item.transform.SetParent(cardHolder); // remove cards from details window before hiding it, so they aren't removed
+
+			box.detailsWindow.Hide();
 		}
 	}
 
