@@ -96,7 +96,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
     {
         GameObject verbToken=Instantiate(prefabVerbToken,parentTransform) as GameObject;
         Image image = verbToken.GetComponent<Image>();
-        Sprite sprite = _heart.ResourcesManager.GetSpriteForVerb(v.Id);
+        Sprite sprite = ResourcesManager.GetSpriteForVerb(v.Id);
         DraggableVerbToken token = verbToken.GetComponent<DraggableVerbToken>();
         image.sprite = sprite;
         return verbToken;

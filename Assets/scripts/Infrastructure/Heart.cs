@@ -12,8 +12,6 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
     [SerializeField] private BoardManager BM;
     //Compendium contains all the config information on elements and recipes. It used to be just RecipeCompendium and may still be referred to that way
     public Compendium Compendium;
-    //wrapper for Resources folder
-    public ResourcesManager ResourcesManager;
 
     private const string DO="Do"; //so we don't get a tiny daft typo with the Invoke
     public Character Character;
@@ -48,8 +46,6 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
 
   
     void Start () {
-        ResourcesManager=new ResourcesManager();
-     
         //I don't have any dependency injection at the moand I want to unit-test Compendium, passing in Dice in the constructor so I can override it
         Compendium=new Compendium(new Dice());
         RefreshContent();

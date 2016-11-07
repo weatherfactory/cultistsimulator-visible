@@ -33,7 +33,7 @@ public class DraggableElementToken: DraggableToken,IPointerClickHandler,INotifyL
     public void DisplayIcon(Element e)
     {
         Image elementImage = GetComponentsInChildren<Image>().Single(i => i.name == "imgElementIcon");
-        Sprite elementSprite = Heart.ResourcesManager.GetSpriteForElement(e.Id);
+        Sprite elementSprite = ResourcesManager.GetSpriteForElement(e.Id);
         elementImage.sprite = elementSprite;
     }
 

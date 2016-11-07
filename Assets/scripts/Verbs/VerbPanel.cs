@@ -38,7 +38,7 @@ public class VerbPanel : BoardMonoBehaviour {
         verbFrame.name = "Frame - " + v.Id;
         verbFrame.GetComponent<VerbFrame>().ForVerbId = v.Id;
         Image image = verbFrame.GetComponentsInChildren<Image>().Single(i => i.name == "VerbToken");
-        Sprite sprite = Heart.ResourcesManager.GetSpriteForVerb(v.Id);
+        Sprite sprite = ResourcesManager.GetSpriteForVerb(v.Id);
         image.sprite = sprite;
         DraggableVerbToken token = verbFrame.GetComponentInChildren<DraggableVerbToken>();
         token.Verb = v;
