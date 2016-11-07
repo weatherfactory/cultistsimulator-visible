@@ -475,7 +475,12 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         pnlVerbs.UnblockVerb(recipeActionId);
     }
 
-    public void ReceiveSituationUpdate(SituationInfo info)
+    public void SituationBegins(SituationInfo info)
+    {
+        return;
+    }
+
+    public void SituationUpdated(SituationInfo info)
     {
         if(info.State == RecipeTimerState.Complete || info.State==RecipeTimerState.Extinct)
         {

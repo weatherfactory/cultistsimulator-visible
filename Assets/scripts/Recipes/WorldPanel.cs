@@ -6,20 +6,19 @@ using UnityEngine.Assertions;
 
 public class WorldPanel : BoardMonoBehaviour
 {
-    [SerializeField] private GameObject prefabTimerPanel;
+    [SerializeField] private TimerPanel prefabTimerPanel;
     [SerializeField]
-    private GameObject prefabInteractiveTimerPanel;
+    private TimerPanel prefabInteractiveTimerPanel;
 
     public void RegisterSituation(IRecipeSituation rs)
     {
-        GameObject newTPobj;
+        TimerPanel newTPobj;
         if (rs.IsInteractive())
-            newTPobj = Instantiate(prefabInteractiveTimerPanel, transform) as GameObject;
+            newTPobj = Instantiate(prefabInteractiveTimerPanel, transform) as TimerPanel;
         else
-            newTPobj = Instantiate(prefabTimerPanel, transform) as GameObject;
-        TimerPanel newTP = newTPobj.GetComponent<TimerPanel>();
+            newTPobj = Instantiate(prefabTimerPanel, transform) as TimerPanel;
 
-  rs.Subscribe(newTP);
+  rs.Subscribe(newTPobj);
     }
   
 }

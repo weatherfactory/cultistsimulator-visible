@@ -10,9 +10,9 @@ public class SituationInfo
     /// <summary>
     /// Elements currently inside the situation, to be displayed
     /// </summary>
-   public Dictionary<string,int> ElementsInSituation=new Dictionary<string, int>();
+   public Dictionary<string,int> DisplayElementsInSituation=new Dictionary<string, int>();
 
-        public List<ChildSlotSpecification> ChildSlotSpecifications;
+   public List<ChildSlotSpecification> DisplayChildSlotSpecifications=new List<ChildSlotSpecification>();
 
     public string Label;
     public int Warmup;
