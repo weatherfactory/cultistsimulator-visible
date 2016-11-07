@@ -31,7 +31,12 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
         public override int GetInternalElementQuantity(string forElementId)
         {
             return InternalContainer.GetCurrentElementQuantity(forElementId);
-    }
+        }
+
+        public void ModifyInternalElementQuantity(string elementId, int change)
+        {
+            InternalContainer.ModifyElementQuantity(elementId,change);
+        }
 
         protected override Recipe ProcessRecipe()
         {
@@ -72,17 +77,18 @@ public class InteractiveRecipeSituation: BaseRecipeSituation
 
         protected override void publishUpdate(SituationInfo info)
         {
-            AddInteractiveElementsToSituationInfo(info);
+            SetAdditionalPropertiesInSituationInfo(info);
                base.publishUpdate(info);
         }
 
-    private void AddInteractiveElementsToSituationInfo(SituationInfo info)
+    private void SetAdditionalPropertiesInSituationInfo(SituationInfo info)
     {
             Dictionary<string, int> inSituation = InternalContainer.GetAllCurrentElements();
             foreach (string k in inSituation.Keys)
                 info.DisplayElementsInSituation.Add(k, inSituation[k]);
 
-            info.DisplayChildSlotSpecifications.AddRange(CurrentRecipe.ChildSlotSpecifications);
+            if (CurrentRecipe!=null)
+                info.DisplayChildSlotSpecifications.AddRange(CurrentRecipe.ChildSlotSpecifications);
     }
 
     private void AddIngredientsToInternalContainer(Recipe recipe, Dictionary<string, int> possiblyPersisted)

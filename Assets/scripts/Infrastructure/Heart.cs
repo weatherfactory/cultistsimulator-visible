@@ -40,7 +40,7 @@ public class Heart : MonoBehaviour,ICharacterInfoSubscriber
         // character.ModifyElementQuantity("health", 3);
         
         
-        character.ModifyElementQuantity("occultscrap", 1);
+        character.ModifyElementQuantity("occultscrap", 10);
       //  character.ModifyElementQuantity("shilling", 10);
 
         return character;

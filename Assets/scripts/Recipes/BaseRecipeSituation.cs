@@ -56,7 +56,7 @@ public abstract class BaseRecipeSituation:IRecipeSituation
                 return RecipeTimerState.Extinct;
             if (TimeRemaining > 0)
                 return RecipeTimerState.Ongoing;
-            else
+            
                 return RecipeTimerState.Complete;
         }
     }
@@ -141,7 +141,7 @@ public abstract class BaseRecipeSituation:IRecipeSituation
     {
         foreach (var s in _subscribers)
             if(info.State==RecipeTimerState.Fresh)
-                s.SituationBegins(info);
+                s.SituationBegins(info,this);
         else
             s.SituationUpdated(info);
     }

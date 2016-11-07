@@ -475,7 +475,8 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
         pnlVerbs.UnblockVerb(recipeActionId);
     }
 
-    public void SituationBegins(SituationInfo info)
+    //TODO: remove temp hack
+    public void SituationBegins(SituationInfo info,BaseRecipeSituation foo)
     {
         return;
     }
