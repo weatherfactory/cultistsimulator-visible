@@ -58,6 +58,10 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 		selectedMarker.gameObject.SetActive(isSelected);
 	}
 
+	public Sprite GetSprite() {
+		return artwork.sprite;
+	}
+
 	public void StartTimer() {
 		if (isBusy)
 			return;

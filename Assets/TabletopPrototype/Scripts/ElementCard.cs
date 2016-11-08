@@ -41,6 +41,10 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 		selectedMarker.gameObject.SetActive(isSelected);
 	}
 
+	public Sprite GetSprite() {
+		return artwork.sprite;
+	}
+
 	public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile, int workspaceQuantityAdjustment) {
 		throw new System.NotImplementedException();
 	}

@@ -8,6 +8,7 @@ public class ElementDetailsWindow : MonoBehaviour {
 
 	[SerializeField] CanvasGroup canvasGroup;
 	[SerializeField] Transform cardHolder;
+	[SerializeField] Image artwork;
 	[SerializeField] TextMeshProUGUI title;
 	[SerializeField] TextMeshProUGUI description;
 	[SerializeField] TextMeshProUGUI slots;
@@ -23,6 +24,7 @@ public class ElementDetailsWindow : MonoBehaviour {
 //		card.transform.localRotation = Quaternion.identity;
 
 		// This data needs to come from the Compendium, but it's currently not accessible here
+		artwork.sprite = card.GetSprite();
 		title.text = card.name;
 		description.text = "Test Description for "+card.elementId; 
 		slots.text = "Test Slots for "+card.elementId; 

@@ -15,6 +15,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	[SerializeField] CanvasGroupFader canvasGroupFader;
 	[SerializeField] CanvasGroup canvasGroup;
 	[SerializeField] Transform cardHolder;
+	[SerializeField] Image artwork;
 	[SerializeField] TextMeshProUGUI title;
 	[SerializeField] TextMeshProUGUI description;
 	[SerializeField] LayoutGroup slotsHolder;
@@ -48,6 +49,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		// This data needs to come from the Compendium, but it's currently not accessible here
 		// We don't have a reference to it and honestly, it's going to be used in every one of these display objects
 		// setting references seems unecessary, but then again I'm not that opposed to statics and singletons as you are ;)
+		artwork.sprite = box.GetSprite();
 		title.text = box.name;
 		description.text = "Test Description for "+box.verbId; 
 		aspects.text = "Test Aspects for "+box.verbId;
