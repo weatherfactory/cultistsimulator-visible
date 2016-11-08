@@ -19,12 +19,9 @@ public class TabletopManager : MonoBehaviour {
 	[Header("View Settings")]
 	[SerializeField] float windowZOffset = -10f;
 
-	private Compendium compendium;
-
 	void Start () {
-		compendium = new Compendium(new Dice());
-		ContentImporter ContentImporter = new ContentImporter();
-		ContentImporter.PopulateCompendium(compendium);
+		var compendiumHolder = gameObject.AddComponent<CompendiumHolder>();
+		compendiumHolder.Init();
 
 		// Init Listeners to pre-existing Display Objects
 		background.onDropped += HandleOnBackgroundDropped;
@@ -47,7 +44,7 @@ public class TabletopManager : MonoBehaviour {
 		float cardWidth = (elementCardPrefab.transform as RectTransform).rect.width + 20f;
 
 		// build verbs
-		var verbs = compendium.GetAllVerbs();
+		var verbs = CompendiumHolder.compendium.GetAllVerbs();
 
 		for (int i = 0; i < verbs.Count; i++) {
 			box = BuildVerbBox();
@@ -58,7 +55,7 @@ public class TabletopManager : MonoBehaviour {
 		// 10 test cards
 		for (int i = 0; i < 10; i++) {
 			card = BuildElementCard();
-			card.SetElement(legalElementIDs[i % legalElementIDs.Length], 1, compendium);
+			card.SetElement(legalElementIDs[i % legalElementIDs.Length], 1);
 			card.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
 		}
 	}

@@ -14,11 +14,11 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 	public string elementId { private set; get; }
 	[HideInInspector] public ElementDetailsWindow detailsWindow;
 
-	public void SetElement(string id, int quantity, Compendium cm) {
+	public void SetElement(string id, int quantity) {
 		name = "Card_" + id;
 
 		elementId = id;
-		var element = cm.GetElementById(id);
+		var element = CompendiumHolder.compendium.GetElementById(id);
 
 		if (element == null)
 			return;
