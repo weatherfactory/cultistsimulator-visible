@@ -119,7 +119,9 @@ public class TabletopManager : MonoBehaviour {
 	}
 
 	void HideElementDetails(ElementCard card) {
-		PutTokenOnTable(card.transform as RectTransform); // remove card from details window before hiding it, so it isn't removed
+		if (Draggable.itemBeingDragged == null || Draggable.itemBeingDragged.gameObject != card.gameObject)
+			PutTokenOnTable(card.transform as RectTransform); // remove card from details window before hiding it, so it isn't removed, if we're not already dragging it
+
 		elementWindows.Remove(card.detailsWindow);
 		card.detailsWindow.Hide();
 	}
@@ -151,7 +153,8 @@ public class TabletopManager : MonoBehaviour {
 	}
 
 	void HideRecipeDetails(VerbBox box, bool keepCards) {
-		PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed
+		if (Draggable.itemBeingDragged  == null || Draggable.itemBeingDragged.gameObject != box.gameObject)
+			PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
 		if (keepCards) {
 			var heldCards = box.detailsWindow.GetAllHeldCards();
@@ -247,7 +250,9 @@ public class TabletopManager : MonoBehaviour {
 		// NOTE: This puts items back on the background. We need this in more cases. Should be a method
 		if (Draggable.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
 			Draggable.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-			// This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer
+			// This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
+			// Dragged windows should not change in height during/after dragging, since they float by default
+
 			PutTokenOnTable(Draggable.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
 		}
 	}

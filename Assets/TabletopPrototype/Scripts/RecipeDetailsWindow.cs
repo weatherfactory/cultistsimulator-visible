@@ -12,6 +12,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	// or it gives out the recipe directly
 	public event System.Action<RecipeDetailsWindow, VerbBox> onStartRecipe;
 
+	[SerializeField] CanvasGroupFader canvasGroupFader;
 	[SerializeField] CanvasGroup canvasGroup;
 	[SerializeField] Transform cardHolder;
 	[SerializeField] TextMeshProUGUI title;
@@ -38,7 +39,9 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	public void SetVerb(VerbBox box) {
 		linkedBox = box;
 
-		box.transform.SetParent(cardHolder);
+		box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
+											 // Instead we should lock positions in some other way?
+		            						 // Window subscribes to verb/element, and when it's position is changed window updates it's own?
 		box.transform.localPosition = Vector3.zero;
 		box.transform.localRotation = Quaternion.identity;
 
@@ -53,6 +56,9 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		// could also track the open windows in tabletop manager instead and check there.
 
 		UpdateSlots();
+
+		canvasGroupFader.SetAlpha(0f);
+		canvasGroupFader.Show();
 	}
 
 	public VerbBox GetVerb() {
@@ -80,7 +86,8 @@ public class RecipeDetailsWindow : MonoBehaviour {
 
 	public void Hide() {
 		linkedBox.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
-		GameObject.Destroy(gameObject);
+		canvasGroupFader.destroyOnHide = true;
+		canvasGroupFader.Hide();
 	}
 
 	public ElementCard[] GetAllHeldCards() {
