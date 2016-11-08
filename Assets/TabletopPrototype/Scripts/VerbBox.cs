@@ -24,9 +24,6 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	private int numCompletions = 0;
 
 	public void SetVerb(string id, Compendium cm) {
-		name = "Verb_" + id;
-
-		verbId = id;
 		var verb = cm.GetVerbById(id);
 
 		if (verb != null)
@@ -34,7 +31,8 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void SetVerb(Verb verb) {
-		name = "Verb" + verb.Id;
+		verbId = verb.Id;
+		name = "Verb_" + verb.Id;
 
 		if (verb == null)
 			return;
