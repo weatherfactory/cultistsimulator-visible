@@ -5,5 +5,5 @@ using System.Text;
 
 
 
-public enum RecipeTimerState { Ongoing = 1, Complete = 10,Extinct=100 }
+public enum RecipeTimerState {Fresh, Ongoing, Complete,Extinct }
 

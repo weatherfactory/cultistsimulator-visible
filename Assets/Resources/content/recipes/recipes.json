@@ -179,7 +179,7 @@
 		loop: "testresearchspine",
 		 slots:
             {
-			"assistant": {  required: {assistant:1},
+			"assistant": {  required: {assistant:1, secrethistories:1},
                 forbidden: {}},
 			"material": {  required: {secrethistories:1},
                 forbidden: {}}

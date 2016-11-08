@@ -6,6 +6,8 @@ using System.Text;
 
     public interface IRecipeSituationSubscriber
     {
-       void ReceiveSituationUpdate(SituationInfo info);
+        void SituationBegins(SituationInfo info);
+    void SituationUpdated(SituationInfo info);
+    
     }
 

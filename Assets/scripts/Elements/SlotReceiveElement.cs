@@ -79,7 +79,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
                     AddElementToSlot(draggableElementToken);
                 else
                 { 
-                PublishElementCannotBeAddedToSlot(draggableElementToken.Element,elementSlotMatch);
+                PublishThatElementCannotBeAddedToSlot(draggableElementToken.Element,elementSlotMatch);
                 draggableElementToken.ReturnToOrigin();
                 }
             }
@@ -93,12 +93,12 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
 //settle the element in the slot, and update aspects
         draggableElementToken.transform.SetParent(transform);
         
-        PublishElementAddedToSlot(draggableElementToken.Element);
+        PublishThatElementAddedToSlot(draggableElementToken.Element);
 
 
     }
 
-    private void PublishElementAddedToSlot(Element element)
+    private void PublishThatElementAddedToSlot(Element element)
     {
         foreach (var elementSlotEventSubscriber in _subscribers)
         {
@@ -106,7 +106,7 @@ public class SlotReceiveElement : BoardMonoBehaviour, IDropHandler
         }
     }
 
-    private void PublishElementCannotBeAddedToSlot(Element element,ElementSlotMatch match)
+    private void PublishThatElementCannotBeAddedToSlot(Element element,ElementSlotMatch match)
     {
         foreach (var elementSlotEventSubscriber in _subscribers)
         {
