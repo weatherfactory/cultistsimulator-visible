@@ -16,6 +16,9 @@ public class TabletopManager : MonoBehaviour {
 	[SerializeField] VerbBox verbBoxPrefab;
 	[SerializeField] RecipeDetailsWindow recipeDetailsWindowPrefab;
 
+	[Header("View Settings")]
+	[SerializeField] float windowZOffset = -10f;
+
 	private Compendium compendium;
 
 	void Start () {
@@ -25,6 +28,7 @@ public class TabletopManager : MonoBehaviour {
 
 		// Init Listeners to pre-existing Display Objects
 		background.onDropped += HandleOnBackgroundDropped;
+		Draggable.onChangeDragState += OnChangeDragState;
 
 		// Build initial test data
 		BuildTestData();
@@ -62,7 +66,7 @@ public class TabletopManager : MonoBehaviour {
 		"shilling"
 	};
 
-	#region -- CREATE VIEW OBJECTS ----------------------------------------------------
+	#region -- CREATE / REMOVE VIEW OBJECTS ----------------------------------------------------
 
 	// Verb Boxes
 
@@ -93,9 +97,21 @@ public class TabletopManager : MonoBehaviour {
 	// Element Detail Windows
 
 	void ShowElementDetails(ElementCard card) {
+		if (elementWindows.Count == maxNumElements) 
+			HideElementDetails(elementWindows[0].GetElementCard());
+
+		PutTokenInAir(card.transform as RectTransform);
+
 		var window = BuildElementDetailsWindow();
 		window.transform.position = card.transform.position;
 		window.SetElementCard(card);
+		elementWindows.Add(window);
+	}
+
+	void HideElementDetails(ElementCard card) {
+		PutTokenOnTable(card.transform as RectTransform); // remove card from details window before hiding it, so it isn't removed
+		elementWindows.Remove(card.detailsWindow);
+		card.detailsWindow.Hide();
 	}
 
 	// Ideally we pool and reuse these
@@ -110,21 +126,28 @@ public class TabletopManager : MonoBehaviour {
 	// Recipe Detail Windows
 
 	void ShowRecipeDetails(VerbBox box) {
+		if (recipeWindows.Count == maxNumRecipes) 
+			HideRecipeDetails(recipeWindows[0].GetVerb(), true);
+
+		PutTokenInAir(box.transform as RectTransform);
+
 		var window = BuildRecipeDetailsWindow();
 		window.transform.position = box.transform.position;
 		window.SetVerb(box);
+		recipeWindows.Add(window);
 	}
 
 	void HideRecipeDetails(VerbBox box, bool keepCards) {
-		box.transform.SetParent(cardHolder); // remove verb from details window before hiding it, so it isn't removed
+		PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed
 
 		if (keepCards) {
 			var heldCards = box.detailsWindow.GetAllHeldCards();
 
-			foreach (var item in heldCards) 
-				item.transform.SetParent(cardHolder); // remove cards from details window before hiding it, so they aren't removed
+			foreach (var item in heldCards)
+				PutTokenOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
 		}
 
+		recipeWindows.Remove(box.detailsWindow);
 		box.detailsWindow.Hide();
 	}
 
@@ -138,9 +161,64 @@ public class TabletopManager : MonoBehaviour {
 		return window;
 	}
 
+	int maxNumRecipes = 1;
+	int maxNumElements = 1;
+	List<RecipeDetailsWindow> recipeWindows = new List<RecipeDetailsWindow>();
+	List<ElementDetailsWindow> elementWindows = new List<ElementDetailsWindow>();
+
+	#endregion
+
+	#region -- MOVE / CHANGE VIEW OBJECTS ----------------------------------------------------
+
+	// parents object to "CardHolder" (should rename to TokenHolder) and sets it's Z to 0.
+	public void PutTokenOnTable(RectTransform rectTransform) {
+		if (rectTransform == null)
+			return;
+
+		rectTransform.SetParent(cardHolder); 
+		rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
+	}
+
+	// parents object to "CardHolder" (should rename to TokenHolder) and sets it's Z to 0.
+	public void PutTokenInAir(RectTransform rectTransform) {
+		if (rectTransform == null)
+			return;
+
+		rectTransform.SetParent(cardHolder); 
+		rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
+	}
+
+
 	#endregion
 
 	#region -- INTERACTION ----------------------------------------------------
+
+	// This checks if we're dragging something and if we have to do some changes
+	// Currently this closes the windows when dragging is being done
+	// This was in the windows previously, but since i'm not holding a reference to 
+	// all open windows here it had to move up.
+	void OnChangeDragState (bool isDragging) {
+		if (isDragging == false || Draggable.itemBeingDragged.gameObject == null)
+			return;
+
+		ElementCard card = Draggable.itemBeingDragged.GetComponent<ElementCard>();
+
+		if (card != null) {
+			if (card.detailsWindow != null)
+				HideElementDetails(card);
+			else
+				return;			
+		}
+
+		VerbBox box = Draggable.itemBeingDragged.GetComponent<VerbBox>();
+
+		if (box != null) {
+			if (box.detailsWindow != null)
+				HideRecipeDetails(box, true);
+			else
+				return;			
+		}
+	}
 
 	void HandleOnBackgroundDropped() {
 		// NOTE: This puts items back on the background. We need this in more cases. Should be a method
@@ -155,8 +233,7 @@ public class TabletopManager : MonoBehaviour {
 		if (card.detailsWindow == null)
 			ShowElementDetails(card);
 		else {
-			card.transform.SetParent(cardHolder); // remove card from details window before hiding it, so it isn't removed
-			card.detailsWindow.Hide();
+			HideElementDetails(card);
 		}
 	}
 

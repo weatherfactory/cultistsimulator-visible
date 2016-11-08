@@ -25,20 +25,13 @@ public class RecipeDetailsWindow : MonoBehaviour {
 
 	// Make sure we subscribe to draggable changes to know when our linkedCard is being dragged
 	void OnEnable () {
-		Draggable.onChangeDragState += OnChangeDragState;
 		button.onClick.AddListener(HandleOnButtonClicked);
 	}
 	// Make sure we unsubscribe when this gets disabled or destroyed to avoid further
 	void OnDisable() {
-		Draggable.onChangeDragState -= OnChangeDragState;
 		button.onClick.RemoveListener(HandleOnButtonClicked);
 	}
 
-	void OnChangeDragState (bool isDragging) {
-		// We're dragging the card that this window is linked to
-		if (isDragging && Draggable.itemBeingDragged.gameObject == linkedBox.gameObject)
-			Hide();
-	}
 
 	// TODO: This should check the state of the verbBox/recipe and display the box accordingly.
 	public void SetVerb(VerbBox box) {
@@ -49,6 +42,8 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		box.transform.localRotation = Quaternion.identity;
 
 		// This data needs to come from the Compendium, but it's currently not accessible here
+		// We don't have a reference to it and honestly, it's going to be used in every one of these display objects
+		// setting references seems unecessary, but then again I'm not that opposed to statics and singletons as you are ;)
 		title.text = box.name;
 		description.text = "Test Description for "+box.verbId; 
 		aspects.text = "Test Aspects for "+box.verbId;
@@ -57,6 +52,10 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		// could also track the open windows in tabletop manager instead and check there.
 
 		UpdateSlots();
+	}
+
+	public VerbBox GetVerb() {
+		return linkedBox;
 	}
 
 	public void UpdateSlots() {		
@@ -74,6 +73,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		slot.transform.SetParent(slotsHolder.transform);
 		slot.transform.localScale = Vector3.one;
 		slot.transform.localPosition = Vector3.zero;
+		slot.transform.localRotation = Quaternion.identity;
 		return slot;
 	}
 

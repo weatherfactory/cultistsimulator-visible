@@ -11,7 +11,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public static Draggable itemBeingDragged;
 	public static bool resetToStartPos = true;
 	private static Camera dragCamera;
-
+	private static Transform draggableHolder;
 
 	protected Transform startParent;
 	protected Vector3 startPosition;
@@ -26,6 +26,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	void Awake() {
 		rectTransform = GetComponent<RectTransform>();
 		canvasGroup = GetComponent<CanvasGroup>();
+		draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform;
 	}
 
 	public void OnBeginDrag (PointerEventData eventData) {
@@ -57,7 +58,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		startParent = rectTransform.parent;
 		startSiblingIndex = rectTransform.GetSiblingIndex();
 		
-		rectTransform.SetParent(rectCanvas);
+		rectTransform.SetParent(draggableHolder);
 		rectTransform.SetAsLastSibling();
 		
 		Vector3 pressPos;
@@ -82,7 +83,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		if (eventData.delta.sqrMagnitude > 10f) {			
 			// This needs some tweaking
 			perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
-			transform.rotation = Quaternion.Euler(new Vector3(0, 0, -5 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 10));
+			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
 		}
 	}
 

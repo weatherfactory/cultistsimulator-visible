@@ -15,21 +15,6 @@ public class ElementDetailsWindow : MonoBehaviour {
 
 	ElementCard linkedCard;
 
-	// Make sure we subscribe to draggable changes to know when our linkedCard is being dragged
-	void OnEnable () {
-		Draggable.onChangeDragState += OnChangeDragState;
-	}
-	// Make sure we unsubscribe when this gets disabled or destroyed to avoid further
-	void OnDisable() {
-		Draggable.onChangeDragState -= OnChangeDragState;
-	}
-
-	void OnChangeDragState (bool isDragging) {
-		// We're dragging the card that this window is linked to
-		if (isDragging && Draggable.itemBeingDragged.gameObject == linkedCard.gameObject)
-			Hide();
-	}
-
 	public void SetElementCard(ElementCard card) {
 		linkedCard = card;
 
@@ -44,6 +29,10 @@ public class ElementDetailsWindow : MonoBehaviour {
 		aspects.text = "Test Aspects for "+card.elementId;
 
 		linkedCard.detailsWindow = this; // this is hacky. We're saving the window in the card so we don't double-open windows.
+	}
+
+	public ElementCard GetElementCard() {
+		return linkedCard;
 	}
 
 	public void Hide() {
