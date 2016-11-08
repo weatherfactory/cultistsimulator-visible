@@ -7,6 +7,10 @@ using TMPro;
 
 public class RecipeDetailsWindow : MonoBehaviour {
 
+	// This event should probably either give the window, which contains a reference to the recipe
+	// or it gives out the recipe directly
+	public event System.Action<RecipeDetailsWindow, VerbBox> onStartRecipe;
+
 	[SerializeField] CanvasGroup canvasGroup;
 	[SerializeField] Transform cardHolder;
 	[SerializeField] TextMeshProUGUI title;
@@ -36,6 +40,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 			Hide();
 	}
 
+	// TODO: This should check the state of the verbBox/recipe and display the box accordingly.
 	public void SetVerb(VerbBox box) {
 		linkedBox = box;
 
@@ -48,7 +53,8 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		description.text = "Test Description for "+box.verbId; 
 		aspects.text = "Test Aspects for "+box.verbId;
 
-		linkedBox.detailsWindow = this; // this is hacky. We're saving the window in the card so we don't double-open windows.
+		linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
+		// could also track the open windows in tabletop manager instead and check there.
 
 		UpdateSlots();
 	}
@@ -96,6 +102,9 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	void HandleOnButtonClicked() {
 		// This should be given through to the tabletop manager, normally.
 		Debug.Log("Button clicked!");
+
+		if (onStartRecipe != null)
+			onStartRecipe(this, linkedBox);
 	}
 
 }

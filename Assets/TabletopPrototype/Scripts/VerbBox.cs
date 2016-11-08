@@ -9,9 +9,19 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 
 	[SerializeField] Image artwork;
 	[SerializeField] TextMeshProUGUI text;
+	[SerializeField] Image countdownBar;
+	[SerializeField] TextMeshProUGUI countdownText;
 
+	[HideInInspector] public RecipeDetailsWindow detailsWindow;
 	public string verbId { private set; get; }
-	public RecipeDetailsWindow detailsWindow;
+
+	// Question how much of that we retain in the DisplayObject or in the Verb.
+	// For conveninence I think it makes sense to keep it in the verb/situation/recipe and either
+	// referencing them here for easy access or having the verb constantly push
+	// updates to a set of duplicate fields.
+	public bool isBusy { private set; get; }
+	private float timeRemaining = 0f;
+	private int numCompletions = 0;
 
 	public void SetVerb(string id, Compendium cm) {
 		name = "Verb_" + id;
@@ -31,6 +41,8 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 
 		DisplayName(verb);
 		DisplayIcon(verb);
+		countdownBar.gameObject.SetActive(false);
+		countdownText.gameObject.SetActive(false);
 	}
 
 	private void DisplayName(Verb v) {
@@ -42,9 +54,38 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 		artwork.sprite = sprite;
 	}
 
+	public void StartTimer() {
+		if (isBusy)
+			return;
+		
+		StopAllCoroutines();
+		StartCoroutine(DoTimer(10f));
+	}
+
+	IEnumerator DoTimer(float duration) {
+		isBusy = true;
+		timeRemaining = duration;
+		countdownBar.gameObject.SetActive(true);
+		countdownText.gameObject.SetActive(true);
+
+		while (timeRemaining > 0f) {
+			timeRemaining -= Time.deltaTime;
+			countdownBar.fillAmount = 1f - (timeRemaining / duration);
+			countdownText.text = timeRemaining.ToString("0.0") + "s";
+			yield return null;
+		}
+
+		countdownBar.gameObject.SetActive(false);
+		countdownText.gameObject.SetActive(false);
+		timeRemaining = 0f;
+		isBusy = false;
+	}
+
+	// Interaction
+
 	public void OnPointerClick(PointerEventData eventData) {
 		// pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-		if ( eventData.pointerId >= -1 && onVerbBoxClicked != null)
+		if ( eventData.pointerId >= -1 && onVerbBoxClicked != null )
 			onVerbBoxClicked( this );
 	}
 }
