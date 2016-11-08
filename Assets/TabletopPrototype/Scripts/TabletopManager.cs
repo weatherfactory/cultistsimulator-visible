@@ -28,16 +28,23 @@ public class TabletopManager : MonoBehaviour {
 
 		// Init Listeners to pre-existing Display Objects
 		background.onDropped += HandleOnBackgroundDropped;
+		background.onClicked += HandleOnBackgroundClicked;
 		Draggable.onChangeDragState += OnChangeDragState;
 
 		// Build initial test data
 		BuildTestData();
 	}
 
+	void ScaleCanvas() {}
+
 	void BuildTestData() {
 
 		VerbBox box;
 		ElementCardClickable card;
+
+		float boxWidth = (verbBoxPrefab.transform as RectTransform).rect.width + 20f;
+		float boxHeight = (verbBoxPrefab.transform as RectTransform).rect.height + 50f;
+		float cardWidth = (elementCardPrefab.transform as RectTransform).rect.width + 20f;
 
 		// build verbs
 		var verbs = compendium.GetAllVerbs();
@@ -45,14 +52,14 @@ public class TabletopManager : MonoBehaviour {
 		for (int i = 0; i < verbs.Count; i++) {
 			box = BuildVerbBox();
 			box.SetVerb(verbs[i]);
-			box.transform.localPosition = new Vector3(-1000f + i * 320f, 400f);
+			box.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
 		}
 
 		// 10 test cards
 		for (int i = 0; i < 10; i++) {
 			card = BuildElementCard();
 			card.SetElement(legalElementIDs[i % legalElementIDs.Length], 1, compendium);
-			card.transform.localPosition = new Vector3(-1000f + i * 220f, 0f);
+			card.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
 		}
 	}
 
@@ -97,7 +104,10 @@ public class TabletopManager : MonoBehaviour {
 	// Element Detail Windows
 
 	void ShowElementDetails(ElementCard card) {
-		if (maxNumElementWindows > 0 && elementWindows.Count == maxNumElementWindows) 
+		if (onlyOneWindowTotal) {
+			HideAllWindows();
+		}
+		else if (maxNumElementWindows > 0 && elementWindows.Count == maxNumElementWindows) 
 			HideElementDetails(elementWindows[0].GetElementCard());
 
 		PutTokenInAir(card.transform as RectTransform);
@@ -126,7 +136,10 @@ public class TabletopManager : MonoBehaviour {
 	// Recipe Detail Windows
 
 	void ShowRecipeDetails(VerbBox box) {
-		if (maxNumRecipeWindows > 0 && recipeWindows.Count == maxNumRecipeWindows) 
+		if (onlyOneWindowTotal) {
+			HideAllWindows();
+		}
+		else if (maxNumRecipeWindows > 0 && recipeWindows.Count == maxNumRecipeWindows) 
 			HideRecipeDetails(recipeWindows[0].GetVerb(), true);
 
 		PutTokenInAir(box.transform as RectTransform);
@@ -161,10 +174,19 @@ public class TabletopManager : MonoBehaviour {
 		return window;
 	}
 
+	public bool onlyOneWindowTotal = true;
 	public int maxNumRecipeWindows = 1;
 	public int maxNumElementWindows = 1;
 	List<RecipeDetailsWindow> recipeWindows = new List<RecipeDetailsWindow>();
 	List<ElementDetailsWindow> elementWindows = new List<ElementDetailsWindow>();
+
+	void HideAllWindows() {
+		for (int i = 0; i < recipeWindows.Count; i++)
+			HideRecipeDetails(recipeWindows[i].GetVerb(), true);
+
+		for (int i = 0; i < elementWindows.Count; i++)
+			HideElementDetails(elementWindows[i].GetElementCard());
+	}
 
 	#endregion
 
@@ -225,8 +247,15 @@ public class TabletopManager : MonoBehaviour {
 		// NOTE: This puts items back on the background. We need this in more cases. Should be a method
 		if (Draggable.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
 			Draggable.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+			// This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer
 			PutTokenOnTable(Draggable.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
 		}
+	}
+
+	void HandleOnBackgroundClicked() {
+		// Close all open windows if we're not dragging (multi tap stuff)
+		if (Draggable.itemBeingDragged == null)
+			HideAllWindows();
 	}
 
 	void HandleOnElementCardClicked(ElementCard card) {

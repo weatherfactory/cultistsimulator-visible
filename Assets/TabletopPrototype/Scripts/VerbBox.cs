@@ -48,7 +48,7 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	}
 
 	private void DisplayIcon(Verb v) {
-		Sprite sprite = ResourcesManager.GetSpriteForVerb(v.Id);
+		Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
 		artwork.sprite = sprite;
 	}
 

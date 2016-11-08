@@ -12,7 +12,11 @@ using UnityEngine;
     public static Sprite GetSpriteForVerb(string verbId)
     {
         return Resources.Load<Sprite>("icons40/verbs/" + verbId);
-    }
+	}
+	public static Sprite GetSpriteForVerbLarge(string verbId)
+	{
+		return Resources.Load<Sprite>("icons100/verbs/100" + verbId);
+	}
 
 	public static Sprite GetSpriteForElement(string elementId)
     {
