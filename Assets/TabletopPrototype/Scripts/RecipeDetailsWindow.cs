@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 
+// Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 public class RecipeDetailsWindow : MonoBehaviour {
 
 	// This event should probably either give the window, which contains a reference to the recipe

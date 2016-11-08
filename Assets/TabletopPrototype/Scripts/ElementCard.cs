@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using TMPro;
 
+// Should inherit from a "TabletopToken" base class same as VerbBox
 public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 	
 	[SerializeField] Image artwork;
