@@ -8,7 +8,7 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	public event System.Action<VerbBox> onVerbBoxClicked;
 
 	[SerializeField] Image artwork;
-	[SerializeField] TextMeshProUGUI text;
+	[SerializeField] TextMeshProUGUI text; // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
 	[SerializeField] Image countdownBar;
 	[SerializeField] TextMeshProUGUI countdownText;
 
@@ -21,7 +21,7 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	// updates to a set of duplicate fields.
 	public bool isBusy { private set; get; }
 	private float timeRemaining = 0f;
-	private int numCompletions = 0;
+	private int numCompletions = 0; // Stands for the amount of completed cycles.
 
 	public void SetVerb(string id, Compendium cm) {
 		var verb = cm.GetVerbById(id);
@@ -72,6 +72,8 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 			countdownText.text = timeRemaining.ToString("0.0") + "s";
 			yield return null;
 		}
+
+		numCompletions++;
 
 		countdownBar.gameObject.SetActive(false);
 		countdownText.gameObject.SetActive(false);
