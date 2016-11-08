@@ -45,12 +45,11 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		box.transform.localPosition = Vector3.zero;
 		box.transform.localRotation = Quaternion.identity;
 
-		// This data needs to come from the Compendium, but it's currently not accessible here
-		// We don't have a reference to it and honestly, it's going to be used in every one of these display objects
-		// setting references seems unecessary, but then again I'm not that opposed to statics and singletons as you are ;)
-		title.text = box.name;
-		description.text = "Test Description for "+box.verbId; 
-		aspects.text = "Test Aspects for "+box.verbId;
+		var verb = CompendiumHolder.compendium.GetVerbById(box.verbId);
+
+		title.text = verb.Label;
+		description.text = verb.Description; 
+		aspects.text = "Aspects go here...";
 
 		linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
 		// could also track the open windows in tabletop manager instead and check there.

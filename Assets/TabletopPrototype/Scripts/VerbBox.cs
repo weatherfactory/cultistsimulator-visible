@@ -23,8 +23,8 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	private float timeRemaining = 0f;
 	private int numCompletions = 0; // Stands for the amount of completed cycles.
 
-	public void SetVerb(string id, Compendium cm) {
-		var verb = cm.GetVerbById(id);
+	public void SetVerb(string id) {
+		var verb = CompendiumHolder.compendium.GetVerbById(id);
 
 		if (verb != null)
 			SetVerb(verb);
