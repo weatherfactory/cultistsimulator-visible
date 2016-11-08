@@ -97,7 +97,7 @@ public class TabletopManager : MonoBehaviour {
 	// Element Detail Windows
 
 	void ShowElementDetails(ElementCard card) {
-		if (elementWindows.Count == maxNumElementWindows) 
+		if (maxNumElementWindows > 0 && elementWindows.Count == maxNumElementWindows) 
 			HideElementDetails(elementWindows[0].GetElementCard());
 
 		PutTokenInAir(card.transform as RectTransform);
@@ -126,7 +126,7 @@ public class TabletopManager : MonoBehaviour {
 	// Recipe Detail Windows
 
 	void ShowRecipeDetails(VerbBox box) {
-		if (recipeWindows.Count == maxNumRecipeWindows) 
+		if (maxNumRecipeWindows > 0 && recipeWindows.Count == maxNumRecipeWindows) 
 			HideRecipeDetails(recipeWindows[0].GetVerb(), true);
 
 		PutTokenInAir(box.transform as RectTransform);
