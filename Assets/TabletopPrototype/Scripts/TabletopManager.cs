@@ -109,10 +109,23 @@ public class TabletopManager : MonoBehaviour {
 
 	// Recipe Detail Windows
 
-	void ShowRecipeDetails(VerbBox card) {
+	void ShowRecipeDetails(VerbBox box) {
 		var window = BuildRecipeDetailsWindow();
-		window.transform.position = card.transform.position;
-		window.SetVerb(card);
+		window.transform.position = box.transform.position;
+		window.SetVerb(box);
+	}
+
+	void HideRecipeDetails(VerbBox box, bool keepCards) {
+		box.transform.SetParent(cardHolder); // remove verb from details window before hiding it, so it isn't removed
+
+		if (keepCards) {
+			var heldCards = box.detailsWindow.GetAllHeldCards();
+
+			foreach (var item in heldCards) 
+				item.transform.SetParent(cardHolder); // remove cards from details window before hiding it, so they aren't removed
+		}
+
+		box.detailsWindow.Hide();
 	}
 
 	// Ideally we pool and reuse these
@@ -121,6 +134,7 @@ public class TabletopManager : MonoBehaviour {
 		window.transform.SetParent(windowParent);
 		window.transform.localScale = Vector3.one;
 		window.transform.localRotation = Quaternion.identity;
+		window.onStartRecipe += HandleOnRecipeStarted;
 		return window;
 	}
 
@@ -150,15 +164,13 @@ public class TabletopManager : MonoBehaviour {
 		if (box.detailsWindow == null)
 			ShowRecipeDetails(box);
 		else {
-			box.transform.SetParent(cardHolder); // remove verb from details window before hiding it, so it isn't removed
-
-			var heldCards = box.detailsWindow.GetAllHeldCards();
-
-			foreach (var item in heldCards) 
-				item.transform.SetParent(cardHolder); // remove cards from details window before hiding it, so they aren't removed
-
-			box.detailsWindow.Hide();
+			HideRecipeDetails(box, true);
 		}
+	}
+
+	void HandleOnRecipeStarted(RecipeDetailsWindow window, VerbBox box) {
+		HideRecipeDetails(box, false);
+		box.StartTimer();
 	}
 
 	#endregion
