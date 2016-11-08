@@ -9,9 +9,10 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 	
 	[SerializeField] Image artwork;
 	[SerializeField] TextMeshProUGUI text;
+	[SerializeField] GameObject selectedMarker;
 
 	public string elementId { private set; get; }
-	public ElementDetailsWindow detailsWindow;
+	[HideInInspector] public ElementDetailsWindow detailsWindow;
 
 	public void SetElement(string id, int quantity, Compendium cm) {
 		name = "Card_" + id;
@@ -24,6 +25,7 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 		
 		DisplayName(element, quantity);
 		DisplayIcon(element);
+		SetSelected(false);
 	}
 
 	private void DisplayName(Element e, int quantity) {
@@ -33,6 +35,10 @@ public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
 	private void DisplayIcon(Element e) {
 		Sprite sprite = ResourcesManager.GetSpriteForElement(e.Id);
 		artwork.sprite = sprite;
+	}
+
+	public void SetSelected(bool isSelected) {
+		selectedMarker.gameObject.SetActive(isSelected);
 	}
 
 	public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile, int workspaceQuantityAdjustment) {

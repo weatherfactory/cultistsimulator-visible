@@ -18,9 +18,9 @@ public class ElementDetailsWindow : MonoBehaviour {
 	public void SetElementCard(ElementCard card) {
 		linkedCard = card;
 
-		card.transform.SetParent(cardHolder);
-		card.transform.localPosition = Vector3.zero;
-		card.transform.localRotation = Quaternion.identity;
+//		card.transform.SetParent(cardHolder);
+//		card.transform.localPosition = Vector3.zero;
+//		card.transform.localRotation = Quaternion.identity;
 
 		// This data needs to come from the Compendium, but it's currently not accessible here
 		title.text = card.name;
@@ -28,6 +28,7 @@ public class ElementDetailsWindow : MonoBehaviour {
 		slots.text = "Test Slots for "+card.elementId; 
 		aspects.text = "Test Aspects for "+card.elementId;
 
+		linkedCard.SetSelected(true);
 		linkedCard.detailsWindow = this; // this is hacky. We're saving the window in the card so we don't double-open windows.
 	}
 
@@ -36,6 +37,7 @@ public class ElementDetailsWindow : MonoBehaviour {
 	}
 
 	public void Hide() {
+		linkedCard.SetSelected(false);
 		linkedCard.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
 		GameObject.Destroy(gameObject);
 	}

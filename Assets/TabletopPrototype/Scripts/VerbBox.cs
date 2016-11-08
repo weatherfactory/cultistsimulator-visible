@@ -11,6 +11,7 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	[SerializeField] TextMeshProUGUI text; // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
 	[SerializeField] Image countdownBar;
 	[SerializeField] TextMeshProUGUI countdownText;
+	[SerializeField] GameObject selectedMarker;
 
 	[HideInInspector] public RecipeDetailsWindow detailsWindow;
 	public string verbId { private set; get; }
@@ -39,6 +40,7 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 
 		DisplayName(verb);
 		DisplayIcon(verb);
+		SetSelected(false);
 		countdownBar.gameObject.SetActive(false);
 		countdownText.gameObject.SetActive(false);
 	}
@@ -50,6 +52,10 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	private void DisplayIcon(Verb v) {
 		Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
 		artwork.sprite = sprite;
+	}
+
+	public void SetSelected(bool isSelected) {
+		selectedMarker.gameObject.SetActive(isSelected);
 	}
 
 	public void StartTimer() {

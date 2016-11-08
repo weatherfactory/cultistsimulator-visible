@@ -39,11 +39,11 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	public void SetVerb(VerbBox box) {
 		linkedBox = box;
 
-		box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
+//		box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
 											 // Instead we should lock positions in some other way?
 		            						 // Window subscribes to verb/element, and when it's position is changed window updates it's own?
-		box.transform.localPosition = Vector3.zero;
-		box.transform.localRotation = Quaternion.identity;
+//		box.transform.localPosition = Vector3.zero;
+//		box.transform.localRotation = Quaternion.identity;
 
 		// This data needs to come from the Compendium, but it's currently not accessible here
 		// We don't have a reference to it and honestly, it's going to be used in every one of these display objects
@@ -52,6 +52,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 		description.text = "Test Description for "+box.verbId; 
 		aspects.text = "Test Aspects for "+box.verbId;
 
+		linkedBox.SetSelected(true);
 		linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
 		// could also track the open windows in tabletop manager instead and check there.
 
@@ -85,6 +86,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	}
 
 	public void Hide() {
+		linkedBox.SetSelected(false);
 		linkedBox.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
 		canvasGroupFader.destroyOnHide = true;
 		canvasGroupFader.Hide();

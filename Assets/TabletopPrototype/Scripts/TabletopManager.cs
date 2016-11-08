@@ -104,16 +104,15 @@ public class TabletopManager : MonoBehaviour {
 	// Element Detail Windows
 
 	void ShowElementDetails(ElementCard card) {
-		if (onlyOneWindowTotal) {
+		if (onlyOneWindowTotal) 
 			HideAllWindows();
-		}
 		else if (maxNumElementWindows > 0 && elementWindows.Count == maxNumElementWindows) 
 			HideElementDetails(elementWindows[0].GetElementCard());
 
-		PutTokenInAir(card.transform as RectTransform);
+//		PutTokenInAir(card.transform as RectTransform);
 
 		var window = BuildElementDetailsWindow();
-		window.transform.position = card.transform.position;
+//		window.transform.position = card.transform.position;
 		window.SetElementCard(card);
 		elementWindows.Add(window);
 	}
@@ -130,6 +129,8 @@ public class TabletopManager : MonoBehaviour {
 	ElementDetailsWindow BuildElementDetailsWindow() {
 		var window = Instantiate(elementDetailWindowPrefab) as ElementDetailsWindow;
 		window.transform.SetParent(windowParent);
+		//window.transform.localPosition = Vector3.zero;
+		(window.transform as RectTransform).anchoredPosition3D = Vector3.zero;
 		window.transform.localScale = Vector3.one;
 		window.transform.localRotation = Quaternion.identity;
 		return window;
@@ -144,10 +145,10 @@ public class TabletopManager : MonoBehaviour {
 		else if (maxNumRecipeWindows > 0 && recipeWindows.Count == maxNumRecipeWindows) 
 			HideRecipeDetails(recipeWindows[0].GetVerb(), true);
 
-		PutTokenInAir(box.transform as RectTransform);
+//		PutTokenInAir(box.transform as RectTransform);
 
 		var window = BuildRecipeDetailsWindow();
-		window.transform.position = box.transform.position;
+//		window.transform.position = box.transform.position;
 		window.SetVerb(box);
 		recipeWindows.Add(window);
 	}
@@ -171,6 +172,7 @@ public class TabletopManager : MonoBehaviour {
 	RecipeDetailsWindow BuildRecipeDetailsWindow() {
 		var window = Instantiate(recipeDetailsWindowPrefab) as RecipeDetailsWindow;
 		window.transform.SetParent(windowParent);
+		window.transform.localPosition = Vector3.zero;
 		window.transform.localScale = Vector3.one;
 		window.transform.localRotation = Quaternion.identity;
 		window.onStartRecipe += HandleOnRecipeStarted;
