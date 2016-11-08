@@ -153,11 +153,14 @@ public class TabletopManager : MonoBehaviour {
 		if (Draggable.itemBeingDragged  == null || Draggable.itemBeingDragged.gameObject != box.gameObject)
 			PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
-		if (keepCards) {
-			var heldCards = box.detailsWindow.GetAllHeldCards();
+		// Going throug hte cards in the slots
+		var heldCards = box.detailsWindow.GetAllHeldCards();
 
-			foreach (var item in heldCards)
+		foreach (var item in heldCards) {
+			if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
 				PutTokenOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
+			else if (item.detailsWindow != null)
+				HideElementDetails(item);
 		}
 
 		recipeWindows.Remove(box.detailsWindow);

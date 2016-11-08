@@ -55,7 +55,7 @@ public class VerbBox : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void SetSelected(bool isSelected) {
-		selectedMarker.gameObject.SetActive(false);
+		selectedMarker.gameObject.SetActive(isSelected);
 	}
 
 	public Sprite GetSprite() {
