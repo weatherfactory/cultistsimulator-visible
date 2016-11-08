@@ -8,6 +8,7 @@ public class TabletopManager : MonoBehaviour {
 	[Header("Existing Objects")]
 	[SerializeField] Transform cardHolder;
 	[SerializeField] Transform windowParent;
+	[SerializeField] Transform windowParentFixed;
 	[SerializeField] TabletopBackground background;
 
 	[Header("Prefabs")]
@@ -115,8 +116,8 @@ public class TabletopManager : MonoBehaviour {
 	}
 
 	void HideElementDetails(ElementCard card) {
-		if (Draggable.itemBeingDragged == null || Draggable.itemBeingDragged.gameObject != card.gameObject)
-			PutTokenOnTable(card.transform as RectTransform); // remove card from details window before hiding it, so it isn't removed, if we're not already dragging it
+		//if (Draggable.itemBeingDragged == null || Draggable.itemBeingDragged.gameObject != card.gameObject)
+		//	PutTokenOnTable(card.transform as RectTransform); // remove card from details window before hiding it, so it isn't removed, if we're not already dragging it
 
 		elementWindows.Remove(card.detailsWindow);
 		card.detailsWindow.Hide();
@@ -125,9 +126,8 @@ public class TabletopManager : MonoBehaviour {
 	// Ideally we pool and reuse these
 	ElementDetailsWindow BuildElementDetailsWindow() {
 		var window = Instantiate(elementDetailWindowPrefab) as ElementDetailsWindow;
-		window.transform.SetParent(windowParent);
-		//window.transform.localPosition = Vector3.zero;
-		(window.transform as RectTransform).anchoredPosition3D = Vector3.zero;
+		window.transform.SetParent(windowParentFixed);
+		window.transform.localPosition = Vector3.zero;
 		window.transform.localScale = Vector3.one;
 		window.transform.localRotation = Quaternion.identity;
 		return window;
@@ -136,16 +136,15 @@ public class TabletopManager : MonoBehaviour {
 	// Recipe Detail Windows
 
 	void ShowRecipeDetails(VerbBox box) {
-		if (onlyOneWindowTotal) {
+		if (onlyOneWindowTotal) 
 			HideAllWindows();
-		}
 		else if (maxNumRecipeWindows > 0 && recipeWindows.Count == maxNumRecipeWindows) 
 			HideRecipeDetails(recipeWindows[0].GetVerb(), true);
 
-//		PutTokenInAir(box.transform as RectTransform);
+		PutTokenInAir(box.transform as RectTransform);
 
 		var window = BuildRecipeDetailsWindow();
-//		window.transform.position = box.transform.position;
+		window.transform.position = box.transform.position;
 		window.SetVerb(box);
 		recipeWindows.Add(window);
 	}
@@ -223,16 +222,14 @@ public class TabletopManager : MonoBehaviour {
 	// This was in the windows previously, but since i'm not holding a reference to 
 	// all open windows here it had to move up.
 	void OnChangeDragState (bool isDragging) {
-		if (isDragging == false || Draggable.itemBeingDragged.gameObject == null)
+		if (isDragging == false || Draggable.itemBeingDragged.gameObject == null) 
 			return;
 
 		ElementCard card = Draggable.itemBeingDragged.GetComponent<ElementCard>();
 
 		if (card != null) {
-			if (card.detailsWindow != null)
-				HideElementDetails(card);
-			else
-				return;			
+			ShowElementDetails(card);			
+			return;
 		}
 
 		VerbBox box = Draggable.itemBeingDragged.GetComponent<VerbBox>();
@@ -259,7 +256,8 @@ public class TabletopManager : MonoBehaviour {
 	void HandleOnBackgroundClicked() {
 		// Close all open windows if we're not dragging (multi tap stuff)
 		if (Draggable.itemBeingDragged == null)
-			HideAllWindows();
+			for (int i = 0; i < elementWindows.Count; i++)
+				HideElementDetails(elementWindows[i].GetElementCard());
 	}
 
 	void HandleOnElementCardClicked(ElementCard card) {

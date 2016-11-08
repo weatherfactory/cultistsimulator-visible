@@ -15,7 +15,6 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	[SerializeField] CanvasGroupFader canvasGroupFader;
 	[SerializeField] CanvasGroup canvasGroup;
 	[SerializeField] Transform cardHolder;
-	[SerializeField] Image artwork;
 	[SerializeField] TextMeshProUGUI title;
 	[SerializeField] TextMeshProUGUI description;
 	[SerializeField] LayoutGroup slotsHolder;
@@ -40,20 +39,19 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	public void SetVerb(VerbBox box) {
 		linkedBox = box;
 
-//		box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
+		box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
 											 // Instead we should lock positions in some other way?
 		            						 // Window subscribes to verb/element, and when it's position is changed window updates it's own?
-//		box.transform.localPosition = Vector3.zero;
-//		box.transform.localRotation = Quaternion.identity;
+		box.transform.localPosition = Vector3.zero;
+		box.transform.localRotation = Quaternion.identity;
 
 		var verb = CompendiumHolder.compendium.GetVerbById(box.verbId);
 
-		artwork.sprite = box.GetSprite();
 		title.text = verb.Label;
 		description.text = verb.Description; 
 		aspects.text = "Aspects go here...";
 
-		linkedBox.SetSelected(true);
+		//linkedBox.SetSelected(true);
 		linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
 		// could also track the open windows in tabletop manager instead and check there.
 
@@ -87,7 +85,7 @@ public class RecipeDetailsWindow : MonoBehaviour {
 	}
 
 	public void Hide() {
-		linkedBox.SetSelected(false);
+		//linkedBox.SetSelected(false);
 		linkedBox.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
 		canvasGroupFader.destroyOnHide = true;
 		canvasGroupFader.Hide();
