@@ -11,7 +11,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public static Draggable itemBeingDragged;
 	public static bool resetToStartPos = true;
 	private static Camera dragCamera;
-	private static Transform draggableHolder;
+	private static RectTransform draggableHolder;
 
 	protected Transform startParent;
 	protected Vector3 startPosition;
@@ -22,11 +22,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	protected CanvasGroup canvasGroup;
 
 	private float perlinRotationPoint = 0f;
+	private float dragHeight = -5f;
 
 	void Awake() {
 		rectTransform = GetComponent<RectTransform>();
 		canvasGroup = GetComponent<CanvasGroup>();
-		draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform;
+		draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
 	}
 
 	public void OnBeginDrag (PointerEventData eventData) {
@@ -62,7 +63,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		rectTransform.SetAsLastSibling();
 		
 		Vector3 pressPos;
-		RectTransformUtility.ScreenPointToWorldPointInRectangle(rectCanvas, eventData.pressPosition, Draggable.dragCamera, out pressPos);
+		RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.pressPosition, Draggable.dragCamera, out pressPos);
         dragOffset = startPosition - pressPos;
         
         if (onChangeDragState != null)
@@ -76,8 +77,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	public void MoveObject(PointerEventData eventData) {
 		Vector3 dragPos;
-		RectTransformUtility.ScreenPointToWorldPointInRectangle(rectCanvas, eventData.position, Draggable.dragCamera, out dragPos);
-		rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, startPosition.z);
+		RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.position, Draggable.dragCamera, out dragPos);
+		rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 		
 		// rotate object slightly based on pointer Delta
 		if (eventData.delta.sqrMagnitude > 10f) {			

@@ -177,6 +177,7 @@ public class TabletopManager : MonoBehaviour {
 
 		rectTransform.SetParent(cardHolder); 
 		rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
+		rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
 	}
 
 	// parents object to "CardHolder" (should rename to TokenHolder) and sets it's Z to 0.
@@ -186,8 +187,8 @@ public class TabletopManager : MonoBehaviour {
 
 		rectTransform.SetParent(cardHolder); 
 		rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
+		rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
 	}
-
 
 	#endregion
 
@@ -224,8 +225,7 @@ public class TabletopManager : MonoBehaviour {
 		// NOTE: This puts items back on the background. We need this in more cases. Should be a method
 		if (Draggable.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
 			Draggable.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-			Draggable.itemBeingDragged.transform.SetParent(cardHolder); // Make sure to parent back to the tabletop
-			Draggable.itemBeingDragged.transform.localRotation = Quaternion.Euler(0f, 0f, Draggable.itemBeingDragged.transform.eulerAngles.z);
+			PutTokenOnTable(Draggable.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
 		}
 	}
 
