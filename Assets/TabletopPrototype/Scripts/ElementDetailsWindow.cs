@@ -31,14 +31,49 @@ public class ElementDetailsWindow : MonoBehaviour {
 		artwork.sprite = card.GetSprite();
 		title.text = element.Label;
 		description.text = element.Description; 
-		slots.text = "Slots: "+element.ChildSlotSpecifications.Count; 
-		aspects.text = "Aspects: "+GetAspects(element.Aspects);
+		slots.text = GetSlotsText(element.ChildSlotSpecifications); 
+		aspects.text = "Aspects: "+GetAspectsText(element.Aspects);
 
 		linkedCard.SetSelected(true);
 		linkedCard.detailsWindow = this; // this is hacky. We're saving the window in the card so we don't double-open windows.
 	}
 
-	string GetAspects(Dictionary<string, int> aspects) {
+	string GetSlotsText(List<ChildSlotSpecification> slots) { // THis could be in a TOString methodto be more accessible where it's needed?
+		if (slots == null || slots.Count == 0)
+			return "Slots: None";
+
+		var stringBuilder = new System.Text.StringBuilder("Slots: "+slots.Count +"\n");
+
+		for (int i = 0; i < slots.Count; i++) {
+			stringBuilder.Append(slots[i].Label);
+
+			if (slots[i].Required.Count > 0 || slots[i].Forbidden.Count > 0)
+				stringBuilder.Append(" (");
+
+			if (slots[i].Required.Count > 0) {
+				stringBuilder.Append("Required: ");
+				stringBuilder.Append(GetAspectsText(slots[i].Required));
+			}
+
+			if (slots[i].Required.Count > 0 && slots[i].Forbidden.Count > 0)
+				stringBuilder.Append(" | ");
+			
+			if (slots[i].Forbidden.Count > 0) {
+				stringBuilder.Append("Forbidden: ");
+				stringBuilder.Append(GetAspectsText(slots[i].Forbidden));
+			}
+
+			if (slots[i].Required.Count > 0 || slots[i].Forbidden.Count > 0)
+				stringBuilder.Append(")");
+
+			if (i + 1 < slots.Count)
+				stringBuilder.Append("\n");
+		}
+
+		return stringBuilder.ToString();
+	}
+
+	string GetAspectsText(Dictionary<string, int> aspects) {// THis could be in a TOString method to be more accessible where it's needed?
 		if (aspects == null || aspects.Count == 0)
 			return "None.";
 
@@ -53,8 +88,6 @@ public class ElementDetailsWindow : MonoBehaviour {
 
 			if (i < aspects.Count)
 				stringBuilder.Append(", ");
-			else 
-				stringBuilder.Append(".");
 		}
 
 		return stringBuilder.ToString();
