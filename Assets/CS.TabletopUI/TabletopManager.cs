@@ -36,7 +36,6 @@ namespace Assets.CS.TabletopUI
             PopulateTabletop();
         }
 
-        //void ScaleCanvas() {}
 
         void PopulateTabletop() {
 

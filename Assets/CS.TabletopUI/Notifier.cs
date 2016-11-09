@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace Assets.CS.TabletopUI
         [Header("Prefabs")]
         [SerializeField]
         ElementDetailsWindow elementDetailWindowPrefab;
+
+        [SerializeField]  Notification notificationPrefab;
         [SerializeField]
         Transform windowHolderFixed;
 
@@ -21,17 +24,18 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
-
         public void ShowElementDetails(ElementCard card)
         {
+
+            var notification = BuildNotification();
+            notification.SetDetails("foo","bar");
+            return;
 
             if (_maxNumElementWindows > 0 && elementWindows.Count == _maxNumElementWindows)
                 HideElementDetails(elementWindows[0].GetElementCard());
 
             //		PutTokenInAir(card.transform as RectTransform);
-
-            var window = BuildElementDetailsWindow();
+            var window = BuildElementDetailsWindow(0);
             //		window.transform.position = card.transform.position;
             window.SetElementCard(card);
             elementWindows.Add(window);
@@ -46,7 +50,12 @@ namespace Assets.CS.TabletopUI
             card.detailsWindow.Hide();
         }
 
-        public ElementDetailsWindow BuildElementDetailsWindow()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="duration">Fade element out in this many seconds; 0 persists until removed</param>
+        /// <returns></returns>
+        public ElementDetailsWindow BuildElementDetailsWindow(int duration)
         {
             var window = Instantiate(elementDetailWindowPrefab) as ElementDetailsWindow;
             window.transform.SetParent(windowHolderFixed);
@@ -54,6 +63,18 @@ namespace Assets.CS.TabletopUI
             window.transform.localScale = Vector3.one;
             window.transform.localRotation = Quaternion.identity;
             return window;
+        }
+
+        public Notification BuildNotification()
+        {
+
+            var notification = Instantiate(this.notificationPrefab) as Notification;
+            notification.transform.SetParent(windowHolderFixed);
+            notification.transform.localPosition = Vector3.zero;
+            notification.transform.localScale = Vector3.one;
+            notification.transform.localRotation = Quaternion.identity;
+            return notification;
+            
         }
 
 
