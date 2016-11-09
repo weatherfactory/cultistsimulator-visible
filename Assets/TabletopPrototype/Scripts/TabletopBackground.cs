@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
-public class TabletopBackground : MonoBehaviour, IDropHandler, IPointerClickHandler {
+namespace Assets.CS.TabletopUI
+{
+    public class TabletopBackground : MonoBehaviour, IDropHandler, IPointerClickHandler {
 
-	public event System.Action onDropped;
-	public event System.Action onClicked;
+        public event System.Action onDropped;
+        public event System.Action onClicked;
 
-	public void OnDrop(PointerEventData eventData) {
-		if (onDropped != null)
-			onDropped();
-	}
+        public void OnDrop(PointerEventData eventData) {
+            if (onDropped != null)
+                onDropped();
+        }
 
-	public void OnPointerClick(PointerEventData eventData) {
-		if (onClicked != null)
-			onClicked();
-	}
+        public void OnPointerClick(PointerEventData eventData) {
+            if (onClicked != null)
+                onClicked();
+        }
+    }
 }

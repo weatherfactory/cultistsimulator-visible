@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -83,23 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CS.TabletopUI\CanvasGroupFader.cs" />
-    <Compile Include="Assets\CS.TabletopUI\CompendiumHolder.cs" />
-    <Compile Include="Assets\CS.TabletopUI\DeactivateOnPlay.cs" />
-    <Compile Include="Assets\CS.TabletopUI\Draggable.cs" />
-    <Compile Include="Assets\CS.TabletopUI\ElementCard.cs" />
-    <Compile Include="Assets\CS.TabletopUI\ElementCardClickable.cs" />
-    <Compile Include="Assets\CS.TabletopUI\ElementDetailsWindow.cs" />
-    <Compile Include="Assets\CS.TabletopUI\Gradient4Way.cs" />
-    <Compile Include="Assets\CS.TabletopUI\Interfaces\IElementCardSubscriber.cs" />
-    <Compile Include="Assets\CS.TabletopUI\Notification.cs" />
-    <Compile Include="Assets\CS.TabletopUI\Notifier.cs" />
-    <Compile Include="Assets\CS.TabletopUI\RecipeDetailsWindow.cs" />
-    <Compile Include="Assets\CS.TabletopUI\RecipeSlot.cs" />
-    <Compile Include="Assets\CS.TabletopUI\ShittyShadowTest.cs" />
-    <Compile Include="Assets\CS.TabletopUI\TabletopBackground.cs" />
-    <Compile Include="Assets\CS.TabletopUI\TabletopManager.cs" />
-    <Compile Include="Assets\CS.TabletopUI\VerbBox.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -115,6 +96,9 @@
     <Compile Include="Assets\TabletopPrototype\Scripts\ElementCardClickable.cs" />
     <Compile Include="Assets\TabletopPrototype\Scripts\ElementDetailsWindow.cs" />
     <Compile Include="Assets\TabletopPrototype\Scripts\Gradient4Way.cs" />
+    <Compile Include="Assets\TabletopPrototype\Scripts\Interfaces\IElementCardSubscriber.cs" />
+    <Compile Include="Assets\TabletopPrototype\Scripts\Notification.cs" />
+    <Compile Include="Assets\TabletopPrototype\Scripts\Notifier.cs" />
     <Compile Include="Assets\TabletopPrototype\Scripts\RecipeDetailsWindow.cs" />
     <Compile Include="Assets\TabletopPrototype\Scripts\RecipeSlot.cs" />
     <Compile Include="Assets\TabletopPrototype\Scripts\ShittyShadowTest.cs" />

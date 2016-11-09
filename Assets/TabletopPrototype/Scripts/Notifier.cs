@@ -12,24 +12,22 @@ namespace Assets.CS.TabletopUI
         ElementDetailsWindow elementDetailWindowPrefab;
 
         [SerializeField]  Notification notificationPrefab;
-        [SerializeField]
-        Transform windowHolderFixed;
 
+        [SerializeField]
+        private Transform _windowHolderFixed;
+        [SerializeField]
         private int _maxNumElementWindows;
         private List<ElementDetailsWindow> elementWindows = new List<ElementDetailsWindow>();
 
-        public Notifier(int maxNumElementWindows)
-        {
-            _maxNumElementWindows = maxNumElementWindows;
-        }
+
 
 
         public void ShowElementDetails(ElementCard card)
         {
 
-            var notification = BuildNotification();
-            notification.SetDetails("foo","bar");
-            return;
+            //var notification = BuildNotification();
+            //notification.SetDetails("foo","bar");
+           // return;
 
             if (_maxNumElementWindows > 0 && elementWindows.Count == _maxNumElementWindows)
                 HideElementDetails(elementWindows[0].GetElementCard());
@@ -57,8 +55,8 @@ namespace Assets.CS.TabletopUI
         /// <returns></returns>
         public ElementDetailsWindow BuildElementDetailsWindow(int duration)
         {
-            var window = Instantiate(elementDetailWindowPrefab) as ElementDetailsWindow;
-            window.transform.SetParent(windowHolderFixed);
+            var window = Instantiate(elementDetailWindowPrefab);
+            window.transform.SetParent(_windowHolderFixed);
             window.transform.localPosition = Vector3.zero;
             window.transform.localScale = Vector3.one;
             window.transform.localRotation = Quaternion.identity;
@@ -69,7 +67,7 @@ namespace Assets.CS.TabletopUI
         {
 
             var notification = Instantiate(this.notificationPrefab) as Notification;
-            notification.transform.SetParent(windowHolderFixed);
+            notification.transform.SetParent(_windowHolderFixed);
             notification.transform.localPosition = Vector3.zero;
             notification.transform.localScale = Vector3.one;
             notification.transform.localRotation = Quaternion.identity;
