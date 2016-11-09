@@ -12,13 +12,11 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         Transform windowHolderFixed;
 
-        private bool _onlyOneWindowTotal;
         private int _maxNumElementWindows;
         private List<ElementDetailsWindow> elementWindows = new List<ElementDetailsWindow>();
 
-        public Notifier(bool onlyOneWindowTotal, int maxNumElementWindows)
+        public Notifier(int maxNumElementWindows)
         {
-            _onlyOneWindowTotal = onlyOneWindowTotal;
             _maxNumElementWindows = maxNumElementWindows;
         }
 

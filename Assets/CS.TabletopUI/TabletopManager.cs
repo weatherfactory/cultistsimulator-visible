@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI
         void Start () {
             var compendiumHolder = gameObject.AddComponent<CompendiumHolder>();
             compendiumHolder.Init();
-            _notifier=new Notifier(onlyOneWindowTotal,maxNumElementWindows);
+            _notifier=new Notifier(maxNumElementWindows);
 
 
             // Init Listeners to pre-existing Display Objects
@@ -160,7 +160,7 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
-        public bool onlyOneWindowTotal = true;
+        
         public int maxNumRecipeWindows = 1;
         public int maxNumElementWindows = 1;
         List<RecipeDetailsWindow> recipeWindows = new List<RecipeDetailsWindow>();
