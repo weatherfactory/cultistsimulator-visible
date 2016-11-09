@@ -101,6 +101,7 @@ namespace Assets.CS.TabletopUI
             card.transform.localScale = Vector3.one;
             card.transform.localPosition = Vector3.zero;
             card.transform.localRotation = Quaternion.identity;
+            card.Subscribe(notifier);
             return card;
         }
 

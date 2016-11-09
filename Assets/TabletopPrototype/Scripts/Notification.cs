@@ -13,16 +13,28 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         CanvasGroup canvasGroup;
         [SerializeField]
+        CanvasGroupFader canvasGroupFader;
+        [SerializeField]
         Image artwork;
         [SerializeField]
         TextMeshProUGUI _titleTxt;
         [SerializeField]
         TextMeshProUGUI _descriptionTxt;
 
+        public void Awake()
+        {
+      Invoke("Hide",5);
+        }
+
         public void SetDetails(string title,string description)
         {
             _titleTxt.text = title;
             _descriptionTxt.text = description;
+        }
+
+        public void Hide()
+        {
+            canvasGroupFader.Hide();
         }
     }
 }

@@ -1,18 +1,21 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using Assets.CS.TabletopUI.Interfaces;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 namespace Assets.CS.TabletopUI
 {
-    public class ElementCard : MonoBehaviour, IElementQuantityDisplay {
+    public class ElementCard : Draggable, IElementQuantityDisplay {
 	
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GameObject selectedMarker;
-
-        public string elementId { private set; get; }
+        
         [HideInInspector] public ElementDetailsWindow detailsWindow;
+        public string elementId { private set; get; }
+
 
         public void SetElement(string id, int quantity) {
             name = "Card_" + id;

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Assets.CS.TabletopUI.Interfaces
 {
-    public interface IElementCardSubscriber
+    public interface IDraggableSubscriber
     {
-        void ElementPickedUp(ElementCard elementCard);
+        void PickedUp(Draggable draggable);
     }
 }

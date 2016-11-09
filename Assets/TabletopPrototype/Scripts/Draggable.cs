@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -28,12 +30,18 @@ namespace Assets.CS.TabletopUI
         // Draggables all drag on a specic height and have a specific "default height"
 
         public bool rotateOnDrag = true;
-
+        private List<IDraggableSubscriber> subscribers = new List<IDraggableSubscriber>();
 
         void Awake() {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
+        }
+
+        public void Subscribe(IDraggableSubscriber subscriber)
+        {
+            if(!subscribers.Contains(subscriber))
+                subscribers.Add(subscriber);
         }
 
         public void OnBeginDrag (PointerEventData eventData) {
@@ -53,6 +61,9 @@ namespace Assets.CS.TabletopUI
         }
 
         void StartDrag(PointerEventData eventData) {
+
+            subscribers.ForEach(s=>s.PickedUp(this));
+
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
 

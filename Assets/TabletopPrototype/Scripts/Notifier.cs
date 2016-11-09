@@ -6,30 +6,31 @@ using UnityEngine;
 namespace Assets.CS.TabletopUI
 {
     
-    public class Notifier : MonoBehaviour,IElementCardSubscriber {
+    public class Notifier : MonoBehaviour,IDraggableSubscriber {
         [Header("Prefabs")]
         [SerializeField]
         ElementDetailsWindow elementDetailWindowPrefab;
 
         [SerializeField]  Notification notificationPrefab;
-
         [SerializeField]
-        private Transform _windowHolderFixed;
+        private Transform windowHolderFixed;
         [SerializeField]
-        private int _maxNumElementWindows;
+        private Transform notificationHolder;
+        [SerializeField]
+        private int maxNumElementWindows;
         private List<ElementDetailsWindow> elementWindows = new List<ElementDetailsWindow>();
 
 
-
+        public void ShowNotification(string title, string description)
+        {
+            var notification = BuildNotification();
+            notification.SetDetails(title, description);
+        }
 
         public void ShowElementDetails(ElementCard card)
         {
 
-            //var notification = BuildNotification();
-            //notification.SetDetails("foo","bar");
-           // return;
-
-            if (_maxNumElementWindows > 0 && elementWindows.Count == _maxNumElementWindows)
+            if (maxNumElementWindows > 0 && elementWindows.Count == maxNumElementWindows)
                 HideElementDetails(elementWindows[0].GetElementCard());
 
             //		PutTokenInAir(card.transform as RectTransform);
@@ -56,7 +57,7 @@ namespace Assets.CS.TabletopUI
         public ElementDetailsWindow BuildElementDetailsWindow(int duration)
         {
             var window = Instantiate(elementDetailWindowPrefab);
-            window.transform.SetParent(_windowHolderFixed);
+            window.transform.SetParent(windowHolderFixed);
             window.transform.localPosition = Vector3.zero;
             window.transform.localScale = Vector3.one;
             window.transform.localRotation = Quaternion.identity;
@@ -67,7 +68,7 @@ namespace Assets.CS.TabletopUI
         {
 
             var notification = Instantiate(this.notificationPrefab) as Notification;
-            notification.transform.SetParent(_windowHolderFixed);
+            notification.transform.SetParent(notificationHolder);
             notification.transform.localPosition = Vector3.zero;
             notification.transform.localScale = Vector3.one;
             notification.transform.localRotation = Quaternion.identity;
@@ -77,9 +78,9 @@ namespace Assets.CS.TabletopUI
 
 
 
-        public void ElementPickedUp(ElementCard elementCard)
+        public void PickedUp(Draggable draggable)
         {
-            throw new System.NotImplementedException();
+            ShowNotification("Card interaction", "picked up");
         }
 
         public void HideAllElementDetails()

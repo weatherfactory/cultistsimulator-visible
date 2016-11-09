@@ -20,19 +20,25 @@ namespace Assets.CS.TabletopUI
             } 
         }
 
+
+
         public void Hide() {
+
             if (durationTurnOn <= 0f) {
                 SetAlpha(0f);
             }
             else if (gameObject.activeInHierarchy == false) {
                 SetAlpha(0f);
             }
-            else if (gameObject.activeSelf && Group.alpha > 0) {
+            else if (gameObject.activeSelf && Group.alpha > 0)
+            {
+
                 StopAllCoroutines();
                 StartCoroutine(DoFade(0f, durationTurnOff));
             }
         }
-	
+
+
         public void Show() {
             if (durationTurnOn <= 0f) {
                 SetAlpha(1f);
