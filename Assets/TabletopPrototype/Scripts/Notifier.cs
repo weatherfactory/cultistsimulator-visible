@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.CS.TabletopUI
 {
     
-    public class Notifier : MonoBehaviour,IDraggableSubscriber {
+    public class Notifier : MonoBehaviour,ITokenSubscriber {
         [Header("Prefabs")]
         [SerializeField]
         ElementDetailsWindow elementDetailWindowPrefab;
@@ -77,10 +77,11 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void PickedUp(Draggable draggable)
+        public void TokenPickedUp(Draggable draggable)
         {
-            ShowNotification("Card interaction", "picked up");
+  
         }
+
 
         public void HideAllElementDetails()
         {

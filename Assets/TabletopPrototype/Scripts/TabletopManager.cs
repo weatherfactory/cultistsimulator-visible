@@ -5,7 +5,7 @@ using UnityEngine;
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour,IDraggableSubscriber {
+    public class TabletopManager : MonoBehaviour,ITokenSubscriber {
 
         [Header("Existing Objects")]
         [SerializeField] Transform cardHolder;
@@ -201,16 +201,21 @@ namespace Assets.CS.TabletopUI
 
 
         #region -- response to subscriptionUI events
-        public void PickedUp(Draggable draggable)
+        public void TokenPickedUp(Draggable draggable)
         {
             ElementCard cardPickedUp=draggable as ElementCard;
             if(cardPickedUp!=null)
-            { 
+            {
+                if(cardPickedUp.Quantity>1)
+                { 
                 var card = BuildElementCard();
-            card.transform.localPosition = draggable.transform.localPosition;
+                card.transform.localPosition = draggable.transform.localPosition;
                 card.SetElement(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
+                    cardPickedUp.SetQuantity(1);
+                }
             }
         }
+
         #endregion
 
         #region -- INTERACTION ----------------------------------------------------

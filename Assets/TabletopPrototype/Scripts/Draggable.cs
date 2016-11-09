@@ -7,7 +7,7 @@ namespace Assets.CS.TabletopUI
 {
     [RequireComponent (typeof (RectTransform))]
     [RequireComponent (typeof (CanvasGroup))]
-    public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+    public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler {
 	
         public static event System.Action<bool> onChangeDragState;
 
@@ -27,10 +27,10 @@ namespace Assets.CS.TabletopUI
 
         private float perlinRotationPoint = 0f;
         private float dragHeight = -5f;
-        // Draggables all drag on a specic height and have a specific "default height"
+        // Draggables all drag on a specifc height and have a specific "default height"
 
         public bool rotateOnDrag = true;
-        private List<IDraggableSubscriber> subscribers = new List<IDraggableSubscriber>();
+        private List<ITokenSubscriber> subscribers = new List<ITokenSubscriber>();
 
         void Awake() {
             rectTransform = GetComponent<RectTransform>();
@@ -38,7 +38,7 @@ namespace Assets.CS.TabletopUI
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
 
-        public void Subscribe(IDraggableSubscriber subscriber)
+        public void Subscribe(ITokenSubscriber subscriber)
         {
             if(!subscribers.Contains(subscriber))
                 subscribers.Add(subscriber);
@@ -62,7 +62,7 @@ namespace Assets.CS.TabletopUI
 
         void StartDrag(PointerEventData eventData) {
 
-            subscribers.ForEach(s=>s.PickedUp(this));
+            subscribers.ForEach(s=>s.TokenPickedUp(this));
 
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
@@ -134,6 +134,10 @@ namespace Assets.CS.TabletopUI
 		
             if (onChangeDragState != null)
                 onChangeDragState(false);
+        }
+        public virtual void OnDrop(PointerEventData eventData)
+        {
+   
         }
     }
 }
