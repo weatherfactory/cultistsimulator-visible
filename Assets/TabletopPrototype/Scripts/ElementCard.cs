@@ -7,36 +7,44 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 namespace Assets.CS.TabletopUI
 {
-    public class ElementCard : Draggable, IElementQuantityDisplay {
+    public class ElementCard : Draggable {
 	
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GameObject selectedMarker;
         
         [HideInInspector] public ElementDetailsWindow detailsWindow;
-        public string elementId { private set; get; }
+        public string ElementId { get {
+            return element.Id ?? null;
+        } }
+        public int Quantity { private set; get; }
+        private Element element;
 
 
         public void SetElement(string id, int quantity) {
+
+            element = CompendiumHolder.compendium.GetElementById(id);
+            Quantity = quantity;
+            if (quantity <= 0)
+            {
+                DestroyObject(gameObject);
+                return;
+            }
             name = "Card_" + id;
-
-            elementId = id;
-            var element = CompendiumHolder.compendium.GetElementById(id);
-
             if (element == null)
                 return;
 		
-            DisplayName(element, quantity);
-            DisplayIcon(element);
+            DisplayName();
+            DisplayIcon();
             SetSelected(false);
         }
 
-        private void DisplayName(Element e, int quantity) {
-            text.text = e.Label + "(" + quantity + ")"; // Quantity is a hack, since later on cards always have quantity 1
+        private void DisplayName() {
+            text.text = element.Label + "(" + Quantity + ")"; // Quantity is a hack, since later on cards always have quantity 1
         }
 
-        private void DisplayIcon(Element e) {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(e.Id);
+        private void DisplayIcon() {
+            Sprite sprite = ResourcesManager.GetSpriteForElement(element.Id);
             artwork.sprite = sprite;
         }
 
@@ -48,8 +56,6 @@ namespace Assets.CS.TabletopUI
             return artwork.sprite;
         }
 
-        public void ElementQuantityUpdate(string elementId, int currentQuantityInStockpile, int workspaceQuantityAdjustment) {
-            throw new System.NotImplementedException();
-        }
+
     }
 }

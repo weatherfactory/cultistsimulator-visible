@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour {
+    public class TabletopManager : MonoBehaviour,IDraggableSubscriber {
 
         [Header("Existing Objects")]
         [SerializeField] Transform cardHolder;
@@ -61,7 +62,7 @@ namespace Assets.CS.TabletopUI
 
             for (int i = 0; i < 10; i++) {
                 card = BuildElementCard();
-                card.SetElement(legalElementIDs[i % legalElementIDs.Length], 1);
+                card.SetElement(legalElementIDs[i % legalElementIDs.Length], 3);
                 card.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
             }
         }
@@ -102,6 +103,7 @@ namespace Assets.CS.TabletopUI
             card.transform.localPosition = Vector3.zero;
             card.transform.localRotation = Quaternion.identity;
             card.Subscribe(notifier);
+            card.Subscribe(this);
             return card;
         }
 
@@ -197,6 +199,20 @@ namespace Assets.CS.TabletopUI
 
         #endregion
 
+
+        #region -- response to subscriptionUI events
+        public void PickedUp(Draggable draggable)
+        {
+            ElementCard cardPickedUp=draggable as ElementCard;
+            if(cardPickedUp!=null)
+            { 
+                var card = BuildElementCard();
+            card.transform.localPosition = draggable.transform.localPosition;
+                card.SetElement(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
+            }
+        }
+        #endregion
+
         #region -- INTERACTION ----------------------------------------------------
 
         // This checks if we're dragging something and if we have to do some changes
@@ -264,5 +280,7 @@ namespace Assets.CS.TabletopUI
         }
 
         #endregion
+
+
     }
 }

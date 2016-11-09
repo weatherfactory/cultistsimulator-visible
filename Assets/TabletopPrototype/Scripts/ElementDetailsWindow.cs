@@ -26,7 +26,7 @@ namespace Assets.CS.TabletopUI
 
             // This data needs to come from the Compendium, but it's currently not accessible here
 
-            var element = CompendiumHolder.compendium.GetElementById(card.elementId);
+            var element = CompendiumHolder.compendium.GetElementById(card.ElementId);
 
             artwork.sprite = card.GetSprite();
             title.text = element.Label;

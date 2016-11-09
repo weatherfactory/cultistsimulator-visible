@@ -77,7 +77,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
         public void PickedUp(Draggable draggable)
         {
             ShowNotification("Card interaction", "picked up");
