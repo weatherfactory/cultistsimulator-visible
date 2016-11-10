@@ -7,6 +7,7 @@ namespace Assets.CS.TabletopUI.Interfaces
 {
     public interface ITokenSubscriber
     {
-        void TokenPickedUp(Draggable draggable);
+        void TokenPickedUp(DraggableToken draggableToken);
+        void TokenClicked(DraggableToken draggableToken);
     }
 }

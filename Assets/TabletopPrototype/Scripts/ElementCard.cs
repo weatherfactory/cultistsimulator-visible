@@ -8,7 +8,8 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 namespace Assets.CS.TabletopUI
 {
-    public class ElementCard : Draggable {
+    public class ElementCard : DraggableToken
+    {
 	
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
@@ -50,7 +51,6 @@ namespace Assets.CS.TabletopUI
 		
             DisplayInfo();
             DisplayIcon();
-            SetSelected(false);
         }
 
         private void DisplayInfo() {
@@ -62,9 +62,6 @@ namespace Assets.CS.TabletopUI
             artwork.sprite = sprite;
         }
 
-        public void SetSelected(bool isSelected) {
-            selectedMarker.gameObject.SetActive(isSelected);
-        }
 
         public Sprite GetSprite() {
             return artwork.sprite;
@@ -72,15 +69,19 @@ namespace Assets.CS.TabletopUI
 
         public override void OnDrop(PointerEventData eventData)
         {
-            ElementCard droppedCard = Draggable.itemBeingDragged as ElementCard;
+            ElementCard droppedCard = DraggableToken.itemBeingDragged as ElementCard;
             ElementCard droppedOnCard = this as ElementCard;
             if (droppedOnCard != null && droppedCard != null && droppedOnCard.ElementId == droppedCard.ElementId)
             {
                 droppedOnCard.SetQuantity(droppedOnCard.Quantity + droppedCard.Quantity);
-                Draggable.resetToStartPos = false;
+                DraggableToken.resetToStartPos = false;
                 droppedCard.SetQuantity(0);
             }
         }
+
+
+
+
 
 
     }

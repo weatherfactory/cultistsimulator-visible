@@ -14,28 +14,25 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] TextMeshProUGUI slots;
         [SerializeField] TextMeshProUGUI aspects;
+        [SerializeField] private CanvasGroupFader canvasGroupFader;
 
-        ElementCard linkedCard;
+        public void Awake()
+        {
+            Invoke("Hide", 5);
+        }
 
         public void SetElementCard(ElementCard card) {
-            linkedCard = card;
 
-//		card.transform.SetParent(cardHolder);
-//		card.transform.localPosition = Vector3.zero;
-//		card.transform.localRotation = Quaternion.identity;
 
             // This data needs to come from the Compendium, but it's currently not accessible here
 
             var element = CompendiumHolder.compendium.GetElementById(card.ElementId);
-
             artwork.sprite = card.GetSprite();
             title.text = element.Label;
             description.text = element.Description; 
             slots.text = GetSlotsText(element.ChildSlotSpecifications); 
             aspects.text = "Aspects: "+GetAspectsText(element.Aspects);
 
-            linkedCard.SetSelected(true);
-            linkedCard.detailsWindow = this; // this is hacky. We're saving the window in the card so we don't double-open windows.
         }
 
         string GetSlotsText(List<ChildSlotSpecification> slots) { // THis could be in a TOString methodto be more accessible where it's needed?
@@ -93,14 +90,8 @@ namespace Assets.CS.TabletopUI
             return stringBuilder.ToString();
         }
 
-        public ElementCard GetElementCard() {
-            return linkedCard;
-        }
-
         public void Hide() {
-            linkedCard.SetSelected(false);
-            linkedCard.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
-            GameObject.Destroy(gameObject);
+          canvasGroupFader.Hide();
         }
 
     }

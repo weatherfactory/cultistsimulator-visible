@@ -9,7 +9,7 @@ namespace Assets.CS.TabletopUI
     public class Notifier : MonoBehaviour,ITokenSubscriber {
         [Header("Prefabs")]
         [SerializeField]
-        ElementDetailsWindow elementDetailWindowPrefab;
+        ElementDetailsWindow elementDetailsWindowPrefab;
 
         [SerializeField]  Notification notificationPrefab;
         [SerializeField]
@@ -18,7 +18,6 @@ namespace Assets.CS.TabletopUI
         private Transform notificationHolder;
         [SerializeField]
         private int maxNumElementWindows;
-        private List<ElementDetailsWindow> elementWindows = new List<ElementDetailsWindow>();
 
 
         public void ShowNotification(string title, string description)
@@ -29,34 +28,14 @@ namespace Assets.CS.TabletopUI
 
         public void ShowElementDetails(ElementCard card)
         {
-
-            if (maxNumElementWindows > 0 && elementWindows.Count == maxNumElementWindows)
-                HideElementDetails(elementWindows[0].GetElementCard());
-
-            //		PutTokenInAir(card.transform as RectTransform);
-            var window = BuildElementDetailsWindow(0);
-            //		window.transform.position = card.transform.position;
-            window.SetElementCard(card);
-            elementWindows.Add(window);
+            var detailWindow = BuildElementDetailsWindow();
+            detailWindow.SetElementCard(card);
         }
 
-       public void HideElementDetails(ElementCard card)
-        {
-            //if (Draggable.itemBeingDragged == null || Draggable.itemBeingDragged.gameObject != card.gameObject)
-            //	PutTokenOnTable(card.transform as RectTransform); // remove card from details window before hiding it, so it isn't removed, if we're not already dragging it
 
-            elementWindows.Remove(card.detailsWindow);
-            card.detailsWindow.Hide();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="duration">Fade element out in this many seconds; 0 persists until removed</param>
-        /// <returns></returns>
-        public ElementDetailsWindow BuildElementDetailsWindow(int duration)
+        public ElementDetailsWindow BuildElementDetailsWindow()
         {
-            var window = Instantiate(elementDetailWindowPrefab);
+            var window = Instantiate(elementDetailsWindowPrefab);
             window.transform.SetParent(windowHolderFixed);
             window.transform.localPosition = Vector3.zero;
             window.transform.localScale = Vector3.one;
@@ -77,16 +56,18 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void TokenPickedUp(Draggable draggable)
+        public void TokenPickedUp(DraggableToken draggableToken)
         {
   
         }
 
-
-        public void HideAllElementDetails()
+        public void TokenClicked(DraggableToken draggableToken)
         {
-            for (int i = 0; i < elementWindows.Count; i++)
-                HideElementDetails(elementWindows[i].GetElementCard());
+            ElementCard card = draggableToken as ElementCard;
+            if (card != null)
+            {
+                    ShowElementDetails(card);
+            }
         }
     }
 }

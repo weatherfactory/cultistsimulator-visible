@@ -14,7 +14,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TabletopBackground background;
 
         [Header("Prefabs")]
-        [SerializeField] ElementCardClickable elementCardPrefab;
+        [SerializeField] ElementCard elementCardPrefab;
         [SerializeField] VerbBox verbBoxPrefab;
         [SerializeField] RecipeDetailsWindow recipeDetailsWindowPrefab;
         
@@ -35,7 +35,7 @@ namespace Assets.CS.TabletopUI
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
-            Draggable.onChangeDragState += OnChangeDragState;
+            DraggableToken.onChangeDragState += OnChangeDragState;
 
             PopulateTabletop();
         }
@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI
         void PopulateTabletop() {
 
             VerbBox box;
-            ElementCardClickable card;
+            ElementCard card;
 
             float boxWidth = (verbBoxPrefab.transform as RectTransform).rect.width + 20f;
             float boxHeight = (verbBoxPrefab.transform as RectTransform).rect.height + 50f;
@@ -95,9 +95,8 @@ namespace Assets.CS.TabletopUI
         // Element Cards
 
         // Ideally we pool and reuse these
-        ElementCardClickable BuildElementCard() {
-            var card = Instantiate(elementCardPrefab) as ElementCardClickable;
-            card.onCardClicked += HandleOnElementCardClicked;
+        ElementCard BuildElementCard() {
+            var card = Instantiate(elementCardPrefab) as ElementCard;
             card.transform.SetParent(cardHolder);
             card.transform.localScale = Vector3.one;
             card.transform.localPosition = Vector3.zero;
@@ -110,12 +109,6 @@ namespace Assets.CS.TabletopUI
         // Element Detail Windows
 
 
-
-        void ShowElementDetails(ElementCard card)
-        {
-
-            notifier.ShowElementDetails(card);
-        }
 
 
 
@@ -137,7 +130,7 @@ namespace Assets.CS.TabletopUI
         }
 
         void HideRecipeDetails(VerbBox box, bool keepCards) {
-            if (Draggable.itemBeingDragged  == null || Draggable.itemBeingDragged.gameObject != box.gameObject)
+            if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != box.gameObject)
                 PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
             // Going throug hte cards in the slots
@@ -146,8 +139,6 @@ namespace Assets.CS.TabletopUI
             foreach (var item in heldCards) {
                 if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
                     PutTokenOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
-                else if (item.detailsWindow != null)
-                    notifier.HideElementDetails(item);
             }
 
             recipeWindows.Remove(box.detailsWindow);
@@ -201,19 +192,24 @@ namespace Assets.CS.TabletopUI
 
 
         #region -- response to subscriptionUI events
-        public void TokenPickedUp(Draggable draggable)
+        public void TokenPickedUp(DraggableToken draggableToken)
         {
-            ElementCard cardPickedUp=draggable as ElementCard;
+            ElementCard cardPickedUp=draggableToken as ElementCard;
             if(cardPickedUp!=null)
             {
                 if(cardPickedUp.Quantity>1)
                 { 
                 var card = BuildElementCard();
-                card.transform.localPosition = draggable.transform.localPosition;
+                card.transform.localPosition = draggableToken.transform.localPosition;
                 card.SetElement(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
                     cardPickedUp.SetQuantity(1);
                 }
             }
+        }
+
+        public void TokenClicked(DraggableToken draggableToken)
+        {
+       
         }
 
         #endregion
@@ -225,17 +221,17 @@ namespace Assets.CS.TabletopUI
         // This was in the windows previously, but since i'm not holding a reference to 
         // all open windows here it had to move up.
         void OnChangeDragState (bool isDragging) {
-            if (isDragging == false || Draggable.itemBeingDragged.gameObject == null) 
+            if (isDragging == false || DraggableToken.itemBeingDragged.gameObject == null) 
                 return;
 
-            ElementCard card = Draggable.itemBeingDragged.GetComponent<ElementCard>();
+            ElementCard card = DraggableToken.itemBeingDragged.GetComponent<ElementCard>();
 
             if (card != null) {
-                ShowElementDetails(card);			
+                notifier.ShowElementDetails(card);			
                 return;
             }
 
-            VerbBox box = Draggable.itemBeingDragged.GetComponent<VerbBox>();
+            VerbBox box = DraggableToken.itemBeingDragged.GetComponent<VerbBox>();
 
             if (box != null) {
                 if (box.detailsWindow != null)
@@ -247,29 +243,21 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnBackgroundDropped() {
             // NOTE: This puts items back on the background. We need this in more cases. Should be a method
-            if (Draggable.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
-                Draggable.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+            if (DraggableToken.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
+                DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
-                PutTokenOnTable(Draggable.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
+                PutTokenOnTable(DraggableToken.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
             }
         }
 
         void HandleOnBackgroundClicked() {
-            // Close all open windows if we're not dragging (multi tap stuff)
-            if (Draggable.itemBeingDragged == null)
-                notifier.HideAllElementDetails();
+            //TODO: Close all open windows if we're not dragging (multi tap stuff)
  
         }
 
-        void HandleOnElementCardClicked(ElementCard card) {
-            if (card.detailsWindow == null)
-                ShowElementDetails(card);
-            else {
-               notifier.HideElementDetails(card);
-            }
-        }
+
 
         void HandleOnVerbBoxClicked(VerbBox box) {
             if (box.detailsWindow == null)

@@ -100,11 +100,11 @@ namespace Assets.CS.TabletopUI
             // This should be given through to the tabletop manager, normally.
             Debug.Log("Recipe Slot dropped on");
 
-            if (Draggable.itemBeingDragged != null && Draggable.itemBeingDragged.GetComponent<ElementCard>() != null) { // Maybe check for item type here via GetComponent<Something>() != null?
-                Draggable.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                Draggable.itemBeingDragged.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
-                Draggable.itemBeingDragged.transform.localPosition = Vector3.zero;
-                Draggable.itemBeingDragged.transform.localRotation = Quaternion.identity;
+            if (DraggableToken.itemBeingDragged != null && DraggableToken.itemBeingDragged.GetComponent<ElementCard>() != null) { // Maybe check for item type here via GetComponent<Something>() != null?
+                DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+                DraggableToken.itemBeingDragged.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
+                DraggableToken.itemBeingDragged.transform.localPosition = Vector3.zero;
+                DraggableToken.itemBeingDragged.transform.localRotation = Quaternion.identity;
             }
         }
 

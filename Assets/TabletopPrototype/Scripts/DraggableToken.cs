@@ -7,12 +7,13 @@ namespace Assets.CS.TabletopUI
 {
     [RequireComponent (typeof (RectTransform))]
     [RequireComponent (typeof (CanvasGroup))]
-    public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler {
+    public abstract class DraggableToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler, IPointerClickHandler
+    {
 	
         public static event System.Action<bool> onChangeDragState;
 
         public static bool draggingEnabled = true;
-        public static Draggable itemBeingDragged;
+        public static DraggableToken itemBeingDragged;
         public static bool resetToStartPos = true; // Maybe change draggable so it doesn't reset by default. makes dragging around the base case. Only force non-reset on actions.
         private static Camera dragCamera;
         private static RectTransform draggableHolder;
@@ -24,6 +25,7 @@ namespace Assets.CS.TabletopUI
         protected RectTransform rectTransform;
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
+        public bool IsSelected { protected set; get; }
 
         private float perlinRotationPoint = 0f;
         private float dragHeight = -5f;
@@ -67,9 +69,9 @@ namespace Assets.CS.TabletopUI
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
 
-            Draggable.itemBeingDragged = this;
-            Draggable.resetToStartPos = true;
-            Draggable.dragCamera = eventData.pressEventCamera;
+            DraggableToken.itemBeingDragged = this;
+            DraggableToken.resetToStartPos = true;
+            DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
 		
             startPosition = rectTransform.position;
@@ -80,7 +82,7 @@ namespace Assets.CS.TabletopUI
             rectTransform.SetAsLastSibling();
 		
             Vector3 pressPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.pressPosition, Draggable.dragCamera, out pressPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
             dragOffset = startPosition - pressPos;
 
             if (onChangeDragState != null)
@@ -97,7 +99,7 @@ namespace Assets.CS.TabletopUI
 
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.position, Draggable.dragCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
@@ -123,10 +125,10 @@ namespace Assets.CS.TabletopUI
         }
 
         void DelayedEndDrag() {
-            Draggable.itemBeingDragged = null;
+            DraggableToken.itemBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
 		
-            if (Draggable.resetToStartPos) {
+            if (DraggableToken.resetToStartPos) {
                 rectTransform.position = startPosition;
                 rectTransform.SetParent(startParent);
                 rectTransform.SetSiblingIndex(startSiblingIndex);
@@ -138,6 +140,16 @@ namespace Assets.CS.TabletopUI
         public virtual void OnDrop(PointerEventData eventData)
         {
    
+        }
+
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
+            if (eventData.pointerId >= -1)
+            { 
+                 subscribers.ForEach(s=>s.TokenClicked(this));
+            }
         }
     }
 }
