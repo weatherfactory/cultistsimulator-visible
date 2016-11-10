@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneOSXIntel:4</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -90,22 +88,22 @@
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\IntExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
     <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\CanvasGroupFader.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\CompendiumHolder.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\DeactivateOnPlay.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\DraggableToken.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\ElementCard.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\ElementDetailsWindow.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\Gradient4Way.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\Interfaces\ITokenSubscriber.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\Notification.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\Notifier.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\RecipeDetailsWindow.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\RecipeSlot.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\ShittyShadowTest.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\TabletopBackground.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\TabletopManager.cs" />
-    <Compile Include="Assets\TabletopPrototype\Scripts\VerbBox.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\CanvasGroupFader.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\CompendiumHolder.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\DeactivateOnPlay.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\DraggableToken.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\ElementCard.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\ElementDetailsWindow.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenSubscriber.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Notification.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Notifier.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\RecipeDetailsWindow.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\RecipeSlot.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\ShittyShadowTest.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopManager.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\VerbBox.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />
