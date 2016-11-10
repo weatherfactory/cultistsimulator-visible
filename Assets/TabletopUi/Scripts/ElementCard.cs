@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -8,26 +9,23 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 namespace Assets.CS.TabletopUI
 {
-    public class ElementCard : DraggableToken
+    public class ElementCard : DraggableToken,IElementCard
     {
 	
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GameObject selectedMarker;
-        
-        [HideInInspector] public ElementDetailsWindow detailsWindow;
+        private Element _element;
+        private int _quantity;
+
         public string ElementId { get {
-            return element.Id ?? null;
+            return _element==null ? null : _element.Id;
         } }
 
         public int Quantity
         {
             get { return _quantity; }
         }
-
-        private Element element;
-        private int _quantity;
-
 
         public void SetQuantity(int quantity)
         {
@@ -42,11 +40,11 @@ namespace Assets.CS.TabletopUI
 
         public void SetElement(string id, int quantity) {
 
-            element = CompendiumHolder.compendium.GetElementById(id);
+            _element = CompendiumHolder.compendium.GetElementById(id);
           SetQuantity(quantity);
      
             name = "Card_" + id;
-            if (element == null)
+            if (_element == null)
                 return;
 		
             DisplayInfo();
@@ -54,14 +52,18 @@ namespace Assets.CS.TabletopUI
         }
 
         private void DisplayInfo() {
-            text.text = element.Label + "(" + Quantity + ")"; // Quantity is a hack, since later on cards always have quantity 1
+            text.text = _element.Label + "(" + Quantity + ")"; 
         }
 
         private void DisplayIcon() {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(element.Id);
+            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
             artwork.sprite = sprite;
         }
 
+        public Dictionary<string,int> GetAspects()
+        {
+            return _element.AspectsIncludingSelf;
+        }
 
         public Sprite GetSprite() {
             return artwork.sprite;

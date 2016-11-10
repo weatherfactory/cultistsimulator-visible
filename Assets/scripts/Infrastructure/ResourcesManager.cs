@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-/// <summary>
-/// Martin pointed out this should be static; he's probably right
-/// </summary>
     public class ResourcesManager: MonoBehaviour
     {
     public static Sprite GetSpriteForVerb(string verbId)
@@ -21,6 +18,11 @@ using UnityEngine;
 	public static Sprite GetSpriteForElement(string elementId)
     {
         return Resources.Load<Sprite>("FlatIcons/png/32px/" + elementId);
+    }
+
+    public static Sprite GetSpriteForAspect(string aspectId)
+    {
+        return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
     }
 }
 

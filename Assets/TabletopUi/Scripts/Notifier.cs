@@ -61,7 +61,7 @@ namespace Assets.CS.TabletopUI
   
         }
 
-        public void TokenClicked(DraggableToken draggableToken)
+        public void TokenInteracted(DraggableToken draggableToken)
         {
             ElementCard card = draggableToken as ElementCard;
             if (card != null)

@@ -2,16 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Interfaces;
+using Assets.Editor.Tests;
 
 
-    public class TestObjectGenerator
+public class TestObjectGenerator
     {
         public static Element CreateElement(int key)
         {
             return new Element(key.ToString(), "label" + key, "description" + key);
         }
 
-        public static string GeneratedElementId(int index)
+    public static FakeElementCard CreateElementCard(string key, int quantity)
+    {
+        FakeElementCard c=new FakeElementCard() {ElementId = key,Quantity = 1};
+        return c;
+    }
+
+        public static List<IElementCard> CardsForElements(Dictionary<string, Element> elements)
+        {
+        List<IElementCard> cards=new List<IElementCard>();
+            foreach (string k in elements.Keys)
+            {
+                FakeElementCard card = CreateElementCard(k, 1);
+                card.Aspects = elements[k].AspectsIncludingSelf;
+                cards.Add(card);
+            }
+            return cards;
+        }
+
+    public static string GeneratedElementId(int index)
         {
             return index.ToString();
         }
@@ -29,7 +49,7 @@ using System.Text;
 
         }
 
-        public static void AddUniqueAspectsToElements(Dictionary<string, Element> elements)
+        public static void AddUniqueAspectsToEachElement(Dictionary<string, Element> elements)
         {
             foreach (string k in elements.Keys)
             {

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Assets.Core.Interfaces;
+using Assets.TabletopUi.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +8,11 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class RecipeDetailsWindow : MonoBehaviour {
+    public class SituationWindow : MonoBehaviour {
 
         // This event should probably either give the window, which contains a reference to the recipe
         // or it gives out the recipe directly
-        public event System.Action<RecipeDetailsWindow, VerbBox> onStartRecipe;
+        public event System.Action<SituationWindow, VerbBox> onStartRecipe;
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
@@ -18,9 +20,11 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] LayoutGroup slotsHolder;
-        [SerializeField] TextMeshProUGUI aspects;
+        [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] RecipeSlot slotPrefab;
         [SerializeField] Button button;
+
+
 
         VerbBox linkedBox;
         List<RecipeSlot> slots = new List<RecipeSlot>();
@@ -41,7 +45,7 @@ namespace Assets.CS.TabletopUI
 
             box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
             // Instead we should lock positions in some other way?
-            // Window subscribes to verb/element, and when it's position is changed window updates it's own?
+            // Window subscribes to verb/element, and when it's position is changed window updates its own?
             box.transform.localPosition = Vector3.zero;
             box.transform.localRotation = Quaternion.identity;
 
@@ -49,7 +53,6 @@ namespace Assets.CS.TabletopUI
 
             title.text = verb.Label;
             description.text = verb.Description; 
-            aspects.text = "Aspects go here...";
 
             //linkedBox.SetSelected(true);
             linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
@@ -97,14 +100,19 @@ namespace Assets.CS.TabletopUI
 
 
         void HandleOnSlotDroppedOn(RecipeSlot slot) {
-            // This should be given through to the tabletop manager, normally.
+            // should this be sent through to the tabletop manager?
             Debug.Log("Recipe Slot dropped on");
 
-            if (DraggableToken.itemBeingDragged != null && DraggableToken.itemBeingDragged.GetComponent<ElementCard>() != null) { // Maybe check for item type here via GetComponent<Something>() != null?
+            ElementCard card=DraggableToken.itemBeingDragged as ElementCard;
+            if(card!=null)
+            { 
                 DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                DraggableToken.itemBeingDragged.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
-                DraggableToken.itemBeingDragged.transform.localPosition = Vector3.zero;
-                DraggableToken.itemBeingDragged.transform.localRotation = Quaternion.identity;
+                card.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
+                card.transform.localPosition = Vector3.zero;
+                card.transform.localRotation = Quaternion.identity;
+                ElementCardsAggregator ecg=new ElementCardsAggregator(GetAllHeldCards());
+                
+                aspectsDisplay.DisplayAspects(ecg.GetTotalAspects());
             }
         }
 

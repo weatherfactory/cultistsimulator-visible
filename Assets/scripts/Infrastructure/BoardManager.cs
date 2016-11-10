@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Assets.TabletopUi.Scripts;
 using OrbCreationExtensions;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -223,7 +224,7 @@ public class BoardManager : MonoBehaviour,IElementQuantityDisplay,IRecipeSituati
 
     public void UpdateAspectDisplay()
     {
-            pnlCurrentAspects.UpdateAspects(pnlWorkspace);
+          
     }
 
     public void DisplayRecipe(Recipe recipe)

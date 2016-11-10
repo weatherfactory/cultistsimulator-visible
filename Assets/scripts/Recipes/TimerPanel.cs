@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.TabletopUi.Scripts;
 using UnityEngine.UI;
 
 public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
@@ -27,8 +28,8 @@ public class TimerPanel : BoardMonoBehaviour,IRecipeSituationSubscriber
         if (withInfo.DisplayElementsInSituation.Count > 0)
         {
             pnlContents.ResetAspects();
-            foreach (string k in withInfo.DisplayElementsInSituation.Keys)
-                pnlContents.ChangeAspectQuantity(k, withInfo.DisplayElementsInSituation[k], 20);
+           // foreach (string k in withInfo.DisplayElementsInSituation.Keys)
+              //  pnlContents.ChangeAspectQuantity(k, withInfo.DisplayElementsInSituation[k]);
         }
 
         if (withInfo.DisplayChildSlotSpecifications.Count > 0)

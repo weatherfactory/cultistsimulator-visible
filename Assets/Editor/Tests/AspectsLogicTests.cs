@@ -18,7 +18,7 @@ namespace Assets.Editor.Tests
         {
             c = new Compendium(null);
             elements = TestObjectGenerator.ElementDictionary(1, 2);
-            TestObjectGenerator.AddUniqueAspectsToElements(elements);
+            TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
             c.UpdateElements(elements);
         }
 

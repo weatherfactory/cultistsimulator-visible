@@ -143,12 +143,12 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void OnPointerClick(PointerEventData eventData)
+        public virtual void OnPointerClick(PointerEventData eventData)
         {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
             if (eventData.pointerId >= -1)
             { 
-                 subscribers.ForEach(s=>s.TokenClicked(this));
+                 subscribers.ForEach(s=>s.TokenInteracted(this));
             }
         }
     }

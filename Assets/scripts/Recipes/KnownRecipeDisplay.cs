@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.TabletopUi.Scripts;
 using TMPro;
 using UnityEngine.UI;
 
@@ -53,7 +54,7 @@ public class KnownRecipeDisplay : BoardMonoBehaviour {
         pnlAspectsNeeded.ResetAspects();
         foreach (KeyValuePair<string,int> reqKeyValuePair in displayedRecipe.Requirements)
         {
-            pnlAspectsNeeded.ChangeAspectQuantity(reqKeyValuePair.Key,reqKeyValuePair.Value);
+            //pnlAspectsNeeded.ChangeAspectQuantity(reqKeyValuePair.Key,reqKeyValuePair.Value);
         }
         
         pnlVerbNeeded.SetVerb(displayedRecipe.ActionId);

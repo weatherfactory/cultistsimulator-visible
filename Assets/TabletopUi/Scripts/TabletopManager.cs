@@ -16,7 +16,7 @@ namespace Assets.CS.TabletopUI
         [Header("Prefabs")]
         [SerializeField] ElementCard elementCardPrefab;
         [SerializeField] VerbBox verbBoxPrefab;
-        [SerializeField] RecipeDetailsWindow recipeDetailsWindowPrefab;
+        [SerializeField] SituationWindow _situationWindowPrefab;
         
         [SerializeField] Transform windowHolderFixed;
 
@@ -106,13 +106,6 @@ namespace Assets.CS.TabletopUI
             return card;
         }
 
-        // Element Detail Windows
-
-
-
-
-
-
         // Ideally we pool and reuse these
 
         // Recipe Detail Windows
@@ -146,8 +139,8 @@ namespace Assets.CS.TabletopUI
         }
 
         // Ideally we pool and reuse these
-        RecipeDetailsWindow BuildRecipeDetailsWindow() {
-            var window = Instantiate(recipeDetailsWindowPrefab) as RecipeDetailsWindow;
+        SituationWindow BuildRecipeDetailsWindow() {
+            var window = Instantiate(_situationWindowPrefab) as SituationWindow;
             window.transform.SetParent(windowParent);
             window.transform.localPosition = Vector3.zero;
             window.transform.localScale = Vector3.one;
@@ -156,10 +149,9 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
-        
         public int maxNumRecipeWindows = 1;
         public int maxNumElementWindows = 1;
-        List<RecipeDetailsWindow> recipeWindows = new List<RecipeDetailsWindow>();
+        List<SituationWindow> recipeWindows = new List<SituationWindow>();
 
 
 
@@ -207,7 +199,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public void TokenClicked(DraggableToken draggableToken)
+        public void TokenInteracted(DraggableToken draggableToken)
         {
        
         }
@@ -267,7 +259,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        void HandleOnRecipeStarted(RecipeDetailsWindow window, VerbBox box) {
+        void HandleOnRecipeStarted(SituationWindow window, VerbBox box) {
             HideRecipeDetails(box, false);
             box.StartTimer();
         }

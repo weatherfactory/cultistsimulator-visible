@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class VerbBox : MonoBehaviour, IPointerClickHandler {
+    public class VerbBox : DraggableToken {
         public event System.Action<VerbBox> onVerbBoxClicked;
 
         [SerializeField] Image artwork;
@@ -14,12 +14,16 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
+        private Verb _verb;
 
-        [HideInInspector] public RecipeDetailsWindow detailsWindow;
-        public string verbId { private set; get; }
+
+        [HideInInspector] public SituationWindow detailsWindow;
+        public string verbId { get {
+            return _verb == null ? null : _verb.Id;
+        } }
 
         // Question how much of that we retain in the DisplayObject or in the Verb.
-        // For conveninence I think it makes sense to keep it in the verb/situation/recipe and either
+        // For convenienence I think it makes sense to keep it in the verb/situation/recipe and either
         // referencing them here for easy access or having the verb constantly push
         // updates to a set of duplicate fields.
         public bool isBusy { private set; get; }
@@ -33,9 +37,10 @@ namespace Assets.CS.TabletopUI
                 SetVerb(verb);
         }
 
-        public void SetVerb(Verb verb) {
-            verbId = verb.Id;
-            name = "Verb_" + verb.Id;
+        public void SetVerb(Verb verb)
+        {
+            _verb = verb;
+            name = "Verb_" + verbId;
 
             if (verb == null)
                 return;
@@ -95,10 +100,13 @@ namespace Assets.CS.TabletopUI
 
         // Interaction
 
-        public void OnPointerClick(PointerEventData eventData) {
+        public override void OnPointerClick(PointerEventData eventData) {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
             if ( eventData.pointerId >= -1 && onVerbBoxClicked != null )
+            { 
                 onVerbBoxClicked( this );
+                base.OnPointerClick(eventData);
+            }
         }
     }
 }
