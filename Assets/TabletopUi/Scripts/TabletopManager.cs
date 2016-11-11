@@ -13,7 +13,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform windowParent;
         [SerializeField] Notifier notifier;
         [SerializeField] TabletopBackground background;
-        
         [SerializeField] Transform windowHolderFixed;
 
 
@@ -23,8 +22,8 @@ namespace Assets.CS.TabletopUI
 
         
         void Start () {
-            var compendiumHolder = gameObject.AddComponent<CompendiumHolder>();
-            compendiumHolder.Init();
+            var compendiumHolder = gameObject.AddComponent<Registry>();
+            compendiumHolder.ImportContentToCompendium();
         
 
 
@@ -47,7 +46,7 @@ namespace Assets.CS.TabletopUI
             float cardWidth = (PrefabFactory.GetPrefab<ElementCard>().transform as RectTransform).rect.width + 20f;
 
             // build verbs
-            var verbs = CompendiumHolder.compendium.GetAllVerbs();
+            var verbs = Registry.compendium.GetAllVerbs();
 
             for (int i = 0; i < verbs.Count; i++) {
                 box = BuildVerbBox();

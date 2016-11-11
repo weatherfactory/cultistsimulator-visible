@@ -25,6 +25,9 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Button button;
 
 
+        private Verb verb;
+
+
 
         VerbBox linkedBox;
         List<RecipeSlot> slots = new List<RecipeSlot>();
@@ -49,7 +52,7 @@ namespace Assets.CS.TabletopUI
             box.transform.localPosition = Vector3.zero;
             box.transform.localRotation = Quaternion.identity;
 
-            var verb = CompendiumHolder.compendium.GetVerbById(box.verbId);
+            verb = Registry.compendium.GetVerbById(box.verbId);
 
             title.text = verb.Label;
             description.text = verb.Description; 
@@ -107,8 +110,14 @@ namespace Assets.CS.TabletopUI
                 card.transform.localPosition = Vector3.zero;
                 card.transform.localRotation = Quaternion.identity;
                 ElementCardsAggregator ecg=new ElementCardsAggregator(GetAllHeldCards());
-                
-                aspectsDisplay.DisplayAspects(ecg.GetTotalAspects());
+                Dictionary<string,int> currentAspects = ecg.GetTotalAspects();
+                aspectsDisplay.DisplayAspects(currentAspects);
+                Recipe r = Registry.compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+                if(r!=null)
+                {
+                    title.text = r.Label;
+                    description.text = r.StartDescription;
+                }
             }
         }
 

@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI
         private int numCompletions = 0; // Stands for the amount of completed cycles.
 
         public void SetVerb(string id) {
-            var verb = CompendiumHolder.compendium.GetVerbById(id);
+            var verb = Registry.compendium.GetVerbById(id);
 
             if (verb != null)
                 SetVerb(verb);

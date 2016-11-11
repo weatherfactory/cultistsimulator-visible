@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class AspectFrame : MonoBehaviour,IPointerClickHandler,INotifyLocator
+public class AspectFrame : MonoBehaviour,IPointerClickHandler
 {
     public int Quantity;
     private Element aspect;
@@ -31,7 +31,6 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler,INotifyLocator
         DisplayAspectImage(aspect);
         DisplayQuantity(aspectValue);
         gameObject.name = "Aspect - " + aspect.Id;
-
     }
 
     public void OnPointerClick(PointerEventData eventData)

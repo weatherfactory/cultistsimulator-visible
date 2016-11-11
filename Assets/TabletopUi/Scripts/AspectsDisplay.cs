@@ -12,13 +12,10 @@ namespace Assets.TabletopUi.Scripts
     public class AspectsDisplay : MonoBehaviour
     {
 
-        [SerializeField]private AspectFrame prefabAspectFrame;
-
-
         private void AddAspectToDisplay(string aspectId, int quantity)
         {
             AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
-            Element aspect = CompendiumHolder.compendium.GetElementById(aspectId);
+            Element aspect = Registry.compendium.GetElementById(aspectId);
             newAspectFrame.PopulateDisplay(aspect, quantity);
 
         }
@@ -28,27 +25,17 @@ namespace Assets.TabletopUi.Scripts
             foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
             DestroyObject(a.gameObject);
 
-
         }
 
         public void DisplayAspects(Dictionary<string,int> aspects)
         {
 
             ResetAspects();
-
-                foreach (KeyValuePair<string, int> kvp in aspects)
+                foreach (string k in aspects.Keys)
                 {
-                AddAspectToDisplay(kvp.Key, kvp.Value);
+                AddAspectToDisplay(k,aspects[k]);
                 }
-
             }
-        
-        private void DisplayRecipesForCurrentAspects()
-        {
-            //var recipe= CompendiumHolder.compendium.GetFirstRecipeForAspectsWithVerb(AllCurrentAspects(),VERVB);
-
-        }
-
-
+    
     }
 }
