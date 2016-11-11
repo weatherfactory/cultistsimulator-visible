@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
@@ -12,11 +13,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform windowParent;
         [SerializeField] Notifier notifier;
         [SerializeField] TabletopBackground background;
-
-        [Header("Prefabs")]
-        [SerializeField] ElementCard elementCardPrefab;
-        [SerializeField] VerbBox verbBoxPrefab;
-        [SerializeField] SituationWindow _situationWindowPrefab;
         
         [SerializeField] Transform windowHolderFixed;
 
@@ -46,9 +42,9 @@ namespace Assets.CS.TabletopUI
             VerbBox box;
             ElementCard card;
 
-            float boxWidth = (verbBoxPrefab.transform as RectTransform).rect.width + 20f;
-            float boxHeight = (verbBoxPrefab.transform as RectTransform).rect.height + 50f;
-            float cardWidth = (elementCardPrefab.transform as RectTransform).rect.width + 20f;
+            float boxWidth = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.width + 20f;
+            float boxHeight = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.height + 50f;
+            float cardWidth = (PrefabFactory.GetPrefab<ElementCard>().transform as RectTransform).rect.width + 20f;
 
             // build verbs
             var verbs = CompendiumHolder.compendium.GetAllVerbs();
@@ -82,27 +78,21 @@ namespace Assets.CS.TabletopUI
         // Verb Boxes
 
         // Ideally we pool and reuse these
-        VerbBox BuildVerbBox() {
-            var box = Instantiate(verbBoxPrefab) as VerbBox;
+        VerbBox BuildVerbBox()
+        {
+            var box= PrefabFactory.CreateLocally<VerbBox>(cardHolder);
             box.onVerbBoxClicked += HandleOnVerbBoxClicked;
-            box.transform.SetParent(cardHolder);
-            box.transform.localScale = Vector3.one;
-            box.transform.localPosition = Vector3.zero;
-            box.transform.localRotation = Quaternion.identity;
             return box;
         }
 
         // Element Cards
 
         // Ideally we pool and reuse these
-        ElementCard BuildElementCard() {
-            var card = Instantiate(elementCardPrefab) as ElementCard;
-            card.transform.SetParent(cardHolder);
-            card.transform.localScale = Vector3.one;
-            card.transform.localPosition = Vector3.zero;
-            card.transform.localRotation = Quaternion.identity;
-            card.Subscribe(notifier);
+        ElementCard BuildElementCard()
+        {
+            var card = PrefabFactory.CreateLocally<ElementCard>(cardHolder);
             card.Subscribe(this);
+            card.Subscribe(notifier);
             return card;
         }
 
@@ -139,12 +129,9 @@ namespace Assets.CS.TabletopUI
         }
 
         // Ideally we pool and reuse these
-        SituationWindow BuildRecipeDetailsWindow() {
-            var window = Instantiate(_situationWindowPrefab) as SituationWindow;
-            window.transform.SetParent(windowParent);
-            window.transform.localPosition = Vector3.zero;
-            window.transform.localScale = Vector3.one;
-            window.transform.localRotation = Quaternion.identity;
+        SituationWindow BuildRecipeDetailsWindow()
+        {
+            var window = PrefabFactory.CreateLocally<SituationWindow>(windowParent);
             window.onStartRecipe += HandleOnRecipeStarted;
             return window;
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts
@@ -16,7 +17,7 @@ namespace Assets.TabletopUi.Scripts
 
         private void AddAspectToDisplay(string aspectId, int quantity)
         {
-            AspectFrame newAspectFrame = gameObject.InstantiateLocally<AspectFrame>(prefabAspectFrame, transform);
+            AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
             Element aspect = CompendiumHolder.compendium.GetElementById(aspectId);
             newAspectFrame.PopulateDisplay(aspect, quantity);
 

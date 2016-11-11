@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.CS.TabletopUI
 {
     
     public class Notifier : MonoBehaviour,ITokenSubscriber {
-        [Header("Prefabs")]
-        [SerializeField]
-        ElementDetailsWindow elementDetailsWindowPrefab;
-
-        [SerializeField]  Notification notificationPrefab;
         [SerializeField]
         private Transform windowHolderFixed;
         [SerializeField]
@@ -35,24 +31,14 @@ namespace Assets.CS.TabletopUI
 
         public ElementDetailsWindow BuildElementDetailsWindow()
         {
-            var window = Instantiate(elementDetailsWindowPrefab);
-            window.transform.SetParent(windowHolderFixed);
-            window.transform.localPosition = Vector3.zero;
-            window.transform.localScale = Vector3.one;
-            window.transform.localRotation = Quaternion.identity;
+            var window = PrefabFactory.CreateLocally<ElementDetailsWindow>(windowHolderFixed);
             return window;
         }
 
         public Notification BuildNotification()
         {
-
-            var notification = Instantiate(this.notificationPrefab) as Notification;
-            notification.transform.SetParent(notificationHolder);
-            notification.transform.localPosition = Vector3.zero;
-            notification.transform.localScale = Vector3.one;
-            notification.transform.localRotation = Quaternion.identity;
+            var notification = PrefabFactory.CreateLocally<Notification>(notificationHolder);
             return notification;
-            
         }
 
 

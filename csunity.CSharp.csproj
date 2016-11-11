@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneOSXIntel:4</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -83,17 +81,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Core\Entities\ElementCardsAggregator.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
+    <Compile Include="Assets\Core\Entities\ElementCardsAggregator.cs" />
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
-    <Compile Include="Assets\Core\Interfaces\IElementCard.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\SituationElementContainer.cs" />
     <Compile Include="Assets\Core\Entities\Verb.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\RecipeTimerState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
+    <Compile Include="Assets\Core\Interfaces\IElementCard.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
@@ -115,11 +112,11 @@
     <Compile Include="Assets\TabletopUi\Scripts\Notification.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notifier.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\RecipeSlot.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Services\PrefabFactory.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ShittyShadowTest.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopManager.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Utility\UnityEngineExtensions.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\VerbBox.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
@@ -231,7 +228,6 @@
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\BaseElementsContainer.cs" />
     <Compile Include="Assets\scripts\Base\DraggableToken.cs" />
     <Compile Include="Assets\scripts\Elements\ChildSlotOrganiser.cs" />
     <Compile Include="Assets\scripts\Elements\ChildSlotSpecification.cs" />
@@ -239,6 +235,7 @@
     <Compile Include="Assets\scripts\Elements\ResourcesPanel.cs" />
     <Compile Include="Assets\scripts\Elements\SlotReceiveElement.cs" />
     <Compile Include="Assets\scripts\Elements\Workspace.cs" />
+    <Compile Include="Assets\scripts\Infrastructure\BaseElementsContainer.cs" />
     <Compile Include="Assets\scripts\Infrastructure\BoardManager.cs" />
     <Compile Include="Assets\scripts\Infrastructure\BoardMonoBehaviour.cs" />
     <Compile Include="Assets\scripts\Infrastructure\CharacterNamePanel.cs" />
@@ -248,6 +245,7 @@
     <Compile Include="Assets\scripts\Infrastructure\MenuManager.cs" />
     <Compile Include="Assets\scripts\Infrastructure\NotificationPanel.cs" />
     <Compile Include="Assets\scripts\Infrastructure\ResourcesManager.cs" />
+    <Compile Include="Assets\scripts\Infrastructure\SituationElementContainer.cs" />
     <Compile Include="Assets\scripts\Interfaces\ICharacterInfoSubscriber.cs" />
     <Compile Include="Assets\scripts\Interfaces\IElementQuantityDisplay.cs" />
     <Compile Include="Assets\scripts\Interfaces\IElementSlotEventSubscriber.cs" />
@@ -309,6 +307,5 @@
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

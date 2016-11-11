@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] LayoutGroup slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
-        [SerializeField] RecipeSlot slotPrefab;
         [SerializeField] Button button;
 
 
@@ -78,12 +78,8 @@ namespace Assets.CS.TabletopUI
         }
 
         RecipeSlot BuildSlot() {
-            var slot = Instantiate(slotPrefab) as RecipeSlot;
+            var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder.transform);
             slot.onCardDropped += HandleOnSlotDroppedOn;
-            slot.transform.SetParent(slotsHolder.transform);
-            slot.transform.localScale = Vector3.one;
-            slot.transform.localPosition = Vector3.zero;
-            slot.transform.localRotation = Quaternion.identity;
             return slot;
         }
 
