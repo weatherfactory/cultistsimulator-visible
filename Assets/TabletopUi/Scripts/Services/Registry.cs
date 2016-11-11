@@ -4,7 +4,7 @@ namespace Assets.CS.TabletopUI
 {
     public class Registry : MonoBehaviour {
 
-        public static Compendium compendium {
+        public static Compendium Compendium {
             get {
                 return m_compendium;
             }

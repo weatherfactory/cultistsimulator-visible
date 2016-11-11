@@ -53,7 +53,7 @@ namespace Assets.CS.TabletopUI
 
 
             // build verbs
-            var verbs = Registry.compendium.GetAllVerbs();
+            var verbs = Registry.Compendium.GetAllVerbs();
 
             for (int i = 0; i < verbs.Count; i++) {
                 box = BuildVerbBox();

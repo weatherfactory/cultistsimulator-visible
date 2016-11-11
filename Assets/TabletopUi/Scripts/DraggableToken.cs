@@ -70,7 +70,6 @@ namespace Assets.CS.TabletopUI
 
         void StartDrag(PointerEventData eventData) {
 
-            
 
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 

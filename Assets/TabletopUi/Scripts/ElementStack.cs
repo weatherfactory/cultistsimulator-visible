@@ -57,7 +57,7 @@ namespace Assets.CS.TabletopUI
 
         public void SetElement(string id, int quantity) {
 
-            _element = Registry.compendium.GetElementById(id);
+            _element = Registry.Compendium.GetElementById(id);
           SetQuantity(quantity);
      
             name = "Card_" + id;

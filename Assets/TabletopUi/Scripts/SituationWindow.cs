@@ -50,7 +50,7 @@ namespace Assets.CS.TabletopUI
             box.transform.localPosition = Vector3.zero;
             box.transform.localRotation = Quaternion.identity;
 
-            verb = Registry.compendium.GetVerbById(box.verbId);
+            verb = Registry.Compendium.GetVerbById(box.verbId);
 
             title.text = verb.Label;
             description.text = verb.Description; 
@@ -115,7 +115,7 @@ namespace Assets.CS.TabletopUI
             ElementStacksGateway ecg = new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder.transform));
             Dictionary<string, int> currentAspects = ecg.GetTotalAspects();
             aspectsDisplay.DisplayAspects(currentAspects);
-            Recipe r = Registry.compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
             if (r != null)
             {
                 title.text = r.Label;

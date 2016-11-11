@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI
 
         public void SetElementCard(ElementStack stack) {
 
-            var element = Registry.compendium.GetElementById(stack.ElementId);
+            var element = Registry.Compendium.GetElementById(stack.ElementId);
             artwork.sprite = stack.GetSprite();
             title.text = element.Label;
             description.text = element.Description; 
