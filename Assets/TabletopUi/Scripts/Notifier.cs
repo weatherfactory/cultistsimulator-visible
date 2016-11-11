@@ -22,10 +22,10 @@ namespace Assets.CS.TabletopUI
             notification.SetDetails(title, description);
         }
 
-        public void ShowElementDetails(ElementCard card)
+        public void ShowElementDetails(ElementStack stack)
         {
             var detailWindow = BuildElementDetailsWindow();
-            detailWindow.SetElementCard(card);
+            detailWindow.SetElementCard(stack);
         }
 
 
@@ -49,10 +49,10 @@ namespace Assets.CS.TabletopUI
 
         public void TokenInteracted(DraggableToken draggableToken)
         {
-            ElementCard card = draggableToken as ElementCard;
-            if (card != null)
+            ElementStack stack = draggableToken as ElementStack;
+            if (stack != null)
             {
-                    ShowElementDetails(card);
+                    ShowElementDetails(stack);
             }
         }
     }

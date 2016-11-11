@@ -27,16 +27,13 @@ namespace Assets.CS.TabletopUI
 
         private Verb verb;
 
-
-
         VerbBox linkedBox;
         List<RecipeSlot> slots = new List<RecipeSlot>();
 
-        // Make sure we subscribe to draggable changes to know when our linkedCard is being dragged
+
         void OnEnable () {
             button.onClick.AddListener(HandleOnButtonClicked);
         }
-        // Make sure we unsubscribe when this gets disabled or destroyed to avoid further
         void OnDisable() {
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
@@ -93,8 +90,8 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Hide();
         }
 
-        public ElementCard[] GetAllHeldCards() {
-            return slotsHolder.GetComponentsInChildren<ElementCard>();
+        public ElementStack[] GetAllHeldCards() {
+            return slotsHolder.GetComponentsInChildren<ElementStack>();
         }
 
 
@@ -102,14 +99,14 @@ namespace Assets.CS.TabletopUI
             // should this be sent through to the tabletop manager?
             Debug.Log("Recipe Slot dropped on");
 
-            ElementCard card=DraggableToken.itemBeingDragged as ElementCard;
-            if(card!=null)
+            ElementStack stack=DraggableToken.itemBeingDragged as ElementStack;
+            if(stack!=null)
             { 
                 DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                card.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
-                card.transform.localPosition = Vector3.zero;
-                card.transform.localRotation = Quaternion.identity;
-                ElementCardsAggregator ecg=new ElementCardsAggregator(GetAllHeldCards());
+                stack.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
+                stack.transform.localPosition = Vector3.zero;
+                stack.transform.localRotation = Quaternion.identity;
+                ElementStacksGateway ecg=new ElementStacksGateway(GetAllHeldCards(),null);
                 Dictionary<string,int> currentAspects = ecg.GetTotalAspects();
                 aspectsDisplay.DisplayAspects(currentAspects);
                 Recipe r = Registry.compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);

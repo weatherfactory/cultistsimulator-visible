@@ -13,20 +13,20 @@ public class TestObjectGenerator
             return new Element(key.ToString(), "label" + key, "description" + key);
         }
 
-    public static FakeElementCard CreateElementCard(string key, int quantity)
+    public static FakeElementStack CreateElementCard(string key, int quantity)
     {
-        FakeElementCard c=new FakeElementCard() {ElementId = key,Quantity = 1};
+        FakeElementStack c=new FakeElementStack() {ElementId = key,Quantity = 1};
         return c;
     }
 
-        public static List<IElementCard> CardsForElements(Dictionary<string, Element> elements)
+        public static List<IElementStack> CardsForElements(Dictionary<string, Element> elements)
         {
-        List<IElementCard> cards=new List<IElementCard>();
+        List<IElementStack> cards=new List<IElementStack>();
             foreach (string k in elements.Keys)
             {
-                FakeElementCard card = CreateElementCard(k, 1);
-                card.Aspects = elements[k].AspectsIncludingSelf;
-                cards.Add(card);
+                FakeElementStack stack = CreateElementCard(k, 1);
+                stack.Aspects = elements[k].AspectsIncludingSelf;
+                cards.Add(stack);
             }
             return cards;
         }

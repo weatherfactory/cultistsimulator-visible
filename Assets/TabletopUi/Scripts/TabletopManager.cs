@@ -24,8 +24,6 @@ namespace Assets.CS.TabletopUI
         void Start () {
             var compendiumHolder = gameObject.AddComponent<Registry>();
             compendiumHolder.ImportContentToCompendium();
-        
-
 
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
@@ -33,17 +31,23 @@ namespace Assets.CS.TabletopUI
             DraggableToken.onChangeDragState += OnChangeDragState;
 
             PopulateTabletop();
+
+        }
+
+        public IEnumerable<ElementStack> GetCardsOnTabletop()
+        {
+            return cardHolder.GetComponentsInChildren<ElementStack>();
         }
 
 
         void PopulateTabletop() {
 
             VerbBox box;
-            ElementCard card;
+            ElementStack stack;
 
             float boxWidth = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.width + 20f;
             float boxHeight = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.height + 50f;
-            float cardWidth = (PrefabFactory.GetPrefab<ElementCard>().transform as RectTransform).rect.width + 20f;
+            float cardWidth = (PrefabFactory.GetPrefab<ElementStack>().transform as RectTransform).rect.width + 20f;
 
             // build verbs
             var verbs = Registry.compendium.GetAllVerbs();
@@ -56,9 +60,9 @@ namespace Assets.CS.TabletopUI
 
 
             for (int i = 0; i < 10; i++) {
-                card = BuildElementCard();
-                card.SetElement(legalElementIDs[i % legalElementIDs.Length], 3);
-                card.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
+                stack = BuildElementCard();
+                stack.SetElement(legalElementIDs[i % legalElementIDs.Length], 3);
+                stack.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
             }
         }
 
@@ -87,9 +91,9 @@ namespace Assets.CS.TabletopUI
         // Element Cards
 
         // Ideally we pool and reuse these
-        ElementCard BuildElementCard()
+        ElementStack BuildElementCard()
         {
-            var card = PrefabFactory.CreateLocally<ElementCard>(cardHolder);
+            var card = PrefabFactory.CreateLocally<ElementStack>(cardHolder);
             card.Subscribe(this);
             card.Subscribe(notifier);
             return card;
@@ -172,7 +176,7 @@ namespace Assets.CS.TabletopUI
         #region -- response to subscriptionUI events
         public void TokenPickedUp(DraggableToken draggableToken)
         {
-            ElementCard cardPickedUp=draggableToken as ElementCard;
+            ElementStack cardPickedUp=draggableToken as ElementStack;
             if(cardPickedUp!=null)
             {
                 if(cardPickedUp.Quantity>1)
@@ -202,10 +206,10 @@ namespace Assets.CS.TabletopUI
             if (isDragging == false || DraggableToken.itemBeingDragged.gameObject == null) 
                 return;
 
-            ElementCard card = DraggableToken.itemBeingDragged.GetComponent<ElementCard>();
+            ElementStack stack = DraggableToken.itemBeingDragged.GetComponent<ElementStack>();
 
-            if (card != null) {
-                notifier.ShowElementDetails(card);			
+            if (stack != null) {
+                notifier.ShowElementDetails(stack);			
                 return;
             }
 
@@ -254,4 +258,5 @@ namespace Assets.CS.TabletopUI
 
 
     }
+
 }

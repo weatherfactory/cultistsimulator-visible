@@ -9,7 +9,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 namespace Assets.CS.TabletopUI
 {
-    public class ElementCard : DraggableToken,IElementCard
+    public class ElementStack : DraggableToken,IElementStack
     {
 	
         [SerializeField] Image artwork;
@@ -27,15 +27,32 @@ namespace Assets.CS.TabletopUI
             get { return _quantity; }
         }
 
+        public bool Defunct { get; private set; }
+
         public void SetQuantity(int quantity)
         {
             _quantity = quantity;
             if (quantity <= 0)
             {
-                DestroyObject(gameObject);
+                Remove();
                 return;
             }
             DisplayInfo();
+        }
+
+
+        public void ModifyQuantity(int change)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Remove()
+        {
+            DestroyObject(gameObject);
+            if (Defunct)
+                return false;
+            Defunct = true;
+                return true;
         }
 
         public void SetElement(string id, int quantity) {
@@ -65,17 +82,18 @@ namespace Assets.CS.TabletopUI
             return _element.AspectsIncludingSelf;
         }
 
+
         public Sprite GetSprite() {
             return artwork.sprite;
         }
 
         public override void OnDrop(PointerEventData eventData)
         {
-            ElementCard droppedCard = DraggableToken.itemBeingDragged as ElementCard;
-            ElementCard droppedOnCard = this as ElementCard;
-            if (droppedOnCard != null && droppedCard != null && droppedOnCard.ElementId == droppedCard.ElementId)
+            ElementStack droppedCard = DraggableToken.itemBeingDragged as ElementStack;
+            ElementStack droppedOnStack = this as ElementStack;
+            if (droppedOnStack != null && droppedCard != null && droppedOnStack.ElementId == droppedCard.ElementId)
             {
-                droppedOnCard.SetQuantity(droppedOnCard.Quantity + droppedCard.Quantity);
+                droppedOnStack.SetQuantity(droppedOnStack.Quantity + droppedCard.Quantity);
                 DraggableToken.resetToStartPos = false;
                 droppedCard.SetQuantity(0);
             }

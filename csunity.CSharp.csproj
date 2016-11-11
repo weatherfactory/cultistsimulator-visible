@@ -31,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
     <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;UNITY_ANALYTICS;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <NoWarn>CS0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -84,17 +83,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Core\BaseRecipeSituation.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
-    <Compile Include="Assets\Core\Entities\ElementCardsAggregator.cs" />
+    <Compile Include="Assets\Core\Entities\ElementStacksGateway.cs" />
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
     <Compile Include="Assets\Core\Entities\Verb.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\RecipeTimerState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
-    <Compile Include="Assets\Core\Interfaces\IElementCard.cs" />
+    <Compile Include="Assets\Core\InteractiveRecipeSituation.cs" />
+    <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
+    <Compile Include="Assets\Core\Interfaces\IElementStackProvisioner.cs" />
+    <Compile Include="Assets\Core\SealedRecipeSituation.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
+    <Compile Include="Assets\DebugTools.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -105,16 +109,17 @@
     <Compile Include="Assets\TabletopUi\Scripts\AspectFrame.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\AspectsDisplay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\CanvasGroupFader.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Registry.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\DeactivateOnPlay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\DraggableToken.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\ElementCard.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ElementDetailsWindow.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\ElementStack.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStackProvisioner.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenSubscriber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notification.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notifier.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\RecipeSlot.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Services\Registry.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\PrefabFactory.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ShittyShadowTest.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
@@ -231,49 +236,46 @@
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerCallbackList.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\TestRunnerConfigurator.cs" />
     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestingAssets\CallTesting.cs" />
-    <Compile Include="Assets\scripts\Base\DraggableToken.cs" />
-    <Compile Include="Assets\scripts\Elements\ChildSlotOrganiser.cs" />
-    <Compile Include="Assets\scripts\Elements\ChildSlotSpecification.cs" />
-    <Compile Include="Assets\scripts\Elements\DraggableElementToken.cs" />
-    <Compile Include="Assets\scripts\Elements\ResourcesPanel.cs" />
-    <Compile Include="Assets\scripts\Elements\SlotReceiveElement.cs" />
-    <Compile Include="Assets\scripts\Elements\Workspace.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\BaseElementsContainer.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\BoardManager.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\BoardMonoBehaviour.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\CharacterNamePanel.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\Dice.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\Heart.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\LogPanel.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\MenuManager.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\NotificationPanel.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\ResourcesManager.cs" />
-    <Compile Include="Assets\scripts\Infrastructure\SituationElementContainer.cs" />
-    <Compile Include="Assets\scripts\Interfaces\ICharacterInfoSubscriber.cs" />
-    <Compile Include="Assets\scripts\Interfaces\IElementQuantityDisplay.cs" />
-    <Compile Include="Assets\scripts\Interfaces\IElementSlotEventSubscriber.cs" />
-    <Compile Include="Assets\scripts\Interfaces\IElementsContainer.cs" />
-    <Compile Include="Assets\scripts\Interfaces\INotifyLocator.cs" />
-    <Compile Include="Assets\scripts\Interfaces\IRecipeSituation.cs" />
-    <Compile Include="Assets\scripts\Interfaces\IRecipeSituationSubscriber.cs" />
-    <Compile Include="Assets\scripts\Recipes\BaseRecipeSituation.cs" />
-    <Compile Include="Assets\scripts\Recipes\Compendium.cs" />
-    <Compile Include="Assets\scripts\Recipes\InteractiveRecipeSituation.cs" />
-    <Compile Include="Assets\scripts\Recipes\KnownRecipeDisplay.cs" />
-    <Compile Include="Assets\scripts\Recipes\RecipeDisplay.cs" />
-    <Compile Include="Assets\scripts\Recipes\SealedRecipeSituation.cs" />
-    <Compile Include="Assets\scripts\Recipes\SituationInfo.cs" />
-    <Compile Include="Assets\scripts\Recipes\SlotsPanel.cs" />
-    <Compile Include="Assets\scripts\Recipes\TimerPanel.cs" />
-    <Compile Include="Assets\scripts\Recipes\World.cs" />
-    <Compile Include="Assets\scripts\Recipes\WorldPanel.cs" />
-    <Compile Include="Assets\scripts\UIWiring\ButtonClicks.cs" />
-    <Compile Include="Assets\scripts\UIWiring\EndingPanel.cs" />
-    <Compile Include="Assets\scripts\Verbs\DraggableVerbToken.cs" />
-    <Compile Include="Assets\scripts\Verbs\SlotReceiveVerb.cs" />
-    <Compile Include="Assets\scripts\Verbs\VerbFrame.cs" />
-    <Compile Include="Assets\scripts\Verbs\VerbNeeded.cs" />
-    <Compile Include="Assets\scripts\Verbs\VerbPanel.cs" />
+    <Compile Include="Assets\z_original\Base\DraggableToken.cs" />
+    <Compile Include="Assets\z_original\Elements\ChildSlotOrganiser.cs" />
+    <Compile Include="Assets\z_original\Elements\ChildSlotSpecification.cs" />
+    <Compile Include="Assets\z_original\Elements\DraggableElementToken.cs" />
+    <Compile Include="Assets\z_original\Elements\ResourcesPanel.cs" />
+    <Compile Include="Assets\z_original\Elements\SlotReceiveElement.cs" />
+    <Compile Include="Assets\z_original\Elements\Workspace.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\BaseElementsContainer.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\BoardManager.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\BoardMonoBehaviour.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\CharacterNamePanel.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\Dice.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\Heart.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\LogPanel.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\MenuManager.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\NotificationPanel.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\ResourcesManager.cs" />
+    <Compile Include="Assets\z_original\Infrastructure\SituationElementContainer.cs" />
+    <Compile Include="Assets\z_original\Interfaces\ICharacterInfoSubscriber.cs" />
+    <Compile Include="Assets\z_original\Interfaces\IElementQuantityDisplay.cs" />
+    <Compile Include="Assets\z_original\Interfaces\IElementSlotEventSubscriber.cs" />
+    <Compile Include="Assets\z_original\Interfaces\IElementsContainer.cs" />
+    <Compile Include="Assets\z_original\Interfaces\INotifyLocator.cs" />
+    <Compile Include="Assets\z_original\Interfaces\IRecipeSituation.cs" />
+    <Compile Include="Assets\z_original\Interfaces\IRecipeSituationSubscriber.cs" />
+    <Compile Include="Assets\z_original\Recipes\Compendium.cs" />
+    <Compile Include="Assets\z_original\Recipes\KnownRecipeDisplay.cs" />
+    <Compile Include="Assets\z_original\Recipes\RecipeDisplay.cs" />
+    <Compile Include="Assets\z_original\Recipes\SituationInfo.cs" />
+    <Compile Include="Assets\z_original\Recipes\SlotsPanel.cs" />
+    <Compile Include="Assets\z_original\Recipes\TimerPanel.cs" />
+    <Compile Include="Assets\z_original\Recipes\World.cs" />
+    <Compile Include="Assets\z_original\Recipes\WorldPanel.cs" />
+    <Compile Include="Assets\z_original\UIWiring\ButtonClicks.cs" />
+    <Compile Include="Assets\z_original\UIWiring\EndingPanel.cs" />
+    <Compile Include="Assets\z_original\Verbs\DraggableVerbToken.cs" />
+    <Compile Include="Assets\z_original\Verbs\SlotReceiveVerb.cs" />
+    <Compile Include="Assets\z_original\Verbs\VerbFrame.cs" />
+    <Compile Include="Assets\z_original\Verbs\VerbNeeded.cs" />
+    <Compile Include="Assets\z_original\Verbs\VerbPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\content\recipe_notes.txt" />

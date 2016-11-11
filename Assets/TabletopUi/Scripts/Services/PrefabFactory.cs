@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         public AspectFrame AspectFrame;
         public VerbBox VerbBox;
-        public ElementCard ElementCard;
+        public ElementStack ElementStack;
         public SituationWindow SituationWindow;
         public ElementDetailsWindow ElementDetailsWindow;
         public Notification Notification;
