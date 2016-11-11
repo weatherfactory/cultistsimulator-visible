@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using TMPro;
@@ -9,7 +10,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindow : MonoBehaviour {
+    public class SituationWindow : MonoBehaviour,ITokenSubscriber {
 
         // This event should probably either give the window, which contains a reference to the recipe
         // or it gives out the recipe directly
@@ -90,9 +91,6 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Hide();
         }
 
-        public ElementStack[] GetAllHeldCards() {
-            return slotsHolder.GetComponentsInChildren<ElementStack>();
-        }
 
 
         void HandleOnSlotDroppedOn(RecipeSlot slot) {
@@ -106,15 +104,22 @@ namespace Assets.CS.TabletopUI
                 stack.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
                 stack.transform.localPosition = Vector3.zero;
                 stack.transform.localRotation = Quaternion.identity;
-                ElementStacksGateway ecg=new ElementStacksGateway(GetAllHeldCards(),null);
-                Dictionary<string,int> currentAspects = ecg.GetTotalAspects();
-                aspectsDisplay.DisplayAspects(currentAspects);
-                Recipe r = Registry.compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
-                if(r!=null)
-                {
-                    title.text = r.Label;
-                    description.text = r.StartDescription;
-                }
+
+                UpdateAspectsAndRecipe();
+                stack.Subscribe(this);
+            }
+        }
+
+        private void UpdateAspectsAndRecipe()
+        {
+            ElementStacksGateway ecg = new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder.transform));
+            Dictionary<string, int> currentAspects = ecg.GetTotalAspects();
+            aspectsDisplay.DisplayAspects(currentAspects);
+            Recipe r = Registry.compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+            if (r != null)
+            {
+                title.text = r.Label;
+                description.text = r.StartDescription;
             }
         }
 
@@ -126,5 +131,15 @@ namespace Assets.CS.TabletopUI
                 onStartRecipe(this, linkedBox);
         }
 
+        public void TokenPickedUp(DraggableToken draggableToken)
+        {
+           UpdateAspectsAndRecipe();
+            draggableToken.Unsubscribe(this);
+        }
+
+        public void TokenInteracted(DraggableToken draggableToken)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -95,10 +95,10 @@
     <Compile Include="Assets\Core\Enums\Style.cs" />
     <Compile Include="Assets\Core\InteractiveRecipeSituation.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
-    <Compile Include="Assets\Core\Interfaces\IElementStackProvisioner.cs" />
+    <Compile Include="Assets\Core\Interfaces\IElementStacksWrapper.cs" />
     <Compile Include="Assets\Core\SealedRecipeSituation.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
-    <Compile Include="Assets\DebugTools.cs" />
+    <Compile Include="Assets\TabletopUi\DebugTools.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -113,7 +113,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\DraggableToken.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ElementDetailsWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ElementStack.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStackProvisioner.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStacksWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenSubscriber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notification.cs" />

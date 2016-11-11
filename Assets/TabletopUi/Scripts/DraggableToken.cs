@@ -46,6 +46,12 @@ namespace Assets.CS.TabletopUI
                 subscribers.Add(subscriber);
         }
 
+        public void Unsubscribe(ITokenSubscriber subscriber)
+        {
+            if (subscribers.Contains(subscriber))
+                subscribers.Remove(subscriber);
+        }
+
         public void OnBeginDrag (PointerEventData eventData) {
             if (CanDrag(eventData))
                 StartDrag(eventData);
@@ -64,7 +70,7 @@ namespace Assets.CS.TabletopUI
 
         void StartDrag(PointerEventData eventData) {
 
-            subscribers.ForEach(s=>s.TokenPickedUp(this));
+            
 
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
@@ -87,6 +93,8 @@ namespace Assets.CS.TabletopUI
 
             if (onChangeDragState != null)
                 onChangeDragState(true);
+
+            subscribers.ForEach(s => s.TokenPickedUp(this));
         }
 
         public void OnDrag (PointerEventData eventData) {

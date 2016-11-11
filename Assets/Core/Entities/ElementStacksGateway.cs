@@ -7,12 +7,10 @@ using Assets.Core.Interfaces;
 
 public class ElementStacksGateway
 {
-    private IEnumerable<IElementStack> elementCards;
-    private IElementStackProvisioner provisioner;
+    private IElementStacksWrapper provisioner;
     
-    public ElementStacksGateway(IEnumerable<IElementStack> forCards,IElementStackProvisioner p)
+    public ElementStacksGateway(IElementStacksWrapper p)
     {
-        elementCards = forCards;
         provisioner = p;
     }
     /// <summary>
@@ -29,7 +27,7 @@ public class ElementStacksGateway
         int unsatisfiedChange = quantityChange;
         while(unsatisfiedChange<0)
         { 
-             IElementStack cardToRemove = elementCards.FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
+             IElementStack cardToRemove = provisioner.Stacks().FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
             if(cardToRemove==null)
                 //we've run out of matching cards; break, and return unsatisfied change amount
                 return unsatisfiedChange;
@@ -53,12 +51,12 @@ public class ElementStacksGateway
 
     public int GetCurrentElementQuantity(string elementId)
     {
-            return elementCards.Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
+            return provisioner.Stacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
     }
 
     public Dictionary<string,int> GetCurrentElementTotals()
     {
-        var totals = elementCards.GroupBy(c => c.ElementId)
+        var totals = provisioner.Stacks().GroupBy(c => c.ElementId)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -69,7 +67,7 @@ public class ElementStacksGateway
     {
         var totals=new Dictionary<string,int>();
 
-        foreach (var elementCard in elementCards)
+        foreach (var elementCard in provisioner.Stacks())
         {
             var aspects=elementCard.GetAspects();
             foreach (string k in aspects.Keys)

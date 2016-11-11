@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
@@ -48,6 +50,7 @@ namespace Assets.CS.TabletopUI
             float boxWidth = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.width + 20f;
             float boxHeight = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.height + 50f;
             float cardWidth = (PrefabFactory.GetPrefab<ElementStack>().transform as RectTransform).rect.width + 20f;
+
 
             // build verbs
             var verbs = Registry.compendium.GetAllVerbs();
@@ -120,7 +123,7 @@ namespace Assets.CS.TabletopUI
                 PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
             // Going throug hte cards in the slots
-            var heldCards = box.detailsWindow.GetAllHeldCards();
+            var heldCards = box.detailsWindow.GetComponentsInChildren<ElementStack>();
 
             foreach (var item in heldCards) {
                 if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have

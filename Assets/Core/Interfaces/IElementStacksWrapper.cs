@@ -8,8 +8,10 @@ namespace Assets.Core.Interfaces
     /// <summary>
     /// adds element stacks to a specified container
     /// </summary>
-    public interface IElementStackProvisioner
+    public interface IElementStacksWrapper
     {
         IElementStack ProvisionElementStack(string elementId, int quantity);
+
+        IEnumerable<IElementStack> Stacks();
     }
 }

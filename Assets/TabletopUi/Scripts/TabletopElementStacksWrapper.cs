@@ -9,10 +9,10 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts
 {
-    public class TabletopElementStackProvisioner: IElementStackProvisioner
+    public class TabletopElementStacksWrapper: IElementStacksWrapper
     {
         private Transform transform;
-        public TabletopElementStackProvisioner(Transform t)
+        public TabletopElementStacksWrapper(Transform t)
         {
             transform = t;
         }
@@ -21,7 +21,12 @@ namespace Assets.TabletopUi.Scripts
         {
             IElementStack stack = PrefabFactory.CreateLocally<ElementStack>(transform);
             stack.SetQuantity(quantity);
+            return stack;
+        }
 
+        public IEnumerable<IElementStack> Stacks()
+        {
+            return transform.GetComponentsInChildren<ElementStack>();
         }
     }
 }
