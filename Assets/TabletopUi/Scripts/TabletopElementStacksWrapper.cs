@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts
         public IElementStack ProvisionElementStack(string elementId, int quantity)
         {
             IElementStack stack = PrefabFactory.CreateLocally<ElementStack>(transform);
-            stack.SetQuantity(quantity);
+           stack.Populate(elementId,quantity);
             return stack;
         }
 

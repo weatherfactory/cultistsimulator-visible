@@ -14,5 +14,6 @@ namespace Assets.Core.Interfaces
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);
+        void Populate(string elementId, int quantity);
     }
 }

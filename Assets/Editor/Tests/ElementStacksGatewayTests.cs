@@ -178,6 +178,13 @@ namespace Assets.Editor.Tests
         {
             Quantity = quantity;
         }
+
+        public void Populate(string elementId, int quantity)
+        {
+            ElementId = elementId;
+            Quantity = quantity;
+        }
+
         public void ModifyQuantity(int change)
         {
             Quantity = Quantity + change;

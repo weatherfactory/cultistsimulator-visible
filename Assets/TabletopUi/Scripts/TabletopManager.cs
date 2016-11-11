@@ -64,7 +64,7 @@ namespace Assets.CS.TabletopUI
 
             for (int i = 0; i < 10; i++) {
                 stack = BuildElementCard();
-                stack.SetElement(legalElementIDs[i % legalElementIDs.Length], 3);
+                stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
                 stack.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
             }
         }
@@ -186,7 +186,7 @@ namespace Assets.CS.TabletopUI
                 { 
                 var card = BuildElementCard();
                 card.transform.localPosition = draggableToken.transform.localPosition;
-                card.SetElement(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
+                card.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
                     cardPickedUp.SetQuantity(1);
                 }
             }

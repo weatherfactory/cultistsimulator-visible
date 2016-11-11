@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI
 
         public void ModifyQuantity(int change)
         {
-            throw new System.NotImplementedException();
+            SetQuantity(_quantity+change);
         }
 
         public bool Remove()
@@ -55,12 +55,12 @@ namespace Assets.CS.TabletopUI
                 return true;
         }
 
-        public void SetElement(string id, int quantity) {
+        public void Populate(string elementId, int quantity) {
 
-            _element = Registry.Compendium.GetElementById(id);
+            _element = Registry.Compendium.GetElementById(elementId);
           SetQuantity(quantity);
      
-            name = "Card_" + id;
+            name = "Card_" + elementId;
             if (_element == null)
                 return;
 		
