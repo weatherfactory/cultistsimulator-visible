@@ -13,7 +13,7 @@ namespace Assets.Editor.Tests
     {
         private List<IElementStack> stacks;
         private IElementStacksWrapper provisioner;
-            [SetUp]
+        [SetUp]
         public void Setup()
         {
           stacks= TestObjectGenerator.CardsForElements(TestObjectGenerator.ElementDictionary(1, 3));

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
 using Object = UnityEngine.Object;
@@ -13,13 +14,31 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     class PrefabFactory: MonoBehaviour
     {
-        public AspectFrame AspectFrame;
-        public VerbBox VerbBox;
-        public ElementStack ElementStack;
-        public SituationWindow SituationWindow;
-        public ElementDetailsWindow ElementDetailsWindow;
-        public Notification Notification;
-        public RecipeSlot RecipeSlot;
+        [Header("Prefabs")]
+        public AspectFrame AspectFrame=null;
+        public VerbBox VerbBox = null;
+        public ElementStack ElementStack = null;
+        public SituationWindow SituationWindow = null;
+        public ElementDetailsWindow ElementDetailsWindow = null;
+        public Notification Notification = null;
+        public RecipeSlot RecipeSlot = null;
+
+        [Header("Token Subscribers")]
+        [SerializeField]
+        TabletopManager TabletopManager = null;
+        [SerializeField]
+        Notifier Notifier = null;
+
+
+        public static T CreateTokenWithSubscribers<T>(Transform destination) where T : DraggableToken
+        {
+            var token = PrefabFactory.CreateLocally<T>(destination);
+            var pf = Instance();
+            token.Subscribe(pf.TabletopManager);
+            token.Subscribe(pf.Notifier);
+
+            return token;
+        }
 
         public static T CreateLocally<T>(Transform parent) where T : Component
         {
@@ -44,6 +63,7 @@ namespace Assets.TabletopUi.Scripts.Services
             return prefab;
         }
 
+
         private static PrefabFactory Instance()
         {
             var instance = FindObjectOfType<PrefabFactory>();
@@ -52,5 +72,9 @@ namespace Assets.TabletopUi.Scripts.Services
 
             return instance;
         }
+
+
+
+
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI
 {
     public class VerbBox : DraggableToken {
-        public event System.Action<VerbBox> onVerbBoxClicked;
 
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text; // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
@@ -100,13 +99,6 @@ namespace Assets.CS.TabletopUI
 
         // Interaction
 
-        public override void OnPointerClick(PointerEventData eventData) {
-            // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if ( eventData.pointerId >= -1 && onVerbBoxClicked != null )
-            { 
-                onVerbBoxClicked( this );
-                base.OnPointerClick(eventData);
-            }
-        }
+       
     }
 }

@@ -11,15 +11,16 @@ namespace Assets.CS.TabletopUI
     public class TabletopManager : MonoBehaviour,ITokenSubscriber {
 
         [Header("Existing Objects")]
-        [SerializeField] Transform cardHolder;
+        [SerializeField] Transform tabletopTransform;
         [SerializeField] Transform windowParent;
         [SerializeField] Notifier notifier;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
+        private TabletopObjectBuilder tabletopObjectBuilder;
 
 
 
-  [Header("View Settings")]
+        [Header("View Settings")]
         [SerializeField] float windowZOffset = -10f;
 
         
@@ -32,97 +33,43 @@ namespace Assets.CS.TabletopUI
             background.onClicked += HandleOnBackgroundClicked;
             DraggableToken.onChangeDragState += OnChangeDragState;
 
-            PopulateTabletop();
-
+           tabletopObjectBuilder  = new TabletopObjectBuilder(tabletopTransform);
+            tabletopObjectBuilder.PopulateTabletop();
+            
         }
 
         public IEnumerable<ElementStack> GetCardsOnTabletop()
         {
-            return cardHolder.GetComponentsInChildren<ElementStack>();
+            return tabletopTransform.GetComponentsInChildren<ElementStack>();
         }
 
 
-        void PopulateTabletop() {
-
-            VerbBox box;
-            ElementStack stack;
-
-            float boxWidth = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.width + 20f;
-            float boxHeight = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.height + 50f;
-            float cardWidth = (PrefabFactory.GetPrefab<ElementStack>().transform as RectTransform).rect.width + 20f;
-
-
-            // build verbs
-            var verbs = Registry.Compendium.GetAllVerbs();
-
-            for (int i = 0; i < verbs.Count; i++) {
-                box = BuildVerbBox();
-                box.SetVerb(verbs[i]);
-                box.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
-            }
-
-
-            for (int i = 0; i < 10; i++) {
-                stack = BuildElementCard();
-                stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
-                stack.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
-            }
-        }
-
-        string[] legalElementIDs = new string[7] { 
-            "health",  
-            "reason",  
-            "clique",  
-            "ordinarylife",
-            "suitablepremises",
-            "occultscrap",
-            "shilling"
-        };
 
         #region -- CREATE / REMOVE VIEW OBJECTS ----------------------------------------------------
 
-        // Verb Boxes
 
-        // Ideally we pool and reuse these
-        VerbBox BuildVerbBox()
-        {
-            var box= PrefabFactory.CreateLocally<VerbBox>(cardHolder);
-            box.onVerbBoxClicked += HandleOnVerbBoxClicked;
-            return box;
-        }
-
-        // Element Cards
-
-        // Ideally we pool and reuse these
-        ElementStack BuildElementCard()
-        {
-            var card = PrefabFactory.CreateLocally<ElementStack>(cardHolder);
-            card.Subscribe(this);
-            card.Subscribe(notifier);
-            return card;
-        }
 
         // Ideally we pool and reuse these
 
         // Recipe Detail Windows
 
-        void ShowRecipeDetails(VerbBox box) {
-         if (maxNumRecipeWindows > 0 && recipeWindows.Count == maxNumRecipeWindows) 
-                HideRecipeDetails(recipeWindows[0].GetVerb(), true);
+        void ShowSituationWindow(VerbBox box) {
+         if (maxNumSituationWindows > 0 && situationWindows.Count == maxNumSituationWindows) 
+                HideSituationWindow(situationWindows[0].GetVerb(), true);
 
             PutTokenInAir(box.transform as RectTransform);
 
             var window = BuildRecipeDetailsWindow();
             window.transform.position = box.transform.position;
             window.SetVerb(box);
-            recipeWindows.Add(window);
+            situationWindows.Add(window);
         }
 
-        void HideRecipeDetails(VerbBox box, bool keepCards) {
+        void HideSituationWindow(VerbBox box, bool keepCards) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != box.gameObject)
                 PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
-            // Going throug hte cards in the slots
+            // Going through cards in slots
             var heldCards = box.detailsWindow.GetComponentsInChildren<ElementStack>();
 
             foreach (var item in heldCards) {
@@ -130,7 +77,7 @@ namespace Assets.CS.TabletopUI
                     PutTokenOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
             }
 
-            recipeWindows.Remove(box.detailsWindow);
+            situationWindows.Remove(box.detailsWindow);
             box.detailsWindow.Hide();
         }
 
@@ -142,9 +89,9 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
-        public int maxNumRecipeWindows = 1;
+        public int maxNumSituationWindows = 1;
         public int maxNumElementWindows = 1;
-        List<SituationWindow> recipeWindows = new List<SituationWindow>();
+        List<SituationWindow> situationWindows = new List<SituationWindow>();
 
 
 
@@ -153,22 +100,22 @@ namespace Assets.CS.TabletopUI
 
         #region -- MOVE / CHANGE VIEW OBJECTS ----------------------------------------------------
 
-        // parents object to "CardHolder" (should rename to TokenHolder) and sets it's Z to 0.
+        // parents object to "TabletopTransform" and sets its Z to 0.
         public void PutTokenOnTable(RectTransform rectTransform) {
             if (rectTransform == null)
                 return;
 
-            rectTransform.SetParent(cardHolder); 
+            rectTransform.SetParent(tabletopTransform); 
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }
 
-        // parents object to "CardHolder" (should rename to TokenHolder) and sets it's Z to 0.
+        // parents object to "TabletopTransform" and sets its Z to 0.
         public void PutTokenInAir(RectTransform rectTransform) {
             if (rectTransform == null)
                 return;
 
-            rectTransform.SetParent(cardHolder); 
+            rectTransform.SetParent(tabletopTransform); 
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }
@@ -183,18 +130,31 @@ namespace Assets.CS.TabletopUI
             if(cardPickedUp!=null)
             {
                 if(cardPickedUp.Quantity>1)
-                { 
-                var card = BuildElementCard();
+                {
+                var card = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tabletopTransform);
                 card.transform.localPosition = draggableToken.transform.localPosition;
                 card.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
                     cardPickedUp.SetQuantity(1);
                 }
             }
+            
         }
 
         public void TokenInteracted(DraggableToken draggableToken)
         {
-       
+
+                VerbBox box = draggableToken as VerbBox;
+            if (box != null)
+            {
+                if (box.detailsWindow == null)
+                    ShowSituationWindow(box);
+                else
+                {
+                    HideSituationWindow(box, true);
+                }
+            }
+
+
         }
 
         #endregion
@@ -220,7 +180,7 @@ namespace Assets.CS.TabletopUI
 
             if (box != null) {
                 if (box.detailsWindow != null)
-                    HideRecipeDetails(box, true);
+                    HideSituationWindow(box, true);
                 else
                     return;			
             }
@@ -244,22 +204,22 @@ namespace Assets.CS.TabletopUI
 
 
 
-        void HandleOnVerbBoxClicked(VerbBox box) {
-            if (box.detailsWindow == null)
-                ShowRecipeDetails(box);
-            else {
-                HideRecipeDetails(box, true);
-            }
-        }
-
         void HandleOnRecipeStarted(SituationWindow window, VerbBox box) {
-            HideRecipeDetails(box, false);
+            HideSituationWindow(box, false);
             box.StartTimer();
         }
 
         #endregion
 
+        public void SituationBegins(SituationInfo info)
+        {
+          Debug.Log("Situation begins");
+        }
 
+        public void SituationUpdated(SituationInfo info)
+        {
+            Debug.Log("Situation continues");
+        }
     }
 
 }

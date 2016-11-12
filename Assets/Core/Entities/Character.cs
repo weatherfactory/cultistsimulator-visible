@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 /// <summary>
 /// primary game state storage!
 /// </summary>
-public class Character: BaseElementsContainer
+public class Character
     {
 
     private readonly Dictionary<string, int> _elementsInWorkspace;
@@ -23,7 +23,6 @@ public class Character: BaseElementsContainer
             set
             {
                 _title = value;
-                PublishDetailsChange();
             }
         }
 
@@ -33,7 +32,7 @@ public class Character: BaseElementsContainer
             set
             {
                 _firstName = value;
-            PublishDetailsChange();
+
         }
         }
 
@@ -43,7 +42,7 @@ public class Character: BaseElementsContainer
             set
             {
                 _lastName = value;
-            PublishDetailsChange();
+
          }
 
         }
@@ -63,114 +62,6 @@ public class Character: BaseElementsContainer
 
         }
 
-        public void SubscribeElementQuantityDisplay(IElementQuantityDisplay elementQuantityDisplay)
-        {
-        if(!_elementsDisplaySubscribers.Contains(elementQuantityDisplay))
-            _elementsDisplaySubscribers.Add(elementQuantityDisplay);
-        }
 
-        public void Subscribe(ICharacterInfoSubscriber characterInfoSubscriber)
-        {
-            if(!_detailsSubscribers.Contains(characterInfoSubscriber))
-            _detailsSubscribers.Add(characterInfoSubscriber);
-        }
-
-
-
-
-        private void PublishDetailsChange()
-        {
-            foreach(var d in _detailsSubscribers)
-                d.ReceiveUpdate(this);
-            
-        }
-
-       public override void ModifyElementQuantity(string elementId, int quantity)
-        {
-            if (!_elements.ContainsKey(elementId))
-        { 
-                _elements.Add(elementId, quantity);
-                PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), 0);
-
-        }
-        else
-            {
-                if (quantity < (0 - GetCurrentElementQuantityInStockpile(elementId)))
-                    //if quantity is negative, and more of it than we have in stockpile
-                {
-                    //move enough from the workspace back to stockpile to satisfy the consumption
-                    int removeFromWorkspace = quantity + GetCurrentElementQuantityInStockpile(elementId);
-                        //quantity here is negative
-                    ElementIntoStockpile(elementId, -removeFromWorkspace); //move it back into stockpile...
-                 _elements[elementId] = _elements[elementId] + quantity; //...and then subtract from total quantity
-                //the amount not offset by quantity in stockpile; nb we changed the sign here
-                PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), removeFromWorkspace);
-                }
-                else
-                {
-                    _elements[elementId] = _elements[elementId] + quantity;
-                    PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId), 0);
-                }
-            }
-        }
-
-   public bool ElementOutOfStockpile(string elementId, int plusQuantity)
-   {
-       if (GetCurrentElementQuantity(elementId) < plusQuantity)
-           return false;
-        if(!_elementsInWorkspace.ContainsKey(elementId))
-            _elementsInWorkspace.Add(elementId,plusQuantity);
-        else
-           _elementsInWorkspace[elementId] += plusQuantity;
-
-        PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId),0);
-        return true;
-   }
-
-    public bool ElementIntoStockpile(string elementId, int minusQuantity)
-    {
-        if (GetCurrentElementQuantityInWorkspace(elementId) < minusQuantity)
-            return false;
-
-        if (!_elementsInWorkspace.ContainsKey(elementId))
-            _elementsInWorkspace.Add(elementId, -minusQuantity);
-        else
-            _elementsInWorkspace[elementId] -= minusQuantity;
-
-        PublishElementQuantityUpdate(elementId, GetCurrentElementQuantityInStockpile(elementId),0);
-        return true;
-    }
-
-    public virtual int GetCurrentElementQuantityInWorkspace(string elementId)
-    {
-        return _elementsInWorkspace.ContainsKey(elementId) ? _elementsInWorkspace[elementId] : 0;
-    }
-
-    public int GetCurrentElementQuantityInStockpile(string elementId)
-    {
-            var instockpile = _elements.ContainsKey(elementId) ? _elements[elementId] : 0;
-
-            if (_elementsInWorkspace.ContainsKey(elementId))
-                instockpile -= _elementsInWorkspace[elementId];
-
-            return instockpile;
-    }
-
-        public override Dictionary<string, int> GetOutputElements()
-        {
-           Dictionary<string,int> outputElements=new Dictionary<string, int>();
-            foreach (string k in _elementsInWorkspace.Keys)
-               outputElements.Add(k, _elementsInWorkspace[k]);
-            
-            return outputElements;
-        }
-
-
-        public override void TriggerSpecialEvent(string endingId)
-        {
-            State=CharacterState.Extinct;
-            _endingTriggeredId = endingId;
-          PublishDetailsChange();
-        }
     }
 
