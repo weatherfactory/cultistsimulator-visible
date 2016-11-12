@@ -8,7 +8,7 @@ using UnityEngine;
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour,ITokenSubscriber {
+    public class TabletopManager : MonoBehaviour,ITokenSubscriber,ISituationWindowSubscriber{
 
         [Header("Existing Objects")]
         [SerializeField] Transform tabletopTransform;
@@ -31,7 +31,6 @@ namespace Assets.CS.TabletopUI
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
-            DraggableToken.onChangeDragState += OnChangeDragState;
 
            tabletopObjectBuilder  = new TabletopObjectBuilder(tabletopTransform);
             tabletopObjectBuilder.PopulateTabletop();
@@ -59,7 +58,7 @@ namespace Assets.CS.TabletopUI
 
             PutTokenInAir(box.transform as RectTransform);
 
-            var window = BuildRecipeDetailsWindow();
+            var window = BuildSituationWindow();
             window.transform.position = box.transform.position;
             window.SetVerb(box);
             situationWindows.Add(window);
@@ -82,10 +81,10 @@ namespace Assets.CS.TabletopUI
         }
 
         // Ideally we pool and reuse these
-        SituationWindow BuildRecipeDetailsWindow()
+        SituationWindow BuildSituationWindow()
         {
-            var window = PrefabFactory.CreateLocally<SituationWindow>(windowParent);
-            window.onStartRecipe += HandleOnRecipeStarted;
+            var window = PrefabFactory.CreateSituationWindowWithSubscribers(windowParent);
+            
             return window;
         }
 
@@ -203,20 +202,15 @@ namespace Assets.CS.TabletopUI
         }
 
 
+        #endregion
 
-        void HandleOnRecipeStarted(SituationWindow window, VerbBox box) {
+        public void SituationBegins(VerbBox box)
+        {
             HideSituationWindow(box, false);
             box.StartTimer();
         }
 
-        #endregion
-
-        public void SituationBegins(SituationInfo info)
-        {
-          Debug.Log("Situation begins");
-        }
-
-        public void SituationUpdated(SituationInfo info)
+        public void SituationUpdated(VerbBox box)
         {
             Debug.Log("Situation continues");
         }

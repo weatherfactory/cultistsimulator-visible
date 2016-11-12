@@ -40,12 +40,22 @@ namespace Assets.TabletopUi.Scripts.Services
             return token;
         }
 
+        public static SituationWindow CreateSituationWindowWithSubscribers(Transform destination)
+        {
+            var sw = PrefabFactory.CreateLocally<SituationWindow>(destination);
+            var pf = Instance();
+            sw.Subscribe(pf.TabletopManager);
+            return sw;
+        }
+
+
         public static T CreateLocally<T>(Transform parent) where T : Component
         {
             
             var o = GetPrefab<T>();
             T c = Object.Instantiate(o, parent, false) as T;
             c.transform.localScale = Vector3.one;
+
             return c;
         }
 

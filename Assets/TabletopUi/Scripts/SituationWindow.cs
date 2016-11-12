@@ -12,10 +12,6 @@ namespace Assets.CS.TabletopUI
 {
     public class SituationWindow : MonoBehaviour,ITokenSubscriber {
 
-        // This event should probably either give the window, which contains a reference to the recipe
-        // or it gives out the recipe directly
-        public event System.Action<SituationWindow, VerbBox> onStartRecipe;
-
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] Transform cardHolder;
@@ -27,6 +23,7 @@ namespace Assets.CS.TabletopUI
 
 
         private Verb verb;
+        private List<ISituationWindowSubscriber> subscribers=new List<ISituationWindowSubscriber>();
 
         VerbBox linkedBox;
         List<RecipeSlot> slots = new List<RecipeSlot>();
@@ -125,10 +122,7 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnButtonClicked() {
             // This should be given through to the tabletop manager, normally.
-            Debug.Log("Button clicked!");
-
-            if (onStartRecipe != null)
-                onStartRecipe(this, linkedBox);
+            subscribers.ForEach(s => s.SituationBegins(linkedBox));
         }
 
         public void TokenPickedUp(DraggableToken draggableToken)
@@ -140,6 +134,12 @@ namespace Assets.CS.TabletopUI
         public void TokenInteracted(DraggableToken draggableToken)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Subscribe(ISituationWindowSubscriber subscriber)
+        {
+            if(!subscribers.Contains((subscriber)))
+                subscribers.Add(subscriber);
         }
     }
 }
