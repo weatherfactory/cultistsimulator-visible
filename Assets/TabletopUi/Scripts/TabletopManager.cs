@@ -58,7 +58,7 @@ namespace Assets.CS.TabletopUI
 
             PutTokenInAir(box.transform as RectTransform);
 
-            var window = BuildSituationWindow();
+            var window = PrefabFactory.CreateSituationWindowWithSubscribers(windowParent);
             window.transform.position = box.transform.position;
             window.SetVerb(box);
             situationWindows.Add(window);
@@ -80,18 +80,10 @@ namespace Assets.CS.TabletopUI
             box.detailsWindow.Hide();
         }
 
-        // Ideally we pool and reuse these
-        SituationWindow BuildSituationWindow()
-        {
-            var window = PrefabFactory.CreateSituationWindowWithSubscribers(windowParent);
-            
-            return window;
-        }
 
         public int maxNumSituationWindows = 1;
         public int maxNumElementWindows = 1;
         List<SituationWindow> situationWindows = new List<SituationWindow>();
-
 
 
 
