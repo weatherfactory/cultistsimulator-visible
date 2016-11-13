@@ -22,7 +22,12 @@ namespace Assets.Core.Entities
 
         public SituationState Continue(float interval)
         {
-            TimeRemaining = TimeRemaining - interval;
+            if(State==SituationState.Complete)
+                State=SituationState.Extinct;
+            else if (State == SituationState.Ongoing && TimeRemaining <= 0)
+                State = SituationState.Complete;
+            else
+                TimeRemaining = TimeRemaining - interval;
             return State;
         }
     }
