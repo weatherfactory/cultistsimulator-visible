@@ -19,7 +19,7 @@ public class SituationInfo
     /// <summary>
     ///the state of the situation: complete, extinct, ongoing
     /// </summary>
-    public RecipeTimerState State;
+    public SituationState State;
     /// <summary>
     ///seconds remaining on the situation timer
     /// </summary>

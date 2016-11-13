@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Core.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,6 +15,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         private Verb _verb;
+        private Situation situation;
+        public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
 
 
         [HideInInspector] public SituationWindow detailsWindow;
@@ -28,6 +31,23 @@ namespace Assets.CS.TabletopUI
         public bool isBusy { private set; get; }
         private float timeRemaining = 0f;
         private int numCompletions = 0; // Stands for the amount of completed cycles.
+
+        public void BeginSituation(Recipe r)
+        {
+            situation=new Situation(r);
+            countdownBar.gameObject.SetActive(true);
+            countdownText.gameObject.SetActive(true);
+        }
+
+        public void ContinueSituation(float interval)
+        {
+            if (situation != null)
+            {
+                if (situation.Continue(interval) == SituationState.Ongoing)
+                    DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
+            }
+        }
+
 
         public void SetVerb(string id) {
             var verb = Registry.Compendium.GetVerbById(id);
@@ -84,8 +104,7 @@ namespace Assets.CS.TabletopUI
 
             while (timeRemaining > 0f) {
                 timeRemaining -= Time.deltaTime;
-                countdownBar.fillAmount = 1f - (timeRemaining / duration);
-                countdownText.text = timeRemaining.ToString("0.0") + "s";
+                DisplayTimeRemaining(duration,timeRemaining);
                 yield return null;
             }
 
@@ -97,8 +116,13 @@ namespace Assets.CS.TabletopUI
             isBusy = false;
         }
 
-        // Interaction
+       public void DisplayTimeRemaining(float duration, float timeRemaining)
+        {
+            countdownBar.fillAmount = 1f - (timeRemaining / duration);
+            countdownText.text = timeRemaining.ToString("0.0") + "s";
+        }
+    
 
-       
-    }
+
+}
 }

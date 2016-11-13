@@ -16,6 +16,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Notifier notifier;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
+        [SerializeField] Heart heart;
         private TabletopObjectBuilder tabletopObjectBuilder;
 
 
@@ -27,6 +28,8 @@ namespace Assets.CS.TabletopUI
         void Start () {
             var compendiumHolder = gameObject.AddComponent<Registry>();
             compendiumHolder.ImportContentToCompendium();
+
+            heart.BeginHeartbeat(0.05f);
 
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
@@ -48,13 +51,10 @@ namespace Assets.CS.TabletopUI
 
 
 
-        // Ideally we pool and reuse these
-
-        // Recipe Detail Windows
 
         void ShowSituationWindow(VerbBox box) {
          if (maxNumSituationWindows > 0 && situationWindows.Count == maxNumSituationWindows) 
-                HideSituationWindow(situationWindows[0].GetVerb(), true);
+                HideSituationWindow(situationWindows[0].GetVerbBox(), true);
 
             PutTokenInAir(box.transform as RectTransform);
 
@@ -199,7 +199,7 @@ namespace Assets.CS.TabletopUI
         public void SituationBegins(VerbBox box)
         {
             HideSituationWindow(box, false);
-            box.StartTimer();
+           // box.StartTimer();
         }
 
         public void SituationUpdated(VerbBox box)

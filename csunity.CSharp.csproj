@@ -91,7 +91,7 @@
     <Compile Include="Assets\Core\Entities\Verb.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
-    <Compile Include="Assets\Core\Enums\RecipeTimerState.cs" />
+    <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStacksWrapper.cs" />
@@ -119,6 +119,8 @@
     <Compile Include="Assets\TabletopUi\Scripts\ElementDetailsWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ElementStack.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationWindowSubscriber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenSubscriber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notification.cs" />
@@ -131,7 +133,6 @@
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStacksWrapper.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\VerbBox.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />

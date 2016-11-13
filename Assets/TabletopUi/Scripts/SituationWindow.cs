@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
@@ -20,14 +21,13 @@ namespace Assets.CS.TabletopUI
         [SerializeField] LayoutGroup slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
-
+        private Situation situation;
 
         private Verb verb;
         private List<ISituationWindowSubscriber> subscribers=new List<ISituationWindowSubscriber>();
 
         VerbBox linkedBox;
         List<RecipeSlot> slots = new List<RecipeSlot>();
-
 
         void OnEnable () {
             button.onClick.AddListener(HandleOnButtonClicked);
@@ -62,9 +62,10 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Show();
         }
 
-        public VerbBox GetVerb() {
+        public VerbBox GetVerbBox() {
             return linkedBox;
         }
+
 
         public void UpdateSlots() {		
             int numSlots = 3;
@@ -102,32 +103,49 @@ namespace Assets.CS.TabletopUI
                 stack.transform.localPosition = Vector3.zero;
                 stack.transform.localRotation = Quaternion.identity;
 
-                UpdateAspectsAndRecipe();
+                var currentAspects = GetAspectsFromSlottedCards();
+                   aspectsDisplay.DisplayAspects(currentAspects);
+                Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+                DisplayRecipe(r);
                 stack.Subscribe(this);
             }
         }
 
-        private void UpdateAspectsAndRecipe()
+
+        private Dictionary<string, int> GetAspectsFromSlottedCards()
         {
             ElementStacksGateway ecg = new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder.transform));
             Dictionary<string, int> currentAspects = ecg.GetTotalAspects();
-            aspectsDisplay.DisplayAspects(currentAspects);
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+            return currentAspects;
+        }
+
+        private void DisplayRecipe(Recipe r)
+        {
             if (r != null)
             {
                 title.text = r.Label;
                 description.text = r.StartDescription;
             }
+            else
+            {
+                title.text = "";
+                description.text = "";
+            }
         }
 
-        void HandleOnButtonClicked() {
-            // This should be given through to the tabletop manager, normally.
+        void HandleOnButtonClicked()
+        {
+            var aspects = GetAspectsFromSlottedCards();
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, verb.Id);
+            linkedBox.BeginSituation(recipe);
             subscribers.ForEach(s => s.SituationBegins(linkedBox));
         }
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {
-           UpdateAspectsAndRecipe();
+            var currentAspects = GetAspectsFromSlottedCards();
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+            DisplayRecipe(r);
             draggableToken.Unsubscribe(this);
         }
 
