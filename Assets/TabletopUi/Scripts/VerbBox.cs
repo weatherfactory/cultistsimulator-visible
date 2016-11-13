@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Core;
 using Assets.Core.Entities;
 using TMPro;
 using UnityEngine;
@@ -35,16 +36,32 @@ namespace Assets.CS.TabletopUI
         public void BeginSituation(Recipe r)
         {
             situation=new Situation(r);
-            countdownBar.gameObject.SetActive(true);
-            countdownText.gameObject.SetActive(true);
+            SetTimerVisibility(true);
+        }
+
+        private void SetTimerVisibility(bool b)
+        {
+            countdownBar.gameObject.SetActive(b);
+            countdownText.gameObject.SetActive(b);
         }
 
         public void ContinueSituation(float interval)
         {
             if (situation != null)
             {
-                if (situation.Continue(interval) == SituationState.Ongoing)
+                SituationState currentState = situation.Continue(interval);
+                if (currentState == SituationState.Ongoing)
                     DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
+                else if(currentState==SituationState.Complete)
+                { 
+                    SetTimerVisibility(false);
+                    EffectCommand ec = situation.GetEffectCommand();
+                   subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
+                }
+                else if (currentState == SituationState.Extinct)
+                {
+                    situation = null;
+                }
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
@@ -40,9 +41,19 @@ namespace Assets.CS.TabletopUI
             
         }
 
-        public IEnumerable<ElementStack> GetCardsOnTabletop()
+        public void ModifyElementQuantity(string elementId, int change)
         {
-            return tabletopTransform.GetComponentsInChildren<ElementStack>();
+            if (Registry.Compendium.GetElementById(elementId) == null)
+                Debug.Log("Can't find element with id " + elementId);
+            else
+            {
+                IElementStacksWrapper wrapper = new TabletopElementStacksWrapper(tabletopTransform);
+                ElementStacksGateway esg = new ElementStacksGateway(wrapper);
+                if (change > 0)
+                    esg.IncreaseElement(elementId, change);
+                else
+                    esg.ReduceElement(elementId, change);
+            }
         }
 
 
@@ -115,6 +126,15 @@ namespace Assets.CS.TabletopUI
 
 
         #region -- response to subscriptionUI events
+
+        public void TokenEffectCommandSent(DraggableToken draggableToken, EffectCommand effectCommand)
+        {
+            foreach (var kvp in effectCommand.ElementChanges)
+            {
+                ModifyElementQuantity(kvp.Key,kvp.Value);
+            }
+        }
+
         public void TokenPickedUp(DraggableToken draggableToken)
         {
             ElementStack cardPickedUp=draggableToken as ElementStack;
@@ -133,7 +153,6 @@ namespace Assets.CS.TabletopUI
 
         public void TokenInteracted(DraggableToken draggableToken)
         {
-
                 VerbBox box = draggableToken as VerbBox;
             if (box != null)
             {

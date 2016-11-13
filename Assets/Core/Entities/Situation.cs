@@ -8,14 +8,14 @@ namespace Assets.Core.Entities
     public class Situation
     {
         public SituationState State { get; set; }
-       private Recipe Recipe { get; set; }
+       private Recipe recipe { get; set; }
         public float TimeRemaining { private set; get; }
         public float Warmup { private set; get; }
 
         public Situation(Recipe recipe)
         {
-            Recipe = recipe;
-            Warmup = Recipe.Warmup;
+            this.recipe = recipe;
+            Warmup = this.recipe.Warmup;
             TimeRemaining = Warmup;
             State=SituationState.Ongoing;
         }
@@ -29,6 +29,19 @@ namespace Assets.Core.Entities
             else
                 TimeRemaining = TimeRemaining - interval;
             return State;
+        }
+
+        public EffectCommand GetEffectCommand()
+        {
+            if (State == SituationState.Complete)
+            {
+                EffectCommand ec=new EffectCommand(recipe.Effects);
+                ec.Title = recipe.Label + " complete!";
+                ec.Description = recipe.Description;
+                return ec;
+            }
+
+            return null;
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Core;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
@@ -41,6 +42,11 @@ namespace Assets.CS.TabletopUI
             return notification;
         }
 
+
+        public void TokenEffectCommandSent(DraggableToken draggableToken, EffectCommand effectCommand)
+        {
+            ShowNotification(effectCommand.Title,effectCommand.Description);
+        }
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {

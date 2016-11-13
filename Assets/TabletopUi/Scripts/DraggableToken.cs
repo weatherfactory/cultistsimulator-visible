@@ -32,7 +32,7 @@ namespace Assets.CS.TabletopUI
         // Draggables all drag on a specifc height and have a specific "default height"
 
         public bool rotateOnDrag = true;
-        private List<ITokenSubscriber> subscribers = new List<ITokenSubscriber>();
+        protected List<ITokenSubscriber> subscribers = new List<ITokenSubscriber>();
 
         void Awake() {
             rectTransform = GetComponent<RectTransform>();

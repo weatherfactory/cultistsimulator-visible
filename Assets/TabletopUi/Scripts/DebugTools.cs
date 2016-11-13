@@ -7,40 +7,35 @@ using UnityEngine.UI;
 
 public class DebugTools : MonoBehaviour
 {
+    [SerializeField] private TabletopManager tabletopManager;
+    [SerializeField] private Heart heart;
     [SerializeField] private Transform cardHolder;
     [SerializeField] private InputField adjustElementNamed;
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
+    [SerializeField] private Button btnFastForward;
 
 
     public void Awake()
     {
         btnPlusOne.onClick.AddListener(delegate {AddCard(adjustElementNamed.text);});
         btnMinusOne.onClick.AddListener(delegate {DecrementElement(adjustElementNamed.text);});
+        btnFastForward.onClick.AddListener(delegate { FastForward(30); });
+
     }
     void AddCard(string elementId)
     {
-       
-        if (Registry.Compendium.GetElementById(elementId) == null)
-            Debug.Log("Can't find element with id " + elementId);
-        else
-        {
-            IElementStacksWrapper wrapper = new TabletopElementStacksWrapper(cardHolder);
-            ElementStacksGateway esg = new ElementStacksGateway(wrapper);
-            esg.IncreaseElement(elementId, 1);
-        }
+        tabletopManager.ModifyElementQuantity(elementId,1);
     }
 
     void DecrementElement(string elementId)
     {
-        if (Registry.Compendium.GetElementById(elementId) == null)
-            Debug.Log("Can't find element with id " + elementId);
-        else
-        {
-            IElementStacksWrapper wrapper = new TabletopElementStacksWrapper(cardHolder);
-            ElementStacksGateway esg = new ElementStacksGateway(wrapper);
-            esg.ReduceElement(elementId, -1);
-        }
+        tabletopManager.ModifyElementQuantity(elementId, -1);
+    }
+
+    void FastForward(float interval)
+    {
+            heart.Beat(interval);
     }
 }
 

@@ -11,11 +11,11 @@ public class Heart : MonoBehaviour
     [SerializeField] private Transform allContent;
 
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
-    private float interval;
+    private float usualInterval;
   public void BeginHeartbeat(float startingInterval)
   {
-      interval = startingInterval;
-        InvokeRepeating(METHODNAME_BEAT,0, interval);
+      usualInterval = startingInterval;
+        InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
     }
 
     public void PauseHeartbeat()
@@ -24,6 +24,11 @@ public class Heart : MonoBehaviour
     }
 
     public void Beat()
+    {
+            Beat(usualInterval);
+    }
+
+    public void Beat(float interval)
     {
         //foreach existing active recipe window: run beat there
         //advance timer
@@ -34,8 +39,6 @@ public class Heart : MonoBehaviour
             v.ContinueSituation(interval);
         }
     }
-
-
 
 
 }

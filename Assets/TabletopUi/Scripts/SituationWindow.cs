@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
@@ -139,6 +140,11 @@ namespace Assets.CS.TabletopUI
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, verb.Id);
             linkedBox.BeginSituation(recipe);
             subscribers.ForEach(s => s.SituationBegins(linkedBox));
+        }
+
+        public void TokenEffectCommandSent(DraggableToken draggableToken, EffectCommand effectCommand)
+        {
+            //nothing yet, though we will want to once we get into container situations
         }
 
         public void TokenPickedUp(DraggableToken draggableToken)
