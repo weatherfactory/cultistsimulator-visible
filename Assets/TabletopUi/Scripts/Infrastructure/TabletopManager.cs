@@ -142,10 +142,10 @@ namespace Assets.CS.TabletopUI
             {
                 if(cardPickedUp.Quantity>1)
                 {
-                var card = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tabletopTransform);
-                card.transform.localPosition = draggableToken.transform.localPosition;
-                card.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
-                    cardPickedUp.SetQuantity(1);
+                var cardLeftBehind = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tabletopTransform);
+                cardLeftBehind.transform.localPosition = draggableToken.transform.localPosition;
+                cardLeftBehind.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
+                cardPickedUp.SetQuantity(1);
                 }
             }
             
