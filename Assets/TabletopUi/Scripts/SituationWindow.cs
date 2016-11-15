@@ -69,31 +69,51 @@ namespace Assets.CS.TabletopUI
 
         public void ArrangeSlots()
         {
+            
             float slotSpacing = 10;
             float slotWidth = ((RectTransform) primarySlot.transform).rect.width;
             float slotHeight = ((RectTransform)primarySlot.transform).rect.height;
             float startingHorizSpace = ((RectTransform) primarySlot.transform.parent).rect.width;
-            primarySlot.transform.localPosition = new Vector3(startingHorizSpace/2 - slotWidth/2, -100);
+            float startingX = startingHorizSpace/2 - slotWidth;
+            float startingY = -120;
+            primarySlot.transform.localPosition = new Vector3(startingX, startingY);
+            
+
             if (primarySlot.childSlots.Count > 0)
             {
-                float nextY = primarySlot.transform.localPosition.y - slotHeight;
-                float nextHorizSpace = startingHorizSpace/primarySlot.childSlots.Count;
-                
+              
                 for (int i = 0; i < primarySlot.childSlots.Count; i++)
-                { 
+                {                   
+                    //space needed is space needed for each child slot, + spacing
                     var s = primarySlot.childSlots[i];
-                    s.transform.localPosition=new Vector3(i* nextHorizSpace, nextY);
+                    AlignSlot(s, i, startingX,startingY, slotWidth,slotHeight,slotSpacing);
                 }
             }
+        }
+        
+        public void AlignSlot(RecipeSlot thisSlot, int index,float parentX, float parentY,float slotWidth,float slotHeight,float slotSpacing)
+        {
+            float thisY = parentY - (slotHeight + slotSpacing);
+            float spaceNeeded = SlotSpaceNeeded(thisSlot, slotWidth, slotSpacing);
+            float thisX = parentX + index*spaceNeeded;
+            thisSlot.transform.localPosition = new Vector3(thisX, thisY);
+            for (int i = 0; i < thisSlot.childSlots.Count; i++)
+            {
+                //space needed is space needed for each child slot, + spacing
+                var nextSlot = thisSlot.childSlots[i];
+                float nextX = thisX + ((slotWidth+slotSpacing)*index);
+                AlignSlot(nextSlot, i, nextX,thisY, slotWidth, slotHeight,slotSpacing);
+            }
 
+        }
 
-            //walk tree:
-            //centre initial slot
-            //recurse:
-            //take current width
-            //divide it by number of slots at this level
-            //pass divided width to next level
+        public float SlotSpaceNeeded(RecipeSlot forSlot,float slotWidth,float slotSpacing)
+        {
+            float childSpaceNeeded = 0;
+            foreach (RecipeSlot c in forSlot.childSlots)
+                childSpaceNeeded += SlotSpaceNeeded(c, slotWidth, slotSpacing);
 
+            return Mathf.Max(childSpaceNeeded, slotWidth + slotSpacing);
         }
 
 
