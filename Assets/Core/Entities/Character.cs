@@ -15,7 +15,7 @@ public class Character
     private string _firstName;
     private string _lastName;
     public CharacterState State { get; set; }
-    private string _endingTriggeredId;
+    private string _endingTriggeredId=null;
 
     public string Title
         {

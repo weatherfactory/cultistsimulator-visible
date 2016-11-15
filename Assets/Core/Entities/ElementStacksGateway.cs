@@ -7,11 +7,11 @@ using Assets.Core.Interfaces;
 
 public class ElementStacksGateway
 {
-    private IElementStacksWrapper provisioner;
+    private IElementStacksWrapper wrapper;
     
-    public ElementStacksGateway(IElementStacksWrapper p)
+    public ElementStacksGateway(IElementStacksWrapper w)
     {
-        provisioner = p;
+        wrapper = w;
     }
     /// <summary>
     /// Reduces matching stacks until change is satisfied
@@ -27,7 +27,7 @@ public class ElementStacksGateway
         int unsatisfiedChange = quantityChange;
         while(unsatisfiedChange<0)
         { 
-             IElementStack cardToRemove = provisioner.Stacks().FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
+             IElementStack cardToRemove = wrapper.Stacks().FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
             if(cardToRemove==null)
                 //we've run out of matching cards; break, and return unsatisfied change amount
                 return unsatisfiedChange;
@@ -44,19 +44,19 @@ public class ElementStacksGateway
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        provisioner.ProvisionElementStack(elementId, quantityChange);
+        wrapper.ProvisionElementStack(elementId, quantityChange);
         return quantityChange;
     }
 
 
     public int GetCurrentElementQuantity(string elementId)
     {
-            return provisioner.Stacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
+            return wrapper.Stacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
     }
 
     public Dictionary<string,int> GetCurrentElementTotals()
     {
-        var totals = provisioner.Stacks().GroupBy(c => c.ElementId)
+        var totals = wrapper.Stacks().GroupBy(c => c.ElementId)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -67,7 +67,7 @@ public class ElementStacksGateway
     {
         var totals=new Dictionary<string,int>();
 
-        foreach (var elementCard in provisioner.Stacks())
+        foreach (var elementCard in wrapper.Stacks())
         {
             var aspects=elementCard.GetAspects();
             foreach (string k in aspects.Keys)

@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class AspectFrame : MonoBehaviour,IPointerClickHandler
 {
     public int Quantity;
-    private Element aspect;
-    [SerializeField] private Image aspectImage;
-    [SerializeField] private Text quantityText;
+    private Element aspect=null;
+    [SerializeField] private Image aspectImage=null;
+    [SerializeField] private Text quantityText = null;
     public string AspectId { get { return aspect == null ? null : aspect.Id; } }
 
     private void DisplayAspectImage(Element aspect)

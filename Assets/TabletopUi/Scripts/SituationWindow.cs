@@ -19,16 +19,16 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
-        [SerializeField] LayoutGroup slotsHolder;
+        [SerializeField]  GameObject slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         private Situation situation;
 
         private Verb verb;
         private List<ISituationWindowSubscriber> subscribers=new List<ISituationWindowSubscriber>();
+        private RecipeSlot primarySlot;
 
         VerbBox linkedBox;
-        List<RecipeSlot> slots = new List<RecipeSlot>();
 
         void OnEnable () {
             button.onClick.AddListener(HandleOnButtonClicked);
@@ -55,10 +55,10 @@ namespace Assets.CS.TabletopUI
 
             //linkedBox.SetSelected(true);
             linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
-            // could also track the open windows in tabletop manager instead and check there.
+                                            // could also track the open windows in tabletop manager instead and check there.
 
-            UpdateSlots();
-
+            primarySlot = BuildSlot();
+            ArrangeSlots();
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
         }
@@ -67,19 +67,40 @@ namespace Assets.CS.TabletopUI
             return linkedBox;
         }
 
-
-        public void UpdateSlots() {		
-            int numSlots = 3;
-
-            for (int i = 0; i < numSlots; i++) {
-                if (i >= slots.Count)
-                    slots.Add( BuildSlot() );
+        public void ArrangeSlots()
+        {
+            float slotSpacing = 10;
+            float slotWidth = ((RectTransform) primarySlot.transform).rect.width;
+            float slotHeight = ((RectTransform)primarySlot.transform).rect.height;
+            float startingHorizSpace = ((RectTransform) primarySlot.transform.parent).rect.width;
+            primarySlot.transform.localPosition = new Vector3(startingHorizSpace/2 - slotWidth/2, -100);
+            if (primarySlot.childSlots.Count > 0)
+            {
+                float nextY = primarySlot.transform.localPosition.y - slotHeight;
+                float nextHorizSpace = startingHorizSpace/primarySlot.childSlots.Count;
+                
+                for (int i = 0; i < primarySlot.childSlots.Count; i++)
+                { 
+                    var s = primarySlot.childSlots[i];
+                    s.transform.localPosition=new Vector3(i* nextHorizSpace, nextY);
+                }
             }
+
+
+            //walk tree:
+            //centre initial slot
+            //recurse:
+            //take current width
+            //divide it by number of slots at this level
+            //pass divided width to next level
+
         }
+
 
         RecipeSlot BuildSlot() {
             var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder.transform);
             slot.onCardDropped += HandleOnSlotDroppedOn;
+
             return slot;
         }
 
@@ -91,9 +112,8 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
         void HandleOnSlotDroppedOn(RecipeSlot slot) {
-            // should this be sent through to the tabletop manager?
+
             Debug.Log("Recipe Slot dropped on");
 
             ElementStack stack=DraggableToken.itemBeingDragged as ElementStack;
@@ -109,7 +129,20 @@ namespace Assets.CS.TabletopUI
                 Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
                 DisplayRecipe(r);
                 stack.Subscribe(this);
+                
+                if (stack.HasChildSlots())
+                  AddSlotsForStack(stack,slot);
+                
+                ArrangeSlots();
+
             }
+        }
+
+        private void AddSlotsForStack(ElementStack stack,RecipeSlot slot)
+        {
+            foreach (var childSlot in stack.GetChildSlotSpecifications())
+                //add slot to child slots of slot
+               slot.childSlots.Add(BuildSlot());
         }
 
 

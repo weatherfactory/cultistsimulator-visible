@@ -82,6 +82,16 @@ namespace Assets.CS.TabletopUI
             return _element.AspectsIncludingSelf;
         }
 
+        public List<ChildSlotSpecification> GetChildSlotSpecifications()
+        {
+            return _element.ChildSlotSpecifications;
+        }
+
+
+        public bool HasChildSlots()
+        {
+            return _element.HasChildSlots();
+        }
 
         public Sprite GetSprite() {
             return artwork.sprite;
