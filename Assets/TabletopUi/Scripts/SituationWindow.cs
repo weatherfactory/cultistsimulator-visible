@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -117,10 +118,10 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        RecipeSlot BuildSlot() {
+        RecipeSlot BuildSlot(string slotName = "Recipe Slot") {
             var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder.transform);
             slot.onCardDropped += HandleOnSlotDroppedOn;
-
+            slot.name = slotName;
             return slot;
         }
 
@@ -162,7 +163,7 @@ namespace Assets.CS.TabletopUI
         {
             foreach (var childSlot in stack.GetChildSlotSpecifications())
                 //add slot to child slots of slot
-               slot.childSlots.Add(BuildSlot());
+               slot.childSlots.Add(BuildSlot("childslot of " + stack.ElementId));
         }
 
 
@@ -202,10 +203,46 @@ namespace Assets.CS.TabletopUI
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {
+            DisplayRecipeForCurrentAspects();
+            draggableToken.Unsubscribe(this);
+
+            RemoveChildSlotsWithEmptyParent();  
+            ArrangeSlots();
+        }
+
+        private void RemoveChildSlotsWithEmptyParent()
+        {
+            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
+            foreach (RecipeSlot s in currentSlots)
+            {
+                if (s!=null & s.GetElementStackInSlot()==null & s.childSlots.Count > 0)
+                {
+                    List<RecipeSlot> currentChildSlots = new List<RecipeSlot>(s.childSlots);
+                    s.childSlots.Clear();
+                    foreach (RecipeSlot cs in currentChildSlots.Where(eachSlot => eachSlot != null))
+                        ClearAndDestroySlot(cs);
+                }
+            }
+        }
+
+        private void ClearAndDestroySlot(RecipeSlot slot)
+        {
+            if(slot.childSlots.Count>0)
+            { 
+            List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
+            foreach (var cs in childSlots)
+                ClearAndDestroySlot(cs);
+
+            slot.childSlots.Clear();
+            }
+            DestroyObject(slot.gameObject);
+        }
+
+        private void DisplayRecipeForCurrentAspects()
+        {
             var currentAspects = GetAspectsFromSlottedCards();
             Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
             DisplayRecipe(r);
-            draggableToken.Unsubscribe(this);
         }
 
         public void TokenInteracted(DraggableToken draggableToken)
