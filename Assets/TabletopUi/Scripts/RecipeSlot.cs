@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,6 +21,14 @@ namespace Assets.CS.TabletopUI
         public ElementStack GetElementStackInSlot()
         {
             return GetComponentInChildren<ElementStack>();
+        }
+
+        public SlotMatchForAspects GetSlotMatchForStack(ElementStack stack)
+        {
+            if (GoverningSlotSpecification == null)
+                return SlotMatchForAspects.MatchOK();
+            else
+                return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
     }
 }

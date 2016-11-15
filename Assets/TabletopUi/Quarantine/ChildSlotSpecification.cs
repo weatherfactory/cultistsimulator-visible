@@ -25,45 +25,50 @@ public class ChildSlotSpecification
         Forbidden = new Dictionary<string, int>();
     }
 
-    public ElementSlotMatch GetElementSlotMatchFor(Element element)
+    public SlotMatchForAspects GetSlotMatchForAspects(Dictionary<string,int> aspects)
     {
 
         foreach (string k in Forbidden.Keys)
         {
-            if(element.Aspects.ContainsKey(k))
+            if(aspects.ContainsKey(k))
             {
-                return new ElementSlotMatch(new List<string>() {k}, ElementSlotSuitability.ForbiddenAspectPresent);
+                return new SlotMatchForAspects(new List<string>() {k}, SlotMatchForAspectsType.ForbiddenAspectPresent);
             }
         }
         
         if(Required.Keys.Count==0)
-            return new ElementSlotMatch(null,ElementSlotSuitability.Okay);
+            return new SlotMatchForAspects(null,SlotMatchForAspectsType.Okay);
 
         foreach (string k in Required.Keys) //only one needs to match
         {
-            if (element.Aspects.ContainsKey(k))
-                return new ElementSlotMatch(null, ElementSlotSuitability.Okay);
+            if (aspects.ContainsKey(k))
+                return new SlotMatchForAspects(null, SlotMatchForAspectsType.Okay);
         }
 
-        return new ElementSlotMatch(Required.Keys, ElementSlotSuitability.RequiredAspectMissing);
+        return new SlotMatchForAspects(Required.Keys, SlotMatchForAspectsType.RequiredAspectMissing);
 
 
     }
 }
 
-public class ElementSlotMatch
+public class SlotMatchForAspects
 {
     public  IEnumerable<string> ProblemAspectIds=new List<string>();
-    public ElementSlotSuitability ElementSlotSuitability { get; set; }
+    public SlotMatchForAspectsType SlotMatchForAspectsType { get; set; }
 
-    public ElementSlotMatch(IEnumerable<string> problemAspectIds, ElementSlotSuitability esm)
+    public static SlotMatchForAspects MatchOK()
+    {
+        return new SlotMatchForAspects(new List<string>(), SlotMatchForAspectsType.Okay);
+    }
+
+    public SlotMatchForAspects(IEnumerable<string> problemAspectIds, SlotMatchForAspectsType esm)
     {
         ProblemAspectIds = problemAspectIds;
-        ElementSlotSuitability = esm;
+        SlotMatchForAspectsType = esm;
     }    
 }
 
-public enum ElementSlotSuitability
+public enum SlotMatchForAspectsType
 {
 Okay,
     RequiredAspectMissing,

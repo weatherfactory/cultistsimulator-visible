@@ -44,10 +44,10 @@ namespace Noon
     public class NoonUtility
     {
 
-        public static string ProblemAspectsDescription(ElementSlotMatch elementSlotMatch)
+        public static string ProblemAspectsDescription(SlotMatchForAspects slotMatchForAspects)
         {
             string problemAspects = "";
-            foreach (var problemAspectId in elementSlotMatch.ProblemAspectIds)
+            foreach (var problemAspectId in slotMatchForAspects.ProblemAspectIds)
             {
                 if (problemAspects != "")
                     problemAspects += " or ";

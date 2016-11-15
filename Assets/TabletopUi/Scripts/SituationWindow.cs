@@ -118,10 +118,15 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        RecipeSlot BuildSlot(string slotName = "Recipe Slot") {
+        RecipeSlot BuildSlot(string slotName = "Recipe Slot", ChildSlotSpecification childSlotSpecification = null) {
             var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder.transform);
             slot.onCardDropped += HandleOnSlotDroppedOn;
             slot.name = slotName;
+            if(childSlotSpecification!=null)
+            { 
+            slot.GoverningSlotSpecification = childSlotSpecification;
+                slot.name += " - " + childSlotSpecification.Label;
+            }
             return slot;
         }
 
@@ -139,7 +144,10 @@ namespace Assets.CS.TabletopUI
 
             ElementStack stack=DraggableToken.itemBeingDragged as ElementStack;
             if(stack!=null)
-            { 
+            {
+                SlotMatchForAspects match = slot.GetSlotMatchForStack(stack);
+                if(match.SlotMatchForAspectsType==SlotMatchForAspectsType.Okay)
+                { 
                 DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
                 PutStackInSlot(slot, stack);
 
@@ -153,6 +161,7 @@ namespace Assets.CS.TabletopUI
                   AddSlotsForStack(stack,slot);
                 
                 ArrangeSlots();
+                }
 
             }
         }
@@ -173,9 +182,9 @@ namespace Assets.CS.TabletopUI
 
         private void AddSlotsForStack(ElementStack stack,RecipeSlot slot)
         {
-            foreach (var childSlot in stack.GetChildSlotSpecifications())
+            foreach (var childSlotSpecification in stack.GetChildSlotSpecifications())
                 //add slot to child slots of slot
-               slot.childSlots.Add(BuildSlot("childslot of " + stack.ElementId));
+               slot.childSlots.Add(BuildSlot("childslot of " + stack.ElementId,childSlotSpecification));
         }
 
 
