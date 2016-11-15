@@ -127,7 +127,7 @@ namespace Assets.CS.TabletopUI
 
         #region -- response to subscriptionUI events
 
-        public void TokenEffectCommandSent(DraggableToken draggableToken, EffectCommand effectCommand)
+        public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
             foreach (var kvp in effectCommand.ElementChanges)
             {
@@ -218,12 +218,16 @@ namespace Assets.CS.TabletopUI
         public void SituationBegins(VerbBox box)
         {
             HideSituationWindow(box, false);
-           // box.StartTimer();
         }
 
         public void SituationUpdated(VerbBox box)
         {
             Debug.Log("Situation continues");
+        }
+
+        public void ElementStackRejected(ElementStack stack)
+        {
+            PutTokenOnTable(stack.RectTransform);
         }
     }
 

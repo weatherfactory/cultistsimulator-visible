@@ -81,7 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Core\EffectCommand.cs" />
+    <Compile Include="Assets\Core\Commands\EffectCommand.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
     <Compile Include="Assets\Core\Entities\ElementStacksGateway.cs" />
@@ -92,6 +92,7 @@
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
+    <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStacksWrapper.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />

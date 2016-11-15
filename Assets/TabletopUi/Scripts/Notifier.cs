@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Core;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
@@ -43,7 +44,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void TokenEffectCommandSent(DraggableToken draggableToken, EffectCommand effectCommand)
+        public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
             ShowNotification(effectCommand.Title,effectCommand.Description);
         }

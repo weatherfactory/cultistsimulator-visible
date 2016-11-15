@@ -22,7 +22,7 @@ namespace Assets.CS.TabletopUI
         protected Vector3 startPosition;
         protected int startSiblingIndex;
         protected Vector3 dragOffset;
-        protected RectTransform rectTransform;
+        public RectTransform RectTransform;
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
         public bool IsSelected { protected set; get; }
@@ -35,10 +35,11 @@ namespace Assets.CS.TabletopUI
         protected List<ITokenSubscriber> subscribers = new List<ITokenSubscriber>();
 
         void Awake() {
-            rectTransform = GetComponent<RectTransform>();
+            RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
+
 
         public void Subscribe(ITokenSubscriber subscriber)
         {
@@ -79,12 +80,12 @@ namespace Assets.CS.TabletopUI
             DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
 		
-            startPosition = rectTransform.position;
-            startParent = rectTransform.parent;
-            startSiblingIndex = rectTransform.GetSiblingIndex();
+            startPosition = RectTransform.position;
+            startParent = RectTransform.parent;
+            startSiblingIndex = RectTransform.GetSiblingIndex();
 		
-            rectTransform.SetParent(draggableHolder);
-            rectTransform.SetAsLastSibling();
+            RectTransform.SetParent(draggableHolder);
+            RectTransform.SetAsLastSibling();
 		
             Vector3 pressPos;
             RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
@@ -109,7 +110,7 @@ namespace Assets.CS.TabletopUI
             RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
-            rectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
+            RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
 		
             // rotate object slightly based on pointer Delta
             if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {			
@@ -136,9 +137,9 @@ namespace Assets.CS.TabletopUI
             canvasGroup.blocksRaycasts = true;
 		
             if (DraggableToken.resetToStartPos) {
-                rectTransform.position = startPosition;
-                rectTransform.SetParent(startParent);
-                rectTransform.SetSiblingIndex(startSiblingIndex);
+                RectTransform.position = startPosition;
+                RectTransform.SetParent(startParent);
+                RectTransform.SetSiblingIndex(startSiblingIndex);
             }
 		
             if (onChangeDragState != null)

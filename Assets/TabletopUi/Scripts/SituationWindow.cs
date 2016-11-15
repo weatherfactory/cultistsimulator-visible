@@ -141,9 +141,7 @@ namespace Assets.CS.TabletopUI
             if(stack!=null)
             { 
                 DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                stack.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
-                stack.transform.localPosition = Vector3.zero;
-                stack.transform.localRotation = Quaternion.identity;
+                PutStackInSlot(slot, stack);
 
                 var currentAspects = GetAspectsFromSlottedCards();
                    aspectsDisplay.DisplayAspects(currentAspects);
@@ -157,6 +155,20 @@ namespace Assets.CS.TabletopUI
                 ArrangeSlots();
 
             }
+        }
+
+        private static void PutStackInSlot(RecipeSlot slot, ElementStack stack)
+        {
+            stack.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
+            stack.transform.localPosition = Vector3.zero;
+            stack.transform.localRotation = Quaternion.identity;
+        }
+
+        private static void ReturnStackToTableTop(ElementStack stack)
+        {
+           // stack.transform.SetParent(transform); // Make sure to parent back to the tabletop
+            stack.transform.localPosition = Vector3.zero;
+            stack.transform.localRotation = Quaternion.identity;
         }
 
         private void AddSlotsForStack(ElementStack stack,RecipeSlot slot)
@@ -196,7 +208,7 @@ namespace Assets.CS.TabletopUI
             subscribers.ForEach(s => s.SituationBegins(linkedBox));
         }
 
-        public void TokenEffectCommandSent(DraggableToken draggableToken, EffectCommand effectCommand)
+        public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
             //nothing yet, though we will want to once we get into container situations
         }
@@ -206,11 +218,11 @@ namespace Assets.CS.TabletopUI
             DisplayRecipeForCurrentAspects();
             draggableToken.Unsubscribe(this);
 
-            RemoveChildSlotsWithEmptyParent();  
+            RemoveAnyChildSlotsWithEmptyParent();  
             ArrangeSlots();
         }
 
-        private void RemoveChildSlotsWithEmptyParent()
+        private void RemoveAnyChildSlotsWithEmptyParent()
         {
             List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
             foreach (RecipeSlot s in currentSlots)
@@ -234,6 +246,11 @@ namespace Assets.CS.TabletopUI
                 ClearAndDestroySlot(cs);
 
             slot.childSlots.Clear();
+            }
+            ElementStack stackContained = slot.GetElementStackInSlot();
+            if(stackContained!=null)
+            { 
+              subscribers.ForEach(s=>s.ElementStackRejected(stackContained));
             }
             DestroyObject(slot.gameObject);
         }

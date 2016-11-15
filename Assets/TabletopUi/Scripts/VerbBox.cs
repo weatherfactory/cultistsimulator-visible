@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Assets.Core;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -55,7 +56,8 @@ namespace Assets.CS.TabletopUI
                 else if(currentState==SituationState.Complete)
                 { 
                     SetTimerVisibility(false);
-                    EffectCommand ec = situation.GetEffectCommand();
+                    IEffectCommand ec = situation.GetEffectCommand();
+                    //er.... do I definitely want to do this? I guess a situation is kinda part of a verbbox, but this looks like it needs refactoring in the cold light of day
                    subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
                 }
                 else if (currentState == SituationState.Extinct)
@@ -105,33 +107,7 @@ namespace Assets.CS.TabletopUI
             return artwork.sprite;
         }
 
-        public void StartTimer() {
-            if (isBusy)
-                return;
-		
-            StopAllCoroutines();
-            StartCoroutine(DoTimer(10f));
-        }
 
-        IEnumerator DoTimer(float duration) {
-            isBusy = true;
-            timeRemaining = duration;
-            countdownBar.gameObject.SetActive(true);
-            countdownText.gameObject.SetActive(true);
-
-            while (timeRemaining > 0f) {
-                timeRemaining -= Time.deltaTime;
-                DisplayTimeRemaining(duration,timeRemaining);
-                yield return null;
-            }
-
-            numCompletions++;
-
-            countdownBar.gameObject.SetActive(false);
-            countdownText.gameObject.SetActive(false);
-            timeRemaining = 0f;
-            isBusy = false;
-        }
 
        public void DisplayTimeRemaining(float duration, float timeRemaining)
         {
