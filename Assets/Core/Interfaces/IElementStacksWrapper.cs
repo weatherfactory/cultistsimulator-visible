@@ -11,7 +11,7 @@ namespace Assets.Core.Interfaces
     public interface IElementStacksWrapper
     {
         IElementStack ProvisionElementStack(string elementId, int quantity);
-
-        IEnumerable<IElementStack> Stacks();
+        void Accept(IElementStack stack);
+        IEnumerable<IElementStack> GetStacks();
     }
 }

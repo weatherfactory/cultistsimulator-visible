@@ -39,5 +39,6 @@ namespace Assets.Editor.Tests
             Assert.AreEqual(SituationState.Extinct, s.Continue(1)); //now extinct
             Assert.AreEqual(SituationState.Extinct, s.State);
         }
+
     }
 }

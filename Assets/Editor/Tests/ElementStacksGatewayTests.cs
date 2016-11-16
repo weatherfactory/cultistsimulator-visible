@@ -12,19 +12,19 @@ namespace Assets.Editor.Tests
     public class ElementStacksGatewayTests
     {
         private List<IElementStack> stacks;
-        private IElementStacksWrapper provisioner;
+        private IElementStacksWrapper wrapper;
         [SetUp]
         public void Setup()
         {
           stacks= TestObjectGenerator.CardsForElements(TestObjectGenerator.ElementDictionary(1, 3));
-            provisioner = Substitute.For<IElementStacksWrapper>();
-            provisioner.Stacks().Returns(stacks);
+            wrapper = Substitute.For<IElementStacksWrapper>();
+            wrapper.GetStacks().Returns(stacks);
         }
 
         [Test]
-        public void Aggregator_SumsUniqueElements()
+        public void Gateway_SumsUniqueElements()
         {
-            var ecg = new ElementStacksGateway(provisioner);
+            var ecg = new ElementStacksGateway(wrapper);
             var d = ecg.GetCurrentElementTotals();
             foreach(var c in stacks)
             {
@@ -34,10 +34,10 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Aggregator_SumsExtraNonUniqueElements()
+        public void Gateway_SumsExtraNonUniqueElements()
         {
             stacks.Add(TestObjectGenerator.CreateElementCard(stacks[0].ElementId,1));
-            var ecg = new ElementStacksGateway(provisioner);
+            var ecg = new ElementStacksGateway(wrapper);
             var d = ecg.GetCurrentElementTotals();
              Assert.AreEqual(2,d[stacks[0].ElementId]);
             Assert.AreEqual(1, d[stacks[1].ElementId]);
@@ -47,14 +47,14 @@ namespace Assets.Editor.Tests
 
 
         [Test]
-        public void Aggregator_SumsUniqueAspects()
+        public void Gateway_SumsUniqueAspects()
         {
             var elements = TestObjectGenerator.ElementDictionary(1, 2);
             TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
             var aspectedCards = TestObjectGenerator.CardsForElements(elements);
-            provisioner.Stacks().Returns(aspectedCards);
+            wrapper.GetStacks().Returns(aspectedCards);
 
-            var ecg = new ElementStacksGateway( provisioner);
+            var ecg = new ElementStacksGateway( wrapper);
             var d = ecg.GetTotalAspects();
             Assert.AreEqual(1, d["1"]);
             Assert.AreEqual(1, d["a1"]);
@@ -63,16 +63,16 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Aggregator_SumsDuplicateAspects()
+        public void Gateway_SumsDuplicateAspects()
         {
             var elements = TestObjectGenerator.ElementDictionary(1, 2);
             TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
             elements["1"].Aspects.Add("a2",1);
             var aspectedCards = TestObjectGenerator.CardsForElements(elements);
-            provisioner.Stacks().Returns(aspectedCards);
+            wrapper.GetStacks().Returns(aspectedCards);
 
 
-            var ecg = new ElementStacksGateway(provisioner);
+            var ecg = new ElementStacksGateway(wrapper);
             var d = ecg.GetTotalAspects();
             Assert.AreEqual(1, d["a1"]);
             Assert.AreEqual(2, d["a2"]);
@@ -80,26 +80,26 @@ namespace Assets.Editor.Tests
     
 
     [Test]
-    public void Aggregator_ReduceElement_CanOnlyTakeNegativeArgument()
+    public void Gateway_ReduceElement_CanOnlyTakeNegativeArgument()
     {
-    var eca=new ElementStacksGateway(provisioner);
+    var eca=new ElementStacksGateway(wrapper);
             Assert.Throws<ArgumentException>(() => eca.ReduceElement("1", 0));
             Assert.Throws<ArgumentException>(() => eca.ReduceElement("1", 1));
     }
 
         [Test]
-        public void Aggregator_ReduceElement_CallsRemoveOnSingleCard()
+        public void Gateway_ReduceElement_CallsRemoveOnSingleCard()
         {
-            var eca = new ElementStacksGateway(provisioner);
+            var eca = new ElementStacksGateway(wrapper);
             FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
             eca.ReduceElement(stackToRemove.ElementId,-1);
             Assert.IsTrue(stackToRemove.Defunct);
         }
 
         [Test]
-        public void Aggregator_ReduceElementBy2_Removes2SingleCards()
+        public void Gateway_ReduceElementBy2_Removes2SingleCards()
         {
-            var eca = new ElementStacksGateway(provisioner);
+            var eca = new ElementStacksGateway(wrapper);
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
             FakeElementStack secondStackToRemove = new FakeElementStack()
             {
@@ -116,9 +116,9 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Aggregator_ReduceElementBy3_Removes2SingleCardsAndReturnsMinus1()
+        public void Gateway_ReduceElementBy3_Removes2SingleCardsAndReturnsMinus1()
         {
-            var eca = new ElementStacksGateway(provisioner);
+            var eca = new ElementStacksGateway(wrapper);
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
             FakeElementStack secondStackToRemove = new FakeElementStack()
             {
@@ -137,27 +137,37 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Aggregator_IncreaseElement_CanOnlyTakePositiveArgument()
+        public void Gateway_IncreaseElement_CanOnlyTakePositiveArgument()
         {
-            var ecg = new ElementStacksGateway( provisioner);
+            var ecg = new ElementStacksGateway(wrapper);
             Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", 0));
             Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", -1));
         }
 
         [Test]
-        public void Aggregator_IncreaseNewElementBy2_AddsNewStackOf2()
+        public void Gateway_IncreaseNewElementBy2_AddsNewStackOf2()
         {
-            var ecg = new ElementStacksGateway(provisioner);
+            var ecg = new ElementStacksGateway(wrapper);
             FakeElementStack newStack = new FakeElementStack() {ElementId ="newElement",Quantity = 2};
 
-            provisioner.ProvisionElementStack(newStack.ElementId, newStack.Quantity).Returns(newStack);
+            wrapper.ProvisionElementStack(newStack.ElementId, newStack.Quantity).Returns(newStack);
             ecg.IncreaseElement(newStack.ElementId,newStack.Quantity);
 
-            provisioner.Received().ProvisionElementStack(newStack.ElementId, newStack.Quantity);
-
-            
+            wrapper.Received().ProvisionElementStack(newStack.ElementId, newStack.Quantity);
         }
 
+        [Test]
+        public void Gateway_AcceptsStack()
+        {
+            var ecg=new ElementStacksGateway(wrapper);
+            FakeElementStack newStack = new FakeElementStack() { ElementId = "newElement", Quantity = 2 };
+            ecg.AcceptElementStack(newStack);
+            wrapper.Received().Accept(newStack);
+
+        }
+
+
+        
     }
 
 
@@ -183,6 +193,11 @@ namespace Assets.Editor.Tests
         {
             ElementId = elementId;
             Quantity = quantity;
+        }
+
+        public void MoveTo<T>(T newLocation)
+        {
+            throw new NotImplementedException();
         }
 
         public void ModifyQuantity(int change)

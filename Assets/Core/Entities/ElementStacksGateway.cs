@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 
 
 public class ElementStacksGateway
@@ -27,7 +28,7 @@ public class ElementStacksGateway
         int unsatisfiedChange = quantityChange;
         while(unsatisfiedChange<0)
         { 
-             IElementStack cardToRemove = wrapper.Stacks().FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
+             IElementStack cardToRemove = wrapper.GetStacks().FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
             if(cardToRemove==null)
                 //we've run out of matching cards; break, and return unsatisfied change amount
                 return unsatisfiedChange;
@@ -51,12 +52,12 @@ public class ElementStacksGateway
 
     public int GetCurrentElementQuantity(string elementId)
     {
-            return wrapper.Stacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
+            return wrapper.GetStacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
     }
 
     public Dictionary<string,int> GetCurrentElementTotals()
     {
-        var totals = wrapper.Stacks().GroupBy(c => c.ElementId)
+        var totals = wrapper.GetStacks().GroupBy(c => c.ElementId)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -67,7 +68,7 @@ public class ElementStacksGateway
     {
         var totals=new Dictionary<string,int>();
 
-        foreach (var elementCard in wrapper.Stacks())
+        foreach (var elementCard in wrapper.GetStacks())
         {
             var aspects=elementCard.GetAspects();
             foreach (string k in aspects.Keys)
@@ -80,6 +81,16 @@ public class ElementStacksGateway
         }
 
         return totals;
+    }
+
+    public IEnumerable<IElementStack> GetStacks()
+    {
+        return wrapper.GetStacks();
+    }
+
+    public void AcceptElementStack(IElementStack stack)
+    {
+   wrapper.Accept(stack);
     }
 }
 

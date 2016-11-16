@@ -2,6 +2,7 @@
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -114,8 +115,13 @@ namespace Assets.CS.TabletopUI
             countdownBar.fillAmount = 1f - (timeRemaining / duration);
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
-    
 
+        public ElementStacksGateway Stacks()
+        {
+            IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(transform);
+            ElementStacksGateway verbBoxStacks = new ElementStacksGateway(verbBoxWrapper);
+            return verbBoxStacks;
+        }
 
 }
 }

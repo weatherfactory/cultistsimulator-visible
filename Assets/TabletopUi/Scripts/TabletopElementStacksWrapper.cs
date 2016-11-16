@@ -11,22 +11,29 @@ namespace Assets.TabletopUi.Scripts
 {
     public class TabletopElementStacksWrapper: IElementStacksWrapper
     {
-        private Transform transform;
+        private Transform wrappedTransform;
         public TabletopElementStacksWrapper(Transform t)
         {
-            transform = t;
+            wrappedTransform = t;
         }
 
         public IElementStack ProvisionElementStack(string elementId, int quantity)
         {
-            IElementStack stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(transform);
-           stack.Populate(elementId,quantity);
+            IElementStack stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(wrappedTransform);
+            stack.Populate(elementId,quantity);
             return stack;
         }
 
-        public IEnumerable<IElementStack> Stacks()
+        public void Accept(IElementStack stack)
         {
-            return transform.GetComponentsInChildren<ElementStack>();
+            Transform stackTransform = (stack as ElementStack).transform;
+            stackTransform.SetParent(wrappedTransform);
+        }
+
+
+        public IEnumerable<IElementStack> GetStacks()
+        {
+            return wrappedTransform.GetComponentsInChildren<ElementStack>();
         }
     }
 }

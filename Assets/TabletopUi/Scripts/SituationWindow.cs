@@ -132,7 +132,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void Hide() {
-            //linkedBox.SetSelected(false);
+
             linkedBox.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
             canvasGroupFader.destroyOnHide = true;
             canvasGroupFader.Hide();
@@ -194,9 +194,13 @@ namespace Assets.CS.TabletopUI
 
         private Dictionary<string, int> GetAspectsFromSlottedCards()
         {
-            ElementStacksGateway ecg = new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder.transform));
-            Dictionary<string, int> currentAspects = ecg.GetTotalAspects();
+            Dictionary <string, int> currentAspects = GetStacksInSlots().GetTotalAspects();
             return currentAspects;
+        }
+
+        private ElementStacksGateway GetStacksInSlots()
+        {
+            return new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder.transform));
         }
 
         private void DisplayRecipe(Recipe r)
@@ -217,8 +221,18 @@ namespace Assets.CS.TabletopUI
         {
             var aspects = GetAspectsFromSlottedCards();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, verb.Id);
+
+            ElementStacksGateway slottedIngredientsStacks = GetStacksInSlots();
+
+            IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(linkedBox.transform);
+            ElementStacksGateway verbBoxStacks = new ElementStacksGateway(verbBoxWrapper);
+            foreach(var stack in slottedIngredientsStacks.GetStacks())
+                verbBoxStacks.AcceptElementStack(stack);
+
             linkedBox.BeginSituation(recipe);
             subscribers.ForEach(s => s.SituationBegins(linkedBox));
+            
+
         }
 
         public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)

@@ -70,6 +70,7 @@ namespace Assets.CS.TabletopUI
             DisplayIcon();
         }
 
+
         private void DisplayInfo() {
             text.text = _element.Label + "(" + Quantity + ")"; 
         }
