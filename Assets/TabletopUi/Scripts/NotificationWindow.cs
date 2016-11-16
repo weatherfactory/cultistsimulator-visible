@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class Notification: MonoBehaviour
+    public class NotificationWindow: MonoBehaviour
     {
         [SerializeField]
         CanvasGroup canvasGroup;

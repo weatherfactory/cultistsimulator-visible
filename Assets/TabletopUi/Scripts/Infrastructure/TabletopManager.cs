@@ -167,6 +167,11 @@ namespace Assets.CS.TabletopUI
 
         }
 
+        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
+        {
+           //currently nothing: tokens are automatically returned home
+        }
+
         #endregion
 
         #region -- INTERACTION ----------------------------------------------------

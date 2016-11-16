@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
@@ -146,29 +147,32 @@ namespace Assets.CS.TabletopUI
             if(stack!=null)
             {
                 SlotMatchForAspects match = slot.GetSlotMatchForStack(stack);
-                if(match.SlotMatchForAspectsType==SlotMatchForAspectsType.Okay)
-                { 
-                DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                PutStackInSlot(slot, stack);
-
-                var currentAspects = GetAspectsFromSlottedCards();
-                   aspectsDisplay.DisplayAspects(currentAspects);
-                Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
-                DisplayRecipe(r);
-                stack.Subscribe(this);
-                
-                if (stack.HasChildSlots())
-                  AddSlotsForStack(stack,slot);
-                
-                ArrangeSlots();
-                }
+                if (match.MatchType == SlotMatchForAspectsType.Okay)
+                    StackInSlot(slot, stack);
+                else
+                    stack.ReturnToTabletop(new Notification {Title = "I can't put that there - ",Description = match.GetProblemDescription() });
 
             }
         }
 
-        private static void PutStackInSlot(RecipeSlot slot, ElementStack stack)
+        private void StackInSlot(RecipeSlot slot, ElementStack stack)
         {
-            stack.transform.SetParent(slot.transform); // Make sure to parent back to the tabletop
+            DraggableToken.resetToStartPos = false;
+            // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+            PositionStackInSlot(slot, stack);
+
+            DisplayRecipeForCurrentAspects();
+            stack.Subscribe(this);
+
+            if (stack.HasChildSlots())
+                AddSlotsForStack(stack, slot);
+
+            ArrangeSlots();
+        }
+
+        private static void PositionStackInSlot(RecipeSlot slot, ElementStack stack)
+        {
+            stack.transform.SetParent(slot.transform); 
             stack.transform.localPosition = Vector3.zero;
             stack.transform.localRotation = Quaternion.identity;
         }
@@ -274,6 +278,11 @@ namespace Assets.CS.TabletopUI
         public void TokenInteracted(DraggableToken draggableToken)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
+        {
+           //currently nothing; tokens are automatically returned home
         }
 
         public void Subscribe(ISituationWindowSubscriber subscriber)

@@ -18,9 +18,9 @@ namespace Assets.CS.TabletopUI
         private int maxNumElementWindows;
 
 
-        public void ShowNotification(string title, string description)
+        public void ShowNotificationWindow(string title, string description)
         {
-            var notification = BuildNotification();
+            var notification = BuildNotificationWindow();
             notification.SetDetails(title, description);
         }
 
@@ -37,16 +37,16 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
-        public Notification BuildNotification()
+        public NotificationWindow BuildNotificationWindow()
         {
-            var notification = PrefabFactory.CreateLocally<Notification>(notificationHolder);
+            var notification = PrefabFactory.CreateLocally<NotificationWindow>(notificationHolder);
             return notification;
         }
 
 
         public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
-            ShowNotification(effectCommand.Title,effectCommand.Description);
+            ShowNotificationWindow(effectCommand.Title,effectCommand.Description);
         }
 
         public void TokenPickedUp(DraggableToken draggableToken)
@@ -61,6 +61,11 @@ namespace Assets.CS.TabletopUI
             {
                     ShowElementDetails(stack);
             }
+        }
+
+        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
+        {
+            ShowNotificationWindow(reason.Title,reason.Description);
         }
     }
 }

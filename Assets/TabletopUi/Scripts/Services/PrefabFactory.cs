@@ -20,9 +20,8 @@ namespace Assets.TabletopUi.Scripts.Services
         public ElementStack ElementStack = null;
         public SituationWindow SituationWindow = null;
         public ElementDetailsWindow ElementDetailsWindow = null;
-        public Notification Notification = null;
         public RecipeSlot RecipeSlot = null;
-
+        public NotificationWindow NotificationWindow = null;
         [Header("Token Subscribers")]
         [SerializeField]
         TabletopManager TabletopManager = null;

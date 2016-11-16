@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
+using Noon;
 
 /// <summary>
 /// Entity class: a child slot for an element
@@ -51,22 +53,7 @@ public class ChildSlotSpecification
     }
 }
 
-public class SlotMatchForAspects
-{
-    public  IEnumerable<string> ProblemAspectIds=new List<string>();
-    public SlotMatchForAspectsType SlotMatchForAspectsType { get; set; }
 
-    public static SlotMatchForAspects MatchOK()
-    {
-        return new SlotMatchForAspects(new List<string>(), SlotMatchForAspectsType.Okay);
-    }
-
-    public SlotMatchForAspects(IEnumerable<string> problemAspectIds, SlotMatchForAspectsType esm)
-    {
-        ProblemAspectIds = problemAspectIds;
-        SlotMatchForAspectsType = esm;
-    }    
-}
 
 public enum SlotMatchForAspectsType
 {

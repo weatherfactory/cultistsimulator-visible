@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -30,5 +31,7 @@ namespace Assets.CS.TabletopUI
             else
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
+
+
     }
 }

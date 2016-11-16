@@ -102,6 +102,11 @@ namespace Assets.CS.TabletopUI
                 MoveObject(eventData);
         }
 
+        public void ReturnToTabletop(INotification reason)
+        {
+            subscribers.ForEach(s=>s.TokenReturnedToTabletop(this,reason));
+        }
+
         // Would solve this differently: By sending the object the drag position and allowing it to position itself as it desires
         // This allows us to animate a "moving up" animation while you're dragging
 
