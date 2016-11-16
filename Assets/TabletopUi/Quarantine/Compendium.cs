@@ -8,7 +8,34 @@ using OrbCreationExtensions;
 using UnityEngine.Rendering;
 
 
-public class Compendium
+public interface ICompendium
+{
+    void UpdateRecipes(List<Recipe> allRecipes);
+    void UpdateElements(Dictionary<string, Element> elements);
+    void UpdateVerbs(Dictionary<string, Verb> verbs);
+    Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb);
+    List<Recipe> GetAllRecipesAsList();
+    Recipe GetRecipeById(string recipeId);
+    Element GetElementById(string elementId);
+    Boolean IsKnownElement(string elementId);
+    List<Verb> GetAllVerbs();
+    Verb GetVerbById(string verbId);
+
+    /// <summary>
+    ///Determines whether the original recipe, an alternative, or something else should actually be run.
+    /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
+    /// Alternatives which match, but which specify additional are run after the original recipe.
+    /// There may be multiple additional alternatives.
+    /// However, if an alternative ever does *not* specify additional, it replaces the entire list (although it may have alternatives of its own)
+    /// Alternatives are recursive, and may have additionals of their own.
+    /// A non-additional alternative always takes precedence over everything earlier; if a recursive alternative has additionals of its own, they'll replace everything earlier in the execution sequence.
+    /// </summary>
+
+    /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
+    List<Recipe> GetActualRecipesToExecute(Recipe recipe, IElementsContainer elementsContainer);
+}
+
+public class Compendium : ICompendium
 {
     private List<Recipe> _recipes;
     private readonly IDice _dice;

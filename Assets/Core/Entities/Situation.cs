@@ -11,13 +11,19 @@ namespace Assets.Core.Entities
        private Recipe recipe { get; set; }
         public float TimeRemaining { private set; get; }
         public float Warmup { private set; get; }
+        public string RecipeId { get { return recipe == null ? null : recipe.Id; } }
 
         public Situation(Recipe recipe)
         {
-            this.recipe = recipe;
+            beginRecipe(recipe);
+        }
+
+        private void beginRecipe(Recipe withRecipe)
+        {
+            recipe = withRecipe;
             Warmup = this.recipe.Warmup;
             TimeRemaining = Warmup;
-            State=SituationState.Ongoing;
+            State = SituationState.Ongoing;
         }
 
         public string GetTitle()
@@ -43,6 +49,13 @@ namespace Assets.Core.Entities
             return State;
         }
 
+        public void TryBeginNextRecipe(IRecipeConductor rc)
+        {
+            Recipe nextRecipe = rc.GetNextRecipe(recipe);
+            if (nextRecipe != null) 
+              beginRecipe(nextRecipe);
+        }
+
         public EffectCommand GetEffectCommand()
         {
             if (State == SituationState.Complete)
@@ -52,7 +65,6 @@ namespace Assets.Core.Entities
                 ec.Description = recipe.Description;
                 return ec;
             }
-
             return null;
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Core;
+using UnityEngine;
 
 namespace Assets.CS.TabletopUI
 {
@@ -9,6 +10,7 @@ namespace Assets.CS.TabletopUI
                 return m_compendium;
             }
         }
+
 
         private static Compendium m_compendium;
 

@@ -8,10 +8,7 @@ using Assets.Editor.Tests;
 
 public class TestObjectGenerator
     {
-        public static Element CreateElement(int key)
-        {
-            return new Element(key.ToString(), "label" + key, "description" + key);
-        }
+
 
     public static FakeElementStack CreateElementCard(string key, int quantity)
     {
@@ -31,12 +28,17 @@ public class TestObjectGenerator
             return cards;
         }
 
-    public static string GeneratedElementId(int index)
+    public static string GeneratedId(int index)
         {
             return index.ToString();
         }
 
-        public static Dictionary<string,Element> ElementDictionary(int minKey, int MaxKey)
+    public static Element CreateElement(int key)
+    {
+        return new Element(key.ToString(), "label" + key, "description" + key);
+    }
+
+    public static Dictionary<string,Element> ElementDictionary(int minKey, int MaxKey)
         {
             Dictionary<string,Element> d =new Dictionary<string, Element>();
             for (int k = minKey; k <= MaxKey; k++)
@@ -47,6 +49,13 @@ public class TestObjectGenerator
 
         return d;
 
+        }
+
+        public static Recipe GenerateRecipe(int key)
+        {
+            Recipe r=new Recipe();
+            r.Id = key.ToString();
+            return r;
         }
 
         public static void AddUniqueAspectsToEachElement(Dictionary<string, Element> elements)

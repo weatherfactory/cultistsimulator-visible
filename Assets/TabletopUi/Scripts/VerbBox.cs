@@ -66,17 +66,23 @@ namespace Assets.CS.TabletopUI
             {
                 SituationState currentState = situation.Continue(interval);
                 if (currentState == SituationState.Ongoing)
+                { 
+                    SetTimerVisibility(true);
                     DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
+                }
                 else if(currentState==SituationState.Complete)
                 { 
                     SetTimerVisibility(false);
                     IEffectCommand ec = situation.GetEffectCommand();
-                    //er.... do I definitely want to do this? I guess a situation is kinda part of a verbbox, but this looks like it needs refactoring in the cold light of day
-                   _subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
+                    //er.... do I definitely want to do this? I guess a situation is kinda part of a verbbox, but in the cold light of day this looks like it needs refactoring 
+                    _subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
                 }
                 else if (currentState == SituationState.Extinct)
                 {
-                    situation = null;
+                    RecipeConductor rc=new RecipeConductor(Registry.Compendium);
+                    situation.TryBeginNextRecipe(rc);
+                    if(detailsWindow!=null)
+                        detailsWindow.PopulateForVerb(this);
                 }
             }
         }
