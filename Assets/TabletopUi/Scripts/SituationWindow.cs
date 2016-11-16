@@ -21,12 +21,11 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
-        [SerializeField]  GameObject slotsHolder;
+        [SerializeField]  Transform slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         private Situation situation;
 
-        private Verb verb;
         private List<ISituationWindowSubscriber> subscribers=new List<ISituationWindowSubscriber>();
         private RecipeSlot primarySlot;
 
@@ -40,29 +39,35 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        // TODO: This should check the state of the verbBox/recipe and display the box accordingly.
-        public void SetVerb(VerbBox box) {
-            linkedBox = box;
-
-            box.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
+        public void PopulateForVerb(VerbBox verbBox) {
+            linkedBox = verbBox;
+            verbBox.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
             // Instead we should lock positions in some other way?
             // Window subscribes to verb/element, and when it's position is changed window updates its own?
-            box.transform.localPosition = Vector3.zero;
-            box.transform.localRotation = Quaternion.identity;
-
-            verb = Registry.Compendium.GetVerbById(box.verbId);
-
-            title.text = verb.Label;
-            description.text = verb.Description; 
+            verbBox.transform.localPosition = Vector3.zero;
+            verbBox.transform.localRotation = Quaternion.identity;
 
             //linkedBox.SetSelected(true);
             linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
                                             // could also track the open windows in tabletop manager instead and check there.
 
-            primarySlot = BuildSlot();
-            ArrangeSlots();
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
+
+            title.text = verbBox.GetTitle();
+            description.text = verbBox.GetDescription();
+
+            if (verbBox.isBusy)
+            {
+
+            }
+
+                else
+            {
+                primarySlot = BuildSlot();
+                ArrangeSlots();
+
+            }
         }
 
         public VerbBox GetVerbBox() {
@@ -120,7 +125,7 @@ namespace Assets.CS.TabletopUI
 
 
         RecipeSlot BuildSlot(string slotName = "Recipe Slot", ChildSlotSpecification childSlotSpecification = null) {
-            var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder.transform);
+            var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder);
             slot.onCardDropped += HandleOnSlotDroppedOn;
             slot.name = slotName;
             if(childSlotSpecification!=null)
@@ -200,7 +205,7 @@ namespace Assets.CS.TabletopUI
 
         private ElementStacksGateway GetStacksInSlots()
         {
-            return new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder.transform));
+            return new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder));
         }
 
         private void DisplayRecipe(Recipe r)
@@ -220,7 +225,7 @@ namespace Assets.CS.TabletopUI
         void HandleOnButtonClicked()
         {
             var aspects = GetAspectsFromSlottedCards();
-            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, verb.Id);
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedBox.verbId);
 
             ElementStacksGateway slottedIngredientsStacks = GetStacksInSlots();
 
@@ -285,7 +290,7 @@ namespace Assets.CS.TabletopUI
         private void DisplayRecipeForCurrentAspects()
         {
             var currentAspects = GetAspectsFromSlottedCards();
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, verb.Id);
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, linkedBox.verbId);
             DisplayRecipe(r);
         }
 

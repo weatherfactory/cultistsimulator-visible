@@ -3,6 +3,7 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,11 +28,8 @@ namespace Assets.CS.TabletopUI
             return _verb == null ? null : _verb.Id;
         } }
 
-        // Question how much of that we retain in the DisplayObject or in the Verb.
-        // For convenienence I think it makes sense to keep it in the verb/situation/recipe and either
-        // referencing them here for easy access or having the verb constantly push
-        // updates to a set of duplicate fields.
-        public bool isBusy { private set; get; }
+
+        public bool isBusy { get { return situation != null; } }
         private float timeRemaining = 0f;
         private int numCompletions = 0; // Stands for the amount of completed cycles.
 
@@ -41,11 +39,24 @@ namespace Assets.CS.TabletopUI
             SetTimerVisibility(true);
         }
 
+        public string GetTitle()
+        {
+            return situation == null ? _verb.Label :
+        situation.GetTitle();
+        }
+
+        public string GetDescription()
+        {
+            return situation == null ? _verb.Description :
+        situation.GetDescription();
+        }
+
         private void SetTimerVisibility(bool b)
         {
             countdownBar.gameObject.SetActive(b);
             countdownText.gameObject.SetActive(b);
         }
+
 
         public void ContinueSituation(float interval)
         {
@@ -59,7 +70,7 @@ namespace Assets.CS.TabletopUI
                     SetTimerVisibility(false);
                     IEffectCommand ec = situation.GetEffectCommand();
                     //er.... do I definitely want to do this? I guess a situation is kinda part of a verbbox, but this looks like it needs refactoring in the cold light of day
-                   subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
+                   _subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
                 }
                 else if (currentState == SituationState.Extinct)
                 {
@@ -123,5 +134,13 @@ namespace Assets.CS.TabletopUI
             return verbBoxStacks;
         }
 
-}
+
+        public void PopulateSituationWindow(SituationWindow window)
+        {
+
+            window.transform.position = transform.position;
+            window.PopulateForVerb(this);
+            
+        }
+    }
 }

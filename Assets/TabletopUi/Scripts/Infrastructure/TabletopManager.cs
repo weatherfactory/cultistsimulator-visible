@@ -68,11 +68,11 @@ namespace Assets.CS.TabletopUI
                 HideSituationWindow(situationWindows[0].GetVerbBox(), true);
 
             PutTokenInAir(box.transform as RectTransform);
-
             var window = PrefabFactory.CreateSituationWindowWithSubscribers(windowParent);
-            window.transform.position = box.transform.position;
-            window.SetVerb(box);
             situationWindows.Add(window);
+            box.PopulateSituationWindow(window);
+
+   
         }
 
         void HideSituationWindow(VerbBox box, bool keepCards) {

@@ -20,6 +20,18 @@ namespace Assets.Core.Entities
             State=SituationState.Ongoing;
         }
 
+        public string GetTitle()
+        {
+            return recipe==null ?  "no recipe just now" :
+            recipe.Label;
+        }
+
+        public string GetDescription()
+        {
+            return recipe == null ? "no recipe just now" :
+            recipe.Description;
+        }
+
         public SituationState Continue(float interval)
         {
             if(State==SituationState.Complete)
