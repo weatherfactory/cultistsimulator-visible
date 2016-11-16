@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.CS.TabletopUI;
-using UnityEditor;
 
 /// <summary>
 /// Top-level object
