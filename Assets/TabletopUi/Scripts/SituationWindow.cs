@@ -59,7 +59,7 @@ namespace Assets.CS.TabletopUI
 
             if (verbBox.isBusy)
             {
-
+                
             }
 
                 else
@@ -136,9 +136,10 @@ namespace Assets.CS.TabletopUI
             return slot;
         }
 
-        public void Hide() {
+        public void Hide()
+        {
+            linkedBox.HideSituationWindow();
 
-            linkedBox.detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
             canvasGroupFader.destroyOnHide = true;
             canvasGroupFader.Hide();
         }
@@ -199,11 +200,11 @@ namespace Assets.CS.TabletopUI
 
         private Dictionary<string, int> GetAspectsFromSlottedCards()
         {
-            Dictionary <string, int> currentAspects = GetStacksInSlots().GetTotalAspects();
+            Dictionary <string, int> currentAspects = GetStacksGatewayForSlots().GetTotalAspects();
             return currentAspects;
         }
 
-        private ElementStacksGateway GetStacksInSlots()
+        private ElementStacksGateway GetStacksGatewayForSlots()
         {
             return new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder));
         }
@@ -227,12 +228,7 @@ namespace Assets.CS.TabletopUI
             var aspects = GetAspectsFromSlottedCards();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedBox.verbId);
 
-            ElementStacksGateway slottedIngredientsStacks = GetStacksInSlots();
-
-            IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(linkedBox.transform);
-            ElementStacksGateway verbBoxStacks = new ElementStacksGateway(verbBoxWrapper);
-            foreach(var stack in slottedIngredientsStacks.GetStacks())
-                verbBoxStacks.AcceptElementStack(stack);
+            linkedBox.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
 
             linkedBox.BeginSituation(recipe);
             subscribers.ForEach(s => s.SituationBegins(linkedBox));

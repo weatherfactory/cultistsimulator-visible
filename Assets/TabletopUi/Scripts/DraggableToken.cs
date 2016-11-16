@@ -26,6 +26,7 @@ namespace Assets.CS.TabletopUI
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
         public bool IsSelected { protected set; get; }
+        
 
         private float perlinRotationPoint = 0f;
         private float dragHeight = -5f;
@@ -34,13 +35,15 @@ namespace Assets.CS.TabletopUI
         public bool rotateOnDrag = true;
         protected List<ITokenSubscriber> _subscribers = new List<ITokenSubscriber>();
 
+ 
+
         void Awake() {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
 
-
+        
         public void Subscribe(ITokenSubscriber subscriber)
         {
             if(!_subscribers.Contains(subscriber))
@@ -64,7 +67,20 @@ namespace Assets.CS.TabletopUI
                 StartDrag(eventData);
         }
 
-        bool CanDrag(PointerEventData eventData) {
+        private bool IsLocked()
+        {
+            DraggableContainerBehaviour dcb = transform.parent.gameObject.GetComponent<DraggableContainerBehaviour>();
+            if (dcb == null)
+                return false;
+            else
+                return dcb.LockDraggables;
+        }
+
+        bool CanDrag(PointerEventData eventData)
+        {
+            if (IsLocked())
+                return false;
+
             if ( itemBeingDragged != null || draggingEnabled == false )
                 return false;
 		

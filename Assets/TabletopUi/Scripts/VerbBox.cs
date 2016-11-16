@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -18,6 +19,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
+        [SerializeField] private GameObject elementsInSituation;
         private Verb _verb;
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
@@ -127,20 +129,33 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public ElementStacksGateway Stacks()
+        public ElementStacksGateway GetStacksGateway()
         {
-            IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(transform);
+            IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(elementsInSituation.transform);
             ElementStacksGateway verbBoxStacks = new ElementStacksGateway(verbBoxWrapper);
             return verbBoxStacks;
         }
 
 
-        public void PopulateSituationWindow(SituationWindow window)
+        public void DisplaySituationWindow(SituationWindow window)
         {
-
             window.transform.position = transform.position;
             window.PopulateForVerb(this);
-            
+            elementsInSituation.SetActive(true);
+        }
+
+
+        public void HideSituationWindow()
+        {
+            detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
+            elementsInSituation.SetActive(false);
+        }
+
+        public void StoreElementStacks(IEnumerable<IElementStack> stacks)
+        {
+            var containerGateway = GetStacksGateway();
+  
+            containerGateway.AcceptStacks(stacks);
         }
     }
 }

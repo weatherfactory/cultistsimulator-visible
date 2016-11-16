@@ -90,7 +90,15 @@ public class ElementStacksGateway
 
     public void AcceptElementStack(IElementStack stack)
     {
-   wrapper.Accept(stack);
+        wrapper.Accept(stack);
+    }
+
+    public void AcceptStacks(IEnumerable<IElementStack> stacks)
+    {
+        foreach (var eachStack in stacks)
+        {
+            AcceptElementStack(eachStack);
+        }
     }
 }
 

@@ -60,9 +60,6 @@ namespace Assets.CS.TabletopUI
 
         #region -- CREATE / REMOVE VIEW OBJECTS ----------------------------------------------------
 
-
-
-
         void ShowSituationWindow(VerbBox box) {
          if (maxNumSituationWindows > 0 && situationWindows.Count == maxNumSituationWindows) 
                 HideSituationWindow(situationWindows[0].GetVerbBox(), true);
@@ -70,7 +67,7 @@ namespace Assets.CS.TabletopUI
             PutTokenInAir(box.transform as RectTransform);
             var window = PrefabFactory.CreateSituationWindowWithSubscribers(windowParent);
             situationWindows.Add(window);
-            box.PopulateSituationWindow(window);
+            box.DisplaySituationWindow(window);
 
    
         }
