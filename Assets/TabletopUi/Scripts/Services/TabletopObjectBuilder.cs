@@ -64,8 +64,10 @@ namespace Assets.TabletopUi.Scripts.Services
             }
         }
 
-        public SituationToken BuildNewTokenRunningRecipe(Recipe recipe)
+        public SituationToken BuildNewTokenRunningRecipe(string recipeId)
         {
+            var recipe = Registry.Compendium.GetRecipeById(recipeId);
+
             var situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
 
               IVerb v = Registry.Compendium.GetVerbById(recipe.ActionId);

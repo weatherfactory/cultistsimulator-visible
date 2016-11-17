@@ -1,8 +1,8 @@
 {"recipes": [
 
    {
-        id: "starvation",
-        label: "Time, the sundial's shadow, passes.",
+        id: "needs",
+        label: "The Body's Needs",
         actionId: "x",
         requirements: {},
         effects: {
@@ -12,12 +12,28 @@
         alternativerecipes:
         [{id: "deathofthebody",chance:100},
 		{id: "lawenforcement", chance:100, additional: true},
-         {id: "sustenance", chance:100}],
+         {id: "sustenance", chance:100},
+		 {id: "starvation", chance:100}],
+        startdescription: ".",
+        description: "Time, the sundial's shadow, passes. I must eat, if I am to live.",
+        warmup: 60,
+        craftable: false,
+        loop: "needs"
+    },
+	   {
+        id: "starvation",
+        label: "Time, the sundial's shadow, passes.",
+        actionId: "x",
+        requirements: {},
+        effects: {
+            health: -1,
+            hungry: 1
+        },
         startdescription: ".",
         description: "I have grown neglectful of my health. Without money, I'll soon starve.",
         warmup: 60,
         craftable: false,
-        loop: "starvation"
+        loop: "needs"
     },
     {
         id: "sustenance",
@@ -34,7 +50,7 @@
         description: "The body has its needs. Today, I have satisfied them.",
         warmup: 0,
         craftable: false,
-        loop: "starvation"
+        loop: "needs"
     },
     {
         id: "lawenforcement",

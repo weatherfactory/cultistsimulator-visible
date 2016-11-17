@@ -37,9 +37,8 @@ namespace Assets.CS.TabletopUI
 
            tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel,GetStacksOnTabletopGateway());
             tabletopObjectBuilder.PopulateTabletop();
-            Recipe sustenance = Registry.Compendium.GetRecipeById("starvation");
-          var sustenanceToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe(sustenance);
-            ArrangeTokenOnTable(sustenanceToken);
+            var needsToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
+            ArrangeTokenOnTable(needsToken);
 
         }
 
