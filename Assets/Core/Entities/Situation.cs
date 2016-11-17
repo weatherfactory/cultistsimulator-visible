@@ -89,11 +89,6 @@ namespace Assets.Core.Entities
         }
 
 
-        public SituationState Continue(float interval)
-        {
-return SituationState.Ongoing;
-        }
-
         private void Ongoing()
         {
             State=SituationState.Ongoing;

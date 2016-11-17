@@ -39,6 +39,23 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
+        public void Situation_RequiresExecution_When_ContinuingAtTimeBelowZero()
+        {
+            Situation s = new Situation(r1);
+            ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
+            s.Subscribe(subscriber);
+            IRecipeConductor rc = Substitute.For<IRecipeConductor>();
+
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
+
+            s.Continue(rc, 1);
+
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe == r1));
+
+        }
+
+
+        [Test]
         public void Situation_BeginsLoopRecipe_WhenRecipeConductorSpecifiesLoopRecipe()
         {
             
@@ -57,6 +74,8 @@ namespace Assets.Editor.Tests
             Assert.AreEqual(null, s.RecipeId);
             Assert.AreEqual(SituationState.Extinct, s.State);
         }
+
+
 
         [Test]
         public void Situation_ExecutesAlternativesSpecifiedByRecipeConductor()
