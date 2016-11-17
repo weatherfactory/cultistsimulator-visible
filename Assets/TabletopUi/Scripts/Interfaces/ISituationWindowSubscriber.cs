@@ -9,7 +9,6 @@ public interface ISituationWindowSubscriber
     {
         void SituationBegins(SituationToken box);
         void SituationUpdated(SituationToken box);
-        void ElementStackRejected(ElementStack stack);
 
     }
 

@@ -65,6 +65,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {
+            if(reason!=null)
             ShowNotificationWindow(reason.Title,reason.Description);
         }
     }

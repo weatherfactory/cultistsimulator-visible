@@ -276,7 +276,8 @@ namespace Assets.CS.TabletopUI
             ElementStack stackContained = slot.GetElementStackInSlot();
             if(stackContained!=null)
             { 
-              subscribers.ForEach(s=>s.ElementStackRejected(stackContained));
+                stackContained.ReturnToTabletop(null);
+              //subscribers.ForEach(s=>s.ElementStackRejected(stackContained));
             }
             DestroyObject(slot.gameObject);
         }

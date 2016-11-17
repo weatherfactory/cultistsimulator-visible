@@ -67,6 +67,14 @@ namespace Assets.CS.TabletopUI
    
         }
 
+        private void CloseAllSituationWindowsExcept(SituationToken except)
+        {
+            var situationTokens = windowLevel.GetComponentsInChildren<SituationToken>().Where(sw => sw != except);
+            foreach (var situationToken in situationTokens)
+                HideSituationWindow(situationToken, false);
+
+        }
+
         void HideSituationWindow(SituationToken box, bool keepCards) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != box.gameObject)
                 PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
@@ -92,9 +100,7 @@ namespace Assets.CS.TabletopUI
 
         #endregion
 
-        #region -- MOVE / CHANGE VIEW OBJECTS ----------------------------------------------------
 
-        // parents object to "TabletopTransform" and sets its Z to 0.
         public void PutTokenOnTable(RectTransform rectTransform) {
             if (rectTransform == null)
                 return;
@@ -114,7 +120,6 @@ namespace Assets.CS.TabletopUI
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }
 
-        #endregion
 
 
         #region -- response to subscriptionUI events
@@ -156,17 +161,11 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        private void CloseAllSituationWindowsExcept(SituationToken except)
-        {
-            var situationTokens = windowLevel.GetComponentsInChildren<SituationToken>().Where(sw=>sw!=except);
-            foreach (var situationToken in situationTokens)
-            HideSituationWindow(situationToken,false);
 
-        }
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {
-           //currently nothing: tokens are automatically returned home
+            PutTokenOnTable(draggableToken.RectTransform);
         }
 
         #endregion
@@ -210,8 +209,10 @@ namespace Assets.CS.TabletopUI
         }
 
         void HandleOnBackgroundClicked() {
-            //TODO: Close all open windows if we're not dragging (multi tap stuff)
- 
+            //Close all open windows if we're not dragging (multi tap stuff)
+            if (DraggableToken.itemBeingDragged == null)
+                CloseAllSituationWindowsExcept(null);
+
         }
 
 
@@ -227,10 +228,6 @@ namespace Assets.CS.TabletopUI
             Debug.Log("Situation continues");
         }
 
-        public void ElementStackRejected(ElementStack stack)
-        {
-            PutTokenOnTable(stack.RectTransform);
-        }
     }
 
 }
