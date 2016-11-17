@@ -15,5 +15,7 @@ namespace Assets.Core.Interfaces
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);
         void Populate(string elementId, int quantity);
+        List<ChildSlotSpecification> GetChildSlotSpecifications();
+        bool HasChildSlots();
     }
 }

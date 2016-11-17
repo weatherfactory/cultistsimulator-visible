@@ -161,7 +161,7 @@ namespace Assets.Editor.Tests
         {
             var ecg=new ElementStacksGateway(wrapper);
             FakeElementStack newStack = new FakeElementStack() { ElementId = "newElement", Quantity = 2 };
-            ecg.AcceptElementStack(newStack);
+            ecg.AcceptStack(newStack);
             wrapper.Received().Accept(newStack);
 
         }
@@ -171,7 +171,7 @@ namespace Assets.Editor.Tests
     }
 
 
-
+    //I should mock this, actually
     public class FakeElementStack : IElementStack
     {
         public Dictionary<string, int> Aspects;
@@ -193,6 +193,16 @@ namespace Assets.Editor.Tests
         {
             ElementId = elementId;
             Quantity = quantity;
+        }
+
+        public List<ChildSlotSpecification> GetChildSlotSpecifications()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasChildSlots()
+        {
+            throw new NotImplementedException();
         }
 
         public void MoveTo<T>(T newLocation)

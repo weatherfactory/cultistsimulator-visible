@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Logic;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine.Assertions;
 
@@ -60,6 +61,11 @@ namespace Assets.Core.Entities
         {
             return currentRecipe == null ? "no recipe just now" :
             currentRecipe.Description;
+        }
+
+        public AspectMatchFilter GetRetrievalFilter()
+        {
+            return new AspectMatchFilter(currentRecipe.RetrievesContentsWith);
         }
 
         public SituationState Continue(IRecipeConductor rc,float interval)
@@ -127,7 +133,6 @@ namespace Assets.Core.Entities
 
         private void Extinct()
         {
-            currentRecipe = null;
             State = SituationState.Extinct;
             foreach (var s in subscribers)
                 s.SituationExtinct();

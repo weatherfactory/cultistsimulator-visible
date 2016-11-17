@@ -168,7 +168,7 @@
 			{
         id: "testresearchspine",
         label: "Project ongoing",
-        actionId: "x",
+        actionId: "work",
 		alternativerecipes: [{id: "testresearchcomplete", chance: 100}],
         requirements: {},
         effects: {atlasnotes: 1},
@@ -188,7 +188,7 @@
 	{
         id: "testresearchcomplete",
         label: "Project complete",
-        actionId: "x",
+        actionId: "work",
         requirements: {atlasnotes: 3},
         effects: {atlas: 1},
         startdescription: "..",

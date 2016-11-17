@@ -28,7 +28,7 @@
     <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>3</WarningLevel>
+    <WarningLevel>4</WarningLevel>
     <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_1;UNITY_5_4;UNITY_5;UNITY_ANALYTICS;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;DEVELOPMENT_BUILD;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -83,9 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Core\AspectsDictionary.cs" />
     <Compile Include="Assets\Core\Commands\EffectCommand.cs" />
     <Compile Include="Assets\Core\Commands\Notification.cs" />
+    <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
     <Compile Include="Assets\Core\Entities\ChildSlotSpecification.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
@@ -104,8 +104,9 @@
     <Compile Include="Assets\Core\Interfaces\IElementStacksWrapper.cs" />
     <Compile Include="Assets\Core\Interfaces\INotification.cs" />
     <Compile Include="Assets\Core\Interfaces\IVerb.cs" />
-    <Compile Include="Assets\Core\RecipeConductor.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
+    <Compile Include="Assets\Logic\AspectMatchFilter.cs" />
+    <Compile Include="Assets\Logic\RecipeConductor.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -139,10 +140,10 @@
     <Compile Include="Assets\TabletopUi\Scripts\Services\Registry.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\TabletopObjectBuilder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\ShittyShadowTest.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\SituationToken.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStacksWrapper.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\SituationToken.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />

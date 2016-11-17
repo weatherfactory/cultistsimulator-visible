@@ -50,19 +50,7 @@ namespace Noon
             return Application.persistentDataPath + "\\savedgame.txt";
         }
 
-        public static Dictionary<string,int> AspectMatchFilter(Dictionary<string, int> aspectsFilter, Dictionary<string, int> elementsToFilter,
-            Compendium compendium)
-        {
-           Dictionary<string,int> filteredElements=new Dictionary<string, int>();
-            foreach (var eKeyValuePair in elementsToFilter)
-            {
-                Element element = compendium.GetElementById(eKeyValuePair.Key);
 
-                if(element.AspectsIncludingSelf.Any(a=>aspectsFilter.ContainsKey(a.Key) && aspectsFilter[a.Key]<=a.Value))
-                  filteredElements.Add(eKeyValuePair.Key, eKeyValuePair.Value);
-            }
-            return filteredElements;
-        }
 
 
         public static Dictionary<string, int> JSONHashtableToIntValuesDictionary(Hashtable table)

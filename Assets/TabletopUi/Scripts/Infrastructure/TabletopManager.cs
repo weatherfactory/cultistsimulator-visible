@@ -135,7 +135,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
-            foreach (var kvp in effectCommand.ElementChanges)
+            foreach (var kvp in effectCommand.GetElementChanges())
             {
                 ModifyElementQuantity(kvp.Key,kvp.Value);
             }

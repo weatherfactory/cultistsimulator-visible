@@ -71,7 +71,6 @@ namespace Assets.Editor.Tests
         {
             Situation s = new Situation(0, SituationState.RequiringExecution, r1);
             s.Continue(rc,1);
-            Assert.AreEqual(null, s.RecipeId);
             Assert.AreEqual(SituationState.Extinct, s.State);
         }
 

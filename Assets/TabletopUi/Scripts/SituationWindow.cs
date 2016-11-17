@@ -287,7 +287,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenInteracted(DraggableToken draggableToken)
         {
-            throw new System.NotImplementedException();
+//currently nothing 
         }
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)

@@ -22,8 +22,9 @@ public interface IElementStacksGateway
     IDictionary<string,int> GetCurrentElementTotals();
     AspectsDictionary GetTotalAspects();
     IEnumerable<IElementStack> GetStacks();
-    void AcceptElementStack(IElementStack stack);
+    void AcceptStack(IElementStack stack);
     void AcceptStacks(IEnumerable<IElementStack> stacks);
+    void ConsumeAllStacks();
 }
 
 public class ElementStacksGateway : IElementStacksGateway
@@ -115,7 +116,7 @@ public class ElementStacksGateway : IElementStacksGateway
         return wrapper.GetStacks();
     }
 
-    public void AcceptElementStack(IElementStack stack)
+    public void AcceptStack(IElementStack stack)
     {
         wrapper.Accept(stack);
     }
@@ -124,8 +125,14 @@ public class ElementStacksGateway : IElementStacksGateway
     {
         foreach (var eachStack in stacks)
         {
-            AcceptElementStack(eachStack);
+            AcceptStack(eachStack);
         }
+    }
+
+    public void ConsumeAllStacks()
+    {
+       foreach(IElementStack stack in wrapper.GetStacks())
+            stack.SetQuantity(0);
     }
 }
 

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Logic;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -80,21 +83,32 @@ namespace Assets.CS.TabletopUI
 
         public void SituationExecutingRecipe(IEffectCommand command)
         {
-            //er.... do I definitely want to do this? in the cold light of day this looks like it needs refactoring
-            //but this holding the allstacksgateway - the other obvious route? is also smelly
-            //is there another way I can get it into the recipeconductor?
-            //should the stacksgateways be the things with subscribers?
-            //solution: the gateway executes recipes? 
-            //*ah* but some alternativerecipes will want to run on a different verb (also some have warmups)
+            //THIS WILL CHANGE - ultimately we'll want that note popping out the side,
+            //and we'll run changes against the EffectsGateway
             _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
 
         }
 
 
+
         public void SituationExtinct()
         {
+            IElementStacksGateway storedStacksGateway = GetSituationStacksGateway();
+            
+            //retrieve everything with slots
+            allStacksGateway.AcceptStacks(storedStacksGateway.GetStacks().Where(stack=>stack.HasChildSlots()));
+            //find what other stacks we need to retrieve
+            AspectMatchFilter filter = situation.GetRetrievalFilter();
+            //retrieve them
+            IEnumerable<IElementStack> stacksToRetrieve = filter.FilterElementStacks(storedStacksGateway.GetStacks());
+            allStacksGateway.AcceptStacks(stacksToRetrieve);
+
+            //everything else is consumed
+            storedStacksGateway.ConsumeAllStacks();
+
             SetTimerVisibility(false);
             situation = null;
+
             detailsWindow.PopulateAndShow(this);
         }
 
