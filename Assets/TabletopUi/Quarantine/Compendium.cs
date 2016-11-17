@@ -13,7 +13,7 @@ public interface ICompendium
     void UpdateRecipes(List<Recipe> allRecipes);
     void UpdateElements(Dictionary<string, Element> elements);
     void UpdateVerbs(Dictionary<string, Verb> verbs);
-    Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb);
+    Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects,string verb);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
     Element GetElementById(string elementId);
@@ -52,7 +52,7 @@ public class Compendium : ICompendium
     }
 
 
-    public Recipe GetFirstRecipeForAspectsWithVerb(Dictionary<string, int> aspects,string verb)
+    public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects,string verb)
     {
         //for each recipe,
         foreach (var recipe in _recipes.Where(r=>r.ActionId==verb && r.Craftable))

@@ -193,9 +193,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        private Dictionary<string, int> GetAspectsFromSlottedCards()
+        private IDictionary<string, int> GetAspectsFromSlottedCards()
         {
-            Dictionary <string, int> currentAspects = GetStacksGatewayForSlots().GetTotalAspects();
+            IDictionary <string, int> currentAspects = GetStacksGatewayForSlots().GetTotalAspects();
             return currentAspects;
         }
 

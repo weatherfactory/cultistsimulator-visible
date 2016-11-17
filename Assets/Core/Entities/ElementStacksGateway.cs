@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 
@@ -18,8 +19,8 @@ public interface IElementStacksGateway
 
     int IncreaseElement(string elementId, int quantityChange);
     int GetCurrentElementQuantity(string elementId);
-    Dictionary<string,int> GetCurrentElementTotals();
-    Dictionary<string,int> GetTotalAspects();
+    IDictionary<string,int> GetCurrentElementTotals();
+    IDictionary<string,int> GetTotalAspects();
     IEnumerable<IElementStack> GetStacks();
     void AcceptElementStack(IElementStack stack);
     void AcceptStacks(IEnumerable<IElementStack> stacks);
@@ -74,7 +75,7 @@ public class ElementStacksGateway : IElementStacksGateway
             return wrapper.GetStacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
     }
 
-    public Dictionary<string,int> GetCurrentElementTotals()
+    public IDictionary<string,int> GetCurrentElementTotals()
     {
         var totals = wrapper.GetStacks().GroupBy(c => c.ElementId)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
@@ -83,9 +84,9 @@ public class ElementStacksGateway : IElementStacksGateway
         return totals;
     }
 
-    public Dictionary<string,int> GetTotalAspects()
+    public IDictionary<string,int> GetTotalAspects()
     {
-        var totals=new Dictionary<string,int>();
+        IDictionary<string,int> totals=new AspectsDictionary();
 
         foreach (var elementCard in wrapper.GetStacks())
         {

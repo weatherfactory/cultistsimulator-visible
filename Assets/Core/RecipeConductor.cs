@@ -80,6 +80,9 @@ namespace Assets.Core
 
         private bool candidateRecipeRequirementsAreSatisfied(Recipe candidateRecipe)
         {
+            IDictionary<string, int> aspectsAvailable = stacksToConsider.GetTotalAspects();
+
+
             //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
             foreach (var req in candidateRecipe.Requirements)
             {
