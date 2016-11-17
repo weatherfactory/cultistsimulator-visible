@@ -48,11 +48,11 @@ namespace Assets.TabletopUi.Scripts.Services
                 situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
                 situationToken.SetVerb(verbs[i]);
                 situationToken.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
-                var situationWindow=PrefabFactory.CreateSituationWindowWithSubscribers(windowLevel);
+                var situationWindow=PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
                 situationWindow.transform.position = situationToken.transform.position;
                 situationWindow.gameObject.SetActive(false);
                 situationToken.detailsWindow = situationWindow;
-                situationWindow.linkedBox = situationToken;
+                situationWindow.linkedToken = situationToken;
             }
 
 

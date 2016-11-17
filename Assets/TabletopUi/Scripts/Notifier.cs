@@ -14,9 +14,6 @@ namespace Assets.CS.TabletopUI
         private Transform windowHolderFixed;
         [SerializeField]
         private Transform notificationHolder;
-        [SerializeField]
-        private int maxNumElementWindows;
-
 
         public void ShowNotificationWindow(string title, string description)
         {

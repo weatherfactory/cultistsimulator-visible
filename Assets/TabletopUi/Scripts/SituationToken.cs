@@ -4,6 +4,7 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class SituationToken : DraggableToken {
+    public class SituationToken : DraggableToken,ISituationSubscriber{
 
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text; // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
@@ -38,6 +39,7 @@ namespace Assets.CS.TabletopUI
         public void BeginSituation(Recipe r)
         {
             situation=new Situation(r);
+            situation.Subscribe(this);
             SetTimerVisibility(true);
         }
 
@@ -60,33 +62,34 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void ContinueSituation(float interval)
+        public void ExecuteHeartbeat(float interval)
         {
             if (situation != null)
             {
                 SituationState currentState = situation.Continue(interval);
-                if (currentState == SituationState.Ongoing)
-                { 
-                    SetTimerVisibility(true);
-                    DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
-                }
-                else if(currentState==SituationState.Complete)
-                { 
-                    SetTimerVisibility(false);
-                    IEffectCommand ec = situation.GetEffectCommand();
-                    //er.... do I definitely want to do this? I guess a situation is kinda part of a verbbox, but in the cold light of day this looks like it needs refactoring 
-                    _subscribers.ForEach(s=>s.TokenEffectCommandSent(this,ec));
-                }
-                else if (currentState == SituationState.Extinct)
-                {
-                    RecipeConductor rc=new RecipeConductor(Registry.Compendium);
-                    situation.TryBeginNextRecipe(rc);
-                    if(detailsWindow!=null)
-                        detailsWindow.PopulateAndShow(this);
-                }
             }
         }
 
+        public void SituationContinues()
+        {
+            SetTimerVisibility(true);
+            DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
+        }
+
+        public void SituationCompletes(IEffectCommand command)
+        {
+            //er.... do I definitely want to do this? in the cold light of day this looks like it needs refactoring 
+            _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium);
+            situation.TryBeginRecipe(rc);
+        }
+
+        public void SituationExtinct()
+        {
+            SetTimerVisibility(false);
+            situation = null;
+            detailsWindow.PopulateAndShow(this);
+        }
 
         public void SetVerb(string id) {
             var verb = Registry.Compendium.GetVerbById(id);

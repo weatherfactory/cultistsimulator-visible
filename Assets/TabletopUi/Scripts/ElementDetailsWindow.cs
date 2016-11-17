@@ -8,7 +8,6 @@ namespace Assets.CS.TabletopUI
     public class ElementDetailsWindow : MonoBehaviour {
 
         [SerializeField] CanvasGroup canvasGroup;
-        [SerializeField] Transform cardHolder;
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;

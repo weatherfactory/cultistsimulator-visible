@@ -24,12 +24,10 @@ namespace Assets.CS.TabletopUI
         [SerializeField]  Transform slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
-        private Situation situation;
 
-        private List<ISituationWindowSubscriber> subscribers=new List<ISituationWindowSubscriber>();
         private RecipeSlot primarySlot;
 
-       public SituationToken linkedBox;
+       public SituationToken linkedToken;
 
         void OnEnable () {
             button.onClick.AddListener(HandleOnButtonClicked);
@@ -40,7 +38,7 @@ namespace Assets.CS.TabletopUI
 
 
         public void PopulateAndShow(SituationToken situationToken) {
-            linkedBox = situationToken;
+            linkedToken = situationToken;
             situationToken.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
             // Instead we should lock positions in some other way?
             // Window subscribes to verb/element, and when it's position is changed window updates its own?
@@ -48,7 +46,7 @@ namespace Assets.CS.TabletopUI
             situationToken.transform.localRotation = Quaternion.identity;
 
             //linkedBox.SetSelected(true);
-            linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
+            linkedToken.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
                                             // could also track the open windows in tabletop manager instead and check there.
 
             canvasGroupFader.SetAlpha(0f);
@@ -71,7 +69,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public SituationToken GetVerbBox() {
-            return linkedBox;
+            return linkedToken;
         }
 
         public void ArrangeSlots()
@@ -223,13 +221,11 @@ namespace Assets.CS.TabletopUI
         void HandleOnButtonClicked()
         {
             var aspects = GetAspectsFromSlottedCards();
-            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedBox.verbId);
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.verbId);
 
-            linkedBox.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
+            linkedToken.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
 
-            linkedBox.BeginSituation(recipe);
-            subscribers.ForEach(s => s.SituationBegins(linkedBox));
-            
+            linkedToken.BeginSituation(recipe);
 
         }
 
@@ -284,7 +280,7 @@ namespace Assets.CS.TabletopUI
         private void DisplayRecipeForCurrentAspects()
         {
             var currentAspects = GetAspectsFromSlottedCards();
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, linkedBox.verbId);
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, linkedToken.verbId);
             DisplayRecipe(r);
         }
 
@@ -296,12 +292,6 @@ namespace Assets.CS.TabletopUI
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {
            //currently nothing; tokens are automatically returned home
-        }
-
-        public void Subscribe(ISituationWindowSubscriber subscriber)
-        {
-            if(!subscribers.Contains((subscriber)))
-                subscribers.Add(subscriber);
         }
     }
 }

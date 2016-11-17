@@ -17,7 +17,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject selectedMarker;
         private Element _element;
         private int _quantity;
-        private bool _locked = false;
 
         public string ElementId { get {
             return _element==null ? null : _element.Id;

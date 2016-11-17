@@ -10,12 +10,11 @@ using UnityEngine;
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour,ITokenSubscriber,ISituationWindowSubscriber{
+    public class TabletopManager : MonoBehaviour,ITokenSubscriber{
 
         [Header("Existing Objects")]
         [SerializeField] Transform tableLevel;
         [SerializeField] Transform windowLevel;
-        [SerializeField] Notifier notifier;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
         [SerializeField] Heart heart;
@@ -184,16 +183,6 @@ namespace Assets.CS.TabletopUI
 
 
         #endregion
-
-        public void SituationBegins(SituationToken box)
-        {
-            HideSituationWindow(box, false);
-        }
-
-        public void SituationUpdated(SituationToken box)
-        {
-            Debug.Log("Situation continues");
-        }
 
     }
 

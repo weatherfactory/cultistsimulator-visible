@@ -35,25 +35,28 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void SituationMovesFromCompleteToExtinct_WhenContinuingAtComplete()
-        {
-            Situation s = new Situation(r1);
-            s.Continue(1); //ongoing
-            s.Continue(1); //completes
-            Assert.AreEqual(SituationState.Extinct, s.Continue(1)); //now extinct
-            Assert.AreEqual(SituationState.Extinct, s.State);
-        }
-
-        [Test]
-        public void Situation_ObeysRecipeConductor_TryBeginNextRecipe()
+        public void Situation_BeginsLoopRecipe_WhenRecipeConductorSpecifiesLoopRecipe()
         {
             Situation s=new Situation(r1);
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();
             rc.GetNextRecipe(null).ReturnsForAnyArgs(r2);
             s.Continue(1); //ongoing
             s.Continue(1); //completes
-            s.TryBeginNextRecipe(rc);
+            s.TryBeginRecipe(rc);
             Assert.AreEqual(r2.Id,s.RecipeId);
+            Assert.AreEqual(SituationState.Ongoing,s.State);
+        }
+
+        [Test]
+        public void Situation_GoesExtinct_WhenRecipeConductorSpecifiesNoLoopRecipe()
+        {
+            Situation s = new Situation(r1);
+            IRecipeConductor rc = Substitute.For<IRecipeConductor>();
+            s.Continue(1); //ongoing
+            s.Continue(1); //completes
+            s.TryBeginRecipe(rc);
+            Assert.AreEqual(null, s.RecipeId);
+            Assert.AreEqual(SituationState.Extinct, s.State);
         }
 
     }

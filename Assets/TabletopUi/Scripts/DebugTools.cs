@@ -9,7 +9,6 @@ public class DebugTools : MonoBehaviour
 {
     [SerializeField] private TabletopManager tabletopManager;
     [SerializeField] private Heart heart;
-    [SerializeField] private Transform cardHolder;
     [SerializeField] private InputField adjustElementNamed;
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
