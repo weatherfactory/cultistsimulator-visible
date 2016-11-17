@@ -11,8 +11,9 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     {
 
         void SituationContinues();
-        void SituationCompletes(IEffectCommand effectCommand);
+        void SituationExecutingRecipe(IEffectCommand effectCommand);
         void SituationExtinct();
+
 
     }
 }

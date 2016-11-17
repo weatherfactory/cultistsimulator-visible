@@ -53,7 +53,7 @@ namespace Assets.CS.TabletopUI
         public string GetDescription()
         {
             return situation == null ? _verb.Description :
-        situation.GetDescription();
+          situation.GetDescription();
         }
 
         private void SetTimerVisibility(bool b)
@@ -77,16 +77,19 @@ namespace Assets.CS.TabletopUI
             DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
         }
 
-        public void SituationCompletes(IEffectCommand command)
+        public void SituationExecutingRecipe(IEffectCommand command)
         {
             //er.... do I definitely want to do this? in the cold light of day this looks like it needs refactoring
             //but this holding the allstacksgateway - the other obvious route? is also smelly
             //is there another way I can get it into the recipeconductor?
             //should the stacksgateways be the things with subscribers?
+            //current thinking: defer actual recipe execution to another object, which will inform everyone who needs to know.
+            //issue (for both current and proposed solution): effects can run on the situation, or on the general gateway.
+            //solution: the gateway executes recipes? we have it here anyway, and that sounds about right
             _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, allStacksGateway.GetTotalAspects(), Registry.Dice);
-            situation.TryFindRecipeToRunAfterCompletion(rc);
+
         }
+
 
         public void SituationExtinct()
         {

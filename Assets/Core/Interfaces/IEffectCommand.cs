@@ -11,6 +11,7 @@ namespace Assets.Core.Interfaces
         string Title { get; set; }
         string Description { get; set; }
         Dictionary<string, int> ElementChanges { get; set; }
+        Recipe Recipe { get; set; }
     }
 
 }

@@ -12,6 +12,7 @@ namespace Assets.Core
         public string Title { get; set; }
         public string Description { get; set; }
         public Dictionary<string, int> ElementChanges { get; set; }
+        public Recipe Recipe { get; set; }
 
 
         public EffectCommand(Dictionary<string, int> elementChanges)
@@ -22,6 +23,13 @@ namespace Assets.Core
             Description = "default message";
         }
 
+        public EffectCommand(Recipe recipe)
+        {
+            Recipe = recipe;
+            ElementChanges = recipe.Effects;
+            Title = "default title";
+            Description = recipe.Description;
+        }
 
     }
 }

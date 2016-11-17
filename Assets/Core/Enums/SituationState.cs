@@ -5,5 +5,5 @@ using System.Text;
 
 
 
-public enum SituationState {Unstarted, Fresh, Ongoing, Complete,Extinct }
+public enum SituationState {Unstarted, Ending, Ongoing, RequiringExecution,Extinct }
 
