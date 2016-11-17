@@ -82,7 +82,7 @@ namespace Assets.CS.TabletopUI
                     RecipeConductor rc=new RecipeConductor(Registry.Compendium);
                     situation.TryBeginNextRecipe(rc);
                     if(detailsWindow!=null)
-                        detailsWindow.PopulateForVerb(this);
+                        detailsWindow.PopulateAndShow(this);
                 }
             }
         }
@@ -146,9 +146,8 @@ namespace Assets.CS.TabletopUI
         public void Open()
         {
             detailsWindow.transform.position = transform.position;
-            detailsWindow.PopulateForVerb(this);
+            detailsWindow.PopulateAndShow(this);
             elementsInSituation.SetActive(true);
-            detailsWindow.gameObject.SetActive(true);
             IsOpen = true;
         }
 
@@ -156,13 +155,13 @@ namespace Assets.CS.TabletopUI
         public void Close()
         {
             elementsInSituation.SetActive(false);
+            detailsWindow.Hide();
             IsOpen = false;
         }
 
         public void StoreElementStacks(IEnumerable<IElementStack> stacks)
         {
             var containerGateway = GetStacksGateway();
-  
             containerGateway.AcceptStacks(stacks);
         }
     }

@@ -39,7 +39,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void PopulateForVerb(SituationToken situationToken) {
+        public void PopulateAndShow(SituationToken situationToken) {
             linkedBox = situationToken;
             situationToken.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
             // Instead we should lock positions in some other way?
@@ -138,7 +138,6 @@ namespace Assets.CS.TabletopUI
 
         public void Hide()
         {
-            linkedBox.Close();
             canvasGroupFader.Hide();
         }
 

@@ -75,26 +75,19 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        void HideSituationWindow(SituationToken box, bool keepCards) {
-            if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != box.gameObject)
-                PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
+        void HideSituationWindow(SituationToken situationToken, bool keepCards) {
+            if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
+                PutTokenOnTable(situationToken.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
             // Going through cards in slots
-            var heldCards = box.detailsWindow.GetComponentsInChildren<ElementStack>();
+            var heldCards = situationToken.detailsWindow.GetComponentsInChildren<ElementStack>();
 
             foreach (var item in heldCards) {
                 if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
                     PutTokenOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
             }
-
-            situationWindows.Remove(box.detailsWindow);
-            box.detailsWindow.Hide();
+            situationToken.Close();
         }
-
-
-        public int maxNumSituationWindows = 1;
-        public int maxNumElementWindows = 1;
-        List<SituationWindow> situationWindows = new List<SituationWindow>();
 
 
 
@@ -162,7 +155,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {
             PutTokenOnTable(draggableToken.RectTransform);
@@ -171,31 +163,6 @@ namespace Assets.CS.TabletopUI
         #endregion
 
         #region -- INTERACTION ----------------------------------------------------
-
-        // This checks if we're dragging something and if we have to do some changes
-        // Currently this closes the windows when dragging is being done
-        // This was in the windows previously, but since i'm not holding a reference to 
-        // all open windows here it had to move up.
-        void OnChangeDragState (bool isDragging) {
-            if (isDragging == false || DraggableToken.itemBeingDragged.gameObject == null) 
-                return;
-
-            ElementStack stack = DraggableToken.itemBeingDragged.GetComponent<ElementStack>();
-
-            if (stack != null) {
-                notifier.ShowElementDetails(stack);			
-                return;
-            }
-
-            SituationToken box = DraggableToken.itemBeingDragged.GetComponent<SituationToken>();
-
-            if (box != null) {
-                if (box.detailsWindow != null)
-                    HideSituationWindow(box, true);
-                else
-                    return;			
-            }
-        }
 
         void HandleOnBackgroundDropped() {
             // NOTE: This puts items back on the background. We need this in more cases. Should be a method
