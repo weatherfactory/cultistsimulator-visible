@@ -37,7 +37,10 @@ namespace Assets.CS.TabletopUI
 
            tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel,GetStacksOnTabletopGateway());
             tabletopObjectBuilder.PopulateTabletop();
-            
+            Recipe sustenance = Registry.Compendium.GetRecipeById("starvation");
+          var sustenanceToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe(sustenance);
+            ArrangeTokenOnTable(sustenanceToken);
+
         }
 
         public void ModifyElementQuantity(string elementId, int change)
@@ -85,14 +88,14 @@ namespace Assets.CS.TabletopUI
 
         void HideSituationWindow(SituationToken situationToken, bool keepCards) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
-                PutTokenOnTable(situationToken.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
+                PutOnTable(situationToken.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
             // Going through cards in slots
             var heldCards = situationToken.detailsWindow.GetComponentsInChildren<ElementStack>();
 
             foreach (var item in heldCards) {
                 if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
-                    PutTokenOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
+                    PutOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
             }
             situationToken.Close();
         }
@@ -101,8 +104,14 @@ namespace Assets.CS.TabletopUI
 
         #endregion
 
+        public void ArrangeTokenOnTable(DraggableToken token)
+        {
+            ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
+            token.transform.localPosition=new Vector3(-500,-250);
+            PutOnTable(token.RectTransform);
+        }
 
-        public void PutTokenOnTable(RectTransform rectTransform) {
+        public void PutOnTable(RectTransform rectTransform) {
             if (rectTransform == null)
                 return;
 
@@ -165,7 +174,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {
-            PutTokenOnTable(draggableToken.RectTransform);
+            PutOnTable(draggableToken.RectTransform);
         }
 
         #endregion
@@ -179,7 +188,7 @@ namespace Assets.CS.TabletopUI
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
-                PutTokenOnTable(DraggableToken.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
+                PutOnTable(DraggableToken.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
             }
         }
 

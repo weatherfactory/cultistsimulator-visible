@@ -22,7 +22,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
         [SerializeField] private ElementStacksGateway allStacksGateway;
-        private Verb _verb;
+        private IVerb _verb;
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
         public bool IsOpen = false;
@@ -85,6 +85,7 @@ namespace Assets.CS.TabletopUI
             //is there another way I can get it into the recipeconductor?
             //should the stacksgateways be the things with subscribers?
             //solution: the gateway executes recipes? 
+            //*ah* but some alternativerecipes will want to run on a different verb (also some have warmups)
             _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
 
         }
@@ -97,7 +98,7 @@ namespace Assets.CS.TabletopUI
             detailsWindow.PopulateAndShow(this);
         }
 
-        public void Initialise(Verb verb, ElementStacksGateway allStacksGateway) {
+        public void Initialise(IVerb verb, ElementStacksGateway allStacksGateway) {
             _verb = verb;
             name = "Verb_" + VerbId;
 
@@ -111,11 +112,11 @@ namespace Assets.CS.TabletopUI
         }
         
 
-        private void DisplayName(Verb v) {
+        private void DisplayName(IVerb v) {
             text.text = v.Label;
         }
 
-        private void DisplayIcon(Verb v) {
+        private void DisplayIcon(IVerb v) {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
             artwork.sprite = sprite;
         }

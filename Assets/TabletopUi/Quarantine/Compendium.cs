@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using Assets.Core.Interfaces;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
 
@@ -12,14 +13,14 @@ public interface ICompendium
 {
     void UpdateRecipes(List<Recipe> allRecipes);
     void UpdateElements(Dictionary<string, Element> elements);
-    void UpdateVerbs(Dictionary<string, Verb> verbs);
+    void UpdateVerbs(Dictionary<string, IVerb> verbs);
     Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects,string verb);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
     Element GetElementById(string elementId);
     Boolean IsKnownElement(string elementId);
-    List<Verb> GetAllVerbs();
-    Verb GetVerbById(string verbId);
+    List<IVerb> GetAllVerbs();
+    IVerb GetVerbById(string verbId);
 }
 
 public class Compendium : ICompendium
@@ -27,7 +28,7 @@ public class Compendium : ICompendium
     private List<Recipe> _recipes;
     private readonly IDice _dice;
     private Dictionary<string, Element> _elements;
-    private Dictionary<string, Verb> _verbs;
+    private Dictionary<string, IVerb> _verbs;
 
 
     public Compendium()
@@ -46,7 +47,7 @@ public class Compendium : ICompendium
         _elements = elements;
     }
 
-    public void UpdateVerbs(Dictionary<string, Verb> verbs)
+    public void UpdateVerbs(Dictionary<string, IVerb> verbs)
     {
         _verbs = verbs;
     }
@@ -97,11 +98,11 @@ public class Compendium : ICompendium
     }
 
 
-    public List<Verb> GetAllVerbs()
+    public List<IVerb> GetAllVerbs()
     {
-        List<Verb> verbsList = new List<Verb>();
+        List<IVerb> verbsList = new List<IVerb>();
 
-        foreach (KeyValuePair<string, Verb> keyValuePair in _verbs)
+        foreach (KeyValuePair<string, IVerb> keyValuePair in _verbs)
         {
             verbsList.Add(keyValuePair.Value);
         }
@@ -109,10 +110,10 @@ public class Compendium : ICompendium
         return verbsList;
     }
 
-    public Verb GetVerbById(string verbId)
+    public IVerb GetVerbById(string verbId)
     {
         if (!_verbs.ContainsKey(verbId))
-            throw new ApplicationException("Couldn't find verb id " + verbId);
+            return null;
 
         return _verbs[verbId];
     }

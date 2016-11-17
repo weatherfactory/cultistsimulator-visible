@@ -95,13 +95,7 @@ namespace Assets.Core.Entities
             foreach (var s in subscribers)
                 s.SituationContinues();
         }
-        //the problem: we want to fire the recipe as soon as we're done.
-        //but we also want to wait to be supplied with information on what to execute.
-        //The situation is a state machine that Does Things, so it should Execute Whatever when it executes
-        //we should pass the recipe conductor with continue, to give it the information it needs to make that decision
-        //it will then execute all the alternative recipes (but keep the original recipe)
-        //this means Continue while Ending replaces our TryGetNextRecipe in tests
-        //and we can set the state now!
+
         private void RequireExecution(IRecipeConductor rc)
         {
             State = SituationState.RequiringExecution;

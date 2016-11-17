@@ -3,6 +3,7 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Interfaces;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine.Assertions;
@@ -19,7 +20,7 @@ public class ContentImporter
     private const string CONST_DESCRIPTION = "description";
 
 
-    public Dictionary<string,Verb> Verbs=new Dictionary<string, Verb>();
+    public Dictionary<string,IVerb> Verbs=new Dictionary<string, IVerb>();
     public Dictionary<string, Element> Elements=new Dictionary<string, Element>();
     public List<Recipe> Recipes=new List<Recipe>();
 

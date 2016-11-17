@@ -93,6 +93,7 @@
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
     <Compile Include="Assets\Core\Entities\Situation.cs" />
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
+    <Compile Include="Assets\Core\Entities\TransientVerb.cs" />
     <Compile Include="Assets\Core\Entities\Verb.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStacksWrapper.cs" />
     <Compile Include="Assets\Core\Interfaces\INotification.cs" />
+    <Compile Include="Assets\Core\Interfaces\IVerb.cs" />
     <Compile Include="Assets\Core\RecipeConductor.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />

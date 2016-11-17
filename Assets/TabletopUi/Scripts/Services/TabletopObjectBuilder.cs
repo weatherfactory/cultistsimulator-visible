@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
@@ -36,8 +38,8 @@ namespace Assets.TabletopUi.Scripts.Services
             SituationToken situationToken;
             ElementStack stack;
 
-            float boxWidth = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
-            float boxHeight = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
+            float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
+            float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
             float cardWidth = (PrefabFactory.GetPrefab<ElementStack>().transform as RectTransform).rect.width + 20f;
 
 
@@ -48,13 +50,9 @@ namespace Assets.TabletopUi.Scripts.Services
             {
                 situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
                 situationToken.Initialise(verbs[i], allStacksGateway);
-                situationToken.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
+                situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
 
-                var situationWindow=PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
-                situationWindow.transform.position = situationToken.transform.position;
-                situationWindow.gameObject.SetActive(false);
-                situationToken.detailsWindow = situationWindow;
-                situationWindow.linkedToken = situationToken;
+                buildSituationWindowForSituationToken(situationToken);
             }
 
 
@@ -62,11 +60,36 @@ namespace Assets.TabletopUi.Scripts.Services
             {
                 stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tableLevel);
                 stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
-                stack.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
+                stack.transform.localPosition = new Vector3(-750f + i * cardWidth, 0f);
             }
         }
 
+        public SituationToken BuildNewTokenRunningRecipe(Recipe recipe)
+        {
+            var situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
 
+              IVerb v = Registry.Compendium.GetVerbById(recipe.ActionId);
+
+            if (v==null)
+                v=new TransientVerb(recipe.ActionId,recipe.Label,recipe.Description);
+
+            situationToken.Initialise(v, allStacksGateway);
+            buildSituationWindowForSituationToken(situationToken);
+
+            situationToken.BeginSituation(recipe);
+
+            return situationToken;
+        }
+
+        private SituationWindow buildSituationWindowForSituationToken(SituationToken situationToken)
+        {
+            var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
+            situationWindow.transform.position = situationToken.transform.position;
+            situationWindow.gameObject.SetActive(false);
+            situationToken.detailsWindow = situationWindow;
+            situationWindow.linkedToken = situationToken;
+            return situationWindow;
+        }
 
     }
 }

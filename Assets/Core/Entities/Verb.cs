@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Interfaces;
+
 
 /// <summary>
 /// just a bundle of properties
 /// </summary>
-    public class Verb
-    {
+    public class Verb : IVerb
+{
         private string _id;
         private string _label;
         private string _description;
