@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 
 /// <summary>
 /// This is mostly a bundle of properties, but the Do method is core logic! - it's where element countss are actually changed
@@ -39,24 +40,38 @@ using System.Text;
         ChildSlotSpecifications=new List<ChildSlotSpecification>();
         }
 
-        public void Do(IElementsContainer container)
-        {
-        foreach(var e in Effects)
-            container.ModifyElementQuantity(e.Key,e.Value);
-        if(Ending!=null)
-            container.TriggerSpecialEvent(Ending);
-        }
 
         public bool PersistsIngredients()
         {
             return PersistsIngredientsWith.Count > 0;
         }
 
+    public bool RequirementsSatisfiedBy(IAspectsDictionary aspects)
+    {
+        //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
+        foreach (var req in Requirements)
+        {
+            if (req.Value == -1) //req -1 means there must be none of the element
+            {
+                if (aspects.AspectValue(req.Key)> 0)
+                    return false;
+            }
+            else if (!(aspects.AspectValue(req.Key) >= req.Value))
+            {
+                //req >0 means there must be >=req of the element
+                return false;
+            }
+        }
+        return true;
+    }
+
     public bool RetrievesContents()
     {
         return RetrievesContentsWith.Count > 0;
     }
     }
+
+
 
 public class RecipeAlternative
 {

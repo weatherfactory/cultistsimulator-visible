@@ -84,7 +84,7 @@ namespace Assets.CS.TabletopUI
             //is there another way I can get it into the recipeconductor?
             //should the stacksgateways be the things with subscribers?
             _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, allStacksGateway, Registry.Dice);
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, allStacksGateway.GetTotalAspects(), Registry.Dice);
             situation.TryFindRecipeToRunAfterCompletion(rc);
         }
 

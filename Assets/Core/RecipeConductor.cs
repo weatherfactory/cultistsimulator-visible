@@ -27,13 +27,13 @@ namespace Assets.Core
     public class RecipeConductor : IRecipeConductor
     {
         private ICompendium compendium;
-        private IElementStacksGateway stacksToConsider;
+        private IAspectsDictionary aspectsToConsider;
         private IDice dice;
 
-        public RecipeConductor(ICompendium c,IElementStacksGateway g,IDice d)
+        public RecipeConductor(ICompendium c,IAspectsDictionary a,IDice d)
         {
             compendium = c;
-            stacksToConsider = g;
+            aspectsToConsider = a;
             dice = d;
         }
 
@@ -60,7 +60,8 @@ namespace Assets.Core
                 if (diceResult <= ar.Chance)
                 {
                     Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
-                    if (candidateRecipeRequirementsAreSatisfied(candidateRecipe))
+                    if(candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                    //if (candidateRecipeRequirementsAreSatisfied(candidateRecipe))
                     {
                         if (ar.Additional)
                             actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
@@ -78,26 +79,26 @@ namespace Assets.Core
         }
 
 
-        private bool candidateRecipeRequirementsAreSatisfied(Recipe candidateRecipe)
-        {
-            IDictionary<string, int> aspectsAvailable = stacksToConsider.GetTotalAspects();
+    //    private bool candidateRecipeRequirementsAreSatisfied(Recipe candidateRecipe)
+    //    {
+    //        IDictionary<string, int> aspectsAvailable = stacksToConsider.GetTotalAspects();
 
 
-            //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
-            foreach (var req in candidateRecipe.Requirements)
-            {
-                if (req.Value == -1) //req -1 means there must be none of the element
-                {
-                    if (stacksToConsider.GetCurrentElementQuantity(req.Key) > 0)
-                        return false;
-                }
-                else if (!(stacksToConsider.GetCurrentElementQuantity(req.Key) >= req.Value))
-                {
-                    //req >0 means there must be >=req of the element
-                    return false;
-                }
-            }
-            return true;
-        }
+    //        //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
+    //        foreach (var req in candidateRecipe.Requirements)
+    //        {
+    //            if (req.Value == -1) //req -1 means there must be none of the element
+    //            {
+    //                if (stacksToConsider.GetCurrentElementQuantity(req.Key) > 0)
+    //                    return false;
+    //            }
+    //            else if (!(stacksToConsider.GetCurrentElementQuantity(req.Key) >= req.Value))
+    //            {
+    //                //req >0 means there must be >=req of the element
+    //                return false;
+    //            }
+    //        }
+    //        return true;
+    //    }
     }
 }

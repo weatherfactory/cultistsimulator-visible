@@ -13,7 +13,7 @@ namespace Assets.Editor.Tests
     public class RecipeConductorTests
     {
         private ICompendium compendium;
-        private IElementStacksGateway stacksGateway;
+        private IAspectsDictionary aspectsAvailable;
         private IDice mockDice;
         private Recipe primaryRecipe;
         private Recipe secondaryRecipe;
@@ -58,7 +58,7 @@ namespace Assets.Editor.Tests
             compendium = new Compendium();
             compendium.UpdateRecipes(allRecipes);
             mockDice = Substitute.For<IDice>();
-            stacksGateway = Substitute.For<IElementStacksGateway>();
+            aspectsAvailable = Substitute.For<IAspectsDictionary>();
         }
         [Test]
         public void RecipeConductor_SuppliesLoopRecipeToCompletedSituation()
@@ -76,7 +76,7 @@ namespace Assets.Editor.Tests
         {
             mockDice.Rolld100().Returns(recipeAlternative.Chance);
 
-     rc = new RecipeConductor(compendium, stacksGateway, mockDice);
+     rc = new RecipeConductor(compendium, null, mockDice);
             IEnumerable<Recipe> recipesToExecute = rc.GetActualRecipesToExecute(primaryRecipe);
 
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);
