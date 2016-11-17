@@ -221,11 +221,12 @@ namespace Assets.CS.TabletopUI
         void HandleOnButtonClicked()
         {
             var aspects = GetAspectsFromSlottedCards();
-            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.verbId);
-
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
+            if(recipe!=null)
+            { 
             linkedToken.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
-
             linkedToken.BeginSituation(recipe);
+            }
 
         }
 
@@ -280,7 +281,7 @@ namespace Assets.CS.TabletopUI
         private void DisplayRecipeForCurrentAspects()
         {
             var currentAspects = GetAspectsFromSlottedCards();
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, linkedToken.verbId);
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, linkedToken.VerbId);
             DisplayRecipe(r);
         }
 

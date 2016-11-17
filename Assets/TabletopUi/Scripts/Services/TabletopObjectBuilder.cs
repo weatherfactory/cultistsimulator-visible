@@ -12,6 +12,7 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         private Transform tableLevel;
         private Transform windowLevel;
+        private ElementStacksGateway allStacksGateway;
         string[] legalElementIDs = new string[7] {
             "health",
             "reason",
@@ -22,11 +23,11 @@ namespace Assets.TabletopUi.Scripts.Services
             "shilling"
         };
 
-        public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel)
+        public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel,ElementStacksGateway allStacksGateway)
         {
             this.tableLevel = tableLevel;
             this.windowLevel = windowLevel;
-
+            this.allStacksGateway = allStacksGateway;
         }
 
        public void PopulateTabletop()
@@ -46,8 +47,9 @@ namespace Assets.TabletopUi.Scripts.Services
             for (int i = 0; i < verbs.Count; i++)
             {
                 situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
-                situationToken.SetVerb(verbs[i]);
+                situationToken.Initialise(verbs[i], allStacksGateway);
                 situationToken.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
+
                 var situationWindow=PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
                 situationWindow.transform.position = situationToken.transform.position;
                 situationWindow.gameObject.SetActive(false);

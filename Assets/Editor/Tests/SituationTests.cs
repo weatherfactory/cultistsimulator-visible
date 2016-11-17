@@ -39,10 +39,10 @@ namespace Assets.Editor.Tests
         {
             Situation s=new Situation(r1);
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();
-            rc.GetNextRecipe(null).ReturnsForAnyArgs(r2);
+            rc.GetNextRecipes(null).ReturnsForAnyArgs(new List<Recipe> {r2});
             s.Continue(1); //ongoing
             s.Continue(1); //completes
-            s.TryBeginRecipe(rc);
+            s.TryFindRecipeToRunAfterCompletion(rc);
             Assert.AreEqual(r2.Id,s.RecipeId);
             Assert.AreEqual(SituationState.Ongoing,s.State);
         }
@@ -54,7 +54,7 @@ namespace Assets.Editor.Tests
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();
             s.Continue(1); //ongoing
             s.Continue(1); //completes
-            s.TryBeginRecipe(rc);
+            s.TryFindRecipeToRunAfterCompletion(rc);
             Assert.AreEqual(null, s.RecipeId);
             Assert.AreEqual(SituationState.Extinct, s.State);
         }

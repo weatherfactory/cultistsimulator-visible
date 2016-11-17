@@ -34,11 +34,11 @@ namespace Assets.Core.Entities
             State = SituationState.Ongoing;
         }
 
-        public void TryBeginRecipe(IRecipeConductor rc)
+        public void TryFindRecipeToRunAfterCompletion(IRecipeConductor rc)
         {
-            Recipe nextRecipe = rc.GetNextRecipe(recipe);
-            if (nextRecipe != null)
-                beginRecipe(nextRecipe);
+            var nextRecipes = rc.GetNextRecipes(recipe);
+            if (nextRecipes.Any())
+                beginRecipe(nextRecipes.Single());
             else
                 Extinct();
         }

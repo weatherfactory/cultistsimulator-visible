@@ -20,19 +20,6 @@ public interface ICompendium
     Boolean IsKnownElement(string elementId);
     List<Verb> GetAllVerbs();
     Verb GetVerbById(string verbId);
-
-    /// <summary>
-    ///Determines whether the original recipe, an alternative, or something else should actually be run.
-    /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
-    /// Alternatives which match, but which specify additional are run after the original recipe.
-    /// There may be multiple additional alternatives.
-    /// However, if an alternative ever does *not* specify additional, it replaces the entire list (although it may have alternatives of its own)
-    /// Alternatives are recursive, and may have additionals of their own.
-    /// A non-additional alternative always takes precedence over everything earlier; if a recursive alternative has additionals of its own, they'll replace everything earlier in the execution sequence.
-    /// </summary>
-
-    /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
-    List<Recipe> GetActualRecipesToExecute(Recipe recipe, IElementsContainer elementsContainer);
 }
 
 public class Compendium : ICompendium
@@ -43,9 +30,9 @@ public class Compendium : ICompendium
     private Dictionary<string, Verb> _verbs;
 
 
-    public Compendium(IDice dice)
+    public Compendium()
     {
-        _dice = dice;
+
     }
 
     public void UpdateRecipes(List<Recipe> allRecipes)
@@ -130,63 +117,5 @@ public class Compendium : ICompendium
         return _verbs[verbId];
     }
 
-    /// <summary>
-    ///Determines whether the original recipe, an alternative, or something else should actually be run.
-    /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
-    /// Alternatives which match, but which specify additional are run after the original recipe.
-    /// There may be multiple additional alternatives.
-    /// However, if an alternative ever does *not* specify additional, it replaces the entire list (although it may have alternatives of its own)
-    /// Alternatives are recursive, and may have additionals of their own.
-    /// A non-additional alternative always takes precedence over everything earlier; if a recursive alternative has additionals of its own, they'll replace everything earlier in the execution sequence.
-    /// </summary>
-
-    /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
-    public List<Recipe> GetActualRecipesToExecute(Recipe recipe, IElementsContainer elementsContainer)
-    {
-        List<Recipe> actualRecipesToExecute=new List<Recipe>() { recipe }; ;
-        if (recipe.AlternativeRecipes.Count == 0)
-            return actualRecipesToExecute;
-
-
-        foreach (var ar in recipe.AlternativeRecipes)
-        {
-            int diceResult = _dice.Rolld100();
-            if (diceResult<= ar.Chance)
-            {
-                Recipe candidateRecipe = GetRecipeById(ar.Id);
-                if(candidateRecipeRequirementsAreSatisfied(candidateRecipe,elementsContainer))
-                { 
-                    if(ar.Additional)
-                        actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
-                    else
-                    { List<Recipe> recursiveRange=GetActualRecipesToExecute(candidateRecipe,elementsContainer);//check if this recipe has any substitutes in turn, and then
-
-                        return recursiveRange;//this recipe, or its furtheralternatives, supersedes everything else! return it.
-                    }
-                }
-            }
-        }
-
-        return actualRecipesToExecute; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
-    }
-
-
-    private bool candidateRecipeRequirementsAreSatisfied(Recipe candidateRecipe, IElementsContainer elementsContainer)
-    {
-        //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
-        foreach (var req in candidateRecipe.Requirements)
-        {
-            if (req.Value == -1) //req -1 means there must be none of the element
-            {
-                if (elementsContainer.GetCurrentElementQuantity(req.Key) > 0)
-                    return false;
-            }
-            else if (!(elementsContainer.GetCurrentElementQuantity(req.Key) >= req.Value))
-            { 
-                //req >0 means there must be >=req of the element
-                return false;
-            }
-        }
-        return true;
-    }
+  
 }

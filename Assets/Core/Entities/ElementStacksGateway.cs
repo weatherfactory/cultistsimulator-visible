@@ -6,7 +6,26 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 
 
-public class ElementStacksGateway
+public interface IElementStacksGateway
+{
+    /// <summary>
+    /// Reduces matching stacks until change is satisfied
+    /// </summary>
+    /// <param name="elementId"></param>
+    /// <param name="quantityChange">must be negative</param>
+    /// <returns>returns any unsatisfied change remaining</returns>
+    int ReduceElement(string elementId, int quantityChange);
+
+    int IncreaseElement(string elementId, int quantityChange);
+    int GetCurrentElementQuantity(string elementId);
+    Dictionary<string,int> GetCurrentElementTotals();
+    Dictionary<string,int> GetTotalAspects();
+    IEnumerable<IElementStack> GetStacks();
+    void AcceptElementStack(IElementStack stack);
+    void AcceptStacks(IEnumerable<IElementStack> stacks);
+}
+
+public class ElementStacksGateway : IElementStacksGateway
 {
     private IElementStacksWrapper wrapper;
     

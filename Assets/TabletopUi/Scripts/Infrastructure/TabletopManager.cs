@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Interfaces;
@@ -34,7 +35,7 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-           tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel);
+           tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel,GetStacksOnTabletopGateway());
             tabletopObjectBuilder.PopulateTabletop();
             
         }
@@ -52,6 +53,14 @@ namespace Assets.CS.TabletopUI
                 else
                     esg.ReduceElement(elementId, change);
             }
+        }
+
+        private ElementStacksGateway GetStacksOnTabletopGateway()
+        {
+            //NOTE: ultimately this should have an option to aggregate all stacks everywhere EXCEPT in situations
+            //but INCLUDING stacks not added when this is created
+            IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStacksWrapper(tableLevel);
+            return new ElementStacksGateway(tabletopStacksWrapper);
         }
 
 

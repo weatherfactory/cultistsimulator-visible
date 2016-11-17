@@ -21,13 +21,14 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
+        [SerializeField] private ElementStacksGateway allStacksGateway;
         private Verb _verb;
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
         public bool IsOpen = false;
 
         [HideInInspector] public SituationWindow detailsWindow;
-        public string verbId { get {
+        public string VerbId { get {
             return _verb == null ? null : _verb.Id;
         } }
 
@@ -78,10 +79,13 @@ namespace Assets.CS.TabletopUI
 
         public void SituationCompletes(IEffectCommand command)
         {
-            //er.... do I definitely want to do this? in the cold light of day this looks like it needs refactoring 
+            //er.... do I definitely want to do this? in the cold light of day this looks like it needs refactoring
+            //but this holding the allstacksgateway - the other obvious route? is also smelly
+            //is there another way I can get it into the recipeconductor?
+            //should the stacksgateways be the things with subscribers?
             _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium);
-            situation.TryBeginRecipe(rc);
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, allStacksGateway, Registry.Dice);
+            situation.TryFindRecipeToRunAfterCompletion(rc);
         }
 
         public void SituationExtinct()
@@ -91,27 +95,19 @@ namespace Assets.CS.TabletopUI
             detailsWindow.PopulateAndShow(this);
         }
 
-        public void SetVerb(string id) {
-            var verb = Registry.Compendium.GetVerbById(id);
-
-            if (verb != null)
-                SetVerb(verb);
-        }
-
-        public void SetVerb(Verb verb)
-        {
+        public void Initialise(Verb verb, ElementStacksGateway allStacksGateway) {
             _verb = verb;
-            name = "Verb_" + verbId;
-
-            if (verb == null)
-                return;
+            name = "Verb_" + VerbId;
 
             DisplayName(verb);
             DisplayIcon(verb);
             SetSelected(false);
             countdownBar.gameObject.SetActive(false);
             countdownText.gameObject.SetActive(false);
+
+            this.allStacksGateway = allStacksGateway;
         }
+        
 
         private void DisplayName(Verb v) {
             text.text = v.Label;
@@ -138,7 +134,7 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public ElementStacksGateway GetStacksGateway()
+        public ElementStacksGateway GetSituationStacksGateway()
         {
             IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(elementsInSituation.transform);
             ElementStacksGateway verbBoxStacks = new ElementStacksGateway(verbBoxWrapper);
@@ -164,7 +160,7 @@ namespace Assets.CS.TabletopUI
 
         public void StoreElementStacks(IEnumerable<IElementStack> stacks)
         {
-            var containerGateway = GetStacksGateway();
+            var containerGateway = GetSituationStacksGateway();
             containerGateway.AcceptStacks(stacks);
         }
     }
