@@ -10,7 +10,8 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     public class TabletopObjectBuilder
     {
-        private Transform destination;
+        private Transform tableLevel;
+        private Transform windowLevel;
         string[] legalElementIDs = new string[7] {
             "health",
             "reason",
@@ -21,20 +22,21 @@ namespace Assets.TabletopUi.Scripts.Services
             "shilling"
         };
 
-        public TabletopObjectBuilder(Transform tabletop)
+        public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel)
         {
-            destination = tabletop;
+            this.tableLevel = tableLevel;
+            this.windowLevel = windowLevel;
 
         }
 
        public void PopulateTabletop()
         {
 
-            VerbBox box;
+            SituationToken situationToken;
             ElementStack stack;
 
-            float boxWidth = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.width + 20f;
-            float boxHeight = (PrefabFactory.GetPrefab<VerbBox>().transform as RectTransform).rect.height + 50f;
+            float boxWidth = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
+            float boxHeight = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
             float cardWidth = (PrefabFactory.GetPrefab<ElementStack>().transform as RectTransform).rect.width + 20f;
 
 
@@ -43,15 +45,20 @@ namespace Assets.TabletopUi.Scripts.Services
 
             for (int i = 0; i < verbs.Count; i++)
             {
-                box = PrefabFactory.CreateTokenWithSubscribers<VerbBox>(destination);
-                box.SetVerb(verbs[i]);
-                box.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
+                situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
+                situationToken.SetVerb(verbs[i]);
+                situationToken.transform.localPosition = new Vector3(-1000f + i * boxWidth, boxHeight);
+                var situationWindow=PrefabFactory.CreateSituationWindowWithSubscribers(windowLevel);
+                situationWindow.transform.position = situationToken.transform.position;
+                situationWindow.gameObject.SetActive(false);
+                situationToken.detailsWindow = situationWindow;
+                situationWindow.linkedBox = situationToken;
             }
 
 
             for (int i = 0; i < 7; i++)
             {
-                stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(destination);
+                stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tableLevel);
                 stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
                 stack.transform.localPosition = new Vector3(-1000f + i * cardWidth, 0f);
             }

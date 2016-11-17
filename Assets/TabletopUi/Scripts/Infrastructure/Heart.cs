@@ -32,7 +32,7 @@ public class Heart : MonoBehaviour
         //foreach existing active recipe window: run beat there
         //advance timer
         Debug.Log("beat");
-        var verbBoxes = allContent.GetComponentsInChildren<VerbBox>();
+        var verbBoxes = allContent.GetComponentsInChildren<SituationToken>();
         foreach (var v in verbBoxes)
         {
             v.ContinueSituation(interval);

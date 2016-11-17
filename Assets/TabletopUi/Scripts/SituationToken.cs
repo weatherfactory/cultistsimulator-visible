@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class VerbBox : DraggableToken {
+    public class SituationToken : DraggableToken {
 
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text; // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI
         private Verb _verb;
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
-
+        public bool IsOpen = false;
 
         [HideInInspector] public SituationWindow detailsWindow;
         public string verbId { get {
@@ -143,18 +143,20 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void DisplaySituationWindow(SituationWindow window)
+        public void Open()
         {
-            window.transform.position = transform.position;
-            window.PopulateForVerb(this);
+            detailsWindow.transform.position = transform.position;
+            detailsWindow.PopulateForVerb(this);
             elementsInSituation.SetActive(true);
+            detailsWindow.gameObject.SetActive(true);
+            IsOpen = true;
         }
 
 
-        public void HideSituationWindow()
+        public void Close()
         {
-            detailsWindow = null; // this is hacky. We're saving the window in the card so we don't double-open windows.
             elementsInSituation.SetActive(false);
+            IsOpen = false;
         }
 
         public void StoreElementStacks(IEnumerable<IElementStack> stacks)

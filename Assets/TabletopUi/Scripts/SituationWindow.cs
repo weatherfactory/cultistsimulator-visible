@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
         private List<ISituationWindowSubscriber> subscribers=new List<ISituationWindowSubscriber>();
         private RecipeSlot primarySlot;
 
-        VerbBox linkedBox;
+       public SituationToken linkedBox;
 
         void OnEnable () {
             button.onClick.AddListener(HandleOnButtonClicked);
@@ -39,13 +39,13 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void PopulateForVerb(VerbBox verbBox) {
-            linkedBox = verbBox;
-            verbBox.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
+        public void PopulateForVerb(SituationToken situationToken) {
+            linkedBox = situationToken;
+            situationToken.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
             // Instead we should lock positions in some other way?
             // Window subscribes to verb/element, and when it's position is changed window updates its own?
-            verbBox.transform.localPosition = Vector3.zero;
-            verbBox.transform.localRotation = Quaternion.identity;
+            situationToken.transform.localPosition = Vector3.zero;
+            situationToken.transform.localRotation = Quaternion.identity;
 
             //linkedBox.SetSelected(true);
             linkedBox.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
@@ -54,10 +54,10 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
 
-            title.text = verbBox.GetTitle();
-            description.text = verbBox.GetDescription();
+            title.text = situationToken.GetTitle();
+            description.text = situationToken.GetDescription();
 
-            if (verbBox.isBusy)
+            if (situationToken.isBusy)
             {
                 
             }
@@ -70,7 +70,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public VerbBox GetVerbBox() {
+        public SituationToken GetVerbBox() {
             return linkedBox;
         }
 
@@ -138,9 +138,7 @@ namespace Assets.CS.TabletopUI
 
         public void Hide()
         {
-            linkedBox.HideSituationWindow();
-
-            canvasGroupFader.destroyOnHide = true;
+            linkedBox.Close();
             canvasGroupFader.Hide();
         }
 

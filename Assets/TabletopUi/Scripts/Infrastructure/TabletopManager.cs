@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
@@ -12,15 +13,13 @@ namespace Assets.CS.TabletopUI
     public class TabletopManager : MonoBehaviour,ITokenSubscriber,ISituationWindowSubscriber{
 
         [Header("Existing Objects")]
-        [SerializeField] Transform tabletopTransform;
-        [SerializeField] Transform windowParent;
+        [SerializeField] Transform tableLevel;
+        [SerializeField] Transform windowLevel;
         [SerializeField] Notifier notifier;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
         [SerializeField] Heart heart;
         private TabletopObjectBuilder tabletopObjectBuilder;
-
-
 
         [Header("View Settings")]
         [SerializeField] float windowZOffset = -10f;
@@ -36,7 +35,7 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-           tabletopObjectBuilder  = new TabletopObjectBuilder(tabletopTransform);
+           tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel);
             tabletopObjectBuilder.PopulateTabletop();
             
         }
@@ -47,7 +46,7 @@ namespace Assets.CS.TabletopUI
                 Debug.Log("Can't find element with id " + elementId);
             else
             {
-                IElementStacksWrapper wrapper = new TabletopElementStacksWrapper(tabletopTransform);
+                IElementStacksWrapper wrapper = new TabletopElementStacksWrapper(tableLevel);
                 ElementStacksGateway esg = new ElementStacksGateway(wrapper);
                 if (change > 0)
                     esg.IncreaseElement(elementId, change);
@@ -60,19 +59,15 @@ namespace Assets.CS.TabletopUI
 
         #region -- CREATE / REMOVE VIEW OBJECTS ----------------------------------------------------
 
-        void ShowSituationWindow(VerbBox box) {
-         if (maxNumSituationWindows > 0 && situationWindows.Count == maxNumSituationWindows) 
-                HideSituationWindow(situationWindows[0].GetVerbBox(), true);
-
-            PutTokenInAir(box.transform as RectTransform);
-            var window = PrefabFactory.CreateSituationWindowWithSubscribers(windowParent);
-            situationWindows.Add(window);
-            box.DisplaySituationWindow(window);
-
+        void ShowSituationWindow(SituationToken situationToken)
+        {
+            CloseAllSituationWindowsExcept(situationToken);
+            PutTokenInAir(situationToken.transform as RectTransform);
+            situationToken.Open();
    
         }
 
-        void HideSituationWindow(VerbBox box, bool keepCards) {
+        void HideSituationWindow(SituationToken box, bool keepCards) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != box.gameObject)
                 PutTokenOnTable(box.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
@@ -104,7 +99,7 @@ namespace Assets.CS.TabletopUI
             if (rectTransform == null)
                 return;
 
-            rectTransform.SetParent(tabletopTransform); 
+            rectTransform.SetParent(tableLevel); 
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }
@@ -114,7 +109,7 @@ namespace Assets.CS.TabletopUI
             if (rectTransform == null)
                 return;
 
-            rectTransform.SetParent(tabletopTransform); 
+            rectTransform.SetParent(tableLevel); 
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }
@@ -139,7 +134,7 @@ namespace Assets.CS.TabletopUI
             {
                 if(cardPickedUp.Quantity>1)
                 {
-                var cardLeftBehind = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tabletopTransform);
+                var cardLeftBehind = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tableLevel);
                 cardLeftBehind.transform.position = draggableToken.transform.position;
                 cardLeftBehind.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
                 cardPickedUp.SetQuantity(1);
@@ -150,16 +145,22 @@ namespace Assets.CS.TabletopUI
 
         public void TokenInteracted(DraggableToken draggableToken)
         {
-                VerbBox box = draggableToken as VerbBox;
+                SituationToken box = draggableToken as SituationToken;
             if (box != null)
             {
-                if (box.detailsWindow == null)
+                if (!box.IsOpen)
                     ShowSituationWindow(box);
                 else
-                {
                     HideSituationWindow(box, true);
-                }
             }
+
+        }
+
+        private void CloseAllSituationWindowsExcept(SituationToken except)
+        {
+            var situationTokens = windowLevel.GetComponentsInChildren<SituationToken>().Where(sw=>sw!=except);
+            foreach (var situationToken in situationTokens)
+            HideSituationWindow(situationToken,false);
 
         }
 
@@ -187,7 +188,7 @@ namespace Assets.CS.TabletopUI
                 return;
             }
 
-            VerbBox box = DraggableToken.itemBeingDragged.GetComponent<VerbBox>();
+            SituationToken box = DraggableToken.itemBeingDragged.GetComponent<SituationToken>();
 
             if (box != null) {
                 if (box.detailsWindow != null)
@@ -216,12 +217,12 @@ namespace Assets.CS.TabletopUI
 
         #endregion
 
-        public void SituationBegins(VerbBox box)
+        public void SituationBegins(SituationToken box)
         {
             HideSituationWindow(box, false);
         }
 
-        public void SituationUpdated(VerbBox box)
+        public void SituationUpdated(SituationToken box)
         {
             Debug.Log("Situation continues");
         }

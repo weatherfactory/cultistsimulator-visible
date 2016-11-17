@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -137,7 +139,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStacksWrapper.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\VerbBox.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\SituationToken.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />

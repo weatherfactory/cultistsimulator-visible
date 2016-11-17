@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         [Header("Prefabs")]
         public AspectFrame AspectFrame=null;
-        public VerbBox VerbBox = null;
+        public SituationToken SituationToken = null;
         public ElementStack ElementStack = null;
         public SituationWindow SituationWindow = null;
         public ElementDetailsWindow ElementDetailsWindow = null;

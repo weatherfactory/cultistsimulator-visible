@@ -7,8 +7,8 @@ using Assets.CS.TabletopUI;
 
 public interface ISituationWindowSubscriber
     {
-        void SituationBegins(VerbBox box);
-        void SituationUpdated(VerbBox box);
+        void SituationBegins(SituationToken box);
+        void SituationUpdated(SituationToken box);
         void ElementStackRejected(ElementStack stack);
 
     }
