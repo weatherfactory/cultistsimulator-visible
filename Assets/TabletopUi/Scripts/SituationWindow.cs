@@ -24,6 +24,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField]  Transform slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
+        [SerializeField] private TextMeshProUGUI NextRecipe;
 
         private RecipeSlot primarySlot;
 
@@ -36,6 +37,21 @@ namespace Assets.CS.TabletopUI
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
 
+
+        private void DisplayBusy()
+        {
+            button.gameObject.SetActive(false);
+            NextRecipe.gameObject.SetActive(true);
+            ClearAndDestroySlot(primarySlot);
+        }
+
+        private void DisplayReady()
+        {
+            button.gameObject.SetActive(true);
+            NextRecipe.gameObject.SetActive(false);
+            primarySlot = BuildSlot();
+            ArrangeSlots();
+        }
 
         public void PopulateAndShow(SituationToken situationToken) {
             linkedToken = situationToken;
@@ -57,14 +73,12 @@ namespace Assets.CS.TabletopUI
 
             if (situationToken.isBusy)
             {
-                
+                DisplayBusy();
             }
 
                 else
             {
-                primarySlot = BuildSlot();
-                ArrangeSlots();
-
+                DisplayReady();
             }
         }
 
@@ -226,6 +240,7 @@ namespace Assets.CS.TabletopUI
             { 
             linkedToken.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
             linkedToken.BeginSituation(recipe);
+            DisplayBusy();
             }
 
         }
@@ -261,19 +276,18 @@ namespace Assets.CS.TabletopUI
 
         private void ClearAndDestroySlot(RecipeSlot slot)
         {
+            //if there are any child slots on this slot, recurse
             if(slot.childSlots.Count>0)
-            { 
-            List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
-            foreach (var cs in childSlots)
-                ClearAndDestroySlot(cs);
-
-            slot.childSlots.Clear();
+            {
+                List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
+                foreach (var cs in childSlots)
+                    ClearAndDestroySlot(cs);
+                slot.childSlots.Clear();
             }
             ElementStack stackContained = slot.GetElementStackInSlot();
             if(stackContained!=null)
             { 
                 stackContained.ReturnToTabletop(null);
-              //subscribers.ForEach(s=>s.ElementStackRejected(stackContained));
             }
             DestroyObject(slot.gameObject);
         }
