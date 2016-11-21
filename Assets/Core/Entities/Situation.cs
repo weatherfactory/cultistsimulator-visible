@@ -144,17 +144,6 @@ namespace Assets.Core.Entities
                 s.SituationExtinct();
         }
 
-
-
-        private EffectCommand GetEffectCommand()
-        {
-            Assert.AreEqual(SituationState.RequiringExecution,State);
-            
-                EffectCommand ec=new EffectCommand(currentRecipe.Effects);
-                ec.Title = currentRecipe.Label + " complete!";
-                ec.Description = currentRecipe.Description;
-                return ec;
-        }
     }
 
 }

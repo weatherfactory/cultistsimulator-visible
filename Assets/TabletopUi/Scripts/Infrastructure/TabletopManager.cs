@@ -90,7 +90,7 @@ namespace Assets.CS.TabletopUI
                 PutOnTable(situationToken.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
             // Going through cards in slots
-            var heldCards = situationToken.detailsWindow.GetComponentsInChildren<ElementStack>();
+            var heldCards = situationToken.linkedWindow.GetComponentsInChildren<ElementStack>();
 
             foreach (var item in heldCards) {
                 if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
@@ -135,10 +135,11 @@ namespace Assets.CS.TabletopUI
 
         public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
-            foreach (var kvp in effectCommand.GetElementChanges())
-            {
-                ModifyElementQuantity(kvp.Key,kvp.Value);
-            }
+            //disabled while we try affecting only local elements in a situation
+            //foreach (var kvp in effectCommand.GetElementChanges())
+            //{
+            //    ModifyElementQuantity(kvp.Key,kvp.Value);
+            //}
         }
 
         public void TokenPickedUp(DraggableToken draggableToken)

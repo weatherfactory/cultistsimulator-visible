@@ -88,7 +88,7 @@ namespace Assets.TabletopUi.Scripts.Services
             var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
             situationWindow.transform.position = situationToken.transform.position;
             situationWindow.gameObject.SetActive(false);
-            situationToken.detailsWindow = situationWindow;
+            situationToken.linkedWindow = situationWindow;
             situationWindow.linkedToken = situationToken;
             return situationWindow;
         }

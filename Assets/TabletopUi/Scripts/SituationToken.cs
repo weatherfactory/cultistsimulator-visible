@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -28,14 +30,21 @@ namespace Assets.CS.TabletopUI
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
         public bool IsOpen = false;
+        private IList<INotification> queuedNotifications=new List<INotification>();
 
-        [HideInInspector] public SituationWindow detailsWindow;
+        [HideInInspector] public SituationWindow linkedWindow;
         public string VerbId { get {
             return _verb == null ? null : _verb.Id;
         } }
 
+        /// <summary>
+        /// should return number of executions waiting; 0 if it's currently running a situation, -1 if it's not currently running anything
+        /// </summary>
+        public bool IsBusy
+        {
+            get { return situation != null; }
+        }
 
-        public bool isBusy { get { return situation != null; } }
         private float timeRemaining = 0f;
         private int numCompletions = 0; // Stands for the amount of completed cycles.
 
@@ -58,6 +67,13 @@ namespace Assets.CS.TabletopUI
           situation.GetDescription();
         }
 
+        public IList<INotification> FlushNotifications()
+        {
+            List<INotification> flushed=new List<INotification>();
+            flushed.AddRange(queuedNotifications);
+            queuedNotifications.Clear();
+            return flushed;
+        }
 
         public string GetNextRecipeDescription()
         {
@@ -89,11 +105,12 @@ namespace Assets.CS.TabletopUI
 
         public void SituationExecutingRecipe(IEffectCommand command)
         {
-            //apply changes *internally*
             foreach (var kvp in command.GetElementChanges())
             {
                 GetSituationStacksGateway().ModifyElementQuantity(kvp.Key,kvp.Value);
             }
+            queuedNotifications.Add(new Notification (command.Title,command.Description));
+
           //  _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
 
         }
@@ -107,7 +124,7 @@ namespace Assets.CS.TabletopUI
             //currently just retrieving everything
             var stacksToRetrieve = storedStacksGateway.GetStacks();
 
-            GetWindowStacksGateway().AcceptStacks(stacksToRetrieve);
+            linkedWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
 
             //retrieve everything with slots
             //GetWindowStacksGateway().AcceptStacks(storedStacksGateway.GetStacks().Where(stack=>stack.HasChildSlots()));
@@ -123,7 +140,7 @@ namespace Assets.CS.TabletopUI
             SetTimerVisibility(false);
             situation = null;
 
-            detailsWindow.PopulateAndShow(this);
+         //   detailsWindow.PopulateAndShow(this);
         }
 
         public void Initialise(IVerb verb, ElementStacksGateway allStacksGateway) {
@@ -170,17 +187,12 @@ namespace Assets.CS.TabletopUI
             ElementStacksGateway g = new ElementStacksGateway(w);
             return g;
         }
-        public ElementStacksGateway GetWindowStacksGateway()
-        {
-            IElementStacksWrapper w = new TabletopElementStacksWrapper(detailsWindow.GetSlotsHolder());
-            ElementStacksGateway g = new ElementStacksGateway(w);
-            return g;
-        }
+
 
         public void Open()
         {
-            detailsWindow.transform.position = transform.position;
-            detailsWindow.PopulateAndShow(this);
+            linkedWindow.transform.position = transform.position;
+            linkedWindow.PopulateAndShow(this);
             elementsInSituation.SetActive(true);
             IsOpen = true;
         }
@@ -189,7 +201,7 @@ namespace Assets.CS.TabletopUI
         public void Close()
         {
             elementsInSituation.SetActive(false);
-            detailsWindow.Hide();
+            linkedWindow.Hide();
             IsOpen = false;
         }
 
@@ -199,4 +211,6 @@ namespace Assets.CS.TabletopUI
             containerGateway.AcceptStacks(stacks);
         }
     }
+
+
 }

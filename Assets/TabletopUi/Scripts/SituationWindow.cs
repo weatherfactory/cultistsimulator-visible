@@ -22,11 +22,12 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] Transform slotsHolder;
+        [SerializeField]Transform outputHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
 
-        private RecipeSlot primarySlot;
+       private RecipeSlot primarySlot;
 
        public SituationToken linkedToken;
 
@@ -37,11 +38,6 @@ namespace Assets.CS.TabletopUI
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
 
-        public Transform GetSlotsHolder()
-        {
-            //wrapper so we can change without coupling
-            return slotsHolder;
-        }
 
         private void DisplayBusy()
         {
@@ -57,6 +53,7 @@ namespace Assets.CS.TabletopUI
             NextRecipe.gameObject.SetActive(false);
             primarySlot = BuildSlot();
             ArrangeSlots();
+            DisplayRecipe(null);
         }
 
         public void PopulateAndShow(SituationToken situationToken) {
@@ -68,7 +65,7 @@ namespace Assets.CS.TabletopUI
             situationToken.transform.localRotation = Quaternion.identity;
 
             //linkedBox.SetSelected(true);
-            linkedToken.detailsWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
+            linkedToken.linkedWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
                                             // could also track the open windows in tabletop manager instead and check there.
 
             canvasGroupFader.SetAlpha(0f);
@@ -77,20 +74,14 @@ namespace Assets.CS.TabletopUI
             title.text = situationToken.GetTitle();
             description.text = situationToken.GetDescription();
 
-            if (situationToken.isBusy)
-            {
+            if (situationToken.IsBusy)
+            
                 DisplayBusy();
-            }
-
-                else
-            {
+            else
                 DisplayReady();
-            }
+
         }
 
-        public SituationToken GetVerbBox() {
-            return linkedToken;
-        }
 
         public void ArrangeSlots()
         {
@@ -161,9 +152,7 @@ namespace Assets.CS.TabletopUI
 
 
         void HandleOnSlotDroppedOn(RecipeSlot slot) {
-
-            Debug.Log("Recipe Slot dropped on");
-
+            
             ElementStack stack=DraggableToken.itemBeingDragged as ElementStack;
             if(stack!=null)
             {
@@ -171,7 +160,7 @@ namespace Assets.CS.TabletopUI
                 if (match.MatchType == SlotMatchForAspectsType.Okay)
                     StackInSlot(slot, stack);
                 else
-                    stack.ReturnToTabletop(new Notification {Title = "I can't put that there - ",Description = match.GetProblemDescription() });
+                    stack.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
 
             }
         }
@@ -219,9 +208,15 @@ namespace Assets.CS.TabletopUI
             return currentAspects;
         }
 
-        private ElementStacksGateway GetStacksGatewayForSlots()
+
+        public ElementStacksGateway GetStacksGatewayForSlots()
         {
             return new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder));
+        }
+
+        public ElementStacksGateway GetStacksGatewayForOutput()
+        {
+            return new ElementStacksGateway(new TabletopElementStacksWrapper(outputHolder,this));
         }
 
         private void DisplayRecipe(Recipe r)
@@ -243,7 +238,11 @@ namespace Assets.CS.TabletopUI
             var aspects = GetAspectsFromSlottedCards();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
             if(recipe!=null)
-            { 
+            {
+                var slottedStacks = GetStacksGatewayForSlots().GetStacks();
+                foreach(ElementStack s in slottedStacks)
+                    s.Unsubscribe(this);
+
             linkedToken.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
             linkedToken.BeginSituation(recipe);
             DisplayBusy();
@@ -258,11 +257,23 @@ namespace Assets.CS.TabletopUI
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {
+            
+            var stacks = GetStacksGatewayForOutput().GetStacks();
+            //picking up a token from a completed window; some left
+            if (stacks.Any())
+                return;
+            //if picking up a token from a completed window; none left
+            else if (!stacks.Any() & primarySlot==null)
+                DisplayReady();
+            else
+            { 
+            //if picking up a token from an open window
             DisplayRecipeForCurrentAspects();
             draggableToken.Unsubscribe(this);
-
             RemoveAnyChildSlotsWithEmptyParent();  
             ArrangeSlots();
+            }
+
         }
 
         private void RemoveAnyChildSlotsWithEmptyParent()

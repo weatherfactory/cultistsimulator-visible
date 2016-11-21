@@ -17,6 +17,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject selectedMarker;
         private Element _element;
         private int _quantity;
+        private IElementStacksWrapper currentWrapper;
 
         public string ElementId { get {
             return _element==null ? null : _element.Id;
@@ -112,7 +113,6 @@ namespace Assets.CS.TabletopUI
                 droppedCard.SetQuantity(0);
             }
         }
-
 
 
 
