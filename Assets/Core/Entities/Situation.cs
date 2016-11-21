@@ -50,7 +50,6 @@ namespace Assets.Core.Entities
         }
 
 
-
         public string GetTitle()
         {
             return currentRecipe==null ?  "no recipe just now" :
@@ -90,7 +89,16 @@ namespace Assets.Core.Entities
 
             }
             return State;
+        }
 
+        public string GetPrediction(IRecipeConductor rc)
+        {
+            IList<Recipe> recipes= rc.GetActualRecipesToExecute(currentRecipe);
+            string desc = "";
+            foreach (var r in recipes)
+                desc = desc + r.Label + " (" + r.Description + "); ";
+
+            return "Next: " + desc;
 
         }
 
@@ -115,8 +123,6 @@ namespace Assets.Core.Entities
                     s.SituationExecutingRecipe(new EffectCommand(r));
                 }
             }
-
-                
         }
 
         private void End(IRecipeConductor rc)

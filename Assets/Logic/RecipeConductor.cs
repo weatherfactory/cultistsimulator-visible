@@ -78,27 +78,5 @@ namespace Assets.Core
             return actualRecipesToExecute; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
         }
 
-
-    //    private bool candidateRecipeRequirementsAreSatisfied(Recipe candidateRecipe)
-    //    {
-    //        IDictionary<string, int> aspectsAvailable = stacksToConsider.GetTotalAspects();
-
-
-    //        //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
-    //        foreach (var req in candidateRecipe.Requirements)
-    //        {
-    //            if (req.Value == -1) //req -1 means there must be none of the element
-    //            {
-    //                if (stacksToConsider.GetCurrentElementQuantity(req.Key) > 0)
-    //                    return false;
-    //            }
-    //            else if (!(stacksToConsider.GetCurrentElementQuantity(req.Key) >= req.Value))
-    //            {
-    //                //req >0 means there must be >=req of the element
-    //                return false;
-    //            }
-    //        }
-    //        return true;
-    //    }
     }
 }

@@ -25,6 +25,7 @@ public interface IElementStacksGateway
     void AcceptStack(IElementStack stack);
     void AcceptStacks(IEnumerable<IElementStack> stacks);
     void ConsumeAllStacks();
+    void ModifyElementQuantity(string elementId, int quantityChange);
 }
 
 public class ElementStacksGateway : IElementStacksGateway
@@ -35,6 +36,15 @@ public class ElementStacksGateway : IElementStacksGateway
     {
         wrapper = w;
     }
+
+    public void ModifyElementQuantity(string elementId, int quantityChange)
+    {
+        if (quantityChange > 0)
+            IncreaseElement(elementId, quantityChange);
+        else
+            ReduceElement(elementId, quantityChange);
+    }
+
     /// <summary>
     /// Reduces matching stacks until change is satisfied
     /// </summary>

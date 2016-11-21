@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
-        [SerializeField]  Transform slotsHolder;
+        [SerializeField] Transform slotsHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
@@ -37,12 +37,18 @@ namespace Assets.CS.TabletopUI
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
 
+        public Transform GetSlotsHolder()
+        {
+            //wrapper so we can change without coupling
+            return slotsHolder;
+        }
 
         private void DisplayBusy()
         {
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
             ClearAndDestroySlot(primarySlot);
+            NextRecipe.text = linkedToken.GetNextRecipeDescription();
         }
 
         private void DisplayReady()
@@ -247,7 +253,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
         {
-            //nothing yet, though we will want to once we get into container situations
+            //nothing yet: this may be redundant
         }
 
         public void TokenPickedUp(DraggableToken draggableToken)
@@ -276,6 +282,8 @@ namespace Assets.CS.TabletopUI
 
         private void ClearAndDestroySlot(RecipeSlot slot)
         {
+            if (slot == null)
+                return;
             //if there are any child slots on this slot, recurse
             if(slot.childSlots.Count>0)
             {

@@ -24,7 +24,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
-        [SerializeField] private ElementStacksGateway allStacksGateway;
         private IVerb _verb;
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
@@ -59,6 +58,13 @@ namespace Assets.CS.TabletopUI
           situation.GetDescription();
         }
 
+
+        public string GetNextRecipeDescription()
+        {
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, GetSituationStacksGateway().GetTotalAspects(), new Dice());
+            return situation.GetPrediction(rc);
+        }
+
         private void SetTimerVisibility(bool b)
         {
             countdownBar.gameObject.SetActive(b);
@@ -70,7 +76,7 @@ namespace Assets.CS.TabletopUI
         {
             if (situation != null)
             {
-                RecipeConductor rc=new RecipeConductor(Registry.Compendium,allStacksGateway.GetTotalAspects(),new Dice());
+                RecipeConductor rc=new RecipeConductor(Registry.Compendium,GetSituationStacksGateway().GetTotalAspects(),new Dice());
                situation.Continue(rc, interval);
             }
         }
@@ -83,9 +89,12 @@ namespace Assets.CS.TabletopUI
 
         public void SituationExecutingRecipe(IEffectCommand command)
         {
-            //THIS WILL CHANGE - ultimately we'll want that note popping out the side,
-            //and we'll run changes against the EffectsGateway
-            _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
+            //apply changes *internally*
+            foreach (var kvp in command.GetElementChanges())
+            {
+                GetSituationStacksGateway().ModifyElementQuantity(kvp.Key,kvp.Value);
+            }
+          //  _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
 
         }
 
@@ -94,17 +103,22 @@ namespace Assets.CS.TabletopUI
         public void SituationExtinct()
         {
             IElementStacksGateway storedStacksGateway = GetSituationStacksGateway();
-            
+
+            //currently just retrieving everything
+            var stacksToRetrieve = storedStacksGateway.GetStacks();
+
+            GetWindowStacksGateway().AcceptStacks(stacksToRetrieve);
+
             //retrieve everything with slots
-            allStacksGateway.AcceptStacks(storedStacksGateway.GetStacks().Where(stack=>stack.HasChildSlots()));
+            //GetWindowStacksGateway().AcceptStacks(storedStacksGateway.GetStacks().Where(stack=>stack.HasChildSlots()));
             //find what other stacks we need to retrieve
-            AspectMatchFilter filter = situation.GetRetrievalFilter();
+            //AspectMatchFilter filter = situation.GetRetrievalFilter();
             //retrieve them
-            IEnumerable<IElementStack> stacksToRetrieve = filter.FilterElementStacks(storedStacksGateway.GetStacks());
-            allStacksGateway.AcceptStacks(stacksToRetrieve);
+            // IEnumerable<IElementStack> stacksToRetrieve = filter.FilterElementStacks(storedStacksGateway.GetStacks());
+            //    GetWindowStacksGateway().AcceptStacks(stacksToRetrieve);
 
             //everything else is consumed
-            storedStacksGateway.ConsumeAllStacks();
+            //  storedStacksGateway.ConsumeAllStacks();
 
             SetTimerVisibility(false);
             situation = null;
@@ -122,7 +136,6 @@ namespace Assets.CS.TabletopUI
             countdownBar.gameObject.SetActive(false);
             countdownText.gameObject.SetActive(false);
 
-            this.allStacksGateway = allStacksGateway;
         }
         
 
@@ -153,11 +166,16 @@ namespace Assets.CS.TabletopUI
 
         public ElementStacksGateway GetSituationStacksGateway()
         {
-            IElementStacksWrapper verbBoxWrapper = new TabletopElementStacksWrapper(elementsInSituation.transform);
-            ElementStacksGateway verbBoxStacks = new ElementStacksGateway(verbBoxWrapper);
-            return verbBoxStacks;
+            IElementStacksWrapper w = new TabletopElementStacksWrapper(elementsInSituation.transform);
+            ElementStacksGateway g = new ElementStacksGateway(w);
+            return g;
         }
-
+        public ElementStacksGateway GetWindowStacksGateway()
+        {
+            IElementStacksWrapper w = new TabletopElementStacksWrapper(detailsWindow.GetSlotsHolder());
+            ElementStacksGateway g = new ElementStacksGateway(w);
+            return g;
+        }
 
         public void Open()
         {
