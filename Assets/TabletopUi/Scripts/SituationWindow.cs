@@ -57,16 +57,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void PopulateAndShow(SituationToken situationToken) {
-            linkedToken = situationToken;
-            situationToken.transform.SetParent(cardHolder); // We probably shouldn't reparent here, this makes things a bit iffy. 
-            // Instead we should lock positions in some other way?
-            // Window subscribes to verb/element, and when it's position is changed window updates its own?
-            situationToken.transform.localPosition = Vector3.zero;
-            situationToken.transform.localRotation = Quaternion.identity;
 
-            //linkedBox.SetSelected(true);
-            linkedToken.linkedWindow = this; // this is a bit hacky. We're saving the window in the card so we don't double-open windows.
-                                            // could also track the open windows in tabletop manager instead and check there.
 
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();

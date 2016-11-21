@@ -35,7 +35,7 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-           tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel,GetStacksOnTabletopGateway());
+           tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel);
             tabletopObjectBuilder.PopulateTabletop();
             var needsToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
             ArrangeTokenOnTable(needsToken);
@@ -124,7 +124,7 @@ namespace Assets.CS.TabletopUI
             if (rectTransform == null)
                 return;
 
-            rectTransform.SetParent(tableLevel); 
+            rectTransform.SetParent(windowLevel); 
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }

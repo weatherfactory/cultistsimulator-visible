@@ -26,6 +26,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
+        [SerializeField] private SlotsContainer slotsInSituation;
+        
         private IVerb _verb;
         private Situation situation;
         public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
@@ -53,6 +55,8 @@ namespace Assets.CS.TabletopUI
             situation=new Situation(r);
             situation.Subscribe(this);
             SetTimerVisibility(true);
+            slotsInSituation.InitialiseSlotsForRecipe(r);
+
         }
 
         public string GetTitle()
@@ -126,24 +130,11 @@ namespace Assets.CS.TabletopUI
 
             linkedWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
 
-            //retrieve everything with slots
-            //GetWindowStacksGateway().AcceptStacks(storedStacksGateway.GetStacks().Where(stack=>stack.HasChildSlots()));
-            //find what other stacks we need to retrieve
-            //AspectMatchFilter filter = situation.GetRetrievalFilter();
-            //retrieve them
-            // IEnumerable<IElementStack> stacksToRetrieve = filter.FilterElementStacks(storedStacksGateway.GetStacks());
-            //    GetWindowStacksGateway().AcceptStacks(stacksToRetrieve);
-
-            //everything else is consumed
-            //  storedStacksGateway.ConsumeAllStacks();
-
             SetTimerVisibility(false);
             situation = null;
-
-         //   detailsWindow.PopulateAndShow(this);
         }
 
-        public void Initialise(IVerb verb, ElementStacksGateway allStacksGateway) {
+        public void Initialise(IVerb verb) {
             _verb = verb;
             name = "Verb_" + VerbId;
 

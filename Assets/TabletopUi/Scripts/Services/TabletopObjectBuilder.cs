@@ -14,7 +14,6 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         private Transform tableLevel;
         private Transform windowLevel;
-        private ElementStacksGateway allStacksGateway;
         string[] legalElementIDs = new string[7] {
             "health",
             "reason",
@@ -25,11 +24,10 @@ namespace Assets.TabletopUi.Scripts.Services
             "shilling"
         };
 
-        public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel,ElementStacksGateway allStacksGateway)
+        public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel)
         {
             this.tableLevel = tableLevel;
             this.windowLevel = windowLevel;
-            this.allStacksGateway = allStacksGateway;
         }
 
        public void PopulateTabletop()
@@ -49,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Services
             for (int i = 0; i < verbs.Count; i++)
             {
                 situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
-                situationToken.Initialise(verbs[i], allStacksGateway);
+                situationToken.Initialise(verbs[i]);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
 
                 buildSituationWindowForSituationToken(situationToken);
@@ -75,7 +73,7 @@ namespace Assets.TabletopUi.Scripts.Services
             if (v==null)
                 v=new TransientVerb(recipe.ActionId,recipe.Label,recipe.Description);
 
-            situationToken.Initialise(v, allStacksGateway);
+            situationToken.Initialise(v);
             buildSituationWindowForSituationToken(situationToken);
 
             situationToken.BeginSituation(recipe);
@@ -86,7 +84,11 @@ namespace Assets.TabletopUi.Scripts.Services
         private SituationWindow buildSituationWindowForSituationToken(SituationToken situationToken)
         {
             var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
-            situationWindow.transform.position = situationToken.transform.position;
+            situationWindow.transform.parent = situationToken.transform;
+            var tokenPosition = situationToken.transform.position;
+            tokenPosition.x = tokenPosition.x + 100;
+
+            situationWindow.transform.position = tokenPosition;
             situationWindow.gameObject.SetActive(false);
             situationToken.linkedWindow = situationWindow;
             situationWindow.linkedToken = situationToken;
