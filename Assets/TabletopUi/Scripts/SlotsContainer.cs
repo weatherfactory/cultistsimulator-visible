@@ -21,13 +21,19 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
     {
         //clear any slots which don't exist in this recipe
 
+        var childSlotsToBuild = s.GetChildSlots();
+        if (childSlotsToBuild.Any())
+        {
+            gameObject.SetActive(true);
         foreach (ChildSlotSpecification css in s.GetChildSlots())
             BuildSlot(css.Label, css);
+        }
 
     }
 
     public void InitialiseSlotsForEmptySituation()
     {
+        gameObject.SetActive(true);
         primarySlot = BuildSlot();
         ArrangeSlots(primarySlot);
     }

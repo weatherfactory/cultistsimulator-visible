@@ -44,14 +44,13 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
-slotsHolder.gameObject.SetActive(false);
+            slotsHolder.gameObject.SetActive(false);
             NextRecipe.text = linkedToken.GetNextRecipeDescription();
         }
 
         public void DisplayReady()
         {
             button.gameObject.SetActive(true);
-            slotsHolder.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
             slotsHolder.InitialiseSlotsForEmptySituation();
             DisplayRecipe(null);
