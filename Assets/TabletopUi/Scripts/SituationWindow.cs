@@ -16,7 +16,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindow : MonoBehaviour,ISituationSubscriber {
+    public class SituationWindow : MonoBehaviour {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
@@ -29,10 +29,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
         private SituationController situationController;
-
-
-
-       public SituationToken linkedToken;
 
         void OnEnable () {
             button.onClick.AddListener(HandleOnButtonClicked);
@@ -47,7 +43,7 @@ namespace Assets.CS.TabletopUI
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
             slotsHolder.gameObject.SetActive(false);
-            NextRecipe.text = linkedToken.GetNextRecipeDescription();
+            NextRecipe.text =  situationController.GetNextRecipeDescription();
         }
 
         public void DisplayReady()
@@ -65,11 +61,6 @@ namespace Assets.CS.TabletopUI
 
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
-
-            
-
-            title.text = situationController.situationToken.GetTitle();
-            description.text = situationController.situationToken.GetDescription();
 
             if (situationController.situationToken.IsBusy)
             
@@ -108,43 +99,29 @@ namespace Assets.CS.TabletopUI
         void HandleOnButtonClicked()
         {
             var aspects = slotsHolder.GetAspectsFromSlottedCards();
-            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationController.situationToken.VerbId);
             if(recipe!=null)
             {
 
-            linkedToken.StoreElementStacks(slotsHolder.GetStacksGateway().GetStacks());
-            linkedToken.BeginSituation(recipe);
+                situationController.situationToken.StoreElementStacks(slotsHolder.GetStacksGateway().GetStacks());
+                situationController.BeginSituation(recipe);
             DisplayBusy();
             }
 
         }
         public void DisplayRecipeForAspects(AspectsDictionary aspects)
         {
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationController.situationToken.VerbId);
             DisplayRecipe(r);
         }
 
 
-        public void SituationBeginning(Situation s)
+        public void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription)
         {
-            title.text = s.GetTitle();
-            description.text = s.GetDescription();
-            NextRecipe.text=linkedToken.GetNextRecipeDescription();
+            title.text = stitle;
+            description.text = sdescription;
+            NextRecipe.text = nextRecipeDescription;
         }
 
-        public void SituationContinues(Situation s)
-        {
-     
-        }
-
-        public void SituationExecutingRecipe(IEffectCommand effectCommand)
-        {
-        
-        }
-
-        public void SituationExtinct()
-        {
-      
-        }
     }
 }

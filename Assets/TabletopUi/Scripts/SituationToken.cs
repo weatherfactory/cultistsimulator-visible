@@ -19,7 +19,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class SituationToken : DraggableToken, ISituationSubscriber
+    public class SituationToken : DraggableToken
     {
 
         [SerializeField] Image artwork;
@@ -34,16 +34,15 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private SlotsContainer recipeSlotContainer;
 
         private IVerb _verb;
-        private Situation situation;
         private SituationController situationController;
 
         public SituationState SituationState
         {
-            get { return situation == null ? SituationState.Extinct : situation.State; }
+            get { return situationController.situation == null ? SituationState.Extinct : situationController.situation.State; }
         }
 
         public bool IsOpen = false;
-        private IList<INotification> queuedNotifications = new List<INotification>();
+        public IList<INotification> queuedNotifications = new List<INotification>();
 
         public string VerbId
         {
@@ -55,31 +54,16 @@ namespace Assets.CS.TabletopUI
         /// </summary>
         public bool IsBusy
         {
-            get { return situation != null; }
+            get { return situationController.situation != null; }
         }
 
 
         public void BeginSituation(Recipe r)
         {
-            situation = new Situation(r);
-            situation.Subscribe(this);
-            situation.Subscribe(situationController.linkedWindow);
-
+            situationController.BeginSituation(r);
         }
 
-        public string GetTitle()
-        {
-            return situation == null
-                ? _verb.Label
-                : situation.GetTitle();
-        }
 
-        public string GetDescription()
-        {
-            return situation == null
-                ? _verb.Description
-                : situation.GetDescription();
-        }
 
         public IList<INotification> FlushNotifications()
         {
@@ -89,14 +73,8 @@ namespace Assets.CS.TabletopUI
             return flushed;
         }
 
-        public string GetNextRecipeDescription()
-        {
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, GetSituationStacksGateway().GetTotalAspects(),
-                new Dice());
-            return situation.GetPrediction(rc);
-        }
 
-        private void SetTimerVisibility(bool b)
+        public void SetTimerVisibility(bool b)
         {
             countdownBar.gameObject.SetActive(b);
             countdownText.gameObject.SetActive(b);
@@ -105,50 +83,10 @@ namespace Assets.CS.TabletopUI
 
         public void ExecuteHeartbeat(float interval)
         {
-            if (situation != null)
-            {
-                RecipeConductor rc = new RecipeConductor(Registry.Compendium,
-                    GetSituationStacksGateway().GetTotalAspects(), new Dice());
-                situation.Continue(rc, interval);
-            }
+        situationController.ExecuteHeartbeat(interval);
         }
 
-        public void SituationBeginning(Situation s)
-        {
-            recipeSlotContainer.InitialiseSlotsForActiveSituation(s, situationController);
-            SetTimerVisibility(true);
-            SituationContinues(s);
-        }
-
-        public void SituationContinues(Situation s)
-        {
-            DisplayTimeRemaining(s.Warmup, s.TimeRemaining);
-        }
-
-        public void SituationExecutingRecipe(IEffectCommand command)
-        {
-            foreach (var kvp in command.GetElementChanges())
-            {
-                GetSituationStacksGateway().ModifyElementQuantity(kvp.Key, kvp.Value);
-            }
-            queuedNotifications.Add(new Notification(command.Title, command.Description));
-
-        }
-        
-
-
-    public void SituationExtinct()
-        {
-            IElementStacksGateway storedStacksGateway = GetSituationStacksGateway();
-
-            //currently just retrieving everything
-            var stacksToRetrieve = storedStacksGateway.GetStacks();
-
-            situationController.linkedWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
-
-            SetTimerVisibility(false);
-            situation = null;
-        }
+      
 
         public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
@@ -199,7 +137,7 @@ namespace Assets.CS.TabletopUI
 
         public void Open()
         {
-            situationController.linkedWindow.transform.position = transform.position;
+            situationController.LinkedSituationWindow.transform.position = transform.position;
             situationController.PopulateAndShowWindow();
             elementsInSituation.SetActive(true);
             IsOpen = true;
@@ -209,7 +147,7 @@ namespace Assets.CS.TabletopUI
         public void Close()
         {
             elementsInSituation.SetActive(false);
-            situationController.linkedWindow.Hide();
+            situationController.LinkedSituationWindow.Hide();
             IsOpen = false;
         }
 
@@ -220,7 +158,10 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
+        public void InitialiseSlotContainerForSituation(Situation s)
+        {
+            recipeSlotContainer.InitialiseSlotsForActiveSituation(s, situationController);
+        }
     }
 
 
