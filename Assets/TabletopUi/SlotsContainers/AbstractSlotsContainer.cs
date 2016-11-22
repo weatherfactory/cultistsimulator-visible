@@ -13,39 +13,19 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
-public class SlotsContainer : MonoBehaviour,ITokenSubscriber
+public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenSubscriber
 {
 
-    private SituationController _situationController;
-    private RecipeSlot primarySlot;
-    private bool AllowChildSlots = false;
+    protected SituationController _situationController;
+    protected RecipeSlot primarySlot;
+    
 
-    public void InitialiseSlotsForActiveSituation(Situation s,SituationController sc)
+    public  virtual void Initialise(SituationController sc)
     {
-        AllowChildSlots = false;
-
-        _situationController = sc;
-        var slotsToBuild = s.GetSlots();
-        if (slotsToBuild.Any())
-        {
-            gameObject.SetActive(true);
-        foreach (SlotSpecification css in s.GetSlots())
-            BuildSlot(css.Label, css);
-        }
-
-        
 
     }
 
-    public void InitialiseSlotsForEmptySituation(SituationController sc)
-    {
-        AllowChildSlots = true;
 
-        _situationController = sc;
-        gameObject.SetActive(true);
-        primarySlot = BuildSlot();
-        ArrangeSlots();
-    }
 
     void HandleOnSlotDroppedOn(RecipeSlot slot)
     {
@@ -77,13 +57,13 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
         return slot;
     }
 
-    public void StackInSlot(RecipeSlot slot, ElementStack stack)
+    public virtual void StackInSlot(RecipeSlot slot, ElementStack stack)
     {
         DraggableToken.resetToStartPos = false;
         // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
         PositionStackInSlot(slot, stack);
 
-        _situationController.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
+        _situationController.DisplayRecipeForAllSlottedAspects();
         stack.SetContainer(this);
 
         if (stack.HasChildSlots())
@@ -98,7 +78,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
         return currentAspects;
     }
 
-    private void AddSlotsForStack(ElementStack stack, RecipeSlot slot)
+    protected void AddSlotsForStack(ElementStack stack, RecipeSlot slot)
     {
         foreach (var childSlotSpecification in stack.GetChildSlotSpecifications())
             //add slot to child slots of slot
@@ -106,7 +86,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
     }
 
 
-    private static void PositionStackInSlot(RecipeSlot slot, ElementStack stack)
+    protected static void PositionStackInSlot(RecipeSlot slot, ElementStack stack)
     {
         stack.transform.SetParent(slot.transform);
         stack.transform.localPosition = Vector3.zero;
@@ -118,7 +98,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
         return new ElementStacksGateway(new TabletopElementStacksWrapper(transform));
     }
 
-    private float SlotSpaceNeeded(RecipeSlot forSlot, float slotWidth, float slotSpacing)
+    protected float SlotSpaceNeeded(RecipeSlot forSlot, float slotWidth, float slotSpacing)
     {
         float childSpaceNeeded = 0;
         foreach (RecipeSlot c in forSlot.childSlots)
@@ -129,7 +109,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 
 
 
-    private void AlignSlot(RecipeSlot thisSlot, int index, float parentX, float parentY, float slotWidth, float slotHeight, float slotSpacing)
+    protected void AlignSlot(RecipeSlot thisSlot, int index, float parentX, float parentY, float slotWidth, float slotHeight, float slotSpacing)
     {
         float thisY = parentY - (slotHeight + slotSpacing);
         float spaceNeeded = SlotSpaceNeeded(thisSlot, slotWidth, slotSpacing);
@@ -147,8 +127,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 
     public void ArrangeSlots()
     {
-        if(AllowChildSlots)
-        {
+
             float slotSpacing = 10;
             float slotWidth = ((RectTransform) primarySlot.transform).rect.width;
             float slotHeight = ((RectTransform) primarySlot.transform).rect.height;
@@ -167,10 +146,10 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
                     AlignSlot(s, i, startingX, startingY, slotWidth, slotHeight, slotSpacing);
                 }
             }
-        }
+        
     }
 
-    private void ClearAndDestroySlot(RecipeSlot slot)
+    protected void ClearAndDestroySlot(RecipeSlot slot)
     {
         if (slot == null)
             return;
@@ -190,7 +169,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
         DestroyObject(slot.gameObject);
     }
 
-    private void RemoveAnyChildSlotsWithEmptyParent()
+    protected void RemoveAnyChildSlotsWithEmptyParent()
     {
         List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
         foreach (RecipeSlot s in currentSlots)
@@ -212,9 +191,9 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
     }
 
 
-    public void TokenPickedUp(DraggableToken draggableToken)
+    public virtual void TokenPickedUp(DraggableToken draggableToken)
     {
-        _situationController.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
+        _situationController.DisplayRecipeForAllSlottedAspects();
         draggableToken.SetContainer(null);
         TokenRemovedFromSlot();
     }

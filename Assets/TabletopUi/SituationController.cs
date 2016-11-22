@@ -27,17 +27,30 @@ namespace Assets.TabletopUi
        }
 
 
-
-       public void DisplayCurrentRecipe()
+       public IList<SlotSpecification> GetSlotsForSituation()
        {
+           if (situation != null)
+               return situation.GetSlots();
+           else
+               return null;
+       }
+
+        public void DisplayRecipeForAllSlottedAspects()
+        {
+            AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedCards();
+
+            AspectsDictionary existingAspects = situationToken.GetAspectsInSituation();
+
+            AspectsDictionary additionalAspects = situationToken.GetAspectsInSlots();
+
             AspectsDictionary allAspects=new AspectsDictionary();
-            
-       }
 
-       public void DisplayRecipeForAspects(AspectsDictionary aspects)
-       {
-           situationWindow.DisplayRecipeForAspects(aspects);
-       }
+            allAspects.CombineAspects(startingAspects);
+            allAspects.CombineAspects(existingAspects);
+            allAspects.CombineAspects(additionalAspects);
+
+            situationWindow.DisplayRecipeForVerbAndAspects(allAspects, situationToken.VerbId);
+        }
 
        public void PopulateAndShowWindow()
        {

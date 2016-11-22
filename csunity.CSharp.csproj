@@ -117,7 +117,8 @@
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
     <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationOutputContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\SlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\SlotsContainers\OngoingSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\SlotsContainers\AbstractSlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\Dice.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\IElementsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\ResourcesManager.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStacksWrapper.cs" />
     <Compile Include="Assets\TabletopUi\SituationController.cs" />
+    <Compile Include="Assets\TabletopUi\SlotsContainers\StartingSlotsContainer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />

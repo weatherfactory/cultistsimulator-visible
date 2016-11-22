@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
-        [SerializeField] private SlotsContainer recipeSlotContainer;
+        [SerializeField] private AbstractSlotsContainer recipeSlotContainer;
 
         private IVerb _verb;
         private SituationController situationController;
@@ -127,6 +127,16 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
+        public AspectsDictionary GetAspectsInSituation()
+        {
+            return GetSituationStacksGateway().GetTotalAspects();
+        }
+
+        public AspectsDictionary GetAspectsInSlots()
+        {
+            return recipeSlotContainer.GetAspectsFromSlottedCards();
+        }
+
         public ElementStacksGateway GetSituationStacksGateway()
         {
             IElementStacksWrapper w = new TabletopElementStacksWrapper(elementsInSituation.transform);
@@ -151,7 +161,7 @@ namespace Assets.CS.TabletopUI
             IsOpen = false;
         }
 
-        public void StoreElementStacks(IEnumerable<IElementStack> stacks)
+        public void StoreElementStacksInSituation(IEnumerable<IElementStack> stacks)
         {
             var containerGateway = GetSituationStacksGateway();
             containerGateway.AcceptStacks(stacks);
@@ -160,7 +170,7 @@ namespace Assets.CS.TabletopUI
 
         public void InitialiseSlotContainerForSituation(Situation s)
         {
-            recipeSlotContainer.InitialiseSlotsForActiveSituation(s, situationController);
+            recipeSlotContainer.Initialise(situationController);
         }
     }
 

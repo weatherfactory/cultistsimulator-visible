@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
-        [SerializeField] SlotsContainer slotsHolder;
+        [SerializeField] AbstractSlotsContainer slotsHolder;
         [SerializeField] SituationOutputContainer outputHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
@@ -50,7 +50,7 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
-            slotsHolder.InitialiseSlotsForEmptySituation(situationController);
+            slotsHolder.Initialise(situationController);
             DisplayRecipe(null);
         }
 
@@ -98,20 +98,25 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnButtonClicked()
         {
-            var aspects = slotsHolder.GetAspectsFromSlottedCards();
+            var aspects = GetAspectsFromSlottedCards();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationController.situationToken.VerbId);
             if(recipe!=null)
             {
 
-                situationController.situationToken.StoreElementStacks(slotsHolder.GetStacksGateway().GetStacks());
+                situationController.situationToken.StoreElementStacksInSituation(slotsHolder.GetStacksGateway().GetStacks());
                 situationController.BeginSituation(recipe);
             DisplayBusy();
             }
-
         }
-        public void DisplayRecipeForAspects(AspectsDictionary aspects)
+
+        public AspectsDictionary GetAspectsFromSlottedCards()
         {
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationController.situationToken.VerbId);
+            return slotsHolder.GetAspectsFromSlottedCards();
+        }
+
+        public void DisplayRecipeForVerbAndAspects(AspectsDictionary aspects,string verbId)
+        {
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, verbId);
             DisplayRecipe(r);
         }
 
