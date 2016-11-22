@@ -9,6 +9,7 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.SlotsContainers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
-        [SerializeField] AbstractSlotsContainer slotsHolder;
+        [SerializeField] StartingSlotsContainer startingSlotsContainer;
         [SerializeField] SituationOutputContainer outputHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
@@ -42,15 +43,14 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
-            slotsHolder.gameObject.SetActive(false);
-            NextRecipe.text =  situationController.GetNextRecipeDescription();
+            startingSlotsContainer.gameObject.SetActive(false);
         }
 
         public void DisplayReady()
         {
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
-            slotsHolder.Initialise(situationController);
+            startingSlotsContainer.Initialise(situationController);
             DisplayRecipe(null);
         }
 
@@ -82,7 +82,7 @@ namespace Assets.CS.TabletopUI
             return outputHolder.GetStacksGateway();
         }
 
-        private void DisplayRecipe(Recipe r)
+        public void DisplayRecipe(Recipe r)
         {
             if (r != null)
             {
@@ -98,27 +98,23 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnButtonClicked()
         {
-            var aspects = GetAspectsFromSlottedCards();
+            var aspects = GetAspectsFromSlottedElements();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationController.situationToken.VerbId);
             if(recipe!=null)
             {
 
-                situationController.situationToken.StoreElementStacksInSituation(slotsHolder.GetStacksGateway().GetStacks());
+                situationController.situationToken.StoreElementStacksInSituation(startingSlotsContainer.GetStacksGateway().GetStacks());
                 situationController.BeginSituation(recipe);
-            DisplayBusy();
+                DisplayBusy();
             }
         }
 
-        public AspectsDictionary GetAspectsFromSlottedCards()
+        public AspectsDictionary GetAspectsFromSlottedElements()
         {
-            return slotsHolder.GetAspectsFromSlottedCards();
+            return startingSlotsContainer.GetAspectsFromSlottedCards();
         }
 
-        public void DisplayRecipeForVerbAndAspects(AspectsDictionary aspects,string verbId)
-        {
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, verbId);
-            DisplayRecipe(r);
-        }
+
 
 
         public void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription)

@@ -11,6 +11,7 @@ using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.SlotsContainers;
 using Noon;
 using TMPro;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
-        [SerializeField] private AbstractSlotsContainer recipeSlotContainer;
+        [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
 
         private IVerb _verb;
         private SituationController situationController;
@@ -127,14 +128,14 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public AspectsDictionary GetAspectsInSituation()
+        public AspectsDictionary GetAspectsFromStoredElements()
         {
             return GetSituationStacksGateway().GetTotalAspects();
         }
 
-        public AspectsDictionary GetAspectsInSlots()
+        public AspectsDictionary GetAspectsFromSlottedElements()
         {
-            return recipeSlotContainer.GetAspectsFromSlottedCards();
+            return ongoingSlotsContainer.GetAspectsFromSlottedCards();
         }
 
         public ElementStacksGateway GetSituationStacksGateway()
@@ -170,7 +171,7 @@ namespace Assets.CS.TabletopUI
 
         public void InitialiseSlotContainerForSituation(Situation s)
         {
-            recipeSlotContainer.Initialise(situationController);
+            ongoingSlotsContainer.Initialise(situationController);
         }
     }
 

@@ -35,24 +35,35 @@ namespace Assets.TabletopUi
                return null;
        }
 
-        public void DisplayRecipeForAllSlottedAspects()
+        public void UpdateSituationDisplay()
         {
-            AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedCards();
 
-            AspectsDictionary existingAspects = situationToken.GetAspectsInSituation();
+            AspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
 
-            AspectsDictionary additionalAspects = situationToken.GetAspectsInSlots();
+            AspectsDictionary additionalAspects = situationToken.GetAspectsFromSlottedElements();
 
             AspectsDictionary allAspects=new AspectsDictionary();
-
-            allAspects.CombineAspects(startingAspects);
             allAspects.CombineAspects(existingAspects);
             allAspects.CombineAspects(additionalAspects);
 
-            situationWindow.DisplayRecipeForVerbAndAspects(allAspects, situationToken.VerbId);
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, allAspects,
+            new Dice());
+            string prediction= situation.GetPrediction(rc);
+
+            situationWindow.DisplaySituation(situation.GetTitle(),situation.GetDescription(),prediction);
         }
 
-       public void PopulateAndShowWindow()
+
+        public void DisplayStartingRecipe()
+        {
+            AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();
+
+            var r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.VerbId);
+
+            situationWindow.DisplayRecipe(r);
+        }
+
+        public void PopulateAndShowWindow()
        {
             situationWindow.PopulateAndShow(this);
         }
@@ -68,12 +79,6 @@ namespace Assets.TabletopUi
             }
         }
 
-        public string GetNextRecipeDescription()
-        {
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStacksGateway().GetTotalAspects(),
-                new Dice());
-            return situation.GetPrediction(rc);
-        }
 
 
         public void BeginSituation(Recipe r)
@@ -88,7 +93,14 @@ namespace Assets.TabletopUi
            situationToken.InitialiseSlotContainerForSituation(s);
             situationToken.SetTimerVisibility(true);
             SituationContinues(s);
-            situationWindow.DisplaySituation(s.GetTitle(),s.GetDescription(),GetNextRecipeDescription());
+
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStacksGateway().GetTotalAspects(),
+            new Dice());
+
+           string nextRecipePrediction = situation.GetPrediction(rc);
+
+
+            situationWindow.DisplaySituation(s.GetTitle(),s.GetDescription(), nextRecipePrediction);
        }
 
         public void SituationContinues(Situation s)
