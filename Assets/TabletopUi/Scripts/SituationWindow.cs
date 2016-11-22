@@ -21,13 +21,13 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
-        [SerializeField] Transform slotsHolder;
+        [SerializeField] SlotsContainer slotsHolder;
         [SerializeField]Transform outputHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
 
-       private RecipeSlot primarySlot;
+
 
        public SituationToken linkedToken;
 
@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
-            ClearAndDestroySlot(primarySlot);
+slotsHolder.gameObject.SetActive(false);
             NextRecipe.text = linkedToken.GetNextRecipeDescription();
         }
 
@@ -51,8 +51,7 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
-            primarySlot = BuildSlot();
-            ArrangeSlots();
+            slotsHolder.InitialiseSlotsForEmptySituation();
             DisplayRecipe(null);
         }
 
@@ -74,67 +73,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void ArrangeSlots()
-        {
-            
-            float slotSpacing = 10;
-            float slotWidth = ((RectTransform) primarySlot.transform).rect.width;
-            float slotHeight = ((RectTransform)primarySlot.transform).rect.height;
-            float startingHorizSpace = ((RectTransform) primarySlot.transform.parent).rect.width;
-            float startingX = startingHorizSpace/2 - slotWidth;
-            float startingY = -120;
-            primarySlot.transform.localPosition = new Vector3(startingX, startingY);
-            
-
-            if (primarySlot.childSlots.Count > 0)
-            {
-              
-                for (int i = 0; i < primarySlot.childSlots.Count; i++)
-                {                   
-                    //space needed is space needed for each child slot, + spacing
-                    var s = primarySlot.childSlots[i];
-                    AlignSlot(s, i, startingX,startingY, slotWidth,slotHeight,slotSpacing);
-                }
-            }
-        }
-        
-        public void AlignSlot(RecipeSlot thisSlot, int index,float parentX, float parentY,float slotWidth,float slotHeight,float slotSpacing)
-        {
-            float thisY = parentY - (slotHeight + slotSpacing);
-            float spaceNeeded = SlotSpaceNeeded(thisSlot, slotWidth, slotSpacing);
-            float thisX = parentX + index*spaceNeeded;
-            thisSlot.transform.localPosition = new Vector3(thisX, thisY);
-            for (int i = 0; i < thisSlot.childSlots.Count; i++)
-            {
-                //space needed is space needed for each child slot, + spacing
-                var nextSlot = thisSlot.childSlots[i];
-                float nextX = thisX + ((slotWidth+slotSpacing)*index);
-                AlignSlot(nextSlot, i, nextX,thisY, slotWidth, slotHeight,slotSpacing);
-            }
-
-        }
-
-        public float SlotSpaceNeeded(RecipeSlot forSlot,float slotWidth,float slotSpacing)
-        {
-            float childSpaceNeeded = 0;
-            foreach (RecipeSlot c in forSlot.childSlots)
-                childSpaceNeeded += SlotSpaceNeeded(c, slotWidth, slotSpacing);
-
-            return Mathf.Max(childSpaceNeeded, slotWidth + slotSpacing);
-        }
-
-
-        RecipeSlot BuildSlot(string slotName = "Recipe Slot", ChildSlotSpecification childSlotSpecification = null) {
-            var slot =PrefabFactory.CreateLocally<RecipeSlot>(slotsHolder);
-            slot.onCardDropped += HandleOnSlotDroppedOn;
-            slot.name = slotName;
-            if(childSlotSpecification!=null)
-            { 
-            slot.GoverningSlotSpecification = childSlotSpecification;
-                slot.name += " - " + childSlotSpecification.Label;
-            }
-            return slot;
-        }
 
         public void Hide()
         {
@@ -142,41 +80,18 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        void HandleOnSlotDroppedOn(RecipeSlot slot) {
-            
-            ElementStack stack=DraggableToken.itemBeingDragged as ElementStack;
-            if(stack!=null)
-            {
-                SlotMatchForAspects match = slot.GetSlotMatchForStack(stack);
-                if (match.MatchType == SlotMatchForAspectsType.Okay)
-                    StackInSlot(slot, stack);
-                else
-                    stack.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
-
-            }
-        }
-
-        private void StackInSlot(RecipeSlot slot, ElementStack stack)
+        RecipeSlot BuildSlot(string slotName = "Recipe Slot", ChildSlotSpecification childSlotSpecification = null)
         {
-            DraggableToken.resetToStartPos = false;
-            // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-            PositionStackInSlot(slot, stack);
+            var slot = slotsHolder.BuildSlot(slotName, childSlotSpecification);
 
-            DisplayRecipeForCurrentAspects();
-            stack.Subscribe(this);
-
-            if (stack.HasChildSlots())
-                AddSlotsForStack(stack, slot);
-
-            ArrangeSlots();
+            return slot;
         }
 
-        private static void PositionStackInSlot(RecipeSlot slot, ElementStack stack)
-        {
-            stack.transform.SetParent(slot.transform); 
-            stack.transform.localPosition = Vector3.zero;
-            stack.transform.localRotation = Quaternion.identity;
-        }
+
+
+
+
+
 
         private static void ReturnStackToTableTop(ElementStack stack)
         {
@@ -185,25 +100,12 @@ namespace Assets.CS.TabletopUI
             stack.transform.localRotation = Quaternion.identity;
         }
 
-        private void AddSlotsForStack(ElementStack stack,RecipeSlot slot)
-        {
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecifications())
-                //add slot to child slots of slot
-               slot.childSlots.Add(BuildSlot("childslot of " + stack.ElementId,childSlotSpecification));
-        }
 
 
-        private IDictionary<string, int> GetAspectsFromSlottedCards()
-        {
-            IDictionary <string, int> currentAspects = GetStacksGatewayForSlots().GetTotalAspects();
-            return currentAspects;
-        }
 
 
-        public ElementStacksGateway GetStacksGatewayForSlots()
-        {
-            return new ElementStacksGateway(new TabletopElementStacksWrapper(slotsHolder));
-        }
+
+
 
         public ElementStacksGateway GetStacksGatewayForOutput()
         {
@@ -226,15 +128,15 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnButtonClicked()
         {
-            var aspects = GetAspectsFromSlottedCards();
+            var aspects = slotsHolder.GetAspectsFromSlottedCards();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
             if(recipe!=null)
             {
-                var slottedStacks = GetStacksGatewayForSlots().GetStacks();
+                var slottedStacks = slotsHolder.GetStacksGateway().GetStacks();
                 foreach(ElementStack s in slottedStacks)
                     s.Unsubscribe(this);
 
-            linkedToken.StoreElementStacks(GetStacksGatewayForSlots().GetStacks());
+            linkedToken.StoreElementStacks(slotsHolder.GetStacksGateway().GetStacks());
             linkedToken.BeginSituation(recipe);
             DisplayBusy();
             }
@@ -254,58 +156,26 @@ namespace Assets.CS.TabletopUI
             if (stacks.Any())
                 return;
             //if picking up a token from a completed window; none left
-            else if (!stacks.Any() & primarySlot==null)
+            else if (!stacks.Any() & slotsHolder.primarySlot==null)
                 DisplayReady();
             else
             { 
             //if picking up a token from an open window
-            DisplayRecipeForCurrentAspects();
+            DisplayRecipeForAspects(slotsHolder.GetAspectsFromSlottedCards());
             draggableToken.Unsubscribe(this);
-            RemoveAnyChildSlotsWithEmptyParent();  
-            ArrangeSlots();
+                slotsHolder.TokenRemovedFromSlot();
+
             }
 
         }
 
-        private void RemoveAnyChildSlotsWithEmptyParent()
-        {
-            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
-            foreach (RecipeSlot s in currentSlots)
-            {
-                if (s!=null & s.GetElementStackInSlot()==null & s.childSlots.Count > 0)
-                {
-                    List<RecipeSlot> currentChildSlots = new List<RecipeSlot>(s.childSlots);
-                    s.childSlots.Clear();
-                    foreach (RecipeSlot cs in currentChildSlots.Where(eachSlot => eachSlot != null))
-                        ClearAndDestroySlot(cs);
-                }
-            }
-        }
 
-        private void ClearAndDestroySlot(RecipeSlot slot)
-        {
-            if (slot == null)
-                return;
-            //if there are any child slots on this slot, recurse
-            if(slot.childSlots.Count>0)
-            {
-                List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
-                foreach (var cs in childSlots)
-                    ClearAndDestroySlot(cs);
-                slot.childSlots.Clear();
-            }
-            ElementStack stackContained = slot.GetElementStackInSlot();
-            if(stackContained!=null)
-            { 
-                stackContained.ReturnToTabletop(null);
-            }
-            DestroyObject(slot.gameObject);
-        }
 
-        private void DisplayRecipeForCurrentAspects()
+
+
+        public void DisplayRecipeForAspects(AspectsDictionary aspects)
         {
-            var currentAspects = GetAspectsFromSlottedCards();
-            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(currentAspects, linkedToken.VerbId);
+            Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
             DisplayRecipe(r);
         }
 
