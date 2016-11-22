@@ -115,8 +115,6 @@ namespace Assets.CS.TabletopUI
             }
             queuedNotifications.Add(new Notification (command.Title,command.Description));
 
-          //  _subscribers.ForEach(s => s.TokenEffectCommandSent(this, command));
-
         }
 
 

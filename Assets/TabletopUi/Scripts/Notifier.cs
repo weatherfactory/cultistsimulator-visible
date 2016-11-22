@@ -41,10 +41,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
-        {
-            ShowNotificationWindow(effectCommand.Title,effectCommand.Description);
-        }
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {

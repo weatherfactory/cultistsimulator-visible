@@ -11,10 +11,10 @@ using UnityEngine;
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour,ITokenSubscriber{
+    public class TabletopManager : MonoBehaviour{
 
         [Header("Existing Objects")]
-        [SerializeField] Transform tableLevel;
+        [SerializeField] public TabletopContainer tabletopContainer;
         [SerializeField] Transform windowLevel;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
@@ -24,7 +24,8 @@ namespace Assets.CS.TabletopUI
         [Header("View Settings")]
         [SerializeField] float windowZOffset = -10f;
 
-        
+   
+
         void Start () {
             var compendiumHolder = gameObject.AddComponent<Registry>();
             compendiumHolder.ImportContentToCompendium();
@@ -35,7 +36,7 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-           tabletopObjectBuilder  = new TabletopObjectBuilder(tableLevel,windowLevel);
+           tabletopObjectBuilder  = new TabletopObjectBuilder(tabletopContainer.transform,windowLevel);
             tabletopObjectBuilder.PopulateTabletop();
             var needsToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
             ArrangeTokenOnTable(needsToken);
@@ -57,7 +58,7 @@ namespace Assets.CS.TabletopUI
 
         private ElementStacksGateway GetStacksOnTabletopGateway()
         {
-            IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStacksWrapper(tableLevel);
+            IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStacksWrapper(tabletopContainer.transform);
             return new ElementStacksGateway(tabletopStacksWrapper);
         }
 
@@ -65,7 +66,7 @@ namespace Assets.CS.TabletopUI
 
         #region -- CREATE / REMOVE VIEW OBJECTS ----------------------------------------------------
 
-        void ShowSituationWindow(SituationToken situationToken)
+        public void ShowSituationWindow(SituationToken situationToken)
         {
             CloseAllSituationWindowsExcept(situationToken);
             PutTokenInAir(situationToken.transform as RectTransform);
@@ -81,7 +82,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        void HideSituationWindow(SituationToken situationToken, bool keepCards) {
+        public void HideSituationWindow(SituationToken situationToken, bool keepCards) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
                 PutOnTable(situationToken); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
@@ -112,7 +113,7 @@ namespace Assets.CS.TabletopUI
             if(stack!=null)
                 GetStacksOnTabletopGateway().AcceptStack(stack);
 
-            token.RectTransform.SetParent(tableLevel); 
+            token.RectTransform.SetParent(tabletopContainer.transform); 
            token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
             token.RectTransform.localRotation = Quaternion.Euler(0f, 0f, token.RectTransform.eulerAngles.z);
         }
@@ -128,54 +129,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
-        #region -- response to subscriptionUI events
-
-        public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
-        {
-            //disabled while we try affecting only local elements in a situation
-            //foreach (var kvp in effectCommand.GetElementChanges())
-            //{
-            //    ModifyElementQuantity(kvp.Key,kvp.Value);
-            //}
-        }
-
-        public void TokenPickedUp(DraggableToken draggableToken)
-        {
-            ElementStack cardPickedUp=draggableToken as ElementStack;
-            if(cardPickedUp!=null)
-            {
-                if(cardPickedUp.Quantity>1)
-                {
-                var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(tableLevel);
-                cardLeftBehind.transform.position = draggableToken.transform.position;
-                cardLeftBehind.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
-                cardPickedUp.SetQuantity(1);
-                }
-            }
-            
-        }
-
-        public void TokenInteracted(DraggableToken draggableToken)
-        {
-                SituationToken box = draggableToken as SituationToken;
-            if (box != null)
-            {
-                if (!box.IsOpen)
-                    ShowSituationWindow(box);
-                else
-                    HideSituationWindow(box, true);
-            }
-
-        }
-
-
-        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
-        {
-            PutOnTable(draggableToken);
-        }
-
-        #endregion
 
         #region -- INTERACTION ----------------------------------------------------
 

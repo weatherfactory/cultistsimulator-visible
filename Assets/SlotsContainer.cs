@@ -5,11 +5,13 @@ using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 
-public class SlotsContainer : MonoBehaviour
+public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 {
 
     [SerializeField] private SituationWindow situationWindow;
@@ -190,5 +192,21 @@ public class SlotsContainer : MonoBehaviour
     {
         RemoveAnyChildSlotsWithEmptyParent();
         ArrangeSlots(primarySlot);
+    }
+
+
+    public void TokenPickedUp(DraggableToken draggableToken)
+    {
+        
+    }
+
+    public void TokenInteracted(DraggableToken draggableToken)
+    {
+        
+    }
+
+    public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
+    {
+        
     }
 }

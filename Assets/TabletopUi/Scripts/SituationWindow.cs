@@ -111,10 +111,6 @@ slotsHolder.gameObject.SetActive(false);
 
         }
 
-        public void TokenEffectCommandSent(DraggableToken draggableToken, IEffectCommand effectCommand)
-        {
-            //nothing yet: this may be redundant
-        }
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {

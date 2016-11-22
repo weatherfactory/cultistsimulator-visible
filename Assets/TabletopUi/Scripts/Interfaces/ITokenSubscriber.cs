@@ -9,7 +9,6 @@ namespace Assets.CS.TabletopUI.Interfaces
 {
     public interface ITokenSubscriber
     {
-        void TokenEffectCommandSent(DraggableToken draggableToken,IEffectCommand effectCommand);
         void TokenPickedUp(DraggableToken draggableToken);
         void TokenInteracted(DraggableToken draggableToken);
         void TokenReturnedToTabletop(DraggableToken draggableToken,INotification reason);
