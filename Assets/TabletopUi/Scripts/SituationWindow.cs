@@ -14,7 +14,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindow : MonoBehaviour,ITokenSubscriber {
+    public class SituationWindow : MonoBehaviour {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
@@ -22,7 +22,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] SlotsContainer slotsHolder;
-        [SerializeField]Transform outputHolder;
+        [SerializeField] SituationOutputContainer outputHolder;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
@@ -47,7 +47,7 @@ slotsHolder.gameObject.SetActive(false);
             NextRecipe.text = linkedToken.GetNextRecipeDescription();
         }
 
-        private void DisplayReady()
+        public void DisplayReady()
         {
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
@@ -80,7 +80,7 @@ slotsHolder.gameObject.SetActive(false);
 
         public ElementStacksGateway GetStacksGatewayForOutput()
         {
-            return new ElementStacksGateway(new TabletopElementStacksWrapper(outputHolder));
+            return outputHolder.GetStacksGateway();
         }
 
         private void DisplayRecipe(Recipe r)
@@ -110,44 +110,12 @@ slotsHolder.gameObject.SetActive(false);
             }
 
         }
-
-
-        public void TokenPickedUp(DraggableToken draggableToken)
-        {
-            
-            var stacks = GetStacksGatewayForOutput().GetStacks();
-            //picking up a token from a completed window; some left
-            if (stacks.Any())
-                return;
-            //if picking up a token from a completed window; none left
-            else if (!stacks.Any() & slotsHolder.primarySlot==null)
-                DisplayReady();
-            else
-            { 
-            //if picking up a token from an open window
-            DisplayRecipeForAspects(slotsHolder.GetAspectsFromSlottedCards());
-            draggableToken.SetContainer(null);
-                slotsHolder.TokenRemovedFromSlot();
-
-            }
-
-        }
-
-        
         public void DisplayRecipeForAspects(AspectsDictionary aspects)
         {
             Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
             DisplayRecipe(r);
         }
 
-        public void TokenInteracted(DraggableToken draggableToken)
-        {
-//currently nothing 
-        }
-
-        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
-        {
-           //currently nothing; tokens are automatically returned home
-        }
+        
     }
 }

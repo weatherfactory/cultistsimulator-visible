@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -113,7 +115,8 @@
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\IntExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
     <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
-    <Compile Include="Assets\SlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\SituationOutputContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\SlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\Dice.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\IElementsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\ResourcesManager.cs" />

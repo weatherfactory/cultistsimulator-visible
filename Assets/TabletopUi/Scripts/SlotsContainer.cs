@@ -68,7 +68,7 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
         PositionStackInSlot(slot, stack);
 
         situationWindow.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
-        stack.SetContainer(situationWindow);
+        stack.SetContainer(this);
 
         if (stack.HasChildSlots())
             AddSlotsForStack(stack, slot);
@@ -197,7 +197,9 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 
     public void TokenPickedUp(DraggableToken draggableToken)
     {
-        
+        situationWindow.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
+        draggableToken.SetContainer(null);
+        TokenRemovedFromSlot();
     }
 
     public void TokenInteracted(DraggableToken draggableToken)

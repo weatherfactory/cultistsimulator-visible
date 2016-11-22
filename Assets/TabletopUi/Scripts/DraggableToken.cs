@@ -84,9 +84,7 @@ namespace Assets.CS.TabletopUI
 
         void StartDrag(PointerEventData eventData) {
 
-            container.TokenPickedUp(this);
 
-            container = null;
 
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
@@ -110,6 +108,9 @@ namespace Assets.CS.TabletopUI
             if (onChangeDragState != null)
                 onChangeDragState(true);
 
+            container.TokenPickedUp(this);
+
+            container = null;
 
         }
 
