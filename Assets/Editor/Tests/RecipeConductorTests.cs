@@ -66,9 +66,9 @@ namespace Assets.Editor.Tests
             primaryRecipe.Loop = primaryRecipe.Id;
 
             rc = new RecipeConductor(compendium, null,mockDice);
-            var recipesToExecute = rc.GetNextRecipes(primaryRecipe);
+            var loopedRecipe = rc.GetLoopedRecipe(primaryRecipe);
 
-            Assert.AreEqual(primaryRecipe,recipesToExecute.Single());
+            Assert.AreEqual(primaryRecipe,loopedRecipe);
         }
 
         [Test]

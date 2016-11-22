@@ -12,31 +12,31 @@ namespace Assets.Core.Entities
     public class Situation
     {
         public SituationState State { get; set; }
-       private Recipe currentRecipe { get; set; }
+       private Recipe currentPrimaryRecipe { get; set; }
         public float TimeRemaining { private set; get; }
         public float Warmup { private set; get; }
-        public string RecipeId { get { return currentRecipe == null ? null : currentRecipe.Id; } }
+        public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
 
         public IList<SlotSpecification> GetSlots()
         {
-            if (currentRecipe.ChildSlotSpecifications.Any())
-                return currentRecipe.ChildSlotSpecifications;
+            if (currentPrimaryRecipe.ChildSlotSpecifications.Any())
+                return currentPrimaryRecipe.ChildSlotSpecifications;
             else
                 return new List<SlotSpecification>();
         }
         private HashSet<ISituationSubscriber> subscribers=new HashSet<ISituationSubscriber>();
 
-        public Situation(Recipe recipe)
+        public Situation(Recipe primaryRecipe)
         {
-            currentRecipe = recipe;
-            Warmup = recipe.Warmup;
-            TimeRemaining = recipe.Warmup;
+            currentPrimaryRecipe = primaryRecipe;
+            Warmup = primaryRecipe.Warmup;
+            TimeRemaining = primaryRecipe.Warmup;
             State = SituationState.Unstarted;
         }
-        public Situation(float timeRemaining, SituationState state, Recipe withRecipe)
+        public Situation(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
         {
-            currentRecipe = withRecipe;
-            Warmup = withRecipe.Warmup;
+            currentPrimaryRecipe = withPrimaryRecipe;
+            Warmup = withPrimaryRecipe.Warmup;
             TimeRemaining = timeRemaining;
             State = state;
         }
@@ -50,19 +50,19 @@ namespace Assets.Core.Entities
 
         public string GetTitle()
         {
-            return currentRecipe==null ?  "no recipe just now" :
-            currentRecipe.Label;
+            return currentPrimaryRecipe==null ?  "no recipe just now" :
+            currentPrimaryRecipe.Label;
         }
 
         public string GetDescription()
         {
-            return currentRecipe == null ? "no recipe just now" :
-            currentRecipe.Description;
+            return currentPrimaryRecipe == null ? "no recipe just now" :
+            currentPrimaryRecipe.Description;
         }
 
         public AspectMatchFilter GetRetrievalFilter()
         {
-            return new AspectMatchFilter(currentRecipe.RetrievesContentsWith);
+            return new AspectMatchFilter(currentPrimaryRecipe.RetrievesContentsWith);
         }
 
         public SituationState Continue(IRecipeConductor rc,float interval)
@@ -95,7 +95,7 @@ namespace Assets.Core.Entities
 
         public string GetPrediction(IRecipeConductor rc)
         {
-            IList<Recipe> recipes= rc.GetActualRecipesToExecute(currentRecipe);
+            IList<Recipe> recipes= rc.GetActualRecipesToExecute(currentPrimaryRecipe);
             string desc = "";
             foreach (var r in recipes)
                 desc = desc + r.Label + " (" + r.Description + "); ";
@@ -123,7 +123,14 @@ namespace Assets.Core.Entities
         {
             State = SituationState.RequiringExecution;
 
-            IList<Recipe> recipesToExecute = rc.GetActualRecipesToExecute(currentRecipe);
+            IList<Recipe> recipesToExecute = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
+
+            //actually replace the current recipe with the first on the list: any others will be additionals,
+            //but we want to loop from this one.
+            //We should probably return a command with a subsidiary list, not a basic list
+            if (recipesToExecute.First().Id != currentPrimaryRecipe.Id)
+                currentPrimaryRecipe = recipesToExecute.First();
+
 
             foreach (var s in subscribers)
             {
@@ -138,11 +145,11 @@ namespace Assets.Core.Entities
         {
             State=SituationState.Ending;
 
-            var nextRecipes = rc.GetNextRecipes(currentRecipe);
-            if (nextRecipes.Any())
+            var loopedRecipe = rc.GetLoopedRecipe(currentPrimaryRecipe);
+            if (loopedRecipe!=null)
             { 
-                currentRecipe = nextRecipes.Single();
-                TimeRemaining = currentRecipe.Warmup;
+                currentPrimaryRecipe = loopedRecipe;
+                TimeRemaining = currentPrimaryRecipe.Warmup;
                 Beginning();
             }
             else

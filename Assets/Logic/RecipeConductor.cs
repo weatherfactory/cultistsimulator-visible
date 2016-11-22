@@ -9,7 +9,7 @@ namespace Assets.Core
 {
     public interface IRecipeConductor
     {
-        IList<Recipe> GetNextRecipes(Recipe recipe);
+        Recipe GetLoopedRecipe(Recipe recipe);
         /// <summary>
         ///Determines whether the original recipe, an alternative, or something else should actually be run.
         /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
@@ -37,13 +37,13 @@ namespace Assets.Core
             dice = d;
         }
 
-        public IList<Recipe> GetNextRecipes(Recipe recipe)
+        public Recipe GetLoopedRecipe(Recipe recipe)
         {
-            IList<Recipe> recipes=new List<Recipe>();
-            if (recipe.Loop != null)
-                recipes.Add(compendium.GetRecipeById(recipe.Loop));
 
-            return recipes;
+            if (recipe.Loop != null)
+                return compendium.GetRecipeById(recipe.Loop);
+
+            return null;
         }
 
 
