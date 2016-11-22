@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        string GetSlotsText(List<ChildSlotSpecification> slots) { // THis could be in a TOString methodto be more accessible where it's needed?
+        string GetSlotsText(List<SlotSpecification> slots) { // THis could be in a TOString methodto be more accessible where it's needed?
             if (slots == null || slots.Count == 0)
                 return "Slots: None";
 

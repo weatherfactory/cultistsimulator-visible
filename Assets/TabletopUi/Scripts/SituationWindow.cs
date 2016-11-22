@@ -5,6 +5,7 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -27,6 +28,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
+        private SituationController situationController;
 
 
 
@@ -52,19 +54,24 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
-            slotsHolder.InitialiseSlotsForEmptySituation();
+            slotsHolder.InitialiseSlotsForEmptySituation(situationController);
             DisplayRecipe(null);
         }
 
-        public void PopulateAndShow(SituationToken situationToken) {
+        public void PopulateAndShow(SituationController sc)
+        {
+
+           situationController = sc;
 
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
 
-            title.text = situationToken.GetTitle();
-            description.text = situationToken.GetDescription();
+            
 
-            if (situationToken.IsBusy)
+            title.text = situationController.situationToken.GetTitle();
+            description.text = situationController.situationToken.GetDescription();
+
+            if (situationController.situationToken.IsBusy)
             
                 DisplayBusy();
             else

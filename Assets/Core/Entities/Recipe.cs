@@ -26,7 +26,7 @@ using Assets.Core;
         public List<RecipeAlternative> AlternativeRecipes { get; set; }
         public string Loop { get; set; }
         public string Ending { get; set; }
-    public List<ChildSlotSpecification> ChildSlotSpecifications { get; set; }
+    public List<SlotSpecification> ChildSlotSpecifications { get; set; }
 
     //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
@@ -37,7 +37,7 @@ using Assets.Core;
         AlternativeRecipes=new List<RecipeAlternative>();
         PersistsIngredientsWith=new Dictionary<string, int>();
         RetrievesContentsWith=new Dictionary<string, int>();
-        ChildSlotSpecifications=new List<ChildSlotSpecification>();
+        ChildSlotSpecifications=new List<SlotSpecification>();
         }
 
 

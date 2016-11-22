@@ -78,21 +78,15 @@ namespace Assets.CS.TabletopUI
         {
             var situationTokens = windowLevel.GetComponentsInChildren<SituationToken>().Where(sw => sw != except);
             foreach (var situationToken in situationTokens)
-                HideSituationWindow(situationToken, false);
+                HideSituationWindow(situationToken);
 
         }
 
-        public void HideSituationWindow(SituationToken situationToken, bool keepCards) {
+        public void HideSituationWindow(SituationToken situationToken) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
                 PutOnTable(situationToken); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
-            // Going through cards in slots
-            var heldCards = situationToken.linkedWindow.GetComponentsInChildren<ElementStack>();
 
-            foreach (var item in heldCards) {
-                if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
-                    PutOnTable(item); // remove cards from details window before hiding it, so they aren't removed
-            }
             situationToken.Close();
         }
 

@@ -179,7 +179,7 @@
 		loop: "testresearchspine",
 		 slots:
             {
-			"assistant": {  required: {assistant:1, secrethistories:1},
+			"assistant": {  required: {assistant:1, secrethistories:1,atlasnotes: 1},
                 forbidden: {}},
 			"material": {  required: {secrethistories:1},
                 forbidden: {}}
@@ -189,7 +189,7 @@
         id: "testresearchcomplete",
         label: "Project complete",
         actionId: "work",
-        requirements: {atlasnotes: 3},
+        requirements: {atlasnotes: 1},
         effects: {atlas: 1},
         startdescription: "..",
         description: "Nearly finished!",

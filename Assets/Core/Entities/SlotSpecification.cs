@@ -8,7 +8,7 @@ using Noon;
 /// <summary>
 /// Entity class: a child slot for an element
 /// </summary>
-public class ChildSlotSpecification
+public class SlotSpecification
 {
     public string Label { get; set; }
     /// <summary>
@@ -20,7 +20,7 @@ public class ChildSlotSpecification
     /// </summary>
     public Dictionary<string, int> Forbidden { get; set; }
 
-    public ChildSlotSpecification(string label)
+    public SlotSpecification(string label)
     {
         Label = label;
         Required = new Dictionary<string, int>();

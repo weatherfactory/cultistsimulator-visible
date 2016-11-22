@@ -195,7 +195,7 @@ namespace Assets.Editor.Tests
             Quantity = quantity;
         }
 
-        public List<ChildSlotSpecification> GetChildSlotSpecifications()
+        public List<SlotSpecification> GetChildSlotSpecifications()
         {
             throw new NotImplementedException();
         }

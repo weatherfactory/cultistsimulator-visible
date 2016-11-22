@@ -38,7 +38,7 @@ public class TabletopContainer : MonoBehaviour,ITokenSubscriber
             if (!box.IsOpen)
                 tabletopManager.ShowSituationWindow(box);
             else
-                tabletopManager.HideSituationWindow(box, true);
+                tabletopManager.HideSituationWindow(box);
         }
 
     }

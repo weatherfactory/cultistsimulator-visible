@@ -13,7 +13,7 @@ public class Element
     public string Id { get; set; }
     public string Label { get; set; }
     public string Description { get; set; }
-    public List<ChildSlotSpecification> ChildSlotSpecifications { get; set; }
+    public List<SlotSpecification> ChildSlotSpecifications { get; set; }
 
     public Dictionary<string, int> AspectsIncludingSelf
     {
@@ -34,7 +34,7 @@ public class Element
         Id = id;
         Label = label;
         Description = description;
-        ChildSlotSpecifications=new List<ChildSlotSpecification>();
+        ChildSlotSpecifications=new List<SlotSpecification>();
         Aspects=new Dictionary<string, int>();
     }
 

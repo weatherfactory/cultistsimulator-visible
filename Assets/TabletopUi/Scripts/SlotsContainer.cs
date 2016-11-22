@@ -8,34 +8,43 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
 public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 {
 
-    [SerializeField] private SituationWindow situationWindow;
+    private SituationController _situationController;
     private RecipeSlot primarySlot;
+    private bool AllowChildSlots = false;
 
-    public void InitialiseSlotsForActiveSituation(Situation s)
+    public void InitialiseSlotsForActiveSituation(Situation s,SituationController sc)
     {
-        //clear any slots which don't exist in this recipe
+        AllowChildSlots = false;
 
-        var childSlotsToBuild = s.GetChildSlots();
-        if (childSlotsToBuild.Any())
+        _situationController = sc;
+        var slotsToBuild = s.GetSlots();
+        if (slotsToBuild.Any())
         {
             gameObject.SetActive(true);
-        foreach (ChildSlotSpecification css in s.GetChildSlots())
+        foreach (SlotSpecification css in s.GetSlots())
             BuildSlot(css.Label, css);
         }
 
+        
+
     }
 
-    public void InitialiseSlotsForEmptySituation()
+    public void InitialiseSlotsForEmptySituation(SituationController sc)
     {
+        AllowChildSlots = true;
+
+        _situationController = sc;
         gameObject.SetActive(true);
         primarySlot = BuildSlot();
-        ArrangeSlots(primarySlot);
+        ArrangeSlots();
     }
 
     void HandleOnSlotDroppedOn(RecipeSlot slot)
@@ -46,41 +55,41 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
         {
             SlotMatchForAspects match = slot.GetSlotMatchForStack(stack);
             if (match.MatchType == SlotMatchForAspectsType.Okay)
-                StackInSlot(slot, stack, primarySlot);
+                StackInSlot(slot, stack);
             else
                 stack.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
 
         }
     }
 
-    public RecipeSlot BuildSlot(string slotName = "Recipe Slot", ChildSlotSpecification childSlotSpecification = null)
+    public RecipeSlot BuildSlot(string slotName = "Recipe Slot", SlotSpecification slotSpecification = null)
     {
         var slot = PrefabFactory.CreateLocally<RecipeSlot>(transform);
 
         slot.name = slotName;
-        if (childSlotSpecification != null)
+        if (slotSpecification != null)
         {
-            slot.GoverningSlotSpecification = childSlotSpecification;
-            slot.name += " - " + childSlotSpecification.Label;
+            slot.GoverningSlotSpecification = slotSpecification;
+            slot.name += " - " + slotSpecification.Label;
         }
 
         slot.onCardDropped += HandleOnSlotDroppedOn;
         return slot;
     }
 
-    public void StackInSlot(RecipeSlot slot, ElementStack stack,RecipeSlot primarySlot)
+    public void StackInSlot(RecipeSlot slot, ElementStack stack)
     {
         DraggableToken.resetToStartPos = false;
         // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
         PositionStackInSlot(slot, stack);
 
-        situationWindow.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
+        _situationController.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
         stack.SetContainer(this);
 
         if (stack.HasChildSlots())
             AddSlotsForStack(stack, slot);
 
-        ArrangeSlots(primarySlot);
+        ArrangeSlots();
     }
 
     public AspectsDictionary GetAspectsFromSlottedCards()
@@ -136,26 +145,27 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 
     }
 
-    public void ArrangeSlots(RecipeSlot primarySlot)
+    public void ArrangeSlots()
     {
-
-        float slotSpacing = 10;
-        float slotWidth = ((RectTransform)primarySlot.transform).rect.width;
-        float slotHeight = ((RectTransform)primarySlot.transform).rect.height;
-        float startingHorizSpace = ((RectTransform)primarySlot.transform.parent).rect.width;
-        float startingX = startingHorizSpace / 2 - slotWidth;
-        float startingY = -120;
-        primarySlot.transform.localPosition = new Vector3(startingX, startingY);
-
-
-        if (primarySlot.childSlots.Count > 0)
+        if(AllowChildSlots)
         {
+            float slotSpacing = 10;
+            float slotWidth = ((RectTransform) primarySlot.transform).rect.width;
+            float slotHeight = ((RectTransform) primarySlot.transform).rect.height;
+            float startingHorizSpace = ((RectTransform) primarySlot.transform.parent).rect.width;
+            float startingX = startingHorizSpace/2 - slotWidth;
+            float startingY = -120;
+            primarySlot.transform.localPosition = new Vector3(startingX, startingY);
 
-            for (int i = 0; i < primarySlot.childSlots.Count; i++)
+
+            if (primarySlot.childSlots.Count > 0)
             {
-                //space needed is space needed for each child slot, + spacing
-                var s = primarySlot.childSlots[i];
-                AlignSlot(s, i, startingX, startingY, slotWidth, slotHeight, slotSpacing);
+                for (int i = 0; i < primarySlot.childSlots.Count; i++)
+                {
+                    //space needed is space needed for each child slot, + spacing
+                    var s = primarySlot.childSlots[i];
+                    AlignSlot(s, i, startingX, startingY, slotWidth, slotHeight, slotSpacing);
+                }
             }
         }
     }
@@ -198,13 +208,13 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
     public void TokenRemovedFromSlot()
     {
         RemoveAnyChildSlotsWithEmptyParent();
-        ArrangeSlots(primarySlot);
+        ArrangeSlots();
     }
 
 
     public void TokenPickedUp(DraggableToken draggableToken)
     {
-        situationWindow.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
+        _situationController.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
         draggableToken.SetContainer(null);
         TokenRemovedFromSlot();
     }

@@ -25,16 +25,16 @@ public class ContentImporter
     public List<Recipe> Recipes=new List<Recipe>();
 
 
-    public List<ChildSlotSpecification> AddSlotsFromHashtable(Hashtable htSlots)
+    public List<SlotSpecification> AddSlotsFromHashtable(Hashtable htSlots)
     {
-        List<ChildSlotSpecification> cssList=new List<ChildSlotSpecification>();
+        List<SlotSpecification> cssList=new List<SlotSpecification>();
 
         if (htSlots != null)
         {
 
             foreach (string k in htSlots.Keys)
             {
-                cssList.Add(new ChildSlotSpecification(k));
+                cssList.Add(new SlotSpecification(k));
 
                 Hashtable htThisSlot = htSlots[k] as Hashtable;
 

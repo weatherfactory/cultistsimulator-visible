@@ -17,12 +17,12 @@ namespace Assets.Core.Entities
         public float Warmup { private set; get; }
         public string RecipeId { get { return currentRecipe == null ? null : currentRecipe.Id; } }
 
-        public IList<ChildSlotSpecification> GetChildSlots()
+        public IList<SlotSpecification> GetSlots()
         {
             if (currentRecipe.ChildSlotSpecifications.Any())
                 return currentRecipe.ChildSlotSpecifications;
             else
-                return new List<ChildSlotSpecification>();
+                return new List<SlotSpecification>();
         }
         private HashSet<ISituationSubscriber> subscribers=new HashSet<ISituationSubscriber>();
 

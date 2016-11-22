@@ -26,7 +26,6 @@ public interface ICompendium
 public class Compendium : ICompendium
 {
     private List<Recipe> _recipes;
-    private readonly IDice _dice;
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
 

@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -18,26 +19,36 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class SituationToken : DraggableToken,ISituationSubscriber{
+    public class SituationToken : DraggableToken, ISituationSubscriber
+    {
 
         [SerializeField] Image artwork;
-        [SerializeField] TextMeshProUGUI text; // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
+
+        [SerializeField] TextMeshProUGUI text;
+            // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
+
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
         [SerializeField] private SlotsContainer recipeSlotContainer;
-        
+
         private IVerb _verb;
         private Situation situation;
-        public SituationState SituationState { get { return situation == null ? SituationState.Extinct : situation.State; } }
-        public bool IsOpen = false;
-        private IList<INotification> queuedNotifications=new List<INotification>();
+        private SituationController situationController;
 
-        [HideInInspector] public SituationWindow linkedWindow;
-        public string VerbId { get {
-            return _verb == null ? null : _verb.Id;
-        } }
+        public SituationState SituationState
+        {
+            get { return situation == null ? SituationState.Extinct : situation.State; }
+        }
+
+        public bool IsOpen = false;
+        private IList<INotification> queuedNotifications = new List<INotification>();
+
+        public string VerbId
+        {
+            get { return _verb == null ? null : _verb.Id; }
+        }
 
         /// <summary>
         /// should return number of executions waiting; 0 if it's currently running a situation, -1 if it's not currently running anything
@@ -50,27 +61,29 @@ namespace Assets.CS.TabletopUI
 
         public void BeginSituation(Recipe r)
         {
-            situation=new Situation(r);
+            situation = new Situation(r);
             situation.Subscribe(this);
-            situation.Subscribe(linkedWindow);
+            situation.Subscribe(situationController.linkedWindow);
 
         }
 
         public string GetTitle()
         {
-            return situation == null ? _verb.Label :
-        situation.GetTitle();
+            return situation == null
+                ? _verb.Label
+                : situation.GetTitle();
         }
 
         public string GetDescription()
         {
-            return situation == null ? _verb.Description :
-          situation.GetDescription();
+            return situation == null
+                ? _verb.Description
+                : situation.GetDescription();
         }
 
         public IList<INotification> FlushNotifications()
         {
-            List<INotification> flushed=new List<INotification>();
+            List<INotification> flushed = new List<INotification>();
             flushed.AddRange(queuedNotifications);
             queuedNotifications.Clear();
             return flushed;
@@ -78,7 +91,8 @@ namespace Assets.CS.TabletopUI
 
         public string GetNextRecipeDescription()
         {
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, GetSituationStacksGateway().GetTotalAspects(), new Dice());
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, GetSituationStacksGateway().GetTotalAspects(),
+                new Dice());
             return situation.GetPrediction(rc);
         }
 
@@ -93,14 +107,15 @@ namespace Assets.CS.TabletopUI
         {
             if (situation != null)
             {
-                RecipeConductor rc=new RecipeConductor(Registry.Compendium,GetSituationStacksGateway().GetTotalAspects(),new Dice());
-               situation.Continue(rc, interval);
+                RecipeConductor rc = new RecipeConductor(Registry.Compendium,
+                    GetSituationStacksGateway().GetTotalAspects(), new Dice());
+                situation.Continue(rc, interval);
             }
         }
 
         public void SituationBeginning(Situation s)
         {
-            recipeSlotContainer.InitialiseSlotsForActiveSituation(s);
+            recipeSlotContainer.InitialiseSlotsForActiveSituation(s, situationController);
             SetTimerVisibility(true);
             SituationContinues(s);
         }
@@ -114,28 +129,28 @@ namespace Assets.CS.TabletopUI
         {
             foreach (var kvp in command.GetElementChanges())
             {
-                GetSituationStacksGateway().ModifyElementQuantity(kvp.Key,kvp.Value);
+                GetSituationStacksGateway().ModifyElementQuantity(kvp.Key, kvp.Value);
             }
-            queuedNotifications.Add(new Notification (command.Title,command.Description));
+            queuedNotifications.Add(new Notification(command.Title, command.Description));
 
         }
+        
 
 
-
-        public void SituationExtinct()
+    public void SituationExtinct()
         {
             IElementStacksGateway storedStacksGateway = GetSituationStacksGateway();
 
             //currently just retrieving everything
             var stacksToRetrieve = storedStacksGateway.GetStacks();
 
-            linkedWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
+            situationController.linkedWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
 
             SetTimerVisibility(false);
             situation = null;
         }
 
-        public void Initialise(IVerb verb) {
+        public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
             name = "Verb_" + VerbId;
 
@@ -144,6 +159,7 @@ namespace Assets.CS.TabletopUI
             SetSelected(false);
             countdownBar.gameObject.SetActive(false);
             countdownText.gameObject.SetActive(false);
+            situationController = sc;
 
         }
         
@@ -183,8 +199,8 @@ namespace Assets.CS.TabletopUI
 
         public void Open()
         {
-            linkedWindow.transform.position = transform.position;
-            linkedWindow.PopulateAndShow(this);
+            situationController.linkedWindow.transform.position = transform.position;
+            situationController.PopulateAndShowWindow();
             elementsInSituation.SetActive(true);
             IsOpen = true;
         }
@@ -193,7 +209,7 @@ namespace Assets.CS.TabletopUI
         public void Close()
         {
             elementsInSituation.SetActive(false);
-            linkedWindow.Hide();
+            situationController.linkedWindow.Hide();
             IsOpen = false;
         }
 
@@ -202,6 +218,9 @@ namespace Assets.CS.TabletopUI
             var containerGateway = GetSituationStacksGateway();
             containerGateway.AcceptStacks(stacks);
         }
+
+
+
     }
 
 

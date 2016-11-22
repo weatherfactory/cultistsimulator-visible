@@ -87,7 +87,7 @@ namespace Assets.CS.TabletopUI
             return _element.AspectsIncludingSelf;
         }
 
-        public List<ChildSlotSpecification> GetChildSlotSpecifications()
+        public List<SlotSpecification> GetChildSlotSpecifications()
         {
             return _element.ChildSlotSpecifications;
         }

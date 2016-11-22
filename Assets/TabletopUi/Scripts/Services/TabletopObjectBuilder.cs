@@ -17,11 +17,11 @@ namespace Assets.TabletopUi.Scripts.Services
         string[] legalElementIDs = new string[7] {
             "health",
             "reason",
-            "clique",
+            "intuition",
             "ordinarylife",
             "suitablepremises",
             "occultscrap",
-            "shilling"
+            "atlasnotes"
         };
 
         public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel)
@@ -47,10 +47,12 @@ namespace Assets.TabletopUi.Scripts.Services
             for (int i = 0; i < verbs.Count; i++)
             {
                 situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
-                situationToken.Initialise(verbs[i]);
+                var window = buildSituationWindowForSituationToken(situationToken);
+                var situationController =new SituationController(situationToken,window,null,null);
+                situationToken.Initialise(verbs[i], situationController);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
 
-                buildSituationWindowForSituationToken(situationToken);
+                
             }
 
 
@@ -72,9 +74,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
             if (v==null)
                 v=new TransientVerb(recipe.ActionId,recipe.Label,recipe.Description);
-
-            situationToken.Initialise(v);
-            buildSituationWindowForSituationToken(situationToken);
+            var window = buildSituationWindowForSituationToken(situationToken);
+            var situationController = new SituationController(situationToken, window, null, null);
+            situationToken.Initialise(v, situationController);
+            
 
             situationToken.BeginSituation(recipe);
 
@@ -90,7 +93,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
             situationWindow.transform.position = tokenPosition;
             situationWindow.gameObject.SetActive(false);
-            situationToken.linkedWindow = situationWindow;
             situationWindow.linkedToken = situationToken;
             return situationWindow;
         }

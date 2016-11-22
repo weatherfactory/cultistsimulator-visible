@@ -9,7 +9,7 @@ namespace Assets.CS.TabletopUI
     public class RecipeSlot : MonoBehaviour, IDropHandler {
 
         public event System.Action<RecipeSlot> onCardDropped;
-        public ChildSlotSpecification GoverningSlotSpecification;
+        public SlotSpecification GoverningSlotSpecification;
         public List<RecipeSlot> childSlots;
 
         // TODO: Needs hover feedback!
