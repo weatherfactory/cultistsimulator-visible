@@ -83,6 +83,17 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
+        public void Situation_ResetsTimer_WhenBeginningLoopRecipe()
+        {
+
+            rc.GetNextRecipes(null).ReturnsForAnyArgs(new List<Recipe> { r2 });
+            Situation s = new Situation(0, SituationState.RequiringExecution, r1);
+            r2.Warmup = 100;
+            s.Continue(rc, 1);
+            Assert.AreEqual(r2.Warmup, s.TimeRemaining);
+        }
+
+        [Test]
         public void Situation_GoesExtinct_WhenRecipeConductorSpecifiesNoLoopRecipe()
         {
             Situation s = new Situation(0, SituationState.RequiringExecution, r1);

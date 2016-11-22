@@ -51,6 +51,7 @@ slotsHolder.gameObject.SetActive(false);
         public void DisplayReady()
         {
             button.gameObject.SetActive(true);
+            slotsHolder.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
             slotsHolder.InitialiseSlotsForEmptySituation();
             DisplayRecipe(null);

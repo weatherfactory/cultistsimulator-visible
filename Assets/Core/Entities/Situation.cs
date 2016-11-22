@@ -142,6 +142,7 @@ namespace Assets.Core.Entities
             if (nextRecipes.Any())
             { 
                 currentRecipe = nextRecipes.Single();
+                TimeRemaining = currentRecipe.Warmup;
                 Beginning();
             }
             else
