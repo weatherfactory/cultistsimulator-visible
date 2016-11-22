@@ -48,7 +48,7 @@ namespace Assets.TabletopUi.Scripts.Services
             {
                 situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
                 var window = buildSituationWindowForSituationToken(situationToken);
-                var situationController =new SituationController(situationToken,window,null,null);
+                var situationController =new SituationController(situationToken,window);
                 situationToken.Initialise(verbs[i], situationController);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
 
@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Services
             if (v==null)
                 v=new TransientVerb(recipe.ActionId,recipe.Label,recipe.Description);
             var window = buildSituationWindowForSituationToken(situationToken);
-            var situationController = new SituationController(situationToken, window, null, null);
+            var situationController = new SituationController(situationToken, window);
             situationToken.Initialise(v, situationController);
             
 
@@ -93,7 +93,6 @@ namespace Assets.TabletopUi.Scripts.Services
 
             situationWindow.transform.position = tokenPosition;
             situationWindow.gameObject.SetActive(false);
-            situationWindow.linkedToken = situationToken;
             return situationWindow;
         }
 

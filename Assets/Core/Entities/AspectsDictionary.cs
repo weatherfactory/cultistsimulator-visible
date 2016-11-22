@@ -11,6 +11,7 @@ namespace Assets.Core
     {
         int AspectValue(string aspectId);
 
+        void CombineAspects(IAspectsDictionary additionalAspects);
     }
 
     public class AspectsDictionary: Dictionary<string, int>, IAspectsDictionary
@@ -21,6 +22,18 @@ namespace Assets.Core
                 return this[aspectId];
 
             return 0;
+        }
+
+
+        public void CombineAspects(IAspectsDictionary additionalAspects)
+        {
+            foreach (string k in additionalAspects.Keys)
+            {
+                if (this.ContainsKey(k))
+                    this[k] += additionalAspects[k];
+                else
+                    Add(k, additionalAspects[k]);
+            }
         }
     }
 }

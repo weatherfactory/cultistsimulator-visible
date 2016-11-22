@@ -15,18 +15,15 @@ namespace Assets.TabletopUi
    {
        public readonly SituationToken situationToken;
        private SituationWindow situationWindow;
-       private readonly SlotsContainer _startingSlots;
-       private readonly SlotsContainer _ongoingSlots;
+
        public SituationWindow LinkedSituationWindow { get { return situationWindow;} }
        public Situation situation;
 
 
-       public SituationController(SituationToken t, SituationWindow w,SlotsContainer startingSlots, SlotsContainer ongoingSlots)
+       public SituationController(SituationToken t, SituationWindow w)
        {
            situationToken = t;
            situationWindow = w;
-           _startingSlots = startingSlots;
-           _ongoingSlots = ongoingSlots;
        }
 
 
