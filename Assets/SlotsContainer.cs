@@ -66,7 +66,7 @@ public class SlotsContainer : MonoBehaviour
         PositionStackInSlot(slot, stack);
 
         situationWindow.DisplayRecipeForAspects(GetAspectsFromSlottedCards());
-        stack.Subscribe(situationWindow);
+        stack.SetContainer(situationWindow);
 
         if (stack.HasChildSlots())
             AddSlotsForStack(stack, slot);

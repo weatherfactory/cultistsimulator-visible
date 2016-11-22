@@ -33,8 +33,8 @@ namespace Assets.TabletopUi.Scripts.Services
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
-            token.Subscribe(pf.TabletopManager);
-            token.Subscribe(pf.Notifier);
+            token.SetContainer(pf.TabletopManager);
+            token.SubscribeNotifier(pf.Notifier);
 
             return token;
         }

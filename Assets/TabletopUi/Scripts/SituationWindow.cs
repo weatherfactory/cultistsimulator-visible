@@ -57,7 +57,6 @@ slotsHolder.gameObject.SetActive(false);
 
         public void PopulateAndShow(SituationToken situationToken) {
 
-
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
 
@@ -73,38 +72,10 @@ slotsHolder.gameObject.SetActive(false);
         }
 
 
-
         public void Hide()
         {
             canvasGroupFader.Hide();
         }
-
-
-        RecipeSlot BuildSlot(string slotName = "Recipe Slot", ChildSlotSpecification childSlotSpecification = null)
-        {
-            var slot = slotsHolder.BuildSlot(slotName, childSlotSpecification);
-
-            return slot;
-        }
-
-
-
-
-
-
-
-        private static void ReturnStackToTableTop(ElementStack stack)
-        {
-           // stack.transform.SetParent(transform); // Make sure to parent back to the tabletop
-            stack.transform.localPosition = Vector3.zero;
-            stack.transform.localRotation = Quaternion.identity;
-        }
-
-
-
-
-
-
 
 
         public ElementStacksGateway GetStacksGatewayForOutput()
@@ -132,9 +103,6 @@ slotsHolder.gameObject.SetActive(false);
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);
             if(recipe!=null)
             {
-                var slottedStacks = slotsHolder.GetStacksGateway().GetStacks();
-                foreach(ElementStack s in slottedStacks)
-                    s.Unsubscribe(this);
 
             linkedToken.StoreElementStacks(slotsHolder.GetStacksGateway().GetStacks());
             linkedToken.BeginSituation(recipe);
@@ -162,17 +130,14 @@ slotsHolder.gameObject.SetActive(false);
             { 
             //if picking up a token from an open window
             DisplayRecipeForAspects(slotsHolder.GetAspectsFromSlottedCards());
-            draggableToken.Unsubscribe(this);
+            draggableToken.SetContainer(null);
                 slotsHolder.TokenRemovedFromSlot();
 
             }
 
         }
 
-
-
-
-
+        
         public void DisplayRecipeForAspects(AspectsDictionary aspects)
         {
             Recipe r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, linkedToken.VerbId);

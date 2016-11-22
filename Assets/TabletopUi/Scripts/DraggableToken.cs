@@ -33,8 +33,8 @@ namespace Assets.CS.TabletopUI
         // Draggables all drag on a specifc height and have a specific "default height"
 
         public bool rotateOnDrag = true;
-        protected List<ITokenSubscriber> _subscribers = new List<ITokenSubscriber>();
-
+        protected ITokenSubscriber notifier;
+        protected ITokenSubscriber container;
  
 
         void Awake() {
@@ -43,23 +43,14 @@ namespace Assets.CS.TabletopUI
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
 
-        
-        public void Subscribe(ITokenSubscriber subscriber)
+        public void SubscribeNotifier(ITokenSubscriber n)
         {
-            if(!_subscribers.Contains(subscriber))
-                _subscribers.Add(subscriber);
+            notifier = n;
         }
 
-        public void Unsubscribe(ITokenSubscriber subscriber)
+        public void SetContainer(ITokenSubscriber newContainer)
         {
-            if (_subscribers.Contains(subscriber))
-                _subscribers.Remove(subscriber);
-        }
-        //removes all null subscribers
-        protected List<ITokenSubscriber> RemoveNullSubscribers()
-        {
-            _subscribers.RemoveAll(s => s.Equals(null));
-            return _subscribers;
+            container = newContainer;
         }
 
         public void OnBeginDrag (PointerEventData eventData) {
@@ -116,8 +107,8 @@ namespace Assets.CS.TabletopUI
             if (onChangeDragState != null)
                 onChangeDragState(true);
 
-
-            RemoveNullSubscribers().ForEach(s => s.TokenPickedUp(this));
+            if(container!=null)
+                container.TokenPickedUp(this);
         }
 
         public void OnDrag (PointerEventData eventData) {
@@ -127,7 +118,7 @@ namespace Assets.CS.TabletopUI
 
         public void ReturnToTabletop(INotification reason)
         {
-            RemoveNullSubscribers().ForEach(s=>s.TokenReturnedToTabletop(this,reason));
+            notifier.TokenReturnedToTabletop(this,reason);
         }
 
         // Would solve this differently: By sending the object the drag position and allowing it to position itself as it desires
@@ -184,7 +175,8 @@ namespace Assets.CS.TabletopUI
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
             if (eventData.pointerId >= -1)
             {
-                RemoveNullSubscribers().ForEach(s=>s.TokenInteracted(this));
+                container.TokenInteracted(this);
+              notifier.TokenInteracted(this);
             }
         }
     }

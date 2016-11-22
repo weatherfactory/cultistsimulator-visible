@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts
     public class TabletopElementStacksWrapper: IElementStacksWrapper
     {
         private Transform wrappedTransform;
-        private ITokenSubscriber wrappedSubscriber;
+        private ITokenSubscriber wrappedContainer;
 
         public TabletopElementStacksWrapper(Transform t)
         {
@@ -23,7 +23,7 @@ namespace Assets.TabletopUi.Scripts
         public TabletopElementStacksWrapper(Transform t,ITokenSubscriber s)
         {
             wrappedTransform = t;
-            wrappedSubscriber = s;
+            wrappedContainer = s;
         }
 
 
@@ -31,8 +31,8 @@ namespace Assets.TabletopUi.Scripts
         {
             IElementStack stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(wrappedTransform);
             stack.Populate(elementId,quantity);
-            if(wrappedSubscriber!=null)
-                ((ElementStack) stack).Subscribe(wrappedSubscriber);
+            if(wrappedContainer!=null)
+                ((ElementStack) stack).SetContainer(wrappedContainer);
 
             return stack;
         }
@@ -41,8 +41,8 @@ namespace Assets.TabletopUi.Scripts
         {
             Transform stackTransform = ((ElementStack) stack).transform;
             stackTransform.SetParent(wrappedTransform);
-            if (wrappedSubscriber != null)
-                ((ElementStack)stack).Subscribe(wrappedSubscriber);
+            if (wrappedContainer != null)
+                ((ElementStack)stack).SetContainer(wrappedContainer);
         }
 
 
