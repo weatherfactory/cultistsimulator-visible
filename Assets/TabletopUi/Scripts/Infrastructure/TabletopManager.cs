@@ -48,19 +48,15 @@ namespace Assets.CS.TabletopUI
                 Debug.Log("Can't find element with id " + elementId);
             else
             {
-                IElementStacksWrapper wrapper = new TabletopElementStacksWrapper(tableLevel);
-                ElementStacksGateway esg = new ElementStacksGateway(wrapper);
                 if (change > 0)
-                    esg.IncreaseElement(elementId, change);
+                    GetStacksOnTabletopGateway().IncreaseElement(elementId, change);
                 else
-                    esg.ReduceElement(elementId, change);
+                    GetStacksOnTabletopGateway().ReduceElement(elementId, change);
             }
         }
 
         private ElementStacksGateway GetStacksOnTabletopGateway()
         {
-            //NOTE: ultimately this should have an option to aggregate all stacks everywhere EXCEPT in situations
-            //but INCLUDING stacks not added when this is created
             IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStacksWrapper(tableLevel);
             return new ElementStacksGateway(tabletopStacksWrapper);
         }
@@ -87,14 +83,14 @@ namespace Assets.CS.TabletopUI
 
         void HideSituationWindow(SituationToken situationToken, bool keepCards) {
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
-                PutOnTable(situationToken.transform as RectTransform); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
+                PutOnTable(situationToken); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
             // Going through cards in slots
             var heldCards = situationToken.linkedWindow.GetComponentsInChildren<ElementStack>();
 
             foreach (var item in heldCards) {
                 if (keepCards) // not completing the recipe= keep the cards. Ideally the recipe has already consumed the cards at this point, so we should always free what we have
-                    PutOnTable(item.transform as RectTransform); // remove cards from details window before hiding it, so they aren't removed
+                    PutOnTable(item); // remove cards from details window before hiding it, so they aren't removed
             }
             situationToken.Close();
         }
@@ -107,16 +103,18 @@ namespace Assets.CS.TabletopUI
         {
             ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
             token.transform.localPosition=new Vector3(-500,-250);
-            PutOnTable(token.RectTransform);
+            PutOnTable(token);
         }
 
-        public void PutOnTable(RectTransform rectTransform) {
-            if (rectTransform == null)
-                return;
+        public void PutOnTable(DraggableToken token)
+        {
+            var stack = token as ElementStack;
+            if(stack!=null)
+                GetStacksOnTabletopGateway().AcceptStack(stack);
 
-            rectTransform.SetParent(tableLevel); 
-            rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, 0f);
-            rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
+            token.RectTransform.SetParent(tableLevel); 
+           token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
+            token.RectTransform.localRotation = Quaternion.Euler(0f, 0f, token.RectTransform.eulerAngles.z);
         }
 
         // parents object to "TabletopTransform" and sets its Z to 0.
@@ -174,7 +172,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {
-            PutOnTable(draggableToken.RectTransform);
+            PutOnTable(draggableToken);
         }
 
         #endregion
@@ -188,7 +186,7 @@ namespace Assets.CS.TabletopUI
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
-                PutOnTable(DraggableToken.itemBeingDragged.transform as RectTransform); // Make sure to parent back to the tabletop
+                PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
             }
         }
 
