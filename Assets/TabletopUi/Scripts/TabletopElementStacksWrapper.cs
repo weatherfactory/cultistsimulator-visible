@@ -18,31 +18,23 @@ namespace Assets.TabletopUi.Scripts
         public TabletopElementStacksWrapper(Transform t)
         {
             wrappedTransform = t;
-        }
-
-        public TabletopElementStacksWrapper(Transform t,ITokenSubscriber s)
-        {
-            wrappedTransform = t;
-            wrappedContainer = s;
+            wrappedContainer = wrappedTransform.GetComponent<ITokenSubscriber>();
         }
 
 
         public IElementStack ProvisionElementStack(string elementId, int quantity)
         {
-            IElementStack stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(wrappedTransform);
+            IElementStack stack = PrefabFactory.CreateToken<ElementStack>(wrappedTransform);
             stack.Populate(elementId,quantity);
-            if(wrappedContainer!=null)
-                ((ElementStack) stack).SetContainer(wrappedContainer);
-
-            return stack;
+           return  Accept(stack);
         }
 
-        public void Accept(IElementStack stack)
+        public IElementStack Accept(IElementStack stack)
         {
             Transform stackTransform = ((ElementStack) stack).transform;
             stackTransform.SetParent(wrappedTransform);
-            if (wrappedContainer != null)
-                ((ElementStack)stack).SetContainer(wrappedContainer);
+             ((ElementStack)stack).SetContainer(wrappedContainer);
+            return stack;
         }
 
 

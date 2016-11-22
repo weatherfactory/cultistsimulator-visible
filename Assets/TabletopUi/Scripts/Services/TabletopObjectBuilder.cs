@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             for (int i = 0; i < verbs.Count; i++)
             {
-                situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
+                situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
                 situationToken.Initialise(verbs[i]);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
 
@@ -56,7 +56,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             for (int i = 0; i < 7; i++)
             {
-                stack = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tableLevel);
+                stack = PrefabFactory.CreateToken<ElementStack>(tableLevel);
                 stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
                 stack.transform.localPosition = new Vector3(-750f + i * cardWidth, 0f);
             }
@@ -66,7 +66,7 @@ namespace Assets.TabletopUi.Scripts.Services
         {
             var recipe = Registry.Compendium.GetRecipeById(recipeId);
 
-            var situationToken = PrefabFactory.CreateTokenWithSubscribers<SituationToken>(tableLevel);
+            var situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
 
               IVerb v = Registry.Compendium.GetVerbById(recipe.ActionId);
 

@@ -147,7 +147,7 @@ namespace Assets.CS.TabletopUI
             {
                 if(cardPickedUp.Quantity>1)
                 {
-                var cardLeftBehind = PrefabFactory.CreateTokenWithSubscribers<ElementStack>(tableLevel);
+                var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(tableLevel);
                 cardLeftBehind.transform.position = draggableToken.transform.position;
                 cardLeftBehind.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity-1);
                 cardPickedUp.SetQuantity(1);

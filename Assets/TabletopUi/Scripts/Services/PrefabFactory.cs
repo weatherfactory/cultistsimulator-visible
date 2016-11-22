@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Services
         Notifier Notifier = null;
 
 
-        public static T CreateTokenWithSubscribers<T>(Transform destination) where T : DraggableToken
+        public static T CreateToken<T>(Transform destination) where T : DraggableToken
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
@@ -39,7 +39,7 @@ namespace Assets.TabletopUi.Scripts.Services
             return token;
         }
 
-
+  
 
         public static T CreateLocally<T>(Transform parent) where T : Component
         {

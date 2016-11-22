@@ -80,7 +80,7 @@ slotsHolder.gameObject.SetActive(false);
 
         public ElementStacksGateway GetStacksGatewayForOutput()
         {
-            return new ElementStacksGateway(new TabletopElementStacksWrapper(outputHolder,this));
+            return new ElementStacksGateway(new TabletopElementStacksWrapper(outputHolder));
         }
 
         private void DisplayRecipe(Recipe r)
