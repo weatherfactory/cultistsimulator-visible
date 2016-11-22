@@ -41,7 +41,7 @@ namespace Assets.Core.Entities
             TimeRemaining = timeRemaining;
             State = state;
             foreach (var s in subscribers)
-                s.SituationContinues();
+               s.SituationInitialised();
         }
 
         public void Subscribe(ISituationSubscriber s)

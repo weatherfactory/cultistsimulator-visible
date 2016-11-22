@@ -9,7 +9,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationSubscriber
     {
-
+        void SituationInitialised();
         void SituationContinues();
         void SituationExecutingRecipe(IEffectCommand effectCommand);
         void SituationExtinct();

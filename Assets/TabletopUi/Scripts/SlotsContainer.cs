@@ -21,7 +21,8 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
     {
         //clear any slots which don't exist in this recipe
 
-     //foreach(ChildSlotSpecification css in r.ChildSlotSpecifications)
+        foreach (ChildSlotSpecification css in r.ChildSlotSpecifications)
+            BuildSlot(css.Label, css);
 
     }
 

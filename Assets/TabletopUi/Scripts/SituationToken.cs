@@ -101,9 +101,16 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        public void SituationInitialised()
+        {
+            //create any slots for recipe;
+            SetTimerVisibility(true);
+            SituationContinues();
+        }
+
         public void SituationContinues()
         {
-            SetTimerVisibility(true);
+            
             DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
         }
 
