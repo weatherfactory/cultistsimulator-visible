@@ -30,7 +30,7 @@ namespace Assets.TabletopUi.SlotsContainers
             // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
             PositionStackInSlot(slot, stack);
 
-            _situationController.PredictRecipe();
+            _situationController.UpdateSituationDisplay();
             stack.SetContainer(this);
 
         }
@@ -38,7 +38,7 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void TokenPickedUp(DraggableToken draggableToken)
         {
-            _situationController.PredictRecipe();
+            _situationController.UpdateSituationDisplay();
             draggableToken.SetContainer(null);
 
         }

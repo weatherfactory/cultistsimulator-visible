@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void TokenPickedUp(DraggableToken draggableToken)
         {
-            _situationController.PredictRecipe();
+            _situationController.UpdateSituationDisplay();
             draggableToken.SetContainer(null);
             TokenRemovedFromSlot();
         }

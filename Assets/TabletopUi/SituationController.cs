@@ -38,13 +38,7 @@ namespace Assets.TabletopUi
         public void UpdateSituationDisplay()
         {
 
-            AspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
-
-            AspectsDictionary additionalAspects = situationToken.GetAspectsFromSlottedElements();
-
-            AspectsDictionary allAspects=new AspectsDictionary();
-            allAspects.CombineAspects(existingAspects);
-            allAspects.CombineAspects(additionalAspects);
+            var allAspects = GetAspectsAvailableToSituation();
 
             RecipeConductor rc = new RecipeConductor(Registry.Compendium, allAspects,
             new Dice());
@@ -53,8 +47,20 @@ namespace Assets.TabletopUi
             situationWindow.DisplaySituation(situation.GetTitle(),situation.GetDescription(),prediction);
         }
 
+       private AspectsDictionary GetAspectsAvailableToSituation()
+       {
+           AspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
 
-        public void DisplayStartingRecipe()
+           AspectsDictionary additionalAspects = situationToken.GetAspectsFromSlottedElements();
+
+           AspectsDictionary allAspects = new AspectsDictionary();
+           allAspects.CombineAspects(existingAspects);
+           allAspects.CombineAspects(additionalAspects);
+           return allAspects;
+       }
+
+
+       public void DisplayStartingRecipe()
         {
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();
 
@@ -74,7 +80,7 @@ namespace Assets.TabletopUi
             if (situation != null)
             {
                 RecipeConductor rc = new RecipeConductor(Registry.Compendium,
-                    situationToken.GetSituationStacksGateway().GetTotalAspects(), new Dice());
+                GetAspectsAvailableToSituation(), new Dice());
                 situation.Continue(rc, interval);
             }
         }
