@@ -16,33 +16,31 @@ namespace Assets.Core.Entities
         public float TimeRemaining { private set; get; }
         public float Warmup { private set; get; }
         public string RecipeId { get { return currentRecipe == null ? null : currentRecipe.Id; } }
+
+        public IList<ChildSlotSpecification> GetChildSlots()
+        {
+            if (currentRecipe.ChildSlotSpecifications.Any())
+                return currentRecipe.ChildSlotSpecifications;
+            else
+                return new List<ChildSlotSpecification>();
+        }
         private HashSet<ISituationSubscriber> subscribers=new HashSet<ISituationSubscriber>();
 
         public Situation(Recipe recipe)
         {
-            InitialiseWithRecipe(recipe);
+            currentRecipe = recipe;
+            Warmup = recipe.Warmup;
+            TimeRemaining = recipe.Warmup;
+            State = SituationState.Unstarted;
         }
-
-        public void InitialiseWithRecipe(Recipe withRecipe)
-        {
-            Initialise(withRecipe.Warmup,SituationState.Ongoing, withRecipe);
-        }
-
         public Situation(float timeRemaining, SituationState state, Recipe withRecipe)
-        {
-            Initialise(timeRemaining, state, withRecipe);
-        }
-
-
-        public void Initialise(float timeRemaining, SituationState state, Recipe withRecipe)
         {
             currentRecipe = withRecipe;
             Warmup = withRecipe.Warmup;
             TimeRemaining = timeRemaining;
             State = state;
-            foreach (var s in subscribers)
-               s.SituationInitialised();
         }
+
 
         public void Subscribe(ISituationSubscriber s)
         {
@@ -82,6 +80,10 @@ namespace Assets.Core.Entities
             {
                 RequireExecution(rc);
             }
+            else if (State == SituationState.Unstarted)
+            {
+                Beginning();
+            }
             else
             {
                 TimeRemaining = TimeRemaining - interval;
@@ -102,12 +104,19 @@ namespace Assets.Core.Entities
 
         }
 
+        public void Beginning()
+        {
+            State=SituationState.Ongoing;
+            foreach (var s in subscribers)
+                s.SituationBeginning(this);
+        }
+
 
         private void Ongoing()
         {
             State=SituationState.Ongoing;
             foreach (var s in subscribers)
-                s.SituationContinues();
+                s.SituationContinues(this);
         }
 
         private void RequireExecution(IRecipeConductor rc)
@@ -131,7 +140,10 @@ namespace Assets.Core.Entities
 
             var nextRecipes = rc.GetNextRecipes(currentRecipe);
             if (nextRecipes.Any())
-                InitialiseWithRecipe(nextRecipes.Single());
+            { 
+                currentRecipe = nextRecipes.Single();
+                Beginning();
+            }
             else
                 Extinct();
         }

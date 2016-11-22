@@ -6,6 +6,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
@@ -14,7 +15,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindow : MonoBehaviour {
+    public class SituationWindow : MonoBehaviour,ISituationSubscriber {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
@@ -116,6 +117,27 @@ slotsHolder.gameObject.SetActive(false);
             DisplayRecipe(r);
         }
 
+
+        public void SituationBeginning(Situation s)
+        {
+            title.text = s.GetTitle();
+            description.text = s.GetDescription();
+            NextRecipe.text=linkedToken.GetNextRecipeDescription();
+        }
+
+        public void SituationContinues(Situation s)
+        {
+     
+        }
+
+        public void SituationExecutingRecipe(IEffectCommand effectCommand)
+        {
         
+        }
+
+        public void SituationExtinct()
+        {
+      
+        }
     }
 }

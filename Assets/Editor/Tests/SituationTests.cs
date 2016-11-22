@@ -30,9 +30,25 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void SituationMovesFromOngoingToRequiringExecution_WhenContinuingAtTimeBelowZero()
+        public void NewSituation_IsStateUnstarted()
         {
             Situation s=new Situation(r1);
+            Assert.AreEqual(SituationState.Unstarted,s.State);
+        }
+
+
+        [Test]
+        public void UnstartedSituation_MovesToOngoingAtFirstContinue()
+        {
+            Situation s = new Situation(r1);
+            s.Continue(rc, 1);
+            Assert.AreEqual(SituationState.Ongoing, s.State);
+        }
+
+        [Test]
+        public void SituationMovesFromOngoingToRequiringExecution_WhenContinuingAtTimeBelowZero()
+        {
+            Situation s = new Situation(0, SituationState.Ongoing, r1);
             Assert.AreEqual(SituationState.Ongoing,s.State);
             s.Continue(rc, 1);
             Assert.AreEqual(SituationState.RequiringExecution, s.State);
@@ -41,7 +57,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_RequiresExecution_When_ContinuingAtTimeBelowZero()
         {
-            Situation s = new Situation(r1);
+            Situation s = new Situation(0,SituationState.Ongoing,r1);
             ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
             s.Subscribe(subscriber);
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();
@@ -79,7 +95,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_ExecutesAlternativesSpecifiedByRecipeConductor()
         {
-            Situation s = new Situation(r1);
+            Situation s = new Situation(0,SituationState.Ongoing, r1);
             ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
             s.Subscribe(subscriber);
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();

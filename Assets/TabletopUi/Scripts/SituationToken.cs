@@ -26,7 +26,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] private GameObject elementsInSituation;
-        [SerializeField] private SlotsContainer slotsInSituation;
+        [SerializeField] private SlotsContainer recipeSlotContainer;
         
         private IVerb _verb;
         private Situation situation;
@@ -47,15 +47,12 @@ namespace Assets.CS.TabletopUI
             get { return situation != null; }
         }
 
-        private float timeRemaining = 0f;
-        private int numCompletions = 0; // Stands for the amount of completed cycles.
 
         public void BeginSituation(Recipe r)
         {
             situation=new Situation(r);
             situation.Subscribe(this);
-            SetTimerVisibility(true);
-            slotsInSituation.InitialiseSlotsForRecipe(r);
+            situation.Subscribe(linkedWindow);
 
         }
 
@@ -101,17 +98,16 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public void SituationInitialised()
+        public void SituationBeginning(Situation s)
         {
-            //create any slots for recipe;
+            recipeSlotContainer.InitialiseSlotsForActiveSituation(s);
             SetTimerVisibility(true);
-            SituationContinues();
+            SituationContinues(s);
         }
 
-        public void SituationContinues()
+        public void SituationContinues(Situation s)
         {
-            
-            DisplayTimeRemaining(situation.Warmup, situation.TimeRemaining);
+            DisplayTimeRemaining(s.Warmup, s.TimeRemaining);
         }
 
         public void SituationExecutingRecipe(IEffectCommand command)

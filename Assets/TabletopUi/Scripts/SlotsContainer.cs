@@ -15,13 +15,13 @@ public class SlotsContainer : MonoBehaviour,ITokenSubscriber
 {
 
     [SerializeField] private SituationWindow situationWindow;
-    public RecipeSlot primarySlot;
+    private RecipeSlot primarySlot;
 
-    public void InitialiseSlotsForRecipe(Recipe r)
+    public void InitialiseSlotsForActiveSituation(Situation s)
     {
         //clear any slots which don't exist in this recipe
 
-        foreach (ChildSlotSpecification css in r.ChildSlotSpecifications)
+        foreach (ChildSlotSpecification css in s.GetChildSlots())
             BuildSlot(css.Label, css);
 
     }
