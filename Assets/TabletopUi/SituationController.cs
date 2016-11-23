@@ -8,6 +8,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Assets.TabletopUi
 {
@@ -97,13 +98,19 @@ namespace Assets.TabletopUi
                 RecipeConductor rc = new RecipeConductor(Registry.Compendium,
                 GetAspectsAvailableToSituation(), new Dice());
                 situation.Continue(rc, interval);
+                fillGreedySlots();
             }
         }
 
+       private void fillGreedySlots()
+       {
+var unfilledGreedySlots=situationToken.GetUnfilledGreedySlots();
+            foreach(var s in unfilledGreedySlots)
+                Debug.Log(s.GoverningSlotSpecification.Label + " is greedy and unfilled");
+       }
 
 
-
-        public void SituationBeginning(Situation s)
+       public void SituationBeginning(Situation s)
        {
 
            situationToken.BuildSlots(s.GetSlots());

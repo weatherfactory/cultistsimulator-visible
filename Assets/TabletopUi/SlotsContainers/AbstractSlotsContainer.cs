@@ -26,6 +26,10 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenSubscriber
     }
 
 
+    public IList<RecipeSlot> GetAllSlots()
+    {
+     return  new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
+    }
 
     void HandleOnSlotDroppedOn(RecipeSlot slot)
     {

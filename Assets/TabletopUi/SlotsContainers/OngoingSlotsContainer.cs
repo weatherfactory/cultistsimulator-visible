@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
         {
-            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
+            IList<RecipeSlot> currentSlots = GetAllSlots();
             foreach (var currentSlot in currentSlots)
             {
                 ClearAndDestroySlot(currentSlot);
@@ -51,6 +51,12 @@ namespace Assets.TabletopUi.SlotsContainers
             _situationController.UpdateSituationDisplay();
             draggableToken.SetContainer(null);
 
+        }
+
+        public IEnumerable<RecipeSlot> GetUnfilledGreedySlots()
+        {
+            var slots = GetAllSlots();
+            return slots.Where(s => s.GoverningSlotSpecification.Greedy && s.GetElementStackInSlot() == null);
         }
     }
 }

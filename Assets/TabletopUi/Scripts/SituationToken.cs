@@ -158,6 +158,11 @@ namespace Assets.CS.TabletopUI
         {
             ongoingSlotsContainer.UpdateSlots(slotsToBuild);
         }
+
+        public IEnumerable<RecipeSlot> GetUnfilledGreedySlots()
+        {
+            return ongoingSlotsContainer.GetUnfilledGreedySlots();
+        }
     }
 
 

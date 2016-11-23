@@ -18,6 +18,13 @@
         description: "Time, the sundial's shadow, passes. I must eat, if I am to live.",
         warmup: 60,
         craftable: false,
+		slots: {
+				"provisions":
+					{
+					required: {shilling: 1},
+					forbidden: {}
+					}
+				},
         loop: "needs"
     },
 	   {

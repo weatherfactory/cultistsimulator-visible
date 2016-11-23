@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.SlotsContainers
 
         protected void RemoveAnyChildSlotsWithEmptyParent()
         {
-            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
+            IList<RecipeSlot> currentSlots = GetAllSlots();
             foreach (RecipeSlot s in currentSlots)
             {
                 if (s != null & s.GetElementStackInSlot() == null & s.childSlots.Count > 0)

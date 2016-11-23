@@ -180,7 +180,7 @@
 		 slots:
             {
 			"assistant": {  required: {assistant:1, secrethistories:1,atlasnotes: 1},
-                forbidden: {}, greedy: true},
+                forbidden: {}},
 			"material": {  required: {secrethistories:1},
                 forbidden: {}}
 			}

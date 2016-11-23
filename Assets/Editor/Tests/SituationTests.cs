@@ -51,6 +51,7 @@ namespace Assets.Editor.Tests
         {
             Situation s = new Situation(0, SituationState.Ongoing, r1);
             Assert.AreEqual(SituationState.Ongoing,s.State);
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
             s.Continue(rc, 1);
             Assert.AreEqual(SituationState.RequiringExecution, s.State);
         }
@@ -61,7 +62,6 @@ namespace Assets.Editor.Tests
             Situation s = new Situation(0,SituationState.Ongoing,r1);
             ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
             s.Subscribe(subscriber);
-            IRecipeConductor rc = Substitute.For<IRecipeConductor>();
 
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
 
