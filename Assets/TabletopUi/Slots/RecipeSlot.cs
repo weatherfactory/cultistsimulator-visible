@@ -56,10 +56,7 @@ namespace Assets.CS.TabletopUI
         {
             var stack = s as ElementStack;
 
-            var wrapper=new TabletopElementStacksWrapper(transform);
-            var gateway=new ElementStacksGateway(wrapper);
-
-            gateway.AcceptStack(s);
+           GetElementStacksGateway().AcceptStack(s);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
@@ -83,7 +80,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {
-
+            onCardPickedUp(draggableToken as ElementStack);
         }
 
         public void TokenInteracted(DraggableToken draggableToken)
@@ -92,5 +89,10 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool AllowDrag { get { return true; }}
+        public ElementStacksGateway GetElementStacksGateway()
+        {
+            IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
+            return new ElementStacksGateway(tabletopStacksWrapper);
+        }
     }
 }

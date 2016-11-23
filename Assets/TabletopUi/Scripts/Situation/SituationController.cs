@@ -37,7 +37,7 @@ namespace Assets.TabletopUi
        {
             situationWindow.transform.position = situationToken.transform.position;
             situationWindow.Show();
-            situationToken.SituationStorage.SetActive(true);
+            situationToken.situationStorage.gameObject.SetActive(true);
             if (situation!=null)
                 situationWindow.DisplayOngoing();
             else
@@ -50,7 +50,7 @@ namespace Assets.TabletopUi
 
         public void Close()
         {
-            situationToken.SituationStorage.SetActive(false);
+            situationToken.situationStorage.gameObject.SetActive(false);
             situationWindow.Hide();
             situationToken.IsOpen=false;
         }

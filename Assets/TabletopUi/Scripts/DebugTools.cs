@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DebugTools : MonoBehaviour
 {
-    [SerializeField] private TabletopManager tabletopManager;
+    [SerializeField] private TabletopContainer tabletopContainer;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField adjustElementNamed;
     [SerializeField] private Button btnPlusOne;
@@ -24,12 +24,12 @@ public class DebugTools : MonoBehaviour
     }
     void AddCard(string elementId)
     {
-        tabletopManager.ModifyElementQuantity(elementId,1);
+        tabletopContainer.GetElementStacksGateway().ModifyElementQuantity(elementId,1);
     }
 
     void DecrementElement(string elementId)
     {
-        tabletopManager.ModifyElementQuantity(elementId, -1);
+        tabletopContainer.GetElementStacksGateway().ModifyElementQuantity(elementId, -1);
     }
 
     void FastForward(float interval)

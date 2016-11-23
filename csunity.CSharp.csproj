@@ -117,21 +117,21 @@
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\IntExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
     <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\SituationOutputContainer.cs" />
-    <Compile Include="Assets\TabletopUi\SlotsContainers\OngoingSlotsContainer.cs" />
-    <Compile Include="Assets\TabletopUi\SlotsContainers\AbstractSlotsContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Quarantine\Dice.cs" />
-    <Compile Include="Assets\TabletopUi\Quarantine\IElementsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopElementStackWrapper.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationOutputContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Slots\OngoingSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Slots\AbstractSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Dice.cs" />
     <Compile Include="Assets\TabletopUi\Quarantine\ResourcesManager.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\AspectFrame.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\AspectsDisplay.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectFrame.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectsDisplay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\CanvasGroupFader.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\DeactivateOnPlay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\DebugTools.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\SituationStorage.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationStorage.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\DraggableToken.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\ElementDetailsWindow.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\ElementStack.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementDetailsWindow.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStack.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
@@ -139,18 +139,18 @@
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notifier.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\RecipeSlot.cs" />
+    <Compile Include="Assets\TabletopUi\Slots\RecipeSlot.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\PrefabFactory.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\Registry.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\TabletopObjectBuilder.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\ShittyShadowTest.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\SituationToken.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\ShittyShadowTest.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationToken.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopElementStacksWrapper.cs" />
-    <Compile Include="Assets\TabletopUi\SituationController.cs" />
-    <Compile Include="Assets\TabletopUi\SlotsContainers\StartingSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackWrapper.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationController.cs" />
+    <Compile Include="Assets\TabletopUi\Slots\StartingSlotsContainer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />
@@ -297,5 +297,6 @@
     <None Include="Assets\UnityTestTools\LICENSE.txt" />
     <None Include="Assets\UnityTestTools\changelog.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

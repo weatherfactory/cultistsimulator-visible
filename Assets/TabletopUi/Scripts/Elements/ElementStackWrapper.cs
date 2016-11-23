@@ -11,12 +11,12 @@ using UnityEngine.Assertions;
 
 namespace Assets.TabletopUi.Scripts
 {
-    public class TabletopElementStacksWrapper: IElementStacksWrapper
+    public class ElementStackWrapper: IElementStacksWrapper
     {
-        private Transform wrappedTransform;
-        private ITokenContainer wrappedContainer;
+        protected Transform wrappedTransform;
+        protected ITokenContainer wrappedContainer;
 
-        public TabletopElementStacksWrapper(Transform t)
+        public ElementStackWrapper(Transform t)
         {
             wrappedTransform = t;
             wrappedContainer = wrappedTransform.GetComponent<ITokenContainer>();
@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.Scripts
            return  Accept(stack);
         }
 
-        public IElementStack Accept(IElementStack stack)
+        public virtual IElementStack Accept(IElementStack stack)
         {
             Transform stackTransform = ((ElementStack) stack).transform;
             stackTransform.SetParent(wrappedTransform);

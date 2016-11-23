@@ -139,13 +139,13 @@ namespace Assets.CS.TabletopUI
             if (Quantity > 1)
             {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(transform.parent);
-                cardLeftBehind.transform.position = transform.position;
+       
                 cardLeftBehind.Populate(ElementId, Quantity - 1);
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
-
                 SetQuantity(1);
-                cardLeftBehind.transform.localScale=Vector3.one;
-                var gateway = new ElementStacksGateway(new TabletopElementStacksWrapper(transform.parent));
+                cardLeftBehind.transform.position = transform.position;
+                var gateway = container.GetElementStacksGateway();
+
                 gateway.AcceptStack(cardLeftBehind);
             }
 

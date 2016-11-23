@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
-        [SerializeField] public GameObject SituationStorage;
+        [SerializeField] public SituationStorage situationStorage;
         [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
 
         private IVerb _verb;
@@ -135,9 +135,7 @@ namespace Assets.CS.TabletopUI
 
         public ElementStacksGateway GetSituationStorageStacksGateway()
         {
-            IElementStacksWrapper w = new TabletopElementStacksWrapper(SituationStorage.transform);
-            ElementStacksGateway g = new ElementStacksGateway(w);
-            return g;
+            return situationStorage.GetElementStacksGateway();
         }
 
 

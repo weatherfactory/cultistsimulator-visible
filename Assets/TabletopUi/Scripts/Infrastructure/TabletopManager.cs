@@ -50,19 +50,6 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void ModifyElementQuantity(string elementId, int change)
-        {
-            if (Registry.Compendium.GetElementById(elementId) == null)
-                Debug.Log("Can't find element with id " + elementId);
-            else
-            {
-                if (change > 0)
-                    GetStacksOnTabletopGateway().IncreaseElement(elementId, change);
-                else
-                    GetStacksOnTabletopGateway().ReduceElement(elementId, change);
-            }
-        }
-
         public HashSet<IRecipeSlot> FindStacksToFillSlots(HashSet<IRecipeSlot> slotsToFill)
         {
             var unprocessedSlots=new HashSet<IRecipeSlot>();
@@ -86,7 +73,7 @@ namespace Assets.CS.TabletopUI
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
-            var stacks= GetStacksOnTabletopGateway().GetStacks();
+            var stacks= tabletopContainer.GetElementStacksGateway().GetStacks();
                 foreach(var stack in stacks)
                     if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                         return stack;
@@ -94,11 +81,6 @@ namespace Assets.CS.TabletopUI
             return null;
         }
 
-        private ElementStacksGateway GetStacksOnTabletopGateway()
-        {
-            IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStacksWrapper(tabletopContainer.transform);
-            return new ElementStacksGateway(tabletopStacksWrapper);
-        }
 
 
 
@@ -146,7 +128,7 @@ namespace Assets.CS.TabletopUI
             
             if(stack!=null)
             { 
-                GetStacksOnTabletopGateway().AcceptStack(stack);
+                tabletopContainer.GetElementStacksGateway().AcceptStack(stack);
                 stack.transform.position = airPosition;
             }
             var situationToken = token as SituationToken;
@@ -155,7 +137,7 @@ namespace Assets.CS.TabletopUI
 
             token.RectTransform.SetParent(tabletopContainer.transform);
             token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
-            token.RectTransform.localRotation = Quaternion.Euler(0f, 0f, token.RectTransform.eulerAngles.z);
+            token.RectTransform.localRotation = Quaternion.identity;
         }
 
         // parents object to "TabletopTransform" and sets its Z to 0.

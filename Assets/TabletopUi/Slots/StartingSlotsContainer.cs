@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using UnityEngine;
 
@@ -36,11 +37,11 @@ namespace Assets.TabletopUi.SlotsContainers
             ArrangeSlots();
         }
 
-        public override void TokenPickedUp(DraggableToken draggableToken)
+        public override void RespondToStackPickedUp(IElementStack stack)
         {
             _situationController.UpdateAspectsDisplay();
-            draggableToken.SetContainer(null);
-            TokenRemovedFromSlot();
+            RemoveAnyChildSlotsWithEmptyParent();
+            ArrangeSlots();
         }
 
         protected void RemoveAnyChildSlotsWithEmptyParent()
@@ -58,11 +59,6 @@ namespace Assets.TabletopUi.SlotsContainers
             }
         }
 
-        public void TokenRemovedFromSlot()
-        {
-            RemoveAnyChildSlotsWithEmptyParent();
-            ArrangeSlots();
-        }
 
 
         public void ArrangeSlots()

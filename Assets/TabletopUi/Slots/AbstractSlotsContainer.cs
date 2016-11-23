@@ -51,14 +51,11 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         }
 
         slot.onCardDropped += HandleOnSlotDroppedOn;
-        slot.onCardPickedUp += HandleCardPickedUp;
+        slot.onCardPickedUp += RespondToStackPickedUp;
         return slot;    
     }
 
-    public void HandleCardPickedUp(IElementStack stack)
-    {
-        TokenPickedUp(stack as DraggableToken);
-    }
+    public abstract void RespondToStackPickedUp(IElementStack stack);
 
     public abstract void RespondToStackAdded(RecipeSlot slot, ElementStack stack);
 
@@ -82,10 +79,6 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         return stacks;
     }
 
-    //public ElementStacksGateway GetStacksGateway()
-    //{
-    //    return new ElementStacksGateway(new TabletopElementStacksWrapper(transform));
-    //}
 
 
 
@@ -111,12 +104,6 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
 
 
-    public abstract void TokenPickedUp(DraggableToken draggableToken);
-
-    public void TokenInteracted(DraggableToken draggableToken)
-    {
-        
-    }
 
     public bool AllowDrag { get { return true; } }
 }

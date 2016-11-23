@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.SlotsContainers
@@ -40,9 +41,9 @@ namespace Assets.TabletopUi.SlotsContainers
             _situationController.UpdateSituationDisplay();
         }
 
-        public override void TokenPickedUp(DraggableToken draggableToken)
+        public override void RespondToStackPickedUp(IElementStack stack)
         {
-      
+            _situationController.UpdateAspectsDisplay();
         }
 
 

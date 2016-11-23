@@ -107,7 +107,6 @@ namespace Assets.CS.TabletopUI
 
             container.TokenPickedUp(this);
 
-            container = null;
 
         }
 

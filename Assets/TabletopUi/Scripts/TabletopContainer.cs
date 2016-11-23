@@ -3,6 +3,8 @@ using System.Collections;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Services;
 
 public class TabletopContainer : MonoBehaviour,ITokenContainer
@@ -34,4 +36,9 @@ public void TokenInteracted(DraggableToken draggableToken)
     }
 
     public bool AllowDrag { get { return true; } }
+    public ElementStacksGateway GetElementStacksGateway()
+    {
+        IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStackWrapper(transform);
+        return new ElementStacksGateway(tabletopStacksWrapper);
+    }
 }
