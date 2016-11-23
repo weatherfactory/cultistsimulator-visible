@@ -32,6 +32,7 @@ namespace Noon
         public static string KSLOTS="slots";
         public static string KREQUIRED="required";
         public static string KFORBIDDEN = "forbidden";
+        public static string KGREEDY = "greedy";
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
         public const string KCHARACTERTITLE = "title";

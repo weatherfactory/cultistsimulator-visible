@@ -34,22 +34,28 @@ public class ContentImporter
 
             foreach (string k in htSlots.Keys)
             {
-                cssList.Add(new SlotSpecification(k));
 
                 Hashtable htThisSlot = htSlots[k] as Hashtable;
+
+                SlotSpecification slotSpecification=new SlotSpecification(k);
+
+                if ((string) htThisSlot[Constants.KGREEDY] == "true")
+                    slotSpecification.Greedy = true;
 
                 Hashtable htRequired = htThisSlot["required"] as Hashtable;
                 if (htRequired != null)
                 {
                     foreach (string rk in htRequired.Keys)
-                        cssList[cssList.Count - 1].Required.Add(rk, 1);
+                        slotSpecification.Required.Add(rk, 1);
                 }
                 Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
                 if (htForbidden != null)
                 {
                     foreach (string fk in htForbidden.Keys)
-                        cssList[cssList.Count - 1].Forbidden.Add(fk, 1);
+                        slotSpecification.Forbidden.Add(fk, 1);
                 }
+
+                cssList.Add(slotSpecification);
             }
         }
 
@@ -79,7 +85,7 @@ public class ContentImporter
         foreach (Hashtable htElement in alElements)
         {
             Hashtable htAspects = htElement.GetHashtable("aspects");
-            Hashtable htSlots = htElement.GetHashtable("slots");
+            Hashtable htSlots = htElement.GetHashtable(Constants.KSLOTS);
 
             Element element = new Element(htElement.GetString(CONST_ID),
                htElement.GetString(CONST_LABEL),
@@ -181,7 +187,7 @@ public class ContentImporter
                 }
 
             Hashtable htSlots = htEachRecipe.GetHashtable(Constants.KSLOTS);
-            r.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
+            r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
 
             ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);
             if(alRecipeAlternatives!=null)

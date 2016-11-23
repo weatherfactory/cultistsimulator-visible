@@ -61,16 +61,18 @@ namespace CS.Tests
             Hashtable htRequirements = new Hashtable();
             Hashtable htPersistIngredients = new Hashtable();
 
-            Hashtable htActualSlots = new Hashtable()
+            Hashtable htSlotSpecifications = new Hashtable()
         { { Constants.KREQUIRED,new Hashtable()
         {
             {SLOT_REQUIRED_ASPECT_ID,SLOT_REQUIRED_ASPECT_VALUE}
         }},
-        { "forbidden",new Hashtable()
+        { Constants.KFORBIDDEN,new Hashtable()
         {
             {SLOT_FORBIDDEN_ASPECT_ID,SLOT_FORBIDDEN_ASPECT_VALUE}
-        }}};
-            Hashtable htSlotOuterTable = new Hashtable() { { SLOT_LABEL, htActualSlots } };
+        }},
+                {Constants.KGREEDY,"true"}
+            };
+            Hashtable htSlotOuterTable = new Hashtable() { { SLOT_LABEL, htSlotSpecifications } };
 
             Hashtable htRetrievesContents = new Hashtable();
             ArrayList alAlternatives = new ArrayList();
@@ -151,12 +153,13 @@ namespace CS.Tests
         private void ConfirmRecipeSlotsImported(List<Recipe> recipesImported)
         {
             Recipe r = recipesImported.First();
-            Assert.AreEqual(1, r.ChildSlotSpecifications.Count);
-            Assert.AreEqual(SLOT_LABEL, r.ChildSlotSpecifications.Single().Label);
-            Assert.AreEqual(SLOT_REQUIRED_ASPECT_ID, r.ChildSlotSpecifications.Single().Required.Single().Key);
-            Assert.AreEqual(SLOT_REQUIRED_ASPECT_VALUE, r.ChildSlotSpecifications.Single().Required.Single().Value);
-            Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_ID, r.ChildSlotSpecifications.Single().Forbidden.Single().Key);
-            Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_VALUE, r.ChildSlotSpecifications.Single().Forbidden.Single().Value);
+            Assert.AreEqual(1, r.SlotSpecifications.Count);
+            Assert.AreEqual(SLOT_LABEL, r.SlotSpecifications.Single().Label);
+            Assert.IsTrue(r.SlotSpecifications.Single().Greedy);
+            Assert.AreEqual(SLOT_REQUIRED_ASPECT_ID, r.SlotSpecifications.Single().Required.Single().Key);
+            Assert.AreEqual(SLOT_REQUIRED_ASPECT_VALUE, r.SlotSpecifications.Single().Required.Single().Value);
+            Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_ID, r.SlotSpecifications.Single().Forbidden.Single().Key);
+            Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_VALUE, r.SlotSpecifications.Single().Forbidden.Single().Value);
         }
 
         private void ConfirmRecipePersistedAndRetrievedElements(List<Recipe> recipesImported)

@@ -19,8 +19,8 @@ namespace Assets.Core.Entities
 
         public IList<SlotSpecification> GetSlots()
         {
-            if (currentPrimaryRecipe.ChildSlotSpecifications.Any())
-                return currentPrimaryRecipe.ChildSlotSpecifications;
+            if (currentPrimaryRecipe.SlotSpecifications.Any())
+                return currentPrimaryRecipe.SlotSpecifications;
             else
                 return new List<SlotSpecification>();
         }

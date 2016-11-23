@@ -19,6 +19,7 @@ public class SlotSpecification
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
     public Dictionary<string, int> Forbidden { get; set; }
+    public bool Greedy = false;
 
     public SlotSpecification(string label)
     {
