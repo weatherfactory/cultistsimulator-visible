@@ -10,7 +10,7 @@ using Assets.CS.TabletopUI;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform allContent;
-    private HashSet<IRecipeSlot> SlotRequestsToFill=new HashSet<IRecipeSlot>();
+    private HashSet<IRecipeSlot> outstandingSlotsToFill=new HashSet<IRecipeSlot>();
     private int beatCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20;
@@ -35,7 +35,7 @@ public class Heart : MonoBehaviour
         if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
         {
             beatCounter = 0;
-            Registry.TabletopManager.FillSlots(SlotRequestsToFill);
+          outstandingSlotsToFill=Registry.TabletopManager.FillSlots(outstandingSlotsToFill);
         }
 
 
@@ -52,7 +52,7 @@ public class Heart : MonoBehaviour
         {
            HeartbeatResponse response=st.ExecuteHeartbeat(interval);
             foreach (var r in response.SlotsToFill)
-                SlotRequestsToFill.Add(r);
+                outstandingSlotsToFill.Add(r);
         }
     }
 

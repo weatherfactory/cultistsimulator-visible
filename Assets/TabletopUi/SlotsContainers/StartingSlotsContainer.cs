@@ -27,15 +27,9 @@ namespace Assets.TabletopUi.SlotsContainers
                 slot.childSlots.Add(BuildSlot("childslot of " + stack.ElementId, childSlotSpecification));
         }
 
-        public override void StackInSlot(RecipeSlot slot, ElementStack stack)
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStack stack)
         {
-            DraggableToken.resetToStartPos = false;
-            // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-            PositionStackInSlot(slot, stack);
-
             _situationController.DisplayStartingRecipe();
-            stack.SetContainer(this);
-
             if (stack.HasChildSlots())
                 AddSlotsForStack(stack, slot);
 
@@ -44,7 +38,7 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void TokenPickedUp(DraggableToken draggableToken)
         {
-            _situationController.UpdateSituationDisplay();
+            _situationController.UpdateAspectsDisplay();
             draggableToken.SetContainer(null);
             TokenRemovedFromSlot();
         }

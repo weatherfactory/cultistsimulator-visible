@@ -31,19 +31,13 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenSubscriber
      return  new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
     }
 
-    void HandleOnSlotDroppedOn(RecipeSlot slot)
+    void HandleOnSlotDroppedOn(RecipeSlot slot,IElementStack s)
     {
 
-        ElementStack stack = DraggableToken.itemBeingDragged as ElementStack;
-        if (stack != null)
-        {
-            SlotMatchForAspects match = slot.GetSlotMatchForStack(stack);
-            if (match.MatchType == SlotMatchForAspectsType.Okay)
-                StackInSlot(slot, stack);
-            else
-                stack.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
-
-        }
+       var stack = s as ElementStack;
+        stack.SetContainer(this);
+        RespondToStackAdded(slot, stack);
+        
     }
 
     public RecipeSlot BuildSlot(string slotName = "Recipe Slot", SlotSpecification slotSpecification = null)
@@ -61,7 +55,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenSubscriber
         return slot;
     }
 
-    public abstract void StackInSlot(RecipeSlot slot, ElementStack stack);
+    public abstract void RespondToStackAdded(RecipeSlot slot, ElementStack stack);
 
     public AspectsDictionary GetAspectsFromSlottedCards()
     {
@@ -69,13 +63,6 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenSubscriber
         return currentAspects;
     }
 
-
-    protected static void PositionStackInSlot(RecipeSlot slot, ElementStack stack)
-    {
-        stack.transform.SetParent(slot.transform);
-        stack.transform.localPosition = Vector3.zero;
-        stack.transform.localRotation = Quaternion.identity;
-    }
 
     public ElementStacksGateway GetStacksGateway()
     {

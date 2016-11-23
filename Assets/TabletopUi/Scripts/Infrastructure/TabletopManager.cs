@@ -65,19 +65,20 @@ namespace Assets.CS.TabletopUI
 
         public HashSet<IRecipeSlot> FillSlots(HashSet<IRecipeSlot> slotsToFill)
         {
+            var unprocessedSlots=new HashSet<IRecipeSlot>();
             foreach (var slot in slotsToFill)
             {
-                if (slot.GetElementStackInSlot() != null)
-                    slotsToFill.Remove(slot);
-                else
+                if (slot.GetElementStackInSlot() == null)
                 {
                     var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
-                    if(stack!=null)
+                    if (stack != null)
                         Debug.Log(stack.ElementId);
+                    else
+                        unprocessedSlots.Add(slot);
                 }
                 
             }
-            return slotsToFill;
+            return unprocessedSlots;
         }
 
 

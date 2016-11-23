@@ -56,9 +56,13 @@ namespace Assets.TabletopUi
         }
 
 
-        public void UpdateSituationDisplay()
-        {
+       public void UpdateAspectsDisplay()
+       {
+            Debug.Log("fix this");
+       }
 
+       public void UpdateSituationDisplay()
+        {
             var allAspects = GetAspectsAvailableToSituation();
 
             RecipeConductor rc = new RecipeConductor(Registry.Compendium, allAspects,
