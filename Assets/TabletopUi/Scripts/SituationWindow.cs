@@ -29,14 +29,45 @@ namespace Assets.CS.TabletopUI
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
+        public IList<INotification> queuedNotifications = new List<INotification>();
         private SituationController situationController;
 
-        void OnEnable () {
+        void OnEnable()
+        {
             button.onClick.AddListener(HandleOnButtonClicked);
         }
-        void OnDisable() {
+        void OnDisable()
+        {
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
+
+        private void Notify(INotification notification)
+        {
+            Debug.Log(notification.Title + " - " + notification.Description);
+        }
+
+        public void AddNotification(INotification notification)
+        {
+            if(gameObject.activeSelf)
+                Notify(notification);
+            else
+                queuedNotifications.Add(notification);
+        }
+
+        public IList<INotification> FlushNotifications()
+        {
+            List<INotification> flushed = new List<INotification>();
+            flushed.AddRange(queuedNotifications);
+            queuedNotifications.Clear();
+
+            foreach (var n in flushed)
+            {
+                Notify(n);
+            }
+
+            return flushed;
+        }
+
         public void Initialise(SituationController sc)
         {
 

@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOpen = false;
-        public IList<INotification> queuedNotifications = new List<INotification>();
+
 
         public string VerbId
         {
@@ -52,13 +52,7 @@ namespace Assets.CS.TabletopUI
 
  
 
-        public IList<INotification> FlushNotifications()
-        {
-            List<INotification> flushed = new List<INotification>();
-            flushed.AddRange(queuedNotifications);
-            queuedNotifications.Clear();
-            return flushed;
-        }
+
 
 
         public void SetTimerVisibility(bool b)

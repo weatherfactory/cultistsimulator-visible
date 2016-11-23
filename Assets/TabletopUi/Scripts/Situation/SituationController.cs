@@ -37,6 +37,7 @@ namespace Assets.TabletopUi
        {
             situationWindow.transform.position = situationToken.transform.position;
             situationWindow.Show();
+           situationWindow.FlushNotifications();
             situationToken.situationStorage.gameObject.SetActive(true);
             if (situation!=null)
                 situationWindow.DisplayOngoing();
@@ -145,7 +146,7 @@ namespace Assets.TabletopUi
             {
                situationToken.GetSituationStorageStacksGateway().ModifyElementQuantity(kvp.Key, kvp.Value);
             }
-          situationToken.queuedNotifications.Add(new Notification(command.Title, command.Description));
+            situationWindow.AddNotification(new Notification(command.Title, command.Description));
         }
 
        public void SituationExtinct()
