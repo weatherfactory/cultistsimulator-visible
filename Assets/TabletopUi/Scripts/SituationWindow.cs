@@ -90,7 +90,7 @@ namespace Assets.CS.TabletopUI
         void HandleOnButtonClicked()
         {
 
-            situationController.ActivateRecipeButtonClicked();
+            situationController.AttemptActivateRecipe();
  
         }
 
@@ -99,7 +99,7 @@ namespace Assets.CS.TabletopUI
             return outputHolder.GetStacksGateway();
         }
 
-        public ElementStacksGateway GetStacksGatewayForSlots()
+        public ElementStacksGateway GetSlotsStacksGateway()
         {
             return startingSlotsContainer.GetStacksGateway();
         }

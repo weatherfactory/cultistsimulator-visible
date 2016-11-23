@@ -36,7 +36,7 @@ namespace Assets.TabletopUi
        {
             situationWindow.transform.position = situationToken.transform.position;
             situationWindow.Show();
-            situationToken.ElementsInSituation.SetActive(true);
+            situationToken.SituationStorage.SetActive(true);
             if (situation!=null)
                 situationWindow.DisplayOngoing();
             else
@@ -49,23 +49,11 @@ namespace Assets.TabletopUi
 
         public void Close()
         {
-            situationToken.ElementsInSituation.SetActive(false);
+            situationToken.SituationStorage.SetActive(false);
             situationWindow.Hide();
             situationToken.IsOpen=false;
         }
 
-        public IList<SlotSpecification> GetSlotsForSituation()
-       {
-           if (situation != null)
-               return situation.GetSlots();
-           else
-               return null;
-       }
-
-       public void StoreElementStacksInSituation(IEnumerable<IElementStack> stacks )
-       {
-           situationToken.StoreElementStacksInSituation(stacks);
-       }
 
         public void UpdateSituationDisplay()
         {
@@ -114,21 +102,15 @@ namespace Assets.TabletopUi
 
 
 
-        public void BeginSituation(Recipe r)
-        {
-            situation = new Situation(r);
-            situation.Subscribe(this);
-
-        }
 
         public void SituationBeginning(Situation s)
        {
 
-           situationToken.InitialiseSlotContainerForSituation(s);
+           situationToken.BuildSlots(s.GetSlots());
             situationToken.SetTimerVisibility(true);
-            SituationContinues(s);
+            SituationOngoing(s);
 
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStacksGateway().GetTotalAspects(),
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStorageStacksGateway().GetTotalAspects(),
             new Dice());
 
            string nextRecipePrediction = situation.GetPrediction(rc);
@@ -137,7 +119,7 @@ namespace Assets.TabletopUi
             situationWindow.DisplaySituation(s.GetTitle(),s.GetDescription(), nextRecipePrediction);
        }
 
-        public void SituationContinues(Situation s)
+        public void SituationOngoing(Situation s)
         {
             situationToken.DisplayTimeRemaining(s.Warmup, s.TimeRemaining);
         }
@@ -146,16 +128,23 @@ namespace Assets.TabletopUi
 
         public void SituationExecutingRecipe(IEffectCommand command)
        {
+            //move any elements currently in OngoingSlots to situation storage
+            //NB we're doing this *before* we execute the command - the command may affect these elements too
+           var inputStacks = situationToken.GetOngoingSlotsGateway().GetStacks();
+           var storageGateway = situationToken.GetSituationStorageStacksGateway();
+            storageGateway.AcceptStacks(inputStacks);
+
+            //execute each recipe in command
             foreach (var kvp in command.GetElementChanges())
             {
-               situationToken.GetSituationStacksGateway().ModifyElementQuantity(kvp.Key, kvp.Value);
+               situationToken.GetSituationStorageStacksGateway().ModifyElementQuantity(kvp.Key, kvp.Value);
             }
           situationToken.queuedNotifications.Add(new Notification(command.Title, command.Description));
         }
 
        public void SituationExtinct()
        {
-            IElementStacksGateway storedStacksGateway = situationToken.GetSituationStacksGateway();
+            IElementStacksGateway storedStacksGateway = situationToken.GetSituationStorageStacksGateway();
 
             //currently just retrieving everything
             var stacksToRetrieve = storedStacksGateway.GetStacks();
@@ -166,19 +155,27 @@ namespace Assets.TabletopUi
             situation = null;
         }
 
-       public void ActivateRecipeButtonClicked()
+        public void BeginSituation(Recipe r)
+        {
+            situation = new Situation(r);
+            situation.Subscribe(this);
+
+        }
+
+
+        public void AttemptActivateRecipe()
        {
             var aspects =situationWindow.GetAspectsFromSlottedElements();
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.VerbId);
             if (recipe != null)
             {
+                var containerGateway = situationToken.GetSituationStorageStacksGateway();
+                var stacksToStore = situationWindow.GetSlotsStacksGateway().GetStacks();
+                containerGateway.AcceptStacks(stacksToStore);
 
-                StoreElementStacksInSituation(situationWindow.GetStacksGatewayForSlots().GetStacks());
                 BeginSituation(recipe);
                 situationWindow.DisplayOngoing();
             }
-
-        
         }
    }
 }

@@ -116,7 +116,7 @@ namespace Assets.Core.Entities
         {
             State=SituationState.Ongoing;
             foreach (var s in subscribers)
-                s.SituationContinues(this);
+                s.SituationOngoing(this);
         }
 
         private void RequireExecution(IRecipeConductor rc)

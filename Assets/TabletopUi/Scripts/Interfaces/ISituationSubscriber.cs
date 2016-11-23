@@ -11,7 +11,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationSubscriber
     {
         void SituationBeginning(Situation s);
-        void SituationContinues(Situation s);
+        void SituationOngoing(Situation s);
         void SituationExecutingRecipe(IEffectCommand effectCommand);
         void SituationExtinct();
     }

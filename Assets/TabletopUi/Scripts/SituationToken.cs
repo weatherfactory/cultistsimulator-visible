@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
-        [SerializeField] public GameObject ElementsInSituation;
+        [SerializeField] public GameObject SituationStorage;
         [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
 
         private IVerb _verb;
@@ -78,6 +78,7 @@ namespace Assets.CS.TabletopUI
 
         public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
+            situationController = sc;
             name = "Verb_" + VerbId;
 
             DisplayName(verb);
@@ -85,7 +86,9 @@ namespace Assets.CS.TabletopUI
             SetSelected(false);
             countdownBar.gameObject.SetActive(false);
             countdownText.gameObject.SetActive(false);
-            situationController = sc;
+            
+
+            ongoingSlotsContainer.Initialise(situationController);
 
         }
         
@@ -117,7 +120,7 @@ namespace Assets.CS.TabletopUI
 
         public AspectsDictionary GetAspectsFromStoredElements()
         {
-            return GetSituationStacksGateway().GetTotalAspects();
+            return GetSituationStorageStacksGateway().GetTotalAspects();
         }
 
         public AspectsDictionary GetAspectsFromSlottedElements()
@@ -125,9 +128,14 @@ namespace Assets.CS.TabletopUI
             return ongoingSlotsContainer.GetAspectsFromSlottedCards();
         }
 
-        public ElementStacksGateway GetSituationStacksGateway()
+        public ElementStacksGateway GetOngoingSlotsGateway()
         {
-            IElementStacksWrapper w = new TabletopElementStacksWrapper(ElementsInSituation.transform);
+            return ongoingSlotsContainer.GetStacksGateway();
+        }
+
+        public ElementStacksGateway GetSituationStorageStacksGateway()
+        {
+            IElementStacksWrapper w = new TabletopElementStacksWrapper(SituationStorage.transform);
             ElementStacksGateway g = new ElementStacksGateway(w);
             return g;
         }
@@ -141,19 +149,14 @@ namespace Assets.CS.TabletopUI
 
         public void Close()
         {
-situationController.Close();
-        }
-
-        public void StoreElementStacksInSituation(IEnumerable<IElementStack> stacks)
-        {
-            var containerGateway = GetSituationStacksGateway();
-            containerGateway.AcceptStacks(stacks);
+            situationController.Close();
         }
 
 
-        public void InitialiseSlotContainerForSituation(Situation s)
+
+        public void BuildSlots(IList<SlotSpecification> slotsToBuild)
         {
-            ongoingSlotsContainer.Initialise(situationController);
+            ongoingSlotsContainer.UpdateSlots(slotsToBuild);
         }
     }
 

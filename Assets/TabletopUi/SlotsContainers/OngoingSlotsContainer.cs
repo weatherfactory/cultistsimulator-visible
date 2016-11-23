@@ -9,18 +9,28 @@ namespace Assets.TabletopUi.SlotsContainers
 {
     public class OngoingSlotsContainer: AbstractSlotsContainer
     {
+
+        /// <param name="sc"></param>
         public override void Initialise( SituationController sc)
         {
 
             _situationController = sc;
-            var slotsToBuild = _situationController.GetSlotsForSituation();
+        }
+
+        public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
+        {
+            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
+            foreach (var currentSlot in currentSlots)
+            {
+                ClearAndDestroySlot(currentSlot);
+            }
+
             if (slotsToBuild.Any())
             {
                 gameObject.SetActive(true);
                 foreach (SlotSpecification css in slotsToBuild)
                     BuildSlot(css.Label, css);
             }
-
         }
 
 
