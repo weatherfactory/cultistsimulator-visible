@@ -2,17 +2,19 @@
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
+
 namespace Assets.CS.TabletopUI
 {
-    public class ElementStack : DraggableToken,IElementStack
+    public class ElementStack : DraggableToken, IElementStack
     {
-	
+
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GameObject selectedMarker;
@@ -20,11 +22,15 @@ namespace Assets.CS.TabletopUI
         private int _quantity;
         private IElementStacksWrapper currentWrapper;
 
-        public string ElementId { get {
-            return _element==null ? null : _element.Id;
-        } }
+        public string ElementId
+        {
+            get { return _element == null ? null : _element.Id; }
+        }
 
-        public string Label { get { return _element == null ? null : _element.Label; } }
+        public string Label
+        {
+            get { return _element == null ? null : _element.Label; }
+        }
 
         public int Quantity
         {
@@ -48,7 +54,7 @@ namespace Assets.CS.TabletopUI
 
         public void ModifyQuantity(int change)
         {
-            SetQuantity(_quantity+change);
+            SetQuantity(_quantity + change);
         }
 
         public bool Remove()
@@ -57,28 +63,31 @@ namespace Assets.CS.TabletopUI
             if (Defunct)
                 return false;
             Defunct = true;
-                return true;
+            return true;
         }
 
-        public void Populate(string elementId, int quantity) {
+        public void Populate(string elementId, int quantity)
+        {
 
             _element = Registry.Compendium.GetElementById(elementId);
-          SetQuantity(quantity);
-     
+            SetQuantity(quantity);
+
             name = "Card_" + elementId;
             if (_element == null)
                 return;
-		
+
             DisplayInfo();
             DisplayIcon();
         }
 
 
-        private void DisplayInfo() {
-            text.text = _element.Label + "(" + Quantity + ")"; 
+        private void DisplayInfo()
+        {
+            text.text = _element.Label + "(" + Quantity + ")";
         }
 
-        private void DisplayIcon() {
+        private void DisplayIcon()
+        {
             Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
             artwork.sprite = sprite;
         }
@@ -99,8 +108,15 @@ namespace Assets.CS.TabletopUI
             return _element.HasChildSlots();
         }
 
-        public Sprite GetSprite() {
+        public Sprite GetSprite()
+        {
             return artwork.sprite;
+        }
+
+        public override void OnPointerClick(PointerEventData eventData)
+        {
+            notifier.ShowElementDetails(this);
+            base.OnPointerClick(eventData);
         }
 
         public override void OnDrop(PointerEventData eventData)
@@ -116,8 +132,21 @@ namespace Assets.CS.TabletopUI
         }
 
 
+        protected override void StartDrag(PointerEventData eventData)
+        {
+
+            //if (Quantity > 1)
+            //{
+            //    var cardLeftBehind = PrefabFactory.CreateLocally<ElementStack>(transform.parent);
+            //    cardLeftBehind.transform.position = transform.position;
+            //    cardLeftBehind.Populate(ElementId, Quantity - 1);
+            //    //cardLeftBehind.SetContainer();
+            //    SetQuantity(1);
+            //}
+
+            base.StartDrag(eventData);
 
 
-
+        }
     }
 }

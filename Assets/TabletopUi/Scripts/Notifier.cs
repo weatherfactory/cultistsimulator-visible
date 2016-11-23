@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.CS.TabletopUI
 {
     
-    public class Notifier : MonoBehaviour,ITokenSubscriber {
+    public class Notifier : MonoBehaviour {
         [SerializeField]
         private Transform windowHolderFixed;
         [SerializeField]
@@ -41,20 +41,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
-        public void TokenPickedUp(DraggableToken draggableToken)
-        {
-  
-        }
-
-        public void TokenInteracted(DraggableToken draggableToken)
-        {
-            ElementStack stack = draggableToken as ElementStack;
-            if (stack != null)
-            {
-                    ShowElementDetails(stack);
-            }
-        }
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
         {

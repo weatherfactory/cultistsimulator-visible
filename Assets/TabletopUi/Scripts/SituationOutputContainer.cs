@@ -5,7 +5,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 
-public class SituationOutputContainer : MonoBehaviour,ITokenSubscriber
+public class SituationOutputContainer : MonoBehaviour,ITokenContainer
 {
     [SerializeField] private SituationWindow situationWindow;
 

@@ -13,7 +13,7 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
-public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenSubscriber
+public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenContainer
 {
 
     protected SituationController _situationController;

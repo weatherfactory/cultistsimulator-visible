@@ -5,7 +5,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
-public class TabletopContainer : MonoBehaviour,ITokenSubscriber
+public class TabletopContainer : MonoBehaviour,ITokenContainer
 {
 
     [SerializeField] private TabletopManager tabletopManager;

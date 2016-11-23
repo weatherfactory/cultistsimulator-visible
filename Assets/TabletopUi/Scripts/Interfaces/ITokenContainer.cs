@@ -7,7 +7,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.CS.TabletopUI.Interfaces
 {
-    public interface ITokenSubscriber
+    public interface ITokenContainer
     {
         void TokenPickedUp(DraggableToken draggableToken);
         void TokenInteracted(DraggableToken draggableToken);

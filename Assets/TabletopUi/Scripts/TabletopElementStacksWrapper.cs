@@ -13,12 +13,12 @@ namespace Assets.TabletopUi.Scripts
     public class TabletopElementStacksWrapper: IElementStacksWrapper
     {
         private Transform wrappedTransform;
-        private ITokenSubscriber wrappedContainer;
+        private ITokenContainer wrappedContainer;
 
         public TabletopElementStacksWrapper(Transform t)
         {
             wrappedTransform = t;
-            wrappedContainer = wrappedTransform.GetComponent<ITokenSubscriber>();
+            wrappedContainer = wrappedTransform.GetComponent<ITokenContainer>();
         }
 
 

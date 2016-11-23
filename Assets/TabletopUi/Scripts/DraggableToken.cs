@@ -33,8 +33,8 @@ namespace Assets.CS.TabletopUI
         // Draggables all drag on a specifc height and have a specific "default height"
 
         public bool rotateOnDrag = true;
-        protected ITokenSubscriber notifier;
-        protected ITokenSubscriber container;
+        protected Notifier notifier;
+        protected ITokenContainer container;
  
 
         void Awake() {
@@ -43,12 +43,12 @@ namespace Assets.CS.TabletopUI
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
 
-        public void SubscribeNotifier(ITokenSubscriber n)
+        public void SubscribeNotifier(Notifier n)
         {
             notifier = n;
         }
 
-        public void SetContainer(ITokenSubscriber newContainer)
+        public void SetContainer(ITokenContainer newContainer)
         {
             container = newContainer;
         }
@@ -82,8 +82,7 @@ namespace Assets.CS.TabletopUI
             return true;
         }
 
-        void StartDrag(PointerEventData eventData) {
-
+        protected virtual void StartDrag(PointerEventData eventData) {
 
 
             if (rectCanvas == null)
@@ -179,7 +178,6 @@ namespace Assets.CS.TabletopUI
             if (eventData.pointerId >= -1)
             {
                 container.TokenInteracted(this);
-              notifier.TokenInteracted(this);
             }
         }
     }

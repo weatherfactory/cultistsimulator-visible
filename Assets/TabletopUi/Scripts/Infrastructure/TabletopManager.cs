@@ -63,7 +63,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public HashSet<IRecipeSlot> FillSlots(HashSet<IRecipeSlot> slotsToFill)
+        public HashSet<IRecipeSlot> FindStacksToFillSlots(HashSet<IRecipeSlot> slotsToFill)
         {
             var unprocessedSlots=new HashSet<IRecipeSlot>();
             foreach (var slot in slotsToFill)
