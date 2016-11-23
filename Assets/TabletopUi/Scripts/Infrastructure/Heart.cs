@@ -12,7 +12,8 @@ public class Heart : MonoBehaviour
     [SerializeField] private Transform allContent;
     private HashSet<IRecipeSlot> SlotRequestsToFill=new HashSet<IRecipeSlot>();
     private int beatCounter = 0;
-    private const int UpdateCycleBeats = 20;
+    //do major housekeeping every n beats
+    private const int HOUSEKEEPING_CYCLE_BEATS = 20;
 
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
@@ -31,10 +32,15 @@ public class Heart : MonoBehaviour
     {
             Beat(usualInterval);
         beatCounter++;
-        //if(beatCounter==20)
+        if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
+        {
+            beatCounter = 0;
+            Registry.TabletopManager.FillSlots(SlotRequestsToFill);
+        }
+
+
             
     }
-
     
 
     public void Beat(float interval)

@@ -63,6 +63,16 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        public HashSet<IRecipeSlot> FillSlots(HashSet<IRecipeSlot> slotsToFill)
+        {
+            foreach (var recipeSlot in slotsToFill)
+            {
+                Debug.Log(recipeSlot);
+            }
+            return slotsToFill;
+        }
+
+
         private ElementStacksGateway GetStacksOnTabletopGateway()
         {
             IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStacksWrapper(tabletopContainer.transform);
