@@ -28,9 +28,9 @@ public class SituationOutputContainer : MonoBehaviour,ITokenContainer
     }
 
     public bool AllowDrag { get { return true; } }
-    public ElementStacksGateway GetElementStacksGateway()
+    public ElementStacksManager GetElementStacksGateway()
     {
         IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
-        return new ElementStacksGateway(tabletopStacksWrapper);
+        return new ElementStacksManager(tabletopStacksWrapper);
     }
 }

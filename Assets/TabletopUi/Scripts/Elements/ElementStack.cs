@@ -132,22 +132,27 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-
-        protected override void StartDrag(PointerEventData eventData)
+        public void SplitAllButNCardsToNewStack(int n)
         {
-
-            if (Quantity > 1)
+            if (Quantity > n)
             {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(transform.parent);
-       
-                cardLeftBehind.Populate(ElementId, Quantity - 1);
+
+                cardLeftBehind.Populate(ElementId, Quantity - n);
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
                 cardLeftBehind.transform.position = transform.position;
                 var gateway = container.GetElementStacksGateway();
 
-                gateway.AcceptStack(cardLeftBehind);
+               gateway.AcceptStack(cardLeftBehind);
             }
+   
+        }
+
+        protected override void StartDrag(PointerEventData eventData)
+        {
+
+            SplitAllButNCardsToNewStack(1);
 
             base.StartDrag(eventData);
 

@@ -17,5 +17,6 @@ namespace Assets.Core.Interfaces
         void Populate(string elementId, int quantity);
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
+        void SplitAllButNCardsToNewStack(int n);
     }
 }

@@ -7,7 +7,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 
 
-public interface IElementStacksGateway
+public interface IElementStacksManager
 {
     /// <summary>
     /// Reduces matching stacks until change is satisfied
@@ -27,11 +27,11 @@ public interface IElementStacksGateway
     void ModifyElementQuantity(string elementId, int quantityChange);
 }
 
-public class ElementStacksGateway : IElementStacksGateway
+public class ElementStacksManager : IElementStacksManager
 {
     private IElementStacksWrapper wrapper;
     
-    public ElementStacksGateway(IElementStacksWrapper w)
+    public ElementStacksManager(IElementStacksWrapper w)
     {
         wrapper = w;
     }

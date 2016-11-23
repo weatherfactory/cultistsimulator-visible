@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
@@ -133,7 +133,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public ElementStacksGateway GetSituationStorageStacksGateway()
+        public ElementStacksManager GetSituationStorageStacksGateway()
         {
             return situationStorage.GetElementStacksGateway();
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -150,10 +150,10 @@ namespace Assets.TabletopUi
 
        public void SituationExtinct()
        {
-            IElementStacksGateway storedStacksGateway = situationToken.GetSituationStorageStacksGateway();
+            IElementStacksManager storedStacksManager = situationToken.GetSituationStorageStacksGateway();
 
             //currently just retrieving everything
-            var stacksToRetrieve = storedStacksGateway.GetStacks();
+            var stacksToRetrieve = storedStacksManager.GetStacks();
 
             situationWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
 

@@ -14,14 +14,15 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         private Transform tableLevel;
         private Transform windowLevel;
-        string[] legalElementIDs = new string[7] {
+        string[] legalElementIDs = new string[8] {
             "health",
             "reason",
             "intuition",
             "ordinarylife",
             "suitablepremises",
             "occultscrap",
-            "atlasnotes"
+            "atlasnotes",
+            "shilling"
         };
 
         public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel)
@@ -56,7 +57,7 @@ namespace Assets.TabletopUi.Scripts.Services
             }
 
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i <= legalElementIDs.GetUpperBound(0); i++)
             {
                 stack = PrefabFactory.CreateToken<ElementStack>(tableLevel);
                 stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);

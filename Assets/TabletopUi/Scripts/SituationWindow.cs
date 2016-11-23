@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] StartingSlotsContainer startingSlotsContainer;
-        [SerializeField] SituationOutputContainer outputHolder;
+        [SerializeField] SituationOutputContainer outputContainer;
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
@@ -94,9 +94,9 @@ namespace Assets.CS.TabletopUI
  
         }
 
-        public ElementStacksGateway GetStacksGatewayForOutput()
+        public ElementStacksManager GetStacksGatewayForOutput()
         {
-            return outputHolder.GetElementStacksGateway();
+            return outputContainer.GetElementStacksGateway();
         }
 
         public IEnumerable<IElementStack> GetStacksInStartingSlots()

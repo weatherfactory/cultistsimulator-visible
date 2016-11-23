@@ -60,6 +60,7 @@ namespace Assets.CS.TabletopUI
                     var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
                     if (stack != null)
                     { 
+                        stack.SplitAllButNCardsToNewStack(1);
                         slot.AcceptStack(stack);
                     }
                     else

@@ -12,6 +12,6 @@ namespace Assets.CS.TabletopUI.Interfaces
         void TokenPickedUp(DraggableToken draggableToken);
         void TokenInteracted(DraggableToken draggableToken);
         bool AllowDrag { get; }
-        ElementStacksGateway GetElementStacksGateway();
+        ElementStacksManager GetElementStacksGateway();
     }
 }
