@@ -71,8 +71,9 @@ namespace Assets.CS.TabletopUI
                     slotsToFill.Remove(slot);
                 else
                 {
-                    var stack = findStack(slot.GoverningSlotSpecification.Required,
-                        slot.GoverningSlotSpecification.Forbidden);
+                    var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
+                    if(stack!=null)
+                        Debug.Log(stack.ElementId);
                 }
                 
             }
@@ -80,8 +81,13 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        private IElementStack findStack(IAspectsDictionary required,IAspectsDictionary forbidden)
+        private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
+            var stacks= GetStacksOnTabletopGateway().GetStacks();
+                foreach(var stack in stacks)
+                    if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                        return stack;
+
             return null;
         }
 
