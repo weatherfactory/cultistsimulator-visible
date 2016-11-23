@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using TMPro;
@@ -82,7 +83,7 @@ namespace Assets.CS.TabletopUI
             artwork.sprite = sprite;
         }
 
-        public Dictionary<string,int> GetAspects()
+        public IAspectsDictionary GetAspects()
         {
             return _element.AspectsIncludingSelf;
         }

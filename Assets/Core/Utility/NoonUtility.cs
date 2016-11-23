@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using UnityEngine;
 
 namespace Noon
@@ -61,10 +62,10 @@ namespace Noon
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => Convert.ToInt32(kvp.Value));
         }
 
-        public static Dictionary<string,int> ReplaceConventionValues(Hashtable htAspects)
+        public static IAspectsDictionary ReplaceConventionValues(Hashtable htAspects)
         {
 
-            Dictionary<string,int> Results=new Dictionary<string,int>();
+            IAspectsDictionary Results=new AspectsDictionary();
             if (htAspects == null)
                 return Results;
             foreach (string k in htAspects.Keys)

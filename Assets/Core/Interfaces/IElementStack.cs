@@ -10,7 +10,7 @@ namespace Assets.Core.Interfaces
         string ElementId { get; }
         int Quantity { get; }
         bool Defunct { get; }
-        Dictionary<string, int> GetAspects();
+        IAspectsDictionary GetAspects();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);

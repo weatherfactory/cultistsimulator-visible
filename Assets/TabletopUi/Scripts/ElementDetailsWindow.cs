@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,7 +67,7 @@ namespace Assets.CS.TabletopUI
             return stringBuilder.ToString();
         }
 
-        string GetAspectsText(Dictionary<string, int> aspects) {// THis could be in a TOString method to be more accessible where it's needed?
+        string GetAspectsText(IAspectsDictionary aspects) {
             if (aspects == null || aspects.Count == 0)
                 return "None.";
 

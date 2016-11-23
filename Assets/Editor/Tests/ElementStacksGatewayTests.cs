@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
@@ -174,12 +175,12 @@ namespace Assets.Editor.Tests
     //I should mock this, actually
     public class FakeElementStack : IElementStack
     {
-        public Dictionary<string, int> Aspects;
+        public IAspectsDictionary Aspects;
         public string ElementId { get; set; }
         public int Quantity { get; set; }
         public bool Defunct { get; private set; }
 
-        public Dictionary<string, int> GetAspects()
+        public IAspectsDictionary GetAspects()
         {
             return Aspects;
         }

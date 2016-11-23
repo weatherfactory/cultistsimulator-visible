@@ -65,13 +65,25 @@ namespace Assets.CS.TabletopUI
 
         public HashSet<IRecipeSlot> FillSlots(HashSet<IRecipeSlot> slotsToFill)
         {
-            foreach (var recipeSlot in slotsToFill)
+            foreach (var slot in slotsToFill)
             {
-                Debug.Log(recipeSlot);
+                if (slot.GetElementStackInSlot() != null)
+                    slotsToFill.Remove(slot);
+                else
+                {
+                    var stack = findStack(slot.GoverningSlotSpecification.Required,
+                        slot.GoverningSlotSpecification.Forbidden);
+                }
+                
             }
             return slotsToFill;
         }
 
+
+        private IElementStack findStack(IAspectsDictionary required,IAspectsDictionary forbidden)
+        {
+            return null;
+        }
 
         private ElementStacksGateway GetStacksOnTabletopGateway()
         {

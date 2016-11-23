@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Entities;
 using Noon;
 
@@ -14,21 +15,21 @@ public class SlotSpecification
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
     /// </summary>
-    public Dictionary<string, int> Required { get; set; }
+    public IAspectsDictionary Required { get; set; }
     /// <summary>
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
-    public Dictionary<string, int> Forbidden { get; set; }
+    public IAspectsDictionary Forbidden { get; set; }
     public bool Greedy = false;
 
     public SlotSpecification(string label)
     {
         Label = label;
-        Required = new Dictionary<string, int>();
-        Forbidden = new Dictionary<string, int>();
+        Required = new AspectsDictionary();
+        Forbidden = new AspectsDictionary();
     }
 
-    public SlotMatchForAspects GetSlotMatchForAspects(Dictionary<string,int> aspects)
+    public SlotMatchForAspects GetSlotMatchForAspects(IAspectsDictionary aspects)
     {
 
         foreach (string k in Forbidden.Keys)
