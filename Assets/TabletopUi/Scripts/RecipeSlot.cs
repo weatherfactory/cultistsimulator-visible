@@ -14,6 +14,7 @@ namespace Assets.CS.TabletopUI
         ElementStack GetElementStackInSlot();
         SlotMatchForAspects GetSlotMatchForStack(ElementStack stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
+        void AcceptStack(IElementStack s);
     }
     public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot
     {
@@ -48,8 +49,9 @@ namespace Assets.CS.TabletopUI
              }
         }
 
-        public void AcceptStack(ElementStack stack)
+        public void AcceptStack(IElementStack s)
         {
+            var stack = s as ElementStack;
             stack.transform.SetParent(transform);
             stack.transform.localPosition = Vector3.zero;
             stack.transform.localRotation = Quaternion.identity;

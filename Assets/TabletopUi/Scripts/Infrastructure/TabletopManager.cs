@@ -72,7 +72,9 @@ namespace Assets.CS.TabletopUI
                 {
                     var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
                     if (stack != null)
-                        Debug.Log(stack.ElementId);
+                    { 
+                        slot.AcceptStack(stack);
+                    }
                     else
                         unprocessedSlots.Add(slot);
                 }
