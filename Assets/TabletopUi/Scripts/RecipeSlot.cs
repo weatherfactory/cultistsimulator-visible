@@ -6,13 +6,25 @@ using UnityEngine.EventSystems;
 
 namespace Assets.CS.TabletopUI
 {
-    public class RecipeSlot : MonoBehaviour, IDropHandler {
+    public interface IRecipeSlot
+    {
+        ElementStack GetElementStackInSlot();
+        SlotMatchForAspects GetSlotMatchForStack(ElementStack stack);
+        SlotSpecification GoverningSlotSpecification { get; set; }
+    }
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot
+    {
 
         public event System.Action<RecipeSlot> onCardDropped;
-        public SlotSpecification GoverningSlotSpecification;
-        public List<RecipeSlot> childSlots;
+        public SlotSpecification GoverningSlotSpecification { get; set; }
+        public IList<RecipeSlot> childSlots { get; set; }
 
         // TODO: Needs hover feedback!
+
+        public void Awake()
+        {
+            childSlots=new List<RecipeSlot>();
+        }
 
         public void OnDrop(PointerEventData eventData) {
             if (onCardDropped != null)

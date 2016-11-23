@@ -13,7 +13,6 @@ namespace Assets.TabletopUi.SlotsContainers
         public override void Initialise(SituationController sc)
         {
 
-
             _situationController = sc;
             gameObject.SetActive(true);
             primarySlot = BuildSlot();

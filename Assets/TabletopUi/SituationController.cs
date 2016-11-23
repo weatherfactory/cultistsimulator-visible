@@ -91,24 +91,19 @@ namespace Assets.TabletopUi
         }
 
 
-        public void ExecuteHeartbeat(float interval)
+        public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
+            HeartbeatResponse response=new HeartbeatResponse();
             if (situation != null)
             {
                 RecipeConductor rc = new RecipeConductor(Registry.Compendium,
                 GetAspectsAvailableToSituation(), new Dice());
                 situation.Continue(rc, interval);
-                fillGreedySlots();
+                response.SlotsToFill = situationToken.GetUnfilledGreedySlots();
             }
+
+            return response;
         }
-
-       private void fillGreedySlots()
-       {
-var unfilledGreedySlots=situationToken.GetUnfilledGreedySlots();
-            foreach(var s in unfilledGreedySlots)
-                Debug.Log(s.GoverningSlotSpecification.Label + " is greedy and unfilled");
-       }
-
 
        public void SituationBeginning(Situation s)
        {

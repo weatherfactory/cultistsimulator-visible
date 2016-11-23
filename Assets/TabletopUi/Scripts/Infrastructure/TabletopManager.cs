@@ -27,10 +27,17 @@ namespace Assets.CS.TabletopUI
    
 
         void Start () {
-            var compendiumHolder = gameObject.AddComponent<Registry>();
-            compendiumHolder.ImportContentToCompendium();
+            var registry = gameObject.AddComponent<Registry>();
 
-            heart.BeginHeartbeat(0.05f);
+            var compendium= new Compendium();
+            var contentImporter = new ContentImporter();
+            contentImporter.PopulateCompendium(compendium);
+
+            registry.RegisterCompendium(compendium);
+            registry.RegisterDice(new Dice());
+            registry.RegisterTabletopManager(this);
+
+            heart.StartBeating(0.05f);
 
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;

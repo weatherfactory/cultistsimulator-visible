@@ -1,28 +1,57 @@
-﻿using Assets.Core;
+﻿using System.Collections.Generic;
+using Assets.Core;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Assets.CS.TabletopUI
 {
-    public class Registry : MonoBehaviour {
+    public class Registry : MonoBehaviour
+    {
+        private static ICompendium m_compendium;
+        private static TabletopManager m_tabletopmanager;
+        private static IDice m_dice;
 
-        public static Compendium Compendium {
-            get {
+        public static TabletopManager TabletopManager
+        {
+            get
+            {
+                Assert.IsNotNull(m_tabletopmanager, "tabletop manager never registered");
+                return m_tabletopmanager;
+            }
+        }
+
+        public static ICompendium Compendium
+        {
+            get
+            {
+                Assert.IsNotNull(m_tabletopmanager, "compendium never registered");
                 return m_compendium;
             }
         }
 
         public static IDice Dice
         {
-            get { return new Dice();}
+            get { return m_dice; }
         }
 
-        private static Compendium m_compendium;
 
-        public void ImportContentToCompendium() {
-            m_compendium = new Compendium();
-            ContentImporter ContentImporter = new ContentImporter();
-            ContentImporter.PopulateCompendium(m_compendium);
+
+        public void RegisterCompendium(Compendium c)
+        {
+            m_compendium = c;
+
         }
 
-    }
+        public void RegisterTabletopManager(TabletopManager tm)
+        {
+            m_tabletopmanager = tm;
+        }
+
+        public void RegisterDice(IDice dice)
+        {
+            m_dice = dice;
+        }
+
+
+}
 }

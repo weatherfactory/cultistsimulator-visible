@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using Assets.Core.Commands;
 using Assets.CS.TabletopUI;
 
 /// <summary>
@@ -8,16 +10,19 @@ using Assets.CS.TabletopUI;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform allContent;
+    private HashSet<IRecipeSlot> SlotRequestsToFill=new HashSet<IRecipeSlot>();
+    private int beatCounter = 0;
+    private const int UpdateCycleBeats = 20;
 
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
-  public void BeginHeartbeat(float startingInterval)
+  public void StartBeating(float startingInterval)
   {
-      usualInterval = startingInterval;
+        usualInterval = startingInterval;
         InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
     }
 
-    public void PauseHeartbeat()
+    public void StopBeating()
     {
         CancelInvoke(METHODNAME_BEAT);
     }
@@ -25,17 +30,23 @@ public class Heart : MonoBehaviour
     public void Beat()
     {
             Beat(usualInterval);
+        beatCounter++;
+        //if(beatCounter==20)
+            
     }
+
+    
 
     public void Beat(float interval)
     {
         //foreach existing active recipe window: run beat there
         //advance timer
-        Debug.Log("beat");
         var situationTokens = allContent.GetComponentsInChildren<SituationToken>();
         foreach (var st in situationTokens)
         {
-            st.ExecuteHeartbeat(interval);
+           HeartbeatResponse response=st.ExecuteHeartbeat(interval);
+            foreach (var r in response.SlotsToFill)
+                SlotRequestsToFill.Add(r);
         }
     }
 

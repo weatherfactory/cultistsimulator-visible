@@ -209,7 +209,7 @@ public class ContentImporter
 
     }
 
-    public void PopulateCompendium(Compendium compendium)
+    public void PopulateCompendium(ICompendium compendium)
     {
         ImportVerbs();
         ImportElements();

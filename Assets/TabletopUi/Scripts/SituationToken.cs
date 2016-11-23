@@ -68,9 +68,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void ExecuteHeartbeat(float interval)
+        public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-        situationController.ExecuteHeartbeat(interval);
+       return  situationController.ExecuteHeartbeat(interval);
         }
 
 
@@ -86,7 +86,6 @@ namespace Assets.CS.TabletopUI
             SetSelected(false);
             countdownBar.gameObject.SetActive(false);
             countdownText.gameObject.SetActive(false);
-            
 
             ongoingSlotsContainer.Initialise(situationController);
 
@@ -159,7 +158,7 @@ namespace Assets.CS.TabletopUI
             ongoingSlotsContainer.UpdateSlots(slotsToBuild);
         }
 
-        public IEnumerable<RecipeSlot> GetUnfilledGreedySlots()
+        public IList<IRecipeSlot> GetUnfilledGreedySlots()
         {
             return ongoingSlotsContainer.GetUnfilledGreedySlots();
         }

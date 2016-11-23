@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,10 +54,16 @@ namespace Assets.TabletopUi.SlotsContainers
 
         }
 
-        public IEnumerable<RecipeSlot> GetUnfilledGreedySlots()
+        public IList<IRecipeSlot> GetUnfilledGreedySlots()
         {
-            var slots = GetAllSlots();
-            return slots.Where(s => s.GoverningSlotSpecification.Greedy && s.GetElementStackInSlot() == null);
+            IList <IRecipeSlot> slotsToReturn= new List<IRecipeSlot>();
+            foreach (var s in GetAllSlots())
+            {
+                if(s.GoverningSlotSpecification.Greedy && s.GetElementStackInSlot()==null)
+                    slotsToReturn.Add(s);
+            }
+
+            return slotsToReturn;
         }
     }
 }
