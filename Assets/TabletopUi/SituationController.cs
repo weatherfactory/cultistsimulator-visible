@@ -13,26 +13,58 @@ namespace Assets.TabletopUi
 {
    public  class SituationController:ISituationSubscriber
    {
-       public readonly SituationToken situationToken;
+       public SituationToken situationToken;
        private SituationWindow situationWindow;
-
-       public SituationWindow LinkedSituationWindow { get { return situationWindow;} }
        public Situation situation;
 
 
-       public SituationController(SituationToken t, SituationWindow w)
+
+       public void InitialiseToken(SituationToken t,IVerb v)
        {
-           situationToken = t;
-           situationWindow = w;
+            situationToken = t;
+            t.Initialise(v, this);
+        }
+
+       public void InitialiseWindow(SituationWindow w)
+       {
+            situationWindow = w;
+           w.Initialise(this);
        }
+    
+
+       public void Open()
+       {
+            situationWindow.transform.position = situationToken.transform.position;
+            situationWindow.Show();
+            situationToken.ElementsInSituation.SetActive(true);
+            if (situation!=null)
+                situationWindow.DisplayOngoing();
+            else
+                situationWindow.DisplayStarting();
 
 
-       public IList<SlotSpecification> GetSlotsForSituation()
+            situationToken.IsOpen = true;
+        }
+
+
+        public void Close()
+        {
+            situationToken.ElementsInSituation.SetActive(false);
+            situationWindow.Hide();
+            situationToken.IsOpen=false;
+        }
+
+        public IList<SlotSpecification> GetSlotsForSituation()
        {
            if (situation != null)
                return situation.GetSlots();
            else
                return null;
+       }
+
+       public void StoreElementStacksInSituation(IEnumerable<IElementStack> stacks )
+       {
+           situationToken.StoreElementStacksInSituation(stacks);
        }
 
         public void UpdateSituationDisplay()
@@ -69,11 +101,6 @@ namespace Assets.TabletopUi
             situationWindow.DisplayRecipe(r);
         }
 
-        public void PopulateAndShowWindow()
-       {
-            situationWindow.PopulateAndShow(this);
-        }
-
 
         public void ExecuteHeartbeat(float interval)
         {
@@ -91,6 +118,7 @@ namespace Assets.TabletopUi
         {
             situation = new Situation(r);
             situation.Subscribe(this);
+
         }
 
         public void SituationBeginning(Situation s)
@@ -136,6 +164,21 @@ namespace Assets.TabletopUi
 
             situationToken.SetTimerVisibility(false);
             situation = null;
+        }
+
+       public void ActivateRecipeButtonClicked()
+       {
+            var aspects =situationWindow.GetAspectsFromSlottedElements();
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.VerbId);
+            if (recipe != null)
+            {
+
+                StoreElementStacksInSituation(situationWindow.GetStacksGatewayForSlots().GetStacks());
+                BeginSituation(recipe);
+                situationWindow.DisplayOngoing();
+            }
+
+        
         }
    }
 }

@@ -86,7 +86,6 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
                 PutOnTable(situationToken); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
-
             situationToken.Close();
         }
 

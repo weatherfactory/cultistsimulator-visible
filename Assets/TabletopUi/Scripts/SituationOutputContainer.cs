@@ -15,7 +15,7 @@ public class SituationOutputContainer : MonoBehaviour,ITokenSubscriber
         var stacks = GetStacksGateway().GetStacks();
         //if no stacks left in output
         if (!stacks.Any())
-            situationWindow.DisplayReady();
+            situationWindow.DisplayStarting();
     }
 
     public ElementStacksGateway GetStacksGateway()

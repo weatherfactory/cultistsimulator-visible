@@ -46,13 +46,13 @@ namespace Assets.TabletopUi.Scripts.Services
 
             for (int i = 0; i < verbs.Count; i++)
             {
-                situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
-                var window = buildSituationWindowForSituationToken(situationToken);
-                var situationController =new SituationController(situationToken,window);
-                situationToken.Initialise(verbs[i], situationController);
+                IVerb v = verbs[i];
+                situationToken = BuildSituationTokenFor(v);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
-
-                
+                var window = buildSituationWindowForSituationToken(situationToken);
+                var situationController = new SituationController();
+                situationController.InitialiseToken(situationToken,v);
+                situationController.InitialiseWindow(window);
             }
 
 
@@ -64,23 +64,33 @@ namespace Assets.TabletopUi.Scripts.Services
             }
         }
 
+
+
         public SituationToken BuildNewTokenRunningRecipe(string recipeId)
         {
             var recipe = Registry.Compendium.GetRecipeById(recipeId);
 
-            var situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
 
               IVerb v = Registry.Compendium.GetVerbById(recipe.ActionId);
 
             if (v==null)
                 v=new TransientVerb(recipe.ActionId,recipe.Label,recipe.Description);
-            var window = buildSituationWindowForSituationToken(situationToken);
-            var situationController = new SituationController(situationToken, window);
-            situationToken.Initialise(v, situationController);
+            SituationToken newToken= BuildSituationTokenFor(v);
+            var window = buildSituationWindowForSituationToken(newToken);
+            var situationController = new SituationController();
+            situationController.InitialiseToken(newToken, v);
+            situationController.InitialiseWindow(window);
+
+            situationController.BeginSituation(recipe);
+
+            return newToken;
+        }
+
+        private SituationToken BuildSituationTokenFor(IVerb v)
+        {
+            var situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
+
             
-
-            situationToken.BeginSituation(recipe);
-
             return situationToken;
         }
 

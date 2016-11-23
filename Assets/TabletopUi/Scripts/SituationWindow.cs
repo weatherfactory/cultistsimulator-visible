@@ -37,39 +37,19 @@ namespace Assets.CS.TabletopUI
         void OnDisable() {
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
-
-
-        private void DisplayBusy()
+        public void Initialise(SituationController sc)
         {
-            button.gameObject.SetActive(false);
-            NextRecipe.gameObject.SetActive(true);
-            startingSlotsContainer.gameObject.SetActive(false);
+
+            situationController = sc;
         }
 
-        public void DisplayReady()
+        public void Show()
         {
-            button.gameObject.SetActive(true);
-            NextRecipe.gameObject.SetActive(false);
-            startingSlotsContainer.Initialise(situationController);
-            DisplayRecipe(null);
-        }
-
-        public void PopulateAndShow(SituationController sc)
-        {
-
-           situationController = sc;
-
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
 
-            if (situationController.situationToken.IsBusy)
-            
-                DisplayBusy();
-            else
-                DisplayReady();
 
         }
-
 
         public void Hide()
         {
@@ -77,10 +57,21 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public ElementStacksGateway GetStacksGatewayForOutput()
+        public void DisplayOngoing()
         {
-            return outputHolder.GetStacksGateway();
+            button.gameObject.SetActive(false);
+            NextRecipe.gameObject.SetActive(true);
+            startingSlotsContainer.gameObject.SetActive(false);
         }
+
+        public void DisplayStarting()
+        {
+            button.gameObject.SetActive(true);
+            NextRecipe.gameObject.SetActive(false);
+            startingSlotsContainer.Initialise(situationController);
+            DisplayRecipe(null);
+        }
+
 
         public void DisplayRecipe(Recipe r)
         {
@@ -98,22 +89,26 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnButtonClicked()
         {
-            var aspects = GetAspectsFromSlottedElements();
-            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationController.situationToken.VerbId);
-            if(recipe!=null)
-            {
 
-                situationController.situationToken.StoreElementStacksInSituation(startingSlotsContainer.GetStacksGateway().GetStacks());
-                situationController.BeginSituation(recipe);
-                DisplayBusy();
-            }
+            situationController.ActivateRecipeButtonClicked();
+ 
         }
+
+        public ElementStacksGateway GetStacksGatewayForOutput()
+        {
+            return outputHolder.GetStacksGateway();
+        }
+
+        public ElementStacksGateway GetStacksGatewayForSlots()
+        {
+            return startingSlotsContainer.GetStacksGateway();
+        }
+
 
         public AspectsDictionary GetAspectsFromSlottedElements()
         {
             return startingSlotsContainer.GetAspectsFromSlottedCards();
         }
-
 
 
 

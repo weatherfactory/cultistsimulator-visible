@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
-        [SerializeField] private GameObject elementsInSituation;
+        [SerializeField] public GameObject ElementsInSituation;
         [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
 
         private IVerb _verb;
@@ -50,21 +50,7 @@ namespace Assets.CS.TabletopUI
             get { return _verb == null ? null : _verb.Id; }
         }
 
-        /// <summary>
-        /// should return number of executions waiting; 0 if it's currently running a situation, -1 if it's not currently running anything
-        /// </summary>
-        public bool IsBusy
-        {
-            get { return situationController.situation != null; }
-        }
-
-
-        public void BeginSituation(Recipe r)
-        {
-            situationController.BeginSituation(r);
-        }
-
-
+ 
 
         public IList<INotification> FlushNotifications()
         {
@@ -86,6 +72,7 @@ namespace Assets.CS.TabletopUI
         {
         situationController.ExecuteHeartbeat(interval);
         }
+
 
       
 
@@ -140,7 +127,7 @@ namespace Assets.CS.TabletopUI
 
         public ElementStacksGateway GetSituationStacksGateway()
         {
-            IElementStacksWrapper w = new TabletopElementStacksWrapper(elementsInSituation.transform);
+            IElementStacksWrapper w = new TabletopElementStacksWrapper(ElementsInSituation.transform);
             ElementStacksGateway g = new ElementStacksGateway(w);
             return g;
         }
@@ -148,18 +135,13 @@ namespace Assets.CS.TabletopUI
 
         public void Open()
         {
-            situationController.LinkedSituationWindow.transform.position = transform.position;
-            situationController.PopulateAndShowWindow();
-            elementsInSituation.SetActive(true);
-            IsOpen = true;
+            situationController.Open();
         }
 
 
         public void Close()
         {
-            elementsInSituation.SetActive(false);
-            situationController.LinkedSituationWindow.Hide();
-            IsOpen = false;
+situationController.Close();
         }
 
         public void StoreElementStacksInSituation(IEnumerable<IElementStack> stacks)
