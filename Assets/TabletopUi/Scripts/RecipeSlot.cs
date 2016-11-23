@@ -2,6 +2,8 @@
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
@@ -16,10 +18,11 @@ namespace Assets.CS.TabletopUI
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer
     {
 
         public event System.Action<RecipeSlot,IElementStack> onCardDropped;
+        public event System.Action<IElementStack> onCardPickedUp;
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
 
@@ -52,9 +55,11 @@ namespace Assets.CS.TabletopUI
         public void AcceptStack(IElementStack s)
         {
             var stack = s as ElementStack;
-            stack.transform.SetParent(transform);
-            stack.transform.localPosition = Vector3.zero;
-            stack.transform.localRotation = Quaternion.identity;
+
+            var wrapper=new TabletopElementStacksWrapper(transform);
+            var gateway=new ElementStacksGateway(wrapper);
+
+            gateway.AcceptStack(s);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
@@ -76,6 +81,16 @@ namespace Assets.CS.TabletopUI
         }
 
 
+        public void TokenPickedUp(DraggableToken draggableToken)
+        {
 
+        }
+
+        public void TokenInteracted(DraggableToken draggableToken)
+        {
+      
+        }
+
+        public bool AllowDrag { get { return true; }}
     }
 }

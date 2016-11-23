@@ -12,25 +12,15 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     public void TokenPickedUp(DraggableToken draggableToken)
     {
-        ElementStack cardPickedUp = draggableToken as ElementStack;
-        if (cardPickedUp != null)
-        {
-            if (cardPickedUp.Quantity > 1)
-            {
-                var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(transform);
-                cardLeftBehind.transform.position = draggableToken.transform.position;
-                cardLeftBehind.Populate(cardPickedUp.ElementId, cardPickedUp.Quantity - 1);
-                cardPickedUp.SetQuantity(1);
-            }
-        }
+
     }
 
     public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
     {
         tabletopManager.PutOnTable(draggableToken);
-    }
+  }
 
-    public void TokenInteracted(DraggableToken draggableToken)
+public void TokenInteracted(DraggableToken draggableToken)
     {
         SituationToken box = draggableToken as SituationToken;
         if (box != null)
@@ -43,6 +33,5 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     }
 
-
-
+    public bool AllowDrag { get { return true; } }
 }

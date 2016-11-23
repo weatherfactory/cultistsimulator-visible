@@ -99,9 +99,9 @@ namespace Assets.CS.TabletopUI
             return outputHolder.GetStacksGateway();
         }
 
-        public ElementStacksGateway GetSlotsStacksGateway()
+        public IEnumerable<IElementStack> GetStacksInStartingSlots()
         {
-            return startingSlotsContainer.GetStacksGateway();
+            return startingSlotsContainer.GetStacksInSlots();
         }
 
 

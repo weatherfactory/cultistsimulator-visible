@@ -29,8 +29,5 @@ public class SituationOutputContainer : MonoBehaviour,ITokenContainer
         //currently nothing 
     }
 
-    public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
-    {
-        //currently nothing; tokens are automatically returned home
-    }
+    public bool AllowDrag { get { return true; } }
 }

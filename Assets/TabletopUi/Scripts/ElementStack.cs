@@ -2,6 +2,7 @@
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using TMPro;
 using UnityEngine;
@@ -135,14 +136,18 @@ namespace Assets.CS.TabletopUI
         protected override void StartDrag(PointerEventData eventData)
         {
 
-            //if (Quantity > 1)
-            //{
-            //    var cardLeftBehind = PrefabFactory.CreateLocally<ElementStack>(transform.parent);
-            //    cardLeftBehind.transform.position = transform.position;
-            //    cardLeftBehind.Populate(ElementId, Quantity - 1);
-            //    //cardLeftBehind.SetContainer();
-            //    SetQuantity(1);
-            //}
+            if (Quantity > 1)
+            {
+                var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(transform.parent);
+                cardLeftBehind.transform.position = transform.position;
+                cardLeftBehind.Populate(ElementId, Quantity - 1);
+                //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
+
+                SetQuantity(1);
+                cardLeftBehind.transform.localScale=Vector3.one;
+                var gateway = new ElementStacksGateway(new TabletopElementStacksWrapper(transform.parent));
+                gateway.AcceptStack(cardLeftBehind);
+            }
 
             base.StartDrag(eventData);
 

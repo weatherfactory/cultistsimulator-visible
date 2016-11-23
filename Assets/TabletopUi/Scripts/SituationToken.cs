@@ -127,10 +127,11 @@ namespace Assets.CS.TabletopUI
             return ongoingSlotsContainer.GetAspectsFromSlottedCards();
         }
 
-        public ElementStacksGateway GetOngoingSlotsGateway()
+        public IEnumerable<IElementStack> GetStacksInOngoingSlots()
         {
-            return ongoingSlotsContainer.GetStacksGateway();
+            return ongoingSlotsContainer.GetStacksInSlots();
         }
+
 
         public ElementStacksGateway GetSituationStorageStacksGateway()
         {

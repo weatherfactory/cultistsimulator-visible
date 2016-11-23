@@ -60,11 +60,9 @@ namespace Assets.CS.TabletopUI
 
         private bool IsLocked()
         {
-            DraggableContainerBehaviour dcb = transform.parent.gameObject.GetComponent<DraggableContainerBehaviour>();
-            if (dcb == null)
-                return false;
-            else
-                return dcb.LockDraggables;
+            ITokenContainer container = transform.parent.gameObject.GetComponent<ITokenContainer>();
+
+            return !container.AllowDrag;
         }
 
         bool CanDrag(PointerEventData eventData)

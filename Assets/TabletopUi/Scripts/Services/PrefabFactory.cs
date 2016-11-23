@@ -2,7 +2,9 @@
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
@@ -33,8 +35,8 @@ namespace Assets.TabletopUi.Scripts.Services
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
-            token.SetContainer(pf.TabletopManager.tabletopContainer);
             token.SubscribeNotifier(pf.Notifier);
+            token.SetContainer(pf.TabletopManager.tabletopContainer);
 
             return token;
         }

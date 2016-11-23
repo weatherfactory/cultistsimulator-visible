@@ -7,6 +7,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Assets.TabletopUi.Scripts
 {
@@ -19,6 +20,7 @@ namespace Assets.TabletopUi.Scripts
         {
             wrappedTransform = t;
             wrappedContainer = wrappedTransform.GetComponent<ITokenContainer>();
+            Assert.IsNotNull(wrappedContainer,"not a container!");
         }
 
 
@@ -33,7 +35,10 @@ namespace Assets.TabletopUi.Scripts
         {
             Transform stackTransform = ((ElementStack) stack).transform;
             stackTransform.SetParent(wrappedTransform);
-             ((ElementStack)stack).SetContainer(wrappedContainer);
+            stackTransform.localPosition = Vector3.zero;
+            stackTransform.localRotation = Quaternion.identity;
+            
+            ((ElementStack)stack).SetContainer(wrappedContainer);
             return stack;
         }
 

@@ -16,7 +16,6 @@ public interface IElementStacksGateway
     /// <param name="quantityChange">must be negative</param>
     /// <returns>returns any unsatisfied change remaining</returns>
     int ReduceElement(string elementId, int quantityChange);
-
     int IncreaseElement(string elementId, int quantityChange);
     int GetCurrentElementQuantity(string elementId);
     IDictionary<string,int> GetCurrentElementTotals();

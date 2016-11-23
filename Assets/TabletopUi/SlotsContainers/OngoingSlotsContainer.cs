@@ -40,8 +40,13 @@ namespace Assets.TabletopUi.SlotsContainers
             _situationController.UpdateSituationDisplay();
         }
 
-
         public override void TokenPickedUp(DraggableToken draggableToken)
+        {
+      
+        }
+
+
+        public void OnCardPickedUp(DraggableToken draggableToken)
         {
             _situationController.UpdateSituationDisplay();
             draggableToken.SetContainer(null);

@@ -13,7 +13,7 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
-public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenContainer
+public abstract class AbstractSlotsContainer : MonoBehaviour
 {
 
     protected SituationController _situationController;
@@ -35,7 +35,6 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenContainer
     {
 
        var stack = s as ElementStack;
-        stack.SetContainer(this);
         RespondToStackAdded(slot, stack);
         
     }
@@ -52,22 +51,41 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenContainer
         }
 
         slot.onCardDropped += HandleOnSlotDroppedOn;
-        return slot;
+        slot.onCardPickedUp += HandleCardPickedUp;
+        return slot;    
+    }
+
+    public void HandleCardPickedUp(IElementStack stack)
+    {
+        TokenPickedUp(stack as DraggableToken);
     }
 
     public abstract void RespondToStackAdded(RecipeSlot slot, ElementStack stack);
 
     public AspectsDictionary GetAspectsFromSlottedCards()
     {
-        AspectsDictionary currentAspects = GetStacksGateway().GetTotalAspects();
+        AspectsDictionary currentAspects=new AspectsDictionary();
+        foreach (IRecipeSlot slot in GetAllSlots())
+            if(slot.GetElementStackInSlot()!=null)
+            currentAspects.CombineAspects(slot.GetElementStackInSlot().GetAspects());
+
         return currentAspects;
     }
 
-
-    public ElementStacksGateway GetStacksGateway()
+    public IEnumerable<IElementStack> GetStacksInSlots()
     {
-        return new ElementStacksGateway(new TabletopElementStacksWrapper(transform));
+        IList<IElementStack> stacks= new List<IElementStack>();
+        foreach (IRecipeSlot slot in GetAllSlots())
+            if(slot.GetElementStackInSlot()!=null)
+            stacks.Add(slot.GetElementStackInSlot());
+
+        return stacks;
     }
+
+    //public ElementStacksGateway GetStacksGateway()
+    //{
+    //    return new ElementStacksGateway(new TabletopElementStacksWrapper(transform));
+    //}
 
 
 
@@ -100,8 +118,5 @@ public abstract class AbstractSlotsContainer : MonoBehaviour,ITokenContainer
         
     }
 
-    public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
-    {
-        
-    }
+    public bool AllowDrag { get { return true; } }
 }

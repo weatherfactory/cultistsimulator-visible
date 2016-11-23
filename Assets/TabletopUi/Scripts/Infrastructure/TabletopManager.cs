@@ -140,16 +140,21 @@ namespace Assets.CS.TabletopUI
 
         public void PutOnTable(DraggableToken token)
         {
+
+            var airPosition = token.transform.position;
             var stack = token as ElementStack;
+            
             if(stack!=null)
+            { 
                 GetStacksOnTabletopGateway().AcceptStack(stack);
+                stack.transform.position = airPosition;
+            }
+            var situationToken = token as SituationToken;
+                if(situationToken != null)
+                situationToken.SetContainer(tabletopContainer);
 
-            var situation = token as SituationToken;
-                if(token!=null)
-                token.SetContainer(tabletopContainer);
-
-            token.RectTransform.SetParent(tabletopContainer.transform); 
-           token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
+            token.RectTransform.SetParent(tabletopContainer.transform);
+            token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
             token.RectTransform.localRotation = Quaternion.Euler(0f, 0f, token.RectTransform.eulerAngles.z);
         }
 

@@ -136,7 +136,7 @@ namespace Assets.TabletopUi
        {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
-           var inputStacks = situationToken.GetOngoingSlotsGateway().GetStacks();
+           var inputStacks = situationToken.GetStacksInOngoingSlots();
            var storageGateway = situationToken.GetSituationStorageStacksGateway();
             storageGateway.AcceptStacks(inputStacks);
 
@@ -176,7 +176,7 @@ namespace Assets.TabletopUi
             if (recipe != null)
             {
                 var containerGateway = situationToken.GetSituationStorageStacksGateway();
-                var stacksToStore = situationWindow.GetSlotsStacksGateway().GetStacks();
+                var stacksToStore = situationWindow.GetStacksInStartingSlots();
                 containerGateway.AcceptStacks(stacksToStore);
 
                 BeginSituation(recipe);

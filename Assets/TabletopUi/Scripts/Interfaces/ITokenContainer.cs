@@ -11,6 +11,6 @@ namespace Assets.CS.TabletopUI.Interfaces
     {
         void TokenPickedUp(DraggableToken draggableToken);
         void TokenInteracted(DraggableToken draggableToken);
-        void TokenReturnedToTabletop(DraggableToken draggableToken,INotification reason);
+        bool AllowDrag { get; }
     }
 }
