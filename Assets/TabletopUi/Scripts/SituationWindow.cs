@@ -124,5 +124,14 @@ namespace Assets.CS.TabletopUI
             NextRecipe.text = nextRecipeDescription;
         }
 
+        public void AllOutputsGone()
+        {
+            situationController.AllOutputsGone();
+        }
+
+        public void Retire()
+        {
+            Destroy(gameObject);
+        }
     }
 }

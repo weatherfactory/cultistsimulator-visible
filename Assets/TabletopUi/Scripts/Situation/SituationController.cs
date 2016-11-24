@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi
 {
@@ -39,22 +40,22 @@ namespace Assets.TabletopUi
             situationWindow.transform.position = situationToken.transform.position;
             situationWindow.Show();
 
-            situationToken.situationStorage.gameObject.SetActive(true);
+           situationToken.Open();
+
             if (situation!=null)
                 situationWindow.DisplayOngoing();
             else
                 situationWindow.DisplayStarting();
 
 
-            situationToken.IsOpen = true;
         }
 
 
         public void Close()
         {
-            situationToken.situationStorage.gameObject.SetActive(false);
+           situationToken.Close();
             situationWindow.Hide();
-            situationToken.IsOpen=false;
+            
         }
 
 
@@ -113,8 +114,8 @@ namespace Assets.TabletopUi
 
        public void SituationBeginning(Situation s)
        {
-
-           situationToken.BuildSlots(s.GetSlots());
+            situationToken.ActivateOngoingSlots(s.GetSlots());
+           
             situationToken.SetTimerVisibility(true);
             SituationOngoing(s);
 
@@ -154,14 +155,23 @@ namespace Assets.TabletopUi
        {
             IElementStacksManager storedStacksManager = situationToken.GetSituationStorageStacksManager();
 
-            //currently just retrieving everything
+          //retrieve all stacks stored in the situation
             var stacksToRetrieve = storedStacksManager.GetStacks();
-
+            //create a notification reflecting what just happened
             INotification notification=new Notification(situation.GetTitle(),situation.GetDescription());
+            //put all the stacks, and the notification, into the window for player retrieval
             situationWindow.AddOutput(stacksToRetrieve,notification);
-            situationWindow.DisplayStarting();
+
+            //hide the timer: we're done here
             situationToken.SetTimerVisibility(false);
+            //and we don't want anyone adding any more slots
+            situationToken.DeactivateOngoingSlots();
+
+            //and finally, the situation is gone
             situation = null;
+
+        
+           
         }
 
         public void BeginSituation(Recipe r)
@@ -186,5 +196,21 @@ namespace Assets.TabletopUi
                 situationWindow.DisplayOngoing();
             }
         }
+
+       public void AllOutputsGone()
+       {
+           //if this was a transient verb, clean up everything and finish.
+           //otherwise, prep the window for the next recipe
+           if (situationToken.IsTransient)
+           {
+               situationToken.Retire();
+               situationWindow.Retire();
+                //at the moment, the controller is accessed through the token
+               //if we attach the controller to a third object, we'd need to retire that too
+           }
+            else
+                Open();
+
+       }
    }
 }

@@ -13,7 +13,15 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
 {
     [SerializeField] private TextMeshProUGUI Title;
     [SerializeField]private TextMeshProUGUI Description;
+    private SituationOutputContainer parentSituationOutputContainer;
 
+    public void Initialise(INotification notification, IEnumerable<IElementStack> stacks,SituationOutputContainer soc)
+    {
+        Title.text = notification.Title;
+        Description.text = notification.Description;
+        GetElementStacksManager().AcceptStacks(stacks);
+        parentSituationOutputContainer = soc;
+    }
 
     public void TokenPickedUp(DraggableToken draggableToken)
     {
@@ -21,7 +29,10 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
         var stacks = GetElementStacksManager().GetStacks();
         //if no stacks left in output
         if (!stacks.Any())
+        {
+            parentSituationOutputContainer.AllOutputsGone();
             DestroyObject(this.gameObject);
+        }
     }
 
 
@@ -37,10 +48,5 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
         return new ElementStacksManager(tabletopStacksWrapper);
     }
 
-    public void Initialise(INotification notification, IEnumerable<IElementStack> stacks)
-    {
-        Title.text = notification.Title;
-        Description.text = notification.Description;
-        GetElementStacksManager().AcceptStacks(stacks);
-    }
+
 }

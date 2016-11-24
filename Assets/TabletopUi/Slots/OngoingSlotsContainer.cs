@@ -19,13 +19,18 @@ namespace Assets.TabletopUi.SlotsContainers
             _situationController = sc;
         }
 
-        public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
+
+        public void DestroyAllSlots()
         {
             IList<RecipeSlot> currentSlots = GetAllSlots();
             foreach (var currentSlot in currentSlots)
             {
                 ClearAndDestroySlot(currentSlot);
             }
+        }
+        public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
+        {
+         DestroyAllSlots();
 
             if (slotsToBuild.Any())
             {

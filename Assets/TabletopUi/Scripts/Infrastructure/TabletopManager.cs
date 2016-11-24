@@ -93,7 +93,7 @@ namespace Assets.CS.TabletopUI
         {
             CloseAllSituationWindowsExcept(situationToken);
             PutTokenInAir(situationToken.transform as RectTransform);
-            situationToken.Open();
+            situationToken.OpenController();
    
         }
 
@@ -109,7 +109,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
                 PutOnTable(situationToken); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
 
-            situationToken.Close();
+            situationToken.CloseController();
         }
 
 

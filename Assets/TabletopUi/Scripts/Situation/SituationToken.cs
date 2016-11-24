@@ -51,10 +51,7 @@ namespace Assets.CS.TabletopUI
             get { return _verb == null ? null : _verb.Id; }
         }
 
- 
-
-
-
+  
 
         public void SetTimerVisibility(bool b)
         {
@@ -134,27 +131,52 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void Open()
+        public void OpenController()
         {
             situationController.Open();
         }
 
 
-        public void Close()
+        public void CloseController()
         {
             situationController.Close();
         }
 
 
-
-        public void BuildSlots(IList<SlotSpecification> slotsToBuild)
+        public void Open()
         {
+            situationStorage.gameObject.SetActive(true);
+            IsOpen = true;
+        }
+
+        public void Close()
+        {
+            situationStorage.gameObject.SetActive(false);
+            IsOpen = false;
+        }
+
+        public void ActivateOngoingSlots(IList<SlotSpecification> slotsToBuild)
+        {
+            ongoingSlotsContainer.gameObject.SetActive(true);
             ongoingSlotsContainer.UpdateSlots(slotsToBuild);
+        }
+
+        public void DeactivateOngoingSlots()
+        {
+            ongoingSlotsContainer.DestroyAllSlots();
+            ongoingSlotsContainer.gameObject.SetActive(false);
         }
 
         public IList<IRecipeSlot> GetUnfilledGreedySlots()
         {
+ 
             return ongoingSlotsContainer.GetUnfilledGreedySlots();
+           
+        }
+
+        public void Retire()
+        {
+            Destroy(gameObject);
         }
     }
 
