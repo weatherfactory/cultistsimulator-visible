@@ -1,36 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Services;
 
-public class SituationOutputContainer : MonoBehaviour,ITokenContainer
+public class SituationOutputContainer : MonoBehaviour
 {
     [SerializeField] private SituationWindow situationWindow;
 
-    public void TokenPickedUp(DraggableToken draggableToken)
+    public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification)
     {
-
-        var stacks = GetElementStacksGateway().GetStacks();
-        //if no stacks left in output
-        if (!stacks.Any())
-            situationWindow.DisplayStarting();
+        var newNote=PrefabFactory.CreateLocally<SituationOutputNote>(transform);
+        newNote.Initialise(notification, stacks);
+        
+        
     }
+    
 
-
-
-
-    public void TokenInteracted(DraggableToken draggableToken)
-    {
-        //currently nothing 
-    }
-
-    public bool AllowDrag { get { return true; } }
-    public ElementStacksManager GetElementStacksGateway()
-    {
-        IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
-        return new ElementStacksManager(tabletopStacksWrapper);
-    }
+    
+ 
 }

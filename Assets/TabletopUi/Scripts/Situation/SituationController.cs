@@ -7,6 +7,7 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 
@@ -37,7 +38,7 @@ namespace Assets.TabletopUi
        {
             situationWindow.transform.position = situationToken.transform.position;
             situationWindow.Show();
-           situationWindow.FlushNotifications();
+
             situationToken.situationStorage.gameObject.SetActive(true);
             if (situation!=null)
                 situationWindow.DisplayOngoing();
@@ -117,7 +118,7 @@ namespace Assets.TabletopUi
             situationToken.SetTimerVisibility(true);
             SituationOngoing(s);
 
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStorageStacksGateway().GetTotalAspects(),
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStorageStacksManager().GetTotalAspects(),
             new Dice());
 
            string nextRecipePrediction = situation.GetPrediction(rc);
@@ -138,25 +139,26 @@ namespace Assets.TabletopUi
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
            var inputStacks = situationToken.GetStacksInOngoingSlots();
-           var storageGateway = situationToken.GetSituationStorageStacksGateway();
+           var storageGateway = situationToken.GetSituationStorageStacksManager();
             storageGateway.AcceptStacks(inputStacks);
 
             //execute each recipe in command
             foreach (var kvp in command.GetElementChanges())
             {
-               situationToken.GetSituationStorageStacksGateway().ModifyElementQuantity(kvp.Key, kvp.Value);
+               situationToken.GetSituationStorageStacksManager().ModifyElementQuantity(kvp.Key, kvp.Value);
             }
-            situationWindow.AddNotification(new Notification(command.Title, command.Description));
+
         }
 
        public void SituationExtinct()
        {
-            IElementStacksManager storedStacksManager = situationToken.GetSituationStorageStacksGateway();
+            IElementStacksManager storedStacksManager = situationToken.GetSituationStorageStacksManager();
 
             //currently just retrieving everything
             var stacksToRetrieve = storedStacksManager.GetStacks();
 
-            situationWindow.GetStacksGatewayForOutput().AcceptStacks(stacksToRetrieve);
+            INotification notification=new Notification(situation.GetTitle(),situation.GetDescription());
+            situationWindow.AddOutput(stacksToRetrieve,notification);
 
             situationToken.SetTimerVisibility(false);
             situation = null;
@@ -176,7 +178,7 @@ namespace Assets.TabletopUi
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.VerbId);
             if (recipe != null)
             {
-                var containerGateway = situationToken.GetSituationStorageStacksGateway();
+                var containerGateway = situationToken.GetSituationStorageStacksManager();
                 var stacksToStore = situationWindow.GetStacksInStartingSlots();
                 containerGateway.AcceptStacks(stacksToStore);
 

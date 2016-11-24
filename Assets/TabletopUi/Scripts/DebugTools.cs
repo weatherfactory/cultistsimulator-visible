@@ -24,12 +24,12 @@ public class DebugTools : MonoBehaviour
     }
     void AddCard(string elementId)
     {
-        tabletopContainer.GetElementStacksGateway().ModifyElementQuantity(elementId,1);
+        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId,1);
     }
 
     void DecrementElement(string elementId)
     {
-        tabletopContainer.GetElementStacksGateway().ModifyElementQuantity(elementId, -1);
+        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId, -1);
     }
 
     void FastForward(float interval)

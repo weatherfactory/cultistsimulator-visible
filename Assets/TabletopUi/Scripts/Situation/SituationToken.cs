@@ -113,7 +113,7 @@ namespace Assets.CS.TabletopUI
 
         public AspectsDictionary GetAspectsFromStoredElements()
         {
-            return GetSituationStorageStacksGateway().GetTotalAspects();
+            return GetSituationStorageStacksManager().GetTotalAspects();
         }
 
         public AspectsDictionary GetAspectsFromSlottedElements()
@@ -127,9 +127,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public ElementStacksManager GetSituationStorageStacksGateway()
+        public ElementStacksManager GetSituationStorageStacksManager()
         {
-            return situationStorage.GetElementStacksGateway();
+            return situationStorage.GetElementStacksManager();
         }
 
 

@@ -36,7 +36,7 @@ public void TokenInteracted(DraggableToken draggableToken)
     }
 
     public bool AllowDrag { get { return true; } }
-    public ElementStacksManager GetElementStacksGateway()
+    public ElementStacksManager GetElementStacksManager()
     {
         IElementStacksWrapper tabletopStacksWrapper = new TabletopElementStackWrapper(transform);
         return new ElementStacksManager(tabletopStacksWrapper);

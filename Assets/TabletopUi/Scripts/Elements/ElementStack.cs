@@ -142,7 +142,7 @@ namespace Assets.CS.TabletopUI
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
                 cardLeftBehind.transform.position = transform.position;
-                var gateway = container.GetElementStacksGateway();
+                var gateway = container.GetElementStacksManager();
 
                gateway.AcceptStack(cardLeftBehind);
             }

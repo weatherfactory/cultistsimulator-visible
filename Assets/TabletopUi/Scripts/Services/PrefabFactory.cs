@@ -24,6 +24,7 @@ namespace Assets.TabletopUi.Scripts.Services
         public ElementDetailsWindow ElementDetailsWindow = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
+        public SituationOutputNote SituationOutputNote = null;
         [Header("Token Subscribers")]
         [SerializeField]
         TabletopManager TabletopManager = null;

@@ -74,7 +74,7 @@ namespace Assets.CS.TabletopUI
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
-            var stacks= tabletopContainer.GetElementStacksGateway().GetStacks();
+            var stacks= tabletopContainer.GetElementStacksManager().GetStacks();
                 foreach(var stack in stacks)
                     if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                         return stack;
@@ -129,7 +129,7 @@ namespace Assets.CS.TabletopUI
             
             if(stack!=null)
             { 
-                tabletopContainer.GetElementStacksGateway().AcceptStack(stack);
+                tabletopContainer.GetElementStacksManager().AcceptStack(stack);
                 stack.transform.position = airPosition;
             }
             var situationToken = token as SituationToken;

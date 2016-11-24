@@ -56,7 +56,7 @@ namespace Assets.CS.TabletopUI
         {
             var stack = s as ElementStack;
 
-           GetElementStacksGateway().AcceptStack(s);
+           GetElementStacksManager().AcceptStack(s);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
@@ -89,7 +89,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool AllowDrag { get { return true; }}
-        public ElementStacksManager GetElementStacksGateway()
+        public ElementStacksManager GetElementStacksManager()
         {
             IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
             return new ElementStacksManager(tabletopStacksWrapper);

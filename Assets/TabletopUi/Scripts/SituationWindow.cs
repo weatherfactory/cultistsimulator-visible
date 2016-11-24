@@ -41,32 +41,6 @@ namespace Assets.CS.TabletopUI
             button.onClick.RemoveListener(HandleOnButtonClicked);
         }
 
-        private void Notify(INotification notification)
-        {
-            Debug.Log(notification.Title + " - " + notification.Description);
-        }
-
-        public void AddNotification(INotification notification)
-        {
-            if(gameObject.activeSelf)
-                Notify(notification);
-            else
-                queuedNotifications.Add(notification);
-        }
-
-        public IList<INotification> FlushNotifications()
-        {
-            List<INotification> flushed = new List<INotification>();
-            flushed.AddRange(queuedNotifications);
-            queuedNotifications.Clear();
-
-            foreach (var n in flushed)
-            {
-                Notify(n);
-            }
-
-            return flushed;
-        }
 
         public void Initialise(SituationController sc)
         {
@@ -125,10 +99,6 @@ namespace Assets.CS.TabletopUI
  
         }
 
-        public ElementStacksManager GetStacksGatewayForOutput()
-        {
-            return outputContainer.GetElementStacksGateway();
-        }
 
         public IEnumerable<IElementStack> GetStacksInStartingSlots()
         {
@@ -141,6 +111,10 @@ namespace Assets.CS.TabletopUI
             return startingSlotsContainer.GetAspectsFromSlottedCards();
         }
 
+        public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification)
+        {
+            outputContainer.AddOutput(stacks,notification);
+        }
 
 
         public void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription)

@@ -19,7 +19,7 @@ public class SituationStorage : MonoBehaviour,ITokenContainer
     }
 
     public bool AllowDrag { get { return false; } }
-    public ElementStacksManager GetElementStacksGateway()
+    public ElementStacksManager GetElementStacksManager()
     {
         IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
         return new ElementStacksManager(tabletopStacksWrapper);

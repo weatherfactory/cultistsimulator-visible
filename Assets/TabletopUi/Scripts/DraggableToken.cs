@@ -58,16 +58,11 @@ namespace Assets.CS.TabletopUI
                 StartDrag(eventData);
         }
 
-        private bool IsLocked()
-        {
-            ITokenContainer container = transform.parent.gameObject.GetComponent<ITokenContainer>();
-
-            return !container.AllowDrag;
-        }
+        
 
         bool CanDrag(PointerEventData eventData)
         {
-            if (IsLocked())
+            if (!container.AllowDrag)
                 return false;
 
             if ( itemBeingDragged != null || draggingEnabled == false )
