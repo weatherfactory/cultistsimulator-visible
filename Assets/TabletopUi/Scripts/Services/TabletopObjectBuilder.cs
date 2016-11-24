@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Services
               IVerb v = Registry.Compendium.GetVerbById(recipe.ActionId);
 
             if (v==null)
-                v=new TransientVerb(recipe.ActionId,recipe.Label,recipe.Description);
+                v=new CreatedVerb(recipe.ActionId,recipe.Label,recipe.Description);
             SituationToken newToken= BuildSituationTokenFor(v);
             var window = buildSituationWindowForSituationToken(newToken);
             var situationController = new SituationController();

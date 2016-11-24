@@ -8,7 +8,7 @@ using Assets.Core.Interfaces;
 /// <summary>
 /// just a bundle of properties
 /// </summary>
-    public class Verb : IVerb
+    public abstract class AbstractVerb : IVerb
 {
         private string _id;
         private string _label;
@@ -29,7 +29,9 @@ using Assets.Core.Interfaces;
             get { return _description; }
         }
 
-        public Verb(string id, string label, string description)
+    public abstract bool Transient { get; }
+
+    public AbstractVerb(string id, string label, string description)
         {
             _id = id;
             _label = label;

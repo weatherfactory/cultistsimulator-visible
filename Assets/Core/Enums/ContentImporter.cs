@@ -3,6 +3,7 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Noon;
 using OrbCreationExtensions;
@@ -125,7 +126,7 @@ public class ContentImporter
 
         foreach (Hashtable h in verbsArrayList)
         {
-            Verb v = new Verb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString());
+            IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString());
             Verbs.Add(v.Id,v);
         }
 

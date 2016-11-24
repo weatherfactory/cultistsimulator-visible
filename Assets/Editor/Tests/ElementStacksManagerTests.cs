@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Assets.Editor.Tests
 {
     [TestFixture]
-    public class ElementStacksGatewayTests
+    public class ElementStacksManagerTests
     {
         private List<IElementStack> stacks;
         private IElementStacksWrapper wrapper;
@@ -23,7 +23,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_SumsUniqueElements()
+        public void Manager_SumsUniqueElements()
         {
             var ecg = new ElementStacksManager(wrapper);
             var d = ecg.GetCurrentElementTotals();
@@ -35,7 +35,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_SumsExtraNonUniqueElements()
+        public void Manager_SumsExtraNonUniqueElements()
         {
             stacks.Add(TestObjectGenerator.CreateElementCard(stacks[0].ElementId,1));
             var ecg = new ElementStacksManager(wrapper);
@@ -48,7 +48,7 @@ namespace Assets.Editor.Tests
 
 
         [Test]
-        public void Gateway_SumsUniqueAspects()
+        public void Manager_SumsUniqueAspects()
         {
             var elements = TestObjectGenerator.ElementDictionary(1, 2);
             TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
@@ -64,7 +64,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_SumsDuplicateAspects()
+        public void Manager_SumsDuplicateAspects()
         {
             var elements = TestObjectGenerator.ElementDictionary(1, 2);
             TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
@@ -81,7 +81,7 @@ namespace Assets.Editor.Tests
     
 
     [Test]
-    public void Gateway_ReduceElement_CanOnlyTakeNegativeArgument()
+    public void Manager_ReduceElement_CanOnlyTakeNegativeArgument()
     {
     var eca=new ElementStacksManager(wrapper);
             Assert.Throws<ArgumentException>(() => eca.ReduceElement("1", 0));
@@ -89,7 +89,7 @@ namespace Assets.Editor.Tests
     }
 
         [Test]
-        public void Gateway_ReduceElement_CallsRemoveOnSingleCard()
+        public void Manager_ReduceElement_CallsRemoveOnSingleCard()
         {
             var eca = new ElementStacksManager(wrapper);
             FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
@@ -98,7 +98,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_ReduceElementBy2_Removes2SingleCards()
+        public void Manager_ReduceElementBy2_Removes2SingleCards()
         {
             var eca = new ElementStacksManager(wrapper);
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
@@ -117,7 +117,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_ReduceElementBy3_Removes2SingleCardsAndReturnsMinus1()
+        public void Manager_ReduceElementBy3_Removes2SingleCardsAndReturnsMinus1()
         {
             var eca = new ElementStacksManager(wrapper);
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
@@ -138,7 +138,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_IncreaseElement_CanOnlyTakePositiveArgument()
+        public void Manager_IncreaseElement_CanOnlyTakePositiveArgument()
         {
             var ecg = new ElementStacksManager(wrapper);
             Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", 0));
@@ -146,7 +146,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_IncreaseNewElementBy2_AddsNewStackOf2()
+        public void Manager_IncreaseNewElementBy2_AddsNewStackOf2()
         {
             var ecg = new ElementStacksManager(wrapper);
             FakeElementStack newStack = new FakeElementStack() {ElementId ="newElement",Quantity = 2};
@@ -158,7 +158,7 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Gateway_AcceptsStack()
+        public void Manager_AcceptsStack()
         {
             var ecg=new ElementStacksManager(wrapper);
             FakeElementStack newStack = new FakeElementStack() { ElementId = "newElement", Quantity = 2 };

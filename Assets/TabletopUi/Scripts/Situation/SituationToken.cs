@@ -44,6 +44,8 @@ namespace Assets.CS.TabletopUI
 
         public bool IsOpen = false;
 
+        public bool IsTransient { get { return _verb.Transient; } }
+
         public string VerbId
         {
             get { return _verb == null ? null : _verb.Id; }

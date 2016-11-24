@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -64,9 +66,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -86,6 +85,7 @@
     <Compile Include="Assets\Core\Commands\Notification.cs" />
     <Compile Include="Assets\Core\Compendium.cs" />
     <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
+    <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
     <Compile Include="Assets\Core\Entities\ElementStacksManager.cs" />
@@ -93,8 +93,8 @@
     <Compile Include="Assets\Core\Entities\Situation.cs" />
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
     <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
-    <Compile Include="Assets\Core\Entities\TransientVerb.cs" />
-    <Compile Include="Assets\Core\Entities\Verb.cs" />
+    <Compile Include="Assets\Core\Entities\CreatedVerb.cs" />
+    <Compile Include="Assets\Core\Entities\AbstractVerb.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
