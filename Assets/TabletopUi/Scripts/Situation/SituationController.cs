@@ -159,7 +159,7 @@ namespace Assets.TabletopUi
 
             INotification notification=new Notification(situation.GetTitle(),situation.GetDescription());
             situationWindow.AddOutput(stacksToRetrieve,notification);
-
+            situationWindow.DisplayStarting();
             situationToken.SetTimerVisibility(false);
             situation = null;
         }

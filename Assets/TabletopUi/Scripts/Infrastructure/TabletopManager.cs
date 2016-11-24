@@ -52,21 +52,23 @@ namespace Assets.CS.TabletopUI
 
         public HashSet<IRecipeSlot> FindStacksToFillSlots(HashSet<IRecipeSlot> slotsToFill)
         {
-            var unprocessedSlots=new HashSet<IRecipeSlot>();
+            var unprocessedSlots = new HashSet<IRecipeSlot>();
             foreach (var slot in slotsToFill)
             {
-                if (slot.GetElementStackInSlot() == null)
+                if (!slot.Equals(null)) //it hasn't been destroyed
                 {
-                    var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
-                    if (stack != null)
-                    { 
-                        stack.SplitAllButNCardsToNewStack(1);
-                        slot.AcceptStack(stack);
+                    if (slot.GetElementStackInSlot() == null)
+                    {
+                        var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
+                        if (stack != null)
+                        {
+                            stack.SplitAllButNCardsToNewStack(1);
+                            slot.AcceptStack(stack);
+                        }
+                        else
+                            unprocessedSlots.Add(slot);
                     }
-                    else
-                        unprocessedSlots.Add(slot);
                 }
-                
             }
             return unprocessedSlots;
         }

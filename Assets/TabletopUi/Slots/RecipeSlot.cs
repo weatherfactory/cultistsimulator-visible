@@ -33,6 +33,12 @@ namespace Assets.CS.TabletopUI
             childSlots=new List<RecipeSlot>();
         }
 
+        public bool HasChildSlots()
+        {
+            if (childSlots == null)
+                return false;
+            return childSlots.Count > 0;
+        }
         public void OnDrop(PointerEventData eventData) {
 
             ElementStack stack = DraggableToken.itemBeingDragged as ElementStack;

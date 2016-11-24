@@ -37,8 +37,6 @@ public class Heart : MonoBehaviour
             beatCounter = 0;
           outstandingSlotsToFill=Registry.TabletopManager.FindStacksToFillSlots(outstandingSlotsToFill);
         }
-
-
             
     }
     

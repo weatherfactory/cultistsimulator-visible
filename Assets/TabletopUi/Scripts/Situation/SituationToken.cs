@@ -44,7 +44,6 @@ namespace Assets.CS.TabletopUI
 
         public bool IsOpen = false;
 
-
         public string VerbId
         {
             get { return _verb == null ? null : _verb.Id; }
