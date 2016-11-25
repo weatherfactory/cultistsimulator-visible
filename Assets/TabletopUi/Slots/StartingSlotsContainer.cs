@@ -35,13 +35,15 @@ namespace Assets.TabletopUi.SlotsContainers
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
+
+            _situationController.UpdateSituationDisplay();
         }
 
         public override void RespondToStackPickedUp(IElementStack stack)
         {
-            _situationController.UpdateAspectsDisplay();
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();
+            _situationController.UpdateSituationDisplay();
         }
 
         protected void RemoveAnyChildSlotsWithEmptyParent()
@@ -57,6 +59,7 @@ namespace Assets.TabletopUi.SlotsContainers
                         ClearAndDestroySlot(cs);
                 }
             }
+
         }
 
 

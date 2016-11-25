@@ -20,7 +20,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class SituationToken : DraggableToken
+    public class SituationToken : DraggableToken,ISituationAnchor
     {
 
         [SerializeField] Image artwork;
@@ -39,7 +39,7 @@ namespace Assets.CS.TabletopUI
 
         public SituationState SituationState
         {
-            get { return situationController.situation == null ? SituationState.Extinct : situationController.situation.State; }
+            get { return situationController.SituationStateMachine == null ? SituationState.Extinct : situationController.SituationStateMachine.State; }
         }
 
         public bool IsOpen = false;
@@ -107,12 +107,34 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public AspectsDictionary GetAspectsFromStoredElements()
+        public void AbsorbOngoingSlotContents()
+        {
+            var inputStacks = GetStacksInOngoingSlots();
+            var storageGateway = GetSituationStorageStacksManager();
+            storageGateway.AcceptStacks(inputStacks);
+        }
+
+        public void ModifyStoredElementStack(string elementId, int quantity)
+        {
+            GetSituationStorageStacksManager().ModifyElementQuantity(elementId,quantity);
+        }
+
+        public IEnumerable<IElementStack> GetStoredStacks()
+        {
+            return GetSituationStorageStacksManager().GetStacks();
+        }
+
+        public void StoreStacks(IEnumerable<IElementStack> stacksToStore)
+        {
+            GetSituationStorageStacksManager().AcceptStacks(stacksToStore);
+        }
+
+        public IAspectsDictionary GetAspectsFromStoredElements()
         {
             return GetSituationStorageStacksManager().GetTotalAspects();
         }
 
-        public AspectsDictionary GetAspectsFromSlottedElements()
+        public IAspectsDictionary GetAspectsFromSlottedElements()
         {
             return ongoingSlotsContainer.GetAspectsFromSlottedCards();
         }
@@ -129,31 +151,48 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void OpenController()
+        public void OpenSituation()
+        {
+
+            situationController.OpenSituation();
+        }
+
+
+        public void CloseSituation()
+        {
+
+            situationController.CloseSituation();
+        }
+
+
+        public void OpenToken()
         {
             DisplayInAir();
-            situationController.Open();
-        }
-
-
-        public void CloseController()
-        {
-            if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
-                DisplayOnTable();
-            situationController.Close();
-        }
-
-
-        public void Open()
-        {
             situationStorage.gameObject.SetActive(true);
             IsOpen = true;
         }
 
-        public void Close()
+        public void CloseToken()
         {
+            if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
+                DisplayOnTable();
             situationStorage.gameObject.SetActive(false);
             IsOpen = false;
+        }
+
+        public void SituationBeginning(IList<SlotSpecification> ongoingSlots)
+        {
+            ActivateOngoingSlots(ongoingSlots);
+
+            SetTimerVisibility(true);
+        }
+
+        public void SituationEnding()
+        {
+            //hide the timer: we're done here
+            SetTimerVisibility(false);
+            //and we don't want anyone adding any more slots
+            DeactivateOngoingSlots();
         }
 
         public void ActivateOngoingSlots(IList<SlotSpecification> slotsToBuild)
@@ -181,14 +220,14 @@ namespace Assets.CS.TabletopUI
 
             if (!IsOpen)
             { 
-                OpenController();
+                OpenSituation();
              
                 (container as TabletopContainer).CloseAllSituationWindowsExcept(this);
 
             }
             else
             { 
-                CloseController();
+                CloseSituation();
            
                     
             }

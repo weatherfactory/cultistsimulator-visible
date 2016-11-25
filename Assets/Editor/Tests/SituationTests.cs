@@ -33,7 +33,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void NewSituation_IsStateUnstarted()
         {
-            Situation s=new Situation(r1);
+            SituationStateMachine s=new SituationStateMachine(r1);
             Assert.AreEqual(SituationState.Unstarted,s.State);
         }
 
@@ -41,7 +41,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void UnstartedSituation_MovesToOngoingAtFirstContinue()
         {
-            Situation s = new Situation(r1);
+            SituationStateMachine s = new SituationStateMachine(r1);
             s.Continue(rc, 1);
             Assert.AreEqual(SituationState.Ongoing, s.State);
         }
@@ -49,7 +49,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void SituationMovesFromOngoingToRequiringExecution_WhenContinuingAtTimeBelowZero()
         {
-            Situation s = new Situation(0, SituationState.Ongoing, r1);
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1);
             Assert.AreEqual(SituationState.Ongoing,s.State);
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
             s.Continue(rc, 1);
@@ -59,8 +59,8 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_RequiresExecution_When_ContinuingAtTimeBelowZero()
         {
-            Situation s = new Situation(0,SituationState.Ongoing,r1);
-            ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
+            SituationStateMachine s = new SituationStateMachine(0,SituationState.Ongoing,r1);
+            ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
             s.Subscribe(subscriber);
 
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
@@ -77,7 +77,7 @@ namespace Assets.Editor.Tests
         {
             
             rc.GetLoopedRecipe(null).ReturnsForAnyArgs(r2);
-            Situation s = new Situation(0, SituationState.RequiringExecution, r1);
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.RequiringExecution, r1);
             s.Continue(rc,1);
             Assert.AreEqual(r2.Id,s.RecipeId);
             Assert.AreEqual(SituationState.Ongoing,s.State);
@@ -88,7 +88,7 @@ namespace Assets.Editor.Tests
         {
 
             rc.GetLoopedRecipe(null).ReturnsForAnyArgs(r2);
-            Situation s = new Situation(0, SituationState.RequiringExecution, r1);
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.RequiringExecution, r1);
             r2.Warmup = 100;
             s.Continue(rc, 1);
             Assert.AreEqual(r2.Warmup, s.TimeRemaining);
@@ -97,7 +97,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_GoesExtinct_WhenRecipeConductorSpecifiesNoLoopRecipe()
         {
-            Situation s = new Situation(0, SituationState.RequiringExecution, r1);
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.RequiringExecution, r1);
             s.Continue(rc,1);
             Assert.AreEqual(SituationState.Extinct, s.State);
         }
@@ -107,8 +107,8 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_ExecutesAlternativesSpecifiedByRecipeConductor()
         {
-            Situation s = new Situation(0,SituationState.Ongoing, r1);
-            ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
+            SituationStateMachine s = new SituationStateMachine(0,SituationState.Ongoing, r1);
+            ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
             s.Subscribe(subscriber);
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();
             
@@ -125,8 +125,8 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_LoopsFromAlternative_NotOriginal_IfSpecified()
         {
-            Situation s = new Situation(0, SituationState.Ongoing, r1);
-            ISituationSubscriber subscriber = Substitute.For<ISituationSubscriber>();
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1);
+            ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
             s.Subscribe(subscriber);
             IRecipeConductor rc = Substitute.For<IRecipeConductor>();
 

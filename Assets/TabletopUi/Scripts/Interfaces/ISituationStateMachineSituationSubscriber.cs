@@ -8,10 +8,10 @@ using Assets.Core.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationSubscriber
+    public interface ISituationStateMachineSituationSubscriber
     {
-        void SituationBeginning(Situation s);
-        void SituationOngoing(Situation s);
+        void SituationBeginning(SituationStateMachine s);
+        void SituationOngoing(SituationStateMachine s);
         void SituationExecutingRecipe(IEffectCommand effectCommand);
         void SituationExtinct();
     }

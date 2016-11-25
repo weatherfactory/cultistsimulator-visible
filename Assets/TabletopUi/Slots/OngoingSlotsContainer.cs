@@ -27,6 +27,8 @@ namespace Assets.TabletopUi.SlotsContainers
             {
                 ClearAndDestroySlot(currentSlot);
             }
+
+            _situationController.UpdateSituationDisplay();
         }
         public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
         {
@@ -48,14 +50,13 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void RespondToStackPickedUp(IElementStack stack)
         {
-            _situationController.UpdateAspectsDisplay();
+            _situationController.UpdateSituationDisplay();
         }
 
 
         public void OnCardPickedUp(DraggableToken draggableToken)
         {
             _situationController.UpdateSituationDisplay();
-            draggableToken.SetContainer(null);
 
         }
 

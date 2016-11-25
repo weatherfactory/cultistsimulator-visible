@@ -9,7 +9,7 @@ using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities
 {
-    public class Situation
+    public class SituationStateMachine
     {
         public SituationState State { get; set; }
        private Recipe currentPrimaryRecipe { get; set; }
@@ -24,16 +24,16 @@ namespace Assets.Core.Entities
             else
                 return new List<SlotSpecification>();
         }
-        private HashSet<ISituationSubscriber> subscribers=new HashSet<ISituationSubscriber>();
+        private HashSet<ISituationStateMachineSituationSubscriber> subscribers=new HashSet<ISituationStateMachineSituationSubscriber>();
 
-        public Situation(Recipe primaryRecipe)
+        public SituationStateMachine(Recipe primaryRecipe)
         {
             currentPrimaryRecipe = primaryRecipe;
             Warmup = primaryRecipe.Warmup;
             TimeRemaining = primaryRecipe.Warmup;
             State = SituationState.Unstarted;
         }
-        public Situation(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
+        public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
         {
             currentPrimaryRecipe = withPrimaryRecipe;
             Warmup = withPrimaryRecipe.Warmup;
@@ -42,7 +42,7 @@ namespace Assets.Core.Entities
         }
 
 
-        public void Subscribe(ISituationSubscriber s)
+        public void Subscribe(ISituationStateMachineSituationSubscriber s)
         {
             subscribers.Add(s);
         }

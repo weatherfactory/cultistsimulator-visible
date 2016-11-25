@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Core;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace Assets.TabletopUi.Scripts
 
         }
 
-        public void DisplayAspects(Dictionary<string,int> aspects)
+        public void DisplayAspects(IAspectsDictionary aspects)
         {
 
             ResetAspects();

@@ -17,7 +17,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindow : MonoBehaviour {
+    public class SituationWindow : MonoBehaviour,ISituationDetails {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
@@ -53,7 +53,6 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
 
-
         }
 
         public void Hide()
@@ -77,6 +76,10 @@ namespace Assets.CS.TabletopUI
             DisplayRecipe(null);
         }
 
+        public void DisplayAspects(IAspectsDictionary forAspects)
+        {
+            aspectsDisplay.DisplayAspects(forAspects);
+        }
 
         public void DisplayRecipe(Recipe r)
         {

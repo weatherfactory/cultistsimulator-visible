@@ -14,14 +14,12 @@ using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi
 {
-   public  class SituationController:ISituationSubscriber
+   public  class SituationController:ISituationStateMachineSituationSubscriber
    {
-       public SituationToken situationToken;
+       public ISituationAnchor situationToken;
        private SituationWindow situationWindow;
-       public Situation situation;
-
-
-
+       public SituationStateMachine SituationStateMachine;
+        
        public void InitialiseToken(SituationToken t,IVerb v)
        {
             situationToken = t;
@@ -35,53 +33,50 @@ namespace Assets.TabletopUi
        }
     
 
-       public void Open()
+       public void OpenSituation()
        {
-            situationWindow.transform.position = situationToken.transform.position;
+            //situationWindow.transform.position = situationToken.transform.position;
             situationWindow.Show();
 
-           situationToken.Open();
+           situationToken.OpenToken();
 
-            if (situation!=null)
+            if (SituationStateMachine!=null)
                 situationWindow.DisplayOngoing();
             else
                 situationWindow.DisplayStarting();
 
-
         }
 
 
-        public void Close()
+        public void CloseSituation()
         {
-           situationToken.Close();
+           situationToken.CloseToken();
             situationWindow.Hide();
-            
         }
 
-
-       public void UpdateAspectsDisplay()
-       {
-            Debug.Log("fix this");
-       }
 
        public void UpdateSituationDisplay()
         {
             var allAspects = GetAspectsAvailableToSituation();
+            situationWindow.DisplayAspects(allAspects);
 
+            string prediction = "";
+            if(SituationStateMachine!=null)
+            { 
             RecipeConductor rc = new RecipeConductor(Registry.Compendium, allAspects,
             new Dice());
-            string prediction= situation.GetPrediction(rc);
-
-            situationWindow.DisplaySituation(situation.GetTitle(),situation.GetDescription(),prediction);
+            prediction= SituationStateMachine.GetPrediction(rc);
+            situationWindow.DisplaySituation(SituationStateMachine.GetTitle(),SituationStateMachine.GetDescription(),prediction);
+            }
         }
 
-       private AspectsDictionary GetAspectsAvailableToSituation()
+       private IAspectsDictionary GetAspectsAvailableToSituation()
        {
-           AspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
+           IAspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
 
-           AspectsDictionary additionalAspects = situationToken.GetAspectsFromSlottedElements();
+            IAspectsDictionary additionalAspects = situationToken.GetAspectsFromSlottedElements();
 
-           AspectsDictionary allAspects = new AspectsDictionary();
+            IAspectsDictionary allAspects = new AspectsDictionary();
            allAspects.CombineAspects(existingAspects);
            allAspects.CombineAspects(additionalAspects);
            return allAspects;
@@ -101,34 +96,32 @@ namespace Assets.TabletopUi
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
             HeartbeatResponse response=new HeartbeatResponse();
-            if (situation != null)
+            if (SituationStateMachine != null)
             {
                 RecipeConductor rc = new RecipeConductor(Registry.Compendium,
                 GetAspectsAvailableToSituation(), new Dice());
-                situation.Continue(rc, interval);
+                SituationStateMachine.Continue(rc, interval);
                 response.SlotsToFill = situationToken.GetUnfilledGreedySlots();
             }
 
             return response;
         }
 
-       public void SituationBeginning(Situation s)
+       public void SituationBeginning(SituationStateMachine s)
        {
-            situationToken.ActivateOngoingSlots(s.GetSlots());
-           
-            situationToken.SetTimerVisibility(true);
+            situationToken.SituationBeginning(s.GetSlots());
             SituationOngoing(s);
 
-            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetSituationStorageStacksManager().GetTotalAspects(),
+            RecipeConductor rc = new RecipeConductor(Registry.Compendium, situationToken.GetAspectsFromStoredElements(),
             new Dice());
 
-           string nextRecipePrediction = situation.GetPrediction(rc);
+           string nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
 
 
             situationWindow.DisplaySituation(s.GetTitle(),s.GetDescription(), nextRecipePrediction);
        }
 
-        public void SituationOngoing(Situation s)
+        public void SituationOngoing(SituationStateMachine s)
         {
             situationToken.DisplayTimeRemaining(s.Warmup, s.TimeRemaining);
         }
@@ -139,36 +132,32 @@ namespace Assets.TabletopUi
        {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
-           var inputStacks = situationToken.GetStacksInOngoingSlots();
-           var storageGateway = situationToken.GetSituationStorageStacksManager();
-            storageGateway.AcceptStacks(inputStacks);
+           situationToken.AbsorbOngoingSlotContents();
+
 
             //execute each recipe in command
             foreach (var kvp in command.GetElementChanges())
             {
-               situationToken.GetSituationStorageStacksManager().ModifyElementQuantity(kvp.Key, kvp.Value);
+                situationToken.ModifyStoredElementStack(kvp.Key,kvp.Value);
+
             }
 
         }
 
        public void SituationExtinct()
        {
-            IElementStacksManager storedStacksManager = situationToken.GetSituationStorageStacksManager();
-
           //retrieve all stacks stored in the situation
-            var stacksToRetrieve = storedStacksManager.GetStacks();
+           var stacksToRetrieve = situationToken.GetStoredStacks();
             //create a notification reflecting what just happened
-            INotification notification=new Notification(situation.GetTitle(),situation.GetDescription());
+            INotification notification=new Notification(SituationStateMachine.GetTitle(),SituationStateMachine.GetDescription());
             //put all the stacks, and the notification, into the window for player retrieval
             situationWindow.AddOutput(stacksToRetrieve,notification);
 
-            //hide the timer: we're done here
-            situationToken.SetTimerVisibility(false);
-            //and we don't want anyone adding any more slots
-            situationToken.DeactivateOngoingSlots();
+            situationToken.SituationEnding();
+
 
             //and finally, the situation is gone
-            situation = null;
+            SituationStateMachine = null;
 
         
            
@@ -176,8 +165,8 @@ namespace Assets.TabletopUi
 
         public void BeginSituation(Recipe r)
         {
-            situation = new Situation(r);
-            situation.Subscribe(this);
+            SituationStateMachine = new SituationStateMachine(r);
+            SituationStateMachine.Subscribe(this);
 
         }
 
@@ -188,9 +177,7 @@ namespace Assets.TabletopUi
             var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id);
             if (recipe != null)
             {
-                var containerGateway = situationToken.GetSituationStorageStacksManager();
-                var stacksToStore = situationWindow.GetStacksInStartingSlots();
-                containerGateway.AcceptStacks(stacksToStore);
+                situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
 
                 BeginSituation(recipe);
                 situationWindow.DisplayOngoing();
@@ -209,7 +196,7 @@ namespace Assets.TabletopUi
                //if we attach the controller to a third object, we'd need to retire that too
            }
             else
-                Open();
+                OpenSituation();
 
        }
    }

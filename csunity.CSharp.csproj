@@ -66,6 +66,9 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -84,25 +87,25 @@
     <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
     <Compile Include="Assets\Core\Commands\Notification.cs" />
     <Compile Include="Assets\Core\Compendium.cs" />
+    <Compile Include="Assets\Core\Entities\AbstractVerb.cs" />
     <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
     <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
+    <Compile Include="Assets\Core\Entities\CreatedVerb.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
     <Compile Include="Assets\Core\Entities\ElementStacksManager.cs" />
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
-    <Compile Include="Assets\Core\Entities\Situation.cs" />
+    <Compile Include="Assets\Core\Entities\SituationStateMachine.cs" />
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
     <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
-    <Compile Include="Assets\Core\Entities\CreatedVerb.cs" />
-    <Compile Include="Assets\Core\Entities\AbstractVerb.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
     <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
-    <Compile Include="Assets\Core\Interfaces\ITokenTransformWrapper.cs" />
     <Compile Include="Assets\Core\Interfaces\INotification.cs" />
+    <Compile Include="Assets\Core\Interfaces\ITokenTransformWrapper.cs" />
     <Compile Include="Assets\Core\Interfaces\IVerb.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
     <Compile Include="Assets\Logic\AspectMatchFilter.cs" />
@@ -125,12 +128,14 @@
     <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectsDisplay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementDetailsWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackToken.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopTokenTransformWrapper.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationSubscriber.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationDetails.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationStateMachineSituationSubscriber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notifier.cs" />

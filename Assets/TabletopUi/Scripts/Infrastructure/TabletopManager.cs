@@ -103,7 +103,7 @@ namespace Assets.CS.TabletopUI
                 if (DraggableToken.itemBeingDragged == null ||
                     DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
 
-                    situationToken.CloseController();
+                    situationToken.CloseSituation();
             }
         }
 
@@ -116,6 +116,7 @@ namespace Assets.CS.TabletopUI
 
                 //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
                 DraggableToken.itemBeingDragged.DisplayOnTable();
+                tabletopContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
             }
         }
 
