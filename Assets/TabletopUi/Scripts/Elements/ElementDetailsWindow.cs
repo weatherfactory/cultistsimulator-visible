@@ -21,10 +21,9 @@ namespace Assets.CS.TabletopUI
             Invoke("Hide", 5);
         }
 
-        public void SetElementCard(ElementStack stack) {
+        public void SetElementCard(Element element) {
 
-            var element = Registry.Compendium.GetElementById(stack.ElementId);
-            artwork.sprite = stack.GetSprite();
+            artwork.sprite = ResourcesManager.GetSpriteForElement(element.Id);
             title.text = element.Label;
             description.text = element.Description; 
             slots.text = GetSlotsText(element.ChildSlotSpecifications); 

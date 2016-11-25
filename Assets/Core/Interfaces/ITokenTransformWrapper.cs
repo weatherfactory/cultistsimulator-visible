@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Interfaces
 {
     /// <summary>
     /// adds element stacks to a specified container
     /// </summary>
-    public interface IElementStacksWrapper
+    public interface ITokenTransformWrapper
     {
         IElementStack ProvisionElementStack(string elementId, int quantity);
-        IElementStack Accept(IElementStack stack);
+        void Accept(IElementStack stack);
+        void Accept(DraggableToken token);
         IEnumerable<IElementStack> GetStacks();
+        IEnumerable<DraggableToken> GetTokens();
     }
 }

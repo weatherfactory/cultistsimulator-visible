@@ -13,7 +13,7 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class ElementStack : DraggableToken, IElementStack
+    public class ElementStackToken : DraggableToken, IElementStack
     {
 
         [SerializeField] Image artwork;
@@ -21,9 +21,9 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject selectedMarker;
         private Element _element;
         private int _quantity;
-        private IElementStacksWrapper currentWrapper;
+        private ITokenTransformWrapper currentWrapper;
 
-        public string ElementId
+        public override string Id
         {
             get { return _element == null ? null : _element.Id; }
         }
@@ -46,7 +46,7 @@ namespace Assets.CS.TabletopUI
             _quantity = quantity;
             if (quantity <= 0)
             {
-                Remove();
+                Retire();
                 return;
             }
             DisplayInfo();
@@ -58,7 +58,7 @@ namespace Assets.CS.TabletopUI
             SetQuantity(_quantity + change);
         }
 
-        public bool Remove()
+        public override bool Retire()
         {
             DestroyObject(gameObject);
             if (Defunct)
@@ -116,19 +116,23 @@ namespace Assets.CS.TabletopUI
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            notifier.ShowElementDetails(this);
+            notifier.ShowElementDetails(_element);
             base.OnPointerClick(eventData);
         }
 
         public override void OnDrop(PointerEventData eventData)
         {
-            ElementStack droppedCard = DraggableToken.itemBeingDragged as ElementStack;
-            ElementStack droppedOnStack = this as ElementStack;
-            if (droppedOnStack != null && droppedCard != null && droppedOnStack.ElementId == droppedCard.ElementId)
+            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+        }
+
+
+        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
+        {
+            if (stackDroppedOn.Id == this.Id)
             {
-                droppedOnStack.SetQuantity(droppedOnStack.Quantity + droppedCard.Quantity);
+                stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
-                droppedCard.SetQuantity(0);
+                this.SetQuantity(0);
             }
         }
 
@@ -136,9 +140,9 @@ namespace Assets.CS.TabletopUI
         {
             if (Quantity > n)
             {
-                var cardLeftBehind = PrefabFactory.CreateToken<ElementStack>(transform.parent);
+                var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
 
-                cardLeftBehind.Populate(ElementId, Quantity - n);
+                cardLeftBehind.Populate(Id, Quantity - n);
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
                 cardLeftBehind.transform.position = transform.position;

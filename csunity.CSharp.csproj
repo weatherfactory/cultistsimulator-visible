@@ -101,7 +101,7 @@
     <Compile Include="Assets\Core\Enums\Style.cs" />
     <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
-    <Compile Include="Assets\Core\Interfaces\IElementStacksWrapper.cs" />
+    <Compile Include="Assets\Core\Interfaces\ITokenTransformWrapper.cs" />
     <Compile Include="Assets\Core\Interfaces\INotification.cs" />
     <Compile Include="Assets\Core\Interfaces\IVerb.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
@@ -124,9 +124,9 @@
     <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectFrame.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectsDisplay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementDetailsWindow.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStack.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackWrapper.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopElementStackWrapper.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackToken.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopTokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />

@@ -21,10 +21,10 @@ namespace Assets.CS.TabletopUI
             notification.SetDetails(title, description);
         }
 
-        public void ShowElementDetails(ElementStack stack)
+        public void ShowElementDetails(Element element)
         {
             var detailWindow = BuildElementDetailsWindow();
-            detailWindow.SetElementCard(stack);
+            detailWindow.SetElementCard(element);
         }
 
 

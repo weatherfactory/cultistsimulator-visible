@@ -29,9 +29,9 @@ public interface IElementStacksManager
 
 public class ElementStacksManager : IElementStacksManager
 {
-    private IElementStacksWrapper wrapper;
+    private ITokenTransformWrapper wrapper;
     
-    public ElementStacksManager(IElementStacksWrapper w)
+    public ElementStacksManager(ITokenTransformWrapper w)
     {
         wrapper = w;
     }
@@ -58,7 +58,7 @@ public class ElementStacksManager : IElementStacksManager
         int unsatisfiedChange = quantityChange;
         while(unsatisfiedChange<0)
         { 
-             IElementStack cardToRemove = wrapper.GetStacks().FirstOrDefault(c => c.ElementId == elementId && c.Defunct==false);
+             IElementStack cardToRemove = wrapper.GetStacks().FirstOrDefault(c => c.Id == elementId && c.Defunct==false);
             if(cardToRemove==null)
                 //we've run out of matching cards; break, and return unsatisfied change amount
                 return unsatisfiedChange;
@@ -82,7 +82,7 @@ public class ElementStacksManager : IElementStacksManager
 
     public int GetCurrentElementQuantity(string elementId)
     {
-            return wrapper.GetStacks().Where(e => e.ElementId == elementId).Sum(e => e.Quantity);
+            return wrapper.GetStacks().Where(e => e.Id == elementId).Sum(e => e.Quantity);
     }
     /// <summary>
     /// All the elements in all the stacks (there may be duplicate elements in multiple stacks)
@@ -90,7 +90,7 @@ public class ElementStacksManager : IElementStacksManager
     /// <returns></returns>
     public IDictionary<string,int> GetCurrentElementTotals()
     {
-        var totals = wrapper.GetStacks().GroupBy(c => c.ElementId)
+        var totals = wrapper.GetStacks().GroupBy(c => c.Id)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -134,7 +134,7 @@ public class ElementStacksManager : IElementStacksManager
     {
         foreach (var eachStack in stacks)
         {
-            AcceptStack(eachStack);
+             AcceptStack(eachStack);
         }
     }
 

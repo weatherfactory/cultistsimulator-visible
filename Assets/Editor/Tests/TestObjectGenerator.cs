@@ -12,7 +12,7 @@ public class TestObjectGenerator
 
     public static FakeElementStack CreateElementCard(string key, int quantity)
     {
-        FakeElementStack c=new FakeElementStack() {ElementId = key,Quantity = 1};
+        FakeElementStack c=new FakeElementStack() {Id = key,Quantity = 1};
         return c;
     }
 

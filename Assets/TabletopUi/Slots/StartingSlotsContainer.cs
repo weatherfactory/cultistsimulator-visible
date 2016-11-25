@@ -21,14 +21,14 @@ namespace Assets.TabletopUi.SlotsContainers
 
         }
 
-        protected void AddSlotsForStack(ElementStack stack, RecipeSlot slot)
+        protected void AddSlotsForStack(ElementStackToken stack, RecipeSlot slot)
         {
             foreach (var childSlotSpecification in stack.GetChildSlotSpecifications())
                 //add slot to child slots of slot
-                slot.childSlots.Add(BuildSlot("childslot of " + stack.ElementId, childSlotSpecification));
+                slot.childSlots.Add(BuildSlot("childslot of " + stack.Id, childSlotSpecification));
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStack stack)
+        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack)
         {
             _situationController.DisplayStartingRecipe();
             if (stack.HasChildSlots())

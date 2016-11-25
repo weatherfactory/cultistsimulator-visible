@@ -35,11 +35,11 @@ namespace Assets.TabletopUi.Scripts.Services
         {
 
             SituationToken situationToken;
-            ElementStack stack;
+            ElementStackToken stack;
 
             float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
-            float cardWidth = (PrefabFactory.GetPrefab<ElementStack>().transform as RectTransform).rect.width + 20f;
+            float cardWidth = (PrefabFactory.GetPrefab<ElementStackToken>().transform as RectTransform).rect.width + 20f;
 
 
             // build verbs
@@ -59,7 +59,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
             for (int i = 0; i <= legalElementIDs.GetUpperBound(0); i++)
             {
-                stack = PrefabFactory.CreateToken<ElementStack>(tableLevel);
+                stack = PrefabFactory.CreateToken<ElementStackToken>(tableLevel);
                 stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
                 stack.transform.localPosition = new Vector3(-750f + i * cardWidth, 0f);
             }

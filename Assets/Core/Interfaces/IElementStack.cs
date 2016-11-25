@@ -7,7 +7,7 @@ namespace Assets.Core.Interfaces
 {
     public interface IElementStack
     {
-        string ElementId { get; }
+        string Id { get; }
         int Quantity { get; }
         bool Defunct { get; }
         IAspectsDictionary GetAspects();

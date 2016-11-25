@@ -127,16 +127,11 @@ namespace Assets.CS.TabletopUI
         {
 
             var airPosition = token.transform.position;
-            var stack = token as ElementStack;
-            
-            if(stack!=null)
-            { 
-                tabletopContainer.GetElementStacksManager().AcceptStack(stack);
-                stack.transform.position = airPosition;
-            }
-            var situationToken = token as SituationToken;
-                if(situationToken != null)
-                situationToken.SetContainer(tabletopContainer);
+            tabletopContainer.GetTokenTransformWrapper().Accept(token);
+
+
+            token.transform.position = airPosition;
+            var stack = token as ElementStackToken;
 
             token.RectTransform.SetParent(tabletopContainer.transform);
             token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);

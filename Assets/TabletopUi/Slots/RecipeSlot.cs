@@ -13,8 +13,8 @@ namespace Assets.CS.TabletopUI
 {
     public interface IRecipeSlot
     {
-        ElementStack GetElementStackInSlot();
-        SlotMatchForAspects GetSlotMatchForStack(ElementStack stack);
+        ElementStackToken GetElementStackInSlot();
+        SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
     }
@@ -41,7 +41,7 @@ namespace Assets.CS.TabletopUI
         }
         public void OnDrop(PointerEventData eventData) {
 
-            ElementStack stack = DraggableToken.itemBeingDragged as ElementStack;
+            ElementStackToken stack = DraggableToken.itemBeingDragged as ElementStackToken;
             if (stack != null)
             {
                     SlotMatchForAspects match = GetSlotMatchForStack(stack);
@@ -60,7 +60,7 @@ namespace Assets.CS.TabletopUI
 
         public void AcceptStack(IElementStack s)
         {
-            var stack = s as ElementStack;
+            var stack = s as ElementStackToken;
 
            GetElementStacksManager().AcceptStack(s);
 
@@ -70,12 +70,12 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public ElementStack GetElementStackInSlot()
+        public ElementStackToken GetElementStackInSlot()
         {
-            return GetComponentInChildren<ElementStack>();
+            return GetComponentInChildren<ElementStackToken>();
         }
 
-        public SlotMatchForAspects GetSlotMatchForStack(ElementStack stack)
+        public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
         {
             if (GoverningSlotSpecification == null)
                 return SlotMatchForAspects.MatchOK();
@@ -86,7 +86,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {
-            onCardPickedUp(draggableToken as ElementStack);
+            onCardPickedUp(draggableToken as ElementStackToken);
         }
 
         public void TokenInteracted(DraggableToken draggableToken)
@@ -97,7 +97,7 @@ namespace Assets.CS.TabletopUI
         public bool AllowDrag { get { return true; }}
         public ElementStacksManager GetElementStacksManager()
         {
-            IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
+            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
             return new ElementStacksManager(tabletopStacksWrapper);
         }
     }

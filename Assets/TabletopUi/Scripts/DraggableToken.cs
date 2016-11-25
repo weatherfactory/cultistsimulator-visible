@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -43,12 +44,14 @@ namespace Assets.CS.TabletopUI
             draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
 
+        public abstract string Id { get; }
+
         public void SubscribeNotifier(Notifier n)
         {
             notifier = n;
         }
 
-        public void SetContainer(ITokenContainer newContainer)
+        public virtual void SetContainer(ITokenContainer newContainer)
         {
             container = newContainer;
         }
@@ -158,11 +161,27 @@ namespace Assets.CS.TabletopUI
             if (onChangeDragState != null)
                 onChangeDragState(false);
         }
+
         public virtual void OnDrop(PointerEventData eventData)
         {
-   
+            
         }
 
+        public virtual void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
+        {
+
+        }
+
+        public virtual void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
+        {
+            
+        }
+
+        public virtual bool Retire()
+        {
+            Destroy(gameObject);
+            return true;
+        }
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {

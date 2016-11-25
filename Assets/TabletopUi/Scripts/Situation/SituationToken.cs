@@ -46,12 +46,10 @@ namespace Assets.CS.TabletopUI
 
         public bool IsTransient { get { return _verb.Transient; } }
 
-        public string VerbId
+        public override string Id
         {
             get { return _verb == null ? null : _verb.Id; }
         }
-
-  
 
         public void SetTimerVisibility(bool b)
         {
@@ -71,7 +69,7 @@ namespace Assets.CS.TabletopUI
         public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
             situationController = sc;
-            name = "Verb_" + VerbId;
+            name = "Verb_" + Id;
 
             DisplayName(verb);
             DisplayIcon(verb);
@@ -174,10 +172,6 @@ namespace Assets.CS.TabletopUI
            
         }
 
-        public void Retire()
-        {
-            Destroy(gameObject);
-        }
     }
 
 

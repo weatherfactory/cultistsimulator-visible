@@ -44,7 +44,7 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
     public bool AllowDrag { get { return true; } }
     public ElementStacksManager GetElementStacksManager()
     {
-        IElementStacksWrapper tabletopStacksWrapper = new ElementStackWrapper(transform);
+        ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
         return new ElementStacksManager(tabletopStacksWrapper);
     }
 

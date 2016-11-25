@@ -92,7 +92,7 @@ namespace Assets.TabletopUi
         {
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();
 
-            var r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.VerbId);
+            var r = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id);
 
             situationWindow.DisplayRecipe(r);
         }
@@ -185,7 +185,7 @@ namespace Assets.TabletopUi
         public void AttemptActivateRecipe()
        {
             var aspects =situationWindow.GetAspectsFromSlottedElements();
-            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.VerbId);
+            var recipe = Registry.Compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id);
             if (recipe != null)
             {
                 var containerGateway = situationToken.GetSituationStorageStacksManager();
