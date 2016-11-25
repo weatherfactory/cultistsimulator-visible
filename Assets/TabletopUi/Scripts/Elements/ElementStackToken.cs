@@ -117,7 +117,6 @@ namespace Assets.CS.TabletopUI
         public override void OnPointerClick(PointerEventData eventData)
         {
             notifier.ShowElementDetails(_element);
-            base.OnPointerClick(eventData);
         }
 
         public override void OnDrop(PointerEventData eventData)

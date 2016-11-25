@@ -10,7 +10,6 @@ namespace Assets.CS.TabletopUI.Interfaces
     public interface ITokenContainer
     {
         void TokenPickedUp(DraggableToken draggableToken);
-        void TokenInteracted(DraggableToken draggableToken);
         bool AllowDrag { get; }
         ElementStacksManager GetElementStacksManager();
         ITokenTransformWrapper GetTokenTransformWrapper();

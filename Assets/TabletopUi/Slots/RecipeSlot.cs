@@ -53,8 +53,8 @@ namespace Assets.CS.TabletopUI
                         AcceptStack(stack);
                     }
 
-                    else
-                    stack.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
+              else
+                   DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
                 
              }
         }
@@ -92,10 +92,7 @@ namespace Assets.CS.TabletopUI
             onCardPickedUp(draggableToken as IElementStack);
         }
 
-        public void TokenInteracted(DraggableToken draggableToken)
-        {
-      
-        }
+ 
 
         public bool AllowDrag { get { return true; }}
         public ElementStacksManager GetElementStacksManager()

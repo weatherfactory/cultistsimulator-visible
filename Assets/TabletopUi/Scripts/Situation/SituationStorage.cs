@@ -13,10 +13,6 @@ public class SituationStorage : MonoBehaviour,ITokenContainer
         
     }
 
-    public void TokenInteracted(DraggableToken draggableToken)
-    {
-        
-    }
 
     public bool AllowDrag { get { return false; } }
     public ElementStacksManager GetElementStacksManager()

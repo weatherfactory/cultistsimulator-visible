@@ -36,11 +36,6 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
     }
 
 
-    public void TokenInteracted(DraggableToken draggableToken)
-    {
-        //currently nothing 
-    }
-
     public bool AllowDrag { get { return true; } }
     public ElementStacksManager GetElementStacksManager()
     {

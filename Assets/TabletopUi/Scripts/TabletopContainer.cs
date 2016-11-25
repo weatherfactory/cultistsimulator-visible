@@ -17,10 +17,6 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     }
 
-    public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
-    {
-        tabletopManager.PutOnTable(draggableToken);
-  }
 
 public void TokenInteracted(DraggableToken draggableToken)
     {
