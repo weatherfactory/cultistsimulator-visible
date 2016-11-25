@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts
     public class TokenTransformWrapper: ITokenTransformWrapper
     {
         protected Transform wrappedTransform;
-        protected ITokenContainer wrappedContainer;
+        protected ITokenContainer wrappedContainer; //one container can have multiple wrapped transforms
 
         public TokenTransformWrapper(Transform t)
         {
@@ -42,12 +42,18 @@ namespace Assets.TabletopUi.Scripts
             token.transform.SetParent(wrappedTransform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
+            token.transform.localScale = Vector3.one;
             token.SetContainer(wrappedContainer);
         }
 
         public virtual IEnumerable<DraggableToken> GetTokens()
         {
             return wrappedTransform.GetComponentsInChildren<DraggableToken>();
+        }
+
+        public virtual IEnumerable<SituationToken> GetSituationTokens()
+        {
+            return wrappedTransform.GetComponentsInChildren<SituationToken>();
         }
 
 

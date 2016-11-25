@@ -15,6 +15,7 @@ namespace Assets.Core.Interfaces
         void Accept(IElementStack stack);
         void Accept(DraggableToken token);
         IEnumerable<IElementStack> GetStacks();
+        IEnumerable<SituationToken> GetSituationTokens();
         IEnumerable<DraggableToken> GetTokens();
     }
 }

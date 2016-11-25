@@ -131,12 +131,15 @@ namespace Assets.CS.TabletopUI
 
         public void OpenController()
         {
+            DisplayInAir();
             situationController.Open();
         }
 
 
         public void CloseController()
         {
+            if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
+                DisplayOnTable();
             situationController.Close();
         }
 
@@ -175,10 +178,21 @@ namespace Assets.CS.TabletopUI
         public override void OnPointerClick(PointerEventData eventData)
         {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if (eventData.pointerId >= -1)
-            {
-              (container as TabletopContainer).TokenInteracted(this);
+
+            if (!IsOpen)
+            { 
+                OpenController();
+             
+                (container as TabletopContainer).CloseAllSituationWindowsExcept(this);
+
             }
+            else
+            { 
+                CloseController();
+           
+                    
+            }
+
         }
 
     }

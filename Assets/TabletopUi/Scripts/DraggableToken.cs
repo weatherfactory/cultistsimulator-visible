@@ -185,5 +185,20 @@ namespace Assets.CS.TabletopUI
 
         public abstract void OnPointerClick(PointerEventData eventData);
 
+        public void DisplayOnTable()
+        {
+            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
+            RectTransform.localRotation = Quaternion.identity;
+        }
+        public void DisplayInAir()
+        {
+
+
+            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x,
+                RectTransform.anchoredPosition3D.y, -10f);
+            RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
+
+        }
+
     }
 }

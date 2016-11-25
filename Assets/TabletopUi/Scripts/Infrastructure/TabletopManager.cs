@@ -85,69 +85,27 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
-
-        #region -- CREATE / REMOVE VIEW OBJECTS ----------------------------------------------------
-
-        public void ShowSituationWindow(SituationToken situationToken)
-        {
-            CloseAllSituationWindowsExcept(situationToken);
-            PutTokenInAir(situationToken.transform as RectTransform);
-            situationToken.OpenController();
-   
-        }
-
-        private void CloseAllSituationWindowsExcept(SituationToken except)
-        {
-            var situationTokens = windowLevel.GetComponentsInChildren<SituationToken>().Where(sw => sw != except);
-            foreach (var situationToken in situationTokens)
-                HideSituationWindow(situationToken);
-
-        }
-
-        public void HideSituationWindow(SituationToken situationToken) {
-            if (DraggableToken.itemBeingDragged  == null || DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
-                PutOnTable(situationToken); // remove verb from details window before hiding it, so it isn't removed, if we're not already dragging it
-
-            situationToken.CloseController();
-        }
-
-
-
-        #endregion
+        
 
         public void ArrangeTokenOnTable(DraggableToken token)
         {
             ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
             token.transform.localPosition=new Vector3(-500,-250);
-            PutOnTable(token);
+            tabletopContainer.PutOnTable(token);
         }
 
-        public void PutOnTable(DraggableToken token)
+
+        public void CloseAllSituationWindowsExcept(SituationToken except)
         {
+            var situationTokens = tabletopContainer.GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
+            foreach (var situationToken in situationTokens)
+            {
+                if (DraggableToken.itemBeingDragged == null ||
+                    DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
 
-            var airPosition = token.transform.position;
-            tabletopContainer.GetTokenTransformWrapper().Accept(token);
-
-            token.transform.position = airPosition;
-
-            token.RectTransform.SetParent(tabletopContainer.transform);
-            token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
-            token.RectTransform.localRotation = Quaternion.identity;
+                    situationToken.CloseController();
+            }
         }
-
-        // parents object to "TabletopTransform" and sets its Z to 0.
-        public void PutTokenInAir(RectTransform rectTransform) {
-            if (rectTransform == null)
-                return;
-
-            rectTransform.SetParent(windowLevel); 
-            rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
-            rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
-        }
-
-
-        #region -- INTERACTION ----------------------------------------------------
 
         void HandleOnBackgroundDropped() {
             // NOTE: This puts items back on the background. We need this in more cases. Should be a method
@@ -156,7 +114,8 @@ namespace Assets.CS.TabletopUI
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
-                PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
+                //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
+                DraggableToken.itemBeingDragged.DisplayOnTable();
             }
         }
 
@@ -168,7 +127,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        #endregion
+        
 
     }
 
