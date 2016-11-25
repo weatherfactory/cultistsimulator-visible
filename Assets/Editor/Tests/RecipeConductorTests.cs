@@ -13,7 +13,6 @@ namespace Assets.Editor.Tests
     public class RecipeConductorTests
     {
         private ICompendium compendium;
-        private IAspectsDictionary aspectsAvailable;
         private IDice mockDice;
         private Recipe primaryRecipe;
         private Recipe secondaryRecipe;
@@ -58,7 +57,6 @@ namespace Assets.Editor.Tests
             compendium = new Compendium();
             compendium.UpdateRecipes(allRecipes);
             mockDice = Substitute.For<IDice>();
-            aspectsAvailable = Substitute.For<IAspectsDictionary>();
         }
         [Test]
         public void RecipeConductor_SuppliesLoopRecipeToCompletedSituation()
