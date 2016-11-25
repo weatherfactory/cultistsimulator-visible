@@ -15,7 +15,7 @@ namespace Assets.CS.TabletopUI
     {
         IElementStack GetElementStackInSlot();
         DraggableToken GetTokenInSlot();
-        SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
+        SlotMatchForAspects GetSlotMatchForStack(IElementStack stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
     }
@@ -42,7 +42,7 @@ namespace Assets.CS.TabletopUI
         }
         public void OnDrop(PointerEventData eventData) {
 
-            ElementStackToken stack = DraggableToken.itemBeingDragged as ElementStackToken;
+            IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
             if (stack != null)
             {
                     SlotMatchForAspects match = GetSlotMatchForStack(stack);
@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI
             return GetComponentInChildren<IElementStack>();
         }
 
-        public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
+        public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack)
         {
             if (GoverningSlotSpecification == null)
                 return SlotMatchForAspects.MatchOK();
@@ -89,7 +89,7 @@ namespace Assets.CS.TabletopUI
 
         public void TokenPickedUp(DraggableToken draggableToken)
         {
-            onCardPickedUp(draggableToken as ElementStackToken);
+            onCardPickedUp(draggableToken as IElementStack);
         }
 
         public void TokenInteracted(DraggableToken draggableToken)
