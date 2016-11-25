@@ -31,10 +31,8 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
      return  new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
     }
 
-    void HandleOnSlotDroppedOn(RecipeSlot slot,IElementStack s)
+    void HandleOnSlotDroppedOn(RecipeSlot slot,IElementStack stack)
     {
-
-       var stack = s as ElementStackToken;
         RespondToStackAdded(slot, stack);
         
     }
@@ -57,7 +55,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
     public abstract void RespondToStackPickedUp(IElementStack stack);
 
-    public abstract void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack);
+    public abstract void RespondToStackAdded(RecipeSlot slot, IElementStack stack);
 
     public AspectsDictionary GetAspectsFromSlottedCards()
     {
@@ -94,10 +92,10 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
                 ClearAndDestroySlot(cs);
             slot.childSlots.Clear();
         }
-        ElementStackToken stackContained = slot.GetElementStackInSlot();
-        if (stackContained != null)
+        DraggableToken tokenContained = slot.GetTokenInSlot();
+        if (tokenContained != null)
         {
-            stackContained.ReturnToTabletop(null);
+            tokenContained.ReturnToTabletop(null);
         }
         DestroyObject(slot.gameObject);
     }

@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.SlotsContainers
         }
 
 
-        public override void RespondToStackAdded(RecipeSlot slot, ElementStackToken stack)
+        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack)
         {
             _situationController.UpdateSituationDisplay();
         }

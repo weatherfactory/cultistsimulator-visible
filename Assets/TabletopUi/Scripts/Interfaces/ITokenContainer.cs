@@ -13,5 +13,6 @@ namespace Assets.CS.TabletopUI.Interfaces
         void TokenInteracted(DraggableToken draggableToken);
         bool AllowDrag { get; }
         ElementStacksManager GetElementStacksManager();
+        ITokenTransformWrapper GetTokenTransformWrapper();
     }
 }

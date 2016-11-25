@@ -24,4 +24,10 @@ public class SituationStorage : MonoBehaviour,ITokenContainer
         ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
         return new ElementStacksManager(tabletopStacksWrapper);
     }
+
+    public ITokenTransformWrapper GetTokenTransformWrapper()
+    {
+        return new TokenTransformWrapper(transform);
+
+    }
 }

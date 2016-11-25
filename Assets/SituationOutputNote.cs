@@ -48,5 +48,8 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
         return new ElementStacksManager(tabletopStacksWrapper);
     }
 
-
+    public ITokenTransformWrapper GetTokenTransformWrapper()
+    {
+       return new TokenTransformWrapper(transform);
+    }
 }

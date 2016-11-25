@@ -129,9 +129,7 @@ namespace Assets.CS.TabletopUI
             var airPosition = token.transform.position;
             tabletopContainer.GetTokenTransformWrapper().Accept(token);
 
-
             token.transform.position = airPosition;
-            var stack = token as ElementStackToken;
 
             token.RectTransform.SetParent(tabletopContainer.transform);
             token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
@@ -147,7 +145,6 @@ namespace Assets.CS.TabletopUI
             rectTransform.anchoredPosition3D = new Vector3(rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, windowZOffset);
             rectTransform.localRotation = Quaternion.Euler(0f, 0f, rectTransform.eulerAngles.z);
         }
-
 
 
         #region -- INTERACTION ----------------------------------------------------

@@ -13,7 +13,8 @@ namespace Assets.CS.TabletopUI
 {
     public interface IRecipeSlot
     {
-        ElementStackToken GetElementStackInSlot();
+        IElementStack GetElementStackInSlot();
+        DraggableToken GetTokenInSlot();
         SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
@@ -58,21 +59,23 @@ namespace Assets.CS.TabletopUI
              }
         }
 
-        public void AcceptStack(IElementStack s)
+        public void AcceptStack(IElementStack stack)
         {
-            var stack = s as ElementStackToken;
 
-           GetElementStacksManager().AcceptStack(s);
+           GetElementStacksManager().AcceptStack(stack);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
             onCardDropped(this, stack);
         }
 
-
-        public ElementStackToken GetElementStackInSlot()
+        public DraggableToken GetTokenInSlot()
         {
-            return GetComponentInChildren<ElementStackToken>();
+            return GetComponentInChildren<DraggableToken>();
+        }
+        public IElementStack GetElementStackInSlot()
+        {
+            return GetComponentInChildren<IElementStack>();
         }
 
         public SlotMatchForAspects GetSlotMatchForStack(ElementStackToken stack)
@@ -99,6 +102,11 @@ namespace Assets.CS.TabletopUI
         {
             ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
             return new ElementStacksManager(tabletopStacksWrapper);
+        }
+
+        public ITokenTransformWrapper GetTokenTransformWrapper()
+        {
+            return new TokenTransformWrapper(transform);
         }
     }
 }
