@@ -98,11 +98,10 @@ namespace Assets.TabletopUi.Scripts.Services
         private SituationWindow buildSituationWindowForSituationToken(SituationToken situationToken)
         {
             var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(situationToken.transform);
-            var tokenPosition = situationToken.transform.position;
-            tokenPosition.x = tokenPosition.x + 100;
 
-            situationWindow.transform.position = tokenPosition;
             situationWindow.gameObject.SetActive(false);
+            situationWindow.transform.position = situationToken.transform.position;
+
             return situationWindow;
         }
 

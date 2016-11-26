@@ -35,7 +35,7 @@ namespace Assets.TabletopUi
 
        public void OpenSituation()
        {
-            //situationWindow.transform.position = situationToken.transform.position;
+           // situationWindow.transform.position = (situationToken as DraggableToken).transform.position;
             situationWindow.Show();
 
            situationToken.OpenToken();
