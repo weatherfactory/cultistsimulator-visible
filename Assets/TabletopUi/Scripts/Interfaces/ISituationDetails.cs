@@ -7,5 +7,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationDetails
     {
+        void Show();
+        void Hide();
     }
 }

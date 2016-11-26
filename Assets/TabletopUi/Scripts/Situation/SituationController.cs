@@ -17,7 +17,7 @@ namespace Assets.TabletopUi
    public  class SituationController:ISituationStateMachineSituationSubscriber
    {
        public ISituationAnchor situationToken;
-       private SituationWindow situationWindow;
+       private ISituationDetails situationWindow;
        public SituationStateMachine SituationStateMachine;
         
        public void InitialiseToken(SituationToken t,IVerb v)
