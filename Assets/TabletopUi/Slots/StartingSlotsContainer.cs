@@ -30,20 +30,20 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack)
         {
-            _situationController.DisplayStartingRecipe();
+          
             if (stack.HasChildSlots())
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
 
-            _situationController.UpdateSituationDisplay();
+            _situationController.StartingSlotsUpdated();
         }
 
         public override void RespondToStackPickedUp(IElementStack stack)
         {
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();
-            _situationController.UpdateSituationDisplay();
+            _situationController.StartingSlotsUpdated();
         }
 
         protected void RemoveAnyChildSlotsWithEmptyParent()

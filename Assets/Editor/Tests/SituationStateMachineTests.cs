@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Assets.Editor.Tests
 {
     [TestFixture]
-   public class SituationTests
+   public class SituationStateMachineTests
     {
         private Recipe r1;
         private Recipe r2;

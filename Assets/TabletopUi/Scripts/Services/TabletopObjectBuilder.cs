@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 situationToken = BuildSituationTokenFor(v);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
                 var window = buildSituationWindowForSituationToken(situationToken);
-                var situationController = new SituationController();
+                var situationController = new SituationController(Registry.Compendium);
                 situationController.InitialiseToken(situationToken,v);
                 situationController.InitialiseWindow(window);
             }
@@ -78,7 +78,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 v=new CreatedVerb(recipe.ActionId,recipe.Label,recipe.Description);
             SituationToken newToken= BuildSituationTokenFor(v);
             var window = buildSituationWindowForSituationToken(newToken);
-            var situationController = new SituationController();
+            var situationController = new SituationController(Registry.Compendium);
             situationController.InitialiseToken(newToken, v);
             situationController.InitialiseWindow(window);
 

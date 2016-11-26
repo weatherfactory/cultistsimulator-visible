@@ -15,6 +15,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void OpenToken();
         void CloseToken();
 
+        void Initialise(IVerb verb, SituationController controller);
+
         IEnumerable<IElementStack> GetStoredStacks();
         void StoreStacks(IEnumerable<IElementStack> stacksToStore);
         IAspectsDictionary GetAspectsFromStoredElements();

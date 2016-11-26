@@ -30,11 +30,6 @@ public class Compendium : ICompendium
     private Dictionary<string, IVerb> _verbs;
 
 
-    public Compendium()
-    {
-
-    }
-
     public void UpdateRecipes(List<Recipe> allRecipes)
     {
         _recipes = allRecipes;

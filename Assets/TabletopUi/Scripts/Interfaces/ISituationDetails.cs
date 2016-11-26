@@ -10,6 +10,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationDetails
     {
+        void Initialise(SituationController controller);
         void Show();
         void Hide();
         void DisplayOngoing();
