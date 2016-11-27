@@ -29,6 +29,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
+        [SerializeField] private TabletopContainer tabletopContainer;
         public IList<INotification> queuedNotifications = new List<INotification>();
         private SituationController situationController;
 

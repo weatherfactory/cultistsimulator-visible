@@ -18,7 +18,6 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
     protected SituationController _situationController;
     protected RecipeSlot primarySlot;
-    
 
     public  virtual void Initialise(SituationController sc)
     {
@@ -76,8 +75,6 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
         return stacks;
     }
-
-
 
 
     protected void ClearAndDestroySlot(RecipeSlot slot)

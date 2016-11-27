@@ -11,7 +11,16 @@ namespace Assets.CS.TabletopUI.Interfaces
     {
         void TokenPickedUp(DraggableToken draggableToken);
         bool AllowDrag { get; }
+        /// <summary>
+        /// use to manipulate elementstacks in the context where they're IElementStack
+        /// </summary>
+        /// <returns></returns>
         ElementStacksManager GetElementStacksManager();
+
+        /// <summary>
+        /// use to manipulate any token, including elementstacks seen as tokens
+        /// </summary>
+        /// <returns></returns>
         ITokenTransformWrapper GetTokenTransformWrapper();
     }
 }

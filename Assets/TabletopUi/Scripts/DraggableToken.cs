@@ -17,8 +17,8 @@ namespace Assets.CS.TabletopUI
         public static DraggableToken itemBeingDragged;
         public static bool resetToStartPos = true; // Maybe change draggable so it doesn't reset by default. makes dragging around the base case. Only force non-reset on actions.
         private static Camera dragCamera;
-        private static RectTransform draggableHolder;
-
+   
+     
         protected Transform startParent;
         protected Vector3 startPosition;
         protected int startSiblingIndex;
@@ -41,7 +41,6 @@ namespace Assets.CS.TabletopUI
         void Awake() {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-            draggableHolder = GameObject.FindGameObjectWithTag("DraggableHolder").transform as RectTransform;
         }
 
         public abstract string Id { get; }
@@ -93,11 +92,11 @@ namespace Assets.CS.TabletopUI
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 		
-            RectTransform.SetParent(draggableHolder);
+            RectTransform.SetParent(Registry.DraggableHolder);
             RectTransform.SetAsLastSibling();
 		
             Vector3 pressPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
             dragOffset = startPosition - pressPos;
 
             if (onChangeDragState != null)
@@ -115,6 +114,7 @@ namespace Assets.CS.TabletopUI
 
         public void ReturnToTabletop(INotification reason)
         {
+            Registry.TabletopManager.PlaceTokenOnTable(this);
             notifier.TokenReturnedToTabletop(this,reason);
         }
 
@@ -123,7 +123,7 @@ namespace Assets.CS.TabletopUI
 
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableHolder, eventData.position, DraggableToken.dragCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);

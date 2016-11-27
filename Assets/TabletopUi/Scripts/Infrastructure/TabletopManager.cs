@@ -15,6 +15,8 @@ namespace Assets.CS.TabletopUI
 
         [Header("Existing Objects")]
         [SerializeField] public TabletopContainer tabletopContainer;
+
+        [SerializeField] private RectTransform draggableHolder;
         [SerializeField] Transform windowLevel;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
@@ -34,6 +36,7 @@ namespace Assets.CS.TabletopUI
             contentImporter.PopulateCompendium(compendium);
 
             registry.RegisterCompendium(compendium);
+            registry.RegisterDraggableHolder(draggableHolder);
             registry.RegisterDice(new Dice());
             registry.RegisterTabletopManager(this);
 
@@ -46,7 +49,7 @@ namespace Assets.CS.TabletopUI
            tabletopObjectBuilder  = new TabletopObjectBuilder(tabletopContainer.transform,windowLevel);
             tabletopObjectBuilder.PopulateTabletop();
             var needsToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
-            ArrangeTokenOnTable(needsToken);
+            PlaceTokenOnTable(needsToken);
 
         }
 
@@ -83,11 +86,9 @@ namespace Assets.CS.TabletopUI
 
             return null;
         }
-
-
         
 
-        public void ArrangeTokenOnTable(DraggableToken token)
+        public void PlaceTokenOnTable(DraggableToken token)
         {
             ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
             token.transform.localPosition=new Vector3(-500,-250);

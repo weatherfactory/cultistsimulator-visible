@@ -10,6 +10,7 @@ namespace Assets.CS.TabletopUI
         private static ICompendium m_compendium;
         private static TabletopManager m_tabletopmanager;
         private static IDice m_dice;
+        private static RectTransform m_draggableHolder;
 
         public static TabletopManager TabletopManager
         {
@@ -17,6 +18,15 @@ namespace Assets.CS.TabletopUI
             {
                 Assert.IsNotNull(m_tabletopmanager, "tabletop manager never registered");
                 return m_tabletopmanager;
+            }
+        }
+
+        public static RectTransform DraggableHolder
+        {
+            get
+        {
+                Assert.IsNotNull(m_draggableHolder, "tabletop manager never registered");
+                return m_draggableHolder;
             }
         }
 
@@ -50,6 +60,11 @@ namespace Assets.CS.TabletopUI
         public void RegisterDice(IDice dice)
         {
             m_dice = dice;
+        }
+
+        public void RegisterDraggableHolder(RectTransform dh)
+        {
+            m_draggableHolder = dh;
         }
 
 

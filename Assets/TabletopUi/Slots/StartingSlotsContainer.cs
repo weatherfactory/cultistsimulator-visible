@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 
 namespace Assets.TabletopUi.SlotsContainers
@@ -60,6 +61,7 @@ namespace Assets.TabletopUi.SlotsContainers
                 }
             }
 
+            _situationController.StartingSlotsUpdated();
         }
 
 

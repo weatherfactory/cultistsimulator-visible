@@ -19,7 +19,7 @@ namespace Assets.TabletopUi
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
         public ISituationStateMachine SituationStateMachine;
-        private ICompendium compendium;
+        private readonly ICompendium compendium;
 
         public SituationController(ICompendium c)
         {

@@ -31,11 +31,13 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     }
 
     public bool AllowDrag { get { return true; } }
+
     public ElementStacksManager GetElementStacksManager()
     {
         return new ElementStacksManager(GetTokenTransformWrapper());
     }
 
+    
     public ITokenTransformWrapper GetTokenTransformWrapper()
     {
        return new TabletopTokenTransformWrapper(transform);
