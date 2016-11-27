@@ -30,7 +30,7 @@ namespace Assets.Core.Entities
         public SituationState State { get; set; }
        private Recipe currentPrimaryRecipe { get; set; }
         public float TimeRemaining { private set; get; }
-        public float Warmup { private set; get; }
+        public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
         public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
 
         public IList<SlotSpecification> GetSlots()
@@ -45,14 +45,12 @@ namespace Assets.Core.Entities
         public SituationStateMachine(Recipe primaryRecipe)
         {
             currentPrimaryRecipe = primaryRecipe;
-            Warmup = primaryRecipe.Warmup;
             TimeRemaining = primaryRecipe.Warmup;
             State = SituationState.Unstarted;
         }
         public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
         {
             currentPrimaryRecipe = withPrimaryRecipe;
-            Warmup = withPrimaryRecipe.Warmup;
             TimeRemaining = timeRemaining;
             State = state;
         }

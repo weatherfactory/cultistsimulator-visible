@@ -164,13 +164,11 @@ namespace Assets.TabletopUi
             //put all the stacks, and the notification, into the window for player retrieval
             situationWindow.AddOutput(stacksToRetrieve,notification);
 
-            situationToken.SituationEnding();
+            situationToken.SituationExtinct();
 
 
             //and finally, the situation is gone
             SituationStateMachine = null;
-
-        
            
         }
 

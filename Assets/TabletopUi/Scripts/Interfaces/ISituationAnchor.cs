@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IAspectsDictionary GetAspectsFromStoredElements();
         IAspectsDictionary GetAspectsFromSlottedElements();
         void SituationBeginning(IList<SlotSpecification> ongoingSlots);
-        void SituationEnding();
+        void SituationExtinct();
 
         IList<IRecipeSlot> GetUnfilledGreedySlots();
         void DisplayTimeRemaining(float duration, float timeRemaining);

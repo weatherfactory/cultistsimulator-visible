@@ -51,7 +51,7 @@ namespace Assets.CS.TabletopUI
             get { return _verb == null ? null : _verb.Id; }
         }
 
-        public void SetTimerVisibility(bool b)
+        private void SetTimerVisibility(bool b)
         {
             countdownBar.gameObject.SetActive(b);
             countdownText.gameObject.SetActive(b);
@@ -187,7 +187,7 @@ namespace Assets.CS.TabletopUI
             SetTimerVisibility(true);
         }
 
-        public void SituationEnding()
+        public void SituationExtinct()
         {
             //hide the timer: we're done here
             SetTimerVisibility(false);
