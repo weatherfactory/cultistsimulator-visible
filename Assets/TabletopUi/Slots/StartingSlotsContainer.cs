@@ -57,6 +57,7 @@ namespace Assets.TabletopUi.SlotsContainers
                     List<RecipeSlot> currentChildSlots = new List<RecipeSlot>(s.childSlots);
                     s.childSlots.Clear();
                     foreach (RecipeSlot cs in currentChildSlots.Where(eachSlot => eachSlot != null))
+
                         ClearAndDestroySlot(cs);
                 }
             }
