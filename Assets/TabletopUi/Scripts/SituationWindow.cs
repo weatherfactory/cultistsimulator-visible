@@ -49,10 +49,16 @@ namespace Assets.CS.TabletopUI
             situationController = sc;
         }
 
-        public void Show()
+        public void Show(bool situationOngoing)
         {
             canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
+            
+
+            if(situationOngoing || outputContainer.GetCurrentOutputs().Any())
+                DisplayOngoing();
+            else
+              DisplayStarting();
 
         }
 

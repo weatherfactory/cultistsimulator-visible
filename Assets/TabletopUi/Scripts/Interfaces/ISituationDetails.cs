@@ -11,10 +11,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationDetails
     {
         void Initialise(SituationController controller);
-        void Show();
+        void Show(bool situationOngoing);
         void Hide();
-        void DisplayOngoing();
-        void DisplayStarting();
         void DisplayAspects(IAspectsDictionary forAspects);
         void DisplayRecipe(Recipe r);
         IEnumerable<IElementStack> GetStacksInStartingSlots();

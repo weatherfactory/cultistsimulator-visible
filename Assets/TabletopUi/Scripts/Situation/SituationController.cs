@@ -41,16 +41,10 @@ namespace Assets.TabletopUi
 
         public void OpenSituation()
         {
-            // situationWindow.transform.position = (situationToken as DraggableToken).transform.position;
-            situationWindow.Show();
-
+        
             situationToken.OpenToken();
 
-            if (SituationStateMachine != null)
-                situationWindow.DisplayOngoing();
-            else
-                situationWindow.DisplayStarting();
-
+            situationWindow.Show(SituationStateMachine!=null);
         }
 
 
@@ -189,7 +183,7 @@ namespace Assets.TabletopUi
                 situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
 
                 BeginSituation(recipe);
-                situationWindow.DisplayOngoing();
+                situationWindow.Show(true);
             }
         }
 
