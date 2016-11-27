@@ -28,7 +28,7 @@ namespace Assets.TabletopUi.SlotsContainers
                 ClearAndDestroySlot(currentSlot);
             }
 
-            _situationController.UpdateSituationDisplay();
+            _situationController.OngoingSlotsUpdated();
         }
         public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
         {
@@ -45,18 +45,18 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack)
         {
-            _situationController.UpdateSituationDisplay();
+            _situationController.OngoingSlotsUpdated();
         }
 
         public override void RespondToStackPickedUp(IElementStack stack)
         {
-            _situationController.UpdateSituationDisplay();
+            _situationController.OngoingSlotsUpdated();
         }
 
 
         public void OnCardPickedUp(DraggableToken draggableToken)
         {
-            _situationController.UpdateSituationDisplay();
+            _situationController.OngoingSlotsUpdated();
 
         }
 

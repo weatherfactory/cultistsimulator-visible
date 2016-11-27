@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -17,7 +19,8 @@ namespace Assets.Editor.Tests
         private ICompendium compendiumMock;
         private ISituationAnchor situationAnchorMock;
         private ISituationDetails situationDetailsMock;
-        private IVerb verbMock;
+        private ISituationStateMachine situationStateMachineMock;
+        private IVerb basicVerb;
             
         [SetUp]
         public void Setup()
@@ -26,9 +29,14 @@ namespace Assets.Editor.Tests
             situationAnchorMock = Substitute.For<ISituationAnchor>();
             situationDetailsMock = Substitute.For<ISituationDetails>();
             compendiumMock = Substitute.For<ICompendium>();
+            situationStateMachineMock = Substitute.For<ISituationStateMachine>();
+            basicVerb=new BasicVerb("id","label","description");
+
 
             sc = new SituationController(compendiumMock);
-            sc.InitialiseToken(situationAnchorMock, verbMock);
+            sc.SituationStateMachine = situationStateMachineMock;
+            sc.InitialiseToken(situationAnchorMock, basicVerb);
+            
             sc.InitialiseWindow(situationDetailsMock);
         }
 
@@ -37,15 +45,27 @@ namespace Assets.Editor.Tests
         [Test]
         public void ItemAddedToStartingSlot_UpdatesAspectsAndRecipeDescription_WithStartingSlotAspects()
         {
-         sc.StartingSlotsUpdated();
-           situationDetailsMock.Received().GetAspectsFromSlottedElements();
-            situationDetailsMock.Received().DisplayRecipe(null);
+            IAspectsDictionary startingSlotAspects=new AspectsDictionary {{ "1",1}};
+            var recipe = TestObjectGenerator.GenerateRecipe(1);
+            situationDetailsMock.GetAspectsFromSlottedElements().Returns(startingSlotAspects);
+            compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"").ReturnsForAnyArgs(recipe);
+          sc.StartingSlotsUpdated();
+            situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
+            situationDetailsMock.Received().DisplayRecipe(recipe);
         }
 
         //item added to / removed from ongoing slot updates aspects display and recipe *prediction* with stored aspects and ongoing slot aspects
-
+        [Test]
         public void ItemAddedToOngoingSlot_UpdatesAspectsAndRecipePrediction_WithOngoingSlotAspects()
-        { }
+        {
+
+            sc.OngoingSlotsUpdated();
+            situationAnchorMock.Received().GetAspectsFromStoredElements();
+            situationAnchorMock.Received().GetAspectsFromSlottedElements();
+            situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
+            situationDetailsMock.ReceivedWithAnyArgs().DisplaySituation("","","");
+
+        }
 
   
 

@@ -14,39 +14,39 @@ using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi
 {
-   public  class SituationController:ISituationStateMachineSituationSubscriber
-   {
-       public ISituationAnchor situationToken;
-       private ISituationDetails situationWindow;
-       public SituationStateMachine SituationStateMachine;
-       private ICompendium compendium;
+    public class SituationController : ISituationStateMachineSituationSubscriber
+    {
+        public ISituationAnchor situationToken;
+        private ISituationDetails situationWindow;
+        public ISituationStateMachine SituationStateMachine;
+        private ICompendium compendium;
 
-       public SituationController(ICompendium c)
-       {
-           compendium = c;
-       }
-        
-       public void InitialiseToken(ISituationAnchor t,IVerb v)
-       {
+        public SituationController(ICompendium c)
+        {
+            compendium = c;
+        }
+
+        public void InitialiseToken(ISituationAnchor t, IVerb v)
+        {
             situationToken = t;
             t.Initialise(v, this);
         }
 
-       public void InitialiseWindow(ISituationDetails w)
-       {
+        public void InitialiseWindow(ISituationDetails w)
+        {
             situationWindow = w;
-           w.Initialise(this);
-       }
-    
+            w.Initialise(this);
+        }
 
-       public void OpenSituation()
-       {
-           // situationWindow.transform.position = (situationToken as DraggableToken).transform.position;
+
+        public void OpenSituation()
+        {
+            // situationWindow.transform.position = (situationToken as DraggableToken).transform.position;
             situationWindow.Show();
 
-           situationToken.OpenToken();
+            situationToken.OpenToken();
 
-            if (SituationStateMachine!=null)
+            if (SituationStateMachine != null)
                 situationWindow.DisplayOngoing();
             else
                 situationWindow.DisplayStarting();
@@ -56,39 +56,40 @@ namespace Assets.TabletopUi
 
         public void CloseSituation()
         {
-           situationToken.CloseToken();
+            situationToken.CloseToken();
             situationWindow.Hide();
         }
 
-       public void StartingSlotsUpdated()
-       {
-                      AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();
+        public void StartingSlotsUpdated()
+        {
+            AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();
+            situationWindow.DisplayAspects(startingAspects);
 
             var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id);
 
             situationWindow.DisplayRecipe(r);
-       }
+        }
 
         public void OngoingSlotsUpdated()
-        { }
-
-
-       public void UpdateSituationDisplay()
         {
             var allAspects = GetAspectsAvailableToSituation();
             situationWindow.DisplayAspects(allAspects);
 
-            string prediction = "";
-            if(SituationStateMachine!=null)
-            { 
-            RecipeConductor rc = new RecipeConductor(compendium, allAspects,
-            new Dice());
-            prediction= SituationStateMachine.GetPrediction(rc);
-            situationWindow.DisplaySituation(SituationStateMachine.GetTitle(),SituationStateMachine.GetDescription(),prediction);
-            }
+                situationWindow.DisplaySituation(SituationStateMachine.GetTitle(),
+                    SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
+        
         }
 
-       private IAspectsDictionary GetAspectsAvailableToSituation()
+
+        private string getNextRecipePrediction(IAspectsDictionary aspects)
+        {
+            
+                RecipeConductor rc = new RecipeConductor(compendium, aspects,
+                    new Dice());
+                return SituationStateMachine.GetPrediction(rc);
+            }
+
+    private IAspectsDictionary GetAspectsAvailableToSituation()
        {
            IAspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
 

@@ -9,7 +9,23 @@ using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities
 {
-    public class SituationStateMachine
+    public interface ISituationStateMachine
+    {
+        SituationState State { get; set; }
+        float TimeRemaining { get; }
+        float Warmup { get; }
+        string RecipeId { get; }
+        IList<SlotSpecification> GetSlots();
+        void Subscribe(ISituationStateMachineSituationSubscriber s);
+        string GetTitle();
+        string GetDescription();
+        AspectMatchFilter GetRetrievalFilter();
+        SituationState Continue(IRecipeConductor rc,float interval);
+        string GetPrediction(IRecipeConductor rc);
+        void Beginning();
+    }
+
+    public class SituationStateMachine : ISituationStateMachine
     {
         public SituationState State { get; set; }
        private Recipe currentPrimaryRecipe { get; set; }
