@@ -18,6 +18,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromSlottedElements();
         void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);
+        void DisplayStarting();
+        void DisplayOngoing();
         void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription);
         void Retire();
     }

@@ -15,9 +15,8 @@ namespace Assets.TabletopUi.SlotsContainers
         
         public override void Initialise(SituationController sc)
         {
-            gameObject.SetActive(true);
             primarySlot = BuildSlot();
-            ArrangeSlots();
+            ArrangeSlots();            
             base.Initialise(sc);
 
         }

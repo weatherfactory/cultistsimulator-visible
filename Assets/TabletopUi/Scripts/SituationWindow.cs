@@ -79,6 +79,7 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayStarting()
         {
+            startingSlotsContainer.gameObject.SetActive(true);
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
 
@@ -137,6 +138,9 @@ namespace Assets.CS.TabletopUI
 
         public void AllOutputsGone()
         {
+            title.text = "";
+            description.text = "";
+            NextRecipe.text = "";
             situationController.AllOutputsGone();
         }
 

@@ -144,7 +144,6 @@ namespace Assets.TabletopUi
             foreach (var kvp in command.GetElementChanges())
             {
                 situationToken.ModifyStoredElementStack(kvp.Key,kvp.Value);
-
             }
 
         }
@@ -159,7 +158,6 @@ namespace Assets.TabletopUi
             situationWindow.AddOutput(stacksToRetrieve,notification);
 
             situationToken.SituationExtinct();
-
 
             //and finally, the situation is gone
             SituationStateMachine = null;
@@ -199,7 +197,7 @@ namespace Assets.TabletopUi
                //if we attach the controller to a third object, we'd need to retire that too
            }
             else
-                OpenSituation();
+              situationWindow.DisplayStarting();
 
        }
    }
