@@ -18,6 +18,7 @@ namespace Assets.Core.Entities
         IList<SlotSpecification> GetSlots();
         void Subscribe(ISituationStateMachineSituationSubscriber s);
         string GetTitle();
+        string GetStartingDescription();
         string GetDescription();
         AspectMatchFilter GetRetrievalFilter();
         SituationState Continue(IRecipeConductor rc,float interval);
@@ -66,6 +67,12 @@ namespace Assets.Core.Entities
         {
             return currentPrimaryRecipe==null ?  "no recipe just now" :
             currentPrimaryRecipe.Label;
+        }
+
+        public string GetStartingDescription()
+        {
+            return currentPrimaryRecipe == null ? "no recipe just now" :
+      currentPrimaryRecipe.StartDescription;
         }
 
         public string GetDescription()

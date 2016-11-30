@@ -1,0 +1,43 @@
+ {"recipes": [
+{
+        id: "labour",
+        label: "Labour",
+        actionId: "work",
+        requirements: {health: 1},
+        effects: {
+            shilling: 1
+        },
+        startdescription: "Back-breaking work for meagre pay.",
+        description: "The day is done, and so am I; but I've earned my pay.",
+        warmup: 10,
+        craftable: true
+    },
+		{
+        id: "performclericalwork",
+        label: "Do Clerical Work",
+        actionId: "work",
+        requirements: {reason: 1,clericaljob: 1},
+        effects: {
+            shillings: 2
+        },
+        startdescription: "One more cramped day in the office.",
+        description: "I have earned a little more life.",
+        warmup: 10,
+        craftable: true
+    },
+	{
+        id: "findclericalwork",
+        label: "Find Clerical Work",
+        actionId: "work",
+        requirements: {reason: 1},
+        effects: {
+            clericaljob: 1
+        },
+        startdescription: "Find work which will spare my body, if not my mind.",
+        description: "This will do, for now.",
+        warmup: 10,
+        craftable: true
+    },
+
+]
+}

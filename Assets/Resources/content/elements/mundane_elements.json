@@ -1,0 +1,26 @@
+{"elements":
+    [
+          {
+        id: "shilling",
+            label: "shillings",
+            aspects:
+            {},
+            maxvalue:77,
+            description: "Twelve pence, or one-twentieth of a pound, will support you for a day in modest circumstances."
+        },
+          {
+        id: "clericaljob",
+            label: "A Clerical Job",
+            aspects:
+            {},
+            maxvalue:1,
+            description: "Dusty desks, scratching pens.",
+			           slots:
+            {
+			"attention": {  required: {reason: 1},
+                forbidden: {}}
+              
+            }
+        }
+]
+};

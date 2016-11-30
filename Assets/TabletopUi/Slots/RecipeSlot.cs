@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
 
         // TODO: Needs hover feedback!
 
-        public void Awake()
+        public RecipeSlot()
         {
             childSlots=new List<RecipeSlot>();
         }

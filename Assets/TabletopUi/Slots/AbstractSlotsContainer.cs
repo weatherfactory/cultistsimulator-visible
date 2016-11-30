@@ -21,7 +21,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
     public  virtual void Initialise(SituationController sc)
     {
-
+        _situationController = sc;
     }
 
 

@@ -12,13 +12,13 @@ namespace Assets.TabletopUi.SlotsContainers
 {
     public class StartingSlotsContainer : AbstractSlotsContainer
     {
+        
         public override void Initialise(SituationController sc)
         {
-
-            _situationController = sc;
             gameObject.SetActive(true);
             primarySlot = BuildSlot();
             ArrangeSlots();
+            base.Initialise(sc);
 
         }
 

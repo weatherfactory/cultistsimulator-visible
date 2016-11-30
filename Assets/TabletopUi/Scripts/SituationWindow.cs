@@ -47,6 +47,8 @@ namespace Assets.CS.TabletopUI
         {
 
             situationController = sc;
+            startingSlotsContainer.Initialise(situationController);
+            DisplayRecipe(null);
         }
 
         public void Show(bool situationOngoing)
@@ -79,8 +81,7 @@ namespace Assets.CS.TabletopUI
         {
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
-            startingSlotsContainer.Initialise(situationController);
-            DisplayRecipe(null);
+
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)

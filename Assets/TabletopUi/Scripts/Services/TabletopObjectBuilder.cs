@@ -14,14 +14,10 @@ namespace Assets.TabletopUi.Scripts.Services
     {
         private Transform tableLevel;
         private Transform windowLevel;
-        string[] legalElementIDs = new string[8] {
+        string[] legalElementIDs = new string[4] {
             "health",
             "reason",
             "intuition",
-            "ordinarylife",
-            "suitablepremises",
-            "occultscrap",
-            "atlasnotes",
             "shilling"
         };
 

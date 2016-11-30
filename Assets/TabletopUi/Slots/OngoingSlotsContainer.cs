@@ -12,13 +12,6 @@ namespace Assets.TabletopUi.SlotsContainers
     public class OngoingSlotsContainer: AbstractSlotsContainer
     {
 
-        /// <param name="sc"></param>
-        public override void Initialise( SituationController sc)
-        {
-
-            _situationController = sc;
-        }
-
 
         public void DestroyAllSlots()
         {
