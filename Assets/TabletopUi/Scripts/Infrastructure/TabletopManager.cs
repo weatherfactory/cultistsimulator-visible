@@ -7,6 +7,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
+using UnityEngine.UI;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 namespace Assets.CS.TabletopUI
@@ -20,7 +21,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform windowLevel;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
-        [SerializeField] Heart heart;
+        [SerializeField] private Heart heart;
+        [SerializeField] private PauseButton pauseButton;
         private TabletopObjectBuilder tabletopObjectBuilder;
 
         [Header("View Settings")]
@@ -51,6 +53,20 @@ namespace Assets.CS.TabletopUI
             var needsToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
             PlaceTokenOnTable(needsToken);
 
+        }
+
+        public void TogglePause()
+        {
+            if (heart.IsPaused)
+            {
+                heart.ResumeBeating();
+                pauseButton.SetPausedState(false);
+            }
+            else
+            {
+                heart.StopBeating();
+                pauseButton.SetPausedState(true);
+            }
         }
 
         public HashSet<IRecipeSlot> FindStacksToFillSlots(HashSet<IRecipeSlot> slotsToFill)

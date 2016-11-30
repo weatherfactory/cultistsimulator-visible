@@ -64,6 +64,9 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -134,6 +137,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Notifier.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\PauseButton.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\PrefabFactory.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\Registry.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\TabletopObjectBuilder.cs" />

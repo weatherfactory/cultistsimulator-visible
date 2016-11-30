@@ -14,18 +14,27 @@ public class Heart : MonoBehaviour
     private int beatCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20;
-
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
+    public bool IsPaused { get; private set; }
+
   public void StartBeating(float startingInterval)
   {
         usualInterval = startingInterval;
         InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
-    }
+        IsPaused = false;
+  }
 
     public void StopBeating()
     {
         CancelInvoke(METHODNAME_BEAT);
+        IsPaused = true;
+    }
+
+    public void ResumeBeating()
+    {
+        StartBeating(usualInterval);
+        IsPaused = false;
     }
 
     public void Beat()
