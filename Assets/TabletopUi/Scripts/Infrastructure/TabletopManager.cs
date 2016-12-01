@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
+using OrbCreationExtensions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +34,6 @@ namespace Assets.CS.TabletopUI
         [Header("View Settings")]
         [SerializeField] float windowZOffset = -10f;
 
-   
 
         void Start () {
             var registry = gameObject.AddComponent<Registry>();
@@ -103,6 +107,11 @@ namespace Assets.CS.TabletopUI
 
             return null;
         }
+
+        public IEnumerable<ISituationAnchor> GetAllSituationTokens()
+        {
+            return tabletopContainer.GetAllSituationTokens();
+        }
         
 
         public void PlaceTokenOnTable(DraggableToken token)
@@ -146,14 +155,22 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public static void LoadGame()
+        public void LoadGame()
         {
             Debug.Log("Should load");
         }
 
-        public static void SaveGame()
+        public void SaveGame()
         {
-            Debug.Log("Should save");
+            string elementJson = "";
+            string situationJson = "";
+            TabletopGameExporter exporter=new TabletopGameExporter();
+
+
+            var htSave = exporter.Export(tabletopContainer.GetElementStacksManager().GetStacks(),
+                tabletopContainer.GetAllSituationTokens());
+            
+            File.WriteAllText(Noon.NoonUtility.GetGameSavePath("save.txt"), htSave.JsonString());
         }
     }
 

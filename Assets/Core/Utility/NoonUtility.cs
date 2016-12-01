@@ -47,9 +47,9 @@ namespace Noon
     {
 
 
-        public static string GetGameSavePath()
+        public static string GetGameSavePath(string filename)
         {
-            return Application.persistentDataPath + "\\savedgame.txt";
+            return Application.persistentDataPath + "\\" + filename;
         }
 
 

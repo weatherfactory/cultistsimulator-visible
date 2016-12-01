@@ -45,6 +45,12 @@ namespace Assets.CS.TabletopUI
 
         public abstract string Id { get; }
 
+        /// <summary>
+        /// This is an underscore-separated x,y localPosition in the current transform/container
+        /// but could be anything
+        /// </summary>
+        public string LocatorId { get { return RectTransform.localPosition.x + "_" + RectTransform.localPosition.y; } }
+
         public void SubscribeNotifier(Notifier n)
         {
             notifier = n;

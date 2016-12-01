@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 
 public class TabletopContainer : MonoBehaviour,ITokenContainer
@@ -15,6 +17,11 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     public void TokenPickedUp(DraggableToken draggableToken)
     {
 
+    }
+
+    public IEnumerable<ISituationAnchor> GetAllSituationTokens()
+    {
+        return GetComponentsInChildren<ISituationAnchor>();
     }
 
     public void CloseAllSituationWindowsExcept(SituationToken situationToken)
@@ -32,11 +39,12 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     public bool AllowDrag { get { return true; } }
 
+
+
     public ElementStacksManager GetElementStacksManager()
     {
         return new ElementStacksManager(GetTokenTransformWrapper());
     }
-
     
     public ITokenTransformWrapper GetTokenTransformWrapper()
     {

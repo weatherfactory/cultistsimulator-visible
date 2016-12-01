@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 
@@ -11,6 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationAnchor
     {
         string Id { get; }
+        string LocatorId { get; }
         bool IsTransient { get; }
         void OpenToken();
         void CloseToken();
@@ -28,6 +30,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayTimeRemaining(float duration, float timeRemaining);
         void AbsorbOngoingSlotContents();
         void ModifyStoredElementStack(string elementId, int quantity);
+
+        HeartbeatResponse ExecuteHeartbeat(float interval);
 
         bool Retire();
     }

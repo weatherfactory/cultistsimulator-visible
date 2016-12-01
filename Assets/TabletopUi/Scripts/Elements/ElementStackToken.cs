@@ -28,6 +28,8 @@ namespace Assets.CS.TabletopUI
             get { return _element == null ? null : _element.Id; }
         }
 
+
+
         public string Label
         {
             get { return _element == null ? null : _element.Label; }

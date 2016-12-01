@@ -14,11 +14,11 @@ public class OptionsPanel : MonoBehaviour
 
     public void LoadGame()
     {
-        TabletopManager.LoadGame();
+        tabletopManager.LoadGame();
     }
 
     public void SaveGame()
     {
-        TabletopManager.SaveGame();
+        tabletopManager.SaveGame();
     }
 }
