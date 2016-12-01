@@ -10,7 +10,7 @@
         },
           {
         id: "clericaljob",
-            label: "A Clerical Job",
+            label: "Job at Glover & Glover",
             aspects:
             {},
             maxvalue:1,
@@ -21,6 +21,14 @@
                 forbidden: {}}
               
             }
-        }
+        },
+		     {
+        id: "legacy",
+            label: "A Legacy",
+            aspects:
+            {},
+            maxvalue:1,
+            description: "I am heir to something peculiar. What might I find among these papers?"
+        },
 ]
 };

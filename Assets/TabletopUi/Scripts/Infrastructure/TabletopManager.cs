@@ -145,8 +145,15 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        
+        public static void LoadGame()
+        {
+            Debug.Log("Should load");
+        }
 
+        public static void SaveGame()
+        {
+            Debug.Log("Should save");
+        }
     }
 
 }
