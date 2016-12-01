@@ -9,15 +9,15 @@ using UnityEngine;
 namespace Noon
 {
 
-    public class Constants
+    public class NoonConstants
     {
         public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
+        public const string CONST_SAVE_ELEMENTSTACKS = "elementStacks";
+        public const string CONST_SAVE_SITUATIONS = "situations";
+        public static string CONST_SAVE_CHARACTER_DETAILS = "characterDetails";
+        public static string KCHARACTERSTATE = "state";
         public static string KLOOP="loop";
-        public static string CONST_SAVE_CHARACTER_DETAILS="characterDetails";
         public static string KENDING="ending";
-        public static string KCHARACTERSTATE="state";
-        public const string CONST_SAVE_ELEMENTSPOSSESSED = "elementsPossessed";
-        public const string CONST_SAVE_RECIPETIMERS = "recipeTimers";
         public const string KID = "id";
         public const string KLABEL = "label";
         public const string KACTIONID = "actionId";

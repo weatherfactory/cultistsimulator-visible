@@ -28,18 +28,17 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public ElementDetailsWindow BuildElementDetailsWindow()
+        private ElementDetailsWindow BuildElementDetailsWindow()
         {
             var window = PrefabFactory.CreateLocally<ElementDetailsWindow>(windowHolderFixed);
             return window;
         }
 
-        public NotificationWindow BuildNotificationWindow()
+        private NotificationWindow BuildNotificationWindow()
         {
             var notification = PrefabFactory.CreateLocally<NotificationWindow>(notificationHolder);
             return notification;
         }
-
 
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)

@@ -16,12 +16,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
+
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour{
+    public class TabletopManager : MonoBehaviour
+    {
 
-        [Header("Existing Objects")]
-        [SerializeField] public TabletopContainer tabletopContainer;
+        [Header("Existing Objects")] [SerializeField] public TabletopContainer tabletopContainer;
 
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
@@ -29,16 +30,18 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform windowHolderFixed;
         [SerializeField] private Heart heart;
         [SerializeField] private PauseButton pauseButton;
+        [SerializeField] private Notifier notifier;
         private TabletopObjectBuilder tabletopObjectBuilder;
+        
 
-        [Header("View Settings")]
-        [SerializeField] float windowZOffset = -10f;
+        [Header("View Settings")] [SerializeField] float windowZOffset = -10f;
 
 
-        void Start () {
+        void Start()
+        {
             var registry = gameObject.AddComponent<Registry>();
 
-            var compendium= new Compendium();
+            var compendium = new Compendium();
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
 
@@ -53,9 +56,9 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-           tabletopObjectBuilder  = new TabletopObjectBuilder(tabletopContainer.transform,windowLevel);
+            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
             tabletopObjectBuilder.PopulateTabletop();
-            var needsToken= tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
+            var needsToken = tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
             PlaceTokenOnTable(needsToken);
 
         }
@@ -100,10 +103,10 @@ namespace Assets.CS.TabletopUI
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
-            var stacks= tabletopContainer.GetElementStacksManager().GetStacks();
-                foreach(var stack in stacks)
-                    if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
-                        return stack;
+            var stacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            foreach (var stack in stacks)
+                if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                    return stack;
 
             return null;
         }
@@ -112,19 +115,20 @@ namespace Assets.CS.TabletopUI
         {
             return tabletopContainer.GetAllSituationTokens();
         }
-        
+
 
         public void PlaceTokenOnTable(DraggableToken token)
         {
             ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
-            token.transform.localPosition=new Vector3(-500,-250);
+            token.transform.localPosition = new Vector3(-500, -250);
             tabletopContainer.PutOnTable(token);
         }
 
 
         public void CloseAllSituationWindowsExcept(SituationToken except)
         {
-            var situationTokens = tabletopContainer.GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
+            var situationTokens =
+                tabletopContainer.GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
             foreach (var situationToken in situationTokens)
             {
                 if (DraggableToken.itemBeingDragged == null ||
@@ -134,10 +138,14 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        void HandleOnBackgroundDropped() {
+        void HandleOnBackgroundDropped()
+        {
             // NOTE: This puts items back on the background. We need this in more cases. Should be a method
-            if (DraggableToken.itemBeingDragged != null) { // Maybe check for item type here via GetComponent<Something>() != null?
-                DraggableToken.resetToStartPos = false; // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+            if (DraggableToken.itemBeingDragged != null)
+            {
+                // Maybe check for item type here via GetComponent<Something>() != null?
+                DraggableToken.resetToStartPos = false;
+                    // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
@@ -147,7 +155,8 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        void HandleOnBackgroundClicked() {
+        void HandleOnBackgroundClicked()
+        {
             //Close all open windows if we're not dragging (multi tap stuff)
             if (DraggableToken.itemBeingDragged == null)
                 CloseAllSituationWindowsExcept(null);
@@ -157,20 +166,26 @@ namespace Assets.CS.TabletopUI
 
         public void LoadGame()
         {
-            Debug.Log("Should load");
+
+            var saveGameManager = new TabletopGameSaveManager(new TabletopGameExporter());
+            try
+            {
+
+            var htSave=saveGameManager.LoadSavedGame("save.txt");
+            ClearBoard();
+            saveGameManager.ImportSavedGameToContainer(tabletopContainer,htSave);
+            }
+            catch (Exception e)
+            {
+                notifier.ShowNotificationWindow("Couldn't load game - ",e.Message);
+            }
         }
 
         public void SaveGame()
         {
-            string elementJson = "";
-            string situationJson = "";
-            TabletopGameExporter exporter=new TabletopGameExporter();
-
-
-            var htSave = exporter.Export(tabletopContainer.GetElementStacksManager().GetStacks(),
-                tabletopContainer.GetAllSituationTokens());
+            var saveGameManager=new TabletopGameSaveManager(new TabletopGameExporter());
             
-            File.WriteAllText(Noon.NoonUtility.GetGameSavePath("save.txt"), htSave.JsonString());
+            saveGameManager.SaveGame(tabletopContainer,"save.txt");
         }
 
         public void ClearBoard()

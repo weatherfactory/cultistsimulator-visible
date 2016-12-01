@@ -6,13 +6,19 @@ using System.Text;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using OrbCreationExtensions;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-   public class TabletopGameExporter
-   {
-       public Hashtable ExportElementStacks(IEnumerable<IElementStack> stacks)
+    public interface ITabletopGameExporter
+    {
+        Hashtable Export(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations);
+    }
+
+    public class TabletopGameExporter : ITabletopGameExporter
+    {
+       private Hashtable ExportElementStacks(IEnumerable<IElementStack> stacks)
        {
            var htElementStacks=new Hashtable();
            foreach (var e in stacks)
@@ -24,7 +30,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
            return htElementStacks;
        }
 
-        public Hashtable ExportSituations(IEnumerable<ISituationAnchor> tokens)
+        private Hashtable ExportSituations(IEnumerable<ISituationAnchor> tokens)
         {
             var htSituationTokens = new Hashtable();
             foreach (var s in tokens)
@@ -39,8 +45,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
        public Hashtable Export(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
        {
            var htAll=new Hashtable();
-           htAll.Add("elementStacks",ExportElementStacks(stacks));
-            htAll.Add("situations", ExportSituations(situations));
+           htAll.Add(Noon.NoonConstants.CONST_SAVE_ELEMENTSTACKS,ExportElementStacks(stacks));
+            htAll.Add(Noon.NoonConstants.CONST_SAVE_SITUATIONS, ExportSituations(situations));
            return htAll;
        }
     }

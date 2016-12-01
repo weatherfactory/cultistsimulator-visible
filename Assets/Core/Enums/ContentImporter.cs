@@ -40,7 +40,7 @@ public class ContentImporter
 
                 SlotSpecification slotSpecification=new SlotSpecification(k);
 
-                if ((string) htThisSlot[Constants.KGREEDY] == "true")
+                if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
                     slotSpecification.Greedy = true;
 
                 Hashtable htRequired = htThisSlot["required"] as Hashtable;
@@ -86,7 +86,7 @@ public class ContentImporter
         foreach (Hashtable htElement in alElements)
         {
             Hashtable htAspects = htElement.GetHashtable("aspects");
-            Hashtable htSlots = htElement.GetHashtable(Constants.KSLOTS);
+            Hashtable htSlots = htElement.GetHashtable(NoonConstants.KSLOTS);
 
             Element element = new Element(htElement.GetString(CONST_ID),
                htElement.GetString(CONST_LABEL),
@@ -142,62 +142,62 @@ public class ContentImporter
                 Recipe r = new Recipe();
             try
             {
-                r.Id = htEachRecipe[Constants.KID].ToString();
-                r.Label = htEachRecipe[Constants.KLABEL].ToString();
-                r.Craftable = Convert.ToBoolean(htEachRecipe[Constants.KCRAFTABLE]);
-                r.ActionId = htEachRecipe[Constants.KACTIONID].ToString();
-                r.StartDescription = htEachRecipe[Constants.KSTARTDESCRIPTION].ToString();
-                r.Description = htEachRecipe[Constants.KDESCRIPTION].ToString();
-                r.Warmup = Convert.ToInt32(htEachRecipe[Constants.KWARMUP]);
-                r.Loop = htEachRecipe[Constants.KLOOP] == null ? null : htEachRecipe[Constants.KLOOP].ToString();
-                r.Ending = htEachRecipe[Constants.KENDING] == null ? null : htEachRecipe[Constants.KENDING].ToString();
+                r.Id = htEachRecipe[NoonConstants.KID].ToString();
+                r.Label = htEachRecipe[NoonConstants.KLABEL].ToString();
+                r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
+                r.ActionId = htEachRecipe[NoonConstants.KACTIONID].ToString();
+                r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
+                r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
+                r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
+                r.Loop = htEachRecipe[NoonConstants.KLOOP] == null ? null : htEachRecipe[NoonConstants.KLOOP].ToString();
+                r.Ending = htEachRecipe[NoonConstants.KENDING] == null ? null : htEachRecipe[NoonConstants.KENDING].ToString();
 
             }
             catch (Exception e)
             {
-                if (htEachRecipe[Constants.KID] == null)
+                if (htEachRecipe[NoonConstants.KID] == null)
                     Debug.Log("Problem importing recipe with unknown id - " + e.Message);
                 else
-                    Debug.Log("Problem importing recipe '" + htEachRecipe[Constants.KID] + "' - " + e.Message);
+                    Debug.Log("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
             }
 
-            Hashtable htReqs = htEachRecipe.GetHashtable(Constants.KREQUIREMENTS);
+            Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
             foreach (string k in htReqs.Keys)
             {
                 r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
             }
 
-            Hashtable htEffects = htEachRecipe.GetHashtable(Constants.KEFFECTS);
+            Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
             foreach (string k in htEffects.Keys)
             {
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
             }
 
-            Hashtable htPersistIngredients = htEachRecipe.GetHashtable(Constants.KPERSISTINGREDIENTSWITH);
+            Hashtable htPersistIngredients = htEachRecipe.GetHashtable(NoonConstants.KPERSISTINGREDIENTSWITH);
             if(htPersistIngredients!=null)
             foreach (string k in htPersistIngredients.Keys)
             {
                 r.PersistsIngredientsWith.Add(k, Convert.ToInt32(htPersistIngredients[k]));
             }
 
-            Hashtable htRetrievesContentsWith = htEachRecipe.GetHashtable(Constants.KRETRIEVESCONTENTSWITH);
+            Hashtable htRetrievesContentsWith = htEachRecipe.GetHashtable(NoonConstants.KRETRIEVESCONTENTSWITH);
             if (htRetrievesContentsWith != null)
                 foreach (string k in htRetrievesContentsWith.Keys)
                 {
                     r.RetrievesContentsWith.Add(k, Convert.ToInt32(htRetrievesContentsWith[k]));
                 }
 
-            Hashtable htSlots = htEachRecipe.GetHashtable(Constants.KSLOTS);
+            Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
             r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
 
-            ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(Constants.KALTERNATIVERECIPES);
+            ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPES);
             if(alRecipeAlternatives!=null)
             { 
                 foreach (Hashtable ra in alRecipeAlternatives)
                 {
-                    string raID = ra[Constants.KID].ToString();
-                    int raChance = Convert.ToInt32(ra[Constants.KCHANCE]);
-                    bool raAdditional = Convert.ToBoolean(ra[Constants.KADDITIONAL] ?? false);
+                    string raID = ra[NoonConstants.KID].ToString();
+                    int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
+                    bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
                     r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
                 }

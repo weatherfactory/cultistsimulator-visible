@@ -62,15 +62,15 @@ namespace CS.Tests
             Hashtable htPersistIngredients = new Hashtable();
 
             Hashtable htSlotSpecifications = new Hashtable()
-        { { Constants.KREQUIRED,new Hashtable()
+        { { NoonConstants.KREQUIRED,new Hashtable()
         {
             {SLOT_REQUIRED_ASPECT_ID,SLOT_REQUIRED_ASPECT_VALUE}
         }},
-        { Constants.KFORBIDDEN,new Hashtable()
+        { NoonConstants.KFORBIDDEN,new Hashtable()
         {
             {SLOT_FORBIDDEN_ASPECT_ID,SLOT_FORBIDDEN_ASPECT_VALUE}
         }},
-                {Constants.KGREEDY,"true"}
+                {NoonConstants.KGREEDY,"true"}
             };
             Hashtable htSlotOuterTable = new Hashtable() { { SLOT_LABEL, htSlotSpecifications } };
 
@@ -91,16 +91,16 @@ namespace CS.Tests
 
             Hashtable alternative1 = new Hashtable()
             {
-                {Constants.KID,ALTERNATIVE_1_ID},
-                {Constants.KCHANCE,ALTERNATIVE_1_CHANCE }
+                {NoonConstants.KID,ALTERNATIVE_1_ID},
+                {NoonConstants.KCHANCE,ALTERNATIVE_1_CHANCE }
 
             };
 
             Hashtable alternative2 = new Hashtable()
                             {
-                {Constants.KID,ALTERNATIVE_2_ID},
-                {Constants.KCHANCE,ALTERNATIVE_2_CHANCE },
-                {Constants.KADDITIONAL,true }
+                {NoonConstants.KID,ALTERNATIVE_2_ID},
+                {NoonConstants.KCHANCE,ALTERNATIVE_2_CHANCE },
+                {NoonConstants.KADDITIONAL,true }
             };
 
 
@@ -108,22 +108,22 @@ namespace CS.Tests
             alAlternatives.Add(alternative1);
             alAlternatives.Add(alternative2);
 
-            htRecipe.Add(Constants.KID, RECIPE_1_ID);
-            htRecipe.Add(Constants.KLABEL, RECIPE_1_LABEL);
-            htRecipe.Add(Constants.KACTIONID, RECIPE_1_ACTIONID);
-            htRecipe.Add(Constants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
-            htRecipe.Add(Constants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
-            htRecipe.Add(Constants.KWARMUP, RECIPE_1_WARMUP);
-            htRecipe.Add(Constants.KLOOP, RECIPE_1_LOOP);
-            htRecipe.Add(Constants.KENDING, RECIPE_1_ENDING);
-            htRecipe.Add(Constants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
-            htRecipe.Add(Constants.KREQUIREMENTS, htRequirements);
-            htRecipe.Add(Constants.KEFFECTS, htEffects);
-            htRecipe.Add(Constants.KPERSISTINGREDIENTSWITH, htPersistIngredients);
-            htRecipe.Add(Constants.KRETRIEVESCONTENTSWITH, htRetrievesContents);
-            htRecipe.Add(Constants.KSLOTS, htSlotOuterTable);
+            htRecipe.Add(NoonConstants.KID, RECIPE_1_ID);
+            htRecipe.Add(NoonConstants.KLABEL, RECIPE_1_LABEL);
+            htRecipe.Add(NoonConstants.KACTIONID, RECIPE_1_ACTIONID);
+            htRecipe.Add(NoonConstants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
+            htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
+            htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
+            htRecipe.Add(NoonConstants.KLOOP, RECIPE_1_LOOP);
+            htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
+            htRecipe.Add(NoonConstants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
+            htRecipe.Add(NoonConstants.KREQUIREMENTS, htRequirements);
+            htRecipe.Add(NoonConstants.KEFFECTS, htEffects);
+            htRecipe.Add(NoonConstants.KPERSISTINGREDIENTSWITH, htPersistIngredients);
+            htRecipe.Add(NoonConstants.KRETRIEVESCONTENTSWITH, htRetrievesContents);
+            htRecipe.Add(NoonConstants.KSLOTS, htSlotOuterTable);
 
-            htRecipe.Add(Constants.KALTERNATIVERECIPES, alAlternatives);
+            htRecipe.Add(NoonConstants.KALTERNATIVERECIPES, alAlternatives);
 
 
             recipesToImport.Add(htRecipe);
