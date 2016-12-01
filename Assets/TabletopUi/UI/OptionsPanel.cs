@@ -21,4 +21,9 @@ public class OptionsPanel : MonoBehaviour
     {
         tabletopManager.SaveGame();
     }
+
+    public void RestartGame()
+    {
+        tabletopManager.ClearBoard();
+    }
 }

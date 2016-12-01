@@ -172,6 +172,15 @@ namespace Assets.CS.TabletopUI
             
             File.WriteAllText(Noon.NoonUtility.GetGameSavePath("save.txt"), htSave.JsonString());
         }
+
+        public void ClearBoard()
+        {
+            foreach (var s in tabletopContainer.GetAllSituationTokens())
+                s.Retire();
+
+            foreach(var e in tabletopContainer.GetElementStacksManager().GetStacks())
+                e.SetQuantity(0);
+        }
     }
 
 }
