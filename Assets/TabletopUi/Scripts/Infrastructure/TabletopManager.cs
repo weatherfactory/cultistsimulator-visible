@@ -6,6 +6,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ namespace Assets.CS.TabletopUI
         [Header("Existing Objects")]
         [SerializeField] public TabletopContainer tabletopContainer;
 
-        [SerializeField] private RectTransform draggableHolder;
+        [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
         [SerializeField] TabletopBackground background;
         [SerializeField] Transform windowHolderFixed;
@@ -38,7 +39,7 @@ namespace Assets.CS.TabletopUI
             contentImporter.PopulateCompendium(compendium);
 
             registry.RegisterCompendium(compendium);
-            registry.RegisterDraggableHolder(draggableHolder);
+            registry.RegisterDraggableHolder(new DraggableHolder(draggableHolderRectTransform));
             registry.RegisterDice(new Dice());
             registry.RegisterTabletopManager(this);
 

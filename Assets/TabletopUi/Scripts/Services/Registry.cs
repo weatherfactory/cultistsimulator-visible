@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Core;
+using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -10,7 +11,7 @@ namespace Assets.CS.TabletopUI
         private static ICompendium m_compendium;
         private static TabletopManager m_tabletopmanager;
         private static IDice m_dice;
-        private static RectTransform m_draggableHolder;
+        private static IDraggableHolder m_draggableHolder;
 
         public static TabletopManager TabletopManager
         {
@@ -21,7 +22,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public static RectTransform DraggableHolder
+        public static IDraggableHolder DraggableHolder
         {
             get
         {
@@ -62,7 +63,7 @@ namespace Assets.CS.TabletopUI
             m_dice = dice;
         }
 
-        public void RegisterDraggableHolder(RectTransform dh)
+        public void RegisterDraggableHolder(IDraggableHolder dh)
         {
             m_draggableHolder = dh;
         }

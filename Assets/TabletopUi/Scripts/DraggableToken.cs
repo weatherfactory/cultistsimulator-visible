@@ -92,11 +92,11 @@ namespace Assets.CS.TabletopUI
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 		
-            RectTransform.SetParent(Registry.DraggableHolder);
+            RectTransform.SetParent(Registry.DraggableHolder.RectTransform);
             RectTransform.SetAsLastSibling();
 		
             Vector3 pressPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder.RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
             dragOffset = startPosition - pressPos;
 
             if (onChangeDragState != null)
@@ -123,7 +123,7 @@ namespace Assets.CS.TabletopUI
 
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder, eventData.position, DraggableToken.dragCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder.RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
