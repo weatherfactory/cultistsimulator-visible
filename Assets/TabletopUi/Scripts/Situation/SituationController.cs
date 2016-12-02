@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -205,5 +207,14 @@ namespace Assets.TabletopUi
               situationWindow.DisplayStarting();
 
        }
-   }
+
+        public void PopulateSaveInfo(IDictionary saveInfo)
+        {
+            saveInfo.Add(NoonConstants.SAVE_VERBID, situationToken.Id);
+            if(SituationStateMachine!=null)
+            { 
+            saveInfo.Add(NoonConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+            }
+        }
+    }
 }

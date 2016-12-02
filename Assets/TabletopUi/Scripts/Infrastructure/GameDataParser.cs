@@ -50,13 +50,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSituationTokens = new Hashtable();
             foreach (var s in tokens)
             {
-                var htStackProperties = new Hashtable();
-                htStackProperties.Add(NoonConstants.SAVE_VERBID,s.Id);
-                htStackProperties.Add(NoonConstants.SAVE_RECIPEID,s.CurrentRecipeId);
-                htSituationTokens.Add(s.LocationInfo, htStackProperties);
+                var htSituationProperties = new Hashtable();
+
+                htSituationTokens.Add(s.LocationInfo, htSituationProperties);
+                
             }
             return htSituationTokens;
         }
+
+
 
        public Hashtable Export(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
        {
@@ -94,7 +96,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     Noon.NoonUtility.HashtableToStringStringDictionary(htSituations.GetHashtable(locatorId));
 
                 IVerb situationVerb = compendium.GetVerbById(situationValues[NoonConstants.SAVE_VERBID]);
-                string recipeId = situationValues[NoonConstants.SAVE_RECIPEID];
+                string recipeId;
+                situationValues.TryGetValue(NoonConstants.SAVE_RECIPEID,out recipeId);
                 tabletopContainer.CreateSituation(situationVerb, recipeId, locatorId.ToString());
 
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,9 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationAnchor
     {
         string Id { get; }
-        string LocationInfo { get; }
+        string LocationInfo { get; set; }
         bool IsTransient { get; }
-        string CurrentRecipeId { get; }
+        void PopulateSaveInfo(IDictionary saveInfo);
         void OpenToken();
         void CloseToken();
 
