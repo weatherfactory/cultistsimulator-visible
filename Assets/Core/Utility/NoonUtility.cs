@@ -55,11 +55,14 @@ namespace Noon
 
 
 
-        public static Dictionary<string, int> JSONHashtableToIntValuesDictionary(Hashtable table)
+        public static Dictionary<string, int> JSONHashtableToStringIntDictionary(Hashtable table)
         {
-            return table
+            var dictionary=table
                 .Cast<DictionaryEntry>()
-                .ToDictionary(kvp => kvp.Key.ToString(), kvp => Convert.ToInt32(kvp.Value));
+                .ToDictionary(kvp => kvp.Key.ToString(), kvp => int.Parse(kvp.Value.ToString()));
+
+            return dictionary;
+
         }
 
         public static IAspectsDictionary ReplaceConventionValues(Hashtable htAspects)

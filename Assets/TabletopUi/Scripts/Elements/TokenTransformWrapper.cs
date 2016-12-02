@@ -24,9 +24,9 @@ namespace Assets.TabletopUi.Scripts
         }
 
 
-        public IElementStack ProvisionElementStack(string elementId, int quantity)
+        public IElementStack ProvisionElementStack(string elementId, int quantity, string locatorid = null)
         {
-            IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform);
+            IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform,locatorid);
             stack.Populate(elementId,quantity);
             Accept(stack);
             return stack;
@@ -57,9 +57,18 @@ namespace Assets.TabletopUi.Scripts
         }
 
 
-        public IEnumerable<IElementStack> GetStacks()
+        public virtual IEnumerable<IElementStack> GetStacks()
         {
-            return wrappedTransform.GetComponentsInChildren<ElementStackToken>();
+            var allCandidateStacks= wrappedTransform.GetComponentsInChildren<ElementStackToken>();
+            List<IElementStack> firstLevelChildren=new List<IElementStack>();
+            foreach (var s in allCandidateStacks)
+            {
+                if(s.transform.parent==wrappedTransform)
+                    firstLevelChildren.Add(s);
+            }
+
+
+            return firstLevelChildren;
         }
     }
 }

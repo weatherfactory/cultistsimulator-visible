@@ -16,7 +16,7 @@ public interface IElementStacksManager
     /// <param name="quantityChange">must be negative</param>
     /// <returns>returns any unsatisfied change remaining</returns>
     int ReduceElement(string elementId, int quantityChange);
-    int IncreaseElement(string elementId, int quantityChange);
+    int IncreaseElement(string elementId, int quantityChange,string locatorId=null);
     int GetCurrentElementQuantity(string elementId);
     IDictionary<string,int> GetCurrentElementTotals();
     AspectsDictionary GetTotalAspects();
@@ -70,12 +70,12 @@ public class ElementStacksManager : IElementStacksManager
         return unsatisfiedChange;
     }
 
-    public int IncreaseElement(string elementId, int quantityChange)
+    public int IncreaseElement(string elementId, int quantityChange,string locatorid=null)
     {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        wrapper.ProvisionElementStack(elementId, quantityChange);
+        wrapper.ProvisionElementStack(elementId, quantityChange,locatorid);
         return quantityChange;
     }
 

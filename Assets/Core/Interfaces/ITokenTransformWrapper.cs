@@ -11,7 +11,7 @@ namespace Assets.Core.Interfaces
     /// </summary>
     public interface ITokenTransformWrapper
     {
-        IElementStack ProvisionElementStack(string elementId, int quantity);
+        IElementStack ProvisionElementStack(string elementId, int quantity,string locatorId=null);
         void Accept(IElementStack stack);
         void Accept(DraggableToken token);
         IEnumerable<IElementStack> GetStacks();

@@ -61,6 +61,11 @@ namespace Assets.CS.TabletopUI
             container = newContainer;
         }
 
+        public virtual bool IsInContainer(ITokenContainer candidateContainer)
+        {
+            return candidateContainer == container;
+        }
+
         public void OnBeginDrag (PointerEventData eventData) {
             if (CanDrag(eventData))
                 StartDrag(eventData);

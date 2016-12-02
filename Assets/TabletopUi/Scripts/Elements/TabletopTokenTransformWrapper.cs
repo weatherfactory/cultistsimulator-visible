@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Elements
 {
+    /// <summary>
+    /// override of the basic transform wrapper for the tabletop container
+    /// </summary>
     public class TabletopTokenTransformWrapper:TokenTransformWrapper
     {
         public TabletopTokenTransformWrapper(Transform t) : base(t)
@@ -16,14 +19,14 @@ namespace Assets.TabletopUi.Scripts.Elements
 
         public override void Accept(DraggableToken token)
         {
-            
             Transform stackTransform = token.transform;
-
+            //we're not changing the location; this Accept is used to accept a token dragged and dropped to an arbitrary position
+            //(or loaded and added to an arbitrary position)
             stackTransform.SetParent(wrappedTransform,true);
             stackTransform.localRotation = Quaternion.identity;
-
-          token.SetContainer(wrappedContainer);
+            token.SetContainer(wrappedContainer);
         }
-    
+
+
     }
 }

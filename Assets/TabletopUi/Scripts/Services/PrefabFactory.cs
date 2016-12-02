@@ -14,10 +14,9 @@ using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
-    class PrefabFactory: MonoBehaviour
+    class PrefabFactory : MonoBehaviour
     {
-        [Header("Prefabs")]
-        public AspectFrame AspectFrame=null;
+        [Header("Prefabs")] public AspectFrame AspectFrame = null;
         public SituationToken SituationToken = null;
         public ElementStackToken ElementStackToken = null;
         public SituationWindow SituationWindow = null;
@@ -25,28 +24,33 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationOutputNote SituationOutputNote = null;
-        [Header("Token Subscribers")]
-        [SerializeField]
-        TabletopManager TabletopManager = null;
-        [SerializeField]
-        Notifier Notifier = null;
+        [Header("Token Subscribers")] [SerializeField] TabletopManager TabletopManager = null;
+        [SerializeField] Notifier Notifier = null;
 
 
-        public static T CreateToken<T>(Transform destination) where T : DraggableToken
+        public static T CreateToken<T>(Transform destination, string locatorId = null) where T : DraggableToken
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
             token.SubscribeNotifier(pf.Notifier);
             token.SetContainer(pf.TabletopManager.tabletopContainer);
+            if (locatorId != null)
+                HonourLocatorId(token, locatorId);
 
             return token;
         }
 
-  
+        private static void HonourLocatorId(DraggableToken token, string locatorId)
+        {
+            var locs = locatorId.Split('_');
+            var x = float.Parse(locs[0]);
+            var y = float.Parse(locs[1]);
+            token.transform.localPosition=new Vector3(x,y);
+        }
+
 
         public static T CreateLocally<T>(Transform parent) where T : Component
         {
-            
             var o = GetPrefab<T>();
             T c = Object.Instantiate(o, parent, false) as T;
             c.transform.localScale = Vector3.one;
@@ -61,8 +65,10 @@ namespace Assets.TabletopUi.Scripts.Services
             string prefabFieldName = typeof(T).Name;
 
             FieldInfo field = pf.GetType().GetField(prefabFieldName);
-            if(field==null)
-                throw new ApplicationException(prefabFieldName + " not registered in prefab factory; must have field name and type both '"+ prefabFieldName+ "', must have field populated in editor" );
+            if (field == null)
+                throw new ApplicationException(prefabFieldName +
+                                               " not registered in prefab factory; must have field name and type both '" +
+                                               prefabFieldName + "', must have field populated in editor");
 
             T prefab = field.GetValue(pf) as T;
             return prefab;
@@ -72,14 +78,10 @@ namespace Assets.TabletopUi.Scripts.Services
         private static PrefabFactory Instance()
         {
             var instance = FindObjectOfType<PrefabFactory>();
-                if(instance==null)
+            if (instance == null)
                 throw new ApplicationException("No prefab factory in scene");
 
             return instance;
         }
-
-
-
-
     }
 }

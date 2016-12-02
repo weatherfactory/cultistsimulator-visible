@@ -38,9 +38,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htElementStacks = htSave.GetHashtable(Noon.NoonConstants.CONST_SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(Noon.NoonConstants.CONST_SAVE_SITUATIONS);
 
-            foreach (var e in htElementStacks.Keys)
+            foreach (var locatorId in htElementStacks.Keys)
             {
-                throw new NotImplementedException();
+                var htElement =
+                    Noon.NoonUtility.JSONHashtableToStringIntDictionary(htElementStacks.GetHashtable(locatorId));
+
+                tabletopContainer.GetElementStacksManager()
+                    .IncreaseElement(htElement.Keys.Single(), htElement.Values.Single(), locatorId.ToString());
             }
         }
     }
