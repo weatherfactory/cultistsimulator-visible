@@ -14,7 +14,7 @@ namespace Assets.Editor.Tests
         {
             var ht = new Hashtable {{"stringvalue", "3"}};
 
-            var d = Noon.NoonUtility.JSONHashtableToStringIntDictionary(ht);
+            var d = Noon.NoonUtility.HashtableToStringIntDictionary(ht);
             Assert.AreEqual("stringvalue",d.Keys.Single());
             Assert.AreEqual(3, d.Values.Single());
         }

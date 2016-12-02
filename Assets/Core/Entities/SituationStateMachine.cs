@@ -47,7 +47,7 @@ namespace Assets.Core.Entities
         {
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
-            State = SituationState.Unstarted;
+            State = SituationState.Fresh;
         }
         public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
         {
@@ -101,7 +101,7 @@ namespace Assets.Core.Entities
             {
                 RequireExecution(rc);
             }
-            else if (State == SituationState.Unstarted)
+            else if (State == SituationState.Fresh)
             {
                 Beginning();
             }

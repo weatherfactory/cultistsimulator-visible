@@ -54,8 +54,7 @@ namespace Noon
 
 
 
-
-        public static Dictionary<string, int> JSONHashtableToStringIntDictionary(Hashtable table)
+        public static Dictionary<string, int> HashtableToStringIntDictionary(Hashtable table)
         {
             var dictionary=table
                 .Cast<DictionaryEntry>()
@@ -64,6 +63,17 @@ namespace Noon
             return dictionary;
 
         }
+
+        public static Dictionary<string, string> HashtableToStringStringDictionary(Hashtable table)
+        {
+            var dictionary = table
+                .Cast<DictionaryEntry>()
+                .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
+
+            return dictionary;
+
+        }
+
 
         public static IAspectsDictionary ReplaceConventionValues(Hashtable htAspects)
         {

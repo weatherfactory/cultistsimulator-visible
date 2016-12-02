@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.Core;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -10,6 +11,7 @@ namespace Assets.CS.TabletopUI
     {
         private static ICompendium m_compendium;
         private static TabletopManager m_tabletopmanager;
+        private static TabletopObjectBuilder m_tabletopObjectBuilder;
         private static IDice m_dice;
         private static IDraggableHolder m_draggableHolder;
 
@@ -19,6 +21,15 @@ namespace Assets.CS.TabletopUI
             {
                 Assert.IsNotNull(m_tabletopmanager, "tabletop manager never registered");
                 return m_tabletopmanager;
+            }
+        }
+
+        public static TabletopObjectBuilder TabletopObjectBuilder
+        {
+            get
+            {
+                Assert.IsNotNull(m_tabletopObjectBuilder,"Tabletop object builder never registered");
+                return m_tabletopObjectBuilder;
             }
         }
 
@@ -45,12 +56,15 @@ namespace Assets.CS.TabletopUI
             get { return m_dice; }
         }
 
-
-
         public void RegisterCompendium(Compendium c)
         {
             m_compendium = c;
 
+        }
+
+        public void RegisterTabletopObjectBuilder(TabletopObjectBuilder tob)
+        {
+            m_tabletopObjectBuilder = tob;
         }
 
         public void RegisterTabletopManager(TabletopManager tm)

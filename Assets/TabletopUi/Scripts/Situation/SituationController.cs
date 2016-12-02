@@ -54,6 +54,11 @@ namespace Assets.TabletopUi
             situationWindow.Hide();
         }
 
+        public string GetCurrentRecipeId()
+        {
+            return SituationStateMachine == null ? null : SituationStateMachine.RecipeId;
+        }
+
         public void StartingSlotsUpdated()
         {
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();

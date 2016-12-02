@@ -34,7 +34,7 @@ namespace Assets.Editor.Tests
         public void NewSituation_IsStateUnstarted()
         {
             SituationStateMachine s=new SituationStateMachine(r1);
-            Assert.AreEqual(SituationState.Unstarted,s.State);
+            Assert.AreEqual(SituationState.Fresh,s.State);
         }
 
 

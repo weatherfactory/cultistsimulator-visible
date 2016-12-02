@@ -11,9 +11,9 @@ namespace Assets.TabletopUi.Scripts.Elements
     /// <summary>
     /// override of the basic transform wrapper for the tabletop container
     /// </summary>
-    public class TabletopTokenTransformWrapper:TokenTransformWrapper
+    public class TabletopContainerTokenTransformWrapper:TokenTransformWrapper
     {
-        public TabletopTokenTransformWrapper(Transform t) : base(t)
+        public TabletopContainerTokenTransformWrapper(Transform t) : base(t)
         {
         }
 

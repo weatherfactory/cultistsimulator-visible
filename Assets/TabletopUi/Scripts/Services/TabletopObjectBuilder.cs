@@ -10,10 +10,10 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
+
     public class TabletopObjectBuilder
     {
         private Transform tableLevel;
-        private Transform windowLevel;
         string[] legalElementIDs = new string[4] {
             "health",
             "reason",
@@ -21,10 +21,9 @@ namespace Assets.TabletopUi.Scripts.Services
             "shilling"
         };
 
-        public TabletopObjectBuilder(Transform tableLevel,Transform windowLevel)
+        public TabletopObjectBuilder(Transform tableLevel)
         {
             this.tableLevel = tableLevel;
-            this.windowLevel = windowLevel;
         }
 
        public void PopulateTabletop()
@@ -44,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.Services
             for (int i = 0; i < verbs.Count; i++)
             {
                 IVerb v = verbs[i];
-                situationToken = BuildSituationTokenFor(v);
+                situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
                 var window = buildSituationWindowForSituationToken(situationToken);
                 var situationController = new SituationController(Registry.Compendium);
@@ -63,33 +62,34 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
 
-        public SituationToken BuildNewTokenRunningRecipe(string recipeId)
+        public SituationToken BuildNewTokenRunningRecipe(string recipeId, string locatorId=null,IVerb verb=null)
         {
+
             var recipe = Registry.Compendium.GetRecipeById(recipeId);
-
-
-              IVerb v = Registry.Compendium.GetVerbById(recipe.ActionId);
-
-            if (v==null)
-                v=new CreatedVerb(recipe.ActionId,recipe.Label,recipe.Description);
-            SituationToken newToken= BuildSituationTokenFor(v);
-            var window = buildSituationWindowForSituationToken(newToken);
             var situationController = new SituationController(Registry.Compendium);
-            situationController.InitialiseToken(newToken, v);
+            if (recipe != null)
+                situationController.BeginSituation(recipe);
+
+
+            if (verb==null) //we may have specified a verb, eg if we're rehydrating the situation
+              verb = Registry.Compendium.GetVerbById(recipe.ActionId); //if we haven't, get the default verb
+
+            if (verb == null) //no default verb? then this is a transient verb (nb we might also have specified a transient verb)
+                verb = new CreatedVerb(recipe.ActionId,recipe.Label,recipe.Description);
+
+            var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel,locatorId);
+            var window = buildSituationWindowForSituationToken(newToken);
+            
+            situationController.InitialiseToken(newToken, verb);
             situationController.InitialiseWindow(window);
 
-            situationController.BeginSituation(recipe);
+            
+            
 
             return newToken;
         }
 
-        private SituationToken BuildSituationTokenFor(IVerb v)
-        {
-            var situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
 
-            
-            return situationToken;
-        }
 
         private SituationWindow buildSituationWindowForSituationToken(SituationToken situationToken)
         {

@@ -36,7 +36,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var s in tokens)
             {
                 var htStackProperties = new Hashtable();
-                htStackProperties.Add(s.Id, "--");
+                htStackProperties.Add(s.Id,s.CurrentRecipeId);
                 htSituationTokens.Add(s.LocatorId, htStackProperties);
             }
             return htSituationTokens;

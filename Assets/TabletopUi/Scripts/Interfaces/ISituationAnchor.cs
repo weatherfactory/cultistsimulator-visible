@@ -14,6 +14,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         string Id { get; }
         string LocatorId { get; }
         bool IsTransient { get; }
+        string CurrentRecipeId { get; }
         void OpenToken();
         void CloseToken();
 

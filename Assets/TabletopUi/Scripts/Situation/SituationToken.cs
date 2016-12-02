@@ -45,6 +45,7 @@ namespace Assets.CS.TabletopUI
         public bool IsOpen = false;
 
         public bool IsTransient { get { return _verb.Transient; } }
+        public string CurrentRecipeId { get { return situationController.GetCurrentRecipeId(); } }
 
         public override string Id
         {

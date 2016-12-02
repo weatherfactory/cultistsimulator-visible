@@ -45,10 +45,13 @@ namespace Assets.CS.TabletopUI
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
 
+            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
+
             registry.RegisterCompendium(compendium);
             registry.RegisterDraggableHolder(new DraggableHolder(draggableHolderRectTransform));
             registry.RegisterDice(new Dice());
             registry.RegisterTabletopManager(this);
+            registry.RegisterTabletopObjectBuilder(tabletopObjectBuilder);
 
             heart.StartBeating(0.05f);
 
@@ -56,7 +59,7 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
+
             tabletopObjectBuilder.PopulateTabletop();
             var needsToken = tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
             PlaceTokenOnTable(needsToken);
@@ -125,18 +128,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void CloseAllSituationWindowsExcept(SituationToken except)
-        {
-            var situationTokens =
-                tabletopContainer.GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
-            foreach (var situationToken in situationTokens)
-            {
-                if (DraggableToken.itemBeingDragged == null ||
-                    DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
-
-                    situationToken.CloseSituation();
-            }
-        }
 
         void HandleOnBackgroundDropped()
         {
@@ -159,7 +150,7 @@ namespace Assets.CS.TabletopUI
         {
             //Close all open windows if we're not dragging (multi tap stuff)
             if (DraggableToken.itemBeingDragged == null)
-                CloseAllSituationWindowsExcept(null);
+                tabletopContainer.CloseAllSituationWindowsExcept(null);
 
         }
 
@@ -167,7 +158,7 @@ namespace Assets.CS.TabletopUI
         public void LoadGame()
         {
 
-            var saveGameManager = new TabletopGameSaveManager(new TabletopGameExporter());
+            var saveGameManager = new TabletopGameSaveManager(new TabletopGameExporter(),Registry.Compendium);
             try
             {
 
@@ -183,7 +174,7 @@ namespace Assets.CS.TabletopUI
 
         public void SaveGame()
         {
-            var saveGameManager=new TabletopGameSaveManager(new TabletopGameExporter());
+            var saveGameManager=new TabletopGameSaveManager(new TabletopGameExporter(), Registry.Compendium);
             
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
         }

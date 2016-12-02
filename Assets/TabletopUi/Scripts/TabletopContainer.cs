@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -12,7 +13,6 @@ using Assets.TabletopUi.Scripts.Services;
 public class TabletopContainer : MonoBehaviour,ITokenContainer
 {
 
-    [SerializeField] private TabletopManager tabletopManager;
 
     public void TokenPickedUp(DraggableToken draggableToken)
     {
@@ -24,9 +24,21 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
         return GetComponentsInChildren<ISituationAnchor>();
     }
 
-    public void CloseAllSituationWindowsExcept(SituationToken situationToken)
+    public void CloseAllSituationWindowsExcept(SituationToken except)
     {
-       tabletopManager.CloseAllSituationWindowsExcept(situationToken);
+        var situationTokens =GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
+        foreach (var situationToken in situationTokens)
+        {
+            if (DraggableToken.itemBeingDragged == null ||
+                DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
+
+                situationToken.CloseSituation();
+        }
+    }
+
+    public void CreateSituation(IVerb verb,string recipeid,string locatorId)
+    {
+        Registry.TabletopObjectBuilder.BuildNewTokenRunningRecipe(recipeid, locatorId, verb);
     }
 
     public void PutOnTable(DraggableToken token)
@@ -48,6 +60,6 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     
     public ITokenTransformWrapper GetTokenTransformWrapper()
     {
-       return new TabletopTokenTransformWrapper(transform);
+       return new TabletopContainerTokenTransformWrapper(transform);
     }
 }
