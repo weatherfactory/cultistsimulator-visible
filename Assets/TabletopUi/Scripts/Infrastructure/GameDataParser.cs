@@ -42,21 +42,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
            return htElementStacks;
        }
 
-        private Hashtable ExportSituations(IEnumerable<ISituationAnchor> tokens)
+        private Hashtable ExportSituations(IEnumerable<ISituationAnchor> situations)
         {
             //states, slot contents, storage contents
             //window slot contents
             //notes and element contents
 
-            var htSituationTokens = new Hashtable();
-            foreach (var s in tokens)
+            var htSituations = new Hashtable();
+            foreach (var s in situations)
             {
                 var htSituationProperties = new Hashtable();
 
-                htSituationTokens.Add(s.LocationInfo, htSituationProperties);
-                
+                htSituations.Add(s.LocationInfo, htSituationProperties);
+                s.PopulateSaveInfo(htSituationProperties);
             }
-            return htSituationTokens;
+            return htSituations;
         }
 
 
@@ -97,14 +97,41 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     Noon.NoonUtility.HashtableToStringStringDictionary(htSituations.GetHashtable(locatorId));
 
                 IVerb situationVerb = compendium.GetVerbById(situationValues[NoonConstants.SAVE_VERBID]);
+
                 string recipeId;
                 situationValues.TryGetValue(NoonConstants.SAVE_RECIPEID,out recipeId);
                 var recipe = compendium.GetRecipeById(recipeId);
 
-                var command=new SituationCreationCommand(situationVerb,recipe);
+                var command = new SituationCreationCommand(situationVerb, recipe);
+                command.TimeRemaining = TryGetNullableFloat(situationValues, NoonConstants.SAVE_TIMEREMAINING);
+                command.State = TryGetNullableSituationState(situationValues, NoonConstants.SAVE_SITUATIONSTATE);
+
                 tabletopContainer.CreateSituation(command, locatorId.ToString());
 
             }
+
+        }
+
+        private float? TryGetNullableFloat(Dictionary<string,string> d, string key)
+        {
+            string returnValue;
+            d.TryGetValue(key,out returnValue);
+            if (returnValue == null)
+                return null;
+
+            return float.Parse(returnValue);
+
+        }
+
+        private SituationState? TryGetNullableSituationState(Dictionary<string, string> d, string key)
+        {
+            string returnValue;
+            d.TryGetValue(key, out returnValue);
+            if (returnValue == null)
+                return null;
+
+            return (SituationState)Enum.Parse(typeof(SituationState), returnValue);
+
         }
     }
     

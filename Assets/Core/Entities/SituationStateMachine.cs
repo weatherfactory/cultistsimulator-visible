@@ -128,8 +128,7 @@ namespace Assets.Core.Entities
         public void Beginning()
         {
             State=SituationState.Ongoing;
-            foreach (var s in subscribers)
-                s.SituationBeginning(this);
+
         }
 
 

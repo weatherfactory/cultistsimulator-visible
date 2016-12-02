@@ -31,13 +31,11 @@ namespace Assets.TabletopUi
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w)
         {
 
-
             situationToken = t;
             t.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             situationWindow = w;
             w.Initialise(this);
-          
 
             if (command.Recipe!=null)
                 BeginSituation(command);
@@ -124,7 +122,7 @@ namespace Assets.TabletopUi
             return response;
         }
 
-       public void SituationBeginning(SituationStateMachine s)
+       public void DisplaySituation(ISituationStateMachine s)
        {
             situationToken.SituationBeginning(s.GetSlots());
             SituationOngoing(s);
@@ -138,7 +136,7 @@ namespace Assets.TabletopUi
             situationWindow.DisplaySituation(s.GetTitle(),s.GetDescription(), nextRecipePrediction);
        }
 
-        public void SituationOngoing(SituationStateMachine s)
+        public void SituationOngoing(ISituationStateMachine s)
         {
             situationToken.DisplayTimeRemaining(s.Warmup, s.TimeRemaining);
         }
@@ -178,8 +176,9 @@ namespace Assets.TabletopUi
 
         public void BeginSituation(SituationCreationCommand command)
         {
-            SituationStateMachine = new SituationStateMachine(command.Recipe);
+            SituationStateMachine = command.CreateSituationStateMachine();
             SituationStateMachine.Subscribe(this);
+            DisplaySituation(SituationStateMachine);
 
         }
 

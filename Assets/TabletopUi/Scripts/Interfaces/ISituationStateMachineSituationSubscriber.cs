@@ -10,8 +10,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationStateMachineSituationSubscriber
     {
-        void SituationBeginning(SituationStateMachine s);
-        void SituationOngoing(SituationStateMachine s);
+        void SituationOngoing(ISituationStateMachine s);
         void SituationExecutingRecipe(IEffectCommand effectCommand);
         void SituationExtinct();
     }

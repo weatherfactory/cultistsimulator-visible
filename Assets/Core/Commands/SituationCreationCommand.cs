@@ -12,7 +12,7 @@ namespace Assets.Core.Commands
         public IVerb Verb { get; set; }
         public Recipe Recipe { get; set; }
         public SituationState? State { get; set; }
-        public int? TimeRemaining { get; set; }
+        public float? TimeRemaining { get; set; }
 
         public SituationCreationCommand(IVerb verb,Recipe recipe)
         {
@@ -32,5 +32,16 @@ namespace Assets.Core.Commands
 
             return Verb;
         }
+
+        public ISituationStateMachine CreateSituationStateMachine()
+        {
+            if(Recipe==null)
+                return null;
+            if(TimeRemaining==null)
+                return new SituationStateMachine(Recipe);
+
+            return new SituationStateMachine(TimeRemaining.Value,State.Value,Recipe);
+    }
+
 }
 }
