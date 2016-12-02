@@ -11,10 +11,15 @@ namespace Noon
 
     public class NoonConstants
     {
-        public static string CONST_SAVE_RECIPESKNOWN="recipesKnown";
-        public const string CONST_SAVE_ELEMENTSTACKS = "elementStacks";
-        public const string CONST_SAVE_SITUATIONS = "situations";
-        public static string CONST_SAVE_CHARACTER_DETAILS = "characterDetails";
+        public static string SAVE_ELEMENTID = "elementId";
+        public static string SAVE_QUANTITY = "quantity";
+        public static string SAVE_VERBID = "verbId";
+        public static string SAVE_RECIPEID = "recipeId";
+      
+        public static string SAVE_RECIPESKNOWN="recipesKnown";
+        public const string SAVE_ELEMENTSTACKS = "elementStacks";
+        public const string SAVE_SITUATIONS = "situations";
+        public static string SAVE_CHARACTER_DETAILS = "characterDetails";
         public static string KCHARACTERSTATE = "state";
         public static string KLOOP="loop";
         public static string KENDING="ending";

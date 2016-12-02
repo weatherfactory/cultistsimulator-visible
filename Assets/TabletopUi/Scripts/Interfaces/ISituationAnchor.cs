@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationAnchor
     {
         string Id { get; }
-        string LocatorId { get; }
+        string LocationInfo { get; }
         bool IsTransient { get; }
         string CurrentRecipeId { get; }
         void OpenToken();

@@ -158,7 +158,7 @@ namespace Assets.CS.TabletopUI
         public void LoadGame()
         {
 
-            var saveGameManager = new TabletopGameSaveManager(new TabletopGameExporter(),Registry.Compendium);
+            var saveGameManager = new GameSaveManager(new GameDataParser(Registry.Compendium));
             try
             {
 
@@ -174,7 +174,7 @@ namespace Assets.CS.TabletopUI
 
         public void SaveGame()
         {
-            var saveGameManager=new TabletopGameSaveManager(new TabletopGameExporter(), Registry.Compendium);
+            var saveGameManager=new GameSaveManager(new GameDataParser(Registry.Compendium));
             
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
         }

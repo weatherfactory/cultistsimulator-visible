@@ -49,7 +49,18 @@ namespace Assets.CS.TabletopUI
         /// This is an underscore-separated x,y localPosition in the current transform/container
         /// but could be anything
         /// </summary>
-        public string LocatorId { get { return RectTransform.localPosition.x + "_" + RectTransform.localPosition.y; } }
+        public string LocationInfo
+        {
+            set
+            {
+                var locs = value.Split('_');
+                var x = float.Parse(locs[0]);
+                var y = float.Parse(locs[1]);
+                RectTransform.localPosition = new Vector3(x, y);
+
+            }
+            get { return RectTransform.localPosition.x + "_" + RectTransform.localPosition.y; }
+        }
 
         public void SubscribeNotifier(Notifier n)
         {
