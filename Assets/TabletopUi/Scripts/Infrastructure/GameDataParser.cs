@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -98,7 +99,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 IVerb situationVerb = compendium.GetVerbById(situationValues[NoonConstants.SAVE_VERBID]);
                 string recipeId;
                 situationValues.TryGetValue(NoonConstants.SAVE_RECIPEID,out recipeId);
-                tabletopContainer.CreateSituation(situationVerb, recipeId, locatorId.ToString());
+                var recipe = compendium.GetRecipeById(recipeId);
+
+                var command=new SituationCreationCommand(situationVerb,recipe);
+                tabletopContainer.CreateSituation(command, locatorId.ToString());
 
             }
         }

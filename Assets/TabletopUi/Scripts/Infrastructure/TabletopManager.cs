@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
@@ -61,7 +62,8 @@ namespace Assets.CS.TabletopUI
 
 
             tabletopObjectBuilder.PopulateTabletop();
-            var needsToken = tabletopObjectBuilder.BuildNewTokenRunningRecipe("needs");
+            var needsSituationCreationCommand=new SituationCreationCommand(null, compendium.GetRecipeById("needs"));
+            var needsToken = tabletopObjectBuilder.BuildSituation(needsSituationCreationCommand);
             PlaceTokenOnTable(needsToken);
 
         }

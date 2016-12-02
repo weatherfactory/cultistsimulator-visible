@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -36,9 +37,9 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
         }
     }
 
-    public void CreateSituation(IVerb verb,string recipeid,string locatorId)
+    public void CreateSituation(SituationCreationCommand creationCommand,string locatorInfo=null)
     {
-        Registry.TabletopObjectBuilder.BuildNewTokenRunningRecipe(recipeid, locatorId, verb);
+        Registry.TabletopObjectBuilder.BuildSituation(creationCommand, locatorInfo);
     }
 
     public void PutOnTable(DraggableToken token)

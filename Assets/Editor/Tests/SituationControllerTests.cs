@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi;
@@ -35,9 +36,9 @@ namespace Assets.Editor.Tests
 
             sc = new SituationController(compendiumMock);
             sc.SituationStateMachine = situationStateMachineMock;
-            sc.InitialiseToken(situationAnchorMock, basicVerb);
-            
-            sc.InitialiseWindow(situationDetailsMock);
+            var command=new SituationCreationCommand(basicVerb,null);
+            sc.Initialise(command, situationAnchorMock,situationDetailsMock);
+
         }
 
 

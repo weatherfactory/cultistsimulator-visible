@@ -28,17 +28,22 @@ namespace Assets.TabletopUi
             compendium = c;
         }
 
-        public void InitialiseToken(ISituationAnchor t, IVerb v)
+        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w)
         {
-            situationToken = t;
-            t.Initialise(v, this);
-        }
 
-        public void InitialiseWindow(ISituationDetails w)
-        {
+
+            situationToken = t;
+            t.Initialise(command.GetBasicOrCreatedVerb(), this);
+
             situationWindow = w;
             w.Initialise(this);
+          
+
+            if (command.Recipe!=null)
+                BeginSituation(command);
+
         }
+
 
 
         public void OpenSituation()
@@ -187,7 +192,7 @@ namespace Assets.TabletopUi
             {
                 situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
 
-                BeginSituation(new SituationCreationCommand(recipe));
+                BeginSituation(new SituationCreationCommand(null,recipe));
                 situationWindow.Show(true);
             }
         }

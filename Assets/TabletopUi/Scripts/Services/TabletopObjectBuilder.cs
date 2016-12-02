@@ -30,7 +30,6 @@ namespace Assets.TabletopUi.Scripts.Services
        public void PopulateTabletop()
         {
 
-            SituationToken situationToken;
             ElementStackToken stack;
 
             float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
@@ -44,12 +43,11 @@ namespace Assets.TabletopUi.Scripts.Services
             for (int i = 0; i < verbs.Count; i++)
             {
                 IVerb v = verbs[i];
-                situationToken = PrefabFactory.CreateToken<SituationToken>(tableLevel);
+                SituationCreationCommand command=new SituationCreationCommand(v,null);
+                var situationToken=BuildSituation(command);
+                
                 situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
-                var window = buildSituationWindowForSituationToken(situationToken);
-                var situationController = new SituationController(Registry.Compendium);
-                situationController.InitialiseToken(situationToken,v);
-                situationController.InitialiseWindow(window);
+                //replace with locatorinfo
             }
 
 
@@ -63,26 +61,14 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
 
-        public SituationToken BuildNewTokenRunningRecipe(string recipeId, string locatorId=null,IVerb verb=null)
+        public SituationToken BuildSituation(SituationCreationCommand situationCreationCommand, string locatorInfo=null)
         {
-
-            var recipe = Registry.Compendium.GetRecipeById(recipeId);
             var situationController = new SituationController(Registry.Compendium);
-            if (recipe != null)
-                situationController.BeginSituation(new SituationCreationCommand(recipe));
 
-
-            if (verb==null) //we may have specified a verb, eg if we're rehydrating the situation
-              verb = Registry.Compendium.GetVerbById(recipe.ActionId); //if we haven't, get the default verb
-
-            if (verb == null) //no default verb? then this is a transient verb (nb we might also have specified a transient verb)
-                verb = new CreatedVerb(recipe.ActionId,recipe.Label,recipe.Description);
-
-            var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel,locatorId);
+            var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel,locatorInfo);
             var window = buildSituationWindowForSituationToken(newToken);
             
-            situationController.InitialiseToken(newToken, verb);
-            situationController.InitialiseWindow(window);          
+            situationController.Initialise(situationCreationCommand,newToken,window);
 
             return newToken;
         }
