@@ -15,7 +15,10 @@ namespace Noon
         public static string SAVE_QUANTITY = "quantity";
         public static string SAVE_VERBID = "verbId";
         public static string SAVE_RECIPEID = "recipeId";
-      
+        public static string SAVE_SITUATIONSTATE="state";
+        public static string SAVE_TIMEREMAINING = "timeremaining";
+
+
         public static string SAVE_RECIPESKNOWN="recipesKnown";
         public const string SAVE_ELEMENTSTACKS = "elementStacks";
         public const string SAVE_SITUATIONS = "situations";
@@ -39,6 +42,7 @@ namespace Noon
         public static string KREQUIRED="required";
         public static string KFORBIDDEN = "forbidden";
         public static string KGREEDY = "greedy";
+        
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
         public const string KCHARACTERTITLE = "title";

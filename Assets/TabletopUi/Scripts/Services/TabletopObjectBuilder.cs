@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
@@ -68,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Services
             var recipe = Registry.Compendium.GetRecipeById(recipeId);
             var situationController = new SituationController(Registry.Compendium);
             if (recipe != null)
-                situationController.BeginSituation(recipe);
+                situationController.BeginSituation(new SituationCreationCommand(recipe));
 
 
             if (verb==null) //we may have specified a verb, eg if we're rehydrating the situation
@@ -81,10 +82,7 @@ namespace Assets.TabletopUi.Scripts.Services
             var window = buildSituationWindowForSituationToken(newToken);
             
             situationController.InitialiseToken(newToken, verb);
-            situationController.InitialiseWindow(window);
-
-            
-            
+            situationController.InitialiseWindow(window);          
 
             return newToken;
         }

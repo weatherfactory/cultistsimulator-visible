@@ -171,9 +171,9 @@ namespace Assets.TabletopUi
            
         }
 
-        public void BeginSituation(Recipe r)
+        public void BeginSituation(SituationCreationCommand command)
         {
-            SituationStateMachine = new SituationStateMachine(r);
+            SituationStateMachine = new SituationStateMachine(command.Recipe);
             SituationStateMachine.Subscribe(this);
 
         }
@@ -187,7 +187,7 @@ namespace Assets.TabletopUi
             {
                 situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
 
-                BeginSituation(recipe);
+                BeginSituation(new SituationCreationCommand(recipe));
                 situationWindow.Show(true);
             }
         }
@@ -214,6 +214,8 @@ namespace Assets.TabletopUi
             if(SituationStateMachine!=null)
             { 
             saveInfo.Add(NoonConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+            saveInfo.Add(NoonConstants.SAVE_SITUATIONSTATE,SituationStateMachine.State);
+            saveInfo.Add(NoonConstants.SAVE_TIMEREMAINING,SituationStateMachine.TimeRemaining);
             }
         }
     }
