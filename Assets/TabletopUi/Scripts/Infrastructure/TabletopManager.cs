@@ -35,7 +35,7 @@ namespace Assets.CS.TabletopUI
         private TabletopObjectBuilder tabletopObjectBuilder;
         
 
-        [Header("View Settings")] [SerializeField] float windowZOffset = -10f;
+       
 
 
         void Start()

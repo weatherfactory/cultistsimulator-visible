@@ -10,12 +10,12 @@ namespace UnityTest
     [Category("Sample Tests")]
     internal class SampleTests
     {
-        //[Test]
-        //[Category("Failing Tests")]
-        //public void ExceptionTest()
-        //{
-        //    throw new Exception("Exception throwing test");
-        //}
+        [Test]
+        [Category("Failing Tests")]
+        public void ExceptionTest()
+        {
+            throw new Exception("Exception throwing test");
+        }
 
         [Test]
         [Ignore("Ignored test")]
@@ -24,27 +24,27 @@ namespace UnityTest
             throw new Exception("Ignored this test");
         }
 
-        //[Test]
-        //[MaxTime(100)]
-        //[Category("Failing Tests")]
-        //public void SlowTest()
-        //{
-        //    Thread.Sleep(200);
-        //}
+        [Test]
+        [MaxTime(100)]
+        [Category("Failing Tests")]
+        public void SlowTest()
+        {
+            Thread.Sleep(200);
+        }
 
-        //[Test]
-        //[Category("Failing Tests")]
-        //public void FailingTest()
-        //{
-        //    Assert.Fail();
-        //}
+        [Test]
+        [Category("Failing Tests")]
+        public void FailingTest()
+        {
+            Assert.Fail();
+        }
 
-        //[Test]
-        //[Category("Failing Tests")]
-        //public void InconclusiveTest()
-        //{
-        //    Assert.Inconclusive();
-        //}
+        [Test]
+        [Category("Failing Tests")]
+        public void InconclusiveTest()
+        {
+            Assert.Inconclusive();
+        }
 
         [Test]
         public void PassingTest()
@@ -88,15 +88,15 @@ namespace UnityTest
         [Datapoint]
         public double infinity = double.PositiveInfinity;
 
-        //[Theory]
-        //public void SquareRootDefinition(double num)
-        //{
-        //    Assume.That(num >= 0.0 && num < double.MaxValue);
+        [Theory]
+        public void SquareRootDefinition(double num)
+        {
+            Assume.That(num >= 0.0 && num < double.MaxValue);
 
-        //    var sqrt = Math.Sqrt(num);
+            var sqrt = Math.Sqrt(num);
 
-        //    Assert.That(sqrt >= 0.0);
-        //    Assert.That(sqrt * sqrt, Is.EqualTo(num).Within(0.000001));
-        //}
+            Assert.That(sqrt >= 0.0);
+            Assert.That(sqrt * sqrt, Is.EqualTo(num).Within(0.000001));
+        }
     }
 }

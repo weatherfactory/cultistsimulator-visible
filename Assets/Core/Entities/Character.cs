@@ -10,7 +10,6 @@ using JetBrains.Annotations;
 public class Character
     {
 
-    private readonly Dictionary<string, int> _elementsInWorkspace;
     private string _title;
     private string _firstName;
     private string _lastName;
@@ -56,7 +55,7 @@ public class Character
         public Character():base()
         {
             
-        _elementsInWorkspace=new Dictionary<string, int>();
+      
             State = CharacterState.Viable;
         
 

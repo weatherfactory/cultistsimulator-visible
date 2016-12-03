@@ -114,9 +114,7 @@ namespace TMPro.EditorUtilities
             {
                 GameObject eventObject = new GameObject("EventSystem", typeof(EventSystem));
                 eventObject.AddComponent<StandaloneInputModule>();
-#if !(UNITY_5_3 || UNITY_5_4)
-                eventObject.AddComponent<TouchInputModule>();
-#endif
+
                 Undo.RegisterCreatedObjectUndo(eventObject, "Create " + eventObject.name);
             }
 
@@ -268,10 +266,6 @@ namespace TMPro.EditorUtilities
                 GameObjectUtility.SetParentAndAlign(eventSystem, parent);
                 esys = eventSystem.AddComponent<EventSystem>();
                 eventSystem.AddComponent<StandaloneInputModule>();
-#if !(UNITY_5_3 || UNITY_5_4)
-                eventSystem.AddComponent<TouchInputModule>();
-#endif
-
                 Undo.RegisterCreatedObjectUndo(eventSystem, "Create " + eventSystem.name);
             }
 

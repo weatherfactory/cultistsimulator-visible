@@ -72,7 +72,7 @@ public class TestResultRenderer
             GUILayout.TextArea(text, Styles.FailedMessagesStyle);
             GUILayout.EndScrollView();
         }
-        if (GUILayout.Button("CloseController"))
+        if (GUILayout.Button("Close"))
             Application.Quit();
     }
 
