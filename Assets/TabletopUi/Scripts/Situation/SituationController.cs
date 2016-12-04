@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
@@ -212,15 +213,28 @@ namespace Assets.TabletopUi
 
        }
 
-        public void PopulateSaveInfo(IDictionary saveInfo)
+        public Hashtable GetSaveDataForSituation()
         {
+           var saveInfo=new Hashtable();
             saveInfo.Add(NoonConstants.SAVE_VERBID, situationToken.Id);
-            if(SituationStateMachine!=null)
-            { 
-            saveInfo.Add(NoonConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
-            saveInfo.Add(NoonConstants.SAVE_SITUATIONSTATE,SituationStateMachine.State);
-            saveInfo.Add(NoonConstants.SAVE_TIMEREMAINING,SituationStateMachine.TimeRemaining);
+            if (SituationStateMachine != null)
+            {
+                saveInfo.Add(NoonConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+                saveInfo.Add(NoonConstants.SAVE_SITUATIONSTATE, SituationStateMachine.State);
+                saveInfo.Add(NoonConstants.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
+            }
+            //save stacks in window slots
+            var dataParser=new GameDataParser(compendium);
+              var htWindowSlots=dataParser.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
+                
+            saveInfo.Add(NoonConstants.SAVE_STARTINGSLOTELEMENTS,htWindowSlots);
+
+            return saveInfo;
+                
+                //save stacks in storage
+                //save stacks in ongoing slot
+                //save notes and contents
             }
         }
     }
-}
+

@@ -16,6 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         Hashtable Export(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations);
         void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave);
+        Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
     }
 
     public class GameDataParser : IGameDataParser
@@ -29,7 +30,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        private Hashtable ExportElementStacks(IEnumerable<IElementStack> stacks)
+        public Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks)
        {
            var htElementStacks=new Hashtable();
            foreach (var e in stacks)
@@ -51,10 +52,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSituations = new Hashtable();
             foreach (var s in situations)
             {
-                var htSituationProperties = new Hashtable();
-
+                var htSituationProperties = s.GetSaveDataForSituation();
                 htSituations.Add(s.LocationInfo, htSituationProperties);
-                s.PopulateSaveInfo(htSituationProperties);
             }
             return htSituations;
         }
@@ -65,7 +64,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
        {
            var htAll = new Hashtable
            {
-               {Noon.NoonConstants.SAVE_ELEMENTSTACKS, ExportElementStacks(stacks)},
+               {Noon.NoonConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
                {Noon.NoonConstants.SAVE_SITUATIONS, ExportSituations(situations)}
            };
            return htAll;

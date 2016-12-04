@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         string Id { get; }
         string LocationInfo { get; set; }
         bool IsTransient { get; }
-        void PopulateSaveInfo(IDictionary saveInfo);
+        Hashtable GetSaveDataForSituation();
         void OpenToken();
         void CloseToken();
 

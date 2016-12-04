@@ -165,9 +165,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void PopulateSaveInfo(IDictionary saveInfo)
+        public Hashtable GetSaveDataForSituation()
         {
-            situationController.PopulateSaveInfo(saveInfo);
+            return situationController.GetSaveDataForSituation();
         }
 
         public void OpenToken()

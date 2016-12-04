@@ -11,21 +11,21 @@ namespace Noon
 
     public class NoonConstants
     {
-        public static string SAVE_ELEMENTID = "elementId";
-        public static string SAVE_QUANTITY = "quantity";
-        public static string SAVE_VERBID = "verbId";
-        public static string SAVE_RECIPEID = "recipeId";
-        public static string SAVE_SITUATIONSTATE="state";
-        public static string SAVE_TIMEREMAINING = "timeremaining";
+        public const string SAVE_ELEMENTID = "elementId";
+        public const string SAVE_QUANTITY = "quantity";
+        public const string SAVE_VERBID = "verbId";
+        public const string SAVE_RECIPEID = "recipeId";
+        public const string SAVE_SITUATIONSTATE="state";
+        public const string SAVE_TIMEREMAINING = "timeremaining";
+        public const string SAVE_STARTINGSLOTELEMENTS = "startingslotelements";
 
-
-        public static string SAVE_RECIPESKNOWN="recipesKnown";
+        public const string SAVE_RECIPESKNOWN="recipesKnown";
         public const string SAVE_ELEMENTSTACKS = "elementStacks";
         public const string SAVE_SITUATIONS = "situations";
-        public static string SAVE_CHARACTER_DETAILS = "characterDetails";
-        public static string KCHARACTERSTATE = "state";
-        public static string KLOOP="loop";
-        public static string KENDING="ending";
+        public const string SAVE_CHARACTER_DETAILS = "characterDetails";
+        public const string KCHARACTERSTATE = "state";
+        public const string KLOOP="loop";
+        public const string KENDING="ending";
         public const string KID = "id";
         public const string KLABEL = "label";
         public const string KACTIONID = "actionId";
@@ -37,12 +37,13 @@ namespace Noon
         public const string KEFFECTS = "effects";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
         public const string KPERSISTINGREDIENTSWITH = "persistIngredientsWith";
-        public static string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";
-        public static string KSLOTS="slots";
-        public static string KREQUIRED="required";
-        public static string KFORBIDDEN = "forbidden";
-        public static string KGREEDY = "greedy";
-        
+        public const string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";
+        public const string KSLOTS="slots";
+        public const string KREQUIRED="required";
+        public const string KFORBIDDEN = "forbidden";
+        public const string KGREEDY = "greedy";
+
+
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
         public const string KCHARACTERTITLE = "title";

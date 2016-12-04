@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 
-/// <summary>
-/// primary game state storage!
-/// </summary>
 public class Character
     {
 
