@@ -8,6 +8,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Elements;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -66,6 +67,6 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
     {
-        return (draggable.RectTransform.localPosition.x.ToString() + NoonConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
+        return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 }

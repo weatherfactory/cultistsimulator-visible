@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 namespace Assets.Core.Commands
@@ -21,7 +22,7 @@ namespace Assets.Core.Commands
             ElementId = elementId;
             ElementQuantity = elementQuantity;
             LocationInfo = locationInfo;
-            Depth = locationInfo.Count(c => c == NoonConstants.SEPARATOR);
+            Depth = locationInfo.Count(c => c == SaveConstants.SEPARATOR);
         }
     }
 }

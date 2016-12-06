@@ -4,6 +4,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -122,7 +123,7 @@ namespace Assets.CS.TabletopUI
             {
                 string saveLocationInfo = GoverningSlotSpecification.Label;
                 if (ParentSlot != null)
-                    saveLocationInfo = ParentSlot.SaveLocationInfoPath + NoonConstants.SEPARATOR + saveLocationInfo;
+                    saveLocationInfo = ParentSlot.SaveLocationInfoPath + SaveConstants.SEPARATOR + saveLocationInfo;
                 return saveLocationInfo;
             }
         }

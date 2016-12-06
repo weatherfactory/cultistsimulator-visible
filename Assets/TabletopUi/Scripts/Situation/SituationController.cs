@@ -175,6 +175,11 @@ namespace Assets.TabletopUi
            
         }
 
+        public void AddOutput(IEnumerable<IElementStack> stacksForOutput,Notification notification  )
+        {
+            situationWindow.AddOutput(stacksForOutput, notification);
+        }
+
         public void BeginSituation(SituationCreationCommand command)
         {
             SituationStateMachine = command.CreateSituationStateMachine();
@@ -218,38 +223,49 @@ namespace Assets.TabletopUi
            var situationSaveData=new Hashtable();
             var exporter = new GameDataExporter();
 
-            situationSaveData.Add(GameSaveManager.SAVE_VERBID, situationToken.Id);
+            situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
             if (SituationStateMachine != null)
             {
-                situationSaveData.Add(GameSaveManager.SAVE_RECIPEID, SituationStateMachine.RecipeId);
-                situationSaveData.Add(GameSaveManager.SAVE_SITUATIONSTATE, SituationStateMachine.State);
-                situationSaveData.Add(GameSaveManager.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
+                situationSaveData.Add(SaveConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, SituationStateMachine.State);
+                situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
             }
 
             
             //save stacks in window (starting) slots
+            if(situationWindow.GetStacksInStartingSlots().Any())
+            { 
             var htStartingSlots= exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
-            situationSaveData.Add(GameSaveManager.SAVE_STARTINGSLOTELEMENTS,htStartingSlots);
+            situationSaveData.Add(SaveConstants.SAVE_STARTINGSLOTELEMENTS,htStartingSlots);
+            }
 
             //save stacks in ongoing slots
+            if (situationToken.GetStacksInOngoingSlots().Any())
+            { 
             var htOngoingSlots = exporter.GetHashTableForStacks(situationToken.GetStacksInOngoingSlots());
-            situationSaveData.Add(GameSaveManager.SAVE_ONGOINGSLOTELEMENTS,htOngoingSlots);
+            situationSaveData.Add(SaveConstants.SAVE_ONGOINGSLOTELEMENTS,htOngoingSlots);
+            }
 
             //save stacks in storage
+            if(situationToken.GetStoredStacks().Any())
+            { 
             var htStacksInStorage = exporter.GetHashTableForStacks(situationToken.GetStoredStacks());
-            situationSaveData.Add(GameSaveManager.SAVE_SITUATIONSTOREDELEMENTS,htStacksInStorage);
+            situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS,htStacksInStorage);
+            }
 
-
-            return situationSaveData;
+            //save notes, and their contents
+            if(situationWindow.GetCurrentOutputs().Any())
+            { 
+            var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetCurrentOutputs());
+            situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTS,htOutputs);
+            }
+            return situationSaveData;                
                 
-            
-                
-                //save notes and contents
             }
 
         public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo,string slotType)
         {
-            if (slotType==GameSaveManager.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
+            if (slotType==SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
                 return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
             else
                 return situationToken.GetOngoingSlotBySaveLocationInfoPath(locationInfo);

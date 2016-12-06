@@ -24,5 +24,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayOngoing();
         void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription);
         void Retire();
+        IEnumerable<ISituationOutput> GetCurrentOutputs();
     }
 }

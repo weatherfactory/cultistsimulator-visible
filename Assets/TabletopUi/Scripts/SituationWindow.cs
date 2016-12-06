@@ -129,6 +129,11 @@ namespace Assets.CS.TabletopUI
             return startingSlotsContainer.GetAspectsFromSlottedCards();
         }
 
+        public IEnumerable<ISituationOutput> GetCurrentOutputs()
+        {
+            return outputContainer.GetCurrentOutputs();
+        }
+
         public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification)
         {
             outputContainer.AddOutput(stacks,notification);

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -22,8 +23,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var htAll = new Hashtable
            {
-               {GameSaveManager.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
-               {GameSaveManager.SAVE_SITUATIONS, GetHashTableForSituations(situations)}
+               {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
+               {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)}
            };
             return htAll;
         }
@@ -49,11 +50,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var e in stacks)
             {
                 var htStackProperties = new Hashtable();
-                htStackProperties.Add(GameSaveManager.SAVE_ELEMENTID, e.Id);
-                htStackProperties.Add(GameSaveManager.SAVE_QUANTITY, e.Quantity);
+                htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);
+                htStackProperties.Add(SaveConstants.SAVE_QUANTITY, e.Quantity);
                 htElementStacks.Add(e.SaveLocationInfo, htStackProperties);
             }
             return htElementStacks;
         }
+
+        public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutput> outputs)
+        {
+            var htOutputs=new Hashtable();
+            foreach (var o in outputs)
+            {
+                var htEachOutput=new Hashtable();
+                htEachOutput.Add(SaveConstants.SAVE_TITLE, o.TitleText);
+                htEachOutput.Add(SaveConstants.SAVE_DESCRIPTION,o.DescriptionText);
+                var htStacksInOutput = GetHashTableForStacks(o.GetTokenTransformWrapper().GetStacks());
+                htEachOutput.Add(SaveConstants.SAVE_OUTPUTELEMENTS,htStacksInOutput);
+                htOutputs.Add((htOutputs.Keys.Count+1).ToString() ,htEachOutput); //need that tostring! exporter doesn't cope well with int keys
+            }
+
+            return htOutputs;
+        }
+        
     }
 }

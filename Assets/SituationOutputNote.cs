@@ -7,13 +7,25 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 using TMPro;
 
-public class SituationOutputNote : MonoBehaviour, ITokenContainer
+public interface ISituationOutput
 {
-    [SerializeField] private TextMeshProUGUI Title;
+    string TitleText { get; }
+    string DescriptionText { get; }
+    ITokenTransformWrapper GetTokenTransformWrapper();
+}
+
+public class SituationOutputNote : MonoBehaviour, ITokenContainer,ISituationOutput
+{
+    [SerializeField]private TextMeshProUGUI Title;
     [SerializeField]private TextMeshProUGUI Description;
     private SituationOutputContainer parentSituationOutputContainer;
+
+    public string TitleText { get { return Title.text; } }
+    public string DescriptionText { get { return Title.text; } }
 
     public void Initialise(INotification notification, IEnumerable<IElementStack> stacks,SituationOutputContainer soc)
     {
@@ -50,6 +62,8 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer
 
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
     {
-        return "output_note";
+        return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 }
+
+

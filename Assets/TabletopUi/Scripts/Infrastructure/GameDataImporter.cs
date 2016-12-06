@@ -32,8 +32,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
         {
-            var htElementStacks = htSave.GetHashtable(GameSaveManager.SAVE_ELEMENTSTACKS);
-            var htSituations = htSave.GetHashtable(GameSaveManager.SAVE_SITUATIONS);
+            var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
+            var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
 
             ImportTabletopElementStacks(tabletopContainer, htElementStacks);
 
@@ -45,17 +45,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             foreach (var locationInfo in htElementStacks.Keys)
             {
-                var elementStacks =
+                var dictionaryElementStacks =
                     NoonUtility.HashtableToStringStringDictionary(htElementStacks.GetHashtable(locationInfo));
 
                 int quantity;
-                var couldParse = Int32.TryParse(elementStacks[GameSaveManager.SAVE_QUANTITY], out quantity);
+                var couldParse = Int32.TryParse(dictionaryElementStacks[SaveConstants.SAVE_QUANTITY], out quantity);
                 if (!couldParse)
-                    throw new ArgumentException("Couldn't parse " + elementStacks[GameSaveManager.SAVE_QUANTITY] + " for " +
-                                                elementStacks[GameSaveManager.SAVE_ELEMENTID] + " as a valid quantity.");
+                    throw new ArgumentException("Couldn't parse " + dictionaryElementStacks[SaveConstants.SAVE_QUANTITY] + " for " +
+                                                dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
 
                 tabletopContainer.GetElementStacksManager()
-                    .IncreaseElement(elementStacks[GameSaveManager.SAVE_ELEMENTID], quantity, locationInfo.ToString());
+                    .IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], quantity, locationInfo.ToString());
             }
         }
 
@@ -65,30 +65,54 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
 
-                IVerb situationVerb = compendium.GetVerbById(htSituationValues[GameSaveManager.SAVE_VERBID].ToString());
+                IVerb situationVerb = compendium.GetVerbById(htSituationValues[SaveConstants.SAVE_VERBID].ToString());
 
-                string recipeId = TryGetStringFromHashtable(htSituationValues, GameSaveManager.SAVE_RECIPEID);
+                string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
                 var recipe = compendium.GetRecipeById(recipeId);
 
                 var command = new SituationCreationCommand(situationVerb, recipe);
-                command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, GameSaveManager.SAVE_TIMEREMAINING);
-                command.State = TryGetNullableSituationState(htSituationValues, GameSaveManager.SAVE_SITUATIONSTATE);
+                command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
+                command.State = TryGetNullableSituationState(htSituationValues, SaveConstants.SAVE_SITUATIONSTATE);
 
-               var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
+                var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
 
-                ImportSlotContents(htSituationValues, situationAnchor,tabletopContainer, GameSaveManager.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues, situationAnchor, tabletopContainer, GameSaveManager.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationAnchor,tabletopContainer, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationAnchor, tabletopContainer, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
 
                 ImportSituationStoredElements(htSituationValues, situationAnchor);
+
+                ImportOutputNotes(htSituationValues, situationAnchor,tabletopContainer);
+            }
+        }
+
+        private void ImportOutputNotes(Hashtable htSituationValues, ISituationAnchor situationAnchor,TabletopContainer container)
+        {
+            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTS))
+            {
+                var htSituationOutputs = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTS);
+                foreach (var k in htSituationOutputs.Keys)
+                {
+                    var htThisOutput = htSituationOutputs.GetHashtable(k);
+                    var notificationForOutputNote=new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(),htThisOutput[SaveConstants.SAVE_DESCRIPTION].ToString());
+                    var htOutputElements = htThisOutput.GetHashtable(SaveConstants.SAVE_OUTPUTELEMENTS);
+                    var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htOutputElements);
+                    List<IElementStack> stacksForOutputNote=new List<IElementStack>();
+                    foreach (var eqs in elementQuantitySpecifications)
+                    {
+                        stacksForOutputNote.Add(container.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId,eqs.ElementQuantity));
+                    }
+                    situationAnchor.AddOutput(stacksForOutputNote,notificationForOutputNote);
+
+                }
             }
         }
 
         private void ImportSituationStoredElements(Hashtable htSituationValues, ISituationAnchor situationAnchor)
         {
 
-            if (htSituationValues.ContainsKey(GameSaveManager.SAVE_SITUATIONSTOREDELEMENTS))
+            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
             {
-                var htElements = htSituationValues.GetHashtable(GameSaveManager.SAVE_SITUATIONSTOREDELEMENTS);
+                var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
                 var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
                 foreach (var eqs in elementQuantitySpecifications)   
                     situationAnchor.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity);                    
@@ -127,7 +151,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var elementValues =
                     NoonUtility.HashtableToStringStringDictionary(htElements.GetHashtable(locationInfo));
                 elementQuantitySpecifications.Add(new ElementQuantitySpecification(
-                    elementValues[GameSaveManager.SAVE_ELEMENTID],
+                    elementValues[SaveConstants.SAVE_ELEMENTID],
                     GetQuantityFromElementHashtable(elementValues), locationInfo.ToString()));
             }
             return elementQuantitySpecifications;
@@ -136,10 +160,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private int GetQuantityFromElementHashtable(Dictionary<string, string> elementValues)
         {
             int quantity;
-            var couldParse = Int32.TryParse(elementValues[GameSaveManager.SAVE_QUANTITY], out quantity);
+            var couldParse = Int32.TryParse(elementValues[SaveConstants.SAVE_QUANTITY], out quantity);
             if (!couldParse)
-                throw new ArgumentException("Couldn't parse " + elementValues[GameSaveManager.SAVE_QUANTITY] + " for " +
-                                            elementValues[GameSaveManager.SAVE_ELEMENTID] + " as a valid quantity.");
+                throw new ArgumentException("Couldn't parse " + elementValues[SaveConstants.SAVE_QUANTITY] + " for " +
+                                            elementValues[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
             return quantity;
         }
 

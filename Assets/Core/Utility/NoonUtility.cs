@@ -11,7 +11,7 @@ namespace Noon
 
     public class NoonConstants
     {
-        public const char SEPARATOR = '_';
+
         public const string KCHARACTERSTATE = "state";
         public const string KLOOP="loop";
         public const string KENDING="ending";

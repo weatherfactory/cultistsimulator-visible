@@ -24,7 +24,7 @@ public class SituationOutputContainer : MonoBehaviour
         situationWindow.AllOutputsGone();
     }
 
-    public IEnumerable<SituationOutputNote> GetCurrentOutputs()
+    public IEnumerable<ISituationOutput> GetCurrentOutputs()
     {
         return GetComponentsInChildren<SituationOutputNote>();
     }

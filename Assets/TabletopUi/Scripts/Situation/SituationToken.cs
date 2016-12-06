@@ -141,7 +141,7 @@ namespace Assets.CS.TabletopUI
             return GetSituationStorageStacksManager().GetStacks();
         }
 
-
+        
 
         public void StoreStacks(IEnumerable<IElementStack> stacksToStore)
         {
@@ -235,6 +235,11 @@ namespace Assets.CS.TabletopUI
         {
  
             return ongoingSlotsContainer.GetUnfilledGreedySlots();
+        }
+
+        public void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification)
+        {
+            situationController.AddOutput(stacksForOutput,notification);
         }
 
         public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo)

@@ -39,5 +39,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         HeartbeatResponse ExecuteHeartbeat(float interval);
 
         bool Retire();
+        void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification);
     }
 }
