@@ -10,6 +10,7 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 
 public class TabletopContainer : MonoBehaviour,ITokenContainer
 {
@@ -27,7 +28,7 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     public void CloseAllSituationWindowsExcept(SituationToken except)
     {
-        var situationTokens =GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
+        var situationTokens=GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
         foreach (var situationToken in situationTokens)
         {
             if (DraggableToken.itemBeingDragged == null ||
@@ -37,9 +38,9 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
         }
     }
 
-    public void CreateSituation(SituationCreationCommand creationCommand,string locatorInfo=null)
+    public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand,string locatorInfo=null)
     {
-        Registry.TabletopObjectBuilder.BuildSituation(creationCommand, locatorInfo);
+       return Registry.TabletopObjectBuilder.BuildSituation(creationCommand, locatorInfo);
     }
 
     public void PutOnTable(DraggableToken token)
@@ -53,7 +54,6 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     public bool AllowDrag { get { return true; } }
 
 
-
     public ElementStacksManager GetElementStacksManager()
     {
         return new ElementStacksManager(GetTokenTransformWrapper());
@@ -62,5 +62,10 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     public ITokenTransformWrapper GetTokenTransformWrapper()
     {
        return new TabletopContainerTokenTransformWrapper(transform);
+    }
+
+    public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
+    {
+        return (draggable.RectTransform.localPosition.x.ToString() + NoonConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 }

@@ -11,18 +11,7 @@ namespace Noon
 
     public class NoonConstants
     {
-        public const string SAVE_ELEMENTID = "elementId";
-        public const string SAVE_QUANTITY = "quantity";
-        public const string SAVE_VERBID = "verbId";
-        public const string SAVE_RECIPEID = "recipeId";
-        public const string SAVE_SITUATIONSTATE="state";
-        public const string SAVE_TIMEREMAINING = "timeremaining";
-        public const string SAVE_STARTINGSLOTELEMENTS = "startingslotelements";
-
-        public const string SAVE_RECIPESKNOWN="recipesKnown";
-        public const string SAVE_ELEMENTSTACKS = "elementStacks";
-        public const string SAVE_SITUATIONS = "situations";
-        public const string SAVE_CHARACTER_DETAILS = "characterDetails";
+        public const char SEPARATOR = '_';
         public const string KCHARACTERSTATE = "state";
         public const string KLOOP="loop";
         public const string KENDING="ending";
@@ -49,9 +38,6 @@ namespace Noon
         public const string KCHARACTERTITLE = "title";
         public const string KCHARACTERFIRSTNAME= "firstname";
         public const string KCHARACTERLASTNAME = "lastname";
-
-
-
     }
     public class NoonUtility
     {

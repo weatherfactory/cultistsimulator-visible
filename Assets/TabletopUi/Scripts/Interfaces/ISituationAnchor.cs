@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationAnchor
     {
         string Id { get; }
-        string LocationInfo { get; set; }
+        string SaveLocationInfo { get; set; }
         bool IsTransient { get; }
         Hashtable GetSaveDataForSituation();
         void OpenToken();
@@ -29,6 +29,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationExtinct();
 
         IList<IRecipeSlot> GetUnfilledGreedySlots();
+        IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo);
         void DisplayTimeRemaining(float duration, float timeRemaining);
         void AbsorbOngoingSlotContents();
         void ModifyStoredElementStack(string elementId, int quantity);

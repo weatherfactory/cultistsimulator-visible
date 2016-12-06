@@ -21,12 +21,18 @@ public class SlotSpecification
     /// </summary>
     public IAspectsDictionary Forbidden { get; set; }
     public bool Greedy = false;
+    private const string PRIMARY_SLOT="primary";
 
     public SlotSpecification(string label)
     {
         Label = label;
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
+    }
+
+    public static SlotSpecification CreatePrimarySlotSpecification()
+    {
+        return new SlotSpecification(PRIMARY_SLOT);
     }
 
     public SlotMatchForAspects GetSlotMatchForAspects(IAspectsDictionary aspects)
@@ -54,6 +60,8 @@ public class SlotSpecification
 
     }
 }
+
+
 
 
 

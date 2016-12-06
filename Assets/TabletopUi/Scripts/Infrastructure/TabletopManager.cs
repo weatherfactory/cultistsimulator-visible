@@ -82,7 +82,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public HashSet<IRecipeSlot> FindStacksToFillSlots(HashSet<IRecipeSlot> slotsToFill)
+        public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
         {
             var unprocessedSlots = new HashSet<IRecipeSlot>();
             foreach (var slot in slotsToFill)
@@ -160,7 +160,7 @@ namespace Assets.CS.TabletopUI
         public void LoadGame()
         {
 
-            var saveGameManager = new GameSaveManager(new GameDataParser(Registry.Compendium));
+            var saveGameManager = new GameSaveManager(new GameDataHandler(Registry.Compendium));
             try
             {
 
@@ -176,7 +176,7 @@ namespace Assets.CS.TabletopUI
 
         public void SaveGame()
         {
-            var saveGameManager=new GameSaveManager(new GameDataParser(Registry.Compendium));
+            var saveGameManager=new GameSaveManager(new GameDataHandler(Registry.Compendium));
             
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
         }

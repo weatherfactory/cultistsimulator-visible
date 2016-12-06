@@ -13,16 +13,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class GameSaveManager
     {
-        private IGameDataParser dataParser;
+        private IGameDataHandler dataHandler;
         
-        public GameSaveManager(IGameDataParser dataParser)
+        public GameSaveManager(IGameDataHandler dataHandler)
         {
-            this.dataParser = dataParser;
+            this.dataHandler = dataHandler;
         }
 
         public void SaveGame(TabletopContainer tabletopContainer,string saveFileName)
         {
-            var htSaveTable = dataParser.Export(tabletopContainer.GetElementStacksManager().GetStacks(), tabletopContainer.GetAllSituationTokens());
+            var htSaveTable = dataHandler.Export(tabletopContainer.GetElementStacksManager().GetStacks(), tabletopContainer.GetAllSituationTokens());
             File.WriteAllText(Noon.NoonUtility.GetGameSavePath(saveFileName), htSaveTable.JsonString());
         }
 
@@ -36,7 +36,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
         {
-            dataParser.ImportSavedGameToContainer(tabletopContainer,htSave);
+            dataHandler.ImportSavedGameToContainer(tabletopContainer,htSave);
         }
     }
 }

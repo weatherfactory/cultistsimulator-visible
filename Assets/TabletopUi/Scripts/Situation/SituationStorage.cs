@@ -26,4 +26,9 @@ public class SituationStorage : MonoBehaviour,ITokenContainer
         return new TokenTransformWrapper(transform);
 
     }
+
+    public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
+    {
+        return "slot_storage";
+    }
 }

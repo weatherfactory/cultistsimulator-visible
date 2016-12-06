@@ -63,8 +63,7 @@ namespace Assets.CS.TabletopUI
        return  situationController.ExecuteHeartbeat(interval);
         }
 
-
-      
+        
 
         public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
@@ -100,8 +99,13 @@ namespace Assets.CS.TabletopUI
         }
 
 
+        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo)
+        {
+            return situationController.GetSlotBySaveLocationInfoPath(locationInfo);
+        }
 
-       public void DisplayTimeRemaining(float duration, float timeRemaining)
+
+        public void DisplayTimeRemaining(float duration, float timeRemaining)
         {
             countdownBar.fillAmount = 1f - (timeRemaining / duration);
             countdownText.text = timeRemaining.ToString("0.0") + "s";

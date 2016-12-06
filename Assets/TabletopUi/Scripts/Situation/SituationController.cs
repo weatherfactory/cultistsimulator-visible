@@ -216,18 +216,19 @@ namespace Assets.TabletopUi
         public Hashtable GetSaveDataForSituation()
         {
            var saveInfo=new Hashtable();
-            saveInfo.Add(NoonConstants.SAVE_VERBID, situationToken.Id);
+            saveInfo.Add(GameDataHandler.SAVE_VERBID, situationToken.Id);
             if (SituationStateMachine != null)
             {
-                saveInfo.Add(NoonConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
-                saveInfo.Add(NoonConstants.SAVE_SITUATIONSTATE, SituationStateMachine.State);
-                saveInfo.Add(NoonConstants.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
+                saveInfo.Add(GameDataHandler.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+                saveInfo.Add(GameDataHandler.SAVE_SITUATIONSTATE, SituationStateMachine.State);
+                saveInfo.Add(GameDataHandler.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
             }
+
             //save stacks in window slots
-            var dataParser=new GameDataParser(compendium);
+            var dataParser=new GameDataHandler(compendium);
               var htWindowSlots=dataParser.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
                 
-            saveInfo.Add(NoonConstants.SAVE_STARTINGSLOTELEMENTS,htWindowSlots);
+            saveInfo.Add(GameDataHandler.SAVE_STARTINGSLOTELEMENTS,htWindowSlots);
 
             return saveInfo;
                 
@@ -235,6 +236,11 @@ namespace Assets.TabletopUi
                 //save stacks in ongoing slot
                 //save notes and contents
             }
+
+        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo)
+        {
+           return situationWindow.GetSlotBySaveLocationInfoPath(locationInfo);
         }
+    }
     }
 

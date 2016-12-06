@@ -22,5 +22,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         /// </summary>
         /// <returns></returns>
         ITokenTransformWrapper GetTokenTransformWrapper();
+
+        string GetSaveLocationInfoForDraggable(DraggableToken draggable);
     }
 }

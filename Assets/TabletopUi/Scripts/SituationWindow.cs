@@ -111,6 +111,11 @@ namespace Assets.CS.TabletopUI
  
         }
 
+        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo)
+        {
+            return
+                startingSlotsContainer.GetAllSlots().SingleOrDefault(s => s.SaveLocationInfoPath==locationInfo);
+        }
 
         public IEnumerable<IElementStack> GetStacksInStartingSlots()
         {

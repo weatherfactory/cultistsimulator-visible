@@ -4,6 +4,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
+using Noon;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
@@ -18,14 +19,16 @@ namespace Assets.CS.TabletopUI
         SlotMatchForAspects GetSlotMatchForStack(IElementStack stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
+        RecipeSlot ParentSlot { get; set; }
+        
     }
     public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer
     {
-
         public event System.Action<RecipeSlot,IElementStack> onCardDropped;
         public event System.Action<IElementStack> onCardPickedUp;
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
+        public RecipeSlot ParentSlot { get; set; }
 
         // TODO: Needs hover feedback!
 
@@ -69,6 +72,9 @@ namespace Assets.CS.TabletopUI
             onCardDropped(this, stack);
         }
 
+        
+
+
         public DraggableToken GetTokenInSlot()
         {
             return GetComponentInChildren<DraggableToken>();
@@ -95,6 +101,7 @@ namespace Assets.CS.TabletopUI
  
 
         public bool AllowDrag { get { return true; }}
+
         public ElementStacksManager GetElementStacksManager()
         {
             ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
@@ -104,6 +111,25 @@ namespace Assets.CS.TabletopUI
         public ITokenTransformWrapper GetTokenTransformWrapper()
         {
             return new TokenTransformWrapper(transform);
+        }
+
+        /// <summary>
+        /// path to slot expressed in underscore-separated slot specification labels: eg "primary_sacrifice"
+        /// </summary>
+        public string SaveLocationInfoPath
+        {
+            get
+            {
+                string saveLocationInfo = GoverningSlotSpecification.Label;
+                if (ParentSlot != null)
+                    saveLocationInfo = ParentSlot.SaveLocationInfoPath + NoonConstants.SEPARATOR + saveLocationInfo;
+                return saveLocationInfo;
+            }
+        }
+        
+        public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
+        {
+        return SaveLocationInfoPath; //we don't currently care about the actual draggable
         }
     }
 }

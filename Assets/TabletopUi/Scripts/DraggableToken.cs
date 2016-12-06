@@ -49,7 +49,7 @@ namespace Assets.CS.TabletopUI
         /// This is an underscore-separated x,y localPosition in the current transform/container
         /// but could be anything
         /// </summary>
-        public string LocationInfo
+        public string SaveLocationInfo
         {
             set
             {
@@ -59,8 +59,9 @@ namespace Assets.CS.TabletopUI
                 RectTransform.localPosition = new Vector3(x, y);
 
             }
-            get { return RectTransform.localPosition.x + "_" + RectTransform.localPosition.y; }
+            get { return container.GetSaveLocationInfoForDraggable(this); }
         }
+
 
         public void SubscribeNotifier(Notifier n)
         {

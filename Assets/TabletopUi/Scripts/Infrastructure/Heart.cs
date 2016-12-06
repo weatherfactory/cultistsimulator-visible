@@ -44,7 +44,7 @@ public class Heart : MonoBehaviour
         if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
         {
             beatCounter = 0;
-          outstandingSlotsToFill=Registry.TabletopManager.FindStacksToFillSlots(outstandingSlotsToFill);
+          outstandingSlotsToFill=Registry.TabletopManager.FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
             
     }

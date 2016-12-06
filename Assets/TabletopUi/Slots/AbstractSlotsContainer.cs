@@ -36,17 +36,17 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         
     }
 
-    public RecipeSlot BuildSlot(string slotName = "Recipe Slot", SlotSpecification slotSpecification = null)
+    public RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification,RecipeSlot parentSlot)
     {
         var slot = PrefabFactory.CreateLocally<RecipeSlot>(transform);
 
         slot.name = slotName;
+        slot.ParentSlot = parentSlot;
         if (slotSpecification != null)
         {
             slot.GoverningSlotSpecification = slotSpecification;
             slot.name += " - " + slotSpecification.Label;
         }
-
         slot.onCardDropped += HandleOnSlotDroppedOn;
         slot.onCardPickedUp += RespondToStackPickedUp;
         return slot;    

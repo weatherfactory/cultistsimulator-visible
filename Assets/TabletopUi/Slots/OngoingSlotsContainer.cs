@@ -31,7 +31,7 @@ namespace Assets.TabletopUi.SlotsContainers
             {
                 gameObject.SetActive(true);
                 foreach (SlotSpecification css in slotsToBuild)
-                    BuildSlot(css.Label, css);
+                    BuildSlot(css.Label, css,null);
             }
         }
 

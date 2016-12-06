@@ -76,15 +76,10 @@
     <Reference Include="Mono.Cecil">
       <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Core\Commands\EffectCommand.cs" />
+    <Compile Include="Assets\Core\Commands\ElementQuantitySpecification.cs" />
     <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
     <Compile Include="Assets\Core\Commands\Notification.cs" />
     <Compile Include="Assets\Core\Commands\SituationCreationCommand.cs" />
@@ -133,7 +128,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopContainerTokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataParser.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataHandler.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameSaveManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
@@ -15,6 +16,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Hide();
         void DisplayAspects(IAspectsDictionary forAspects);
         void DisplayRecipe(Recipe r);
+        IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo);
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromSlottedElements();
         void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);

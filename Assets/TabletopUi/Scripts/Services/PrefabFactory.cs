@@ -28,14 +28,14 @@ namespace Assets.TabletopUi.Scripts.Services
         [SerializeField] Notifier Notifier = null;
 
 
-        public static T CreateToken<T>(Transform destination, string locationInfo = null) where T : DraggableToken
+        public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
             token.SubscribeNotifier(pf.Notifier);
             token.SetContainer(pf.TabletopManager.tabletopContainer);
-            if (locationInfo != null)
-                token.LocationInfo = locationInfo;
+            if (saveLocationInfo != null)
+                token.SaveLocationInfo = saveLocationInfo;
 
             return token;
         }

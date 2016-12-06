@@ -177,7 +177,7 @@ namespace Assets.Editor.Tests
     {
         public IAspectsDictionary Aspects;
         public string Id { get; set; }
-        public string LocationInfo { get; set; }
+        public string SaveLocationInfo { get; set; }
         public int Quantity { get; set; }
         public bool Defunct { get; private set; }
 
