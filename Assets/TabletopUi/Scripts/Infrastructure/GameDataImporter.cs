@@ -76,37 +76,47 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
 
-                AddElementStacksToStartingSlots_ForSituation(htSituationValues, situationAnchor,tabletopContainer);
+                ImportSlotContents(htSituationValues, situationAnchor,tabletopContainer, GameSaveManager.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationAnchor, tabletopContainer, GameSaveManager.SAVE_ONGOINGSLOTELEMENTS);
             }
         }
 
-        private void AddElementStacksToStartingSlots_ForSituation(Hashtable htSituationValues,
-            ISituationAnchor situationAnchor, TabletopContainer tabletopContainer)
+        
+
+        private void ImportSlotContents(Hashtable htSituationValues,
+            ISituationAnchor situationAnchor, TabletopContainer tabletopContainer,string slotTypeKey)
         {
-            if (htSituationValues.ContainsKey(GameSaveManager.SAVE_STARTINGSLOTELEMENTS))
+            if (htSituationValues.ContainsKey(slotTypeKey))
             {
-                var htElements = htSituationValues.GetHashtable(GameSaveManager.SAVE_STARTINGSLOTELEMENTS);
-                var elementQuantitySpecifications = new List<ElementQuantitySpecification>();
-                foreach (var locationInfo in htElements.Keys)
-                {
-                    var elementValues =
-                        NoonUtility.HashtableToStringStringDictionary(htElements.GetHashtable(locationInfo));
-                    elementQuantitySpecifications.Add(new ElementQuantitySpecification(elementValues[GameSaveManager.SAVE_ELEMENTID],
-                        GetQuantityFromElementHashtable(elementValues), locationInfo.ToString()));
-                }
-                
+                var htElements = htSituationValues.GetHashtable(slotTypeKey);
+                var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
+
                 foreach (var eqs in elementQuantitySpecifications.OrderBy(spec=>spec.Depth))
                 {
                     var stackToPutInSlot =
                         tabletopContainer.GetTokenTransformWrapper()
                             .ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity);
-                    var slotToFill = situationAnchor.GetSlotBySaveLocationInfoPath(eqs.LocationInfo);
+                    var slotToFill = situationAnchor.GetSlotFromSituation(eqs.LocationInfo, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                         //if the game can't find a matching slot, it'll just leave it on the desktop
                         slotToFill.AcceptStack(stackToPutInSlot);
 
                 }
             }
+        }
+
+        private List<ElementQuantitySpecification> PopulateElementQuantitySpecificationsList(Hashtable htElements)
+        {
+            var elementQuantitySpecifications = new List<ElementQuantitySpecification>();
+            foreach (var locationInfo in htElements.Keys)
+            {
+                var elementValues =
+                    NoonUtility.HashtableToStringStringDictionary(htElements.GetHashtable(locationInfo));
+                elementQuantitySpecifications.Add(new ElementQuantitySpecification(
+                    elementValues[GameSaveManager.SAVE_ELEMENTID],
+                    GetQuantityFromElementHashtable(elementValues), locationInfo.ToString()));
+            }
+            return elementQuantitySpecifications;
         }
 
         private int GetQuantityFromElementHashtable(Dictionary<string, string> elementValues)

@@ -20,6 +20,19 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
+
+    /// <summary>
+    /// SituationToken is, used as
+    /// - an anchor for everything else in the situation to hang off, and
+    /// - a gateway for UI or code interaction with the contents
+    /// 
+    /// but also
+    /// 
+    /// - a repository for elements stored in the situation
+    /// - a repository for ongoing situation slots
+    /// 
+    /// ....so it should be two different objects
+    /// </summary>
     public class SituationToken : DraggableToken,ISituationAnchor
     {
 
@@ -99,9 +112,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo)
+        public IRecipeSlot GetSlotFromSituation(string locationInfo,string slotType)
         {
-            return situationController.GetSlotBySaveLocationInfoPath(locationInfo);
+            return situationController.GetSlotBySaveLocationInfoPath(locationInfo,slotType);
         }
 
 
@@ -222,7 +235,11 @@ namespace Assets.CS.TabletopUI
         {
  
             return ongoingSlotsContainer.GetUnfilledGreedySlots();
-           
+        }
+
+        public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo)
+        {
+            return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
         public override void OnPointerClick(PointerEventData eventData)

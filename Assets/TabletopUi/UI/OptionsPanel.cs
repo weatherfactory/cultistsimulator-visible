@@ -15,11 +15,13 @@ public class OptionsPanel : MonoBehaviour
     public void LoadGame()
     {
         tabletopManager.LoadGame();
+        ToggleVisibility();
     }
 
     public void SaveGame()
     {
         tabletopManager.SaveGame();
+        ToggleVisibility();
     }
 
     public void RestartGame()

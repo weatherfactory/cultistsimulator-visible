@@ -30,7 +30,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationExtinct();
 
         IList<IRecipeSlot> GetUnfilledGreedySlots();
-        IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo);
+        IRecipeSlot GetSlotFromSituation(string locationInfo, string slotType);
+        IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
         void DisplayTimeRemaining(float duration, float timeRemaining);
         void AbsorbOngoingSlotContents();
         void ModifyStoredElementStack(string elementId, int quantity);

@@ -244,10 +244,14 @@ namespace Assets.TabletopUi
                 //save notes and contents
             }
 
-        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo)
+        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo,string slotType)
         {
-           return situationWindow.GetSlotBySaveLocationInfoPath(locationInfo);
+            if (slotType==GameSaveManager.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
+                return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
+            else
+                return situationToken.GetOngoingSlotBySaveLocationInfoPath(locationInfo);
         }
+
     }
     }
 

@@ -30,6 +30,11 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
      return  new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
     }
 
+    public IRecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath)
+    {
+                return GetAllSlots().SingleOrDefault(s => s.SaveLocationInfoPath == saveLocationInfoPath);
+    }
+
     void HandleOnSlotDroppedOn(RecipeSlot slot,IElementStack stack)
     {
         RespondToStackAdded(slot, stack);

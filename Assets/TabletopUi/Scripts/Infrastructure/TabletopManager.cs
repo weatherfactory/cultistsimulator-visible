@@ -33,9 +33,9 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Notifier notifier;
         private TabletopObjectBuilder tabletopObjectBuilder;
-        
 
-       
+
+
 
 
         void Start()
@@ -62,7 +62,7 @@ namespace Assets.CS.TabletopUI
 
 
             tabletopObjectBuilder.PopulateTabletop();
-            var needsSituationCreationCommand=new SituationCreationCommand(null, compendium.GetRecipeById("needs"));
+            var needsSituationCreationCommand = new SituationCreationCommand(null, compendium.GetRecipeById("needs"));
             var needsToken = tabletopObjectBuilder.BuildSituation(needsSituationCreationCommand);
             PlaceTokenOnTable(needsToken);
 
@@ -138,7 +138,7 @@ namespace Assets.CS.TabletopUI
             {
                 // Maybe check for item type here via GetComponent<Something>() != null?
                 DraggableToken.resetToStartPos = false;
-                    // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+                // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
@@ -160,25 +160,40 @@ namespace Assets.CS.TabletopUI
         public void LoadGame()
         {
 
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Compendium),new GameDataExporter());
+            heart.StopBeating();
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Compendium), new GameDataExporter());
             try
             {
+                var htSave = saveGameManager.LoadSavedGame("save.txt");
+                ClearBoard();
+                saveGameManager.ImportSavedGameToContainer(tabletopContainer, htSave);
+                notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
 
-            var htSave=saveGameManager.LoadSavedGame("save.txt");
-            ClearBoard();
-            saveGameManager.ImportSavedGameToContainer(tabletopContainer,htSave);
             }
             catch (Exception e)
             {
-                notifier.ShowNotificationWindow("Couldn't load game - ",e.Message);
+                notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             }
+            heart.ResumeBeating();
         }
 
         public void SaveGame()
         {
-            var saveGameManager=new GameSaveManager(new GameDataImporter(Registry.Compendium),new GameDataExporter());
-            
+            heart.StopBeating();
+
+            try
+            {
+            var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Compendium),new GameDataExporter());
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
+                notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+
+                heart.ResumeBeating();
+            }
+            catch (Exception e)
+            {
+
+                notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
+            }
         }
 
         public void ClearBoard()
