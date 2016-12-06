@@ -128,6 +128,8 @@ namespace Assets.CS.TabletopUI
             return GetSituationStorageStacksManager().GetStacks();
         }
 
+
+
         public void StoreStacks(IEnumerable<IElementStack> stacksToStore)
         {
             GetSituationStorageStacksManager().AcceptStacks(stacksToStore);

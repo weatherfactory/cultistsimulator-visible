@@ -215,21 +215,29 @@ namespace Assets.TabletopUi
 
         public Hashtable GetSaveDataForSituation()
         {
-           var saveInfo=new Hashtable();
-            saveInfo.Add(GameSaveManager.SAVE_VERBID, situationToken.Id);
+           var situationSaveData=new Hashtable();
+            var exporter = new GameDataExporter();
+
+            situationSaveData.Add(GameSaveManager.SAVE_VERBID, situationToken.Id);
             if (SituationStateMachine != null)
             {
-                saveInfo.Add(GameSaveManager.SAVE_RECIPEID, SituationStateMachine.RecipeId);
-                saveInfo.Add(GameSaveManager.SAVE_SITUATIONSTATE, SituationStateMachine.State);
-                saveInfo.Add(GameSaveManager.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
+                situationSaveData.Add(GameSaveManager.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+                situationSaveData.Add(GameSaveManager.SAVE_SITUATIONSTATE, SituationStateMachine.State);
+                situationSaveData.Add(GameSaveManager.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
             }
 
-            var exporter = new GameDataExporter();
+            
             //save stacks in window (starting) slots
-            var htWindowSlots= exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
-            saveInfo.Add(GameSaveManager.SAVE_STARTINGSLOTELEMENTS,htWindowSlots);
+            var htStartingSlots= exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
+            situationSaveData.Add(GameSaveManager.SAVE_STARTINGSLOTELEMENTS,htStartingSlots);
 
-            return saveInfo;
+            //save stacks in ongoing slots
+            var htOngoingSlots = exporter.GetHashTableForStacks(situationToken.GetStacksInOngoingSlots());
+            situationSaveData.Add(GameSaveManager.SAVE_ONGOINGSLOTELEMENTS,htOngoingSlots);
+
+
+
+            return situationSaveData;
                 
                 //save stacks in storage
                 

@@ -19,16 +19,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_VERBID = "verbId";
         public const string SAVE_RECIPEID = "recipeId";
         public const string SAVE_SITUATIONSTATE = "state";
-        public const string SAVE_TIMEREMAINING = "timeremaining";
-        public const string SAVE_STARTINGSLOTELEMENTS = "startingslotelements";
+        public const string SAVE_TIMEREMAINING = "timeRemaining";
+        public const string SAVE_STARTINGSLOTELEMENTS = "startingSlotElements";
         public const string SAVE_RECIPESKNOWN = "recipesKnown";
         public const string SAVE_ELEMENTSTACKS = "elementStacks";
         public const string SAVE_SITUATIONS = "situations";
         public const string SAVE_CHARACTER_DETAILS = "characterDetails";
+        public const string SAVE_ONGOINGSLOTELEMENTS="ongoingSlotElements";
 
-        private IGameDataImporter dataImporter;
-        private IGameDataExporter dataExporter;
+
+        private readonly IGameDataImporter dataImporter;
+        private readonly IGameDataExporter dataExporter;
         
+
         public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
         {
             this.dataImporter = dataImporter;

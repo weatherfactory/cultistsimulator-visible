@@ -22,6 +22,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Initialise(IVerb verb, SituationController controller);
 
         IEnumerable<IElementStack> GetStoredStacks();
+        IEnumerable<IElementStack> GetStacksInOngoingSlots();
         void StoreStacks(IEnumerable<IElementStack> stacksToStore);
         IAspectsDictionary GetAspectsFromStoredElements();
         IAspectsDictionary GetAspectsFromSlottedElements();
