@@ -26,11 +26,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_SITUATIONS = "situations";
         public const string SAVE_CHARACTER_DETAILS = "characterDetails";
         public const string SAVE_ONGOINGSLOTELEMENTS="ongoingSlotElements";
-
+        public const string SAVE_SITUATIONSTOREDELEMENTS = "situationStoredElements";
 
         private readonly IGameDataImporter dataImporter;
         private readonly IGameDataExporter dataExporter;
         
+
 
         public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
         {

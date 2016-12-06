@@ -235,11 +235,14 @@ namespace Assets.TabletopUi
             var htOngoingSlots = exporter.GetHashTableForStacks(situationToken.GetStacksInOngoingSlots());
             situationSaveData.Add(GameSaveManager.SAVE_ONGOINGSLOTELEMENTS,htOngoingSlots);
 
+            //save stacks in storage
+            var htStacksInStorage = exporter.GetHashTableForStacks(situationToken.GetStoredStacks());
+            situationSaveData.Add(GameSaveManager.SAVE_SITUATIONSTOREDELEMENTS,htStacksInStorage);
 
 
             return situationSaveData;
                 
-                //save stacks in storage
+            
                 
                 //save notes and contents
             }

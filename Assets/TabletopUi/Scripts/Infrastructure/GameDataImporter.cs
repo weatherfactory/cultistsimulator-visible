@@ -78,10 +78,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 ImportSlotContents(htSituationValues, situationAnchor,tabletopContainer, GameSaveManager.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(htSituationValues, situationAnchor, tabletopContainer, GameSaveManager.SAVE_ONGOINGSLOTELEMENTS);
+
+                ImportSituationStoredElements(htSituationValues, situationAnchor);
             }
         }
 
-        
+        private void ImportSituationStoredElements(Hashtable htSituationValues, ISituationAnchor situationAnchor)
+        {
+
+            if (htSituationValues.ContainsKey(GameSaveManager.SAVE_SITUATIONSTOREDELEMENTS))
+            {
+                var htElements = htSituationValues.GetHashtable(GameSaveManager.SAVE_SITUATIONSTOREDELEMENTS);
+                var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
+                foreach (var eqs in elementQuantitySpecifications)   
+                    situationAnchor.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity);                    
+            }
+        }
+
 
         private void ImportSlotContents(Hashtable htSituationValues,
             ISituationAnchor situationAnchor, TabletopContainer tabletopContainer,string slotTypeKey)
@@ -91,7 +104,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htElements = htSituationValues.GetHashtable(slotTypeKey);
                 var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
 
-                foreach (var eqs in elementQuantitySpecifications.OrderBy(spec=>spec.Depth))
+                foreach (var eqs in elementQuantitySpecifications.OrderBy(spec=>spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
+                    //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var stackToPutInSlot =
                         tabletopContainer.GetTokenTransformWrapper()
