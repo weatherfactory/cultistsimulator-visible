@@ -216,24 +216,23 @@ namespace Assets.TabletopUi
         public Hashtable GetSaveDataForSituation()
         {
            var saveInfo=new Hashtable();
-            saveInfo.Add(GameDataHandler.SAVE_VERBID, situationToken.Id);
+            saveInfo.Add(GameSaveManager.SAVE_VERBID, situationToken.Id);
             if (SituationStateMachine != null)
             {
-                saveInfo.Add(GameDataHandler.SAVE_RECIPEID, SituationStateMachine.RecipeId);
-                saveInfo.Add(GameDataHandler.SAVE_SITUATIONSTATE, SituationStateMachine.State);
-                saveInfo.Add(GameDataHandler.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
+                saveInfo.Add(GameSaveManager.SAVE_RECIPEID, SituationStateMachine.RecipeId);
+                saveInfo.Add(GameSaveManager.SAVE_SITUATIONSTATE, SituationStateMachine.State);
+                saveInfo.Add(GameSaveManager.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
             }
 
-            //save stacks in window slots
-            var dataParser=new GameDataHandler(compendium);
-              var htWindowSlots=dataParser.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
-                
-            saveInfo.Add(GameDataHandler.SAVE_STARTINGSLOTELEMENTS,htWindowSlots);
+            var exporter = new GameDataExporter();
+            //save stacks in window (starting) slots
+            var htWindowSlots= exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
+            saveInfo.Add(GameSaveManager.SAVE_STARTINGSLOTELEMENTS,htWindowSlots);
 
             return saveInfo;
                 
                 //save stacks in storage
-                //save stacks in ongoing slot
+                
                 //save notes and contents
             }
 

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -128,7 +130,8 @@
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopContainerTokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataHandler.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataExporter.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataImporter.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameSaveManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />

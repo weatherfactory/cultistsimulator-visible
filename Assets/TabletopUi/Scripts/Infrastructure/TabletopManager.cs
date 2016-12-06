@@ -160,7 +160,7 @@ namespace Assets.CS.TabletopUI
         public void LoadGame()
         {
 
-            var saveGameManager = new GameSaveManager(new GameDataHandler(Registry.Compendium));
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Compendium),new GameDataExporter());
             try
             {
 
@@ -176,7 +176,7 @@ namespace Assets.CS.TabletopUI
 
         public void SaveGame()
         {
-            var saveGameManager=new GameSaveManager(new GameDataHandler(Registry.Compendium));
+            var saveGameManager=new GameSaveManager(new GameDataImporter(Registry.Compendium),new GameDataExporter());
             
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
         }

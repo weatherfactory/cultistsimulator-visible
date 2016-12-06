@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 
 public interface IElementStacksManager
@@ -143,5 +145,7 @@ public class ElementStacksManager : IElementStacksManager
        foreach(IElementStack stack in wrapper.GetStacks())
             stack.SetQuantity(0);
     }
+
+
 }
 

@@ -7,28 +7,43 @@ using System.Text;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using OrbCreationExtensions;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class GameSaveManager
     {
-        private IGameDataHandler dataHandler;
+        public const string SAVE_ELEMENTID = "elementId";
+        public const string SAVE_QUANTITY = "quantity";
+        public const string SAVE_VERBID = "verbId";
+        public const string SAVE_RECIPEID = "recipeId";
+        public const string SAVE_SITUATIONSTATE = "state";
+        public const string SAVE_TIMEREMAINING = "timeremaining";
+        public const string SAVE_STARTINGSLOTELEMENTS = "startingslotelements";
+        public const string SAVE_RECIPESKNOWN = "recipesKnown";
+        public const string SAVE_ELEMENTSTACKS = "elementStacks";
+        public const string SAVE_SITUATIONS = "situations";
+        public const string SAVE_CHARACTER_DETAILS = "characterDetails";
+
+        private IGameDataImporter dataImporter;
+        private IGameDataExporter dataExporter;
         
-        public GameSaveManager(IGameDataHandler dataHandler)
+        public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
         {
-            this.dataHandler = dataHandler;
+            this.dataImporter = dataImporter;
+            this.dataExporter = dataExporter;
         }
 
         public void SaveGame(TabletopContainer tabletopContainer,string saveFileName)
         {
-            var htSaveTable = dataHandler.Export(tabletopContainer.GetElementStacksManager().GetStacks(), tabletopContainer.GetAllSituationTokens());
-            File.WriteAllText(Noon.NoonUtility.GetGameSavePath(saveFileName), htSaveTable.JsonString());
+            var htSaveTable = dataExporter.ExportStacksAndSituations(tabletopContainer.GetElementStacksManager().GetStacks(), tabletopContainer.GetAllSituationTokens());
+            File.WriteAllText(NoonUtility.GetGameSavePath(saveFileName), htSaveTable.JsonString());
         }
 
         public Hashtable LoadSavedGame(string saveFileName)
         {
-            string importJson = File.ReadAllText(Noon.NoonUtility.GetGameSavePath(saveFileName));
+            string importJson = File.ReadAllText(NoonUtility.GetGameSavePath(saveFileName));
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
             return htSave;
         }
@@ -36,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
         {
-            dataHandler.ImportSavedGameToContainer(tabletopContainer,htSave);
+            dataImporter.ImportSavedGameToContainer(tabletopContainer,htSave);
         }
     }
 }
