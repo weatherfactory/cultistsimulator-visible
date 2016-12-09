@@ -27,19 +27,6 @@
 				},
         loop: "needs"
     },  
-	{
-        id: "sustenance",
-        label: "Sustenance",
-        actionId: "x",
-        requirements: {shilling: 1},
-        effects: {
-            shilling: -1
-        },
-        startdescription: "-",
-        description: "The body has its needs. Today, I have satisfied them.",
-        warmup: 0,
-        craftable: false
-    },
 	   {
         id: "starvation",
         label: "Starvation",
@@ -50,8 +37,7 @@
             hungry: 1
         },
 		alternativerecipes:
-		[{id: "sustenance",chance:100},
-		{id: "deathofthebody",chance:100}],
+		[{id: "deathofthebody",chance:100}],
         startdescription: ".",
         description: "I have grown neglectful of my health. Without money, I'll soon starve.",
         warmup: 60,
@@ -63,14 +49,13 @@
 					greedy: true
 					}
 		}
-        craftable: false,
-        loop: "starvation"
+        craftable: false
     },
 	    {
         id: "lawenforcement",
         label: "Law enforcement",
         actionId: "x",
-        requirements: {},
+        requirements: {hunger: 10},
         effects: {
         },
         startdescription: "Potential detective!",
