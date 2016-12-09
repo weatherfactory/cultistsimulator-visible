@@ -6,6 +6,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
@@ -21,7 +22,7 @@ namespace Assets.CS.TabletopUI
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
         RecipeSlot ParentSlot { get; set; }
-        
+ 
     }
     public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer
     {
@@ -30,6 +31,7 @@ namespace Assets.CS.TabletopUI
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
+        public TextMeshProUGUI SlotLabel;
 
         // TODO: Needs hover feedback!
 

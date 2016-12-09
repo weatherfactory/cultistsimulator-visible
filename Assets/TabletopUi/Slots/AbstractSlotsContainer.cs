@@ -47,6 +47,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
         slot.name = slotName;
         slot.ParentSlot = parentSlot;
+        slot.SlotLabel.text = slotSpecification.Label;
         if (slotSpecification != null)
         {
             slot.GoverningSlotSpecification = slotSpecification;

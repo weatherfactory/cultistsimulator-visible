@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine.Assertions;
@@ -15,7 +16,7 @@ namespace Assets.Core.Entities
         float TimeRemaining { get; }
         float Warmup { get; }
         string RecipeId { get; }
-        IList<SlotSpecification> GetSlots();
+        IList<SlotSpecification> GetSlotsForCurrentRecipe();
         void Subscribe(ISituationStateMachineSituationSubscriber s);
         string GetTitle();
         string GetStartingDescription();
@@ -34,7 +35,7 @@ namespace Assets.Core.Entities
         public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
         public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
 
-        public IList<SlotSpecification> GetSlots()
+        public IList<SlotSpecification> GetSlotsForCurrentRecipe()
         {
             if (currentPrimaryRecipe.SlotSpecifications.Any())
                 return currentPrimaryRecipe.SlotSpecifications;
@@ -128,7 +129,8 @@ namespace Assets.Core.Entities
         public void Beginning()
         {
             State=SituationState.Ongoing;
-
+           foreach(var s in subscribers)
+               s.SituationBeginning();
         }
 
 
@@ -136,7 +138,7 @@ namespace Assets.Core.Entities
         {
             State=SituationState.Ongoing;
             foreach (var s in subscribers)
-                s.SituationOngoing(this);
+                s.SituationOngoing();
         }
 
         private void RequireExecution(IRecipeConductor rc)
@@ -147,16 +149,16 @@ namespace Assets.Core.Entities
 
             //actually replace the current recipe with the first on the list: any others will be additionals,
             //but we want to loop from this one.
-            //We should probably return a command with a subsidiary list, not a basic list
             if (recipesToExecute.First().Id != currentPrimaryRecipe.Id)
                 currentPrimaryRecipe = recipesToExecute.First();
-
 
             foreach (var s in subscribers)
             {
                 foreach (var r in recipesToExecute)
                 {
-                    s.SituationExecutingRecipe(new EffectCommand(r));
+                    IEffectCommand ec=new EffectCommand(r,
+                        r.ActionId!=currentPrimaryRecipe.ActionId);
+                    s.SituationExecutingRecipe(ec);
                 }
             }
         }

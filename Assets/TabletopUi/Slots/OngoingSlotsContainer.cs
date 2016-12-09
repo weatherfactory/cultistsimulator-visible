@@ -23,10 +23,9 @@ namespace Assets.TabletopUi.SlotsContainers
 
             _situationController.OngoingSlotsUpdated();
         }
-        public void UpdateSlots (IList<SlotSpecification> slotsToBuild)
+        public void SetUpSlots (IList<SlotSpecification> slotsToBuild)
         {
-         DestroyAllSlots();
-
+            DestroyAllSlots();
             if (slotsToBuild.Any())
             {
                 gameObject.SetActive(true);

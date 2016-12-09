@@ -140,7 +140,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription)
+        public void UpdateSituationDisplay(string stitle, string sdescription, string nextRecipeDescription)
         {
             title.text = stitle;
             description.text = sdescription;

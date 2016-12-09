@@ -8,10 +8,11 @@ namespace Assets.Core.Interfaces
 {
     public interface IEffectCommand
     {
-        string Title { get; set; }
-        string Description { get; set; }
-        Recipe Recipe { get; set; }
+        string Title { get; }
+        string Description { get; }
+        Recipe Recipe { get; }
         Dictionary<string, int> GetElementChanges();
+        bool AsNewSituation { get; }
 
     }
 

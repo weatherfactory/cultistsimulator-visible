@@ -80,8 +80,8 @@ namespace Assets.TabletopUi
             var allAspects = GetAspectsAvailableToSituation();
             situationWindow.DisplayAspects(allAspects);
 
-                situationWindow.DisplaySituation(SituationStateMachine.GetTitle(),
-                    SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
+                situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
+                SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
         
         }
 
@@ -123,45 +123,60 @@ namespace Assets.TabletopUi
             return response;
         }
 
-       public void DisplaySituation(ISituationStateMachine s)
+       public void UpdateSituationDisplayTextInWIndow()
        {
-            situationToken.SituationBeginning(s.GetSlots());
-            SituationOngoing(s);
-
+           
             RecipeConductor rc = new RecipeConductor(compendium, situationToken.GetAspectsFromStoredElements(),
             new Dice());
 
            string nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
 
-
-            situationWindow.DisplaySituation(s.GetTitle(),s.GetDescription(), nextRecipePrediction);
+            situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(), SituationStateMachine.GetDescription(), nextRecipePrediction);
        }
 
-        public void SituationOngoing(ISituationStateMachine s)
+        public void SituationBeginning()
         {
-            situationToken.DisplayTimeRemaining(s.Warmup, s.TimeRemaining);
+            situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
+            UpdateSituationDisplayTextInWIndow();
         }
+        public void SituationOngoing()
+        {
+            situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
+        }
+
 
 
 
         public void SituationExecutingRecipe(IEffectCommand command)
        {
-            //move any elements currently in OngoingSlots to situation storage
-            //NB we're doing this *before* we execute the command - the command may affect these elements too
+           //move any elements currently in OngoingSlots to situation storage
+           //NB we're doing this *before* we execute the command - the command may affect these elements too
            situationToken.AbsorbOngoingSlotContents();
 
-            //execute each recipe in command
-            foreach (var kvp in command.GetElementChanges())
-            {
-                situationToken.ModifyStoredElementStack(kvp.Key,kvp.Value);
+           if (command.AsNewSituation)
+           {
+               IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
+                   command.Recipe.Description);
+               SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe);
+               Registry.TabletopManager.BeginNewSituation(scc);
+           }
+           else
+           {
+               //execute each recipe in command
+               foreach (var kvp in command.GetElementChanges())
+               {
+                   situationToken.ModifyStoredElementStack(kvp.Key, kvp.Value);
+               }
+
+               if (command.Recipe.Ending != null)
+                   Debug.Log("Done:" + command.Recipe.Ending);
+
+
             }
 
-           if (command.Recipe.Ending != null)
-               Debug.Log("Done:" + command.Recipe.Ending);
+        }
 
-       }
-
-       public void SituationExtinct()
+        public void SituationExtinct()
        {
           //retrieve all stacks stored in the situation
            var stacksToRetrieve = situationToken.GetStoredStacks();
@@ -186,8 +201,9 @@ namespace Assets.TabletopUi
         {
             SituationStateMachine = command.CreateSituationStateMachine();
             SituationStateMachine.Subscribe(this);
-            DisplaySituation(SituationStateMachine);
-
+            situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
+            situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
+            UpdateSituationDisplayTextInWIndow();
         }
 
 

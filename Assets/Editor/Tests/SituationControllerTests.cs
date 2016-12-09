@@ -64,7 +64,7 @@ namespace Assets.Editor.Tests
             situationAnchorMock.Received().GetAspectsFromStoredElements();
             situationAnchorMock.Received().GetAspectsFromSlottedElements();
             situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
-            situationDetailsMock.ReceivedWithAnyArgs().DisplaySituation("","","");
+            situationDetailsMock.ReceivedWithAnyArgs().UpdateSituationDisplay("","","");
 
         }
 

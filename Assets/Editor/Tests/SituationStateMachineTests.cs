@@ -120,6 +120,36 @@ namespace Assets.Editor.Tests
 
         }
 
+        [Test]
+        public void Situation_SpecifiesAdditional_ShouldRunAsNewSituation_IfVerbIsDifferent()
+        {
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1);
+            ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
+            s.Subscribe(subscriber);
+
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r2, r3 });
+            r3.ActionId = r2.ActionId + " a difference";
+            s.Continue(rc, 1);
+
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe==r3 && ec.AsNewSituation));
+
+        }
+
+        [Test]
+        public void Situation_SpecifiesAdditional_ShouldNotRunAsNewSituation_IfVerbIsTheSame()
+        {
+            SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1);
+            ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
+            s.Subscribe(subscriber);
+
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r2, r3 });
+            r3.ActionId = r2.ActionId;
+            s.Continue(rc, 1);
+
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe == r3 && !ec.AsNewSituation));
+
+        }
+
 
         [Test]
         public void Situation_LoopsFromAlternative_NotOriginal_IfSpecified()

@@ -120,6 +120,7 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayTimeRemaining(float duration, float timeRemaining)
         {
+            SetTimerVisibility(true);
             countdownBar.fillAmount = 1f - (timeRemaining / duration);
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
@@ -204,11 +205,10 @@ namespace Assets.CS.TabletopUI
             IsOpen = false;
         }
 
-        public void SituationBeginning(IList<SlotSpecification> ongoingSlots)
+        public void DisplaySlotsForSituation(IList<SlotSpecification> ongoingSlots)
         {
-            ActivateOngoingSlots(ongoingSlots);
-
-            SetTimerVisibility(true);
+            ongoingSlotsContainer.gameObject.SetActive(true);
+            ongoingSlotsContainer.SetUpSlots(ongoingSlots);
         }
 
         public void SituationExtinct()
@@ -217,12 +217,6 @@ namespace Assets.CS.TabletopUI
             SetTimerVisibility(false);
             //and we don't want anyone adding any more slots
             DeactivateOngoingSlots();
-        }
-
-        public void ActivateOngoingSlots(IList<SlotSpecification> slotsToBuild)
-        {
-            ongoingSlotsContainer.gameObject.SetActive(true);
-            ongoingSlotsContainer.UpdateSlots(slotsToBuild);
         }
 
         public void DeactivateOngoingSlots()

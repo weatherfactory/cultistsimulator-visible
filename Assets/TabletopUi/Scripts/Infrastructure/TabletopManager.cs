@@ -35,9 +35,6 @@ namespace Assets.CS.TabletopUI
         private TabletopObjectBuilder tabletopObjectBuilder;
 
 
-
-
-
         void Start()
         {
             var registry = gameObject.AddComponent<Registry>();
@@ -63,10 +60,15 @@ namespace Assets.CS.TabletopUI
 
             tabletopObjectBuilder.PopulateTabletop();
             var needsSituationCreationCommand = new SituationCreationCommand(null, compendium.GetRecipeById("needs"));
-            var needsToken = tabletopObjectBuilder.BuildSituation(needsSituationCreationCommand);
-            PlaceTokenOnTable(needsToken);
+         BeginNewSituation(needsSituationCreationCommand);
 
         }
+        public void BeginNewSituation(SituationCreationCommand scc)
+        {
+            var needsToken = tabletopObjectBuilder.BuildSituation(scc);
+            PlaceTokenOnTable(needsToken);
+        }
+
 
         public void TogglePause()
         {
@@ -204,6 +206,8 @@ namespace Assets.CS.TabletopUI
             foreach(var e in tabletopContainer.GetElementStacksManager().GetStacks())
                 e.SetQuantity(0);
         }
+
+    
     }
 
 }

@@ -11,27 +11,22 @@ namespace Assets.Core
     {
         public string Title { get; set; }
         public string Description { get; set; }
-
         public Recipe Recipe { get; set; }
+        public bool AsNewSituation { get; set; } //determines whether the recipe will 
 
-
-        public EffectCommand(Dictionary<string, int> elementChanges)
-        {
-            Title = "default title";
-            Description = "default message";
-        }
-
-        public EffectCommand(Recipe recipe)
+        public EffectCommand(Recipe recipe,bool asNewSituation)
         {
             Recipe = recipe;
             Title = "default title";
             Description = recipe.Description;
+            AsNewSituation = asNewSituation;
         }
 
         public Dictionary<string, int> GetElementChanges()
         {
             return Recipe.Effects;
         }
+
 
     }
 }

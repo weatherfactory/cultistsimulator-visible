@@ -2,23 +2,22 @@
 
    {
         id: "needs",
-        label: "The Body's Needs",
-        actionId: "x",
+        label: "Time Passes",
+        actionId: "time",
         requirements: {},
         effects: {
-            health: -1,
+            shilling: -1,
             hungry: 1
         },
         alternativerecipes:
 		[{id: "lawenforcement", chance:100, additional: true},
-         {id: "sustenance", chance:100},
-		 {id: "starvation", chance:100}],
+		 {id: "starvation", chance:100, additional: true}],
         startdescription: ".",
         description: "Time, the sundial's shadow, passes. I must eat, if I am to live.",
         warmup: 60,
         craftable: false,
 		slots: {
-				"provisions":
+				"Provisions":
 					{
 					required: {shilling: 1},
 					forbidden: {},
@@ -27,23 +26,37 @@
 
 				},
         loop: "needs"
+    },  
+	{
+        id: "sustenance",
+        label: "Sustenance",
+        actionId: "x",
+        requirements: {shilling: 1},
+        effects: {
+            shilling: -1
+        },
+        startdescription: "-",
+        description: "The body has its needs. Today, I have satisfied them.",
+        warmup: 0,
+        craftable: false
     },
 	   {
         id: "starvation",
-        label: "Time, the sundial's shadow, passes.",
+        label: "Starvation",
         actionId: "x",
-        requirements: {},
+        requirements: {shilling: -1},
         effects: {
             health: -1,
             hungry: 1
         },
 		alternativerecipes:
-		[{id: "deathofthebody",chance:100}],
+		[{id: "sustenance",chance:100},
+		{id: "deathofthebody",chance:100}],
         startdescription: ".",
         description: "I have grown neglectful of my health. Without money, I'll soon starve.",
         warmup: 60,
 		slots: {
-		"starvation": 
+		"Starvation": 
 					{
 					required: {health: 1},
 					forbidden: {},
@@ -51,22 +64,7 @@
 					}
 		}
         craftable: false,
-        loop: "needs"
-    },
-    {
-        id: "sustenance",
-        label: "Sustenance",
-        actionId: "x",
-        requirements: {shilling: 1},
-        effects: {
-            shilling: -1,
-            hungry: -1
-        },
-        startdescription: "-",
-        description: "The body has its needs. Today, I have satisfied them.",
-        warmup: 0,
-        craftable: false,
-        loop: "needs"
+        loop: "starvation"
     },
 	    {
         id: "lawenforcement",

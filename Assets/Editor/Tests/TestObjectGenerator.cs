@@ -55,6 +55,7 @@ public class TestObjectGenerator
         {
             Recipe r=new Recipe();
             r.Id = key.ToString();
+            r.ActionId = key.ToString();
             r.Warmup = 0;
             return r;
         }

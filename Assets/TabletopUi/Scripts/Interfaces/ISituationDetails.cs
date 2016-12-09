@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);
         void DisplayStarting();
         void DisplayOngoing();
-        void DisplaySituation(string stitle, string sdescription, string nextRecipeDescription);
+        void UpdateSituationDisplay(string stitle, string sdescription, string nextRecipeDescription);
         void Retire();
         IEnumerable<ISituationOutput> GetCurrentOutputs();
     }
