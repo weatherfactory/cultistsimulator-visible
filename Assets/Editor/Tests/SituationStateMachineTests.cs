@@ -110,7 +110,6 @@ namespace Assets.Editor.Tests
             SituationStateMachine s = new SituationStateMachine(0,SituationState.Ongoing, r1);
             ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
             s.Subscribe(subscriber);
-            IRecipeConductor rc = Substitute.For<IRecipeConductor>();
             
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> {r2, r3});
 
@@ -128,7 +127,7 @@ namespace Assets.Editor.Tests
             SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1);
             ISituationStateMachineSituationSubscriber subscriber = Substitute.For<ISituationStateMachineSituationSubscriber>();
             s.Subscribe(subscriber);
-            IRecipeConductor rc = Substitute.For<IRecipeConductor>();
+
 
             Recipe loopedRecipe = TestObjectGenerator.GenerateRecipe(99);
 
@@ -140,7 +139,7 @@ namespace Assets.Editor.Tests
             s.Continue(rc, 1); //ends
 
             Assert.AreEqual(loopedRecipe.Id, s.RecipeId);
-
         }
+
     }
 }

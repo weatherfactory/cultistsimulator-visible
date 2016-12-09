@@ -10,8 +10,7 @@
             hungry: 1
         },
         alternativerecipes:
-        [{id: "deathofthebody",chance:100},
-		{id: "lawenforcement", chance:100, additional: true},
+		[{id: "lawenforcement", chance:100, additional: true},
          {id: "sustenance", chance:100},
 		 {id: "starvation", chance:100}],
         startdescription: ".",
@@ -38,9 +37,19 @@
             health: -1,
             hungry: 1
         },
+		alternativerecipes:
+		[{id: "deathofthebody",chance:100}],
         startdescription: ".",
         description: "I have grown neglectful of my health. Without money, I'll soon starve.",
         warmup: 60,
+		slots: {
+		"starvation": 
+					{
+					required: {health: 1},
+					forbidden: {},
+					greedy: true
+					}
+		}
         craftable: false,
         loop: "needs"
     },
@@ -70,6 +79,6 @@
         description: "A detective might pop up.",
         warmup: 60,
         craftable: false
-    },
+    }
 ]
 }

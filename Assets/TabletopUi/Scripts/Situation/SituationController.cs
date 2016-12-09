@@ -150,14 +150,16 @@ namespace Assets.TabletopUi
             //NB we're doing this *before* we execute the command - the command may affect these elements too
            situationToken.AbsorbOngoingSlotContents();
 
-
             //execute each recipe in command
             foreach (var kvp in command.GetElementChanges())
             {
                 situationToken.ModifyStoredElementStack(kvp.Key,kvp.Value);
             }
 
-        }
+           if (command.Recipe.Ending != null)
+               Debug.Log("Done:" + command.Recipe.Ending);
+
+       }
 
        public void SituationExtinct()
        {
