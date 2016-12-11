@@ -126,8 +126,8 @@ namespace Assets.CS.TabletopUI
 
         public void PlaceTokenOnTable(DraggableToken token)
         {
-            ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
             token.transform.localPosition = new Vector3(-500, -250);
+
             tabletopContainer.PutOnTable(token);
         }
 

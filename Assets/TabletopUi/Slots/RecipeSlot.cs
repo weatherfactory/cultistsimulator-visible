@@ -49,7 +49,9 @@ namespace Assets.CS.TabletopUI
         public void OnDrop(PointerEventData eventData) {
 
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
-            if (stack != null && GetTokenInSlot()==null)
+            if (GetTokenInSlot() != null)
+                DraggableToken.resetToStartPos = true;
+            if (stack != null)
             {
                     SlotMatchForAspects match = GetSlotMatchForStack(stack);
                     if (match.MatchType == SlotMatchForAspectsType.Okay)
@@ -104,6 +106,7 @@ namespace Assets.CS.TabletopUI
  
 
         public bool AllowDrag { get { return true; }}
+        public bool AllowStackMerge { get{ return false; } }
 
         public ElementStacksManager GetElementStacksManager()
         {

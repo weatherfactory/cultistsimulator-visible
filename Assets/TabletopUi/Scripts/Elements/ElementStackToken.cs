@@ -129,7 +129,7 @@ namespace Assets.CS.TabletopUI
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
-            if (stackDroppedOn.Id == this.Id)
+            if (stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge())
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
@@ -152,6 +152,11 @@ namespace Assets.CS.TabletopUI
                gateway.AcceptStack(cardLeftBehind);
             }
    
+        }
+
+        public bool AllowMerge()
+        {
+            return container.AllowStackMerge;
         }
 
         protected override void StartDrag(PointerEventData eventData)

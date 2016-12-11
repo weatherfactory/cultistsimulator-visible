@@ -19,5 +19,6 @@ namespace Assets.Core.Interfaces
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
         void SplitAllButNCardsToNewStack(int n);
+        bool AllowMerge();
     }
 }

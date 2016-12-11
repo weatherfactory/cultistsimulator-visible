@@ -212,6 +212,11 @@ namespace Assets.Editor.Tests
             throw new NotImplementedException();
         }
 
+        public bool AllowMerge()
+        {
+            return true;
+        }
+
         public void MoveTo<T>(T newLocation)
         {
             throw new NotImplementedException();

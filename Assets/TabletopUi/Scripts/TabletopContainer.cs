@@ -46,6 +46,7 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     public void PutOnTable(DraggableToken token)
     {
+        
         GetTokenTransformWrapper().Accept(token);
 
         token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
@@ -53,6 +54,7 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     }
 
     public bool AllowDrag { get { return true; } }
+    public bool AllowStackMerge { get { return true; } }
 
 
     public ElementStacksManager GetElementStacksManager()

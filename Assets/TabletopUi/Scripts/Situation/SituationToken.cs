@@ -241,6 +241,12 @@ namespace Assets.CS.TabletopUI
             return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
+        public override void OnDrop(PointerEventData eventData)
+        {
+            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+       
+        }
+
         public override void OnPointerClick(PointerEventData eventData)
         {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
