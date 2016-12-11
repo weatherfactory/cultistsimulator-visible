@@ -66,7 +66,7 @@ namespace Assets.CS.TabletopUI
         public void BeginNewSituation(SituationCreationCommand scc)
         {
             var needsToken = tabletopObjectBuilder.BuildSituation(scc);
-            PlaceTokenOnTable(needsToken);
+            ArrangeTokenOnTable(needsToken);
         }
 
 
@@ -124,13 +124,40 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void PlaceTokenOnTable(DraggableToken token)
+        public void ArrangeTokenOnTable(DraggableToken token)
         {
-            token.transform.localPosition = new Vector3(-500, -250);
+            int marginPixels = 50;
+
+            float candidateX = -500;
+            float candidateY = -250;
+            float arbitraryYCutoffPoint = -1000;
+
+    while(TokenOverlapsPosition(token, marginPixels,candidateX,candidateY) && candidateY< arbitraryYCutoffPoint)
+            candidateY -= marginPixels *3 ;
+
+            token.transform.localPosition = new Vector3(candidateX, candidateY);
 
             tabletopContainer.PutOnTable(token);
         }
 
+        private bool TokenOverlapsPosition(DraggableToken token, int marginPixels,float candidateX,float candidateY)
+        {
+            foreach (var t in tabletopContainer.GetTokenTransformWrapper().GetTokens())
+            {
+                if (token != t &&
+                    candidateX - t.transform.localPosition.x < marginPixels
+                    && candidateX - t.transform.localPosition.x > -marginPixels
+                    && candidateY - t.transform.localPosition.y < marginPixels
+                    && candidateY - t.transform.localPosition.y > -marginPixels)
+                { 
+                    Debug.Log(token.name + "near" + t.name);
+                     return true;
+                }
+            
+            }
+
+            return false;
+        }
 
 
         void HandleOnBackgroundDropped()

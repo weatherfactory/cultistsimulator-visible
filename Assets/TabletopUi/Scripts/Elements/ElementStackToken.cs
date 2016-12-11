@@ -123,7 +123,8 @@ namespace Assets.CS.TabletopUI
 
         public override void OnDrop(PointerEventData eventData)
         {
-            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+            if (DraggableToken.itemBeingDragged != null)
+                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
 

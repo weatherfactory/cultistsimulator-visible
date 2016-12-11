@@ -138,7 +138,7 @@ namespace Assets.CS.TabletopUI
 
         public void ReturnToTabletop(INotification reason)
         {
-            Registry.TabletopManager.PlaceTokenOnTable(this);
+            Registry.TabletopManager.ArrangeTokenOnTable(this);
             notifier.TokenReturnedToTabletop(this,reason);
         }
 
