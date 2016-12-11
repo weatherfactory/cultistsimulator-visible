@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
@@ -21,6 +22,7 @@ public interface ICompendium
     Boolean IsKnownElement(string elementId);
     List<IVerb> GetAllVerbs();
     IVerb GetVerbById(string verbId);
+    Notification GetNotificationForEndingFlag(string endingFlag);
 }
 
 public class Compendium : ICompendium
@@ -115,5 +117,13 @@ public class Compendium : ICompendium
         return _verbs[verbId];
     }
 
-  
+    public Notification GetNotificationForEndingFlag(string endingFlag)
+    {
+        //TODO! this is a demo hack
+        if(endingFlag=="deathofthebody")
+            return new Notification("MY BODY IS DEAD",
+                "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I had no Health remaining.]");
+
+        return new Notification("IT IS FINISHED","This one is done.");
+    }
 }

@@ -26,6 +26,6 @@ public class OptionsPanel : MonoBehaviour
 
     public void RestartGame()
     {
-        tabletopManager.ClearBoard();
+        tabletopManager.RestartGame();
     }
 }

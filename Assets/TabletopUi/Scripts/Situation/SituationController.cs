@@ -169,8 +169,10 @@ namespace Assets.TabletopUi
                }
 
                if (command.Recipe.Ending != null)
-                   Debug.Log("Done:" + command.Recipe.Ending);
-
+               {
+                   var endingNotification = compendium.GetNotificationForEndingFlag(command.Recipe.Ending);
+                   Registry.TabletopManager.EndGame(endingNotification);
+               }
 
             }
 
