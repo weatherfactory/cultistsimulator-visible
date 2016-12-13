@@ -34,7 +34,6 @@ namespace Assets.TabletopUi.SlotsContainers
             }
         }
 
-
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack)
         {
             _situationController.OngoingSlotsUpdated();

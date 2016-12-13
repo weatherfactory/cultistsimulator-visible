@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using Debug = System.Diagnostics.Debug;
+using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
@@ -31,9 +32,58 @@ namespace Assets.CS.TabletopUI
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
-        public TextMeshProUGUI SlotLabel;
+        
+
+		// -----------------------------------------------------------
+		// VISUAL ELEMENTS
+		public TextMeshProUGUI SlotLabel;
+		public Graphic border;
+		public LayoutGroup slotIconHolder;
+		public RecipeSlotIcon[] slotIcons;
+
+		public Color borderColorIdle;
+		public Color borderColorConsumes;
+		public Color borderColorLocked;
+
+		public enum SlotModifier { Locked, Greedy, Consuming };
 
         // TODO: Needs hover feedback!
+
+		// NOTE MARTIN: sorry this is so hacky :D
+		public void SetSlotModifiers( params SlotModifier[] modifiers) {
+			if (modifiers.Length == 0) {
+				for (int i = 0; i < slotIcons.Length; i++) 
+					slotIcons[i].Hide();
+
+				border.color = borderColorIdle;
+				return;
+			}
+
+			Color borderColor = borderColorIdle;
+
+			for (int i = 0; i < modifiers.Length; i++) {
+				if (modifiers[i] == SlotModifier.Locked) {
+					borderColor = borderColorLocked;
+					break;
+				}
+				else if (modifiers[i] == SlotModifier.Consuming)
+					borderColor = borderColorConsumes;
+			}
+				
+			for (int i = 0; i < slotIcons.Length; i++)  {
+				if (i < modifiers.Length) {
+					slotIcons[i].SetSprite(modifiers[i]);
+					slotIcons[i].SetColor(borderColor);
+				}
+				else {
+					slotIcons[i].Hide();				
+				}
+			}
+
+			border.color = borderColor;
+		}
+
+		// -----------------------------------------------------------
 
         public RecipeSlot()
         {
@@ -46,6 +96,7 @@ namespace Assets.CS.TabletopUI
                 return false;
             return childSlots.Count > 0;
         }
+
         public void OnDrop(PointerEventData eventData) {
 
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;

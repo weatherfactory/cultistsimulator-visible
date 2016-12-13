@@ -41,7 +41,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         
     }
 
-    public RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification,RecipeSlot parentSlot)
+    public virtual RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot)
     {
         var slot = PrefabFactory.CreateLocally<RecipeSlot>(transform);
 
@@ -55,6 +55,12 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         }
         slot.onCardDropped += HandleOnSlotDroppedOn;
         slot.onCardPickedUp += RespondToStackPickedUp;
+
+		if (slotSpecification.Greedy)
+			slot.SetSlotModifiers(RecipeSlot.SlotModifier.Greedy);
+		else 
+			slot.SetSlotModifiers();
+
         return slot;    
     }
 

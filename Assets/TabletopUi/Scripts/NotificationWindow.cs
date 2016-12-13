@@ -23,10 +23,11 @@ namespace Assets.CS.TabletopUI
 
         public void Awake()
         {
-      Invoke("Hide",5);
+			canvasGroupFader.Show();
+      		Invoke("Hide", 5);
         }
 
-        public void SetDetails(string title,string description)
+        public void SetDetails(string title, string description)
         {
             _titleTxt.text = title;
             _descriptionTxt.text = description;

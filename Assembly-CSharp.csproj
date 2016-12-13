@@ -119,12 +119,13 @@
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationStorage.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationToken.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\AbstractSlotsContainer.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\OngoingSlotsContainer.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlot.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotIcon.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\StartingSlotsContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
-     <Compile Include="Assets\TabletopUi\Slots\AbstractSlotsContainer.cs" />
-     <Compile Include="Assets\TabletopUi\Slots\OngoingSlotsContainer.cs" />
-     <Compile Include="Assets\TabletopUi\Slots\RecipeSlot.cs" />
-     <Compile Include="Assets\TabletopUi\Slots\StartingSlotsContainer.cs" />
      <Compile Include="Assets\TabletopUi\UI\DraggableHolder.cs" />
      <Compile Include="Assets\TabletopUi\UI\OptionsPanel.cs" />
      <Compile Include="Assets\TabletopUi\UI\PauseButton.cs" />
