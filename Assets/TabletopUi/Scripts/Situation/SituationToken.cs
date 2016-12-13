@@ -100,7 +100,7 @@ namespace Assets.CS.TabletopUI
             DisplayIcon(verb);
             SetSelected(false);
 			SetTimerVisibility(false);
-			ShowCompletionCount(0);
+			ShowCompletionCount(0); 
 
             ongoingSlotsContainer.Initialise(situationController);
         }
