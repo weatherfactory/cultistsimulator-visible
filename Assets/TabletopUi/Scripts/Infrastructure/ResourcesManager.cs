@@ -17,7 +17,7 @@ using UnityEngine;
 
 	public static Sprite GetSpriteForElement(string elementId)
     {
-        return Resources.Load<Sprite>("FlatIcons/png/32px/" + elementId);
+        return Resources.Load<Sprite>("ElementArt/token_element_" + elementId);
     }
 
     public static Sprite GetSpriteForAspect(string aspectId)

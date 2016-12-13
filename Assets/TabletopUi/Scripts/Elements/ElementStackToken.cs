@@ -19,6 +19,9 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GameObject selectedMarker;
+		[SerializeField] GameObject stackBadge;
+		[SerializeField] TextMeshProUGUI stackCountText;
+
         private Element _element;
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
@@ -85,8 +88,10 @@ namespace Assets.CS.TabletopUI
 
 
         private void DisplayInfo()
-        {
-            text.text = _element.Label + "(" + Quantity + ")";
+		{
+			text.text = _element.Label;
+			stackBadge.gameObject.SetActive(Quantity > 1);
+			stackCountText.text = Quantity.ToString();
         }
 
         private void DisplayIcon()
