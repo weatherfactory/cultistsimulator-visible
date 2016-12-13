@@ -40,7 +40,9 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] TextMeshProUGUI text;
             // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
+			// NOTE MARTIN: Possibly something that can be solved by the sorting layer?
 
+		[SerializeField] Image coundownActive;
         [SerializeField] Image countdownBar;
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] GameObject selectedMarker;
@@ -66,6 +68,7 @@ namespace Assets.CS.TabletopUI
 
         private void SetTimerVisibility(bool b)
         {
+			coundownActive.gameObject.SetActive(b);
             countdownBar.gameObject.SetActive(b);
             countdownText.gameObject.SetActive(b);
         }

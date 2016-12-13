@@ -167,12 +167,11 @@ namespace Assets.CS.TabletopUI
 
         protected override void StartDrag(PointerEventData eventData)
         {
-
-            SplitAllButNCardsToNewStack(1);
+			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
+			if (eventData.hovered.Contains(stackBadge) == false) 
+            	SplitAllButNCardsToNewStack(1);
 
             base.StartDrag(eventData);
-
-
         }
     }
 }
