@@ -7,9 +7,10 @@ namespace Assets.CS.TabletopUI
 {
 	public class RecipeSlotIcon : MonoBehaviour {
 
-		public Sprite iconConsumes;
-		public Sprite iconGreedy;
 		public Sprite iconLocked;
+		public Sprite iconConsumes;
+		public Sprite iconOngoing;
+		public Sprite iconGreedy;
 
 		[SerializeField] Graphic border;
 		[SerializeField] Image sprite;
@@ -31,6 +32,8 @@ namespace Assets.CS.TabletopUI
 				return iconGreedy;
 			case RecipeSlot.SlotModifier.Locked:
 				return iconLocked;
+			case RecipeSlot.SlotModifier.Ongoing:
+				return iconOngoing;
 			default:
 				return null;
 			}

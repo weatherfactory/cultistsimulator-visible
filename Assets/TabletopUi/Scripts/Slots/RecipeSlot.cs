@@ -42,10 +42,11 @@ namespace Assets.CS.TabletopUI
 		public RecipeSlotIcon[] slotIcons;
 
 		public Color borderColorIdle;
+		public Color borderColorOngoing;
 		public Color borderColorConsumes;
 		public Color borderColorLocked;
 
-		public enum SlotModifier { Locked, Greedy, Consuming };
+		public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
 
         // TODO: Needs hover feedback!
 
