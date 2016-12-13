@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -153,10 +155,11 @@
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Slots\AbstractSlotsContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Slots\OngoingSlotsContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Slots\RecipeSlot.cs" />
-    <Compile Include="Assets\TabletopUi\Slots\StartingSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Slots\AbstractSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Slots\OngoingSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlot.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotIcon.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Slots\StartingSlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\UI\DraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\UI\OptionsPanel.cs" />
     <Compile Include="Assets\TabletopUi\UI\PauseButton.cs" />
