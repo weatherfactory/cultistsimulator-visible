@@ -86,6 +86,7 @@
     <Compile Include="Assets\Core\Commands\Notification.cs" />
     <Compile Include="Assets\Core\Commands\SituationCreationCommand.cs" />
     <Compile Include="Assets\Core\Compendium.cs" />
+    <Compile Include="Assets\Core\ContentImportProblem.cs" />
     <Compile Include="Assets\Core\Entities\AbstractVerb.cs" />
     <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
     <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
@@ -98,7 +99,7 @@
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
     <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
-    <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
+    <Compile Include="Assets\Core\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
     <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
@@ -153,13 +154,13 @@
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationStorage.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationToken.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\AbstractSlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\OngoingSlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlot.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotIcon.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\StartingSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
     <Compile Include="Assets\TabletopUi\UI\DraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\UI\OptionsPanel.cs" />
     <Compile Include="Assets\TabletopUi\UI\PauseButton.cs" />

@@ -28,7 +28,9 @@
             aspects:
             {},
             maxvalue:1,
-            description: "I am heir to something peculiar. What might I find among these papers?"
-        },
+            description: "I've inherited some peculiar papers. I should study them.",
+						slots:
+						{attention: required: {},forbidden: {}}
+        }
 ]
 };

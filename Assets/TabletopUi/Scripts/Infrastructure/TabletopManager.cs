@@ -43,6 +43,8 @@ namespace Assets.CS.TabletopUI
             var compendium = new Compendium();
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
+            foreach(var p in contentImporter.GetContentImportProblems())
+                Debug.Log(p.Description);
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
 
@@ -66,6 +68,12 @@ namespace Assets.CS.TabletopUI
         {
             heart.StartBeating(0.05f);
             tabletopObjectBuilder.PopulateTabletop();
+            var legacy=tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack("legacy", 1);
+            ArrangeTokenOnTable((ElementStackToken)legacy);
+            var clericalJob = tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack("clericaljob", 1);
+            ArrangeTokenOnTable((ElementStackToken)clericalJob);
+
+
             var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Compendium.GetRecipeById("needs"));
             BeginNewSituation(needsSituationCreationCommand);
         }
@@ -160,7 +168,7 @@ namespace Assets.CS.TabletopUI
             int marginPixels = 50;
 
             float candidateX = -500;
-            float candidateY = -250;
+            float candidateY = 250;
             float arbitraryYCutoffPoint = -1000;
 
     while(TokenOverlapsPosition(token, marginPixels,candidateX,candidateY) && candidateY> arbitraryYCutoffPoint)

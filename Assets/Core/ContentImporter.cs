@@ -3,6 +3,7 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Noon;
@@ -11,7 +12,7 @@ using UnityEngine.Assertions;
 
 public class ContentImporter
 {
-
+    private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
@@ -21,10 +22,29 @@ public class ContentImporter
     private const string CONST_DESCRIPTION = "description";
 
 
-    public Dictionary<string,IVerb> Verbs=new Dictionary<string, IVerb>();
-    public Dictionary<string, Element> Elements=new Dictionary<string, Element>();
-    public List<Recipe> Recipes=new List<Recipe>();
 
+    public Dictionary<string, IVerb> Verbs;
+    public Dictionary<string, Element> Elements;
+    public List<Recipe> Recipes;
+    
+
+    public ContentImporter()
+    {
+   contentImportProblems=new List<ContentImportProblem>();
+   Verbs = new Dictionary<string, IVerb>();
+   Elements = new Dictionary<string, Element>();
+   Recipes = new List<Recipe>();
+    }
+
+    public IList<ContentImportProblem> GetContentImportProblems()
+    {
+        return contentImportProblems;
+    }
+
+    private void LogProblem(string problemDesc)
+    {
+        contentImportProblems.Add(new ContentImportProblem(problemDesc));
+    }
 
     public List<SlotSpecification> AddSlotsFromHashtable(Hashtable htSlots)
     {
@@ -78,9 +98,9 @@ public class ContentImporter
 
     public void PopulateElements(Hashtable htElements)
     {
-        Assert.IsNotNull(htElements, "Elements were never imported; PopulateElementForId failed");
+        
         if (htElements == null)
-            throw new ApplicationException("Elements were never imported; PopulateElementForId failed");
+            LogProblem("Elements were never imported; PopulateElementForId failed");
 
         ArrayList alElements = htElements.GetArrayList("elements");
         foreach (Hashtable htElement in alElements)
@@ -156,9 +176,10 @@ public class ContentImporter
             catch (Exception e)
             {
                 if (htEachRecipe[NoonConstants.KID] == null)
-                    Debug.Log("Problem importing recipe with unknown id - " + e.Message);
+
+                    LogProblem("Problem importing recipe with unknown id - " + e.Message);
                 else
-                    Debug.Log("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
+                    LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
             }
 
             Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
@@ -168,6 +189,8 @@ public class ContentImporter
             }
 
             Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
+            if(htEffects==null)
+                LogProblem("No effects found for recipe " + r.Id );
             foreach (string k in htEffects.Keys)
             {
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
