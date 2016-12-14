@@ -32,6 +32,11 @@ namespace Assets.TabletopUi.Scripts
             return stack;
         }
 
+        public ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, string locatorid = null)
+        {
+            return ProvisionElementStack(elementId,quantity,locatorid) as ElementStackToken;
+        }
+
         public virtual void Accept(IElementStack stack)
         {
                 Accept(stack as DraggableToken);

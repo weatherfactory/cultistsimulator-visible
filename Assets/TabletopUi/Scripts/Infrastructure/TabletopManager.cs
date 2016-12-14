@@ -14,6 +14,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
 using OrbCreationExtensions;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
@@ -68,10 +69,21 @@ namespace Assets.CS.TabletopUI
         {
             heart.StartBeating(0.05f);
             tabletopObjectBuilder.PopulateTabletop();
-            var legacy=tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack("legacy", 1);
-            ArrangeTokenOnTable((ElementStackToken)legacy);
-            var clericalJob = tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack("clericaljob", 1);
-            ArrangeTokenOnTable((ElementStackToken)clericalJob);
+            AspectsDictionary startingElements = new AspectsDictionary
+            {
+                { "health", 1},
+                { "reason", 1},
+                { "intuition", 1},
+                { "shilling", 2},
+                { "legacy", 1}
+
+            };
+
+            foreach (var e in startingElements)
+            {
+                ElementStackToken token= tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key,e.Value);
+                ArrangeTokenOnTable(token);
+            }
 
 
             var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Compendium.GetRecipeById("needs"));
@@ -167,16 +179,33 @@ namespace Assets.CS.TabletopUI
         {
             int marginPixels = 50;
 
-            float candidateX = -500;
+            float candidateX = -100;
             float candidateY = 250;
             float arbitraryYCutoffPoint = -1000;
 
     while(TokenOverlapsPosition(token, marginPixels,candidateX,candidateY) && candidateY> arbitraryYCutoffPoint)
-            candidateY =candidateY-(marginPixels*3) ;
+            candidateY =candidateY-180;
 
             token.transform.localPosition = new Vector3(candidateX, candidateY);
 
             tabletopContainer.PutOnTable(token);
+        }
+
+        //we place stacks horizontally rather than vertically
+        public void ArrangeTokenOnTable(ElementStackToken stack)
+        {
+            int marginPixels = 50;
+
+            float candidateX = -100;
+            float candidateY = 250;
+            float arbitraryYCutoffPoint = -1000;
+
+            while (TokenOverlapsPosition(stack, marginPixels, candidateX, candidateY) && candidateY > arbitraryYCutoffPoint)
+                candidateX = candidateX - (marginPixels * 2);
+
+            stack.transform.localPosition = new Vector3(candidateX, candidateY);
+
+            tabletopContainer.PutOnTable(stack);
         }
 
         private bool TokenOverlapsPosition(DraggableToken token, int marginPixels,float candidateX,float candidateY)

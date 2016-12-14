@@ -15,12 +15,7 @@ namespace Assets.TabletopUi.Scripts.Services
     public class TabletopObjectBuilder
     {
         private Transform tableLevel;
-        string[] legalElementIDs = new string[4] {
-            "health",
-            "reason",
-            "intuition",
-            "shilling"
-        };
+
 
         public TabletopObjectBuilder(Transform tableLevel)
         {
@@ -30,13 +25,9 @@ namespace Assets.TabletopUi.Scripts.Services
        public void PopulateTabletop()
         {
 
-            ElementStackToken stack;
-
             float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
-            float cardWidth = (PrefabFactory.GetPrefab<ElementStackToken>().transform as RectTransform).rect.width + 20f;
-
-
+   
             // build verbs
             var verbs = Registry.Compendium.GetAllVerbs();
 
@@ -50,13 +41,6 @@ namespace Assets.TabletopUi.Scripts.Services
                 //replace with locatorinfo
             }
 
-
-            for (int i = 0; i <= legalElementIDs.GetUpperBound(0); i++)
-            {
-                stack = PrefabFactory.CreateToken<ElementStackToken>(tableLevel);
-                stack.Populate(legalElementIDs[i % legalElementIDs.Length], 3);
-                stack.transform.localPosition = new Vector3(-750f + i * cardWidth, 0f);
-            }
         }
 
 
