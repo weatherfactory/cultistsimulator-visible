@@ -51,6 +51,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+
         public static IDice Dice
         {
             get { return m_dice; }

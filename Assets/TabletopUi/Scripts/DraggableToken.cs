@@ -16,7 +16,7 @@ namespace Assets.CS.TabletopUI
 
         public static bool draggingEnabled = true;
         public static DraggableToken itemBeingDragged;
-        public static bool resetToStartPos = true; // Maybe change draggable so it doesn't reset by default. makes dragging around the base case. Only force non-reset on actions.
+        public static bool resetToStartPos = false;
         private static Camera dragCamera;
    
      
@@ -138,7 +138,7 @@ namespace Assets.CS.TabletopUI
 
         public void ReturnToTabletop(INotification reason)
         {
-            Registry.TabletopManager.PlaceTokenOnTable(this);
+            Registry.TabletopManager.ArrangeTokenOnTable(this);
             notifier.TokenReturnedToTabletop(this,reason);
         }
 
@@ -186,19 +186,16 @@ namespace Assets.CS.TabletopUI
                 onChangeDragState(false);
         }
 
-        public virtual void OnDrop(PointerEventData eventData)
-        {
-            
-        }
+        public abstract void OnDrop(PointerEventData eventData);
 
         public virtual void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
-
+            DraggableToken.resetToStartPos = true;
         }
 
         public virtual void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
-            
+            DraggableToken.resetToStartPos = true;
         }
 
         public virtual bool Retire()

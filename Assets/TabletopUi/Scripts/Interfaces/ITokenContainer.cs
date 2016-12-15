@@ -11,6 +11,7 @@ namespace Assets.CS.TabletopUI.Interfaces
     {
         void TokenPickedUp(DraggableToken draggableToken);
         bool AllowDrag { get; }
+        bool AllowStackMerge { get; } //allow a stack dropped on a stack here to combine with it
 
         /// <summary>
         /// use to manipulate elementstacks in the context where they're IElementStack

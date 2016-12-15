@@ -38,6 +38,49 @@
         warmup: 10,
         craftable: true
     },
-
+	{
+        id: "studylegacyreason",
+        label: "--Study your Legacy, employing Reason",
+        actionId: "study",
+        requirements: {legacy:1,reason:1},
+        effects: {legacy: -1},
+        startdescription: "--what does my reason tell me?",
+        description: "--oho!",
+        warmup: 10,
+        craftable: true
+    },
+	{
+        id: "studylegacyintuition",
+        label: "--Study your Legacy, employing Intuition",
+        actionId: "study",
+        requirements: {legacy:1,intuition:1},
+        effects: {legacy: -1},
+        startdescription: "--what does my intuition tell me?",
+        description: "--oho!",
+        warmup: 10,
+        craftable: true
+    },
+	{
+        id: "studylegacyrandom",
+        label: "--Study your Legacy",
+        actionId: "study",
+        requirements: {legacy:1},
+        effects: {legacy: -1},
+        startdescription: "--what'll I find?",
+        description: "--oho!",
+        warmup: 10,
+        craftable: true
+    },
+	{
+        id: "eg",
+        label: "--",
+        actionId: "work",
+        requirements: {health:999},
+        effects: {health: 1},
+        startdescription: "--",
+        description: "--",
+        warmup: 10,
+        craftable: true
+    }
 ]
 }

@@ -14,6 +14,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
 using OrbCreationExtensions;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
@@ -33,6 +34,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Notifier notifier;
         private TabletopObjectBuilder tabletopObjectBuilder;
+        [SerializeField] private RestartPanel restartPanel;
 
 
         void Start()
@@ -42,6 +44,8 @@ namespace Assets.CS.TabletopUI
             var compendium = new Compendium();
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
+            foreach(var p in contentImporter.GetContentImportProblems())
+                Debug.Log(p.Description);
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
 
@@ -51,23 +55,63 @@ namespace Assets.CS.TabletopUI
             registry.RegisterTabletopManager(this);
             registry.RegisterTabletopObjectBuilder(tabletopObjectBuilder);
 
-            heart.StartBeating(0.05f);
+
 
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
-
-            tabletopObjectBuilder.PopulateTabletop();
-            var needsSituationCreationCommand = new SituationCreationCommand(null, compendium.GetRecipeById("needs"));
-         BeginNewSituation(needsSituationCreationCommand);
+            SetupBoard();
 
         }
+
+        public void SetupBoard()
+        {
+            heart.StartBeating(0.05f);
+            tabletopObjectBuilder.PopulateTabletop();
+            AspectsDictionary startingElements = new AspectsDictionary
+            {
+                { "health", 1},
+                { "reason", 1},
+                { "intuition", 1},
+                { "shilling", 2},
+                { "legacy", 1}
+
+            };
+
+            foreach (var e in startingElements)
+            {
+                ElementStackToken token= tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key,e.Value);
+                ArrangeTokenOnTable(token);
+            }
+
+
+            var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Compendium.GetRecipeById("needs"));
+            BeginNewSituation(needsSituationCreationCommand);
+        }
+
         public void BeginNewSituation(SituationCreationCommand scc)
         {
             var needsToken = tabletopObjectBuilder.BuildSituation(scc);
-            PlaceTokenOnTable(needsToken);
+            ArrangeTokenOnTable(needsToken);
         }
+
+
+        public void ClearBoard()
+        {
+            foreach (var s in tabletopContainer.GetAllSituationTokens())
+                s.Retire();
+
+            foreach (var e in tabletopContainer.GetElementStacksManager().GetStacks())
+                e.SetQuantity(0);
+        }
+
+        public void RestartGame()
+        {
+            ClearBoard();
+            SetupBoard();
+        }
+
 
 
         public void TogglePause()
@@ -84,7 +128,14 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
+        public void EndGame(Notification endGameNotification)
+        {
+            heart.StopBeating(); //note: not setting IsPaused, so can't resume with pause button. But this is a quick fix - we should disable or hide everything.
+            restartPanel.Display(endGameNotification);
+
+        }
+
+    public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
         {
             var unprocessedSlots = new HashSet<IRecipeSlot>();
             foreach (var slot in slotsToFill)
@@ -124,13 +175,57 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void PlaceTokenOnTable(DraggableToken token)
+        public void ArrangeTokenOnTable(DraggableToken token)
         {
-            ///token.RectTransform.rect.Contains()... could iterate over and find overlaps
-            token.transform.localPosition = new Vector3(-500, -250);
+            int marginPixels = 50;
+
+            float candidateX = -100;
+            float candidateY = 250;
+            float arbitraryYCutoffPoint = -1000;
+
+    while(TokenOverlapsPosition(token, marginPixels,candidateX,candidateY) && candidateY> arbitraryYCutoffPoint)
+            candidateY =candidateY-180;
+
+            token.transform.localPosition = new Vector3(candidateX, candidateY);
+
             tabletopContainer.PutOnTable(token);
         }
 
+        //we place stacks horizontally rather than vertically
+        public void ArrangeTokenOnTable(ElementStackToken stack)
+        {
+            int marginPixels = 50;
+
+            float candidateX = -100;
+            float candidateY = 250;
+            float arbitraryYCutoffPoint = -1000;
+
+            while (TokenOverlapsPosition(stack, marginPixels, candidateX, candidateY) && candidateY > arbitraryYCutoffPoint)
+                candidateX = candidateX - (marginPixels * 2);
+
+            stack.transform.localPosition = new Vector3(candidateX, candidateY);
+
+            tabletopContainer.PutOnTable(stack);
+        }
+
+        private bool TokenOverlapsPosition(DraggableToken token, int marginPixels,float candidateX,float candidateY)
+        {
+            foreach (var t in tabletopContainer.GetTokenTransformWrapper().GetTokens())
+            {
+                if (token != t
+                    && candidateX - t.transform.localPosition.x < marginPixels
+                    && candidateX - t.transform.localPosition.x > -marginPixels
+                    && candidateY - t.transform.localPosition.y < marginPixels
+                    && candidateY - t.transform.localPosition.y > -marginPixels)
+                { 
+                    Debug.Log(token.name + "near" + t.name);
+                     return true;
+                }
+            
+            }
+
+            return false;
+        }
 
 
         void HandleOnBackgroundDropped()
@@ -196,15 +291,6 @@ namespace Assets.CS.TabletopUI
 
                 notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             }
-        }
-
-        public void ClearBoard()
-        {
-            foreach (var s in tabletopContainer.GetAllSituationTokens())
-                s.Retire();
-
-            foreach(var e in tabletopContainer.GetElementStacksManager().GetStacks())
-                e.SetQuantity(0);
         }
 
     

@@ -17,5 +17,6 @@ namespace Assets.Core.Interfaces
         IEnumerable<IElementStack> GetStacks();
         IEnumerable<SituationToken> GetSituationTokens();
         IEnumerable<DraggableToken> GetTokens();
+        ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, string locatorid = null);
     }
 }

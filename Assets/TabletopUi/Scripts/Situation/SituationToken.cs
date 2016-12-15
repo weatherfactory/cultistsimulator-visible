@@ -40,9 +40,14 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] TextMeshProUGUI text;
             // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
+			// NOTE MARTIN: Possibly something that can be solved by the sorting layer?
 
-        [SerializeField] Image countdownBar;
-        [SerializeField] TextMeshProUGUI countdownText;
+		[SerializeField] Image coundownActive;
+		[SerializeField] Image countdownBar;
+		[SerializeField] Image countdownBadge;
+		[SerializeField] TextMeshProUGUI countdownText;
+		[SerializeField] Image completionBadge;
+		[SerializeField] TextMeshProUGUI completionText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] public SituationStorage situationStorage;
         [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
@@ -66,14 +71,22 @@ namespace Assets.CS.TabletopUI
 
         private void SetTimerVisibility(bool b)
         {
-            countdownBar.gameObject.SetActive(b);
-            countdownText.gameObject.SetActive(b);
+			coundownActive.gameObject.SetActive(b);
+			countdownBar.gameObject.SetActive(b);
+			countdownBadge.gameObject.SetActive(b);
+            //countdownText.gameObject.SetActive(b); // Is child of countdownBadge, doesn't need to be toggled by itself
         }
 
 
+		// NOTE MARTIN: New method to show amount of fixed events:
+		void ShowCompletionCount(int newCount) {
+			completionBadge.gameObject.SetActive(newCount > 0);
+			completionText.text = newCount.ToString(); // Is child of completionBadge, doesn't need to be toggled by itself
+		}
+
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-       return  situationController.ExecuteHeartbeat(interval);
+       		return  situationController.ExecuteHeartbeat(interval);
         }
 
         
@@ -86,11 +99,10 @@ namespace Assets.CS.TabletopUI
             DisplayName(verb);
             DisplayIcon(verb);
             SetSelected(false);
-            countdownBar.gameObject.SetActive(false);
-            countdownText.gameObject.SetActive(false);
+			SetTimerVisibility(false);
+			ShowCompletionCount(0); 
 
             ongoingSlotsContainer.Initialise(situationController);
-
         }
         
 
@@ -239,6 +251,12 @@ namespace Assets.CS.TabletopUI
         public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo)
         {
             return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
+        }
+
+        public override void OnDrop(PointerEventData eventData)
+        {
+            if(DraggableToken.itemBeingDragged!=null)
+            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
         }
 
         public override void OnPointerClick(PointerEventData eventData)

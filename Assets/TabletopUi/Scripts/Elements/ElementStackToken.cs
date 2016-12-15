@@ -19,6 +19,9 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GameObject selectedMarker;
+		[SerializeField] GameObject stackBadge;
+		[SerializeField] TextMeshProUGUI stackCountText;
+
         private Element _element;
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
@@ -85,8 +88,10 @@ namespace Assets.CS.TabletopUI
 
 
         private void DisplayInfo()
-        {
-            text.text = _element.Label + "(" + Quantity + ")";
+		{
+			text.text = _element.Label;
+			stackBadge.gameObject.SetActive(Quantity > 1);
+			stackCountText.text = Quantity.ToString();
         }
 
         private void DisplayIcon()
@@ -123,13 +128,14 @@ namespace Assets.CS.TabletopUI
 
         public override void OnDrop(PointerEventData eventData)
         {
-            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+            if (DraggableToken.itemBeingDragged != null)
+                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
-            if (stackDroppedOn.Id == this.Id)
+            if (stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge())
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
@@ -154,14 +160,18 @@ namespace Assets.CS.TabletopUI
    
         }
 
+        public bool AllowMerge()
+        {
+            return container.AllowStackMerge;
+        }
+
         protected override void StartDrag(PointerEventData eventData)
         {
-
-            SplitAllButNCardsToNewStack(1);
+			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
+			if (eventData.hovered.Contains(stackBadge) == false) 
+            	SplitAllButNCardsToNewStack(1);
 
             base.StartDrag(eventData);
-
-
         }
     }
 }

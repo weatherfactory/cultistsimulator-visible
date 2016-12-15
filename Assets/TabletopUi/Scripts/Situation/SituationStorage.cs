@@ -15,6 +15,8 @@ public class SituationStorage : MonoBehaviour,ITokenContainer
 
 
     public bool AllowDrag { get { return false; } }
+    public bool AllowStackMerge { get { return true; } }
+
     public ElementStacksManager GetElementStacksManager()
     {
         ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);

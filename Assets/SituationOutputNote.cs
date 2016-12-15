@@ -49,6 +49,8 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer,ISituationOutp
 
 
     public bool AllowDrag { get { return true; } }
+    public bool AllowStackMerge { get {return false;} }
+
     public ElementStacksManager GetElementStacksManager()
     {
         ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);

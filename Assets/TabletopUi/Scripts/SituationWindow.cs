@@ -12,12 +12,14 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.SlotsContainers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindow : MonoBehaviour,ISituationDetails {
+    public class SituationWindow : MonoBehaviour,ISituationDetails, IDropHandler
+    {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
@@ -158,6 +160,11 @@ namespace Assets.CS.TabletopUI
         public void Retire()
         {
             Destroy(gameObject);
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            Debug.Log("on window");
         }
     }
 }
