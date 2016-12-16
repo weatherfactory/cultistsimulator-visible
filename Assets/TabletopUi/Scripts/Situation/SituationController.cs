@@ -145,8 +145,6 @@ namespace Assets.TabletopUi
         }
 
 
-
-
         public void SituationExecutingRecipe(IEffectCommand command)
        {
            //move any elements currently in OngoingSlots to situation storage
@@ -215,8 +213,8 @@ namespace Assets.TabletopUi
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id);
             if (recipe != null)
             {
+                situationWindow.RunSlotConsumptions();
                 situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
-
                 BeginSituation(new SituationCreationCommand(null,recipe));
                 situationWindow.Show(true);
             }

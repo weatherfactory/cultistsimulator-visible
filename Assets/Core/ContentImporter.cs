@@ -20,7 +20,7 @@ public class ContentImporter
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
     private const string CONST_DESCRIPTION = "description";
-
+    public ICompendium _compendium { get; private set; }
 
 
     public Dictionary<string, IVerb> Verbs;
@@ -188,6 +188,7 @@ public class ContentImporter
             Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
             foreach (string k in htReqs.Keys)
             {
+                LogNonexistentElementId(k, r.Id, "(requirements)");
                 r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
             }
 
@@ -196,6 +197,7 @@ public class ContentImporter
                 LogProblem("No effects found for recipe " + r.Id );
             foreach (string k in htEffects.Keys)
             {
+                LogNonexistentElementId(k, r.Id, "(effects)");
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
             }
 
@@ -236,15 +238,23 @@ public class ContentImporter
 
     }
 
+    private void LogNonexistentElementId(string elementId, string recipeId, string context)
+    {
+        if(!Elements.ContainsKey(elementId))
+        LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);
+    }
+
     public void PopulateCompendium(ICompendium compendium)
     {
+        _compendium = compendium;
         ImportVerbs();
         ImportElements();
         ImportRecipes();
 
-        compendium.UpdateRecipes(Recipes);
-        compendium.UpdateElements(Elements);
-        compendium.UpdateVerbs(Verbs);
+        _compendium.UpdateRecipes(Recipes);
+        _compendium.UpdateElements(Elements);
+        _compendium.UpdateVerbs(Verbs);
 
     }
+
 }

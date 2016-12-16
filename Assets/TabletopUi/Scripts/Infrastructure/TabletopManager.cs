@@ -218,7 +218,6 @@ namespace Assets.CS.TabletopUI
                     && candidateY - t.transform.localPosition.y < marginPixels
                     && candidateY - t.transform.localPosition.y > -marginPixels)
                 { 
-                    Debug.Log(token.name + "near" + t.name);
                      return true;
                 }
             

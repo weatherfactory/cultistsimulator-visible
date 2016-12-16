@@ -136,6 +136,13 @@ namespace Assets.CS.TabletopUI
             return outputContainer.GetCurrentOutputs();
         }
 
+        public void RunSlotConsumptions()
+        {
+            foreach (var s in startingSlotsContainer.GetAllSlots())
+                s.RunConsumption();
+
+        }
+
         public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification)
         {
             outputContainer.AddOutput(stacks,notification);

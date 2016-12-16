@@ -31,10 +31,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
         {
-            //states, slot contents, storage contents
-            //window slot contents
-            //notes and element contents
-
+   
             var htSituations = new Hashtable();
             foreach (var s in situations)
             {

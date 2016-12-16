@@ -10,7 +10,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
-using Debug = System.Diagnostics.Debug;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
@@ -129,8 +128,6 @@ namespace Assets.CS.TabletopUI
             onCardDropped(this, stack);
         }
 
-        
-
 
         public DraggableToken GetTokenInSlot()
         {
@@ -188,6 +185,12 @@ namespace Assets.CS.TabletopUI
         public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
         {
         return SaveLocationInfoPath; //we don't currently care about the actual draggable
+        }
+
+        public void RunConsumption()
+        {
+            if ( GoverningSlotSpecification.Consumes & GetElementStackInSlot()!=null)
+                GetElementStackInSlot().SetQuantity(0);
         }
     }
 }
