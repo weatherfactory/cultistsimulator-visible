@@ -63,6 +63,9 @@ public class ContentImporter
                 if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
                     slotSpecification.Greedy = true;
 
+                if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
+                    slotSpecification.Consumes = true;
+
                 Hashtable htRequired = htThisSlot["required"] as Hashtable;
                 if (htRequired != null)
                 {

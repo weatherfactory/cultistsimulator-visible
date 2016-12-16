@@ -70,7 +70,8 @@ namespace CS.Tests
         {
             {SLOT_FORBIDDEN_ASPECT_ID,SLOT_FORBIDDEN_ASPECT_VALUE}
         }},
-                {NoonConstants.KGREEDY,"true"}
+                {NoonConstants.KGREEDY,"true"},
+                {NoonConstants.KCONSUMES,"true"},
             };
             Hashtable htSlotOuterTable = new Hashtable() { { SLOT_LABEL, htSlotSpecifications } };
 
@@ -156,6 +157,7 @@ namespace CS.Tests
             Assert.AreEqual(1, r.SlotSpecifications.Count);
             Assert.AreEqual(SLOT_LABEL, r.SlotSpecifications.Single().Label);
             Assert.IsTrue(r.SlotSpecifications.Single().Greedy);
+            Assert.IsTrue(r.SlotSpecifications.Single().Consumes);
             Assert.AreEqual(SLOT_REQUIRED_ASPECT_ID, r.SlotSpecifications.Single().Required.Single().Key);
             Assert.AreEqual(SLOT_REQUIRED_ASPECT_VALUE, r.SlotSpecifications.Single().Required.Single().Value);
             Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_ID, r.SlotSpecifications.Single().Forbidden.Single().Key);

@@ -20,7 +20,14 @@ public class SlotSpecification
     /// The element in this slot cannot possess any of these aspects
     /// </summary>
     public IAspectsDictionary Forbidden { get; set; }
+    /// <summary>
+    /// A Greedy slot will find a card on the desktop that matches its specification, and insert it.
+    /// </summary>
     public bool Greedy = false;
+    /// <summary>
+    /// A Consuming slot will destroy its contents when a recipe begins
+    /// </summary>
+    public bool Consumes = false;
     private const string PRIMARY_SLOT="primary";
 
     public SlotSpecification(string label)

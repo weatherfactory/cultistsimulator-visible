@@ -11,6 +11,7 @@ namespace Noon
 
     public class NoonConstants
     {
+        
 
         public const string KCHARACTERSTATE = "state";
         public const string KLOOP="loop";
@@ -31,6 +32,7 @@ namespace Noon
         public const string KREQUIRED="required";
         public const string KFORBIDDEN = "forbidden";
         public const string KGREEDY = "greedy";
+        public const string KCONSUMES = "consumes";
 
 
         public const string KCHANCE = "chance";
