@@ -56,6 +56,8 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         slot.onCardDropped += HandleOnSlotDroppedOn;
         slot.onCardPickedUp += RespondToStackPickedUp;
 
+
+
 		if (slotSpecification.Greedy)
 			slot.SetSlotModifiers(RecipeSlot.SlotModifier.Greedy);
 		else 

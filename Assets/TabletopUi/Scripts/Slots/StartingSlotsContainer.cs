@@ -15,10 +15,15 @@ namespace Assets.TabletopUi.SlotsContainers
         
         public override void Initialise(SituationController sc)
         {
-            primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(),null);
-            ArrangeSlots();            
-            base.Initialise(sc);
+            _situationController = sc;
+            SetUpPrimarySlot();
+        }
 
+        private void SetUpPrimarySlot()
+        {
+            primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+            RemoveAnyChildSlotsWithEmptyParent();
+            ArrangeSlots();
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot)

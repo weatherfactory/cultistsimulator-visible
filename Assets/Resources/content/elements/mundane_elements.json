@@ -17,11 +17,9 @@
             description: "Dusty desks, scratching pens.",
 			           slots:
             {
-			"diligence": {  required: {reason: 1},
-                forbidden: {}},
 			"overwork": {  required: {reason: 1},
                 forbidden: {},consumes: true}
-				}
+			}
         },
 		     {
         id: "legacy",

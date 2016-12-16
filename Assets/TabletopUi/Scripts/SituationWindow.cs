@@ -49,7 +49,6 @@ namespace Assets.CS.TabletopUI
         {
 
             situationController = sc;
-            startingSlotsContainer.Initialise(situationController);
             DisplayRecipe(null);
         }
 
@@ -81,6 +80,10 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayStarting()
         {
+            startingSlotsContainer.Initialise(situationController);
+            title.text = "";
+            description.text = "";
+            NextRecipe.text = "";
             startingSlotsContainer.gameObject.SetActive(true);
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
@@ -158,9 +161,6 @@ namespace Assets.CS.TabletopUI
 
         public void AllOutputsGone()
         {
-            title.text = "";
-            description.text = "";
-            NextRecipe.text = "";
             situationController.AllOutputsGone();
         }
 

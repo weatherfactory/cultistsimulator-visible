@@ -16,7 +16,7 @@
         id: "performclericalwork",
         label: "Do Clerical Work",
         actionId: "work",
-        requirements: {reason: 1,clericaljob: 1},
+        requirements: {clericaljob: 1},
         effects: {
             shilling: 2
         },
