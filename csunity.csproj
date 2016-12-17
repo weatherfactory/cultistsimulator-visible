@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -78,6 +76,12 @@
     <Reference Include="Mono.Cecil">
       <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Core\Commands\EffectCommand.cs" />
@@ -87,6 +91,7 @@
     <Compile Include="Assets\Core\Commands\SituationCreationCommand.cs" />
     <Compile Include="Assets\Core\Compendium.cs" />
     <Compile Include="Assets\Core\ContentImportProblem.cs" />
+    <Compile Include="Assets\Core\ContentImporter.cs" />
     <Compile Include="Assets\Core\Entities\AbstractVerb.cs" />
     <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
     <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
@@ -99,7 +104,6 @@
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
     <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
-    <Compile Include="Assets\Core\ContentImporter.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
     <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
