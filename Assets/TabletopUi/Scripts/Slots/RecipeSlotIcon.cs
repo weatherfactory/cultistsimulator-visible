@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
+    /// <summary>
+    /// NOT CURRENTLY IN USE
+    /// </summary>
 	public class RecipeSlotIcon : MonoBehaviour {
 
 		public Sprite iconLocked;

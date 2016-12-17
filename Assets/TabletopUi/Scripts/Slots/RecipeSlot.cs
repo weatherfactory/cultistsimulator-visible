@@ -38,52 +38,30 @@ namespace Assets.CS.TabletopUI
 		public TextMeshProUGUI SlotLabel;
 		public Graphic border;
 		public LayoutGroup slotIconHolder;
-		public RecipeSlotIcon[] slotIcons;
 
-		public Color borderColorIdle;
-		public Color borderColorOngoing;
-		public Color borderColorConsumes;
-		public Color borderColorLocked;
+        public GameObject GreedyIcon;
+        public GameObject ConsumingIcon;
+        public GameObject LockedIcon;
+
+        public bool IsGreedy { get
+            {return GreedyIcon.activeInHierarchy;} set
+            {GreedyIcon.SetActive(value);} }
+        public bool IsConsuming {
+            get
+            { return ConsumingIcon.activeInHierarchy; }
+            set
+            { ConsumingIcon.SetActive(value); }
+        }
+        public bool IsLocked {
+            get
+            { return LockedIcon.activeInHierarchy; }
+            set
+            { LockedIcon.SetActive(value); }
+        }
 
 		public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
 
         // TODO: Needs hover feedback!
-
-		// NOTE MARTIN: sorry this is so hacky :D
-		public void SetSlotModifiers( params SlotModifier[] modifiers) {
-			if (modifiers.Length == 0) {
-				for (int i = 0; i < slotIcons.Length; i++) 
-					slotIcons[i].Hide();
-
-				border.color = borderColorIdle;
-				return;
-			}
-
-			Color borderColor = borderColorIdle;
-
-			for (int i = 0; i < modifiers.Length; i++) {
-				if (modifiers[i] == SlotModifier.Locked) {
-					borderColor = borderColorLocked;
-					break;
-				}
-				else if (modifiers[i] == SlotModifier.Consuming)
-					borderColor = borderColorConsumes;
-			}
-				
-			for (int i = 0; i < slotIcons.Length; i++)  {
-				if (i < modifiers.Length) {
-					slotIcons[i].SetSprite(modifiers[i]);
-					slotIcons[i].SetColor(borderColor);
-				}
-				else {
-					slotIcons[i].Hide();				
-				}
-			}
-
-			border.color = borderColor;
-		}
-
-		// -----------------------------------------------------------
 
         public RecipeSlot()
         {
