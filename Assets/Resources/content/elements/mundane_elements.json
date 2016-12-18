@@ -9,16 +9,15 @@
             description: "Twelve pence, or one-twentieth of a pound, will support you for a day in modest circumstances."
         },
           {
-        id: "clericaljob",
-            label: "Job at Glover & Glover",
+        id: "respect",
+            label: "Respect",
             aspects:
             {},
-            maxvalue:1,
-            description: "Dusty desks, scratching pens.",
+            description: "Some earn this; some take it.",
 			           slots:
             {
 			"overwork": {  required: {reason: 1},
-                forbidden: {},consumes: true}
+                forbidden: {},consumes: true,comment: "Leaving this in here just to see what happens. Also, consider a transient value for elements. Also, this may be redundant."}
 			}
         },
 		     {

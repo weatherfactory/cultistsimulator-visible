@@ -1,0 +1,37 @@
+ {"recipes": [
+	{id: "gloverandgloverfirstday",
+	label: "First Day at Glover & Glover",
+	  requirements: {},
+		effects: { shilling: 1},
+	actionId:"jobgloverandglover",
+        startdescription: "I can daydream, or I can concentrate. [Investing Reason in your job might earn promotion eventually.]",
+        description: "My first day is complete.",
+        warmup: 30,
+		slots: {
+				"Diligence":
+					{
+					required: {reason: 1},
+					forbidden: {},
+					}
+
+				},
+	loop: "jobatgloverandglover"},
+	{id: "jobatgloverandglover",
+	label: "Clerical Work at Glover & Glover",
+	  requirements: {reason: 1},
+		effects: { shilling: 1},
+	actionId:"jobgloverandglover",
+        startdescription: "One more cramped day in the office.",
+        description: "I have earned a little more life.",
+        warmup: 60,
+			slots: {
+				"Diligence":
+					{
+					required: {reason: 1},
+					forbidden: {},
+					}
+
+				},
+	loop: "jobatgloverandglover"}
+]
+}
