@@ -40,8 +40,11 @@ namespace Assets.Core
         public Recipe GetLoopedRecipe(Recipe recipe)
         {
 
-            if (recipe.Loop != null)
-                return compendium.GetRecipeById(recipe.Loop);
+            if (recipe.Loop == null)
+                return null;
+            var candidateLoopedRecipe = compendium.GetRecipeById(recipe.Loop);
+           if(candidateLoopedRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                return candidateLoopedRecipe;
 
             return null;
         }
@@ -61,7 +64,7 @@ namespace Assets.Core
                 {
                     Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
                     if(candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
-                    //if (candidateRecipeRequirementsAreSatisfied(candidateRecipe))
+                   
                     {
                         if (ar.Additional)
                             actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going

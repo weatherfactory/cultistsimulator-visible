@@ -33,11 +33,24 @@
         effects: {
             clericaljob: 1
         },
+		  alternativerecipes:
+		[{id: "jobatgloverandglover", chance:100,additional: true}],
         startdescription: "Find work which will spare my body, if not my mind.",
         description: "This will do, for now.",
         warmup: 10,
         craftable: true
     },
+	{id: "jobatgloverandglover",
+	label: "Clerical Work at Glover & Glover",
+	  requirements: {reason: 1},
+		effects: {
+            shilling: 2
+        },
+	actionId:"jobatgloverandglover",
+        startdescription: "One more cramped day in the office.",
+        description: "I have earned a little more life.",
+        warmup: 10,
+	loop: "jobatgloverandglover"}
 	{
         id: "studylegacyreason",
         label: "--Study your Legacy, employing Reason",

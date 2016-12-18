@@ -168,6 +168,7 @@ namespace Assets.Core.Entities
             State=SituationState.Ending;
 
             var loopedRecipe = rc.GetLoopedRecipe(currentPrimaryRecipe);
+            
             if (loopedRecipe!=null)
             { 
                 currentPrimaryRecipe = loopedRecipe;

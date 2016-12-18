@@ -70,6 +70,16 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
+        public void RecipeConductor_SuppliesNullLoopedRecipe_WhenRecipeConditionsNotSatisfied()
+        {
+            primaryRecipe.Loop = primaryRecipe.Id;
+            primaryRecipe.Requirements.Add("loopedRecipeReq",2);
+            rc=new RecipeConductor(compendium,new AspectsDictionary() { {"loopedRecipeReq",1}}, mockDice);
+            var loopedRecipe = rc.GetLoopedRecipe(primaryRecipe);
+            Assert.IsNull(loopedRecipe);
+        }
+
+        [Test]
         public void AlternateRecipeExecutes_IfNoRequirements_AndDiceRollSatisfied()
         {
             mockDice.Rolld100().Returns(recipeAlternative.Chance);
