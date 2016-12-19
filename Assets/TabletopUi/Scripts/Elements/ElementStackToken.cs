@@ -98,6 +98,11 @@ namespace Assets.CS.TabletopUI
         {
             Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
             artwork.sprite = sprite;
+
+            if (sprite == null)
+                artwork.color = Color.clear;
+            else
+                artwork.color = Color.white;
         }
 
         public IAspectsDictionary GetAspects()

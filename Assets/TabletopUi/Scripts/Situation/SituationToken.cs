@@ -39,11 +39,11 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image artwork;
 
         [SerializeField] TextMeshProUGUI text;
-            // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
-			// NOTE MARTIN: Possibly something that can be solved by the sorting layer?
+        // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
+        // NOTE MARTIN: Possibly something that can be solved by the sorting layer?
 
-		[SerializeField] Image coundownActive;
-		[SerializeField] Image countdownBar;
+        [SerializeField] GameObject[] countdownVisuals;
+        [SerializeField] Image countdownBar;
 		[SerializeField] Image countdownBadge;
 		[SerializeField] TextMeshProUGUI countdownText;
 		[SerializeField] Image completionBadge;
@@ -51,6 +51,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject selectedMarker;
         [SerializeField] public SituationStorage situationStorage;
         [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
+        [SerializeField] Image ongoingSlot;
+        [SerializeField] Image ongoingSlotArt;
 
         private IVerb _verb;
         private SituationController situationController;
@@ -71,7 +73,9 @@ namespace Assets.CS.TabletopUI
 
         private void SetTimerVisibility(bool b)
         {
-			coundownActive.gameObject.SetActive(b);
+            foreach (var go in countdownVisuals) 
+                go.SetActive(b);
+
 			countdownBar.gameObject.SetActive(b);
 			countdownBadge.gameObject.SetActive(b);
             //countdownText.gameObject.SetActive(b); // Is child of countdownBadge, doesn't need to be toggled by itself
@@ -83,6 +87,7 @@ namespace Assets.CS.TabletopUI
 			completionBadge.gameObject.SetActive(newCount > 0);
 			completionText.text = newCount.ToString(); // Is child of completionBadge, doesn't need to be toggled by itself
 		}
+
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
@@ -100,8 +105,9 @@ namespace Assets.CS.TabletopUI
             DisplayIcon(verb);
             SetSelected(false);
 			SetTimerVisibility(false);
-			ShowCompletionCount(0); 
+			ShowCompletionCount(0);
 
+            ongoingSlot.gameObject.SetActive(false);
             ongoingSlotsContainer.Initialise(situationController);
         }
         
@@ -217,11 +223,33 @@ namespace Assets.CS.TabletopUI
             IsOpen = false;
         }
 
-        public void DisplaySlotsForSituation(IList<SlotSpecification> ongoingSlots)
-        {
-            ongoingSlotsContainer.gameObject.SetActive(true);
-            ongoingSlotsContainer.SetUpSlots(ongoingSlots);
-        }
+        public void DisplaySlotsForSituation(IList<SlotSpecification> ongoingSlots) {
+            // This was removed, may break things.
+            //ongoingSlotsContainer.SetUpSlots(ongoingSlots);
+
+            ongoingSlot.gameObject.SetActive(true);
+
+            foreach (var slot in ongoingSlots) {
+                if (slot.Greedy)
+                    ongoingSlot.color = new Color32(0x94, 0xE2, 0xEF, 0xFF);
+                else
+                    ongoingSlot.color = Color.black; 
+
+                break; //We assume there's only one SLOT
+            }
+
+            var stacks = GetStacksInOngoingSlots().ToArray<IElementStack>();
+
+            //We assume there's only one SLOT
+            if (stacks.Length == 0 || stacks[0] == null) {
+                ongoingSlotArt.sprite = null;
+                ongoingSlotArt.color = Color.black;
+            }
+            else {
+                ongoingSlotArt.sprite = ResourcesManager.GetSpriteForElement(stacks[0].Id);
+                ongoingSlotArt.color = Color.white;
+            }
+    }
 
         public void SituationExtinct()
         {
@@ -231,10 +259,10 @@ namespace Assets.CS.TabletopUI
             DeactivateOngoingSlots();
         }
 
-        public void DeactivateOngoingSlots()
-        {
-            ongoingSlotsContainer.DestroyAllSlots();
-            ongoingSlotsContainer.gameObject.SetActive(false);
+        public void DeactivateOngoingSlots() {
+            // This was removed, may break things.
+            //ongoingSlotsContainer.DestroyAllSlots();
+            ongoingSlot.gameObject.SetActive(false);
         }
 
         public IList<IRecipeSlot> GetUnfilledGreedySlots()
