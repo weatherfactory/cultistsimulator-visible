@@ -39,7 +39,9 @@ namespace Assets.TabletopUi
             w.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             if (command.Recipe!=null)
-                BeginSituation(command);
+                RecreateSituation(command);
+            else
+                SituationStateMachine = new SituationStateMachine();
 
         }
 
@@ -187,8 +189,8 @@ namespace Assets.TabletopUi
 
             situationToken.SituationExtinct();
 
-            //and finally, the situation is gone
-            SituationStateMachine = null;
+            //and finally, create an unstarted situation
+            SituationStateMachine = new SituationStateMachine();
            
         }
 
@@ -197,7 +199,7 @@ namespace Assets.TabletopUi
             situationWindow.AddOutput(stacksForOutput, notification);
         }
 
-        public void BeginSituation(SituationCreationCommand command)
+        public void RecreateSituation(SituationCreationCommand command)
         {
             SituationStateMachine = command.CreateSituationStateMachine();
             SituationStateMachine.Subscribe(this);
@@ -215,7 +217,8 @@ namespace Assets.TabletopUi
             {
                 situationWindow.RunSlotConsumptions();
                 situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
-                BeginSituation(new SituationCreationCommand(null,recipe));
+                SituationStateMachine.Start(recipe);
+                RecreateSituation(new SituationCreationCommand(null,recipe));
                 situationWindow.Show(true);
             }
         }

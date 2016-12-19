@@ -42,6 +42,8 @@ namespace Assets.Editor.Tests
         }
 
 
+        
+
         //item added to /removed from starting slot updates aspects display and recipe description with starting slot aspects
         [Test]
         public void ItemAddedToStartingSlot_UpdatesAspectsAndRecipeDescription_WithStartingSlotAspects()

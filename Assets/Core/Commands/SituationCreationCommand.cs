@@ -35,10 +35,14 @@ namespace Assets.Core.Commands
 
         public ISituationStateMachine CreateSituationStateMachine()
         {
-            if(Recipe==null)
-                return null;
-            if(TimeRemaining==null)
-                return new SituationStateMachine(Recipe);
+            var machine=new SituationStateMachine();
+            if (Recipe == null)
+                return machine;
+
+
+            machine.Start(Recipe);
+            if (TimeRemaining == null)
+                return machine;
 
             return new SituationStateMachine(TimeRemaining.Value,State.Value,Recipe);
     }

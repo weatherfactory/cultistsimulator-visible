@@ -33,15 +33,31 @@ namespace Assets.Editor.Tests
         [Test]
         public void NewSituation_IsStateUnstarted()
         {
-            SituationStateMachine s=new SituationStateMachine(r1);
-            Assert.AreEqual(SituationState.Fresh,s.State);
+            SituationStateMachine s=new SituationStateMachine();
+            Assert.AreEqual(SituationState.Unstarted,s.State);
         }
 
+        [Test]
+        public void UnstartedSituation_MovesToFreshlyStarted_WhenStartedWithRecipe()
+        {
+            SituationStateMachine s=new SituationStateMachine();
+            s.Start(r1);
+            Assert.AreEqual(SituationState.FreshlyStarted,s.State);
+        }
 
         [Test]
-        public void UnstartedSituation_MovesToOngoingAtFirstContinue()
+        public void UnstartedSituation_DoesNotChangeStateWhenContinued()
         {
-            SituationStateMachine s = new SituationStateMachine(r1);
+            SituationStateMachine s = new SituationStateMachine();
+            s.Continue(rc,1);
+            Assert.AreEqual(SituationState.Unstarted, s.State);
+        }
+
+        [Test]
+        public void FreshlyStartedSituation_MovesToOngoingAtFirstContinue()
+        {
+            SituationStateMachine s = new SituationStateMachine();
+            s.Start(r1);
             s.Continue(rc, 1);
             Assert.AreEqual(SituationState.Ongoing, s.State);
         }

@@ -94,7 +94,7 @@ namespace Assets.CS.TabletopUI
             title.text = Verb.Label;
             description.text = Verb.Description;
             NextRecipe.text = "";
-            button.gameObject.SetActive(true);
+
             NextRecipe.gameObject.SetActive(false);
         }
 
@@ -109,11 +109,13 @@ namespace Assets.CS.TabletopUI
             {
                 title.text = r.Label;
                 description.text = r.StartDescription;
+                button.gameObject.SetActive(true);
             }
             else
             {
                 title.text = "";
                 description.text = "";
+                button.gameObject.SetActive(false);
             }
         }
 

@@ -25,6 +25,7 @@ namespace Assets.Core.Entities
         SituationState Continue(IRecipeConductor rc,float interval);
         string GetPrediction(IRecipeConductor rc);
         void Beginning();
+        void Start(Recipe primaryRecipe);
     }
 
     public class SituationStateMachine : ISituationStateMachine
@@ -44,12 +45,19 @@ namespace Assets.Core.Entities
         }
         private HashSet<ISituationStateMachineSituationSubscriber> subscribers=new HashSet<ISituationStateMachineSituationSubscriber>();
 
-        public SituationStateMachine(Recipe primaryRecipe)
+        public SituationStateMachine()
+        {
+            State=SituationState.Unstarted;
+           
+        }
+
+        public void Start(Recipe primaryRecipe)
         {
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
-            State = SituationState.Fresh;
+            State = SituationState.FreshlyStarted;
         }
+
         public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
         {
             currentPrimaryRecipe = withPrimaryRecipe;
@@ -102,9 +110,13 @@ namespace Assets.Core.Entities
             {
                 RequireExecution(rc);
             }
-            else if (State == SituationState.Fresh)
+            else if (State == SituationState.FreshlyStarted)
             {
                 Beginning();
+            }
+            else if (State == SituationState.Unstarted)
+            {
+                //do nothing
             }
             else
             {
