@@ -63,9 +63,13 @@ namespace Assets.CS.TabletopUI
 
         // TODO: Needs hover feedback!
 
-        public RecipeSlot()
-        {
+        public RecipeSlot() {
             childSlots=new List<RecipeSlot>();
+        }
+
+        public void ShowHighlighted(bool state) {
+            border.color = state ? new Color32(0xFF, 0xA8, 0xEA, 0xFF) : new Color32(0x1C, 0x43, 0x62, 0xFF);
+            // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT COLOR
         }
 
         public bool HasChildSlots()

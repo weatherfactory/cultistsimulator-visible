@@ -27,10 +27,15 @@ namespace Assets.CS.TabletopUI
             detailWindow.SetElementCard(element);
         }
 
-
         private ElementDetailsWindow BuildElementDetailsWindow()
         {
             var window = PrefabFactory.CreateLocally<ElementDetailsWindow>(windowHolderFixed);
+            return window;
+        }
+
+
+        private SlotDetailsWindow BuildSlotDetailsWindow() {
+            var window = PrefabFactory.CreateLocally<SlotDetailsWindow>(windowHolderFixed);
             return window;
         }
 
