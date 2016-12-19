@@ -18,12 +18,12 @@ public interface ISituationOutput
     ITokenTransformWrapper GetTokenTransformWrapper();
 }
 
-public class SituationOutputNote : MonoBehaviour, ITokenContainer,ISituationOutput
+public class SituationOutputNote : MonoBehaviour, ISituationOutput
 {
     [SerializeField]private TextMeshProUGUI Title;
     [SerializeField]private TextMeshProUGUI Description;
-    private SituationOutputContainer parentSituationOutputContainer;
-
+    [SerializeField]private SituationOutputTokenContainer cardTokenContainer;
+    
     public string TitleText { get { return Title.text; } }
     public string DescriptionText { get { return Title.text; } }
 
@@ -31,40 +31,13 @@ public class SituationOutputNote : MonoBehaviour, ITokenContainer,ISituationOutp
     {
         Title.text = notification.Title;
         Description.text = notification.Description;
-        GetElementStacksManager().AcceptStacks(stacks);
-        parentSituationOutputContainer = soc;
-    }
-
-    public void TokenPickedUp(DraggableToken draggableToken)
-    {
-
-        var stacks = GetElementStacksManager().GetStacks();
-        //if no stacks left in output
-        if (!stacks.Any())
-        {
-            parentSituationOutputContainer.AllOutputsGone();
-            DestroyObject(this.gameObject);
-        }
-    }
-
-
-    public bool AllowDrag { get { return true; } }
-    public bool AllowStackMerge { get {return false;} }
-
-    public ElementStacksManager GetElementStacksManager()
-    {
-        ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-        return new ElementStacksManager(tabletopStacksWrapper);
+        cardTokenContainer.SetParentOutputContainer(soc);
+        cardTokenContainer.GetElementStacksManager().AcceptStacks(stacks);
     }
 
     public ITokenTransformWrapper GetTokenTransformWrapper()
     {
-       return new TokenTransformWrapper(transform);
-    }
-
-    public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
-    {
-        return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
+       return new TokenTransformWrapper(cardTokenContainer.transform);
     }
 }
 

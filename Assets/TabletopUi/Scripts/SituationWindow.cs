@@ -23,11 +23,14 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] CanvasGroup canvasGroup;
-        [SerializeField] Transform cardHolder;
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
+
         [SerializeField] StartingSlotsContainer startingSlotsContainer;
+        [SerializeField] OngoingSlotsContainer ongoingSlotsContainer;
+        [SerializeField] SituationStorage situationStorage;
         [SerializeField] SituationOutputContainer outputContainer;
+
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
         [SerializeField] private TextMeshProUGUI NextRecipe;
@@ -54,9 +57,7 @@ namespace Assets.CS.TabletopUI
 
         public void Show(bool situationOngoing)
         {
-            canvasGroupFader.SetAlpha(0f);
             canvasGroupFader.Show();
-            
 
             if(situationOngoing || outputContainer.GetCurrentOutputs().Any())
                 DisplayOngoing();
@@ -71,23 +72,28 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void DisplayOngoing()
-        {
+        public void DisplayOngoing() {
+            ongoingSlotsContainer.Initialise(situationController);
+
+            startingSlotsContainer.gameObject.SetActive(true);
+            outputContainer.gameObject.SetActive(false);
+
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
-            startingSlotsContainer.gameObject.SetActive(false);
         }
 
         public void DisplayStarting()
         {
             startingSlotsContainer.Initialise(situationController);
-            title.text = "";
-            description.text = "";
-            NextRecipe.text = "";
+
             startingSlotsContainer.gameObject.SetActive(true);
+            outputContainer.gameObject.SetActive(false);
+
+            title.text = "Starting Header";
+            description.text = "Starting Description";
+            NextRecipe.text = "";
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);
-
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)
@@ -146,8 +152,8 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification)
-        {
+        public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification) {
+            startingSlotsContainer.gameObject.SetActive(false);
             outputContainer.AddOutput(stacks,notification);
         }
 
@@ -159,8 +165,8 @@ namespace Assets.CS.TabletopUI
             NextRecipe.text = nextRecipeDescription;
         }
 
-        public void AllOutputsGone()
-        {
+        public void AllOutputsGone() {
+            outputContainer.gameObject.SetActive(false);
             situationController.AllOutputsGone();
         }
 

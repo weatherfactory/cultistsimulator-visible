@@ -10,11 +10,13 @@ using Assets.TabletopUi.Scripts.Services;
 
 public class SituationOutputContainer : MonoBehaviour
 {
+    [SerializeField] private Transform outputParent;
     [SerializeField] private SituationWindow situationWindow;
 
-    public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification)
-    {
-        var newNote=PrefabFactory.CreateLocally<SituationOutputNote>(transform);
+    public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification) {
+        gameObject.SetActive(true);
+        var newNote=PrefabFactory.CreateLocally<SituationOutputNote>(outputParent);
+        newNote.transform.localPosition = Vector2.zero;
         newNote.Initialise(notification, stacks, this);
     }
 
@@ -22,11 +24,12 @@ public class SituationOutputContainer : MonoBehaviour
     public void AllOutputsGone()
     {
         situationWindow.AllOutputsGone();
+        gameObject.SetActive(false);
     }
 
     public IEnumerable<ISituationOutput> GetCurrentOutputs()
     {
-        return GetComponentsInChildren<SituationOutputNote>();
+        return outputParent.GetComponentsInChildren<SituationOutputNote>();
     }
  
 }

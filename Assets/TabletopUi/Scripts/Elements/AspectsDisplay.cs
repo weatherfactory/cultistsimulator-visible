@@ -28,15 +28,14 @@ namespace Assets.TabletopUi.Scripts
 
         }
 
-        public void DisplayAspects(IAspectsDictionary aspects)
-        {
-
+        public void DisplayAspects(IAspectsDictionary aspects) {
             ResetAspects();
-                foreach (string k in aspects.Keys)
-                {
+
+            foreach (string k in aspects.Keys) 
                 AddAspectToDisplay(k,aspects[k]);
-                }
-            }
+
+            gameObject.SetActive(aspects.Count > 0);
+        }
     
     }
 }
