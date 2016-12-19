@@ -60,6 +60,19 @@
         craftable: true
     },
 	{
+        id: "rest",
+        label: "Rest",
+        actionId: "dream",
+        requirements: {health: 1},
+        effects: {
+            health: 1
+        },
+        startdescription: "Take some time off.",
+        description: "Recover.",
+        warmup: 120,
+        craftable: true
+    },
+	{
         id: "eg",
         label: "--",
         actionId: "work",

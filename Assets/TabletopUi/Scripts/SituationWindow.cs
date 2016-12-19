@@ -37,6 +37,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private TabletopContainer tabletopContainer;
         public IList<INotification> queuedNotifications = new List<INotification>();
         private SituationController situationController;
+        private IVerb Verb;
 
         void OnEnable()
         {
@@ -48,11 +49,12 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void Initialise(SituationController sc)
+        public void Initialise(IVerb verb, SituationController sc)
         {
 
             situationController = sc;
-            DisplayRecipe(null);
+            Verb = verb;
+            startingSlotsContainer.Initialise(situationController);
         }
 
         public void Show(bool situationOngoing)
@@ -84,13 +86,13 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayStarting()
         {
-            startingSlotsContainer.Initialise(situationController);
+
 
             startingSlotsContainer.gameObject.SetActive(true);
             outputContainer.gameObject.SetActive(false);
 
-            title.text = "Starting Header";
-            description.text = "Starting Description";
+            title.text = Verb.Label;
+            description.text = Verb.Description;
             NextRecipe.text = "";
             button.gameObject.SetActive(true);
             NextRecipe.gameObject.SetActive(false);

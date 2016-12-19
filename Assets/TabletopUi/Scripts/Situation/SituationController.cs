@@ -36,7 +36,7 @@ namespace Assets.TabletopUi
             t.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             situationWindow = w;
-            w.Initialise(this);
+            w.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             if (command.Recipe!=null)
                 BeginSituation(command);

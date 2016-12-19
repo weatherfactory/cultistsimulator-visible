@@ -11,7 +11,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationDetails
     {
-        void Initialise(SituationController controller);
+        void Initialise(IVerb verb,SituationController controller);
         void Show(bool situationOngoing);
         void Hide();
         void DisplayAspects(IAspectsDictionary forAspects);
