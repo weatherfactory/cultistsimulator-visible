@@ -33,6 +33,10 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
+        public void ShowSlotDetails(SlotSpecification slot) {
+            var detailWindow = BuildSlotDetailsWindow();
+            detailWindow.SetSlot(slot);
+        }
 
         private SlotDetailsWindow BuildSlotDetailsWindow() {
             var window = PrefabFactory.CreateLocally<SlotDetailsWindow>(windowHolderFixed);
