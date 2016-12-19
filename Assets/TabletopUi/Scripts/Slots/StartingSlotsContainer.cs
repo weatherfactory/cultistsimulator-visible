@@ -12,7 +12,6 @@ namespace Assets.TabletopUi.SlotsContainers
 {
     public class StartingSlotsContainer : AbstractSlotsContainer
     {
-        
         public override void Initialise(SituationController sc)
         {
             _situationController = sc;
@@ -69,57 +68,12 @@ namespace Assets.TabletopUi.SlotsContainers
             _situationController.StartingSlotsUpdated();
         }
 
-
-
         public void ArrangeSlots()
         {
+            int numRows = Mathf.CeilToInt(primarySlot.childSlots.Count / 3f);
+            float height = 50 + 35 + (numRows * 120) + ((numRows - 1) * 40);
 
-            float slotSpacing = 10;
-            float slotWidth = ((RectTransform)primarySlot.transform).rect.width;
-            float slotHeight = ((RectTransform)primarySlot.transform).rect.height;
-            float startingHorizSpace = ((RectTransform)primarySlot.transform.parent).rect.width;
-            float startingX = startingHorizSpace / 2 - slotWidth;
-            float startingY = -120;
-            primarySlot.transform.localPosition = new Vector3(startingX, startingY);
-
-
-            if (primarySlot.childSlots.Count > 0)
-            {
-                for (int i = 0; i < primarySlot.childSlots.Count; i++)
-                {
-                    //space needed is space needed for each child slot, + spacing
-                    var s = primarySlot.childSlots[i];
-                    AlignSlot(s, i, startingX, startingY, slotWidth, slotHeight, slotSpacing);
-                }
-            }
-
-        }
-
-        protected float SlotSpaceNeeded(RecipeSlot forSlot, float slotWidth, float slotSpacing)
-        {
-            float childSpaceNeeded = 0;
-            foreach (RecipeSlot c in forSlot.childSlots)
-                childSpaceNeeded += SlotSpaceNeeded(c, slotWidth, slotSpacing);
-
-            return Mathf.Max(childSpaceNeeded, slotWidth + slotSpacing);
-        }
-
-
-
-        protected void AlignSlot(RecipeSlot thisSlot, int index, float parentX, float parentY, float slotWidth, float slotHeight, float slotSpacing)
-        {
-            float thisY = parentY - (slotHeight + slotSpacing);
-            float spaceNeeded = SlotSpaceNeeded(thisSlot, slotWidth, slotSpacing);
-            float thisX = parentX + index * spaceNeeded;
-            thisSlot.transform.localPosition = new Vector3(thisX, thisY);
-            for (int i = 0; i < thisSlot.childSlots.Count; i++)
-            {
-                //space needed is space needed for each child slot, + spacing
-                var nextSlot = thisSlot.childSlots[i];
-                float nextX = thisX + ((slotWidth + slotSpacing) * index);
-                AlignSlot(nextSlot, i, nextX, thisY, slotWidth, slotHeight, slotSpacing);
-            }
-
+            (transform as RectTransform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
 
 
