@@ -63,10 +63,11 @@ namespace Assets.Editor.Tests
         [Test]
         public void ItemAddedToOngoingSlot_UpdatesAspectsAndRecipePrediction_WithOngoingSlotAspects()
         {
+            situationDetailsMock.GetAspectsFromStoredElements().Returns(new AspectsDictionary());
+            situationDetailsMock.GetAspectsFromSlottedElements().Returns(new AspectsDictionary());
 
             sc.OngoingSlotsUpdated();
-            situationDetailsMock.Received().GetAspectsFromStoredElements();
-            situationDetailsMock.Received().GetAspectsFromSlottedElements();
+
             situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
             situationDetailsMock.ReceivedWithAnyArgs().UpdateSituationDisplay("","","");
 
