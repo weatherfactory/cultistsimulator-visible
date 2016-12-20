@@ -186,6 +186,33 @@ namespace Assets.CS.TabletopUI
             NextRecipe.text = nextRecipeDescription;
         }
 
+        public void ModifyStoredElementStack(string elementId, int quantity)
+        {
+            GetSituationStorageStacksManager().ModifyElementQuantity(elementId, quantity);
+        }
+
+        public IEnumerable<IElementStack> GetStoredStacks()
+        {
+            return GetSituationStorageStacksManager().GetStacks();
+        }
+
+
+
+        public void StoreStacks(IEnumerable<IElementStack> stacksToStore)
+        {
+            GetSituationStorageStacksManager().AcceptStacks(stacksToStore);
+        }
+
+        public IAspectsDictionary GetAspectsFromStoredElements()
+        {
+            return GetSituationStorageStacksManager().GetTotalAspects();
+        }
+
+        public ElementStacksManager GetSituationStorageStacksManager()
+        {
+            return situationStorage.GetElementStacksManager();
+        }
+
         public void AllOutputsGone() {
             outputContainer.gameObject.SetActive(false);
             situationController.AllOutputsGone();

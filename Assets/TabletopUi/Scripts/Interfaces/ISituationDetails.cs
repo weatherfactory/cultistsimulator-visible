@@ -23,11 +23,20 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayStarting();
         void DisplayOngoing(Recipe forRecipe);
         void UpdateSituationDisplay(string stitle, string sdescription, string nextRecipeDescription);
-        void Retire();
+        
         IEnumerable<ISituationOutput> GetCurrentOutputs();
         void RunSlotConsumptions();
         IEnumerable<IElementStack> GetStacksInOngoingSlots();
         IList<IRecipeSlot> GetUnfilledGreedySlots();
         IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
+
+        IEnumerable<IElementStack> GetStoredStacks();
+        void StoreStacks(IEnumerable<IElementStack> stacksToStore);
+        IAspectsDictionary GetAspectsFromStoredElements();
+        void ModifyStoredElementStack(string elementId, int quantity);
+        ElementStacksManager GetSituationStorageStacksManager();
+
+
+        void Retire();
     }
 }

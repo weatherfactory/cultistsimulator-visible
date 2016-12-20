@@ -45,8 +45,7 @@ namespace Assets.TabletopUi
 
         }
 
-
-
+        
         public void OpenSituation()
         {
         
@@ -61,6 +60,9 @@ namespace Assets.TabletopUi
             situationToken.CloseToken();
             situationWindow.Hide();
         }
+
+
+
 
         public string GetCurrentRecipeId()
         {
@@ -99,7 +101,7 @@ namespace Assets.TabletopUi
 
     private IAspectsDictionary GetAspectsAvailableToSituation()
        {
-           IAspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
+           IAspectsDictionary existingAspects = situationWindow.GetAspectsFromStoredElements();
 
             IAspectsDictionary additionalAspects = situationWindow.GetAspectsFromSlottedElements();
 
@@ -108,6 +110,8 @@ namespace Assets.TabletopUi
            allAspects.CombineAspects(additionalAspects);
            return allAspects;
        }
+
+
 
 
   
@@ -130,7 +134,7 @@ namespace Assets.TabletopUi
        public void UpdateSituationDisplayTextInWIndow()
        {
            
-            RecipeConductor rc = new RecipeConductor(compendium, situationToken.GetAspectsFromStoredElements(),
+            RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
             new Dice());
 
            string nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
@@ -155,7 +159,7 @@ namespace Assets.TabletopUi
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             var inputStacks = situationWindow.GetStacksInOngoingSlots();
-            var storageGateway = situationToken.GetSituationStorageStacksManager();
+            var storageGateway = situationWindow.GetSituationStorageStacksManager();
             storageGateway.AcceptStacks(inputStacks);
 
             if (command.AsNewSituation)
@@ -170,7 +174,7 @@ namespace Assets.TabletopUi
                //execute each recipe in command
                foreach (var kvp in command.GetElementChanges())
                {
-                   situationToken.ModifyStoredElementStack(kvp.Key, kvp.Value);
+                    situationWindow.ModifyStoredElementStack(kvp.Key, kvp.Value);
                }
 
                if (command.Recipe.Ending != null)
@@ -186,7 +190,7 @@ namespace Assets.TabletopUi
         public void SituationComplete()
        {
           //retrieve all stacks stored in the situation
-           var stacksToRetrieve = situationToken.GetStoredStacks();
+           var stacksToRetrieve = situationWindow.GetStoredStacks();
             //create a notification reflecting what just happened
             INotification notification=new Notification(SituationStateMachine.GetTitle(),SituationStateMachine.GetDescription());
             //put all the stacks, and the notification, into the window for player retrieval
@@ -222,9 +226,14 @@ namespace Assets.TabletopUi
             if (recipe != null)
             {
                 situationWindow.RunSlotConsumptions();
-                situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
+                situationWindow.StoreStacks(situationWindow.GetStacksInStartingSlots());
                 SituationStateMachine.Start(recipe);
             }
+        }
+
+        public void ModifyStoredElementStack(string elementId, int quantity)
+        {
+            situationWindow.ModifyStoredElementStack(elementId, quantity);
         }
 
        public void AllOutputsGone()
@@ -273,9 +282,9 @@ namespace Assets.TabletopUi
             }
 
             //save stacks in storage
-            if(situationToken.GetStoredStacks().Any())
+            if(situationWindow.GetStoredStacks().Any())
             { 
-            var htStacksInStorage = exporter.GetHashTableForStacks(situationToken.GetStoredStacks());
+            var htStacksInStorage = exporter.GetHashTableForStacks(situationWindow.GetStoredStacks());
             situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS,htStacksInStorage);
             }
 

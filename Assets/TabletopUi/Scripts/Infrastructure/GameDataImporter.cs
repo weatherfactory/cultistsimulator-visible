@@ -75,17 +75,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.State = TryGetNullableSituationState(htSituationValues, SaveConstants.SAVE_SITUATIONSTATE);
 
                 var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
+                var situationController = situationAnchor.SituationController;
 
-                ImportSlotContents(htSituationValues, situationAnchor,tabletopContainer, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues, situationAnchor, tabletopContainer, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
 
-                ImportSituationStoredElements(htSituationValues, situationAnchor);
+                ImportSituationStoredElements(htSituationValues, situationController);
 
-                ImportOutputNotes(htSituationValues, situationAnchor,tabletopContainer);
+                ImportOutputNotes(htSituationValues, situationController, tabletopContainer);
             }
         }
 
-        private void ImportOutputNotes(Hashtable htSituationValues, ISituationAnchor situationAnchor,TabletopContainer container)
+        private void ImportOutputNotes(Hashtable htSituationValues, SituationController controller,TabletopContainer container)
         {
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTS))
             {
@@ -101,13 +102,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     {
                         stacksForOutputNote.Add(container.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId,eqs.ElementQuantity));
                     }
-                    situationAnchor.AddOutput(stacksForOutputNote,notificationForOutputNote);
+                    controller.AddOutput(stacksForOutputNote,notificationForOutputNote);
 
                 }
             }
         }
 
-        private void ImportSituationStoredElements(Hashtable htSituationValues, ISituationAnchor situationAnchor)
+        private void ImportSituationStoredElements(Hashtable htSituationValues, SituationController controller)
         {
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
@@ -115,13 +116,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
                 var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
                 foreach (var eqs in elementQuantitySpecifications)   
-                    situationAnchor.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity);                    
+                    controller.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity);                    
             }
         }
 
 
         private void ImportSlotContents(Hashtable htSituationValues,
-            ISituationAnchor situationAnchor, TabletopContainer tabletopContainer,string slotTypeKey)
+         SituationController controller, TabletopContainer tabletopContainer,string slotTypeKey)
         {
             if (htSituationValues.ContainsKey(slotTypeKey))
             {
@@ -134,7 +135,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var stackToPutInSlot =
                         tabletopContainer.GetTokenTransformWrapper()
                             .ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity);
-                    var slotToFill = situationAnchor.GetSlotFromSituation(eqs.LocationInfo, slotTypeKey);
+                    var slotToFill = controller.GetSlotBySaveLocationInfoPath(eqs.LocationInfo, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                         //if the game can't find a matching slot, it'll just leave it on the desktop
                         slotToFill.AcceptStack(stackToPutInSlot);

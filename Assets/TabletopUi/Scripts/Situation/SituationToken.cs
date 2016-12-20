@@ -23,18 +23,6 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI
 {
 
-    /// <summary>
-    /// SituationToken is, used as
-    /// - an anchor for everything else in the situation to hang off, and
-    /// - a gateway for UI or code interaction with the contents
-    /// 
-    /// but also
-    /// 
-    /// - a repository for elements stored in the situation
-    /// - a repository for ongoing situation slots
-    /// 
-    /// ....so it should be two different objects
-    /// </summary>
     public class SituationToken : DraggableToken,ISituationAnchor
     {
 
@@ -51,17 +39,17 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] Image completionBadge;
 		[SerializeField] TextMeshProUGUI completionText;
         [SerializeField] GameObject selectedMarker;
-        [SerializeField] public SituationStorage situationStorage;
+
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
 
         private IVerb _verb;
-        private SituationController situationController;
+        public SituationController SituationController { get; private set; }
 
         public SituationState SituationState
         {
-            get { return situationController.SituationStateMachine.State; }
+            get { return SituationController.SituationStateMachine.State; }
         }
 
         public bool IsOpen = false;
@@ -93,14 +81,14 @@ namespace Assets.CS.TabletopUI
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-       		return  situationController.ExecuteHeartbeat(interval);
+       		return  SituationController.ExecuteHeartbeat(interval);
         }
 
         
 
         public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
-            situationController = sc;
+            SituationController = sc;
             name = "Verb_" + Id;
 
             DisplayName(verb);
@@ -132,10 +120,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public IRecipeSlot GetSlotFromSituation(string locationInfo,string slotType)
-        {
-            return situationController.GetSlotBySaveLocationInfoPath(locationInfo,slotType);
-        }
 
 
         public void DisplayTimeRemaining(float duration, float timeRemaining)
@@ -147,58 +131,15 @@ namespace Assets.CS.TabletopUI
 
 
 
-        public void ModifyStoredElementStack(string elementId, int quantity)
-        {
-            GetSituationStorageStacksManager().ModifyElementQuantity(elementId,quantity);
-        }
-
-        public IEnumerable<IElementStack> GetStoredStacks()
-        {
-            return GetSituationStorageStacksManager().GetStacks();
-        }
-
-        
-
-        public void StoreStacks(IEnumerable<IElementStack> stacksToStore)
-        {
-            GetSituationStorageStacksManager().AcceptStacks(stacksToStore);
-        }
-
-        public IAspectsDictionary GetAspectsFromStoredElements()
-        {
-            return GetSituationStorageStacksManager().GetTotalAspects();
-        }
-
-
-        public ElementStacksManager GetSituationStorageStacksManager()
-        {
-            return situationStorage.GetElementStacksManager();
-        }
-
-
-        public void OpenSituation()
-        {
-
-            situationController.OpenSituation();
-        }
-
-
-        public void CloseSituation()
-        {
-
-            situationController.CloseSituation();
-        }
-
 
         public Hashtable GetSaveDataForSituation()
         {
-            return situationController.GetSaveDataForSituation();
+            return SituationController.GetSaveDataForSituation();
         }
 
         public void OpenToken()
         {
             DisplayInAir();
-            situationStorage.gameObject.SetActive(true);
             IsOpen = true;
         }
 
@@ -206,8 +147,7 @@ namespace Assets.CS.TabletopUI
         {
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
                 DisplayOnTable();
-            situationStorage.gameObject.SetActive(false);
-            IsOpen = false;
+       IsOpen = false;
         }
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)
@@ -251,24 +191,10 @@ namespace Assets.CS.TabletopUI
         {
             //hide the timer: we're done here
             SetTimerVisibility(false);
-            //and we don't want anyone adding any more slots
-            DeactivateOngoingSlots();
-        }
-
-        public void DeactivateOngoingSlots() {
-            // This was removed, may break things.
-            //ongoingSlotsContainer.DestroyAllSlots();
-            ongoingSlotImage.gameObject.SetActive(false);
         }
 
 
-
-        public void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification)
-        {
-            situationController.AddOutput(stacksForOutput,notification);
-        }
-
-
+        
         public override void OnDrop(PointerEventData eventData)
         {
             if(DraggableToken.itemBeingDragged!=null)
@@ -280,18 +206,20 @@ namespace Assets.CS.TabletopUI
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
 
             if (!IsOpen)
-            { 
-                OpenSituation();
-             
+            {
+                SituationController.OpenSituation();
+
                 (container as TabletopContainer).CloseAllSituationWindowsExcept(this);
 
             }
             else
-            { 
-                CloseSituation();
-           
-                    
-            }
+            CloseSituation();
+
+        }
+
+        public void CloseSituation()
+        {
+                SituationController.CloseSituation();
 
         }
 
