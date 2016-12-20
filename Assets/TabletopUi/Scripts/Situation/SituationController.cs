@@ -180,7 +180,7 @@ namespace Assets.TabletopUi
 
         }
 
-        public void SituationExtinct()
+        public void SituationComplete()
        {
           //retrieve all stacks stored in the situation
            var stacksToRetrieve = situationToken.GetStoredStacks();
@@ -189,7 +189,7 @@ namespace Assets.TabletopUi
             //put all the stacks, and the notification, into the window for player retrieval
             situationWindow.AddOutput(stacksToRetrieve,notification);
 
-            situationToken.SituationExtinct();
+            situationToken.SituationComplete();
            
         }
 
@@ -226,7 +226,7 @@ namespace Assets.TabletopUi
 
        public void AllOutputsGone()
        {
-            SituationStateMachine.Reset();
+            SituationStateMachine.AllOutputsGone();
             //if this was a transient verb, clean up everything and finish.
             //otherwise, prep the window for the next recipe
             if (situationToken.IsTransient)

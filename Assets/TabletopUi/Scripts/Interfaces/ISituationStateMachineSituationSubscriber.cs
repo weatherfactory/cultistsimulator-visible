@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationBeginning();
         void SituationOngoing();
         void SituationExecutingRecipe(IEffectCommand effectCommand);
-        void SituationExtinct();
+        void SituationComplete();
         void SituationHasBeenReset();
     }
 }

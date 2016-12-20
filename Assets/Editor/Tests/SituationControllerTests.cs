@@ -76,7 +76,7 @@ namespace Assets.Editor.Tests
         public void AllOutputsGone_ResetsStateMachine()
         {
             sc.AllOutputsGone();
-            situationStateMachineMock.Received().Reset();
+            situationStateMachineMock.Received().AllOutputsGone();
         }
 
         [Test]

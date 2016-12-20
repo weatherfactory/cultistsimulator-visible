@@ -26,7 +26,7 @@ namespace Assets.Core.Entities
         string GetPrediction(IRecipeConductor rc);
         void Beginning();
         void Start(Recipe primaryRecipe);
-        void Reset();
+        void AllOutputsGone();
     }
 
     public class SituationStateMachine : ISituationStateMachine
@@ -54,6 +54,14 @@ namespace Assets.Core.Entities
             Reset();
         }
 
+        private void Reset()
+        {
+            currentPrimaryRecipe = null;
+            TimeRemaining = 0;
+            State = SituationState.Unstarted;
+            subscriber.SituationHasBeenReset();
+        }
+
         public void Start(Recipe primaryRecipe)
         {
             currentPrimaryRecipe = primaryRecipe;
@@ -61,13 +69,13 @@ namespace Assets.Core.Entities
             State = SituationState.FreshlyStarted;
         }
 
-        public void Reset()
+        public void AllOutputsGone()
         {
-          currentPrimaryRecipe = null;
-          TimeRemaining = 0;
-          State=SituationState.Unstarted;
-           subscriber.SituationHasBeenReset();
+            if(State==SituationState.Complete)
+                Reset();
         }
+
+
 
         public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe,ISituationStateMachineSituationSubscriber s)
         {

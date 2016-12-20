@@ -119,15 +119,25 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Situation_Reset_ReturnsToBlankState()
+        public void Situation_AllOutputsGone_ReturnsToBlankState_IfSituationComplete()
         {
-            SituationStateMachine s = new SituationStateMachine(30, SituationState.Ongoing, r1, subscriber);
-            s.Reset();
+            SituationStateMachine s = new SituationStateMachine(30, SituationState.Complete, r1, subscriber);
+            s.AllOutputsGone();
             Assert.AreEqual(SituationState.Unstarted,s.State);
             Assert.AreEqual(null,s.RecipeId);
             Assert.AreEqual(0,s.TimeRemaining);
-
         }
+
+        [Test]
+        public void Situation_AllOutputsGone_DoesNotReturnToBlankState_IfSituationNotComplete()
+        {
+            SituationStateMachine s = new SituationStateMachine(30, SituationState.Ongoing, r1, subscriber);
+            s.AllOutputsGone();
+            Assert.AreNotEqual(SituationState.Unstarted, s.State);
+            Assert.AreNotEqual(null, s.RecipeId);
+            Assert.AreNotEqual(0, s.TimeRemaining);
+        }
+
 
         [Test]
         public void Situation_ExecutesAlternativesSpecifiedByRecipeConductor()
