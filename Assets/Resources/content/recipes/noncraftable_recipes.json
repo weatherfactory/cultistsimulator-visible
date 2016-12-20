@@ -6,8 +6,7 @@
         actionId: "time",
         requirements: {},
         effects: {
-            shilling: -1,
-            hungry: 1
+            shilling: -1
         },
         alternativerecipes:
 		[{id: "lawenforcement", chance:0, additional: true},
@@ -30,11 +29,11 @@
 	   {
         id: "starvation",
         label: "Starvation",
-        actionId: "x",
+        actionId: "starvation",
         requirements: {shilling: -1},
         effects: {
             health: -1,
-            hungry: 1
+            hunger: 1
         },
 		alternativerecipes:
 		[{id: "deathofthebody",chance:100}],

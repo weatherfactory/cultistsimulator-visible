@@ -31,24 +31,21 @@ namespace Assets.TabletopUi
 
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w)
         {
-
             situationToken = t;
             t.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             situationWindow = w;
             w.Initialise(command.GetBasicOrCreatedVerb(), this);
 
-            if (command.Recipe!=null)
+            if (command.Recipe != null)
                 RecreateSituation(command);
             else
                 SituationStateMachine = new SituationStateMachine(this);
-
         }
 
-        
+
         public void OpenSituation()
         {
-        
             situationToken.OpenToken();
 
             situationWindow.Show();
@@ -62,8 +59,6 @@ namespace Assets.TabletopUi
         }
 
 
-
-
         public string GetCurrentRecipeId()
         {
             return SituationStateMachine == null ? null : SituationStateMachine.RecipeId;
@@ -71,7 +66,7 @@ namespace Assets.TabletopUi
 
         public void StartingSlotsUpdated()
         {
-            AspectsDictionary startingAspects = situationWindow.GetAspectsFromSlottedElements();
+            AspectsDictionary startingAspects = situationWindow.GetAspectsFromAllSlottedElements();
             situationWindow.DisplayAspects(startingAspects);
 
             var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id);
@@ -85,62 +80,56 @@ namespace Assets.TabletopUi
             situationWindow.DisplayAspects(allAspects);
 
             situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
-            SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
+                SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
             situationToken.UpdateMiniSlotDisplay(situationWindow.GetStacksInOngoingSlots());
-
         }
 
 
         private string getNextRecipePrediction(IAspectsDictionary aspects)
         {
-            
-                RecipeConductor rc = new RecipeConductor(compendium, aspects,
-                    new Dice());
-                return SituationStateMachine.GetPrediction(rc);
-            }
+            RecipeConductor rc = new RecipeConductor(compendium, aspects,
+                new Dice());
+            return SituationStateMachine.GetPrediction(rc);
+        }
 
-    private IAspectsDictionary GetAspectsAvailableToSituation()
-       {
-           IAspectsDictionary existingAspects = situationWindow.GetAspectsFromStoredElements();
+        private IAspectsDictionary GetAspectsAvailableToSituation()
+        {
+            IAspectsDictionary existingAspects = situationWindow.GetAspectsFromStoredElements();
 
-            IAspectsDictionary additionalAspects = situationWindow.GetAspectsFromSlottedElements();
+            IAspectsDictionary additionalAspects = situationWindow.GetAspectsFromAllSlottedElements();
 
             IAspectsDictionary allAspects = new AspectsDictionary();
-           allAspects.CombineAspects(existingAspects);
-           allAspects.CombineAspects(additionalAspects);
-           return allAspects;
-       }
+            allAspects.CombineAspects(existingAspects);
+            allAspects.CombineAspects(additionalAspects);
+            return allAspects;
+        }
 
-
-
-
-  
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
-            HeartbeatResponse response=new HeartbeatResponse();
+            HeartbeatResponse response = new HeartbeatResponse();
 
-                RecipeConductor rc = new RecipeConductor(compendium,
+            RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(), new Dice());
-                SituationStateMachine.Continue(rc, interval);
+            SituationStateMachine.Continue(rc, interval);
 
-            if (SituationStateMachine.State==SituationState.Ongoing)
-                    response.SlotsToFill = situationWindow.GetUnfilledGreedySlots();
+            if (SituationStateMachine.State == SituationState.Ongoing)
+                response.SlotsToFill = situationWindow.GetUnfilledGreedySlots();
 
 
             return response;
         }
 
-       public void UpdateSituationDisplayTextInWIndow()
-       {
-           
+        public void UpdateSituationDisplayTextInWIndow()
+        {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
-            new Dice());
+                new Dice());
 
-           string nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
+            string nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
 
-            situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(), SituationStateMachine.GetDescription(), nextRecipePrediction);
-       }
+            situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
+                SituationStateMachine.GetDescription(), nextRecipePrediction);
+        }
 
         public void SituationBeginning(Recipe withRecipe)
         {
@@ -148,6 +137,7 @@ namespace Assets.TabletopUi
             situationWindow.DisplayOngoing(withRecipe);
             UpdateSituationDisplayTextInWIndow();
         }
+
         public void SituationOngoing()
         {
             situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
@@ -155,7 +145,7 @@ namespace Assets.TabletopUi
 
 
         public void SituationExecutingRecipe(IEffectCommand command)
-       {
+        {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             var inputStacks = situationWindow.GetStacksInOngoingSlots();
@@ -163,47 +153,45 @@ namespace Assets.TabletopUi
             storageGateway.AcceptStacks(inputStacks);
 
             if (command.AsNewSituation)
-           {
-               IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
-                   command.Recipe.Description);
-               SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe);
-               Registry.TabletopManager.BeginNewSituation(scc);
-           }
-           else
-           {
-               //execute each recipe in command
-               foreach (var kvp in command.GetElementChanges())
-               {
-                    situationWindow.ModifyStoredElementStack(kvp.Key, kvp.Value);
-               }
-
-               if (command.Recipe.Ending != null)
-               {
-                   var endingNotification = compendium.GetNotificationForEndingFlag(command.Recipe.Ending);
-                   Registry.TabletopManager.EndGame(endingNotification);
-               }
-
+            {
+                IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
+                    command.Recipe.Description);
+                SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe);
+                Registry.TabletopManager.BeginNewSituation(scc);
             }
+            else
+            {
+                //execute each recipe in command
+                foreach (var kvp in command.GetElementChanges())
+                {
+                    situationWindow.ModifyStoredElementStack(kvp.Key, kvp.Value);
+                }
 
+                if (command.Recipe.Ending != null)
+                {
+                    var endingNotification = compendium.GetNotificationForEndingFlag(command.Recipe.Ending);
+                    Registry.TabletopManager.EndGame(endingNotification);
+                }
+            }
         }
 
         public void SituationComplete()
-       {
+        {
             situationToken.DisplayComplete();
             situationWindow.DisplayComplete();
 
             var stacksToRetrieve = situationWindow.GetStoredStacks();
-            INotification notification=new Notification(SituationStateMachine.GetTitle(),SituationStateMachine.GetDescription());
-            situationWindow.AddOutput(stacksToRetrieve,notification);
-
+            INotification notification = new Notification(SituationStateMachine.GetTitle(),
+                SituationStateMachine.GetDescription());
+            situationWindow.AddOutput(stacksToRetrieve, notification);
         }
 
         public void SituationHasBeenReset()
         {
-          situationWindow.DisplayStarting();
+            situationWindow.DisplayStarting();
         }
 
-        public void AddOutput(IEnumerable<IElementStack> stacksForOutput,Notification notification  )
+        public void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification)
         {
             situationWindow.AddOutput(stacksForOutput, notification);
         }
@@ -218,8 +206,8 @@ namespace Assets.TabletopUi
 
 
         public void AttemptActivateRecipe()
-       {
-            var aspects =situationWindow.GetAspectsFromSlottedElements();
+        {
+            var aspects = situationWindow.GetAspectsFromAllSlottedElements();
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id);
             if (recipe != null)
             {
@@ -234,26 +222,23 @@ namespace Assets.TabletopUi
             situationWindow.ModifyStoredElementStack(elementId, quantity);
         }
 
-       public void AllOutputsGone()
-       {
+        public void AllOutputsGone()
+        {
             SituationStateMachine.AllOutputsGone();
             //if this was a transient verb, clean up everything and finish.
             //otherwise, prep the window for the next recipe
             if (situationToken.IsTransient)
-           {
-               situationToken.Retire();
-               situationWindow.Retire();
+            {
+                situationToken.Retire();
+                situationWindow.Retire();
                 //at the moment, the controller is accessed through the token
-               //if we attach the controller to a third object, we'd need to retire that too
-           }
-
-              
-
-       }
+                //if we attach the controller to a third object, we'd need to retire that too
+            }
+        }
 
         public Hashtable GetSaveDataForSituation()
         {
-           var situationSaveData=new Hashtable();
+            var situationSaveData = new Hashtable();
             var exporter = new GameDataExporter();
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
@@ -264,46 +249,44 @@ namespace Assets.TabletopUi
                 situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
             }
 
-            
+
             //save stacks in window (starting) slots
-            if(situationWindow.GetStacksInStartingSlots().Any())
-            { 
-            var htStartingSlots= exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
-            situationSaveData.Add(SaveConstants.SAVE_STARTINGSLOTELEMENTS,htStartingSlots);
+            if (situationWindow.GetStacksInStartingSlots().Any())
+            {
+                var htStartingSlots = exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
+                situationSaveData.Add(SaveConstants.SAVE_STARTINGSLOTELEMENTS, htStartingSlots);
             }
 
             //save stacks in ongoing slots
             if (situationWindow.GetStacksInOngoingSlots().Any())
-            { 
-            var htOngoingSlots = exporter.GetHashTableForStacks(situationWindow.GetStacksInOngoingSlots());
-            situationSaveData.Add(SaveConstants.SAVE_ONGOINGSLOTELEMENTS,htOngoingSlots);
+            {
+                var htOngoingSlots = exporter.GetHashTableForStacks(situationWindow.GetStacksInOngoingSlots());
+                situationSaveData.Add(SaveConstants.SAVE_ONGOINGSLOTELEMENTS, htOngoingSlots);
             }
 
             //save stacks in storage
-            if(situationWindow.GetStoredStacks().Any())
-            { 
-            var htStacksInStorage = exporter.GetHashTableForStacks(situationWindow.GetStoredStacks());
-            situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS,htStacksInStorage);
+            if (situationWindow.GetStoredStacks().Any())
+            {
+                var htStacksInStorage = exporter.GetHashTableForStacks(situationWindow.GetStoredStacks());
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS, htStacksInStorage);
             }
 
             //save notes, and their contents
-            if(situationWindow.GetCurrentOutputs().Any())
-            { 
-            var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetCurrentOutputs());
-            situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTS,htOutputs);
+            if (situationWindow.GetCurrentOutputs().Any())
+            {
+                var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetCurrentOutputs());
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTS, htOutputs);
             }
-            return situationSaveData;                
-                
-            }
+            return situationSaveData;
+        }
 
-        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo,string slotType)
+        public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType)
         {
-            if (slotType==SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
+            if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
                 return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
             else
                 return situationWindow.GetOngoingSlotBySaveLocationInfoPath(locationInfo);
         }
-
     }
-    }
+}
 

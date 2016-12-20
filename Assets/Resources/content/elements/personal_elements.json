@@ -1,18 +1,17 @@
 {"elements":
     [
        
-               {
-            id: "hungry",
-            label: "Hungry",
+		     {
+        id: "hunger",
+            label: "Hunger",
             aspects:
-            {
-                grail: CONVENTIONS.QUANTITY_TINY
-            },
-            maxvalue:1,
-            description: "When your mouth waters, when your vision swims, you see the red cup; and now and then it will speak to you."
-            "notes": "this is removed at the end of each day in which you can support your needs."
-        },
-                {
+            {illhealth: CONVENTIONS.QUANTITY_TINY,
+			  grail: CONVENTIONS.QUANTITY_TINY},
+            		slots:
+						{nourishment: {required: {shilling: 1},forbidden: {}}}
+            description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me.",
+			},
+        {
             id: "reason",
             label: "Reason",
             aspects:

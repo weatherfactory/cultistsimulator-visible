@@ -152,9 +152,13 @@ namespace Assets.CS.TabletopUI
             return ongoingSlotsContainer.GetStacksInSlots();
         }
 
-        public AspectsDictionary GetAspectsFromSlottedElements()
+        public AspectsDictionary GetAspectsFromAllSlottedElements()
         {
-            return startingSlotsContainer.GetAspectsFromSlottedCards();
+            var slottedAspects=new AspectsDictionary();
+            slottedAspects.CombineAspects(startingSlotsContainer.GetAspectsFromSlottedCards());
+            slottedAspects.CombineAspects(ongoingSlotsContainer.GetAspectsFromSlottedCards());
+
+            return slottedAspects;
         }
 
         public IEnumerable<ISituationOutput> GetCurrentOutputs()

@@ -52,7 +52,7 @@ namespace Assets.Editor.Tests
         {
             IAspectsDictionary startingSlotAspects=new AspectsDictionary {{ "1",1}};
             var recipe = TestObjectGenerator.GenerateRecipe(1);
-            situationDetailsMock.GetAspectsFromSlottedElements().Returns(startingSlotAspects);
+            situationDetailsMock.GetAspectsFromAllSlottedElements().Returns(startingSlotAspects);
             compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"").ReturnsForAnyArgs(recipe);
           sc.StartingSlotsUpdated();
             situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
@@ -64,7 +64,7 @@ namespace Assets.Editor.Tests
         public void ItemAddedToOngoingSlot_UpdatesAspectsAndRecipePrediction_WithOngoingSlotAspects()
         {
             situationDetailsMock.GetAspectsFromStoredElements().Returns(new AspectsDictionary());
-            situationDetailsMock.GetAspectsFromSlottedElements().Returns(new AspectsDictionary());
+            situationDetailsMock.GetAspectsFromAllSlottedElements().Returns(new AspectsDictionary());
 
             sc.OngoingSlotsUpdated();
 
