@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
 using Assets.Logic;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
 using UnityEngine.Assertions;
 
@@ -17,7 +18,6 @@ namespace Assets.Core.Entities
         float Warmup { get; }
         string RecipeId { get; }
         IList<SlotSpecification> GetSlotsForCurrentRecipe();
-        void Subscribe(ISituationStateMachineSituationSubscriber s);
         string GetTitle();
         string GetStartingDescription();
         string GetDescription();
@@ -26,6 +26,7 @@ namespace Assets.Core.Entities
         string GetPrediction(IRecipeConductor rc);
         void Beginning();
         void Start(Recipe primaryRecipe);
+        void Reset();
     }
 
     public class SituationStateMachine : ISituationStateMachine
@@ -35,6 +36,8 @@ namespace Assets.Core.Entities
         public float TimeRemaining { private set; get; }
         public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
         public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
+        private ISituationStateMachineSituationSubscriber subscriber;
+
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
         {
@@ -43,12 +46,12 @@ namespace Assets.Core.Entities
             else
                 return new List<SlotSpecification>();
         }
-        private HashSet<ISituationStateMachineSituationSubscriber> subscribers=new HashSet<ISituationStateMachineSituationSubscriber>();
+        
 
-        public SituationStateMachine()
+        public SituationStateMachine(ISituationStateMachineSituationSubscriber s)
         {
-            State=SituationState.Unstarted;
-           
+            subscriber = s;
+            Reset();
         }
 
         public void Start(Recipe primaryRecipe)
@@ -58,18 +61,23 @@ namespace Assets.Core.Entities
             State = SituationState.FreshlyStarted;
         }
 
-        public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe)
+        public void Reset()
         {
+          currentPrimaryRecipe = null;
+          TimeRemaining = 0;
+          State=SituationState.Unstarted;
+            subscriber.SituationHasBeenReset();
+        }
+
+        public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe,ISituationStateMachineSituationSubscriber s)
+        {
+            subscriber = s;
             currentPrimaryRecipe = withPrimaryRecipe;
             TimeRemaining = timeRemaining;
             State = state;
         }
 
 
-        public void Subscribe(ISituationStateMachineSituationSubscriber s)
-        {
-            subscribers.Add(s);
-        }
 
 
         public string GetTitle()
@@ -98,10 +106,7 @@ namespace Assets.Core.Entities
         public SituationState Continue(IRecipeConductor rc,float interval)
         {
 
-            if (State == SituationState.Ending)
-            {
-                Extinct();
-            }
+      
             if (State == SituationState.RequiringExecution)
             {
                 End(rc);
@@ -114,11 +119,11 @@ namespace Assets.Core.Entities
             {
                 Beginning();
             }
-            else if (State == SituationState.Unstarted)
+            else if (State == SituationState.Unstarted || State==SituationState.Extinct)
             {
-                //do nothing
+                //do nothing: it's either not running, or it's finished running and waiting for user action
             }
-            else
+            else if(State==SituationState.Ongoing)
             {
                 TimeRemaining = TimeRemaining - interval;
                 Ongoing();
@@ -141,16 +146,14 @@ namespace Assets.Core.Entities
         public void Beginning()
         {
             State=SituationState.Ongoing;
-           foreach(var s in subscribers)
-               s.SituationBeginning();
+           subscriber.SituationBeginning();
         }
 
 
         private void Ongoing()
         {
             State=SituationState.Ongoing;
-            foreach (var s in subscribers)
-                s.SituationOngoing();
+            subscriber.SituationOngoing();
         }
 
         private void RequireExecution(IRecipeConductor rc)
@@ -164,20 +167,18 @@ namespace Assets.Core.Entities
             if (recipesToExecute.First().Id != currentPrimaryRecipe.Id)
                 currentPrimaryRecipe = recipesToExecute.First();
 
-            foreach (var s in subscribers)
-            {
                 foreach (var r in recipesToExecute)
                 {
                     IEffectCommand ec=new EffectCommand(r,
                         r.ActionId!=currentPrimaryRecipe.ActionId);
-                    s.SituationExecutingRecipe(ec);
+                subscriber.SituationExecutingRecipe(ec);
                 }
-            }
+            
         }
 
         private void End(IRecipeConductor rc)
         {
-            State=SituationState.Ending;
+
 
             var loopedRecipe = rc.GetLoopedRecipe(currentPrimaryRecipe);
             
@@ -195,8 +196,7 @@ namespace Assets.Core.Entities
         private void Extinct()
         {
             State = SituationState.Extinct;
-            foreach (var s in subscribers)
-                s.SituationExtinct();
+            subscriber.SituationExtinct();
         }
 
     }

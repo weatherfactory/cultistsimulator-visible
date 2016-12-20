@@ -59,7 +59,7 @@ namespace Assets.CS.TabletopUI
 
         public SituationState SituationState
         {
-            get { return situationController.SituationStateMachine == null ? SituationState.Extinct : situationController.SituationStateMachine.State; }
+            get { return situationController.SituationStateMachine.State; }
         }
 
         public bool IsOpen = false;

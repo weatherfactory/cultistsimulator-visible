@@ -35,9 +35,11 @@ namespace Assets.Editor.Tests
 
 
             sc = new SituationController(compendiumMock);
-            sc.SituationStateMachine = situationStateMachineMock;
+            
             var command=new SituationCreationCommand(basicVerb,null);
             sc.Initialise(command, situationAnchorMock,situationDetailsMock);
+
+            sc.SituationStateMachine = situationStateMachineMock;
 
         }
 
@@ -70,6 +72,19 @@ namespace Assets.Editor.Tests
 
         }
 
+        [Test]
+        public void AllOutputsGone_ResetsStateMachine()
+        {
+            sc.AllOutputsGone();
+            situationStateMachineMock.Received().Reset();
+        }
+
+        [Test]
+        public void SituationHasBeenReset_DisplaysStartingInfoInDetails()
+        {
+            sc.SituationHasBeenReset();
+            situationDetailsMock.Received().DisplayStarting();
+        }
 
     }
 }

@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationDetails
     {
         void Initialise(IVerb verb,SituationController controller);
-        void Show(bool situationOngoing);
+        void Show();
         void Hide();
         void DisplayAspects(IAspectsDictionary forAspects);
         void DisplayRecipe(Recipe r);

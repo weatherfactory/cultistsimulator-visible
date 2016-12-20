@@ -41,7 +41,7 @@ namespace Assets.TabletopUi
             if (command.Recipe!=null)
                 RecreateSituation(command);
             else
-                SituationStateMachine = new SituationStateMachine();
+                SituationStateMachine = new SituationStateMachine(this);
 
         }
 
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi
         
             situationToken.OpenToken();
 
-            situationWindow.Show(SituationStateMachine!=null);
+            situationWindow.Show();
         }
 
 
@@ -114,13 +114,14 @@ namespace Assets.TabletopUi
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
             HeartbeatResponse response=new HeartbeatResponse();
-            if (SituationStateMachine != null)
-            {
+
                 RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(), new Dice());
                 SituationStateMachine.Continue(rc, interval);
-                response.SlotsToFill = situationToken.GetUnfilledGreedySlots();
-            }
+
+            if (SituationStateMachine.State==SituationState.Ongoing)
+                    response.SlotsToFill = situationToken.GetUnfilledGreedySlots();
+
 
             return response;
         }
@@ -139,6 +140,7 @@ namespace Assets.TabletopUi
         public void SituationBeginning()
         {
             situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
+            situationWindow.DisplayOngoing();
             UpdateSituationDisplayTextInWIndow();
         }
         public void SituationOngoing()
@@ -188,10 +190,12 @@ namespace Assets.TabletopUi
             situationWindow.AddOutput(stacksToRetrieve,notification);
 
             situationToken.SituationExtinct();
-
-            //and finally, create an unstarted situation
-            SituationStateMachine = new SituationStateMachine();
            
+        }
+
+        public void SituationHasBeenReset()
+        {
+          situationWindow.DisplayStarting();
         }
 
         public void AddOutput(IEnumerable<IElementStack> stacksForOutput,Notification notification  )
@@ -201,8 +205,7 @@ namespace Assets.TabletopUi
 
         public void RecreateSituation(SituationCreationCommand command)
         {
-            SituationStateMachine = command.CreateSituationStateMachine();
-            SituationStateMachine.Subscribe(this);
+            SituationStateMachine = command.CreateSituationStateMachine(this);
             situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
             situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
             UpdateSituationDisplayTextInWIndow();
@@ -218,24 +221,23 @@ namespace Assets.TabletopUi
                 situationWindow.RunSlotConsumptions();
                 situationToken.StoreStacks(situationWindow.GetStacksInStartingSlots());
                 SituationStateMachine.Start(recipe);
-                RecreateSituation(new SituationCreationCommand(null,recipe));
-                situationWindow.Show(true);
             }
         }
 
        public void AllOutputsGone()
        {
-           //if this was a transient verb, clean up everything and finish.
-           //otherwise, prep the window for the next recipe
-           if (situationToken.IsTransient)
+            SituationStateMachine.Reset();
+            //if this was a transient verb, clean up everything and finish.
+            //otherwise, prep the window for the next recipe
+            if (situationToken.IsTransient)
            {
                situationToken.Retire();
                situationWindow.Retire();
                 //at the moment, the controller is accessed through the token
                //if we attach the controller to a third object, we'd need to retire that too
            }
-            else
-              situationWindow.DisplayStarting();
+
+              
 
        }
 

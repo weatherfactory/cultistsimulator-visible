@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi.Scripts.Interfaces;
 
 namespace Assets.Core.Commands
 {
@@ -33,9 +34,9 @@ namespace Assets.Core.Commands
             return Verb;
         }
 
-        public ISituationStateMachine CreateSituationStateMachine()
+        public ISituationStateMachine CreateSituationStateMachine(ISituationStateMachineSituationSubscriber subscriber)
         {
-            var machine=new SituationStateMachine();
+            var machine=new SituationStateMachine(subscriber);
             if (Recipe == null)
                 return machine;
 
@@ -44,7 +45,7 @@ namespace Assets.Core.Commands
             if (TimeRemaining == null)
                 return machine;
 
-            return new SituationStateMachine(TimeRemaining.Value,State.Value,Recipe);
+            return new SituationStateMachine(TimeRemaining.Value,State.Value,Recipe, subscriber);
     }
 
 }

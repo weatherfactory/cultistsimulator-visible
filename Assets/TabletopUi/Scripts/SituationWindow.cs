@@ -55,16 +55,12 @@ namespace Assets.CS.TabletopUI
             situationController = sc;
             Verb = verb;
             startingSlotsContainer.Initialise(situationController);
+            DisplayStarting();
         }
 
-        public void Show(bool situationOngoing)
+        public void Show()
         {
             canvasGroupFader.Show();
-
-            if(situationOngoing || outputContainer.GetCurrentOutputs().Any())
-                DisplayOngoing();
-            else
-              DisplayStarting();
 
         }
 
@@ -75,6 +71,10 @@ namespace Assets.CS.TabletopUI
 
 
         public void DisplayOngoing() {
+
+            Debug.Log("Display ongoing  " + Verb.Id);
+
+
             ongoingSlotsContainer.Initialise(situationController);
 
             startingSlotsContainer.gameObject.SetActive(true);
@@ -86,7 +86,7 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayStarting()
         {
-
+            Debug.Log("Display starting " + Verb.Id);
 
             startingSlotsContainer.gameObject.SetActive(true);
             outputContainer.gameObject.SetActive(false);
