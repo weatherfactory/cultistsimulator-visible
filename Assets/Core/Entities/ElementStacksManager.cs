@@ -12,7 +12,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 public interface IElementStacksManager
 {
     /// <summary>
-    /// Reduces matching stacks until change is satisfied
+    /// Reduces matching stacks until change is satisfied - NB a match is also a stack which possesses this aspect
     /// </summary>
     /// <param name="elementId"></param>
     /// <param name="quantityChange">must be negative</param>
@@ -61,13 +61,8 @@ public class ElementStacksManager : IElementStacksManager
         while(unsatisfiedChange<0)
         {
             IElementStack cardToRemove = wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId) );
-
-            //IElementStack cardToRemove = wrapper.GetStacks().FirstOrDefault(c => c.Id == elementId && c.Defunct==false);
-            //if (cardToRemove == null)
-            //    //no elements which match that id: try looking for elements which possess an aspect with that id
-            //    cardToRemove = wrapper.GetStacks().FirstOrDefault(c => c.GetAspects().ContainsKey(elementId));
-            
-            if(cardToRemove==null) //if it's *still* null, we haven't found either a concrete matching element, or an element with that ID.
+ 
+            if(cardToRemove==null) //we haven't found either a concrete matching element, or an element with that ID.
                 //so end execution here, and return the unsatisfied change amount
                 return unsatisfiedChange;
 
