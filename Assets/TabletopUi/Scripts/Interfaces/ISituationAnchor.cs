@@ -22,23 +22,20 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Initialise(IVerb verb, SituationController controller);
 
         IEnumerable<IElementStack> GetStoredStacks();
-        IEnumerable<IElementStack> GetStacksInOngoingSlots();
         void StoreStacks(IEnumerable<IElementStack> stacksToStore);
         IAspectsDictionary GetAspectsFromStoredElements();
-        IAspectsDictionary GetAspectsFromSlottedElements();
-        void DisplaySlotsForSituation(IList<SlotSpecification> ongoingSlots);
+        void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots);
         void SituationComplete();
 
-        IList<IRecipeSlot> GetUnfilledGreedySlots();
         IRecipeSlot GetSlotFromSituation(string locationInfo, string slotType);
-        IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
         void DisplayTimeRemaining(float duration, float timeRemaining);
-        void AbsorbOngoingSlotContents();
         void ModifyStoredElementStack(string elementId, int quantity);
 
         HeartbeatResponse ExecuteHeartbeat(float interval);
 
         bool Retire();
         void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification);
+        ElementStacksManager GetSituationStorageStacksManager();
+        void UpdateMiniSlotDisplay(IEnumerable<IElementStack> getStacksInOngoingSlots);
     }
 }

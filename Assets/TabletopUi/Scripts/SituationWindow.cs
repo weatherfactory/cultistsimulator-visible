@@ -137,6 +137,10 @@ namespace Assets.CS.TabletopUI
             return startingSlotsContainer.GetStacksInSlots();
         }
 
+        public IEnumerable<IElementStack> GetStacksInOngoingSlots()
+        {
+            return ongoingSlotsContainer.GetStacksInSlots();
+        }
 
         public AspectsDictionary GetAspectsFromSlottedElements()
         {
@@ -148,12 +152,26 @@ namespace Assets.CS.TabletopUI
             return outputContainer.GetCurrentOutputs();
         }
 
+        public IList<IRecipeSlot> GetUnfilledGreedySlots()
+        {
+
+            return ongoingSlotsContainer.GetUnfilledGreedySlots();
+        }
+
+
+        public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo)
+        {
+            return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
+        }
+
         public void RunSlotConsumptions()
         {
             foreach (var s in startingSlotsContainer.GetAllSlots())
                 s.RunConsumption();
 
         }
+
+
 
         public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification) {
             startingSlotsContainer.gameObject.SetActive(false);

@@ -26,5 +26,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Retire();
         IEnumerable<ISituationOutput> GetCurrentOutputs();
         void RunSlotConsumptions();
+        IEnumerable<IElementStack> GetStacksInOngoingSlots();
+        IList<IRecipeSlot> GetUnfilledGreedySlots();
+        IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
     }
 }

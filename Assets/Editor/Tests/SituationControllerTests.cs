@@ -66,7 +66,7 @@ namespace Assets.Editor.Tests
 
             sc.OngoingSlotsUpdated();
             situationAnchorMock.Received().GetAspectsFromStoredElements();
-            situationAnchorMock.Received().GetAspectsFromSlottedElements();
+            situationDetailsMock.Received().GetAspectsFromSlottedElements();
             situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
             situationDetailsMock.ReceivedWithAnyArgs().UpdateSituationDisplay("","","");
 

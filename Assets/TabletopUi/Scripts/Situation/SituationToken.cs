@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ using Assets.TabletopUi.SlotsContainers;
 using Noon;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -50,9 +52,9 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] TextMeshProUGUI completionText;
         [SerializeField] GameObject selectedMarker;
         [SerializeField] public SituationStorage situationStorage;
-        [SerializeField] private OngoingSlotsContainer ongoingSlotsContainer;
-        [SerializeField] Image ongoingSlot;
-        [SerializeField] Image ongoingSlotArt;
+
+        [SerializeField] Image ongoingSlotImage;
+        [SerializeField] Image ongoingSlotArtImage;
 
         private IVerb _verb;
         private SituationController situationController;
@@ -107,8 +109,8 @@ namespace Assets.CS.TabletopUI
 			SetTimerVisibility(false);
 			ShowCompletionCount(0);
 
-            ongoingSlot.gameObject.SetActive(false);
-            ongoingSlotsContainer.Initialise(situationController);
+            ongoingSlotImage.gameObject.SetActive(false);
+
         }
         
 
@@ -143,12 +145,7 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public void AbsorbOngoingSlotContents()
-        {
-            var inputStacks = GetStacksInOngoingSlots();
-            var storageGateway = GetSituationStorageStacksManager();
-            storageGateway.AcceptStacks(inputStacks);
-        }
+
 
         public void ModifyStoredElementStack(string elementId, int quantity)
         {
@@ -170,16 +167,6 @@ namespace Assets.CS.TabletopUI
         public IAspectsDictionary GetAspectsFromStoredElements()
         {
             return GetSituationStorageStacksManager().GetTotalAspects();
-        }
-
-        public IAspectsDictionary GetAspectsFromSlottedElements()
-        {
-            return ongoingSlotsContainer.GetAspectsFromSlottedCards();
-        }
-
-        public IEnumerable<IElementStack> GetStacksInOngoingSlots()
-        {
-            return ongoingSlotsContainer.GetStacksInSlots();
         }
 
 
@@ -223,32 +210,41 @@ namespace Assets.CS.TabletopUI
             IsOpen = false;
         }
 
-        public void DisplaySlotsForSituation(IList<SlotSpecification> ongoingSlots) {
-            // This was removed, may break things.
-            //ongoingSlotsContainer.SetUpSlots(ongoingSlots);
+        public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)
+        {
+            var stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
 
-            ongoingSlot.gameObject.SetActive(true);
+            if(stack==null)
+            {
+                ongoingSlotArtImage.sprite = null;
+                ongoingSlotArtImage.color = Color.black;
+            }
+            else
+            {
+                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.Id);
+                ongoingSlotArtImage.color = Color.white;
+            }
+        }
+
+
+
+        public void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots) {
+
+            if(ongoingSlots.Count>1)
+                throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
+
+            ongoingSlotImage.gameObject.SetActive(true);
 
             foreach (var slot in ongoingSlots) {
                 if (slot.Greedy)
-                    ongoingSlot.color = new Color32(0x94, 0xE2, 0xEF, 0xFF);
+                    ongoingSlotImage.color = new Color32(0x94, 0xE2, 0xEF, 0xFF);
                 else
-                    ongoingSlot.color = Color.black; 
+                    ongoingSlotImage.color = Color.black; 
 
                 break; //We assume there's only one SLOT
             }
 
-            var stacks = GetStacksInOngoingSlots().ToArray<IElementStack>();
 
-            //We assume there's only one SLOT
-            if (stacks.Length == 0 || stacks[0] == null) {
-                ongoingSlotArt.sprite = null;
-                ongoingSlotArt.color = Color.black;
-            }
-            else {
-                ongoingSlotArt.sprite = ResourcesManager.GetSpriteForElement(stacks[0].Id);
-                ongoingSlotArt.color = Color.white;
-            }
     }
 
         public void SituationComplete()
@@ -262,24 +258,16 @@ namespace Assets.CS.TabletopUI
         public void DeactivateOngoingSlots() {
             // This was removed, may break things.
             //ongoingSlotsContainer.DestroyAllSlots();
-            ongoingSlot.gameObject.SetActive(false);
+            ongoingSlotImage.gameObject.SetActive(false);
         }
 
-        public IList<IRecipeSlot> GetUnfilledGreedySlots()
-        {
- 
-            return ongoingSlotsContainer.GetUnfilledGreedySlots();
-        }
+
 
         public void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification)
         {
             situationController.AddOutput(stacksForOutput,notification);
         }
 
-        public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo)
-        {
-            return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
-        }
 
         public override void OnDrop(PointerEventData eventData)
         {

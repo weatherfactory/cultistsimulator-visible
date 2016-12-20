@@ -82,9 +82,10 @@ namespace Assets.TabletopUi
             var allAspects = GetAspectsAvailableToSituation();
             situationWindow.DisplayAspects(allAspects);
 
-                situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
-                SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
-        
+            situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
+            SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
+            situationToken.UpdateMiniSlotDisplay(situationWindow.GetStacksInOngoingSlots());
+
         }
 
 
@@ -100,7 +101,7 @@ namespace Assets.TabletopUi
        {
            IAspectsDictionary existingAspects = situationToken.GetAspectsFromStoredElements();
 
-            IAspectsDictionary additionalAspects = situationToken.GetAspectsFromSlottedElements();
+            IAspectsDictionary additionalAspects = situationWindow.GetAspectsFromSlottedElements();
 
             IAspectsDictionary allAspects = new AspectsDictionary();
            allAspects.CombineAspects(existingAspects);
@@ -120,7 +121,7 @@ namespace Assets.TabletopUi
                 SituationStateMachine.Continue(rc, interval);
 
             if (SituationStateMachine.State==SituationState.Ongoing)
-                    response.SlotsToFill = situationToken.GetUnfilledGreedySlots();
+                    response.SlotsToFill = situationWindow.GetUnfilledGreedySlots();
 
 
             return response;
@@ -139,7 +140,7 @@ namespace Assets.TabletopUi
 
         public void SituationBeginning(Recipe withRecipe)
         {
-            situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
+            situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.DisplayOngoing(withRecipe);
             UpdateSituationDisplayTextInWIndow();
         }
@@ -151,11 +152,13 @@ namespace Assets.TabletopUi
 
         public void SituationExecutingRecipe(IEffectCommand command)
        {
-           //move any elements currently in OngoingSlots to situation storage
-           //NB we're doing this *before* we execute the command - the command may affect these elements too
-           situationToken.AbsorbOngoingSlotContents();
+            //move any elements currently in OngoingSlots to situation storage
+            //NB we're doing this *before* we execute the command - the command may affect these elements too
+            var inputStacks = situationWindow.GetStacksInOngoingSlots();
+            var storageGateway = situationToken.GetSituationStorageStacksManager();
+            storageGateway.AcceptStacks(inputStacks);
 
-           if (command.AsNewSituation)
+            if (command.AsNewSituation)
            {
                IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
                    command.Recipe.Description);
@@ -206,7 +209,7 @@ namespace Assets.TabletopUi
         public void RecreateSituation(SituationCreationCommand command)
         {
             SituationStateMachine = command.CreateSituationStateMachine(this);
-            situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
+            situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
             situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
             UpdateSituationDisplayTextInWIndow();
         }
@@ -263,9 +266,9 @@ namespace Assets.TabletopUi
             }
 
             //save stacks in ongoing slots
-            if (situationToken.GetStacksInOngoingSlots().Any())
+            if (situationWindow.GetStacksInOngoingSlots().Any())
             { 
-            var htOngoingSlots = exporter.GetHashTableForStacks(situationToken.GetStacksInOngoingSlots());
+            var htOngoingSlots = exporter.GetHashTableForStacks(situationWindow.GetStacksInOngoingSlots());
             situationSaveData.Add(SaveConstants.SAVE_ONGOINGSLOTELEMENTS,htOngoingSlots);
             }
 
@@ -291,7 +294,7 @@ namespace Assets.TabletopUi
             if (slotType==SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
                 return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
             else
-                return situationToken.GetOngoingSlotBySaveLocationInfoPath(locationInfo);
+                return situationWindow.GetOngoingSlotBySaveLocationInfoPath(locationInfo);
         }
 
     }
