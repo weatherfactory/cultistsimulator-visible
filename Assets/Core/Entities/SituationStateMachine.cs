@@ -51,7 +51,7 @@ namespace Assets.Core.Entities
         public SituationStateMachine(ISituationStateMachineSituationSubscriber s)
         {
             subscriber = s;
-            Reset();
+            State = SituationState.Unstarted;
         }
 
         private void Reset()

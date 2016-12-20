@@ -32,10 +32,11 @@ namespace Assets.TabletopUi
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w)
         {
             situationToken = t;
-            t.Initialise(command.GetBasicOrCreatedVerb(), this);
+            situationToken.Initialise(command.GetBasicOrCreatedVerb(), this);
 
             situationWindow = w;
-            w.Initialise(command.GetBasicOrCreatedVerb(), this);
+            situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
+            situationWindow.DisplayStarting();
 
             if (command.Recipe != null)
                 RecreateSituation(command);

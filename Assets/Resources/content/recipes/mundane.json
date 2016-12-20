@@ -63,13 +63,15 @@
         id: "rest",
         label: "Rest",
         actionId: "dream",
-        requirements: {health: 1},
+        requirements: {shilling: 1, illhealth: 1},
         effects: {
-            health: 1
+            illhealth: -1,
+			shilling:-1,
+			health: 1
         },
-        startdescription: "Take some time off.",
-        description: "Recover.",
-        warmup: 120,
+        startdescription: "startdesc",
+        description: "I shall rest; I shall recover.",
+        warmup: 90,
         craftable: true
     },
 	{

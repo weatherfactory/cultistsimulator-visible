@@ -51,12 +51,13 @@ namespace Assets.CS.TabletopUI
 
         public void Initialise(IVerb verb, SituationController sc)
         {
-
             situationController = sc;
             Verb = verb;
-            startingSlotsContainer.Initialise(situationController);
-            ongoingSlotsContainer.Initialise(situationController);
-            DisplayStarting();
+
+
+            startingSlotsContainer.Initialise(sc);
+            ongoingSlotsContainer.Initialise(sc);
+            
         }
 
         public void Show()
@@ -72,6 +73,7 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayStarting()
         {
+            startingSlotsContainer.Reset();
 
             startingSlotsContainer.gameObject.SetActive(true);
             ongoingSlotsContainer.gameObject.SetActive(false);

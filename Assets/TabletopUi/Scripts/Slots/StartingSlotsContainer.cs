@@ -12,15 +12,12 @@ namespace Assets.TabletopUi.SlotsContainers
 {
     public class StartingSlotsContainer : AbstractSlotsContainer
     {
-        public override void Initialise(SituationController sc)
-        {
-            _situationController = sc;
-            SetUpPrimarySlot();
-        }
 
-        private void SetUpPrimarySlot()
+        public void Reset()
         {
-            primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+            if(primarySlot==null)
+                primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();
         }
