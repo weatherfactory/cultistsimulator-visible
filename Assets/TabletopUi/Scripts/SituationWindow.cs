@@ -54,7 +54,6 @@ namespace Assets.CS.TabletopUI
             situationController = sc;
             Verb = verb;
 
-
             startingSlotsContainer.Initialise(sc);
             ongoingSlotsContainer.Initialise(sc);
             
@@ -199,10 +198,7 @@ namespace Assets.CS.TabletopUI
             NextRecipe.text = nextRecipeDescription;
         }
 
-        public void ModifyStoredElementStack(string elementId, int quantity)
-        {
-            GetSituationStorageStacksManager().ModifyElementQuantity(elementId, quantity);
-        }
+
 
         public IEnumerable<IElementStack> GetStoredStacks()
         {

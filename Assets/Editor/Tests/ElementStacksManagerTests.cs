@@ -23,6 +23,16 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
+        public void ReduceElement_AffectsAspectPossessor_WhenNoConcreteElementFound()
+        {
+            var ecm = new ElementStacksManager(wrapper);
+            FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
+            stackToRemove.Element.Aspects.Add("pureAspect",1);
+            ecm.ReduceElement("pureAspect", -1);
+            Assert.IsTrue(stackToRemove.Defunct);
+        }
+
+        [Test]
         public void Manager_SumsUniqueElements()
         {
             var ecg = new ElementStacksManager(wrapper);
@@ -72,7 +82,6 @@ namespace Assets.Editor.Tests
             var aspectedCards = TestObjectGenerator.CardsForElements(elements);
             wrapper.GetStacks().Returns(aspectedCards);
 
-
             var ecg = new ElementStacksManager(wrapper);
             var d = ecg.GetTotalAspects();
             Assert.AreEqual(1, d["a1"]);
@@ -83,7 +92,7 @@ namespace Assets.Editor.Tests
     [Test]
     public void Manager_ReduceElement_CanOnlyTakeNegativeArgument()
     {
-    var eca=new ElementStacksManager(wrapper);
+                    var eca=new ElementStacksManager(wrapper);
             Assert.Throws<ArgumentException>(() => eca.ReduceElement("1", 0));
             Assert.Throws<ArgumentException>(() => eca.ReduceElement("1", 1));
     }
@@ -102,18 +111,15 @@ namespace Assets.Editor.Tests
         {
             var eca = new ElementStacksManager(wrapper);
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
-            FakeElementStack secondStackToRemove = new FakeElementStack()
-            {
-                Id = firstStackToRemove.Id,
-                Quantity = 1
-            };
-            stacks.Add(secondStackToRemove);
+            FakeElementStack secondStackToRemove = stacks[1] as FakeElementStack;
+            secondStackToRemove.Element = firstStackToRemove.Element;
+                
             
             Assert.AreEqual(0,eca.ReduceElement(firstStackToRemove.Id, -2));
             Assert.IsTrue(firstStackToRemove.Defunct);
             Assert.IsTrue(secondStackToRemove.Defunct);
-            //2 stacks remaining out of 3
-            Assert.AreEqual(2,stacks.Count(s => s.Defunct==false));
+            //1 stack remaining out of 3
+            Assert.AreEqual(1,stacks.Count(s => s.Defunct==false));
         }
 
         [Test]
@@ -121,20 +127,16 @@ namespace Assets.Editor.Tests
         {
             var eca = new ElementStacksManager(wrapper);
             FakeElementStack firstStackToRemove = stacks[0] as FakeElementStack;
-            FakeElementStack secondStackToRemove = new FakeElementStack()
-            {
-                Id = firstStackToRemove.Id,
-                Quantity = 1
-            };
-            stacks.Add(secondStackToRemove);
-            
+            FakeElementStack secondStackToRemove = stacks[1] as FakeElementStack;
+            secondStackToRemove.Element = firstStackToRemove.Element;
+
 
             Assert.AreEqual(-1,eca.ReduceElement(firstStackToRemove.Id, -3));
             Assert.IsTrue(firstStackToRemove.Defunct);
             Assert.IsTrue(secondStackToRemove.Defunct);
 
-            //2 stacks remaining out of 3
-            Assert.AreEqual(2, stacks.Count(s => s.Defunct == false));          
+            //1 stack remaining out of 3
+            Assert.AreEqual(1, stacks.Count(s => s.Defunct == false));          
         }
 
         [Test]
@@ -149,8 +151,7 @@ namespace Assets.Editor.Tests
         public void Manager_IncreaseNewElementBy2_AddsNewStackOf2()
         {
             var ecg = new ElementStacksManager(wrapper);
-            FakeElementStack newStack = new FakeElementStack() {Id ="newElement",Quantity = 2};
-
+            FakeElementStack newStack = TestObjectGenerator.CreateElementCard(stacks.Count + 1.ToString(), 2);
             wrapper.ProvisionElementStack(newStack.Id, newStack.Quantity).Returns(newStack);
             ecg.IncreaseElement(newStack.Id,newStack.Quantity);
 
@@ -161,7 +162,7 @@ namespace Assets.Editor.Tests
         public void Manager_AcceptsStack()
         {
             var ecg=new ElementStacksManager(wrapper);
-            FakeElementStack newStack = new FakeElementStack() { Id = "newElement", Quantity = 2 };
+            FakeElementStack newStack =TestObjectGenerator.CreateElementCard(stacks.Count+1.ToString(),2);
             ecg.AcceptStack(newStack);
             wrapper.Received().Accept(newStack);
 
@@ -175,15 +176,15 @@ namespace Assets.Editor.Tests
     //I should mock this, actually
     public class FakeElementStack : IElementStack
     {
-        public IAspectsDictionary Aspects;
-        public string Id { get; set; }
+        public Element Element { get; set; }
+        public string Id { get { return Element.Id; } }
         public string SaveLocationInfo { get; set; }
         public int Quantity { get; set; }
         public bool Defunct { get; private set; }
 
         public IAspectsDictionary GetAspects()
         {
-            return Aspects;
+            return Element.AspectsIncludingSelf;
         }
 
         public void SetQuantity(int quantity)
@@ -193,7 +194,7 @@ namespace Assets.Editor.Tests
 
         public void Populate(string elementId, int quantity)
         {
-            Id = elementId;
+            Element = TestObjectGenerator.CreateElement(int.Parse(elementId));
             Quantity = quantity;
         }
 

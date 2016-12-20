@@ -165,7 +165,7 @@ namespace Assets.TabletopUi
                 //execute each recipe in command
                 foreach (var kvp in command.GetElementChanges())
                 {
-                    situationWindow.ModifyStoredElementStack(kvp.Key, kvp.Value);
+                    situationWindow.GetSituationStorageStacksManager().ModifyElementQuantity(kvp.Key, kvp.Value);
                 }
 
                 if (command.Recipe.Ending != null)
@@ -220,7 +220,7 @@ namespace Assets.TabletopUi
 
         public void ModifyStoredElementStack(string elementId, int quantity)
         {
-            situationWindow.ModifyStoredElementStack(elementId, quantity);
+            situationWindow.GetSituationStorageStacksManager().ModifyElementQuantity(elementId, quantity);
         }
 
         public void AllOutputsGone()

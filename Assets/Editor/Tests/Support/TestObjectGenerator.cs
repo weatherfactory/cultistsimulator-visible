@@ -12,7 +12,8 @@ public class TestObjectGenerator
 
     public static FakeElementStack CreateElementCard(string key, int quantity)
     {
-        FakeElementStack c=new FakeElementStack() {Id = key,Quantity = 1};
+        FakeElementStack c = new FakeElementStack();
+        c.Populate(key,quantity);
         return c;
     }
 
@@ -22,7 +23,7 @@ public class TestObjectGenerator
             foreach (string k in elements.Keys)
             {
                 FakeElementStack stack = CreateElementCard(k, 1);
-                stack.Aspects = elements[k].AspectsIncludingSelf;
+                stack.Element= elements[k];
                 cards.Add(stack);
             }
             return cards;
