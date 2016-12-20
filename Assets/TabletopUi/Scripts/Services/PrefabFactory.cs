@@ -26,14 +26,13 @@ namespace Assets.TabletopUi.Scripts.Services
         public NotificationWindow NotificationWindow = null;
         public SituationOutputNote SituationOutputNote = null;
         [Header("Token Subscribers")] [SerializeField] TabletopManager TabletopManager = null;
-        [SerializeField] Notifier Notifier = null;
 
 
         public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
-            token.SubscribeNotifier(pf.Notifier);
+            token.SubscribeNotifier(Registry.Notifier);
             token.SetContainer(pf.TabletopManager.tabletopContainer);
             if (saveLocationInfo != null)
                 token.SaveLocationInfo = saveLocationInfo;

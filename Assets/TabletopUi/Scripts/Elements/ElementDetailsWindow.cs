@@ -38,7 +38,7 @@ namespace Assets.CS.TabletopUI
             var stringBuilder = new System.Text.StringBuilder("Slots: "+slots.Count +"\n");
 
             for (int i = 0; i < slots.Count; i++) {
-                stringBuilder.Append(slots[i].Label);
+                stringBuilder.Append(slots[i].Id);
 
                 if (slots[i].Required.Count > 0 || slots[i].Forbidden.Count > 0)
                     stringBuilder.Append(" (");

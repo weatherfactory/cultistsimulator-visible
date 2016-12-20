@@ -155,7 +155,7 @@ namespace CS.Tests
         {
             Recipe r = recipesImported.First();
             Assert.AreEqual(1, r.SlotSpecifications.Count);
-            Assert.AreEqual(SLOT_LABEL, r.SlotSpecifications.Single().Label);
+            Assert.AreEqual(SLOT_LABEL, r.SlotSpecifications.Single().Id);
             Assert.IsTrue(r.SlotSpecifications.Single().Greedy);
             Assert.IsTrue(r.SlotSpecifications.Single().Consumes);
             Assert.AreEqual(SLOT_REQUIRED_ASPECT_ID, r.SlotSpecifications.Single().Required.Single().Key);

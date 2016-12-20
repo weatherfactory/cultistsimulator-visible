@@ -14,6 +14,16 @@ namespace Assets.CS.TabletopUI
         private static TabletopObjectBuilder m_tabletopObjectBuilder;
         private static IDice m_dice;
         private static IDraggableHolder m_draggableHolder;
+        private static Notifier m_notifier;
+
+        public static Notifier Notifier
+        {
+            get
+            {
+                Assert.IsNotNull(m_notifier, "notifier never registered");
+                return m_notifier;
+            }
+        }
 
         public static TabletopManager TabletopManager
         {
@@ -37,7 +47,7 @@ namespace Assets.CS.TabletopUI
         {
             get
         {
-                Assert.IsNotNull(m_draggableHolder, "tabletop manager never registered");
+                Assert.IsNotNull(m_draggableHolder, "DraggableHolder never registered");
                 return m_draggableHolder;
             }
         }
@@ -84,5 +94,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-}
+        public void RegisterNotifier(Notifier notifier)
+        {
+            m_notifier = notifier;
+        }
+    }
 }

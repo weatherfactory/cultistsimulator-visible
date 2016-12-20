@@ -24,7 +24,7 @@ namespace Assets.CS.TabletopUI
         RecipeSlot ParentSlot { get; set; }
  
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer,IPointerClickHandler
     {
         public event System.Action<RecipeSlot,IElementStack> onCardDropped;
         public event System.Action<IElementStack> onCardPickedUp;
@@ -157,7 +157,7 @@ namespace Assets.CS.TabletopUI
         {
             get
             {
-                string saveLocationInfo = GoverningSlotSpecification.Label;
+                string saveLocationInfo = GoverningSlotSpecification.Id;
                 if (ParentSlot != null)
                     saveLocationInfo = ParentSlot.SaveLocationInfoPath + SaveConstants.SEPARATOR + saveLocationInfo;
                 return saveLocationInfo;
@@ -173,6 +173,11 @@ namespace Assets.CS.TabletopUI
         {
             if ( GoverningSlotSpecification.Consumes & GetElementStackInSlot()!=null)
                 GetElementStackInSlot().SetQuantity(0);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Registry.Notifier.ShowSlotDetails(GoverningSlotSpecification);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.SlotsContainers
         public void Reset()
         {
             if(primarySlot==null)
-                primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+                primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(),null);
 
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();

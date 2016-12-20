@@ -51,7 +51,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         if (slotSpecification != null)
         {
             slot.GoverningSlotSpecification = slotSpecification;
-            slot.name += " - " + slotSpecification.Label;
+            slot.name += " - " + slotSpecification.Id;
         }
         slot.onCardDropped += HandleOnSlotDroppedOn;
         slot.onCardPickedUp += RespondToStackPickedUp;

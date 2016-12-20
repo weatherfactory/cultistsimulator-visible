@@ -11,7 +11,13 @@ using Noon;
 /// </summary>
 public class SlotSpecification
 {
+    public string Id { get; set; }
     public string Label { get; set; }
+
+    /// <summary>
+    /// currently, this is only used by the primary slot specification
+    /// </summary>
+    public string Description { get; set; }
     /// <summary>
     /// The element in this slot must possess at least one of these aspects
     /// </summary>
@@ -30,16 +36,19 @@ public class SlotSpecification
     public bool Consumes = false;
     private const string PRIMARY_SLOT="primary";
 
-    public SlotSpecification(string label)
+    public SlotSpecification(string id)
     {
-        Label = label;
+        Id = id;
+        Label = id;
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
     }
 
     public static SlotSpecification CreatePrimarySlotSpecification()
     {
-        return new SlotSpecification(PRIMARY_SLOT);
+        var spec=new SlotSpecification(PRIMARY_SLOT);
+        spec.Description = "";
+        return spec;
     }
 
     public SlotMatchForAspects GetSlotMatchForAspects(IAspectsDictionary aspects)

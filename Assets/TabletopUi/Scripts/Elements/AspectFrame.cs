@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using Assets.CS.TabletopUI;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -40,7 +41,7 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-    //    BM.Notify(Aspect.Label,Aspect.Description, gameObject.GetComponent<INotifyLocator>());
+    //Registry.   BM.Notify(Aspect.Label,Aspect.Description, gameObject.GetComponent<INotifyLocator>());
    }
 
     public Vector3 GetNotificationPosition()
