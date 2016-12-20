@@ -66,7 +66,7 @@ namespace Assets.Core.Entities
           currentPrimaryRecipe = null;
           TimeRemaining = 0;
           State=SituationState.Unstarted;
-            subscriber.SituationHasBeenReset();
+           subscriber.SituationHasBeenReset();
         }
 
         public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe,ISituationStateMachineSituationSubscriber s)
@@ -119,7 +119,7 @@ namespace Assets.Core.Entities
             {
                 Beginning();
             }
-            else if (State == SituationState.Unstarted || State==SituationState.Extinct)
+            else if (State == SituationState.Unstarted || State==SituationState.Complete)
             {
                 //do nothing: it's either not running, or it's finished running and waiting for user action
             }
@@ -189,14 +189,14 @@ namespace Assets.Core.Entities
                 Beginning();
             }
             else
-                Extinct();
+                Complete();
         }
 
 
-        private void Extinct()
+        private void Complete()
         {
-            State = SituationState.Extinct;
-            subscriber.SituationExtinct();
+            State = SituationState.Complete;
+            subscriber.SituationComplete();
         }
 
     }

@@ -111,11 +111,11 @@ namespace Assets.Editor.Tests
         }
 
         [Test]
-        public void Situation_GoesExtinct_WhenRecipeConductorSpecifiesNoLoopRecipe()
+        public void Situation_GoesComplete_WhenRecipeConductorSpecifiesNoLoopRecipe()
         {
             SituationStateMachine s = new SituationStateMachine(0, SituationState.RequiringExecution, r1, subscriber);
             s.Continue(rc,1);
-            Assert.AreEqual(SituationState.Extinct, s.State);
+            Assert.AreEqual(SituationState.Complete, s.State);
         }
 
         [Test]

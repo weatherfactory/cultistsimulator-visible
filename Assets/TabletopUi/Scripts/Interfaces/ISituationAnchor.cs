@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IAspectsDictionary GetAspectsFromStoredElements();
         IAspectsDictionary GetAspectsFromSlottedElements();
         void DisplaySlotsForSituation(IList<SlotSpecification> ongoingSlots);
-        void SituationExtinct();
+        void SituationComplete();
 
         IList<IRecipeSlot> GetUnfilledGreedySlots();
         IRecipeSlot GetSlotFromSituation(string locationInfo, string slotType);
