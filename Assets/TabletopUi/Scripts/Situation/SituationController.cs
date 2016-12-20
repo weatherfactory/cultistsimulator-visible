@@ -137,10 +137,10 @@ namespace Assets.TabletopUi
             situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(), SituationStateMachine.GetDescription(), nextRecipePrediction);
        }
 
-        public void SituationBeginning()
+        public void SituationBeginning(Recipe withRecipe)
         {
             situationToken.DisplaySlotsForSituation(SituationStateMachine.GetSlotsForCurrentRecipe());
-            situationWindow.DisplayOngoing();
+            situationWindow.DisplayOngoing(withRecipe);
             UpdateSituationDisplayTextInWIndow();
         }
         public void SituationOngoing()

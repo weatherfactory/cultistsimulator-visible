@@ -12,7 +12,6 @@ namespace Assets.TabletopUi.SlotsContainers
     public class OngoingSlotsContainer: AbstractSlotsContainer
     {
 
-
         public void DestroyAllSlots()
         {
             IList<RecipeSlot> currentSlots = GetAllSlots();

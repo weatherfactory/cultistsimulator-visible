@@ -24,7 +24,7 @@ namespace Assets.Core.Entities
         AspectMatchFilter GetRetrievalFilter();
         SituationState Continue(IRecipeConductor rc,float interval);
         string GetPrediction(IRecipeConductor rc);
-        void Beginning();
+        void Beginning(Recipe withRecipe);
         void Start(Recipe primaryRecipe);
         void AllOutputsGone();
     }
@@ -125,7 +125,7 @@ namespace Assets.Core.Entities
             }
             else if (State == SituationState.FreshlyStarted)
             {
-                Beginning();
+                Beginning(currentPrimaryRecipe);
             }
             else if (State == SituationState.Unstarted || State==SituationState.Complete)
             {
@@ -151,10 +151,10 @@ namespace Assets.Core.Entities
 
         }
 
-        public void Beginning()
+        public void Beginning(Recipe withRecipe)
         {
             State=SituationState.Ongoing;
-           subscriber.SituationBeginning();
+           subscriber.SituationBeginning(withRecipe);
         }
 
 
@@ -194,7 +194,7 @@ namespace Assets.Core.Entities
             { 
                 currentPrimaryRecipe = loopedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
-                Beginning();
+                Beginning(currentPrimaryRecipe);
             }
             else
                 Complete();

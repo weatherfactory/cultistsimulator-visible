@@ -21,7 +21,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         AspectsDictionary GetAspectsFromSlottedElements();
         void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);
         void DisplayStarting();
-        void DisplayOngoing();
+        void DisplayOngoing(Recipe forRecipe);
         void UpdateSituationDisplay(string stitle, string sdescription, string nextRecipeDescription);
         void Retire();
         IEnumerable<ISituationOutput> GetCurrentOutputs();

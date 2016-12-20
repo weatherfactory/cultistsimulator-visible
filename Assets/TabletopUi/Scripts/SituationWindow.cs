@@ -55,6 +55,7 @@ namespace Assets.CS.TabletopUI
             situationController = sc;
             Verb = verb;
             startingSlotsContainer.Initialise(situationController);
+            ongoingSlotsContainer.Initialise(situationController);
             DisplayStarting();
         }
 
@@ -70,15 +71,14 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void DisplayOngoing() {
+        public void DisplayOngoing(Recipe forRecipe) {
 
             Debug.Log("Display ongoing  " + Verb.Id);
 
 
-            ongoingSlotsContainer.Initialise(situationController);
-
-            startingSlotsContainer.gameObject.SetActive(true);
-            outputContainer.gameObject.SetActive(false);
+            startingSlotsContainer.gameObject.SetActive(false);
+            ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
+            outputContainer.gameObject.SetActive(true);
 
             button.gameObject.SetActive(false);
             NextRecipe.gameObject.SetActive(true);
@@ -86,7 +86,6 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayStarting()
         {
-            Debug.Log("Display starting " + Verb.Id);
 
             startingSlotsContainer.gameObject.SetActive(true);
             outputContainer.gameObject.SetActive(false);
