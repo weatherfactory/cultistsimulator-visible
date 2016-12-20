@@ -15,7 +15,12 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
 
     private void DisplayAspectImage(Element aspect)
     {
-        Sprite aspectSprite = ResourcesManager.GetSpriteForAspect(aspect.Id);
+        Sprite aspectSprite;
+        if (aspect.IsAspect) //it may be a concrete element rather than just an aspect
+         aspectSprite= ResourcesManager.GetSpriteForAspect(aspect.Id);
+        else
+            aspectSprite = ResourcesManager.GetSpriteForElement(aspect.Id);
+
         aspectImage.sprite = aspectSprite;
     }
 

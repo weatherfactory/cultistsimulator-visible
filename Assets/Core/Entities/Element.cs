@@ -15,6 +15,7 @@ public class Element
     public string Label { get; set; }
     public string Description { get; set; }
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
+    public bool IsAspect { get; set; }
 
     public IAspectsDictionary AspectsIncludingSelf
     {
@@ -29,6 +30,8 @@ public class Element
             return aspectsIncludingElementItself;
         }
     }
+
+    
 
     public Element(string id, string label, string description)
     {
