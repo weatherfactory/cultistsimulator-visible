@@ -38,5 +38,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
 
         void Retire();
+        void DisplayComplete();
     }
 }

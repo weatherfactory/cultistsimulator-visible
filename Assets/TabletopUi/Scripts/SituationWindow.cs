@@ -70,31 +70,41 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Hide();
         }
 
-
-        public void DisplayOngoing(Recipe forRecipe) {
-
-            Debug.Log("Display ongoing  " + Verb.Id);
-
-
-            startingSlotsContainer.gameObject.SetActive(false);
-            ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
-            outputContainer.gameObject.SetActive(true);
-
-            button.gameObject.SetActive(false);
-            NextRecipe.gameObject.SetActive(true);
-        }
-
         public void DisplayStarting()
         {
 
             startingSlotsContainer.gameObject.SetActive(true);
+            ongoingSlotsContainer.gameObject.SetActive(false);
             outputContainer.gameObject.SetActive(false);
-
+            
             title.text = Verb.Label;
             description.text = Verb.Description;
             NextRecipe.text = "";
 
             NextRecipe.gameObject.SetActive(false);
+        }
+
+        public void DisplayOngoing(Recipe forRecipe) {
+
+            startingSlotsContainer.gameObject.SetActive(false);
+            ongoingSlotsContainer.gameObject.SetActive(true);
+            outputContainer.gameObject.SetActive(false);
+
+            ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
+           
+
+            button.gameObject.SetActive(false);
+            NextRecipe.gameObject.SetActive(true);
+        }
+
+        public void DisplayComplete()
+        {
+            startingSlotsContainer.gameObject.SetActive(false);
+            ongoingSlotsContainer.gameObject.SetActive(false);
+            outputContainer.gameObject.SetActive(true);
+
+            aspectsDisplay.ClearAspects();
+            
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)
@@ -171,10 +181,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-
-
         public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification) {
-            startingSlotsContainer.gameObject.SetActive(false);
             outputContainer.AddOutput(stacks,notification);
         }
 

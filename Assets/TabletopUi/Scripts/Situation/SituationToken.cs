@@ -187,7 +187,7 @@ namespace Assets.CS.TabletopUI
 
     }
 
-        public void SituationComplete()
+        public void DisplayComplete()
         {
             //hide the timer: we're done here
             SetTimerVisibility(false);

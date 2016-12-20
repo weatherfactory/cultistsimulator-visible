@@ -189,15 +189,13 @@ namespace Assets.TabletopUi
 
         public void SituationComplete()
        {
-          //retrieve all stacks stored in the situation
-           var stacksToRetrieve = situationWindow.GetStoredStacks();
-            //create a notification reflecting what just happened
+            situationToken.DisplayComplete();
+            situationWindow.DisplayComplete();
+
+            var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification=new Notification(SituationStateMachine.GetTitle(),SituationStateMachine.GetDescription());
-            //put all the stacks, and the notification, into the window for player retrieval
             situationWindow.AddOutput(stacksToRetrieve,notification);
 
-            situationToken.SituationComplete();
-           
         }
 
         public void SituationHasBeenReset()

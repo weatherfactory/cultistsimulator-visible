@@ -21,7 +21,7 @@ namespace Assets.TabletopUi.Scripts
 
         }
 
-        public void ResetAspects()
+        public void ClearAspects()
         {
             foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
             DestroyObject(a.gameObject);
@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts
         }
 
         public void DisplayAspects(IAspectsDictionary aspects) {
-            ResetAspects();
+            ClearAspects();
 
             foreach (string k in aspects.Keys) 
                 AddAspectToDisplay(k,aspects[k]);
