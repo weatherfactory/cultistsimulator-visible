@@ -124,7 +124,7 @@ namespace Assets.CS.TabletopUI
             else
             {
                 title.text = "";
-                description.text = "";
+                description.text = "[If I experiment further, I may find another combination.]";
                 button.gameObject.SetActive(false);
             }
         }
