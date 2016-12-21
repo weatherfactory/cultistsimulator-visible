@@ -13,14 +13,16 @@ public class DebugTools : MonoBehaviour
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnFastForward;
+    [SerializeField]private Button btnNextTrack;
+    [SerializeField] private BackgroundMusic backgroundMusic;
 
 
     public void Awake()
     {
-        btnPlusOne.onClick.AddListener(delegate {AddCard(adjustElementNamed.text);});
-        btnMinusOne.onClick.AddListener(delegate {DecrementElement(adjustElementNamed.text);});
-        btnFastForward.onClick.AddListener(delegate { FastForward(30); });
-
+        btnPlusOne.onClick.AddListener(() => AddCard(adjustElementNamed.text));
+        btnMinusOne.onClick.AddListener(() => DecrementElement(adjustElementNamed.text));
+        btnFastForward.onClick.AddListener(() => FastForward(30));
+        btnNextTrack.onClick.AddListener(NextTrack);
     }
     void AddCard(string elementId)
     {
@@ -35,6 +37,11 @@ public class DebugTools : MonoBehaviour
     void FastForward(float interval)
     {
             heart.Beat(interval);
+    }
+
+    void NextTrack()
+    {
+        backgroundMusic.PlayRandomClip();
     }
 }
 

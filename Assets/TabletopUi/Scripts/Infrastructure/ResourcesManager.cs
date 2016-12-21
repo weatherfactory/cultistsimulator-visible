@@ -24,5 +24,10 @@ using UnityEngine;
     {
         return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
     }
+
+        public static IEnumerable<AudioClip> GetBackgroundMusic()
+        {
+            return Resources.LoadAll<AudioClip>("music/");
+        }
 }
 
