@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Services
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
    
             // build verbs
-            var verbs = Registry.Compendium.GetAllVerbs();
+            var verbs = Registry.Retrieve<ICompendium>().GetAllVerbs();
 
             for (int i = 0; i < verbs.Count; i++)
             {
@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
         public SituationToken BuildSituation(SituationCreationCommand situationCreationCommand, string locatorInfo=null)
         {
-            var situationController = new SituationController(Registry.Compendium);
+            var situationController = new SituationController(Registry.Retrieve<ICompendium>());
 
             var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel,locatorInfo);
             var window = buildSituationWindowForSituationToken(newToken);

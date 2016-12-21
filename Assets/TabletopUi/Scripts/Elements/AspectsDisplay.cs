@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts
         private void AddAspectToDisplay(string aspectId, int quantity)
         {
             AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
-            Element aspect = Registry.Compendium.GetElementById(aspectId);
+            Element aspect = Registry.Retrieve<ICompendium>().GetElementById(aspectId);
             newAspectFrame.PopulateDisplay(aspect, quantity);
 
         }

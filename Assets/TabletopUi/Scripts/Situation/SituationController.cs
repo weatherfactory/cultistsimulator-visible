@@ -157,7 +157,7 @@ namespace Assets.TabletopUi
                 IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
                     command.Recipe.Description);
                 SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe);
-                Registry.TabletopManager.BeginNewSituation(scc);
+                Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
             }
             else
             {
@@ -170,7 +170,7 @@ namespace Assets.TabletopUi
                 if (command.Recipe.Ending != null)
                 {
                     var endingNotification = compendium.GetNotificationForEndingFlag(command.Recipe.Ending);
-                    Registry.TabletopManager.EndGame(endingNotification);
+                    Registry.Retrieve<TabletopManager>().EndGame(endingNotification);
                 }
             }
         }

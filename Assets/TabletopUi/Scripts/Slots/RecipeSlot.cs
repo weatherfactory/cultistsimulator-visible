@@ -177,7 +177,7 @@ namespace Assets.CS.TabletopUI
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Registry.Notifier.ShowSlotDetails(GoverningSlotSpecification);
+            Registry.Retrieve<Notifier>().ShowSlotDetails(GoverningSlotSpecification);
         }
     }
 }

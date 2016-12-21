@@ -75,7 +75,7 @@ namespace Assets.CS.TabletopUI
         public void Populate(string elementId, int quantity)
         {
 
-            _element = Registry.Compendium.GetElementById(elementId);
+            _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
             SetQuantity(quantity);
 
             name = "Card_" + elementId;

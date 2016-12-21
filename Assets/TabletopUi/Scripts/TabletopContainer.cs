@@ -41,7 +41,7 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
 
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand,string locatorInfo=null)
     {
-       return Registry.TabletopObjectBuilder.BuildSituation(creationCommand, locatorInfo);
+       return Registry.Retrieve<TabletopObjectBuilder>().BuildSituation(creationCommand, locatorInfo);
     }
 
     public void PutOnTable(DraggableToken token)

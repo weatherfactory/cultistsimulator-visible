@@ -44,7 +44,7 @@ public class Heart : MonoBehaviour
         if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
         {
             beatCounter = 0;
-          outstandingSlotsToFill=Registry.TabletopManager.FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
+          outstandingSlotsToFill= Registry.Retrieve<TabletopManager>().FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
             
     }
@@ -54,7 +54,7 @@ public class Heart : MonoBehaviour
     {
         //foreach existing active recipe window: run beat there
         //advance timer
-        var situationTokens = Registry.TabletopManager.GetAllSituationTokens();
+        var situationTokens = Registry.Retrieve<TabletopManager>().GetAllSituationTokens();
         foreach (var st in situationTokens)
         {
            HeartbeatResponse response=st.ExecuteHeartbeat(interval);

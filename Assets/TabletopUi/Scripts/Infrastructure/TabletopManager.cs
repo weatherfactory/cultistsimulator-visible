@@ -39,7 +39,7 @@ namespace Assets.CS.TabletopUI
 
         void Start()
         {
-            var registry = gameObject.AddComponent<Registry>();
+            var registry = new Registry();
 
             var compendium = new Compendium();
             var contentImporter = new ContentImporter();
@@ -49,12 +49,19 @@ namespace Assets.CS.TabletopUI
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
 
-            registry.RegisterCompendium(compendium);
-            registry.RegisterDraggableHolder(new DraggableHolder(draggableHolderRectTransform));
-            registry.RegisterDice(new Dice());
-            registry.RegisterTabletopManager(this);
-            registry.RegisterTabletopObjectBuilder(tabletopObjectBuilder);
-            registry.RegisterNotifier(notifier);
+            //registry.RegisterCompendium(compendium);
+            //registry.RegisterDraggableHolder(new DraggableHolder(draggableHolderRectTransform));
+            //registry.RegisterDice(new Dice());
+            //registry.RegisterTabletopManager(this);
+            //registry.RegisterTabletopObjectBuilder(tabletopObjectBuilder);
+
+
+            registry.Register<ICompendium>(compendium);
+            registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
+            registry.Register<IDice>(new Dice());
+            registry.Register<TabletopManager>(this);
+            registry.Register<TabletopObjectBuilder>(tabletopObjectBuilder);
+            registry.Register<Notifier>(notifier);
 
 
 
@@ -87,7 +94,7 @@ namespace Assets.CS.TabletopUI
             }
 
 
-            var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Compendium.GetRecipeById("needs"));
+            var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("needs"));
             BeginNewSituation(needsSituationCreationCommand);
         }
 
@@ -258,7 +265,7 @@ namespace Assets.CS.TabletopUI
         {
 
             heart.StopBeating();
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Compendium), new GameDataExporter());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             try
             {
                 var htSave = saveGameManager.LoadSavedGame("save.txt");
@@ -280,7 +287,7 @@ namespace Assets.CS.TabletopUI
 
             try
             {
-            var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Compendium),new GameDataExporter());
+            var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 

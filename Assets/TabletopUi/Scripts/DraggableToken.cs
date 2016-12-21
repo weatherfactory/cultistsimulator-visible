@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -116,11 +118,11 @@ namespace Assets.CS.TabletopUI
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 		
-            RectTransform.SetParent(Registry.DraggableHolder.RectTransform);
+            RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
 		
             Vector3 pressPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder.RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
             dragOffset = startPosition - pressPos;
 
             if (onChangeDragState != null)
@@ -138,7 +140,7 @@ namespace Assets.CS.TabletopUI
 
         public void ReturnToTabletop(INotification reason)
         {
-            Registry.TabletopManager.ArrangeTokenOnTable(this);
+            Registry.Retrieve<TabletopManager>().ArrangeTokenOnTable(this);
             notifier.TokenReturnedToTabletop(this,reason);
         }
 
@@ -147,7 +149,7 @@ namespace Assets.CS.TabletopUI
 
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.DraggableHolder.RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
