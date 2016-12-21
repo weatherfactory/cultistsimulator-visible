@@ -15,7 +15,6 @@ public class Recipe
     public Dictionary<string, int> Requirements { get; set; }
     public Dictionary<string, int> Effects { get; set; }
 
-
     public Boolean Craftable { get; set; }
     public string Label { get; set; }
     public int Warmup { get; set; }
@@ -38,6 +37,10 @@ public class Recipe
     public List<RecipeAlternative> AlternativeRecipes { get; set; }
     public string Loop { get; set; }
     public string Ending { get; set; }
+    /// <summary>
+    /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
+    /// </summary>
+    public int MaxExecutions { get; set; }
     public List<SlotSpecification> SlotSpecifications { get; set; }
 
     //recipe to execute next; may be the loop recipe; this is null if no loop has been set

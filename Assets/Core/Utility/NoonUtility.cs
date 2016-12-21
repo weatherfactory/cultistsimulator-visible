@@ -13,9 +13,11 @@ namespace Noon
     {
         
 
+
         public const string KCHARACTERSTATE = "state";
         public const string KLOOP="loop";
         public const string KENDING="ending";
+        public const string KMAXEXECUTIONS = "maxexecutions";
         public const string KID = "id";
         public const string KLABEL = "label";
         public const string KACTIONID = "actionId";

@@ -62,7 +62,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<TabletopManager>(this);
             registry.Register<TabletopObjectBuilder>(tabletopObjectBuilder);
             registry.Register<Notifier>(notifier);
-
+            registry.Register<Character>(new Character());
 
 
             // Init Listeners to pre-existing Display Objects

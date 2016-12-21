@@ -23,6 +23,8 @@ namespace CS.Tests
         private const string RECIPE_1_WARMUP = "6";
         private const string RECIPE_1_LOOP = "someid";
         private const string RECIPE_1_ENDING = "anending";
+        private const int RECIPE_MAX_EXECUTIONS = 3;
+   
         private const string ASPECT_1_ID = "aspect1id";
         private const int ASPECT_1_VALUE = 2;
         private const string ASPECT_2_ID = "aspect2id";
@@ -48,7 +50,6 @@ namespace CS.Tests
         private const int SLOT_REQUIRED_ASPECT_VALUE = 1;
         private const string SLOT_FORBIDDEN_ASPECT_ID = "slotaspect2";
         private const int SLOT_FORBIDDEN_ASPECT_VALUE = 1;
-
 
 
 
@@ -119,6 +120,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KLOOP, RECIPE_1_LOOP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
+            htRecipe.Add(NoonConstants.KMAXEXECUTIONS,RECIPE_MAX_EXECUTIONS);
             htRecipe.Add(NoonConstants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(NoonConstants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(NoonConstants.KEFFECTS, htEffects);
@@ -196,6 +198,7 @@ namespace CS.Tests
             Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
             Assert.AreEqual(RECIPE_1_LOOP, recipesImported.First().Loop);
             Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().Ending);
+            Assert.AreEqual(RECIPE_MAX_EXECUTIONS,recipesImported.First().MaxExecutions);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)
