@@ -15,14 +15,14 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Show();
         void Hide();
         void DisplayAspects(IAspectsDictionary forAspects);
-        void DisplayRecipe(Recipe r);
+        void UpdateTextForRecipe(Recipe r);
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromAllSlottedElements();
         void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);
         void DisplayStarting();
         void DisplayOngoing(Recipe forRecipe);
-        void UpdateSituationDisplay(string stitle, string sdescription, string nextRecipeDescription);
+        void UpdateTextForPrediction(string nextRecipeTitle, string nextRecipeStartingDescription);
         
         IEnumerable<ISituationOutput> GetCurrentOutputs();
         void RunSlotConsumptions();

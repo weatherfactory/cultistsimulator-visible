@@ -72,21 +72,21 @@ namespace Assets.TabletopUi
 
             var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id);
 
-            situationWindow.DisplayRecipe(r);
+            situationWindow.UpdateTextForRecipe(r);
         }
 
         public void OngoingSlotsUpdated()
         {
             var allAspects = GetAspectsAvailableToSituation();
             situationWindow.DisplayAspects(allAspects);
+            var rp = getNextRecipePrediction(allAspects);
 
-            situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
-                SituationStateMachine.GetDescription(), getNextRecipePrediction(allAspects));
+            situationWindow.UpdateTextForPrediction(rp.Title,rp.StartDescription);
             situationToken.UpdateMiniSlotDisplay(situationWindow.GetStacksInOngoingSlots());
         }
 
 
-        private string getNextRecipePrediction(IAspectsDictionary aspects)
+        private RecipePrediction getNextRecipePrediction(IAspectsDictionary aspects)
         {
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
                 new Dice());
@@ -126,10 +126,9 @@ namespace Assets.TabletopUi
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
                 new Dice());
 
-            string nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
+            var nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
 
-            situationWindow.UpdateSituationDisplay(SituationStateMachine.GetTitle(),
-                SituationStateMachine.GetDescription(), nextRecipePrediction);
+            situationWindow.UpdateTextForPrediction(nextRecipePrediction.Title, nextRecipePrediction.StartDescription);
         }
 
         public void SituationBeginning(Recipe withRecipe)
@@ -202,7 +201,6 @@ namespace Assets.TabletopUi
             SituationStateMachine = command.CreateSituationStateMachine(this);
             situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
             situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
-            UpdateSituationDisplayTextInWIndow();
         }
 
 

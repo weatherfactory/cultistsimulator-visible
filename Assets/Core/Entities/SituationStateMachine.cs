@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
@@ -23,7 +24,7 @@ namespace Assets.Core.Entities
         string GetDescription();
         AspectMatchFilter GetRetrievalFilter();
         SituationState Continue(IRecipeConductor rc,float interval);
-        string GetPrediction(IRecipeConductor rc);
+        RecipePrediction GetPrediction(IRecipeConductor rc);
         void Beginning(Recipe withRecipe);
         void Start(Recipe primaryRecipe);
         void AllOutputsGone();
@@ -140,14 +141,17 @@ namespace Assets.Core.Entities
             return State;
         }
 
-        public string GetPrediction(IRecipeConductor rc)
+        public RecipePrediction GetPrediction(IRecipeConductor rc)
         {
+            var rp = new RecipePrediction();
             IList<Recipe> recipes= rc.GetActualRecipesToExecute(currentPrimaryRecipe);
-            string desc = "";
             foreach (var r in recipes)
-                desc = desc + r.Label + " (" + r.Description + "); ";
+            {
+                rp.Title += r.Label;
+                rp.StartDescription += r.StartDescription;
+            }
 
-            return "Next: " + desc;
+            return rp;
 
         }
 

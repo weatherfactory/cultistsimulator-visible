@@ -33,7 +33,7 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
-        [SerializeField] private TextMeshProUGUI NextRecipe;
+        [SerializeField] private TextMeshProUGUI ButtonBarText;
         [SerializeField] private TabletopContainer tabletopContainer;
         public IList<INotification> queuedNotifications = new List<INotification>();
         private SituationController situationController;
@@ -80,9 +80,9 @@ namespace Assets.CS.TabletopUI
             
             title.text = Verb.Label;
             description.text = Verb.Description;
-            NextRecipe.text = "";
+            ButtonBarText.text = "";
 
-            NextRecipe.gameObject.SetActive(false);
+            ButtonBarText.gameObject.SetActive(false);
         }
 
         public void DisplayOngoing(Recipe forRecipe) {
@@ -95,7 +95,7 @@ namespace Assets.CS.TabletopUI
            
 
             button.gameObject.SetActive(false);
-            NextRecipe.gameObject.SetActive(true);
+            ButtonBarText.gameObject.SetActive(true);
         }
 
         public void DisplayComplete()
@@ -113,7 +113,7 @@ namespace Assets.CS.TabletopUI
             aspectsDisplay.DisplayAspects(forAspects);
         }
 
-        public void DisplayRecipe(Recipe r)
+        public void UpdateTextForRecipe(Recipe r)
         {
             if (r != null)
             {
@@ -127,6 +127,13 @@ namespace Assets.CS.TabletopUI
                 description.text = "";
                 button.gameObject.SetActive(false);
             }
+        }
+
+        public void UpdateTextForPrediction(string nextRecipeTitle, string nextRecipeStartingDescription)
+        {
+            title.text = nextRecipeTitle;
+            description.text = nextRecipeStartingDescription;
+            
         }
 
         void HandleOnButtonClicked()
@@ -191,12 +198,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void UpdateSituationDisplay(string stitle, string sdescription, string nextRecipeDescription)
-        {
-            title.text = stitle;
-            description.text = sdescription;
-            NextRecipe.text = nextRecipeDescription;
-        }
+
 
 
 

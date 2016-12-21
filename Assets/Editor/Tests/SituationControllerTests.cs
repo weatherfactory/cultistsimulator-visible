@@ -56,7 +56,7 @@ namespace Assets.Editor.Tests
             compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"").ReturnsForAnyArgs(recipe);
           sc.StartingSlotsUpdated();
             situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
-            situationDetailsMock.Received().DisplayRecipe(recipe);
+            situationDetailsMock.Received().UpdateTextForRecipe(recipe);
         }
 
         //item added to / removed from ongoing slot updates aspects display and recipe *prediction* with stored aspects and ongoing slot aspects
@@ -69,7 +69,7 @@ namespace Assets.Editor.Tests
             sc.OngoingSlotsUpdated();
 
             situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
-            situationDetailsMock.ReceivedWithAnyArgs().UpdateSituationDisplay("","","");
+            situationDetailsMock.ReceivedWithAnyArgs().UpdateTextForPrediction("","");
 
         }
 
