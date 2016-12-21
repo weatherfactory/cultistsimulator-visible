@@ -21,7 +21,17 @@ using Assets.Core;
     public Boolean Craftable { get; set; }
         public string Label { get; set; }
         public int Warmup { get; set; }
+    /// <summary>
+    /// displayed when we identify and when we are running a recipe
+    /// </summary>
         public string StartDescription { get; set; }
+    /// <summary>
+    /// often empty string; displayed as an aside/commentary wheile a recipe is running
+    /// </summary>
+        public string Aside { get; set; }
+    /// <summary>
+    /// displayed in the results when the recipe is complete
+    /// </summary>
         public string Description { get; set; }
         public List<RecipeAlternative> AlternativeRecipes { get; set; }
         public string Loop { get; set; }

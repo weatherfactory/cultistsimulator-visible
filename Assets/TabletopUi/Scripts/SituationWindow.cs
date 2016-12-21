@@ -129,11 +129,12 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public void UpdateTextForPrediction(string nextRecipeTitle, string nextRecipeStartingDescription)
+        public void UpdateTextForPrediction(RecipePrediction recipePrediction)
         {
-            title.text = nextRecipeTitle;
-            description.text = nextRecipeStartingDescription;
-            
+            title.text = recipePrediction.Title;
+            description.text = recipePrediction.StartDescription;
+            ButtonBarText.text = recipePrediction.Aside;
+
         }
 
         void HandleOnButtonClicked()

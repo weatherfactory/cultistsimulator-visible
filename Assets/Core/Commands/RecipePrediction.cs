@@ -9,5 +9,6 @@ namespace Assets.Core.Commands
     {
         public string Title { get; set; }
         public string StartDescription { get; set; }
+        public string Aside { get; set; }
     }
 }

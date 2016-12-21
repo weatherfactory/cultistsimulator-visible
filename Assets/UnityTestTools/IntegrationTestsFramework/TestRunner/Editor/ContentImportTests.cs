@@ -19,6 +19,7 @@ namespace CS.Tests
         private const string RECIPE_1_CRAFTABLE = "false";
         private const string RECIPE_1_START_DESCRIPTION = "this # is the start!";
         private const string RECIPE_1_DESCRIPTION = "to play / us out...";
+        private const string RECIPE_1_ASIDE = "(by the way...)";
         private const string RECIPE_1_WARMUP = "6";
         private const string RECIPE_1_LOOP = "someid";
         private const string RECIPE_1_ENDING = "anending";
@@ -114,6 +115,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KACTIONID, RECIPE_1_ACTIONID);
             htRecipe.Add(NoonConstants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
             htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
+            htRecipe.Add(NoonConstants.KASIDE,RECIPE_1_ASIDE);
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KLOOP, RECIPE_1_LOOP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
@@ -212,6 +214,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_LABEL, recipesImported.First().Label);
             Assert.AreEqual(RECIPE_1_START_DESCRIPTION, recipesImported.First().StartDescription);
             Assert.AreEqual(RECIPE_1_DESCRIPTION, recipesImported.First().Description);
+            Assert.AreEqual(RECIPE_1_ASIDE,recipesImported.First().Aside);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -22,7 +23,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);
         void DisplayStarting();
         void DisplayOngoing(Recipe forRecipe);
-        void UpdateTextForPrediction(string nextRecipeTitle, string nextRecipeStartingDescription);
+        void UpdateTextForPrediction(RecipePrediction recipePrediction);
         
         IEnumerable<ISituationOutput> GetCurrentOutputs();
         void RunSlotConsumptions();

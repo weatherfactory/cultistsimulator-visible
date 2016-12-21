@@ -18,6 +18,7 @@
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
         description: "The clerks file out in silence. I am free for now.",
+		aside: "(I could devote extra effort to the work...)",
         warmup: 90,
 			slots: {
 				"Diligence":
@@ -25,7 +26,6 @@
 					required: {reason: 1,passion:1},
 					forbidden: {},
 					}
-
 				},
 				craftable: true
 	}

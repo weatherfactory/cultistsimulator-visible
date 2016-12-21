@@ -149,6 +149,7 @@ namespace Assets.Core.Entities
             {
                 rp.Title += r.Label;
                 rp.StartDescription += r.StartDescription;
+                rp.Aside += r.Aside;
             }
 
             return rp;

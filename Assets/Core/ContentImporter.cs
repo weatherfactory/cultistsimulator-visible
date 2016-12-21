@@ -175,8 +175,16 @@ public class ContentImporter
                 r.Label = htEachRecipe[NoonConstants.KLABEL].ToString();
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
                 r.ActionId = htEachRecipe[NoonConstants.KACTIONID].ToString();
-                r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
-                r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
+
+                if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
+                    r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
+
+                if (htEachRecipe.ContainsKey(NoonConstants.KDESCRIPTION))
+                    r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
+
+                if (htEachRecipe.ContainsKey(NoonConstants.KASIDE))
+                    r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
+
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
                 r.Loop = htEachRecipe[NoonConstants.KLOOP] == null ? null : htEachRecipe[NoonConstants.KLOOP].ToString();
                 r.Ending = htEachRecipe[NoonConstants.KENDING] == null ? null : htEachRecipe[NoonConstants.KENDING].ToString();

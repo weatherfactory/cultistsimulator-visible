@@ -81,7 +81,7 @@ namespace Assets.TabletopUi
             situationWindow.DisplayAspects(allAspects);
             var rp = getNextRecipePrediction(allAspects);
 
-            situationWindow.UpdateTextForPrediction(rp.Title,rp.StartDescription);
+            situationWindow.UpdateTextForPrediction(rp);
             situationToken.UpdateMiniSlotDisplay(situationWindow.GetStacksInOngoingSlots());
         }
 
@@ -128,7 +128,7 @@ namespace Assets.TabletopUi
 
             var nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
 
-            situationWindow.UpdateTextForPrediction(nextRecipePrediction.Title, nextRecipePrediction.StartDescription);
+            situationWindow.UpdateTextForPrediction(nextRecipePrediction);
         }
 
         public void SituationBeginning(Recipe withRecipe)
