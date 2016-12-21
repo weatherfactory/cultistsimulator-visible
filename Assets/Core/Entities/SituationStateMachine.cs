@@ -22,7 +22,6 @@ namespace Assets.Core.Entities
         string GetTitle();
         string GetStartingDescription();
         string GetDescription();
-        AspectMatchFilter GetRetrievalFilter();
         SituationState Continue(IRecipeConductor rc,float interval);
         RecipePrediction GetPrediction(IRecipeConductor rc);
         void Beginning(Recipe withRecipe);
@@ -107,10 +106,6 @@ namespace Assets.Core.Entities
             currentPrimaryRecipe.Description;
         }
 
-        public AspectMatchFilter GetRetrievalFilter()
-        {
-            return new AspectMatchFilter(currentPrimaryRecipe.RetrievesContentsWith);
-        }
 
         public SituationState Continue(IRecipeConductor rc,float interval)
         {

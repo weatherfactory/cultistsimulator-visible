@@ -8,53 +8,49 @@ using Assets.Core;
 /// This is mostly a bundle of properties, but the Do method is core logic! - it's where element countss are actually changed
 /// </summary>
 [Serializable]
-    public class Recipe
-    {
-        public string Id { get; set; }
-        public string ActionId { get; set; }
-        public Dictionary<string, int> Requirements { get; set; }
-        public Dictionary<string,int> Effects { get; set; }
-    ///specifies aspects which may import ingredients into the recipe situation. If any aspects are specified, then any ingredients matching
-    /// *any* of these aspects (it's a greedy filter) will go into the recipesituation. (NB 'ingredients' means 'consumed')
-        public Dictionary<string,int> PersistsIngredientsWith { get; set; }
-    public Dictionary<string, int> RetrievesContentsWith { get; set; }
+public class Recipe
+{
+    public string Id { get; set; }
+    public string ActionId { get; set; }
+    public Dictionary<string, int> Requirements { get; set; }
+    public Dictionary<string, int> Effects { get; set; }
+
+
     public Boolean Craftable { get; set; }
-        public string Label { get; set; }
-        public int Warmup { get; set; }
+    public string Label { get; set; }
+    public int Warmup { get; set; }
+
     /// <summary>
     /// displayed when we identify and when we are running a recipe
     /// </summary>
-        public string StartDescription { get; set; }
+    public string StartDescription { get; set; }
+
     /// <summary>
     /// often empty string; displayed as an aside/commentary wheile a recipe is running
     /// </summary>
-        public string Aside { get; set; }
+    public string Aside { get; set; }
+
     /// <summary>
     /// displayed in the results when the recipe is complete
     /// </summary>
-        public string Description { get; set; }
-        public List<RecipeAlternative> AlternativeRecipes { get; set; }
-        public string Loop { get; set; }
-        public string Ending { get; set; }
+    public string Description { get; set; }
+
+    public List<RecipeAlternative> AlternativeRecipes { get; set; }
+    public string Loop { get; set; }
+    public string Ending { get; set; }
     public List<SlotSpecification> SlotSpecifications { get; set; }
 
     //recipe to execute next; may be the loop recipe; this is null if no loop has been set
 
     public Recipe()
-        {
-            Requirements = new Dictionary<string, int>();
-        Effects=new Dictionary<string, int>();
-        AlternativeRecipes=new List<RecipeAlternative>();
-        PersistsIngredientsWith=new Dictionary<string, int>();
-        RetrievesContentsWith=new Dictionary<string, int>();
-        SlotSpecifications=new List<SlotSpecification>();
-        }
+    {
+        Requirements = new Dictionary<string, int>();
+        Effects = new Dictionary<string, int>();
+        AlternativeRecipes = new List<RecipeAlternative>();
+        SlotSpecifications = new List<SlotSpecification>();
+    }
 
 
-        public bool PersistsIngredients()
-        {
-            return PersistsIngredientsWith.Count > 0;
-        }
 
     public bool RequirementsSatisfiedBy(IAspectsDictionary aspects)
     {
@@ -63,7 +59,7 @@ using Assets.Core;
         {
             if (req.Value == -1) //req -1 means there must be none of the element
             {
-                if (aspects.AspectValue(req.Key)> 0)
+                if (aspects.AspectValue(req.Key) > 0)
                     return false;
             }
             else if (!(aspects.AspectValue(req.Key) >= req.Value))
@@ -75,12 +71,8 @@ using Assets.Core;
         return true;
     }
 
-    public bool RetrievesContents()
-    {
-        return RetrievesContentsWith.Count > 0;
-    }
-    }
 
+}
 
 
 public class RecipeAlternative
@@ -102,7 +94,6 @@ public class RecipeAlternative
     public bool Additional
     {
         get { return _additional; }
-
     }
 
 

@@ -215,19 +215,7 @@ public class ContentImporter
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
             }
 
-            Hashtable htPersistIngredients = htEachRecipe.GetHashtable(NoonConstants.KPERSISTINGREDIENTSWITH);
-            if(htPersistIngredients!=null)
-            foreach (string k in htPersistIngredients.Keys)
-            {
-                r.PersistsIngredientsWith.Add(k, Convert.ToInt32(htPersistIngredients[k]));
-            }
 
-            Hashtable htRetrievesContentsWith = htEachRecipe.GetHashtable(NoonConstants.KRETRIEVESCONTENTSWITH);
-            if (htRetrievesContentsWith != null)
-                foreach (string k in htRetrievesContentsWith.Keys)
-                {
-                    r.RetrievesContentsWith.Add(k, Convert.ToInt32(htRetrievesContentsWith[k]));
-                }
 
             Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
             r.SlotSpecifications = AddSlotsFromHashtable(htSlots);

@@ -143,8 +143,6 @@ namespace CS.Tests
 
             ConfirmRecipeEffectsImported(recipesImported);
 
-            ConfirmRecipePersistedAndRetrievedElements(recipesImported);
-
             ConfirmRecipeAlternativesImported(recipesImported);
 
             ConfirmRecipeSlotsImported(recipesImported);
@@ -166,14 +164,6 @@ namespace CS.Tests
             Assert.AreEqual(SLOT_FORBIDDEN_ASPECT_VALUE, r.SlotSpecifications.Single().Forbidden.Single().Value);
         }
 
-        private void ConfirmRecipePersistedAndRetrievedElements(List<Recipe> recipesImported)
-        {
-            Assert.AreEqual(PI_ASPECT_1_VALUE, recipesImported.First().PersistsIngredientsWith[PI_ASPECT_1_ID]);
-            Assert.AreEqual(PI_ASPECT_2_VALUE, recipesImported.First().PersistsIngredientsWith[PI_ASPECT_2_ID]);
-
-            Assert.AreEqual(RC_ASPECT_1_VALUE, recipesImported.First().RetrievesContentsWith[RC_ASPECT_1_ID]);
-            Assert.AreEqual(RC_ASPECT_2_VALUE, recipesImported.First().RetrievesContentsWith[RC_ASPECT_2_ID]);
-        }
 
         private static void ConfirmRecipeAlternativesImported(List<Recipe> recipesImported)
         {
