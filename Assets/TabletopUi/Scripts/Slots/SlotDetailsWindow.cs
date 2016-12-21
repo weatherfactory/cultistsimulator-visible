@@ -23,8 +23,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SetSlot(SlotSpecification slotSpecification) {
-            title.text = slotSpecification.Id;
-
+            title.text = slotSpecification.Label + slotSpecification.Description;
+            
             greedyInfo.gameObject.SetActive(slotSpecification.Greedy);
             consumesInfo.gameObject.SetActive(slotSpecification.Consumes);
 

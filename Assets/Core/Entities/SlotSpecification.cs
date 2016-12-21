@@ -47,7 +47,8 @@ public class SlotSpecification
     public static SlotSpecification CreatePrimarySlotSpecification()
     {
         var spec=new SlotSpecification(PRIMARY_SLOT);
-        spec.Description = "";
+        spec.Label = "";
+        spec.Description = "'It is the empty space which makes the bowl useful.' - Lao Tzu";
         return spec;
     }
 
