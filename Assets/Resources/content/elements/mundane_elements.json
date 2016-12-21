@@ -6,19 +6,7 @@
             aspects:
             {},
             maxvalue:77,
-            description: "Twelve pence, or one-twentieth of a pound, will support you for a day in modest circumstances."
-        },
-          {
-        id: "respect",
-            label: "Respect",
-            aspects:
-            {},
-            description: "Some earn this; some take it.",
-			           slots:
-            {
-			"overwork": {  required: {reason: 1},
-                forbidden: {},consumes: true,comment: "Leaving this in here just to see what happens. Also, consider a transient value for elements. Also, this may be redundant."}
-			}
+            description: "Twelve pence, or one-twentieth of a pound, will support you for a day in adequate comfort."
         },
 		     {
         id: "legacy",
@@ -29,6 +17,16 @@
             description: "I've inherited some peculiar papers. I should study them.",
 						slots:
 						{attention: {required: {},forbidden: {}}}
+        },
+		     {
+        id: "gloverandgloverjuniorjob",
+            label: "Junior Position at Glover & Glover",
+            aspects:
+            {},
+            maxvalue:1,
+            description: "I've inherited some peculiar papers. I should study them.",
+						slots:
+						{diligence: {required: {reason:1,passion:1},forbidden: {}}}
         }
 ]
 };

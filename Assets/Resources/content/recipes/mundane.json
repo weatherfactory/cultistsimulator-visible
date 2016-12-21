@@ -17,8 +17,7 @@
         label: "Find Clerical Work",
         actionId: "work",
         requirements: {reason: 1},
-        effects: {
-        },
+        effects: {gloverandgloverjuniorjob: 1        },
         startdescription: "Find work which will spare my body, if not my mind.",
         description: "Glover & Glover have offered me a junior position. I start at eight sharp, tomorrow morning! ",
         warmup: 10,
@@ -36,10 +35,10 @@
         craftable: true
     },
 	{
-        id: "studylegacyintuition",
-        label: "--Study your Legacy, employing Intuition",
+        id: "studylegacypassion",
+        label: "--Study your Legacy, employing Passion",
         actionId: "study",
-        requirements: {legacy:1,intuition:1},
+        requirements: {legacy:1,passion:1},
         effects: {legacy: -1},
         startdescription: "--what does my intuition tell me?",
         description: "--oho!",
