@@ -74,7 +74,7 @@ namespace Assets.CS.TabletopUI
             {
                 { "health", 3},
                 { "reason", 3},
-                { "intuition", 3},
+                { "passion", 3},
                 { "shilling", 2},
                 { "legacy", 1}
 

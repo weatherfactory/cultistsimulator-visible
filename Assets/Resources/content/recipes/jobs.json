@@ -1,38 +1,32 @@
- {"recipes": [
-	{id: "gloverandgloverfirstday",
-	label: "First Day at Glover & Glover",
-	  requirements: {},
-		effects: { shilling: 1},
-	actionId:"jobgloverandglover",
-        startdescription: "I can daydream, or I can concentrate. [Investing Reason in your job might earn promotion eventually.]",
-        description: "My first day is complete.",
-        warmup: 30,
-		slots: {
-				"Diligence":
-					{
-					required: {reason: 1},
-					forbidden: {},
-					}
-
-				},
-	loop: "jobatgloverandglover"},
+ {"recipes":
+ [
+ 	{
+        id: "findclericalwork",
+        label: "Find Clerical Work",
+        actionId: "work",
+        requirements: {reason: 1},
+        effects: {gloverandgloverjuniorjob: 1},
+        startdescription: "Find work which will spare my body, if not my mind.",
+        description: "Glover & Glover have offered me a junior position. I start at eight sharp, tomorrow morning! ",
+        warmup: 10,
+        craftable: true
+    },
 	{id: "jobatgloverandglover",
-	label: "Clerical Work at Glover & Glover",
-	  requirements: {reason: 1},
-		effects: { shilling: 1},
-	actionId:"jobgloverandglover",
-        startdescription: "One more cramped day in the office.",
-        description: "I have earned a little more life.",
-		comments: "Replace"
-        warmup: 60,
+	label: "Junior Work at Glover & Glover",
+	  requirements: {gloverandgloverjuniorjob: 1},
+		effects: { shilling: 2},
+	actionId:"work",
+        startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
+        description: "The clerks file out in silence. I am free for now.",
+        warmup: 90,
 			slots: {
 				"Diligence":
 					{
-					required: {reason: 1},
+					required: {reason: 1,passion:1},
 					forbidden: {},
 					}
 
-				},
-	loop: "jobatgloverandglover"}
+				}
+	}
 ]
 }

@@ -9,20 +9,10 @@
         },
         startdescription: "Back-breaking work for meagre pay.",
         description: "The day is done, and so am I; but I've earned my pay.",
-        warmup: 10,
+        warmup: 60,
         craftable: true
     },
-	{
-        id: "findclericalwork",
-        label: "Find Clerical Work",
-        actionId: "work",
-        requirements: {reason: 1},
-        effects: {gloverandgloverjuniorjob: 1        },
-        startdescription: "Find work which will spare my body, if not my mind.",
-        description: "Glover & Glover have offered me a junior position. I start at eight sharp, tomorrow morning! ",
-        warmup: 10,
-        craftable: true
-    },
+
 	{
         id: "studylegacyreason",
         label: "--Study your Legacy, employing Reason",
