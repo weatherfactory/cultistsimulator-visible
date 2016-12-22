@@ -49,13 +49,6 @@ namespace Assets.CS.TabletopUI
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
 
-            //registry.RegisterCompendium(compendium);
-            //registry.RegisterDraggableHolder(new DraggableHolder(draggableHolderRectTransform));
-            //registry.RegisterDice(new Dice());
-            //registry.RegisterTabletopManager(this);
-            //registry.RegisterTabletopObjectBuilder(tabletopObjectBuilder);
-
-
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());

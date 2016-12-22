@@ -35,6 +35,14 @@ public class Character
         return 0;
     }
 
+    public bool HasExhaustedRecipe(Recipe forRecipe)
+    {
+        if (forRecipe.HasInfiniteExecutions())
+            return false;
+
+        return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
+    }
+
     public string Title
     {
         get { return _title; }

@@ -161,9 +161,12 @@ namespace Assets.TabletopUi
             }
             else
             {
+                var currentCharacter = Registry.Retrieve<Character>();
+                
                 //execute each recipe in command
                 foreach (var kvp in command.GetElementChanges())
                 {
+                    currentCharacter.AddExecutionToHistory(command.Recipe.Id);
                     situationWindow.GetSituationStorageStacksManager().ModifyElementQuantity(kvp.Key, kvp.Value);
                 }
 

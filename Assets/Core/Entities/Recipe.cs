@@ -41,6 +41,11 @@ public class Recipe
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
     /// </summary>
     public int MaxExecutions { get; set; }
+    public bool HasInfiniteExecutions()
+    {
+        return MaxExecutions == 0;
+    }
+
     public List<SlotSpecification> SlotSpecifications { get; set; }
 
     //recipe to execute next; may be the loop recipe; this is null if no loop has been set
