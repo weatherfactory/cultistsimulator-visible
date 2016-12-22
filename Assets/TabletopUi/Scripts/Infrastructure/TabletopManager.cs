@@ -37,19 +37,27 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private RestartPanel restartPanel;
 
 
+        public void UpdateCompendium(ICompendium compendium)
+        {
+            
+            var contentImporter = new ContentImporter();
+            contentImporter.PopulateCompendium(compendium);
+            foreach (var p in contentImporter.GetContentImportProblems())
+                Debug.Log(p.Description);
+            
+        }
+
+
         void Start()
         {
             var registry = new Registry();
-
             var compendium = new Compendium();
-            var contentImporter = new ContentImporter();
-            contentImporter.PopulateCompendium(compendium);
-            foreach(var p in contentImporter.GetContentImportProblems())
-                Debug.Log(p.Description);
+            registry.Register<ICompendium>(compendium);
+            UpdateCompendium(compendium);
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
 
-            registry.Register<ICompendium>(compendium);
+       
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());
             registry.Register<TabletopManager>(this);

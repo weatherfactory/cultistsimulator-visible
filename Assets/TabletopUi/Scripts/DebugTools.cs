@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class DebugTools : MonoBehaviour
 {
+    
     [SerializeField] private TabletopContainer tabletopContainer;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField adjustElementNamed;
@@ -14,6 +15,7 @@ public class DebugTools : MonoBehaviour
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnFastForward;
     [SerializeField]private Button btnNextTrack;
+    [SerializeField] private Button btnUpdateContent;
     [SerializeField] private BackgroundMusic backgroundMusic;
 
 
@@ -22,6 +24,7 @@ public class DebugTools : MonoBehaviour
         btnPlusOne.onClick.AddListener(() => AddCard(adjustElementNamed.text));
         btnMinusOne.onClick.AddListener(() => DecrementElement(adjustElementNamed.text));
         btnFastForward.onClick.AddListener(() => FastForward(30));
+        btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
         btnNextTrack.onClick.AddListener(NextTrack);
     }
     void AddCard(string elementId)
@@ -37,6 +40,11 @@ public class DebugTools : MonoBehaviour
     void FastForward(float interval)
     {
             heart.Beat(interval);
+    }
+
+    void UpdateCompendiumContent()
+    {
+        Registry.Retrieve<TabletopManager>().UpdateCompendium(Registry.Retrieve<ICompendium>());
     }
 
     void NextTrack()
