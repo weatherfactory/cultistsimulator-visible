@@ -29,12 +29,14 @@ namespace Assets.Core
         private ICompendium compendium;
         private IAspectsDictionary aspectsToConsider;
         private IDice dice;
+        private Character currentCharacter;
 
-        public RecipeConductor(ICompendium c,IAspectsDictionary a,IDice d)
+        public RecipeConductor(ICompendium c,IAspectsDictionary a,IDice d,Character character)
         {
             compendium = c;
             aspectsToConsider = a;
             dice = d;
+            currentCharacter = character;
         }
 
         public Recipe GetLoopedRecipe(Recipe recipe)
@@ -60,10 +62,10 @@ namespace Assets.Core
             foreach (var ar in recipe.AlternativeRecipes)
             {
                 int diceResult = dice.Rolld100();
-                if (diceResult <= ar.Chance)
+                if (diceResult <= ar.Chance )
                 {
                     Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
-                    if(candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                    if(candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) && !currentCharacter.HasExhaustedRecipe(candidateRecipe))
                    
                     {
                         if (ar.Additional)

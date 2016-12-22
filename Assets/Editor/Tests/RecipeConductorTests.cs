@@ -63,7 +63,7 @@ namespace Assets.Editor.Tests
         {
             primaryRecipe.Loop = primaryRecipe.Id;
 
-            rc = new RecipeConductor(compendium, null,mockDice);
+            rc = new RecipeConductor(compendium, null,mockDice,new Character());
             var loopedRecipe = rc.GetLoopedRecipe(primaryRecipe);
 
             Assert.AreEqual(primaryRecipe,loopedRecipe);
@@ -74,7 +74,7 @@ namespace Assets.Editor.Tests
         {
             primaryRecipe.Loop = primaryRecipe.Id;
             primaryRecipe.Requirements.Add("loopedRecipeReq",2);
-            rc=new RecipeConductor(compendium,new AspectsDictionary() { {"loopedRecipeReq",1}}, mockDice);
+            rc=new RecipeConductor(compendium,new AspectsDictionary() { {"loopedRecipeReq",1}}, mockDice, new Character());
             var loopedRecipe = rc.GetLoopedRecipe(primaryRecipe);
             Assert.IsNull(loopedRecipe);
         }
@@ -84,7 +84,7 @@ namespace Assets.Editor.Tests
         {
             mockDice.Rolld100().Returns(recipeAlternative.Chance);
 
-     rc = new RecipeConductor(compendium, null, mockDice);
+     rc = new RecipeConductor(compendium, null, mockDice, new Character());
             IEnumerable<Recipe> recipesToExecute = rc.GetActualRecipesToExecute(primaryRecipe);
 
             Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);

@@ -70,7 +70,9 @@ namespace Assets.TabletopUi
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromAllSlottedElements();
             situationWindow.DisplayAspects(startingAspects);
 
-            var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id);
+            var currentCharacter = Registry.Retrieve<Character>();
+
+            var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id,currentCharacter);
 
             situationWindow.UpdateTextForRecipe(r);
         }
@@ -88,8 +90,9 @@ namespace Assets.TabletopUi
 
         private RecipePrediction getNextRecipePrediction(IAspectsDictionary aspects)
         {
+            var character = Registry.Retrieve<Character>();
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
-                new Dice());
+                new Dice(),character);
             return SituationStateMachine.GetPrediction(rc);
         }
 
@@ -110,8 +113,10 @@ namespace Assets.TabletopUi
         {
             HeartbeatResponse response = new HeartbeatResponse();
 
+            var currentCharacter = Registry.Retrieve<Character>();
+
             RecipeConductor rc = new RecipeConductor(compendium,
-                GetAspectsAvailableToSituation(), new Dice());
+                GetAspectsAvailableToSituation(), new Dice(), currentCharacter);
             SituationStateMachine.Continue(rc, interval);
 
             if (SituationStateMachine.State == SituationState.Ongoing)
@@ -123,8 +128,9 @@ namespace Assets.TabletopUi
 
         public void UpdateSituationDisplayTextInWIndow()
         {
+            var currentCharacter = Registry.Retrieve<Character>();
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
-                new Dice());
+                new Dice(),currentCharacter);
 
             var nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
 
@@ -210,7 +216,8 @@ namespace Assets.TabletopUi
         public void AttemptActivateRecipe()
         {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id);
+            var currentCharacter = Registry.Retrieve<Character>();
+            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter);
             if (recipe != null)
             {
                 situationWindow.RunSlotConsumptions();

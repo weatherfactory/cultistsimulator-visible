@@ -80,29 +80,29 @@ namespace CS.Tests
             Hashtable htRetrievesContents = new Hashtable();
             ArrayList alAlternatives = new ArrayList();
 
-            htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE);
-            htRequirements.Add(ASPECT_2_ID, ASPECT_2_VALUE);
+            htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE.ToString());
+            htRequirements.Add(ASPECT_2_ID, ASPECT_2_VALUE.ToString());
 
-            htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE);
-            htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE);
+            htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE.ToString());
+            htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE.ToString());
 
             htPersistIngredients.Add(PI_ASPECT_1_ID, PI_ASPECT_1_VALUE);
             htPersistIngredients.Add(PI_ASPECT_2_ID, PI_ASPECT_2_VALUE);
 
-            htRetrievesContents.Add(RC_ASPECT_1_ID, RC_ASPECT_1_VALUE);
-            htRetrievesContents.Add(RC_ASPECT_2_ID, RC_ASPECT_2_VALUE);
+            htRetrievesContents.Add(RC_ASPECT_1_ID, RC_ASPECT_1_VALUE.ToString());
+            htRetrievesContents.Add(RC_ASPECT_2_ID, RC_ASPECT_2_VALUE.ToString());
 
             Hashtable alternative1 = new Hashtable()
             {
                 {NoonConstants.KID,ALTERNATIVE_1_ID},
-                {NoonConstants.KCHANCE,ALTERNATIVE_1_CHANCE }
+                {NoonConstants.KCHANCE,ALTERNATIVE_1_CHANCE.ToString() }
 
             };
 
             Hashtable alternative2 = new Hashtable()
                             {
                 {NoonConstants.KID,ALTERNATIVE_2_ID},
-                {NoonConstants.KCHANCE,ALTERNATIVE_2_CHANCE },
+                {NoonConstants.KCHANCE,ALTERNATIVE_2_CHANCE.ToString() },
                 {NoonConstants.KADDITIONAL,true }
             };
 
@@ -120,7 +120,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KLOOP, RECIPE_1_LOOP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
-            htRecipe.Add(NoonConstants.KMAXEXECUTIONS,RECIPE_MAX_EXECUTIONS);
+            htRecipe.Add(NoonConstants.KMAXEXECUTIONS,RECIPE_MAX_EXECUTIONS.ToString());
             htRecipe.Add(NoonConstants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(NoonConstants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(NoonConstants.KEFFECTS, htEffects);

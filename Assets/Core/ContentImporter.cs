@@ -189,7 +189,7 @@ public class ContentImporter
                 r.Loop = htEachRecipe[NoonConstants.KLOOP] == null ? null : htEachRecipe[NoonConstants.KLOOP].ToString();
                 r.Ending = htEachRecipe[NoonConstants.KENDING] == null ? null : htEachRecipe[NoonConstants.KENDING].ToString();
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
-                    r.MaxExecutions = (int)htEachRecipe[NoonConstants.KMAXEXECUTIONS];
+                    r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
 
 
             }

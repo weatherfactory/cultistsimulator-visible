@@ -53,7 +53,7 @@ namespace Assets.Editor.Tests
             IAspectsDictionary startingSlotAspects=new AspectsDictionary {{ "1",1}};
             var recipe = TestObjectGenerator.GenerateRecipe(1);
             situationDetailsMock.GetAspectsFromAllSlottedElements().Returns(startingSlotAspects);
-            compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"").ReturnsForAnyArgs(recipe);
+            compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"", new Character()).ReturnsForAnyArgs(recipe);
           sc.StartingSlotsUpdated();
             situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
             situationDetailsMock.Received().UpdateTextForRecipe(recipe);

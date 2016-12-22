@@ -6,6 +6,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
 
@@ -15,7 +16,7 @@ public interface ICompendium
     void UpdateRecipes(List<Recipe> allRecipes);
     void UpdateElements(Dictionary<string, Element> elements);
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
-    Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects,string verb);
+    Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
     Element GetElementById(string elementId);
@@ -49,10 +50,10 @@ public class Compendium : ICompendium
     }
 
 
-    public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects,string verb)
+    public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character)
     {
         //for each recipe,
-        foreach (var recipe in _recipes.Where(r=>r.ActionId==verb && r.Craftable))
+        foreach (var recipe in _recipes.Where(r=>r.ActionId==verb && r.Craftable && !character.HasExhaustedRecipe(r)))
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
             bool matches = true;
