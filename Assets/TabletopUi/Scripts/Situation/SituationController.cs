@@ -182,8 +182,7 @@ namespace Assets.TabletopUi
                     Registry.Retrieve<TabletopManager>().EndGame(endingNotification);
                 }
             }
-
-            situationToken.ShowCompletionCount(1);
+            
         }
 
         public void SituationComplete()
@@ -194,7 +193,8 @@ namespace Assets.TabletopUi
             var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification = new Notification(SituationStateMachine.GetTitle(),
                 SituationStateMachine.GetDescription());
-            situationWindow.AddOutput(stacksToRetrieve, notification);
+                situationWindow.AddOutput(stacksToRetrieve, notification);
+                situationToken.ShowCompletionCount(1);
         }
 
         public void SituationHasBeenReset()

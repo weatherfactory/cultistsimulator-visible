@@ -23,8 +23,9 @@ namespace Assets.CS.TabletopUI
 
         public void SetElementCard(Element element) {
 
-            artwork.sprite = ResourcesManager.GetSpriteForElement(element.Id);
-            title.text = element.Label;
+         var elementSprite= ResourcesManager.GetSpriteForElement(element.Id);
+            artwork.sprite = elementSprite;
+         title.text = element.Label;
             description.text = element.Description; 
             slots.text = GetSlotsText(element.ChildSlotSpecifications); 
             aspects.text = "Aspects: "+GetAspectsText(element.Aspects);

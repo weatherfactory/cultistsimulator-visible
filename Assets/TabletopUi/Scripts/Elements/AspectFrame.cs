@@ -33,6 +33,7 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
 
     public void PopulateDisplay(Element aspect, int aspectValue)
     {
+        this.aspect = aspect;
         Quantity = aspectValue;
         DisplayAspectImage(aspect);
         DisplayQuantity(aspectValue);
@@ -41,8 +42,10 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-    //Registry.   BM.Notify(Aspect.Label,Aspect.Description, gameObject.GetComponent<INotifyLocator>());
-   }
+
+        Registry.Retrieve<Notifier>().ShowElementDetails(aspect);
+    
+}
 
     public Vector3 GetNotificationPosition()
     {
