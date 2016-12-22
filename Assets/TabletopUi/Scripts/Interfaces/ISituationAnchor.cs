@@ -29,5 +29,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void UpdateMiniSlotDisplay(IEnumerable<IElementStack> getStacksInOngoingSlots);
         void DisplayComplete();
         bool Retire();
+
+        void ShowCompletionCount(int newCount);
     }
 }

@@ -68,14 +68,14 @@ namespace Assets.CS.TabletopUI
 
 			countdownBar.gameObject.SetActive(b);
 			countdownBadge.gameObject.SetActive(b);
-            //countdownText.gameObject.SetActive(b); // Is child of countdownBadge, doesn't need to be toggled by itself
+
         }
 
 
 		// NOTE MARTIN: New method to show amount of fixed events:
-		void ShowCompletionCount(int newCount) {
+		public void ShowCompletionCount(int newCount) {
 			completionBadge.gameObject.SetActive(newCount > 0);
-			completionText.text = newCount.ToString(); // Is child of completionBadge, doesn't need to be toggled by itself
+			completionText.text = newCount.ToString(); 
 		}
 
 

@@ -182,6 +182,8 @@ namespace Assets.TabletopUi
                     Registry.Retrieve<TabletopManager>().EndGame(endingNotification);
                 }
             }
+
+            situationToken.ShowCompletionCount(1);
         }
 
         public void SituationComplete()
@@ -243,6 +245,8 @@ namespace Assets.TabletopUi
                 //at the moment, the controller is accessed through the token
                 //if we attach the controller to a third object, we'd need to retire that too
             }
+
+            situationToken.ShowCompletionCount(0);
         }
 
         public Hashtable GetSaveDataForSituation()
