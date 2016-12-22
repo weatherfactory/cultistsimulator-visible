@@ -32,5 +32,10 @@ public class BackgroundMusic : MonoBehaviour
             audioSource.Stop();
             audioSource.PlayOneShot(backgroundMusic.ElementAt(random.Next(0, backgroundMusic.Count())));
         }
+
+    public void SetMute(bool mute)
+    {
+        audioSource.mute=mute;
+    }
 	
 }
