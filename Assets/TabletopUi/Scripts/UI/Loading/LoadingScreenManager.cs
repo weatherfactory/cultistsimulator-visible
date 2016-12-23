@@ -8,12 +8,18 @@
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class LoadingScreenManager : MonoBehaviour {
 
-	public bool waitForInput = true;
+	bool waitForInput = true;
+
+	[Header("Buttons")]
+	public Button startGame;
+	public Button showOptions;
+	public EventSystem eventSystem;
 
 	[Header("Loading Visuals")]
 	public LoadingIcon loadingIcon;
@@ -34,9 +40,9 @@ public class LoadingScreenManager : MonoBehaviour {
 	AsyncOperation operation;
 	Scene currentScene;
 
-	public static int sceneToLoad = 1;
+	public static int sceneToLoad = 2;
 	// IMPORTANT! This is the build index of your loading scene. You need to change this to match your actual scene index
-	static int loadingSceneIndex = 2;
+	static int loadingSceneIndex = 1;
 
 	public static void LoadScene(int levelNum) {				
 		Application.backgroundLoadingPriority = ThreadPriority.High;
@@ -112,7 +118,17 @@ public class LoadingScreenManager : MonoBehaviour {
 
 	void ShowCompletionVisuals() {
 		if (loadingIcon)
-			loadingIcon.doRotation = false;
+			loadingIcon.gameObject.SetActive(false);
 	}
 
+	public void StartGame() {
+		if (!waitForInput)
+			return;
+		
+		if (DoneLoading() == false) 
+			eventSystem.SetSelectedGameObject(startGame.gameObject);
+
+		eventSystem.enabled = false;
+		waitForInput = false;		
+	}
 }

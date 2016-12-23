@@ -8,11 +8,13 @@ using Assets.CS.TabletopUI;
 public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 
 	bool isLoading = false;
-	public string gameSceneName = "TabletopPrototype";
+	public float waitUntilAutoComplete = 5f;
+	public string targetSceneName = "TabletopPrototype";
 	[SerializeField] CanvasGroupFader fader;
 
 	void Start() {
 		fader.Hide();
+		Invoke("LoadGameScene", waitUntilAutoComplete);
 	}
 
 	public void OnPointerClick (PointerEventData eventData) {
@@ -25,7 +27,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void LoadGameScene() {
-		if (isLoading)
+		if (fader.gameObject.activeInHierarchy || isLoading)
 			return;
 
 		fader.Show();
@@ -34,7 +36,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void DoLoad() {
-		SceneManager.LoadScene(gameSceneName);
+		SceneManager.LoadScene(targetSceneName);
 	}
 
 }
