@@ -120,8 +120,16 @@ namespace Assets.TabletopUi
             SituationStateMachine.Continue(rc, interval);
 
             if (SituationStateMachine.State == SituationState.Ongoing)
-                response.SlotsToFill = situationWindow.GetUnfilledGreedySlots();
+            {
+                var pair = new TokenAndSlot()
+                {
+                    Token = situationToken as SituationToken,
+                    RecipeSlot = situationWindow.GetUnfilledGreedySlot().SingleOrDefault() as RecipeSlot
+                };
+                if(pair.RecipeSlot!=null)
+                    response.SlotsToFill.Add(pair);
 
+            }
 
             return response;
         }

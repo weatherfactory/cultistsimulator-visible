@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 
 /// <summary>
 /// Top-level object
@@ -10,7 +11,7 @@ using Assets.CS.TabletopUI;
 public class Heart : MonoBehaviour
 {
     [SerializeField] private Transform allContent;
-    private HashSet<IRecipeSlot> outstandingSlotsToFill=new HashSet<IRecipeSlot>();
+    private HashSet<TokenAndSlot> outstandingSlotsToFill=new HashSet<TokenAndSlot>();
     private int beatCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20;

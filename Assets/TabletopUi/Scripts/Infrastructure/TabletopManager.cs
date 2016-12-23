@@ -7,6 +7,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -157,23 +158,23 @@ namespace Assets.CS.TabletopUI
 
         }
 
-    	public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
+    	public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill)
         {
-            var unprocessedSlots = new HashSet<IRecipeSlot>();
-            foreach (var slot in slotsToFill)
+            var unprocessedSlots = new HashSet<TokenAndSlot>();
+            foreach (var tokenSlotPair in slotsToFill)
             {
-                if (!slot.Equals(null)) //it hasn't been destroyed
+                if (!tokenSlotPair.RecipeSlot.Equals(null)) //it hasn't been destroyed
                 {
-                    if (slot.GetElementStackInSlot() == null)
+                    if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() == null)
                     {
-                        var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
+                        var stack = findStackForSlotSpecification(tokenSlotPair.RecipeSlot.GoverningSlotSpecification);
                         if (stack != null)
                         {
                             stack.SplitAllButNCardsToNewStack(1);
-                            slot.AcceptStack(stack);
+                            tokenSlotPair.RecipeSlot.AcceptStack(stack);
                         }
                         else
-                            unprocessedSlots.Add(slot);
+                            unprocessedSlots.Add(tokenSlotPair);
                     }
                 }
             }
