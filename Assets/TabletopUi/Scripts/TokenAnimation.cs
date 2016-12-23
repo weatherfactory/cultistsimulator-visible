@@ -7,7 +7,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	public event System.Action<DraggableToken> onAnimDone;
 
-	private DraggableToken token;
+	protected DraggableToken token;
 
 	private RectTransform startToken;
 	private Vector3 startPosition;
@@ -110,11 +110,13 @@ public class TokenAnimation : MonoBehaviour {
 		token.RectTransform.localScale = scaleEnd ? Vector3.zero : Vector3.one;
 		token.enabled = true;
 
-		if (onAnimDone != null)
-			onAnimDone(token);
-		
+		FireCompleteEvent();
 		Destroy(this);
 	}
 
+	protected virtual void FireCompleteEvent() {
+		if (onAnimDone != null)
+			onAnimDone(token);
+	}
 
 }

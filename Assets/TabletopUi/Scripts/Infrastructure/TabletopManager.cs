@@ -170,7 +170,7 @@ namespace Assets.CS.TabletopUI
                         if (stack != null)
                         {
                             stack.SplitAllButNCardsToNewStack(1);
-                            slot.AcceptStack(stack);
+							MoveElementToSituationSlot(stack, null, slot); // NOTE: Needs token
                         }
                         else
                             unprocessedSlots.Add(slot);
@@ -180,6 +180,21 @@ namespace Assets.CS.TabletopUI
             return unprocessedSlots;
         }
 
+		void MoveElementToSituationSlot(ElementStackToken stack, SituationToken token, IRecipeSlot targetSlot) {
+			var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
+			stackAnim.onAnimSlotDone += ElementGreedyAnimDone;
+			stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, token.RectTransform.anchoredPosition3D);
+			stackAnim.SetScaling(false, true);
+			stackAnim.SetTargetSlot(targetSlot);
+			stackAnim.StartAnim();
+		}
+
+		void ElementGreedyAnimDone(DraggableToken token, IRecipeSlot slot) {
+			var element = token as ElementStackToken;
+
+			Assert.IsNull(element, "Greedy anim done but the DraggableToken was no ElementStack!");
+			slot.AcceptStack(element);
+		}
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
