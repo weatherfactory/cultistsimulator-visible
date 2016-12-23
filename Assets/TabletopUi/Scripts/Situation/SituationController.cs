@@ -92,7 +92,7 @@ namespace Assets.TabletopUi
         {
             var character = Registry.Retrieve<Character>();
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
-                new Dice(),character);
+                new DefaultDice(), character); //nb the use of default dice: we don't want to display any recipes without a 100% chance of executing
             return SituationStateMachine.GetPrediction(rc);
         }
 

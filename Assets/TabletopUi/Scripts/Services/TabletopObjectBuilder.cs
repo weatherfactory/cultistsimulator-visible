@@ -37,7 +37,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 SituationCreationCommand command=new SituationCreationCommand(v,null);
                 var situationToken=BuildSituation(command);
                 
-                situationToken.transform.localPosition = new Vector3(-1000f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
+                situationToken.transform.localPosition = new Vector3(-700f+sTokenHorizSpace, -200f + i * sTokenVertiSpace);
                 //replace with locatorinfo
             }
 

@@ -225,7 +225,7 @@ namespace Assets.CS.TabletopUI
 
 		private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset) {
 			Vector2 marginPixels = new Vector2(50f, 50f);
-			Vector2 candidatePos = new Vector2(-100f, 250f);
+		    Vector2 candidatePos = new Vector2(0f, 250f);
 
 			float arbitraryYCutoffPoint = -1000;
 
