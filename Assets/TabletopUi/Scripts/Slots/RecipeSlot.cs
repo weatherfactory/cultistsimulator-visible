@@ -22,7 +22,9 @@ namespace Assets.CS.TabletopUI
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
         RecipeSlot ParentSlot { get; set; }
- 
+        bool Defunct { get; set; }
+        bool Retire();
+
     }
     public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer,IPointerClickHandler
     {
@@ -31,11 +33,11 @@ namespace Assets.CS.TabletopUI
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
-        
+        public bool Defunct { get; set; }
 
-		// -----------------------------------------------------------
-		// VISUAL ELEMENTS
-		public TextMeshProUGUI SlotLabel;
+        // -----------------------------------------------------------
+        // VISUAL ELEMENTS
+        public TextMeshProUGUI SlotLabel;
 		public Graphic border;
 		public LayoutGroup slotIconHolder;
 
@@ -177,6 +179,15 @@ namespace Assets.CS.TabletopUI
         {
             if ( GoverningSlotSpecification.Consumes & GetElementStackInSlot()!=null)
                 GetElementStackInSlot().SetQuantity(0);
+        }
+
+        public bool Retire()
+        {
+            DestroyObject(gameObject);
+            if (Defunct)
+                return false;
+            Defunct = true;
+            return true;
         }
 
         public void OnPointerClick(PointerEventData eventData)

@@ -56,7 +56,8 @@ namespace Assets.TabletopUi.SlotsContainers
         {
             //we do need the Equals(null); if a slot has been destroyed, it'll still show up here
             //consider moving that filter to GetAllSlots, tho
-                var candidateSlot = GetAllSlots().Where(s=>!s.Equals(null)).SingleOrDefault();
+            var slots = GetAllSlots();
+                var candidateSlot = slots.SingleOrDefault();
 
                 if (candidateSlot != null && candidateSlot.GoverningSlotSpecification.Greedy && candidateSlot.GetElementStackInSlot() == null)
                     return candidateSlot;

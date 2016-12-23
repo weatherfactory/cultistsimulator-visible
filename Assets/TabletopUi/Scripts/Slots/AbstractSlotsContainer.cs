@@ -27,7 +27,8 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
     public IList<RecipeSlot> GetAllSlots()
     {
-     return  new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>());
+     //test for null excludes any slots that have been destroyed
+        return new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>().Where(rs => rs.Defunct == false));
     }
 
     public IRecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath)
@@ -106,7 +107,7 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
         {
             tokenContained.ReturnToTabletop(null);
         }
-        DestroyObject(slot.gameObject);
+        slot.Retire();
     }
 
 
