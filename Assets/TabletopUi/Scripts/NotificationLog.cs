@@ -31,7 +31,7 @@ public class NotificationLog : MonoBehaviour {
 	IEnumerator TestLoop() {
 		while (true) {
 			yield return new WaitForSeconds( Mathf.Lerp(0.5f, 8f, Random.value) );
-			AddText("Test Random Text " + Time.time);
+			AddText("Test Random Text. Use this <color=#f6a2e2>Color to highlight</color> special game terms? " + Time.time);
 		}
 	}
 
