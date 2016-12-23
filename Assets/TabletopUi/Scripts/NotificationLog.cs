@@ -24,6 +24,7 @@ public class NotificationLog : MonoBehaviour {
 		fader.SetAlpha(0f);
 	}
 
+	// THIS IS DEBUG STUFF
 	void OnEnable() {
 		StartCoroutine(TestLoop());
 	}
@@ -38,6 +39,7 @@ public class NotificationLog : MonoBehaviour {
 	void OnDisable() {
 		StopAllCoroutines();
 	}
+	// DEBUG STUFF ENDS HERE
 
 	public void AddText(string text) {
 		int index = GetFreeTextMeshIndex();
