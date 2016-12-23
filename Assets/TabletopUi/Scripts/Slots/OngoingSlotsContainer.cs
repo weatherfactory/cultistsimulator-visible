@@ -6,10 +6,11 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using UnityEngine;
 
 namespace Assets.TabletopUi.SlotsContainers
 {
-    public class OngoingSlotsContainer: AbstractSlotsContainer
+    public class OngoingSlotsContainer : AbstractSlotsContainer
     {
 
         public void DestroyAllSlots()
@@ -22,14 +23,15 @@ namespace Assets.TabletopUi.SlotsContainers
 
             _situationController.OngoingSlotsUpdated();
         }
-        public void SetUpSlots (IList<SlotSpecification> slotsToBuild)
+
+        public void SetUpSlots(IList<SlotSpecification> slotsToBuild)
         {
             DestroyAllSlots();
             if (slotsToBuild.Any())
             {
                 gameObject.SetActive(true);
                 foreach (SlotSpecification css in slotsToBuild)
-                    BuildSlot(css.Id, css,null);
+                    BuildSlot(css.Id, css, null);
             }
         }
 
@@ -50,16 +52,17 @@ namespace Assets.TabletopUi.SlotsContainers
 
         }
 
-        public IList<IRecipeSlot> GetUnfilledGreedySlot()
+        public IRecipeSlot GetUnfilledGreedySlot()
         {
-            IList <IRecipeSlot> slotsToReturn= new List<IRecipeSlot>();
-            foreach (var s in GetAllSlots())
-            {
-                if(s.GoverningSlotSpecification.Greedy && s.GetElementStackInSlot()==null)
-                    slotsToReturn.Add(s);
-            }
+            //we do need the Equals(null); if a slot has been destroyed, it'll still show up here
+            //consider moving that filter to GetAllSlots, tho
+                var candidateSlot = GetAllSlots().Where(s=>!s.Equals(null)).SingleOrDefault();
 
-            return slotsToReturn;
+                if (candidateSlot != null && candidateSlot.GoverningSlotSpecification.Greedy && candidateSlot.GetElementStackInSlot() == null)
+                    return candidateSlot;
+                else
+                    return null;
+
         }
     }
 }

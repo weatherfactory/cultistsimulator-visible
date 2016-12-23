@@ -124,7 +124,7 @@ namespace Assets.TabletopUi
                 var pair = new TokenAndSlot()
                 {
                     Token = situationToken as SituationToken,
-                    RecipeSlot = situationWindow.GetUnfilledGreedySlot().SingleOrDefault() as RecipeSlot
+                    RecipeSlot = situationWindow.GetUnfilledGreedySlot() as RecipeSlot
                 };
                 if(pair.RecipeSlot!=null)
                     response.SlotsToFill.Add(pair);
