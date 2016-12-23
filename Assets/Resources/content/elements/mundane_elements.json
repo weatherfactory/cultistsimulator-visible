@@ -5,7 +5,6 @@
             label: "shillings",
             aspects:
             {},
-            maxvalue:77,
             description: "Twelve pence, or one-twentieth of a pound, will support you for a day in adequate comfort."
         },
 		     {
@@ -13,7 +12,6 @@
             label: "A Legacy",
             aspects:
             {},
-            maxvalue:1,
             description: "I've inherited some peculiar papers. I should study them.",
 						slots:
 						{attention: {required: {},forbidden: {}}}
@@ -22,8 +20,13 @@
         id: "gloverandgloverjuniorjob",
             label: "Junior Position at Glover & Glover",
             aspects:{},
-            maxvalue:1,
             description: "My intellect should be put to better use! But the pay is better than labourer's work."
+        },
+				     {
+        id: "gloverandgloverjob",
+            label: "Position at Glover & Glover",
+            aspects:{},
+            description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk."
         }
 ]
 };
