@@ -25,7 +25,8 @@ public class NotificationLog : MonoBehaviour {
 	}
 
 	public void AddText(string text) {
-		int index = GetFreeTextMeshIndex();
+        //Use this <color=#f6a2e2>Color to highlight</color> special game terms (just put it in the string)
+        int index = GetFreeTextMeshIndex();
 
 		textMeshes[index].text = text;
 		textMeshes[index].gameObject.SetActive(true);
