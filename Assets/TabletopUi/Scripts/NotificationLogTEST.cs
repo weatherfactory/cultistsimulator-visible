@@ -9,7 +9,7 @@ public class NotificationLogTEST : MonoBehaviour {
 	public NotificationLog log;
 
 	void OnEnable() {
-		StartCoroutine(TestLoop());
+	//	StartCoroutine(TestLoop());
 	}
 
 	IEnumerator TestLoop() {
