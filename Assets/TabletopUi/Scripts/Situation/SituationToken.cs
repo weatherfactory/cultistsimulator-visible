@@ -169,11 +169,10 @@ namespace Assets.CS.TabletopUI
 
 
         public void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots) {
-
-            if(ongoingSlots.Count>1)
+            if (ongoingSlots.Count>1)
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
 
-            ongoingSlotImage.gameObject.SetActive(true);
+			ongoingSlotImage.gameObject.SetActive(ongoingSlots.Count > 0);
 
             foreach (var slot in ongoingSlots) {
                 if (slot.Greedy)
@@ -183,8 +182,6 @@ namespace Assets.CS.TabletopUI
 
                 break; //We assume there's only one SLOT
             }
-
-
     }
 
         public void DisplayComplete()

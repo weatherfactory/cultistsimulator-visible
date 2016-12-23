@@ -162,7 +162,8 @@ namespace Assets.TabletopUi
             {
                 IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
                     command.Recipe.Description);
-                SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe);
+				
+				SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, situationToken as DraggableToken);
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
             }
             else

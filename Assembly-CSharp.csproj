@@ -50,8 +50,11 @@
      <Compile Include="Assets\Core\Commands\ElementQuantitySpecification.cs" />
      <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
      <Compile Include="Assets\Core\Commands\Notification.cs" />
+     <Compile Include="Assets\Core\Commands\RecipePrediction.cs" />
      <Compile Include="Assets\Core\Commands\SituationCreationCommand.cs" />
      <Compile Include="Assets\Core\Compendium.cs" />
+     <Compile Include="Assets\Core\ContentImportProblem.cs" />
+     <Compile Include="Assets\Core\ContentImporter.cs" />
      <Compile Include="Assets\Core\Entities\AbstractVerb.cs" />
      <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
      <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
@@ -64,7 +67,6 @@
      <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
      <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
      <Compile Include="Assets\Core\Enums\CharacterState.cs" />
-     <Compile Include="Assets\Core\Enums\ContentImporter.cs" />
      <Compile Include="Assets\Core\Enums\SituationState.cs" />
      <Compile Include="Assets\Core\Enums\Style.cs" />
      <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
@@ -75,7 +77,6 @@
      <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
      <Compile Include="Assets\Logic\AspectMatchFilter.cs" />
      <Compile Include="Assets\Logic\RecipeConductor.cs" />
-     <Compile Include="Assets\RestartPanel.cs" />
      <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
      <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
      <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
@@ -83,7 +84,7 @@
      <Compile Include="Assets\SimpleJson\OrbCreationExtensions\IntExtensions.cs" />
      <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
      <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
-     <Compile Include="Assets\SituationOutputNote.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\BackgroundMusic.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\CanvasGroupFader.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\DeactivateOnPlay.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\DebugTools.cs" />
@@ -116,6 +117,8 @@
      <Compile Include="Assets\TabletopUi\Scripts\Situation\ShittyShadowTest.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationController.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationOutputContainer.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationOutputNote.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationOutputTokenContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationStorage.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationToken.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
@@ -123,12 +126,17 @@
      <Compile Include="Assets\TabletopUi\Scripts\Slots\OngoingSlotsContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlot.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotIcon.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\SlotDetailsWindow.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\StartingSlotsContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
-     <Compile Include="Assets\TabletopUi\UI\DraggableHolder.cs" />
-     <Compile Include="Assets\TabletopUi\UI\OptionsPanel.cs" />
-     <Compile Include="Assets\TabletopUi\UI\PauseButton.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimation.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\DraggableHolder.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\Easing.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\Hotkeys.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\OptionsPanel.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\PauseButton.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\RestartPanel.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark02.cs" />

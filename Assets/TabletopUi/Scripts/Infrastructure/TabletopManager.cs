@@ -94,16 +94,29 @@ namespace Assets.CS.TabletopUI
                 ArrangeTokenOnTable(token);
             }
 
-
             var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("needs"));
             BeginNewSituation(needsSituationCreationCommand);
         }
 
         public void BeginNewSituation(SituationCreationCommand scc)
         {
-            var needsToken = tabletopObjectBuilder.BuildSituation(scc);
-            ArrangeTokenOnTable(needsToken);
+            var token = tabletopObjectBuilder.BuildSituation(scc);
+
+			if (scc.SourceToken != null) {
+				var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
+				tokenAnim.onAnimDone += SituationAnimDone;
+				tokenAnim.SetPositions(scc.SourceToken.RectTransform.anchoredPosition3D, GetFreeTokenPosition(token, new Vector2(0, -250f)));
+				tokenAnim.SetScaling(true, false);
+				tokenAnim.StartAnim();
+			}
+			else {
+				ArrangeTokenOnTable(token);
+			}
         }
+
+		void SituationAnimDone(DraggableToken token) {
+			tabletopContainer.PutOnTable(token);
+		}
 
 
         public void ClearBoard()
@@ -144,7 +157,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-    public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
+    	public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
         {
             var unprocessedSlots = new HashSet<IRecipeSlot>();
             foreach (var slot in slotsToFill)
@@ -186,46 +199,38 @@ namespace Assets.CS.TabletopUI
 
         public void ArrangeTokenOnTable(DraggableToken token)
         {
-            int marginPixels = 50;
-
-            float candidateX = -100;
-            float candidateY = 250;
-            float arbitraryYCutoffPoint = -1000;
-
-    while(TokenOverlapsPosition(token, marginPixels,candidateX,candidateY) && candidateY> arbitraryYCutoffPoint)
-            candidateY =candidateY-180;
-
-            token.transform.localPosition = new Vector3(candidateX, candidateY);
-
+			token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
             tabletopContainer.PutOnTable(token);
         }
 
         //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
-            int marginPixels = 50;
-
-            float candidateX = -100;
-            float candidateY = 250;
-            float arbitraryYCutoffPoint = -1000;
-
-            while (TokenOverlapsPosition(stack, marginPixels, candidateX, candidateY) && candidateY > arbitraryYCutoffPoint)
-                candidateX = candidateX - (marginPixels * 2);
-
-            stack.transform.localPosition = new Vector3(candidateX, candidateY);
-
+			stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(100f, 0f));
             tabletopContainer.PutOnTable(stack);
         }
 
-        private bool TokenOverlapsPosition(DraggableToken token, int marginPixels,float candidateX,float candidateY)
+		private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset) {
+			Vector2 marginPixels = new Vector2(50f, 50f);
+			Vector2 candidatePos = new Vector2(-100f, 250f);
+
+			float arbitraryYCutoffPoint = -1000;
+
+			while (TokenOverlapsPosition(token, marginPixels, candidatePos) && candidatePos.y > arbitraryYCutoffPoint) 
+				candidatePos += candidateOffset;
+
+			return candidatePos;
+		}
+
+		private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos)
         {
             foreach (var t in tabletopContainer.GetTokenTransformWrapper().GetTokens())
             {
                 if (token != t
-                    && candidateX - t.transform.localPosition.x < marginPixels
-                    && candidateX - t.transform.localPosition.x > -marginPixels
-                    && candidateY - t.transform.localPosition.y < marginPixels
-                    && candidateY - t.transform.localPosition.y > -marginPixels)
+					&& candidatePos.x - t.transform.localPosition.x < marginPixels.x
+					&& candidatePos.x - t.transform.localPosition.x > -marginPixels.x
+					&& candidatePos.y - t.transform.localPosition.y < marginPixels.y
+					&& candidatePos.y - t.transform.localPosition.y > -marginPixels.y)
                 { 
                      return true;
                 }

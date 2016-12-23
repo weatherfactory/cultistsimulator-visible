@@ -5,24 +5,30 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Assets.TabletopUi;
+using Assets.CS.TabletopUI;
 
 namespace Assets.Core.Commands
 {
     public class SituationCreationCommand
     {
+
+		public DraggableToken SourceToken { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
         public Recipe Recipe { get; set; }
         public SituationState? State { get; set; }
         public float? TimeRemaining { get; set; }
 
-        public SituationCreationCommand(IVerb verb,Recipe recipe)
-        {
-            if(recipe==null && verb==null)
-            { throw new ArgumentException("Must specify either a recipe or a verb (or both");}
-            Recipe = recipe;
-            Verb = verb;
+		public SituationCreationCommand(IVerb verb,Recipe recipe, DraggableToken sourceToken = null)
+		{
+			if (recipe==null && verb==null)
+				throw new ArgumentException("Must specify either a recipe or a verb (or both");
+			
+			Recipe = recipe;
+			Verb = verb;
+			SourceToken = sourceToken;
+		}
 
-        }
 
         public IVerb GetBasicOrCreatedVerb()
         {
