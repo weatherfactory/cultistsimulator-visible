@@ -18,6 +18,7 @@ namespace Assets.Editor.Tests
     {
         private SituationController sc;
         private ICompendium compendiumMock;
+        private Character characterMock;
         private ISituationAnchor situationAnchorMock;
         private ISituationDetails situationDetailsMock;
         private ISituationStateMachine situationStateMachineMock;
@@ -30,11 +31,12 @@ namespace Assets.Editor.Tests
             situationAnchorMock = Substitute.For<ISituationAnchor>();
             situationDetailsMock = Substitute.For<ISituationDetails>();
             compendiumMock = Substitute.For<ICompendium>();
+            characterMock = Substitute.For<Character>();
             situationStateMachineMock = Substitute.For<ISituationStateMachine>();
             basicVerb=new BasicVerb("id","label","description");
 
 
-            sc = new SituationController(compendiumMock);
+            sc = new SituationController(compendiumMock,characterMock);
             
             var command=new SituationCreationCommand(basicVerb,null);
             sc.Initialise(command, situationAnchorMock,situationDetailsMock);

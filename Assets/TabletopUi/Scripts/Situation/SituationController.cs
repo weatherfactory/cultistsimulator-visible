@@ -23,10 +23,12 @@ namespace Assets.TabletopUi
         private ISituationDetails situationWindow;
         public ISituationStateMachine SituationStateMachine;
         private readonly ICompendium compendium;
+        private readonly Character currentCharacter;
 
-        public SituationController(ICompendium c)
+        public SituationController(ICompendium co,Character ch)
         {
-            compendium = c;
+            compendium = co;
+            currentCharacter = ch;
         }
 
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w)
@@ -70,7 +72,6 @@ namespace Assets.TabletopUi
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromAllSlottedElements();
             situationWindow.DisplayAspects(startingAspects);
 
-            var currentCharacter = Registry.Retrieve<Character>();
 
             var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id,currentCharacter);
 
@@ -90,9 +91,8 @@ namespace Assets.TabletopUi
 
         private RecipePrediction getNextRecipePrediction(IAspectsDictionary aspects)
         {
-            var character = Registry.Retrieve<Character>();
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
-                new DefaultDice(), character); //nb the use of default dice: we don't want to display any recipes without a 100% chance of executing
+                new DefaultDice(), currentCharacter); //nb the use of default dice: we don't want to display any recipes without a 100% chance of executing
             return SituationStateMachine.GetPrediction(rc);
         }
 
@@ -113,7 +113,6 @@ namespace Assets.TabletopUi
         {
             HeartbeatResponse response = new HeartbeatResponse();
 
-            var currentCharacter = Registry.Retrieve<Character>();
 
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(), new Dice(), currentCharacter);
@@ -136,7 +135,7 @@ namespace Assets.TabletopUi
 
         public void UpdateSituationDisplayTextInWIndow()
         {
-            var currentCharacter = Registry.Retrieve<Character>();
+
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
                 new Dice(),currentCharacter);
 
@@ -176,8 +175,7 @@ namespace Assets.TabletopUi
             }
             else
             {
-                var currentCharacter = Registry.Retrieve<Character>();
-                
+               
                 //execute each recipe in command
                 foreach (var kvp in command.GetElementChanges())
                 {
@@ -227,7 +225,6 @@ namespace Assets.TabletopUi
         public void AttemptActivateRecipe()
         {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var currentCharacter = Registry.Retrieve<Character>();
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter);
             if (recipe != null)
             {
