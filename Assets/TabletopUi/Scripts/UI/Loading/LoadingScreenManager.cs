@@ -61,12 +61,9 @@ public class LoadingScreenManager : MonoBehaviour {
 		FadeIn();
 		StartOperation(levelNum);
 
-		float lastProgress = 0f;
-
 		// operation does not auto-activate scene, so it's stuck at 0.9
-		while (DoneLoading() == false) {
+		while (DoneLoading() == false) 
 			yield return null;
-		}
 
 		if (loadSceneMode == LoadSceneMode.Additive)
 			audioListener.enabled = false;
