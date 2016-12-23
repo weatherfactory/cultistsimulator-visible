@@ -13,7 +13,13 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         private Transform windowHolderFixed;
         [SerializeField]
-        private Transform notificationHolder;
+		private Transform notificationHolder;
+		[SerializeField]
+		private NotificationLog notificationLog;
+
+		public void PushTextToLog(string text) {
+			notificationLog.AddText(text);
+		}
 
         public void ShowNotificationWindow(string title, string description)
         {
