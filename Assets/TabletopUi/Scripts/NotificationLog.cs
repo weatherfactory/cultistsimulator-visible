@@ -24,23 +24,6 @@ public class NotificationLog : MonoBehaviour {
 		fader.SetAlpha(0f);
 	}
 
-	// THIS IS DEBUG STUFF
-	void OnEnable() {
-		StartCoroutine(TestLoop());
-	}
-
-	IEnumerator TestLoop() {
-		while (true) {
-			yield return new WaitForSeconds( Mathf.Lerp(0.5f, 8f, Random.value) );
-			AddText("Test Random Text. Use this <color=#f6a2e2>Color to highlight</color> special game terms? " + Time.time);
-		}
-	}
-
-	void OnDisable() {
-		StopAllCoroutines();
-	}
-	// DEBUG STUFF ENDS HERE
-
 	public void AddText(string text) {
 		int index = GetFreeTextMeshIndex();
 
