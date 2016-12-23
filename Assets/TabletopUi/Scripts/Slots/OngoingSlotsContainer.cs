@@ -50,7 +50,7 @@ namespace Assets.TabletopUi.SlotsContainers
 
         }
 
-        public IList<IRecipeSlot> GetUnfilledGreedySlots()
+        public IList<IRecipeSlot> GetUnfilledGreedySlot()
         {
             IList <IRecipeSlot> slotsToReturn= new List<IRecipeSlot>();
             foreach (var s in GetAllSlots())

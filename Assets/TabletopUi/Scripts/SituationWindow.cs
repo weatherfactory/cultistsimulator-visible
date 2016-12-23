@@ -175,10 +175,10 @@ namespace Assets.CS.TabletopUI
             return outputContainer.GetCurrentOutputs();
         }
 
-        public IList<IRecipeSlot> GetUnfilledGreedySlots()
+        public IList<IRecipeSlot> GetUnfilledGreedySlot()
         {
 
-            return ongoingSlotsContainer.GetUnfilledGreedySlots();
+            return ongoingSlotsContainer.GetUnfilledGreedySlot();
         }
 
 

@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 
 public class TokenAnimationToSlot : TokenAnimation {
 
-	public event System.Action<DraggableToken, IRecipeSlot> onAnimSlotDone;
+	public event System.Action<ElementStackToken, TokenAndSlot> onElementSlotAnimDone;
 
-	IRecipeSlot targetSlot;
+	TokenAndSlot targetTokenSlotPair;
 
-	public void SetTargetSlot(IRecipeSlot targetSlot) {
-		this.targetSlot = targetSlot;
+	public void SetTargetSlot(TokenAndSlot targetTokenSlotPair) {
+		this.targetTokenSlotPair = targetTokenSlotPair;
 	}
 
 	protected override void FireCompleteEvent() {
-		if (onAnimSlotDone != null)
-			onAnimSlotDone(token, targetSlot);
+		if (onElementSlotAnimDone != null)
+			onElementSlotAnimDone(token as ElementStackToken, targetTokenSlotPair);
 	}
 }

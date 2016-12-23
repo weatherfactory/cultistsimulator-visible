@@ -28,7 +28,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<ISituationOutput> GetCurrentOutputs();
         void RunSlotConsumptions();
         IEnumerable<IElementStack> GetStacksInOngoingSlots();
-        IList<IRecipeSlot> GetUnfilledGreedySlots();
+        IList<IRecipeSlot> GetUnfilledGreedySlot();
         IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
 
         IEnumerable<IElementStack> GetStoredStacks();

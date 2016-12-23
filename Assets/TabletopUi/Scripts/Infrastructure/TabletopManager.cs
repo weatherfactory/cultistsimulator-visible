@@ -7,6 +7,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -157,43 +158,40 @@ namespace Assets.CS.TabletopUI
 
         }
 
-    	public HashSet<IRecipeSlot> FillTheseSlotsWithFreeStacks(HashSet<IRecipeSlot> slotsToFill)
+    	public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill)
         {
-            var unprocessedSlots = new HashSet<IRecipeSlot>();
-            foreach (var slot in slotsToFill)
+            var unprocessedSlots = new HashSet<TokenAndSlot>();
+            foreach (var tokenSlotPair in slotsToFill)
             {
-                if (!slot.Equals(null)) //it hasn't been destroyed
+                if (!tokenSlotPair.RecipeSlot.Equals(null)) //it hasn't been destroyed
                 {
-                    if (slot.GetElementStackInSlot() == null)
+                    if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() == null)
                     {
-                        var stack = findStackForSlotSpecification(slot.GoverningSlotSpecification);
+                        var stack = findStackForSlotSpecification(tokenSlotPair.RecipeSlot.GoverningSlotSpecification);
                         if (stack != null)
                         {
                             stack.SplitAllButNCardsToNewStack(1);
-							MoveElementToSituationSlot(stack, null, slot); // NOTE: Needs token
+							MoveElementToSituationSlot(stack as ElementStackToken, tokenSlotPair); // NOTE: Needs token
                         }
                         else
-                            unprocessedSlots.Add(slot);
+                            unprocessedSlots.Add(tokenSlotPair);
                     }
                 }
             }
             return unprocessedSlots;
         }
 
-		void MoveElementToSituationSlot(ElementStackToken stack, SituationToken token, IRecipeSlot targetSlot) {
+		void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
 			var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
-			stackAnim.onAnimSlotDone += ElementGreedyAnimDone;
-			stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, token.RectTransform.anchoredPosition3D);
+			stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
+			stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, tokenSlotPair.Token.RectTransform.anchoredPosition3D);
 			stackAnim.SetScaling(false, true);
-			stackAnim.SetTargetSlot(targetSlot);
-			stackAnim.StartAnim();
+			stackAnim.SetTargetSlot(tokenSlotPair);
+			stackAnim.StartAnim(0.2f);
 		}
 
-		void ElementGreedyAnimDone(DraggableToken token, IRecipeSlot slot) {
-			var element = token as ElementStackToken;
-
-			Assert.IsNull(element, "Greedy anim done but the DraggableToken was no ElementStack!");
-			slot.AcceptStack(element);
+		void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
+			tokenSlotPair.RecipeSlot.AcceptStack(element);
 		}
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)

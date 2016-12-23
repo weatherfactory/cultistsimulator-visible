@@ -25,6 +25,8 @@ public class TokenAnimation : MonoBehaviour {
 	private float duration = -1f; // do not animate while this is < 0
 	private float timeSpent = 0f;
 
+	public bool IsRunning { private get; set; }
+
 	private Vector3 startPos {
 		get {
 			if (startToken != null)
@@ -79,10 +81,11 @@ public class TokenAnimation : MonoBehaviour {
 
 		token = GetComponent<DraggableToken>();
 		token.enabled = false;
+		IsRunning = true;
 	}
-	
+
 	void Update () {
-		if (duration < 0)
+		if (!IsRunning || duration < 0)
 			return;
 		else if (timeSpent < duration) 
 			DoAnim();
@@ -106,6 +109,7 @@ public class TokenAnimation : MonoBehaviour {
 	}
 
 	void CompleteAnim() {
+		IsRunning = false;
 		token.RectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
 		token.RectTransform.localScale = scaleEnd ? Vector3.zero : Vector3.one;
 		token.enabled = true;
