@@ -119,7 +119,9 @@ namespace Assets.CS.TabletopUI
             return artwork.sprite;
         }
 
-
+		public Vector3 GetOngoingSlotPosition() {
+			return RectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
+		}
 
 
         public void DisplayTimeRemaining(float duration, float timeRemaining)

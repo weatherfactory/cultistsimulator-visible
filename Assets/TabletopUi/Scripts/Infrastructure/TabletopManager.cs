@@ -107,7 +107,7 @@ namespace Assets.CS.TabletopUI
 				var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
 				tokenAnim.onAnimDone += SituationAnimDone;
 				tokenAnim.SetPositions(scc.SourceToken.RectTransform.anchoredPosition3D, GetFreeTokenPosition(token, new Vector2(0, -250f)));
-				tokenAnim.SetScaling(true, false);
+				tokenAnim.SetScaling(0f, 1f);
 				tokenAnim.StartAnim();
 			}
 			else {
@@ -184,8 +184,8 @@ namespace Assets.CS.TabletopUI
 		void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
 			var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
 			stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
-			stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, tokenSlotPair.Token.RectTransform.anchoredPosition3D);
-			stackAnim.SetScaling(false, true);
+			stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, tokenSlotPair.Token.GetOngoingSlotPosition());
+			stackAnim.SetScaling(1f, 0.35f);
 			stackAnim.SetTargetSlot(tokenSlotPair);
 			stackAnim.StartAnim(0.2f);
 		}

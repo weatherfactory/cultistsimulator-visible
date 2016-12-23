@@ -17,8 +17,8 @@ public class TokenAnimation : MonoBehaviour {
 
 	private float zPos;
 
-	private bool scaleStart = false;
-	private bool scaleEnd = false;
+	private float scaleStart = 1f;
+	private float scaleEnd = 1f;
 
 	private float scalePercentage = 0.8f; // needs to be below 0.5 if both scales are active
 
@@ -69,10 +69,10 @@ public class TokenAnimation : MonoBehaviour {
 		this.zPos = zPos;
 	}
 
-	public void SetScaling(bool scaleStart, bool scaleEnd, float scaleDuration = 1f) {
+	public void SetScaling(float scaleStart, float scaleEnd, float scaleDuration = 1f) {
 		this.scaleStart = scaleStart;
 		this.scaleEnd = scaleEnd;
-		this.scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart && scaleEnd) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
+		this.scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart != 1f && scaleEnd != 1f) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
 	}
 
 	public void StartAnim(float duration = 1f) {
@@ -81,6 +81,7 @@ public class TokenAnimation : MonoBehaviour {
 
 		token = GetComponent<DraggableToken>();
 		token.enabled = false;
+		token.RectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
 	}
 
@@ -100,10 +101,10 @@ public class TokenAnimation : MonoBehaviour {
 
 		token.RectTransform.anchoredPosition3D = new Vector3( Mathf.Lerp(startPos.x, endPos.x, Easing.Quadratic.InOut(completion)), Mathf.Lerp(startPos.y, endPos.y, Easing.Quadratic.InOut(completion)), zPos);
 
-		if (scaleStart && completion < scalePercentage)
-			transform.localScale = Vector3.one * Easing.Quadratic.Out(completion / scalePercentage);
-		else if (scaleEnd && completion > (1f - scalePercentage))
-			transform.localScale = Vector3.one * (1f - Easing.Quadratic.In((completion - 0.75f) / scalePercentage));
+		if (scaleStart != 1f && completion < scalePercentage)
+			transform.localScale = Vector3.Lerp(Vector3.one * scaleStart, Vector3.one, Easing.Quadratic.Out(completion / scalePercentage));
+		else if (scaleEnd != 1f  && completion > (1f - scalePercentage))
+			transform.localScale = Vector3.Lerp(Vector3.one * scaleEnd, Vector3.one, Easing.Quadratic.Out((1f - completion) / scalePercentage));
 		else 
 			transform.localScale = Vector3.one;
 	}
@@ -111,7 +112,7 @@ public class TokenAnimation : MonoBehaviour {
 	void CompleteAnim() {
 		IsRunning = false;
 		token.RectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
-		token.RectTransform.localScale = scaleEnd ? Vector3.zero : Vector3.one;
+		token.RectTransform.localScale = Vector3.one * scaleEnd;
 		token.enabled = true;
 
 		FireCompleteEvent();
