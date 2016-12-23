@@ -102,7 +102,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     {
                         stacksForOutputNote.Add(container.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId,eqs.ElementQuantity));
                     }
-                    controller.AddOutput(stacksForOutputNote,notificationForOutputNote);
+                    controller.SetOutput(stacksForOutputNote,notificationForOutputNote);
 
                 }
             }

@@ -8,12 +8,12 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 
-public class SituationOutputContainer : MonoBehaviour
+public class Results : MonoBehaviour
 {
     [SerializeField] private Transform outputParent;
     [SerializeField] private SituationWindow situationWindow;
 
-    public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification) {
+    public void SetOutput(IEnumerable<IElementStack> stacks,INotification notification) {
         gameObject.SetActive(true);
         var newNote=PrefabFactory.CreateLocally<SituationOutputNote>(outputParent);
         newNote.transform.localPosition = Vector2.zero;
@@ -24,6 +24,8 @@ public class SituationOutputContainer : MonoBehaviour
     public void AllOutputsGone()
     {
         situationWindow.AllOutputsGone();
+        foreach(var o in outputParent.GetComponentsInChildren<SituationOutputNote>())
+            Destroy(o.gameObject); //clear the note, ie the text results
         gameObject.SetActive(false);
     }
 

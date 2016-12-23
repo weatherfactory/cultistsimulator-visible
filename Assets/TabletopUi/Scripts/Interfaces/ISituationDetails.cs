@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromAllSlottedElements();
-        void AddOutput(IEnumerable<IElementStack> stacks,INotification notification);
+        void SetOutput(IEnumerable<IElementStack> stacks,INotification notification);
         void DisplayStarting();
         void DisplayOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);

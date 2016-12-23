@@ -62,8 +62,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htEachOutput=new Hashtable();
                 htEachOutput.Add(SaveConstants.SAVE_TITLE, o.TitleText);
                 htEachOutput.Add(SaveConstants.SAVE_DESCRIPTION,o.DescriptionText);
-                var htStacksInOutput = GetHashTableForStacks(o.GetTokenTransformWrapper().GetStacks());
-                htEachOutput.Add(SaveConstants.SAVE_OUTPUTELEMENTS,htStacksInOutput);
+                //commented this out because the note/output/container setup is currently a borked mess
+           //     var htStacksInOutput = GetHashTableForStacks(o.GetTokenTransformWrapper().GetStacks());
+       //         htEachOutput.Add(SaveConstants.SAVE_OUTPUTELEMENTS,htStacksInOutput);
                 htOutputs.Add((htOutputs.Keys.Count+1).ToString() ,htEachOutput); //need that tostring! exporter doesn't cope well with int keys
             }
 

@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] StartingSlotsContainer startingSlotsContainer;
         [SerializeField] OngoingSlotsContainer ongoingSlotsContainer;
         [SerializeField] SituationStorage situationStorage;
-        [SerializeField] SituationOutputContainer outputContainer;
+        [SerializeField] Results outputContainer;
 
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
@@ -194,13 +194,9 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void AddOutput(IEnumerable<IElementStack> stacks,INotification notification) {
-            outputContainer.AddOutput(stacks,notification);
+        public void SetOutput(IEnumerable<IElementStack> stacks,INotification notification) {
+            outputContainer.SetOutput(stacks,notification);
         }
-
-
-
-
 
 
         public IEnumerable<IElementStack> GetStoredStacks()

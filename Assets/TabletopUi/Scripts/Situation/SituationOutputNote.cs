@@ -15,7 +15,6 @@ public interface ISituationOutput
 {
     string TitleText { get; }
     string DescriptionText { get; }
-    ITokenTransformWrapper GetTokenTransformWrapper();
 }
 
 public class SituationOutputNote : MonoBehaviour, ISituationOutput
@@ -27,7 +26,7 @@ public class SituationOutputNote : MonoBehaviour, ISituationOutput
     public string TitleText { get { return Title.text; } }
     public string DescriptionText { get { return Title.text; } }
 
-    public void Initialise(INotification notification, IEnumerable<IElementStack> stacks,SituationOutputContainer soc)
+    public void Initialise(INotification notification, IEnumerable<IElementStack> stacks,Results soc)
     {
         Title.text = notification.Title;
         Description.text = notification.Description;
@@ -35,10 +34,6 @@ public class SituationOutputNote : MonoBehaviour, ISituationOutput
         cardTokenContainer.GetElementStacksManager().AcceptStacks(stacks);
     }
 
-    public ITokenTransformWrapper GetTokenTransformWrapper()
-    {
-       return new TokenTransformWrapper(cardTokenContainer.transform);
-    }
 }
 
 

@@ -202,7 +202,7 @@ namespace Assets.TabletopUi
             var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification = new Notification(SituationStateMachine.GetTitle(),
                 SituationStateMachine.GetDescription());
-                situationWindow.AddOutput(stacksToRetrieve, notification);
+                SetOutput(stacksToRetrieve, notification);
                 situationToken.ShowCompletionCount(1);
         }
 
@@ -211,9 +211,9 @@ namespace Assets.TabletopUi
             situationWindow.DisplayStarting();
         }
 
-        public void AddOutput(IEnumerable<IElementStack> stacksForOutput, Notification notification)
+        public void SetOutput(IEnumerable<IElementStack> stacksForOutput, INotification notification)
         {
-            situationWindow.AddOutput(stacksForOutput, notification);
+            situationWindow.SetOutput(stacksForOutput, notification);
         }
 
         public void RecreateSituation(SituationCreationCommand command)

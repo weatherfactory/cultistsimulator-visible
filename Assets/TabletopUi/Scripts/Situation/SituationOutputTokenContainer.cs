@@ -14,20 +14,21 @@ using UnityEngine.Assertions;
 
 public class SituationOutputTokenContainer : MonoBehaviour, ITokenContainer {
 
-    private SituationOutputContainer parentSituationOutputContainer;
+    private Results _parentResults;
 
-    public void SetParentOutputContainer(SituationOutputContainer soc) {
-        parentSituationOutputContainer = soc;
+    public void SetParentOutputContainer(Results soc) {
+        _parentResults = soc;
     }
 
     public void TokenPickedUp(DraggableToken draggableToken) {
-        Assert.IsNotNull(parentSituationOutputContainer, "parentSituationOutputContainer is null!");
+        Assert.IsNotNull(_parentResults, "parentSituationOutputContainer is null!");
 
         var stacks = GetElementStacksManager().GetStacks();
         //if no stacks left in output
         if (!stacks.Any()) {
-            parentSituationOutputContainer.AllOutputsGone();
+            _parentResults.AllOutputsGone();
             DestroyObject(this.gameObject);
+            
         }
     }
 
