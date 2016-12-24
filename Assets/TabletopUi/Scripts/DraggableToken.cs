@@ -215,7 +215,7 @@ namespace Assets.CS.TabletopUI
         }
         public void DisplayInAir()
         {
-
+            transform.SetAsLastSibling();
         float windowZOffset = -10f;
 
         RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x,

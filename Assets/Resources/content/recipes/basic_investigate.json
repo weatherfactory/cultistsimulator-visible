@@ -1,17 +1,4 @@
  {"recipes": [
-{
-        id: "labour",
-        label: "Labour",
-        actionId: "work",
-        requirements: {health: 1},
-        effects: {
-            shilling: 1
-        },
-        startdescription: "Back-breaking work for meagre pay.",
-        description: "The day is done, and so am I; but I've earned my pay.",
-        warmup: 60,
-        craftable: true
-    },
 
 	{
         id: "studylegacyreason",
@@ -43,32 +30,6 @@
         effects: {legacy: -1},
         startdescription: "--what'll I find?",
         description: "--oho!",
-        warmup: 10,
-        craftable: true
-    },
-	{
-        id: "rest",
-        label: "Rest",
-        actionId: "dream",
-        requirements: {shilling: 1, illhealth: 1},
-        effects: {
-            illhealth: -1,
-			shilling:-1,
-			health: 1
-        },
-        startdescription: "startdesc",
-        description: "I shall rest; I shall recover.",
-        warmup: 90,
-        craftable: true
-    },
-	{
-        id: "eg",
-        label: "--",
-        actionId: "work",
-        requirements: {health:999},
-        effects: {health: 1},
-        startdescription: "--",
-        description: "--",
         warmup: 10,
         craftable: true
     }

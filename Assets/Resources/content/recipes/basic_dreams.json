@@ -1,0 +1,31 @@
+{
+"recipes": [
+
+	{
+        id: "rest",
+        label: "Rest",
+        actionId: "dream",
+        requirements: {shilling: 1, illhealth: 1},
+        effects: {
+            illhealth: -1,
+			shilling:-1,
+			health: 1
+        },
+        startdescription: "All I need now is time.",
+        description: "The sick-room grows close and stale. Time to get up.",
+        warmup: 90,
+        craftable: true
+    },
+		{
+        id: "rest",
+        label: "Rest",
+        actionId: "dream",
+        requirements: {illhealth: 1},
+        effects: { },
+        startdescription: "To recover my health, I'll need money for food and medicine.",
+        description: "This was no true rest. I need money for food and medicine.",
+        warmup: 0,
+        craftable: true
+    }
+]
+}

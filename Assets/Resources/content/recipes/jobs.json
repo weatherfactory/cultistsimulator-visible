@@ -53,6 +53,19 @@
         startdescription: "",
         description: "The elder Glover has called me into his office to congratulate me on my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion. My new position is better paid, and the desk stands by the street window.",
         warmup: 0
-	}
+	},
+	{
+        id: "labour",
+        label: "Labour",
+        actionId: "work",
+        requirements: {health: 1},
+        effects: {
+            shilling: 1
+        },
+        startdescription: "Back-breaking work for meagre pay.",
+        description: "The day is done, and so am I; but I've earned my pay.",
+        warmup: 60,
+        craftable: true
+    }
 ]
 }
