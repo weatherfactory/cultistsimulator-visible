@@ -140,11 +140,18 @@ namespace Assets.Core.Entities
         {
             var rp = new RecipePrediction();
             IList<Recipe> recipes= rc.GetActualRecipesToExecute(currentPrimaryRecipe);
-            foreach (var r in recipes)
+
+            if (recipes.Any())
             {
-                rp.Title += r.Label;
-                rp.StartDescription += r.StartDescription;
-                rp.Aside += r.Aside;
+                rp.Title = recipes.First().Label;
+                rp.DescriptiveText = recipes.First().StartDescription;
+                rp.Commentary = recipes.First().Aside;
+            }
+
+            if(recipes.Count>1)
+            foreach (var r in recipes.Skip(1))
+            {
+                rp.Commentary += " [" + r.StartDescription + "]";
             }
 
             return rp;

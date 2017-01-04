@@ -8,7 +8,7 @@ namespace Assets.Core.Commands
    public class RecipePrediction
     {
         public string Title { get; set; }
-        public string StartDescription { get; set; }
-        public string Aside { get; set; }
+        public string DescriptiveText { get; set; }
+        public string Commentary { get; set; }
     }
 }

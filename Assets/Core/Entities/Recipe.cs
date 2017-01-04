@@ -20,7 +20,7 @@ public class Recipe
     public int Warmup { get; set; }
 
     /// <summary>
-    /// displayed when we identify and when we are running a recipe
+    /// displayed when we identify and when we are running a recipe; also appended to the Aside if predicted as an additional recipe
     /// </summary>
     public string StartDescription { get; set; }
 

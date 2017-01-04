@@ -71,7 +71,7 @@ namespace Assets.Editor.Tests
             sc.OngoingSlotsUpdated();
 
             situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
-            situationDetailsMock.ReceivedWithAnyArgs().UpdateTextForPrediction(new RecipePrediction {Aside="",StartDescription = "",Title = ""});
+            situationDetailsMock.ReceivedWithAnyArgs().UpdateTextForPrediction(new RecipePrediction {Commentary="",DescriptiveText = "",Title = ""});
 
         }
 

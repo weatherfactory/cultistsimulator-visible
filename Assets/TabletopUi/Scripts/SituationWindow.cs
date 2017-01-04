@@ -132,8 +132,8 @@ namespace Assets.CS.TabletopUI
         public void UpdateTextForPrediction(RecipePrediction recipePrediction)
         {
             title.text = recipePrediction.Title;
-            description.text = recipePrediction.StartDescription;
-            ButtonBarText.text = recipePrediction.Aside;
+            description.text = recipePrediction.DescriptiveText;
+            ButtonBarText.text = recipePrediction.Commentary;
 
         }
 
