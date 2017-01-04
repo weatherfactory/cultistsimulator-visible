@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using OrbCreationExtensions;
@@ -24,6 +25,7 @@ public interface ICompendium
     List<IVerb> GetAllVerbs();
     IVerb GetVerbById(string verbId);
     Notification GetNotificationForEndingFlag(string endingFlag);
+    IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command);
 }
 
 public class Compendium : ICompendium
@@ -116,6 +118,16 @@ public class Compendium : ICompendium
             return null;
 
         return _verbs[verbId];
+    }
+
+    public IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command)
+    {
+        var candidateVerb = GetVerbById(command.Recipe.ActionId);
+        if (candidateVerb != null)
+            return candidateVerb;
+       var createdVerb = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
+      command.Recipe.Description);
+        return createdVerb;
     }
 
     public Notification GetNotificationForEndingFlag(string endingFlag)

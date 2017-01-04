@@ -177,7 +177,7 @@ namespace Assets.Core.Entities
 
                 foreach (var r in recipesToExecute)
                 {
-                    IEffectCommand ec=new EffectCommand(r,
+                    ISituationEffectCommand ec=new SituationEffectCommand(r,
                     r.ActionId!=currentPrimaryRecipe.ActionId);
                   subscriber.SituationExecutingRecipe(ec);
                 }

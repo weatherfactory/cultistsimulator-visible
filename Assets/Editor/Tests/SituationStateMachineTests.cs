@@ -83,7 +83,7 @@ namespace Assets.Editor.Tests
 
             s.Continue(rc, 1);
 
-            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe == r1));
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec => ec.Recipe == r1));
 
         }
 
@@ -148,8 +148,8 @@ namespace Assets.Editor.Tests
 
             s.Continue(rc, 1);
 
-            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec=>ec.Recipe==r2));
-            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe == r3));
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec=>ec.Recipe==r2));
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec => ec.Recipe == r3));
 
         }
 
@@ -162,7 +162,7 @@ namespace Assets.Editor.Tests
             r3.ActionId = r2.ActionId + " a difference";
             s.Continue(rc, 1);
 
-            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe==r3 && ec.AsNewSituation));
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec => ec.Recipe==r3 && ec.AsNewSituation));
 
         }
 
@@ -175,7 +175,7 @@ namespace Assets.Editor.Tests
             r3.ActionId = r2.ActionId;
             s.Continue(rc, 1);
 
-            subscriber.Received().SituationExecutingRecipe(Arg.Is<EffectCommand>(ec => ec.Recipe == r3 && !ec.AsNewSituation));
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec => ec.Recipe == r3 && !ec.AsNewSituation));
 
         }
 

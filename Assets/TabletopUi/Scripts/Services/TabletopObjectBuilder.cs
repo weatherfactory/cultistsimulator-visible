@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Services
             float sTokenVertiSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.height + 50f;
    
             // build verbs
-            var verbs = Registry.Retrieve<ICompendium>().GetAllVerbs();
+            var verbs = Registry.Retrieve<ICompendium>().GetAllVerbs().Where(v => v.AtStart).ToList();
 
             for (int i = 0; i < verbs.Count; i++)
             {

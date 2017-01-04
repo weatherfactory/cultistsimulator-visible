@@ -8,8 +8,11 @@ namespace Assets.Core.Entities
 {
     public class BasicVerb: AbstractVerb, IVerb
     {
-        public BasicVerb(string id, string label, string description) : base(id, label, description)
+
+
+        public BasicVerb(string id, string label, string description,bool atStart) : base(id, label, description)
         {
+            this.AtStart = atStart;
         }
 
         public override bool Transient

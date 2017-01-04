@@ -3,17 +3,26 @@
         {
             "id": "work",
             "label": "Work",
-            "description": "Earn your living, or practice your arts."
-        },
-        {
-            "id": "study",
-            "label": "Study",
-            "description": "Unlock books and other treasures."
+            "description": "Earn your living, or practice your arts.",
+			"atStart": true
         },
         {
             "id": "dream",
             "label": "Dream",
-            "description": "Enjoy the gentle pleasures of sleep - or find secrets at the peril of your Reason."
+            "description": "Enjoy the gentle pleasures of sleep - or find secrets at the peril of your Reason.",
+			"atStart": true
+        },
+		{
+            "id": "talk",
+            "label": "Talk",
+            "description": "Speaking recruits followers, among other things.",
+			"atStart": false
+        },
+		{
+            "id": "study",
+            "label": "Study",
+            "description": "Unlock books and other treasures.",
+			"atStart": false
         }
 		]
 		

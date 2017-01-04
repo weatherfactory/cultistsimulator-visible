@@ -157,7 +157,7 @@ namespace Assets.TabletopUi
         }
 
 
-        public void SituationExecutingRecipe(IEffectCommand command)
+        public void SituationExecutingRecipe(ISituationEffectCommand command)
         {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
@@ -167,8 +167,11 @@ namespace Assets.TabletopUi
 
             if (command.AsNewSituation)
             {
-                IVerb verbForNewSituation = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
-                    command.Recipe.Description);
+
+                IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
+                    
+                    //new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
+                    //command.Recipe.Description);
 				
 				SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, situationToken as DraggableToken);
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);

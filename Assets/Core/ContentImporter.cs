@@ -155,7 +155,7 @@ public class ContentImporter
 
         foreach (Hashtable h in verbsArrayList)
         {
-            IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString());
+            IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(), Convert.ToBoolean(h["atStart"]));
             Verbs.Add(v.Id,v);
         }
 

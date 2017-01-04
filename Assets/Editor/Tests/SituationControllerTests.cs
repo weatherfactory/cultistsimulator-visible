@@ -33,7 +33,7 @@ namespace Assets.Editor.Tests
             compendiumMock = Substitute.For<ICompendium>();
             characterMock = Substitute.For<Character>();
             situationStateMachineMock = Substitute.For<ISituationStateMachine>();
-            basicVerb=new BasicVerb("id","label","description");
+            basicVerb=new BasicVerb("id","label","description",false);
 
 
             sc = new SituationController(compendiumMock,characterMock);

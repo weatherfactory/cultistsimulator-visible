@@ -7,14 +7,14 @@ using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.Core
 {
-    public class EffectCommand: IEffectCommand
+    public class SituationEffectCommand: ISituationEffectCommand
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public Recipe Recipe { get; set; }
         public bool AsNewSituation { get; set; } //determines whether the recipe will 
 
-        public EffectCommand(Recipe recipe,bool asNewSituation)
+        public SituationEffectCommand(Recipe recipe,bool asNewSituation)
         {
             Recipe = recipe;
             Title = "default title";

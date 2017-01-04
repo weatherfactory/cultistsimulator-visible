@@ -10,6 +10,7 @@ namespace Assets.Core.Interfaces
         string Id { get; }
         string Label { get; }
         string Description { get; }
+        bool AtStart { get; }
         bool Transient { get; }
     }
 

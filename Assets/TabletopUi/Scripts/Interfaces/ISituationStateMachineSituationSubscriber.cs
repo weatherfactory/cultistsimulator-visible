@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     {
         void SituationBeginning(Recipe withRecipe);
         void SituationOngoing();
-        void SituationExecutingRecipe(IEffectCommand effectCommand);
+        void SituationExecutingRecipe(ISituationEffectCommand situationEffectCommand);
         void SituationComplete();
         void SituationHasBeenReset();
     }

@@ -13,8 +13,11 @@ using Assets.Core.Interfaces;
         private string _id;
         private string _label;
         private string _description;
+    private bool _atStart;
 
-        public string Id
+    
+
+    public string Id
         {
             get { return _id; }
         }
@@ -28,6 +31,12 @@ using Assets.Core.Interfaces;
         {
             get { return _description; }
         }
+
+    public bool AtStart
+    {
+        get { return _atStart; }
+        set { _atStart = value; }
+    }
 
     public abstract bool Transient { get; }
 

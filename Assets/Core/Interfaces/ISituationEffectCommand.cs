@@ -6,7 +6,7 @@ using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.Core.Interfaces
 {
-    public interface IEffectCommand
+    public interface ISituationEffectCommand
     {
         string Title { get; }
         string Description { get; }
