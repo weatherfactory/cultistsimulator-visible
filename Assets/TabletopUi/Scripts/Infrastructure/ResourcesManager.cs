@@ -8,12 +8,21 @@ using UnityEngine;
     {
     public static Sprite GetSpriteForVerb(string verbId)
     {
-        return Resources.Load<Sprite>("icons40/verbs/" + verbId);
-	}
+        var sprite=Resources.Load<Sprite>("icons40/verbs/" + verbId);
+        if (sprite == null)
+            return Resources.Load<Sprite>("icons40/verbs/x");
+        else
+            return sprite;
+    }
 	public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
-		return Resources.Load<Sprite>("icons100/verbs/100" + verbId);
-	}
+
+        var sprite = Resources.Load<Sprite>("icons100/verbs/" + verbId);
+        if (sprite == null)
+            return Resources.Load<Sprite>("icons100/verbs/x");
+        else
+            return sprite;
+    }
 
 	public static Sprite GetSpriteForElement(string elementId)
     {

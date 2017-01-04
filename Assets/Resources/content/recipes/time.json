@@ -9,7 +9,8 @@
             shilling: -1
         },
         alternativerecipes:
-		[{id: "lawenforcement", chance:0, additional: true},
+		[{id: "legacyarrives", chance:100, additional: true}
+		{id: "lawenforcement", chance:0, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
         startdescription: "Time, the sundial's shadow, passes. The shopkeepers will have ttheir due.",
         description: ".",
@@ -25,7 +26,7 @@
 
 				},
         loop: "needs"
-    },  
+    },
 	   {
         id: "starvation",
         label: "Starvation",
@@ -49,6 +50,18 @@
 					}
 		}
         craftable: false
+    },
+	 {
+        id: "legacyarrives",
+        label: "A Legacy Arrives",
+        actionId: "legacyarrivesverb",
+        requirements: {},
+        effects: {legacy: 1},
+        startdescription: "-- legacy will arrive",
+        description: "-- legacy arrived",
+        warmup: 0,
+        craftable: false,
+		maxexecutions: 1
     },
 	    {
         id: "lawenforcement",
