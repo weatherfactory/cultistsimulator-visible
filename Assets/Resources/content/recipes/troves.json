@@ -1,0 +1,40 @@
+ {"recipes": [
+
+	{
+        id: "trovebookbasic",
+        label: "--book trove basic label",
+        actionId: "booktrovebasic",
+		requirements: {},
+        effects: {},
+		startdescription: "--book trove basic start desc",
+        description: "--book trove basic  desc",
+		alternativerecipes:	[{id: "finddehorisbook1",chance:50},
+		{id: "findtravellingatnightvol1",chance:100}],
+        warmup: 1,
+        craftable: false
+    },
+	{
+        id: "finddehorisbook1",
+        label: "--finddehorisbook1",
+        actionId: "find",
+		requirements: {},
+        effects: {dehorisbook1: 1},
+		startdescription: "--finddehorisbook1 start desc",
+        description: "--finddehorisbook1 desc",
+        warmup: 0,
+        craftable: false
+    },
+	{
+        id: "findtravellingatnightvol1",
+        label: "--findtravellingatnightvol1",
+        actionId: "find",
+		requirements: {},
+        effects: {travellingatnightvol1: 1},
+		startdescription: "--findtravellingatnightvol1 start desc",
+        description: "--findtravellingatnightvol1 desc",
+        warmup: 0,
+        craftable: false
+    }
+	
+]
+}

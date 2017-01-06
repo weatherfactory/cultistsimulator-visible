@@ -54,14 +54,15 @@
 	 {
         id: "legacyarrives",
         label: "A Legacy Arrives",
-        actionId: "legacyarrivesverb",
+        actionId: "study",
         requirements: {},
         effects: {legacy: 1},
-        startdescription: "-- legacy will arrive",
-        description: "-- legacy arrived",
+        startdescription: "The matter of my inheritance is resolved. I have been promised a package.",
+        description: "My package has arrived! I should study it.",
         warmup: 0,
         craftable: false,
-		maxexecutions: 1
+		maxexecutions: 1,
+		comment: "This makes the Study action available."
     },
 	    {
         id: "lawenforcement",

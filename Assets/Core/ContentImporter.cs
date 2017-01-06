@@ -201,20 +201,27 @@ public class ContentImporter
                 else
                     LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
             }
-
-            Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
-            foreach (string k in htReqs.Keys)
+            try
             {
-                LogNonexistentElementId(k, r.Id, "(requirements)");
-                r.Requirements.Add(k,Convert.ToInt32(htReqs[k]));
+                Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
+                foreach (string k in htReqs.Keys)
+                {
+                    LogIfNonexistentElementId(k, r.Id, "(requirements)");
+                    r.Requirements.Add(k, Convert.ToInt32(htReqs[k]));
+                }
             }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing requirements  for recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
+            }
+
 
             Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
             if(htEffects==null)
                 LogProblem("No effects found for recipe " + r.Id );
             foreach (string k in htEffects.Keys)
             {
-                LogNonexistentElementId(k, r.Id, "(effects)");
+                LogIfNonexistentElementId(k, r.Id, "(effects)");
                 r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
             }
 
@@ -243,7 +250,7 @@ public class ContentImporter
 
     }
 
-    private void LogNonexistentElementId(string elementId, string recipeId, string context)
+    private void LogIfNonexistentElementId(string elementId, string recipeId, string context)
     {
         if(!Elements.ContainsKey(elementId))
         LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);

@@ -2,35 +2,26 @@
 
 	{
         id: "studylegacyreason",
-        label: "--Study your Legacy, employing Reason",
+        label: "Examine my Legacy, employing Reason",
         actionId: "study",
         requirements: {legacy:1,reason:1},
-        effects: {legacy: -1},
-        startdescription: "--what does my reason tell me?",
+        effects: {legacy: -1,notionpower: 1,erudition:1},
+        alternativerecipes:	[{id: "trovebookbasic",chance:100, additional: true}],
+		startdescription: "I'll examine each item with meticulous care. ",
         description: "--oho!",
-        warmup: 10,
+        warmup: 30,
         craftable: true
     },
 	{
         id: "studylegacypassion",
-        label: "--Study your Legacy, employing Passion",
+        label: "Examine my Legacy, employing Passion",
         actionId: "study",
         requirements: {legacy:1,passion:1},
-        effects: {legacy: -1},
-        startdescription: "--what does my intuition tell me?",
+		effects: {legacy: -1,notionenlightenment: 1,erudition:1},
+		alternativerecipes:	[{id: "trovebookbasic",chance:100, additional: true}],
+        startdescription: "I'll read, theorise, pace, sketch, clutch at my hair in wonder, rise in elation, collapse in despair.",
         description: "--oho!",
-        warmup: 10,
-        craftable: true
-    },
-	{
-        id: "studylegacyrandom",
-        label: "--Study your Legacy",
-        actionId: "study",
-        requirements: {legacy:1},
-        effects: {legacy: -1},
-        startdescription: "--what'll I find?",
-        description: "--oho!",
-        warmup: 10,
+        warmup: 30,
         craftable: true
     }
 ]

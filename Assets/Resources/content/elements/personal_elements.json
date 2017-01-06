@@ -18,7 +18,6 @@
             {
                 lantern: CONVENTIONS.QUANTITY_TINY
             },
-            maxvalue:7,
             description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
         },
 		        {
@@ -38,8 +37,28 @@
             {
                 heart: CONVENTIONS.QUANTITY_TINY
             },
-            maxvalue:7,
             description: "This is your body. There are other bodies; this one is yours alone."
+        },
+		 {
+            id: "erudition",
+            label: "Erudition",
+            aspects:
+            {},
+            description: "--erudition desc."
+        },
+		 {
+            id: "notionpower",
+            label: "Notion: Power",
+            aspects:
+            {},
+            description: "--Notion: Power desc."
+        },
+		 {
+            id: "notionenlightenment",
+            label: "Notion: Enlightenment",
+            aspects:
+            {},
+            description: "--Notion: Enlightenment desc."
         }
 ]
 };
