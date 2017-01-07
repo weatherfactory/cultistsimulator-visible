@@ -169,20 +169,16 @@ namespace Assets.TabletopUi
             {
 
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
-                    
-                    //new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
-                    //command.Recipe.Description);
-				
+
 				SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, situationToken as DraggableToken);
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
             }
             else
             {
-               
-                //execute each recipe in command
+                situationWindow.UpdateTextForRecipe(command.Recipe);
+                currentCharacter.AddExecutionToHistory(command.Recipe.Id);
                 foreach (var kvp in command.GetElementChanges())
                 {
-                    currentCharacter.AddExecutionToHistory(command.Recipe.Id);
                     situationWindow.GetSituationStorageStacksManager().ModifyElementQuantity(kvp.Key, kvp.Value);
                 }
 
