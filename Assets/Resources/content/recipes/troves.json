@@ -8,9 +8,16 @@
         effects: {},
 		startdescription: "--book trove basic start desc",
         description: "--book trove basic  desc",
-		alternativerecipes:	[{id: "finddehorisbook1",chance:50},
-		{id: "findtravellingatnightvol1",chance:100}],
-        warmup: 60,
+		alternativerecipes:	[{id: "finddehorisbook1",chance:10},
+		{id: "findtravellingatnightvol1",chance:20},
+		{id: "findsixlettersonnecessity",chance:20},
+		{id: "findlocksmithsdream1",chance:20},
+		{id: "findorchidtransfigurations1",chance:20},
+		{id: "findtextbooklatin",chance:80},
+		{id: "findtextbookreason",chance:50},
+		{id: "findtextbookpassion",chance:100}
+		],
+        warmup: 0,
         craftable: false
     },
 	{
@@ -18,10 +25,11 @@
         label: "--finddehorisbook1",
         actionId: "find",
 		requirements: {},
-        effects: {dehorisbook1: 1},
+        effects: {dehoris1: 1},
 		startdescription: "--finddehorisbook1 start desc",
         description: "--finddehorisbook1 desc",
         warmup: 0,
+		maxexecutions: 1,
         craftable: false
     },
 	{
@@ -33,8 +41,78 @@
 		startdescription: "--findtravellingatnightvol1 start desc",
         description: "--findtravellingatnightvol1 desc",
         warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+	{
+        id: "findsixlettersonnecessity",
+        label: "--find",
+        actionId: "find",
+		requirements: {},
+        effects: {sixlettersonnecessity: 1},
+		startdescription: "--find",
+        description: "--find desc",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findlocksmithsdream1",
+        label: "--find",
+        actionId: "find",
+		requirements: {},
+        effects: {locksmithsdream1: 1},
+		startdescription: "--find",
+        description: "--find desc",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findorchidtransfigurations1",
+        label: "--find",
+        actionId: "find",
+		requirements: {},
+        effects: {orchidtransfigurations1: 1},
+		startdescription: "--find",
+        description: "--find desc",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findtextbooklatin",
+        label: "--find",
+        actionId: "find",
+		requirements: {},
+        effects: {textbooklatin : 1},
+		startdescription: "--find",
+        description: "--find desc",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findtextbookreason",
+        label: "--find",
+        actionId: "find",
+		requirements: {},
+        effects: {textbookreason: 1},
+		startdescription: "--find",
+        description: "--find desc",
+        warmup: 0,
+        craftable: false
+    },
+			{
+        id: "findtextbookpassion",
+        label: "--find",
+        actionId: "find",
+		requirements: {},
+        effects: {textbookpassion: 1},
+		startdescription: "--find",
+        description: "--find desc",
+        warmup: 0,
         craftable: false
     }
-	
 ]
 }

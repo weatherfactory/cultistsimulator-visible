@@ -201,6 +201,8 @@ public class ContentImporter
                 else
                     LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
             }
+            
+            //REQUIREMENTS
             try
             {
                 Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
@@ -212,20 +214,26 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                LogProblem("Problem importing requirements  for recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
+                LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
             }
+            /////////////////////////////////////////////
 
 
-            Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
-            if(htEffects==null)
-                LogProblem("No effects found for recipe " + r.Id );
-            foreach (string k in htEffects.Keys)
+            //EFFECTS
+            try
             {
-                LogIfNonexistentElementId(k, r.Id, "(effects)");
-                r.Effects.Add(k,Convert.ToInt32(htEffects[k]));
+                Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
+                foreach (string k in htEffects.Keys)
+                {
+                    LogIfNonexistentElementId(k, r.Id, "(effects)");
+                    r.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                }
             }
-
-
+            catch (Exception e)
+            {
+                LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
+            }
+            /////////////////////////////////////////////
 
             Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
             r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
