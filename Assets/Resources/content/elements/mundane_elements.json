@@ -38,8 +38,15 @@
         id: "locationbookdealer",
             label: "Morland's Shop",
             aspects:{location: 1},
+			slots: {
+				"Purchase":
+					{
+					required: {shilling: 1},
+					forbidden: {},
+					consumes: true
+					}
+				}
             description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
         }
-]
 ]
 };
