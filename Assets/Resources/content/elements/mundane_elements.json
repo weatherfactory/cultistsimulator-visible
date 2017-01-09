@@ -5,7 +5,7 @@
             label: "Shillings",
             aspects:
             {},
-            description: "Twelve pence, or one-twentieth of a pound, will support you for a day in adequate comfort."
+            description: "Twelve pence, or one-twentieth of a pound, will support me for a day in adequate comfort."
         },
 		     {
         id: "legacy",
@@ -27,6 +27,19 @@
             label: "Position at Glover & Glover",
             aspects:{},
             description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk."
+        },
+		{
+        id: "mapbookdealer",
+            label: "Directions to Morland's",
+            aspects:{},
+            description: "Cryptic directions to the obscure address of a certain Morland, a dealer in the rarer sort of book."
+        },
+		{
+        id: "locationbookdealer",
+            label: "Morland's Shop",
+            aspects:{location: 1},
+            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
         }
+]
 ]
 };

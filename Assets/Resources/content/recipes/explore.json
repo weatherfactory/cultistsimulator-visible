@@ -1,0 +1,26 @@
+ {"recipes": [
+	{
+        id: "openexplore",
+        label: "Explore",
+        actionId: "explore",
+        requirements: {},
+		effects: {health: 1},
+        startdescription: "--exploration top message; nb this will appear as aside from Find Morland's Shop",
+        description: "--exploration message; and recovering after my long illness",
+        warmup: 0,
+        maxexecutions: 1
+    },
+	{
+        id: "explorebookpurchase",
+        label: "Find Morland's shop",
+        actionId: "explore",
+        requirements: {locationbookdealer:1},
+		effects: {},
+		alternativerecipes:	[{id: "trovebookbasic",chance:100}],
+        startdescription: "--look for a book",
+        description: "--find a book!",
+        warmup: 30,
+        craftable: true
+    },
+]
+}
