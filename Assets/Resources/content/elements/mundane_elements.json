@@ -2,10 +2,10 @@
     [
           {
         id: "shilling",
-            label: "Shillings",
+            label: "Funds",
             aspects:
-            {},
-            description: "Twelve pence, or one-twentieth of a pound, will support me for a day in adequate comfort."
+            {tool: 1},
+            description: "Enough to support me for a little while in adequate comfort."
         },
 		     {
         id: "legacy",

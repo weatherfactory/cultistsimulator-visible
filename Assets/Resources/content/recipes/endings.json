@@ -1,18 +1,41 @@
 {
 "recipes": [
-
    {
         id: "deathofthebody",
         label: "No Health is left",
         actionId: "x",
         requirements: {health: -1},
-        effects: {
-        },
-        startdescription: ".",
+        effects: {},
+        startdescription: "My life is slipping away -",
         description: "Where will they find me? I am not here.",
         warmup: 0,
         craftable: false,
 		ending: "deathofthebody"
-    }
+    },
+	   {
+        id: "notionpowervictoryminor",
+        label: "I have achieved unearthly power!",
+        actionId: "x",
+        requirements: {notionpower: 1},
+        effects: {},
+        startdescription: ".",
+        description: "--well done!",
+        warmup: 0,
+        craftable: false,
+		ending: "powerminor"
+    },
+	{
+        id: "notionenlightenmentvictoryminor",
+        label: "I have learnt deep secrets!",
+        actionId: "x",
+        requirements: {notionenlightenment:1},
+        effects: {},
+        startdescription: ".",
+        description: "--well done!",
+        warmup: 0,
+        craftable: false,
+		ending: "enlightenmentminor"
+    },
+	
 ]
 }

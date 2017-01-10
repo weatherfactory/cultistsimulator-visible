@@ -17,16 +17,17 @@
         craftable: true
     },
 		{
-        id: "rest",
+        id: "tryrest",
         label: "Rest",
         actionId: "dream",
         requirements: {illhealth: 1},
         effects: { },
             		slots:
-						{nourishment: {required: {shilling: 1},forbidden: {}}}
+						{nourishment: {required: {shilling: 1},forbidden: {}}},
+		alternativerecipes: [{id:"rest",chance:100}]
         startdescription: "To recover my health, I'll need money for food and medicine.",
         description: "This was no true rest. I need money for food and medicine.",
-        warmup: 0,
+        warmup: 90,
         craftable: true
     }
 ]

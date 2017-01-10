@@ -1,0 +1,55 @@
+{
+"recipes": [
+	   {
+        id: "conjurationpower",
+        label: "Conjuration of Unearthly Power",
+        actionId: "work",
+        requirements: {ritual: 1, knock: 2, health:1},
+		alternativerecipes:[{id: "notionpowerpromotion",chance: 100, additional: true}],
+        effects: {},
+        startdescription: "--I will call on unsuspected powers",
+        description: "--here I go!",
+        warmup: 0,
+        craftable: true
+    },
+	{
+        id: "conjurationenlightenment",
+        label: "Conjuration of Unearthly Wisdom",
+        actionId: "work",
+        requirements: {ritual: 1, knock: 2, shilling:1},
+		alternativerecipes:[{id: "notionenlightenmentpromotion",chance: 100, additional: true}],
+        effects: {},
+        startdescription: "--The veil will part for me",
+        description: "--here I go!",
+        warmup: 0,
+        craftable: true
+    },
+	{
+        id: "notionpowerpromotion",
+        label: "I RISE",
+        actionId: "x",
+        requirements: {},
+		alternativerecipes:[{id: "notionpowervictoryminor",chance: 100}],
+        effects: {},
+		slots: {"desire": {required: {notionpower:1},greedy:true}},
+         startdescription: "--starting final victory countdown!",
+        description: "--final victory desc!!",
+        warmup: 15,
+        craftable: false
+    },
+		{
+        id: "notionenlightenmentpromotion",
+        label: "I CAN SEE",
+        actionId: "x",
+        requirements: {},
+		alternativerecipes:[{id: "notionenlightenmentvictoryminor",chance: 100}],
+        effects: {},
+		slots: {"desire": {required: {notionenlightenment:1},greedy:true}},
+        startdescription: "--starting final victory countdown!",
+        description: "--final victory desc!!",
+        warmup: 15,
+        craftable: false
+    },
+	
+]
+}

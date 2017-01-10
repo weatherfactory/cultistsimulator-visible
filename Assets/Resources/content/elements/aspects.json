@@ -40,13 +40,19 @@
 			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle of certainty and safety.]",
             isAspect: true
         },
+		{
+            id: "ritual",
+            label: "Ritual",
+            isAspect: true,
+			description: "'The proper things, in the proper manner, in the proper order. God help us all.' - attributed to Heursault"
+        },
         {
             id: "tool",
             label: "Tool",
             isAspect: true,
 			description: "'A sword does not kill; it is an instrument in the hand of the killer.' - Seneca the Younger"
         },
-		        {
+		{
             id: "lore",
             label: "Lore",
             isAspect: true,
@@ -56,6 +62,18 @@
             id: "knock",
             label: "Knock",
 			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and exposes horrible secrets.]",
+            isAspect: true
+        },
+		        {
+        id: "moth",
+        label: "Moth",
+        isAspect: true,
+		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
+    },
+        {
+            id: "secrethistories",
+            label: "Secret Histories",
+			        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.]",
             isAspect: true
         },
         {
@@ -74,18 +92,7 @@
 			description: "Locations! Everyone must be somewhere, and I am here. A Location can contain anything except another Location.",
         isAspect: true
 },
-        {
-        id: "moth",
-        label: "Moth",
-        isAspect: true,
-		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
-    },
-        {
-            id: "secrethistories",
-            label: "Secret Histories",
-			        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.]",
-            isAspect: true
-        },
+
         {
             id: "society",
             label: "Society",

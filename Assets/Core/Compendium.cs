@@ -135,7 +135,17 @@ public class Compendium : ICompendium
         //TODO! this is a demo hack
         if(endingFlag=="deathofthebody")
             return new Notification("MY BODY IS DEAD",
-                "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I had no Health remaining.]");
+                "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
+                "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]");
+        if (endingFlag == "powerminor")
+            return new Notification("WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
+                "[I achieved a measure of unearthly power. The Mansus will open to me, and the numbers of my followers will grow. By the standards of this  " +
+                "prologue, that's a victory. Congratulations to me! If I want to know when the game will be expanded, I can learn more at www.cultistsimulator.com]");
+
+        if (endingFlag == "enlightenmentminor")
+            return new Notification("EACH HOUR HAS ITS COLOUR. EACH FLAME HAS ITS FUEL",
+                "[I learnt deep secrets. I have begun to understand the Mansus, and its Hours. By the standards of this  " +
+                "prologue, that's a victory. Congratulations to me! If I want to know when the game will be expanded, I can learn more at www.cultistsimulator.com]");
 
         return new Notification("IT IS FINISHED","This one is done.");
     }

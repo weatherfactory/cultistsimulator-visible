@@ -4,10 +4,10 @@
         id: "ritebasicconsumetool",
             label: "Rite of the Watchman's Sorrow",
             aspects:
-            {},
+            {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}},
-			"Subject": {required: {follower:1, reason:1}},
+			"Subject": {required: {follower:1, health:1}},
 			"Instrument":{required: {tool: 1}, consumes: true}
 			}
             description: "--The subject of this ritual may speak secrets."
@@ -16,10 +16,10 @@
         id: "ritebasicconsumefollower",
             label: "Rite of the Crucible Soul",
             aspects:
-            {},
+            {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}},
-			"Subject": {required: {follower:1, reason:1}, consumes: true},
+			"Subject": {required: {follower:1, health:1}, consumes: true},
 			"Instrument":{required: {tool: 1}}
 			}
             description: "--The subject of this ritual may speak secrets, but will not survive unharmed."

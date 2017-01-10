@@ -27,14 +27,14 @@ public class ContentImporter
     public Dictionary<string, IVerb> Verbs;
     public Dictionary<string, Element> Elements;
     public List<Recipe> Recipes;
-    
+
 
     public ContentImporter()
     {
-   contentImportProblems=new List<ContentImportProblem>();
-   Verbs = new Dictionary<string, IVerb>();
-   Elements = new Dictionary<string, Element>();
-   Recipes = new List<Recipe>();
+        contentImportProblems = new List<ContentImportProblem>();
+        Verbs = new Dictionary<string, IVerb>();
+        Elements = new Dictionary<string, Element>();
+        Recipes = new List<Recipe>();
     }
 
     public IList<ContentImportProblem> GetContentImportProblems()
@@ -49,17 +49,17 @@ public class ContentImporter
 
     public List<SlotSpecification> AddSlotsFromHashtable(Hashtable htSlots)
     {
-        List<SlotSpecification> cssList=new List<SlotSpecification>();
+        List<SlotSpecification> cssList = new List<SlotSpecification>();
+
 
         if (htSlots != null)
         {
-
             foreach (string k in htSlots.Keys)
             {
 
                 Hashtable htThisSlot = htSlots[k] as Hashtable;
 
-                SlotSpecification slotSpecification=new SlotSpecification(k);
+                SlotSpecification slotSpecification = new SlotSpecification(k);
 
                 if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
                     slotSpecification.Greedy = true;
@@ -102,7 +102,7 @@ public class ContentImporter
 
     public void PopulateElements(Hashtable htElements)
     {
-        
+
         if (htElements == null)
             LogProblem("Elements were never imported; PopulateElementForId failed");
 
@@ -113,7 +113,7 @@ public class ContentImporter
             Hashtable htSlots = htElement.GetHashtable(NoonConstants.KSLOTS);
 
             Element element = new Element(htElement.GetString(CONST_ID),
-               htElement.GetString(CONST_LABEL),
+                htElement.GetString(CONST_LABEL),
                 htElement.GetString(CONST_DESCRIPTION));
 
             if (htElement.GetString(CONST_ISASPECT) == "true")
@@ -122,30 +122,30 @@ public class ContentImporter
                 element.IsAspect = false;
 
             element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
-            element.ChildSlotSpecifications=AddSlotsFromHashtable(htSlots);
+            element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
 
-            Elements.Add(element.Id,element);
+            Elements.Add(element.Id, element);
         }
-       
+
     }
 
     public void ImportRecipes()
     {
-        TextAsset[] recipeTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
         ArrayList recipesArrayList = new ArrayList();
 
         foreach (TextAsset ta in recipeTextAssets)
         {
             string json = ta.text;
             recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
-            
+
         }
         PopulateRecipeList(recipesArrayList);
     }
 
     public void ImportVerbs()
     {
-        ArrayList verbsArrayList=new ArrayList();
+        ArrayList verbsArrayList = new ArrayList();
         TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
         foreach (TextAsset ta in verbTextAssets)
         {
@@ -155,8 +155,9 @@ public class ContentImporter
 
         foreach (Hashtable h in verbsArrayList)
         {
-            IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(), Convert.ToBoolean(h["atStart"]));
-            Verbs.Add(v.Id,v);
+            IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(),
+                Convert.ToBoolean(h["atStart"]));
+            Verbs.Add(v.Id, v);
         }
 
     }
@@ -164,11 +165,11 @@ public class ContentImporter
 
     public void PopulateRecipeList(ArrayList importedRecipes)
     {
-        for(int i=0; i< importedRecipes.Count;i++)
+        for (int i = 0; i < importedRecipes.Count; i++)
         {
             Hashtable htEachRecipe = importedRecipes.GetHashtable(i);
-        
-                Recipe r = new Recipe();
+
+            Recipe r = new Recipe();
             try
             {
                 r.Id = htEachRecipe[NoonConstants.KID].ToString();
@@ -187,7 +188,9 @@ public class ContentImporter
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
                 r.Loop = htEachRecipe[NoonConstants.KLOOP] == null ? null : htEachRecipe[NoonConstants.KLOOP].ToString();
-                r.Ending = htEachRecipe[NoonConstants.KENDING] == null ? null : htEachRecipe[NoonConstants.KENDING].ToString();
+                r.Ending = htEachRecipe[NoonConstants.KENDING] == null
+                    ? null
+                    : htEachRecipe[NoonConstants.KENDING].ToString();
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
                     r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
 
@@ -201,7 +204,7 @@ public class ContentImporter
                 else
                     LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
             }
-            
+
             //REQUIREMENTS
             try
             {
@@ -234,9 +237,21 @@ public class ContentImporter
                 LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
             }
             /////////////////////////////////////////////
+            try
+            {
 
-            Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
-            r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
+                Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
+                r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
+            }
+            catch (Exception e)
+            {
+
+                LogProblem("Problem importing slots for recipe '" + r.Id + "' - " + e.Message);
+
+            }
+
+            try
+            {
 
             ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPES);
             if(alRecipeAlternatives!=null)
@@ -249,6 +264,12 @@ public class ContentImporter
 
                     r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
                 }
+            }
+            }
+            catch (Exception e)
+            {
+
+                LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
             }
 
 
