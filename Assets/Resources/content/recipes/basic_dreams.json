@@ -22,6 +22,8 @@
         actionId: "dream",
         requirements: {illhealth: 1},
         effects: { },
+            		slots:
+						{nourishment: {required: {shilling: 1},forbidden: {}}}
         startdescription: "To recover my health, I'll need money for food and medicine.",
         description: "This was no true rest. I need money for food and medicine.",
         warmup: 0,

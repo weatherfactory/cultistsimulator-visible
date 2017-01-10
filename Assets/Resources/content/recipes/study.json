@@ -35,6 +35,30 @@
         description: "--find Morland!",
         warmup: 30,
         craftable: true
-    }
+    },
+	{id: "studycreateritebasicconsumetool",
+	label: "Discover a Ritual",
+	actionId: "study",
+	startdescription: "--there is something here!",
+	description: "--I have a procedure!",
+	requirements: {forge:2,lantern:2},
+	effects: {forge:-1,lantern:-1,ritebasicconsumetool: 1},
+	warmup: 60,
+	craftable:true,
+	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
+	},
+	{
+	id: "studyforge",
+	label: "Study the Lore which Burns",
+	actionId: "study",
+	requirements: {lore:1, forge:2},
+	effects: {},
+	slots:{"More": required: {lantern: 1, grail: 1}},
+	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100}]
+	startdescription: "--This is a beginning.",
+	description: "--what is missing?",
+	warmup:60,
+	craftable: true,
+	}
 ]
 }

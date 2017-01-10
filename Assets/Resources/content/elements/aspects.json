@@ -41,9 +41,16 @@
             isAspect: true
         },
         {
-            id: "key",
-            label: "Key",
-            isAspect: true
+            id: "tool",
+            label: "Tool",
+            isAspect: true,
+			description: "'A sword does not kill; it is an instrument in the hand of the killer.' - Seneca the Younger"
+        },
+		        {
+            id: "lore",
+            label: "Lore",
+            isAspect: true,
+			description: "'A desire of knowledge is the natural feeling of mankind; and every human being whose mind is not debauched, will be willing to give all that he has to get knowledge.' - Samuel Johnson"
         },
         {
             id: "knock",
@@ -73,13 +80,6 @@
         isAspect: true,
 		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
     },
-        {
-            id: "ritual",
-            label: "Ritual",
-			description: "A Ritual can contain anything but a Location or another Ritual.",
-            isAspect: true
-        },
-
         {
             id: "secrethistories",
             label: "Secret Histories",

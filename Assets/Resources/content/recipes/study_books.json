@@ -43,6 +43,28 @@
         warmup: 60,
         craftable: true
     },
+	{
+	        id: "studylocksmithsdream2",
+        label: "Read this volume of the Locksmith's Dream",
+        actionId: "study",
+        requirements: {locksmithsdream2: 1},
+        effects: {locksmithsdream2: -1,fragmentknock:1,erudition:1},
+		startdescription: "--start reading ",
+        description: "--done reading!",
+        warmup: 60,
+        craftable: true
+    },
+		{
+	        id: "studylocksmithsdream3",
+        label: "Read this volume of the Locksmith's Dream",
+        actionId: "study",
+        requirements: {locksmithsdream3: 1},
+        effects: {locksmithsdream3: -1,fragmentknock:1,erudition:1},
+		startdescription: "--start reading ",
+        description: "--done reading!",
+        warmup: 60,
+        craftable: true
+    },
 		{
         id: "studyorchidtransfigurations1",
         label: "Read this volume of the Orchid Transfigurations",

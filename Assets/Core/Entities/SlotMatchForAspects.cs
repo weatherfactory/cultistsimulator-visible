@@ -27,13 +27,13 @@ namespace Assets.Core.Entities
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
                 string problemAspects = ProblemAspectsDescription();
-                description += "Elements with the " + problemAspects + " aspects are unacceptable here. *Unacceptable*.";
+                description += "A card may not go here if it has any of these aspects: " + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription();
-                description += "Only elements with the " + problemAspects + " aspects can go here.";
+                description += "To go here, a card must have at least one of these aspects: " + problemAspects;
             }
 
             return description;
