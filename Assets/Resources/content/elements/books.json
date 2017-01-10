@@ -1,11 +1,25 @@
 {"elements":
     [
+	          {
+        id: "dehoris1latin",
+            label: "De Horis (Book 1) [Latin]",
+            aspects:
+            {},
+			slots: {
+			"Translate":
+				{
+				required: {scholarlatin:1},
+				forbidden: {}
+				}
+			},
+            description: "An occasionally coherent catalogue of the secret gods, organised by hour. This is a reprint, but in the original Latin."
+        },
           {
         id: "dehoris1",
             label: "De Horis (Book 1)",
             aspects:
             {},
-            description: "An occasionally coherent catalogue of the secret gods, organised by hour."
+            description: "An occasionally coherent catalogue of the secret gods, organised by hour. This is an English translation."
         },
 		 {
         id: "travellingatnight1",
@@ -30,12 +44,26 @@
             {},
             description: "The first volume of Teresa Galmier's examination of parallels in the mystic dreams of artisans."
         },
+				 {
+        id: "orchidtransfigurations1latin",
+            label: "The Orchid Transfigurations [Latin]",
+            aspects:
+            {},
+			slots: {
+			"Translate":
+				{
+				required: {scholarlatin:1},
+				forbidden: {}
+				}
+			},
+            description: "An original edition of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is in the original Latin."
+        },
 		 {
         id: "orchidtransfigurations1",
             label: "The Orchid Transfigurations: a Feast",
             aspects:
             {},
-            description: "A compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd."
+            description: "Part of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is a later English translation."
         },
 		 {
         id: "textbooklatin",

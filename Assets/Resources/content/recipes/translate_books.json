@@ -1,0 +1,25 @@
+ {"recipes": [
+	{
+        id: "translatedehoris1latin",
+        label: "Translate De Horis [volume 1] into English",
+        actionId: "study",
+        requirements: {dehoris1latin: 1,scholarlatin:1},
+        effects: {dehoris1latin: -1,dehoris1:1,erudition:1},
+		startdescription: "--start translating ",
+        description: "--done translating!",
+        warmup: 60,
+        craftable: true
+    },
+		{
+        id: "translateorchidtransfigurations1latin",
+        label: "Translate this volume of the Orchid Transfigurations ('Feast')",
+        actionId: "study",
+        requirements: {orchidtransfigurations1latin: 1,scholarlatin: 1},
+        effects: {orchidtransfigurations1latin: -1,orchidtransfigurations1:1, glimmering:1},
+		startdescription: "--start translating ",
+        description: "--done translating!",
+        warmup: 60,
+        craftable: true
+    }
+]
+}
