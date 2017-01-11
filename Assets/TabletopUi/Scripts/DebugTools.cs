@@ -49,7 +49,7 @@ public class DebugTools : MonoBehaviour
 
     void NextTrack()
     {
-        backgroundMusic.PlayRandomClip();
+        backgroundMusic.PlayNextClip();
     }
 }
 

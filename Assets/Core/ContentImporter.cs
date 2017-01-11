@@ -60,6 +60,8 @@ public class ContentImporter
                 Hashtable htThisSlot = htSlots[k] as Hashtable;
 
                 SlotSpecification slotSpecification = new SlotSpecification(k);
+                if(htThisSlot[NoonConstants.KDESCRIPTION]!=null)
+                slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
 
                 if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
                     slotSpecification.Greedy = true;

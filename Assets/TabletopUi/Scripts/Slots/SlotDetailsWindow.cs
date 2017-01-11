@@ -22,8 +22,12 @@ namespace Assets.CS.TabletopUI {
             Invoke("Hide", 5);
         }
 
-        public void SetSlot(SlotSpecification slotSpecification) {
-            title.text = slotSpecification.Label + slotSpecification.Description;
+        public void SetSlot(SlotSpecification slotSpecification)
+        {
+            if (slotSpecification.Label != "")
+                title.text = slotSpecification.Label + ":" + slotSpecification.Description;
+            else
+                title.text = slotSpecification.Description;
             
             greedyInfo.gameObject.SetActive(slotSpecification.Greedy);
             consumesInfo.gameObject.SetActive(slotSpecification.Consumes);

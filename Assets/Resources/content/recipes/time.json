@@ -12,16 +12,18 @@
 		[{id: "legacyarrives", chance:100, additional: true}
 		{id: "lawenforcement", chance:0, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
-        startdescription: "Time, the sundial's shadow, passes. The shopkeepers will have ttheir due.",
+        startdescription: "Time, the sundial's shadow, passes. ",
         description: ".",
         warmup: 60,
         craftable: false,
 		slots: {
-				"Needs":
+				"Expenses":
 					{
 					required: {shilling: 1},
 					forbidden: {},
-				greedy: true
+				greedy: true,
+				description: "The shopkeepers will have their due, or I'll starve."
+				
 					}
 
 				},
