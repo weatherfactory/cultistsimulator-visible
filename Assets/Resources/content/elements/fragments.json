@@ -1,11 +1,11 @@
 {"elements":
     [
-          {
-        id: "fragmentmoth",
-            label: "Wood-Whisper",
+					          {
+        id: "fragmentedge",
+            label: "Knife-Pattern",
             aspects:
-            {moth: 2,lore:1},
-            description: "--wood-whisper"
+            {edge: 2,lore:1},
+            description: "--"
         },
 		          {
         id: "fragmentforge",
@@ -14,6 +14,13 @@
             {forge: 2,lore:1},
             description: "When we watch a fire, what are we watching for?"
         },
+						          {
+        id: "fragmentgrail",
+            label: "Delightful Word",
+            aspects:
+            {grail: 2,lore:1},
+            description: "So pleasant upon the ear. One could listen over and over."
+        },
 				          {
         id: "fragmentheart",
             label: "The Word that Walks",
@@ -21,13 +28,7 @@
             {heart: 2,lore:1},
             description: "--"
         },
-				          {
-        id: "fragmentgrail",
-            label: "Delightful Word",
-            aspects:
-            {grail: 2,lore:1},
-            description: "So pleasant upon the ear. One could listen over and over."
-        },
+
 				          {
         id: "fragmentknock",
             label: "Word of Consent",
@@ -42,13 +43,14 @@
             {lantern: 2,lore:1},
             description: "--"
         },
-				          {
-        id: "fragmentedge",
-            label: "Knife-Pattern",
+		          {
+        id: "fragmentmoth",
+            label: "Wood-Whisper",
             aspects:
-            {edge: 2,lore:1},
-            description: "--"
+            {moth: 2,lore:1},
+            description: "--wood-whisper"
         },
+
 				          {
         id: "fragmentsecrethistories",
             label: "Occult Scrap",
