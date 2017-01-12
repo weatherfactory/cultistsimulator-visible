@@ -2,12 +2,12 @@
 
 	{
         id: "trovebookbasic",
-        label: "--book trove basic label",
+        label: "A Trove of Books",
         actionId: "booktrovebasic",
 		requirements: {},
         effects: {},
-		startdescription: "--book trove basic start desc this shows up when searching, remember",
-        description: "--book trove basic  desc",
+		startdescription: "What might I find?",
+        description: "[Book trove end desc: shouldn't appear.]",
 		alternativerecipes:	[{id: "finddehoris1latin",chance:10},
 		{id: "findtravellingatnight1",chance:20},
 		{id: "findsixlettersonnecessity",chance:20},
@@ -22,7 +22,7 @@
     },
 	{
         id: "finddehoris1",
-        label: "--finddehorisbook1",
+        label: "A volume of the De Horis",
         actionId: "find",
 		requirements: {},
         effects: {dehoris1: 1},
