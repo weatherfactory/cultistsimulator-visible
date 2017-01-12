@@ -60,9 +60,11 @@ public class ContentImporter
                 Hashtable htThisSlot = htSlots[k] as Hashtable;
 
                 SlotSpecification slotSpecification = new SlotSpecification(k);
-                if(htThisSlot[NoonConstants.KDESCRIPTION]!=null)
-                slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
-
+                try
+                {
+                    if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
+                        slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
+        
                 if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
                     slotSpecification.Greedy = true;
 
@@ -80,6 +82,11 @@ public class ContentImporter
                 {
                     foreach (string fk in htForbidden.Keys)
                         slotSpecification.Forbidden.Add(fk, 1);
+                }
+                }
+                catch (Exception e)
+                {
+                    LogProblem("Couldn't retrieve slot " + k + " - " + e.Message);
                 }
 
                 cssList.Add(slotSpecification);

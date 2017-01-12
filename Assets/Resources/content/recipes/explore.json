@@ -5,8 +5,8 @@
         actionId: "explore",
         requirements: {},
 		effects: {health: 1},
-        startdescription: "--exploration top message; nb this will appear as aside from Find Morland's Shop",
-        description: "--exploration message; and recovering after my long illness",
+        startdescription: "--exploration top message; nb this will appear as aside from Find Morland's Shop.and recovering after my long illness",
+        description: "An ill-lit street at an ill-favoured bend in a lesser river. A soft yellow light through a grimy window. Miss Morland nods as I enter, but doesn't rise. 'I never ask the names of my clients,' she informs me, before I have time to introduce myself.",
         warmup: 0,
         maxexecutions: 1
     },
@@ -17,8 +17,8 @@
         requirements: {locationbookdealer:1,shilling:1},
 		effects: {},
 		alternativerecipes:	[{id: "trovebookbasic",chance:100}],
-        startdescription: "--purchase for a book start",
-        description: "--purchase a book end",
+        startdescription: "It takes time to sort the gold from the dross, the wheat from the chaff, the blood from the water. If I buy enough books, I'll find something interesting.",
+        description: "[Something interesting.]",
         warmup: 30,
         craftable: true
     },

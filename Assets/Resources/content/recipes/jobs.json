@@ -29,7 +29,8 @@
 				"Diligence":
 					{
 					required: {reason: 1},
-					forbidden: {}
+					forbidden: {},
+					description: "Extra effort. It might help, sometimes."
 					}
 				},
 				craftable: true
@@ -38,7 +39,7 @@
 	label: "Extra Hours at Glover & Glover",
 	  requirements: {gloverandgloverjuniorjob: 1,reason: 1},
 	          alternativerecipes:
-		[{id: "gloverandgloverjunior_diligence_promotion", chance:40}],
+		[{id: "gloverandgloverjunior_diligence_promotion", chance:30}],
 		effects: { shilling: 3},
 	actionId:"work",
         startdescription: "I will work whatever hours the elder Glover requires. Perhaps he'll appreciate it.",
@@ -75,7 +76,7 @@
         id: "firstdayconversation",
         label: "A Conversation at Work",
         actionId: "talk",
-        requirements: {},
+        requirements: {shilling: 100},
         effects: {shilling: 1},
         startdescription: "--work conversation start on the first day",
         description: "--work conversation ends: talk now open",

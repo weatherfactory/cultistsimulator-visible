@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 
@@ -22,6 +23,8 @@ namespace Assets.Core
 
         /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
         IList<Recipe> GetActualRecipesToExecute(Recipe recipe);
+
+        RecipePrediction GetRecipePrediction(Recipe currentRecipe);
     }
 
     public class RecipeConductor : IRecipeConductor
@@ -51,6 +54,54 @@ namespace Assets.Core
             return null;
         }
 
+
+        public RecipePrediction GetRecipePrediction(Recipe currentRecipe)
+        {
+            var rp=new RecipePrediction();
+           
+   //set this up to return if we pass through the list below without finding anything interesting.
+                rp.Title = currentRecipe.Label;
+                rp.DescriptiveText = currentRecipe.StartDescription;
+                rp.Commentary = currentRecipe.Aside;
+   
+                
+            foreach (var ar in currentRecipe.AlternativeRecipes)
+            {
+                Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
+
+                if (candidateRecipe == null)
+                { 
+                    rp.Title = "Recipe predictor couldn't find recipe with id " + ar.Id;
+                    return rp;
+                }
+                if (candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) &&
+                    !currentCharacter.HasExhaustedRecipe(candidateRecipe))
+
+                {
+                    if (!ar.Additional)
+                    {
+                        if (ar.Chance < 100)
+                        {
+                            //there is uncertainty! Leave the headline decision where it is, but tell the player.
+                            rp.Commentary = "[The outcome here may vary.]";
+                            return rp;
+                        }
+                        else
+                        {
+                            //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
+                            //alternative will have a useful description.
+                            rp.Title = candidateRecipe.Label;
+                            rp.DescriptiveText = candidateRecipe.StartDescription;
+                            rp.Commentary = candidateRecipe.Aside;
+                            return rp;
+                        }
+                    }
+                }
+            }
+
+
+            return rp;
+        }
 
         public IList<Recipe> GetActualRecipesToExecute(Recipe recipe)
         {
