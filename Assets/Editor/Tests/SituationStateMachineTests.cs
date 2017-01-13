@@ -198,30 +198,6 @@ namespace Assets.Editor.Tests
             Assert.AreEqual(loopedRecipe.Id, s.RecipeId);
         }
 
-        [Test]
-        public void SingleRecipePrediction_JustDisplaysPredictedDetails()
-        {
-            SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1, subscriber);
-
-            rc.GetActualRecipesToExecute(null).ReturnsForAnyArgs(new List<Recipe>() {r2});
-            var p=s.GetPrediction(rc);
-            Assert.AreEqual(r2.Label, p.Title);
-            Assert.AreEqual(r2.StartDescription, p.DescriptiveText);
-            Assert.AreEqual(r2.Aside, p.Commentary);
-        }
-
-        [Test]
-        public void DoubleRecipePrediction_AppendsStartDescriptionToAside()
-        {
-            SituationStateMachine s = new SituationStateMachine(0, SituationState.Ongoing, r1, subscriber);
-
-            rc.GetActualRecipesToExecute(null).ReturnsForAnyArgs(new List<Recipe>() { r2,r3 });
-            var p = s.GetPrediction(rc);
-            Assert.AreEqual(r2.Label, p.Title);
-            Assert.AreEqual(r2.StartDescription, p.DescriptiveText);
-            Assert.AreEqual(r2.Aside + " [" + r3.StartDescription + "]",
-                p.Commentary);
-        }
 
     }
 }
