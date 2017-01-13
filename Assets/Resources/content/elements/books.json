@@ -90,7 +90,10 @@
             label: "A Collection of Essays",
             aspects:
             {},
-            description: "There's always more to know. [Use with three Erudition to gain Reason.]"
+            description: "There's always more to know. [Use with three Erudition to gain Reason.]",
+			slots: {"Insight": {required: {erudition:1},consumes:true},
+			"Understanding": {required: {erudition:1},consumes:true},
+			"Experience": {required: {erudition:1},consumes:true}}
         },
 		 {
         id: "textbookpassion",
