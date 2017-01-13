@@ -9,7 +9,8 @@
             shilling: -1
         },
         alternativerecipes:
-		[{id: "legacyarrives", chance:100, additional: true}
+		[{id: "legacyarrives", chance:100, additional: true},
+		{id: "sickness", chance:10, additional: true}
 		{id: "lawenforcement", chance:0, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
         startdescription: "Time, the sundial's shadow, passes.",
@@ -23,16 +24,39 @@
 					forbidden: {},
 				greedy: true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
-				
 					}
 
 				},
         loop: "needs"
     },
 	   {
+        id: "sickness",
+        label: "Sickness",
+        actionId: "illhealth",
+        requirements: {},
+        effects: {
+            health: -1,
+            affliction: 1
+        },
+		alternativerecipes:
+		[{id: "deathofthebody",chance:100}],
+        startdescription: ".",
+        description: "I've become unwell. [If an illness cannot consume Health, it will cause death.] ",
+        warmup: 60,
+		slots: {
+		"Affliction": 
+					{
+					required: {health: 1},
+					forbidden: {},
+					greedy: true
+					}
+		}
+        craftable: false
+    },
+	   {
         id: "starvation",
         label: "Starvation",
-        actionId: "starvation",
+        actionId: "illhealth",
         requirements: {shilling: -1},
         effects: {
             health: -1,
@@ -41,10 +65,10 @@
 		alternativerecipes:
 		[{id: "deathofthebody",chance:100}],
         startdescription: ".",
-        description: "I have grown neglectful of my health. Without money, I'll soon starve.",
+        description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
         warmup: 60,
 		slots: {
-		"Wasting": 
+		"Starvation": 
 					{
 					required: {health: 1},
 					forbidden: {},
