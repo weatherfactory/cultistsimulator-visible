@@ -61,7 +61,8 @@
         id: "labour",
         label: "Labour",
 		alternativerecipes:
-		[{id: "firstdayconversation", chance:100,additional: true}],
+		[{id: "labourinjury", chance:30}
+		{id: "firstdayconversation", chance:100,additional: true}],
         actionId: "work",
         requirements: {health: 1},
         effects: {
@@ -71,6 +72,22 @@
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
         craftable: true
+    },
+		{
+        id: "labourinjury",
+        label: "Labour",
+
+        actionId: "work",
+        requirements: {},
+        effects: {
+            health:-1,
+			injury: 1,
+			shilling:1
+        },
+        startdescription: ".",
+        description: "I'm injured! I'll hobble painfully home with my wretched pay.",
+        warmup: 0,
+        craftable: false
     },
 	{
         id: "firstdayconversation",

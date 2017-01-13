@@ -9,6 +9,14 @@
 			  grail: CONVENTIONS.QUANTITY_TINY},
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
 			},
+					     {
+        id: "injury",
+            label: "An Injury",
+            aspects:
+            {illhealth: CONVENTIONS.QUANTITY_TINY,
+			  knock: CONVENTIONS.QUANTITY_TINY},
+            description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury will also allow you to recover Health.]",
+			},
         {
             id: "reason",
             label: "Reason",
