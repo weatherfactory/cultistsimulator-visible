@@ -139,12 +139,12 @@ public class Compendium : ICompendium
                 "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]");
         if (endingFlag == "powerminor")
             return new Notification("WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
-                "[I achieved a measure of unearthly power. The Mansus will open to me, and the numbers of my followers will grow. By the standards of this  " +
+                "[The Red Grail is the Hour of blood and of birth. It has touched me, and I've gained a little of its power. I can use that power to ascend a secret throne, one day. By the standards of this  " +
                 "prologue, that's a victory. Congratulations to me! If I want to know when the game will be expanded, I can learn more at www.cultistsimulator.com]");
 
         if (endingFlag == "enlightenmentminor")
             return new Notification("EACH HOUR HAS ITS COLOUR. EACH FLAME HAS ITS FUEL",
-                "[I learnt deep secrets. I have begun to understand the Mansus, and its Hours. By the standards of this  " +
+                "[I have walked behind the Watchman: I have seen his shadow on the stone. This is the first step in understanding the shaping of fate. By the standards of this  " +
                 "prologue, that's a victory. Congratulations to me! If I want to know when the game will be expanded, I can learn more at www.cultistsimulator.com]");
 
         return new Notification("IT IS FINISHED","This one is done.");
