@@ -100,7 +100,32 @@
         warmup: 6,
         craftable: false,
 		maxexecutions: 1
-    }
+    },
+		{
+        id: "paint",
+        label: "Paint",
+		alternativerecipes:
+		[{id: "paintsuccess", chance:30}],
+        actionId: "work",
+        requirements: {passion: 1},
+        effects: {
+        },
+        startdescription: "I might sell a painting. I probably won't.",
+        description: "I've finished a painting, to the excitement of absolutely no-one.",
+        warmup: 60,
+        craftable: true
+    },
+	{
+        id: "paintsuccess",
+        label: "I've sold a painting!",
+        actionId: "work",
+        requirements: {},
+        effects: {shilling: 2},
+        startdescription: ".",
+        description: "I've found a customer! They'll probably hang it in their back bedroom. But their money is good.",
+        warmup: 0,
+        craftable: false
+    },
 	
 ]
 }
