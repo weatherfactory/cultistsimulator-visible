@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using Assets.CS.TabletopUI;
+using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -10,8 +11,8 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
 {
     public int Quantity;
     private Element aspect=null;
-    [SerializeField] private Image aspectImage=null;
-    [SerializeField] private Text quantityText = null;
+    [SerializeField] private Image aspectImage;
+    [SerializeField] private TextMeshProUGUI quantityText;
     public string AspectId { get { return aspect == null ? null : aspect.Id; } }
 
     private void DisplayAspectImage(Element aspect)

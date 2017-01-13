@@ -28,7 +28,6 @@ namespace Assets.CS.TabletopUI
             artwork.sprite = elementSprite;
          title.text = element.Label;
             description.text = element.Description; 
-            slots.text = GetSlotsText(element.ChildSlotSpecifications); 
           aspectsDisplay.DisplayAspects(element.Aspects);
 
         }
