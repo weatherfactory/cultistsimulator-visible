@@ -58,7 +58,7 @@ namespace Assets.Editor.Tests
             compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"", new Character()).ReturnsForAnyArgs(recipe);
           sc.StartingSlotsUpdated();
             situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
-            situationDetailsMock.Received().UpdateTextForRecipe(recipe);
+            situationDetailsMock.Received().UpdateTextForCandidateRecipe(recipe);
         }
 
         //item added to / removed from ongoing slot updates aspects display and recipe *prediction* with stored aspects and ongoing slot aspects

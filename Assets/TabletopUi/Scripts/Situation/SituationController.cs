@@ -75,7 +75,7 @@ namespace Assets.TabletopUi
 
             var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id,currentCharacter);
 
-            situationWindow.UpdateTextForRecipe(r);
+            situationWindow.UpdateTextForCandidateRecipe(r);
         }
 
         public void OngoingSlotsUpdated()
@@ -175,7 +175,7 @@ namespace Assets.TabletopUi
             }
             else
             {
-                situationWindow.UpdateTextForRecipe(command.Recipe);
+                
                 currentCharacter.AddExecutionToHistory(command.Recipe.Id);
                 foreach (var kvp in command.GetElementChanges())
                 {

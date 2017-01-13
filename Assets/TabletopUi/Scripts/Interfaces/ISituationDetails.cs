@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Show();
         void Hide();
         void DisplayAspects(IAspectsDictionary forAspects);
-        void UpdateTextForRecipe(Recipe r);
+        void UpdateTextForCandidateRecipe(Recipe r);
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromAllSlottedElements();

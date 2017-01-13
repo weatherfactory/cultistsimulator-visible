@@ -113,7 +113,7 @@ namespace Assets.CS.TabletopUI
             aspectsDisplay.DisplayAspects(forAspects);
         }
 
-        public void UpdateTextForRecipe(Recipe r)
+        public void UpdateTextForCandidateRecipe(Recipe r)
         {
             if (r != null)
             {
@@ -128,6 +128,7 @@ namespace Assets.CS.TabletopUI
                 button.gameObject.SetActive(false);
             }
         }
+
 
         public void UpdateTextForPrediction(RecipePrediction recipePrediction)
         {
