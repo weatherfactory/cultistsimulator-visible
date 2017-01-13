@@ -84,7 +84,8 @@ namespace Assets.CS.TabletopUI
                 { "health", 2},
                 { "reason", 2},
                 { "passion", 2},
-                { "shilling", 2}
+                { "shilling", 2},
+                {"startingletter",1 }
             };
 
             foreach (var e in startingElements)
@@ -217,7 +218,7 @@ namespace Assets.CS.TabletopUI
         //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
-			stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(100f, 0f));
+			stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
             tabletopContainer.PutOnTable(stack);
         }
 
