@@ -4,11 +4,12 @@
         label: "Explore",
         actionId: "explore",
         requirements: {},
-		effects: {health: 1},
-        startdescription: "--exploration top message; nb this will appear as aside from Find Morland's Shop",
-        description: "--exploration message; and recovering after my long illness",
+		effects: {erudition: 1},
+        startdescription: "A Wider World",
+        description: "[This is the Explore action - most often used with locations.]",
         warmup: 0,
-        maxexecutions: 1
+        maxexecutions: 1,
+		craftable: false
     },
 	{
         id: "explorebookpurchase",
@@ -17,8 +18,8 @@
         requirements: {locationbookdealer:1,shilling:1},
 		effects: {},
 		alternativerecipes:	[{id: "trovebookbasic",chance:100}],
-        startdescription: "--purchase for a book start",
-        description: "--purchase a book end",
+        startdescription: "It takes time to sort the gold from the dross, the wheat from the chaff, the blood from the water. If I buy enough books, I'll find something interesting.",
+        description: "[Something interesting. If this appears, the book trove recipe hasn't fired.]",
         warmup: 30,
         craftable: true
     },

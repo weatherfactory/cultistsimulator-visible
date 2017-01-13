@@ -6,11 +6,12 @@
             aspects:
             {ritual:1},
 			slots: {
-			"Invocation":{required: {lore: 1}},
-			"Subject": {required: {follower:1, health:1}},
-			"Instrument":{required: {tool: 1}, consumes: true}
+			"Invocation":{required: {lore: 1}, description: "What other powers will we call upon?"},
+			"Subject": {required: {follower:1, reason:1},description: "Who will speak the words?"},
+			"Instrument":{required: {tool: 1}, consumes: true,description: "What will we give up?"},
+			"Desire": {required: {desire:1}, description: "Why must I do this?"}
 			}
-            description: "--The subject of this ritual may speak secrets."
+            description: "This rite recalls the loss of the Watchman, who walks the house has no walls. Light goes before him and shadow behind. He must not see you."
         },
 		          {
         id: "ritebasicconsumefollower",
@@ -18,11 +19,12 @@
             aspects:
             {ritual:1},
 			slots: {
-			"Invocation":{required: {lore: 1}},
-			"Subject": {required: {follower:1, health:1}, consumes: true},
-			"Instrument":{required: {tool: 1}}
+			"Invocation":{required: {lore: 1}, description: "What other powers will we call upon?"},
+			"Subject": {required: {follower:1, health:1}, consumes: true,description:"Will you or another give your blood?"},
+			"Instrument":{required: {tool: 1}, description: "On what will blood be shed?"},
+			"Desire": {required: {desire:1}, description: "Why must I do this?"}
 			}
-            description: "--The subject of this ritual may speak secrets, but will not survive unharmed."
+            description: "This rite sets the blood afire, and fire is the lesion in the skin of the world. The subject rarely survives unharmed."
         },
 		  
 ]

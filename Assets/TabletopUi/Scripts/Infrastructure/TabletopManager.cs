@@ -81,9 +81,9 @@ namespace Assets.CS.TabletopUI
             tabletopObjectBuilder.PopulateTabletop();
             AspectsDictionary startingElements = new AspectsDictionary
             {
-                { "health", 3},
-                { "reason", 3},
-                { "passion", 3},
+                { "health", 2},
+                { "reason", 2},
+                { "passion", 2},
                 { "shilling", 2}
             };
 

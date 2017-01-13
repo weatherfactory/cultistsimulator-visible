@@ -5,8 +5,8 @@
         actionId: "study",
         requirements: {dehoris1latin: 1,scholarlatin:1},
         effects: {dehoris1latin: -1,dehoris1:1,erudition:1},
-		startdescription: "--start translating ",
-        description: "--done translating!",
+		startdescription: "An enigmatic work: even more enigmatic in Latin.",
+        description: "I've translated and annotated my copy. Now I can study it.",
         warmup: 60,
         craftable: true
     },
@@ -16,8 +16,8 @@
         actionId: "study",
         requirements: {orchidtransfigurations1latin: 1,scholarlatin: 1},
         effects: {orchidtransfigurations1latin: -1,orchidtransfigurations1:1, glimmering:1},
-		startdescription: "--start translating ",
-        description: "--done translating!",
+		startdescription: "It seems unlikely that this is Fludd. Fludd would write better Latin.",
+        description: "I've translated and annotated my copy. Now I can study it.",
         warmup: 60,
         craftable: true
     }

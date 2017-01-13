@@ -7,7 +7,7 @@
             aspects:
             {illhealth: CONVENTIONS.QUANTITY_TINY,
 			  grail: CONVENTIONS.QUANTITY_TINY},
-            description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me.",
+            description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
 			},
         {
             id: "reason",
@@ -35,43 +35,43 @@
             {
                 heart: CONVENTIONS.QUANTITY_TINY
             },
-            description: "This is your body. There are other bodies; this one is yours alone."
+            description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
         },
 		 {
             id: "erudition",
             label: "Erudition",
             aspects:
             {},
-            description: "--erudition desc.",
-			comment: "should never be available from a <standard-length action"
+            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason.]",
+			comment: "should never be available from a <standard-length action; possibly not available from renewable actions."
         },
 			 {
             id: "glimmering",
             label: "Glimmering",
             aspects:
             {},
-            description: "--glimmering desc.",
-			comment: "should never be available from a <standard-length action"
+            description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion.]",
+		comment: "should never be available from a <standard-length action; possibly not available from renewable actions."
         },
 		{
 		id: "scholarlatin",
 		label: "Scholar: Latin",
 		aspects: {},
-		description: "--scholar latin desc"
+		description: "A dead language: dead as diamonds. [Some books must be translated before they can be read.]"
 		}
 		 {
             id: "notionpower",
             label: "Notion: Power",
             aspects:
-            {},
-            description: "--Notion: Power desc."
+            {desire: 1},
+            description: "It has occurred to me that I hold the key to power. [This can be used to end the game after completing a rite which confers unearthly power. Dreaming about it might change the goal.]"
         },
 		 {
             id: "notionenlightenment",
             label: "Notion: Enlightenment",
             aspects:
-            {},
-            description: "--Notion: Enlightenment desc."
+            {desire: 1},
+            description: "It has occurred to me that I hold the key to wisdom. [This can be used to end the game after completing a rite which gives unearthly knowledge. Dreaming about it might change the goal.]"
         }
 ]
 };

@@ -138,21 +138,7 @@ namespace Assets.Core.Entities
 
         public RecipePrediction GetPrediction(IRecipeConductor rc)
         {
-            var rp = new RecipePrediction();
-            IList<Recipe> recipes= rc.GetActualRecipesToExecute(currentPrimaryRecipe);
-
-            if (recipes.Any())
-            {
-                rp.Title = recipes.First().Label;
-                rp.DescriptiveText = recipes.First().StartDescription;
-                rp.Commentary = recipes.First().Aside;
-            }
-
-            if(recipes.Count>1)
-            foreach (var r in recipes.Skip(1))
-            {
-                rp.Commentary += " [" + r.StartDescription + "]";
-            }
+            var rp = rc.GetRecipePrediction(currentPrimaryRecipe);
 
             return rp;
 

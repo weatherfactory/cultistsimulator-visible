@@ -12,7 +12,7 @@
 		[{id: "legacyarrives", chance:100, additional: true}
 		{id: "lawenforcement", chance:0, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
-        startdescription: "Time, the sundial's shadow, passes. ",
+        startdescription: "Time, the sundial's shadow, passes.",
         description: ".",
         warmup: 60,
         craftable: false,
@@ -22,7 +22,7 @@
 					required: {shilling: 1},
 					forbidden: {},
 				greedy: true,
-				description: "The shopkeepers will have their due, or I'll starve."
+				description: "The shop-keepers will have their due. I must pay it or starve."
 				
 					}
 
@@ -60,7 +60,7 @@
         requirements: {},
         effects: {legacy: 1},
         startdescription: "The matter of my inheritance is resolved. I have been promised a package.",
-        description: "My package has arrived! I should study it.",
+        description: "My package has arrived! I must study it. [Drag the Legacy out to the tabletop, then back into the Study action.]",
         warmup: 0,
         craftable: false,
 		maxexecutions: 1,
