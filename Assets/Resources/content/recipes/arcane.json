@@ -2,26 +2,48 @@
 "recipes": [
 	   {
         id: "conjurationpower",
-        label: "Conjuration of Unearthly Power",
+        label: "The Key to My Heart",
         actionId: "work",
-        requirements: {ritual: 1, knock: 2, health:1},
+        requirements: {ritual: 1, knock: 2, health:1,notionpower:1},
 		alternativerecipes:[{id: "notionpowerpromotion",chance: 100, additional: true}],
         effects: {},
-        startdescription: "--I will call on unsuspected powers",
-        description: "--here I go!",
+        startdescription: "--",
+        description: "--this will let a power in",
         warmup: 0,
+        craftable: true
+    },
+	  {
+        id: "conjurationpowerclue",
+        label: "The Key to My Heart?",
+        actionId: "work",
+        requirements: {ritual: 1,notionpower:1},
+        effects: {},
+        startdescription: "--an experiment",
+        description: "--this might let a power in, but I need more",
+        warmup: 10,
         craftable: true
     },
 	{
         id: "conjurationenlightenment",
-        label: "Conjuration of Unearthly Wisdom",
+        label: "The Door in my Dreams",
         actionId: "work",
-        requirements: {ritual: 1, knock: 2, shilling:1},
+        requirements: {ritual: 1, knock: 2, shilling:1,notionenlightenment:1},
 		alternativerecipes:[{id: "notionenlightenmentpromotion",chance: 100, additional: true}],
         effects: {},
         startdescription: "--The veil will part for me",
         description: "--here I go!",
         warmup: 0,
+        craftable: true
+    },
+		{
+        id: "conjurationenlightenment",
+        label: "The Door in my Dreams?",
+        actionId: "work",
+        requirements: {ritual: 1,notionenlightenment:1},
+        effects: {},
+        startdescription: "--an experiment",
+        description: "--I need more",
+        warmup: 10,
         craftable: true
     },
 	{

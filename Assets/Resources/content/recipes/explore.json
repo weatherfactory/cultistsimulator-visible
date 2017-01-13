@@ -5,10 +5,11 @@
         actionId: "explore",
         requirements: {},
 		effects: {erudition: 1},
-        startdescription: "[I don't think this will appear]",
-        description: "--A note about the Exploration verb.",
+        startdescription: "A Wider World",
+        description: "[This is the Explore action - most often used with locations.]",
         warmup: 0,
-        maxexecutions: 1
+        maxexecutions: 1,
+		craftable: false
     },
 	{
         id: "explorebookpurchase",
@@ -18,7 +19,7 @@
 		effects: {},
 		alternativerecipes:	[{id: "trovebookbasic",chance:100}],
         startdescription: "It takes time to sort the gold from the dross, the wheat from the chaff, the blood from the water. If I buy enough books, I'll find something interesting.",
-        description: "[Something interesting.]",
+        description: "[Something interesting. If this appears, the book trove recipe hasn't fired.]",
         warmup: 30,
         craftable: true
     },
