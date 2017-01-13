@@ -53,10 +53,10 @@
         requirements: {},
 		alternativerecipes:[{id: "notionpowervictoryminor",chance: 100}],
         effects: {},
-		slots: {"desire": {required: {notionpower:1},greedy:true}},
-         startdescription: "--starting final victory countdown!",
-        description: "--final victory desc!!",
-        warmup: 15,
+		slots: {"desire": {required: {passion:1}}},
+         startdescription: "My heart swells; my blood burns. I am very close. I must devote myself more fervently.",
+        description: "The rite failed! I was close - as close as the flame to a candle, as the blood to a heart. I must try again.",
+        warmup: 60,
         craftable: false
     },
 		{
@@ -66,10 +66,10 @@
         requirements: {},
 		alternativerecipes:[{id: "notionenlightenmentvictoryminor",chance: 100}],
         effects: {},
-		slots: {"desire": {required: {notionenlightenment:1},greedy:true}},
-        startdescription: "--starting final victory countdown!",
-        description: "--final victory desc!!",
-        warmup: 15,
+		slots: {"desire": {required: {reason:1}}},
+        startdescription: "The walls of the world tremble like silk. I am very close. All my thoughts must converge.",
+        description: "I touched it with my fingertips, the understanding I seek. So close. I must try again.",
+        warmup: 60,
         craftable: false
     },
 	

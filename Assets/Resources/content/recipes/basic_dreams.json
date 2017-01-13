@@ -29,6 +29,28 @@
         description: "This was no true rest. I need money for food and medicine.",
         warmup: 90,
         craftable: true
+    },
+		{
+        id: "dreamnotionpower",
+        label: "Reconsider my goal of unearthly power",
+        actionId: "dream",
+        requirements: {notionpower: 1},
+        effects: { notionpower:-1,notionenlightenment:1},
+        startdescription: "Is power really what I want?",
+        description: "Power is of the world.  My predecessor knew secrets beyond the skin of the world. If only I could follow in their footsteps.",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "dreamnotionenlightenment",
+        label: "Reconsider my goal of unearthly knowledge",
+        actionId: "dream",
+        requirements: {notionenlightenment: 1},
+        effects: { notionpower:1,notionenlightenment:-1},
+        startdescription: "Is power really what I want?",
+        description: "Knowledge is a bagatelle. My predecessor knew of powers that generals and kings would envy. If only I could follow in their footsteps. ",
+        warmup: 60,
+        craftable: true
     }
 ]
 }
