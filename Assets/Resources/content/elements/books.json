@@ -100,7 +100,9 @@
             label: "A Collection of Poetry",
             aspects:
             {},
-            description: "The opposite of wisdom, thankfully. [Use with three Glimmerings to gain Passion.]"
+            description: "The opposite of wisdom, thankfully. [Use with two Glimmerings to gain Passion... though this sometimes fails.]",
+			slots: {"Inspiration": {required: {glimmering:1},consumes:true},
+			"Influence": {required: {glimmering:1},consumes:true}}
         },
 ]
 };
