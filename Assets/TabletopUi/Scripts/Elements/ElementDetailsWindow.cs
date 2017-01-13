@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Core;
+using Assets.TabletopUi.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] TextMeshProUGUI title;
         [SerializeField] TextMeshProUGUI description;
         [SerializeField] TextMeshProUGUI slots;
-        [SerializeField] TextMeshProUGUI aspects;
+        [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] private CanvasGroupFader canvasGroupFader;
 
         public void Awake()
@@ -28,7 +29,7 @@ namespace Assets.CS.TabletopUI
          title.text = element.Label;
             description.text = element.Description; 
             slots.text = GetSlotsText(element.ChildSlotSpecifications); 
-            aspects.text = "Aspects: "+GetAspectsText(element.Aspects);
+          aspectsDisplay.DisplayAspects(element.Aspects);
 
         }
 
