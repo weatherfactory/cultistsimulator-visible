@@ -70,7 +70,7 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Hide();
         }
 
-        public void DisplayStarting()
+        public void SetStarting()
         {
             startingSlotsContainer.Reset();
 
@@ -85,7 +85,7 @@ namespace Assets.CS.TabletopUI
             ButtonBarText.gameObject.SetActive(false);
         }
 
-        public void DisplayOngoing(Recipe forRecipe) {
+        public void SetOngoing(Recipe forRecipe) {
 
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(true);
@@ -98,7 +98,7 @@ namespace Assets.CS.TabletopUI
             ButtonBarText.gameObject.SetActive(true);
         }
 
-        public void DisplayComplete()
+        public void SetComplete()
         {
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(false);

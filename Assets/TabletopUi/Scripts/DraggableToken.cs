@@ -172,6 +172,7 @@ namespace Assets.CS.TabletopUI
 
         void OnDisable() {
             OnEndDrag(null);
+
         }
 
         void DelayedEndDrag() {

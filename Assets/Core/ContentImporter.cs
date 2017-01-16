@@ -3,6 +3,7 @@ using System;
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -271,7 +272,7 @@ public class ContentImporter
                     int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
                     bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
-                    r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
+                        r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
                 }
             }
             }
@@ -285,13 +286,24 @@ public class ContentImporter
             Recipes.Add(r);
         }
 
-
+        foreach (var r in Recipes)
+        {
+            LogIfNonexistentRecipeId(r.Loop,r.Id," - as loop");
+            foreach(var a in r.AlternativeRecipes)
+                LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
+        }
     }
 
     private void LogIfNonexistentElementId(string elementId, string recipeId, string context)
     {
         if(!Elements.ContainsKey(elementId))
         LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);
+    }
+
+    private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)
+    {
+        if (referencedId!=null && Recipes.All(r => r.Id != referencedId))
+            LogProblem("'" + parentRecipeId + "' references non-existent recipe '" + referencedId + "' " + " " + context);
     }
 
     public void PopulateCompendium(ICompendium compendium)

@@ -38,7 +38,7 @@ namespace Assets.TabletopUi
 
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
-            situationWindow.DisplayStarting();
+            situationWindow.SetStarting();
 
             if (command.Recipe != null)
                 RecreateSituation(command);
@@ -147,7 +147,7 @@ namespace Assets.TabletopUi
         public void SituationBeginning(Recipe withRecipe)
         {
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
-            situationWindow.DisplayOngoing(withRecipe);
+            situationWindow.SetOngoing(withRecipe);
             UpdateSituationDisplayTextInWIndow();
         }
 
@@ -194,18 +194,21 @@ namespace Assets.TabletopUi
         public void SituationComplete()
         {
             situationToken.DisplayComplete();
-            situationWindow.DisplayComplete();
+            
 
             var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification = new Notification(SituationStateMachine.GetTitle(),
                 SituationStateMachine.GetDescription());
                 SetOutput(stacksToRetrieve, notification);
                 situationToken.ShowCompletionCount(1);
+
+            //This must be run last: it disables (and destroys) any card tokens that have not been moved to outputs
+            situationWindow.SetComplete();
         }
 
         public void SituationHasBeenReset()
         {
-            situationWindow.DisplayStarting();
+            situationWindow.SetStarting();
         }
 
         public void SetOutput(IEnumerable<IElementStack> stacksForOutput, INotification notification)

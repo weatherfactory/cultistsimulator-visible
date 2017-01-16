@@ -9,11 +9,49 @@
            startingletter: -1,
 		   glimmering: 1
         },
-        startdescription: "There was a wood. A cup. A house without walls - ",
+        startdescription: "There was a wood. A light. A house without walls - ",
         description: "Every night, I'm closer, but every day, the dreams curl to ash. It's useless. I have work to do, if I want to eat.",
         warmup: 5,
         craftable: true
     },
+	{
+	id: "dreamsofaglory",
+	label: "Dreams of a Glory",
+	actionId: "dream",
+	requirements: {reason: 1},
+	effects: {},
+	startdescription: "There was a man who said that the sleep of reason produced monsters.",
+	description: ".",
+	warmup: 5,
+	craftable: true,
+	alternativerecipes: [
+	{id: "dreamtreeoflights",chance: 50},
+	{id: "dreamlightthroughwindows", chance: 100}
+	]
+	},
+	{
+	id: "dreamtreeoflights",
+	label: "The Tree of Lights",
+	actionId: "dream",
+	requirements: {},
+	effects: {},
+	startdescription: ".",
+	description: ".",
+	warmup: 60,
+	craftable: false
+	},
+		{
+	id: "dreamlightthroughwindows",
+	label: "Light Through Windows",
+	actionId: "dream",
+	requirements: {},
+	effects: {},
+	startdescription: ".",
+	description: ".",
+	warmup: 60,
+	craftable: false
+	}
+,
 	{
         id: "rest",
         label: "Rest",

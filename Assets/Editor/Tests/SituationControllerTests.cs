@@ -86,7 +86,7 @@ namespace Assets.Editor.Tests
         public void SituationHasBeenReset_DisplaysStartingInfoInDetails()
         {
             sc.SituationHasBeenReset();
-            situationDetailsMock.Received().DisplayStarting();
+            situationDetailsMock.Received().SetStarting();
         }
 
     }

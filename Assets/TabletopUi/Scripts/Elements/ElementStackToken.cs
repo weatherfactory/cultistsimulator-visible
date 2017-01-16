@@ -84,6 +84,12 @@ namespace Assets.CS.TabletopUI
             return true;
         }
 
+        private void OnDisable()
+        {
+            if (Defunct)
+                Destroy(gameObject);
+        }
+
         public void Populate(string elementId, int quantity)
         {
 
@@ -208,5 +214,7 @@ namespace Assets.CS.TabletopUI
             else
                 glowImage.Hide(instant);                     
         }
+
+
     }
 }

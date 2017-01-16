@@ -21,8 +21,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromAllSlottedElements();
         void SetOutput(IEnumerable<IElementStack> stacks,INotification notification);
-        void DisplayStarting();
-        void DisplayOngoing(Recipe forRecipe);
+        void SetStarting();
+        void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
         
         IEnumerable<ISituationOutput> GetCurrentOutputs();
@@ -38,6 +38,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
 
         void Retire();
-        void DisplayComplete();
+        void SetComplete();
     }
 }
