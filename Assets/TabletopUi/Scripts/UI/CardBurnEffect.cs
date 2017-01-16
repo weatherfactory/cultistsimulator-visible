@@ -7,9 +7,11 @@ namespace Assets.CS.TabletopUI {
     public class CardBurnEffect : MonoBehaviour {
 
         [SerializeField] Graphic cardBurnOverlay;
+        [SerializeField] ParticleSystem particles;
         [SerializeField] float durationPhase1 = 1f;
         [SerializeField] float phasePause = 0.1f;
         [SerializeField] float durationPhase2 = 0.4f;
+        [SerializeField] float pauseEnd = 0.4f;
 
         Color startColor = new Color(0f, 1f, 1f, 1f);
         Color phase1Color = new Color(0.45f, 1f, 1f, 1f);
@@ -36,8 +38,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         IEnumerator DoBurnAnim() {
-            cardBurnOverlay.color = startColor;
             float time = 0f;
+            cardBurnOverlay.color = startColor;
+            particles.Play();
 
             while (time < durationPhase1) {
                 time += Time.deltaTime;
@@ -60,6 +63,11 @@ namespace Assets.CS.TabletopUI {
             }
 
             cardBurnOverlay.color = phase2Color;
+            originalCard.alpha = 0f;
+
+            if (pauseEnd > 0f)
+                yield return new WaitForSeconds(pauseEnd);
+
             Destroy(originalCard.gameObject);
         }
 

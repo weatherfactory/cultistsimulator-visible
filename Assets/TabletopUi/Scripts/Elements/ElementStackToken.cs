@@ -213,7 +213,15 @@ namespace Assets.CS.TabletopUI
             if (glowState)
                 glowImage.Show(instant);
             else
-                glowImage.Hide(instant);                     
+                glowImage.Hide(instant);
+        }
+
+        // NOTE Martin: A hack to make sure that after dragging the card remains unresponsive
+        protected override void DelayedEndDrag() {
+            base.DelayedEndDrag();
+
+            if (Defunct)
+                canvasGroup.blocksRaycasts = false;
         }
     }
 }
