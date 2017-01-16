@@ -1,6 +1,19 @@
 {
 "recipes": [
-
+	{
+        id: "introdream",
+        label: "Recall my Dreams",
+        actionId: "dream",
+        requirements: {startingletter: 1},
+        effects: {
+           startingletter: -1,
+		   glimmering: 1
+        },
+        startdescription: "There was a wood. A cup. A house without walls - ",
+        description: "Every night, I'm closer, but every day, the dreams curl to ash. It's useless. I have work to do, if I want to eat.",
+        warmup: 5,
+        craftable: true
+    },
 	{
         id: "rest",
         label: "Rest",
