@@ -86,6 +86,12 @@ namespace Assets.CS.TabletopUI {
         void OnValidate() {
             graphic.canvasRenderer.SetColor(currentColor);
         }
+        // Copies the graphic's current color to the Fader and sets the image tint to white
+        void Reset() {
+            currentColor = graphic.color;
+            graphic.color = Color.white;
+            graphic.canvasRenderer.SetColor(currentColor);
+        }
         #endif
 
     }

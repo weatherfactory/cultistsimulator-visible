@@ -11,9 +11,14 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
 {
     public int Quantity;
     private Element aspect=null;
+    [SerializeField] private LayoutElement layoutElement;
     [SerializeField] private Image aspectImage;
+    [SerializeField] private Image quantityBG;
     [SerializeField] private TextMeshProUGUI quantityText;
     public string AspectId { get { return aspect == null ? null : aspect.Id; } }
+
+    public float widthWithQuantity = 80f;
+    public float widthWithoutQuantity = 40f;
 
     private void DisplayAspectImage(Element aspect)
     {
@@ -26,10 +31,20 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
         aspectImage.sprite = aspectSprite;
     }
 
-    private void DisplayQuantity(int quantity)
-    {
-        quantityText.text = quantity.ToString();
-
+    private void DisplayQuantity(int quantity) {
+        if (quantity <= 1) {
+            quantityBG.gameObject.SetActive(false);
+            quantityText.gameObject.SetActive(false);
+            layoutElement.minWidth = widthWithoutQuantity;
+            layoutElement.preferredWidth = widthWithoutQuantity;
+        }
+        else {
+            quantityBG.gameObject.SetActive(true);
+            quantityText.gameObject.SetActive(true);
+            quantityText.text = quantity.ToString();
+            layoutElement.minWidth = widthWithQuantity;
+            layoutElement.preferredWidth = widthWithQuantity;
+        }
     }
 
     public void PopulateDisplay(Element aspect, int aspectValue)

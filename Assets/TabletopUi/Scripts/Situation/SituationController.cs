@@ -305,6 +305,16 @@ namespace Assets.TabletopUi
             else
                 return situationWindow.GetOngoingSlotBySaveLocationInfoPath(locationInfo);
         }
+
+        public bool IsSituationOccupied() {
+            // This should return true when the situation is occupied:
+            /*
+            - if the situation isn't currently executing and the primary slot contains an element, it's dirty
+            - if the situation is currently executing, or the primary slot doesn't contain an element, it's clean
+            */
+
+            return false;
+        }
     }
 }
 

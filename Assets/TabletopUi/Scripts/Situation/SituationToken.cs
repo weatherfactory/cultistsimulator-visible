@@ -68,15 +68,26 @@ namespace Assets.CS.TabletopUI
 
 			countdownBar.gameObject.SetActive(b);
 			countdownBadge.gameObject.SetActive(b);
-
         }
 
 
 		// NOTE MARTIN: New method to show amount of fixed events:
 		public void ShowCompletionCount(int newCount) {
 			completionBadge.gameObject.SetActive(newCount > 0);
-			completionText.text = newCount.ToString(); 
-		}
+			completionText.text = newCount.ToString();
+
+            if (newCount > 0) { 
+                SetGlowColor(UIStyle.TokenGlowColor.Blue);
+                ShowGlow(true);
+            }
+            // If the situation is occupied, revert the glow to pink instead.
+            else if (SituationController.IsSituationOccupied()) {
+                SetGlowColor(UIStyle.TokenGlowColor.Pink);
+            }
+            else { 
+                ShowGlow(false);
+            }
+        }
 
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
@@ -123,7 +134,7 @@ namespace Assets.CS.TabletopUI
         public void DisplayTimeRemaining(float duration, float timeRemaining)
         {
             SetTimerVisibility(true);
-            countdownBar.fillAmount = 1f - (timeRemaining / duration);
+            countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
