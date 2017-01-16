@@ -23,7 +23,7 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI
 {
 
-    public class SituationToken : DraggableToken,ISituationAnchor
+    public class SituationToken : DraggableToken,ISituationAnchor, IGlowableView
     {
 
         [SerializeField] Image artwork;
@@ -38,7 +38,7 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] TextMeshProUGUI countdownText;
 		[SerializeField] Image completionBadge;
 		[SerializeField] TextMeshProUGUI completionText;
-        [SerializeField] GameObject selectedMarker;
+        [SerializeField] GraphicFader glowImage;
 
 
         [SerializeField] Image ongoingSlotImage;
@@ -93,9 +93,9 @@ namespace Assets.CS.TabletopUI
 
             DisplayName(verb);
             DisplayIcon(verb);
-            SetSelected(false);
 			SetTimerVisibility(false);
 			ShowCompletionCount(0);
+            ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
 
@@ -109,10 +109,6 @@ namespace Assets.CS.TabletopUI
         private void DisplayIcon(IVerb v) {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
             artwork.sprite = sprite;
-        }
-
-        public void SetSelected(bool isSelected) {
-            selectedMarker.gameObject.SetActive(isSelected);
         }
 
         public Sprite GetSprite() {
@@ -130,6 +126,26 @@ namespace Assets.CS.TabletopUI
             countdownBar.fillAmount = 1f - (timeRemaining / duration);
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
+
+        // IGlowableView implementation
+
+        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        }
+
+        public void SetGlowColor(Color color) {
+            glowImage.SetColor(color);
+        }
+
+        public void ShowGlow(bool glowState, bool instant = false) {
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);
+        }
+
+
+
 
 
 

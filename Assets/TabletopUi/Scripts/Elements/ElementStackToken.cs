@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
@@ -13,12 +14,12 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class ElementStackToken : DraggableToken, IElementStack
+    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView
     {
 
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
-        [SerializeField] GameObject selectedMarker;
+        [SerializeField] GraphicFader glowImage;
 		[SerializeField] GameObject stackBadge;
 		[SerializeField] TextMeshProUGUI stackCountText;
 
@@ -84,6 +85,7 @@ namespace Assets.CS.TabletopUI
 
             DisplayInfo();
             DisplayIcon();
+            ShowGlow(false, false);
         }
 
 
@@ -177,6 +179,23 @@ namespace Assets.CS.TabletopUI
             	SplitAllButNCardsToNewStack(1);
 
             base.StartDrag(eventData);
+        }
+
+        // IGlowableView implementation
+
+        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        }
+
+        public void SetGlowColor(Color color) {
+            glowImage.SetColor(color);
+        }
+
+        public void ShowGlow(bool glowState, bool instant) {
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);                     
         }
     }
 }

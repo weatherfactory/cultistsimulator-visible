@@ -26,7 +26,7 @@ namespace Assets.CS.TabletopUI
         bool Retire();
 
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer,IPointerClickHandler
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot,ITokenContainer,IPointerClickHandler, IGlowableView
     {
         public event System.Action<RecipeSlot,IElementStack> onCardDropped;
         public event System.Action<IElementStack> onCardPickedUp;
@@ -39,7 +39,8 @@ namespace Assets.CS.TabletopUI
         // VISUAL ELEMENTS
         public TextMeshProUGUI SlotLabel;
 		public Graphic border;
-		public LayoutGroup slotIconHolder;
+        public GraphicFader slotGlow;
+        public LayoutGroup slotIconHolder;
 
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
@@ -70,12 +71,28 @@ namespace Assets.CS.TabletopUI
         }
 
 		void Start() {
-			ShowHighlighted(false);
+			ShowGlow(false, false);
 		}
 
-        public void ShowHighlighted(bool state) {
-            border.color = state ? new Color32(0xFF, 0xA8, 0xEA, 0xFF) : new Color32(0x1C, 0x43, 0x62, 0xFF);
-            // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT COLOR
+        // IGlowableView implementation
+
+        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+        }
+
+        public void SetGlowColor(Color color) {
+            slotGlow.SetColor(color);
+        }
+
+        public void ShowGlow(bool glowState, bool instant) {
+            if (glowState) { 
+                slotGlow.Show(instant);
+                border.color = UIStyle.slotPink;
+            }
+            else { 
+                slotGlow.Hide(instant);
+                border.color = UIStyle.slotDefault;
+            }
         }
 
         public bool HasChildSlots()
