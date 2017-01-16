@@ -168,6 +168,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimation.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimationToSlot.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\CardBurnEffect.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\DraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Easing.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\GlowColor.cs" />
@@ -289,6 +290,8 @@
   <ItemGroup>
     <None Include="Assets\Resources\content\recipe_notes.txt" />
     <None Include="Assets\SimpleJson\ReadMe.txt" />
+    <None Include="Assets\TabletopUi\Materials\CardBurn.shader" />
+    <None Include="Assets\TabletopUi\Materials\UI-Default_shader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />

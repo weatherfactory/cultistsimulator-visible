@@ -23,6 +23,8 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] GameObject stackBadge;
 		[SerializeField] TextMeshProUGUI stackCountText;
 
+        [SerializeField] CardBurnEffect cardBurnFX;
+
         private Element _element;
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
@@ -64,12 +66,21 @@ namespace Assets.CS.TabletopUI
             SetQuantity(_quantity + change);
         }
 
-        public override bool Retire()
+        public override bool Retire(bool withEffect = true)
         {
-            DestroyObject(gameObject);
             if (Defunct)
                 return false;
+
             Defunct = true;
+
+            if (withEffect) {
+                var effect = Instantiate<CardBurnEffect>(cardBurnFX) as CardBurnEffect;
+                effect.StartAnim(this);
+            }
+            else {
+                Destroy(gameObject);
+            }
+
             return true;
         }
 

@@ -200,7 +200,7 @@ namespace Assets.CS.TabletopUI
             DraggableToken.resetToStartPos = true;
         }
 
-        public virtual bool Retire()
+        public virtual bool Retire(bool withAnim = false)
         {
             Destroy(gameObject);
             return true;

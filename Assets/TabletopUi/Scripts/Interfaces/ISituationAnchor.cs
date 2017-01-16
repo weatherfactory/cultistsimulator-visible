@@ -28,7 +28,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayTimeRemaining(float duration, float timeRemaining);
         void UpdateMiniSlotDisplay(IEnumerable<IElementStack> getStacksInOngoingSlots);
         void DisplayComplete();
-        bool Retire();
+        bool Retire(bool withAnim = false);
 
         void ShowCompletionCount(int newCount);
     }
