@@ -175,7 +175,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        void DelayedEndDrag() {
+        protected virtual void DelayedEndDrag() {
             DraggableToken.itemBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
 		
