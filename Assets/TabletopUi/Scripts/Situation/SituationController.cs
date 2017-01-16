@@ -230,7 +230,7 @@ namespace Assets.TabletopUi
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter);
             if (recipe != null)
             {
-                situationWindow.RunSlotConsumptions();
+                situationWindow.SetSlotConsumptions();
                 situationWindow.StoreStacks(situationWindow.GetStacksInStartingSlots());
                 SituationStateMachine.Start(recipe);
             }

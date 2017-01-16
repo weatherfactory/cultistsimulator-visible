@@ -85,6 +85,10 @@ namespace Assets.CS.TabletopUI
             ButtonBarText.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Hides starting slots, switches off button, and consumes any stacks marked for consumption
+        /// </summary>
+        /// <param name="forRecipe"></param>
         public void SetOngoing(Recipe forRecipe) {
 
             startingSlotsContainer.gameObject.SetActive(false);
@@ -93,9 +97,10 @@ namespace Assets.CS.TabletopUI
 
             ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
            
-
             button.gameObject.SetActive(false);
             ButtonBarText.gameObject.SetActive(true);
+
+            ConsumeMarkedElements();
         }
 
         public void SetComplete()
@@ -106,6 +111,12 @@ namespace Assets.CS.TabletopUI
 
             aspectsDisplay.ClearAspects();
             
+        }
+
+        public void ConsumeMarkedElements()
+        {
+            foreach(var s in GetStoredStacks().Where(stack=>stack.MarkedForConsumption))
+                s.SetQuantity(0);
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)
@@ -188,10 +199,13 @@ namespace Assets.CS.TabletopUI
             return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
-        public void RunSlotConsumptions()
+        /// <summary>
+        /// if any elementstack is in a consuming slot, mark it to be consumed
+        /// </summary>
+        public void SetSlotConsumptions()
         {
             foreach (var s in startingSlotsContainer.GetAllSlots())
-                s.RunConsumption();
+                s.SetConsumption();
 
         }
 

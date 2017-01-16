@@ -181,6 +181,7 @@ namespace Assets.Editor.Tests
         public string SaveLocationInfo { get; set; }
         public int Quantity { get; set; }
         public bool Defunct { get; private set; }
+        public bool MarkedForConsumption { get; set; }
 
         public IAspectsDictionary GetAspects()
         {

@@ -47,6 +47,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool Defunct { get; private set; }
+        public bool MarkedForConsumption { get; set; }
 
 
         public void SetQuantity(int quantity)
@@ -73,9 +74,14 @@ namespace Assets.CS.TabletopUI
 
             Defunct = true;
 
-            if (gameObject.activeInHierarchy && withEffect) {
+            if (withEffect) {
+                if(!gameObject.activeInHierarchy)
+                    Debug.Log("Called animation effect on an element stack that wasn't active in the hierarchy: " + _element.Id);
+             else
+                {
                 var effect = Instantiate<CardBurnEffect>(cardBurnFX) as CardBurnEffect;
                 effect.StartAnim(this);
+                }
             }
             else {
                 Destroy(gameObject);
@@ -84,11 +90,6 @@ namespace Assets.CS.TabletopUI
             return true;
         }
 
-        private void OnDisable()
-        {
-            if (Defunct)
-                Destroy(gameObject);
-        }
 
         public void Populate(string elementId, int quantity)
         {

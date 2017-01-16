@@ -11,6 +11,7 @@ namespace Assets.Core.Interfaces
         string SaveLocationInfo { get; set; }
         int Quantity { get; }
         bool Defunct { get; }
+        bool MarkedForConsumption { get; set; }
         IAspectsDictionary GetAspects();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);

@@ -192,10 +192,13 @@ namespace Assets.CS.TabletopUI
         return SaveLocationInfoPath; //we don't currently care about the actual draggable
         }
 
-        public void RunConsumption()
+        public void SetConsumption()
         {
-            if ( GoverningSlotSpecification.Consumes & GetElementStackInSlot()!=null)
-                GetElementStackInSlot().SetQuantity(0);
+            if ( GoverningSlotSpecification.Consumes)
+            {
+                var stack = GetElementStackInSlot();
+                stack.MarkedForConsumption = true;
+            }
         }
 
         public bool Retire()

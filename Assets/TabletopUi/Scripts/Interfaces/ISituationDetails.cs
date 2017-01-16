@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
         
         IEnumerable<ISituationOutput> GetCurrentOutputs();
-        void RunSlotConsumptions();
+        void SetSlotConsumptions();
         IEnumerable<IElementStack> GetStacksInOngoingSlots();
         IRecipeSlot GetUnfilledGreedySlot();
         IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
@@ -39,5 +39,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void Retire();
         void SetComplete();
+        void ConsumeMarkedElements();
     }
 }
