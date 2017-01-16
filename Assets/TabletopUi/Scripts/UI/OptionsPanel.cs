@@ -29,7 +29,14 @@ public class OptionsPanel : MonoBehaviour
 
     public void RestartGame()
     {
+        
         tabletopManager.RestartGame();
+        ToggleVisibility();
+    }
+    public void LeaveGame()
+    {
+
+  Application.Quit();
     }
 
     public void ToggleMusic()
