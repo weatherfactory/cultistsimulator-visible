@@ -197,10 +197,10 @@ namespace Assets.TabletopUi
             situationWindow.DisplayComplete();
 
             var stacksToRetrieve = situationWindow.GetStoredStacks();
-            INotification notification = new Notification(SituationStateMachine.GetTitle(),
-                SituationStateMachine.GetDescription());
-                SetOutput(stacksToRetrieve, notification);
-                situationToken.ShowCompletionCount(1);
+            INotification notification = new Notification(SituationStateMachine.GetTitle(), SituationStateMachine.GetDescription());
+
+            SetOutput(stacksToRetrieve, notification);
+            situationToken.ShowCompletionCount(1);
         }
 
         public void SituationHasBeenReset()
