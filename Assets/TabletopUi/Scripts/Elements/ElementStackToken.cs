@@ -230,6 +230,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void SetCardDecay(float percentage) {
+            percentage = Mathf.Clamp01(percentage);
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
         }
 
@@ -238,8 +239,8 @@ namespace Assets.CS.TabletopUI
         float currentTime = -5f;
 
         void Update() {
-            float decayDuration = 60f;
-            float timeToShowTimer = 30f;
+            float decayDuration = 20f;
+            float timeToShowTimer = 10f;
 
             currentTime += Time.deltaTime;
 
@@ -247,14 +248,14 @@ namespace Assets.CS.TabletopUI
 
             if (currentTime >= decayDuration - timeToShowTimer) {
                 ShowCardDecayTimer(true);
-                SetCardDecayTime(Mathf.Abs(currentTime - decayDuration + timeToShowTimer / timeToShowTimer));
+                SetCardDecayTime(Mathf.Lerp(timeToShowTimer, 0, Mathf.Abs((currentTime - decayDuration + timeToShowTimer) / timeToShowTimer)));
             }
             else { 
                 ShowCardDecayTimer(false);
             }
 
             if (currentTime > decayDuration) {
-                currentTime = -5f;
+                Retire(true);
             }
         }
 

@@ -8,33 +8,32 @@ using UnityEngine;
 
 namespace Assets.CS.TabletopUI
 {
-    
+
     public class Notifier : MonoBehaviour {
         [SerializeField]
         private Transform windowHolderFixed;
         [SerializeField]
-		private Transform notificationHolder;
-		[SerializeField]
-		private NotificationLog notificationLog;
+        private Transform notificationHolder;
+        [SerializeField]
+        private NotificationLog notificationLog;
+        [SerializeField]
+        private TabletopImageBurner tabletopBurner;
 
-		public void PushTextToLog(string text) {
-			notificationLog.AddText(text);
-		}
+        public void PushTextToLog(string text) {
+            notificationLog.AddText(text);
+        }
 
-        public void ShowNotificationWindow(string title, string description)
-        {
+        public void ShowNotificationWindow(string title, string description) {
             var notification = BuildNotificationWindow();
             notification.SetDetails(title, description);
         }
 
-        public void ShowElementDetails(Element element)
-        {
+        public void ShowElementDetails(Element element) {
             var detailWindow = BuildElementDetailsWindow();
             detailWindow.SetElementCard(element);
         }
 
-        private ElementDetailsWindow BuildElementDetailsWindow()
-        {
+        private ElementDetailsWindow BuildElementDetailsWindow() {
             var window = PrefabFactory.CreateLocally<ElementDetailsWindow>(windowHolderFixed);
             return window;
         }
@@ -49,17 +48,21 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
-        private NotificationWindow BuildNotificationWindow()
-        {
+        private NotificationWindow BuildNotificationWindow() {
             var notification = PrefabFactory.CreateLocally<NotificationWindow>(notificationHolder);
             return notification;
         }
 
 
-        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason)
-        {
-            if(reason!=null)
-            ShowNotificationWindow(reason.Title,reason.Description);
+        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason) {
+            if (reason != null)
+                ShowNotificationWindow(reason.Title, reason.Description);
+        }
+
+        // TabletopImageBurner
+
+        public void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment) {
+            tabletopBurner.ShowImageBurn(spriteName, token, duration, scale, alignment);
         }
     }
 }
