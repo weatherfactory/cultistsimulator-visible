@@ -55,7 +55,7 @@ namespace Assets.CS.TabletopUI
             _quantity = quantity;
             if (quantity <= 0)
             {
-                Retire();
+                Retire(true);
                 return;
             }
             DisplayInfo();
@@ -67,14 +67,19 @@ namespace Assets.CS.TabletopUI
             SetQuantity(_quantity + change);
         }
 
-        public override bool Retire(bool withEffect = true)
+        public override bool Retire()
+        {
+            return Retire(true);
+        }
+
+        public bool Retire(bool withFlameEffect)
         {
             if (Defunct)
                 return false;
 
             Defunct = true;
 
-            if (withEffect) {
+            if (withFlameEffect) {
                 if(!gameObject.activeInHierarchy)
                     Debug.Log("Called animation effect on an element stack that wasn't active in the hierarchy: " + _element.Id);
              else
@@ -164,7 +169,7 @@ namespace Assets.CS.TabletopUI
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
-                this.SetQuantity(0);
+                this.Retire(false);
             }
         }
 

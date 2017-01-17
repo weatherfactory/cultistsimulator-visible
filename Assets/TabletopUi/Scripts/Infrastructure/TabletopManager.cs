@@ -122,10 +122,10 @@ namespace Assets.CS.TabletopUI
         public void ClearBoard()
         {
             foreach (var s in tabletopContainer.GetAllSituationTokens())
-                s.Retire(false);
+                s.Retire();
 
             foreach (var e in tabletopContainer.GetElementStacksManager().GetStacks())
-                e.SetQuantity(0);
+                e.Retire(true); //looks daft but pretty on reset
         }
 
         public void RestartGame()

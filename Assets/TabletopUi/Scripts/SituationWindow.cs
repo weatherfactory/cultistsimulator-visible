@@ -115,8 +115,9 @@ namespace Assets.CS.TabletopUI
 
         public void ConsumeMarkedElements()
         {
-            foreach(var s in GetStoredStacks().Where(stack=>stack.MarkedForConsumption))
-                s.SetQuantity(0);
+            foreach (var s in GetStoredStacks().Where(stack => stack.MarkedForConsumption))
+                //     s.SetQuantity(0);
+                s.Retire(true);
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)

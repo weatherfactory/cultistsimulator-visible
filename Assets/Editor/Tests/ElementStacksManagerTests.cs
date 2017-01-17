@@ -219,6 +219,11 @@ namespace Assets.Editor.Tests
             return true;
         }
 
+        public bool Retire(bool withFlameEffect)
+        {
+            throw new NotImplementedException();
+        }
+
         public void MoveTo<T>(T newLocation)
         {
             throw new NotImplementedException();
