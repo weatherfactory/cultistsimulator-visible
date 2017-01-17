@@ -115,7 +115,8 @@ namespace Assets.CS.TabletopUI
                         DraggableToken.resetToStartPos = false;
                         // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
                         AcceptStack(stack);
-                    }
+                        SoundManager.PlaySfx("CardPutInSlot");
+                }
 
               else
                    DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
@@ -155,6 +156,7 @@ namespace Assets.CS.TabletopUI
         public void TokenPickedUp(DraggableToken draggableToken)
         {
             onCardPickedUp(draggableToken as IElementStack);
+            SoundManager.PlaySfx("CardTakeFromSlot");
         }
 
  

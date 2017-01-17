@@ -30,7 +30,8 @@ namespace Assets.CS.TabletopUI {
             // Prevent interaction from the player
             originalCard.interactable = false;
             originalCard.blocksRaycasts = false;
-
+            
+            SoundManager.PlaySfx("CardBurn");
             cardBurnOverlay.gameObject.SetActive(true);
 
             StopAllCoroutines();

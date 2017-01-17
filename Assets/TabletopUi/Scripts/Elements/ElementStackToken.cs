@@ -163,6 +163,7 @@ namespace Assets.CS.TabletopUI
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
+                SoundManager.PlaySfx("CardPutOnStack");
                 this.Retire(false);
             }
         }
@@ -197,7 +198,7 @@ namespace Assets.CS.TabletopUI
 
             base.StartDrag(eventData);
         }
-
+        
         // IGlowableView implementation
 
         public void SetGlowColor(UIStyle.TokenGlowColor colorType) {

@@ -67,6 +67,7 @@ namespace Assets.Core.Entities
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
             State = SituationState.FreshlyStarted;
+            SoundManager.PlaySfx("SituationBegin");
         }
 
         public void AllOutputsGone()
@@ -180,6 +181,7 @@ namespace Assets.Core.Entities
         private void End(IRecipeConductor rc)
         {
 
+            SoundManager.PlaySfx("SituationComplete");
 
             var loopedRecipe = rc.GetLoopedRecipe(currentPrimaryRecipe);
             
