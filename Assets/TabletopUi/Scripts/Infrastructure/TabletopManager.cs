@@ -320,7 +320,14 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-    
+
+        public void ShowDestinationsForStack(IElementStack stack)
+        {
+            var openToken = tabletopContainer.GetOpenToken();
+            if(openToken!=null)
+               openToken.ShowDestinationsForStack(stack);
+
+        }
     }
 
 }

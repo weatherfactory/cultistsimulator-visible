@@ -249,6 +249,10 @@ namespace Assets.CS.TabletopUI
 
         }
 
+        public void ShowDestinationsForStack(IElementStack stack)
+        {
+            SituationController.ShowDestinationsForStack(stack);
+        }
     }
 
 

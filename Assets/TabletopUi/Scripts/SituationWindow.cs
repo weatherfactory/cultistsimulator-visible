@@ -120,6 +120,18 @@ namespace Assets.CS.TabletopUI
                 s.Retire(true);
         }
 
+        public void ShowDestinationsForStack(IElementStack stack)
+        {
+            var startingslots = startingSlotsContainer.GetAllSlots();
+            var ongoingslots = ongoingSlotsContainer.GetAllSlots();
+
+            foreach(var s in startingslots)
+                if(stack==null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                  s.ShowGlow(false,false);
+                else
+                    s.ShowGlow(true, false);
+        }
+
         public void DisplayAspects(IAspectsDictionary forAspects)
         {
             aspectsDisplay.DisplayAspects(forAspects);
