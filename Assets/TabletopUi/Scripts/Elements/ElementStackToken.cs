@@ -79,7 +79,7 @@ namespace Assets.CS.TabletopUI
 
             Defunct = true;
 
-            if (withFlameEffect && !gameObject.activeInHierarchy) {
+            if (withFlameEffect && gameObject.activeInHierarchy) {
                 var effect = Instantiate<CardBurnEffect>(cardBurnFX) as CardBurnEffect;
                 effect.StartAnim(this);
                 }
