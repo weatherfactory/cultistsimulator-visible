@@ -126,10 +126,27 @@ namespace Assets.CS.TabletopUI
             var ongoingslots = ongoingSlotsContainer.GetAllSlots();
 
             foreach(var s in startingslots)
+            { 
                 if(stack==null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                { 
                   s.ShowGlow(false,false);
+                    Debug.Log("hiding");
+                }
+                else
+                { 
+                    s.ShowGlow(true, false);
+                }
+            }
+            foreach (var s in ongoingslots)
+            { 
+                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                {
+                    s.ShowGlow(false, false);
+                    Debug.Log("hiding");
+                }
                 else
                     s.ShowGlow(true, false);
+            }
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)

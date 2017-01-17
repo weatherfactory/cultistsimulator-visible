@@ -158,10 +158,14 @@ namespace Assets.CS.TabletopUI
         {
             if (DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
-
-            Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
         }
 
+        public override void OnEndDrag(PointerEventData eventData)
+        {
+            //remove any suitability glows
+            Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
+            base.OnEndDrag(eventData);
+        }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
