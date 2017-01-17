@@ -34,4 +34,9 @@ public class RestartPanel : MonoBehaviour {
         gameObject.SetActive(false);
 
     }
+
+    public void OpenSite()
+    {
+        Application.OpenURL("http://wwww.cultistsimulator.com");
+    }
 }
