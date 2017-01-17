@@ -134,20 +134,22 @@ namespace Assets.CS.TabletopUI
             SetupBoard();
         }
 
-
-
-        public void TogglePause()
+        public void SetPausedState(bool pause)
         {
-            if (heart.IsPaused)
-            {
-                heart.ResumeBeating();
-                pauseButton.SetPausedState(false);
-            }
-            else
+            if (pause)
             {
                 heart.StopBeating();
                 pauseButton.SetPausedState(true);
             }
+            else
+            {
+                heart.ResumeBeating();
+                pauseButton.SetPausedState(false);
+            }
+        }
+        public void TogglePause()
+        {
+          SetPausedState(!heart.IsPaused);
         }
 
         public void EndGame(Notification endGameNotification)
