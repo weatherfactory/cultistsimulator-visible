@@ -15,7 +15,7 @@ public class SituationStorage : MonoBehaviour,ITokenContainer
 
 
     public bool AllowDrag { get { return false; } }
-    public bool AllowStackMerge { get { return true; } }
+    public bool AllowStackMerge { get { return false; } }
 
     public ElementStacksManager GetElementStacksManager()
     {
