@@ -245,28 +245,28 @@ namespace Assets.CS.TabletopUI
 
 
         // NOTE: THIS IS ALL DEMO TEST CODE SO YOU CAN SEE THE VISUALS
-        float currentTime = -5f;
+        //float currentTime = -5f;
 
-        void Update() {
-            float decayDuration = 20f;
-            float timeToShowTimer = 10f;
+        //void Update() {
+        //    float decayDuration = 20f;
+        //    float timeToShowTimer = 10f;
 
-            currentTime += Time.deltaTime;
+        //    currentTime += Time.deltaTime;
 
-            SetCardDecay(currentTime / (decayDuration - timeToShowTimer));
+        //    SetCardDecay(currentTime / (decayDuration - timeToShowTimer));
 
-            if (currentTime >= decayDuration - timeToShowTimer) {
-                ShowCardDecayTimer(true);
-                SetCardDecayTime(Mathf.Lerp(timeToShowTimer, 0, Mathf.Abs((currentTime - decayDuration + timeToShowTimer) / timeToShowTimer)));
-            }
-            else { 
-                ShowCardDecayTimer(false);
-            }
+        //    if (currentTime >= decayDuration - timeToShowTimer) {
+        //        ShowCardDecayTimer(true);
+        //        SetCardDecayTime(Mathf.Lerp(timeToShowTimer, 0, Mathf.Abs((currentTime - decayDuration + timeToShowTimer) / timeToShowTimer)));
+        //    }
+        //    else { 
+        //        ShowCardDecayTimer(false);
+        //    }
 
-            if (currentTime > decayDuration) {
-                Retire(true);
-            }
-        }
+        //    if (currentTime > decayDuration) {
+        //        Retire(true);
+        //    }
+        //}
 
 
     }
