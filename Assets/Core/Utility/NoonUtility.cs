@@ -11,7 +11,6 @@ namespace Noon
 
     public class NoonConstants
     {
-        
 
 
         public const string KCHARACTERSTATE = "state";

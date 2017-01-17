@@ -16,6 +16,7 @@ public class Element
     public string Description { get; set; }
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
+    public float Lifetime { get; set; }
 
     public IAspectsDictionary AspectsIncludingSelf
     {

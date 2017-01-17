@@ -12,6 +12,7 @@ namespace Assets.Core.Interfaces
         int Quantity { get; }
         bool Defunct { get; }
         bool MarkedForConsumption { get; set; }
+        bool Decays { get; }
         IAspectsDictionary GetAspects();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
@@ -22,5 +23,6 @@ namespace Assets.Core.Interfaces
         void SplitAllButNCardsToNewStack(int n);
         bool AllowMerge();
         bool Retire(bool withFlameEffect);
+        void Decay(float interval);
     }
 }

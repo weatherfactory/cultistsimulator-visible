@@ -183,6 +183,8 @@ namespace Assets.Editor.Tests
         public bool Defunct { get; private set; }
         public bool MarkedForConsumption { get; set; }
 
+        public bool Decays { get; private set; }
+
         public IAspectsDictionary GetAspects()
         {
             return Element.AspectsIncludingSelf;
@@ -220,6 +222,11 @@ namespace Assets.Editor.Tests
         }
 
         public bool Retire(bool withFlameEffect)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Decay(float interval)
         {
             throw new NotImplementedException();
         }

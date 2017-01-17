@@ -20,6 +20,7 @@ public class ContentImporter
     private const string CONST_VERBS = "verbs";
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
+    private const string CONST_LIFETIME = "lifetime";
     private const string CONST_DESCRIPTION = "description";
     private const string CONST_ISASPECT = "isAspect";
     public ICompendium _compendium { get; private set; }
@@ -65,25 +66,25 @@ public class ContentImporter
                 {
                     if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
                         slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
-        
-                if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
-                    slotSpecification.Greedy = true;
 
-                if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
-                    slotSpecification.Consumes = true;
+                    if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
+                        slotSpecification.Greedy = true;
 
-                Hashtable htRequired = htThisSlot["required"] as Hashtable;
-                if (htRequired != null)
-                {
-                    foreach (string rk in htRequired.Keys)
-                        slotSpecification.Required.Add(rk, 1);
-                }
-                Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
-                if (htForbidden != null)
-                {
-                    foreach (string fk in htForbidden.Keys)
-                        slotSpecification.Forbidden.Add(fk, 1);
-                }
+                    if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
+                        slotSpecification.Consumes = true;
+
+                    Hashtable htRequired = htThisSlot["required"] as Hashtable;
+                    if (htRequired != null)
+                    {
+                        foreach (string rk in htRequired.Keys)
+                            slotSpecification.Required.Add(rk, 1);
+                    }
+                    Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
+                    if (htForbidden != null)
+                    {
+                        foreach (string fk in htForbidden.Keys)
+                            slotSpecification.Forbidden.Add(fk, 1);
+                    }
                 }
                 catch (Exception e)
                 {
@@ -107,6 +108,7 @@ public class ContentImporter
             Hashtable htElements = new Hashtable();
             htElements = SimpleJsonImporter.Import(json);
             PopulateElements(htElements);
+
         }
     }
 
@@ -119,12 +121,20 @@ public class ContentImporter
         ArrayList alElements = htElements.GetArrayList("elements");
         foreach (Hashtable htElement in alElements)
         {
+       
+
+        
             Hashtable htAspects = htElement.GetHashtable("aspects");
             Hashtable htSlots = htElement.GetHashtable(NoonConstants.KSLOTS);
 
             Element element = new Element(htElement.GetString(CONST_ID),
                 htElement.GetString(CONST_LABEL),
                 htElement.GetString(CONST_DESCRIPTION));
+            try
+            {
+
+                if (htElement.ContainsKey(CONST_LIFETIME))
+                element.Lifetime= float.Parse(htElement[CONST_LIFETIME].ToString());
 
             if (htElement.GetString(CONST_ISASPECT) == "true")
                 element.IsAspect = true;
@@ -133,8 +143,15 @@ public class ContentImporter
 
             element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
             element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
+            }
+            catch (Exception e)
+            {
 
+                LogProblem("Couldn't add all properties for element " + element.Id + ": " +e.Message) ;
+            }
             Elements.Add(element.Id, element);
+
+
         }
 
     }

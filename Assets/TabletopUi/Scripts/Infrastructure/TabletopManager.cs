@@ -328,6 +328,13 @@ namespace Assets.CS.TabletopUI
                openToken.ShowDestinationsForStack(stack);
 
         }
+
+        public void DecayStacksOnTable(float interval)
+        {
+            var decayingStacks = tabletopContainer.GetElementStacksManager().GetStacks().Where(s => s.Decays);
+            foreach(var d in decayingStacks)
+                d.Decay(interval);
+        }
     }
 
 }

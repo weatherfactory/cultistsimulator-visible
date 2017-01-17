@@ -59,13 +59,16 @@ public class Heart : MonoBehaviour
     {
         //foreach existing active recipe window: run beat there
         //advance timer
-        var situationTokens = Registry.Retrieve<TabletopManager>().GetAllSituationTokens();
+        var tabletopManager = Registry.Retrieve<TabletopManager>();
+        var situationTokens = tabletopManager.GetAllSituationTokens();
         foreach (var st in situationTokens)
         {
            HeartbeatResponse response=st.ExecuteHeartbeat(interval);
             foreach (var r in response.SlotsToFill)
                 outstandingSlotsToFill.Add(r);
         }
+
+       tabletopManager.DecayStacksOnTable(interval);
     }
 
 

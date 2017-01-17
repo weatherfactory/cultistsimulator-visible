@@ -30,13 +30,15 @@ namespace Assets.CS.TabletopUI
         private Element _element;
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
+        private float lifetimeRemaining;
+        
 
         public override string Id
         {
             get { return _element == null ? null : _element.Id; }
         }
 
-
+        public bool Decays { get { return _element.Lifetime > 0; } }
 
         public string Label
         {
@@ -107,6 +109,7 @@ namespace Assets.CS.TabletopUI
             ShowGlow(false, false);
             ShowCardDecayTimer(false);
             SetCardDecay(0f);
+            lifetimeRemaining = _element.Lifetime;
         }
 
 
@@ -229,12 +232,32 @@ namespace Assets.CS.TabletopUI
                 glowImage.Hide(instant);                     
         }
 
+
+        public void Decay(float interval)
+        {
+            if (!Decays)
+                return;
+            lifetimeRemaining = lifetimeRemaining - interval;
+
+            if (lifetimeRemaining < 0)
+                Retire(true);
+
+            if(lifetimeRemaining<_element.Lifetime/2)
+            { 
+                ShowCardDecayTimer(true);
+                SetCardDecayTime(lifetimeRemaining);
+            }
+
+            SetCardDecay(lifetimeRemaining/_element.Lifetime);
+           
+        }
         // Card Decay Timer
         public void ShowCardDecayTimer(bool showTimer) {
             decayView.gameObject.SetActive(showTimer);
         }
 
         public void SetCardDecayTime(float timeRemaining) {
+           
             decayCountText.text = timeRemaining.ToString("0.0") + "s";
         }
 
