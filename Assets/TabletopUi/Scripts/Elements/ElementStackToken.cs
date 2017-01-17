@@ -169,7 +169,7 @@ namespace Assets.CS.TabletopUI
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
-                this.Retire(false);
+                this.Retire(true);
             }
         }
 

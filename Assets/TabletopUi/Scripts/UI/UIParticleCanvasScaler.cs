@@ -41,7 +41,10 @@ public class UIParticleCanvasScaler : MonoBehaviour {
         if (!m_isInitialized) { 
             canvas = GetComponent<Canvas>();
             emitters = this.gameObject.GetComponentsInChildren<ParticleSystem>();
-            m_isInitialized = true;
+
+            #if !UNITY_EDITOR
+                m_isInitialized = true;
+            #endif
         }
 
         m_canvasScale = GetCanvasScale();

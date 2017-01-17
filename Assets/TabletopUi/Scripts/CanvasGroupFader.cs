@@ -6,9 +6,15 @@ namespace Assets.CS.TabletopUI
     [RequireComponent(typeof(CanvasGroup))]
     public class CanvasGroupFader : MonoBehaviour {
 
+        public bool blockRaysDuringFade = false;
         public bool destroyOnHide = false;
         public float durationTurnOn = 0.5f;
         public float durationTurnOff = 0.25f;
+        private bool m_isFading;
+
+        public bool IsFading() {
+            return m_isFading;
+        }
 
         CanvasGroup group;
         CanvasGroup Group { 
@@ -19,8 +25,6 @@ namespace Assets.CS.TabletopUI
                 return group; 
             } 
         }
-
-
 
         public void Hide() {
 
@@ -58,7 +62,8 @@ namespace Assets.CS.TabletopUI
             float currentAlpha = Group.alpha;
             float currentTime = 0f;
 
-            SetInteractable(false);
+            m_isFading = true;
+            SetInteractable(blockRaysDuringFade);
             duration = duration * Mathf.Abs(alpha - currentAlpha);
 
             while (currentTime <= duration) {
@@ -66,6 +71,8 @@ namespace Assets.CS.TabletopUI
                 currentTime += Time.deltaTime;
                 yield return null;
             }
+
+            m_isFading = false;
             SetAlpha(alpha);
         }
 	
