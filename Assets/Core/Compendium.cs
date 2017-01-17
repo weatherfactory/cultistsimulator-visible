@@ -140,12 +140,12 @@ public class Compendium : ICompendium
         if (endingFlag == "powerminor")
             return new Notification("WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
                 "[The Red Grail is the Hour of blood and of birth. It has touched me, and I've gained a little of its power. I can use that power to ascend a secret throne, one day. By the standards of this  " +
-                "prologue, that's a victory. Congratulations to me! If I want to know when the game will be expanded, I can learn more at www.cultistsimulator.com]");
+                "prologue, this is a victory: but it was only a taste");
 
         if (endingFlag == "enlightenmentminor")
             return new Notification("EACH HOUR HAS ITS COLOUR. EACH FLAME HAS ITS FUEL",
-                "[I have walked behind the Watchman: I have seen his shadow on the stone. This is the first step in understanding the shaping of fate. By the standards of this  " +
-                "prologue, that's a victory. Congratulations to me! If I want to know when the game will be expanded, I can learn more at www.cultistsimulator.com]");
+                "[I've walked behind the Watchman: I've seen his shadow on the stone. This is the first step in understanding the shaping of fate. By the standards of this  " +
+                "prologue, this is a victory: but it was only a taste.");
 
         return new Notification("IT IS FINISHED","This one is done.");
     }
