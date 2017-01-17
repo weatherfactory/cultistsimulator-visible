@@ -196,7 +196,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
         public void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots) {
             if (ongoingSlots.Count>1)
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
@@ -217,6 +216,8 @@ namespace Assets.CS.TabletopUI
         {
             //hide the timer: we're done here
             SetTimerVisibility(false);
+            ongoingSlotImage.gameObject.SetActive(false);
+            ShowCompletionCount(1);
         }
 
 
