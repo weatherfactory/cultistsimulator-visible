@@ -183,10 +183,10 @@ public class ContentImporter
             try
             {
                 r.Id = htEachRecipe[NoonConstants.KID].ToString();
-                r.Label = htEachRecipe[NoonConstants.KLABEL].ToString();
+                r.Label = htEachRecipe[NoonConstants.KLABEL] == null ? r.Id : htEachRecipe[NoonConstants.KLABEL].ToString();
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
-                r.ActionId = htEachRecipe[NoonConstants.KACTIONID].ToString();
-
+                r.ActionId= htEachRecipe[NoonConstants.KACTIONID]==null ? null : htEachRecipe[NoonConstants.KACTIONID].ToString();
+               
                 if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
                     r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
 
@@ -219,10 +219,13 @@ public class ContentImporter
             try
             {
                 Hashtable htReqs = htEachRecipe.GetHashtable(NoonConstants.KREQUIREMENTS);
-                foreach (string k in htReqs.Keys)
+                if (htReqs != null)
                 {
-                    LogIfNonexistentElementId(k, r.Id, "(requirements)");
-                    r.Requirements.Add(k, Convert.ToInt32(htReqs[k]));
+                    foreach (string k in htReqs.Keys)
+                    {
+                        LogIfNonexistentElementId(k, r.Id, "(requirements)");
+                        r.Requirements.Add(k, Convert.ToInt32(htReqs[k]));
+                    }
                 }
             }
             catch (Exception e)
@@ -236,10 +239,13 @@ public class ContentImporter
             try
             {
                 Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
+                if(htEffects!=null)
+                { 
                 foreach (string k in htEffects.Keys)
                 {
                     LogIfNonexistentElementId(k, r.Id, "(effects)");
                     r.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                }
                 }
             }
             catch (Exception e)
