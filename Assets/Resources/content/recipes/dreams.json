@@ -41,7 +41,7 @@
 	slots: {Thoughts: {}},
 	alternativerecipes: [{id:"nightmarecleansingdawn",chance: 100}],
 	startdescription: "[Tree of Lights start desc]",
-	description: "[Tree of Lights description]",
+	description: "[Tree of Lights description: didn't fire]",
 	warmup: 60,
 	},
 	{
@@ -73,46 +73,6 @@
 	startdescription: "hers start",
 	description: "hers done",
 	},
-,
-{
-id: "nextdream",
-label: "Next Dream",
-	actionId: "dream",
-	requirements: {},
-	effects: {journalentry: 1},
-	startdescription: "Next Dream start desc",
-	description: "Next Dream end desc",
-	warmup: 60,
-	craftable: false,}
-	{
-        id: "rest",
-        label: "Rest",
-        actionId: "dream",
-        requirements: {shilling: 1, illhealth: 1},
-        effects: {
-            illhealth: -1,
-			shilling:-1,
-			health: 1
-        },
-        startdescription: "All I need now is time.",
-        description: "The sick-room grows close and stale. Time to get up.",
-        warmup: 90,
-        craftable: true
-    },
-		{
-        id: "tryrest",
-        label: "Rest",
-        actionId: "dream",
-        requirements: {illhealth: 1},
-        effects: { },
-            		slots:
-						{Nourishment: {required: {shilling: 1},forbidden: {}}},
-		alternativerecipes: [{id:"rest",chance:100}],
-        startdescription: "To recover my health, I'll need money for food and medicine.",
-        description: "This was no true rest. I need money for food and medicine.",
-        warmup: 90,
-        craftable: true
-    },
 		{
         id: "dreamnotionpower",
         label: "Reconsider my goal of unearthly power",

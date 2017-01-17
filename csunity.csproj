@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -195,6 +189,8 @@
     <Compile Include="Assets\TabletopUi\Scripts\UI\OptionsPanel.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\PauseButton.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\RestartPanel.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\UIParticleCanvasScaler.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\UIParticleScaler.cs" />
     <Compile Include="Assets\TabletopUi\TokenAndSlot.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples\Scripts\Benchmark01_UGUI.cs" />
