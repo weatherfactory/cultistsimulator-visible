@@ -32,11 +32,15 @@ public class RestartPanel : MonoBehaviour {
     {
         tabletopManager.RestartGame();
         gameObject.SetActive(false);
-
     }
 
     public void OpenSite()
     {
         Application.OpenURL("http://wwww.cultistsimulator.com");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
