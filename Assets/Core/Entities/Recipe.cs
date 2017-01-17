@@ -41,6 +41,8 @@ public class Recipe
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
     /// </summary>
     public int MaxExecutions { get; set; }
+    public string BurnImage { get; set; }
+
     public bool HasInfiniteExecutions()
     {
         return MaxExecutions == 0;

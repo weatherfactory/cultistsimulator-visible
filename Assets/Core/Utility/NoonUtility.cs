@@ -36,6 +36,7 @@ namespace Noon
         public const string KFORBIDDEN = "forbidden";
         public const string KGREEDY = "greedy";
         public const string KCONSUMES = "consumes";
+        public const string KBURNIMAGE = "burnimage";
 
 
         public const string KCHANCE = "chance";

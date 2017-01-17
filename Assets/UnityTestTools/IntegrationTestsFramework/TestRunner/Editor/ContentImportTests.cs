@@ -24,19 +24,12 @@ namespace CS.Tests
         private const string RECIPE_1_LOOP = "someid";
         private const string RECIPE_1_ENDING = "anending";
         private const int RECIPE_MAX_EXECUTIONS = 3;
+        private const string RECIPE_BURN_IMAGE = "shadows_and_stains";
    
         private const string ASPECT_1_ID = "aspect1id";
         private const int ASPECT_1_VALUE = 2;
         private const string ASPECT_2_ID = "aspect2id";
         private const int ASPECT_2_VALUE = -4;
-        private const string PI_ASPECT_1_ID = "persistedaspect1";
-        private const int PI_ASPECT_1_VALUE = 1;
-        private const string PI_ASPECT_2_ID = "persistedaspect2";
-        private const int PI_ASPECT_2_VALUE = 2;
-        private const string RC_ASPECT_1_ID = "retrievedaspect1";
-        private const int RC_ASPECT_1_VALUE = 1;
-        private const string RC_ASPECT_2_ID = "retrievedaspect2";
-        private const int RC_ASPECT_2_VALUE = 2;
         private const string EFFECT_1_ID = "effect1id";
         private const int EFFECT_1_VALUE = 9;
         private const string EFFECT_2_ID = "effect2id";
@@ -61,7 +54,6 @@ namespace CS.Tests
             Hashtable htRecipe = new Hashtable();
             Hashtable htEffects = new Hashtable();
             Hashtable htRequirements = new Hashtable();
-            Hashtable htPersistIngredients = new Hashtable();
 
             Hashtable htSlotSpecifications = new Hashtable()
         { { NoonConstants.KREQUIRED,new Hashtable()
@@ -77,7 +69,7 @@ namespace CS.Tests
             };
             Hashtable htSlotOuterTable = new Hashtable() { { SLOT_LABEL, htSlotSpecifications } };
 
-            Hashtable htRetrievesContents = new Hashtable();
+       
             ArrayList alAlternatives = new ArrayList();
 
             htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE.ToString());
@@ -86,11 +78,7 @@ namespace CS.Tests
             htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE.ToString());
             htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE.ToString());
 
-            htPersistIngredients.Add(PI_ASPECT_1_ID, PI_ASPECT_1_VALUE);
-            htPersistIngredients.Add(PI_ASPECT_2_ID, PI_ASPECT_2_VALUE);
-
-            htRetrievesContents.Add(RC_ASPECT_1_ID, RC_ASPECT_1_VALUE.ToString());
-            htRetrievesContents.Add(RC_ASPECT_2_ID, RC_ASPECT_2_VALUE.ToString());
+   
 
             Hashtable alternative1 = new Hashtable()
             {
@@ -121,11 +109,10 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KLOOP, RECIPE_1_LOOP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
             htRecipe.Add(NoonConstants.KMAXEXECUTIONS,RECIPE_MAX_EXECUTIONS.ToString());
+            htRecipe.Add(NoonConstants.KBURNIMAGE,RECIPE_BURN_IMAGE.ToString());
             htRecipe.Add(NoonConstants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(NoonConstants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(NoonConstants.KEFFECTS, htEffects);
-            htRecipe.Add(NoonConstants.KPERSISTINGREDIENTSWITH, htPersistIngredients);
-            htRecipe.Add(NoonConstants.KRETRIEVESCONTENTSWITH, htRetrievesContents);
             htRecipe.Add(NoonConstants.KSLOTS, htSlotOuterTable);
 
             htRecipe.Add(NoonConstants.KALTERNATIVERECIPES, alAlternatives);
@@ -199,6 +186,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_LOOP, recipesImported.First().Loop);
             Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().Ending);
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS,recipesImported.First().MaxExecutions);
+            Assert.AreEqual(RECIPE_BURN_IMAGE,recipesImported.First().BurnImage);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

@@ -203,6 +203,8 @@ public class ContentImporter
                     : htEachRecipe[NoonConstants.KENDING].ToString();
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
                     r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
+                if (htEachRecipe.ContainsKey(NoonConstants.KBURNIMAGE))
+                    r.BurnImage = htEachRecipe[NoonConstants.KBURNIMAGE].ToString();
 
 
             }
