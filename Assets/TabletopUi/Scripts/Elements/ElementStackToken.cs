@@ -22,6 +22,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GraphicFader glowImage;
 		[SerializeField] GameObject stackBadge;
 		[SerializeField] TextMeshProUGUI stackCountText;
+        [SerializeField] GameObject decayView;
+        [SerializeField] TextMeshProUGUI decayCountText;
 
         [SerializeField] CardBurnEffect cardBurnFX;
 
@@ -103,6 +105,8 @@ namespace Assets.CS.TabletopUI
             DisplayInfo();
             DisplayIcon();
             ShowGlow(false, false);
+            ShowCardDecayTimer(false);
+            SetCardDecay(0f);
         }
 
 
@@ -214,6 +218,44 @@ namespace Assets.CS.TabletopUI
                 glowImage.Show(instant);
             else
                 glowImage.Hide(instant);                     
+        }
+
+        // Card Decay Timer
+        public void ShowCardDecayTimer(bool showTimer) {
+            decayView.gameObject.SetActive(showTimer);
+        }
+
+        public void SetCardDecayTime(float timeRemaining) {
+            decayCountText.text = timeRemaining.ToString("0.0") + "s";
+        }
+
+        public void SetCardDecay(float percentage) {
+            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+        }
+
+
+        // NOTE: THIS IS ALL DEMO TEST CODE SO YOU CAN SEE THE VISUALS
+        float currentTime = -5f;
+
+        void Update() {
+            float decayDuration = 60f;
+            float timeToShowTimer = 30f;
+
+            currentTime += Time.deltaTime;
+
+            SetCardDecay(currentTime / (decayDuration - timeToShowTimer));
+
+            if (currentTime >= decayDuration - timeToShowTimer) {
+                ShowCardDecayTimer(true);
+                SetCardDecayTime(Mathf.Abs(currentTime - decayDuration + timeToShowTimer / timeToShowTimer));
+            }
+            else { 
+                ShowCardDecayTimer(false);
+            }
+
+            if (currentTime > decayDuration) {
+                currentTime = -5f;
+            }
         }
 
 
