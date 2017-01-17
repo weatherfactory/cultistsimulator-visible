@@ -160,6 +160,12 @@ namespace Assets.CS.TabletopUI
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
+        public override void OnEndDrag(PointerEventData eventData)
+        {
+            //remove any suitability glows
+            Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
+            base.OnEndDrag(eventData);
+        }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
@@ -199,6 +205,9 @@ namespace Assets.CS.TabletopUI
 			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
 			if (eventData.hovered.Contains(stackBadge) == false) 
             	SplitAllButNCardsToNewStack(1);
+
+            Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
+
 
             base.StartDrag(eventData);
         }

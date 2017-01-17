@@ -40,5 +40,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Retire();
         void SetComplete();
         void ConsumeMarkedElements();
+        void ShowDestinationsForStack(IElementStack stack);
     }
 }

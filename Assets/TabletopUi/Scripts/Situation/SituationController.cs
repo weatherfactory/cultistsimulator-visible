@@ -318,6 +318,11 @@ namespace Assets.TabletopUi
 
             return false;
         }
+
+        public void ShowDestinationsForStack(IElementStack stack)
+        {
+            situationWindow.ShowDestinationsForStack(stack);
+        }
     }
 }
 

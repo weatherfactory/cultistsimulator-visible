@@ -39,6 +39,11 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
         }
     }
 
+    public SituationToken GetOpenToken()
+    {
+        return GetTokenTransformWrapper().GetSituationTokens().FirstOrDefault(s => s.IsOpen);
+    }
+
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand,string locatorInfo=null)
     {
        return Registry.Retrieve<TabletopObjectBuilder>().BuildSituation(creationCommand, locatorInfo);

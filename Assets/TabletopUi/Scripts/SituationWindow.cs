@@ -30,6 +30,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] OngoingSlotsContainer ongoingSlotsContainer;
         [SerializeField] SituationStorage situationStorage;
         [SerializeField] Results outputContainer;
+       
 
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] Button button;
@@ -38,6 +39,13 @@ namespace Assets.CS.TabletopUI
         public IList<INotification> queuedNotifications = new List<INotification>();
         private SituationController situationController;
         private IVerb Verb;
+
+        void JiggleLayoutGroup()
+        {
+            //make space for large text
+            VerticalLayoutGroup vlg = GetComponentInChildren<VerticalLayoutGroup>();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(vlg.GetComponent<RectTransform>());
+        }
 
         void OnEnable()
         {
@@ -83,6 +91,7 @@ namespace Assets.CS.TabletopUI
             ButtonBarText.text = "";
 
             ButtonBarText.gameObject.SetActive(false);
+            JiggleLayoutGroup();
         }
 
         /// <summary>
@@ -101,6 +110,8 @@ namespace Assets.CS.TabletopUI
             ButtonBarText.gameObject.SetActive(true);
 
             ConsumeMarkedElements();
+            JiggleLayoutGroup();
+
         }
 
         public void SetComplete()
@@ -110,7 +121,9 @@ namespace Assets.CS.TabletopUI
             outputContainer.gameObject.SetActive(true);
 
             aspectsDisplay.ClearAspects();
-            
+            JiggleLayoutGroup();
+
+
         }
 
         public void ConsumeMarkedElements()
@@ -118,6 +131,35 @@ namespace Assets.CS.TabletopUI
             foreach (var s in GetStoredStacks().Where(stack => stack.MarkedForConsumption))
                 //     s.SetQuantity(0);
                 s.Retire(true);
+        }
+
+        public void ShowDestinationsForStack(IElementStack stack)
+        {
+            var startingslots = startingSlotsContainer.GetAllSlots();
+            var ongoingslots = ongoingSlotsContainer.GetAllSlots();
+
+            foreach(var s in startingslots)
+            { 
+                if(stack==null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                { 
+                  s.ShowGlow(false,false);
+                    Debug.Log("hiding");
+                }
+                else
+                { 
+                    s.ShowGlow(true, false);
+                }
+            }
+            foreach (var s in ongoingslots)
+            { 
+                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                {
+                    s.ShowGlow(false, false);
+                    Debug.Log("hiding");
+                }
+                else
+                    s.ShowGlow(true, false);
+            }
         }
 
         public void DisplayAspects(IAspectsDictionary forAspects)

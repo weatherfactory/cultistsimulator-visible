@@ -20,7 +20,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What other powers will we call upon?"},
-			"Subject": {required: {follower:1, health:1}, consumes: true,description:"Will you or another give your blood?"},
+			"Subject": {required: {follower:1, health:1}, consumes: true,description:"Will you give your blood, or will another?"},
 			"Instrument":{required: {tool: 1}, description: "On what will blood be shed?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this?"}
 			}
