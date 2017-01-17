@@ -311,12 +311,11 @@ namespace Assets.TabletopUi
         public bool IsSituationOccupied() {
             // This should return true when the situation is occupied:
             /*
-            - if the situation isn't currently executing and the primary slot contains an element, it's dirty
-            - if the situation is currently executing, or the primary slot doesn't contain an element, it's clean
+            - if the situation isn't currently executing and the primary slot contains an element, it's occupied
+            - if the situation is currently executing, or the primary slot doesn't contain an element, it's occupied
             */
-
-            return false;
-        }
+            return situationWindow.GetStacksInStartingSlots().Any();
+  }
 
         public void ShowDestinationsForStack(IElementStack stack)
         {

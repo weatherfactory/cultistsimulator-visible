@@ -80,10 +80,6 @@ namespace Assets.CS.TabletopUI
                 SetGlowColor(UIStyle.TokenGlowColor.Blue);
                 ShowGlow(true);
             }
-            // If the situation is occupied, revert the glow to pink instead.
-            else if (SituationController.IsSituationOccupied()) {
-                SetGlowColor(UIStyle.TokenGlowColor.Pink);
-            }
             else { 
                 ShowGlow(false);
             }
@@ -170,6 +166,7 @@ namespace Assets.CS.TabletopUI
         {
             DisplayInAir();
             IsOpen = true;
+            ShowGlow(false);
         }
 
         public void CloseToken()
@@ -177,6 +174,12 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
                 DisplayOnTable();
        IsOpen = false;
+            if (SituationController.IsSituationOccupied())
+            { 
+                SetGlowColor(UIStyle.TokenGlowColor.Pink);
+                ShowGlow(true);
+            }
+
         }
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)
