@@ -71,6 +71,8 @@ namespace Assets.CS.TabletopUI
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
 
+            notifier.ShowNotificationWindow("18th JANUARY, 1920","I am a beginning student of the invisible arts. I have only time, hunger, and a little money. Earlier, I made a note in my journal. [Clicking the note, above, will read it.",20);
+
             SetupBoard();
 
         }

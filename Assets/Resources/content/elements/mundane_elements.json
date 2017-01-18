@@ -2,7 +2,7 @@
     [
 	{id: "startingletter",
 	label: "Note",
-	description: "My correspondent is gone, but the dreams are not. [Click the Dream token, and drop this item into it.] ",
+	description: "My correspondent is gone - the pneumonia, they tell me - but the dreams are not. [Click the Dream token, and drop this item into it.] ",
 	aspects: {}
 	},	
           {
@@ -53,11 +53,18 @@
 				},
             description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
         },
-		{id: "journalentry",
-		label: "Journal Entry",
+		{id: "fleetingmemory",
+		label: "Fleeting Memory",
 		aspects: {},
-		description: "Notes on my experiences. Perhaps one day they'll be useful.",
+		description: "I recall a moment in time, perhaps fondly.",
 		lifetime: 60
+		},
+				{id: "contentment",
+		label: "Contentment",
+		aspects: {lantern: 1},
+		description: "I'm happy, I think.",
+		lifetime: 30
 		}
+]
 ]
 };

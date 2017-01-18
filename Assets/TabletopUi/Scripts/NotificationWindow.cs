@@ -24,7 +24,11 @@ namespace Assets.CS.TabletopUI
         public void Awake()
         {
 			canvasGroupFader.Show();
-      		Invoke("Hide", 5);
+        }
+
+        public void SetDuration(float duration)
+        {
+            Invoke("Hide", 5);
         }
 
         public void SetDetails(string title, string description)

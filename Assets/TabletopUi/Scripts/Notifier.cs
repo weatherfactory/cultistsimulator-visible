@@ -23,8 +23,8 @@ namespace Assets.CS.TabletopUI
             notificationLog.AddText(text);
         }
 
-        public void ShowNotificationWindow(string title, string description) {
-            var notification = BuildNotificationWindow();
+        public void ShowNotificationWindow(string title, string description,float duration=5) {
+            var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);
         }
 
@@ -48,8 +48,9 @@ namespace Assets.CS.TabletopUI
             return window;
         }
 
-        private NotificationWindow BuildNotificationWindow() {
+        private NotificationWindow BuildNotificationWindow(float duration) {
             var notification = PrefabFactory.CreateLocally<NotificationWindow>(notificationHolder);
+            notification.SetDuration(duration);
             return notification;
         }
 

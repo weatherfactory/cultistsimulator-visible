@@ -20,7 +20,7 @@
         label: "Recover?",
         actionId: "dream",
         requirements: {illhealth: 1},
-        effects: {journalentry:1},
+        effects: {fleetingmemory:1},
             		slots:
 						{Nourishment: {required: {shilling: 1},forbidden: {}}},
 		alternativerecipes: [{id:"recover",chance:100}],
@@ -33,10 +33,10 @@
         id: "composure",
         label: "Composure",
         actionId: "dream",
-        requirements: {journalentry: 1, unreason: 1},
+        requirements: {fleetingmemory: 1, unreason: 1},
         effects: {
             unreason: -1,
-			journalentry:-1,
+			fleetingmemory:-1,
 			reason: 1
         },
         startdescription: "I remember that I was different. Here are my memories.",
@@ -49,9 +49,9 @@
         label: "Seek Composure",
         actionId: "dream",
         requirements: {unreason: 1},
-        effects: {journalentry:1},
+        effects: {fleetingmemory:1},
             		slots:
-						{Memories: {required: {journalentry: 1}}},
+						{Memories: {required: {fleetingmemory: 1}}},
 		alternativerecipes: [{id:"composure",chance:100}],
         startdescription: "I remember that I was different, before.",
         description: "I remember that I was different: but I no longer remember how.",

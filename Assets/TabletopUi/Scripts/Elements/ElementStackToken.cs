@@ -200,7 +200,7 @@ namespace Assets.CS.TabletopUI
 
         public bool AllowMerge()
         {
-            return container.AllowStackMerge;
+            return container.AllowStackMerge && !Decays;
         }
 
         protected override void StartDrag(PointerEventData eventData)
@@ -248,7 +248,7 @@ namespace Assets.CS.TabletopUI
                 SetCardDecayTime(lifetimeRemaining);
             }
 
-            SetCardDecay(lifetimeRemaining/_element.Lifetime);
+            SetCardDecay(1-lifetimeRemaining/_element.Lifetime);
            
         }
         // Card Decay Timer
