@@ -12,7 +12,8 @@
         description: "Glover & Glover have offered me a junior position. I start at eight sharp, tomorrow morning! ",
         warmup: 10,
         craftable: true,
-		maxexecutions: 1
+		maxexecutions: 1,
+		burnimage: "tattoo"
     },
 	{id: "gloverandgloverjuniorwork",
 	label: "Junior Work at Glover & Glover",
@@ -39,8 +40,8 @@
 	label: "Extra Effort at Glover & Glover",
 	  requirements: {reason: 1},
 	          alternativerecipes:
-		[{id: "gloverandgloverjunior_diligence_promotion", chance:100},
-		{id: "gloverandglover_diligence_promotion", chance:100},
+		[{id: "gloverandgloverjunior_diligence_promotion", chance:70},
+		{id: "gloverandglover_diligence_promotion", chance:30},
 		],
 		effects: { shilling: 1},
 	actionId:"work",

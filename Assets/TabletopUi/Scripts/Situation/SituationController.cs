@@ -232,6 +232,11 @@ namespace Assets.TabletopUi
                 situationWindow.SetSlotConsumptions();
                 situationWindow.StoreStacks(situationWindow.GetStacksInStartingSlots());
                 SituationStateMachine.Start(recipe);
+                if(recipe.BurnImage!=null)
+                { 
+                    Debug.Log(recipe.BurnImage);
+                   Registry.Retrieve<Notifier>().ShowImageBurn(recipe.BurnImage,situationToken as DraggableToken, 10f, 2f, TabletopImageBurner.ImageLayoutConfig.LoweLeftCorner);
+                }
             }
         }
 

@@ -143,7 +143,6 @@ namespace Assets.CS.TabletopUI
                 if(stack==null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
                 { 
                   s.ShowGlow(false,false);
-                    Debug.Log("hiding");
                 }
                 else
                 { 
@@ -155,7 +154,6 @@ namespace Assets.CS.TabletopUI
                 if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
                 {
                     s.ShowGlow(false, false);
-                    Debug.Log("hiding");
                 }
                 else
                     s.ShowGlow(true, false);
