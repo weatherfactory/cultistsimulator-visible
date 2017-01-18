@@ -14,17 +14,17 @@
         craftable: true,
 		maxexecutions: 1
     },
-	{id: "gloverandgloverjunior",
+	{id: "gloverandgloverjuniorwork",
 	label: "Junior Work at Glover & Glover",
 	  requirements: {gloverandgloverjuniorjob: 1},
 	          alternativerecipes:
-		[{id: "gloverandgloverjunior_diligence", chance:100}],
+		[{id: "gloverandglover_diligence", chance:100}],
 		effects: { shilling: 2},
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
         description: "The clerks file out in silence. I am free for now.",
 		aside: "(I could devote extra effort to the work...)",
-        warmup: 90,
+        warmup: 100,
 			slots: {
 				"Diligence":
 					{
@@ -35,27 +35,78 @@
 				},
 				craftable: true
 	},
-		{id: "gloverandgloverjunior_diligence",
-	label: "Extra Hours at Glover & Glover",
-	  requirements: {gloverandgloverjuniorjob: 1,reason: 1},
+		{id: "gloverandglover_diligence",
+	label: "Extra Effort at Glover & Glover",
+	  requirements: {reason: 1},
 	          alternativerecipes:
-		[{id: "gloverandgloverjunior_diligence_promotion", chance:30}],
-		effects: { shilling: 3},
+		[{id: "gloverandgloverjunior_diligence_promotion", chance:100},
+		{id: "gloverandglover_diligence_promotion", chance:100},
+		],
+		effects: { shilling: 1},
 	actionId:"work",
-        startdescription: "I will work whatever hours the elder Glover requires. Perhaps he'll appreciate it.",
-        description: "The office is dark when I leave. Outside on the pavement, I turn up my collar.",
+        startdescription: "I will work whatever overtime the elder Glover requires. Perhaps he'll appreciate it.",
+        description: ".",
 		aside: "(Is this all I am meant for?)",
-        warmup: 0
-	}
-	,
+        warmup: 0,
+		craftable:false
+	},
 		{id: "gloverandgloverjunior_diligence_promotion",
-	label: "Extra Hours at Glover & Glover",
-	  requirements: {},
-		effects: { shilling: 3,gloverandgloverjuniorjob: -1, gloverandgloverjob: 1},
+	label: "A Promotion!",
+	  requirements: {gloverandgloverjuniorjob: 1,reason:1},
+		effects: { shilling: 3, gloverandgloverjuniorjob: -1, gloverandgloverjob: 1},
 	actionId:"work",
         startdescription: "",
         description: "The elder Glover has called me into his office to congratulate me on my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion. My new position is better paid, and the desk stands by the street window.",
         warmup: 0
+	},
+		{id: "gloverandgloverwork",
+	label: "Work at Glover & Glover",
+	  requirements: {gloverandgloverjob: 1},
+	          alternativerecipes:
+		[{id: "gloverandglover_diligence_promotion", chance:100}],
+		effects: { shilling: 3},
+	actionId:"work",
+        startdescription: "I work longer hours now, but they're better-paid.",
+        description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
+		aside: "(I could devote extra effort to the work...)",
+        warmup: 120,
+			slots: {
+				"Devotion":
+					{
+					required: {reason: 1},
+					forbidden: {},
+					description: "Extra effort. It might help, if I'm very lucky."
+					}
+				},
+				craftable: true
+	},
+			{id: "gloverandglover_diligence_promotion",
+	label: "Extra Hours at Glover & Glover",
+	  	  requirements: {gloverandgloverjob: 1,reason:2},
+		effects: { shilling: 4,gloverandgloverjob: -1, gloverandgloverseniorjob: 1},
+	actionId:"work",
+        startdescription: "",
+        description: "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for him.",
+        warmup: 0
+	},
+			{id: "gloverandgloverseniorwork",
+	label: "Work at Glover & Glover",
+	  requirements: {gloverandgloverseniorjob: 1},
+		effects: { shilling: 4},
+	actionId:"work",
+        startdescription: "Curl my hands into the correct shapes, and begin.",
+        description: "I am always the last to leave, even after the elder Glover.",
+		aside: "(I could devote extra effort to the work...)",
+        warmup: 150,
+			slots: {
+				"Acceptance":
+					{
+					required: {passion: 1},
+					forbidden: {},
+					description: "I could devote my life to this."
+					}
+				},
+				craftable: true
 	},
 	{
         id: "labour",

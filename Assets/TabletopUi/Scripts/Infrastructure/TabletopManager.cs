@@ -194,6 +194,7 @@ namespace Assets.CS.TabletopUI
 		}
 
 		void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
+            if(!tokenSlotPair.RecipeSlot.Equals(null))
 			tokenSlotPair.RecipeSlot.AcceptStack(element);
 		}
 
