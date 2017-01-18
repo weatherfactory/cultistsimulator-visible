@@ -20,8 +20,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GraphicFader glowImage;
-		[SerializeField] GameObject stackBadge;
-		[SerializeField] TextMeshProUGUI stackCountText;
+        [SerializeField] GameObject stackBadge;
+        [SerializeField] TextMeshProUGUI stackCountText;
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
 
@@ -31,14 +31,17 @@ namespace Assets.CS.TabletopUI
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
-        
+
 
         public override string Id
         {
             get { return _element == null ? null : _element.Id; }
         }
 
-        public bool Decays { get { return _element.Lifetime > 0; } }
+        public bool Decays
+        {
+            get { return _element.Lifetime > 0; }
+        }
 
         public string Label
         {
@@ -83,11 +86,12 @@ namespace Assets.CS.TabletopUI
 
             Defunct = true;
 
-            if (withFlameEffect && gameObject.activeInHierarchy) {
+            if (withFlameEffect && gameObject.activeInHierarchy)
+            {
                 var effect = Instantiate<CardBurnEffect>(cardBurnFX) as CardBurnEffect;
                 effect.StartAnim(this);
-                }
-            else 
+            }
+            else
                 Destroy(gameObject);
 
             return true;
@@ -98,6 +102,9 @@ namespace Assets.CS.TabletopUI
         {
 
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+            try
+            {
+
             SetQuantity(quantity);
 
             name = "Card_" + elementId;
@@ -110,6 +117,14 @@ namespace Assets.CS.TabletopUI
             ShowCardDecayTimer(false);
             SetCardDecay(0f);
             lifetimeRemaining = _element.Lifetime;
+
+            }
+            catch (Exception e)
+            {
+
+                Debug.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
+                Retire(false);
+            }
         }
 
 

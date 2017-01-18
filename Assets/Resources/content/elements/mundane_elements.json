@@ -83,13 +83,13 @@
         },
 		{id: "fleetingmemory",
 		label: "Fleeting Memory",
-		aspects: {},
+		aspects: {heart:1},
 		description: "I recall a moment in time, perhaps fondly.",
 		lifetime: 60
 		},
 				{id: "contentment",
 		label: "Contentment",
-		aspects: {lantern: 1},
+		aspects: {lantern: 1,heart:1},
 		description: "I'm happy, I think.",
 		lifetime: 30
 		}

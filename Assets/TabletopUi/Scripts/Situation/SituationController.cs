@@ -83,6 +83,8 @@ namespace Assets.TabletopUi
             var allAspects = GetAspectsAvailableToSituation();
             situationWindow.DisplayAspects(allAspects);
             var rp = getNextRecipePrediction(allAspects);
+            if(rp.BurnImage!=null)
+                BurnImageHere(rp.BurnImage);
 
             situationWindow.UpdateTextForPrediction(rp);
             situationToken.UpdateMiniSlotDisplay(situationWindow.GetStacksInOngoingSlots());
@@ -133,7 +135,7 @@ namespace Assets.TabletopUi
             return response;
         }
 
-        public void UpdateSituationDisplayTextInWIndow()
+        public void UpdateSituationDisplayForDescription()
         {
 
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
@@ -148,7 +150,7 @@ namespace Assets.TabletopUi
         {
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
-            UpdateSituationDisplayTextInWIndow();
+            UpdateSituationDisplayForDescription();
         }
 
         public void SituationOngoing()
@@ -232,12 +234,17 @@ namespace Assets.TabletopUi
                 situationWindow.SetSlotConsumptions();
                 situationWindow.StoreStacks(situationWindow.GetStacksInStartingSlots());
                 SituationStateMachine.Start(recipe);
-                if(recipe.BurnImage!=null)
-                { 
-                    Debug.Log(recipe.BurnImage);
-                   Registry.Retrieve<Notifier>().ShowImageBurn(recipe.BurnImage,situationToken as DraggableToken, 10f, 2f, TabletopImageBurner.ImageLayoutConfig.LoweLeftCorner);
-                }
+                if (recipe.BurnImage != null)
+                    BurnImageHere(recipe.BurnImage);
             }
+        }
+
+        private void BurnImageHere(string burnImage)
+        {
+
+                Registry.Retrieve<Notifier>()
+                    .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
+                        TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
         public void ModifyStoredElementStack(string elementId, int quantity)

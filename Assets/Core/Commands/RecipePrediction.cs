@@ -10,5 +10,6 @@ namespace Assets.Core.Commands
         public string Title { get; set; }
         public string DescriptiveText { get; set; }
         public string Commentary { get; set; }
+        public string BurnImage { get; set; }
     }
 }

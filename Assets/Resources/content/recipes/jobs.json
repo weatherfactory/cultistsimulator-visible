@@ -13,7 +13,7 @@
         warmup: 10,
         craftable: true,
 		maxexecutions: 1,
-		burnimage: "tattoo"
+		burnimage: "office"
     },
 	{id: "gloverandgloverjuniorwork",
 	label: "Junior Work at Glover & Glover",
@@ -107,6 +107,7 @@
 					description: "I could devote my life to this."
 					}
 				},
+				alternativerecipes: [{id: "workvictory",chance:100}],
 				craftable: true
 	},
 	{
@@ -160,10 +161,10 @@
 		[{id: "paintsuccess", chance:30}],
         actionId: "work",
         requirements: {passion: 1},
-        effects: {
+        effects: {contentment:1,
         },
         startdescription: "I might sell a painting. I probably won't.",
-        description: "I've finished a painting, to the excitement of absolutely no-one.",
+        description: "I've finished a painting, to the excitement of absolutely no-one: no-one but me.",
         warmup: 60,
         craftable: true
     },
@@ -172,9 +173,9 @@
         label: "I've sold a painting!",
         actionId: "work",
         requirements: {},
-        effects: {shilling: 2},
+        effects: {shilling: 2, contentment:1},
         startdescription: ".",
-        description: "I've found a customer! He'll probably hang it in his spare bedroom and never look at it again. But his money is good.",
+        description: "I've found a customer! She'll probably hang it in his spare bedroom and never look at it again. But her money is good.",
         warmup: 0,
         craftable: false
     },

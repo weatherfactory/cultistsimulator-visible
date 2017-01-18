@@ -93,6 +93,7 @@ namespace Assets.Core
                             rp.Title = candidateRecipe.Label;
                             rp.DescriptiveText = candidateRecipe.StartDescription;
                             rp.Commentary = candidateRecipe.Aside;
+                            rp.BurnImage = candidateRecipe.BurnImage;
                             return rp;
                         }
                     }

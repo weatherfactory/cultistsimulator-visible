@@ -33,13 +33,13 @@
         id: "composure",
         label: "Composure",
         actionId: "dream",
-        requirements: {fleetingmemory: 1, unreason: 1},
+        requirements: {heart: 1, unreason: 1},
         effects: {
             unreason: -1,
-			fleetingmemory:-1,
+			heart:-1,
 			reason: 1
         },
-        startdescription: "I remember that I was different. Here are my memories.",
+        startdescription: "I remember that I was different, before.",
         description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
         warmup: 90,
         craftable: true
@@ -51,9 +51,9 @@
         requirements: {unreason: 1},
         effects: {fleetingmemory:1},
             		slots:
-						{Memories: {required: {fleetingmemory: 1}}},
+						{Reminders: {required: {fleetingmemory: 1,contentment:1}}},
 		alternativerecipes: [{id:"composure",chance:100}],
-        startdescription: "I remember that I was different, before.",
+        startdescription: "Was I different, before?",
         description: "I remember that I was different: but I no longer remember how.",
         warmup: 90,
         craftable: true

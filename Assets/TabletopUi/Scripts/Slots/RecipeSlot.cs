@@ -199,6 +199,7 @@ namespace Assets.CS.TabletopUI
             if ( GoverningSlotSpecification.Consumes)
             {
                 var stack = GetElementStackInSlot();
+                if(stack!=null)
                 stack.MarkedForConsumption = true;
             }
         }

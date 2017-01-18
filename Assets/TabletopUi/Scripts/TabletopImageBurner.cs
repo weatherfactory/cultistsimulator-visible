@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI {
     public class TabletopImageBurner : MonoBehaviour {
 
-        public enum ImageLayoutConfig { CenterOnToken, LoweLeftCorner }
+        public enum ImageLayoutConfig { CenterOnToken, LowerLeftCorner }
 
         [SerializeField] Image burnImagePrefab;
         [SerializeField] AnimationCurve burnAlphaCurve;
@@ -79,7 +79,7 @@ namespace Assets.CS.TabletopUI {
             switch (config) {
                 case ImageLayoutConfig.CenterOnToken:
                     return new Vector2(0.5f, 0.5f);
-                case ImageLayoutConfig.LoweLeftCorner:
+                case ImageLayoutConfig.LowerLeftCorner:
                 default:
                     return Vector2.zero;
             }
@@ -109,17 +109,5 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        // THIS IS ALL DEBUG SHIT
-        public DraggableToken token;
-        public string imageName = "flyingthings";
-        public ImageLayoutConfig layoutConfig = ImageLayoutConfig.LoweLeftCorner;
-        public float duration = 10f;
-        public float scale = 2f;
-
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                ShowImageBurn(imageName, token, duration, scale, layoutConfig);
-            }
         }
     }
-}

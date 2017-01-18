@@ -10,7 +10,8 @@
         },
         alternativerecipes:
 		[{id: "legacyarrives", chance:100, additional: true},
-		{id: "sickness", chance:10, additional: true}
+		{id: "sickness", chance:10, additional: true},
+		{id: "pleasantday", chance:10, additional: true},
 		{id: "lawenforcement", chance:0, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
         startdescription: "Time, the sundial's shadow, passes.",
@@ -40,8 +41,8 @@
         },
 		alternativerecipes:
 		[{id: "deathofthebody",chance:100}],
-        startdescription: ".",
-        description: "I've become unwell. [If an illness cannot consume Health, it will cause death.] ",
+        startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
+        description: "The sickness has ravaged my body.",
         warmup: 60,
 		slots: {
 		"Affliction": 
@@ -51,6 +52,19 @@
 					greedy: true
 					}
 		}
+        craftable: false
+    },
+		   {
+        id: "pleasantday",
+        label: "A Pleasant Day",
+        actionId: "x",
+        requirements: {},
+        effects: {
+		contentment: 1,
+        },
+        startdescription: "This morning, there is a spring in my step. I'm not sure why.",
+        description: "Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
+        warmup: 10,
         craftable: false
     },
 	   {
