@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class NotificationWindow: MonoBehaviour
+    public class NotificationWindow: MonoBehaviour,IPointerClickHandler
     {
         [SerializeField]
         CanvasGroup canvasGroup;
@@ -40,6 +41,11 @@ namespace Assets.CS.TabletopUI
         public void Hide()
         {
             canvasGroupFader.Hide();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Hide();
         }
     }
 }

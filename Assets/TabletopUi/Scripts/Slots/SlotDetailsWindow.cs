@@ -4,9 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.TabletopUi.Scripts;
+using UnityEngine.EventSystems;
 
 namespace Assets.CS.TabletopUI {
-    public class SlotDetailsWindow : MonoBehaviour {
+    public class SlotDetailsWindow : MonoBehaviour,IPointerClickHandler {
 
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] CanvasGroupFader canvasGroupFader;
@@ -19,7 +20,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] AspectsDisplay forbiddenAspectParent;
 
         public void Awake() {
-            Invoke("Hide", 5);
+            Invoke("Hide", 10);
         }
 
         public void SetSlot(SlotSpecification slotSpecification)
@@ -44,5 +45,9 @@ namespace Assets.CS.TabletopUI {
             canvasGroupFader.Hide();
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Hide();
+        }
     }
 }

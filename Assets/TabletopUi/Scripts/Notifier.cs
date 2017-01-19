@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI
             notificationLog.AddText(text);
         }
 
-        public void ShowNotificationWindow(string title, string description,float duration=5) {
+        public void ShowNotificationWindow(string title, string description,float duration=10) {
             var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);
         }

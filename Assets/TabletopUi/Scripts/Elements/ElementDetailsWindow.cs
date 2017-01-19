@@ -3,11 +3,12 @@ using Assets.Core;
 using Assets.TabletopUi.Scripts;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class ElementDetailsWindow : MonoBehaviour {
+    public class ElementDetailsWindow : MonoBehaviour, IPointerClickHandler{
 
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] Image artwork;
@@ -19,7 +20,7 @@ namespace Assets.CS.TabletopUI
 
         public void Awake()
         {
-            Invoke("Hide", 5);
+            Invoke("Hide", 10);
         }
 
         public void SetElementCard(Element element) {
@@ -91,5 +92,9 @@ namespace Assets.CS.TabletopUI
           canvasGroupFader.Hide();
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Hide();
+        }
     }
 }
