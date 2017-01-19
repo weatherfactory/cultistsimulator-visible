@@ -17,6 +17,7 @@ using OrbCreationExtensions;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 
@@ -132,8 +133,7 @@ namespace Assets.CS.TabletopUI
 
         public void RestartGame()
         {
-            ClearBoard();
-            SetupBoard();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void SetPausedState(bool pause)
