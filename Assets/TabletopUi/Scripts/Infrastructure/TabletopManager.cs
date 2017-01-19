@@ -37,7 +37,27 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private Notifier notifier;
         private TabletopObjectBuilder tabletopObjectBuilder;
         [SerializeField] private RestartPanel restartPanel;
+        [SerializeField] private OptionsPanel optionsPanel;
+        [SerializeField] private RectTransform viewport;
 
+
+        public void Update()
+        {
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                TogglePause();
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+                optionsPanel.ToggleVisibility();
+            if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
+            {
+                viewport.localPosition = new Vector3(viewport.localPosition.x,viewport.localPosition.y,viewport.localPosition.z+100);
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0) // forward
+            {
+                viewport.localPosition = new Vector3(viewport.localPosition.x, viewport.localPosition.y, viewport.localPosition.z - 100);
+            }
+        }
 
         public void UpdateCompendium(ICompendium compendium)
         {

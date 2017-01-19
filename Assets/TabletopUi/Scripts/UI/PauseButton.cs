@@ -6,11 +6,14 @@ public class PauseButton : MonoBehaviour {
 
 [SerializeField] TextMeshProUGUI ButtonText;
 
+    
     public void SetPausedState(bool isPaused)
     {
         if (isPaused)
-            ButtonText.text = "UNPAUSE";
+            ButtonText.text = "UNPAUSE [SPACE]";
         else
-            ButtonText.text = "PAUSE";
+            ButtonText.text = "PAUSE [SPACE]";
     }
+
+ 
 }

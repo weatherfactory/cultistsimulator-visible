@@ -36,7 +36,8 @@ namespace Assets.CS.TabletopUI {
             cardBurnOverlay.gameObject.SetActive(true);
 
             StopAllCoroutines();
-            StartCoroutine(DoBurnAnim());
+            StartCoroutine(DoBurnAnim()); //This will fail if the card's parent is subsequently disabled. So we use OnDisable, below, to finish it quickly if the card is then disabled.
+            //There may be redundant code in other places from previous attempts to fix this.
         }
 
         IEnumerator DoBurnAnim() {
