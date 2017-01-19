@@ -83,7 +83,7 @@ namespace Assets.TabletopUi
             var allAspects = GetAspectsAvailableToSituation();
             situationWindow.DisplayAspects(allAspects);
             var rp = getNextRecipePrediction(allAspects);
-            if(rp.BurnImage!=null)
+            if(rp!=null && rp.BurnImage!=null)
                 BurnImageHere(rp.BurnImage);
 
             situationWindow.UpdateTextForPrediction(rp);
