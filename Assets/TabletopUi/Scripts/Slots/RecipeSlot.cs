@@ -159,9 +159,16 @@ namespace Assets.CS.TabletopUI
             SoundManager.PlaySfx("CardTakeFromSlot");
         }
 
- 
 
-        public bool AllowDrag { get { return true; }}
+
+        public bool AllowDrag
+        {
+            get
+            {
+                return !GoverningSlotSpecification.Greedy;
+            }
+        }
+
         public bool AllowStackMerge { get{ return false; } }
 
         public ElementStacksManager GetElementStacksManager()

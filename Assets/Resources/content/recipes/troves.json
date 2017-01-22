@@ -12,6 +12,7 @@
 		{id: "findtravellingatnight1",chance:20},
 		{id: "findsixlettersonnecessity",chance:20},
 		{id: "findlocksmithsdream1",chance:20},
+		{id: "findlocksmithsdream2",chance:20},
 		{id: "findorchidtransfigurations1latin",chance:20},
 		{id: "findtextbooklatin",chance:80},
 		{id: "findtextbookreason",chance:50},
@@ -64,6 +65,18 @@
         effects: {locksmithsdream1: 1},
 		startdescription: "A notable find -",
         description: "A recent, but intriguing, work, handsomely bound in gold-tooled calf-leather.",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+			{
+        id: "findlocksmithsdream2",
+        label: "The second volume of 'The Locksmith's Dream'",
+        actionId: "find",
+		requirements: {},
+        effects: {locksmithsdream2: 1},
+		startdescription: "A notable find -",
+        description: "A recent, but intriguing, work, handsomely bound in gold-tooled calf-leather. The frontispiece, however, has been slashed with a razor.",
         warmup: 0,
 		maxexecutions: 1,
         craftable: false
