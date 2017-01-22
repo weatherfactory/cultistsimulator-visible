@@ -11,6 +11,7 @@ using UnityEngine;
 public class Element
 {
     public IAspectsDictionary Aspects;
+    public Dictionary<string, string> XTriggers;
     public string Id { get; set; }
     public string Label { get; set; }
     public string Description { get; set; }

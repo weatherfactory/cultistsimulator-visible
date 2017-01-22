@@ -41,6 +41,12 @@
             isAspect: true,
 			description: "'The proper things, in the proper manner, in the proper order. God help us all.' - attributed to Hersault"
         },
+				{
+            id: "society",
+            label: "Society",
+            isAspect: true,
+			description: "To recruit believers, I must build something for them to believe."
+        },
         {
             id: "tool",
             label: "Tool",
@@ -92,13 +98,6 @@
 			description: "Locations! Everyone must be somewhere, and I am here. A Location can contain anything except another Location.",
         isAspect: true
 },
-
-        {
-            id: "society",
-            label: "Society",
-			description: "A society allows me to employ my followers to best advantage. It can contain Rituals and Followers.",
-            isAspect: true
-        },
         {
             id: "summoned",
             label: "Summoned",

@@ -27,6 +27,8 @@ namespace Noon
         public const string KWARMUP = "warmup";
         public const string KREQUIREMENTS = "requirements";
         public const string KEFFECTS = "effects";
+        public const string KASPECTS = "aspects";
+        public const string KXTRIGGERS = "xtriggers";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
         public const string KPERSISTINGREDIENTSWITH = "persistIngredientsWith";
         public const string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";

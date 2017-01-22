@@ -9,6 +9,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
@@ -179,10 +180,8 @@ namespace Assets.TabletopUi
             {
                 
                 currentCharacter.AddExecutionToHistory(command.Recipe.Id);
-                foreach (var kvp in command.GetElementChanges())
-                {
-                    situationWindow.GetSituationStorageStacksManager().ModifyElementQuantity(kvp.Key, kvp.Value);
-                }
+                SituationEffectExecutor.RunEffects(command, situationWindow.GetSituationStorageStacksManager());
+
 
                 if (command.Recipe.Ending != null)
                 {

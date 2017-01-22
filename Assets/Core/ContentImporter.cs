@@ -121,11 +121,12 @@ public class ContentImporter
         ArrayList alElements = htElements.GetArrayList("elements");
         foreach (Hashtable htElement in alElements)
         {
-       
-
+     
         
-            Hashtable htAspects = htElement.GetHashtable("aspects");
+            Hashtable htAspects = htElement.GetHashtable(NoonConstants.KASPECTS);
             Hashtable htSlots = htElement.GetHashtable(NoonConstants.KSLOTS);
+            Hashtable htXTriggers = htElement.GetHashtable(NoonConstants.KXTRIGGERS);
+       
 
             Element element = new Element(htElement.GetString(CONST_ID),
                 htElement.GetString(CONST_LABEL),
@@ -143,13 +144,26 @@ public class ContentImporter
 
             element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
             element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
+                if (htXTriggers != null)
+                {
+                    foreach (string k in htXTriggers.Keys)
+                    {
+                        //the element we want to transform this element to when the trigger fires
+                        var xid = htXTriggers[k].ToString();
+                        LogIfNonexistentElementId(k, element.Id, "(aspect that fires an xtrigger)");
+                        LogIfNonexistentElementId(k, xid, "(xtrigger x id)");
+                        element.XTriggers.Add(k, xid);
+                    }
+                }
+
+                Elements.Add(element.Id, element);
             }
             catch (Exception e)
             {
 
                 LogProblem("Couldn't add all properties for element " + element.Id + ": " +e.Message) ;
             }
-            Elements.Add(element.Id, element);
+       
 
 
         }
@@ -258,13 +272,13 @@ public class ContentImporter
             try
             {
                 Hashtable htEffects = htEachRecipe.GetHashtable(NoonConstants.KEFFECTS);
-                if(htEffects!=null)
-                { 
-                foreach (string k in htEffects.Keys)
+                if (htEffects != null)
                 {
-                    LogIfNonexistentElementId(k, r.Id, "(effects)");
-                    r.Effects.Add(k, Convert.ToInt32(htEffects[k]));
-                }
+                    foreach (string k in htEffects.Keys)
+                    {
+                        LogIfNonexistentElementId(k, r.Id, "(effects)");
+                        r.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                    }
                 }
             }
             catch (Exception e)
