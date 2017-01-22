@@ -190,6 +190,11 @@ namespace Assets.Editor.Tests
             return Element.AspectsIncludingSelf;
         }
 
+        public Dictionary<string, string> GetXTriggers()
+        {
+            return Element.XTriggers;
+        }
+
         public void SetQuantity(int quantity)
         {
             Quantity = quantity;

@@ -69,6 +69,11 @@ namespace Assets.CS.TabletopUI
         }
 
 
+        public Dictionary<string, string> GetXTriggers()
+        {
+            return _element.XTriggers;
+        }
+
         public void ModifyQuantity(int change)
         {
             SetQuantity(_quantity + change);

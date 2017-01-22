@@ -180,7 +180,8 @@ namespace Assets.TabletopUi
             {
                 
                 currentCharacter.AddExecutionToHistory(command.Recipe.Id);
-                SituationEffectExecutor.RunEffects(command, situationWindow.GetSituationStorageStacksManager());
+                var executor=new SituationEffectExecutor();
+                executor.RunEffects(command, situationWindow.GetSituationStorageStacksManager());
 
 
                 if (command.Recipe.Ending != null)

@@ -42,6 +42,7 @@ public class Element
         Description = description;
         ChildSlotSpecifications=new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
+        XTriggers=new Dictionary<string, string>();
     }
 
     public Boolean HasChildSlots()

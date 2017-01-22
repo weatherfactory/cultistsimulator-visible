@@ -14,6 +14,7 @@ namespace Assets.Core.Interfaces
         bool MarkedForConsumption { get; set; }
         bool Decays { get; }
         IAspectsDictionary GetAspects();
+        Dictionary<string, string> GetXTriggers();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);
