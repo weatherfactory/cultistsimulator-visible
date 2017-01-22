@@ -26,14 +26,16 @@ namespace CS.Tests
         private const int RECIPE_MAX_EXECUTIONS = 3;
         private const string RECIPE_BURN_IMAGE = "shadows_and_stains";
    
-        private const string ASPECT_1_ID = "aspect1id";
-        private const int ASPECT_1_VALUE = 2;
-        private const string ASPECT_2_ID = "aspect2id";
-        private const int ASPECT_2_VALUE = -4;
+        private const string REQ_1_ID = "req1id";
+        private const int REQ_1_VALUE = 2;
+        private const string REQ_2_ID = "req2id";
+        private const int REQ_2_VALUE = -4;
         private const string EFFECT_1_ID = "effect1id";
         private const int EFFECT_1_VALUE = 9;
         private const string EFFECT_2_ID = "effect2id";
         private const int EFFECT_2_VALUE = -19;
+        private const string ASPECT_ID = "aspectforxtriggerid";
+        private const int ASPECT_VALUE = 1;
         private const string ALTERNATIVE_1_ID = "alternative1";
         private const string ALTERNATIVE_2_ID = "alternative2";
         private const int ALTERNATIVE_1_CHANCE = 10;
@@ -54,6 +56,7 @@ namespace CS.Tests
             Hashtable htRecipe = new Hashtable();
             Hashtable htEffects = new Hashtable();
             Hashtable htRequirements = new Hashtable();
+            Hashtable htAspects=new Hashtable();
 
             Hashtable htSlotSpecifications = new Hashtable()
         { { NoonConstants.KREQUIRED,new Hashtable()
@@ -72,12 +75,13 @@ namespace CS.Tests
        
             ArrayList alAlternatives = new ArrayList();
 
-            htRequirements.Add(ASPECT_1_ID, ASPECT_1_VALUE.ToString());
-            htRequirements.Add(ASPECT_2_ID, ASPECT_2_VALUE.ToString());
+            htRequirements.Add(REQ_1_ID, REQ_1_VALUE.ToString());
+            htRequirements.Add(REQ_2_ID, REQ_2_VALUE.ToString());
 
             htEffects.Add(EFFECT_1_ID, EFFECT_1_VALUE.ToString());
             htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE.ToString());
 
+            htAspects.Add(ASPECT_ID,ASPECT_VALUE.ToString());
    
 
             Hashtable alternative1 = new Hashtable()
@@ -113,10 +117,10 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
             htRecipe.Add(NoonConstants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(NoonConstants.KEFFECTS, htEffects);
+            htRecipe.Add(NoonConstants.KASPECTS,htAspects);
             htRecipe.Add(NoonConstants.KSLOTS, htSlotOuterTable);
 
             htRecipe.Add(NoonConstants.KALTERNATIVERECIPES, alAlternatives);
-
 
             recipesToImport.Add(htRecipe);
             cm.PopulateRecipeList(recipesToImport);
@@ -132,6 +136,9 @@ namespace CS.Tests
 
             ConfirmRecipeEffectsImported(recipesImported);
 
+            ConfirmRecipeAspectsImported(recipesImported);
+
+
             ConfirmRecipeAlternativesImported(recipesImported);
 
             ConfirmRecipeSlotsImported(recipesImported);
@@ -139,6 +146,8 @@ namespace CS.Tests
 
 
         }
+
+
 
         private void ConfirmRecipeSlotsImported(List<Recipe> recipesImported)
         {
@@ -166,6 +175,11 @@ namespace CS.Tests
 
         }
 
+        private void ConfirmRecipeAspectsImported(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(ASPECT_VALUE,recipesImported.First().Aspects[ASPECT_ID]);
+        }
+
         private static void ConfirmRecipeEffectsImported(List<Recipe> recipesImported)
         {
             Assert.AreEqual(EFFECT_1_VALUE, recipesImported.First().Effects[EFFECT_1_ID]);
@@ -174,8 +188,8 @@ namespace CS.Tests
 
         private static void ConfirmRecipeRequirementsImported(List<Recipe> recipesImported)
         {
-            Assert.AreEqual(ASPECT_1_VALUE, recipesImported.First().Requirements[ASPECT_1_ID]);
-            Assert.AreEqual(ASPECT_2_VALUE, recipesImported.First().Requirements[ASPECT_2_ID]);
+            Assert.AreEqual(REQ_1_VALUE, recipesImported.First().Requirements[REQ_1_ID]);
+            Assert.AreEqual(REQ_2_VALUE, recipesImported.First().Requirements[REQ_2_ID]);
         }
 
         private static void ConfirmRecipeOtherPropertiesImported(List<Recipe> recipesImported)

@@ -14,6 +14,7 @@ public class Recipe
     public string ActionId { get; set; }
     public Dictionary<string, int> Requirements { get; set; }
     public Dictionary<string, int> Effects { get; set; }
+    public AspectsDictionary Aspects { get; set; }
 
     public Boolean Craftable { get; set; }
     public string Label { get; set; }
@@ -58,6 +59,7 @@ public class Recipe
         Effects = new Dictionary<string, int>();
         AlternativeRecipes = new List<RecipeAlternative>();
         SlotSpecifications = new List<SlotSpecification>();
+        Aspects=new AspectsDictionary();
     }
 
 

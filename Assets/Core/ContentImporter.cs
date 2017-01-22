@@ -267,6 +267,25 @@ public class ContentImporter
             }
             /////////////////////////////////////////////
 
+            //ASPECTS
+            try
+            {
+                Hashtable htAspects = htEachRecipe.GetHashtable(NoonConstants.KASPECTS);
+                if (htAspects != null)
+                {
+                    foreach (string k in htAspects.Keys)
+                    {
+                        LogIfNonexistentElementId(k, r.Id, "(aspects)");
+                        r.Aspects.Add(k, Convert.ToInt32(htAspects[k]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing aspects for recipe '" + r.Id + "' - " + e.Message);
+            }
+            /////////////////////////////////////////////
+
 
             //EFFECTS
             try
