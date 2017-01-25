@@ -180,13 +180,26 @@ namespace Assets.CS.TabletopUI
             canvasGroup.blocksRaycasts = true;
 		
             if (DraggableToken.resetToStartPos) {
-                RectTransform.position = startPosition;
-                RectTransform.SetParent(startParent);
-                RectTransform.SetSiblingIndex(startSiblingIndex);
+                returnToStartPosition();
             }
 		
             if (onChangeDragState != null)
                 onChangeDragState(false);
+        }
+
+        private void returnToStartPosition()
+        {
+            if(startParent == null)
+            {
+                //newly created token! If we try to set it to startposition, it'll disappear into strange places
+                ReturnToTabletop(null);
+            }
+            else
+            { 
+            RectTransform.position = startPosition;
+            RectTransform.SetParent(startParent);
+            RectTransform.SetSiblingIndex(startSiblingIndex);
+            }
         }
 
         public abstract void OnDrop(PointerEventData eventData);
