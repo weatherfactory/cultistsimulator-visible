@@ -1,5 +1,17 @@
  {"recipes":
  [
+  	{
+        id: "recruitacquaintance",
+        label: "Recruit an Acquaintance",
+        actionId: "talk",
+        requirements: {society: 1,mystique: 1,mortal: 1},
+        effects: {mystique:-1},
+		aspects: {recruiting: 1},
+        startdescription: "--Recruit an Acquaintance",
+        description: "Recruited!",
+        warmup: 30,
+        craftable: true
+    },
  	{
         id: "begincultfoundation",
         label: "Found a Society",
@@ -18,7 +30,15 @@
         id: "cultfoundation",
         label: "Choose Founding Principles",
 		alternativerecipes:
-		[{id: "cultfoundationgrail", chance:100}],
+		[{id: "cultfoundationedge", chance:100},
+		{id: "cultfoundationforge", chance:100},
+		{id: "cultfoundationgrail", chance:100},
+		{id: "cultfoundationheart", chance:100},
+		{id: "cultfoundationknock", chance:100},
+		{id: "cultfoundationlantern", chance:100},
+		{id: "cultfoundationmoth", chance:100},
+		{id: "cultfoundationsecrethistories", chance:100},
+		{id: "cultfoundationwinter", chance:100}],
         actionId: "x",
         requirements: {},
         effects: {},
