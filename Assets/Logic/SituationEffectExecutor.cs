@@ -12,6 +12,7 @@ namespace Assets.Logic
         public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
         {
             var aspectsPresent = stacksManager.GetTotalAspects();
+            aspectsPresent.CombineAspects(command.Recipe.Aspects);
 
             foreach (var stack in stacksManager.GetStacks())
             {

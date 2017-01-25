@@ -4,50 +4,50 @@
         id: "dorothy_a",
             label: "Dorothy, an acquaintance",
             aspects:
-            {},
+            {mortal: 1},
             description: "--",
-			xtriggers: {recruit: dorothy_r}
+			xtriggers: {recruiting: dorothy_r}
         },
 				 {
         id: "enid_a",
             label: "Enid, an acquaintance",
             aspects:
-            {},
+            {mortal: 1},
             description: "--"
         },
 				 {
         id: "rose_a",
             label: "Rose, an acquaintance",
             aspects:
-            {},
+            {mortal: 1},
             description: "--"
         },
 				 {
         id: "leo_a",
             label: "Leo, an acquaintance",
             aspects:
-            {},
+            {mortal: 1},
             description: "--"
         },
 				 {
         id: "Neville_a",
             label: "Neville, an acquaintance",
             aspects:
-            {},
+            {mortal: 1},
             description: "--"
         },
 				 {
         id: "victor_a",
             label: "Victor, an acquaintance",
             aspects:
-            {},
+            {mortal: 1},
             description: "--"
         },
 						 {
         id: "dorothy_r",
             label: "Dorothy, a believer",
             aspects:
-            {},
+            {mortal: 1, follower: 1},
             description: "--"
         }
 ]

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using TMPro;
 using UnityEngine.EventSystems;
@@ -59,7 +60,7 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
 
-        Registry.Retrieve<Notifier>().ShowElementDetails(aspect);
+        Registry.Retrieve<INotifier>().ShowElementDetails(aspect);
     
 }
 

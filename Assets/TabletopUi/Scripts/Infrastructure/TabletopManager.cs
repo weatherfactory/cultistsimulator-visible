@@ -84,7 +84,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<IDice>(new Dice());
             registry.Register<TabletopManager>(this);
             registry.Register<TabletopObjectBuilder>(tabletopObjectBuilder);
-            registry.Register<Notifier>(notifier);
+            registry.Register<INotifier>(notifier);
             registry.Register<Character>(new Character());
 
 

@@ -222,7 +222,7 @@ namespace Assets.CS.TabletopUI
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Registry.Retrieve<Notifier>().ShowSlotDetails(GoverningSlotSpecification);
+            Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification);
         }
     }
 }

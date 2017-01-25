@@ -85,12 +85,8 @@
         {
             id: "lantern",
             label: "Lantern",
-			description: "On the borders of our dreams we find the Mansus, where the Watchman walks the corridors. Light goes before him and shadow behind. He must not see you. [Lantern is the principle of Dreams and the Mansus.]",
-            isAspect: true,
-            triggers:
-            {
-                hersaultnightmares: 10
-            }
+			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the Mansus, and the light above it.]",
+            isAspect: true
         },
         {
             id: "location",
@@ -115,10 +111,23 @@
 			description: "Time, peace and memory might restore me."
             isAspect: true
         },
-						    {
+ {
             id: "obsession",
             label: "Obsession",
 			description: "Time, peace and memory might restore me."
+            isAspect: true
+        },
+		 {
+            id: "recruiting",
+            label: "Recruiting",
+			description: "To see the light, one cannot be blind; but sometimes, it's the light that blinds us."
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+		{
+            id: "mortal",
+            label: "Mortal",
+			description: "'The long habit of living indisposeth us for dying.' - Thomas Browne"
             isAspect: true
         }
 ]

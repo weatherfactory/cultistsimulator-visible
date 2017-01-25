@@ -9,7 +9,8 @@ using UnityEngine;
 namespace Assets.CS.TabletopUI
 {
 
-    public class Notifier : MonoBehaviour {
+    public class Notifier : MonoBehaviour, INotifier
+    {
         [SerializeField]
         private Transform windowHolderFixed;
         [SerializeField]
@@ -19,6 +20,10 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         private TabletopImageBurner tabletopBurner;
 
+        public void DebugLog(string text)
+        {
+            Debug.Log(text);
+        }
         public void PushTextToLog(string text) {
             notificationLog.AddText(text);
         }

@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI
         // Draggables all drag on a specifc height and have a specific "default height"
 
         public bool rotateOnDrag = true;
-        protected Notifier notifier;
+        protected INotifier notifier;
         protected ITokenContainer container;
  
 
@@ -66,7 +66,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void SubscribeNotifier(Notifier n)
+        public void SubscribeNotifier(INotifier n)
         {
             notifier = n;
         }

@@ -242,7 +242,7 @@ namespace Assets.TabletopUi
         private void BurnImageHere(string burnImage)
         {
 
-                Registry.Retrieve<Notifier>()
+                Registry.Retrieve<INotifier>()
                     .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
                         TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }

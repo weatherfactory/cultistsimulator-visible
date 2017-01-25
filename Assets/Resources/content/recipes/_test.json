@@ -6,7 +6,8 @@
         actionId: "work",
         requirements: {reason:100},
         effects: {shilling: 10},
-		slots: {recruit: {}}
+		slots: {r: {}},
+		aspects: {recruiting: 1},
 		startdescription: ".",
         description: "...",
         warmup: 10,

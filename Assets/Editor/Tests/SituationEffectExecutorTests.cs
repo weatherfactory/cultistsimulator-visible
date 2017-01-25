@@ -15,11 +15,15 @@ namespace Assets.Editor.Tests
     {
         private ISituationEffectCommand mockCommand;
         private IElementStacksManager mockStacksManager;
+        private Recipe recipe;
         [SetUp]
         public void Setup()
         {
              mockCommand = Substitute.For<ISituationEffectCommand>();
             mockStacksManager=Substitute.For<IElementStacksManager>();
+            recipe = TestObjectGenerator.GenerateRecipe(1);
+            mockCommand.Recipe.ReturnsForAnyArgs(recipe);
+
         }
 
         [Test]
@@ -32,7 +36,7 @@ namespace Assets.Editor.Tests
             mockStacksManager.Received().ModifyElementQuantity("e",1);
         }
         [Test]
-        public void XTrigger_IsTriggeredByElementEffect()
+        public void XTrigger_IsTriggeredByElementAspect()
         {
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
             var estack1 = TestObjectGenerator.CreateElementCard("1",1);
@@ -42,6 +46,26 @@ namespace Assets.Editor.Tests
 
             var ex = new SituationEffectExecutor();
 
+
+            ex.RunEffects(mockCommand, mockStacksManager);
+            mockStacksManager.Received().ModifyElementQuantity("1", -1);
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1);
+        }
+
+        [Test]
+        public void XTrigger_IsTriggeredByRecipeAspect()
+        {
+            
+            recipe.Aspects.Add("triggeraspect", 1);
+            var estack1 = TestObjectGenerator.CreateElementCard("1", 1);
+            estack1.Element.XTriggers.Add("triggeraspect", "alteredelement");
+
+            mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
+            mockStacksManager.GetStacks().Returns(new List<IElementStack> { estack1 });
+            mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary ());
+        
+
+            var ex = new SituationEffectExecutor();
 
             ex.RunEffects(mockCommand, mockStacksManager);
             mockStacksManager.Received().ModifyElementQuantity("1", -1);

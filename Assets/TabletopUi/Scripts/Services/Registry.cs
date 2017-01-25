@@ -8,20 +8,13 @@ using UnityEngine.Assertions;
 
 namespace Assets.CS.TabletopUI
 {
-    public interface IRegisterable
-    {
+    //public interface IRegisterable
+    //{
         
-    }
+    //}
 
     public class Registry
     {
-        private static ICompendium m_compendium;
-        private static TabletopManager m_tabletopmanager;
-        private static TabletopObjectBuilder m_tabletopObjectBuilder;
-        private static IDice m_dice;
-        private static IDraggableHolder m_draggableHolder;
-        private static Notifier m_notifier;
-
         private static Dictionary<Type, System.Object> registered=new Dictionary<Type, object>();
 
         public static T Retrieve<T>() where T: class
