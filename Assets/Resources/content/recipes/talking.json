@@ -4,14 +4,36 @@
         id: "findacquaintanceopentalk",
         label: "An Acquaintance",
         actionId: "talk",
-        requirements: {},
-        effects: {dorothy_a: 1},
-        startdescription: "--acquaintance?",
-        description: "--acquaintance!",
-        warmup: 10,
+		     alternativerecipes:
+		[{id: "randomacquaintancerouter", chance:100}],
+        startdescription: "Someone has struck up a conversation with you.",
+        description: ".",
+        warmup: 5,
         craftable: false,
 		maxexecutions: 1,
-		comments: "this runs once, and is how Talk is opened"
-    }	
+		comments: "this runs once as an additional, and is how Talk is opened"
+    },
+		   {
+        id: "randomacquaintancerouter",
+        label: "An Acquaintance",
+        actionId: "talk",
+     alternativerecipes:
+		[{id: "meetdorothy", chance:100,additional: true}],
+        startdescription: "",
+        description: "",
+        warmup: 0,
+        craftable: false,
+
+    },
+			   {
+        id: "meetdorothy",
+        label: "This is Dorothy",
+        actionId: "talk",
+		effects: {dorothy_a: 1}
+        startdescription: "",
+        description: "--Dorothy!",
+        warmup: 0,
+        craftable: false
+    },
 ]
 }
