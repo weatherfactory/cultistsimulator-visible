@@ -4,13 +4,12 @@
         id: "testxtrigger",
         label: "Testing xtrigger",
         actionId: "work",
-        requirements: {reason:100},
+        requirements: {mortal:100},
         effects: {shilling: 10},
-		slots: {r: {}},
 		aspects: {recruiting: 1},
 		startdescription: ".",
         description: "...",
-        warmup: 10,
+        warmup: 1,
         craftable: true
 	}
 ]
