@@ -4,9 +4,10 @@
         id: "testxtrigger",
         label: "Testing xtrigger",
         actionId: "work",
-        requirements: {mortal:1000},
+        requirements: {shilling:1},
         effects: {shilling: 10},
-		aspects: {recruiting: 1},
+		alternativerecipes:
+		[{id: "randomacquaintancerouter", chance:100,additional:true}],
 		startdescription: ".",
         description: "...",
         warmup: 1,

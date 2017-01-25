@@ -5,47 +5,87 @@
             label: "Dorothy, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "--",
-			xtriggers: {recruiting: dorothy_r}
+            description: "Dorothy is an enthusiastic sort.",
+			xtriggers: {recruiting: dorothy_b}
         },
 				 {
         id: "enid_a",
             label: "Enid, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "--"
+            description: "Enid speaks softly and blinks little.",
+			xtriggers: {recruiting: enid_b}
         },
 				 {
         id: "rose_a",
             label: "Rose, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "--"
+            description: "Rose is a sly miss.",
+			xtriggers: {recruiting: rose_b}
         },
 				 {
         id: "leo_a",
             label: "Leo, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "--"
+            description: "Leo is an earnest sort.",
+			xtriggers: {recruiting:leo_b}
         },
 				 {
-        id: "Neville_a",
+        id: "neville_a",
             label: "Neville, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "--"
+            description: "Neville pauses before he speaks, and flinches easily.",
+			xtriggers: {recruiting: neville_b}
         },
 				 {
         id: "victor_a",
             label: "Victor, an acquaintance",
             aspects:
             {mortal: 1},
+            description: "Victor is a sly fellow.",
+			xtriggers: {recruiting: victor_b}
+        },
+						 {
+        id: "dorothy_b",
+            label: "Dorothy, a believer",
+            aspects:
+            {mortal: 1, follower: 1},
             description: "--"
         },
 						 {
-        id: "dorothy_r",
-            label: "Dorothy, a believer",
+        id: "enid_b",
+            label: "Enid, a believer",
+            aspects:
+            {mortal: 1, follower: 1},
+            description: "--"
+        },
+				 {
+        id: "rose_b",
+            label: "Rose, a believer",
+            aspects:
+            {mortal: 1, follower: 1},
+            description: "--"
+        },
+				 {
+        id: "leo_b",
+            label: "Leo, a believer",
+            aspects:
+            {mortal: 1, follower: 1},
+            description: "--"
+        },
+				 {
+        id: "neville_b",
+            label: "Neville, a believer",
+            aspects:
+            {mortal: 1, follower: 1},
+            description: "--"
+        },
+				 {
+        id: "victor_b",
+            label: "Victor, a believer",
             aspects:
             {mortal: 1, follower: 1},
             description: "--"
