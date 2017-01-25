@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.Logic;
 using NSubstitute;
 using NUnit.Framework;
@@ -23,6 +24,10 @@ namespace Assets.Editor.Tests
             mockStacksManager=Substitute.For<IElementStacksManager>();
             recipe = TestObjectGenerator.GenerateRecipe(1);
             mockCommand.Recipe.ReturnsForAnyArgs(recipe);
+
+            var mockNotifier = Substitute.For<INotifier>();
+            var registry=new Registry();
+            registry.Register<INotifier>(mockNotifier);
 
         }
 
