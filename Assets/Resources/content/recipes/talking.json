@@ -1,0 +1,17 @@
+{
+"recipes": [
+	   {
+        id: "findacquaintanceopentalk",
+        label: "An Acquaintance",
+        actionId: "talk",
+        requirements: {},
+        effects: {dorothy_a: 1},
+        startdescription: "--acquaintance?",
+        description: "--acquaintance!",
+        warmup: 10,
+        craftable: false,
+		maxexecutions: 1,
+		comments: "this runs once, and is how Talk is opened"
+    }	
+]
+}

@@ -36,7 +36,9 @@ namespace Assets.Editor.Tests
         {
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>
             { {"e", 1}});
-            var ex=new SituationEffectExecutor();
+            mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary());
+
+            var ex =new SituationEffectExecutor();
             ex.RunEffects(mockCommand, mockStacksManager);
             mockStacksManager.Received().ModifyElementQuantity("e",1);
         }

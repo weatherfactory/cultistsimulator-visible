@@ -19,7 +19,8 @@
 	label: "Junior Work at Glover & Glover",
 	  requirements: {gloverandgloverjuniorjob: 1},
 	          alternativerecipes:
-		[{id: "gloverandglover_diligence", chance:100}],
+		[{id: "findacquaintanceopentalk", chance:100,additional: true},
+		{id: "gloverandglover_diligence", chance:100}],
 		effects: { shilling: 2},
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",

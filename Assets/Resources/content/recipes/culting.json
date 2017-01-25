@@ -1,0 +1,114 @@
+ {"recipes":
+ [
+ 	{
+        id: "begincultfoundation",
+        label: "Found a Society",
+		alternativerecipes:
+		[{id: "cultfoundation", chance:100, additional: true}],
+        actionId: "work",
+        requirements: {mystique: 1},
+        effects: {},
+        startdescription: "--Found a society to attract like-minded ",
+        description: "--",
+        warmup: 10,
+        craftable: true,
+		maxexecutions: 1
+    },
+	 	{
+        id: "cultfoundation",
+        label: "Choose Founding Principles",
+		alternativerecipes:
+		[{id: "cultfoundationgrail", chance:100}],
+        actionId: "x",
+        requirements: {},
+        effects: {},
+		slots: {"Doctrine": {required: {lore: 1},description: "My society will focus on one principle."}}
+        startdescription: "--What order?",
+        description: "--haven't decided",
+        warmup: 10,
+        craftable: false,
+		loop: "cultfoundation"
+    },
+			{
+	id: "cultfoundationedge",
+	label: "Establish the ",
+	actionId: "x",
+	requirements: {edge: 1},
+	effects: {cultedge_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	},
+			{
+	id: "cultfoundationforge",
+	label: "Establish the ",
+	actionId: "x",
+	requirements: {forge: 1},
+	effects: {cultforge_1: 1},
+	startdescription: "--start , which is dedicated to...",
+	description: "-- created!"
+	},
+	{
+	id: "cultfoundationgrail",
+	label: "Establish the Order of the Carmine Cup",
+	actionId: "x",
+	requirements: {grail: 1},
+	effects: {cultgrail_1: 1},
+	startdescription: "--start grail order creation!",
+	description: "--grail order created!"
+	},
+		{
+	id: "cultfoundationheart",
+	label: "Establish the ",
+	actionId: "x",
+	requirements: {heart: 1},
+	effects: {cultheart_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	},
+			{
+	id: "cultfoundationknock",
+	label: "Establish the Society of Midnight ",
+	actionId: "x",
+	requirements: {knock: 1},
+	effects: {cultknock_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	},
+				{
+	id: "cultfoundationlantern",
+	label: "Establish the Mirror of Glory ",
+	actionId: "x",
+	requirements: {lantern: 1},
+	effects: {cultlantern_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	},
+					{
+	id: "cultfoundationmoth",
+	label: "Establish the Wildwood Club",
+	actionId: "x",
+	requirements: {moth: 1},
+	effects: {cultmoth_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	},
+						{
+	id: "cultfoundationsecrethistories",
+	label: "Establish the  ",
+	actionId: "x",
+	requirements: {secrethistories: 1},
+	effects: {cultsecrethistories_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	},
+							{
+	id: "cultfoundationwinter",
+	label: "Establish the  ",
+	actionId: "x",
+	requirements: {winter: 1},
+	effects: {cultwinter_1: 1},
+	startdescription: "--start ",
+	description: "-- created!"
+	}
+]
+}
