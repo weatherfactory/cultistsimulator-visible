@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -138,6 +140,7 @@
     <Compile Include="Assets\Editor\Tests\ElementStacksManagerTests.cs" />
     <Compile Include="Assets\Editor\Tests\RecipeConductorTests.cs" />
     <Compile Include="Assets\Editor\Tests\SituationControllerTests.cs" />
+    <Compile Include="Assets\Editor\Tests\SituationEffectExecutorTests.cs" />
     <Compile Include="Assets\Editor\Tests\SituationStateMachineTests.cs" />
     <Compile Include="Assets\Editor\Tests\Support\TestObjectGenerator.cs" />
     <Compile Include="Assets\Editor\Tests\UtilityMethodTests.cs" />

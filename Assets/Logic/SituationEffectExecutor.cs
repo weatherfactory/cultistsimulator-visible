@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
+using UnityEngine;
 
 namespace Assets.Logic
 {
@@ -20,8 +21,10 @@ namespace Assets.Logic
                    {
                        var existingQuantity = stack.Quantity;
 
-                       stacksManager.ModifyElementQuantity(stack.Id, -existingQuantity);
+                      stacksManager.ModifyElementQuantity(stack.Id, -existingQuantity);
                       stacksManager.ModifyElementQuantity(xTriggers[k],existingQuantity);
+
+                        Debug.Log("xtrigger aspect " + k + " caused " + stack.Id + " to transform into " + xTriggers[k]);
                    }
             }
             foreach (var kvp in command.GetElementChanges())

@@ -1,0 +1,16 @@
+ {"recipes": [
+
+	{
+        id: "testxtrigger",
+        label: "Testing xtrigger",
+        actionId: "work",
+        requirements: {reason:100},
+        effects: {shilling: 10},
+		slots: {recruit: {}}
+		startdescription: ".",
+        description: "...",
+        warmup: 10,
+        craftable: true
+	}
+]
+}

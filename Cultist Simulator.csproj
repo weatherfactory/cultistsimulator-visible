@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -75,7 +77,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Core\Commands\EffectCommand.cs" />
     <Compile Include="Assets\Core\Commands\ElementQuantitySpecification.cs" />
     <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
     <Compile Include="Assets\Core\Commands\Notification.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
-    <Compile Include="Assets\Core\Interfaces\IEffectCommand.cs" />
     <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
     <Compile Include="Assets\Core\Interfaces\INotification.cs" />
     <Compile Include="Assets\Core\Interfaces\ISituationEffectCommand.cs" />
@@ -110,6 +110,7 @@
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
     <Compile Include="Assets\Logic\AspectMatchFilter.cs" />
     <Compile Include="Assets\Logic\RecipeConductor.cs" />
+    <Compile Include="Assets\Logic\SituationEffectExecutor.cs" />
     <Compile Include="Assets\SimpleJson\Demo\DemoCtrl.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\CollectionExtensions.cs" />
     <Compile Include="Assets\SimpleJson\OrbCreationExtensions\ColorExtensions.cs" />
