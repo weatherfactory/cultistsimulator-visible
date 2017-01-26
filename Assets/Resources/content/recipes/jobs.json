@@ -165,7 +165,7 @@
         label: "I've sold a painting!",
         actionId: "work",
         requirements: {},
-        effects: {shilling: 2, contentment:1},
+        effects: {shilling: 2, contentment:1, mystique: 1},
 		alternativerecipes:
 		[{id: "findacquaintanceopentalk", chance:100,additional: true}],
         startdescription: ".",

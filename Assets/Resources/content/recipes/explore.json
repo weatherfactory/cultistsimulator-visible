@@ -23,5 +23,29 @@
         warmup: 30,
         craftable: true
     },
+			{
+        id: "explorereason",
+        label: "Explore possibilities",
+        actionId: "explore",
+        requirements: {reason:1},
+		effects: {fleetingmemory:1},
+		alternativerecipes:	[{id: "inspiremystique",chance:30}],
+        startdescription: "What might I become, if I do what I desire?",
+        description: "Each dawn arrives like a fire, and each night falls like a stone. My journal entries grow briefer.",
+        warmup: 60,
+        craftable: true
+    },
+		{
+        id: "explorepassion",
+        label: "Explore my instincts",
+        actionId: "explore",
+        requirements: {passion:1},
+		alternativerecipes:	[{id: "inspiremystique",chance:30},
+		{id: "inspirenotoriety",chance:100}],
+        startdescription: "What might I become, if I do what I desire?",
+        description: "",
+        warmup: 60,
+        craftable: true
+    },
 ]
 }
