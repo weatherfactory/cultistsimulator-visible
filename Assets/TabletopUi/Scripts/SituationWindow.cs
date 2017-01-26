@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] StartingSlotsContainer startingSlotsContainer;
         [SerializeField] OngoingSlotsContainer ongoingSlotsContainer;
         [SerializeField] SituationStorage situationStorage;
-        [SerializeField] Results outputContainer;
+        [SerializeField] Results results;
        
 
         [SerializeField] AspectsDisplay aspectsDisplay;
@@ -70,7 +70,10 @@ namespace Assets.CS.TabletopUI
         public void Show()
         {
             canvasGroupFader.Show();
-
+            //Hack: I haven't identified the problem that sometimes causes windows to get stuck in the complete
+            //but empty state. This should force it out of that state if necessary.
+            if(results.isActiveAndEnabled && !results.GetCurrentOutputs().Any())
+                SetStarting();
         }
 
         public void Hide()
@@ -84,7 +87,7 @@ namespace Assets.CS.TabletopUI
 
             startingSlotsContainer.gameObject.SetActive(true);
             ongoingSlotsContainer.gameObject.SetActive(false);
-            outputContainer.gameObject.SetActive(false);
+            results.gameObject.SetActive(false);
             
             title.text = Verb.Label;
             description.text = Verb.Description;
@@ -102,7 +105,7 @@ namespace Assets.CS.TabletopUI
 
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(true);
-            outputContainer.gameObject.SetActive(false);
+            results.gameObject.SetActive(false);
 
             ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
            
@@ -118,11 +121,10 @@ namespace Assets.CS.TabletopUI
         {
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(false);
-            outputContainer.gameObject.SetActive(true);
+            results.gameObject.SetActive(true);
 
             aspectsDisplay.ClearAspects();
             JiggleLayoutGroup();
-
 
         }
 
@@ -225,7 +227,7 @@ namespace Assets.CS.TabletopUI
 
         public IEnumerable<ISituationOutput> GetCurrentOutputs()
         {
-            return outputContainer.GetCurrentOutputs();
+            return results.GetCurrentOutputs();
         }
 
         public IRecipeSlot GetUnfilledGreedySlot()
@@ -251,7 +253,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void SetOutput(IEnumerable<IElementStack> stacks,INotification notification) {
-            outputContainer.SetOutput(stacks,notification);
+            results.SetOutput(stacks,notification);
         }
 
 
@@ -278,7 +280,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void AllOutputsGone() {
-            outputContainer.gameObject.SetActive(false);
+            results.gameObject.SetActive(false);
             situationController.AllOutputsGone();
         }
 
