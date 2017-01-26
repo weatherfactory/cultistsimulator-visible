@@ -170,9 +170,7 @@ namespace Assets.TabletopUi
 
             if (command.AsNewSituation)
             {
-
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
-
 				SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, situationToken as DraggableToken);
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
             }

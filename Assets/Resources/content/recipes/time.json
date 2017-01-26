@@ -10,9 +10,10 @@
         },
         alternativerecipes:
 		[{id: "legacyarrives", chance:100, additional: true},
-		{id: "sickness", chance:10, additional: true},
-		{id: "pleasantday", chance:10, additional: true},
-		{id: "lawenforcement", chance:0, additional: true},
+		{id: "sickness", chance:7, additional: true},
+		{id: "pleasantday", chance:7, additional: true},
+		{id: "suspicion", chance:7, additional: true},
+		{id: "inspiremystique", chance:7, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
         startdescription: "Time, the sundial's shadow, passes. I have needs to meet.",
         description: ".",
@@ -105,14 +106,27 @@
 		comment: "This makes the Study action available."
     },
 	    {
-        id: "lawenforcement",
-        label: "Law enforcement",
+        id: "suspicion",
+        label: "The Attention of the Authorities",
         actionId: "x",
-        requirements: {shilling: 1000},
-        effects: {
-        },
-        startdescription: "Potential detective!",
-        description: "A detective might pop up.",
+        requirements: {},
+        effects: {notoriety: 1},
+		slots: {suspicion: {required: {notoriety: 1}, greedy: true}},
+		alternativerecipes: [{id: "investigation",chance: 100}]
+        startdescription: "Rumour squats on rooftops and flutters in gutters.",
+        description: "They questioned me. I might be innocent, but a certain suspicion clings.",
+        warmup: 60,
+        craftable: false
+    },
+		    {
+        id: "investigation",
+        label: "An Investigation",
+        actionId: "x",
+        requirements: {},
+        effects: {notoriety: 1},
+		slots: {suspicion: {required: {shilling: 1,follower:1}, greedy: true}},
+        startdescription: "inv start",
+        description: "inv end",
         warmup: 60,
         craftable: false
     }
