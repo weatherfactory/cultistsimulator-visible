@@ -1,5 +1,42 @@
 {
 "recipes": [
+{id: "speaktosomeone",
+label:"Discuss occult business",
+actionId: "talk",
+requirements: {mortal: 1},
+alternativerecipes:[{id: "inspiremystique",chance:70},
+{id: "inspirenotoriety",chance:100}
+],
+startdescription: "Significant conversations in a smoky meeting-room.",
+description: "",
+warmup: 60,
+craftable: true
+},
+{id: "speakpublicly",
+label:"Speak of esoteric matters",
+actionId: "talk",
+requirements: {lore: 1},
+alternativerecipes:[{id: "inspiremystique",chance:70},
+{id: "inspirenotoriety",chance:70},
+{id: "randomacquaintancerouter",chance:100}
+],
+startdescription: "I might make a useful contact or improve my reputation; or I might draw the wrong kind of attention.",
+description: "",
+warmup: 60,
+craftable: true
+},
+{id: "inspiremystique",
+label: "Inspiring awe",
+effects: {mystique: 1},
+description: "Parted lips; glittering eyes.",
+warmup: 10,
+craftable: false},
+{id: "inspirenotoriety",
+label: "Inspiring concern",
+effects: {notoriety: 1},
+description: "Averted faces; widened eyes.",
+warmup: 10,
+craftable: false},
 	   {
         id: "findacquaintanceopentalk",
         label: "An Acquaintance",
@@ -13,7 +50,7 @@
 		maxexecutions: 1,
 		comments: "this runs once as an additional, and is how Talk is opened"
     },
-		   {
+	{
         id: "randomacquaintancerouter",
         label: "An Acquaintance",
         actionId: "x",
