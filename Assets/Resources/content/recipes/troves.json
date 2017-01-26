@@ -21,6 +21,19 @@
         warmup: 0,
         craftable: false
     },
+		{
+        id: "trovebookuncommon",
+        label: "A Trove of Uncommon Books",
+        actionId: "trovebookuncommon",
+		requirements: {},
+        effects: {},
+		startdescription: "What might I find?",
+        description: "[Book trove end desc: shouldn't appear.]",
+		alternativerecipes:	[{id: "findgeminiad",chance:100}],
+        warmup: 0,
+        craftable: false,
+		comments: "just the one for alpha"
+    },
 	{
         id: "finddehoris1latin",
         label: "The first volume of the 'De Horis'",
@@ -89,6 +102,18 @@
         effects: {orchidtransfigurations1latin: 1},
 		startdescription: "A notable find -",
         description: "A sixteenth-century alchemical fever-dream, frequently banned for the disturbing allure of its illustrations.",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+			{
+        id: "findgeminiad",
+        label: "The 'Geminiad'",
+        actionId: "find",
+		requirements: {},
+        effects: {geminiadfucine: 1},
+		startdescription: "A startling find -",
+        description: "A manuscript of unusual antiquity, its cover decorated with fragments of coral.",
         warmup: 0,
 		maxexecutions: 1,
         craftable: false

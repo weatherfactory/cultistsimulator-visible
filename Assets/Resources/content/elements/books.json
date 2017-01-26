@@ -71,6 +71,21 @@
 			},
             description: "An original edition of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is in the original Latin."
         },
+						 {
+        id: "geminiadfucine",
+            label: "The Geminiad [Fucine]",
+            aspects:
+            {knock: 1,tool:1},
+			slots: {
+			"Translate":
+				{
+				required: {scholarfucine:1},
+				forbidden: {}
+				}
+			},
+            description: "A fragile, crackling manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. It might be as old as the sixth century, but
+			the language is much older - Fucine, called the witches' tongue. The page-edges have been known to cut like razors. [NOTE: Fucine is not available in the alpha, although the book itself has power.]"
+        },
 		 {
         id: "orchidtransfigurations1",
             label: "The Orchid Transfigurations: a Feast",

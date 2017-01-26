@@ -6,7 +6,7 @@
         requirements: {},
 		effects: {erudition: 1},
         startdescription: "A Wider World",
-        description: "[This is the Explore action - most often used with locations.]",
+        description: "[This is the Explore action - most often used with locations, or with followers to find those locations.]",
         warmup: 0,
         maxexecutions: 1,
 		craftable: false
@@ -46,6 +46,45 @@
         description: "",
         warmup: 60,
         craftable: true
+    },
+	{
+        id: "explorefollower",
+        label: "Send a follower to explore the city",
+        actionId: "explore",
+        requirements: {follower:1},
+		effects: {locationprivatecollection: 1},
+	alternativerecipes:[{id: "inspirenotoriety",chance:30}],
+        startdescription: "Buried knowledge, sealed tombs, allies, rivals, lesions in the world's skin.",
+        description: "Mr Strathcoyne, we hear, has materials of use to us. But Mr Strathcoyne is not co-operative. [Note: in the alpha, this is the only thing you'll find with this action.]",
+        warmup: 60,
+        maxexecutions: 1,
+		comments: "alpha fudge: this should actually be an unlimited-execution trove.",
+		craftable: true
+    },
+		{
+        id: "exploreprivatecollection_burgle",
+        label: "Burgle Strathcoyne's book collection",
+        actionId: "explore",
+        requirements: {follower:1,edge:1,locationprivatecollection:1},
+		effects: {locationprivatecollection:-1,notoriety: 1},
+	alternativerecipes:[{id: "explore_burgle_failed",chance:30},
+	{id: "suspicion",chance:100,additional:true},
+	{id: "trovebookuncommon", chance: 100}],
+        startdescription: "started it",
+        description: " got it",
+        warmup: 30,
+		craftable: true
+    },
+			{
+        id: "explore_burgle_failed",
+        label: "The burglary failed!",
+        actionId: "explore",
+		effects: {notoriety: 1},
+		alternativerecipes:[{id: "suspicion",chance:100,additional:true}],
+        startdescription: "*",
+        description: "failed burglary! authorities worried",
+        warmup: 30,
+		craftable: false
     },
 ]
 }

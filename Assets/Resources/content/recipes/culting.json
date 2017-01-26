@@ -7,8 +7,8 @@
         requirements: {society: 1,reputation: 1,mortal: 1},
         effects: {reputation:-1},
 		aspects: {recruiting: 1},
-        startdescription: "--Recruit an Acquaintance",
-        description: "Recruited!",
+        startdescription: "This one is ready.",
+        description: "The oaths are resonant as thunder in a church. I know it well. I wrote them myself.",
         warmup: 30,
         craftable: true,
 		burnimage: freemasons
@@ -21,8 +21,8 @@
         actionId: "work",
         requirements: {reputation: 1},
         effects: {},
-        startdescription: "--Found a society to attract like-minded ",
-        description: "--",
+        startdescription: "I need assistants, companions - followers. ",
+        description: "Tradition and compulsion - old, new, or both together.",
         warmup: 10,
         craftable: true,
 		maxexecutions: 1

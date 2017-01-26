@@ -20,6 +20,19 @@
         description: "I've translated and annotated my copy. Now I can study it.",
         warmup: 60,
         craftable: true
-    }
+    },
+	{
+        id: "translateorchidtransfigurations1latin",
+        label: "Translate this volume of the Orchid Transfigurations ('Feast')",
+        actionId: "study",
+        requirements: {geminiadfucine: 1,scholarfucine: 1},
+        effects: {fragmentwitchandsister: 1, glimmering:1},
+		startdescription: "The diagrams are as significant as the text. A full translation would be impractical.",
+        description: "'The Witch-and-Sister cannot be separated; they cannot be touched. The Sister-and-Witch are pearl.'",
+        warmup: 120,
+        craftable: true,
+		maxexecutions:1,
+		comments: "Books of power work a little differently from standard texts - we don't want to destroy them. We might also consider multiple passes."
+    },
 ]
 }
