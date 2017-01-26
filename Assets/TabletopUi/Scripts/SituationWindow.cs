@@ -176,7 +176,7 @@ namespace Assets.CS.TabletopUI
             else
             {
                 title.text = "";
-                description.text = "[If I experiment further, I may find another combination.]";
+                description.text = "[If I experiment further, I may find another combination. There will be a great many more combinations in the final game.]";
                 button.gameObject.SetActive(false);
             }
         }

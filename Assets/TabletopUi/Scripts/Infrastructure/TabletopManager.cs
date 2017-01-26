@@ -117,7 +117,7 @@ namespace Assets.CS.TabletopUI
                 ArrangeTokenOnTable(token);
             }
 
-            var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("needs"));
+            var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"));
             BeginNewSituation(needsSituationCreationCommand);
         }
 
