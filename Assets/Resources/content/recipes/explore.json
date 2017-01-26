@@ -76,6 +76,20 @@
 		craftable: true
     },
 			{
+        id: "exploreprivatecollection_burgle_amateur",
+        label: "Burgle Strathcoyne's book collection",
+        actionId: "explore",
+        requirements: {follower:1,locationprivatecollection:1},
+		effects: {locationprivatecollection:-1,notoriety: 1,follower:-1},
+	alternativerecipes:[{id: "explore_burgle_failed",chance:70},
+	{id: "suspicion",chance:100,additional:true},
+	{id: "trovebookuncommon", chance: 100}],
+        startdescription: "started it - unlikely to succeed",
+        description: " failed! Lost follower!",
+        warmup: 30,
+		craftable: true
+    },
+			{
         id: "explore_burgle_failed",
         label: "The burglary failed!",
         actionId: "explore",
