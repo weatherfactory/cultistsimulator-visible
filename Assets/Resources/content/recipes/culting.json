@@ -43,8 +43,8 @@
         requirements: {},
         effects: {},
 		slots: {"Doctrine": {required: {lore: 1},description: "My society will focus on one principle."}}
-        startdescription: "--What order?",
-        description: "--haven't decided",
+        startdescription: "I will determine a name, a doctrine, an oath.",
+        description: "",
         warmup: 10,
         craftable: false,
 		loop: "cultfoundation"
@@ -55,8 +55,8 @@
 	actionId: "x",
 	requirements: {edge: 1},
 	effects: {cultedge_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the Hours of struggle and conquest. [In the alpha, however, all cults are effectively identical.]"
 	},
 			{
 	id: "cultfoundationforge",
@@ -64,8 +64,8 @@
 	actionId: "x",
 	requirements: {forge: 1},
 	effects: {cultforge_1: 1},
-	startdescription: "--start , which is dedicated to...",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the fire that changes and remakes. [In the alpha, however, all cults are effectively identical.]"
 	},
 	{
 	id: "cultfoundationgrail",
@@ -73,8 +73,8 @@
 	actionId: "x",
 	requirements: {grail: 1},
 	effects: {cultgrail_1: 1},
-	startdescription: "--start grail order creation!",
-	description: "--grail order created!"
+	startdescription: "",
+	description: "An occult society dedicated to the mysteries of birth, blood and appetite. [In the alpha, however, all cults are effectively identical.]"
 	},
 		{
 	id: "cultfoundationheart",
@@ -82,8 +82,8 @@
 	actionId: "x",
 	requirements: {heart: 1},
 	effects: {cultheart_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the drumbeat which can never end. [In the alpha, however, all cults are effectively identical.]"
 	},
 			{
 	id: "cultfoundationknock",
@@ -91,8 +91,8 @@
 	actionId: "x",
 	requirements: {knock: 1},
 	effects: {cultknock_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the Hour at night's heart, on which the world turns. [In the alpha, however, all cults are effectively identical.]"
 	},
 				{
 	id: "cultfoundationlantern",
@@ -100,8 +100,8 @@
 	actionId: "x",
 	requirements: {lantern: 1},
 	effects: {cultlantern_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place. [In the alpha, however, all cults are effectively identical.]"
 	},
 					{
 	id: "cultfoundationmoth",
@@ -109,8 +109,8 @@
 	actionId: "x",
 	requirements: {moth: 1},
 	effects: {cultmoth_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to chaos, and the unexpected Hours. [In the alpha, however, all cults are effectively identical.]"
 	},
 						{
 	id: "cultfoundationsecrethistories",
@@ -118,8 +118,8 @@
 	actionId: "x",
 	requirements: {secrethistories: 1},
 	effects: {cultsecrethistories_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the study of the thousand unknown histories. [In the alpha, however, all cults are effectively identical.]"
 	},
 							{
 	id: "cultfoundationwinter",
@@ -127,8 +127,8 @@
 	actionId: "x",
 	requirements: {winter: 1},
 	effects: {cultwinter_1: 1},
-	startdescription: "--start ",
-	description: "-- created!"
+	startdescription: "",
+	description: "An occult society dedicated to the Hour of the cold that ends. [In the alpha, however, all cults are effectively identical.]"
 	}
 ]
 }

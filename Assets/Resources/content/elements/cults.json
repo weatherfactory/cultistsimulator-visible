@@ -7,7 +7,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the Hours of struggle and conquest. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -18,7 +18,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the fire that changes and remakes. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -29,7 +29,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the mysteries of birth, blood and appetite. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -40,9 +40,9 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
-            description: "An occult society dedicated to the drumbeat which will not end. [In the alpha, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the drumbeat which can never end. [In the alpha, however, all cults are effectively identical.]"
         },
 		          {
         id: "cultknock_1",
@@ -51,7 +51,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the Hour at night's heart, on which the world turns. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -62,7 +62,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -73,7 +73,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to chaos, and the unexpected Hours. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -84,7 +84,7 @@
             {society:1},
 			slots: {
 			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Practice": {required: {reputation: 1},description: "What is our purpose here?"},
+			"Motive": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the study of the thousand unknown histories. [In the alpha, however, all cults are effectively identical.]"
         },
@@ -94,8 +94,8 @@
             aspects:
             {society:1},
 			slots: {
-			"Recruit": {required: {follower:1,},description: "This one may join us."},
-			"Practice": {reputation: {reputation: 1},description: "What is our purpose here?"},
+			"Recruit": {required: {follower:1,},description: "TA new recruit, or a hardened disciple."},
+			"Motive": {reputation: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the Hour of the cold that ends. [In the alpha, however, all cults are effectively identical.]"
         },
