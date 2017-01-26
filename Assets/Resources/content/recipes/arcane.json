@@ -4,7 +4,7 @@
         id: "conjurationpower",
         label: "The Key to My Heart",
         actionId: "work",
-        requirements: {ritual: 1, knock: 2, health:1,notionpower:1},
+        requirements: {ritual: 1, knock: 2, follower:1,notionpower:1},
 		alternativerecipes:[{id: "notionpowerpromotion",chance: 100, additional: true}],
         effects: {},
         startdescription: "I can use this rite to give an Hour entry to my body? Power comes with them like a scent. Of course... I don't know which Hour might come.",
@@ -20,7 +20,7 @@
         requirements: {ritual: 1,notionpower:1},
         effects: {fleetingmemory:1},
         startdescription: "Can I use this rite to give an Hour entry to my body? Power comes with them like a scent.",
-        description: "It didn't work. I need another invocation too - something to open the way. And I'll need to give of my blood.",
+        description: "It didn't work. I need another invocation too - something to open the way. And I require a willing sacrifice.",
         warmup: 30,
         craftable: true,
 		burnimage: "flammarion"

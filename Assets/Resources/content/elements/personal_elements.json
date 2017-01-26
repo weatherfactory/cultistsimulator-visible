@@ -84,8 +84,16 @@
             id: "mystique",
             label: "Mystique",
             aspects:
-            {},
-            description: "I have a certain reputation.",
+            {reputation: 1},
+            description: "They remember who I am.",
+	lifetime: 60
+        },
+							 {
+            id: "notoriety",
+            label: "Notoriety",
+            aspects:
+            {reputation: 1},
+            description: "They remember what I've done.",
 	lifetime: 60
         },
 		{
