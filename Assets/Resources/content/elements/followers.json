@@ -4,7 +4,7 @@
         id: "dorothy_a",
             label: "Dorothy, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,heart: 1},
             description: "Dorothy is an enthusiastic sort.",
 			xtriggers: {recruiting: dorothy_b}
         },
@@ -12,7 +12,7 @@
         id: "enid_a",
             label: "Enid, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1, knock: 1},
             description: "Enid speaks softly and blinks little.",
 			xtriggers: {recruiting: enid_b}
         },
@@ -20,7 +20,7 @@
         id: "rose_a",
             label: "Rose, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,edge: 1},
             description: "Rose is a sly miss.",
 			xtriggers: {recruiting: rose_b}
         },
@@ -28,7 +28,7 @@
         id: "leo_a",
             label: "Leo, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1, heart: 1},
             description: "Leo is an earnest sort.",
 			xtriggers: {recruiting:leo_b}
         },
@@ -36,7 +36,7 @@
         id: "neville_a",
             label: "Neville, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,knock: 1},
             description: "Neville pauses before he speaks, and flinches easily.",
 			xtriggers: {recruiting: neville_b}
         },
@@ -44,7 +44,7 @@
         id: "victor_a",
             label: "Victor, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,edge: 1},
             description: "Victor is a sly fellow.",
 			xtriggers: {recruiting: victor_b}
         },

@@ -108,27 +108,77 @@
 	    {
         id: "suspicion",
         label: "The Attention of the Authorities",
-        actionId: "x",
+        actionId: "suspicion",
         requirements: {},
         effects: {notoriety: 1},
-		slots: {suspicion: {required: {notoriety: 1}, greedy: true}},
-		alternativerecipes: [{id: "investigation",chance: 100}]
+		slots: {Suspicion: {required: {notoriety: 1}, greedy: true}},
+		alternativerecipes: [{id: "investigationlink",chance: 100}],
         startdescription: "Rumour squats on rooftops and flutters in gutters.",
         description: "They questioned me. I might be innocent, but a certain suspicion clings.",
         warmup: 60,
         craftable: false
     },
+	{
+	id: "investigationlink",
+ requirements: {notoriety:1},
+	label: "The authorities are beginning an investigation!",
+	actionId: "suspicion",
+	loop: "investigation",
+	startdescription: "I'll need to find a bribe or a scapegoat.",
+	comment: "Link used so we can get the warmup on the next one"
+	},
 		    {
         id: "investigation",
         label: "An Investigation",
-        actionId: "x",
-        requirements: {},
-        effects: {notoriety: 1},
-		slots: {suspicion: {required: {shilling: 1,follower:1}, greedy: true}},
+        actionId: "suspicion",
+        requirements: {notoriety:1},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {shilling: 1,follower:1}, greedy: true}},
         startdescription: "inv start",
-        description: "inv end",
+        description: "inv end - won't display, loops straight to trial",
+        warmup: 60,
+        craftable: false,
+		loop: "trial"
+    },
+			    {
+        id: "trial",
+        label: "A Trial!",
+        actionId: "suspicion",
+        requirements: {},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {shilling: 1,follower:1}, greedy: true, description: "I'll have to grease the right palm... or find a scapegoat."}},
+        startdescription: "trial start",
+        description: "trial end!!!",
+        warmup: 60,
+        craftable: false,
+		ending: arrest
+		
+    },
+				    {
+        id: "bribe",
+        label: "A Bribe",
+        actionId: "suspicion",
+        requirements: {shilling: 1},
+        effects: {shilling: -1,notoriety: 1},
+        startdescription: "bribe start",
+        description: "bribe end",
         warmup: 60,
         craftable: false
-    }
+    },
+					    {
+        id: "scapegoat",
+        label: "A Scapegoat",
+        actionId: "suspicion",
+        requirements: {follower: 1},
+        effects: {follower: -1,notoriety: 1},
+        startdescription: "scapegoat start",
+        description: "scapegoat end",
+        warmup: 60,
+        craftable: false
+    },
 ]
 }
