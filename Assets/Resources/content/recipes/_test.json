@@ -4,7 +4,7 @@
         id: "testxtrigger",
         label: "Testing xtrigger",
         actionId: "work",
-        requirements: {shilling:1},
+        requirements: {shilling:1000},
         effects: {shilling: 10},
 		alternativerecipes:
 		[{id: "randomacquaintancerouter", chance:100,additional:true}],

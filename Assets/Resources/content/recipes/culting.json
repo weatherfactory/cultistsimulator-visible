@@ -1,5 +1,19 @@
  {"recipes":
  [
+   	{
+        id: "cantrecruitbeliever",
+        label: "Discuss our business",
+        actionId: "talk",
+        requirements: {society: 1,follower: 1},
+		alternativerecipes:[{id: "inspiremystique",chance:70},
+		{id: "inspirenotoriety",chance:100}
+		],
+        startdescription: "Our business: our secrets.",
+        description: "Our business is conducted beneath the Sign.",
+        warmup: 50,
+        craftable: true,
+		comments: "Currently duplicates talking with a slightly shorter warmup"
+    },
   	{
         id: "recruitacquaintance",
         label: "Recruit an Acquaintance",

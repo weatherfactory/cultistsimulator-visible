@@ -152,8 +152,8 @@ public class Compendium : ICompendium
         if (endingFlag == "arrest") 
             return new Notification("Bars across the Sun",
                 "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
-                " that I could have done *everything* I should not." +
-                "prologue, this might be considered a victory. you could carry the legacy through to another character.]");
+                " that I could have done *everything* I should not."
+                );
 
         if (endingFlag == "workvictory")
             return new Notification("This is pleasant",
