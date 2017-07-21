@@ -73,7 +73,7 @@ public class UIParticleScaler : MonoBehaviour {
         var shape = ps.shape;
         if (shape.enabled) {
             shape.radius /= scale;
-            shape.box = shape.box / scale;
+            shape.scale = shape.scale / scale;
         }
         //Emisison Rate Time (divided instead of multiplied)
         ParticleSystem.EmissionModule em = ps.emission;

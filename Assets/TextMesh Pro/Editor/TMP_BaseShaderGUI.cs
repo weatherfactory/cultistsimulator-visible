@@ -227,7 +227,7 @@ namespace TMPro.EditorUtilities
             MaterialProperty property = FindProperty(name, properties);
             EditorGUI.BeginChangeCheck();
             EditorGUI.showMixedValue = property.hasMixedValue;
-            editor.BeginAnimatedCheck(property);
+            editor.BeginAnimatedCheck(Rect.zero,property);
             return property;
         }
 

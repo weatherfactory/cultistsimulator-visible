@@ -138,7 +138,7 @@ namespace TMPro.EditorUtilities
             // Locate the plugin files & move them to root of project if that hasn't already been done.
 #if !UNITY_5
             // Find to location of the TextMesh Pro Asset Folder (as users may have moved it)
-            string tmproAssetFolderPath = TMPro_EditorUtility.GetAssetLocation();
+            string tmproAssetFolderPath = TMP_EditorUtility.GetAssetLocation();
 
             string projectPath = Path.GetFullPath("Assets/..");
 
