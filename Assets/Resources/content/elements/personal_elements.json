@@ -1,0 +1,126 @@
+{"elements":
+    [
+       
+		     {
+        id: "hunger",
+            label: "Hunger",
+            aspects:
+            {illhealth: CONVENTIONS.QUANTITY_TINY,
+			  grail: CONVENTIONS.QUANTITY_TINY},
+            description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
+			},
+			{
+        id: "injury",
+            label: "An Injury",
+            aspects:
+            {illhealth: CONVENTIONS.QUANTITY_TINY,
+			  knock: CONVENTIONS.QUANTITY_TINY},
+            description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury will also allow you to recover Health.]",
+			},
+			{
+			id: "affliction",
+            label: "An Affliction",
+            aspects:
+            {illhealth: CONVENTIONS.QUANTITY_TINY},
+            description: "Disease has left me weak. I need rest and nourishment, if I am to recover.",
+			},
+        {
+            id: "reason",
+            label: "Reason",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_TINY
+            },
+            description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
+        },	
+			{id: "insomnia",
+            label: "Insomnia",
+            aspects:
+            {edge: CONVENTIONS.QUANTITY_TINY,unreason: CONVENTIONS.QUANTITY_TINY},
+            description: "Sleep is too full of terrors for me. My mind is dulled. But at least it's harder for enemies to surprise me.",
+			},
+			{id: "fascination",
+            label: "Fascination",
+            aspects:
+            {lantern: CONVENTIONS.QUANTITY_TINY,unreason: CONVENTIONS.QUANTITY_TINY},
+            description: "Light leaks through the cracks. My mind is brighter than it ever was..",
+			},
+		        {
+            id: "passion",
+            label: "Passion",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:7,
+            description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
+        },
+        {
+            id: "health",
+            label: "Health",
+            aspects:
+            {
+                heart: CONVENTIONS.QUANTITY_TINY
+            },
+            description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
+        },
+		 {
+            id: "erudition",
+            label: "Erudition",
+            aspects:
+            {},
+            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason.]",
+			comment: "should never be available from a <standard-length action; possibly not available from renewable actions."
+        },
+			 {
+            id: "glimmering",
+            label: "Glimmering",
+            aspects:
+            {},
+            description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion.]",
+		comment: "should never be available from a <standard-length action; possibly not available from renewable actions."
+        },
+					 {
+            id: "mystique",
+            label: "Mystique",
+            aspects:
+            {reputation: 1},
+            description: "They remember who I am. [Mystique can be used to found a cult, and to recruit followers.]",
+	lifetime: 60
+        },
+							 {
+            id: "notoriety",
+            label: "Notoriety",
+            aspects:
+            {reputation: 1},
+            description: "They remember what I've done. [Notoriety can be used to found a cult, and to recruit followers.]",
+	lifetime: 120
+        },
+		{
+		id: "scholarlatin",
+		label: "Scholar: Latin",
+		aspects: {},
+		description: "A dead language: dead as diamonds. [Some books must be translated before they can be read.]"
+		},
+			{
+		id: "scholarfucine",
+		label: "Scholar: Fucine",
+		aspects: {},
+		description: "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]"
+		},
+		 {
+            id: "notionpower",
+            label: "Notion: Power",
+            aspects:
+            {desire: 1},
+            description: "It has occurred to me that I hold the key to power. [This can be used to end the game after completing a rite which confers unearthly power. Dreaming about it might change the goal.]"
+        },
+		 {
+            id: "notionenlightenment",
+            label: "Notion: Enlightenment",
+            aspects:
+            {desire: 1},
+            description: "It has occurred to me that I hold the key to wisdom. [This can be used to end the game after completing a rite which gives unearthly knowledge. Dreaming about it might change the goal.]"
+        }
+]
+};

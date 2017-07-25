@@ -1,0 +1,94 @@
+{"elements":
+    [
+		 {
+        id: "dorothy_a",
+            label: "Dorothy, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Dorothy is an enthusiastic sort with an eclectic reading habit. She's fascinated by your hints about the shapes beneath the world's skin. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {recruiting: dorothy_b}
+        },
+				 {
+        id: "enid_a",
+            label: "Enid, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Enid speaks softly, and sometimes her gaze doesn't focus on anything visible. It may be that you've dreamed the same dreams. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {recruiting: enid_b}
+        },
+				 {
+        id: "rose_a",
+            label: "Rose, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Rose is a sly miss, and she recognises you as someone uncommon. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {recruiting: rose_b}
+        },
+				 {
+        id: "leo_a",
+            label: "Leo, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Leo is an earnest sort with an interest in the occult. He hangs on your hints about the invisible arts. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {recruiting:leo_b}
+        },
+				 {
+        id: "neville_a",
+            label: "Neville, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Neville pauses before he speaks, and flinches easily. He laughs whenever he thinks you've made a joke. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {recruiting: neville_b}
+        },
+				 {
+        id: "victor_a",
+            label: "Victor, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Victor is a sly fellow, and he knows an unusual opportunity when he sees it. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {recruiting: victor_b}
+        },
+						 {
+        id: "dorothy_b",
+            label: "Dorothy, a believer",
+            aspects:
+            {mortal: 1, follower: 1,heart: 1},
+            description: "Dorothy is an enthusiastic sort, and I have turned her enthusiasm to our advantage."
+        },
+						 {
+        id: "enid_b",
+            label: "Enid, a believer",
+            aspects:
+            {mortal: 1, follower: 1, knock: 1},
+            description: "Enid speaks softly, and sometimes her gaze doesn't focus on anything visible. She sees things that others don't."
+        },
+				 {
+        id: "rose_b",
+            label: "Rose, a believer",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            description: "Rose is a sly miss, but loyal."
+        },
+				 {
+        id: "leo_b",
+            label: "Leo, a believer",
+            aspects:
+            {mortal: 1, follower: 1,heart: 1},
+            description: "Leo is an earnest sort, but he's prepared to do what he must."
+        },
+				 {
+        id: "neville_b",
+            label: "Neville, a believer",
+            aspects:
+            {mortal: 1, follower: 1, knock: 1},
+            description: "Neville pauses before he speaks, and flinches easily. He's sensitive to deeper matters."
+        },
+				 {
+        id: "victor_b",
+            label: "Victor, a believer",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            description: "Victor is a sly fellow, but loyal."
+        }
+]
+};

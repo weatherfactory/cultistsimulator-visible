@@ -1,11 +1,6 @@
 {"elements":
     [
- {
-            id: "expedition",
-            label: "Expedition",
-			description: "One must speculate, to accumulate.",
-            isAspect: true
-        },
+
         {
             id: "edge",
             label: "Edge",
@@ -37,13 +32,43 @@
         {
             id: "heart",
             label: "Heart",
-			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle of certainty and safety.]",
+			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle that continues and preserves.]",
             isAspect: true
         },
+		{
+            id: "ritual",
+            label: "Ritual",
+            isAspect: true,
+			description: "'The proper things, in the proper manner, in the proper order. God help us all.' - attributed to Hersault"
+        },
+				{
+            id: "society",
+            label: "Society",
+            isAspect: true,
+			description: "To recruit believers, I must build something for them to believe."
+        },
         {
-            id: "key",
-            label: "Key",
-            isAspect: true
+            id: "tool",
+            label: "Tool",
+            isAspect: true,
+			description: "'A sword does not kill; it is an instrument in the hand of the killer.' - Seneca the Younger"
+        },
+		 {
+            id: "reputation",
+            label: "Reputation",
+            isAspect: true,
+			description: "'Many fear their reputation, few their conscience.' - Pliny"
+        },
+		{id: "desire",
+		label: "Desire",
+		isAspect: true,
+		description: "The engine of every event."
+		},
+		{
+            id: "lore",
+            label: "Lore",
+            isAspect: true,
+			description: "'A desire of knowledge is the natural feeling of mankind; and every human being whose mind is not debauched, will be willing to give all that he has to get knowledge.' - Samuel Johnson"
         },
         {
             id: "knock",
@@ -51,15 +76,29 @@
 			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and exposes horrible secrets.]",
             isAspect: true
         },
+		        {
+        id: "moth",
+        label: "Moth",
+        isAspect: true,
+		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
+    },
+        {
+            id: "secrethistories",
+            label: "Secret Histories",
+			        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.]",
+            isAspect: true
+        },
         {
             id: "lantern",
             label: "Lantern",
-			description: "On the borders of our dreams we find the Mansus, where the Watchman walks the corridors. Light goes before him and shadow behind. He must not see you. [Lantern is the principle of Dreams and the Mansus.]",
-            isAspect: true,
-            triggers:
-            {
-                hersaultnightmares: 10
-            }
+			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the Mansus, and the light above it.]",
+            isAspect: true
+        },
+		        {
+            id: "winter",
+            label: "Winter",
+			description: "... [Winter is the principle of the White.]",
+            isAspect: true
         },
         {
             id: "location",
@@ -68,34 +107,40 @@
         isAspect: true
 },
         {
-        id: "moth",
-        label: "Moth",
-        isAspect: true,
-		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of curiosity and yearning.]",
-    },
-        {
-            id: "ritual",
-            label: "Ritual",
-			description: "A Ritual can contain anything but a Location or another Ritual.",
-            isAspect: true
-        },
-
-        {
-            id: "secrethistories",
-            label: "Secret Histories",
-			        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.]",
-            isAspect: true
-        },
-        {
-            id: "society",
-            label: "Society",
-			description: "A society allows me to employ my followers to best advantage. It can contain Rituals and Followers.",
-            isAspect: true
-        },
-        {
             id: "summoned",
             label: "Summoned",
             isAspect: true
         },
+		    {
+            id: "illhealth",
+            label: "Ill Health",
+			description: "Perhaps I can rest, and recover."
+            isAspect: true
+        },
+				    {
+            id: "unreason",
+            label: "Unreason",
+			description: "Time, peace and memory might restore me."
+            isAspect: true
+        },
+ {
+            id: "obsession",
+            label: "Obsession",
+			description: "Time, peace and memory might restore me."
+            isAspect: true
+        },
+		 {
+            id: "recruiting",
+            label: "Recruiting",
+			description: "To see the light, one cannot be blind; but sometimes, it's the light that blinds us."
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+		{
+            id: "mortal",
+            label: "Mortal",
+			description: "'The long habit of living indisposeth us for dying.' - Thomas Browne"
+            isAspect: true
+        }
 ]
 }

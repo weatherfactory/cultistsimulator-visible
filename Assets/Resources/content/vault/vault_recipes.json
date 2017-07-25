@@ -1,0 +1,899 @@
+{"recipes": [
+    {
+        id: "keyoftheredgrail",
+        label: "Craft the Key of the Red Grail",
+        actionId: "work",
+        requirements: {
+            grail: 1,
+            atlas: 1
+        },
+        effects: {
+            keyoftheredgrail: 1
+        },
+        startdescription: "Now I will craft a shape of words to open me like an oyster.",
+        description: "This is a key of the Mansus, not a Key to the Mansus. When I turn it, I will be opened.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "unlockmindredgrail",
+        label: "Open your mind to the Red Grail",
+        actionId: "work",
+        requirements: {
+            alockedmind: 1,
+            keyoftheredgrail: 1      },
+        effects: {
+            riteofslaking: 1,
+            keyoftheredgrail: -1,
+            alockedmind: -1
+        },
+        startdescription: "Past this point, there is no turning back. Open your heart and soul to the hunger of the Grail.",
+        description: "The RED joy of it! It CALLS me HOME! I know now the WORDS! When I have my DISCIPLES and our POWER I can BRING the THIRSTLY to our FINAL FEAST! [The Night of the Feast requires 3 Grail and 12 Follower aspect.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "worknightofthefeast",
+        label: "Begin the Night of the Feast",
+        actionId: "work",
+        requirements: {
+            riteofslaking: 1,
+            follower: 12,
+            grail: 3
+        },
+        effects: {
+            health:-10
+        },
+        startdescription: "This will be the Feast. The Thirstly will walk in the city's dreams. Sleepers will rise from their beds and the streets will founder in bright blood.",
+        description: "This is my voice, rising with the screams of my disciples.  This is the cherry-edged light of the Thirstly. This is the first cry from the streets." +
+        "This is the blood that trickles beneath doors. Here are the eyes made empty. Here is the moon that will rise red. Here is the map of the city, the spreading stain." +
+        "Here am I, alone on the night of my victory, my end. The Grail has opened its mouth. It will not forget my savour. It will not forget." +
+        "<br/><br/>[Congratulations. This amounts to a victory condition for the prototype. You have destroyed the city, and yourself, in the name of the Red Grail. If you enjoyed this prototype, or if you didn't, DISCUSS it on the subreddit below.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "workemptyvessel",
+        label: "consecrate an Empty Vessel in the name of the Red Grail",
+        actionId: "work",
+        requirements: {grail: 1,
+        lantern: 1},
+        effects: {
+            emptyvessel: 3
+        },
+        startdescription: "The cup will preserve my graily hunger until the day it's required.",
+        description: "An Empty Vessel: smooth, sweet, unstained as yet by feeding.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "workfulfilledvesselsmall",
+        label: "Feed an Empty Vessel Generously",
+        actionId: "work",
+        requirements: {emptyvessel: 1, follower: 2},
+        effects: {
+            fulfilledvessel: 1
+        },
+        startdescription: "FNORD this will do it",
+        description: "FNORD it worked!",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "workfulfilledvesseltiny",
+        label: "Feed an Empty Vessel",
+        actionId: "work",
+        requirements: {emptyvessel: 1, follower:1},
+        alternativerecipes: [{id: "workfulfilledvesselfail",chance: 70}],
+        effects: {
+            fulfilledvessel: 1
+        },
+        startdescription: "FNORD probably not enough.",
+        description: "FNORD it worked!",
+        warmup: 6,
+        craftable: true
+    },
+
+    {
+        id: "workdisciple",
+        label: "Profit from a Disciple's labour",
+        actionId: "work",
+        requirements: {disciple: 1},
+        effects: {
+            shilling:  2,
+            disciple: 1
+        },
+        startdescription: "I'll send them to work in my place, and receive a portion of the proceeds.",
+        description: "My Disciple has happily turned over most of their pay.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "workbeliever",
+        label: "Profit from a Believer's labour",
+        actionId: "work",
+        requirements: {believer: 1},
+        effects: {
+            shilling: 1,
+            believer: 1
+        },
+        startdescription: "I'll send them to work in my place, and receive a portion of the proceeds.",
+        description: "My Believer has grudgingly turned over a portion of their pay.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "workenthusiast",
+        label: "Profit from an Enthusiast",
+        actionId: "work",
+        requirements: {enthusiast: 1},
+        effects: {
+            shilling: 1
+        },
+        startdescription: "I can press them for donations, although it will end their enthusiasm.",
+        description: "So reluctant to contribute so little to the Work! I shan't miss them.",
+        warmup: 6,
+        craftable: true
+    },
+	{
+        id: "labour",
+        label: "Labour",
+        actionId: "work",
+        requirements: {heart: 1},
+        alternativerecipes: [{id: "labourwithromanticinterestpresent", chance:100},
+            {id: "labourmeetromanticinterest", chance:10}],
+        effects: {
+            shilling: 3
+        },
+        startdescription: "Petty, hateful work for petty, meagre pay.",
+        description: "I am exhausted, but I've earned my pay.",
+        warmup: 1,
+        craftable: true
+    },
+		{
+        id: "testresearch",
+        label: "This sets up a Research situation. FNORD",
+        actionId: "work",
+        requirements: {occultscrap: 1},
+        effects: {
+        },
+        startdescription: "This will begin a research project.",
+        description: "Research project begun.",
+        warmup: 2,
+        craftable: true,
+		persistIngredientsWith: {occultscrap: 1},
+		loop: "testresearchspine"
+    },
+			{
+        id: "testresearchspine",
+        label: "Project ongoing",
+        actionId: "work",
+		alternativerecipes: [{id: "testresearchcomplete", chance: 100}],
+        requirements: {},
+        effects: {atlasnotes: 1},
+        startdescription: ".",
+        description: "Research is continuing",
+        warmup: 20,
+        craftable: false,
+		loop: "testresearchspine",
+		 slots:
+            {
+			"assistant": {  required: {assistant:1, secrethistories:1,atlasnotes: 1},
+                forbidden: {}},
+			"material": {  required: {secrethistories:1},
+                forbidden: {}}
+			}
+    },
+	{
+        id: "testresearchcomplete",
+        label: "Project complete",
+        actionId: "work",
+        requirements: {atlasnotes: 1},
+        effects: {atlas: 1},
+        startdescription: "..",
+        description: "Nearly finished!",
+        warmup: 20,
+        craftable: false,
+		retrievesContentsWith: {atlas: 1}
+    },
+    {
+        id: "lockedmindready",
+        label: "Dream of the Door, Yourself",
+        actionId: "dream",
+        requirements: {ordinarylife: 1,moth: 1},
+        effects: {
+            ordinarylife:-1,
+            alockedmind: 1,
+            reason: -1
+        },
+        startdescription: "What shall I become?",
+        description: "If I unlock myself, an Hour may enter.",
+        warmup: 240,
+        craftable: true
+    },
+    {
+        id: "dreamatlas",
+        label: "Dream of the Halls of the Hours",
+        actionId: "dream",
+        requirements: {lantern: 2},
+        effects: {
+            atlasnotes: 1,
+            reason: -1
+        },
+        startdescription: "In dreams I see the Mansus, the house of the Hours, grey and gold.",
+        description: "To find the Hour I need, I must first find its hall. I'll need an Atlas.",
+        warmup: 6,
+        craftable: true,
+        loop: "spineatlas"
+    },
+    {
+        id: "dreamtinylantern",
+        label: "Dream of the House in the Wood",
+        actionId: "dream",
+        requirements: {lantern: 1},
+        effects: {
+            glimpse: 1,
+            reason:-1
+        },
+        startdescription: "Sometimes, I see a kind of sunlight in sleep.",
+        description: "Last night, I dreamt again of the Wood behind the world, and the dwelling-place at its heart.",
+        warmup: 30,
+        craftable: true
+    },
+    {
+        id: "dreamtinyheart",
+        label: "Sleep Deeply, Dream Softly",
+        actionId: "dream",
+        requirements: {heart: 1},
+        effects: {
+            reason: 2
+        },
+        startdescription: "I will set aside thoughts of uncanny things; read cheerful novels; drink cocoa before bed.",
+        description: "Sleep has become a balm again. Perhaps I could live happily, if I abandoned the difficult dreams.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "talkromanticattention",
+        label: "Begin an affair",
+        actionId: "talk",
+        requirements: {romanticattention: 1},
+        effects: {
+            reason: 1,
+            romanticattention: 1
+        },
+        startdescription: "'Yes. Come to me.'",
+        description: "'You're not what I expected. Stay with me a little longer.'",
+        warmup: 240,
+        craftable: true,
+        loop: "spineaffair"
+    },
+    {
+        id: "talkorder",
+        label: "Found a secret Order",
+        actionId: "talk",
+        requirements: {follower: 6,
+            lantern: 1},
+        effects: {reason: -1},
+        startdescription: "My Order may outlast me, but it will remember me..",
+        description: "My Order is established. My disciples bow their hears. I am <i>exalted.</i>",
+        warmup: 6,
+        craftable: true,
+        loop: "spineorder"
+    },
+    {
+        id: "talkPromoteEnthusiastLantern",
+        label: "Promote an Enthusiast to a Believer with stories of the Mansus",
+        actionId: "talk",
+        requirements: {
+            clique: 1,
+            lantern: 2,
+            enthusiast: 1
+        },
+        effects: {
+            believer: 1
+        },
+        startdescription: "This one is promising, and receptive.",
+        description: "'Listen, my friend. There is more to this than you know.'",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "talkPromoteEnthusiastSecretHistories",
+        label: "Promote an Enthusiast to a Believer by sharing the truths of our many histories",
+        actionId: "talk",
+        requirements: {
+            clique: 1,
+            secrethistories: 2,
+            enthusiast: 1
+        },
+        effects: {
+            believer: 1
+        },
+        startdescription: "This one is promising, and receptive.",
+        description: "'Listen, my friend. There is more to this than you know.'",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "talkPromoteEnthusiastMoth",
+        label: "Bedazzle an Enthusiast into becoming a Believer.",
+        actionId: "talk",
+        requirements: {
+            clique: 1,
+            moth: 2,
+            enthusiast: 1
+        },
+        effects: {
+            believer: 1
+        },
+        startdescription: "This one is promising, and receptive.",
+        description: "'Listen, my friend. There is more to this than you know.'",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "talkPromoteEnthusiastForge",
+        label: "Convince an Enthusiast to be reborn as a Believer",
+        actionId: "talk",
+        requirements: {
+            clique: 1,
+            forge: 2,
+            enthusiast: 1
+        },
+        effects: {
+            believer: 1
+        },
+        startdescription: "This one is promising, and receptive.",
+        description: "'Listen, my friend. There is more to this than you know.'",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "talkPromoteEnthusiastGrail",
+        label: "Tempt an Enthusiast to become a Believer",
+        actionId: "talk",
+        requirements: {
+            clique: 1,
+            grail: 2,
+            enthusiast: 1
+        },
+        effects: {
+            believer: 1
+        },
+        startdescription: "This one is promising, and receptive.",
+        description: "'Listen, my friend. There is more to this than you know.'",
+        warmup: 6,
+        craftable: true
+    },
+
+    {
+        id: "talkclique",
+        label: "Begin to build a Clique",
+        actionId: "talk",
+        requirements: {secrethistories: 1,
+        enthusiast: 1},
+        effects: {
+            believer: 1
+        },
+        startdescription: "Come closer, my friend. Let me whisper in your ear.",
+        description: "I'm binding my Enthusiasts into a clique of Believers.",
+        warmup: 6,
+        craftable: true,
+        loop: "spineclique"
+    },
+    {
+        id: "talkRecruitConspiracist",
+        label: "Recruit an Aficionado of Conspiracies",
+        actionId: "talk",
+        requirements: {secrethistories: 1},
+        effects: {
+            enthusiast: 1
+        },
+        startdescription: "This one will find my secrets irresistible.",
+        description: "Their reluctance melts at my whispered stories. I will welcome them to the Know.",
+        warmup: 20,
+        craftable: true,
+        loop: "societyspine"
+    },
+    {
+        id: "talkRecruitCurious",
+        label: "Recruit a Curious Soul",
+        actionId: "talk",
+        requirements: {moth: 1},
+        effects: {
+            enthusiast: 1
+        },
+        startdescription: "I know something of a deeper truth.",
+        description: "Now and then, I meet someone who *understands*.",
+        warmup: 20,
+        craftable: true,
+        loop: "societyspine"
+    },
+    {
+        id: "talkRecruitAnarchist",
+        label: "Recruit an Anarchist",
+        actionId: "talk",
+        requirements: {forge: 1},
+        effects: {
+            enthusiast: 1
+        },
+        startdescription: "Promises and threats are equally enticing to this recruit.",
+        description: "Perhaps they don't understand my cause, but they're frighteningly willing to serve it.",
+        warmup: 20,
+        craftable: true,
+        loop: "societyspine"
+    },
+    {
+        id: "talktinylantern",
+        label: "Tell Fortunes",
+        actionId: "talk",
+        requirements: {lantern: 1},
+        effects: {
+            shilling: 1
+        },
+        startdescription: "I know enough to cheer the gullible; or alarm them.",
+        description: "My clients are not generous.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "talktinyheart",
+        label: "Make Small Talk with Strangers",
+        actionId: "talk",
+        requirements: {heart: 1},
+        effects: {
+            reason: 1
+        },
+        startdescription: "Perhaps I should get out more.",
+        description: "A little chat with the little people, now and then, helps keep my brain inside my skull.",
+        warmup: 10,
+        craftable: true
+    },
+    {
+        id: "exploreunlockcrypt",
+        label: "Unlock the Shrouded Crypt",
+        actionId: "explore",
+        requirements: {
+            crypt: 1,
+            knock: 1
+        },
+        effects: {
+            noonstone: 1,
+            crypt:-1
+        },
+        startdescription: "The basalt door will open to a sufficiently compelling incantation.",
+        description: "Brush the webs aside. Tip out the bones on the floor. Seize the treasure for which you came.",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "explorecryptexpedition",
+        label: "Send a follower on my Expedition to the Shrouded Crypt",
+        actionId: "explore",
+        requirements: {cryptexpedition: 1,
+        follower: 1},
+        effects: {
+            cryptexpedition: 3
+        },
+        startdescription: "They will give their lives if they must.",
+        description: "The search for the Shrouded Crypt advances.",
+        warmup: 20,
+        craftable: true,
+        loop: "spinecryptexpedition"
+    },
+    {
+        id: "exploretinylantern",
+        label: "Prowl Bookshops",
+        actionId: "explore",
+        requirements: {lantern: 1},
+        alternativerecipes: [{id: "prowlbookshopwaroftheroads", chance:30},
+            {id: "prowlbookshoptatteredmap", chance:43}],
+        effects: {
+            locksmithsdream: 1
+        },
+        startdescription: "I can't be the first person ever to know the world is wrong.",
+        description: "The print is badly set, the covers scuffed, the pages curling. It's beautiful.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "exploretinyheart",
+        label: "Find Suitable Premises",
+        actionId: "explore",
+        requirements: {heart: 1},
+        effects: {
+            suitablepremises: 1
+        },
+        startdescription: "I need somewhere that no-one goes.",
+        description: "Daylight fingers the shadows. Rats scuttle. This will do, for now.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "exploreshilling",
+        label: "Roam the Junk-Shops and Flea-Markets",
+        actionId: "explore",
+        requirements: {shilling: 1},
+        effects: {
+        },
+        alternativerecipes: [{id: "exploreshillingcinnabar", chance:30},
+            {id: "exploreshillingfistulous", chance:43}],
+        startdescription: "I'm unlikely to find anything valuable. But one never knows.",
+        description: "What's this, now?",
+        warmup: 10,
+        craftable: true
+    },
+    {
+        id: "studyatlas",
+        label: "Study an Atlas of Dreams",
+        actionId: "study",
+        requirements: {atlas: 1},
+        effects: {
+            glimpse: 7,
+            fistulousinvocation: 1
+        },
+        startdescription: "What have I learnt? [This will consume my Atlas, without ever using it for a greater purpose.]",
+        description: "The more I read, the more disjointed it seems. Hallucinatory. Impossible. What House has no walls? How can Time be so many? Who was the Sun?",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studyargentinerelic",
+        label: "Study an Argentine Relic",
+        actionId: "study",
+        requirements: {argentinerelic: 1},
+        effects: {
+         argentinerelic: 1
+        },
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studyfulfilledvessel",
+        label: "Study a Fulfilled Vessel",
+        actionId: "study",
+        requirements: {fulfilledvessel: 1},
+        effects: {
+            fulfilledvessel: 1
+        },
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studynoonstone",
+        label: "Study your Noonstone",
+        actionId: "study",
+        requirements: {noonstone: 1},
+        effects: {
+            noonstone: 1
+        },
+        startdescription: "Perhaps this really did originate in the springs of Noon.",
+        description: "Its heat, its appetite! These have been set at the hearts of rituals to summon Caligines and Thirstlies alike. ",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studyromanticattention",
+        label: "Consider the Romantic Attention you have",
+        actionId: "study",
+        requirements: {romanticattention: 1},
+        effects: {
+            romanticattention: 1,
+            reason: 1
+        },
+        startdescription: "Am I a monster?",
+        description: "Someone doesn't think so. Perhaps that means something.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studytatteredmap",
+        label: "Study a Tattered Map",
+        actionId: "study",
+        requirements: {tatteredmap: 1},
+        effects: {
+            cryptexpedition: 1
+        },
+        startdescription: "The markings are both cryptic and faint -",
+        description: "This is the way to the Shrouded Crypt, where one of the Long was put to rest! They die with difficulty and infrequency. I will certainly find some treasured relic there.",
+        warmup: 6,
+        craftable: true,
+        loop: "spinecryptexpedition"
+    },
+    {
+        id: "studylocksmithsdream",
+        label: "Study 'The Locksmith's Dream'",
+        actionId: "study",
+        requirements: {locksmithsdream: 1},
+        effects: {
+            glimpse: 1,
+            fistulousinvocation: 1
+        },
+        startdescription: "'The Locksmith' is a pseudonym. No wonder he did not dare write of the Hours under his own name.",
+        description: "In his introduction, he writes that there are thirty Hours, and thirty Keys. He had intended thirty chapters. " +
+        "As he passes the twelfth chapter, his style becomes anxious, disjointed. At the eighteenth, it grows wild and ranting. The book ends abruptly at the end of chapter twenty-one.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studywarofroads",
+        label: "Study 'The War of the Roads'",
+        actionId: "study",
+        requirements: {thewaroftheroads: 1},
+        effects: {
+            occultscrap: 1,
+            glimpse: 1,
+            incendiaryprayer: 1
+        },
+        startdescription: "This book speaks of only one History, but a significant one.",
+        description: "In this past, a score or more of Longs were made. They brokered peace with the Forge of Days, long enough to set England on a path" +
+        "of early conquest and eventual destruction. The Forge itself devoured the greatest among them.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "studyhealth",
+        label: "Consider my Health",
+        actionId: "study",
+        requirements: {health: 1},
+        effects: {
+            health: 1
+        },
+        startdescription: "This half-helpless flesh.",
+        description: "I have surveyed my state. This body is my only grip in the world... for now.",
+        warmup: 10,
+        craftable: true
+    },
+    {
+        id: "studyreason",
+        label: "Consider my reason",
+        actionId: "study",
+        requirements: {reason: 1},
+        effects: {
+            reason: 1
+        },
+        startdescription: "The mind is a castle, or a garden...",
+        description: "...but it must never become an ocean. If I lose all my reason, I will achieve nothing.",
+        warmup: 10,
+        craftable: true
+    },
+    {
+        id: "studyordinarylife",
+        label: "Consider my life, so cramped, so constrained",
+        actionId: "study",
+        requirements: {ordinarylife: 1},
+        effects: {
+            reason: -1,
+        restlessness: 1
+        },
+        startdescription: "I will learn my limitations.",
+        description: "These are the walls that hold me, despite my gifts and my ambition. Perhaps not for much longer.",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studylantern",
+        label: "What is the Lantern?",
+        actionId: "study",
+        requirements: {lantern: 1},
+        effects: {
+            glimpse: 1
+        },
+        startdescription: "I might think about lantern-light.",
+        description: "On the borders of our dreams we find the Mansus, where the Watchman walks the corridors. Light goes before him and shadow behind. He must not see you. [Lantern is the principle of Dreams and the Mansus.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studymoth",
+        label: "And what is Moth?",
+        actionId: "study",
+        requirements: {moth: 1},
+        effects: {
+            restlessness: 1
+        },
+        startdescription: "We all know the beat of wings in the night.",
+        description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of curiosity and yearning.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studyforge",
+        label: "Meditate on the Forge of Days",
+        actionId: "study",
+        requirements: {forge: 1},
+        effects: {
+            incendiaryprayer: 1
+        },
+        startdescription: "Who understands fire?",
+        description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The Forge of Days transforms and destroys.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studysecrethistories",
+        label: "Consider the Secret Histories.",
+        actionId: "study",
+        requirements: {secrethistories:  1},
+        effects: {
+            occultscrap: 1
+        },
+        startdescription: "I have glutted myself on learning that scholars tell me is lies.",
+        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.].",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studygrail",
+        label: "Think on hunger and the Red Grail",
+        actionId: "study",
+        requirements: {grail: 1},
+        effects: {
+            hungry:  1
+        },
+        startdescription: "Oh, the rosy light of it -",
+        description: "Hunger, lust, the drowning waters. [The principle of the Red Grail demands to be fed.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studyheart",
+        label: "What is the Heart Relentless?",
+        actionId: "study",
+        requirements: {heart: 1},
+        effects: {
+            health:  1
+        },
+        startdescription: "The world will not be easily defeated.",
+        description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle of certainty and safety.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studyknock",
+        label: "What is the Knock?",
+        actionId: "study",
+        requirements: {knock: 1},
+        effects: {
+            fistulousinvocation: 1
+        },
+        startdescription: "I hear it in the moments before I wake.",
+        description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and exposes horrible secrets.]",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studysociety",
+        label: "Consider the possibilities of a Society",
+        actionId: "study",
+        requirements: {society: 1},
+        effects: {
+            occultscrap: 1
+        },
+        startdescription: "How can I use this?",
+        description: "A society allows me to employ my followers to best advantage. It can contain Rituals and Followers.",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studyritual",
+        label: "Consider the possibilities of a Ritual",
+        actionId: "study",
+        requirements: {ritual: 1},
+        effects: {
+            occultscrap: 1
+        },
+        startdescription: "How can I use this?",
+        description: "A Ritual can contain anything but a Location or another Ritual.",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studylocation",
+        label: "Consider the possibilities of a Location",
+        actionId: "study",
+        requirements: {location: 1},
+        effects: {
+            occultscrap: 1
+        },
+        startdescription: "How can I use this?",
+        description: "Locations! Everyone must be somewhere, and I am here. A Location can contain anything except another Location.",
+        warmup: 20,
+        craftable: true
+    },
+    {
+        id: "studysuitablepremises",
+        label: "Study your Suitable Premises",
+        actionId: "study",
+        requirements: {suitablepremises: 1},
+        effects: {
+            health: 1
+        },
+        startdescription: "Walk this place.",
+        description: "As the Watchman walks the Mansus, so you, here. Space is multiplicity. Multiplicity is possibility.",
+        warmup: 6,
+        craftable: true
+    },
+    {
+        id: "cantrenounceordinarylife",
+        label: "Rage at my limitations",
+        actionId: "renounce",
+        requirements: {ordinarylife: 1},
+        effects: {
+            reason:-1
+        },
+        startdescription: "It's not so easy to end my ordinariness. I need a Key.",
+        description: "My brain will boil in its shell.",
+        warmup: 10,
+        craftable: true
+    },
+    {
+        id: "assigncryptexpedition",
+        label: "Send a follower on my Expedition to the Shrouded Crypt",
+        actionId: "assign",
+        requirements: {cryptexpedition: 1,
+            follower: 1},
+        effects: {
+            cryptexpedition: 3
+        },
+        startdescription: "They will give their lives if they must.",
+        description: "The search for the Shrouded Crypt advances.",
+        warmup: 20,
+        craftable: true,
+        loop: "spinecryptexpedition"
+    },
+    {
+        id: "assignagainstinspector",
+        label: "Ensure the Inspector troubles me no further.",
+        actionId: "assign",
+       createCommitment: {commitment: "assignagainstinspectorcommitment", withAspect: "follower"},
+        alternativerecipes:
+            [{id: "assignagainstinspectorfail", chance:30, additional: true}],
+        requirements: {aninspectorcalls: 1,
+            follower: 3},
+        effects: {
+            aninspectorcalls: -1
+        },
+     addToCommitment: {commitment: "assignagainstinspectorcommitment"},
+        startdescription: "Threats, blackmail, or secret violence: whatever is required. If you're lucky, this will suffice.",
+        description: "The Inspector will trouble you no longer. Ask no questions.",
+        warmup: 30,
+        craftable: true
+    },
+    {
+        id: "assignagainstinspectornotenough",
+        label: "Make a clumsy attempt to deal with the Inspector",
+        actionId: "assign",
+        createCommitment: {commitment: "assignagainstinspectorcommitment"},
+        requirements: {aninspectorcalls: 1,follower: 1},
+        alternativerecipes:
+            [{id: "assignagainstinspectorfail", chance:70, additional: true}],
+        effects: {
+        },
+        addToCommitment: {commitment: "assignagainstinspectorcommitment"},
+        startdescription: "He will probably require a sterner intervention than this.",
+        description: "The Inspector will trouble you no longer. Ask no questions.",
+        warmup: 30,
+        craftable: true
+    },
+
+    {
+        id: "renounce",
+        label: "Dispose of this",
+        actionId: "renounce",
+        requirements: {},
+        effects: {
+        },
+        startdescription: "I'll end this thing.",
+        description: "It's gone.",
+        warmup: 10,
+        craftable: true
+    }
+ 
+]
+}

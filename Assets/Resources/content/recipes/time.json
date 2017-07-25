@@ -1,0 +1,210 @@
+{"recipes": [
+ {
+        id: "startingneeds",
+        label: "Time Passes",
+        actionId: "time",
+        requirements: {},
+        effects: {
+            shilling: -1
+        },
+        alternativerecipes:
+		[{id: "legacyarrives", chance:100, additional: true},
+		 {id: "starvation", chance:100, additional: true}],
+        startdescription: "I need money to live; but I'm hoping for a parting gift from my correspondent, soon.",
+        description: ".",
+        warmup: 60,
+        craftable: false,
+		slots: {
+				"Expenses":
+					{
+					required: {shilling: 1},
+					forbidden: {},
+				greedy: true,
+				description: "The shop-keepers will have their due. I must pay it or starve."
+					}
+				},
+        loop: "needs"
+    },
+   {
+        id: "needs",
+        label: "Time Passes",
+        actionId: "time",
+        requirements: {},
+        effects: {
+            shilling: -1
+        },
+        alternativerecipes:
+		[{id: "sickness", chance:7, additional: true},
+		{id: "pleasantday", chance:3, additional: true},
+		{id: "findacquaintanceopentalk", chance:20, additional: true},
+		{id: "randomacquaintancerouter", chance:7, additional: true},
+		{id: "suspicion", chance:7, additional: true},
+		{id: "inspiremystique", chance:7, additional: true},
+		 {id: "starvation", chance:100, additional: true}],
+        startdescription: "Time, the sundial's shadow, passes. I have needs to meet.",
+        description: ".",
+        warmup: 60,
+        craftable: false,
+		slots: {
+				"Expenses":
+					{
+					required: {shilling: 1},
+					forbidden: {},
+				greedy: true,
+				description: "The shop-keepers will have their due. I must pay it or starve."
+					}
+
+				},
+        loop: "needs"
+    },
+	   {
+        id: "sickness",
+        label: "Sickness",
+        actionId: "illhealth",
+        requirements: {},
+        effects: {
+            health: -1,
+            affliction: 1
+        },
+		alternativerecipes:
+		[{id: "deathofthebody",chance:100}],
+        startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
+        description: "The sickness has ravaged my body.",
+        warmup: 60,
+		slots: {
+		"Affliction": 
+					{
+					required: {health: 1},
+					forbidden: {},
+					greedy: true
+					}
+		}
+        craftable: false
+    },
+		   {
+        id: "pleasantday",
+        label: "A Pleasant Day",
+        actionId: "x",
+        requirements: {},
+        effects: {
+		contentment: 1,
+        },
+        startdescription: "This morning, there is a spring in my step. I'm not sure why.",
+        description: "Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
+        warmup: 10,
+        craftable: false
+    },
+	   {
+        id: "starvation",
+        label: "Starvation",
+        actionId: "illhealth",
+        requirements: {shilling: -1},
+        effects: {
+            health: -1,
+            hunger: 1
+        },
+		alternativerecipes:
+		[{id: "deathofthebody",chance:100}],
+        startdescription: ".",
+        description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
+        warmup: 60,
+		slots: {
+		"Starvation": 
+					{
+					required: {health: 1},
+					forbidden: {},
+					greedy: true
+					}
+		}
+        craftable: false
+    },
+	 {
+        id: "legacyarrives",
+        label: "A Legacy Arrives",
+        actionId: "study",
+        requirements: {},
+        effects: {legacy: 1},
+        startdescription: "The matter of my inheritance is resolved. I have been promised a package.",
+        description: "My package has arrived! I must study it. [Drag the Legacy out to the tabletop, then back into the Study action.]",
+        warmup: 0,
+        craftable: false,
+		maxexecutions: 1,
+		comment: "This makes the Study action available."
+    },
+	    {
+        id: "suspicion",
+        label: "The Attention of the Authorities",
+        actionId: "suspicion",
+        requirements: {},
+        effects: {notoriety: 1},
+		slots: {Suspicion: {required: {notoriety: 1}, greedy: true}},
+		alternativerecipes: [{id: "investigationlink",chance: 100}],
+        startdescription: "Rumour squats on rooftops and flutters in gutters.",
+        description: "They questioned me. I might be innocent, but a certain suspicion clings.",
+        warmup: 60,
+        craftable: false
+    },
+	{
+	id: "investigationlink",
+ requirements: {notoriety:1},
+	label: "The authorities are beginning an investigation!",
+	actionId: "suspicion",
+	loop: "investigation",
+	startdescription: "I'll need to find a bribe or a scapegoat.",
+	comment: "Link used so we can get the warmup on the next one"
+	},
+		    {
+        id: "investigation",
+        label: "An Investigation",
+        actionId: "suspicion",
+        requirements: {notoriety:1},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {shilling: 1,follower:1}}},
+        startdescription: "The Supression Bureau has begun an investigation in earnest. They are charged with suppressing the less usual type of criminal - the criminal whose crimes may exist only in dreams.",
+        description: "inv end - won't display, loops straight to trial",
+        warmup: 60,
+        craftable: false,
+		loop: "trial"
+    },
+			    {
+        id: "trial",
+        label: "A Trial!",
+        actionId: "suspicion",
+        requirements: {},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {shilling: 1,follower:1}, description: "I'll have to grease the right palm... or find a scapegoat."}},
+        startdescription: "My trial has begun, in a closed court. There are crimes whose existence the state does not admit. This is my last chance to find a diversion.",
+        description: "ARREST!",
+        warmup: 60,
+        craftable: false,
+		ending: arrest
+		
+    },
+				    {
+        id: "bribe",
+        label: "A Bribe",
+        actionId: "suspicion",
+        requirements: {shilling: 1},
+        effects: {shilling: -1,notoriety: 1},
+        startdescription: "I am negotiating - ",
+        description: "Money well-spent. One might consider it a kind of levy on genius",
+        warmup: 60,
+        craftable: false
+    },
+					    {
+        id: "scapegoat",
+        label: "A Scapegoat",
+        actionId: "suspicion",
+        requirements: {follower: 1},
+        effects: {follower: -1,notoriety: 1},
+        startdescription: "A believer is ready to make a sacrifice for the cause.",
+        description: "I regret the loss. But better them than me.",
+        warmup: 60,
+        craftable: false
+    },
+]
+}

@@ -1,7 +1,9 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{1253F749-685C-8DDC-4BFC-82690C5E4068}") = "Cultist Simulator", "Assembly-CSharp.csproj", "{9771FE01-6023-EE4B-86E9-E9736E602955}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cultist Simulator", "Cultist Simulator.csproj", "{29BBF29A-EF03-C211-8570-F3EAE320EC5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cultist Simulator.Editor", "Cultist Simulator.Editor.csproj", "{3F04E8A9-A272-C9CC-07E4-4EFD12EF53DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +11,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9771FE01-6023-EE4B-86E9-E9736E602955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9771FE01-6023-EE4B-86E9-E9736E602955}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9771FE01-6023-EE4B-86E9-E9736E602955}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9771FE01-6023-EE4B-86E9-E9736E602955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29BBF29A-EF03-C211-8570-F3EAE320EC5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BBF29A-EF03-C211-8570-F3EAE320EC5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BBF29A-EF03-C211-8570-F3EAE320EC5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BBF29A-EF03-C211-8570-F3EAE320EC5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F04E8A9-A272-C9CC-07E4-4EFD12EF53DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F04E8A9-A272-C9CC-07E4-4EFD12EF53DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F04E8A9-A272-C9CC-07E4-4EFD12EF53DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F04E8A9-A272-C9CC-07E4-4EFD12EF53DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,83 @@
+{
+"recipes": [
+	   {
+        id: "conjurationpower",
+        label: "The Key to My Heart",
+        actionId: "work",
+        requirements: {ritual: 1, knock: 2, follower:1,notionpower:1},
+		alternativerecipes:[{id: "notionpowerpromotion",chance: 100, additional: true}],
+        effects: {},
+        startdescription: "I can use this rite to give an Hour entry to my body? Power comes with them like a scent. Of course... I don't know which Hour might come.",
+        description: "The ritual is complete. The door is opening.",
+        warmup: 30,
+        craftable: true,
+		burnimage: "flammarion"
+    },
+	  {
+        id: "conjurationpowerclue",
+        label: "The Key to My Heart?",
+        actionId: "work",
+        requirements: {ritual: 1,notionpower:1},
+        effects: {fleetingmemory:1,mystique: 1},
+        startdescription: "Can I use this rite to give an Hour entry to my body? Power comes with them like a scent.",
+        description: "It didn't work. I need another invocation too - something to open the way. And I require a willing sacrifice.",
+        warmup: 30,
+        craftable: true,
+		burnimage: "flammarion"
+    },
+	{
+        id: "conjurationenlightenment",
+        label: "The Door in my Dreams",
+        actionId: "work",
+        requirements: {ritual: 1, knock: 2, shilling:1,notionenlightenment:1},
+		alternativerecipes:[{id: "notionenlightenmentpromotion",chance: 100, additional: true}],
+        effects: {},
+        startdescription: "I can use this rite to follow in the Watchman's footsteps, and learn of the house without walls.",
+        description: "The ritual is complete. The door is opening.",
+        warmup: 30,
+        craftable: true,
+		burnimage: "flammarion"
+    },
+		{
+        id: "conjurationenlightenmentclue",
+        label: "The Door in my Dreams?",
+        actionId: "work",
+        requirements: {ritual: 1,notionenlightenment:1},
+        effects: {fleetingmemory:1},
+        startdescription: "Can I use this rite to follow in the Watchman's footsteps, and learn of the house without walls?",
+        description: "It didn't work. I need to call upon another power, too - a power of opening. And I'll need funds, to purchase the rare-wax candles that will light the Watchman's path.",
+        warmup: 30,
+        craftable: true,
+		burnimage: "flammarion"
+    },
+	{
+        id: "notionpowerpromotion",
+        label: "THE RED GRAIL COMES",
+        actionId: "x",
+        requirements: {},
+		alternativerecipes:[{id: "notionpowervictoryminor",chance: 100}],
+        effects: {fleetingmemory:1},
+		slots: {"Dedication": {required: {passion:1}}},
+         startdescription: "My heart swells; my blood burns. I am very close. I must devote myself more fervently.",
+        description: "The rite failed! I was close - as close as the flame to a candle, as the blood to a heart. I must try again.",
+        warmup: 60,
+        craftable: false,
+		burnimage: "flammarion"
+    },
+		{
+        id: "notionenlightenmentpromotion",
+        label: "I HEAR THE WATCHMAN'S FOOTSTEPS",
+        actionId: "x",
+        requirements: {},
+		alternativerecipes:[{id: "notionenlightenmentvictoryminor",chance: 100}],
+        effects: {fleetingmemory:1,mystique: 1},
+		slots: {"Dedication": {required: {reason:1}}},
+        startdescription: "The walls of the world tremble like silk. I am very close. All my thoughts must converge.",
+        description: "I touched it with my fingertips, the understanding I seek. So close. I must try again.",
+        warmup: 60,
+        craftable: false,
+		burnimage: "flammarion"
+    },
+	
+]
+}

@@ -1,0 +1,111 @@
+{"elements":
+    [
+	{id: "startingletter",
+	label: "Note",
+	description: "My correspondent is gone - the pneumonia, they tell me - but the dreams are not. [Click the Dream token, and drop this item into it.] ",
+	aspects: {}
+	},	
+          {
+        id: "shilling",
+            label: "Funds",
+            aspects:
+            {tool: 1},
+            description: "Enough to support me for a little while in adequate comfort."
+        },
+		     {
+        id: "legacy",
+            label: "A Legacy",
+            aspects:
+            {},
+            description: "A package of peculiar papers from my correspondent's executor. I should study it. [In the full game, this might contain a variety of different things each playthrough.]",
+						slots:
+						{Approach: {required: {reason: 1, passion: 1},forbidden: {},description: "Am I a passionate individual, or a reasonable one?"}}
+        },
+		     {
+        id: "gloverandgloverjuniorjob",
+            label: "Junior Position at Glover & Glover",
+            aspects:{},
+            description: "My intellect should be put to better use! But the pay is better than labourer's work."
+        },
+				     {
+        id: "gloverandgloverjob",
+            label: "Position at Glover & Glover",
+            aspects:{},
+			slots: {
+							"Diligence":
+					{
+					required: {reason: 1},
+					forbidden: {},
+					description: "Extra effort. It might help, if I'm very lucky."
+					}
+					},
+            description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk."
+        },
+						     {
+        id: "gloverandgloverseniorjob",
+            label: "Senior Position at Glover & Glover",
+            aspects:{},
+			slots: {
+					"Diligence":
+					{
+					required: {reason: 1},
+					forbidden: {},
+					description: "Extra effort. I don't know why I would bother."
+					},
+				"Devotion":
+					{
+					required: {reason: 1},
+					forbidden: {},
+					description: "Extra effort. I don't know why I would bother."
+					}
+				},
+            description: "I suppose, theoretically, I could rise higher, if someone died."
+        },
+		{
+        id: "mapbookdealer",
+            label: "Directions to Morland's",
+            aspects:{},
+            description: "Cryptic directions to the obscure address of a certain Morland, a dealer in the rarer sort of book."
+        },
+		{
+        id: "locationbookdealer",
+            label: "Morland's Shop",
+            aspects:{location: 1},
+			slots: {
+				"Purchase":
+					{
+					required: {shilling: 1},
+					forbidden: {},
+					consumes: true
+					}
+				},
+            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
+        },
+		{
+        id: "locationprivatecollection",
+            label: "Strathcoyne's Residence",
+            aspects:{location: 1},
+			slots: {
+				"Burgle":
+					{
+					required: {edge: 1,follower: 1},
+					forbidden: {}
+					}
+				},
+            description: "The house of Mr Strathcoyne, a collector of rare volumes. Strathcoyne will not sell his treasures. But a sufficiently cunning accomplice might gain entry."
+        },
+		{id: "fleetingmemory",
+		label: "Fleeting Memory",
+		aspects: {heart:1},
+		description: "I recall a moment in time, perhaps fondly.",
+		lifetime: 60
+		},
+				{id: "contentment",
+		label: "Contentment",
+		aspects: {lantern: 1,heart:1},
+		description: "I'm happy, I think.",
+		lifetime: 30
+		}
+]
+]
+};

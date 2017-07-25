@@ -1,0 +1,496 @@
+{"elements":
+    [
+       
+        {
+            id: "ordinarylife",
+            label: "An Ordinary Life",
+            aspects:{},
+            maxvalue:1,
+            notconsumable:true,
+            description: "Ordinary: for now."
+        },
+        {
+            id: "alockedmind",
+            label: "A Locked Mind",
+            aspects:{},
+            slots:
+        {
+         "Key":
+		 {required: {key: 1}}
+            },
+            maxvalue:77,
+            description: "Somewhere, there's a key."
+            },
+        {
+            id: "hungry",
+            label: "Hungry",
+            aspects:
+            {
+                grail: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:1,
+            description: "When your mouth waters, when your vision swims, you see the red cup; and now and then it will speak to you."
+            "notes": "this is removed at the end of each day in which you can support your needs."
+        },
+        {
+            id: "emptyvessel",
+            label: "Empty Vessel",
+            aspects:
+            {
+                grail: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "When you fill it, fill it with life. To do otherwise would be a gross impiety, not to mention an impropriety."
+        },
+        {
+            id: "fulfilledvessel",
+            label: "Fulfilled Vessel",
+            aspects:
+            {
+                grail: CONVENTIONS.QUANTITY_SMALL
+            },
+            maxvalue:77,
+            description: "Warm, stained, rich."
+        },
+
+        {
+            id: "reason",
+            label: "Reason",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:10,
+            description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
+        },
+		        {
+            id: "intuition",
+            label: "Intuition",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:10,
+            description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
+        },
+        {
+            id: "health",
+            label: "Health",
+            aspects:
+            {
+                heart: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:10,
+            description: "This is your body. There are other bodies; this one is yours alone."
+        },
+        {
+            id: "hubris",
+            label: "Hubris",
+            "notes": "not currently in use",
+            aspects:
+            {
+                heart: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:10,
+            description: "I was the thing I was, but now - now - I am the thing I am!"
+        },
+        {
+        id: "shilling",
+            label: "shillings",
+            aspects:
+            {},
+            maxvalue:77,
+            description: "Twelve pence, or one-twentieth of a pound, will support you for a day in modest circumstances."
+        },
+        {
+            id: "fistulousinvocation",
+            label: "Fistulous Invocation",
+            aspects:
+            {
+                knock: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "The Hour called Knock ends isolation; breaks seals; he brings the gift of secrets."
+        },
+        {
+            id: "occultscrap",
+            label: "Occult Scrap",
+            aspects:
+            {
+                secrethistories: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "There is only one future. There is not only one history."
+        },
+        {
+            id: "glimpse",
+            label: "Mansus-Glimpse",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "Behind the world is the Mansus, the lair of the Hours, the house of the Sun. Its corridors are the angles of time."
+        },
+        {
+            id: "restlessness",
+            label: "Restlessness",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:1,
+            description: "You must get out. You can't get out. Must; can't."
+        },
+        {
+            id: "romanticattention",
+            label: "Romantic Attention",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:1,
+            description: "Speak with them, and find comfort."
+        },
+        {
+            id: "aninspectorcalls",
+            label: "The Inspector's Interest ",
+            aspects:
+            {
+            },
+            maxvalue:1,
+            description: "A sombre man in dark blue has taken an interest in your endeavours.",
+            slots:
+            {
+               "interviewee": {}
+            }
+        },
+
+        {
+            id: "atlasnotes",
+            label: "Notes for an Atlas of Dreams",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_SMALL
+            },
+            maxvalue:77,
+            description: "There is a law (she wrote) that seven maps make an atlas."
+        },
+        {
+            id: "atlas",
+            label: "Atlas of Dreams",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_GENEROUS
+            },
+            maxvalue:77,
+            description: "“Each century in the Mansus is a great hall. The Hours feast in the thirty-sixth of its kind. In its last year, they'll close it up and move on. In our dreams, we can visit their abandoned halls. In our dreams.”"
+        },
+        {
+            id: "revelation",
+            label: "Revelation",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_GENEROUS,
+                moth: CONVENTIONS.QUANTITY_GENEROUS,
+                forge: CONVENTIONS.QUANTITY_GENEROUS
+            },
+            maxvalue:77,
+            description: "That was not the key."
+        },
+        {
+            id: "locksmithsdream",
+            label: "'The Locksmith's Dream'",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_TINY,
+                knock: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "Illuminated with style and grace; shot through with truth and falsehood as watered silk is shot through with light."
+        },
+        {
+            id: "tatteredmap",
+            label: "A Tattered Map",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY,
+                secrethistories: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "The prey of the Hours have left spoor, detritus, fragments: sometimes, treasures."
+        },
+        {
+            id: "thewaroftheroads",
+            label: "'A History of the War of the Roads, 1450-1480' [CENSORED EDITION]",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_TINY,
+                secrethistories: CONVENTIONS.QUANTITY_TINY,
+                forge: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "In the pasts of certain Longs, these are the events that began England's Age of Steel."
+        },
+        {
+            id: "argentinerelic",
+            label: "an Argentine Relic",
+            aspects:
+            {
+                secrethistories: CONVENTIONS.QUANTITY_SMALL
+            },
+            maxvalue:77,
+            description: "A relic of the House Argentine who fought the War of the Roads - not of the Argentine Republic."
+        },
+        {
+            id: "noonstone",
+            label: "Noonstone",
+            aspects:
+            {
+                forge: CONVENTIONS.QUANTITY_MODEST,
+                grail: CONVENTIONS.QUANTITY_MODEST
+            },
+            maxvalue:77,
+            description: "Hersault says the Red Grail split the sun. Coseley proposes it was the Forge of Days. They both agree that now, it's sunset at noon. "
+        },
+        {
+            id: "cinnabaramulet",
+            label: "A Cinnabar Amulet",
+            aspects:
+            {
+                forge: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "There is fire locked in the orbits of the stone."
+        },
+        {
+            id: "incendiaryprayer",
+            label: "An Incendiary Prayer",
+            aspects:
+            {
+                forge: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "Mouth the scorching words and dream of smoke."
+        },
+        {
+            id: "tentacleoil",
+            label: "Tentacle Oil",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:77,
+            description: "Drawn from the most pliable of digits, to annoint the most receptive of tools."
+        },
+        {
+        id: "enthusiast",
+            label: "Enthusiast",
+            aspects:
+            {
+                follower: 1
+            },
+            maxvalue:77,
+        description: "Bright of eye and hollow of heart. "
+    },
+        {
+            id: "believer",
+            label: "Believer",
+            aspects:
+            {
+                follower: 2
+            },
+            maxvalue:77,
+            description: "'All they need is a name and a vile act.' - Caric"
+        },
+
+        {
+            id: "disciple",
+            label: "Disciple",
+            aspects:
+            {
+                follower: 3
+            },
+            maxvalue:77,
+            description: "'Keep them close, until you are ready or they are ripe.' - Gralbuch"
+        },
+        {
+            id: "keyoftheredgrail",
+            label: "Key of the Red Grail",
+            aspects: {key: 1},
+            maxvalue: 1,
+            description: "My loves, my hearts, my feasts! I pledge my service to the Hour of the Red Grail!",
+            consumable: false
+
+        },
+        {
+            id: "order",
+            label: "Order",
+            aspects:
+            {
+                society: 1
+            },
+            slots:
+            {
+			"attendant 1": {  required: {ritual: 1, follower: 1},
+                forbidden: {}},
+			"attendant 2": {  required: {ritual: 1, follower: 1},
+                forbidden: {}},
+				"attendant 3": {  required: {ritual: 1, follower: 1},
+                forbidden: {}}
+              
+            },
+            maxvalue:1,
+            description: "If a Clique is the skin of our purpose, the Order is the flexing sheath of muscle beneath."
+        },
+        {
+            id: "clique",
+            label: "Clique",
+            aspects:
+            {
+                society: 1
+            },
+          slots:
+            {
+			"attendant": {
+                required: {ritual: 1, follower: 1},
+                forbidden: {}
+				},
+			"attendant 2": {
+                required: {ritual: 1, follower: 1},
+                forbidden: {}
+				},	
+            },
+            maxvalue:1,
+            description: "An earnest and informal club. Set the correct rite at its heart, and it will grow to become both weapon and fortress."
+        },
+        {
+            id: "suitablepremises",
+            label: "Suitable Premises",
+            aspects:
+            {
+                location: 1
+            },
+            slots:
+            {
+			"attic":{
+                required: {},
+                forbidden: {location: 1} },
+				"cellar":{
+                required: {},
+                forbidden: {location: 1} },
+				
+            },
+            maxvalue:77,
+            description: "Now, away from pricked ears and prying eyes, the Work can begin."
+        },
+        {
+            id: "crypt",
+            label: "Shrouded Crypt",
+            aspects:
+            {
+                location: 1
+            },
+			slots: {
+  			"antechamber":{
+                required: {},
+                forbidden: {location: 1} },
+				"gate":{
+                required: {},
+                forbidden: {location: 1} }
+            },
+            maxvalue:1,
+            description: "Sealed by the greater Arts and buried beneath basalt: still it must open."
+        },
+        {
+            id: "starshatteredfane",
+            label: "Star-shattered Fane",
+            aspects:
+            {
+                location: 1,
+                forge: CONVENTIONS.QUANTITY_TINY
+            },
+		slots: {
+  			"Chamber of Lights":{
+                required: {},
+                forbidden: {location: 1} },
+				"Chamber of Nights":{
+                required: {},
+                forbidden: {location: 1} }				
+			},
+            maxvalue:77,
+            description: "Here, the clock stops."
+        },
+        {
+            id: "minorremaking",
+            label: "Minor Remaking",
+            aspects: {
+                forge: CONVENTIONS.QUANTITY_TINY,
+                ritual: 1
+            },
+            slots: {
+                "focus":
+				{
+                required: {},
+                forbidden: {location: 1, ritual: 1, society: 1}
+				},
+				"locus":
+				{
+                required: {},
+                forbidden: {location: 1, ritual: 1, society: 1},
+				}
+            },
+            maxvalue: 1,
+			description: "For a thing to begin, another must end. For each candle we light, a shadow must burn."
+        },
+        {
+            id: "riteofslaking",
+            label: "Rite of Slaking",
+            aspects:
+            {
+                ritual: 1
+            },
+            slots:
+            {
+             "First Course":{
+                required: {},
+                forbidden: {location: 1, ritual: 1, society: 1}
+				},
+				"Second Course":{
+                required: {},
+                forbidden: {location: 1, ritual: 1, society: 1}
+				}
+            },
+            maxvalue:1,
+            description: "My dears, we face the Feast together, and our chins will run with its juices."
+        },
+        {
+            id: "cryptexpedition",
+            label: "Expedition to the Shrouded Crypt",
+            aspects:
+            {
+                expedition: 1
+            },
+            slots:
+            {
+			"Recruit":
+				{
+                required: {follower: 1},
+                forbidden: {}
+				}
+            },
+            maxvalue: CONVENTIONS.QUANTITY_EPISODE_END,
+            description: "The Long rarely die. When they do, their resting places are cursed by their kind or concealed by the Hours. Yet here it is."
+        },
+        {
+            id: "thirstly",
+            label: "[Summoned] Thirstly",
+            aspects: {
+                summoned: 1,
+                grail: CONVENTIONS.QUANTITY_MODEST
+            },
+            maxvalue: 77,
+            description: "The least servant of the Red Grail, and still it will dazzle and dessicate. Offer water, offer blood, offer the secret fluids of your flesh."
+        }
+]
+};

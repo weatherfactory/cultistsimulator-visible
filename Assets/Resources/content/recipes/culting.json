@@ -1,0 +1,149 @@
+ {"recipes":
+ [
+   	{
+        id: "cantrecruitbeliever",
+        label: "Discuss our business",
+        actionId: "talk",
+        requirements: {society: 1,follower: 1},
+		alternativerecipes:[{id: "inspiremystique",chance:70},
+		{id: "inspirenotoriety",chance:100}
+		],
+        startdescription: "Our business: our secrets.",
+        description: "Our business is conducted beneath the Sign.",
+        warmup: 50,
+        craftable: true,
+		comments: "Currently duplicates talking with a slightly shorter warmup"
+    },
+  	{
+        id: "recruitacquaintance",
+        label: "Recruit an Acquaintance",
+        actionId: "talk",
+        requirements: {society: 1,reputation: 1,mortal: 1},
+        effects: {reputation:-1},
+		aspects: {recruiting: 1},
+        startdescription: "This one is ready.",
+        description: "The oaths are resonant as thunder in a church. I know it well. I wrote them myself.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+ 	{
+        id: "begincultfoundation",
+        label: "Found a Society",
+		alternativerecipes:
+		[{id: "cultfoundation", chance:100, additional: true}],
+        actionId: "work",
+        requirements: {reputation: 1},
+        effects: {reputation: -1, contentment: 1},
+        startdescription: "I need assistants, companions - followers. ",
+        description: "Tradition and compulsion - old, new, or both together. [You'll need lore to determine a founding principle for the cult.]",
+        warmup: 10,
+        craftable: true,
+		maxexecutions: 1
+    },
+	 	{
+        id: "cultfoundation",
+        label: "Choose Founding Principles",
+		alternativerecipes:
+		[{id: "cultfoundationedge", chance:100},
+		{id: "cultfoundationforge", chance:100},
+		{id: "cultfoundationgrail", chance:100},
+		{id: "cultfoundationheart", chance:100},
+		{id: "cultfoundationknock", chance:100},
+		{id: "cultfoundationlantern", chance:100},
+		{id: "cultfoundationmoth", chance:100},
+		{id: "cultfoundationsecrethistories", chance:100},
+		{id: "cultfoundationwinter", chance:100}],
+        actionId: "cult",
+        requirements: {},
+        effects: {},
+		slots: {"Doctrine": {required: {lore: 1},description: "My society will focus on one principle."}}
+        startdescription: "I will determine a name, a doctrine, an oath. [You need lore to determine a founding principle.]",
+        description: "",
+        warmup: 10,
+        craftable: false,
+		loop: "cultfoundation"
+    },
+			{
+	id: "cultfoundationedge",
+	label: "Establish the Church of the Bright Edge",
+	actionId: "x",
+	requirements: {edge: 1},
+	effects: {cultedge_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the Hours of struggle and conquest. [In the alpha, however, all cults are effectively identical.]"
+	},
+			{
+	id: "cultfoundationforge",
+	label: "Establish the Unflinching Order",
+	actionId: "x",
+	requirements: {forge: 1},
+	effects: {cultforge_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the fire that changes and remakes. [In the alpha, however, all cults are effectively identical.]"
+	},
+	{
+	id: "cultfoundationgrail",
+	label: "Establish the Order of the Bloody Cup",
+	actionId: "x",
+	requirements: {grail: 1},
+	effects: {cultgrail_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the mysteries of birth, blood and appetite. [In the alpha, however, all cults are effectively identical.]"
+	},
+		{
+	id: "cultfoundationheart",
+	label: "Establish the Temple Unceasing",
+	actionId: "x",
+	requirements: {heart: 1},
+	effects: {cultheart_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the drumbeat which can never end. [In the alpha, however, all cults are effectively identical.]"
+	},
+			{
+	id: "cultfoundationknock",
+	label: "Establish the Society of Midnight ",
+	actionId: "x",
+	requirements: {knock: 1},
+	effects: {cultknock_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the Hour at night's heart, on which the world turns. [In the alpha, however, all cults are effectively identical.]"
+	},
+				{
+	id: "cultfoundationlantern",
+	label: "Establish the Mirror of Glory ",
+	actionId: "x",
+	requirements: {lantern: 1},
+	effects: {cultlantern_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place. [In the alpha, however, all cults are effectively identical.]"
+	},
+					{
+	id: "cultfoundationmoth",
+	label: "Establish the Wildwood Club",
+	actionId: "x",
+	requirements: {moth: 1},
+	effects: {cultmoth_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to chaos, and the unexpected Hours. [In the alpha, however, all cults are effectively identical.]"
+	},
+						{
+	id: "cultfoundationsecrethistories",
+	label: "Establish the Society of St Hydra",
+	actionId: "x",
+	requirements: {secrethistories: 1},
+	effects: {cultsecrethistories_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the study of the thousand unknown histories. [In the alpha, however, all cults are effectively identical.]"
+	},
+							{
+	id: "cultfoundationwinter",
+	label: "Establish the Children of Silence ",
+	actionId: "x",
+	requirements: {winter: 1},
+	effects: {cultwinter_1: 1},
+	startdescription: "",
+	description: "An occult society dedicated to the Hour of the cold that ends. [In the alpha, however, all cults are effectively identical.]"
+	}
+]
+}

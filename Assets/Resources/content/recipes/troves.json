@@ -1,0 +1,155 @@
+ {"recipes": [
+
+	{
+        id: "trovebookbasic",
+        label: "A Trove of Books",
+        actionId: "trovebookbasic",
+		requirements: {},
+        effects: {},
+		startdescription: "What might I find?",
+        description: "[Book trove end desc: shouldn't appear.]",
+		alternativerecipes:	[{id: "finddehoris1latin",chance:10},
+		{id: "findtravellingatnight1",chance:20},
+		{id: "findsixlettersonnecessity",chance:20},
+		{id: "findlocksmithsdream1",chance:20},
+		{id: "findlocksmithsdream2",chance:20},
+		{id: "findorchidtransfigurations1latin",chance:20},
+		{id: "findtextbooklatin",chance:80},
+		{id: "findtextbookreason",chance:50},
+		{id: "findtextbookpassion",chance:100}
+		],
+        warmup: 0,
+        craftable: false
+    },
+		{
+        id: "trovebookuncommon",
+        label: "A Trove of Uncommon Books",
+        actionId: "trovebookuncommon",
+		requirements: {},
+        effects: {},
+		startdescription: "What might I find?",
+        description: "[Book trove end desc: shouldn't appear.]",
+		alternativerecipes:	[{id: "findgeminiad",chance:100}],
+        warmup: 0,
+        craftable: false,
+		comments: "just the one for alpha"
+    },
+	{
+        id: "finddehoris1latin",
+        label: "The first volume of the 'De Horis'",
+        actionId: "find",
+		requirements: {},
+        effects: {dehoris1latin: 1},
+		startdescription: "A notable find -",
+        description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century catalogue of secret gods",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+	{
+        id: "findtravellingatnight1",
+        label: "The first volume of 'Travelling at Night'",
+        actionId: "find",
+		requirements: {},
+        effects: {travellingatnight1: 1},
+		startdescription: "A notable find -",
+        description: "The dream-journal of Christopher Illopoly, sometimes called 'the only readable occultist'",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+	{
+        id: "findsixlettersonnecessity",
+        label: "A printed edition of the Six Letters on Necessity",
+        actionId: "find",
+		requirements: {},
+        effects: {sixlettersonnecessity: 1},
+		startdescription: "A notable find -",
+        description: "A small volume of the correspondence of a seventeenth-century magus",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findlocksmithsdream1",
+        label: "The first volume of 'The Locksmith's Dream'",
+        actionId: "find",
+		requirements: {},
+        effects: {locksmithsdream1: 1},
+		startdescription: "A notable find -",
+        description: "A recent, but intriguing, work, handsomely bound in gold-tooled calf-leather.",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+			{
+        id: "findlocksmithsdream2",
+        label: "The second volume of 'The Locksmith's Dream'",
+        actionId: "find",
+		requirements: {},
+        effects: {locksmithsdream2: 1},
+		startdescription: "A notable find -",
+        description: "A recent, but intriguing, work, handsomely bound in gold-tooled calf-leather. The frontispiece, however, has been slashed with a razor.",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findorchidtransfigurations1latin",
+        label: "The first volume of the 'Orchid Transfigurations'",
+        actionId: "find",
+		requirements: {},
+        effects: {orchidtransfigurations1latin: 1},
+		startdescription: "A notable find -",
+        description: "A sixteenth-century alchemical fever-dream, frequently banned for the disturbing allure of its illustrations.",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+			{
+        id: "findgeminiad",
+        label: "The 'Geminiad'",
+        actionId: "find",
+		requirements: {},
+        effects: {geminiadfucine: 1},
+		startdescription: "A startling find -",
+        description: "A manuscript of unusual antiquity, its cover decorated with fragments of coral.",
+        warmup: 0,
+        craftable: false
+    },
+		{
+        id: "findtextbooklatin",
+        label: "A Latin grammar",
+        actionId: "find",
+		requirements: {},
+        effects: {textbooklatin : 1},
+		startdescription: "A useful find -",
+        description: "Unremarkable, but helpful.",
+        warmup: 0,
+		maxexecutions: 1,
+        craftable: false
+    },
+		{
+        id: "findtextbookreason",
+        label: "A collection of insightful essays",
+        actionId: "find",
+		requirements: {},
+        effects: {textbookreason: 1},
+		startdescription: "An interesting find",
+        description: "If the mind is a blade, this is a whetstone.",
+        warmup: 0,
+        craftable: false
+    },
+			{
+        id: "findtextbookpassion",
+        label: "A mesmerising collection of poetry",
+        actionId: "find",
+		requirements: {},
+        effects: {textbookpassion: 1},
+		startdescription: "An interesting find",
+        description: "'The poet makes himself a seer by an immense, long, deliberate derangement of all the senses...'",
+        warmup: 0,
+        craftable: false
+    }
+]
+}

@@ -3,37 +3,32 @@
         {
             "id": "work",
             "label": "Work",
-            "description": "Working earns money and creates resources."
-        },
-        {
-            "id": "study",
-            "label": "Study",
-            "description": "Studying a resource will often tell you more about it."
+            "description": "Earn your living, or practice your arts.",
+			"atStart": true
         },
         {
             "id": "dream",
             "label": "Dream",
-            "description": "Dreaming finds lore, but may imperil your Reason."
+            "description": "Rest; reconsider your priorities; or risk yourself in exploration of the kingdoms of sleep.",
+			"atStart": true
         },
-        {
+		{
             "id": "talk",
             "label": "Talk",
-            "description": "Speaking recruits followers, among other things."
+            "description": "Interrogate, intimidate, beguile, recruit.",
+			"atStart": false
         },
-        {
+		{
+            "id": "study",
+            "label": "Study",
+            "description": "Unlock books and other treasures.",
+			"atStart": false
+        },
+	  {
             "id": "explore",
             "label": "Explore",
-            "description": "Exploration locates resources, but can be unpredictable."
-        },
-        {
-            "id": "assign",
-            "label": "Assign",
-            "description": "Send a follower or other minion to assist an expedition, or deal with a threat."
-        },
-        {
-            "id": "renounce",
-            "label": "Renounce",
-            "description": "This will usually dispose of a resource, without advantage or fuss."
+            "description": "Exploration finds interesting things in locations, but can be unpredictable.",
+			"atStart": false
         }
 		]
 		
