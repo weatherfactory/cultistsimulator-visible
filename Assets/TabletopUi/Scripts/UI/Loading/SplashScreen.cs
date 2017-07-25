@@ -9,7 +9,7 @@ public class SplashScreen : MonoBehaviour, IPointerClickHandler {
 
 	bool isLoading = false;
 	public float waitUntilAutoComplete = 5f;
-	public string targetSceneName = "TabletopPrototype";
+	public string targetSceneName = "Tabletop";
 	[SerializeField] CanvasGroupFader fader;
 
 	void Start() {
