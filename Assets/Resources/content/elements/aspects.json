@@ -106,6 +106,25 @@
 			description: "Locations! Everyone must be somewhere, and I am here. A Location can contain anything except another Location.",
         isAspect: true
 },
+       {
+            id: "remote",
+            label: "Remote",
+			description: "This place is far from anywhere that anyone would want to be.",
+        isAspect: true
+},
+      {
+            id: "accursed",
+            label: "Accursed",
+			description: "Malign influences linger here.",
+        isAspect: true
+},
+      {
+            id: "vault",
+            label: "Vault",
+			description: "There is something precious here.",
+        isAspect: true
+},
+
         {
             id: "summoned",
             label: "Summoned",

@@ -100,5 +100,17 @@
         warmup: 30,
 		craftable: false
     },
+			{
+        id: "exploreremotevault",
+        label: "Send a cunning follower to break into the vault",
+        actionId: "explore",
+        requirements: {follower:1,edge:1,vault:1,location:1,remote:1},
+		effects: {location:-1},
+	alternativerecipes:[{id: "trovebookuncommon", chance: 100}],
+        startdescription: "Torches sputter. The darkness boils.",
+        description: "Your follower has found a treasure. The vault is empty.",
+        warmup: 5,
+		craftable: true
+    },
 ]
 }
