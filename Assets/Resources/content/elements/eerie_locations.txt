@@ -3,7 +3,14 @@
 	{id: "starshatteredfane",
 	label: "Star-Shattered Fane",
 	description: "The Star-Shattered Fane ",
-	aspects: {location: 1}
+	aspects: {location: 1,accursed:1,remote:1,vault:1},
+			slots: {
+				"Breach":
+					{
+					required: {edge: 1,follower: 1},
+					forbidden: {}
+					}
+				},
 	}
 	]
 }

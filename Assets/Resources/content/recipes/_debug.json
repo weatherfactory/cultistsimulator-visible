@@ -12,6 +12,17 @@
         description: "...",
         warmup: 1,
         craftable: true
+	},
+		{
+        id: "_explore",
+        label: "Create explore token",
+        actionId: "explore",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: ".",
+        description: "...",
+        warmup: 1,
+        craftable: false
 	}
 ]
 }
