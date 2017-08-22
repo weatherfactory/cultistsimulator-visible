@@ -12,8 +12,9 @@ public class Element
 {
     public IAspectsDictionary Aspects;
     /// <summary>
-    /// XTriggers allow the triggering aspect to transform the element into something else. For example, if the Knock aspect were present, and the element was a box with Knock:open_box,
+    /// XTriggers allow the triggering aspect to transform the element into something else. For example, if the Knock aspect were present, and the element was a locked_box with Knock:open_box,
     /// then the box would become an open_box regardless of what else happened in the recipe.
+    /// XTriggers run *before* the rest of the recipe (so if the recipe affected open_box elements but not locked_box elements, those effects would take place if there was a Knock in the mix).
     /// </summary>
     public Dictionary<string, string> XTriggers;
     public string Id { get; set; }
