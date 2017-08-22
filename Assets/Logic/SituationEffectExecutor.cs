@@ -15,20 +15,24 @@ namespace Assets.Logic
             var aspectsPresent = stacksManager.GetTotalAspects();
             aspectsPresent.CombineAspects(command.Recipe.Aspects);
 
-            foreach (var stack in stacksManager.GetStacks())
+            foreach (var eachStack in stacksManager.GetStacks())
             {
-                var xTriggers = stack.GetXTriggers();
-               foreach (var k in xTriggers.Keys)
-                   if (aspectsPresent.ContainsKey(k))
+                var xTriggers = eachStack.GetXTriggers();
+               foreach (var triggerKey in xTriggers.Keys)
+                    //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
+                    if (aspectsPresent.ContainsKey(triggerKey))
                    {
-                       var existingQuantity = stack.Quantity;
-
-                      stacksManager.ModifyElementQuantity(stack.Id, -existingQuantity);
-                      stacksManager.ModifyElementQuantity(xTriggers[k],existingQuantity);
+                        //if they do:
+                       var existingQuantity = eachStack.Quantity;
+                    //replace the element that has the trigger with the trigger result
+                    //eg, if an individual has a Recruiting: individual_b trigger, and there's a Recruiting aspect in the stack, then replace the individual with individual_b
+                      stacksManager.ModifyElementQuantity(eachStack.Id, -existingQuantity);
+                      stacksManager.ModifyElementQuantity(xTriggers[triggerKey],existingQuantity);
                        var notifier=Registry.Retrieve<INotifier>();
-                        notifier.DebugLog("xtrigger aspect " + k + " caused " + stack.Id + " to transform into " + xTriggers[k]);
+                        notifier.DebugLog("xtrigger aspect " + triggerKey + " caused " + eachStack.Id + " to transform into " + xTriggers[triggerKey]);
                    }
             }
+            //note: standard effects happen *after* XTrigger effects
             foreach (var kvp in command.GetElementChanges())
             {
                 stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value);

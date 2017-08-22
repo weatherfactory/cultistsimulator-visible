@@ -91,10 +91,10 @@
         label: "Send a cunning follower to break into the vault",
         actionId: "explore",
         requirements: {follower:1,edge:1,vault:1,location:1,remote:1},
-		effects: {location:-1},
+		effects: {},
 	alternativerecipes:[{id: "trovebookuncommon", chance: 100}],
-        startdescription: "Torches sputter. The darkness boils.",
-        description: "Your follower has found a treasure. The vault is empty.",
+        startdescription: "Torches sputter. Swollen shadows twitch.",
+        description: ".",
         warmup: 5,
 		craftable: true
     },

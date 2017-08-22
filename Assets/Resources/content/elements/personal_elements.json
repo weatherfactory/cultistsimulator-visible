@@ -9,6 +9,7 @@
 			  grail: CONVENTIONS.QUANTITY_TINY},
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
 			},
+
 			{
         id: "injury",
             label: "An Injury",
@@ -121,6 +122,13 @@
             aspects:
             {desire: 1},
             description: "It has occurred to me that I hold the key to wisdom. [This can be used to end the game after completing a rite which gives unearthly knowledge. Dreaming about it might change the goal.]"
+        },
+				 {
+            id: "desireconjurename",
+            label: "Desire: Conjure a Name",
+            aspects:
+            {desire: 1},
+            description: "With the correct rites, I can draw the powers of the Mansus into the waking world."
         }
 ]
 };
