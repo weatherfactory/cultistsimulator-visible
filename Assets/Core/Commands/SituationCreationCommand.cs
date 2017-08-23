@@ -40,9 +40,9 @@ namespace Assets.Core.Commands
             return Verb;
         }
 
-        public ISituationStateMachine CreateSituationStateMachine(ISituationStateMachineSituationSubscriber subscriber)
+        public ISituation CreateSituationStateMachine(ISituationSubscriber subscriber)
         {
-            var machine=new SituationStateMachine(subscriber);
+            var machine=new Entities.Situation(subscriber);
             if (Recipe == null)
                 return machine;
 
@@ -51,7 +51,7 @@ namespace Assets.Core.Commands
             if (TimeRemaining == null)
                 return machine;
 
-            return new SituationStateMachine(TimeRemaining.Value,State.Value,Recipe, subscriber);
+            return new Entities.Situation(TimeRemaining.Value,State.Value,Recipe, subscriber);
     }
 
 }

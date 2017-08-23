@@ -21,7 +21,7 @@ namespace Assets.Editor.Tests
         private Character characterMock;
         private ISituationAnchor situationAnchorMock;
         private ISituationDetails situationDetailsMock;
-        private ISituationStateMachine situationStateMachineMock;
+        private ISituation _situationMock;
         private IVerb basicVerb;
             
         [SetUp]
@@ -32,7 +32,7 @@ namespace Assets.Editor.Tests
             situationDetailsMock = Substitute.For<ISituationDetails>();
             compendiumMock = Substitute.For<ICompendium>();
             characterMock = Substitute.For<Character>();
-            situationStateMachineMock = Substitute.For<ISituationStateMachine>();
+            _situationMock = Substitute.For<ISituation>();
             basicVerb=new BasicVerb("id","label","description",false);
 
 
@@ -41,7 +41,7 @@ namespace Assets.Editor.Tests
             var command=new SituationCreationCommand(basicVerb,null);
             sc.Initialise(command, situationAnchorMock,situationDetailsMock);
 
-            sc.SituationStateMachine = situationStateMachineMock;
+            sc.Situation = _situationMock;
 
         }
 
@@ -58,7 +58,7 @@ namespace Assets.Editor.Tests
             compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"", new Character()).ReturnsForAnyArgs(recipe);
           sc.StartingSlotsUpdated();
             situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
-            situationDetailsMock.Received().UpdateTextForCandidateRecipe(recipe);
+            situationDetailsMock.Received().DisplayStartingRecipeFound(recipe);
         }
 
         //item added to / removed from ongoing slot updates aspects display and recipe *prediction* with stored aspects and ongoing slot aspects
@@ -79,7 +79,7 @@ namespace Assets.Editor.Tests
         public void AllOutputsGone_ResetsStateMachine()
         {
             sc.AllOutputsGone();
-            situationStateMachineMock.Received().AllOutputsGone();
+            _situationMock.Received().AllOutputsGone();
         }
 
         [Test]

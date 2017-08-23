@@ -11,7 +11,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable ExportStacksAndSituations(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations);
+        Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations);
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
     }
 
@@ -19,7 +19,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
 
 
-        public Hashtable ExportStacksAndSituations(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
+        public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
         {
             var htAll = new Hashtable
            {
@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htAll;
         }
 
-        private Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
+        public Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
         {
    
             var htSituations = new Hashtable();

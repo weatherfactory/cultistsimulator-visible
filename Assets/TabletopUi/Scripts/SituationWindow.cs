@@ -162,25 +162,25 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        public void DisplayNoRecipeFound()
+        {
+            title.text = "";
+            description.text = "[If I experiment further, I may find another combination. There will be a great many more combinations in the final game.]";
+            button.gameObject.SetActive(false);
+        }
+
         public void DisplayAspects(IAspectsDictionary forAspects)
         {
             aspectsDisplay.DisplayAspects(forAspects);
         }
 
-        public void UpdateTextForCandidateRecipe(Recipe r)
+        public void DisplayStartingRecipeFound(Recipe r)
         {
-            if (r != null)
-            {
+            
                 title.text = r.Label;
                 description.text = r.StartDescription;
                 button.gameObject.SetActive(true);
-            }
-            else
-            {
-                title.text = "";
-                description.text = "[If I experiment further, I may find another combination. There will be a great many more combinations in the final game.]";
-                button.gameObject.SetActive(false);
-            }
+ 
         }
 
 

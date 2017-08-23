@@ -226,7 +226,7 @@ namespace Assets.Editor.Tests
             return true;
         }
 
-        public bool Retire(bool withFlameEffect)
+        public bool Retire(bool withVFX)
         {
             throw new NotImplementedException();
         }

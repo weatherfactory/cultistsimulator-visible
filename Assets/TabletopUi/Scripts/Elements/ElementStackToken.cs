@@ -84,14 +84,14 @@ namespace Assets.CS.TabletopUI
             return Retire(true);
         }
 
-        public bool Retire(bool withFlameEffect)
+        public bool Retire(bool withVFX)
         {
             if (Defunct)
                 return false;
 
             Defunct = true;
 
-            if (withFlameEffect && gameObject.activeInHierarchy)
+            if (withVFX && gameObject.activeInHierarchy)
             {
                 var effect = Instantiate<CardBurnEffect>(cardBurnFX) as CardBurnEffect;
                 effect.StartAnim(this);

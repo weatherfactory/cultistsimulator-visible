@@ -8,7 +8,7 @@ using Assets.Core.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationStateMachineSituationSubscriber
+    public interface ISituationSubscriber
     {
         void SituationBeginning(Recipe withRecipe);
         void SituationOngoing();

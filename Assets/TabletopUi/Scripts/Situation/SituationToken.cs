@@ -49,7 +49,7 @@ namespace Assets.CS.TabletopUI
 
         public SituationState SituationState
         {
-            get { return SituationController.SituationStateMachine.State; }
+            get { return SituationController.Situation.State; }
         }
 
         public bool IsOpen = false;

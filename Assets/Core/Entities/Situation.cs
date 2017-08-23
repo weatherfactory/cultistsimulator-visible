@@ -12,7 +12,7 @@ using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities
 {
-    public interface ISituationStateMachine
+    public interface ISituation
     {
         SituationState State { get; set; }
         float TimeRemaining { get; }
@@ -29,14 +29,14 @@ namespace Assets.Core.Entities
         void AllOutputsGone();
     }
 
-    public class SituationStateMachine : ISituationStateMachine
+    public class Situation : ISituation
     {
-        public SituationState State { get; set; }
+        public global::SituationState State { get; set; }
        private Recipe currentPrimaryRecipe { get; set; }
         public float TimeRemaining { private set; get; }
         public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
         public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
-        private ISituationStateMachineSituationSubscriber subscriber;
+        private ISituationSubscriber subscriber;
 
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
@@ -48,7 +48,7 @@ namespace Assets.Core.Entities
         }
         
 
-        public SituationStateMachine(ISituationStateMachineSituationSubscriber s)
+        public Situation(ISituationSubscriber s)
         {
             subscriber = s;
             State = SituationState.Unstarted;
@@ -58,7 +58,7 @@ namespace Assets.Core.Entities
         {
             currentPrimaryRecipe = null;
             TimeRemaining = 0;
-            State = SituationState.Unstarted;
+            State = global::SituationState.Unstarted;
             subscriber.SituationHasBeenReset();
         }
 
@@ -66,7 +66,7 @@ namespace Assets.Core.Entities
         {
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
-            State = SituationState.FreshlyStarted;
+            State = global::SituationState.FreshlyStarted;
             SoundManager.PlaySfx("SituationBegin");
         }
 
@@ -78,7 +78,7 @@ namespace Assets.Core.Entities
 
 
 
-        public SituationStateMachine(float timeRemaining, SituationState state, Recipe withPrimaryRecipe,ISituationStateMachineSituationSubscriber s)
+        public Situation(float timeRemaining, global::SituationState state, Recipe withPrimaryRecipe,ISituationSubscriber s)
         {
             subscriber = s;
             currentPrimaryRecipe = withPrimaryRecipe;
@@ -198,7 +198,7 @@ namespace Assets.Core.Entities
 
         private void Complete()
         {
-            State = SituationState.Complete;
+            State = global::SituationState.Complete;
             subscriber.SituationComplete();
         }
 

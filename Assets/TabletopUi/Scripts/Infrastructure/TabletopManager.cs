@@ -311,9 +311,9 @@ namespace Assets.CS.TabletopUI
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             try
             {
-                var htSave = saveGameManager.LoadSavedGame("save.txt");
+                var htSave = saveGameManager.RetrieveHashedSave("save.txt");
                 ClearBoard();
-                saveGameManager.ImportSavedGameToContainer(tabletopContainer, htSave);
+                saveGameManager.ImportHashedSaveToContainer(tabletopContainer, htSave);
                 notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
 
             }

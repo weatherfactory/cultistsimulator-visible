@@ -23,7 +23,7 @@ namespace Assets.Core.Interfaces
         bool HasChildSlots();
         void SplitAllButNCardsToNewStack(int n);
         bool AllowMerge();
-        bool Retire(bool withFlameEffect);
+        bool Retire(bool withVFX);
         void Decay(float interval);
     }
 }

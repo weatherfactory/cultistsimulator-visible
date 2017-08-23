@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -106,9 +108,10 @@
     <Compile Include="Assets\Core\Entities\Element.cs" />
     <Compile Include="Assets\Core\Entities\ElementStacksManager.cs" />
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
-    <Compile Include="Assets\Core\Entities\SituationStateMachine.cs" />
+    <Compile Include="Assets\Core\Entities\Situation.cs" />
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
     <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
+    <Compile Include="Assets\Core\Entities\StoredElementStack.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\Style.cs" />
@@ -155,7 +158,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IDraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationDetails.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationStateMachineSituationSubscriber.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationSubscriber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenGlow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\LetterPanel.cs" />

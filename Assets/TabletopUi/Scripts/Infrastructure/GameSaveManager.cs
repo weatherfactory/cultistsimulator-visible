@@ -25,11 +25,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void SaveGame(TabletopContainer tabletopContainer,string saveFileName)
         {
-            var htSaveTable = dataExporter.ExportStacksAndSituations(tabletopContainer.GetElementStacksManager().GetStacks(), tabletopContainer.GetAllSituationTokens());
+            var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            var allSituationTokens = tabletopContainer.GetAllSituationTokens();
+            
+
+            var htSaveTable = dataExporter.GetSaveHashTable(allStacks,
+                allSituationTokens);
+
             File.WriteAllText(NoonUtility.GetGameSavePath(saveFileName), htSaveTable.JsonString());
         }
 
-        public Hashtable LoadSavedGame(string saveFileName)
+        public Hashtable RetrieveHashedSave(string saveFileName)
         {
             string importJson = File.ReadAllText(NoonUtility.GetGameSavePath(saveFileName));
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
@@ -37,7 +43,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
+        public void ImportHashedSaveToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
         {
             dataImporter.ImportSavedGameToContainer(tabletopContainer,htSave);
         }

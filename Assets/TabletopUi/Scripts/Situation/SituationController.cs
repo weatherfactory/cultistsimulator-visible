@@ -18,11 +18,11 @@ using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi
 {
-    public class SituationController : ISituationStateMachineSituationSubscriber
+    public class SituationController : ISituationSubscriber
     {
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
-        public ISituationStateMachine SituationStateMachine;
+        public ISituation Situation;
         private readonly ICompendium compendium;
         private readonly Character currentCharacter;
 
@@ -44,14 +44,13 @@ namespace Assets.TabletopUi
             if (command.Recipe != null)
                 RecreateSituation(command);
             else
-                SituationStateMachine = new SituationStateMachine(this);
+                Situation = new Core.Entities.Situation(this);
         }
 
 
         public void OpenSituation()
         {
             situationToken.OpenToken();
-
             situationWindow.Show();
         }
 
@@ -65,18 +64,21 @@ namespace Assets.TabletopUi
 
         public string GetCurrentRecipeId()
         {
-            return SituationStateMachine == null ? null : SituationStateMachine.RecipeId;
+            return Situation == null ? null : Situation.RecipeId;
         }
 
         public void StartingSlotsUpdated()
         {
+            
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromAllSlottedElements();
+            
+            Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id,currentCharacter);
+
             situationWindow.DisplayAspects(startingAspects);
-
-
-            var r = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id,currentCharacter);
-
-            situationWindow.UpdateTextForCandidateRecipe(r);
+            if (recipeMatchingStartingAspects != null)
+                situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
+            else
+                situationWindow.DisplayNoRecipeFound();
         }
 
         public void OngoingSlotsUpdated()
@@ -96,7 +98,7 @@ namespace Assets.TabletopUi
         {
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
                 new DefaultDice(), currentCharacter); //nb the use of default dice: we don't want to display any recipes without a 100% chance of executing
-            return SituationStateMachine.GetPrediction(rc);
+            return Situation.GetPrediction(rc);
         }
 
         private IAspectsDictionary GetAspectsAvailableToSituation()
@@ -119,9 +121,9 @@ namespace Assets.TabletopUi
 
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(), new Dice(), currentCharacter);
-            SituationStateMachine.Continue(rc, interval);
+            Situation.Continue(rc, interval);
 
-            if (SituationStateMachine.State == SituationState.Ongoing)
+            if (Situation.State == global::SituationState.Ongoing)
             {
                 var pair = new TokenAndSlot()
                 {
@@ -142,7 +144,7 @@ namespace Assets.TabletopUi
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromStoredElements(),
                 new Dice(),currentCharacter);
 
-            var nextRecipePrediction = SituationStateMachine.GetPrediction(rc);
+            var nextRecipePrediction = Situation.GetPrediction(rc);
 
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
         }
@@ -156,7 +158,7 @@ namespace Assets.TabletopUi
 
         public void SituationOngoing()
         {
-            situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
+            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
         }
 
 
@@ -196,8 +198,8 @@ namespace Assets.TabletopUi
             situationToken.DisplayComplete();
 
             var stacksToRetrieve = situationWindow.GetStoredStacks();
-            INotification notification = new Notification(SituationStateMachine.GetTitle(),
-                SituationStateMachine.GetDescription());
+            INotification notification = new Notification(Situation.GetTitle(),
+                Situation.GetDescription());
                 SetOutput(stacksToRetrieve, notification);
           
 
@@ -217,9 +219,9 @@ namespace Assets.TabletopUi
 
         public void RecreateSituation(SituationCreationCommand command)
         {
-            SituationStateMachine = command.CreateSituationStateMachine(this);
+            Situation = command.CreateSituationStateMachine(this);
             situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
-            situationToken.DisplayTimeRemaining(SituationStateMachine.Warmup, SituationStateMachine.TimeRemaining);
+            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
         }
 
 
@@ -231,7 +233,7 @@ namespace Assets.TabletopUi
             {
                 situationWindow.SetSlotConsumptions();
                 situationWindow.StoreStacks(situationWindow.GetStacksInStartingSlots());
-                SituationStateMachine.Start(recipe);
+                Situation.Start(recipe);
                 if (recipe.BurnImage != null)
                     BurnImageHere(recipe.BurnImage);
             }
@@ -252,7 +254,7 @@ namespace Assets.TabletopUi
 
         public void AllOutputsGone()
         {
-            SituationStateMachine.AllOutputsGone();
+            Situation.AllOutputsGone();
             //if this was a transient verb, clean up everything and finish.
             //otherwise, prep the window for the next recipe
             if (situationToken.IsTransient)
@@ -272,11 +274,11 @@ namespace Assets.TabletopUi
             var exporter = new GameDataExporter();
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
-            if (SituationStateMachine != null)
+            if (Situation != null)
             {
-                situationSaveData.Add(SaveConstants.SAVE_RECIPEID, SituationStateMachine.RecipeId);
-                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, SituationStateMachine.State);
-                situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, SituationStateMachine.TimeRemaining);
+                situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
+                situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, Situation.TimeRemaining);
             }
 
 
