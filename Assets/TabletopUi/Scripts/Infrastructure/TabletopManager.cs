@@ -334,13 +334,14 @@ namespace Assets.CS.TabletopUI
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
-                heart.ResumeBeating();
             }
             catch (Exception e)
             {
 
                 notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             }
+
+            heart.ResumeBeating();
         }
 
 
