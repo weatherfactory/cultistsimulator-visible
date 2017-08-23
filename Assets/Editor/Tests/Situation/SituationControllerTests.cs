@@ -61,6 +61,21 @@ namespace Assets.Editor.Tests
             situationDetailsMock.Received().DisplayStartingRecipeFound(recipe);
         }
 
+        [Test]
+        public void ElementInStartingSlot_IsMovedToSituationStoredElements_WhenSituationIsClosed()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void ElementInSituationStoredElements_IsMovedToStartingSlot_WhenSituationIsOpened()
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+
         //item added to / removed from ongoing slot updates aspects display and recipe *prediction* with stored aspects and ongoing slot aspects
         [Test]
         public void ItemAddedToOngoingSlot_UpdatesAspectsAndRecipePrediction_WithOngoingSlotAspects()

@@ -18,7 +18,9 @@ namespace Assets.Core.Entities
         float TimeRemaining { get; }
         float Warmup { get; }
         string RecipeId { get; }
+        IList<IElementStack> StoredElementStacks();
         IList<SlotSpecification> GetSlotsForCurrentRecipe();
+        
         string GetTitle();
         string GetStartingDescription();
         string GetDescription();
@@ -38,6 +40,11 @@ namespace Assets.Core.Entities
         public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
         private ISituationSubscriber subscriber;
 
+
+        public IList<IElementStack> StoredElementStacks()
+        {
+            throw new NotImplementedException();
+        }
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
         {

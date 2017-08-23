@@ -116,7 +116,6 @@ namespace Assets.CS.TabletopUI
             }
             catch (Exception e)
             {
-
                 Debug.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
