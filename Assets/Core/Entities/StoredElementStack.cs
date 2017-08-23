@@ -110,7 +110,7 @@ namespace Assets.CS.TabletopUI
 
                 SetQuantity(quantity);
                 
-                SetCardDecay(0f);
+              
                 lifetimeRemaining = _element.Lifetime;
 
             }
