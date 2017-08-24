@@ -122,6 +122,7 @@ namespace Assets.TabletopUi
 
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(), new Dice(), currentCharacter);
+
             Situation.Continue(rc, interval);
 
             if (Situation.State == SituationState.Ongoing)
@@ -134,6 +135,12 @@ namespace Assets.TabletopUi
                 if(tokenAndSlot.RecipeSlot!=null)
                     response.SlotsToFill.Add(tokenAndSlot);
 
+            }
+
+            if (Situation.State == SituationState.Complete)
+            {
+                if (!situationWindow.GetCurrentOutputs().Any())
+                    AllOutputsGone();
             }
 
             return response;
@@ -199,6 +206,8 @@ namespace Assets.TabletopUi
             situationToken.DisplayComplete();
 
             var stacksToRetrieve = situationWindow.GetStoredStacks();
+
+
             INotification notification = new Notification(Situation.GetTitle(),
                 Situation.GetDescription());
                 SetOutput(stacksToRetrieve, notification);
