@@ -60,7 +60,7 @@ namespace Assets.Core.Entities
         {
             currentPrimaryRecipe = null;
             TimeRemaining = 0;
-            State = global::SituationState.Unstarted;
+            State = SituationState.Unstarted;
             subscriber.SituationHasBeenReset();
         }
 

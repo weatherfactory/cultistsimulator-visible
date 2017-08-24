@@ -12,24 +12,15 @@ using Noon;
 using TMPro;
 using UnityEngine.Assertions;
 
-public class SituationOutputTokenContainer : MonoBehaviour, ITokenContainer {
+public class OutputCardContainer : MonoBehaviour, ITokenContainer {
 
-    private Results _parentResults;
 
-    public void SetParentOutputContainer(Results soc) {
-        _parentResults = soc;
-    }
 
-    public void TokenPickedUp(DraggableToken draggableToken) {
-        Assert.IsNotNull(_parentResults, "parentSituationOutputContainer is null!");
 
-        var stacks = GetElementStacksManager().GetStacks();
-        //if no stacks left in output
-        if (!stacks.Any()) {
-            _parentResults.AllOutputsGone();
-            DestroyObject(this.gameObject);
-            
-        }
+    public void TokenPickedUp(DraggableToken draggableToken)
+    {
+
+
     }
 
     public bool AllowDrag { get { return true; } }

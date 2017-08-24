@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// Should inherit from a "TabletopToken" base class same as VerbBox
+//TODO: THIS IS PROBABLY NOW REDUNDANT
 
 namespace Assets.CS.TabletopUI
 {
