@@ -20,8 +20,6 @@ namespace Assets.Core.Entities
         string RecipeId { get; }
         
         IList<SlotSpecification> GetSlotsForCurrentRecipe();
-        IList<IElementStack> UnstoreElementStacks();
-        void StoreElementStack(IElementStack stackToStore);
 
         string GetTitle();
         string GetStartingDescription();
@@ -41,17 +39,7 @@ namespace Assets.Core.Entities
         public float Warmup { get { return currentPrimaryRecipe.Warmup; } }
         public string RecipeId { get { return currentPrimaryRecipe == null ? null : currentPrimaryRecipe.Id; } }
         private ISituationSubscriber subscriber;
-        private IList<IElementStack> storedElementStacks;
-
-        public IList<IElementStack> UnstoreElementStacks()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StoreElementStack(IElementStack stackToStore)
-        {
-            throw new NotImplementedException();
-        }
+   
 
         public IList<SlotSpecification> GetSlotsForCurrentRecipe()
         {

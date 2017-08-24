@@ -50,8 +50,6 @@ namespace Assets.TabletopUi
 
         public void OpenSituation()
         {
-            var unstoredStacks = Situation.UnstoreElementStacks();
-
             situationToken.OpenToken();
             situationWindow.Show();
         }
@@ -59,8 +57,6 @@ namespace Assets.TabletopUi
 
         public void CloseSituation()
         {
-            foreach(var stack in situationWindow.GetStacksInStartingSlots())
-                Situation.StoreElementStack(stack);
 
             situationToken.CloseToken();
             situationWindow.Hide();
