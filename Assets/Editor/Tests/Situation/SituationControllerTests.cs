@@ -61,17 +61,6 @@ namespace Assets.Editor.Tests
             situationDetailsMock.Received().DisplayStartingRecipeFound(recipe);
         }
 
-        [Test]
-        public void ElementInStartingSlot_IsMovedToSituationStoredElements_WhenSituationIsClosed()
-        {
-            throw new NotImplementedException();
-        }
-
-        [Test]
-        public void ElementInSituationStoredElements_IsMovedToStartingSlot_WhenSituationIsOpened()
-        {
-            throw new NotImplementedException();
-        }
 
         
 
