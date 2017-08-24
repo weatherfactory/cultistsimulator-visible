@@ -124,15 +124,15 @@ namespace Assets.TabletopUi
                 GetAspectsAvailableToSituation(), new Dice(), currentCharacter);
             Situation.Continue(rc, interval);
 
-            if (Situation.State == global::SituationState.Ongoing)
+            if (Situation.State == SituationState.Ongoing)
             {
-                var pair = new TokenAndSlot()
+                var tokenAndSlot = new TokenAndSlot()
                 {
                     Token = situationToken as SituationToken,
                     RecipeSlot = situationWindow.GetUnfilledGreedySlot() as RecipeSlot
                 };
-                if(pair.RecipeSlot!=null)
-                    response.SlotsToFill.Add(pair);
+                if(tokenAndSlot.RecipeSlot!=null)
+                    response.SlotsToFill.Add(tokenAndSlot);
 
             }
 
