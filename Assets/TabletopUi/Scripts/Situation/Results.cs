@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,18 +28,17 @@ public class Results : MonoBehaviour
 
     }
 
-    //all the outputs created have been consumed; tell upstream it can get back to what it was doing
-    public void AllOutputsGone()
+    public void Reset()
     {
-        situationWindow.AllOutputsGone();
         foreach(var o in _outputNotesContainer.GetComponentsInChildren<SituationOutputNote>())
             Destroy(o.gameObject); //clear the note, ie the text results
-        gameObject.SetActive(false);
+
     }
 
-    public IEnumerable<ISituationOutput> GetCurrentOutputs()
+    public IEnumerable<IElementStack> GetOutputCards()
     {
-        return _outputNotesContainer.GetComponentsInChildren<SituationOutputNote>();
+        return _outputCardContainer.GetElementStacksManager().GetStacks();
+
     }
  
 }

@@ -803,7 +803,6 @@ namespace TMPro.EditorUtilities
         /// <param name="target"></param>
         void CopySerializedProperty(SerializedProperty source, ref SerializedProperty target)
         {
-            // TODO : Should make a generic function which copies each of the properties.
             target.FindPropertyRelative("id").intValue = source.FindPropertyRelative("id").intValue;
             target.FindPropertyRelative("x").floatValue = source.FindPropertyRelative("x").floatValue;
             target.FindPropertyRelative("y").floatValue = source.FindPropertyRelative("y").floatValue;

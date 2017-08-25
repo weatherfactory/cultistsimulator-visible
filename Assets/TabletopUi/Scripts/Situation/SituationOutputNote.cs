@@ -33,9 +33,6 @@ public class SituationOutputNote : MonoBehaviour, ISituationOutput
     }
 
 
-
-
- 
 }
 
 

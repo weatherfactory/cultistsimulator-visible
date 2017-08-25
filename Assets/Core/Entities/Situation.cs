@@ -28,7 +28,7 @@ namespace Assets.Core.Entities
         RecipePrediction GetPrediction(IRecipeConductor rc);
         void Beginning(Recipe withRecipe);
         void Start(Recipe primaryRecipe);
-        void AllOutputsGone();
+        void ResetIfComplete();
     }
 
     public class Situation : ISituation
@@ -72,7 +72,7 @@ namespace Assets.Core.Entities
             SoundManager.PlaySfx("SituationBegin");
         }
 
-        public void AllOutputsGone()
+        public void ResetIfComplete()
         {
             if(State==SituationState.Complete)
                 Reset();

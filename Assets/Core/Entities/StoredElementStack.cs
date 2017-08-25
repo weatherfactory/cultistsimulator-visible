@@ -32,7 +32,6 @@ namespace Assets.CS.TabletopUI
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
 
-        //TODO: lots of duplicated code here.
         public string Id
         {
             get { return _element == null ? null : _element.Id; }

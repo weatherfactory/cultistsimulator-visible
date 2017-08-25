@@ -589,7 +589,6 @@ public class TMPro_SDFMaterialEditor : MaterialEditor
                         havePropertiesChanged = true;
                         //SetMaskID(m_mask);
 
-                        // TODO Add check for _UseClipRect
                         SetMaskKeywords(m_mask);
                     }
 
@@ -752,7 +751,7 @@ public class TMPro_SDFMaterialEditor : MaterialEditor
 
                     for (int i = 0; i < objects.Length; i++)
                     {
-                        // TODO : This doesn't work with prefabs. Need to add support by using ITextElement interface.
+                       
                         //TMP_Text textComponent = objects[i].GetComponent<TMP_Text>();
                         //if (textComponent != null)
                         //{

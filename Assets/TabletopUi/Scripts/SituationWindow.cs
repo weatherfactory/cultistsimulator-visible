@@ -70,10 +70,6 @@ namespace Assets.CS.TabletopUI
         public void Show()
         {
             canvasGroupFader.Show();
-            //Hack: I haven't identified the problem that sometimes causes windows to get stuck in the complete
-            //but empty state. This should force it out of that state if necessary.
-            if(results.isActiveAndEnabled && !results.GetCurrentOutputs().Any())
-                SetStarting();
         }
 
         public void Hide()
@@ -87,6 +83,8 @@ namespace Assets.CS.TabletopUI
 
             startingSlotsContainer.gameObject.SetActive(true);
             ongoingSlotsContainer.gameObject.SetActive(false);
+
+            results.Reset();
             results.gameObject.SetActive(false);
             
             title.text = Verb.Label;
@@ -225,9 +223,9 @@ namespace Assets.CS.TabletopUI
             return slottedAspects;
         }
 
-        public IEnumerable<ISituationOutput> GetCurrentOutputs()
+        public IEnumerable<IElementStack> GetOutputCards()
         {
-            return results.GetCurrentOutputs();
+            return results.GetOutputCards();
         }
 
         public IRecipeSlot GetUnfilledGreedySlot()
@@ -279,10 +277,6 @@ namespace Assets.CS.TabletopUI
             return situationStorage.GetElementStacksManager();
         }
 
-        public void AllOutputsGone() {
-            results.gameObject.SetActive(false);
-            situationController.AllOutputsGone();
-        }
 
         public void Retire()
         {

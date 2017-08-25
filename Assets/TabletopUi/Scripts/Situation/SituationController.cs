@@ -60,6 +60,13 @@ namespace Assets.TabletopUi
 
             situationToken.CloseToken();
             situationWindow.Hide();
+
+            if (Situation.State == SituationState.Complete)
+            {
+                if (!situationWindow.GetOutputCards().Any())
+                    ResetToStartingState();
+            }
+
         }
 
 
@@ -137,11 +144,7 @@ namespace Assets.TabletopUi
 
             }
 
-            if (Situation.State == SituationState.Complete)
-            {
-                if (!situationWindow.GetCurrentOutputs().Any())
-                    AllOutputsGone();
-            }
+
 
             return response;
         }
@@ -262,9 +265,9 @@ namespace Assets.TabletopUi
             situationWindow.GetSituationStorageStacksManager().ModifyElementQuantity(elementId, quantity);
         }
 
-        public void AllOutputsGone()
+        public void ResetToStartingState()
         {
-            Situation.AllOutputsGone();
+            Situation.ResetIfComplete();
             //if this was a transient verb, clean up everything and finish.
             //otherwise, prep the window for the next recipe
             if (situationToken.IsTransient)
@@ -274,8 +277,13 @@ namespace Assets.TabletopUi
                 //at the moment, the controller is accessed through the token
                 //if we attach the controller to a third object, we'd need to retire that too
             }
+            else
+            {
+                situationWindow.SetStarting();
+                situationToken.ShowCompletionCount(0);
+            }
 
-            situationToken.ShowCompletionCount(0);
+            
         }
 
         public Hashtable GetSaveDataForSituation()
@@ -314,11 +322,12 @@ namespace Assets.TabletopUi
             }
 
             //save notes, and their contents
-            if (situationWindow.GetCurrentOutputs().Any())
-            {
-                var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetCurrentOutputs());
-                situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTS, htOutputs);
-            }
+            throw new NotImplementedException(); //this won't work as intended right now
+           // if (situationWindow.GetOutputCards().Any())
+           // {
+            //    var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetOutputCards());
+            //    situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTS, htOutputs);
+            //}
             return situationSaveData;
         }
 

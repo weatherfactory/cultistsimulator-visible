@@ -122,7 +122,7 @@ namespace Assets.Editor.Tests
         public void Situation_AllOutputsGone_ReturnsToBlankState_IfSituationComplete()
         {
             Core.Entities.Situation s = new Core.Entities.Situation(30, SituationState.Complete, r1, subscriber);
-            s.AllOutputsGone();
+            s.ResetIfComplete();
             Assert.AreEqual(SituationState.Unstarted,s.State);
             Assert.AreEqual(null,s.RecipeId);
             Assert.AreEqual(0,s.TimeRemaining);
@@ -132,7 +132,7 @@ namespace Assets.Editor.Tests
         public void Situation_AllOutputsGone_DoesNotReturnToBlankState_IfSituationNotComplete()
         {
             Core.Entities.Situation s = new Core.Entities.Situation(30, SituationState.Ongoing, r1, subscriber);
-            s.AllOutputsGone();
+            s.ResetIfComplete();
             Assert.AreNotEqual(SituationState.Unstarted, s.State);
             Assert.AreNotEqual(null, s.RecipeId);
             Assert.AreNotEqual(0, s.TimeRemaining);

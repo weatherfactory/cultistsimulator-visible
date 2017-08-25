@@ -163,8 +163,7 @@ namespace TMPro
         //        m_MaterialReferenceLookup[materialHashCode] = index;
 
         //        // Compute Padding value and store it
-        //        // TODO
-
+        
         //        int fontAssetHashCode = fontAsset.hashCode;
 
         //        if (!m_FontAssetReferenceLookup.ContainsKey(fontAssetHashCode))
@@ -414,7 +413,7 @@ namespace TMPro
         //        m_MaterialReferenceLookup[materialHashCode] = 0;
 
         //        // Compute Padding value and store it
-        //        // TODO
+        
 
         //        int fontHashCode = fontAsset.hashCode;
 
@@ -430,7 +429,7 @@ namespace TMPro
         //        m_MaterialReferenceLookup[materialHashCode] = 0;
         //    }
         //    // Compute padding
-        //    // TODO
+
 
         //    m_countInternal = 1;
         //}

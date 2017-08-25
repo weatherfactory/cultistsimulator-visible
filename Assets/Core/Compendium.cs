@@ -132,7 +132,6 @@ public class Compendium : ICompendium
 
     public Notification GetNotificationForEndingFlag(string endingFlag)
     {
-        //TODO! this is a demo hack
         if(endingFlag=="deathofthebody")
             return new Notification("MY BODY IS DEAD",
                 "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
