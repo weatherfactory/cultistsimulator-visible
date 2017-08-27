@@ -26,7 +26,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
         
-        IEnumerable<IElementStack> GetOutputCards();
+        IEnumerable<IElementStack> GetOutputStacks();
+        IEnumerable<ISituationOutputNote> GetOutputNotes();
         void SetSlotConsumptions();
         IEnumerable<IElementStack> GetStacksInOngoingSlots();
         IRecipeSlot GetUnfilledGreedySlot();

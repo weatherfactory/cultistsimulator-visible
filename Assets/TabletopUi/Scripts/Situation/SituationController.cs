@@ -63,7 +63,7 @@ namespace Assets.TabletopUi
 
             if (Situation.State == SituationState.Complete)
             {
-                if (!situationWindow.GetOutputCards().Any())
+                if (!situationWindow.GetOutputStacks().Any())
                     ResetToStartingState();
             }
 
@@ -321,13 +321,21 @@ namespace Assets.TabletopUi
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS, htStacksInStorage);
             }
 
+            //save stacks in output
+            if (situationWindow.GetOutputStacks().Any())
+            {
+                var htStacksInOutput = exporter.GetHashTableForStacks(situationWindow.GetOutputStacks());
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS, htStacksInOutput);
+            }
+
+            //save output notes
+
             //save notes, and their contents
-            throw new NotImplementedException(); //this won't work as intended right now
-           // if (situationWindow.GetOutputCards().Any())
-           // {
-            //    var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetOutputCards());
-            //    situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTS, htOutputs);
-            //}
+            if (situationWindow.GetOutputStacks().Any())
+            {
+                var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetOutputNotes());
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTNOTES, htOutputs);
+            }
             return situationSaveData;
         }
 

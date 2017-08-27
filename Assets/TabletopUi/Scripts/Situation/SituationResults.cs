@@ -9,7 +9,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 
-public class Results : MonoBehaviour
+public class SituationResults : MonoBehaviour
 {
     [SerializeField] private Transform _outputNotesContainer;
     [SerializeField] private OutputCardContainer _outputCardContainer;
@@ -40,5 +40,11 @@ public class Results : MonoBehaviour
         return _outputCardContainer.GetElementStacksManager().GetStacks();
 
     }
- 
+
+    public IEnumerable<ISituationOutputNote> GetOutputNotes()
+    {
+        return _outputNotesContainer.GetComponentsInChildren<SituationOutputNote>();
+
+    }
+
 }

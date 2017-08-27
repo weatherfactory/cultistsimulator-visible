@@ -20,8 +20,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_CHARACTER_DETAILS = "characterDetails";
         public const string SAVE_ONGOINGSLOTELEMENTS = "ongoingSlotElements";
         public const string SAVE_SITUATIONSTOREDELEMENTS = "situationStoredElements";
-        public const string SAVE_SITUATIONOUTPUTS = "situationOutputs";
-        public const string SAVE_OUTPUTELEMENTS = "outputElements";
+        public const string SAVE_SITUATIONOUTPUTSTACKS = "situationOutputStacks";
+        public const string SAVE_SITUATIONOUTPUTNOTES = "situationOutputNotes";
         public const string SAVE_TITLE = "title";
         public const string SAVE_DESCRIPTION = "description";
 

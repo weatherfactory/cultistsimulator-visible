@@ -13,13 +13,13 @@ using TMPro;
 using UnityEditor;
 using UnityEngine.EventSystems;
 
-public interface ISituationOutput
+public interface ISituationOutputNote
 {
     string TitleText { get; }
     string DescriptionText { get; }
 }
 
-public class SituationOutputNote : MonoBehaviour, ISituationOutput
+public class SituationOutputNote : MonoBehaviour, ISituationOutputNote
 {
     [SerializeField]private TextMeshProUGUI Title;
     [SerializeField]private TextMeshProUGUI Description;

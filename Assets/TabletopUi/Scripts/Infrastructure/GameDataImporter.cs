@@ -88,14 +88,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private void ImportOutputNotes(Hashtable htSituationValues, SituationController controller,TabletopContainer container)
         {
-            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTS))
+            throw new NotImplementedException(
+                "This method is currently borked - it needs separating into notes and stacks.");
+            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTNOTES))
             {
-                var htSituationOutputs = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTS);
+                var htSituationOutputs = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
                 foreach (var k in htSituationOutputs.Keys)
                 {
                     var htThisOutput = htSituationOutputs.GetHashtable(k);
                     var notificationForOutputNote=new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(),htThisOutput[SaveConstants.SAVE_DESCRIPTION].ToString());
-                    var htOutputElements = htThisOutput.GetHashtable(SaveConstants.SAVE_OUTPUTELEMENTS);
+                    var htOutputElements = htThisOutput.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
                     var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htOutputElements);
                     List<IElementStack> stacksForOutputNote=new List<IElementStack>();
                     foreach (var eqs in elementQuantitySpecifications)

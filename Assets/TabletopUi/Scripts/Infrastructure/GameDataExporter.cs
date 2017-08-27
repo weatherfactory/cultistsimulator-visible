@@ -54,7 +54,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htElementStacks;
         }
 
-        public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutput> outputs)
+        public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputs)
         {
             var htOutputs=new Hashtable();
             foreach (var o in outputs)
@@ -62,9 +62,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htEachOutput=new Hashtable();
                 htEachOutput.Add(SaveConstants.SAVE_TITLE, o.TitleText);
                 htEachOutput.Add(SaveConstants.SAVE_DESCRIPTION,o.DescriptionText);
-                //commented this out because the note/output/container setup is currently a borked mess
-           //     var htStacksInOutput = GetHashTableForStacks(o.GetTokenTransformWrapper().GetStacks());
-       //         htEachOutput.Add(SaveConstants.SAVE_OUTPUTELEMENTS,htStacksInOutput);
+                
                 htOutputs.Add((htOutputs.Keys.Count+1).ToString() ,htEachOutput); //need that tostring! exporter doesn't cope well with int keys
             }
 

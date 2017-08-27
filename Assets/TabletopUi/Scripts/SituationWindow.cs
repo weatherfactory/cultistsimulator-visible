@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] StartingSlotsContainer startingSlotsContainer;
         [SerializeField] OngoingSlotsContainer ongoingSlotsContainer;
         [SerializeField] SituationStorage situationStorage;
-        [SerializeField] Results results;
+        [SerializeField] SituationResults _situationResults;
        
 
         [SerializeField] AspectsDisplay aspectsDisplay;
@@ -84,8 +84,8 @@ namespace Assets.CS.TabletopUI
             startingSlotsContainer.gameObject.SetActive(true);
             ongoingSlotsContainer.gameObject.SetActive(false);
 
-            results.Reset();
-            results.gameObject.SetActive(false);
+            _situationResults.Reset();
+            _situationResults.gameObject.SetActive(false);
             
             title.text = Verb.Label;
             description.text = Verb.Description;
@@ -103,7 +103,7 @@ namespace Assets.CS.TabletopUI
 
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(true);
-            results.gameObject.SetActive(false);
+            _situationResults.gameObject.SetActive(false);
 
             ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
            
@@ -119,7 +119,7 @@ namespace Assets.CS.TabletopUI
         {
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(false);
-            results.gameObject.SetActive(true);
+            _situationResults.gameObject.SetActive(true);
 
             aspectsDisplay.ClearAspects();
             JiggleLayoutGroup();
@@ -223,10 +223,16 @@ namespace Assets.CS.TabletopUI
             return slottedAspects;
         }
 
-        public IEnumerable<IElementStack> GetOutputCards()
+        public IEnumerable<IElementStack> GetOutputStacks()
         {
-            return results.GetOutputCards();
+            return _situationResults.GetOutputCards();
         }
+
+        public IEnumerable<ISituationOutputNote> GetOutputNotes()
+        {
+            return _situationResults.GetOutputNotes();
+        }
+
 
         public IRecipeSlot GetUnfilledGreedySlot()
         {
@@ -251,7 +257,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void SetOutput(IEnumerable<IElementStack> stacks,INotification notification) {
-            results.SetOutput(stacks,notification);
+            _situationResults.SetOutput(stacks,notification);
         }
 
 
@@ -285,7 +291,7 @@ namespace Assets.CS.TabletopUI
 
         public void OnDrop(PointerEventData eventData)
         {
-            Debug.Log("on window");
+            
         }
     }
 }
