@@ -16,15 +16,19 @@ public class SituationResults : MonoBehaviour
     [SerializeField] private SituationWindow situationWindow;
     
 
-    public void SetOutput(IEnumerable<IElementStack> stacks,INotification notification) {
+    public void SetOutput(List<IElementStack> stacks,INotification notification) {
         gameObject.SetActive(true);
+        if(notification!=null)
+        { 
         var newNote=PrefabFactory.CreateLocally<SituationOutputNote>(_outputNotesContainer);
         newNote.transform.localPosition = Vector2.zero;
         newNote.Initialise(notification);
-
+        }
+        if(stacks.Any())
+        { 
         _outputCardContainer.GetElementStacksManager().AcceptStacks(stacks);
+        }
 
-        
 
     }
 

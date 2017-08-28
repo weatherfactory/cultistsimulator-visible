@@ -54,19 +54,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htElementStacks;
         }
 
-        public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputs)
+        public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputNotes)
         {
-            var htOutputs=new Hashtable();
-            foreach (var o in outputs)
+            var htOutputNotes=new Hashtable();
+            foreach (var on in outputNotes)
             {
-                var htEachOutput=new Hashtable();
-                htEachOutput.Add(SaveConstants.SAVE_TITLE, o.TitleText);
-                htEachOutput.Add(SaveConstants.SAVE_DESCRIPTION,o.DescriptionText);
+                var htEachOutputNotes=new Hashtable();
+                htEachOutputNotes.Add(SaveConstants.SAVE_TITLE, on.TitleText);
+                htEachOutputNotes.Add(SaveConstants.SAVE_DESCRIPTION,on.DescriptionText);
                 
-                htOutputs.Add((htOutputs.Keys.Count+1).ToString() ,htEachOutput); //need that tostring! exporter doesn't cope well with int keys
+                htOutputNotes.Add((htOutputNotes.Keys.Count+1).ToString() ,htEachOutputNotes); //need that tostring! exporter doesn't cope well with int keys
             }
 
-            return htOutputs;
+            return htOutputNotes;
         }
         
     }

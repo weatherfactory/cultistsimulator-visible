@@ -256,7 +256,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void SetOutput(IEnumerable<IElementStack> stacks,INotification notification) {
+        public void SetOutput(List<IElementStack> stacks,INotification notification) {
             _situationResults.SetOutput(stacks,notification);
         }
 

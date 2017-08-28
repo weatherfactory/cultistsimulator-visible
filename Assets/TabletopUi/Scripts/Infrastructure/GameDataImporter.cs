@@ -81,33 +81,60 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
 
                 ImportSituationStoredElements(htSituationValues, situationController);
+                ImportOutputs(htSituationValues, situationController, tabletopContainer);
 
-                ImportOutputNotes(htSituationValues, situationController, tabletopContainer);
+
+                
             }
         }
 
-        private void ImportOutputNotes(Hashtable htSituationValues, SituationController controller,TabletopContainer container)
+        private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopContainer tabletopContainer)
         {
-            throw new NotImplementedException(
-                "This method is currently borked - it needs separating into notes and stacks.");
-            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTNOTES))
+         var outputStacks=ImportOutputStacks(htSituationValues, tabletopContainer);
+
+           var notificationForOutputNote= ImportOutputNotes(htSituationValues);
+
+            situationController.SetOutput(outputStacks, notificationForOutputNote);
+
+        }
+
+        private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopContainer tabletopContainer)
+        {
+            List<IElementStack> outputStack = new List<IElementStack>();
+
+            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
             {
-                var htSituationOutputs = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
-                foreach (var k in htSituationOutputs.Keys)
+                //this is probably one more loop than I need.
+                var htSituationOutputStacks = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS);
+                foreach (var k in htSituationOutputStacks.Keys)
                 {
-                    var htThisOutput = htSituationOutputs.GetHashtable(k);
-                    var notificationForOutputNote=new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(),htThisOutput[SaveConstants.SAVE_DESCRIPTION].ToString());
-                    var htOutputElements = htThisOutput.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
-                    var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htOutputElements);
-                    List<IElementStack> stacksForOutputNote=new List<IElementStack>();
+                    var htThisOutputStack = htSituationOutputStacks.GetHashtable(k);
+                   // var htOutputElements = htThisOutputStack.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
+                    
+                    var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htThisOutputStack);
                     foreach (var eqs in elementQuantitySpecifications)
                     {
-                        stacksForOutputNote.Add(container.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId,eqs.ElementQuantity));
+                        outputStack.Add(tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity));
                     }
-                    controller.SetOutput(stacksForOutputNote,notificationForOutputNote);
 
                 }
             }
+            return outputStack;
+        }
+
+        private Notification ImportOutputNotes(Hashtable htSituationValues)
+        {
+            Notification notificationForOutputNote=null;
+            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTNOTES))
+            {
+                var htSituationOutputNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
+                foreach (var k in htSituationOutputNotes.Keys)
+                {
+                    var htThisOutput = htSituationOutputNotes.GetHashtable(k);
+                    notificationForOutputNote=new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(),htThisOutput[SaveConstants.SAVE_DESCRIPTION].ToString());
+                }
+            }
+            return notificationForOutputNote;
         }
 
         private void ImportSituationStoredElements(Hashtable htSituationValues, SituationController controller)

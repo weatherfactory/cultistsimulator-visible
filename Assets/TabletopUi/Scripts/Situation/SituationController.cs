@@ -213,7 +213,7 @@ namespace Assets.TabletopUi
 
             INotification notification = new Notification(Situation.GetTitle(),
                 Situation.GetDescription());
-                SetOutput(stacksToRetrieve, notification);
+                SetOutput(stacksToRetrieve.ToList(), notification);
           
 
             //This must be run last: it disables (and destroys) any card tokens that have not been moved to outputs
@@ -225,7 +225,7 @@ namespace Assets.TabletopUi
             situationWindow.SetStarting();
         }
 
-        public void SetOutput(IEnumerable<IElementStack> stacksForOutput, INotification notification)
+        public void SetOutput(List<IElementStack> stacksForOutput, INotification notification)
         {
             situationWindow.SetOutput(stacksForOutput, notification);
         }
