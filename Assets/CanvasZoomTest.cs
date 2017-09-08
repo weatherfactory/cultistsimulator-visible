@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CanvasZoomTest : MonoBehaviour {
+public class CanvasZoomTest : UIBehaviour {
 
     [Tooltip("This is the max window size we zoom out to, ensures that both sides are visible")]
     public Vector2 maxWindowSize = new Vector2(2400f, 1800f);
@@ -20,21 +21,31 @@ public class CanvasZoomTest : MonoBehaviour {
 
     private Canvas canvas;
 
-    void Start () {
-        // Get us the maximum zoom size so that the max pixel window size is visible.
-        zoomScaleOut = Mathf.Min(Screen.width / maxWindowSize.x, Screen.height / maxWindowSize.y); 
+    protected override void Start() {
+        Init();
+    }
 
+    protected override void OnRectTransformDimensionsChange() {
+        Init();
+    }
+
+    private void Init() {
+        // Get us the maximum zoom size so that the max pixel window size is visible.
+        zoomScaleOut = Mathf.Min(Screen.width / maxWindowSize.x, Screen.height / maxWindowSize.y);
+        
         // We can't zoom out at all because our maxZoom would be larger than our minZoom
         if (zoomScaleOut >= zoomScaleIn) {
+            canvas.scaleFactor = 1f; // Set our scale to 100%
             enabled = false; // Turn off to disable update
             return;
         }
-        
+
+        enabled = true;
         canvas = GetComponent<Canvas>();
         SetScale(currentZoom);
-	}
-	
-	void Update () {
+    }
+
+    void Update () {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
             targetZoom -= 0.1f;
             targetZoom = Mathf.Clamp01(targetZoom);
