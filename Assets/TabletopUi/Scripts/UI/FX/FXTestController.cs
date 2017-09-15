@@ -8,11 +8,16 @@ public class FXTestController : MonoBehaviour {
     public CardEffect effect;
     public ElementStackToken targetToken;
 
+    public float repeatSpeed = 3f;
 
     private CardEffect activeEffect;
     private ElementStackToken activeToken;
 
     void OnEnable () {
+        SpawnFX();
+    }
+
+    void SpawnFX() {
         targetToken.gameObject.SetActive(false);
         effect.gameObject.SetActive(false);
 
@@ -31,6 +36,8 @@ public class FXTestController : MonoBehaviour {
 
     void StartAnim() {
         activeEffect.StartAnim(activeToken);
+
+        Invoke("SpawnFX", repeatSpeed);
     }
 
 }

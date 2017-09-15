@@ -42,7 +42,9 @@ namespace Assets.CS.TabletopUI {
         IEnumerator DoBurnAnim() {
             float time = 0f;
             cardBurnOverlay.color = startColor;
-            particles.Play();
+
+            if (particles != null)
+                particles.Play();
 
             while (time < durationPhase1) {
                 time += Time.deltaTime;

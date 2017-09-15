@@ -107,7 +107,7 @@ Shader "Custom/CardBurn"
 				// IN.color.g is determines the vanish anim (green values to change alpha)
 
 				half4 color = tex2D(_MainTex, rampPos);
-				color.a *= mapTex.a;
+				color.a *= mapTex.a * IN.color.a;
 				color.a *= smoothstep(mapTex.g, mapTex.g + _FadeSoftness, (1 + _FadeSoftness) * IN.color.g );
 				color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 				
