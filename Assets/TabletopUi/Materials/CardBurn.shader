@@ -5,8 +5,8 @@ Shader "Custom/CardBurn"
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 		_Color ("Tint", Color) = (1,1,1,1)
 		
-		_BurnRamp("Burn Ramp", 2D) = "white" {}
-		_BurnTime("Burn Time", Float) = 0
+		_FadeTex("Fade Texture", 2D) = "white" {}
+		_FadeSoftness("Fade Softness", Float) = 0.2
 
 		_StencilComp ("Stencil Comparison", Float) = 8
 		_Stencil ("Stencil ID", Float) = 0
@@ -94,20 +94,21 @@ Shader "Custom/CardBurn"
 				return OUT;
 			}
 
-			float _BurnTime;
 			sampler2D _MainTex;
-			sampler2D _BurnRamp;
+			sampler2D _FadeTex;
+			float _FadeSoftness;
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
-				half4 mapTex = tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd;
+				half4 mapTex = tex2D(_FadeTex, IN.texcoord) + _TextureSampleAdd;
 				half2 rampPos = half2(mapTex.r * 0.5 + 1.0 - IN.color.r * 2.0, IN.texcoord.x * 0.5 + IN.color.r * 0.5);
-				// IN.color.r is used as timer for the burn anim
-				// IN.color.g is used as timer for the vanish anim
 
-				half4 color = tex2D(_BurnRamp, rampPos);
+				// IN.color.r is determines the burn anim (ramp over red values)
+				// IN.color.g is determines the vanish anim (green values to change alpha)
+
+				half4 color = tex2D(_MainTex, rampPos);
 				color.a *= mapTex.a;
-				color.a *= smoothstep(mapTex.g, mapTex.g + 0.2, 1.2 * IN.color.g );
+				color.a *= smoothstep(mapTex.g, mapTex.g + _FadeSoftness, (1 + _FadeSoftness) * IN.color.g );
 				color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 				
 				#ifdef UNITY_UI_ALPHACLIP

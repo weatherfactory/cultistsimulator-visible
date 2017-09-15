@@ -5,35 +5,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class CardBurnEffect : MonoBehaviour {
+    public class CardBurnEffect : CardEffect {
 
         [SerializeField] Graphic cardBurnOverlay;
         [SerializeField] ParticleSystem particles;
+
         [SerializeField] float durationPhase1 = 1f;
         [SerializeField] float phasePause = 0.1f;
         [SerializeField] float durationPhase2 = 0.4f;
         [SerializeField] float pauseEnd = 0.4f;
 
-        Color startColor = new Color(0f, 1f, 1f, 1f);
-        Color phase1Color = new Color(0.45f, 1f, 1f, 1f);
-        Color phase2Color = new Color(1f, 0f, 1f, 1f);
+        [SerializeField] Color startColor = new Color(0f, 1f, 1f, 1f);
+        [SerializeField] Color phase1Color = new Color(0.45f, 1f, 1f, 1f);
+        [SerializeField] Color phase2Color = new Color(1f, 0f, 1f, 1f);
 
-        private CanvasGroup originalCard;
+        [SerializeField] string sfx = "CardBurn";
 
-        public void StartAnim(ElementStackToken card) {
-            originalCard = card.GetComponent<CanvasGroup>();
+        public override void StartAnim(ElementStackToken card) {
+            // Set target card, prevent interaction
+            base.StartAnim(card);
 
-            cardBurnOverlay.transform.SetParent(originalCard.transform);
+            cardBurnOverlay.transform.SetParent(targetCard.transform);
             cardBurnOverlay.transform.localScale = Vector3.one;
             cardBurnOverlay.transform.localPosition = Vector3.zero;
             cardBurnOverlay.transform.localRotation = Quaternion.identity;
-
-            // Prevent interaction from the player
-            originalCard.interactable = false;
-            originalCard.blocksRaycasts = false;
-            
-            SoundManager.PlaySfx("CardBurn");
             cardBurnOverlay.gameObject.SetActive(true);
+
+            if (sfx != null && sfx != "")
+                SoundManager.PlaySfx(sfx);
 
             StopAllCoroutines();
             StartCoroutine(DoBurnAnim()); //This will fail if the card's parent is subsequently disabled. So we use OnDisable, below, to finish it quickly if the card is then disabled.
@@ -52,32 +51,30 @@ namespace Assets.CS.TabletopUI {
             }
 
             cardBurnOverlay.color = phase1Color;
+            time = 0f;
 
-            if (phasePause > 0f)
-                yield return new WaitForSeconds(phasePause);
+            while (time < phasePause) {
+                time += Time.deltaTime;
+                targetCard.alpha = 1f - time / phasePause * 1.5f;
+                yield return null;
+            }
 
+            targetCard.alpha = 0f;
             time = 0f;
 
             while (time < durationPhase2) {
                 time += Time.deltaTime;
                 cardBurnOverlay.color = Color.Lerp(phase1Color, phase2Color, time / durationPhase2);
-                originalCard.alpha = 1f - time / durationPhase2 * 1.5f;
                 yield return null;
             }
 
             cardBurnOverlay.color = phase2Color;
-            originalCard.alpha = 0f;
+            targetCard.alpha = 0f;
 
             if (pauseEnd > 0f)
                 yield return new WaitForSeconds(pauseEnd);
 
-            Destroy(originalCard.gameObject);
-        }
-
-        public void OnDisable()
-        {
-            if(originalCard!=null)
-            Destroy(originalCard.gameObject);
+            OnAnimDone();
         }
     }
 }
