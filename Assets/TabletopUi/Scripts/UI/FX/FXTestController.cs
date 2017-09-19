@@ -5,7 +5,7 @@ using Assets.CS.TabletopUI;
 
 public class FXTestController : MonoBehaviour {
 
-    public CardEffect effect;
+    public CardEffect[] testEffects;
     public ElementStackToken targetToken;
 
     public float repeatSpeed = 3f;
@@ -13,13 +13,19 @@ public class FXTestController : MonoBehaviour {
     private CardEffect activeEffect;
     private ElementStackToken activeToken;
 
+    private int effectNum = 0;
+
     void OnEnable () {
+        targetToken.gameObject.SetActive(false);
+
+        for (int i = 0; i < testEffects.Length; i++)
+            testEffects[i].gameObject.SetActive(false);
+
         SpawnFX();
     }
 
     void SpawnFX() {
-        targetToken.gameObject.SetActive(false);
-        effect.gameObject.SetActive(false);
+        var effect = testEffects[effectNum];
 
         activeEffect = Instantiate(effect, effect.transform.parent) as CardEffect;
         activeEffect.transform.position = effect.transform.position;
@@ -36,6 +42,11 @@ public class FXTestController : MonoBehaviour {
 
     void StartAnim() {
         activeEffect.StartAnim(activeToken);
+
+        effectNum++;
+
+        if (effectNum >= testEffects.Length)
+            effectNum = 0;
 
         Invoke("SpawnFX", repeatSpeed);
     }
