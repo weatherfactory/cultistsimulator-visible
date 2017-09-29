@@ -7,19 +7,10 @@ namespace Assets.CS.TabletopUI {
 
         protected CanvasGroup targetCard;
 
-        public virtual void StartAnim(ElementStackToken card) {
-            targetCard = card.GetComponent<CanvasGroup>();
-            targetCard.interactable = false;
-            targetCard.blocksRaycasts = false;
+        public abstract void StartAnim(ElementStackToken card);
+        public abstract void OnAnimDone();
 
-        }
-
-        public virtual void OnAnimDone() {
-            if (targetCard != null)
-                Destroy(targetCard.gameObject);
-        }
-
-        public void OnDisable() {
+        public virtual void OnDisable() {
             OnAnimDone();
         }
     }

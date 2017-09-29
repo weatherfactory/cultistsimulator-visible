@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
 
-        [SerializeField] CardBurnEffect cardBurnFX;
+        [SerializeField] CardEffectRemoveColorAnim cardBurnFX;
 
         private Element _element;
         private int _quantity;
@@ -93,7 +93,7 @@ namespace Assets.CS.TabletopUI
 
             if (withVFX && gameObject.activeInHierarchy)
             {
-                var effect = Instantiate<CardBurnEffect>(cardBurnFX) as CardBurnEffect;
+                var effect = Instantiate<CardEffectRemoveColorAnim>(cardBurnFX) as CardEffectRemoveColorAnim;
                 effect.StartAnim(this);
             }
             else

@@ -8,7 +8,8 @@ public class FXTestController : MonoBehaviour {
     public CardEffect[] testEffects;
     public ElementStackToken targetToken;
 
-    public float repeatSpeed = 3f;
+    public float waitAfterFX = 3f;
+    public float pauseDuration = 1f;    
 
     private CardEffect activeEffect;
     private ElementStackToken activeToken;
@@ -37,7 +38,10 @@ public class FXTestController : MonoBehaviour {
         activeToken.transform.localScale = targetToken.transform.localScale;
         activeToken.gameObject.SetActive(true);
 
-        Invoke("StartAnim", 1f);
+        if (effect is CardEffectCreate)
+            StartAnim();
+        else
+            Invoke("StartAnim", 1f);
     }
 
     void StartAnim() {
@@ -48,7 +52,20 @@ public class FXTestController : MonoBehaviour {
         if (effectNum >= testEffects.Length)
             effectNum = 0;
 
-        Invoke("SpawnFX", repeatSpeed);
+        if (waitAfterFX > 0)
+            Invoke("CleanUp", waitAfterFX);
+        else
+            CleanUp();
+    }
+
+    void CleanUp() {
+        if (activeEffect != null)
+            Destroy(activeEffect.gameObject);
+
+        if (activeToken != null)
+            Destroy(activeToken.gameObject);
+
+        Invoke("SpawnFX", pauseDuration);
     }
 
 }

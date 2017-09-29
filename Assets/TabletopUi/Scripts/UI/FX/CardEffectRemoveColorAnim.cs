@@ -5,10 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class CardBurnEffect : CardEffect {
+    public class CardEffectRemoveColorAnim : CardEffectRemove {
 
         [SerializeField] Graphic cardBurnOverlay;
-        [SerializeField] ParticleSystem particles;
 
         [SerializeField] float durationPhase1 = 1f;
         [SerializeField] float phasePause = 0.1f;
@@ -19,20 +18,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Color phase1Color = new Color(0.45f, 1f, 1f, 1f);
         [SerializeField] Color phase2Color = new Color(1f, 0f, 1f, 1f);
 
-        [SerializeField] string sfx = "CardBurn";
-
         public override void StartAnim(ElementStackToken card) {
-            // Set target card, prevent interaction
+            // Set target card, prevent interaction, position effect, Play Sound
             base.StartAnim(card);
-
-            cardBurnOverlay.transform.SetParent(targetCard.transform);
-            cardBurnOverlay.transform.localScale = Vector3.one;
-            cardBurnOverlay.transform.localPosition = Vector3.zero;
-            cardBurnOverlay.transform.localRotation = Quaternion.identity;
-            cardBurnOverlay.gameObject.SetActive(true);
-
-            if (sfx != null && sfx != "")
-                SoundManager.PlaySfx(sfx);
 
             StopAllCoroutines();
             StartCoroutine(DoBurnAnim()); //This will fail if the card's parent is subsequently disabled. So we use OnDisable, below, to finish it quickly if the card is then disabled.
@@ -42,9 +30,6 @@ namespace Assets.CS.TabletopUI {
         IEnumerator DoBurnAnim() {
             float time = 0f;
             cardBurnOverlay.color = startColor;
-
-            if (particles != null)
-                particles.Play();
 
             while (time < durationPhase1) {
                 time += Time.deltaTime;

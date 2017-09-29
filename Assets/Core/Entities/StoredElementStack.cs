@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
 
-        [SerializeField] CardBurnEffect cardBurnFX;
+        [SerializeField] CardEffectRemoveColorAnim cardBurnFX;
 
         private Element _element;
         private int _quantity;
