@@ -18,7 +18,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class GameDataExporter: IGameDataExporter
     {
 
-
+        /// <summary>
+        /// top-level function, subfunctions wrap everything else
+        /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
+        /// </summary>
+        /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
         public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
         {
             var htAll = new Hashtable
@@ -28,19 +32,29 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
            };
             return htAll;
         }
-
+        /// <summary>
+        /// return save data for all ongoing situations. Each one in turn will be inspected.
+        /// NOTE: stacks *in situations* are handled by this function
+        /// At the moment, the functionality for this is in the tokens and controllers
+        /// I think it probably shouldn't be
+        /// </summary>
+        /// <returns></returns>
         public Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
         {
    
             var htSituations = new Hashtable();
             foreach (var s in situations)
             {
-                var htSituationProperties = s.GetSaveDataForSituation();
+                var htSituationProperties = s.GetSaveDataForSituation(); //see, going and getting the data from inside it
                 htSituations.Add(s.SaveLocationInfo, htSituationProperties);
             }
             return htSituations;
         }
-
+        /// <summary>
+        /// return save data for all stacks. Each one in turn will be inspected.
+        /// NOTE: stacks *in situations* are *not* handled by this function
+        /// </summary>
+        /// <returns></returns>
         public Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks)
         {
             var htElementStacks = new Hashtable();

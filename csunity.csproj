@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CanvasZoomTest.cs" />
     <Compile Include="Assets\Core\Commands\ElementQuantitySpecification.cs" />
     <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
     <Compile Include="Assets\Core\Commands\Notification.cs" />
@@ -144,6 +143,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectFrame.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectsDisplay.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementDetailsWindow.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackSimple.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackToken.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopContainerTokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
@@ -169,11 +169,11 @@
     <Compile Include="Assets\TabletopUi\Scripts\Services\PrefabFactory.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\Registry.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Services\TabletopObjectBuilder.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationResults.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\OutputCardContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\ShittyShadowTest.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationController.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationOutputNote.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Situation\OutputCardContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationResults.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationStorage.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationToken.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
@@ -188,9 +188,15 @@
     <Compile Include="Assets\TabletopUi\Scripts\TabletopImageBurner.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimation.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimationToSlot.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\UI\CardBurnEffect.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\DraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Easing.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffect.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectCreate.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectCreateColorAnim.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectRemove.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectRemoveAnimator.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectRemoveColorAnim.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\FX\FXTestController.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\GlowColor.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\GraphicFader.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Hotkeys.cs" />
@@ -200,6 +206,10 @@
     <Compile Include="Assets\TabletopUi\Scripts\UI\OptionsPanel.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\PauseButton.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\RestartPanel.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\EndScreenController.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\EndScreenLayout.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\NewGameScreenController.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\SceneNumber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\UIParticleCanvasScaler.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\UIParticleScaler.cs" />
     <Compile Include="Assets\TabletopUi\TokenAndSlot.cs" />

@@ -241,9 +241,9 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo)
+        public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string slotId)
         {
-            return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(locationInfo);
+            return ongoingSlotsContainer.GetSlotBySaveLocationInfoPath(slotId);
         }
 
         /// <summary>

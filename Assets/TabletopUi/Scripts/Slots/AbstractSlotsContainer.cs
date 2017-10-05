@@ -27,13 +27,17 @@ public abstract class AbstractSlotsContainer : MonoBehaviour
 
     public IList<RecipeSlot> GetAllSlots()
     {
-     //test for null excludes any slots that have been destroyed
-        return new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>().Where(rs => rs.Defunct == false));
+        var children = GetComponentsInChildren<RecipeSlot>();
+        var allSlots = new List<RecipeSlot>(children);
+        var undestroyedSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false));
+        return undestroyedSlots;
     }
 
     public IRecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath)
     {
-                return GetAllSlots().SingleOrDefault(s => s.SaveLocationInfoPath == saveLocationInfoPath);
+        var candidateSlots = GetAllSlots();
+        IRecipeSlot slotToReturn =candidateSlots.SingleOrDefault(s => s.SaveLocationInfoPath == saveLocationInfoPath);
+        return slotToReturn;
     }
 
     void HandleOnSlotDroppedOn(RecipeSlot slot,IElementStack stack)
