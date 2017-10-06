@@ -19,6 +19,7 @@ public class DebugTools : MonoBehaviour
     [SerializeField] private Button btnFastForward;
     [SerializeField]private Button btnNextTrack;
     [SerializeField] private Button btnUpdateContent;
+    [SerializeField] private Button btnEndGame;
     [SerializeField] private BackgroundMusic backgroundMusic;
 
 
@@ -28,6 +29,7 @@ public class DebugTools : MonoBehaviour
         btnMinusOne.onClick.AddListener(() => DecrementElement(input.text));
         btnFastForward.onClick.AddListener(() => FastForward(30));
         btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
+        btnEndGame.onClick.AddListener(EndGame);
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
 
@@ -71,6 +73,13 @@ public class DebugTools : MonoBehaviour
     void NextTrack()
     {
         backgroundMusic.PlayNextClip();
+    }
+
+    void EndGame()
+    {
+        var compendium = Registry.Retrieve<ICompendium>();
+        var ending = compendium.GetEndingForFlag("powerminor");
+        Registry.Retrieve<TabletopManager>().EndGame(ending);
     }
 }
 

@@ -37,7 +37,7 @@ public class Recipe
 
     public List<RecipeAlternative> AlternativeRecipes { get; set; }
     public string Loop { get; set; }
-    public string Ending { get; set; }
+    public string EndingFlag { get; set; }
     /// <summary>
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
     /// </summary>

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi;
@@ -19,7 +20,6 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-// This is a "version" of the discussed BoardManager. Creates View Objects, Listens to their input.
 
 namespace Assets.CS.TabletopUI
 {
@@ -36,7 +36,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Notifier notifier;
         private TabletopObjectBuilder tabletopObjectBuilder;
-        [SerializeField] private RestartPanel restartPanel;
         [SerializeField] private OptionsPanel optionsPanel;
         [SerializeField] private RectTransform viewport;
 
@@ -49,14 +48,6 @@ namespace Assets.CS.TabletopUI
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 optionsPanel.ToggleVisibility();
-            //if (Input.GetAxis("Mouse ScrollWheel") > 0) // forward
-            //{
-            //    viewport.localPosition = new Vector3(viewport.localPosition.x,viewport.localPosition.y,viewport.localPosition.z+100);
-            //}
-            //if (Input.GetAxis("Mouse ScrollWheel") < 0) // forward
-            //{
-            //    viewport.localPosition = new Vector3(viewport.localPosition.x, viewport.localPosition.y, viewport.localPosition.z - 100);
-            //}
         }
 
         public void UpdateCompendium(ICompendium compendium)
@@ -78,7 +69,7 @@ namespace Assets.CS.TabletopUI
             UpdateCompendium(compendium);
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
-
+           // var l = new LegacyEntity();
        
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());
@@ -174,10 +165,10 @@ namespace Assets.CS.TabletopUI
           SetPausedState(!heart.IsPaused);
         }
 
-        public void EndGame(Notification endGameNotification)
+        public void EndGame(Ending ending)
         {
-            heart.StopBeating(); //note: not setting IsPaused, so can't resume with pause button. But this is a quick fix - we should disable or hide everything.
-            restartPanel.Display(endGameNotification);
+            CrossSceneState.SetCurrentEnding(ending);
+            SceneManager.LoadScene(SceneNumber.EndScene);
 
         }
 

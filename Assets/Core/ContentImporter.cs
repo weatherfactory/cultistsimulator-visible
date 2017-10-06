@@ -229,7 +229,7 @@ public class ContentImporter
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
                 r.Loop = htEachRecipe[NoonConstants.KLOOP] == null ? null : htEachRecipe[NoonConstants.KLOOP].ToString();
-                r.Ending = htEachRecipe[NoonConstants.KENDING] == null
+                r.EndingFlag = htEachRecipe[NoonConstants.KENDING] == null
                     ? null
                     : htEachRecipe[NoonConstants.KENDING].ToString();
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))

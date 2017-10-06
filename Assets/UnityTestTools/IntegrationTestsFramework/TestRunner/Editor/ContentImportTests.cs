@@ -198,7 +198,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_ACTIONID, recipesImported.First().ActionId);
             Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
             Assert.AreEqual(RECIPE_1_LOOP, recipesImported.First().Loop);
-            Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().Ending);
+            Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().EndingFlag);
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS,recipesImported.First().MaxExecutions);
             Assert.AreEqual(RECIPE_BURN_IMAGE,recipesImported.First().BurnImage);
         }

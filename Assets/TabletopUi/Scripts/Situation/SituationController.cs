@@ -195,10 +195,10 @@ namespace Assets.TabletopUi
                 executor.RunEffects(command, situationWindow.GetSituationStorageStacksManager());
 
 
-                if (command.Recipe.Ending != null)
+                if (command.Recipe.EndingFlag != null)
                 {
-                    var endingNotification = compendium.GetNotificationForEndingFlag(command.Recipe.Ending);
-                    Registry.Retrieve<TabletopManager>().EndGame(endingNotification);
+                    var ending = compendium.GetEndingForFlag(command.Recipe.EndingFlag);
+                    Registry.Retrieve<TabletopManager>().EndGame(ending);
                 }
             }
             
