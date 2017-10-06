@@ -9,11 +9,13 @@ namespace Assets.Core.Entities
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string ImageId { get; set; }
 
-        public Ending(string title, string description)
+        public Ending(string title, string description,string imageId)
         {
             Title = title;
             Description = description;
+            ImageId = imageId;
         }
     }
 }
