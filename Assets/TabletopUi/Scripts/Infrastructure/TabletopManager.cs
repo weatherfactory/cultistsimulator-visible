@@ -8,6 +8,7 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -168,6 +169,9 @@ namespace Assets.CS.TabletopUI
         public void EndGame(Ending ending)
         {
             CrossSceneState.SetCurrentEnding(ending);
+            var ls=new LegacySelector(Registry.Retrieve<ICompendium>());
+            CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
+
             SceneManager.LoadScene(SceneNumber.EndScene);
 
         }

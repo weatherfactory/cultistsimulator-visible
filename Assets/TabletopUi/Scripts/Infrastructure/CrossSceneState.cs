@@ -12,6 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
    public static class CrossSceneState
     {
         private static Ending currentEnding;
+        private static List<LegacyEntity> availableLegacies;
 
         public static void SetCurrentEnding(Ending ending)
         {
@@ -21,6 +22,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static Ending GetCurrentEnding()
         {
             return currentEnding;
+        }
+
+        public static List<LegacyEntity> GetAvailableLegacies()
+        {
+            return availableLegacies;
+        }
+
+        public static void SetAvailableLegacies(List<LegacyEntity> legacies)
+        {
+            availableLegacies = legacies;
         }
 
     }
