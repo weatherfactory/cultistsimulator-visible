@@ -10,8 +10,7 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI {
     public class NewGameScreenController : MonoBehaviour {
 
-        // Remove and replace with proper legacy class
-
+        //TODO: Remove and replace with proper legacy class
         [System.Serializable]
         public class LegacyStub {
             public Sprite artwork;
@@ -28,6 +27,11 @@ namespace Assets.CS.TabletopUI {
 
         public Toggle[] legacyButtons;
         public Image[] legacyArtwork;
+        public RectTransform elementsHolder;
+
+        [Header("Prefabs")]
+        public ElementStackSimple elementStackSimplePrefab;
+      
 
         [Header("Selected Legacy")]
         public CanvasGroupFader canvasFader;
@@ -131,15 +135,21 @@ namespace Assets.CS.TabletopUI {
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;
 
-            //for (int i = 0; i < rewardTokens.Length; i++) {
-            //    if (i >= legacySelected.ElementEffects.Count || legacySelected.ElementEffectsnts[i] == null) {
-            //        rewardTokens[i].gameObject.SetActive(false);
-            //    }
-            //    else {
-            //        rewardTokens[i].Populate(legacy.elements[i].elementName, legacy.elements[i].elementCount);
-            //        rewardTokens[i].gameObject.SetActive(true);
-            //    }
-            //}
+            //display effects for legacy:
+            //clear out any existing effect stacks
+            var l = elementsHolder.GetComponentsInChildren<ElementStackSimple>();
+
+            foreach (var effectStack in elementsHolder.GetComponentsInChildren<ElementStackSimple>())
+            Destroy(effectStack.gameObject);
+
+            //and add effects for this legacy
+
+            foreach (var e in legacySelected.ElementEffects)
+            {
+                var effectStack = Object.Instantiate(elementStackSimplePrefab, elementsHolder, false);
+                effectStack.Populate(e.Key, e.Value);
+
+            }
 
             startGameButton.interactable = true;
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Entities;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
@@ -33,19 +34,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     Id = "A",
                     Label = "Legacy A",
-                    Description = "Legacy A desc..."
+                    Description = "Legacy A desc lorem ipsum dolor...",
+                    ElementEffects = new AspectsDictionary() { { "shilling", 1 } }
                 };
                 var l2 = new LegacyEntity()
                 {
                     Id = "B",
                     Label = "Legacy B",
-                    Description = "Legacy B desc..."
+                    Description = "Legacy B desc lorem ipsum dolor...",
+                    ElementEffects = new AspectsDictionary() { { "shilling", 2 } }
                 }; ;
                 var l3 = new LegacyEntity()
                 {
                     Id = "C",
                     Label = "Legacy C",
-                    Description = "Legacy C desc..."
+                    Description = "Legacy C desc lorem ipsum dolor...",
+                    ElementEffects = new AspectsDictionary() { { "shilling",3} }
                 };
 
                 availableLegacies = new List<LegacyEntity> { l1, l2, l3 };
