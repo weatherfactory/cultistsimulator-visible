@@ -18,6 +18,7 @@ public class ContentImporter
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
+    private const string CONST_LEGACIES = "legacies";
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
     private const string CONST_LIFETIME = "lifetime";
@@ -28,6 +29,7 @@ public class ContentImporter
 
     public Dictionary<string, IVerb> Verbs;
     public Dictionary<string, Element> Elements;
+    public Dictionary<string, Legacy> Legacies;
     public List<Recipe> Recipes;
 
 
@@ -37,6 +39,7 @@ public class ContentImporter
         Verbs = new Dictionary<string, IVerb>();
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
+        Legacies = new Dictionary<string,Legacy>();
     }
 
     public IList<ContentImportProblem> GetContentImportProblems()
@@ -203,7 +206,23 @@ public class ContentImporter
 
     }
 
+    public void ImportLegacies()
+    {
+        ArrayList legaciesArrayList = new ArrayList();
+        TextAsset[] legacyTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_LEGACIES);
+        foreach (TextAsset ta in legacyTextAssets)
+        {
+            string json = ta.text;
+            legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("legacies"));
+        }
 
+        foreach (Hashtable h in legaciesArrayList)
+        {
+            Legacy l = new Legacy(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(),h["image"].ToString());
+            Legacies.Add(l.Id,l);
+        }
+
+    }
     public void PopulateRecipeList(ArrayList importedRecipes)
     {
         for (int i = 0; i < importedRecipes.Count; i++)
@@ -370,10 +389,12 @@ public class ContentImporter
         ImportVerbs();
         ImportElements();
         ImportRecipes();
+        ImportLegacies();
 
         _compendium.UpdateRecipes(Recipes);
         _compendium.UpdateElements(Elements);
         _compendium.UpdateVerbs(Verbs);
+        _compendium.UpdateLegacies(Legacies);
 
     }
 

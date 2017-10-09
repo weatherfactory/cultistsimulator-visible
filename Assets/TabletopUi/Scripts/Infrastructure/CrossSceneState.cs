@@ -42,30 +42,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (_availableLegacies == null)
             {
                 //default legacies so the screen can be tested in isolation
-                var l1 = new Legacy()
-                {
-                    Id = "A",
-                    Label = "Legacy A",
-                    Description = "Legacy A desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling", 1 } },
-                    Image="moth"
-                };
-                var l2 = new Legacy()
-                {
-                    Id = "B",
-                    Label = "Legacy B",
-                    Description = "Legacy B desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling", 2 } },
-                    Image = "heart"
-                }; ;
-                var l3 = new Legacy()
-                {
-                    Id = "C",
-                    Label = "Legacy C",
-                    Description = "Legacy C desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling",3} ,{"fragmentglory",1}},
-                    Image = "knock"
-                };
+                var l1 = new Legacy("A", "Legacy A", "Legacy A lorem ipsum dolor...","heart");
+                l1.ElementEffects = new AspectsDictionary() { { "shilling", 2 } };
+
+                var l2= new Legacy("B", "Legacy B", "Legacy B lorem ipsum dolor...", "moth");
+                l1.ElementEffects = new AspectsDictionary() { { "shilling", 2 } };
+
+                var l3 = new Legacy("C", "Legacy C", "Legacy C lorem ipsum dolor...", "knock");
+                l1.ElementEffects = new AspectsDictionary() { { "shilling", 2 } };
+
 
                 _availableLegacies = new List<Legacy> { l1, l2, l3 };
             }

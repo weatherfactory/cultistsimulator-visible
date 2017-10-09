@@ -17,6 +17,7 @@ public interface ICompendium
     void UpdateRecipes(List<Recipe> allRecipes);
     void UpdateElements(Dictionary<string, Element> elements);
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
+    void UpdateLegacies(Dictionary<string, Legacy> legacies);
     Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
@@ -26,6 +27,8 @@ public interface ICompendium
     IVerb GetVerbById(string verbId);
     Ending GetEndingForFlag(string endingFlag);
     IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command);
+
+    List<Legacy> GetAllLegacies();
 }
 
 public class Compendium : ICompendium
@@ -33,6 +36,7 @@ public class Compendium : ICompendium
     private List<Recipe> _recipes;
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
+    private Dictionary<string, Legacy> _legacies;
 
 
     public void UpdateRecipes(List<Recipe> allRecipes)
@@ -49,6 +53,11 @@ public class Compendium : ICompendium
     public void UpdateVerbs(Dictionary<string, IVerb> verbs)
     {
         _verbs = verbs;
+    }
+
+    public void UpdateLegacies(Dictionary<string, Legacy> legacies)
+    {
+        _legacies = legacies;
     }
 
 
@@ -112,6 +121,18 @@ public class Compendium : ICompendium
         return verbsList;
     }
 
+    public List<Legacy> GetAllLegacies()
+    {
+        List<Legacy> legaciesList = new List<Legacy>();
+
+        foreach (KeyValuePair<string, Legacy> keyValuePair in _legacies)
+        {
+            legaciesList.Add(keyValuePair.Value);
+        }
+
+        return legaciesList;
+    }
+
     public IVerb GetVerbById(string verbId)
     {
         if (!_verbs.ContainsKey(verbId))
@@ -129,6 +150,8 @@ public class Compendium : ICompendium
       command.Recipe.Description);
         return createdVerb;
     }
+
+
 
     public Ending GetEndingForFlag(string endingFlag)
     {

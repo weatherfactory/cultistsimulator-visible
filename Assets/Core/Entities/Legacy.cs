@@ -17,9 +17,13 @@ namespace Assets.Core.Entities
         public string Image { get; set; }
         public IAspectsDictionary ElementEffects;
 
-        public Legacy()
+        public Legacy(string id, string label, string description, string image)
         {
-            ElementEffects=new AspectsDictionary();
+            Id = id;
+            Label = label;
+            Description = description;
+            Image = image;
+            ElementEffects = new AspectsDictionary();
         }
     }
 }

@@ -3,8 +3,20 @@
 	{id: "inheritor",
 	label: "Inheritor",
 	description: "You'll receive a mysterious package.",
-	elementeffects: {knock:1},
-	image: "
-	},	
+	elementeffects: {shilling:1},
+	image: "knock"
+	},
+	{id: "physician",
+	label: "Physician",
+	description: "You've made copious notes on this curious case.",
+	elementeffects: {shilling:2},
+	image: "heart"
+	},
+	{id: "haunted",
+	label: "Haunted",
+	description: "At times, in mirrors, in crowds, you see the face of one now lost.",
+	elementeffects: {shilling:5},
+	image: "moth"
+	}	
 ]
 };
