@@ -26,6 +26,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public static List<LegacyEntity> GetAvailableLegacies()
         {
+            if (availableLegacies == null)
+            {
+                //default legacies so the screen can be tested in isolation
+                var l1 = new LegacyEntity()
+                {
+                    Id = "A",
+                    Label = "Legacy A",
+                    Description = "Legacy A desc..."
+                };
+                var l2 = new LegacyEntity()
+                {
+                    Id = "B",
+                    Label = "Legacy B",
+                    Description = "Legacy B desc..."
+                }; ;
+                var l3 = new LegacyEntity()
+                {
+                    Id = "C",
+                    Label = "Legacy C",
+                    Description = "Legacy C desc..."
+                };
+
+                availableLegacies = new List<LegacyEntity> { l1, l2, l3 };
+            }
+
             return availableLegacies;
         }
 
@@ -33,6 +58,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             availableLegacies = legacies;
         }
+
 
     }
 }

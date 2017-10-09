@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,7 +13,7 @@ namespace Assets.CS.TabletopUI {
         // Remove and replace with proper legacy class
 
         [System.Serializable]
-        public class Legacy {
+        public class LegacyStub {
             public Sprite artwork;
             public string title;
             public string description;
@@ -38,7 +40,7 @@ namespace Assets.CS.TabletopUI {
 
         // public for test purposes to add dummy data
         [Header("Data")]
-        public Legacy[] legacies;
+        public LegacyStub[] legacies;
         int selectedLegacy = -1;
 
         void Start() {
@@ -53,23 +55,17 @@ namespace Assets.CS.TabletopUI {
             SetLegacyButtons();
         }
 #endif
-
-        // Taken directly from TabletopManager - this is copy & paste and pretty crap. 
-        // Can we Init these things elsewhere to make sure they're available here?        
+   
         void InitData() {
             var registry = new Registry();
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
-            UpdateCompendium(compendium);
-        }
-
-        public void UpdateCompendium(ICompendium compendium) {
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
 
-            foreach (var p in contentImporter.GetContentImportProblems())
-                Debug.Log(p.Description);
         }
+
+ 
 
         void SetLegacyButtons() {
             for (int i = 0; i < legacyArtwork.Length; i++) {
@@ -128,20 +124,22 @@ namespace Assets.CS.TabletopUI {
         }
 
         void UpdateSelectedLegacyInfo() {
-            Legacy legacy = legacies[selectedLegacy];
+            //LegacyStub legacy = legacies[selectedLegacy];
 
-            title.text = legacy.title;
-            description.text = legacy.description;
+            LegacyEntity legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
 
-            for (int i = 0; i < rewardTokens.Length; i++) {
-                if (i >= legacy.elements.Length || legacy.elements[i] == null) {
-                    rewardTokens[i].gameObject.SetActive(false);
-                }
-                else {
-                    rewardTokens[i].Populate(legacy.elements[i].elementName, legacy.elements[i].elementCount);
-                    rewardTokens[i].gameObject.SetActive(true);
-                }
-            }
+            title.text = legacySelected.Label;
+            description.text = legacySelected.Description;
+
+            //for (int i = 0; i < rewardTokens.Length; i++) {
+            //    if (i >= legacySelected.ElementEffects.Count || legacySelected.ElementEffectsnts[i] == null) {
+            //        rewardTokens[i].gameObject.SetActive(false);
+            //    }
+            //    else {
+            //        rewardTokens[i].Populate(legacy.elements[i].elementName, legacy.elements[i].elementCount);
+            //        rewardTokens[i].gameObject.SetActive(true);
+            //    }
+            //}
 
             startGameButton.interactable = true;
         }
