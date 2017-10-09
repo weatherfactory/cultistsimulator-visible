@@ -9,7 +9,7 @@ namespace Assets.Core.Entities
     /// <summary>
     /// A specification for an effect available to the player after a game completes, which determines the starting situation of the next character.
     /// </summary>
-    public class LegacyEntity
+    public class Legacy
     {
         public string Id { get; set; }
         public string Label { get; set; }
@@ -17,7 +17,7 @@ namespace Assets.Core.Entities
         public string Image { get; set; }
         public IAspectsDictionary ElementEffects;
 
-        public LegacyEntity()
+        public Legacy()
         {
             ElementEffects=new AspectsDictionary();
         }

@@ -70,7 +70,7 @@ namespace Assets.CS.TabletopUI
             UpdateCompendium(compendium);
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
-           // var l = new LegacyEntity();
+           // var l = new Legacy();
        
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());

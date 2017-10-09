@@ -13,8 +13,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
    public static class CrossSceneState
     {
         private static Ending _currentEnding;
-        private static List<LegacyEntity> _availableLegacies;
-        private static LegacyEntity _chosenLegacy;
+        private static List<Legacy> _availableLegacies;
+        private static Legacy _chosenLegacy;
 
         public static void SetCurrentEnding(Ending ending)
         {
@@ -26,25 +26,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return _currentEnding;
         }
 
-        public static void SetChosenLegacy(LegacyEntity chosen)
+        public static void SetChosenLegacy(Legacy chosen)
         {
             _chosenLegacy = chosen;
         }
 
  
 
-        public static LegacyEntity GetChosenLegacy()
+        public static Legacy GetChosenLegacy()
         {
             return _chosenLegacy;
         }
 
 
-        public static List<LegacyEntity> GetAvailableLegacies()
+        public static List<Legacy> GetAvailableLegacies()
         {
             if (_availableLegacies == null)
             {
                 //default legacies so the screen can be tested in isolation
-                var l1 = new LegacyEntity()
+                var l1 = new Legacy()
                 {
                     Id = "A",
                     Label = "Legacy A",
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     ElementEffects = new AspectsDictionary() { { "shilling", 1 } },
                     Image="moth"
                 };
-                var l2 = new LegacyEntity()
+                var l2 = new Legacy()
                 {
                     Id = "B",
                     Label = "Legacy B",
@@ -60,7 +60,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     ElementEffects = new AspectsDictionary() { { "shilling", 2 } },
                     Image = "heart"
                 }; ;
-                var l3 = new LegacyEntity()
+                var l3 = new Legacy()
                 {
                     Id = "C",
                     Label = "Legacy C",
@@ -69,13 +69,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     Image = "knock"
                 };
 
-                _availableLegacies = new List<LegacyEntity> { l1, l2, l3 };
+                _availableLegacies = new List<Legacy> { l1, l2, l3 };
             }
 
             return _availableLegacies;
         }
 
-        public static void SetAvailableLegacies(List<LegacyEntity> legacies)
+        public static void SetAvailableLegacies(List<Legacy> legacies)
         {
             _availableLegacies = legacies;
         }

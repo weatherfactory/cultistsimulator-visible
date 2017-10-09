@@ -114,7 +114,7 @@ namespace Assets.CS.TabletopUI {
         void UpdateSelectedLegacyInfo() {
             //LegacyStub legacy = legacies[selectedLegacy];
 
-            LegacyEntity legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
+            Legacy legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
 
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;

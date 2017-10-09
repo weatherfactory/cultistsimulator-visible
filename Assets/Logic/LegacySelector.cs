@@ -8,29 +8,29 @@ namespace Assets.Logic
     {
         private readonly ICompendium _compendium;
 
-        public List<LegacyEntity> DetermineLegacies(Ending ending, List<IElementStack> stacksAtEnd)
+        public List<Legacy> DetermineLegacies(Ending ending, List<IElementStack> stacksAtEnd)
         {
             //sample legacies
-            var l1 = new LegacyEntity()
+            var l1 = new Legacy()
             {
                 Id = "1",
                 Label = "Inheritor",
                 Description = "You'll receive a mysterious package"
             };
-            var l2=new LegacyEntity()
+            var l2=new Legacy()
             {
                 Id = "2",
                 Label = "Doctor",
                 Description = "You've made copious notes on this curious case."
             }; ;
-            var l3=new LegacyEntity()
+            var l3=new Legacy()
             {
                 Id = "3",
                 Label = "Haunted",
                 Description = "Your dreams are haunted by visions of one long gone."
             };
 
-            var legacies = new List<LegacyEntity> {l1, l2, l3};
+            var legacies = new List<Legacy> {l1, l2, l3};
 
             return legacies;
         }
