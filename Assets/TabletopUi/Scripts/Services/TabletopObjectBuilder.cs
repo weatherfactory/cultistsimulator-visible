@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Services
             this.tableLevel = tableLevel;
         }
 
-       public void PopulateTabletop()
+       public void CreateInitialTokensOnTabletop()
         {
 
             float sTokenHorizSpace = (PrefabFactory.GetPrefab<SituationToken>().transform as RectTransform).rect.width + 20f;

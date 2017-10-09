@@ -31,8 +31,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _chosenLegacy = chosen;
         }
 
- 
-
         public static Legacy GetChosenLegacy()
         {
             return _chosenLegacy;
@@ -65,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     Id = "C",
                     Label = "Legacy C",
                     Description = "Legacy C desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling",3} ,{"health",1}},
+                    ElementEffects = new AspectsDictionary() { { "shilling",3} ,{"fragmentglory",1}},
                     Image = "knock"
                 };
 

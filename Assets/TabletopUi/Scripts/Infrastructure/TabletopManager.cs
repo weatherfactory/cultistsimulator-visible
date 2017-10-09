@@ -70,8 +70,7 @@ namespace Assets.CS.TabletopUI
             UpdateCompendium(compendium);
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
-           // var l = new Legacy();
-       
+         
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());
             registry.Register<TabletopManager>(this);
@@ -93,25 +92,37 @@ namespace Assets.CS.TabletopUI
         public void SetupBoard()
         {
             heart.StartBeating(0.05f);
-            tabletopObjectBuilder.PopulateTabletop();
+            tabletopObjectBuilder.CreateInitialTokensOnTabletop();
+            ProvisionStartingElements(CrossSceneState.GetChosenLegacy());
+
+
+            var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"));
+            BeginNewSituation(startingNeedsSituationCreationCommand);
+        }
+
+        private void ProvisionStartingElements(Legacy chosenLegacy)
+        {
             AspectsDictionary startingElements = new AspectsDictionary
             {
-                { "health", 2},
-                { "reason", 2},
-                { "passion", 2},
-                { "shilling", 99},
-                {"startingletter",1 }
+                {"health", 2},
+                {"reason", 2},
+                {"passion", 2},
+                {"shilling", 99},
+                {"startingletter", 1}
             };
+
+            if (chosenLegacy != null)
+            {
+                startingElements.CombineAspects(chosenLegacy.ElementEffects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
+            }
 
             foreach (var e in startingElements)
             {
-                ElementStackToken token= tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key,e.Value);
+                ElementStackToken token = tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value);
                 ArrangeTokenOnTable(token);
             }
-
-            var needsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"));
-            BeginNewSituation(needsSituationCreationCommand);
         }
+
 
         public void BeginNewSituation(SituationCreationCommand scc)
         {

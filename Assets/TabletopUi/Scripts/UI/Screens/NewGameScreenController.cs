@@ -73,6 +73,7 @@ namespace Assets.CS.TabletopUI {
 
         public void StartGame() {
             // TODO: Somehow save selected legacy here so that game scene can use it to set up the board
+            CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
 
             SceneManager.LoadScene(SceneNumber.GameScene);
         }
@@ -112,8 +113,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void UpdateSelectedLegacyInfo() {
-            //LegacyStub legacy = legacies[selectedLegacy];
-
+           
             Legacy legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
 
             title.text = legacySelected.Label;
