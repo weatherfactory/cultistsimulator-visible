@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 
@@ -13,21 +14,25 @@ namespace Assets.Logic
             //sample legacies
             var l1 = new Legacy()
             {
-                Id = "1",
+                Id = "inheritor",
                 Label = "Inheritor",
-                Description = "You'll receive a mysterious package"
+                Description = "You'll receive a mysterious package",
+                ElementEffects = new AspectsDictionary() { { "shilling", 1 } }
             };
             var l2=new Legacy()
             {
-                Id = "2",
+                Id = "doctor",
                 Label = "Doctor",
-                Description = "You've made copious notes on this curious case."
-            }; ;
+                Description = "You've made copious notes on this curious case.",
+                ElementEffects = new AspectsDictionary() { { "shilling", 2} }
+            }; 
             var l3=new Legacy()
             {
-                Id = "3",
+                Id = "haunted",
                 Label = "Haunted",
-                Description = "Your dreams are haunted by visions of one long gone."
+                Description = "Your dreams are haunted by visions of one long gone.",
+                ElementEffects = new AspectsDictionary() { { "shilling", 3 }, { "fragmentglory", 1 } },
+                Image = "knock"
             };
 
             var legacies = new List<Legacy> {l1, l2, l3};
