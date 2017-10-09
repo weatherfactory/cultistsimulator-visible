@@ -10,24 +10,11 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI {
     public class NewGameScreenController : MonoBehaviour {
 
-        //TODO: Remove and replace with proper legacy class
-        [System.Serializable]
-        public class LegacyStub {
-            public Sprite artwork;
-            public string title;
-            public string description;
-            public ElementDefinition[] elements;
-
-            [System.Serializable]
-            public class ElementDefinition {
-                public string elementName;
-                public int elementCount = 1;
-            }
-        }
 
         public Toggle[] legacyButtons;
         public Image[] legacyArtwork;
         public RectTransform elementsHolder;
+        int selectedLegacy = -1;
 
         [Header("Prefabs")]
         public ElementStackSimple elementStackSimplePrefab;
@@ -42,39 +29,36 @@ namespace Assets.CS.TabletopUI {
         [Header("Buttons")]
         public Button startGameButton;
 
-        // public for test purposes to add dummy data
-        [Header("Data")]
-        public LegacyStub[] legacies;
-        int selectedLegacy = -1;
+
+
 
         void Start() {
-            InitData();
-            SetLegacyButtons();
-            canvasFader.SetAlpha(0f);
-        }
-
-#if DEBUG
-        // For Debug purposes
-        void OnEnable() {
-            SetLegacyButtons();
-        }
-#endif
-   
-        void InitData() {
             var registry = new Registry();
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
 
+            InitLegacyButtons();
+            canvasFader.SetAlpha(0f);
         }
 
- 
+        #if DEBUG
+        // For Debug purposes
+        void OnEnable() {
+            InitLegacyButtons();
+        }
+        #endif
+   
 
-        void SetLegacyButtons() {
-            for (int i = 0; i < legacyArtwork.Length; i++) {
-                legacyArtwork[i].sprite = legacies[i].artwork;
+
+        void InitLegacyButtons() {
+            for (int i = 0; i < CrossSceneState.GetAvailableLegacies().Count; i++)
+            {
+                var legacySprite= ResourcesManager.GetSpriteForLegacy(CrossSceneState.GetAvailableLegacies()[i].Image);
+                legacyArtwork[i].sprite = legacySprite;
             }
+
 
             // No button is selected, so start game button starts deactivated
             startGameButton.interactable = false;
@@ -95,7 +79,7 @@ namespace Assets.CS.TabletopUI {
 
 
         public void SelectLegacy(int legacy) {
-            if (legacy < 0 || legacy >= legacies.Length || legacies[legacy] == null)
+            if (legacy < 0)
                 return;
 
             if (selectedLegacy == legacy)

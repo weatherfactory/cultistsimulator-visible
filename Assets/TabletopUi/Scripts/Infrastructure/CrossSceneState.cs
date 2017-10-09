@@ -12,22 +12,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     /// </summary>
    public static class CrossSceneState
     {
-        private static Ending currentEnding;
-        private static List<LegacyEntity> availableLegacies;
+        private static Ending _currentEnding;
+        private static List<LegacyEntity> _availableLegacies;
+        private static LegacyEntity _chosenLegacy;
 
         public static void SetCurrentEnding(Ending ending)
         {
-            currentEnding = ending;
+            _currentEnding = ending;
         }
 
         public static Ending GetCurrentEnding()
         {
-            return currentEnding;
+            return _currentEnding;
         }
+
+        public static void SetChosenLegacy(LegacyEntity chosen)
+        {
+            _chosenLegacy = chosen;
+        }
+
+ 
+
+        public static LegacyEntity GetChosenLegacy()
+        {
+            return _chosenLegacy;
+        }
+
 
         public static List<LegacyEntity> GetAvailableLegacies()
         {
-            if (availableLegacies == null)
+            if (_availableLegacies == null)
             {
                 //default legacies so the screen can be tested in isolation
                 var l1 = new LegacyEntity()
@@ -35,32 +49,35 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     Id = "A",
                     Label = "Legacy A",
                     Description = "Legacy A desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling", 1 } }
+                    ElementEffects = new AspectsDictionary() { { "shilling", 1 } },
+                    Image="moth"
                 };
                 var l2 = new LegacyEntity()
                 {
                     Id = "B",
                     Label = "Legacy B",
                     Description = "Legacy B desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling", 2 } }
+                    ElementEffects = new AspectsDictionary() { { "shilling", 2 } },
+                    Image = "heart"
                 }; ;
                 var l3 = new LegacyEntity()
                 {
                     Id = "C",
                     Label = "Legacy C",
                     Description = "Legacy C desc lorem ipsum dolor...",
-                    ElementEffects = new AspectsDictionary() { { "shilling",3} }
+                    ElementEffects = new AspectsDictionary() { { "shilling",3} ,{"health",1}},
+                    Image = "knock"
                 };
 
-                availableLegacies = new List<LegacyEntity> { l1, l2, l3 };
+                _availableLegacies = new List<LegacyEntity> { l1, l2, l3 };
             }
 
-            return availableLegacies;
+            return _availableLegacies;
         }
 
         public static void SetAvailableLegacies(List<LegacyEntity> legacies)
         {
-            availableLegacies = legacies;
+            _availableLegacies = legacies;
         }
 
 

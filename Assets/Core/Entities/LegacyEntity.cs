@@ -14,6 +14,7 @@ namespace Assets.Core.Entities
         public string Id { get; set; }
         public string Label { get; set; }
         public string Description { get; set; }
+        public string Image { get; set; }
         public IAspectsDictionary ElementEffects;
 
         public LegacyEntity()

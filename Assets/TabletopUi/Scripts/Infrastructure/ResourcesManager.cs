@@ -34,7 +34,14 @@ using UnityEngine;
         return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
     }
 
-        public static IEnumerable<AudioClip> GetBackgroundMusic()
+        public static Sprite GetSpriteForLegacy(string legacyImage)
+        {
+            return Resources.Load<Sprite>("icons100/old_aspects/100" + legacyImage);
+        }
+
+
+
+    public static IEnumerable<AudioClip> GetBackgroundMusic()
         {
             return Resources.LoadAll<AudioClip>("music/");
         }
