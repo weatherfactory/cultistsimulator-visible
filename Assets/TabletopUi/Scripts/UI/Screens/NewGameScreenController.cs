@@ -128,7 +128,7 @@ namespace Assets.CS.TabletopUI {
 
             //and add effects for this legacy
 
-            foreach (var e in legacySelected.ElementEffects)
+            foreach (var e in legacySelected.Effects)
             {
                 var effectStack = Object.Instantiate(elementStackSimplePrefab, elementsHolder, false);
                 effectStack.Populate(e.Key, e.Value);

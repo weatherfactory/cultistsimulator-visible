@@ -43,13 +43,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 //default legacies so the screen can be tested in isolation
                 var l1 = new Legacy("A", "Legacy A", "Legacy A lorem ipsum dolor...","heart");
-                l1.ElementEffects = new AspectsDictionary() { { "shilling", 2 } };
+                l1.Effects = new AspectsDictionary() { { "shilling", 2 } };
 
                 var l2= new Legacy("B", "Legacy B", "Legacy B lorem ipsum dolor...", "moth");
-                l1.ElementEffects = new AspectsDictionary() { { "shilling", 2 } };
+                l1.Effects = new AspectsDictionary() { { "shilling", 2 } };
 
                 var l3 = new Legacy("C", "Legacy C", "Legacy C lorem ipsum dolor...", "knock");
-                l1.ElementEffects = new AspectsDictionary() { { "shilling", 2 } };
+                l1.Effects = new AspectsDictionary() { { "shilling", 2 } };
 
 
                 _availableLegacies = new List<Legacy> { l1, l2, l3 };

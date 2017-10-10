@@ -113,7 +113,7 @@ namespace Assets.CS.TabletopUI
 
             if (chosenLegacy != null)
             {
-                startingElements.CombineAspects(chosenLegacy.ElementEffects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
+                startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
             }
 
             foreach (var e in startingElements)

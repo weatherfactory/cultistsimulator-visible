@@ -2,20 +2,20 @@
     [
 	{id: "inheritor",
 	label: "Inheritor",
-	description: "You'll receive a mysterious package.",
-	elementeffects: {shilling:1},
+	description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
+	effects: {shilling:1},
 	image: "knock"
 	},
 	{id: "physician",
 	label: "Physician",
-	description: "You've made copious notes on this curious case.",
-	elementeffects: {shilling:2},
+	description: "As the patient descended into the final delirium, you made copious notes. In the buzzing heat of the night, you re-read those notes, and they begin, at last, to make a kind of sense.",
+	effects: {erudition:1},
 	image: "heart"
 	},
 	{id: "haunted",
 	label: "Haunted",
 	description: "At times, in mirrors, in crowds, you see the face of one now lost.",
-	elementeffects: {shilling:5},
+	effects: {shilling:5},
 	image: "moth"
 	}	
 ]

@@ -216,11 +216,25 @@ public class ContentImporter
             legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("legacies"));
         }
 
-        foreach (Hashtable h in legaciesArrayList)
+        for (int i = 0; i < legaciesArrayList.Count; i++)
         {
-            Legacy l = new Legacy(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(),h["image"].ToString());
+            Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
+
+            Legacy l= new Legacy(htEachLegacy["id"].ToString(), htEachLegacy["label"].ToString(), htEachLegacy["description"].ToString(), htEachLegacy["image"].ToString());
+
+            Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
+            if (htEffects != null)
+            {
+                foreach (string k in htEffects.Keys)
+                {
+                    LogIfNonexistentElementId(k, l.Id, "(effects)");
+                    l.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                }
+            }
+
             Legacies.Add(l.Id,l);
         }
+
 
     }
     public void PopulateRecipeList(ArrayList importedRecipes)
