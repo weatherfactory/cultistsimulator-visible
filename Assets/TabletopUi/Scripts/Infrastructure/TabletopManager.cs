@@ -96,7 +96,7 @@ namespace Assets.CS.TabletopUI
             ProvisionStartingElements(CrossSceneState.GetChosenLegacy());
 
 
-            var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"));
+            var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
             BeginNewSituation(startingNeedsSituationCreationCommand);
         }
 
@@ -126,7 +126,7 @@ namespace Assets.CS.TabletopUI
 
         public void BeginNewSituation(SituationCreationCommand scc)
         {
-            var token = tabletopObjectBuilder.BuildSituation(scc);
+            var token = tabletopObjectBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
 
 			if (scc.SourceToken != null) {
 				var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();

@@ -16,10 +16,10 @@ namespace Assets.Core.Commands
 		public DraggableToken SourceToken { get; set; } // this may not be set if no origin is known or needed
         public IVerb Verb { get; set; }
         public Recipe Recipe { get; set; }
-        public SituationState? State { get; set; }
+        public SituationState State { get; set; }
         public float? TimeRemaining { get; set; }
 
-		public SituationCreationCommand(IVerb verb,Recipe recipe, DraggableToken sourceToken = null)
+		public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, DraggableToken sourceToken = null)
 		{
 			if (recipe==null && verb==null)
 				throw new ArgumentException("Must specify either a recipe or a verb (or both");
@@ -27,6 +27,7 @@ namespace Assets.Core.Commands
 			Recipe = recipe;
 			Verb = verb;
 			SourceToken = sourceToken;
+		    State = situationState;
 		}
 
 
@@ -39,20 +40,6 @@ namespace Assets.Core.Commands
 
             return Verb;
         }
-
-        public ISituation CreateSituationStateMachine(ISituationSubscriber subscriber)
-        {
-            var machine=new Entities.Situation(subscriber);
-            if (Recipe == null)
-                return machine;
-
-
-            machine.Start(Recipe);
-            if (TimeRemaining == null)
-                return machine;
-
-            return new Entities.Situation(TimeRemaining.Value,State.Value,Recipe, subscriber);
-    }
 
 }
 }

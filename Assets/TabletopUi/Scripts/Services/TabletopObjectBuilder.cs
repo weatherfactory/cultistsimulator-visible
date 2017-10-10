@@ -34,8 +34,8 @@ namespace Assets.TabletopUi.Scripts.Services
             for (int i = 0; i < verbs.Count; i++)
             {
                 IVerb v = verbs[i];
-                SituationCreationCommand command=new SituationCreationCommand(v,null);
-                var situationToken=BuildSituation(command);
+                SituationCreationCommand command=new SituationCreationCommand(v,null,SituationState.Unstarted);
+                var situationToken=CreateTokenWithAttachedControllerAndSituation(command);
                 
                 situationToken.transform.localPosition = new Vector3(-700f+sTokenHorizSpace, 200f - i * sTokenVertiSpace);
                 //replace with locatorinfo
@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
 
-        public SituationToken BuildSituation(SituationCreationCommand situationCreationCommand, string locatorInfo=null)
+        public SituationToken CreateTokenWithAttachedControllerAndSituation(SituationCreationCommand situationCreationCommand, string locatorInfo=null)
         {
             var situationController = new SituationController(Registry.Retrieve<ICompendium>(),Registry.Retrieve<Character>());
 

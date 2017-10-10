@@ -39,12 +39,32 @@ namespace Assets.TabletopUi
 
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
-            situationWindow.SetStarting();
 
-            if (command.Recipe != null)
-                RecreateSituation(command);
+            Situation = new Situation(command.TimeRemaining, command.State, command.Recipe, this);
+
+            if (command.State==SituationState.Unstarted)
+            { 
+                situationWindow.SetUnstarted();
+            }
+            else if (command.State==SituationState.FreshlyStarted || command.State==SituationState.Ongoing || command.State==SituationState.RequiringExecution)
+            {
+                situationWindow.SetOngoing(command.Recipe);
+                Situation.Start(command.Recipe);
+
+                situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
+                situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
+            }
+            else if (command.State == SituationState.Complete)
+            {
+                Situation = new Situation(this);
+                situationWindow.SetComplete();
+            }
             else
-                Situation = new Core.Entities.Situation(this);
+            {
+                throw new ApplicationException("Tried to create situation for " + command.Verb.Label +
+                                               " with unknown state");
+            }
+                
         }
 
 
@@ -184,7 +204,7 @@ namespace Assets.TabletopUi
             if (command.AsNewSituation)
             {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
-				SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, situationToken as DraggableToken);
+				SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
             }
             else
@@ -222,7 +242,7 @@ namespace Assets.TabletopUi
 
         public void SituationHasBeenReset()
         {
-            situationWindow.SetStarting();
+            situationWindow.SetUnstarted();
         }
 
         public void SetOutput(List<IElementStack> stacksForOutput, INotification notification)
@@ -230,12 +250,6 @@ namespace Assets.TabletopUi
             situationWindow.SetOutput(stacksForOutput, notification);
         }
 
-        public void RecreateSituation(SituationCreationCommand command)
-        {
-            Situation = command.CreateSituationStateMachine(this);
-            situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
-        }
 
 
         public void AttemptActivateRecipe()
@@ -279,7 +293,7 @@ namespace Assets.TabletopUi
             }
             else
             {
-                situationWindow.SetStarting();
+                situationWindow.SetUnstarted();
                 situationToken.ShowCompletionCount(0);
             }
 

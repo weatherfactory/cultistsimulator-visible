@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<IElementStack> GetStacksInStartingSlots();
         AspectsDictionary GetAspectsFromAllSlottedElements();
         void SetOutput(List<IElementStack> stacks,INotification notification);
-        void SetStarting();
+        void SetUnstarted();
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
         

@@ -53,7 +53,7 @@ public class DebugTools : MonoBehaviour
             var situationEffectCommand=new SituationEffectCommand(recipe,true);
 
         IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(situationEffectCommand);
-        SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, null);
+        SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, recipe, SituationState.FreshlyStarted);
         Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
         }
         else

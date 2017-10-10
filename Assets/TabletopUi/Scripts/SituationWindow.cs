@@ -77,7 +77,7 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Hide();
         }
 
-        public void SetStarting()
+        public void SetUnstarted()
         {
             startingSlotsContainer.Reset();
 

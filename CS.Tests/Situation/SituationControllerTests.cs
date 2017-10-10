@@ -38,7 +38,7 @@ namespace Assets.Editor.Tests
 
             sc = new SituationController(compendiumMock,characterMock);
             
-            var command=new SituationCreationCommand(basicVerb,null);
+            var command=new SituationCreationCommand(basicVerb,null,SituationState.Unstarted);
             sc.Initialise(command, situationAnchorMock,situationDetailsMock);
 
             sc.Situation = _situationMock;
@@ -90,7 +90,7 @@ namespace Assets.Editor.Tests
         public void SituationHasBeenReset_DisplaysStartingInfoInDetails()
         {
             sc.SituationHasBeenReset();
-            situationDetailsMock.Received().SetStarting();
+            situationDetailsMock.Received().SetUnstarted();
         }
 
     }

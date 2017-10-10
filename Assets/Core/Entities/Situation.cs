@@ -80,11 +80,11 @@ namespace Assets.Core.Entities
 
 
 
-        public Situation(float timeRemaining, global::SituationState state, Recipe withPrimaryRecipe,ISituationSubscriber s)
+        public Situation(float? timeRemaining, global::SituationState state, Recipe withPrimaryRecipe,ISituationSubscriber s)
         {
             subscriber = s;
             currentPrimaryRecipe = withPrimaryRecipe;
-            TimeRemaining = timeRemaining;
+            TimeRemaining = timeRemaining ?? 0;
             State = state;
         }
 

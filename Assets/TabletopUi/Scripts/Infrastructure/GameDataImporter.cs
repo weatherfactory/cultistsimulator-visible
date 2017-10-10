@@ -70,9 +70,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
                 var recipe = compendium.GetRecipeById(recipeId);
 
-                var command = new SituationCreationCommand(situationVerb, recipe);
+                var command = new SituationCreationCommand(situationVerb, recipe, (SituationState)Enum.Parse(typeof(SituationState), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString()));
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
-                command.State = TryGetNullableSituationState(htSituationValues, SaveConstants.SAVE_SITUATIONSTATE);
+
+           
 
                 var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;
@@ -219,13 +220,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return null;
         }
 
-        private SituationState? TryGetNullableSituationState(Hashtable ht, string key)
-        {
-            if (!ht.ContainsKey(key))
-                return null;
 
-            return (SituationState)Enum.Parse(typeof(SituationState), ht[key].ToString());
-        }
 
     }
     
