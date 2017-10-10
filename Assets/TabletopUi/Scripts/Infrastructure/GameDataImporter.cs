@@ -107,18 +107,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 //this is probably one more loop than I need.
                 var htSituationOutputStacks = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS);
-                foreach (var k in htSituationOutputStacks.Keys)
-                {
-                    var htThisOutputStack = htSituationOutputStacks.GetHashtable(k);
+               // foreach (var k in htSituationOutputStacks.Keys)
+               // {
+                   // var htThisOutputStack = htSituationOutputStacks.GetHashtable(k);
                    // var htOutputElements = htThisOutputStack.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
                     
-                    var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htThisOutputStack);
+                    var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
                     foreach (var eqs in elementQuantitySpecifications)
                     {
                         outputStack.Add(tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity));
                     }
 
-                }
+               // }
             }
             return outputStack;
         }

@@ -315,37 +315,37 @@ namespace Assets.CS.TabletopUI
 
             heart.StopBeating();
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            try
-            {
+           // try
+         //   {
                 var htSave = saveGameManager.RetrieveHashedSave("save.txt");
                 ClearBoard();
                 saveGameManager.ImportHashedSaveToContainer(tabletopContainer, htSave);
                 notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
 
-           }
-            catch (Exception e)
-            {
-                notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
-            }
-            heart.ResumeBeating();
+           //}
+           // catch (Exception e)
+           // {
+            //    notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
+          //  }
+           // heart.ResumeBeating();
         }
 
         public void SaveGame()
         {
             heart.StopBeating();
 
-            try
-            {
+          //  try
+           // {
             var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
             saveGameManager.SaveGame(tabletopContainer,"save.txt");
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
-            }
-            catch (Exception e)
-            {
+         //   }
+          //  catch (Exception e)
+         //   {
 
-                notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
-            }
+           //     notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
+          //  }
 
             heart.ResumeBeating();
         }
