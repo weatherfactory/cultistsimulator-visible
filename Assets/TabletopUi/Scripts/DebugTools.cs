@@ -62,7 +62,7 @@ public class DebugTools : MonoBehaviour
 
     void FastForward(float interval)
     {
-            heart.Beat(interval);
+            heart.AdvanceTime(interval);
     }
 
     void UpdateCompendiumContent()

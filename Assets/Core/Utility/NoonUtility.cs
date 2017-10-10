@@ -70,22 +70,13 @@ namespace Noon
 
         public static Dictionary<string, string> HashtableToStringStringDictionary(Hashtable table)
         {
-            try
-            {
-
             
             var dictionary = table
                 .Cast<DictionaryEntry>()
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString());
 
             return dictionary;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-
+      
         }
 
 

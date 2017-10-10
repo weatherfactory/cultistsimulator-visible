@@ -170,6 +170,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         //if the game can't find a matching slot, it'll just leave it on the desktop
                         slotToFill.AcceptStack(stackToPutInSlot);
 
+                    //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
+
                 }
             }
         }

@@ -44,18 +44,20 @@ public class Heart : MonoBehaviour
 
     public void Beat()
     {
-            Beat(usualInterval);
-        beatCounter++;
-        if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
-        {
-            beatCounter = 0;
-          outstandingSlotsToFill= Registry.Retrieve<TabletopManager>().FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
-        }
-            
+ 
+            AdvanceTime(usualInterval);
+            beatCounter++;
+            if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
+            {
+                beatCounter = 0;
+                outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
+                    .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
+            }
+ 
     }
     
 
-    public void Beat(float interval)
+    public void AdvanceTime(float interval)
     {
         //foreach existing active recipe window: run beat there
         //advance timer
@@ -71,5 +73,9 @@ public class Heart : MonoBehaviour
        tabletopManager.DecayStacksOnTable(interval);
     }
 
-
+    //remove any outstanding state when loading the game
+    public void Clear()
+    {
+        outstandingSlotsToFill.Clear();
+    }
 }

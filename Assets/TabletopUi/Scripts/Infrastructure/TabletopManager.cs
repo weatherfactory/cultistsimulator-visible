@@ -107,7 +107,7 @@ namespace Assets.CS.TabletopUI
                 {"health", 2},
                 {"reason", 2},
                 {"passion", 2},
-                {"shilling", 99},
+                {"shilling", 1},
                 {"startingletter", 1}
             };
 
@@ -147,6 +147,8 @@ namespace Assets.CS.TabletopUI
 
         public void ClearBoard()
         {
+            heart.Clear();
+
             foreach (var s in tabletopContainer.GetAllSituationTokens())
                 s.Retire();
 

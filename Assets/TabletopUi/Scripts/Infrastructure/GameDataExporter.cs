@@ -61,7 +61,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var e in stacks)
             {
                var stackHashtable=GetHashtableForThisStack(e, htElementStacks);
-                htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
+
+                    htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
+
+
+
             }
             return htElementStacks;
         }

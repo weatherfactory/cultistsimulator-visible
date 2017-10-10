@@ -13,7 +13,8 @@ public class OptionsPanel : MonoBehaviour
     public void ToggleVisibility()
     {
         gameObject.SetActive(!gameObject.activeSelf);
-        tabletopManager.SetPausedState(gameObject.activeInHierarchy);
+        
+   //    tabletopManager.SetPausedState(gameObject.activeInHierarchy);
 
     }
 
