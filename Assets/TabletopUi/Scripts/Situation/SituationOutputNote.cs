@@ -25,7 +25,7 @@ public class SituationOutputNote : MonoBehaviour, ISituationOutputNote
     [SerializeField]private TextMeshProUGUI Description;
     
     public string TitleText { get { return Title.text; } }
-    public string DescriptionText { get { return Title.text; } }
+    public string DescriptionText { get { return Description.text; } }
     public void Initialise(INotification notification)
     {
         Title.text = notification.Title;

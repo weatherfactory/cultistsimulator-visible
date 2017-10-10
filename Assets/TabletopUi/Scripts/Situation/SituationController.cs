@@ -345,7 +345,7 @@ namespace Assets.TabletopUi
             //save output notes
 
             //save notes, and their contents
-            if (situationWindow.GetOutputStacks().Any())
+            if (situationWindow.GetOutputNotes().Any())
             {
                 var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetOutputNotes());
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTNOTES, htOutputs);

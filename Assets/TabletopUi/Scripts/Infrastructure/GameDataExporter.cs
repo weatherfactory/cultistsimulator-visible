@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSituations = new Hashtable();
             foreach (var s in situations)
             {
-                var htSituationProperties = s.GetSaveDataForSituation(); //see, going and getting the data from inside it
+                var htSituationProperties = s.GetSaveDataForSituation(); 
                 htSituations.Add(s.SaveLocationInfo, htSituationProperties);
             }
             return htSituations;
@@ -60,12 +60,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htElementStacks = new Hashtable();
             foreach (var e in stacks)
             {
-                var htStackProperties = new Hashtable();
-                htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);
-                htStackProperties.Add(SaveConstants.SAVE_QUANTITY, e.Quantity);
-                htElementStacks.Add(e.SaveLocationInfo, htStackProperties);
+               var stackHashtable=GetHashtableForThisStack(e, htElementStacks);
+                htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
             }
             return htElementStacks;
+        }
+
+        private static Hashtable GetHashtableForThisStack(IElementStack e, Hashtable htElementStacks)
+        {
+            var htStackProperties = new Hashtable();
+            htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);
+            htStackProperties.Add(SaveConstants.SAVE_QUANTITY, e.Quantity);
+            return htStackProperties;
         }
 
         public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputNotes)
@@ -73,11 +79,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htOutputNotes=new Hashtable();
             foreach (var on in outputNotes)
             {
-                var htEachOutputNotes=new Hashtable();
+                var htEachOutputNotes = new Hashtable();
                 htEachOutputNotes.Add(SaveConstants.SAVE_TITLE, on.TitleText);
-                htEachOutputNotes.Add(SaveConstants.SAVE_DESCRIPTION,on.DescriptionText);
-                
-                htOutputNotes.Add((htOutputNotes.Keys.Count+1).ToString() ,htEachOutputNotes); //need that tostring! exporter doesn't cope well with int keys
+                htEachOutputNotes.Add(SaveConstants.SAVE_DESCRIPTION, on.DescriptionText);
+
+                htOutputNotes.Add((htOutputNotes.Keys.Count + 1).ToString(), htEachOutputNotes); //need that tostring! exporter doesn't cope well with int keys
             }
 
             return htOutputNotes;
