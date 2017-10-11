@@ -9,25 +9,20 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI {
     public class EndScreenController : MonoBehaviour {
 
-
         public Image image;
         public TextMeshProUGUI header;
         public TextMeshProUGUI flavor;
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             var ending = CrossSceneState.GetCurrentEnding();
 
-                //image.sprite = ;
-            
-                header.text = ending.Title;
+            if (ending == null)
+                return;
 
-                flavor.text = ending.Description;
+            //image.sprite = ;
+            header.text = ending.Title;
+            flavor.text = ending.Description;
         }
-
-        
-
-
 
         // Exposed for in-scene buttons
         public void ReturnToMenu() {
