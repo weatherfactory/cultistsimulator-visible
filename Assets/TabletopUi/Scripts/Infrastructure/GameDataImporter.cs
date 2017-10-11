@@ -73,7 +73,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var command = new SituationCreationCommand(situationVerb, recipe, (SituationState)Enum.Parse(typeof(SituationState), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString()));
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
 
-           
+                command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
+                command.OverrideDescription = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_DESCRIPTION);
+
 
                 var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;

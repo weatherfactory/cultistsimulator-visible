@@ -40,7 +40,9 @@ namespace Assets.TabletopUi
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
 
+
             Situation = new Situation(command.TimeRemaining, command.State, command.Recipe, this);
+
 
             if (command.State==SituationState.Unstarted)
             { 
@@ -53,11 +55,25 @@ namespace Assets.TabletopUi
 
                 situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
                 situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
+
+                //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
+                if (command.OverrideTitle != null)
+                    situationWindow.Title = command.OverrideTitle;
+                if (command.OverrideDescription != null)
+                    situationWindow.Description = command.OverrideDescription;
+
             }
             else if (command.State == SituationState.Complete)
             {
                 Situation = new Situation(this);
                 situationWindow.SetComplete();
+
+                //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
+                if (command.OverrideTitle != null)
+                    situationWindow.Title = command.OverrideTitle;
+                if (command.OverrideDescription != null)
+                    situationWindow.Description = command.OverrideDescription;
+
             }
             else
             {
@@ -308,6 +324,7 @@ namespace Assets.TabletopUi
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
             if (Situation != null)
             {
+                situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindow.Title);
                 situationSaveData.Add(SaveConstants.SAVE_DESCRIPTION,situationWindow.Description);
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
