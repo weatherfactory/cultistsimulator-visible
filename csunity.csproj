@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BeginGameButton.cs" />
     <Compile Include="Assets\CanvasZoomTest.cs" />
     <Compile Include="Assets\Core\Commands\ElementQuantitySpecification.cs" />
     <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
@@ -105,10 +104,10 @@
     <Compile Include="Assets\Core\Entities\AspectsDictionary.cs" />
     <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
-    <Compile Include="Assets\Core\Entities\Ending.cs" />
     <Compile Include="Assets\Core\Entities\CreatedVerb.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
     <Compile Include="Assets\Core\Entities\ElementStacksManager.cs" />
+    <Compile Include="Assets\Core\Entities\Ending.cs" />
     <Compile Include="Assets\Core\Entities\Legacy.cs" />
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
     <Compile Include="Assets\Core\Entities\Situation.cs" />
@@ -160,6 +159,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\ResourcesManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SaveConstants.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SceneNumber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IDraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />
@@ -207,14 +207,13 @@
     <Compile Include="Assets\TabletopUi\Scripts\UI\GraphicFader.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Hotkeys.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\LoadingIcon.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\LoadingScreenManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\SplashScreen.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\OptionsPanel.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\PauseButton.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\EndScreenController.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\EndScreenLayout.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\LoadingScreenManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\NewGameScreenController.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\UI\Screens\SceneNumber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\UIParticleCanvasScaler.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\UIParticleScaler.cs" />
     <Compile Include="Assets\TabletopUi\TokenAndSlot.cs" />

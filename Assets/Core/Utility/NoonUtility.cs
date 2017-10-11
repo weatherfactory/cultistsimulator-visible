@@ -50,9 +50,9 @@ namespace Noon
     {
 
 
-        public static string GetGameSavePath(string filename)
+        public static string GetGameSaveLocation()
         {
-            string wholePath= Application.persistentDataPath + "\\" + filename;
+            string wholePath= Application.persistentDataPath + "\\save.txt" ;
             return wholePath;
         }
 

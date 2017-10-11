@@ -23,6 +23,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             this.dataExporter = dataExporter;
         }
 
+        public static bool DoesGameSaveExist()
+        {
+            return File.Exists(NoonUtility.GetGameSaveLocation());
+        }
+
         public void SaveGame(TabletopContainer tabletopContainer,string saveFileName)
         {
             var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
@@ -32,12 +37,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSaveTable = dataExporter.GetSaveHashTable(allStacks,
                 allSituationTokens);
 
-            File.WriteAllText(NoonUtility.GetGameSavePath(saveFileName), htSaveTable.JsonString());
+            File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
         }
 
         public Hashtable RetrieveHashedSave(string saveFileName)
         {
-            string importJson = File.ReadAllText(NoonUtility.GetGameSavePath(saveFileName));
+            string importJson = File.ReadAllText(NoonUtility.GetGameSaveLocation());
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
             return htSave;
         }

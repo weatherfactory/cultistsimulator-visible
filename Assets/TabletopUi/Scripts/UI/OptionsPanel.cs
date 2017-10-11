@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.CS.TabletopUI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsPanel : MonoBehaviour
@@ -26,8 +27,11 @@ public class OptionsPanel : MonoBehaviour
     }
     public void LeaveGame()
     {
+        var tabletopManager = Registry.Retrieve<TabletopManager>();
+        tabletopManager.SetPausedState(true);
+        tabletopManager.SaveGame();
 
-  Application.Quit();
+       SceneManager.LoadScene(SceneNumber.MenuScene);
     }
 
     public void ToggleMusic()

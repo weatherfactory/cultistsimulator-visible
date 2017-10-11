@@ -18,12 +18,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public static void SetCurrentEnding(Ending ending)
         {
+            if(ending==null)
+                throw new ApplicationException("Guard clause: use ClearEnding to set ending to null");
             _currentEnding = ending;
         }
 
         public static Ending GetCurrentEnding()
         {
             return _currentEnding;
+        }
+
+        public static void ClearEnding()
+        {
+            _currentEnding = null;
         }
 
         public static void SetChosenLegacy(Legacy chosen)

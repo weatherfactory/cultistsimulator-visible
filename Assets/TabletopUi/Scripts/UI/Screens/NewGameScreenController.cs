@@ -72,8 +72,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void StartGame() {
-            // TODO: Somehow save selected legacy here so that game scene can use it to set up the board
+            
             CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
+            CrossSceneState.ClearEnding();
 
             SceneManager.LoadScene(SceneNumber.GameScene);
         }

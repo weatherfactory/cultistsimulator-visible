@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine.SceneManagement;
 
 public class LoadingScreenManager : MonoBehaviour {
@@ -17,7 +18,7 @@ public class LoadingScreenManager : MonoBehaviour {
 	bool waitForInput = true;
 
 	[Header("Buttons")]
-	public Button startGame;
+	public BeginGameButton beginGameButton;
 	public Button showOptions;
 	public EventSystem eventSystem;
 
@@ -57,6 +58,11 @@ public class LoadingScreenManager : MonoBehaviour {
 		fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
 		currentScene = SceneManager.GetActiveScene();
 		StartCoroutine(LoadAsync(sceneToLoad));
+
+	    if (GameSaveManager.DoesGameSaveExist())
+	        beginGameButton.Text = "CONTINUE";
+	    else
+	        beginGameButton.Text = "BEGIN";
 	}
 
 	private IEnumerator LoadAsync(int levelNum) {
@@ -126,7 +132,7 @@ public class LoadingScreenManager : MonoBehaviour {
 			return;
 		
 		if (DoneLoading() == false) 
-			eventSystem.SetSelectedGameObject(startGame.gameObject);
+			eventSystem.SetSelectedGameObject(beginGameButton.gameObject);
 
 		eventSystem.enabled = false;
 		waitForInput = false;		
