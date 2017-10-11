@@ -8,6 +8,7 @@ using Assets.Core.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
+using JetBrains.Annotations;
 using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities
@@ -86,6 +87,7 @@ namespace Assets.Core.Entities
             currentPrimaryRecipe = withPrimaryRecipe;
             TimeRemaining = timeRemaining ?? 0;
             State = state;
+
         }
 
 

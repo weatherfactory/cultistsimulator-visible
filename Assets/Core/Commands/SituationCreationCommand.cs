@@ -18,8 +18,10 @@ namespace Assets.Core.Commands
         public Recipe Recipe { get; set; }
         public SituationState State { get; set; }
         public float? TimeRemaining { get; set; }
+        public string OverrideTitle { get; set; } //if not null, replaces any title from the verb or recipe
+        public string OverrideDescription { get; set; }  //if not null, replaces any title from the verb or recipe; used on eg rehydration from save
 
-		public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, DraggableToken sourceToken = null)
+        public SituationCreationCommand(IVerb verb,Recipe recipe, SituationState situationState, DraggableToken sourceToken = null)
 		{
 			if (recipe==null && verb==null)
 				throw new ArgumentException("Must specify either a recipe or a verb (or both");

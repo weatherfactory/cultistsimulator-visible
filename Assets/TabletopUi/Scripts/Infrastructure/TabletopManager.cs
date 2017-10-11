@@ -315,7 +315,7 @@ namespace Assets.CS.TabletopUI
         public void LoadGame()
         {
 
-            heart.StopBeating();
+            SetPausedState(true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
            // try
          //   {
