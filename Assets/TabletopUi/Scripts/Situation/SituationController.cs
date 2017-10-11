@@ -50,8 +50,14 @@ namespace Assets.TabletopUi
             }
             else if (command.State==SituationState.FreshlyStarted || command.State==SituationState.Ongoing || command.State==SituationState.RequiringExecution)
             {
+                if(command.State==SituationState.FreshlyStarted)
+                        Situation.Start(command.Recipe);
+                    //ugly subclause here. Situation.Start largely duplicates the constructor. I'm trying to use the same code path for recreating situations from a save file as for beginning a new situation
+                    //possibly just separating out FreshlyStarted would solve it
+
+
                 situationWindow.SetOngoing(command.Recipe);
-                Situation.Start(command.Recipe);
+                
 
                 situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
                 situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
@@ -73,6 +79,9 @@ namespace Assets.TabletopUi
                     situationWindow.Title = command.OverrideTitle;
                 if (command.OverrideDescription != null)
                     situationWindow.Description = command.OverrideDescription;
+                //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
+                if(command.CompletionCount>0)
+                    situationToken.SetCompletionCount(command.CompletionCount);
 
             }
             else
@@ -310,7 +319,7 @@ namespace Assets.TabletopUi
             else
             {
                 situationWindow.SetUnstarted();
-                situationToken.ShowCompletionCount(0);
+                situationToken.SetCompletionCount(0);
             }
 
             
@@ -329,6 +338,8 @@ namespace Assets.TabletopUi
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
                 situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, Situation.TimeRemaining);
+              
+                situationSaveData.Add(SaveConstants.SAVE_COMPLETIONCOUNT, situationToken.GetCompletionCount());
             }
 
 

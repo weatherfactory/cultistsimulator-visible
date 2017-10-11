@@ -24,6 +24,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_SITUATIONOUTPUTNOTES = "situationOutputNotes";
         public const string SAVE_TITLE = "title";
         public const string SAVE_DESCRIPTION = "description";
+        public const string SAVE_COMPLETIONCOUNT = "completioncount";
 
 
         public const char SEPARATOR = '_';

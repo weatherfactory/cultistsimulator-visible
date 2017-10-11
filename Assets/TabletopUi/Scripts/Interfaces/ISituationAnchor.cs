@@ -30,6 +30,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayComplete();
         bool Retire();
 
-        void ShowCompletionCount(int newCount);
+        void SetCompletionCount(int newCount);
+        int GetCompletionCount();
     }
 }

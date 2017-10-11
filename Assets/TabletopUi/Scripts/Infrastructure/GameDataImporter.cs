@@ -75,6 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.OverrideDescription = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_DESCRIPTION);
+                command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
 
 
                 var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
@@ -210,6 +211,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return ht[key].ToString();
         }
 
+        //returns 0 if we can't get a value
+        private int GetIntFromHashtable(Hashtable ht, string key)
+        {
+            if (!ht.ContainsKey(key))
+                return 0;
+
+            string jsonString = ht[key].ToString();
+            int returnValue;
+            if (Int32.TryParse(jsonString, out returnValue))
+                return returnValue;
+            else
+                return 0;
+        }
 
         private float? TryGetNullableFloatFromHashtable(Hashtable ht, string key)
         {

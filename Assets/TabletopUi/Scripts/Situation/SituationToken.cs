@@ -71,8 +71,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-		// NOTE MARTIN: New method to show amount of fixed events:
-		public void ShowCompletionCount(int newCount) {
+		public void SetCompletionCount(int newCount) {
 			completionBadge.gameObject.SetActive(newCount > 0);
 			completionText.text = newCount.ToString();
 
@@ -85,6 +84,14 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        public int GetCompletionCount()
+        {
+            int count = 0;
+            bool isNonZero = Int32.TryParse(completionText.text, out count);
+            if (isNonZero)
+                return count;
+            else return 0;
+        }
 
         public HeartbeatResponse ExecuteHeartbeat(float interval)
         {
@@ -101,7 +108,7 @@ namespace Assets.CS.TabletopUI
             DisplayName(verb);
             DisplayIcon(verb);
 			SetTimerVisibility(false);
-			ShowCompletionCount(0);
+			SetCompletionCount(0);
             ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
@@ -220,7 +227,7 @@ namespace Assets.CS.TabletopUI
             //hide the timer: we're done here
             SetTimerVisibility(false);
             ongoingSlotImage.gameObject.SetActive(false);
-            ShowCompletionCount(1);
+            SetCompletionCount(1);
         }
 
 
