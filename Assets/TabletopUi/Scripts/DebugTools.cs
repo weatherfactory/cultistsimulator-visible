@@ -20,6 +20,8 @@ public class DebugTools : MonoBehaviour
     [SerializeField]private Button btnNextTrack;
     [SerializeField] private Button btnUpdateContent;
     [SerializeField] private Button btnEndGame;
+    [SerializeField] private Button btnLoadGame;
+    [SerializeField] private Button btnSaveGame;
     [SerializeField] private BackgroundMusic backgroundMusic;
 
 
@@ -30,6 +32,9 @@ public class DebugTools : MonoBehaviour
         btnFastForward.onClick.AddListener(() => FastForward(30));
         btnUpdateContent.onClick.AddListener(UpdateCompendiumContent);
         btnEndGame.onClick.AddListener(EndGame);
+        btnLoadGame.onClick.AddListener(LoadGame);
+        btnSaveGame.onClick.AddListener(SaveGame);
+
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
 
@@ -81,5 +86,16 @@ public class DebugTools : MonoBehaviour
         var ending = compendium.GetEndingForFlag("powerminor");
         Registry.Retrieve<TabletopManager>().EndGame(ending);
     }
+
+    public void LoadGame()
+    {
+        Registry.Retrieve<TabletopManager>().LoadGame();
+    }
+
+    public void SaveGame()
+    {
+        Registry.Retrieve<TabletopManager>().SaveGame();
+    }
+
 }
 

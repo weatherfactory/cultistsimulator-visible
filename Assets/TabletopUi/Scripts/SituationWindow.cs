@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
@@ -39,6 +40,19 @@ namespace Assets.CS.TabletopUI
         public IList<INotification> queuedNotifications = new List<INotification>();
         private SituationController situationController;
         private IVerb Verb;
+
+        public string Title
+        {
+            get { return title.text; }
+            set { title.text = value; }
+        }
+
+        public string Description
+        {
+            get { return description.text; }
+            set { description.text = value; }
+        }
+
 
         void JiggleLayoutGroup()
         {
@@ -87,8 +101,8 @@ namespace Assets.CS.TabletopUI
             _situationResults.Reset();
             _situationResults.gameObject.SetActive(false);
             
-            title.text = Verb.Label;
-            description.text = Verb.Description;
+            Title = Verb.Label;
+            Description = Verb.Description;
             ButtonBarText.text = "";
 
             ButtonBarText.gameObject.SetActive(false);
@@ -162,8 +176,8 @@ namespace Assets.CS.TabletopUI
 
         public void DisplayNoRecipeFound()
         {
-            title.text = "";
-            description.text = "[If I experiment further, I may find another combination. There will be a great many more combinations in the final game.]";
+            Title = "";
+            Description = "[If I experiment further, I may find another combination. There will be a great many more combinations in the final game.]";
             button.gameObject.SetActive(false);
         }
 
@@ -175,8 +189,8 @@ namespace Assets.CS.TabletopUI
         public void DisplayStartingRecipeFound(Recipe r)
         {
             
-                title.text = r.Label;
-                description.text = r.StartDescription;
+                Title = r.Label;
+                Description = r.StartDescription;
                 button.gameObject.SetActive(true);
  
         }
@@ -184,8 +198,8 @@ namespace Assets.CS.TabletopUI
 
         public void UpdateTextForPrediction(RecipePrediction recipePrediction)
         {
-            title.text = recipePrediction.Title;
-            description.text = recipePrediction.DescriptiveText;
+            Title = recipePrediction.Title;
+            Description = recipePrediction.DescriptiveText;
             ButtonBarText.text = recipePrediction.Commentary;
 
         }
