@@ -7,6 +7,7 @@ using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using TMPro;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
@@ -44,5 +45,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void ConsumeMarkedElements();
         void ShowDestinationsForStack(IElementStack stack);
         void DisplayNoRecipeFound();
+        string Title { get; set; }
+        string Description { get; set; }
     }
 }

@@ -308,6 +308,7 @@ namespace Assets.TabletopUi
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
             if (Situation != null)
             {
+                situationSaveData.Add(SaveConstants.SAVE_DESCRIPTION,situationWindow.Description);
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
                 situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, Situation.TimeRemaining);
