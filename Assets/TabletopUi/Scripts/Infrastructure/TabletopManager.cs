@@ -85,7 +85,10 @@ namespace Assets.CS.TabletopUI
 
             notifier.ShowNotificationWindow("18th JANUARY, 1920","I am a beginning student of the invisible arts. I have only time, hunger, and a little money. Earlier, I made a note in my journal. [Clicking the note, above, will read it.]",30);
 
-            if (GameSaveManager.DoesGameSaveExist())
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+
+
+            if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
              LoadGame();
                  else
            SetupNewBoard();
@@ -321,7 +324,7 @@ namespace Assets.CS.TabletopUI
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
            // try
          //   {
-                var htSave = saveGameManager.RetrieveHashedSave("save.txt");
+                var htSave = saveGameManager.RetrieveHashedSave();
                 ClearBoard();
                 saveGameManager.ImportHashedSaveToContainer(tabletopContainer, htSave);
                 notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
@@ -341,7 +344,7 @@ namespace Assets.CS.TabletopUI
           //  try
            // {
             var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
-            saveGameManager.SaveGame(tabletopContainer,"save.txt");
+            saveGameManager.SaveActiveGame(tabletopContainer);
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
          //   }

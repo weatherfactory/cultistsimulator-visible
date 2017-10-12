@@ -7,12 +7,14 @@ namespace Assets.Core.Entities
 {
     public class Ending
     {
+        public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageId { get; set; }
 
-        public Ending(string title, string description,string imageId)
+        public Ending(string id, string title, string description,string imageId)
         {
+            Id = id;
             Title = title;
             Description = description;
             ImageId = imageId;

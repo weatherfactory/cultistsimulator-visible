@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine.SceneManagement;
 
@@ -41,7 +42,7 @@ public class LoadingScreenManager : MonoBehaviour {
 	AsyncOperation operation;
 	Scene currentScene;
 
-	public static int sceneToLoad = 2;
+	public static int sceneToLoad;
 	// IMPORTANT! This is the build index of your loading scene. You need to change this to match your actual scene index
 	static int loadingSceneIndex = 1;
 
@@ -52,17 +53,32 @@ public class LoadingScreenManager : MonoBehaviour {
 	}
 
 	void Start() {
-		if (sceneToLoad < 0)
+
+	    var saveGameManager = new GameSaveManager(new GameDataImporter(null), new GameDataExporter());
+
+
+
+
+        if (!saveGameManager.DoesGameSaveExist())
+        { 
+            beginGameButton.Text = "BEGIN";
+	        sceneToLoad = SceneNumber.GameScene;
+        }
+        else
+        { 
+	        beginGameButton.Text = "CONTINUE";
+            if (saveGameManager.IsSavedGameActive())
+                sceneToLoad = SceneNumber.GameScene;
+            else
+                sceneToLoad = SceneNumber.NewGameScene;
+        }
+        if (sceneToLoad < 0)
 			return;
 
 		fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
 		currentScene = SceneManager.GetActiveScene();
 		StartCoroutine(LoadAsync(sceneToLoad));
 
-	    if (GameSaveManager.DoesGameSaveExist())
-	        beginGameButton.Text = "CONTINUE";
-	    else
-	        beginGameButton.Text = "BEGIN";
 	}
 
 	private IEnumerator LoadAsync(int levelNum) {

@@ -24,8 +24,11 @@ namespace Assets.CS.TabletopUI {
             flavor.text = ending.Description;
         }
 
-        // Exposed for in-scene buttons
+       
         public void ReturnToMenu() {
+            //save on exit, so the player will return here, not begin a new game
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            saveGameManager.SaveInactiveGame();
             SceneManager.LoadScene(SceneNumber.MenuScene);
         }
 

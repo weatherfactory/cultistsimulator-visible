@@ -17,18 +17,34 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private readonly IGameDataImporter dataImporter;
         private readonly IGameDataExporter dataExporter;
 
+        
         public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
         {
             this.dataImporter = dataImporter;
             this.dataExporter = dataExporter;
         }
 
-        public static bool DoesGameSaveExist()
+        public bool DoesGameSaveExist()
         {
             return File.Exists(NoonUtility.GetGameSaveLocation());
         }
 
-        public void SaveGame(TabletopContainer tabletopContainer,string saveFileName)
+        public bool IsSavedGameActive()
+        {
+            var htSave = RetrieveHashedSave();
+            return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
+        }
+
+        //for saving from the game over or legacy choice screen, when the player is between active games
+        public void SaveInactiveGame()
+        {
+            var htSaveTable = dataExporter.GetHashtableForExtragameState();
+            File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+
+        }
+
+        //for saving from the tabletop
+        public void SaveActiveGame(TabletopContainer tabletopContainer)
         {
             var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
             var allSituationTokens = tabletopContainer.GetAllSituationTokens();
@@ -40,7 +56,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
         }
 
-        public Hashtable RetrieveHashedSave(string saveFileName)
+        public Hashtable RetrieveHashedSave()
         {
             string importJson = File.ReadAllText(NoonUtility.GetGameSaveLocation());
             Hashtable htSave = SimpleJsonImporter.Import(importJson);

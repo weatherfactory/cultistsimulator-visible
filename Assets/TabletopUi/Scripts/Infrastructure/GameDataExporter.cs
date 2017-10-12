@@ -12,8 +12,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public interface IGameDataExporter
     {
         Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations);
-        Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
-    }
+
+    Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
+
+        Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputNotes);
+        Hashtable GetHashtableForExtragameState();
+}
 
     public class GameDataExporter: IGameDataExporter
     {
@@ -25,13 +29,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
         public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
         {
-            var htAll = new Hashtable
-           {
-               {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
-               {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)}
-           };
+            var htAll = new Hashtable()
+            {
+                {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
+                {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)}
+            };
             return htAll;
         }
+
+
+
         /// <summary>
         /// return save data for all ongoing situations. Each one in turn will be inspected.
         /// NOTE: stacks *in situations* are handled by this function
@@ -39,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// I think it probably shouldn't be
         /// </summary>
         /// <returns></returns>
-        public Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
+        private Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
         {
    
             var htSituations = new Hashtable();
@@ -70,7 +77,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htElementStacks;
         }
 
-        private static Hashtable GetHashtableForThisStack(IElementStack e, Hashtable htElementStacks)
+        public Hashtable GetHashtableForExtragameState()
+        {
+            return CrossSceneState.GetHashTableForCrossSceneState();
+        }
+
+private Hashtable GetHashtableForThisStack(IElementStack e, Hashtable htElementStacks)
         {
             var htStackProperties = new Hashtable();
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);

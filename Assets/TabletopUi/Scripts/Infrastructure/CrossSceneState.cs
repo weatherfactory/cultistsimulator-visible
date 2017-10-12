@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using OrbCreationExtensions;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -16,10 +18,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private static List<Legacy> _availableLegacies;
         private static Legacy _chosenLegacy;
 
+        public static Hashtable GetHashTableForCrossSceneState()
+        {
+            var ht=new Hashtable();
+            ht.Add(SaveConstants.SAVE_CURRENTENDING, GetCurrentEnding().Id);
+
+            var htLegacies = new Hashtable();
+            foreach (var l in GetAvailableLegacies())
+            {
+                
+                htLegacies.Add(l.Id,l.Id);
+
+            }
+
+            ht.Add(SaveConstants.SAVE_AVAILABLELEGACIES,htLegacies);                             
+
+            return ht;
+        }
+
         public static void SetCurrentEnding(Ending ending)
         {
             if(ending==null)
-                throw new ApplicationException("Guard clause: use ClearEnding to set ending to null");
+                throw new ApplicationException("Guard clause: use ClearEndingAndLegacies to set ending to null");
             _currentEnding = ending;
         }
 
@@ -28,9 +48,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return _currentEnding;
         }
 
-        public static void ClearEnding()
+        public static void ClearEndingAndLegacies()
         {
             _currentEnding = null;
+            _availableLegacies = null;
         }
 
         public static void SetChosenLegacy(Legacy chosen)
@@ -46,21 +67,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public static List<Legacy> GetAvailableLegacies()
         {
-            if (_availableLegacies == null)
-            {
-                //default legacies so the screen can be tested in isolation
-                var l1 = new Legacy("A", "Legacy A", "Legacy A lorem ipsum dolor...","heart");
-                l1.Effects = new AspectsDictionary() { { "shilling", 2 } };
-
-                var l2= new Legacy("B", "Legacy B", "Legacy B lorem ipsum dolor...", "moth");
-                l1.Effects = new AspectsDictionary() { { "shilling", 2 } };
-
-                var l3 = new Legacy("C", "Legacy C", "Legacy C lorem ipsum dolor...", "knock");
-                l1.Effects = new AspectsDictionary() { { "shilling", 2 } };
-
-
-                _availableLegacies = new List<Legacy> { l1, l2, l3 };
-            }
 
             return _availableLegacies;
         }

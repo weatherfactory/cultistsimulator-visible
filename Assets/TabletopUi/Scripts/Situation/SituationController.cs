@@ -328,7 +328,7 @@ namespace Assets.TabletopUi
         public Hashtable GetSaveDataForSituation()
         {
             var situationSaveData = new Hashtable();
-            var exporter = new GameDataExporter();
+            IGameDataExporter exporter = new GameDataExporter();
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
             if (Situation != null)

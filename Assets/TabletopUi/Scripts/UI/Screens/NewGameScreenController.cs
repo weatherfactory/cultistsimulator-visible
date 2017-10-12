@@ -68,13 +68,17 @@ namespace Assets.CS.TabletopUI {
 
 
         public void ReturnToMenu() {
+            //save on exit, so the player will return here, not begin a new game
+
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            saveGameManager.SaveInactiveGame();
             SceneManager.LoadScene(SceneNumber.MenuScene);
         }
 
         public void StartGame() {
             
             CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
-            CrossSceneState.ClearEnding();
+            CrossSceneState.ClearEndingAndLegacies();
 
             SceneManager.LoadScene(SceneNumber.GameScene);
         }

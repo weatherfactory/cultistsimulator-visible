@@ -7,6 +7,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class SaveConstants
     {
+        public static object SAVE_EXTRAGAME_STATE="extrastate";
+        public const string SAVE_CURRENTENDING = "currentending";
+        public const string SAVE_AVAILABLELEGACIES = "availablelegacies";
         public const string SAVE_ELEMENTID = "elementId";
         public const string SAVE_QUANTITY = "quantity";
         public const string SAVE_VERBID = "verbId";
