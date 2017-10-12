@@ -85,18 +85,20 @@ namespace Assets.CS.TabletopUI
 
             notifier.ShowNotificationWindow("18th JANUARY, 1920","I am a beginning student of the invisible arts. I have only time, hunger, and a little money. Earlier, I made a note in my journal. [Clicking the note, above, will read it.]",30);
 
-            SetupBoard();
+            if (GameSaveManager.DoesGameSaveExist())
+             LoadGame();
+                 else
+           SetupNewBoard();
 
+           heart.StartBeating(0.05f);
         }
 
-        public void SetupBoard()
+        public void SetupNewBoard()
         {
-            heart.StartBeating(0.05f);
+            
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(CrossSceneState.GetChosenLegacy());
-
-
-            var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
+             var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
             BeginNewSituation(startingNeedsSituationCreationCommand);
         }
 
