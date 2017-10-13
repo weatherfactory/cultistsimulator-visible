@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -34,6 +35,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSave = RetrieveHashedSave();
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
         }
+
 
         //for saving from the game over or legacy choice screen, when the player is between active games
         public void SaveInactiveGame()
@@ -68,5 +70,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             dataImporter.ImportSavedGameToContainer(tabletopContainer,htSave);
         }
+
+        public SavedCrossSceneState RetrieveSavedCrossSceneState()
+        {
+            var htSave = RetrieveHashedSave();
+            return dataImporter.ImportCrossSceneState(htSave);
+
+        }
+
+
     }
 }

@@ -25,10 +25,11 @@ public interface ICompendium
     Boolean IsKnownElement(string elementId);
     List<IVerb> GetAllVerbs();
     IVerb GetVerbById(string verbId);
-    Ending GetEndingForFlag(string endingFlag);
+    Ending GetEndingById(string endingFlag);
     IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command);
 
     List<Legacy> GetAllLegacies();
+    Legacy GetLegacyById(string legacyId);
 }
 
 public class Compendium : ICompendium
@@ -141,6 +142,13 @@ public class Compendium : ICompendium
         return _verbs[verbId];
     }
 
+    public Legacy GetLegacyById(string legacyId)
+    {
+        if (!_legacies.ContainsKey(legacyId))
+            return null;
+        return _legacies[legacyId];
+    }
+
     public IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command)
     {
         var candidateVerb = GetVerbById(command.Recipe.ActionId);
@@ -153,7 +161,7 @@ public class Compendium : ICompendium
 
 
 
-    public Ending GetEndingForFlag(string endingFlag)
+    public Ending GetEndingById(string endingFlag)
     {
         if(endingFlag=="deathofthebody")
             return new Ending(endingFlag, "MY BODY IS DEAD",

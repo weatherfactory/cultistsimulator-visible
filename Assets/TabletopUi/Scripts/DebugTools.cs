@@ -83,7 +83,7 @@ public class DebugTools : MonoBehaviour
     void EndGame()
     {
         var compendium = Registry.Retrieve<ICompendium>();
-        var ending = compendium.GetEndingForFlag("powerminor");
+        var ending = compendium.GetEndingById("powerminor");
         Registry.Retrieve<TabletopManager>().EndGame(ending);
     }
 

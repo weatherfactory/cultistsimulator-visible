@@ -9,6 +9,12 @@ using OrbCreationExtensions;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
+
+    public class SavedCrossSceneState
+    {
+        public Ending CurrentEnding;
+        public List<Legacy> AvailableLegacies=new List<Legacy>();
+    }
     /// <summary>
     /// AFAICT there is no way to pass data between scenes on a load, except with a static object.
     /// </summary>
@@ -17,6 +23,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private static Ending _currentEnding;
         private static List<Legacy> _availableLegacies;
         private static Legacy _chosenLegacy;
+
+
 
         public static Hashtable GetHashTableForCrossSceneState()
         {

@@ -18,6 +18,7 @@ namespace Assets.CS.TabletopUI
     {
 
         [SerializeField] Image artwork;
+        [SerializeField] Image backArtwork;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] GraphicFader glowImage;
         [SerializeField] GameObject stackBadge;
@@ -32,6 +33,20 @@ namespace Assets.CS.TabletopUI
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
 
+        public void FlipToFaceUp()
+        {
+            Flip(true);
+        }
+
+        public void FlipToFaceDown()
+        {
+            Flip(false);
+        }
+        
+        public void Flip(bool toFaceUp)
+        {
+            throw new NotImplementedException();
+        }
 
         public override string Id
         {

@@ -242,7 +242,7 @@ namespace Assets.TabletopUi
 
                 if (command.Recipe.EndingFlag != null)
                 {
-                    var ending = compendium.GetEndingForFlag(command.Recipe.EndingFlag);
+                    var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
                     Registry.Retrieve<TabletopManager>().EndGame(ending);
                 }
             }

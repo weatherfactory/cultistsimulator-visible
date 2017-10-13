@@ -1,4 +1,4 @@
-﻿// LoadingScreenManager
+﻿// based on LoadingScreenManager
 // --------------------------------
 // built by Martin Nerurkar (http://www.martin.nerurkar.de)
 // for Nowhere Prophet (http://www.noprophet.com)
@@ -14,7 +14,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine.SceneManagement;
 
-public class LoadingScreenManager : MonoBehaviour {
+public class MenuScreenController : MonoBehaviour {
 
 	bool waitForInput = true;
 
@@ -53,11 +53,14 @@ public class LoadingScreenManager : MonoBehaviour {
 	}
 
 	void Start() {
+	    var registry = new Registry();
+	    var compendium = new Compendium();
+	    registry.Register<ICompendium>(compendium);
+	    var contentImporter = new ContentImporter();
+	    contentImporter.PopulateCompendium(compendium);
 
-	    var saveGameManager = new GameSaveManager(new GameDataImporter(null), new GameDataExporter());
 
-
-
+        var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
 
         if (!saveGameManager.DoesGameSaveExist())
         { 
@@ -68,9 +71,24 @@ public class LoadingScreenManager : MonoBehaviour {
         { 
 	        beginGameButton.Text = "CONTINUE";
             if (saveGameManager.IsSavedGameActive())
+                //back into the game!
                 sceneToLoad = SceneNumber.GameScene;
             else
+            {
+                //we left the game from the game over or legacy screen: go back to choose a legacy.
+                var savedCrossSceneState = saveGameManager.RetrieveSavedCrossSceneState();
+
+                //this is essential. If we earlier left the game in the legacy screen, we're about to go back there, 
+                //and we need to retrieve the legacy ids and populate with compendium data
+                if (savedCrossSceneState.AvailableLegacies.Count > 0)
+                    CrossSceneState.SetAvailableLegacies(savedCrossSceneState.AvailableLegacies);
+            //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
+                if (savedCrossSceneState.CurrentEnding != null)
+                    CrossSceneState.SetCurrentEnding(savedCrossSceneState.CurrentEnding);
+
                 sceneToLoad = SceneNumber.NewGameScene;
+
+            }
         }
         if (sceneToLoad < 0)
 			return;

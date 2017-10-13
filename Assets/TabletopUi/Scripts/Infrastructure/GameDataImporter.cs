@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -15,7 +16,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave);        
+        void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave);
+        SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
     }
 
     public class GameDataImporter : IGameDataImporter
@@ -39,6 +41,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             ImportSituations(tabletopContainer, htSituations);
 
+        }
+
+        public SavedCrossSceneState ImportCrossSceneState(Hashtable htSave)
+        {
+            SavedCrossSceneState state=new SavedCrossSceneState();
+            if (htSave.ContainsKey(SaveConstants.SAVE_CURRENTENDING))
+              state.CurrentEnding =compendium.GetEndingById(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
+
+            var htLegacies = htSave.GetHashtable(SaveConstants.SAVE_AVAILABLELEGACIES);
+            
+            foreach (var k in htLegacies.Keys)
+            {
+                Legacy l = compendium.GetLegacyById(k.ToString());
+                if(l!=null)
+                    state.AvailableLegacies.Add(l);
+
+            }
+
+            return state;
         }
 
         private static void ImportTabletopElementStacks(TabletopContainer tabletopContainer, Hashtable htElementStacks)
