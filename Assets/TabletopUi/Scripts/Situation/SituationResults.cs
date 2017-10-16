@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
@@ -14,7 +15,13 @@ public class SituationResults : MonoBehaviour
     [SerializeField] private Transform _outputNotesContainer;
     [SerializeField] private OutputCardContainer _outputCardContainer;
     [SerializeField] private SituationWindow situationWindow;
-    
+
+    protected SituationController _situationController;
+
+    public void Initialise(SituationController sc) {
+        _situationController = sc;
+        _outputCardContainer.Initialise(sc);
+    }
 
     public void SetOutput(List<IElementStack> stacks,INotification notification) {
         gameObject.SetActive(true);
@@ -28,8 +35,6 @@ public class SituationResults : MonoBehaviour
         { 
         _outputCardContainer.GetElementStacksManager().AcceptStacks(stacks);
         }
-
-
     }
 
     public void Reset()

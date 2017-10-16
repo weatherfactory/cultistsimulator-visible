@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI
 
             startingSlotsContainer.Initialise(sc);
             ongoingSlotsContainer.Initialise(sc);
-            
+            _situationResults.Initialise(sc);
         }
 
         public void Show()
@@ -91,8 +91,8 @@ namespace Assets.CS.TabletopUI
             canvasGroupFader.Hide();
         }
 
-        public void SetUnstarted()
-        {
+        public void SetUnstarted() {
+            Debug.Log("Set Unstarted " + Verb.Label);
             startingSlotsContainer.Reset();
 
             startingSlotsContainer.gameObject.SetActive(true);
@@ -114,7 +114,7 @@ namespace Assets.CS.TabletopUI
         /// </summary>
         /// <param name="forRecipe"></param>
         public void SetOngoing(Recipe forRecipe) {
-
+            Debug.Log("Set Ongoing " + Verb.Label);
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(true);
             _situationResults.gameObject.SetActive(false);
@@ -129,8 +129,8 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void SetComplete()
-        {
+        public void SetComplete() {
+            Debug.Log("Set Complete " + Verb.Label);
             startingSlotsContainer.gameObject.SetActive(false);
             ongoingSlotsContainer.gameObject.SetActive(false);
             _situationResults.gameObject.SetActive(true);
@@ -140,63 +140,59 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void ConsumeMarkedElements()
-        {
-            foreach (var s in GetStoredStacks().Where(stack => stack.MarkedForConsumption))
-                //     s.SetQuantity(0);
-                s.Retire(true);
-        }
-
-        public void ShowDestinationsForStack(IElementStack stack)
-        {
-            var startingslots = startingSlotsContainer.GetAllSlots();
-            var ongoingslots = ongoingSlotsContainer.GetAllSlots();
-
-            foreach(var s in startingslots)
-            { 
-                if(stack==null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
-                  	s.ShowGlow(false,false);
-                else
-                    s.ShowGlow(true, false);
-            }
-
-            foreach (var s in ongoingslots)
-            { 
-                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
-                    s.ShowGlow(false, false);
-                else
-                    s.ShowGlow(true, false);
-            }
-        }
-
-        public void DisplayNoRecipeFound()
-        {
+        public void DisplayNoRecipeFound() {
+            Debug.Log("Display No Recipe " + Verb.Label);
             Title = "";
             Description = "[If I experiment further, I may find another combination. There will be a great many more combinations in the final game.]";
             button.gameObject.SetActive(false);
         }
 
-        public void DisplayAspects(IAspectsDictionary forAspects)
-        {
-            aspectsDisplay.DisplayAspects(forAspects);
-        }
 
-        public void DisplayStartingRecipeFound(Recipe r)
-        {
-            
-                Title = r.Label;
-                Description = r.StartDescription;
-                button.gameObject.SetActive(true);
- 
+        public void DisplayStartingRecipeFound(Recipe r) {
+            Debug.Log("Display Starting Recipe " + Verb.Label);
+            Title = r.Label;
+            Description = r.StartDescription;
+            button.gameObject.SetActive(true);
         }
 
 
         public void UpdateTextForPrediction(RecipePrediction recipePrediction)
         {
+            Debug.Log("Updating Prediction " + Verb.Label);
             Title = recipePrediction.Title;
             Description = recipePrediction.DescriptiveText;
             ButtonBarText.text = recipePrediction.Commentary;
 
+        }
+
+        public void DisplayAspects(IAspectsDictionary forAspects) {
+            aspectsDisplay.DisplayAspects(forAspects);
+        }
+
+
+        public void ConsumeMarkedElements() {
+            foreach (var s in GetStoredStacks().Where(stack => stack.MarkedForConsumption))
+                //     s.SetQuantity(0);
+                s.Retire(true);
+        }
+
+        public void ShowDestinationsForStack(IElementStack stack) {
+            var startingslots = startingSlotsContainer.GetAllSlots();
+            var ongoingslots = ongoingSlotsContainer.GetAllSlots();
+
+            foreach (var s in startingslots) {
+                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                    s.ShowGlow(false, false);
+                else
+                    s.ShowGlow(true, false);
+            }
+
+            foreach (var s in ongoingslots) {
+                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                    s.ShowGlow(false, false);
+                else
+                    s.ShowGlow(true, false);
+            }
         }
 
         void HandleOnButtonClicked()

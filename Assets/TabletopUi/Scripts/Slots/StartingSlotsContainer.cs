@@ -15,11 +15,13 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public void Reset()
         {
-            if(primarySlot==null)
+            if (primarySlot == null)
                 primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(),null);
 
-            RemoveAnyChildSlotsWithEmptyParent();
-            ArrangeSlots();
+            if (GetAllSlots().Count > 1) { 
+                RemoveAnyChildSlotsWithEmptyParent();
+                ArrangeSlots();
+            }
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot)

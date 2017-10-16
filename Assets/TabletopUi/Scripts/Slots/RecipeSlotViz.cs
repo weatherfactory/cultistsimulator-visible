@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RecipeSlotViz : MonoBehaviour {
+namespace Assets.CS.TabletopUI {
+    public class RecipeSlotViz : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-}
+        [SerializeField] RecipeSlot slot;
+        [SerializeField] Animation anim;
+
+        public void TriggerShowAnim() {
+            anim.Play("recipe-slot-show");
+        }
+
+        public void TriggerHideAnim() {
+            slot.Defunct = true;
+            anim.Play("recipe-slot-hide");
+        }
+
+        public void OnHideEnd() {
+            slot.Retire();
+        }
+    }
+ }

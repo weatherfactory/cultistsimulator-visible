@@ -22,15 +22,18 @@ using TMPro;
 namespace Assets.CS.TabletopUI {
 	public class SituationWindowNew : MonoBehaviour, ISituationDetails {
 
+        const string buttonDefault = "Start";
+        const string buttonBusy = "Waiting...";
+
 		//TEMP TO TEST
 		public RecipeSlot slotPrefab;
-
 
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
 
 		[Space]
-		[SerializeField] TextMeshProUGUI title;
+        [SerializeField] Image artwork;
+        [SerializeField] TextMeshProUGUI title;
 		public PaginatedText notes;
 
 		[Space]
@@ -66,11 +69,11 @@ namespace Assets.CS.TabletopUI {
         // INIT
 
 		void OnEnable() {
-			startButton.onClick.AddListener(StartRecipe);
+			startButton.onClick.AddListener(HandleButtonAction);
 		}
 
 		void OnDisable() {
-			startButton.onClick.RemoveListener(StartRecipe);
+			startButton.onClick.RemoveListener(HandleButtonAction);
 		}
 
 
@@ -90,7 +93,7 @@ namespace Assets.CS.TabletopUI {
 		}
 
 		public void SetUnstarted() {
-			/*
+            /*
 			startingSlotsContainer.Reset();
 
 			startingSlotsContainer.gameObject.SetActive(true);
@@ -99,8 +102,9 @@ namespace Assets.CS.TabletopUI {
 			_situationResults.Reset();
 			_situationResults.gameObject.SetActive(false);
 			*/
-			Title = Verb.Label;
-			notes.SetText(Verb.Description);
+            artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
+            Title = Verb.Label;
+            notes.SetText(Verb.Description);
 			ShowRecipeHint(null);
 			DisplayButtonState(false);
 		}
@@ -176,17 +180,15 @@ namespace Assets.CS.TabletopUI {
 
 		void DisplayButtonState(bool interactable, string text = null) {
 			startButton.interactable = interactable;
-			startButtonText.text = string.IsNullOrEmpty(text) ? "Start" : text;
+			startButtonText.text = string.IsNullOrEmpty(text) ? buttonDefault : text;
 		}
 
 		// ACTIONS
 
-		void StartRecipe() {
+		void HandleButtonAction() {
 
 		}
-
-
-
+        
         // ISituationDetails
 
         public void ConsumeMarkedElements() {

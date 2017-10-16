@@ -17,8 +17,8 @@ namespace Assets.CS.TabletopUI {
         const float sizeTransitionDuration = 0.2f;
 
 		List<RecipeSlot> slots = new List<RecipeSlot>();
-        int numPerRow;
-        int numRows;
+        int numPerRow = 1;
+        int numRows = 1;
 		float slotSpacing;
 
 		void OnEnable() {
@@ -29,15 +29,18 @@ namespace Assets.CS.TabletopUI {
 			if (slot == null)
 				return;
 			
-			slot.transform.SetParent(transform);
-			slot.transform.localScale = Vector3.one;
+			slot.rectTrans.SetParent(transform);
+			slot.rectTrans.localScale = Vector3.one;
 			slot.rectTrans.localPosition = Vector3.zero;
 			slot.rectTrans.anchorMin = new Vector2(0f, 1f);
 			slot.rectTrans.anchorMax = slot.rectTrans.anchorMin;
 			slot.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
 			slots.Add(slot); // add after index was used
-            // Do add anim;
-            // Set starting position
+            
+            var viz = slot.GetComponent<RecipeSlotViz>();
+
+            if (viz != null)
+                viz.TriggerShowAnim();
         }
 
         public void RemoveSlot(RecipeSlot slot) {
@@ -45,8 +48,12 @@ namespace Assets.CS.TabletopUI {
 				return;
 
 			slots.Remove(slot);
-            // Do remove anim
-			Destroy(slot.gameObject);
+            var viz = slot.GetComponent<RecipeSlotViz>();
+
+            if (viz != null)
+                viz.TriggerHideAnim();
+            else
+                slot.Retire();
         }
 
         public void ReorderSlots() {

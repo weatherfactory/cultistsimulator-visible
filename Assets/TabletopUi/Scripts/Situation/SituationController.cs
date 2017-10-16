@@ -122,16 +122,17 @@ namespace Assets.TabletopUi
 
         public void StartingSlotsUpdated()
         {
-            
             AspectsDictionary startingAspects = situationWindow.GetAspectsFromAllSlottedElements();
-            
             Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id,currentCharacter);
 
             situationWindow.DisplayAspects(startingAspects);
+
             if (recipeMatchingStartingAspects != null)
                 situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
-            else
+            else if (startingAspects.Count > 0)
                 situationWindow.DisplayNoRecipeFound();
+            else
+                situationWindow.SetUnstarted();
         }
 
         public void OngoingSlotsUpdated()

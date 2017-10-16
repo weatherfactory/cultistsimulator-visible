@@ -14,13 +14,15 @@ using UnityEngine.Assertions;
 
 public class OutputCardContainer : MonoBehaviour, ITokenContainer {
 
+    protected SituationController _situationController;
 
+    public void Initialise(SituationController sc) {
+        _situationController = sc;
+    }
 
-
-    public void TokenPickedUp(DraggableToken draggableToken)
-    {
-
-
+    public void TokenPickedUp(DraggableToken draggableToken) {
+        //if (GetComponentInChildren<ElementStackToken>() == null)
+        //    _situationController.StartingSlotsUpdated(); // this forces a redraw - does not work cause if you don't drop it properly it is gone
     }
 
     public bool AllowDrag { get { return true; } }
