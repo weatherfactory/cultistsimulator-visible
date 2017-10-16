@@ -16,19 +16,37 @@ namespace Assets.CS.TabletopUI {
 
         const float sizeTransitionDuration = 0.2f;
 
-        List<RecipeSlot> slots;
+		List<RecipeSlot> slots = new List<RecipeSlot>();
         int numPerRow;
         int numRows;
+		float slotSpacing;
+
+		void OnEnable() {
+			SetNumPerRow();
+		}
 
         public void AddSlot(RecipeSlot slot) {
-            slots.Add(slot);
+			if (slot == null)
+				return;
+			
+			slot.transform.SetParent(transform);
+			slot.transform.localScale = Vector3.one;
+			slot.rectTrans.localPosition = Vector3.zero;
+			slot.rectTrans.anchorMin = new Vector2(0f, 1f);
+			slot.rectTrans.anchorMax = slot.rectTrans.anchorMin;
+			slot.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
+			slots.Add(slot); // add after index was used
             // Do add anim;
             // Set starting position
         }
 
         public void RemoveSlot(RecipeSlot slot) {
-            slots.Remove(slot);
+			if (slot == null)
+				return;
+
+			slots.Remove(slot);
             // Do remove anim
+			Destroy(slot.gameObject);
         }
 
         public void ReorderSlots() {
@@ -47,8 +65,9 @@ namespace Assets.CS.TabletopUI {
 
         void SetNumPerRow() {
             // one extra spacing added to width to compensate for spacing added to n slots, not n-1 slots.
-            numPerRow = Mathf.FloorToInt((rect.rect.width - margin.x - margin.x + spacing.x) / (slotSize.x + spacing.x));
-            numRows = Mathf.CeilToInt(slots.Count / numPerRow);
+			numPerRow = Mathf.Max(1, Mathf.FloorToInt((rect.rect.width - margin.x - margin.x + spacing.x) / (slotSize.x + spacing.x)));
+			numRows = Mathf.Max(1, Mathf.CeilToInt(slots.Count / (float) numPerRow));
+			slotSpacing = (rect.rect.width - margin.x - margin.x) / numPerRow;
         }
 
         float GetHeightForSlotCount() {
@@ -60,7 +79,13 @@ namespace Assets.CS.TabletopUI {
             int yPos = Mathf.FloorToInt(i / numPerRow);
             int xPos = i % numPerRow;
 
-            return new Vector2(margin.x + xPos * slotSize.x, margin.y + yPos * slotSize.y); // TODO: spacing still missing in positioning
+			return new Vector2(margin.x + xPos * slotSpacing + slotSize.x * 0.5f, 
+				( margin.y + yPos * (slotSize.y + spacing.y) + slotSize.y * 0.5f) * -1f); // TODO: spacing still missing in positioning
+			/*
+			// positioning exactly according to margins
+			return new Vector2(margin.x + xPos * (slotSize.x + spacing.x) + slotSize.x * 0.5f, 
+				( margin.y + yPos * (slotSize.y + spacing.y) + slotSize.y * 0.5f) * -1f); // TODO: spacing still missing in positioning
+			*/
         }
 
         IEnumerator AdjustHeight(float target, float duration) {
@@ -68,8 +93,9 @@ namespace Assets.CS.TabletopUI {
             float current = rect.rect.height;
 
             while (time < duration) {
-                rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Mathf.Lerp(current, target, time / duration); // TODO: Add some nice easing?
-                yield return null;
+				rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Mathf.Lerp(current, target, time / duration)); // TODO: Add some nice easing?
+				time += Time.deltaTime;
+				yield return null;
             }
 
             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, target);

@@ -35,9 +35,12 @@ namespace Assets.CS.TabletopUI
         public RecipeSlot ParentSlot { get; set; }
         public bool Defunct { get; set; }
 
+
         // -----------------------------------------------------------
         // VISUAL ELEMENTS
-        public TextMeshProUGUI SlotLabel;
+		public RectTransform rectTrans;
+
+		public TextMeshProUGUI SlotLabel;
 		public Graphic border;
         public GraphicFader slotGlow;
         public LayoutGroup slotIconHolder;

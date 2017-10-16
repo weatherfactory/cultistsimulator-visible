@@ -155,20 +155,15 @@ namespace Assets.CS.TabletopUI
             foreach(var s in startingslots)
             { 
                 if(stack==null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
-                { 
-                  s.ShowGlow(false,false);
-                }
+                  	s.ShowGlow(false,false);
                 else
-                { 
                     s.ShowGlow(true, false);
-                }
             }
+
             foreach (var s in ongoingslots)
             { 
                 if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
-                {
                     s.ShowGlow(false, false);
-                }
                 else
                     s.ShowGlow(true, false);
             }

@@ -16,63 +16,180 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI {
-    public class SituationWindowNew : MonoBehaviour, ISituationDetails {
+	public class SituationWindowNew : MonoBehaviour, ISituationDetails {
 
-        public string Description {
-            get {
-                throw new NotImplementedException();
-            }
+		//TEMP TO TEST
+		public RecipeSlot slotPrefab;
 
-            set {
-                throw new NotImplementedException();
-            }
+
+		[Header("Visuals")]
+		[SerializeField] CanvasGroupFader canvasGroupFader;
+
+		[Space]
+		[SerializeField] TextMeshProUGUI title;
+		public PaginatedText notes;
+
+		[Space]
+		public SituationSlotManager slotManager;
+		[SerializeField] AspectsDisplay aspectsDisplay;
+
+		[Space]
+		[SerializeField] TextMeshProUGUI hintText;
+		[SerializeField] GameObject hintTimer;
+		[SerializeField] RectTransform hintTimerBar;
+		[SerializeField] TextMeshProUGUI hintTimerText;
+
+		[SerializeField] Button startButton;
+		[SerializeField] TextMeshProUGUI startButtonText;
+
+		private SituationController situationController;
+		private IVerb Verb;
+
+		public string Title {
+			get { return title.text; }
+			set { title.text = value; }
         }
 
-        public string Title {
-            get {
-                throw new NotImplementedException();
-            }
+		public string Description {
+			get {
+				throw new NotImplementedException();
+			}
+			set {
+				throw new NotImplementedException();
+			}
+		}
 
-            set {
-                throw new NotImplementedException();
-            }
-        }
+        // INIT
 
-        // 
+		void OnEnable() {
+			startButton.onClick.AddListener(StartRecipe);
+		}
 
-        
-        // ACTIONS
+		void OnDisable() {
+			startButton.onClick.RemoveListener(StartRecipe);
+		}
 
-        public void ShowPrevNote() {
 
-        }
+		public void Initialise(IVerb verb, SituationController sc) {
+			situationController = sc;
+			Verb = verb;
+		}
 
-        public void ShowNextNote() {
-            
-        }
+		// BASIC STATUS
 
-        void StartRecipe() {
-            
-        }
+		public void Show() {
+			canvasGroupFader.Show();
+		}
+
+		public void Hide() {
+			canvasGroupFader.Hide();
+		}
+
+		public void SetUnstarted() {
+			/*
+			startingSlotsContainer.Reset();
+
+			startingSlotsContainer.gameObject.SetActive(true);
+			ongoingSlotsContainer.gameObject.SetActive(false);
+
+			_situationResults.Reset();
+			_situationResults.gameObject.SetActive(false);
+			*/
+			Title = Verb.Label;
+			notes.SetText(Verb.Description);
+			ShowRecipeHint(null);
+			DisplayButtonState(false);
+		}
+
+		public void SetOngoing(Recipe forRecipe) {
+			/*
+			startingSlotsContainer.gameObject.SetActive(false);
+			ongoingSlotsContainer.gameObject.SetActive(true);
+			_situationResults.gameObject.SetActive(false);
+
+			ongoingSlotsContainer.SetUpSlots(forRecipe.SlotSpecifications);
+			*/
+			ShowRecipeHint(null); // TODO: Start showing timer instead
+			DisplayButtonState(false);
+			ConsumeMarkedElements();
+		}
+
+		public void SetComplete() {
+			/*
+			startingSlotsContainer.gameObject.SetActive(false);
+			ongoingSlotsContainer.gameObject.SetActive(false);
+			_situationResults.gameObject.SetActive(true);
+			*/
+
+			aspectsDisplay.ClearAspects();
+		}
+
+        // SHOW VIZ
+
+		public void ShowRecipeHint(string hint) {
+			bool isActive = !string.IsNullOrEmpty(hint);
+			hintText.gameObject.SetActive(isActive);
+
+			if (!isActive)
+				return;
+			
+			hintText.text = hint;
+			hintTimer.gameObject.SetActive(false);
+		}
+
+		public void DisplayTimeRemaining(float duration, float timeRemaining) {
+			hintText.gameObject.SetActive(false);
+			hintTimer.gameObject.SetActive(true);
+
+			hintTimerBar.anchorMax = new Vector2(timeRemaining / duration, hintTimerBar.anchorMax.y);
+			hintTimerText.text = timeRemaining.ToString("0.0") + "s";
+		}
+
+		public void DisplayNoRecipeFound() {
+			Title = Verb.Label;
+			notes.SetText(Verb.Description);
+			ShowRecipeHint("This does not work. If I experiment further, I may find another combination.");
+			DisplayButtonState(false);
+		}
+
+		public void DisplayStartingRecipeFound(Recipe r) {
+			Title = r.Label;
+			notes.SetText(r.StartDescription);
+			ShowRecipeHint(null);
+			DisplayButtonState(true);
+		}
+
+		public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
+			Title = recipePrediction.Title;
+			notes.SetText(recipePrediction.DescriptiveText);
+			ShowRecipeHint(recipePrediction.Commentary);
+			DisplayButtonState(false);
+		}
+
+		public void DisplayAspects(IAspectsDictionary forAspects) {
+			aspectsDisplay.DisplayAspects(forAspects);
+		}
+
+		void DisplayButtonState(bool interactable, string text = null) {
+			startButton.interactable = interactable;
+			startButtonText.text = string.IsNullOrEmpty(text) ? "Start" : text;
+		}
+
+		// ACTIONS
+
+		void StartRecipe() {
+
+		}
+
+
 
         // ISituationDetails
 
         public void ConsumeMarkedElements() {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayAspects(IAspectsDictionary forAspects) {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayNoRecipeFound() {
-            throw new NotImplementedException();
-        }
-
-        public void DisplayStartingRecipeFound(Recipe r) {
             throw new NotImplementedException();
         }
 
@@ -120,23 +237,7 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        public void Hide() {
-            throw new NotImplementedException();
-        }
-
-        public void Initialise(IVerb verb, SituationController controller) {
-            throw new NotImplementedException();
-        }
-
         public void Retire() {
-            throw new NotImplementedException();
-        }
-
-        public void SetComplete() {
-            throw new NotImplementedException();
-        }
-
-        public void SetOngoing(Recipe forRecipe) {
             throw new NotImplementedException();
         }
 
@@ -148,23 +249,11 @@ namespace Assets.CS.TabletopUI {
             throw new NotImplementedException();
         }
 
-        public void SetUnstarted() {
-            throw new NotImplementedException();
-        }
-
-        public void Show() {
-            throw new NotImplementedException();
-        }
-
         public void ShowDestinationsForStack(IElementStack stack) {
             throw new NotImplementedException();
         }
 
         public void StoreStacks(IEnumerable<IElementStack> stacksToStore) {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
             throw new NotImplementedException();
         }
 
