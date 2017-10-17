@@ -292,8 +292,11 @@ namespace Assets.CS.TabletopUI
             return GetSituationStorageStacksManager().GetTotalAspects();
         }
 
-        public ElementStacksManager GetSituationStorageStacksManager()
+        public IElementStacksManager GetSituationStorageStacksManager()
         {
+            //var virtualStorageWrapper=new ElementStacksManager();
+
+
             return situationStorage.GetElementStacksManager();
         }
 

@@ -43,11 +43,13 @@
 	actionId: "study",
 	requirements: {lore:1, forge:2},
 	effects: {},
-	slots:{"More": required: {lantern: 1, grail: 1}},
-	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradeforgeb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
 	warmup:60,
 	craftable: true,
 	},
@@ -57,11 +59,13 @@
 	actionId: "study",
 	requirements: {lore:1, lantern:2},
 	effects: {},
-	slots:{"More": required: {lantern: 1, grail: 1}},
-	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradelanternb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
 	warmup:60,
 	craftable: true,
 	},
@@ -71,13 +75,117 @@
 	actionId: "study",
 	requirements: {lore:1, grail:2},
 	effects: {},
-	slots:{"More": required: {lantern: 1, grail: 1}},
-	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradegrailb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
 	warmup:70,
 	craftable: true,
-	}
+	},
+		{
+	id: "studyresearchbegin",
+	label: "Generic research - beginning, set countdown",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:3},
+	alternativerecipes: [
+	{id: "studyresearchneedserudition",chance:100},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
+	warmup:0,
+	craftable: false,
+	},
+		{
+	id: "studyresearchneedserudition",
+	label: "Generic research - needs erudition",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"More": required: {erudition:1}},
+	alternativerecipes: [
+	{id: "studyresearchend",chance:100},
+	{id: "studyresearchtick",chance:100}]
+	startdescription: "BEGIN erudition research",
+	description: "COMPLETE erudition research",
+	warmup:60,
+	craftable: false,
+	loop: "studyresearchtick"
+	},
+				{
+	id: "studyresearcheruditionsuccess",
+	label: "Glimmering erudition success!",
+	actionId: "study",
+	requirements: {glimmering:1},
+	effects: {insight:1},
+	warmup:0,
+	craftable: false,
+	loop: "studyresearchtick"
+	},
+		{
+	id: "studyresearchneedsglimmering",
+	label: "Generic research - needs glimmering",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"More": required: {glimmering:1}},
+	alternativerecipes: [
+	{id: "studyresearchglimmeringsuccess",chance:100}]
+	startdescription: "BEGIN glimmering research",
+	description: "COMPLETE glimmering research",
+	warmup:60,
+	craftable: false,
+	loop: "studyresearchtick"
+	},
+			{
+	id: "studyresearchglimmeringsuccess",
+	label: "Glimmering research success!",
+	actionId: "study",
+	requirements: {glimmering:1},
+	effects: {insight:1},
+	warmup:0,
+	craftable: false,
+	loop: "studyresearchtick"
+	},
+				{
+	id: "studyresearchtick",
+	label: "Generic research - end, reduces countdown 0",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:-1},
+	warmup:0,
+	craftable: false,
+	loop: "studyresearchrouter"
+	},
+					{
+	id: "studyresearchrouter",
+	label: "Generic research - routes to next research event",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:-1},
+	alternativerecipes: [
+	{id: "studyresearchneedserudition",chance:100},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	warmup:0,
+	craftable: false,
+	},
+			{
+	id: "studyresearchend",
+	label: "Generic research - end, needs countdown 0",
+	actionId: "study",
+	requirements: {countdown:-1},
+	effects: {},
+	alternativerecipes: [
+	{id: "studyresearchfullinsight",chance:100},
+	{id: "studyresarchsomeinsight",chance:100},
+	{id: "studyresearchnoinsight",chance:100}]
+	startdescription: "COMPLETE research end",
+	description: "COMPLETE research end",
+	warmup:0,
+	craftable: false,
+	},
 ]
 }

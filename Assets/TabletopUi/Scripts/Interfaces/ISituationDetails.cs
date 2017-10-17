@@ -37,7 +37,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<IElementStack> GetStoredStacks();
         void StoreStacks(IEnumerable<IElementStack> stacksToStore);
         IAspectsDictionary GetAspectsFromStoredElements();
-        ElementStacksManager GetSituationStorageStacksManager();
+        IElementStacksManager GetSituationStorageStacksManager();
 
 
         void Retire();
