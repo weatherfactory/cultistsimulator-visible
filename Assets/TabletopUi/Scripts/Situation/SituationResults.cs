@@ -14,6 +14,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 public class SituationResults : MonoBehaviour, ITokenContainer {
 
     public CanvasGroupFader canvasGroupFader;
+    [SerializeField] SituationResultsPositioning cardPos;
 
     private SituationWindow window;
     private SituationController controller;
@@ -35,10 +36,9 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
             return;
 
         GetElementStacksManager().AcceptStacks(stacks);
-
+        cardPos.ReorderCards(stacks);
         // TODO: Arrange things visually here
     }
-
 
     public void TokenPickedUp(DraggableToken draggableToken) {
     }
@@ -46,8 +46,15 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     public void TokenDropped(DraggableToken draggableToken) {
         // Did we just drop the last available token? Then reset the state of the window
         // TODO: Should we do this in the controller instead? via StartingSlotsUpdated()?
-        if (GetElementStacksManager().GetStacks().Any())
+        var stacks = GetOutputStacks();
+
+        if (!stacks.Any()) { 
             window.SetUnstarted();
+            return;
+        }
+
+        //TODO: do some uncovering & repositioning here
+        cardPos.ReorderCards(stacks);
     }
 
     public IEnumerable<IElementStack> GetOutputStacks() {

@@ -36,8 +36,9 @@ namespace Assets.CS.TabletopUI {
 			slot.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
 			slots.Add(slot); // add after index was used
 
-            //if (slots.Count == 1) // do not animate the first slot, which is the starting slot
-            //    return;
+            // do not animate if we're not visible - usually only for first slot being created in Initialise
+            if (gameObject.activeInHierarchy == false) 
+                return;
 
             var viz = slot.GetComponent<RecipeSlotViz>();
 

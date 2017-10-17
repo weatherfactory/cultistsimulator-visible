@@ -39,6 +39,7 @@ namespace Assets.CS.TabletopUI
         public bool rotateOnDrag = true;
         protected INotifier notifier;
         protected ITokenContainer container;
+        protected ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
 
         void Awake() {
             RectTransform = GetComponent<RectTransform>();
@@ -72,6 +73,7 @@ namespace Assets.CS.TabletopUI
 
         public virtual void SetContainer(ITokenContainer newContainer)
         {
+            oldContainer = container; 
             container = newContainer;
         }
 
@@ -179,8 +181,10 @@ namespace Assets.CS.TabletopUI
 		
             if (DraggableToken.resetToStartPos) 
                 returnToStartPosition();
-            else
-                container.TokenDropped(this);
+            else if (oldContainer != null)
+                oldContainer.TokenDropped(this);
+
+            oldContainer = null;
 
             if (onChangeDragState != null)
                 onChangeDragState(false);

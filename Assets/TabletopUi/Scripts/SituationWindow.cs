@@ -19,9 +19,6 @@ using System.Linq;
 namespace Assets.CS.TabletopUI {
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
-        private enum State { Starting, TransitionToOngoing, Ongoing, TransitionToResults, Results, TransitionToStarting }
-        private State currentState = State.Starting;
-
         const string buttonDefault = "Start";
         const string buttonBusy = "Waiting...";
 
@@ -125,40 +122,11 @@ namespace Assets.CS.TabletopUI {
             results.gameObject.SetActive(false);
 
             DisplayUnstarted();
-            currentState = State.Starting;
         }
 
         // Ongoing State
 
 		public void SetOngoing(Recipe recipe) {
-            if (IsOpen)
-                StartCoroutine(TransitionToOngoingState(recipe));
-            else
-                DisplayOngoingState(recipe);
-        }
-
-        IEnumerator TransitionToOngoingState(Recipe recipe) {
-            currentState = State.TransitionToOngoing;
-            bool hasConsumed = ConsumeMarkedElements(true);
-            ongoing.SetupSlot(recipe);
-
-            if (hasConsumed)
-                yield return new WaitForSeconds(1f);
-
-            startingSlots.canvasGroupFader.Hide();
-
-            yield return new WaitForSeconds(startingSlots.canvasGroupFader.durationTurnOff);
-
-            ongoing.canvasGroupFader.Show();
-            DisplayRecipeHint(null); // TODO: Start showing timer instead
-            DisplayButtonState(false);
-            currentState = State.Ongoing;
-
-            // TODO: WARNING IF THIS IS INTERRUPTED THE WINDOW IS FUCKED
-        }
-
-        void DisplayOngoingState(Recipe recipe) {
-            currentState = State.Ongoing;
             startingSlots.gameObject.SetActive(false);
             ConsumeMarkedElements(false);
 
@@ -179,26 +147,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SetComplete() {
-            if (IsOpen)
-                StartCoroutine(TransitionToResultsState());
-            else
-                DisplayResults();
-        }
-
-        IEnumerator TransitionToResultsState() {
-            currentState = State.TransitionToResults;
-            ongoing.canvasGroupFader.Hide();
-
-            yield return new WaitForSeconds(ongoing.canvasGroupFader.durationTurnOff);
-
-            results.canvasGroupFader.Show();
-            currentState = State.Results;
-
-            // TODO: WARNING IF THIS IS INTERRUPTED THE WINDOW IS FUCKED
-        }
-
-        public void DisplayResults() {
-            currentState = State.Results;
             startingSlots.gameObject.SetActive(false);
             ongoing.gameObject.SetActive(false);
             results.gameObject.SetActive(true);
@@ -227,6 +175,7 @@ namespace Assets.CS.TabletopUI {
 		public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
 			notes.SetText(r.StartDescription);
+            DisplayTimeRemaining(r.Warmup, r.Warmup); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayRecipeHint(null);
 			DisplayButtonState(true);
 		}
@@ -276,7 +225,7 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             foreach (var s in slots) {
-                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay)
+                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay || s.GetElementStackInSlot() != null)
                     s.ShowGlow(false, false);
                 else
                     s.ShowGlow(true, false);

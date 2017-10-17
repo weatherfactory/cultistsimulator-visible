@@ -14,18 +14,21 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 namespace Assets.TabletopUi.SlotsContainers {
     public class StartingSlotsContainer : AbstractSlotsContainer, ITokenContainer {
 
-        protected RecipeSlot primarySlot;
         [SerializeField] SituationSlotManager slotManager;
         public CanvasGroupFader canvasGroupFader;
+
+        protected RecipeSlot primarySlot;
 
         public bool AllowStackMerge {
             get { return false; }
         }
 
-        public void Reset() {
-            if (primarySlot == null)
-                primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+        public override void Initialise(SituationController sc) {
+            base.Initialise(sc);
+            primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+        }
 
+        public void Reset() {
             if (GetAllSlots().Count > 1) {
                 RemoveAnyChildSlotsWithEmptyParent();
                 ArrangeSlots();
@@ -37,8 +40,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
-
-            _situationController.StartingSlotsUpdated();
+            controller.StartingSlotsUpdated();
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
@@ -53,7 +55,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         public override void RespondToStackPickedUp(IElementStack stack) {
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();
-            _situationController.StartingSlotsUpdated();
+            controller.StartingSlotsUpdated();
         }
 
         protected void RemoveAnyChildSlotsWithEmptyParent() {
@@ -69,7 +71,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 }
             }
 
-            _situationController.StartingSlotsUpdated();
+            controller.StartingSlotsUpdated();
         }
 
         protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot) {

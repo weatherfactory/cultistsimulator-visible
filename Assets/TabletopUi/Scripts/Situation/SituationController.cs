@@ -165,6 +165,8 @@ namespace Assets.TabletopUi {
         public void SituationBeginning(Recipe withRecipe) {
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
+            StoreStacks(situationWindow.GetStartingStacks());
+
             UpdateSituationDisplayForDescription();
         }
 
@@ -173,12 +175,16 @@ namespace Assets.TabletopUi {
             situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
         }
 
-        public void SituationExecutingRecipe(ISituationEffectCommand command) {
-            //move any elements currently in OngoingSlots to situation storage
-            //NB we're doing this *before* we execute the command - the command may affect these elements too
+        void StoreStacks(IEnumerable<IElementStack> stacks) {
             var inputStacks = situationWindow.GetOngoingStacks();
             var storageStackManager = situationWindow.GetStorageStacksManager();
             storageStackManager.AcceptStacks(inputStacks);
+        }
+
+        public void SituationExecutingRecipe(ISituationEffectCommand command) {
+            //move any elements currently in OngoingSlots to situation storage
+            //NB we're doing this *before* we execute the command - the command may affect these elements too
+            StoreStacks(situationWindow.GetOngoingStacks());
 
             if (command.AsNewSituation) {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
@@ -186,8 +192,6 @@ namespace Assets.TabletopUi {
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
                 return;
             }
-
-            // Have one StacksManager for ongoing and starting slots
 
             currentCharacter.AddExecutionToHistory(command.Recipe.Id);
             var executor = new SituationEffectExecutor();
@@ -201,7 +205,7 @@ namespace Assets.TabletopUi {
 
         public void SituationComplete() {
             situationToken.DisplayComplete();
-            var stacksToRetrieve = situationWindow.GetStartingStacks();
+            var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
             SetOutput(stacksToRetrieve.ToList(), notification);
 
