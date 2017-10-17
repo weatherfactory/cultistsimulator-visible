@@ -163,7 +163,19 @@ public class Compendium : ICompendium
 
     public Ending GetEndingById(string endingFlag)
     {
-        if(endingFlag=="deathofthebody")
+        if (endingFlag == "introguilt")
+            return new Ending(endingFlag, "A Warning",
+                "" +
+                " that I could have done *everything* I should not.", ""
+            );
+
+        if (endingFlag == "introdelight")
+            return new Ending(endingFlag, "A Temptation",
+                "" +
+                " that I could have done *everything* I should not.", ""
+            );
+
+        if (endingFlag=="deathofthebody")
             return new Ending(endingFlag, "MY BODY IS DEAD",
                 "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
                 "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]","");
