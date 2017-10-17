@@ -20,7 +20,7 @@ using UnityEngine.UI;
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI
 {
-    public class SituationWindowOld : MonoBehaviour, ISituationDetails, IDropHandler
+    public class SituationWindowOld : MonoBehaviour
     {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
@@ -209,12 +209,12 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public IEnumerable<IElementStack> GetStacksInStartingSlots()
+        public IEnumerable<IElementStack> GetStartingStacks()
         {
             return startingSlotsContainer.GetStacksInSlots();
         }
 
-        public IEnumerable<IElementStack> GetStacksInOngoingSlots()
+        public IEnumerable<IElementStack> GetOngoingStacks()
         {
             return ongoingSlotsContainer.GetStacksInSlots();
         }
@@ -267,20 +267,20 @@ namespace Assets.CS.TabletopUI
 
         public IEnumerable<IElementStack> GetStoredStacks()
         {
-            return GetStartingSlotStacksManager().GetStacks();
+            return GetStorageStacksManager().GetStacks();
         }
 
         public void StoreStacks(IEnumerable<IElementStack> stacksToStore)
         {
-            GetStartingSlotStacksManager().AcceptStacks(stacksToStore);
+            GetStorageStacksManager().AcceptStacks(stacksToStore);
         }
 
         public IAspectsDictionary GetAspectsFromStoredElements()
         {
-            return GetStartingSlotStacksManager().GetTotalAspects();
+            return GetStorageStacksManager().GetTotalAspects();
         }
 
-        public IElementStacksManager GetStartingSlotStacksManager()
+        public IElementStacksManager GetStorageStacksManager()
         {
             return null;
         }

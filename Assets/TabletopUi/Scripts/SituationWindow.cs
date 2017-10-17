@@ -48,6 +48,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] SituationResults results;
 
         [Space]
+        [SerializeField] SituationStorage storage;
+
+        [Space]
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] TextMeshProUGUI hintText;
 
@@ -172,7 +175,7 @@ namespace Assets.CS.TabletopUI {
         // Results State
 
         public void SetOutput(List<IElementStack> stacks, INotification notification) {
-                results.SetOutput(stacks);
+            results.SetOutput(stacks);
         }
 
         public void SetComplete() {
@@ -292,8 +295,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool ConsumeMarkedElements(bool withAnim) {
             bool hasConsumed = false;
-
-            var stacks = GetStacksInStartingSlots();
+            var stacks = GetStoredStacks();
 
             for (int i = 0; i < stacks.Count(); i++) {
                 if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption) {
@@ -305,12 +307,16 @@ namespace Assets.CS.TabletopUI {
             return hasConsumed;
         }
 
-        public IEnumerable<IElementStack> GetStacksInStartingSlots() {
+        public IEnumerable<IElementStack> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
         }
 
-        public IEnumerable<IElementStack> GetStacksInOngoingSlots() {
+        public IEnumerable<IElementStack> GetOngoingStacks() {
             return ongoing.GetStacksInSlots();
+        }
+
+        public IEnumerable<IElementStack> GetStoredStacks() {
+            return GetStorageStacksManager().GetStacks();
         }
 
         public IEnumerable<IElementStack> GetOutputStacks() {
@@ -318,9 +324,19 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public IElementStacksManager GetStartingSlotStacksManager() {
-            return startingSlots.GetElementStacksManager();
+        public IElementStacksManager GetStorageStacksManager() {
+            return storage.GetElementStacksManager();
         }
+
+        public void StoreStacks(IEnumerable<IElementStack> stacksToStore) {
+            GetStorageStacksManager().AcceptStacks(stacksToStore);
+        }
+
+        public IAspectsDictionary GetAspectsFromStoredElements() {
+            return GetStorageStacksManager().GetTotalAspects();
+        }
+
+
 
         public void SetSlotConsumptions() {
             foreach (var s in startingSlots.GetAllSlots())

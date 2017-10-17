@@ -120,7 +120,7 @@ namespace Assets.TabletopUi {
                 BurnImageHere(rp.BurnImage);
 
             situationWindow.UpdateTextForPrediction(rp);
-            situationToken.UpdateMiniSlotDisplay(situationWindow.GetStacksInOngoingSlots());
+            situationToken.UpdateMiniSlotDisplay(situationWindow.GetOngoingStacks());
         }
 
         private RecipePrediction getNextRecipePrediction(IAspectsDictionary aspects) {
@@ -176,28 +176,32 @@ namespace Assets.TabletopUi {
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
+            var inputStacks = situationWindow.GetOngoingStacks();
+            var storageStackManager = situationWindow.GetStorageStacksManager();
+            storageStackManager.AcceptStacks(inputStacks);
 
             if (command.AsNewSituation) {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
                 SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
                 Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
-            }
-            else {
-                currentCharacter.AddExecutionToHistory(command.Recipe.Id);
-                var executor = new SituationEffectExecutor();
-                executor.RunEffects(command, situationWindow.GetStartingSlotStacksManager());
-
-                if (command.Recipe.EndingFlag != null) {
-                    var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
-                    Registry.Retrieve<TabletopManager>().EndGame(ending);
-                }
+                return;
             }
 
+            // Have one StacksManager for ongoing and starting slots
+
+            currentCharacter.AddExecutionToHistory(command.Recipe.Id);
+            var executor = new SituationEffectExecutor();
+            executor.RunEffects(command, situationWindow.GetStorageStacksManager());
+
+            if (command.Recipe.EndingFlag != null) {
+                var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
+                Registry.Retrieve<TabletopManager>().EndGame(ending);
+            }
         }
 
         public void SituationComplete() {
             situationToken.DisplayComplete();
-            var stacksToRetrieve = situationWindow.GetStacksInStartingSlots();
+            var stacksToRetrieve = situationWindow.GetStartingStacks();
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
             SetOutput(stacksToRetrieve.ToList(), notification);
 
@@ -221,6 +225,7 @@ namespace Assets.TabletopUi {
                 return;
 
             situationWindow.SetSlotConsumptions();
+            situationWindow.StoreStacks(situationWindow.GetStartingStacks());
             Situation.Start(recipe);
 
             if (recipe.BurnImage != null)
@@ -228,14 +233,13 @@ namespace Assets.TabletopUi {
         }
 
         private void BurnImageHere(string burnImage) {
-
             Registry.Retrieve<INotifier>()
                 .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
                     TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
         }
 
         public void ModifyStoredElementStack(string elementId, int quantity) {
-            situationWindow.GetStartingSlotStacksManager().ModifyElementQuantity(elementId, quantity);
+            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity);
         }
 
         public void ResetToStartingState() {
@@ -270,15 +274,21 @@ namespace Assets.TabletopUi {
             }
 
             //save stacks in window (starting) slots
-            if (situationWindow.GetStacksInStartingSlots().Any()) {
-                var htStartingSlots = exporter.GetHashTableForStacks(situationWindow.GetStacksInStartingSlots());
+            if (situationWindow.GetStartingStacks().Any()) {
+                var htStartingSlots = exporter.GetHashTableForStacks(situationWindow.GetStartingStacks());
                 situationSaveData.Add(SaveConstants.SAVE_STARTINGSLOTELEMENTS, htStartingSlots);
             }
 
             //save stacks in ongoing slots
-            if (situationWindow.GetStacksInOngoingSlots().Any()) {
-                var htOngoingSlots = exporter.GetHashTableForStacks(situationWindow.GetStacksInOngoingSlots());
+            if (situationWindow.GetOngoingStacks().Any()) {
+                var htOngoingSlots = exporter.GetHashTableForStacks(situationWindow.GetOngoingStacks());
                 situationSaveData.Add(SaveConstants.SAVE_ONGOINGSLOTELEMENTS, htOngoingSlots);
+            }
+
+            //save stacks in storage
+            if (situationWindow.GetStoredStacks().Any()) {
+                var htStacksInStorage = exporter.GetHashTableForStacks(situationWindow.GetStoredStacks());
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS, htStacksInStorage);
             }
 
             //save stacks in output
@@ -310,7 +320,7 @@ namespace Assets.TabletopUi {
             - if the situation isn't currently executing and the primary slot contains an element, it's occupied
             - if the situation is currently executing, or the primary slot doesn't contain an element, it's occupied
             */
-            return situationWindow.GetStacksInStartingSlots().Any();
+            return situationWindow.GetStartingStacks().Any();
         }
 
         public void ShowDestinationsForStack(IElementStack stack) {

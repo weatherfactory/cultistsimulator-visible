@@ -32,11 +32,14 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
 
-        IEnumerable<IElementStack> GetStacksInStartingSlots();
-        IEnumerable<IElementStack> GetStacksInOngoingSlots();
+        IEnumerable<IElementStack> GetStartingStacks();
+        IEnumerable<IElementStack> GetOngoingStacks();
+        IEnumerable<IElementStack> GetStoredStacks();
         IEnumerable<IElementStack> GetOutputStacks();
 
-        IElementStacksManager GetStartingSlotStacksManager();
+        void StoreStacks(IEnumerable<IElementStack> stacksToStore);
+
+        IElementStacksManager GetStorageStacksManager();
 
         IEnumerable<ISituationOutputNote> GetOutputNotes();
 

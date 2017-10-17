@@ -214,7 +214,7 @@ namespace Assets.CS.TabletopUI
 
             foreach (var slot in ongoingSlots) {
                 if (slot.Greedy)
-                    ongoingSlotImage.color = new Color32(0x94, 0xE2, 0xEF, 0xFF);
+                    ongoingSlotImage.color = UIStyle.slotPink;
                 else
                     ongoingSlotImage.color = Color.black; 
 
