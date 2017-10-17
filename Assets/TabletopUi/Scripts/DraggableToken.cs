@@ -39,7 +39,6 @@ namespace Assets.CS.TabletopUI
         public bool rotateOnDrag = true;
         protected INotifier notifier;
         protected ITokenContainer container;
- 
 
         void Awake() {
             RectTransform = GetComponent<RectTransform>();
@@ -172,17 +171,17 @@ namespace Assets.CS.TabletopUI
 
         void OnDisable() {
             OnEndDrag(null);
-
         }
 
         protected virtual void DelayedEndDrag() {
             DraggableToken.itemBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
 		
-            if (DraggableToken.resetToStartPos) {
+            if (DraggableToken.resetToStartPos) 
                 returnToStartPosition();
-            }
-		
+            else
+                container.TokenDropped(this);
+
             if (onChangeDragState != null)
                 onChangeDragState(false);
         }

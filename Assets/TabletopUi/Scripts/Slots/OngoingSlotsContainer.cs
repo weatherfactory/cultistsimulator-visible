@@ -16,10 +16,9 @@ namespace Assets.TabletopUi.SlotsContainers
         public void DestroyAllSlots()
         {
             IList<RecipeSlot> currentSlots = GetAllSlots();
+
             foreach (var currentSlot in currentSlots)
-            {
                 ClearAndDestroySlot(currentSlot);
-            }
 
             _situationController.OngoingSlotsUpdated();
         }

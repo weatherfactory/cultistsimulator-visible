@@ -5,16 +5,16 @@ using UnityEditor;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 
-[CustomEditor(typeof(SituationWindowNew))]
+[CustomEditor(typeof(SituationWindow))]
 public class SituationWindowNewEditor : Editor {
 
-	SituationWindowNew window;
+	SituationWindow window;
 	List<RecipeSlot> addedSlots = new List<RecipeSlot>();
 
 	public override void OnInspectorGUI() {
 		DrawDefaultInspector();
 
-		window = target as SituationWindowNew;
+		window = target as SituationWindow;
 
 		if (GUILayout.Button("Add Slot")) {
 			window.slotManager.AddSlot(BuildSlot());

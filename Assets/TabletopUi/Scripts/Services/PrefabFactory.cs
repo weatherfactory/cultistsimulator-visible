@@ -53,7 +53,7 @@ namespace Assets.TabletopUi.Scripts.Services
             }
             catch (Exception e)
             {
-                Debug.Log("Couldn't instantiate prefab " + typeof(T));
+                Debug.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
                 return null;
             }
 

@@ -175,9 +175,8 @@ namespace Assets.Core.Entities
 
                 foreach (var r in recipesToExecute)
                 {
-                    ISituationEffectCommand ec=new SituationEffectCommand(r,
-                    r.ActionId!=currentPrimaryRecipe.ActionId);
-                  subscriber.SituationExecutingRecipe(ec);
+                    ISituationEffectCommand ec=new SituationEffectCommand(r, r.ActionId!=currentPrimaryRecipe.ActionId);
+                    subscriber.SituationExecutingRecipe(ec);
                 }
             
         }

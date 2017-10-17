@@ -31,6 +31,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SetText(string text) {
+            if (texts.Count == 1 && texts[0] == text)
+                return;
+
             texts.Clear();
             texts.Add(text);
 			ShowPageNum(0);

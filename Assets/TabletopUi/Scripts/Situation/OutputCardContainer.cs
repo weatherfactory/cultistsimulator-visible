@@ -24,6 +24,10 @@ public class OutputCardContainer : MonoBehaviour, ITokenContainer {
         //if (GetComponentInChildren<ElementStackToken>() == null)
         //    _situationController.StartingSlotsUpdated(); // this forces a redraw - does not work cause if you don't drop it properly it is gone
     }
+    public void TokenDropped(DraggableToken draggableToken) {
+        //if (GetComponentInChildren<ElementStackToken>() == null)
+        //    _situationController.StartingSlotsUpdated(); // this forces a redraw - does not work cause if you don't drop it properly it is gone
+    }
 
     public bool AllowDrag { get { return true; } }
     public bool AllowStackMerge { get { return false; } }

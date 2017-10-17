@@ -10,6 +10,7 @@ namespace Assets.CS.TabletopUI.Interfaces
     public interface ITokenContainer
     {
         void TokenPickedUp(DraggableToken draggableToken);
+        void TokenDropped(DraggableToken draggableToken);
         bool AllowDrag { get; }
         bool AllowStackMerge { get; } //allow a stack dropped on a stack here to combine with it
 

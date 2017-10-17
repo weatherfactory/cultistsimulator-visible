@@ -13,25 +13,23 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-public class TabletopContainer : MonoBehaviour,ITokenContainer
-{
+public class TabletopContainer : MonoBehaviour, ITokenContainer {
 
-
-    public void TokenPickedUp(DraggableToken draggableToken)
-    {
-
+    public void TokenPickedUp(DraggableToken draggableToken) {
+        // Do nothing.
     }
 
-    public IEnumerable<ISituationAnchor> GetAllSituationTokens()
-    {
+    public void TokenDropped(DraggableToken draggableToken) {
+        // Do nothing.
+    }
+
+    public IEnumerable<ISituationAnchor> GetAllSituationTokens() {
         return GetComponentsInChildren<ISituationAnchor>();
     }
 
-    public void CloseAllSituationWindowsExcept(SituationToken except)
-    {
-        var situationTokens=GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
-        foreach (var situationToken in situationTokens)
-        {
+    public void CloseAllSituationWindowsExcept(SituationToken except) {
+        var situationTokens = GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
+        foreach (var situationToken in situationTokens) {
             if (DraggableToken.itemBeingDragged == null ||
                 DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
 
@@ -39,19 +37,16 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
         }
     }
 
-    public SituationToken GetOpenToken()
-    {
+    public SituationToken GetOpenToken() {
         return GetTokenTransformWrapper().GetSituationTokens().FirstOrDefault(s => s.IsOpen);
     }
 
-    public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand,string locatorInfo=null)
-    {
-       return Registry.Retrieve<TabletopObjectBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
+    public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
+        return Registry.Retrieve<TabletopObjectBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
     }
 
-    public void PutOnTable(DraggableToken token)
-    {
-        
+    public void PutOnTable(DraggableToken token) {
+
         GetTokenTransformWrapper().Accept(token);
 
         token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
@@ -62,18 +57,15 @@ public class TabletopContainer : MonoBehaviour,ITokenContainer
     public bool AllowStackMerge { get { return true; } }
 
 
-    public ElementStacksManager GetElementStacksManager()
-    {
+    public ElementStacksManager GetElementStacksManager() {
         return new ElementStacksManager(GetTokenTransformWrapper());
     }
-    
-    public ITokenTransformWrapper GetTokenTransformWrapper()
-    {
-       return new TabletopContainerTokenTransformWrapper(transform);
+
+    public ITokenTransformWrapper GetTokenTransformWrapper() {
+        return new TabletopContainerTokenTransformWrapper(transform);
     }
 
-    public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
-    {
+    public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI {
     public class SituationSlotManager : MonoBehaviour {
 
@@ -36,7 +35,10 @@ namespace Assets.CS.TabletopUI {
 			slot.rectTrans.anchorMax = slot.rectTrans.anchorMin;
 			slot.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
 			slots.Add(slot); // add after index was used
-            
+
+            //if (slots.Count == 1) // do not animate the first slot, which is the starting slot
+            //    return;
+
             var viz = slot.GetComponent<RecipeSlotViz>();
 
             if (viz != null)

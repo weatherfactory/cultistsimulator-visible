@@ -9,41 +9,34 @@ using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Assets.TabletopUi.Scripts
-{
-    public class TokenTransformWrapper: ITokenTransformWrapper
-    {
+namespace Assets.TabletopUi.Scripts {
+    public class TokenTransformWrapper : ITokenTransformWrapper {
+
         protected Transform wrappedTransform;
         protected ITokenContainer wrappedContainer; //one container can have multiple wrapped transforms
 
-        public TokenTransformWrapper(Transform t)
-        {
+        public TokenTransformWrapper(Transform t) {
             wrappedTransform = t;
             wrappedContainer = wrappedTransform.GetComponent<ITokenContainer>();
-            Assert.IsNotNull(wrappedContainer,"not a container!");
+            Assert.IsNotNull(wrappedContainer, "not a container!");
         }
 
-
-        public IElementStack ProvisionElementStack(string elementId, int quantity, string locatorid = null)
-        {
-            IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform,locatorid);
-            stack.Populate(elementId,quantity);
+        public IElementStack ProvisionElementStack(string elementId, int quantity, string locatorid = null) {
+            IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform, locatorid);
+            stack.Populate(elementId, quantity);
             Accept(stack);
             return stack;
         }
 
-        public ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, string locatorid = null)
-        {
-            return ProvisionElementStack(elementId,quantity,locatorid) as ElementStackToken;
+        public ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, string locatorid = null) {
+            return ProvisionElementStack(elementId, quantity, locatorid) as ElementStackToken;
         }
 
-        public virtual void Accept(IElementStack stack)
-        {
-                Accept(stack as DraggableToken);
+        public virtual void Accept(IElementStack stack) {
+            Accept(stack as DraggableToken);
         }
 
-        public virtual void Accept(DraggableToken token)
-        {
+        public virtual void Accept(DraggableToken token) {
             token.transform.SetParent(wrappedTransform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
@@ -51,24 +44,20 @@ namespace Assets.TabletopUi.Scripts
             token.SetContainer(wrappedContainer);
         }
 
-        public virtual IEnumerable<DraggableToken> GetTokens()
-        {
+        public virtual IEnumerable<DraggableToken> GetTokens() {
             return wrappedTransform.GetComponentsInChildren<DraggableToken>();
         }
 
-        public virtual IEnumerable<SituationToken> GetSituationTokens()
-        {
+        public virtual IEnumerable<SituationToken> GetSituationTokens() {
             return wrappedTransform.GetComponentsInChildren<SituationToken>();
         }
 
-        public virtual IEnumerable<IElementStack> GetStacks()
-        {
+        public virtual IEnumerable<IElementStack> GetStacks() {
             // we only want ElementStacks that are the children of the wrapped transform, not of any grandchildren and onwards
             var allCandidateStacks = wrappedTransform.GetComponentsInChildren<ElementStackToken>();
-            List<IElementStack> firstLevelChildren=new List<IElementStack>();
-            foreach (var s in allCandidateStacks)
-            {
-                if(s.transform.parent==wrappedTransform)
+            List<IElementStack> firstLevelChildren = new List<IElementStack>();
+            foreach (var s in allCandidateStacks) {
+                if (s.transform.parent == wrappedTransform)
                     firstLevelChildren.Add(s);
             }
 
