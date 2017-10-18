@@ -17,6 +17,7 @@ using System.Linq;
 
 // Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI {
+    [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
         const string buttonDefault = "Start";
@@ -24,8 +25,9 @@ namespace Assets.CS.TabletopUI {
 
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
+        public SituationWindowPositioner positioner;
 
-		[Space]
+        [Space]
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI title;
 		public PaginatedText notes;
@@ -87,6 +89,7 @@ namespace Assets.CS.TabletopUI {
 			situationController = sc;
 			Verb = verb;
             name = "Window_" + verb.Id;
+            artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
 
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);
@@ -100,6 +103,8 @@ namespace Assets.CS.TabletopUI {
         // BASIC DISPLAY
 
         public void Show() {
+            // TODO: DO we want to reset the pos on each click?
+            positioner.SetToTokenPos(); 
 			canvasGroupFader.Show();
 		}
 
@@ -156,7 +161,6 @@ namespace Assets.CS.TabletopUI {
         // SHOW VIZ
 
         public void DisplayUnstarted() {
-            artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
             Title = Verb.Label;
             notes.SetText(Verb.Description);
             DisplayRecipeHint(null);
