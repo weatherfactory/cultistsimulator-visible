@@ -40,49 +40,63 @@ namespace Assets.CS.TabletopUI {
         // GENERAL MOVE BEHAVIOR
 
         public void SetToTokenPos() {
-            SetPosition(token.position);
+            SetToWorldPosInScreenBounds(token.position);
+        }
 
-            // Check if one of our corners is outside the bounds
-            var corners = GetCornerPos();
-            float xOffset = 0f;
-            float yOffset = 0f;
-            Vector2 screenMargin = new Vector2(50f, 50f);
-
-            for (int i = 0; i < corners.Length; i++) {                
-                var screenPos = GetScreenPosFromWorld(corners[i]);
-
-                // Note: This would not behave properly if multiple corners would be outside on both bounds. Can't happen tho
-                if (screenPos.x > Screen.width) {
-                    xOffset = Mathf.Min(Screen.width - screenMargin.x - screenPos.x, xOffset);
-                }
-                else if (screenPos.x < 0f) { 
-                    xOffset = Mathf.Max(screenMargin.x - screenPos.x, xOffset);
-                }
-
-                if (screenPos.y > Screen.height) {
-                    yOffset = Mathf.Min(Screen.height - screenMargin.y - screenPos.y, yOffset);
-                }
-                else if (screenPos.y < 0f) {
-                    yOffset = Mathf.Max(screenMargin.y - screenPos.y, yOffset);
-                }
-            }
+        void SetToWorldPosInScreenBounds(Vector3 worldPos) {
+            // Check if one of our corners would be outside the bounds
+            var outOfBoundsOffset = GetScreenPosOffsetForCornerOvlerap(token.position);
 
             // We have an offset? Shift the window position!
-            if (xOffset != 0f || yOffset != 0f) { 
-                Debug.Log("Offset to put back " + xOffset + ", " + yOffset);
-                var screenPos = GetScreenPosFromWorld(rectTrans.position);
-                screenPos += new Vector2(xOffset, yOffset);
+            if (outOfBoundsOffset.x != 0f || outOfBoundsOffset.y != 0f) {
+                Debug.Log("Offset to put back " + outOfBoundsOffset.x + ", " + outOfBoundsOffset.y);
+                var screenPos = GetScreenPosFromWorld(worldPos);
+                screenPos += outOfBoundsOffset;
                 SetPosition(GetWorldPosFromScreen(screenPos));
+            }
+            else {
+                SetPosition(worldPos);
             }
         }
 
-        Vector3[] GetCornerPos() {
+        Vector2 GetScreenPosOffsetForCornerOvlerap(Vector3 pos) {
+            float xBoundUpper = Screen.width - 50f;
+            float xBoundLower = 0f + 50f;
+            float yBoundUpper = Screen.height - 20f;
+            float yBoundLower = 0f + 100f; // higher than upper because of bottom button bar
+
+            Vector2 offset = Vector2.zero;
+            var corners = GetCornerPos(pos);
+
+            for (int i = 0; i < corners.Length; i++) {
+                var screenPos = GetScreenPosFromWorld(corners[i]);
+
+                // Note: This would not behave properly if multiple corners would be outside on both bounds. Can't happen tho
+                if (screenPos.x > xBoundUpper) {
+                    offset.x = Mathf.Min(xBoundUpper - screenPos.x, offset.x);
+                }
+                else if (screenPos.x < xBoundLower) {
+                    offset.x = Mathf.Max(xBoundLower - screenPos.x, offset.x);
+                }
+
+                if (screenPos.y > yBoundUpper) {
+                    offset.y = Mathf.Min(yBoundUpper - screenPos.y, offset.y);
+                }
+                else if (screenPos.y < yBoundLower) {
+                    offset.y = Mathf.Max(yBoundLower - screenPos.y, offset.y);
+                }
+            }
+
+            return offset;
+        }
+
+        Vector3[] GetCornerPos(Vector3 pos) {
             var corners = new Vector3[4];
 
-            corners[0] = rectTrans.position + Vector3.Scale(new Vector3(rectTrans.rect.x, rectTrans.rect.y, 0f), rectTrans.lossyScale);
-            corners[1] = rectTrans.position + Vector3.Scale(new Vector3(rectTrans.rect.x + rectTrans.rect.width, rectTrans.rect.y, 0f), rectTrans.lossyScale);
-            corners[2] = rectTrans.position + Vector3.Scale(new Vector3(rectTrans.rect.x + rectTrans.rect.width, rectTrans.rect.y + rectTrans.rect.height, 0f), rectTrans.lossyScale);
-            corners[3] = rectTrans.position + Vector3.Scale(new Vector3(rectTrans.rect.x, rectTrans.rect.y + rectTrans.rect.height, 0f), rectTrans.lossyScale);
+            corners[0] = pos + Vector3.Scale(new Vector3(rectTrans.rect.x, rectTrans.rect.y, 0f), rectTrans.lossyScale);
+            corners[1] = pos + Vector3.Scale(new Vector3(rectTrans.rect.x + rectTrans.rect.width, rectTrans.rect.y, 0f), rectTrans.lossyScale);
+            corners[2] = pos + Vector3.Scale(new Vector3(rectTrans.rect.x + rectTrans.rect.width, rectTrans.rect.y + rectTrans.rect.height, 0f), rectTrans.lossyScale);
+            corners[3] = pos + Vector3.Scale(new Vector3(rectTrans.rect.x, rectTrans.rect.y + rectTrans.rect.height, 0f), rectTrans.lossyScale);
 
             return corners;
         }
