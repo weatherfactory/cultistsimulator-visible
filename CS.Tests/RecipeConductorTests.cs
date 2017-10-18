@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Noon;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -24,6 +25,8 @@ namespace Assets.Editor.Tests
         [SetUp]
         public void Setup()
         {
+            NoonUtility.UnitTestingMode = true;
+
             primaryRecipe = new Recipe
             {
                 Id = "primaryrecipe",

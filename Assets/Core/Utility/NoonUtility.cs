@@ -49,10 +49,15 @@ namespace Noon
     }
     public class NoonUtility
     {
+        public static bool UnitTestingMode { get; set; }
+
         public static void Log(string message)
         {
+            //switch between in-Unity and unit testing
+            if(UnitTestingMode)
             Console.WriteLine(message);
-          
+            else
+            Debug.Log(message);
         }
 
         public static string GetGameSaveLocation()
