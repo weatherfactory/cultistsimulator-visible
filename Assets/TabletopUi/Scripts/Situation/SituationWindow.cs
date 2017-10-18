@@ -146,6 +146,7 @@ namespace Assets.CS.TabletopUI {
 
         public void SetOutput(List<IElementStack> stacks, INotification notification) {
             results.SetOutput(stacks);
+            notes.AddText(notification.Description);
         }
 
         public void SetComplete() {
@@ -183,7 +184,7 @@ namespace Assets.CS.TabletopUI {
 
 		public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
-			notes.SetText(recipePrediction.DescriptiveText);
+			notes.AddText(recipePrediction.DescriptiveText);
 			DisplayRecipeHint(recipePrediction.Commentary);
 			DisplayButtonState(false);
 		}

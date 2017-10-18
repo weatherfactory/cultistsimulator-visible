@@ -21,7 +21,9 @@ namespace Assets.CS.TabletopUI {
         void OnEnable() {
             prevPage.onClick.AddListener(ShowPrevPage);
             nextPage.onClick.AddListener(ShowNextPage);
-            SetPage(0);
+
+            if (texts.Count > 0)
+                SetPage(0);
         }
 
         void OnDisable() {
@@ -45,6 +47,9 @@ namespace Assets.CS.TabletopUI {
 		}
 
         public void AddText(string text) {
+            if (texts.Count > 0 && texts[texts.Count - 1] == text)
+                return;
+
             texts.Add(text);
 			ShowNextPage();
         }
