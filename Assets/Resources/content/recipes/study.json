@@ -85,18 +85,49 @@
 	warmup:70,
 	craftable: true,
 	},
+			{
+	id: "studyupgradeforgeb",
+	label: "Upgrade forge b - gateway to research",
+	actionId: "study",
+	requirements: {reason:1},
+	startdescription: "Begin upgrade forge b",
+	description: "Complete upgrade forge b",
+	warmup:0,
+	loop: "studyresearchbegin",
+	craftable: false,
+	},
 		{
 	id: "studyresearchbegin",
 	label: "Generic research - beginning, set countdown",
 	actionId: "study",
 	requirements: {},
-	effects: {countdown:3},
-	alternativerecipes: [
-	{id: "studyresearchneedserudition",chance:100},
-	{id: "studyresearchneedsglimmering",chance:100}]
-	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
+	effects: {countdown:4},
+	startdescription: "research begin start",
+	description: "research begin complete",
 	warmup:0,
+	craftable: false,
+	loop: "studyresearchtick"
+	},
+					{
+	id: "studyresearchtick",
+	label: "Generic research - tick, countdown -1  ",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:-1},
+	warmup:5,
+	craftable: false,
+	loop: "studyresearchrouter"
+	},
+						{
+	id: "studyresearchrouter",
+	label: "Generic research - routes to next research event",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:-1},
+	alternativerecipes: [
+	{id: "studyresearchneedserudition",chance:50},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	warmup:30,
 	craftable: false,
 	},
 		{
@@ -107,8 +138,7 @@
 	effects: {},
 	slots:{"More": required: {erudition:1}},
 	alternativerecipes: [
-	{id: "studyresearchend",chance:100},
-	{id: "studyresearchtick",chance:100}]
+	{id: "studyresearcheruditionsuccess",chance:100}]
 	startdescription: "BEGIN erudition research",
 	description: "COMPLETE erudition research",
 	warmup:60,
@@ -121,7 +151,7 @@
 	actionId: "study",
 	requirements: {glimmering:1},
 	effects: {insight:1},
-	warmup:0,
+	warmup:60,
 	craftable: false,
 	loop: "studyresearchtick"
 	},
@@ -146,31 +176,9 @@
 	actionId: "study",
 	requirements: {glimmering:1},
 	effects: {insight:1},
-	warmup:0,
+	warmup:60,
 	craftable: false,
 	loop: "studyresearchtick"
-	},
-				{
-	id: "studyresearchtick",
-	label: "Generic research - end, reduces countdown 0",
-	actionId: "study",
-	requirements: {},
-	effects: {countdown:-1},
-	warmup:0,
-	craftable: false,
-	loop: "studyresearchrouter"
-	},
-					{
-	id: "studyresearchrouter",
-	label: "Generic research - routes to next research event",
-	actionId: "study",
-	requirements: {},
-	effects: {countdown:-1},
-	alternativerecipes: [
-	{id: "studyresearchneedserudition",chance:100},
-	{id: "studyresearchneedsglimmering",chance:100}]
-	warmup:0,
-	craftable: false,
 	},
 			{
 	id: "studyresearchend",
@@ -180,12 +188,45 @@
 	effects: {},
 	alternativerecipes: [
 	{id: "studyresearchfullinsight",chance:100},
-	{id: "studyresarchsomeinsight",chance:100},
+	{id: "studyresearchsomeinsight",chance:100},
 	{id: "studyresearchnoinsight",chance:100}]
-	startdescription: "COMPLETE research end",
+	startdescription: "BEGIN research end",
 	description: "COMPLETE research end",
 	warmup:0,
-	craftable: false,
+	craftable: false
+	},
+				{
+	id: "studyresearchfullinsight",
+	label: "Research complete, max insight",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	startdescription: "BEGIN research full insight",
+	description: "COMPLETE research full insight",
+	warmup:0,
+	craftable: false
+	},
+					{
+	id: "studyresearchsomeinsight",
+	label: "Research complete, some insight",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	startdescription: "BEGIN studyresearchsomeinsight",
+	description: "COMPLETE studyresearchsomeinsight",
+	warmup:0,
+	craftable: false
+	},
+						{
+	id: "studyresearchnoinsight",
+	label: "Research complete, no insight",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	startdescription: "BEGIN studyresearchnoinsight",
+	description: "COMPLETE studyresearchnoinsight",
+	warmup:0,
+	craftable: false
 	},
 ]
 }
