@@ -35,8 +35,8 @@ public class Recipe
     /// </summary>
     public string Description { get; set; }
 
-    public List<RecipeAlternative> AlternativeRecipes { get; set; }
-    public string Loop { get; set; }
+    public List<LinkedRecipeDetails> AlternativeRecipes { get; set; }
+    public List<LinkedRecipeDetails> LinkedRecipes { get; set; }
     public string EndingFlag { get; set; }
     /// <summary>
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
@@ -57,7 +57,8 @@ public class Recipe
     {
         Requirements = new Dictionary<string, int>();
         Effects = new Dictionary<string, int>();
-        AlternativeRecipes = new List<RecipeAlternative>();
+        AlternativeRecipes = new List<LinkedRecipeDetails>();
+        LinkedRecipes=new List<LinkedRecipeDetails>();
         SlotSpecifications = new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
     }
@@ -87,7 +88,7 @@ public class Recipe
 }
 
 
-public class RecipeAlternative
+public class LinkedRecipeDetails
 {
     private readonly bool _additional;
     private readonly string _id;
@@ -109,7 +110,7 @@ public class RecipeAlternative
     }
 
 
-    public RecipeAlternative(string id, int chance, bool additional)
+    public LinkedRecipeDetails(string id, int chance, bool additional)
     {
         _additional = additional;
         _id = id;

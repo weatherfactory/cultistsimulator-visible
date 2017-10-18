@@ -42,9 +42,11 @@
 	]
 	},
 	{id: "linktreeoflights",
-	loop:"dreamtreeoflights"},
+		linked:[{id:"dreamtreeoflights",chance:100}]
+		},
 	{id: "linklightthroughstainedglass",
-	loop:"dreamlightthroughstainedglass"},
+	linked:[{id:"dreamlightthroughstainedglass",chance:100}]
+	},
 	{
 	id: "dreamtreeoflights",
 	label: "The Tree of Lights",

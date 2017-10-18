@@ -92,6 +92,8 @@ public class Compendium : ICompendium
         if (_recipes.Count(r=> r.Id==recipeId) > 1)
             throw new ApplicationException("Found more than one recipe with id " + recipeId);
 
+        var recs = _recipes.Where(r => r.Id == recipeId).ToList();
+
         return _recipes.SingleOrDefault(r => r.Id == recipeId);   
     }
 

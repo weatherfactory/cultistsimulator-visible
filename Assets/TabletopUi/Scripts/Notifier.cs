@@ -20,11 +20,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         private TabletopImageBurner tabletopBurner;
 
-        public void DebugLog(string text)
-        {
-            Debug.Log(text);
-        }
-        public void PushTextToLog(string text) {
+   public void PushTextToLog(string text) {
             notificationLog.AddText(text);
         }
 

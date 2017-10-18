@@ -5,12 +5,13 @@ using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Noon;
 
 namespace Assets.Core
 {
     public interface IRecipeConductor
     {
-        Recipe GetLoopedRecipe(Recipe recipe);
+        Recipe GetLinkedRecipe(Recipe recipe);
         /// <summary>
         ///Determines whether the original recipe, an alternative, or something else should actually be run.
         /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
@@ -42,14 +43,51 @@ namespace Assets.Core
             currentCharacter = character;
         }
 
-        public Recipe GetLoopedRecipe(Recipe recipe)
+        public Recipe GetLinkedRecipe(Recipe recipe)
         {
 
-            if (recipe.Loop == null)
+            if (!recipe.LinkedRecipes.Any())
                 return null;
-            var candidateLoopedRecipe = compendium.GetRecipeById(recipe.Loop);
-           if(candidateLoopedRecipe.RequirementsSatisfiedBy(aspectsToConsider))
-                return candidateLoopedRecipe;
+
+            foreach (var ar in recipe.LinkedRecipes)
+            {
+                if (ar.Additional)
+                    throw new NotImplementedException(
+                        ar.Id +
+                        " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
+
+                Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
+
+                if (candidateRecipe == null)
+                {
+                    NoonUtility.Log("Tried to link to a nonexistent recipe with id " + ar.Id);
+                }
+                else if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                {
+                    NoonUtility.Log("Couldn't satisfy requirements for " + ar.Id + " so won't link to it.");
+                }
+                else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
+                {
+                    NoonUtility.Log(ar.Id + " has been exhausted, so won't execute");   
+                }
+            else
+                {
+                    int diceResult = dice.Rolld100();
+
+                    if (diceResult > ar.Chance)
+                    {
+                        NoonUtility.Log("Dice result " + diceResult + ", against chance " + ar.Chance +
+                                        " for linked recipe " + ar.Id + "; will try to execute next linked recipe");
+                    }
+                    else
+                    {
+                        NoonUtility.Log(ar.Id + " is a suitable linked recipe! Executing it next.");
+                        return candidateRecipe;
+                    }
+                }
+            }
+
+            NoonUtility.Log("No suitable linked recipe found");
 
             return null;
         }

@@ -93,7 +93,6 @@
 	startdescription: "Begin upgrade forge b",
 	description: "Complete upgrade forge b",
 	warmup:0,
-	loop: "studyresearchbegin",
 	craftable: false,
 	},
 		{
@@ -105,8 +104,7 @@
 	startdescription: "research begin start",
 	description: "research begin complete",
 	warmup:0,
-	craftable: false,
-	loop: "studyresearchtick"
+	craftable: false
 	},
 					{
 	id: "studyresearchtick",
@@ -115,8 +113,7 @@
 	requirements: {},
 	effects: {countdown:-1},
 	warmup:5,
-	craftable: false,
-	loop: "studyresearchrouter"
+	craftable: false
 	},
 						{
 	id: "studyresearchrouter",
@@ -143,7 +140,6 @@
 	description: "COMPLETE erudition research",
 	warmup:60,
 	craftable: false,
-	loop: "studyresearchtick"
 	},
 				{
 	id: "studyresearcheruditionsuccess",
@@ -152,8 +148,7 @@
 	requirements: {glimmering:1},
 	effects: {insight:1},
 	warmup:60,
-	craftable: false,
-	loop: "studyresearchtick"
+	craftable: false
 	},
 		{
 	id: "studyresearchneedsglimmering",
@@ -167,8 +162,7 @@
 	startdescription: "BEGIN glimmering research",
 	description: "COMPLETE glimmering research",
 	warmup:60,
-	craftable: false,
-	loop: "studyresearchtick"
+	craftable: false
 	},
 			{
 	id: "studyresearchglimmeringsuccess",
@@ -177,8 +171,7 @@
 	requirements: {glimmering:1},
 	effects: {insight:1},
 	warmup:60,
-	craftable: false,
-	loop: "studyresearchtick"
+	craftable: false
 	},
 			{
 	id: "studyresearchend",

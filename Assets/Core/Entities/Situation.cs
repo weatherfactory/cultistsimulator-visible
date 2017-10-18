@@ -187,11 +187,11 @@ namespace Assets.Core.Entities
 
             SoundManager.PlaySfx("SituationComplete");
 
-            var loopedRecipe = rc.GetLoopedRecipe(currentPrimaryRecipe);
+            var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
             
-            if (loopedRecipe!=null)
+            if (linkedRecipe!=null)
             { 
-                currentPrimaryRecipe = loopedRecipe;
+                currentPrimaryRecipe = linkedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 Beginning(currentPrimaryRecipe);
             }
