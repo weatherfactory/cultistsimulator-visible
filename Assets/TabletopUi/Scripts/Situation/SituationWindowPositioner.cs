@@ -37,6 +37,31 @@ namespace Assets.CS.TabletopUI {
             return RectTransformUtility.WorldToScreenPoint(uiCamera, worldPos);
         }
 
+        // SHOW ANIM
+
+        public void Show(float duration) {
+            StopAllCoroutines();
+            StartCoroutine(DoShowAnim(duration));
+        }
+
+        IEnumerator DoShowAnim(float duration) {
+            var time = 0f;
+            var targetPos = GetBoundCorrectedWorldPos(token.position);
+            var startPos = token.position;
+            float lerp;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                lerp = Easing.Circular.Out(time / duration);
+                transform.localScale = new Vector3(lerp, lerp, lerp);
+                SetPosition(Vector3.Lerp(startPos, targetPos, lerp));
+                yield return null;
+            }
+
+            transform.localScale = Vector3.one;
+            SetPosition(targetPos);
+        }
+
         // GENERAL MOVE BEHAVIOR
 
         public void SetToTokenPos() {
@@ -44,22 +69,26 @@ namespace Assets.CS.TabletopUI {
         }
 
         void SetToWorldPosInScreenBounds(Vector3 worldPos) {
+            SetPosition(GetBoundCorrectedWorldPos(worldPos));
+        }
+
+        Vector3 GetBoundCorrectedWorldPos(Vector3 worldPos) {
             // Check if one of our corners would be outside the bounds
-            var outOfBoundsOffset = GetScreenPosOffsetForCornerOvlerap(token.position);
+            var outOfBoundsOffset = GetScreenPosOffsetForCornerOverlap(token.position);
 
             // We have an offset? Shift the window position!
             if (outOfBoundsOffset.x != 0f || outOfBoundsOffset.y != 0f) {
                 Debug.Log("Offset to put back " + outOfBoundsOffset.x + ", " + outOfBoundsOffset.y);
                 var screenPos = GetScreenPosFromWorld(worldPos);
                 screenPos += outOfBoundsOffset;
-                SetPosition(GetWorldPosFromScreen(screenPos));
+                return GetWorldPosFromScreen(screenPos);
             }
             else {
-                SetPosition(worldPos);
+                return worldPos;
             }
         }
 
-        Vector2 GetScreenPosOffsetForCornerOvlerap(Vector3 pos) {
+        Vector2 GetScreenPosOffsetForCornerOverlap(Vector3 pos) {
             float xBoundUpper = Screen.width - 50f;
             float xBoundLower = 0f + 50f;
             float yBoundUpper = Screen.height - 20f;

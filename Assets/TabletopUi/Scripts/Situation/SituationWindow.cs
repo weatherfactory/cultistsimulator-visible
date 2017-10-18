@@ -103,9 +103,8 @@ namespace Assets.CS.TabletopUI {
         // BASIC DISPLAY
 
         public void Show() {
-            // TODO: DO we want to reset the pos on each click?
-            positioner.SetToTokenPos(); 
 			canvasGroupFader.Show();
+            positioner.Show(canvasGroupFader.durationTurnOn); // Animates the window
 		}
 
 		public void Hide() {
