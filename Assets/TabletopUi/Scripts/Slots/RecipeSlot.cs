@@ -34,7 +34,7 @@ namespace Assets.CS.TabletopUI {
 
         // -----------------------------------------------------------
         // VISUAL ELEMENTS
-        public RectTransform rectTrans;
+        public RecipeSlotViz viz;
 
         public TextMeshProUGUI SlotLabel;
         public Graphic border;

@@ -15,11 +15,12 @@ namespace Assets.TabletopUi.Scripts.Services
     public class TabletopObjectBuilder
     {
         private Transform tableLevel;
+        private Transform windowLevel;
 
-
-        public TabletopObjectBuilder(Transform tableLevel)
+        public TabletopObjectBuilder(Transform tableLevel, Transform windowLevel)
         {
             this.tableLevel = tableLevel;
+            this.windowLevel = windowLevel;
         }
 
        public void CreateInitialTokensOnTabletop()
@@ -50,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Services
             var situationController = new SituationController(Registry.Retrieve<ICompendium>(),Registry.Retrieve<Character>());
 
             var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel,locatorInfo);
-            var window = buildSituationWindowForSituationToken(newToken);
+            var window = BuiltSituationWindow(newToken);
             
             situationController.Initialise(situationCreationCommand,newToken,window);
 
@@ -59,12 +60,10 @@ namespace Assets.TabletopUi.Scripts.Services
 
 
 
-        private SituationWindow buildSituationWindowForSituationToken(SituationToken situationToken)
+        private SituationWindow BuiltSituationWindow(SituationToken situationToken)
         {
-            var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(situationToken.transform);
-
+            var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
             situationWindow.gameObject.SetActive(false);
-            situationWindow.transform.position = situationToken.transform.position;
 
             return situationWindow;
         }

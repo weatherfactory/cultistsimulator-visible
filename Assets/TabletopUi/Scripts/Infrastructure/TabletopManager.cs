@@ -32,7 +32,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
         [SerializeField] TabletopBackground background;
-        [SerializeField] Transform windowHolderFixed;
         [SerializeField] private Heart heart;
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Notifier notifier;
@@ -69,7 +68,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
 
-            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
+            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
          
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());

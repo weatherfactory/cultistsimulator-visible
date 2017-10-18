@@ -22,9 +22,6 @@ namespace Assets.CS.TabletopUI {
         const string buttonDefault = "Start";
         const string buttonBusy = "Waiting...";
 
-		//TEMP TO TEST
-		public RecipeSlot slotPrefab;
-
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
 
@@ -89,6 +86,7 @@ namespace Assets.CS.TabletopUI {
 		public void Initialise(IVerb verb, SituationController sc) {
 			situationController = sc;
 			Verb = verb;
+            name = "Window_" + verb.Id;
 
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);

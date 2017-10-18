@@ -233,10 +233,9 @@ namespace Assets.CS.TabletopUI
         public void DisplayInAir()
         {
             transform.SetAsLastSibling();
-        float windowZOffset = -10f;
+            float windowZOffset = -10f;
 
-        RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x,
-                RectTransform.anchoredPosition3D.y, windowZOffset);
+            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, windowZOffset);
             RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
         }
 

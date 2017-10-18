@@ -5,34 +5,53 @@ using UnityEditor;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 
-[CustomEditor(typeof(SituationWindow))]
+[CustomEditor(typeof(SituationSlotManager))]
 public class SituationWindowNewEditor : Editor {
 
-	SituationWindow window;
-	List<RecipeSlot> addedSlots = new List<RecipeSlot>();
+    SituationSlotManager manager;
+	[SerializeField] List<RecipeSlot> addedSlots = new List<RecipeSlot>();
 
 	public override void OnInspectorGUI() {
 		DrawDefaultInspector();
 
-		window = target as SituationWindow;
+		manager = target as SituationSlotManager;
 
 		if (GUILayout.Button("Add Slot")) {
-			window.slotManager.AddSlot(BuildSlot());
-			window.slotManager.ReorderSlots();
+			manager.AddSlot(BuildSlot());
+			manager.ReorderSlots();
 		}
-		
-		if (GUILayout.Button("Remove Slot") && addedSlots.Count > 0) {
-			window.slotManager.RemoveSlot(addedSlots[addedSlots.Count - 1]);
-			window.slotManager.ReorderSlots();
-			addedSlots.RemoveAt(addedSlots.Count - 1); 
-		}
-	}
 
+        if (GUILayout.Button("Remove First Slot") && addedSlots.Count > 0) {
+            RemoveSlot(0);
+            manager.ReorderSlots();
+        }
 
+        if (GUILayout.Button("Remove Random Slot") && addedSlots.Count > 0) {
+            RemoveSlot( Random.Range(0, addedSlots.Count) );
+            manager.ReorderSlots();
+        }
+
+        if (GUILayout.Button("Remove 2 Slots") && addedSlots.Count > 0) {
+            int i = Random.Range(0, addedSlots.Count - 1);
+            RemoveSlot(i);
+            RemoveSlot(i); // removing from index means we use the same index for the next, otherwise we skip one
+            manager.ReorderSlots();
+        }
+
+        if (GUILayout.Button("Remove Last Slot") && addedSlots.Count > 0) {
+            RemoveSlot(addedSlots.Count - 1);
+            manager.ReorderSlots();
+        }
+    }
+
+    void RemoveSlot(int i) {
+        manager.RemoveSlot(addedSlots[i]);
+        addedSlots.RemoveAt(i);
+    }
 
 	public virtual RecipeSlot BuildSlot()
 	{
-		var slot = GameObject.Instantiate(window.slotPrefab);
+		var slot = GameObject.Instantiate(manager.slotPrefab);
 		addedSlots.Add(slot);
 		return slot;    
 	}

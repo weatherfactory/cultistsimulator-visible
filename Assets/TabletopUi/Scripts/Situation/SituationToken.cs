@@ -23,7 +23,7 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI
 {
 
-    public class SituationToken : DraggableToken,ISituationAnchor, IGlowableView
+    public class SituationToken : DraggableToken, ISituationAnchor, IGlowableView
     {
 
         [SerializeField] Image artwork;
@@ -40,7 +40,6 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] TextMeshProUGUI completionText;
         [SerializeField] GraphicFader glowImage;
 
-
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
 
@@ -53,7 +52,6 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOpen = false;
-
         public bool IsTransient { get { return _verb.Transient; } }
 
         public override string Id
@@ -69,7 +67,6 @@ namespace Assets.CS.TabletopUI
 			countdownBar.gameObject.SetActive(b);
 			countdownBadge.gameObject.SetActive(b);
         }
-
 
 		public void SetCompletionCount(int newCount) {
 			completionBadge.gameObject.SetActive(newCount > 0);
@@ -186,7 +183,6 @@ namespace Assets.CS.TabletopUI
                 SetGlowColor(UIStyle.TokenGlowColor.Pink);
                 ShowGlow(true);
             }
-
         }
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)

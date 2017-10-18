@@ -8,14 +8,19 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI {
     public class SituationSlotManager : MonoBehaviour {
 
+#if UNITY_EDITOR
+        public RecipeSlot slotPrefab;
+#endif
+
         [SerializeField] RectTransform rect;
         [SerializeField] Vector2 slotSize = new Vector2(80f, 120f);
         [SerializeField] Vector2 spacing = new Vector2(20f, 20f);
         [SerializeField] Vector2 margin = new Vector2(20f, 40f);
 
-        const float sizeTransitionDuration = 0.2f;
+        [SerializeField] float sizeTransitionDuration = 0.2f;
+        [SerializeField] float slotMoveTransitionDuration = 0.2f;
 
-		List<RecipeSlot> slots = new List<RecipeSlot>();
+        List<RecipeSlot> slots = new List<RecipeSlot>();
         int numPerRow = 1;
         int numRows = 1;
 		float slotSpacing;
@@ -27,23 +32,18 @@ namespace Assets.CS.TabletopUI {
         public void AddSlot(RecipeSlot slot) {
 			if (slot == null)
 				return;
-			
-			slot.rectTrans.SetParent(transform);
-			slot.rectTrans.localScale = Vector3.one;
-			slot.rectTrans.localPosition = Vector3.zero;
-			slot.rectTrans.anchorMin = new Vector2(0f, 1f);
-			slot.rectTrans.anchorMax = slot.rectTrans.anchorMin;
-			slot.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
+
+            slot.viz.rectTrans.SetParent(transform);
+			slot.viz.rectTrans.localScale = Vector3.one;
+			slot.viz.rectTrans.localPosition = Vector3.zero;
+			slot.viz.rectTrans.anchorMin = new Vector2(0f, 1f);
+			slot.viz.rectTrans.anchorMax = slot.viz.rectTrans.anchorMin;
+			slot.viz.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
 			slots.Add(slot); // add after index was used
 
             // do not animate if we're not visible - usually only for first slot being created in Initialise
-            if (gameObject.activeInHierarchy == false) 
-                return;
-
-            var viz = slot.GetComponent<RecipeSlotViz>();
-
-            if (viz != null)
-                viz.TriggerShowAnim();
+            if (gameObject.activeInHierarchy) 
+                slot.viz.TriggerShowAnim();
         }
 
         public void RemoveSlot(RecipeSlot slot) {
@@ -51,10 +51,9 @@ namespace Assets.CS.TabletopUI {
 				return;
 
 			slots.Remove(slot);
-            var viz = slot.GetComponent<RecipeSlotViz>();
 
-            if (viz != null)
-                viz.TriggerHideAnim();
+            if (gameObject.activeInHierarchy)
+                slot.viz.TriggerHideAnim();
             else
                 slot.Retire();
         }
@@ -71,6 +70,9 @@ namespace Assets.CS.TabletopUI {
             }
 
             // Set target positions for all remaining slots
+            for (int i = 0; i < slots.Count; i++) {
+                slots[i].viz.MoveToPosition(GetPositionForIndex(i), slotMoveTransitionDuration);
+            }
         }
 
         void SetNumPerRow() {
