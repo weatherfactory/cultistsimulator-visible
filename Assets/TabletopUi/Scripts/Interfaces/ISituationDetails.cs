@@ -32,6 +32,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
 
+        void DumpAllStartingCardsToDesktop();
+
         IEnumerable<IElementStack> GetStartingStacks();
         IEnumerable<IElementStack> GetOngoingStacks();
         IEnumerable<IElementStack> GetStoredStacks();

@@ -85,13 +85,12 @@ namespace Assets.TabletopUi {
         }
 
         public void CloseSituation() {
+            // This comes first so the token doesn't show a glow when it's being closed
+            if (Situation.State == SituationState.Unstarted) 
+                situationWindow.DumpAllStartingCardsToDesktop();
+
             situationToken.CloseToken();
             situationWindow.Hide();
-
-            if (Situation.State == SituationState.Complete) {
-                if (!situationWindow.GetOutputStacks().Any())
-                    ResetToStartingState();
-            }
         }
 
         public string GetCurrentRecipeId() {

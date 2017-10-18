@@ -158,8 +158,6 @@ namespace Assets.CS.TabletopUI {
 
         // SHOW VIZ
 
-        // SHOW VIZ
-
         public void DisplayUnstarted() {
             Title = Verb.Label;
             notes.SetText(Verb.Description);
@@ -242,6 +240,31 @@ namespace Assets.CS.TabletopUI {
             situationController.AttemptActivateRecipe();
         }
         
+        /*
+        // currently not in use
+        public void DumpAllCardsToDesktop() {
+            DumpToDesktop(GetStartingStacks());
+            DumpToDesktop(GetOngoingStacks());
+            // Don't dump stored stacks - they're supposed to be inaccessible
+            DumpToDesktop(GetOutputStacks());
+        }
+        */
+
+        public void DumpAllStartingCardsToDesktop() {
+            DumpToDesktop(GetStartingStacks());
+        }
+
+        void DumpToDesktop(IEnumerable<IElementStack> stacks) {
+            DraggableToken token;
+
+            foreach (var item in stacks) {
+                token = item as DraggableToken;
+
+                if (token != null)
+                    token.ReturnToTabletop(null);
+            }
+        }
+
         // ISituationDetails
 
         public bool ConsumeMarkedElements(bool withAnim) {
