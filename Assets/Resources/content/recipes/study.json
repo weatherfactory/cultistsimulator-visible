@@ -45,7 +45,7 @@
 	effects: {},
 	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
 	alternativerecipes: [
-	{id: "studyupgradeforgeb",chance:100},
+	{id: "studyupgradeforgetob",chance:100},
 	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
@@ -86,14 +86,14 @@
 	craftable: true,
 	},
 			{
-	id: "studyupgradeforgeb",
-	label: "Upgrade forge b - gateway to research",
+	id: "studyupgradeforgetob",
+	label: "Upgrade forge to b - gateway to research",
 	actionId: "study",
 	requirements: {reason:1},
 	startdescription: "Begin upgrade forge b",
 	description: "Complete upgrade forge b",
 	warmup:0,
-	craftable: false,
+	linked:[{id: "studyresearchbegin",chance:100}]
 	},
 		{
 	id: "studyresearchbegin",
@@ -104,28 +104,21 @@
 	startdescription: "research begin start",
 	description: "research begin complete",
 	warmup:0,
-	craftable: false
+	craftable: false,
+	linked:[{id: "studyresearchtick",chance:100}]
 	},
 					{
 	id: "studyresearchtick",
-	label: "Generic research - tick, countdown -1  ",
+	label: "Generic research - tick, countdown -1",
 	actionId: "study",
 	requirements: {},
 	effects: {countdown:-1},
 	warmup:0,
-	craftable: false
-	},
-						{
-	id: "studyresearchrouter",
-	label: "Generic research - routes to next research event",
-	actionId: "study",
-	requirements: {},
-	effects: {countdown:-1},
-	alternativerecipes: [
+	linked:[{id: "studyresearchmaxinsight",chance:100},
+	{id: "studyresearchmoderateinsight",chance:100},
+	{id: "studyresearchminimalinsight",chance:100},
 	{id: "studyresearchneedserudition",chance:50},
 	{id: "studyresearchneedsglimmering",chance:100}]
-	warmup:30,
-	craftable: false,
 	},
 		{
 	id: "studyresearchneedserudition",
@@ -133,22 +126,24 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"More": required: {erudition:1}},
+	slots:{"Erudition": required: {erudition:1}},
 	alternativerecipes: [
 	{id: "studyresearcheruditionsuccess",chance:100}]
 	startdescription: "BEGIN erudition research",
-	description: "COMPLETE erudition research",
+	description: "COMPLETE erudition research - FAILED",
 	warmup:60,
 	craftable: false,
+		linked: [{id:"studyresearchtick",chance:100}]
 	},
 				{
 	id: "studyresearcheruditionsuccess",
-	label: "Glimmering erudition success!",
+	label: "Research erudition success!",
 	actionId: "study",
-	requirements: {glimmering:1},
-	effects: {insight:1},
+	requirements: {erudition:1},
+	effects: {insight:1,erudition:-1},
 	warmup:60,
-	craftable: false
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
 	},
 		{
 	id: "studyresearchneedsglimmering",
@@ -156,68 +151,84 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"More": required: {glimmering:1}},
+	slots:{"Glimmering": required: {glimmering:1}},
 	alternativerecipes: [
 	{id: "studyresearchglimmeringsuccess",chance:100}]
 	startdescription: "BEGIN glimmering research",
-	description: "COMPLETE glimmering research",
+	description: "COMPLETE glimmering research FAILED",
 	warmup:60,
-	craftable: false
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
 	},
 			{
 	id: "studyresearchglimmeringsuccess",
 	label: "Glimmering research success!",
 	actionId: "study",
 	requirements: {glimmering:1},
-	effects: {insight:1},
+	effects: {insight:1,glimmering:-1},
 	warmup:60,
-	craftable: false
+	craftable: false,
+		linked: [{id:"studyresearchtick",chance:100}]
 	},
-			{
-	id: "studyresearchend",
-	label: "Generic research - end, needs countdown 0",
+						{
+	id: "studyresearchmaxinsight",
+	label: "Research complete, max insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:100}],
 	actionId: "study",
 	requirements: {countdown:-1},
-	effects: {},
-	alternativerecipes: [
-	{id: "studyresearchfullinsight",chance:100},
-	{id: "studyresearchsomeinsight",chance:100},
-	{id: "studyresearchnoinsight",chance:100}]
-	startdescription: "BEGIN research end",
-	description: "COMPLETE research end",
-	warmup:0,
-	craftable: false
-	},
-				{
-	id: "studyresearchfullinsight",
-	label: "Research complete, max insight",
-	actionId: "study",
-	requirements: {},
-	effects: {},
-	startdescription: "BEGIN research full insight",
-	description: "COMPLETE research full insight",
-	warmup:0,
-	craftable: false
-	},
-					{
-	id: "studyresearchsomeinsight",
-	label: "Research complete, some insight",
-	actionId: "study",
-	requirements: {},
 	effects: {},
 	startdescription: "BEGIN studyresearchsomeinsight",
 	description: "COMPLETE studyresearchsomeinsight",
 	warmup:0,
-	craftable: false
+	comments: "This is currently a pass-through only; including for consistency."
+	},
+					{
+	id: "studyresearchmoderateinsight",
+	label: "Research complete, some insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:70},
+	{id: "studyresearchconsolation",chance:100}],
+	actionId: "study",
+	requirements: {countdown:-1},
+	effects: {},
+	startdescription: "BEGIN studyresearchsomeinsight",
+	description: "COMPLETE studyresearchsomeinsight",
+	warmup:0
 	},
 						{
-	id: "studyresearchnoinsight",
+	id: "studyresearchminimalinsight",
 	label: "Research complete, no insight",
 	actionId: "study",
-	requirements: {},
+			alternativerecipes: [
+	{id: "studyresearchsuccess",chance:30},
+	{id: "studyresearchconsolation",chance:100}],
+	requirements: {countdown:-1},
 	effects: {},
 	startdescription: "BEGIN studyresearchnoinsight",
 	description: "COMPLETE studyresearchnoinsight",
+	warmup:0,
+	},
+							{
+	id: "studyresearchsuccess",
+	label: "Research successful!",
+	actionId: "study",
+	requirements: {},
+	aspects: {loredeepening:1}
+	effects: {insight:-100,erudition:1,glimmering:1},
+	startdescription: "BEGIN studyresearchsuccess",
+	description: "COMPLETE studyresearchsuccess",
+	warmup:0,
+	craftable: false
+	},
+								{
+	id: "studyresearchconsolation",
+	label: "Research not successful! consolation prizes.",
+	actionId: "study",
+	requirements: {},
+	effects: {insight:-100,erudition:1,glimmering:1},
+	startdescription: "BEGIN studyresearchconsolation",
+	description: "COMPLETE studyresearchconsolation",
 	warmup:0,
 	craftable: false
 	},

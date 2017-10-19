@@ -60,15 +60,15 @@ namespace Assets.Core
 
                 if (candidateRecipe == null)
                 {
-                    NoonUtility.Log("Tried to link to a nonexistent recipe with id " + ar.Id);
+                    NoonUtility.Log(recipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + ar.Id);
                 }
                 else if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
                 {
-                    NoonUtility.Log("Couldn't satisfy requirements for " + ar.Id + " so won't link to it.");
+                    NoonUtility.Log(recipe.Id + " says: " + "Couldn't satisfy requirements for " + ar.Id + " so won't link to it.");
                 }
                 else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
                 {
-                    NoonUtility.Log(ar.Id + " has been exhausted, so won't execute");   
+                    NoonUtility.Log(recipe.Id + " says: " + ar.Id + " has been exhausted, so won't execute");   
                 }
             else
                 {
@@ -76,18 +76,18 @@ namespace Assets.Core
 
                     if (diceResult > ar.Chance)
                     {
-                        NoonUtility.Log("Dice result " + diceResult + ", against chance " + ar.Chance +
+                        NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + ar.Chance +
                                         " for linked recipe " + ar.Id + "; will try to execute next linked recipe");
                     }
                     else
                     {
-                        NoonUtility.Log(ar.Id + " is a suitable linked recipe! Executing it next.");
+                        NoonUtility.Log(recipe.Id + " says: " + ar.Id + " is a suitable linked recipe! Executing it next.");
                         return candidateRecipe;
                     }
                 }
             }
 
-            NoonUtility.Log("No suitable linked recipe found");
+            NoonUtility.Log(recipe.Id + " says: " + "No suitable linked recipe found");
 
             return null;
         }
