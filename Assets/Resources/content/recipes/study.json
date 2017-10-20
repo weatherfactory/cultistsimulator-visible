@@ -176,12 +176,12 @@
 		alternativerecipes: [
 	{id: "studyresearchsuccess",chance:100}],
 	actionId: "study",
-	requirements: {countdown:-1},
+	requirements: {countdown:-1,insight:3},
 	effects: {},
-	startdescription: "BEGIN studyresearchsomeinsight",
-	description: "COMPLETE studyresearchsomeinsight",
+	startdescription: "BEGIN studyresearchmaxinsight",
+	description: "COMPLETE studyresearchmaxinsight",
 	warmup:0,
-	comments: "This is currently a pass-through only; including for consistency."
+	comments: "This is currently a pass-through only; including for consistency.",
 	},
 					{
 	id: "studyresearchmoderateinsight",
@@ -190,7 +190,7 @@
 	{id: "studyresearchsuccess",chance:70},
 	{id: "studyresearchconsolation",chance:100}],
 	actionId: "study",
-	requirements: {countdown:-1},
+	requirements: {countdown:-1,insight:1},
 	effects: {},
 	startdescription: "BEGIN studyresearchsomeinsight",
 	description: "COMPLETE studyresearchsomeinsight",
@@ -199,7 +199,7 @@
 						{
 	id: "studyresearchminimalinsight",
 	label: "Research complete, no insight",
-	actionId: "study",
+	actionId: "study", 
 			alternativerecipes: [
 	{id: "studyresearchsuccess",chance:30},
 	{id: "studyresearchconsolation",chance:100}],
@@ -214,7 +214,7 @@
 	label: "Research successful!",
 	actionId: "study",
 	requirements: {},
-	aspects: {loredeepening:1}
+	aspects: {loredeepening:1},
 	effects: {insight:-100,erudition:1,glimmering:1},
 	startdescription: "BEGIN studyresearchsuccess",
 	description: "COMPLETE studyresearchsuccess",

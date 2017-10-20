@@ -152,20 +152,48 @@ namespace Assets.Core
             foreach (var ar in recipe.AlternativeRecipes)
             {
                 int diceResult = dice.Rolld100();
-                if (diceResult <= ar.Chance )
+                if (diceResult > ar.Chance)
+                {
+                    NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
+                                    ar.Chance +
+                                    " for alternative recipe " + ar.Id +
+                                    "; will try to execute next alternative recipe");
+                }
+                else
                 {
                     Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
-                    if(candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) && !currentCharacter.HasExhaustedRecipe(candidateRecipe))
-                   
-                    {
-                        if (ar.Additional)
-                            actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
-                        else
-                        {
-                            IList<Recipe> recursiveRange = GetActualRecipesToExecute(candidateRecipe);//check if this recipe has any substitutes in turn, and then
 
-                            return recursiveRange;//this recipe, or its further alternatives, supersede(s) everything else! return it.
-                        }
+                    if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                    { 
+                        NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id);
+                        continue;
+                    }
+                    if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
+                    { 
+                        NoonUtility.Log(recipe.Id + " says: already exhausted " + ar.Id);
+                        continue;
+                    }
+                    if (ar.Additional)
+                    {
+                        actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
+                        NoonUtility.Log(recipe.Id + " says: Found additional recipe " + ar.Id +
+                                        " to execute - adding it to executiion listand looking for more");
+                    }
+                    else
+                    {
+                        IList<Recipe>
+                            recursiveRange =
+                                GetActualRecipesToExecute(
+                                    candidateRecipe); //check if this recipe has any substitutes in turn, and then
+
+                        string logmessage =
+                            recipe.Id + " says: reached the bottom of the execution list: returning ";
+                        foreach (var r in recursiveRange)
+                            logmessage += r.Id + "; ";
+                        NoonUtility.Log(logmessage);
+
+                        return
+                            recursiveRange; //this recipe, or its further alternatives, supersede(s) everything else! return it.
                     }
                 }
             }
