@@ -50,11 +50,11 @@ public abstract class AbstractSlotsContainer : MonoBehaviour {
 
     public abstract void RespondToStackAdded(RecipeSlot slot, IElementStack stack);
 
-    public AspectsDictionary GetAspectsFromSlottedCards() {
+    public AspectsDictionary GetAspectsFromSlottedCards(bool showElementAspects = true) {
         AspectsDictionary currentAspects = new AspectsDictionary();
         foreach (IRecipeSlot slot in GetAllSlots())
             if (slot.GetElementStackInSlot() != null)
-                currentAspects.CombineAspects(slot.GetElementStackInSlot().GetAspects());
+                currentAspects.CombineAspects(slot.GetElementStackInSlot().GetAspects(showElementAspects));
 
         return currentAspects;
     }

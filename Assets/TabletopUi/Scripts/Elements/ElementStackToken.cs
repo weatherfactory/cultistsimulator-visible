@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -32,6 +33,8 @@ namespace Assets.CS.TabletopUI
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
+
+        private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
 
         public void FlipToFaceUp()
         {
@@ -92,6 +95,20 @@ namespace Assets.CS.TabletopUI
         public void ModifyQuantity(int change)
         {
             SetQuantity(_quantity + change);
+        }
+
+        public override void ReturnToTabletop(INotification reason) {
+            if (originStack != null && originStack.IsOnTabletop()) {
+                originStack.MergeIntoStack(this);
+                return;
+            }
+
+            base.ReturnToTabletop(reason);
+
+            if (lastTablePos != null)
+                transform.position = (Vector3)lastTablePos;
+            else
+                lastTablePos = transform.position;
         }
 
         public override bool Retire()
@@ -166,9 +183,12 @@ namespace Assets.CS.TabletopUI
                 artwork.color = Color.white;
         }
 
-        public IAspectsDictionary GetAspects()
+        public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
-            return _element.AspectsIncludingSelf;
+            if (includeSelf)
+                return _element.AspectsIncludingSelf;
+            else
+                return _element.Aspects;
         }
 
         public List<SlotSpecification> GetChildSlotSpecifications()
@@ -216,10 +236,8 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public void SplitAllButNCardsToNewStack(int n)
-        {
-            if (Quantity > n)
-            {
+        public void SplitAllButNCardsToNewStack(int n) {
+            if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
 
                 cardLeftBehind.Populate(Id, Quantity - n);
@@ -228,9 +246,18 @@ namespace Assets.CS.TabletopUI
                 cardLeftBehind.transform.position = transform.position;
                 var gateway = container.GetElementStacksManager();
 
-               gateway.AcceptStack(cardLeftBehind);
+                originStack = cardLeftBehind;
+                gateway.AcceptStack(cardLeftBehind);
             }
-   
+        }
+
+        public bool IsOnTabletop() {
+            return transform.parent.GetComponent<TabletopContainer>() != null;
+        }
+
+        public void MergeIntoStack(ElementStackToken merge) {
+            SetQuantity(Quantity + merge.Quantity);
+            merge.Retire(false);
         }
 
         public bool AllowMerge()
@@ -302,30 +329,18 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        // NOTE: THIS IS ALL DEMO TEST CODE SO YOU CAN SEE THE VISUALS
-        //float currentTime = -5f;
+        IEnumerator DoMove(Vector3 targetPos, float duration) {
+            float time = 0f;
+            Vector3 startPos = transform.position;
 
-        //void Update() {
-        //    float decayDuration = 20f;
-        //    float timeToShowTimer = 10f;
+            while (time < duration) {
+                time += Time.deltaTime;
+                Vector3.Lerp(startPos, targetPos, Easing.Back.Out(time / duration));
+                yield return null;
+            }
 
-        //    currentTime += Time.deltaTime;
-
-        //    SetCardDecay(currentTime / (decayDuration - timeToShowTimer));
-
-        //    if (currentTime >= decayDuration - timeToShowTimer) {
-        //        ShowCardDecayTimer(true);
-        //        SetCardDecayTime(Mathf.Lerp(timeToShowTimer, 0, Mathf.Abs((currentTime - decayDuration + timeToShowTimer) / timeToShowTimer)));
-        //    }
-        //    else { 
-        //        ShowCardDecayTimer(false);
-        //    }
-
-        //    if (currentTime > decayDuration) {
-        //        Retire(true);
-        //    }
-        //}
-
+            transform.position = targetPos;
+        }
 
     }
 }

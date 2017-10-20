@@ -187,9 +187,14 @@ namespace Assets.CS.TabletopUI
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)
         {
-            var stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
+            IElementStack stack;
 
-            if(stack==null)
+            if (stacksInOngoingSlots != null)
+                stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
+            else
+                stack = null;
+
+            if (stack == null)
             {
                 ongoingSlotArtImage.sprite = null;
                 ongoingSlotArtImage.color = Color.black;

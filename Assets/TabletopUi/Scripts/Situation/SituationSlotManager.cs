@@ -13,6 +13,7 @@ namespace Assets.CS.TabletopUI {
 #endif
 
         [SerializeField] RectTransform rect;
+        [SerializeField] ScrollRect scrollRect;
         [SerializeField] Vector2 slotSize = new Vector2(80f, 120f);
         [SerializeField] Vector2 spacing = new Vector2(20f, 20f);
         [SerializeField] Vector2 margin = new Vector2(20f, 40f);
@@ -36,6 +37,7 @@ namespace Assets.CS.TabletopUI {
             slot.viz.rectTrans.SetParent(transform);
 			slot.viz.rectTrans.localScale = Vector3.one;
 			slot.viz.rectTrans.localPosition = Vector3.zero;
+            slot.viz.rectTrans.localRotation = Quaternion.identity;
 			slot.viz.rectTrans.anchorMin = new Vector2(0f, 1f);
 			slot.viz.rectTrans.anchorMax = slot.viz.rectTrans.anchorMin;
 			slot.viz.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
@@ -104,13 +106,32 @@ namespace Assets.CS.TabletopUI {
             float time = 0f;
             float current = rect.rect.height;
 
+            TurnOnScrollIfLarge(target);
+
             while (time < duration) {
-				rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Mathf.Lerp(current, target, time / duration)); // TODO: Add some nice easing?
+                SetHeight(Mathf.Lerp(current, target, time / duration)); // TODO: Add some nice easing?
 				time += Time.deltaTime;
 				yield return null;
             }
 
-            rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, target);
+            SetHeight(target);
+            TurnOffScrollIfSmall(target);
+        }
+
+        void SetHeight(float height) {
+            rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+        }
+
+        void TurnOnScrollIfLarge(float height) {
+            // enable the scrolling if the viewport is larger than the height
+            if (height > scrollRect.viewport.rect.height)
+                scrollRect.vertical = true;
+        }
+
+        void TurnOffScrollIfSmall(float height) {
+            // disable the verticla scrolling if it's smaller than the viewport! this allows us to grab the window in the slot region
+            if (height < scrollRect.viewport.rect.height)
+                scrollRect.vertical = false;
         }
 
     }

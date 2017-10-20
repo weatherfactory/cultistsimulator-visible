@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.CS.TabletopUI {
     public class OngoingSlotManager : AbstractSlotsContainer {
@@ -18,6 +19,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Transform slotHolder; 
         [SerializeField] Image countdownBar;
 		[SerializeField] TextMeshProUGUI countdownText;
+        [SerializeField] LayoutGroup storedCardsLayout;
         public CanvasGroupFader canvasGroupFader;
 
         public override void Initialise(SituationController sc) {
@@ -57,5 +59,39 @@ namespace Assets.CS.TabletopUI {
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
+
+        public void ShowStoredElements(IEnumerable<IElementStack> stacks) {
+            int i = 0;
+
+            var aspectFrames = storedCardsLayout.GetComponentsInChildren<AspectFrame>();
+            AspectFrame frame;
+            Element element;
+
+            foreach (var item in stacks) {
+                element = Registry.Retrieve<ICompendium>().GetElementById(item.Id);
+
+                for (int q = 0; q < item.Quantity; q++) {
+                    if (i < aspectFrames.Length)
+                        frame = aspectFrames[i];
+                    else
+                        frame = BuildAspectFrame();
+
+                    frame.PopulateDisplay(element, 1);
+                    frame.gameObject.SetActive(true);
+                    i++;
+                }
+            }
+
+            while (i < aspectFrames.Length) {
+                aspectFrames[i].gameObject.SetActive(false);
+
+                i++;
+            }
+        }
+
+        AspectFrame BuildAspectFrame() {
+            return PrefabFactory.CreateLocally<AspectFrame>(storedCardsLayout.transform);
+        }
+
     }
 }

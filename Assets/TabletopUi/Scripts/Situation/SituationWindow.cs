@@ -191,6 +191,10 @@ namespace Assets.CS.TabletopUI {
 			aspectsDisplay.DisplayAspects(forAspects);
 		}
 
+        public void DisplayStoredElements() {
+            ongoing.ShowStoredElements(GetStoredStacks());
+        }
+
         public void DisplayRecipeHint(string hint) {
             bool isActive = !string.IsNullOrEmpty(hint);
             hintText.gameObject.SetActive(isActive);
@@ -306,10 +310,6 @@ namespace Assets.CS.TabletopUI {
             GetStorageStacksManager().AcceptStacks(stacksToStore);
         }
 
-        public IAspectsDictionary GetAspectsFromStoredElements() {
-            return GetStorageStacksManager().GetTotalAspects();
-        }
-
 
 
         public void SetSlotConsumptions() {
@@ -331,16 +331,21 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public IAspectsDictionary GetAspectsFromStartingElements() {
-            return startingSlots.GetAspectsFromSlottedCards();
+        public IAspectsDictionary GetAspectsFromStartingElements(bool showElementAspects = true) {
+            return startingSlots.GetAspectsFromSlottedCards(showElementAspects);
         }
 
-        public IAspectsDictionary GetAspectsFromAllSlottedElements() {
+        public IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true) {
             var slottedAspects = new AspectsDictionary();
-            slottedAspects.CombineAspects(startingSlots.GetAspectsFromSlottedCards());
-            slottedAspects.CombineAspects(ongoing.GetAspectsFromSlottedCards());
+            slottedAspects.CombineAspects(startingSlots.GetAspectsFromSlottedCards(showElementAspects));
+            slottedAspects.CombineAspects(ongoing.GetAspectsFromSlottedCards(showElementAspects));
             return slottedAspects;
         }
+
+        public IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects = true) {
+            return GetStorageStacksManager().GetTotalAspects(showElementAspects);
+        }
+
 
 
 

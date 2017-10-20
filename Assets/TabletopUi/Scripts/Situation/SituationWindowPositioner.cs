@@ -78,7 +78,6 @@ namespace Assets.CS.TabletopUI {
 
             // We have an offset? Shift the window position!
             if (outOfBoundsOffset.x != 0f || outOfBoundsOffset.y != 0f) {
-                Debug.Log("Offset to put back " + outOfBoundsOffset.x + ", " + outOfBoundsOffset.y);
                 var screenPos = GetScreenPosFromWorld(worldPos);
                 screenPos += outOfBoundsOffset;
                 return GetWorldPosFromScreen(screenPos);

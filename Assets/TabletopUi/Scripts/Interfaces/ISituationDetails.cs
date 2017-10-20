@@ -25,7 +25,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
 
         void DisplayAspects(IAspectsDictionary forAspects);
-        IAspectsDictionary GetAspectsFromAllSlottedElements();
+        IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
 
         void SetOutput(List<IElementStack> stacks,INotification notification);
         void SetUnstarted();
@@ -40,6 +40,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IEnumerable<IElementStack> GetOutputStacks();
 
         void StoreStacks(IEnumerable<IElementStack> stacksToStore);
+        void DisplayStoredElements();
 
         IElementStacksManager GetStorageStacksManager();
 

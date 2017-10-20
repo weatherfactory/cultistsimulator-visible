@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class AspectFrame : MonoBehaviour,IPointerClickHandler
+public class AspectFrame : MonoBehaviour, IPointerClickHandler
 {
     public int Quantity;
     private Element aspect=null;

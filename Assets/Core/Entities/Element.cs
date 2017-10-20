@@ -32,9 +32,11 @@ public class Element
         get
         {
             IAspectsDictionary aspectsIncludingElementItself =new AspectsDictionary();
+
             foreach(string k in Aspects.Keys)
                 aspectsIncludingElementItself.Add(k,Aspects[k]);
-            if(!aspectsIncludingElementItself.ContainsKey(Id))
+
+            if (!aspectsIncludingElementItself.ContainsKey(Id))
                 aspectsIncludingElementItself.Add(Id,1);
             
             return aspectsIncludingElementItself;

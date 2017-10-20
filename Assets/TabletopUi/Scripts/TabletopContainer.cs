@@ -16,6 +16,7 @@ using Noon;
 public class TabletopContainer : MonoBehaviour, ITokenContainer {
 
     public void TokenPickedUp(DraggableToken draggableToken) {
+        draggableToken.lastTablePos = draggableToken.transform.position;
         // Do nothing.
     }
 

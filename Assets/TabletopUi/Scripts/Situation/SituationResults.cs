@@ -44,16 +44,15 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     }
 
     public void TokenDropped(DraggableToken draggableToken) {
-        // Did we just drop the last available token? Then reset the state of the window
-        // TODO: Should we do this in the controller instead? via StartingSlotsUpdated()?
+        // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
 
-        if (!stacks.Any()) { 
-            window.SetUnstarted();
+        if (!stacks.Any()) {
+            controller.SituationHasBeenReset();
             return;
         }
 
-        //TODO: do some uncovering & repositioning here
+        // Do some uncovering & repositioning here
         cardPos.ReorderCards(stacks);
     }
 

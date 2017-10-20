@@ -20,7 +20,7 @@ public interface IElementStacksManager {
     int IncreaseElement(string elementId, int quantityChange, string locatorId = null);
     int GetCurrentElementQuantity(string elementId);
     IDictionary<string, int> GetCurrentElementTotals();
-    AspectsDictionary GetTotalAspects();
+    AspectsDictionary GetTotalAspects(bool showElementAspects = true);
     IEnumerable<IElementStack> GetStacks();
     void AcceptStack(IElementStack stack);
     void AcceptStacks(IEnumerable<IElementStack> stacks);
@@ -96,11 +96,12 @@ public class ElementStacksManager : IElementStacksManager {
     /// All the aspects in all the stacks, summing the aspects
     /// </summary>
     /// <returns></returns>
-    public AspectsDictionary GetTotalAspects() {
+    public AspectsDictionary GetTotalAspects(bool includingSelf = true) {
         AspectsDictionary totals = new AspectsDictionary();
 
         foreach (var elementCard in wrapper.GetStacks()) {
-            var aspects = elementCard.GetAspects();
+            var aspects = elementCard.GetAspects(includingSelf);
+
             foreach (string k in aspects.Keys) {
                 if (totals.ContainsKey(k))
                     totals[k] += aspects[k];

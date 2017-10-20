@@ -98,23 +98,26 @@ namespace Assets.TabletopUi {
         }
 
         public void StartingSlotsUpdated() {
-            IAspectsDictionary startingAspects = situationWindow.GetAspectsFromAllSlottedElements();
-            Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(startingAspects, situationToken.Id, currentCharacter);
+            IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
+            Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter);
 
-            situationWindow.DisplayAspects(startingAspects);
+            IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
+
+            situationWindow.DisplayAspects(aspectsNoElementsSelf);
 
             if (recipeMatchingStartingAspects != null)
                 situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
-            else if (startingAspects.Count > 0)
+            else if (allAspects.Count > 0)
                 situationWindow.DisplayNoRecipeFound();
             else
                 situationWindow.SetUnstarted();
         }
 
         public void OngoingSlotsUpdated() {
-            var allAspects = GetAspectsAvailableToSituation();
+            var allAspects = GetAspectsAvailableToSituation(false);
             situationWindow.DisplayAspects(allAspects);
             var rp = getNextRecipePrediction(allAspects);
+
             if (rp != null && rp.BurnImage != null)
                 BurnImageHere(rp.BurnImage);
 
@@ -128,8 +131,8 @@ namespace Assets.TabletopUi {
             return Situation.GetPrediction(rc);
         }
 
-        private IAspectsDictionary GetAspectsAvailableToSituation() {
-            return situationWindow.GetAspectsFromAllSlottedElements();
+        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects = true) {
+            return situationWindow.GetAspectsFromAllSlottedElements(showElementAspects);
         }
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
@@ -162,6 +165,7 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
+            situationToken.UpdateMiniSlotDisplay(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
             StoreStacks(situationWindow.GetStartingStacks());
@@ -203,17 +207,21 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationComplete() {
-            situationToken.DisplayComplete();
             var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
             SetOutput(stacksToRetrieve.ToList(), notification);
 
-            //This must be run last: it disables (and destroys) any card tokens that have not been moved to outputs
+            //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindow.SetComplete();
+
+            // Now update the token based on the current stacks in the window
+            situationToken.DisplayComplete();
+            situationToken.UpdateMiniSlotDisplay(situationWindow.GetOngoingStacks());
         }
 
         public void SituationHasBeenReset() {
             situationWindow.SetUnstarted();
+            ResetToStartingState();
         }
 
         public void SetOutput(List<IElementStack> stacksForOutput, INotification notification) {
@@ -229,6 +237,7 @@ namespace Assets.TabletopUi {
 
             situationWindow.SetSlotConsumptions();
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
+            situationWindow.DisplayStoredElements();
             Situation.Start(recipe);
 
             if (recipe.BurnImage != null)
@@ -243,6 +252,7 @@ namespace Assets.TabletopUi {
 
         public void ModifyStoredElementStack(string elementId, int quantity) {
             situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity);
+            situationWindow.DisplayStoredElements();
         }
 
         public void ResetToStartingState() {
@@ -323,7 +333,15 @@ namespace Assets.TabletopUi {
             - if the situation isn't currently executing and the primary slot contains an element, it's occupied
             - if the situation is currently executing, or the primary slot doesn't contain an element, it's occupied
             */
-            return situationWindow.GetStartingStacks().Any();
+
+            var stacks = situationWindow.GetStartingStacks();
+
+            foreach (var stack in stacks) {
+                if (!stack.Defunct)
+                    return true;
+            }
+
+            return false; 
         }
 
         public void ShowDestinationsForStack(IElementStack stack) {

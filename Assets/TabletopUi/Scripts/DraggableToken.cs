@@ -30,7 +30,8 @@ namespace Assets.CS.TabletopUI
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
         public bool IsSelected { protected set; get; }
-        
+
+        public Vector3? lastTablePos = null; // if it was pulled from the table, save that position
 
         private float perlinRotationPoint = 0f;
         private float dragHeight = -5f;
@@ -105,8 +106,6 @@ namespace Assets.CS.TabletopUI
         }
 
         protected virtual void StartDrag(PointerEventData eventData) {
-
-
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
 
@@ -114,7 +113,7 @@ namespace Assets.CS.TabletopUI
             DraggableToken.resetToStartPos = true;
             DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
-		
+
             startPosition = RectTransform.position;
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
@@ -130,8 +129,6 @@ namespace Assets.CS.TabletopUI
                 onChangeDragState(true);
 
             container.TokenPickedUp(this);
-
-
         }
 
         public void OnDrag (PointerEventData eventData) {
@@ -139,7 +136,7 @@ namespace Assets.CS.TabletopUI
                 MoveObject(eventData);
         }
 
-        public void ReturnToTabletop(INotification reason)
+        public virtual void ReturnToTabletop(INotification reason)
         {
             Registry.Retrieve<TabletopManager>().ArrangeTokenOnTable(this);
             notifier.TokenReturnedToTabletop(this,reason);
@@ -192,16 +189,20 @@ namespace Assets.CS.TabletopUI
 
         private void returnToStartPosition()
         {
-            if(startParent == null)
+            if (startParent == null)
             {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
                 ReturnToTabletop(null);
             }
+            else if (startParent.GetComponent<TabletopContainer>()) {
+                //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
+                ReturnToTabletop(null);
+            }
             else
             { 
-            RectTransform.position = startPosition;
-            RectTransform.SetParent(startParent);
-            RectTransform.SetSiblingIndex(startSiblingIndex);
+                RectTransform.position = startPosition;
+                RectTransform.SetParent(startParent);
+                RectTransform.SetSiblingIndex(startSiblingIndex);
             }
         }
 
