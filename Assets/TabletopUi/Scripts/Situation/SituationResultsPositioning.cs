@@ -23,7 +23,7 @@ namespace Assets.CS.TabletopUI {
 
         public void ReorderCards(IEnumerable<IElementStack> elements) {
             ElementStackToken token;
-            int i = 1;
+            int i = 1; // count starts at 1 for positioning math reasons
             int count = 0;
 
             SetAvailableSpace();
@@ -39,7 +39,14 @@ namespace Assets.CS.TabletopUI {
                     continue;
 
                 (token.transform as RectTransform).anchoredPosition = GetPositionForIndex(i, count);
-                // TODO: Turn over card
+
+                // make sure all look down
+                token.FlipToFaceDown(true);
+
+                // turn over last card
+                if (i == count)
+                    token.FlipToFaceUp();
+
                 i++;
             }
         }

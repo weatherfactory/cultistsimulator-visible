@@ -20,8 +20,8 @@ namespace Assets.CS.TabletopUI
         public static DraggableToken itemBeingDragged;
         public static bool resetToStartPos = false;
         private static Camera dragCamera;
-   
-     
+
+        protected virtual bool AllowDrag { get { return true; } }
         protected Transform startParent;
         protected Vector3 startPosition;
         protected int startSiblingIndex;
@@ -42,7 +42,7 @@ namespace Assets.CS.TabletopUI
         protected ITokenContainer container;
         protected ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
 
-        void Awake() {
+        protected virtual void Awake() {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
         }
@@ -92,7 +92,7 @@ namespace Assets.CS.TabletopUI
 
         bool CanDrag(PointerEventData eventData)
         {
-            if (!container.AllowDrag)
+            if (!container.AllowDrag || !AllowDrag)
                 return false;
 
             if ( itemBeingDragged != null || draggingEnabled == false )

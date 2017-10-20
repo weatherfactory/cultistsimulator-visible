@@ -37,7 +37,6 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
         GetElementStacksManager().AcceptStacks(stacks);
         cardPos.ReorderCards(stacks);
-        // TODO: Arrange things visually here
     }
 
     public void TokenPickedUp(DraggableToken draggableToken) {

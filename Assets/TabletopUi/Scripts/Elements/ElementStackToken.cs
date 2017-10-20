@@ -33,23 +33,86 @@ namespace Assets.CS.TabletopUI
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
+        private bool isFront = true;
+        private Coroutine turnCoroutine;
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
 
-        public void FlipToFaceUp()
-        {
-            Flip(true);
+        protected override bool AllowDrag { get { return isFront && turnCoroutine == null; } } // no dragging while not front or busy turning
+
+        protected override void Awake() {
+            base.Awake();
+            /*
+            decayCountText.enableCulling = true;
+            stackCountText.enableCulling = true;
+            text.enableCulling = true;
+            */
         }
 
-        public void FlipToFaceDown()
+        public void SetBackface(string backId) {
+            Sprite sprite;
+            if (string.IsNullOrEmpty(backId))
+                sprite = null;
+            else
+                sprite = ResourcesManager.GetSpriteForCardBack(backId);
+
+            backArtwork.overrideSprite = sprite;
+        }
+
+        #region -- Turn Card ------------------------------------------------------------------------------------
+
+        public void FlipToFaceUp(bool instant = false)
         {
-            Flip(false);
+            Flip(true, instant);
+        }
+
+        public void FlipToFaceDown(bool instant = false)
+        {
+            Flip(false, instant);
         }
         
-        public void Flip(bool toFaceUp)
-        {
-            throw new NotImplementedException();
+        public void Flip(bool state, bool instant = false) {
+            if (isFront == state)
+                return;
+
+            isFront = state;
+
+            if (gameObject.activeInHierarchy == false || instant) {
+                transform.localRotation = GetFrontRotation(isFront);
+                return;
+            }
+
+            if (turnCoroutine != null)
+                StopCoroutine(turnCoroutine);
+
+            turnCoroutine = StartCoroutine(DoTurn());
         }
+
+        Quaternion GetFrontRotation(bool isFront) {
+            return Quaternion.Euler(0f, isFront ? 0f : 180f, 0f);
+        }
+
+        public bool IsFront() {
+            return isFront;
+        }
+
+        IEnumerator DoTurn() {
+            float time = 0f;
+            float targetAngle = isFront ? 0f : 180f;
+            float currentAngle = transform.localEulerAngles.y;
+            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
+                yield return null;
+            }
+
+            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
+            turnCoroutine = null;
+        }
+
+        #endregion
 
         public override string Id
         {

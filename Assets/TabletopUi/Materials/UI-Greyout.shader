@@ -36,7 +36,7 @@ Shader "Custom/UI-Greyout"
 			WriteMask [_StencilWriteMask]
 		}
 
-		Cull Off
+		Cull Back
 		Lighting Off
 		ZWrite Off
 		ZTest [unity_GUIZTestMode]

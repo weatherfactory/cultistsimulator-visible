@@ -29,6 +29,10 @@ using UnityEngine;
         return Resources.Load<Sprite>("ElementArt/" + elementId);
     }
 
+    public static Sprite GetSpriteForCardBack(string backId) {
+        return Resources.Load<Sprite>("cardBacks/" + backId);
+    }
+
     public static Sprite GetSpriteForAspect(string aspectId)
     {
         return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
