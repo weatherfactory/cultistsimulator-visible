@@ -14,6 +14,7 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] RectTransform rect;
         [SerializeField] ScrollRect scrollRect;
+        [SerializeField] Text clickCatcher;
         [SerializeField] Vector2 slotSize = new Vector2(80f, 120f);
         [SerializeField] Vector2 spacing = new Vector2(20f, 20f);
         [SerializeField] Vector2 margin = new Vector2(20f, 40f);
@@ -28,7 +29,11 @@ namespace Assets.CS.TabletopUI {
 
 		void OnEnable() {
 			SetNumPerRow();
-		}
+            float height = GetHeightForSlotCount();
+            SetHeight(height);
+            ToggleScrollOnSize(height);
+
+        }
 
         public void AddSlot(RecipeSlot slot) {
 			if (slot == null)
@@ -106,7 +111,7 @@ namespace Assets.CS.TabletopUI {
             float time = 0f;
             float current = rect.rect.height;
 
-            TurnOnScrollIfLarge(target);
+            ToggleScrollOnSize(target, true); // If we're going to be scrollable at the end of this, turn it on now
 
             while (time < duration) {
                 SetHeight(Mathf.Lerp(current, target, time / duration)); // TODO: Add some nice easing?
@@ -115,24 +120,24 @@ namespace Assets.CS.TabletopUI {
             }
 
             SetHeight(target);
-            TurnOffScrollIfSmall(target);
+            ToggleScrollOnSize(target, false); // if we're not going to be scrollable at the end of this, turn it off now
         }
 
         void SetHeight(float height) {
             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
 
-        void TurnOnScrollIfLarge(float height) {
-            // enable the scrolling if the viewport is larger than the height
-            if (height > scrollRect.viewport.rect.height)
-                scrollRect.vertical = true;
+        void ToggleScrollOnSize(float height, bool? onlyToggleTo = null) {
+            bool toggleTo = height > scrollRect.viewport.rect.height;
+
+            // If we only want to turn off or on, throw us out
+            if (onlyToggleTo != null && toggleTo != onlyToggleTo)
+                return;
+
+            scrollRect.vertical = toggleTo;
+            clickCatcher.enabled = toggleTo;
         }
 
-        void TurnOffScrollIfSmall(float height) {
-            // disable the verticla scrolling if it's smaller than the viewport! this allows us to grab the window in the slot region
-            if (height < scrollRect.viewport.rect.height)
-                scrollRect.vertical = false;
-        }
 
     }
 }
