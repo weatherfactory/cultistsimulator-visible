@@ -15,8 +15,7 @@ using System.Collections;
 
 namespace Assets.CS.TabletopUI
 {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView
-    {
+    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
 
         [SerializeField] Image artwork;
         [SerializeField] Image backArtwork;
@@ -34,7 +33,10 @@ namespace Assets.CS.TabletopUI
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
         private bool isFront = true;
+
         private Coroutine turnCoroutine;
+        private Coroutine animCoroutine;
+        private Coroutine moveCoroutine;
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
 
@@ -49,6 +51,11 @@ namespace Assets.CS.TabletopUI
             */
         }
 
+        protected override void OnDisable() {
+            base.OnDisable();
+            artwork.overrideSprite = null; // this resets any animation frames so we don't get stuck when deactivating mid-anim
+        }
+
         public void SetBackface(string backId) {
             Sprite sprite;
             if (string.IsNullOrEmpty(backId))
@@ -61,16 +68,14 @@ namespace Assets.CS.TabletopUI
 
         #region -- Turn Card ------------------------------------------------------------------------------------
 
-        public void FlipToFaceUp(bool instant = false)
-        {
+        public void FlipToFaceUp(bool instant = false) {
             Flip(true, instant);
         }
 
-        public void FlipToFaceDown(bool instant = false)
-        {
+        public void FlipToFaceDown(bool instant = false) {
             Flip(false, instant);
         }
-        
+
         public void Flip(bool state, bool instant = false) {
             if (isFront == state)
                 return;
@@ -110,6 +115,69 @@ namespace Assets.CS.TabletopUI
 
             transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
             turnCoroutine = null;
+        }
+
+        #endregion
+
+        #region -- Animated Card ------------------------------------------------------------------------------------
+
+        public bool CanAnimate() {
+            if (gameObject.activeInHierarchy == false)
+                return false; // can not animate if deactivated
+
+            // TODO: Add a check to see if the element has any frames/frame time defined in the first place. 
+            // For testing purposes I'm assuming only health is good to go
+            if (Id != "health")
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Trigger an animation on the card
+        /// </summary>
+        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
+        /// <param name="frameCount">How many frames to show. Default is 1</param>
+        /// <param name="frameIndex">At which frame to start. Default is 0</param>
+        public void StartAnimation() {
+            if (!CanAnimate())
+                return;
+
+            if (animCoroutine != null)
+                StopCoroutine(animCoroutine);
+
+            // TODO: pull data from element itself and use that to drive the values below
+            float duration = 0.2f;
+            int frameCount = 1;
+            int frameIndex = 0;
+
+            animCoroutine = StartCoroutine( DoAnim(duration, frameCount, frameIndex) );
+        }
+
+        IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
+            Sprite[] animSprites = new Sprite[frameCount];
+
+            for (int i = 0; i < animSprites.Length; i++) 
+                animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
+
+            float time = 0f;
+            int spriteIndex = -1;
+            int lastSpriteIndex = -1;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                spriteIndex = (frameCount == 1 ? 0 : Mathf.FloorToInt(time / duration * frameCount));
+
+                if (spriteIndex != lastSpriteIndex) {
+                    lastSpriteIndex = spriteIndex;
+                    // Ternary operator since the spriteIndex math will sometimes result in the last frame popping out of range, which is fine.
+                    artwork.overrideSprite = (spriteIndex < animSprites.Length ? animSprites[spriteIndex] : null);
+                }
+                yield return null;
+            }
+
+            // remove anim 
+            artwork.overrideSprite = null;
         }
 
         #endregion
@@ -391,6 +459,8 @@ namespace Assets.CS.TabletopUI
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
         }
 
+
+        // TODO: Move is currently not in use. Shoudl be saved in moveCoroutine so it can be stopped when triggering a new move mid move
 
         IEnumerator DoMove(Vector3 targetPos, float duration) {
             float time = 0f;

@@ -33,8 +33,11 @@ namespace Assets.CS.TabletopUI
         [Header("Tabletop")]
         [SerializeField] public TabletopContainer tabletopContainer;
         [SerializeField] TabletopBackground background;
+        [SerializeField] float timeBetweenAnims = 5f;
+        [SerializeField] float timeBetweenAnimsVariation = 1f;
 
         private TabletopObjectBuilder tabletopObjectBuilder;
+        private float nextAnimTime;
 
         [Header("Drag & Window")]
         [SerializeField] private RectTransform draggableHolderRectTransform;
@@ -60,6 +63,11 @@ namespace Assets.CS.TabletopUI
                 optionsPanel.ToggleVisibility();
 
             UpdateElementOverview();
+
+            if (Time.time >= nextAnimTime) { 
+                TriggerAnimation();
+                SetNextAnimTime();
+            }
         }
 
         public void UpdateCompendium(ICompendium compendium)
@@ -77,6 +85,7 @@ namespace Assets.CS.TabletopUI
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
+            SetNextAnimTime(); // sets the first animation for the tabletop Controller
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
          
@@ -321,6 +330,24 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        void SetNextAnimTime() {
+            nextAnimTime = Time.time + timeBetweenAnims - timeBetweenAnimsVariation + UnityEngine.Random.value * timeBetweenAnimsVariation * 2f;
+        }
+
+        void TriggerAnimation() {
+            // TODO: This should randomly select a token to animate. Currently always picks health. Also only looks at tabletop, not all visible tokens.
+            var manager = tabletopContainer.GetElementStacksManager();
+            var stacks = manager.GetStacks();
+
+            // TODO: pick a random stack instead of iterating over all.
+            foreach (var stack in stacks) {
+                if (!stack.CanAnimate())
+                    continue;
+
+                stack.StartAnimation();
+                return; // only trigger once
+            }
+        }
 
         void HandleOnBackgroundDropped()
         {

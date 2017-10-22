@@ -26,7 +26,11 @@ using UnityEngine;
 
 	public static Sprite GetSpriteForElement(string elementId)
     {
-        return Resources.Load<Sprite>("ElementArt/" + elementId);
+        return Resources.Load<Sprite>("elementArt/" + elementId);
+    }
+
+    public static Sprite GetSpriteForElement(string elementId, int animFrame) {
+        return Resources.Load<Sprite>("elementArt/anim/" + elementId + "_" + animFrame);
     }
 
     public static Sprite GetSpriteForCardBack(string backId) {

@@ -168,7 +168,7 @@ namespace Assets.CS.TabletopUI
                 Invoke ("DelayedEndDrag", 0f);
         }
 
-        void OnDisable() {
+        protected virtual void OnDisable() {
             OnEndDrag(null);
         }
 

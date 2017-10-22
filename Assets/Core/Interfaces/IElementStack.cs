@@ -27,5 +27,8 @@ namespace Assets.Core.Interfaces
         void Decay(float interval);
 
         bool IsFront();
+
+        bool CanAnimate();
+        void StartAnimation();
     }
 }

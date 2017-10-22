@@ -73,6 +73,13 @@ namespace Assets.CS.TabletopUI
             return true;
         }
 
+        public bool CanAnimate() {
+            return false;
+        }
+
+        public void StartAnimation() {
+            // Has no animation
+        }
 
         public Dictionary<string, string> GetXTriggers()
         {
