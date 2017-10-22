@@ -36,7 +36,6 @@ namespace Assets.CS.TabletopUI
 
         private Coroutine turnCoroutine;
         private Coroutine animCoroutine;
-        private Coroutine moveCoroutine;
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
 
@@ -53,11 +52,20 @@ namespace Assets.CS.TabletopUI
 
         protected override void OnDisable() {
             base.OnDisable();
-            artwork.overrideSprite = null; // this resets any animation frames so we don't get stuck when deactivating mid-anim
+
+            // this resets any animation frames so we don't get stuck when deactivating mid-anim
+            artwork.overrideSprite = null; 
+
+            // we're turning? Just set us to the garget
+            if (turnCoroutine != null) {
+                turnCoroutine = null;
+                Flip(isFront, true); // instant to set where it wants to go
+            }
         }
 
         public void SetBackface(string backId) {
             Sprite sprite;
+
             if (string.IsNullOrEmpty(backId))
                 sprite = null;
             else
@@ -77,7 +85,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void Flip(bool state, bool instant = false) {
-            if (isFront == state)
+            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
                 return;
 
             isFront = state;
@@ -370,15 +378,18 @@ namespace Assets.CS.TabletopUI
         public void SplitAllButNCardsToNewStack(int n) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-
                 cardLeftBehind.Populate(Id, Quantity - n);
-                //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
-                SetQuantity(1);
-                cardLeftBehind.transform.position = transform.position;
-                var gateway = container.GetElementStacksManager();
 
                 originStack = cardLeftBehind;
+
+                //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
+                SetQuantity(1);
+
+                var gateway = container.GetElementStacksManager();
                 gateway.AcceptStack(cardLeftBehind);
+
+                // Gateway accepting stack puts it to pos Vector3.zero, so this is last
+                cardLeftBehind.transform.position = transform.position;
             }
         }
 
@@ -460,20 +471,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        // TODO: Move is currently not in use. Shoudl be saved in moveCoroutine so it can be stopped when triggering a new move mid move
 
-        IEnumerator DoMove(Vector3 targetPos, float duration) {
-            float time = 0f;
-            Vector3 startPos = transform.position;
-
-            while (time < duration) {
-                time += Time.deltaTime;
-                Vector3.Lerp(startPos, targetPos, Easing.Back.Out(time / duration));
-                yield return null;
-            }
-
-            transform.position = targetPos;
-        }
 
     }
 }

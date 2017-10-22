@@ -217,7 +217,7 @@ namespace Assets.CS.TabletopUI
                 if (slot.Greedy)
                     ongoingSlotImage.color = UIStyle.slotPink;
                 else
-                    ongoingSlotImage.color = Color.black; 
+                    ongoingSlotImage.color = UIStyle.slotDefault; 
 
                 break; //We assume there's only one SLOT
             }
@@ -228,9 +228,8 @@ namespace Assets.CS.TabletopUI
             //hide the timer: we're done here
             SetTimerVisibility(false);
             ongoingSlotImage.gameObject.SetActive(false);
-            SetCompletionCount(1);
+            SetCompletionCount( SituationController.GetNumOutputCards() );
         }
-
 
         
         public override void OnDrop(PointerEventData eventData)

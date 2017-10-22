@@ -80,6 +80,10 @@ namespace Assets.TabletopUi {
         }
 
         public void OpenSituation() {
+            // Make sure we're unstarted if for some reason we did not reset the window
+            if (Situation.State == SituationState.Unstarted)
+                situationWindow.SetUnstarted();
+
             situationToken.OpenToken();
             situationWindow.Show();
         }
@@ -226,6 +230,24 @@ namespace Assets.TabletopUi {
 
         public void SetOutput(List<IElementStack> stacksForOutput, INotification notification) {
             situationWindow.SetOutput(stacksForOutput, notification);
+        }
+
+        public void UpdateTokenResultsCountBadge() {
+            situationToken.SetCompletionCount(GetNumOutputCards());
+        }
+
+        public int GetNumOutputCards() {
+            int count = 0;
+            var stacks = situationWindow.GetOutputStacks();
+
+            foreach (var item in stacks) {
+                if (item.Defunct)
+                    continue;
+
+                count += item.Quantity;
+            }
+
+            return count;
         }
 
         public void AttemptActivateRecipe() {

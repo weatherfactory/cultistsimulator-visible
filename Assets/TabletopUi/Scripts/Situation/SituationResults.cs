@@ -28,7 +28,7 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     }
 
     public void Reset() {
-        // Clear out the cards that are still here?
+        // TODO: Clear out the cards that are still here?
     }
 
     public void SetOutput(List<IElementStack> stacks) {
@@ -45,8 +45,18 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     public void TokenDropped(DraggableToken draggableToken) {
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
+        bool hasStacks = false;
 
-        if (!stacks.Any()) {
+        foreach (var item in stacks) {
+            if (item != null && item.Defunct == false) { 
+                hasStacks = true;
+                break;
+            }
+        }
+
+        controller.UpdateTokenResultsCountBadge();
+
+        if (!hasStacks) {
             controller.SituationHasBeenReset();
             return;
         }

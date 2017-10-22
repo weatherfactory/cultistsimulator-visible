@@ -65,7 +65,7 @@ namespace Assets.CS.TabletopUI {
             moveTime = 0f;
 
             if (moving == null)
-                StartCoroutine(DoMove(duration));
+                moving = StartCoroutine(DoMove(duration));
         } 
 
         IEnumerator DoMove(float duration) {
@@ -83,6 +83,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             SetPosition(targetPos);
+            moving = null;
         }
 
     }
