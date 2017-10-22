@@ -86,7 +86,7 @@ namespace Assets.TabletopUi {
 
         public void CloseSituation() {
             // This comes first so the token doesn't show a glow when it's being closed
-            if (Situation.State == SituationState.Unstarted) 
+            if (Situation.State == SituationState.Unstarted)
                 situationWindow.DumpAllStartingCardsToDesktop();
 
             situationToken.CloseToken();
@@ -341,7 +341,30 @@ namespace Assets.TabletopUi {
                     return true;
             }
 
-            return false; 
+            return false;
+        }
+
+        public int GetElementCountInSituation(string elementId) {
+            int count = 0;
+
+            count += GetElementCountFromStack(elementId, situationWindow.GetStartingStacks());
+            count += GetElementCountFromStack(elementId, situationWindow.GetOngoingStacks());
+            count += GetElementCountFromStack(elementId, situationWindow.GetStoredStacks());
+            count += GetElementCountFromStack(elementId, situationWindow.GetOutputStacks());
+
+            return count;
+        }
+
+        private int GetElementCountFromStack(string elementId, IEnumerable<IElementStack> stack) {
+            int count = 0;
+
+            foreach (var card in stack) {
+                // This will NOT count cards that are still face down.
+                if (!card.Defunct && card.Id == elementId && card.IsFront())
+                    count += card.Quantity;
+            }
+
+            return count;
         }
 
         public void ShowDestinationsForStack(IElementStack stack) {

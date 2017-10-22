@@ -69,6 +69,10 @@ namespace Assets.CS.TabletopUI
  
         }
 
+        public bool IsFront() {
+            return true;
+        }
+
 
         public Dictionary<string, string> GetXTriggers()
         {

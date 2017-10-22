@@ -24,40 +24,50 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour
-    {
+    public class TabletopManager : MonoBehaviour {
 
-        [Header("Existing Objects")] [SerializeField] public TabletopContainer tabletopContainer;
+        [Header("Game Control")]
+        [SerializeField]
+        private Heart heart;
 
+        [Header("Tabletop")]
+        [SerializeField] public TabletopContainer tabletopContainer;
+        [SerializeField] TabletopBackground background;
+
+        private TabletopObjectBuilder tabletopObjectBuilder;
+
+        [Header("Drag & Window")]
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
-        [SerializeField] TabletopBackground background;
-        [SerializeField] private Heart heart;
+
+        [Header("Options Bar & Notes")]
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Notifier notifier;
-        private TabletopObjectBuilder tabletopObjectBuilder;
         [SerializeField] private OptionsPanel optionsPanel;
-        [SerializeField] private RectTransform viewport;
+        [SerializeField] private ElementOverview elementOverview;
 
+        // A total number of 4 supported by the bar currently. Not more, not fewer
+        private string[] overviewElementIds = new string[] {
+            "health", "passion", "reason", "shilling"
+        };
 
         public void Update()
         {
-
             if (Input.GetKeyDown(KeyCode.Space))
                 TogglePause();
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 optionsPanel.ToggleVisibility();
+
+            UpdateElementOverview();
         }
 
         public void UpdateCompendium(ICompendium compendium)
         {
-            
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
             foreach (var p in contentImporter.GetContentImportProblems())
                 Debug.Log(p.Description);
-            
         }
 
 
@@ -287,6 +297,28 @@ namespace Assets.CS.TabletopUI
             }
 
             return false;
+        }
+
+        void UpdateElementOverview() {
+            // TODO: This does a lot of iterating each frame to grab all cards in play. If possible change this to use the planned "lists" instead
+            // TODO: This is being called every frame in update, if possible only call it when the stacks have changed? Have a global "elements changed" event to call?
+
+            var manager = tabletopContainer.GetElementStacksManager();
+            var situations = tabletopContainer.GetAllSituationTokens();
+            var draggedElementStack = (DraggableToken.itemBeingDragged != null ? DraggableToken.itemBeingDragged as ElementStackToken : null);
+            int count;
+
+            for (int i = 0; i < overviewElementIds.Length; i++) {
+                count = manager.GetCurrentElementQuantity(overviewElementIds[i]);
+
+                foreach (var sit in situations) 
+                    count += sit.SituationController.GetElementCountInSituation(overviewElementIds[i]);
+
+                if (draggedElementStack != null && draggedElementStack.Id == overviewElementIds[i])
+                    count += draggedElementStack.Quantity;
+
+                elementOverview.SetElement(i, overviewElementIds[i], count);
+            }
         }
 
 

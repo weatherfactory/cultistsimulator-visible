@@ -25,5 +25,7 @@ namespace Assets.Core.Interfaces
         bool AllowMerge();
         bool Retire(bool withVFX);
         void Decay(float interval);
+
+        bool IsFront();
     }
 }
