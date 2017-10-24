@@ -38,7 +38,6 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] TextMeshProUGUI countdownText;
 		[SerializeField] Image completionBadge;
 		[SerializeField] TextMeshProUGUI completionText;
-        [SerializeField] GraphicFader glowImage;
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
@@ -73,7 +72,7 @@ namespace Assets.CS.TabletopUI
 			completionText.text = newCount.ToString();
 
             if (newCount > 0) { 
-                SetGlowColor(UIStyle.TokenGlowColor.Blue);
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true);
             }
             else { 
@@ -138,29 +137,6 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        // IGlowableView implementation
-
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
-        }
-
-        public void SetGlowColor(Color color) {
-            glowImage.SetColor(color);
-        }
-
-        public void ShowGlow(bool glowState, bool instant = false) {
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);
-        }
-
-
-
-
-
-
-
         public Hashtable GetSaveDataForSituation()
         {
             return SituationController.GetSaveDataForSituation();
@@ -177,10 +153,12 @@ namespace Assets.CS.TabletopUI
         {
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
                 DisplayOnTable();
-       IsOpen = false;
+
+            IsOpen = false;
+
             if (SituationController.IsSituationOccupied())
             { 
-                SetGlowColor(UIStyle.TokenGlowColor.Pink);
+                SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
                 ShowGlow(true);
             }
         }
@@ -234,8 +212,8 @@ namespace Assets.CS.TabletopUI
         
         public override void OnDrop(PointerEventData eventData)
         {
-            if(DraggableToken.itemBeingDragged!=null)
-            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
+            if (DraggableToken.itemBeingDragged!=null)
+                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
         }
 
         public override void OnPointerClick(PointerEventData eventData)

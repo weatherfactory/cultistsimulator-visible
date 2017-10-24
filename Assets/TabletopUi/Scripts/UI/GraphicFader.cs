@@ -46,6 +46,7 @@ namespace Assets.CS.TabletopUI {
             StopAllCoroutines();
 
             if (instant || durationTurnOn <= 0f) {
+                graphic.gameObject.SetActive(true);
                 SetAlpha(1f);
                 return;
             }

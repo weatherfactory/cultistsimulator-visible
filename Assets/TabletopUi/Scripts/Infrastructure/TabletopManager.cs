@@ -65,7 +65,7 @@ namespace Assets.CS.TabletopUI
             UpdateElementOverview();
 
             if (Time.time >= nextAnimTime) { 
-                TriggerAnimation();
+                TriggerArtAnimation();
                 SetNextAnimTime();
             }
         }
@@ -77,8 +77,7 @@ namespace Assets.CS.TabletopUI
             foreach (var p in contentImporter.GetContentImportProblems())
                 Debug.Log(p.Description);
         }
-
-
+        
         void Start()
         {
             var registry = new Registry();
@@ -96,22 +95,27 @@ namespace Assets.CS.TabletopUI
             registry.Register<INotifier>(notifier);
             registry.Register<Character>(new Character());
 
-
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
+
+            DraggableToken.onChangeDragState += HandleDragStateChanged;
 
             notifier.ShowNotificationWindow("18th JANUARY, 1920","I am a beginning student of the invisible arts. I have only time, hunger, and a little money. Earlier, I made a note in my journal. [Clicking the note, above, will read it.]",30);
 
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
-
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
-             LoadGame();
-                 else
-           SetupNewBoard();
+                LoadGame();
+            else
+                SetupNewBoard();
 
            heart.StartBeating(0.05f);
+        }
+
+        private void OnDestroy() {
+            // Sattic event so make sure to de-init once this object is destroyed
+            DraggableToken.onChangeDragState -= HandleDragStateChanged;
         }
 
         public void SetupNewBoard()
@@ -146,7 +150,6 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-
         public void BeginNewSituation(SituationCreationCommand scc)
         {
             var token = tabletopObjectBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
@@ -166,7 +169,6 @@ namespace Assets.CS.TabletopUI
 		void SituationAnimDone(DraggableToken token) {
 			tabletopContainer.PutOnTable(token);
 		}
-
 
         public void ClearBoard()
         {
@@ -197,6 +199,7 @@ namespace Assets.CS.TabletopUI
                 pauseButton.SetPausedState(false);
             }
         }
+
         public void TogglePause()
         {
           SetPausedState(!heart.IsPaused);
@@ -263,7 +266,6 @@ namespace Assets.CS.TabletopUI
         {
             return tabletopContainer.GetAllSituationTokens();
         }
-
 
         public void ArrangeTokenOnTable(DraggableToken token)
         {
@@ -334,7 +336,7 @@ namespace Assets.CS.TabletopUI
             nextAnimTime = Time.time + timeBetweenAnims - timeBetweenAnimsVariation + UnityEngine.Random.value * timeBetweenAnimsVariation * 2f;
         }
 
-        void TriggerAnimation() {
+        void TriggerArtAnimation() {
             // TODO: This should randomly select a token to animate. Currently always picks health. Also only looks at tabletop, not all visible tokens.
             var manager = tabletopContainer.GetElementStacksManager();
             var stacks = manager.GetStacks();
@@ -344,7 +346,7 @@ namespace Assets.CS.TabletopUI
                 if (!stack.CanAnimate())
                     continue;
 
-                stack.StartAnimation();
+                stack.StartArtAnimation();
                 return; // only trigger once
             }
         }
@@ -373,7 +375,6 @@ namespace Assets.CS.TabletopUI
                 tabletopContainer.CloseAllSituationWindowsExcept(null);
 
         }
-
 
         public void LoadGame()
         {
@@ -415,7 +416,6 @@ namespace Assets.CS.TabletopUI
             heart.ResumeBeating();
         }
 
-
         public void ShowDestinationsForStack(IElementStack stack)
         {
             var openToken = tabletopContainer.GetOpenToken();
@@ -429,6 +429,34 @@ namespace Assets.CS.TabletopUI
             var decayingStacks = tabletopContainer.GetElementStacksManager().GetStacks().Where(s => s.Decays);
             foreach(var d in decayingStacks)
                 d.Decay(interval);
+        }
+
+        private void HandleDragStateChanged(bool isDragging) {
+            var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
+            
+            // not dragging a stack? then do nothing. TabletopContainer was destroyed (end of game?)
+            if (draggedElement == null || tabletopContainer == null)
+                return;
+
+            var tabletopStacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            ElementStackToken token;
+
+            foreach (var stack in tabletopStacks) {
+                if (stack.Id != draggedElement.Id || stack.Defunct)
+                    continue;
+
+                if (!isDragging || stack.AllowMerge()) {
+                    token = stack as ElementStackToken;
+
+                    if (token != null) {
+                        token.SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                        token.ShowGlow(isDragging, false);
+                    }
+                }
+            }
+            
+
+            Debug.Log("Drag State changed to " + isDragging);
         }
     }
 

@@ -77,7 +77,7 @@ namespace Assets.CS.TabletopUI
             return false;
         }
 
-        public void StartAnimation() {
+        public void StartArtAnimation() {
             // Has no animation
         }
 

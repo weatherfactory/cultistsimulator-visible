@@ -20,8 +20,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Image artwork;
         [SerializeField] Image backArtwork;
         [SerializeField] TextMeshProUGUI text;
-        [SerializeField] GraphicFader glowImage;
-        [SerializeField] GameObject stackBadge;
+        [SerializeField] ElementStackBadge stackBadge;
         [SerializeField] TextMeshProUGUI stackCountText;
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
@@ -147,7 +146,7 @@ namespace Assets.CS.TabletopUI
         /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
         /// <param name="frameCount">How many frames to show. Default is 1</param>
         /// <param name="frameIndex">At which frame to start. Default is 0</param>
-        public void StartAnimation() {
+        public void StartArtAnimation() {
             if (!CanAnimate())
                 return;
 
@@ -276,7 +275,6 @@ namespace Assets.CS.TabletopUI
 
         public void Populate(string elementId, int quantity)
         {
-
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
             try
             {
@@ -410,37 +408,19 @@ namespace Assets.CS.TabletopUI
         protected override void StartDrag(PointerEventData eventData)
         {
 			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
-			if (eventData.hovered.Contains(stackBadge) == false) 
+			if (stackBadge.IsHovering() == false) 
             	SplitAllButNCardsToNewStack(1);
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
 
-
             base.StartDrag(eventData);
         }
-        
-        // IGlowableView implementation
-
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
-        }
-
-        public void SetGlowColor(Color color) {
-            glowImage.SetColor(color);
-        }
-
-        public void ShowGlow(bool glowState, bool instant) {
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);                     
-        }
-
 
         public void Decay(float interval)
         {
             if (!Decays)
                 return;
+
             lifetimeRemaining = lifetimeRemaining - interval;
 
             if (lifetimeRemaining < 0)

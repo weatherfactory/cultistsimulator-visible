@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
@@ -11,7 +12,9 @@ namespace Assets.CS.TabletopUI
 {
     [RequireComponent (typeof (RectTransform))]
     [RequireComponent (typeof (CanvasGroup))]
-    public abstract class DraggableToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler, IPointerClickHandler
+    public abstract class DraggableToken : MonoBehaviour, 
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, 
+        IGlowableView, IPointerEnterHandler, IPointerExitHandler
     {
 	
         public static event System.Action<bool> onChangeDragState;
@@ -41,6 +44,8 @@ namespace Assets.CS.TabletopUI
         protected INotifier notifier;
         protected ITokenContainer container;
         protected ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
+
+        [SerializeField] GraphicFader glowImage;
 
         protected virtual void Awake() {
             RectTransform = GetComponent<RectTransform>();
@@ -87,8 +92,6 @@ namespace Assets.CS.TabletopUI
             if (CanDrag(eventData))
                 StartDrag(eventData);
         }
-
-        
 
         bool CanDrag(PointerEventData eventData)
         {
@@ -173,7 +176,6 @@ namespace Assets.CS.TabletopUI
         }
 
         protected virtual void DelayedEndDrag() {
-            DraggableToken.itemBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
 		
             if (DraggableToken.resetToStartPos) 
@@ -185,6 +187,9 @@ namespace Assets.CS.TabletopUI
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
+
+            // Last call so that when the event hits it's still available
+            DraggableToken.itemBeingDragged = null;
         }
 
         private void returnToStartPosition()
@@ -231,6 +236,7 @@ namespace Assets.CS.TabletopUI
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
         }
+
         public void DisplayInAir()
         {
             transform.SetAsLastSibling();
@@ -238,6 +244,57 @@ namespace Assets.CS.TabletopUI
 
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, windowZOffset);
             RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
+        }
+
+        // Hover & Glow
+
+        public virtual void OnPointerEnter(PointerEventData eventData) {
+            ShowHoverGlow(true);
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData) {
+            ShowHoverGlow(false);
+        }
+
+        public virtual void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+         }
+
+        bool lastGlowState;
+        Color lastGlowColor;
+
+        public virtual void SetGlowColor(Color color) {
+            glowImage.SetColor(color);
+            lastGlowColor = color;
+        }
+
+        public virtual void ShowGlow(bool glowState, bool instant = false) {
+            lastGlowState = glowState;
+
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);
+        }
+
+        // Separate method from ShowGlow so we can restore the last state when unhovering
+        protected virtual void ShowHoverGlow(bool show) {
+            // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
+            if (DraggableToken.itemBeingDragged != null && !lastGlowState)
+                show = false;
+
+            if (show) { 
+                glowImage.SetColor(UIStyle.GetGlowColor(UIStyle.TokenGlowColor.Hover));
+                glowImage.Show(true);
+            }
+            else {
+                glowImage.SetColor(lastGlowColor);
+
+                if (lastGlowState)
+                    glowImage.Show(true);
+                else
+                    glowImage.Hide(true);
+            }
         }
 
     }

@@ -29,6 +29,6 @@ namespace Assets.Core.Interfaces
         bool IsFront();
 
         bool CanAnimate();
-        void StartAnimation();
+        void StartArtAnimation();
     }
 }

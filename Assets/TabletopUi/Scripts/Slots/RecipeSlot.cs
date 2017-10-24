@@ -24,7 +24,8 @@ namespace Assets.CS.TabletopUI {
         bool Retire();
 
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, ITokenContainer, IPointerClickHandler, IGlowableView {
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, ITokenContainer, IPointerClickHandler, 
+        IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action<RecipeSlot, IElementStack> onCardDropped;
         public event System.Action<IElementStack> onCardPickedUp;
         public SlotSpecification GoverningSlotSpecification { get; set; }
@@ -84,6 +85,16 @@ namespace Assets.CS.TabletopUI {
 
         // IGlowableView implementation
 
+        bool lastGlowState;
+
+        public virtual void OnPointerEnter(PointerEventData eventData) {
+            ShowHoverGlow(true);
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData) {
+            ShowHoverGlow(false);
+        }
+
         public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
             SetGlowColor(UIStyle.GetGlowColor(colorType));
         }
@@ -93,15 +104,26 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ShowGlow(bool glowState, bool instant) {
-            if (glowState) {
+            lastGlowState = glowState;
+
+            if (glowState) 
                 slotGlow.Show(instant);
-                //border.color = UIStyle.slotPink;
-            }
-            else {
+            else
                 slotGlow.Hide(instant);
-                //border.color = UIStyle.slotDefault;
-            }
         }
+
+        // Separate method from ShowGlow so we can restore the last state when unhovering
+        protected virtual void ShowHoverGlow(bool show) {
+            // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
+            if (DraggableToken.itemBeingDragged == null && !lastGlowState)
+                return;
+
+            if (show)
+                SetGlowColor(UIStyle.TokenGlowColor.Hover);
+            else 
+                SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+        }
+
 
         public bool HasChildSlots() {
             if (childSlots == null)
