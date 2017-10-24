@@ -11,7 +11,7 @@ namespace Assets.CS.TabletopUI {
     public class SituationWindowPositioner : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
         public bool canDrag = true;
-        public Transform token;
+        Transform token;
 
         static SituationWindowPositioner windowBeingDragged;
         
@@ -90,8 +90,8 @@ namespace Assets.CS.TabletopUI {
         Vector2 GetScreenPosOffsetForCornerOverlap(Vector3 pos) {
             float xBoundUpper = Screen.width - 50f;
             float xBoundLower = 0f + 50f;
-            float yBoundUpper = Screen.height - 20f;
-            float yBoundLower = 0f + 100f; // higher than upper because of bottom button bar
+            float yBoundUpper = Screen.height - 30f; 
+            float yBoundLower = 0f + 80f; // more margin than other y-end because of status bar
 
             Vector2 offset = Vector2.zero;
             var corners = GetCornerPos(pos);
