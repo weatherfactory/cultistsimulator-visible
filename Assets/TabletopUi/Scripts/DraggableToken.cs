@@ -102,7 +102,7 @@ namespace Assets.CS.TabletopUI
                 return false;
 		
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if ( eventData.pointerId < -1 ) 
+            if (eventData != null && eventData.pointerId < -1 ) 
                 return false;
 
             return true;
@@ -281,6 +281,9 @@ namespace Assets.CS.TabletopUI
         protected virtual void ShowHoverGlow(bool show) {
             // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
             if (DraggableToken.itemBeingDragged != null && !lastGlowState)
+                show = false;
+            // If we can not drag, don't show the hover highlight
+            else if (!container.AllowDrag || !AllowDrag)
                 show = false;
 
             if (show) { 

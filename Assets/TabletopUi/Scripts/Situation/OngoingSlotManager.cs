@@ -60,7 +60,7 @@ namespace Assets.CS.TabletopUI {
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public void ShowStoredElements(IEnumerable<IElementStack> stacks) {
+        public void ShowStoredAspects(IEnumerable<IElementStack> stacks) {
             int i = 0;
 
             var aspectFrames = storedCardsLayout.GetComponentsInChildren<AspectFrame>();

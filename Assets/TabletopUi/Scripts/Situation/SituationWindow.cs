@@ -192,7 +192,7 @@ namespace Assets.CS.TabletopUI {
 		}
 
         public void DisplayStoredElements() {
-            ongoing.ShowStoredElements(GetStoredStacks());
+            ongoing.ShowStoredAspects(GetStoredStacks());
         }
 
         public void DisplayRecipeHint(string hint) {
