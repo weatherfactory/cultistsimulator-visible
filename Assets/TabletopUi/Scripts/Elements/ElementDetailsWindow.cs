@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Assets.CS.TabletopUI
 {
@@ -18,19 +19,27 @@ namespace Assets.CS.TabletopUI
         [SerializeField] AspectsDisplay aspectsDisplay;
         [SerializeField] private CanvasGroupFader canvasGroupFader;
 
-        public void Awake()
-        {
-            Invoke("Hide", 10);
+        const float waitTime = 10f;
+        float time;
+        bool coroutineIsStarted;
+        
+        public void Show() {
+            canvasGroupFader.gameObject.SetActive(false);
+            canvasGroupFader.Show();
         }
 
         public void SetElementCard(Element element) {
-
-         var elementSprite= ResourcesManager.GetSpriteForElement(element.Id);
+             var elementSprite= ResourcesManager.GetSpriteForElement(element.Id);
             artwork.sprite = elementSprite;
-         title.text = element.Label;
+            title.text = element.Label;
             description.text = element.Description; 
-          aspectsDisplay.DisplayAspects(element.Aspects);
+            aspectsDisplay.DisplayAspects(element.Aspects);
+            time = 0f; // Resets the time for the deactivation whenever a new card is shown
 
+            if (!coroutineIsStarted) {
+                coroutineIsStarted = true;
+                StartCoroutine(DoWaitForHide());
+            }
         }
 
         string GetSlotsText(List<SlotSpecification> slots) { // THis could be in a TOString methodto be more accessible where it's needed?
@@ -88,12 +97,20 @@ namespace Assets.CS.TabletopUI
             return stringBuilder.ToString();
         }
 
-        public void Hide() {
-          canvasGroupFader.Hide();
+        IEnumerator DoWaitForHide() {
+            while (time < waitTime) {
+                time += Time.deltaTime;
+                yield return null;
+            }
+
+            Hide();
         }
 
-        public void OnPointerClick(PointerEventData eventData)
-        {
+        public void Hide() {
+            canvasGroupFader.Hide();
+        }
+
+        public void OnPointerClick(PointerEventData eventData){
             Hide();
         }
     }

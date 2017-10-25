@@ -20,6 +20,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         private TabletopImageBurner tabletopBurner;
 
+        private ElementDetailsWindow currentElementDetails;
+
         public void DebugLog(string text)
         {
             Debug.Log(text);
@@ -34,8 +36,12 @@ namespace Assets.CS.TabletopUI
         }
 
         public void ShowElementDetails(Element element) {
-            var detailWindow = BuildElementDetailsWindow();
-            detailWindow.SetElementCard(element);
+            if (currentElementDetails == null) { 
+                currentElementDetails = BuildElementDetailsWindow();
+                currentElementDetails.Show();
+            }
+
+            currentElementDetails.SetElementCard(element);
         }
 
         private ElementDetailsWindow BuildElementDetailsWindow() {
