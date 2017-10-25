@@ -100,6 +100,11 @@ namespace Assets.CS.TabletopUI {
             Destroy(gameObject);
         }
 
+        // to be accessable from Close Button
+        public void Close() {
+            situationController.CloseSituation();
+        }
+
         // BASIC DISPLAY
 
         public void Show() {
@@ -259,7 +264,8 @@ namespace Assets.CS.TabletopUI {
         */
 
         public void DumpAllStartingCardsToDesktop() {
-            DumpToDesktop(GetStartingStacks());
+            if (situationController.Situation.State == SituationState.Unstarted)
+                DumpToDesktop(GetStartingStacks());
         }
 
         void DumpToDesktop(IEnumerable<IElementStack> stacks) {

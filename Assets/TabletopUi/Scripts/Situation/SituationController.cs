@@ -90,9 +90,7 @@ namespace Assets.TabletopUi {
 
         public void CloseSituation() {
             // This comes first so the token doesn't show a glow when it's being closed
-            if (Situation.State == SituationState.Unstarted)
-                situationWindow.DumpAllStartingCardsToDesktop();
-
+            situationWindow.DumpAllStartingCardsToDesktop(); // only dumps if it can, obv.
             situationToken.CloseToken();
             situationWindow.Hide();
         }
