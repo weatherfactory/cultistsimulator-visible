@@ -58,6 +58,7 @@ namespace Assets.CS.TabletopUI {
                 // make sure all look down
                 // TODO: This still flips left-behind stack cards for a useless anim. Right now no way to tell that it was such a card
                 token.FlipToFaceDown(true);
+                token.ShowGlow(false, true);
 
                 // turn over last card if we're visible
                 if (i == amount && token.gameObject.activeInHierarchy)

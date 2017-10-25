@@ -161,6 +161,9 @@ namespace Assets.CS.TabletopUI
                 SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
                 ShowGlow(true);
             }
+            else {
+                SetCompletionCount(0);
+            }
         }
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)

@@ -367,7 +367,13 @@ namespace Assets.CS.TabletopUI
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
                 SoundManager.PlaySfx("CardPutOnStack");
-                this.Retire(false);
+
+                var token = stackDroppedOn as DraggableToken;
+
+                if (token != null) // make sure the glow is done in case we highlighted this
+                    token.ShowGlow(false, true);
+
+                this.Retire(false);                
             }
         }
 
