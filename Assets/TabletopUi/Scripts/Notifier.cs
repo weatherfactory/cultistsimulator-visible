@@ -41,6 +41,7 @@ namespace Assets.CS.TabletopUI
                 currentElementDetails.Show();
             }
 
+            SoundManager.PlaySfx("SituationWindowShow");
             currentElementDetails.SetElementCard(element);
         }
 
@@ -64,7 +65,6 @@ namespace Assets.CS.TabletopUI
             notification.SetDuration(duration);
             return notification;
         }
-
 
         public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason) {
             if (reason != null)

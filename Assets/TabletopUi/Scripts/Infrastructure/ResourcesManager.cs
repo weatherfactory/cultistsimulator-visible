@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-    public class ResourcesManager: MonoBehaviour
+public class ResourcesManager: MonoBehaviour
     {
+
     public static Sprite GetSpriteForVerb(string verbId)
     {
         var sprite=Resources.Load<Sprite>("icons40/verbs/" + verbId);
@@ -42,16 +43,14 @@ using UnityEngine;
         return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
     }
 
-        public static Sprite GetSpriteForLegacy(string legacyImage)
-        {
-            return Resources.Load<Sprite>("icons100/old_aspects/100" + legacyImage);
-        }
-
-
+    public static Sprite GetSpriteForLegacy(string legacyImage)
+    {
+        return Resources.Load<Sprite>("icons100/old_aspects/100" + legacyImage);
+    }
 
     public static IEnumerable<AudioClip> GetBackgroundMusic()
-        {
-            return Resources.LoadAll<AudioClip>("music/");
-        }
+    {
+        return Resources.LoadAll<AudioClip>("music/");
+    }
 }
 

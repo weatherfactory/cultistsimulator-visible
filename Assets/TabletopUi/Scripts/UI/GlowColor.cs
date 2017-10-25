@@ -4,6 +4,8 @@ using UnityEngine;
 
 public static class UIStyle {
     public enum TokenGlowColor { HighlightPink, Default, Hover }
+    
+    public static Color aspectHover = new Color32(0xDD, 0xDD, 0xDD, 0xFF);
 
     public static Color hoverWhite = new Color32(0xFF, 0xFF, 0xFF, 0xFF);
 
