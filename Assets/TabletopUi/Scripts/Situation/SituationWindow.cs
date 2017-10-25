@@ -105,11 +105,13 @@ namespace Assets.CS.TabletopUI {
         public void Show() {
 			canvasGroupFader.Show();
             positioner.Show(canvasGroupFader.durationTurnOn); // Animates the window
+            SoundManager.PlaySfx("SituationWindowShow");
 		}
 
 		public void Hide() {
 			canvasGroupFader.Hide();
-		}
+            SoundManager.PlaySfx("SituationWindowHide");
+        }
 
         // Start State
 
@@ -178,7 +180,9 @@ namespace Assets.CS.TabletopUI {
             DisplayTimeRemaining(r.Warmup, r.Warmup); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayRecipeHint(null);
 			DisplayButtonState(true);
-		}
+
+            SoundManager.PlaySfx("SituationAvailable");
+        }
 
 		public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;

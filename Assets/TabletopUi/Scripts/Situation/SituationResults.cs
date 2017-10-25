@@ -40,6 +40,7 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     }
 
     public void TokenPickedUp(DraggableToken draggableToken) {
+        draggableToken.lastTablePos = draggableToken.transform.position;
     }
 
     public void TokenDropped(DraggableToken draggableToken) {

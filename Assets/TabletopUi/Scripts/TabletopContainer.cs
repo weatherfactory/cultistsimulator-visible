@@ -17,11 +17,9 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
 
     public void TokenPickedUp(DraggableToken draggableToken) {
         draggableToken.lastTablePos = draggableToken.transform.position;
-        // Do nothing.
     }
 
     public void TokenDropped(DraggableToken draggableToken) {
-        // Do nothing.
     }
 
     public IEnumerable<ISituationAnchor> GetAllSituationTokens() {
@@ -47,7 +45,6 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
     }
 
     public void PutOnTable(DraggableToken token) {
-
         GetTokenTransformWrapper().Accept(token);
 
         token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);

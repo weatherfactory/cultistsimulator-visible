@@ -365,6 +365,8 @@ namespace Assets.CS.TabletopUI
                 //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
                 DraggableToken.itemBeingDragged.DisplayOnTable();
                 tabletopContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
+
+                SoundManager.PlaySfx("CardDrop");
             }
         }
 
@@ -454,9 +456,6 @@ namespace Assets.CS.TabletopUI
                     }
                 }
             }
-            
-
-            Debug.Log("Drag State changed to " + isDragging);
         }
     }
 

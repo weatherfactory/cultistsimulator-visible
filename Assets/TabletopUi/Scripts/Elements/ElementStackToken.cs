@@ -209,7 +209,6 @@ namespace Assets.CS.TabletopUI
             get { return _quantity; }
         }
 
-        public bool Defunct { get; private set; }
         public bool MarkedForConsumption { get; set; }
 
 
@@ -223,7 +222,6 @@ namespace Assets.CS.TabletopUI
             }
             DisplayInfo();
         }
-
 
         public Dictionary<string, string> GetXTriggers()
         {

@@ -103,6 +103,11 @@ public class SoundManager : AudioManager {
     public static int PlaySfx(string name) {
         if (Instance == null)
             return -1;
+
+#if DEBUG
+        Debug.Log("Playing SFX " + name);
+#endif
+
         return Instance.PlaySound(name, -1);
     }
 

@@ -175,7 +175,6 @@ namespace Assets.CS.TabletopUI {
 
         public void TokenPickedUp(DraggableToken draggableToken) {
             onCardPickedUp(draggableToken as IElementStack);
-            SoundManager.PlaySfx("CardTakeFromSlot");
         }
 
         public void TokenDropped(DraggableToken draggableToken) {

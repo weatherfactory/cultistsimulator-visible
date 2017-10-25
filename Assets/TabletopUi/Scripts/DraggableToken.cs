@@ -24,6 +24,7 @@ namespace Assets.CS.TabletopUI
         public static bool resetToStartPos = false;
         private static Camera dragCamera;
 
+        public bool Defunct { get; protected set; }
         protected virtual bool AllowDrag { get { return true; } }
         protected Transform startParent;
         protected Vector3 startPosition;
@@ -128,6 +129,8 @@ namespace Assets.CS.TabletopUI
             RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
             dragOffset = startPosition - pressPos;
 
+            SoundManager.PlaySfx("CardPickup");
+
             if (onChangeDragState != null)
                 onChangeDragState(true);
 
@@ -167,12 +170,12 @@ namespace Assets.CS.TabletopUI
         {
             // This delays by one frame, because disabling and setting parent in the same frame causes issues
             // Also helps to avoid dropping and picking up in the same click
-            if (itemBeingDragged == this)
+            if (itemBeingDragged == this && eventData != null)
                 Invoke ("DelayedEndDrag", 0f);
         }
 
         protected virtual void OnDisable() {
-            OnEndDrag(null);
+            //OnEndDrag(null);
         }
 
         protected virtual void DelayedEndDrag() {
@@ -192,19 +195,20 @@ namespace Assets.CS.TabletopUI
             DraggableToken.itemBeingDragged = null;
         }
 
-        private void returnToStartPosition()
-        {
-            if (startParent == null)
-            {
+        private void returnToStartPosition() {
+            if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
                 ReturnToTabletop(null);
+                return; // no sound on new token
             }
-            else if (startParent.GetComponent<TabletopContainer>()) {
+
+            SoundManager.PlaySfx("CardDragFail");
+
+            if (startParent.GetComponent<TabletopContainer>()) {
                 //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
                 ReturnToTabletop(null);
             }
-            else
-            { 
+            else {
                 RectTransform.position = startPosition;
                 RectTransform.SetParent(startParent);
                 RectTransform.SetSiblingIndex(startSiblingIndex);
@@ -226,6 +230,7 @@ namespace Assets.CS.TabletopUI
         public virtual bool Retire()
         {
             Destroy(gameObject);
+            Defunct = true;
             return true;
         }
 
@@ -286,7 +291,8 @@ namespace Assets.CS.TabletopUI
             else if (!container.AllowDrag || !AllowDrag)
                 show = false;
 
-            if (show) { 
+            if (show) {
+                SoundManager.PlaySfx("TokenHover");
                 glowImage.SetColor(UIStyle.GetGlowColor(UIStyle.TokenGlowColor.Hover));
                 glowImage.Show(true);
             }
