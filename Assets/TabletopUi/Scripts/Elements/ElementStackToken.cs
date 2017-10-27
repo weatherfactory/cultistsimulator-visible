@@ -373,6 +373,8 @@ namespace Assets.CS.TabletopUI
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
 
+                // we're destroying the token so it never throws an onDropped and it's container was not changed, so tell the current container, not the old.
+                this.container.TokenDropped(this);
                 this.Retire(false);                
             }
         }
