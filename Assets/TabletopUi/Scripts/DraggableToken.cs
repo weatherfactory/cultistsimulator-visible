@@ -195,6 +195,18 @@ namespace Assets.CS.TabletopUI
             DraggableToken.itemBeingDragged = null;
         }
 
+        // In case the object is destroyed
+        protected virtual void AbortDrag() {
+            if (itemBeingDragged != this)
+                return;
+
+            if (onChangeDragState != null)
+                onChangeDragState(false);
+
+            // Last call so that when the event hits it's still available
+            DraggableToken.itemBeingDragged = null;
+        }
+
         private void returnToStartPosition() {
             if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places

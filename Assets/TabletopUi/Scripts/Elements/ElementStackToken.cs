@@ -253,6 +253,7 @@ namespace Assets.CS.TabletopUI
                 return false;
 
             Defunct = true;
+            AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
             if (withVFX && gameObject.activeInHierarchy)
             {
@@ -353,6 +354,13 @@ namespace Assets.CS.TabletopUI
             //remove any suitability glows
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
             base.OnEndDrag(eventData);
+        }
+
+        protected override void AbortDrag() {
+            if (itemBeingDragged == this)
+                Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
+
+            base.AbortDrag();
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
