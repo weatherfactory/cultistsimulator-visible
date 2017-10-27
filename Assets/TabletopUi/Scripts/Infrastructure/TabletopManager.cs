@@ -38,6 +38,7 @@ namespace Assets.CS.TabletopUI
 
         private TabletopObjectBuilder tabletopObjectBuilder;
         private float nextAnimTime;
+        private string lastAnimID; // to not animate the same twice. Keep palyer on their toes
 
         [Header("Drag & Window")]
         [SerializeField] private RectTransform draggableHolderRectTransform;
@@ -341,13 +342,17 @@ namespace Assets.CS.TabletopUI
             var manager = tabletopContainer.GetElementStacksManager();
             var stacks = manager.GetStacks();
 
-            // TODO: pick a random stack instead of iterating over all.
-            foreach (var stack in stacks) {
-                if (!stack.CanAnimate())
-                    continue;
+            var animatableStacks = new List<IElementStack>();
 
-                stack.StartArtAnimation();
-                return; // only trigger once
+            foreach (var stack in stacks) 
+                if (stack.CanAnimate() && stack.Id != lastAnimID)
+                    animatableStacks.Add(stack);
+
+            if (animatableStacks.Count > 0) {
+                int index = UnityEngine.Random.Range(0, animatableStacks.Count);
+
+                animatableStacks[index].StartArtAnimation();
+                lastAnimID = animatableStacks[index].Id;
             }
         }
 

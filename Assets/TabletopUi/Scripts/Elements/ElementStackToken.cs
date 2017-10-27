@@ -131,13 +131,8 @@ namespace Assets.CS.TabletopUI
         public bool CanAnimate() {
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
-
-            // TODO: Add a check to see if the element has any frames/frame time defined in the first place. 
-            // For testing purposes I'm assuming only health is good to go
-            if (Id != "health")
-                return false;
-
-            return true;
+            
+            return _element.AnimFrames > 0;
         }
 
         /// <summary>
@@ -155,7 +150,7 @@ namespace Assets.CS.TabletopUI
 
             // TODO: pull data from element itself and use that to drive the values below
             float duration = 0.2f;
-            int frameCount = 1;
+            int frameCount = _element.AnimFrames;
             int frameIndex = 0;
 
             animCoroutine = StartCoroutine( DoAnim(duration, frameCount, frameIndex) );

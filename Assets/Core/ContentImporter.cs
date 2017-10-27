@@ -23,6 +23,7 @@ public class ContentImporter
     private const string CONST_LABEL = "label";
     private const string CONST_LIFETIME = "lifetime";
     private const string CONST_DESCRIPTION = "description";
+    private const string CONST_ANIMFRAMES = "animFrames";
     private const string CONST_ISASPECT = "isAspect";
     public ICompendium _compendium { get; private set; }
 
@@ -133,7 +134,8 @@ public class ContentImporter
 
             Element element = new Element(htElement.GetString(CONST_ID),
                 htElement.GetString(CONST_LABEL),
-                htElement.GetString(CONST_DESCRIPTION));
+                htElement.GetString(CONST_DESCRIPTION),
+                htElement.GetInt(CONST_ANIMFRAMES));
             try
             {
 
