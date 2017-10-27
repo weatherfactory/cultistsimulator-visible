@@ -103,6 +103,7 @@ public class SoundManager : AudioManager {
     public static int PlaySfx(string name) {
         if (Instance == null)
             return -1;
+
         return Instance.PlaySound(name, -1);
     }
 

@@ -23,7 +23,7 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI
 {
 
-    public class SituationToken : DraggableToken,ISituationAnchor, IGlowableView
+    public class SituationToken : DraggableToken, ISituationAnchor, IGlowableView
     {
 
         [SerializeField] Image artwork;
@@ -38,8 +38,6 @@ namespace Assets.CS.TabletopUI
 		[SerializeField] TextMeshProUGUI countdownText;
 		[SerializeField] Image completionBadge;
 		[SerializeField] TextMeshProUGUI completionText;
-        [SerializeField] GraphicFader glowImage;
-
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
@@ -53,7 +51,6 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOpen = false;
-
         public bool IsTransient { get { return _verb.Transient; } }
 
         public override string Id
@@ -70,13 +67,12 @@ namespace Assets.CS.TabletopUI
 			countdownBadge.gameObject.SetActive(b);
         }
 
-
 		public void SetCompletionCount(int newCount) {
 			completionBadge.gameObject.SetActive(newCount > 0);
 			completionText.text = newCount.ToString();
 
             if (newCount > 0) { 
-                SetGlowColor(UIStyle.TokenGlowColor.Blue);
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true);
             }
             else { 
@@ -141,29 +137,6 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        // IGlowableView implementation
-
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
-        }
-
-        public void SetGlowColor(Color color) {
-            glowImage.SetColor(color);
-        }
-
-        public void ShowGlow(bool glowState, bool instant = false) {
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);
-        }
-
-
-
-
-
-
-
         public Hashtable GetSaveDataForSituation()
         {
             return SituationController.GetSaveDataForSituation();
@@ -180,20 +153,29 @@ namespace Assets.CS.TabletopUI
         {
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
                 DisplayOnTable();
-       IsOpen = false;
+
+            IsOpen = false;
+
             if (SituationController.IsSituationOccupied())
             { 
-                SetGlowColor(UIStyle.TokenGlowColor.Pink);
+                SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
                 ShowGlow(true);
             }
-
+            else {
+                SetCompletionCount(0);
+            }
         }
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)
         {
-            var stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
+            IElementStack stack;
 
-            if(stack==null)
+            if (stacksInOngoingSlots != null)
+                stack = stacksInOngoingSlots.SingleOrDefault(); //THERE CAN BE ONLY ONE (currently)
+            else
+                stack = null;
+
+            if (stack == null)
             {
                 ongoingSlotArtImage.sprite = null;
                 ongoingSlotArtImage.color = Color.black;
@@ -214,9 +196,9 @@ namespace Assets.CS.TabletopUI
 
             foreach (var slot in ongoingSlots) {
                 if (slot.Greedy)
-                    ongoingSlotImage.color = new Color32(0x94, 0xE2, 0xEF, 0xFF);
+                    ongoingSlotImage.color = UIStyle.slotPink;
                 else
-                    ongoingSlotImage.color = Color.black; 
+                    ongoingSlotImage.color = UIStyle.slotDefault; 
 
                 break; //We assume there's only one SLOT
             }
@@ -227,15 +209,14 @@ namespace Assets.CS.TabletopUI
             //hide the timer: we're done here
             SetTimerVisibility(false);
             ongoingSlotImage.gameObject.SetActive(false);
-            SetCompletionCount(1);
+            SetCompletionCount( SituationController.GetNumOutputCards() );
         }
-
 
         
         public override void OnDrop(PointerEventData eventData)
         {
-            if(DraggableToken.itemBeingDragged!=null)
-            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
+            if (DraggableToken.itemBeingDragged!=null)
+                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
         }
 
         public override void OnPointerClick(PointerEventData eventData)

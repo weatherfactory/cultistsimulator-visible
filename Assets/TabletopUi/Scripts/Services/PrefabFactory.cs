@@ -16,7 +16,8 @@ namespace Assets.TabletopUi.Scripts.Services
 {
     class PrefabFactory : MonoBehaviour
     {
-        [Header("Prefabs")] public AspectFrame AspectFrame = null;
+        [Header("Prefabs")]
+        public AspectFrame AspectFrame = null;
         public SituationToken SituationToken = null;
         public ElementStackToken ElementStackToken = null;
         public SituationWindow SituationWindow = null;
@@ -25,7 +26,9 @@ namespace Assets.TabletopUi.Scripts.Services
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationOutputNote SituationOutputNote = null;
-        [Header("Token Subscribers")] [SerializeField] TabletopManager TabletopManager = null;
+
+        [Header("Token Subscribers")]
+        [SerializeField] TabletopManager TabletopManager = null;
 
 
         public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
@@ -53,7 +56,7 @@ namespace Assets.TabletopUi.Scripts.Services
             }
             catch (Exception e)
             {
-                Debug.Log("Couldn't instantiate prefab " + typeof(T));
+                Debug.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
                 return null;
             }
 

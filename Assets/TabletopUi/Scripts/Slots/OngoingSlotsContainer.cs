@@ -16,12 +16,11 @@ namespace Assets.TabletopUi.SlotsContainers
         public void DestroyAllSlots()
         {
             IList<RecipeSlot> currentSlots = GetAllSlots();
-            foreach (var currentSlot in currentSlots)
-            {
-                ClearAndDestroySlot(currentSlot);
-            }
 
-            _situationController.OngoingSlotsUpdated();
+            foreach (var currentSlot in currentSlots)
+                ClearAndDestroySlot(currentSlot);
+
+            controller.OngoingSlotsUpdated();
         }
 
         public void SetUpSlots(IList<SlotSpecification> slotsToBuild)
@@ -37,18 +36,18 @@ namespace Assets.TabletopUi.SlotsContainers
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack)
         {
-            _situationController.OngoingSlotsUpdated();
+            controller.OngoingSlotsUpdated();
         }
 
         public override void RespondToStackPickedUp(IElementStack stack)
         {
-            _situationController.OngoingSlotsUpdated();
+            controller.OngoingSlotsUpdated();
         }
 
 
         public void OnCardPickedUp(DraggableToken draggableToken)
         {
-            _situationController.OngoingSlotsUpdated();
+            controller.OngoingSlotsUpdated();
 
         }
 

@@ -154,10 +154,13 @@ public class Compendium : ICompendium
     public IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command)
     {
         var candidateVerb = GetVerbById(command.Recipe.ActionId);
+
         if (candidateVerb != null)
             return candidateVerb;
-       var createdVerb = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
-      command.Recipe.Description);
+
+        var createdVerb = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
+            command.Recipe.Description);
+
         return createdVerb;
     }
 

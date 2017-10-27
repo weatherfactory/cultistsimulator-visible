@@ -20,6 +20,7 @@ public class Element
     public string Id { get; set; }
     public string Label { get; set; }
     public string Description { get; set; }
+    public int AnimFrames { get; set; }
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
     public float Lifetime { get; set; }
@@ -32,9 +33,11 @@ public class Element
         get
         {
             IAspectsDictionary aspectsIncludingElementItself =new AspectsDictionary();
+
             foreach(string k in Aspects.Keys)
                 aspectsIncludingElementItself.Add(k,Aspects[k]);
-            if(!aspectsIncludingElementItself.ContainsKey(Id))
+
+            if (!aspectsIncludingElementItself.ContainsKey(Id))
                 aspectsIncludingElementItself.Add(Id,1);
             
             return aspectsIncludingElementItself;
@@ -43,11 +46,13 @@ public class Element
 
     
 
-    public Element(string id, string label, string description)
+    public Element(string id, string label, string description, int animFrames)
     {
         Id = id;
         Label = label;
         Description = description;
+        AnimFrames = animFrames;
+
         ChildSlotSpecifications=new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
         XTriggers=new Dictionary<string, string>();

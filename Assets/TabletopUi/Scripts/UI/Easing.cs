@@ -4,8 +4,102 @@
  * Functions taken from Tween.js - Licensed under the MIT license
  * at https://github.com/sole/tween.js
  */
-public class Easing
+public static class Easing
 {
+    public enum EaseType {
+        Linear,
+        QuadraticIn, QuadraticOut, QuadraticInOut,
+        CubicIn, CubicOut, CubicInOut,
+        QuarticIn, QuarticOut, QuarticInOut,
+        QuinticIn, QuinticOut, QuinticInOut,
+        SinusoidalIn, SinusoidalOut, SinusoidalInOut,
+        ExponentialIn, ExponentialOut, ExponentialInOut,
+        CircularIn, CircularOut, CircularInOut,
+        ElasticIn, ElasticOut, ElasticInOut,
+        BackIn, BackOut, BackInOut,
+        BounceIn, BounceOut, BounceInOut
+    }
+
+    public static float Ease(EaseType type, float k) {
+        switch (type) {
+            case EaseType.Linear:
+                return Linear(k);
+
+            case EaseType.QuadraticIn:
+                return Quadratic.In(k);
+            case EaseType.QuadraticOut:
+                return Quadratic.Out(k);
+            case EaseType.QuadraticInOut:
+                return Quadratic.InOut(k);
+
+            case EaseType.CubicIn:
+                return Cubic.In(k);
+            case EaseType.CubicOut:
+                return Cubic.Out(k);
+            case EaseType.CubicInOut:
+                return Cubic.InOut(k);
+
+            case EaseType.QuarticIn:
+                return Quartic.In(k);
+            case EaseType.QuarticOut:
+                return Quartic.Out(k);
+            case EaseType.QuarticInOut:
+                return Quartic.InOut(k);
+
+            case EaseType.QuinticIn:
+                return Quintic.In(k);
+            case EaseType.QuinticOut:
+                return Quintic.Out(k);
+            case EaseType.QuinticInOut:
+                return Quintic.InOut(k);
+
+            case EaseType.SinusoidalIn:
+                return Sinusoidal.In(k);
+            case EaseType.SinusoidalOut:
+                return Sinusoidal.Out(k);
+            case EaseType.SinusoidalInOut:
+                return Sinusoidal.InOut(k);
+
+            case EaseType.ExponentialIn:
+                return Exponential.In(k);
+            case EaseType.ExponentialOut:
+                return Exponential.Out(k);
+            case EaseType.ExponentialInOut:
+                return Exponential.InOut(k);
+
+            case EaseType.CircularIn:
+                return Circular.In(k);
+            case EaseType.CircularOut:
+                return Circular.Out(k);
+            case EaseType.CircularInOut:
+                return Circular.InOut(k);
+
+            case EaseType.ElasticIn:
+                return Elastic.In(k);
+            case EaseType.ElasticOut:
+                return Elastic.Out(k);
+            case EaseType.ElasticInOut:
+                return Elastic.InOut(k);
+
+            case EaseType.BackIn:
+                return Back.In(k);
+            case EaseType.BackOut:
+                return Back.Out(k);
+            case EaseType.BackInOut:
+                return Back.InOut(k);
+
+            case EaseType.BounceIn:
+                return Bounce.In(k);
+            case EaseType.BounceOut:
+                return Bounce.Out(k);
+            case EaseType.BounceInOut:
+                return Bounce.InOut(k);
+
+            default:
+                return k;
+        }
+    }
+
 
 	public static float Linear (float k) {
 		return k;

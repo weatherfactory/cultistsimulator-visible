@@ -32,7 +32,8 @@
             {
                 lantern: CONVENTIONS.QUANTITY_TINY
             },
-            description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
+            animFrames: 1,
+			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
         },	
 			{id: "insomnia",
             label: "Insomnia",
@@ -54,7 +55,8 @@
                 moth: CONVENTIONS.QUANTITY_TINY
             },
             maxvalue:7,
-            description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
+            animFrames: 1,
+			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
         },
         {
             id: "health",
@@ -63,7 +65,8 @@
             {
                 heart: CONVENTIONS.QUANTITY_TINY
             },
-            description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
+            animFrames: 1,
+			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
         },
 		 {
             id: "erudition",

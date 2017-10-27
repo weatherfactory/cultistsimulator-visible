@@ -9,19 +9,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI
 {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView
-    {
+    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
 
         [SerializeField] Image artwork;
         [SerializeField] Image backArtwork;
         [SerializeField] TextMeshProUGUI text;
-        [SerializeField] GraphicFader glowImage;
-        [SerializeField] GameObject stackBadge;
+        [SerializeField] ElementStackBadge stackBadge;
         [SerializeField] TextMeshProUGUI stackCountText;
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
@@ -32,21 +31,158 @@ namespace Assets.CS.TabletopUI
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
+        private bool isFront = true;
 
-        public void FlipToFaceUp()
-        {
-            Flip(true);
+        private Coroutine turnCoroutine;
+        private Coroutine animCoroutine;
+
+        private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
+
+        protected override bool AllowDrag { get { return isFront && turnCoroutine == null; } } // no dragging while not front or busy turning
+
+        protected override void Awake() {
+            base.Awake();
+            /*
+            decayCountText.enableCulling = true;
+            stackCountText.enableCulling = true;
+            text.enableCulling = true;
+            */
         }
 
-        public void FlipToFaceDown()
-        {
-            Flip(false);
+        protected override void OnDisable() {
+            base.OnDisable();
+
+            // this resets any animation frames so we don't get stuck when deactivating mid-anim
+            artwork.overrideSprite = null; 
+
+            // we're turning? Just set us to the garget
+            if (turnCoroutine != null) {
+                turnCoroutine = null;
+                Flip(isFront, true); // instant to set where it wants to go
+            }
         }
-        
-        public void Flip(bool toFaceUp)
-        {
-            throw new NotImplementedException();
+
+        public void SetBackface(string backId) {
+            Sprite sprite;
+
+            if (string.IsNullOrEmpty(backId))
+                sprite = null;
+            else
+                sprite = ResourcesManager.GetSpriteForCardBack(backId);
+
+            backArtwork.overrideSprite = sprite;
         }
+
+        #region -- Turn Card ------------------------------------------------------------------------------------
+
+        public void FlipToFaceUp(bool instant = false) {
+            Flip(true, instant);
+        }
+
+        public void FlipToFaceDown(bool instant = false) {
+            Flip(false, instant);
+        }
+
+        public void Flip(bool state, bool instant = false) {
+            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
+                return;
+
+            isFront = state;
+
+            if (gameObject.activeInHierarchy == false || instant) {
+                transform.localRotation = GetFrontRotation(isFront);
+                return;
+            }
+
+            if (turnCoroutine != null)
+                StopCoroutine(turnCoroutine);
+
+            turnCoroutine = StartCoroutine(DoTurn());
+        }
+
+        Quaternion GetFrontRotation(bool isFront) {
+            return Quaternion.Euler(0f, isFront ? 0f : 180f, 0f);
+        }
+
+        public bool IsFront() {
+            return isFront;
+        }
+
+        IEnumerator DoTurn() {
+            float time = 0f;
+            float targetAngle = isFront ? 0f : 180f;
+            float currentAngle = transform.localEulerAngles.y;
+            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
+                yield return null;
+            }
+
+            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
+            turnCoroutine = null;
+        }
+
+        #endregion
+
+        #region -- Animated Card ------------------------------------------------------------------------------------
+
+        public bool CanAnimate() {
+            if (gameObject.activeInHierarchy == false)
+                return false; // can not animate if deactivated
+            
+            return _element.AnimFrames > 0;
+        }
+
+        /// <summary>
+        /// Trigger an animation on the card
+        /// </summary>
+        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
+        /// <param name="frameCount">How many frames to show. Default is 1</param>
+        /// <param name="frameIndex">At which frame to start. Default is 0</param>
+        public void StartArtAnimation() {
+            if (!CanAnimate())
+                return;
+
+            if (animCoroutine != null)
+                StopCoroutine(animCoroutine);
+
+            // TODO: pull data from element itself and use that to drive the values below
+            float duration = 0.2f;
+            int frameCount = _element.AnimFrames;
+            int frameIndex = 0;
+
+            animCoroutine = StartCoroutine( DoAnim(duration, frameCount, frameIndex) );
+        }
+
+        IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
+            Sprite[] animSprites = new Sprite[frameCount];
+
+            for (int i = 0; i < animSprites.Length; i++) 
+                animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
+
+            float time = 0f;
+            int spriteIndex = -1;
+            int lastSpriteIndex = -1;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                spriteIndex = (frameCount == 1 ? 0 : Mathf.FloorToInt(time / duration * frameCount));
+
+                if (spriteIndex != lastSpriteIndex) {
+                    lastSpriteIndex = spriteIndex;
+                    // Ternary operator since the spriteIndex math will sometimes result in the last frame popping out of range, which is fine.
+                    artwork.overrideSprite = (spriteIndex < animSprites.Length ? animSprites[spriteIndex] : null);
+                }
+                yield return null;
+            }
+
+            // remove anim 
+            artwork.overrideSprite = null;
+        }
+
+        #endregion
 
         public override string Id
         {
@@ -68,7 +204,6 @@ namespace Assets.CS.TabletopUI
             get { return _quantity; }
         }
 
-        public bool Defunct { get; private set; }
         public bool MarkedForConsumption { get; set; }
 
 
@@ -83,7 +218,6 @@ namespace Assets.CS.TabletopUI
             DisplayInfo();
         }
 
-
         public Dictionary<string, string> GetXTriggers()
         {
             return _element.XTriggers;
@@ -92,6 +226,20 @@ namespace Assets.CS.TabletopUI
         public void ModifyQuantity(int change)
         {
             SetQuantity(_quantity + change);
+        }
+
+        public override void ReturnToTabletop(INotification reason) {
+            if (originStack != null && originStack.IsOnTabletop()) {
+                originStack.MergeIntoStack(this);
+                return;
+            }
+
+            base.ReturnToTabletop(reason);
+
+            if (lastTablePos != null)
+                transform.position = (Vector3)lastTablePos;
+            else
+                lastTablePos = transform.position;
         }
 
         public override bool Retire()
@@ -105,6 +253,7 @@ namespace Assets.CS.TabletopUI
                 return false;
 
             Defunct = true;
+            AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
             if (withVFX && gameObject.activeInHierarchy)
             {
@@ -120,7 +269,6 @@ namespace Assets.CS.TabletopUI
 
         public void Populate(string elementId, int quantity)
         {
-
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
             try
             {
@@ -166,9 +314,12 @@ namespace Assets.CS.TabletopUI
                 artwork.color = Color.white;
         }
 
-        public IAspectsDictionary GetAspects()
+        public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
-            return _element.AspectsIncludingSelf;
+            if (includeSelf)
+                return _element.AspectsIncludingSelf;
+            else
+                return _element.Aspects;
         }
 
         public List<SlotSpecification> GetChildSlotSpecifications()
@@ -205,6 +356,13 @@ namespace Assets.CS.TabletopUI
             base.OnEndDrag(eventData);
         }
 
+        protected override void AbortDrag() {
+            if (itemBeingDragged == this)
+                Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
+
+            base.AbortDrag();
+        }
+
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
             if (stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge())
@@ -212,25 +370,43 @@ namespace Assets.CS.TabletopUI
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.resetToStartPos = false;
                 SoundManager.PlaySfx("CardPutOnStack");
-                this.Retire(false);
+
+                var token = stackDroppedOn as DraggableToken;
+
+                if (token != null) // make sure the glow is done in case we highlighted this
+                    token.ShowGlow(false, true);
+
+                // we're destroying the token so it never throws an onDropped and it's container was not changed, so tell the current container, not the old.
+                this.container.TokenDropped(this);
+                this.Retire(false);                
             }
         }
 
-        public void SplitAllButNCardsToNewStack(int n)
-        {
-            if (Quantity > n)
-            {
+        public void SplitAllButNCardsToNewStack(int n) {
+            if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-
                 cardLeftBehind.Populate(Id, Quantity - n);
+
+                originStack = cardLeftBehind;
+
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
-                cardLeftBehind.transform.position = transform.position;
-                var gateway = container.GetElementStacksManager();
 
-               gateway.AcceptStack(cardLeftBehind);
+                var gateway = container.GetElementStacksManager();
+                gateway.AcceptStack(cardLeftBehind);
+
+                // Gateway accepting stack puts it to pos Vector3.zero, so this is last
+                cardLeftBehind.transform.position = transform.position;
             }
-   
+        }
+
+        public bool IsOnTabletop() {
+            return transform.parent.GetComponent<TabletopContainer>() != null;
+        }
+
+        public void MergeIntoStack(ElementStackToken merge) {
+            SetQuantity(Quantity + merge.Quantity);
+            merge.Retire(false);
         }
 
         public bool AllowMerge()
@@ -241,37 +417,19 @@ namespace Assets.CS.TabletopUI
         protected override void StartDrag(PointerEventData eventData)
         {
 			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
-			if (eventData.hovered.Contains(stackBadge) == false) 
+			if (stackBadge.IsHovering() == false) 
             	SplitAllButNCardsToNewStack(1);
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
 
-
             base.StartDrag(eventData);
         }
-        
-        // IGlowableView implementation
-
-        public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
-            SetGlowColor(UIStyle.GetGlowColor(colorType));
-        }
-
-        public void SetGlowColor(Color color) {
-            glowImage.SetColor(color);
-        }
-
-        public void ShowGlow(bool glowState, bool instant) {
-            if (glowState)
-                glowImage.Show(instant);
-            else
-                glowImage.Hide(instant);                     
-        }
-
 
         public void Decay(float interval)
         {
             if (!Decays)
                 return;
+
             lifetimeRemaining = lifetimeRemaining - interval;
 
             if (lifetimeRemaining < 0)
@@ -300,32 +458,6 @@ namespace Assets.CS.TabletopUI
             percentage = Mathf.Clamp01(percentage);
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
         }
-
-
-        // NOTE: THIS IS ALL DEMO TEST CODE SO YOU CAN SEE THE VISUALS
-        //float currentTime = -5f;
-
-        //void Update() {
-        //    float decayDuration = 20f;
-        //    float timeToShowTimer = 10f;
-
-        //    currentTime += Time.deltaTime;
-
-        //    SetCardDecay(currentTime / (decayDuration - timeToShowTimer));
-
-        //    if (currentTime >= decayDuration - timeToShowTimer) {
-        //        ShowCardDecayTimer(true);
-        //        SetCardDecayTime(Mathf.Lerp(timeToShowTimer, 0, Mathf.Abs((currentTime - decayDuration + timeToShowTimer) / timeToShowTimer)));
-        //    }
-        //    else { 
-        //        ShowCardDecayTimer(false);
-        //    }
-
-        //    if (currentTime > decayDuration) {
-        //        Retire(true);
-        //    }
-        //}
-
 
     }
 }

@@ -4,51 +4,76 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Interfaces;
+using Assets.TabletopUi;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
-public class SituationResults : MonoBehaviour
-{
-    [SerializeField] private Transform _outputNotesContainer;
-    [SerializeField] private OutputCardContainer _outputCardContainer;
-    [SerializeField] private SituationWindow situationWindow;
-    
+public class SituationResults : MonoBehaviour, ITokenContainer {
 
-    public void SetOutput(List<IElementStack> stacks,INotification notification) {
-        gameObject.SetActive(true);
-        if(notification!=null)
-        { 
-        var newNote=PrefabFactory.CreateLocally<SituationOutputNote>(_outputNotesContainer);
-        newNote.transform.localPosition = Vector2.zero;
-        newNote.Initialise(notification);
+    public CanvasGroupFader canvasGroupFader;
+    [SerializeField] SituationResultsPositioning cardPos;
+
+    private SituationController controller;
+
+    public bool AllowDrag { get { return true; } }
+    public bool AllowStackMerge { get { return false; } }
+
+    public void Initialise(SituationController sc) {
+        controller = sc;
+    }
+
+    public void Reset() {
+        // TODO: Clear out the cards that are still here?
+    }
+
+    public void SetOutput(List<IElementStack> stacks) {
+        if (stacks.Any() == false)
+            return;
+
+        GetElementStacksManager().AcceptStacks(stacks);
+        cardPos.ReorderCards(stacks);
+    }
+
+    public void TokenPickedUp(DraggableToken draggableToken) {
+        draggableToken.lastTablePos = draggableToken.transform.position;
+    }
+
+    public void TokenDropped(DraggableToken draggableToken) {
+        // Did we just drop the last available token? Then reset the state of the window?
+        var stacks = GetOutputStacks();
+        bool hasStacks = false;
+
+        foreach (var item in stacks) {
+            if (item != null && item.Defunct == false) { 
+                hasStacks = true;
+                break;
+            }
         }
-        if(stacks.Any())
-        { 
-        _outputCardContainer.GetElementStacksManager().AcceptStacks(stacks);
+
+        controller.UpdateTokenResultsCountBadge();
+
+        if (!hasStacks) {
+            controller.SituationHasBeenReset();
+            return;
         }
 
-
+        // Do some uncovering & repositioning here
+        cardPos.ReorderCards(stacks);
     }
 
-    public void Reset()
-    {
-        foreach(var o in _outputNotesContainer.GetComponentsInChildren<SituationOutputNote>())
-            Destroy(o.gameObject); //clear the note, ie the text results
-
+    public IEnumerable<IElementStack> GetOutputStacks() {
+        return GetElementStacksManager().GetStacks();
     }
 
-    public IEnumerable<IElementStack> GetOutputCards()
-    {
-        return _outputCardContainer.GetElementStacksManager().GetStacks();
-
+    public ElementStacksManager GetElementStacksManager() {
+        ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
+        return new ElementStacksManager(stacksWrapper);
     }
 
-    public IEnumerable<ISituationOutputNote> GetOutputNotes()
-    {
-        return _outputNotesContainer.GetComponentsInChildren<SituationOutputNote>();
-
+    public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+        return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
-
 }

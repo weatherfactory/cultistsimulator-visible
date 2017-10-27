@@ -11,41 +11,52 @@ using TMPro;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationDetails
-    {
+    public interface ISituationDetails {
+        string Title { get; set; }
+        string Description { get; set; }
+
         void Initialise(IVerb verb,SituationController controller);
+
         void Show();
         void Hide();
         
         void DisplayAspects(IAspectsDictionary forAspects);
         void DisplayStartingRecipeFound(Recipe r);
+
+        IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
-        IEnumerable<IElementStack> GetStacksInStartingSlots();
-        AspectsDictionary GetAspectsFromAllSlottedElements();
+
         void SetOutput(List<IElementStack> stacks,INotification notification);
         void SetUnstarted();
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
-        
+
+        void DumpAllStartingCardsToDesktop();
+
+        IEnumerable<IElementStack> GetStartingStacks();
+        IEnumerable<IElementStack> GetOngoingStacks();
+        IEnumerable<IElementStack> GetStoredStacks();
         IEnumerable<IElementStack> GetOutputStacks();
+
+        void StoreStacks(IEnumerable<IElementStack> stacksToStore);
+        void DisplayStoredElements();
+
+        IElementStacksManager GetStorageStacksManager();
+
         IEnumerable<ISituationOutputNote> GetOutputNotes();
+
         void SetSlotConsumptions();
-        IEnumerable<IElementStack> GetStacksInOngoingSlots();
+
         IRecipeSlot GetUnfilledGreedySlot();
         IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
 
-        IEnumerable<IElementStack> GetStoredStacks();
-        void StoreStacks(IEnumerable<IElementStack> stacksToStore);
-        IAspectsDictionary GetAspectsFromStoredElements();
-        IElementStacksManager GetSituationStorageStacksManager();
-
-
         void Retire();
         void SetComplete();
-        void ConsumeMarkedElements();
+        bool ConsumeMarkedElements(bool withAnim);
+
         void ShowDestinationsForStack(IElementStack stack);
+
+        void DisplayTimeRemaining(float duration, float timeRemaining);
         void DisplayNoRecipeFound();
-        string Title { get; set; }
-        string Description { get; set; }
     }
 }

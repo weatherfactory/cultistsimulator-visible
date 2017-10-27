@@ -24,52 +24,70 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour
-    {
+    public class TabletopManager : MonoBehaviour {
 
-        [Header("Existing Objects")] [SerializeField] public TabletopContainer tabletopContainer;
+        [Header("Game Control")]
+        [SerializeField]
+        private Heart heart;
 
+        [Header("Tabletop")]
+        [SerializeField] public TabletopContainer tabletopContainer;
+        [SerializeField] TabletopBackground background;
+        [SerializeField] float timeBetweenAnims = 5f;
+        [SerializeField] float timeBetweenAnimsVariation = 1f;
+
+        private TabletopObjectBuilder tabletopObjectBuilder;
+        private float nextAnimTime;
+        private string lastAnimID; // to not animate the same twice. Keep palyer on their toes
+
+        [Header("Drag & Window")]
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
-        [SerializeField] TabletopBackground background;
-        [SerializeField] Transform windowHolderFixed;
-        [SerializeField] private Heart heart;
+
+        [Header("Options Bar & Notes")]
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Notifier notifier;
-        private TabletopObjectBuilder tabletopObjectBuilder;
         [SerializeField] private OptionsPanel optionsPanel;
-        [SerializeField] private RectTransform viewport;
+        [SerializeField] private ElementOverview elementOverview;
 
+        // A total number of 4 supported by the bar currently. Not more, not fewer
+        private string[] overviewElementIds = new string[] {
+            "health", "passion", "reason", "shilling"
+        };
 
         public void Update()
         {
-
             if (Input.GetKeyDown(KeyCode.Space))
                 TogglePause();
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 optionsPanel.ToggleVisibility();
+
+            UpdateElementOverview();
+
+            if (Time.time >= nextAnimTime) { 
+                TriggerArtAnimation();
+                SetNextAnimTime();
+            }
         }
 
         public void UpdateCompendium(ICompendium compendium)
         {
-            
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
             foreach (var p in contentImporter.GetContentImportProblems())
                 Debug.Log(p.Description);
-            
         }
-
-
+        
         void Start()
         {
             var registry = new Registry();
             var compendium = new Compendium();
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
+            SetNextAnimTime(); // sets the first animation for the tabletop Controller
 
-            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform);
+            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
          
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());
@@ -78,22 +96,27 @@ namespace Assets.CS.TabletopUI
             registry.Register<INotifier>(notifier);
             registry.Register<Character>(new Character());
 
-
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
+
+            DraggableToken.onChangeDragState += HandleDragStateChanged;
 
             notifier.ShowNotificationWindow("18th JANUARY, 1920","I am a beginning student of the invisible arts. I have only time, hunger, and a little money. Earlier, I made a note in my journal. [Clicking the note, above, will read it.]",30);
 
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
-
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
-             LoadGame();
-                 else
-           SetupNewBoard();
+                LoadGame();
+            else
+                SetupNewBoard();
 
            heart.StartBeating(0.05f);
+        }
+
+        private void OnDestroy() {
+            // Sattic event so make sure to de-init once this object is destroyed
+            DraggableToken.onChangeDragState -= HandleDragStateChanged;
         }
 
         public void SetupNewBoard()
@@ -128,7 +151,6 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-
         public void BeginNewSituation(SituationCreationCommand scc)
         {
             var token = tabletopObjectBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
@@ -148,7 +170,6 @@ namespace Assets.CS.TabletopUI
 		void SituationAnimDone(DraggableToken token) {
 			tabletopContainer.PutOnTable(token);
 		}
-
 
         public void ClearBoard()
         {
@@ -179,6 +200,7 @@ namespace Assets.CS.TabletopUI
                 pauseButton.SetPausedState(false);
             }
         }
+
         public void TogglePause()
         {
           SetPausedState(!heart.IsPaused);
@@ -246,7 +268,6 @@ namespace Assets.CS.TabletopUI
             return tabletopContainer.GetAllSituationTokens();
         }
 
-
         public void ArrangeTokenOnTable(DraggableToken token)
         {
 			token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
@@ -290,6 +311,50 @@ namespace Assets.CS.TabletopUI
             return false;
         }
 
+        void UpdateElementOverview() {
+            // TODO: This does a lot of iterating each frame to grab all cards in play. If possible change this to use the planned "lists" instead
+            // TODO: This is being called every frame in update, if possible only call it when the stacks have changed? Have a global "elements changed" event to call?
+
+            var manager = tabletopContainer.GetElementStacksManager();
+            var situations = tabletopContainer.GetAllSituationTokens();
+            var draggedElementStack = (DraggableToken.itemBeingDragged != null ? DraggableToken.itemBeingDragged as ElementStackToken : null);
+            int count;
+
+            for (int i = 0; i < overviewElementIds.Length; i++) {
+                count = manager.GetCurrentElementQuantity(overviewElementIds[i]);
+
+                foreach (var sit in situations) 
+                    count += sit.SituationController.GetElementCountInSituation(overviewElementIds[i]);
+
+                if (draggedElementStack != null && draggedElementStack.Id == overviewElementIds[i])
+                    count += draggedElementStack.Quantity;
+
+                elementOverview.SetElement(i, overviewElementIds[i], count);
+            }
+        }
+
+        void SetNextAnimTime() {
+            nextAnimTime = Time.time + timeBetweenAnims - timeBetweenAnimsVariation + UnityEngine.Random.value * timeBetweenAnimsVariation * 2f;
+        }
+
+        void TriggerArtAnimation() {
+            // TODO: This should randomly select a token to animate. Currently always picks health. Also only looks at tabletop, not all visible tokens.
+            var manager = tabletopContainer.GetElementStacksManager();
+            var stacks = manager.GetStacks();
+
+            var animatableStacks = new List<IElementStack>();
+
+            foreach (var stack in stacks) 
+                if (stack.CanAnimate() && stack.Id != lastAnimID)
+                    animatableStacks.Add(stack);
+
+            if (animatableStacks.Count > 0) {
+                int index = UnityEngine.Random.Range(0, animatableStacks.Count);
+
+                animatableStacks[index].StartArtAnimation();
+                lastAnimID = animatableStacks[index].Id;
+            }
+        }
 
         void HandleOnBackgroundDropped()
         {
@@ -305,6 +370,8 @@ namespace Assets.CS.TabletopUI
                 //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
                 DraggableToken.itemBeingDragged.DisplayOnTable();
                 tabletopContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
+
+                SoundManager.PlaySfx("CardDrop");
             }
         }
 
@@ -315,7 +382,6 @@ namespace Assets.CS.TabletopUI
                 tabletopContainer.CloseAllSituationWindowsExcept(null);
 
         }
-
 
         public void LoadGame()
         {
@@ -357,7 +423,6 @@ namespace Assets.CS.TabletopUI
             heart.ResumeBeating();
         }
 
-
         public void ShowDestinationsForStack(IElementStack stack)
         {
             var openToken = tabletopContainer.GetOpenToken();
@@ -371,6 +436,31 @@ namespace Assets.CS.TabletopUI
             var decayingStacks = tabletopContainer.GetElementStacksManager().GetStacks().Where(s => s.Decays);
             foreach(var d in decayingStacks)
                 d.Decay(interval);
+        }
+
+        private void HandleDragStateChanged(bool isDragging) {
+            var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
+            
+            // not dragging a stack? then do nothing. TabletopContainer was destroyed (end of game?)
+            if (draggedElement == null || tabletopContainer == null)
+                return;
+
+            var tabletopStacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            ElementStackToken token;
+
+            foreach (var stack in tabletopStacks) {
+                if (stack.Id != draggedElement.Id || stack.Defunct)
+                    continue;
+
+                if (!isDragging || stack.AllowMerge()) {
+                    token = stack as ElementStackToken;
+
+                    if (token != null) {
+                        token.SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                        token.ShowGlow(isDragging, false);
+                    }
+                }
+            }
         }
     }
 

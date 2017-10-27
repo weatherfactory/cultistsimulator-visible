@@ -13,7 +13,7 @@ namespace Assets.Core.Interfaces
         bool Defunct { get; }
         bool MarkedForConsumption { get; set; }
         bool Decays { get; }
-        IAspectsDictionary GetAspects();
+        IAspectsDictionary GetAspects(bool includingSelf = true);
         Dictionary<string, string> GetXTriggers();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
@@ -25,5 +25,10 @@ namespace Assets.Core.Interfaces
         bool AllowMerge();
         bool Retire(bool withVFX);
         void Decay(float interval);
+
+        bool IsFront();
+
+        bool CanAnimate();
+        void StartArtAnimation();
     }
 }

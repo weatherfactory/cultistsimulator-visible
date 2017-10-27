@@ -70,6 +70,17 @@ namespace Assets.CS.TabletopUI
  
         }
 
+        public bool IsFront() {
+            return true;
+        }
+
+        public bool CanAnimate() {
+            return false;
+        }
+
+        public void StartArtAnimation() {
+            // Has no animation
+        }
 
         public Dictionary<string, string> GetXTriggers()
         {
@@ -123,9 +134,12 @@ namespace Assets.CS.TabletopUI
 
 
 
-        public IAspectsDictionary GetAspects()
+        public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
-            return _element.AspectsIncludingSelf;
+            if (includeSelf)
+                return _element.AspectsIncludingSelf;
+            else
+                return _element.Aspects;
         }
 
         public List<SlotSpecification> GetChildSlotSpecifications()

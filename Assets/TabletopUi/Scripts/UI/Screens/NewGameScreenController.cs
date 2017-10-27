@@ -128,8 +128,8 @@ namespace Assets.CS.TabletopUI {
             //clear out any existing effect stacks
             var l = elementsHolder.GetComponentsInChildren<ElementStackSimple>();
 
-            foreach (var effectStack in elementsHolder.GetComponentsInChildren<ElementStackSimple>())
-            Destroy(effectStack.gameObject);
+            foreach (var effectStack in l)
+            	Destroy(effectStack.gameObject);
 
             //and add effects for this legacy
 

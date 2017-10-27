@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-    public class ResourcesManager: MonoBehaviour
+public class ResourcesManager: MonoBehaviour
     {
+
     public static Sprite GetSpriteForVerb(string verbId)
     {
         var sprite=Resources.Load<Sprite>("icons40/verbs/" + verbId);
@@ -26,7 +27,15 @@ using UnityEngine;
 
 	public static Sprite GetSpriteForElement(string elementId)
     {
-        return Resources.Load<Sprite>("ElementArt/" + elementId);
+        return Resources.Load<Sprite>("elementArt/" + elementId);
+    }
+
+    public static Sprite GetSpriteForElement(string elementId, int animFrame) {
+        return Resources.Load<Sprite>("elementArt/anim/" + elementId + "_" + animFrame);
+    }
+
+    public static Sprite GetSpriteForCardBack(string backId) {
+        return Resources.Load<Sprite>("cardBacks/" + backId);
     }
 
     public static Sprite GetSpriteForAspect(string aspectId)
@@ -34,16 +43,14 @@ using UnityEngine;
         return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
     }
 
-        public static Sprite GetSpriteForLegacy(string legacyImage)
-        {
-            return Resources.Load<Sprite>("icons100/old_aspects/100" + legacyImage);
-        }
-
-
+    public static Sprite GetSpriteForLegacy(string legacyImage)
+    {
+        return Resources.Load<Sprite>("icons100/old_aspects/100" + legacyImage);
+    }
 
     public static IEnumerable<AudioClip> GetBackgroundMusic()
-        {
-            return Resources.LoadAll<AudioClip>("music/");
-        }
+    {
+        return Resources.LoadAll<AudioClip>("music/");
+    }
 }
 

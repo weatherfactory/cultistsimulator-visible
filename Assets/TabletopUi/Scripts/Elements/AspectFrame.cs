@@ -6,9 +6,9 @@ using Assets.CS.TabletopUI;
 using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
-
-public class AspectFrame : MonoBehaviour,IPointerClickHandler
+public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int Quantity;
     private Element aspect=null;
@@ -57,12 +57,18 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
         gameObject.name = "Aspect - " + aspect.Id;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
+    public void OnPointerEnter(PointerEventData eventData) {
+        SoundManager.PlaySfx("TokenHover");
+        aspectImage.canvasRenderer.SetColor(UIStyle.aspectHover);
+    }
 
+    public void OnPointerExit(PointerEventData eventData) {
+        aspectImage.canvasRenderer.SetColor(Color.white);
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
         Registry.Retrieve<INotifier>().ShowElementDetails(aspect);
-    
-}
+    }
 
     public Vector3 GetNotificationPosition()
     {
@@ -70,4 +76,5 @@ public class AspectFrame : MonoBehaviour,IPointerClickHandler
         v3.x += 130;
         return v3;
     }
+
 }

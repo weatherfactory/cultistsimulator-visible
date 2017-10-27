@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
@@ -11,7 +12,9 @@ namespace Assets.CS.TabletopUI
 {
     [RequireComponent (typeof (RectTransform))]
     [RequireComponent (typeof (CanvasGroup))]
-    public abstract class DraggableToken : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,IDropHandler, IPointerClickHandler
+    public abstract class DraggableToken : MonoBehaviour, 
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, 
+        IGlowableView, IPointerEnterHandler, IPointerExitHandler
     {
 	
         public static event System.Action<bool> onChangeDragState;
@@ -20,8 +23,9 @@ namespace Assets.CS.TabletopUI
         public static DraggableToken itemBeingDragged;
         public static bool resetToStartPos = false;
         private static Camera dragCamera;
-   
-     
+
+        public bool Defunct { get; protected set; }
+        protected virtual bool AllowDrag { get { return true; } }
         protected Transform startParent;
         protected Vector3 startPosition;
         protected int startSiblingIndex;
@@ -30,7 +34,8 @@ namespace Assets.CS.TabletopUI
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
         public bool IsSelected { protected set; get; }
-        
+
+        public Vector3? lastTablePos = null; // if it was pulled from the table, save that position
 
         private float perlinRotationPoint = 0f;
         private float dragHeight = -5f;
@@ -39,9 +44,11 @@ namespace Assets.CS.TabletopUI
         public bool rotateOnDrag = true;
         protected INotifier notifier;
         protected ITokenContainer container;
- 
+        protected ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
 
-        void Awake() {
+        [SerializeField] GraphicFader glowImage;
+
+        protected virtual void Awake() {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
         }
@@ -73,6 +80,7 @@ namespace Assets.CS.TabletopUI
 
         public virtual void SetContainer(ITokenContainer newContainer)
         {
+            oldContainer = container; 
             container = newContainer;
         }
 
@@ -86,26 +94,22 @@ namespace Assets.CS.TabletopUI
                 StartDrag(eventData);
         }
 
-        
-
         bool CanDrag(PointerEventData eventData)
         {
-            if (!container.AllowDrag)
+            if (!container.AllowDrag || !AllowDrag)
                 return false;
 
             if ( itemBeingDragged != null || draggingEnabled == false )
                 return false;
 		
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if ( eventData.pointerId < -1 ) 
+            if (eventData != null && eventData.pointerId < -1 ) 
                 return false;
 
             return true;
         }
 
         protected virtual void StartDrag(PointerEventData eventData) {
-
-
             if (rectCanvas == null)
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
 
@@ -113,7 +117,7 @@ namespace Assets.CS.TabletopUI
             DraggableToken.resetToStartPos = true;
             DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
-		
+
             startPosition = RectTransform.position;
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
@@ -125,12 +129,12 @@ namespace Assets.CS.TabletopUI
             RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
             dragOffset = startPosition - pressPos;
 
+            SoundManager.PlaySfx("CardPickup");
+
             if (onChangeDragState != null)
                 onChangeDragState(true);
 
             container.TokenPickedUp(this);
-
-
         }
 
         public void OnDrag (PointerEventData eventData) {
@@ -138,7 +142,7 @@ namespace Assets.CS.TabletopUI
                 MoveObject(eventData);
         }
 
-        public void ReturnToTabletop(INotification reason)
+        public virtual void ReturnToTabletop(INotification reason)
         {
             Registry.Retrieve<TabletopManager>().ArrangeTokenOnTable(this);
             notifier.TokenReturnedToTabletop(this,reason);
@@ -166,39 +170,60 @@ namespace Assets.CS.TabletopUI
         {
             // This delays by one frame, because disabling and setting parent in the same frame causes issues
             // Also helps to avoid dropping and picking up in the same click
-            if (itemBeingDragged == this)
+            if (itemBeingDragged == this && eventData != null)
                 Invoke ("DelayedEndDrag", 0f);
         }
 
-        void OnDisable() {
-            OnEndDrag(null);
-
+        protected virtual void OnDisable() {
+            //OnEndDrag(null);
         }
 
         protected virtual void DelayedEndDrag() {
-            DraggableToken.itemBeingDragged = null;
             canvasGroup.blocksRaycasts = true;
 		
-            if (DraggableToken.resetToStartPos) {
+            if (DraggableToken.resetToStartPos) 
                 returnToStartPosition();
-            }
-		
+            else if (oldContainer != null)
+                oldContainer.TokenDropped(this);
+
+            oldContainer = null;
+
             if (onChangeDragState != null)
                 onChangeDragState(false);
+
+            // Last call so that when the event hits it's still available
+            DraggableToken.itemBeingDragged = null;
         }
 
-        private void returnToStartPosition()
-        {
-            if(startParent == null)
-            {
+        // In case the object is destroyed
+        protected virtual void AbortDrag() {
+            if (itemBeingDragged != this)
+                return;
+
+            if (onChangeDragState != null)
+                onChangeDragState(false);
+
+            // Last call so that when the event hits it's still available
+            DraggableToken.itemBeingDragged = null;
+        }
+
+        private void returnToStartPosition() {
+            if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
                 ReturnToTabletop(null);
+                return; // no sound on new token
             }
-            else
-            { 
-            RectTransform.position = startPosition;
-            RectTransform.SetParent(startParent);
-            RectTransform.SetSiblingIndex(startSiblingIndex);
+
+            SoundManager.PlaySfx("CardDragFail");
+
+            if (startParent.GetComponent<TabletopContainer>()) {
+                //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
+                ReturnToTabletop(null);
+            }
+            else {
+                RectTransform.position = startPosition;
+                RectTransform.SetParent(startParent);
+                RectTransform.SetSiblingIndex(startSiblingIndex);
             }
         }
 
@@ -217,6 +242,7 @@ namespace Assets.CS.TabletopUI
         public virtual bool Retire()
         {
             Destroy(gameObject);
+            Defunct = true;
             return true;
         }
 
@@ -227,14 +253,69 @@ namespace Assets.CS.TabletopUI
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
         }
+
         public void DisplayInAir()
         {
             transform.SetAsLastSibling();
-        float windowZOffset = -10f;
+            float windowZOffset = -10f;
 
-        RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x,
-                RectTransform.anchoredPosition3D.y, windowZOffset);
+            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, windowZOffset);
             RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
+        }
+
+        // Hover & Glow
+
+        public virtual void OnPointerEnter(PointerEventData eventData) {
+            ShowHoverGlow(true);
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData) {
+            ShowHoverGlow(false);
+        }
+
+        public virtual void SetGlowColor(UIStyle.TokenGlowColor colorType) {
+            SetGlowColor(UIStyle.GetGlowColor(colorType));
+         }
+
+        bool lastGlowState;
+        Color lastGlowColor;
+
+        public virtual void SetGlowColor(Color color) {
+            glowImage.SetColor(color);
+            lastGlowColor = color;
+        }
+
+        public virtual void ShowGlow(bool glowState, bool instant = false) {
+            lastGlowState = glowState;
+
+            if (glowState)
+                glowImage.Show(instant);
+            else
+                glowImage.Hide(instant);
+        }
+
+        // Separate method from ShowGlow so we can restore the last state when unhovering
+        protected virtual void ShowHoverGlow(bool show) {
+            // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
+            if (DraggableToken.itemBeingDragged != null && !lastGlowState)
+                show = false;
+            // If we can not drag, don't show the hover highlight
+            else if (!container.AllowDrag || !AllowDrag)
+                show = false;
+
+            if (show) {
+                SoundManager.PlaySfx("TokenHover");
+                glowImage.SetColor(UIStyle.GetGlowColor(UIStyle.TokenGlowColor.Hover));
+                glowImage.Show(true);
+            }
+            else {
+                glowImage.SetColor(lastGlowColor);
+
+                if (lastGlowState)
+                    glowImage.Show(true);
+                else
+                    glowImage.Hide(true);
+            }
         }
 
     }
