@@ -19,15 +19,12 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void Show();
         void Hide();
-
         
         void DisplayAspects(IAspectsDictionary forAspects);
         void DisplayStartingRecipeFound(Recipe r);
 
-        IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
-
-        void DisplayAspects(IAspectsDictionary forAspects);
         IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
+        IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
 
         void SetOutput(List<IElementStack> stacks,INotification notification);
         void SetUnstarted();
