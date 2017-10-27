@@ -5,6 +5,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -114,7 +115,7 @@ namespace Assets.CS.TabletopUI
             {
                 if (_element == null)
                 {
-                    Debug.Log("Couldn't find element with ID " + elementId + " - ");
+                    NoonUtility.Log("Couldn't find element with ID " + elementId + " - ");
                     Retire(false);
                 }
 
@@ -126,7 +127,7 @@ namespace Assets.CS.TabletopUI
             }
             catch (Exception e)
             {
-                Debug.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
+                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
         }

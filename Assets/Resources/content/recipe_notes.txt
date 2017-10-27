@@ -23,9 +23,6 @@ someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
      startdescription: "This will appear when it's queued up",
      description: "This'll appear when it completes",
      warmup: CONVENTIONS.TIME_SIGNIFICANT, //this is how long it'll take to completes. NB doesn't apply to triggered recipes
-     storeCommitment{commitment: 'name'} //puts items from workspace into a named store, if they possess the aspect in withAspect
-     eraseCommitment{commitment: 'name'} //empties that named store
-     applyCommitment{commitment: 'name'} //returns resources in that named store to the game (emptying the store)
      craftable: false, //will it appear in workspace list?
      loop: recipeid //this, or another recipe, may begin when this completes. NB if an alternative recipe is triggered, the loop from that will apply instead.
  }

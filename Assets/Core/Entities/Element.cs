@@ -53,9 +53,6 @@ public class Element
         Description = description;
         AnimFrames = animFrames;
 
-        if (animFrames > 0)
-            Debug.Log("Added anim frames " + animFrames + " to " + id);
-
         ChildSlotSpecifications=new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
         XTriggers=new Dictionary<string, string>();

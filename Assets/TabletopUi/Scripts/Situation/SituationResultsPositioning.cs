@@ -10,7 +10,6 @@ namespace Assets.CS.TabletopUI {
     public class SituationResultsPositioning : MonoBehaviour {
 
         [SerializeField] RectTransform rect;
-        [SerializeField] Vector2 cardSize = new Vector2(80f, 120f);
         [SerializeField] Vector2 margin = new Vector2(50f, 40f);
 
         float moveDuration = 0.2f;

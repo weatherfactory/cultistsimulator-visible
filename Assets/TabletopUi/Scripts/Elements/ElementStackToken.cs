@@ -451,13 +451,5 @@ namespace Assets.CS.TabletopUI
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
         }
 
-        // Hover
-
-        public virtual void OnPointerEnter(PointerEventData eventData) {
-            ShowHoverGlow(true);
-        }
-
-
-
     }
 }

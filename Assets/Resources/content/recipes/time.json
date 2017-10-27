@@ -1,12 +1,9 @@
 {"recipes": [
- {
-        id: "startingneeds",
+ { id: "startingneeds",
         label: "Time Passes",
         actionId: "time",
         requirements: {},
-        effects: {
-            shilling: -1
-        },
+        effects: {shilling: -1 },
         alternativerecipes:
 		[{id: "legacyarrives", chance:100, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
@@ -23,10 +20,9 @@
 				description: "The shop-keepers will have their due. I must pay it or starve."
 					}
 				},
-        loop: "needs"
+        linked:[{id:"needs",chance:100}]
     },
-   {
-        id: "needs",
+   { id: "needs",
         label: "Time Passes",
         actionId: "time",
         requirements: {},
@@ -55,10 +51,9 @@
 					}
 
 				},
-        loop: "needs"
+        linked:[{id:"needs",chance:100}]
     },
-	   {
-        id: "sickness",
+	   {id: "sickness",
         label: "Sickness",
         actionId: "illhealth",
         requirements: {},
@@ -149,7 +144,7 @@
  requirements: {notoriety:1},
 	label: "The authorities are beginning an investigation!",
 	actionId: "suspicion",
-	loop: "investigation",
+	linked:[{id:"investigation",chance:100}]
 	startdescription: "I'll need to find a bribe or a scapegoat.",
 	comment: "Link used so we can get the warmup on the next one"
 	},
@@ -166,7 +161,7 @@
         description: "inv end - won't display, loops straight to trial",
         warmup: 60,
         craftable: false,
-		loop: "trial"
+		linked:[{id:"trial",chance:100}]
     },
 			    {
         id: "trial",
@@ -205,6 +200,6 @@
         description: "I regret the loss. But better them than me.",
         warmup: 60,
         craftable: false
-    },
+    }
 ]
 }

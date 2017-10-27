@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Noon;
 using UnityEngine;
 
 namespace Assets.Logic
@@ -28,8 +29,8 @@ namespace Assets.Logic
                     //eg, if an individual has a Recruiting: individual_b trigger, and there's a Recruiting aspect in the stack, then replace the individual with individual_b
                       stacksManager.ModifyElementQuantity(eachStack.Id, -existingQuantity);
                       stacksManager.ModifyElementQuantity(xTriggers[triggerKey],existingQuantity);
-                       var notifier=Registry.Retrieve<INotifier>();
-                        notifier.DebugLog("xtrigger aspect " + triggerKey + " caused " + eachStack.Id + " to transform into " + xTriggers[triggerKey]);
+                       
+                        NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + eachStack.Id + " to transform into " + xTriggers[triggerKey]);
                    }
             }
             //note: standard effects happen *after* XTrigger effects

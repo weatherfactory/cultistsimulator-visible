@@ -5,12 +5,13 @@ using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Noon;
 
 namespace Assets.Core
 {
     public interface IRecipeConductor
     {
-        Recipe GetLoopedRecipe(Recipe recipe);
+        Recipe GetLinkedRecipe(Recipe recipe);
         /// <summary>
         ///Determines whether the original recipe, an alternative, or something else should actually be run.
         /// Alternative recipes which match requirements on elements possessed and % chance are run in place of the original recipe.
@@ -42,14 +43,51 @@ namespace Assets.Core
             currentCharacter = character;
         }
 
-        public Recipe GetLoopedRecipe(Recipe recipe)
+        public Recipe GetLinkedRecipe(Recipe recipe)
         {
 
-            if (recipe.Loop == null)
+            if (!recipe.LinkedRecipes.Any())
                 return null;
-            var candidateLoopedRecipe = compendium.GetRecipeById(recipe.Loop);
-           if(candidateLoopedRecipe.RequirementsSatisfiedBy(aspectsToConsider))
-                return candidateLoopedRecipe;
+
+            foreach (var ar in recipe.LinkedRecipes)
+            {
+                if (ar.Additional)
+                    throw new NotImplementedException(
+                        ar.Id +
+                        " is marked as an additional linked recipe, but we haven't worked out what to do with additional linked recipes yet");
+
+                Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
+
+                if (candidateRecipe == null)
+                {
+                    NoonUtility.Log(recipe.Id + " says: " + "Tried to link to a nonexistent recipe with id " + ar.Id);
+                }
+                else if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                {
+                    NoonUtility.Log(recipe.Id + " says: " + "Couldn't satisfy requirements for " + ar.Id + " so won't link to it.");
+                }
+                else if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
+                {
+                    NoonUtility.Log(recipe.Id + " says: " + ar.Id + " has been exhausted, so won't execute");   
+                }
+            else
+                {
+                    int diceResult = dice.Rolld100();
+
+                    if (diceResult > ar.Chance)
+                    {
+                        NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " + ar.Chance +
+                                        " for linked recipe " + ar.Id + "; will try to execute next linked recipe");
+                    }
+                    else
+                    {
+                        NoonUtility.Log(recipe.Id + " says: " + ar.Id + " is a suitable linked recipe! Executing it next.");
+                        return candidateRecipe;
+                    }
+                }
+            }
+
+            NoonUtility.Log(recipe.Id + " says: " + "No suitable linked recipe found");
 
             return null;
         }
@@ -114,20 +152,48 @@ namespace Assets.Core
             foreach (var ar in recipe.AlternativeRecipes)
             {
                 int diceResult = dice.Rolld100();
-                if (diceResult <= ar.Chance )
+                if (diceResult > ar.Chance)
+                {
+                    NoonUtility.Log(recipe.Id + " says: " + "Dice result " + diceResult + ", against chance " +
+                                    ar.Chance +
+                                    " for alternative recipe " + ar.Id +
+                                    "; will try to execute next alternative recipe");
+                }
+                else
                 {
                     Recipe candidateRecipe = compendium.GetRecipeById(ar.Id);
-                    if(candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider) && !currentCharacter.HasExhaustedRecipe(candidateRecipe))
-                   
-                    {
-                        if (ar.Additional)
-                            actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
-                        else
-                        {
-                            IList<Recipe> recursiveRange = GetActualRecipesToExecute(candidateRecipe);//check if this recipe has any substitutes in turn, and then
 
-                            return recursiveRange;//this recipe, or its further alternatives, supersede(s) everything else! return it.
-                        }
+                    if (!candidateRecipe.RequirementsSatisfiedBy(aspectsToConsider))
+                    { 
+                        NoonUtility.Log(recipe.Id + " says: couldn't satisfy requirements for " + ar.Id);
+                        continue;
+                    }
+                    if (currentCharacter.HasExhaustedRecipe(candidateRecipe))
+                    { 
+                        NoonUtility.Log(recipe.Id + " says: already exhausted " + ar.Id);
+                        continue;
+                    }
+                    if (ar.Additional)
+                    {
+                        actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
+                        NoonUtility.Log(recipe.Id + " says: Found additional recipe " + ar.Id +
+                                        " to execute - adding it to executiion listand looking for more");
+                    }
+                    else
+                    {
+                        IList<Recipe>
+                            recursiveRange =
+                                GetActualRecipesToExecute(
+                                    candidateRecipe); //check if this recipe has any substitutes in turn, and then
+
+                        string logmessage =
+                            recipe.Id + " says: reached the bottom of the execution list: returning ";
+                        foreach (var r in recursiveRange)
+                            logmessage += r.Id + "; ";
+                        NoonUtility.Log(logmessage);
+
+                        return
+                            recursiveRange; //this recipe, or its further alternatives, supersede(s) everything else! return it.
                     }
                 }
             }

@@ -153,20 +153,19 @@ namespace Assets.Core.Entities {
         }
 
         private void End(IRecipeConductor rc) {
-
             SoundManager.PlaySfx("SituationComplete");
 
-            var loopedRecipe = rc.GetLoopedRecipe(currentPrimaryRecipe);
-
-            if (loopedRecipe != null) {
-                currentPrimaryRecipe = loopedRecipe;
+            var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
+            
+            if (linkedRecipe!=null) { 
+                currentPrimaryRecipe = linkedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 Beginning(currentPrimaryRecipe);
             }
-            else
+            else { 
                 Complete();
+            }
         }
-
 
         private void Complete() {
             State = global::SituationState.Complete;

@@ -9,9 +9,17 @@
         },
 		          {
         id: "fragmentforge",
-            label: "Ardent Prayers",
+            label: "Smith's Secret",
             aspects:
             {forge: 2,lore:1},
+            description: "In five continents, smiths have whispered the same words to the iron. Murderers have been known to whisper these words, too.",
+			xtriggers: {loredeepening: fragmentforgeb}
+        },
+				          {
+        id: "fragmentforgeb",
+            label: "Ardent Prayers",
+            aspects:
+            {forge:4,lore:1},
             description: "When we watch a fire, what are we watching for? When we find it, these are the words it will speak: a word that sanctifies the change that comes when the seared skin peels."
         },
 						          {
@@ -69,14 +77,14 @@
         id: "fragmentwitchandsister",
             label: "The Recitation of Amethyst",
             aspects:
-            {knock: 2,lore:2},
+            {heart: 2,moth:2,grail:2, lore:1},
 		description: "The Witch-and-Sister cannot be separated."
 		}
 		{
         id: "fragmentglory",
             label: "The Waking Word",
             aspects:
-            {lantern: 5,lore:5,forge:5},
+            {lantern: 6,forge:6,lore:1},
             description: "--"
         }
 ]

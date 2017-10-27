@@ -49,7 +49,8 @@ craftable: false},
         warmup: 0,
         craftable: false,
 		comments: "this runs once as an additional, and is how Talk is opened",
-		loop: "randomacquaintancerouter"
+		linked:[{id:"randomacquaintancerouter",chance:100}],
+		comment: "we no longer need a separate router since the loop enhancement"
     },
 	{
         id: "randomacquaintancerouter",

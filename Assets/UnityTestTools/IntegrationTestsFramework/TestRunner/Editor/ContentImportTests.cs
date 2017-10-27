@@ -21,7 +21,7 @@ namespace CS.Tests
         private const string RECIPE_1_DESCRIPTION = "to play / us out...";
         private const string RECIPE_1_ASIDE = "(by the way...)";
         private const string RECIPE_1_WARMUP = "6";
-        private const string RECIPE_1_LOOP = "someid";
+        private const string RECIPE_1_LINKED = "someid";
         private const string RECIPE_1_ENDING = "anending";
         private const int RECIPE_MAX_EXECUTIONS = 3;
         private const string RECIPE_BURN_IMAGE = "shadows_and_stains";
@@ -40,6 +40,10 @@ namespace CS.Tests
         private const string ALTERNATIVE_2_ID = "alternative2";
         private const int ALTERNATIVE_1_CHANCE = 10;
         private const int ALTERNATIVE_2_CHANCE = 100;
+        private const string LINKED_1_ID = "linked1";
+        private const string LINKED_2_ID = "linked2";
+        private const int LINKED_1_CHANCE = 20;
+        private const int LINKED_2_CHANCE = 90;
         private const string SLOT_LABEL = "slotId";
         private const string SLOT_REQUIRED_ASPECT_ID = "slotaspect1";
         private const int SLOT_REQUIRED_ASPECT_VALUE = 1;
@@ -73,8 +77,7 @@ namespace CS.Tests
             Hashtable htSlotOuterTable = new Hashtable() { { SLOT_LABEL, htSlotSpecifications } };
 
        
-            ArrayList alAlternatives = new ArrayList();
-
+            
             htRequirements.Add(REQ_1_ID, REQ_1_VALUE.ToString());
             htRequirements.Add(REQ_2_ID, REQ_2_VALUE.ToString());
 
@@ -82,7 +85,8 @@ namespace CS.Tests
             htEffects.Add(EFFECT_2_ID, EFFECT_2_VALUE.ToString());
 
             htAspects.Add(ASPECT_ID,ASPECT_VALUE.ToString());
-   
+
+            ArrayList alAlternatives = new ArrayList();
 
             Hashtable alternative1 = new Hashtable()
             {
@@ -97,11 +101,30 @@ namespace CS.Tests
                 {NoonConstants.KCHANCE,ALTERNATIVE_2_CHANCE.ToString() },
                 {NoonConstants.KADDITIONAL,true }
             };
-
-
-
+        
             alAlternatives.Add(alternative1);
             alAlternatives.Add(alternative2);
+
+
+            ArrayList allinkeds = new ArrayList();
+
+            Hashtable linked1 = new Hashtable()
+            {
+                {NoonConstants.KID,LINKED_1_ID},
+                {NoonConstants.KCHANCE,LINKED_1_CHANCE.ToString() }
+
+            };
+
+            Hashtable linked2 = new Hashtable()
+            {
+                {NoonConstants.KID,LINKED_2_ID},
+                {NoonConstants.KCHANCE,LINKED_2_CHANCE.ToString() },
+                {NoonConstants.KADDITIONAL,true }
+            };
+
+            allinkeds.Add(linked1);
+            allinkeds.Add(linked2);
+
 
             htRecipe.Add(NoonConstants.KID, RECIPE_1_ID);
             htRecipe.Add(NoonConstants.KLABEL, RECIPE_1_LABEL);
@@ -110,7 +133,6 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
             htRecipe.Add(NoonConstants.KASIDE,RECIPE_1_ASIDE);
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
-            htRecipe.Add(NoonConstants.KLOOP, RECIPE_1_LOOP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
             htRecipe.Add(NoonConstants.KMAXEXECUTIONS,RECIPE_MAX_EXECUTIONS.ToString());
             htRecipe.Add(NoonConstants.KBURNIMAGE,RECIPE_BURN_IMAGE.ToString());
@@ -140,6 +162,7 @@ namespace CS.Tests
 
 
             ConfirmRecipeAlternativesImported(recipesImported);
+            ConfirmLinkedRecipesImported(recipesImported);
 
             ConfirmRecipeSlotsImported(recipesImported);
 
@@ -175,6 +198,18 @@ namespace CS.Tests
 
         }
 
+        private static void ConfirmLinkedRecipesImported(List<Recipe> recipesImported)
+        {
+            Assert.AreEqual(LINKED_1_ID, recipesImported.First().LinkedRecipes[0].Id);
+            Assert.AreEqual(LINKED_1_CHANCE, recipesImported.First().LinkedRecipes[0].Chance);
+            Assert.IsFalse(recipesImported.First().LinkedRecipes[0].Additional);
+
+            Assert.AreEqual(LINKED_2_ID, recipesImported.First().LinkedRecipes[1].Id);
+            Assert.AreEqual(LINKED_2_CHANCE, recipesImported.First().LinkedRecipes[1].Chance);
+            Assert.IsTrue(recipesImported.First().LinkedRecipes[1].Additional);
+
+        }
+
         private void ConfirmRecipeAspectsImported(List<Recipe> recipesImported)
         {
             Assert.AreEqual(ASPECT_VALUE,recipesImported.First().Aspects[ASPECT_ID]);
@@ -197,7 +232,6 @@ namespace CS.Tests
             Assert.AreEqual(Convert.ToInt32(RECIPE_1_WARMUP), recipesImported.First().Warmup);
             Assert.AreEqual(RECIPE_1_ACTIONID, recipesImported.First().ActionId);
             Assert.AreEqual(Convert.ToBoolean(RECIPE_1_CRAFTABLE), recipesImported.First().Craftable);
-            Assert.AreEqual(RECIPE_1_LOOP, recipesImported.First().Loop);
             Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().EndingFlag);
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS,recipesImported.First().MaxExecutions);
             Assert.AreEqual(RECIPE_BURN_IMAGE,recipesImported.First().BurnImage);

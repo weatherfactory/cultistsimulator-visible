@@ -16,14 +16,12 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;
 
-    private SituationWindow window;
     private SituationController controller;
 
     public bool AllowDrag { get { return true; } }
     public bool AllowStackMerge { get { return false; } }
 
-    public void Initialise(SituationWindow w, SituationController sc) {
-        window = w;
+    public void Initialise(SituationController sc) {
         controller = sc;
     }
 

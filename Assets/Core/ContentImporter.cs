@@ -263,7 +263,7 @@ public class ContentImporter
                     r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
-                r.Loop = htEachRecipe[NoonConstants.KLOOP] == null ? null : htEachRecipe[NoonConstants.KLOOP].ToString();
+
                 r.EndingFlag = htEachRecipe[NoonConstants.KENDING] == null
                     ? null
                     : htEachRecipe[NoonConstants.KENDING].ToString();
@@ -365,7 +365,7 @@ public class ContentImporter
                     int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
                     bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
-                        r.AlternativeRecipes.Add(new RecipeAlternative(raID,raChance,raAdditional));
+                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID,raChance,raAdditional));
                 }
             }
             }
@@ -375,14 +375,39 @@ public class ContentImporter
                 LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
             }
 
+            try
+            {
+                ArrayList alLinkedRecipes = htEachRecipe.GetArrayList(NoonConstants.KLINKED);
+                if (alLinkedRecipes != null)
+                {
+                    foreach (Hashtable lr in alLinkedRecipes)
+                    {
+                        string lrID = lr[NoonConstants.KID].ToString();
+                        int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
+                        bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
+
+                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
+            }
+
+            
+
 
             Recipes.Add(r);
         }
 
         foreach (var r in Recipes)
         {
-            LogIfNonexistentRecipeId(r.Loop,r.Id," - as loop");
-            foreach(var a in r.AlternativeRecipes)
+            foreach (var n in r.LinkedRecipes)
+                LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
+            foreach (var a in r.AlternativeRecipes)
                 LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
         }
     }

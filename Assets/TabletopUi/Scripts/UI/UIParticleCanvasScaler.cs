@@ -16,11 +16,13 @@ public class UIParticleCanvasScaler : MonoBehaviour {
 
     private Canvas canvas;
     private ParticleSystem[] emitters;
-    private bool m_isInitialized;
     private Vector3 m_canvasScale;
 
-    // Lifecycle
+#if !UNITY_EDITOR
+    private bool m_isInitialized;
+#endif
 
+    // Lifecycle
     private void OnEnable()     { SetParticleScales(); }
 
 #if UNITY_EDITOR
@@ -38,14 +40,14 @@ public class UIParticleCanvasScaler : MonoBehaviour {
     // Initilaization
 
     private void Init() {
-        if (!m_isInitialized) { 
-            canvas = GetComponent<Canvas>();
-            emitters = this.gameObject.GetComponentsInChildren<ParticleSystem>();
+#if !UNITY_EDITOR
+        if (!m_isInitialized) 
+            return; 
 
-            #if !UNITY_EDITOR
-                m_isInitialized = true;
-            #endif
-        }
+        m_isInitialized = true;
+#endif
+        canvas = GetComponent<Canvas>();
+        emitters = this.gameObject.GetComponentsInChildren<ParticleSystem>();
 
         m_canvasScale = GetCanvasScale();
     }

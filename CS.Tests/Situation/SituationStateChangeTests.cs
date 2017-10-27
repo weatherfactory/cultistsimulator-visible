@@ -92,7 +92,7 @@ namespace Assets.Editor.Tests
         public void Situation_BeginsLoopRecipe_WhenRecipeConductorSpecifiesLoopRecipe()
         {
             
-            rc.GetLoopedRecipe(null).ReturnsForAnyArgs(r2);
+            rc.GetLinkedRecipe(null).ReturnsForAnyArgs(r2);
             Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.RequiringExecution, r1, subscriber);
             s.Continue(rc,1);
             Assert.AreEqual(r2.Id,s.RecipeId);
@@ -103,7 +103,7 @@ namespace Assets.Editor.Tests
         public void Situation_ResetsTimer_WhenBeginningLoopRecipe()
         {
 
-            rc.GetLoopedRecipe(null).ReturnsForAnyArgs(r2);
+            rc.GetLinkedRecipe(null).ReturnsForAnyArgs(r2);
             Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.RequiringExecution, r1, subscriber);
             r2.Warmup = 100;
             s.Continue(rc, 1);
@@ -189,7 +189,7 @@ namespace Assets.Editor.Tests
             Recipe loopedRecipe = TestObjectGenerator.GenerateRecipe(99);
 
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> {r2, r3});
-            rc.GetLoopedRecipe(r2).Returns(loopedRecipe);
+            rc.GetLinkedRecipe(r2).Returns(loopedRecipe);
 
             s.Continue(rc, 1); //executes
 

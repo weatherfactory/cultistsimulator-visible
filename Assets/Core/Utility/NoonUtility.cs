@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using UnityEditor;
 using UnityEngine;
 
 namespace Noon
@@ -14,7 +15,7 @@ namespace Noon
 
 
         public const string KCHARACTERSTATE = "state";
-        public const string KLOOP="loop";
+        public const string KLINKED="linked";
         public const string KENDING="ending";
         public const string KMAXEXECUTIONS = "maxexecutions";
         public const string KID = "id";
@@ -48,7 +49,16 @@ namespace Noon
     }
     public class NoonUtility
     {
+        public static bool UnitTestingMode { get; set; }
 
+        public static void Log(string message)
+        {
+            //switch between in-Unity and unit testing
+            if(UnitTestingMode)
+            Console.WriteLine(message);
+            else
+            Debug.Log(message);
+        }
 
         public static string GetGameSaveLocation()
         {

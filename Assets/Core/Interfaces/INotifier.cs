@@ -9,7 +9,6 @@ namespace Assets.Core.Interfaces
 {
     public interface INotifier
     {
-        void DebugLog(string text);
         void PushTextToLog(string text);
         void ShowNotificationWindow(string title, string description, float duration = 10);
         void ShowElementDetails(Element element);

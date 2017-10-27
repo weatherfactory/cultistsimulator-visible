@@ -1,28 +1,6 @@
  {"recipes": [
 
 	{
-        id: "studylegacyreason",
-        label: "Examine my Legacy, employing Reason",
-        actionId: "study",
-        requirements: {legacy:1,reason:1},
-        effects: {legacy: -1,notionenlightenment: 1, mapbookdealer: 1,shilling:1},
-		startdescription: "I'll examine each item with meticulous care. ",
-        description: "A little money... and a journal plucked from the fire. Only a dozen pages remain unburnt, but it's enough to confirm my suspicions. My correspondent knew secrets beyond the skin of the world. If only I could follow in their footsteps. There is a note here - directions to a book shop that does not advertise its wares -",
-        warmup: 30,
-        craftable: true
-    },
-	{
-        id: "studylegacypassion",
-        label: "Examine my Legacy, employing Passion",
-        actionId: "study",
-        requirements: {legacy:1,passion:1},
-		effects: {legacy: -1,notionpower: 1, mapbookdealer:1,shilling: 1},
-        startdescription: "I'll read, theorise, pace, sketch, clutch at my hair in wonder, rise in elation, collapse in despair.",
-        description: "A little money... and a journal plucked from the fire. Only a dozen pages remain unburnt, but it's enough to confirm my suspicions. My correspondent knew of powers that generals and kings would envy. If only I could follow in their footsteps. There is a note here - directions to a book shop that does not advertise its wares -",
-        warmup: 30,
-        craftable: true
-    },
-	{
         id: "studymapbookdealer",
         label: "Find Morland's shop",
         actionId: "study",
@@ -65,11 +43,13 @@
 	actionId: "study",
 	requirements: {lore:1, forge:2},
 	effects: {},
-	slots:{"More": required: {lantern: 1, grail: 1}},
-	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradeforgetob",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
 	warmup:60,
 	craftable: true,
 	},
@@ -79,11 +59,13 @@
 	actionId: "study",
 	requirements: {lore:1, lantern:2},
 	effects: {},
-	slots:{"More": required: {lantern: 1, grail: 1}},
-	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradelanternb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
 	warmup:60,
 	craftable: true,
 	},
@@ -93,13 +75,162 @@
 	actionId: "study",
 	requirements: {lore:1, grail:2},
 	effects: {},
-	slots:{"More": required: {lantern: 1, grail: 1}},
-	alternativerecipes: [{id: "studycreateritebasicconsumetool",chance:100},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradegrailb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
 	{id: "studycreateritebasicconsumefollower",chance:100}]
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
 	warmup:70,
 	craftable: true,
-	}
+	},
+			{
+	id: "studyupgradeforgetob",
+	label: "Upgrade forge to b - gateway to research",
+	actionId: "study",
+	requirements: {reason:1},
+	startdescription: "Begin upgrade forge b",
+	description: "Complete upgrade forge b",
+	warmup:0,
+	linked:[{id: "studyresearchbegin",chance:100}]
+	},
+		{
+	id: "studyresearchbegin",
+	label: "Generic research - beginning, set countdown",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:4},
+	startdescription: "research begin start",
+	description: "research begin complete",
+	warmup:0,
+	craftable: false,
+	linked:[{id: "studyresearchtick",chance:100}]
+	},
+					{
+	id: "studyresearchtick",
+	label: "Generic research - tick, countdown -1",
+	actionId: "study",
+	requirements: {},
+	effects: {countdown:-1},
+	warmup:0,
+	linked:[{id: "studyresearchmaxinsight",chance:100},
+	{id: "studyresearchmoderateinsight",chance:100},
+	{id: "studyresearchminimalinsight",chance:100},
+	{id: "studyresearchneedserudition",chance:50},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	},
+		{
+	id: "studyresearchneedserudition",
+	label: "Generic research - needs erudition",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"Erudition": required: {erudition:1}},
+	alternativerecipes: [
+	{id: "studyresearcheruditionsuccess",chance:100}]
+	startdescription: "BEGIN erudition research",
+	description: "COMPLETE erudition research - FAILED",
+	warmup:60,
+	craftable: false,
+		linked: [{id:"studyresearchtick",chance:100}]
+	},
+				{
+	id: "studyresearcheruditionsuccess",
+	label: "Research erudition success!",
+	actionId: "study",
+	requirements: {erudition:1},
+	effects: {insight:1,erudition:-1},
+	warmup:60,
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+		{
+	id: "studyresearchneedsglimmering",
+	label: "Generic research - needs glimmering",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"Glimmering": required: {glimmering:1}},
+	alternativerecipes: [
+	{id: "studyresearchglimmeringsuccess",chance:100}]
+	startdescription: "BEGIN glimmering research",
+	description: "COMPLETE glimmering research FAILED",
+	warmup:60,
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+			{
+	id: "studyresearchglimmeringsuccess",
+	label: "Glimmering research success!",
+	actionId: "study",
+	requirements: {glimmering:1},
+	effects: {insight:1,glimmering:-1},
+	warmup:60,
+	craftable: false,
+		linked: [{id:"studyresearchtick",chance:100}]
+	},
+						{
+	id: "studyresearchmaxinsight",
+	label: "Research complete, max insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:100}],
+	actionId: "study",
+	requirements: {countdown:-1,insight:3},
+	effects: {},
+	startdescription: "BEGIN studyresearchmaxinsight",
+	description: "COMPLETE studyresearchmaxinsight",
+	warmup:0,
+	comments: "This is currently a pass-through only; including for consistency.",
+	},
+					{
+	id: "studyresearchmoderateinsight",
+	label: "Research complete, some insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:70},
+	{id: "studyresearchconsolation",chance:100}],
+	actionId: "study",
+	requirements: {countdown:-1,insight:1},
+	effects: {},
+	startdescription: "BEGIN studyresearchsomeinsight",
+	description: "COMPLETE studyresearchsomeinsight",
+	warmup:0
+	},
+						{
+	id: "studyresearchminimalinsight",
+	label: "Research complete, no insight",
+	actionId: "study", 
+			alternativerecipes: [
+	{id: "studyresearchsuccess",chance:30},
+	{id: "studyresearchconsolation",chance:100}],
+	requirements: {countdown:-1},
+	effects: {},
+	startdescription: "BEGIN studyresearchnoinsight",
+	description: "COMPLETE studyresearchnoinsight",
+	warmup:0,
+	},
+							{
+	id: "studyresearchsuccess",
+	label: "Research successful!",
+	actionId: "study",
+	requirements: {},
+	aspects: {loredeepening:1},
+	effects: {insight:-100,erudition:1,glimmering:1},
+	startdescription: "BEGIN studyresearchsuccess",
+	description: "COMPLETE studyresearchsuccess",
+	warmup:0,
+	craftable: false
+	},
+								{
+	id: "studyresearchconsolation",
+	label: "Research not successful! consolation prizes.",
+	actionId: "study",
+	requirements: {},
+	effects: {insight:-100,erudition:1,glimmering:1},
+	startdescription: "BEGIN studyresearchconsolation",
+	description: "COMPLETE studyresearchconsolation",
+	warmup:0,
+	craftable: false
+	},
 ]
 }
