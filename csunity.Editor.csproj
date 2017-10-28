@@ -276,6 +276,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\TabletopUi\Scripts\Editor\SituationWindowNewEditor.cs" />
     <Compile Include="Assets\TextMesh Pro\Editor\Property Drawers\DropdownOptionListDrawer.cs" />
     <Compile Include="Assets\TextMesh Pro\Editor\Property Drawers\GlyphInfoDrawer.cs" />
     <Compile Include="Assets\TextMesh Pro\Editor\Property Drawers\KerningPairDrawer.cs" />
@@ -353,9 +354,11 @@
     <None Include="Assets\Resources\content\recipe_notes.txt" />
     <None Include="Assets\SimpleJson\ReadMe.txt" />
     <None Include="Assets\TabletopUi\Materials\CardBurn.shader" />
+    <None Include="Assets\TabletopUi\Materials\SimpleBlur.shader" />
     <None Include="Assets\TabletopUi\Materials\UI-Default_shader.shader" />
     <None Include="Assets\TabletopUi\Materials\UI-Greyout.shader" />
     <None Include="Assets\TabletopUi\Materials\UI-Multiply.shader" />
+    <None Include="Assets\TabletopUi\Materials\UI-NoBackface.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
