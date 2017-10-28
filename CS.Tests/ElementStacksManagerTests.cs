@@ -190,6 +190,11 @@ namespace Assets.Editor.Tests
             return Element.AspectsIncludingSelf;
         }
 
+        public IAspectsDictionary GetAspects(bool includingSelf = true)
+        {
+            throw new NotImplementedException();
+        }
+
         public Dictionary<string, string> GetXTriggers()
         {
             return Element.XTriggers;
@@ -232,6 +237,21 @@ namespace Assets.Editor.Tests
         }
 
         public void Decay(float interval)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFront()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanAnimate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartArtAnimation()
         {
             throw new NotImplementedException();
         }

@@ -64,21 +64,6 @@ namespace Assets.Editor.Tests
 
         
 
-
-        //item added to / removed from ongoing slot updates aspects display and recipe *prediction* with stored aspects and ongoing slot aspects
-        [Test]
-        public void ItemAddedToOngoingSlot_UpdatesAspectsAndRecipePrediction_WithOngoingSlotAspects()
-        {
-            situationDetailsMock.GetAspectsFromStoredElements().Returns(new AspectsDictionary());
-            situationDetailsMock.GetAspectsFromAllSlottedElements().Returns(new AspectsDictionary());
-
-            sc.OngoingSlotsUpdated();
-
-            situationDetailsMock.ReceivedWithAnyArgs().DisplayAspects(null);
-            situationDetailsMock.ReceivedWithAnyArgs().UpdateTextForPrediction(new RecipePrediction {Commentary="",DescriptiveText = "",Title = ""});
-
-        }
-
         [Test]
         public void AllOutputsGone_ResetsStateMachine()
         {

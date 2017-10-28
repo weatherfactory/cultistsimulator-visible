@@ -10,7 +10,6 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using TMPro;
-using UnityEditor;
 using UnityEngine.EventSystems;
 
 public interface ISituationOutputNote
