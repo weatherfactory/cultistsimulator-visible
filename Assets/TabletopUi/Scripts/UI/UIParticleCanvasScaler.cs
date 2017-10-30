@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /* UI Particle Scaling script by Tobi Tobasco, questions: tobias@lostmountaingames.com, http://tobiasnoller.com/
  * Just drag this script on any canvas which has child particle systems underneath. 
@@ -12,42 +13,31 @@ using UnityEngine.UI;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(Canvas))]
-public class UIParticleCanvasScaler : MonoBehaviour {
+public class UIParticleCanvasScaler : UIBehaviour {
 
     private Canvas canvas;
-    private ParticleSystem[] emitters;
     private Vector3 m_canvasScale;
-
-#if !UNITY_EDITOR
-    private bool m_isInitialized;
-#endif
 
     // Lifecycle
     private void OnEnable()     { SetParticleScales(); }
 
 #if UNITY_EDITOR
     private void Reset()        { SetParticleScales(); }
-    private void Update()       { SetParticleScales(); }
+//    private void Update()       { SetParticleScales(); }
 #endif
 
     // Trigger Update
 
     private void SetParticleScales() {
-        Init();
-        ApplyScale();
+        var emitters = this.gameObject.GetComponentsInChildren<ParticleSystem>();
+        ApplyScale(emitters);
     }
 
     // Initilaization
 
     private void Init() {
-#if !UNITY_EDITOR
-        if (!m_isInitialized) 
-            return; 
-
-        m_isInitialized = true;
-#endif
-        canvas = GetComponent<Canvas>();
-        emitters = this.gameObject.GetComponentsInChildren<ParticleSystem>();
+        if (canvas == null)
+            canvas = GetComponent<Canvas>();
 
         m_canvasScale = GetCanvasScale();
     }
@@ -55,15 +45,20 @@ public class UIParticleCanvasScaler : MonoBehaviour {
     // Set Particle Scale
 
     private Vector3 GetCanvasScale() {
-        return new Vector3( canvas.scaleFactor * canvas.transform.localScale.x, 
-                            canvas.scaleFactor * canvas.transform.localScale.y, 
-                            canvas.scaleFactor * canvas.transform.localScale.z  );
+        return canvas.transform.localScale;
     }
 
-    private void ApplyScale() {
-        foreach (ParticleSystem p in emitters)
-            if (p != null)
-                p.transform.localScale = m_canvasScale; 
+    public void ApplyScale(ParticleSystem[] targets) {
+        Init();
+
+        if (targets != null)
+            foreach (ParticleSystem p in targets)
+                if (p != null)
+                    p.transform.localScale = m_canvasScale; 
+    }
+
+    public void ApplyScale(Transform target) {
+        ApplyScale(transform.GetComponentsInChildren<ParticleSystem>());
     }
 
 }

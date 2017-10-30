@@ -10,7 +10,7 @@ public class Hotkeys : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("`"))
+		if(Input.GetKeyDown("`") || (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab)))
             debugTools.gameObject.SetActive(!debugTools.isActiveAndEnabled);
 	}
 }

@@ -28,6 +28,8 @@ namespace Assets.CS.TabletopUI {
             transform.localRotation = Quaternion.identity;
             gameObject.SetActive(true);
 
+            ScaleParticlesScale();
+
             if (sfx != null && sfx != "")
                 SoundManager.PlaySfx(sfx);
         }

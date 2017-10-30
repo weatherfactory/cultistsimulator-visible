@@ -354,7 +354,7 @@ namespace Assets.TabletopUi {
             - if the situation is currently executing, or the primary slot doesn't contain an element, it's occupied
             */
 
-            var stacks = situationWindow.GetStartingStacks();
+            var stacks = situationWindow.GetOutputStacks();
 
             foreach (var stack in stacks) {
                 if (!stack.Defunct)

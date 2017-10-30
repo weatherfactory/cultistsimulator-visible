@@ -7,7 +7,7 @@ namespace Assets.CS.TabletopUI {
         
         [SerializeField] string sfx = "CardBurn";
 
-        public override void StartAnim(ElementStackToken card) {
+        public override void StartAnim(ElementStackToken card) {            
             targetCard = card.GetComponent<CanvasGroup>();
             targetCard.interactable = false;
             targetCard.blocksRaycasts = false;
@@ -17,6 +17,8 @@ namespace Assets.CS.TabletopUI {
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             gameObject.SetActive(true);
+
+            ScaleParticlesScale();
 
             if (sfx != null && sfx != "")
                 SoundManager.PlaySfx(sfx);

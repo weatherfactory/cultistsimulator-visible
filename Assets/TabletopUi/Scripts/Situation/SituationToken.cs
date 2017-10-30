@@ -158,7 +158,6 @@ namespace Assets.CS.TabletopUI
 
             if (SituationController.IsSituationOccupied())
             { 
-                SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
                 ShowGlow(true);
             }
             else {
