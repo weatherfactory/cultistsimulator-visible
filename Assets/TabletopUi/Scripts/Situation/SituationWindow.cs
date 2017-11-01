@@ -66,12 +66,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         public string Description {
-            get {
-                throw new NotImplementedException();
-            }
+            get { return "Notes need saving in new format - best to repurpose OutputNotes"; }
 
             set {
-                throw new NotImplementedException();
+                return;
             }
         }
 
@@ -360,7 +358,7 @@ namespace Assets.CS.TabletopUI {
 
 
         public IEnumerable<ISituationOutputNote> GetOutputNotes() {
-            throw new NotImplementedException();
+           return new List<ISituationOutputNote>();
         }
 
     }
