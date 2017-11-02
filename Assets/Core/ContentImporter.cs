@@ -18,6 +18,7 @@ public class ContentImporter
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
+    private const string CONST_DECKS = "decks";
     private const string CONST_LEGACIES = "legacies";
     private const string CONST_ID = "id";
     private const string CONST_LABEL = "label";
@@ -32,6 +33,7 @@ public class ContentImporter
     public Dictionary<string, Element> Elements;
     public Dictionary<string, Legacy> Legacies;
     public List<Recipe> Recipes;
+    private Dictionary<string, Deck> Decks;
 
 
     public ContentImporter()
@@ -40,6 +42,7 @@ public class ContentImporter
         Verbs = new Dictionary<string, IVerb>();
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
+        Decks = new Dictionary<string, Deck>();
         Legacies = new Dictionary<string,Legacy>();
     }
 
@@ -207,6 +210,28 @@ public class ContentImporter
         }
 
     }
+    private void ImportDecks()
+    {
+        ArrayList decksArrayList=new ArrayList();
+        TextAsset[] deckTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
+        foreach (TextAsset ta in deckTextAssets)
+        {
+            string json = ta.text;
+            decksArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_DECKS));
+        }
+
+        for (int i = 0; i < decksArrayList.Count; i++)
+        {
+            Hashtable htEachDeck = decksArrayList.GetHashtable(i);
+
+            Deck d=new Deck(htEachDeck["id"].ToString());
+
+            Decks.Add(d.Id,d);
+        }
+        
+    }
+    
+
 
     public void ImportLegacies()
     {
@@ -215,7 +240,7 @@ public class ContentImporter
         foreach (TextAsset ta in legacyTextAssets)
         {
             string json = ta.text;
-            legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("legacies"));
+            legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_LEGACIES));
         }
 
         for (int i = 0; i < legaciesArrayList.Count; i++)
@@ -430,13 +455,19 @@ public class ContentImporter
         ImportVerbs();
         ImportElements();
         ImportRecipes();
+        ImportDecks();
         ImportLegacies();
+
+        //I'm not sure why I use fields rather than local variables returned from the import methods?
+        //that might be something to tidy up; I suspect it's left from an early design
 
         _compendium.UpdateRecipes(Recipes);
         _compendium.UpdateElements(Elements);
         _compendium.UpdateVerbs(Verbs);
+        _compendium.UpdateDecks(Decks);
         _compendium.UpdateLegacies(Legacies);
 
     }
+
 
 }

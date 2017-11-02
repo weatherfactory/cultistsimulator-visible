@@ -30,6 +30,7 @@ public interface ICompendium
 
     List<Legacy> GetAllLegacies();
     Legacy GetLegacyById(string legacyId);
+    void UpdateDecks(Dictionary<string, Deck> decks);
 }
 
 public class Compendium : ICompendium
@@ -38,6 +39,7 @@ public class Compendium : ICompendium
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
+    private Dictionary<string, Deck> _decks;
 
 
     public void UpdateRecipes(List<Recipe> allRecipes)
@@ -54,6 +56,11 @@ public class Compendium : ICompendium
     public void UpdateVerbs(Dictionary<string, IVerb> verbs)
     {
         _verbs = verbs;
+    }
+
+    public void UpdateDecks(Dictionary<string, Deck> decks)
+    {
+        _decks = decks;
     }
 
     public void UpdateLegacies(Dictionary<string, Legacy> legacies)
@@ -124,6 +131,18 @@ public class Compendium : ICompendium
         return verbsList;
     }
 
+    public List<Deck> GetAllDecks()
+    {
+        List<Deck> decksList = new List<Deck>();
+
+        foreach (KeyValuePair<string, Deck> keyValuePair in _decks)
+        {
+            decksList.Add(keyValuePair.Value);
+        }
+
+        return decksList;
+    }
+
     public List<Legacy> GetAllLegacies()
     {
         List<Legacy> legaciesList = new List<Legacy>();
@@ -143,6 +162,14 @@ public class Compendium : ICompendium
 
         return _verbs[verbId];
     }
+
+    public Deck GetDeckById(string id)
+    {
+        if (!_decks.ContainsKey(id))
+            return null;
+        return _decks[id];
+    }
+
 
     public Legacy GetLegacyById(string legacyId)
     {

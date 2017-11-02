@@ -12,26 +12,34 @@ namespace Assets.Core.Entities
     /// </summary>
     public class Deck
     {
-        private Stack<IElementStack> cards;
+        private string _id;
+        private Stack<IElementStack> _cards;
 
-        public Deck()
+        public Deck(string id)
         {
-            cards=new Stack<IElementStack>();
+            _id = id;
+            _cards = new Stack<IElementStack>();
         }
 
-        public Deck(Stack<IElementStack> cards)
+        public Deck(string id,Stack<IElementStack> cards)
         {
+            _id = id;
             cards = new Stack<IElementStack>();
+        }
+
+        public string Id
+        {
+            get { return _id; }
         }
 
         public IElementStack Draw()
         {
-            return cards.Pop();
+            return _cards.Pop();
         }
 
         public void Add(IElementStack card)
         {
-            cards.Push(card);
+            _cards.Push(card);
         }
     }
 }

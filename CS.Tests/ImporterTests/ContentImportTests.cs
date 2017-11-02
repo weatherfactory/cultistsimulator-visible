@@ -21,7 +21,6 @@ namespace CS.Tests
         private const string RECIPE_1_DESCRIPTION = "to play / us out...";
         private const string RECIPE_1_ASIDE = "(by the way...)";
         private const string RECIPE_1_WARMUP = "6";
-        private const string RECIPE_1_LINKED = "someid";
         private const string RECIPE_1_ENDING = "anending";
         private const int RECIPE_MAX_EXECUTIONS = 3;
         private const string RECIPE_BURN_IMAGE = "shadows_and_stains";
