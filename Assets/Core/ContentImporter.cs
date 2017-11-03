@@ -308,7 +308,11 @@ public class ContentImporter
                     r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KDECKEFFECT))
-                    r.DeckEffect = htEachRecipe[NoonConstants.KDECKEFFECT].ToString();
+                {
+                    string deckId = htEachRecipe[NoonConstants.KDECKEFFECT].ToString();
+                    LogIfNonexistentDeckId(deckId, r.Id);
+                    r.DeckEffect = deckId;
+                }
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
 
@@ -466,6 +470,12 @@ public class ContentImporter
         LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);
     }
 
+    private void LogIfNonexistentDeckId(string deckId, string recipeId)
+    {
+        if (!Decks.ContainsKey(deckId))
+            LogProblem("'" + recipeId + "' references non-existent deck '" + deckId + "'");
+    }
+
     private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)
     {
         if (referencedId!=null && Recipes.All(r => r.Id != referencedId))
@@ -477,8 +487,8 @@ public class ContentImporter
         _compendium = compendium;
         ImportVerbs();
         ImportElements();
-        ImportRecipes();
         ImportDecks();
+        ImportRecipes();
         ImportLegacies();
 
         //I'm not sure why I use fields rather than local variables returned from the import methods?

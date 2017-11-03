@@ -147,7 +147,7 @@ namespace Assets.CS.TabletopUI
                 {"health", 2},
                 {"reason", 2},
                 {"passion", 2},
-                {"shilling", 1},
+                {"shilling", 2},
                 {"startingletter", 1}
             };
 

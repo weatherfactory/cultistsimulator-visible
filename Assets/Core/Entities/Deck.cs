@@ -47,7 +47,7 @@ namespace Assets.Core.Entities
             var unshuffledStack=new Stack<string>();
             foreach (var eId in _deckSpec)
             {
-                Add(eId);
+                unshuffledStack.Push(eId);
             }
 
             _cards=new Stack<string>(unshuffledStack.OrderBy(x=>rnd.Next()));
@@ -60,7 +60,15 @@ namespace Assets.Core.Entities
 
         public string Draw()
         {
-            return _cards.Pop();
+            try
+            {
+                return _cards.Pop();
+            }
+            catch (Exception e)
+            {
+                throw new NotImplementedException("Deck " + Id + " is empty!");
+            }
+            
         }
 
         
