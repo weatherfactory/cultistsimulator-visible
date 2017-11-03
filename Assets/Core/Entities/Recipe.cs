@@ -26,9 +26,14 @@ public class Recipe
     public string StartDescription { get; set; }
 
     /// <summary>
-    /// often empty string; displayed as an aside/commentary wheile a recipe is running
+    /// often empty string; displayed as an aside/commentary wheile a recipe is running. NOTE: currently has no effect - it's been exiled by the situation update
     /// </summary>
     public string Aside { get; set; }
+    /// <summary>
+    /// On completion, the recipe will draw
+    ///from this deck and add the result to the outcome.
+    /// </summary>
+    public string DeckEffect { get; set; }
 
     /// <summary>
     /// displayed in the results when the recipe is complete

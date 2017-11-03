@@ -14,6 +14,8 @@
      effects: {
 someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
      },
+	 deckeffect: //can only be one deck. On completion, the recipe will draw
+	 //from this deck and add the result to the outcome.
            alternativerecipes: //these will be completed in place of this recipe if (1) their requirements are satisfied *by concrete possessed resources, not considering those resources' aspects;
 		   //NB! -1 means 'there must be none of this resource'
            //and (2) if we roll <=chance on d100
@@ -24,7 +26,8 @@ someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
      description: "This'll appear when it completes",
      warmup: CONVENTIONS.TIME_SIGNIFICANT, //this is how long it'll take to completes. NB doesn't apply to triggered recipes
      craftable: false, //will it appear in workspace list?
-     loop: recipeid //this, or another recipe, may begin when this completes. NB if an alternative recipe is triggered, the loop from that will apply instead.
+     linked: recipeids + chance of executing. These are tested in order: if one has fulfilled requirements, isn't exhausted, and if the chance roll is made, it'll execute.
+	 NB if an alternative recipe is triggered, the loop from that will apply instead; NB also 'additional' linked recipes are marked unimplemented until I decide if we want them.
  }
  template for convenience:
  {

@@ -1,6 +1,16 @@
  {"recipes": [
-
-
+{id: "_testdeck",
+label: "Testing deck functionality",
+actionId: "dream",
+requirements: {shilling:1},
+effects: {glimmering:1},
+deckeffect: "commontoms",
+startdescription: "starting test deck",
+description: "end test deck",
+warmup: 1,
+craftable:true
+}
+,
 	{
         id: "_testxtrigger",
         label: "Testing xtrigger",

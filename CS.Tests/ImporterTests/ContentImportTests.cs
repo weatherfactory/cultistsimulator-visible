@@ -24,7 +24,7 @@ namespace CS.Tests
         private const string RECIPE_1_ENDING = "anending";
         private const int RECIPE_MAX_EXECUTIONS = 3;
         private const string RECIPE_BURN_IMAGE = "shadows_and_stains";
-
+        private const string RECIPE_1_DECKEFFECT = "deckerly";
         private const string REQ_1_ID = "req1id";
         private const int REQ_1_VALUE = 2;
         private const string REQ_2_ID = "req2id";
@@ -130,6 +130,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KACTIONID, RECIPE_1_ACTIONID);
             htRecipe.Add(NoonConstants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
             htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
+            htRecipe.Add(NoonConstants.KDECKEFFECT,RECIPE_1_DECKEFFECT);
             htRecipe.Add(NoonConstants.KASIDE, RECIPE_1_ASIDE);
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
@@ -237,6 +238,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().EndingFlag);
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS, recipesImported.First().MaxExecutions);
             Assert.AreEqual(RECIPE_BURN_IMAGE, recipesImported.First().BurnImage);
+            Assert.AreEqual(RECIPE_1_DECKEFFECT, recipesImported.First().DeckEffect);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

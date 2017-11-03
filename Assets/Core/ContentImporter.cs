@@ -307,6 +307,9 @@ public class ContentImporter
                 if (htEachRecipe.ContainsKey(NoonConstants.KASIDE))
                     r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
 
+                if (htEachRecipe.ContainsKey(NoonConstants.KDECKEFFECT))
+                    r.DeckEffect = htEachRecipe[NoonConstants.KDECKEFFECT].ToString();
+
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
 
                 r.EndingFlag = htEachRecipe[NoonConstants.KENDING] == null

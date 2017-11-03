@@ -43,6 +43,14 @@ namespace Assets.Core
             currentCharacter = character;
         }
 
+        /// <summary>
+        /// If linked recipes exist for this recipe:
+        /// - check its requirements are satisfied by the situation
+        /// - check it is not exhausted
+        /// - check the chance is satisfied
+        /// </summary>
+        /// <param name="recipe"></param>
+        /// <returns></returns>
         public Recipe GetLinkedRecipe(Recipe recipe)
         {
 
