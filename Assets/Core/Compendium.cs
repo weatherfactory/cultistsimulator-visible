@@ -31,6 +31,7 @@ public interface ICompendium
     List<Legacy> GetAllLegacies();
     Legacy GetLegacyById(string legacyId);
     void UpdateDecks(Dictionary<string, Deck> decks);
+    List<Deck> GetAllDecks();
 }
 
 public class Compendium : ICompendium

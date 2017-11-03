@@ -224,7 +224,27 @@ public class ContentImporter
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
 
-            Deck d=new Deck(htEachDeck["id"].ToString());
+            //deckspec
+            var thisDeckSpec=new List<string>();
+            try
+            {
+                ArrayList htDeckSpec = htEachDeck.GetArrayList(NoonConstants.KDECKSPEC);
+                if (htDeckSpec != null)
+                {
+                    foreach (string v in htDeckSpec)
+                    {
+                       LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deck spec items)");
+                       thisDeckSpec.Add(v);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing deckspec for deck '" + htEachDeck[NoonConstants.KID].ToString() + "' - " + e.Message);
+            }
+
+
+            Deck d=new Deck(htEachDeck["id"].ToString(),thisDeckSpec);
 
             Decks.Add(d.Id,d);
         }

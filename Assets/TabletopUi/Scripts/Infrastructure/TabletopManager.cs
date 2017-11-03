@@ -124,9 +124,21 @@ namespace Assets.CS.TabletopUI
             
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(CrossSceneState.GetChosenLegacy());
-             var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
+            DealStartingDecks();
+            var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
             BeginNewSituation(startingNeedsSituationCreationCommand);
         }
+
+        private void DealStartingDecks()
+        {
+            var c = Registry.Retrieve<ICompendium>();
+            var startingDecks = c.GetAllDecks();
+            foreach (var d in startingDecks)
+            {
+                d.Reset();
+            }
+        }
+
 
         private void ProvisionStartingElements(Legacy chosenLegacy)
         {

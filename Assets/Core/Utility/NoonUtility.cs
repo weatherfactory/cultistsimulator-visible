@@ -12,7 +12,6 @@ namespace Noon
     public class NoonConstants
     {
 
-
         public const string KCHARACTERSTATE = "state";
         public const string KLINKED="linked";
         public const string KENDING="ending";
@@ -38,6 +37,7 @@ namespace Noon
         public const string KGREEDY = "greedy";
         public const string KCONSUMES = "consumes";
         public const string KBURNIMAGE = "burnimage";
+        public const string KDECKSPEC = "spec";
 
 
         public const string KCHANCE = "chance";
