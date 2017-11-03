@@ -33,7 +33,7 @@ public class ContentImporter
     public Dictionary<string, Element> Elements;
     public Dictionary<string, Legacy> Legacies;
     public List<Recipe> Recipes;
-    private Dictionary<string, Deck> Decks;
+    private Dictionary<string, IDeck> Decks;
 
 
     public ContentImporter()
@@ -42,7 +42,7 @@ public class ContentImporter
         Verbs = new Dictionary<string, IVerb>();
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
-        Decks = new Dictionary<string, Deck>();
+        Decks = new Dictionary<string, IDeck>();
         Legacies = new Dictionary<string,Legacy>();
     }
 

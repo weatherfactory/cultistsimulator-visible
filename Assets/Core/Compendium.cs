@@ -18,6 +18,7 @@ public interface ICompendium
     void UpdateElements(Dictionary<string, Element> elements);
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
     void UpdateLegacies(Dictionary<string, Legacy> legacies);
+    void UpdateDecks(Dictionary<string, IDeck> decks);
     Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
@@ -30,8 +31,9 @@ public interface ICompendium
 
     List<Legacy> GetAllLegacies();
     Legacy GetLegacyById(string legacyId);
-    void UpdateDecks(Dictionary<string, Deck> decks);
-    List<Deck> GetAllDecks();
+
+    List<IDeck> GetAllDecks();
+    IDeck GetDeckById(string id);
 }
 
 public class Compendium : ICompendium
@@ -40,7 +42,7 @@ public class Compendium : ICompendium
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
-    private Dictionary<string, Deck> _decks;
+    private Dictionary<string, IDeck> _decks;
 
 
     public void UpdateRecipes(List<Recipe> allRecipes)
@@ -59,7 +61,7 @@ public class Compendium : ICompendium
         _verbs = verbs;
     }
 
-    public void UpdateDecks(Dictionary<string, Deck> decks)
+    public void UpdateDecks(Dictionary<string, IDeck> decks)
     {
         _decks = decks;
     }
@@ -132,11 +134,11 @@ public class Compendium : ICompendium
         return verbsList;
     }
 
-    public List<Deck> GetAllDecks()
+    public List<IDeck> GetAllDecks()
     {
-        List<Deck> decksList = new List<Deck>();
+        List<IDeck> decksList = new List<IDeck>();
 
-        foreach (KeyValuePair<string, Deck> keyValuePair in _decks)
+        foreach (KeyValuePair<string, IDeck> keyValuePair in _decks)
         {
             decksList.Add(keyValuePair.Value);
         }
@@ -164,7 +166,7 @@ public class Compendium : ICompendium
         return _verbs[verbId];
     }
 
-    public Deck GetDeckById(string id)
+    public IDeck GetDeckById(string id)
     {
         if (!_decks.ContainsKey(id))
             return null;

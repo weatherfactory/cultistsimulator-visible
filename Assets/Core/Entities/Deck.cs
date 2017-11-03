@@ -7,12 +7,23 @@ using Noon;
 
 namespace Assets.Core.Entities
 {
+    public interface IDeck
+    {
+        /// <summary>
+        /// resets deck (with up to date version of each stack). Use this when first creating the deck
+        /// </summary>
+        void Reset();
+
+        string Id { get; }
+        string Draw();
+        void Add(string elementId);
+    }
 
     /// <summary>
     /// A Deck is a wrapped stack in the classic, not the Cultist Simulator-specific, sense.
     /// I'm wrapping it partly to encapsulate implementation but also to minimise naming confusion.
     /// </summary>
-    public class Deck
+    public class Deck : IDeck
     {
         private string _id;
         //Deck spec determines which cards start in the deck after each reset

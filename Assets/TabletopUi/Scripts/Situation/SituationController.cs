@@ -200,7 +200,7 @@ namespace Assets.TabletopUi {
 
             currentCharacter.AddExecutionToHistory(command.Recipe.Id);
             var executor = new SituationEffectExecutor();
-            executor.RunEffects(command, situationWindow.GetStorageStacksManager());
+            executor.RunEffects(command, situationWindow.GetStorageStacksManager(),compendium);
 
             if (command.Recipe.EndingFlag != null) {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
