@@ -60,15 +60,12 @@ namespace Assets.Core.Entities
 
         public string Draw()
         {
-            try
-            {
+            if (_cards.Any())
                 return _cards.Pop();
-            }
-            catch (Exception e)
-            {
-                throw new NotImplementedException("Deck " + Id + " is empty!");
-            }
-            
+            else
+                return null;
+
+
         }
 
         
