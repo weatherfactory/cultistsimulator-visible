@@ -28,6 +28,8 @@ namespace Assets.Logic
         private void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,ICompendium compendium)
         {
             var deckId = command.GetDeckEffect();
+            if(deckId!=null)
+            { 
             var deck = compendium.GetDeckById(deckId);
             if (deck != null)
             {
@@ -39,6 +41,7 @@ namespace Assets.Logic
                 }
                 else
                 stacksManager.ModifyElementQuantity(drawnElementId,1);
+            }
             }
         }
 
