@@ -15,7 +15,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
-        Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputNotes);
+        Hashtable GetHashTableForSituationNotes(IEnumerable<ISituationNote> notes);
         Hashtable GetHashtableForExtragameState();
 }
 
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSituations = new Hashtable();
             foreach (var s in situations)
             {
-                var htSituationProperties = s.GetSaveDataForSituation(); 
+                var htSituationProperties = s.GetSaveData(); 
                 htSituations.Add(s.SaveLocationInfo, htSituationProperties);
             }
             return htSituations;
@@ -90,19 +90,18 @@ private Hashtable GetHashtableForThisStack(IElementStack e, Hashtable htElementS
             return htStackProperties;
         }
 
-        public Hashtable GetHashtableForOutputNotes(IEnumerable<ISituationOutputNote> outputNotes)
+        public Hashtable GetHashTableForSituationNotes(IEnumerable<ISituationNote> notes)
         {
-            var htOutputNotes=new Hashtable();
-            foreach (var on in outputNotes)
+            var htNotes=new Hashtable();
+            foreach (var on in notes)
             {
-                var htEachOutputNotes = new Hashtable();
-                htEachOutputNotes.Add(SaveConstants.SAVE_TITLE, on.TitleText);
-                htEachOutputNotes.Add(SaveConstants.SAVE_DESCRIPTION, on.DescriptionText);
+                var htEachNote = new Hashtable();
+                htEachNote.Add(SaveConstants.SAVE_TITLE, on.Description);
 
-                htOutputNotes.Add((htOutputNotes.Keys.Count + 1).ToString(), htEachOutputNotes); //need that tostring! exporter doesn't cope well with int keys
+                htNotes.Add((htNotes.Keys.Count + 1).ToString(), htEachNote); //need that tostring! exporter doesn't cope well with int keys
             }
 
-            return htOutputNotes;
+            return htNotes;
         }
         
     }

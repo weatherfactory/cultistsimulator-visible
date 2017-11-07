@@ -12,23 +12,34 @@ using Noon;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public interface ISituationOutputNote
+public interface ISituationNote
 {
-    string TitleText { get; }
-    string DescriptionText { get; }
+    string Title { get; }
+    string Description { get; }
 }
 
-public class SituationOutputNote : MonoBehaviour, ISituationOutputNote
+public class SituationNote : ISituationNote
 {
-    [SerializeField]private TextMeshProUGUI Title;
-    [SerializeField]private TextMeshProUGUI Description;
-    
-    public string TitleText { get { return Title.text; } }
-    public string DescriptionText { get { return Description.text; } }
-    public void Initialise(INotification notification)
+    /// <summary>
+    /// Title is currently unused.
+    /// </summary>
+    public string Title { get; set; }
+    public string Description { get; set; }
+
+    public SituationNote()
     {
-        Title.text = notification.Title;
-        Description.text = notification.Description;
+        
+    }
+
+    public SituationNote(string description)
+    {
+        Description = description;
+    }
+
+    public SituationNote(string title, string description)
+    {
+        Title = title;
+        Description = description;
     }
 
 

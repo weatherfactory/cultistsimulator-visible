@@ -55,19 +55,16 @@ namespace Assets.TabletopUi {
                 //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
                 if (command.OverrideTitle != null)
                     situationWindow.Title = command.OverrideTitle;
-                if (command.OverrideDescription != null)
-                    situationWindow.Description = command.OverrideDescription;
 
             }
             else if (command.State == SituationState.Complete) {
                 Situation = new Situation(this);
+                Situation.State = SituationState.Complete;
                 situationWindow.SetComplete();
 
                 //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
                 if (command.OverrideTitle != null)
                     situationWindow.Title = command.OverrideTitle;
-                if (command.OverrideDescription != null)
-                    situationWindow.Description = command.OverrideDescription;
                 //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
                 if (command.CompletionCount > 0)
                     situationToken.SetCompletionCount(command.CompletionCount);
@@ -80,7 +77,7 @@ namespace Assets.TabletopUi {
         }
 
         public void OpenSituation() {
-            // Make sure we're unstarted if for some reason we did not reset the window
+            // Make sure we're displaying as unstarted if for some reason we did not reset the window
             if (Situation.State == SituationState.Unstarted)
                 situationWindow.SetUnstarted();
 
@@ -211,7 +208,9 @@ namespace Assets.TabletopUi {
         public void SituationComplete() {
             var stacksToRetrieve = situationWindow.GetStoredStacks();
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
-            SetOutput(stacksToRetrieve.ToList(), notification);
+            SetOutput(stacksToRetrieve.ToList());
+
+            situationWindow.AddNote(notification);
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindow.SetComplete();
@@ -226,8 +225,13 @@ namespace Assets.TabletopUi {
             ResetToStartingState();
         }
 
-        public void SetOutput(List<IElementStack> stacksForOutput, INotification notification) {
-            situationWindow.SetOutput(stacksForOutput, notification);
+        public void SetOutput(List<IElementStack> stacksForOutput) {
+            situationWindow.SetOutput(stacksForOutput);
+        }
+
+        public void AddNote(INotification notification)
+        {
+            situationWindow.AddNote(notification);
         }
 
         public void UpdateTokenResultsCountBadge() {
@@ -291,14 +295,13 @@ namespace Assets.TabletopUi {
             }
         }
 
-        public Hashtable GetSaveDataForSituation() {
+        public Hashtable GetSaveData() {
             var situationSaveData = new Hashtable();
             IGameDataExporter exporter = new GameDataExporter();
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
             if (Situation != null) {
                 situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindow.Title);
-                situationSaveData.Add(SaveConstants.SAVE_DESCRIPTION, situationWindow.Description);
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
                 situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, Situation.TimeRemaining);
@@ -330,12 +333,10 @@ namespace Assets.TabletopUi {
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS, htStacksInOutput);
             }
 
-            //save output notes
-
             //save notes, and their contents
-            if (situationWindow.GetOutputNotes().Any()) {
-                var htOutputs = exporter.GetHashtableForOutputNotes(situationWindow.GetOutputNotes());
-                situationSaveData.Add(SaveConstants.SAVE_SITUATIONOUTPUTNOTES, htOutputs);
+            if (situationWindow.GetNotes().Any()) {
+                var htNotes = exporter.GetHashTableForSituationNotes(situationWindow.GetNotes());
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONNOTES, htNotes);
             }
             return situationSaveData;
         }

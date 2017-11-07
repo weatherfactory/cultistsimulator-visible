@@ -35,12 +35,10 @@ namespace Assets.Logic
             {
                 var drawnElementId = deck.Draw();
 
-                if(drawnElementId==null)
-                { 
-                    throw new NotImplementedException("Haven't yet decided what to do with empty decks!");
-                }
-                else
-                stacksManager.ModifyElementQuantity(drawnElementId,1);
+                if(drawnElementId!=null)
+                    stacksManager.ModifyElementQuantity(drawnElementId,1);
+                //else
+                //do nothing, yet. Exhausted decks just stay empty.
             }
             }
         }

@@ -30,7 +30,7 @@ namespace Assets.CS.TabletopUI {
         [Space]
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI title;
-		public PaginatedText notes;
+		public PaginatedText PaginatedNotes;
 
 		[Space]
         // Public to test
@@ -55,6 +55,7 @@ namespace Assets.CS.TabletopUI {
 
 		private SituationController situationController;
 		private IVerb Verb;
+        private ISituationDetails _situationDetailsImplementation;
 
         public bool IsOpen {
             get { return gameObject.activeInHierarchy; }
@@ -65,13 +66,6 @@ namespace Assets.CS.TabletopUI {
 			set { title.text = value; }
         }
 
-        public string Description {
-            get { return "Notes need saving in new format - best to repurpose OutputNotes"; }
-
-            set {
-                return;
-            }
-        }
 
         // INIT & LIFECYCLE
 
@@ -88,6 +82,7 @@ namespace Assets.CS.TabletopUI {
 			Verb = verb;
             name = "Window_" + verb.Id;
             artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
+
 
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);
@@ -149,9 +144,9 @@ namespace Assets.CS.TabletopUI {
 
         // Results State
 
-        public void SetOutput(List<IElementStack> stacks, INotification notification) {
+        public void SetOutput(List<IElementStack> stacks) {
             results.SetOutput(stacks);
-            notes.AddText(notification.Description);
+ 
         }
 
         public void SetComplete() {
@@ -165,21 +160,26 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayUnstarted() {
             Title = Verb.Label;
-            notes.SetText(Verb.Description);
+            PaginatedNotes.SetText(Verb.Description);
             DisplayRecipeHint(null);
             DisplayButtonState(false);
         }
 
 		public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
-			notes.SetText(Verb.Description);
-			DisplayRecipeHint("This does not work. If I experiment further, I may find another combination.");
+			PaginatedNotes.SetText(Verb.Description);
+			DisplayRecipeHint("This does nothing. If I experiment further, I may find another combination.");
 			DisplayButtonState(false);
 		}
 
-		public void DisplayStartingRecipeFound(Recipe r) {
+        public void AddNote(INotification notification)
+        {
+            PaginatedNotes.AddText(notification.Description);
+        }
+
+        public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
-			notes.SetText(r.StartDescription);
+			PaginatedNotes.SetText(r.StartDescription);
             DisplayTimeRemaining(r.Warmup, r.Warmup); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayRecipeHint(null);
 			DisplayButtonState(true);
@@ -189,7 +189,7 @@ namespace Assets.CS.TabletopUI {
 
 		public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
-			notes.AddText(recipePrediction.DescriptiveText);
+			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
 			DisplayRecipeHint(recipePrediction.Commentary);
 			DisplayButtonState(false);
 		}
@@ -357,8 +357,9 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public IEnumerable<ISituationOutputNote> GetOutputNotes() {
-           return new List<ISituationOutputNote>();
+        public IEnumerable<ISituationNote> GetNotes()
+        {
+            return PaginatedNotes.GetCurrentTexts();
         }
 
     }

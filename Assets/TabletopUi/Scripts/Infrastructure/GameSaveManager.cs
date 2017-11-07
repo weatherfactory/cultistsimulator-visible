@@ -68,7 +68,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void ImportHashedSaveToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
         {
-            dataImporter.ImportSavedGameToContainer(tabletopContainer,htSave);
+            dataImporter.ImportSavedGameToTabletop(tabletopContainer,htSave);
         }
 
         public SavedCrossSceneState RetrieveSavedCrossSceneState()

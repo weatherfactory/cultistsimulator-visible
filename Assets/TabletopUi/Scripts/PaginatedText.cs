@@ -14,16 +14,21 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Button prevPage;
         [SerializeField] Button nextPage;
 
-        [SerializeField] List<string> texts = new List<string>();
+        [SerializeField] List<ISituationNote> Notes = new List<ISituationNote>();
         bool isBusy;
         int currentPage = 0;
+
+       public List<ISituationNote> GetCurrentTexts()
+        {
+            return Notes;
+        }
 
         void OnEnable() {
             prevPage.onClick.AddListener(ShowPrevPage);
             nextPage.onClick.AddListener(ShowNextPage);
 
-            if (texts.Count > 0)
-                SetPage(0);
+            if (Notes.Count > 0)
+                SetPage(Notes.Count-1);
         }
 
         void OnDisable() {
@@ -32,26 +37,30 @@ namespace Assets.CS.TabletopUI {
 			isBusy = false;
         }
 
-        public void SetText(string text) {
-            if (texts.Count == 1 && texts[0] == text)
+        public void SetText(string description) {
+            if (Notes.Count == 1 && Notes[0].Description == description)
                 return;
 
-            texts.Clear();
-            texts.Add(text);
+            var newNote=new SituationNote(description);
+
+            Notes.Clear();
+            Notes.Add(newNote);
 			ShowPageNum(0);
         }
 
-		public void SetText(List<string> text) {
-			texts = text;
-			ShowPageNum(text.Count - 1);
+		public void SetText(List<ISituationNote> setNotes) {
+			Notes = setNotes;
+			ShowPageNum(setNotes.Count - 1);
 		}
 
-        public void AddText(string text) {
-            if (texts.Count > 0 && texts[texts.Count - 1] == text)
+        public void AddText(string description) {
+            if (Notes.Count > 0 && Notes[Notes.Count - 1].Description == description)
                 return;
+            var newNote = new SituationNote(description);
 
-            texts.Add(text);
-			ShowNextPage();
+            Notes.Add(newNote);
+            ShowFinalPage(); //assuming that we always want to show the last page, if a note has been added.
+            //This includes adding notes on reloading.
         }
 
 		void ShowPageNum(int page) {
@@ -60,6 +69,12 @@ namespace Assets.CS.TabletopUI {
 
         void ShowPrevPage() {
 			ShowPage(-1, AnimDirection.MoveLeft);
+        }
+
+        void ShowFinalPage()
+        {
+            var offsetToLast = currentPage + Notes.Count-1;
+            ShowPage(offsetToLast, AnimDirection.MoveRight); 
         }
 
         void ShowNextPage() {
@@ -77,16 +92,16 @@ namespace Assets.CS.TabletopUI {
 		}
 
 		void SetPage(int page) {
-			if (page + 1 >= texts.Count) 
-				currentPage = texts.Count - 1;
+			if (page + 1 > Notes.Count) 
+				currentPage = Notes.Count - 1;
 			else if (page <= 0)
 				currentPage = 0;
 			else
 				currentPage = page;
 
-			text.text = texts[currentPage];
+			text.text = Notes[currentPage].Description;
 			prevPage.interactable = currentPage > 0;
-			nextPage.interactable = currentPage + 1 < texts.Count;
+			nextPage.interactable = currentPage + 1 < Notes.Count;
 		}
 
 

@@ -24,9 +24,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_ONGOINGSLOTELEMENTS = "ongoingSlotElements";
         public const string SAVE_SITUATIONSTOREDELEMENTS = "situationStoredElements";
         public const string SAVE_SITUATIONOUTPUTSTACKS = "situationOutputStacks";
-        public const string SAVE_SITUATIONOUTPUTNOTES = "situationOutputNotes";
+        public const string SAVE_SITUATIONNOTES = "situationOutputNotes";
         public const string SAVE_TITLE = "title";
         public const string SAVE_DESCRIPTION = "description";
+
         public const string SAVE_COMPLETIONCOUNT = "completioncount";
 
 

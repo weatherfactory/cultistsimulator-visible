@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave);
+        void ImportSavedGameToTabletop(TabletopContainer tabletopContainer, Hashtable htSave);
         SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
     }
 
@@ -32,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public void ImportSavedGameToContainer(TabletopContainer tabletopContainer, Hashtable htSave)
+        public void ImportSavedGameToTabletop(TabletopContainer tabletopContainer, Hashtable htSave)
         {
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
@@ -95,12 +95,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);
 
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
-                command.OverrideDescription = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_DESCRIPTION);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
 
 
                 var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;
+
+                ImportSituationNotes(htSituationValues,situationController);
 
                 ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
@@ -116,10 +117,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopContainer tabletopContainer)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletopContainer);
-
-           var notificationForOutputNote= ImportOutputNotes(htSituationValues);
-
-            situationController.SetOutput(outputStacks, notificationForOutputNote);
+            situationController.SetOutput(outputStacks);
 
         }
 
@@ -134,7 +132,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                // foreach (var k in htSituationOutputStacks.Keys)
                // {
                    // var htThisOutputStack = htSituationOutputStacks.GetHashtable(k);
-                   // var htOutputElements = htThisOutputStack.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
+                   // var htOutputElements = htThisOutputStack.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
                     
                     var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
                     foreach (var eqs in elementQuantitySpecifications)
@@ -147,19 +145,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return outputStack;
         }
 
-        private Notification ImportOutputNotes(Hashtable htSituationValues)
+        private void ImportSituationNotes(Hashtable htSituationValues,SituationController controller)
         {
-            Notification notificationForOutputNote=null;
-            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTNOTES))
+            if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONNOTES))
             {
-                var htSituationOutputNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTNOTES);
-                foreach (var k in htSituationOutputNotes.Keys)
+                var htSituationNotes = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
+                foreach (var k in htSituationNotes.Keys)
                 {
-                    var htThisOutput = htSituationOutputNotes.GetHashtable(k);
-                    notificationForOutputNote=new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(),htThisOutput[SaveConstants.SAVE_DESCRIPTION].ToString());
+                    var htThisOutput = htSituationNotes.GetHashtable(k);
+                    //NOTE: titles not currently used, but probably will be again
+                    var notificationForSituationNote =new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(), htThisOutput[SaveConstants.SAVE_TITLE].ToString());
+                    controller.AddNote(notificationForSituationNote);
                 }
             }
-            return notificationForOutputNote;
+
         }
 
         private void ImportSituationStoredElements(Hashtable htSituationValues, SituationController controller)

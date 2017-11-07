@@ -23,7 +23,7 @@ using UnityEngine.UI;
 namespace Assets.CS.TabletopUI
 {
 
-    public class SituationToken : DraggableToken, ISituationAnchor, IGlowableView
+    public class SituationToken : DraggableToken, ISituationAnchor
     {
 
         [SerializeField] Image artwork;
@@ -137,9 +137,9 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public Hashtable GetSaveDataForSituation()
+        public Hashtable GetSaveData()
         {
-            return SituationController.GetSaveDataForSituation();
+            return SituationController.GetSaveData();
         }
 
         public void OpenToken()

@@ -10,13 +10,13 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationAnchor
+    public interface ISituationAnchor:ISaveable
     {
         string Id { get; }
         SituationController SituationController { get; }
         string SaveLocationInfo { get; set; }
         bool IsTransient { get; }
-        Hashtable GetSaveDataForSituation();
+        Hashtable GetSaveData();
         void OpenToken();
         void CloseToken();
 

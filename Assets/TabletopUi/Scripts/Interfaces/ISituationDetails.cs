@@ -13,7 +13,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationDetails {
         string Title { get; set; }
-        string Description { get; set; }
 
         void Initialise(IVerb verb,SituationController controller);
 
@@ -26,7 +25,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true);
         IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo);
 
-        void SetOutput(List<IElementStack> stacks,INotification notification);
+        void SetOutput(List<IElementStack> stacks);
         void SetUnstarted();
         void SetOngoing(Recipe forRecipe);
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
@@ -43,7 +42,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         IElementStacksManager GetStorageStacksManager();
 
-        IEnumerable<ISituationOutputNote> GetOutputNotes();
+        IEnumerable<ISituationNote> GetNotes();
 
         void SetSlotConsumptions();
 
@@ -58,5 +57,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void DisplayTimeRemaining(float duration, float timeRemaining);
         void DisplayNoRecipeFound();
+        void AddNote(INotification notification);
     }
 }
