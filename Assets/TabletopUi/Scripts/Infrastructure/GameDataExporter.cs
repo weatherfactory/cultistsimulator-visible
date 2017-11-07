@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 
@@ -11,9 +12,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations);
+        Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeck> decks);
 
-    Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
+        Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
         Hashtable GetHashTableForSituationNotes(IEnumerable<ISituationNote> notes);
         Hashtable GetHashtableForExtragameState();
@@ -27,12 +28,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations)
+        public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeck> decks)
         {
             var htAll = new Hashtable()
             {
                 {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
-                {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)}
+                {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)},
+                {SaveConstants.SAVE_DECKS,GetHashTableForDecks(decks) }
             };
             return htAll;
         }
@@ -67,14 +69,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htElementStacks = new Hashtable();
             foreach (var e in stacks)
             {
-               var stackHashtable=GetHashtableForThisStack(e, htElementStacks);
+               var stackHashtable=GetHashtableForThisStack(e);
 
                     htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
 
-
-
             }
             return htElementStacks;
+        }
+
+        public Hashtable GetHashTableForDecks(IEnumerable<IDeck> decks)
+        {
+            var htDecks=new Hashtable();
+            foreach (var d in decks)
+            {
+                var deckHashTable = d.GetSaveData();
+                htDecks.Add(d.Id,deckHashTable);
+            }
+            return htDecks;
         }
 
         public Hashtable GetHashtableForExtragameState()
@@ -82,7 +93,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return CrossSceneState.GetHashTableForCrossSceneState();
         }
 
-private Hashtable GetHashtableForThisStack(IElementStack e, Hashtable htElementStacks)
+private Hashtable GetHashtableForThisStack(IElementStack e)
         {
             var htStackProperties = new Hashtable();
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);

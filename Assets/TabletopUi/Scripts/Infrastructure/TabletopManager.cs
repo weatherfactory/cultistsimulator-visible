@@ -400,18 +400,18 @@ namespace Assets.CS.TabletopUI
 
             SetPausedState(true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            try
-            {
+            //try
+            //{
                 var htSave = saveGameManager.RetrieveHashedSave();
                 ClearBoard();
                 saveGameManager.ImportHashedSaveToContainer(tabletopContainer, htSave);
                 notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
 
-            }
-            catch (Exception e)
-            {
-                notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
+            //}
             heart.ResumeBeating();
         }
 
@@ -425,18 +425,18 @@ namespace Assets.CS.TabletopUI
             foreach (var t in allSituationTokens)
                 t.SituationController.CloseSituation();
 
-            try
-            {
+            //try
+            //{
                 var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
             saveGameManager.SaveActiveGame(tabletopContainer);
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
-            }
-            catch (Exception e)
-            {
+            //}
+            //catch (Exception e)
+            //{
 
-                notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
-            }
+            //    notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
+            //}
 
             heart.ResumeBeating();
         }

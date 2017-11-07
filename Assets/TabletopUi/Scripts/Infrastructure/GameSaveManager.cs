@@ -50,10 +50,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
             var allSituationTokens = tabletopContainer.GetAllSituationTokens();
-            
+            var allDecks = tabletopContainer.GetAllDecks();
 
             var htSaveTable = dataExporter.GetSaveHashTable(allStacks,
-                allSituationTokens);
+                allSituationTokens,allDecks);
 
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
         }

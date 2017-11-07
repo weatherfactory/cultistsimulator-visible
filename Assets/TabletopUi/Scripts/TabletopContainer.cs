@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -24,6 +25,13 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
 
     public IEnumerable<ISituationAnchor> GetAllSituationTokens() {
         return GetComponentsInChildren<ISituationAnchor>();
+    }
+
+    public List<IDeck> GetAllDecks()
+    {
+        //ISSUE! we are storing most dynamic data in the Unity object model, but, uniquely, Decks in the Compendium
+        //We need to store game state in one place.
+        return Registry.Retrieve<ICompendium>().GetAllDecks();
     }
 
     public void CloseAllSituationWindowsExcept(SituationToken except) {
