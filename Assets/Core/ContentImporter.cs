@@ -33,7 +33,7 @@ public class ContentImporter
     public Dictionary<string, Element> Elements;
     public Dictionary<string, Legacy> Legacies;
     public List<Recipe> Recipes;
-    private Dictionary<string, IDeck> Decks;
+    private Dictionary<string, IDeckSpec> DeckSpecs;
 
 
     public ContentImporter()
@@ -42,7 +42,7 @@ public class ContentImporter
         Verbs = new Dictionary<string, IVerb>();
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
-        Decks = new Dictionary<string, IDeck>();
+        DeckSpecs = new Dictionary<string, IDeckSpec>();
         Legacies = new Dictionary<string,Legacy>();
     }
 
@@ -210,7 +210,7 @@ public class ContentImporter
         }
 
     }
-    private void ImportDecks()
+    private void ImportDeckSpecs()
     {
         ArrayList decksArrayList=new ArrayList();
         TextAsset[] deckTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
@@ -233,20 +233,20 @@ public class ContentImporter
                 {
                     foreach (string v in htDeckSpec)
                     {
-                       LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deck spec items)");
+                       LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
                        thisDeckSpec.Add(v);
                     }
                 }
             }
             catch (Exception e)
             {
-                LogProblem("Problem importing deckspec for deck '" + htEachDeck[NoonConstants.KID].ToString() + "' - " + e.Message);
+                LogProblem("Problem importing deckspec for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() + "' - " + e.Message);
             }
 
 
-            Deck d=new Deck(htEachDeck["id"].ToString(),thisDeckSpec);
+            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec);
 
-            Decks.Add(d.Id,d);
+            DeckSpecs.Add(d.Id,d);
         }
         
     }
@@ -472,8 +472,8 @@ public class ContentImporter
 
     private void LogIfNonexistentDeckId(string deckId, string recipeId)
     {
-        if (!Decks.ContainsKey(deckId))
-            LogProblem("'" + recipeId + "' references non-existent deck '" + deckId + "'");
+        if (!DeckSpecs.ContainsKey(deckId))
+            LogProblem("'" + recipeId + "' references non-existent deckSpec '" + deckId + "'");
     }
 
     private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)
@@ -487,7 +487,7 @@ public class ContentImporter
         _compendium = compendium;
         ImportVerbs();
         ImportElements();
-        ImportDecks();
+        ImportDeckSpecs();
         ImportRecipes();
         ImportLegacies();
 
@@ -497,7 +497,7 @@ public class ContentImporter
         _compendium.UpdateRecipes(Recipes);
         _compendium.UpdateElements(Elements);
         _compendium.UpdateVerbs(Verbs);
-        _compendium.UpdateDecks(Decks);
+        _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
 
     }

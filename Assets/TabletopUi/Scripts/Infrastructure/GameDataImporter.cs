@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToTabletop(TabletopContainer tabletopContainer, Hashtable htSave);
+        void ImportSavedGameToState(TabletopContainer tabletopContainer, IGameEntityStorage storage, Hashtable htSave);
         SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
     }
 
@@ -32,16 +32,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public void ImportSavedGameToTabletop(TabletopContainer tabletopContainer, Hashtable htSave)
+        public void ImportSavedGameToState(TabletopContainer tabletopContainer,IGameEntityStorage storage, Hashtable htSave)
         {
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
+            var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
             ImportTabletopElementStacks(tabletopContainer, htElementStacks);
 
             ImportSituations(tabletopContainer, htSituations);
 
+            ImportDecks(storage, htDecks);
+
         }
+
+
 
         public SavedCrossSceneState ImportCrossSceneState(Hashtable htSave)
         {
@@ -77,6 +82,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 tabletopContainer.GetElementStacksManager()
                     .IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], quantity, locationInfo.ToString());
+            }
+        }
+
+        private void ImportDecks(IGameEntityStorage storage, Hashtable htDeckInstances)
+        {
+            foreach (var k in htDeckInstances.Keys)
+            {
+                var htEachDeck = htDeckInstances.GetHashtable(k);
+
+                IDeckSpec spec = compendium.GetDeckSpecById(k.ToString());
+                IDeckInstance deckInstance =  new DeckInstance(spec);
+
+                //this is pretty fragile. It assumes that the keys are contiguous integers starting at 1
+                for(int i=1;i<=htEachDeck.Count;i++)
+                    deckInstance.Add(htEachDeck[i.ToString()].ToString());
+
+                storage.DeckInstances.Add(deckInstance);
             }
         }
 

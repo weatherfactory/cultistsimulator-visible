@@ -12,7 +12,7 @@ namespace Assets.Logic
 {
    public class SituationEffectExecutor
     {
-        public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,ICompendium compendium)
+        public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
             var aspectsPresent = stacksManager.GetTotalAspects();
             aspectsPresent.CombineAspects(command.Recipe.Aspects);
@@ -20,17 +20,17 @@ namespace Assets.Logic
 
             RunXTriggers(stacksManager, aspectsPresent);
             //note: standard effects happen *after* XTrigger effects
-            RunDeckEffect(command,stacksManager,compendium);
+            RunDeckEffect(command,stacksManager,storage);
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
         }
 
-        private void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,ICompendium compendium)
+        private void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
             var deckId = command.GetDeckEffect();
             if(deckId!=null)
             { 
-            var deck = compendium.GetDeckById(deckId);
+            var deck = storage.DeckInstances.SingleOrDefault(d=>d.Id==deckId);
             if (deck != null)
             {
                 var drawnElementId = deck.Draw();

@@ -18,7 +18,7 @@ public interface ICompendium
     void UpdateElements(Dictionary<string, Element> elements);
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
     void UpdateLegacies(Dictionary<string, Legacy> legacies);
-    void UpdateDecks(Dictionary<string, IDeck> decks);
+    void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
     Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
@@ -32,8 +32,8 @@ public interface ICompendium
     List<Legacy> GetAllLegacies();
     Legacy GetLegacyById(string legacyId);
 
-    List<IDeck> GetAllDecks();
-    IDeck GetDeckById(string id);
+    List<IDeckSpec> GetAllDeckSpecs();
+    IDeckSpec GetDeckSpecById(string id);
 }
 
 public class Compendium : ICompendium
@@ -42,7 +42,7 @@ public class Compendium : ICompendium
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
-    private Dictionary<string, IDeck> _decks;
+    private Dictionary<string, IDeckSpec> _decks;
 
 
     public void UpdateRecipes(List<Recipe> allRecipes)
@@ -61,9 +61,9 @@ public class Compendium : ICompendium
         _verbs = verbs;
     }
 
-    public void UpdateDecks(Dictionary<string, IDeck> decks)
+    public void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs)
     {
-        _decks = decks;
+        _decks = deckSpecs;
     }
 
     public void UpdateLegacies(Dictionary<string, Legacy> legacies)
@@ -134,11 +134,11 @@ public class Compendium : ICompendium
         return verbsList;
     }
 
-    public List<IDeck> GetAllDecks()
+    public List<IDeckSpec> GetAllDeckSpecs()
     {
-        List<IDeck> decksList = new List<IDeck>();
+        List<IDeckSpec> decksList = new List<IDeckSpec>();
 
-        foreach (KeyValuePair<string, IDeck> keyValuePair in _decks)
+        foreach (KeyValuePair<string, IDeckSpec> keyValuePair in _decks)
         {
             decksList.Add(keyValuePair.Value);
         }
@@ -166,7 +166,7 @@ public class Compendium : ICompendium
         return _verbs[verbId];
     }
 
-    public IDeck GetDeckById(string id)
+    public IDeckSpec GetDeckSpecById(string id)
     {
         if (!_decks.ContainsKey(id))
             return null;

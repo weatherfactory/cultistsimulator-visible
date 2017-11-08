@@ -195,13 +195,16 @@ namespace Assets.TabletopUi {
                 return;
             }
 
+            var tabletopManager = Registry.Retrieve<TabletopManager>();
+
+
             currentCharacter.AddExecutionToHistory(command.Recipe.Id);
             var executor = new SituationEffectExecutor();
-            executor.RunEffects(command, situationWindow.GetStorageStacksManager(),compendium);
+            executor.RunEffects(command, situationWindow.GetStorageStacksManager(),currentCharacter);
 
             if (command.Recipe.EndingFlag != null) {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
-                Registry.Retrieve<TabletopManager>().EndGame(ending);
+                tabletopManager.EndGame(ending);
             }
         }
 

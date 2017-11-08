@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeck> decks);
+        Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> decks);
 
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
@@ -28,13 +28,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeck> decks)
+        public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> deckInstances)
         {
             var htAll = new Hashtable()
             {
                 {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
                 {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)},
-                {SaveConstants.SAVE_DECKS,GetHashTableForDecks(decks) }
+                {SaveConstants.SAVE_DECKS,GetHashTableForDecks(deckInstances) }
             };
             return htAll;
         }
@@ -77,10 +77,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htElementStacks;
         }
 
-        public Hashtable GetHashTableForDecks(IEnumerable<IDeck> decks)
+        public Hashtable GetHashTableForDecks(IEnumerable<IDeckInstance> deckInstances)
         {
             var htDecks=new Hashtable();
-            foreach (var d in decks)
+            foreach (var d in deckInstances)
             {
                 var deckHashTable = d.GetSaveData();
                 htDecks.Add(d.Id,deckHashTable);

@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using JetBrains.Annotations;
 
-public class Character
+public class Character:IGameEntityStorage
 {
     private string _title;
     private string _firstName;
     private string _lastName;
     public CharacterState State { get; set; }
+    public List<IDeckInstance> DeckInstances { get; set; }
+
     private Dictionary<string, int> recipeExecutions;
     private string _endingTriggeredId = null;
 
@@ -17,6 +21,7 @@ public class Character
     {
         State = CharacterState.Viable;
         recipeExecutions=new Dictionary<string, int>();
+        DeckInstances=new List<IDeckInstance>();
     }
 
     public void AddExecutionToHistory(string forRecipeId)
@@ -65,7 +70,6 @@ public class Character
     {
         get { return _endingTriggeredId; }
     }
-
 
 
 }

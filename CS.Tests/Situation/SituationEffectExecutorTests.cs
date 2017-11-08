@@ -12,6 +12,16 @@ using NUnit.Framework;
 
 namespace Assets.Editor.Tests
 {
+
+    public class FakeStorage:IGameEntityStorage
+    {
+        public List<IDeckInstance> DeckInstances { get; set; }
+
+        public FakeStorage()
+        {
+            DeckInstances=new List<IDeckInstance>();
+        }
+    }
     [TestFixture]
     public class SituationEffectExecutorTests
     {
@@ -40,32 +50,32 @@ namespace Assets.Editor.Tests
             mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary());
 
             var ex =new SituationEffectExecutor();
-            ex.RunEffects(mockCommand, mockStacksManager,new Compendium());
+            ex.RunEffects(mockCommand, mockStacksManager,new FakeStorage());
             mockStacksManager.Received().ModifyElementQuantity("e",1);
         }
         [Test]
         public void RecipeDeckEffect_IsApplied()
         {
             string deckId = "did";
-            //prep deck to be drawn from
-            IDeck deck = Substitute.For<IDeck>();
-            deck.Draw().Returns("e");
+            //prep deckSpec to be drawn from
+            IDeckInstance deckInstance = Substitute.For<DeckInstance>();
+            deckInstance.Draw().Returns("e");
 
             //return empty element changes
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
             
-            //but we return the deck id
+            //but we return the deckid
             mockCommand.GetDeckEffect().Returns(deckId);
             mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary()); //need something in the aspects to satisfy the requirement to combine 'em
 
-            //and we set up to return the deck for that ID from the compendium
-            var mockCompendium = Substitute.For<ICompendium>();
-            mockCompendium.GetDeckById(deckId).Returns(deck);
+            //and we set up to return the deckSpec for that ID from the compendium
+            var storage =new FakeStorage();
+            storage.DeckInstances.Add(deckInstance);
 
             var ex = new SituationEffectExecutor();
 
 
-            ex.RunEffects(mockCommand, mockStacksManager,mockCompendium);
+            ex.RunEffects(mockCommand, mockStacksManager,storage);
 
             mockStacksManager.Received().ModifyElementQuantity("e", 1);
 
@@ -85,7 +95,7 @@ namespace Assets.Editor.Tests
             var ex = new SituationEffectExecutor();
 
 
-            ex.RunEffects(mockCommand, mockStacksManager,new Compendium());
+            ex.RunEffects(mockCommand, mockStacksManager,new FakeStorage());
             mockStacksManager.Received().ModifyElementQuantity("1", -1);
             mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1);
         }
@@ -105,7 +115,7 @@ namespace Assets.Editor.Tests
 
             var ex = new SituationEffectExecutor();
 
-            ex.RunEffects(mockCommand, mockStacksManager,new Compendium());
+            ex.RunEffects(mockCommand, mockStacksManager,new FakeStorage());
             mockStacksManager.Received().ModifyElementQuantity("1", -1);
             mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1);
         }

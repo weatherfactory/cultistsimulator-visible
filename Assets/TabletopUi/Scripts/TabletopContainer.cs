@@ -16,6 +16,7 @@ using Noon;
 
 public class TabletopContainer : MonoBehaviour, ITokenContainer {
 
+
     public void TokenPickedUp(DraggableToken draggableToken) {
         draggableToken.lastTablePos = draggableToken.transform.position;
     }
@@ -27,12 +28,7 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         return GetComponentsInChildren<ISituationAnchor>();
     }
 
-    public List<IDeck> GetAllDecks()
-    {
-        //ISSUE! we are storing most dynamic data in the Unity object model, but, uniquely, Decks in the Compendium
-        //We need to store game state in one place.
-        return Registry.Retrieve<ICompendium>().GetAllDecks();
-    }
+
 
     public void CloseAllSituationWindowsExcept(SituationToken except) {
         var situationTokens = GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);

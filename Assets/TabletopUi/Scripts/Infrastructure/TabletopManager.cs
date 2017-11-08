@@ -131,12 +131,15 @@ namespace Assets.CS.TabletopUI
 
         private void DealStartingDecks()
         {
-            var c = Registry.Retrieve<ICompendium>();
-            var startingDecks = c.GetAllDecks();
-            foreach (var d in startingDecks)
-            {
-                d.Reset();
+            IGameEntityStorage character = Registry.Retrieve<Character>();
+            var compendium = Registry.Retrieve<ICompendium>();
+            foreach(var ds in compendium.GetAllDeckSpecs())
+            { 
+                IDeckInstance di=new DeckInstance(ds);
+                character.DeckInstances.Add(di);
+                di.Reset();
             }
+
         }
 
 
@@ -183,15 +186,16 @@ namespace Assets.CS.TabletopUI
 			tabletopContainer.PutOnTable(token);
 		}
 
-        public void ClearBoard()
+        public void ClearGameState(Heart h, IGameEntityStorage s,TabletopContainer tc)
         {
-            heart.Clear();
+            h.Clear();
+            s.DeckInstances=new List<IDeckInstance>();
+       
+            foreach (var situation in tc.GetAllSituationTokens())
+                situation.Retire();
 
-            foreach (var s in tabletopContainer.GetAllSituationTokens())
-                s.Retire();
-
-            foreach (var e in tabletopContainer.GetElementStacksManager().GetStacks())
-                e.Retire(true); //looks daft but pretty on reset
+            foreach (var element in tc.GetElementStacksManager().GetStacks())
+                element.Retire(true); //looks daft but pretty on reset
         }
 
         public void RestartGame()
@@ -397,14 +401,17 @@ namespace Assets.CS.TabletopUI
 
         public void LoadGame()
         {
+            ICompendium compendium = Registry.Retrieve<ICompendium>();
+            IGameEntityStorage storage = Registry.Retrieve<Character>();
 
             SetPausedState(true);
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             //try
             //{
                 var htSave = saveGameManager.RetrieveHashedSave();
-                ClearBoard();
-                saveGameManager.ImportHashedSaveToContainer(tabletopContainer, htSave);
+                ClearGameState(heart,storage,tabletopContainer);
+            
+                saveGameManager.ImportHashedSaveToState(tabletopContainer,storage, htSave);
                 notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
 
             //}
@@ -428,7 +435,7 @@ namespace Assets.CS.TabletopUI
             //try
             //{
                 var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
-            saveGameManager.SaveActiveGame(tabletopContainer);
+            saveGameManager.SaveActiveGame(tabletopContainer,Registry.Retrieve<Character>());
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
             //}
