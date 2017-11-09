@@ -11,17 +11,22 @@ namespace Assets.Core
     public interface IAspectsDictionary: IDictionary<string,int>
     {
         int AspectValue(string aspectId);
-
+        List<string> KeysAsList();
         void CombineAspects(IAspectsDictionary additionalAspects);
     }
 
     public class AspectsDictionary: Dictionary<string, int>, IAspectsDictionary
     {
+
+        public List<string> KeysAsList()
+        {
+            return Keys.ToList();
+        }
         public int AspectValue(string aspectId)
         {
             if (ContainsKey(aspectId))
                 return this[aspectId];
-
+            
             return 0;
         }
 

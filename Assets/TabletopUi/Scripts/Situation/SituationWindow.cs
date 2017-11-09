@@ -339,18 +339,18 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public IAspectsDictionary GetAspectsFromStartingElements(bool showElementAspects = true) {
+        public IAspectsDictionary GetAspectsFromStartingElements(bool showElementAspects) {
             return startingSlots.GetAspectsFromSlottedCards(showElementAspects);
         }
 
-        public IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects = true) {
+        public IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects) {
             var slottedAspects = new AspectsDictionary();
             slottedAspects.CombineAspects(startingSlots.GetAspectsFromSlottedCards(showElementAspects));
             slottedAspects.CombineAspects(ongoing.GetAspectsFromSlottedCards(showElementAspects));
             return slottedAspects;
         }
 
-        public IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects = true) {
+        public IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects) {
             return GetStorageStacksManager().GetTotalAspects(showElementAspects);
         }
 

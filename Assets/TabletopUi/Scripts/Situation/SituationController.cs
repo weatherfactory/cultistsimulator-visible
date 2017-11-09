@@ -113,8 +113,9 @@ namespace Assets.TabletopUi {
         }
 
         public void OngoingSlotsUpdated() {
-            var allAspects = GetAspectsAvailableToSituation(false);
-            situationWindow.DisplayAspects(allAspects);
+            var aspectsToDisplayInBottomBar = GetAspectsAvailableToSituation(false);
+            var allAspects = GetAspectsAvailableToSituation(true);
+            situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
             var rp = getNextRecipePrediction(allAspects);
 
             if (rp != null && rp.BurnImage != null)
@@ -130,7 +131,7 @@ namespace Assets.TabletopUi {
             return Situation.GetPrediction(rc);
         }
 
-        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects = true) {
+        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
             return situationWindow.GetAspectsFromAllSlottedElements(showElementAspects);
         }
 
@@ -138,7 +139,7 @@ namespace Assets.TabletopUi {
             HeartbeatResponse response = new HeartbeatResponse();
 
             RecipeConductor rc = new RecipeConductor(compendium,
-                GetAspectsAvailableToSituation(), new Dice(), currentCharacter);
+                GetAspectsAvailableToSituation(true), new Dice(), currentCharacter);
 
             Situation.Continue(rc, interval);
 
