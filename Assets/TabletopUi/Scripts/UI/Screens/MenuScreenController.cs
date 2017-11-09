@@ -175,4 +175,9 @@ public class MenuScreenController : MonoBehaviour {
 		eventSystem.enabled = false;
 		waitForInput = false;		
 	}
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
 }

@@ -56,8 +56,10 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private OptionsPanel optionsPanel;
         [SerializeField] private ElementOverview elementOverview;
 
-        private Color activeSpeedColor = new Color32(147, 225, 239, 255);
-        private Color inactiveSpeedColor = Color.white;
+        private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
+        private readonly Color inactiveSpeedColor = Color.white;
+
+
 
 
 
@@ -246,10 +248,16 @@ namespace Assets.CS.TabletopUI
                 heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
                 pauseButton.GetComponent<Image>().color = inactiveSpeedColor;
-                normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-                fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-
-
+                if(heart.GetGameSpeed()==GameSpeed.Fast)
+                { 
+                    normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+                fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
+                }
+                else
+                {
+                    normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
+                    fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+                }
             }
         }
 
@@ -260,19 +268,23 @@ namespace Assets.CS.TabletopUI
 
         public void SetNormalSpeed()
         {
-
-            SetPausedState(false);
+            if(heart.IsPaused)
+                SetPausedState(false);
+            heart.SetGameSpeed(GameSpeed.Normal);
             normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
             fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+
 
         }
 
         public void SetFastForward()
         {
 
-            SetPausedState(false);
-            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+            if (heart.IsPaused)
+                SetPausedState(false);
+            heart.SetGameSpeed(GameSpeed.Fast);
 
+            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
             fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
 
         }

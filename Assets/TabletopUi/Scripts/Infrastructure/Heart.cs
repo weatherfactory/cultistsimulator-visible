@@ -5,6 +5,10 @@ using Assets.Core.Commands;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 
+
+public enum GameSpeed
+{ Normal,Fast}
+
 /// <summary>
 /// Top-level object
 /// </summary>
@@ -17,6 +21,8 @@ public class Heart : MonoBehaviour
     private const int HOUSEKEEPING_CYCLE_BEATS = 20;
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
+    private GameSpeed CurrentGameSpeed=GameSpeed.Normal;
+    
 
     public bool IsPaused { get; private set; }
 
@@ -42,6 +48,16 @@ public class Heart : MonoBehaviour
         IsPaused = false;
     }
 
+    public void SetGameSpeed(GameSpeed speed)
+    {
+        CurrentGameSpeed = speed;
+    }
+
+    public GameSpeed GetGameSpeed()
+    {
+        return CurrentGameSpeed;
+    }
+
     public void Beat()
     {
  
@@ -57,7 +73,7 @@ public class Heart : MonoBehaviour
     }
     
 
-    public void AdvanceTime(float interval)
+    public void AdvanceTime(float intervalThisBeat)
     {
         //foreach existing active recipe window: run beat there
         //advance timer
@@ -65,12 +81,14 @@ public class Heart : MonoBehaviour
         var situationTokens = tabletopManager.GetAllSituationTokens();
         foreach (var st in situationTokens)
         {
-           HeartbeatResponse response=st.ExecuteHeartbeat(interval);
+            if (CurrentGameSpeed == GameSpeed.Fast)
+                intervalThisBeat = intervalThisBeat * 2;
+           HeartbeatResponse response=st.ExecuteHeartbeat(intervalThisBeat);
             foreach (var r in response.SlotsToFill)
                 outstandingSlotsToFill.Add(r);
         }
 
-       tabletopManager.DecayStacksOnTable(interval);
+       tabletopManager.DecayStacksOnTable(intervalThisBeat);
     }
 
     //remove any outstanding state when loading the game

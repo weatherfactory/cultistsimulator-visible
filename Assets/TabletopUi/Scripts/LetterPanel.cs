@@ -46,4 +46,6 @@ public class LetterPanel : MonoBehaviour {
 
         canvasGroupFader.Hide();
     }
+
+
 }
