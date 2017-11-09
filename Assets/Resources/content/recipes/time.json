@@ -1,27 +1,5 @@
 {"recipes": [
- { id: "startingneeds",
-        label: "Time Passes",
-        actionId: "time",
-        requirements: {},
-        effects: {shilling: -1 },
-        alternativerecipes:
-		[{id: "legacyarrives", chance:100, additional: true},
-		 {id: "starvation", chance:100, additional: true}],
-        startdescription: "I need money to live; but I'm hoping for a parting gift from my correspondent, soon.",
-        description: ".",
-        warmup: 60,
-        craftable: false,
-		slots: {
-				"Expenses":
-					{
-					required: {shilling: 1},
-					forbidden: {},
-				greedy: true,
-				description: "The shop-keepers will have their due. I must pay it or starve."
-					}
-				},
-        linked:[{id:"needs",chance:100}]
-    },
+
    { id: "needs",
         label: "Time Passes",
         actionId: "time",
@@ -37,7 +15,7 @@
 		{id: "suspicion", chance:7, additional: true},
 		{id: "inspiremystique", chance:7, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
-        startdescription: "Time, the sundial's shadow, passes. I have needs to meet.",
+        startdescription: "Time, the sundial's shadow, passes. I must have Funds to live, or I will become ill.",
         description: ".",
         warmup: 60,
         craftable: false,
@@ -113,19 +91,6 @@
 		}
         craftable: false
     },
-	 {
-        id: "legacyarrives",
-        label: "A Legacy Arrives",
-        actionId: "study",
-        requirements: {},
-        effects: {legacy: 1},
-        startdescription: "The matter of my inheritance is resolved. I have been promised a package.",
-        description: "My package has arrived! I must study it. [Drag the Legacy out to the tabletop, then back into the Study action.]",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1,
-		comment: "This makes the Study action available."
-    },
 	    {
         id: "suspicion",
         label: "The Attention of the Authorities",
@@ -134,7 +99,7 @@
         effects: {notoriety: 1},
 		slots: {Suspicion: {required: {notoriety: 1}, greedy: true}},
 		alternativerecipes: [{id: "investigationlink",chance: 100}],
-        startdescription: "Rumour squats on rooftops and flutters in gutters.",
+        startdescription: "Rumour squats on rooftops and flutters in gutters. If I have a reputation of any kind, I might be in trouble.",
         description: "They questioned me. I might be innocent, but a certain suspicion clings.",
         warmup: 60,
         craftable: false

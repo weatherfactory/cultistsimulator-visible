@@ -267,7 +267,7 @@ public class ContentImporter
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
 
-            Legacy l= new Legacy(htEachLegacy["id"].ToString(), htEachLegacy["label"].ToString(), htEachLegacy["description"].ToString(), htEachLegacy["image"].ToString());
+            Legacy l= new Legacy(htEachLegacy[NoonConstants.KID].ToString(), htEachLegacy[NoonConstants.KLABEL].ToString(), htEachLegacy[NoonConstants.KDESCRIPTION].ToString(), htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(), htEachLegacy[NoonConstants.KIMAGE].ToString());
 
             Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
             if (htEffects != null)

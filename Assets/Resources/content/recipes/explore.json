@@ -1,16 +1,5 @@
  {"recipes": [
-	{
-        id: "openexplore",
-        label: "Explore",
-        actionId: "explore",
-        requirements: {},
-		effects: {erudition: 1},
-        startdescription: "A Wider World",
-        description: "[This is the Explore action - most often used with locations, or with followers to find those locations.]",
-        warmup: 0,
-        maxexecutions: 1,
-		craftable: false
-    },
+
 	{
         id: "explorebookpurchase",
         label: "Find Morland's shop",
@@ -19,7 +8,7 @@
 		effects: {},
 		deckeffect: "commontomes",
         startdescription: "It takes time to sort the gold from the dross, the wheat from the chaff, the blood from the water. If I buy enough books, I'll find something interesting.",
-        description: "[Fnord.]",
+        description: "I've found something noteworthy.",
         warmup: 30,
         craftable: true
     },

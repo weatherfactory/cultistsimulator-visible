@@ -1,10 +1,5 @@
 {"elements":
     [
-	{id: "startingletter",
-	label: "Note",
-	description: "My correspondent is gone - the pneumonia, they tell me - but the dreams are not. [Click the Dream token, and drop this item into it.] ",
-	aspects: {}
-	},	
           {
         id: "shilling",
             label: "Funds",
@@ -12,15 +7,7 @@
             {tool: 1},
             description: "Enough to support me for a little while in adequate comfort."
         },
-		     {
-        id: "legacy",
-            label: "A Legacy",
-            aspects:
-            {},
-            description: "A package of peculiar papers from my correspondent's executor. I should study it. [In the full game, this might contain a variety of different things each playthrough.]",
-						slots:
-						{Approach: {required: {reason: 1, passion: 1},forbidden: {},description: "Am I a passionate individual, or a reasonable one?"}}
-        },
+
 		     {
         id: "gloverandgloverjuniorjob",
             label: "Junior Position at Glover & Glover",
@@ -72,7 +59,7 @@
             label: "Morland's Shop",
             aspects:{location: 1},
 			slots: {
-				"Purchase":
+				"Cost":
 					{
 					required: {shilling: 1},
 					forbidden: {},

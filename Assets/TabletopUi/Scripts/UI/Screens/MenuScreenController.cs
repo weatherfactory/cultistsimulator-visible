@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.Linq;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine.SceneManagement;
@@ -65,7 +66,10 @@ public class MenuScreenController : MonoBehaviour {
         if (!saveGameManager.DoesGameSaveExist())
         { 
             beginGameButton.Text = "BEGIN";
-	        sceneToLoad = SceneNumber.GameScene;
+            //and set the legacy to the first in the list; this should be the starting legacy
+            CrossSceneState.SetChosenLegacy(compendium.GetAllLegacies().First());
+            sceneToLoad = SceneNumber.GameScene;
+            sceneToLoad = SceneNumber.GameScene;
         }
         else
         { 

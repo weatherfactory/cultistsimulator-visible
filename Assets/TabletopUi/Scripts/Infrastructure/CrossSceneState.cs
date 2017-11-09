@@ -14,6 +14,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         public Ending CurrentEnding;
         public List<Legacy> AvailableLegacies=new List<Legacy>();
+
+
     }
     /// <summary>
     /// AFAICT there is no way to pass data between scenes on a load, except with a static object.
@@ -66,6 +68,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             _chosenLegacy = chosen;
         }
+
 
         public static Legacy GetChosenLegacy()
         {

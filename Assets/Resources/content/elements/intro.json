@@ -1,34 +1,23 @@
 {"elements":
     [
-	{id: "introlifetime",
-	label: "A Lifetime of Questionable Deeds",
-	description: ".",
-	aspects: {lore:1}
-	},
-	{id: "introunfinishedletter",
-	label: "An Unfinished Letter",
-	description: ".",
+			     {
+        id: "bequestintro",
+            label: "A Bequest",
+            aspects:
+            {},
+            description: "A package of peculiar papers from my correspondent's executor. I must STUDY it, using either Passion or Reason.",
+						slots:
+						{Approach: {required: {reason: 1, passion: 1},forbidden: {},description: "Am I a passionate individual, or a reasonable one?"}}
+        },
+			{id: "startingletter",
+	label: "Note",
+	description: "My correspondent is gone - the pneumonia, they tell me - but the dreams are not. [Click the Dream token, and drop this item into it.] ",
 	aspects: {}
 	},
-	{id: "introguilt",
-	label: "Guilt",
-	description: ".",
-	aspects: {lore:1}
-	},
-		{id: "introdelight",
-	label: "Delight",
-	description: ".",
-	aspects: {lore:1}
-	},
-		{id: "introletterwarning",
-	label: "A Letter, with a Warning",
-	description: ".",
+	{id: "introjob",
+	label: "Menial Employment",
+	description: "A precarious position as a hospital porter. Miserable, but it's all you can find just now.",
 	aspects: {}
 	},
-			{id: "introlettertemptation",
-	label: "A Letter, with a Temptation",
-	description: ".",
-	aspects: {}
-	}
 ]
 };

@@ -12,17 +12,25 @@ namespace Assets.Core.Entities
     public class Legacy
     {
         public string Id { get; set; }
+
+        //title that displays at game end
         public string Label { get; set; }
+        
+        //detail thatdisplays at game end
         public string Description { get; set; }
+
+        //displays after game start
+        public string StartDescription { get; set; }
         public string Image { get; set; }
         public IAspectsDictionary Effects;
 
 
-        public Legacy(string id, string label, string description, string image)
+        public Legacy(string id, string label, string description, string startdescription, string image)
         {
             Id = id;
             Label = label;
             Description = description;
+            StartDescription = startdescription;
             Image = image;
             Effects = new AspectsDictionary();
         }

@@ -1,22 +1,33 @@
 {"legacies":
     [
-	{id: "inheritor",
-	label: "Inheritor",
-	description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
-	effects: {shilling:1},
-	image: "knock"
-	},
-	{id: "physician",
-	label: "Physician",
-	description: "As the patient descended into the final delirium, you made copious notes. In the buzzing heat of the night, you re-read those notes, and they begin, at last, to make a kind of sense.",
-	effects: {erudition:1},
-	image: "heart"
-	},
-	{id: "haunted",
-	label: "Haunted",
-	description: "At times, in mirrors, in crowds, you see the face of one now lost.",
-	effects: {shilling:5},
-	image: "moth"
-	}	
+{id: "startinglegacy",
+label: "18th JANUARY, 1920",
+description: "January the 18th, 1920, once again.",
+startdescription: "I am alone in this stinking city, with my useless education, and my dreams.\n
+What now?",
+effects: {introjob:1},
+image: "knock"
+},
+{id: "inheritor",
+label: "Inheritor",
+description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
+startdescription: "Inheritor starting note",
+effects: {shilling:5,reason:2,passion:2,health:2},
+image: "knock"
+},
+{id: "physician",
+label: "Physician",
+description: "As the patient descended into the final delirium, you made copious notes. In the buzzing heat of the night, you re-read those notes, and they begin, at last, to make a kind of sense.",
+startdescription: "Physician starting note",
+effects: {shilling:2,reason:3,passion:1,health:2,countdown:1},
+image: "heart"
+},
+{id: "haunted",
+label: "Haunted",
+description: "At times, in mirrors, in crowds, you see the face of one now lost.",
+startdescription: "Haunted starting note",
+effects: {shilling:2,reason:1,passion:3,health:2},
+image: "moth"
+}	
 ]
 };

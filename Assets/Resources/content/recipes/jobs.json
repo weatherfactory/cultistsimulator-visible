@@ -115,23 +115,23 @@
 				craftable: true
 	},
 	{
-        id: "labour",
-        label: "Labour",
+        id: "workhealth",
+        label: "Unskilled Labour",
 		alternativerecipes:
 		[{id: "findacquaintanceopentalk", chance:50,additional: true},
-		{id: "labourinjury", chance:30}],
+		{id: "workhealthinjury", chance:30}],
         actionId: "work",
         requirements: {health: 1},
         effects: {
             shilling: 1
         },
-        startdescription: "Back-breaking work for meagre pay.",
+        startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
         craftable: true
     },
 		{
-        id: "labourinjury",
+        id: "workhealthinjury",
         label: "A misfortune!",
 
         actionId: "work",
@@ -165,7 +165,7 @@
 					description: "Feed my art."
 					}
 				},
-        startdescription: "I might sell a painting. I probably won't.",
+        startdescription: "I have seen a curious beauty in the waking world, and in my dreams. I might sell a painting. I probably won't.",
         description: "I've finished a painting, to the excitement of absolutely no-one: no-one but me.",
         warmup: 60,
         craftable: true

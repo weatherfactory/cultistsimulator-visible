@@ -102,8 +102,6 @@ namespace Assets.CS.TabletopUI
 
             DraggableToken.onChangeDragState += HandleDragStateChanged;
 
-            notifier.ShowNotificationWindow("18th JANUARY, 1920","I am a beginning student of the invisible arts. I have only time, hunger, and a little money. Earlier, I made a note in my journal. [Clicking the note, above, will read it.]",30);
-
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
@@ -125,8 +123,13 @@ namespace Assets.CS.TabletopUI
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(CrossSceneState.GetChosenLegacy());
             DealStartingDecks();
-            var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
-            BeginNewSituation(startingNeedsSituationCreationCommand);
+           // var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
+            //BeginNewSituation(startingNeedsSituationCreationCommand);
+            var chosenLegacy = CrossSceneState.GetChosenLegacy();
+            if (chosenLegacy == null)
+                throw new ApplicationException("No initial Legacy specified");
+
+            notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
         }
 
         private void DealStartingDecks()
@@ -145,19 +148,10 @@ namespace Assets.CS.TabletopUI
 
         private void ProvisionStartingElements(Legacy chosenLegacy)
         {
-            AspectsDictionary startingElements = new AspectsDictionary
-            {
-                {"health", 2},
-                {"reason", 2},
-                {"passion", 2},
-                {"shilling", 2},
-                {"startingletter", 1}
-            };
-
-            if (chosenLegacy != null)
-            {
+            AspectsDictionary startingElements = new AspectsDictionary();
+            
                 startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
-            }
+           
 
             foreach (var e in startingElements)
             {

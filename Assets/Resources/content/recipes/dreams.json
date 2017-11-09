@@ -1,19 +1,5 @@
 {
 "recipes": [
-	{
-        id: "introdream",
-        label: "Recall my Dreams",
-        actionId: "dream",
-        requirements: {startingletter: 1},
-        effects: {
-           startingletter: -1,
-		   fleetingmemory: 1
-        },
-        startdescription: "There was a wood. A light. A house without walls - ",
-        description: "Every night, I'm closer, but every day, the dreams curl to ash. It's useless. I have work to do, if I want to eat. [Find a way to earn money.]",
-        warmup: 2,
-        craftable: true
-    },
 		{
 	id: "startingpassiondream",
 	label: "A Moonlit Road",

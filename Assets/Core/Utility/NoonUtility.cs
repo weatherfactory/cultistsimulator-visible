@@ -18,6 +18,7 @@ namespace Noon
         public const string KMAXEXECUTIONS = "maxexecutions";
         public const string KID = "id";
         public const string KLABEL = "label";
+        public const string KIMAGE = "image";
         public const string KACTIONID = "actionId";
         public const string KCRAFTABLE = "craftable";
         public const string KSTARTDESCRIPTION = "startdescription";

@@ -1,68 +1,94 @@
 {
 "recipes": [
+{id: "workintrojob",
+label: "Another Shift at the Hospital",
+actionId: "work",
+requirements: {introjob:1},
+effects: {introjob: -1, health: 1, shilling: 1},
+alternativerecipes: [{id:introdream,chance:100,additional:true}],
+startdescription: "Another shift: mopping the darkened hallways, delivering post to hollow-eyed invalids, trundling corpse-laden gurneys to the basement.",
+description: "Halfway through your shift, the head porter beckons you aside. \"We won't require your services any longer,\", he says. \"Here: your last payment.\"\n
+I have lost my job. At least now I have a little time to rest, and my Health improves.\n
+[DREAM unlocked.]",
+warmup:10,
+craftable: true
+	},
 	{
-        id: "introrecalllife",
-        label: "Remember what I've done",
-        actionId: "dream",
-        requirements: {introlifetime: 1},
-        effects: {
-           introunfinishedletter: 1,
-		   introlifetime: -1
-        },
-        startdescription: "I'll remember my life. ",
-        description: "I've written a letter about my life.",
-        warmup: 10,
-        craftable: true
+id: "introdream",
+label: "Recall my Dreams",
+actionId: "dream",
+requirements: {},
+effects: {passion:1,contentment:1},
+alternativerecipes: [{id:bequestcountdown,chance:100,additional:true}],
+startdescription: "Once again, I dream of a glow beneath the filthy skin of the world. The light through the black wood. The pale door. The old man - ",
+description: "It began when I spoke to the old man in the hospital. He knew my name. But he's dead now. The pneumonia. Why do I dream of him still? What is the cobalt light in my dreams?\n
+[Time is now passing.]",
+warmup: 20,
+craftable: false,
+comments: "This is triggered from the intro work recipe only."
     },
-		{
-        id: "introwritewarningletter",
-        label: "Write a letter of warning",
-        actionId: "dream",
-        requirements: {introunfinishedletter: 1,introguilt:1},
-        effects: {
-           introunfinishedletter: -1,
-		   introletterwarning: 1
-        },
-        startdescription: "I'll remember my life. ",
-        description: "I've written a letter about my life.",
-        warmup: 10,
-        craftable: true
+
+	 { id: "bequestcountdown",
+        label: "Time Passes",
+        actionId: "time",
+        requirements: {},
+        alternativerecipes:
+		[{id: "bequestarrives", chance:100, additional: true}],
+        startdescription: "I need Funds to live. But perhaps this recent upset in my circumstances is a secret blessing. Is there something to my dreams? There is a change in the air.",
+        description: ".",
+        warmup: 60,
+        craftable: false,
+        linked:[{id:"needs",chance:100}]
     },
-		{
-        id: "introwritewarningletter",
-        label: "Write a letter of warning",
-        actionId: "dream",
-        requirements: {introunfinishedletter: 1,introdelight:1},
-        effects: {
-           introunfinishedletter: -1,
-		   introlettertemptation: 1
-        },
-        startdescription: "I'll remember my life. ",
-        description: "I've written a letter about my life.",
-        warmup: 10,
-        craftable: true
+		 {
+id: "bequestarrives",
+label: "A Bequest Arrives",
+actionId: "study",
+requirements: {},
+effects: {reason: 1,shilling: 2,bequestintro:1},
+startdescription: "A letter from a solicitor. The old man at the hospital - the one I dream of - has named me in his will. I'll hear more soon.",
+description: "The old man has bequeathed me a little money, and a packet of peculiar papers - poetry, riddles, metaphysical speculations. For the first time in months, here is some fuel for my Reason.\n
+[STUDY unlocked.]",
+warmup: 30,
+craftable: false,
+maxexecutions: 1,
+comment: "This makes the Study action available, and is triggered from intro only."
     },
-		{
-        id: "studylegacyreason",
-        label: "Examine my Legacy, employing Reason",
-        actionId: "study",
-        requirements: {legacy:1,reason:1},
-        effects: {legacy: -1,notionenlightenment: 1, mapbookdealer: 1,shilling:1},
-		startdescription: "I'll examine each item with meticulous care. ",
-        description: "A little money... and a journal plucked from the fire. Only a dozen pages remain unburnt, but it's enough to confirm my suspicions. My correspondent knew secrets beyond the skin of the world. If only I could follow in their footsteps. There is a note here - directions to a book shop that does not advertise its wares -",
-        warmup: 30,
-        craftable: true
-    },
+{
+id: "studybequestreason",
+label: "Examine the Bequest, employing Reason",
+actionId: "study",
+requirements: {bequestintro:1,reason:1},
+effects: {bequestintro: -1,notionenlightenment: 1, mapbookdealer: 1},
+startdescription: "I'll examine each item with meticulous care. ",
+description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. They knew secrets beneath time and the skin of the world. A new curiosity burns in me.\n
+There is a note here - directions to a book shop that does not advertise its wares -",
+warmup: 30,
+craftable: true
+},
 	{
-        id: "studylegacypassion",
-        label: "Examine my Legacy, employing Passion",
-        actionId: "study",
-        requirements: {legacy:1,passion:1},
-		effects: {legacy: -1,notionpower: 1, mapbookdealer:1,shilling: 1},
-        startdescription: "I'll read, theorise, pace, sketch, clutch at my hair in wonder, rise in elation, collapse in despair.",
-        description: "A little money... and a journal plucked from the fire. Only a dozen pages remain unburnt, but it's enough to confirm my suspicions. My correspondent knew of powers that generals and kings would envy. If only I could follow in their footsteps. There is a note here - directions to a book shop that does not advertise its wares -",
-        warmup: 30,
-        craftable: true
-    }
+id: "studybequestpassion",
+label: "Examine my Bequest, employing Passion",
+actionId: "study",
+requirements: {bequestintro:1,passion:1},
+effects: {bequestintro: -1,notionpower: 1, mapbookdealer:1},
+startdescription: "I'll read, theorise, pace, sketch, clutch at my hair in wonder, rise in elation, collapse in despair.",
+description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. I sense here a power that generals and kings would envy. A new desire burns in me.\n
+There is a note here - directions to a book shop that does not advertise its wares -",
+warmup: 30,
+craftable: true
+    },
+{
+id: "openexplore",
+label: "Explore",
+actionId: "explore",
+requirements: {},
+effects: {erudition: 1,glimmering:1},
+startdescription: ".",
+description: "Now that I've founnd a location, I can EXPLORE it.",
+warmup: 0,
+maxexecutions: 1,
+craftable: false
+},
 ]
 }
