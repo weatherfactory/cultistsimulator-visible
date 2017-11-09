@@ -15,6 +15,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
+using Noon;
 using OrbCreationExtensions;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -46,9 +47,19 @@ namespace Assets.CS.TabletopUI
 
         [Header("Options Bar & Notes")]
         [SerializeField] private PauseButton pauseButton;
+
+        [SerializeField] private Button normalSpeedButton;
+        [SerializeField] private Button fastForwardButton;
+        [SerializeField] private DebugTools debugTools;
+
         [SerializeField] private Notifier notifier;
         [SerializeField] private OptionsPanel optionsPanel;
         [SerializeField] private ElementOverview elementOverview;
+
+        private Color activeSpeedColor = new Color32(147, 225, 239, 255);
+        private Color inactiveSpeedColor = Color.white;
+
+
 
         // A total number of 4 supported by the bar currently. Not more, not fewer
         private string[] overviewElementIds = new string[] {
@@ -57,6 +68,21 @@ namespace Assets.CS.TabletopUI
 
         public void Update()
         {
+            if (Input.GetKeyDown("`") || (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab)))
+                debugTools.gameObject.SetActive(!debugTools.isActiveAndEnabled);
+
+            if (!debugTools.isActiveAndEnabled)
+            {
+               //...it's nice to be able to type N and M
+
+                if (Input.GetKeyDown(KeyCode.N))
+                    SetNormalSpeed();
+
+                if (Input.GetKeyDown(KeyCode.M))
+                    SetFastForward();
+
+            }
+
             if (Input.GetKeyDown(KeyCode.Space))
                 TogglePause();
 
@@ -110,6 +136,8 @@ namespace Assets.CS.TabletopUI
                 SetupNewBoard();
 
            heart.StartBeating(0.05f);
+           normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+
         }
 
         private void OnDestroy() {
@@ -119,15 +147,20 @@ namespace Assets.CS.TabletopUI
 
         public void SetupNewBoard()
         {
-            
+
+            var chosenLegacy = CrossSceneState.GetChosenLegacy();
+            if (chosenLegacy == null)
+            {
+                NoonUtility.Log("No initial Legacy specified");
+                chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
+            }
+
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
-            ProvisionStartingElements(CrossSceneState.GetChosenLegacy());
+            ProvisionStartingElements(chosenLegacy);
             DealStartingDecks();
            // var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
             //BeginNewSituation(startingNeedsSituationCreationCommand);
-            var chosenLegacy = CrossSceneState.GetChosenLegacy();
-            if (chosenLegacy == null)
-                throw new ApplicationException("No initial Legacy specified");
+  
 
             notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
         }
@@ -202,18 +235,46 @@ namespace Assets.CS.TabletopUI
             if (pause)
             {
                 heart.StopBeating();
-                pauseButton.SetPausedState(true);
+                pauseButton.SetPausedText(true);
+                pauseButton.GetComponent<Image>().color = activeSpeedColor;
+                normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+                fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+
             }
             else
             {
                 heart.ResumeBeating();
-                pauseButton.SetPausedState(false);
+                pauseButton.SetPausedText(false);
+                pauseButton.GetComponent<Image>().color = inactiveSpeedColor;
+                normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+                fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+
+
             }
         }
 
         public void TogglePause()
         {
           SetPausedState(!heart.IsPaused);
+        }
+
+        public void SetNormalSpeed()
+        {
+
+            SetPausedState(false);
+            normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
+            fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+
+        }
+
+        public void SetFastForward()
+        {
+
+            SetPausedState(false);
+            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+
+            fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
+
         }
 
         public void EndGame(Ending ending)

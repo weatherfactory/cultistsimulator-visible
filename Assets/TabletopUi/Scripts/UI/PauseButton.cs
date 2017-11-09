@@ -1,18 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using OrbCreationExtensions;
 using TMPro;
+using UnityEngine.UI;
 
-public class PauseButton : MonoBehaviour {
+public class PauseButton : MonoBehaviour
+{
 
-[SerializeField] TextMeshProUGUI ButtonText;
+    [SerializeField] Button ThisButton;
+    [SerializeField] TextMeshProUGUI ButtonText;
 
-    
-    public void SetPausedState(bool isPaused)
+
+
+    public void SetPausedText(bool isPaused)
     {
         if (isPaused)
-            ButtonText.text = "UNPAUSE [SPACE]";
+        { 
+            ButtonText.text = "Unpause <size=60%><alpha=#99>[SPACE]";
+
+        }
         else
-            ButtonText.text = "PAUSE [SPACE]";
+        { 
+            ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
+        }
     }
 
  
