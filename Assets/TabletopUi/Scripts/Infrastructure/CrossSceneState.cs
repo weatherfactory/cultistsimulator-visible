@@ -31,19 +31,33 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static Hashtable GetHashTableForCrossSceneState()
         {
             var ht=new Hashtable();
-            ht.Add(SaveConstants.SAVE_CURRENTENDING, GetCurrentEnding().Id);
+            AddCurrentEndingToHashtable(ht);
 
-            var htLegacies = new Hashtable();
-            foreach (var l in GetAvailableLegacies())
-            {
-                
-                htLegacies.Add(l.Id,l.Id);
-
-            }
-
-            ht.Add(SaveConstants.SAVE_AVAILABLELEGACIES,htLegacies);                             
+            AddAvailableLegaciesToHashtable(ht);
 
             return ht;
+        }
+
+        private static void AddCurrentEndingToHashtable(Hashtable ht)
+        {
+            var currentEnding = GetCurrentEnding();
+            if (currentEnding != null)
+                ht.Add(SaveConstants.SAVE_CURRENTENDING, GetCurrentEnding().Id);
+        }
+
+        private static void AddAvailableLegaciesToHashtable(Hashtable ht)
+        {
+            var htLegacies = new Hashtable();
+            var availableLegacies = GetAvailableLegacies();
+
+            if (availableLegacies!=null)
+            {
+                foreach (var l in GetAvailableLegacies())
+                {
+                    htLegacies.Add(l.Id, l.Id);
+                }
+            }
+            ht.Add(SaveConstants.SAVE_AVAILABLELEGACIES, htLegacies);
         }
 
         public static void SetCurrentEnding(Ending ending)

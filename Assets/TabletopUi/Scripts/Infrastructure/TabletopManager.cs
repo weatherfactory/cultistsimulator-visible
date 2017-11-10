@@ -229,6 +229,8 @@ namespace Assets.CS.TabletopUI
 
         public void RestartGame()
         {
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+        saveGameManager.SaveInactiveGame();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
