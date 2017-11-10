@@ -1,0 +1,39 @@
+ {"recipes": [
+	
+	{
+        id: "dreamvitality",
+        label: "Grow stronger",
+        actionId: "dream",
+        requirements: {vitality:1},
+        effects: {vitality:-1,health:1},
+		startdescription: "I will build my body's strength.",
+        description: "[Next time, it'll be harder to gain Health.]",
+        warmup: 30,
+        craftable: true,
+    },
+		{
+        id: "dreamerudition",
+        label: "Grow shrewder",
+        actionId: "dream",
+        requirements: {erudition:1},
+        effects: {erudition:-1,reason:1},
+		startdescription: "I will reflect on what I've learnt.",
+        description: "[Next time, it'll be harder to gain Reason.]",
+        warmup: 30,
+        craftable: true,
+    },
+		{
+        id: "dreamglimmering",
+        label: "Grow more insightful",
+        actionId: "dream",
+        requirements: {glimmering:1},
+        effects: {glimmering:-1,passion:1},
+		startdescription: "I will close my eyes, for a little while.",
+        description: "[Next time, it'll be harder to gain Passion.]",
+        warmup: 30,
+        craftable: true,
+    }
+	
+
+]
+}

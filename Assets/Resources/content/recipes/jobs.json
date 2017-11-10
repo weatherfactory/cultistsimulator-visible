@@ -21,12 +21,12 @@
 	          alternativerecipes:
 		[{id: "findacquaintanceopentalk", chance:30,additional: true},
 		{id: "gloverandglover_diligence", chance:100}],
-		effects: { shilling: 2},
+		effects: { shilling: 1},
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
         description: "The clerks file out in silence. I am free for now.",
 		aside: "(I could devote extra effort to the work...)",
-        warmup: 100,
+        warmup:50,
 			slots: {
 				"Diligence":
 					{
@@ -67,12 +67,12 @@
 	          alternativerecipes:
 		[{id: "findacquaintanceopentalk", chance:100,additional: true},
 		{id: "gloverandglover_diligence_promotion", chance:100}],
-		effects: { shilling: 3},
+		effects: { shilling: 2},
 	actionId:"work",
         startdescription: "I work longer hours now, but they're better-paid.",
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
 		aside: "(I could devote extra effort to the work...)",
-        warmup: 120,
+        warmup: 90,
 			slots: {
 				"Devotion":
 					{
@@ -86,7 +86,7 @@
 			{id: "gloverandglover_diligence_promotion",
 	label: "Extra Hours at Glover & Glover",
 	  	  requirements: {gloverandgloverjob: 1,reason:2},
-		effects: { shilling: 4,gloverandgloverjob: -1, gloverandgloverseniorjob: 1},
+		effects: { shilling: 2,gloverandgloverjob: -1, gloverandgloverseniorjob: 1},
 	actionId:"work",
         startdescription: "",
         description: "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for him.",
@@ -95,13 +95,13 @@
 			{id: "gloverandgloverseniorwork",
 	label: "Work at Glover & Glover",
 	  requirements: {gloverandgloverseniorjob: 1},
-		effects: { shilling: 4},
+		effects: { shilling: 3},
 		
 	actionId:"work",
         startdescription: "Curl my hands into the correct shapes, and begin.",
         description: "I am always the last to leave, even after the elder Glover.",
 		aside: "(I could devote extra effort to the work...)",
-        warmup: 150,
+        warmup: 90,
 			slots: {
 				"Acceptance":
 					{

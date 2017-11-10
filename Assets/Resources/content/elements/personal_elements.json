@@ -68,21 +68,26 @@
             animFrames: 1,
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
         },
+				 {
+            id: "vitality",
+            label: "Vitality",
+            aspects:
+            {},
+            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i>treasure. [Vitality can sometimes be used to gain Health, but it fades quickly if unused.]"
+        },
 		 {
             id: "erudition",
             label: "Erudition",
             aspects:
             {},
-            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason.]",
-			comment: "should never be available from a <standard-length action; possibly not available from renewable actions."
+            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason.]"
         },
 			 {
             id: "glimmering",
             label: "Glimmering",
             aspects:
             {},
-            description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion.]",
-		comment: "should never be available from a <standard-length action; possibly not available from renewable actions."
+            description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion.]"
         },
 					 {
             id: "mystique",

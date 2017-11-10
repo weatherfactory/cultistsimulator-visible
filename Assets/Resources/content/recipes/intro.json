@@ -9,7 +9,7 @@ alternativerecipes: [{id:introdream,chance:100,additional:true}],
 startdescription: "Another shift: mopping the darkened hallways, delivering post to hollow-eyed invalids, trundling corpse-laden gurneys to the basement.",
 description: "Halfway through your shift, the head porter beckons you aside. \"We won't require your services any longer,\", he says. \"Here: your last payment.\"\n
 I have lost my job. At least now I have a little time to rest, and my Health improves.\n
-[DREAM unlocked.]",
+[<b>Dream</b> is unlocked.]",
 warmup:10,
 craftable: true
 	},
@@ -48,7 +48,7 @@ requirements: {},
 effects: {reason: 1,shilling: 2,bequestintro:1},
 startdescription: "A letter from a solicitor. The old man at the hospital - the one I dream of - has named me in his will. I'll hear more soon.",
 description: "The old man has bequeathed me a little money, and a packet of peculiar papers - poetry, riddles, metaphysical speculations. For the first time in months, here is some fuel for my Reason.\n
-[STUDY unlocked.]",
+[<b>Study</b> is unlocked.]",
 warmup: 30,
 craftable: false,
 maxexecutions: 1,
@@ -74,9 +74,23 @@ requirements: {bequestintro:1,passion:1},
 effects: {bequestintro: -1,notionpower: 1, mapbookdealer:1},
 startdescription: "I'll read, theorise, pace, sketch, clutch at my hair in wonder, rise in elation, collapse in despair.",
 description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. I sense here a power that generals and kings would envy. A new desire burns in me.\n
-There is a note here - directions to a book shop that does not advertise its wares -",
+There is a note here - directions to a book shop that does not advertise its wares -\n
+[<b>Explore</b> is unlocked.]",",
 warmup: 30,
 craftable: true
+    },
+		{
+        id: "studymapbookdealer",
+        label: "Find Morland's shop",
+        actionId: "study",
+        requirements: {mapbookdealer:1},
+		effects: {mapbookdealer:-1,locationbookdealer:1},
+		alternativerecipes:	[{id: "openexplore",chance:100, additional: true}],
+        startdescription: "The directions to Morland's shop are cryptic. When one deals in the kind of books my correspondent studied, one must be circumspect.",
+        description: "An ill-lit street at an ill-favoured bend in a lesser river. A soft yellow light through a grimy window. Miss Morland nods as I enter, but doesn't rise. 'I never ask the names of my clients,' she informs me, before I have time to introduce myself.",
+        warmup: 30,
+        craftable: true,
+		comments: "This is one way the Explore verb may be opened."
     },
 {
 id: "openexplore",
