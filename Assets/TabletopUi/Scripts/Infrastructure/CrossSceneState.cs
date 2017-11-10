@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
@@ -32,7 +33,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var ht=new Hashtable();
             AddCurrentEndingToHashtable(ht);
-
             AddAvailableLegaciesToHashtable(ht);
 
             return ht;

@@ -37,7 +37,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        //for saving from the game over or legacy choice screen, when the player is between active games
+        /// <summary>
+        /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game
+        /// by reloading the tabletop scene - this is hacky, because we just don't save the availablelegacies and chosenlegacies, and rely on the
+        /// ChosenLegacy remaining in cross-scene state. It would be better to go via  somewhere that inspects state and routes accordingly
+        /// </summary>
         public void SaveInactiveGame()
         {
             var htSaveTable = dataExporter.GetHashtableForExtragameState();
