@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Core;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
@@ -41,12 +42,12 @@ public class DebugTools : MonoBehaviour
     }
     void AddCard(string elementId)
     {
-        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId,1);
+        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId,1, Source.Existing());
     }
 
     void DecrementElement(string elementId)
     {
-        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId, -1);
+        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId, -1, Source.Existing());
     }
 
     void BeginSituation(string recipeId)

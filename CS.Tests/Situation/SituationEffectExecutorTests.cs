@@ -51,7 +51,7 @@ namespace Assets.Editor.Tests
 
             var ex =new SituationEffectExecutor();
             ex.RunEffects(mockCommand, mockStacksManager,new FakeStorage());
-            mockStacksManager.Received().ModifyElementQuantity("e",1);
+            mockStacksManager.Received().ModifyElementQuantity("e",1, Source.Existing());
         }
         [Test]
         public void RecipeDeckEffect_IsApplied()
@@ -77,7 +77,7 @@ namespace Assets.Editor.Tests
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
 
-            mockStacksManager.Received().ModifyElementQuantity("e", 1);
+            mockStacksManager.Received().ModifyElementQuantity("e", 1, Source.Existing());
 
             
 
@@ -96,8 +96,8 @@ namespace Assets.Editor.Tests
 
 
             ex.RunEffects(mockCommand, mockStacksManager,new FakeStorage());
-            mockStacksManager.Received().ModifyElementQuantity("1", -1);
-            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1);
+            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing());
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing());
         }
 
         [Test]
@@ -116,8 +116,8 @@ namespace Assets.Editor.Tests
             var ex = new SituationEffectExecutor();
 
             ex.RunEffects(mockCommand, mockStacksManager,new FakeStorage());
-            mockStacksManager.Received().ModifyElementQuantity("1", -1);
-            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1);
+            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing());
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing());
         }
     }
 }

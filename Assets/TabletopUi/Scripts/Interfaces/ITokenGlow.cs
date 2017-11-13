@@ -8,8 +8,8 @@ using UnityEngine;
 
 namespace Assets.CS.TabletopUI.Interfaces {
     public interface IGlowableView {
-        void ShowGlow(bool glowState, bool instant = false);
         void SetGlowColor(UIStyle.TokenGlowColor colorType);
         void SetGlowColor(Color color);
+        void ShowGlow(bool glowState, bool instant = false);
     }
 }

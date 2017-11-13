@@ -285,7 +285,7 @@ namespace Assets.TabletopUi {
         }
 
         public void ModifyStoredElementStack(string elementId, int quantity) {
-            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity);
+            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing());
             situationWindow.DisplayStoredElements();
         }
 

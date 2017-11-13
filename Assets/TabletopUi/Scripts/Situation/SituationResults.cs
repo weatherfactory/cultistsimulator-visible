@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi;
 using Assets.CS.TabletopUI;
@@ -34,6 +35,14 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
             return;
 
         GetElementStacksManager().AcceptStacks(stacks);
+        foreach (var stack in stacks)
+        {
+            if(stack.StackSource.SourceType==SourceType.Fresh)
+                stack.FlipToFaceDown(true);
+            stack.ShowGlow(false, true);
+        }
+
+
         cardPos.ReorderCards(stacks);
     }
 

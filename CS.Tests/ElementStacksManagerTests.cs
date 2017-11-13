@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using NSubstitute;
 using NUnit.Framework;
@@ -143,8 +144,8 @@ namespace Assets.Editor.Tests
         public void Manager_IncreaseElement_CanOnlyTakePositiveArgument()
         {
             var ecg = new ElementStacksManager(wrapper);
-            Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", 0));
-            Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", -1));
+            Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", 0,Source.Existing()));
+            Assert.Throws<ArgumentException>(() => ecg.IncreaseElement("1", -1,Source.Existing()));
         }
 
         [Test]
@@ -152,10 +153,10 @@ namespace Assets.Editor.Tests
         {
             var ecg = new ElementStacksManager(wrapper);
             FakeElementStack newStack = TestObjectGenerator.CreateElementCard(stacks.Count + 1.ToString(), 2);
-            wrapper.ProvisionElementStack(newStack.Id, newStack.Quantity).Returns(newStack);
-            ecg.IncreaseElement(newStack.Id,newStack.Quantity);
+            wrapper.ProvisionElementStack(newStack.Id, newStack.Quantity,Source.Existing()).Returns(newStack);
+            ecg.IncreaseElement(newStack.Id,newStack.Quantity,Source.Existing());
 
-            wrapper.Received().ProvisionElementStack(newStack.Id, newStack.Quantity);
+            wrapper.Received().ProvisionElementStack(newStack.Id, newStack.Quantity,Source.Existing());
         }
 
         [Test]
@@ -203,6 +204,11 @@ namespace Assets.Editor.Tests
         public void SetQuantity(int quantity)
         {
             Quantity = quantity;
+        }
+
+        public void Populate(string elementId, int quantity, Source source)
+        {
+            throw new NotImplementedException();
         }
 
         public void Populate(string elementId, int quantity)
@@ -270,6 +276,13 @@ namespace Assets.Editor.Tests
         {
             throw new NotImplementedException();
         }
+
+        public void ShowGlow(bool glowState, bool instant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Source StackSource { get; set; }
 
         public void MoveTo<T>(T newLocation)
         {

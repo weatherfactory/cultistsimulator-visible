@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Entities;
+using Assets.Core.Enums;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Noon;
@@ -36,7 +38,7 @@ namespace Assets.Logic
                 var drawnElementId = deck.Draw();
 
                 if(drawnElementId!=null)
-                    stacksManager.ModifyElementQuantity(drawnElementId,1);
+                    stacksManager.ModifyElementQuantity(drawnElementId,1, Source.Existing());
                 //else
                 //do nothing, yet. Exhausted decks just stay empty.
             }
@@ -47,7 +49,9 @@ namespace Assets.Logic
         {
             foreach (var kvp in command.GetElementChanges())
             {
-                stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value);
+                var source=new Source();
+                source.SourceType=SourceType.Fresh; //might later be eg Transformed
+                stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value, source);
             }
         }
 
@@ -64,8 +68,8 @@ namespace Assets.Logic
                         var existingQuantity = eachStack.Quantity;
                         //replace the element that has the trigger with the trigger result
                         //eg, if an individual has a Recruiting: individual_b trigger, and there's a Recruiting aspect in the stack, then replace the individual with individual_b
-                        stacksManager.ModifyElementQuantity(eachStack.Id, -existingQuantity);
-                        stacksManager.ModifyElementQuantity(xTriggers[triggerKey], existingQuantity);
+                        stacksManager.ModifyElementQuantity(eachStack.Id, -existingQuantity, Source.Existing());
+                        stacksManager.ModifyElementQuantity(xTriggers[triggerKey], existingQuantity, Source.Existing());
 
                         NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + eachStack.Id + " to transform into " +
                                         xTriggers[triggerKey]);

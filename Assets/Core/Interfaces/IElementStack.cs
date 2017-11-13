@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
+using Assets.Core.Enums;
 
 namespace Assets.Core.Interfaces
 {
@@ -18,7 +20,7 @@ namespace Assets.Core.Interfaces
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);
-        void Populate(string elementId, int quantity);
+        void Populate(string elementId, int quantity,Source source);
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
         void SplitAllButNCardsToNewStack(int n);
@@ -33,7 +35,9 @@ namespace Assets.Core.Interfaces
 
         void FlipToFaceUp(bool instant);
         void FlipToFaceDown(bool instant);
-
         void Flip(bool state, bool instant);
+        void ShowGlow(bool glowState, bool instant);
+
+        Source StackSource { get; set; }
     }
 }

@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                                                 dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
 
                 tabletopContainer.GetElementStacksManager()
-                    .IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], quantity, locationInfo.ToString());
+                    .IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], quantity,Source.Existing(), locationInfo.ToString());
             }
         }
 
@@ -159,7 +159,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
                     foreach (var eqs in elementQuantitySpecifications)
                     {
-                        outputStack.Add(tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity));
+                        outputStack.Add(tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
                     }
 
                // }
@@ -209,7 +209,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     var stackToPutInSlot =
                         tabletopContainer.GetTokenTransformWrapper()
-                            .ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity);
+                            .ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity, Source.Existing());
                     var slotToFill = controller.GetSlotBySaveLocationInfoPath(eqs.LocationInfo, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                         //if the game can't find a matching slot, it'll just leave it on the desktop

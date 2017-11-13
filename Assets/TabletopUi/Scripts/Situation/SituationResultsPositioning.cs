@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -56,13 +57,14 @@ namespace Assets.CS.TabletopUI {
 
                 // make sure all look down
                 // TODO: This still flips left-behind stack cards for a useless anim. Right now no way to tell that it was such a card
-                token.FlipToFaceDown(true);
-                token.ShowGlow(false, true);
-
+               // if(token.StackSource.SourceType==SourceType.Fresh)
+              //  { 
+                   // token.FlipToFaceDown(true);
+                    //token.ShowGlow(false, true);
+              //  }
                 // turn over last card if we're visible
                 if (i == amount && token.gameObject.activeInHierarchy)
                     token.FlipToFaceUp();
-
                 i++;
             }
         }

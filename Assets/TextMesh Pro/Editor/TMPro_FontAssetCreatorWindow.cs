@@ -372,7 +372,7 @@ namespace TMPro.EditorUtilities
 
             // FONT TTF SELECTION
             EditorGUI.BeginChangeCheck();
-            font_TTF = EditorGUILayout.ObjectField("Font Source", font_TTF, typeof(Font), false, GUILayout.Width(290)) as Font;
+            font_TTF = EditorGUILayout.ObjectField("Font StackSource", font_TTF, typeof(Font), false, GUILayout.Width(290)) as Font;
             if (EditorGUI.EndChangeCheck())
             {
                 //

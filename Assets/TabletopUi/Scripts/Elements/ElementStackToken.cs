@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Core.Entities;
+using Assets.Core.Enums;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -32,6 +34,7 @@ namespace Assets.CS.TabletopUI
         private ITokenTransformWrapper currentWrapper;
         private float lifetimeRemaining;
         private bool isFront = true;
+        public Source StackSource { get; set; }
 
         private Coroutine turnCoroutine;
         private Coroutine animCoroutine;
@@ -267,7 +270,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void Populate(string elementId, int quantity)
+        public void Populate(string elementId, int quantity,Source source)
         {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
             try
@@ -285,6 +288,8 @@ namespace Assets.CS.TabletopUI
             ShowCardDecayTimer(false);
             SetCardDecay(0f);
             lifetimeRemaining = _element.Lifetime;
+
+             StackSource = source;
 
             }
             catch (Exception e)
@@ -385,7 +390,7 @@ namespace Assets.CS.TabletopUI
         public void SplitAllButNCardsToNewStack(int n) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(Id, Quantity - n);
+                cardLeftBehind.Populate(Id, Quantity - n,Source.Existing());
 
                 originStack = cardLeftBehind;
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
@@ -17,7 +18,7 @@ public interface IElementStacksManager {
     /// <param name="quantityChange">must be negative</param>
     /// <returns>returns any unsatisfied change remaining</returns>
     int ReduceElement(string elementId, int quantityChange);
-    int IncreaseElement(string elementId, int quantityChange, string locatorId = null);
+    int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorId = null);
     int GetCurrentElementQuantity(string elementId);
     IDictionary<string, int> GetCurrentElementTotals();
     AspectsDictionary GetTotalAspects(bool showElementAspects = true);
@@ -25,7 +26,7 @@ public interface IElementStacksManager {
     void AcceptStack(IElementStack stack);
     void AcceptStacks(IEnumerable<IElementStack> stacks);
     void ConsumeAllStacks();
-    void ModifyElementQuantity(string elementId, int quantityChange);
+    void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource);
 }
 
 public class ElementStacksManager : IElementStacksManager {
@@ -35,9 +36,9 @@ public class ElementStacksManager : IElementStacksManager {
         wrapper = w;
     }
 
-    public void ModifyElementQuantity(string elementId, int quantityChange) {
+    public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {
         if (quantityChange > 0)
-            IncreaseElement(elementId, quantityChange);
+            IncreaseElement(elementId, quantityChange,stackSource);
         else
             ReduceElement(elementId, quantityChange);
     }
@@ -68,11 +69,11 @@ public class ElementStacksManager : IElementStacksManager {
         return unsatisfiedChange;
     }
 
-    public int IncreaseElement(string elementId, int quantityChange, string locatorid = null) {
+    public int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorid = null) {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        wrapper.ProvisionElementStack(elementId, quantityChange, locatorid);
+        wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
         return quantityChange;
     }
 

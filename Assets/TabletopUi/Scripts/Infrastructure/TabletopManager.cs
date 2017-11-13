@@ -190,7 +190,7 @@ namespace Assets.CS.TabletopUI
 
             foreach (var e in startingElements)
             {
-                ElementStackToken token = tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value);
+                ElementStackToken token = tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
                 ArrangeTokenOnTable(token);
             }
         }

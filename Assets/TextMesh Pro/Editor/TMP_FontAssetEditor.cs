@@ -183,7 +183,7 @@ namespace TMPro.EditorUtilities
             float labelWidth = EditorGUIUtility.labelWidth = 150f;
             float fieldWidth = EditorGUIUtility.fieldWidth;
 
-            EditorGUILayout.PropertyField(m_fontInfo_prop.FindPropertyRelative("Name"), new GUIContent("Font Source"));
+            EditorGUILayout.PropertyField(m_fontInfo_prop.FindPropertyRelative("Name"), new GUIContent("Font StackSource"));
             EditorGUILayout.PropertyField(m_fontInfo_prop.FindPropertyRelative("PointSize"));
 
             GUI.enabled = true;

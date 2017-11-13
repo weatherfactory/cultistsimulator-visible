@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -21,15 +22,15 @@ namespace Assets.TabletopUi.Scripts {
             Assert.IsNotNull(wrappedContainer, "not a container!");
         }
 
-        public IElementStack ProvisionElementStack(string elementId, int quantity, string locatorid = null) {
+        public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
             IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform, locatorid);
-            stack.Populate(elementId, quantity);
+            stack.Populate(elementId, quantity,stackSource);
             Accept(stack);
             return stack;
         }
 
-        public ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, string locatorid = null) {
-            return ProvisionElementStack(elementId, quantity, locatorid) as ElementStackToken;
+        public ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, Source stackSource, string locatorid = null) {
+            return ProvisionElementStack(elementId, quantity,Source.Existing(), locatorid) as ElementStackToken;
         }
 
         public virtual void Accept(IElementStack stack) {
