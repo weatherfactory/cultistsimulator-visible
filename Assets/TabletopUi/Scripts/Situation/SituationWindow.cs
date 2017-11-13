@@ -153,7 +153,7 @@ namespace Assets.CS.TabletopUI {
             startingSlots.gameObject.SetActive(false);
             ongoing.gameObject.SetActive(false);
             results.gameObject.SetActive(true);
-            aspectsDisplay.ClearAspects();
+            aspectsDisplay.ClearCurrentlyDisplayedAspects();
         }
 
         // SHOW VIZ

@@ -75,7 +75,8 @@ public class Compendium : ICompendium
     public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character)
     {
         //for each recipe,
-        foreach (var recipe in _recipes.Where(r=>r.ActionId==verb && r.Craftable && !character.HasExhaustedRecipe(r)))
+        List<Recipe> candidateRecipes=_recipes.Where(r => r.ActionId == verb && r.Craftable && !character.HasExhaustedRecipe(r)).ToList();
+        foreach (var recipe in candidateRecipes )
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
             bool matches = true;

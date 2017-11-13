@@ -26,7 +26,7 @@ namespace Assets.CS.TabletopUI {
         public void SetSlot(SlotSpecification slotSpecification)
         {
             if (slotSpecification.Label != "")
-                title.text = slotSpecification.Label + ":" + slotSpecification.Description;
+                title.text = slotSpecification.Label + ": " + slotSpecification.Description;
             else
                 title.text = slotSpecification.Description;
             

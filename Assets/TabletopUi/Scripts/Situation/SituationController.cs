@@ -184,6 +184,10 @@ namespace Assets.TabletopUi {
             storageStackManager.AcceptStacks(inputStacks);
         }
 
+        /// <summary>
+        /// respond to the Situation's request to execute its payload
+        /// </summary>
+        /// <param name="command"></param>
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
@@ -208,11 +212,13 @@ namespace Assets.TabletopUi {
                 tabletopManager.EndGame(ending);
             }
         }
-
+        /// <summary>
+        /// The situation is complete. Display the output cards and description
+        /// </summary>
         public void SituationComplete() {
-            var stacksToRetrieve = situationWindow.GetStoredStacks();
+            var outputStacks = situationWindow.GetStoredStacks();
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
-            SetOutput(stacksToRetrieve.ToList());
+            SetOutput(outputStacks.ToList());
 
             situationWindow.AddNote(notification);
 

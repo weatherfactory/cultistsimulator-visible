@@ -256,6 +256,21 @@ namespace Assets.Editor.Tests
             throw new NotImplementedException();
         }
 
+        public void FlipToFaceUp(bool instant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FlipToFaceDown(bool instant)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Flip(bool state, bool instant)
+        {
+            throw new NotImplementedException();
+        }
+
         public void MoveTo<T>(T newLocation)
         {
             throw new NotImplementedException();

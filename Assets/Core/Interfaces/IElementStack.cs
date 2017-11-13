@@ -30,5 +30,10 @@ namespace Assets.Core.Interfaces
 
         bool CanAnimate();
         void StartArtAnimation();
+
+        void FlipToFaceUp(bool instant);
+        void FlipToFaceDown(bool instant);
+
+        void Flip(bool state, bool instant);
     }
 }

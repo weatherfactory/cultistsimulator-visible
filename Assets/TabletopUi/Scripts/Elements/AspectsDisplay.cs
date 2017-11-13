@@ -3,6 +3,7 @@ using System.Linq;
 using Assets.Core;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts
@@ -12,8 +13,18 @@ namespace Assets.TabletopUi.Scripts
     /// </summary>
     public class AspectsDisplay : MonoBehaviour {
 
+        [SerializeField] private TextMeshProUGUI Header;
+
+        public void ShowHeader(bool show)
+        {
+            if(Header!=null) //not all aspects displays have headers
+            Header.enabled = show;
+        }
+
         public void DisplayAspects(IAspectsDictionary aspects) {
-            ClearAspects();
+            ClearCurrentlyDisplayedAspects();
+
+            ShowHeader(aspects.Keys.Any());
 
             foreach (string k in aspects.Keys)
                 AddAspectToDisplay(k, aspects[k]);
@@ -25,10 +36,14 @@ namespace Assets.TabletopUi.Scripts
             newAspectFrame.PopulateDisplay(aspect, quantity);
         }
 
-        public void ClearAspects() {
+        public void ClearCurrentlyDisplayedAspects() {
             foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
                 DestroyObject(a.gameObject);
         }
     
     }
+
+
+
+
 }
