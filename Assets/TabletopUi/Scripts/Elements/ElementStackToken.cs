@@ -91,6 +91,10 @@ namespace Assets.CS.TabletopUI
                 return;
 
             isFront = state;
+            //if a card has just been turned face up in a situation, it's now an existing, established card
+            if (isFront && StackSource.SourceType == SourceType.Fresh)
+                StackSource.SourceType = SourceType.Existing;
+
 
             if (gameObject.activeInHierarchy == false || instant) {
                 transform.localRotation = GetFrontRotation(isFront);
@@ -345,7 +349,16 @@ namespace Assets.CS.TabletopUI
 
         public override void OnPointerClick(PointerEventData eventData)
         {
+            if(isFront)
+            { 
             notifier.ShowElementDetails(_element);
+            }
+            else
+            { 
+            FlipToFaceUp(false);
+            }
+            transform.SetAsLastSibling(); //this moves the clicked sibling on top of any other nearby cards.
+            //Hi Martin. Why, yes, I would like you to implement something more sophisticated.
         }
 
         public override void OnDrop(PointerEventData eventData)
@@ -421,6 +434,7 @@ namespace Assets.CS.TabletopUI
 
         protected override void StartDrag(PointerEventData eventData)
         {
+           
 			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
 			if (stackBadge.IsHovering() == false) 
             	SplitAllButNCardsToNewStack(1);

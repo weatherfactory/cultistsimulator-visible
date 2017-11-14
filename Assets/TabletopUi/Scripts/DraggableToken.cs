@@ -90,7 +90,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public void OnBeginDrag (PointerEventData eventData) {
-            if (CanDrag(eventData))
+           if (CanDrag(eventData))
                 StartDrag(eventData);
         }
 
@@ -100,7 +100,7 @@ namespace Assets.CS.TabletopUI
                 return false;
 
             if ( itemBeingDragged != null || draggingEnabled == false )
-                return false;
+               return false;
 		
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
             if (eventData != null && eventData.pointerId < -1 ) 

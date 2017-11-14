@@ -30,20 +30,17 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
         // TODO: Clear out the cards that are still here?
     }
 
-    public void SetOutput(List<IElementStack> stacks) {
-        if (stacks.Any() == false)
+    public void SetOutput(List<IElementStack> allStacksToOutput) {
+        if (allStacksToOutput.Any() == false)
             return;
 
-        GetElementStacksManager().AcceptStacks(stacks);
-        foreach (var stack in stacks)
-        {
-            if(stack.StackSource.SourceType==SourceType.Fresh)
-                stack.FlipToFaceDown(true);
-            stack.ShowGlow(false, true);
-        }
 
+        
 
-        cardPos.ReorderCards(stacks);
+        GetElementStacksManager().AcceptStacks(allStacksToOutput);
+
+//currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
+        cardPos.ReorderCards(allStacksToOutput);
     }
 
     public void TokenPickedUp(DraggableToken draggableToken) {

@@ -24,47 +24,65 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void OnEnable() {
-            // Try to turn over the first card in case we set up the cards while the window was closed.
+            //To turn over the first card automatically when the window opens, uncomment the code below.
             // Delay is to wait for the end of the window transition anim
-            Invoke("DelayedFlip", 0.25f);
+            //Invoke("DelayedFlip", 0.25f);
         }
+        //commented out: for now, we're manually turning all cards.
+        // void DelayedFlip() {
+        //      var stacks = GetComponentsInChildren<ElementStackToken>();
+        //    if (stacks != null && stacks.Length > 0)
+        //       stacks[stacks.Length - 1].FlipToFaceUp();
+    //}
 
-        void DelayedFlip() {
-            var stacks = GetComponentsInChildren<ElementStackToken>();
+        public void ReorderCards(IEnumerable<IElementStack> elementStacks) {
 
-            if (stacks != null && stacks.Length > 0)
-                stacks[stacks.Length - 1].FlipToFaceUp();
-        }
 
-        public void ReorderCards(IEnumerable<IElementStack> elements) {
+            //Order the stacks to put the existing ones first.
+            List<IElementStack> existingStacks = new List<IElementStack>();
+            List<IElementStack> freshStacks = new List<IElementStack>();
+
+            foreach (var stack in elementStacks)
+            {
+                if (stack.StackSource.SourceType == SourceType.Fresh)
+                    freshStacks.Add(stack);
+                else
+                    existingStacks.Add(stack);
+            }
+
+            var sortedStacks = new List<IElementStack>();
+            sortedStacks.AddRange(freshStacks); //new stacks go after that
+            sortedStacks.AddRange(existingStacks); //existing stacks go first
+
+
             ElementStackToken token;
             int i = 1; // index starts at 1 for positioning math reasons
             int amount = 0;
 
             SetAvailableSpace();
 
-            foreach (var stack in elements)
+            foreach (var stack in sortedStacks)
                 if (stack is ElementStackToken)
                     amount++;
 
-            foreach (var stack in elements) {
+            foreach (var stack in sortedStacks) {
                 token = stack as ElementStackToken;
 
                 if (token == null)
                     continue;
 
-                MoveToPosition(token.transform as RectTransform, GetPositionForIndex(i, amount), moveDuration);
+                MoveToPosition(token.transform as RectTransform, GetPositionForIndex(i, amount), 0f);
 
-                // make sure all look down
-                // TODO: This still flips left-behind stack cards for a useless anim. Right now no way to tell that it was such a card
-               // if(token.StackSource.SourceType==SourceType.Fresh)
-              //  { 
-                   // token.FlipToFaceDown(true);
-                    //token.ShowGlow(false, true);
-              //  }
-                // turn over last card if we're visible
-                if (i == amount && token.gameObject.activeInHierarchy)
-                    token.FlipToFaceUp();
+                token.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
+
+                //if any stacks are fresh, flip them face down,
+                //then mark them as existing
+                if(token.StackSource.SourceType==SourceType.Fresh)
+                { 
+                    token.FlipToFaceDown(true);
+                    token.ShowGlow(false, true);
+                }
+                
                 i++;
             }
         }
