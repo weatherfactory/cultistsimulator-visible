@@ -100,7 +100,15 @@ namespace Assets.Core
             return null;
         }
 
-
+        /// <summary>
+        /// Returns information on the recipe that's going to execute, based on current recipe and aspect context
+        ///  If there are no alternate recipes, we return the current recipe
+        /// If there is a 100% alternate recipe, we return that
+        /// If there is a chance of an alternate recipe, we return *that* with basic chance description
+        /// If there's more than one, we return all those
+        /// </summary>
+        /// <param name="currentRecipe"></param>
+        /// <returns></returns>
         public RecipePrediction GetRecipePrediction(Recipe currentRecipe)
         {
             var rp=new RecipePrediction();
@@ -129,7 +137,21 @@ namespace Assets.Core
                         if (ar.Chance < 100)
                         {
                             //there is uncertainty! Leave the headline decision where it is, but tell the player.
-                            rp.Commentary = "[The outcome here may vary.]";
+                            Recipe thisAlternateRecipe = compendium.GetRecipeById(ar.Id);
+                            if(thisAlternateRecipe==null)
+                            { 
+                                NoonUtility.Log("Tried to predict a recipe that doesn't exist, with id " + ar.Id);
+                            }
+                            else
+                            {
+                                string chanceDescription;
+                                if (ar.Chance > 50)
+                                    chanceDescription = "This is likely to happen: ";
+                                else
+                                    chanceDescription = "This might happen: ";
+
+                                rp.Commentary += chanceDescription + "<b>" + thisAlternateRecipe.Label + "</b>\n";
+                            }
                             return rp;
                         }
                         else
