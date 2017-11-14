@@ -58,5 +58,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayTimeRemaining(float duration, float timeRemaining);
         void DisplayNoRecipeFound();
         void AddNote(INotification notification);
+        IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
     }
 }

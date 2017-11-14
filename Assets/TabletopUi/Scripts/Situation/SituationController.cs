@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Commands;
@@ -113,8 +114,11 @@ namespace Assets.TabletopUi {
         }
 
         public void OngoingSlotsUpdated() {
+            //we don't display the elements themselves, just their aspects.
+            //But we *do* take the elements themselves into consideration for determining recipe execution
             var aspectsToDisplayInBottomBar = GetAspectsAvailableToSituation(false);
             var allAspects = GetAspectsAvailableToSituation(true);
+
             situationWindow.DisplayAspects(aspectsToDisplayInBottomBar);
             var rp = getNextRecipePrediction(allAspects);
 
@@ -131,8 +135,11 @@ namespace Assets.TabletopUi {
             return Situation.GetPrediction(rc);
         }
 
-        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
-            return situationWindow.GetAspectsFromAllSlottedElements(showElementAspects);
+        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects)
+        {
+            var aspects = situationWindow.GetAspectsFromAllSlottedElements(showElementAspects);
+            aspects.CombineAspects(situationWindow.GetAspectsFromStoredElements(showElementAspects));
+            return aspects;
         }
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
