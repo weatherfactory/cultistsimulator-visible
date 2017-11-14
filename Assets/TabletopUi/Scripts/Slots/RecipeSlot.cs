@@ -71,6 +71,7 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             ShowGlow(false, false);
+            IsLocked = false;
         }
 
         public void SetSpecification(SlotSpecification slotSpecification) {

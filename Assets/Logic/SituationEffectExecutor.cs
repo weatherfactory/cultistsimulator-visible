@@ -37,8 +37,13 @@ namespace Assets.Logic
             {
                 var drawnElementId = deck.Draw();
 
-                if(drawnElementId!=null)
-                    stacksManager.ModifyElementQuantity(drawnElementId,1, Source.Existing());
+                if (drawnElementId != null)
+                {
+                    var source = new Source();
+                    source.SourceType = SourceType.Fresh; //ultimately this should correspond to deck
+                    stacksManager.ModifyElementQuantity(drawnElementId, 1, source);
+
+                }
                 //else
                 //do nothing, yet. Exhausted decks just stay empty.
             }

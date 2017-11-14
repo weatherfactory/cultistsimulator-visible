@@ -20,7 +20,6 @@
         label: "Recover?",
         actionId: "dream",
         requirements: {illhealth: 1},
-        effects: {fleetingmemory:1},
             		slots:
 						{Nourishment: {required: {shilling: 1},forbidden: {}}},
 		alternativerecipes: [{id:"recover",chance:100}],
