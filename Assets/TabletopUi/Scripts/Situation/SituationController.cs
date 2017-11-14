@@ -227,7 +227,7 @@ namespace Assets.TabletopUi {
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
             SetOutput(outputStacks.ToList());
 
-            situationWindow.AddNote(notification);
+            situationWindow.ReceiveNotification(notification);
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindow.SetComplete();
@@ -248,7 +248,7 @@ namespace Assets.TabletopUi {
 
         public void AddNote(INotification notification)
         {
-            situationWindow.AddNote(notification);
+            situationWindow.ReceiveNotification(notification);
         }
 
         public void UpdateTokenResultsCountBadge() {

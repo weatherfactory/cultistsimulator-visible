@@ -152,7 +152,7 @@ namespace Assets.Core
 
                                 rp.Commentary += chanceDescription + "<b>" + thisAlternateRecipe.Label + "</b>\n";
                             }
-                            return rp;
+                            
                         }
                         else
                         {
@@ -160,9 +160,8 @@ namespace Assets.Core
                             //alternative will have a useful description.
                             rp.Title = candidateRecipe.Label;
                             rp.DescriptiveText = candidateRecipe.StartDescription;
-                            rp.Commentary = candidateRecipe.Aside;
                             rp.BurnImage = candidateRecipe.BurnImage;
-                            return rp;
+                            
                         }
                     }
                 }

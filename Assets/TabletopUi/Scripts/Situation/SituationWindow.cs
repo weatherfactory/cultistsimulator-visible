@@ -154,6 +154,7 @@ namespace Assets.CS.TabletopUI {
             ongoing.gameObject.SetActive(false);
             results.gameObject.SetActive(true);
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
+            hintText.text = "";
         }
 
         // SHOW VIZ
@@ -172,8 +173,11 @@ namespace Assets.CS.TabletopUI {
 			DisplayButtonState(false);
 		}
 
-        public void AddNote(INotification notification)
+        public void ReceiveNotification(INotification notification)
         {
+            if (notification.Title != "" & notification.Title != null)
+                Title = notification.Title;
+
             PaginatedNotes.AddText(notification.Description);
         }
 

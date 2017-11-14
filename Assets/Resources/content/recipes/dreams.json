@@ -75,12 +75,12 @@
 	actionId: "dream",
 	requirements: {reason: 2},
 	alternativerecipes: [{id: "nightmarehersaultsuccess",chance: 30}],
-	effects: {reason: -1,insomnia: 1},
+	effects: {reason: -1,dread: 1},
 	startdescription: "Down I go.",
 	description: "I remember that Hersault wrote of this. I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. This time, I haven't learnt what I hoped to learn - whatever that was.",
 	},
 	{id: "nightmarehersaultsuccess",
-	effects: {reason: -1,fragmentknock: 1,insomnia: 1},
+	effects: {reason: -1,fragmentknock: 1,dread: 1},
 		description: "I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. But this is the space below."
 	},
 		{
