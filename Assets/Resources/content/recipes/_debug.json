@@ -11,19 +11,7 @@ warmup: 1,
 craftable:false
 }
 ,
-	{
-        id: "_testxtrigger",
-        label: "Testing xtrigger",
-        actionId: "work",
-        requirements: {shilling:1000},
-        effects: {shilling: 10},
-		alternativerecipes:
-		[{id: "randomacquaintancerouter", chance:100,additional:true}],
-		startdescription: ".",
-        description: "...",
-        warmup: 1,
-        craftable: false
-	},
+
 		{
         id: "_explore",
         label: "Create explore token",

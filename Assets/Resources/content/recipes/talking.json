@@ -18,7 +18,7 @@ actionId: "talk",
 requirements: {lore: 1},
 alternativerecipes:[{id: "inspiremystique",chance:70},
 {id: "inspirenotoriety",chance:70},
-{id: "randomacquaintancerouter",chance:100}
+deckeffect: "acquaintances"
 ],
 startdescription: "I might make a useful contact or improve my reputation; or I might draw the wrong kind of attention.",
 description: "",
@@ -41,109 +41,14 @@ warmup: 10,
 craftable: false},
 	   {
         id: "findacquaintanceopentalk",
-		maxexecutions: 1,
         label: "An Acquaintance",
         actionId: "talk",
-        startdescription: "Someone has struck up a conversation with me.",
-        description: ".",
+        startdescription: "Someone has struck up a conversation.",
+        description: "I've met someone interesting.",
         warmup: 0,
         craftable: false,
-		comments: "this runs once as an additional, and is how Talk is opened",
-		linked:[{id:"randomacquaintancerouter",chance:100}],
-		comment: "we no longer need a separate router since the loop enhancement"
-    },
-	{
-        id: "randomacquaintancerouter",
-        label: "An Acquaintance",
-        actionId: "social",
-     alternativerecipes:
-		[{id: "meetdorothy", chance:20},
-		{id: "meetleo", chance:30},
-		{id: "meetenid", chance:20},
-		{id: "meetneville", chance:20},
-		{id: "meetrose", chance:30},
-		{id: "meetvictor", chance:100},
-		{id: "meetpeople", chance:100}],
-        startdescription: "Someone has struck up a conversation with me.",
-        description: "Someone has struck up a conversation with me.",
-        warmup: 5,
-        craftable: false,
-
-    },
-			   {
-        id: "meetdorothy",
-        actionId: "x",
-		effects: {dorothy_a: 1}
-        startdescription: "",
-        description: "--Dorothy!",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1
-    },
-				   {
-        id: "meetenid",
-        label: "This is Enid",
-        actionId: "x",
-		effects: {enid_a: 1}
-        startdescription: "",
-        description: "--Enid!",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1
-    },
-					   {
-        id: "meetrose",
-        label: "This is Rose",
-        actionId: "x",
-		effects: {rose_a: 1}
-        startdescription: "",
-        description: "--Rose!",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1
-    },
-						   {
-        id: "meetleo",
-        label: "This is Leo",
-        actionId: "x",
-		effects: {leo_a: 1}
-        startdescription: "",
-        description: "--Leo!",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1
-    },
-							   {
-        id: "meetneville",
-        label: "This is Neville",
-        actionId: "x",
-		effects: {neville_a: 1}
-        startdescription: "",
-        description: "--Neville!",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1
-    },
-							   {
-        id: "meetvictor",
-        label: "This is Victor",
-        actionId: "x",
-		effects: {victor_a: 1}
-        startdescription: "",
-        description: "--Victor!",
-        warmup: 0,
-        craftable: false,
-		maxexecutions: 1
-    },
-								   {
-        id: "meetpeople",
-        label: "I've met no-one of note. No-one is worth my time, but I am worth theirs. They might bore me, but they'll remember me.",
-        actionId: "x",
-		effects: {mystique: 1}
-        startdescription: "",
-        description: "No-one is worth my time, but I am worth theirs. They might bore me, but they'll remember me.",
-        warmup: 0,
-        craftable: false
-    },
+		comments: "this runs as an additional, and is how Talk is opened",
+deckeffect: "acquaintances"
+    }
 ]
 }

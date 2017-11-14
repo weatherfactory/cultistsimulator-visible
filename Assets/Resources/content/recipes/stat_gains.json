@@ -3,7 +3,7 @@
 	{
         id: "dreamvitality",
         label: "Grow stronger",
-        actionId: "dream",
+        actionId: "study",
         requirements: {vitality:1},
         effects: {vitality:-1,health:1},
 		startdescription: "I will build my body's strength.",
@@ -14,7 +14,7 @@
 		{
         id: "dreamerudition",
         label: "Grow shrewder",
-        actionId: "dream",
+        actionId: "study",
         requirements: {erudition:1},
         effects: {erudition:-1,reason:1},
 		startdescription: "I will reflect on what I've learnt.",
@@ -25,7 +25,7 @@
 		{
         id: "dreamglimmering",
         label: "Grow more insightful",
-        actionId: "dream",
+        actionId: "study",
         requirements: {glimmering:1},
         effects: {glimmering:-1,passion:1},
 		startdescription: "I will close my eyes, for a little while.",

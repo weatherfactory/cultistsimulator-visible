@@ -49,9 +49,8 @@
         label: "Seek Composure",
         actionId: "dream",
         requirements: {unreason: 1},
-        effects: {fleetingmemory:1},
-            		slots:
-						{Reminders: {required: {fleetingmemory: 1,contentment:1}}},
+              		slots:
+						{Reminders: {required: {contentment:1}}},
 		alternativerecipes: [{id:"composure",chance:100}],
         startdescription: "Was I different, before?",
         description: "I remember that I was different: but I no longer remember how.",
