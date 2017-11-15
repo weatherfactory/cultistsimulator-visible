@@ -139,19 +139,40 @@
 				    {
             id: "unreason",
             label: "Unreason",
-			description: "Time, peace and memory might restore me.",
+			description: "Time and peace might restore me.",
             isAspect: true
         },
  {
-            id: "obsession",
-            label: "Obsession",
-			description: "Time, peace and memory might restore me.",
+            id: "delirium",
+            label: "Delirium",
+			description: "THE HIGHER I RISE THE MORE I SEE",
             isAspect: true
         },
 		 {
             id: "recruiting",
             label: "Recruiting",
 			description: "To see the light, one cannot be blind; but sometimes, it's the light that blinds us.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+				 {
+            id: "restorehealth",
+            label: "Restore Health",
+			description: "Health will return.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+				 {
+            id: "restorereason",
+            label: "Restore Reason",
+			description: "Reason will return.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+				 {
+            id: "restorepassion",
+            label: "Restore Passion",
+			description: "Passion will be clarified.",
             isAspect: true,
 			comments: "Recipe aspect"
         },

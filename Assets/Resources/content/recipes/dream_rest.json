@@ -1,59 +1,81 @@
 {
 "recipes": [
-	{
-        id: "recover",
-        label: "Recover",
-        actionId: "dream",
-        requirements: {shilling: 1, illhealth: 1},
-        effects: {
-            illhealth: -1,
-			shilling:-1,
-			health: 1
-        },
-        startdescription: "All I need now is time.",
-        description: "The sick-room grows close and stale. Time to get up.",
-        warmup: 90,
-        craftable: true
-    },
+
 		{
-        id: "tryrecover",
-        label: "Recover?",
+        id: "tryrecoverhealth",
+        label: "Heal?",
         actionId: "dream",
         requirements: {illhealth: 1},
             		slots:
 						{Nourishment: {required: {shilling: 1},forbidden: {}}},
-		alternativerecipes: [{id:"recover",chance:100}],
+		alternativerecipes: [{id:"recoverhealth",chance:100}],
         startdescription: "To recover my health, I'll need money for food and medicine.",
         description: "Rested, but not recovered. I need money for food and medicine.",
         warmup: 90,
         craftable: true
     },
 	{
-        id: "composure",
-        label: "Composure",
+        id: "recoverhealth",
+        label: "Heal",
         actionId: "dream",
-        requirements: {heart: 1, unreason: 1},
+        requirements: {shilling: 1, illhealth: 1},
         effects: {
-            unreason: -1,
-			heart:-1,
-			reason: 1
+			shilling:-1,
         },
-        startdescription: "I remember that I was different, before.",
-        description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
+		aspects:{restorehealth:1},
+        startdescription: "All I need now is time.",
+        description: "The sick-room grows close and stale. Time to get up.",
         warmup: 90,
-        craftable: true
     },
-		{
-        id: "seekcomposure",
-        label: "Seek Composure",
+	
+			{
+        id: "tryrecoverreason",
+        label: "Clear my Mind?",
         actionId: "dream",
         requirements: {unreason: 1},
               		slots:
-						{Reminders: {required: {contentment:1}}},
-		alternativerecipes: [{id:"composure",chance:100}],
+						{Reminders: {required: {contentment:1},consumes:true}},
+		alternativerecipes: [{id:"recoverreason",chance:100}],
         startdescription: "Was I different, before?",
         description: "I remember that I was different: but I no longer remember how.",
         warmup: 90,
         craftable: true
+    },
+	{
+        id: "recoverreason",
+        label: "Clear my Mind",
+        actionId: "dream",
+        requirements: {heart: 1, unreason: 1},
+        effects: {},
+		aspects:{restorereason:1},
+        startdescription: "I remember that I was different, before.",
+        description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
+        warmup: 90
+    },
+				{
+        id: "tryrecoverpassion",
+        label: "Seek Composure",
+        actionId: "dream",
+        requirements: {delirium: 1},
+              		slots:
+						{Reminders: {required: {dread:1}}},
+		alternativerecipes: [{id:"recoverpassion",chance:100}],
+        startdescription: "The doors of vision have cracked open. Perhaps I should calm myself, somehow.",
+        description: "A little darkness will mellow my light; a little ballast will bring me back to earth.",
+        warmup: 90,
+        craftable: true
+    },
+	{
+        id: "recoverpassion",
+        label: "Composure",
+        actionId: "dream",
+        requirements: {dread: 1, delirium: 1},
+        effects: {
+			dread:-1,
+        },
+		aspects:{restorepassion:1},
+        startdescription: ".",
+        description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
+        warmup: 90
     }
 }

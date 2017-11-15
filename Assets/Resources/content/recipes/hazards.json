@@ -1,0 +1,17 @@
+{"recipes": [
+
+	    {
+        id: "despair0",
+        label: "Despair",
+        actionId: "despair",
+        requirements: {},
+        effects: {},
+		slots: {Suspicion: {required: {dread: 1,injury:1}, greedy: true}},
+		alternativerecipes: [{id: "investigationlink",chance: 100}],
+        startdescription: ".",
+        description: "..",
+        warmup: 60,
+        craftable: false
+    }
+]
+}

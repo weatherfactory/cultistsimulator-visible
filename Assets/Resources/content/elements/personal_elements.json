@@ -9,55 +9,6 @@
 			  grail: CONVENTIONS.QUANTITY_TINY},
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
 			},
-
-			{
-        id: "injury",
-            label: "An Injury",
-            aspects:
-            {illhealth: CONVENTIONS.QUANTITY_TINY,
-			  knock: CONVENTIONS.QUANTITY_TINY},
-            description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury will also allow you to recover Health.]",
-			},
-			{
-			id: "affliction",
-            label: "An Affliction",
-            aspects:
-            {illhealth: CONVENTIONS.QUANTITY_TINY},
-            description: "Disease has left me weak. I need rest and nourishment, if I am to recover.",
-			},
-        {
-            id: "reason",
-            label: "Reason",
-            aspects:
-            {
-                lantern: CONVENTIONS.QUANTITY_TINY
-            },
-            animFrames: 1,
-			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
-        },	
-			{id: "dread",
-            label: "Dread",
-            aspects:
-            {edge: CONVENTIONS.QUANTITY_TINY,unreason: CONVENTIONS.QUANTITY_TINY},
-            description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror."
-			},
-			{id: "fascination",
-            label: "Fascination",
-            aspects:
-            {lantern: CONVENTIONS.QUANTITY_TINY,unreason: CONVENTIONS.QUANTITY_TINY},
-            description: "Light leaks through the cracks. My mind is brighter than it ever was..",
-			},
-		        {
-            id: "passion",
-            label: "Passion",
-            aspects:
-            {
-                moth: CONVENTIONS.QUANTITY_TINY
-            },
-            maxvalue:7,
-            animFrames: 1,
-			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
-        },
         {
             id: "health",
             label: "Health",
@@ -75,27 +26,79 @@
             {},
             description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i>treasure. [Vitality can sometimes be used to gain Health.]"
         },
-		 {
+			{
+        id: "injury",
+            label: "An Injury",
+            aspects:
+            {illhealth: CONVENTIONS.QUANTITY_TINY,
+			  knock: CONVENTIONS.QUANTITY_TINY},
+            description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury will also allow you to recover Health.]",
+			xtriggers: {restorehealth: health},
+			},
+			{
+			id: "affliction",
+            label: "An Affliction",
+            aspects:{illhealth: CONVENTIONS.QUANTITY_TINY},
+			xtriggers: {restorehealth: health},
+            description: "Disease has left me weak. I need rest and nourishment, if I am to recover.",
+			},
+        {
+            id: "reason",
+            label: "Reason",
+            aspects:
+            {
+                lantern: CONVENTIONS.QUANTITY_TINY
+            },
+            animFrames: 1,
+			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
+        },
+				 {
             id: "erudition",
             label: "Erudition",
             aspects:
             {},
             description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason.]"
         },
-			 {
+			{id: "dread",
+            label: "Dread",
+            aspects:
+            {edge: CONVENTIONS.QUANTITY_TINY,unreason: CONVENTIONS.QUANTITY_TINY},
+			xtriggers: {restorereason: reason},
+            description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror."
+			},
+		        {
+            id: "passion",
+            label: "Passion",
+            aspects:
+            {
+                moth: CONVENTIONS.QUANTITY_TINY
+            },
+            maxvalue:7,
+            animFrames: 1,
+			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
+        },
+					 {
             id: "glimmering",
             label: "Glimmering",
             aspects:
             {},
             description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion.]"
         },
+		{id: "fascination",
+            label: "Fascination",
+            aspects:
+            {moth: CONVENTIONS.QUANTITY_TINY,passion:1,delirium:1},
+            description: "Light leaks through the cracks. My mind is brighter than it ever was..",
+			xtriggers: {restorepassion: passion},
+			comments: "This should be usable as if it were passion, although it is also a pollutant for hazard purposes",
+			},
+
 					 {
             id: "mystique",
             label: "Mystique",
-            aspects:
-            {reputation: 1},
+            aspects: {reputation: 1},
             description: "They remember who I am. [Mystique can be used to found a cult, and to recruit followers.]",
-	lifetime: 60
+		lifetime: 60
         },
 							 {
             id: "notoriety",
