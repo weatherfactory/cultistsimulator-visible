@@ -25,9 +25,13 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
     public void TokenDropped(DraggableToken draggableToken) {
     }
 
-    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool IncumbentShouldMove)
+    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {
-        throw new NotImplementedException();
+        //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
+
+        incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
+        incumbentMoved = true;
+        PutOnTable(potentialUsurper);
     }
 
     public IEnumerable<ISituationAnchor> GetAllSituationTokens() {

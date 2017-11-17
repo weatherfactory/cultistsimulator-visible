@@ -190,22 +190,22 @@ namespace Assets.CS.TabletopUI {
         public void TokenDropped(DraggableToken draggableToken) {
         }
 
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentShouldMove)
+        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {
             var usurperStack = potentialUsurper as ElementStackToken;
             if (usurperStack == null)
-                incumbentShouldMove = false;
+                incumbentMoved = false;
             else
             {
                 //incomer is a token. Does it fit in the slot?
                 if(GetSlotMatchForStack(usurperStack).MatchType==SlotMatchForAspectsType.Okay)
                 { 
-                    incumbentShouldMove = true;
+                    incumbentMoved = true;
                     incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
                     AcceptStack(usurperStack);
                 }
                 else
-                    incumbentShouldMove = false;
+                    incumbentMoved = false;
             }
 
         }

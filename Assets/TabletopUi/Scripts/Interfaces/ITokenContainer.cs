@@ -16,7 +16,7 @@ namespace Assets.CS.TabletopUI.Interfaces
         /// </summary>
         /// <param name="potentialUsurper"></param>
         /// <param name="IncumbentShouldMove"></param>
-        void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentShouldMove);
+        void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
         bool AllowDrag { get; }
         bool AllowStackMerge { get; } //allow a stack dropped on a stack here to combine with it
 

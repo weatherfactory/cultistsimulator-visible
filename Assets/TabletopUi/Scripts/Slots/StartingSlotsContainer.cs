@@ -116,7 +116,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         public void TokenDropped(DraggableToken draggableToken) {
         }
 
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool IncumbentShouldMove)
+        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {
             //I don't *think* this should ever be called. Let's find out.
             //if it's not, ofc, we have one too few interfaces. The ITokenContainer is being used as both 'thing that has a stacksmanager' and 'direct parent that determines behaviour'

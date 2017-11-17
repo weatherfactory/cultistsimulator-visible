@@ -19,9 +19,9 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     private SituationController controller;
 
-    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentShouldMove)
+    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {
-        incumbentShouldMove = false;
+        incumbentMoved = false;
     }
 
     public bool AllowDrag { get { return true; } }

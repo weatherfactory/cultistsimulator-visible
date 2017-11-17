@@ -400,13 +400,16 @@ namespace Assets.CS.TabletopUI
                 this.container.TokenDropped(this);
                 this.Retire(false);                
             }
+            else
+            {
+                
             var droppedOnToken = stackDroppedOn as DraggableToken;
             bool moveAsideFor = false;
             droppedOnToken.container.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false,"was moved aside for");
-
+            }
         }
 
         public void SplitAllButNCardsToNewStack(int n) {

@@ -245,12 +245,21 @@ namespace Assets.CS.TabletopUI
 
         public virtual void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
-            DraggableToken.resetToStartPos = true;
+
+            bool moveAsideFor = false;
+            tokenDroppedOn.container.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+        
+        
         }
 
         public virtual void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
-            DraggableToken.resetToStartPos = true;
+            DraggableToken.SetReturn(true);
         }
 
         public virtual bool Retire()
