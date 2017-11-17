@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -148,7 +149,8 @@ namespace Assets.CS.TabletopUI {
             //it matches. Now we check if there's a token already there, and replace it if so:
             var currentOccupant = GetTokenInSlot();
             if (currentOccupant != null)
-                currentOccupant.ReturnToTabletop();
+                throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
+                //currentOccupant.ReturnToTabletop();
 
             //now we put the token in the slot.
             DraggableToken.SetReturn(false,"has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
@@ -199,8 +201,8 @@ namespace Assets.CS.TabletopUI {
                 if(GetSlotMatchForStack(usurperStack).MatchType==SlotMatchForAspectsType.Okay)
                 { 
                     incumbentShouldMove = true;
+                    incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
                     AcceptStack(usurperStack);
-                    incumbent.ReturnToTabletop();
                 }
                 else
                     incumbentShouldMove = false;
