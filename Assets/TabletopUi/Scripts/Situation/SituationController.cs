@@ -189,6 +189,7 @@ namespace Assets.TabletopUi {
             var inputStacks = situationWindow.GetOngoingStacks();
             var storageStackManager = situationWindow.GetStorageStacksManager();
             storageStackManager.AcceptStacks(inputStacks);
+            situationWindow.DisplayStoredElements(); //displays the miniversion of the cards. This should 
         }
 
         /// <summary>
@@ -278,7 +279,6 @@ namespace Assets.TabletopUi {
 
             situationWindow.SetSlotConsumptions();
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
-            situationWindow.DisplayStoredElements();
             Situation.Start(recipe);
 
             if (recipe.BurnImage != null)

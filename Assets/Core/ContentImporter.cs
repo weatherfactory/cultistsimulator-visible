@@ -446,7 +446,7 @@ public class ContentImporter
             catch (Exception e)
             {
 
-                LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
+                LogProblem("Problem importing linked recipes for recipe '" + r.Id + "' - " + e.Message);
             }
 
             

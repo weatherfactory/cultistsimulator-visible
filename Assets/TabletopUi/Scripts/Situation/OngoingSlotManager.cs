@@ -74,7 +74,7 @@ namespace Assets.CS.TabletopUI {
                     if (i < aspectFrames.Length)
                         frame = aspectFrames[i];
                     else
-                        frame = BuildAspectFrame();
+                        frame = PrefabFactory.CreateLocally<AspectFrame>(storedCardsLayout.transform);
 
                     frame.PopulateDisplay(element, 1);
                     frame.gameObject.SetActive(true);
@@ -89,9 +89,6 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        AspectFrame BuildAspectFrame() {
-            return PrefabFactory.CreateLocally<AspectFrame>(storedCardsLayout.transform);
-        }
 
     }
 }

@@ -215,6 +215,9 @@ public class Compendium : ICompendium
             return new Ending(endingFlag, "MY BODY IS DEAD",
                 "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
                 "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]","");
+        if (endingFlag == "despairending")
+            return new Ending(endingFlag, "NO MORE",
+                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread.]", "");
         if (endingFlag == "powerminor")
             return new Ending(endingFlag,"WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
                 "The Red Grail is the Hour of blood and of birth. It has touched me, and I've gained a little of its power. If I had more time, I could" +

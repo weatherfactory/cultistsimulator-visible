@@ -31,7 +31,8 @@
             label: "An Injury",
             aspects:
             {illhealth: CONVENTIONS.QUANTITY_TINY,
-			  knock: CONVENTIONS.QUANTITY_TINY},
+			  knock: CONVENTIONS.QUANTITY_TINY,
+			  inducesdespair: CONVENTIONS.QUANTITY_TINY},
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury will also allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
 			},
@@ -62,7 +63,9 @@
 			{id: "dread",
             label: "Dread",
             aspects:
-            {edge: CONVENTIONS.QUANTITY_TINY,unreason: CONVENTIONS.QUANTITY_TINY},
+            {edge: CONVENTIONS.QUANTITY_TINY,
+			unreason: CONVENTIONS.QUANTITY_TINY,
+			inducesdespair: CONVENTIONS.QUANTITY_TINY},
 			xtriggers: {restorereason: reason},
             description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror."
 			},
@@ -98,7 +101,7 @@
             label: "Mystique",
             aspects: {reputation: 1},
             description: "They remember who I am. [Mystique can be used to found a cult, and to recruit followers.]",
-		lifetime: 60
+		lifetime: 120
         },
 							 {
             id: "notoriety",
@@ -140,6 +143,18 @@
             aspects:
             {desire: 1},
             description: "With the correct rites, I can draw the powers of the Mansus into the waking world."
-        }
+        },
+						 {
+            id: "fleeting",
+            label: "Fleeting Memory",
+            description: "A moment in time. In another moment, it'll be gone.",
+			lifetime:30
+        },
+		{id: "contentment",
+		label: "Contentment",
+		aspects: {lantern: 1,heart:1},
+		description: "I'm happy, I think.",
+		lifetime: 60
+		}
 ]
 };
