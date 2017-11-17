@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
 
@@ -235,7 +236,7 @@ namespace Assets.CS.TabletopUI
             SetQuantity(_quantity + change);
         }
 
-        public override void ReturnToTabletop(INotification reason) {
+        public override void ReturnToTabletop(INotification reason=null) {
             if (originStack != null && originStack.IsOnTabletop()) {
                 originStack.MergeIntoStack(this);
                 return;
@@ -360,9 +361,10 @@ namespace Assets.CS.TabletopUI
             transform.SetAsLastSibling(); //this moves the clicked sibling on top of any other nearby cards.
             //Hi Martin. Why, yes, I would like you to implement something more sophisticated.
         }
-
+        
         public override void OnDrop(PointerEventData eventData)
         {
+          //  'ondrop' = 'a thing was dropped on me'
             if (DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
@@ -386,7 +388,7 @@ namespace Assets.CS.TabletopUI
             if (stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge())
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
-                DraggableToken.resetToStartPos = false;
+                DraggableToken.SetReturn(false,"was merged");
                 SoundManager.PlaySfx("CardPutOnStack");
 
                 var token = stackDroppedOn as DraggableToken;
@@ -394,10 +396,17 @@ namespace Assets.CS.TabletopUI
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
 
-                // we're destroying the token so it never throws an onDropped and it's container was not changed, so tell the current container, not the old.
+                // we're destroying the token so it never throws an onDropped and its container was not changed, so tell the current container, not the old.
                 this.container.TokenDropped(this);
                 this.Retire(false);                
             }
+            var droppedOnToken = stackDroppedOn as DraggableToken;
+            bool moveAsideFor = false;
+            droppedOnToken.container.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false,"was moved aside for");
+
         }
 
         public void SplitAllButNCardsToNewStack(int n) {

@@ -447,7 +447,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged != null)
             {
                 // Maybe check for item type here via GetComponent<Something>() != null?
-                DraggableToken.resetToStartPos = false;
+                DraggableToken.SetReturn(false,"dropped on the background");
                 // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,11 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
     }
 
     public void TokenDropped(DraggableToken draggableToken) {
+    }
+
+    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool IncumbentShouldMove)
+    {
+        throw new NotImplementedException();
     }
 
     public IEnumerable<ISituationAnchor> GetAllSituationTokens() {

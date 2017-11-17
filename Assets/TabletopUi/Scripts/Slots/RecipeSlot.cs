@@ -134,20 +134,27 @@ namespace Assets.CS.TabletopUI {
 
         public void OnDrop(PointerEventData eventData) {
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
-            if (GetTokenInSlot() != null)
-                DraggableToken.resetToStartPos = true;
-            if (stack != null) {
-                SlotMatchForAspects match = GetSlotMatchForStack(stack);
-                if (match.MatchType == SlotMatchForAspectsType.Okay) {
-                    DraggableToken.resetToStartPos = false;
-                    // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                    AcceptStack(stack);
-                    SoundManager.PlaySfx("CardPutInSlot");
-                }
+            if (stack == null) //it's not an element stack; just put it down
+                DraggableToken.itemBeingDragged.ReturnToTabletop();
 
-                else
-                    DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
+            //does the token match the slot? Check that first
+            SlotMatchForAspects match = GetSlotMatchForStack(stack);
+            if (match.MatchType != SlotMatchForAspectsType.Okay)
+            {
+                DraggableToken.SetReturn(true,"Didn't match recipe slot values");
+            DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
+
             }
+            //it matches. Now we check if there's a token already there, and replace it if so:
+            var currentOccupant = GetTokenInSlot();
+            if (currentOccupant != null)
+                currentOccupant.ReturnToTabletop();
+
+            //now we put the token in the slot.
+            DraggableToken.SetReturn(false,"has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+            AcceptStack(stack);
+            SoundManager.PlaySfx("CardPutInSlot");
+
         }
 
         public void AcceptStack(IElementStack stack) {
@@ -179,6 +186,26 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void TokenDropped(DraggableToken draggableToken) {
+        }
+
+        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentShouldMove)
+        {
+            var usurperStack = potentialUsurper as ElementStackToken;
+            if (usurperStack == null)
+                incumbentShouldMove = false;
+            else
+            {
+                //incomer is a token. Does it fit in the slot?
+                if(GetSlotMatchForStack(usurperStack).MatchType==SlotMatchForAspectsType.Okay)
+                { 
+                    incumbentShouldMove = true;
+                    AcceptStack(usurperStack);
+                    incumbent.ReturnToTabletop();
+                }
+                else
+                    incumbentShouldMove = false;
+            }
+
         }
 
         public bool AllowDrag {

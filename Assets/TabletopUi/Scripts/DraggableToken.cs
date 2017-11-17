@@ -21,7 +21,17 @@ namespace Assets.CS.TabletopUI
 
         public static bool draggingEnabled = true;
         public static DraggableToken itemBeingDragged;
-        public static bool resetToStartPos = false;
+        /// <summary>
+        /// This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
+        /// </summary>
+        private static bool resetToStartPos = false;
+
+        public static void SetReturn(bool value, string reason = "")
+        {
+            resetToStartPos = value;
+            //log here if necessary
+        }
+
         private static Camera dragCamera;
 
         public bool Defunct { get; protected set; }
@@ -43,8 +53,8 @@ namespace Assets.CS.TabletopUI
 
         public bool rotateOnDrag = true;
         protected INotifier notifier;
-        protected ITokenContainer container;
-        protected ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
+        public ITokenContainer container;
+        public ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
 
         [SerializeField] GraphicFader glowImage;
 
@@ -142,9 +152,10 @@ namespace Assets.CS.TabletopUI
                 MoveObject(eventData);
         }
 
-        public virtual void ReturnToTabletop(INotification reason)
+        public virtual void ReturnToTabletop(INotification reason=null)
         {
             Registry.Retrieve<TabletopManager>().ArrangeTokenOnTable(this);
+            if(reason!=null)
             notifier.TokenReturnedToTabletop(this,reason);
         }
 
@@ -166,6 +177,11 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        protected virtual void OnDisable()
+        {
+            //OnEndDrag(null);
+        }
+
         public virtual void OnEndDrag(PointerEventData eventData)
         {
             // This delays by one frame, because disabling and setting parent in the same frame causes issues
@@ -174,9 +190,7 @@ namespace Assets.CS.TabletopUI
                 Invoke ("DelayedEndDrag", 0f);
         }
 
-        protected virtual void OnDisable() {
-            //OnEndDrag(null);
-        }
+
 
         protected virtual void DelayedEndDrag() {
             canvasGroup.blocksRaycasts = true;
