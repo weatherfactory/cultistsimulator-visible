@@ -42,12 +42,13 @@ craftable: false},
         id: "findacquaintanceopentalk",
         label: "An Acquaintance",
         actionId: "talk",
-        startdescription: "Someone has struck up a conversation.",
-        description: "I've met someone interesting.",
-        warmup: 0,
+        startdescription: "I await an answer to a letter.",
+        description: "The reply to your letter is courteous, if cautious. They are intrigued by how you found their name: intrigued enough to meet you.",
+        warmup: 30,
         craftable: false,
-		comments: "this runs as an additional, and is how Talk is opened",
-deckeffect: "acquaintances"
+		comments: "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+		deckeffect: "acquaintances",
+		maxexecutions:1
     }
 ]
 }
