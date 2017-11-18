@@ -51,7 +51,9 @@ namespace Assets.TabletopUi {
                 situationWindow.SetOngoing(command.Recipe);
 
                 situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
-                situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
+                situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, command.Recipe);
+                situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, command.Recipe);
+
 
                 //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
                 if (command.OverrideTitle != null)
@@ -172,6 +174,7 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
+            
             situationToken.UpdateMiniSlotDisplay(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
@@ -180,9 +183,11 @@ namespace Assets.TabletopUi {
             UpdateSituationDisplayForDescription();
         }
 
-        public void SituationOngoing() {
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
-            situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining);
+        public void SituationOngoing()
+        {
+            var currentRecipe = compendium.GetRecipeById(Situation.RecipeId);
+            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
+            situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
         }
 
         void StoreStacks(IEnumerable<IElementStack> stacks) {

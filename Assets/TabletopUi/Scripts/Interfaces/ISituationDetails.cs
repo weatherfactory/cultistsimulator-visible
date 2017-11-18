@@ -55,7 +55,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void ShowDestinationsForStack(IElementStack stack);
 
-        void DisplayTimeRemaining(float duration, float timeRemaining);
+        void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe);
         void DisplayNoRecipeFound();
         void ReceiveNotification(INotification notification);
         IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);

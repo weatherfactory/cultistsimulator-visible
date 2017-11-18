@@ -184,7 +184,7 @@ namespace Assets.CS.TabletopUI {
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
-            DisplayTimeRemaining(r.Warmup, r.Warmup); //Ensures that the time bar is set to 0 to avoid a flicker
+            DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayRecipeHint(null);
 			DisplayButtonState(true);
 
@@ -216,8 +216,9 @@ namespace Assets.CS.TabletopUI {
             hintText.text = hint;
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining) {
-            ongoing.UpdateTime(duration, timeRemaining);
+        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
+
+            ongoing.UpdateTime(duration, timeRemaining,recipe);
         }
 
         void DisplayButtonState(bool interactable, string text = null) {

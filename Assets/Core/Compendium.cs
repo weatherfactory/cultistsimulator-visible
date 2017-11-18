@@ -217,7 +217,10 @@ public class Compendium : ICompendium
                 "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]","");
         if (endingFlag == "despairending")
             return new Ending(endingFlag, "NO MORE",
-                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread.]", "");
+                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "");
+        if (endingFlag == "visionsending")
+            return new Ending(endingFlag, "GLORY",
+                "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "");
         if (endingFlag == "powerminor")
             return new Ending(endingFlag,"WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
                 "The Red Grail is the Hour of blood and of birth. It has touched me, and I've gained a little of its power. If I had more time, I could" +
