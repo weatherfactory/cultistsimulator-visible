@@ -3,8 +3,6 @@
  	{
         id: "findclericalwork",
         label: "Find Clerical Work",
-		alternativerecipes:
-		[{id: "findacquaintanceopentalk", chance:10, additional: true}],
         actionId: "work",
         requirements: {reason: 1},
         effects: {gloverandgloverjuniorjob: 1},
@@ -19,8 +17,7 @@
 	label: "Junior Work at Glover & Glover",
 	  requirements: {gloverandgloverjuniorjob: 1},
 	          alternativerecipes:
-		[{id: "findacquaintanceopentalk", chance:30,additional: true},
-		{id: "gloverandglover_diligence", chance:100}],
+		[{id: "gloverandglover_diligence", chance:100}],
 		effects: { shilling: 1},
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
@@ -65,8 +62,7 @@
 	label: "Work at Glover & Glover",
 	  requirements: {gloverandgloverjob: 1},
 	          alternativerecipes:
-		[{id: "findacquaintanceopentalk", chance:10,additional: true},
-		{id: "gloverandglover_diligence_promotion", chance:100}],
+		[{id: "gloverandglover_diligence_promotion", chance:100}],
 		effects: { shilling: 2},
 	actionId:"work",
         startdescription: "I work longer hours now, but they're better-paid.",
@@ -110,16 +106,14 @@
 					description: "I could devote my life to this."
 					}
 				},
-				alternativerecipes: [{id: "findacquaintanceopentalk", chance:100,additional: true},
-				{id: "workvictory",chance:100}],
+				alternativerecipes: [{id: "workvictory",chance:100}],
 				craftable: true
 	},
 	{
         id: "workhealth",
         label: "Unskilled Labour",
 		alternativerecipes:
-		[{id: "findacquaintanceopentalk", chance:50,additional: true},
-		{id: "workhealthinjury", chance:30}],
+		[{id: "workhealthinjury", chance:30}],
         actionId: "work",
         requirements: {health: 1},
         effects: {
