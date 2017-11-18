@@ -199,52 +199,41 @@ public class Compendium : ICompendium
 
     public Ending GetEndingById(string endingFlag)
     {
-        if (endingFlag == "introguilt")
-            return new Ending(endingFlag, "A Warning",
-                "" +
-                " that I could have done *everything* I should not.", ""
-            );
-
-        if (endingFlag == "introdelight")
-            return new Ending(endingFlag, "A Temptation",
-                "" +
-                " that I could have done *everything* I should not.", ""
-            );
 
         if (endingFlag=="deathofthebody")
             return new Ending(endingFlag, "MY BODY IS DEAD",
                 "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
-                "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]","");
+                "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]","injury");
         if (endingFlag == "despairending")
             return new Ending(endingFlag, "NO MORE",
-                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "");
+                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "dread");
         if (endingFlag == "visionsending")
             return new Ending(endingFlag, "GLORY",
-                "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "");
+                "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "fascination");
         if (endingFlag == "powerminor")
             return new Ending(endingFlag,"WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
                 "The Red Grail is the Hour of blood and of birth. It has touched me, and I've gained a little of its power. If I had more time, I could" +
                 "draw disciples to me; grow fierce with blood and delight; be the herald of a new age; use that power to ascend a secret throne, one day.  [By the standards of this  " +
-                "prologue, this is a victory: but it was only a taste. In a full game, there would be much further to go.]", "");
+                "beta, this is a victory. In the full game, there will be greater victories.]", "notionpower");
 
         if (endingFlag == "enlightenmentminor")
             return new Ending(endingFlag, "EACH HOUR HAS ITS COLOUR. EACH FLAME HAS ITS FUEL",
                 "I've walked behind the Watchman: I've seen his shadow on the stone. This is the first step in understanding the shaping of fate. If I had more time, I could learn to walk the Mansus; gather disciples;" +
                 "find the star-shattered fane; watch the Hours walk; grow Long. [By the standards of this  " +
-                "prologue, this is a victory: but it was only a taste. In a full game, there would be much further to go.]", "");
+                "beta, this is a victory. In the full game, there will be greater victories.]", "notionenlightenment");
 
         if (endingFlag == "arrest") 
             return new Ending(endingFlag, "Bars across the Sun",
                 "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
-                " that I could have done *everything* I should not.", ""
+                " that I could have done *everything* I should not.", "notoriety"
                 );
 
         if (endingFlag == "workvictory")
             return new Ending(endingFlag, "This is pleasant",
                 "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is" +
                 "over the sweet earth will fill my mouth, softer than splinters. [By the standards of this  " +
-                "prologue, this might be considered a victory. you could carry the legacy through to another character.]", "");
+                "beta, this might be considered a victory.]", "gloverandgloverjob");
 
-        return new Ending("default", "IT IS FINISHED","This one is done.", "");
+        return new Ending("default", "IT IS FINISHED","This one is done.", "health");
     }
 }
