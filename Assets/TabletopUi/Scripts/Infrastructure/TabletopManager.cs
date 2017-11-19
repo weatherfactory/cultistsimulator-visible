@@ -17,6 +17,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.UI;
 using Noon;
 using OrbCreationExtensions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
@@ -45,7 +46,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
 
-        [Header("Options Bar & Notes")]
+        [Header("Options Bar & Notes")] [SerializeField] private TextMeshProUGUI CharacterProfession;
         [SerializeField] private PauseButton pauseButton;
 
         [SerializeField] private Button normalSpeedButton;
@@ -159,12 +160,18 @@ namespace Assets.CS.TabletopUI
 
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(chosenLegacy);
+            SetProfession(chosenLegacy);
             DealStartingDecks();
            // var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
             //BeginNewSituation(startingNeedsSituationCreationCommand);
   
 
             notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
+        }
+
+        private void SetProfession(Legacy chosenLegacy)
+        {
+            CharacterProfession.text = chosenLegacy.Label;
         }
 
         private void DealStartingDecks()
