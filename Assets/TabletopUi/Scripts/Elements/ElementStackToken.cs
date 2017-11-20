@@ -13,6 +13,7 @@ using System.Collections;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Noon;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
@@ -350,6 +351,10 @@ namespace Assets.CS.TabletopUI
 
         public override void OnPointerClick(PointerEventData eventData)
         {
+            //if(eventData.clickCount>1)
+            //this.ReturnToTabletop(null);
+
+
             if(isFront)
             { 
             notifier.ShowElementDetails(_element);

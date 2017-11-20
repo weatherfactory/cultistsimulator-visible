@@ -56,7 +56,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var allSituationTokens = tabletopContainer.GetAllSituationTokens();
             var allDecks = character.DeckInstances;
 
-            var htSaveTable = dataExporter.GetSaveHashTable(allStacks,
+            var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,
                 allSituationTokens,allDecks);
 
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());

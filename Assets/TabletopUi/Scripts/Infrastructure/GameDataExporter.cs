@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> decks);
+        Hashtable GetSaveHashTable(Character character, IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> decks);
 
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
@@ -28,10 +28,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> deckInstances)
+        public Hashtable GetSaveHashTable(Character character,IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> deckInstances)
         {
             var htAll = new Hashtable()
             {
+                {SaveConstants.SAVE_CHARACTER_DETAILS,GetHashTableForCharacter(character) },
                 {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
                 {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)},
                 {SaveConstants.SAVE_DECKS,GetHashTableForDecks(deckInstances) }
@@ -39,6 +40,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htAll;
         }
 
+        private Hashtable GetHashTableForCharacter(Character character)
+        {
+            var htCharacter=new Hashtable();
+            htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
+            htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
+
+            return htCharacter;
+        }
 
 
         /// <summary>

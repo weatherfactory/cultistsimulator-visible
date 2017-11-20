@@ -9,6 +9,8 @@ namespace Assets.Core.Interfaces
     public interface IGameEntityStorage
     {
         List<IDeckInstance> DeckInstances { get; set; }
+        string Name { get; set; }
+        string Profession { get; set; }
 
     }
 }

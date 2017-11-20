@@ -46,7 +46,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
 
-        [Header("Options Bar & Notes")] [SerializeField] private TextMeshProUGUI CharacterProfession;
+        [Header("Options Bar & Notes")] [SerializeField] private StatusBar StatusBar;
         [SerializeField] private PauseButton pauseButton;
 
         [SerializeField] private Button normalSpeedButton;
@@ -160,7 +160,10 @@ namespace Assets.CS.TabletopUI
 
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(chosenLegacy);
-            SetProfession(chosenLegacy);
+            SetStartingCharacterInfo(chosenLegacy);
+            StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());
+
+
             DealStartingDecks();
            // var startingNeedsSituationCreationCommand = new SituationCreationCommand(null, Registry.Retrieve<ICompendium>().GetRecipeById("startingneeds"),SituationState.FreshlyStarted);
             //BeginNewSituation(startingNeedsSituationCreationCommand);
@@ -169,9 +172,11 @@ namespace Assets.CS.TabletopUI
             notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
         }
 
-        private void SetProfession(Legacy chosenLegacy)
+        private void SetStartingCharacterInfo(Legacy chosenLegacy)
         {
-            CharacterProfession.text = chosenLegacy.Label;
+            Character newCharacter = Registry.Retrieve<Character>();
+            newCharacter.Name = "[click to name]";
+            newCharacter.Profession = chosenLegacy.Label;
         }
 
         private void DealStartingDecks()
@@ -237,7 +242,7 @@ namespace Assets.CS.TabletopUI
         public void RestartGame()
         {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-        saveGameManager.SaveInactiveGame();
+             saveGameManager.SaveInactiveGame();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -303,6 +308,9 @@ namespace Assets.CS.TabletopUI
             CrossSceneState.SetCurrentEnding(ending);
             var ls=new LegacySelector(Registry.Retrieve<ICompendium>());
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+
+            saveGameManager.SaveInactiveGame();
 
             SceneManager.LoadScene(SceneNumber.EndScene);
 
@@ -486,8 +494,8 @@ namespace Assets.CS.TabletopUI
             //{
                 var htSave = saveGameManager.RetrieveHashedSave();
                 ClearGameState(heart,storage,tabletopContainer);
-            
                 saveGameManager.ImportHashedSaveToState(tabletopContainer,storage, htSave);
+                StatusBar.UpdateCharacterDetailsView(storage);
                 notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
 
             //}

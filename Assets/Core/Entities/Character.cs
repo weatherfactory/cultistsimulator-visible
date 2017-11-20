@@ -8,9 +8,8 @@ using JetBrains.Annotations;
 
 public class Character:IGameEntityStorage
 {
-    private string _title;
-    private string _firstName;
-    private string _lastName;
+    private string _name="[unnamed]";
+    
     public CharacterState State { get; set; }
     public List<IDeckInstance> DeckInstances { get; set; }
 
@@ -48,23 +47,15 @@ public class Character:IGameEntityStorage
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
     }
 
-    public string Title
+
+    public string Name
     {
-        get { return _title; }
-        set { _title = value; }
+        get { return _name; }
+        set { _name = value; }
     }
 
-    public string FirstName
-    {
-        get { return _firstName; }
-        set { _firstName = value; }
-    }
+    public string Profession { get; set; }
 
-    public string LastName
-    {
-        get { return _lastName; }
-        set { _lastName = value; }
-    }
 
     public string EndingTriggeredId
     {

@@ -34,9 +34,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void ImportSavedGameToState(TabletopContainer tabletopContainer,IGameEntityStorage storage, Hashtable htSave)
         {
+            var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
             var htSituations = htSave.GetHashtable(SaveConstants.SAVE_SITUATIONS);
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
+
+            ImportCharacter(storage, htCharacter);
 
             ImportTabletopElementStacks(tabletopContainer, htElementStacks);
 
@@ -46,6 +49,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
+        private void ImportCharacter(IGameEntityStorage storage, Hashtable htCharacter)
+        {
+            if(htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
+                storage.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
+
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
+                storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
+        }
 
 
         public SavedCrossSceneState ImportCrossSceneState(Hashtable htSave)

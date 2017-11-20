@@ -7,6 +7,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class SaveConstants
     {
+        public static string SAVE_PROFESSION="profession";
         public const string SAVE_EXTRAGAME_STATE="extrastate";
         public const string SAVE_DECKS="decks";
         public const string SAVE_CURRENTENDING = "currentending";
@@ -27,6 +28,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_SITUATIONOUTPUTSTACKS = "situationOutputStacks";
         public const string SAVE_SITUATIONNOTES = "situationOutputNotes";
         public const string SAVE_TITLE = "title";
+        public const string SAVE_NAME = "name";
         public const string SAVE_DESCRIPTION = "description";
 
         public const string SAVE_COMPLETIONCOUNT = "completioncount";
