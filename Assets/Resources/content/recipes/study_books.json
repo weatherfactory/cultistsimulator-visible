@@ -1,12 +1,23 @@
  {"recipes": [
 	{
         id: "studydehoris1",
-        label: "Read De Horis",
+        label: "Read De Horis, vol 1",
         actionId: "study",
         requirements: {dehoris1: 1},
         effects: {dehoris1: -1,fragmentmoth:1,erudition:1},
 		startdescription: "This volume deals mostly with the Hours of the Wood: the Moth, the Black-Flax, the Ring-Yew, among others.",
         description: "'The Glory is a question, and the Moth always answers Yes. The Black-Flax's answer is No, and that is always its answer.'",
+        warmup: 60,
+        craftable: true
+    },
+		{
+        id: "studydehoris2",
+        label: "Read De Horis, vol 2",
+        actionId: "study",
+        requirements: {dehoris2: 1},
+        effects: {dehoris2: -1,fragmentedge:1,erudition:1},
+		startdescription: "This volume deals mostly with the Lionsmith, the Tribune of Scars, and their enmity.",
+        description: "'The Lionsmith makes monsters to defeat the Tribune; but the scars of the Tribune are each a weapon.'",
         warmup: 60,
         craftable: true
     },
@@ -18,6 +29,28 @@
         effects: {travellingatnight1: -1, fragmentmoth:1,erudition:1},
 		startdescription: "Illopoly's work is literate, entertaining, and bewildering.",
         description: "'The Wood lies outside the walls of the Mansus. As any student of the Histories knows, the Wood has no walls.'",
+        warmup: 60,
+        craftable: true
+    },
+		{
+        id: "studytravellingatnight2",
+        label: "Read this volume of Travelling at Night",
+        actionId: "study",
+        requirements: {travellingatnight2: 1},
+        effects: {travellingatnight2: -1, fragmentwinter:1,erudition:1},
+		startdescription: "Illopoly's work is literate, entertaining, and bewildering.",
+        description: "There is an extensive discussion of the similarities between Illopoly's own dreams and those of the Emperor Elagabalus, who Illopoly regards as a dupe or avatar of the Sun-in-Rags. 'The White is west of the world,' Illopoly remarks, 'and Winter does not wait forever.'",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "studytravellingatnight3",
+        label: "Read this volume of Travelling at Night",
+        actionId: "study",
+        requirements: {travellingatnight3: 1},
+        effects: {travellingatnight3: -1, fragmentforge:1,erudition:1},
+		startdescription: "Illopoly's work is literate, entertaining, and bewildering.",
+        description: "Illopoly's disquisitions on fire and the Unburnt God are interrupted by passages of distractingly erotic poetry addressed to 'Baldomera'. But there's a great deal of esoteric lore on the nature of change, too.'",
         warmup: 60,
         craftable: true
     },

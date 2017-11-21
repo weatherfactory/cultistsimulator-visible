@@ -5,6 +5,21 @@
             label: "De Horis (Book 1) [Latin]",
             aspects:
             {},
+            description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work, in Latin.",
+			xtriggers: {scholarlatin: dehoris1}
+        },
+          {
+        id: "dehoris1",
+            label: "De Horis (Book 1)",
+            aspects:
+            {},
+            description: "An occasionally coherent catalogue of the secret gods. This is an English translation of a volume dealing with the powers of the Wood."
+        },
+			          {
+        id: "dehoris2latin",
+            label: "De Horis (Book 2) [Latin]",
+            aspects:
+            {},
 			slots: {
 			"Translate":
 				{
@@ -12,23 +27,37 @@
 				forbidden: {}
 				}
 			},
-            description: "An occasionally coherent catalogue of the secret gods, organised by hour. This is a nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work."
+            description: "An occasionally coherent catalogue of the secret gods. This is a nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work."
         },
           {
-        id: "dehoris1",
-            label: "De Horis (Book 1)",
+        id: "dehoris2",
+            label: "De Horis (Book 2)",
             aspects:
             {},
-            description: "An occasionally coherent catalogue of the secret gods, organised by hour. This is an English translation."
+            description: "An occasionally coherent catalogue of the secret gods. This is an English translation of a volume describing the enmity between the Lionsmith and the Tribune of Scars."
         },
 		 {
         id: "travellingatnight1",
             label: "Travelling at Night(Vol. 1)",
             aspects:
             {},
-            description: "The annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist'"
+            description: "The annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist'."
         }
 		,
+				 {
+        id: "travellingatnight2",
+            label: "Travelling at Night(Vol. 2)",
+            aspects:
+            {},
+            description: "The annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist'. This is the second volume."
+        },
+						 {
+        id: "travellingatnight3",
+            label: "Travelling at Night(Vol. 3)",
+            aspects:
+            {},
+            description: "The annotated dream-journals of Christopher Illopoly, sometimes called 'the only readable occultist'. This is the third volume."
+        },
 		 {
         id: "sixlettersonnecessity",
             label: "The Six Letters on Necessity",
@@ -62,14 +91,8 @@
             label: "The Orchid Transfigurations [Latin]",
             aspects:
             {},
-			slots: {
-			"Translate":
-				{
-				required: {scholarlatin:1},
-				forbidden: {}
-				}
-			},
-            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin."
+            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
+			xtriggers: {scholarlatin: orchidtransfigurations1}
         },
 						 {
         id: "geminiadfucine",
