@@ -85,13 +85,95 @@
             {text:1},
             description: "The third volume of Teresa Galmier's examination of parallels in the mystic dreams of artisans."
         },
+		{
+		id: "humoursofagentleman",
+		label: "The Humours of a Gentleman",
+		aspects: {text:1},
+		description: "Samuel Savage's satirical comedy, on the intrigues of the ailing, but cunning John Sonne, his mistress Maevelin, her lover Leo, and the upstart Corvino."}
+		,
+		{
+		id:"victoryofcrowns",
+		label:"The Victory of Crowns",
+		aspects: {text:1},
+		description:"Erratic accounts, by one 'Arun', of the hunting and consumption of supposed immortals, by shadowy cults of assassins. Published in the late nineteenth century."},
+		{
+		id:"introductiontohistories",
+		label:"secrethistories",
+		aspects: {text:1},
+		description:"The seventeenth-century mystic and antiquarian Claude Hersault describes divergent incidents five major Histories."},
+		{id:"treatiseonunderplaces",
+		label:"The Treatise on Underplaces",
+		aspects: {text:1},
+		description:"Herein, the seventeenth-century mystic and antiquarian Claude Hersault describes the 'Bounds' or 'Underplaces' on the borders of dream. He warns that they shift over time."},
+		{id:"onthewhite",
+		label:"On the White",
+		aspects: {text:1},
+		description:"Solomon Husher writes, perhaps allegorically, of Winter, and its long slow doomed romance with the Sun. The epigraph is 'Sunset at Noon'."},
+		{id:"waroftheroadscensored",
+		label:"The War of the Roads, 1450-1580, CENSORED EDITION",
+		aspects: {text:1},
+		description:"Willis-Ford describes the War of the Roads, an event in a History other than our own, in detail. But numerous pages have been removed; the name of the publisher is blacked out; and an ominous slip stapled to the cover explains that Willis-Ford has been 'excised'."},
+		{id:"queensoftherivers",
+		label:"The Queens of the Rivers",
+		aspects: {text:1},
+		description:"A surreal contemporary play by the enigmatic Monica Medina, in which the Queens of the Rivers are murdered, one by one."},
+		{id:"apolloandmarsyas",
+		label:"Apollo and Marsyas",
+		aspects: {text:1},
+		description:"The libretto of a lost opera concerning the contest between Apollo and Marsyas, and its tragic outcome. The librettist is identified only by their initials: RKNJL."},
+		{id:"skeletonsongs",
+		label:"The Skeleton Songs",
+		aspects: {text:1},
+		description:"Poems of greedy delight composed by the possibly pseudonymous Arabella Dusk, the rumoured heiress-turned-madam-turned-poetess."},
+		{id:"burningofunburntgod",
+		label:"The Burning of the Unburnt God",
+		aspects: {text:1},
+		description:"Compiled by Jay Wigglesworth Jensen from oral traditions in rural Persia."},
+		{id:"debellismurorum",
+		label:"De Bellis Murorum",
+		aspects: {text:1},
+		description:"An eighteenth-century epic poem by the pseudonymous 'Solipsistos'."},
+				{id:"onwhatiscontainedbysilvergreek",
+		label:"On What Is Contained By Silver",
+		aspects: {text:1},
+		description:"A bestiary by 'Poemander'.",
+			xtriggers: {scholargreek: onwhatiscontainedbysilver}},
+		{id:"truecompleteasclepiangreek",
+		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House",
+		aspects: {text:1},
+		description:"Reproduced by one 'Rylee Grese' from - supposedly - a much older text.",
+			xtriggers: {scholargreek: truecompleteasclepian}},
+		
+		{id:"onwhatiscontainedbysilver",
+		label:"On What Is Contained By Silver",
+		aspects: {text:1},
+		description:"A dire bestiary of the horrors to be found in mirrors. This is a recent edition of a third century text by 'Poemander'."},
+		{id:"truecompleteasclepian",
+		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House",
+		aspects: {text:1},
+		description:"Descriptions of the 'Asclepian Mysteries', reproduced by one 'Rylee Grese' from - supposedly - a much older text. It's unlikely to be genuine, but it makes a reference to 'The House without Walls and its Wood' right there in the prologue."},
+		
 				 {
         id: "orchidtransfigurations1latin",
-            label: "The Orchid Transfigurations [Latin]",
+            label: "The Orchid Transfigurations, Vol 1 [Latin]",
             aspects:
             {text:1},
             description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
 			xtriggers: {scholarlatin: orchidtransfigurations1}
+        },
+		 {       id: "orchidtransfigurations2latin",
+            label: "The Orchid Transfigurations, Vol 2[Latin]",
+            aspects:
+            {text:1},
+            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
+			xtriggers: {scholarlatin: orchidtransfigurations2}
+        },
+		 {       id: "orchidtransfigurations3latin",
+            label: "The Orchid Transfigurations, Vol 3[Latin]",
+            aspects:
+            {text:1},
+            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
+			xtriggers: {scholarlatin: orchidtransfigurations3}
         },
 						 {
         id: "geminiadfucine",
@@ -109,10 +191,24 @@
         },
 		 {
         id: "orchidtransfigurations1",
-            label: "The Orchid Transfigurations: a Feast",
+            label: "The Orchid Transfigurations, Vol 1: a Feast",
             aspects:
             {text:1},
-            description: "Part of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is a later English translation."
+            description: "The first volume of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is a later English translation."
+        },
+				 {
+        id: "orchidtransfigurations2",
+            label: "The Orchid Transfigurations, Vol 2: a Birth",
+            aspects:
+            {text:1},
+            description: "The second volume of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is a later English translation."
+        },
+				 {
+        id: "orchidtransfigurations3",
+            label: "The Orchid Transfigurations, Vol 3: Noob",
+            aspects:
+            {text:1},
+            description: "The third volume of a compilation of quasi-Rosicrucian allegories, supposedly by Robert Fludd. This is a later English translation."
         },
 		 {
         id: "textbooklatin",
@@ -139,6 +235,6 @@
             description: "'The poet makes himself a seer by an immense, long, deliberate derangement of all the senses...' The opposite of wisdom, thankfully. [Use with two Glimmerings to gain Passion... though this sometimes fails.]",
 			slots: {"Inspiration": {required: {glimmering:1},consumes:true},
 			"Influence": {required: {glimmering:1},consumes:true}}
-        },
+        }
 ]
 };
