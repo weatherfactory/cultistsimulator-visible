@@ -144,8 +144,9 @@ namespace Assets.CS.TabletopUI {
             {
                 DraggableToken.SetReturn(true,"Didn't match recipe slot values");
             DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
-
             }
+            else
+            {
             //it matches. Now we check if there's a token already there, and replace it if so:
             var currentOccupant = GetTokenInSlot();
             if (currentOccupant != null)
@@ -157,6 +158,7 @@ namespace Assets.CS.TabletopUI {
             AcceptStack(stack);
             SoundManager.PlaySfx("CardPutInSlot");
 
+            }
         }
 
         public void AcceptStack(IElementStack stack) {
