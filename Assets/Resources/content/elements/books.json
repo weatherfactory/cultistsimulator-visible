@@ -19,13 +19,6 @@
             label: "De Horis (Book 2) [Latin]",
             aspects:
             {text:1},
-			slots: {
-			"Translate":
-				{
-				required: {scholarlatin:1},
-				forbidden: {}
-				}
-			},
             description: "An occasionally coherent catalogue of the secret gods. This is a nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work."
         },
           {
@@ -129,17 +122,22 @@
 		label:"The Burning of the Unburnt God",
 		aspects: {text:1},
 		description:"Compiled by Jay Wigglesworth Jensen from oral traditions in rural Persia."},
+		{id:"debellismurorumlatin",
+		label:"De Bellis Murorum [Latin]",
+		aspects: {text:1},
+		description:"An eighteenth-century epic poem by the pseudonymous 'Solipsistos'.",
+		xtriggers: {scholarlatin:debellismurorum}},
 		{id:"debellismurorum",
 		label:"De Bellis Murorum",
 		aspects: {text:1},
 		description:"An eighteenth-century epic poem by the pseudonymous 'Solipsistos'."},
-				{id:"onwhatiscontainedbysilvergreek",
-		label:"On What Is Contained By Silver",
+		{id:"onwhatiscontainedbysilvergreek",
+		label:"On What Is Contained By Silver [Greek]",
 		aspects: {text:1},
 		description:"A bestiary by 'Poemander'.",
 			xtriggers: {scholargreek: onwhatiscontainedbysilver}},
 		{id:"truecompleteasclepiangreek",
-		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House",
+		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House [Greek]",
 		aspects: {text:1},
 		description:"Reproduced by one 'Rylee Grese' from - supposedly - a much older text.",
 			xtriggers: {scholargreek: truecompleteasclepian}},
@@ -180,13 +178,6 @@
             label: "The Geminiad [Fucine]",
             aspects:
             {knock: 1,tool:1,text:1},
-			slots: {
-			"Translate":
-				{
-				required: {scholarfucine:1},
-				forbidden: {}
-				}
-			},
             description: "A fragile manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. It might be as old as the seventh century, but the language - Fucine - is much older. Coral decorates its cover, and its page-edges are sharp enough to slash a throat. [NOTE: Fucine cannot be learnt in the alpha, but the book itself has power.]"
         },
 		 {
@@ -216,6 +207,13 @@
             aspects:
             {text:1},
             description: "Just what you need to refresh your knowledge of Latin."
+        },
+				 {
+        id: "textbookgreek",
+            label: "Kühner and Gerth's 'Ausführliche Grammatik der griechischen Sprache'",
+            aspects:
+            {text:1},
+            description: "An essential weapon for a ferocious struggle with a challenging language."
         },
 		 {
         id: "textbookreason",
