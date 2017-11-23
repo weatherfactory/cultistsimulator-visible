@@ -1,0 +1,218 @@
+ {"recipes": [
+	{
+	id: "studyforgelore",
+	label: "Study the Lore which Burns",
+	actionId: "study",
+	requirements: {lore:1, forge:2},
+	effects: {},
+	slots:{"More": required: {lore:1}},
+	alternativerecipes: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	warmup:30,
+	craftable: true
+	},
+
+					{
+	id: "studyresearchtick",
+	comments: "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
+	label: "Promising Research",
+	actionId: "study",
+	requirements:{lore:2},
+	startdescription: "This project has possibilities. When research requirements appear, I must fulfil them to gain Insight. If I gain three Insight, I will succeed; otherwise, I may fail.",
+	description: "..",
+	warmup:30,
+	linked:[
+	{id: "studyresearchearlyconclusion",chance:100},
+	{id: "studyresearchneedserudition",chance:50},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	},
+		{
+	id: "studyresearchneedserudition",
+	label: "The Pieces of the Puzzle",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"Erudition": required: {erudition:1}},
+	alternativerecipes: [
+	{id: "studyresearcheruditionsuccess",chance:100}],
+	startdescription: "My research needs Erudition.",
+	description: "My research needs Erudition.",
+	warmup:30,
+	craftable: false,
+		linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+				{
+	id: "studyresearcheruditionsuccess",
+	label: "The Pieces Fit!",
+	actionId: "study",
+	requirements: {erudition:1},
+	effects: {insight:1,erudition:-1},
+	craftable: false,
+	startdescription: "Knowledge breeds knowledge. This will gain me Insight.",
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+		{
+	id: "studyresearchneedsglimmering",
+	label: "The Gates of Intuition",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"Glimmering": required: {glimmering:1}},
+	alternativerecipes: [
+	{id: "studyresearchglimmeringsuccess",chance:100}],
+	startdescription: "My research needs a Glimmering.",
+	description: "..",
+	warmup:30,
+	craftable: false,
+	linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+			{
+	id: "studyresearchglimmeringsuccess",
+	label: "The Gates of Intuition are opened!",
+	actionId: "study",
+	requirements: {glimmering:1},
+	effects: {insight:1,glimmering:-1},
+	startdescription: "Sometimes, Insights are found in unexpected places.",
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+	{id: "studyresearchearlyconclusion",
+	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
+	requirements: {insight: 3},
+	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
+	},
+	{id: "studyresearchconclusion",
+	comments: "this is a passthrough / router",
+	alternativerecipes: [
+	{id: "studyresearchmaxinsight",chance:100},
+	{id: "studyresearchmoderateinsight",chance:100},
+	{id: "studyresearchminimalinsight",chance:100},
+	{id: "studyresearchconsolation",chance:100},
+	]
+	},
+	
+						{
+	id: "studyresearchmaxinsight",
+	label: "Research complete, max insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:100}],
+	actionId: "study",
+	requirements: {insight:3},
+	effects: {},
+	startdescription: "BEGIN studyresearchmaxinsight",
+	description: "COMPLETE studyresearchmaxinsight",
+	warmup:0,
+	comments: "This is currently a pass-through only; including for consistency.",
+	},
+					{
+	id: "studyresearchmoderateinsight",
+	label: "Research complete, some insight",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:70},
+	{id: "studyresearchconsolation",chance:100}],
+	actionId: "study",
+	requirements: {insight:2},
+	effects: {},
+	startdescription: "BEGIN studyresearchsomeinsight",
+	description: "COMPLETE studyresearchsomeinsight",
+	warmup:0
+	},
+						{
+	id: "studyresearchminimalinsight",
+	label: "Research complete, minimal insight",
+	actionId: "study",
+	requirements: {insight:1},
+			alternativerecipes: [
+	{id: "studyresearchsuccess",chance:30},
+	{id: "studyresearchconsolation",chance:100}],
+	requirements: {},
+	effects: {},
+	startdescription: "BEGIN studyresearchnoinsight",
+	description: "COMPLETE studyresearchnoinsight",
+	warmup:0,
+	},
+							{
+	id: "studyresearchsuccess",
+	label: "Success!",
+	actionId: "study",
+	requirements: {},
+	aspects: {loredeepening:1},
+	effects: {insight:-100,erudition:1,glimmering:1},
+	startdescription: ".",
+	description: "I've learnt something new.",
+	warmup:0,
+	craftable: false
+	},
+								{
+	id: "studyresearchconsolation",
+	label: "The Lessons of Experience",
+	actionId: "study",
+	requirements: {},
+	effects: {insight:-100,erudition:1,glimmering:1},
+	startdescription: ".",
+	description: "This time, this research has failed. But I've learnt the lessons of experience.",
+	warmup:0,
+	craftable: false
+	},
+		{id: "studycreateritebasicconsumetool",
+	label: "Discover a Ritual",
+	actionId: "study",
+	startdescription: "I have read of one who walks before shadow, and behind light, in a house with no walls. There is a rite which petitions his attention.",
+	description: "Have I imagined this rite, or re-invented it? I felt as if a hand guided my own. Sometimes I would find that I had been writing in the dark, never realising that the candle had long since collapsed into smoke.",
+	requirements: {forge:2,lantern:2,lore:2},
+	effects: {forge:-1,lantern:-1,ritebasicconsumetool: 1},
+	warmup: 60,
+	craftable:true,
+	maxexecutions:1,
+	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
+	},
+	{id: "studycreateritebasicconsumefollower",
+	label: "Discover a Ritual",
+	actionId: "study",
+	startdescription: "I have read of a power that governs birth and blood. The right words and the right sacrifice might attract its attention.",
+	description: "I have pieced together my ritual. I cannot be sure it will succeed. I can be sure that there will be a cost in blood.",
+	requirements: {forge:2,grail:2,lore:2},
+	effects: {forge:-1,grail:-1,ritebasicconsumefollower: 1},
+	warmup: 60,
+	craftable:true,
+	maxexecutions:1,
+	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
+	},
+
+	{
+	id: "studylanternlore",
+	label: "Study the Glorious Lore",
+	actionId: "study",
+	requirements: {lore:1, lantern:2},
+	effects: {},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradelanternb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
+	{id: "studycreateritebasicconsumefollower",chance:100}]
+	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
+	warmup:60,
+	craftable: true,
+	},
+	{
+	id: "studygraillore",
+	label: "Study the Succulent Lore",
+	actionId: "study",
+	requirements: {lore:1, grail:2},
+	effects: {},
+	slots:{"More": required: {lantern: 1, grail: 1,reason:1}},
+	alternativerecipes: [
+	{id: "studyupgradegrailb",chance:100},
+	{id: "studycreateritebasicconsumetool",chance:100},
+	{id: "studycreateritebasicconsumefollower",chance:100}]
+	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore, or if I devoted my Reason to it?",
+	warmup:70,
+	craftable: true,
+	}
+
+]
+}
