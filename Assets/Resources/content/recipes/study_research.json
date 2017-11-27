@@ -1,4 +1,18 @@
  {"recipes": [
+ 	{
+	id: "studyedgelore",
+	label: "Study the Lore of the Knife",
+	actionId: "study",
+	requirements: {lore:1, edge:1},
+	effects: {},
+	slots:{"More": required: {lore:1}},
+	alternativerecipes: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "All of the greatest struggles end in death. The Lore of the Knife holds the lessons of those struggles.",
+	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	warmup:30,
+	craftable: true
+	},
 	{
 	id: "studyforgelore",
 	label: "Study the Lore which Burns",
@@ -123,6 +137,31 @@
 	{id: "studyresearchneedserudition",chance:50},
 	{id: "studyresearchneedsglimmering",chance:100}]
 	},
+			{
+	id: "studyresearchneedsreason",
+	label: "The Pieces of the Puzzle",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:{"reason": {required: {reason:1}}},
+	alternativerecipes: [
+	{id: "studyresearchreasonsuccess",chance:100}],
+	startdescription: "I need to use my Reason to help my research.",
+	description: "I need to use my Reason to help my research.",
+	warmup:30,
+	craftable: false,
+		linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+				{
+	id: "studyresearchreasonsuccess",
+	label: "The Pieces Fit!",
+	actionId: "study",
+	requirements: {reason:1},
+	effects: {insight:1},
+	craftable: false,
+	startdescription: "Knowledge breeds knowledge. This will gain me Insight.",
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
 		{
 	id: "studyresearchneedserudition",
 	label: "The Pieces of the Puzzle",
@@ -179,7 +218,7 @@
 	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
 	},
 	{id: "studyresearchconclusion",
-	comments: "this is a passthrough / router",
+	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
 	alternativerecipes: [
 	{id: "studyresearchmaxinsight",chance:100},
 	{id: "studyresearchmoderateinsight",chance:100},
@@ -239,6 +278,15 @@
 	warmup:0,
 	craftable: false,
 	linked: [
+{id:"studyedgeupgradec",chance:100},
+	{id:"studyforgeupgradec",chance:100},
+	{id:"studygrailupgradec",chance:100},
+	{id:"studyheartupgradec",chance:100},
+	{id:"studylanternupgradec",chance:100},
+	{id:"studyknockupgradec",chance:100},
+	{id:"studymothupgradec",chance:100},
+	{id:"studysecrethistoriesupgradec",chance:100},
+	{id:"studywinterupgradeb",chance:100}
 	{id:"studyedgeupgradeb",chance:100},
 	{id:"studyforgeupgradeb",chance:100},
 	{id:"studygrailupgradeb",chance:100},
@@ -247,17 +295,27 @@
 	{id:"studyknockupgradeb",chance:100},
 	{id:"studymothupgradeb",chance:100},
 	{id:"studysecrethistoriesupgradeb",chance:100},
-	{id:"studywinterupgradeb",chance:100},]
+	{id:"studywinterupgradeb",chance:100}]
 	},
 								{
 	id: "studyresearchconsolation",
 	label: "The Lessons of Experience",
 	actionId: "study",
 	requirements: {},
-	effects: {insight:-100,erudition:1,glimmering:1},
+	effects: {insight:-100,erudition:1},
 	startdescription: ".",
 	description: "This time, this research has failed. But I've learnt the lessons of experience.",
 	warmup:0,
+	craftable: false
+	},
+			{id: "studyedgeupgradec",
+	label: "Edge Upgrade C",
+	actionId: "study",
+	requirements: {lore:2,edge:8},
+	effects: {lore:-2,fragmentedgec:1},
+	startdescription: ".",
+	description: "Edge C upgrade description",
+	warmup: 0,	
 	craftable: false
 	},
 		{id: "studyedgeupgradeb",
