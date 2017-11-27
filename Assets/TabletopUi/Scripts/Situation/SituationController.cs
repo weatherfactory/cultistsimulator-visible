@@ -201,7 +201,11 @@ namespace Assets.TabletopUi {
         /// respond to the Situation's request to execute its payload
         /// </summary>
         /// <param name="command"></param>
-        public void SituationExecutingRecipe(ISituationEffectCommand command) {
+        public void SituationExecutingRecipe(ISituationEffectCommand command)
+        {
+            //called here in case ongoing slots trigger consumption
+            situationWindow.SetSlotConsumptions();
+
             //move any elements currently in OngoingSlots to situation storage
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             StoreStacks(situationWindow.GetOngoingStacks());
@@ -282,6 +286,7 @@ namespace Assets.TabletopUi {
             if (recipe == null)
                 return;
 
+            //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
             Situation.Start(recipe);

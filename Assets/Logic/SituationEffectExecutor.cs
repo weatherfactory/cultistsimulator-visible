@@ -19,12 +19,27 @@ namespace Assets.Logic
             var aspectsPresent = stacksManager.GetTotalAspects();
             aspectsPresent.CombineAspects(command.Recipe.Aspects);
 
-
             RunXTriggers(stacksManager, aspectsPresent);
             //note: standard effects happen *after* XTrigger effects
             RunDeckEffect(command,stacksManager,storage);
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
+            //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
+            RunConsumptions(stacksManager);
+        }
+
+        private void RunConsumptions(IElementStacksManager stacksManager)
+        {
+
+            var stacks = stacksManager.GetStacks();
+
+            for (int i = 0; i < stacks.Count(); i++)
+            {
+                if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption)
+                {
+                    stacks.ElementAt(i).Retire(true);
+                }
+            }
         }
 
         private void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)

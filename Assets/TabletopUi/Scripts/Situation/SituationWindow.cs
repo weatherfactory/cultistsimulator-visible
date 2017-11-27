@@ -130,9 +130,8 @@ namespace Assets.CS.TabletopUI {
 
 		public void SetOngoing(Recipe recipe) {
             startingSlots.gameObject.SetActive(false);
-            ConsumeMarkedElements(false);
 
-            // If our recipe has at least one slot specified, we use that - we agreed on ONE ongoing slot only
+            // If our recipe has at least one slot specified, we use that - only one slot supported for now (and maybe forever)
             ongoing.SetupSlot(recipe);
             ongoing.gameObject.SetActive(true);
 
@@ -284,19 +283,7 @@ namespace Assets.CS.TabletopUI {
 
         // ISituationDetails
 
-        public bool ConsumeMarkedElements(bool withAnim) {
-            bool hasConsumed = false;
-            var stacks = GetStoredStacks();
 
-            for (int i = 0; i < stacks.Count(); i++) {
-                if (stacks.ElementAt(i) != null && stacks.ElementAt(i).MarkedForConsumption) {
-                    stacks.ElementAt(i).Retire(withAnim);
-                    hasConsumed = true;
-                }
-            }
-
-            return hasConsumed;
-        }
 
         public IEnumerable<IElementStack> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
@@ -328,6 +315,9 @@ namespace Assets.CS.TabletopUI {
         public void SetSlotConsumptions() {
             foreach (var s in startingSlots.GetAllSlots())
                 s.SetConsumption();
+            foreach (var o in ongoing.GetAllSlots())
+                o.SetConsumption();
+
         }
 
 
