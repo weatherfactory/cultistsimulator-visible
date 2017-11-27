@@ -42,7 +42,21 @@ public class DebugTools : MonoBehaviour
     }
     void AddCard(string elementId)
     {
-        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId,1, Source.Existing());
+        var stackManager = tabletopContainer.GetElementStacksManager();
+
+        var existingStacks = stackManager.GetStacks();
+
+        //check if there's an existing stack of that type to increment
+        foreach (var stack in existingStacks)
+        {
+            if(stack.Id==elementId)
+            { 
+                stack.ModifyQuantity(1);
+                return;
+            }
+        }
+        //if we didn't jump out of loop with return, above
+       stackManager.ModifyElementQuantity(elementId,1, Source.Existing());
     }
 
     void DecrementElement(string elementId)
