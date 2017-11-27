@@ -34,7 +34,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"Erudition": required: {erudition:1}},
+	slots:{"Erudition": {required: {erudition:1},consumes:true}},
 	alternativerecipes: [
 	{id: "studyresearcheruditionsuccess",chance:100}],
 	startdescription: "My research needs Erudition.",
@@ -48,7 +48,7 @@
 	label: "The Pieces Fit!",
 	actionId: "study",
 	requirements: {erudition:1},
-	effects: {insight:1,erudition:-1},
+	effects: {insight:1},
 	craftable: false,
 	startdescription: "Knowledge breeds knowledge. This will gain me Insight.",
 	linked: [{id:"studyresearchtick",chance:100}]
@@ -59,7 +59,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"Glimmering": required: {glimmering:1}},
+	slots:{"Glimmering": {required: {glimmering:1},consumes:true}},
 	alternativerecipes: [
 	{id: "studyresearchglimmeringsuccess",chance:100}],
 	startdescription: "My research needs a Glimmering.",
@@ -73,7 +73,7 @@
 	label: "The Gates of Intuition are opened!",
 	actionId: "study",
 	requirements: {glimmering:1},
-	effects: {insight:1,glimmering:-1},
+	effects: {insight:1},
 	startdescription: "Sometimes, Insights are found in unexpected places.",
 	craftable: false,
 	linked: [{id:"studyresearchtick",chance:100}]

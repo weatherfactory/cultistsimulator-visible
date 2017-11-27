@@ -397,6 +397,8 @@ public class ContentImporter
 
                 Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
                 r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
+                if(r.SlotSpecifications.Count>1)
+                    LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
             }
             catch (Exception e)
             {
