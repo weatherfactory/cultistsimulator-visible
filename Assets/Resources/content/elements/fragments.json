@@ -7,13 +7,19 @@
             {edge: 2,lore:1},
             description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns."
         },
+		 {
+        id: "fragmentedgeb",
+            label: "..",
+            aspects:
+            {edge: 4,lore:1},
+            description: ".."
+        },
 		          {
         id: "fragmentforge",
             label: "Smith's Secret",
             aspects:
             {forge: 2,lore:1},
-            description: "In five continents, smiths have whispered the same words to the iron. Murderers have been known to whisper these words, too.",
-			xtriggers: {loredeepening: fragmentforgeb}
+            description: "In five continents, smiths have whispered the same words to the iron. Murderers have been known to whisper these words, too."
         },
 				          {
         id: "fragmentforgeb",
@@ -29,12 +35,26 @@
             {grail: 2,lore:1},
             description: "So pleasant upon the ear. One could listen over and over."
         },
+		 {
+        id: "fragmentgrailb",
+            label: "..",
+            aspects:
+            {grail: 4,lore:1},
+            description: ".."
+        },
 				          {
         id: "fragmentheart",
             label: "The Words that Walk",
             aspects:
             {heart: 2,lore:1},
             description: "The syllables of this formula are compelling. I find myself snapping my fingers to its rhythm. It desires not to cease."
+        },
+				 {
+        id: "fragmentheartb",
+            label: "..",
+            aspects:
+            {heart: 4,lore:1},
+            description: ".."
         },
 
 				          {
@@ -44,6 +64,13 @@
             {knock: 2,lore:1},
             description: "To open the way, one must first open oneself. This practice outlines that opening, in the name of the Mother of Ants."
         },
+				 {
+        id: "fragmentknockb",
+            label: "..",
+            aspects:
+            {knock: 4,lore:1},
+            description: ".."
+        },
 				          {
         id: "fragmentlantern",
             label: "Mansus-Glimpse",
@@ -51,12 +78,26 @@
             {lantern: 2,lore:1},
             description: "A snatch of poetry; a single memory of a certain house that all of us visit twice in our lives."
         },
+				 {
+        id: "fragmentlanternb",
+            label: "..",
+            aspects:
+            {lantern: 4,lore:1},
+            description: ".."
+        },
 		          {
         id: "fragmentmoth",
             label: "Wood-Whispers",
             aspects:
             {moth: 2,lore:1},
             description: "Lie awake, and listen. The wind speaks in the branches. The house cries out in its sleep. These are the roads that chaos ride."
+        },
+						 {
+        id: "fragmentmothb",
+            label: "..",
+            aspects:
+            {moth: 4,lore:1},
+            description: ".."
         },
 
 				          {
@@ -66,11 +107,25 @@
             {secrethistories: 2,lore:1},
             description: "Secret histories are layered beneath the one we know, like the notes in rare wine. This is a detail from one of those histories."
         },
+						          {
+        id: "fragmentsecrethistoriesb",
+            label: "Occult Scrap B",
+            aspects:
+            {secrethistories: 4,lore:1},
+            description: ".."
+        },
 				          {
         id: "fragmentwinter",
             label: "The White Ceremony",
             aspects:
             {winter: 2,lore:1},
+            description: "When I speak it, my lips don't crisp with frost. Each time, this is surprising."
+        },
+						          {
+        id: "fragmentwinterb",
+            label: "B",
+            aspects:
+            {winter: 4,lore:1},
             description: "When I speak it, my lips don't crisp with frost. Each time, this is surprising."
         },
 								          {
