@@ -134,19 +134,20 @@
 	warmup:30,
 	linked:[
 	{id: "studyresearchearlyconclusion",chance:100},
+	{id: "studyresearchneedsreason",chance:50},
 	{id: "studyresearchneedserudition",chance:50},
 	{id: "studyresearchneedsglimmering",chance:100}]
 	},
 			{
 	id: "studyresearchneedsreason",
-	label: "The Pieces of the Puzzle",
+	label: "Confusion's Shadow",
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"reason": {required: {reason:1}}},
+	slots:{"Reason": {required: {reason:1}}},
 	alternativerecipes: [
 	{id: "studyresearchreasonsuccess",chance:100}],
-	startdescription: "I need to use my Reason to help my research.",
+	startdescription: "Confusion shrouds the path. I must use more of my Reason.",
 	description: "I need to use my Reason to help my research.",
 	warmup:30,
 	craftable: false,
@@ -154,12 +155,12 @@
 	},
 				{
 	id: "studyresearchreasonsuccess",
-	label: "The Pieces Fit!",
+	label: "The Intellect's Light!",
 	actionId: "study",
 	requirements: {reason:1},
 	effects: {insight:1},
 	craftable: false,
-	startdescription: "Knowledge breeds knowledge. This will gain me Insight.",
+	startdescription: "The task occupies ever more of my attention. But my efforts are paying off. [Gained Insight.].",
 	linked: [{id:"studyresearchtick",chance:100}]
 	},
 		{
@@ -184,7 +185,7 @@
 	requirements: {erudition:1},
 	effects: {insight:1},
 	craftable: false,
-	startdescription: "Knowledge breeds knowledge. This will gain me Insight.",
+	startdescription: "Knowledge breeds knowledge. [Gained Insight.]",
 	linked: [{id:"studyresearchtick",chance:100}]
 	},
 		{
@@ -196,7 +197,7 @@
 	slots:{"Glimmering": {required: {glimmering:1},consumes:true}},
 	alternativerecipes: [
 	{id: "studyresearchglimmeringsuccess",chance:100}],
-	startdescription: "My research needs a Glimmering.",
+	startdescription: "My research needs a Glimmering. ",
 	description: "..",
 	warmup:30,
 	craftable: false,
@@ -208,7 +209,7 @@
 	actionId: "study",
 	requirements: {glimmering:1},
 	effects: {insight:1},
-	startdescription: "Sometimes, Insights are found in unexpected places.",
+	startdescription: "Sometimes, Insights are found in unexpected places. [Gained Insight.]",
 	craftable: false,
 	linked: [{id:"studyresearchtick",chance:100}]
 	},
