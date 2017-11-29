@@ -1,0 +1,23 @@
+{"elements":
+    [
+		 {
+        id: "aladim",
+            label: "al-Adim, called the Aleppine",
+            aspects:
+            {mortal: 1},
+            description: "Ibn al-Adim has an interest in unusual history. He has given you a commission.",
+
+			xtriggers: {commissionfulfilled: aladimready}
+        },
+		 {
+        id: "aladimready",
+            label: "al-Adim, called the Aleppine",
+            aspects:
+            {mortal: 1},
+            description: "Ibn al-Adim has an interest in unusual history. He could use your assistance.",
+
+			xtriggers: {commissiongiven: aladim}
+        },
+			
+]
+};

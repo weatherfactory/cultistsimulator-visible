@@ -160,6 +160,7 @@
 			description: "THE HIGHER I RISE THE MORE I SEE",
             isAspect: true
         },
+		
 		 {
             id: "inducesdespair",
             label: "Induces Despair",
@@ -177,6 +178,20 @@
             label: "Induces Visions",
 			description: "I may see things.",
             isAspect: true
+        },
+				 {
+            id: "commissiongiven",
+            label: "Commission Given",
+			description: "A task awaits your attention.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+						 {
+            id: "commissionfulfilled",
+            label: "Commission Fulfilled",
+			description: "You have completed a task.",
+            isAspect: true,
+			comments: "Recipe aspect"
         },
 		 {
             id: "recruiting",

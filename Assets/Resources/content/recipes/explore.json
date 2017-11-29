@@ -1,5 +1,4 @@
  {"recipes": [
-
 	{
         id: "explorebookpurchase",
         label: "Find Morland's shop",
@@ -12,29 +11,7 @@
         warmup: 30,
         craftable: true
     },
-			{
-        id: "explorereason",
-        label: "Explore possibilities",
-        actionId: "explore",
-        requirements: {reason:1},
-		alternativerecipes:	[{id: "inspiremystique",chance:30}],
-        startdescription: "What might I become, if I do what I desire?",
-        description: "Each dawn arrives like a fire, and each night falls like a stone. My journal entries grow briefer.",
-        warmup: 60,
-        craftable: true
-    },
-		{
-        id: "explorepassion",
-        label: "Explore my instincts",
-        actionId: "explore",
-        requirements: {passion:1},
-		alternativerecipes:	[{id: "inspiremystique",chance:30},
-		{id: "inspirenotoriety",chance:100}],
-        startdescription: "What might I become, if I do what I desire?",
-        description: "",
-        warmup: 60,
-        craftable: true
-    },
+			
 		{
         id: "exploreprivatecollection_burgle",
         label: "Send a cunning follower to burgle Strathcoyne.",
@@ -99,6 +76,45 @@
         maxexecutions: 1,
 		comments: "alpha fudge: this should actually be an unlimited-execution trove.",
 		craftable: true
-    }
+    },
+	 {
+ 
+        id: "explorereason",
+        label: "Seek out those with secret knowledge.",
+        actionId: "explore",
+        requirements: {reason:1},
+		alternativerecipes:	[
+		{id: "explorefindscholarpatron", chance: 70},
+		{id: "inspiremystique",chance:30},
+		{id: "inspirenotoriety",chance:30}],
+        startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
+        description: "Each dawn arrives like a fire, and each night falls like a stone.",
+        warmup: 60,
+        craftable: true
+    },
+		{
+        id: "explorepassion",
+        label: "Seek out those with unusual passions.",
+        actionId: "explore",
+        requirements: {passion:1},
+		alternativerecipes:	[
+		{id: "explorefindscholarpatron", chance: 70},
+		{id: "inspiremystique",chance:30},
+		{id: "inspirenotoriety",chance:30}],
+        startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
+        description: "Each dawn arrives like a fire, and each night falls like a stone.",
+        warmup: 60,
+        craftable: true,
+		comments: "artist patrons, later"
+    },
+	{id: "explorefindscholarpatron",
+	label: "Find Commissions for Scholarly Work",
+	actionId: "explore",
+	startdescription: ".",
+	description: "Here is someone with curious interests.",
+	deckeffect: "scholarpatrons",
+	warmup:0,
+	craftable:false
+	}
 ]
 }
