@@ -288,7 +288,7 @@
         actionId: "study",
         requirements: {textbookreason: 1,erudition:3},
         effects: {textbookreason:-1,reason:1},
-		startdescription: "Exercise for the intellect.",
+		startdescription: "Exercise for the intellect, without the dangers of Continental philosophy.",
         description: "I am a little more than I was.",
         warmup: 60,
         craftable: true,
@@ -300,7 +300,7 @@
         requirements: {textbookpassion: 1,glimmering:2},
 		alternativerecipes: [{id:"studytextbookpassionfailed",chance:30}],
         effects: {textbookpassion: -1,passion:1},
-		startdescription: "I'll stoke my fire, or sink my well deeper.",
+		startdescription: "I'll stoke the fires of my imagination, without the risks of sensual exploration.",
         description: "I'm more than what I was.",
         warmup: 60,
         craftable: true

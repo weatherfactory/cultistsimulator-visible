@@ -111,7 +111,39 @@
         description: "Confusion in delight, and delight in confusion. In the rarer corners of rapture I have found a kind of light. Is it what I sought? [I've gained Fascination, which is a problem. However, Fascination can be transformed to Passion, with time and rest.]",
         craftable: false
     },
-	
+			{
+        id: "studyhealth",
+        label: "Fresh Air and Exercise",
+        actionId: "study",
+        requirements: {health:1},
+		effects: {vitality:1},
+		startdescription: "Long walks kill cobwebs.",
+        description: "I've neglected my studies, but I stand a little straighter.",
+        warmup: 60,
+        craftable: true,
+    },
+			{
+        id: "studyreason",
+        label: "Read Whatever is to Hand",
+        actionId: "study",
+        requirements: {reason:1},
+		effects: {erudition:1},
+		startdescription: "The world is awash with printed words. Even the newspapers contain knowledge, sometimes.",
+        description: "The words contained knowledge. Now I contain it. It is a little like theft and a little like feasting and a little like the progress of an infectious disease.",
+        warmup: 60,
+        craftable: true,
+    },
+			{
+        id: "studypassion",
+        label: "Read Sentimental Literature",
+        actionId: "study",
+        requirements: {passion:1},
+		effects: {glimmering:1},
+		startdescription: "If I proposed to learn anything, I wouldn't be reading this stuff.",
+        description: "I've passed the time. I have been inclined to tears, and afterwards inclined to laughter. Meanwhile, the world continues.",
+        warmup: 60,
+        craftable: true,
+    },
 
 ]
 }
