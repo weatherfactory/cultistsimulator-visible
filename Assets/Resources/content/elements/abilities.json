@@ -24,7 +24,7 @@
             label: "Vitality",
             aspects:
             {},
-            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i>treasure. [Vitality can sometimes be used to gain Health. It lasts only two minutes, if unused.]",
+            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i>treasure. [Vitality can sometimes be used to gain Health. It lasts only five minutes, if unused.]",
 		lifetime: 60
         },
 			{
@@ -59,8 +59,8 @@
             label: "Erudition",
             aspects:
             {},
-            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason. It lasts only two minutes, if unused.]",
-		lifetime: 60
+            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason. It lasts only five minutes, if unused.]",
+lifetime: 600
         },
 			{id: "dread",
             label: "Dread",
@@ -87,8 +87,8 @@
             label: "Glimmering",
             aspects:
             {},
-            description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion. It lasts only two minutes, if unused.]",
-			lifetime: 60
+            description: "There are things I'll never understand, and those things will always be precious. [Glimmerings can sometimes be used to gain Passion. It lasts only five minutes, if unused.]",
+			lifetime: 600
         },
 		{id: "fascination",
             label: "Fascination",
@@ -112,7 +112,7 @@
             aspects:
             {reputation: 1},
             description: "They remember what I've done. [Notoriety can be used to found a cult, and to recruit followers. It will fade over time, but more slowly than Mystique.]",
-	lifetime: 120
+	lifetime: 600
         },
 		{
 		id: "scholarlatin",
