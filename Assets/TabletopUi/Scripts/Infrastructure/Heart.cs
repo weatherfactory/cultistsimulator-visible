@@ -82,7 +82,7 @@ public class Heart : MonoBehaviour
         foreach (var st in situationTokens)
         {
             if (CurrentGameSpeed == GameSpeed.Fast)
-                intervalThisBeat = intervalThisBeat * 2;
+                intervalThisBeat = usualInterval * 2;
            HeartbeatResponse response=st.ExecuteHeartbeat(intervalThisBeat);
             foreach (var r in response.SlotsToFill)
                 outstandingSlotsToFill.Add(r);
