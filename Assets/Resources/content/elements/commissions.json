@@ -1,0 +1,13 @@
+{"elements":
+    [
+		 {
+        id: "commissionarticlesecrethistory",
+            label: "Secret History Article Commission",
+            aspects: {},
+            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
+			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:1}}},
+
+			xtriggers: {commissionfulfilled: mystique}
+        }
+]
+};

@@ -4,7 +4,7 @@
         id: "aladim",
             label: "Dr al-Adim",
             aspects:
-            {mortal: 1},
+            {},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
 
 			xtriggers: {commissionfulfilled: aladimready}
@@ -13,7 +13,7 @@
         id: "aladimready",
             label: "Dr al-Adim",
             aspects:
-            {mortal: 1},
+            {},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He could use your assistance.",
 
 			xtriggers: {commissiongiven: aladim}
@@ -22,7 +22,7 @@
         id: "bechet",
             label: "Mme Bechet",
             aspects:
-            {mortal: 1},
+            {},
             description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She has offered you a commission.",
 
 			xtriggers: {commissionfulfilled: aladimready}
@@ -52,6 +52,6 @@
             description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He could use your assistance.",
 
 			xtriggers: {commissiongiven: jannings}
-        },
+        }
 ]
 };

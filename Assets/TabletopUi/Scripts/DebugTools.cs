@@ -6,6 +6,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
+using Noon;
 using UnityEngine.UI;
 
 public class DebugTools : MonoBehaviour
@@ -23,6 +24,7 @@ public class DebugTools : MonoBehaviour
     [SerializeField] private Button btnEndGame;
     [SerializeField] private Button btnLoadGame;
     [SerializeField] private Button btnSaveGame;
+    [SerializeField] private Button btnResetDecks;
     [SerializeField] private BackgroundMusic backgroundMusic;
 
 
@@ -35,7 +37,7 @@ public class DebugTools : MonoBehaviour
         btnEndGame.onClick.AddListener(EndGame);
         btnLoadGame.onClick.AddListener(LoadGame);
         btnSaveGame.onClick.AddListener(SaveGame);
-
+        btnResetDecks.onClick.AddListener(ResetDecks);
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
 
@@ -110,6 +112,19 @@ public class DebugTools : MonoBehaviour
     public void SaveGame()
     {
         Registry.Retrieve<TabletopManager>().SaveGame();
+    }
+
+    void ResetDecks()
+    {
+        var character= Registry.Retrieve<Character>();
+        foreach(var di in character.DeckInstances)
+        {di.Reset();
+            NoonUtility.Log("Reset " + di.Id + " - now contains ");
+            foreach (var card in di.GetCurrentCardsAsList())
+            {
+                NoonUtility.Log(card + "\n" );
+            }
+        }
     }
 
 }
