@@ -2,9 +2,27 @@
     [
 		 {
         id: "commissionarticlesecrethistory",
-            label: "Secret History Article Commission",
+            label: "Commission: Secret Histories",
             aspects: {},
-            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
+            description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the secret histories of the world. [Use <b>Talk</b> to complete this commission.]",
+			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:1}}},
+
+			xtriggers: {commissionfulfilled: mystique}
+        },
+				 {
+        id: "commissionarticlesecrethistoryb",
+            label: "Commission: Secret Histories (Substantial)",
+            aspects: {},
+            description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for particularly obscure information from the secret histories of the world.[Use <b>Talk</b> to complete this commission.]",
+			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:1}}},
+
+			xtriggers: {commissionfulfilled: mystique}
+        },
+				 {
+        id: "commissionarticlesecrethistoryc",
+            label: "Commission: Secret Histories (Extensive)",
+            aspects: {},
+            description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for a substantial treatise on the secret histories of the world. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:1}}},
 
 			xtriggers: {commissionfulfilled: mystique}

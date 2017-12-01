@@ -31,7 +31,7 @@
 	},
 		
 			{id: "writeheartc",
-	label: "heart write c",
+	label: "Write an extensive treatise on Heart-lore",
 	actionId: "work",
 	requirements: {lore:1,heart:6},
 	effects: {articleheartc:1},
@@ -41,7 +41,7 @@
 	craftable: true
 	},
 				{id: "writeknockc",
-	label: "knock write c",
+	label: "Write an extensive treatise on the Knock-lore.",
 	actionId: "work",
 	requirements: {lore:1,knock:6},
 	effects: {articleknockc:1},
@@ -52,7 +52,7 @@
 	},
 		
 			{id: "writelanternc",
-	label: "lantern write c",
+	label: "Write an extensive treatise on the lore of the Lantern",
 	actionId: "work",
 	requirements: {lore:1,lantern:6},
 	effects: {articlelanternc:1},
@@ -63,7 +63,7 @@
 	},
 		
 			{id: "writemothc",
-	label: "moth write c",
+	label: "Write an extensive treatise on the lore of the Moth",
 	actionId: "work",
 	requirements: {lore:1,moth:6},
 	effects: {articlemothc:1},
@@ -74,11 +74,11 @@
 	},
 	
 	{id: "writesecrethistoriesc",
-	label: "secrethistories write c",
+	label: "Write an extensive treatise on the Secret Histories",
 	actionId: "work",
 	requirements: {lore:1,secrethistories:6},
 	effects: {articlesecrethistoriesc:1},
-	startdescription: ".",
+	startdescription: "",
 	description: "secrethistories C write description",
 	warmup: 60,	
 	craftable: true
@@ -88,7 +88,7 @@
 	actionId: "work",
 	requirements: {lore:1,winter:6},
 	effects: {articlewinterc:1},
-	startdescription: ".",
+	startdescription: "Write an extensive treatise ",
 	description: "winter C write description",
 	warmup: 60,	
 	craftable: true
