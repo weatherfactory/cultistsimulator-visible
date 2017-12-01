@@ -1,6 +1,6 @@
  {"recipes": [
  		{id: "writeedgec",
-	label: "Edge write c",
+	label: "Write an extensive treatise on the practices of the Edge, and the Hours that rule it.,
 	actionId: "work",
 	requirements: {lore:1,edge:6},
 	effects: {articleedgec:1},
@@ -10,7 +10,7 @@
 	craftable: true
 	},
 	{id: "writeforgec",
-	label: "Forge write c",
+	label: "Write an extensive treatise on the lore of the principle called Forge.",
 	actionId: "work",
 	requirements: {lore:1,forge:6},
 	effects: {articleforgec:1},
@@ -20,7 +20,7 @@
 	craftable: true
 	},
 			{id: "writegrailc",
-	label: "grail write c",
+	label: "Write an extensive treatise on the lore of the Red Grail.",
 	actionId: "work",
 	requirements: {lore:1,grail:6},
 	effects: {articlegrailc:1},
@@ -88,13 +88,13 @@
 	actionId: "work",
 	requirements: {lore:1,winter:6},
 	effects: {articlewinterc:1},
-	startdescription: "Write an extensive treatise ",
+	startdescription: "Write an extensive treatise on the White Lore.",
 	description: "winter C write description",
 	warmup: 60,	
 	craftable: true
 	},
 	{id: "writeedgeb",
-	label: "Edge write b",
+	label: "Write a substantial treatise on the lore of the practices of the Edge.",
 	actionId: "work",
 	requirements: {lore:1,edge:4},
 	effects: {articleedgeb:1},
@@ -104,7 +104,7 @@
 	craftable: true
 	},
 	{id: "writeforgeb",
-	label: "Forge write b",
+	label: "Write a substantial treatise on the Forge-principle.",
 	actionId: "work",
 	requirements: {lore:1,forge:4},
 	effects: {articleforgeb:1},
@@ -114,7 +114,7 @@
 	craftable: true
 	},
 			{id: "writegrailb",
-	label: "grail write b",
+	label: "Write a substantial treatise on the rites of the Red Grail.",
 	actionId: "work",
 	requirements: {lore:1,grail:4},
 	effects: {articlegrailb:1},
@@ -125,7 +125,7 @@
 	},
 		
 			{id: "writeheartb",
-	label: "heart write b",
+	label: "Write a substantial treatise on Heart-lore.",
 	actionId: "work",
 	requirements: {lore:1,heart:4},
 	effects: {articleheartb:1},
@@ -135,7 +135,7 @@
 	craftable: true
 	},
 				{id: "writeknockb",
-	label: "knock write b",
+	label: "Write a substantial treatise on the opening-rites of Knock.",
 	actionId: "work",
 	requirements: {lore:1,knock:4},
 	effects: {articleknockb:1},
@@ -146,7 +146,7 @@
 	},
 		
 			{id: "writelanternb",
-	label: "lantern write b",
+	label: "Write a substantial treatise on the Lantern.",
 	actionId: "work",
 	requirements: {lore:1,lantern:4},
 	effects: {articlelanternb:1},
@@ -157,7 +157,7 @@
 	},
 		
 			{id: "writemothb",
-	label: "moth write b",
+	label: "Write a substantial treatise on the Moth.",
 	actionId: "work",
 	requirements: {lore:1,moth:4},
 	effects: {articlemothb:1},
@@ -168,7 +168,7 @@
 	},
 	
 	{id: "writesecrethistoriesb",
-	label: "secrethistories write b",
+	label: "Write a substantial treatise on the Secret Histories.",
 	actionId: "work",
 	requirements: {lore:1,secrethistories:4},
 	effects: {articlesecrethistoriesb:1},
@@ -178,7 +178,7 @@
 	craftable: true
 	},
 			{id: "writewinterb",
-	label: "winter write b",
+	label: "Write a substantial treatise on the White Lore.",
 	actionId: "work",
 	requirements: {lore:1,winter:4},
 	effects: {articlewinterb:1},
@@ -193,12 +193,12 @@
 	requirements: {lore:1,edge:2},
 	effects: {articleedgea:1},
 	startdescription: ".",
-	description: "Edge A write description",
+	description: "Write a brief treatise on the practices of the Edge.",
 	warmup: 60,	
 	craftable: true
 	},
 	{id: "writeforgea",
-	label: "Forge write a",
+	label: "Write a brief treatise on the Forge-principle.",
 	actionId: "work",
 	requirements: {lore:1,forge:2},
 	effects: {articleforgea:1},
@@ -208,7 +208,7 @@
 	craftable: true
 	},
 			{id: "writegraila",
-	label: "grail write a",
+	label: "Write a brief treatise on the lore of the Red Grail.",
 	actionId: "work",
 	requirements: {lore:1,grail:2},
 	effects: {articlegraila:1},
@@ -219,7 +219,7 @@
 	},
 		
 			{id: "writehearta",
-	label: "heart write a",
+	label: "Write a brief treatise on the lore of the Heart.",
 	actionId: "work",
 	requirements: {lore:1,heart:2},
 	effects: {articlehearta:1},
@@ -229,7 +229,7 @@
 	craftable: true
 	},
 				{id: "writeknocka",
-	label: "knock write a",
+	label: "Write a brief treatise on the Knock-principle and the rites of opening.",
 	actionId: "work",
 	requirements: {lore:1,knock:2},
 	effects: {articleknocka:1},
@@ -240,7 +240,7 @@
 	},
 		
 			{id: "writelanterna",
-	label: "lantern write a",
+	label: "Write a brief treatise on the lore of the Lantern.",
 	actionId: "work",
 	requirements: {lore:1,lantern:2},
 	effects: {articlelanterna:1},
@@ -251,7 +251,7 @@
 	},
 		
 			{id: "writemotha",
-	label: "moth write a",
+	label: "Write a brief treatise on the Moth.",
 	actionId: "work",
 	requirements: {lore:1,moth:2},
 	effects: {articlemotha:1},
@@ -262,7 +262,7 @@
 	},
 	
 	{id: "writesecrethistoriesa",
-	label: "secrethistories write a",
+	label: "Write a brief treatise on the Secret Histories.",
 	actionId: "work",
 	requirements: {lore:1,secrethistories:2},
 	effects: {articlesecrethistoriesa:1},
@@ -272,7 +272,7 @@
 	craftable: true
 	},
 			{id: "writewintera",
-	label: "winter write a",
+	label: "Write a brief treatise on the White Lore.",
 	actionId: "work",
 	requirements: {lore:1,winter:2},
 	effects: {articlewintera:1},
