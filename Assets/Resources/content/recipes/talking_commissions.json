@@ -16,12 +16,14 @@ craftable: true
 label:"Fulfil a Commission for Dr al-Adim",
 actionId: "talk",
 requirements: {commissionarticlesecrethistory: 1,aladim:1,article:1,secrethistories:1},
-effects: {shilling:1,article:-1},
+effects: {mystique:1,article:-1},
 startdescription: "I have what the doctor requested.",
 description: "I've received my pay.",
 warmup: 10,
 craftable: true,
 aspects: {commissionfulfilled:1}
+},
+
 }
 ]
 }
