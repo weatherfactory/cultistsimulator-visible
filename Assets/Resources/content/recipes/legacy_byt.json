@@ -1,0 +1,23 @@
+{
+"recipes": [
+{id: "workbytjob",
+label: "A Golden Day of Occasional Work",
+actionId: "work",
+requirements: {legacybytjob:1},
+effects: {shilling: 3},
+alternativerecipes: [
+{id:needs,chance:100,additional:true},
+{id:workbytjobend,chance:1}],
+startdescription: "Possibly I'll get something done today.",
+description: "It's all going swimmingly. Although Papa's health is not improving.",
+warmup:10,
+craftable: true	},
+{id: "workbytjobend",
+label: "Ghastly News",
+actionId: "work",
+effects: {health: 1, shilling: 3,legacybytjob:-1},
+startdescription: ".",
+description: "bad news, Papa dead, something about dreams",
+craftable: false	},
+]
+}

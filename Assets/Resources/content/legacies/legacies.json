@@ -8,12 +8,12 @@ What now?",
 effects: {introjob:1},
 image: "knock"
 },
-{id: "inheritor",
-label: "Inheritor",
-description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
-startdescription: "Inheritor starting note",
-effects: {introjob:1},
-image: "knock"
+{id: "brightyoungthing",
+label: "Bright Young Thing",
+description: "Endowed from birth with wealth and talent. A life of ease, comfort and delight stretches ahead like an amber carpet.",
+startdescription: "I missed the dawn. I generally do. There'll be plenty more.",
+effects: {legacybytjob:1},
+image: "lantern"
 },
 {id: "physician",
 label: "Physician",
@@ -28,6 +28,13 @@ description: "At times, in mirrors, in crowds, you see the face of one now lost.
 startdescription: "Haunted starting note",
 effects: {introjob:1},
 image: "moth"
+},
+{id: "inheritor",
+label: "Inheritor",
+description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
+startdescription: "Inheritor starting note",
+effects: {introjob:1},
+image: "knock"
 }	
 ]
 };
