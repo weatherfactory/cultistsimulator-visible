@@ -19,7 +19,7 @@ image: "lantern"
 label: "Physician",
 description: "As the patient descended into the final delirium, you made copious notes. In the buzzing heat of the night, you re-read those notes, and they begin, at last, to make a kind of sense.",
 startdescription: "Physician starting note",
-effects: {introjob:1},
+effects: {legacyphysicianjob:1},
 image: "heart"
 },
 {id: "haunted",
@@ -35,6 +35,6 @@ description: "One morning, when the Sun is high and the mirrors all are sealed, 
 startdescription: "Inheritor starting note",
 effects: {introjob:1},
 image: "knock"
-}	
+}
 ]
 };

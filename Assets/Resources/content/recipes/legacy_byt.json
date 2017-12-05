@@ -34,9 +34,9 @@ startdescription: ".",
 description: "..",
 craftable: false,
 linked: [
-{id:"workbytjobepilogue",chance:100},
+{id:"workbytjobepilogue",chance:100}],
 comments: "this passes through to the next one, so we can spawn needs at the beginning of the legal wrangle."
-]},
+},
 
 {id: "workbytjobepilogue",
 label: "Ghastly News",
@@ -64,11 +64,11 @@ label: "Puzzling Papers",
 actionId: "study",
 startdescription:"I am to receive papers found among Papa's belongings, which might perhaps shed some sort of light on where exactly the hell all the money has gone.",
 alternativerecipes: [
-{id:"bytopentalk",chance:100,additional:true}
+{id:"bytopendream",chance:100,additional:true}
 ],
 description: "I have received the papers. Poor Papa. Page after page after page of desperate scrawl on an invisible house and the colours of sleep and the invisible gods behind the world... but do you know, the more I read, the more it - not make sense. It doesn't make sense. But it does hang together. And here is Papa's diary.",
 effects: {legacydiarylastcharacter:1},
-deckeffect: {commontomes},
+deckeffect: "commontomes",
 warmup:30,
 craftable: false
 },
@@ -78,34 +78,37 @@ craftable: false
 label: "Studying a Troubling Diary",
 actionId: "study",
 requirements: {legacydiarylastcharacter:1},
+
 alternativerecipes: [
-{id:"bytopendream",chance:100,additional:true}
+{id:"bytopentalk",chance:100,additional:true}
 ],
 effects: {legacydiarylastcharacter:-1,reason:1},
-startdescription:"It's a catalogue of obsessions. But perhaps it will make some sort of sense of recent events?",
-description: "The name of #PREVIOUSCHARACTERNAME# appears again and again in these pages. They were 'a locus for impossibility', a 'fount of the future'...'one who cut the eye.' And, on the last page, there is a correspondence address, and a name.",
-effects: {legacydiarylastcharacter:-1,fragmentlantern:1},
+startdescription:"Papa's diary. It's a catalogue of obsessions. But perhaps it will make some sort of sense of recent events?",
+description: "The name of #PREVIOUSCHARACTERNAME# appears again and again in these pages. They were 'a locus for impossibility', a 'fount of the future'...'one who has cut the eye.' And, on the last page, there is a correspondence address, and a name.",
+effects: {legacydiarylastcharacter:-1,fragmentgrail:1},
 warmup:10,
 craftable: true
 },
 {id: "bytopendream",
+label: "The House without Walls",
 actionId: "dream",
 alternativerecipes:[
 {id:despairrisk,chance:100,additional:true}
 ],
-startdescription:"bad dreams from father's death",
-description: "bad dreams wah!",
+startdescription:"The dreams begin. Papa spoke of them, and he said that his father before him had been so troubled. Something in our blood; a biting melancholy that kills the soul.",
+description: "I dream of a shrivelling light, a sun that crisps snow but does not melt it. When I wake, my room is always cold.",
 warmup:10,
-effects: {passion:1,dread:1},
+effects: {passion:1,dread:1,influencewinter:1},
 craftable: false
 },
 
 
 {id: "bytopentalk",
+label: "Summoning a Stranger",
 actionId: "talk",
 startdescription:"I've contacted the individual named in this troubling document. I have little reason to believe they will be able to enlighten me on the nature of what went before. But perhaps they can help with what is to come.",
-description: "My new acquaintance won't answer 'personal questions'. But they are prepared to offer assistance.",
-effects: {poppy:1},
+description: "My new acquaintance speaks authoritatively of Papa. He knew he was dying. He had hoped to taste unknown pleasures before his end - pleasures denied to healthy society. My new acquaintance suggests that I might finish what he began - that if I do so, I might save myself from the despair which haunts my family.",
+effects: {poppy:1,notionpower:1},
 warmup:60,
 craftable: false
 },
