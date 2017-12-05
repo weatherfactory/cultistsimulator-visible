@@ -71,33 +71,6 @@
             label: "Directions to Morland's",
             aspects:{},
             description: "Cryptic directions to the obscure address of a certain Morland, a dealer in the rarer sort of book."
-        },
-		{
-        id: "locationbookdealer",
-            label: "Morland's Shop",
-            aspects:{location: 1},
-			slots: {
-				"Cost":
-					{
-					required: {shilling: 1},
-					forbidden: {},
-					consumes: true
-					}
-				},
-            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
-        },
-		{
-        id: "locationprivatecollection",
-            label: "Strathcoyne's Residence",
-            aspects:{location: 1},
-			slots: {
-				"Burgle":
-					{
-					required: {edge: 1,follower: 1},
-					forbidden: {}
-					}
-				},
-            description: "The house of Mr Strathcoyne, a collector of rare volumes. Strathcoyne will not sell his treasures. But a sufficiently cunning accomplice might gain entry."
         }
 ]
 };

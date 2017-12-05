@@ -1,10 +1,19 @@
 {"elements":
     [
 			  
-	{id: "bytjob",
-	description: "One dabbles with writing and one dabbles with painting but one lives, above all, in the certainty of one's allowance.",
+	{id: "legacybytjob",
+	description: "One dabbles with writing and one dabbles with painting but one lives, above all, in the certainty of one's allowance. 1",
 	label: "This and That",
 	aspects: {bytflavour:1}
-}
+},
+{id: "legacybytjobmatured",
+	description: "One dabbles with writing and one dabbles with painting but one lives, above all, in the certainty of one's allowance. 2",
+	label: "This and That",
+	aspects: {bytflavour:1},
+	comments: "Exists to allow a switch to a longer cycle immediately after first use."
+},
+{id: "legacydiarylastcharacter",
+label: "A diary, written in a simple cypher.",
+description: "This details a growing obsession with an individual by the name of #PREVIOUSCHARACTERNAME#."}
 ]
 };
