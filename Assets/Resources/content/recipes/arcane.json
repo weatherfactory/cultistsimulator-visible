@@ -64,7 +64,7 @@
 	{
         id: "notionpowerpromotion",
         label: "THE RED GRAIL COMES",
-        actionId: "x",
+        actionId: "grailminorpromotion",
         requirements: {},
 		alternativerecipes:[{id: "notionpowervictoryminor",chance: 100}],
 		slots: {"Dedication": {required: {passion:1}}},
@@ -77,7 +77,7 @@
 		{
         id: "notionenlightenmentpromotion",
         label: "I HEAR THE WATCHMAN'S FOOTSTEPS",
-        actionId: "x",
+        actionId: "watchmanminorpromotion",
         requirements: {},
 		alternativerecipes:[{id: "notionenlightenmentvictoryminor",chance: 100}],
         effects: {mystique: 1},

@@ -3,7 +3,7 @@
    {
         id: "deathofthebody",
         label: "No Health is left",
-        actionId: "x",
+        actionId: "healthend",
         requirements: {health: -1},
         effects: {},
         startdescription: "My life is slipping away -",
@@ -15,7 +15,7 @@
 	   {
         id: "notionpowervictoryminor",
         label: "I have achieved unearthly power!",
-        actionId: "x",
+        actionId: "grailminorwin",
         requirements: {passion: 1},
         effects: {},
         startdescription: ".",
@@ -27,7 +27,7 @@
 	{
         id: "notionenlightenmentvictoryminor",
         label: "I have achieved unearthly knowledge!",
-        actionId: "x",
+        actionId: "watchmanminorwin",
         requirements: {reason:1},
         effects: {},
         startdescription: ".",
@@ -39,7 +39,7 @@
 		{
         id: "workvictory",
         label: "I will settle into a comfortable existence",
-        actionId: "x",
+        actionId: "workwin",
         requirements: {passion:1},
         effects: {},
         startdescription: "I've given up my dreams; I'll live well enough.",
