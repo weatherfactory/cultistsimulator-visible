@@ -1,0 +1,16 @@
+ {"recipes":
+ [
+ 			{id: "institutephysicianwork",
+	label: "Work at the Institute",
+		actionId:"work",
+	  requirements: {legacyphysicianjob: 1},
+		effects: { shilling: 3,legacyphysicianjob:-1,institutephysicianjob:1},
+		
+
+        startdescription: "There is a dank and clinging smell to the Institute halls that never leaves one. Perhaps it is the paint. Perhaps it is the patients. Perhaps it is something in the walls.",
+        description: "I have done some good. My patients are quieter than when I began.",
+        warmup: 10
+	}
+	
+]
+}

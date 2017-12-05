@@ -186,7 +186,17 @@ public class ContentImporter
         foreach (TextAsset ta in recipeTextAssets)
         {
             string json = ta.text;
-            recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
+            try
+            {
+                recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
+            }
+
+            
+                catch (Exception e)
+                {
+                    NoonUtility.Log("This file broke: " + ta.name);
+                throw;
+            }
 
         }
         PopulateRecipeList(recipesArrayList);
