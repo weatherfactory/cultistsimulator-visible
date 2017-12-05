@@ -8,7 +8,7 @@ effects: {shilling: 2,legacybytjob:-1,legacybytjobmatured:1},
 alternativerecipes: [
 {id:bytopenexplore,chance:100,additional:true}],
 startdescription: "Possibly I'll get something done today.",
-description: "It's all going swimmingly. Although Papa's health is not improving.",
+description: "It's all going swimmingly. Although Papa's health is not improving. [<b>Explore</b> unlocked.]",
 warmup:10,
 craftable: true	},
 {id: "workbytjob",
@@ -19,7 +19,7 @@ effects: {shilling: 3},
 alternativerecipes: [
 {id:workbytjobend,chance:70}],
 startdescription: "Possibly I'll get something done today.",
-description: "It's all going swimmingly. Although Papa's health is not improving.",
+description: "It's all going swimmingly. Although Papa's health is still not improving.",
 warmup:60,
 craftable: true	},
 
@@ -35,7 +35,7 @@ description: "..",
 craftable: false,
 linked: [
 {id:"workbytjobepilogue",chance:100},
-comments: "this passes through to the next one, so we can spawn needs at the beginning of the legal wrangle"
+comments: "this passes through to the next one, so we can spawn needs at the beginning of the legal wrangle."
 ]},
 
 {id: "workbytjobepilogue",
@@ -44,16 +44,16 @@ actionId: "work",
 alternativerecipes: [
 {id:"bytopenstudy",chance:100,additional:true}
 ],
-effects: {health: 1, shilling: 6,legacybytjobmatured:-1},
-startdescription: "Papa is dead! Everything is ruined! all the money is tied up in probate ",
-description: "This is what's left of the money. No-one seems to know what Papa spent it on. There is a mysterious package en route to me.",
-warmup:50,``
+effects: {health: 2, shilling: 6,legacybytjobmatured:-1},
+startdescription: "Papa is dead! No-one will tell me exactly how. But the estate is in a state. My allowance is tied up in probate and so forth. One can only hope it's resolved before the bills come due. [<b>Time</b>, regrettably, is now passing.]",
+description: "The business of the will has been settled... but Papa's business affairs have been eaten up with debts like woodworm. No-one seems to know exactly what he spent the money on. But the solicitor is sending me some papers, apparently..",
+warmup:60,
 craftable: false},
  
 {id: "bytopenexplore",
 actionId: "explore",
-startdescription:"Finding places! exciting!",
-description: "found some places! exciting!",
+startdescription:"Some ripping sorts are introducing me to some ripping sorts of places.",
+description: "If I ever have trouble deciding how to spend my money, the good people at these spots can certainly be of assistance!",
 warmup:10,
 effects: {locationauctionhouse:1,locationcabaret:1},
 craftable: false
@@ -62,26 +62,29 @@ craftable: false
 {id: "bytopenstudy",
 label: "Puzzling Papers",
 actionId: "study",
-startdescription:"receiving Papa's papers.",
+startdescription:"I am to receive papers found among Papa's belongings, which might perhaps shed some sort of light on where exactly the hell all the money has gone.",
 alternativerecipes: [
 {id:"bytopentalk",chance:100,additional:true}
 ],
-description: "Got the papers.",
+description: "I have received the papers. Poor Papa. Page after page after page of desperate scrawl on an invisible house and the colours of sleep and the invisible gods behind the world... but do you know, the more I read, the more it - not make sense. It doesn't make sense. But it does hang together. And here is Papa's diary.",
 effects: {legacydiarylastcharacter:1},
+deckeffect: {commontomes},
 warmup:30,
 craftable: false
 },
 
 
 {id: "bytstudydiary",
+label: "Studying a Troubling Diary",
 actionId: "study",
 requirements: {legacydiarylastcharacter:1},
 alternativerecipes: [
 {id:"bytopendream",chance:100,additional:true}
 ],
 effects: {legacydiarylastcharacter:-1,reason:1},
-startdescription:"Studying papa's diary",
-description: "Finished papa's diary, opened talk..",
+startdescription:"It's a catalogue of obsessions. But perhaps it will make some sort of sense of recent events?",
+description: "The name of #PREVIOUSCHARACTERNAME# appears again and again in these pages. They were 'a locus for impossibility', a 'fount of the future'...'one who cut the eye.' And, on the last page, there is a correspondence address, and a name.",
+effects: {legacydiarylastcharacter:-1,fragmentlantern:1},
 warmup:10,
 craftable: true
 },
@@ -100,8 +103,8 @@ craftable: false
 
 {id: "bytopentalk",
 actionId: "talk",
-startdescription:"A visitor is en route.",
-description: "I've met the Belfry and opened the last verb.",
+startdescription:"I've contacted the individual named in this troubling document. I have little reason to believe they will be able to enlighten me on the nature of what went before. But perhaps they can help with what is to come.",
+description: "My new acquaintance won't answer 'personal questions'. But they are prepared to offer assistance.",
 effects: {poppy:1},
 warmup:60,
 craftable: false
