@@ -42,16 +42,16 @@ public class ResourcesManager: MonoBehaviour
     {
         return Resources.Load<Sprite>("icons40/aspects/" + aspectId);
     }
-        public static Sprite GetSpriteForEnding(string endingImage)
+        public static Sprite GetSpriteForLegacy(string legacyImage)
         {
-            return Resources.Load<Sprite>("icons100/old_aspects/100" + endingImage);
+            return Resources.Load<Sprite>("icons100/legacies/" + legacyImage);
         }
 
 
-    public static Sprite GetSpriteForLegacy(string legacyImage)
+    public static Sprite GetSpriteForEnding(string endingImage)
     {
         //just using images from elements for now - LB to sort out rectilinear images if we don't get suitable cards in time
-        return Resources.Load<Sprite>("elementArt/" + legacyImage);
+        return Resources.Load<Sprite>("elementArt/" + endingImage);
 
     }
 

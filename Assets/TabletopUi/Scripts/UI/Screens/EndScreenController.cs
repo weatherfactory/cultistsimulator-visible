@@ -22,7 +22,7 @@ namespace Assets.CS.TabletopUI {
             //image.sprite = ;
             header.text = ending.Title;
             flavor.text = ending.Description;
-            image.sprite = ResourcesManager.GetSpriteForLegacy(ending.ImageId);
+            image.sprite = ResourcesManager.GetSpriteForEnding(ending.ImageId);
         }
 
        
