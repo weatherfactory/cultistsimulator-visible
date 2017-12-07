@@ -254,7 +254,18 @@ public class ContentImporter
             }
 
 
-            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec);
+            string defaultCardId="";
+            try
+            {
+                defaultCardId = htEachDeck.GetValue(NoonConstants.KDECKDEFAULTCARD).ToString();
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing default card for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
+            }
+
+            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId);
 
             DeckSpecs.Add(d.Id,d);
         }

@@ -39,12 +39,15 @@ namespace Assets.Core.Entities
         private string _id;
         //DeckSpec startingCards determines which cards start in the deckSpec after each reset
         public List<string> StartingCards { get; set; }
+        public string DefaultCardId { get; set; }
 
-        public DeckSpec(string id,List<string> startingCards)
+        public DeckSpec(string id,List<string> startingCards,string defaultCardId)
         {
             _id = id;
             StartingCards = startingCards;
+            DefaultCardId = defaultCardId;
         }
+
 
         /// <summary>
         /// resets deckSpec (with up to date version of each stack). Use this when first creating the deckSpec

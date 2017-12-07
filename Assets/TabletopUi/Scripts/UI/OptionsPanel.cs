@@ -29,7 +29,7 @@ public class OptionsPanel : MonoBehaviour
     {
         var tabletopManager = Registry.Retrieve<TabletopManager>();
         tabletopManager.SetPausedState(true);
-        tabletopManager.SaveGame();
+        tabletopManager.SaveGame(true);
 
        SceneManager.LoadScene(SceneNumber.MenuScene);
     }

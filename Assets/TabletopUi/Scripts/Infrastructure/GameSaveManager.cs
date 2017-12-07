@@ -32,11 +32,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public bool IsSavedGameActive()
         {
-            var htSave = RetrieveHashedSave();
+            var htSave = RetrieveHashedSaveFromFile();
             return htSave.ContainsKey(SaveConstants.SAVE_ELEMENTSTACKS) || htSave.ContainsKey(SaveConstants.SAVE_SITUATIONS);
         }
 
+        //copies old version in case of corruption
+        private void BackupSave()
+        {
+            File.Copy(NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(),true);
 
+        }
+        
         /// <summary>
         /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game
         /// by reloading the tabletop scene - this is hacky, because we just don't save the availablelegacies and chosenlegacies, and rely on the
@@ -45,6 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void SaveInactiveGame()
         {
             var htSaveTable = dataExporter.GetHashtableForExtragameState();
+            BackupSave();
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
 
         }
@@ -59,10 +66,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,
                 allSituationTokens,allDecks);
 
+            BackupSave();
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
         }
 
-        public Hashtable RetrieveHashedSave()
+        public Hashtable RetrieveHashedSaveFromFile()
         {
             string importJson = File.ReadAllText(NoonUtility.GetGameSaveLocation());
             Hashtable htSave = SimpleJsonImporter.Import(importJson);
@@ -77,7 +85,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public SavedCrossSceneState RetrieveSavedCrossSceneState()
         {
-            var htSave = RetrieveHashedSave();
+            var htSave = RetrieveHashedSaveFromFile();
             return dataImporter.ImportCrossSceneState(htSave);
 
         }

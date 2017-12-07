@@ -40,6 +40,7 @@ namespace Noon
         public const string KCONSUMES = "consumes";
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
+        public const string KDECKDEFAULTCARD = "defaultcard";
 
 
         public const string KCHANCE = "chance";
@@ -69,6 +70,11 @@ namespace Noon
             return wholePath;
         }
 
+        public static string GetBackupGameSaveLocation()
+        {
+            string wholePath = Application.persistentDataPath + "\\backup_save.txt";
+            return wholePath;
+        }
 
 
         public static Dictionary<string, int> HashtableToStringIntDictionary(Hashtable table)

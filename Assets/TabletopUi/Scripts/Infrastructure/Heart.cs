@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using Assets.Core.Commands;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Noon;
 
 
 public enum GameSpeed
@@ -17,8 +19,11 @@ public class Heart : MonoBehaviour
     [SerializeField] private Transform allContent;
     private HashSet<TokenAndSlot> outstandingSlotsToFill=new HashSet<TokenAndSlot>();
     private int beatCounter = 0;
+    private int housekeepingCyclesCounter = 0;
     //do major housekeeping every n beats
-    private const int HOUSEKEEPING_CYCLE_BEATS = 20;
+    private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
+    private const int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //ysually, five minutes; number of housekeeping events that should pass before we autosave
+    
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
     private GameSpeed CurrentGameSpeed=GameSpeed.Normal;
@@ -32,7 +37,6 @@ public class Heart : MonoBehaviour
         CancelInvoke(METHODNAME_BEAT);
         usualInterval = startingInterval;
         InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
-        
         IsPaused = false;
   }
 
@@ -66,10 +70,16 @@ public class Heart : MonoBehaviour
             if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
             {
                 beatCounter = 0;
+                housekeepingCyclesCounter++;
                 outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
                     .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
             }
- 
+
+        if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
+        {
+            housekeepingCyclesCounter = 0;
+            Registry.Retrieve<TabletopManager>().SaveGame(false);
+        }
     }
     
 

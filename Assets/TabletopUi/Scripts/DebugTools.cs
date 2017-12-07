@@ -111,7 +111,7 @@ public class DebugTools : MonoBehaviour
 
     public void SaveGame()
     {
-        Registry.Retrieve<TabletopManager>().SaveGame();
+        Registry.Retrieve<TabletopManager>().SaveGame(true);
     }
 
     void ResetDecks()

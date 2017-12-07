@@ -516,7 +516,7 @@ namespace Assets.CS.TabletopUI
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             //try
             //{
-                var htSave = saveGameManager.RetrieveHashedSave();
+                var htSave = saveGameManager.RetrieveHashedSaveFromFile();
                 ClearGameState(heart,storage,tabletopContainer);
                 saveGameManager.ImportHashedSaveToState(tabletopContainer,storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
@@ -530,7 +530,7 @@ namespace Assets.CS.TabletopUI
             heart.ResumeBeating();
         }
 
-        public void SaveGame()
+        public void SaveGame(bool withNotification)
         {
             heart.StopBeating();
 
@@ -544,6 +544,7 @@ namespace Assets.CS.TabletopUI
             //{
                 var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
             saveGameManager.SaveActiveGame(tabletopContainer,Registry.Retrieve<Character>());
+            if(withNotification)
                 notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
             //}
