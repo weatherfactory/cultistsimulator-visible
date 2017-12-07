@@ -112,6 +112,7 @@ namespace Assets.CS.TabletopUI
         {
             var registry = new Registry();
             var compendium = new Compendium();
+            var character=new Character();
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
             SetNextAnimTime(); // sets the first animation for the tabletop Controller
@@ -123,7 +124,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<TabletopManager>(this);
             registry.Register<TabletopObjectBuilder>(tabletopObjectBuilder);
             registry.Register<INotifier>(notifier);
-            registry.Register<Character>(new Character());
+            registry.Register<Character>(character);
 
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
@@ -136,10 +137,17 @@ namespace Assets.CS.TabletopUI
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
                 LoadGame();
             else
+            {
                 SetupNewBoard();
+                var populatedCharacter =Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
+                compendium.ReplaceTokens(populatedCharacter);
+            }
 
-           heart.StartBeating(0.05f);
+            heart.StartBeating(0.05f);
            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+
+            //replace all tokens in elements and recipes with appropriate starting state values.
+  
 
         }
 
@@ -160,20 +168,20 @@ namespace Assets.CS.TabletopUI
 
             tabletopObjectBuilder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(chosenLegacy);
-            SetStartingCharacterInfo(chosenLegacy);
+            SetStartingCharacterInfo(chosenLegacy,CrossSceneState.GetDefunctCharacterName());
             StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());
-
 
             DealStartingDecks();
 
             notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
         }
 
-        private void SetStartingCharacterInfo(Legacy chosenLegacy)
+        private void SetStartingCharacterInfo(Legacy chosenLegacy,string previousCharacterName)
         {
             Character newCharacter = Registry.Retrieve<Character>();
             newCharacter.Name = "[click to name]";
             newCharacter.Profession = chosenLegacy.Label;
+            newCharacter.PreviousCharacterName = previousCharacterName;
         }
 
         private void DealStartingDecks()
@@ -321,6 +329,7 @@ namespace Assets.CS.TabletopUI
         public void EndGame(Ending ending)
         {
             CrossSceneState.SetCurrentEnding(ending);
+            CrossSceneState.SetDefunctCharacter(Registry.Retrieve<Character>());
             var ls=new LegacySelector(Registry.Retrieve<ICompendium>());
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());

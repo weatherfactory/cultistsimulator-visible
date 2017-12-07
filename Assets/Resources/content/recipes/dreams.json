@@ -28,9 +28,11 @@
 	]
 	},
 	{id: "linktreeoflights",
+	actionId:"dream",
 		linked:[{id:"dreamtreeoflights",chance:100}]
 		},
 	{id: "linklightthroughstainedglass",
+	actionId:"dream",
 	linked:[{id:"dreamlightthroughstainedglass",chance:100}]
 	},
 	{
@@ -66,6 +68,7 @@
 	description: "Now I can slough off my flesh, patch by patch, tugging the tendons free like fibres picked from teeth. My skin lies like a shredded blanket. The sun heaves itself above the horizon with a triumphant battle-yell. The light falls like acid on my naked bones. Pain wakes me. My bones will throb for days.",
 	},
 		{id: "nightmarecleansingdawnsuccess",
+		actionId:"dream",
 	effects: {reason: -1,fragmentlantern: 1,fascination: 1},
 		description: "Now I can slough off my flesh, patch by patch, tugging the tendons free like fibres picked from teeth. My skin lies like a shredded blanket. The sun heaves itself above the horizon with a triumphant battle-yell. The light falls like acid on my naked bones. Pain will wake me, and my bones will ache for days, but the Sun's  words are etched on my bones."
 	},
@@ -80,6 +83,7 @@
 	description: "I remember that Hersault wrote of this. I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. This time, I haven't learnt what I hoped to learn - whatever that was.",
 	},
 	{id: "nightmarehersaultsuccess",
+	actionId: "dream",
 	effects: {reason: -1,fragmentknock: 1,dread: 1},
 		description: "I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. But this is the space below."
 	},

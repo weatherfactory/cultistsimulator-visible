@@ -1,16 +1,77 @@
  {"recipes":
  [
- 			{id: "institutephysicianwork",
+ 			{id: "legacyphysicianwork",
 	label: "Work at the Institute",
 		actionId:"work",
 	  requirements: {legacyphysicianjob: 1},
-		effects: { shilling: 3,legacyphysicianjob:-1,institutephysicianjob:1},
-		
+		effects: { shilling: 2,legacyphysicianjob:-1,institutephysicianjob:1,health:1,reason:3},
+alternativerecipes:[{id: "legacyphysicianopenstudy",chance:100,additional:true}],
+        startdescription: "#PREVIOUSCHARACTERNAME# was a - a difficult patient. I had to take some time away, after that business ended. I recorded the things they said, but I have not yet been able to bring myself to revisit my notes.",
+        description: "I've finished early. The Director has been sympathetic. But I must return to work full-time, now.",
+        warmup: 10,
+		craftable:true
+	},
+	
+		{id: "legacyphysicianopenstudy",
+		actionId:"study",
+	label: "Notes in the Case of #PREVIOUSCHARACTERNAME#",
+	startdescription: "About those notes OH YIKES",
+	description: "Here they are YIKES YIKES. [<b>Time</b> is now passing.]",
+	effects: {legacyphysiciannotes:1},
+	alternativerecipes:[{id: "needs",chance:100,additional:true}],
+	warmup:10
+	},
+			{id: "legacyphysicianstudynotes",
+		actionId:"study",
+	requirement: {legacyphysiciannotes:1},
+	label: "Studying notes in the Case of #PREVIOUSCHARACTERNAME#",
+	startdescription: "let's read NOTES",
+	description: "Morland? also I CAN'T STOP THINKING ABOUT THOSE NOTES",
+	effects: {legacyphysiciannotes:-1,mapbookdealer:1},
+	alternativerecipes:[{id: "legacyphysicianopendream",chance:100,additional:true}],
+	warmup:30,
+	comments: "The book dealer can studied through the generic intro; there's a generic openexplore there",
+	craftable:true
+	},
+		{id: "legacyphysicianopendream",
+		actionId:"dream",
+	label: "Dreams about Light",
+	startdescription:"Dreaming about light??",
+	description: "brief satisfaction re the Glory",
+	effects: {contentment:1},
+	alternativerecipes:[{id: "legacyphysicianhook",chance:100,additional:true}],
+	warmup:10
+	},
+	{id:"legacyphysicianhook",
+	actionId:"craving",
+	label:"Belief?",
+	startdescription:"THIS WILL DEVOUR MY REASON",
+	description: "..",
+	alternativerecipes:[{id: "legacyphysicianhookfulfilment",chance:100}],
+	slots: {"Temptation": {required: {reason:1},consumes:true}},
+	linked: [{id: "legacyphysicianhook",chance:100}],
+	warmup:60
+	},
+	{id:"legacyphysicianhookfulfilment",
+	actionId:"craving",
+	label:"Here we go",
+	requirements: {reason:1},
+	startdescription: "AW YIS this will display BEFOPRE",
+	description: "got the habit",
+	effects:{notionenlightenment:1,passion:1,fragmentlantern:1},
+	alternativerecipes:[{id: "legacyphysicianopentalk",chance:100,additional:true}],
+	},
+	
+{id: "legacyphysicianopentalk",
+label: "Kindred Spirits",
+actionId: "talk",
+startdescription:"one of the patients talks to me",
+description: "we have an understanding now",
+deckeffect: "acquaintances",
+warmup:60,
+craftable: false
+},
 
-        startdescription: "There is a dank and clinging smell to the Institute halls that never leaves one. Perhaps it is the paint. Perhaps it is the patients. Perhaps it is something in the walls.",
-        description: "I have done some good. My patients are quieter than when I began.",
-        warmup: 10
-	}
 	
 ]
 }

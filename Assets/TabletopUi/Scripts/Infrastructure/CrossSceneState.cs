@@ -11,13 +11,6 @@ using OrbCreationExtensions;
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
 
-    public class SavedCrossSceneState
-    {
-        public Ending CurrentEnding;
-        public List<Legacy> AvailableLegacies=new List<Legacy>();
-
-
-    }
     /// <summary>
     /// AFAICT there is no way to pass data between scenes on a load, except with a static object.
     /// </summary>
@@ -26,6 +19,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private static Ending _currentEnding;
         private static List<Legacy> _availableLegacies;
         private static Legacy _chosenLegacy;
+        //record the previous character when ending a game, so we can use their deets for setting the scene / recording in ongoing save
+        private static Character _defunctCharacter;
 
 
 
@@ -34,8 +29,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var ht=new Hashtable();
             AddCurrentEndingToHashtable(ht);
             AddAvailableLegaciesToHashtable(ht);
+            AddDefunctCharacterToHashtable(ht);
 
             return ht;
+        }
+
+        private static void AddDefunctCharacterToHashtable(Hashtable ht)
+        {
+            var c = GetDefunctCharacter();
+            if (c != null)
+            {
+                var htDC = new Hashtable {{SaveConstants.SAVE_NAME, c.Name}};
+                ht.Add(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS, htDC);
+            }            
         }
 
         private static void AddCurrentEndingToHashtable(Hashtable ht)
@@ -65,6 +71,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if(ending==null)
                 throw new ApplicationException("Guard clause: use ClearEndingAndLegacies to set ending to null");
             _currentEnding = ending;
+        }
+
+        public static string GetDefunctCharacterName()
+        {
+            if (_defunctCharacter != null)
+                return _defunctCharacter.Name;
+            else
+            return String.Empty;
+        }
+
+
+        public static Character GetDefunctCharacter()
+        {
+            return _defunctCharacter;
+        }
+
+        public static void SetDefunctCharacter(Character c)
+        {
+            _defunctCharacter = c;
         }
 
         public static Ending GetCurrentEnding()

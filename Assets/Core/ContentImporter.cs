@@ -307,7 +307,10 @@ public class ContentImporter
                 r.Label = htEachRecipe[NoonConstants.KLABEL] == null ? r.Id : htEachRecipe[NoonConstants.KLABEL].ToString();
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
                 r.ActionId= htEachRecipe[NoonConstants.KACTIONID]==null ? null : htEachRecipe[NoonConstants.KACTIONID].ToString();
-               
+                if (r.ActionId == null)
+                    LogProblem(r.Id + " has no actionId specified");
+
+
                 if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
                     r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
 

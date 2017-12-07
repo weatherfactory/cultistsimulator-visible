@@ -40,6 +40,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htDecks = htSave.GetHashtable(SaveConstants.SAVE_DECKS);
 
             ImportCharacter(storage, htCharacter);
+            //update the compendium text with tokens for this character
+            compendium.ReplaceTokens(storage);
 
             ImportTabletopElementStacks(tabletopContainer, htElementStacks);
 
@@ -54,6 +56,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if(htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
                 storage.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
 
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME))
+                storage.PreviousCharacterName = htCharacter[SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME].ToString();
+
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
                 storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
         }
@@ -62,9 +67,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public SavedCrossSceneState ImportCrossSceneState(Hashtable htSave)
         {
             SavedCrossSceneState state=new SavedCrossSceneState();
+            
+            //load current ending, if it exists
             if (htSave.ContainsKey(SaveConstants.SAVE_CURRENTENDING))
               state.CurrentEnding =compendium.GetEndingById(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
 
+            //load legacies, if they exist
             var htLegacies = htSave.GetHashtable(SaveConstants.SAVE_AVAILABLELEGACIES);
             
             foreach (var k in htLegacies.Keys)
@@ -72,8 +80,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 Legacy l = compendium.GetLegacyById(k.ToString());
                 if(l!=null)
                     state.AvailableLegacies.Add(l);
-
             }
+
+            //load previous character state, if it exists
+            var htDefunctCharacter = htSave.GetHashtable(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS);
+            if (htDefunctCharacter != null)
+            {
+                Character pc=new Character();
+                pc.PreviousCharacterName = htDefunctCharacter.GetValue(SaveConstants.SAVE_NAME)
+                    .ToString();
+                state.DefunctCharacter = pc;
+            }
+
 
             return state;
         }

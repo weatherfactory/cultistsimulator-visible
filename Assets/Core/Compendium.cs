@@ -22,6 +22,7 @@ public interface ICompendium
     Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
+    Dictionary<string,Element> GetAllElementsAsDictionary();
     Element GetElementById(string elementId);
     Boolean IsKnownElement(string elementId);
     List<IVerb> GetAllVerbs();
@@ -34,6 +35,7 @@ public interface ICompendium
 
     List<IDeckSpec> GetAllDeckSpecs();
     IDeckSpec GetDeckSpecById(string id);
+    void ReplaceTokens(IGameEntityStorage populatedCharacter);
 }
 
 public class Compendium : ICompendium
@@ -103,9 +105,13 @@ public class Compendium : ICompendium
         if (_recipes.Count(r=> r.Id==recipeId) > 1)
             throw new ApplicationException("Found more than one recipe with id " + recipeId);
 
-        var recs = _recipes.Where(r => r.Id == recipeId).ToList();
 
         return _recipes.SingleOrDefault(r => r.Id == recipeId);   
+    }
+
+    public Dictionary<string,Element> GetAllElementsAsDictionary()
+    {
+        return _elements;
     }
 
     public Element GetElementById(string elementId)
@@ -235,5 +241,24 @@ public class Compendium : ICompendium
                 "beta, this might be considered a victory.]", "gloverandgloverjob");
 
         return new Ending("default", "IT IS FINISHED","This one is done.", "health");
+    }
+
+    public void ReplaceTokens(IGameEntityStorage populatedCharacter)
+    {
+        foreach (var r in _recipes)
+        {
+            r.Label = populatedCharacter.ReplaceTextFor(r.Label);
+            r.StartDescription = populatedCharacter.ReplaceTextFor(r.StartDescription);
+            r.Description = populatedCharacter.ReplaceTextFor(r.Description);
+        }
+
+        foreach (var k in _elements.Keys)
+        {
+            var e = _elements[k];
+            e.Label = populatedCharacter.ReplaceTextFor(e.Label);
+            e.Description = populatedCharacter.ReplaceTextFor(e.Description);
+
+        }
+       
     }
 }

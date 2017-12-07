@@ -11,6 +11,7 @@ namespace Assets.Core.Interfaces
         List<IDeckInstance> DeckInstances { get; set; }
         string Name { get; set; }
         string Profession { get; set; }
-
+        string PreviousCharacterName { get; set; }
+        string ReplaceTextFor(string text);
     }
 }

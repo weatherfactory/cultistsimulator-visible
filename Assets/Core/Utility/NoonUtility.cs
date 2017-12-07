@@ -47,6 +47,8 @@ namespace Noon
         public const string KCHARACTERTITLE = "title";
         public const string KCHARACTERFIRSTNAME= "firstname";
         public const string KCHARACTERLASTNAME = "lastname";
+
+        public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
     }
     public class NoonUtility
     {

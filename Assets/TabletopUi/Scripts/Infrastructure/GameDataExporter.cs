@@ -45,6 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htCharacter=new Hashtable();
             htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
             htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
+            htCharacter.Add(SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME,character.PreviousCharacterName);
 
             return htCharacter;
         }

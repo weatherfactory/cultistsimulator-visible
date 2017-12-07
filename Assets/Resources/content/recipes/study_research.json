@@ -214,11 +214,13 @@
 	linked: [{id:"studyresearchtick",chance:100}]
 	},
 	{id: "studyresearchearlyconclusion",
+	actionId: "study",
 	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
 	requirements: {insight: 3},
 	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
 	},
 	{id: "studyresearchconclusion",
+	actionId: "study",
 	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
 	alternativerecipes: [
 	{id: "studyresearchmaxinsight",chance:100},

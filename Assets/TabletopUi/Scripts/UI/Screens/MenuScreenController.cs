@@ -80,6 +80,8 @@ public class MenuScreenController : MonoBehaviour {
             else
             {
                 //we left the game from the game over or legacy screen: go back to choose a legacy.
+                //Retrieve the saved state, and then selectively populate properties in the current state...
+                //this is ugly: it could use appropriate methods
                 var savedCrossSceneState = saveGameManager.RetrieveSavedCrossSceneState();
 
                 //this is essential. If we earlier left the game in the legacy screen, we're about to go back there, 
@@ -89,6 +91,9 @@ public class MenuScreenController : MonoBehaviour {
             //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
                 if (savedCrossSceneState.CurrentEnding != null)
                     CrossSceneState.SetCurrentEnding(savedCrossSceneState.CurrentEnding);
+
+                if(savedCrossSceneState.DefunctCharacter!=null)
+                    CrossSceneState.SetDefunctCharacter(savedCrossSceneState.DefunctCharacter);
 
                 sceneToLoad = SceneNumber.NewGameScene;
 
