@@ -22,6 +22,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField]
         TextMeshProUGUI _descriptionTxt;
 
+        [SerializeField] private Image CardToDisplay;
+
         public void Awake()
         {
 			canvasGroupFader.Show();

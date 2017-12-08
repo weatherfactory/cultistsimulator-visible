@@ -39,9 +39,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //copies old version in case of corruption
         private void BackupSave()
         {
-            File.Copy(NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(),true);
-
-        }
+            if(DoesGameSaveExist()) //otherwise we can't copy it
+                File.Copy(NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(),true);
+       }
         
         /// <summary>
         /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game

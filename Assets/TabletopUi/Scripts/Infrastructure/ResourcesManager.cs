@@ -7,14 +7,6 @@ using UnityEngine;
 public class ResourcesManager: MonoBehaviour
     {
 
-    public static Sprite GetSpriteForVerb(string verbId)
-    {
-        var sprite=Resources.Load<Sprite>("icons40/verbs/" + verbId);
-        if (sprite == null)
-            return Resources.Load<Sprite>("icons40/verbs/x");
-        else
-            return sprite;
-    }
 	public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
 
