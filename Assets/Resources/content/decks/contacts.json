@@ -7,8 +7,8 @@
 		"rose_a",
 		"leo_a",
 		"neville_a",
-		"victor_a",
-defaultcard: "mistakenidentity"	]
+		"victor_a"],
+defaultcard: "mistakenidentity"	
 	},
 {id: "scholarpatrons",
 	spec:["aladim",
@@ -16,8 +16,38 @@ defaultcard: "mistakenidentity"	]
 	"jannings"],
 defaultcard: "mistakenidentity"	},
 	
-	{id: "scholarcommissions",
-	spec:["commissionarticlesecrethistory"]
-	}
+	{id: "aladimcommissions",
+	spec:["commissionarticlesecrethistory",
+	"commissionarticlesecrethistoryb",
+	"commissionarticlesecrethistoryc",
+	"commissionarticlelantern",
+	"commissionarticlelanternb",
+	"commissionarticlelanternc"]
+	,
+	defaultcard:"commissionarticlesecrethistory"},
+	
+		{id: "bechetcommissions",
+	spec:["commissionarticleforge",
+	"commissionarticleforgeb",
+	"commissionarticleforgec",
+	"commissionarticlegrail",
+	"commissionarticlegrailb",
+	"commissionarticlegrailc",
+	"commissionarticlemoth",
+	"commissionarticlemothb",
+	"commissionarticlemothc"]
+	,
+	defaultcard:"commissionarticlegrail},
+
+		{id: "janningscommissions",
+	spec:["commissionarticleedge",
+	"commissionarticleedgeb",
+	"commissionarticleedgec",
+	"commissionarticleheart",
+	"commissionarticleheartb",
+	"commissionarticleheartc"]
+	,
+	defaultcard:"commissionarticleedge"}
+	
 	]
 }

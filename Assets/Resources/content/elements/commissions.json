@@ -3,7 +3,7 @@
 		 {
         id: "commissionarticlesecrethistory",
             label: "Commission: Secret Histories",
-            aspects: {},
+            aspects: {commission:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the secret histories of the world. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:2}}},
 
@@ -12,7 +12,7 @@
 				 {
         id: "commissionarticlesecrethistoryb",
             label: "Commission: Secret Histories (Substantial)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for a substantial treatise on the secret histories of the world.[Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:4}}},
 
@@ -21,7 +21,7 @@
 				 {
         id: "commissionarticlesecrethistoryc",
             label: "Commission: Secret Histories (Extensive)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for particularly obscure information on the secret histories of the world. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:6}}},
 
@@ -30,8 +30,8 @@
 		{
 		
 		        id: "commissionarticlelantern",
-            label: "Commission: {lorename}",
-            aspects: {},
+            label: "Commission: Lantern",
+            aspects: {commission:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the severe mysteries of the Lantern. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,lantern:2}}},
 
@@ -40,8 +40,8 @@
 		{
 		
 		        id: "commissionarticlelanternb",
-            label: "Commission: {lorename} (Substantial)",
-            aspects: {},
+            label: "Commission: Lantern (Substantial)",
+            aspects: {commission:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with a substantial discussion of the severe mysteries of the Lantern[Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,lantern:4}}},
 
@@ -50,8 +50,8 @@
 		{
 		
 		        id: "commissionarticlelanternc",
-            label: "Commission: {lorename} (Extensive)",
-            aspects: {},
+            label: "Commission: Lantern (Extensive)",
+            aspects: {commission:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with an extensive investigation of the severe mysteries of the Lantern[Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,lantern:6}}},
 
@@ -62,7 +62,7 @@
 		
 		        id: "commissionarticleforge",
             label: "Commission: Forge",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something inspired by the principle of theForge.[Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,forge:2}}},
 
@@ -72,7 +72,7 @@
 		
 		        id: "commissionarticleforgeb",
             label: "Commission: Forge (Substantial)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something more substantial on the Forge.[Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,forge:4}}},
 
@@ -82,7 +82,7 @@
 		
 		        id: "commissionarticleforgec",
             label: "Commission: Forge (Extensive)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something extensive, or indeed intense, on the change and the suffering the Forge brings. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,forge:6}}},
 
@@ -93,7 +93,7 @@
 		
 		        id: "commissionarticlegrail",
             label: "Commission: Grail",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She would like something titillating about the Red Grail. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,grail:2}}},
 
@@ -103,7 +103,7 @@
 		
 		        id: "commissionarticlegrailb",
             label: "Commission: Grail (Substantial)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She's interested in a more substantial response to the Red Grail and its allure. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,grail:4}}},
 
@@ -113,7 +113,7 @@
 		
 		        id: "commissionarticlegrailc",
             label: "Commission: Grail (Extensive)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She wants something extensive and 'unflinching' on the Red Grail. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,grail:6}}},
 
@@ -125,7 +125,7 @@
 		
 		        id: "commissionarticlemoth",
             label: "Commission: Moth",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. In particular, she wants something suitably intriguing about the principle called Moth. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,moth:2}}},
 
@@ -135,7 +135,7 @@
 		
 		        id: "commissionarticlemothb",
             label: "Commission: Moth (Substantial)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She wants a substantially enigmatic piece on Moth. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,moth:4}}},
 
@@ -145,7 +145,7 @@
 		
 		        id: "commissionarticlemothc",
             label: "Commission: Moth (Extensive)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like an extensive elaboration of Moth and its enigmas. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,moth:6}}},
 
@@ -157,7 +157,7 @@
 		
 		        id: "commissionarticleheart",
             label: "Commission: Heart",
-            aspects: {},
+            aspects: {commission:1},
             description: "Count Gottlob will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the Heart. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:2}}},
 
@@ -167,7 +167,7 @@
 		
 		        id: "commissionarticleheartb",
             label: "Commission: Heart (Substantial)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Count Gottlob will pay for information of interest. This time, he'd like substantial research on the corporal mysteries of the Heart. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:4}}},
 
@@ -177,7 +177,7 @@
 		
 		        id: "commissionarticleheartc",
             label: "Commission: Heart (Extensive)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Count Gottlob will pay for information of interest. This time, he'd like extensive research on the corporal mysteries of the Heart.[ Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:6}}},
 
@@ -187,7 +187,7 @@
 		
 		        id: "commissionarticleedge",
             label: "Commission: Edge",
-            aspects: {},
+            aspects: {commission:1},
             description: "Count Gottlob will pay for information of interest. This time, he'd like whatever you can assemble on the practices of the Edge. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:2}}},
 
@@ -197,7 +197,7 @@
 		
 		        id: "commissionarticleedgeb",
             label: "Commission: Edge (Substantial)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Count Gottlob will pay for information of interest. This time, he'd like substantial notes on the practices of the Edge. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:4}}},
 
@@ -207,7 +207,7 @@
 		
 		        id: "commissionarticleedgec",
             label: "Commission: Edge (Extensive)",
-            aspects: {},
+            aspects: {commission:1},
             description: "Count Gottlob will pay for information of interest. This time, he'd like an extensive work on the practices of the Edge. [Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:6}}},
 

@@ -121,13 +121,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htEachDeck = htDeckInstances.GetHashtable(k);
 
                 IDeckSpec spec = compendium.GetDeckSpecById(k.ToString());
-                IDeckInstance deckInstance =  new DeckInstance(spec);
+
+                if (spec == null)
+                    NoonUtility.Log("no deckspec found for saved deckinstance " + k.ToString());
+                else
+                { 
+                    IDeckInstance deckInstance =  new DeckInstance(spec);
 
                 //this is pretty fragile. It assumes that the keys are contiguous integers starting at 1
                 for(int i=1;i<=htEachDeck.Count;i++)
                     deckInstance.Add(htEachDeck[i.ToString()].ToString());
 
                 storage.DeckInstances.Add(deckInstance);
+                }
             }
         }
 
