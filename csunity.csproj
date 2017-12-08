@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -237,6 +239,7 @@
     <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
     <Compile Include="Assets\Core\Entities\Character.cs" />
     <Compile Include="Assets\Core\Entities\CreatedVerb.cs" />
+    <Compile Include="Assets\Core\Entities\DeckInstance.cs" />
     <Compile Include="Assets\Core\Entities\DeckSpec.cs" />
     <Compile Include="Assets\Core\Entities\Element.cs" />
     <Compile Include="Assets\Core\Entities\ElementStacksManager.cs" />

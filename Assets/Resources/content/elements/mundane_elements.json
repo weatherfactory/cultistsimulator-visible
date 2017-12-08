@@ -1,5 +1,16 @@
 {"elements":
     [
+	{id: "rumour",
+	label: "Peculiar Rumour",
+	description: "This might mean something. It might mean nothing.",
+	lifetime: 60
+	},
+		{id: "mistakenidentity",
+	label: "A Case of Mistaken Identity",
+	aspects: {mortal:1},
+	description: "This isn't who you hoped for, after all. They're no-one of particular importance, and eventually they'll pass from your memory. Perhaps there is no-one else available that you'd care to meet.",
+	lifetime: 60
+	},
           {
         id: "shilling",
             label: "Funds",

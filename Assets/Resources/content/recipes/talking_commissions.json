@@ -23,6 +23,52 @@ warmup: 10,
 craftable: true,
 aspects: {commissionfulfilled:1}
 },
+{id: "getcommissionaladim",
+label:"Get a Commission from Dr al-Adim",
+actionId: "talk",
+requirements: {aladimready: 1},
+startdescription: "The doctor would like my help with his research.",
+description: "Here's what he needs.",
+warmup: 10,
+deckeffect: "scholarcommissions",
+aspects: {commissiongiven:1},
+craftable: true
+
+},
+{id: "fulfilcommissionaladimsecrethistory",
+label:"Fulfil a Commission for Dr al-Adim",
+actionId: "talk",
+requirements: {commissionarticlesecrethistory: 1,aladim:1,article:1,secrethistories:1},
+effects: {mystique:1,article:-1},
+startdescription: "I have what the doctor requested.",
+description: "I've received my pay.",
+warmup: 10,
+craftable: true,
+aspects: {commissionfulfilled:1}
+},
+{id: "getcommissionaladim",
+label:"Get a Commission from Dr al-Adim",
+actionId: "talk",
+requirements: {aladimready: 1},
+startdescription: "The doctor would like my help with his research.",
+description: "Here's what he needs.",
+warmup: 10,
+deckeffect: "scholarcommissions",
+aspects: {commissiongiven:1},
+craftable: true
+
+},
+{id: "fulfilcommissionaladimsecrethistory",
+label:"Fulfil a Commission for Dr al-Adim",
+actionId: "talk",
+requirements: {commissionarticlesecrethistory: 1,aladim:1,article:1,secrethistories:1},
+effects: {mystique:1,article:-1},
+startdescription: "I have what the doctor requested.",
+description: "I've received my pay.",
+warmup: 10,
+craftable: true,
+aspects: {commissionfulfilled:1}
+},
 
 }
 ]
