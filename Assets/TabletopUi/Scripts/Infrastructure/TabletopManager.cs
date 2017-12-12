@@ -520,7 +520,7 @@ namespace Assets.CS.TabletopUI
                 ClearGameState(heart,storage,tabletopContainer);
                 saveGameManager.ImportHashedSaveToState(tabletopContainer,storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
-                notifier.ShowNotificationWindow("WE ARE WHAT WE WERE", " - we have loaded the game.");
+                notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
             //}
             //catch (Exception e)

@@ -216,6 +216,11 @@ public class Compendium : ICompendium
         if (endingFlag == "visionsending")
             return new Ending(endingFlag, "GLORY",
                 "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "fascination");
+
+        if (endingFlag == "wintersacrifice")
+            return new Ending(endingFlag, "GOING QUIETLY",
+                "In the upper room of the house where I am taken, my breath fogs and my eyes grow soft. The light in the room is the light at the end of the sun. I am a beautiful ending.", "winter");
+
         if (endingFlag == "powerminor")
             return new Ending(endingFlag,"WHAT IS BELOW CAN'T ESCAPE WHAT IS ABOVE",
                 "The Red Grail is the Hour of blood and of birth. It has touched me, and I've gained a little of its power. If I had more time, I could" +

@@ -143,10 +143,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 var htSituationValues =htSituations.GetHashtable(locationInfo);
 
-                IVerb situationVerb = compendium.GetVerbById(htSituationValues[SaveConstants.SAVE_VERBID].ToString());
-
                 string recipeId = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_RECIPEID);
                 var recipe = compendium.GetRecipeById(recipeId);
+
+                string verbId= htSituationValues[SaveConstants.SAVE_VERBID].ToString();
+                
+                IVerb situationVerb = compendium.GetVerbById(verbId);
+
+                //This caters for the otherwise troublesome situation where a completed situation (no recipe) has been based on a created verb (no verb obj).
+                if (situationVerb == null && recipe==null)
+                    situationVerb = new CreatedVerb(verbId, "","");
 
                 var command = new SituationCreationCommand(situationVerb, recipe, (SituationState)Enum.Parse(typeof(SituationState), htSituationValues[SaveConstants.SAVE_SITUATIONSTATE].ToString()));
                 command.TimeRemaining = TryGetNullableFloatFromHashtable(htSituationValues, SaveConstants.SAVE_TIMEREMAINING);

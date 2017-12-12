@@ -1,0 +1,67 @@
+{
+"recipes": [
+{id: "poppyoffer",
+label:"Speak to Poppy Lascelles",
+actionId: "talk",
+requirements: {poppyready: 1},
+slots: {"Consent":{required: {passion:1,reason:1}}},
+alternativerecipes: [{id: "poppyofferaccept",chance:100},
+{id:"poppyofferquery",chance:100}],
+startdescription: "Poppy has an offer for you. All you have to do is pass the offer on to someone else, eventually. [Add <b>Passion</b> to accept, or <b>Reason</b> to interrogate her further.]",
+description: "You didn't take up Poppy's offer.",
+warmup: 60,
+craftable: true
+},
+{id: "poppyofferaccept",
+label: "Accept Poppy's Offer"
+actionId: "talk",
+requirements: {passion:1},
+startdescription: "'Yes, that's exactly right. I'll come back tonight.'",
+description: "You accepted Poppy's offer. She'll see you again in the Season of Rags.",
+effects: {compensation:1,compensationb:1,compensationc:1,poppyready:-1},
+alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
+},
+{id: "poppyofferquery",
+label: "Question Poppy closely"
+actionId: "talk",
+requirements: {reason:1},
+startdescription: "'Make an offer to someone else'?",
+description: "Her patron likes a happy ending, when the Season of Rags comes round.",
+effects: {influencewinter:1}
+},
+{
+id:"poppytimebomb",
+label:"Poppy's Request",
+actionId:"poppytime",
+startdescription: "We'll see.",
+description: "Okay",
+linked: [{id:"poppysafefornow",chance:70},
+{id:"poppywantssoul",chance:100}],
+warmup:10
+},
+{id:"poppysafefornow",
+actionId: "poppytime",
+label:"Silence from Poppy",
+startdescription:"Nothing, this time",
+description: ".",
+linked: [{id: "poppytimebomb",chance:100}]},
+warmup:10
+
+{id:"poppywantssoul",
+label:"A Friendly Visit from Poppy",
+actionId: "poppytime",
+slots: {"Sacrifice":{required: {follower:1},greedy:true}},
+alternativerecipes: [{id:"poppysatiated",chance:100}],
+warmup:60,
+ending: "wintersacrifice"
+},
+{id:"poppysatiated",
+actionId: "poppytime",
+label:"An Amicable Conclusion",
+requirements: {follower:1},
+startdescription: "This'll be okay, then",
+description: "That was okay, then",
+effects: {poppy:1,influencewinter:1}
+}
+]
+}
