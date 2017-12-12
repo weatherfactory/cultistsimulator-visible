@@ -100,7 +100,7 @@
         actionId: "work",
         requirements: {disciple: 1},
         effects: {
-            shilling:  2,
+            funds:  2,
             disciple: 1
         },
         startdescription: "I'll send them to work in my place, and receive a portion of the proceeds.",
@@ -114,7 +114,7 @@
         actionId: "work",
         requirements: {believer: 1},
         effects: {
-            shilling: 1,
+            funds: 1,
             believer: 1
         },
         startdescription: "I'll send them to work in my place, and receive a portion of the proceeds.",
@@ -128,7 +128,7 @@
         actionId: "work",
         requirements: {enthusiast: 1},
         effects: {
-            shilling: 1
+            funds: 1
         },
         startdescription: "I can press them for donations, although it will end their enthusiasm.",
         description: "So reluctant to contribute so little to the Work! I shan't miss them.",
@@ -143,7 +143,7 @@
         alternativerecipes: [{id: "labourwithromanticinterestpresent", chance:100},
             {id: "labourmeetromanticinterest", chance:10}],
         effects: {
-            shilling: 3
+            funds: 3
         },
         startdescription: "Petty, hateful work for petty, meagre pay.",
         description: "I am exhausted, but I've earned my pay.",
@@ -430,7 +430,7 @@
         actionId: "talk",
         requirements: {lantern: 1},
         effects: {
-            shilling: 1
+            funds: 1
         },
         startdescription: "I know enough to cheer the gullible; or alarm them.",
         description: "My clients are not generous.",
@@ -511,14 +511,14 @@
         craftable: true
     },
     {
-        id: "exploreshilling",
+        id: "explorefunds",
         label: "Roam the Junk-Shops and Flea-Markets",
         actionId: "explore",
-        requirements: {shilling: 1},
+        requirements: {funds: 1},
         effects: {
         },
-        alternativerecipes: [{id: "exploreshillingcinnabar", chance:30},
-            {id: "exploreshillingfistulous", chance:43}],
+        alternativerecipes: [{id: "explorefundscinnabar", chance:30},
+            {id: "explorefundsfistulous", chance:43}],
         startdescription: "I'm unlikely to find anything valuable. But one never knows.",
         description: "What's this, now?",
         warmup: 10,

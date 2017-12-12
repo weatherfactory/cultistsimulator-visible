@@ -18,7 +18,7 @@
 	  requirements: {gloverandgloverjuniorjob: 1},
 	          alternativerecipes:
 		[{id: "gloverandglover_diligence", chance:100}],
-		effects: { shilling: 1},
+		effects: { funds: 1},
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
         description: "The clerks file out in silence. I am free for now.",
@@ -41,7 +41,7 @@
 		[{id: "gloverandgloverjunior_diligence_promotion", chance:70},
 		{id: "gloverandglover_diligence_promotion", chance:30},
 		],
-		effects: { shilling: 1},
+		effects: { funds: 1},
 	actionId:"work",
         startdescription: "I will work whatever overtime the elder Glover requires. Perhaps he'll appreciate it.",
         description: ".",
@@ -52,7 +52,7 @@
 		{id: "gloverandgloverjunior_diligence_promotion",
 	label: "A Promotion!",
 	  requirements: {gloverandgloverjuniorjob: 1,reason:1},
-		effects: { shilling: 3, gloverandgloverjuniorjob: -1, gloverandgloverjob: 1},
+		effects: { funds: 3, gloverandgloverjuniorjob: -1, gloverandgloverjob: 1},
 	actionId:"work",
         startdescription: "",
         description: "The elder Glover has called me into his office to congratulate me on my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion. My new position is better paid, and the desk stands by the street window.",
@@ -63,7 +63,7 @@
 	  requirements: {gloverandgloverjob: 1},
 	          alternativerecipes:
 		[{id: "gloverandglover_diligence_promotion", chance:100}],
-		effects: { shilling: 2},
+		effects: { funds: 2},
 	actionId:"work",
         startdescription: "I work longer hours now, but they're better-paid.",
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
@@ -82,7 +82,7 @@
 			{id: "gloverandglover_diligence_promotion",
 	label: "Extra Hours at Glover & Glover",
 	  	  requirements: {gloverandgloverjob: 1,reason:2},
-		effects: { shilling: 2,gloverandgloverjob: -1, gloverandgloverseniorjob: 1},
+		effects: { funds: 2,gloverandgloverjob: -1, gloverandgloverseniorjob: 1},
 	actionId:"work",
         startdescription: "",
         description: "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for him.",
@@ -91,7 +91,7 @@
 			{id: "gloverandgloverseniorwork",
 	label: "Work at Glover & Glover",
 	  requirements: {gloverandgloverseniorjob: 1},
-		effects: { shilling: 3},
+		effects: { funds: 3},
 		
 	actionId:"work",
         startdescription: "Curl my hands into the correct shapes, and begin.",
@@ -112,7 +112,7 @@
 	{id: "institutephysicianwork",
 	label: "Work at the Institute",
 	  requirements: {institutephysicianjob: 1},
-		effects: { shilling: 2},
+		effects: { funds: 2},
 	actionId:"work",
         startdescription: "There is a dank and clinging smell to the Institute halls that never quite leaves one. Perhaps it is the paint. Perhaps it is the patients. Perhaps it is something in the walls.",
         description: "I have done some good. My patients are quieter than when I began.",
@@ -127,7 +127,7 @@
         actionId: "work",
         requirements: {health: 1},
         effects: {
-            shilling: 1
+            funds: 1
         },
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
@@ -143,7 +143,7 @@
         effects: {
             health:-1,
 			injury: 1,
-			shilling:1
+			funds:1
         },
         startdescription: ".",
         description: "I'm injured! I'll hobble painfully home with my wretched pay.",
@@ -180,7 +180,7 @@
         label: "I've sold a painting!",
         actionId: "work",
         requirements: {},
-        effects: {shilling: 2, contentment:1, mystique: 1},
+        effects: {funds: 2, contentment:1, mystique: 1},
         startdescription: ".",
         description: "I've found a customer! She'll probably hang it in her spare bedroom and never look at it again. But her money is good.",
         warmup: 0,

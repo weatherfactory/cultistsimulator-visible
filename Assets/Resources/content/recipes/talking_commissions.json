@@ -15,7 +15,7 @@ craftable: true
 {id: "fulfilcommissionaladimsecrethistory",
 label:"Fulfil a Commission for Dr al-Adim",
 actionId: "talk",
-requirements: {commission: 1,bechet:1,article:1},
+requirements: {commission: 1,aladim:1,article:1},
 effects: {mystique:1,article:-1},
 startdescription: "I have what the doctor requested.",
 description: "I've received my pay.",

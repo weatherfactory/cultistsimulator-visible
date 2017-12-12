@@ -21,7 +21,7 @@
 		slots: {
 				"provisions":
 					{
-					required: {shilling: 1},
+					required: {funds: 1},
 					forbidden: {},
 				greedy: true
 					}
@@ -48,9 +48,9 @@
         id: "sustenance",
         label: "Sustenance",
         actionId: "x",
-        requirements: {shilling: 1},
+        requirements: {funds: 1},
         effects: {
-            shilling: -1,
+            funds: -1,
             hungry: -1
         },
         startdescription: "-",
@@ -179,7 +179,7 @@
     },
     {
         id: "spineclique",
-        label: "The beginnings of a Clique [needs Enthusiasts and Shillings]",
+        label: "The beginnings of a Clique [needs Enthusiasts and fundss]",
         actionId: "x",
         requirements: {},
         effects: {
@@ -198,12 +198,12 @@
         actionId: "x",
         requirements: {
             enthusiast: 1,
-            shilling: 1
+            funds: 1
         },
         effects: {
             enthusiast: -1,
             believer: 1,
-            shilling: -1
+            funds: -1
         },
         alternativerecipes: [{id: "cliquecomplete", chance:100}],
         startdescription: "Clique increase startdesc",
@@ -254,7 +254,7 @@
         effects: {
             believer: -1,
             disciple: 1,
-            shilling: 2,
+            funds: 2,
             reason: -2,
             health: -2
         },
@@ -362,7 +362,7 @@
         label: "-",
         actionId: "x",
         requirements: {},
-        effects: {shilling: 1
+        effects: {funds: 1
         },
         startdescription: "-",
         description: "You are a figure of eccentric menace. An admirer has sent you a small gift.",
@@ -410,7 +410,7 @@ startdescription: "-",
     craftable: false
 },
     {
-        id: "exploreshillingcinnabar",
+        id: "explorefundscinnabar",
         label: "-",
         actionId: "x",
         requirements: {},
@@ -423,7 +423,7 @@ startdescription: "-",
         craftable: false
     },
     {
-        id: "exploreshillingfistulous",
+        id: "explorefundsfistulous",
         label: "-",
         actionId: "x",
         requirements: {},
@@ -468,7 +468,7 @@ startdescription: "-",
         actionId: "work",
         requirements: {romanticattention: 1},
         effects: {
-            shilling: 3
+            funds: 3
         },
         startdescription: "Petty, hateful work for petty, meagre pay.",
         description: "I am exhausted, but I've earned my pay.  And there is someone here who never fails to share a smile.",
@@ -480,7 +480,7 @@ startdescription: "-",
         actionId: "work",
         requirements: {ordinarylife: 1},
         effects: {
-            shilling: 3,
+            funds: 3,
             romanticattention: 1
         },
         startdescription: "Petty, hateful work for petty, meagre pay.",

@@ -4,7 +4,7 @@
 	label: "Work at the Institute",
 		actionId:"work",
 	  requirements: {legacyphysicianjob: 1},
-		effects: { shilling: 2,legacyphysicianjob:-1,institutephysicianjob:1,health:1,reason:3},
+		effects: { funds: 2,legacyphysicianjob:-1,institutephysicianjob:1,health:1,reason:3},
 alternativerecipes:[{id: "legacyphysicianopenstudy",chance:100,additional:true}],
         startdescription: "#PREVIOUSCHARACTERNAME# was a - a difficult patient. I had to take some time away, after that business ended.",
         description: "I've finished early. The Director has been sympathetic. But I must return to work full-time, now.",

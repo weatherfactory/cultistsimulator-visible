@@ -7,7 +7,7 @@
         actionId: "dream",
         requirements: {illhealth: 1},
             		slots:
-						{Nourishment: {required: {shilling: 1},forbidden: {}}},
+						{Nourishment: {required: {funds: 1},forbidden: {}}},
 		alternativerecipes: [{id:"recoverhealth",chance:100}],
         startdescription: "To recover my health, I'll need money for food and medicine.",
         description: "Rested, but not recovered. I need money for food and medicine.",
@@ -18,9 +18,9 @@
         id: "recoverhealth",
         label: "Heal",
         actionId: "dream",
-        requirements: {shilling: 1, illhealth: 1},
+        requirements: {funds: 1, illhealth: 1},
         effects: {
-			shilling:-1,
+			funds:-1,
         },
 		aspects:{restorehealth:1},
         startdescription: "All I need now is time.",

@@ -5,7 +5,7 @@
         actionId: "time",
         requirements: {},
         effects: {
-            shilling: -1
+            funds: -1
         },
         alternativerecipes:
 		[{id: "sickness", chance:7, additional: true},
@@ -20,7 +20,7 @@
 		slots: {
 				"Expenses":
 					{
-					required: {shilling: 1},
+					required: {funds: 1},
 					forbidden: {},
 				greedy: true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
@@ -69,7 +69,7 @@
         id: "starvation",
         label: "Starvation",
         actionId: "illhealth",
-        requirements: {shilling: -1},
+        requirements: {funds: -1},
         effects: {
             health: -1,
             hunger: 1
@@ -119,7 +119,7 @@
         effects: {},
 		alternativerecipes: [{id: "bribe",chance: 100},
 		{id: "scapegoat",chance: 100}],
-		slots: {Diversion: {required: {shilling: 1,follower:1}}},
+		slots: {Diversion: {required: {funds: 1,follower:1}}},
         startdescription: "The Suppression Bureau has begun an investigation in earnest. They are charged with suppressing the less usual type of criminal - the criminal whose crimes may exist only in dreams.",
         description: "inv end - won't display, loops straight to trial",
         warmup: 60,
@@ -134,7 +134,7 @@
         effects: {},
 		alternativerecipes: [{id: "bribe",chance: 100},
 		{id: "scapegoat",chance: 100}],
-		slots: {Diversion: {required: {shilling: 1,follower:1}, description: "I'll have to grease the right palm... or find a scapegoat."}},
+		slots: {Diversion: {required: {funds: 1,follower:1}, description: "I'll have to grease the right palm... or find a scapegoat."}},
         startdescription: "My trial has begun, in a closed court. There are crimes whose existence the state does not admit. This is my last chance to find a diversion.",
         description: "ARREST!",
         warmup: 60,
@@ -146,8 +146,8 @@
         id: "bribe",
         label: "A Bribe",
         actionId: "suspicion",
-        requirements: {shilling: 1},
-        effects: {shilling: -1,notoriety: 1},
+        requirements: {funds: 1},
+        effects: {funds: -1,notoriety: 1},
         startdescription: "I am negotiating - ",
         description: "Money well-spent. One might consider it a kind of levy on genius",
         warmup: 60,

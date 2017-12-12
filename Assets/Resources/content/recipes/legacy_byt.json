@@ -4,7 +4,7 @@
 label: "A Golden Day of Occasional Work",
 actionId: "work",
 requirements: {legacybytjob:1},
-effects: {shilling: 2,legacybytjob:-1,legacybytjobmatured:1},
+effects: {funds: 2,legacybytjob:-1,legacybytjobmatured:1},
 alternativerecipes: [
 {id:bytopenexplore,chance:100,additional:true}],
 startdescription: "Possibly I'll get something done today.",
@@ -15,7 +15,7 @@ craftable: true	},
 label: "A Golden Day of Occasional Work",
 actionId: "work",
 requirements: {legacybytjobmatured:1},
-effects: {shilling: 3},
+effects: {funds: 3},
 alternativerecipes: [
 {id:workbytjobend,chance:70}],
 startdescription: "Possibly I'll get something done today.",
@@ -44,7 +44,7 @@ actionId: "work",
 alternativerecipes: [
 {id:"bytopenstudy",chance:100,additional:true}
 ],
-effects: {health: 2, shilling: 6,legacybytjobmatured:-1},
+effects: {health: 2, funds: 6,legacybytjobmatured:-1},
 startdescription: "Papa is dead! No-one will tell me exactly how. But the estate is in a state. My allowance is tied up in probate and so forth. One can only hope it's resolved before the bills come due. [<b>Time</b>, regrettably, is now passing.]",
 description: "The business of the will has been settled... but Papa's business affairs have been eaten up with debts like woodworm. No-one seems to know exactly what he spent the money on. But the solicitor is sending me some papers, apparently..",
 warmup:60,

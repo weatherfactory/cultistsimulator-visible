@@ -41,7 +41,7 @@
         id: "conjurationenlightenment",
         label: "The Door in my Dreams",
         actionId: "work",
-        requirements: {ritual: 1, knock: 2, shilling:1,notionenlightenment:1},
+        requirements: {ritual: 1, knock: 2, funds:1,notionenlightenment:1},
 		alternativerecipes:[{id: "notionenlightenmentpromotion",chance: 100, additional: true}],
         effects: {},
         startdescription: "I can use this rite to follow in the Watchman's footsteps, and learn of the house without walls.",

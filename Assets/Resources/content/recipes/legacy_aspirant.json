@@ -4,7 +4,7 @@
 label: "Another Shift at the Hospital",
 actionId: "work",
 requirements: {introjob:1},
-effects: {introjob: -1, health: 1, shilling: 1},
+effects: {introjob: -1, health: 1, funds: 1},
 alternativerecipes: [{id:introdream,chance:100,additional:true}],
 startdescription: "Another shift: mopping the darkened hallways, delivering post to hollow-eyed invalids, trundling corpse-laden gurneys to the basement.",
 description: "Halfway through your shift, the head porter beckons you aside. \"We won't require your services any longer,\", he says. \"Here: your last payment.\"\n
@@ -45,7 +45,7 @@ id: "bequestarrives",
 label: "A Bequest Arrives",
 actionId: "study",
 requirements: {},
-effects: {reason: 1,shilling: 2,bequestintro:1},
+effects: {reason: 1,funds: 2,bequestintro:1},
 startdescription: "A letter from a solicitor. The old man at the hospital - the one I dream of - has named me in his will. I'll hear more soon.",
 description: "The old man has bequeathed me a little money, and a packet of peculiar papers - poetry, riddles, metaphysical speculations. For the first time in months, here is some fuel for my Reason.\n
 [<b>Study</b> is unlocked.]",
