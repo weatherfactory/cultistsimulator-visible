@@ -31,7 +31,7 @@
 	   {id:"auctionbidmatched",
 	   label: "Another bidder!",
 	   actionId:"explore",
-	   startdescription:"Someone else has matched my bid! ",
+	   startdescription:"Someone else has matched my bid! I must match it with more funds, or forgo my prize.",
 	   description:"..",
 	   slots:{"Bid":{required: {funds:1}}},
 		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
@@ -44,7 +44,7 @@
 	   		effects:{text:-1},
 		aspects: {situationaborted:1},
 		startdescription:".",
-		description:"The auction is over. The book has gone on elsewhere. I retain my funds."
+		description:"The auction is over. The book has gone on elsewhere. I retain my funds.",
 		warmup:0,
 	   },
 	   {
