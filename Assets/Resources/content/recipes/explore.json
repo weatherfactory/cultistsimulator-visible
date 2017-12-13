@@ -1,7 +1,7 @@
  {"recipes": [
 	{
-        id: "explorebookpurchase",
-        label: "Find Morland's shop",
+        id: "explorelocationbookdealer",
+        label: "Add to your Library",
         actionId: "explore",
         requirements: {locationbookdealer:1,funds:1},
 		effects: {},
@@ -10,6 +10,19 @@
         description: "I've found something noteworthy.",
         warmup: 30,
         craftable: true
+    },
+		{
+        id: "explorelocationauctionhouse",
+        label: "Attend an Auction",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1},
+		effects: {},
+		deckeffect: "commontomes",
+        startdescription: "We perch on alarming Rietveld chairs in a windowless auction room with vividly burnt orange walls, waiting for the auctioneer to announce what he's offering. The reek of new paint makes the brain spin.",
+        description: ".",
+        warmup: 15,
+        craftable: true,
+		linked:[{id:"auction",chance:100}]
     },
 			
 		{

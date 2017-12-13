@@ -7,6 +7,11 @@
 				{id: "countdown",
 		label: "Cycles Remaining",
 		description: "This mystery has a while to go yet."
+		},
+		{id: "bid",
+		label: "Bid",
+		description: "A bid placed in an auction house.",
+		xtriggers:{situationaborted:funds}
 		}
 ]
 };
