@@ -1,6 +1,21 @@
 {"elements":
     [
-
+							          {
+        id: "influencegrail",
+            label: "An Awareness of Appetite",
+            aspects:
+            {grail: 1},
+            description: "Every sense is heightened; every sensation, deepened.",
+			timeout: 60
+        },
+						          {
+        id: "influencemoth",
+            label: "A Buzzing in the Brain",
+            aspects:
+            {moth: 1},
+            description: "in gi rum imus noc te et con sumi <b>snip snip snip</b>",
+			timeout: 60
+        },
 				          {
         id: "influencewinter",
             label: "A Chilly Atmosphere",
@@ -8,6 +23,6 @@
             {winter: 1},
             description: "A peculiar chill hangs around my rooms. No doubt it will pass.",
 			timeout: 60
-        },
+        }
 ]
 };
