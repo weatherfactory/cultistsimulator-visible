@@ -8,6 +8,26 @@
         description: "My own heart pumps more strongly, today.",
         warmup: 30,
         craftable: false
+    },
+		{
+        id: "lanterninduction",
+        label: "A Light in the Skull",
+        actionId: "lanterninduction",
+        effects: {erudition:1},
+		startdescription: "Whenever the principle of the Lantern sheds its light, I may recall additional scraps of knowledge.",
+        description: "Dusty facts have come clear in my brain; for now.",
+        warmup: 30,
+        craftable: false
+    },
+		{
+        id: "mothinduction",
+        label: "Old Unhappy Far-off Things",
+        actionId: "mothinduction",
+        effects: {glimmering:1},
+		startdescription: "Moth finds the light in the dark, and so do I.",
+        description: "A half-glimpsed wistfulness.",
+        warmup: 30,
+        craftable: false
     }
 ]
 }

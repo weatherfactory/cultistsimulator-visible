@@ -34,7 +34,7 @@
             label: "Heart",
 			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle that continues and preserves.]",
             isAspect: true,
-						induces:[{id:"heartinduction",chance:100}]
+			induces:[{id:"heartinduction",chance:5}]
         },
 		{
             id: "ritual",
@@ -100,6 +100,7 @@
         label: "Moth",
         isAspect: true,
 		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
+			induces:[{id:"mothinduction",chance:5}]
     },
         {
             id: "secrethistories",
@@ -111,7 +112,8 @@
             id: "lantern",
             label: "Lantern",
 			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of revelation, of the Mansus, and of the light above it.]",
-            isAspect: true
+            isAspect: true,
+			induces:[{id:"lanterninduction",chance:5}]
         },
 		        {
             id: "winter",

@@ -246,36 +246,39 @@ namespace Assets.TabletopUi {
             situationToken.DisplayComplete();
             situationToken.UpdateMiniSlotDisplay(situationWindow.GetOngoingStacks());
 
-            //If any elements in the output have inductions, test whether to start a new recipe
+            AttemptAspectInductions();
+        }
+
+        private void AttemptAspectInductions()
+        {
+//If any elements in the output have inductions, test whether to start a new recipe
             var outputAspects = situationWindow.GetAspectsFromOutputElements(true);
 
             foreach (var a in outputAspects)
             {
                 var aspectElement = compendium.GetElementById(a.Key);
-                if(aspectElement==null)
+                if (aspectElement == null)
                     NoonUtility.Log("unknown aspect " + a + " in output");
                 else
                 {
                     foreach (var induction in aspectElement.Induces)
                     {
-                        var d=new Dice();
+                        var d = new Dice();
                         if (d.Rolld100() <= induction.Chance)
                         {
                             var inducedRecipe = compendium.GetRecipeById(induction.Id);
-                                if(inducedRecipe==null)
-                                    NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectElement.Id);
-                                else
-                                {
-                                    var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
-                                        inducedRecipe.Label, inducedRecipe.Description);
-                                    SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb, inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-                                    Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation);
+                            if (inducedRecipe == null)
+                                NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectElement.Id);
+                            else
+                            {
+                                var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
+                                    inducedRecipe.Label, inducedRecipe.Description);
+                                SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
+                                    inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
+                                Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation);
                             }
-
                         }
                     }
-
-                        
                 }
             }
         }
