@@ -24,6 +24,10 @@ public class Element
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
     public float Lifetime { get; set; }
+    /// <summary>
+    /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
+    /// </summary>
+    public List<LinkedRecipeDetails> Induces { get; set; }
 
     /// <summary>
     /// all aspects the element has, *including* the aspect itself as an element
@@ -56,6 +60,8 @@ public class Element
         ChildSlotSpecifications=new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
         XTriggers=new Dictionary<string, string>();
+
+        Induces=new List<LinkedRecipeDetails>();
     }
 
     public Boolean HasChildSlots()

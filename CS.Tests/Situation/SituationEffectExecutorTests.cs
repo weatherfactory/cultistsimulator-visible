@@ -16,6 +16,13 @@ namespace Assets.Editor.Tests
     public class FakeStorage:IGameEntityStorage
     {
         public List<IDeckInstance> DeckInstances { get; set; }
+        public string Name { get; set; }
+        public string Profession { get; set; }
+        public string PreviousCharacterName { get; set; }
+        public string ReplaceTextFor(string text)
+        {
+            throw new NotImplementedException();
+        }
 
         public FakeStorage()
         {

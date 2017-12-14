@@ -306,6 +306,11 @@ namespace Assets.CS.TabletopUI {
             return storage.GetElementStacksManager();
         }
 
+        public IElementStacksManager GetOutputStacksManager()
+        {
+            return results.GetElementStacksManager();
+        }
+
         public void StoreStacks(IEnumerable<IElementStack> stacksToStore) {
             GetStorageStacksManager().AcceptStacks(stacksToStore);
         }
@@ -349,6 +354,10 @@ namespace Assets.CS.TabletopUI {
             return GetStorageStacksManager().GetTotalAspects(showElementAspects);
         }
 
+        public IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects)
+        {
+            return GetOutputStacksManager().GetTotalAspects(showElementAspects);
+        }
 
 
 

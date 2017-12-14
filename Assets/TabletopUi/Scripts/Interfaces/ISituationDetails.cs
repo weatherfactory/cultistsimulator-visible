@@ -58,5 +58,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayNoRecipeFound();
         void ReceiveNotification(INotification notification);
         IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
+        IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects);
     }
 }

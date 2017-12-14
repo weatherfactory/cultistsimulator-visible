@@ -171,8 +171,28 @@ public class ContentImporter
 
                 LogProblem("Couldn't add all properties for element " + element.Id + ": " +e.Message) ;
             }
-       
 
+            try
+            {
+                ArrayList alInducedRecipes = htElement.GetArrayList(NoonConstants.KINDUCES);
+                if (alInducedRecipes != null)
+                {
+                    foreach (Hashtable lr in alInducedRecipes)
+                    {
+                        string lrID = lr[NoonConstants.KID].ToString();
+                        int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
+                        bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
+
+                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
+            }
 
         }
 
