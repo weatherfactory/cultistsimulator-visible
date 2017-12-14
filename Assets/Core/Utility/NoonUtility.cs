@@ -41,6 +41,7 @@ namespace Noon
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
         public const string KDECKDEFAULTCARD = "defaultcard";
+        public const string KINDUCES = "induces";
 
 
         public const string KCHANCE = "chance";

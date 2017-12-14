@@ -195,8 +195,7 @@ public class Compendium : ICompendium
         if (candidateVerb != null)
             return candidateVerb;
 
-        var createdVerb = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,
-            command.Recipe.Description);
+        var createdVerb = new CreatedVerb(command.Recipe.ActionId, command.Recipe.Label,command.Recipe.Description);
 
         return createdVerb;
     }

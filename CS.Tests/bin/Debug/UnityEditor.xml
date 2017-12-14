@@ -2620,7 +2620,7 @@ Transitions with exit times greater than one will be evaluated only once, so the
     </member>
     <member name="M:UnityEditor.AssetDatabase.GetSubFolders(System.String)">
       <summary>
-        <para>Given an absolute path to a directory, this method will return an array of all it's subdirectories.</para>
+        <para>Given a path to a directory in the Assets folder, relative to the project folder, this method will return an array of all its subdirectories.</para>
       </summary>
       <param name="path"></param>
     </member>
@@ -13109,7 +13109,7 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
     </member>
     <member name="P:UnityEditor.EditorWindow.maximized">
       <summary>
-        <para>Is this window maximized.</para>
+        <para>Is this window maximized?</para>
       </summary>
     </member>
     <member name="P:UnityEditor.EditorWindow.maxSize">
@@ -13129,7 +13129,7 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
     </member>
     <member name="P:UnityEditor.EditorWindow.position">
       <summary>
-        <para>The position of the window in screen space.</para>
+        <para>The desired position of the window in screen space.</para>
       </summary>
     </member>
     <member name="P:UnityEditor.EditorWindow.title">
@@ -14457,7 +14457,7 @@ If the Unity Editor setting "Auto-Update" is set to enabled, editing a script ou
       <summary>
         <para>Flood fills tiles and GameObjects starting from a given position within the selected layers.</para>
       </summary>
-      <param name="gridLayout"> used for layout.</param>
+      <param name="gridLayout">GridLayout used for layout.</param>
       <param name="brushTarget">Target of the flood fill operation. By default the currently selected GameObject.</param>
       <param name="position">Starting position of the flood fill.</param>
     </member>
@@ -18154,6 +18154,41 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
         <para>A light status bar, intended for use on dark backgrounds.</para>
       </summary>
     </member>
+    <member name="T:UnityEditor.iOSSystemGestureDeferMode">
+      <summary>
+        <para>Bit-mask used to control the deferring of system gestures on iOS.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.All">
+      <summary>
+        <para>Identifies all screen edges.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.BottomEdge">
+      <summary>
+        <para>Identifies bottom screen edge.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.LeftEdge">
+      <summary>
+        <para>Identifies left screen edge.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.None">
+      <summary>
+        <para>Disables gesture deferring on all edges.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.RightEdge">
+      <summary>
+        <para>Identifies right screen edge.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.iOSSystemGestureDeferMode.TopEdge">
+      <summary>
+        <para>Identifies top screen edge.</para>
+      </summary>
+    </member>
     <member name="T:UnityEditor.iOSTargetDevice">
       <summary>
         <para>Target iOS device.</para>
@@ -21751,7 +21786,7 @@ See Also: PhysicsVisualizationSettings.</para>
     </member>
     <member name="P:UnityEditor.PlayerSettings.virtualRealitySupported">
       <summary>
-        <para>Enable virtual reality support.</para>
+        <para>Enable Virtual Reality support on the current build target.</para>
       </summary>
     </member>
     <member name="P:UnityEditor.PlayerSettings.visibleInBackground">
@@ -21907,6 +21942,15 @@ See Also: PhysicsVisualizationSettings.</para>
       </summary>
       <param name="targetGroup"></param>
     </member>
+    <member name="M:UnityEditor.PlayerSettings.GetAvailableVirtualRealitySDKs(UnityEditor.BuildTargetGroup)">
+      <summary>
+        <para>Returns a list of the available Virtual Reality SDKs that are supported on a given BuildTargetGroup.</para>
+      </summary>
+      <param name="targetGroup">The BuildTargetGroup to return the list for.</param>
+      <returns>
+        <para>List of available Virtual Reality SDKs.</para>
+      </returns>
+    </member>
     <member name="M:UnityEditor.PlayerSettings.GetGraphicsAPIs(UnityEditor.BuildTarget)">
       <summary>
         <para>Get graphics APIs to be used on a build platform.</para>
@@ -22058,6 +22102,24 @@ See Also: PhysicsVisualizationSettings.</para>
         <para>Should best available graphics API be used.</para>
       </returns>
     </member>
+    <member name="M:UnityEditor.PlayerSettings.GetVirtualRealitySDKs(UnityEditor.BuildTargetGroup)">
+      <summary>
+        <para>Get the List of Virtual Reality SDKs for a given BuildTargetGroup.</para>
+      </summary>
+      <param name="targetGroup">The BuildTargetGroup to return the SDK list for.</param>
+      <returns>
+        <para>Ordered list of Virtual Reality SDKs.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEditor.PlayerSettings.GetVirtualRealitySupported(UnityEditor.BuildTargetGroup)">
+      <summary>
+        <para>Returns whether or not Virtual Reality Support is enabled for a given BuildTargetGroup.</para>
+      </summary>
+      <param name="targetGroup">The BuildTargetGroup to return the value for.</param>
+      <returns>
+        <para>True if Virtual Reality Support is enabled.</para>
+      </returns>
+    </member>
     <member name="M:UnityEditor.PlayerSettings.HasAspectRatio(UnityEditor.AspectRatio)">
       <summary>
         <para>Returns whether or not the specified aspect ratio is enabled.</para>
@@ -22109,6 +22171,11 @@ See Also: PhysicsVisualizationSettings.</para>
         <para>Describes the reason for access to the user's camera.</para>
       </summary>
     </member>
+    <member name="P:UnityEditor.PlayerSettings.iOS.deferSystemGesturesMode">
+      <summary>
+        <para>Defer system gestures until the second swipe on specific edges.</para>
+      </summary>
+    </member>
     <member name="P:UnityEditor.PlayerSettings.iOS.exitOnSuspend">
       <summary>
         <para>Application should exit when suspended to background.</para>
@@ -22117,6 +22184,11 @@ See Also: PhysicsVisualizationSettings.</para>
     <member name="P:UnityEditor.PlayerSettings.iOS.forceHardShadowsOnMetal">
       <summary>
         <para>Should hard shadows be enforced when running on (mobile) Metal.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEditor.PlayerSettings.iOS.hideHomeButton">
+      <summary>
+        <para>Specifies whether the home button should be hidden in the iOS build of this application.</para>
       </summary>
     </member>
     <member name="P:UnityEditor.PlayerSettings.iOS.iOSManualProvisioningProfileID">
@@ -23013,6 +23085,20 @@ Note: calling this function will implicitly call Application.SetStackTraceLogTyp
       </summary>
       <param name="platform">Platform to set the flag for.</param>
       <param name="automatic">Should best available graphics API be used?</param>
+    </member>
+    <member name="M:UnityEditor.PlayerSettings.SetVirtualRealitySDKs(UnityEditor.BuildTargetGroup,System.String[])">
+      <summary>
+        <para>Set the List of Virtual Reality SDKs for a given BuildTargetGroup.</para>
+      </summary>
+      <param name="targetGroup">The BuildTargetGroup to set the SDK list for.</param>
+      <param name="sdks">List of Virtual Reality SDKs.</param>
+    </member>
+    <member name="M:UnityEditor.PlayerSettings.SetVirtualRealitySupported(UnityEditor.BuildTargetGroup,System.Boolean)">
+      <summary>
+        <para>Sets whether or not Virtual Reality Support is enabled for a given BuildTargetGroup.</para>
+      </summary>
+      <param name="targetGroup">The BuildTargetGroup to set the value for.</param>
+      <param name="value">The value to set, true to enable, false to disable.</param>
     </member>
     <member name="T:UnityEditor.PlayerSettings.SplashScreen">
       <summary>
