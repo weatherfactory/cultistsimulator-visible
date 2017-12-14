@@ -207,6 +207,13 @@
             isAspect: true,
 			comments: "Recipe aspect"
         },
+			 {
+            id: "situationaborted",
+            label: "Nothing has Occurred",
+			description: "All is as it was",
+            isAspect: true,
+			comments: "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals."
+        },
 				 {
             id: "restorehealth",
             label: "Restore Health",
