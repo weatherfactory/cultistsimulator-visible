@@ -335,39 +335,56 @@ public class ContentImporter
             try
             {
                 r.Id = htEachRecipe[NoonConstants.KID].ToString();
+                htEachRecipe.Remove(NoonConstants.KID);
+
                 r.Label = htEachRecipe[NoonConstants.KLABEL] == null ? r.Id : htEachRecipe[NoonConstants.KLABEL].ToString();
+                htEachRecipe.Remove(NoonConstants.KLABEL);
+
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
+                htEachRecipe.Remove(NoonConstants.KCRAFTABLE);
+
                 r.ActionId= htEachRecipe[NoonConstants.KACTIONID]==null ? null : htEachRecipe[NoonConstants.KACTIONID].ToString();
                 if (r.ActionId == null)
                     LogProblem(r.Id + " has no actionId specified");
-
+                htEachRecipe.Remove(NoonConstants.KACTIONID);
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
                     r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
+                htEachRecipe.Remove(NoonConstants.KSTARTDESCRIPTION);
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KDESCRIPTION))
                     r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
+                htEachRecipe.Remove(NoonConstants.KDESCRIPTION);
+
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KASIDE))
                     r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
+                htEachRecipe.Remove(NoonConstants.KASIDE);
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KDECKEFFECT))
                 {
                     string deckId = htEachRecipe[NoonConstants.KDECKEFFECT].ToString();
                     LogIfNonexistentDeckId(deckId, r.Id);
                     r.DeckEffect = deckId;
+                    htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
                 }
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
+                htEachRecipe.Remove(NoonConstants.KWARMUP);
+
 
                 r.EndingFlag = htEachRecipe[NoonConstants.KENDING] == null
                     ? null
                     : htEachRecipe[NoonConstants.KENDING].ToString();
+                htEachRecipe.Remove(NoonConstants.KENDING);
+                
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
                     r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
+                htEachRecipe.Remove(NoonConstants.KMAXEXECUTIONS);
+
                 if (htEachRecipe.ContainsKey(NoonConstants.KBURNIMAGE))
                     r.BurnImage = htEachRecipe[NoonConstants.KBURNIMAGE].ToString();
-
+                htEachRecipe.Remove(NoonConstants.KBURNIMAGE);
 
             }
             catch (Exception e)
@@ -396,6 +413,8 @@ public class ContentImporter
             {
                 LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
             }
+            htEachRecipe.Remove(NoonConstants.KREQUIREMENTS);
+
             /////////////////////////////////////////////
 
             //ASPECTS
@@ -415,6 +434,8 @@ public class ContentImporter
             {
                 LogProblem("Problem importing aspects for recipe '" + r.Id + "' - " + e.Message);
             }
+            htEachRecipe.Remove(NoonConstants.KASPECTS);
+
             /////////////////////////////////////////////
 
 
@@ -435,6 +456,8 @@ public class ContentImporter
             {
                 LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
             }
+            htEachRecipe.Remove(NoonConstants.KEFFECTS);
+
             /////////////////////////////////////////////
             try
             {
@@ -448,8 +471,8 @@ public class ContentImporter
             {
 
                 LogProblem("Problem importing slots for recipe '" + r.Id + "' - " + e.Message);
-
             }
+            htEachRecipe.Remove(NoonConstants.KSLOTS);
 
             try
             {
@@ -472,6 +495,8 @@ public class ContentImporter
 
                 LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
             }
+            htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPES);
+
 
             try
             {
@@ -494,11 +519,16 @@ public class ContentImporter
 
                 LogProblem("Problem importing linked recipes for recipe '" + r.Id + "' - " + e.Message);
             }
-
-            
-
-
+            htEachRecipe.Remove(NoonConstants.KLINKED);
             Recipes.Add(r);
+
+            htEachRecipe.Remove("comments"); //this should be the only nonprocessed property at this point
+
+            foreach (var k in htEachRecipe.Keys)
+            {
+                NoonUtility.Log("Unprocessed recipe property for " + r.Id + ": " + k);
+            }
+
         }
 
         foreach (var r in Recipes)
