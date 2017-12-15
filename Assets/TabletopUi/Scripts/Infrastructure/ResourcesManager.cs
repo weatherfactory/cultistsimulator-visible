@@ -51,5 +51,10 @@ public class ResourcesManager: MonoBehaviour
     {
         return Resources.LoadAll<AudioClip>("music/");
     }
+
+        public static IEnumerable<AudioClip> GetImpendingDoomMusic()
+        {
+            return Resources.LoadAll<AudioClip>("music/impendingdoom/");
+        }
 }
 
