@@ -39,12 +39,13 @@
 	id: "dreamtreeoflights",
 	label: "The Tree of Lights",
 	actionId: "dream",
-	effects: {contentment:1},
+	effects: {contentment:1,fragmentmoth:1},
 	slots: {More: {}},
 	alternativerecipes: [{id:"nightmarecleansingdawn",chance: 100}],
 	startdescription: "A dream: in the breathy hush of a summer night, a tree hangs heavy with fruit. Each glows topaz or rose, brighter than a fire-fly, dimmer than a lamp. I could consume one; or I could watch the moths flutter and the tree sway, enjoy the heady brush of the breeze.",
 	description: "The dawn will come, and I won't hasten it. Each fruit is an eye, but each eye is closed.",
 	warmup: 60,
+	comments: "currently allows infinite moth fragments. Rebalance with Map."
 	},
 	{
 	id: "dreamlightthroughstainedglass",
