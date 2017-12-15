@@ -5,6 +5,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.UI;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -79,7 +80,7 @@ namespace Assets.CS.TabletopUI
                 RectTransform.localPosition = new Vector3(x, y);
 
             }
-            get { return container.GetSaveLocationInfoForDraggable(this); }
+            get { return container.GetSaveLocationInfoForDraggable(this) +"_" + Guid.NewGuid(); }
         }
 
 

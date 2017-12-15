@@ -286,7 +286,7 @@ namespace Assets.CS.TabletopUI
 
             name = "Card_" + elementId;
             if (_element == null)
-                return;
+                NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
 
             DisplayInfo();
             DisplayIcon();
@@ -301,7 +301,7 @@ namespace Assets.CS.TabletopUI
             catch (Exception e)
             {
 
-                Debug.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
+                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
         }
