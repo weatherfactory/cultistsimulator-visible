@@ -43,6 +43,11 @@ public class Recipe
     public List<LinkedRecipeDetails> AlternativeRecipes { get; set; }
     public List<LinkedRecipeDetails> LinkedRecipes { get; set; }
     public string EndingFlag { get; set; }
+
+    public bool EndsGame()
+    {
+        return EndingFlag != null;
+    }
     /// <summary>
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
     /// </summary>

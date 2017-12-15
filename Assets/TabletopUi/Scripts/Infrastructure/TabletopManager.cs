@@ -52,6 +52,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private Button normalSpeedButton;
         [SerializeField] private Button fastForwardButton;
         [SerializeField] private DebugTools debugTools;
+        [SerializeField] private BackgroundMusic backgroundMusic;
 
         [SerializeField] private Notifier notifier;
         [SerializeField] private OptionsPanel optionsPanel;
@@ -66,7 +67,7 @@ namespace Assets.CS.TabletopUI
 
         // A total number of 4 supported by the bar currently. Not more, not fewer
         private string[] overviewElementIds = new string[] {
-            "health", "passion", "reason", "shilling"
+            "health", "passion", "reason", "funds"
         };
 
         public void Update()
@@ -527,7 +528,8 @@ namespace Assets.CS.TabletopUI
             //{
             //    notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             //}
-            heart.ResumeBeating();
+            SetPausedState(false);
+            //heart.ResumeBeating();
         }
 
         public void SaveGame(bool withNotification)
@@ -595,6 +597,12 @@ namespace Assets.CS.TabletopUI
                     }
                 }
             }
+        }
+
+        public void SignalImpendingDoom(ISituationAnchor situationToken)
+        {
+            //including the situationToken so we can zoom to it or otherwise signal it at some point, but for now, let's just play some scary music
+            backgroundMusic.PlayImpendingDoom();
         }
     }
 

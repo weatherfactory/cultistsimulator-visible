@@ -18,7 +18,7 @@ public static class UIStyle {
 
     public static Color GetColorForCountdownBar(Recipe forRecipe)
     {
-        if (forRecipe != null && forRecipe.EndingFlag != null)
+        if (forRecipe != null && forRecipe.EndsGame())
             return UIStyle.endingWarning;
         else
             return UIStyle.lightBlue;

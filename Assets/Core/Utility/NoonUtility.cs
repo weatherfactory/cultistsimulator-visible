@@ -62,7 +62,7 @@ namespace Noon
             if(UnitTestingMode)
             Console.WriteLine(message);
             else
-            Debug.Log(message);
+            Debug.Log(">>>>> " + message);
         }
 
         public static string GetGameSaveLocation()

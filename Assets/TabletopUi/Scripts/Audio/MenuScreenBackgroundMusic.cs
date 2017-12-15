@@ -12,7 +12,7 @@ public class MenuScreenBackgroundMusic : BackgroundMusic
     public override void PlayNextClip()
     {
         
-        PlayClip(currentTrackNumber);
+        PlayClip(currentTrackNumber,backgroundMusic);
     }
 
 	

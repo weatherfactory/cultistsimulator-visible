@@ -181,6 +181,13 @@ namespace Assets.TabletopUi {
             StoreStacks(situationWindow.GetStartingStacks());
 
             UpdateSituationDisplayForDescription();
+
+            if (withRecipe.EndsGame())
+            {
+                var tabletopManager = Registry.Retrieve<TabletopManager>();
+                tabletopManager.SignalImpendingDoom(situationToken);
+
+            }
         }
 
         public void SituationOngoing()

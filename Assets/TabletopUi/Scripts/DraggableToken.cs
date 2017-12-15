@@ -5,7 +5,6 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.UI;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
