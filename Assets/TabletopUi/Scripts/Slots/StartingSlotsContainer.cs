@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 0649
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

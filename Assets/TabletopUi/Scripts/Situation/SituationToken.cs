@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
+#pragma warning disable 0649
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.SlotsContainers;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#pragma warning disable 0649
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
 using Assets.CS.TabletopUI;

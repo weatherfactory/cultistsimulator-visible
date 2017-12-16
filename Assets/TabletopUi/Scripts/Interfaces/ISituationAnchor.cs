@@ -16,7 +16,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         SituationController SituationController { get; }
         string SaveLocationInfo { get; set; }
         bool IsTransient { get; }
-        Hashtable GetSaveData();
         void OpenToken();
         void CloseToken();
 

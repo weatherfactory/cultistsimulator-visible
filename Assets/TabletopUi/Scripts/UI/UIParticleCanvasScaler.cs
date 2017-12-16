@@ -19,10 +19,10 @@ public class UIParticleCanvasScaler : UIBehaviour {
     private Vector3 m_canvasScale;
 
     // Lifecycle
-    private void OnEnable()     { SetParticleScales(); }
+    protected override void OnEnable()     { SetParticleScales(); }
 
 #if UNITY_EDITOR
-    private void Reset()        { SetParticleScales(); }
+    protected override void Reset()        { SetParticleScales(); }
 //    private void Update()       { SetParticleScales(); }
 #endif
 

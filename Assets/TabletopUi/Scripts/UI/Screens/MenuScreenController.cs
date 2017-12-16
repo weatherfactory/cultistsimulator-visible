@@ -13,6 +13,8 @@ using System.Collections;
 using System.Linq;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class MenuScreenController : MonoBehaviour {
@@ -40,6 +42,8 @@ public class MenuScreenController : MonoBehaviour {
 	// If loading additive, link to the cameras audio listener, to avoid multiple active audio listeners
 	public AudioListener audioListener;
 
+    public TextMeshProUGUI VersionNumber;
+
 	AsyncOperation operation;
 	Scene currentScene;
 
@@ -59,6 +63,8 @@ public class MenuScreenController : MonoBehaviour {
 	    registry.Register<ICompendium>(compendium);
 	    var contentImporter = new ContentImporter();
 	    contentImporter.PopulateCompendium(compendium);
+
+	    VersionNumber.text = NoonUtility.VersionNumber;
 
 
         var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());

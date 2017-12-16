@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0649
+using UnityEngine;
 
 namespace Assets.CS.TabletopUI
 {
-    public class ShittyShadowTest : MonoBehaviour {
+    public class BasicShadowImplementation : MonoBehaviour {
 
         // This is not a good class.
         // Ideally the ElementCard would set it's shadow whenever it sets it's position, since then it knows it's z position based on it's current state

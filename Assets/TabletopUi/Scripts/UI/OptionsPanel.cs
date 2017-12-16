@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#pragma warning disable 0649
+using UnityEngine;
 using System.Collections;
 using Assets.CS.TabletopUI;
 using UnityEngine.SceneManagement;

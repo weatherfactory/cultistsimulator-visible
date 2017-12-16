@@ -214,7 +214,7 @@ public class ContentImporter
             
                 catch (Exception e)
                 {
-                    NoonUtility.Log("This file broke: " + ta.name);
+                    NoonUtility.Log("This file broke: " + ta.name + " with error " + e.Message);
                 throw;
             }
 
