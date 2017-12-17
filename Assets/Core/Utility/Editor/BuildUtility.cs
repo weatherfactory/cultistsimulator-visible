@@ -15,8 +15,7 @@ namespace Assets.Core.Utility
     {
    
 
-        [PostProcessBuild]
-        public static void OnPostProcessBuilt(BuildTarget target, string exePath)
+        public static void OnPostProcessBuilt(string exePath)
         {
             string exeFolder = Path.GetDirectoryName(exePath);
             string readmepath=exeFolder+"\\readme.txt";
@@ -25,7 +24,7 @@ namespace Assets.Core.Utility
 
             using (StreamWriter sw = File.CreateText(readmepath))
             {
-                sw.Write("THE SCHOLAR'S BUILD - " + target +"\n");
+                sw.Write("THE SCHOLAR'S BUILD - " +"\n");
                 sw.WriteLine("version: " + NoonUtility.VersionNumber);
             }
 
