@@ -38,8 +38,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         void SetCenter(Vector2 center) {
-            Debug.Log("Spawning from Center " + center);
-
             var scaleX = 1f / (1f + Mathf.Abs(0.5f - center.x) * 2f);
             var scaleY = 1f / (1f + Mathf.Abs(0.5f - center.y) * 2f);
 
