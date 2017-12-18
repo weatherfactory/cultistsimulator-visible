@@ -261,14 +261,14 @@ namespace Assets.CS.TabletopUI
 		}
 
 
-        public void ShowMansusMap(bool show = true) {
+        public void ShowMansusMap(Transform effectCenter, bool show = true) {
             if (mapAnimation.CanShow(show) == false)
                 return;
 
             // TODO: should probably lock interface? No zoom, no tabletop interaction
 
             mapAnimation.onAnimDone += OnMansusMapAnimDone;
-            mapAnimation.SetCenterForDoor(mapContainer.GetDoor().GetComponent<RectTransform>());
+            mapAnimation.SetCenterForEffect(effectCenter);
             mapAnimation.Show(show); // starts coroutine that calls onManusMapAnimDone when done
             mapContainer.Show(show);
         }
@@ -278,9 +278,9 @@ namespace Assets.CS.TabletopUI
             // TODO: should probably unlock interface? No zoom, no tabletop interaction
         }
 
-        public void HideMansusMap(IElementStack stack) {
+        public void HideMansusMap(Transform effectCenter, IElementStack stack) {
             Debug.Log("Dropped Stack " + (stack != null ? stack.Id : "NULL"));
-            ShowMansusMap(false);
+            ShowMansusMap(effectCenter, false);
         }
 
 

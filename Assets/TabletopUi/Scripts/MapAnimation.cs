@@ -31,14 +31,31 @@ namespace Assets.CS.TabletopUI {
             return !isAnimating && gameObject.activeSelf != showMap;
         }
 
-        public void SetCenterForDoor(RectTransform doorSlot) {
+
+
+        public void SetCenterForEffect(Transform doorSlot) {
+            /*
             var pos = Vector2.Lerp(doorSlot.anchorMin, doorSlot.anchorMax, 0.5f);
 
             pos += new Vector2(doorSlot.anchoredPosition.x / background.rectTransform.rect.width,
                                doorSlot.anchoredPosition.y / background.rectTransform.rect.height);
 
-            particles.transform.position = doorSlot.transform.position;
-            SetMaterialCenter(pos);
+            Vector3[] corners = new Vector3[4];
+            background.rectTransform.GetWorldCorners(corners);
+            */
+
+            var screenPoint = RectTransformUtility.WorldToScreenPoint(background.canvas.worldCamera, doorSlot.position);
+            Vector2 localPoint;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(background.rectTransform, screenPoint, background.canvas.worldCamera, out localPoint);
+
+            localPoint.x /= background.rectTransform.rect.width;
+            localPoint.y /= background.rectTransform.rect.height;
+            localPoint += background.rectTransform.pivot;
+
+            Debug.Log("screen point " + screenPoint + " / Local point " +localPoint);
+
+            particles.transform.position = doorSlot.position;
+            SetMaterialCenter(localPoint);
         }
 
         void SetMaterialCenter(Vector2 center) {
