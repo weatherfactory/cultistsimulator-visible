@@ -43,6 +43,11 @@ namespace Assets.CS.TabletopUI
         private float nextAnimTime;
         private string lastAnimID; // to not animate the same twice. Keep palyer on their toes
 
+        [Header("Mansus Map")]
+        [SerializeField] public MapContainer mapContainer;
+        [SerializeField] TabletopBackground mapBackground;
+        [SerializeField] MapAnimation mapAnimation;
+
         [Header("Drag & Window")]
         [SerializeField] private RectTransform draggableHolderRectTransform;
         [SerializeField] Transform windowLevel;
@@ -128,6 +133,11 @@ namespace Assets.CS.TabletopUI
             registry.Register<INotifier>(notifier);
             registry.Register<Character>(character);
 
+            // setup map
+            mapAnimation.Init();
+            mapContainer.gameObject.SetActive(false);
+            mapBackground.onDropped += HandleOnMapBackgroundDropped;
+
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;
@@ -146,11 +156,9 @@ namespace Assets.CS.TabletopUI
             }
 
             heart.StartBeating(0.05f);
-           normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
 
             //replace all tokens in elements and recipes with appropriate starting state values.
-  
-
         }
 
         private void OnDestroy() {
@@ -252,6 +260,37 @@ namespace Assets.CS.TabletopUI
 			tabletopContainer.PutOnTable(token);
 		}
 
+
+        public void ShowMansusMap(bool show = true) {
+            if (mapAnimation.CanShow(show) == false)
+                return;
+
+            // TODO: should probably lock interface? No zoom, no tabletop interaction
+
+            mapAnimation.onAnimDone += OnMansusMapAnimDone;
+            mapAnimation.Show(show); // starts coroutine that calls onManusMapAnimDone when done
+        }
+
+        void OnMansusMapAnimDone(bool show) {
+            // TODO: should probably unlock interface? No zoom, no tabletop interaction
+
+            mapAnimation.onAnimDone -= OnMansusMapAnimDone;
+
+            if (show)
+                mapContainer.Show(show);
+        }
+
+        public void HideMansusMap(IElementStack stack) {
+            Debug.Log("Dropped Stack " + (stack != null ? stack.Id : "NULL"));
+
+            // TODO: should probably lock interface? No zoom, no tabletop interaction
+
+            mapAnimation.onAnimDone += OnMansusMapAnimDone;
+            mapAnimation.Show(false); // starts coroutine that calls onManusMapAnimDone when done
+            mapContainer.Show(false);
+        }
+
+
         public void ClearGameState(Heart h, IGameEntityStorage s,TabletopContainer tc)
         {
             h.Clear();
@@ -263,6 +302,8 @@ namespace Assets.CS.TabletopUI
             foreach (var element in tc.GetElementStacksManager().GetStacks())
                 element.Retire(true); //looks daft but pretty on reset
         }
+
+
 
         public void RestartGame()
         {
@@ -509,6 +550,24 @@ namespace Assets.CS.TabletopUI
 
         }
 
+
+        void HandleOnMapBackgroundDropped() {
+            // NOTE: This puts items back on the background. We need this in more cases. Should be a method
+            if (DraggableToken.itemBeingDragged != null) {
+                // Maybe check for item type here via GetComponent<Something>() != null?
+                DraggableToken.SetReturn(false, "dropped on the map background");
+                // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
+                // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
+                // Dragged windows should not change in height during/after dragging, since they float by default
+
+                //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
+                DraggableToken.itemBeingDragged.DisplayOnTable();
+                mapContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
+
+                SoundManager.PlaySfx("CardDrop");
+            }
+        }
+
         public void LoadGame()
         {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
@@ -563,9 +622,12 @@ namespace Assets.CS.TabletopUI
         public void ShowDestinationsForStack(IElementStack stack)
         {
             var openToken = tabletopContainer.GetOpenToken();
-            if(openToken!=null)
+
+            if (openToken !=null)
                openToken.ShowDestinationsForStack(stack);
 
+            if (mapContainer != null)
+                mapContainer.ShowDestinationsForStack(stack);
         }
 
         public void DecayStacksOnTable(float interval)
