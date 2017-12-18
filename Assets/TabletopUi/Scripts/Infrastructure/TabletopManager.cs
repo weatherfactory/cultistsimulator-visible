@@ -133,11 +133,12 @@ namespace Assets.CS.TabletopUI
             registry.Register<INotifier>(notifier);
             registry.Register<Character>(character);
 
-            // setup map
-            mapAnimation.Init();
-            mapContainer.gameObject.SetActive(false);
-            mapBackground.onDropped += HandleOnMapBackgroundDropped;
-
+            if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
+            {
+                mapAnimation.Init();
+                mapContainer.gameObject.SetActive(false);
+                mapBackground.onDropped += HandleOnMapBackgroundDropped;
+            }
             // Init Listeners to pre-existing Display Objects
             background.onDropped += HandleOnBackgroundDropped;
             background.onClicked += HandleOnBackgroundClicked;

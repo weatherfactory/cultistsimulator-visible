@@ -316,6 +316,8 @@
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenGlow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\LetterPanel.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\MapAnimation.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\MapContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationLog.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationLogTEST.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationWindow.cs" />
@@ -336,6 +338,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationWindowPositioner.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\AbstractSlotsContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Slots\DoorSlot.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\OngoingSlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlot.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotIcon.cs" />
@@ -481,6 +484,7 @@
     <None Include="Assets\Resources\content\recipe_notes.txt" />
     <None Include="Assets\SimpleJson\ReadMe.txt" />
     <None Include="Assets\TabletopUi\Materials\CardBurn.shader" />
+    <None Include="Assets\TabletopUi\Materials\MapBurn.shader" />
     <None Include="Assets\TabletopUi\Materials\SimpleBlur.shader" />
     <None Include="Assets\TabletopUi\Materials\UI-Default_shader.shader" />
     <None Include="Assets\TabletopUi\Materials\UI-Greyout.shader" />
