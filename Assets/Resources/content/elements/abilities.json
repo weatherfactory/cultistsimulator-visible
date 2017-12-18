@@ -26,7 +26,7 @@
             aspects:
             {},
             description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i>treasure. [Vitality can sometimes be used to gain Health. It lasts only five minutes, if unused.]",
-		lifetime: 60
+		lifetime: 300
         },
 			{
         id: "injury",
@@ -61,7 +61,7 @@
             aspects:
             {},
             description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason. It lasts only five minutes, if unused.]",
-lifetime: 600
+lifetime: 300
         },
 			{id: "dread",
             label: "Dread",
@@ -89,7 +89,7 @@ lifetime: 600
             aspects:
             {},
             description: "There are things I'll never understand, and those things will always be precious. [Glimmering can sometimes be used to gain Passion. It lasts only five minutes, if unused.]",
-			lifetime: 600
+			lifetime: 300
         },
 		{id: "fascination",
             label: "Fascination",
