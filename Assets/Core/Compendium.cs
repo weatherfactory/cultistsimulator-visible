@@ -240,9 +240,8 @@ public class Compendium : ICompendium
 
         if (endingFlag == "workvictory")
             return new Ending(endingFlag, "This is pleasant",
-                "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is" +
-                "over the sweet earth will fill my mouth, softer than splinters. [By the standards of this  " +
-                "beta, this might be considered a victory.]", "gloverandgloverjob");
+                "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is " +
+                "over the sweet earth will fill my mouth, softer than splinters. [This might be considered a victory.]", "gloverandgloverjob");
 
         return new Ending("default", "IT IS FINISHED","This one is done.", "health");
     }
