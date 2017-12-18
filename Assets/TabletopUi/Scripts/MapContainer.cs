@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI {
 
         void HandleOnSlotFilled(IElementStack stack) {
             // Close map, retrieve the card
-            Registry.Retrieve<TabletopManager>().HideMansusMap(stack);
+            Registry.Retrieve<TabletopManager>().HideMansusMap(activeSlot.transform, stack);
         }
 
         public void ShowDestinationsForStack(IElementStack stack) {
