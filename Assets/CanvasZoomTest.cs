@@ -65,6 +65,10 @@ public class CanvasZoomTest : UIBehaviour {
         }
     }
 
+    public void SetTargetZoom(float value) {
+        targetZoom = Mathf.Clamp01(value);
+    }
+
     // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)
     // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas

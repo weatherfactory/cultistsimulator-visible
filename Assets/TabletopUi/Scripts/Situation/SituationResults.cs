@@ -88,4 +88,9 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
+
+    // public to be triggered by button
+    public void ShowMap() {
+        Registry.Retrieve<TabletopManager>().ShowMansusMap(true);
+    }
 }
