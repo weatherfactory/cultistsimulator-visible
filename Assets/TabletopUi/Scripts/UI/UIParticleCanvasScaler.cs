@@ -28,7 +28,7 @@ public class UIParticleCanvasScaler : UIBehaviour {
 
     // Trigger Update
 
-    private void SetParticleScales() {
+    public void SetParticleScales() {
         var emitters = this.gameObject.GetComponentsInChildren<ParticleSystem>();
         ApplyScale(emitters);
     }

@@ -18,7 +18,10 @@ namespace Assets.CS.TabletopUI {
         const string uvTexName = "_FadeTex";
 
         [SerializeField] Image background;
+        [SerializeField] ParticleSystem particles;
         [SerializeField] CanvasZoomTest zoom;
+
+        float particleTargetRadius;
 
         public void Init() {
             gameObject.SetActive(false); // turn off at start
@@ -34,24 +37,25 @@ namespace Assets.CS.TabletopUI {
             pos += new Vector2(doorSlot.anchoredPosition.x / background.rectTransform.rect.width,
                                doorSlot.anchoredPosition.y / background.rectTransform.rect.height);
 
-            SetCenter(pos);
+            particles.transform.position = doorSlot.transform.position;
+            SetMaterialCenter(pos);
         }
 
-        void SetCenter(Vector2 center) {
+        void SetMaterialCenter(Vector2 center) {
             var scaleX = 1f / (1f + Mathf.Abs(0.5f - center.x) * 2f);
             var scaleY = 1f / (1f + Mathf.Abs(0.5f - center.y) * 2f);
 
-            var scale = new Vector2(scaleX, scaleY);
-            var offset = new Vector2(Mathf.Max(0, 1f - scaleX), Mathf.Min(0, 1f - scaleY));
+            var uvScale = new Vector2(scaleX, scaleY);
+            var uvOffset = new Vector2(Mathf.Max(0, 1f - scaleX), Mathf.Min(0, 1f - scaleY));
 
-            background.material.SetTextureOffset(uvTexName, offset);
-            background.material.SetTextureScale(uvTexName, scale);
+            particleTargetRadius = Mathf.Max(1f / uvScale.x, 1f / uvScale.y);
+
+            background.material.SetTextureOffset(uvTexName, uvOffset);
+            background.material.SetTextureScale(uvTexName, uvScale);
         }
 
         public void Show(bool showMap) {
             gameObject.SetActive(true);
-
-
 
             if (showMap) 
                 StartCoroutine(DoAnim(durationShow, colorBeforeShow, colorVisible, true));
@@ -67,6 +71,12 @@ namespace Assets.CS.TabletopUI {
             while (time < duration) {
                 time += Time.deltaTime;
                 background.color = Color.Lerp(colorA, colorB, time / duration);
+
+                if (shownAtEnd) {
+                    var shp = particles.shape;
+                    shp.radius = Mathf.Lerp(0f, particleTargetRadius, time / duration * 1.5f);
+                }
+
                 yield return null;
             }
 
