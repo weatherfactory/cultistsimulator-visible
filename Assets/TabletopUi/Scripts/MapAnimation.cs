@@ -15,6 +15,7 @@ namespace Assets.CS.TabletopUI {
         public Color colorAfterHidden = new Color(1f, 1f, 1f, 0f);
 
         bool isAnimating;
+        const string uvTexName = "_FadeTex";
 
         [SerializeField] Image background;
         [SerializeField] CanvasZoomTest zoom;
@@ -27,8 +28,32 @@ namespace Assets.CS.TabletopUI {
             return !isAnimating && gameObject.activeSelf != showMap;
         }
 
+        public void SetCenterForDoor(RectTransform doorSlot) {
+            var pos = Vector2.Lerp(doorSlot.anchorMin, doorSlot.anchorMax, 0.5f);
+
+            pos += new Vector2(doorSlot.anchoredPosition.x / background.rectTransform.rect.width,
+                               doorSlot.anchoredPosition.y / background.rectTransform.rect.height);
+
+            SetCenter(pos);
+        }
+
+        void SetCenter(Vector2 center) {
+            Debug.Log("Spawning from Center " + center);
+
+            var scaleX = 1f / (1f + Mathf.Abs(0.5f - center.x) * 2f);
+            var scaleY = 1f / (1f + Mathf.Abs(0.5f - center.y) * 2f);
+
+            var scale = new Vector2(scaleX, scaleY);
+            var offset = new Vector2(Mathf.Max(0, 1f - scaleX), Mathf.Min(0, 1f - scaleY));
+
+            background.material.SetTextureOffset(uvTexName, offset);
+            background.material.SetTextureScale(uvTexName, scale);
+        }
+
         public void Show(bool showMap) {
             gameObject.SetActive(true);
+
+
 
             if (showMap) 
                 StartCoroutine(DoAnim(durationShow, colorBeforeShow, colorVisible, true));

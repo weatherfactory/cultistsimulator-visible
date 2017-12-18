@@ -10,6 +10,13 @@ namespace Assets.CS.TabletopUI {
 
         DoorSlot activeSlot;
 
+        public DoorSlot GetDoor() {
+            if (activeSlot == null)
+                activeSlot = GetComponentInChildren<DoorSlot>();
+
+            return activeSlot;
+        }
+
         public void Show(bool show) {
             if (show) {
                 canvasGroupFader.Show();

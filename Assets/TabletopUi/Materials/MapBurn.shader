@@ -76,11 +76,13 @@ Shader "Custom/MapBurn"
 				fixed4 color    : COLOR;
 				float2 texcoord  : TEXCOORD0;
 				float4 worldPosition : TEXCOORD1;
+				float2 texcoord2  : TEXCOORD2;
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 			
 			fixed4 _Color;
 			fixed4 _TextureSampleAdd;
+			float4 _FadeTex_ST;
 			float4 _ClipRect;
 
 			v2f vert(appdata_t IN)
@@ -91,7 +93,8 @@ Shader "Custom/MapBurn"
 				OUT.worldPosition = IN.vertex;
 				OUT.vertex = UnityObjectToClipPos(OUT.worldPosition);
 
-				OUT.texcoord = IN.texcoord;
+				OUT.texcoord2 = IN.texcoord;
+				OUT.texcoord = TRANSFORM_TEX(IN.texcoord, _FadeTex);
 				
 				OUT.color = IN.color * _Color;
 				return OUT;
@@ -113,7 +116,7 @@ Shader "Custom/MapBurn"
 
 				half4 color = tex2D(_RampTex, rampPos);
 
-				color.rgb = lerp(color.rgb, tex2D(_MainTex, IN.texcoord).rgb + _TextureSampleAdd.rgb, IN.color.b);
+				color.rgb = lerp(color.rgb, tex2D(_MainTex, IN.texcoord2).rgb + _TextureSampleAdd.rgb, IN.color.b);
 
 				color.a *= mapTex.a * IN.color.a;
 				color.a *= smoothstep(mapTex.g, mapTex.g + _FadeSoftness, (1 + _FadeSoftness) * IN.color.g );
