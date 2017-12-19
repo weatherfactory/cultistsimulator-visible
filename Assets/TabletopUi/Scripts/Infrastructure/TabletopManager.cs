@@ -74,33 +74,34 @@ namespace Assets.CS.TabletopUI
  
         }
 
-        public void UpdateCompendium(ICompendium compendium)
-        {
-            var contentImporter = new ContentImporter();
-            contentImporter.PopulateCompendium(compendium);
-            foreach (var p in contentImporter.GetContentImportProblems())
-                Debug.Log(p.Description);
-        }
-        
+
         void Start()
         {
             var registry = new Registry();
             var compendium = new Compendium();
             var character=new Character();
-            registry.Register<ICompendium>(compendium);
-            UpdateCompendium(compendium);
-            _speedController.Initialise(_heart);
-            _hotkeyWatcher.Initialise(_speedController, debugTools,_optionsPanel);
-            _cardAnimationController.Initialise(TabletopContainer.GetElementStacksManager());
-
             tabletopObjectBuilder = new TabletopObjectBuilder(TabletopContainer.transform, windowLevel);
-         
-            registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
+            var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
+
+            registry.Register<ICompendium>(compendium);
+            registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice());
             registry.Register<TabletopManager>(this);
             registry.Register<TabletopObjectBuilder>(tabletopObjectBuilder);
             registry.Register<INotifier>(_notifier);
             registry.Register<Character>(character);
+
+
+            var contentImporter = new ContentImporter();
+            contentImporter.PopulateCompendium(compendium);
+
+
+
+            _speedController.Initialise(_heart);
+            _hotkeyWatcher.Initialise(_speedController, debugTools,_optionsPanel);
+            _cardAnimationController.Initialise(TabletopContainer.GetElementStacksManager());
+
+            
 
             if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
             {

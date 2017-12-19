@@ -90,7 +90,8 @@ public class DebugTools : MonoBehaviour
 
     void UpdateCompendiumContent()
     {
-        Registry.Retrieve<TabletopManager>().UpdateCompendium(Registry.Retrieve<ICompendium>());
+        var contentImporter=new ContentImporter();
+        contentImporter.PopulateCompendium(Registry.Retrieve<ICompendium>());
     }
 
     void NextTrack()

@@ -576,6 +576,9 @@ public class ContentImporter
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
 
+        foreach (var p in GetContentImportProblems())
+            NoonUtility.Log(p.Description);
+
     }
 
 
