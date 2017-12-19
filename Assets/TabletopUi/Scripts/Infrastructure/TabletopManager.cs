@@ -27,7 +27,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour {
+    public class TabletopManager : MonoBehaviour,IHotkeySubscriber {
 
         [Header("Game Control")]
         [SerializeField]
@@ -59,6 +59,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private Button fastForwardButton;
         [SerializeField] private DebugTools debugTools;
         [SerializeField] private BackgroundMusic backgroundMusic;
+        [SerializeField] private HotkeyWatcher hotkeyWatcher;
 
         [SerializeField] private Notifier notifier;
         [SerializeField] private OptionsPanel optionsPanel;
@@ -66,40 +67,13 @@ namespace Assets.CS.TabletopUI
 
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
         private readonly Color inactiveSpeedColor = Color.white;
-
-
-
-
-
-        // A total number of 4 supported by the bar currently. Not more, not fewer
-        private string[] overviewElementIds = new string[] {
-            "health", "passion", "reason", "funds"
-        };
+        
 
         public void Update()
         {
-            if (Input.GetKeyDown("`") || (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab)))
-                debugTools.gameObject.SetActive(!debugTools.isActiveAndEnabled);
+            hotkeyWatcher.WatchForHotkeys();
 
-            if (!debugTools.isActiveAndEnabled)
-            {
-               //...it's nice to be able to type N and M
-
-                if (Input.GetKeyDown(KeyCode.N))
-                    SetNormalSpeed();
-
-                if (Input.GetKeyDown(KeyCode.M))
-                    SetFastForward();
-
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-                TogglePause();
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-                optionsPanel.ToggleVisibility();
-
-            UpdateElementOverview();
+            elementOverview.UpdateDisplay(tabletopContainer.GetElementStacksManager(),tabletopContainer.GetAllSituationTokens());
 
             if (Time.time >= nextAnimTime) { 
                 TriggerArtAnimation();
@@ -158,6 +132,8 @@ namespace Assets.CS.TabletopUI
 
             heart.StartBeating(0.05f);
             normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+
+            hotkeyWatcher.Initialise(this,debugTools);
 
             //replace all tokens in elements and recipes with appropriate starting state values.
         }
@@ -335,6 +311,11 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        public void ToggleOptionsVisibility()
+        {
+            optionsPanel.ToggleVisibility();
+        }
+
         public void TogglePause()
         {
           SetPausedState(!heart.IsPaused);
@@ -470,28 +451,6 @@ namespace Assets.CS.TabletopUI
             }
 
             return false;
-        }
-
-        void UpdateElementOverview() {
-            // TODO: This does a lot of iterating each frame to grab all cards in play. If possible change this to use the planned "lists" instead
-            // TODO: This is being called every frame in update, if possible only call it when the stacks have changed? Have a global "elements changed" event to call?
-
-            var manager = tabletopContainer.GetElementStacksManager();
-            var situations = tabletopContainer.GetAllSituationTokens();
-            var draggedElementStack = (DraggableToken.itemBeingDragged != null ? DraggableToken.itemBeingDragged as ElementStackToken : null);
-            int count;
-
-            for (int i = 0; i < overviewElementIds.Length; i++) {
-                count = manager.GetCurrentElementQuantity(overviewElementIds[i]);
-
-                foreach (var sit in situations) 
-                    count += sit.SituationController.GetElementCountInSituation(overviewElementIds[i]);
-
-                if (draggedElementStack != null && draggedElementStack.Id == overviewElementIds[i])
-                    count += draggedElementStack.Quantity;
-
-                elementOverview.SetElement(i, overviewElementIds[i], count);
-            }
         }
 
         void SetNextAnimTime() {

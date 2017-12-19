@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneLinuxUniversal:25</UnityBuildTarget>
     <UnityVersion>2017.2.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -304,10 +306,12 @@
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataImporter.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameSaveManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\HotkeyWatcher.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\ResourcesManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SaveConstants.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SavedCrossSceneState.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SceneNumber.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SpeedController.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IDraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />

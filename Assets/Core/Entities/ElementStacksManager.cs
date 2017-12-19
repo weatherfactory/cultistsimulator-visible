@@ -30,10 +30,13 @@ public interface IElementStacksManager {
 }
 
 public class ElementStacksManager : IElementStacksManager {
-    private ITokenTransformWrapper wrapper;
+    private readonly ITokenTransformWrapper _wrapper;
+    private List<IElementStack> _contents;
+
 
     public ElementStacksManager(ITokenTransformWrapper w) {
-        wrapper = w;
+        _wrapper = w;
+        _contents=new List<IElementStack>();
     }
 
     public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {
@@ -50,12 +53,12 @@ public class ElementStacksManager : IElementStacksManager {
     /// <param name="quantityChange">must be negative</param>
     /// <returns>returns any unsatisfied change remaining</returns>
     public int ReduceElement(string elementId, int quantityChange) {
-        if (quantityChange >= 0)
-            throw new ArgumentException("Tried to call ReduceElement for " + elementId + " with a >=0 change (" + quantityChange + ")");
+      
+        CheckQuantityChangeIsNegative(elementId, quantityChange);
 
         int unsatisfiedChange = quantityChange;
         while (unsatisfiedChange < 0) {
-            IElementStack cardToRemove = wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+            IElementStack cardToRemove = _wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
             if (cardToRemove == null) //we haven't found either a concrete matching element, or an element with that ID.
                 //so end execution here, and return the unsatisfied change amount
@@ -69,24 +72,32 @@ public class ElementStacksManager : IElementStacksManager {
         return unsatisfiedChange;
     }
 
+    private static void CheckQuantityChangeIsNegative(string elementId, int quantityChange)
+    {
+        if (quantityChange >= 0)
+            throw new ArgumentException("Tried to call ReduceElement for " + elementId + " with a >=0 change (" +
+                                        quantityChange + ")");
+    }
+
     public int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorid = null) {
+
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        _wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
         return quantityChange;
     }
 
 
     public int GetCurrentElementQuantity(string elementId) {
-        return wrapper.GetStacks().Where(e => e.Id == elementId).Sum(e => e.Quantity);
+        return _wrapper.GetStacks().Where(e => e.Id == elementId).Sum(e => e.Quantity);
     }
     /// <summary>
     /// All the elements in all the stacks (there may be duplicate elements in multiple stacks)
     /// </summary>
     /// <returns></returns>
     public IDictionary<string, int> GetCurrentElementTotals() {
-        var totals = wrapper.GetStacks().GroupBy(c => c.Id)
+        var totals = _wrapper.GetStacks().GroupBy(c => c.Id)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -100,7 +111,7 @@ public class ElementStacksManager : IElementStacksManager {
     public AspectsDictionary GetTotalAspects(bool includingSelf = true) {
         AspectsDictionary totals = new AspectsDictionary();
 
-        foreach (var elementCard in wrapper.GetStacks()) {
+        foreach (var elementCard in _wrapper.GetStacks()) {
             var aspects = elementCard.GetAspects(includingSelf);
 
             foreach (string k in aspects.Keys) {
@@ -115,11 +126,11 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public IEnumerable<IElementStack> GetStacks() {
-        return wrapper.GetStacks();
+        return _wrapper.GetStacks();
     }
 
     public void AcceptStack(IElementStack stack) {
-        wrapper.Accept(stack);
+        _wrapper.Accept(stack);
     }
 
     public void AcceptStacks(IEnumerable<IElementStack> stacks) {
@@ -129,7 +140,7 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public void ConsumeAllStacks() {
-        foreach (IElementStack stack in wrapper.GetStacks())
+        foreach (IElementStack stack in _wrapper.GetStacks())
             stack.SetQuantity(0);
     }
 
