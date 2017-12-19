@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.UI;
 using UnityEngine;
@@ -155,7 +156,7 @@ namespace Assets.CS.TabletopUI
 
         public virtual void ReturnToTabletop(INotification reason=null)
         {
-            Registry.Retrieve<TabletopManager>().ArrangeTokenOnTable(this);
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
             if(reason!=null)
             notifier.TokenReturnedToTabletop(this,reason);
         }

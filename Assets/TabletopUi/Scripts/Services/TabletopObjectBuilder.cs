@@ -47,6 +47,8 @@ namespace Assets.TabletopUi.Scripts.Services {
             return newToken;
         }
 
+
+
         private SituationWindow BuiltSituationWindow(SituationToken situationToken) {
             var situationWindow = PrefabFactory.CreateLocally<SituationWindow>(windowLevel);
             situationWindow.gameObject.SetActive(false);
