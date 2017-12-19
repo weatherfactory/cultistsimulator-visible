@@ -30,19 +30,17 @@ namespace Assets.CS.TabletopUI
     public class TabletopManager : MonoBehaviour {
 
         [Header("Game Control")]
-        [SerializeField] private Heart heart;
-
-        [SerializeField] private SpeedController speedController;
+        [SerializeField] private Heart _heart;
+        [SerializeField] private SpeedController _speedController;
+        [SerializeField] private CardAnimationController _cardAnimationController;
 
         [Header("Tabletop")]
-        [SerializeField] public TabletopContainer tabletopContainer;
-        [SerializeField] TabletopBackground background;
-        [SerializeField] float timeBetweenAnims = 5f;
-        [SerializeField] float timeBetweenAnimsVariation = 1f;
+        [SerializeField] public TabletopContainer TabletopContainer;
+        [SerializeField] TabletopBackground _background;
+
 
         private TabletopObjectBuilder tabletopObjectBuilder;
-        private float nextAnimTime;
-        private string lastAnimID; // to not animate the same twice. Keep palyer on their toes
+        
 
         [Header("Mansus Map")]
         [SerializeField] public MapContainer mapContainer;
@@ -69,12 +67,11 @@ namespace Assets.CS.TabletopUI
         {
             hotkeyWatcher.WatchForHotkeys();
 
-            elementOverview.UpdateDisplay(tabletopContainer.GetElementStacksManager(),tabletopContainer.GetAllSituationTokens());
+            elementOverview.UpdateDisplay(TabletopContainer.GetElementStacksManager(),TabletopContainer.GetAllSituationTokens());
 
-            if (Time.time >= nextAnimTime) { 
-                TriggerArtAnimation();
-                SetNextAnimTime();
-            }
+            _cardAnimationController.CheckForCardAnimations();
+
+ 
         }
 
         public void UpdateCompendium(ICompendium compendium)
@@ -92,12 +89,11 @@ namespace Assets.CS.TabletopUI
             var character=new Character();
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
-            speedController.Initialise(heart);
-            hotkeyWatcher.Initialise(speedController, debugTools,optionsPanel);
+            _speedController.Initialise(_heart);
+            hotkeyWatcher.Initialise(_speedController, debugTools,optionsPanel);
+            _cardAnimationController.Initialise(TabletopContainer.GetElementStacksManager());
 
-            SetNextAnimTime(); // sets the first animation for the tabletop Controller
-
-            tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
+            tabletopObjectBuilder = new TabletopObjectBuilder(TabletopContainer.transform, windowLevel);
          
             registry.Register<IDraggableHolder>(new DraggableHolder(draggableHolderRectTransform));
             registry.Register<IDice>(new Dice());
@@ -113,8 +109,8 @@ namespace Assets.CS.TabletopUI
                 mapBackground.onDropped += HandleOnMapBackgroundDropped;
             }
             // Init Listeners to pre-existing Display Objects
-            background.onDropped += HandleOnBackgroundDropped;
-            background.onClicked += HandleOnBackgroundClicked;
+            _background.onDropped += HandleOnBackgroundDropped;
+            _background.onClicked += HandleOnBackgroundClicked;
 
             DraggableToken.onChangeDragState += HandleDragStateChanged;
 
@@ -129,7 +125,7 @@ namespace Assets.CS.TabletopUI
                 compendium.ReplaceTokens(populatedCharacter);
             }
 
-            heart.StartBeatingWithDefaultValue();
+            _heart.StartBeatingWithDefaultValue();
 
 
         }
@@ -141,7 +137,7 @@ namespace Assets.CS.TabletopUI
 
         public void SetPausedState(bool paused)
         {
-            speedController.SetPausedState(paused);
+            _speedController.SetPausedState(paused);
         }
 
         public void SetupNewBoard()
@@ -195,7 +191,7 @@ namespace Assets.CS.TabletopUI
 
             foreach (var e in startingElements)
             {
-                ElementStackToken token = tabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
+                ElementStackToken token = TabletopContainer.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
                 ArrangeTokenOnTable(token);
             }
         }
@@ -211,7 +207,7 @@ namespace Assets.CS.TabletopUI
             //oh: I could have an scc property which is a MUST CREATE override
 
 
-            var existingToken = tabletopContainer.GetAllSituationTokens().SingleOrDefault(t => t.Id == scc.Recipe.ActionId);
+            var existingToken = TabletopContainer.GetAllSituationTokens().SingleOrDefault(t => t.Id == scc.Recipe.ActionId);
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if(existingToken!=null)
             { 
@@ -235,7 +231,7 @@ namespace Assets.CS.TabletopUI
         }
 
 		void SituationAnimDone(DraggableToken token) {
-			tabletopContainer.PutOnTable(token);
+			TabletopContainer.PutOnTable(token);
 		}
 
 
@@ -338,7 +334,7 @@ namespace Assets.CS.TabletopUI
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
-            var stacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            var stacks = TabletopContainer.GetElementStacksManager().GetStacks();
             foreach (var stack in stacks)
                 if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                     return stack;
@@ -348,20 +344,20 @@ namespace Assets.CS.TabletopUI
 
         public IEnumerable<ISituationAnchor> GetAllSituationTokens()
         {
-            return tabletopContainer.GetAllSituationTokens();
+            return TabletopContainer.GetAllSituationTokens();
         }
 
         public void ArrangeTokenOnTable(DraggableToken token)
         {
 			token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
-            tabletopContainer.PutOnTable(token);
+            TabletopContainer.PutOnTable(token);
         }
 
         //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
 			stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
-            tabletopContainer.PutOnTable(stack);
+            TabletopContainer.PutOnTable(stack);
         }
 
 		private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset) {
@@ -378,7 +374,7 @@ namespace Assets.CS.TabletopUI
 
 		private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos)
         {
-            foreach (var t in tabletopContainer.GetTokenTransformWrapper().GetTokens())
+            foreach (var t in TabletopContainer.GetTokenTransformWrapper().GetTokens())
             {
                 if (token != t
 					&& candidatePos.x - t.transform.localPosition.x < marginPixels.x
@@ -394,28 +390,8 @@ namespace Assets.CS.TabletopUI
             return false;
         }
 
-        void SetNextAnimTime() {
-            nextAnimTime = Time.time + timeBetweenAnims - timeBetweenAnimsVariation + UnityEngine.Random.value * timeBetweenAnimsVariation * 2f;
-        }
 
-        void TriggerArtAnimation() {
-            // TODO: This should randomly select a token to animate. Currently always picks health. Also only looks at tabletop, not all visible tokens.
-            var manager = tabletopContainer.GetElementStacksManager();
-            var stacks = manager.GetStacks();
 
-            var animatableStacks = new List<IElementStack>();
-
-            foreach (var stack in stacks) 
-                if (stack.CanAnimate() && stack.Id != lastAnimID)
-                    animatableStacks.Add(stack);
-
-            if (animatableStacks.Count > 0) {
-                int index = UnityEngine.Random.Range(0, animatableStacks.Count);
-
-                animatableStacks[index].StartArtAnimation();
-                lastAnimID = animatableStacks[index].Id;
-            }
-        }
 
         void HandleOnBackgroundDropped()
         {
@@ -430,7 +406,7 @@ namespace Assets.CS.TabletopUI
 
                 //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
                 DraggableToken.itemBeingDragged.DisplayOnTable();
-                tabletopContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
+                TabletopContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
 
                 SoundManager.PlaySfx("CardDrop");
             }
@@ -440,7 +416,7 @@ namespace Assets.CS.TabletopUI
         {
             //Close all open windows if we're not dragging (multi tap stuff)
             if (DraggableToken.itemBeingDragged == null)
-                tabletopContainer.CloseAllSituationWindowsExcept(null);
+                TabletopContainer.CloseAllSituationWindowsExcept(null);
 
         }
 
@@ -467,13 +443,13 @@ namespace Assets.CS.TabletopUI
             ICompendium compendium = Registry.Retrieve<ICompendium>();
             IGameEntityStorage storage = Registry.Retrieve<Character>();
 
-           speedController.SetPausedState(true);
+           _speedController.SetPausedState(true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             try
             {
                 var htSave = saveGameManager.RetrieveHashedSaveFromFile();
-                ClearGameState(heart, storage, tabletopContainer);
-                saveGameManager.ImportHashedSaveToState(tabletopContainer, storage, htSave);
+                ClearGameState(_heart, storage, TabletopContainer);
+                saveGameManager.ImportHashedSaveToState(TabletopContainer, storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
                 notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
@@ -482,23 +458,23 @@ namespace Assets.CS.TabletopUI
             {
                 notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             }
-           speedController.SetPausedState(false);
+           _speedController.SetPausedState(false);
         }
 
         public void SaveGame(bool withNotification)
         {
-            heart.StopBeating();
+            _heart.StopBeating();
 
             //Close all windows and dump tokens to desktop before saving.
             //We don't want or need to track half-started situations.
-            var allSituationTokens = tabletopContainer.GetAllSituationTokens();
+            var allSituationTokens = TabletopContainer.GetAllSituationTokens();
             foreach (var t in allSituationTokens)
                 t.SituationController.CloseSituation();
 
             try
             {
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-                saveGameManager.SaveActiveGame(tabletopContainer, Registry.Retrieve<Character>());
+                saveGameManager.SaveActiveGame(TabletopContainer, Registry.Retrieve<Character>());
                 if (withNotification)
                     notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
@@ -509,12 +485,12 @@ namespace Assets.CS.TabletopUI
                 notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             }
 
-            heart.ResumeBeating();
+            _heart.ResumeBeating();
         }
 
         public void ShowDestinationsForStack(IElementStack stack)
         {
-            var openToken = tabletopContainer.GetOpenToken();
+            var openToken = TabletopContainer.GetOpenToken();
 
             if (openToken !=null)
                openToken.ShowDestinationsForStack(stack);
@@ -525,7 +501,7 @@ namespace Assets.CS.TabletopUI
 
         public void DecayStacksOnTable(float interval)
         {
-            var decayingStacks = tabletopContainer.GetElementStacksManager().GetStacks().Where(s => s.Decays);
+            var decayingStacks = TabletopContainer.GetElementStacksManager().GetStacks().Where(s => s.Decays);
             foreach(var d in decayingStacks)
                 d.Decay(interval);
         }
@@ -534,10 +510,10 @@ namespace Assets.CS.TabletopUI
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
             
             // not dragging a stack? then do nothing. TabletopContainer was destroyed (end of game?)
-            if (draggedElement == null || tabletopContainer == null)
+            if (draggedElement == null || TabletopContainer == null)
                 return;
 
-            var tabletopStacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            var tabletopStacks = TabletopContainer.GetElementStacksManager().GetStacks();
             ElementStackToken token;
 
             foreach (var stack in tabletopStacks) {
