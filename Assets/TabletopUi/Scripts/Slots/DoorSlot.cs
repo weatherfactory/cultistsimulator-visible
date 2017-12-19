@@ -19,14 +19,20 @@ namespace Assets.CS.TabletopUI {
 
         public Graphic border;
         public GraphicFader slotGlow;
+        bool lastGlowState;
+        private ElementStacksManager _stacksManager;
+
 
         void Start() {
             ShowGlow(false, false);
+            ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
+            //will this be called as necessary? we might need an Initialise()
+            _stacksManager = new ElementStacksManager(stacksWrapper);
         }
 
         // IGlowableView implementation
 
-        bool lastGlowState;
+        
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             ShowHoverGlow(true);
@@ -107,14 +113,11 @@ namespace Assets.CS.TabletopUI {
 
         public bool AllowStackMerge { get { return false; } }
 
-        public ElementStacksManager GetElementStacksManager() {
-            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-            return new ElementStacksManager(tabletopStacksWrapper);
+        public ElementStacksManager GetElementStacksManager()
+        {
+            return _stacksManager;
         }
 
-        public ITokenTransformWrapper GetTokenTransformWrapper() {
-            return new TokenTransformWrapper(transform);
-        }
 
         public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
             throw new NotImplementedException();

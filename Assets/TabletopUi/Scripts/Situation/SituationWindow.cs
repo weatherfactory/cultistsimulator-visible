@@ -88,6 +88,7 @@ namespace Assets.CS.TabletopUI {
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);
             results.Initialise(sc);
+            storage.Initialise();
 		}
 
         public void Retire() {

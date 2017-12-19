@@ -18,6 +18,8 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;
 
+    private ElementStacksManager stacksManager;
+
     private SituationController controller;
 
     public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
@@ -30,6 +32,8 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     public void Initialise(SituationController sc) {
         controller = sc;
+        ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
+      stacksManager= new ElementStacksManager(stacksWrapper);
     }
 
     public void Reset() {
@@ -38,11 +42,7 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     public void SetOutput(List<IElementStack> allStacksToOutput) {
         if (allStacksToOutput.Any() == false)
-            return;
-
-
-        
-
+            return;       
         GetElementStacksManager().AcceptStacks(allStacksToOutput);
 
 //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
@@ -80,9 +80,9 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
         return GetElementStacksManager().GetStacks();
     }
 
-    public ElementStacksManager GetElementStacksManager() {
-        ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
-        return new ElementStacksManager(stacksWrapper);
+    public ElementStacksManager GetElementStacksManager()
+    {
+        return stacksManager;
     }
 
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {

@@ -16,6 +16,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
 public class TabletopContainer : MonoBehaviour, ITokenContainer {
+    private ElementStacksManager _stacksManager;
 
 
     public void TokenPickedUp(DraggableToken draggableToken) {
@@ -70,7 +71,13 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
 
 
     public ElementStacksManager GetElementStacksManager() {
-        return new ElementStacksManager(GetTokenTransformWrapper());
+        //In some places we've done it Initialise. Here, we're testing if it's null and then assigning on the fly
+        //This is because I'm going through and refactoring. Perhaps it should be consistent YOU TELL ME it's likely to get refactored further anyhoo
+        if (_stacksManager == null)
+        {
+            _stacksManager = new ElementStacksManager(GetTokenTransformWrapper());
+        }
+        return _stacksManager;
     }
 
     public ITokenTransformWrapper GetTokenTransformWrapper() {
