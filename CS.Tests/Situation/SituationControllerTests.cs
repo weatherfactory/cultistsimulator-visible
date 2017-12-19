@@ -46,23 +46,7 @@ namespace Assets.Editor.Tests
         }
 
 
-        
-
-        //item added to /removed from starting slot updates aspects display and recipe description with starting slot aspects
-        [Test]
-        public void ItemAddedToStartingSlot_UpdatesAspectsAndRecipeDescription_WithStartingSlotAspects()
-        {
-            IAspectsDictionary startingSlotAspects=new AspectsDictionary {{ "1",1}};
-            var recipe = TestObjectGenerator.GenerateRecipe(1);
-            situationDetailsMock.GetAspectsFromAllSlottedElements().Returns(startingSlotAspects);
-            compendiumMock.GetFirstRecipeForAspectsWithVerb(null,"", new Character()).ReturnsForAnyArgs(recipe);
-          sc.StartingSlotsUpdated();
-            situationDetailsMock.Received(1).DisplayAspects(startingSlotAspects);
-            situationDetailsMock.Received().DisplayStartingRecipeFound(recipe);
-        }
-
-
-        
+       
 
         [Test]
         public void AllOutputsGone_ResetsStateMachine()

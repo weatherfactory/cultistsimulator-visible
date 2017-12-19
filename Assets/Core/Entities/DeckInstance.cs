@@ -16,6 +16,11 @@ namespace Assets.Core.Entities
             get { return _deckSpec.Id; }
         }
 
+        protected DeckInstance()
+        {
+            
+        }
+
         public DeckInstance(IDeckSpec spec)
         {
             if (spec == null)

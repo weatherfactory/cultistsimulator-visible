@@ -50,6 +50,11 @@ public class Character:IGameEntityStorage
     }
 
 
+    public IDeckInstance GetDeckInstanceById(string id)
+    {
+        return  DeckInstances.SingleOrDefault(d => d.Id == id);
+    }
+
     public string Name
     {
         get { return _name; }

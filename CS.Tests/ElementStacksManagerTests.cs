@@ -186,14 +186,13 @@ namespace Assets.Editor.Tests
 
         public bool Decays { get; private set; }
 
-        public IAspectsDictionary GetAspects()
-        {
-            return Element.AspectsIncludingSelf;
-        }
 
         public IAspectsDictionary GetAspects(bool includingSelf = true)
         {
-            throw new NotImplementedException();
+            if (includingSelf)
+                return Element.AspectsIncludingSelf;
+            else
+                return Element.Aspects;
         }
 
         public Dictionary<string, string> GetXTriggers()

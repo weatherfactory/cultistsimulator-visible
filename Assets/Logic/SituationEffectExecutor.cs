@@ -46,16 +46,15 @@ namespace Assets.Logic
         {
             var deckId = command.GetDeckEffect();
             if(deckId!=null)
-            { 
-            var deck = storage.DeckInstances.SingleOrDefault(d=>d.Id==deckId);
+            {
+                var deck = storage.GetDeckInstanceById(deckId);
             if (deck != null)
             {
                 var drawnElementId = deck.Draw();
 
                 if (drawnElementId != null)
                 {
-                    var source = new Source();
-                    source.SourceType = SourceType.Fresh; //ultimately this should correspond to deck
+                    var source = Source.Fresh(); //ultimately this should correspond to deck
                     stacksManager.ModifyElementQuantity(drawnElementId, 1, source);
 
                 }
@@ -69,8 +68,7 @@ namespace Assets.Logic
         {
             foreach (var kvp in command.GetElementChanges())
             {
-                var source=new Source();
-                source.SourceType=SourceType.Fresh; //might later be eg Transformed
+                var source = Source.Fresh(); //might later be eg Transformed
                 stacksManager.ModifyElementQuantity(kvp.Key, kvp.Value, source);
             }
         }
