@@ -27,11 +27,12 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour,IHotkeySubscriber {
+    public class TabletopManager : MonoBehaviour {
 
         [Header("Game Control")]
-        [SerializeField]
-        private Heart heart;
+        [SerializeField] private Heart heart;
+
+        [SerializeField] private SpeedController speedController;
 
         [Header("Tabletop")]
         [SerializeField] public TabletopContainer tabletopContainer;
@@ -53,10 +54,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform windowLevel;
 
         [Header("Options Bar & Notes")] [SerializeField] private StatusBar StatusBar;
-        [SerializeField] private PauseButton pauseButton;
 
-        [SerializeField] private Button normalSpeedButton;
-        [SerializeField] private Button fastForwardButton;
         [SerializeField] private DebugTools debugTools;
         [SerializeField] private BackgroundMusic backgroundMusic;
         [SerializeField] private HotkeyWatcher hotkeyWatcher;
@@ -65,8 +63,6 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private OptionsPanel optionsPanel;
         [SerializeField] private ElementOverview elementOverview;
 
-        private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
-        private readonly Color inactiveSpeedColor = Color.white;
         
 
         public void Update()
@@ -96,6 +92,9 @@ namespace Assets.CS.TabletopUI
             var character=new Character();
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
+            speedController.Initialise(heart);
+            hotkeyWatcher.Initialise(speedController, debugTools,optionsPanel);
+
             SetNextAnimTime(); // sets the first animation for the tabletop Controller
 
             tabletopObjectBuilder = new TabletopObjectBuilder(tabletopContainer.transform, windowLevel);
@@ -130,17 +129,19 @@ namespace Assets.CS.TabletopUI
                 compendium.ReplaceTokens(populatedCharacter);
             }
 
-            heart.StartBeating(0.05f);
-            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
+            heart.StartBeatingWithDefaultValue();
 
-            hotkeyWatcher.Initialise(this,debugTools);
 
-            //replace all tokens in elements and recipes with appropriate starting state values.
         }
 
         private void OnDestroy() {
             // Sattic event so make sure to de-init once this object is destroyed
             DraggableToken.onChangeDragState -= HandleDragStateChanged;
+        }
+
+        public void SetPausedState(bool paused)
+        {
+            speedController.SetPausedState(paused);
         }
 
         public void SetupNewBoard()
@@ -282,67 +283,7 @@ namespace Assets.CS.TabletopUI
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void SetPausedState(bool pause)
-        {
-            if (pause)
-            {
-                heart.StopBeating();
-                pauseButton.SetPausedText(true);
-                pauseButton.GetComponent<Image>().color = activeSpeedColor;
-                normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-                fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
 
-            }
-            else
-            {
-                heart.ResumeBeating();
-                pauseButton.SetPausedText(false);
-                pauseButton.GetComponent<Image>().color = inactiveSpeedColor;
-                if(heart.GetGameSpeed()==GameSpeed.Fast)
-                { 
-                    normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-                fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
-                }
-                else
-                {
-                    normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
-                    fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-                }
-            }
-        }
-
-        public void ToggleOptionsVisibility()
-        {
-            optionsPanel.ToggleVisibility();
-        }
-
-        public void TogglePause()
-        {
-          SetPausedState(!heart.IsPaused);
-        }
-
-        public void SetNormalSpeed()
-        {
-            if(heart.IsPaused)
-                SetPausedState(false);
-            heart.SetGameSpeed(GameSpeed.Normal);
-            normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
-            fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-
-
-        }
-
-        public void SetFastForward()
-        {
-
-            if (heart.IsPaused)
-                SetPausedState(false);
-            heart.SetGameSpeed(GameSpeed.Fast);
-
-            normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
-            fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
-
-        }
 
         public void EndGame(Ending ending)
         {
@@ -526,23 +467,22 @@ namespace Assets.CS.TabletopUI
             ICompendium compendium = Registry.Retrieve<ICompendium>();
             IGameEntityStorage storage = Registry.Retrieve<Character>();
 
-            SetPausedState(true);
+           speedController.SetPausedState(true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
-            //try
-            //{
+            try
+            {
                 var htSave = saveGameManager.RetrieveHashedSaveFromFile();
-                ClearGameState(heart,storage,tabletopContainer);
-                saveGameManager.ImportHashedSaveToState(tabletopContainer,storage, htSave);
+                ClearGameState(heart, storage, tabletopContainer);
+                saveGameManager.ImportHashedSaveToState(tabletopContainer, storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
                 notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
-            //}
-            //catch (Exception e)
-            //{
-            //    notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
-            //}
-            SetPausedState(false);
-            //heart.ResumeBeating();
+            }
+            catch (Exception e)
+            {
+                notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
+            }
+           speedController.SetPausedState(false);
         }
 
         public void SaveGame(bool withNotification)
@@ -555,19 +495,19 @@ namespace Assets.CS.TabletopUI
             foreach (var t in allSituationTokens)
                 t.SituationController.CloseSituation();
 
-            //try
-            //{
-                var saveGameManager =new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()),new GameDataExporter());
-            saveGameManager.SaveActiveGame(tabletopContainer,Registry.Retrieve<Character>());
-            if(withNotification)
-                notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+            try
+            {
+                var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+                saveGameManager.SaveActiveGame(tabletopContainer, Registry.Retrieve<Character>());
+                if (withNotification)
+                    notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
-            //}
-            //catch (Exception e)
-            //{
+            }
+            catch (Exception e)
+            {
 
-            //    notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
-            //}
+                notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
+            }
 
             heart.ResumeBeating();
         }

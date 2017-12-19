@@ -31,7 +31,10 @@ public class Heart : MonoBehaviour
 
     public bool IsPaused { get; private set; }
 
-
+    public void StartBeatingWithDefaultValue()
+    {
+        StartBeating(0.05f);
+    }
   public void StartBeating(float startingInterval)
   {
         CancelInvoke(METHODNAME_BEAT);

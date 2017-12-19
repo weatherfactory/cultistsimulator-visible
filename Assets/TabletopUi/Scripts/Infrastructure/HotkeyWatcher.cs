@@ -7,22 +7,18 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public interface IHotkeySubscriber
-    {
-        void ToggleOptionsVisibility();
-        void TogglePause();
-        void SetFastForward();
-        void SetNormalSpeed();
-    }
+
     public class HotkeyWatcher: MonoBehaviour
     {
-        private IHotkeySubscriber _subscriber;
+        private SpeedController _speedController;
         private DebugTools _debugTools;
+        private OptionsPanel _optionsPanel;
 
-        public void Initialise(IHotkeySubscriber subscriber,DebugTools debugTools)
+        public void Initialise(SpeedController speedController,DebugTools debugTools,OptionsPanel optionsPanel)
         {
-            _subscriber = subscriber;
+            _speedController=speedController;
             _debugTools = debugTools;
+            _optionsPanel = optionsPanel;
         }
 
         public void WatchForHotkeys()
@@ -35,18 +31,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //...it's nice to be able to type N and M
 
                 if (Input.GetKeyDown(KeyCode.N))
-                    _subscriber.SetNormalSpeed();
+                    _speedController.SetNormalSpeed();
 
                 if (Input.GetKeyDown(KeyCode.M))
-                    _subscriber.SetFastForward();
+                    _speedController.SetFastForward();
 
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
-                _subscriber.TogglePause();
+                _speedController.TogglePause();
 
             if (Input.GetKeyDown(KeyCode.Escape))
-                _subscriber.ToggleOptionsVisibility();
+                _optionsPanel.ToggleVisibility();
         }
 
 
