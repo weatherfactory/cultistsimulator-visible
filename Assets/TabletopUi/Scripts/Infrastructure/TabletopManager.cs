@@ -55,19 +55,19 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] private DebugTools debugTools;
         [SerializeField] private BackgroundMusic backgroundMusic;
-        [SerializeField] private HotkeyWatcher hotkeyWatcher;
+        [SerializeField] private HotkeyWatcher _hotkeyWatcher;
 
-        [SerializeField] private Notifier notifier;
-        [SerializeField] private OptionsPanel optionsPanel;
-        [SerializeField] private ElementOverview elementOverview;
+        [SerializeField] private Notifier _notifier;
+        [SerializeField] private OptionsPanel _optionsPanel;
+        [SerializeField] private ElementOverview _elementOverview;
 
         
 
         public void Update()
         {
-            hotkeyWatcher.WatchForHotkeys();
+            _hotkeyWatcher.WatchForHotkeys();
 
-            elementOverview.UpdateDisplay(TabletopContainer.GetElementStacksManager(),TabletopContainer.GetAllSituationTokens());
+            _elementOverview.UpdateDisplay(TabletopContainer.GetElementStacksManager(),TabletopContainer.GetAllSituationTokens());
 
             _cardAnimationController.CheckForCardAnimations();
 
@@ -90,7 +90,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<ICompendium>(compendium);
             UpdateCompendium(compendium);
             _speedController.Initialise(_heart);
-            hotkeyWatcher.Initialise(_speedController, debugTools,optionsPanel);
+            _hotkeyWatcher.Initialise(_speedController, debugTools,_optionsPanel);
             _cardAnimationController.Initialise(TabletopContainer.GetElementStacksManager());
 
             tabletopObjectBuilder = new TabletopObjectBuilder(TabletopContainer.transform, windowLevel);
@@ -99,7 +99,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<IDice>(new Dice());
             registry.Register<TabletopManager>(this);
             registry.Register<TabletopObjectBuilder>(tabletopObjectBuilder);
-            registry.Register<INotifier>(notifier);
+            registry.Register<INotifier>(_notifier);
             registry.Register<Character>(character);
 
             if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
@@ -157,7 +157,7 @@ namespace Assets.CS.TabletopUI
 
             DealStartingDecks();
 
-            notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
+            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
         }
 
         private void SetStartingCharacterInfo(Legacy chosenLegacy,string previousCharacterName)
@@ -451,12 +451,12 @@ namespace Assets.CS.TabletopUI
                 ClearGameState(_heart, storage, TabletopContainer);
                 saveGameManager.ImportHashedSaveToState(TabletopContainer, storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
-                notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
+                _notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
             }
             catch (Exception e)
             {
-                notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
+                _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             }
            _speedController.SetPausedState(false);
         }
@@ -476,13 +476,13 @@ namespace Assets.CS.TabletopUI
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
                 saveGameManager.SaveActiveGame(TabletopContainer, Registry.Retrieve<Character>());
                 if (withNotification)
-                    notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+                    _notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
             }
             catch (Exception e)
             {
 
-                notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
+                _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             }
 
             _heart.ResumeBeating();
