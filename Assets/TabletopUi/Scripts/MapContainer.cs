@@ -1,6 +1,7 @@
 ﻿using Assets.Core.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
 namespace Assets.CS.TabletopUI {
@@ -37,7 +38,7 @@ namespace Assets.CS.TabletopUI {
 
         void HandleOnSlotFilled(IElementStack stack) {
             // Close map, retrieve the card
-            Registry.Retrieve<TabletopManager>().HideMansusMap(activeSlot.transform, stack);
+            Registry.Retrieve<MapController>().HideMansusMap(activeSlot.transform, stack);
         }
 
         public void ShowDestinationsForStack(IElementStack stack) {

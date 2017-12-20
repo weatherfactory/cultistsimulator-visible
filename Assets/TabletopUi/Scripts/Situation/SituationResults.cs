@@ -91,6 +91,6 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     // public to be triggered by button
     public void ShowMap() {
-        Registry.Retrieve<TabletopManager>().ShowMansusMap(transform, true);
+        Registry.Retrieve<MapController>().ShowMansusMap(transform, true);
     }
 }

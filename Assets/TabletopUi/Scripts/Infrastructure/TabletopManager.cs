@@ -23,6 +23,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.WSA;
 
 
 namespace Assets.CS.TabletopUI
@@ -38,8 +39,9 @@ namespace Assets.CS.TabletopUI
         [SerializeField] public TabletopContainer _tabletopContainer;
         [SerializeField] TabletopBackground _background;
 
-        
+
         [Header("Mansus Map")]
+        [SerializeField] private MapController _mapController;
         [SerializeField] public MapContainer mapContainer;
         [SerializeField] TabletopBackground mapBackground;
         [SerializeField] MapAnimation mapAnimation;
@@ -76,11 +78,12 @@ namespace Assets.CS.TabletopUI
             //register everything used gamewide
             SetupServices(_tabletopObjectBuilder,_tabletopContainer);
             //we hand off board functions to individual controllers
-            InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController);
+            InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController,_mapController);
             InitialiseListeners();
 
             if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
             {
+                
                 mapAnimation.Init();
                 mapContainer.gameObject.SetActive(false);
                 mapBackground.onDropped += HandleOnMapBackgroundDropped;
@@ -112,11 +115,12 @@ namespace Assets.CS.TabletopUI
       
         }
 
-        private void InitialiseSubControllers(SpeedController speedController, HotkeyWatcher hotkeyWatcher, CardAnimationController cardAnimationController)
+        private void InitialiseSubControllers(SpeedController speedController, HotkeyWatcher hotkeyWatcher, CardAnimationController cardAnimationController,MapController mapController)
         {
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
             cardAnimationController.Initialise(_tabletopContainer.GetElementStacksManager());
+            mapController.Initialise(mapContainer, mapBackground, mapAnimation);
         }
 
         private void InitialiseListeners()
@@ -144,6 +148,8 @@ namespace Assets.CS.TabletopUI
             registry.Register<INotifier>(_notifier);
             registry.Register<Character>(character);
             registry.Register<Choreographer>(choreographer);
+            registry.Register<MapController>(_mapController);
+
 
 
             var contentImporter = new ContentImporter();
@@ -224,27 +230,7 @@ namespace Assets.CS.TabletopUI
         }
 
 
-        public void ShowMansusMap(Transform effectCenter, bool show = true) {
-            if (mapAnimation.CanShow(show) == false)
-                return;
 
-            // TODO: should probably lock interface? No zoom, no tabletop interaction
-
-            mapAnimation.onAnimDone += OnMansusMapAnimDone;
-            mapAnimation.SetCenterForEffect(effectCenter);
-            mapAnimation.Show(show); // starts coroutine that calls onManusMapAnimDone when done
-            mapContainer.Show(show);
-        }
-
-        void OnMansusMapAnimDone(bool show) {
-            mapAnimation.onAnimDone -= OnMansusMapAnimDone;
-            // TODO: should probably unlock interface? No zoom, no tabletop interaction
-        }
-
-        public void HideMansusMap(Transform effectCenter, IElementStack stack) {
-            Debug.Log("Dropped Stack " + (stack != null ? stack.Id : "NULL"));
-            ShowMansusMap(effectCenter, false);
-        }
 
 
         public void ClearGameState(Heart h, IGameEntityStorage s,TabletopContainer tc)
