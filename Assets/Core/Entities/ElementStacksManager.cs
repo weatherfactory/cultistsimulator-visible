@@ -59,7 +59,7 @@ public class ElementStacksManager : IElementStacksManager {
 
         int unsatisfiedChange = quantityChange;
         while (unsatisfiedChange < 0) {
-            IElementStack stackToAffect = _wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+            IElementStack stackToAffect = Stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
             if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                 //so end execution here, and return the unsatisfied change amount
@@ -92,14 +92,14 @@ public class ElementStacksManager : IElementStacksManager {
 
 
     public int GetCurrentElementQuantity(string elementId) {
-        return _wrapper.GetStacks().Where(e => e.Id == elementId).Sum(e => e.Quantity);
+        return Stacks.Where(e => e.Id == elementId).Sum(e => e.Quantity);
     }
     /// <summary>
     /// All the elements in all the stacks (there may be duplicate elements in multiple stacks)
     /// </summary>
     /// <returns></returns>
     public IDictionary<string, int> GetCurrentElementTotals() {
-        var totals = _wrapper.GetStacks().GroupBy(c => c.Id)
+        var totals = Stacks.GroupBy(c => c.Id)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -113,7 +113,7 @@ public class ElementStacksManager : IElementStacksManager {
     public AspectsDictionary GetTotalAspects(bool includingSelf = true) {
         AspectsDictionary totals = new AspectsDictionary();
 
-        foreach (var elementCard in _wrapper.GetStacks()) {
+        foreach (var elementCard in Stacks) {
             var aspects = elementCard.GetAspects(includingSelf);
 
             foreach (string k in aspects.Keys) {
@@ -134,6 +134,7 @@ public class ElementStacksManager : IElementStacksManager {
     public void AcceptStack(IElementStack stack) {
         //Redundant code here while we work through the differences between appearance and fundamental reality.
         //THERE IS NEVER ONLY ONE HISTORY. THE MANSUS HAS NO WALLS.
+        stack.CurrentStacksManager = this;
         Stacks.Add(stack);
         _wrapper.Accept(stack);
     }
