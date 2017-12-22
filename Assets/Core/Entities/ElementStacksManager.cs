@@ -127,8 +127,9 @@ public class ElementStacksManager : IElementStacksManager {
         return totals;
     }
 
-    public IEnumerable<IElementStack> GetStacks() {
-        return _wrapper.GetStacks();
+    public IEnumerable<IElementStack> GetStacks()
+    {
+        return Stacks;
     }
 
     public void AcceptStack(IElementStack stack) {
