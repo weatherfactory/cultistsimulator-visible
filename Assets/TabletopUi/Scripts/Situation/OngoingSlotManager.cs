@@ -36,7 +36,7 @@ namespace Assets.CS.TabletopUI {
         public void SetupSlot(Recipe recipe) {
             var slotSpec = (recipe != null && recipe.SlotSpecifications != null && recipe.SlotSpecifications.Count > 0) ? recipe.SlotSpecifications[0] : null;
             ongoingSlot.gameObject.SetActive(slotSpec != null);
-            ongoingSlot.SetSpecification(slotSpec);
+            ongoingSlot.Initialise(slotSpec);
         }
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack) {

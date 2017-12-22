@@ -76,12 +76,13 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             ShowGlow(false, false);
-            IsLocked = false;
-            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-            _stacksManager = new ElementStacksManager(tabletopStacksWrapper, "slot");
+            IsLocked = false;           
         }
 
-        public void SetSpecification(SlotSpecification slotSpecification) {
+        public void Initialise(SlotSpecification slotSpecification) {
+            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
+            _stacksManager = new ElementStacksManager(tabletopStacksWrapper, "slot");
+
             if (slotSpecification == null)
                 return;
 
@@ -168,8 +169,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void AcceptStack(IElementStack stack) {
-            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-
+        
             _stacksManager.AcceptStack(stack);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
