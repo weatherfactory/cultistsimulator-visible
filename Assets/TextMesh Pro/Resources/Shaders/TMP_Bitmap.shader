@@ -1,3 +1,9 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Copyright (C) 2014 - 2016 Stephan Schaem - All Rights Reserved
+// This code can only be used under the standard Unity Asset Store End User License Agreement
+// A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
+
 Shader "TextMeshPro/Bitmap" {
 
 Properties {
@@ -10,7 +16,7 @@ Properties {
 	_MaskSoftnessX	("Mask SoftnessX", float) = 0
 	_MaskSoftnessY	("Mask SoftnessY", float) = 0
 
-	_ClipRect("Clip Rect", vector) = (-32767, -32767, 32767, 32767)
+	_ClipRect("Clip Rect", vector) = (-10000, -10000, 10000, 10000)
 
 	_StencilComp("Stencil Comparison", Float) = 8
 	_Stencil("Stencil ID", Float) = 0
@@ -72,7 +78,6 @@ SubShader{
 
 		uniform	sampler2D 	_MainTex;
 		uniform	sampler2D 	_FaceTex;
-		uniform float4		_FaceTex_ST;
 		uniform	fixed4		_FaceColor;
 
 		uniform float		_VertexOffsetX;
@@ -95,9 +100,6 @@ SubShader{
 			float4 vert = i.vertex;
 			vert.x += _VertexOffsetX;
 			vert.y += _VertexOffsetY;
-
-			vert.xy += (vert.w * 0.5) / _ScreenParams.xy;
-
 			float4 vPosition = UnityPixelSnap(UnityObjectToClipPos(vert));
 
 			fixed4 faceColor = i.color;
@@ -107,7 +109,7 @@ SubShader{
 			o.vertex = vPosition;
 			o.color = faceColor;
 			o.texcoord0 = i.texcoord0;
-			o.texcoord1 = TRANSFORM_TEX(UnpackUV(i.texcoord1), _FaceTex);
+			o.texcoord1 = UnpackUV(i.texcoord1);
 			float2 pixelSize = vPosition.w;
 			pixelSize /= abs(float2(_ScreenParams.x * UNITY_MATRIX_P[0][0], _ScreenParams.y * UNITY_MATRIX_P[1][1]));
 

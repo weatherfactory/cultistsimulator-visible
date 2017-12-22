@@ -1,3 +1,9 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Copyright (C) 2014 - 2016 Stephan Schaem - All Rights Reserved
+// This code can only be used under the standard Unity Asset Store End User License Agreement
+// A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
+
 Shader "TextMeshPro/Mobile/Bitmap" {
 
 Properties {
@@ -10,7 +16,7 @@ Properties {
 	_MaskSoftnessX("Mask SoftnessX", float) = 0
 	_MaskSoftnessY("Mask SoftnessY", float) = 0
 
-	_ClipRect("Clip Rect", vector) = (-32767, -32767, 32767, 32767)
+	_ClipRect("Clip Rect", vector) = (-10000, -10000, 10000, 10000)
 
 	_StencilComp("Stencil Comparison", Float) = 8
 	_Stencil("Stencil ID", Float) = 0
@@ -85,8 +91,6 @@ SubShader {
 			float4 vert = v.vertex;
 			vert.x += _VertexOffsetX;
 			vert.y += _VertexOffsetY;
-
-			vert.xy += (vert.w * 0.5) / _ScreenParams.xy;
 
 			o.vertex = UnityPixelSnap(UnityObjectToClipPos(vert));
 			o.color = v.color;
