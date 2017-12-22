@@ -27,7 +27,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false, false);
             ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
             //will this be called as necessary? we might need an Initialise()
-            _stacksManager = new ElementStacksManager(stacksWrapper);
+            _stacksManager = new ElementStacksManager(stacksWrapper,"door");
         }
 
         // IGlowableView implementation

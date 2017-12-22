@@ -8,6 +8,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 
 
 public interface IElementStacksManager {
@@ -28,17 +29,23 @@ public interface IElementStacksManager {
     void ConsumeStack(IElementStack stack);
     void ConsumeAllStacks();
     void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource);
+    void NotifyStackRemoved(ElementStackToken elementStackToken);
+    // for debugging reference
+    string Name { get; set; }
 }
 
 public class ElementStacksManager : IElementStacksManager {
     private readonly ITokenTransformWrapper _wrapper;
     private List<IElementStack> Stacks;
+    public string Name { get; set; }
 
-
-    public ElementStacksManager(ITokenTransformWrapper w) {
+    public ElementStacksManager(ITokenTransformWrapper w,string name) {
         _wrapper = w;
         Stacks=new List<IElementStack>();
+        Name = name;
     }
+
+    
 
     public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {
         if (quantityChange > 0)
@@ -46,6 +53,17 @@ public class ElementStacksManager : IElementStacksManager {
         else
             ReduceElement(elementId, quantityChange);
     }
+
+    public void NotifyStackRemoved(ElementStackToken elementStackToken)
+    {
+        //The stack has left this manager, and is in the keeping of another
+        //Notify any view components that they should update appropriately.
+        //The line below is iffy (and the use of ElementStackToken above) is iffy: it brings Unity dependencies into pure C# territory
+        //but it stitches the old transform-centric approach in for now.
+        elementStackToken.container.TokenPickedUp(elementStackToken);
+    }
+
+
 
     /// <summary>
     /// Reduces matching stacks until change is satisfied
@@ -135,9 +153,11 @@ public class ElementStacksManager : IElementStacksManager {
     public void AcceptStack(IElementStack stack) {
         //Redundant code here while we work through the differences between appearance and fundamental reality.
         //THERE IS NEVER ONLY ONE HISTORY. THE MANSUS HAS NO WALLS.
+        NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name);
         stack.AssignToStackManager(this);
         Stacks.Add(stack);
         _wrapper.Accept(stack);
+        
     }
 
     public void AcceptStacks(IEnumerable<IElementStack> stacks) {

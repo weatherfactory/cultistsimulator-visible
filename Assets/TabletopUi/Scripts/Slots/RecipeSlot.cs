@@ -71,11 +71,14 @@ namespace Assets.CS.TabletopUI {
 
         public RecipeSlot() {
             childSlots = new List<RecipeSlot>();
+
         }
 
         void Start() {
             ShowGlow(false, false);
             IsLocked = false;
+            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
+            _stacksManager = new ElementStacksManager(tabletopStacksWrapper, "slot");
         }
 
         public void SetSpecification(SlotSpecification slotSpecification) {
@@ -166,9 +169,8 @@ namespace Assets.CS.TabletopUI {
 
         public void AcceptStack(IElementStack stack) {
             ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-            _stacksManager = new ElementStacksManager(tabletopStacksWrapper);
 
-            GetElementStacksManager().AcceptStack(stack);
+            _stacksManager.AcceptStack(stack);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
@@ -228,13 +230,6 @@ namespace Assets.CS.TabletopUI {
 
         public ElementStacksManager GetElementStacksManager()
         {
-            //In some places we've done it Initialise. Here, we're testing if it's null and then assigning on the fly
-            //This is because I'm going through and refactoring. Perhaps it should be consistent YOU TELL ME it's likely to get refactored further anyhoo
-            if(_stacksManager==null)
-            { 
-                ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-                _stacksManager = new ElementStacksManager(tabletopStacksWrapper);
-            }
             return _stacksManager;
         }
 

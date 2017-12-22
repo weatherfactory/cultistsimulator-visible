@@ -60,7 +60,16 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
     }
 
     public void PutOnTable(DraggableToken token) {
+
         GetTokenTransformWrapper().Accept(token);
+
+        token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
+        token.RectTransform.localRotation = Quaternion.identity;
+    }
+
+    public void PutOnTable(ElementStackToken token)
+    {
+        _stacksManager.AcceptStack(token);
 
         token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
         token.RectTransform.localRotation = Quaternion.identity;
@@ -75,7 +84,7 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         //This is because I'm going through and refactoring. Perhaps it should be consistent YOU TELL ME it's likely to get refactored further anyhoo
         if (_stacksManager == null)
         {
-            _stacksManager = new ElementStacksManager(GetTokenTransformWrapper());
+            _stacksManager = new ElementStacksManager(GetTokenTransformWrapper(),"tabletop");
         }
         return _stacksManager;
     }

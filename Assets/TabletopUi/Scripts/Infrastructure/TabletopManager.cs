@@ -38,6 +38,7 @@ namespace Assets.CS.TabletopUI
         [Header("Tabletop")]
         [SerializeField] public TabletopContainer _tabletopContainer;
         [SerializeField] TabletopBackground _background;
+        [SerializeField] private Limbo Limbo;
 
 
         [Header("Mansus Map")]
@@ -149,6 +150,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<Character>(character);
             registry.Register<Choreographer>(choreographer);
             registry.Register<MapController>(_mapController);
+            registry.Register<Limbo>(Limbo);
 
 
 
@@ -365,19 +367,19 @@ namespace Assets.CS.TabletopUI
 
            _speedController.SetPausedState(true);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
-            try
-            {
+            //try
+            //{
                 var htSave = saveGameManager.RetrieveHashedSaveFromFile();
                 ClearGameState(_heart, storage, _tabletopContainer);
                 saveGameManager.ImportHashedSaveToState(_tabletopContainer, storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
                 _notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
-            }
-            catch (Exception e)
-            {
-                _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
+            //}
            _speedController.SetPausedState(false);
         }
 

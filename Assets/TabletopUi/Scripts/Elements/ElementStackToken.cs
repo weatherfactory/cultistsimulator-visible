@@ -14,6 +14,7 @@ using System.Collections;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
@@ -313,16 +314,23 @@ namespace Assets.CS.TabletopUI
 
              StackSource = source;
 
+                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+                //when first created, it should be in Limbo
+
             }
             catch (Exception e)
             {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
+
+            
+
         }
 
         public void AssignToStackManager(IElementStacksManager manager)
         {
+            CurrentStacksManager.NotifyStackRemoved(this);
             CurrentStacksManager = manager;
         }
 

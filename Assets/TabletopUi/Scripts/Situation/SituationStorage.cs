@@ -20,7 +20,7 @@ public class SituationStorage : MonoBehaviour, ITokenContainer
     public void Initialise()
     {
         ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
-        _stacksManager = new ElementStacksManager(stacksWrapper);
+        _stacksManager = new ElementStacksManager(stacksWrapper,"storage");
     }
 
     public bool AllowDrag { get { return false; } }

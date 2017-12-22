@@ -114,7 +114,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             if (_stacksManager == null)
             {
                 ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-                _stacksManager = new ElementStacksManager(tabletopStacksWrapper);
+                _stacksManager = new ElementStacksManager(tabletopStacksWrapper,"startingslot");
             }
             return _stacksManager;
         }

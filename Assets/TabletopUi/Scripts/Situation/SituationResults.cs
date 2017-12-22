@@ -33,7 +33,7 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     public void Initialise(SituationController sc) {
         controller = sc;
         ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
-      stacksManager= new ElementStacksManager(stacksWrapper);
+      stacksManager= new ElementStacksManager(stacksWrapper,"situationresults");
     }
 
     public void Reset() {
@@ -51,15 +51,14 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     public void TokenPickedUp(DraggableToken draggableToken) {
         draggableToken.lastTablePos = draggableToken.transform.position;
-    }
-
-    public void TokenDropped(DraggableToken draggableToken) {
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
         bool hasStacks = false;
 
-        foreach (var item in stacks) {
-            if (item != null && item.Defunct == false) { 
+        foreach (var item in stacks)
+        {
+            if (item != null && item.Defunct == false)
+            {
                 hasStacks = true;
                 break;
             }
@@ -67,13 +66,18 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
         controller.UpdateTokenResultsCountBadge();
 
-        if (!hasStacks) {
+        if (!hasStacks)
+        {
             controller.SituationHasBeenReset();
             return;
         }
 
         // Do some uncovering & repositioning here
         cardPos.ReorderCards(stacks);
+    }
+
+    public void TokenDropped(DraggableToken draggableToken) {
+
     }
 
     public IEnumerable<IElementStack> GetOutputStacks() {

@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var animatableStacks = new List<IElementStack>();
 
             foreach (var stack in stacks)
-                if (stack.CanAnimate() && stack.Id != lastAnimID)
+                if (!stack.Defunct && stack.CanAnimate() && stack.Id != lastAnimID)
                     animatableStacks.Add(stack);
 
             if (animatableStacks.Count > 0)
