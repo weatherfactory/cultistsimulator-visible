@@ -276,7 +276,7 @@ namespace Assets.CS.TabletopUI
             if (Defunct)
                 return false;
             //first remove it from the StacksManager. It no longer exists in the model.
-            CurrentStacksManager.ConsumeStack(this);
+            CurrentStacksManager.RemoveStack(this);
 
             //now take care of the Unity side of things.
 
@@ -335,7 +335,7 @@ namespace Assets.CS.TabletopUI
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
             //notify afterwards, in case it counts the things *currently* in its list
-            oldStacksManager.NotifyStackRemoved(this);
+            oldStacksManager.RemoveStack(this);
             
         }
 

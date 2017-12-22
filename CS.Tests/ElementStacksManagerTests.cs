@@ -216,7 +216,7 @@ namespace Assets.Editor.Tests
             throw new NotImplementedException();
         }
 
-        public void ConsumeStack(IElementStack stack)
+        public void RemoveStack(IElementStack stack)
         {
             throw new NotImplementedException();
         }

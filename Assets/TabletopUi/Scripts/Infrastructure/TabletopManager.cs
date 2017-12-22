@@ -327,9 +327,9 @@ namespace Assets.CS.TabletopUI
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
                 if(DraggableToken.itemBeingDragged is SituationToken)
-                    _tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged as SituationToken);
+                    _tabletopContainer.PutOnTable((SituationToken) DraggableToken.itemBeingDragged);
                 else if (DraggableToken.itemBeingDragged is ElementStackToken)
-                    _tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged as ElementStackToken);
+                    _tabletopContainer.PutOnTable((ElementStackToken) DraggableToken.itemBeingDragged);
                 else
                     throw new NotImplementedException("Tried to put something weird on the table");
 
