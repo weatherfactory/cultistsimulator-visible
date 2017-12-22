@@ -39,11 +39,12 @@ namespace Assets.CS.TabletopUI
 
         //The two have historically been the same thing! So there may be some inconsistencies while we work through it.
 
-        public IElementStacksManager CurrentStacksManager { get; set; }
+        private IElementStacksManager CurrentStacksManager;
+        private ITokenTransformWrapper currentWrapper;
 
         private Element _element;
         private int _quantity;
-        private ITokenTransformWrapper currentWrapper;
+        
         private float lifetimeRemaining;
         private bool isFront = true;
         public Source StackSource { get; set; }
@@ -271,6 +272,10 @@ namespace Assets.CS.TabletopUI
         {
             if (Defunct)
                 return false;
+            //first remove it from the StacksManager. It no longer exists in the model.
+            CurrentStacksManager.ConsumeStack(this);
+
+            //now take care of the Unity side of things.
 
             Defunct = true;
             AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
@@ -282,9 +287,6 @@ namespace Assets.CS.TabletopUI
             }
             else
                 Destroy(gameObject);
-
-            //that takes care of the Unity side of things. Now remove it from the StacksManager
-            CurrentStacksManager.ConsumeStack(this);
 
             return true;
         }
@@ -317,6 +319,11 @@ namespace Assets.CS.TabletopUI
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
+        }
+
+        public void AssignToStackManager(IElementStacksManager manager)
+        {
+            CurrentStacksManager = manager;
         }
 
 

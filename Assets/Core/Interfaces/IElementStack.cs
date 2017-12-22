@@ -10,7 +10,7 @@ namespace Assets.Core.Interfaces
     public interface IElementStack
     {
         string Id { get; }
-        IElementStacksManager CurrentStacksManager { get; set; }
+        
         string SaveLocationInfo { get; set; }
         int Quantity { get; }
         bool Defunct { get; }
@@ -22,6 +22,7 @@ namespace Assets.Core.Interfaces
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);
         void Populate(string elementId, int quantity,Source source);
+        void AssignToStackManager(IElementStacksManager manager);
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
         void SplitAllButNCardsToNewStack(int n);

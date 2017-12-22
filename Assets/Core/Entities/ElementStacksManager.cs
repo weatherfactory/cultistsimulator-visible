@@ -86,7 +86,7 @@ public class ElementStacksManager : IElementStacksManager {
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
         IElementStack newStack=_wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
-        Stacks.Add(newStack);
+        AcceptStack(newStack);
         return quantityChange;
     }
 
@@ -129,13 +129,13 @@ public class ElementStacksManager : IElementStacksManager {
 
     public IEnumerable<IElementStack> GetStacks()
     {
-        return Stacks;
+        return Stacks.ToList();
     }
 
     public void AcceptStack(IElementStack stack) {
         //Redundant code here while we work through the differences between appearance and fundamental reality.
         //THERE IS NEVER ONLY ONE HISTORY. THE MANSUS HAS NO WALLS.
-        stack.CurrentStacksManager = this;
+        stack.AssignToStackManager(this);
         Stacks.Add(stack);
         _wrapper.Accept(stack);
     }

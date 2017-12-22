@@ -179,13 +179,14 @@ namespace Assets.Editor.Tests
     {
         public Element Element { get; set; }
         public string Id { get { return Element.Id; } }
-        public IElementStacksManager CurrentStacksManager { get; set; }
+
         public string SaveLocationInfo { get; set; }
         public int Quantity { get; set; }
         public bool Defunct { get; private set; }
         public bool MarkedForConsumption { get; set; }
 
         public bool Decays { get; private set; }
+        private IElementStacksManager CurrentStacksManager;
 
 
         public IAspectsDictionary GetAspects(bool includingSelf = true)
@@ -209,6 +210,11 @@ namespace Assets.Editor.Tests
         public void Populate(string elementId, int quantity, Source source)
         {
             throw new NotImplementedException();
+        }
+
+        public void AssignToStackManager(IElementStacksManager manager)
+        {
+            CurrentStacksManager = manager;
         }
 
         public void Populate(string elementId, int quantity)
