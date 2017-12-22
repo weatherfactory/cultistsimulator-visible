@@ -127,8 +127,8 @@ namespace Assets.CS.TabletopUI
         private void InitialiseListeners()
         {
             // Init Listeners to pre-existing Display Objects
-            _background.onDropped += HandleOnBackgroundDropped;
-            _background.onClicked += HandleOnBackgroundClicked;
+            _background.onDropped += HandleOnTableDropped;
+            _background.onClicked += HandleOnTableCLicked;
             DraggableToken.onChangeDragState += HandleDragStateChanged;
         }
 
@@ -315,7 +315,7 @@ namespace Assets.CS.TabletopUI
 
 
 
-        void HandleOnBackgroundDropped()
+        void HandleOnTableDropped()
         {
             // NOTE: This puts items back on the background. We need this in more cases. Should be a method
             if (DraggableToken.itemBeingDragged != null)
@@ -338,7 +338,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        void HandleOnBackgroundClicked()
+        void HandleOnTableCLicked()
         {
             //Close all open windows if we're not dragging (multi tap stuff)
             if (DraggableToken.itemBeingDragged == null)
