@@ -304,12 +304,6 @@ namespace Assets.CS.TabletopUI
             return null;
         }
 
-        public IEnumerable<ISituationAnchor> GetAllSituationTokens()
-        {
-            return _tabletopContainer.GetAllSituationTokens();
-        }
-
-
 
 
         void HandleOnTableDropped()
@@ -390,9 +384,9 @@ namespace Assets.CS.TabletopUI
 
             //Close all windows and dump tokens to desktop before saving.
             //We don't want or need to track half-started situations.
-            var allSituationTokens = _tabletopContainer.GetAllSituationTokens();
-            foreach (var t in allSituationTokens)
-                t.SituationController.CloseSituation();
+            var allSituationControllers = Registry.Retrieve<TokensCatalogue>().CurrentSituationControllers;
+            foreach (var s in allSituationControllers)
+                s.CloseSituation();
 
             try
             {

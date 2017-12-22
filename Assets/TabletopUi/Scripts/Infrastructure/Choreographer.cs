@@ -41,14 +41,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
             //if new situation is beginning with an existing verb: do not action the creation.
-            //This may break some functionality initially because of the heavy use of 'x' as the default verb
-            //but is probably necessary to avoid multiple menace tokens and move away from dependency on maxoccurrences
+
             //oh: I could have an scc property which is a MUST CREATE override
 
-
-            var existingToken = _tabletopContainer.GetAllSituationTokens().SingleOrDefault(t => t.Id == scc.Recipe.ActionId);
+           
+            var existingSituation = Registry.Retrieve<TokensCatalogue>().CurrentSituationControllers
+                .SingleOrDefault(sc => sc.situationToken.Id == scc.Recipe.ActionId);
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
-            if (existingToken != null)
+            if (existingSituation != null)
             {
                 NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
                 //end execution here

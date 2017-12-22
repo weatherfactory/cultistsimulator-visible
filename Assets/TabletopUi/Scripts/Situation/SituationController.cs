@@ -101,6 +101,11 @@ namespace Assets.TabletopUi {
             return Situation == null ? null : Situation.RecipeId;
         }
 
+        public string GetActionId()
+        {
+            return situationToken.Id;
+        }
+
         public void StartingSlotsUpdated() {
             IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
             Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter);
