@@ -60,7 +60,7 @@ public class ElementStacksManager : IElementStacksManager {
         //Notify any view components that they should update appropriately.
         //The line below is iffy (and the use of ElementStackToken above) is iffy: it brings Unity dependencies into pure C# territory
         //but it stitches the old transform-centric approach in for now.
-        elementStackToken.container.TokenPickedUp(elementStackToken);
+        elementStackToken.container.ElementStackRemovedFromContainer(elementStackToken);
     }
 
 

@@ -145,8 +145,6 @@ namespace Assets.CS.TabletopUI
 
             if (onChangeDragState != null)
                 onChangeDragState(true);
-
-            container.TokenPickedUp(this);
         }
 
         public void OnDrag (PointerEventData eventData) {
@@ -154,12 +152,8 @@ namespace Assets.CS.TabletopUI
                 MoveObject(eventData);
         }
 
-        public virtual void ReturnToTabletop(INotification reason=null)
-        {
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
-            if(reason!=null)
-            notifier.TokenReturnedToTabletop(this,reason);
-        }
+        public abstract void ReturnToTabletop(INotification reason = null);
+    
 
         // Would solve this differently: By sending the object the drag position and allowing it to position itself as it desires
         // This allows us to animate a "moving up" animation while you're dragging
@@ -245,19 +239,7 @@ namespace Assets.CS.TabletopUI
 
         public abstract void OnDrop(PointerEventData eventData);
 
-        public virtual void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
-        {
-
-            bool moveAsideFor = false;
-            tokenDroppedOn.container.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
-
-            if (moveAsideFor)
-                DraggableToken.SetReturn(false, "was moved aside for");
-            else
-                DraggableToken.SetReturn(true);
-        
-        
-        }
+        public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
 
         public virtual void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {

@@ -256,7 +256,9 @@ namespace Assets.CS.TabletopUI
                 return;
             }
 
-            base.ReturnToTabletop(reason);
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+            if (reason != null)
+                notifier.TokenReturnedToTabletop(this, reason);
 
             if (lastTablePos != null)
                 transform.position = (Vector3)lastTablePos;
@@ -330,8 +332,11 @@ namespace Assets.CS.TabletopUI
 
         public void AssignToStackManager(IElementStacksManager manager)
         {
-            CurrentStacksManager.NotifyStackRemoved(this);
+            var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
+            //notify afterwards, in case it counts the things *currently* in its list
+            oldStacksManager.NotifyStackRemoved(this);
+            
         }
 
 
@@ -486,6 +491,8 @@ namespace Assets.CS.TabletopUI
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
 
+            //container.ElementStackRemovedFromContainer(this);
+
             base.StartDrag(eventData);
         }
 
@@ -521,6 +528,20 @@ namespace Assets.CS.TabletopUI
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+        }
+
+        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
+        {
+
+            bool moveAsideFor = false;
+            tokenDroppedOn.container.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+
+
         }
 
     }

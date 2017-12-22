@@ -193,32 +193,37 @@ namespace Assets.CS.TabletopUI {
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public void TokenPickedUp(DraggableToken draggableToken) {
-            onCardPickedUp(draggableToken as IElementStack);
+        
+        public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+        {
+            onCardPickedUp(elementStackToken);
         }
 
         public void TokenDropped(DraggableToken draggableToken) {
         }
 
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {
-            var usurperStack = potentialUsurper as ElementStackToken;
-            if (usurperStack == null)
-                incumbentMoved = false;
-            else
-            {
+
                 //incomer is a token. Does it fit in the slot?
-                if(GetSlotMatchForStack(usurperStack).MatchType==SlotMatchForAspectsType.Okay)
+                if(GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
                 { 
                     incumbentMoved = true;
                     incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
-                    AcceptStack(usurperStack);
+                    AcceptStack(potentialUsurper);
                 }
                 else
                     incumbentMoved = false;
-            }
+            
 
         }
+        public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        {
+            //do nothing, ever
+            incumbentMoved = false;
+        }
+
+
 
         public bool AllowDrag {
             get {

@@ -9,14 +9,15 @@ namespace Assets.CS.TabletopUI.Interfaces
 {
     public interface ITokenContainer
     {
-        void TokenPickedUp(DraggableToken draggableToken);
+        void ElementStackRemovedFromContainer(ElementStackToken elementStackToken);
         void TokenDropped(DraggableToken draggableToken);
         /// <summary>
         /// Called when an occupant has something else try to take its place. Should effect any changes necessary on the incumbent
         /// </summary>
         /// <param name="potentialUsurper"></param>
         /// <param name="IncumbentShouldMove"></param>
-        void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
+        void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
+        void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
         bool AllowDrag { get; }
         bool AllowStackMerge { get; } //allow a stack dropped on a stack here to combine with it
 

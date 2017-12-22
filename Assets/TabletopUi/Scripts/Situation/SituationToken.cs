@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
 #pragma warning disable 0649
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -49,6 +50,13 @@ namespace Assets.CS.TabletopUI
         public SituationState SituationState
         {
             get { return SituationController.Situation.State; }
+        }
+
+        public override void ReturnToTabletop(INotification reason = null)
+        {
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+            if (reason != null)
+                notifier.TokenReturnedToTabletop(this, reason);
         }
 
         public bool IsOpen = false;
@@ -248,6 +256,20 @@ namespace Assets.CS.TabletopUI
         public void ShowDestinationsForStack(IElementStack stack)
         {
             SituationController.ShowDestinationsForStack(stack);
+        }
+
+        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
+        {
+
+            bool moveAsideFor = false;
+            tokenDroppedOn.container.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+
+
         }
     }
 

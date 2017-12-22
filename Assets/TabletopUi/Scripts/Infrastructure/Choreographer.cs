@@ -22,7 +22,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _tabletopObjectBuilder = tabletopObjectBuilder;
         }
 
-        public void ArrangeTokenOnTable(DraggableToken token)
+        public void ArrangeTokenOnTable(SituationToken token)
         {
             token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
             _tabletopContainer.PutOnTable(token);
@@ -89,12 +89,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 tokenSlotPair.RecipeSlot.AcceptStack(element);
         }
 
-        void SituationAnimDone(DraggableToken token)
+        void SituationAnimDone(SituationToken token)
         {
             _tabletopContainer.PutOnTable(token);
         }
 
-        
 
         private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset)
         {

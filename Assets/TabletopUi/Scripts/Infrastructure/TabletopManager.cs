@@ -326,9 +326,13 @@ namespace Assets.CS.TabletopUI
                 // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
                 // Dragged windows should not change in height during/after dragging, since they float by default
 
-                //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
-                DraggableToken.itemBeingDragged.DisplayOnTable();
-                _tabletopContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
+                if(DraggableToken.itemBeingDragged is SituationToken)
+                    _tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged as SituationToken);
+                else if (DraggableToken.itemBeingDragged is ElementStackToken)
+                    _tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged as ElementStackToken);
+                else
+                    throw new NotImplementedException("Tried to put something weird on the table");
+
 
                 SoundManager.PlaySfx("CardDrop");
             }
@@ -429,6 +433,8 @@ namespace Assets.CS.TabletopUI
         }
 
         private void HandleDragStateChanged(bool isDragging) {
+            NoonUtility.Log("Handling drag state changed");
+
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
             
             // not dragging a stack? then do nothing. _tabletopContainer was destroyed (end of game?)

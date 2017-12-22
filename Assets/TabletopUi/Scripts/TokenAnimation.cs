@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using UnityEngine;
 using Assets.CS.TabletopUI;
 
 public class TokenAnimation : MonoBehaviour {
 
-	public event System.Action<DraggableToken> onAnimDone;
+	public event System.Action<SituationToken> onAnimDone;
 
 	protected DraggableToken token;
 
@@ -121,7 +122,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	protected virtual void FireCompleteEvent() {
 		if (onAnimDone != null)
-			onAnimDone(token);
+			onAnimDone((SituationToken)token);
 	}
 
 }

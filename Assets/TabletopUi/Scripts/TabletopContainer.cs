@@ -19,14 +19,17 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
     private ElementStacksManager _stacksManager;
 
 
-    public void TokenPickedUp(DraggableToken draggableToken) {
-        draggableToken.lastTablePos = draggableToken.transform.position;
+
+
+    public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    {
+        elementStackToken.lastTablePos = elementStackToken.transform.position;
     }
 
     public void TokenDropped(DraggableToken draggableToken) {
     }
 
-    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {
         //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
 
@@ -34,6 +37,16 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         incumbentMoved = true;
         PutOnTable(potentialUsurper);
     }
+
+    public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    {
+        //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
+
+        incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
+        incumbentMoved = true;
+        PutOnTable(potentialUsurper);
+    }
+
 
     public IEnumerable<ISituationAnchor> GetAllSituationTokens() {
         return GetComponentsInChildren<ISituationAnchor>();
@@ -59,20 +72,18 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         return Registry.Retrieve<TabletopObjectBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
     }
 
-    public void PutOnTable(DraggableToken token) {
+    public void PutOnTable(SituationToken token) {
 
         GetTokenTransformWrapper().Accept(token);
 
-        token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
-        token.RectTransform.localRotation = Quaternion.identity;
+        token.DisplayOnTable();
     }
 
     public void PutOnTable(ElementStackToken token)
     {
         _stacksManager.AcceptStack(token);
 
-        token.RectTransform.anchoredPosition3D = new Vector3(token.RectTransform.anchoredPosition3D.x, token.RectTransform.anchoredPosition3D.y, 0f);
-        token.RectTransform.localRotation = Quaternion.identity;
+        token.DisplayOnTable();
     }
 
     public bool AllowDrag { get { return true; } }

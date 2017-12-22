@@ -5,17 +5,23 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using System;
+using Noon;
 
 public class SituationStorage : MonoBehaviour, ITokenContainer
 {
     private ElementStacksManager _stacksManager;
-
-    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {
-        //I don't *think* this should ever be called. Let's find out.
-        //if it's not, ofc, we have one too few interfaces. The ITokenContainer is being used as both 'thing that has a stacksmanager' and 'direct parent that determines behaviour'
-        throw new NotImplementedException();
+        //do nothing, ever
+        incumbentMoved = false;
     }
+
+    public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    {
+        //do nothing, ever
+        incumbentMoved = false;
+    }
+
 
     public void Initialise()
     {
@@ -26,7 +32,11 @@ public class SituationStorage : MonoBehaviour, ITokenContainer
     public bool AllowDrag { get { return false; } }
     public bool AllowStackMerge { get { return false; } }
 
-    public void TokenPickedUp(DraggableToken draggableToken) { }
+    public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    {
+
+    }
+
     public void TokenDropped(DraggableToken draggableToken) { }
 
     public ElementStacksManager GetElementStacksManager()

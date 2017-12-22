@@ -12,6 +12,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 
 public class SituationResults : MonoBehaviour, ITokenContainer {
 
@@ -22,8 +23,15 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     private SituationController controller;
 
-    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {
+        //do nothing, ever
+        incumbentMoved = false;
+    }
+
+    public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    {
+        //do nothing, ever
         incumbentMoved = false;
     }
 
@@ -49,8 +57,11 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
         cardPos.ReorderCards(allStacksToOutput);
     }
 
-    public void TokenPickedUp(DraggableToken draggableToken) {
-        draggableToken.lastTablePos = draggableToken.transform.position;
+
+    public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    {
+
+        elementStackToken.lastTablePos = elementStackToken.transform.position;
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
         bool hasStacks = false;
@@ -72,7 +83,7 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
             return;
         }
 
-        // Do some uncovering & repositioning here
+        //// Do some uncovering & repositioning here
         cardPos.ReorderCards(stacks);
     }
 

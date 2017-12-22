@@ -12,8 +12,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _elementStacksManager=new ElementStacksManager(new TokenTransformWrapper(transform),"Limbo");
         }
 
-        public void TokenPickedUp(DraggableToken draggableToken)
+
+        public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
+
             //do nothing right now
         }
 
@@ -22,7 +24,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //do nothing right now
         }
 
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        {
+            //do nothing, ever
+            incumbentMoved = false;
+        }
+
+        public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {
             //do nothing, ever
             incumbentMoved = false;
