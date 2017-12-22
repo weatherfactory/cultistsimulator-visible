@@ -31,6 +31,8 @@ namespace Assets.TabletopUi {
         }
 
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w) {
+            Registry.Retrieve<TokensCatalogue>().RegisterSituation(this);
+
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this);
 
@@ -358,6 +360,8 @@ namespace Assets.TabletopUi {
                 situationWindow.Retire();
                 //at the moment, the controller is accessed through the token
                 //if we attach the controller to a third object, we'd need to retire that too
+                //...and here that third thing is! but we're still in mid-refactor.
+                Registry.Retrieve<TokensCatalogue>().DeregisterSituation(this);
             }
             else {
                 situationWindow.SetUnstarted();

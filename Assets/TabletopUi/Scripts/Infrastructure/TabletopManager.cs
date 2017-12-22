@@ -64,6 +64,7 @@ namespace Assets.CS.TabletopUI
         private TabletopObjectBuilder _tabletopObjectBuilder;
 
 
+
         public void Update()
         {
             _hotkeyWatcher.WatchForHotkeys();
@@ -138,6 +139,7 @@ namespace Assets.CS.TabletopUI
             var compendium = new Compendium();
             var character = new Character();
             var choreographer=new Choreographer(container, builder);
+            var situationsManager=new TokensCatalogue();
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -151,8 +153,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<Choreographer>(choreographer);
             registry.Register<MapController>(_mapController);
             registry.Register<Limbo>(Limbo);
-
-
+            registry.Register<TokensCatalogue>(situationsManager);
 
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
@@ -230,10 +231,6 @@ namespace Assets.CS.TabletopUI
             Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
 
         }
-
-
-
-
 
         public void ClearGameState(Heart h, IGameEntityStorage s,TabletopContainer tc)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -37,7 +38,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void BeginNewSituation(SituationCreationCommand scc)
         {
-
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
             //if new situation is beginning with an existing verb: do not action the creation.
@@ -71,6 +71,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token);
             }
+
         }
 
        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair)
