@@ -10,7 +10,6 @@ namespace Assets.CS.TabletopUI.Interfaces
     public interface ITokenContainer
     {
         void ElementStackRemovedFromContainer(ElementStackToken elementStackToken);
-        void TokenDropped(DraggableToken draggableToken);
         /// <summary>
         /// Called when an occupant has something else try to take its place. Should effect any changes necessary on the incumbent
         /// </summary>

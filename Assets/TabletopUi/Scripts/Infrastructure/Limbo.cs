@@ -19,10 +19,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //do nothing right now
         }
 
-        public void TokenDropped(DraggableToken draggableToken)
-        {
-            //do nothing right now
-        }
 
         public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {

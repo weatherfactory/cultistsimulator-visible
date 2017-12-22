@@ -104,10 +104,7 @@ namespace Assets.CS.TabletopUI {
          
         }
 
-        public void TokenDropped(DraggableToken draggableToken) {
-        }
-
-        public bool AllowDrag {
+  public bool AllowDrag {
             get {
                 return false;
             }

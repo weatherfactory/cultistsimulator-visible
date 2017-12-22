@@ -193,8 +193,6 @@ namespace Assets.CS.TabletopUI
 		
             if (DraggableToken.resetToStartPos) 
                 returnToStartPosition();
-            else if (oldContainer != null)
-                oldContainer.TokenDropped(this);
 
             oldContainer = null;
 

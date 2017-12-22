@@ -199,9 +199,7 @@ namespace Assets.CS.TabletopUI {
             onCardPickedUp(elementStackToken);
         }
 
-        public void TokenDropped(DraggableToken draggableToken) {
-        }
-
+  
         public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {
 

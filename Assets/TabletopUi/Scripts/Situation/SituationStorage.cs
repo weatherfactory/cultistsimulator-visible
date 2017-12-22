@@ -37,8 +37,6 @@ public class SituationStorage : MonoBehaviour, ITokenContainer
 
     }
 
-    public void TokenDropped(DraggableToken draggableToken) { }
-
     public ElementStacksManager GetElementStacksManager()
     {
         return _stacksManager;

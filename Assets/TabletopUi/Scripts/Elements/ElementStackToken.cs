@@ -223,7 +223,13 @@ namespace Assets.CS.TabletopUI
 
         public int Quantity
         {
-            get { return _quantity; }
+            get
+            {
+                if (Defunct)
+                    return 0;
+                else
+                    return _quantity;
+            }
         }
 
         public bool MarkedForConsumption { get; set; }
@@ -433,9 +439,6 @@ namespace Assets.CS.TabletopUI
 
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
-
-                // we're destroying the token so it never throws an onDropped and its container was not changed, so tell the current container, not the old.
-                this.container.TokenDropped(this);
                 this.Retire(false);                
             }
             else

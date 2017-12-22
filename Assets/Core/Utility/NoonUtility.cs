@@ -55,16 +55,20 @@ namespace Noon
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
+        public static int CurrentVerbosity = 5;
 
         public static string VersionNumber = "2017.12.b.3";
 
-        public static void Log(string message)
+        public static void Log(string message,int verbosityNeeded=0)
         {
+            if(verbosityNeeded<CurrentVerbosity)
+            { 
             //switch between in-Unity and unit testing
             if(UnitTestingMode)
             Console.WriteLine(message);
             else
             Debug.Log(">>>>> " + message);
+            }
         }
 
         public static string GetGameSaveLocation()

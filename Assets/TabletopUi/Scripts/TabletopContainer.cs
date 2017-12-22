@@ -26,8 +26,6 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         elementStackToken.lastTablePos = elementStackToken.transform.position;
     }
 
-    public void TokenDropped(DraggableToken draggableToken) {
-    }
 
     public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {

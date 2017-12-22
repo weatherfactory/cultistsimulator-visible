@@ -87,9 +87,6 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
         cardPos.ReorderCards(stacks);
     }
 
-    public void TokenDropped(DraggableToken draggableToken) {
-
-    }
 
     public IEnumerable<IElementStack> GetOutputStacks() {
         return GetElementStacksManager().GetStacks();

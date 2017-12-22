@@ -433,7 +433,6 @@ namespace Assets.CS.TabletopUI
         }
 
         private void HandleDragStateChanged(bool isDragging) {
-            NoonUtility.Log("Handling drag state changed");
 
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
             

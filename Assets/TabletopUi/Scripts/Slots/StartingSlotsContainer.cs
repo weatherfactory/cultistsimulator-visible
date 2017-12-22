@@ -125,10 +125,6 @@ namespace Assets.TabletopUi.SlotsContainers {
             
         }
 
-        public void TokenDropped(DraggableToken draggableToken) {
-        }
-
-
 
         public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
         {
