@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class ElementOverview : MonoBehaviour {
         elementCounts[i].color = color;
     }
 
-    public void UpdateDisplay(IElementStacksManager allCurrentStacksOnTabletop,IEnumerable<ISituationAnchor> situations) 
+    public void UpdateDisplay(IElementStacksManager allCurrentStacksOnTabletop,IEnumerable<SituationController> situations) 
     {
         // TODO: This does a lot of iterating each frame to grab all cards in play. If possible change this to use the planned "lists" instead
         // TODO: This is being called every frame in update, if possible only call it when the stacks have changed? Have a global "elements changed" event to call?
@@ -44,7 +45,7 @@ public class ElementOverview : MonoBehaviour {
             count = allCurrentStacksOnTabletop.GetCurrentElementQuantity(overviewElementIds[i]);
 
             foreach (var sit in situations)
-                count += sit.SituationController.GetElementCountInSituation(overviewElementIds[i]);
+                count += sit.GetElementCountInSituation(overviewElementIds[i]);
 
             if (draggedElementStack != null && draggedElementStack.Id == overviewElementIds[i])
                 count += draggedElementStack.Quantity;

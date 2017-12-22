@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -60,11 +61,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void SaveActiveGame(TabletopContainer tabletopContainer,Character character)
         {
             var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
-            var allSituationTokens = tabletopContainer.GetAllSituationTokens();
+            var currentSituationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
             var allDecks = character.DeckInstances;
 
             var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,
-                allSituationTokens,allDecks);
+                currentSituationControllers,allDecks);
 
             BackupSave();
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());

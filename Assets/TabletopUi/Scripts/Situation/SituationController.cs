@@ -18,7 +18,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi {
-    public class SituationController : ISituationSubscriber {
+    public class SituationController : ISituationSubscriber,ISaveable {
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
         public ISituation Situation;
@@ -372,6 +372,12 @@ namespace Assets.TabletopUi {
                 situationWindow.SetUnstarted();
                 situationToken.SetCompletionCount(0);
             }
+        }
+
+        public void Retire()
+        {
+            situationToken.Retire();
+            Registry.Retrieve<TokensCatalogue>().DeregisterSituation(this);
         }
 
         public Hashtable GetSaveData() {

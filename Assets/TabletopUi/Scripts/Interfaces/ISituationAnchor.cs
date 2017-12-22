@@ -10,7 +10,7 @@ using Assets.CS.TabletopUI;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
-    public interface ISituationAnchor:ISaveable
+    public interface ISituationAnchor
     {
         string Id { get; }
         SituationController SituationController { get; }

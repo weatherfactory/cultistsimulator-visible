@@ -46,12 +46,6 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
     }
 
 
-    public IEnumerable<ISituationAnchor> GetAllSituationTokens() {
-        return GetComponentsInChildren<ISituationAnchor>();
-    }
-
-
-
     public void CloseAllSituationWindowsExcept(SituationToken except) {
         var situationTokens = GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
         foreach (var situationToken in situationTokens) {

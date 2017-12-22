@@ -68,7 +68,8 @@ namespace Assets.CS.TabletopUI
         public void Update()
         {
             _hotkeyWatcher.WatchForHotkeys();
-            _elementOverview.UpdateDisplay(_tabletopContainer.GetElementStacksManager(),_tabletopContainer.GetAllSituationTokens());
+            _elementOverview.UpdateDisplay(_tabletopContainer.GetElementStacksManager(),
+                Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations());
             _cardAnimationController.CheckForCardAnimations();
         }
 
@@ -237,8 +238,9 @@ namespace Assets.CS.TabletopUI
             h.Clear();
             s.DeckInstances=new List<IDeckInstance>();
        
-            foreach (var situation in tc.GetAllSituationTokens())
-                situation.Retire();
+            
+            foreach(var sc in Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations())
+                sc.Retire();
 
             foreach (var element in tc.GetElementStacksManager().GetStacks())
                 element.Retire(true); //looks daft but pretty on reset
@@ -384,23 +386,23 @@ namespace Assets.CS.TabletopUI
 
             //Close all windows and dump tokens to desktop before saving.
             //We don't want or need to track half-started situations.
-            var allSituationControllers = Registry.Retrieve<TokensCatalogue>().CurrentSituationControllers;
+            var allSituationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
             foreach (var s in allSituationControllers)
                 s.CloseSituation();
 
-            try
-            {
+           // try
+          //  {
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
                 saveGameManager.SaveActiveGame(_tabletopContainer, Registry.Retrieve<Character>());
                 if (withNotification)
                     _notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
-            }
-            catch (Exception e)
-            {
+            //}
+            //catch (Exception e)
+            //{
 
-                _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
-            }
+          //      _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
+           // }
 
             _heart.ResumeBeating();
         }

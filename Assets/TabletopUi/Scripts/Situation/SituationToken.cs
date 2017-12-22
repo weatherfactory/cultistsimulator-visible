@@ -150,10 +150,6 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public Hashtable GetSaveData()
-        {
-            return SituationController.GetSaveData();
-        }
 
         public void OpenToken()
         {

@@ -8,7 +8,7 @@ namespace Assets.Core.Entities
 {
    public class TokensCatalogue
     {
-        public List<SituationController> CurrentSituationControllers;
+        private readonly List<SituationController> CurrentSituationControllers;
 
         public TokensCatalogue()
         {

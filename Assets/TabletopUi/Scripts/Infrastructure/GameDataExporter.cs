@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(Character character, IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> decks);
+        Hashtable GetSaveHashTable(Character character, IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> decks);
 
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
@@ -28,13 +28,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(Character character,IEnumerable<IElementStack> stacks, IEnumerable<ISituationAnchor> situations,IEnumerable<IDeckInstance> deckInstances)
+        public Hashtable GetSaveHashTable(Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances)
         {
             var htAll = new Hashtable()
             {
                 {SaveConstants.SAVE_CHARACTER_DETAILS,GetHashTableForCharacter(character) },
                 {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
-                {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situations)},
+                {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situationControllers)},
                 {SaveConstants.SAVE_DECKS,GetHashTableForDecks(deckInstances) }
             };
             return htAll;
@@ -58,14 +58,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// I think it probably shouldn't be
         /// </summary>
         /// <returns></returns>
-        private Hashtable GetHashTableForSituations(IEnumerable<ISituationAnchor> situations)
+        private Hashtable GetHashTableForSituations(IEnumerable<SituationController> situationControllers)
         {
    
             var htSituations = new Hashtable();
-            foreach (var s in situations)
+            foreach (var s in situationControllers)
             {
                 var htSituationProperties = s.GetSaveData(); 
-                htSituations.Add(s.SaveLocationInfo, htSituationProperties);
+                htSituations.Add(s.situationToken.SaveLocationInfo, htSituationProperties);
             }
             return htSituations;
         }
