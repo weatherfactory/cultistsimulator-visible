@@ -1,9 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Copyright (C) 2014 - 2016 Stephan Schaem - All Rights Reserved
-// This code can only be used under the standard Unity Asset Store End User License Agreement
-// A Copy of the EULA APPENDIX 1 is available at http://unity3d.com/company/legal/as_terms
-
 Shader "TextMeshPro/Sprite"
 {
 	Properties
@@ -18,7 +12,7 @@ Shader "TextMeshPro/Sprite"
 		_StencilReadMask ("Stencil Read Mask", Float) = 255
 
 		_ColorMask ("Color Mask", Float) = 15
-		_ClipRect ("Clip Rect", vector) = (-10000, -10000, 10000, 10000)
+		_ClipRect ("Clip Rect", vector) = (-32767, -32767, 32767, 32767)
 
 		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip ("Use Alpha Clip", Float) = 0
 	}
