@@ -32,6 +32,15 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] CardEffectRemove cardBurnFX;
 
+        //The IElementStacksManager is the model-level association of the StacksToken. It's not a Unity-specific thing, and determines where the stack 'really' is for purposes of
+        //content framework behaviour.
+
+        //The ITokenTransformWrapper is the current location in the Unity hierarchy. (Not coincidentally, a StacksManager also contains a tokenwrapper. It should ultimately be possible to remove *this* reference).
+
+        //The two have historically been the same thing! So there may be some inconsistencies while we work through it.
+
+        public IElementStacksManager CurrentStacksManager { get; set; }
+
         private Element _element;
         private int _quantity;
         private ITokenTransformWrapper currentWrapper;
@@ -199,6 +208,7 @@ namespace Assets.CS.TabletopUI
             get { return _element == null ? null : _element.Id; }
         }
 
+
         public bool Decays
         {
             get { return _element.Lifetime > 0; }
@@ -273,6 +283,9 @@ namespace Assets.CS.TabletopUI
             else
                 Destroy(gameObject);
 
+            //that takes care of the Unity side of things. Now remove it from the StacksManager
+            CurrentStacksManager.ConsumeStack(this);
+
             return true;
         }
 
@@ -301,7 +314,6 @@ namespace Assets.CS.TabletopUI
             }
             catch (Exception e)
             {
-
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }

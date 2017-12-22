@@ -179,6 +179,7 @@ namespace Assets.Editor.Tests
     {
         public Element Element { get; set; }
         public string Id { get { return Element.Id; } }
+        public IElementStacksManager CurrentStacksManager { get; set; }
         public string SaveLocationInfo { get; set; }
         public int Quantity { get; set; }
         public bool Defunct { get; private set; }

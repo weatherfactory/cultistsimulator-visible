@@ -25,18 +25,19 @@ public interface IElementStacksManager {
     IEnumerable<IElementStack> GetStacks();
     void AcceptStack(IElementStack stack);
     void AcceptStacks(IEnumerable<IElementStack> stacks);
+    void ConsumeStack(IElementStack stack);
     void ConsumeAllStacks();
     void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource);
 }
 
 public class ElementStacksManager : IElementStacksManager {
     private readonly ITokenTransformWrapper _wrapper;
-    private List<IElementStack> _contents;
+    private List<IElementStack> Stacks;
 
 
     public ElementStacksManager(ITokenTransformWrapper w) {
         _wrapper = w;
-        _contents=new List<IElementStack>();
+        Stacks=new List<IElementStack>();
     }
 
     public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {
@@ -58,14 +59,14 @@ public class ElementStacksManager : IElementStacksManager {
 
         int unsatisfiedChange = quantityChange;
         while (unsatisfiedChange < 0) {
-            IElementStack cardToRemove = _wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+            IElementStack stackToAffect = _wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
-            if (cardToRemove == null) //we haven't found either a concrete matching element, or an element with that ID.
+            if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                 //so end execution here, and return the unsatisfied change amount
                 return unsatisfiedChange;
 
-            int originalQuantity = cardToRemove.Quantity;
-            cardToRemove.ModifyQuantity(unsatisfiedChange);
+            int originalQuantity = stackToAffect.Quantity;
+            stackToAffect.ModifyQuantity(unsatisfiedChange);
             unsatisfiedChange += originalQuantity;
 
         }
@@ -84,7 +85,8 @@ public class ElementStacksManager : IElementStacksManager {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        _wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        IElementStack newStack=_wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        Stacks.Add(newStack);
         return quantityChange;
     }
 
@@ -130,6 +132,9 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public void AcceptStack(IElementStack stack) {
+        //Redundant code here while we work through the differences between appearance and fundamental reality.
+        //THERE IS NEVER ONLY ONE HISTORY. THE MANSUS HAS NO WALLS.
+        Stacks.Add(stack);
         _wrapper.Accept(stack);
     }
 
@@ -137,6 +142,11 @@ public class ElementStacksManager : IElementStacksManager {
         foreach (var eachStack in stacks) {
             AcceptStack(eachStack);
         }
+    }
+
+    public void ConsumeStack(IElementStack stack)
+    {
+        Stacks.Remove(stack);
     }
 
     public void ConsumeAllStacks() {

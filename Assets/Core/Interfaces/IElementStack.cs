@@ -10,6 +10,7 @@ namespace Assets.Core.Interfaces
     public interface IElementStack
     {
         string Id { get; }
+        IElementStacksManager CurrentStacksManager { get; set; }
         string SaveLocationInfo { get; set; }
         int Quantity { get; }
         bool Defunct { get; }
