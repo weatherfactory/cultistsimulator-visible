@@ -137,7 +137,7 @@ public class ElementStacksManager : IElementStacksManager {
 
     public IEnumerable<IElementStack> GetStacks()
     {
-        return Stacks.ToList();
+        return Stacks.Where(s=>!s.Defunct).ToList();
     }
 
     public void AcceptStack(IElementStack stack) {
