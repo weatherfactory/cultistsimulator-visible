@@ -133,5 +133,11 @@ namespace Assets.CS.TabletopUI {
         public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
             throw new NotImplementedException();
         }
+
+        public void OnDestroy()
+        {
+            if (_stacksManager != null)
+                _stacksManager.Deregister();
+        }
     }
 }

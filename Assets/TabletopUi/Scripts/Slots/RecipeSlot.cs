@@ -285,5 +285,11 @@ namespace Assets.CS.TabletopUI {
         public void OnPointerClick(PointerEventData eventData) {
             Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification);
         }
+
+        public void OnDestroy()
+        {
+            if (_stacksManager != null)
+                _stacksManager.Deregister();
+        }
     }
 }

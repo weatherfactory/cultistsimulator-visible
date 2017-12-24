@@ -6,6 +6,7 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Noon;
 
 
@@ -26,6 +27,17 @@ public class ElementStacksManager : IElementStacksManager {
         TokenPhysicalLocation = w;
         Stacks=new List<IElementStack>();
         Name = name;
+
+        var catalogue = Registry.Retrieve<StackManagersCatalogue>();
+        catalogue.RegisterStackManager(this);
+
+    }
+
+    public void Deregister()
+    {
+        var catalogue = Registry.Retrieve<StackManagersCatalogue>();
+        if(catalogue!=null)
+         catalogue.DeregisterStackManager(this);
     }
 
     public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {

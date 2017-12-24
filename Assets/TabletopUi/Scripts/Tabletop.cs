@@ -77,4 +77,10 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
+
+    public void OnDestroy()
+    {
+        if (_stacksManager != null)
+            _stacksManager.Deregister();
+    }
 }

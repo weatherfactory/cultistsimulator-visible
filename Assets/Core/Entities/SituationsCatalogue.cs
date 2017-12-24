@@ -9,26 +9,26 @@ namespace Assets.Core.Entities
 {
     public class SituationsCatalogue
     {
-        private readonly List<SituationController> CurrentSituationControllers;
+        private readonly List<SituationController> _currentSituationControllers;
 
         public SituationsCatalogue()
         {
-            CurrentSituationControllers=new List<SituationController>();
+            _currentSituationControllers=new List<SituationController>();
         }
 
         public List<SituationController> GetRegisteredSituations()
         {
-            return CurrentSituationControllers.ToList();
+            return _currentSituationControllers.ToList();
         }
 
         public void RegisterSituation(SituationController controller)
         {
-            CurrentSituationControllers.Add(controller);
+            _currentSituationControllers.Add(controller);
         }
 
         public void DeregisterSituation(SituationController situationController)
         {
-            CurrentSituationControllers.Remove(situationController);
+            _currentSituationControllers.Remove(situationController);
         }
         
         public SituationController GetOpenSituation()

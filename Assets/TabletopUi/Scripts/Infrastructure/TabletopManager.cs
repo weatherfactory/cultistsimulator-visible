@@ -141,7 +141,8 @@ namespace Assets.CS.TabletopUI
             var compendium = new Compendium();
             var character = new Character();
             var choreographer=new Choreographer(containsTokens, builder,tableLevelTransform,windowLevelTransform);
-            var situationsManager=new SituationsCatalogue();
+            var situationsCatalogue=new SituationsCatalogue();
+            var elementStacksCatalogue=new StackManagersCatalogue();
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -155,12 +156,15 @@ namespace Assets.CS.TabletopUI
             registry.Register<Choreographer>(choreographer);
             registry.Register<MapController>(_mapController);
             registry.Register<Limbo>(Limbo);
-            registry.Register<SituationsCatalogue>(situationsManager);
+            registry.Register<SituationsCatalogue>(situationsCatalogue);
+            registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
 
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
+            Limbo.Initialise();
 
-            
+
+
         }
 
         private void OnDestroy() {

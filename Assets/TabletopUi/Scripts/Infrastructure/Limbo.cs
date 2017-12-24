@@ -1,4 +1,5 @@
-﻿using Assets.CS.TabletopUI;
+﻿using Assets.Core.Entities;
+using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 
@@ -7,11 +8,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class Limbo : MonoBehaviour,IContainsTokensView {
         private ElementStacksManager _elementStacksManager;
 
-        public void Start()
+        public void Initialise()
         {
             _elementStacksManager=new ElementStacksManager(new TokenTransformWrapper(transform),"Limbo");
         }
-
 
         public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
@@ -42,6 +42,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public string GetSaveLocationInfoForDraggable(DraggableToken draggable)
         {
             return "limbo";
+        }
+
+        public void OnDestroy()
+        {
+            if(_elementStacksManager!=null)
+                _elementStacksManager.Deregister();
         }
     }
 }

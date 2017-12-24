@@ -105,4 +105,10 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
     public void ShowMap() {
         Registry.Retrieve<MapController>().ShowMansusMap(transform, true);
     }
+
+    public void OnDestroy()
+    {
+        if (stacksManager != null)
+            stacksManager.Deregister();
+    }
 }

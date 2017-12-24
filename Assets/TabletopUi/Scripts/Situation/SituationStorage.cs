@@ -45,4 +45,10 @@ public class SituationStorage : MonoBehaviour, IContainsTokensView
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return "slot_storage";
     }
+
+    public void OnDestroy()
+    {
+        if (_stacksManager != null)
+            _stacksManager.Deregister();
+    }
 }

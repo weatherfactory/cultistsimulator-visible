@@ -337,10 +337,11 @@
     <Compile Include="Assets\Core\Entities\Legacy.cs" />
     <Compile Include="Assets\Core\Entities\Recipe.cs" />
     <Compile Include="Assets\Core\Entities\Situation.cs" />
+    <Compile Include="Assets\Core\Entities\SituationsCatalogue.cs" />
     <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
     <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
     <Compile Include="Assets\Core\Entities\Source.cs" />
-    <Compile Include="Assets\Core\Entities\SituationsCatalogue.cs" />
+    <Compile Include="Assets\Core\Entities\StackManagersCatalogue.cs" />
     <Compile Include="Assets\Core\Enums\CharacterState.cs" />
     <Compile Include="Assets\Core\Enums\SituationState.cs" />
     <Compile Include="Assets\Core\Enums\SourceType.cs" />
@@ -403,11 +404,11 @@
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SceneNumber.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SpeedController.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IContainsTokensView.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IDraggableHolder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationDetails.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationSubscriber.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IContainsTokensView.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenGlow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\LetterPanel.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\MapAnimation.cs" />
@@ -439,8 +440,8 @@
     <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotViz.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\SlotDetailsWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\StartingSlotsContainer.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Tabletop.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopImageBurner.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimation.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimationToSlot.cs" />
