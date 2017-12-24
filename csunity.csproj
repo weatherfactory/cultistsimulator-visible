@@ -352,7 +352,7 @@
     <Compile Include="Assets\Core\Interfaces\INotifier.cs" />
     <Compile Include="Assets\Core\Interfaces\ISaveable.cs" />
     <Compile Include="Assets\Core\Interfaces\ISituationEffectCommand.cs" />
-    <Compile Include="Assets\Core\Interfaces\ITokenTransformWrapper.cs" />
+    <Compile Include="Assets\Core\Interfaces\ITokenPhysicalLocation.cs" />
     <Compile Include="Assets\Core\Interfaces\IVerb.cs" />
     <Compile Include="Assets\Core\Utility\NoonUtility.cs" />
     <Compile Include="Assets\Logic\AspectMatchFilter.cs" />
@@ -384,7 +384,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackBadge.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackSimple.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackToken.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopContainerTokenTransformWrapper.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopTokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\CardAnimationController.cs" />
@@ -407,11 +407,11 @@
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationDetails.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationSubscriber.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IContainsTokens.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenGlow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\LetterPanel.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\MapAnimation.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\MapContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\MapContainsTokens.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationLog.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationLogTEST.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\NotificationWindow.cs" />
@@ -440,7 +440,7 @@
     <Compile Include="Assets\TabletopUi\Scripts\Slots\SlotDetailsWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Slots\StartingSlotsContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopBackground.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\TabletopContainer.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\TabletopContainsTokens.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TabletopImageBurner.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimation.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\TokenAnimationToSlot.cs" />

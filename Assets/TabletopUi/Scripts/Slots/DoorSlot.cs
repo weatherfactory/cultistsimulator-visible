@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class DoorSlot : MonoBehaviour, IDropHandler, ITokenContainer, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+    public class DoorSlot : MonoBehaviour, IDropHandler, IContainsTokens, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action< IElementStack> onCardDropped;
 
         public Graphic border;
@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             ShowGlow(false, false);
-            ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
+            ITokenPhysicalLocation stacksWrapper = new TokenTransformWrapper(transform);
             //will this be called as necessary? we might need an Initialise()
             _stacksManager = new ElementStacksManager(stacksWrapper,"door");
         }

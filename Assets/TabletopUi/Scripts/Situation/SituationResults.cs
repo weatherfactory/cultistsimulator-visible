@@ -14,7 +14,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
-public class SituationResults : MonoBehaviour, ITokenContainer {
+public class SituationResults : MonoBehaviour, IContainsTokens {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;
@@ -40,7 +40,7 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     public void Initialise(SituationController sc) {
         controller = sc;
-        ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
+        ITokenPhysicalLocation stacksWrapper = new TokenTransformWrapper(transform);
       stacksManager= new ElementStacksManager(stacksWrapper,"situationresults");
     }
 

@@ -55,8 +55,8 @@ namespace Assets.CS.TabletopUI
 
         public bool rotateOnDrag = true;
         protected INotifier notifier;
-        public ITokenContainer container;
-        public ITokenContainer oldContainer; // Used to tell oldContainer that this thing was dropped successfully
+        public IContainsTokens containsTokens;
+        public IContainsTokens OldContainsTokens; // Used to tell OldContainsTokens that this thing was dropped successfully
 
         [SerializeField] GraphicFader glowImage;
 
@@ -68,7 +68,7 @@ namespace Assets.CS.TabletopUI
         public abstract string Id { get; }
 
         /// <summary>
-        /// This is an underscore-separated x,y localPosition in the current transform/container
+        /// This is an underscore-separated x,y localPosition in the current transform/containsTokens
         /// but could be anything
         /// </summary>
         public string SaveLocationInfo
@@ -81,7 +81,7 @@ namespace Assets.CS.TabletopUI
                 RectTransform.localPosition = new Vector3(x, y);
 
             }
-            get { return container.GetSaveLocationInfoForDraggable(this) +"_" + Guid.NewGuid(); }
+            get { return containsTokens.GetSaveLocationInfoForDraggable(this) +"_" + Guid.NewGuid(); }
         }
 
 
@@ -90,15 +90,15 @@ namespace Assets.CS.TabletopUI
             notifier = n;
         }
 
-        public virtual void SetContainer(ITokenContainer newContainer)
+        public virtual void SetContainer(IContainsTokens newContainsTokens)
         {
-            oldContainer = container; 
-            container = newContainer;
+            OldContainsTokens = containsTokens; 
+            containsTokens = newContainsTokens;
         }
 
-        public virtual bool IsInContainer(ITokenContainer candidateContainer)
+        public virtual bool IsInContainer(IContainsTokens candidateContainsTokens)
         {
-            return candidateContainer == container;
+            return candidateContainsTokens == containsTokens;
         }
 
         public void OnBeginDrag (PointerEventData eventData) {
@@ -108,7 +108,7 @@ namespace Assets.CS.TabletopUI
 
         bool CanDrag(PointerEventData eventData)
         {
-            if (!container.AllowDrag || !AllowDrag)
+            if (!containsTokens.AllowDrag || !AllowDrag)
                 return false;
 
             if ( itemBeingDragged != null || draggingEnabled == false )
@@ -194,7 +194,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.resetToStartPos) 
                 returnToStartPosition();
 
-            oldContainer = null;
+            OldContainsTokens = null;
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
@@ -224,7 +224,7 @@ namespace Assets.CS.TabletopUI
 
             SoundManager.PlaySfx("CardDragFail");
 
-            if (startParent.GetComponent<TabletopContainer>()) {
+            if (startParent.GetComponent<TabletopContainsTokens>()) {
                 //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
                 ReturnToTabletop(null);
             }
@@ -305,7 +305,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged != null && !lastGlowState)
                 show = false;
             // If we can not drag, don't show the hover highlight
-            else if (!container.AllowDrag || !AllowDrag)
+            else if (!containsTokens.AllowDrag || !AllowDrag)
                 show = false;
 
             if (show) {

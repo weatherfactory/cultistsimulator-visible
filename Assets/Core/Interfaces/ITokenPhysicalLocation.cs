@@ -8,9 +8,9 @@ using Assets.CS.TabletopUI;
 namespace Assets.Core.Interfaces
 {
     /// <summary>
-    /// adds element stacks to a specified container
+    /// adds element stacks to a specified containsTokens
     /// </summary>
-    public interface ITokenTransformWrapper
+    public interface ITokenPhysicalLocation
     {
         IElementStack ProvisionElementStack(string elementId, int quantity,Source stackSource, string locatorId=null);
         void Accept(IElementStack stack);

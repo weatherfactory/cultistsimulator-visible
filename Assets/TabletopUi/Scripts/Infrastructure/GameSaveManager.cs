@@ -58,9 +58,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //for saving from the tabletop
-        public void SaveActiveGame(TabletopContainer tabletopContainer,Character character)
+        public void SaveActiveGame(TabletopContainsTokens tabletopContainsTokens,Character character)
         {
-            var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
+            var allStacks = tabletopContainsTokens.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
             var allDecks = character.DeckInstances;
 
@@ -79,9 +79,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportHashedSaveToState(TabletopContainer tabletopContainer, IGameEntityStorage storage, Hashtable htSave)
+        public void ImportHashedSaveToState(TabletopContainsTokens tabletopContainsTokens, IGameEntityStorage storage, Hashtable htSave)
         {
-            dataImporter.ImportSavedGameToState(tabletopContainer, storage, htSave);
+            dataImporter.ImportSavedGameToState(tabletopContainsTokens, storage, htSave);
         }
 
         public SavedCrossSceneState RetrieveSavedCrossSceneState()

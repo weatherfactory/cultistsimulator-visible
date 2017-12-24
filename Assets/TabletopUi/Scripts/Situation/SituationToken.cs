@@ -235,7 +235,7 @@ namespace Assets.CS.TabletopUI
             {
                 SituationController.OpenSituation();
 
-                (container as TabletopContainer).CloseAllSituationWindowsExcept(this);
+                Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(this.Id);
 
             }
             else
@@ -258,7 +258,7 @@ namespace Assets.CS.TabletopUI
         {
 
             bool moveAsideFor = false;
-            tokenDroppedOn.container.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.containsTokens.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");

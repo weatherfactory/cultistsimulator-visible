@@ -11,15 +11,19 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Assets.TabletopUi.Scripts {
-    public class TokenTransformWrapper : ITokenTransformWrapper {
+    /// <summary>
+    /// The TokenTransformWrapper has a nice non-Unity interface so the StacksManager can deal with it
+    /// but the work it does is to manage the Unity details
+    /// </summary>
+    public class TokenTransformWrapper : ITokenPhysicalLocation {
 
         protected Transform wrappedTransform;
-        protected ITokenContainer wrappedContainer; //one container can have multiple wrapped transforms
+        protected IContainsTokens containsTokens;
 
         public TokenTransformWrapper(Transform t) {
             wrappedTransform = t;
-            wrappedContainer = wrappedTransform.GetComponent<ITokenContainer>();
-            Assert.IsNotNull(wrappedContainer, "not a container!");
+            containsTokens = wrappedTransform.GetComponent<IContainsTokens>();
+            Assert.IsNotNull(containsTokens, "not a containsTokens!");
         }
 
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
@@ -42,7 +46,7 @@ namespace Assets.TabletopUi.Scripts {
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
-            token.SetContainer(wrappedContainer);
+            token.SetContainer(containsTokens);
         }
 
         public virtual IEnumerable<DraggableToken> GetTokens() {

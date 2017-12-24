@@ -15,10 +15,8 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-public class TabletopContainer : MonoBehaviour, ITokenContainer {
+public class TabletopContainsTokens : MonoBehaviour, IContainsTokens {
     private ElementStacksManager _stacksManager;
-
-
 
 
     public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
@@ -43,17 +41,6 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
         incumbentMoved = true;
         PutOnTable(potentialUsurper);
-    }
-
-
-    public void CloseAllSituationWindowsExcept(SituationToken except) {
-        var situationTokens = GetTokenTransformWrapper().GetSituationTokens().Where(sw => sw != except);
-        foreach (var situationToken in situationTokens) {
-            if (DraggableToken.itemBeingDragged == null ||
-                DraggableToken.itemBeingDragged.gameObject != situationToken.gameObject)
-
-                situationToken.CloseSituation();
-        }
     }
 
     public SituationToken GetOpenToken() {
@@ -92,8 +79,8 @@ public class TabletopContainer : MonoBehaviour, ITokenContainer {
         return _stacksManager;
     }
 
-    public ITokenTransformWrapper GetTokenTransformWrapper() {
-        return new TabletopContainerTokenTransformWrapper(transform);
+    public ITokenPhysicalLocation GetTokenTransformWrapper() {
+        return new TabletopTokenTransformWrapper(transform);
     }
 
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {

@@ -41,7 +41,7 @@ namespace Assets.CS.TabletopUI
         //The two have historically been the same thing! So there may be some inconsistencies while we work through it.
 
         private IElementStacksManager CurrentStacksManager;
-        private ITokenTransformWrapper currentWrapper;
+        private ITokenPhysicalLocation currentWrapper;
 
         private Element _element;
         private int _quantity;
@@ -347,7 +347,7 @@ namespace Assets.CS.TabletopUI
 
         public void SignalRemovedFromContainer()
         {
-            container.ElementStackRemovedFromContainer(this);
+            containsTokens.ElementStackRemovedFromContainer(this);
         }
 
 
@@ -451,7 +451,7 @@ namespace Assets.CS.TabletopUI
                 
             var droppedOnToken = stackDroppedOn as DraggableToken;
             bool moveAsideFor = false;
-            droppedOnToken.container.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+            droppedOnToken.containsTokens.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false,"was moved aside for");
@@ -468,7 +468,7 @@ namespace Assets.CS.TabletopUI
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
 
-                var gateway = container.GetElementStacksManager();
+                var gateway = containsTokens.GetElementStacksManager();
                 gateway.AcceptStack(cardLeftBehind);
 
                 // Gateway accepting stack puts it to pos Vector3.zero, so this is last
@@ -477,7 +477,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOnTabletop() {
-            return transform.parent.GetComponent<TabletopContainer>() != null;
+            return transform.parent.GetComponent<TabletopContainsTokens>() != null;
         }
 
         public void MergeIntoStack(ElementStackToken merge) {
@@ -487,7 +487,7 @@ namespace Assets.CS.TabletopUI
 
         public bool AllowMerge()
         {
-            return container.AllowStackMerge && !Decays;
+            return containsTokens.AllowStackMerge && !Decays;
         }
 
         protected override void StartDrag(PointerEventData eventData)
@@ -499,7 +499,7 @@ namespace Assets.CS.TabletopUI
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
 
-            //container.ElementStackRemovedFromContainer(this);
+            //containsTokens.ElementStackRemovedFromContainer(this);
 
             base.StartDrag(eventData);
         }
@@ -542,7 +542,7 @@ namespace Assets.CS.TabletopUI
         {
 
             bool moveAsideFor = false;
-            tokenDroppedOn.container.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.containsTokens.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");

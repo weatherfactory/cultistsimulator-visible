@@ -14,26 +14,26 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     //places and arranges things on the table
     public class Choreographer
     {
-        private TabletopContainer _tabletopContainer;
+        private TabletopContainsTokens _tabletopContainsTokens;
         private TabletopObjectBuilder _tabletopObjectBuilder;
 
-        public Choreographer(TabletopContainer tabletopContainer,TabletopObjectBuilder tabletopObjectBuilder)
+        public Choreographer(TabletopContainsTokens tabletopContainsTokens,TabletopObjectBuilder tabletopObjectBuilder)
         {
-            _tabletopContainer = tabletopContainer;
+            _tabletopContainsTokens = tabletopContainsTokens;
             _tabletopObjectBuilder = tabletopObjectBuilder;
         }
 
         public void ArrangeTokenOnTable(SituationToken token)
         {
             token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
-            _tabletopContainer.PutOnTable(token);
+            _tabletopContainsTokens.PutOnTable(token);
         }
 
         //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
             stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
-            _tabletopContainer.PutOnTable(stack);
+            _tabletopContainsTokens.PutOnTable(stack);
         }
 
         public void BeginNewSituation(SituationCreationCommand scc)
@@ -92,7 +92,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         void SituationAnimDone(SituationToken token)
         {
-            _tabletopContainer.PutOnTable(token);
+            _tabletopContainsTokens.PutOnTable(token);
         }
 
 
@@ -111,7 +111,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos)
         {
-            foreach (var t in _tabletopContainer.GetTokenTransformWrapper().GetTokens())
+            foreach (var t in _tabletopContainsTokens.GetTokenTransformWrapper().GetTokens())
             {
                 if (token != t
                     && candidatePos.x - t.transform.localPosition.x < marginPixels.x

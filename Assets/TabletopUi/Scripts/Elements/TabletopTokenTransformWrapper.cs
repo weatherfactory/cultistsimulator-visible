@@ -9,11 +9,11 @@ using UnityEngine;
 namespace Assets.TabletopUi.Scripts.Elements
 {
     /// <summary>
-    /// override of the basic transform wrapper for the tabletop container
+    /// override of the basic transform wrapper for the tabletop containsTokens
     /// </summary>
-    public class TabletopContainerTokenTransformWrapper:TokenTransformWrapper
+    public class TabletopTokenTransformWrapper:TokenTransformWrapper
     {
-        public TabletopContainerTokenTransformWrapper(Transform t) : base(t)
+        public TabletopTokenTransformWrapper(Transform t) : base(t)
         {
         }
 
@@ -24,7 +24,7 @@ namespace Assets.TabletopUi.Scripts.Elements
             //(or loaded and added to an arbitrary position)
             stackTransform.SetParent(wrappedTransform,true);
             stackTransform.localRotation = Quaternion.identity;
-            token.SetContainer(wrappedContainer);
+            token.SetContainer(containsTokens);
         }
 
 

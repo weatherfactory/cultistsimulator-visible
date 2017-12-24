@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI {
         bool Retire();
 
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, ITokenContainer, IPointerClickHandler, 
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, IContainsTokens, IPointerClickHandler, 
         IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action<RecipeSlot, IElementStack> onCardDropped;
         public event System.Action<IElementStack> onCardPickedUp;
@@ -80,7 +80,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void Initialise(SlotSpecification slotSpecification) {
-            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
+            ITokenPhysicalLocation tabletopStacksWrapper = new TokenTransformWrapper(transform);
             _stacksManager = new ElementStacksManager(tabletopStacksWrapper, "slot");
 
             if (slotSpecification == null)
@@ -236,7 +236,7 @@ namespace Assets.CS.TabletopUI {
             return _stacksManager;
         }
 
-        public ITokenTransformWrapper GetTokenTransformWrapper() {
+        public ITokenPhysicalLocation GetTokenTransformWrapper() {
             return new TokenTransformWrapper(transform);
         }
 

@@ -15,12 +15,12 @@ namespace Assets.Editor.Tests
     public class ElementStacksManagerTests
     {
         private List<IElementStack> stacks;
-        private ITokenTransformWrapper wrapper;
+        private ITokenPhysicalLocation wrapper;
         [SetUp]
         public void Setup()
         {
           stacks= TestObjectGenerator.CardsForElements(TestObjectGenerator.ElementDictionary(1, 3));
-            wrapper = Substitute.For<ITokenTransformWrapper>();
+            wrapper = Substitute.For<ITokenPhysicalLocation>();
             wrapper.GetStacks().Returns(stacks);
         }
 

@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToState(TabletopContainer tabletopContainer, IGameEntityStorage storage, Hashtable htSave);
+        void ImportSavedGameToState(TabletopContainsTokens tabletopContainsTokens, IGameEntityStorage storage, Hashtable htSave);
         SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
     }
 
@@ -32,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public void ImportSavedGameToState(TabletopContainer tabletopContainer,IGameEntityStorage storage, Hashtable htSave)
+        public void ImportSavedGameToState(TabletopContainsTokens tabletopContainsTokens,IGameEntityStorage storage, Hashtable htSave)
         {
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
@@ -43,9 +43,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //update the compendium text with tokens for this character
             compendium.ReplaceTokens(storage);
 
-            ImportTabletopElementStacks(tabletopContainer, htElementStacks);
+            ImportTabletopElementStacks(tabletopContainsTokens, htElementStacks);
 
-            ImportSituations(tabletopContainer, htSituations);
+            ImportSituations(tabletopContainsTokens, htSituations);
 
             ImportDecks(storage, htDecks);
 
@@ -96,7 +96,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return state;
         }
 
-        private static void ImportTabletopElementStacks(TabletopContainer tabletopContainer, Hashtable htElementStacks)
+        private static void ImportTabletopElementStacks(TabletopContainsTokens tabletopContainsTokens, Hashtable htElementStacks)
         {
             foreach (var locationInfo in htElementStacks.Keys)
             {
@@ -109,7 +109,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     throw new ArgumentException("Couldn't parse " + dictionaryElementStacks[SaveConstants.SAVE_QUANTITY] + " for " +
                                                 dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
 
-                tabletopContainer.GetElementStacksManager()
+                tabletopContainsTokens.GetElementStacksManager()
                     .IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], quantity,Source.Existing(), locationInfo.ToString());
             }
         }
@@ -137,7 +137,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private void ImportSituations(TabletopContainer tabletopContainer, Hashtable htSituations)
+        private void ImportSituations(TabletopContainsTokens tabletopContainsTokens, Hashtable htSituations)
         {
             foreach (var locationInfo in htSituations.Keys)
             {
@@ -161,30 +161,30 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
 
 
-                var situationAnchor= tabletopContainer.CreateSituation(command, locationInfo.ToString());
+                var situationAnchor= tabletopContainsTokens.CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;
 
                 ImportSituationNotes(htSituationValues,situationController);
 
-                ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
-                ImportSlotContents(htSituationValues, situationController, tabletopContainer, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationController, tabletopContainsTokens, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
+                ImportSlotContents(htSituationValues, situationController, tabletopContainsTokens, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
 
                 ImportSituationStoredElements(htSituationValues, situationController);
-                ImportOutputs(htSituationValues, situationController, tabletopContainer);
+                ImportOutputs(htSituationValues, situationController, tabletopContainsTokens);
 
 
                 
             }
         }
 
-        private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopContainer tabletopContainer)
+        private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopContainsTokens tabletopContainsTokens)
         {
-         var outputStacks=ImportOutputStacks(htSituationValues, tabletopContainer);
+         var outputStacks=ImportOutputStacks(htSituationValues, tabletopContainsTokens);
             situationController.SetOutput(outputStacks);
 
         }
 
-        private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopContainer tabletopContainer)
+        private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopContainsTokens tabletopContainsTokens)
         {
             List<IElementStack> outputStack = new List<IElementStack>();
 
@@ -200,7 +200,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
                     foreach (var eqs in elementQuantitySpecifications)
                     {
-                        outputStack.Add(tabletopContainer.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
+                        outputStack.Add(tabletopContainsTokens.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
                     }
 
                // }
@@ -238,7 +238,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
         private void ImportSlotContents(Hashtable htSituationValues,
-         SituationController controller, TabletopContainer tabletopContainer,string slotTypeKey)
+         SituationController controller, TabletopContainsTokens tabletopContainsTokens,string slotTypeKey)
         {
             if (htSituationValues.ContainsKey(slotTypeKey))
             {
@@ -249,7 +249,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var stackToPutInSlot =
-                        tabletopContainer.GetTokenTransformWrapper()
+                        tabletopContainsTokens.GetTokenTransformWrapper()
                             .ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity, Source.Existing());
                     var slotToFill = controller.GetSlotBySaveLocationInfoPath(eqs.LocationInfo, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves

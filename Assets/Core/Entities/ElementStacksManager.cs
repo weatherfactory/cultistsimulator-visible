@@ -10,13 +10,19 @@ using Noon;
 
 
 
-
+/// <summary>
+/// Tracks and performs operations on tokens, considered as game model objects
+/// Uses an ITokenPhysicalLocation (in Unity, a TokenTransformWrapper) to change the display
+/// Referenced through gameobjects (Unity layer) which implement IContainsTokens
+/// IContainsTokens objects should never have direct access to the ITokenPhysicalLocation (though it references them) because everything needs to be filtered through
+/// the StacksManager for model management purposes
+/// </summary>
 public class ElementStacksManager : IElementStacksManager {
-    private readonly ITokenTransformWrapper _wrapper;
+    private readonly ITokenPhysicalLocation _wrapper;
     private List<IElementStack> Stacks;
     public string Name { get; set; }
 
-    public ElementStacksManager(ITokenTransformWrapper w,string name) {
+    public ElementStacksManager(ITokenPhysicalLocation w,string name) {
         _wrapper = w;
         Stacks=new List<IElementStack>();
         Name = name;
@@ -68,7 +74,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        IElementStack newStack=_wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        var newStack=_wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
         AcceptStack(newStack);
         return quantityChange;
     }

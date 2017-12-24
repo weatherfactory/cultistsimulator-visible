@@ -7,7 +7,9 @@ using Assets.Core.Interfaces;
 
 namespace Assets.CS.TabletopUI.Interfaces
 {
-    public interface ITokenContainer
+    //strategy pattern to make TokenContainers (transformwrappers in Unity implementation) behave differently
+    //This is a firmly Unity-level implementation at the moment, but we could tease out the concrete Token classes into more general interfaces if we needed to
+    public interface IContainsTokens
     {
         void ElementStackRemovedFromContainer(ElementStackToken elementStackToken);
         /// <summary>
