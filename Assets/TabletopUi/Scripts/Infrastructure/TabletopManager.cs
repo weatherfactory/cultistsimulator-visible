@@ -36,7 +36,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private CardAnimationController _cardAnimationController;
 
         [Header("Tabletop")]
-        [SerializeField] public TabletopContainsTokens _tabletopContainsTokens;
+        [SerializeField] public Tabletop _tabletop;
         [SerializeField] TabletopBackground _background;
         [SerializeField] private Limbo Limbo;
 
@@ -69,7 +69,7 @@ namespace Assets.CS.TabletopUI
         public void Update()
         {
             _hotkeyWatcher.WatchForHotkeys();
-            _elementOverview.UpdateDisplay(_tabletopContainsTokens.GetElementStacksManager(),
+            _elementOverview.UpdateDisplay(_tabletop.GetElementStacksManager(),
                 Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations());
             _cardAnimationController.CheckForCardAnimations();
         }
@@ -80,7 +80,7 @@ namespace Assets.CS.TabletopUI
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
             
             //register everything used gamewide
-            SetupServices(_situationBuilder,_tabletopContainsTokens);
+            SetupServices(_situationBuilder,_tabletop);
             //we hand off board functions to individual controllers
             InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController,_mapController);
             InitialiseListeners();
@@ -123,7 +123,7 @@ namespace Assets.CS.TabletopUI
         {
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
-            cardAnimationController.Initialise(_tabletopContainsTokens.GetElementStacksManager());
+            cardAnimationController.Initialise(_tabletop.GetElementStacksManager());
             mapController.Initialise(mapContainsTokens, mapBackground, mapAnimation);
         }
 
@@ -135,7 +135,7 @@ namespace Assets.CS.TabletopUI
             DraggableToken.onChangeDragState += HandleDragStateChanged;
         }
 
-        private void SetupServices(SituationBuilder builder,TabletopContainsTokens containsTokens)
+        private void SetupServices(SituationBuilder builder,Tabletop containsTokens)
         {
             var registry = new Registry();
             var compendium = new Compendium();
@@ -223,7 +223,7 @@ namespace Assets.CS.TabletopUI
            
             foreach (var e in startingElements)
             {
-                ElementStackToken token = _tabletopContainsTokens.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
+                ElementStackToken token = _tabletop.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
                choreographer.ArrangeTokenOnTable(token);
             }
         }
@@ -234,7 +234,7 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void ClearGameState(Heart h, IGameEntityStorage s,TabletopContainsTokens tc)
+        public void ClearGameState(Heart h, IGameEntityStorage s,Tabletop tc)
         {
             h.Clear();
             s.DeckInstances=new List<IDeckInstance>();
@@ -299,7 +299,7 @@ namespace Assets.CS.TabletopUI
 
         private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec)
         {
-            var stacks = _tabletopContainsTokens.GetElementStacksManager().GetStacks();
+            var stacks = _tabletop.GetElementStacksManager().GetStacks();
             foreach (var stack in stacks)
                 if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                     return stack;
@@ -316,9 +316,9 @@ namespace Assets.CS.TabletopUI
                 DraggableToken.SetReturn(false,"dropped on the background");
 
                 if(DraggableToken.itemBeingDragged is SituationToken)
-                    _tabletopContainsTokens.DisplaySituationTokenOnTable((SituationToken) DraggableToken.itemBeingDragged);
+                    _tabletop.DisplaySituationTokenOnTable((SituationToken) DraggableToken.itemBeingDragged);
                 else if (DraggableToken.itemBeingDragged is ElementStackToken)
-                    _tabletopContainsTokens.PutOnTable((ElementStackToken) DraggableToken.itemBeingDragged);
+                    _tabletop.PutOnTable((ElementStackToken) DraggableToken.itemBeingDragged);
                 else
                     throw new NotImplementedException("Tried to put something weird on the table");
 
@@ -371,8 +371,8 @@ namespace Assets.CS.TabletopUI
             //try
             //{
                 var htSave = saveGameManager.RetrieveHashedSaveFromFile();
-                ClearGameState(_heart, storage, _tabletopContainsTokens);
-                saveGameManager.ImportHashedSaveToState(_tabletopContainsTokens, storage, htSave);
+                ClearGameState(_heart, storage, _tabletop);
+                saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
                 StatusBar.UpdateCharacterDetailsView(storage);
                 _notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
@@ -397,7 +397,7 @@ namespace Assets.CS.TabletopUI
            // try
           //  {
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-                saveGameManager.SaveActiveGame(_tabletopContainsTokens, Registry.Retrieve<Character>());
+                saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
                 if (withNotification)
                     _notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
 
@@ -424,7 +424,7 @@ namespace Assets.CS.TabletopUI
 
         public void DecayStacksOnTable(float interval)
         {
-            var decayingStacks = _tabletopContainsTokens.GetElementStacksManager().GetStacks().Where(s => s.Decays);
+            var decayingStacks = _tabletop.GetElementStacksManager().GetStacks().Where(s => s.Decays);
             foreach(var d in decayingStacks)
                 d.Decay(interval);
         }
@@ -433,11 +433,11 @@ namespace Assets.CS.TabletopUI
 
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
             
-            // not dragging a stack? then do nothing. _tabletopContainsTokens was destroyed (end of game?)
-            if (draggedElement == null || _tabletopContainsTokens == null)
+            // not dragging a stack? then do nothing. _tabletop was destroyed (end of game?)
+            if (draggedElement == null || _tabletop == null)
                 return;
 
-            var tabletopStacks = _tabletopContainsTokens.GetElementStacksManager().GetStacks();
+            var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
             ElementStackToken token;
 
             foreach (var stack in tabletopStacks) {

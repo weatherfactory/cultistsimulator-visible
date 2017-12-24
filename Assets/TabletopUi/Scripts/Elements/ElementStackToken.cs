@@ -477,7 +477,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOnTabletop() {
-            return transform.parent.GetComponent<TabletopContainsTokens>() != null;
+            return transform.parent.GetComponent<Tabletop>() != null;
         }
 
         public void MergeIntoStack(ElementStackToken merge) {
