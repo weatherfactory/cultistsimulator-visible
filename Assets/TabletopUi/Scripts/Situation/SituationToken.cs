@@ -159,7 +159,7 @@ namespace Assets.CS.TabletopUI
         public void CloseToken()
         {
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
-                DisplayOnTable();
+                DisplayAtTableLevel();
 
             SituationController.IsOpen = false;
 

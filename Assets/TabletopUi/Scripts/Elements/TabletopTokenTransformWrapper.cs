@@ -25,6 +25,9 @@ namespace Assets.TabletopUi.Scripts.Elements
             stackTransform.SetParent(wrappedTransform,true);
             stackTransform.localRotation = Quaternion.identity;
             token.SetContainer(containsTokens);
+
+
+            token.DisplayAtTableLevel();
         }
 
 

@@ -40,7 +40,7 @@ public class Tabletop : MonoBehaviour, IContainsTokens {
 
         incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
         incumbentMoved = true;
-        PutOnTable(potentialUsurper);
+        _stacksManager.AcceptStack(potentialUsurper);
     }
 
 
@@ -52,15 +52,9 @@ public class Tabletop : MonoBehaviour, IContainsTokens {
 
         GetTokenTransformWrapper().DisplayHere(token);
 
-        token.DisplayOnTable();
+        token.DisplayAtTableLevel();
     }
 
-    public void PutOnTable(ElementStackToken token)
-    {
-        _stacksManager.AcceptStack(token);
-
-        token.DisplayOnTable();
-    }
 
     public bool AllowDrag { get { return true; } }
     public bool AllowStackMerge { get { return true; } }

@@ -318,7 +318,7 @@ namespace Assets.CS.TabletopUI
                 if(DraggableToken.itemBeingDragged is SituationToken)
                     _tabletop.DisplaySituationTokenOnTable((SituationToken) DraggableToken.itemBeingDragged);
                 else if (DraggableToken.itemBeingDragged is ElementStackToken)
-                    _tabletop.PutOnTable((ElementStackToken) DraggableToken.itemBeingDragged);
+                    _tabletop.GetElementStacksManager().AcceptStack(((ElementStackToken) DraggableToken.itemBeingDragged));
                 else
                     throw new NotImplementedException("Tried to put something weird on the table");
 
@@ -354,7 +354,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged != null) {
 
                 DraggableToken.SetReturn(false, "dropped on the map background");
-                DraggableToken.itemBeingDragged.DisplayOnTable();
+                DraggableToken.itemBeingDragged.DisplayAtTableLevel();
                 mapContainsTokens.GetTokenTransformWrapper().DisplayHere(DraggableToken.itemBeingDragged);
 
                 SoundManager.PlaySfx("CardDrop");

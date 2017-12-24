@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
             stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
-            _tabletop.PutOnTable(stack);
+            _tabletop.GetElementStacksManager().AcceptStack(stack);
         }
 
         public void BeginNewSituation(SituationCreationCommand scc)

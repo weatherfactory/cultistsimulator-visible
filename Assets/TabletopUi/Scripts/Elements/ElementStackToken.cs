@@ -270,6 +270,7 @@ namespace Assets.CS.TabletopUI
                 transform.position = (Vector3)lastTablePos;
             else
                 lastTablePos = transform.position;
+            DisplayAtTableLevel(); //this is redundant, but the vector3 above puts it in the air?
         }
 
         public override bool Retire()

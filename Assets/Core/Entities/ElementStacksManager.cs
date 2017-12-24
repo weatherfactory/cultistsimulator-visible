@@ -18,12 +18,12 @@ using Noon;
 /// the StacksManager for model management purposes
 /// </summary>
 public class ElementStacksManager : IElementStacksManager {
-    private readonly ITokenPhysicalLocation _wrapper;
+    private readonly ITokenPhysicalLocation TokenPhysicalLocation;
     private List<IElementStack> Stacks;
     public string Name { get; set; }
 
     public ElementStacksManager(ITokenPhysicalLocation w,string name) {
-        _wrapper = w;
+        TokenPhysicalLocation = w;
         Stacks=new List<IElementStack>();
         Name = name;
     }
@@ -74,7 +74,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        var newStack=_wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        var newStack=TokenPhysicalLocation.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
         AcceptStack(newStack);
         return quantityChange;
     }
@@ -127,7 +127,7 @@ public class ElementStacksManager : IElementStacksManager {
         NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name,3);
         stack.AssignToStackManager(this);
         Stacks.Add(stack);
-        _wrapper.DisplayHere(stack);
+        TokenPhysicalLocation.DisplayHere(stack);
         
     }
 
@@ -145,7 +145,7 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public void ConsumeAllStacks() {
-        foreach (IElementStack stack in _wrapper.GetStacks())
+        foreach (IElementStack stack in TokenPhysicalLocation.GetStacks())
             stack.SetQuantity(0);
     }
 
