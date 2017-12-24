@@ -246,7 +246,7 @@ namespace Assets.TabletopUi {
             }
         }
         /// <summary>
-        /// The situation is complete. Display the output cards and description
+        /// The situation is complete. DisplayHere the output cards and description
         /// </summary>
         public void SituationComplete() {
             var outputStacks = situationWindow.GetStoredStacks();

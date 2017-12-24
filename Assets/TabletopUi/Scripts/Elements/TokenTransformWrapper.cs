@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts {
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
             IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform, locatorid);
             stack.Populate(elementId, quantity,stackSource);
-            Accept(stack);
+            DisplayHere(stack);
             return stack;
         }
 
@@ -37,11 +37,11 @@ namespace Assets.TabletopUi.Scripts {
             return ProvisionElementStack(elementId, quantity,Source.Existing(), locatorid) as ElementStackToken;
         }
 
-        public virtual void Accept(IElementStack stack) {
-            Accept(stack as DraggableToken);
+        public virtual void DisplayHere(IElementStack stack) {
+            DisplayHere(stack as DraggableToken);
         }
 
-        public virtual void Accept(DraggableToken token) {
+        public virtual void DisplayHere(DraggableToken token) {
             token.transform.SetParent(wrappedTransform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;

@@ -17,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Elements
         {
         }
 
-        public override void Accept(DraggableToken token)
+        public override void DisplayHere(DraggableToken token)
         {
             Transform stackTransform = token.transform;
             //we're not changing the location; this Accept is used to accept a token dragged and dropped to an arbitrary position

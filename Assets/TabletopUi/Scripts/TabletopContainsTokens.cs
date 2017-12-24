@@ -31,7 +31,7 @@ public class TabletopContainsTokens : MonoBehaviour, IContainsTokens {
 
         incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
         incumbentMoved = true;
-        PutOnTable(potentialUsurper);
+        DisplaySituationTokenOnTable(potentialUsurper);
     }
 
     public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
@@ -48,9 +48,9 @@ public class TabletopContainsTokens : MonoBehaviour, IContainsTokens {
         return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
     }
 
-    public void PutOnTable(SituationToken token) {
+    public void DisplaySituationTokenOnTable(SituationToken token) {
 
-        GetTokenTransformWrapper().Accept(token);
+        GetTokenTransformWrapper().DisplayHere(token);
 
         token.DisplayOnTable();
     }

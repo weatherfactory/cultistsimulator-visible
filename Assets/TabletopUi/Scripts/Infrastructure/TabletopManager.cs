@@ -129,7 +129,7 @@ namespace Assets.CS.TabletopUI
 
         private void InitialiseListeners()
         {
-            // Init Listeners to pre-existing Display Objects
+            // Init Listeners to pre-existing DisplayHere Objects
             _background.onDropped += HandleOnTableDropped;
             _background.onClicked += HandleOnTableClicked;
             DraggableToken.onChangeDragState += HandleDragStateChanged;
@@ -140,7 +140,7 @@ namespace Assets.CS.TabletopUI
             var registry = new Registry();
             var compendium = new Compendium();
             var character = new Character();
-            var choreographer=new Choreographer(containsTokens, builder);
+            var choreographer=new Choreographer(containsTokens, builder,tableLevelTransform,windowLevelTransform);
             var situationsManager=new SituationsCatalogue();
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
@@ -316,7 +316,7 @@ namespace Assets.CS.TabletopUI
                 DraggableToken.SetReturn(false,"dropped on the background");
 
                 if(DraggableToken.itemBeingDragged is SituationToken)
-                    _tabletopContainsTokens.PutOnTable((SituationToken) DraggableToken.itemBeingDragged);
+                    _tabletopContainsTokens.DisplaySituationTokenOnTable((SituationToken) DraggableToken.itemBeingDragged);
                 else if (DraggableToken.itemBeingDragged is ElementStackToken)
                     _tabletopContainsTokens.PutOnTable((ElementStackToken) DraggableToken.itemBeingDragged);
                 else
@@ -355,7 +355,7 @@ namespace Assets.CS.TabletopUI
 
                 DraggableToken.SetReturn(false, "dropped on the map background");
                 DraggableToken.itemBeingDragged.DisplayOnTable();
-                mapContainsTokens.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
+                mapContainsTokens.GetTokenTransformWrapper().DisplayHere(DraggableToken.itemBeingDragged);
 
                 SoundManager.PlaySfx("CardDrop");
             }

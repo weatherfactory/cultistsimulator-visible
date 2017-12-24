@@ -166,7 +166,7 @@ namespace Assets.Editor.Tests
             var ecg=new ElementStacksManager(wrapper, "test");
             FakeElementStack newStack =TestObjectGenerator.CreateElementCard(stacks.Count+1.ToString(),2);
             ecg.AcceptStack(newStack);
-            wrapper.Received().Accept(newStack);
+            wrapper.Received().DisplayHere(newStack);
 
         }
 

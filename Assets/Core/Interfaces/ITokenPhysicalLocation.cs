@@ -13,8 +13,8 @@ namespace Assets.Core.Interfaces
     public interface ITokenPhysicalLocation
     {
         IElementStack ProvisionElementStack(string elementId, int quantity,Source stackSource, string locatorId=null);
-        void Accept(IElementStack stack);
-        void Accept(DraggableToken token);
+        void DisplayHere(IElementStack stack);
+        void DisplayHere(DraggableToken token);
         IEnumerable<IElementStack> GetStacks();
         IEnumerable<SituationToken> GetSituationTokens();
         IEnumerable<DraggableToken> GetTokens();

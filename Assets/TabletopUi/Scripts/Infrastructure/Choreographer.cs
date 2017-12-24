@@ -11,13 +11,13 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    //places and arranges things on the table
+    //places, arranges and displays things on the table
     public class Choreographer
     {
         private TabletopContainsTokens _tabletopContainsTokens;
         private SituationBuilder _situationBuilder;
 
-        public Choreographer(TabletopContainsTokens tabletopContainsTokens,SituationBuilder situationBuilder)
+        public Choreographer(TabletopContainsTokens tabletopContainsTokens,SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
         {
             _tabletopContainsTokens = tabletopContainsTokens;
             _situationBuilder = situationBuilder;
@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void ArrangeTokenOnTable(SituationToken token)
         {
             token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
-            _tabletopContainsTokens.PutOnTable(token);
+            _tabletopContainsTokens.DisplaySituationTokenOnTable(token);
         }
 
         //we place stacks horizontally rather than vertically
@@ -92,7 +92,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         void SituationAnimDone(SituationToken token)
         {
-            _tabletopContainsTokens.PutOnTable(token);
+            _tabletopContainsTokens.DisplaySituationTokenOnTable(token);
         }
 
 
