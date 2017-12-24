@@ -203,6 +203,8 @@ namespace Assets.CS.TabletopUI
 
             // Last call so that when the event hits it's still available
             DraggableToken.itemBeingDragged = null;
+
+            ShowGlow(false,false);
         }
 
         // In case the object is destroyed
