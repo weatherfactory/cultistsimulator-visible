@@ -49,7 +49,8 @@ namespace Assets.CS.TabletopUI
 
         [Header("Drag & Window")]
         [SerializeField] private RectTransform draggableHolderRectTransform;
-        [SerializeField] Transform windowLevel;
+        [SerializeField] Transform tableLevelTransform;
+        [SerializeField] Transform windowLevelTransform;
 
         [Header("Options Bar & Notes")] [SerializeField] private StatusBar StatusBar;
 
@@ -76,7 +77,7 @@ namespace Assets.CS.TabletopUI
 
         void Start()
         {
-            _situationBuilder = new SituationBuilder(_tabletopContainsTokens.transform, windowLevel);
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
             
             //register everything used gamewide
             SetupServices(_situationBuilder,_tabletopContainsTokens);
