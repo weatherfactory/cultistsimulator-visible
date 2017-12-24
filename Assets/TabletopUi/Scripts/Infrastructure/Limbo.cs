@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
 
             //do nothing right now

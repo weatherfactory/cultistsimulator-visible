@@ -348,8 +348,6 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
-
         void HandleOnMapBackgroundDropped() {
             if (DraggableToken.itemBeingDragged != null) {
 

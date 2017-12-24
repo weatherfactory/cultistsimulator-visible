@@ -133,7 +133,9 @@ namespace Assets.CS.TabletopUI
             startPosition = RectTransform.position;
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
-		
+
+            lastTablePos = transform.position;
+
             RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
 		

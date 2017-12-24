@@ -19,9 +19,9 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
     private ElementStacksManager _stacksManager;
 
 
-    public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
     {
-        elementStackToken.lastTablePos = elementStackToken.transform.position;
+
     }
 
 

@@ -11,7 +11,7 @@ namespace Assets.CS.TabletopUI.Interfaces
     //This is a firmly Unity-level implementation at the moment, but we could tease out the concrete Token classes into more general interfaces if we needed to
     public interface IContainsTokensView
     {
-        void ElementStackRemovedFromContainer(ElementStackToken elementStackToken);
+        void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken);
         /// <summary>
         /// Called when an occupant has something else try to take its place. Should effect any changes necessary on the incumbent
         /// </summary>

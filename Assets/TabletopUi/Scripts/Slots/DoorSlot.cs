@@ -99,7 +99,7 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<IElementStack>();
         }
 
-        public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
          
         }

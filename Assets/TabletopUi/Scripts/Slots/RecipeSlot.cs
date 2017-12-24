@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -182,8 +183,9 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<DraggableToken>();
         }
 
-        public IElementStack GetElementStackInSlot() {
-            return GetComponentInChildren<IElementStack>();
+        public IElementStack GetElementStackInSlot()
+        {
+            return _stacksManager.GetStacks().SingleOrDefault();
         }
 
         public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack) {
@@ -194,7 +196,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         
-        public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
             onCardPickedUp(elementStackToken);
         }

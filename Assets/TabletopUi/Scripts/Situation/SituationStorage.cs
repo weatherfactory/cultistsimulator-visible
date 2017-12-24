@@ -32,7 +32,7 @@ public class SituationStorage : MonoBehaviour, IContainsTokensView
     public bool AllowDrag { get { return false; } }
     public bool AllowStackMerge { get { return false; } }
 
-    public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
     {
 
     }

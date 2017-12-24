@@ -270,7 +270,8 @@ namespace Assets.CS.TabletopUI
                 transform.position = (Vector3)lastTablePos;
             else
                 lastTablePos = transform.position;
-                DisplayAtTableLevel(); //this might end up being called twice, but I don't know the most elegant way to correct for its current transform.position being in the air - Martin?
+
+         //   DisplayAtTableLevel(); //this might end up being called twice, but I don't know the most elegant way to correct for its current transform.position being in the air - Martin?
         }
 
         public override bool Retire()
@@ -342,16 +343,7 @@ namespace Assets.CS.TabletopUI
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
             //notify afterwards, in case it counts the things *currently* in its list
-            oldStacksManager.RemoveStack(this); //problem: this will now notify removal from the new, not the old, container
-            //eg from Tabletop, not Limbo
-
-            //so we actually want to:
-            //1. set to new stack manager
-            //2. remove from old stack manager
-            //3. signal removal from the old stack manager's container
-            //but also NB we may want to call Remove
-            ///soooo can we set notify removal in SetViewContainer? We can, but we need to think about the subclassing issue
-            
+            oldStacksManager.RemoveStack(this);
             
         }
 
@@ -497,15 +489,14 @@ namespace Assets.CS.TabletopUI
         }
 
         protected override void StartDrag(PointerEventData eventData)
-        {
-           
+        {           
 			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
 			if (stackBadge.IsHovering() == false) 
             	SplitAllButNCardsToNewStack(1);
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
 
-            //containsTokens.ElementStackRemovedFromContainer(this);
+
 
             base.StartDrag(eventData);
         }
@@ -559,8 +550,8 @@ namespace Assets.CS.TabletopUI
         public override void SetViewContainer(IContainsTokensView newContainsTokensView)
         {
             OldContainsTokensView = ContainsTokensView;
-            if(OldContainsTokensView!=null)
-            OldContainsTokensView.ElementStackRemovedFromContainer(this);
+            if(OldContainsTokensView!=null && OldContainsTokensView!=newContainsTokensView)
+                OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
             ContainsTokensView = newContainsTokensView;
         }
 

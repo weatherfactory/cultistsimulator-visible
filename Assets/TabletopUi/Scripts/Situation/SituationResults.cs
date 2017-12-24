@@ -58,7 +58,7 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
     }
 
 
-    public void ElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
     {
 
         elementStackToken.lastTablePos = elementStackToken.transform.position;
