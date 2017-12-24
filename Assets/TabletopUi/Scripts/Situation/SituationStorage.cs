@@ -7,7 +7,7 @@ using Assets.TabletopUi.Scripts;
 using System;
 using Noon;
 
-public class SituationStorage : MonoBehaviour, IContainsTokens
+public class SituationStorage : MonoBehaviour, IContainsTokensView
 {
     private ElementStacksManager _stacksManager;
     public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)

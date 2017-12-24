@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-    public class Limbo : MonoBehaviour,IContainsTokens {
+    public class Limbo : MonoBehaviour,IContainsTokensView {
         private ElementStacksManager _elementStacksManager;
 
         public void Start()

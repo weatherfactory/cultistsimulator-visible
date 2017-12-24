@@ -15,7 +15,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-public class Tabletop : MonoBehaviour, IContainsTokens {
+public class Tabletop : MonoBehaviour, IContainsTokensView {
     private ElementStacksManager _stacksManager;
 
 

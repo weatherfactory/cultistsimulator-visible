@@ -270,7 +270,7 @@ namespace Assets.CS.TabletopUI
                 transform.position = (Vector3)lastTablePos;
             else
                 lastTablePos = transform.position;
-            DisplayAtTableLevel(); //this should have been called already earlier, but the vector3 above puts it in the air? talk to Martin 
+                DisplayAtTableLevel(); //this might end up being called twice, but I don't know the most elegant way to correct for its current transform.position being in the air - Martin?
         }
 
         public override bool Retire()
@@ -342,14 +342,19 @@ namespace Assets.CS.TabletopUI
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
             //notify afterwards, in case it counts the things *currently* in its list
-            oldStacksManager.RemoveStack(this);
+            oldStacksManager.RemoveStack(this); //problem: this will now notify removal from the new, not the old, container
+            //eg from Tabletop, not Limbo
+
+            //so we actually want to:
+            //1. set to new stack manager
+            //2. remove from old stack manager
+            //3. signal removal from the old stack manager's container
+            //but also NB we may want to call Remove
+            ///soooo can we set notify removal in SetViewContainer? We can, but we need to think about the subclassing issue
+            
             
         }
 
-        public void SignalRemovedFromContainer()
-        {
-            containsTokens.ElementStackRemovedFromContainer(this);
-        }
 
 
         private void DisplayInfo()
@@ -452,7 +457,7 @@ namespace Assets.CS.TabletopUI
                 
             var droppedOnToken = stackDroppedOn as DraggableToken;
             bool moveAsideFor = false;
-            droppedOnToken.containsTokens.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+            droppedOnToken.ContainsTokensView.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false,"was moved aside for");
@@ -469,7 +474,7 @@ namespace Assets.CS.TabletopUI
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
 
-                var gateway = containsTokens.GetElementStacksManager();
+                var gateway = ContainsTokensView.GetElementStacksManager();
                 gateway.AcceptStack(cardLeftBehind);
 
                 // Gateway accepting stack puts it to pos Vector3.zero, so this is last
@@ -488,7 +493,7 @@ namespace Assets.CS.TabletopUI
 
         public bool AllowMerge()
         {
-            return containsTokens.AllowStackMerge && !Decays;
+            return ContainsTokensView.AllowStackMerge && !Decays;
         }
 
         protected override void StartDrag(PointerEventData eventData)
@@ -543,14 +548,20 @@ namespace Assets.CS.TabletopUI
         {
 
             bool moveAsideFor = false;
-            tokenDroppedOn.containsTokens.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");
             else
                 DraggableToken.SetReturn(true);
+        }
 
-
+        public override void SetViewContainer(IContainsTokensView newContainsTokensView)
+        {
+            OldContainsTokensView = ContainsTokensView;
+            if(OldContainsTokensView!=null)
+            OldContainsTokensView.ElementStackRemovedFromContainer(this);
+            ContainsTokensView = newContainsTokensView;
         }
 
     }

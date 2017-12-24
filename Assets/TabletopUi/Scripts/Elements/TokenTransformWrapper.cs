@@ -18,12 +18,12 @@ namespace Assets.TabletopUi.Scripts {
     public class TokenTransformWrapper : ITokenPhysicalLocation {
 
         protected Transform wrappedTransform;
-        protected IContainsTokens containsTokens;
+        protected IContainsTokensView ContainsTokensView;
 
         public TokenTransformWrapper(Transform t) {
             wrappedTransform = t;
-            containsTokens = wrappedTransform.GetComponent<IContainsTokens>();
-            Assert.IsNotNull(containsTokens, "not a containsTokens!");
+            ContainsTokensView = wrappedTransform.GetComponent<IContainsTokensView>();
+            Assert.IsNotNull(ContainsTokensView, "not a containsTokens!");
         }
 
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts {
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
-            token.SetContainer(containsTokens);
+            token.SetViewContainer(ContainsTokensView);
         }
 
         public virtual IEnumerable<DraggableToken> GetTokens() {

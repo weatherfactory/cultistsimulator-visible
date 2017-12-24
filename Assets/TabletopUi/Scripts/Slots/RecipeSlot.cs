@@ -25,7 +25,7 @@ namespace Assets.CS.TabletopUI {
         bool Retire();
 
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, IContainsTokens, IPointerClickHandler, 
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, IContainsTokensView, IPointerClickHandler, 
         IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action<RecipeSlot, IElementStack> onCardDropped;
         public event System.Action<IElementStack> onCardPickedUp;

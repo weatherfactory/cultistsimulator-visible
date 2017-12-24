@@ -122,8 +122,6 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public void AcceptStack(IElementStack stack) {
-        //Redundant code here while we work through the differences between appearance and fundamental reality.
-        //THERE IS NEVER ONLY ONE HISTORY. THE MANSUS HAS NO WALLS.
         NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name,3);
         stack.AssignToStackManager(this);
         Stacks.Add(stack);
@@ -140,8 +138,6 @@ public class ElementStacksManager : IElementStacksManager {
     public void RemoveStack(IElementStack stack)
     {
         Stacks.Remove(stack);
-        stack.SignalRemovedFromContainer();
-        
     }
 
     public void ConsumeAllStacks() {

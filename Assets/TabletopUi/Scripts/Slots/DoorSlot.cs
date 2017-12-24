@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class DoorSlot : MonoBehaviour, IDropHandler, IContainsTokens, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+    public class DoorSlot : MonoBehaviour, IDropHandler, IContainsTokensView, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action< IElementStack> onCardDropped;
 
         public Graphic border;

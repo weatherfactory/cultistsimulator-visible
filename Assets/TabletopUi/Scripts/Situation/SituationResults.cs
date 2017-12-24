@@ -14,7 +14,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
-public class SituationResults : MonoBehaviour, IContainsTokens {
+public class SituationResults : MonoBehaviour, IContainsTokensView {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;

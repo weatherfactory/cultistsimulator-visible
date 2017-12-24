@@ -252,7 +252,7 @@ namespace Assets.CS.TabletopUI
         {
 
             bool moveAsideFor = false;
-            tokenDroppedOn.containsTokens.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");

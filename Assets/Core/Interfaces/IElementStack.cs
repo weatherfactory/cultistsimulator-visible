@@ -23,7 +23,6 @@ namespace Assets.Core.Interfaces
         void SetQuantity(int quantity);
         void Populate(string elementId, int quantity,Source source);
         void AssignToStackManager(IElementStacksManager manager);
-        void SignalRemovedFromContainer();
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
         void SplitAllButNCardsToNewStack(int n);

@@ -55,8 +55,8 @@ namespace Assets.CS.TabletopUI
 
         public bool rotateOnDrag = true;
         protected INotifier notifier;
-        public IContainsTokens containsTokens;
-        public IContainsTokens OldContainsTokens; // Used to tell OldContainsTokens that this thing was dropped successfully
+        public IContainsTokensView ContainsTokensView;
+        public IContainsTokensView OldContainsTokensView; // Used to tell OldContainsTokens that this thing was dropped successfully
 
         [SerializeField] GraphicFader glowImage;
 
@@ -81,7 +81,7 @@ namespace Assets.CS.TabletopUI
                 RectTransform.localPosition = new Vector3(x, y);
 
             }
-            get { return containsTokens.GetSaveLocationInfoForDraggable(this) +"_" + Guid.NewGuid(); }
+            get { return ContainsTokensView.GetSaveLocationInfoForDraggable(this) +"_" + Guid.NewGuid(); }
         }
 
 
@@ -90,15 +90,15 @@ namespace Assets.CS.TabletopUI
             notifier = n;
         }
 
-        public virtual void SetContainer(IContainsTokens newContainsTokens)
+        public virtual void SetViewContainer(IContainsTokensView newContainsTokensView)
         {
-            OldContainsTokens = containsTokens; 
-            containsTokens = newContainsTokens;
+            OldContainsTokensView = ContainsTokensView;
+            ContainsTokensView = newContainsTokensView;            
         }
 
-        public virtual bool IsInContainer(IContainsTokens candidateContainsTokens)
+        public virtual bool IsInContainer(IContainsTokensView candidateContainsTokensView)
         {
-            return candidateContainsTokens == containsTokens;
+            return candidateContainsTokensView == ContainsTokensView;
         }
 
         public void OnBeginDrag (PointerEventData eventData) {
@@ -108,7 +108,7 @@ namespace Assets.CS.TabletopUI
 
         bool CanDrag(PointerEventData eventData)
         {
-            if (!containsTokens.AllowDrag || !AllowDrag)
+            if (!ContainsTokensView.AllowDrag || !AllowDrag)
                 return false;
 
             if ( itemBeingDragged != null || draggingEnabled == false )
@@ -194,7 +194,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.resetToStartPos) 
                 returnToStartPosition();
 
-            OldContainsTokens = null;
+            OldContainsTokensView = null;
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
@@ -305,7 +305,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged != null && !lastGlowState)
                 show = false;
             // If we can not drag, don't show the hover highlight
-            else if (!containsTokens.AllowDrag || !AllowDrag)
+            else if (!ContainsTokensView.AllowDrag || !AllowDrag)
                 show = false;
 
             if (show) {
