@@ -43,9 +43,6 @@ public class TabletopContainsTokens : MonoBehaviour, IContainsTokens {
         PutOnTable(potentialUsurper);
     }
 
-    public SituationToken GetOpenToken() {
-        return GetTokenTransformWrapper().GetSituationTokens().FirstOrDefault(s => s.IsOpen);
-    }
 
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
         return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);

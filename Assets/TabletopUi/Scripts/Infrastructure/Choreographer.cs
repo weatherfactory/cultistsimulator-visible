@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //oh: I could have an scc property which is a MUST CREATE override
 
            
-            var existingSituation = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations()
+            var existingSituation = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations()
                 .SingleOrDefault(sc => sc.situationToken.Id == scc.Recipe.ActionId);
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null)

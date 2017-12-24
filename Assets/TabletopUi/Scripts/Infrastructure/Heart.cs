@@ -92,7 +92,7 @@ public class Heart : MonoBehaviour
         //foreach existing active recipe window: run beat there
         //advance timer
         var tabletopManager = Registry.Retrieve<TabletopManager>();
-        var situationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
+        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
         foreach (var sc in situationControllers)
         {

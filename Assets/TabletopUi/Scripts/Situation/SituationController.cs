@@ -24,6 +24,7 @@ namespace Assets.TabletopUi {
         public ISituation Situation;
         private readonly ICompendium compendium;
         private readonly Character currentCharacter;
+        public bool IsOpen { get; set; }
 
         public SituationController(ICompendium co, Character ch) {
             compendium = co;
@@ -31,7 +32,7 @@ namespace Assets.TabletopUi {
         }
 
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w) {
-            Registry.Retrieve<TokensCatalogue>().RegisterSituation(this);
+            Registry.Retrieve<SituationsCatalogue>().RegisterSituation(this);
 
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this);
@@ -86,6 +87,7 @@ namespace Assets.TabletopUi {
             if (Situation.State == SituationState.Unstarted)
                 situationWindow.SetUnstarted();
 
+            IsOpen = true;
             situationToken.OpenToken();
             situationWindow.Show();
         }
@@ -366,7 +368,7 @@ namespace Assets.TabletopUi {
                 //at the moment, the controller is accessed through the token
                 //if we attach the controller to a third object, we'd need to retire that too
                 //...and here that third thing is! but we're still in mid-refactor.
-                Registry.Retrieve<TokensCatalogue>().DeregisterSituation(this);
+                Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
             }
             else {
                 situationWindow.SetUnstarted();
@@ -377,7 +379,7 @@ namespace Assets.TabletopUi {
         public void Retire()
         {
             situationToken.Retire();
-            Registry.Retrieve<TokensCatalogue>().DeregisterSituation(this);
+            Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
         }
 
         public Hashtable GetSaveData() {

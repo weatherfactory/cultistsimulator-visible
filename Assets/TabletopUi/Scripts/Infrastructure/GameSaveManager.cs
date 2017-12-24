@@ -61,7 +61,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void SaveActiveGame(TabletopContainsTokens tabletopContainsTokens,Character character)
         {
             var allStacks = tabletopContainsTokens.GetElementStacksManager().GetStacks();
-            var currentSituationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
+            var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             var allDecks = character.DeckInstances;
 
             var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,

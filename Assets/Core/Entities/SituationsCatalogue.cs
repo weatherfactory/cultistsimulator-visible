@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 
 namespace Assets.Core.Entities
 {
-   public class TokensCatalogue
+    public class SituationsCatalogue
     {
         private readonly List<SituationController> CurrentSituationControllers;
 
-        public TokensCatalogue()
+        public SituationsCatalogue()
         {
             CurrentSituationControllers=new List<SituationController>();
         }
@@ -29,5 +30,10 @@ namespace Assets.Core.Entities
         {
             CurrentSituationControllers.Remove(situationController);
         }
+        
+        public SituationController GetOpenSituation()
+        {
+            return GetRegisteredSituations().FirstOrDefault(s => s.IsOpen);
+    }
     }
 }

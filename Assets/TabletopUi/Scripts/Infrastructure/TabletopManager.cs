@@ -70,7 +70,7 @@ namespace Assets.CS.TabletopUI
         {
             _hotkeyWatcher.WatchForHotkeys();
             _elementOverview.UpdateDisplay(_tabletopContainsTokens.GetElementStacksManager(),
-                Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations());
+                Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations());
             _cardAnimationController.CheckForCardAnimations();
         }
 
@@ -141,7 +141,7 @@ namespace Assets.CS.TabletopUI
             var compendium = new Compendium();
             var character = new Character();
             var choreographer=new Choreographer(containsTokens, builder);
-            var situationsManager=new TokensCatalogue();
+            var situationsManager=new SituationsCatalogue();
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -155,7 +155,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<Choreographer>(choreographer);
             registry.Register<MapController>(_mapController);
             registry.Register<Limbo>(Limbo);
-            registry.Register<TokensCatalogue>(situationsManager);
+            registry.Register<SituationsCatalogue>(situationsManager);
 
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
@@ -240,7 +240,7 @@ namespace Assets.CS.TabletopUI
             s.DeckInstances=new List<IDeckInstance>();
        
             
-            foreach(var sc in Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations())
+            foreach(var sc in Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations())
                 sc.Retire();
 
             foreach (var element in tc.GetElementStacksManager().GetStacks())
@@ -337,7 +337,7 @@ namespace Assets.CS.TabletopUI
 
         public void CloseAllSituationWindowsExcept(string exceptTokenId)
         {
-            var situationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
+            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var controller in situationControllers)
             {
@@ -390,7 +390,7 @@ namespace Assets.CS.TabletopUI
 
             //Close all windows and dump tokens to desktop before saving.
             //We don't want or need to track half-started situations.
-            var allSituationControllers = Registry.Retrieve<TokensCatalogue>().GetRegisteredSituations();
+            var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             foreach (var s in allSituationControllers)
                 s.CloseSituation();
 
@@ -413,10 +413,10 @@ namespace Assets.CS.TabletopUI
 
         public void ShowDestinationsForStack(IElementStack stack)
         {
-            var openToken = _tabletopContainsTokens.GetOpenToken();
+            var openSituation = Registry.Retrieve<SituationsCatalogue>().GetOpenSituation();
 
-            if (openToken !=null)
-               openToken.ShowDestinationsForStack(stack);
+            if (openSituation !=null)
+               openSituation.ShowDestinationsForStack(stack);
 
             if (mapContainsTokens != null)
                 mapContainsTokens.ShowDestinationsForStack(stack);

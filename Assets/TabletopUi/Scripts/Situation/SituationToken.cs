@@ -59,7 +59,6 @@ namespace Assets.CS.TabletopUI
                 notifier.TokenReturnedToTabletop(this, reason);
         }
 
-        public bool IsOpen = false;
         public bool IsTransient { get { return _verb.Transient; } }
 
         public override string Id
@@ -154,7 +153,6 @@ namespace Assets.CS.TabletopUI
         public void OpenToken()
         {
             DisplayInAir();
-            IsOpen = true;
             ShowGlow(false);
         }
 
@@ -163,7 +161,7 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
                 DisplayOnTable();
 
-            IsOpen = false;
+            SituationController.IsOpen = false;
 
             if (SituationController.IsSituationOccupied())
             { 
@@ -231,7 +229,7 @@ namespace Assets.CS.TabletopUI
         {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
 
-            if (!IsOpen)
+            if (!SituationController.IsOpen)
             {
                 SituationController.OpenSituation();
 
@@ -249,10 +247,6 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void ShowDestinationsForStack(IElementStack stack)
-        {
-            SituationController.ShowDestinationsForStack(stack);
-        }
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
