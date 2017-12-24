@@ -28,5 +28,7 @@ namespace Assets.Core.Interfaces
         void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource);
         // for debugging reference
         string Name { get; set; }
+
+        void Deregister();
     }
 }
