@@ -61,7 +61,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private OptionsPanel _optionsPanel;
         [SerializeField] private ElementOverview _elementOverview;
 
-        private TabletopObjectBuilder _tabletopObjectBuilder;
+        private SituationBuilder _situationBuilder;
 
 
 
@@ -76,10 +76,10 @@ namespace Assets.CS.TabletopUI
 
         void Start()
         {
-            _tabletopObjectBuilder = new TabletopObjectBuilder(_tabletopContainsTokens.transform, windowLevel);
+            _situationBuilder = new SituationBuilder(_tabletopContainsTokens.transform, windowLevel);
             
             //register everything used gamewide
-            SetupServices(_tabletopObjectBuilder,_tabletopContainsTokens);
+            SetupServices(_situationBuilder,_tabletopContainsTokens);
             //we hand off board functions to individual controllers
             InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController,_mapController);
             InitialiseListeners();
@@ -92,7 +92,7 @@ namespace Assets.CS.TabletopUI
                 mapBackground.onDropped += HandleOnMapBackgroundDropped;
             }
 
-            BeginGame(_tabletopObjectBuilder);
+            BeginGame(_situationBuilder);
 
             _heart.StartBeatingWithDefaultValue();
 
@@ -101,7 +101,7 @@ namespace Assets.CS.TabletopUI
         /// <summary>
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
-        private void BeginGame(TabletopObjectBuilder builder)
+        private void BeginGame(SituationBuilder builder)
         {
 
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
@@ -134,7 +134,7 @@ namespace Assets.CS.TabletopUI
             DraggableToken.onChangeDragState += HandleDragStateChanged;
         }
 
-        private void SetupServices(TabletopObjectBuilder builder,TabletopContainsTokens containsTokens)
+        private void SetupServices(SituationBuilder builder,TabletopContainsTokens containsTokens)
         {
             var registry = new Registry();
             var compendium = new Compendium();
@@ -148,7 +148,7 @@ namespace Assets.CS.TabletopUI
             registry.Register<IDraggableHolder>(draggableHolder);
             registry.Register<IDice>(new Dice());
             registry.Register<TabletopManager>(this);
-            registry.Register<TabletopObjectBuilder>(builder);
+            registry.Register<SituationBuilder>(builder);
             registry.Register<INotifier>(_notifier);
             registry.Register<Character>(character);
             registry.Register<Choreographer>(choreographer);
@@ -172,7 +172,7 @@ namespace Assets.CS.TabletopUI
             _speedController.SetPausedState(paused);
         }
 
-        public void SetupNewBoard(TabletopObjectBuilder builder)
+        public void SetupNewBoard(SituationBuilder builder)
         {
 
             var chosenLegacy = CrossSceneState.GetChosenLegacy();

@@ -15,12 +15,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class Choreographer
     {
         private TabletopContainsTokens _tabletopContainsTokens;
-        private TabletopObjectBuilder _tabletopObjectBuilder;
+        private SituationBuilder _situationBuilder;
 
-        public Choreographer(TabletopContainsTokens tabletopContainsTokens,TabletopObjectBuilder tabletopObjectBuilder)
+        public Choreographer(TabletopContainsTokens tabletopContainsTokens,SituationBuilder situationBuilder)
         {
             _tabletopContainsTokens = tabletopContainsTokens;
-            _tabletopObjectBuilder = tabletopObjectBuilder;
+            _situationBuilder = situationBuilder;
         }
 
         public void ArrangeTokenOnTable(SituationToken token)
@@ -54,7 +54,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 //end execution here
                 return;
             }
-            var token = _tabletopObjectBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
+            var token = _situationBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
 
             //if token has been spawned from an existing token, animate its appearance
             if (scc.SourceToken != null)

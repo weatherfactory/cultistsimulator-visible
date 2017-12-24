@@ -10,12 +10,12 @@ using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services {
-    public class TabletopObjectBuilder {
+    public class SituationBuilder {
 
         private Transform tableLevel;
         private Transform windowLevel;
 
-        public TabletopObjectBuilder(Transform tableLevel, Transform windowLevel) {
+        public SituationBuilder(Transform tableLevel, Transform windowLevel) {
             this.tableLevel = tableLevel;
             this.windowLevel = windowLevel;
         }

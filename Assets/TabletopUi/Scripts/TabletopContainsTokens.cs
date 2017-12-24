@@ -48,7 +48,7 @@ public class TabletopContainsTokens : MonoBehaviour, IContainsTokens {
     }
 
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
-        return Registry.Retrieve<TabletopObjectBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
+        return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
     }
 
     public void PutOnTable(SituationToken token) {
