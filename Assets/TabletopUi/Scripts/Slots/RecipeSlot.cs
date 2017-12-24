@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
     public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, IContainsTokensView, IPointerClickHandler, 
         IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action<RecipeSlot, IElementStack> onCardDropped;
-        public event System.Action<IElementStack> onCardPickedUp;
+        public event System.Action<IElementStack> OnCardRemoved;
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
@@ -156,7 +156,7 @@ namespace Assets.CS.TabletopUI {
             else
             {
             //it matches. Now we check if there's a token already there, and replace it if so:
-            var currentOccupant = GetTokenInSlot();
+                var currentOccupant = GetElementStackInSlot();
             if (currentOccupant != null)
                 throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
                 //currentOccupant.ReturnToTabletop();
@@ -198,7 +198,12 @@ namespace Assets.CS.TabletopUI {
         
         public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
-            onCardPickedUp(elementStackToken);
+            OnCardRemoved(elementStackToken);
+            //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
+            //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
+            //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
+            // - or else not have it occur more than once on the same slot? mark as defunct?
+            
         }
 
   

@@ -43,7 +43,7 @@ namespace Assets.CS.TabletopUI {
             controller.OngoingSlotsUpdated();
         }
 
-        public override void RespondToStackPickedUp(IElementStack stack) {
+        public override void RespondToStackRemoved(IElementStack stack) {
             controller.OngoingSlotsUpdated();
         }
 

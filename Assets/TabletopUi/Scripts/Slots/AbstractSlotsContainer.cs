@@ -41,12 +41,12 @@ public abstract class AbstractSlotsContainer : MonoBehaviour {
         slot.ParentSlot = parentSlot;
         slot.Initialise(slotSpecification);
         slot.onCardDropped += RespondToStackAdded;
-        slot.onCardPickedUp += RespondToStackPickedUp;
+        slot.OnCardRemoved += RespondToStackRemoved;
 
         return slot;
     }
 
-    public abstract void RespondToStackPickedUp(IElementStack stack);
+    public abstract void RespondToStackRemoved(IElementStack stack);
 
     public abstract void RespondToStackAdded(RecipeSlot slot, IElementStack stack);
 

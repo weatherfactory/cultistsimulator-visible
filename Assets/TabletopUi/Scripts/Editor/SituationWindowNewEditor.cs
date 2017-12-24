@@ -45,7 +45,7 @@ public class SituationWindowNewEditor : Editor {
     }
 
     void RemoveSlot(int i) {
-        manager.RemoveSlot(addedSlots[i]);
+        manager.RetireSlot(addedSlots[i]);
         addedSlots.RemoveAt(i);
     }
 

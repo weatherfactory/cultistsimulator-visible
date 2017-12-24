@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackPickedUp(IElementStack stack) {
+        public override void RespondToStackRemoved(IElementStack stack) {
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();
             controller.StartingSlotsUpdated();
@@ -83,6 +83,8 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected override void ClearAndDestroySlot(RecipeSlot slot) {
             if (slot == null)
                 return;
+            if (slot.Defunct == true)
+                return;
 
             // This is all copy & paste from the parent class except for the last line
             if (slot.childSlots.Count > 0) {
@@ -93,12 +95,15 @@ namespace Assets.TabletopUi.SlotsContainers {
                 slot.childSlots.Clear();
             }
 
-            DraggableToken tokenContained = slot.GetTokenInSlot();
+            //Destroy the slot *before* returning the token to the tabletop
+            //otherwise, the slot will fire OnCardRemoved again, and we get an infinte loop
+            slotManager.RetireSlot(slot);
 
+            DraggableToken tokenContained = slot.GetTokenInSlot();
             if (tokenContained != null) 
                 tokenContained.ReturnToTabletop(null);
 
-            slotManager.RemoveSlot(slot);
+            
         }
 
         void ArrangeSlots() {

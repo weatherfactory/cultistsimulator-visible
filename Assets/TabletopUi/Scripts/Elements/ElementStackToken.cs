@@ -270,8 +270,6 @@ namespace Assets.CS.TabletopUI
                 transform.position = (Vector3)lastTablePos;
             else
                 lastTablePos = transform.position;
-
-         //   DisplayAtTableLevel(); //this might end up being called twice, but I don't know the most elegant way to correct for its current transform.position being in the air - Martin?
         }
 
         public override bool Retire()
