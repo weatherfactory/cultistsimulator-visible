@@ -21,7 +21,6 @@ namespace Assets.CS.TabletopUI.Interfaces
         /// <summary>
         /// use to manipulate elementstacks in the context where they're IElementStack
         /// </summary>
-        /// <returns></returns>
         ElementStacksManager GetElementStacksManager();
 
         string GetSaveLocationInfoForDraggable(DraggableToken draggable);

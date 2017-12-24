@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
