@@ -285,6 +285,10 @@ namespace Assets.Editor.Tests
             CurrentStacksManager = manager;
         }
 
+        public void SignalRemovedFromContainer()
+        {
+        }
+
         public void Populate(string elementId, int quantity)
         {
             Element = TestObjectGenerator.CreateElement(int.Parse(elementId));

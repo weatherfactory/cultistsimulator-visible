@@ -345,6 +345,11 @@ namespace Assets.CS.TabletopUI
             
         }
 
+        public void SignalRemovedFromContainer()
+        {
+            container.ElementStackRemovedFromContainer(this);
+        }
+
 
         private void DisplayInfo()
 		{

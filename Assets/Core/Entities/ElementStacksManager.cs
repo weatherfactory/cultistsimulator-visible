@@ -6,33 +6,10 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
-using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 
-public interface IElementStacksManager {
-    /// <summary>
-    /// Reduces matching stacks until change is satisfied - NB a match is also a stack which possesses this aspect
-    /// </summary>
-    /// <param name="elementId"></param>
-    /// <param name="quantityChange">must be negative</param>
-    /// <returns>returns any unsatisfied change remaining</returns>
-    int ReduceElement(string elementId, int quantityChange);
-    int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorId = null);
-    int GetCurrentElementQuantity(string elementId);
-    IDictionary<string, int> GetCurrentElementTotals();
-    AspectsDictionary GetTotalAspects(bool showElementAspects = true);
-    IEnumerable<IElementStack> GetStacks();
-    void AcceptStack(IElementStack stack);
-    void AcceptStacks(IEnumerable<IElementStack> stacks);
-    void RemoveStack(IElementStack stack);
-    void ConsumeAllStacks();
 
-    void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource);
-    // for debugging reference
-    string Name { get; set; }
-}
 
 public class ElementStacksManager : IElementStacksManager {
     private readonly ITokenTransformWrapper _wrapper;
@@ -44,8 +21,6 @@ public class ElementStacksManager : IElementStacksManager {
         Stacks=new List<IElementStack>();
         Name = name;
     }
-
-    
 
     public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {
         if (quantityChange > 0)
@@ -158,16 +133,9 @@ public class ElementStacksManager : IElementStacksManager {
 
     public void RemoveStack(IElementStack stack)
     {
-        //The stack has left this manager, and is in the keeping of another
-        //Notify any view components that they should update appropriately.
-        //The line below is iffy: it brings Unity dependencies into pure C# territory
-        //but it stitches the old transform-centric approach in for now.
-
         Stacks.Remove(stack);
-
-        var unityStack = stack as ElementStackToken;
-
-        unityStack.container.ElementStackRemovedFromContainer(unityStack);
+        stack.SignalRemovedFromContainer();
+        
     }
 
     public void ConsumeAllStacks() {

@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Assets.Core.Entities;
+
+namespace Assets.Core.Interfaces
+{
+    public interface IElementStacksManager
+    {
+        /// <summary>
+        /// Reduces matching stacks until change is satisfied - NB a match is also a stack which possesses this aspect
+        /// </summary>
+        /// <param name="elementId"></param>
+        /// <param name="quantityChange">must be negative</param>
+        /// <returns>returns any unsatisfied change remaining</returns>
+        int ReduceElement(string elementId, int quantityChange);
+        int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorId = null);
+        int GetCurrentElementQuantity(string elementId);
+        IDictionary<string, int> GetCurrentElementTotals();
+        AspectsDictionary GetTotalAspects(bool showElementAspects = true);
+        IEnumerable<IElementStack> GetStacks();
+        void AcceptStack(IElementStack stack);
+        void AcceptStacks(IEnumerable<IElementStack> stacks);
+        void RemoveStack(IElementStack stack);
+        void ConsumeAllStacks();
+
+        void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource);
+        // for debugging reference
+        string Name { get; set; }
+    }
+}
