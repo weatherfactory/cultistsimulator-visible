@@ -130,7 +130,7 @@ namespace Assets.CS.TabletopUI
         {
             // Init Listeners to pre-existing Display Objects
             _background.onDropped += HandleOnTableDropped;
-            _background.onClicked += HandleOnTableCLicked;
+            _background.onClicked += HandleOnTableClicked;
             DraggableToken.onChangeDragState += HandleDragStateChanged;
         }
 
@@ -310,14 +310,9 @@ namespace Assets.CS.TabletopUI
 
         void HandleOnTableDropped()
         {
-            // NOTE: This puts items back on the background. We need this in more cases. Should be a method
             if (DraggableToken.itemBeingDragged != null)
             {
-                // Maybe check for item type here via GetComponent<Something>() != null?
                 DraggableToken.SetReturn(false,"dropped on the background");
-                // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
-                // Dragged windows should not change in height during/after dragging, since they float by default
 
                 if(DraggableToken.itemBeingDragged is SituationToken)
                     _tabletopContainer.PutOnTable((SituationToken) DraggableToken.itemBeingDragged);
@@ -331,7 +326,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        void HandleOnTableCLicked()
+        void HandleOnTableClicked()
         {
             //Close all open windows if we're not dragging (multi tap stuff)
             if (DraggableToken.itemBeingDragged == null)
@@ -341,15 +336,9 @@ namespace Assets.CS.TabletopUI
 
 
         void HandleOnMapBackgroundDropped() {
-            // NOTE: This puts items back on the background. We need this in more cases. Should be a method
             if (DraggableToken.itemBeingDragged != null) {
-                // Maybe check for item type here via GetComponent<Something>() != null?
-                DraggableToken.SetReturn(false, "dropped on the map background");
-                // This tells the draggable to not reset its pos "onEndDrag", since we do that here.
-                // This currently treats everything as a token, even dragged windows. Instead draggables should have a type that can be checked for when returning token to default layer?
-                // Dragged windows should not change in height during/after dragging, since they float by default
 
-                //tabletopContainer.PutOnTable(DraggableToken.itemBeingDragged); // Make sure to parent back to the tabletop
+                DraggableToken.SetReturn(false, "dropped on the map background");
                 DraggableToken.itemBeingDragged.DisplayOnTable();
                 mapContainer.GetTokenTransformWrapper().Accept(DraggableToken.itemBeingDragged);
 
