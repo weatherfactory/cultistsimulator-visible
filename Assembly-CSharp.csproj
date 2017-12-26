@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{002A7B7E-372B-2EE5-40FF-FA9D219F60DB}</ProjectGuid>
+    <ProjectGuid>{B7CB79B0-D2B1-F4B8-B154-ED66CC9027FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_1_0;UNITY_2017_1;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_VR;ENABLE_MODULAR_UNITYENGINE_ASSEMBLIES;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_2_1;UNITY_2017_2;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -44,10 +44,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +69,8 @@
      <Compile Include="Assets\Core\Entities\BasicVerb.cs" />
      <Compile Include="Assets\Core\Entities\Character.cs" />
      <Compile Include="Assets\Core\Entities\CreatedVerb.cs" />
+     <Compile Include="Assets\Core\Entities\DeckInstance.cs" />
+     <Compile Include="Assets\Core\Entities\DeckSpec.cs" />
      <Compile Include="Assets\Core\Entities\Element.cs" />
      <Compile Include="Assets\Core\Entities\ElementStacksManager.cs" />
      <Compile Include="Assets\Core\Entities\Ending.cs" />
@@ -77,13 +79,16 @@
      <Compile Include="Assets\Core\Entities\Situation.cs" />
      <Compile Include="Assets\Core\Entities\SlotMatchForAspects.cs" />
      <Compile Include="Assets\Core\Entities\SlotSpecification.cs" />
-     <Compile Include="Assets\Core\Entities\StoredElementStack.cs" />
+     <Compile Include="Assets\Core\Entities\Source.cs" />
      <Compile Include="Assets\Core\Enums\CharacterState.cs" />
      <Compile Include="Assets\Core\Enums\SituationState.cs" />
+     <Compile Include="Assets\Core\Enums\SourceType.cs" />
      <Compile Include="Assets\Core\Enums\Style.cs" />
      <Compile Include="Assets\Core\Interfaces\IElementStack.cs" />
+     <Compile Include="Assets\Core\Interfaces\IGameEntityStorage.cs" />
      <Compile Include="Assets\Core\Interfaces\INotification.cs" />
      <Compile Include="Assets\Core\Interfaces\INotifier.cs" />
+     <Compile Include="Assets\Core\Interfaces\ISaveable.cs" />
      <Compile Include="Assets\Core\Interfaces\ISituationEffectCommand.cs" />
      <Compile Include="Assets\Core\Interfaces\ITokenTransformWrapper.cs" />
      <Compile Include="Assets\Core\Interfaces\IVerb.cs" />
@@ -99,6 +104,8 @@
      <Compile Include="Assets\SimpleJson\OrbCreationExtensions\IntExtensions.cs" />
      <Compile Include="Assets\SimpleJson\OrbCreationExtensions\StringExtensions.cs" />
      <Compile Include="Assets\SimpleJson\SimpleJsonImporter.cs" />
+     <Compile Include="Assets\SplashAnimation.cs" />
+     <Compile Include="Assets\StatusBar.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Audio\AudioManager.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Audio\BackgroundMusic.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Audio\ButtonSoundTrigger.cs" />
@@ -112,19 +119,26 @@
      <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectFrame.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Elements\AspectsDisplay.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementDetailsWindow.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackBadge.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackSimple.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Elements\ElementStackToken.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Elements\TabletopContainerTokenTransformWrapper.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Elements\TokenTransformWrapper.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Gradient4Way.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\CardAnimationController.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Choreographer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\CrossSceneState.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataExporter.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameDataImporter.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\GameSaveManager.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\Heart.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\HotkeyWatcher.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\MapController.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\ResourcesManager.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SaveConstants.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SavedCrossSceneState.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SceneNumber.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\SpeedController.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Infrastructure\TabletopManager.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Interfaces\IDraggableHolder.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ISituationAnchor.cs" />
@@ -133,6 +147,8 @@
      <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Interfaces\ITokenGlow.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\LetterPanel.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\MapAnimation.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\MapContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\NotificationLog.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\NotificationLogTEST.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\NotificationWindow.cs" />
@@ -141,17 +157,19 @@
      <Compile Include="Assets\TabletopUi\Scripts\Services\PrefabFactory.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Services\Registry.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Services\TabletopObjectBuilder.cs" />
-     <Compile Include="Assets\TabletopUi\Scripts\Situation\OutputCardContainer.cs" />
-     <Compile Include="Assets\TabletopUi\Scripts\Situation\ShittyShadowTest.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\BasicShadowImplementation.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\OngoingSlotManager.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationController.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationOutputNote.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationResults.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationResultsPositioning.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationSlotManager.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationStorage.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationToken.cs" />
-     <Compile Include="Assets\TabletopUi\Scripts\SituationSlotManager.cs" />
-     <Compile Include="Assets\TabletopUi\Scripts\SituationWindow.cs" />
-     <Compile Include="Assets\TabletopUi\Scripts\SituationWindowNew.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationWindow.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Situation\SituationWindowPositioner.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\AbstractSlotsContainer.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\Slots\DoorSlot.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\OngoingSlotsContainer.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlot.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\Slots\RecipeSlotIcon.cs" />
@@ -165,6 +183,7 @@
      <Compile Include="Assets\TabletopUi\Scripts\TokenAnimationToSlot.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\DraggableHolder.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\Easing.cs" />
+     <Compile Include="Assets\TabletopUi\Scripts\UI\ElementOverview.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffect.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectCreate.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectCreateColorAnim.cs" />
@@ -174,7 +193,6 @@
      <Compile Include="Assets\TabletopUi\Scripts\UI\FX\FXTestController.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\GlowColor.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\GraphicFader.cs" />
-     <Compile Include="Assets\TabletopUi\Scripts\UI\Hotkeys.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\LoadingIcon.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\SplashScreen.cs" />
      <Compile Include="Assets\TabletopUi\Scripts\UI\OptionsPanel.cs" />
@@ -297,11 +315,13 @@
      <None Include="Assets\TabletopUi\Materials\UI-Default_shader.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TabletopUi\Materials\UI-NoBackface.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\Resources\content\elements\eerie_locations.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TabletopUi\Materials\SimpleBlur.shader" />
      <None Include="Assets\TabletopUi\Materials\UI-Multiply.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -312,29 +332,42 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\UnityTestTools\changelog.txt" />
      <None Include="Assets\SimpleJson\ReadMe.txt" />
+     <None Include="Assets\TabletopUi\Materials\MapBurn.shader" />
      <None Include="Assets\Resources\content\recipe_notes.txt" />
      <None Include="Assets\TabletopUi\Materials\CardBurn.shader" />
      <None Include="Assets\TabletopUi\Materials\UI-Greyout.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>/Applications/Unity-2017-1/Unity.app/Contents/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Users/alexi/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Users/alexi/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
