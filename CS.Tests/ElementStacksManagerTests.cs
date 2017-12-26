@@ -174,70 +174,6 @@ namespace Assets.Editor.Tests
         
     }
 
-    public class FakeElementStacksManager : IElementStacksManager
-    {
-        public int ReduceElement(string elementId, int quantityChange)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorId = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetCurrentElementQuantity(string elementId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDictionary<string, int> GetCurrentElementTotals()
-        {
-            throw new NotImplementedException();
-        }
-
-        public AspectsDictionary GetTotalAspects(bool showElementAspects = true)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<IElementStack> GetStacks()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AcceptStack(IElementStack stack)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AcceptStacks(IEnumerable<IElementStack> stacks)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveStack(IElementStack stack)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ConsumeAllStacks()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void NotifyStackRemoved(ElementStackToken elementStackToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Name { get; set; }
-    }
     //I should mock this, actually
     public class FakeElementStack : IElementStack
     {
@@ -254,7 +190,7 @@ namespace Assets.Editor.Tests
 
         public FakeElementStack()
         {
-            CurrentStacksManager=new FakeElementStacksManager(); //must be assigned to a stacksmanager at birth
+            CurrentStacksManager=new ElementStacksManager(null,"fake"); //must be assigned to a stacksmanager at birth
         }
 
         public IAspectsDictionary GetAspects(bool includingSelf = true)
