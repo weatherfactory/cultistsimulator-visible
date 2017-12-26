@@ -8,6 +8,7 @@ using NUnit.Framework;
 
 namespace CS.Tests
 {
+    [TestFixture]
     public class DeckTests
     {
         private DeckInstance testDeck;

@@ -42,7 +42,7 @@ namespace Assets.Logic
             }
         }
 
-        private void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
+        public void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
             var deckId = command.GetDeckEffect();
             if(deckId!=null)
@@ -50,12 +50,12 @@ namespace Assets.Logic
                 var deck = storage.GetDeckInstanceById(deckId);
             if (deck != null)
             {
-                var drawnElementId = deck.Draw();
+                var drawId = deck.Draw();
 
-                if (drawnElementId != null)
+                if (drawId != null)
                 {
                     var source = Source.Fresh(); //ultimately this should correspond to deck
-                    stacksManager.ModifyElementQuantity(drawnElementId, 1, source);
+                    stacksManager.ModifyElementQuantity(drawId, 1, source);
 
                 }
                 //else
