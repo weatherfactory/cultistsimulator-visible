@@ -14,5 +14,8 @@ namespace Assets.Core.Interfaces
         string Profession { get; set; }
         string PreviousCharacterName { get; set; }
         string ReplaceTextFor(string text);
+        void AddExecutionsToHistory(string forRecipeId,int executions);
+        int GetExecutionsCount(string forRecipeId);
+        bool HasExhaustedRecipe(Recipe forRecipe);
     }
 }

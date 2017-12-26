@@ -47,6 +47,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
             htCharacter.Add(SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME,character.PreviousCharacterName);
 
+            var htExecutions=new Hashtable();
+            foreach (var e in character.GetAllExecutions())
+            {
+                htExecutions.Add(e.Key,e.Value);
+            }
+
+            htCharacter.Add(SaveConstants.SAVE_EXECUTIONS,htExecutions);
+
             return htCharacter;
         }
 

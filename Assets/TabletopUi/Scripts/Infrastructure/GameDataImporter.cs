@@ -61,6 +61,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
                 storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
+
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
+            {
+                var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
+                foreach(var key in htExecutions.Keys)
+                    storage.AddExecutionsToHistory(key.ToString(),GetIntFromHashtable(htExecutions,key.ToString()));
+            }
         }
 
 

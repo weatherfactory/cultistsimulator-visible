@@ -236,7 +236,7 @@ namespace Assets.TabletopUi {
             var tabletopManager = Registry.Retrieve<TabletopManager>();
 
 
-            currentCharacter.AddExecutionToHistory(command.Recipe.Id);
+            currentCharacter.AddExecutionsToHistory(command.Recipe.Id,1);
             var executor = new SituationEffectExecutor();
             executor.RunEffects(command, situationWindow.GetStorageStacksManager(),currentCharacter);
 

@@ -25,12 +25,17 @@ public class Character:IGameEntityStorage
         DeckInstances=new List<IDeckInstance>();
     }
 
-    public void AddExecutionToHistory(string forRecipeId)
+    public Dictionary<string, int> GetAllExecutions()
+    {
+        return new Dictionary<string, int>(recipeExecutions);
+    }
+
+    public void AddExecutionsToHistory(string forRecipeId,int executions)
     {
         if (recipeExecutions.ContainsKey(forRecipeId))
-            recipeExecutions[forRecipeId]++;
+            recipeExecutions[forRecipeId]+=executions;
         else
-            recipeExecutions[forRecipeId] = 1;
+            recipeExecutions[forRecipeId] = executions;
     }
 
     public int GetExecutionsCount(string forRecipeId)
