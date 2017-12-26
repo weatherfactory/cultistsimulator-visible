@@ -17,6 +17,7 @@ namespace Assets.Core.Entities
         string Id { get; }
         List<string> StartingCards { get; set; }
         string DefaultCardId { get; set; }
+        bool ResetOnExhaustion { get; set; }
     }
 
 
@@ -40,13 +41,17 @@ namespace Assets.Core.Entities
         //DeckSpec startingCards determines which cards start in the deckSpec after each reset
         public List<string> StartingCards { get; set; }
         public string DefaultCardId { get; set; }
+        public bool ResetOnExhaustion { get; set; }
 
-        public DeckSpec(string id,List<string> startingCards,string defaultCardId)
+        public DeckSpec(string id,List<string> startingCards,string defaultCardId,bool resetOnExhaustion)
         {
             _id = id;
             StartingCards = startingCards;
             DefaultCardId = defaultCardId;
+            ResetOnExhaustion = resetOnExhaustion;
         }
+
+        
 
 
         /// <summary>

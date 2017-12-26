@@ -285,7 +285,7 @@ public class ContentImporter
                            "' - " + e.Message);
             }
 
-            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId);
+            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId,false);
 
             DeckSpecs.Add(d.Id,d);
         }

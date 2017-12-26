@@ -47,10 +47,20 @@ namespace Assets.Core.Entities
 
         public string Draw()
         {
-            if (_cards.Any())
-                return _cards.Pop();
+            if (!_cards.Any())
+            {
+                //if the deck is exhausted:
+                //--some decks reset, so we can have an infinite supply of whatevers.
+                if (_deckSpec.ResetOnExhaustion)
+                    Reset();
+            }
+            //in case somehow resetting the deck still won't have given us a card,
+            //let's test again
+            if(_cards.Any())
+            return _cards.Pop();
             else
-                //if the deck is exhausted, always return the default card
+                //if either the deck didn't reset on exhaustion,
+                //or a reset has still left us with no cards, always return the default card
                 return _deckSpec.DefaultCardId;
         }
 
