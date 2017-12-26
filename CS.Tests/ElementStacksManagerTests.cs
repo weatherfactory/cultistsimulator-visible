@@ -6,6 +6,7 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Noon;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -16,12 +17,20 @@ namespace Assets.Editor.Tests
     {
         private List<IElementStack> stacks;
         private ITokenPhysicalLocation wrapper;
+        private Registry registry;
         [SetUp]
         public void Setup()
         {
-          stacks= TestObjectGenerator.CardsForElements(TestObjectGenerator.ElementDictionary(1, 3));
+            NoonUtility.UnitTestingMode = true;
+            var stackManagersCatalogue = new StackManagersCatalogue();
+            registry = new Registry();
+            registry.Register<StackManagersCatalogue>(stackManagersCatalogue);
+
+            stacks = TestObjectGenerator.CardsForElements(TestObjectGenerator.ElementDictionary(1, 3));
             wrapper = Substitute.For<ITokenPhysicalLocation>();
             wrapper.GetStacks().Returns(stacks);
+
+
         }
 
         [Test]
@@ -163,6 +172,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_AcceptsStack()
         {
+
             var ecg=new ElementStacksManager(wrapper, "test");
             FakeElementStack newStack =TestObjectGenerator.CreateElementCard(stacks.Count+1.ToString(),2);
             ecg.AcceptStack(newStack);

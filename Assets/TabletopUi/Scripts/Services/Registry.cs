@@ -19,8 +19,10 @@ namespace Assets.CS.TabletopUI
 
         public static T Retrieve<T>() where T: class
         {
+            if (!registered.ContainsKey(typeof(T)))
+                throw new ApplicationException(typeof(T).Name + " wasn't registered");
             T got = registered[typeof(T)] as T;
-            Assert.IsNotNull(got,typeof(T).GetType().Name + " never registered");
+      
             return got;
         }
 

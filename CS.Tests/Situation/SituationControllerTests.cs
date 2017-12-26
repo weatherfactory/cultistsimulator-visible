@@ -6,6 +6,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
 using NSubstitute;
@@ -23,6 +24,7 @@ namespace Assets.Editor.Tests
         private ISituationDetails situationDetailsMock;
         private ISituation _situationMock;
         private IVerb basicVerb;
+        private Registry registry;
             
         [SetUp]
         public void Setup()
@@ -34,6 +36,10 @@ namespace Assets.Editor.Tests
             characterMock = Substitute.For<Character>();
             _situationMock = Substitute.For<ISituation>();
             basicVerb=new BasicVerb("id","label","description",false);
+
+            var scat=new SituationsCatalogue();
+            registry=new Registry();
+            registry.Register<SituationsCatalogue>(scat);
 
 
             sc = new SituationController(compendiumMock,characterMock);
