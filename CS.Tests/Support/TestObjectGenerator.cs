@@ -64,11 +64,11 @@ public class TestObjectGenerator
             return r;
         }
 
-        public static void AddUniqueAspectsToEachElement(Dictionary<string, Element> elements)
+        public static void AddAnAspectToEachElement(Dictionary<string, Element> elements,string idPrefix)
         {
             foreach (string k in elements.Keys)
             {
-                elements[k].Aspects.Add("a" + k,1);
+                elements[k].Aspects.Add(idPrefix + k,1);
             }
         }
     }

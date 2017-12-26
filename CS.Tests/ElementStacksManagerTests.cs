@@ -62,7 +62,9 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_SumsExtraNonUniqueElements()
         {
-            stacks.Add(TestObjectGenerator.CreateElementCard(stacks[0].Id,1));
+         IElementStack newStack= TestObjectGenerator.CreateElementCard(stacks[0].Id,1);
+
+            elementStacksManager.AcceptStack(newStack);
 
             var d = elementStacksManager.GetCurrentElementTotals();
              Assert.AreEqual(2,d[stacks[0].Id]);
@@ -75,16 +77,16 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_SumsUniqueAspects()
         {
-            var elements = TestObjectGenerator.ElementDictionary(1, 2);
-            TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
+            var elements = TestObjectGenerator.ElementDictionary(1,2);
+            TestObjectGenerator.AddAnAspectToEachElement(elements,"a");
             var aspectedCards = TestObjectGenerator.CardsForElements(elements);
-            wrapper.GetStacks().Returns(aspectedCards);
-
+       
+            elementStacksManager.AcceptStacks(aspectedCards);
          
             var d = elementStacksManager.GetTotalAspects();
-            Assert.AreEqual(1, d["1"]);
+            Assert.AreEqual(2, d["1"]);
             Assert.AreEqual(1, d["a1"]);
-            Assert.AreEqual(1, d["2"]);
+            Assert.AreEqual(2, d["2"]);
             Assert.AreEqual(1, d["a2"]);
         }
 
@@ -92,13 +94,11 @@ namespace Assets.Editor.Tests
         public void Manager_SumsDuplicateAspects()
         {
             var elements = TestObjectGenerator.ElementDictionary(1, 2);
-            TestObjectGenerator.AddUniqueAspectsToEachElement(elements);
+            TestObjectGenerator.AddAnAspectToEachElement(elements,"a");
             elements["1"].Aspects.Add("a2",1);
             var aspectedCards = TestObjectGenerator.CardsForElements(elements);
-
-
-            var ecg = new ElementStacksManager(wrapper, "test");
-            var d = ecg.GetTotalAspects();
+            elementStacksManager.AcceptStacks(aspectedCards);
+            var d = elementStacksManager.GetTotalAspects();
             Assert.AreEqual(1, d["a1"]);
             Assert.AreEqual(2, d["a2"]);
         }
@@ -115,9 +115,9 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_ReduceElement_CallsRemoveOnSingleCard()
         {
-            var eca = new ElementStacksManager(wrapper, "test");
+            
             FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
-            eca.ReduceElement(stackToRemove.Id,-1);
+            elementStacksManager.ReduceElement(stackToRemove.Id,-1);
             Assert.IsTrue(stackToRemove.Defunct);
         }
 
