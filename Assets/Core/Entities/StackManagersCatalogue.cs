@@ -11,10 +11,12 @@ namespace Assets.Core.Entities
     public class StackManagersCatalogue
     {
         private readonly List<IElementStacksManager> _currentElementStackManagers;
+        private readonly List<IStacksChangeSubscriber> _subscribers;
 
         public StackManagersCatalogue()
         {
             _currentElementStackManagers = new List<IElementStacksManager>();
+            _subscribers=new List<IStacksChangeSubscriber>();
         }
 
         public List<IElementStacksManager> GetRegisteredStackManagers()
@@ -32,5 +34,22 @@ namespace Assets.Core.Entities
             _currentElementStackManagers.Remove(stackManager);
         }
 
+        public void Subscribe(IStacksChangeSubscriber subscriber)
+        {
+            _subscribers.Add(subscriber);
+        }
+
+        //called whenever a stack quantity is modified, or a stack moves to another StacksManager
+        public void NotifyStacksChanged()
+        {
+    foreach(var s in _subscribers)
+        s.NotifyStacksChanged();
+        }
+
+    }
+
+    public interface IStacksChangeSubscriber
+    {
+        void NotifyStacksChanged();
     }
 }

@@ -6,6 +6,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,10 +35,9 @@ public class ElementOverview : MonoBehaviour {
         elementCounts[i].color = color;
     }
 
-    public void UpdateDisplay(IElementStacksManager allCurrentStacksOnTabletop,IEnumerable<SituationController> situations) 
+    public void UpdateDisplay()
     {
-        // TODO: This is being called every frame in update, if possible only call it when the stacks have changed? Have a global "elements changed" event to call?
-
+        // now called from the notification chain in StacksCatalogue
         var stacksCatalogue = Registry.Retrieve<StackManagersCatalogue>();
 
         for (int i = 0; i < overviewElementIds.Length; i++)
@@ -46,10 +46,12 @@ public class ElementOverview : MonoBehaviour {
             foreach (var stackManager in stacksCatalogue.GetRegisteredStackManagers())
             {
                 string countElementId = overviewElementIds[i];
-                count+= stackManager.GetCurrentElementQuantity(countElementId);
+                count += stackManager.GetCurrentElementQuantity(countElementId);
                 SetElement(i, countElementId, count);
             }
         }
+
     }
+
 
 }

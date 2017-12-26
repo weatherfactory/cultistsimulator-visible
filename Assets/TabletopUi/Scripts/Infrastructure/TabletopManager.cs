@@ -28,7 +28,7 @@ using UnityEngine.XR.WSA;
 
 namespace Assets.CS.TabletopUI
 {
-    public class TabletopManager : MonoBehaviour {
+    public class TabletopManager : MonoBehaviour,IStacksChangeSubscriber {
 
         [Header("Game Control")]
         [SerializeField] private Heart _heart;
@@ -69,9 +69,11 @@ namespace Assets.CS.TabletopUI
         public void Update()
         {
             _hotkeyWatcher.WatchForHotkeys();
-            _elementOverview.UpdateDisplay(_tabletop.GetElementStacksManager(),
-                Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations());
             _cardAnimationController.CheckForCardAnimations();
+        }
+        public void NotifyStacksChanged()
+        {
+            _elementOverview.UpdateDisplay();
         }
 
 
@@ -143,6 +145,9 @@ namespace Assets.CS.TabletopUI
             var choreographer=new Choreographer(containsTokens, builder,tableLevelTransform,windowLevelTransform);
             var situationsCatalogue=new SituationsCatalogue();
             var elementStacksCatalogue=new StackManagersCatalogue();
+            //ensure we get updates about stack changes
+            elementStacksCatalogue.Subscribe(this);
+            
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -462,6 +467,8 @@ namespace Assets.CS.TabletopUI
             //including the situationToken so we can zoom to it or otherwise signal it at some point, but for now, let's just play some scary music
             backgroundMusic.PlayImpendingDoom();
         }
+
+   
     }
 
 }

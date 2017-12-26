@@ -21,6 +21,7 @@ using Noon;
 public class ElementStacksManager : IElementStacksManager {
     private readonly ITokenPhysicalLocation TokenPhysicalLocation;
     private List<IElementStack> Stacks;
+    private StackManagersCatalogue _catalogue; 
     public string Name { get; set; }
 
     public ElementStacksManager(ITokenPhysicalLocation w,string name) {
@@ -28,8 +29,9 @@ public class ElementStacksManager : IElementStacksManager {
         Stacks=new List<IElementStack>();
         Name = name;
 
-        var catalogue = Registry.Retrieve<StackManagersCatalogue>();
-        catalogue.RegisterStackManager(this);
+         _catalogue = Registry.Retrieve<StackManagersCatalogue>();
+
+        _catalogue.RegisterStackManager(this);
 
     }
 
@@ -45,6 +47,8 @@ public class ElementStacksManager : IElementStacksManager {
             IncreaseElement(elementId, quantityChange,stackSource);
         else
             ReduceElement(elementId, quantityChange);
+
+        _catalogue.NotifyStacksChanged();
     }
 
 
@@ -138,18 +142,21 @@ public class ElementStacksManager : IElementStacksManager {
         stack.AssignToStackManager(this);
         Stacks.Add(stack);
         TokenPhysicalLocation.DisplayHere(stack);
-        
+        _catalogue.NotifyStacksChanged();
+
     }
 
     public void AcceptStacks(IEnumerable<IElementStack> stacks) {
         foreach (var eachStack in stacks) {
             AcceptStack(eachStack);
         }
+
     }
 
     public void RemoveStack(IElementStack stack)
     {
         Stacks.Remove(stack);
+        _catalogue.NotifyStacksChanged();
     }
 
     public void ConsumeAllStacks() {
@@ -157,6 +164,11 @@ public class ElementStacksManager : IElementStacksManager {
             stack.SetQuantity(0);
     }
 
-
+    private void NotifyStacksChanged()
+    {
+        if(_catalogue==null)
+            throw new ApplicationException("StacksManager is trying to notify the catalogue, but there's no catalogue! - for stacksmanager " + Name);
+        _catalogue.NotifyStacksChanged();
+    }
 }
 
