@@ -18,12 +18,13 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi {
-    public class SituationController : ISituationSubscriber {
+    public class SituationController : ISituationSubscriber,ISaveable {
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
         public ISituation Situation;
         private readonly ICompendium compendium;
         private readonly Character currentCharacter;
+        public bool IsOpen { get; set; }
 
         public SituationController(ICompendium co, Character ch) {
             compendium = co;
@@ -31,6 +32,8 @@ namespace Assets.TabletopUi {
         }
 
         public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w) {
+            Registry.Retrieve<SituationsCatalogue>().RegisterSituation(this);
+
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this);
 
@@ -84,6 +87,7 @@ namespace Assets.TabletopUi {
             if (Situation.State == SituationState.Unstarted)
                 situationWindow.SetUnstarted();
 
+            IsOpen = true;
             situationToken.OpenToken();
             situationWindow.Show();
         }
@@ -97,6 +101,11 @@ namespace Assets.TabletopUi {
 
         public string GetCurrentRecipeId() {
             return Situation == null ? null : Situation.RecipeId;
+        }
+
+        public string GetActionId()
+        {
+            return situationToken.Id;
         }
 
         public void StartingSlotsUpdated() {
@@ -237,7 +246,7 @@ namespace Assets.TabletopUi {
             }
         }
         /// <summary>
-        /// The situation is complete. Display the output cards and description
+        /// The situation is complete. DisplayHere the output cards and description
         /// </summary>
         public void SituationComplete() {
             var outputStacks = situationWindow.GetStoredStacks();
@@ -358,11 +367,19 @@ namespace Assets.TabletopUi {
                 situationWindow.Retire();
                 //at the moment, the controller is accessed through the token
                 //if we attach the controller to a third object, we'd need to retire that too
+                //...and here that third thing is! but we're still in mid-refactor.
+                Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
             }
             else {
                 situationWindow.SetUnstarted();
                 situationToken.SetCompletionCount(0);
             }
+        }
+
+        public void Retire()
+        {
+            situationToken.Retire();
+            Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
         }
 
         public Hashtable GetSaveData() {

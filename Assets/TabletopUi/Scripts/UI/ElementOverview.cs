@@ -1,7 +1,10 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
+using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
 using TMPro;
 using UnityEngine;
@@ -31,25 +34,21 @@ public class ElementOverview : MonoBehaviour {
         elementCounts[i].color = color;
     }
 
-    public void UpdateDisplay(IElementStacksManager allCurrentStacksOnTabletop,IEnumerable<ISituationAnchor> situations) 
+    public void UpdateDisplay(IElementStacksManager allCurrentStacksOnTabletop,IEnumerable<SituationController> situations) 
     {
-        // TODO: This does a lot of iterating each frame to grab all cards in play. If possible change this to use the planned "lists" instead
         // TODO: This is being called every frame in update, if possible only call it when the stacks have changed? Have a global "elements changed" event to call?
 
-        var draggedElementStack = (DraggableToken.itemBeingDragged != null ? DraggableToken.itemBeingDragged as ElementStackToken : null);
-        int count;
+        var stacksCatalogue = Registry.Retrieve<StackManagersCatalogue>();
 
         for (int i = 0; i < overviewElementIds.Length; i++)
         {
-            count = allCurrentStacksOnTabletop.GetCurrentElementQuantity(overviewElementIds[i]);
-
-            foreach (var sit in situations)
-                count += sit.SituationController.GetElementCountInSituation(overviewElementIds[i]);
-
-            if (draggedElementStack != null && draggedElementStack.Id == overviewElementIds[i])
-                count += draggedElementStack.Quantity;
-
-            SetElement(i, overviewElementIds[i], count);
+            int count = 0;
+            foreach (var stackManager in stacksCatalogue.GetRegisteredStackManagers())
+            {
+                string countElementId = overviewElementIds[i];
+                count+= stackManager.GetCurrentElementQuantity(countElementId);
+                SetElement(i, countElementId, count);
+            }
         }
     }
 

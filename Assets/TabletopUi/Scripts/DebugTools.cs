@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class DebugTools : MonoBehaviour
 {
     
-    [SerializeField] private TabletopContainer tabletopContainer;
+    [SerializeField] private Tabletop tabletop;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField input;
     [SerializeField] private Button btnPlusOne;
@@ -45,7 +45,7 @@ public class DebugTools : MonoBehaviour
     }
     void AddCard(string elementId)
     {
-        var stackManager = tabletopContainer.GetElementStacksManager();
+        var stackManager = tabletop.GetElementStacksManager();
 
         var existingStacks = stackManager.GetStacks();
 
@@ -64,7 +64,7 @@ public class DebugTools : MonoBehaviour
 
     void DecrementElement(string elementId)
     {
-        tabletopContainer.GetElementStacksManager().ModifyElementQuantity(elementId, -1, Source.Existing());
+        tabletop.GetElementStacksManager().ModifyElementQuantity(elementId, -1, Source.Existing());
     }
 
     void BeginSituation(string recipeId)

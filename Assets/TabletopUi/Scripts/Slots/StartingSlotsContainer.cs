@@ -14,7 +14,7 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.TabletopUi.SlotsContainers {
-    public class StartingSlotsContainer : AbstractSlotsContainer, ITokenContainer {
+    public class StartingSlotsContainer : AbstractSlotsContainer {
 
         [SerializeField] SituationSlotManager slotManager;
         public CanvasGroupFader canvasGroupFader;
@@ -22,9 +22,6 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected RecipeSlot primarySlot;
         private ElementStacksManager _stacksManager;
 
-        public bool AllowStackMerge {
-            get { return false; }
-        }
 
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
@@ -55,7 +52,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackPickedUp(IElementStack stack) {
+        public override void RespondToStackRemoved(IElementStack stack) {
             RemoveAnyChildSlotsWithEmptyParent();
             ArrangeSlots();
             controller.StartingSlotsUpdated();
@@ -86,6 +83,8 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected override void ClearAndDestroySlot(RecipeSlot slot) {
             if (slot == null)
                 return;
+            if (slot.Defunct == true)
+                return;
 
             // This is all copy & paste from the parent class except for the last line
             if (slot.childSlots.Count > 0) {
@@ -96,44 +95,19 @@ namespace Assets.TabletopUi.SlotsContainers {
                 slot.childSlots.Clear();
             }
 
-            DraggableToken tokenContained = slot.GetTokenInSlot();
+            //Destroy the slot *before* returning the token to the tabletop
+            //otherwise, the slot will fire OnCardRemoved again, and we get an infinte loop
+            slotManager.RetireSlot(slot);
 
+            DraggableToken tokenContained = slot.GetTokenInSlot();
             if (tokenContained != null) 
                 tokenContained.ReturnToTabletop(null);
 
-            slotManager.RemoveSlot(slot);
+            
         }
 
         void ArrangeSlots() {
             slotManager.ReorderSlots();
-        }
-
-        public ElementStacksManager GetElementStacksManager() {
-            //In some places we've done it Initialise. Here, we're testing if it's null and then assigning on the fly
-            //This is because I'm going through and refactoring. Perhaps it should be consistent YOU TELL ME it's likely to get refactored further anyhoo
-            if (_stacksManager == null)
-            {
-                ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-                _stacksManager = new ElementStacksManager(tabletopStacksWrapper);
-            }
-            return _stacksManager;
-        }
-
-        public void TokenPickedUp(DraggableToken draggableToken) {
-        }
-
-        public void TokenDropped(DraggableToken draggableToken) {
-        }
-
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-        {
-            //I don't *think* this should ever be called. Let's find out.
-            //if it's not, ofc, we have one too few interfaces. The ITokenContainer is being used as both 'thing that has a stacksmanager' and 'direct parent that determines behaviour'
-            throw new NotImplementedException();
-        }
-
-        public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
-            return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
         }
     }
 

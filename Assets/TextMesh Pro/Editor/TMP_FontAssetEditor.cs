@@ -673,7 +673,7 @@ namespace TMPro.EditorUtilities
 
             // Clear selection if mouse event was not consumed. 
             GUI.enabled = true;
-            if (currentEvent.type == EventType.mouseDown && currentEvent.button == 0)
+            if (currentEvent.type == EventType.MouseDown && currentEvent.button == 0)
                 m_selectedElement = -1;
 
         }

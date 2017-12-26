@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Security;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Noon;
@@ -91,12 +92,13 @@ public class Heart : MonoBehaviour
         //foreach existing active recipe window: run beat there
         //advance timer
         var tabletopManager = Registry.Retrieve<TabletopManager>();
-        var situationTokens = tabletopManager.GetAllSituationTokens();
-        foreach (var st in situationTokens)
+        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+        foreach (var sc in situationControllers)
         {
             if (CurrentGameSpeed == GameSpeed.Fast)
                 intervalThisBeat = usualInterval * 2;
-           HeartbeatResponse response=st.ExecuteHeartbeat(intervalThisBeat);
+           HeartbeatResponse response=sc.ExecuteHeartbeat(intervalThisBeat);
             foreach (var r in response.SlotsToFill)
                 outstandingSlotsToFill.Add(r);
         }

@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
 #pragma warning disable 0649
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
@@ -51,7 +52,13 @@ namespace Assets.CS.TabletopUI
             get { return SituationController.Situation.State; }
         }
 
-        public bool IsOpen = false;
+        public override void ReturnToTabletop(INotification reason = null)
+        {
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+            if (reason != null)
+                notifier.TokenReturnedToTabletop(this, reason);
+        }
+
         public bool IsTransient { get { return _verb.Transient; } }
 
         public override string Id
@@ -142,24 +149,19 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-        public Hashtable GetSaveData()
-        {
-            return SituationController.GetSaveData();
-        }
 
         public void OpenToken()
         {
             DisplayInAir();
-            IsOpen = true;
             ShowGlow(false);
         }
 
         public void CloseToken()
         {
             if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
-                DisplayOnTable();
+                DisplayAtTableLevel();
 
-            IsOpen = false;
+            SituationController.IsOpen = false;
 
             if (SituationController.IsSituationOccupied())
             { 
@@ -227,11 +229,11 @@ namespace Assets.CS.TabletopUI
         {
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
 
-            if (!IsOpen)
+            if (!SituationController.IsOpen)
             {
                 SituationController.OpenSituation();
 
-                (container as TabletopContainer).CloseAllSituationWindowsExcept(this);
+                Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(this.Id);
 
             }
             else
@@ -245,9 +247,19 @@ namespace Assets.CS.TabletopUI
 
         }
 
-        public void ShowDestinationsForStack(IElementStack stack)
+
+        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
-            SituationController.ShowDestinationsForStack(stack);
+
+            bool moveAsideFor = false;
+            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+
+
         }
     }
 

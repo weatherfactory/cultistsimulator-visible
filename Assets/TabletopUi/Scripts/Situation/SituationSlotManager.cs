@@ -54,7 +54,7 @@ namespace Assets.CS.TabletopUI {
                 slot.viz.TriggerShowAnim();
         }
 
-        public void RemoveSlot(RecipeSlot slot) {
+        public void RetireSlot(RecipeSlot slot) {
 			if (slot == null)
 				return;
 

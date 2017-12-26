@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -25,10 +26,10 @@ namespace Assets.CS.TabletopUI {
         bool Retire();
 
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, ITokenContainer, IPointerClickHandler, 
+    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, IContainsTokensView, IPointerClickHandler, 
         IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action<RecipeSlot, IElementStack> onCardDropped;
-        public event System.Action<IElementStack> onCardPickedUp;
+        public event System.Action<IElementStack> OnCardRemoved;
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
@@ -71,14 +72,18 @@ namespace Assets.CS.TabletopUI {
 
         public RecipeSlot() {
             childSlots = new List<RecipeSlot>();
+
         }
 
         void Start() {
             ShowGlow(false, false);
-            IsLocked = false;
+            IsLocked = false;           
         }
 
-        public void SetSpecification(SlotSpecification slotSpecification) {
+        public void Initialise(SlotSpecification slotSpecification) {
+            ITokenPhysicalLocation tabletopStacksWrapper = new TokenTransformWrapper(transform);
+            _stacksManager = new ElementStacksManager(tabletopStacksWrapper, "slot");
+
             if (slotSpecification == null)
                 return;
 
@@ -151,7 +156,7 @@ namespace Assets.CS.TabletopUI {
             else
             {
             //it matches. Now we check if there's a token already there, and replace it if so:
-            var currentOccupant = GetTokenInSlot();
+                var currentOccupant = GetElementStackInSlot();
             if (currentOccupant != null)
                 throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
                 //currentOccupant.ReturnToTabletop();
@@ -165,10 +170,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void AcceptStack(IElementStack stack) {
-            ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-            _stacksManager = new ElementStacksManager(tabletopStacksWrapper);
-
-            GetElementStacksManager().AcceptStack(stack);
+        
+            _stacksManager.AcceptStack(stack);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
@@ -180,8 +183,9 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<DraggableToken>();
         }
 
-        public IElementStack GetElementStackInSlot() {
-            return GetComponentInChildren<IElementStack>();
+        public IElementStack GetElementStackInSlot()
+        {
+            return _stacksManager.GetStacks().SingleOrDefault();
         }
 
         public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack) {
@@ -191,32 +195,40 @@ namespace Assets.CS.TabletopUI {
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
 
-        public void TokenPickedUp(DraggableToken draggableToken) {
-            onCardPickedUp(draggableToken as IElementStack);
-        }
-
-        public void TokenDropped(DraggableToken draggableToken) {
-        }
-
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        
+        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
         {
-            var usurperStack = potentialUsurper as ElementStackToken;
-            if (usurperStack == null)
-                incumbentMoved = false;
-            else
-            {
+            OnCardRemoved(elementStackToken);
+            //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
+            //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
+            //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
+            // - or else not have it occur more than once on the same slot? mark as defunct?
+            
+        }
+
+  
+        public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        {
+
                 //incomer is a token. Does it fit in the slot?
-                if(GetSlotMatchForStack(usurperStack).MatchType==SlotMatchForAspectsType.Okay)
+                if(GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
                 { 
                     incumbentMoved = true;
                     incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
-                    AcceptStack(usurperStack);
+                    AcceptStack(potentialUsurper);
                 }
                 else
                     incumbentMoved = false;
-            }
+            
 
         }
+        public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        {
+            //do nothing, ever
+            incumbentMoved = false;
+        }
+
+
 
         public bool AllowDrag {
             get {
@@ -228,17 +240,10 @@ namespace Assets.CS.TabletopUI {
 
         public ElementStacksManager GetElementStacksManager()
         {
-            //In some places we've done it Initialise. Here, we're testing if it's null and then assigning on the fly
-            //This is because I'm going through and refactoring. Perhaps it should be consistent YOU TELL ME it's likely to get refactored further anyhoo
-            if(_stacksManager==null)
-            { 
-                ITokenTransformWrapper tabletopStacksWrapper = new TokenTransformWrapper(transform);
-                _stacksManager = new ElementStacksManager(tabletopStacksWrapper);
-            }
             return _stacksManager;
         }
 
-        public ITokenTransformWrapper GetTokenTransformWrapper() {
+        public ITokenPhysicalLocation GetTokenTransformWrapper() {
             return new TokenTransformWrapper(transform);
         }
 
@@ -279,6 +284,12 @@ namespace Assets.CS.TabletopUI {
 
         public void OnPointerClick(PointerEventData eventData) {
             Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification);
+        }
+
+        public void OnDestroy()
+        {
+            if (_stacksManager != null)
+                _stacksManager.Deregister();
         }
     }
 }

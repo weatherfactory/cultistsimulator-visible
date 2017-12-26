@@ -7,36 +7,37 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
-using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 
 
-public interface IElementStacksManager {
-    /// <summary>
-    /// Reduces matching stacks until change is satisfied - NB a match is also a stack which possesses this aspect
-    /// </summary>
-    /// <param name="elementId"></param>
-    /// <param name="quantityChange">must be negative</param>
-    /// <returns>returns any unsatisfied change remaining</returns>
-    int ReduceElement(string elementId, int quantityChange);
-    int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorId = null);
-    int GetCurrentElementQuantity(string elementId);
-    IDictionary<string, int> GetCurrentElementTotals();
-    AspectsDictionary GetTotalAspects(bool showElementAspects = true);
-    IEnumerable<IElementStack> GetStacks();
-    void AcceptStack(IElementStack stack);
-    void AcceptStacks(IEnumerable<IElementStack> stacks);
-    void ConsumeAllStacks();
-    void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource);
-}
 
+/// <summary>
+/// Tracks and performs operations on tokens, considered as game model objects
+/// Uses an ITokenPhysicalLocation (in Unity, a TokenTransformWrapper) to change the display
+/// Referenced through gameobjects (Unity layer) which implement IContainsTokens
+/// IContainsTokens objects should never have direct access to the ITokenPhysicalLocation (though it references them) because everything needs to be filtered through
+/// the StacksManager for model management purposes
+/// </summary>
 public class ElementStacksManager : IElementStacksManager {
-    private readonly ITokenTransformWrapper _wrapper;
-    private List<IElementStack> _contents;
+    private readonly ITokenPhysicalLocation TokenPhysicalLocation;
+    private List<IElementStack> Stacks;
+    public string Name { get; set; }
 
+    public ElementStacksManager(ITokenPhysicalLocation w,string name) {
+        TokenPhysicalLocation = w;
+        Stacks=new List<IElementStack>();
+        Name = name;
 
-    public ElementStacksManager(ITokenTransformWrapper w) {
-        _wrapper = w;
-        _contents=new List<IElementStack>();
+        var catalogue = Registry.Retrieve<StackManagersCatalogue>();
+        catalogue.RegisterStackManager(this);
+
+    }
+
+    public void Deregister()
+    {
+        var catalogue = Registry.Retrieve<StackManagersCatalogue>();
+        if(catalogue!=null)
+         catalogue.DeregisterStackManager(this);
     }
 
     public void ModifyElementQuantity(string elementId, int quantityChange,Source stackSource) {
@@ -45,6 +46,7 @@ public class ElementStacksManager : IElementStacksManager {
         else
             ReduceElement(elementId, quantityChange);
     }
+
 
     /// <summary>
     /// Reduces matching stacks until change is satisfied
@@ -58,14 +60,14 @@ public class ElementStacksManager : IElementStacksManager {
 
         int unsatisfiedChange = quantityChange;
         while (unsatisfiedChange < 0) {
-            IElementStack cardToRemove = _wrapper.GetStacks().FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
+            IElementStack stackToAffect = Stacks.FirstOrDefault(c => !c.Defunct && c.GetAspects().ContainsKey(elementId));
 
-            if (cardToRemove == null) //we haven't found either a concrete matching element, or an element with that ID.
+            if (stackToAffect == null) //we haven't found either a concrete matching element, or an element with that ID.
                 //so end execution here, and return the unsatisfied change amount
                 return unsatisfiedChange;
 
-            int originalQuantity = cardToRemove.Quantity;
-            cardToRemove.ModifyQuantity(unsatisfiedChange);
+            int originalQuantity = stackToAffect.Quantity;
+            stackToAffect.ModifyQuantity(unsatisfiedChange);
             unsatisfiedChange += originalQuantity;
 
         }
@@ -84,20 +86,21 @@ public class ElementStacksManager : IElementStacksManager {
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
-        _wrapper.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        var newStack=TokenPhysicalLocation.ProvisionElementStack(elementId, quantityChange,stackSource, locatorid);
+        AcceptStack(newStack);
         return quantityChange;
     }
 
 
     public int GetCurrentElementQuantity(string elementId) {
-        return _wrapper.GetStacks().Where(e => e.Id == elementId).Sum(e => e.Quantity);
+        return Stacks.Where(e => e.Id == elementId).Sum(e => e.Quantity);
     }
     /// <summary>
     /// All the elements in all the stacks (there may be duplicate elements in multiple stacks)
     /// </summary>
     /// <returns></returns>
     public IDictionary<string, int> GetCurrentElementTotals() {
-        var totals = _wrapper.GetStacks().GroupBy(c => c.Id)
+        var totals = Stacks.GroupBy(c => c.Id)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -111,7 +114,7 @@ public class ElementStacksManager : IElementStacksManager {
     public AspectsDictionary GetTotalAspects(bool includingSelf = true) {
         AspectsDictionary totals = new AspectsDictionary();
 
-        foreach (var elementCard in _wrapper.GetStacks()) {
+        foreach (var elementCard in Stacks) {
             var aspects = elementCard.GetAspects(includingSelf);
 
             foreach (string k in aspects.Keys) {
@@ -125,12 +128,17 @@ public class ElementStacksManager : IElementStacksManager {
         return totals;
     }
 
-    public IEnumerable<IElementStack> GetStacks() {
-        return _wrapper.GetStacks();
+    public IEnumerable<IElementStack> GetStacks()
+    {
+        return Stacks.Where(s=>!s.Defunct).ToList();
     }
 
     public void AcceptStack(IElementStack stack) {
-        _wrapper.Accept(stack);
+        NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name,3);
+        stack.AssignToStackManager(this);
+        Stacks.Add(stack);
+        TokenPhysicalLocation.DisplayHere(stack);
+        
     }
 
     public void AcceptStacks(IEnumerable<IElementStack> stacks) {
@@ -139,8 +147,13 @@ public class ElementStacksManager : IElementStacksManager {
         }
     }
 
+    public void RemoveStack(IElementStack stack)
+    {
+        Stacks.Remove(stack);
+    }
+
     public void ConsumeAllStacks() {
-        foreach (IElementStack stack in _wrapper.GetStacks())
+        foreach (IElementStack stack in TokenPhysicalLocation.GetStacks())
             stack.SetQuantity(0);
     }
 

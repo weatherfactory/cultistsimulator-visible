@@ -14,6 +14,7 @@ using System.Collections;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
@@ -32,9 +33,19 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] CardEffectRemove cardBurnFX;
 
+        //The IElementStacksManager is the model-level association of the StacksToken. It's not a Unity-specific thing, and determines where the stack 'really' is for purposes of
+        //content framework behaviour.
+
+        //The ITokenTransformWrapper is the current location in the Unity hierarchy. (Not coincidentally, a StacksManager also contains a tokenwrapper. It should ultimately be possible to remove *this* reference).
+
+        //The two have historically been the same thing! So there may be some inconsistencies while we work through it.
+
+        private IElementStacksManager CurrentStacksManager;
+        private ITokenPhysicalLocation currentWrapper;
+
         private Element _element;
         private int _quantity;
-        private ITokenTransformWrapper currentWrapper;
+        
         private float lifetimeRemaining;
         private bool isFront = true;
         public Source StackSource { get; set; }
@@ -199,6 +210,7 @@ namespace Assets.CS.TabletopUI
             get { return _element == null ? null : _element.Id; }
         }
 
+
         public bool Decays
         {
             get { return _element.Lifetime > 0; }
@@ -211,7 +223,13 @@ namespace Assets.CS.TabletopUI
 
         public int Quantity
         {
-            get { return _quantity; }
+            get
+            {
+                if (Defunct)
+                    return 0;
+                else
+                    return _quantity;
+            }
         }
 
         public bool MarkedForConsumption { get; set; }
@@ -244,7 +262,9 @@ namespace Assets.CS.TabletopUI
                 return;
             }
 
-            base.ReturnToTabletop(reason);
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+            if (reason != null)
+                notifier.TokenReturnedToTabletop(this, reason);
 
             if (lastTablePos != null)
                 transform.position = (Vector3)lastTablePos;
@@ -261,6 +281,10 @@ namespace Assets.CS.TabletopUI
         {
             if (Defunct)
                 return false;
+            //first remove it from the StacksManager. It no longer exists in the model.
+            CurrentStacksManager.RemoveStack(this);
+
+            //now take care of the Unity side of things.
 
             Defunct = true;
             AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
@@ -298,14 +322,29 @@ namespace Assets.CS.TabletopUI
 
              StackSource = source;
 
+                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+                //when first created, it should be in Limbo
+
             }
             catch (Exception e)
             {
-
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
+
+            
+
         }
+
+        public void AssignToStackManager(IElementStacksManager manager)
+        {
+            var oldStacksManager = CurrentStacksManager;
+            CurrentStacksManager = manager;
+            //notify afterwards, in case it counts the things *currently* in its list
+            oldStacksManager.RemoveStack(this);
+            
+        }
+
 
 
         private void DisplayInfo()
@@ -401,9 +440,6 @@ namespace Assets.CS.TabletopUI
 
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
-
-                // we're destroying the token so it never throws an onDropped and its container was not changed, so tell the current container, not the old.
-                this.container.TokenDropped(this);
                 this.Retire(false);                
             }
             else
@@ -411,7 +447,7 @@ namespace Assets.CS.TabletopUI
                 
             var droppedOnToken = stackDroppedOn as DraggableToken;
             bool moveAsideFor = false;
-            droppedOnToken.container.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+            droppedOnToken.ContainsTokensView.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false,"was moved aside for");
@@ -428,7 +464,7 @@ namespace Assets.CS.TabletopUI
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
 
-                var gateway = container.GetElementStacksManager();
+                var gateway = ContainsTokensView.GetElementStacksManager();
                 gateway.AcceptStack(cardLeftBehind);
 
                 // Gateway accepting stack puts it to pos Vector3.zero, so this is last
@@ -437,7 +473,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOnTabletop() {
-            return transform.parent.GetComponent<TabletopContainer>() != null;
+            return transform.parent.GetComponent<Tabletop>() != null;
         }
 
         public void MergeIntoStack(ElementStackToken merge) {
@@ -447,17 +483,18 @@ namespace Assets.CS.TabletopUI
 
         public bool AllowMerge()
         {
-            return container.AllowStackMerge && !Decays;
+            return ContainsTokensView.AllowStackMerge && !Decays;
         }
 
         protected override void StartDrag(PointerEventData eventData)
-        {
-           
+        {           
 			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
 			if (stackBadge.IsHovering() == false) 
             	SplitAllButNCardsToNewStack(1);
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
+
+
 
             base.StartDrag(eventData);
         }
@@ -494,6 +531,26 @@ namespace Assets.CS.TabletopUI
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+        }
+
+        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
+        {
+
+            bool moveAsideFor = false;
+            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+        }
+
+        public override void SetViewContainer(IContainsTokensView newContainsTokensView)
+        {
+            OldContainsTokensView = ContainsTokensView;
+            if(OldContainsTokensView!=null && OldContainsTokensView!=newContainsTokensView)
+                OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
+            ContainsTokensView = newContainsTokensView;
         }
 
     }

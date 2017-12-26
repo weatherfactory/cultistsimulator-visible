@@ -11,21 +11,25 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Assets.TabletopUi.Scripts {
-    public class TokenTransformWrapper : ITokenTransformWrapper {
+    /// <summary>
+    /// The TokenTransformWrapper has a nice non-Unity interface so the StacksManager can deal with it
+    /// but the work it does is to manage the Unity details
+    /// </summary>
+    public class TokenTransformWrapper : ITokenPhysicalLocation {
 
         protected Transform wrappedTransform;
-        protected ITokenContainer wrappedContainer; //one container can have multiple wrapped transforms
+        protected IContainsTokensView ContainsTokensView;
 
         public TokenTransformWrapper(Transform t) {
             wrappedTransform = t;
-            wrappedContainer = wrappedTransform.GetComponent<ITokenContainer>();
-            Assert.IsNotNull(wrappedContainer, "not a container!");
+            ContainsTokensView = wrappedTransform.GetComponent<IContainsTokensView>();
+            Assert.IsNotNull(ContainsTokensView, "not a containsTokens!");
         }
 
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
             IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(wrappedTransform, locatorid);
             stack.Populate(elementId, quantity,stackSource);
-            Accept(stack);
+            DisplayHere(stack);
             return stack;
         }
 
@@ -33,16 +37,16 @@ namespace Assets.TabletopUi.Scripts {
             return ProvisionElementStack(elementId, quantity,Source.Existing(), locatorid) as ElementStackToken;
         }
 
-        public virtual void Accept(IElementStack stack) {
-            Accept(stack as DraggableToken);
+        public virtual void DisplayHere(IElementStack stack) {
+            DisplayHere(stack as DraggableToken);
         }
 
-        public virtual void Accept(DraggableToken token) {
+        public virtual void DisplayHere(DraggableToken token) {
             token.transform.SetParent(wrappedTransform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
-            token.SetContainer(wrappedContainer);
+            token.SetViewContainer(ContainsTokensView);
         }
 
         public virtual IEnumerable<DraggableToken> GetTokens() {

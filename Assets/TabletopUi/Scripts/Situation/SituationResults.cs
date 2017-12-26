@@ -12,8 +12,9 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 
-public class SituationResults : MonoBehaviour, ITokenContainer {
+public class SituationResults : MonoBehaviour, IContainsTokensView {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;
@@ -22,8 +23,15 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     private SituationController controller;
 
-    public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
     {
+        //do nothing, ever
+        incumbentMoved = false;
+    }
+
+    public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+    {
+        //do nothing, ever
         incumbentMoved = false;
     }
 
@@ -32,8 +40,8 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
     public void Initialise(SituationController sc) {
         controller = sc;
-        ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
-      stacksManager= new ElementStacksManager(stacksWrapper);
+        ITokenPhysicalLocation stacksWrapper = new TokenTransformWrapper(transform);
+      stacksManager= new ElementStacksManager(stacksWrapper,"situationresults");
     }
 
     public void Reset() {
@@ -49,17 +57,19 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
         cardPos.ReorderCards(allStacksToOutput);
     }
 
-    public void TokenPickedUp(DraggableToken draggableToken) {
-        draggableToken.lastTablePos = draggableToken.transform.position;
-    }
 
-    public void TokenDropped(DraggableToken draggableToken) {
+    public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+    {
+
+        elementStackToken.lastTablePos = elementStackToken.transform.position;
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
         bool hasStacks = false;
 
-        foreach (var item in stacks) {
-            if (item != null && item.Defunct == false) { 
+        foreach (var item in stacks)
+        {
+            if (item != null && item.Defunct == false)
+            {
                 hasStacks = true;
                 break;
             }
@@ -67,14 +77,16 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
 
         controller.UpdateTokenResultsCountBadge();
 
-        if (!hasStacks) {
+        if (!hasStacks)
+        {
             controller.SituationHasBeenReset();
             return;
         }
 
-        // Do some uncovering & repositioning here
+        //// Do some uncovering & repositioning here
         cardPos.ReorderCards(stacks);
     }
+
 
     public IEnumerable<IElementStack> GetOutputStacks() {
         return GetElementStacksManager().GetStacks();
@@ -92,5 +104,11 @@ public class SituationResults : MonoBehaviour, ITokenContainer {
     // public to be triggered by button
     public void ShowMap() {
         Registry.Retrieve<MapController>().ShowMansusMap(transform, true);
+    }
+
+    public void OnDestroy()
+    {
+        if (stacksManager != null)
+            stacksManager.Deregister();
     }
 }

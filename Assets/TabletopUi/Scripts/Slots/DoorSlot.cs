@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class DoorSlot : MonoBehaviour, IDropHandler, ITokenContainer, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+    public class DoorSlot : MonoBehaviour, IDropHandler, IContainsTokensView, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
         public event System.Action< IElementStack> onCardDropped;
 
         public Graphic border;
@@ -25,9 +25,9 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             ShowGlow(false, false);
-            ITokenTransformWrapper stacksWrapper = new TokenTransformWrapper(transform);
+            ITokenPhysicalLocation stacksWrapper = new TokenTransformWrapper(transform);
             //will this be called as necessary? we might need an Initialise()
-            _stacksManager = new ElementStacksManager(stacksWrapper);
+            _stacksManager = new ElementStacksManager(stacksWrapper,"door");
         }
 
         // IGlowableView implementation
@@ -99,13 +99,12 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<IElementStack>();
         }
 
-        public void TokenPickedUp(DraggableToken draggableToken) {
+        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
+        {
+         
         }
 
-        public void TokenDropped(DraggableToken draggableToken) {
-        }
-
-        public bool AllowDrag {
+  public bool AllowDrag {
             get {
                 return false;
             }
@@ -119,12 +118,26 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public void TryMoveAsideFor(DraggableToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-            throw new NotImplementedException();
+        public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        {
+            //do nothing, ever
+            incumbentMoved = false;
+        }
+
+        public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
+        {
+            //do nothing, ever
+            incumbentMoved = false;
         }
 
         public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
             throw new NotImplementedException();
+        }
+
+        public void OnDestroy()
+        {
+            if (_stacksManager != null)
+                _stacksManager.Deregister();
         }
     }
 }

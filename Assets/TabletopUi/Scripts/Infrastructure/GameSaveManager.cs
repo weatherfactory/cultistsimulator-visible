@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -57,14 +58,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //for saving from the tabletop
-        public void SaveActiveGame(TabletopContainer tabletopContainer,Character character)
+        public void SaveActiveGame(Tabletop tabletop,Character character)
         {
-            var allStacks = tabletopContainer.GetElementStacksManager().GetStacks();
-            var allSituationTokens = tabletopContainer.GetAllSituationTokens();
+            var allStacks = tabletop.GetElementStacksManager().GetStacks();
+            var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             var allDecks = character.DeckInstances;
 
             var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,
-                allSituationTokens,allDecks);
+                currentSituationControllers,allDecks);
 
             BackupSave();
             File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
@@ -78,9 +79,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportHashedSaveToState(TabletopContainer tabletopContainer, IGameEntityStorage storage, Hashtable htSave)
+        public void ImportHashedSaveToState(Tabletop tabletop, IGameEntityStorage storage, Hashtable htSave)
         {
-            dataImporter.ImportSavedGameToState(tabletopContainer, storage, htSave);
+            dataImporter.ImportSavedGameToState(tabletop, storage, htSave);
         }
 
         public SavedCrossSceneState RetrieveSavedCrossSceneState()

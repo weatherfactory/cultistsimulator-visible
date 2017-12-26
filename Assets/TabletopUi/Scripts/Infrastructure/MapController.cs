@@ -10,7 +10,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class MapController: MonoBehaviour
     {
-        private MapContainer _mapContainer;
+        private MapContainsTokens _mapContainsTokens;
         private TabletopBackground _mapBackground;
         private MapAnimation _mapAnimation;
 
@@ -39,9 +39,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             ShowMansusMap(effectCenter, false);
         }
 
-        public void Initialise(MapContainer mapContainer, TabletopBackground mapBackground, MapAnimation mapAnimation)
+        public void Initialise(MapContainsTokens mapContainsTokens, TabletopBackground mapBackground, MapAnimation mapAnimation)
         {
-            _mapContainer = mapContainer;
+            _mapContainsTokens = mapContainsTokens;
             _mapBackground = mapBackground;
             _mapAnimation = mapAnimation;
         }
