@@ -58,8 +58,10 @@ namespace Assets.Logic
                     stacksManager.ModifyElementQuantity(drawId, 1, source);
 
                 }
-                //else
-                //do nothing, yet. Exhausted decks just stay empty.
+                else
+                {
+                    throw new ApplicationException("Couldn't retrieve a card from deck " + deckId);
+                }
             }
             }
         }
