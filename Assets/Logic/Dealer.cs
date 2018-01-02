@@ -23,7 +23,7 @@ namespace Assets.Logic
             {
                 var deckId = drawnId.Replace("deck:", "");
                 var subDeck = _storage.GetDeckInstanceById(deckId);
-                return subDeck.Draw();
+                return Deal(subDeck);
             }
             else
                 return drawnId;

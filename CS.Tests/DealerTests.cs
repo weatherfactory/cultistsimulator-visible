@@ -17,23 +17,38 @@ namespace CS.Tests
     {
         private IGameEntityStorage _storage;
         private IDeckInstance _deckInstance;
+        private IDeckInstance _subDeckInstance;
+        private IDeckInstance _subSubDeckInstance;
         private const string DeckPrefix = "deck:";
         private const string ElementIdA = "Element_A";
         private const string DeckId = "Deck_TopDeck";
         private const string SubDeckId = "Deck_SubDeck";
-   
+        private const string SubSubDeckId = "Deck_SubSubDeck";
+
         private const string ElementDrawnFromSubDeckId = "Element_B";
+
+        private const string ElementDrawnFromSubSubDeckId = "Element_C";
+
 
         [SetUp]
         public void Setup()
         {
             _storage = Substitute.For<IGameEntityStorage>();
+
             _deckInstance = Substitute.For<IDeckInstance>();
-            _storage.GetDeckInstanceById(SubDeckId).Returns(_deckInstance);
-            
+            _storage.GetDeckInstanceById(DeckId).Returns(_deckInstance);
+
+            _subDeckInstance = Substitute.For<IDeckInstance>();
+            _storage.GetDeckInstanceById(SubDeckId).Returns(_subDeckInstance);
+
+            _subSubDeckInstance = Substitute.For<IDeckInstance>();
+            _storage.GetDeckInstanceById(SubDeckId).Returns(_subSubDeckInstance);
+
+
+
         }
         [Test]
-        public void DeckEffectExecutor_ReturnsElementId_ForValidElementId()
+        public void Dealer_ReturnsElementId_ForValidElementId()
         {
             var dealer=new Dealer(_storage);
             _deckInstance.Draw().Returns(ElementIdA);
@@ -45,17 +60,35 @@ namespace CS.Tests
         /// If the entry is specified with deck:, return a draw from that deck
         /// </summary>
         [Test]
-        public void DeckEffectExecutor_ReturnsDeckDraw_ForDeckSpecifiedId()
+        public void Dealer_ReturnsDeckDraw_ForDeckSpecifiedId()
         {
+            //set up the draw which returns deck: and a valid subdeck with that id
             var dealer = new Dealer(_storage);
             _deckInstance.Draw().Returns(DeckPrefix+SubDeckId);
-            var subDeckInstance = Substitute.For<DeckInstance>();
+           
+            //of course a deck can't be returned, just the card from that deck. So ensure the subdeck returns that card
+            _subDeckInstance.Draw().Returns(ElementDrawnFromSubDeckId);
 
-            _storage.GetDeckInstanceById(SubDeckId).Returns(subDeckInstance);
             var result = dealer.Deal(_deckInstance);
             Assert.AreEqual(ElementDrawnFromSubDeckId, result);
+
+
         }
 
+        [Test]
+        public void Dealer_ReturnsSubDeckDrawsRecursively()
+        {
+            var dealer=new Dealer(_storage);
+            _deckInstance.Draw().Returns(DeckPrefix + SubDeckId);
+            _subDeckInstance.Draw().Returns(DeckPrefix + SubSubDeckId);
+            _subSubDeckInstance.Draw().Returns(ElementDrawnFromSubSubDeckId);
+
+            var result = dealer.Deal(_deckInstance);
+
+            Assert.AreEqual(ElementDrawnFromSubSubDeckId, result);
+
+        }
 
     }
 }
+
