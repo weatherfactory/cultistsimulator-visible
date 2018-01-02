@@ -13,8 +13,11 @@ using UnityEngine;
         private IRollOverride _rollOverride;
 
     public int Rolld100()
-        {
-            
+    {
+        var possibleOverride = _rollOverride.PopNextOverrideValue();
+        if (possibleOverride > 0)
+            return possibleOverride;
+        else
             return random.Next(1,101);
         }
 

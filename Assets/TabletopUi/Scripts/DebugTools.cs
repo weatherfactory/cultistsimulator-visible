@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
@@ -165,9 +166,24 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
     }
 
+    public int PopNextOverrideValue()
+    {
+        if (!QueuedRollsList.Any())
+            return 0;
+        else
+        { 
+        int result = QueuedRollsList.First();
+            QueuedRollsList.RemoveAt(0);
+            UpdatedQueuedRollsDisplay();
+            return result;
+        }
+    }
 }
 
 public interface IRollOverride
 {
+    //if at least one override is queued, pop it and return it
+    //if none are queued, return 0
+    int PopNextOverrideValue();
 
 }
