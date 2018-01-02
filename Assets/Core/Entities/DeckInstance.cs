@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Noon;
 
 namespace Assets.Core.Entities
 {
@@ -44,7 +45,6 @@ namespace Assets.Core.Entities
         }
 
 
-
         public string Draw()
         {
             if (!_cards.Any())
@@ -54,10 +54,26 @@ namespace Assets.Core.Entities
                 if (_deckSpec.ResetOnExhaustion)
                     Reset();
             }
-            //in case somehow resetting the deck still won't have given us a card,
-            //let's test again
-            if(_cards.Any())
-            return _cards.Pop();
+            //Conceivably, resetting the deck might still not have given us a card,
+            //so let's test again
+            if (_cards.Any())
+            {
+                var result = _cards.First();
+                //decks can contain subdecks. If this is a subdeck,don't pop the result, just return it - but do shuffle the deck, so
+                //we don't keep getting the same result (unless it's the last one anyway)
+                //btw, this does mean that subdeck reset / default settings take precedence over top deck ones.
+                if (result.Contains(NoonConstants.DECK_PREFIX))
+                {
+                    var rnd = new Random();
+                    _cards = new Stack<string>(_cards.OrderBy(x => rnd.Next()));
+                    return result;
+                }
+                else
+                    return _cards.Pop();
+
+            }
+
+            
             else
                 //if either the deck didn't reset on exhaustion,
                 //or a reset has still left us with no cards, always return the default card

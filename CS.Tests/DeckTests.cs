@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assets.Core.Entities;
+using Noon;
 using NUnit.Framework;
 
 namespace CS.Tests
@@ -14,6 +15,7 @@ namespace CS.Tests
         private DeckInstance testDeck;
         private DeckSpec testDeckSpec;
         private const string A_CARD = "A_CARD";
+        private string A_SUBDECK = NoonConstants.DECK_PREFIX + "A_SUBDECK";
         private const string DEFAULT_DRAW = "defaultdraw";
         [SetUp]
         public void Setup()
@@ -44,6 +46,16 @@ namespace CS.Tests
             Assert.AreEqual(0,testDeck.GetCurrentCardsAsList().Count);
             var drawnCard = testDeck.Draw();
             Assert.AreEqual(A_CARD, drawnCard);
+        }
+
+        [Test]
+        public void DrawingASubDeckDoesNotRemoveIt()
+        {
+            //a subdeck - the 'deck:' notation - shouldn't be removed when drawn, because it's a shortcut to another
+            testDeck.Add(A_SUBDECK);
+            testDeck.Draw();
+            testDeck.Draw();
+            Assert.AreEqual(1,testDeck.GetCurrentCardsAsList().Count);
         }
     }
 }

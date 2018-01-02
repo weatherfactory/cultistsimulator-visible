@@ -65,8 +65,6 @@ namespace CS.Tests
             //set up the draw which returns deck: and a valid subdeck with that id
             var dealer = new Dealer(_storage);
             _deckInstance.Draw().Returns(DeckPrefix+SubDeckId);
-           
-            //of course a deck can't be returned, just the card from that deck. So ensure the subdeck returns that card
             _subDeckInstance.Draw().Returns(ElementDrawnFromSubDeckId);
 
             var result = dealer.Deal(_deckInstance);

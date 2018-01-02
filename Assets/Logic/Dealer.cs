@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Noon;
 
 namespace Assets.Logic
 {
@@ -19,9 +20,9 @@ namespace Assets.Logic
         public string Deal(IDeckInstance deck)
         {
             var drawnId = deck.Draw();
-            if (drawnId.StartsWith("deck:"))
+            if (drawnId.StartsWith(NoonConstants.DECK_PREFIX))
             {
-                var deckId = drawnId.Replace("deck:", "");
+                var deckId = drawnId.Replace(NoonConstants.DECK_PREFIX, "");
                 var subDeck = _storage.GetDeckInstanceById(deckId);
                 return Deal(subDeck);
             }

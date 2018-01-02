@@ -50,7 +50,8 @@ namespace Assets.Logic
                 var deck = storage.GetDeckInstanceById(deckId);
             if (deck != null)
             {
-                var drawId = deck.Draw();
+                var dealer=new Dealer(storage);
+                var drawId = dealer.Deal(deck);
 
                 if (drawId != null)
                 {

@@ -51,6 +51,8 @@ namespace Noon
         public const string KCHARACTERLASTNAME = "lastname";
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
+
+        public const string DECK_PREFIX = "deck:";
     }
     public class NoonUtility
     {
