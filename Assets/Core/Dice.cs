@@ -10,13 +10,22 @@ using UnityEngine;
    public class Dice: IDice
     {
     System.Random random = new System.Random();
+        private IRollOverride _rollOverride;
 
     public int Rolld100()
         {
             
             return random.Next(1,101);
         }
-    }
+
+        public Dice(IRollOverride rollOverride)
+        {
+            _rollOverride = rollOverride;
+        }
+
+}
+
+
 
 public interface IDice
 {

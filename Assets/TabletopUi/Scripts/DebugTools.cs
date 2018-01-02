@@ -1,16 +1,21 @@
 ﻿#pragma warning disable 0649
+using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
+using Castle.Core.Internal;
 using Noon;
+using TMPro;
 using UnityEngine.UI;
+using UnityEngine.VR;
 
-public class DebugTools : MonoBehaviour
+public class DebugTools : MonoBehaviour,IRollOverride
 {
     
     [SerializeField] private Tabletop tabletop;
@@ -27,6 +32,11 @@ public class DebugTools : MonoBehaviour
     [SerializeField] private Button btnSaveGame;
     [SerializeField] private Button btnResetDecks;
     [SerializeField] private BackgroundMusic backgroundMusic;
+    [SerializeField] private Button btnQueueRoll;
+    [SerializeField] private TMP_InputField rollToQueue;
+    [SerializeField] private TextMeshProUGUI rollsQueued;
+
+    public List<int> QueuedRollsList;
 
 
     public void Awake()
@@ -41,6 +51,9 @@ public class DebugTools : MonoBehaviour
         btnResetDecks.onClick.AddListener(ResetDecks);
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
+        btnQueueRoll.onClick.AddListener(()=>QueueRoll(rollToQueue.text));
+
+        QueuedRollsList=new List<int>();
 
     }
     void AddCard(string elementId)
@@ -129,5 +142,32 @@ public class DebugTools : MonoBehaviour
         }
     }
 
+    void QueueRoll(string roll)
+    {
+        int rollValue;
+        int.TryParse(roll, out rollValue);
+        if(rollValue>=1 && rollValue<=100)
+            QueuedRollsList.Add(rollValue);
+
+        UpdatedQueuedRollsDisplay();
+
+    }
+
+    public void UpdatedQueuedRollsDisplay()
+    {
+        rollsQueued.text = string.Empty;
+        foreach(var i in QueuedRollsList)
+        { 
+            if (!rollsQueued.text.IsNullOrEmpty())
+                rollsQueued.text += ", ";
+
+            rollsQueued.text += i.ToString();
+        }
+    }
+
 }
 
+public interface IRollOverride
+{
+
+}

@@ -157,7 +157,7 @@ namespace Assets.TabletopUi {
             HeartbeatResponse response = new HeartbeatResponse();
 
             RecipeConductor rc = new RecipeConductor(compendium,
-                GetAspectsAvailableToSituation(true), new Dice(), currentCharacter);
+                GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             Situation.Continue(rc, interval);
 
@@ -175,7 +175,7 @@ namespace Assets.TabletopUi {
         }
 
         public void UpdateSituationDisplayForDescription() {
-            RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedElements(), new Dice(), currentCharacter);
+            RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedElements(), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = Situation.GetPrediction(rc);
 
@@ -279,7 +279,7 @@ namespace Assets.TabletopUi {
                 {
                     foreach (var induction in aspectElement.Induces)
                     {
-                        var d = new Dice();
+                        var d = Registry.Retrieve<IDice>();
                         if (d.Rolld100() <= induction.Chance)
                         {
                             var inducedRecipe = compendium.GetRecipeById(induction.Id);

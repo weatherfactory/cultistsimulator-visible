@@ -153,7 +153,7 @@ namespace Assets.CS.TabletopUI
 
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);
-            registry.Register<IDice>(new Dice());
+            registry.Register<IDice>(new Dice(debugTools));
             registry.Register<TabletopManager>(this);
             registry.Register<SituationBuilder>(builder);
             registry.Register<INotifier>(_notifier);
