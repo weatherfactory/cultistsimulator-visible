@@ -42,7 +42,7 @@ namespace CS.Tests
             _storage.GetDeckInstanceById(SubDeckId).Returns(_subDeckInstance);
 
             _subSubDeckInstance = Substitute.For<IDeckInstance>();
-            _storage.GetDeckInstanceById(SubDeckId).Returns(_subSubDeckInstance);
+            _storage.GetDeckInstanceById(SubSubDeckId).Returns(_subSubDeckInstance);
 
 
 
