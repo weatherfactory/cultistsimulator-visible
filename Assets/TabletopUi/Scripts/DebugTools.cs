@@ -10,7 +10,6 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
-using Castle.Core.Internal;
 using Noon;
 using TMPro;
 using UnityEngine.UI;
@@ -159,7 +158,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         rollsQueued.text = string.Empty;
         foreach(var i in QueuedRollsList)
         { 
-            if (!rollsQueued.text.IsNullOrEmpty())
+            if (rollsQueued.text=="")
                 rollsQueued.text += ", ";
 
             rollsQueued.text += i.ToString();
