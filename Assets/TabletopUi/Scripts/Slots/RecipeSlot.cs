@@ -21,6 +21,7 @@ namespace Assets.CS.TabletopUI {
         SlotMatchForAspects GetSlotMatchForStack(IElementStack stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
         void AcceptStack(IElementStack s);
+        string AnimationTag { get; set; }
         RecipeSlot ParentSlot { get; set; }
         bool Defunct { get; set; }
         bool Retire();
@@ -34,6 +35,12 @@ namespace Assets.CS.TabletopUI {
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
         public bool Defunct { get; set; }
+        /// <summary>
+        /// This is not yet implemented, nor does it draw from content. I'd like it, if !="", to 
+        /// specify an animation used on recipe activation when the element in question is either consumed or moved to recipe storage
+        /// </summary>
+        public string AnimationTag { get; set; }
+
 
         // -----------------------------------------------------------
         // VISUAL ELEMENTS
@@ -177,6 +184,7 @@ namespace Assets.CS.TabletopUI {
             // ReSharper disable once PossibleNullReferenceException
             onCardDropped(this, stack);
         }
+
 
 
         public DraggableToken GetTokenInSlot() {
