@@ -38,7 +38,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         void TriggerArtAnimation()
         {
-            // TODO: only looks at tabletop, not all visible tokens.
             
             var stacks = _tabletopStacksManager.GetStacks();
 
