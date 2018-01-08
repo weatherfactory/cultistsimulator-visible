@@ -28,6 +28,10 @@ public class Element
     /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction
     /// </summary>
     public List<LinkedRecipeDetails> Induces { get; set; }
+    /// <summary>
+    /// This is currently not implemented or loaded! It's a placeholder to allow for enforced uniqueness
+    /// </summary>
+    public bool Unique { get; set; }
 
     /// <summary>
     /// all aspects the element has, *including* the aspect itself as an element

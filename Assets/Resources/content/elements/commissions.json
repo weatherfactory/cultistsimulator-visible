@@ -7,7 +7,7 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the secret histories of the world. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 				 {
         id: "commissionarticlesecrethistoryb",
@@ -16,7 +16,7 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for a substantial treatise on the secret histories of the world. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 				 {
         id: "commissionarticlesecrethistoryc",
@@ -25,7 +25,7 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for particularly obscure information on the secret histories of the world. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,secrethistories:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 		{
 		
@@ -35,7 +35,7 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the severe mysteries of the Lantern. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,lantern:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 		{
 		
@@ -45,7 +45,7 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with a substantial discussion of the severe mysteries of the Lantern. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,lantern:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
@@ -55,7 +55,7 @@
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with an extensive investigation of the severe mysteries of the Lantern. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {aladim:1}},"Work":{required:{article:1,lantern:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 		
 				{
@@ -66,7 +66,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something inspired by the principle of the Forge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,forge:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 		{
 		
@@ -76,7 +76,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something more substantial on the Forge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,forge:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
@@ -86,7 +86,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something extensive, or indeed intense, on the change and the suffering the Forge brings. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,forge:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 		
 				{
@@ -97,7 +97,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She would like something titillating about the Red Grail. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,grail:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 		{
 		
@@ -107,7 +107,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She's interested in a more substantial response to the Red Grail and its allure. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,grail:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
@@ -117,7 +117,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She wants something extensive and 'unflinching' on the Red Grail. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,grail:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 		
 				
@@ -129,7 +129,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. In particular, she wants something suitably intriguing about the principle called Moth. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,moth:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 		{
 		
@@ -139,7 +139,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She wants a substantially enigmatic piece on Moth. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,moth:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
@@ -149,7 +149,7 @@
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like an extensive elaboration of Moth and its enigmas. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {bechet:1}},"Work":{required:{article:1,moth:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 		
 				
@@ -161,7 +161,7 @@
             description: "Count Gottlob will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the Heart. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 		{
 		
@@ -171,7 +171,7 @@
             description: "Count Gottlob will pay for information of interest. This time, he'd like substantial research on the corporal mysteries of the Heart. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
@@ -181,7 +181,7 @@
             description: "Count Gottlob will pay for information of interest. This time, he'd like extensive research on the corporal mysteries of the Heart.[ Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 						{
 		
@@ -191,7 +191,7 @@
             description: "Count Gottlob will pay for information of interest. This time, he'd like whatever you can assemble on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:2}}},
 
-			xtriggers: {commissionfulfilled: compensation}
+			xtriggers: {commissionfulfilled: funds}
         },
 		{
 		
@@ -201,7 +201,7 @@
             description: "Count Gottlob will pay for information of interest. This time, he'd like substantial notes on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:4}}},
 
-			xtriggers: {commissionfulfilled: compensationb}
+			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
@@ -211,7 +211,7 @@
             description: "Count Gottlob will pay for information of interest. This time, he'd like an extensive work on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:6}}},
 
-			xtriggers: {commissionfulfilled: compensationc}
+			xtriggers: {commissionfulfilled: compensationb}
         },
 ]
 };
