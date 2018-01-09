@@ -7,7 +7,7 @@ public class CanvasZoomTest : UIBehaviour {
 
     [Tooltip("This is the max window size we zoom out to, ensures that both sides are visible")]
     public Vector2 maxWindowSize = new Vector2(2400f, 1800f);
-    private float zoomScaleIn = 1f; // 1 == 100% = pixel perfect zoom
+    private float zoomScaleIn = 2f; // 1 == 100% = pixel perfect zoom
     private float zoomScaleOut;     // Needs to be smaller than zoomScaleIn to enable zooming
 
     public float zoomSpeed = 0.1f;
@@ -36,7 +36,7 @@ public class CanvasZoomTest : UIBehaviour {
         
         // We can't zoom out at all because our maxZoom would be larger than our minZoom
         if (zoomScaleOut >= zoomScaleIn) {
-            canvas.scaleFactor = 1f; // Set our scale to 100%
+            canvas.scaleFactor = zoomScaleIn; // Set our scale to 100%
             enabled = false; // Turn off to disable update
             return;
         }
