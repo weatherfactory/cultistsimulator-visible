@@ -4,8 +4,10 @@ using System.Collections;
 using Assets.CS.TabletopUI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
 
-public class OptionsPanel : MonoBehaviour
+public class OptionsPanel : MonoBehaviour, IPointerClickHandler
 {
 
     [SerializeField] private BackgroundMusic backgroundMusic;
@@ -14,11 +16,8 @@ public class OptionsPanel : MonoBehaviour
     public void ToggleVisibility()
     {
         gameObject.SetActive(!gameObject.activeSelf);
-
         Registry.Retrieve<TabletopManager>().SetPausedState(gameObject.activeInHierarchy);
-
     }
-
 
     public void RestartGame()
     {
@@ -38,6 +37,9 @@ public class OptionsPanel : MonoBehaviour
     public void ToggleMusic()
     {
         backgroundMusic.SetMute(!musicToggle.isOn);
-        
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        // Does nothing, just here to catch clicks on the window background
     }
 }
