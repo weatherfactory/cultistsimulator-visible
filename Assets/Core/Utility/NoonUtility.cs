@@ -11,7 +11,6 @@ namespace Noon
 
     public class NoonConstants
     {
-
         public const string KCHARACTERSTATE = "state";
         public const string KLINKED="linked";
         public const string KENDING="ending";
@@ -41,6 +40,7 @@ namespace Noon
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
         public const string KDECKDEFAULTCARD = "defaultcard";
+        public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public const string KINDUCES = "induces";
 
 
