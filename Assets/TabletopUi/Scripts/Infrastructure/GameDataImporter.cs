@@ -142,6 +142,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 storage.DeckInstances.Add(deckInstance);
                 }
             }
+
+            //That's all the saved decks;          
+            //But it's possible a deck spec has been added since the game was saved, in a new version of the game.
+            //Create and reset any new deckspecs
+
+            foreach (var ds in compendium.GetAllDeckSpecs())
+            {
+                if (storage.GetDeckInstanceById(ds.Id) == null)
+                {
+                    IDeckInstance di = new DeckInstance(ds);
+                    storage.DeckInstances.Add(di);
+                    di.Reset();
+                }
+            }
         }
 
         private void ImportSituations(Tabletop tabletop, Hashtable htSituations)
