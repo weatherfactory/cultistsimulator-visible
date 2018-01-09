@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
+using Noon;
 using OrbCreationExtensions;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
@@ -56,13 +57,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htLegacies = new Hashtable();
             var availableLegacies = GetAvailableLegacies();
 
-            if (availableLegacies!=null)
+            if (availableLegacies==null && !availableLegacies.Any())
+            {
+                throw new ApplicationException("Tried to save game with no available legacies. This should never happen, and if it does, it'll corrupt your save. Please let us know what happened at " + NoonConstants.SupportEmail + " - thank you!");
+            }
+            else
             {
                 foreach (var l in GetAvailableLegacies())
                 {
                     htLegacies.Add(l.Id, l.Id);
                 }
             }
+            
             ht.Add(SaveConstants.SAVE_AVAILABLELEGACIES, htLegacies);
         }
 

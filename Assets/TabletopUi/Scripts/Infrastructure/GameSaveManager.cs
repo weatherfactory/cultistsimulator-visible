@@ -51,9 +51,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// </summary>
         public void SaveInactiveGame()
         {
-            var htSaveTable = dataExporter.GetHashtableForExtragameState();
             BackupSave();
-            File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+            
+            try
+            {
+                var htSaveTable = dataExporter.GetHashtableForExtragameState();
+                File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+            }
+            catch (Exception e)
+            {
+              NoonUtility.Log("Couldn't save game: " + e.Message);
+            }
 
         }
 
