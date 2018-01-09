@@ -114,11 +114,13 @@ namespace Assets.CS.TabletopUI
             if (!ContainsTokensView.AllowDrag || !AllowDrag)
                 return false;
 
-            if ( itemBeingDragged != null || draggingEnabled == false )
-               return false;
-		
+            if (itemBeingDragged != null || draggingEnabled == false) {
+                Debug.LogWarningFormat("DraggableToken: Can not Drag.\nDragging Enabled: {0}, Item Being Dragged: {1}", draggingEnabled, itemBeingDragged != null ? itemBeingDragged.name : "NULL" );
+                return false;
+            }
+
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if (eventData != null && eventData.pointerId < -1 ) 
+            if (eventData != null && eventData.pointerId < -1) 
                 return false;
 
             return true;
