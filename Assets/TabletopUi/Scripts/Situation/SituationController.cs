@@ -108,6 +108,22 @@ namespace Assets.TabletopUi {
             return situationToken.Id;
         }
 
+        public bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
+            var win = situationWindow as SituationWindow;
+
+            var startSlots = win.GetStartingSlots();
+
+            for (int i = 0; i < startSlots.Count; i++) {
+                if (startSlots[i].GetElementStackInSlot() != null) 
+                    continue; // occupied slot? Go on
+
+                startSlots[i].OnDrop(null); // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
+                return true;
+            }
+
+            return false;
+        }
+
         public void StartingSlotsUpdated() {
             IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
             Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter);

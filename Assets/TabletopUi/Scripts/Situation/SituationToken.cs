@@ -227,29 +227,24 @@ namespace Assets.CS.TabletopUI
 
         public override void OnPointerClick(PointerEventData eventData)
         {
-            // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-
             if (!SituationController.IsOpen)
-            {
-                SituationController.OpenSituation();
+                OpenSituation();
+            else  
+                CloseSituation();
+        }
 
-                Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(this.Id);
-
-            }
-            else
-            CloseSituation();
-
+        public void OpenSituation() {
+            SituationController.OpenSituation();
+            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(this.Id);
         }
 
         public void CloseSituation()
         {
-                SituationController.CloseSituation();
-
+            SituationController.CloseSituation();
         }
 
 
-        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
-        {
+        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
 
             bool moveAsideFor = false;
             tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
@@ -258,8 +253,6 @@ namespace Assets.CS.TabletopUI
                 DraggableToken.SetReturn(false, "was moved aside for");
             else
                 DraggableToken.SetReturn(true);
-
-
         }
     }
 

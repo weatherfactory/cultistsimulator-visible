@@ -326,6 +326,10 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        public IList<RecipeSlot> GetStartingSlots() {
+            return startingSlots.GetAllSlots();
+        }
+
         public IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo) {
             return startingSlots.GetSlotBySaveLocationInfoPath(locationInfo);
         }

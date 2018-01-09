@@ -155,24 +155,25 @@ namespace Assets.CS.TabletopUI {
 
             //does the token match the slot? Check that first
             SlotMatchForAspects match = GetSlotMatchForStack(stack);
+
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
                 DraggableToken.SetReturn(true,"Didn't match recipe slot values");
-            DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
+                DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
             }
             else
             {
-            //it matches. Now we check if there's a token already there, and replace it if so:
+                //it matches. Now we check if there's a token already there, and replace it if so:
                 var currentOccupant = GetElementStackInSlot();
-            if (currentOccupant != null)
-                throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
-                //currentOccupant.ReturnToTabletop();
 
-            //now we put the token in the slot.
-            DraggableToken.SetReturn(false,"has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
-            AcceptStack(stack);
-            SoundManager.PlaySfx("CardPutInSlot");
+                if (currentOccupant != null)
+                    throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
+                    //currentOccupant.ReturnToTabletop();
 
+                //now we put the token in the slot.
+                DraggableToken.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
+                AcceptStack(stack);
+                SoundManager.PlaySfx("CardPutInSlot");
             }
         }
 

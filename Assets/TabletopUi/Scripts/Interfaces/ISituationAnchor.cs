@@ -31,5 +31,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void SetCompletionCount(int newCount);
         int GetCompletionCount();
+
+        void ShowGlow(bool glowState, bool instant = false);
     }
 }

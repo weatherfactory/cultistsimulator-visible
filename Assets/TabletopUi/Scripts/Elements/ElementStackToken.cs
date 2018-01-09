@@ -543,6 +543,11 @@ namespace Assets.CS.TabletopUI
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
+            if (tokenDroppedOn.SituationController.Situation.State == SituationState.Unstarted) { 
+                tokenDroppedOn.OpenSituation();
+                tokenDroppedOn.SituationController.PushDraggedStackIntoStartingSlots(this);
+                return;
+            }
 
             bool moveAsideFor = false;
             tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);

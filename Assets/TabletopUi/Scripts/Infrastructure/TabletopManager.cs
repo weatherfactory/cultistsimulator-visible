@@ -420,10 +420,14 @@ namespace Assets.CS.TabletopUI
 
         public void ShowDestinationsForStack(IElementStack stack)
         {
-            var openSituation = Registry.Retrieve<SituationsCatalogue>().GetOpenSituation();
+            var situations = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
-            if (openSituation !=null)
-               openSituation.ShowDestinationsForStack(stack);
+            for (int i = 0; i < situations.Count; i++) {
+                if (situations[i].IsOpen)
+                    situations[i].ShowDestinationsForStack(stack);
+                else if (situations[i].Situation.State == SituationState.Unstarted)
+                    situations[i].situationToken.ShowGlow(stack != null); // null means no stack
+            }
 
             if (mapContainsTokens != null)
                 mapContainsTokens.ShowDestinationsForStack(stack);
