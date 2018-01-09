@@ -296,7 +296,7 @@ public class ContentImporter
                 throw;
             }
 
-            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId,false);
+            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId,resetOnExhaustion);
 
             DeckSpecs.Add(d.Id,d);
         }
