@@ -211,12 +211,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
             {
-                //this is probably one more loop than I need.
+
                 var htSituationOutputStacks = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS);
-               // foreach (var k in htSituationOutputStacks.Keys)
-               // {
-                   // var htThisOutputStack = htSituationOutputStacks.GetHashtable(k);
-                   // var htOutputElements = htThisOutputStack.GetHashtable(SaveConstants.SAVE_SITUATIONNOTES);
+
                     
                     var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
                     foreach (var eqs in elementQuantitySpecifications)
@@ -224,7 +221,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         outputStack.Add(tabletop.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
                     }
 
-               // }
             }
             return outputStack;
         }
