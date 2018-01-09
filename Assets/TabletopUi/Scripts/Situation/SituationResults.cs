@@ -51,9 +51,10 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
     public void SetOutput(List<IElementStack> allStacksToOutput) {
         if (allStacksToOutput.Any() == false)
             return;       
+
         GetElementStacksManager().AcceptStacks(allStacksToOutput);
 
-//currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
+        //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
         cardPos.ReorderCards(allStacksToOutput);
     }
 

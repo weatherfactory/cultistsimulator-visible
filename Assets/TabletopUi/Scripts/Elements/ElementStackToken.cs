@@ -104,11 +104,12 @@ namespace Assets.CS.TabletopUI
             if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
                 return;
 
+            ShowGlow(!state); // disable face-down hover-effect
+
             isFront = state;
             //if a card has just been turned face up in a situation, it's now an existing, established card
             if (isFront && StackSource.SourceType == SourceType.Fresh)
                 StackSource.SourceType = SourceType.Existing;
-
 
             if (gameObject.activeInHierarchy == false || instant) {
                 transform.localRotation = GetFrontRotation(isFront);
@@ -143,6 +144,12 @@ namespace Assets.CS.TabletopUI
 
             transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
             turnCoroutine = null;
+        }
+
+
+        protected override bool CanInteract() {
+            // interaction is always possible on facedown cards to turn them back up
+            return !isFront || base.CanInteract();
         }
 
         #endregion
@@ -440,6 +447,7 @@ namespace Assets.CS.TabletopUI
 
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
+
                 this.Retire(false);                
             }
             else

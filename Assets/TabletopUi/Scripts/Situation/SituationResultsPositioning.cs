@@ -78,14 +78,11 @@ namespace Assets.CS.TabletopUI {
 
                 //if any stacks are fresh, flip them face down,
                 //then mark them as existing
-                if(token.StackSource.SourceType==SourceType.Fresh)
-                { 
+                if (token.StackSource.SourceType==SourceType.Fresh)  
                     token.FlipToFaceDown(true);
-                    token.ShowGlow(false, true);
-                }
 
                 // turn over last card if we're visible
-                if (i == amount && token.gameObject.activeInHierarchy)
+                if (i == amount && token.gameObject.activeInHierarchy) 
                     token.FlipToFaceUp();
 
                 i++;

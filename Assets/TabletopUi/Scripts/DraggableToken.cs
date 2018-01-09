@@ -58,11 +58,14 @@ namespace Assets.CS.TabletopUI
         public IContainsTokensView ContainsTokensView;
         public IContainsTokensView OldContainsTokensView; // Used to tell OldContainsTokens that this thing was dropped successfully
 
+        bool lastGlowState;
+        Color lastGlowColor;
         [SerializeField] GraphicFader glowImage;
 
         protected virtual void Awake() {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
+            lastGlowColor = glowImage.currentColor;
         }
 
         public abstract string Id { get; }
@@ -286,9 +289,6 @@ namespace Assets.CS.TabletopUI
             SetGlowColor(UIStyle.GetGlowColor(colorType));
          }
 
-        bool lastGlowState;
-        Color lastGlowColor;
-
         public virtual void SetGlowColor(Color color) {
             glowImage.SetColor(color);
             lastGlowColor = color;
@@ -305,12 +305,15 @@ namespace Assets.CS.TabletopUI
 
         // Separate method from ShowGlow so we can restore the last state when unhovering
         protected virtual void ShowHoverGlow(bool show) {
-            // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            if (DraggableToken.itemBeingDragged != null && !lastGlowState)
-                show = false;
-            // If we can not drag, don't show the hover highlight
-            else if (!ContainsTokensView.AllowDrag || !AllowDrag)
-                show = false;
+
+            if (show) { 
+                // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
+                if (DraggableToken.itemBeingDragged != null && !lastGlowState)
+                    show = false;
+                // If we can not interact, don't show the hover highlight
+                else if (!CanInteract())
+                    show = false;
+            }
 
             if (show) {
                 SoundManager.PlaySfx("TokenHover");
@@ -325,6 +328,10 @@ namespace Assets.CS.TabletopUI
                 else
                     glowImage.Hide(true);
             }
+        }
+
+        protected virtual bool CanInteract() {
+            return ContainsTokensView.AllowDrag && AllowDrag;
         }
 
     }
