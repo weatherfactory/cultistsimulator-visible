@@ -176,8 +176,6 @@ namespace Assets.CS.TabletopUI {
 
         public void ReceiveNotification(INotification notification)
         {
-            if (notification.Title != "" & notification.Title != null)
-                Title = notification.Title;
 
             PaginatedNotes.AddText(notification.Description);
         }
