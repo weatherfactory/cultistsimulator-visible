@@ -285,7 +285,18 @@ public class ContentImporter
                            "' - " + e.Message);
             }
 
-            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId,false);
+            bool resetOnExhaustion = false;
+            try
+            {
+                resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId,resetOnExhaustion);
 
             DeckSpecs.Add(d.Id,d);
         }

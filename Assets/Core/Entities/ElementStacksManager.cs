@@ -138,7 +138,7 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public void AcceptStack(IElementStack stack) {
-        NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name,3);
+        NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name,6);
         stack.AssignToStackManager(this);
         Stacks.Add(stack);
         TokenPhysicalLocation.DisplayHere(stack);

@@ -11,7 +11,6 @@ namespace Noon
 
     public class NoonConstants
     {
-
         public const string KCHARACTERSTATE = "state";
         public const string KLINKED="linked";
         public const string KENDING="ending";
@@ -41,6 +40,7 @@ namespace Noon
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
         public const string KDECKDEFAULTCARD = "defaultcard";
+        public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public const string KINDUCES = "induces";
 
 
@@ -53,6 +53,7 @@ namespace Noon
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
 
         public const string DECK_PREFIX = "deck:";
+        public const string SupportEmail = "support@weatherfactory.biz";
     }
     public class NoonUtility
     {

@@ -335,13 +335,27 @@ namespace Assets.TabletopUi {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter);
 
+            //no recipe found? get outta here
             if (recipe == null)
                 return;
 
             //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();
+            //move any slotted elements to storage
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
+            //kick off the situation
             Situation.Start(recipe);
+
+            //The game might be paused! or the player might just be incredibly quick off the mark
+            //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
+            //(which among other things should make the starting slot unavailable
+
+            RecipeConductor rc = new RecipeConductor(compendium,
+                GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
+
+            Situation.Continue(rc,0);
+
+            //display any burn image the recipe might require
 
             if (recipe.BurnImage != null)
                 BurnImageHere(recipe.BurnImage);
