@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class OptionsPanel : MonoBehaviour, IPointerClickHandler
+public class OptionsPanel : MonoBehaviour
 {
 
     [SerializeField] private BackgroundMusic backgroundMusic;
@@ -37,9 +37,5 @@ public class OptionsPanel : MonoBehaviour, IPointerClickHandler
     public void ToggleMusic()
     {
         backgroundMusic.SetMute(!musicToggle.isOn);
-    }
-
-    public void OnPointerClick(PointerEventData eventData) {
-        // Does nothing, just here to catch clicks on the window background
     }
 }
