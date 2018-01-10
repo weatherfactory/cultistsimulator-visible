@@ -17,6 +17,7 @@ public class Recipe
     public AspectsDictionary Aspects { get; set; }
 
     public Boolean Craftable { get; set; }
+    public Boolean HintOnly { get; set; }
     public string Label { get; set; }
     public int Warmup { get; set; }
 
