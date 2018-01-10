@@ -94,8 +94,8 @@
             aspects:
             {society:1},
 			slots: {
-			"Recruit": {required: {follower:1,},description: "TA new recruit, or a hardened disciple."},
-			"Awe or Fear?": {reputation: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
 			}
             description: "An occult society dedicated to the Hour of the cold that ends. [In the current build, however, all cults are effectively identical.]"
         },
