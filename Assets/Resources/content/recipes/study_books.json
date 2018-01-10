@@ -259,6 +259,16 @@
 	warmup: 60,
 	craftable: true
 	},
+				{id: "studywainscothistories",
+	label: "Read Gore's 'Wainscot Histories'",
+	actionId: "study",
+	requirements: {wainscothistories:1},
+	effects: {wainscothistories:-1,fragmentsecrethistoriesb:1},
+	startdescription: "Gore does not mention the Mansus directly, but constant coy metaphorical references to 'Ascending the Staircase of Years', to 'the Doors of Sleep', and to 'the Blue Light of Dawn' suggest he had commerce with the unseen world.",
+	description: "'It was common in that time to speak of the Division of the Sun; by which Contemporaries understood, the irruption of Barbarian Forces, and of their uncouth Gods.'",
+	warmup: 60,
+	craftable: true
+	},
 
 		{
         id: "studytextbooklatin",
