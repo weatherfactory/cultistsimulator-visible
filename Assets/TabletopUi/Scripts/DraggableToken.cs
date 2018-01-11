@@ -333,7 +333,7 @@ namespace Assets.CS.TabletopUI
         }
 
         protected virtual bool CanInteract() {
-            return ContainsTokensView.AllowDrag && AllowDrag;
+            return !Defunct && ContainsTokensView.AllowDrag && AllowDrag;
         }
 
     }
