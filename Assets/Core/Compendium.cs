@@ -19,7 +19,7 @@ public interface ICompendium
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
     void UpdateLegacies(Dictionary<string, Legacy> legacies);
     void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
-    Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character);
+    Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character,bool getHintRecipes);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
     Dictionary<string,Element> GetAllElementsAsDictionary();
@@ -73,11 +73,20 @@ public class Compendium : ICompendium
         _legacies = legacies;
     }
 
-
-    public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character)
+    /// <summary>
+    
+    /// </summary>
+    /// <param name="aspects"></param>
+    /// <param name="verb"></param>
+    /// <param name="character"></param>
+    /// <param name="getHintRecipes">If true, get recipes with hintonly=true (and *only* hintonly=true)</param>
+    /// <returns></returns>
+    public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character,bool getHintRecipes)
     {
+        
         //for each recipe,
-        List<Recipe> candidateRecipes=_recipes.Where(r => r.ActionId == verb && r.Craftable && !character.HasExhaustedRecipe(r)).ToList();
+        //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
+        List<Recipe> candidateRecipes=_recipes.Where(r => r.ActionId == verb && ( r.Craftable || getHintRecipes) && r.HintOnly==getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
         foreach (var recipe in candidateRecipes )
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects

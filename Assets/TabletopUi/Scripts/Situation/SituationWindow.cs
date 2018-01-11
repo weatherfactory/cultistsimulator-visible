@@ -139,7 +139,7 @@ namespace Assets.CS.TabletopUI {
 
             results.gameObject.SetActive(false);
 
-            DisplayRecipeHint(null); // TODO: Start showing timer instead
+            DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
             DisplayButtonState(false);
         }
 
@@ -163,14 +163,14 @@ namespace Assets.CS.TabletopUI {
         public void DisplayUnstarted() {
             Title = Verb.Label;
             PaginatedNotes.SetText(Verb.Description);
-            DisplayRecipeHint(null);
+            DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
         }
 
 		public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
 			PaginatedNotes.SetText(Verb.Description);
-			DisplayRecipeHint("This does nothing. If I experiment further, I may find another combination.");
+			DisplayRecipeMetaComment("This does nothing. If I experiment further, I may find another combination.");
 			DisplayButtonState(false);
 		}
 
@@ -184,16 +184,27 @@ namespace Assets.CS.TabletopUI {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
             DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
-			DisplayRecipeHint(null);
+			DisplayRecipeMetaComment(null);
 			DisplayButtonState(true);
 
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-		public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
+        public void DisplayHintRecipeFound(Recipe r)
+        {
+            Title = r.Label;
+            PaginatedNotes.SetText(r.StartDescription);
+            DisplayRecipeMetaComment(null);
+            DisplayButtonState(false);
+
+            SoundManager.PlaySfx("SituationAvailable");
+        }
+
+
+        public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
-			DisplayRecipeHint(recipePrediction.Commentary);
+			DisplayRecipeMetaComment(recipePrediction.Commentary);
 			DisplayButtonState(false);
 		}
 
@@ -205,7 +216,7 @@ namespace Assets.CS.TabletopUI {
             ongoing.ShowStoredAspects(GetStoredStacks());
         }
 
-        public void DisplayRecipeHint(string hint) {
+        public void DisplayRecipeMetaComment(string hint) {
             bool isActive = !string.IsNullOrEmpty(hint);
             hintText.gameObject.SetActive(isActive);
 

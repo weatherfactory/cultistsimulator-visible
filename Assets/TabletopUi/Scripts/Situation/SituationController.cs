@@ -126,16 +126,27 @@ namespace Assets.TabletopUi {
 
         public void StartingSlotsUpdated() {
             IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
-            Recipe recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter);
+            Recipe hintRecipeMatchingStartingAspects=null;
+                var recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter,false);
+
+            //if we can't find a matching craftable recipe, check for matching hint recipes
+            if (recipeMatchingStartingAspects==null)
+                hintRecipeMatchingStartingAspects =compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, true);
 
             IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
 
             situationWindow.DisplayAspects(aspectsNoElementsSelf);
 
+            //if we found a recipe, display it, and get ready to activate
             if (recipeMatchingStartingAspects != null)
                 situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
+            //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
+            else if(hintRecipeMatchingStartingAspects!= null)
+                situationWindow.DisplayHintRecipeFound(hintRecipeMatchingStartingAspects);
+            //no recipe, no hint? If there are any elements in the mix, display 'try again' message
             else if (allAspects.Count > 0)
                 situationWindow.DisplayNoRecipeFound();
+            //no recipe, no hint, no aspects. Just set back to unstarted
             else
                 situationWindow.SetUnstarted();
         }
@@ -211,7 +222,6 @@ namespace Assets.TabletopUi {
             {
                 var tabletopManager = Registry.Retrieve<TabletopManager>();
                 tabletopManager.SignalImpendingDoom(situationToken);
-
             }
         }
 
@@ -349,7 +359,7 @@ namespace Assets.TabletopUi {
 
         public void AttemptActivateRecipe() {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter);
+            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter,false);
 
             //no recipe found? get outta here
             if (recipe == null)
