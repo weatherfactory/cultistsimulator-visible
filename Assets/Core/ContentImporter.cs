@@ -109,23 +109,26 @@ public class ContentImporter
     public void ImportElements()
     {
         TextAsset[] elementTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS);
+        int totalElementsFound = 0;
         foreach (TextAsset ta in elementTextAssets)
         {
             string json = ta.text;
             Hashtable htElements = new Hashtable();
             htElements = SimpleJsonImporter.Import(json);
-            PopulateElements(htElements);
-
+            totalElementsFound+=PopulateElements(htElements);
         }
+
+        NoonUtility.Log("Total elements found: " + totalElementsFound);
     }
 
-    public void PopulateElements(Hashtable htElements)
+    public int PopulateElements(Hashtable htElements)
     {
 
         if (htElements == null)
             LogProblem("Elements were never imported; PopulateElementForId failed");
 
         ArrayList alElements = htElements.GetArrayList("elements");
+        
         foreach (Hashtable htElement in alElements)
         {
      
@@ -169,7 +172,8 @@ public class ContentImporter
             catch (Exception e)
             {
 
-                LogProblem("Couldn't add all properties for element " + element.Id + ": " +e.Message) ;
+                LogProblem("Couldn't add all properties for element " + element.Id + ": " +e.Message);
+
             }
 
             try
@@ -194,14 +198,16 @@ public class ContentImporter
                 LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
             }
 
+            
         }
-
+        return alElements.Count;
     }
 
     public void ImportRecipes()
     {
         TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
         ArrayList recipesArrayList = new ArrayList();
+        NoonUtility.Log("Recipes found: " + recipesArrayList.Count);
 
         foreach (TextAsset ta in recipeTextAssets)
         {
@@ -220,6 +226,8 @@ public class ContentImporter
 
         }
         PopulateRecipeList(recipesArrayList);
+        NoonUtility.Log("Total recipes found: " + recipesArrayList.Count);
+
     }
 
     public void ImportVerbs()
