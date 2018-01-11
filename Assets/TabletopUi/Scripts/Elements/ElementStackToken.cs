@@ -31,6 +31,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
 
+        [SerializeField] string defaultRetireFX = "CardBurn";
         [SerializeField] CardEffectRemove cardBurnFX;
 
         //The IElementStacksManager is the model-level association of the StacksToken. It's not a Unity-specific thing, and determines where the stack 'really' is for purposes of
@@ -281,13 +282,18 @@ namespace Assets.CS.TabletopUI
 
         public override bool Retire()
         {
-            return Retire(true);
+            return Retire(defaultRetireFX);
         }
 
-        public bool Retire(bool withVFX)
+        public bool Retire(bool useDefaultFX) {
+            return Retire(useDefaultFX ? defaultRetireFX : null);
+        }
+
+        public bool Retire(string vfxName)
         {
             if (Defunct)
                 return false;
+
             //first remove it from the StacksManager. It no longer exists in the model.
             CurrentStacksManager.RemoveStack(this);
 
@@ -296,17 +302,53 @@ namespace Assets.CS.TabletopUI
             Defunct = true;
             AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
-            if (withVFX && gameObject.activeInHierarchy)
-            {
-                var effect = Instantiate<CardEffectRemove>(cardBurnFX) as CardEffectRemove;
-                effect.StartAnim(this);
+            
+            if (vfxName == "hide" || vfxName == "Hide") {
+                StartCoroutine(FadeCard(0.5f));
             }
-            else
-                Destroy(gameObject);
+            else {
+                // Check if we have an effect
+                CardEffectRemove effect;
+
+                if (string.IsNullOrEmpty(vfxName) || !gameObject.activeInHierarchy)
+                    effect = null;
+                else 
+                    effect = InstantiateEffect(vfxName);
+
+                if (effect != null)
+                    effect.StartAnim(this);
+                else
+                    Destroy(gameObject);
+            }
 
             return true;
         }
 
+        CardEffectRemove InstantiateEffect(string effectName) {
+            var prefab = Resources.Load("FX/RemoveCard/" + effectName);
+
+            if (prefab == null) 
+                return null;
+
+            var obj = Instantiate(prefab) as GameObject;
+
+            if (obj == null)
+                return null;
+
+            return obj.GetComponent<CardEffectRemove>();
+        }
+
+        IEnumerator FadeCard(float fadeDuration) {
+            float time = 0f;
+
+            while (time < fadeDuration) {
+                time += Time.deltaTime;
+                canvasGroup.alpha = 1f - time / fadeDuration;
+                yield return null;
+            }
+
+            Destroy(gameObject);
+        }
 
         public void Populate(string elementId, int quantity,Source source)
         {
@@ -518,7 +560,7 @@ namespace Assets.CS.TabletopUI
             if (lifetimeRemaining < 0)
                 Retire(true);
 
-            if(lifetimeRemaining<_element.Lifetime/2)
+            if (lifetimeRemaining<_element.Lifetime/2)
             { 
                 ShowCardDecayTimer(true);
                 SetCardDecayTime(lifetimeRemaining);

@@ -28,6 +28,7 @@ namespace Assets.Core.Interfaces
         void SplitAllButNCardsToNewStack(int n);
         bool AllowMerge();
         bool Retire(bool withVfx);
+        bool Retire(string vfxName);
         void Decay(float interval);
 
         bool IsFront();

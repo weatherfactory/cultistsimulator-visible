@@ -148,7 +148,7 @@ public class ElementStacksManager : IElementStacksManager {
                 foreach (var existingStack in Stacks) {
                     // not the one we dropped AND the same ID? It's a copy!
                     if (existingStack != stack && existingStack.Id == stack.Id) { 
-                        existingStack.Retire(true);
+                        existingStack.Retire("hide");
                         break; // should only ever be one stack to retire!
                     }
                 }
