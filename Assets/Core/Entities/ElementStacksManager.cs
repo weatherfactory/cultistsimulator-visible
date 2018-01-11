@@ -150,6 +150,7 @@ public class ElementStacksManager : IElementStacksManager {
                     if (existingStack != stack && existingStack.Id == stack.Id) { 
                         existingStack.Retire("hide");
                         break; // should only ever be one stack to retire!
+                               // Otherwise this crashes cause Retire changes the collection we are looking at
                     }
                 }
             }
