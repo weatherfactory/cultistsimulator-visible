@@ -2,11 +2,11 @@
     [
 		 {
         id: "aladim",
-            label: "Dr al-Adim",
+            label: "Dr Ibn al-Adim",
             aspects:
             {},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
-
+unique:true,
 			xtriggers: {commissionfulfilled: aladimready}
         },
 		 {
@@ -15,7 +15,7 @@
             aspects:
             {},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He could use your assistance.",
-
+			unique:true,
 			xtriggers: {commissiongiven: aladim}
         },
 					 {

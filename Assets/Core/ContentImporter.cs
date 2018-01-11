@@ -26,6 +26,7 @@ public class ContentImporter
     private const string CONST_DESCRIPTION = "description";
     private const string CONST_ANIMFRAMES = "animFrames";
     private const string CONST_ISASPECT = "isAspect";
+    private const string CONST_UNIQUE = "unique";
     public ICompendium _compendium { get; private set; }
 
 
@@ -153,7 +154,12 @@ public class ContentImporter
             else
                 element.IsAspect = false;
 
-            element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
+                if (htElement.GetString(CONST_UNIQUE) == "true")
+                    element.Unique = true;
+                else
+                    element.Unique = false;
+
+                element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
             element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
                 if (htXTriggers != null)
                 {
