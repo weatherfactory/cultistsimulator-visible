@@ -23,6 +23,7 @@ public class ElementStacksManager : IElementStacksManager {
     private List<IElementStack> Stacks;
     private StackManagersCatalogue _catalogue; 
     public string Name { get; set; }
+    public bool EnforceUniqueStacks { get; set; }
 
     public ElementStacksManager(ITokenPhysicalLocation w,string name) {
         TokenPhysicalLocation = w;
@@ -139,6 +140,21 @@ public class ElementStacksManager : IElementStacksManager {
 
     public void AcceptStack(IElementStack stack) {
         NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name,6);
+
+        // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
+        if (EnforceUniqueStacks) { 
+            var element = Registry.Retrieve<ICompendium>().GetElementById(stack.Id);
+            if (element != null && element.Unique) {
+                foreach (var existingStack in Stacks) {
+                    // not the one we dropped AND the same ID? It's a copy!
+                    if (existingStack != stack && existingStack.Id == stack.Id) { 
+                        existingStack.Retire(true);
+                        break; // should only ever be one stack to retire!
+                    }
+                }
+            }
+        }
+
         stack.AssignToStackManager(this);
         Stacks.Add(stack);
         TokenPhysicalLocation.DisplayHere(stack);

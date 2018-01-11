@@ -324,7 +324,7 @@ namespace Assets.CS.TabletopUI
             {
                 DraggableToken.SetReturn(false,"dropped on the background");
 
-                if(DraggableToken.itemBeingDragged is SituationToken)
+                if (DraggableToken.itemBeingDragged is SituationToken)
                     _tabletop.DisplaySituationTokenOnTable((SituationToken) DraggableToken.itemBeingDragged);
                 else if (DraggableToken.itemBeingDragged is ElementStackToken)
                     _tabletop.GetElementStacksManager().AcceptStack(((ElementStackToken) DraggableToken.itemBeingDragged));

@@ -311,36 +311,33 @@ namespace Assets.CS.TabletopUI
         public void Populate(string elementId, int quantity,Source source)
         {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+
             try
             {
+                stackBadge.SetAsUnique(_element.Unique);                
+                SetQuantity(quantity); // this also toggles badge visibility through second call
 
-            SetQuantity(quantity);
+                name = "Card_" + elementId;
+                if (_element == null)
+                    NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
 
-            name = "Card_" + elementId;
-            if (_element == null)
-                NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
+                DisplayInfo();
+                DisplayIcon();
+                ShowGlow(false, false);
+                ShowCardDecayTimer(false);
+                SetCardDecay(0f);
+                lifetimeRemaining = _element.Lifetime;
 
-            DisplayInfo();
-            DisplayIcon();
-            ShowGlow(false, false);
-            ShowCardDecayTimer(false);
-            SetCardDecay(0f);
-            lifetimeRemaining = _element.Lifetime;
-
-             StackSource = source;
+                StackSource = source;
 
                 CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
                 //when first created, it should be in Limbo
-
             }
             catch (Exception e)
             {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
                 Retire(false);
             }
-
-            
-
         }
 
         public void AssignToStackManager(IElementStacksManager manager)
@@ -357,7 +354,8 @@ namespace Assets.CS.TabletopUI
         private void DisplayInfo()
 		{
 			text.text = _element.Label;
-			stackBadge.gameObject.SetActive(Quantity > 1);
+			stackBadge.gameObject.SetActive(Quantity > 1 || _element.Unique); // show badge if unique or has quantity
+            stackCountText.gameObject.SetActive(!_element.Unique); // Unique elements never have text on their badge
 			stackCountText.text = Quantity.ToString();
         }
 
@@ -491,7 +489,10 @@ namespace Assets.CS.TabletopUI
 
         public bool AllowMerge()
         {
-            return ContainsTokensView.AllowStackMerge && !Decays;
+            if (Decays || _element.Unique)
+                return false;
+
+            return ContainsTokensView.AllowStackMerge;
         }
 
         protected override void StartDrag(PointerEventData eventData)

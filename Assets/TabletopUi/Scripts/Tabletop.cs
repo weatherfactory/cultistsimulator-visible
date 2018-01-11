@@ -66,6 +66,7 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
         if (_stacksManager == null)
         {
             _stacksManager = new ElementStacksManager(GetTokenTransformWrapper(),"tabletop");
+            _stacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
         }
         return _stacksManager;
     }
