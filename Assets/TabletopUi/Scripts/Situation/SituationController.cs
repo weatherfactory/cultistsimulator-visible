@@ -139,9 +139,15 @@ namespace Assets.TabletopUi {
 
             //if we found a recipe, display it, and get ready to activate
             if (recipeMatchingStartingAspects != null)
+            {
                 situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
+                if (recipeMatchingStartingAspects.MaxExecutions == 1)
+                   situationWindow.DisplayRecipeMetaComment("This will only happen once.");
+                if (recipeMatchingStartingAspects.MaxExecutions > 1)
+                    situationWindow.DisplayRecipeMetaComment("This will only happen " +recipeMatchingStartingAspects.MaxExecutions + " times.");
+            }
             //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
-            else if(hintRecipeMatchingStartingAspects!= null)
+            else if (hintRecipeMatchingStartingAspects!= null)
                 situationWindow.DisplayHintRecipeFound(hintRecipeMatchingStartingAspects);
             //no recipe, no hint? If there are any elements in the mix, display 'try again' message
             else if (allAspects.Count > 0)
