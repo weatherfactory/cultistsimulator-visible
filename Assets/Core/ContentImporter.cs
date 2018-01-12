@@ -44,7 +44,7 @@ public class ContentImporter
         Elements = new Dictionary<string, Element>();
         Recipes = new List<Recipe>();
         DeckSpecs = new Dictionary<string, IDeckSpec>();
-        Legacies = new Dictionary<string,Legacy>();
+        Legacies = new Dictionary<string, Legacy>();
     }
 
     public IList<ContentImportProblem> GetContentImportProblems()
@@ -87,6 +87,7 @@ public class ContentImporter
                         foreach (string rk in htRequired.Keys)
                             slotSpecification.Required.Add(rk, 1);
                     }
+
                     Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
                     if (htForbidden != null)
                     {
@@ -116,7 +117,7 @@ public class ContentImporter
             string json = ta.text;
             Hashtable htElements = new Hashtable();
             htElements = SimpleJsonImporter.Import(json);
-            totalElementsFound+=PopulateElements(htElements);
+            totalElementsFound += PopulateElements(htElements);
         }
 
         NoonUtility.Log("Total elements found: " + totalElementsFound);
@@ -129,30 +130,36 @@ public class ContentImporter
             LogProblem("Elements were never imported; PopulateElementForId failed");
 
         ArrayList alElements = htElements.GetArrayList("elements");
-        
+
         foreach (Hashtable htElement in alElements)
         {
-     
-        
+
+
             Hashtable htAspects = htElement.GetHashtable(NoonConstants.KASPECTS);
             Hashtable htSlots = htElement.GetHashtable(NoonConstants.KSLOTS);
             Hashtable htXTriggers = htElement.GetHashtable(NoonConstants.KXTRIGGERS);
-       
+
 
             Element element = new Element(htElement.GetString(CONST_ID),
                 htElement.GetString(CONST_LABEL),
                 htElement.GetString(CONST_DESCRIPTION),
                 htElement.GetInt(CONST_ANIMFRAMES));
+
+            if(element.Label==null)
+                LogProblem("No label for element " + element.Id);
+
+            if (element.Description == null)
+                LogProblem("No description for element " + element.Id);
             try
             {
 
                 if (htElement.ContainsKey(CONST_LIFETIME))
-                element.Lifetime= float.Parse(htElement[CONST_LIFETIME].ToString());
+                    element.Lifetime = float.Parse(htElement[CONST_LIFETIME].ToString());
 
-            if (htElement.GetString(CONST_ISASPECT) == "true")
-                element.IsAspect = true;
-            else
-                element.IsAspect = false;
+                if (htElement.GetString(CONST_ISASPECT) == "true")
+                    element.IsAspect = true;
+                else
+                    element.IsAspect = false;
 
                 if (htElement.GetString(CONST_UNIQUE) == "true")
                     element.Unique = true;
@@ -160,7 +167,7 @@ public class ContentImporter
                     element.Unique = false;
 
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
-            element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
+                element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
                 if (htXTriggers != null)
                 {
                     foreach (string k in htXTriggers.Keys)
@@ -178,7 +185,7 @@ public class ContentImporter
             catch (Exception e)
             {
 
-                LogProblem("Couldn't add all properties for element " + element.Id + ": " +e.Message);
+                LogProblem("Couldn't add all properties for element " + element.Id + ": " + e.Message);
 
             }
 
@@ -204,8 +211,9 @@ public class ContentImporter
                 LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
             }
 
-            
+
         }
+
         return alElements.Count;
     }
 
@@ -222,14 +230,15 @@ public class ContentImporter
                 recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
             }
 
-            
-                catch (Exception e)
-                {
-                    NoonUtility.Log("This file broke: " + ta.name + " with error " + e.Message);
+
+            catch (Exception e)
+            {
+                NoonUtility.Log("This file broke: " + ta.name + " with error " + e.Message);
                 throw;
             }
 
         }
+
         PopulateRecipeList(recipesArrayList);
         NoonUtility.Log("Total recipes found: " + recipesArrayList.Count);
 
@@ -253,10 +262,11 @@ public class ContentImporter
         }
 
     }
+
     private void ImportDeckSpecs()
     {
-        ArrayList decksArrayList=new ArrayList();
-        TextAsset[] deckTextAssets=Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
+        ArrayList decksArrayList = new ArrayList();
+        TextAsset[] deckTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
         foreach (TextAsset ta in deckTextAssets)
         {
             string json = ta.text;
@@ -268,7 +278,7 @@ public class ContentImporter
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
 
             //deckspec
-            var thisDeckSpec=new List<string>();
+            var thisDeckSpec = new List<string>();
             try
             {
                 ArrayList htDeckSpec = htEachDeck.GetArrayList(NoonConstants.KDECKSPEC);
@@ -276,18 +286,19 @@ public class ContentImporter
                 {
                     foreach (string v in htDeckSpec)
                     {
-                       LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
-                       thisDeckSpec.Add(v);
+                        LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
+                        thisDeckSpec.Add(v);
                     }
                 }
             }
             catch (Exception e)
             {
-                LogProblem("Problem importing deckspec for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() + "' - " + e.Message);
+                LogProblem("Problem importing deckspec for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
             }
 
 
-            string defaultCardId="";
+            string defaultCardId = "";
             try
             {
                 defaultCardId = htEachDeck.GetValue(NoonConstants.KDECKDEFAULTCARD).ToString();
@@ -309,13 +320,13 @@ public class ContentImporter
                 throw;
             }
 
-            DeckSpec d=new DeckSpec(htEachDeck["id"].ToString(),thisDeckSpec,defaultCardId,resetOnExhaustion);
+            DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
 
-            DeckSpecs.Add(d.Id,d);
+            DeckSpecs.Add(d.Id, d);
         }
-        
+
     }
-    
+
 
 
     public void ImportLegacies()
@@ -332,7 +343,10 @@ public class ContentImporter
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
 
-            Legacy l= new Legacy(htEachLegacy[NoonConstants.KID].ToString(), htEachLegacy[NoonConstants.KLABEL].ToString(), htEachLegacy[NoonConstants.KDESCRIPTION].ToString(), htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(), htEachLegacy[NoonConstants.KIMAGE].ToString());
+            Legacy l = new Legacy(htEachLegacy[NoonConstants.KID].ToString(),
+                htEachLegacy[NoonConstants.KLABEL].ToString(), htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
+                htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(),
+                htEachLegacy[NoonConstants.KIMAGE].ToString());
 
             Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
             if (htEffects != null)
@@ -344,11 +358,12 @@ public class ContentImporter
                 }
             }
 
-            Legacies.Add(l.Id,l);
+            Legacies.Add(l.Id, l);
         }
 
 
     }
+
     public void PopulateRecipeList(ArrayList importedRecipes)
     {
         for (int i = 0; i < importedRecipes.Count; i++)
@@ -361,7 +376,9 @@ public class ContentImporter
                 r.Id = htEachRecipe[NoonConstants.KID].ToString();
                 htEachRecipe.Remove(NoonConstants.KID);
 
-                r.Label = htEachRecipe[NoonConstants.KLABEL] == null ? r.Id : htEachRecipe[NoonConstants.KLABEL].ToString();
+                r.Label = htEachRecipe[NoonConstants.KLABEL] == null
+                    ? r.Id
+                    : htEachRecipe[NoonConstants.KLABEL].ToString();
                 htEachRecipe.Remove(NoonConstants.KLABEL);
 
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
@@ -370,7 +387,9 @@ public class ContentImporter
                 r.HintOnly = Convert.ToBoolean(htEachRecipe[NoonConstants.KHINTONLY]);
                 htEachRecipe.Remove(NoonConstants.KHINTONLY);
 
-                r.ActionId= htEachRecipe[NoonConstants.KACTIONID]==null ? null : htEachRecipe[NoonConstants.KACTIONID].ToString();
+                r.ActionId = htEachRecipe[NoonConstants.KACTIONID] == null
+                    ? null
+                    : htEachRecipe[NoonConstants.KACTIONID].ToString();
                 if (r.ActionId == null)
                     LogProblem(r.Id + " has no actionId specified");
                 htEachRecipe.Remove(NoonConstants.KACTIONID);
@@ -378,11 +397,13 @@ public class ContentImporter
                 if (htEachRecipe.ContainsKey(NoonConstants.KSTARTDESCRIPTION))
                     r.StartDescription = htEachRecipe[NoonConstants.KSTARTDESCRIPTION].ToString();
                 htEachRecipe.Remove(NoonConstants.KSTARTDESCRIPTION);
+                
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KDESCRIPTION))
                     r.Description = htEachRecipe[NoonConstants.KDESCRIPTION].ToString();
                 htEachRecipe.Remove(NoonConstants.KDESCRIPTION);
 
+                
 
                 if (htEachRecipe.ContainsKey(NoonConstants.KASIDE))
                     r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
@@ -404,7 +425,7 @@ public class ContentImporter
                     ? null
                     : htEachRecipe[NoonConstants.KENDING].ToString();
                 htEachRecipe.Remove(NoonConstants.KENDING);
-                
+
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
                     r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
                 htEachRecipe.Remove(NoonConstants.KMAXEXECUTIONS);
@@ -440,6 +461,7 @@ public class ContentImporter
             {
                 LogProblem("Problem importing requirements for recipe '" + r.Id + "' - " + e.Message);
             }
+
             htEachRecipe.Remove(NoonConstants.KREQUIREMENTS);
 
             /////////////////////////////////////////////
@@ -461,6 +483,7 @@ public class ContentImporter
             {
                 LogProblem("Problem importing aspects for recipe '" + r.Id + "' - " + e.Message);
             }
+
             htEachRecipe.Remove(NoonConstants.KASPECTS);
 
             /////////////////////////////////////////////
@@ -483,6 +506,7 @@ public class ContentImporter
             {
                 LogProblem("Problem importing effects for recipe '" + r.Id + "' - " + e.Message);
             }
+
             htEachRecipe.Remove(NoonConstants.KEFFECTS);
 
             /////////////////////////////////////////////
@@ -491,7 +515,7 @@ public class ContentImporter
 
                 Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
                 r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
-                if(r.SlotSpecifications.Count>1)
+                if (r.SlotSpecifications.Count > 1)
                     LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
             }
             catch (Exception e)
@@ -499,29 +523,31 @@ public class ContentImporter
 
                 LogProblem("Problem importing slots for recipe '" + r.Id + "' - " + e.Message);
             }
+
             htEachRecipe.Remove(NoonConstants.KSLOTS);
 
             try
             {
 
-            ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPES);
-            if(alRecipeAlternatives!=null)
-            { 
-                foreach (Hashtable ra in alRecipeAlternatives)
+                ArrayList alRecipeAlternatives = htEachRecipe.GetArrayList(NoonConstants.KALTERNATIVERECIPES);
+                if (alRecipeAlternatives != null)
                 {
-                    string raID = ra[NoonConstants.KID].ToString();
-                    int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
-                    bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
+                    foreach (Hashtable ra in alRecipeAlternatives)
+                    {
+                        string raID = ra[NoonConstants.KID].ToString();
+                        int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
+                        bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
-                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID,raChance,raAdditional));
+                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional));
+                    }
                 }
-            }
             }
             catch (Exception e)
             {
 
                 LogProblem("Problem importing alternative recipes for recipe '" + r.Id + "' - " + e.Message);
             }
+
             htEachRecipe.Remove(NoonConstants.KALTERNATIVERECIPES);
 
 
@@ -546,6 +572,7 @@ public class ContentImporter
 
                 LogProblem("Problem importing linked recipes for recipe '" + r.Id + "' - " + e.Message);
             }
+
             htEachRecipe.Remove(NoonConstants.KLINKED);
             Recipes.Add(r);
 
@@ -569,8 +596,8 @@ public class ContentImporter
 
     private void LogIfNonexistentElementId(string elementId, string recipeId, string context)
     {
-        if(!Elements.ContainsKey(elementId))
-        LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);
+        if (!Elements.ContainsKey(elementId))
+            LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);
     }
 
     private void LogIfNonexistentDeckId(string deckId, string recipeId)
@@ -581,8 +608,9 @@ public class ContentImporter
 
     private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)
     {
-        if (referencedId!=null && Recipes.All(r => r.Id != referencedId))
-            LogProblem("'" + parentRecipeId + "' references non-existent recipe '" + referencedId + "' " + " " + context);
+        if (referencedId != null && Recipes.All(r => r.Id != referencedId))
+            LogProblem(
+                "'" + parentRecipeId + "' references non-existent recipe '" + referencedId + "' " + " " + context);
     }
 
     private void LogMissingImages()
@@ -590,26 +618,34 @@ public class ContentImporter
         //check for missing images
         var allElements = _compendium.GetAllElementsAsDictionary();
         string missingAspectImages = "";
+        int missingAspectImageCount = 0;
         string missingElementImages = "";
+        int missingElementImageCount = 0;
         foreach (var k in allElements.Keys)
         {
             if (allElements[k].IsAspect)
             {
                 if (ResourcesManager.GetSpriteForAspect(k) == null)
+                {
                     missingAspectImages += (" " + k);
+                    missingAspectImageCount++;
+                }
             }
             else
             {
                 if (ResourcesManager.GetSpriteForElement(k) == null)
+                {
                     missingElementImages += (" " + k);
+                    missingElementImageCount++;
+                }
             }
         }
 
         if (missingAspectImages != "")
-            NoonUtility.Log("Missing images for aspects:" + missingAspectImages);
+            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
 
         if (missingElementImages != "")
-            NoonUtility.Log("Missing images for elements:" + missingElementImages);
+            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages);
     }
 
     public void PopulateCompendium(ICompendium compendium)
@@ -631,11 +667,59 @@ public class ContentImporter
         _compendium.UpdateLegacies(Legacies);
 
         LogMissingImages();
+        LogFnords();
+     
 
         foreach (var p in GetContentImportProblems())
             NoonUtility.Log(p.Description);
 
     }
 
+    private void LogFnords()
+    {
+        const string FNORD = "FNORD";
 
+        var allElements = _compendium.GetAllElementsAsDictionary();
+        string elementFnords = "";
+        int elementFnordCount = 0;
+        foreach (var k in allElements.Keys)
+        {
+            var thisElement = allElements[k];
+
+            if (thisElement.Label.Contains(FNORD)
+            || thisElement.Description.Contains(FNORD)
+            )
+            {
+                    elementFnords += (" " + k);
+                    elementFnordCount++;
+            }
+        }
+
+        var allRecipes = _compendium.GetAllRecipesAsList();
+        string recipeFnords = "";
+        int recipeFnordCount = 0;
+        foreach (var r in allRecipes)
+        {
+
+            if (r.Label.Contains(FNORD)
+                || r.StartDescription.Contains(FNORD)
+                || r.Description.Contains(FNORD)
+
+            )
+            {
+
+                recipeFnords += (" " + r.Id);
+                recipeFnordCount++;
+            }
+        }
+
+
+        if (elementFnords != "")
+            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords);
+
+        if (recipeFnords != "")
+            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
+
+
+    }
 }

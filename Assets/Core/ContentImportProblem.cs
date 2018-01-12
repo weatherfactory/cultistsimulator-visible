@@ -7,7 +7,13 @@ namespace Assets.Core
 {
     public class ContentImportProblem
     {
-        public string Description { get; set; }
+        private string _description;
+
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value ?? "Unspecified"; }
+        }
 
         public ContentImportProblem(string description)
         {
