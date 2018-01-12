@@ -10,6 +10,9 @@ using Assets.Core;
 [Serializable]
 public class Recipe
 {
+    private string _description="";
+    private string _startDescription="";
+    private string _label="";
     public string Id { get; set; }
     public string ActionId { get; set; }
     public Dictionary<string, int> Requirements { get; set; }
@@ -18,13 +21,26 @@ public class Recipe
 
     public Boolean Craftable { get; set; }
     public Boolean HintOnly { get; set; }
-    public string Label { get; set; }
+
+    public string Label
+    {
+        get { return _label; }
+        set
+        {
+            _label = value ?? "";
+        }
+    }
+
     public int Warmup { get; set; }
 
     /// <summary>
     /// displayed when we identify and when we are running a recipe; also appended to the Aside if predicted as an additional recipe
     /// </summary>
-    public string StartDescription { get; set; }
+    public string StartDescription
+    {
+        get { return _startDescription; }
+        set { _startDescription = value ?? ""; }
+    }
 
     /// <summary>
     /// often empty string; displayed as an aside/commentary wheile a recipe is running. NOTE: currently has no effect - it's been exiled by the situation update
@@ -39,7 +55,11 @@ public class Recipe
     /// <summary>
     /// displayed in the results when the recipe is complete
     /// </summary>
-    public string Description { get; set; }
+    public string Description
+    {
+        get { return _description; }
+        set { _description = value ?? ""; }
+    }
 
     public List<LinkedRecipeDetails> AlternativeRecipes { get; set; }
     public List<LinkedRecipeDetails> LinkedRecipes { get; set; }

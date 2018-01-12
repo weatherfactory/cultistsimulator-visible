@@ -17,9 +17,23 @@ public class Element
     /// XTriggers run *before* the rest of the recipe (so if the recipe affected open_box elements but not locked_box elements, those effects would take place if there was a Knock in the mix).
     /// </summary>
     public Dictionary<string, string> XTriggers;
+
+    private string _label="";
+    private string _description="";
     public string Id { get; set; }
-    public string Label { get; set; }
-    public string Description { get; set; }
+
+    public string Label
+    {
+        get { return _label; }
+        set { _label = value ?? ""; }
+    }
+
+    public string Description
+    {
+        get { return _description; }
+        set { _description = value ?? ""; }
+    }
+
     public int AnimFrames { get; set; }
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
