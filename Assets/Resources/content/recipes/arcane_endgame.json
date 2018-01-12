@@ -1,1 +1,31 @@
+{
+"recipes": [
+	   {
+        id: "majorforgevictory",
+        label: "THE DAWN IS COME",
+        actionId: "work",
+        requirements: {ritual: 1,
+		notionpower:1,
+		forge:40},
         effects: {},
+        startdescription: "The city will end in fire. FNORD",
+        description: "The city has ended in fire. FNORD.",
+        warmup: 60,
+        craftable: true
+    },
+	   {
+        id: "minorforgevictory",
+        label: "I AM REFORGED",
+        actionId: "work",
+        requirements: {ritual: 1,
+		notionpower:1,
+		forge:30},
+        effects: {},
+        startdescription: "I will become a name of fire. FNORD.",
+        description: "I am a name of fire. FNORD.",
+        warmup: 60,
+        craftable: true
+    }
+	
+]
+}
