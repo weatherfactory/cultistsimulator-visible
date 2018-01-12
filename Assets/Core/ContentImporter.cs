@@ -686,8 +686,8 @@ public class ContentImporter
         {
             var thisElement = allElements[k];
 
-            if (thisElement.Label.Contains(FNORD)
-            || thisElement.Description.Contains(FNORD)
+            if (thisElement.Label.ToUpper().Contains(FNORD)
+            || thisElement.Description.ToUpper().Contains(FNORD)
             )
             {
                     elementFnords += (" " + k);
@@ -701,9 +701,9 @@ public class ContentImporter
         foreach (var r in allRecipes)
         {
 
-            if (r.Label.Contains(FNORD)
-                || r.StartDescription.Contains(FNORD)
-                || r.Description.Contains(FNORD)
+            if (r.Label.ToUpper().Contains(FNORD)
+                || r.StartDescription.ToUpper().Contains(FNORD)
+                || r.Description.ToUpper().Contains(FNORD)
 
             )
             {
