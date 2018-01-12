@@ -585,6 +585,33 @@ public class ContentImporter
             LogProblem("'" + parentRecipeId + "' references non-existent recipe '" + referencedId + "' " + " " + context);
     }
 
+    private void LogMissingImages()
+    {
+        //check for missing images
+        var allElements = _compendium.GetAllElementsAsDictionary();
+        string missingAspectImages = "";
+        string missingElementImages = "";
+        foreach (var k in allElements.Keys)
+        {
+            if (allElements[k].IsAspect)
+            {
+                if (ResourcesManager.GetSpriteForAspect(k) == null)
+                    missingAspectImages += (" " + k);
+            }
+            else
+            {
+                if (ResourcesManager.GetSpriteForElement(k) == null)
+                    missingElementImages += (" " + k);
+            }
+        }
+
+        if (missingAspectImages != "")
+            NoonUtility.Log("Missing images for aspects:" + missingAspectImages);
+
+        if (missingElementImages != "")
+            NoonUtility.Log("Missing images for elements:" + missingElementImages);
+    }
+
     public void PopulateCompendium(ICompendium compendium)
     {
         _compendium = compendium;
@@ -602,6 +629,8 @@ public class ContentImporter
         _compendium.UpdateVerbs(Verbs);
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
+
+        LogMissingImages();
 
         foreach (var p in GetContentImportProblems())
             NoonUtility.Log(p.Description);
