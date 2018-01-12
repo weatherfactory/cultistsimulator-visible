@@ -152,15 +152,11 @@ namespace Assets.CS.TabletopUI
 
         public void OpenToken()
         {
-            DisplayInAir();
             ShowGlow(false);
         }
 
         public void CloseToken()
         {
-            if (DraggableToken.itemBeingDragged == null || DraggableToken.itemBeingDragged.gameObject != this.gameObject)
-                DisplayAtTableLevel();
-
             SituationController.IsOpen = false;
 
             if (SituationController.IsSituationOccupied())
