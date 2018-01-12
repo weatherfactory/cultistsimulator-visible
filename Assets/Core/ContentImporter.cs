@@ -213,7 +213,6 @@ public class ContentImporter
     {
         TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
         ArrayList recipesArrayList = new ArrayList();
-        NoonUtility.Log("Recipes found: " + recipesArrayList.Count);
 
         foreach (TextAsset ta in recipeTextAssets)
         {
