@@ -28,6 +28,7 @@ namespace Assets.Core.Entities {
         void Beginning(Recipe withRecipe);
         void Start(Recipe primaryRecipe);
         void ResetIfComplete();
+        void Halt();
     }
 
     public class Situation : ISituation {
@@ -59,6 +60,11 @@ namespace Assets.Core.Entities {
             subscriber.SituationHasBeenReset();
         }
 
+        public void Halt()
+        {
+            Complete();
+        }
+
         public void Start(Recipe primaryRecipe) {
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
@@ -72,7 +78,6 @@ namespace Assets.Core.Entities {
         }
 
 
-
         public Situation(float? timeRemaining, global::SituationState state, Recipe withPrimaryRecipe, ISituationSubscriber s) {
             subscriber = s;
             currentPrimaryRecipe = withPrimaryRecipe;
@@ -80,8 +85,6 @@ namespace Assets.Core.Entities {
             State = state;
 
         }
-
-
 
 
         public string GetTitle() {

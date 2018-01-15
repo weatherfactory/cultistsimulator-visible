@@ -297,6 +297,14 @@ namespace Assets.TabletopUi {
             AttemptAspectInductions();
         }
 
+        public void Halt()
+        {
+            //currently used only in debug. Reset to starting state (which might be weird for Time) and end timer.
+           Situation.Halt();
+           
+
+        }
+
         private void AttemptAspectInductions()
         {
 //If any elements in the output have inductions, test whether to start a new recipe

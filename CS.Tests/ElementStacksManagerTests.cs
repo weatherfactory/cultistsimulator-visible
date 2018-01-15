@@ -270,6 +270,11 @@ namespace Assets.Editor.Tests
             throw new NotImplementedException();
         }
 
+        public bool Retire(string vfxName)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Decay(float interval)
         {
             throw new NotImplementedException();

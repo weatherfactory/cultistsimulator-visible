@@ -24,6 +24,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
     [SerializeField]private Button btnBeginSituation;
+    [SerializeField] private Button btnHaltVerb;
     [SerializeField] private Button btnFastForward;
     [SerializeField]private Button btnNextTrack;
     [SerializeField] private Button btnUpdateContent;
@@ -51,6 +52,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnResetDecks.onClick.AddListener(ResetDecks);
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
+        btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
+
         btnQueueRoll.onClick.AddListener(()=>QueueRoll(rollToQueue.text));
 
         QueuedRollsList=new List<int>();
@@ -86,7 +89,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     void BeginSituation(string recipeId)
     {
         var compendium = Registry.Retrieve<ICompendium>();
-        var recipe = compendium.GetRecipeById(recipeId);
+        var recipe = compendium.GetRecipeById(recipeId.Trim());
         if (recipe!=null)
         { 
             var situationEffectCommand=new SituationEffectCommand(recipe,true);
@@ -97,6 +100,17 @@ public class DebugTools : MonoBehaviour,IRollOverride
         }
         else
         Debug.Log("couldn't find this recipe: " + recipeId);
+    }
+
+    void HaltVerb(string verbId)
+    {
+        var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+        foreach (var s in situationsCatalogue.GetRegisteredSituations())
+        {
+            if(s.GetActionId()==verbId.Trim())
+                s.Halt();
+        }
+
     }
 
     void FastForward(float interval)
