@@ -17,8 +17,11 @@
 	},
 	{
 	id:"explorevaultbegin",
+	label: "Send a Follower to explore",
 	actionId:"explore",
 	requirements:{vault:1,follower:1},
+	startdescription: "Sending follower FNORD",
+	description: ".",
 	craftable:false,
 	comments: "We are going to fall through each of these in turn, if we meet eligibility requirements. The last one has no eligibility requirements.",
 	linked: [{id: "vaultsetupremote",chance:100},
@@ -29,7 +32,7 @@
 		{
 	id:"vaultsetupremote",
 	actionId:"explore",
-	requirements:{vault:1,remote:1}
+	requirements:{vault:1,remote:1},
 		deckeffect: "remotevault",
 	craftable:false,
 		linked: [{id: "vaultsetupaccursed",chance:100},
@@ -39,7 +42,7 @@
 		{
 	id:"vaultsetupaccursed",
 	actionId:"explore",
-	requirements:{vault:1,accursed:1}
+	requirements:{vault:1,accursed:1},
 	deckeffect: "accursedvault",
 	craftable:false,
 		linked: [{id: "vaultsetupwatched",chance:100},
@@ -48,7 +51,7 @@
 		{
 	id:"vaultsetupwatched",
 	actionId:"explore",
-	requirements:{vault:1,watched:1}
+	requirements:{vault:1,watched:1},
 	deckeffect: "watchedvault",
 	craftable:false,
 		linked: [{id: "explorevaulttick",chance:100}]
@@ -58,7 +61,7 @@
 	comments: "wip",
 	label: "Exploring...",
 	actionId: "explore",
-	startdescription: "I need to get into the vault. Three successes. If I get <2 successes, I may lose access. I might adapt number of successes based on final vault.",
+	startdescription: "I need to get into the vault. Attempt locks. If I run out of followers, I fail. If I fail, I may lose access.",
 	description: "..",
 	warmup:30,
 	linked:[
@@ -66,7 +69,7 @@
 	craftable: false
 	},
 			{
-	id: "explorevaultsuccessmithraeum",
+	id: "explorevault_c1_success",
 	label: "Mithraeum success FNORD",
 	actionId: "explore",
 		comments: "wip",
@@ -79,7 +82,7 @@
 	craftable: false]
 	},
 		{
-	id: "explorevaultsuccessuncommon1",
+	id: "explorevault_u1_success",
 	label: "Fane success FNORD",
 	actionId: "explore",
 		comments: "wip",
