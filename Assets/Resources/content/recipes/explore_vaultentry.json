@@ -1,0 +1,70 @@
+ {"recipes": [
+
+	 	{
+	id: "entervault",
+	label: "Generic vault entry",
+	comments: "may well replace with specific vault entry for individual locations",
+	actionId: "explore",
+	requirements: {vault:1},
+	effects: {},
+	slots:{"More": required: {follower:1}},
+	alternativerecipes: [
+	{id: "explorevaultbegin",chance:100}],
+	startdescription: "trying to break into a vault FNORD.",
+	description: "I need a follower to get in",
+	warmup:30,
+	craftable: true
+	},
+	{
+	id:"explorevaultbegin",
+	actionId:"explore",
+	requirements:{vault:1,follower:1},
+	craftable:false
+	},
+		{
+	id:"vaultsetupremote",
+	actionId:"explore",
+	requirements:{vault:1,remote:1}
+	craftable:false
+	},
+		{
+	id:"vaultsetupaccursed",
+	actionId:"explore",
+	requirements:{vault:1,accursed:1}
+	craftable:false
+	},
+		{
+	id:"vaultsetupwatched",
+	actionId:"explore",
+	requirements:{vault:1,watched:1}
+	craftable:false
+	},
+		{
+	id: "explorevaulttick",
+	comments: "wip",
+	label: "Exploring...",
+	actionId: "explore",
+	requirements:{vault:1,follower:1},
+	startdescription: "I need to get into the vault. Three successes. If I get <2 successes, I may lose access. I might adapt number of successes based on final vault.",
+	description: "..",
+	warmup:30,
+	linked:[
+	{id: "explorevaultsuccessmithraeum",chance:100}]
+	craftable: false
+	},
+			{
+	id: "explorevaultsuccessmithraeum",
+	label: "Mithraeum success FNORD",
+	actionId: "explore",
+		comments: "wip",
+	requirements: {},
+	effects: {},
+
+	startdescription: "Found something in the Mithraeum FNORD",
+	description: "Might remove a location, might not FNORD.",
+	warmup:30,
+	craftable: false]
+	}
+
+]
+}

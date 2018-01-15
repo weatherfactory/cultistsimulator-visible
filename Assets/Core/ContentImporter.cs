@@ -120,7 +120,7 @@ public class ContentImporter
             totalElementsFound += PopulateElements(htElements);
         }
 
-        NoonUtility.Log("Total elements found: " + totalElementsFound);
+        NoonUtility.Log("Total elements found: " + totalElementsFound,9);
     }
 
     public int PopulateElements(Hashtable htElements)
@@ -240,7 +240,7 @@ public class ContentImporter
         }
 
         PopulateRecipeList(recipesArrayList);
-        NoonUtility.Log("Total recipes found: " + recipesArrayList.Count);
+        NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,9);
 
     }
 
@@ -715,10 +715,10 @@ public class ContentImporter
 
 
         if (elementFnords != "")
-            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords);
+            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords,9);
 
         if (recipeFnords != "")
-            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords);
+            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords,9);
 
 
     }
