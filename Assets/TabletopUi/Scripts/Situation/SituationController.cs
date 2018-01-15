@@ -125,6 +125,15 @@ namespace Assets.TabletopUi {
         }
 
         public void StartingSlotsUpdated() {
+            //it's possible the starting slots have been updated because we've just started a recipe and stored everything that was in them.
+            //in this case, don't do anything.
+            if (Situation.State != SituationState.Unstarted)
+                return;
+            else
+            {
+                //This is an unstarted situation: start displaying recipes, hints, whatnot
+              //get all the aspects currently in the starting slots
+            
             IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
             Recipe hintRecipeMatchingStartingAspects=null;
                 var recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter,false);
@@ -155,6 +164,7 @@ namespace Assets.TabletopUi {
             //no recipe, no hint, no aspects. Just set back to unstarted
             else
                 situationWindow.SetUnstarted();
+            }
         }
 
         public void OngoingSlotsUpdated() {
@@ -379,12 +389,15 @@ namespace Assets.TabletopUi {
             if (recipe == null)
                 return;
 
+            //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
+            //as if we're removing items from an unstarted situation
+            Situation.Start(recipe);
+
             //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();
             //move any slotted elements to storage
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
-            //kick off the situation
-            Situation.Start(recipe);
+            
 
             //The game might be paused! or the player might just be incredibly quick off the mark
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
