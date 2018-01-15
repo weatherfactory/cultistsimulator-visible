@@ -2,20 +2,26 @@
     [
 	{id: "accursedvault",
 	spec:
-	["creepingbreathcurse"],
-defaultcard: "creepingbreathcurse",
+	["cursecreepingbreath"],
+defaultcard: "cursecreepingbreath",
 resetonexhaustion:true	
 	},
 		{id: "watchedvault",
 	spec:
-	["fretfuldead"],
-defaultcard: "fretfuldead",
+	["watcherfretfuldead"],
+defaultcard: "watcherfretfuldead",
 resetonexhaustion:true	
 	},
 	{id: "remotevault",
 	spec:
-	["stormyweather"],
+	["perilstormyweather"],
 defaultcard: "stormyweather",
+resetonexhaustion:true	
+	},
+		{id: "sealedvault",
+	spec:
+	["sealdevilishdevices"],
+defaultcard: "sealdevilishdevices",
 resetonexhaustion:true	
 	}
 	

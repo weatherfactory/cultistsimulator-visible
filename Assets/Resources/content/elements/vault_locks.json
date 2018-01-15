@@ -1,16 +1,25 @@
 {"elements":
     [
-	{id: "creepingbreathcurse",
+	{id: "cursecreepingbreath",
 	label: "The Creeping Breath Curse",
+	aspects: {curse:1},
 	description: "FNORD"
 	},
-	{id: "fretfuldead",
+	{id: "watcherfretfuldead",
 	label: "The Fretful Dead",
+	aspects: {watcher:1},
 	description: "FNORD"
 	},
-	{id: "stormyweather",
-	label: "Stormy Weather",
+		{id: "sealdevilishdevices",
+	label: "Devilish Devices",
+	aspects: {seal:1},
 	description: "FNORD"
 	}
+	{id: "perilstormyweather",
+	label: "Stormy Weather",
+	aspects: {peril:1},
+	description: "FNORD"
+	}
+
 ]
 };

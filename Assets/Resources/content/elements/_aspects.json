@@ -140,9 +140,39 @@
         isAspect: true
 },
       {
+            id: "sealed",
+            label: "Sealed",
+			description: "Traps or locks or wards or portals of impregnable stone.",
+        isAspect: true
+},
+      {
             id: "watched",
             label: "Watched",
 			description: "An entity has been charged with preventing entry.",
+        isAspect: true
+},
+       {
+            id: "peril",
+            label: "Peril",
+			description: "An obstacle, a danger, or a premature conclusion.",
+        isAspect: true
+},
+      {
+            id: "curse",
+            label: "Curse",
+			description: "A malign influence you must defeat.",
+        isAspect: true
+},
+      {
+            id: "watcher",
+            label: "Watcher",
+			description: "An entity that has been charged with preventing entry.",
+        isAspect: true
+},
+      {
+            id: "seal",
+            label: "Seal",
+			description: "Your progress is prevented.",
         isAspect: true
 },
       {
@@ -151,6 +181,7 @@
 			description: "There is something precious here.",
         isAspect: true
 },
+
 
         {
             id: "summoned",
