@@ -37,6 +37,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private TMP_InputField rollToQueue;
     [SerializeField] private TextMeshProUGUI rollsQueued;
 
+    public string endingAnimFXName = "DramaticLightEvil";
+
     public List<int> QueuedRollsList;
 
 
@@ -135,7 +137,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var compendium = Registry.Retrieve<ICompendium>();
         var ending = compendium.GetEndingById("powerminor");
 
-        ending.Anim = "DramaticLightRed";
+        ending.Anim = endingAnimFXName;
 
         // Get us a random situation that killed us!
         var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
