@@ -46,7 +46,8 @@ namespace Assets.CS.TabletopUI {
 
             Notes.Clear();
             Notes.Add(newNote);
-			ShowPageNum(0);
+			//ShowPageNum(0); why are we showing the first? is that right?
+            ShowFinalPage();
         }
 
 		public void SetText(List<ISituationNote> setNotes) {
