@@ -23,10 +23,10 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private InputField input;
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
-    [SerializeField]private Button btnBeginSituation;
+    [SerializeField] private Button btnBeginSituation;
     [SerializeField] private Button btnHaltVerb;
     [SerializeField] private Button btnFastForward;
-    [SerializeField]private Button btnNextTrack;
+    [SerializeField] private Button btnNextTrack;
     [SerializeField] private Button btnUpdateContent;
     [SerializeField] private Button btnEndGame;
     [SerializeField] private Button btnLoadGame;
@@ -134,6 +134,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
     {
         var compendium = Registry.Retrieve<ICompendium>();
         var ending = compendium.GetEndingById("powerminor");
+
+        ending.Anim = "DramaticLightRed";
 
         // Get us a random situation that killed us!
         var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
