@@ -1,5 +1,14 @@
 {"elements":
     [
+			 {
+        id: "clovette_a",
+            label: "Clovette, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Clovette is happy in way that brooks no counter-argument to happiness. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: clovette_b}
+        },
 		 {
         id: "dorothy_a",
             label: "Dorothy, an acquaintance",
@@ -45,6 +54,15 @@
 			animFrames: 1,
 			xtriggers: {recruiting: neville_b}
         },
+						 {
+        id: "tristan_a",
+            label: "Tristan, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Tristan dislikes distractions. Tristan gets things done. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: tristan_b}
+        },
 				 {
         id: "victor_a",
             label: "Victor, an acquaintance",
@@ -53,6 +71,14 @@
             description: "Victor is a sly fellow, and he knows an unusual opportunity when he sees it. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: victor_b}
+        },
+								 {
+        id: "clovette_b",
+            label: "Clovette, a believer",
+            aspects:
+            {mortal: 1, follower: 1,heart: 1},
+            animFrames: 1,
+			description: "Clovette's determined happiness now borders on the fanatical."
         },
 						 {
         id: "dorothy_b",
@@ -93,6 +119,14 @@
             {mortal: 1, follower: 1, knock: 1},
             animFrames: 1,
 			description: "Neville pauses before he speaks, and flinches easily. He's sensitive to deeper matters."
+        },
+						 {
+        id: "tristan_b",
+            label: "Tristan, a believer",
+            aspects:
+            {mortal: 1, follower: 1,forge:1},
+            animFrames: 1,
+			description: "Tristan dislikes distractions; Tristan likes results."
         },
 				 {
         id: "victor_b",

@@ -23,7 +23,7 @@
 	startdescription: "Sending follower FNORD",
 	description: ".",
 	craftable:false,
-	comments: "We are going to fall through each of these in turn, if we meet eligibility requirements. The last one has no eligibility requirements.",
+	comments: "Fall through each of the linked recipes in turn, to set up obstacles in the situation if we meet eligibility requirements. The last one has no eligibility requirements.",
 	linked: [{id: "vaultsetupremote",chance:100},
 	{id: "vaultsetupaccursed",chance:100},
 	{id: "vaultsetupwatched",chance:100},
@@ -33,6 +33,7 @@
 	id:"vaultsetupremote",
 	actionId:"explore",
 	requirements:{vault:1,remote:1},
+	comments: "set up appropriate obstacle; move on to other setup recipes",
 		deckeffect: "remotevault",
 	craftable:false,
 		linked: [{id: "vaultsetupaccursed",chance:100},
@@ -43,6 +44,7 @@
 	id:"vaultsetupaccursed",
 	actionId:"explore",
 	requirements:{vault:1,accursed:1},
+	comments: "set up appropriate obstacle; move on to other setup recipes",
 	deckeffect: "accursedvault",
 	craftable:false,
 		linked: [{id: "vaultsetupwatched",chance:100},
@@ -52,13 +54,14 @@
 	id:"vaultsetupwatched",
 	actionId:"explore",
 	requirements:{vault:1,watched:1},
+	comments: "set up appropriate obstacle; move on to the recipe tick",
 	deckeffect: "watchedvault",
 	craftable:false,
 		linked: [{id: "explorevaulttick",chance:100}]
 	},
 		{
 	id: "explorevaulttick",
-	comments: "wip: not wired up yet",
+	comments: "Can't reach success until all the alternatives are unavailable. That means no obstacles, and >0 followers.",
 	label: "Exploring...",
 	actionId: "explore",
 	startdescription: "I need to get into the vault. Attempt locks. If I run out of followers, I fail. If I fail, I may lose access.",
@@ -67,79 +70,138 @@
 	alternativerecipes:[
 	{id: "explorevaultfailure",chance:100},
 	{id: "explorevaultperilencounter",chance:100},
-	{id: "explorevaultsealencounter",chance:100},
 	{id: "explorevaultcurseencounter",chance:100},
 	{id: "explorevaultwatcherencounter",chance:100},	
+	{id: "explorevaultsealencounter",chance:100},	
+	{id: "explorevaultfailure",chance:100}
 	{id: "explorevaultsuccess",chance:100}]
 	craftable: false
 	},
-	{id:"explorevaultfailure",
-	actionId:"explore",
-	label:"This place remains inviolate.",
-	startdescription:"FNORD no luck startdesc",
-	description: "FNORD no luck enddesc",
-	requirements: {follower:-1}
-	},
+
 	{
 	id: "explorevaultcurseencounter",
 	label: "Facing the Curse",
 	actionId: "explore",
-	comments: "TODO: add failure; wire up other events",
-	requirements: {},
-	effects: {},
-	slots:{"Erudition": {required: {erudition:1},consumes:true}},
+	startdescription: "The curse might kill a follower. If you have Heart in play, everyone might survive. FNORD",
+	description: "The curse has killed a follower. FNORD.",
+	requirements: {curse:1},
+	effects: {curse:-1,follower:-1},
+	slots:{"Catspaw": {required: {follower:1}}},
 	alternativerecipes: [
 	{id: "explorevaultcurseencountersuccess",chance:100}],
-	startdescription: "Facing down the curse. 70% if you're equipped with Heart",
-	description: "My research needs Erudition.",
 	warmup:30,
 	craftable: false,
-		linked: [{id:"studyresearchconclusion",chance:100}]
+		linked: [{id:"explorevaulttick",chance:100}]
 	},
 		{
 	id: "explorevaultcurseencountersuccess",
 	actionId:"explore",
+	startdescription: "Someone's protective talent or tenacity has saved your catspaws from further harm. FNORD",
+	description: ".",
+	requirements: {heart:1},
+	effects: {curse:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}]	
 	},
-			{
-	id: "explorevaultsuccess",
-	actionId:"explore",
-	comments: "TODO: route to alternatives"
-	},
+
 					{
 	id: "explorevaultperilencounter",
 	actionId:"explore",
-	comments: "TODO: resolutions"
+	startdescription: "A peril might derail your exploration of the vault. Feed it a follower with Forge. FNORD",
+	description: "No Forge, which means it'll kill a follower and is still here. FNORD"
+	slots:{"Catspaw": {required: {follower:1}}},
+	alternativerecipes: [
+	{id: "explorevaultperilencountersuccess",chance:100}],
+	effects: {follower:-1},
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaulttick",chance:100}]
 	},
-				{
+			{
+	id: "explorevaultperilencountersuccess",
+	actionId:"explore",
+	startdescription: "Hurray someone is practical and determined FNORD",
+	description: ".",
+	requirements: {forge:1},
+	effects: {peril:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}]	
+	},
+	{
+		id: "explorevaultwatcherencounter",
+	actionId:"explore",
+	startdescription: "A watcher might derail your exploration of the vault. Feed it a follower with Edge. FNORD",
+	description: "No Knock, which means it'll kill a follower and is still here. FNORD"
+	slots:{"Catspaw": {required: {follower:1}}},
+	alternativerecipes: [
+	{id: "explorevaultwatcherencountersuccess",chance:100}],
+	effects: {follower:-1},
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaulttick",chance:100}]
+	},
+			{
+	id: "explorevaultwatcherencountersuccess",
+	actionId:"explore",
+	startdescription: "Hurray someone has kilt it FNORD",
+	description: ".",
+	requirements: {edge:1},
+	effects: {watcher:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}]	
+	},
+	{
 	id: "explorevaultsealencounter",
 	actionId:"explore",
-	comments: "TODO: resolutions"
+	startdescription: "A seal might derail your exploration of the vault. Feed it a follower with Knock. FNORD",
+	description: "No Knock, which means it'll kill a follower and is still here. FNORD"
+	slots:{"Catspaw": {required: {follower:1}}},
+	alternativerecipes: [
+	{id: "explorevaultsealencountersuccess",chance:100}],
+	effects: {follower:-1},
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaulttick",chance:100}]
+	},
+			{
+	id: "explorevaultsealencountersuccess",
+	actionId:"explore",
+	startdescription: "Hurray someone has skills FNORD",
+	description: ".",
+	requirements: {knock:1},
+	effects: {seal:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}]	
+	},
+
+		{id:"explorevaultfailure",
+	actionId:"explore",
+	label:"This place remains inviolate.",
+	startdescription:"FNORD This exploration is over. The mists close over this place again.",
+	description: "FNORD No-one returns from this expedition. It's done. We might get unique descriptions for different locations.",
+	requirements: {follower:-1},
+	effects: {vault:-1},
+	warmup:30
 	},
 				{
-	id: "explorevaultcurseencounter",
+	id: "explorevaultsuccess",
 	actionId:"explore",
-	comments: "TODO: resolutions"
+		alternativerecipes: [{id: "explorevault_c1_success",chance:100},
+		{id: "explorevault_u1_success",chance:100}],
 	},
-					{
-	id: "explorevaultwatcherencounter",
-	actionId:"explore",
-	comments: "TODO: resolutions"
-	},
-	
 	
 			{
 	id: "explorevault_c1_success",
 	label: "Mithraeum success FNORD",
 	actionId: "explore",
 	comments: "TODO: add deck outcomes",
-	comments: "wip",
-	requirements: {},
-	effects: {},
-
-	startdescription: "Found something in the Mithraeum FNORD",
-	description: "Might remove a location, might not FNORD.",
+	requirements: {locationvaultc1:1},
+	effects: {vault:-1},
+	deckeffect: "vaultcontentsc",
+	startdescription: "Finding something in the Mithraeum FNORD",
+	description: "All done! FNORD.",
 	warmup:30,
-	craftable: false]
+	craftable: false
 	},
 		{
 	id: "explorevault_u1_success",
@@ -147,11 +209,11 @@
 	comments: "TODO: add deck outcomes",
 	actionId: "explore",
 		comments: "wip",
-	requirements: {},
-	effects: {},
-
-	startdescription: "Found something in the Fane FNORD",
-	description: "Might remove a location, might not FNORD.",
+	requirements: {locationvaultu1:1},
+	effects: {vault:-1},
+	deckeffect: "vaultcontentsu",
+	startdescription: "Finding something in the Fane FNORD",
+	description: "All done! FNORD.",
 	warmup:30,
 	craftable: false]
 	},

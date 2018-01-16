@@ -233,8 +233,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach (var k in htSituationNotes.Keys)
                 {
                     var htThisOutput = htSituationNotes.GetHashtable(k);
-                    //NOTE: titles not currently used, but probably will be again
-                    var notificationForSituationNote =new Notification(htThisOutput[SaveConstants.SAVE_TITLE].ToString(), htThisOutput[SaveConstants.SAVE_TITLE].ToString());
+                    //NOTE: distinct titles not currently used, but probably will be again
+                    string title;
+                    if (htThisOutput[SaveConstants.SAVE_TITLE] != null)
+                        title = htThisOutput[SaveConstants.SAVE_TITLE].ToString();
+                    else
+                        title = "..."; //just catching possible empty descs so they don't blow up
+
+                    
+                    var notificationForSituationNote =new Notification(title,title);
                     controller.AddNote(notificationForSituationNote);
                 }
             }
