@@ -19,9 +19,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Color phase1Color = new Color(0.45f, 1f, 1f, 1f);
         [SerializeField] Color phase2Color = new Color(1f, 0f, 1f, 1f);
 
-        public override void StartAnim(ElementStackToken card) {
+        public override void StartAnim(Transform token) {
             // Set target card, prevent interaction, position effect, Play Sound
-            base.StartAnim(card);
+            base.StartAnim(token);
 
             StopAllCoroutines();
             StartCoroutine(DoCreateAnim()); //This will fail if the card's parent is subsequently disabled. So we use OnDisable, below, to finish it quickly if the card is then disabled.
@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI {
         IEnumerator DoCreateAnim() {
             float time = 0f;
             graphic.color = startColor;
-            targetCard.alpha = 0f;
+            tokenCanvasGroup.alpha = 0f;
 
             while (time < durationPhase1) {
                 time += Time.deltaTime;
@@ -44,11 +44,11 @@ namespace Assets.CS.TabletopUI {
 
             while (time < phasePause) {
                 time += Time.deltaTime;
-                targetCard.alpha = time / phasePause;
+                tokenCanvasGroup.alpha = time / phasePause;
                 yield return null;
             }
 
-            targetCard.alpha = 1f;
+            tokenCanvasGroup.alpha = 1f;
             time = 0f;
 
             while (time < durationPhase2) {

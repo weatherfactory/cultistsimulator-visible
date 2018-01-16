@@ -9,11 +9,11 @@ namespace Assets.CS.TabletopUI {
         protected CanvasGroup effectGroup;
         [SerializeField] string sfx = "CardBurn";
 
-        public override void StartAnim(ElementStackToken card) {
-            targetCard = card.GetComponent<CanvasGroup>();
-            targetCard.interactable = false;
-            targetCard.blocksRaycasts = false;
-            targetCard.alpha = 0f;
+        public override void StartAnim(Transform token) {
+            tokenCanvasGroup = token.GetComponent<CanvasGroup>();
+            tokenCanvasGroup.interactable = false;
+            tokenCanvasGroup.blocksRaycasts = false;
+            tokenCanvasGroup.alpha = 0f;
 
             // Ensure we have a CanvasGroup and it ignores the parent 
             effectGroup = GetComponent<CanvasGroup>();
@@ -22,21 +22,19 @@ namespace Assets.CS.TabletopUI {
             effectGroup.ignoreParentGroups = true;
             effectGroup.alpha = 1f;
 
-            transform.SetParent(targetCard.transform);
+            transform.SetParent(token);
             transform.localScale = Vector3.one;
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             gameObject.SetActive(true);
-
-            ScaleParticlesScale();
 
             if (sfx != null && sfx != "")
                 SoundManager.PlaySfx(sfx);
         }
 
         public override void OnAnimDone() {
-            if (targetCard != null)
-                targetCard.alpha = 1f;
+            if (tokenCanvasGroup != null)
+                tokenCanvasGroup.alpha = 1f;
 
             Destroy(gameObject);
         }

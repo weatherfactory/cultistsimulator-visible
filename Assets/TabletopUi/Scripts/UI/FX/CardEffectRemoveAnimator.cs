@@ -18,11 +18,11 @@ namespace Assets.CS.TabletopUI {
 
             while (time < fadeDuration) {
                 time += Time.deltaTime;
-                targetCard.alpha = 1f - time / fadeDuration;
+                tokenCanvasGroup.alpha = 1f - time / fadeDuration;
                 yield return null;
             }
 
-            targetCard.alpha = 0f;
+            tokenCanvasGroup.alpha = 0f;
         }
 
     }

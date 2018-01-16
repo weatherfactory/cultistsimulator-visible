@@ -25,7 +25,6 @@ public class CanvasZoomTest : UIBehaviour {
     public bool enablePlayerZoom = true;
 
     private Canvas canvas;
-    private UIParticleCanvasScaler particleScaler;
 
     protected override void Start() {
         Init();
@@ -48,7 +47,6 @@ public class CanvasZoomTest : UIBehaviour {
 
         enabled = true;
         canvas = GetComponent<Canvas>();
-        particleScaler = GetComponent<UIParticleCanvasScaler>();
         SetScale(currentZoom);
     }
 
@@ -90,7 +88,6 @@ public class CanvasZoomTest : UIBehaviour {
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
     void SetScale(float zoom) {
         canvas.scaleFactor = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
-        particleScaler.SetParticleScales();
     }
 
 }

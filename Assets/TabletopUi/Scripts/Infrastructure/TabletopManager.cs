@@ -83,8 +83,7 @@ namespace Assets.CS.TabletopUI
             //register everything used gamewide
             SetupServices(_situationBuilder,_tabletop);
             //we hand off board functions to individual controllers
-            InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController,_mapController);
-            _endGameAnimController.Initialise();
+            InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController, _mapController, _endGameAnimController);
 
             InitialiseListeners();
 
@@ -120,12 +119,15 @@ namespace Assets.CS.TabletopUI
       
         }
 
-        private void InitialiseSubControllers(SpeedController speedController, HotkeyWatcher hotkeyWatcher, CardAnimationController cardAnimationController, MapController mapController)
+        private void InitialiseSubControllers(SpeedController speedController, HotkeyWatcher hotkeyWatcher, 
+                                              CardAnimationController cardAnimationController, MapController mapController,
+                                              EndGameAnimController endGameAnimController)
         {
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
             cardAnimationController.Initialise(_tabletop.GetElementStacksManager());
             mapController.Initialise(mapContainsTokens, mapBackground, mapAnimation);
+            endGameAnimController.Initialise();
         }
 
         private void InitialiseListeners()
@@ -277,7 +279,7 @@ namespace Assets.CS.TabletopUI
             saveGameManager.SaveInactiveGame();
 
             // TODO: Get effect name from ending?
-            _endGameAnimController.TriggerEnd((SituationToken) endingSituation.situationToken, null);
+            _endGameAnimController.TriggerEnd((SituationToken) endingSituation.situationToken, "DramaticLight");
         }
 
     	public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill)

@@ -316,7 +316,7 @@ namespace Assets.CS.TabletopUI
                     effect = InstantiateEffect(vfxName);
 
                 if (effect != null)
-                    effect.StartAnim(this);
+                    effect.StartAnim(this.transform);
                 else
                     Destroy(gameObject);
             }

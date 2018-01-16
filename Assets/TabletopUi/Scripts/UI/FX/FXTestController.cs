@@ -45,7 +45,7 @@ public class FXTestController : MonoBehaviour {
     }
 
     void StartAnim() {
-        activeEffect.StartAnim(activeToken);
+        activeEffect.StartAnim(activeToken.transform);
 
         effectNum++;
 

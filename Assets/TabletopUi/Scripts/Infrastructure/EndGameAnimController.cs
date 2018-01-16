@@ -94,17 +94,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             SceneManager.LoadScene(SceneNumber.EndScene);
         }
 
-        GameObject InstantiateEffect(string effectName, Transform parent) {
-            var prefab = Resources.Load("FX/" + effectName);
+        GameObject InstantiateEffect(string effectName, Transform token) {
+            var prefab = Resources.Load("FX/EndGame/" + effectName);
 
             if (prefab == null)
                 return null;
 
-            var go = Instantiate(prefab, parent) as GameObject;
-            go.transform.SetAsFirstSibling();
-            go.transform.localPosition = Vector3.zero;
+            var go = Instantiate(prefab, token) as GameObject;
+            go.transform.position = token.position;
             go.transform.localScale = Vector3.one;
             go.SetActive(true);
+
+            var effect = go.GetComponent<CardEffect>();
+
+            if (effect != null)
+                effect.StartAnim(token);
 
             return go;
         }
