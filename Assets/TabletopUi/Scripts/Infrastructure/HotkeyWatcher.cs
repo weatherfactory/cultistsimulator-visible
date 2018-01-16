@@ -21,8 +21,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _optionsPanel = optionsPanel;
         }
 
-        public void WatchForHotkeys()
+        public void WatchForGameplayHotkeys()
         {
+            if (!enabled)
+                return;
+
             if (Input.GetKeyDown("`") || (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab)))
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
 
@@ -35,7 +38,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 if (Input.GetKeyDown(KeyCode.M))
                     _speedController.SetFastForward();
-
+            }
+            else {
+                if (Input.GetKeyDown(KeyCode.E) && Input.GetKey(KeyCode.LeftShift))
+                    _debugTools.EndGame();
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -45,6 +51,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 _optionsPanel.ToggleVisibility();
         }
 
+        public bool IsPressingAbortHotkey() {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                return true;
+
+            return false;
+        }
 
     }
 }

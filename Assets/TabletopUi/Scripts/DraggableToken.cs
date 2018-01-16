@@ -155,8 +155,16 @@ namespace Assets.CS.TabletopUI
         }
 
         public void OnDrag (PointerEventData eventData) {
-            if (itemBeingDragged == this) 
+            if (itemBeingDragged != this)
+                return;
+
+            if (draggingEnabled) { 
                 MoveObject(eventData);
+            }
+            else {
+                eventData.pointerDrag = null; // cancel the drag
+                OnEndDrag(eventData);
+            }
         }
 
         public abstract void ReturnToTabletop(INotification reason = null);
