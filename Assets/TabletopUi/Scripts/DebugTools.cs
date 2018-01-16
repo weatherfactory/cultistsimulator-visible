@@ -129,11 +129,17 @@ public class DebugTools : MonoBehaviour,IRollOverride
         backgroundMusic.PlayNextClip();
     }
 
-    void EndGame()
+    // to allow access from HotkeyWatcher
+    public void EndGame()
     {
         var compendium = Registry.Retrieve<ICompendium>();
         var ending = compendium.GetEndingById("powerminor");
-        Registry.Retrieve<TabletopManager>().EndGame(ending);
+
+        // Get us a random situation that killed us!
+        var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+        var deathSit = situationControllers[UnityEngine.Random.Range(0, situationControllers.Count)];
+
+        Registry.Retrieve<TabletopManager>().EndGame(ending, deathSit);
     }
 
     public void LoadGame()

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CanvasZoomTest : UIBehaviour {
+
+    public ScrollRect scrollRect; // used for focusing on a position
 
     [Tooltip("This is the max window size we zoom out to, ensures that both sides are visible")]
     public Vector2 maxWindowSize = new Vector2(2400f, 1800f);
@@ -18,6 +21,8 @@ public class CanvasZoomTest : UIBehaviour {
     private float currentZoom = 0.5f; 
     private float targetZoom = 0.5f;
     private const float zoomTolerance = 0.00001f; // snap when this close to target
+
+    public bool enablePlayerZoom = true;
 
     private Canvas canvas;
     private UIParticleCanvasScaler particleScaler;
@@ -48,13 +53,15 @@ public class CanvasZoomTest : UIBehaviour {
     }
 
     void Update () {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
-            targetZoom -= 0.1f;
-            targetZoom = Mathf.Clamp01(targetZoom);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f && targetZoom < 1f) {
-            targetZoom += 0.1f;
-            targetZoom = Mathf.Clamp01(targetZoom);
+        if (enablePlayerZoom) { 
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
+                targetZoom -= 0.1f;
+                targetZoom = Mathf.Clamp01(targetZoom);
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && targetZoom < 1f) {
+                targetZoom += 0.1f;
+                targetZoom = Mathf.Clamp01(targetZoom);
+            }
         }
 
         if (targetZoom != currentZoom) {
@@ -69,6 +76,13 @@ public class CanvasZoomTest : UIBehaviour {
 
     public void SetTargetZoom(float value) {
         targetZoom = Mathf.Clamp01(value);
+    }
+
+    public void StartFixedZoom(float value, float duration) {
+        targetZoom = Mathf.Clamp01(value);
+
+        var zoomDiff = Mathf.Abs(currentZoom - targetZoom);
+        zoomSpeed = zoomDiff / duration;
     }
 
     // Here we get the currentZoom between 0 (zoomed in) and 1 (zoomed out)

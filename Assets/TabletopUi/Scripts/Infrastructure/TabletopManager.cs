@@ -34,12 +34,12 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private Heart _heart;
         [SerializeField] private SpeedController _speedController;
         [SerializeField] private CardAnimationController _cardAnimationController;
+        [SerializeField] private EndGameAnimController _endGameAnimController;
 
         [Header("Tabletop")]
         [SerializeField] public Tabletop _tabletop;
         [SerializeField] TabletopBackground _background;
         [SerializeField] private Limbo Limbo;
-
 
         [Header("Mansus Map")]
         [SerializeField] private MapController _mapController;
@@ -52,7 +52,8 @@ namespace Assets.CS.TabletopUI
         [SerializeField] Transform tableLevelTransform;
         [SerializeField] Transform windowLevelTransform;
 
-        [Header("Options Bar & Notes")] [SerializeField] private StatusBar StatusBar;
+        [Header("Options Bar & Notes")]
+        [SerializeField] private StatusBar StatusBar;
 
         [SerializeField] private DebugTools debugTools;
         [SerializeField] private BackgroundMusic backgroundMusic;
@@ -64,18 +65,16 @@ namespace Assets.CS.TabletopUI
 
         private SituationBuilder _situationBuilder;
 
-
-
         public void Update()
         {
-            _hotkeyWatcher.WatchForHotkeys();
+            _hotkeyWatcher.WatchForGameplayHotkeys();
             _cardAnimationController.CheckForCardAnimations();
         }
+
         public void NotifyStacksChanged()
         {
             _elementOverview.UpdateDisplay();
         }
-
 
         void Start()
         {
@@ -85,11 +84,12 @@ namespace Assets.CS.TabletopUI
             SetupServices(_situationBuilder,_tabletop);
             //we hand off board functions to individual controllers
             InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController,_mapController);
+            _endGameAnimController.Initialise();
+
             InitialiseListeners();
 
             if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
             {
-                
                 mapAnimation.Init();
                 mapContainsTokens.gameObject.SetActive(false);
                 mapBackground.onDropped += HandleOnMapBackgroundDropped;
@@ -98,7 +98,6 @@ namespace Assets.CS.TabletopUI
             BeginGame(_situationBuilder);
 
             _heart.StartBeatingWithDefaultValue();
-
         }
 
         /// <summary>
@@ -121,7 +120,7 @@ namespace Assets.CS.TabletopUI
       
         }
 
-        private void InitialiseSubControllers(SpeedController speedController, HotkeyWatcher hotkeyWatcher, CardAnimationController cardAnimationController,MapController mapController)
+        private void InitialiseSubControllers(SpeedController speedController, HotkeyWatcher hotkeyWatcher, CardAnimationController cardAnimationController, MapController mapController)
         {
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
@@ -266,19 +265,19 @@ namespace Assets.CS.TabletopUI
         }
 
 
-
-        public void EndGame(Ending ending)
+        public void EndGame(Ending ending, SituationController endingSituation)
         {
+            var ls = new LegacySelector(Registry.Retrieve<ICompendium>());
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+
             CrossSceneState.SetCurrentEnding(ending);
             CrossSceneState.SetDefunctCharacter(Registry.Retrieve<Character>());
-            var ls=new LegacySelector(Registry.Retrieve<ICompendium>());
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
             saveGameManager.SaveInactiveGame();
 
-            SceneManager.LoadScene(SceneNumber.EndScene);
-
+            // TODO: Get effect name from ending?
+            _endGameAnimController.TriggerEnd((SituationToken) endingSituation.situationToken, null);
         }
 
     	public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill)
@@ -350,9 +349,8 @@ namespace Assets.CS.TabletopUI
 
             foreach (var controller in situationControllers)
             {
-
                 if (controller.GetActionId()!=exceptTokenId)
-                controller.CloseSituation();
+                    controller.CloseSituation();
             }
         }
 

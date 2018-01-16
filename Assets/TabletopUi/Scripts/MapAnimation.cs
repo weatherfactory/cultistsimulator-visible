@@ -31,19 +31,7 @@ namespace Assets.CS.TabletopUI {
             return !isAnimating && gameObject.activeSelf != showMap;
         }
 
-
-
         public void SetCenterForEffect(Transform doorSlot) {
-            /*
-            var pos = Vector2.Lerp(doorSlot.anchorMin, doorSlot.anchorMax, 0.5f);
-
-            pos += new Vector2(doorSlot.anchoredPosition.x / background.rectTransform.rect.width,
-                               doorSlot.anchoredPosition.y / background.rectTransform.rect.height);
-
-            Vector3[] corners = new Vector3[4];
-            background.rectTransform.GetWorldCorners(corners);
-            */
-
             var screenPoint = RectTransformUtility.WorldToScreenPoint(background.canvas.worldCamera, doorSlot.position);
             Vector2 localPoint;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(background.rectTransform, screenPoint, background.canvas.worldCamera, out localPoint);

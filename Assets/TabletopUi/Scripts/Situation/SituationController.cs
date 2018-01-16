@@ -284,7 +284,7 @@ namespace Assets.TabletopUi {
 
             if (command.Recipe.EndingFlag != null) {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
-                tabletopManager.EndGame(ending);
+                tabletopManager.EndGame(ending, this);
             }
         }
         /// <summary>
