@@ -279,7 +279,7 @@ namespace Assets.CS.TabletopUI
             saveGameManager.SaveInactiveGame();
 
             // TODO: Get effect name from ending?
-            _endGameAnimController.TriggerEnd((SituationToken) endingSituation.situationToken, "DramaticLight");
+            _endGameAnimController.TriggerEnd((SituationToken) endingSituation.situationToken, "DramaticLightRed");
         }
 
     	public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill)
