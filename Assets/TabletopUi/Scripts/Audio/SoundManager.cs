@@ -54,8 +54,6 @@ public class SoundManager : AudioManager {
     // Delivery of Audio Clips & Sources
 
     private int GetFreeAudioSourceId(AudioClip clip) {
-        string name = clip.name;
-
         for (int i = 0; i < audioSourcePool.Count; i++) {
             if (audioSourcePool[i].isPlaying == false)
                 return i;
@@ -126,7 +124,12 @@ public class SoundManager : AudioManager {
         if (sound == null)
             return -1;
 
-        int id = GetFreeAudioSourceId(GetRandomClipFromSound(sound));
+        var clip = GetRandomClipFromSound(sound);
+
+        if (clip == null)
+            return -1;
+
+        int id = GetFreeAudioSourceId(clip);
         AudioSource source = GetAudioSource(id);
 
         if (source == null)

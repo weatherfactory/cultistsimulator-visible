@@ -108,8 +108,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             var effect = go.GetComponent<CardEffect>();
 
             //AK temporarily commented out to fix build
-           // if (effect != null)
-          //      effect.StartAnim(token);
+            if (effect != null)
+                effect.StartAnim(token);
 
             return go;
         }
