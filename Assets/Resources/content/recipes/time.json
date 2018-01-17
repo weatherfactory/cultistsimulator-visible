@@ -1,6 +1,12 @@
 {"recipes": [
+	{id: "drawseason",
+	actionId: "time",
+	deckeffect:"seasonevents",
+	warmup:0,
+	 linked:[{id:"needs",chance:100}]
+	},
 
-   { id: "needs",
+   {id: "needs",
         label: "Time Passes",
         actionId: "time",
         requirements: {},
@@ -8,10 +14,9 @@
             funds: -1
         },
         alternativerecipes:
-		[{id: "sickness", chance:7, additional: true},
-		{id: "pleasantday", chance:3, additional: true},
-		{id: "suspicion", chance:7, additional: true},
-		{id: "inspiremystique", chance:7, additional: true},
+		[{id: "sickness", chance:100, additional: true},
+		{id: "pleasantday", chance:100, additional: true},
+		{id: "suspicion", chance:100, additional: true},
 		 {id: "starvation", chance:100, additional: true}],
         startdescription: "Time, the sundial's shadow, passes. I must have Funds to live, or I will become ill.",
         description: ".",
@@ -27,15 +32,21 @@
 					}
 
 				},
-        linked:[{id:"needs",chance:100}]
+        linked:[{id:"discardseason",chance:100}]
     },
+	{id: "discardseason",
+	actionId: "time",
+	effects: {season:-1},
+	warmup:0,
+	 linked:[{id:"drawseason",chance:100}]
+	},
 	   {id: "sickness",
         label: "Sickness",
         actionId: "illhealth",
-        requirements: {},
+        requirements: {seasonsickness:1},
         effects: {
             health: -1,
-            affliction: 1
+            affliction: 1,
         },
 		alternativerecipes:
 		[{id: "deathofthebody",chance:100}],
@@ -56,7 +67,7 @@
         id: "pleasantday",
         label: "A Pleasant Day",
         actionId: "pleasantday",
-        requirements: {},
+        requirements: {seasonpleasantday:1},
         effects: {
 		contentment: 1,
         },
@@ -93,7 +104,7 @@
         id: "suspicion",
         label: "The Attention of the Authorities",
         actionId: "suspicion",
-        requirements: {},
+        requirements: {seasonsuspicion:1},
         effects: {notoriety: 1},
 		slots: {Suspicion: {required: {notoriety: 1}, greedy: true}},
 		alternativerecipes: [{id: "investigationlink",chance: 100}],

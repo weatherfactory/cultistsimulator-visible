@@ -1,5 +1,13 @@
 {"decks":
     [
+	{id: "seasonevents",
+	spec:["seasonsickness",
+	"seasonpleasantday",
+	"seasonsuspicion",
+	],
+	defaultcard: "contentment",
+resetonexhaustion:true	
+	},
 	{id: "cabaretevents",
 	spec:
 	["contentment",
