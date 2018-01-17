@@ -10,9 +10,6 @@
         label: "Time Passes",
         actionId: "time",
         requirements: {},
-        effects: {
-            funds: -1
-        },
         alternativerecipes:
 		[{id: "sickness", chance:100, additional: true},
 		{id: "pleasantday", chance:100, additional: true},
@@ -36,7 +33,7 @@
     },
 	{id: "discardseason",
 	actionId: "time",
-	effects: {season:-1},
+	effects: {season:-1,funds:-1},
 	warmup:0,
 	 linked:[{id:"drawseason",chance:100}]
 	},
