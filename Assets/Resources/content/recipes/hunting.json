@@ -1,0 +1,78 @@
+{"recipes": [
+
+	    {
+        id: "suspicion",
+        label: "The Attention of the Authorities",
+        actionId: "suspicion",
+        requirements: {seasonsuspicion:1},
+        effects: {notoriety: 1},
+		slots: {Suspicion: {required: {notoriety: 1}, greedy: true}},
+		alternativerecipes: [{id: "investigationlink",chance: 100}],
+        startdescription: "Rumour squats on rooftops and flutters in gutters. If I have a reputation of any kind, I might be in trouble.",
+        description: "They questioned me. I might be innocent, but a certain suspicion clings.",
+        warmup: 60,
+        craftable: false    },
+	{
+	id: "investigationlink",
+ requirements: {notoriety:1},
+	label: "The authorities are beginning an investigation!",
+	actionId: "suspicion",
+	linked:[{id:"investigation",chance:100}]
+	startdescription: "I'll need to find a bribe or a scapegoat.",
+	comments: "Link used so we can get the warmup on the next one"
+	},
+		    {
+        id: "investigation",
+        label: "An Investigation",
+        actionId: "suspicion",
+        requirements: {notoriety:1},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {funds: 1,follower:1}}},
+        startdescription: "The Suppression Bureau has begun an investigation in earnest. They are charged with suppressing the less usual type of criminal - the criminal whose crimes may exist only in dreams.",
+        description: "inv end - won't display, loops straight to trial",
+        warmup: 60,
+        craftable: false,
+		linked:[{id:"trial",chance:100}]
+    },
+			    {
+        id: "trial",
+        label: "A Trial!",
+        actionId: "suspicion",
+        requirements: {},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {funds: 1,follower:1}, description: "I'll have to grease the right palm... or find a scapegoat."}},
+        startdescription: "My trial has begun, in a closed court. There are crimes whose existence the state does not admit. This is my last chance to find a diversion.",
+        description: "ARREST!",
+        warmup: 60,
+        craftable: false,
+		ending: arrest
+		
+    },
+				    {
+        id: "bribe",
+        label: "A Bribe",
+        actionId: "suspicion",
+        requirements: {funds: 1},
+        effects: {funds: -1,notoriety: 1},
+        startdescription: "I am negotiating - ",
+        description: "Money well-spent. One might consider it a kind of levy on genius",
+        warmup: 60,
+        craftable: false
+    },
+					    {
+        id: "scapegoat",
+        label: "A Scapegoat",
+        actionId: "suspicion",
+        requirements: {follower: 1},
+        effects: {follower: -1,notoriety: 1},
+        startdescription: "A believer is ready to make a sacrifice for the cause.",
+        description: "I regret the loss. But better them than me.",
+        warmup: 60,
+        craftable: false
+    }
+]
+}
