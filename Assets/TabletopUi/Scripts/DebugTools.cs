@@ -68,6 +68,11 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
         var element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
 
+        if (element == null) { 
+            Debug.LogWarning("No Element with ID " + elementId + " found!");
+            return;
+        }
+
         //check if there's an existing stack of that type to increment
         if (!element.Unique) { 
             foreach (var stack in existingStacks)
