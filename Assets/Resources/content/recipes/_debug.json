@@ -22,6 +22,18 @@ craftable:false
         description: "...",
         warmup: 1,
         craftable: false
-	}
+	},
+	   {
+        id: "testdeathcountdown",
+        label: "No Health is left",
+        actionId: "healthend",
+        requirements: {health: -1},
+        effects: {},
+        startdescription: "My life is slipping away -",
+        description: "Where will they find me? I am not here.",
+        warmup: 10,
+        craftable: false,
+		ending: "deathofthebody"
+    },
 ]
 }
