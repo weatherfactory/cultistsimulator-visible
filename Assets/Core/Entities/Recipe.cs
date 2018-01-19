@@ -72,7 +72,7 @@ public class Recipe
 
     public bool IsPositiveEnding() {
         // just something consistently random
-        return Id.GetHashCode() % 2 == 0;
+        return Id.Length % 2 == 0;
     }
     /// <summary>
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
