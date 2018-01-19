@@ -24,6 +24,9 @@ namespace Assets.CS.TabletopUI {
         const string buttonDefault = "Start";
         const string buttonBusy = "Waiting...";
 
+        const string buttonClearResultsDefault = "Collect All";
+        const string buttonClearResultsNone = "Accept";
+
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
         public SituationWindowPositioner positioner;
@@ -44,6 +47,7 @@ namespace Assets.CS.TabletopUI {
         [Space]
         [SerializeField] SituationResults results;
 		[SerializeField] Button dumpResultsButton;
+        [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
         [Space]
         [SerializeField] SituationStorage storage;
@@ -158,7 +162,13 @@ namespace Assets.CS.TabletopUI {
             ongoing.gameObject.SetActive(false);
             results.gameObject.SetActive(true);
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
+
             hintText.text = "";
+
+            if (GetOutputStacks().Count() > 0)
+                dumpResultsButtonText.text = buttonClearResultsDefault;
+            else
+                dumpResultsButtonText.text = buttonClearResultsNone;
         }
 
         // SHOW VIZ
