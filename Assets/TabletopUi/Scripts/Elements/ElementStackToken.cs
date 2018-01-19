@@ -25,6 +25,7 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] Image artwork;
         [SerializeField] Image backArtwork;
+        [SerializeField] Image textBackground;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] ElementStackBadge stackBadge;
         [SerializeField] TextMeshProUGUI stackCountText;
@@ -33,6 +34,7 @@ namespace Assets.CS.TabletopUI
 
         [SerializeField] string defaultRetireFX = "CardBurn";
         [SerializeField] CardEffectRemove cardBurnFX;
+        [SerializeField] Sprite spriteUniqueTextBG;
 
         //The IElementStacksManager is the model-level association of the StacksToken. It's not a Unity-specific thing, and determines where the stack 'really' is for purposes of
         //content framework behaviour.
@@ -60,13 +62,7 @@ namespace Assets.CS.TabletopUI
 
         protected override void Awake() {
             base.Awake();
-            /*
-            decayCountText.enableCulling = true;
-            stackCountText.enableCulling = true;
-            text.enableCulling = true;
-            */
         }
-
         protected override void OnDisable() {
             base.OnDisable();
 
@@ -355,9 +351,9 @@ namespace Assets.CS.TabletopUI
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
 
             try
-            {
-                stackBadge.SetAsUnique(_element.Unique);                
+            {               
                 SetQuantity(quantity); // this also toggles badge visibility through second call
+                SetAsUnique(_element.Unique);
 
                 name = "Card_" + elementId;
                 if (_element == null)
@@ -371,7 +367,6 @@ namespace Assets.CS.TabletopUI
                 lifetimeRemaining = _element.Lifetime;
 
                 StackSource = source;
-
                 CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
                 //when first created, it should be in Limbo
             }
@@ -381,6 +376,20 @@ namespace Assets.CS.TabletopUI
                 Retire(false);
             }
         }
+
+        void SetAsUnique(bool unique) {
+            if (unique)
+                textBackground.overrideSprite = spriteUniqueTextBG;
+            else
+                textBackground.overrideSprite = null;
+        }
+
+        private void CullTextBackface() {
+            decayCountText.enableCulling = true;
+            stackCountText.enableCulling = true;
+            text.enableCulling = true;
+        }
+
 
         public void AssignToStackManager(IElementStacksManager manager)
         {
@@ -396,8 +405,7 @@ namespace Assets.CS.TabletopUI
         private void DisplayInfo()
 		{
 			text.text = _element.Label;
-			stackBadge.gameObject.SetActive(Quantity > 1 || _element.Unique); // show badge if unique or has quantity
-            stackCountText.gameObject.SetActive(!_element.Unique); // Unique elements never have text on their badge
+			stackBadge.gameObject.SetActive(Quantity > 1); 
 			stackCountText.text = Quantity.ToString();
         }
 

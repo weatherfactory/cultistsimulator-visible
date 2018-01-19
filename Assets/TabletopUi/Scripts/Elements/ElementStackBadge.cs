@@ -17,18 +17,15 @@ using System.Collections;
 namespace Assets.CS.TabletopUI {
     public class ElementStackBadge : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-        [SerializeField]
-        ElementStackToken token;
-        [SerializeField]
-        Image image;
-        [SerializeField]
-        Sprite stackBageHoverSprite;
-        [SerializeField]
-        Sprite stackBageUniqueSprite;
+        [SerializeField] ElementStackToken token;
+        [SerializeField] Image image;
+        [SerializeField] Sprite badgeHoverSprite;
+        //[SerializeField] Sprite stackBageUniqueSprite;
 
         bool isHovering;
-        bool isUnique;
+        //bool isUnique;
 
+        /*
         public void SetAsUnique(bool isUnique) {
             this.isUnique = isUnique;
             UnHover(); // can not hover when card is unique
@@ -38,6 +35,7 @@ namespace Assets.CS.TabletopUI {
             else
                 image.overrideSprite = null;
         }
+        */
 
         // to check if we're dragging the badge or the stack when starting the drag
         public bool IsHovering() {
@@ -45,19 +43,19 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
-            if (isUnique)
-                return;
+            //if (isUnique)
+            //    return;
 
             isHovering = true;
 
             // only highlight if we're not dragging anything
             if (!token.Defunct && DraggableToken.itemBeingDragged == null)
-                image.overrideSprite = stackBageHoverSprite;
+                image.overrideSprite = badgeHoverSprite;
         }
 
         public void OnPointerExit(PointerEventData eventData) {
-            if (isUnique)
-                return;
+            //if (isUnique)
+            //    return;
 
             image.overrideSprite = null;
 
