@@ -10,7 +10,7 @@ public static class UIStyle {
     public static Color hoverWhite = new Color32(0xFF, 0xFF, 0xFF, 0xFF);
 
     public static Color brightPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF);
-    public static Color endingWarning = Color.red;
+    public static Color lightRed = new Color32(0xFF, 0x59, 0x63, 0xFF);
     public static Color lightBlue = new Color32(0x94, 0xE2, 0xEF, 0xFF);
 
     public static Color slotPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF); // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT VARIANT
@@ -19,7 +19,7 @@ public static class UIStyle {
     public static Color GetColorForCountdownBar(Recipe forRecipe)
     {
         if (forRecipe != null && forRecipe.EndsGame())
-            return UIStyle.endingWarning;
+            return UIStyle.lightRed;
         else
             return UIStyle.lightBlue;
     }
