@@ -613,8 +613,13 @@ namespace Assets.CS.TabletopUI
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
-            if (tokenDroppedOn.SituationController.Situation.State == SituationState.Unstarted) { 
-                tokenDroppedOn.OpenSituation();
+            if (tokenDroppedOn.SituationController.CanTakeDroppedToken(this)) 
+            {
+                if (!tokenDroppedOn.SituationController.IsOpen)
+                    tokenDroppedOn.OpenSituation();
+                else
+                    tokenDroppedOn.OpenToken(); // this turns off the glow
+
                 tokenDroppedOn.SituationController.PushDraggedStackIntoStartingSlots(this);
                 return;
             }

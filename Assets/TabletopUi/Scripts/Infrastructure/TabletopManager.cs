@@ -434,8 +434,9 @@ namespace Assets.CS.TabletopUI
             for (int i = 0; i < situations.Count; i++) {
                 if (situations[i].IsOpen)
                     situations[i].ShowDestinationsForStack(stack);
-                else if (situations[i].Situation.State == SituationState.Unstarted)
-                    situations[i].situationToken.ShowGlow(stack != null); // null means no stack
+
+                // null means no stack, so highlight if we have a stack and it can be dropped here
+                situations[i].situationToken.ShowGlow(stack != null && situations[i].CanTakeDroppedToken(stack)); 
             }
 
             if (mapContainsTokens != null)

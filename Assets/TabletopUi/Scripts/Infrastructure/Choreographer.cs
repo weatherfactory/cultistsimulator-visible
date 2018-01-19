@@ -40,6 +40,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 stack.lastTablePos = stack.transform.position;
             }
 
+            stack.transform.localRotation = Quaternion.identity;
             stack.DisplayAtTableLevel();
             stack.FlipToFaceUp(true);
 

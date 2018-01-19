@@ -108,9 +108,27 @@ namespace Assets.TabletopUi {
             return situationToken.Id;
         }
 
+        public bool CanTakeDroppedToken(IElementStack stack) {
+            if (Situation.State != SituationState.Unstarted)
+                return false;
+
+            return HasEmptyStartingSlots();
+        }
+
+        public bool HasEmptyStartingSlots() {
+            var win = situationWindow as SituationWindow;
+            var startSlots = win.GetStartingSlots();
+
+            for (int i = 0; i < startSlots.Count; i++) {
+                if (startSlots[i].GetElementStackInSlot() != null)
+                    return false;
+            }
+
+            return true;
+        }
+
         public bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
             var win = situationWindow as SituationWindow;
-
             var startSlots = win.GetStartingSlots();
 
             for (int i = 0; i < startSlots.Count; i++) {
