@@ -78,14 +78,16 @@ namespace Assets.CS.TabletopUI
 
         void Start()
         {
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
-            
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);            
+
             //register everything used gamewide
             SetupServices(_situationBuilder,_tabletop);
             //we hand off board functions to individual controllers
             InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController, _mapController, _endGameAnimController);
-
             InitialiseListeners();
+
+            // Make sure dragging is reenabled
+            DraggableToken.draggingEnabled = true;
 
             if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
             {
