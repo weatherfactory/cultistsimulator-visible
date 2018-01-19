@@ -18,8 +18,8 @@ public class CanvasZoomTest : UIBehaviour {
 
     // ranges from 0 to 1, with 0 zoomed in all the way, 1 zoomed out all the way
     // Change these to adjust starting zoom
-    private float currentZoom = 0.5f; 
-    private float targetZoom = 0.5f;
+    private float currentZoom = 0.6f; 
+    private float targetZoom = 0.6f;
     private const float zoomTolerance = 0.00001f; // snap when this close to target
 
     public bool enablePlayerZoom = true;
@@ -47,6 +47,7 @@ public class CanvasZoomTest : UIBehaviour {
 
         enabled = true;
         canvas = GetComponent<Canvas>();
+        
         SetScale(currentZoom);
     }
 
