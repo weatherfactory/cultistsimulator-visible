@@ -172,6 +172,12 @@ namespace Assets.CS.TabletopUI {
                 //it matches. Now we check if there's a token already there, and replace it if so:
                 var currentOccupant = GetElementStackInSlot();
 
+                // if we drop in the same slot where we came from, do nothing.
+                if (currentOccupant == stack) {
+                    DraggableToken.SetReturn(true);
+                    return;
+                }
+
                 if (currentOccupant != null)
                     throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
                     //currentOccupant.ReturnToTabletop();

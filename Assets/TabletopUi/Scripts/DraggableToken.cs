@@ -247,6 +247,7 @@ namespace Assets.CS.TabletopUI
             }
             else {
                 RectTransform.position = startPosition;
+                RectTransform.localRotation = Quaternion.identity;
                 RectTransform.SetParent(startParent);
                 RectTransform.SetSiblingIndex(startSiblingIndex);
             }
