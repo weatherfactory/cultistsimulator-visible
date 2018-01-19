@@ -56,10 +56,12 @@ namespace Assets.CS.TabletopUI {
                 return null;
         }
 
-        public void UpdateTime(float duration, float timeRemaining,Recipe recipe) {
-            countdownBar.gameObject.GetComponent<Image>().color = UIStyle.GetColorForCountdownBar(recipe);
+        public void UpdateTime(float duration, float timeRemaining, Recipe recipe) {
+            Color barColor = UIStyle.GetColorForCountdownBar(recipe);
 
+            countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
+            countdownText.color = barColor;
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
