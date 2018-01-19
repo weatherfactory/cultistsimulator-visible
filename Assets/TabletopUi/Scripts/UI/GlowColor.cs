@@ -16,12 +16,22 @@ public static class UIStyle {
     public static Color slotPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF); // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT VARIANT
     public static Color slotDefault = new Color32(0x1C, 0x43, 0x62, 0xFF);
 
-    public static Color GetColorForCountdownBar(Recipe forRecipe)
+    public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining)
     {
-        if (forRecipe != null && forRecipe.EndsGame())
-            return UIStyle.lightRed;
-        else
+        if (forRecipe != null && forRecipe.EndsGame()) { 
+            const float timeToBlink = 5f;
+
+            if (timeRemaining > timeToBlink || timeRemaining <= 0f)
+                return UIStyle.lightRed;
+
+            // Sinus that accelerates because we square the timeRemaining. Should always start on 0 and end on 0, I hope.
+            float lerpFactor = 0.5f + Mathf.Sin(-1f + (timeToBlink - timeRemaining) * (timeToBlink - timeRemaining) * 2f) * 0.5f;
+
+            return Color.Lerp(UIStyle.lightRed, Color.white, lerpFactor);
+        }
+        else { 
             return UIStyle.lightBlue;
+        }
     }
 
     public static Color GetGlowColor(TokenGlowColor colorType) {

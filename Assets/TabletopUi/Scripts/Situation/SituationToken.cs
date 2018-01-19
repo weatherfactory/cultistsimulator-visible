@@ -141,11 +141,11 @@ namespace Assets.CS.TabletopUI
         public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
             SetTimerVisibility(true);
             
-            Color barColor = UIStyle.GetColorForCountdownBar(recipe);
+            Color barColor = UIStyle.GetColorForCountdownBar(recipe, timeRemaining);
 
-            //countdownBar.color = barColor;
+            countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
-            //countdownText.color = barColor;
+            countdownText.color = barColor;
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
