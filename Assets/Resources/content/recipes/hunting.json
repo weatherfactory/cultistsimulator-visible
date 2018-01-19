@@ -1,0 +1,165 @@
+{"recipes": [
+	    {
+        id: "suspicion",
+        label: "Watchful Eyes",
+        actionId: "suspicion",
+        requirements: {seasonsuspicion:1},
+        effects: {rumour: 1},
+		slots: {Suspicion: {required: {hunter: 1}, greedy: true}},
+		alternativerecipes: [{id: "trybegintrial",chance: 100}],
+        startdescription: "Rumour squats on rooftops and flutters in gutters. If I have a reputation of any kind, I might be in trouble.",
+        description: "I have attracted no attention.",
+        warmup: 60,
+        craftable: false,
+		linked: [{id:"trycreatehunter",chance:100}]
+		},
+		
+		{id:"trybegintrial",
+		label: "Evidence for the Suppression Bureau",
+		actionId:"suspicion",
+		requirements:{hunter:1},
+		startdescription: "My adversary considers the evidence against me. Is it enough to convince the Suppression Bureau to act?",
+		description: "The Suppression Bureau won't act, yet. But my adversary still pursues their investigations.",
+		slots: {Evidence: {required: {evidenceb: 1}, greedy: true}},
+		alternativerecipes: [{id: "trial",chance: 100}],
+		warmup:30,
+		linked: [{id:"tryassembleevidence",chance:100}]
+		},
+		
+		{id:"trycreatehunter",
+		label: "The Curious Few",
+		actionId: "suspicion",
+		requirements: {reputation:1},
+		startdescription: "The wrong kind of reputation might awaken the interest of the curious, the puritanical, or the vengeful.",
+		slots: {Clues: {required: {reputation: 1}, greedy: true}},
+		alternativerecipes:[{id:"createhunter",chance:100}],
+		description: "My name, just now, is clear. Any watchers remain in the shadows.",
+		effects:{rumour:1},
+		warmup:30
+		},
+		
+		{id:"tryassembleevidence",
+		actionId:"suspicion",
+		label:"Evidence Against You?",
+		comments: "Is there already hostile evidence available?",
+		startdescription: "What do my enemies already know?"
+		description:".",
+		slots: {Evidence: {required: {evidence: 1}, greedy: true}},
+		alternativerecipes:[{id:"trypromoteevidence",chance:100}],
+		warmup:30
+		}
+		
+					{id:"trypromoteevidence",
+		actionId:"suspicion",
+		label: "An Adversary is Digging Deeper",
+		startdescription: "Can my enemy unearth more clues about my activities?",
+		description: "My enemy is frustrated. My name is clear, for now.",
+		slots: {Clues: {required: {reputation: 1}, greedy: true}},
+		alternativerecipes:[{id:"promoteevidence",chance:100}],
+		warmup: 30
+		},
+
+		
+		{id:"trycreateevidence",
+		actionId:"suspicion",
+		label: "My Adversary Is On My Trail",
+		startdescription: "Can my enemy unearth clues about my activities?",
+		description: "My enemy is frustrated. My name is clear, for now.",
+		slots: {Clues: {required: {reputation: 1}, greedy: true}},
+		alternativerecipes:[{id:"createevidence",chance:100}],
+		warmup: 30
+		},
+		
+
+		
+		{id:"promoteevidence",
+		actionId:"suspicion",
+		requirements:{evidence:1,reputation:1},
+		label: "My Adversary Has Found Damning Evidence",
+		startdescription: "This hunter is putting the finishing touches to their investigation",
+		description:"If this ever reaches trial, I will be in serious danger. Even if this hunter is disposed of, another may find their notes.",
+		effects:{evidence:-1,evidenceb:1,reputation:-1},
+		warmup:30},
+		
+		{id:"createevidence",
+		actionId:"suspicion",
+		requirements:{reputation:1},
+		label: "My Adversary Has Found Evidence",
+		startdescription: "This hunter is making progress in their investigation.",
+		description:"",
+		effects:{},
+		warmup:30},
+		
+		{id:"createhunter",
+		actionId:"suspicion",
+		label: "An Adversary!",
+		requirements:{reputation:1},
+		startdescription: ".",
+		description:"This troublemaker may make trouble.",
+		deckeffect: "hunters",
+		warmup:0},
+
+	{
+	id: "trial",
+ requirements: {notoriety:1},
+	label: "The authorities are beginning an investigation!",
+	actionId: "suspicion",
+	linked:[{id:"investigation",chance:100}]
+	startdescription: "I'll need to find a bribe or a scapegoat.",
+	comments: "Link used so we can get the warmup on the next one"
+	},
+		    {
+        id: "investigation",
+        label: "An Investigation",
+        actionId: "suspicion",
+        requirements: {notoriety:1},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {funds: 1,follower:1}}},
+        startdescription: "The Suppression Bureau has begun an investigation in earnest. They are charged with suppressing the less usual type of criminal - the criminal whose crimes may exist only in dreams.",
+        description: "inv end - won't display, loops straight to trial",
+        warmup: 60,
+        craftable: false,
+		linked:[{id:"trial",chance:100}]
+    },
+			    {
+        id: "trial",
+        label: "A Trial!",
+        actionId: "suspicion",
+        requirements: {},
+        effects: {},
+		alternativerecipes: [{id: "bribe",chance: 100},
+		{id: "scapegoat",chance: 100}],
+		slots: {Diversion: {required: {funds: 1,follower:1}, description: "I'll have to grease the right palm... or find a scapegoat."}},
+        startdescription: "My trial has begun, in a closed court. There are crimes whose existence the state does not admit. This is my last chance to find a diversion.",
+        description: "ARREST!",
+        warmup: 60,
+        craftable: false,
+		ending: arrest
+		
+    },
+				    {
+        id: "bribe",
+        label: "A Bribe",
+        actionId: "suspicion",
+        requirements: {funds: 1},
+        effects: {funds: -1,notoriety: 1},
+        startdescription: "I am negotiating - ",
+        description: "Money well-spent. One might consider it a kind of levy on genius",
+        warmup: 60,
+        craftable: false
+    },
+					    {
+        id: "scapegoat",
+        label: "A Scapegoat",
+        actionId: "suspicion",
+        requirements: {follower: 1},
+        effects: {follower: -1,notoriety: 1},
+        startdescription: "A believer is ready to make a sacrifice for the cause.",
+        description: "I regret the loss. But better them than me.",
+        warmup: 60,
+        craftable: false
+    }
+]
+}

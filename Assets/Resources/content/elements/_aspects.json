@@ -19,6 +19,12 @@
 			description: "Student, helpmeet, defender, champion, dupe, sacrifice... companion.",
             isAspect: true
         },
+		        {
+            id: "hunter",
+            label: "Hunter",
+			description: "The laws of civilisation are younger than the Laws of the Hours, but they, too, sometimes require a sacrifice. This one is an agent of the law.",
+            isAspect: true
+        },
         {
             id: "grail",
             label: "Grail",
@@ -292,6 +298,13 @@
 		description: "What a lucky sort I am.",
 		isAspect: true,
 		comments: "decorative aspect for BYT background"
+		},
+		{id:"season",
+		label:"Season",
+		description: "Something relevant will occur, soon",
+		isAspect: true,
+		comments:"identifies card draws for Time seasonal events" 
 		}
+		
 ]
 }

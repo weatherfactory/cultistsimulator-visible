@@ -1,0 +1,30 @@
+{"elements":
+    [
+
+	 {
+            id: "mystique",
+            label: "Mystique",
+            aspects: {reputation: 1},
+            description: "They remember who I am. [Mystique can be used to found a cult, and to recruit followers, but it doesn't last long.]",
+		lifetime: 300
+        },
+							 {
+            id: "notoriety",
+            label: "Notoriety",
+            aspects:
+            {reputation: 1},
+            description: "They remember what I've done. [Notoriety can be used to found a cult, and to recruit followers. It will fade over time, but more slowly than Mystique.]",
+	lifetime: 600
+        },
+									 {
+            id: "evidence",
+            label: "Evidence",
+            description: "A hunter has found evidence - real or imagined - of my sins. [Hunters with Evidence become more dangerous.]"
+        },
+											 {
+            id: "evidenceb",
+            label: "Damning Evidence",
+            description: "'Earth, gape!  O, no, it will not harbour me!' [With Damning Evidence, the Suppression Bureau will be able to convict you. Evidence is permanent unless destroyed.]"
+        },
+]
+};
