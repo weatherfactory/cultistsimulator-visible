@@ -260,20 +260,39 @@ namespace Assets.CS.TabletopUI
             SetQuantity(_quantity + change);
         }
 
-        public override void ReturnToTabletop(INotification reason=null) {
+        public override void ReturnToTabletop(INotification reason = null) {
             if (originStack != null && originStack.IsOnTabletop()) {
                 originStack.MergeIntoStack(this);
                 return;
             }
+            // In case we're not unique and we've never been on the table, auto-merge us!
+            else if (!_element.Unique && lastTablePos == null) {
+                var tabletop = Registry.Retrieve<TabletopManager>();
+                var stackManager = tabletop._tabletop.GetElementStacksManager();
+                var existingStacks = stackManager.GetStacks();
+
+                //check if there's an existing stack of that type to increment
+                foreach (var stack in existingStacks) {
+                    if (stack.Id == Id) {
+                        var elementStack = stack as ElementStackToken;
+                        elementStack.MergeIntoStack(this);
+                        return;
+                    }
+                }
+            }
 
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+
             if (reason != null)
                 notifier.TokenReturnedToTabletop(this, reason);
-
+            /*
             if (lastTablePos != null)
                 transform.position = (Vector3)lastTablePos;
             else
                 lastTablePos = transform.position;
+
+            DisplayAtTableLevel();
+            */
         }
 
         public override bool Retire()

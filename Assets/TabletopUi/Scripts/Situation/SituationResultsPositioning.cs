@@ -82,8 +82,10 @@ namespace Assets.CS.TabletopUI {
                     token.FlipToFaceDown(true);
 
                 // turn over last card if we're visible
+                /*
                 if (i == amount && token.gameObject.activeInHierarchy) 
                     token.FlipToFaceUp();
+                */
 
                 i++;
             }

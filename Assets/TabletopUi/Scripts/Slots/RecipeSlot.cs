@@ -149,8 +149,14 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnDrop(PointerEventData eventData) {
+            if (DraggableToken.itemBeingDragged == null)
+                return;
+
+            Debug.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged);
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
-            if (stack == null) //it's not an element stack; just put it down
+
+            //it's not an element stack; just put it down
+            if (stack == null) 
                 DraggableToken.itemBeingDragged.ReturnToTabletop();
 
             //does the token match the slot? Check that first

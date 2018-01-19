@@ -43,6 +43,7 @@ namespace Assets.CS.TabletopUI {
 
         [Space]
         [SerializeField] SituationResults results;
+		[SerializeField] Button dumpResultsButton;
 
         [Space]
         [SerializeField] SituationStorage storage;
@@ -71,12 +72,14 @@ namespace Assets.CS.TabletopUI {
         // INIT & LIFECYCLE
 
         void OnEnable() {
-			startButton.onClick.AddListener(HandleButtonAction);
-		}
+			startButton.onClick.AddListener(HandleStartButton);
+            dumpResultsButton.onClick.AddListener(HandleResultsButton);
+        }
 
 		void OnDisable() {
-			startButton.onClick.RemoveListener(HandleButtonAction);
-		}
+			startButton.onClick.RemoveListener(HandleStartButton);
+            dumpResultsButton.onClick.RemoveListener(HandleResultsButton);
+        }
 
 		public void Initialise(IVerb verb, SituationController sc) {
 			situationController = sc;
@@ -260,12 +263,17 @@ namespace Assets.CS.TabletopUI {
 
         // ACTIONS
 
-        void HandleButtonAction() {
+        void HandleStartButton() {
             // TODO: Could turn into clear all button on Completion?
             // TODO: Alternative one-click confirm on empty post-results window to reset?
             situationController.AttemptActivateRecipe();
         }
         
+        void HandleResultsButton() {
+            DumpToDesktop(GetOutputStacks());
+            situationController.ResetToStartingState();
+        }
+
         /*
         // currently not in use
         public void DumpAllCardsToDesktop() {

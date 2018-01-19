@@ -32,7 +32,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
-            stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
+            if (stack.lastTablePos != null) { 
+                stack.transform.position = (Vector3) stack.lastTablePos;
+            }
+            else {
+                stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
+                stack.lastTablePos = stack.transform.position;
+            }
+
+            stack.DisplayAtTableLevel();
+            stack.FlipToFaceUp(true);
+
             _tabletop.GetElementStacksManager().AcceptStack(stack);
         }
 
