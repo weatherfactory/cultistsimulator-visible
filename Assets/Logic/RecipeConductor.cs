@@ -161,7 +161,8 @@ namespace Assets.Core
                             rp.Title = candidateRecipe.Label;
                             rp.DescriptiveText = candidateRecipe.StartDescription;
                             rp.BurnImage = candidateRecipe.BurnImage;
-                            
+                            //we are not in the additional branch, so just return this predictioin.
+                            return rp;
                         }
                     }
                 }
