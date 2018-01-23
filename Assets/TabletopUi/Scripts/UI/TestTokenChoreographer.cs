@@ -26,10 +26,10 @@ public class TestTokenChoreographer : MonoBehaviour {
 
     Vector2 tablePadding = new Vector2(2f, 2f);
 
-    float checkPointPerArcLength = 3f;
-    float radiusBase = 3f;
-    float radiusIncrement = 2f;
-    float radiusMaxSize = 20f;
+    float checkPointPerArcLength = 70f;
+    float radiusBase = 50f;
+    float radiusIncrement = 35f;
+    float radiusMaxSize = 250f;
 
     [Header("Display")]
     public bool showOverlapBoundaries;
@@ -112,6 +112,13 @@ public class TestTokenChoreographer : MonoBehaviour {
             radius += radiusIncrement;
         }
 
+        Debug.LogWarning("No position found! Rechecking starting point with more tolerance.");
+
+        if (IsLegalPosition(GetRect(targetToken.pos, targetToken.size / 3f))) {
+            SetFinalPos(targetToken.pos);
+            return;
+        }
+
         Debug.LogWarning("No position found! Rechecking all points with more tolerance.");
 
         foreach (var point in checkedPoints) {
@@ -169,7 +176,7 @@ public class TestTokenChoreographer : MonoBehaviour {
 
     Vector3[] GetTestPoints(Vector3 pos, float radius) {
         float circumference = 2f * Mathf.PI * radius;
-        int numPoints = Mathf.FloorToInt(circumference / 5f);
+        int numPoints = Mathf.FloorToInt(circumference / checkPointPerArcLength);
 
         var points = new Vector3[numPoints];
         float angleSteps = Mathf.Deg2Rad * 360f / points.Length;
@@ -238,7 +245,7 @@ public class TestTokenChoreographer : MonoBehaviour {
 
     void DrawCheckPoint(Vector3 pos, Color color) {
         Gizmos.color = color;
-        Gizmos.DrawSphere(pos, 0.2f);
+        Gizmos.DrawSphere(pos, 2f);
     }
 
 }
