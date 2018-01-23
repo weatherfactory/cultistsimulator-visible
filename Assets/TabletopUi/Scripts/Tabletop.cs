@@ -16,6 +16,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
 public class Tabletop : MonoBehaviour, IContainsTokensView {
+
     private ElementStacksManager _stacksManager;
 
 
@@ -29,7 +30,10 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
     {
         //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
 
-        incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
+        var freePos = Registry.Retrieve<Choreographer>().GetFreeTokenPositionWithDebug(incumbent, incumbent.GetRectTransform().anchoredPosition, 
+            new Rect[1] { incumbent.GetRectTransform().rect }); // this is to ignore the current pos. Let's see what that does.
+
+        incumbent.GetRectTransform().anchoredPosition = freePos;
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper);
     }
@@ -38,7 +42,10 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
     {
         //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
 
-        incumbent.transform.localPosition += transform.right * incumbent.RectTransform.rect.width * 1.3f;
+        var freePos = Registry.Retrieve<Choreographer>().GetFreeTokenPositionWithDebug(incumbent, incumbent.GetRectTransform().anchoredPosition,
+            new Rect[1] { incumbent.GetRectTransform().rect }); // this is to ignore the current pos. Let's see what that does.
+
+        incumbent.GetRectTransform().anchoredPosition = freePos;
         incumbentMoved = true;
         _stacksManager.AcceptStack(potentialUsurper);
     }
@@ -77,6 +84,12 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
 
     public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
+    }
+
+    // Returns a rect for use by the Choreographer
+    public Rect GetRect() {
+        var rectTrans = transform as RectTransform;
+        return rectTrans.rect;
     }
 
     public void OnDestroy()

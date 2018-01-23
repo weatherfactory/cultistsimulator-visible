@@ -16,48 +16,169 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         private Tabletop _tabletop;
         private SituationBuilder _situationBuilder;
+        private Rect tableRect;
 
         public Choreographer(Tabletop tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
         {
             _tabletop = tabletop;
             _situationBuilder = situationBuilder;
+
+            tableRect = tabletop.GetRect();
+            Debug.Log("Tabletop Rect is " + tableRect);
         }
 
         // -- POSITIONING ----------------------------
 
-        public void ArrangeTokenOnTable(SituationToken token)
-        {
-            token.transform.localPosition = GetFreeTokenPosition(token, new Vector2(0, -250f));
+        const float checkPointPerArcLength = 70f;
+        const float radiusBase = 50f;
+        const float radiusIncrement = 35f;
+        const float radiusMaxSize = 250f;
+
+        Rect targetRect;
+        bool tokenOverlaps;
+        Vector2[] currentPoints;
+        Rect finalRect;
+        List<Rect> checkedRects;
+
+        public void ArrangeTokenOnTable(SituationToken token) {
+            token.GetRectTransform().anchoredPosition = GetFreeTokenPositionWithDebug(token, Vector2.zero);
+
             _tabletop.DisplaySituationTokenOnTable(token);
         }
 
-        //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack) {
+            _tabletop.GetElementStacksManager().AcceptStack(stack); // this does parenting. Needs to happen before we position
+
             if (stack.lastTablePos != null) { 
-                stack.transform.position = (Vector3) stack.lastTablePos;
+                stack.GetRectTransform().anchoredPosition = GetFreeTokenPositionWithDebug(stack, stack.lastTablePos.Value);
             }
             else {
-                stack.transform.localPosition = GetFreeTokenPosition(stack, new Vector2(-100f, 0f));
-                stack.lastTablePos = stack.transform.position;
+                stack.GetRectTransform().anchoredPosition = GetFreeTokenPositionWithDebug(stack, Vector2.zero);
+                stack.lastTablePos = stack.GetRectTransform().anchoredPosition;
             }
 
             stack.transform.localRotation = Quaternion.identity;
             stack.DisplayAtTableLevel();
-            stack.FlipToFaceUp(true);
-
-            _tabletop.GetElementStacksManager().AcceptStack(stack);
+            stack.FlipToFaceUp(true);            
         }
 
-        private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset) {
-            Vector2 marginPixels = new Vector2(50f, 50f);
-            Vector2 candidatePos = new Vector2(0f, 250f);
+        public Vector2 GetFreeTokenPositionWithDebug(DraggableToken token, Vector2 centerPos, Rect[] avoidPositions = null) {
+            currentPoints = null;
+            tokenOverlaps = false;
+            checkedRects = new List<Rect>();
 
-            float arbitraryYCutoffPoint = -1000;
+            var finalPos = GetFreeTokenPosition(token, centerPos, avoidPositions);
 
-            while (TokenOverlapsPosition(token, marginPixels, candidatePos) && candidatePos.y > arbitraryYCutoffPoint)
-                candidatePos += candidateOffset;
+            if (!tokenOverlaps)
+                return finalPos;
 
-            return candidatePos;
+            finalRect = GetCenterPosRect(finalPos, token.GetRectTransform().rect.size);
+            
+            var debugInfo = new GameObject("ChoreoDebugInfo").AddComponent<ChoreographerDebugView>();
+            debugInfo.Init(targetRect, tokenOverlaps, currentPoints, finalRect);
+            debugInfo.tabletop = _tabletop.transform;
+            debugInfo.checkedRects = new List<Rect>();
+
+            foreach (var item in avoidPositions)
+                checkedRects.Add(item);
+
+            foreach (var item in _tabletop.GetTokenTransformWrapper().GetTokens())
+                if (item != null && item.GetRectTransform() != null)
+                    debugInfo.checkedRects.Add(GetCenterPosRect(item.GetRectTransform().anchoredPosition, item.GetRectTransform().rect.size));
+
+            return finalPos;
+        }
+
+
+        public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, Rect[] avoidPositions = null) {
+            centerPos = GetPosClampedToTable(centerPos);
+            targetRect = GetCenterPosRect(centerPos, token.GetRectTransform().rect.size);
+
+            if (IsLegalPosition(targetRect, avoidPositions)) 
+                return centerPos;
+
+            Debug.Log("Position is occupied! Checking nearby.");
+
+            tokenOverlaps = true;
+            float radius = radiusBase;
+            
+            while (radius < radiusMaxSize) {
+                currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
+
+                foreach (var point in currentPoints) {
+                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), avoidPositions)) 
+                        return point;
+                }
+
+                radius += radiusIncrement;
+            }
+
+            Debug.Log("No Free Token position found! Rechecking all points with increased tolerance.");
+
+            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size / 3f), avoidPositions))
+                return centerPos;
+
+            while (radius < radiusMaxSize) {
+                currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
+
+                foreach (var point in currentPoints) {
+                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size / 3f), avoidPositions))
+                        return point;
+                }
+
+                radius += radiusIncrement;
+            }
+
+            Debug.LogWarning("No position found! Dumping in middle.");
+
+            return Vector2.zero;
+        }
+
+        // Tokens have their pos in their center, rects in the bottom right
+        Rect GetCenterPosRect(Vector2 centerPos, Vector2 size) {
+            return new Rect(centerPos - size / 2f, size);
+        }
+                
+        Vector2 GetPosClampedToTable(Vector2 pos) {
+            const float padding = .2f;
+
+            pos.x = Mathf.Clamp(pos.x, tableRect.x + padding, tableRect.x + tableRect.width - padding);
+            pos.y = Mathf.Clamp(pos.y, tableRect.y + padding, tableRect.y + tableRect.height - padding);
+            return pos;
+        }
+
+        bool IsLegalPosition(Rect rect, Rect[] avoidPositions = null) {
+            if (tableRect.Contains(rect.position + rect.size / 2f) == false)
+                return false;
+
+            if (avoidPositions != null)
+                foreach (var item in avoidPositions) 
+                    if (item.Overlaps(rect)) 
+                        return false;
+
+            foreach (var item in _tabletop.GetTokenTransformWrapper().GetTokens()) 
+                if (GetCenterPosRect(item.GetRectTransform().anchoredPosition, item.GetRectTransform().rect.size).Overlaps(rect))
+                    return false;
+
+            return true;
+        }
+
+        Vector2[] GetTestPoints(Vector3 pos, float radius) {
+            float circumference = 2f * Mathf.PI * radius;
+            int numPoints = Mathf.FloorToInt(circumference / checkPointPerArcLength);
+
+            var points = new Vector2[numPoints];
+            float angleSteps = Mathf.Deg2Rad * 360f / points.Length;
+
+            for (int i = 0; i < points.Length; i++)
+                points[i] = GetPointOnCircle(pos, radius, -i * angleSteps);
+
+            return points;
+        }
+
+        Vector2 GetPointOnCircle(Vector3 origin, float radius, float angle) {
+            return new Vector2(origin.x + radius * Mathf.Cos(angle),
+                               origin.y + radius * Mathf.Sin(angle));
         }
 
         private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos) {
@@ -72,23 +193,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
 
             return false;
-        }
-
-        private bool IsPositionOnTable(Vector2 rectPos) {
-            var rectTrans = _tabletop.transform as RectTransform;
-
-            //Vector3[] corners = new Vector3[4];
-            //rectTrans.GetWorldCorners(corners);
-
-            Vector2 tableMargin = new Vector2(50f, 50f);
-
-            var rect = rectTrans.rect;
-            rect.x      += tableMargin.x;
-            rect.width  -= tableMargin.x;
-            rect.y      += tableMargin.y;
-            rect.height -= tableMargin.y;
-
-            return rect.Contains(rectPos);
         }
 
         // -- SITUATION MANAGEMENT ----------------------------

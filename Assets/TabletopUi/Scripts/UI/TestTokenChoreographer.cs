@@ -11,18 +11,18 @@ public class TestTokenChoreographer : MonoBehaviour {
     public Vector3 verbSize = new Vector3(6f, 6f, 0f);
     public Vector3 cardSize = new Vector3(4f, 5f, 0f);
 
-    Token[] tokens;
+    Rect[] tokens;
 
     int spawnStage = 0;
 
     Vector3 targetSpawnPos;
-    Token targetToken;
+    Rect targetToken;
     bool tokenOverlaps;
 
     List<Vector3> checkedPoints;
     Vector3[] currentPoints;
 
-    Token finalToken;
+    Rect finalToken;
 
     Vector2 tablePadding = new Vector2(2f, 2f);
 
@@ -34,11 +34,6 @@ public class TestTokenChoreographer : MonoBehaviour {
     [Header("Display")]
     public bool showOverlapBoundaries;
     
-    public struct Token {
-        public Vector3 pos;
-        public Vector2 size;
-    }
-
 	// Use this for initialization
 	void OnEnable () {
         Init();
@@ -53,11 +48,11 @@ public class TestTokenChoreographer : MonoBehaviour {
     }
 
     void BuildRandomItems(int num) {
-        tokens = new Token[num];
+        tokens = new Rect[num];
 
         for (int i = 0; i < num; i++) {
-            tokens[i] = new Token();
-            tokens[i].pos = new Vector3(
+            tokens[i] = new Rect();
+            tokens[i].position = new Vector3(
                 Mathf.Lerp(table.x + cardSize.x / 2f, table.x + table.width - cardSize.x / 2f, Random.value),
                 Mathf.Lerp(table.y + cardSize.y / 2f, table.y + table.height - cardSize.y / 2f, Random.value),
                 0f);
@@ -66,9 +61,9 @@ public class TestTokenChoreographer : MonoBehaviour {
     }
 
     public void ShowSpawnPreviewAtPos(Vector3 pos) {
-        targetSpawnPos = GetPosClampedToTable(pos);
-        targetToken = new Token();
-        targetToken.pos = targetSpawnPos;
+        targetSpawnPos = GetPosClampedToTable(pos - cardSize / 2f);
+        targetToken = new Rect();
+        targetToken.position = targetSpawnPos;
         targetToken.size = cardSize;
 
         tokenOverlaps = !IsLegalPosition(targetToken);
@@ -89,7 +84,7 @@ public class TestTokenChoreographer : MonoBehaviour {
         if (IsLegalPosition(targetToken)) {
             checkedPoints = null;
             currentPoints = null;
-            SetFinalPos(targetToken.pos);
+            SetFinalPos(targetToken.position);
             return;
         }
 
@@ -97,7 +92,7 @@ public class TestTokenChoreographer : MonoBehaviour {
         checkedPoints = new List<Vector3>();
 
         while (radius < radiusMaxSize) {
-            currentPoints = GetTestPoints(targetToken.pos, radius);
+            currentPoints = GetTestPoints(targetToken.position + targetToken.size / 2f, radius);
 
             foreach (var point in currentPoints) {
                 if (IsLegalPosition(GetRect(point, targetToken.size))) {
@@ -114,8 +109,8 @@ public class TestTokenChoreographer : MonoBehaviour {
 
         Debug.LogWarning("No position found! Rechecking starting point with more tolerance.");
 
-        if (IsLegalPosition(GetRect(targetToken.pos, targetToken.size / 3f))) {
-            SetFinalPos(targetToken.pos);
+        if (IsLegalPosition(GetRect(targetToken.position, targetToken.size / 3f))) {
+            SetFinalPos(targetToken.position);
             return;
         }
 
@@ -135,27 +130,19 @@ public class TestTokenChoreographer : MonoBehaviour {
 
     void SetFinalPos(Vector3 pos) {
         spawnStage = 3;
-        finalToken = new Token();
-        finalToken.pos = pos;
+        finalToken = new Rect();
+        finalToken.position = new Vector2(pos.x, pos.y) - targetToken.size / 2f;
         finalToken.size = targetToken.size;
     }
 
     // POSITIONING
 
-    bool IsLegalPosition(Token token) {
-        return IsLegalPosition(GetRectFromToken(targetToken));
-    }
-
     bool IsLegalPosition(Rect rect) {
         if (table.Contains(rect.position + rect.size / 2f) == false)
             return false;
 
-        Rect compareRect;
-
         foreach (var item in tokens) {
-            compareRect = GetRectFromToken(item);
-
-            if (compareRect.Overlaps(rect))
+            if (item.Overlaps(rect))
                 return false;
         }
 
@@ -164,10 +151,6 @@ public class TestTokenChoreographer : MonoBehaviour {
 
     Rect GetTableRectWithPadding() {
         return new Rect(table.x + tablePadding.x, table.y + tablePadding.y, table.width - tablePadding.x - tablePadding.x, table.height - tablePadding.y - tablePadding.y );
-    }
-
-    Rect GetRectFromToken(Token token) {
-        return GetRect(token.pos, token.size);
     }
 
     Rect GetRect(Vector3 pos, Vector3 size) {
@@ -220,8 +203,8 @@ public class TestTokenChoreographer : MonoBehaviour {
         }
     }
     
-    void DrawToken(Token token) {
-        DrawWireCube(token.pos, token.size);
+    void DrawToken(Rect token) {
+        DrawWireCube(token.position + token.size / 2f, token.size);
     }
 
     void DrawWireCube(Vector3 pos, Vector3 size) {

@@ -62,7 +62,7 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
     public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
     {
 
-        elementStackToken.lastTablePos = elementStackToken.transform.position;
+        elementStackToken.lastTablePos = elementStackToken.GetRectTransform().anchoredPosition;
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
         bool hasStacks = false;

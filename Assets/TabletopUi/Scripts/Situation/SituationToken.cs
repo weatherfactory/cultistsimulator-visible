@@ -102,8 +102,6 @@ namespace Assets.CS.TabletopUI
        		return  SituationController.ExecuteHeartbeat(interval);
         }
 
-        
-
         public void Initialise(IVerb verb,SituationController sc) {
             _verb = verb;
             SituationController = sc;
@@ -116,9 +114,7 @@ namespace Assets.CS.TabletopUI
             ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
-
         }
-        
 
         private void DisplayName(IVerb v) {
             text.text = v.Label;
@@ -250,6 +246,18 @@ namespace Assets.CS.TabletopUI
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
             bool moveAsideFor = false;
             tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+        }
+
+        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+            bool moveAsideFor = false;
+            var stackToken = stackDroppedOn as ElementStackToken;
+
+            stackToken.ContainsTokensView.TryMoveAsideFor(this, stackToken, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");

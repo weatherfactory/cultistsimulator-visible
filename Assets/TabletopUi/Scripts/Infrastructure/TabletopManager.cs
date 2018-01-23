@@ -223,34 +223,29 @@ namespace Assets.CS.TabletopUI
                 character.DeckInstances.Add(di);
                 di.Reset();
             }
-
         }
-
 
         public void ProvisionStartingElements(Legacy chosenLegacy,Choreographer choreographer)
         {
             AspectsDictionary startingElements = new AspectsDictionary();
-            
-                startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
+            startingElements.CombineAspects(chosenLegacy.Effects);  //note: we don't reset the chosen legacy. We assume it remains the same until someone dies again.
            
             foreach (var e in startingElements)
             {
                 ElementStackToken token = _tabletop.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
-               choreographer.ArrangeTokenOnTable(token);
+                choreographer.ArrangeTokenOnTable(token);
             }
         }
 
         public void BeginNewSituation(SituationCreationCommand scc)
         {
             Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
-
         }
 
         public void ClearGameState(Heart h, IGameEntityStorage s,Tabletop tc)
         {
             h.Clear();
             s.DeckInstances=new List<IDeckInstance>();
-       
             
             foreach(var sc in Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations())
                 sc.Retire();
@@ -258,7 +253,6 @@ namespace Assets.CS.TabletopUI
             foreach (var element in tc.GetElementStacksManager().GetStacks())
                 element.Retire(true); //looks daft but pretty on reset
         }
-
 
 
         public void RestartGame()

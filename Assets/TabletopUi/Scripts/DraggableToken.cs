@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI
         protected CanvasGroup canvasGroup;
         public bool IsSelected { protected set; get; }
 
-        public Vector3? lastTablePos = null; // if it was pulled from the table, save that position
+        public Vector2? lastTablePos = null; // if it was pulled from the table, save that position
 
         private float perlinRotationPoint = 0f;
         private float dragHeight = -5f;
@@ -140,7 +140,7 @@ namespace Assets.CS.TabletopUI
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 
-            lastTablePos = transform.position;
+            lastTablePos = GetRectTransform().anchoredPosition;
 
             RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
@@ -206,8 +206,6 @@ namespace Assets.CS.TabletopUI
             if (itemBeingDragged == this && eventData != null)
                 Invoke ("DelayedEndDrag", 0f);
         }
-
-
 
         protected virtual void DelayedEndDrag() {
             canvasGroup.blocksRaycasts = true;
@@ -300,6 +298,10 @@ namespace Assets.CS.TabletopUI
 
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, windowZOffset);
             RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
+        }
+
+        public RectTransform GetRectTransform() {
+            return transform as RectTransform;
         }
 
         // Hover & Glow
