@@ -29,7 +29,7 @@ public class TestTokenChoreographer : MonoBehaviour {
     float checkPointPerArcLength = 3f;
     float radiusBase = 3f;
     float radiusIncrement = 2f;
-    float radiusMaxSize = 50f;
+    float radiusMaxSize = 20f;
 
     [Header("Display")]
     public bool showOverlapBoundaries;
@@ -58,8 +58,8 @@ public class TestTokenChoreographer : MonoBehaviour {
         for (int i = 0; i < num; i++) {
             tokens[i] = new Token();
             tokens[i].pos = new Vector3(
-                Mathf.Lerp(table.x + cardSize.x / 2f, table.x + table.width - cardSize.x, Random.value),
-                Mathf.Lerp(table.y + cardSize.y / 2f, table.y + table.height - cardSize.y, Random.value),
+                Mathf.Lerp(table.x + cardSize.x / 2f, table.x + table.width - cardSize.x / 2f, Random.value),
+                Mathf.Lerp(table.y + cardSize.y / 2f, table.y + table.height - cardSize.y / 2f, Random.value),
                 0f);
             tokens[i].size = Random.value < 0.2f ? verbSize : cardSize;
         }
@@ -99,20 +99,31 @@ public class TestTokenChoreographer : MonoBehaviour {
         while (radius < radiusMaxSize) {
             currentPoints = GetTestPoints(targetToken.pos, radius);
 
-            for (int i = 0; i < currentPoints.Length; i++) {
-                if (IsLegalPosition(GetRect(currentPoints[i], targetToken.size))) {
+            foreach (var point in currentPoints) {
+                if (IsLegalPosition(GetRect(point, targetToken.size))) {
                     Debug.Log("Possible Pos! " + checkedPoints.Count);
-                    SetFinalPos(currentPoints[i]);
+                    SetFinalPos(point);
                     return;
                 }
 
-                checkedPoints.Add(currentPoints[i]);
+                checkedPoints.Add(point);
             }
 
             radius += radiusIncrement;
         }
 
-        Debug.Log("No position found!");
+        Debug.LogWarning("No position found! Rechecking all points with more tolerance.");
+
+        foreach (var point in checkedPoints) {
+            if (IsLegalPosition(GetRect(point, targetToken.size / 3f))) {
+                Debug.Log("Possible Pos! " + checkedPoints.Count);
+                SetFinalPos(point);
+                return;
+            }
+        }
+
+        Debug.LogWarning("No position found! Dumping in middle.");
+        SetFinalPos(new Vector3(table.x + table.width * 0.5f, table.y + table.height * 0.5f));
     }
 
     void SetFinalPos(Vector3 pos) {
