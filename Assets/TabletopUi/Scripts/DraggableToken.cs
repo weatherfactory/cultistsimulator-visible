@@ -53,6 +53,7 @@ namespace Assets.CS.TabletopUI
         private float dragHeight = -5f;
         // Draggables all drag on a specifc height and have a specific "default height"
 
+        public bool useDragOffset = true;
         public bool rotateOnDrag = true;
         protected INotifier notifier;
         public IContainsTokensView ContainsTokensView;
@@ -143,10 +144,15 @@ namespace Assets.CS.TabletopUI
 
             RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
-		
-            Vector3 pressPos;
-            RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
-            dragOffset = startPosition - pressPos;
+
+            if (useDragOffset) {
+                Vector3 pressPos;
+                RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.pressPosition, DraggableToken.dragCamera, out pressPos);
+                dragOffset = startPosition - pressPos;
+            }
+            else {
+                dragOffset = Vector3.zero;
+            }
 
             SoundManager.PlaySfx("CardPickup");
 
@@ -255,8 +261,18 @@ namespace Assets.CS.TabletopUI
 
         public abstract void OnDrop(PointerEventData eventData);
 
-        public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
+        private bool CanInteractWithTokenDroppedOn(DraggableToken token) {
+            var element = token as IElementStack;
 
+            if (element != null)
+                return CanInteractWithTokenDroppedOn(element);
+            else
+                return CanInteractWithTokenDroppedOn(token as SituationToken);
+        }
+        public abstract bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
+        public abstract bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn);
+
+        public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
         public virtual void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
             DraggableToken.SetReturn(true);
@@ -289,10 +305,18 @@ namespace Assets.CS.TabletopUI
         // Hover & Glow
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
+            if (DraggableToken.itemBeingDragged != null && DraggableToken.itemBeingDragged.CanInteractWithTokenDroppedOn(this))
+                DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
+
+            // TODO: actual check if need to show the glow - is there a possible action?
+
             ShowHoverGlow(true);
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
+            if (DraggableToken.itemBeingDragged != null)
+                DraggableToken.itemBeingDragged.ShowHoveringGlow(false);
+
             ShowHoverGlow(false);
         }
 
@@ -314,24 +338,38 @@ namespace Assets.CS.TabletopUI
                 glowImage.Hide(instant);
         }
 
-        // Separate method from ShowGlow so we can restore the last state when unhovering
-        protected virtual void ShowHoverGlow(bool show) {
+        // Used when a dragged object is hovering something
+        public void ShowHoveringGlow(bool show) {
+            ShowHoverGlow(show, true, UIStyle.brightPink);
+        }
 
-            if (show) { 
+        // Separate method from ShowGlow so we can restore the last state when unhovering
+        protected virtual void ShowHoverGlow(bool show, bool playSFX = false, Color? hoverColor = null) {
+            if (show) {
+                if (DraggableToken.itemBeingDragged == this) {
+                    // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
+                }
                 // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-                if (DraggableToken.itemBeingDragged != null && !lastGlowState)
+                else if (DraggableToken.itemBeingDragged != null && !lastGlowState) { 
                     show = false;
+                }
                 // If we can not interact, don't show the hover highlight
-                else if (!CanInteract())
+                else if (!CanInteract()) { 
                     show = false;
+                }
             }
 
             if (show) {
-                SoundManager.PlaySfx("TokenHover");
-                glowImage.SetColor(UIStyle.GetGlowColor(UIStyle.TokenGlowColor.Hover));
+                if (playSFX)
+                    SoundManager.PlaySfx("TokenHover");
+
+                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.Hover) : hoverColor.Value);
                 glowImage.Show(true);
             }
             else {
+                if (playSFX)
+                    SoundManager.PlaySfx("TokenHoverOff");
+
                 glowImage.SetColor(lastGlowColor);
 
                 if (lastGlowState)
@@ -340,6 +378,7 @@ namespace Assets.CS.TabletopUI
                     glowImage.Hide(true);
             }
         }
+
 
         protected virtual bool CanInteract() {
             return !Defunct && ContainsTokensView.AllowDrag && AllowDrag;

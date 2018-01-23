@@ -75,8 +75,9 @@ namespace Assets.CS.TabletopUI {
 
             currentColor = color;
 
-            if (graphic.gameObject.activeInHierarchy)
-                graphic.canvasRenderer.SetColor(color);
+            if (graphic.gameObject.activeInHierarchy) { 
+                graphic.CrossFadeColor(color, 0f, true, true);
+            }
         }
 
         #if UNITY_EDITOR

@@ -502,9 +502,13 @@ namespace Assets.CS.TabletopUI
             base.AbortDrag();
         }
 
+        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+            return stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge();
+        }
+
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
         {
-            if (stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge())
+            if (CanInteractWithTokenDroppedOn(stackDroppedOn))
             {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
                 DraggableToken.SetReturn(false,"was merged");
@@ -519,13 +523,12 @@ namespace Assets.CS.TabletopUI
             }
             else
             {
-                
-            var droppedOnToken = stackDroppedOn as DraggableToken;
-            bool moveAsideFor = false;
-            droppedOnToken.ContainsTokensView.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+                var droppedOnToken = stackDroppedOn as DraggableToken;
+                bool moveAsideFor = false;
+                droppedOnToken.ContainsTokensView.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
-            if (moveAsideFor)
-                DraggableToken.SetReturn(false,"was moved aside for");
+                if (moveAsideFor)
+                    DraggableToken.SetReturn(false,"was moved aside for");
             }
         }
 
@@ -611,9 +614,13 @@ namespace Assets.CS.TabletopUI
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
         }
 
+        public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+            return tokenDroppedOn.SituationController.CanTakeDroppedToken(this);
+        }
+
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
         {
-            if (tokenDroppedOn.SituationController.CanTakeDroppedToken(this)) 
+            if (CanInteractWithTokenDroppedOn(tokenDroppedOn)) 
             {
                 if (!tokenDroppedOn.SituationController.IsOpen)
                     tokenDroppedOn.OpenSituation();

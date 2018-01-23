@@ -100,15 +100,34 @@ namespace Assets.CS.TabletopUI {
             IsConsuming = slotSpecification.Consumes;
         }
 
+        bool CanInteractWithDraggedObject(DraggableToken token) {
+            if (lastGlowState == false) // we're not hoverable? Don't worry
+                return false ;
+
+            var stack = token as IElementStack;
+
+            if (stack == null)
+                return false; // we only accept stacks
+
+            //does the token match the slot? Check that first
+            SlotMatchForAspects match = GetSlotMatchForStack(stack);
+
+            return match.MatchType == SlotMatchForAspectsType.Okay;
+        }
+
         // IGlowableView implementation
 
-  
-
         public virtual void OnPointerEnter(PointerEventData eventData) {
-            ShowHoverGlow(true);
+            if (lastGlowState && CanInteractWithDraggedObject(DraggableToken.itemBeingDragged))
+                DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
+
+            ShowHoverGlow(true); // this only works if the glow was turned on, which was done previously
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
+            if (lastGlowState)
+                DraggableToken.itemBeingDragged.ShowHoveringGlow(false);
+
             ShowHoverGlow(false);
         }
 

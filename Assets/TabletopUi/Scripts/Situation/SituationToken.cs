@@ -217,7 +217,7 @@ namespace Assets.CS.TabletopUI
         
         public override void OnDrop(PointerEventData eventData)
         {
-            if (DraggableToken.itemBeingDragged!=null)
+            if (DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
         }
 
@@ -239,9 +239,15 @@ namespace Assets.CS.TabletopUI
             SituationController.CloseSituation();
         }
 
+        public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+            return false; 
+        }
+
+        public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+            return false;
+        }
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
-
             bool moveAsideFor = false;
             tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 

@@ -73,8 +73,13 @@ namespace Assets.CS.TabletopUI {
             SetNumPerRow();
 
             // Set height if our row count has changed
-            if (numRows != oldRowCount) { 
-                StartCoroutine(AdjustHeight(GetHeightForSlotCount(), sizeTransitionDuration));
+            if (numRows != oldRowCount) {
+                float targetHeight = GetHeightForSlotCount();
+
+                if (gameObject.activeSelf)
+                    StartCoroutine(AdjustHeight(targetHeight, sizeTransitionDuration));
+                else
+                    SetHeight(targetHeight);
             }
 
             // Set target positions for all remaining slots

@@ -451,7 +451,6 @@ namespace Assets.CS.TabletopUI
         }
 
         private void HandleDragStateChanged(bool isDragging) {
-
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
             
             // not dragging a stack? then do nothing. _tabletop was destroyed (end of game?)
@@ -468,7 +467,7 @@ namespace Assets.CS.TabletopUI
                 if (!isDragging || stack.AllowMerge()) {
                     token = stack as ElementStackToken;
 
-                    if (token != null) {
+                    if (token != null && token != draggedElement) {
                         token.SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
                         token.ShowGlow(isDragging, false);
                     }
