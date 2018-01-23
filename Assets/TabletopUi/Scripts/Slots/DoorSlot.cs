@@ -66,9 +66,9 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             if (show)
-                SetGlowColor(UIStyle.TokenGlowColor.Hover);
+                SetGlowColor(UIStyle.TokenGlowColor.OnHover);
             else 
-                SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
         }
 
         public void OnDrop(PointerEventData eventData) {

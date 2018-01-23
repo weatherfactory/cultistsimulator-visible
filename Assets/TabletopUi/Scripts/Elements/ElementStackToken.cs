@@ -643,8 +643,10 @@ namespace Assets.CS.TabletopUI
         public override void SetViewContainer(IContainsTokensView newContainsTokensView)
         {
             OldContainsTokensView = ContainsTokensView;
-            if(OldContainsTokensView!=null && OldContainsTokensView!=newContainsTokensView)
+
+            if(OldContainsTokensView!=null && OldContainsTokensView != newContainsTokensView)
                 OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
+
             ContainsTokensView = newContainsTokensView;
         }
 

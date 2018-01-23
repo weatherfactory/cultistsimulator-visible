@@ -155,11 +155,11 @@ namespace Assets.CS.TabletopUI {
                 return;
             
             if (show) { 
-                SetGlowColor(UIStyle.TokenGlowColor.Hover);
+                SetGlowColor(UIStyle.TokenGlowColor.OnHover);
                 SoundManager.PlaySfx("TokenHover");
             }
             else { 
-                SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
                 SoundManager.PlaySfx("TokenHoverOff");
             }
         }
@@ -248,6 +248,8 @@ namespace Assets.CS.TabletopUI {
             //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
             // - or else not have it occur more than once on the same slot? mark as defunct?
             
+            // NOTE: We also have an issue that this is not called when we've removed the card but merged it into another card
+            // Put a ritual in a verb, remove the ritual and stack it on a copy of itself: slots remain, since we don't hit this.
         }
 
   

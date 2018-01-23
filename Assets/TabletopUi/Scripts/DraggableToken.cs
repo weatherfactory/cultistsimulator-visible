@@ -366,7 +366,7 @@ namespace Assets.CS.TabletopUI
                 if (playSFX)
                     SoundManager.PlaySfx("TokenHover");
 
-                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.Hover) : hoverColor.Value);
+                glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
                 glowImage.Show(true);
             }
             else {

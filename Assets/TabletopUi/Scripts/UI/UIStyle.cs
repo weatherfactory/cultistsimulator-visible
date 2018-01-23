@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class UIStyle {
-    public enum TokenGlowColor { HighlightPink, Default, Hover }
+    public enum TokenGlowColor { Default, OnHover }
     
     public static Color aspectHover = new Color32(0xDD, 0xDD, 0xDD, 0xFF);
 
@@ -18,8 +18,7 @@ public static class UIStyle {
     public static Color slotPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF); // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT VARIANT
     public static Color slotDefault = new Color32(0x1C, 0x43, 0x62, 0xFF);
 
-    public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining)
-    {
+    public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining) {
         if (forRecipe != null && forRecipe.EndsGame()) { 
             const float timeToBlink = 5f;
 
@@ -45,25 +44,11 @@ public static class UIStyle {
 
     public static Color GetGlowColor(TokenGlowColor colorType) {
         switch (colorType) {
-            case TokenGlowColor.HighlightPink:
+            case TokenGlowColor.OnHover:
+                return hoverWhite;
+            case TokenGlowColor.Default:
+            default:
                 return brightPink;
-            case TokenGlowColor.Hover:
-                return hoverWhite;
-            case TokenGlowColor.Default:
-            default:
-                return lightBlue;
-        }
-    }
-
-    public static Color GetSlotGlowColor(TokenGlowColor colorType) {
-        switch (colorType) {
-            case TokenGlowColor.HighlightPink:
-                return slotPink;
-            case TokenGlowColor.Hover:
-                return hoverWhite;
-            case TokenGlowColor.Default:
-            default:
-                return slotDefault;
         }
     }
 

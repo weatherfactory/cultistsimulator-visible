@@ -437,7 +437,7 @@ namespace Assets.CS.TabletopUI
 
                 // null means no stack, so highlight if we have a stack and it can be dropped here
 
-                situations[i].situationToken.SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                situations[i].situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
                 situations[i].situationToken.ShowGlow(stack != null && situations[i].CanTakeDroppedToken(stack)); 
             }
 
@@ -470,7 +470,7 @@ namespace Assets.CS.TabletopUI
                     token = stack as ElementStackToken;
 
                     if (token != null && token != draggedElement) {
-                        token.SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                        token.SetGlowColor(UIStyle.TokenGlowColor.Default);
                         token.ShowGlow(isDragging, false);
                     }
                 }
