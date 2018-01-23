@@ -153,11 +153,15 @@ namespace Assets.CS.TabletopUI {
             // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
             if (DraggableToken.itemBeingDragged == null && !lastGlowState)
                 return;
-
-            if (show)
+            
+            if (show) { 
                 SetGlowColor(UIStyle.TokenGlowColor.Hover);
-            else 
+                SoundManager.PlaySfx("TokenHover");
+            }
+            else { 
                 SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
+                SoundManager.PlaySfx("TokenHoverOff");
+            }
         }
 
 

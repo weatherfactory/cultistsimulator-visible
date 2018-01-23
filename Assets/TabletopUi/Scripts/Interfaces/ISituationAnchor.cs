@@ -32,6 +32,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SetCompletionCount(int newCount);
         int GetCompletionCount();
 
+        void SetGlowColor(UIStyle.TokenGlowColor colorType);
         void ShowGlow(bool glowState, bool instant = false);
     }
 }

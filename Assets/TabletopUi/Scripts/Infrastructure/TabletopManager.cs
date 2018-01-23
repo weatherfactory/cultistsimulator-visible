@@ -436,6 +436,8 @@ namespace Assets.CS.TabletopUI
                     situations[i].ShowDestinationsForStack(stack);
 
                 // null means no stack, so highlight if we have a stack and it can be dropped here
+
+                situations[i].situationToken.SetGlowColor(UIStyle.TokenGlowColor.HighlightPink);
                 situations[i].situationToken.ShowGlow(stack != null && situations[i].CanTakeDroppedToken(stack)); 
             }
 

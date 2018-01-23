@@ -340,11 +340,14 @@ namespace Assets.CS.TabletopUI
 
         // Used when a dragged object is hovering something
         public void ShowHoveringGlow(bool show) {
-            ShowHoverGlow(show, true, UIStyle.brightPink);
+            // always use default color for the "draggable-item-can-be-dropped" hover glow
+            // never trigger SFX, since the token you're hovering over already does that, 
+            // since that allows us to use the default hover glow for click-hover with sound too
+            ShowHoverGlow(show, false, UIStyle.brightPink);
         }
 
         // Separate method from ShowGlow so we can restore the last state when unhovering
-        protected virtual void ShowHoverGlow(bool show, bool playSFX = false, Color? hoverColor = null) {
+        protected virtual void ShowHoverGlow(bool show, bool playSFX = true, Color? hoverColor = null) {
             if (show) {
                 if (DraggableToken.itemBeingDragged == this) {
                     // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
