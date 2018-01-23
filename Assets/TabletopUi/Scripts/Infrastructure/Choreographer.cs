@@ -17,11 +17,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private Tabletop _tabletop;
         private SituationBuilder _situationBuilder;
 
-        public Choreographer(Tabletop tabletop,SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
+        public Choreographer(Tabletop tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
         {
             _tabletop = tabletop;
             _situationBuilder = situationBuilder;
         }
+
+        // -- POSITIONING ----------------------------
 
         public void ArrangeTokenOnTable(SituationToken token)
         {
@@ -30,8 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //we place stacks horizontally rather than vertically
-        public void ArrangeTokenOnTable(ElementStackToken stack)
-        {
+        public void ArrangeTokenOnTable(ElementStackToken stack) {
             if (stack.lastTablePos != null) { 
                 stack.transform.position = (Vector3) stack.lastTablePos;
             }
@@ -47,6 +48,51 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _tabletop.GetElementStacksManager().AcceptStack(stack);
         }
 
+        private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset) {
+            Vector2 marginPixels = new Vector2(50f, 50f);
+            Vector2 candidatePos = new Vector2(0f, 250f);
+
+            float arbitraryYCutoffPoint = -1000;
+
+            while (TokenOverlapsPosition(token, marginPixels, candidatePos) && candidatePos.y > arbitraryYCutoffPoint)
+                candidatePos += candidateOffset;
+
+            return candidatePos;
+        }
+
+        private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos) {
+            foreach (var t in _tabletop.GetTokenTransformWrapper().GetTokens()) {
+                if (token != t
+                    && candidatePos.x - t.transform.localPosition.x < marginPixels.x
+                    && candidatePos.x - t.transform.localPosition.x > -marginPixels.x
+                    && candidatePos.y - t.transform.localPosition.y < marginPixels.y
+                    && candidatePos.y - t.transform.localPosition.y > -marginPixels.y) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsPositionOnTable(Vector2 rectPos) {
+            var rectTrans = _tabletop.transform as RectTransform;
+
+            //Vector3[] corners = new Vector3[4];
+            //rectTrans.GetWorldCorners(corners);
+
+            Vector2 tableMargin = new Vector2(50f, 50f);
+
+            var rect = rectTrans.rect;
+            rect.x      += tableMargin.x;
+            rect.width  -= tableMargin.x;
+            rect.y      += tableMargin.y;
+            rect.height -= tableMargin.y;
+
+            return rect.Contains(rectPos);
+        }
+
+        // -- SITUATION MANAGEMENT ----------------------------
+
         public void BeginNewSituation(SituationCreationCommand scc)
         {
             if (scc.Recipe == null)
@@ -54,10 +100,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //if new situation is beginning with an existing verb: do not action the creation.
 
             //oh: I could have an scc property which is a MUST CREATE override
-
            
             var existingSituation = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations()
                 .SingleOrDefault(sc => sc.situationToken.Id == scc.Recipe.ActionId);
+            
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null)
             {
@@ -106,36 +152,5 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _tabletop.DisplaySituationTokenOnTable(token);
         }
 
-
-        private Vector3 GetFreeTokenPosition(DraggableToken token, Vector2 candidateOffset)
-        {
-            Vector2 marginPixels = new Vector2(50f, 50f);
-            Vector2 candidatePos = new Vector2(0f, 250f);
-
-            float arbitraryYCutoffPoint = -1000;
-
-            while (TokenOverlapsPosition(token, marginPixels, candidatePos) && candidatePos.y > arbitraryYCutoffPoint)
-                candidatePos += candidateOffset;
-
-            return candidatePos;
-        }
-
-        private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos)
-        {
-            foreach (var t in _tabletop.GetTokenTransformWrapper().GetTokens())
-            {
-                if (token != t
-                    && candidatePos.x - t.transform.localPosition.x < marginPixels.x
-                    && candidatePos.x - t.transform.localPosition.x > -marginPixels.x
-                    && candidatePos.y - t.transform.localPosition.y < marginPixels.y
-                    && candidatePos.y - t.transform.localPosition.y > -marginPixels.y)
-                {
-                    return true;
-                }
-
-            }
-
-            return false;
-        }
     }
 }
