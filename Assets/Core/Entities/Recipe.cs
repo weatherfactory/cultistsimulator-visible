@@ -20,6 +20,9 @@ public class Recipe
     public AspectsDictionary Aspects { get; set; }
 
     public Boolean Craftable { get; set; }
+    /// <summary>
+    /// If HintOnly is true and Craftable is false, the recipe will display as a hint, but *only if no craftable recipes are available*
+    /// </summary>
     public Boolean HintOnly { get; set; }
 
     public string Label
