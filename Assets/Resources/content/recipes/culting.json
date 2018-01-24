@@ -27,6 +27,15 @@
         craftable: true,
 		burnimage: freemasons
     },
+	  	{
+        id: "recruitacquaintanceclue",
+        label: "Recruit an Acquaintance?",
+        actionId: "talk",
+        requirements: {society: 1,mortal: 1},
+        startdescription: "This one might be ready to achieve the next level, if I can supply something more.",
+        craftable: false,
+		hintonly: true
+    },
  	{
         id: "begincultfoundation",
         label: "Found a Society",
