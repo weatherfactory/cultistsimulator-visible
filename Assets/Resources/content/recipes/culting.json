@@ -28,6 +28,18 @@
 		burnimage: freemasons
     },
 	  	{
+        id: "promotetodiscipleedge",
+        label: "Promote a Believer",
+        actionId: "talk",
+        requirements: {society: 1,follower:1,edge:4},
+        effects: {},
+		aspects: {promotiontodisciple: 1},
+        startdescription: "FNORD promote?",
+        description: "FNORD promote.",
+        warmup: 30,
+        craftable: true
+    },
+	  	{
         id: "recruitacquaintanceclue",
         label: "Recruit an Acquaintance?",
         actionId: "talk",
