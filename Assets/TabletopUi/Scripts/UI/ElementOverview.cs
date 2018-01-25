@@ -11,10 +11,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ElementOverview : MonoBehaviour {
+public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
 
     [SerializeField] Image[] elementImages;
     [SerializeField] TextMeshProUGUI[] elementCounts;
+
+    public void Initialise(StackManagersCatalogue elementStacksCatalogue) {
+        //ensure we get updates about stack changes
+        elementStacksCatalogue.Subscribe(this);
+    }
+
+    public void NotifyStacksChanged() {
+        UpdateDisplay();
+    }
 
     // A total number of 4 supported by the bar currently. Not more, not fewer
     private string[] overviewElementIds = new string[] {

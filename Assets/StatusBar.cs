@@ -13,6 +13,7 @@ public class StatusBar : MonoBehaviour
     [SerializeField] private TMP_InputField CharacterName;
     [SerializeField] private TextMeshProUGUI CharacterProfession;
 
+
     public void ChangeCharacterName(string newName)
     {
         Character currentCharacter = Registry.Retrieve<Character>();

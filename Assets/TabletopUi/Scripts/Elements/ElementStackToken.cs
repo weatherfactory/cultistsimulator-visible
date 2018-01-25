@@ -357,8 +357,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override void OnDrop(PointerEventData eventData) {
-            //  'ondrop' = 'a thing was dropped on me'
-            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
+            if (DraggableToken.itemBeingDragged != null)
+                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
         public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {

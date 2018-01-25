@@ -6,50 +6,41 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 
-namespace Assets.Core.Entities
-{
-    public class StackManagersCatalogue
-    {
+namespace Assets.Core.Entities {
+    public interface IStacksChangeSubscriber {
+        void NotifyStacksChanged();
+    }
+
+    public class StackManagersCatalogue {
+
         private readonly List<IElementStacksManager> _currentElementStackManagers;
         private readonly List<IStacksChangeSubscriber> _subscribers;
 
-        public StackManagersCatalogue()
-        {
+        public StackManagersCatalogue() {
             _currentElementStackManagers = new List<IElementStacksManager>();
-            _subscribers=new List<IStacksChangeSubscriber>();
+            _subscribers = new List<IStacksChangeSubscriber>();
         }
 
-        public List<IElementStacksManager> GetRegisteredStackManagers()
-        {
+        public List<IElementStacksManager> GetRegisteredStackManagers() {
             return _currentElementStackManagers.ToList();
         }
 
-        public void RegisterStackManager(IElementStacksManager stackManager)
-        {
+        public void RegisterStackManager(IElementStacksManager stackManager) {
             _currentElementStackManagers.Add(stackManager);
         }
 
-        public void DeregisterStackManager(IElementStacksManager stackManager)
-        {
+        public void DeregisterStackManager(IElementStacksManager stackManager) {
             _currentElementStackManagers.Remove(stackManager);
         }
 
-        public void Subscribe(IStacksChangeSubscriber subscriber)
-        {
+        public void Subscribe(IStacksChangeSubscriber subscriber) {
             _subscribers.Add(subscriber);
         }
 
         //called whenever a stack quantity is modified, or a stack moves to another StacksManager
-        public void NotifyStacksChanged()
-        {
-    foreach(var s in _subscribers)
-        s.NotifyStacksChanged();
+        public void NotifyStacksChanged() {
+            foreach (var s in _subscribers)
+                s.NotifyStacksChanged();
         }
-
-    }
-
-    public interface IStacksChangeSubscriber
-    {
-        void NotifyStacksChanged();
     }
 }

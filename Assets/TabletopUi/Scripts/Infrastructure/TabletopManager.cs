@@ -26,7 +26,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR.WSA;
 
 namespace Assets.CS.TabletopUI {
-    public class TabletopManager : MonoBehaviour, IStacksChangeSubscriber {
+    public class TabletopManager : MonoBehaviour {
 
         [Header("Game Control")]
         [SerializeField]
@@ -41,8 +41,6 @@ namespace Assets.CS.TabletopUI {
         [Header("Tabletop")]
         [SerializeField]
         public TabletopTokenContainer _tabletop;
-        [SerializeField]
-        TabletopBackground _background;
         [SerializeField]
         private Limbo Limbo;
 
@@ -89,12 +87,7 @@ namespace Assets.CS.TabletopUI {
             _cardAnimationController.CheckForCardAnimations();
         }
 
-        public void NotifyStacksChanged() {
-            _elementOverview.UpdateDisplay();
-        }
-
         void Start() {
-
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
 
             //register everything used gamewide
@@ -153,8 +146,6 @@ namespace Assets.CS.TabletopUI {
 
         private void InitialiseListeners() {
             // Init Listeners to pre-existing DisplayHere Objects
-            _background.onDropped += HandleOnTableDropped;
-            _background.onClicked += HandleOnTableClicked;
             DraggableToken.onChangeDragState += HandleDragStateChanged;
         }
 
@@ -177,7 +168,7 @@ namespace Assets.CS.TabletopUI {
             var elementStacksCatalogue = new StackManagersCatalogue();
 
             //ensure we get updates about stack changes
-            elementStacksCatalogue.Subscribe(this);
+            _elementOverview.Initialise(elementStacksCatalogue);
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -202,8 +193,15 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(paused);
         }
 
+        public void BeginNewSituation(SituationCreationCommand scc) {
+            Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
+        }
+
+        #region -- Build / Reset -------------------------------
+
         public void SetupNewBoard(SituationBuilder builder) {
             var chosenLegacy = CrossSceneState.GetChosenLegacy();
+
             if (chosenLegacy == null) {
                 NoonUtility.Log("No initial Legacy specified");
                 chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
@@ -246,10 +244,6 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void BeginNewSituation(SituationCreationCommand scc) {
-            Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
-        }
-
         public void ClearGameState(Heart h, IGameEntityStorage s, TabletopTokenContainer tc) {
             h.Clear();
             s.DeckInstances = new List<IDeckInstance>();
@@ -288,74 +282,9 @@ namespace Assets.CS.TabletopUI {
             _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationToken, animName);
         }
 
-        public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
-            var unprocessedSlots = new HashSet<TokenAndSlot>();
-            foreach (var tokenSlotPair in slotsToFill) {
-                if (!tokenSlotPair.RecipeSlot.Equals(null)) //it hasn't been destroyed
-                {
-                    if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() == null) {
-                        var stack = findStackForSlotSpecification(tokenSlotPair.RecipeSlot.GoverningSlotSpecification);
-                        if (stack != null) {
-                            stack.SplitAllButNCardsToNewStack(1);
-                            Registry.Retrieve<Choreographer>().MoveElementToSituationSlot(stack as ElementStackToken, tokenSlotPair); // NOTE: Needs token
-                        }
-                        else
-                            unprocessedSlots.Add(tokenSlotPair);
-                    }
-                }
-            }
-            return unprocessedSlots;
-        }
+        #endregion
 
-        private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec) {
-            var stacks = _tabletop.GetElementStacksManager().GetStacks();
-            foreach (var stack in stacks)
-                if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
-                    return stack;
-
-            return null;
-        }
-
-        void HandleOnTableDropped() {
-            if (DraggableToken.itemBeingDragged != null) {
-                DraggableToken.SetReturn(false, "dropped on the background");
-
-                if (DraggableToken.itemBeingDragged is SituationToken)
-                    _tabletop.DisplaySituationTokenOnTable((SituationToken)DraggableToken.itemBeingDragged);
-                else if (DraggableToken.itemBeingDragged is ElementStackToken)
-                    _tabletop.GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged));
-                else
-                    throw new NotImplementedException("Tried to put something weird on the table");
-
-                SoundManager.PlaySfx("CardDrop");
-            }
-        }
-
-        void HandleOnTableClicked() {
-            //Close all open windows if we're not dragging (multi tap stuff)
-            if (DraggableToken.itemBeingDragged == null)
-                CloseAllSituationWindowsExcept(null);
-        }
-
-        public void CloseAllSituationWindowsExcept(string exceptTokenId) {
-            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-
-            foreach (var controller in situationControllers) {
-                if (controller.GetActionId() != exceptTokenId)
-                    controller.CloseSituation();
-            }
-        }
-
-        void HandleOnMapBackgroundDropped() {
-            if (DraggableToken.itemBeingDragged != null) {
-
-                DraggableToken.SetReturn(false, "dropped on the map background");
-                DraggableToken.itemBeingDragged.DisplayAtTableLevel();
-                mapContainsTokens.DisplayHere(DraggableToken.itemBeingDragged);
-
-                SoundManager.PlaySfx("CardDrop");
-            }
-        }
+        #region -- Load / Save GameState -------------------------------
 
         public void LoadGame() {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
@@ -405,6 +334,56 @@ namespace Assets.CS.TabletopUI {
             _heart.ResumeBeating();
         }
 
+        #endregion
+
+        public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
+            var unprocessedSlots = new HashSet<TokenAndSlot>();
+            foreach (var tokenSlotPair in slotsToFill) {
+                if (!tokenSlotPair.RecipeSlot.Equals(null)) //it hasn't been destroyed
+                {
+                    if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() == null) {
+                        var stack = findStackForSlotSpecification(tokenSlotPair.RecipeSlot.GoverningSlotSpecification);
+                        if (stack != null) {
+                            stack.SplitAllButNCardsToNewStack(1);
+                            Registry.Retrieve<Choreographer>().MoveElementToSituationSlot(stack as ElementStackToken, tokenSlotPair); // NOTE: Needs token
+                        }
+                        else
+                            unprocessedSlots.Add(tokenSlotPair);
+                    }
+                }
+            }
+            return unprocessedSlots;
+        }
+
+        private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec) {
+            var stacks = _tabletop.GetElementStacksManager().GetStacks();
+            foreach (var stack in stacks)
+                if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                    return stack;
+
+            return null;
+        }
+
+        public void CloseAllSituationWindowsExcept(string exceptTokenId) {
+            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+            foreach (var controller in situationControllers) {
+                if (controller.GetActionId() != exceptTokenId)
+                    controller.CloseSituation();
+            }
+        }
+
+        void HandleOnMapBackgroundDropped() {
+            if (DraggableToken.itemBeingDragged != null) {
+
+                DraggableToken.SetReturn(false, "dropped on the map background");
+                DraggableToken.itemBeingDragged.DisplayAtTableLevel();
+                mapContainsTokens.DisplayHere(DraggableToken.itemBeingDragged);
+
+                SoundManager.PlaySfx("CardDrop");
+            }
+        }
+
         public void DecayStacksOnTable(float interval) {
             var decayingStacks = _tabletop.GetElementStacksManager().GetStacks().Where(s => s.Decays);
             foreach (var d in decayingStacks)
@@ -418,44 +397,9 @@ namespace Assets.CS.TabletopUI {
 
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
 
-            if (draggedElement != null)
-                ShowDestinationsForStack(draggedElement, isDragging);
-        }
-
-        private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show) {
-            // Stacks on Tabletop
-            var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
-            ElementStackToken token;
-
-            foreach (var card in tabletopStacks) {
-                if (card.Id != draggedElement.Id || card.Defunct)
-                    continue;
-
-                if (!show || card.AllowsMerge()) {
-                    token = card as ElementStackToken;
-
-                    if (token != null && token != draggedElement) {
-                        token.SetGlowColor(UIStyle.TokenGlowColor.Default);
-                        token.ShowGlow(show, false);
-                    }
-                }
-            }
-
-            // Situations on Tabletop
-            var situations = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-
-            foreach (var sit in situations) {
-                if (sit.IsOpen)
-                    sit.ShowDestinationsForStack(draggedElement, show);
-
-                sit.situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
-                sit.situationToken.ShowGlow(show && sit.CanTakeDroppedToken(draggedElement));
-            }
-
             if (mapContainsTokens != null)
-                mapContainsTokens.ShowDestinationsForStack(draggedElement, show);
+                mapContainsTokens.ShowDestinationsForStack(draggedElement, isDragging);
         }
-
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
             //including the situationToken so we can zoom to it or otherwise signal it at some point, but for now, let's just play some scary music
