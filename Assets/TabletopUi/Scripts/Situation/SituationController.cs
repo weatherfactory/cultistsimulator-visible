@@ -18,12 +18,14 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Assets.TabletopUi {
-    public class SituationController : ISituationSubscriber,ISaveable {
+    public class SituationController : ISituationSubscriber, ISaveable {
+
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
         public ISituation Situation;
         private readonly ICompendium compendium;
         private readonly Character currentCharacter;
+
         public bool IsOpen { get; set; }
 
         public SituationController(ICompendium co, Character ch) {
@@ -71,10 +73,10 @@ namespace Assets.TabletopUi {
                 //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
                 if (command.OverrideTitle != null)
                     situationWindow.Title = command.OverrideTitle;
+
                 //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
                 if (command.CompletionCount > 0)
                     situationToken.SetCompletionCount(command.CompletionCount);
-
             }
             else {
                 throw new ApplicationException("Tried to create situation for " + command.Verb.Label +
@@ -103,8 +105,7 @@ namespace Assets.TabletopUi {
             return Situation == null ? null : Situation.RecipeId;
         }
 
-        public string GetActionId()
-        {
+        public string GetActionId() {
             return situationToken.Id;
         }
 
@@ -132,7 +133,7 @@ namespace Assets.TabletopUi {
             var startSlots = win.GetStartingSlots();
 
             for (int i = 0; i < startSlots.Count; i++) {
-                if (startSlots[i].GetElementStackInSlot() != null) 
+                if (startSlots[i].GetElementStackInSlot() != null)
                     continue; // occupied slot? Go on
 
                 startSlots[i].OnDrop(null); // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
@@ -147,41 +148,39 @@ namespace Assets.TabletopUi {
             //in this case, don't do anything.
             if (Situation.State != SituationState.Unstarted)
                 return;
-            else
-            {
+            else {
                 //This is an unstarted situation: start displaying recipes, hints, whatnot
-              //get all the aspects currently in the starting slots
-            
-            IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
-            Recipe hintRecipeMatchingStartingAspects=null;
-                var recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter,false);
+                //get all the aspects currently in the starting slots
 
-            //if we can't find a matching craftable recipe, check for matching hint recipes
-            if (recipeMatchingStartingAspects==null)
-                hintRecipeMatchingStartingAspects =compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, true);
+                IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
+                Recipe hintRecipeMatchingStartingAspects = null;
+                var recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, false);
 
-            IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
+                //if we can't find a matching craftable recipe, check for matching hint recipes
+                if (recipeMatchingStartingAspects == null)
+                    hintRecipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, true);
 
-            situationWindow.DisplayAspects(aspectsNoElementsSelf);
+                IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
 
-            //if we found a recipe, display it, and get ready to activate
-            if (recipeMatchingStartingAspects != null)
-            {
-                situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
-                if (recipeMatchingStartingAspects.MaxExecutions == 1)
-                   situationWindow.DisplayRecipeMetaComment("This will only happen once.");
-                if (recipeMatchingStartingAspects.MaxExecutions > 1)
-                    situationWindow.DisplayRecipeMetaComment("This will only happen " +recipeMatchingStartingAspects.MaxExecutions + " times.");
-            }
-            //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
-            else if (hintRecipeMatchingStartingAspects!= null)
-                situationWindow.DisplayHintRecipeFound(hintRecipeMatchingStartingAspects);
-            //no recipe, no hint? If there are any elements in the mix, display 'try again' message
-            else if (allAspects.Count > 0)
-                situationWindow.DisplayNoRecipeFound();
-            //no recipe, no hint, no aspects. Just set back to unstarted
-            else
-                situationWindow.SetUnstarted();
+                situationWindow.DisplayAspects(aspectsNoElementsSelf);
+
+                //if we found a recipe, display it, and get ready to activate
+                if (recipeMatchingStartingAspects != null) {
+                    situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
+                    if (recipeMatchingStartingAspects.MaxExecutions == 1)
+                        situationWindow.DisplayRecipeMetaComment("This will only happen once.");
+                    if (recipeMatchingStartingAspects.MaxExecutions > 1)
+                        situationWindow.DisplayRecipeMetaComment("This will only happen " + recipeMatchingStartingAspects.MaxExecutions + " times.");
+                }
+                //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
+                else if (hintRecipeMatchingStartingAspects != null)
+                    situationWindow.DisplayHintRecipeFound(hintRecipeMatchingStartingAspects);
+                //no recipe, no hint? If there are any elements in the mix, display 'try again' message
+                else if (allAspects.Count > 0)
+                    situationWindow.DisplayNoRecipeFound();
+                //no recipe, no hint, no aspects. Just set back to unstarted
+                else
+                    situationWindow.SetUnstarted();
             }
         }
 
@@ -207,8 +206,7 @@ namespace Assets.TabletopUi {
             return Situation.GetPrediction(rc);
         }
 
-        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects)
-        {
+        private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements(showElementAspects);
             aspects.CombineAspects(situationWindow.GetAspectsFromStoredElements(showElementAspects));
             return aspects;
@@ -244,7 +242,7 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
-            
+
             situationToken.UpdateMiniSlotDisplay(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
@@ -252,15 +250,13 @@ namespace Assets.TabletopUi {
 
             UpdateSituationDisplayForDescription();
 
-            if (withRecipe.EndsGame())
-            {
+            if (withRecipe.EndsGame()) {
                 var tabletopManager = Registry.Retrieve<TabletopManager>();
                 tabletopManager.SignalImpendingDoom(situationToken);
             }
         }
 
-        public void SituationOngoing()
-        {
+        public void SituationOngoing() {
             var currentRecipe = compendium.GetRecipeById(Situation.RecipeId);
             situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
             situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
@@ -277,8 +273,7 @@ namespace Assets.TabletopUi {
         /// respond to the Situation's request to execute its payload
         /// </summary>
         /// <param name="command"></param>
-        public void SituationExecutingRecipe(ISituationEffectCommand command)
-        {
+        public void SituationExecutingRecipe(ISituationEffectCommand command) {
             //called here in case ongoing slots trigger consumption
             situationWindow.SetSlotConsumptions();
 
@@ -295,10 +290,9 @@ namespace Assets.TabletopUi {
 
             var tabletopManager = Registry.Retrieve<TabletopManager>();
 
-
-            currentCharacter.AddExecutionsToHistory(command.Recipe.Id,1);
+            currentCharacter.AddExecutionsToHistory(command.Recipe.Id, 1);
             var executor = new SituationEffectExecutor();
-            executor.RunEffects(command, situationWindow.GetStorageStacksManager(),currentCharacter);
+            executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter);
 
             if (command.Recipe.EndingFlag != null) {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
@@ -325,36 +319,29 @@ namespace Assets.TabletopUi {
             AttemptAspectInductions();
         }
 
-        public void Halt()
-        {
+        public void Halt() {
             //currently used only in debug. Reset to starting state (which might be weird for Time) and end timer.
-           Situation.Halt();
-           
+            Situation.Halt();
+
 
         }
 
-        private void AttemptAspectInductions()
-        {
-//If any elements in the output have inductions, test whether to start a new recipe
+        private void AttemptAspectInductions() {
+            //If any elements in the output have inductions, test whether to start a new recipe
             var outputAspects = situationWindow.GetAspectsFromOutputElements(true);
 
-            foreach (var a in outputAspects)
-            {
+            foreach (var a in outputAspects) {
                 var aspectElement = compendium.GetElementById(a.Key);
                 if (aspectElement == null)
                     NoonUtility.Log("unknown aspect " + a + " in output");
-                else
-                {
-                    foreach (var induction in aspectElement.Induces)
-                    {
+                else {
+                    foreach (var induction in aspectElement.Induces) {
                         var d = Registry.Retrieve<IDice>();
-                        if (d.Rolld100() <= induction.Chance)
-                        {
+                        if (d.Rolld100() <= induction.Chance) {
                             var inducedRecipe = compendium.GetRecipeById(induction.Id);
                             if (inducedRecipe == null)
                                 NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectElement.Id);
-                            else
-                            {
+                            else {
                                 var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
                                     inducedRecipe.Label, inducedRecipe.Description);
                                 SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
@@ -376,8 +363,7 @@ namespace Assets.TabletopUi {
             situationWindow.SetOutput(stacksForOutput);
         }
 
-        public void AddNote(INotification notification)
-        {
+        public void AddNote(INotification notification) {
             situationWindow.ReceiveNotification(notification);
         }
 
@@ -401,7 +387,7 @@ namespace Assets.TabletopUi {
 
         public void AttemptActivateRecipe() {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter,false);
+            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter, false);
 
             //no recipe found? get outta here
             if (recipe == null)
@@ -415,7 +401,7 @@ namespace Assets.TabletopUi {
             situationWindow.SetSlotConsumptions();
             //move any slotted elements to storage
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
-            
+
 
             //The game might be paused! or the player might just be incredibly quick off the mark
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window
@@ -424,7 +410,7 @@ namespace Assets.TabletopUi {
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
 
-            Situation.Continue(rc,0);
+            Situation.Continue(rc, 0);
 
             //display any burn image the recipe might require
 
@@ -461,8 +447,7 @@ namespace Assets.TabletopUi {
             }
         }
 
-        public void Retire()
-        {
+        public void Retire() {
             situationToken.Retire();
             Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
         }

@@ -55,6 +55,7 @@ namespace Assets.CS.TabletopUI
         public override void ReturnToTabletop(INotification reason = null)
         {
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+
             if (reason != null)
                 notifier.TokenReturnedToTabletop(this, reason);
         }
