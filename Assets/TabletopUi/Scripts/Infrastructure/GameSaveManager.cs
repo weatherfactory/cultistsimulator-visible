@@ -101,5 +101,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
+        public bool SaveGameHasMatchingVersionNumber(VersionNumber currentVersionNumber)
+        {
+            var htSave = RetrieveHashedSaveFromFile();
+            var htMetaInfo = htSave.GetHashtable(SaveConstants.SAVE_METAINFO);
+            if (htMetaInfo == null)
+                return false;
+            if (!htMetaInfo.ContainsKey(SaveConstants.SAVE_VERSIONNUMBER))
+                return false; //no version number
+
+            string savedVersionString=htMetaInfo[SaveConstants.SAVE_VERSIONNUMBER].ToString();
+
+            return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
+        }
     }
 }

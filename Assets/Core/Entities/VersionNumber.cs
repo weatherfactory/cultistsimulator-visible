@@ -55,11 +55,11 @@ namespace Assets.Core.Entities
             return buildNumber;
         }
 
-        public bool MajorVersionMatches(string matchingversion)
+        public bool MajorVersionMatches(VersionNumber matchingversion)
         {
-            var versionToMatch=new VersionNumber(matchingversion);
-            return(GetVersionYear() == versionToMatch.GetVersionYear() 
-                       && GetVersionMonth() ==versionToMatch.GetVersionMonth());
+            
+            return(GetVersionYear() == matchingversion.GetVersionYear() 
+                       && GetVersionMonth() == matchingversion.GetVersionMonth());
                    }
     }
 }
