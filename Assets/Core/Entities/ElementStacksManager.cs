@@ -139,7 +139,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (EnforceUniqueStacks) 
             RemoveDuplicates(stack);
 
-        stack.AssignToStackManager(this);
+        stack.SetStackManager(this);
         _stacks.Add(stack);
         _tokenContainer.DisplayHere(stack);
         _catalogue.NotifyStacksChanged();

@@ -19,28 +19,38 @@ using Noon;
 
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
-namespace Assets.CS.TabletopUI
-{
+namespace Assets.CS.TabletopUI {
     public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
 
-        [SerializeField] Image artwork;
-        [SerializeField] Image backArtwork;
-        [SerializeField] Image textBackground;
-        [SerializeField] TextMeshProUGUI text;
-        [SerializeField] ElementStackBadge stackBadge;
-        [SerializeField] TextMeshProUGUI stackCountText;
-        [SerializeField] GameObject decayView;
-        [SerializeField] TextMeshProUGUI decayCountText;
+        [SerializeField]
+        Image artwork;
+        [SerializeField]
+        Image backArtwork;
+        [SerializeField]
+        Image textBackground;
+        [SerializeField]
+        TextMeshProUGUI text;
+        [SerializeField]
+        ElementStackBadge stackBadge;
+        [SerializeField]
+        TextMeshProUGUI stackCountText;
+        [SerializeField]
+        GameObject decayView;
+        [SerializeField]
+        TextMeshProUGUI decayCountText;
 
-        [SerializeField] string defaultRetireFX = "CardBurn";
-        [SerializeField] CardEffectRemove cardBurnFX;
-        [SerializeField] Sprite spriteUniqueTextBG;
+        [SerializeField]
+        string defaultRetireFX = "CardBurn";
+        [SerializeField]
+        CardEffectRemove cardBurnFX;
+        [SerializeField]
+        Sprite spriteUniqueTextBG;
 
         private IElementStacksManager CurrentStacksManager;
 
         private Element _element;
         private int _quantity;
-        
+
         private float lifetimeRemaining;
         private bool isFront = true;
         public Source StackSource { get; set; }
@@ -50,16 +60,31 @@ namespace Assets.CS.TabletopUI
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
 
-        protected override bool AllowDrag { get { return isFront && turnCoroutine == null; } } // no dragging while not front or busy turning
+        public override string Id {
+            get { return _element == null ? null : _element.Id; }
+        }
+
+        public bool Decays {
+            get { return _element.Lifetime > 0; }
+        }
+
+        public int Quantity {
+            get { return Defunct ? 0 : _quantity; }
+        }
+
+        public bool MarkedForConsumption { get; set; }
+
+        #region -- Lifecycle  ------------------------------------------------------------------------------------
 
         protected override void Awake() {
             base.Awake();
         }
+
         protected override void OnDisable() {
             base.OnDisable();
 
             // this resets any animation frames so we don't get stuck when deactivating mid-anim
-            artwork.overrideSprite = null; 
+            artwork.overrideSprite = null;
 
             // we're turning? Just set us to the garget
             if (turnCoroutine != null) {
@@ -68,16 +93,7 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public void SetBackface(string backId) {
-            Sprite sprite;
-
-            if (string.IsNullOrEmpty(backId))
-                sprite = null;
-            else
-                sprite = ResourcesManager.GetSpriteForCardBack(backId);
-
-            backArtwork.overrideSprite = sprite;
-        }
+        #endregion 
 
         #region -- Turn Card ------------------------------------------------------------------------------------
 
@@ -135,10 +151,15 @@ namespace Assets.CS.TabletopUI
             turnCoroutine = null;
         }
 
+        public void SetBackface(string backId) {
+            Sprite sprite;
 
-        protected override bool CanInteract() {
-            // interaction is always possible on facedown cards to turn them back up
-            return !isFront || base.CanInteract();
+            if (string.IsNullOrEmpty(backId))
+                sprite = null;
+            else
+                sprite = ResourcesManager.GetSpriteForCardBack(backId);
+
+            backArtwork.overrideSprite = sprite;
         }
 
         #endregion
@@ -148,7 +169,7 @@ namespace Assets.CS.TabletopUI
         public bool CanAnimate() {
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
-            
+
             return _element.AnimFrames > 0;
         }
 
@@ -170,13 +191,13 @@ namespace Assets.CS.TabletopUI
             int frameCount = _element.AnimFrames;
             int frameIndex = 0;
 
-            animCoroutine = StartCoroutine( DoAnim(duration, frameCount, frameIndex) );
+            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
         }
 
         IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
             Sprite[] animSprites = new Sprite[frameCount];
 
-            for (int i = 0; i < animSprites.Length; i++) 
+            for (int i = 0; i < animSprites.Length; i++)
                 animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
 
             float time = 0f;
@@ -201,56 +222,104 @@ namespace Assets.CS.TabletopUI
 
         #endregion
 
-        public override string Id
-        {
-            get { return _element == null ? null : _element.Id; }
-        }
+        #region -- Set & Get Basic Values ------------------------------------------------------------------------------------
 
-
-        public bool Decays
-        {
-            get { return _element.Lifetime > 0; }
-        }
-
-        public string Label
-        {
-            get { return _element == null ? null : _element.Label; }
-        }
-
-        public int Quantity
-        {
-            get
-            {
-                if (Defunct)
-                    return 0;
-                else
-                    return _quantity;
-            }
-        }
-
-        public bool MarkedForConsumption { get; set; }
-
-
-        public void SetQuantity(int quantity)
-        {
+        public void SetQuantity(int quantity) {
             _quantity = quantity;
-            if (quantity <= 0)
-            {
+            if (quantity <= 0) {
                 Retire(true);
                 return;
             }
             DisplayInfo();
         }
 
-        public Dictionary<string, string> GetXTriggers()
-        {
+        public void ModifyQuantity(int change) {
+            SetQuantity(_quantity + change);
+        }
+
+        void SetAsUnique(bool unique) {
+            if (unique)
+                textBackground.overrideSprite = spriteUniqueTextBG;
+            else
+                textBackground.overrideSprite = null;
+        }
+
+        public Dictionary<string, string> GetXTriggers() {
             return _element.XTriggers;
         }
 
-        public void ModifyQuantity(int change)
-        {
-            SetQuantity(_quantity + change);
+        public IAspectsDictionary GetAspects(bool includeSelf = true) {
+            if (includeSelf)
+                return _element.AspectsIncludingSelf;
+            else
+                return _element.Aspects;
         }
+
+        public List<SlotSpecification> GetChildSlotSpecifications() {
+            return _element.ChildSlotSpecifications;
+        }
+
+        public bool HasChildSlots() {
+            return _element.HasChildSlots();
+        }
+
+
+        #endregion
+
+        #region -- Create & populate ------------------------------------------------------------------------------------
+
+        public void Populate(string elementId, int quantity, Source source) {
+            _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+
+            try {
+                SetQuantity(quantity); // this also toggles badge visibility through second call
+                SetAsUnique(_element.Unique);
+
+                name = "Card_" + elementId;
+                if (_element == null)
+                    NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
+
+                DisplayInfo();
+                DisplayIcon();
+                ShowGlow(false, false);
+                ShowCardDecayTimer(false);
+                SetCardDecay(0f);
+                lifetimeRemaining = _element.Lifetime;
+
+                StackSource = source;
+                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+                //when first created, it should be in Limbo
+            }
+            catch (Exception e) {
+                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
+                Retire(false);
+            }
+        }
+        private void CullTextBackface() {
+            decayCountText.enableCulling = true;
+            stackCountText.enableCulling = true;
+            text.enableCulling = true;
+        }
+
+        private void DisplayInfo() {
+            text.text = _element.Label;
+            stackBadge.gameObject.SetActive(Quantity > 1);
+            stackCountText.text = Quantity.ToString();
+        }
+
+        private void DisplayIcon() {
+            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
+            artwork.sprite = sprite;
+
+            if (sprite == null)
+                artwork.color = Color.clear;
+            else
+                artwork.color = Color.white;
+        }
+
+        #endregion
+
+        #region -- Return To Tabletop ------------------------------------------------------------------------------------
 
         public override void ReturnToTabletop(INotification reason = null) {
             if (originStack != null && originStack.IsOnTabletop()) {
@@ -287,8 +356,20 @@ namespace Assets.CS.TabletopUI
             */
         }
 
-        public override bool Retire()
-        {
+        private bool IsOnTabletop() {
+            return transform.parent.GetComponent<TabletopTokenContainer>() != null;
+        }
+
+        private void MergeIntoStack(ElementStackToken merge) {
+            SetQuantity(Quantity + merge.Quantity);
+            merge.Retire(false);
+        }
+
+        #endregion
+
+        #region -- Retire + FX ------------------------------------------------------------------------------------
+
+        public override bool Retire() {
             return Retire(defaultRetireFX);
         }
 
@@ -296,13 +377,11 @@ namespace Assets.CS.TabletopUI
             return Retire(useDefaultFX ? defaultRetireFX : null);
         }
 
-        public bool Retire(string vfxName)
-        {
+        public bool Retire(string vfxName) {
             if (Defunct)
                 return false;
 
-            //first remove it from the StacksManager. It no longer exists in the model.
-            CurrentStacksManager.RemoveStack(this);
+            SetStackManager(null); // Remove it from the StacksManager. It no longer exists in the model.
             SetViewContainer(null); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.
@@ -310,7 +389,7 @@ namespace Assets.CS.TabletopUI
             Defunct = true;
             AbortDrag(); // Make sure we have the drag aborted in case we're retiring mid-drag (merging stack frex)
 
-            
+
             if (vfxName == "hide" || vfxName == "Hide") {
                 StartCoroutine(FadeCard(0.5f));
             }
@@ -320,7 +399,7 @@ namespace Assets.CS.TabletopUI
 
                 if (string.IsNullOrEmpty(vfxName) || !gameObject.activeInHierarchy)
                     effect = null;
-                else 
+                else
                     effect = InstantiateEffect(vfxName);
 
                 if (effect != null)
@@ -335,7 +414,7 @@ namespace Assets.CS.TabletopUI
         CardEffectRemove InstantiateEffect(string effectName) {
             var prefab = Resources.Load("FX/RemoveCard/" + effectName);
 
-            if (prefab == null) 
+            if (prefab == null)
                 return null;
 
             var obj = Instantiate(prefab) as GameObject;
@@ -358,127 +437,70 @@ namespace Assets.CS.TabletopUI
             Destroy(gameObject);
         }
 
-        public void Populate(string elementId, int quantity,Source source)
-        {
-            _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+        #endregion
 
-            try
-            {               
-                SetQuantity(quantity); // this also toggles badge visibility through second call
-                SetAsUnique(_element.Unique);
+        #region -- Assign to Stack & Container ------------------------------------------------------------------------------------
 
-                name = "Card_" + elementId;
-                if (_element == null)
-                    NoonUtility.Log("Tried to populate token with unrecognised elementId:" + elementId);
-
-                DisplayInfo();
-                DisplayIcon();
-                ShowGlow(false, false);
-                ShowCardDecayTimer(false);
-                SetCardDecay(0f);
-                lifetimeRemaining = _element.Lifetime;
-
-                StackSource = source;
-                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
-                //when first created, it should be in Limbo
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
-                Retire(false);
-            }
-        }
-
-        void SetAsUnique(bool unique) {
-            if (unique)
-                textBackground.overrideSprite = spriteUniqueTextBG;
-            else
-                textBackground.overrideSprite = null;
-        }
-
-        private void CullTextBackface() {
-            decayCountText.enableCulling = true;
-            stackCountText.enableCulling = true;
-            text.enableCulling = true;
-        }
-
-        public void AssignToStackManager(IElementStacksManager manager)
-        {
+        // Called from StacksManager
+        public void SetStackManager(IElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
             //notify afterwards, in case it counts the things *currently* in its list
             oldStacksManager.RemoveStack(this);
         }
 
-        private void DisplayInfo()
-		{
-			text.text = _element.Label;
-			stackBadge.gameObject.SetActive(Quantity > 1); 
-			stackCountText.text = Quantity.ToString();
+        // Called from Container, after StacksManager told it to
+        public override void SetViewContainer(IContainsTokensView newContainsTokensView) {
+            OldContainsTokensView = ContainsTokensView;
+
+            if (OldContainsTokensView != null && OldContainsTokensView != newContainsTokensView)
+                OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
+
+            ContainsTokensView = newContainsTokensView;
         }
 
-        private void DisplayIcon()
-        {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
-            artwork.sprite = sprite;
+        #endregion
 
-            if (sprite == null)
-                artwork.color = Color.clear;
+        #region -- Allowed Interaction ------------------------------------------------------------------------------------
+
+        protected override bool AllowsDrag() {
+            return isFront && turnCoroutine == null; // no dragging while not front or busy turning
+        }
+
+        protected override bool AllowsInteraction() {
+            // interaction is always possible on facedown cards to turn them back up
+            return !isFront || base.AllowsInteraction();
+        }
+
+        public bool AllowsMerge() {
+            if (Decays || _element.Unique)
+                return false;
             else
-                artwork.color = Color.white;
+                return ContainsTokensView.AllowStackMerge;
         }
 
-        public IAspectsDictionary GetAspects(bool includeSelf = true)
-        {
-            if (includeSelf)
-                return _element.AspectsIncludingSelf;
-            else
-                return _element.Aspects;
-        }
+        #endregion
 
-        public List<SlotSpecification> GetChildSlotSpecifications()
-        {
-            return _element.ChildSlotSpecifications;
-        }
+        #region -- Interaction ------------------------------------------------------------------------------------
 
-
-        public bool HasChildSlots()
-        {
-            return _element.HasChildSlots();
-        }
-
-        public Sprite GetSprite()
-        {
-            return artwork.sprite;
-        }
-
-        public override void OnPointerClick(PointerEventData eventData)
-        {
-            //if(eventData.clickCount>1)
-            //this.ReturnToTabletop(null);
-
-
-            if(isFront)
-            { 
-            notifier.ShowElementDetails(_element);
+        public override void OnPointerClick(PointerEventData eventData) {
+            if (isFront) {
+                notifier.ShowElementDetails(_element);
             }
-            else
-            { 
-            FlipToFaceUp(false);
+            else {
+                FlipToFaceUp(false);
             }
+
             transform.SetAsLastSibling(); //this moves the clicked sibling on top of any other nearby cards.
-            //Hi Martin. Why, yes, I would like you to implement something more sophisticated.
         }
-        
-        public override void OnDrop(PointerEventData eventData)
-        {
-          //  'ondrop' = 'a thing was dropped on me'
+
+        public override void OnDrop(PointerEventData eventData) {
+            //  'ondrop' = 'a thing was dropped on me'
             if (DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
-        public override void OnEndDrag(PointerEventData eventData)
-        {
+        public override void OnEndDrag(PointerEventData eventData) {
             //remove any suitability glows
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
             base.OnEndDrag(eventData);
@@ -492,15 +514,13 @@ namespace Assets.CS.TabletopUI
         }
 
         public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
-            return stackDroppedOn.Id == this.Id && stackDroppedOn.AllowMerge();
+            return stackDroppedOn.Id == this.Id && stackDroppedOn.AllowsMerge();
         }
 
-        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
-        {
-            if (CanInteractWithTokenDroppedOn(stackDroppedOn))
-            {
+        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+            if (CanInteractWithTokenDroppedOn(stackDroppedOn)) {
                 stackDroppedOn.SetQuantity(stackDroppedOn.Quantity + this.Quantity);
-                DraggableToken.SetReturn(false,"was merged");
+                DraggableToken.SetReturn(false, "was merged");
                 SoundManager.PlaySfx("CardPutOnStack");
 
                 var token = stackDroppedOn as DraggableToken;
@@ -508,23 +528,22 @@ namespace Assets.CS.TabletopUI
                 if (token != null) // make sure the glow is done in case we highlighted this
                     token.ShowGlow(false, true);
 
-                this.Retire(false);                
+                this.Retire(false);
             }
-            else
-            {
+            else {
                 var droppedOnToken = stackDroppedOn as DraggableToken;
                 bool moveAsideFor = false;
                 droppedOnToken.ContainsTokensView.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
-                    DraggableToken.SetReturn(false,"was moved aside for");
+                    DraggableToken.SetReturn(false, "was moved aside for");
             }
         }
 
         public void SplitAllButNCardsToNewStack(int n) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(Id, Quantity - n,Source.Existing());
+                cardLeftBehind.Populate(Id, Quantity - n, Source.Existing());
 
                 originStack = cardLeftBehind;
 
@@ -539,78 +558,21 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public bool IsOnTabletop() {
-            return transform.parent.GetComponent<TabletopTokenContainer>() != null;
-        }
-
-        public void MergeIntoStack(ElementStackToken merge) {
-            SetQuantity(Quantity + merge.Quantity);
-            merge.Retire(false);
-        }
-
-        public bool AllowMerge()
-        {
-            if (Decays || _element.Unique)
-                return false;
-
-            return ContainsTokensView.AllowStackMerge;
-        }
-
-        protected override void StartDrag(PointerEventData eventData)
-        {           
-			// A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
-			if (stackBadge.IsHovering() == false) 
-            	SplitAllButNCardsToNewStack(1);
+        protected override void StartDrag(PointerEventData eventData) {
+            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
+            if (stackBadge.IsHovering() == false)
+                SplitAllButNCardsToNewStack(1);
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
-
-
-
             base.StartDrag(eventData);
-        }
-
-        public void Decay(float interval)
-        {
-            if (!Decays)
-                return;
-
-            lifetimeRemaining = lifetimeRemaining - interval;
-
-            if (lifetimeRemaining < 0)
-                Retire(true);
-
-            if (lifetimeRemaining<_element.Lifetime/2)
-            { 
-                ShowCardDecayTimer(true);
-                SetCardDecayTime(lifetimeRemaining);
-            }
-
-            SetCardDecay(1-lifetimeRemaining/_element.Lifetime);
-           
-        }
-        // Card Decay Timer
-        public void ShowCardDecayTimer(bool showTimer) {
-            decayView.gameObject.SetActive(showTimer);
-        }
-
-        public void SetCardDecayTime(float timeRemaining) {
-           
-            decayCountText.text = timeRemaining.ToString("0.0") + "s";
-        }
-
-        public void SetCardDecay(float percentage) {
-            percentage = Mathf.Clamp01(percentage);
-            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
         }
 
         public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
             return tokenDroppedOn.SituationController.CanTakeDroppedToken(this);
         }
 
-        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn)
-        {
-            if (CanInteractWithTokenDroppedOn(tokenDroppedOn)) 
-            {
+        public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
+            if (CanInteractWithTokenDroppedOn(tokenDroppedOn)) {
                 if (!tokenDroppedOn.SituationController.IsOpen)
                     tokenDroppedOn.OpenSituation();
                 else
@@ -629,15 +591,43 @@ namespace Assets.CS.TabletopUI
                 DraggableToken.SetReturn(true);
         }
 
-        public override void SetViewContainer(IContainsTokensView newContainsTokensView)
-        {
-            OldContainsTokensView = ContainsTokensView;
+        #endregion
 
-            if (OldContainsTokensView != null && OldContainsTokensView != newContainsTokensView)
-                OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
+        #region -- Decay & Timers ------------------------------------------------------------------------------------
 
-            ContainsTokensView = newContainsTokensView;
+        public void Decay(float interval) {
+            if (!Decays)
+                return;
+
+            lifetimeRemaining = lifetimeRemaining - interval;
+
+            if (lifetimeRemaining < 0)
+                Retire(true);
+
+            if (lifetimeRemaining < _element.Lifetime / 2) {
+                ShowCardDecayTimer(true);
+                SetCardDecayTime(lifetimeRemaining);
+            }
+
+            SetCardDecay(1 - lifetimeRemaining / _element.Lifetime);
+
         }
+        // Card Decay Timer
+        public void ShowCardDecayTimer(bool showTimer) {
+            decayView.gameObject.SetActive(showTimer);
+        }
+
+        public void SetCardDecayTime(float timeRemaining) {
+
+            decayCountText.text = timeRemaining.ToString("0.0") + "s";
+        }
+
+        public void SetCardDecay(float percentage) {
+            percentage = Mathf.Clamp01(percentage);
+            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+        }
+
+        #endregion
 
     }
 }

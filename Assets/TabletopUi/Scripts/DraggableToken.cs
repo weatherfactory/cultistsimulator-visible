@@ -37,7 +37,6 @@ namespace Assets.CS.TabletopUI
         private static Camera dragCamera;
 
         public bool Defunct { get; protected set; }
-        protected virtual bool AllowDrag { get { return true; } }
         protected Transform startParent;
         protected Vector3 startPosition;
         protected int startSiblingIndex;
@@ -89,6 +88,14 @@ namespace Assets.CS.TabletopUI
         }
 
 
+        protected virtual bool AllowsDrag() {
+            return true;
+        }
+
+        protected virtual bool AllowsInteraction() {
+            return !Defunct && ContainsTokensView.AllowDrag && AllowsDrag();
+        }
+
         public void SubscribeNotifier(INotifier n)
         {
             notifier = n;
@@ -112,7 +119,7 @@ namespace Assets.CS.TabletopUI
 
         bool CanDrag(PointerEventData eventData)
         {
-            if (!ContainsTokensView.AllowDrag || !AllowDrag)
+            if (!ContainsTokensView.AllowDrag || !AllowsDrag())
                 return false;
 
             if (itemBeingDragged != null || draggingEnabled == false) {
@@ -359,7 +366,7 @@ namespace Assets.CS.TabletopUI
                     show = false;
                 }
                 // If we can not interact, don't show the hover highlight
-                else if (!CanInteract()) { 
+                else if (!AllowsInteraction()) { 
                     show = false;
                 }
             }
@@ -382,11 +389,6 @@ namespace Assets.CS.TabletopUI
                 else
                     glowImage.Hide(true);
             }
-        }
-
-
-        protected virtual bool CanInteract() {
-            return !Defunct && ContainsTokensView.AllowDrag && AllowDrag;
         }
 
     }

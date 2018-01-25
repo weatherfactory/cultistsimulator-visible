@@ -443,7 +443,7 @@ namespace Assets.CS.TabletopUI {
                 if (stack.Id != draggedElement.Id || stack.Defunct)
                     continue;
 
-                if (!isDragging || stack.AllowMerge()) {
+                if (!isDragging || stack.AllowsMerge()) {
                     token = stack as ElementStackToken;
 
                     if (token != null && token != draggedElement) {
