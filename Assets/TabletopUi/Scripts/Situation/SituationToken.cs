@@ -52,10 +52,6 @@ namespace Assets.CS.TabletopUI {
         private IVerb _verb;
         public SituationController SituationController { get; private set; }
 
-        public SituationState SituationState {
-            get { return SituationController.Situation.State; }
-        }
-
         public bool IsTransient {
             get { return _verb.Transient; }
         }

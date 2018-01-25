@@ -16,7 +16,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-// Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationDetails {
@@ -59,7 +58,6 @@ namespace Assets.CS.TabletopUI {
 
 		private SituationController situationController;
 		private IVerb Verb;
-        private ISituationDetails _situationDetailsImplementation;
 
         public bool IsOpen {
             get { return gameObject.activeInHierarchy; }
@@ -88,7 +86,6 @@ namespace Assets.CS.TabletopUI {
 			Verb = verb;
             name = "Window_" + verb.Id;
             artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
-
 
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);

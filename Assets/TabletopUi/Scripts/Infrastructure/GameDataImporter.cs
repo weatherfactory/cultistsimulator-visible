@@ -185,7 +185,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var situationAnchor = CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;
 
-                ImportSituationNotes(htSituationValues,situationController);
+                ImportSituationNotes(htSituationValues, situationController);
 
                 ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
