@@ -12,9 +12,6 @@ using OrbCreationExtensions;
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
 
-    /// <summary>
-    /// AFAICT there is no way to pass data between scenes on a load, except with a static object.
-    /// </summary>
    public static class CrossSceneState
     {
         private static Ending _currentEnding;
@@ -28,11 +25,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static Hashtable GetHashTableForCrossSceneState()
         {
             var ht=new Hashtable();
+            AddMetaInfoToHashtable(ht);
             AddCurrentEndingToHashtable(ht);
             AddAvailableLegaciesToHashtable(ht);
             AddDefunctCharacterToHashtable(ht);
 
             return ht;
+        }
+
+        private static void AddMetaInfoToHashtable(Hashtable ht)
+        {
+            
         }
 
         private static void AddDefunctCharacterToHashtable(Hashtable ht)
