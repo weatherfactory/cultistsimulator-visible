@@ -485,21 +485,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnDrop(PointerEventData eventData) {
             //  'ondrop' = 'a thing was dropped on me'
-            if (DraggableToken.itemBeingDragged != null)
-                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
-        }
-
-        public override void OnEndDrag(PointerEventData eventData) {
-            //remove any suitability glows
-            Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
-            base.OnEndDrag(eventData);
-        }
-
-        protected override void AbortDrag() {
-            if (itemBeingDragged == this)
-                Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(null);
-
-            base.AbortDrag();
+            DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
         public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
@@ -551,13 +537,15 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected override void StartDrag(PointerEventData eventData) {
-            base.StartDrag(eventData);
+            // to ensure these are set before we split the cards
+            DraggableToken.itemBeingDragged = this; 
+            IsInAir = true;
 
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
             if (stackBadge.IsHovering() == false)
                 SplitAllButNCardsToNewStack(1);
 
-            Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
+            base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
         public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {

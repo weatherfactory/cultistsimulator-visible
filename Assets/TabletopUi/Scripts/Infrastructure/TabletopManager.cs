@@ -406,23 +406,6 @@ namespace Assets.CS.TabletopUI {
             _heart.ResumeBeating();
         }
 
-        public void ShowDestinationsForStack(IElementStack stack) {
-            var situations = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-
-            for (int i = 0; i < situations.Count; i++) {
-                if (situations[i].IsOpen)
-                    situations[i].ShowDestinationsForStack(stack);
-
-                // null means no stack, so highlight if we have a stack and it can be dropped here
-
-                situations[i].situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
-                situations[i].situationToken.ShowGlow(stack != null && situations[i].CanTakeDroppedToken(stack));
-            }
-
-            if (mapContainsTokens != null)
-                mapContainsTokens.ShowDestinationsForStack(stack);
-        }
-
         public void DecayStacksOnTable(float interval) {
             var decayingStacks = _tabletop.GetElementStacksManager().GetStacks().Where(s => s.Decays);
             foreach (var d in decayingStacks)
@@ -430,29 +413,50 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void HandleDragStateChanged(bool isDragging) {
-            var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
-
             // not dragging a stack? then do nothing. _tabletop was destroyed (end of game?)
-            if (draggedElement == null || _tabletop == null)
+            if (_tabletop == null)
                 return;
 
+            var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
+
+            if (draggedElement != null)
+                ShowDestinationsForStack(draggedElement, isDragging);
+        }
+
+        private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show) {
+            // Stacks on Tabletop
             var tabletopStacks = _tabletop.GetElementStacksManager().GetStacks();
             ElementStackToken token;
 
-            foreach (var stack in tabletopStacks) {
-                if (stack.Id != draggedElement.Id || stack.Defunct)
+            foreach (var card in tabletopStacks) {
+                if (card.Id != draggedElement.Id || card.Defunct)
                     continue;
 
-                if (!isDragging || stack.AllowsMerge()) {
-                    token = stack as ElementStackToken;
+                if (!show || card.AllowsMerge()) {
+                    token = card as ElementStackToken;
 
                     if (token != null && token != draggedElement) {
                         token.SetGlowColor(UIStyle.TokenGlowColor.Default);
-                        token.ShowGlow(isDragging, false);
+                        token.ShowGlow(show, false);
                     }
                 }
             }
+
+            // Situations on Tabletop
+            var situations = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+            foreach (var sit in situations) {
+                if (sit.IsOpen)
+                    sit.ShowDestinationsForStack(draggedElement, show);
+
+                sit.situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
+                sit.situationToken.ShowGlow(show && sit.CanTakeDroppedToken(draggedElement));
+            }
+
+            if (mapContainsTokens != null)
+                mapContainsTokens.ShowDestinationsForStack(draggedElement, show);
         }
+
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
             //including the situationToken so we can zoom to it or otherwise signal it at some point, but for now, let's just play some scary music

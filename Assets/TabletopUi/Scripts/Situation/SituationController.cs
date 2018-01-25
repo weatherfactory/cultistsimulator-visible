@@ -545,8 +545,8 @@ namespace Assets.TabletopUi {
             return count;
         }
 
-        public void ShowDestinationsForStack(IElementStack stack) {
-            situationWindow.ShowDestinationsForStack(stack);
+        public void ShowDestinationsForStack(IElementStack stack, bool show) {
+            situationWindow.ShowDestinationsForStack(stack, show);
         }
     }
 }

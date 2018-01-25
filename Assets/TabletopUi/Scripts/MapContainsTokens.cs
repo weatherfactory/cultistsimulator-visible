@@ -41,9 +41,9 @@ namespace Assets.CS.TabletopUI {
             Registry.Retrieve<MapController>().HideMansusMap(activeSlot.transform, stack);
         }
 
-        public void ShowDestinationsForStack(IElementStack stack) {
+        public void ShowDestinationsForStack(IElementStack stack, bool show) {
             if (activeSlot != null)
-                activeSlot.ShowGlow(stack != null, stack != null);
+                activeSlot.ShowGlow(show, show);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Retire();
         void SetComplete();
 
-        void ShowDestinationsForStack(IElementStack stack);
+        void ShowDestinationsForStack(IElementStack stack, bool show);
 
         void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe);
         void DisplayNoRecipeFound();

@@ -247,14 +247,14 @@ namespace Assets.CS.TabletopUI {
 			startButtonText.text = string.IsNullOrEmpty(text) ? buttonDefault : text;
         }
 
-        public void ShowDestinationsForStack(IElementStack stack) {
+        public void ShowDestinationsForStack(IElementStack stack, bool show) {
             IList<RecipeSlot> slots;
 
             slots = startingSlots.gameObject.activeInHierarchy ? startingSlots.GetAllSlots() : null;
-            HighlightSlots(slots, stack);
+            HighlightSlots(slots, show ? stack : null);
 
             slots = ongoing.gameObject.activeInHierarchy ? ongoing.GetAllSlots() : null;
-            HighlightSlots(slots, stack);
+            HighlightSlots(slots, show ? stack : null);
         }
 
         void HighlightSlots(IList<RecipeSlot> slots, IElementStack stack) {
