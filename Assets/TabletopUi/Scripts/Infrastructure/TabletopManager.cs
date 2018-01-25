@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] private EndGameAnimController _endGameAnimController;
 
         [Header("Tabletop")]
-        [SerializeField] public Tabletop _tabletop;
+        [SerializeField] public TabletopTokenContainer _tabletop;
         [SerializeField] TabletopBackground _background;
         [SerializeField] private Limbo Limbo;
 
@@ -76,12 +76,16 @@ namespace Assets.CS.TabletopUI
             _elementOverview.UpdateDisplay();
         }
 
-        void Start()
-        {
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);            
+        void Start() {
+
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
 
             //register everything used gamewide
-            SetupServices(_situationBuilder,_tabletop);
+            SetupServices(_situationBuilder, _tabletop);
+
+            // This ensures that we have an ElementStackManager in Limbo & Tabletop
+            InitializeTokenContainers(); 
+
             //we hand off board functions to individual controllers
             InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController, _mapController, _endGameAnimController);
             InitialiseListeners();
@@ -140,17 +144,22 @@ namespace Assets.CS.TabletopUI
             DraggableToken.onChangeDragState += HandleDragStateChanged;
         }
 
-        private void SetupServices(SituationBuilder builder,Tabletop containsTokens)
+        void InitializeTokenContainers() {
+            _tabletop.Initialise();
+            Limbo.Initialise();
+        }
+
+        private void SetupServices(SituationBuilder builder, TabletopTokenContainer container)
         {
             var registry = new Registry();
             var compendium = new Compendium();
             var character = new Character();
-            var choreographer=new Choreographer(containsTokens, builder,tableLevelTransform,windowLevelTransform);
+            var choreographer=new Choreographer(container, builder,tableLevelTransform,windowLevelTransform);
             var situationsCatalogue=new SituationsCatalogue();
             var elementStacksCatalogue=new StackManagersCatalogue();
+
             //ensure we get updates about stack changes
             elementStacksCatalogue.Subscribe(this);
-            
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -169,10 +178,6 @@ namespace Assets.CS.TabletopUI
 
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
-            Limbo.Initialise();
-
-
-
         }
 
         private void OnDestroy() {
@@ -232,7 +237,7 @@ namespace Assets.CS.TabletopUI
            
             foreach (var e in startingElements)
             {
-                ElementStackToken token = _tabletop.GetTokenTransformWrapper().ProvisionElementStackAsToken(e.Key, e.Value,Source.Existing());
+                ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value,Source.Existing()) as ElementStackToken;
                 choreographer.ArrangeTokenOnTable(token);
             }
         }
@@ -242,7 +247,7 @@ namespace Assets.CS.TabletopUI
             Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
         }
 
-        public void ClearGameState(Heart h, IGameEntityStorage s,Tabletop tc)
+        public void ClearGameState(Heart h, IGameEntityStorage s,TabletopTokenContainer tc)
         {
             h.Clear();
             s.DeckInstances=new List<IDeckInstance>();
@@ -365,7 +370,7 @@ namespace Assets.CS.TabletopUI
 
                 DraggableToken.SetReturn(false, "dropped on the map background");
                 DraggableToken.itemBeingDragged.DisplayAtTableLevel();
-                mapContainsTokens.GetTokenTransformWrapper().DisplayHere(DraggableToken.itemBeingDragged);
+                mapContainsTokens.DisplayHere(DraggableToken.itemBeingDragged);
 
                 SoundManager.PlaySfx("CardDrop");
             }

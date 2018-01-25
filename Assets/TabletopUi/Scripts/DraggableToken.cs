@@ -245,7 +245,7 @@ namespace Assets.CS.TabletopUI
 
             SoundManager.PlaySfx("CardDragFail");
 
-            if (startParent.GetComponent<Tabletop>()) {
+            if (startParent.GetComponent<TabletopTokenContainer>()) {
                 //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
                 ReturnToTabletop(null);
             }

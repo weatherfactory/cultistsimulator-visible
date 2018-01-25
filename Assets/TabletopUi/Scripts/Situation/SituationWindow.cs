@@ -37,9 +37,7 @@ namespace Assets.CS.TabletopUI {
 		public PaginatedText PaginatedNotes;
 
 		[Space]
-        // Public to test
-		public SituationSlotManager slotManager;
-        [SerializeField] StartingSlotsContainer startingSlots;
+        [SerializeField] StartingSlotsManager startingSlots;
 
         [Space]
         [SerializeField] OngoingSlotManager ongoing;
@@ -126,10 +124,10 @@ namespace Assets.CS.TabletopUI {
             startingSlots.Reset();
             startingSlots.gameObject.SetActive(true);
 
-            ongoing.Reset();
+            ongoing.DoReset();
             ongoing.gameObject.SetActive(false);
 
-            results.Reset();
+            results.DoReset();
             results.gameObject.SetActive(false);
 
             DisplayUnstarted();

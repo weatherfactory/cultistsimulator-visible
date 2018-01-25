@@ -36,15 +36,7 @@ namespace Assets.CS.TabletopUI
         [SerializeField] CardEffectRemove cardBurnFX;
         [SerializeField] Sprite spriteUniqueTextBG;
 
-        //The IElementStacksManager is the model-level association of the StacksToken. It's not a Unity-specific thing, and determines where the stack 'really' is for purposes of
-        //content framework behaviour.
-
-        //The ITokenTransformWrapper is the current location in the Unity hierarchy. (Not coincidentally, a StacksManager also contains a tokenwrapper. It should ultimately be possible to remove *this* reference).
-
-        //The two have historically been the same thing! So there may be some inconsistencies while we work through it.
-
         private IElementStacksManager CurrentStacksManager;
-        private ITokenPhysicalLocation currentWrapper;
 
         private Element _element;
         private int _quantity;
@@ -311,6 +303,7 @@ namespace Assets.CS.TabletopUI
 
             //first remove it from the StacksManager. It no longer exists in the model.
             CurrentStacksManager.RemoveStack(this);
+            SetViewContainer(null); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.
 
@@ -409,17 +402,13 @@ namespace Assets.CS.TabletopUI
             text.enableCulling = true;
         }
 
-
         public void AssignToStackManager(IElementStacksManager manager)
         {
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
             //notify afterwards, in case it counts the things *currently* in its list
             oldStacksManager.RemoveStack(this);
-            
         }
-
-
 
         private void DisplayInfo()
 		{
@@ -551,7 +540,7 @@ namespace Assets.CS.TabletopUI
         }
 
         public bool IsOnTabletop() {
-            return transform.parent.GetComponent<Tabletop>() != null;
+            return transform.parent.GetComponent<TabletopTokenContainer>() != null;
         }
 
         public void MergeIntoStack(ElementStackToken merge) {
@@ -644,7 +633,7 @@ namespace Assets.CS.TabletopUI
         {
             OldContainsTokensView = ContainsTokensView;
 
-            if(OldContainsTokensView!=null && OldContainsTokensView != newContainsTokensView)
+            if (OldContainsTokensView != null && OldContainsTokensView != newContainsTokensView)
                 OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
 
             ContainsTokensView = newContainsTokensView;

@@ -18,7 +18,7 @@ using UnityEngine.VR;
 public class DebugTools : MonoBehaviour,IRollOverride
 {
     
-    [SerializeField] private Tabletop tabletop;
+    [SerializeField] private TabletopTokenContainer tabletop;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField input;
     [SerializeField] private Button btnPlusOne;

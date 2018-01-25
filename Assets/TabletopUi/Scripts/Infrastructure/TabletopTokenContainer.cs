@@ -9,25 +9,31 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts;
-using Assets.TabletopUi.Scripts.Elements;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
-public class Tabletop : MonoBehaviour, IContainsTokensView {
+public class TabletopTokenContainer : AbstractTokenContainer {
 
-    private ElementStacksManager _stacksManager;
+    public override bool AllowDrag { get { return true; } }
+    public override bool AllowStackMerge { get { return true; } }
 
-
-    public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
-    {
-
+    public override void Initialise() {
+        _elementStacksManager = new ElementStacksManager(this, "tabletop");
+        _elementStacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
     }
 
+    public override void DisplayHere(DraggableToken token) {
+        // We're not setting the location; this is used to display a token dragged and dropped to an arbitrary position
+        // (or loaded and added to an arbitrary position)
+        token.transform.SetParent(transform, true);
+        token.transform.localRotation = Quaternion.identity;
+        token.SetViewContainer(this);
+        token.DisplayAtTableLevel();
+    }
 
-    public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-    {
+    public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
 
         var freePos = Registry.Retrieve<Choreographer>().GetFreeTokenPositionWithDebug(incumbent, incumbent.GetRectTransform().anchoredPosition, 
@@ -38,8 +44,7 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
         DisplaySituationTokenOnTable(potentialUsurper);
     }
 
-    public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-    {
+    public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
 
         var freePos = Registry.Retrieve<Choreographer>().GetFreeTokenPositionWithDebug(incumbent, incumbent.GetRectTransform().anchoredPosition,
@@ -47,42 +52,19 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
 
         incumbent.GetRectTransform().anchoredPosition = freePos;
         incumbentMoved = true;
-        _stacksManager.AcceptStack(potentialUsurper);
+        _elementStacksManager.AcceptStack(potentialUsurper);
     }
-
 
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
         return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
     }
 
     public void DisplaySituationTokenOnTable(SituationToken token) {
-
-        GetTokenTransformWrapper().DisplayHere(token);
-
+        DisplayHere(token);
         token.DisplayAtTableLevel();
     }
 
-
-    public bool AllowDrag { get { return true; } }
-    public bool AllowStackMerge { get { return true; } }
-
-
-    public ElementStacksManager GetElementStacksManager() {
-        //In some places we've done it Initialise. Here, we're testing if it's null and then assigning on the fly
-        //This is because I'm going through and refactoring. Perhaps it should be consistent YOU TELL ME it's likely to get refactored further anyhoo
-        if (_stacksManager == null)
-        {
-            _stacksManager = new ElementStacksManager(GetTokenTransformWrapper(),"tabletop");
-            _stacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
-        }
-        return _stacksManager;
-    }
-
-    public ITokenPhysicalLocation GetTokenTransformWrapper() {
-        return new TabletopTokenTransformWrapper(transform);
-    }
-
-    public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+    public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 
@@ -92,9 +74,9 @@ public class Tabletop : MonoBehaviour, IContainsTokensView {
         return rectTrans.rect;
     }
 
-    public void OnDestroy()
-    {
-        if (_stacksManager != null)
-            _stacksManager.Deregister();
+    // Returns all visual tokens for use by the Choreographer
+    public virtual IEnumerable<DraggableToken> GetTokens() {
+        return transform.GetComponentsInChildren<DraggableToken>();
     }
+
 }

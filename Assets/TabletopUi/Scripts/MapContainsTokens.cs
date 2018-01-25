@@ -5,7 +5,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
 namespace Assets.CS.TabletopUI {
-    public class MapContainsTokens : Tabletop {
+    public class MapContainsTokens : TabletopTokenContainer {
 
         [SerializeField] CanvasGroupFader canvasGroupFader;
 

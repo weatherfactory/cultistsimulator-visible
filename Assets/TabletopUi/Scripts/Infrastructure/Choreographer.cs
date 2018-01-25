@@ -14,11 +14,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     //places, arranges and displays things on the table
     public class Choreographer
     {
-        private Tabletop _tabletop;
+        private TabletopTokenContainer _tabletop;
         private SituationBuilder _situationBuilder;
         private Rect tableRect;
 
-        public Choreographer(Tabletop tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
+        public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
         {
             _tabletop = tabletop;
             _situationBuilder = situationBuilder;
@@ -79,10 +79,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             debugInfo.tabletop = _tabletop.transform;
             debugInfo.checkedRects = new List<Rect>();
 
-            foreach (var item in avoidPositions)
-                checkedRects.Add(item);
+            if (avoidPositions != null)
+                foreach (var item in avoidPositions)
+                    checkedRects.Add(item);
 
-            foreach (var item in _tabletop.GetTokenTransformWrapper().GetTokens())
+            foreach (var item in _tabletop.GetTokens())
                 if (item != null && item.GetRectTransform() != null)
                     debugInfo.checkedRects.Add(GetCenterPosRect(item.GetRectTransform().anchoredPosition, item.GetRectTransform().rect.size));
 
@@ -156,7 +157,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     if (item.Overlaps(rect)) 
                         return false;
 
-            foreach (var item in _tabletop.GetTokenTransformWrapper().GetTokens()) 
+            foreach (var item in _tabletop.GetTokens()) 
                 if (GetCenterPosRect(item.GetRectTransform().anchoredPosition, item.GetRectTransform().rect.size).Overlaps(rect))
                     return false;
 
@@ -182,7 +183,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos) {
-            foreach (var t in _tabletop.GetTokenTransformWrapper().GetTokens()) {
+            foreach (var t in _tabletop.GetTokens()) {
                 if (token != t
                     && candidatePos.x - t.transform.localPosition.x < marginPixels.x
                     && candidatePos.x - t.transform.localPosition.x > -marginPixels.x

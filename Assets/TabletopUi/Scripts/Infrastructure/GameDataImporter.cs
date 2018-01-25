@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataImporter
     {
-        void ImportSavedGameToState(Tabletop tabletop, IGameEntityStorage storage, Hashtable htSave);
+        void ImportSavedGameToState(TabletopTokenContainer tabletop, IGameEntityStorage storage, Hashtable htSave);
         SavedCrossSceneState ImportCrossSceneState(Hashtable htSave);
     }
 
@@ -32,7 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public void ImportSavedGameToState(Tabletop tabletop,IGameEntityStorage storage, Hashtable htSave)
+        public void ImportSavedGameToState(TabletopTokenContainer tabletop,IGameEntityStorage storage, Hashtable htSave)
         {
             var htCharacter = htSave.GetHashtable(SaveConstants.SAVE_CHARACTER_DETAILS);
             var htElementStacks = htSave.GetHashtable(SaveConstants.SAVE_ELEMENTSTACKS);
@@ -103,7 +103,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return state;
         }
 
-        private static void ImportTabletopElementStacks(Tabletop tabletop, Hashtable htElementStacks)
+        private static void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
         {
             foreach (var locationInfo in htElementStacks.Keys)
             {
@@ -158,7 +158,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private void ImportSituations(Tabletop tabletop, Hashtable htSituations)
+        private void ImportSituations(TabletopTokenContainer tabletop, Hashtable htSituations)
         {
             foreach (var locationInfo in htSituations.Keys)
             {
@@ -198,14 +198,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, Tabletop tabletop)
+        private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopTokenContainer tabletop)
         {
          var outputStacks=ImportOutputStacks(htSituationValues, tabletop);
             situationController.SetOutput(outputStacks);
 
         }
 
-        private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, Tabletop tabletop)
+        private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopTokenContainer tabletop)
         {
             List<IElementStack> outputStack = new List<IElementStack>();
 
@@ -218,7 +218,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
                     foreach (var eqs in elementQuantitySpecifications)
                     {
-                        outputStack.Add(tabletop.GetTokenTransformWrapper().ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
+                        outputStack.Add(tabletop.ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
                     }
 
             }
@@ -262,7 +262,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
         private void ImportSlotContents(Hashtable htSituationValues,
-         SituationController controller, Tabletop tabletop,string slotTypeKey)
+         SituationController controller, TabletopTokenContainer tabletop,string slotTypeKey)
         {
             if (htSituationValues.ContainsKey(slotTypeKey))
             {
@@ -273,8 +273,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var stackToPutInSlot =
-                        tabletop.GetTokenTransformWrapper()
-                            .ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity, Source.Existing());
+                        tabletop.ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity, Source.Existing());
                     var slotToFill = controller.GetSlotBySaveLocationInfoPath(eqs.LocationInfo, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                         //if the game can't find a matching slot, it'll just leave it on the desktop

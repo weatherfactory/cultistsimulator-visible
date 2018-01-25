@@ -14,25 +14,28 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class DoorSlot : MonoBehaviour, IDropHandler, IContainsTokensView, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
-        public event System.Action< IElementStack> onCardDropped;
+    public class DoorSlot : AbstractTokenContainer, IDropHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+
+        public event System.Action<IElementStack> onCardDropped;
 
         public Graphic border;
         public GraphicFader slotGlow;
         bool lastGlowState;
-        private ElementStacksManager _stacksManager;
 
+        public override bool AllowDrag { get { return false; } }
+        public override bool AllowStackMerge { get { return false; } }
+
+        public override void Initialise() {
+            throw new NotImplementedException(); // We init via Start here.
+        }
 
         void Start() {
             ShowGlow(false, false);
-            ITokenPhysicalLocation stacksWrapper = new TokenTransformWrapper(transform);
             //will this be called as necessary? we might need an Initialise()
-            _stacksManager = new ElementStacksManager(stacksWrapper,"door");
+            _elementStacksManager = new ElementStacksManager(this, "door");
         }
 
         // IGlowableView implementation
-
-        
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             ShowHoverGlow(true);
@@ -53,7 +56,7 @@ namespace Assets.CS.TabletopUI {
         public void ShowGlow(bool glowState, bool instant) {
             lastGlowState = glowState;
 
-            if (glowState) 
+            if (glowState)
                 slotGlow.Show(instant);
             else
                 slotGlow.Hide(instant);
@@ -67,9 +70,11 @@ namespace Assets.CS.TabletopUI {
 
             if (show)
                 SetGlowColor(UIStyle.TokenGlowColor.OnHover);
-            else 
+            else
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
         }
+
+        // IOnDrop Implementation
 
         public void OnDrop(PointerEventData eventData) {
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
@@ -99,45 +104,9 @@ namespace Assets.CS.TabletopUI {
             return GetComponentInChildren<IElementStack>();
         }
 
-        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
-        {
-         
-        }
-
-  public bool AllowDrag {
-            get {
-                return false;
-            }
-        }
-
-        public bool AllowStackMerge { get { return false; } }
-
-        public ElementStacksManager GetElementStacksManager()
-        {
-            return _stacksManager;
-        }
-
-
-        public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-        {
-            //do nothing, ever
-            incumbentMoved = false;
-        }
-
-        public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-        {
-            //do nothing, ever
-            incumbentMoved = false;
-        }
-
-        public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+        public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
             throw new NotImplementedException();
         }
 
-        public void OnDestroy()
-        {
-            if (_stacksManager != null)
-                _stacksManager.Deregister();
-        }
     }
 }
