@@ -313,11 +313,15 @@
 			description: "An opportunity for profit. I should complete this and return it to a patron.",
             isAspect: true
         },
-		{id: "bytflavour",
+		{id: "benign",
 		label: "Sheer Good Fortune",
-		description: "What a lucky sort I am.",
-		isAspect: true,
-		comments: "decorative aspect for BYT background"
+		description: "How fortunate I have been.",
+		isAspect: true
+		},
+				{id: "malign",
+		label: "An Ugliness",
+		description: "Something unwelcome.",
+		isAspect: true
 		},
 		{id:"season",
 		label:"Season",
