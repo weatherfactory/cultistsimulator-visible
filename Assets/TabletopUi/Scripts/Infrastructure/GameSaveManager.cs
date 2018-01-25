@@ -70,9 +70,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            var metaInfo = Registry.Retrieve<MetaInfo>();
             var allDecks = character.DeckInstances;
 
-            var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,
+            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,
                 currentSituationControllers,allDecks);
 
             BackupSave();
@@ -100,5 +101,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
+        public bool SaveGameHasMatchingVersionNumber(VersionNumber currentVersionNumber)
+        {
+            var htSave = RetrieveHashedSaveFromFile();
+            var htMetaInfo = htSave.GetHashtable(SaveConstants.SAVE_METAINFO);
+            if (htMetaInfo == null)
+                return false;
+            if (!htMetaInfo.ContainsKey(SaveConstants.SAVE_VERSIONNUMBER))
+                return false; //no version number
+
+            string savedVersionString=htMetaInfo[SaveConstants.SAVE_VERSIONNUMBER].ToString();
+
+            return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
+        }
     }
 }

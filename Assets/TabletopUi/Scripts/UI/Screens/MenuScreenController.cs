@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
@@ -64,7 +65,11 @@ public class MenuScreenController : MonoBehaviour {
 	    var contentImporter = new ContentImporter();
 	    contentImporter.PopulateCompendium(compendium);
 
-	    VersionNumber.text = NoonUtility.VersionNumber;
+	    var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
+	    registry.Register<MetaInfo>(metaInfo);
+
+	    VersionNumber.text = metaInfo.VersionNumber.Version;
+	    CrossSceneState.SetMetaInfo(metaInfo);
 
 
         var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
@@ -80,6 +85,10 @@ public class MenuScreenController : MonoBehaviour {
         else
         { 
 	        beginGameButton.Text = "CONTINUE";
+            if (!saveGameManager.SaveGameHasMatchingVersionNumber(metaInfo.VersionNumber))
+            {
+                beginGameButton.Text = "OLD SAVE FORMAT!";
+            }
             if (saveGameManager.IsSavedGameActive())
                 //back into the game!
                 sceneToLoad = SceneNumber.GameScene;

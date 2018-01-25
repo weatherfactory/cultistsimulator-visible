@@ -19,8 +19,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private static Legacy _chosenLegacy;
         //record the previous character when ending a game, so we can use their deets for setting the scene / recording in ongoing save
         private static Character _defunctCharacter;
+        private static MetaInfo _metaInfo;
 
-
+        /// <summary>
+        /// This is currently set, rather casually, in the MenuScreenController
+        /// If at some point it contains more than the version number, we'll want to move it.
+        /// </summary>
+        /// <param name="metaInfo"></param>
+        public static void SetMetaInfo(MetaInfo metaInfo)
+        {
+            _metaInfo = metaInfo;
+        }
 
         public static Hashtable GetHashTableForCrossSceneState()
         {
@@ -35,6 +44,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private static void AddMetaInfoToHashtable(Hashtable ht)
         {
+            
+            ht.Add(SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber);
             
         }
 
@@ -134,6 +145,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             _availableLegacies = legacies;
         }
+
 
 
     }
