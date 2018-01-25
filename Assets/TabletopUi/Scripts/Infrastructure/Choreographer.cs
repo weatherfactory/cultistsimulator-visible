@@ -61,8 +61,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             foreach (var item in _tabletop.GetTokens()) {
                 if (item == token)
                     continue;
-                if (GetCenterPosRect(item.RectTransform).Overlaps(targetRect))
-                    item.RectTransform.anchoredPosition = GetFreePosWithDebug(item, item.RectTransform.anchoredPosition);
+                if (!GetCenterPosRect(item.RectTransform).Overlaps(targetRect))
+                    continue;
+
+                AnimateTokenTo(item,
+                    duration: 0.2f,
+                    startPos: item.RectTransform.anchoredPosition3D,
+                    endPos: GetFreePosWithDebug(item, item.RectTransform.anchoredPosition));
             }
         }
 
@@ -209,15 +214,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             //if token has been spawned from an existing token, animate its appearance
             if (scc.SourceToken != null) {
-                var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
-                tokenAnim.onAnimDone += SituationAnimDone;
-                tokenAnim.SetPositions(scc.SourceToken.RectTransform.anchoredPosition3D, GetFreePosWithDebug(token, scc.SourceToken.RectTransform.anchoredPosition, 200f));
-                tokenAnim.SetScaling(0f, 1f);
-                tokenAnim.StartAnim();
+                AnimateTokenTo(token,
+                    duration: 1f,
+                    startPos: scc.SourceToken.RectTransform.anchoredPosition3D,
+                    endPos: GetFreePosWithDebug(token, scc.SourceToken.RectTransform.anchoredPosition, 200f),
+                    startScale: 0f,
+                    endScale: 1f);
             }
             else {
                 Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token);
             }
+        }
+
+        void AnimateTokenTo(DraggableToken token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f) {
+            var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
+            tokenAnim.onAnimDone += SituationAnimDone;
+            tokenAnim.SetPositions(startPos, endPos);
+            tokenAnim.SetScaling(startScale, endScale);
+            tokenAnim.StartAnim(duration);
         }
 
         public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
