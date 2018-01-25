@@ -9,6 +9,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         public static string SAVE_PROFESSION="profession";
         public static string SAVE_EXECUTIONS="executions";
+        public static string SAVE_METAINFO="metainfo";
+        public static string SAVE_VERSIONNUMBER="VERSIONNUMBER";
         public const string SAVE_EXTRAGAME_STATE="extrastate";
         public const string SAVE_DECKS="decks";
         public const string SAVE_CURRENTENDING = "currentending";

@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Linq;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
@@ -64,7 +65,8 @@ public class MenuScreenController : MonoBehaviour {
 	    var contentImporter = new ContentImporter();
 	    contentImporter.PopulateCompendium(compendium);
 
-	    VersionNumber.text = NoonUtility.VersionNumber;
+	    VersionNumber.text = NoonUtility.VersionNumber.Version;
+	    CrossSceneState.SetMetaInfo(new MetaInfo(NoonUtility.VersionNumber));
 
 
         var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());

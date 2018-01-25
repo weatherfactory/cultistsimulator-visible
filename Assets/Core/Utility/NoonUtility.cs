@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Entities;
 using UnityEngine;
 
 namespace Noon
@@ -61,7 +62,7 @@ namespace Noon
         public static bool UnitTestingMode { get; set; }
         public static int CurrentVerbosity = 5;
 
-        public static string VersionNumber = "2017.12.b.3";
+        public static VersionNumber VersionNumber = new VersionNumber("2018.11.a.1");
 
         public static void Log(string message,int verbosityNeeded=0)
         {

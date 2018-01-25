@@ -70,9 +70,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            var metaInfo = Registry.Retrieve<MetaInfo>();
             var allDecks = character.DeckInstances;
 
-            var htSaveTable = dataExporter.GetSaveHashTable(character,allStacks,
+            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,
                 currentSituationControllers,allDecks);
 
             BackupSave();

@@ -150,7 +150,7 @@ namespace Assets.CS.TabletopUI
             var elementStacksCatalogue=new StackManagersCatalogue();
             //ensure we get updates about stack changes
             elementStacksCatalogue.Subscribe(this);
-            
+            var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
@@ -166,6 +166,8 @@ namespace Assets.CS.TabletopUI
             registry.Register<Limbo>(Limbo);
             registry.Register<SituationsCatalogue>(situationsCatalogue);
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
+            registry.Register<MetaInfo>(metaInfo);
+
 
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
