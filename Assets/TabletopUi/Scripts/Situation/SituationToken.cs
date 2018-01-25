@@ -245,7 +245,7 @@ namespace Assets.CS.TabletopUI
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
             bool moveAsideFor = false;
-            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");
@@ -257,7 +257,7 @@ namespace Assets.CS.TabletopUI
             bool moveAsideFor = false;
             var stackToken = stackDroppedOn as ElementStackToken;
 
-            stackToken.ContainsTokensView.TryMoveAsideFor(this, stackToken, out moveAsideFor);
+            stackToken.TokenContainer.TryMoveAsideFor(this, stackToken, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");

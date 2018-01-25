@@ -19,14 +19,14 @@ using Assets.CS.TabletopUI.Interfaces;
 /// </summary>
 public class ElementStacksManager : IElementStacksManager {
 
-    private readonly IContainsTokensView _tokenContainer;
+    private readonly ITokenContainer _tokenContainer;
     private List<IElementStack> _stacks;
     private StackManagersCatalogue _catalogue;
 
     public string Name { get; set; }
     public bool EnforceUniqueStacks { get; set; }
 
-    public ElementStacksManager(IContainsTokensView container, string name) {
+    public ElementStacksManager(ITokenContainer container, string name) {
         Name = name;
         _tokenContainer = container;
 

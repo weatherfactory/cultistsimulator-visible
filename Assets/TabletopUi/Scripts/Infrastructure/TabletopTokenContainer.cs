@@ -29,27 +29,27 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // (or loaded and added to an arbitrary position)
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
-        token.SetViewContainer(this);
+        token.SetTokenContainer(this);
         token.DisplayAtTableLevel();
     }
 
     public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-        incumbent.GetRectTransform().anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
+        incumbent.RectTransform.anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper);
     }
 
     public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         // We don't merge here. We assume if we end up here no merge was possible
-        incumbent.GetRectTransform().anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
+        incumbent.RectTransform.anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
         incumbentMoved = true;
         _elementStacksManager.AcceptStack(potentialUsurper);
     }
 
     Vector2 GetFreePosIgnoringCurrentPos(DraggableToken incumbent) {
         var choreo = Registry.Retrieve<Choreographer>();
-        var currentPos = incumbent.GetRectTransform().anchoredPosition;
-        var ignorePositions = new Rect[1] { incumbent.GetRectTransform().rect }; // this is to ignore the current pos.
+        var currentPos = incumbent.RectTransform.anchoredPosition;
+        var ignorePositions = new Rect[1] { incumbent.RectTransform.rect }; // this is to ignore the current pos.
 
         return choreo.GetFreeTokenPositionWithDebug(incumbent, currentPos, ignorePositions);
     }

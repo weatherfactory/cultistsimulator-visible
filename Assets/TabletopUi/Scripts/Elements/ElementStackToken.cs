@@ -80,9 +80,7 @@ namespace Assets.CS.TabletopUI {
             base.Awake();
         }
 
-        protected override void OnDisable() {
-            base.OnDisable();
-
+        protected void OnDisable() {
             // this resets any animation frames so we don't get stuck when deactivating mid-anim
             artwork.overrideSprite = null;
 
@@ -382,7 +380,7 @@ namespace Assets.CS.TabletopUI {
                 return false;
 
             SetStackManager(null); // Remove it from the StacksManager. It no longer exists in the model.
-            SetViewContainer(null); // notify the view container that we're no longer here
+            SetTokenContainer(null); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.
 
@@ -449,14 +447,14 @@ namespace Assets.CS.TabletopUI {
             oldStacksManager.RemoveStack(this);
         }
 
-        // Called from Container, after StacksManager told it to
-        public override void SetViewContainer(IContainsTokensView newContainsTokensView) {
-            OldContainsTokensView = ContainsTokensView;
+        // Called from TokenContainer, after StacksManager told it to
+        public override void SetTokenContainer(ITokenContainer newTokenContainer) {
+            OldTokenContainer = TokenContainer;
 
-            if (OldContainsTokensView != null && OldContainsTokensView != newContainsTokensView)
-                OldContainsTokensView.SignalElementStackRemovedFromContainer(this);
+            if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
+                OldTokenContainer.SignalElementStackRemovedFromContainer(this);
 
-            ContainsTokensView = newContainsTokensView;
+            TokenContainer = newTokenContainer;
         }
 
         #endregion
@@ -476,7 +474,7 @@ namespace Assets.CS.TabletopUI {
             if (Decays || _element.Unique)
                 return false;
             else
-                return ContainsTokensView.AllowStackMerge;
+                return TokenContainer.AllowStackMerge;
         }
 
         #endregion
@@ -533,7 +531,7 @@ namespace Assets.CS.TabletopUI {
             else {
                 var droppedOnToken = stackDroppedOn as DraggableToken;
                 bool moveAsideFor = false;
-                droppedOnToken.ContainsTokensView.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
+                droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
                     DraggableToken.SetReturn(false, "was moved aside for");
@@ -550,7 +548,7 @@ namespace Assets.CS.TabletopUI {
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
 
-                var gateway = ContainsTokensView.GetElementStacksManager();
+                var gateway = TokenContainer.GetElementStacksManager();
                 gateway.AcceptStack(cardLeftBehind);
 
                 // Gateway accepting stack puts it to pos Vector3.zero, so this is last
@@ -583,7 +581,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             bool moveAsideFor = false;
-            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");

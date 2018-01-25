@@ -6,7 +6,7 @@ using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
-    public abstract class AbstractTokenContainer : MonoBehaviour, IContainsTokensView {
+    public abstract class AbstractTokenContainer : MonoBehaviour, ITokenContainer {
 
         protected ElementStacksManager _elementStacksManager;
 
@@ -47,7 +47,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
-            token.SetViewContainer(this);
+            token.SetTokenContainer(this);
         }
 
         public virtual void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {

@@ -20,7 +20,6 @@ namespace Assets.TabletopUi.SlotsContainers {
         public CanvasGroupFader canvasGroupFader;
 
         protected RecipeSlot primarySlot;
-        private ElementStacksManager _stacksManager;
 
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);

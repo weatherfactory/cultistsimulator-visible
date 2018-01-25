@@ -41,7 +41,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         List<Rect> checkedRects;
 
         public void ArrangeTokenOnTable(SituationToken token) {
-            token.GetRectTransform().anchoredPosition = GetFreeTokenPositionWithDebug(token, Vector2.zero);
+            token.RectTransform.anchoredPosition = GetFreeTokenPositionWithDebug(token, Vector2.zero);
 
             _tabletop.DisplaySituationTokenOnTable(token);
         }
@@ -50,11 +50,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _tabletop.GetElementStacksManager().AcceptStack(stack); // this does parenting. Needs to happen before we position
 
             if (stack.lastTablePos != null) { 
-                stack.GetRectTransform().anchoredPosition = GetFreeTokenPositionWithDebug(stack, stack.lastTablePos.Value);
+                stack.RectTransform.anchoredPosition = GetFreeTokenPositionWithDebug(stack, stack.lastTablePos.Value);
             }
             else {
-                stack.GetRectTransform().anchoredPosition = GetFreeTokenPositionWithDebug(stack, Vector2.zero);
-                stack.lastTablePos = stack.GetRectTransform().anchoredPosition;
+                stack.RectTransform.anchoredPosition = GetFreeTokenPositionWithDebug(stack, Vector2.zero);
+                stack.lastTablePos = stack.RectTransform.anchoredPosition;
             }
 
             stack.transform.localRotation = Quaternion.identity;
@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (!tokenOverlaps)
                 return finalPos;
 
-            finalRect = GetCenterPosRect(finalPos, token.GetRectTransform().rect.size);
+            finalRect = GetCenterPosRect(finalPos, token.RectTransform.rect.size);
             
             var debugInfo = new GameObject("ChoreoDebugInfo").AddComponent<ChoreographerDebugView>();
             debugInfo.Init(targetRect, tokenOverlaps, currentPoints, finalRect);
@@ -84,8 +84,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     checkedRects.Add(item);
 
             foreach (var item in _tabletop.GetTokens())
-                if (item != null && item.GetRectTransform() != null)
-                    debugInfo.checkedRects.Add(GetCenterPosRect(item.GetRectTransform().anchoredPosition, item.GetRectTransform().rect.size));
+                if (item != null && item.RectTransform != null)
+                    debugInfo.checkedRects.Add(GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size));
 
             return finalPos;
         }
@@ -93,7 +93,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, Rect[] avoidPositions = null) {
             centerPos = GetPosClampedToTable(centerPos);
-            targetRect = GetCenterPosRect(centerPos, token.GetRectTransform().rect.size);
+            targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
             if (IsLegalPosition(targetRect, avoidPositions)) 
                 return centerPos;
@@ -158,7 +158,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         return false;
 
             foreach (var item in _tabletop.GetTokens()) 
-                if (GetCenterPosRect(item.GetRectTransform().anchoredPosition, item.GetRectTransform().rect.size).Overlaps(rect))
+                if (GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size).Overlaps(rect))
                     return false;
 
             return true;
