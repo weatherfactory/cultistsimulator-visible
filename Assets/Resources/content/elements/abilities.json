@@ -103,13 +103,22 @@ lifetime: 300
 		id: "scholarlatin",
 		label: "Scholar: Latin",
 		aspects: {language:1},
-		description: "A dead language: dead as diamonds. [Some books must be translated before they can be read.]"
+		description: "A dead language: dead as diamonds. [Some books must be translated before they can be read.]",
+		unique:true
 		},
 				{
 		id: "scholargreek",
 		label: "Scholar: Greek",
 		aspects: {language:1},
-		description: "No doubt you're conversant with every variety of Greek, from the beginning to Byzantium. But it's a good thing you have those reference works. [Some books must be translated before they can be read.]"
+		description: "No doubt you're conversant with every variety of Greek, from the beginning to Byzantium. But it's a good thing you have those reference works. [Some books must be translated before they can be read.]",
+		unique:true
+		},
+						{
+		id: "scholaramaic",
+		label: "Scholar: Aramaic",
+		aspects: {language:1},
+		description: "The language of Aram, and all her many children these three thousand years and more. [Some books must be translated before they can be read.]",
+		unique:true
 		},
 			{
 		id: "scholarfucine",
