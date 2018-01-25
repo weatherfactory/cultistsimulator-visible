@@ -51,9 +51,6 @@ namespace Assets.CS.TabletopUI {
         private float perlinRotationPoint = 0f;
         private float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
-        public bool Defunct { get; protected set; }
-        public bool IsSelected { protected set; get; }
-
         public ITokenContainer TokenContainer;
         protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
         protected INotifier notifier;
@@ -71,6 +68,9 @@ namespace Assets.CS.TabletopUI {
 
         public abstract string Id { get; }
         public bool IsBeingAnimated { get; set; }
+
+        public bool Defunct { get; protected set; }
+        public bool IsInAir { protected set; get; }
 
         protected virtual bool AllowsDrag() {
             return !IsBeingAnimated;
@@ -147,6 +147,8 @@ namespace Assets.CS.TabletopUI {
             DraggableToken.resetToStartPos = true;
             DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
+
+            IsInAir = true;
 
             startPosition = RectTransform.position;
             startParent = RectTransform.parent;
@@ -299,6 +301,7 @@ namespace Assets.CS.TabletopUI {
         public void DisplayAtTableLevel() {
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
+            IsInAir = false;
         }
 
         public virtual bool Retire() {

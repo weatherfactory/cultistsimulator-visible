@@ -34,7 +34,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
         token.SetTokenContainer(this);
-        token.DisplayAtTableLevel();
+        token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
         // Verify if we are overlapping with anything. If so: move it.
         choreo.MoveAllTokensOverlappingWith(token);
     }

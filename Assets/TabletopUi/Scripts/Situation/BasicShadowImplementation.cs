@@ -19,10 +19,7 @@ namespace Assets.CS.TabletopUI
         // This only works if the card is a child of a main group directly, not if it's parented to a window.
         
         void Update () {
-            float zOffsetCard = card.anchoredPosition3D.z;
-
-            shadow.anchoredPosition3D = new Vector3(-5f, -5f, -zOffsetCard);
-            shadow.localScale = zOffsetCard == 0 ? Vector3.one : Vector3.one * 1.1f;
+            shadow.anchoredPosition3D = new Vector3(-5f, -5f, -card.anchoredPosition3D.z);
         }
         
     }

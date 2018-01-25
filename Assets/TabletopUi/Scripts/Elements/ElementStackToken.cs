@@ -539,21 +539,25 @@ namespace Assets.CS.TabletopUI {
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
                 SetQuantity(1);
 
-                var gateway = TokenContainer.GetElementStacksManager();
-                gateway.AcceptStack(cardLeftBehind);
+                // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
+                cardLeftBehind.transform.position = transform.position;
 
-                // Gateway accepting stack puts it to pos Vector3.zero, so this is last
+                var stacksManager = TokenContainer.GetElementStacksManager();
+                stacksManager.AcceptStack(cardLeftBehind);
+
+                // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
             }
         }
 
         protected override void StartDrag(PointerEventData eventData) {
+            base.StartDrag(eventData);
+
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
             if (stackBadge.IsHovering() == false)
                 SplitAllButNCardsToNewStack(1);
 
             Registry.Retrieve<TabletopManager>().ShowDestinationsForStack(this);
-            base.StartDrag(eventData);
         }
 
         public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {

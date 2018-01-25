@@ -12,10 +12,6 @@ namespace Assets.CS.TabletopUI
             if (DraggableToken.itemBeingDragged == null)
                 return;
 
-            Debug.Log("OnTableDrop: Rect Pos " + DraggableToken.itemBeingDragged.RectTransform.rect + " on parent " + DraggableToken.itemBeingDragged.transform.parent);
-            Debug.Log("OnTableDrop: Pointer Pos " + eventData.position);
-            
-
             if (onDropped != null)
                 onDropped();
         }

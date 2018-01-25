@@ -12,9 +12,17 @@ using UnityEngine;
 namespace Assets.TabletopUi.Scripts.Infrastructure {
     //places, arranges and displays things on the table
     public class Choreographer {
+
         private TabletopTokenContainer _tabletop;
         private SituationBuilder _situationBuilder;
         private Rect tableRect;
+
+        const float checkPointPerArcLength = 100f;
+        const float radiusBase = 50f;
+        const float radiusIncrement = 35f;
+        const float radiusMaxSize = 250f;
+
+        ChoreographerDebugView currentDebug;
 
         public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform) {
             _tabletop = tabletop;
@@ -24,14 +32,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Debug.Log("Tabletop Rect is " + tableRect);
         }
 
-        // -- POSITIONING ----------------------------
-
-        const float checkPointPerArcLength = 100f;
-        const float radiusBase = 50f;
-        const float radiusIncrement = 35f;
-        const float radiusMaxSize = 250f;
-
-        ChoreographerDebugView currentDebug;
+        // -- PUBLIC POSITIONING METHODS ----------------------------
 
         public void ArrangeTokenOnTable(SituationToken token) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
@@ -55,21 +56,39 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.FlipToFaceUp(true);
         }
 
-        public void MoveAllTokensOverlappingWith(DraggableToken token) {
-            var targetRect = GetCenterPosRect(token.RectTransform);
+        public void MoveAllTokensOverlappingWith(DraggableToken pushingToken) {
+            var targetRect = GetCenterPosRect(pushingToken.RectTransform);
 
-            foreach (var item in _tabletop.GetTokens()) {
-                if (item == token)
+            foreach (var token in _tabletop.GetTokens()) {
+                if (CanTokenBeIgnored(token, pushingToken))
                     continue;
-                if (!GetCenterPosRect(item.RectTransform).Overlaps(targetRect))
+                if (!GetCenterPosRect(token.RectTransform).Overlaps(targetRect))
                     continue;
 
-                AnimateTokenTo(item,
+                AnimateTokenTo(token,
                     duration: 0.2f,
-                    startPos: item.RectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(item, item.RectTransform.anchoredPosition));
+                    startPos: token.RectTransform.anchoredPosition3D,
+                    endPos: GetFreePosWithDebug(token, token.RectTransform.anchoredPosition));
             }
         }
+
+        /*
+
+        bool CanTokenBeIgnored(DraggableToken token, DraggableToken ignoreToken) {
+            if (token == ignoreToken)
+                return true;
+            if (token.IsBeingAnimated)
+                return true;
+            if (token.Defunct)
+                return true;
+            if (token.IsInAir)
+                return true;
+
+            return false;
+        }
+        */
+
+        // -- GET FREE POSITION ----------------------------
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
             currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
@@ -154,10 +173,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             
             Rect rectCheck;
 
-            foreach (var item in _tabletop.GetTokens()) {
-                rectCheck = GetCenterPosRect(item.RectTransform);
+            foreach (var token in _tabletop.GetTokens()) {
+                rectCheck = GetCenterPosRect(token.RectTransform);
 
-                if (item == ignoreToken || item.IsBeingAnimated)
+                if (CanTokenBeIgnored(token, ignoreToken))
                     continue;
 
                 if (currentDebug != null && !currentDebug.checkedRects.Contains(rectCheck))
@@ -168,6 +187,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
 
             return true;
+        }
+
+        bool CanTokenBeIgnored(DraggableToken token, DraggableToken ignoreToken) {
+            if (token == ignoreToken)
+                return true;
+            if (token.IsBeingAnimated)
+                return true;
+            if (token.Defunct)
+                return true;
+            if (token.IsInAir)
+                return true;
+
+            return false;
         }
 
         Vector2[] GetTestPoints(Vector3 pos, float radius) {
