@@ -91,6 +91,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         // -- GET FREE POSITION ----------------------------
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
+#if DEBUG
             currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
             currentDebug.tabletop = _tabletop.transform;
             currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
@@ -103,6 +104,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             currentDebug.hasDebugData = true;
 
             return pos;
+#else
+            return GetFreeTokenPosition(token, centerPos, startRadius);
+#endif
         }
 
         public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {

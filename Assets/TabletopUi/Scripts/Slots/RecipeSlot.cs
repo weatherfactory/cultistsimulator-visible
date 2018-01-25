@@ -125,7 +125,8 @@ namespace Assets.CS.TabletopUI {
             if (lastGlowState && CanInteractWithDraggedObject(DraggableToken.itemBeingDragged))
                 DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
 
-            ShowHoverGlow(true); // this only works if the glow was turned on, which was done previously
+            if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                ShowHoverGlow(true); 
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
@@ -155,16 +156,22 @@ namespace Assets.CS.TabletopUI {
         // Separate method from ShowGlow so we can restore the last state when unhovering
         protected virtual void ShowHoverGlow(bool show) {
             // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            if (DraggableToken.itemBeingDragged == null && !lastGlowState)
-                return;
+            //if (DraggableToken.itemBeingDragged == null && !lastGlowState)
+            //    return;
             
             if (show) { 
                 SetGlowColor(UIStyle.TokenGlowColor.OnHover);
                 SoundManager.PlaySfx("TokenHover");
+                slotGlow.Show();
             }
             else { 
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 SoundManager.PlaySfx("TokenHoverOff");
+
+                if (lastGlowState)
+                    slotGlow.Show();
+                else
+                    slotGlow.Hide();
             }
         }
 
