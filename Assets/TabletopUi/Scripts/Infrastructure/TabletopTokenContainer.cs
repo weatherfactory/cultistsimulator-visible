@@ -34,25 +34,24 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-        //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
-
-        var freePos = Registry.Retrieve<Choreographer>().GetFreeTokenPositionWithDebug(incumbent, incumbent.GetRectTransform().anchoredPosition, 
-            new Rect[1] { incumbent.GetRectTransform().rect }); // this is to ignore the current pos. Let's see what that does.
-
-        incumbent.GetRectTransform().anchoredPosition = freePos;
+        incumbent.GetRectTransform().anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper);
     }
 
     public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-        //we're starting with the assumption that we don't want to attempt a merge if both tokens are elementstacks; that should be catered for elsewhere
-
-        var freePos = Registry.Retrieve<Choreographer>().GetFreeTokenPositionWithDebug(incumbent, incumbent.GetRectTransform().anchoredPosition,
-            new Rect[1] { incumbent.GetRectTransform().rect }); // this is to ignore the current pos. Let's see what that does.
-
-        incumbent.GetRectTransform().anchoredPosition = freePos;
+        // We don't merge here. We assume if we end up here no merge was possible
+        incumbent.GetRectTransform().anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
         incumbentMoved = true;
         _elementStacksManager.AcceptStack(potentialUsurper);
+    }
+
+    Vector2 GetFreePosIgnoringCurrentPos(DraggableToken incumbent) {
+        var choreo = Registry.Retrieve<Choreographer>();
+        var currentPos = incumbent.GetRectTransform().anchoredPosition;
+        var ignorePositions = new Rect[1] { incumbent.GetRectTransform().rect }; // this is to ignore the current pos.
+
+        return choreo.GetFreeTokenPositionWithDebug(incumbent, currentPos, ignorePositions);
     }
 
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
