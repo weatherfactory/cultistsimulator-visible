@@ -23,7 +23,6 @@ namespace Assets.Core.Interfaces
         void AcceptStack(IElementStack stack);
         void AcceptStacks(IEnumerable<IElementStack> stacks);
         void RemoveStack(IElementStack stack);
-        void ConsumeAllStacks();
 
         void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource);
         // for debugging reference

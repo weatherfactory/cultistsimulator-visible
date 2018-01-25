@@ -176,11 +176,6 @@ public class ElementStacksManager : IElementStacksManager {
         _catalogue.NotifyStacksChanged();
     }
 
-    public void ConsumeAllStacks() {
-        foreach (IElementStack stack in TokenPhysicalLocation.GetStacks())
-            stack.SetQuantity(0);
-    }
-
     private void NotifyStacksChanged()
     {
         if(_catalogue==null)
