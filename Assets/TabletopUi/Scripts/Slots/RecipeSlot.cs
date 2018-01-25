@@ -240,17 +240,13 @@ namespace Assets.CS.TabletopUI {
         }
 
         
-        public override void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken) {
+        public override void SignalStackRemoved(ElementStackToken elementStackToken) {
             OnCardRemoved(elementStackToken);
             //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
             //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
             //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
             // - or else not have it occur more than once on the same slot? mark as defunct?
-            
-            // NOTE: We also have an issue that this is not called when we've removed the card but merged it into another card
-            // Put a ritual in a verb, remove the ritual and stack it on a copy of itself: slots remain, since we don't hit this.
         }
-
   
         public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
             //incomer is a token. Does it fit in the slot?

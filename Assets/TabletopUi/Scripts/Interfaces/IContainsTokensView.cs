@@ -26,7 +26,8 @@ namespace Assets.CS.TabletopUI.Interfaces
         void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
         void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
 
-        void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken);
+        void SignalStackAdded(ElementStackToken elementStackToken);
+        void SignalStackRemoved(ElementStackToken elementStackToken);
 
         string GetSaveLocationInfoForDraggable(DraggableToken draggable);
 

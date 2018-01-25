@@ -34,7 +34,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return stack;
         }
 
-        public virtual void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken) {
+        public virtual void SignalStackAdded(ElementStackToken elementStackToken) {
+            // By default: do nothing right now
+        }
+
+        public virtual void SignalStackRemoved(ElementStackToken elementStackToken) {
             // By default: do nothing right now
         }
 

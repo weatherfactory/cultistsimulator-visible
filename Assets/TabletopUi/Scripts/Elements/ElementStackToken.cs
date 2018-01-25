@@ -22,29 +22,17 @@ using Noon;
 namespace Assets.CS.TabletopUI {
     public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
 
-        [SerializeField]
-        Image artwork;
-        [SerializeField]
-        Image backArtwork;
-        [SerializeField]
-        Image textBackground;
-        [SerializeField]
-        TextMeshProUGUI text;
-        [SerializeField]
-        ElementStackBadge stackBadge;
-        [SerializeField]
-        TextMeshProUGUI stackCountText;
-        [SerializeField]
-        GameObject decayView;
-        [SerializeField]
-        TextMeshProUGUI decayCountText;
+        [SerializeField] Image artwork;
+        [SerializeField] Image backArtwork;
+        [SerializeField] Image textBackground;
+        [SerializeField] TextMeshProUGUI text;
+        [SerializeField] ElementStackBadge stackBadge;
+        [SerializeField] TextMeshProUGUI stackCountText;
+        [SerializeField] GameObject decayView;
+        [SerializeField] TextMeshProUGUI decayCountText;
+        [SerializeField] Sprite spriteUniqueTextBG;
 
-        [SerializeField]
-        string defaultRetireFX = "CardBurn";
-        [SerializeField]
-        CardEffectRemove cardBurnFX;
-        [SerializeField]
-        Sprite spriteUniqueTextBG;
+        [SerializeField] string defaultRetireFX = "CardBurn";
 
         private IElementStacksManager CurrentStacksManager;
 
@@ -447,14 +435,15 @@ namespace Assets.CS.TabletopUI {
             oldStacksManager.RemoveStack(this);
         }
 
-        // Called from TokenContainer, after StacksManager told it to
+        // Called from TokenContainer, usually after StacksManager told it to
         public override void SetTokenContainer(ITokenContainer newTokenContainer) {
             OldTokenContainer = TokenContainer;
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
-                OldTokenContainer.SignalElementStackRemovedFromContainer(this);
+                OldTokenContainer.SignalStackRemoved(this);
 
             TokenContainer = newTokenContainer;
+            newTokenContainer.SignalStackAdded(this);
         }
 
         #endregion
