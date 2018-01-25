@@ -49,14 +49,14 @@ namespace Assets.CS.TabletopUI {
         protected CanvasGroup canvasGroup;
 
         private float perlinRotationPoint = 0f;
-        private float dragHeight = -5f; // Draggables all drag on a specifc height and have a specific "default height"
+        private float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
         public bool Defunct { get; protected set; }
         public bool IsSelected { protected set; get; }
 
-        protected INotifier notifier;
         public ITokenContainer TokenContainer;
-        public ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
+        protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
+        protected INotifier notifier;
 
         bool lastGlowState;
         Color lastGlowColor;
@@ -70,14 +70,16 @@ namespace Assets.CS.TabletopUI {
         #region -- Basic Getters ------------------------------------
 
         public abstract string Id { get; }
+        public bool IsBeingAnimated { get; set; }
 
         protected virtual bool AllowsDrag() {
-            return true;
+            return !IsBeingAnimated;
         }
 
         protected virtual bool AllowsInteraction() {
-            return !Defunct && TokenContainer.AllowDrag && AllowsDrag();
+            return !Defunct && TokenContainer.AllowDrag && AllowsDrag() && !IsBeingAnimated;
         }
+
 
         /// <summary>
         /// This is an underscore-separated x, y localPosition in the current transform/containsTokens
@@ -217,9 +219,7 @@ namespace Assets.CS.TabletopUI {
             canvasGroup.blocksRaycasts = true;
 
             if (DraggableToken.resetToStartPos)
-                returnToStartPosition();
-
-            OldTokenContainer = null;
+                ReturnToStartPosition();
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
@@ -242,7 +242,7 @@ namespace Assets.CS.TabletopUI {
             DraggableToken.itemBeingDragged = null;
         }
 
-        private void returnToStartPosition() {
+        private void ReturnToStartPosition() {
             if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
                 ReturnToTabletop(null);
@@ -299,14 +299,6 @@ namespace Assets.CS.TabletopUI {
         public void DisplayAtTableLevel() {
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
-        }
-
-        public void DisplayInAir() {
-            transform.SetAsLastSibling();
-            float windowZOffset = -10f;
-
-            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, windowZOffset);
-            RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
         }
 
         public virtual bool Retire() {

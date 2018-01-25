@@ -443,7 +443,9 @@ namespace Assets.CS.TabletopUI {
                 OldTokenContainer.SignalStackRemoved(this);
 
             TokenContainer = newTokenContainer;
-            newTokenContainer.SignalStackAdded(this);
+
+            if (newTokenContainer != null)
+                newTokenContainer.SignalStackAdded(this);
         }
 
         #endregion

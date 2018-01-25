@@ -4,29 +4,42 @@ using UnityEngine;
 
 public class ChoreographerDebugView : MonoBehaviour {
 
+    public bool showCurrent = false;
+
     public Transform tabletop;
     public Rect targetRect;
     public bool tokenOverlaps;
-    public Vector2[] currentPoints;
+    public List<Vector2> checkedPoints;
     public Rect finalRect;
     public List<Rect> checkedRects;
 
-    public void Init(Rect targetRect, bool tokenOverlaps, Vector2[] currentPoints, Rect finalRect) {
-        this.targetRect = targetRect;
-        this.tokenOverlaps = tokenOverlaps;
-        this.currentPoints = currentPoints;
-        this.finalRect = finalRect;
-    }
+    public bool hasDebugData;
 
     // DRAWING
 
     private void OnDrawGizmosSelected() {
-        DrawSpawnPreview();
-        DrawCheckPoints();
-        Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
-        DrawCheckedRects();
-        Gizmos.color = Color.green;
-        DrawToken(finalRect);
+        if (showCurrent) {
+            Gizmos.color = Color.cyan;
+
+            var container = tabletop.GetComponent<TabletopTokenContainer>();
+
+            foreach (var item in container.GetTokens()) {
+                DrawToken(GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size));
+            }
+        }
+        if (hasDebugData) { 
+            DrawSpawnPreview();
+            DrawCheckPoints();
+            Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
+            DrawCheckedRects();
+            Gizmos.color = Color.green;
+            DrawToken(finalRect);
+        }
+    }
+
+    // Tokens have their pos in their center, rects in the bottom right
+    Rect GetCenterPosRect(Vector2 centerPos, Vector2 size) {
+        return new Rect(centerPos - size / 2f, size);
     }
 
     void DrawToken(Rect token) {
@@ -57,13 +70,13 @@ public class ChoreographerDebugView : MonoBehaviour {
     }
 
     void DrawCheckPoints() {
-        if (currentPoints != null)
-            foreach (var item in currentPoints)
+        if (checkedPoints != null)
+            foreach (var item in checkedPoints)
                 DrawCheckPoint(item, Color.cyan);
     }
 
     void DrawCheckPoint(Vector2 pos, Color color) {
         Gizmos.color = color;
-        Gizmos.DrawSphere(tabletop.position + Vector3.Scale(pos, tabletop.lossyScale), 2f * tabletop.lossyScale.x);
+        Gizmos.DrawSphere(tabletop.position + Vector3.Scale(pos, tabletop.lossyScale), 8f * tabletop.lossyScale.x);
     }
 }

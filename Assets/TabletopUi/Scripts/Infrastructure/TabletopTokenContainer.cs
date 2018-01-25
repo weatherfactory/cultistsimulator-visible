@@ -16,12 +16,16 @@ using Noon;
 
 public class TabletopTokenContainer : AbstractTokenContainer {
 
+    private Choreographer choreo;
+
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
 
     public override void Initialise() {
         _elementStacksManager = new ElementStacksManager(this, "tabletop");
         _elementStacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
+
+        choreo = Registry.Retrieve<Choreographer>();
     }
 
     public override void DisplayHere(DraggableToken token) {
@@ -31,27 +35,28 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         token.transform.localRotation = Quaternion.identity;
         token.SetTokenContainer(this);
         token.DisplayAtTableLevel();
+        // Verify if we are overlapping with anything. If so: move it.
+        choreo.MoveAllTokensOverlappingWith(token);
     }
 
     public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-        incumbent.RectTransform.anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
+        incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper);
     }
 
     public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         // We don't merge here. We assume if we end up here no merge was possible
-        incumbent.RectTransform.anchoredPosition = GetFreePosIgnoringCurrentPos(incumbent);
+        incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
         _elementStacksManager.AcceptStack(potentialUsurper);
     }
 
-    Vector2 GetFreePosIgnoringCurrentPos(DraggableToken incumbent) {
+    Vector2 GetFreeTokenPos(DraggableToken incumbent) {
         var choreo = Registry.Retrieve<Choreographer>();
         var currentPos = incumbent.RectTransform.anchoredPosition;
-        var ignorePositions = new Rect[1] { incumbent.RectTransform.rect }; // this is to ignore the current pos.
 
-        return choreo.GetFreeTokenPositionWithDebug(incumbent, currentPos, ignorePositions);
+        return choreo.GetFreePosWithDebug(incumbent, currentPos);
     }
 
     public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {

@@ -17,10 +17,13 @@ namespace Assets.CS.TabletopUI
         [SerializeField] RectTransform card;
 
         // This only works if the card is a child of a main group directly, not if it's parented to a window.
+        
         void Update () {
             float zOffsetCard = card.anchoredPosition3D.z;
 
-            shadow.anchoredPosition3D = new Vector3(-5f + zOffsetCard / 2f, -5f + zOffsetCard / 2f, -zOffsetCard);
+            shadow.anchoredPosition3D = new Vector3(-5f, -5f, -zOffsetCard);
+            shadow.localScale = zOffsetCard == 0 ? Vector3.one : Vector3.one * 1.1f;
         }
+        
     }
 }

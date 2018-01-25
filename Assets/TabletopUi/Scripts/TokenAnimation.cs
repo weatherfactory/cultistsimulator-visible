@@ -82,7 +82,8 @@ public class TokenAnimation : MonoBehaviour {
 
 		token = GetComponent<DraggableToken>();
 		token.enabled = false;
-		token.RectTransform.localScale = Vector3.one * scaleStart;
+        token.IsBeingAnimated = true;
+        token.RectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
 	}
 
@@ -115,6 +116,7 @@ public class TokenAnimation : MonoBehaviour {
 		token.RectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
 		token.RectTransform.localScale = Vector3.one * scaleEnd;
 		token.enabled = true;
+        token.IsBeingAnimated = false;
 
 		FireCompleteEvent();
 		Destroy(this);

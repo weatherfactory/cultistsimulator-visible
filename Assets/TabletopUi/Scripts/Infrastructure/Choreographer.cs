@@ -9,17 +9,14 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using UnityEngine;
 
-namespace Assets.TabletopUi.Scripts.Infrastructure
-{
+namespace Assets.TabletopUi.Scripts.Infrastructure {
     //places, arranges and displays things on the table
-    public class Choreographer
-    {
+    public class Choreographer {
         private TabletopTokenContainer _tabletop;
         private SituationBuilder _situationBuilder;
         private Rect tableRect;
 
-        public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform)
-        {
+        public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform) {
             _tabletop = tabletop;
             _situationBuilder = situationBuilder;
 
@@ -29,19 +26,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         // -- POSITIONING ----------------------------
 
-        const float checkPointPerArcLength = 70f;
+        const float checkPointPerArcLength = 100f;
         const float radiusBase = 50f;
         const float radiusIncrement = 35f;
         const float radiusMaxSize = 250f;
 
-        Rect targetRect;
-        bool tokenOverlaps;
-        Vector2[] currentPoints;
-        Rect finalRect;
-        List<Rect> checkedRects;
+        ChoreographerDebugView currentDebug;
 
         public void ArrangeTokenOnTable(SituationToken token) {
-            token.RectTransform.anchoredPosition = GetFreeTokenPositionWithDebug(token, Vector2.zero);
+            token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
 
             _tabletop.DisplaySituationTokenOnTable(token);
         }
@@ -49,97 +42,99 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void ArrangeTokenOnTable(ElementStackToken stack) {
             _tabletop.GetElementStacksManager().AcceptStack(stack); // this does parenting. Needs to happen before we position
 
-            if (stack.lastTablePos != null) { 
-                stack.RectTransform.anchoredPosition = GetFreeTokenPositionWithDebug(stack, stack.lastTablePos.Value);
+            if (stack.lastTablePos != null) {
+                stack.RectTransform.anchoredPosition = GetFreePosWithDebug(stack, stack.lastTablePos.Value);
             }
             else {
-                stack.RectTransform.anchoredPosition = GetFreeTokenPositionWithDebug(stack, Vector2.zero);
+                stack.RectTransform.anchoredPosition = GetFreePosWithDebug(stack, Vector2.zero);
                 stack.lastTablePos = stack.RectTransform.anchoredPosition;
             }
 
             stack.transform.localRotation = Quaternion.identity;
             stack.DisplayAtTableLevel();
-            stack.FlipToFaceUp(true);            
+            stack.FlipToFaceUp(true);
         }
 
-        public Vector2 GetFreeTokenPositionWithDebug(DraggableToken token, Vector2 centerPos, Rect[] avoidPositions = null) {
-            currentPoints = null;
-            tokenOverlaps = false;
-            checkedRects = new List<Rect>();
+        public void MoveAllTokensOverlappingWith(DraggableToken token) {
+            var targetRect = GetCenterPosRect(token.RectTransform);
 
-            var finalPos = GetFreeTokenPosition(token, centerPos, avoidPositions);
-
-            if (!tokenOverlaps)
-                return finalPos;
-
-            finalRect = GetCenterPosRect(finalPos, token.RectTransform.rect.size);
-            
-            var debugInfo = new GameObject("ChoreoDebugInfo").AddComponent<ChoreographerDebugView>();
-            debugInfo.Init(targetRect, tokenOverlaps, currentPoints, finalRect);
-            debugInfo.tabletop = _tabletop.transform;
-            debugInfo.checkedRects = new List<Rect>();
-
-            if (avoidPositions != null)
-                foreach (var item in avoidPositions)
-                    checkedRects.Add(item);
-
-            foreach (var item in _tabletop.GetTokens())
-                if (item != null && item.RectTransform != null)
-                    debugInfo.checkedRects.Add(GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size));
-
-            return finalPos;
+            foreach (var item in _tabletop.GetTokens()) {
+                if (item == token)
+                    continue;
+                if (GetCenterPosRect(item.RectTransform).Overlaps(targetRect))
+                    item.RectTransform.anchoredPosition = GetFreePosWithDebug(item, item.RectTransform.anchoredPosition);
+            }
         }
 
+        public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
+            currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
+            currentDebug.tabletop = _tabletop.transform;
+            currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+            currentDebug.checkedPoints = new List<Vector2>();
+            currentDebug.tokenOverlaps = false;
+            currentDebug.checkedRects = new List<Rect>();
 
-        public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, Rect[] avoidPositions = null) {
+            var pos = GetFreeTokenPosition(token, centerPos, startRadius);
+            currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
+            currentDebug.hasDebugData = true;
+
+            return pos;
+        }
+
+        public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
             centerPos = GetPosClampedToTable(centerPos);
-            targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+            var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
-            if (IsLegalPosition(targetRect, avoidPositions)) 
+            if (IsLegalPosition(targetRect, token))
                 return centerPos;
 
-            Debug.Log("Position is occupied! Checking nearby.");
+            if (currentDebug != null) {
+                currentDebug.targetRect = targetRect;
+                currentDebug.tokenOverlaps = true;
+            }
 
-            tokenOverlaps = true;
-            float radius = radiusBase;
-            
-            while (radius < radiusMaxSize) {
-                currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
+            float radius = startRadius > 0f ? startRadius : radiusBase;
+
+            while (radius <= radiusMaxSize) {
+                var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
 
                 foreach (var point in currentPoints) {
-                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), avoidPositions)) 
+                    if (currentDebug != null)
+                        currentDebug.checkedPoints.Add(point);
+
+                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
                         return point;
                 }
 
                 radius += radiusIncrement;
             }
 
-            Debug.Log("No Free Token position found! Rechecking all points with increased tolerance.");
-
-            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size / 3f), avoidPositions))
+            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size / 3f), token))
                 return centerPos;
 
             while (radius < radiusMaxSize) {
-                currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
+                var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
 
                 foreach (var point in currentPoints) {
-                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size / 3f), avoidPositions))
+                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size / 3f), token))
                         return point;
                 }
 
                 radius += radiusIncrement;
             }
-
-            Debug.LogWarning("No position found! Dumping in middle.");
 
             return Vector2.zero;
         }
 
         // Tokens have their pos in their center, rects in the bottom right
+        Rect GetCenterPosRect(RectTransform rectTrans) {
+            return GetCenterPosRect(rectTrans.anchoredPosition, rectTrans.rect.size);
+        }
+
         Rect GetCenterPosRect(Vector2 centerPos, Vector2 size) {
             return new Rect(centerPos - size / 2f, size);
         }
-                
+
         Vector2 GetPosClampedToTable(Vector2 pos) {
             const float padding = .2f;
 
@@ -148,18 +143,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return pos;
         }
 
-        bool IsLegalPosition(Rect rect, Rect[] avoidPositions = null) {
+        bool IsLegalPosition(Rect rect,  DraggableToken ignoreToken = null) {
             if (tableRect.Contains(rect.position + rect.size / 2f) == false)
                 return false;
+            
+            Rect rectCheck;
 
-            if (avoidPositions != null)
-                foreach (var item in avoidPositions) 
-                    if (item.Overlaps(rect)) 
-                        return false;
+            foreach (var item in _tabletop.GetTokens()) {
+                rectCheck = GetCenterPosRect(item.RectTransform);
 
-            foreach (var item in _tabletop.GetTokens()) 
-                if (GetCenterPosRect(item.RectTransform.anchoredPosition, item.RectTransform.rect.size).Overlaps(rect))
+                if (item == ignoreToken || item.IsBeingAnimated)
+                    continue;
+
+                if (currentDebug != null && !currentDebug.checkedRects.Contains(rectCheck))
+                    currentDebug.checkedRects.Add(rectCheck);
+
+                if (rectCheck.Overlaps(rect))
                     return false;
+            }
 
             return true;
         }
@@ -167,6 +168,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         Vector2[] GetTestPoints(Vector3 pos, float radius) {
             float circumference = 2f * Mathf.PI * radius;
             int numPoints = Mathf.FloorToInt(circumference / checkPointPerArcLength);
+            int remainder = numPoints % 4;
+
+            if (remainder != 0) // making sure we're always a mulitple of 4
+                numPoints += 4 - remainder;
 
             var points = new Vector2[numPoints];
             float angleSteps = Mathf.Deg2Rad * 360f / points.Length;
@@ -182,62 +187,40 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                                origin.y + radius * Mathf.Sin(angle));
         }
 
-        private bool TokenOverlapsPosition(DraggableToken token, Vector2 marginPixels, Vector2 candidatePos) {
-            foreach (var t in _tabletop.GetTokens()) {
-                if (token != t
-                    && candidatePos.x - t.transform.localPosition.x < marginPixels.x
-                    && candidatePos.x - t.transform.localPosition.x > -marginPixels.x
-                    && candidatePos.y - t.transform.localPosition.y < marginPixels.y
-                    && candidatePos.y - t.transform.localPosition.y > -marginPixels.y) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         // -- SITUATION MANAGEMENT ----------------------------
 
-        public void BeginNewSituation(SituationCreationCommand scc)
-        {
+        public void BeginNewSituation(SituationCreationCommand scc) {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
-            //if new situation is beginning with an existing verb: do not action the creation.
 
+            //if new situation is beginning with an existing verb: do not action the creation.
             //oh: I could have an scc property which is a MUST CREATE override
-           
-            var existingSituation = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations()
-                .SingleOrDefault(sc => sc.situationToken.Id == scc.Recipe.ActionId);
-            
+
+            var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            var existingSituation = registeredSits.SingleOrDefault(sc => sc.situationToken.Id == scc.Recipe.ActionId);
+
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
-            if (existingSituation != null)
-            {
+            if (existingSituation != null) {
                 NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
-                //end execution here
                 return;
             }
+
             var token = _situationBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
 
             //if token has been spawned from an existing token, animate its appearance
-            if (scc.SourceToken != null)
-            {
+            if (scc.SourceToken != null) {
                 var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
                 tokenAnim.onAnimDone += SituationAnimDone;
-                tokenAnim.SetPositions(scc.SourceToken.RectTransform.anchoredPosition3D,
-                    Registry.Retrieve<Choreographer>().
-                        GetFreeTokenPosition(token, new Vector2(0, -250f)));
+                tokenAnim.SetPositions(scc.SourceToken.RectTransform.anchoredPosition3D, GetFreePosWithDebug(token, scc.SourceToken.RectTransform.anchoredPosition, 200f));
                 tokenAnim.SetScaling(0f, 1f);
                 tokenAnim.StartAnim();
             }
-            else
-            {
+            else {
                 Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token);
             }
-
         }
 
-       public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair)
-        {
+        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
             var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
             stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
             stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, tokenSlotPair.Token.GetOngoingSlotPosition());
@@ -246,14 +229,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             stackAnim.StartAnim(0.2f);
         }
 
-        void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
-        {
+        void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
             if (!tokenSlotPair.RecipeSlot.Equals(null))
                 tokenSlotPair.RecipeSlot.AcceptStack(element);
         }
 
-        void SituationAnimDone(SituationToken token)
-        {
+        void SituationAnimDone(SituationToken token) {
             _tabletop.DisplaySituationTokenOnTable(token);
         }
 
