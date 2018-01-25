@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
@@ -19,7 +20,7 @@ public interface ICompendium
     void UpdateVerbs(Dictionary<string, IVerb> verbs);
     void UpdateLegacies(Dictionary<string, Legacy> legacies);
     void UpdateDeckSpecs(Dictionary<string, IDeckSpec> deckSpecs);
-    Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character,bool getHintRecipes);
+    Recipe GetFirstRecipeForAspectsWithVerb(IAspectsDictionary aspects, string verb, Character character,bool getHintRecipes);
     List<Recipe> GetAllRecipesAsList();
     Recipe GetRecipeById(string recipeId);
     Dictionary<string,Element> GetAllElementsAsDictionary();
@@ -81,7 +82,7 @@ public class Compendium : ICompendium
     /// <param name="character"></param>
     /// <param name="getHintRecipes">If true, get recipes with hintonly=true (and *only* hintonly=true)</param>
     /// <returns></returns>
-    public Recipe GetFirstRecipeForAspectsWithVerb(IDictionary<string, int> aspects, string verb, Character character,bool getHintRecipes)
+    public Recipe GetFirstRecipeForAspectsWithVerb(IAspectsDictionary aspects, string verb, Character character,bool getHintRecipes)
     {
         
         //for each recipe,
@@ -90,14 +91,20 @@ public class Compendium : ICompendium
         foreach (var recipe in candidateRecipes )
         {
             //for each requirement in recipe, check if that aspect does *not* exist at that level in Aspects
-            bool matches = true;
-            foreach (string requirementId in recipe.Requirements.Keys)
-            {
-                if (!aspects.Any(a => a.Key == requirementId && a.Value >= recipe.Requirements[requirementId]))
-                    matches = false;
-            }
+
+            if (recipe.RequirementsSatisfiedBy(aspects))
+                return recipe;
+            //Why wasn't the code using RequirementsSatisfiedBy? I think because it's very old code; but I've left it
+            //here for now in case there was a good reason for special case behaviour (like not honouring -1/NOT) - AK
+            //bool matches = true;
+            //foreach (string requirementId in recipe.Requirements.Keys)
+            //{
+
+            //    if (!aspects.Any(a => a.Key == requirementId && a.Value >= recipe.Requirements[requirementId]))
+            //        matches = false;
+            //}
             //if none fail, return that recipe
-            if (matches) return recipe;
+            //if (matches) return recipe;
             //if any fail, continue
         }
 

@@ -54,6 +54,12 @@
             isAspect: true,
 			description: "To recruit believers, I must build something for them to believe."
         },
+		        {
+            id: "ingredient",
+            label: "Ingredient",
+            isAspect: true,
+			description: "Fuel, ointment, pigment, patience: all are consumed in time."
+        },
         {
             id: "tool",
             label: "Tool",
@@ -250,6 +256,20 @@
             id: "recruiting",
             label: "Recruiting",
 			description: "To see the light, one cannot be blind; but sometimes, it's the light that blinds us.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+		{
+            id: "promotiontodisciple",
+            label: "Promotion",
+			description: "Time to take the deeper oaths.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+			 {
+            id: "promotiontocultspecialisation",
+            label: "Exaltation",
+			description: "These are the true mysteries of our tradition.",
             isAspect: true,
 			comments: "Recipe aspect"
         },

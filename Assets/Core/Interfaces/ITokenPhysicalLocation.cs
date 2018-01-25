@@ -15,7 +15,6 @@ namespace Assets.Core.Interfaces
         IElementStack ProvisionElementStack(string elementId, int quantity,Source stackSource, string locatorId=null);
         void DisplayHere(IElementStack stack);
         void DisplayHere(DraggableToken token);
-        IEnumerable<IElementStack> GetStacks();
         IEnumerable<SituationToken> GetSituationTokens();
         IEnumerable<DraggableToken> GetTokens();
         ElementStackToken ProvisionElementStackAsToken(string elementId, int quantity, Source stackSource, string locatorid = null);

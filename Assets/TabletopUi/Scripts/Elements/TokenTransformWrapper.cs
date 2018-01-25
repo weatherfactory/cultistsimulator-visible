@@ -57,16 +57,5 @@ namespace Assets.TabletopUi.Scripts {
             return wrappedTransform.GetComponentsInChildren<SituationToken>();
         }
 
-        public virtual IEnumerable<IElementStack> GetStacks() {
-            // we only want ElementStacks that are the children of the wrapped transform, not of any grandchildren and onwards
-            var allCandidateStacks = wrappedTransform.GetComponentsInChildren<ElementStackToken>();
-            List<IElementStack> firstLevelChildren = new List<IElementStack>();
-            foreach (var s in allCandidateStacks) {
-                if (s.transform.parent == wrappedTransform)
-                    firstLevelChildren.Add(s);
-            }
-
-            return firstLevelChildren;
-        }
     }
 }

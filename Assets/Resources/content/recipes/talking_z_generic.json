@@ -3,7 +3,8 @@
 {id: "speaktosomeone",
 label:"Discuss occult business",
 actionId: "talk",
-requirements: {mortal: 1},
+requirements: {society:-1,mortal: 1},
+comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[{id: "inspiremystique",chance:70},
 {id: "inspirenotoriety",chance:100}
 ],
@@ -15,7 +16,7 @@ craftable: true
 {id: "speakpublicly",
 label:"Speak of esoteric matters",
 actionId: "talk",
-requirements: {lore: 1},
+requirements: {society:-1,lore: 1},
 alternativerecipes:[{id: "inspiremystique",chance:70},
 {id: "inspirenotoriety",chance:70}],
 deckeffect: "acquaintances",

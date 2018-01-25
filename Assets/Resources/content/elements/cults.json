@@ -6,10 +6,12 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the Hours of struggle and conquest. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the Hours of struggle and conquest."
         },
           {
         id: "cultforge_1",
@@ -17,10 +19,12 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the fire that changes and remakes. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the fire that changes and remakes."
         },
 		          {
         id: "cultgrail_1",
@@ -28,10 +32,13 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the mysteries of birth, blood and appetite. [In the current build, however, all cults are effectively identical.]"
+
+            description: "An occult society dedicated to the mysteries of birth, blood and appetite."
         },
 		          {
         id: "cultheart_1",
@@ -39,10 +46,13 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the drumbeat which can never end. [In the current build, however, all cults are effectively identical.]"
+
+            description: "An occult society dedicated to the drumbeat which can never end."
         },
 		          {
         id: "cultknock_1",
@@ -50,10 +60,12 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the Hour at night's heart, on which the world turns. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the Hour at night's heart, on which the world turns."
         },
 		          {
         id: "cultlantern_1",
@@ -61,10 +73,12 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place."
         },
 		          {
         id: "cultmoth_1",
@@ -72,10 +86,12 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to chaos, and the unexpected Hours. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to chaos, and the unexpected Hours."
         },
 		          {
         id: "cultsecrethistories_1",
@@ -83,10 +99,11 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1},description: "For the higher mysteries, deeper oaths are needed."}
 			},
-            description: "An occult society dedicated to the study of the thousand unknown histories. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the study of the thousand unknown histories."
         },
 		          {
         id: "cultwinter_1",
@@ -94,10 +111,12 @@
             aspects:
             {society:1},
 			slots: {
-			"Member": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			"Awe or Fear?": {required: {reputation: 1},description: "My followers serve out of awe or fear."},
+			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			
+			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			"Trappings": {required: {tool: 1,ingredient:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the Hour of the cold that ends. [In the current build, however, all cults are effectively identical.]"
+            description: "An occult society dedicated to the Hour of the cold that ends."
         },
 		  
 ]
