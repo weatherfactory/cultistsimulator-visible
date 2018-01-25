@@ -148,7 +148,7 @@ namespace Assets.CS.TabletopUI {
             DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
 
-            IsInAir = true;
+            DisplayInAir();
 
             startPosition = RectTransform.position;
             startParent = RectTransform.parent;
@@ -298,7 +298,11 @@ namespace Assets.CS.TabletopUI {
 
         public abstract void ReturnToTabletop(INotification reason = null);
 
-        public void DisplayAtTableLevel() {
+        public virtual void DisplayInAir() {
+            IsInAir = true;
+        }
+
+        public virtual void DisplayAtTableLevel() {
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
             IsInAir = false;

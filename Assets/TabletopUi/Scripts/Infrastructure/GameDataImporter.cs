@@ -11,6 +11,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine.Assertions;
+using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -181,8 +182,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 command.OverrideTitle = TryGetStringFromHashtable(htSituationValues, SaveConstants.SAVE_TITLE);
                 command.CompletionCount = GetIntFromHashtable(htSituationValues, SaveConstants.SAVE_COMPLETIONCOUNT);
 
-
-                var situationAnchor= tabletop.CreateSituation(command, locationInfo.ToString());
+                var situationAnchor = CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;
 
                 ImportSituationNotes(htSituationValues,situationController);
@@ -193,9 +193,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 ImportSituationStoredElements(htSituationValues, situationController);
                 ImportOutputs(htSituationValues, situationController, tabletop);
 
-
                 
             }
+        }
+
+        ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
+            return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
         }
 
         private void ImportOutputs(Hashtable htSituationValues, SituationController situationController, TabletopTokenContainer tabletop)

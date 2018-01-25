@@ -78,10 +78,6 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         return choreo.GetFreePosWithDebug(incumbent, currentPos);
     }
 
-    public ISituationAnchor CreateSituation(SituationCreationCommand creationCommand, string locatorInfo = null) {
-        return Registry.Retrieve<SituationBuilder>().CreateTokenWithAttachedControllerAndSituation(creationCommand, locatorInfo);
-    }
-
     public void DisplaySituationTokenOnTable(SituationToken token) {
         DisplayHere(token);
         token.DisplayAtTableLevel();

@@ -412,7 +412,7 @@ namespace Assets.CS.TabletopUI {
         protected override void StartDrag(PointerEventData eventData) {
             // to ensure these are set before we split the cards
             DraggableToken.itemBeingDragged = this; 
-            IsInAir = true;
+            IsInAir = true; // This makes sure we don't consider it when checking for overlap
 
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
             if (stackBadge.IsHovering() == false)

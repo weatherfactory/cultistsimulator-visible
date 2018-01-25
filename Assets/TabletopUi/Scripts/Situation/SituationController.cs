@@ -84,6 +84,16 @@ namespace Assets.TabletopUi {
             }
         }
 
+        public string GetCurrentRecipeId() {
+            return Situation == null ? null : Situation.RecipeId;
+        }
+
+        public string GetActionId() {
+            return situationToken.Id;
+        }
+
+        #region -- Situation Window Communication --------------------
+
         public void OpenSituation() {
             // Make sure we're displaying as unstarted if for some reason we did not reset the window
             if (Situation.State == SituationState.Unstarted)
@@ -92,21 +102,15 @@ namespace Assets.TabletopUi {
             IsOpen = true;
             situationToken.OpenToken();
             situationWindow.Show();
+            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.Id);
         }
 
         public void CloseSituation() {
+            IsOpen = false;
             // This comes first so the token doesn't show a glow when it's being closed
             situationWindow.DumpAllStartingCardsToDesktop(); // only dumps if it can, obv.
             situationToken.CloseToken();
             situationWindow.Hide();
-        }
-
-        public string GetCurrentRecipeId() {
-            return Situation == null ? null : Situation.RecipeId;
-        }
-
-        public string GetActionId() {
-            return situationToken.Id;
         }
 
         public bool CanTakeDroppedToken(IElementStack stack) {
@@ -199,6 +203,8 @@ namespace Assets.TabletopUi {
             situationWindow.UpdateTextForPrediction(rp);
             situationToken.UpdateMiniSlotDisplay(situationWindow.GetOngoingStacks());
         }
+
+        #endregion
 
         private RecipePrediction getNextRecipePrediction(IAspectsDictionary aspects) {
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
@@ -322,8 +328,6 @@ namespace Assets.TabletopUi {
         public void Halt() {
             //currently used only in debug. Reset to starting state (which might be weird for Time) and end timer.
             Situation.Halt();
-
-
         }
 
         private void AttemptAspectInductions() {
@@ -401,7 +405,6 @@ namespace Assets.TabletopUi {
             situationWindow.SetSlotConsumptions();
             //move any slotted elements to storage
             situationWindow.StoreStacks(situationWindow.GetStartingStacks());
-
 
             //The game might be paused! or the player might just be incredibly quick off the mark
             //so immediately continue with a 0 interval - this won't advance time, but will update the visuals in the situation window

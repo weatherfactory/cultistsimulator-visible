@@ -19,8 +19,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void OpenToken();
         void CloseToken();
 
-        HeartbeatResponse ExecuteHeartbeat(float interval);
-
         void Initialise(IVerb verb, SituationController controller);
 
         void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots);
