@@ -72,22 +72,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
-        /*
-
-        bool CanTokenBeIgnored(DraggableToken token, DraggableToken ignoreToken) {
-            if (token == ignoreToken)
-                return true;
-            if (token.IsBeingAnimated)
-                return true;
-            if (token.Defunct)
-                return true;
-            if (token.IsInAir)
-                return true;
-
-            return false;
-        }
-        */
-
         // -- GET FREE POSITION ----------------------------
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
