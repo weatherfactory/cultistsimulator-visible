@@ -81,133 +81,6 @@ namespace Assets.CS.TabletopUI {
 
         #endregion 
 
-        #region -- Turn Card ------------------------------------------------------------------------------------
-
-        public void FlipToFaceUp(bool instant = false) {
-            Flip(true, instant);
-        }
-
-        public void FlipToFaceDown(bool instant = false) {
-            Flip(false, instant);
-        }
-
-        public void Flip(bool state, bool instant = false) {
-            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
-                return;
-
-            ShowGlow(!state); // disable face-down hover-effect
-
-            isFront = state;
-            //if a card has just been turned face up in a situation, it's now an existing, established card
-            if (isFront && StackSource.SourceType == SourceType.Fresh)
-                StackSource.SourceType = SourceType.Existing;
-
-            if (gameObject.activeInHierarchy == false || instant) {
-                transform.localRotation = GetFrontRotation(isFront);
-                return;
-            }
-
-            if (turnCoroutine != null)
-                StopCoroutine(turnCoroutine);
-
-            turnCoroutine = StartCoroutine(DoTurn());
-        }
-
-        Quaternion GetFrontRotation(bool isFront) {
-            return Quaternion.Euler(0f, isFront ? 0f : 180f, 0f);
-        }
-
-        public bool IsFront() {
-            return isFront;
-        }
-
-        IEnumerator DoTurn() {
-            float time = 0f;
-            float targetAngle = isFront ? 0f : 180f;
-            float currentAngle = transform.localEulerAngles.y;
-            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
-
-            while (time < duration) {
-                time += Time.deltaTime;
-                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
-                yield return null;
-            }
-
-            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
-            turnCoroutine = null;
-        }
-
-        public void SetBackface(string backId) {
-            Sprite sprite;
-
-            if (string.IsNullOrEmpty(backId))
-                sprite = null;
-            else
-                sprite = ResourcesManager.GetSpriteForCardBack(backId);
-
-            backArtwork.overrideSprite = sprite;
-        }
-
-        #endregion
-
-        #region -- Animated Card ------------------------------------------------------------------------------------
-
-        public bool CanAnimate() {
-            if (gameObject.activeInHierarchy == false)
-                return false; // can not animate if deactivated
-
-            return _element.AnimFrames > 0;
-        }
-
-        /// <summary>
-        /// Trigger an animation on the card
-        /// </summary>
-        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
-        /// <param name="frameCount">How many frames to show. Default is 1</param>
-        /// <param name="frameIndex">At which frame to start. Default is 0</param>
-        public void StartArtAnimation() {
-            if (!CanAnimate())
-                return;
-
-            if (animCoroutine != null)
-                StopCoroutine(animCoroutine);
-
-            // TODO: pull data from element itself and use that to drive the values below
-            float duration = 0.2f;
-            int frameCount = _element.AnimFrames;
-            int frameIndex = 0;
-
-            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
-        }
-
-        IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
-            Sprite[] animSprites = new Sprite[frameCount];
-
-            for (int i = 0; i < animSprites.Length; i++)
-                animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
-
-            float time = 0f;
-            int spriteIndex = -1;
-            int lastSpriteIndex = -1;
-
-            while (time < duration) {
-                time += Time.deltaTime;
-                spriteIndex = (frameCount == 1 ? 0 : Mathf.FloorToInt(time / duration * frameCount));
-
-                if (spriteIndex != lastSpriteIndex) {
-                    lastSpriteIndex = spriteIndex;
-                    // Ternary operator since the spriteIndex math will sometimes result in the last frame popping out of range, which is fine.
-                    artwork.overrideSprite = (spriteIndex < animSprites.Length ? animSprites[spriteIndex] : null);
-                }
-                yield return null;
-            }
-
-            // remove anim 
-            artwork.overrideSprite = null;
-        }
-
-        #endregion
-
         #region -- Set & Get Basic Values ------------------------------------------------------------------------------------
 
         public void SetQuantity(int quantity) {
@@ -353,6 +226,31 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
+        #region -- Assign to Stack & Container ------------------------------------------------------------------------------------
+
+        // Called from StacksManager
+        public void SetStackManager(IElementStacksManager manager) {
+            var oldStacksManager = CurrentStacksManager;
+            CurrentStacksManager = manager;
+            //notify afterwards, in case it counts the things *currently* in its list
+            oldStacksManager.RemoveStack(this);
+        }
+
+        // Called from TokenContainer, usually after StacksManager told it to
+        public override void SetTokenContainer(ITokenContainer newTokenContainer) {
+            OldTokenContainer = TokenContainer;
+
+            if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
+                OldTokenContainer.SignalStackRemoved(this);
+
+            TokenContainer = newTokenContainer;
+
+            if (newTokenContainer != null)
+                newTokenContainer.SignalStackAdded(this);
+        }
+
+        #endregion
+
         #region -- Retire + FX ------------------------------------------------------------------------------------
 
         public override bool Retire() {
@@ -421,31 +319,6 @@ namespace Assets.CS.TabletopUI {
             }
 
             Destroy(gameObject);
-        }
-
-        #endregion
-
-        #region -- Assign to Stack & Container ------------------------------------------------------------------------------------
-
-        // Called from StacksManager
-        public void SetStackManager(IElementStacksManager manager) {
-            var oldStacksManager = CurrentStacksManager;
-            CurrentStacksManager = manager;
-            //notify afterwards, in case it counts the things *currently* in its list
-            oldStacksManager.RemoveStack(this);
-        }
-
-        // Called from TokenContainer, usually after StacksManager told it to
-        public override void SetTokenContainer(ITokenContainer newTokenContainer) {
-            OldTokenContainer = TokenContainer;
-
-            if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
-                OldTokenContainer.SignalStackRemoved(this);
-
-            TokenContainer = newTokenContainer;
-
-            if (newTokenContainer != null)
-                newTokenContainer.SignalStackAdded(this);
         }
 
         #endregion
@@ -606,6 +479,133 @@ namespace Assets.CS.TabletopUI {
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+        }
+
+        #endregion
+
+        #region -- Turn Card ------------------------------------------------------------------------------------
+
+        public void FlipToFaceUp(bool instant = false) {
+            Flip(true, instant);
+        }
+
+        public void FlipToFaceDown(bool instant = false) {
+            Flip(false, instant);
+        }
+
+        public void Flip(bool state, bool instant = false) {
+            if (isFront == state && !instant) // if we're instant, ignore this to allow forcing of pos
+                return;
+
+            ShowGlow(!state); // disable face-down hover-effect
+
+            isFront = state;
+            //if a card has just been turned face up in a situation, it's now an existing, established card
+            if (isFront && StackSource.SourceType == SourceType.Fresh)
+                StackSource.SourceType = SourceType.Existing;
+
+            if (gameObject.activeInHierarchy == false || instant) {
+                transform.localRotation = GetFrontRotation(isFront);
+                return;
+            }
+
+            if (turnCoroutine != null)
+                StopCoroutine(turnCoroutine);
+
+            turnCoroutine = StartCoroutine(DoTurn());
+        }
+
+        Quaternion GetFrontRotation(bool isFront) {
+            return Quaternion.Euler(0f, isFront ? 0f : 180f, 0f);
+        }
+
+        public bool IsFront() {
+            return isFront;
+        }
+
+        IEnumerator DoTurn() {
+            float time = 0f;
+            float targetAngle = isFront ? 0f : 180f;
+            float currentAngle = transform.localEulerAngles.y;
+            float duration = Mathf.Abs(targetAngle - currentAngle) / 900f;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                transform.localRotation = Quaternion.Euler(0f, Mathf.Lerp(currentAngle, targetAngle, time / duration), 0f);
+                yield return null;
+            }
+
+            transform.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
+            turnCoroutine = null;
+        }
+
+        public void SetBackface(string backId) {
+            Sprite sprite;
+
+            if (string.IsNullOrEmpty(backId))
+                sprite = null;
+            else
+                sprite = ResourcesManager.GetSpriteForCardBack(backId);
+
+            backArtwork.overrideSprite = sprite;
+        }
+
+        #endregion
+
+        #region -- Animated Card ------------------------------------------------------------------------------------
+
+        public bool CanAnimate() {
+            if (gameObject.activeInHierarchy == false)
+                return false; // can not animate if deactivated
+
+            return _element.AnimFrames > 0;
+        }
+
+        /// <summary>
+        /// Trigger an animation on the card
+        /// </summary>
+        /// <param name="duration">Determines how long the animation runs. Time is spent equally on all frames</param>
+        /// <param name="frameCount">How many frames to show. Default is 1</param>
+        /// <param name="frameIndex">At which frame to start. Default is 0</param>
+        public void StartArtAnimation() {
+            if (!CanAnimate())
+                return;
+
+            if (animCoroutine != null)
+                StopCoroutine(animCoroutine);
+
+            // TODO: pull data from element itself and use that to drive the values below
+            float duration = 0.2f;
+            int frameCount = _element.AnimFrames;
+            int frameIndex = 0;
+
+            animCoroutine = StartCoroutine(DoAnim(duration, frameCount, frameIndex));
+        }
+
+        IEnumerator DoAnim(float duration, int frameCount, int frameIndex) {
+            Sprite[] animSprites = new Sprite[frameCount];
+
+            for (int i = 0; i < animSprites.Length; i++)
+                animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
+
+            float time = 0f;
+            int spriteIndex = -1;
+            int lastSpriteIndex = -1;
+
+            while (time < duration) {
+                time += Time.deltaTime;
+                spriteIndex = (frameCount == 1 ? 0 : Mathf.FloorToInt(time / duration * frameCount));
+
+                if (spriteIndex != lastSpriteIndex) {
+                    lastSpriteIndex = spriteIndex;
+                    // Ternary operator since the spriteIndex math will sometimes result in the last frame popping out of range, which is fine.
+                    artwork.overrideSprite = (spriteIndex < animSprites.Length ? animSprites[spriteIndex] : null);
+                }
+                yield return null;
+            }
+
+            // remove anim 
+            artwork.overrideSprite = null;
         }
 
         #endregion

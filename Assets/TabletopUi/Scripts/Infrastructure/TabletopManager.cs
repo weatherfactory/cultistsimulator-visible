@@ -128,7 +128,7 @@ namespace Assets.CS.TabletopUI {
         private void BeginGame(SituationBuilder builder) {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
-            if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) { 
+            if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
                 LoadGame();
             }
             else {
@@ -138,9 +138,9 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        private void InitialiseSubControllers(SpeedController speedController, 
+        private void InitialiseSubControllers(SpeedController speedController,
                                               HotkeyWatcher hotkeyWatcher,
-                                              CardAnimationController cardAnimationController, 
+                                              CardAnimationController cardAnimationController,
                                               MapController mapController,
                                               EndGameAnimController endGameAnimController) {
 
@@ -156,6 +156,11 @@ namespace Assets.CS.TabletopUI {
             _background.onDropped += HandleOnTableDropped;
             _background.onClicked += HandleOnTableClicked;
             DraggableToken.onChangeDragState += HandleDragStateChanged;
+        }
+
+        private void OnDestroy() {
+            // Static event so make sure to de-init once this object is destroyed
+            DraggableToken.onChangeDragState -= HandleDragStateChanged;
         }
 
         void InitializeTokenContainers() {
@@ -193,17 +198,11 @@ namespace Assets.CS.TabletopUI {
             contentImporter.PopulateCompendium(compendium);
         }
 
-        private void OnDestroy() {
-            // Sattic event so make sure to de-init once this object is destroyed
-            DraggableToken.onChangeDragState -= HandleDragStateChanged;
-        }
-
         public void SetPausedState(bool paused) {
             _speedController.SetPausedState(paused);
         }
 
         public void SetupNewBoard(SituationBuilder builder) {
-
             var chosenLegacy = CrossSceneState.GetChosenLegacy();
             if (chosenLegacy == null) {
                 NoonUtility.Log("No initial Legacy specified");

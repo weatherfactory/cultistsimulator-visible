@@ -349,7 +349,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         // Used when a dragged object is hovering something
-        public void ShowHoveringGlow(bool show) {
+        public virtual void ShowHoveringGlow(bool show) {
             // always use default color for the "draggable-item-can-be-dropped" hover glow
             // never trigger SFX, since the token you're hovering over already does that, 
             // since that allows us to use the default hover glow for click-hover with sound too
@@ -377,18 +377,16 @@ namespace Assets.CS.TabletopUI {
                     SoundManager.PlaySfx("TokenHover");
 
                 glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
-                glowImage.Show(true);
+                glowImage.Show();
             }
             else {
                 if (playSFX)
                     SoundManager.PlaySfx("TokenHoverOff");
 
-                glowImage.SetColor(lastGlowColor);
-
-                if (lastGlowState)
-                    glowImage.Show(true);
-                else
-                    glowImage.Hide(true);
+                if (lastGlowState) 
+                    glowImage.Show();
+                else  
+                    glowImage.Hide();
             }
         }
 
