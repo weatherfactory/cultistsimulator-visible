@@ -65,6 +65,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         }
 
+        public void DeleteCurrentSave()
+        {
+            File.Delete(NoonUtility.GetGameSaveLocation());
+        }
+
         //for saving from the tabletop
         public void SaveActiveGame(Tabletop tabletop,Character character)
         {

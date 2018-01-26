@@ -48,6 +48,7 @@ public class MenuScreenController : MonoBehaviour {
 	AsyncOperation operation;
 	Scene currentScene;
 
+    
 	public static int sceneToLoad;
 	// IMPORTANT! This is the build index of your loading scene. You need to change this to match your actual scene index
 	static int loadingSceneIndex = 1;
@@ -58,6 +59,7 @@ public class MenuScreenController : MonoBehaviour {
 		SceneManager.LoadScene(loadingSceneIndex);
 	}
 
+    
 	void Start() {
 	    var registry = new Registry();
 	    var compendium = new Compendium();
@@ -72,23 +74,30 @@ public class MenuScreenController : MonoBehaviour {
 	    CrossSceneState.SetMetaInfo(metaInfo);
 
 
-        var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
+        SetBeginContinueCondition();
+	}
+
+    public void SetBeginContinueCondition()
+    {
+
+        var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
         if (!saveGameManager.DoesGameSaveExist())
-        { 
+        {
             beginGameButton.Text = "BEGIN";
             //and set the legacy to the first in the list; this should be the starting legacy
-            CrossSceneState.SetChosenLegacy(compendium.GetAllLegacies().First());
+            CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
             sceneToLoad = SceneNumber.GameScene;
             sceneToLoad = SceneNumber.GameScene;
         }
         else
-        { 
-	        beginGameButton.Text = "CONTINUE";
-            if (!saveGameManager.SaveGameHasMatchingVersionNumber(metaInfo.VersionNumber))
+        {
+            beginGameButton.Text = "CONTINUE";
+            if (!saveGameManager.SaveGameHasMatchingVersionNumber(Registry.Retrieve<MetaInfo>().VersionNumber))
             {
                 beginGameButton.Text = "OLD SAVE FORMAT!";
             }
+
             if (saveGameManager.IsSavedGameActive())
                 //back into the game!
                 sceneToLoad = SceneNumber.GameScene;
@@ -103,27 +112,26 @@ public class MenuScreenController : MonoBehaviour {
                 //and we need to retrieve the legacy ids and populate with compendium data
                 if (savedCrossSceneState.AvailableLegacies.Count > 0)
                     CrossSceneState.SetAvailableLegacies(savedCrossSceneState.AvailableLegacies);
-            //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
+                //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
                 if (savedCrossSceneState.CurrentEnding != null)
                     CrossSceneState.SetCurrentEnding(savedCrossSceneState.CurrentEnding);
 
-                if(savedCrossSceneState.DefunctCharacter!=null)
+                if (savedCrossSceneState.DefunctCharacter != null)
                     CrossSceneState.SetDefunctCharacter(savedCrossSceneState.DefunctCharacter);
 
                 sceneToLoad = SceneNumber.NewGameScene;
-
             }
         }
+
         if (sceneToLoad < 0)
-			return;
+            return;
 
-		fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
-		currentScene = SceneManager.GetActiveScene();
-		StartCoroutine(LoadAsync(sceneToLoad));
+        fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
+        currentScene = SceneManager.GetActiveScene();
+        StartCoroutine(LoadAsync(sceneToLoad));
+    }
 
-	}
-
-	private IEnumerator LoadAsync(int levelNum) {
+    private IEnumerator LoadAsync(int levelNum) {
 		ShowLoadingVisuals();
 
 		yield return null; 
