@@ -1,0 +1,74 @@
+ {"recipes": [
+	
+	{
+        id: "studylatintutoring",
+        label: "Study Latin with a Tutor",
+        actionId: "study",
+        requirements: {tutorlatin:1},
+			slots:
+		{Costs: {required: {compensationvalue: 1}}},
+				alternativerecipes: [{id:"studylatintutoringpaid",chance:100}],
+		startdescription: "If I need to learn Latin, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
+        description: "Tutors don't work for free. Another time.",
+        warmup: 60,
+        craftable: true,
+    },
+		{
+        id: "studylatintutoringpaid",
+        label: "Study Latin with a Tutor",
+        actionId: "study",
+        requirements: {compensationvalue:2},
+			effects: {scholarlatin:1,compensationvalue:-2},
+		startdescription: "This will be sufficient. I'll listen carefully.",
+        description: "The language of Lucretius' 'On the Nature of Things', of Aquinas' 'Summa Theologiae', and of the notorious 'De Horis...'",
+    },
+	
+		{
+        id: "studygreektutoring",
+        label: "Study Greek with a Tutor",
+        actionId: "study",
+        requirements: {tutorgreek:1},
+			slots:
+		{Costs: {required: {compensationvalue: 1}}},
+				alternativerecipes: [{id:"studygreektutoringpaid",chance:100}],
+		startdescription: "If I need to learn Greek, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
+        description: "Tutors don't work for free. Another time.",
+        warmup: 60,
+        craftable: true,
+    },
+		{
+        id: "studygreektutoringpaid",
+        label: "Study Greek with a Tutor",
+        actionId: "study",
+        requirements: {compensationvalue:2},
+			effects: {scholargreek:1,compensationvalue:-2},
+		startdescription: "This will be sufficient. I'll listen carefully.",
+        description: "The language of the Metaphysics, of Procopius' 'Secret History', and of the menacing 'On What is Contained by Silver'...",
+    },
+	
+		{
+        id: "studyaramaictutoring",
+        label: "Study Aramaic with a Tutor",
+        actionId: "study",
+        requirements: {tutoraramaic:1},
+			slots:
+		{Costs: {required: {compensationvalue: 1}}},
+				alternativerecipes: [{id:"studyaramaictutoringpaid",chance:100}],
+		startdescription: "If I need to learn aramaic, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
+        description: "Tutors don't work for free. Another time.",
+        warmup: 60,
+        craftable: true,
+    },
+		{
+        id: "studyaramaictutoringpaid",
+        label: "Study Aramaic with a Tutor",
+        actionId: "study",
+        requirements: {compensationvalue:2},
+			effects: {scholararamaic:1,compensationvalue:-2},
+		startdescription: "This will be sufficient. I'll listen carefully.!",
+        description: "The language of the Visions of Amram, of the Book of Daniel, and of the Account of Kanishk at the Spider's Door" 
+    }
+	
+
+]
+}
