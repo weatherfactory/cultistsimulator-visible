@@ -101,6 +101,24 @@
             isAspect: true,
 			description: "This is useful for translating texts."
         },
+						{
+            id: "tutorlatin",
+            label: "Latin Scholar",
+            isAspect: true,
+		description: "A scholar of Latin who might be prepared to tutor you if you study with them."
+        },
+						{
+            id: "tutorgreek",
+            label: "Greek Scholar",
+            isAspect: true,
+		description: "A scholar of Greek who might be prepared to tutor you if you study with them."
+        },
+								{
+            id: "tutoraramaic",
+            label: "Aramaic Scholar",
+            isAspect: true,
+			description: "A scholar of Aramaic who might be prepared to tutor you if you study with them."
+        },
         {
             id: "knock",
             label: "Knock",
@@ -131,6 +149,12 @@
             id: "winter",
             label: "Winter",
 			description: "... [Winter is the principle of the White.]",
+            isAspect: true
+        },
+				        {
+            id: "compensationvalue",
+            label: "Value",
+			description: "Some spintriae are worth more than others. But don't expect to get change. This is not a grocery.",
             isAspect: true
         },
         {
