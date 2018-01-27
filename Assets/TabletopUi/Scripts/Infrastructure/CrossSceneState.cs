@@ -44,9 +44,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private static void AddMetaInfoToHashtable(Hashtable ht)
         {
-            
-            ht.Add(SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber);
-            
+
+            var htMetaInfo = new Hashtable();
+            htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber);
+            ht.Add(SaveConstants.SAVE_METAINFO,htMetaInfo);
+
         }
 
         private static void AddDefunctCharacterToHashtable(Hashtable ht)

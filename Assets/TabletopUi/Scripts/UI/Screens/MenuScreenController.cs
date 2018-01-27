@@ -22,10 +22,13 @@ public class MenuScreenController : MonoBehaviour {
 
 	bool waitForInput = true;
 
+    public TextMeshProUGUI purgeSaveMessage;
+
 	[Header("Buttons")]
 	public BeginGameButton beginGameButton;
 	public Button showOptions;
 	public EventSystem eventSystem;
+    public GameObject purgeButton;
 
 	[Header("Loading Visuals")]
 	public LoadingIcon loadingIcon;
@@ -79,12 +82,16 @@ public class MenuScreenController : MonoBehaviour {
 
     public void SetBeginContinueCondition()
     {
+        beginGameButton.gameObject.SetActive(true);
+        purgeSaveMessage.gameObject.SetActive(false);
+        purgeButton.gameObject.SetActive(false);
 
         var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
         if (!saveGameManager.DoesGameSaveExist())
         {
             beginGameButton.Text = "BEGIN";
+
             //and set the legacy to the first in the list; this should be the starting legacy
             CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
             sceneToLoad = SceneNumber.GameScene;
@@ -93,9 +100,14 @@ public class MenuScreenController : MonoBehaviour {
         else
         {
             beginGameButton.Text = "CONTINUE";
+            purgeButton.gameObject.SetActive(true);
+
             if (!saveGameManager.SaveGameHasMatchingVersionNumber(Registry.Retrieve<MetaInfo>().VersionNumber))
             {
-                beginGameButton.Text = "OLD SAVE FORMAT!";
+                //version doesn't match. Hide begin button, display message
+                beginGameButton.gameObject.SetActive(false);
+                purgeButton.gameObject.SetActive(true);
+                purgeSaveMessage.gameObject.SetActive(true);
             }
 
             if (saveGameManager.IsSavedGameActive())
@@ -126,86 +138,98 @@ public class MenuScreenController : MonoBehaviour {
         if (sceneToLoad < 0)
             return;
 
-        fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
-        currentScene = SceneManager.GetActiveScene();
-        StartCoroutine(LoadAsync(sceneToLoad));
+
+        //fiddling with the menu buttons has borked Martin's async scene loader
+        //commenting out: MN, talk me through it? - AK
+       // fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
+        //currentScene = SceneManager.GetActiveScene();
+        //StartCoroutine(LoadAsync(sceneToLoad));
     }
 
-    private IEnumerator LoadAsync(int levelNum) {
-		ShowLoadingVisuals();
 
-		yield return null; 
+    public void StartGame()
+    {
+        SceneManager.LoadScene(sceneToLoad);
+    }
 
-		FadeIn();
-		StartOperation(levelNum);
 
-		// operation does not auto-activate scene, so it's stuck at 0.9
-		while (DoneLoading() == false) 
-			yield return null;
-
-		if (loadSceneMode == LoadSceneMode.Additive)
-			audioListener.enabled = false;
-
-		ShowCompletionVisuals();
-
-		yield return new WaitForSeconds(waitOnLoadEnd);
-
-		while (waitForInput)
-			yield return null;
-
-		FadeOut();
-
-		yield return new WaitForSeconds(fadeDuration);
-
-		if (loadSceneMode == LoadSceneMode.Additive)
-			SceneManager.UnloadSceneAsync(currentScene.name);
-		else
-			operation.allowSceneActivation = true;
-	}
-
-	private void StartOperation(int levelNum) {
-		Application.backgroundLoadingPriority = loadThreadPriority;
-		operation = SceneManager.LoadSceneAsync(levelNum, loadSceneMode);
-
-		if (loadSceneMode == LoadSceneMode.Single)
-			operation.allowSceneActivation = false;
-	}
-
-	private bool DoneLoading() {
-		return (loadSceneMode == LoadSceneMode.Additive && operation.isDone) || (loadSceneMode == LoadSceneMode.Single && operation.progress >= 0.9f); 
-	}
-
-	void FadeIn() {
-		fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
-	}
-
-	void FadeOut() {
-		fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
-	}
-
-	void ShowLoadingVisuals() {
-		if (loadingIcon)
-			loadingIcon.doRotation = true;
-	}
-
-	void ShowCompletionVisuals() {
-		if (loadingIcon)
-			loadingIcon.gameObject.SetActive(false);
-	}
-
-	public void StartGame() {
-		if (!waitForInput)
-			return;
-		
-		if (DoneLoading() == false) 
-			eventSystem.SetSelectedGameObject(beginGameButton.gameObject);
-
-		eventSystem.enabled = false;
-		waitForInput = false;		
-	}
     public void Exit()
     {
         Application.Quit();
     }
+
+    //   private IEnumerator LoadAsync(int levelNum) {
+    //	ShowLoadingVisuals();
+
+    //	yield return null; 
+
+    //	FadeIn();
+    //	StartOperation(levelNum);
+
+    //	// operation does not auto-activate scene, so it's stuck at 0.9
+    //	while (DoneLoading() == false) 
+    //		yield return null;
+
+    //	if (loadSceneMode == LoadSceneMode.Additive)
+    //		audioListener.enabled = false;
+
+    //	ShowCompletionVisuals();
+
+    //	yield return new WaitForSeconds(waitOnLoadEnd);
+
+    //	while (waitForInput)
+    //		yield return null;
+
+    //	FadeOut();
+
+    //	yield return new WaitForSeconds(fadeDuration);
+
+    //	if (loadSceneMode == LoadSceneMode.Additive)
+    //		SceneManager.UnloadSceneAsync(currentScene.name);
+    //	else
+    //		operation.allowSceneActivation = true;
+    //}
+
+    //private void StartOperation(int levelNum) {
+    //	Application.backgroundLoadingPriority = loadThreadPriority;
+    //	operation = SceneManager.LoadSceneAsync(levelNum, loadSceneMode);
+
+    //	if (loadSceneMode == LoadSceneMode.Single)
+    //		operation.allowSceneActivation = false;
+    //}
+
+    //private bool DoneLoading() {
+    //	return (loadSceneMode == LoadSceneMode.Additive && operation.isDone) || (loadSceneMode == LoadSceneMode.Single && operation.progress >= 0.9f); 
+    //}
+
+    //void FadeIn() {
+    //	fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
+    //}
+
+    //void FadeOut() {
+    //	fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
+    //}
+
+    //void ShowLoadingVisuals() {
+    //	if (loadingIcon)
+    //		loadingIcon.doRotation = true;
+    //}
+
+    //void ShowCompletionVisuals() {
+    //	if (loadingIcon)
+    //		loadingIcon.gameObject.SetActive(false);
+    //}
+
+    //public void StartGame() {
+    //	//if (!waitForInput)
+    //	//	return;
+
+    //	//if (DoneLoading() == false) 
+    //	//	eventSystem.SetSelectedGameObject(beginGameButton.gameObject);
+
+    //	//eventSystem.enabled = false;
+    //	//waitForInput = false;		
+    //}
+
 
 }
