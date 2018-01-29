@@ -32,6 +32,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack)
         {
+            stack.transform.localRotation = Quaternion.identity;
+            
+            stack.FlipToFaceUp(true);
+
+            _tabletop.GetElementStacksManager().AcceptStack(stack); //moved up here so the localPosition tested for overlaps is relative to tabletop parent. This may all be irrelevant with Martin's rework. - AK
+
+
             if (stack.lastTablePos != null) { 
                 stack.transform.position = (Vector3) stack.lastTablePos;
             }
@@ -40,11 +47,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 stack.lastTablePos = stack.transform.position;
             }
 
-            stack.transform.localRotation = Quaternion.identity;
-            stack.DisplayAtTableLevel();
-            stack.FlipToFaceUp(true);
+            stack.DisplayAtTableLevel(); //without this, the 3D position is in the air, not on the tabletop, after the localPosition change above. This needs fixing, but will presumably become irrelevant with Martin's rework anyway. - AK
 
-            _tabletop.GetElementStacksManager().AcceptStack(stack);
         }
 
         public void BeginNewSituation(SituationCreationCommand scc)
