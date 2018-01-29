@@ -72,6 +72,16 @@
 			animFrames: 1,
 			xtriggers: {recruiting: victor_b}
         },
+						 {
+        id: "generic_a",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1},
+            description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: generic_a}
+        },
+		
 								 {
         id: "clovette_b",
             label: "Clovette, a believer",
@@ -146,6 +156,14 @@
 			xtriggers: {promotiontodisciple: victor_c}
         },
 		
+						 {
+        id: "generic_b",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative."
+        },
 		
 		 {
         id: "clovette_c",
@@ -156,6 +174,7 @@
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: clovette_d}
         },
+		
 		 {
         id: "dorothy_c",
             label: "Dorothy, a disciple",
