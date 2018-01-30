@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Image artwork;
 
         [SerializeField] TextMeshProUGUI text;
-        [SerializeField] GameObject countdownCanvas;
+        [SerializeField] Canvas countdownCanvas;
         [SerializeField] Image countdownBar;
         [SerializeField] Image countdownBadge;
         [SerializeField] TextMeshProUGUI countdownText;
@@ -76,17 +76,15 @@ namespace Assets.CS.TabletopUI {
                 notifier.TokenReturnedToTabletop(this, reason);
         }
 
-        /*
         public override void DisplayInAir() {
             base.DisplayInAir();
-            countdownCanvas.sortingOrder = 1;
+            countdownCanvas.overrideSorting = false;
         }
 
         public override void DisplayAtTableLevel() {
             base.DisplayAtTableLevel();
-            countdownCanvas.sortingOrder = 0;
+            countdownCanvas.overrideSorting = true;
         }
-        */
 
         #endregion
 
