@@ -430,7 +430,7 @@ namespace Assets.CS.TabletopUI {
                 if (!tokenDroppedOn.SituationController.IsOpen)
                     tokenDroppedOn.OpenSituation();
                 else
-                    tokenDroppedOn.OpenToken(); // This will turn off any uneeded hover effects
+                    tokenDroppedOn.DisplayAsOpen(); // This will turn off any uneeded hover effects
 
                 tokenDroppedOn.SituationController.PushDraggedStackIntoStartingSlots(this);
                 return;

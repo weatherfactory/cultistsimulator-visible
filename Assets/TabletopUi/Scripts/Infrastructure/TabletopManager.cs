@@ -405,7 +405,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
-            //including the situationToken so we can zoom to it or otherwise signal it at some point, but for now, let's just play some scary music
             backgroundMusic.PlayImpendingDoom();
         }
 

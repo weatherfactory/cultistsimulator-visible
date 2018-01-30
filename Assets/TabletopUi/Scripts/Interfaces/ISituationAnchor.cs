@@ -13,22 +13,24 @@ namespace Assets.TabletopUi.Scripts.Interfaces
     public interface ISituationAnchor
     {
         string Id { get; }
+
         SituationController SituationController { get; }
+
         string SaveLocationInfo { get; set; }
         bool IsTransient { get; }
-        void OpenToken();
-        void CloseToken();
+
+        void DisplayAsOpen();
+        void DisplayAsClosed();
 
         void Initialise(IVerb verb, SituationController controller);
 
-        void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots);
+        void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots);
         void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe);
-        void UpdateMiniSlotDisplay(IEnumerable<IElementStack> getStacksInOngoingSlots);
+        void DisplayStackInMiniSlot(IEnumerable<IElementStack> getStacksInOngoingSlots);
         void DisplayComplete();
         bool Retire();
 
         void SetCompletionCount(int newCount);
-        int GetCompletionCount();
 
         void SetGlowColor(UIStyle.TokenGlowColor colorType);
         void ShowGlow(bool glowState, bool instant = false);

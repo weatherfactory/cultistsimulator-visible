@@ -75,7 +75,7 @@ namespace Assets.TabletopUi {
 
             situationWindow.SetOngoing(command.Recipe);
 
-            situationToken.DisplayMiniSlotDisplay(command.Recipe.SlotSpecifications);
+            situationToken.DisplayMiniSlot(command.Recipe.SlotSpecifications);
             situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, command.Recipe);
             situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, command.Recipe);
 
@@ -163,8 +163,8 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
-            situationToken.UpdateMiniSlotDisplay(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
-            situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
+            situationToken.DisplayStackInMiniSlot(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
+            situationToken.DisplayMiniSlot(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
             StoreStacks(situationWindow.GetStartingStacks());
 
@@ -176,17 +176,17 @@ namespace Assets.TabletopUi {
             }
         }
 
-        public void SituationOngoing() {
-            var currentRecipe = compendium.GetRecipeById(Situation.RecipeId);
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
-            situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
-        }
-
         void StoreStacks(IEnumerable<IElementStack> stacks) {
             var inputStacks = situationWindow.GetOngoingStacks();
             var storageStackManager = situationWindow.GetStorageStacksManager();
             storageStackManager.AcceptStacks(inputStacks);
             situationWindow.DisplayStoredElements(); //displays the miniversion of the cards. This should 
+        }
+
+        public void SituationOngoing() {
+            var currentRecipe = compendium.GetRecipeById(Situation.RecipeId);
+            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
+            situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Assets.TabletopUi {
             INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
             SetOutput(outputStacks.ToList());
 
-            situationWindow.ReceiveNotification(notification);
+            situationWindow.ReceiveTextNote(notification);
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindow.SetComplete();
@@ -236,7 +236,7 @@ namespace Assets.TabletopUi {
             // Now update the token based on the current stacks in the window
             situationToken.DisplayComplete();
             situationToken.SetCompletionCount(GetNumOutputCards());
-            situationToken.UpdateMiniSlotDisplay(situationWindow.GetOngoingStacks());
+            situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
 
             AttemptAspectInductions();
         }
@@ -305,7 +305,7 @@ namespace Assets.TabletopUi {
                 situationWindow.SetUnstarted();
 
             IsOpen = true;
-            situationToken.OpenToken();
+            situationToken.DisplayAsOpen();
             situationWindow.Show();
             Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.Id);
         }
@@ -316,7 +316,7 @@ namespace Assets.TabletopUi {
             situationWindow.DumpAllStartingCardsToDesktop(); // only dumps if it can, obv.
             situationWindow.Hide();
 
-            situationToken.CloseToken();
+            situationToken.DisplayAsClosed();
         }
 
         public bool CanTakeDroppedToken(IElementStack stack) {
@@ -406,7 +406,7 @@ namespace Assets.TabletopUi {
                 BurnImageUnderToken(rp.BurnImage);
 
             situationWindow.UpdateTextForPrediction(rp);
-            situationToken.UpdateMiniSlotDisplay(situationWindow.GetOngoingStacks());
+            situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
         }
 
         private RecipePrediction GetNextRecipePrediction(IAspectsDictionary aspects) {
@@ -428,7 +428,7 @@ namespace Assets.TabletopUi {
         }
 
         public void AddNote(INotification notification) {
-            situationWindow.ReceiveNotification(notification);
+            situationWindow.ReceiveTextNote(notification);
         }
 
         public void ShowDestinationsForStack(IElementStack stack, bool show) {
@@ -499,7 +499,7 @@ namespace Assets.TabletopUi {
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
                 situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, Situation.TimeRemaining);
 
-                situationSaveData.Add(SaveConstants.SAVE_COMPLETIONCOUNT, situationToken.GetCompletionCount());
+                situationSaveData.Add(SaveConstants.SAVE_COMPLETIONCOUNT, GetNumOutputCards());
             }
 
             //save stacks in window (starting) slots

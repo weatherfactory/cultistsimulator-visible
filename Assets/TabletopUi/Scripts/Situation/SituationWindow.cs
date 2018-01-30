@@ -182,12 +182,6 @@ namespace Assets.CS.TabletopUI {
 			DisplayButtonState(false);
 		}
 
-        public void ReceiveNotification(INotification notification)
-        {
-
-            PaginatedNotes.AddText(notification.Description);
-        }
-
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
@@ -198,8 +192,7 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        public void DisplayHintRecipeFound(Recipe r)
-        {
+        public void DisplayHintRecipeFound(Recipe r) {
             Title = r.Label;
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
             DisplayRecipeMetaComment(null);
@@ -208,20 +201,15 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
+        public void ReceiveTextNote(INotification notification) {
+            PaginatedNotes.AddText(notification.Description);
+        }
 
         public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
 			DisplayRecipeMetaComment(recipePrediction.Commentary);
 			DisplayButtonState(false);
-		}
-
-		public void DisplayAspects(IAspectsDictionary forAspects) {
-			aspectsDisplay.DisplayAspects(forAspects);
-		}
-
-        public void DisplayStoredElements() {
-            ongoing.ShowStoredAspects(GetStoredStacks());
         }
 
         public void DisplayRecipeMetaComment(string hint) {
@@ -234,8 +222,15 @@ namespace Assets.CS.TabletopUI {
             hintText.text = hint;
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
+        public void DisplayAspects(IAspectsDictionary forAspects) {
+			aspectsDisplay.DisplayAspects(forAspects);
+		}
 
+        public void DisplayStoredElements() {
+            ongoing.ShowStoredAspects(GetStoredStacks());
+        }
+
+        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
             ongoing.UpdateTime(duration, timeRemaining,recipe);
         }
 
@@ -269,8 +264,6 @@ namespace Assets.CS.TabletopUI {
         // ACTIONS
 
         void HandleStartButton() {
-            // TODO: Could turn into clear all button on Completion?
-            // TODO: Alternative one-click confirm on empty post-results window to reset?
             situationController.AttemptActivateRecipe();
         }
         
@@ -278,16 +271,6 @@ namespace Assets.CS.TabletopUI {
             DumpToDesktop(GetOutputStacks());
             situationController.ResetSituation();
         }
-
-        /*
-        // currently not in use
-        public void DumpAllCardsToDesktop() {
-            DumpToDesktop(GetStartingStacks());
-            DumpToDesktop(GetOngoingStacks());
-            // Don't dump stored stacks - they're supposed to be inaccessible
-            DumpToDesktop(GetOutputStacks());
-        }
-        */
 
         public void DumpAllStartingCardsToDesktop() {
             if (situationController.Situation.State == SituationState.Unstarted)
@@ -306,8 +289,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         // ISituationDetails
-
-
 
         public IEnumerable<IElementStack> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
@@ -330,8 +311,7 @@ namespace Assets.CS.TabletopUI {
             return storage.GetElementStacksManager();
         }
 
-        public IElementStacksManager GetOutputStacksManager()
-        {
+        public IElementStacksManager GetOutputStacksManager() {
             return results.GetElementStacksManager();
         }
 
@@ -344,9 +324,9 @@ namespace Assets.CS.TabletopUI {
         public void SetSlotConsumptions() {
             foreach (var s in startingSlots.GetAllSlots())
                 s.SetConsumption();
+
             foreach (var o in ongoing.GetAllSlots())
                 o.SetConsumption();
-
         }
 
 
@@ -382,15 +362,13 @@ namespace Assets.CS.TabletopUI {
             return GetStorageStacksManager().GetTotalAspects(showElementAspects);
         }
 
-        public IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects)
-        {
+        public IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects) {
             return GetOutputStacksManager().GetTotalAspects(showElementAspects);
         }
 
 
 
-        public IEnumerable<ISituationNote> GetNotes()
-        {
+        public IEnumerable<ISituationNote> GetNotes() {
             return PaginatedNotes.GetCurrentTexts();
         }
 
