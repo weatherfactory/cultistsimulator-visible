@@ -55,6 +55,10 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         token.SetTokenContainer(this);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
         // Verify if we are overlapping with anything. If so: move it.
+    }
+
+    // Tabletop specific
+    public void CheckOverlappingTokens(DraggableToken token) {
         choreo.MoveAllTokensOverlappingWith(token);
     }
 
@@ -80,6 +84,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
     public void DisplaySituationTokenOnTable(SituationToken token) {
         DisplayHere(token);
+        CheckOverlappingTokens(token);
         token.DisplayAtTableLevel();
     }
 
@@ -95,13 +100,14 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         if (DraggableToken.itemBeingDragged != null) {
             DraggableToken.SetReturn(false, "dropped on the background");
 
-            if (DraggableToken.itemBeingDragged is SituationToken)
+            if (DraggableToken.itemBeingDragged is SituationToken) 
                 DisplaySituationTokenOnTable((SituationToken)DraggableToken.itemBeingDragged);
-            else if (DraggableToken.itemBeingDragged is ElementStackToken)
+            else if (DraggableToken.itemBeingDragged is ElementStackToken) 
                 GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged));
-            else
+            else 
                 throw new NotImplementedException("Tried to put something weird on the table");
 
+            CheckOverlappingTokens(DraggableToken.itemBeingDragged);
             SoundManager.PlaySfx("CardDrop");
         }
     }
