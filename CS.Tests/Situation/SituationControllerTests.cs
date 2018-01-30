@@ -57,14 +57,14 @@ namespace Assets.Editor.Tests
         [Test]
         public void AllOutputsGone_ResetsStateMachine()
         {
-            sc.ResetToStartingState();
+            sc.ResetSituation();
             _situationMock.Received().ResetIfComplete();
         }
 
         [Test]
         public void SituationHasBeenReset_DisplaysStartingInfoInDetails()
         {
-            sc.SituationHasBeenReset();
+            sc.ResetSituation();
             situationDetailsMock.Received().SetUnstarted();
         }
 

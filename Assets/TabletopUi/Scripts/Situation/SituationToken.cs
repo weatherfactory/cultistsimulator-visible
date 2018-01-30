@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Image artwork;
 
         [SerializeField] TextMeshProUGUI text;
-        [SerializeField] Canvas countdownCanvas;
+        [SerializeField] GameObject countdownCanvas;
         [SerializeField] Image countdownBar;
         [SerializeField] Image countdownBadge;
         [SerializeField] TextMeshProUGUI countdownText;
@@ -76,6 +76,7 @@ namespace Assets.CS.TabletopUI {
                 notifier.TokenReturnedToTabletop(this, reason);
         }
 
+        /*
         public override void DisplayInAir() {
             base.DisplayInAir();
             countdownCanvas.sortingOrder = 1;
@@ -85,6 +86,7 @@ namespace Assets.CS.TabletopUI {
             base.DisplayAtTableLevel();
             countdownCanvas.sortingOrder = 0;
         }
+        */
 
         #endregion
 
@@ -109,8 +111,6 @@ namespace Assets.CS.TabletopUI {
 
         private void SetTimerVisibility(bool b) {
             countdownCanvas.gameObject.SetActive(b);
-            countdownBar.gameObject.SetActive(b);
-            countdownBadge.gameObject.SetActive(b);
         }
 
         public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {

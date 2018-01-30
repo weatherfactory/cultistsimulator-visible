@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Noon;
 using NSubstitute;
 using NUnit.Framework;
+using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.Editor.Tests
 {
@@ -16,7 +17,7 @@ namespace Assets.Editor.Tests
     public class ElementStacksManagerTests
     {
         private List<IElementStack> stacks;
-        private ITokenPhysicalLocation wrapper;
+        private ITokenContainer wrapper;
         private Registry registry;
         private ElementStacksManager elementStacksManager;
         [SetUp]
@@ -28,7 +29,7 @@ namespace Assets.Editor.Tests
             registry.Register<StackManagersCatalogue>(stackManagersCatalogue);
 
             stacks = TestObjectGenerator.CardsForElements(TestObjectGenerator.ElementDictionary(1, 3));
-            wrapper = Substitute.For<ITokenPhysicalLocation>();
+            wrapper = Substitute.For<ITokenContainer>();
          //   wrapper.GetStacks().Returns(stacks);
 
             elementStacksManager=new ElementStacksManager(wrapper,"testManager");
@@ -202,9 +203,12 @@ namespace Assets.Editor.Tests
         public bool Decays { get; private set; }
         private IElementStacksManager CurrentStacksManager; 
 
-        public FakeElementStack()
-        {
+        public FakeElementStack() {
             CurrentStacksManager=new ElementStacksManager(null,"fake"); //must be assigned to a stacksmanager at birth
+        }
+
+        public void SetStackManager(IElementStacksManager manager) {
+            CurrentStacksManager = manager;
         }
 
         public IAspectsDictionary GetAspects(bool includingSelf = true)
@@ -214,6 +218,7 @@ namespace Assets.Editor.Tests
             else
                 return Element.Aspects;
         }
+
 
         public Dictionary<string, string> GetXTriggers()
         {
@@ -228,11 +233,6 @@ namespace Assets.Editor.Tests
         public void Populate(string elementId, int quantity, Source source)
         {
             throw new NotImplementedException();
-        }
-
-        public void AssignToStackManager(IElementStacksManager manager)
-        {
-            CurrentStacksManager = manager;
         }
 
         public void SignalRemovedFromContainer()
@@ -331,6 +331,10 @@ namespace Assets.Editor.Tests
                 Defunct = true;
             }
 
+        }
+
+        public bool AllowsMerge() {
+            throw new NotImplementedException();
         }
     }
 }
