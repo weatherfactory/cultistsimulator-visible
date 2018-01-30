@@ -21,8 +21,8 @@
         requirements: {society: 1,follower:1,edge:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD Hone this disciple's skills.",
-        description: "FNORD promote.",
+        startdescription: "My follower will kneel as novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'My scars are weapons. Through striving I rise to victory. There is no defeat but annihilation. In the light of the Bright Edge we know ourselves. I pledge myself to the service of the strongest.'",
         warmup: 60,
         craftable: true
     },
@@ -33,8 +33,8 @@
         requirements: {society: 1,follower:1,forge:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+        startdescription: "My follower will kneel as novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'I am destroyed. I am remade. Now I sear my skin, and by these marks shall I be known. I pledge myself to the flame, and I shall not flinch from any remaking.'",
         warmup: 60,
         craftable: true
     },
@@ -45,8 +45,8 @@
         requirements: {society: 1,follower:1,grail:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+        startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "In pain are we born. In hunger are we embraced. In delight are we devoured. These are the gates of the body, and this is Her promise: not all that is born decays. In remembrance of that promise, we give ourselves to the Feast.",
         warmup: 60,
         craftable: true
     },
@@ -57,8 +57,8 @@
         requirements: {society: 1,follower:1,heart:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+        startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'We cede our mouths to the thunder. We cede our feet to the dance. We cede our skins to the night. We do not cease; we do not cease; we do not cease.'",
         warmup: 60,
         craftable: true
     },
@@ -69,8 +69,8 @@
         requirements: {society: 1,follower:1,knock:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+             startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'To she who was flesh, I offer my wounds. To she who was stone, I offer this moment, where my old self divides from my new. To she who came from Light, I offer my secrets. The door is opened.",
         warmup: 60,
         craftable: true
     },
@@ -81,8 +81,8 @@
         requirements: {society: 1,follower:1,lantern:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+               startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'He navigates. Now you are the map. He illuminates. You were the darkness. He is not compassionate. You will not show compassion. Our compass is Knowledge and our course is Glory.'",
         warmup: 60,
         craftable: true
     },
@@ -93,8 +93,8 @@
         requirements: {society: 1,follower:1,moth:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+             startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'Now the scissors, and then the knife. Now the wood, and then the bones. Now the flutter of the moon, and then the dappling of the soul. He was blood, and so will we be.'",
         warmup: 60,
         craftable: true
     },
@@ -105,8 +105,8 @@
         requirements: {society: 1,follower:1,secrethistories:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+              startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'Five Histories join in one Future. So now are you joined to us. Be secret, be wise, be ruthless; be curious; be, above all else, loyal.'",
         warmup: 60,
         craftable: true
     },
@@ -117,8 +117,8 @@
         requirements: {society: 1,follower:1,winter:4},
         effects: {ingredient:-1},
 		aspects: {promotiontodisciple: 1},
-        startdescription: "FNORD promote?",
-        description: "FNORD promote.",
+        startdescription: "My follower will kneel as a novice, and rise as an initiate. I will administer the necessary oaths myself.",
+        description: "'Now you shed your blood, as the Sun's blood was shed. Now your past is divided from your future, as the Wolf was divided. You were not born. Your service ends only in dissolution. Arise, in silence.'",
         warmup: 60,
         craftable: true
     },
@@ -176,7 +176,7 @@
 	requirements: {edge: 1},
 	effects: {cultedge_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the Hours of struggle and conquest. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the Hours of struggle and conquest."
 	},
 			{
 	id: "cultfoundationforge",
@@ -185,7 +185,7 @@
 	requirements: {forge: 1},
 	effects: {cultforge_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the fire that changes and remakes. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the fire that changes and remakes."
 	},
 	{
 	id: "cultfoundationgrail",
@@ -194,7 +194,7 @@
 	requirements: {grail: 1},
 	effects: {cultgrail_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the mysteries of birth, blood and appetite. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the mysteries of birth, blood and appetite."
 	},
 		{
 	id: "cultfoundationheart",
@@ -203,16 +203,16 @@
 	requirements: {heart: 1},
 	effects: {cultheart_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the drumbeat which can never end. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the drumbeat which can never end."
 	},
 			{
 	id: "cultfoundationknock",
-	label: "Establish the Society of Midnight ",
+	label: "Establish the Society of the Holy Wound",
 	actionId: "establishcult",
 	requirements: {knock: 1},
 	effects: {cultknock_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the Hour at night's heart, on which the world turns. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the Hours which open doors."
 	},
 				{
 	id: "cultfoundationlantern",
@@ -221,7 +221,7 @@
 	requirements: {lantern: 1},
 	effects: {cultlantern_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place."
 	},
 					{
 	id: "cultfoundationmoth",
@@ -230,7 +230,7 @@
 	requirements: {moth: 1},
 	effects: {cultmoth_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to chaos, and the unexpected Hours. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to chaos, and the unexpected Hours."
 	},
 						{
 	id: "cultfoundationsecrethistories",
@@ -239,7 +239,7 @@
 	requirements: {secrethistories: 1},
 	effects: {cultsecrethistories_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the study of the thousand unknown histories. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches."
 	},
 							{
 	id: "cultfoundationwinter",
@@ -248,7 +248,7 @@
 	requirements: {winter: 1},
 	effects: {cultwinter_1: 1},
 	startdescription: "",
-	description: "An occult society dedicated to the Hour of the cold that ends. [In the current build, however, all cults are effectively identical.]"
+	description: "An occult society dedicated to the silence that comes and the cold that ends."
 	}
 ]
 }

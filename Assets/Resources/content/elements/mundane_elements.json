@@ -21,19 +21,19 @@
 		          {
         id: "compensation",
             label: "Iron Spintria",
-			aspects: {tool:1, edge:1, secrethistories:1},
+			aspects: {tool:1, edge:1, secrethistories:1,,compensationvalue:2},
             description: "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Iron spintriae are the lowest denomination, and display scenes of murder on their reverse side. "
         },
 		          {
         id: "compensationb",
             label: "Bronze Spintria",
-            aspects: {tool:1, forge:1, secrethistories:1},
+            aspects: {tool:1, forge:1, secrethistories:1,compensationvalue:4},
 			description: "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Bronze spintriae usually display the act of shaping on their reverse side."
         },
 		{
         id: "compensationc",
             label: "Silver Spintria",
-			aspects: {tool:1, grail:1, secrethistories:1},
+			aspects: {tool:1, grail:1, secrethistories:1,compensationvalue:8},
             description: "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Silver spintriae are more valuable, and usually display scenes of debauchery on their reverse side."
         },
 

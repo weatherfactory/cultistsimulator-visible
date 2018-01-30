@@ -91,6 +91,7 @@ namespace Assets.CS.TabletopUI {
             completionBadge.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
             /*
+             * // Martin: Removed glow on completion count, it was muddying the feedback. Badge is enough, I think.
             if (newCount > 0) {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true);

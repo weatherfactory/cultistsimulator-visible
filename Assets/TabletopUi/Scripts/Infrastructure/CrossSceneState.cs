@@ -12,9 +12,6 @@ using OrbCreationExtensions;
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
 
-    /// <summary>
-    /// AFAICT there is no way to pass data between scenes on a load, except with a static object.
-    /// </summary>
    public static class CrossSceneState
     {
         private static Ending _currentEnding;
@@ -22,17 +19,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private static Legacy _chosenLegacy;
         //record the previous character when ending a game, so we can use their deets for setting the scene / recording in ongoing save
         private static Character _defunctCharacter;
+        private static MetaInfo _metaInfo;
 
-
+        /// <summary>
+        /// This is currently set, rather casually, in the MenuScreenController
+        /// If at some point it contains more than the version number, we'll want to move it.
+        /// </summary>
+        /// <param name="metaInfo"></param>
+        public static void SetMetaInfo(MetaInfo metaInfo)
+        {
+            _metaInfo = metaInfo;
+        }
 
         public static Hashtable GetHashTableForCrossSceneState()
         {
             var ht=new Hashtable();
+            AddMetaInfoToHashtable(ht);
             AddCurrentEndingToHashtable(ht);
             AddAvailableLegaciesToHashtable(ht);
             AddDefunctCharacterToHashtable(ht);
 
             return ht;
+        }
+
+        private static void AddMetaInfoToHashtable(Hashtable ht)
+        {
+
+            var htMetaInfo = new Hashtable();
+            htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber);
+            ht.Add(SaveConstants.SAVE_METAINFO,htMetaInfo);
+
         }
 
         private static void AddDefunctCharacterToHashtable(Hashtable ht)
@@ -131,6 +147,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             _availableLegacies = legacies;
         }
+
 
 
     }

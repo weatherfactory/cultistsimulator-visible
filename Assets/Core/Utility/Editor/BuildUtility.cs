@@ -24,7 +24,7 @@ namespace Assets.Core.Utility
 
             using (StreamWriter sw = File.CreateText(readmepath))
             {
-                sw.Write("THE SCHOLAR'S BUILD - " +"\n");
+                sw.Write("NEVILLE'S BUILD - " +"\n");
                 sw.WriteLine("version: " + NoonUtility.VersionNumber);
             }
 

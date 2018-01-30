@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(Character character, IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> decks);
+        Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character, IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> decks);
 
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
@@ -28,16 +28,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances)
+        public Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances)
         {
             var htAll = new Hashtable()
             {
+                {SaveConstants.SAVE_METAINFO,GetHashTableForMetaInfo(metaInfo) },
                 {SaveConstants.SAVE_CHARACTER_DETAILS,GetHashTableForCharacter(character) },
                 {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
                 {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situationControllers)},
                 {SaveConstants.SAVE_DECKS,GetHashTableForDecks(deckInstances) }
             };
             return htAll;
+        }
+
+        private object GetHashTableForMetaInfo(MetaInfo metaInfo)
+        {
+            var htMetaInfo=new Hashtable();
+            htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER,metaInfo.VersionNumber);
+            return htMetaInfo;
         }
 
         private Hashtable GetHashTableForCharacter(Character character)

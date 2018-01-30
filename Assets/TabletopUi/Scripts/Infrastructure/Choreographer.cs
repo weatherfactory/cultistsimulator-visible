@@ -40,8 +40,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _tabletop.DisplaySituationTokenOnTable(token);
         }
 
+        //we place stacks horizontally rather than vertically
         public void ArrangeTokenOnTable(ElementStackToken stack) {
-            _tabletop.GetElementStacksManager().AcceptStack(stack); // this does parenting. Needs to happen before we position
+            _tabletop.GetElementStacksManager().AcceptStack(stack);  // this does parenting. Needs to happen before we position
 
             if (stack.lastTablePos != null) {
                 stack.RectTransform.anchoredPosition = GetFreePosWithDebug(stack, stack.lastTablePos.Value);
@@ -226,8 +227,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
-                NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
-                return;
+                if (existingSituation.Situation.State == SituationState.Complete) {
+                    //verb exists already, but it's completed. We don't want to block new temp verbs executing if the old one is complete, because
+                    //otherwise there's an exploit to, e.g., leave hazard finished but unresolved to block new ones appearing.
+                    //So nothing happens in this branch except logging.
+                    NoonUtility.Log("Created duplicate verb, because previous one is complete.");
+                }
+                else {
+                    NoonUtility.Log("Tried to create " + scc.Recipe.Id + " for verb " + scc.Recipe.ActionId + " but that verb is already active.");
+                    //end execution here
+                    return;
+                }
             }
 
             var token = _situationBuilder.CreateTokenWithAttachedControllerAndSituation(scc);

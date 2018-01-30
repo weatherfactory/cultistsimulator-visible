@@ -98,6 +98,12 @@ namespace Assets.TabletopUi {
                 situationToken.SetCompletionCount(command.CompletionCount);
         }
 
+        // Called from importer
+        public void ModifyStoredElementStack(string elementId, int quantity) {
+            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing());
+            situationWindow.DisplayStoredElements();
+        }
+
         public void Retire() {
             situationToken.Retire();
             situationWindow.Retire();
@@ -138,7 +144,6 @@ namespace Assets.TabletopUi {
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
             HeartbeatResponse response = new HeartbeatResponse();
-
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
 
@@ -158,7 +163,6 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationBeginning(Recipe withRecipe) {
-
             situationToken.UpdateMiniSlotDisplay(null); // Hide content of miniSlotDisplay - looping recipes never go by complete which would do that
             situationToken.DisplayMiniSlotDisplay(withRecipe.SlotSpecifications);
             situationWindow.SetOngoing(withRecipe);
@@ -215,6 +219,7 @@ namespace Assets.TabletopUi {
                 tabletopManager.EndGame(ending, this);
             }
         }
+
         /// <summary>
         /// The situation is complete. DisplayHere the output cards and description
         /// </summary>
@@ -247,42 +252,40 @@ namespace Assets.TabletopUi {
 
             foreach (var a in outputAspects) {
                 var aspectElement = compendium.GetElementById(a.Key);
-                if (aspectElement == null)
+
+                if (aspectElement != null)
+                    PerformAspectInduction(aspectElement);
+                else
                     NoonUtility.Log("unknown aspect " + a + " in output");
-                else {
-                    foreach (var induction in aspectElement.Induces) {
-                        var d = Registry.Retrieve<IDice>();
-                        if (d.Rolld100() <= induction.Chance) {
-                            var inducedRecipe = compendium.GetRecipeById(induction.Id);
-                            if (inducedRecipe == null)
-                                NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectElement.Id);
-                            else {
-                                var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
-                                    inducedRecipe.Label, inducedRecipe.Description);
-                                SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
-                                    inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-                                Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation);
-                            }
-                        }
-                    }
-                }
             }
         }
 
-        public void SituationHasBeenReset() {
-            situationWindow.SetUnstarted();
-            ResetToStartingState();
+        void PerformAspectInduction(Element aspectElement) {
+            foreach (var induction in aspectElement.Induces) {
+                var d = Registry.Retrieve<IDice>();
+
+                if (d.Rolld100() <= induction.Chance) 
+                    CreateRecipeFromInduction(compendium.GetRecipeById(induction.Id), aspectElement.Id);
+            }
         }
 
-        public void ModifyStoredElementStack(string elementId, int quantity) {
-            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing());
-            situationWindow.DisplayStoredElements();
+        void CreateRecipeFromInduction(Recipe inducedRecipe, string aspectID) {
+            if (inducedRecipe == null) { 
+                NoonUtility.Log("unknown recipe " + inducedRecipe + " in induction for " + aspectID);
+                return;
+            }
+
+            var inductionRecipeVerb = new CreatedVerb(inducedRecipe.ActionId,
+                inducedRecipe.Label, inducedRecipe.Description);
+            SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
+                inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
+            Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation);
         }
 
-        public void ResetToStartingState() {
+        public void ResetSituation() {
             Situation.ResetIfComplete();
+
             //if this was a transient verb, clean up everything and finish.
-            //otherwise, prep the window for the next recipe
             if (situationToken.IsTransient) {
                 Retire();
             }
@@ -323,7 +326,7 @@ namespace Assets.TabletopUi {
             return HasEmptyStartingSlots();
         }
 
-        public bool HasEmptyStartingSlots() {
+        bool HasEmptyStartingSlots() {
             var win = situationWindow as SituationWindow;
             var startSlots = win.GetStartingSlots();
 
@@ -351,44 +354,43 @@ namespace Assets.TabletopUi {
         }
 
         public void StartingSlotsUpdated() {
-            //it's possible the starting slots have been updated because we've just started a recipe and stored everything that was in them.
-            //in this case, don't do anything.
+            // it's possible the starting slots have been updated because we've just started a recipe and stored everything that was in them.
+            // in this case, don't do anything.
             if (Situation.State != SituationState.Unstarted)
                 return;
-            else {
-                //This is an unstarted situation: start displaying recipes, hints, whatnot
-                //get all the aspects currently in the starting slots
 
-                IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
-                Recipe hintRecipeMatchingStartingAspects = null;
-                var recipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, false);
+            // Get all aspects and find a recipe
+            IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
+            Recipe matchingRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, false);
 
-                //if we can't find a matching craftable recipe, check for matching hint recipes
-                if (recipeMatchingStartingAspects == null)
-                    hintRecipeMatchingStartingAspects = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, true);
+            // Update the aspects in the window
+            IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
+            situationWindow.DisplayAspects(aspectsNoElementsSelf);
 
-                IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
+            //if we found a recipe, display it, and get ready to activate
+            if (matchingRecipe != null) {
+                situationWindow.DisplayStartingRecipeFound(matchingRecipe);
 
-                situationWindow.DisplayAspects(aspectsNoElementsSelf);
+                if (matchingRecipe.MaxExecutions == 1)
+                    situationWindow.DisplayRecipeMetaComment("This will only happen once.");
+                if (matchingRecipe.MaxExecutions > 1)
+                    situationWindow.DisplayRecipeMetaComment("This will only happen " + matchingRecipe.MaxExecutions + " times.");
 
-                //if we found a recipe, display it, and get ready to activate
-                if (recipeMatchingStartingAspects != null) {
-                    situationWindow.DisplayStartingRecipeFound(recipeMatchingStartingAspects);
-                    if (recipeMatchingStartingAspects.MaxExecutions == 1)
-                        situationWindow.DisplayRecipeMetaComment("This will only happen once.");
-                    if (recipeMatchingStartingAspects.MaxExecutions > 1)
-                        situationWindow.DisplayRecipeMetaComment("This will only happen " + recipeMatchingStartingAspects.MaxExecutions + " times.");
-                }
-                //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
-                else if (hintRecipeMatchingStartingAspects != null)
-                    situationWindow.DisplayHintRecipeFound(hintRecipeMatchingStartingAspects);
-                //no recipe, no hint? If there are any elements in the mix, display 'try again' message
-                else if (allAspects.Count > 0)
-                    situationWindow.DisplayNoRecipeFound();
-                //no recipe, no hint, no aspects. Just set back to unstarted
-                else
-                    situationWindow.SetUnstarted();
+                return;
             }
+
+            //if we can't find a matching craftable recipe, check for matching hint recipes
+            Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, true); ;
+
+            //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
+            if (matchingHintRecipe != null)  
+                situationWindow.DisplayHintRecipeFound(matchingHintRecipe);
+            //no recipe, no hint? If there are any elements in the mix, display 'try again' message
+            else if (allAspects.Count > 0)
+                situationWindow.DisplayNoRecipeFound();
+            //no recipe, no hint, no aspects. Just set back to unstarted
+            else
+                situationWindow.SetUnstarted();
         }
 
         public void OngoingSlotsUpdated() {

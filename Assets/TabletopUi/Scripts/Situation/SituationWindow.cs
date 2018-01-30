@@ -276,7 +276,7 @@ namespace Assets.CS.TabletopUI {
         
         void HandleResultsButton() {
             DumpToDesktop(GetOutputStacks());
-            situationController.ResetToStartingState();
+            situationController.ResetSituation();
         }
 
         /*

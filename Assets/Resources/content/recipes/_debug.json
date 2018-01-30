@@ -9,8 +9,40 @@ startdescription: "starting test deck",
 description: "end test deck",
 warmup: 1,
 craftable:false
-}
-,
+},
+		{
+        id: "_dream",
+        label: "Create Dream token",
+        actionId: "dream",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: ".",
+        description: "...",
+        warmup: 1,
+        craftable: false
+	},
+	{
+        id: "_study",
+        label: "Create study token",
+        actionId: "study",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: ".",
+        description: "...",
+        warmup: 1,
+        craftable: false
+	},
+{
+        id: "_talk",
+        label: "Create talk token",
+        actionId: "talk",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: ".",
+        description: "...",
+        warmup: 1,
+        craftable: false
+	},
 
 		{
         id: "_explore",

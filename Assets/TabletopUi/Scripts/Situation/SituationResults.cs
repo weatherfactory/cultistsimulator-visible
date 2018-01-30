@@ -62,13 +62,10 @@ public class SituationResults : AbstractTokenContainer {
 
         controller.UpdateTokenResultsCountBadge();
 
-        if (!hasStacks) {
-            controller.SituationHasBeenReset();
-            return;
-        }
-
-        //// Do some uncovering & repositioning here
-        cardPos.ReorderCards(stacks);
+        if (!hasStacks) 
+            controller.ResetSituation();
+        else
+            cardPos.ReorderCards(stacks);
     }
 
     public IEnumerable<IElementStack> GetOutputStacks() {
