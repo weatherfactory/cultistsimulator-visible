@@ -12,9 +12,9 @@
     },
 		{
         id: "summon_spirit_forgec_winter",
-        label: "Summon a Caligine",
+        label: "Summon a creature of smoky deception",
         actionId: "work",
-        requirements: {ritual:1,knock:2,forge:6,heart:2,desire:-1},
+        requirements: {ritual:1,knock:2,forge:6,winter:2,desire:-1},
 		effects: {spirit_forgec_winter:1},
         startdescription: "FNORD",
         description: "FNORD",
@@ -23,7 +23,7 @@
     },
 				{
         id: "summon_spirit_grailc_moth",
-        label: "Summon a Raw Prophet",
+        label: "Summon one of the more bewildering creatures of the Red Grail",
         actionId: "work",
         requirements: {ritual:1,knock:2,grail:6,moth:2,desire:-1},
 		effects: {spirit_grailc_moth:1},
@@ -34,9 +34,9 @@
     },
 			{
         id: "summon_spirit_lanternc_moth",
-        label: "Summon one of the Hinter",
+        label: "Summon a sharp-edged Lantern-thing",
         actionId: "work",
-        requirements: {ritual:1,knock:2,lantern:6,moth:2,desire:-1},
+        requirements: {ritual:1,knock:2,lantern:6,edge:2,desire:-1},
 		effects: {spirit_lanternc_moth:1},
         startdescription: "FNORD",
         description: "FNORD",
@@ -45,7 +45,7 @@
     },
 			{
         id: "summon_spirit_heartc_edge",
-        label: "Summon a Percussigant",
+        label: "Summon a creature of the Thunderskin",
         actionId: "work",
         requirements: {ritual:1,knock:2,heart:6,edge:2,desire:-1},
 		effects: {spirit_heartc_edge:1},
@@ -56,7 +56,7 @@
     },
 			{
         id: "summon_spirit_winterd_edge",
-        label: "Summon one of the Maids-in-the-Mirror",
+        label: "Summon a servant of the Sun-in-Rags",
         actionId: "work",
         requirements: {ritual:1,knock:2,winter:8,edge:2,desire:-1},
 		effects: {spirit_winterd_edge:1},
@@ -67,7 +67,7 @@
     },
 			{
         id: "summon_spirit_forgee_edge",
-        label: "Summon the",
+        label: "Summon one of the Name-emanations of the Forge of Days",
         actionId: "work",
         requirements: {ritual:1,knock:2,forge:10,edge:2,desire:-1},
 		effects: {spirit_forgee_edge:1},
@@ -78,7 +78,7 @@
     },
 			{
         id: "summon_spirit_graile_edge",
-        label: "Summon Ezeem, the Second Thirstly",
+        label: "Summon one of the Name-emanations of the Red Grail",
         actionId: "work",
         requirements: {ritual:1,knock:2,grail:10,edge:2,desire:-1},
 		effects: {spirit_graile_edge:1},
@@ -89,14 +89,15 @@
     },
 			{
         id: "summon_spirit_lanterne_secret",
-        label: "Summon the Baldomerienne",
+        label: "Summon the mysterious Name known as the Baldomerian",
         actionId: "work",
-        requirements: {ritual:1,knock:2,lantern:10,secret:2,desire:-1},
+        requirements: {ritual:1,knock:2,lantern:10,secrethistories:2,desire:-1},
 		effects: {spirit_lanterne_secret:1},
         startdescription: "FNORD",
         description: "FNORD",
         warmup: 60,
         craftable: true
     },
+	
 ]
 }
