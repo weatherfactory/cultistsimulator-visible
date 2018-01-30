@@ -1,0 +1,102 @@
+ {"recipes": [
+	{
+        id: "summon_spirit_winterb_heart",
+        label: "Summon one of the Voiceless Dead",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:4,heart:2,desire:-1},
+		effects: {spirit_winterb_heart:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+		{
+        id: "summon_spirit_forgec_winter",
+        label: "Summon a Caligine",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:6,heart:2,desire:-1},
+		effects: {spirit_forgec_winter:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+				{
+        id: "summon_spirit_grailc_moth",
+        label: "Summon a Raw Prophet",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:6,moth:2,desire:-1},
+		effects: {spirit_grailc_moth:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "summon_spirit_lanternc_moth",
+        label: "Summon one of the Hinter",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:6,moth:2,desire:-1},
+		effects: {spirit_lanternc_moth:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "summon_spirit_heartc_edge",
+        label: "Summon a Percussigant",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:6,edge:2,desire:-1},
+		effects: {spirit_heartc_edge:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "summon_spirit_winterd_edge",
+        label: "Summon one of the Maids-in-the-Mirror",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:8,edge:2,desire:-1},
+		effects: {spirit_winterd_edge:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "summon_spirit_forgee_edge",
+        label: "Summon the",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:10,edge:2,desire:-1},
+		effects: {spirit_forgee_edge:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "summon_spirit_graile_edge",
+        label: "Summon Ezeem, the Second Thirstly",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:10,edge:2,desire:-1},
+		effects: {spirit_graile_edge:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+			{
+        id: "summon_spirit_lanterne_secret",
+        label: "Summon the Baldomerienne",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:10,secret:2,desire:-1},
+		effects: {spirit_lanterne_secret:1},
+        startdescription: "FNORD",
+        description: "FNORD",
+        warmup: 60,
+        craftable: true
+    },
+]
+}

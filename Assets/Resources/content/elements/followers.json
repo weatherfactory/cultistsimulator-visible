@@ -86,7 +86,7 @@
         id: "clovette_b",
             label: "Clovette, a believer",
             aspects:
-            {mortal: 1, follower: 1,heart: 1},
+            {mortal: 1, follower: 1,heart: 2},
             animFrames: 1,
 			description: "Clovette's determined happiness now borders on the fanatical.",
 			xtriggers: {promotiontodisciple: clovette_c}
@@ -96,7 +96,7 @@
         id: "dorothy_b",
             label: "Dorothy, a believer",
             aspects:
-            {mortal: 1, follower: 1,heart: 1},
+            {mortal: 1, follower: 1,heart: 2},
             animFrames: 1,
 			description: "Dorothy is an enthusiastic sort, and I have turned her enthusiasm to our advantage.",
 			xtriggers: {promotiontodisciple: dorothy_c}
@@ -105,7 +105,7 @@
         id: "enid_b",
             label: "Enid, a believer",
             aspects:
-            {mortal: 1, follower: 1, knock: 1},
+            {mortal: 1, follower: 1, knock: 2},
             animFrames: 1,
 			description: "Enid speaks softly, and sometimes her gaze doesn't focus on anything visible. She sees things that others don't.",
 			xtriggers: {promotiontodisciple: enid_c}
@@ -114,7 +114,7 @@
         id: "rose_b",
             label: "Rose, a believer",
             aspects:
-            {mortal: 1, follower: 1,edge:1},
+            {mortal: 1, follower: 1,edge:2},
             animFrames: 1,
 			description: "Rose is a sly miss, but loyal.",
 			xtriggers: {promotiontodisciple: rose_c}
@@ -123,7 +123,7 @@
         id: "leo_b",
             label: "Leo, a believer",
             aspects:
-            {mortal: 1, follower: 1,heart: 1},
+            {mortal: 1, follower: 1,heart: 2},
             animFrames: 1,
 			description: "Leo is an earnest sort, but he's prepared to do what he must.",
 			xtriggers: {promotiontodisciple: leo_c}
@@ -132,7 +132,7 @@
         id: "neville_b",
             label: "Neville, a believer",
             aspects:
-            {mortal: 1, follower: 1, knock: 1},
+            {mortal: 1, follower: 1, knock: 2},
             animFrames: 1,
 			description: "Neville pauses before he speaks, and flinches easily. He's sensitive to deeper matters.",
 			xtriggers: {promotiontodisciple: neville_c}
@@ -141,7 +141,7 @@
         id: "tristan_b",
             label: "Tristan, a believer",
             aspects:
-            {mortal: 1, follower: 1,forge:1},
+            {mortal: 1, follower: 1,forge:2},
             animFrames: 1,
 			description: "Tristan dislikes distractions; Tristan likes results.",
 						xtriggers: {promotiontodisciple: tristan_c}
@@ -150,7 +150,7 @@
         id: "victor_b",
             label: "Victor, a believer",
             aspects:
-            {mortal: 1, follower: 1,edge:1},
+            {mortal: 1, follower: 1,edge:2},
             animFrames: 1,
 			description: "Victor is a sly fellow, but loyal.",
 			xtriggers: {promotiontodisciple: victor_c}
@@ -160,7 +160,7 @@
         id: "generic_b",
             label: "A Pawn",
             aspects:
-            {mortal: 1, follower: 1},
+            {mortal: 1, follower: 12},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative."
         },
