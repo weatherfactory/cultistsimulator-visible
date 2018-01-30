@@ -48,7 +48,6 @@ public class SituationResults : AbstractTokenContainer {
     }
 
     public override void SignalStackRemoved(ElementStackToken elementStackToken) {
-        elementStackToken.lastTablePos = elementStackToken.RectTransform.anchoredPosition;
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
         bool hasStacks = false;
