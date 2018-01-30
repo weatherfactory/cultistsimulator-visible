@@ -10,20 +10,12 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class NotificationWindow: MonoBehaviour,IPointerClickHandler
+    public class NotificationWindow: MonoBehaviour, IPointerClickHandler
     {
-        [SerializeField]
-        CanvasGroup canvasGroup;
-        [SerializeField]
-        CanvasGroupFader canvasGroupFader;
-        [SerializeField]
-        Image artwork;
-        [SerializeField]
-        TextMeshProUGUI _titleTxt;
-        [SerializeField]
-        TextMeshProUGUI _descriptionTxt;
-
-        [SerializeField] private Image CardToDisplay;
+        [SerializeField] CanvasGroupFader canvasGroupFader;
+        [SerializeField] Image artwork;
+        [SerializeField] TextMeshProUGUI _titleTxt;
+        [SerializeField] TextMeshProUGUI _descriptionTxt;
 
         public void Awake()
         {
