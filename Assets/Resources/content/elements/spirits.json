@@ -47,7 +47,7 @@
             label: "Maid-in-the-Mirror",
             aspects:
             {spirit: 1,winter:10,edge:10},
-            description: "'The steps are glass. The walls are knives. Each step is blood.' The Dead who pass through the Peacock Gate and climb the Sharp Stair enter the service of the Sun-in-Rags.",
+            description: "'The ascent is glass. The walls are knives. Each step is blood.' The Dead who rest before a new-cracked mirror, who pass through the Peacock Gate, who climb the Sharp Stair: those Dead enter the service of the Sun-in-Rags.",
 			lifetime: 180
         },
 		 {
@@ -56,7 +56,8 @@
             aspects:
             {spirit: 1,forge:12,edge:12},
             description: "'In the desert I wait, in the ruins I burn. Metal is water, stone is wax, flesh is smoke. Enter me and be no longer.'",
-			lifetime: 180
+			lifetime: 180,
+			unique:true
         },
 		 {
         id: "spirit_graile_edge",
@@ -64,7 +65,8 @@
             aspects:
             {spirit: 1,grail:12,edge:12},
             description: "'Change me. Change me. Change me harder. Now: <i>my</i> turn.'",
-			lifetime: 180
+			lifetime: 180,
+			unique:true
         },
 				 {
         id: "spirit_lanterne_secret",
@@ -72,7 +74,8 @@
             aspects:
             {spirit: 1,lantern:12,secrethistories:12},
             description: "'Oh, the world is flat; oh, but it's flat! I won't stay long. I shan't stay long. Tell me a secret.'",
-			lifetime: 180
+			lifetime: 180,
+			unique:true
         }
 ]
 };
