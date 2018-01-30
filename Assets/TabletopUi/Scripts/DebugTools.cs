@@ -114,7 +114,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
         foreach (var s in situationsCatalogue.GetRegisteredSituations())
         {
-            if(s.GetActionId()==verbId.Trim())
+            if(s.GetTokenId()==verbId.Trim())
                 s.Halt();
         }
 

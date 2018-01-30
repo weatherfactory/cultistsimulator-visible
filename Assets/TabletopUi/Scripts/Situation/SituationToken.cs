@@ -90,7 +90,7 @@ namespace Assets.CS.TabletopUI {
         public void SetCompletionCount(int newCount) {
             completionBadge.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
-
+            /*
             if (newCount > 0) {
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 ShowGlow(true);
@@ -98,6 +98,7 @@ namespace Assets.CS.TabletopUI {
             else {
                 ShowGlow(false);
             }
+            */
         }
 
         public int GetCompletionCount() {
@@ -123,12 +124,12 @@ namespace Assets.CS.TabletopUI {
 
         public override void DisplayInAir() {
             base.DisplayInAir();
-            countdownCanvas.sortingLayerID = 2;
+            countdownCanvas.sortingOrder = 1;
         }
 
         public override void DisplayAtTableLevel() {
             base.DisplayAtTableLevel();
-            countdownCanvas.sortingLayerID = 0;
+            countdownCanvas.sortingOrder = 0;
         }
 
         public Vector3 GetOngoingSlotPosition() {
@@ -151,10 +152,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void CloseToken() {
-            if (SituationController.IsSituationOccupied()) 
-                ShowGlow(true);
-            else 
-                SetCompletionCount(0);
+            ShowGlow(false);
         }
 
         public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots) {
@@ -192,10 +190,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void DisplayComplete() {
-            //hide the timer: we're done here
             SetTimerVisibility(false);
             ongoingSlotImage.gameObject.SetActive(false);
-            SetCompletionCount(SituationController.GetNumOutputCards());
         }
 
         public override void OnDrop(PointerEventData eventData) {
@@ -211,11 +207,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OpenSituation() {
-            SituationController.OpenSituation();
+            SituationController.OpenWindow();
         }
 
         public void CloseSituation() {
-            SituationController.CloseSituation();
+            SituationController.CloseWindow();
         }
 
         public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {

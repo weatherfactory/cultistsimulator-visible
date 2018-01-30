@@ -43,5 +43,5 @@ namespace Assets.Core.Commands
             return Verb;
         }
 
-}
+    }
 }

@@ -315,7 +315,7 @@ namespace Assets.CS.TabletopUI {
             //We don't want or need to track half-started situations.
             var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             foreach (var s in allSituationControllers)
-                s.CloseSituation();
+                s.CloseWindow();
 
             // try
             //  {
@@ -368,8 +368,8 @@ namespace Assets.CS.TabletopUI {
             var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
             foreach (var controller in situationControllers) {
-                if (controller.GetActionId() != exceptTokenId)
-                    controller.CloseSituation();
+                if (controller.GetTokenId() != exceptTokenId)
+                    controller.CloseWindow();
             }
         }
 

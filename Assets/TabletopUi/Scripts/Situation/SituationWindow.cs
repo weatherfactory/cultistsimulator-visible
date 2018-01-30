@@ -99,7 +99,7 @@ namespace Assets.CS.TabletopUI {
 
         // to be accessable from Close Button
         public void Close() {
-            situationController.CloseSituation();
+            situationController.CloseWindow();
         }
 
         // BASIC DISPLAY
