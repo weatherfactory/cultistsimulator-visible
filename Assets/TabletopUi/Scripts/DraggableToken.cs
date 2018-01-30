@@ -119,6 +119,9 @@ namespace Assets.CS.TabletopUI {
         #region -- Begin Drag ------------------------------------
 
         public void OnBeginDrag(PointerEventData eventData) {
+            if (itemBeingDragged != null)
+                itemBeingDragged.DelayedEndDrag();
+
             if (CanDrag(eventData))
                 StartDrag(eventData);
         }
@@ -217,7 +220,8 @@ namespace Assets.CS.TabletopUI {
                 Invoke("DelayedEndDrag", 0f);
         }
 
-        protected virtual void DelayedEndDrag() {
+        // Also called directly if we start a new drag while we have a drag going
+        public virtual void DelayedEndDrag() {
             canvasGroup.blocksRaycasts = true;
 
             if (DraggableToken.resetToStartPos)
@@ -232,7 +236,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false, false);
         }
 
-        // In case the object is destroyed
+        // In case the object is destroyed 
         protected virtual void AbortDrag() {
             if (itemBeingDragged != this)
                 return;
