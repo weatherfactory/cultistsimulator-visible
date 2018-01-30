@@ -230,6 +230,14 @@ namespace Assets.CS.TabletopUI {
             onCardDropped(this, stack);
         }
 
+        public override void DisplayHere(DraggableToken token) {
+            base.DisplayHere(token);
+            var stack = token as ElementStackToken;
+
+            if (stack != null)
+                stack.ShowCardShadow(false); // no shadow in slots
+        }
+
         public DraggableToken GetTokenInSlot() {
             return GetComponentInChildren<DraggableToken>();
         }

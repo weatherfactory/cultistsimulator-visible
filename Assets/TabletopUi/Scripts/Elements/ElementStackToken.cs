@@ -31,6 +31,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
         [SerializeField] Sprite spriteUniqueTextBG;
+        [SerializeField] GameObject shadow;
 
         [SerializeField] string defaultRetireFX = "CardBurn";
 
@@ -232,8 +233,10 @@ namespace Assets.CS.TabletopUI {
         public void SetStackManager(IElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
             CurrentStacksManager = manager;
+
             //notify afterwards, in case it counts the things *currently* in its list
-            oldStacksManager.RemoveStack(this);
+            if (oldStacksManager != null)
+                oldStacksManager.RemoveStack(this);
         }
 
         // Called from TokenContainer, usually after StacksManager told it to
@@ -413,6 +416,7 @@ namespace Assets.CS.TabletopUI {
             // to ensure these are set before we split the cards
             DraggableToken.itemBeingDragged = this; 
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
+            ShowCardShadow(true); // Ensure we always have a shadow when dragging
 
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
             if (stackBadge.IsHovering() == false)
@@ -447,7 +451,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- Decay & Timers ------------------------------------------------------------------------------------
+        #region -- Decay, Timers & general Viz ------------------------------------------------------------------------------------
 
         public void Decay(float interval) {
             if (!Decays)
@@ -479,6 +483,10 @@ namespace Assets.CS.TabletopUI {
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
             artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+        }
+
+        public void ShowCardShadow(bool show) {
+            shadow.gameObject.SetActive(show);
         }
 
         #endregion
@@ -552,7 +560,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- Animated Card ------------------------------------------------------------------------------------
+        #region -- Animated Artwork ------------------------------------------------------------------------------------
 
         public bool CanAnimate() {
             if (gameObject.activeInHierarchy == false)
