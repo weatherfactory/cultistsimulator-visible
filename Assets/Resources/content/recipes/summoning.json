@@ -5,10 +5,11 @@
         actionId: "work",
         requirements: {ritual:1,knock:2,winter:4,heart:2,desire:-1},
 		effects: {spirit_winterb_heart:1},
-        startdescription: "These are the Dead who do not descend or ascend, but who remain in the Mansus and dream of Winter. A little of the Heart's warmth will draw them here.",
+        startdescription: "These are the Dead who do not descend or ascend, but who remain in the Mansus and dream of Winter. The power of Winter, along with a little of the Heart's warmth, will draw them here.",
         description: "A dark shape limned with winter light. It will not speak, but its eyes are avid, looking, looking. The Dead always long for the world, eventually.",
         warmup: 60,
-        craftable: true
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
     },
 		{
         id: "summon_spirit_forgec_winter",
@@ -19,7 +20,8 @@
         startdescription: "Forge for the smoky spirit's summoning, Winter for its binding. It must know who will rule it.",
         description: "Not all the Forge's children are bright. Its offcuts and its bastards gather in the Bounds like hammerscale in the cracks of a smithy floor. Here comes one now.",
         warmup: 60,
-        craftable: true
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:100}]
     },
 				{
         id: "summon_spirit_grailc_moth",
@@ -50,7 +52,7 @@
         requirements: {ritual:1,knock:2,heart:6,edge:2,desire:-1},
 		effects: {spirit_heartc_edge:1},
         startdescription: "The Percussigant, merciless and merry! Heart will bring it, Edge will constrain it.",
-        description: "Firt the thump, the thump, the rattle and cry of the ceremonies it attends in the Wood. Now here it is, shouldering its way through the world's skin, like a clawed and ruthless uncle or a headless flapping bear.",
+        description: "First the thump, the thump, the rattle and cry of the ceremonies it attends in the Wood. Now here it is, shouldering its way through the world's skin, like a clawed and ruthless uncle or a headless flapping bear.",
         warmup: 60,
         craftable: true
     },
@@ -102,19 +104,20 @@
 	label: "Summoning: a Rebellious Spirit",
 	actionId: "work",
 	requirements: {},
-	startdescription: "The spirit is struggling against my control! I could use Reason to dismiss it safely; I could try to reassert control with Passion; or I could let what will happen, happen.",
+	startdescription: "The summoning is struggling against my control! I could use Reason to dismiss it safely; I could try to reassert control with Passion; or I could let what will happen, happen.",
 	description: "It's escaped my control!",
 	alternativerecipes:[{id:"summoningshutitdown",chance:100},
-	{id:"summoningfightformastery",chance:100},
-	{id:"summoningescaped",chance:100,additional:true}],
-	slots: {"Effort": {required: {passion:1,reason:1}},
+	{id:"summoningfightformastery",chance:100}],
+	slots: {"Effort": {required: {passion:1,reason:1}}},
 	warmup: 30,
-	craftable: false},
+	craftable: false,
+	linked:[{id:"summoningescaped",chance:100}]},
 	
 	{id:"summoningshutitdown",
 	label: "Summoning: Sending it Home",
 	actionId:"work",
 	requirements: {reason:1},
+	effects: {summoned:-1},
 	startdescription: "Pronounce the words of dismissal. Seal the circle tight. Erase every trace.",
 	description: "It's gone. We are safe.",
 	warmup:10
@@ -123,8 +126,40 @@
 	id:"summoningfightformastery",
 	label: "Summoning: Contending for Mastery",
 	actionId:"work",
+	startdescription: "The things from outside the world have many weapons: knives and riddles, fire and despair. I have weapons of my own.",
+	description:"",
 	requirements: {passion:1},
+	effects: {passion:-1,fascination:1},
+	warmup:10,
+	linked:[{id:"summoningmasteryregained",chance:70},
+	{id:"summoningescaped",chance:100}]
+	},	
+		{id:"summoningescaped",
+	label: "Summoning: a Breach!",
+	comments:"restorepassion to convert the invested passion/fascination back into passion",
+	aspects: {restorepassion:1},
+	actionId:"work",
+	requirements: {},
+	effects: {summoned:-1},
+	startdescription: "It's free!",
+	description: "My summoning has escaped my control, where it'll wreak havoc, no doubt - ",
+	warmup:10
+	},
+	
+			{id:"summoningmasteryregained",
+	label: "Summoning: Mastery Regained!",
+	actionId:"work",
+	comments:"restorepassion to convert the invested passion/fascination back into passion",
+	aspects: {restorepassion:1},
+	requirements: {},
 	effects: {},
+	startdescription: "I'm succeeding!",
+	description: "My summoning will obey my wishes - for now.",
+	warmup:10
+	},
+	
+	
+	
 	
 	}
 	

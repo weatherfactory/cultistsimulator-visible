@@ -8,8 +8,8 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What other powers will we call upon?"},
-			"Subject": {required: {follower:1, reason: 1},description: "Who will speak the words?"},
-			"Instrument":{required: {tool: 1,follower: 1}, consumes: true,description: "What will we give up?"},
+			"Assistant": {required: {follower:1, reason: 1},description: "Who will speak the words?"},
+			"Sacrifice":{required: {tool: 1}, consumes: true,description: "What will we give up?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
             description: "This rite enacts a teaching of the Forge of Days: the artisan may achieve their highest goal only by destroying their most precious tool."
@@ -35,8 +35,8 @@
             aspects:
             {ritual:1},
 			slots: {
-			"Invocation":{required: {lore: 1}, consumes: true, description: "What will we forget"},
-			"Subject": {required: {follower:1, reason: 1},description: "Who will speak the words?"},
+			"Sacrifice":{required: {lore: 1}, consumes: true, description: "What will we forget"},
+			"Assistant": {required: {follower:1, reason: 1},description: "Who will speak the words?"},
 			"Instrument":{required: {tool: 1,follower: 1}, description: "What is our instrument?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
