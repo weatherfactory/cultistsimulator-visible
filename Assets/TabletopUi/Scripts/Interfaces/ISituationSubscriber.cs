@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationOngoing();
         void SituationExecutingRecipe(ISituationEffectCommand situationEffectCommand);
         void SituationComplete();
-        void SituationHasBeenReset();
+        void ResetSituation();
         void Halt();
     }
 }

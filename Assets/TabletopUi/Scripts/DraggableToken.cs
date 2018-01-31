@@ -10,58 +10,53 @@ using Assets.TabletopUi.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.CS.TabletopUI
-{
-    [RequireComponent (typeof (RectTransform))]
-    [RequireComponent (typeof (CanvasGroup))]
-    public abstract class DraggableToken : MonoBehaviour, 
-        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler, 
-        IGlowableView, IPointerEnterHandler, IPointerExitHandler
-    {
-	
+namespace Assets.CS.TabletopUI {
+    [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(CanvasGroup))]
+    public abstract class DraggableToken : MonoBehaviour,
+        IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler,
+        IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+
+        // STATIC FIELDS
+
         public static event System.Action<bool> onChangeDragState;
 
-        public static bool draggingEnabled = true;
+        private static Camera dragCamera;
         public static DraggableToken itemBeingDragged;
-        /// <summary>
-        /// This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
-        /// </summary>
+        public static bool draggingEnabled = true;
         private static bool resetToStartPos = false;
+        // This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
 
-        public static void SetReturn(bool value, string reason = "")
-        {
+        public static void SetReturn(bool value, string reason = "") {
             resetToStartPos = value;
             //log here if necessary
         }
 
-        private static Camera dragCamera;
 
-        public bool Defunct { get; protected set; }
-        protected virtual bool AllowDrag { get { return true; } }
+        // INSTANCE FIELDS
+
+        [HideInInspector] public RectTransform RectTransform;
+        [SerializeField] protected bool useDragOffset = true;
+        [SerializeField] protected bool rotateOnDrag = true;
+        [SerializeField] protected GraphicFader glowImage;
+        [HideInInspector] public Vector2? lastTablePos = null; // if it was pulled from the table, save that position
+
         protected Transform startParent;
         protected Vector3 startPosition;
         protected int startSiblingIndex;
         protected Vector3 dragOffset;
-        public RectTransform RectTransform;
         protected RectTransform rectCanvas;
         protected CanvasGroup canvasGroup;
-        public bool IsSelected { protected set; get; }
-
-        public Vector3? lastTablePos = null; // if it was pulled from the table, save that position
 
         private float perlinRotationPoint = 0f;
-        private float dragHeight = -5f;
-        // Draggables all drag on a specifc height and have a specific "default height"
+        private float dragHeight = -8f; // Draggables all drag on a specifc height and have a specific "default height"
 
-        public bool useDragOffset = true;
-        public bool rotateOnDrag = true;
+        public ITokenContainer TokenContainer;
+        protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
         protected INotifier notifier;
-        public IContainsTokensView ContainsTokensView;
-        public IContainsTokensView OldContainsTokensView; // Used to tell OldContainsTokens that this thing was dropped successfully
 
         bool lastGlowState;
         Color lastGlowColor;
-        [SerializeField] GraphicFader glowImage;
 
         protected virtual void Awake() {
             RectTransform = GetComponent<RectTransform>();
@@ -69,59 +64,79 @@ namespace Assets.CS.TabletopUI
             lastGlowColor = glowImage.currentColor;
         }
 
+        #region -- Basic Getters ------------------------------------
+
         public abstract string Id { get; }
+        public bool IsBeingAnimated { get; set; }
+
+        public bool Defunct { get; protected set; }
+        public bool IsInAir { protected set; get; }
+
+        protected virtual bool AllowsDrag() {
+            return !IsBeingAnimated;
+        }
+
+        protected virtual bool AllowsInteraction() {
+            return !Defunct && TokenContainer.AllowDrag && AllowsDrag() && !IsBeingAnimated;
+        }
+
 
         /// <summary>
-        /// This is an underscore-separated x,y localPosition in the current transform/containsTokens
+        /// This is an underscore-separated x, y localPosition in the current transform/containsTokens
         /// but could be anything
         /// </summary>
-        public string SaveLocationInfo
-        {
-            set
-            {
+        public string SaveLocationInfo {
+            set {
                 var locs = value.Split('_');
                 var x = float.Parse(locs[0]);
                 var y = float.Parse(locs[1]);
                 RectTransform.localPosition = new Vector3(x, y);
-
             }
-            get { return ContainsTokensView.GetSaveLocationInfoForDraggable(this) +"_" + Guid.NewGuid(); }
+            get {
+                return TokenContainer.GetSaveLocationInfoForDraggable(this) + "_" + Guid.NewGuid();
+            }
         }
 
+        #endregion
 
-        public void SubscribeNotifier(INotifier n)
-        {
+        #region -- Basic Setters ------------------------------------
+
+        public void SubscribeNotifier(INotifier n) {
             notifier = n;
         }
 
-        public virtual void SetViewContainer(IContainsTokensView newContainsTokensView)
-        {
-            OldContainsTokensView = ContainsTokensView;
-            ContainsTokensView = newContainsTokensView;            
+        public virtual void SetTokenContainer(ITokenContainer newContainer) {
+            OldTokenContainer = TokenContainer;
+            TokenContainer = newContainer;
         }
 
-        public virtual bool IsInContainer(IContainsTokensView candidateContainsTokensView)
-        {
-            return candidateContainsTokensView == ContainsTokensView;
+        public virtual bool IsInContainer(ITokenContainer compareContainer) {
+            return compareContainer == TokenContainer;
         }
 
-        public void OnBeginDrag (PointerEventData eventData) {
-           if (CanDrag(eventData))
+        #endregion
+
+        #region -- Begin Drag ------------------------------------
+
+        public void OnBeginDrag(PointerEventData eventData) {
+            if (itemBeingDragged != null)
+                itemBeingDragged.DelayedEndDrag();
+
+            if (CanDrag(eventData))
                 StartDrag(eventData);
         }
 
-        bool CanDrag(PointerEventData eventData)
-        {
-            if (!ContainsTokensView.AllowDrag || !AllowDrag)
+        bool CanDrag(PointerEventData eventData) {
+            if (!TokenContainer.AllowDrag || !AllowsDrag())
                 return false;
 
             if (itemBeingDragged != null || draggingEnabled == false) {
-                Debug.LogWarningFormat("DraggableToken: Can not Drag.\nDragging Enabled: {0}, Item Being Dragged: {1}", draggingEnabled, itemBeingDragged != null ? itemBeingDragged.name : "NULL" );
+                Debug.LogWarningFormat("DraggableToken: Can not Drag.\nDragging Enabled: {0}, Item Being Dragged: {1}", draggingEnabled, itemBeingDragged != null ? itemBeingDragged.name : "NULL");
                 return false;
             }
 
             // pointerID n-0 are touches, -1 is LMB. This prevents drag from RMB, MMB and other mouse buttons (-2, -3...)
-            if (eventData != null && eventData.pointerId < -1) 
+            if (eventData != null && eventData.pointerId < -1)
                 return false;
 
             return true;
@@ -129,18 +144,20 @@ namespace Assets.CS.TabletopUI
 
         protected virtual void StartDrag(PointerEventData eventData) {
             if (rectCanvas == null)
-                rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>(); 
+                rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
             DraggableToken.itemBeingDragged = this;
             DraggableToken.resetToStartPos = true;
             DraggableToken.dragCamera = eventData.pressEventCamera;
             canvasGroup.blocksRaycasts = false;
 
+            DisplayInAir();
+
             startPosition = RectTransform.position;
             startParent = RectTransform.parent;
             startSiblingIndex = RectTransform.GetSiblingIndex();
 
-            lastTablePos = transform.position;
+            lastTablePos = RectTransform.anchoredPosition;
 
             RectTransform.SetParent(Registry.Retrieve<IDraggableHolder>().RectTransform);
             RectTransform.SetAsLastSibling();
@@ -160,11 +177,15 @@ namespace Assets.CS.TabletopUI
                 onChangeDragState(true);
         }
 
-        public void OnDrag (PointerEventData eventData) {
+        #endregion
+        
+        #region -- Do Drag ------------------------------------
+
+        public void OnDrag(PointerEventData eventData) {
             if (itemBeingDragged != this)
                 return;
 
-            if (draggingEnabled) { 
+            if (draggingEnabled) {
                 MoveObject(eventData);
             }
             else {
@@ -173,49 +194,38 @@ namespace Assets.CS.TabletopUI
             }
         }
 
-        public abstract void ReturnToTabletop(INotification reason = null);
-    
-
-        // Would solve this differently: By sending the object the drag position and allowing it to position itself as it desires
-        // This allows us to animate a "moving up" animation while you're dragging
-
         public void MoveObject(PointerEventData eventData) {
             Vector3 dragPos;
             RectTransformUtility.ScreenPointToWorldPointInRectangle(Registry.Retrieve<IDraggableHolder>().RectTransform, eventData.position, DraggableToken.dragCamera, out dragPos);
 
             // Potentially change this so it is using UI coords and the RectTransform?
             RectTransform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, dragPos.z + dragHeight);
-		
+
             // rotate object slightly based on pointer Delta
-            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {			
+            if (rotateOnDrag && eventData.delta.sqrMagnitude > 10f) {
                 // This needs some tweaking so that it feels more responsive, physica. Card rotates into the direction you swing it?
                 perlinRotationPoint += eventData.delta.sqrMagnitude * 0.001f;
                 transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -10 + Mathf.PerlinNoise(perlinRotationPoint, 0) * 20));
             }
         }
 
-        protected virtual void OnDisable()
-        {
-            //OnEndDrag(null);
-        }
+        #endregion
 
-        public virtual void OnEndDrag(PointerEventData eventData)
-        {
+        #region -- End Drag ------------------------------------
+
+        public virtual void OnEndDrag(PointerEventData eventData) {
             // This delays by one frame, because disabling and setting parent in the same frame causes issues
             // Also helps to avoid dropping and picking up in the same click
             if (itemBeingDragged == this && eventData != null)
-                Invoke ("DelayedEndDrag", 0f);
+                Invoke("DelayedEndDrag", 0f);
         }
 
-
-
-        protected virtual void DelayedEndDrag() {
+        // Also called directly if we start a new drag while we have a drag going
+        public virtual void DelayedEndDrag() {
             canvasGroup.blocksRaycasts = true;
-		
-            if (DraggableToken.resetToStartPos) 
-                returnToStartPosition();
 
-            OldContainsTokensView = null;
+            if (DraggableToken.resetToStartPos)
+                ReturnToStartPosition();
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
@@ -223,10 +233,10 @@ namespace Assets.CS.TabletopUI
             // Last call so that when the event hits it's still available
             DraggableToken.itemBeingDragged = null;
 
-            ShowGlow(false,false);
+            ShowGlow(false, false);
         }
 
-        // In case the object is destroyed
+        // In case the object is destroyed 
         protected virtual void AbortDrag() {
             if (itemBeingDragged != this)
                 return;
@@ -238,7 +248,7 @@ namespace Assets.CS.TabletopUI
             DraggableToken.itemBeingDragged = null;
         }
 
-        private void returnToStartPosition() {
+        private void ReturnToStartPosition() {
             if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
                 ReturnToTabletop(null);
@@ -247,7 +257,7 @@ namespace Assets.CS.TabletopUI
 
             SoundManager.PlaySfx("CardDragFail");
 
-            if (startParent.GetComponent<Tabletop>()) {
+            if (startParent.GetComponent<TabletopTokenContainer>()) {
                 //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
                 ReturnToTabletop(null);
             }
@@ -259,6 +269,10 @@ namespace Assets.CS.TabletopUI
             }
         }
 
+        #endregion
+        
+        #region -- On Drop ------------------------------------
+
         public abstract void OnDrop(PointerEventData eventData);
 
         private bool CanInteractWithTokenDroppedOn(DraggableToken token) {
@@ -269,40 +283,44 @@ namespace Assets.CS.TabletopUI
             else
                 return CanInteractWithTokenDroppedOn(token as SituationToken);
         }
+
         public abstract bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
         public abstract bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn);
 
         public abstract void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn);
-        public virtual void InteractWithTokenDroppedOn(IElementStack stackDroppedOn)
-        {
-            DraggableToken.SetReturn(true);
+        public abstract void InteractWithTokenDroppedOn(IElementStack stackDroppedOn);
+
+        #endregion
+
+        #region -- On Click ------------------------------------
+
+        public abstract void OnPointerClick(PointerEventData eventData);
+
+        #endregion
+        
+        #region -- Move & Retire Token ------------------------------------
+
+        public abstract void ReturnToTabletop(INotification reason = null);
+
+        public virtual void DisplayInAir() {
+            IsInAir = true;
         }
 
-        public virtual bool Retire()
-        {
+        public virtual void DisplayAtTableLevel() {
+            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
+            RectTransform.localRotation = Quaternion.identity;
+            IsInAir = false;
+        }
+
+        public virtual bool Retire() {
             Destroy(gameObject);
             Defunct = true;
             return true;
         }
 
-        public abstract void OnPointerClick(PointerEventData eventData);
+        #endregion
 
-        public void DisplayAtTableLevel()
-        {
-            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
-            RectTransform.localRotation = Quaternion.identity;
-        }
-
-        public void DisplayInAir()
-        {
-            transform.SetAsLastSibling();
-            float windowZOffset = -10f;
-
-            RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, windowZOffset);
-            RectTransform.localRotation = Quaternion.Euler(0f, 0f, RectTransform.eulerAngles.z);
-        }
-
-        // Hover & Glow
+        #region -- Hover & Glow ------------------------------------
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
             if (DraggableToken.itemBeingDragged != null && DraggableToken.itemBeingDragged.CanInteractWithTokenDroppedOn(this))
@@ -322,7 +340,7 @@ namespace Assets.CS.TabletopUI
 
         public virtual void SetGlowColor(UIStyle.TokenGlowColor colorType) {
             SetGlowColor(UIStyle.GetGlowColor(colorType));
-         }
+        }
 
         public virtual void SetGlowColor(Color color) {
             glowImage.SetColor(color);
@@ -339,7 +357,7 @@ namespace Assets.CS.TabletopUI
         }
 
         // Used when a dragged object is hovering something
-        public void ShowHoveringGlow(bool show) {
+        public virtual void ShowHoveringGlow(bool show) {
             // always use default color for the "draggable-item-can-be-dropped" hover glow
             // never trigger SFX, since the token you're hovering over already does that, 
             // since that allows us to use the default hover glow for click-hover with sound too
@@ -353,11 +371,11 @@ namespace Assets.CS.TabletopUI
                     // If we're trying to glow the dragged token, then let's just allow us to show it if we want.
                 }
                 // We're dragging something and our last state was not "this is a legal drop target" glow, then don't show
-                else if (DraggableToken.itemBeingDragged != null && !lastGlowState) { 
+                else if (DraggableToken.itemBeingDragged != null && !lastGlowState) {
                     show = false;
                 }
                 // If we can not interact, don't show the hover highlight
-                else if (!CanInteract()) { 
+                else if (!AllowsInteraction()) {
                     show = false;
                 }
             }
@@ -367,7 +385,7 @@ namespace Assets.CS.TabletopUI
                     SoundManager.PlaySfx("TokenHover");
 
                 glowImage.SetColor(hoverColor == null ? UIStyle.GetGlowColor(UIStyle.TokenGlowColor.OnHover) : hoverColor.Value);
-                glowImage.Show(true);
+                glowImage.Show();
             }
             else {
                 if (playSFX)
@@ -375,17 +393,13 @@ namespace Assets.CS.TabletopUI
 
                 glowImage.SetColor(lastGlowColor);
 
-                if (lastGlowState)
-                    glowImage.Show(true);
-                else
-                    glowImage.Hide(true);
+                if (lastGlowState) 
+                    glowImage.Show();
+                else  
+                    glowImage.Hide();
             }
         }
 
-
-        protected virtual bool CanInteract() {
-            return !Defunct && ContainsTokensView.AllowDrag && AllowDrag;
-        }
-
+        #endregion
     }
 }

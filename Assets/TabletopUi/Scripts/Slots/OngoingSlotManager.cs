@@ -14,7 +14,7 @@ using TMPro;
 using Assets.TabletopUi.Scripts.Services;
 
 namespace Assets.CS.TabletopUI {
-    public class OngoingSlotManager : AbstractSlotsContainer {
+    public class OngoingSlotManager : AbstractSlotsManager {
 
         protected RecipeSlot ongoingSlot;
         [SerializeField] Transform slotHolder; 
@@ -29,7 +29,7 @@ namespace Assets.CS.TabletopUI {
             ongoingSlot.transform.position = slotHolder.transform.position;
         }
 
-        public virtual void Reset() {
+        public virtual void DoReset() {
             SetupSlot(null);
         }
 

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
-    public class SituationSlotManager : MonoBehaviour {
+    public class SlotGridManager : MonoBehaviour {
 
 #if UNITY_EDITOR
         public RecipeSlot slotPrefab;

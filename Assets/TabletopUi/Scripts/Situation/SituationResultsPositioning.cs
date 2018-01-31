@@ -14,7 +14,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] RectTransform rect;
         [SerializeField] Vector2 margin = new Vector2(50f, 40f);
 
-        float moveDuration = 0.2f;
+        //float moveDuration = 0.2f;
         float availableSpace;
         float xStart;
         //IEnumerable<IElementStack> elements
@@ -24,21 +24,22 @@ namespace Assets.CS.TabletopUI {
             xStart = availableSpace / 2f;
         }
 
+        /*
+        //commented out: for now, we're manually turning all cards.
         private void OnEnable() {
             //To turn over the first card automatically when the window opens, uncomment the code below.
             // Delay is to wait for the end of the window transition anim
-            //Invoke("DelayedFlip", 0.25f);
+            Invoke("DelayedFlip", 0.25f);
         }
-        //commented out: for now, we're manually turning all cards.
-        // void DelayedFlip() {
-        //      var stacks = GetComponentsInChildren<ElementStackToken>();
-        //    if (stacks != null && stacks.Length > 0)
-        //       stacks[stacks.Length - 1].FlipToFaceUp();
-    //}
+
+        void DelayedFlip() {
+              var stacks = GetComponentsInChildren<ElementStackToken>();
+            if (stacks != null && stacks.Length > 0)
+               stacks[stacks.Length - 1].FlipToFaceUp();
+        }
+        */
 
         public void ReorderCards(IEnumerable<IElementStack> elementStacks) {
-
-
             //Order the stacks to put the existing ones first.
             List<IElementStack> existingStacks = new List<IElementStack>();
             List<IElementStack> freshStacks = new List<IElementStack>();

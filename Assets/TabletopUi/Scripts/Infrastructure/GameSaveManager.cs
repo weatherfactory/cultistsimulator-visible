@@ -71,7 +71,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //for saving from the tabletop
-        public void SaveActiveGame(Tabletop tabletop,Character character)
+        public void SaveActiveGame(TabletopTokenContainer tabletop,Character character)
         {
             var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
@@ -93,7 +93,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 
-        public void ImportHashedSaveToState(Tabletop tabletop, IGameEntityStorage storage, Hashtable htSave)
+        public void ImportHashedSaveToState(TabletopTokenContainer tabletop, IGameEntityStorage storage, Hashtable htSave)
         {
             dataImporter.ImportSavedGameToState(tabletop, storage, htSave);
         }

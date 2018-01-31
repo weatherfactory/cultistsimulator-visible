@@ -9,6 +9,9 @@ namespace Assets.CS.TabletopUI
         public event System.Action onClicked;
 
         public void OnDrop(PointerEventData eventData) {
+            if (DraggableToken.itemBeingDragged == null)
+                return;
+
             if (onDropped != null)
                 onDropped();
         }

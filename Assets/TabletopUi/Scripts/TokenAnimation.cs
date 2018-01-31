@@ -82,7 +82,8 @@ public class TokenAnimation : MonoBehaviour {
 
 		token = GetComponent<DraggableToken>();
 		token.enabled = false;
-		token.RectTransform.localScale = Vector3.one * scaleStart;
+        token.IsBeingAnimated = true;
+        token.RectTransform.localScale = Vector3.one * scaleStart;
 		IsRunning = true;
 	}
 
@@ -100,7 +101,7 @@ public class TokenAnimation : MonoBehaviour {
 
 		float completion = timeSpent / duration;
 
-		token.RectTransform.anchoredPosition3D = new Vector3( Mathf.Lerp(startPos.x, endPos.x, Easing.Quadratic.InOut(completion)), Mathf.Lerp(startPos.y, endPos.y, Easing.Quadratic.InOut(completion)), zPos);
+		token.RectTransform.anchoredPosition3D = GetPos(Easing.Circular.Out(completion));
 
 		if (scaleStart != 1f && completion < scalePercentage)
 			transform.localScale = Vector3.Lerp(Vector3.one * scaleStart, Vector3.one, Easing.Quadratic.Out(completion / scalePercentage));
@@ -110,19 +111,28 @@ public class TokenAnimation : MonoBehaviour {
 			transform.localScale = Vector3.one;
 	}
 
+    Vector3 GetPos(float lerp) {
+        return new Vector3(Mathf.Lerp(startPos.x, endPos.x, lerp), Mathf.Lerp(startPos.y, endPos.y, lerp), zPos);
+    }
+
 	void CompleteAnim() {
 		IsRunning = false;
 		token.RectTransform.anchoredPosition3D = new Vector3(endPos.x, endPos.y, zPos);
 		token.RectTransform.localScale = Vector3.one * scaleEnd;
 		token.enabled = true;
+        token.IsBeingAnimated = false;
 
 		FireCompleteEvent();
 		Destroy(this);
 	}
 
 	protected virtual void FireCompleteEvent() {
-		if (onAnimDone != null)
-			onAnimDone((SituationToken)token);
+        if (onAnimDone != null) {
+            var sitToken = token as SituationToken;
+
+            if (sitToken != null)
+                onAnimDone(sitToken);
+        }
 	}
 
 }

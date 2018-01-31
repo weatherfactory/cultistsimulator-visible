@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 namespace Assets.TabletopUi.Scripts.Infrastructure {
     public class EndGameAnimController : MonoBehaviour {
 
+        [SerializeField] Vector2 targetPosOffset = new Vector2(0f, -150f);
+
         [Header("Controllers")]
         [SerializeField] private TabletopManager _tabletopManager;
         [SerializeField] private SpeedController _speedController;
@@ -56,15 +58,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             tableScroll.StopMovement(); // make sure the scroll rect stops
             _tabletopManager.CloseAllSituationWindowsExcept(null); // no window has an id of NULL, so all close
 
-            Debug.Log("Target Zoom Pos " + -1f * culpableVerb.RectTransform.anchoredPosition);
-
             // TODO: play death effect / music
 
             var menuBarCanvasGrp = menuCanvas.GetComponent<CanvasGroup>();
             float time = 0f;
             Vector2 startPos = tableScroll.content.anchoredPosition;
-            Vector2 targetPos = -1f * culpableVerb.RectTransform.anchoredPosition;
-            // ^ WARNING: This only works since the parent RectTransform of the token has same size, pivot and pos as the content 
+            Vector2 targetPos = -1f * culpableVerb.RectTransform.anchoredPosition + targetPosOffset;
+            // ^ WARNING: targetPosOffset fixes the difference between the scrollable and tokenParent rect sizes 
+
+            Debug.Log("Target Zoom Pos " + targetPos);
 
             // Start zoom in on offending token 
             tableZoom.StartFixedZoom(0f, zoomDuration);

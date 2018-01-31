@@ -15,6 +15,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
+
     public interface IRecipeSlot {
         IElementStack GetElementStackInSlot();
         DraggableToken GetTokenInSlot();
@@ -25,24 +26,20 @@ namespace Assets.CS.TabletopUI {
         RecipeSlot ParentSlot { get; set; }
         bool Defunct { get; set; }
         bool Retire();
-
     }
-    public class RecipeSlot : MonoBehaviour, IDropHandler, IRecipeSlot, IContainsTokensView, IPointerClickHandler, 
-        IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+
+    public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
+
         public event System.Action<RecipeSlot, IElementStack> onCardDropped;
         public event System.Action<IElementStack> OnCardRemoved;
+
+        // DATA ACCESS
         public SlotSpecification GoverningSlotSpecification { get; set; }
         public IList<RecipeSlot> childSlots { get; set; }
         public RecipeSlot ParentSlot { get; set; }
         public bool Defunct { get; set; }
-        /// <summary>
-        /// This is not yet implemented, nor does it draw from content. I'd like it, if !="", to 
-        /// specify an animation used on recipe activation when the element in question is either consumed or moved to recipe storage
-        /// </summary>
         public string AnimationTag { get; set; }
 
-
-        // -----------------------------------------------------------
         // VISUAL ELEMENTS
         public RecipeSlotViz viz;
 
@@ -56,7 +53,14 @@ namespace Assets.CS.TabletopUI {
         public GameObject LockedIcon;
 
         bool lastGlowState;
-        private ElementStacksManager _stacksManager;
+
+        public override bool AllowStackMerge { get { return false; } }
+
+        public override bool AllowDrag {
+            get {
+                return !GoverningSlotSpecification.Greedy;
+            }
+        }
 
         public bool IsGreedy {
             get { return GreedyIcon.activeInHierarchy; }
@@ -75,11 +79,8 @@ namespace Assets.CS.TabletopUI {
 
         public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
 
-        // TODO: Needs hover feedback!
-
         public RecipeSlot() {
             childSlots = new List<RecipeSlot>();
-
         }
 
         void Start() {
@@ -87,9 +88,12 @@ namespace Assets.CS.TabletopUI {
             IsLocked = false;           
         }
 
+        public override void Initialise() {
+            throw new NotImplementedException(); // We have a separate init function here.
+        }
+
         public void Initialise(SlotSpecification slotSpecification) {
-            ITokenPhysicalLocation tabletopStacksWrapper = new TokenTransformWrapper(transform);
-            _stacksManager = new ElementStacksManager(tabletopStacksWrapper, "slot");
+            _elementStacksManager = new ElementStacksManager(this, "slot");
 
             if (slotSpecification == null)
                 return;
@@ -121,7 +125,8 @@ namespace Assets.CS.TabletopUI {
             if (lastGlowState && CanInteractWithDraggedObject(DraggableToken.itemBeingDragged))
                 DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
 
-            ShowHoverGlow(true); // this only works if the glow was turned on, which was done previously
+            if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                ShowHoverGlow(true); 
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
@@ -151,19 +156,24 @@ namespace Assets.CS.TabletopUI {
         // Separate method from ShowGlow so we can restore the last state when unhovering
         protected virtual void ShowHoverGlow(bool show) {
             // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
-            if (DraggableToken.itemBeingDragged == null && !lastGlowState)
-                return;
+            //if (DraggableToken.itemBeingDragged == null && !lastGlowState)
+            //    return;
             
             if (show) { 
                 SetGlowColor(UIStyle.TokenGlowColor.OnHover);
                 SoundManager.PlaySfx("TokenHover");
+                slotGlow.Show();
             }
             else { 
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
                 SoundManager.PlaySfx("TokenHoverOff");
+
+                if (lastGlowState)
+                    slotGlow.Show();
+                else
+                    slotGlow.Hide();
             }
         }
-
 
         public bool HasChildSlots() {
             if (childSlots == null)
@@ -213,15 +223,20 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void AcceptStack(IElementStack stack) {
-        
-            _stacksManager.AcceptStack(stack);
+            _elementStacksManager.AcceptStack(stack);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
             onCardDropped(this, stack);
         }
 
+        public override void DisplayHere(DraggableToken token) {
+            base.DisplayHere(token);
+            var stack = token as ElementStackToken;
 
+            if (stack != null)
+                stack.ShowCardShadow(false); // no shadow in slots
+        }
 
         public DraggableToken GetTokenInSlot() {
             return GetComponentInChildren<DraggableToken>();
@@ -229,7 +244,7 @@ namespace Assets.CS.TabletopUI {
 
         public IElementStack GetElementStackInSlot()
         {
-            return _stacksManager.GetStacks().SingleOrDefault();
+            return _elementStacksManager.GetStacks().SingleOrDefault();
         }
 
         public SlotMatchForAspects GetSlotMatchForStack(IElementStack stack) {
@@ -240,58 +255,27 @@ namespace Assets.CS.TabletopUI {
         }
 
         
-        public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
-        {
+        public override void SignalStackRemoved(ElementStackToken elementStackToken) {
             OnCardRemoved(elementStackToken);
             //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
             //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
             //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
             // - or else not have it occur more than once on the same slot? mark as defunct?
-            
-            // NOTE: We also have an issue that this is not called when we've removed the card but merged it into another card
-            // Put a ritual in a verb, remove the ritual and stack it on a copy of itself: slots remain, since we don't hit this.
         }
-
   
-        public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-        {
-
-                //incomer is a token. Does it fit in the slot?
-                if(GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
-                { 
-                    incumbentMoved = true;
-                    incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
-                    AcceptStack(potentialUsurper);
-                }
-                else
-                    incumbentMoved = false;
-            
-
-        }
-        public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-        {
-            //do nothing, ever
-            incumbentMoved = false;
-        }
-
-
-
-        public bool AllowDrag {
-            get {
-                return !GoverningSlotSpecification.Greedy;
+        public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+            //incomer is a token. Does it fit in the slot?
+            if(GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
+            { 
+                incumbentMoved = true;
+                incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
+                AcceptStack(potentialUsurper);
             }
+            else
+                incumbentMoved = false;
         }
 
-        public bool AllowStackMerge { get { return false; } }
 
-        public ElementStacksManager GetElementStacksManager()
-        {
-            return _stacksManager;
-        }
-
-        public ITokenPhysicalLocation GetTokenTransformWrapper() {
-            return new TokenTransformWrapper(transform);
-        }
 
         /// <summary>
         /// path to slot expressed in underscore-separated slot specification labels: eg "primary_sacrifice"
@@ -305,7 +289,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+        public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
             return SaveLocationInfoPath; //we don't currently care about the actual draggable
         }
 
@@ -332,10 +316,5 @@ namespace Assets.CS.TabletopUI {
             Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification);
         }
 
-        public void OnDestroy()
-        {
-            if (_stacksManager != null)
-                _stacksManager.Deregister();
-        }
     }
 }

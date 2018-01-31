@@ -10,16 +10,22 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class MapController: MonoBehaviour
     {
-        private MapContainsTokens _mapContainsTokens;
-        private TabletopBackground _mapBackground;
+        //private MapContainsTokens _mapContainsTokens;
+        //private TabletopBackground _mapBackground;
         private MapAnimation _mapAnimation;
+
+        public void Initialise(MapContainsTokens mapContainsTokens, TabletopBackground mapBackground, MapAnimation mapAnimation) {
+            //_mapContainsTokens = mapContainsTokens;
+            //_mapBackground = mapBackground;
+            _mapAnimation = mapAnimation;
+        }
 
         public void ShowMansusMap(Transform effectCenter, bool show = true)
         {
             if (_mapAnimation.CanShow(show) == false)
                 return;
 
-            // TODO: should probably lock interface? No zoom, no tabletop interaction
+            // TODO: should probably lock interface? No zoom, no tabletop interaction. Check EndGameAnim for ideas
 
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
@@ -37,13 +43,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             Debug.Log("Dropped Stack " + (stack != null ? stack.Id : "NULL"));
             ShowMansusMap(effectCenter, false);
-        }
-
-        public void Initialise(MapContainsTokens mapContainsTokens, TabletopBackground mapBackground, MapAnimation mapAnimation)
-        {
-            _mapContainsTokens = mapContainsTokens;
-            _mapBackground = mapBackground;
-            _mapAnimation = mapAnimation;
         }
     }
 }

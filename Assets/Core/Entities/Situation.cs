@@ -57,7 +57,7 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = null;
             TimeRemaining = 0;
             State = SituationState.Unstarted;
-            subscriber.SituationHasBeenReset();
+            subscriber.ResetSituation();
         }
 
         public void Halt()

@@ -18,7 +18,7 @@ using UnityEngine.VR;
 public class DebugTools : MonoBehaviour,IRollOverride
 {
     
-    [SerializeField] private Tabletop tabletop;
+    [SerializeField] private TabletopTokenContainer tabletop;
     [SerializeField] private Heart heart;
     [SerializeField] private InputField input;
     [SerializeField] private Button btnPlusOne;
@@ -114,7 +114,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
         foreach (var s in situationsCatalogue.GetRegisteredSituations())
         {
-            if(s.GetActionId()==verbId.Trim())
+            if(s.GetTokenId()==verbId.Trim())
                 s.Halt();
         }
 

@@ -52,11 +52,11 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Retire();
         void SetComplete();
 
-        void ShowDestinationsForStack(IElementStack stack);
+        void ShowDestinationsForStack(IElementStack stack, bool show);
 
         void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe);
         void DisplayNoRecipeFound();
-        void ReceiveNotification(INotification notification);
+        void ReceiveTextNote(INotification notification);
         IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
         IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects);
         void DisplayRecipeMetaComment(string hint);

@@ -22,11 +22,11 @@ namespace Assets.Core.Interfaces
         void ModifyQuantity(int change);
         void SetQuantity(int quantity);
         void Populate(string elementId, int quantity,Source source);
-        void AssignToStackManager(IElementStacksManager manager);
+        void SetStackManager(IElementStacksManager manager);
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
         void SplitAllButNCardsToNewStack(int n);
-        bool AllowMerge();
+        bool AllowsMerge();
         bool Retire(bool withVfx);
         bool Retire(string vfxName);
         void Decay(float interval);

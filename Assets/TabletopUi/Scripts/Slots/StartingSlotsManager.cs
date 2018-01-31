@@ -14,14 +14,12 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
 namespace Assets.TabletopUi.SlotsContainers {
-    public class StartingSlotsContainer : AbstractSlotsContainer {
+    public class StartingSlotsManager : AbstractSlotsManager {
 
-        [SerializeField] SituationSlotManager slotManager;
+        [SerializeField] SlotGridManager gridManager;
         public CanvasGroupFader canvasGroupFader;
 
         protected RecipeSlot primarySlot;
-        private ElementStacksManager _stacksManager;
-
 
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
@@ -76,7 +74,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot) {
             var slot = base.BuildSlot(slotName, slotSpecification, parentSlot);
-            slotManager.AddSlot(slot);
+            gridManager.AddSlot(slot);
             return slot;
         }
 
@@ -97,7 +95,7 @@ namespace Assets.TabletopUi.SlotsContainers {
 
             //Destroy the slot *before* returning the token to the tabletop
             //otherwise, the slot will fire OnCardRemoved again, and we get an infinte loop
-            slotManager.RetireSlot(slot);
+            gridManager.RetireSlot(slot);
 
             DraggableToken tokenContained = slot.GetTokenInSlot();
             if (tokenContained != null) 
@@ -107,7 +105,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         void ArrangeSlots() {
-            slotManager.ReorderSlots();
+            gridManager.ReorderSlots();
         }
     }
 

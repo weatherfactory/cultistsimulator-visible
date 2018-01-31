@@ -14,43 +14,32 @@ using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
-public class SituationResults : MonoBehaviour, IContainsTokensView {
+public class SituationResults : AbstractTokenContainer {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;
 
-    private ElementStacksManager stacksManager;
-
     private SituationController controller;
 
-    public void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-    {
-        //do nothing, ever
-        incumbentMoved = false;
-    }
+    public override bool AllowDrag { get { return true; } }
+    public override bool AllowStackMerge { get { return false; } }
 
-    public void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved)
-    {
-        //do nothing, ever
-        incumbentMoved = false;
+    public override void Initialise() {
+        throw new NotImplementedException(); // We have a separate init function here.
     }
-
-    public bool AllowDrag { get { return true; } }
-    public bool AllowStackMerge { get { return false; } }
 
     public void Initialise(SituationController sc) {
         controller = sc;
-        ITokenPhysicalLocation stacksWrapper = new TokenTransformWrapper(transform);
-      stacksManager= new ElementStacksManager(stacksWrapper,"situationresults");
+        _elementStacksManager = new ElementStacksManager(this, "situationresults");
     }
 
-    public void Reset() {
+    public void DoReset() {
         // TODO: Clear out the cards that are still here?
     }
 
     public void SetOutput(List<IElementStack> allStacksToOutput) {
         if (allStacksToOutput.Any() == false)
-            return;       
+            return;
 
         GetElementStacksManager().AcceptStacks(allStacksToOutput);
 
@@ -58,19 +47,13 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
         cardPos.ReorderCards(allStacksToOutput);
     }
 
-
-    public void SignalElementStackRemovedFromContainer(ElementStackToken elementStackToken)
-    {
-
-        elementStackToken.lastTablePos = elementStackToken.transform.position;
+    public override void SignalStackRemoved(ElementStackToken elementStackToken) {
         // Did we just drop the last available token? Then reset the state of the window?
         var stacks = GetOutputStacks();
         bool hasStacks = false;
 
-        foreach (var item in stacks)
-        {
-            if (item != null && item.Defunct == false)
-            {
+        foreach (var item in stacks) {
+            if (item != null && item.Defunct == false) {
                 hasStacks = true;
                 break;
             }
@@ -78,27 +61,17 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
 
         controller.UpdateTokenResultsCountBadge();
 
-        if (!hasStacks)
-        {
-            controller.SituationHasBeenReset();
-            return;
-        }
-
-        //// Do some uncovering & repositioning here
-        cardPos.ReorderCards(stacks);
+        if (!hasStacks) 
+            controller.ResetSituation();
+        else
+            cardPos.ReorderCards(stacks);
     }
-
 
     public IEnumerable<IElementStack> GetOutputStacks() {
         return GetElementStacksManager().GetStacks();
     }
 
-    public ElementStacksManager GetElementStacksManager()
-    {
-        return stacksManager;
-    }
-
-    public string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
+    public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
     }
 
@@ -107,9 +80,4 @@ public class SituationResults : MonoBehaviour, IContainsTokensView {
         Registry.Retrieve<MapController>().ShowMansusMap(transform, true);
     }
 
-    public void OnDestroy()
-    {
-        if (stacksManager != null)
-            stacksManager.Deregister();
-    }
 }

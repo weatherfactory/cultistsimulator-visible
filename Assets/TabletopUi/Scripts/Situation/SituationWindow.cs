@@ -16,7 +16,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-// Should inherit from a "TabletopTokenWindow" base class, same as ElementDetailsWindow
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationDetails {
@@ -37,9 +36,7 @@ namespace Assets.CS.TabletopUI {
 		public PaginatedText PaginatedNotes;
 
 		[Space]
-        // Public to test
-		public SituationSlotManager slotManager;
-        [SerializeField] StartingSlotsContainer startingSlots;
+        [SerializeField] StartingSlotsManager startingSlots;
 
         [Space]
         [SerializeField] OngoingSlotManager ongoing;
@@ -61,7 +58,6 @@ namespace Assets.CS.TabletopUI {
 
 		private SituationController situationController;
 		private IVerb Verb;
-        private ISituationDetails _situationDetailsImplementation;
 
         public bool IsOpen {
             get { return gameObject.activeInHierarchy; }
@@ -91,7 +87,6 @@ namespace Assets.CS.TabletopUI {
             name = "Window_" + verb.Id;
             artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
 
-
             startingSlots.Initialise(sc);
             ongoing.Initialise(sc);
             results.Initialise(sc);
@@ -104,7 +99,7 @@ namespace Assets.CS.TabletopUI {
 
         // to be accessable from Close Button
         public void Close() {
-            situationController.CloseSituation();
+            situationController.CloseWindow();
         }
 
         // BASIC DISPLAY
@@ -126,10 +121,10 @@ namespace Assets.CS.TabletopUI {
             startingSlots.Reset();
             startingSlots.gameObject.SetActive(true);
 
-            ongoing.Reset();
+            ongoing.DoReset();
             ongoing.gameObject.SetActive(false);
 
-            results.Reset();
+            results.DoReset();
             results.gameObject.SetActive(false);
 
             DisplayUnstarted();
@@ -187,12 +182,6 @@ namespace Assets.CS.TabletopUI {
 			DisplayButtonState(false);
 		}
 
-        public void ReceiveNotification(INotification notification)
-        {
-
-            PaginatedNotes.AddText(notification.Description);
-        }
-
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
@@ -203,8 +192,7 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        public void DisplayHintRecipeFound(Recipe r)
-        {
+        public void DisplayHintRecipeFound(Recipe r) {
             Title = r.Label;
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
             DisplayRecipeMetaComment(null);
@@ -213,20 +201,15 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
+        public void ReceiveTextNote(INotification notification) {
+            PaginatedNotes.AddText(notification.Description);
+        }
 
         public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
 			DisplayRecipeMetaComment(recipePrediction.Commentary);
 			DisplayButtonState(false);
-		}
-
-		public void DisplayAspects(IAspectsDictionary forAspects) {
-			aspectsDisplay.DisplayAspects(forAspects);
-		}
-
-        public void DisplayStoredElements() {
-            ongoing.ShowStoredAspects(GetStoredStacks());
         }
 
         public void DisplayRecipeMetaComment(string hint) {
@@ -239,8 +222,15 @@ namespace Assets.CS.TabletopUI {
             hintText.text = hint;
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
+        public void DisplayAspects(IAspectsDictionary forAspects) {
+			aspectsDisplay.DisplayAspects(forAspects);
+		}
 
+        public void DisplayStoredElements() {
+            ongoing.ShowStoredAspects(GetStoredStacks());
+        }
+
+        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
             ongoing.UpdateTime(duration, timeRemaining,recipe);
         }
 
@@ -249,14 +239,14 @@ namespace Assets.CS.TabletopUI {
 			startButtonText.text = string.IsNullOrEmpty(text) ? buttonDefault : text;
         }
 
-        public void ShowDestinationsForStack(IElementStack stack) {
+        public void ShowDestinationsForStack(IElementStack stack, bool show) {
             IList<RecipeSlot> slots;
 
             slots = startingSlots.gameObject.activeInHierarchy ? startingSlots.GetAllSlots() : null;
-            HighlightSlots(slots, stack);
+            HighlightSlots(slots, show ? stack : null);
 
             slots = ongoing.gameObject.activeInHierarchy ? ongoing.GetAllSlots() : null;
-            HighlightSlots(slots, stack);
+            HighlightSlots(slots, show ? stack : null);
         }
 
         void HighlightSlots(IList<RecipeSlot> slots, IElementStack stack) {
@@ -274,25 +264,13 @@ namespace Assets.CS.TabletopUI {
         // ACTIONS
 
         void HandleStartButton() {
-            // TODO: Could turn into clear all button on Completion?
-            // TODO: Alternative one-click confirm on empty post-results window to reset?
             situationController.AttemptActivateRecipe();
         }
         
         void HandleResultsButton() {
             DumpToDesktop(GetOutputStacks());
-            situationController.ResetToStartingState();
+            situationController.ResetSituation();
         }
-
-        /*
-        // currently not in use
-        public void DumpAllCardsToDesktop() {
-            DumpToDesktop(GetStartingStacks());
-            DumpToDesktop(GetOngoingStacks());
-            // Don't dump stored stacks - they're supposed to be inaccessible
-            DumpToDesktop(GetOutputStacks());
-        }
-        */
 
         public void DumpAllStartingCardsToDesktop() {
             if (situationController.Situation.State == SituationState.Unstarted)
@@ -311,8 +289,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         // ISituationDetails
-
-
 
         public IEnumerable<IElementStack> GetStartingStacks() {
             return startingSlots.GetStacksInSlots();
@@ -335,8 +311,7 @@ namespace Assets.CS.TabletopUI {
             return storage.GetElementStacksManager();
         }
 
-        public IElementStacksManager GetOutputStacksManager()
-        {
+        public IElementStacksManager GetOutputStacksManager() {
             return results.GetElementStacksManager();
         }
 
@@ -349,9 +324,9 @@ namespace Assets.CS.TabletopUI {
         public void SetSlotConsumptions() {
             foreach (var s in startingSlots.GetAllSlots())
                 s.SetConsumption();
+
             foreach (var o in ongoing.GetAllSlots())
                 o.SetConsumption();
-
         }
 
 
@@ -387,15 +362,13 @@ namespace Assets.CS.TabletopUI {
             return GetStorageStacksManager().GetTotalAspects(showElementAspects);
         }
 
-        public IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects)
-        {
+        public IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects) {
             return GetOutputStacksManager().GetTotalAspects(showElementAspects);
         }
 
 
 
-        public IEnumerable<ISituationNote> GetNotes()
-        {
+        public IEnumerable<ISituationNote> GetNotes() {
             return PaginatedNotes.GetCurrentTexts();
         }
 

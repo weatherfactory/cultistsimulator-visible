@@ -22,103 +22,73 @@ using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI
-{
+namespace Assets.CS.TabletopUI {
 
-    public class SituationToken : DraggableToken, ISituationAnchor
-    {
+    public class SituationToken : DraggableToken, ISituationAnchor {
 
         [SerializeField] Image artwork;
 
         [SerializeField] TextMeshProUGUI text;
-        // Currently can be above boxes. Ideally should always be behind boxes - see shadow for solution?
-        // NOTE MARTIN: Possibly something that can be solved by the sorting layer?
-
-        [SerializeField] GameObject[] countdownVisuals;
+        [SerializeField] Canvas countdownCanvas;
         [SerializeField] Image countdownBar;
-		[SerializeField] Image countdownBadge;
-		[SerializeField] TextMeshProUGUI countdownText;
-		[SerializeField] Image completionBadge;
-		[SerializeField] TextMeshProUGUI completionText;
+        [SerializeField] Image countdownBadge;
+        [SerializeField] TextMeshProUGUI countdownText;
+        [SerializeField] Image completionBadge;
+        [SerializeField] TextMeshProUGUI completionText;
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
 
         private IVerb _verb;
-        public SituationController SituationController { get; private set; }
 
-        public SituationState SituationState
-        {
-            get { return SituationController.Situation.State; }
+        public SituationController SituationController {
+            get; private set;
         }
 
-        public override void ReturnToTabletop(INotification reason = null)
-        {
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
-            if (reason != null)
-                notifier.TokenReturnedToTabletop(this, reason);
+        public bool IsTransient {
+            get { return _verb.Transient; }
         }
 
-        public bool IsTransient { get { return _verb.Transient; } }
-
-        public override string Id
-        {
+        public override string Id {
             get { return _verb == null ? null : _verb.Id; }
         }
 
-        private void SetTimerVisibility(bool b)
-        {
-            foreach (var go in countdownVisuals) 
-                go.SetActive(b);
-
-			countdownBar.gameObject.SetActive(b);
-			countdownBadge.gameObject.SetActive(b);
-        }
-
-		public void SetCompletionCount(int newCount) {
-			completionBadge.gameObject.SetActive(newCount > 0);
-			completionText.text = newCount.ToString();
-
-            if (newCount > 0) { 
-                SetGlowColor(UIStyle.TokenGlowColor.Default);
-                ShowGlow(true);
-            }
-            else { 
-                ShowGlow(false);
-            }
-        }
-
-        public int GetCompletionCount()
-        {
-            int count = 0;
-            bool isNonZero = Int32.TryParse(completionText.text, out count);
-            if (isNonZero)
-                return count;
-            else return 0;
-        }
-
-        public HeartbeatResponse ExecuteHeartbeat(float interval)
-        {
-       		return  SituationController.ExecuteHeartbeat(interval);
-        }
-
-        
-
-        public void Initialise(IVerb verb,SituationController sc) {
+        public void Initialise(IVerb verb, SituationController sc) {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + Id;
 
             DisplayName(verb);
             DisplayIcon(verb);
-			SetTimerVisibility(false);
-			SetCompletionCount(0);
+            SetTimerVisibility(false);
+            SetCompletionCount(0);
             ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
-
         }
-        
+
+        #region -- Token positioning --------------------------
+
+        public override void ReturnToTabletop(INotification reason = null) {
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
+
+            if (reason != null)
+                notifier.TokenReturnedToTabletop(this, reason);
+        }
+
+        public override void DisplayInAir() {
+            base.DisplayInAir();
+            countdownCanvas.overrideSorting = false;
+        }
+
+        public override void DisplayAtTableLevel() {
+            base.DisplayAtTableLevel();
+            countdownCanvas.overrideSorting = true;
+        }
+
+        #endregion
+
+        #region -- Token Visuals --------------------------
 
         private void DisplayName(IVerb v) {
             text.text = v.Label;
@@ -129,18 +99,21 @@ namespace Assets.CS.TabletopUI
             artwork.sprite = sprite;
         }
 
-        public Sprite GetSprite() {
-            return artwork.sprite;
+        public void DisplayAsOpen() {
+            ShowGlow(false);
         }
 
-		public Vector3 GetOngoingSlotPosition() {
-			return RectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
-		}
+        public void DisplayAsClosed() {
+            ShowGlow(false);
+        }
 
+        private void SetTimerVisibility(bool b) {
+            countdownCanvas.gameObject.SetActive(b);
+        }
 
         public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
             SetTimerVisibility(true);
-            
+
             Color barColor = UIStyle.GetColorForCountdownBar(recipe, timeRemaining);
 
             countdownBar.color = barColor;
@@ -149,27 +122,26 @@ namespace Assets.CS.TabletopUI
             countdownText.text = timeRemaining.ToString("0.0") + "s";
         }
 
-
-        public void OpenToken()
-        {
-            ShowGlow(false);
+        public Vector3 GetOngoingSlotPosition() {
+            return RectTransform.anchoredPosition3D + ongoingSlotImage.rectTransform.anchoredPosition3D;
         }
 
-        public void CloseToken()
-        {
-            SituationController.IsOpen = false;
+        public void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots) {
+            ongoingSlotImage.gameObject.SetActive(ongoingSlots != null && ongoingSlots.Count > 0);
 
-            if (SituationController.IsSituationOccupied())
-            { 
-                ShowGlow(true);
-            }
-            else {
-                SetCompletionCount(0);
-            }
+            if (ongoingSlots == null || ongoingSlots.Count == 0) 
+                return;
+            if (ongoingSlots.Count > 1)
+                throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
+
+            // We assume there's only one Slot
+            if (ongoingSlots[0].Greedy)
+                ongoingSlotImage.color = UIStyle.slotPink;
+            else
+                ongoingSlotImage.color = UIStyle.slotDefault;
         }
 
-        public void UpdateMiniSlotDisplay(IEnumerable<IElementStack> stacksInOngoingSlots)
-        {
+        public void DisplayStackInMiniSlot(IEnumerable<IElementStack> stacksInOngoingSlots) {
             IElementStack stack;
 
             if (stacksInOngoingSlots != null)
@@ -177,86 +149,93 @@ namespace Assets.CS.TabletopUI
             else
                 stack = null;
 
-            if (stack == null)
-            {
+            if (stack == null) {
                 ongoingSlotArtImage.sprite = null;
                 ongoingSlotArtImage.color = Color.black;
             }
-            else
-            {
+            else {
                 ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.Id);
                 ongoingSlotArtImage.color = Color.white;
             }
         }
 
-
-        public void DisplayMiniSlotDisplay(IList<SlotSpecification> ongoingSlots) {
-            if (ongoingSlots.Count>1)
-                throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
-
-			ongoingSlotImage.gameObject.SetActive(ongoingSlots.Count > 0);
-
-            foreach (var slot in ongoingSlots) {
-                if (slot.Greedy)
-                    ongoingSlotImage.color = UIStyle.slotPink;
-                else
-                    ongoingSlotImage.color = UIStyle.slotDefault; 
-
-                break; //We assume there's only one SLOT
-            }
-    }
-
-        public void DisplayComplete()
-        {
-            //hide the timer: we're done here
+        public void DisplayComplete() {
             SetTimerVisibility(false);
-            ongoingSlotImage.gameObject.SetActive(false);
-            SetCompletionCount( SituationController.GetNumOutputCards() );
+            DisplayMiniSlot(null); 
         }
 
-        
-        public override void OnDrop(PointerEventData eventData)
-        {
+        public void SetCompletionCount(int newCount) {
+            completionBadge.gameObject.SetActive(newCount > 0);
+            completionText.text = newCount.ToString();
+            /*
+             * // Martin: Removed glow on completion count, it was muddying the feedback. Badge is enough, I think.
+             * // I'd rather turn up the badge visibility
+            if (newCount > 0) {
+                SetGlowColor(UIStyle.TokenGlowColor.Default);
+                ShowGlow(true);
+            }
+            else {
+                ShowGlow(false);
+            }
+            */
+        }
+
+        #endregion
+
+        #region -- Token interaction --------------------------
+
+        // None of this should do view changes here. We're deferring to the SitController or TokenContainer
+
+        public override void OnDrop(PointerEventData eventData) {
             if (DraggableToken.itemBeingDragged != null)
-                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);       
+                DraggableToken.itemBeingDragged.InteractWithTokenDroppedOn(this);
         }
 
-        public override void OnPointerClick(PointerEventData eventData)
-        {
+        public override void OnPointerClick(PointerEventData eventData) {
             if (!SituationController.IsOpen)
                 OpenSituation();
-            else  
+            else
                 CloseSituation();
         }
 
         public void OpenSituation() {
-            SituationController.OpenSituation();
-            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(this.Id);
+            SituationController.OpenWindow();
         }
 
-        public void CloseSituation()
-        {
-            SituationController.CloseSituation();
+        void CloseSituation() {
+            SituationController.CloseWindow();
         }
 
         public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
-            return false; 
+            return false; // The Sit Token can't be dropped on anything
         }
 
         public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
-            return false;
+            return false; // The Sit Token can't be dropped on anything
         }
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
             bool moveAsideFor = false;
-            tokenDroppedOn.ContainsTokensView.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
+            tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
             if (moveAsideFor)
                 DraggableToken.SetReturn(false, "was moved aside for");
             else
                 DraggableToken.SetReturn(true);
         }
-    }
 
+        public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
+            bool moveAsideFor = false;
+            var stackToken = stackDroppedOn as ElementStackToken;
 
+            stackToken.TokenContainer.TryMoveAsideFor(this, stackToken, out moveAsideFor);
+
+            if (moveAsideFor)
+                DraggableToken.SetReturn(false, "was moved aside for");
+            else
+                DraggableToken.SetReturn(true);
+        }
+
+        #endregion
+    }    
 }
