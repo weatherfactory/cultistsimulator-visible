@@ -79,7 +79,6 @@ lifetime: 300
             {
                 moth: CONVENTIONS.QUANTITY_TINY
             },
-            maxvalue:7,
             animFrames: 1,
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
         },
@@ -94,10 +93,9 @@ lifetime: 300
 		{id: "fascination",
             label: "Fascination",
             aspects:
-            {moth: CONVENTIONS.QUANTITY_TINY,passion:1,delirium:1},
+            {moth: CONVENTIONS.QUANTITY_TINY,delirium:1,moth:1},
             description: "Light leaks through the cracks. My mind is brighter than it ever was..",
 			xtriggers: {restorepassion: passion},
-			comments: "This should be usable as if it were passion, although it is also a pollutant for hazard purposes",
 			},
 		{
 		id: "scholarlatin",

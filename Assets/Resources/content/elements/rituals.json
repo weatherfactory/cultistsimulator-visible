@@ -42,6 +42,19 @@
 			},
             description: "This rite recalls the loss of the Watchman, who walks the house which has no walls. Light goes before him and shadow behind. He must not see you."
         },
+		
+				          {
+        id: "riter",
+            label: "",
+            aspects:
+            {ritual:1},
+			slots: {
+			"Invocation":{required: {lore: 1}, consumes: true, description: "What will we forget"},
+			"Subject": {required: {follower:1, reason: 1},description: "Who will speak the words?"},
+			"Instrument":{required: {tool: 1,follower: 1}, description: "What is our instrument?"},
+			},
+            description: ""
+        },
 		  
 ]
 };

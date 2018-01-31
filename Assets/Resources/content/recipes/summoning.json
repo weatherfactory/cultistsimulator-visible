@@ -82,7 +82,7 @@
         actionId: "work",
         requirements: {ritual:1,knock:2,grail:10,forge:2,desire:-1},
 		effects: {spirit_graile_edge:1},
-        startdescription: "Ezeem may enter only where the Grail's power is strong; and he will choose to enter only when invoked with the Forge, which it has so often flirted with. ",
+        startdescription: "Ezeem may enter only where the Grail's power is strong; and he will choose to enter only when invoked with the Forge, with which it has flirted so often. ",
         description: "So many rich aromas, like a feast upon the air! but first, and mostly, blood.",
         warmup: 60,
         craftable: true
@@ -98,6 +98,36 @@
         warmup: 60,
         craftable: true
     },
+	{id: "summoninglosingcontrol",
+	label: "Summoning: a Rebellious Spirit",
+	actionId: "work",
+	requirements: {},
+	startdescription: "The spirit is struggling against my control! I could use Reason to dismiss it safely; I could try to reassert control with Passion; or I could let what will happen, happen.",
+	description: "It's escaped my control!",
+	alternativerecipes:[{id:"summoningshutitdown",chance:100},
+	{id:"summoningfightformastery",chance:100},
+	{id:"summoningescaped",chance:100,additional:true}],
+	slots: {"Effort": {required: {passion:1,reason:1}},
+	warmup: 30,
+	craftable: false},
+	
+	{id:"summoningshutitdown",
+	label: "Summoning: Sending it Home",
+	actionId:"work",
+	requirements: {reason:1},
+	startdescription: "Pronounce the words of dismissal. Seal the circle tight. Erase every trace.",
+	description: "It's gone. We are safe.",
+	warmup:10
+	},
+	{
+	id:"summoningfightformastery",
+	label: "Summoning: Contending for Mastery",
+	actionId:"work",
+	requirements: {passion:1},
+	effects: {},
+	
+	}
+	
 	
 ]
 }
