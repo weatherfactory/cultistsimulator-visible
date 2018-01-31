@@ -311,6 +311,24 @@
             isAspect: true,
 			comments: "Recipe aspect"
         },
+		
+						 {
+            id: "damagehealth",
+            label: "Damage Health",
+			description: "Health will be injured.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+		
+						 {
+            id: "killmortal",
+            label: "Kill Mortal",
+			description: "Mortals will be replaced by corpses",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+		
+		
 				 {
             id: "restorereason",
             label: "Restore Reason",
@@ -352,7 +370,17 @@
 		description: "Something relevant will occur, soon",
 		isAspect: true,
 		comments:"identifies card draws for Time seasonal events" 
-		}
+		},
+		{id: "devourer",
+		label: "Devourer",
+		description: "If this breaks free, it may assault you, or consume your followers.",
+		isAspect: true
+		},
+	{id: "deceiver",
+		label: "Deceiver",
+		description: "If this breaks free, it may try to drive you or your followers to insanity.",
+		isAspect: true
+		},
 		
 ]
 }

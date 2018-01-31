@@ -164,11 +164,73 @@
 	description: "My summoning will obey my wishes - for now.",
 	warmup:10
 	},
+		{id:"summoning_haunt_devourer",
+		actionId:"haunting",
+		startdescription:".",
+		description:"!",
+		warmup:0,
+		linked: [{id: "summoning_haunt_devourer_eatsmortal",chance:50},
+		{id: "summoning_haunt_devourer_eatshealth",chance:100}]
+
+},
 	
 	
+				{id:"summoning_haunt_devourer_eatsmortal",
+	label: "A Prowling Devourer",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning is roaming about, seeking whom it might devour.",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {killmortal:1},
+	slots: {Consuming:{required: {mortal:1},greedy:true}},
+	warmup:30
+	},
+	
+					{id:"summoning_haunt_devourer_eatshealth",
+	label: "A Prowling Devourer",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning seeks to consume some part of you.",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {damagehealth:1},
+	slots: {Consuming:{required: {health:1},greedy:true}},
+	warmup:30
+	},
+	
+			{id:"summoning_haunt_deceiver",
+		actionId:"haunting",
+		startdescription:".",
+		description:"!",
+		warmup:0,
+		linked: [{id: "summoning_haunt_deceiver_derangesmortal",chance:50},
+		{id: "summoning_haunt_deceiver_derangesreason",chance:100}]
+
+},
 	
 	
-	}
+				{id:"summoning_haunt_deceiver_derangesmortal",
+	label: "A Prowling deceiver",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning is roaming about, seeking whom it might devour.",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {killmortal:1},
+	slots: {Consuming:{required: {mortal:1},greedy:true}},
+	warmup:30
+	},
+	
+					{id:"summoning_haunt_deceiver_derangesreason",
+	label: "A Prowling deceiver",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning seeks to consume some part of you..",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {damagereason:1},
+	slots: {Consuming:{required: {reason:1},greedy:true}},
+	warmup:30
+	},
+
+
 	
 	
 ]
