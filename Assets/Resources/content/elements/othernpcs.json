@@ -1,0 +1,14 @@
+{"elements":
+    [
+		 {
+        id: "lunatic",
+            label: "A Poor Lunatic",
+            aspects:
+            {mortal:1},
+            description: "Some overwhelming experience has robbed this individual of their senses. They will wander off soon, never to be seen again.",
+unique:true,
+lifetime:30,
+xtriggers: {killmortal:corpse}
+        },
+]
+};

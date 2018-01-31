@@ -21,7 +21,7 @@
         description: "Not all the Forge's children are bright. Its offcuts and its bastards gather in the Bounds like hammerscale in the cracks of a smithy floor. Here comes one now.",
         warmup: 60,
         craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
+		linked: [{id:"summoninglosingcontrol",chance:220}]
     },
 				{
         id: "summon_spirit_grailc_moth",
@@ -150,7 +150,9 @@
 	effects: {summoned:-1},
 	startdescription: "It's free!",
 	description: "My summoning has escaped my control, where it'll wreak havoc, no doubt - ",
-	warmup:10
+	warmup:5,
+		alternativerecipes: [{id: "summoning_haunt_devourer",chance:100,additional:true},
+		{id: "summoning_haunt_deceiver",chance:100,additional:true}]
 	},
 	
 			{id:"summoningmasteryregained",
@@ -166,8 +168,7 @@
 	},
 		{id:"summoning_haunt_devourer",
 		actionId:"haunting",
-		startdescription:".",
-		description:"!",
+		startdescription:"It's free!",
 		warmup:0,
 		linked: [{id: "summoning_haunt_devourer_eatsmortal",chance:50},
 		{id: "summoning_haunt_devourer_eatshealth",chance:100}]
@@ -178,6 +179,7 @@
 				{id:"summoning_haunt_devourer_eatsmortal",
 	label: "A Prowling Devourer",
 	actionId:"haunting",
+	requirements: {devourer:1},
 	startdescription: "Your escaped summoning is roaming about, seeking whom it might devour.",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	effects: {notoriety:1},
@@ -199,8 +201,8 @@
 	
 			{id:"summoning_haunt_deceiver",
 		actionId:"haunting",
-		startdescription:".",
-		description:"!",
+		requirements: {deceiver:1},
+		startdescription:"It's free!",
 		warmup:0,
 		linked: [{id: "summoning_haunt_deceiver_derangesmortal",chance:50},
 		{id: "summoning_haunt_deceiver_derangesreason",chance:100}]
@@ -209,20 +211,20 @@
 	
 	
 				{id:"summoning_haunt_deceiver_derangesmortal",
-	label: "A Prowling deceiver",
+	label: "A Lurking Deceiver",
 	actionId:"haunting",
-	startdescription: "Your escaped summoning is roaming about, seeking whom it might devour.",
+	startdescription: "Your escaped summoning is roaming about, seeking mortals to derange.",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	effects: {notoriety:1},
-	aspects: {killmortal:1},
+	aspects: {derangemortal:1},
 	slots: {Consuming:{required: {mortal:1},greedy:true}},
 	warmup:30
 	},
 	
 					{id:"summoning_haunt_deceiver_derangesreason",
-	label: "A Prowling deceiver",
+	label: "A Lurking Deceiver",
 	actionId:"haunting",
-	startdescription: "Your escaped summoning seeks to consume some part of you..",
+	startdescription: "Your escaped summoning haunts you, seeking to drive you to despair -",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	effects: {notoriety:1},
 	aspects: {damagereason:1},
