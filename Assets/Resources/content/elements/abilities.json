@@ -18,6 +18,7 @@
                 heart: CONVENTIONS.QUANTITY_TINY
             },
             animFrames: 1,
+			xtriggers: {damagehealth: injury},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
         },
 				 {
@@ -53,7 +54,8 @@
                 lantern: CONVENTIONS.QUANTITY_TINY
             },
             animFrames: 1,
-			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson"
+			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson",
+				xtriggers: {damagereason: dread},
         },
 				 {
             id: "erudition",
@@ -79,7 +81,6 @@ lifetime: 300
             {
                 moth: CONVENTIONS.QUANTITY_TINY
             },
-            maxvalue:7,
             animFrames: 1,
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
         },
@@ -94,10 +95,9 @@ lifetime: 300
 		{id: "fascination",
             label: "Fascination",
             aspects:
-            {moth: CONVENTIONS.QUANTITY_TINY,passion:1,delirium:1},
+            {moth: CONVENTIONS.QUANTITY_TINY,delirium:1,moth:1},
             description: "Light leaks through the cracks. My mind is brighter than it ever was..",
 			xtriggers: {restorepassion: passion},
-			comments: "This should be usable as if it were passion, although it is also a pollutant for hazard purposes",
 			},
 		{
 		id: "scholarlatin",

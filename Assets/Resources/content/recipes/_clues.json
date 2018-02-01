@@ -1,0 +1,90 @@
+ {"recipes":
+ [
+ 			{
+        id: "ritehinthasforge",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,forge:1},
+        startdescription: "This is a start, but I'll need more power.",
+        craftable: false,
+		hintonly: true
+    },
+	
+	 			{
+        id: "ritehinthasgrail",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,grail:1},
+        startdescription: "This is a start, but I'll need more power.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasheart",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,heart:1},
+        startdescription: "This is a start, but I'll need more power.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaslantern",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,lantern:1},
+        startdescription: "This is a start, but I'll need more power.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasmoth",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,moth:1},
+        startdescription: "This is a start, but I'll need more power.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthassecrethistories",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,secrethistories:1},
+        startdescription: "This is a start, but I'll need more power. Not many creatures are drawn to knowledge alone",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaswinter",
+        label: "Hint: Winter",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,winter:1},
+        startdescription: "This is a start, but I'll need more power.",
+        craftable: false,
+		hintonly: true
+    },
+	
+	
+			{
+        id: "ritehinthasknock",
+        label: "Hint: Opening the Way",
+        actionId: "work",
+        requirements: {ritual:1,knock:1},
+        startdescription: "A summoning begins with Knock, but it usually requires two other aspects besides.",
+        craftable: false,
+		hintonly: true
+    },
+		{
+        id: "ritehint",
+        label: "Hint: Rites",
+        actionId: "work",
+        requirements: {ritual:1},
+        startdescription: "Each rite can be used for many purposes. For a summoning, I must begin by calling upon the power of the Knock, which will open the way.",
+        craftable: false,
+		hintonly: true
+    },
+
+	
+]
+}

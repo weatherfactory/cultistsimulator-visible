@@ -299,8 +299,9 @@
 	{id:"studymothupgradeb",chance:100},
 	{id:"studysecrethistoriesupgradeb",chance:100},
 	{id:"studywinterupgradeb",chance:100},
-	{id:"studycreateritebasicconsumetool",chance:100},
-	{id:"studycreateritebasicconsumetool",chance:100},
+	{id:"studycreateritetoolconsumefollower",chance:100},
+	{id:"studycreateritetoolfollowerconsumelore",chance:100},
+	{id:"studycreateritefollowerconsumetool",chance:100},	
 	{id:"studyupgradenomatch",chance:100}]
 	},
 								{
@@ -502,31 +503,44 @@
 	warmup: 0,	
 	craftable: false
 	},
-
-	
-	
-		{id: "studycreateritebasicconsumetool",
+		{id: "studycreateritetoolconsumefollower",
 	label: "Discover a Ritual",
 	actionId: "study",
-	startdescription: "I have read of one who walks before shadow, and behind light, in a house with no walls. There is a rite which petitions his attention.",
-	description: "Have I imagined this rite, or re-invented it? I felt as if a hand guided my own. Sometimes I would find that I had been writing in the dark, never realising that the candle had long since collapsed into smoke.",
-	requirements: {forge:2,lantern:2,lore:2},
-	effects: {forge:-1,lantern:-1,ritebasicconsumetool: 1},
-	warmup: 0,
-	craftable:false,
-	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
-	},
-	{id: "studycreateritebasicconsumefollower",
-	label: "Discover a Ritual",
-	actionId: "study",
-	startdescription: "I have read of a power that governs birth and blood. The right words and the right sacrifice might attract its attention.",
+	startdescription: "I have read of a power that governs birth and blood. This rite is its teaching, but a rite may have many uses.",",
 	description: "I have pieced together my ritual. I cannot be sure it will succeed. I can be sure that there will be a cost in blood.",
 	requirements: {forge:2,grail:2,lore:2},
-	effects: {forge:-1,grail:-1,ritebasicconsumefollower: 1},
+	effects: {forge:-1,grail:-1,ritetoolconsumefollower: 1},
 	warmup: 0,
 	craftable:false,
 	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
 	},
+	
+	
+		{id: "studycreateritetoolfollowerconsumelore",
+	label: "Discover a Ritual",
+	actionId: "study",
+	startdescription: "I have read of one who walks before shadow, and behind light, in a house with no walls. This rite is its teaching, but a rite may have many uses.",
+	description: "Have I imagined this rite, or re-invented it? I felt as if a hand guided my own. Sometimes I would find that I had been writing in the dark, never realising that the candle had long since collapsed into smoke",
+	requirements: {forge:2,grail:2,lore:2},
+	effects: {forge:-1,grail:-1,ritetoolfollowerconsumelore: 1},
+	warmup: 0,
+	craftable:false,
+	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
+	},
+	
+
+		{id: "studycreateritefollowerconsumetool",
+	label: "Discover a Ritual",
+	actionId: "study",
+	startdescription: "I have read of a power that remakes in fire. This rite is its teaching, but a rite may have many uses.",",
+	description: "I have pieced together my ritual. I cannot be sure it will succeed. I can be sure that it requires the destruction of a treasure.",
+	requirements: {forge:2,edge:2,lore:2},
+	effects: {forge:-1,lantern:-1,ritefollowerconsumetool: 1},
+	warmup: 0,
+	craftable:false,
+	comments: "This is intended to be created via an ongoing slot with fragment study options below, but if a better approach occurs, cool."
+	},
+
 		{id: "studyupgradenomatch",
 		label: "False Turns in the Labyrinth",
 		actionId: "study",
