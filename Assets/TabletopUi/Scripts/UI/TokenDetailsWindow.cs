@@ -9,13 +9,9 @@ using UnityEngine.UI;
 using System.Collections;
 
 namespace Assets.CS.TabletopUI {
-    public class TokenDetailsWindow : AnimatedNoteBase, IPointerClickHandler {
-
-        [SerializeField] TextMeshProUGUI title;
-        [SerializeField] TextMeshProUGUI description;
+    public class TokenDetailsWindow : BaseDetailsWindow {
         
-        [Header("Image")]
-        [SerializeField] Image artwork;
+        // coming in with header "Image" from BaseDetailsWindow
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
 
@@ -31,9 +27,6 @@ namespace Assets.CS.TabletopUI {
         const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
         const string slotUnnamed = "Unnamed Slot";
-        const float waitTime = 10f;
-
-        float time;
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
@@ -55,24 +48,8 @@ namespace Assets.CS.TabletopUI {
             this.slotSpec = slotSpec;
             Show();
         }
-        
-        void Show() {
-            if (gameObject.activeSelf == false) { 
-                // Show the content, then make the anim move in
-                UpdateContent(); 
-                gameObject.SetActive(true);
-                TriggerAnim(AnimType.None, AnimType.MoveRight);
-                StartCoroutine(DoWaitForHide());
-            }
-            else {
-                // Make the anim move out, then show the content, then move in again
-                TriggerAnim(AnimType.MoveRight, AnimType.MoveRight, UpdateContent);
-            }
-        }
 
-        void UpdateContent() {
-            // Resets the time for the deactivation whenever content is updated
-            time = 0f; 
+        protected override void UpdateContent() {
 
             if (element != null)
                 SetElementCard(element, token);
@@ -114,16 +91,6 @@ namespace Assets.CS.TabletopUI {
             aspectsDisplayRequired.DisplayAspects(slotSpec.Required);
         }
 
-        void ShowText(string header, string desc) {
-            title.text = header;
-            description.text = desc;
-        }
-
-        void ShowImage(Sprite image) {
-            artwork.gameObject.SetActive(image != null);
-            artwork.sprite = image;
-        }
-
         void ShowImageDecayTimer(bool show, string timeString = null) {
             decayView.gameObject.SetActive(show);
             decayCountText.text = timeString;
@@ -141,28 +108,5 @@ namespace Assets.CS.TabletopUI {
             consumesInfo.gameObject.SetActive(consumes);
         }
 
-        IEnumerator DoWaitForHide() {
-            while (time < waitTime) {
-                if (!IsBusy())
-                    time += Time.deltaTime;
-
-                yield return null;
-            }
-
-            Hide();
-        }
-
-        public void Hide() {
-            if (!IsBusy())
-                TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
-        }
-
-        void DoHide() {
-            gameObject.SetActive(false);
-        }
-
-        public void OnPointerClick(PointerEventData eventData) {
-            Hide();
-        }
     }
 }

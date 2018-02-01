@@ -22,11 +22,15 @@ namespace Assets.CS.TabletopUI
         private TabletopImageBurner tabletopBurner;
         [SerializeField]
         TokenDetailsWindow tokenDetails;
+        [SerializeField]
+        AspectDetailsWindow aspectDetails;
+        
 
         private ElementDetailsWindow currentElementDetails;
 
         public void Initialise() {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
+            aspectDetails.gameObject.SetActive(false);
         }
 
         public void DebugLog(string text)
@@ -43,8 +47,10 @@ namespace Assets.CS.TabletopUI
         }
 
         public void ShowElementDetails(Element element) {
-            tokenDetails.ShowElementDetails(element);
-            SoundManager.PlaySfx("SituationWindowShow");
+            if (element.IsAspect)
+                aspectDetails.ShowAspectDetails(element);
+            else 
+                tokenDetails.ShowElementDetails(element);
 
             /*
             if (currentElementDetails == null) { 
