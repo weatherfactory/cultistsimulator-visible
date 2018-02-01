@@ -50,7 +50,6 @@ namespace Assets.CS.TabletopUI {
 
         public GameObject GreedyIcon;
         public GameObject ConsumingIcon;
-        public GameObject LockedIcon;
 
         bool lastGlowState;
 
@@ -72,11 +71,6 @@ namespace Assets.CS.TabletopUI {
             set { ConsumingIcon.SetActive(value); }
         }
 
-        public bool IsLocked {
-            get { return LockedIcon.activeInHierarchy; }
-            set { LockedIcon.SetActive(value); }
-        }
-
         public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
 
         public RecipeSlot() {
@@ -85,7 +79,6 @@ namespace Assets.CS.TabletopUI {
 
         void Start() {
             ShowGlow(false, false);
-            IsLocked = false;           
         }
 
         public override void Initialise() {
