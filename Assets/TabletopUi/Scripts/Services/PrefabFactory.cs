@@ -21,8 +21,6 @@ namespace Assets.TabletopUi.Scripts.Services
         public SituationToken SituationToken = null;
         public ElementStackToken ElementStackToken = null;
         public SituationWindow SituationWindow = null;
-        public ElementDetailsWindow ElementDetailsWindow = null;
-        public SlotDetailsWindow SlotDetailsWindow = null;
         public RecipeSlot RecipeSlot = null;
         public NotificationWindow NotificationWindow = null;
         public SituationNote SituationNote = null;

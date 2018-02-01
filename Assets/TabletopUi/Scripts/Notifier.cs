@@ -7,58 +7,40 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
 
-namespace Assets.CS.TabletopUI
-{
+namespace Assets.CS.TabletopUI {
 
-    public class Notifier : MonoBehaviour, INotifier
-    {
-        [SerializeField]
-        private Transform windowHolderFixed;
-        [SerializeField]
-        private Transform notificationHolder;
-        [SerializeField]
-        private NotificationLog notificationLog;
-        [SerializeField]
-        private TabletopImageBurner tabletopBurner;
+    public class Notifier : MonoBehaviour, INotifier {
+        
+        [Header("Notification")]
+        [SerializeField] Transform notificationHolder;
+        [SerializeField] NotificationLog notificationLog;
 
-        private ElementDetailsWindow currentElementDetails;
+        [Header("Token Details")]
+        [SerializeField] TokenDetailsWindow tokenDetails;
+        [SerializeField] AspectDetailsWindow aspectDetails;
 
-        public void DebugLog(string text)
-        {
-            Debug.Log(text);
+        [Header("Image Burner")]
+        [SerializeField] private TabletopImageBurner tabletopBurner;
+
+        public void Initialise() {
+            tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
+            aspectDetails.gameObject.SetActive(false);
         }
+
+        // Notifications
+
         public void PushTextToLog(string text) {
             notificationLog.AddText(text);
         }
 
-        public void ShowNotificationWindow(string title, string description,float duration=10) {
+        public void ShowTokenReturnToTabletopNotification(DraggableToken draggableToken, INotification reason) {
+            if (reason != null)
+                ShowNotificationWindow(reason.Title, reason.Description);
+        }
+
+        public void ShowNotificationWindow(string title, string description, float duration = 10) {
             var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);
-        }
-
-        public void ShowElementDetails(Element element) {
-            if (currentElementDetails == null) { 
-                currentElementDetails = BuildElementDetailsWindow();
-                currentElementDetails.Show();
-            }
-
-            SoundManager.PlaySfx("SituationWindowShow");
-            currentElementDetails.SetElementCard(element);
-        }
-
-        private ElementDetailsWindow BuildElementDetailsWindow() {
-            var window = PrefabFactory.CreateLocally<ElementDetailsWindow>(windowHolderFixed);
-            return window;
-        }
-
-        public void ShowSlotDetails(SlotSpecification slot) {
-            var detailWindow = BuildSlotDetailsWindow();
-            detailWindow.SetSlot(slot);
-        }
-
-        private SlotDetailsWindow BuildSlotDetailsWindow() {
-            var window = PrefabFactory.CreateLocally<SlotDetailsWindow>(windowHolderFixed);
-            return window;
         }
 
         private NotificationWindow BuildNotificationWindow(float duration) {
@@ -67,9 +49,27 @@ namespace Assets.CS.TabletopUI
             return notification;
         }
 
-        public void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason) {
-            if (reason != null)
-                ShowNotificationWindow(reason.Title, reason.Description);
+        // Token Details
+
+        public void ShowElementDetails(Element element, bool fromDetailsWindow = false) {
+            if (element.IsAspect == false) {
+                tokenDetails.ShowElementDetails(element);
+                aspectDetails.Hide();
+                return;
+            }
+
+            // The following only happens for aspects
+            aspectDetails.ShowAspectDetails(element, !fromDetailsWindow);
+
+            if (fromDetailsWindow)
+                tokenDetails.ResetTimer(); // ensure the token window timer is restored
+            else 
+                tokenDetails.Hide(); // hide the token window
+        }
+
+        public void ShowSlotDetails(SlotSpecification slot) {
+            tokenDetails.ShowSlotDetails(slot);
+            aspectDetails.Hide();
         }
 
         // TabletopImageBurner

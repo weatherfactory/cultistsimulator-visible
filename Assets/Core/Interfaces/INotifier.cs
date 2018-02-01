@@ -11,9 +11,9 @@ namespace Assets.Core.Interfaces
     {
         void PushTextToLog(string text);
         void ShowNotificationWindow(string title, string description, float duration = 10);
-        void ShowElementDetails(Element element);
+        void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot);
-        void TokenReturnedToTabletop(DraggableToken draggableToken, INotification reason);
+        void ShowTokenReturnToTabletopNotification(DraggableToken draggableToken, INotification reason);
         void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment);
     }
 }

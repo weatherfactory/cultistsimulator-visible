@@ -63,16 +63,17 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
-        incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
+        //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
         DisplaySituationTokenOnTable(potentialUsurper);
     }
 
     public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         // We don't merge here. We assume if we end up here no merge was possible
-        incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
+        //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
         _elementStacksManager.AcceptStack(potentialUsurper);
+        CheckOverlappingTokens(potentialUsurper);
     }
 
     Vector2 GetFreeTokenPos(DraggableToken incumbent) {

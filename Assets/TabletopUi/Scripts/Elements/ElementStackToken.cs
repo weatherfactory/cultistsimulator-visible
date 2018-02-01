@@ -205,7 +205,7 @@ namespace Assets.CS.TabletopUI {
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
 
             if (reason != null)
-                notifier.TokenReturnedToTabletop(this, reason);
+                notifier.ShowTokenReturnToTabletopNotification(this, reason);
             /*
             if (lastTablePos != null)
                 transform.position = (Vector3)lastTablePos;
@@ -464,7 +464,7 @@ namespace Assets.CS.TabletopUI {
 
             if (lifetimeRemaining < _element.Lifetime / 2) {
                 ShowCardDecayTimer(true);
-                SetCardDecayTime(lifetimeRemaining);
+                decayCountText.text = GetCardDecayTime();
             }
 
             SetCardDecay(1 - lifetimeRemaining / _element.Lifetime);
@@ -475,9 +475,9 @@ namespace Assets.CS.TabletopUI {
             decayView.gameObject.SetActive(showTimer);
         }
 
-        public void SetCardDecayTime(float timeRemaining) {
-
-            decayCountText.text = timeRemaining.ToString("0.0") + "s";
+        // Public so TokenWindow can access this
+        public string GetCardDecayTime() {
+            return lifetimeRemaining.ToString("0.0") + "s";
         }
 
         public void SetCardDecay(float percentage) {
