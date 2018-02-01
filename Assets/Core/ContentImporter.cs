@@ -625,7 +625,7 @@ public class ContentImporter
         {
             if (allElements[k].IsAspect)
             {
-                if (ResourcesManager.GetSpriteForAspect(k) == null)
+                if (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForElement(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
                     missingAspectImages += (" " + k);
                     missingAspectImageCount++;
@@ -633,7 +633,7 @@ public class ContentImporter
             }
             else
             {
-                if (ResourcesManager.GetSpriteForElement(k) == null)
+                if (ResourcesManager.GetSpriteForElement(k) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
                     missingElementImages += (" " + k);
                     missingElementImageCount++;

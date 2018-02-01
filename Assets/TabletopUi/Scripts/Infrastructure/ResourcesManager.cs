@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour
 {
-    private const string PLACEHOLDER_IMAGE_NAME = "_x";
+    public const string PLACEHOLDER_IMAGE_NAME = "_x";
 
 	public static Sprite GetSpriteForVerbLarge(string verbId)
 	{

@@ -66,7 +66,7 @@ namespace Noon
 
         public static void Log(string message,int verbosityNeeded=0)
         {
-            if(verbosityNeeded<CurrentVerbosity)
+            if(verbosityNeeded<=CurrentVerbosity)
             { 
             //switch between in-Unity and unit testing
             if(UnitTestingMode)
