@@ -21,13 +21,17 @@ namespace Assets.TabletopUi.Scripts
                 Header.enabled = show;
         }
 
-        public void DisplayAspects(IAspectsDictionary aspects) {
+        public void DisplayAspects(IAspectsDictionary aspects) {            
             ClearCurrentlyDisplayedAspects();
 
-            ShowHeader(aspects.Keys.Any());
+            bool anyAspects = aspects != null && aspects.Keys.Any();
 
-            foreach (string k in aspects.Keys)
-                AddAspectToDisplay(k, aspects[k]);
+            gameObject.SetActive(anyAspects);
+            ShowHeader(anyAspects);
+
+            if (anyAspects)
+                foreach (string k in aspects.Keys)
+                    AddAspectToDisplay(k, aspects[k]);
         }
 
         private void AddAspectToDisplay(string aspectId, int quantity) {
@@ -40,7 +44,7 @@ namespace Assets.TabletopUi.Scripts
             foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
                 DestroyObject(a.gameObject);
         }
-    
+
     }
 
 

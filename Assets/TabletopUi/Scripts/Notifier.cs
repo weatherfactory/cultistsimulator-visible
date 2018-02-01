@@ -20,8 +20,14 @@ namespace Assets.CS.TabletopUI
         private NotificationLog notificationLog;
         [SerializeField]
         private TabletopImageBurner tabletopBurner;
+        [SerializeField]
+        TokenDetailsWindow tokenDetails;
 
         private ElementDetailsWindow currentElementDetails;
+
+        public void Initialise() {
+            tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
+        }
 
         public void DebugLog(string text)
         {
@@ -37,23 +43,31 @@ namespace Assets.CS.TabletopUI
         }
 
         public void ShowElementDetails(Element element) {
+            tokenDetails.ShowElementDetails(element);
+            SoundManager.PlaySfx("SituationWindowShow");
+
+            /*
             if (currentElementDetails == null) { 
                 currentElementDetails = BuildElementDetailsWindow();
                 currentElementDetails.Show();
             }
-
+            
             SoundManager.PlaySfx("SituationWindowShow");
             currentElementDetails.SetElementCard(element);
+            */
         }
-
+        /*
         private ElementDetailsWindow BuildElementDetailsWindow() {
             var window = PrefabFactory.CreateLocally<ElementDetailsWindow>(windowHolderFixed);
             return window;
         }
+        */
 
         public void ShowSlotDetails(SlotSpecification slot) {
-            var detailWindow = BuildSlotDetailsWindow();
-            detailWindow.SetSlot(slot);
+            tokenDetails.ShowSlotDetails(slot);
+            SoundManager.PlaySfx("SituationWindowShow");
+            //var detailWindow = BuildSlotDetailsWindow();
+            //detailWindow.SetSlot(slot);
         }
 
         private SlotDetailsWindow BuildSlotDetailsWindow() {

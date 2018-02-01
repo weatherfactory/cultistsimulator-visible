@@ -6,18 +6,17 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace Assets.CS.TabletopUI {
-    public class PaginatedText : MonoBehaviour {
+    public class PaginatedText : AnimatedNoteBase {
 
         enum AnimDirection { MoveRight, MoveLeft, Switch }
 
-        [SerializeField] Animation anim;
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] Button prevPage;
         [SerializeField] Button nextPage;
 
         [SerializeField] List<ISituationNote> Notes = new List<ISituationNote>();
-        bool isBusy;
         int currentPage = 0;
+        int targetPage = -1;
 
        public List<ISituationNote> GetCurrentTexts()
         {
@@ -32,10 +31,10 @@ namespace Assets.CS.TabletopUI {
                 SetPage(Notes.Count-1);
         }
 
-        void OnDisable() {
+        protected override void OnDisable() {
+			base.OnDisable();
             prevPage.onClick.RemoveListener(ShowPrevPage);
             nextPage.onClick.RemoveListener(ShowNextPage);
-			isBusy = false;
         }
 
         public void SetText(string description) {
@@ -46,11 +45,11 @@ namespace Assets.CS.TabletopUI {
 
             Notes.Clear();
             Notes.Add(newNote);
-			//ShowPageNum(0); why are we showing the first? is that right?
-            ShowFinalPage();
+			ShowPageNum(0); //Ee've just added a new text stack, not added so we show the first page. 
+            // This gets us a different show anim out to left, in from left. instead of directional
         }
 
-		public void SetText(List<ISituationNote> setNotes) {
+        public void SetText(List<ISituationNote> setNotes) {
 			Notes = setNotes;
 			ShowPageNum(setNotes.Count - 1);
 		}
@@ -73,8 +72,7 @@ namespace Assets.CS.TabletopUI {
 			ShowPage(-1, AnimDirection.MoveLeft);
         }
 
-        void ShowFinalPage()
-        {
+        void ShowFinalPage() {
             var offsetToLast = currentPage + Notes.Count-1;
             ShowPage(offsetToLast, AnimDirection.MoveRight); 
         }
@@ -84,14 +82,21 @@ namespace Assets.CS.TabletopUI {
         }
 
 		void ShowPage(int offset, AnimDirection anim) {
-			if (isBusy)
+			if (IsBusy())
 				return;
 
-			if (gameObject.activeInHierarchy)
-				StartCoroutine(DoAnim(anim, offset));
-			else
+			if (gameObject.activeInHierarchy) {
+                targetPage = currentPage + offset;
+
+                var animOut = (anim != AnimDirection.MoveLeft ? AnimatedNoteBase.AnimType.MoveLeft : AnimatedNoteBase.AnimType.MoveRight);
+                var animIn = (anim != AnimDirection.MoveLeft ? AnimatedNoteBase.AnimType.MoveRight : AnimatedNoteBase.AnimType.MoveLeft);
+
+                TriggerAnim(animOut, animIn, SetPageToTargetPage, null);
+            }
+			else { 
 				SetPage(currentPage + offset);
-		}
+            }
+        }
 
 		void SetPage(int page) {
 			if (page + 1 > Notes.Count) 
@@ -106,46 +111,13 @@ namespace Assets.CS.TabletopUI {
 			nextPage.interactable = currentPage + 1 < Notes.Count;
 		}
 
+        void SetPageToTargetPage() {
+            if (targetPage == -1)
+                return;
 
-        IEnumerator DoAnim(AnimDirection direction, int offset) {
-            isBusy = true;
-            string clipName;
-            clipName = GetOutClip(direction);
-
-            if (clipName != null)
-                anim.Play(clipName);
-
-            while (anim.isPlaying)
-                yield return null;
-
-            SetPage(currentPage + offset);
-            clipName = GetInClip(direction);
-
-            if (clipName != null)
-                anim.Play(clipName);
-
-            isBusy = false;
-        }
-        string GetOutClip(AnimDirection direction) {
-            if (direction == AnimDirection.MoveLeft)
-                return "situation-note-move-out-r";
-            else if (direction == AnimDirection.MoveRight)
-				return "situation-note-move-out-l";
-			else if (direction == AnimDirection.Switch)
-				return "situation-note-move-out-l";
-            else
-                return null;
+            SetPage(targetPage);
+            targetPage = -1;
         }
 
-        string GetInClip(AnimDirection direction) {
-            if (direction == AnimDirection.MoveLeft)
-                return "situation-note-move-in-l";
-            else if (direction == AnimDirection.MoveRight)
-				return "situation-note-move-in-r";
-			else if (direction == AnimDirection.Switch)
-				return "situation-note-move-in-l";
-            else
-                return null;
-        }
     }
 }
