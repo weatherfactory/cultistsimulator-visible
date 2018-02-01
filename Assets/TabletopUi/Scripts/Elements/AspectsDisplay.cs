@@ -16,10 +16,9 @@ namespace Assets.TabletopUi.Scripts
 
         [SerializeField] private TextMeshProUGUI Header;
 
-        public void ShowHeader(bool show)
-        {
-            if(Header!=null) //not all aspects displays have headers
-            Header.enabled = show;
+        public void ShowHeader(bool show) {
+            if (Header != null) //not all aspects displays have headers
+                Header.enabled = show;
         }
 
         public void DisplayAspects(IAspectsDictionary aspects) {
