@@ -14,6 +14,9 @@ namespace Assets.TabletopUi.Scripts
     /// </summary>
     public class AspectsDisplay : MonoBehaviour {
 
+        // This is pushed to the Aspect Frame 
+        // There it is used in the click>Notifier call to tell the notifier where to place the details window
+        [SerializeField] bool isWithinDetailsWindow;
         [SerializeField] private TextMeshProUGUI Header;
 
         public void ShowHeader(bool show) {
@@ -38,6 +41,9 @@ namespace Assets.TabletopUi.Scripts
             AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
             Element aspect = Registry.Retrieve<ICompendium>().GetElementById(aspectId);
             newAspectFrame.PopulateDisplay(aspect, quantity);
+
+            if (isWithinDetailsWindow)
+                newAspectFrame.SetAsDetailWindowChild();
         }
 
         public void ClearCurrentlyDisplayedAspects() {

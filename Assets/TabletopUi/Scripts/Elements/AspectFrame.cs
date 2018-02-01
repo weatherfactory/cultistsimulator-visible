@@ -13,6 +13,8 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 {
     public int Quantity;
     private Element aspect=null;
+    private bool parentIsDetailsWindow = false; // set by AspectsDisplay. Used in Notifier call.
+
     [SerializeField] private LayoutElement layoutElement;
     [SerializeField] private Image aspectImage;
     [SerializeField] private Image quantityBG;
@@ -21,6 +23,14 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public float widthWithQuantity = 80f;
     public float widthWithoutQuantity = 40f;
+
+    public void PopulateDisplay(Element aspect, int aspectValue) {
+        this.aspect = aspect;
+        Quantity = aspectValue;
+        DisplayAspectImage(aspect);
+        DisplayQuantity(aspectValue);
+        gameObject.name = "Aspect - " + aspect.Id;
+    }
 
     private void DisplayAspectImage(Element aspect)
     {
@@ -49,13 +59,8 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void PopulateDisplay(Element aspect, int aspectValue)
-    {
-        this.aspect = aspect;
-        Quantity = aspectValue;
-        DisplayAspectImage(aspect);
-        DisplayQuantity(aspectValue);
-        gameObject.name = "Aspect - " + aspect.Id;
+    public void SetAsDetailWindowChild() {
+        parentIsDetailsWindow = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -68,7 +73,7 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Registry.Retrieve<INotifier>().ShowElementDetails(aspect);
+        Registry.Retrieve<INotifier>().ShowElementDetails(aspect, parentIsDetailsWindow);
     }
 
     public Vector3 GetNotificationPosition()

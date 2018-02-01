@@ -37,7 +37,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        void ResetTimer() {
+        public void ResetTimer() {
             // Resets the time for the deactivation whenever content is updated
             time = 0f;
         }
@@ -67,7 +67,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void Hide() {
-            if (!IsBusy())
+            if (gameObject.activeInHierarchy)
                 TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
         }
 

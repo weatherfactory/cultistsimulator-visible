@@ -205,7 +205,7 @@ namespace Assets.CS.TabletopUI {
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
 
             if (reason != null)
-                notifier.TokenReturnedToTabletop(this, reason);
+                notifier.ShowTokenReturnToTabletopNotification(this, reason);
             /*
             if (lastTablePos != null)
                 transform.position = (Vector3)lastTablePos;

@@ -35,7 +35,7 @@ namespace Assets.CS.TabletopUI {
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
             // Check if we'd show the same, if so: do nothing
-            if (this.element == element) {
+            if (this.element == element && gameObject.activeSelf) {
                 if (this.token == token)
                     return;
 
@@ -55,7 +55,7 @@ namespace Assets.CS.TabletopUI {
 
         public void ShowSlotDetails(SlotSpecification slotSpec) {
             // Check if we'd show the same, if so: do nothing
-            if (this.slotSpec == slotSpec)
+            if (this.slotSpec == slotSpec && gameObject.activeSelf)
                 return;
 
             this.element = null;
