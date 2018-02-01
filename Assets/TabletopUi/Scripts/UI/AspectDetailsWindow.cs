@@ -17,7 +17,10 @@ namespace Assets.CS.TabletopUI {
         Element element;
 
         public void ShowAspectDetails(Element element) {
-            // Note: If we want to show the same element, and the token has no timing? Do nothing instead?
+            // Check if we'd show the same, if so: do nothing
+            if (this.element == element)
+                return;
+
             this.element = element;
             Show();
         }

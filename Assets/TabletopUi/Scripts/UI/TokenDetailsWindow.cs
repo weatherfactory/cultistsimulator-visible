@@ -34,7 +34,18 @@ namespace Assets.CS.TabletopUI {
         SlotSpecification slotSpec;
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
-            // Note: If we want to show the same element, and the token has no timing? Do nothing instead?
+            // Check if we'd show the same, if so: do nothing
+            if (this.element == element) {
+                if (this.token == token)
+                    return;
+
+                bool oldDecays = (this.token != null && this.token.Decays);
+                bool newDecays = (token != null && token.Decays);
+
+                // Is there was and will be no decay visible? Do nothing
+                if (!oldDecays && !newDecays)
+                    return;
+            }
 
             this.element = element;
             this.token = token; // To be able to update the card's remaining time
@@ -43,6 +54,10 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ShowSlotDetails(SlotSpecification slotSpec) {
+            // Check if we'd show the same, if so: do nothing
+            if (this.slotSpec == slotSpec)
+                return;
+
             this.element = null;
             this.token = null;
             this.slotSpec = slotSpec;
