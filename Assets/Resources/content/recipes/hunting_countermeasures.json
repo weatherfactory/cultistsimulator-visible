@@ -1,0 +1,124 @@
+{"recipes": [
+	   {id: "hunterattackhighedge",
+	   label: "Send an Unstoppable Force to murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"Unless this Hunter has some unusual protection, they're already dead. But their demise will attract attention.",
+	  description:"100% success rate means this should never be visible.",
+	  requirements: {hunter:1,edge:10,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "hunterattackmidedge",
+	   label: "Send a Potent Minion to murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"My minion is powerful. This Hunter is unlikely to survive. But the attempt will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {hunter:1,edge:5,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:70},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "hunterattacklowedge",
+	   label: "Send a Minion to murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"My minion's skills are limited. This Hunter will probably survive, and the attempt will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {hunter:1,edge:1,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:30},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	   {id: "hunterattacknoedge",
+	   label: "Send Someone Unsuitable to Murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"My minion lacks the Edge aspect, and is woefully unsuited to attacking the hunter. There's a small chance they might succeed.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {hunter:1,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:10},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "hunterattacksuccess",
+	   label: "Hunting a Hunter",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a trophy.",
+	  effects: {hunter:-1,corpse:1,notoriety:1},
+	  comments: "We can't use killmortal because it would kill them both!",
+	  warmup:10	  
+	  },
+	  {id: "hunterattackfailure",
+	   label: "Hunting a Hunter",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has not returned. They must have failed.",
+	  effects: {follower:-1,notoriety:1},
+	  comments: "We can't use killmortal because it would kill them both - and we don't recover the follower's corpse.",
+	  warmup:10	  
+	  },
+	  
+	  
+	  	   {id: "evidencedestroyhighmoth",
+	   label: "Send an Unstoppable Force to murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"Unless this Hunter has some unusual protection, they're already dead. But their demise will attract attention.",
+	  description:"100% success rate means this should never be visible.",
+	  requirements: {hunter:1,moth:10},
+	  linked: [{id:"evidencedestroysuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "evidencedestroymidmoth",
+	   label: "Send a Potent Minion to murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"My minion is powerful. This Hunter is unlikely to survive. But the attempt will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {hunter:1,moth:5},
+	  linked: [{id:"evidencedestroysuccess",chance:70},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "evidencedestroylowmoth",
+	   label: "Send a Minion to murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"My minion's skills are limited. This Hunter will probably survive, and the attempt will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {hunter:1,moth:1},
+	  linked: [{id:"evidencedestroysuccess",chance:70},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+	   {id: "evidencedestroynomoth",
+	   label: "Send Someone Unsuitable to Murder a Hunter",
+	  actionId:"talk",
+	  startdescription:"My minion lacks the moth aspect, and is woefully unsuited to attacking the hunter. There's a small chance they might succeed.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {hunter:1},
+	  linked: [{id:"evidencedestroysuccess",chance:70},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  	  
+	  {id: "evidencedestroysuccess",
+	   label: "Hunting a Hunter",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a trophy.",
+	  effects: {hunter:-1,corpse:1,notoriety:1},
+	  comments: "We can't use killmortal because it would kill them both!",
+	  warmup:10	  
+	  },
+	  {id: "evidencedestroyfailure",
+	   label: "Hunting a Hunter",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has not returned. They must have failed.",
+	  effects: {follower:-1,corpse:1,notoriety:1},
+	  comments: "We can't use killmortal because it would kill them both!",
+	  warmup:10	  
+	  },
+]
+}

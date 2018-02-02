@@ -4,7 +4,7 @@
         id: "spirit_winterb_heart",
             label: "Voiceless Dead",
             aspects:
-            {summoned:1,winter:6,moth:6,deceiver:1},
+            {follower:1, summoned:1,winter:6,moth:6,deceiver:1},
             description: "Sometimes the Dead enter the Mansus by the White Door. At its threshold they lay down their power of speech forever. Call them back to the world, and they will have no voice, but their skins of dust  are yours to command.",
 			lifetime: 180
         },
@@ -12,7 +12,7 @@
         id: "spirit_forgec_winter",
             label: "Caligine",
             aspects:
-            {summoned:1,forge:8,moth:8,,deceiver:1},
+            {follower:1, summoned:1,forge:8,moth:8,,deceiver:1},
             description: "At the corners of the Forge, in the bounds of the Mansus, the Glory's fire meets baser elements. Here is a cunning vapour to infect your enemy's dreams.",
 			lifetime: 180
         },
@@ -20,7 +20,7 @@
         id: "spirit_grailc_moth",
             label: "Raw Prophet",
             aspects:
-            {summoned:1,grail:8,moth:8,deceiver:1},
+            {follower:1, summoned:1,grail:8,moth:8,deceiver:1},
             description: "Sometimes it divides, sometimes it unites, sometimes she speaks words of warning, sometimes he advises on appetite. Its prophecies are confusion, their whispers confound.",
 			lifetime: 180
         },
@@ -28,7 +28,7 @@
         id: "spirit_lanternc_moth",
             label: "Hint",
             aspects:
-            {summoned:1,lantern:8,edge:8,devourer:1},
+            {follower:1, summoned:1,lantern:8,edge:8,devourer:1},
             description: "The Hinter are most comfortable behind: behind the scenes, behind the mirrors, behind you. They slide under doors and kill with glass, but they cannot survive the gaze of a living mortal.",
 			lifetime: 180
         },
@@ -36,7 +36,7 @@
         id: "spirit_heartc_edge",
             label: "Percussigant",
             aspects:
-            {summoned:1,heart:8,edge:8,devourer:1},
+            {follower:1, summoned:1,heart:8,edge:8,devourer:1},
             description: "The Percussigant! It loves the sistrum's shiver, it loves the thrum of the tympanos, it recalls with fondness the flaying of Marsyas, and so it will not \n
 			will not\n
 			will not stop dancing.",
@@ -46,7 +46,7 @@
         id: "spirit_winterd_edge",
             label: "Maid-in-the-Mirror",
             aspects:
-            {summoned:1,winter:10,edge:10,devourer:1},
+            {follower:1, summoned:1,winter:10,edge:10,devourer:1},
             description: "'The ascent is glass. The walls are knives. Each step is blood.' The Dead who rest before a new-cracked mirror, who pass through the Peacock Gate, who climb the Sharp Stair: those Dead enter the service of the Sun-in-Rags.",
 			lifetime: 180
         },
@@ -54,7 +54,7 @@
         id: "spirit_forgee_edge",
             label: "King Crucible",
             aspects:
-            {summoned:1,forge:12,edge:12,devourer:1},
+            {follower:1, summoned:1,forge:12,edge:12,devourer:1},
             description: "'In the desert I wait, in the ruins I burn. Metal is water, stone is wax, flesh is smoke. Enter me and be no longer.'",
 			lifetime: 180,
 			unique:true
@@ -63,7 +63,7 @@
         id: "spirit_graile_edge",
             label: "Ezeem, the Second Thirstly",
             aspects:
-            {summoned:1,grail:12,edge:12,devourer:1},
+            {follower:1, summoned:1,grail:12,edge:12,devourer:1},
             description: "'Change me. Change me. Change me harder. Now: <i>my</i> turn.'",
 			lifetime: 180,
 			unique:true
@@ -72,7 +72,7 @@
         id: "spirit_lanterne_secret",
             label: "Teresa",
             aspects:
-            {summoned:1,lantern:12,secrethistories:12},
+            {follower:1, summoned:1,lantern:12,secrethistories:12},
             description: "'Oh, the world is flat; oh, but it's flat! I won't stay long. I shan't stay long. Tell me a secret.'",
 			lifetime: 180,
 			unique:true
