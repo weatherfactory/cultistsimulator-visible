@@ -1,16 +1,69 @@
  {"recipes": [
-	{
-        id: "summon_spirit_winterb_heart",
-        label: "Summon one of the Voiceless Dead",
+ 
+ 
+ 
+ 	{
+        id: "summon_spirit_wintera_edge",
+        label: "Call on the Cartographer of Scars to raise a corpse to half-life",
         actionId: "work",
-        requirements: {ritual:1,knock:2,winter:4,heart:2,desire:-1},
-		effects: {spirit_winterb_heart:1},
-        startdescription: "These are the Dead who do not descend or ascend, but who remain in the Mansus and dream of Winter. The power of Winter, along with a little of the Heart's warmth, will draw them here.",
-        description: "A dark shape limned with winter light. It will not speak, but its eyes are avid, looking, looking. The Dead always long for the world, eventually.",
+        requirements: {ritual:1,corpse:1,winter:2,edge:2,desire:-1},
+		effects: {spirit_wintera_edge:1,corpse:-1},
+        startdescription: "A shattering force will infuse its flesh. You must begin the process. Ready your hammer.",
+        description: "The corpse lurches groaning to its feet: or what is left of its feet.",
         warmup: 60,
         craftable: true,
 		linked: [{id:"summoninglosingcontrol",chance:30}]
     },
+  	{
+        id: "summon_spirit_wintera_moth",
+        label: "Call on the Ring-Yew to raise a corpse to half-life",
+        actionId: "work",
+        requirements: {ritual:1,corpse:1,winter:2,moth:2,desire:-1},
+		effects: {spirit_wintera_moth:1,corpse:-1},
+        startdescription: "First you must plant the seeds: under the eyelids, under the tongue, in all the secret openings of the body.",
+        description: "The corpse sways to its feet. Its eyes struggle open. Sap trickles from its mouth.",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+ 
+ 		{
+        id: "summon_spirit_forgee_edge",
+        label: "Summon one of the Name-emanations of the Forge of Days",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:10,lantern:2,desire:-1},
+		effects: {spirit_forgee_edge:1},
+        startdescription: "King Crucible will come only when the room glows with the aspect called Forge. He also requires a Lantern, for the light of the Glory that he claims to know.",
+        description: "He can hide in a candle-flame if he must. But here he is in all his bonfire pomp. After I speak with him, the skin of my face and hands will be pink as if from too much sun.",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_graile_edge",
+        label: "Summon one of the Name-emanations of the Red Grail",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:10,forge:2,desire:-1},
+		effects: {spirit_graile_edge:1},
+        startdescription: "Ezeem may enter only where the Grail's power is strong; and he will choose to enter only when invoked with the Forge, with which it has flirted so often. ",
+        description: "So many rich aromas, like a feast upon the air! but first, and mostly, blood.",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_lanterne_secret",
+        label: "Summon the mysterious Name known as the Baldomerian",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:10,secrethistories:2,desire:-1},
+		effects: {spirit_lanterne_secret:1},
+        startdescription: "A mighty force of Lantern to draw the Baldomerian's attention, and a teasing taste of secrets to bring her closer.",
+        description: "The Baldomerian has the hunched shoulders of a scholar, the clear voice of a school-teacher, and the freckles of a traveller on the Continent. She lacks a shadow.",
+        warmup: 60,
+        craftable: true,
+		comments: "Teresa doesn't struggle; she's always up for a chat"
+    },
+
 		{
         id: "summon_spirit_forgec_winter",
         label: "Summon a creature of smoky deception",
@@ -71,42 +124,19 @@
         craftable: true,
 		linked: [{id:"summoninglosingcontrol",chance:30}]
     },
-			{
-        id: "summon_spirit_forgee_edge",
-        label: "Summon one of the Name-emanations of the Forge of Days",
+		{
+        id: "summon_spirit_winterb_heart",
+        label: "Summon one of the Voiceless Dead",
         actionId: "work",
-        requirements: {ritual:1,knock:2,forge:10,lantern:2,desire:-1},
-		effects: {spirit_forgee_edge:1},
-        startdescription: "King Crucible will come only when the room glows with the aspect called Forge. He also requires a Lantern, for the light of the Glory that he claims to know.",
-        description: "He can hide in a candle-flame if he must. But here he is in all his bonfire pomp. After I speak with him, the skin of my face and hands will be pink as if from too much sun.",
+        requirements: {ritual:1,knock:2,winter:4,heart:2,desire:-1},
+		effects: {spirit_winterb_heart:1},
+        startdescription: "These are the Dead who do not descend or ascend, but who remain in the Mansus and dream of Winter. The power of Winter, along with a little of the Heart's warmth, will draw them here.",
+        description: "A dark shape limned with winter light. It will not speak, but its eyes are avid, looking, looking. The Dead always long for the world, eventually.",
         warmup: 60,
         craftable: true,
 		linked: [{id:"summoninglosingcontrol",chance:30}]
     },
-			{
-        id: "summon_spirit_graile_edge",
-        label: "Summon one of the Name-emanations of the Red Grail",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,grail:10,forge:2,desire:-1},
-		effects: {spirit_graile_edge:1},
-        startdescription: "Ezeem may enter only where the Grail's power is strong; and he will choose to enter only when invoked with the Forge, with which it has flirted so often. ",
-        description: "So many rich aromas, like a feast upon the air! but first, and mostly, blood.",
-        warmup: 60,
-        craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
-    },
-			{
-        id: "summon_spirit_lanterne_secret",
-        label: "Summon the mysterious Name known as the Baldomerian",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,lantern:10,secrethistories:2,desire:-1},
-		effects: {spirit_lanterne_secret:1},
-        startdescription: "A mighty force of Lantern to draw the Baldomerian's attention, and a teasing taste of secrets to bring her closer.",
-        description: "The Baldomerian has the hunched shoulders of a scholar, the clear voice of a school-teacher, and the freckles of a traveller on the Continent. She lacks a shadow.",
-        warmup: 60,
-        craftable: true,
-		comments: "Teresa doesn't struggle; she's always up for a chat"
-    },
+	
 	{id: "summoninglosingcontrol",
 	label: "Summoning: a Rebellious Spirit",
 	actionId: "work",
