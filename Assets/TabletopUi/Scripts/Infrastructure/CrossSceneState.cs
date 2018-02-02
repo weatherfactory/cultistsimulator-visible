@@ -31,6 +31,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _metaInfo = metaInfo;
         }
 
+        public static MetaInfo GetMetaInfo()
+        {
+            return _metaInfo;
+        }
+
+
+
         public static Hashtable GetHashTableForCrossSceneState()
         {
             var ht=new Hashtable();
