@@ -41,7 +41,7 @@
 	  
 	  
 	  {id: "hunterattacksuccess",
-	   label: "Hunting a Hunter",
+	   label: "Hunting a Hunter...",
 	  actionId:"talk",
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a trophy.",
@@ -50,7 +50,7 @@
 	  warmup:10	  
 	  },
 	  {id: "hunterattackfailure",
-	   label: "Hunting a Hunter",
+	   label: "Hunting a Hunter...",
 	  actionId:"talk",
 	  startdescription: "I await word....",
 	  description:"My minion has not returned. They must have failed.",
@@ -59,65 +59,52 @@
 	  warmup:10	  
 	  },
 	  
-	  
-	  	   {id: "evidencedestroyhighmoth",
-	   label: "Send an Unstoppable Force to murder a Hunter",
-	  actionId:"talk",
-	  startdescription:"Unless this Hunter has some unusual protection, they're already dead. But their demise will attract attention.",
-	  description:"100% success rate means this should never be visible.",
-	  requirements: {hunter:1,moth:10},
-	  linked: [{id:"evidencedestroysuccess",chance:100},
-	  ]
-	  },
 	  	   {id: "evidencedestroymidmoth",
-	   label: "Send a Potent Minion to murder a Hunter",
+	   label: "Send a Devious Minion to destroy Evidence",
 	  actionId:"talk",
-	  startdescription:"My minion is powerful. This Hunter is unlikely to survive. But the attempt will draw attention.",
+	  startdescription:"My scheme will most likely succeed. There is always a chance that something will go awry.",
 	  description:"Separate failure event means this should never be visible.",
-	  requirements: {hunter:1,moth:5},
+	  requirements: {follower:1,moth:5,evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:70},
 	  {id:"evidencedestroyfailure",chance:100}
-	  ]
+	  ],
+	  	  comments: "No Moth 10 here. There are currently no Moth 10 minions, but also we don't want a 100% chance because there's no downside. This could easily change later."
 	  },
 	  	  	   {id: "evidencedestroylowmoth",
-	   label: "Send a Minion to murder a Hunter",
+	   label: "Send a Minion to destroy Evidence",
 	  actionId:"talk",
-	  startdescription:"My minion's skills are limited. This Hunter will probably survive, and the attempt will draw attention.",
+	  startdescription:"My minion's talent for deceit is limited, and this is a difficult task. They will likely fail.",
 	  description:"Separate failure event means this should never be visible.",
-	  requirements: {hunter:1,moth:1},
+	  requirements: {follower:1,moth:1,evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:70},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
 	   {id: "evidencedestroynomoth",
-	   label: "Send Someone Unsuitable to Murder a Hunter",
+	   label: "Send Someone Unsuitable to Destroy Evidence",
 	  actionId:"talk",
-	  startdescription:"My minion lacks the moth aspect, and is woefully unsuited to attacking the hunter. There's a small chance they might succeed.",
+	  startdescription:"My minion lacks the Moth aspect, and will be out of their depth. There's a small chance they might succeed.",
 	  description:"Separate failure event means this should never be visible.",
-	  requirements: {hunter:1},
+	  requirements: {evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:70},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
-	  
-	  
-	  	  
+
 	  {id: "evidencedestroysuccess",
-	   label: "Hunting a Hunter",
+	   label: "Tampering with Records...",
 	  actionId:"talk",
 	  startdescription: "I await word....",
-	  description:"My minion has returned, with a trophy.",
-	  effects: {hunter:-1,corpse:1,notoriety:1},
-	  comments: "We can't use killmortal because it would kill them both!",
+	  description:"My minion has returned. The evidence has been destroyed. I am a little safer.",
+	  effects: {evidencelevel:-1},
 	  warmup:10	  
 	  },
 	  {id: "evidencedestroyfailure",
-	   label: "Hunting a Hunter",
+	   label: "Tampering with Records...",
 	  actionId:"talk",
 	  startdescription: "I await word....",
-	  description:"My minion has not returned. They must have failed.",
-	  effects: {follower:-1,corpse:1,notoriety:1},
-	  comments: "We can't use killmortal because it would kill them both!",
+	  description:"My minion has not returned. They have failed, and their blundering may have attracted attention...",
+	  effects: {follower:-1,notoriety:1},
 	  warmup:10	  
 	  },
 ]
