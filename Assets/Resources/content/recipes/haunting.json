@@ -206,9 +206,177 @@
 },
 	
 	
-
-
+				{id:"summoning_haunt_devourer_eatsmortal",
+	label: "A Prowling Devourer",
+	actionId:"haunting",
+	requirements: {devourer:1},
+	startdescription: "Your escaped summoning is roaming about, seeking whom it might devour.",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {killmortal:1},
+	slots: {Consuming:{required: {mortal:1},greedy:true}},
+	warmup:30
+	},
 	
+					{id:"summoning_haunt_devourer_eatshealth",
+	label: "A Prowling Devourer",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning seeks to consume some part of you.",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {damagehealth:1},
+	slots: {Consuming:{required: {health:1},greedy:true}},
+	warmup:30
+	},
+	
+			{id:"summoning_haunt_deceiver",
+		actionId:"haunting",
+		requirements: {deceiver:1},
+		startdescription:"It's free!",
+		warmup:0,
+		linked: [{id: "summoning_haunt_deceiver_derangesreason",chance:100}],
+		comments: "Currently doesn't call summoning_haunt_deceiver_derangesmortal, because Deceivers don't attack directly."
+
+},
+
+					{id:"summoning_haunt_deceiver_derangesreason",
+	label: "A Lurking Deceiver",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning haunts you, seeking to drive you to despair -",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {damagereason:1},
+	slots: {Consuming:{required: {reason:1},greedy:true}},
+	warmup:30,
+alternativerecipes:	[
+{id:"deceiver_haunting_reason_highmoth",chance:100},
+{id:"deceiver_haunting_reason_midmoth",chance:100},
+{id:"deceiver_haunting_reason_lowmoth",chance:100}
+],
+},
+
+
+
+
+	  	   {id: "deceiver_haunting_reason_highmoth",
+	   label: "An Escaped Summoning Lies in Wait for you",
+	  actionId:"haunting",
+	  startdescription:"Human sanity is fragile, and this thing is all but irresistible.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {reason:1,moth:10},
+	  linked: [{id:"deceiver_haunting_reason_success",chance:100},
+	  {id:"deceiver_haunting_reason_failure",chance:100}
+	  ],
+	  },
+
+	  
+	  	  	   {id: "deceiver_haunting_reason_midmoth",
+	   label: "An Escaped Summoning Lies in Wait for you",
+	  actionId:"haunting",
+	  startdescription:"Human sanity is fragile, and this thing is potent.",
+	  description:"Separate failure event means this should never be visible. deceiver_haunting_reason_midmoth",
+	  requirements: {reason:1,moth:5},
+	  linked: [{id:"deceiver_haunting_reason_success",chance:70},
+	  {id:"deceiver_haunting_reason_failure",chance:100}
+	  ],
+	  },
+
+	 {id: "deceiver_haunting_reason_lowmoth",
+	   label: "An Escaped Summoning Lies in Wait for you",
+	  actionId:"haunting",
+	  startdescription:"Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
+	  description:"Separate failure event means this should never be visible. deceiver_haunting_reason_lowmoth",
+	  requirements: {reason:1,moth:1},
+	  linked: [{id:"deceiver_haunting_reason_success",chance:30},
+	  {id:"deceiver_haunting_reason_failure",chance:100}
+	  ],
+	  },
+	  
+	  	 {id: "deceiver_haunting_reason_success",
+	   label: "An Escaped Summoning has Ravaged your Dreams",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "The events of that night will live long in your memory; and for days, the newspapers question residents of the district.",
+	  aspects: {damagereason:1},
+	 effects: {summoned:-1,notoriety:1}
+	  
+	  },
+	  	  	 {id: "deceiver_haunting_reason_failure",
+	   label: "An Escaped Summoning has Failed to Break your Resolve",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "The events of that night will live long in your memory; but the thing from beyond the Wake is no match for you. For days, however, the newspapers question residents of the district.",
+	  effects: {summoned:-1,notoriety:1}
+	  },
+
+
+				{id:"summoning_haunt_deceiver_derangesmortal",
+	label: "A Lurking Deceiver",
+	actionId:"haunting",
+	startdescription: "Your escaped summoning haunts the district, seeking mortals to derange.",
+	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
+	effects: {notoriety:1},
+	aspects: {derangemortal:1},
+	slots: {Consuming:{required: {mortal:1},greedy:true}},
+	comments: "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
+	alternativerecipes:[
+{id:"deceiver_haunting_mortal_highmoth",chance:100},
+{id:"deceiver_haunting_mortal_midmoth",chance:100},
+{id:"deceiver_haunting_mortal_lowmoth",chance:100}
+],
+	warmup:30
+	},
+	
+
+
+	  	   {id: "deceiver_haunting_mortal_highmoth",
+	   label: "An Escaped Summoning Closes on its Victim",
+	  actionId:"haunting",
+	  startdescription:"Human sanity is fragile, and this thing is all but irresistible.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {mortal:1,moth:10},
+	  linked: [{id:"deceiver_haunting_mortal_success",chance:100},
+	  {id:"deceiver_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+
+	  
+	  	  	   {id: "deceiver_haunting_mortal_midmoth",
+	   label: "An Escaped Summoning Closes on its Victim",
+	  actionId:"haunting",
+	  startdescription:"Human sanity is fragile, and this thing is potent.",
+	  description:"Separate failure event means this should never be visible. deceiver_haunting_mortal_midmoth",
+	  requirements: {mortal:1,moth:5},
+	  linked: [{id:"deceiver_haunting_mortal_success",chance:70},
+	  {id:"deceiver_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+
+	 {id: "deceiver_haunting_mortal_lowmoth",
+	   label: "An Escaped Summoning Closes on its Victim",
+	  actionId:"haunting",
+	  startdescription:"Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
+	  description:"Separate failure event means this should never be visible. deceiver_haunting_mortal_lowmoth",
+	  requirements: {mortal:1,moth:1},
+	  linked: [{id:"deceiver_haunting_mortal_success",chance:30},
+	  {id:"deceiver_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+	  
+	  	 {id: "deceiver_haunting_mortal_success",
+	   label: "An Escaped Summoning has visited Horror upon its Victim",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "Only the strongest mind could survive this. The newspapers will have a peculiar story to tell.",
+	  aspects: {derangemortal:1,notoriety:1}
+	  },
+	  	  	 {id: "deceiver_haunting_mortal_failure",
+	   label: "An Escaped Summoning has visited Horror upon its Victim",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "Its victim's resolve remains unbroken. The newspapers will have a peculiar story to tell.",
+	  aspects: {notoriety:1}
+	  }
 	
 ]
 }

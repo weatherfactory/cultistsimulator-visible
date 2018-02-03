@@ -3,6 +3,8 @@
 //using UnityEngine;
 //using UnityEditor;
 
+//Build fails with this in the mix; I've commented out because it looks like test code.
+
 //[ExecuteInEditMode]
 //public class TestTokenChoreographer : MonoBehaviour {
 
