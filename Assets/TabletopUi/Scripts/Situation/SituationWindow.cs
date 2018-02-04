@@ -273,7 +273,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void DumpAllStartingCardsToDesktop() {
-            if (situationController.Situation.State == SituationState.Unstarted)
+            if (situationController.SituationClock.State == SituationState.Unstarted)
                 DumpToDesktop(GetStartingStacks());
         }
 

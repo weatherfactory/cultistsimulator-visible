@@ -22,7 +22,7 @@ namespace Assets.Editor.Tests
         private Character characterMock;
         private ISituationAnchor situationAnchorMock;
         private ISituationDetails situationDetailsMock;
-        private ISituation _situationMock;
+        private ISituationClock _situationClockMock;
         private IVerb basicVerb;
         private Registry registry;
             
@@ -34,7 +34,7 @@ namespace Assets.Editor.Tests
             situationDetailsMock = Substitute.For<ISituationDetails>();
             compendiumMock = Substitute.For<ICompendium>();
             characterMock = Substitute.For<Character>();
-            _situationMock = Substitute.For<ISituation>();
+            _situationClockMock = Substitute.For<ISituationClock>();
             basicVerb=new BasicVerb("id","label","description",false);
 
             var scat=new SituationsCatalogue();
@@ -47,7 +47,7 @@ namespace Assets.Editor.Tests
             var command=new SituationCreationCommand(basicVerb,null,SituationState.Unstarted);
             sc.Initialise(command, situationAnchorMock,situationDetailsMock);
 
-            sc.Situation = _situationMock;
+            sc.SituationClock = _situationClockMock;
 
         }
 
@@ -58,7 +58,7 @@ namespace Assets.Editor.Tests
         public void AllOutputsGone_ResetsStateMachine()
         {
             sc.ResetSituation();
-            _situationMock.Received().ResetIfComplete();
+            _situationClockMock.Received().ResetIfComplete();
         }
 
         [Test]

@@ -18,6 +18,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         string SaveLocationInfo { get; set; }
         bool IsTransient { get; }
+        bool EditorIsActive { get; }
 
         void DisplayAsOpen();
         void DisplayAsClosed();
@@ -34,5 +35,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void SetGlowColor(UIStyle.TokenGlowColor colorType);
         void ShowGlow(bool glowState, bool instant = false);
+        void SetEditorActive(bool active);
     }
 }

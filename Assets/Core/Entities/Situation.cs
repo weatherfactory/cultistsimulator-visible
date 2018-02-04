@@ -12,7 +12,7 @@ using JetBrains.Annotations;
 using UnityEngine.Assertions;
 
 namespace Assets.Core.Entities {
-    public interface ISituation {
+    public interface ISituationClock {
         SituationState State { get; set; }
         float TimeRemaining { get; }
         float Warmup { get; }
@@ -31,7 +31,7 @@ namespace Assets.Core.Entities {
         void Halt();
     }
 
-    public class Situation : ISituation {
+    public class SituationClock : ISituationClock {
         public global::SituationState State { get; set; }
         private Recipe currentPrimaryRecipe { get; set; }
         public float TimeRemaining { private set; get; }
@@ -48,7 +48,7 @@ namespace Assets.Core.Entities {
         }
 
 
-        public Situation(ISituationSubscriber s) {
+        public SituationClock(ISituationSubscriber s) {
             subscriber = s;
             State = SituationState.Unstarted;
         }
@@ -72,13 +72,14 @@ namespace Assets.Core.Entities {
             SoundManager.PlaySfx("SituationBegin");
         }
 
+
         public void ResetIfComplete() {
             if (State == SituationState.Complete)
                 Reset();
         }
 
 
-        public Situation(float? timeRemaining, global::SituationState state, Recipe withPrimaryRecipe, ISituationSubscriber s) {
+        public SituationClock(float? timeRemaining, global::SituationState state, Recipe withPrimaryRecipe, ISituationSubscriber s) {
             subscriber = s;
             currentPrimaryRecipe = withPrimaryRecipe;
             TimeRemaining = timeRemaining ?? 0;
