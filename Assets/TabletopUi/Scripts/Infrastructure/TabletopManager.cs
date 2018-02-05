@@ -390,10 +390,21 @@ namespace Assets.CS.TabletopUI {
             var stacks = _tabletop.GetElementStacksManager().GetStacks();
 
             foreach (var stack in stacks)
-                if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
+                if (CanPullGreedyCard(stack as ElementStackToken, slotSpec))
                     return stack;
 
             return null;
+        }
+
+        private bool CanPullGreedyCard(ElementStackToken stack, SlotSpecification slotSpec) {
+            if (stack.Defunct)
+                return false; // don't pull defunct cards
+            else if (stack.IsBeingAnimated)
+                return false; // don't pull animated cards
+            else if (DraggableToken.itemBeingDragged == stack)
+                return false; // don't pull cards being dragged
+
+            return slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay;
         }
 
         private IElementStack FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
@@ -403,7 +414,17 @@ namespace Assets.CS.TabletopUI {
             // We grab output first
             foreach (var controller in situationControllers) {
                 foreach (var stack in controller.GetOutputStacks()) {
-                    if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay) {
+                    if (CanPullGreedyCard(stack as ElementStackToken, slotSpec)) {
+                        sit = controller;
+                        return stack;
+                    }
+                }
+            }
+
+            // Nothing? Then We grab starting
+            foreach (var controller in situationControllers) {
+                foreach (var stack in controller.GetStartingStacks()) {
+                    if (CanPullGreedyCard(stack as ElementStackToken, slotSpec)) {
                         sit = controller;
                         return stack;
                     }
@@ -421,7 +442,7 @@ namespace Assets.CS.TabletopUI {
                     if (stack == null)
                         continue; // Empty? Nothing to grab either
 
-                    if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay) {
+                    if (CanPullGreedyCard(stack as ElementStackToken, slotSpec)) {
                         sit = controller;
                         return stack;
                     }

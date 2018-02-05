@@ -26,9 +26,9 @@ namespace Assets.TabletopUi.SlotsContainers {
             primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
         }
 
-        public void Reset() {
+        public void DoReset() {
             if (GetAllSlots().Count > 1) {
-                RemoveAnyChildSlotsWithEmptyParent();
+                //RemoveAnyChildSlotsWithEmptyParent(); // created an infinite loop - Martin
                 ArrangeSlots();
             }
         }
@@ -64,7 +64,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                     List<RecipeSlot> currentChildSlots = new List<RecipeSlot>(s.childSlots);
                     s.childSlots.Clear();
 
-                    foreach (RecipeSlot cs in currentChildSlots.Where(eachSlot => eachSlot != null))
+                    foreach (RecipeSlot cs in currentChildSlots)
                         ClearAndDestroySlot(cs);
                 }
             }
@@ -81,7 +81,7 @@ namespace Assets.TabletopUi.SlotsContainers {
         protected override void ClearAndDestroySlot(RecipeSlot slot) {
             if (slot == null)
                 return;
-            if (slot.Defunct == true)
+            if (slot.Defunct)
                 return;
 
             // This is all copy & paste from the parent class except for the last line
@@ -98,10 +98,9 @@ namespace Assets.TabletopUi.SlotsContainers {
             gridManager.RetireSlot(slot);
 
             DraggableToken tokenContained = slot.GetTokenInSlot();
+
             if (tokenContained != null) 
                 tokenContained.ReturnToTabletop(null);
-
-            
         }
 
         void ArrangeSlots() {

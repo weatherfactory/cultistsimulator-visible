@@ -151,6 +151,10 @@ namespace Assets.TabletopUi {
             return situationWindow.GetOutputStacks();
         }
 
+        public IEnumerable<IElementStack> GetStartingStacks() {
+            return situationWindow.GetStartingStacks();
+        }
+
         #endregion
 
         #region -- SituationClock Execution (Heartbeat) --------------------

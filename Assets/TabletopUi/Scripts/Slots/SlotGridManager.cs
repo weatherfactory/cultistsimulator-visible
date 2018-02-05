@@ -33,7 +33,10 @@ namespace Assets.CS.TabletopUI {
             float height = GetHeightForSlotCount();
             SetHeight(height);
             ToggleScrollOnSize(height);
+        }
 
+        public List<RecipeSlot> GetAllSlots() {
+            return slots;
         }
 
         public void AddSlot(RecipeSlot slot) {

@@ -21,7 +21,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         controller = sc;
     }
 
-    public IList<RecipeSlot> GetAllSlots() {
+    public virtual IList<RecipeSlot> GetAllSlots() {
         var children = GetComponentsInChildren<RecipeSlot>();
         var allSlots = new List<RecipeSlot>(children);
         var undestroyedSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false));

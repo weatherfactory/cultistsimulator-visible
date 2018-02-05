@@ -116,7 +116,7 @@ namespace Assets.CS.TabletopUI {
         // Start State
 
 		public void SetUnstarted() {
-            startingSlots.Reset();
+            startingSlots.DoReset();
             startingSlots.gameObject.SetActive(true);
 
             ongoing.DoReset();
