@@ -388,8 +388,8 @@ namespace Assets.CS.TabletopUI {
                 glowImage.Show();
             }
             else {
-                if (playSFX)
-                    SoundManager.PlaySfx("TokenHoverOff");
+                //if (playSFX)
+                //    SoundManager.PlaySfx("TokenHoverOff");
 
                 glowImage.SetColor(lastGlowColor);
 
