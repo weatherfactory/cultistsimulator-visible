@@ -277,7 +277,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 {
                     var stackToPutInSlot =
                         tabletop.ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity, Source.Existing());
-                    var slotToFill = controller.GetSlotBySaveLocationInfoPath(eqs.LocationInfo, slotTypeKey);
+
+                    //SaveLocationInfos are recorded with an appended Guid. We should have a SaveLocationInfo object that translates to/from safely: this is a hack.
+                    var slotId = eqs.LocationInfo.Split('_')[0];
+
+
+                    var slotToFill = controller.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                         //if the game can't find a matching slot, it'll just leave it on the desktop
                         slotToFill.AcceptStack(stackToPutInSlot);

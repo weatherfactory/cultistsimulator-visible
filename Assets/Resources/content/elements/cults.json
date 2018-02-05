@@ -101,7 +101,8 @@
 			slots: {
 			"Associate": {required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
 			
-			"Ceremony": {required: {lore: 1},description: "For the higher mysteries, deeper oaths are needed."}
+			"Ceremony": {required: {lore: 1},description: "For the higher mysteries, deeper oaths are needed."},
+			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
             description: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches."
         },
