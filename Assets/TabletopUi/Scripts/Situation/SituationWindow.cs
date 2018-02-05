@@ -23,9 +23,6 @@ namespace Assets.CS.TabletopUI {
         const string buttonDefault = "Start";
         const string buttonBusy = "Waiting...";
 
-        const string buttonClearResultsDefault = "Collect All";
-        const string buttonClearResultsNone = "Accept";
-
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
         public SituationWindowPositioner positioner;
@@ -108,7 +105,7 @@ namespace Assets.CS.TabletopUI {
 			canvasGroupFader.Show();
             positioner.Show(canvasGroupFader.durationTurnOn); // Animates the window
             SoundManager.PlaySfx("SituationWindowShow");
-            SetDumpButtonText(); // ensures that we've updated the dump button accordingly
+            results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
         }
 
 		public void Hide() {
@@ -160,7 +157,7 @@ namespace Assets.CS.TabletopUI {
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
 
             hintText.text = "";
-            SetDumpButtonText();
+            results.UpdateDumpButtonText();
         }
 
         // SHOW VIZ
@@ -234,13 +231,6 @@ namespace Assets.CS.TabletopUI {
         void DisplayButtonState(bool interactable, string text = null) {
 			startButton.interactable = interactable;
 			startButtonText.text = string.IsNullOrEmpty(text) ? buttonDefault : text;
-        }
-
-        void SetDumpButtonText() {
-            if (GetOutputStacks().Count() > 0)
-                dumpResultsButtonText.text = buttonClearResultsDefault;
-            else
-                dumpResultsButtonText.text = buttonClearResultsNone;
         }
 
         public void ShowDestinationsForStack(IElementStack stack, bool show) {

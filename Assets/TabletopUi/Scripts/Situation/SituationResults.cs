@@ -13,11 +13,16 @@ using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
+using TMPro;
 
 public class SituationResults : AbstractTokenContainer {
 
     public CanvasGroupFader canvasGroupFader;
     [SerializeField] SituationResultsPositioning cardPos;
+    [SerializeField] TextMeshProUGUI dumpResultsButtonText;
+
+    const string buttonClearResultsDefault = "Collect All";
+    const string buttonClearResultsNone = "Accept";
 
     private SituationController controller;
 
@@ -51,6 +56,7 @@ public class SituationResults : AbstractTokenContainer {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
         controller.UpdateTokenResultsCountBadge();
+        UpdateDumpButtonText();
 
         bool cardsRemaining = false;
         IEnumerable<IElementStack> stacks = GetOutputStacks();
@@ -81,6 +87,13 @@ public class SituationResults : AbstractTokenContainer {
 
     public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
+    }
+
+    public void UpdateDumpButtonText() {
+        if (GetOutputStacks().Count() > 0)
+            dumpResultsButtonText.text = buttonClearResultsDefault;
+        else
+            dumpResultsButtonText.text = buttonClearResultsNone;
     }
 
     // public to be triggered by button
