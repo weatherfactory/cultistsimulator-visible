@@ -33,6 +33,7 @@ namespace Assets.CS.TabletopUI {
         const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
         const string slotUnnamed = "Unnamed Slot";
+        const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu. [Drop any card here.]";
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
@@ -129,7 +130,10 @@ namespace Assets.CS.TabletopUI {
             ShowImage(null);
             ShowImageDecayTimer(false);
 
-            ShowText(slotHeader + (string.IsNullOrEmpty(slotSpec.Label) ? slotUnnamed : slotSpec.Label), slotSpec.Description);
+            ShowText(
+                (string.IsNullOrEmpty(slotSpec.Label) ? slotHeader + slotUnnamed : slotHeader + slotSpec.Label),
+                (string.IsNullOrEmpty(slotSpec.Description) ? defaultSlotDesc : slotSpec.Description)
+                );
             SetTextMargin(false, slotSpec.Greedy || slotSpec.Consumes);
             ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
             ShowCardIcons(false); // Make sure the other hint icons are gone
