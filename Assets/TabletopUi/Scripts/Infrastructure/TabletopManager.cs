@@ -173,6 +173,13 @@ namespace Assets.CS.TabletopUI {
             _elementOverview.Initialise(elementStacksCatalogue);
 
             var metaInfo=new MetaInfo(NoonUtility.VersionNumber);
+            if(CrossSceneState.GetMetaInfo()==null)
+            {
+                          //This can happen if we start running the scene in the editor, so it hasn't been set in menu screen
+                NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set");
+                CrossSceneState.SetMetaInfo(metaInfo);
+            }
+
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
             registry.Register<ICompendium>(compendium);
@@ -188,6 +195,9 @@ namespace Assets.CS.TabletopUI {
             registry.Register<SituationsCatalogue>(situationsCatalogue);
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
+
+
+            
 
 
             var contentImporter = new ContentImporter();

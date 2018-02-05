@@ -138,7 +138,7 @@
 		alternativerecipes:
 		[{id: "cultfoundation", chance:100, additional: true}],
         actionId: "work",
-        requirements: {reputation: 1},
+        requirements: {reputation: 1,ritual:-1},
         effects: {reputation: -1, contentment: 1},
         startdescription: "I need assistants, companions - followers. ",
         description: "Tradition and compulsion - old, new, or both together. [You'll need lore to determine a founding principle for the cult.]",

@@ -2279,7 +2279,7 @@ namespace TMPro
 
         public override void OnSelect(BaseEventData eventData)
         {
-            Debug.Log("OnSelect()");
+          //  Debug.Log("OnSelect()");
 
             base.OnSelect(eventData);
             ActivateInputField();
@@ -2334,7 +2334,7 @@ namespace TMPro
 
         public override void OnDeselect(BaseEventData eventData)
         {
-            Debug.Log("OnDeselect()");
+           // Debug.Log("OnDeselect()");
             m_HasLostFocus = true;
 
             DeactivateInputField();

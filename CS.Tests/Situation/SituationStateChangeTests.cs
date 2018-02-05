@@ -35,14 +35,14 @@ namespace Assets.Editor.Tests
         [Test]
         public void NewSituation_IsStateUnstarted()
         {
-            Core.Entities.Situation s=new Core.Entities.Situation(subscriber);
+            Core.Entities.SituationClock s=new Core.Entities.SituationClock(subscriber);
             Assert.AreEqual(SituationState.Unstarted,s.State);
         }
 
         [Test]
         public void UnstartedSituation_MovesToFreshlyStarted_WhenStartedWithRecipe()
         {
-            Core.Entities.Situation s=new Core.Entities.Situation(subscriber);
+            Core.Entities.SituationClock s=new Core.Entities.SituationClock(subscriber);
             s.Start(r1);
             Assert.AreEqual(SituationState.FreshlyStarted,s.State);
         }
@@ -50,7 +50,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void UnstartedSituation_DoesNotChangeStateWhenContinued()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(subscriber);
             s.Continue(rc,1);
             Assert.AreEqual(SituationState.Unstarted, s.State);
         }
@@ -58,7 +58,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void FreshlyStartedSituation_MovesToOngoingAtFirstContinue()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(subscriber);
             s.Start(r1);
             s.Continue(rc, 1);
             Assert.AreEqual(SituationState.Ongoing, s.State);
@@ -67,7 +67,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void SituationMovesFromOngoingToRequiringExecution_WhenContinuingAtTimeBelowZero()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.Ongoing, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
             Assert.AreEqual(SituationState.Ongoing,s.State);
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
             s.Continue(rc, 1);
@@ -77,7 +77,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_RequiresExecution_When_ContinuingAtTimeBelowZero()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0,SituationState.Ongoing,r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0,SituationState.Ongoing,r1, subscriber);
 
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
 
@@ -93,7 +93,7 @@ namespace Assets.Editor.Tests
         {
             
             rc.GetLinkedRecipe(null).ReturnsForAnyArgs(r2);
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.RequiringExecution, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.RequiringExecution, r1, subscriber);
             s.Continue(rc,1);
             Assert.AreEqual(r2.Id,s.RecipeId);
             Assert.AreEqual(SituationState.Ongoing,s.State);
@@ -104,7 +104,7 @@ namespace Assets.Editor.Tests
         {
 
             rc.GetLinkedRecipe(null).ReturnsForAnyArgs(r2);
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.RequiringExecution, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.RequiringExecution, r1, subscriber);
             r2.Warmup = 100;
             s.Continue(rc, 1);
             Assert.AreEqual(r2.Warmup, s.TimeRemaining);
@@ -113,7 +113,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_GoesComplete_WhenRecipeConductorSpecifiesNoLoopRecipe()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.RequiringExecution, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.RequiringExecution, r1, subscriber);
             s.Continue(rc,1);
             Assert.AreEqual(SituationState.Complete, s.State);
         }
@@ -121,7 +121,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_AllOutputsGone_ReturnsToBlankState_IfSituationComplete()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(30, SituationState.Complete, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(30, SituationState.Complete, r1, subscriber);
             s.ResetIfComplete();
             Assert.AreEqual(SituationState.Unstarted,s.State);
             Assert.AreEqual(null,s.RecipeId);
@@ -131,7 +131,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_AllOutputsGone_DoesNotReturnToBlankState_IfSituationNotComplete()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(30, SituationState.Ongoing, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(30, SituationState.Ongoing, r1, subscriber);
             s.ResetIfComplete();
             Assert.AreNotEqual(SituationState.Unstarted, s.State);
             Assert.AreNotEqual(null, s.RecipeId);
@@ -142,7 +142,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_ExecutesAlternativesSpecifiedByRecipeConductor()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0,SituationState.Ongoing, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0,SituationState.Ongoing, r1, subscriber);
 
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> {r2, r3});
 
@@ -156,7 +156,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_SpecifiesAdditional_ShouldRunAsNewSituation_IfVerbIsDifferent()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.Ongoing, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
             
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r2, r3 });
             r3.ActionId = r2.ActionId + " a difference";
@@ -169,7 +169,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_SpecifiesAdditional_ShouldNotRunAsNewSituation_IfVerbIsTheSame()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.Ongoing, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
             
             rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r2, r3 });
             r3.ActionId = r2.ActionId;
@@ -183,7 +183,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void Situation_LoopsFromAlternative_NotOriginal_IfSpecified()
         {
-            Core.Entities.Situation s = new Core.Entities.Situation(0, SituationState.Ongoing, r1, subscriber);
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
             
 
             Recipe loopedRecipe = TestObjectGenerator.GenerateRecipe(99);

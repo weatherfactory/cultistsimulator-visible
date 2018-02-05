@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using UnityEngine;
 
@@ -27,8 +28,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 return;
 
             if (Input.GetKeyDown("`") || (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab)))
+            { 
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
+                var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
+                foreach (var sc in situationsCatalogue.GetRegisteredSituations())
+                {
+                    sc.SetEditorActive(_debugTools.isActiveAndEnabled);
+                }
+                
 
+            }
             if (!_debugTools.isActiveAndEnabled)
             {
                 //...it's nice to be able to type N and M
