@@ -45,6 +45,9 @@ namespace Assets.CS.TabletopUI {
         // Used as a delegate when exchanging pages. 
         protected abstract void UpdateContent();
 
+        // Used as a delegate when closing pages. 
+        protected abstract void ClearContent();
+
         protected void ShowText(string header, string desc) {
             title.text = header;
             description.text = desc;
@@ -73,6 +76,7 @@ namespace Assets.CS.TabletopUI {
 
         void DoHide() {
             gameObject.SetActive(false);
+            ClearContent();
         }
 
         public void OnPointerClick(PointerEventData eventData) {

@@ -17,6 +17,7 @@ namespace Assets.TabletopUi.Scripts
         // This is pushed to the Aspect Frame 
         // There it is used in the click>Notifier call to tell the notifier where to place the details window
         [SerializeField] bool isWithinDetailsWindow;
+        [SerializeField] bool hideIfEmpty;
         [SerializeField] private TextMeshProUGUI Header;
 
         public void ShowHeader(bool show) {
@@ -28,8 +29,8 @@ namespace Assets.TabletopUi.Scripts
             ClearCurrentlyDisplayedAspects();
 
             bool anyAspects = aspects != null && aspects.Keys.Any();
-
-            gameObject.SetActive(anyAspects);
+                        
+            gameObject.SetActive(hideIfEmpty ? anyAspects : true);
             ShowHeader(anyAspects);
 
             if (anyAspects)
@@ -38,8 +39,12 @@ namespace Assets.TabletopUi.Scripts
         }
 
         private void AddAspectToDisplay(string aspectId, int quantity) {
-            AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
             Element aspect = Registry.Retrieve<ICompendium>().GetElementById(aspectId);
+
+            if (aspect == null)
+                return; // We can't find the aspect? Well then don't add anything
+
+            AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
             newAspectFrame.PopulateDisplay(aspect, quantity);
 
             if (isWithinDetailsWindow)

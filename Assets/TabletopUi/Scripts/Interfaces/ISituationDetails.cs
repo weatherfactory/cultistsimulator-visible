@@ -46,6 +46,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void SetSlotConsumptions();
 
+        IList<RecipeSlot> GetOngoingSlots();
         IRecipeSlot GetUnfilledGreedySlot();
         IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo);
 

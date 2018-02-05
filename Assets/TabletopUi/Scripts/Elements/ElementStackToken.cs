@@ -22,6 +22,8 @@ using Noon;
 namespace Assets.CS.TabletopUI {
     public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
 
+        public event System.Action<float> onDecay;
+
         [SerializeField] Image artwork;
         [SerializeField] Image backArtwork;
         [SerializeField] Image textBackground;
@@ -350,7 +352,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerClick(PointerEventData eventData) {
             if (isFront) {
-                notifier.ShowElementDetails(_element);
+                notifier.ShowCardElementDetails(_element, this);
             }
             else {
                 FlipToFaceUp(false);
@@ -469,7 +471,10 @@ namespace Assets.CS.TabletopUI {
 
             SetCardDecay(1 - lifetimeRemaining / _element.Lifetime);
 
+            if (onDecay != null)
+                onDecay(lifetimeRemaining);
         }
+
         // Card Decay Timer
         public void ShowCardDecayTimer(bool showTimer) {
             decayView.gameObject.SetActive(showTimer);

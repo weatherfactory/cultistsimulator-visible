@@ -142,6 +142,15 @@ namespace Assets.TabletopUi {
             return count;
         }
 
+        // Used to have greedy slots grab cards from within situations
+        public IList<RecipeSlot> GetOngoingSlots() {
+            return situationWindow.GetOngoingSlots();
+        }
+
+        public IEnumerable<IElementStack> GetOutputStacks() {
+            return situationWindow.GetOutputStacks();
+        }
+
         #endregion
 
         #region -- SituationClock Execution (Heartbeat) --------------------
