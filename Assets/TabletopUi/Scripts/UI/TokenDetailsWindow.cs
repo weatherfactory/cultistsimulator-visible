@@ -33,7 +33,7 @@ namespace Assets.CS.TabletopUI {
         const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
         const string slotUnnamed = "Unnamed Slot";
-        const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu. [Drop any card here.]";
+        const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu.";
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
@@ -152,7 +152,7 @@ namespace Assets.CS.TabletopUI {
             // We show image, get us a left margin
             title.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, 0f);
             // We show slot info? We have less room for the description. Set margin!
-            description.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, hasHints ? 40f : 0f);
+            description.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, hasHints ? 35f : 0f);
         }
 
         void ShowCardIcons(bool isUnique) {
