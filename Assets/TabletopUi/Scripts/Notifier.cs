@@ -51,6 +51,12 @@ namespace Assets.CS.TabletopUI {
 
         // Token Details
 
+        // Variant to link to token decay
+        public void ShowCardElementDetails(Element element, ElementStackToken token) {
+            tokenDetails.ShowElementDetails(element, token);
+            aspectDetails.Hide();
+        }
+
         public void ShowElementDetails(Element element, bool fromDetailsWindow = false) {
             if (element.IsAspect == false) {
                 tokenDetails.ShowElementDetails(element);

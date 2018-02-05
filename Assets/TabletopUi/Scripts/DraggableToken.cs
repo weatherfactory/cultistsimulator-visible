@@ -77,7 +77,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected virtual bool AllowsInteraction() {
-            return !Defunct && TokenContainer.AllowDrag && AllowsDrag() && !IsBeingAnimated;
+            return !Defunct && TokenContainer != null && TokenContainer.AllowDrag && AllowsDrag() && !IsBeingAnimated;
         }
 
 
@@ -388,8 +388,8 @@ namespace Assets.CS.TabletopUI {
                 glowImage.Show();
             }
             else {
-                if (playSFX)
-                    SoundManager.PlaySfx("TokenHoverOff");
+                //if (playSFX)
+                //    SoundManager.PlaySfx("TokenHoverOff");
 
                 glowImage.SetColor(lastGlowColor);
 

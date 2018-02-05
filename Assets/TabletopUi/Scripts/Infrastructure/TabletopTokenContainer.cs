@@ -54,11 +54,11 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         token.transform.localRotation = Quaternion.identity;
         token.SetTokenContainer(this);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
-        // Verify if we are overlapping with anything. If so: move it.
     }
 
     // Tabletop specific
     public void CheckOverlappingTokens(DraggableToken token) {
+        // Verify if we are overlapping with anything. If so: move it.
         choreo.MoveAllTokensOverlappingWith(token);
     }
 

@@ -52,7 +52,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool EditorIsActive
         {
-            get {return situationEditor.isActiveAndEnabled;}
+            get { return situationEditor.isActiveAndEnabled; }
         }
 
         public override string Id {

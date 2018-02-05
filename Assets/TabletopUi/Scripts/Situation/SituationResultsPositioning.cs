@@ -97,8 +97,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void MoveToPosition(RectTransform rectTrans, Vector2 pos, float duration) {
-            // If we're disabled, just set us there
-            if (rectTrans.gameObject.activeInHierarchy == false) {
+            // If we're disabled or our token is, just set us there
+            if (rectTrans.gameObject.activeInHierarchy == false || gameObject.activeInHierarchy == false) {
                 rectTrans.anchoredPosition = pos;
                 return;
             }

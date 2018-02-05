@@ -264,6 +264,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             tokenAnim.StartAnim(duration);
         }
 
+        public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation) {
+            _tabletop.GetElementStacksManager().AcceptStack(stack); // this reparents, sets container
+            //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
+            stack.transform.position = ownerSituation.transform.position;
+            stack.FlipToFaceUp(true);
+        }
+
         public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
             var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
             stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
