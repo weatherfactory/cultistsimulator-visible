@@ -22,11 +22,15 @@ namespace Assets.TabletopUi {
 
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
-        public ISituation Situation;
+        public ISituationClock SituationClock;
         private readonly ICompendium compendium;
         private readonly Character currentCharacter;
 
         public bool IsOpen { get; set; }
+        public bool EditorIsActive
+        {
+            get { return situationToken.EditorIsActive; }
+        }
 
         #region -- Construct, Initialize & Retire --------------------
 
@@ -44,7 +48,7 @@ namespace Assets.TabletopUi {
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
 
-            Situation = new Situation(command.TimeRemaining, command.State, command.Recipe, this);
+            SituationClock = new SituationClock(command.TimeRemaining, command.State, command.Recipe, this);
 
             switch (command.State) {
                 case SituationState.Unstarted:
@@ -68,16 +72,16 @@ namespace Assets.TabletopUi {
 
         void InitialiseActiveSituation(SituationCreationCommand command) {
             if (command.State == SituationState.FreshlyStarted)
-                Situation.Start(command.Recipe);
+                SituationClock.Start(command.Recipe);
 
-            //ugly subclause here. Situation.Start largely duplicates the constructor. I'm trying to use the same code path for recreating situations from a save file as for beginning a new situation
+            //ugly subclause here. SituationClock.Start largely duplicates the constructor. I'm trying to use the same code path for recreating situations from a save file as for beginning a new situation
             //possibly just separating out FreshlyStarted would solve it
 
             situationWindow.SetOngoing(command.Recipe);
 
             situationToken.DisplayMiniSlot(command.Recipe.SlotSpecifications);
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, command.Recipe);
-            situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, command.Recipe);
+            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, command.Recipe);
+            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, command.Recipe);
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
             if (command.OverrideTitle != null)
@@ -85,8 +89,8 @@ namespace Assets.TabletopUi {
         }
 
         void InitialiseCompletedSituation(SituationCreationCommand command) {
-            Situation = new Situation(this);
-            Situation.State = SituationState.Complete;
+            SituationClock = new SituationClock(this);
+            SituationClock.State = SituationState.Complete;
             situationWindow.SetComplete();
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
@@ -140,16 +144,16 @@ namespace Assets.TabletopUi {
 
         #endregion
 
-        #region -- Situation Execution (Heartbeat) --------------------
+        #region -- SituationClock Execution (Heartbeat) --------------------
 
         public HeartbeatResponse ExecuteHeartbeat(float interval) {
             HeartbeatResponse response = new HeartbeatResponse();
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
 
-            Situation.Continue(rc, interval);
+            SituationClock.Continue(rc, interval);
 
-            if (Situation.State == SituationState.Ongoing) {
+            if (SituationClock.State == SituationState.Ongoing) {
                 var tokenAndSlot = new TokenAndSlot() {
                     Token = situationToken as SituationToken,
                     RecipeSlot = situationWindow.GetUnfilledGreedySlot() as RecipeSlot
@@ -184,13 +188,13 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationOngoing() {
-            var currentRecipe = compendium.GetRecipeById(Situation.RecipeId);
-            situationToken.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
-            situationWindow.DisplayTimeRemaining(Situation.Warmup, Situation.TimeRemaining, currentRecipe);
+            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, currentRecipe);
+            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, currentRecipe);
         }
 
         /// <summary>
-        /// respond to the Situation's request to execute its payload
+        /// respond to the SituationClock's request to execute its payload
         /// </summary>
         /// <param name="command"></param>
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
@@ -225,7 +229,7 @@ namespace Assets.TabletopUi {
         /// </summary>
         public void SituationComplete() {
             var outputStacks = situationWindow.GetStoredStacks();
-            INotification notification = new Notification(Situation.GetTitle(), Situation.GetDescription());
+            INotification notification = new Notification(SituationClock.GetTitle(), SituationClock.GetDescription());
             SetOutput(outputStacks.ToList());
 
             situationWindow.ReceiveTextNote(notification);
@@ -243,7 +247,7 @@ namespace Assets.TabletopUi {
 
         public void Halt() {
             //currently used only in debug. Reset to starting state (which might be weird for Time) and end timer.
-            Situation.Halt();
+            SituationClock.Halt();
         }
 
         private void AttemptAspectInductions() {
@@ -283,7 +287,7 @@ namespace Assets.TabletopUi {
         }
 
         public void ResetSituation() {
-            Situation.ResetIfComplete();
+            SituationClock.ResetIfComplete();
 
             //if this was a transient verb, clean up everything and finish.
             if (situationToken.IsTransient) {
@@ -297,11 +301,11 @@ namespace Assets.TabletopUi {
 
         #endregion
 
-        #region -- Situation Window Communication --------------------
+        #region -- SituationClock Window Communication --------------------
 
         public void OpenWindow() {
             // Make sure we're displaying as unstarted if for some reason we did not reset the window
-            if (Situation.State == SituationState.Unstarted)
+            if (SituationClock.State == SituationState.Unstarted)
                 situationWindow.SetUnstarted();
 
             IsOpen = true;
@@ -320,7 +324,7 @@ namespace Assets.TabletopUi {
         }
 
         public bool CanTakeDroppedToken(IElementStack stack) {
-            if (Situation.State != SituationState.Unstarted)
+            if (SituationClock.State != SituationState.Unstarted)
                 return false;
 
             return HasEmptyStartingSlots();
@@ -356,7 +360,7 @@ namespace Assets.TabletopUi {
         public void StartingSlotsUpdated() {
             // it's possible the starting slots have been updated because we've just started a recipe and stored everything that was in them.
             // in this case, don't do anything.
-            if (Situation.State != SituationState.Unstarted)
+            if (SituationClock.State != SituationState.Unstarted)
                 return;
 
             // Get all aspects and find a recipe
@@ -412,13 +416,13 @@ namespace Assets.TabletopUi {
         private RecipePrediction GetNextRecipePrediction(IAspectsDictionary aspects) {
             RecipeConductor rc = new RecipeConductor(compendium, aspects,
                 new DefaultDice(), currentCharacter); //nb the use of default dice: we don't want to display any recipes without a 100% chance of executing
-            return Situation.GetPrediction(rc);
+            return SituationClock.GetPrediction(rc);
         }
 
         public void UpdateSituationDisplayForDescription() {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedElements(), Registry.Retrieve<IDice>(), currentCharacter);
 
-            var nextRecipePrediction = Situation.GetPrediction(rc);
+            var nextRecipePrediction = SituationClock.GetPrediction(rc);
 
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
         }
@@ -457,7 +461,7 @@ namespace Assets.TabletopUi {
 
             //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
             //as if we're removing items from an unstarted situation
-            Situation.Start(recipe);
+            SituationClock.Start(recipe);
 
             //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();
@@ -471,15 +475,34 @@ namespace Assets.TabletopUi {
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
 
-            Situation.Continue(rc, 0);
+            SituationClock.Continue(rc, 0);
 
             //display any burn image the recipe might require
 
             if (recipe.BurnImage != null)
                 BurnImageUnderToken(recipe.BurnImage);
         }
+        /// <summary>
+        /// This forces the situation to switch to a new recipe - used in debugging
+        /// It currently does this by recreating the internal situation, so it may lose state.
+        /// </summary>
+        /// <param name="recipeId"></param>
+        public void OverrideCurrentRecipe(string recipeId)
+        {
+            var newRecipe = compendium.GetRecipeById(recipeId);
 
+            if (newRecipe == null)
+            { 
+                NoonUtility.Log("Can't override with recipe id " + recipeId +" because it ain't.");
+                return;
+            }
+            else
+                NoonUtility.Log("Overriding with recipe id " + recipeId);
 
+            SituationClock =new SituationClock(SituationClock.TimeRemaining,SituationClock.State,newRecipe,this);
+
+            UpdateSituationDisplayForDescription();
+        }
 
         public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
             if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
@@ -493,11 +516,11 @@ namespace Assets.TabletopUi {
             IGameDataExporter exporter = new GameDataExporter();
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
-            if (Situation != null) {
+            if (SituationClock != null) {
                 situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindow.Title);
-                situationSaveData.Add(SaveConstants.SAVE_RECIPEID, Situation.RecipeId);
-                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, Situation.State);
-                situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, Situation.TimeRemaining);
+                situationSaveData.Add(SaveConstants.SAVE_RECIPEID, SituationClock.RecipeId);
+                situationSaveData.Add(SaveConstants.SAVE_SITUATIONSTATE, SituationClock.State);
+                situationSaveData.Add(SaveConstants.SAVE_TIMEREMAINING, SituationClock.TimeRemaining);
 
                 situationSaveData.Add(SaveConstants.SAVE_COMPLETIONCOUNT, GetNumOutputCards());
             }
@@ -532,6 +555,11 @@ namespace Assets.TabletopUi {
                 situationSaveData.Add(SaveConstants.SAVE_SITUATIONNOTES, htNotes);
             }
             return situationSaveData;
+        }
+
+        public void SetEditorActive(bool active)
+        {
+            situationToken.SetEditorActive(active);
         }
     }
 }

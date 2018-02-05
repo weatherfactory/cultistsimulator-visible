@@ -35,6 +35,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] TextMeshProUGUI countdownText;
         [SerializeField] Image completionBadge;
         [SerializeField] TextMeshProUGUI completionText;
+        [SerializeField] private SituationEditor situationEditor;
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
@@ -47,6 +48,11 @@ namespace Assets.CS.TabletopUI {
 
         public bool IsTransient {
             get { return _verb.Transient; }
+        }
+
+        public bool EditorIsActive
+        {
+            get {return situationEditor.isActiveAndEnabled;}
         }
 
         public override string Id {
@@ -65,6 +71,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
+           situationEditor.Initialise(SituationController);
         }
 
         #region -- Token positioning --------------------------
@@ -106,6 +113,13 @@ namespace Assets.CS.TabletopUI {
         public void DisplayAsClosed() {
             ShowGlow(false);
         }
+
+        public void SetEditorActive(bool active)
+        {
+            situationEditor.gameObject.SetActive(active);
+        }
+
+        
 
         private void SetTimerVisibility(bool b) {
             countdownCanvas.gameObject.SetActive(b);
