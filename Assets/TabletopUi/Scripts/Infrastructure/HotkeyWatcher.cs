@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
                 foreach (var sc in situationsCatalogue.GetRegisteredSituations())
                 {
-                    sc.SetEditorActive(!sc.EditorIsActive);
+                    sc.SetEditorActive(_debugTools.isActiveAndEnabled);
                 }
                 
 
