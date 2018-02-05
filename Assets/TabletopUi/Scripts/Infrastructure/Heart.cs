@@ -68,16 +68,17 @@ public class Heart : MonoBehaviour
 
     public void Beat()
     {
- 
-            AdvanceTime(usualInterval);
-            beatCounter++;
-            if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
-            {
-                beatCounter = 0;
-                housekeepingCyclesCounter++;
-                outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
-                    .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
-            }
+        AdvanceTime(usualInterval);
+        beatCounter++;
+
+        if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
+        {
+            beatCounter = 0;
+            housekeepingCyclesCounter++;
+
+            outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
+                .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
+        }
 
         if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
         {
@@ -101,11 +102,21 @@ public class Heart : MonoBehaviour
 
             HeartbeatResponse response = sc.ExecuteHeartbeat(intervalThisBeat);
 
-            foreach (var r in response.SlotsToFill)
-                outstandingSlotsToFill.Add(r);
+            foreach (var r in response.SlotsToFill) {
+                if (!OutstandingSlotAlreadySaved(r)) 
+                    outstandingSlotsToFill.Add(r);
+            }
         }
 
-       tabletopManager.DecayStacksOnTable(intervalThisBeat);
+        tabletopManager.DecayStacksOnTable(intervalThisBeat);
+    }
+
+    bool OutstandingSlotAlreadySaved(TokenAndSlot slot) {
+        foreach (var item in outstandingSlotsToFill)
+            if (item.Token == slot.Token && item.RecipeSlot == slot.RecipeSlot) 
+                return true;
+
+        return false;
     }
 
     //remove any outstanding state when loading the game
