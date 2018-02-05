@@ -48,20 +48,28 @@ public class SituationResults : AbstractTokenContainer {
     }
 
     public override void SignalStackRemoved(ElementStackToken elementStackToken) {
-        // Did we just drop the last available token? Then reset the state of the window?
-        var stacks = GetOutputStacks();
-        bool hasStacks = false;
-
-        foreach (var item in stacks) {
-            if (item != null && item.Defunct == false) {
-                hasStacks = true;
-                break;
-            }
-        }
-
+        // Did we just drop the last available token? 
+        // Update the badge, then reorder cards?
         controller.UpdateTokenResultsCountBadge();
 
-        if (!hasStacks) 
+        bool cardsRemaining = false;
+        IEnumerable<IElementStack> stacks = GetOutputStacks();
+
+        // Window is open? Check if it was the last card, then reset automatically
+        if (gameObject.activeInHierarchy) {
+            foreach (var item in stacks) {
+                if (item != null && item.Defunct == false) {
+                    cardsRemaining = true;
+                    break;
+                }
+            }
+        }
+        else {
+            // Window is closed? ensure we never reset only reorder
+            cardsRemaining = true;
+        }
+
+        if (!cardsRemaining)
             controller.ResetSituation();
         else
             cardPos.ReorderCards(stacks);

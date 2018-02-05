@@ -39,8 +39,12 @@ namespace Assets.TabletopUi.Scripts
         }
 
         private void AddAspectToDisplay(string aspectId, int quantity) {
-            AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
             Element aspect = Registry.Retrieve<ICompendium>().GetElementById(aspectId);
+
+            if (aspect == null)
+                return; // We can't find the aspect? Well then don't add anything
+
+            AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
             newAspectFrame.PopulateDisplay(aspect, quantity);
 
             if (isWithinDetailsWindow)

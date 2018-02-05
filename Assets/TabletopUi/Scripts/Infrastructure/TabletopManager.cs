@@ -351,31 +351,84 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
+        // This is where we grab for greedy slots
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();
+            var choreo = Registry.Retrieve<Choreographer>();
+            SituationController sit;
+
             foreach (var tokenSlotPair in slotsToFill) {
-                if (!tokenSlotPair.RecipeSlot.Equals(null)) //it hasn't been destroyed
-                {
-                    if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() == null) {
-                        var stack = findStackForSlotSpecification(tokenSlotPair.RecipeSlot.GoverningSlotSpecification);
-                        if (stack != null) {
-                            stack.SplitAllButNCardsToNewStack(1);
-                            Registry.Retrieve<Choreographer>().MoveElementToSituationSlot(stack as ElementStackToken, tokenSlotPair); // NOTE: Needs token
-                        }
-                        else
-                            unprocessedSlots.Add(tokenSlotPair);
-                    }
+                if (tokenSlotPair.RecipeSlot.Equals(null)) 
+                    continue; // It has been destroyed
+                else if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() != null)
+                    continue; // It is already filled
+
+                var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.RecipeSlot.GoverningSlotSpecification) as ElementStackToken;
+
+                if (stack != null) {
+                    stack.SplitAllButNCardsToNewStack(1);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    continue; // we found a stack, we're done here
                 }
+
+                stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.RecipeSlot.GoverningSlotSpecification, out sit) as ElementStackToken;
+
+                if (stack != null) {
+                    stack.SplitAllButNCardsToNewStack(1);
+                    choreo.PrepareElementForGreedyAnim(stack, sit.situationToken as SituationToken); // this reparents the card so it can animate properly
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    continue; // we found a stack, we're done here
+                }
+                
+                unprocessedSlots.Add(tokenSlotPair);
             }
+
             return unprocessedSlots;
         }
 
-        private IElementStack findStackForSlotSpecification(SlotSpecification slotSpec) {
+        private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
             var stacks = _tabletop.GetElementStacksManager().GetStacks();
+
             foreach (var stack in stacks)
                 if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay)
                     return stack;
 
+            return null;
+        }
+
+        private IElementStack FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
+            // Nothing on the table? Look at the Situations.
+            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+            // We grab output first
+            foreach (var controller in situationControllers) {
+                foreach (var stack in controller.GetOutputStacks()) {
+                    if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay) {
+                        sit = controller;
+                        return stack;
+                    }
+                }
+            }
+
+            // Nothing? Then we grab ongoing
+            foreach (var controller in situationControllers) {
+                foreach (var slot in controller.GetOngoingSlots()) {
+                    if (slot.IsGreedy)
+                        continue; // Greedy? Don't grab.
+
+                    var stack = slot.GetElementStackInSlot();
+
+                    if (stack == null)
+                        continue; // Empty? Nothing to grab either
+
+                    if (slotSpec.GetSlotMatchForAspects(stack.GetAspects()).MatchType == SlotMatchForAspectsType.Okay) {
+                        sit = controller;
+                        return stack;
+                    }
+                }
+            }
+
+            sit = null;
             return null;
         }
 

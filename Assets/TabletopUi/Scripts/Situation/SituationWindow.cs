@@ -108,7 +108,8 @@ namespace Assets.CS.TabletopUI {
 			canvasGroupFader.Show();
             positioner.Show(canvasGroupFader.durationTurnOn); // Animates the window
             SoundManager.PlaySfx("SituationWindowShow");
-		}
+            SetDumpButtonText(); // ensures that we've updated the dump button accordingly
+        }
 
 		public void Hide() {
 			canvasGroupFader.Hide();
@@ -159,11 +160,7 @@ namespace Assets.CS.TabletopUI {
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
 
             hintText.text = "";
-
-            if (GetOutputStacks().Count() > 0)
-                dumpResultsButtonText.text = buttonClearResultsDefault;
-            else
-                dumpResultsButtonText.text = buttonClearResultsNone;
+            SetDumpButtonText();
         }
 
         // SHOW VIZ
@@ -237,6 +234,13 @@ namespace Assets.CS.TabletopUI {
         void DisplayButtonState(bool interactable, string text = null) {
 			startButton.interactable = interactable;
 			startButtonText.text = string.IsNullOrEmpty(text) ? buttonDefault : text;
+        }
+
+        void SetDumpButtonText() {
+            if (GetOutputStacks().Count() > 0)
+                dumpResultsButtonText.text = buttonClearResultsDefault;
+            else
+                dumpResultsButtonText.text = buttonClearResultsNone;
         }
 
         public void ShowDestinationsForStack(IElementStack stack, bool show) {
@@ -340,6 +344,11 @@ namespace Assets.CS.TabletopUI {
 
         public IRecipeSlot GetOngoingSlotBySaveLocationInfoPath(string locationInfo) {
             return ongoing.GetSlotBySaveLocationInfoPath(locationInfo);
+        }
+
+
+        public IList<RecipeSlot> GetOngoingSlots() {
+            return ongoing.GetAllSlots();
         }
 
         public IRecipeSlot GetUnfilledGreedySlot() {
