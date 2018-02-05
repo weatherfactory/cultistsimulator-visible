@@ -4,7 +4,7 @@
         id: "investigator1",
             label: "Inspector Wakefield",
             aspects:
-            {hunter:1},
+            {hunter:1,mortal:1},
             description: "Zachary Wakefield: a melancholy, but remorseless, inspector of police. He has recently been seconded to the Suppression Bureau.",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -13,7 +13,7 @@ xtriggers: {killmortal:corpse,derangemortal:lunatic}
         id: "defaulthunter",
             label: "Weary Detective",
             aspects:
-            {hunter:1},
+            {hunter:1,mortal:1},
             description: "This gentleman would much rather be left alone with his pipe and his Illustrated London News, but no, <i>apparently</i> some conjuror of abominations has to be hunted down like a mad dog, and <i>apparently</i> no-one else can find the time.",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic}
