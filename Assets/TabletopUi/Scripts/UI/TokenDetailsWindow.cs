@@ -19,6 +19,7 @@ namespace Assets.CS.TabletopUI {
         [Header("Card Infos")]
         [SerializeField] GameObject cardInfoHolder;
         [SerializeField] GameObject uniqueInfo;
+        [SerializeField] GameObject decayInfo;
 
         [Header("Slot Infos")]
         [SerializeField] GameObject slotInfoHolder;
@@ -118,7 +119,7 @@ namespace Assets.CS.TabletopUI {
 
             ShowText(elementHeader + element.Label, element.Description);
             SetTextMargin(true, element.Unique);
-            ShowCardIcons(element.Unique);
+            ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(element.Aspects);
@@ -136,7 +137,7 @@ namespace Assets.CS.TabletopUI {
                 );
             SetTextMargin(false, slotSpec.Greedy || slotSpec.Consumes);
             ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
-            ShowCardIcons(false); // Make sure the other hint icons are gone
+            ShowCardIcons(false, false); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(null);
             aspectsDisplayForbidden.DisplayAspects(slotSpec.Forbidden);
@@ -155,9 +156,10 @@ namespace Assets.CS.TabletopUI {
             description.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, hasHints ? 35f : 0f);
         }
 
-        void ShowCardIcons(bool isUnique) {
-            cardInfoHolder.gameObject.SetActive(isUnique);
+        void ShowCardIcons(bool isUnique, bool decays) {
+            cardInfoHolder.gameObject.SetActive(isUnique || decays);
             uniqueInfo.gameObject.SetActive(isUnique);
+            decayInfo.gameObject.SetActive(decays);
         }
 
         void ShowSlotIcons(bool isGreedy, bool consumes) {

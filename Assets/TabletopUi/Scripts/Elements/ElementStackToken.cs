@@ -194,9 +194,9 @@ namespace Assets.CS.TabletopUI {
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
-                //check if there's an existing stack of that type to increment
+                //check if there's an existing stack of that type to merge with
                 foreach (var stack in existingStacks) {
-                    if (stack.Id == Id) {
+                    if (CanMergeWith(stack)) {
                         var elementStack = stack as ElementStackToken;
                         elementStack.MergeIntoStack(this);
                         return;
@@ -367,7 +367,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override bool CanInteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
-            return stackDroppedOn.Id == this.Id && stackDroppedOn.AllowsMerge();
+            return CanMergeWith(stackDroppedOn);
+        }
+
+        bool CanMergeWith(IElementStack stack) {
+            return stack.Id == this.Id && stack.AllowsMerge();
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
