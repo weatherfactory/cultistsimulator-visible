@@ -1,6 +1,110 @@
 {
 "recipes": [
 		{
+        id: "dreamascensionpower1",
+        label: "Meditate on my goal of unearthly power",
+        actionId: "dream",
+        requirements: {ascensionpower1: 1},
+		slots: {"Calculation": {required:{lore:1,health:1,reason:1}, description: "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."}},
+        startdescription: "Should I dedicate myself to my purpose? Or focus my efforts elsewhere?",
+        description: "I have decided to remain as I am... for now.",
+		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		{id: "dreamascension_switchto_enlightenment",chance:100},
+		{id: "dreamascension_upgrade_power_1to2",chance:100}],
+        warmup: 60,
+        craftable: true
+    },
+				{
+        id: "dreamascensionsensation1",
+        label: "Meditate on the pursuit of sensation",
+        actionId: "dream",
+        requirements: {ascensionsensation1: 1},
+		slots: {"Musing": {required:{lore:1,passion:1,reason:1}, description: "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."}},
+        startdescription: "Should I dedicate myself to my purpose? Or focus my efforts elsewhere?",
+        description: "I have decided to remain as I am... for now.",
+        		alternativerecipes:[{id: "dreamascension_switchto_power",chance:100},
+		{id: "dreamascension_switchto_enlightenment",chance:100},
+		{id: "dreamascension_upgrade_sensation_1to2",chance:100}],
+		warmup: 60,
+        craftable: true
+    },
+			{
+        id: "dreamascensionenlightenment1",
+        label: "Meditate on my goal of unearthly knowledge",
+        actionId: "dream",
+        requirements: {ascensionenlightenment1: 1},
+		slots: {"Reflection": {required:{lore:1,passion:1,health:1},description: "Dedicate myself with the lore of the principle I seek; or focus my efforts elsewhere."}},
+        startdescription: "Should I dedicate myself to my purpose? Or focus my efforts elsewhere?",
+        description: "I have decided to remain as I am... for now.",
+        		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		{id: "dreamascension_switchto_power",chance:100},
+		{id: "dreamascension_upgrade_enlightenment_1to2",chance:100}],
+		warmup: 60,
+        craftable: true
+    },
+{
+        id: "dreamascension_switchto_power",
+		label: "My goal is Power, now.",
+		actionId: "dream",
+		requirements: {passion:1},
+		effects:{desire:-1,ascensionpower1:1},
+		startdescription:"Perhaps Power is the more compelling goal.",
+		description: "I have refocused my intentions. My predecessors wielded the power of remaking: a power that empresses, generals, physicists could only dream of. So shall I, though the power might sear me.",
+},
+{
+        id: "dreamascension_switchto_sensation",
+		label: "My goal is Sensation, now.",
+		actionId: "dream",
+		requirements: {health:1},
+		effects:{desire:-1,ascensionsensation1:1},
+		startdescription:"Perhaps Sensation is the sweeter goal.",
+		description: "I have refocused my intentions. There are experiences tucked like veins beneath the world's skin. I will know the deepest of them, though the experience might devour me.",
+},
+
+{
+        id: "dreamascension_switchto_enlightenment",
+		label: "My goal is Enlightenment, now.",
+		actionId: "dream",
+		requirements: {reason:1},
+				effects:{desire:-1,ascensionenlightenment1:1},
+		startdescription:"Perhaps knowledge is the finer goal.",
+				description: "I have refocused my intentions. My predecessors understood the highest secrets, the searching secrets, the secrets that shone through bones like glass and skin like parchment. So shall I, though the knowledge might undo me.",
+},
+
+{
+        id: "dreamascension_upgrade_power_1to2",
+		label: "Flame's Dedication",
+		actionId: "dream",
+		requirements: {lore:1,forge:1},
+		startdescription:"I will dedicate myself to the pursuit of power.",
+		description: "I've whispered the words that the smith speaks to the iron, that the murderer speaks to their victims, that the fire speaks to its fuel. Only I know what I have done, but it has shaped my path now. [I have advanced a step towards a terrible ascension.]",
+		effects:{ascensionpower1:-1,ascensionpower2:1}
+},
+
+
+{
+        id: "dreamascension_upgrade_sensation_1to2",
+		label: "Blood's Dedication",
+		actionId: "dream",
+		requirements: {lore:1,grail:1},
+		startdescription:"I will dedicate myself to the pursuit of sensation.",
+		description: "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget. [I have advanced a step towards a terrible ascension.]",
+		effects:{ascensionsensation1:-1,ascensionsensation2:1}
+},
+
+{
+        id: "dreamascension_upgrade_enlightenment_1to2",
+		label: "Light's Dedication",
+		actionId: "dream",
+		requirements: {lore:1,lantern:1},
+		startdescription:"I will dedicate myself to the pursuit of knowledge.",
+		description: "I have spoken the words: 'Each Hour has its colour, but colour exists only where there is light.' I will go where there is light, though it bleach me to glass. [I have advanced a step towards a terrible ascension.]",
+		effects:{ascensionenlightenment1:-1,ascensionenlightenment2:1}
+},
+
+
+
+		{
 	id: "startingpassiondream",
 	label: "A Moonlit Road",
 	actionId: "dream",
@@ -22,18 +126,10 @@
 	description: ".",
 	warmup: 5,
 	craftable: true,
-	alternativerecipes: [
-	{id: "linktreeoflights",chance: 50},
-	{id: "linklightthroughstainedglass", chance: 100}
+	linked: [
+	{id: "dreamtreeoflights",chance: 50},
+	{id: "dreamlightthroughstainedglass", chance: 100}
 	]
-	},
-	{id: "linktreeoflights",
-	actionId:"dream",
-		linked:[{id:"dreamtreeoflights",chance:100}]
-		},
-	{id: "linklightthroughstainedglass",
-	actionId:"dream",
-	linked:[{id:"dreamlightthroughstainedglass",chance:100}]
 	},
 	{
 	id: "dreamtreeoflights",
@@ -88,27 +184,6 @@
 	effects: {reason: -1,fragmentknock: 1,dread: 1},
 		description: "I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. But this is the space below."
 	},
-		{
-        id: "dreamnotionpower",
-        label: "Reconsider my goal of unearthly power",
-        actionId: "dream",
-        requirements: {notionpower: 1},
-        effects: { notionpower:-1,notionenlightenment:1},
-        startdescription: "Is power really what I want?",
-        description: "Power is of the world.  My predecessor knew secrets beyond the skin of the world. If only I could follow in their footsteps.",
-        warmup: 60,
-        craftable: true
-    },
-			{
-        id: "dreamnotionenlightenment",
-        label: "Reconsider my goal of unearthly knowledge",
-        actionId: "dream",
-        requirements: {notionenlightenment: 1},
-        effects: { notionpower:1,notionenlightenment:-1},
-        startdescription: "Is power really what I want?",
-        description: "Knowledge is a bagatelle. My predecessor knew of powers that generals and kings would envy. If only I could follow in their footsteps. ",
-        warmup: 60,
-        craftable: true
-    }
+
 ]
 }

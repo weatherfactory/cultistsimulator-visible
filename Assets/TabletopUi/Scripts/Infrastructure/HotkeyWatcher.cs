@@ -33,10 +33,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
                 foreach (var sc in situationsCatalogue.GetRegisteredSituations())
                 {
-                    sc.SetEditorActive(_debugTools.isActiveAndEnabled);
+                    if(_debugTools.isActiveAndEnabled && sc.IsOpen)
+                        sc.SetEditorActive(true);
+                    else
+                    sc.SetEditorActive(false);
                 }
-                
-
             }
             if (!_debugTools.isActiveAndEnabled)
             {
