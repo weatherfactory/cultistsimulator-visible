@@ -53,11 +53,13 @@ namespace Assets.CS.TabletopUI {
 
         bool lastGlowState;
 
+        public bool IsBeingAnimated { get; set; }
+
         public override bool AllowStackMerge { get { return false; } }
 
         public override bool AllowDrag {
             get {
-                return !GoverningSlotSpecification.Greedy;
+                return !GoverningSlotSpecification.Greedy || IsBeingAnimated;
             }
         }
 
@@ -98,8 +100,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         bool CanInteractWithDraggedObject(DraggableToken token) {
-            if (lastGlowState == false) // we're not hoverable? Don't worry
-                return false ;
+            if (lastGlowState == false || token == null) // we're not hoverable? Don't worry
+                return false;
 
             var stack = token as IElementStack;
 
@@ -123,7 +125,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
-            if (lastGlowState)
+            if (lastGlowState && DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.ShowHoveringGlow(false);
 
             ShowHoverGlow(false);
@@ -159,7 +161,7 @@ namespace Assets.CS.TabletopUI {
             }
             else { 
                 SetGlowColor(UIStyle.TokenGlowColor.Default);
-                SoundManager.PlaySfx("TokenHoverOff");
+                //SoundManager.PlaySfx("TokenHoverOff");
 
                 if (lastGlowState)
                     slotGlow.Show();
@@ -175,7 +177,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnDrop(PointerEventData eventData) {
-            if (DraggableToken.itemBeingDragged == null)
+            if (DraggableToken.itemBeingDragged == null || IsBeingAnimated)
                 return;
 
             Debug.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged);
@@ -227,8 +229,10 @@ namespace Assets.CS.TabletopUI {
             base.DisplayHere(token);
             var stack = token as ElementStackToken;
 
-            if (stack != null)
+            if (stack != null) {
                 stack.ShowCardShadow(false); // no shadow in slots
+                slotIconHolder.transform.SetAsLastSibling();
+            }
         }
 
         public DraggableToken GetTokenInSlot() {
@@ -257,8 +261,13 @@ namespace Assets.CS.TabletopUI {
         }
   
         public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
+            if (IsGreedy) { // We do not allow 
+                incumbentMoved = false;
+                return;
+            }
+
             //incomer is a token. Does it fit in the slot?
-            if(GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
+            if (GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
             { 
                 incumbentMoved = true;
                 incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
