@@ -351,17 +351,16 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        // This is where we grab for greedy slots
+        #region -- Greedy Grabbing -------------------------------
+
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();
             var choreo = Registry.Retrieve<Choreographer>();
             SituationController sit;
 
             foreach (var tokenSlotPair in slotsToFill) {
-                if (tokenSlotPair.RecipeSlot.Equals(null)) 
-                    continue; // It has been destroyed
-                else if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() != null)
-                    continue; // It is already filled
+                if (NeedToFillSlot(tokenSlotPair) == false) 
+                    continue; // Skip it, we don't need to fill it
 
                 var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.RecipeSlot.GoverningSlotSpecification) as ElementStackToken;
 
@@ -384,6 +383,23 @@ namespace Assets.CS.TabletopUI {
             }
 
             return unprocessedSlots;
+        }
+
+        private bool NeedToFillSlot(TokenAndSlot tokenSlotPair) {
+            if (tokenSlotPair.Token.Equals(null))
+                return false; // It has been destroyed
+            if (tokenSlotPair.Token.Defunct)
+                return false;
+            if (tokenSlotPair.RecipeSlot.Equals(null))
+                return false; // It has been destroyed
+            if (tokenSlotPair.RecipeSlot.Defunct)
+                return false;
+            if (tokenSlotPair.RecipeSlot.IsBeingAnimated)
+                return false; // We're animating something into the slot.
+            if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() != null)
+                return false; // It is already filled
+
+            return true;
         }
 
         private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
@@ -452,6 +468,8 @@ namespace Assets.CS.TabletopUI {
             sit = null;
             return null;
         }
+
+        #endregion
 
         public void CloseAllSituationWindowsExcept(string exceptTokenId) {
             var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();

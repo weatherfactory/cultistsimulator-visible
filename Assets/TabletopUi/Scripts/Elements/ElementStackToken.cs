@@ -340,7 +340,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public bool AllowsMerge() {
-            if (Decays || _element.Unique)
+            if (Decays || _element.Unique || IsBeingAnimated)
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
