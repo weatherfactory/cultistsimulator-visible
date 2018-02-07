@@ -20,216 +20,228 @@ using UnityEngine.SceneManagement;
 
 public class MenuScreenController : MonoBehaviour {
 
-	bool waitForInput = true;
+    // can be used to disable interaction when we start loading into a scene
+    public EventSystem eventSystem;
 
-    public TextMeshProUGUI purgeSaveMessage;
+    [Header("Buttons")]
+    public Button newGameButton;
+    public Button continueGameButton;
+    public Button purgeButton;
 
-	[Header("Buttons")]
-	public BeginGameButton beginGameButton;
-	public Button showOptions;
-	public EventSystem eventSystem;
-    public GameObject purgeButton;
+    [Header("Overlays")]
+    public CanvasGroupFader modal;
+    public CanvasGroupFader purgeConfirm;
+    public CanvasGroupFader credits;
+    public CanvasGroupFader versionHints;
 
-	[Header("Loading Visuals")]
-	public LoadingIcon loadingIcon;
-	public Image fadeOverlay;
+    [Header("Fade Visuals")]
+    public Image fadeOverlay;
+    public float fadeDuration = 0.25f;
 
-	[Header("Timing Settings")]
-	public float waitOnLoadEnd = 0.25f;
-	public float fadeDuration = 0.25f;
-
-	[Header("Loading Settings")]
-	public LoadSceneMode loadSceneMode = LoadSceneMode.Single;
-	public ThreadPriority loadThreadPriority;
-
-	[Header("Other")]
-	// If loading additive, link to the cameras audio listener, to avoid multiple active audio listeners
-	public AudioListener audioListener;
-
+    [Header("Hints")]
+    public GameObject purgeSaveMessage;
     public TextMeshProUGUI VersionNumber;
+    public Animation versionAnim;
 
-	AsyncOperation operation;
-	Scene currentScene;
+    bool canTakeInput;
+    int sceneToLoad;
+    VersionNumber currentVersion;
+    CanvasGroupFader currentOverlay;
 
-    
-	public static int sceneToLoad;
-	// IMPORTANT! This is the build index of your loading scene. You need to change this to match your actual scene index
-	static int loadingSceneIndex = 1;
+    GameSaveManager saveGameManager;
 
-	public static void LoadScene(int levelNum) {				
-		Application.backgroundLoadingPriority = ThreadPriority.High;
-		sceneToLoad = levelNum;
-		SceneManager.LoadScene(loadingSceneIndex);
-	}
-
-    
-	void Start() {
-	    var registry = new Registry();
-	    var compendium = new Compendium();
-	    registry.Register<ICompendium>(compendium);
-	    var contentImporter = new ContentImporter();
-	    contentImporter.PopulateCompendium(compendium);
-
-	    var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
-	    registry.Register<MetaInfo>(metaInfo);
-
-	    VersionNumber.text = metaInfo.VersionNumber.Version;
-	    CrossSceneState.SetMetaInfo(metaInfo);
-
-
-        SetBeginContinueCondition();
-	}
-
-    public void SetBeginContinueCondition()
-    {
-        beginGameButton.gameObject.SetActive(true);
-        purgeSaveMessage.gameObject.SetActive(false);
-        purgeButton.gameObject.SetActive(false);
-
-        var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-
-        if (!saveGameManager.DoesGameSaveExist())
-        {
-            beginGameButton.Text = "BEGIN";
-
-            //and set the legacy to the first in the list; this should be the starting legacy
-            CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
-            sceneToLoad = SceneNumber.GameScene;
-            sceneToLoad = SceneNumber.GameScene;
-        }
-        else
-        {
-            beginGameButton.Text = "CONTINUE";
-            purgeButton.gameObject.SetActive(true);
-
-            if (!saveGameManager.SaveGameHasMatchingVersionNumber(Registry.Retrieve<MetaInfo>().VersionNumber))
-            {
-                //version doesn't match. Hide begin button, display message
-                beginGameButton.gameObject.SetActive(false);
-                purgeButton.gameObject.SetActive(true);
-                purgeSaveMessage.gameObject.SetActive(true);
-            }
-
-            if (saveGameManager.IsSavedGameActive())
-                //back into the game!
-                sceneToLoad = SceneNumber.GameScene;
-            else
-            {
-                //we left the game from the game over or legacy screen: go back to choose a legacy.
-                //Retrieve the saved state, and then selectively populate properties in the current state...
-                //this is ugly: it could use appropriate methods
-                var savedCrossSceneState = saveGameManager.RetrieveSavedCrossSceneState();
-
-                //this is essential. If we earlier left the game in the legacy screen, we're about to go back there, 
-                //and we need to retrieve the legacy ids and populate with compendium data
-                if (savedCrossSceneState.AvailableLegacies.Count > 0)
-                    CrossSceneState.SetAvailableLegacies(savedCrossSceneState.AvailableLegacies);
-                //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
-                if (savedCrossSceneState.CurrentEnding != null)
-                    CrossSceneState.SetCurrentEnding(savedCrossSceneState.CurrentEnding);
-
-                if (savedCrossSceneState.DefunctCharacter != null)
-                    CrossSceneState.SetDefunctCharacter(savedCrossSceneState.DefunctCharacter);
-
-                sceneToLoad = SceneNumber.NewGameScene;
-            }
-        }
-
-        if (sceneToLoad < 0)
-            return;
-
-
-        //fiddling with the menu buttons has borked Martin's async scene loader
-        //commenting out: MN, talk me through it? - AK
-       // fadeOverlay.gameObject.SetActive(true); // Making sure it's on so that we can crossfade Alpha
-        //currentScene = SceneManager.GetActiveScene();
-        //StartCoroutine(LoadAsync(sceneToLoad));
+    void Start() {
+        InitManagers();
+        UpdateAndShowMenu();
+        canTakeInput = true;
     }
 
+    void InitManagers() {
+        var registry = new Registry();
 
-    public void StartGame()
-    {
+        var compendium = new Compendium();
+        registry.Register<ICompendium>(compendium);
+
+        var contentImporter = new ContentImporter();
+        contentImporter.PopulateCompendium(compendium);
+
+        var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
+        registry.Register<MetaInfo>(metaInfo);
+        CrossSceneState.SetMetaInfo(metaInfo);
+
+        saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+
+        currentVersion = metaInfo.VersionNumber;
+    }
+
+    void UpdateAndShowMenu() {
+        bool hasSavegame = saveGameManager.DoesGameSaveExist();
+        bool isLegalSaveGame = saveGameManager.SaveGameHasMatchingVersionNumber(currentVersion);
+
+        // Show the buttons as needed
+        newGameButton.gameObject.SetActive(!hasSavegame);
+        continueGameButton.gameObject.SetActive(hasSavegame);
+        continueGameButton.interactable = isLegalSaveGame;
+        purgeButton.gameObject.SetActive(hasSavegame);
+
+        // Show the purge message if needed
+        purgeSaveMessage.gameObject.SetActive(!isLegalSaveGame);
+
+        UpdateVersionNumber(!isLegalSaveGame);
+        HideAllOverlays();
+        FadeIn();
+    }
+
+    void UpdateVersionNumber(bool hasNews) {
+        // Show the current version number
+        VersionNumber.text = currentVersion.Version;
+
+        if (hasNews)
+            versionAnim.Play();
+        else
+            versionAnim.Stop();
+    }
+
+    void HideAllOverlays() {
+        modal.gameObject.SetActive(false);
+        purgeConfirm.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
+        versionHints.gameObject.SetActive(false);
+    }
+
+    #region -- View Changes ------------------------
+
+    void FadeIn() {
+        fadeOverlay.gameObject.SetActive(true);
+        fadeOverlay.canvasRenderer.SetAlpha(1f);
+        fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
+    }
+
+    void FadeOut() {
+        fadeOverlay.gameObject.SetActive(true);
+        fadeOverlay.canvasRenderer.SetAlpha(0f);
+        fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
+    }
+
+    void ShowOverlay(CanvasGroupFader overlay) {
+        if (currentOverlay != null)
+            return;
+
+        currentOverlay = overlay;
+
+        overlay.Show();
+        modal.Show();
+    }
+
+    void HideCurrentOverlay() {
+        if (currentOverlay == null)
+            return;
+
+        currentOverlay.Hide();
+        modal.Hide();
+        currentOverlay = null;
+    }
+
+    #endregion
+
+    #region -- User Actions via Scene Buttons ------------------------
+
+    public void StartGame() {
+        if (!canTakeInput)
+            return;
+
+        // Set the legacy to the first in the list; this should be the starting legacy
+        CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
+        // Load directly into the game scene, no legacy select
+        LoadScene(SceneNumber.GameScene);
+    }
+
+    public void ContinueGame() {
+        if (!canTakeInput)
+            return;
+
+        if (saveGameManager.IsSavedGameActive()) {
+            //back into the game!
+            LoadScene(SceneNumber.GameScene);
+            return;
+        }
+
+        //we left the game from the game over or legacy screen: go back to choose a legacy.
+        //Retrieve the saved state, and then selectively populate properties in the current state...
+        //this is ugly: it could use appropriate methods
+        var savedCrossSceneState = saveGameManager.RetrieveSavedCrossSceneState();
+
+        //this is essential. If we earlier left the game in the legacy screen, we're about to go back there, 
+        //and we need to retrieve the legacy ids and populate with compendium data
+        if (savedCrossSceneState.AvailableLegacies.Count > 0)
+            CrossSceneState.SetAvailableLegacies(savedCrossSceneState.AvailableLegacies);
+
+        //this is currently unnecessary: we don't go back to the game over screen. but it's very likely we might want to track / restore this information.
+        if (savedCrossSceneState.CurrentEnding != null)
+            CrossSceneState.SetCurrentEnding(savedCrossSceneState.CurrentEnding);
+
+        if (savedCrossSceneState.DefunctCharacter != null)
+            CrossSceneState.SetDefunctCharacter(savedCrossSceneState.DefunctCharacter);
+
+        LoadScene(SceneNumber.NewGameScene);
+    }
+
+    void LoadScene(int sceneNr) {
+        canTakeInput = false;
+        sceneToLoad = sceneNr;
+        FadeOut();
+        Invoke("LoadSceneDelayed", fadeDuration);
+    }
+
+    void LoadSceneDelayed() {
         SceneManager.LoadScene(sceneToLoad);
     }
 
+    public void TryPurgeSave() {
+        if (!canTakeInput)
+            return;
 
-    public void Exit()
-    {
+        ShowOverlay(purgeConfirm);
+    }
+
+    public void PurgeSave() {
+        if (!canTakeInput)
+            return;
+
+        saveGameManager.DeleteCurrentSave();
+        FadeOut();
+        Invoke("UpdateAndShowMenu", fadeDuration);
+    }
+
+    public void ShowCredits() {
+        if (!canTakeInput)
+            return;
+
+        ShowOverlay(credits);
+    }
+
+    public void ShowVersionHints() {
+        if (!canTakeInput)
+            return;
+
+        ShowOverlay(versionHints);
+        versionAnim.Stop(); // Ensure that the anim is no longer playing
+    }
+
+    public void CloseCurrentOverlay() {
+        if (!canTakeInput)
+            return;
+
+        HideCurrentOverlay();
+    }
+
+    public void Exit() {
+        if (!canTakeInput)
+            return;
+
         Application.Quit();
     }
 
-    //   private IEnumerator LoadAsync(int levelNum) {
-    //	ShowLoadingVisuals();
-
-    //	yield return null; 
-
-    //	FadeIn();
-    //	StartOperation(levelNum);
-
-    //	// operation does not auto-activate scene, so it's stuck at 0.9
-    //	while (DoneLoading() == false) 
-    //		yield return null;
-
-    //	if (loadSceneMode == LoadSceneMode.Additive)
-    //		audioListener.enabled = false;
-
-    //	ShowCompletionVisuals();
-
-    //	yield return new WaitForSeconds(waitOnLoadEnd);
-
-    //	while (waitForInput)
-    //		yield return null;
-
-    //	FadeOut();
-
-    //	yield return new WaitForSeconds(fadeDuration);
-
-    //	if (loadSceneMode == LoadSceneMode.Additive)
-    //		SceneManager.UnloadSceneAsync(currentScene.name);
-    //	else
-    //		operation.allowSceneActivation = true;
-    //}
-
-    //private void StartOperation(int levelNum) {
-    //	Application.backgroundLoadingPriority = loadThreadPriority;
-    //	operation = SceneManager.LoadSceneAsync(levelNum, loadSceneMode);
-
-    //	if (loadSceneMode == LoadSceneMode.Single)
-    //		operation.allowSceneActivation = false;
-    //}
-
-    //private bool DoneLoading() {
-    //	return (loadSceneMode == LoadSceneMode.Additive && operation.isDone) || (loadSceneMode == LoadSceneMode.Single && operation.progress >= 0.9f); 
-    //}
-
-    //void FadeIn() {
-    //	fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
-    //}
-
-    //void FadeOut() {
-    //	fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
-    //}
-
-    //void ShowLoadingVisuals() {
-    //	if (loadingIcon)
-    //		loadingIcon.doRotation = true;
-    //}
-
-    //void ShowCompletionVisuals() {
-    //	if (loadingIcon)
-    //		loadingIcon.gameObject.SetActive(false);
-    //}
-
-    //public void StartGame() {
-    //	//if (!waitForInput)
-    //	//	return;
-
-    //	//if (DoneLoading() == false) 
-    //	//	eventSystem.SetSelectedGameObject(beginGameButton.gameObject);
-
-    //	//eventSystem.enabled = false;
-    //	//waitForInput = false;		
-    //}
-
+    #endregion
 
 }
