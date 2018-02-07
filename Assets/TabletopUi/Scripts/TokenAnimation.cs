@@ -104,7 +104,7 @@ public class TokenAnimation : MonoBehaviour {
 		token.RectTransform.anchoredPosition3D = GetPos(Easing.Circular.Out(completion));
 
 		if (scaleStart != 1f && completion < scalePercentage)
-			transform.localScale = Vector3.Lerp(Vector3.one * scaleStart, Vector3.one, Easing.Quadratic.Out(completion / scalePercentage));
+			transform.localScale = Vector3.Lerp(Vector3.one * scaleStart, Vector3.one, Easing.Quartic.Out(completion / scalePercentage));
 		else if (scaleEnd != 1f  && completion > (1f - scalePercentage))
 			transform.localScale = Vector3.Lerp(Vector3.one * scaleEnd, Vector3.one, Easing.Quadratic.Out((1f - completion) / scalePercentage));
 		else 

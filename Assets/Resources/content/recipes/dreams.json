@@ -105,22 +105,105 @@
 
 
 		{
-	id: "startingpassiondream",
-	label: "A Moonlit Road",
+	id: "dreamstartingpassion",
+	label: "The Moonlit Road",
 	actionId: "dream",
 	requirements: {passion: 1},
+	slots: {"Evening": {description:"I might engage in an occult practice before I sleep.",required: {lore:1}}},
 	effects: {contentment: 1},
 	startdescription: "The road crests the hill-top, and the air is silver-bright -",
 	description: "Rumpled fields, the wink of a river. A tingling chill.",
-	warmup: 45,
+	alternativerecipes: [
+	{id:"dreamreachwoodknock",chance:100},
+	{id:"dreamreachwoodlantern",chance:100},
+	{id:"dreamreachwoodmoth",chance:100},
+	{id:"dreamenterwood",chance:100}],
+	warmup: 60,
 	craftable: true,
 	burnimage: moon
 	},
+{
+	id: "dreamreachwoodmoth",
+	label: "The Thyrsine Way",
+	actionId: "dream",
+	requirements: {lore:1,moth:2},
+	startdescription: "I could cut a lock of hair before I sleep, to honour a power of the Wood.",
+	description: "The road ducks into the trees. Pale wings move deep in the wood. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. The moon passes behind the black leaves, though her fingers remain in my hair. I will not forget the way to this place.",
+	effects: {waywood:1,influencemoth:1},
+	},
+		{
+	id: "dreamreachwoodknock",
+	label: "The Serpent's Way",
+	actionId: "dream",
+	requirements: {lore:1,knock:2},
+	startdescription: "Locksmiths often have the Dream after the sole of the foot is wounded - especially if it has been snake-bitten. I could try that.",
+	description: "I limp along the road, and so it is that I see the serpent in the ditch. I follow it across the waste places and into the root-maze. It is tempting to drop to all fours, to avoid the low branches. The moon passes behind the black leaves, though her fingers remain in my hair. I will not forget the way to this place.",
+	effects: {waywood:1,influencemoth:1},
+	},
+	
 	{
-	id: "dreamsofaglory",
+	id: "dreamreachwoodlantern",
+	label: "The Bleached Way",
+	actionId: "dream",
+	requirements: {lore:1,lantern:2},
+	startdescription: "I could sleep in a room without colours: bleach the sheets, whitewash the walls, dye my hair and paint my skin.",
+	description: "'Colour exists only where there is light': and the Wood is the place where light does not walk. In the dream, I close my eyes, and walk, stumbling, bruising my feet and knees. At last the undergrowth before me grows too thick to pass, and when I open my eyes, I am adrift among black trees. Shadows flutter. My feet will know the way back to this place.",
+	effects: {waywood:1,influencemoth:1},
+	},
+	{
+	id: "dreamenterwood",
+	label: "The Wood",
+	actionId: "dream",
+	requirements: {waywood:1},
+	slots: {Path: {description:"Perhaps there is a way through the Wood."}},
+	startdescription: "I recall the way to the Wood.",
+	description: "Now I pass between scar-barked trees. The moon passes behind branches, though her fingers remain in your hair. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. Pale wings move, deep in the night.",
+	effects: {influencemoth:1},
+	linked: [
+	{id:"dreamnotquitereachwhite",chance:100},
+	{id:"dreamenterwhite",chance:100},
+	{id:"dreamreachwhite",chance:100}
+	],
+	craftable:true,
+	comments: "Allow people to jump directly here without the initial dream; there's also a link from the initial dream"
+	},
+	{
+		id: "dreamnotquitereachwhite",
+	label: "The Light in the Wood",
+	actionId: "dream",
+	requirements: {lore:1,lantern:1},
+	startdescription: "FNORD",
+	description: "FNORD",
+	effects: {influencemoth:1},
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachwhite",
+	label: "To The White Door",
+	actionId: "dream",
+	requirements: {lore:1,lantern:4},
+	startdescription: "I recall the way to the Wood.",
+	description: "Now I pass between scar-barked trees. The moon passes behind branches, though her fingers remain in your hair. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. Pale wings move, deep in the night. I will not forget the way to this place.",
+	effects: {waywhite:1}
+	},
+		
+				{
+	id: "dreamenterwhite",
+	label: "Through the White Door",
+	actionId: "dream",
+	requirements: {waywhite:1},
+	startdescription: "FNORD",
+	description: "FNORD",
+	effects: {influencemoth:1}
+	},
+
+
+	{
+	id: "startinglanterndream",
 	label: "Dreams of a Glory",
 	actionId: "dream",
-	requirements: {reason: 1},
+	requirements: {lantern: 1},
 	effects: {},
 	startdescription: "There was once a man who said that the sleep of reason produced monsters.",
 	description: ".",
@@ -141,7 +224,7 @@
 	startdescription: "A dream: in the breathy hush of a summer night, a tree hangs heavy with fruit. Each glows topaz or rose, brighter than a fire-fly, dimmer than a lamp. I could consume one; or I could watch the moths flutter and the tree sway, enjoy the heady brush of the breeze.",
 	description: "The dawn will come, and I won't hasten it. Each fruit is an eye, but each eye is closed.",
 	warmup: 60,
-	comments: "currently allows infinite moth fragments. Rebalance with Map."
+	comments: "currently allows infinite moth fragments. Rebalance with Map. But ppl will need the Barber's Secret for the current version."
 	},
 	{
 	id: "dreamlightthroughstainedglass",

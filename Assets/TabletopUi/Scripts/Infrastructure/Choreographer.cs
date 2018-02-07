@@ -272,17 +272,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
+            var startPos = stack.RectTransform.anchoredPosition3D;
+            var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
+            float distance = Vector3.Distance(startPos, endPos);
+            float duration = Mathf.Max(0.3f, distance * 0.001f);
+
             var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
             stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
-            stackAnim.SetPositions(stack.RectTransform.anchoredPosition3D, tokenSlotPair.Token.GetOngoingSlotPosition());
+            stackAnim.SetPositions(startPos, endPos);
             stackAnim.SetScaling(1f, 0.35f);
             stackAnim.SetTargetSlot(tokenSlotPair);
-            stackAnim.StartAnim(0.2f);
+
+            tokenSlotPair.RecipeSlot.IsBeingAnimated = true;
+
+            stackAnim.StartAnim(duration);
         }
 
         void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
-            if (!tokenSlotPair.RecipeSlot.Equals(null))
-                tokenSlotPair.RecipeSlot.AcceptStack(element);
+            if (tokenSlotPair.RecipeSlot.Equals(null))
+                return;
+
+            tokenSlotPair.RecipeSlot.AcceptStack(element);
+            tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
         }
 
         void SituationAnimDone(SituationToken token) {

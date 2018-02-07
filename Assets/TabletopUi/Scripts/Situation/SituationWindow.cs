@@ -248,11 +248,22 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             foreach (var s in slots) {
-                if (stack == null || s.GetSlotMatchForStack(stack).MatchType != SlotMatchForAspectsType.Okay || s.GetElementStackInSlot() != null)
-                    s.ShowGlow(false, false);
-                else
+                if (CanHighlightSlot(s, stack))
                     s.ShowGlow(true, false);
+                else
+                    s.ShowGlow(false, false);
             }
+        }
+
+        bool CanHighlightSlot(RecipeSlot slot, IElementStack stack) {
+            if (stack == null || slot == null)
+                return false; 
+            if (slot.GetElementStackInSlot() != null)
+                return false; // Slot is filled? Don't highlight it as interactive
+            if (slot.IsBeingAnimated)
+                return false; // Slot is being animated? Don't hihglight
+
+            return slot.GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
 
         // ACTIONS
