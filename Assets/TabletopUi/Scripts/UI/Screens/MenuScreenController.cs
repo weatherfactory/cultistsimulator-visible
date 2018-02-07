@@ -51,9 +51,15 @@ public class MenuScreenController : MonoBehaviour {
     GameSaveManager saveGameManager;
 
     void Start() {
+        // make sure the screen is black
+        fadeOverlay.gameObject.SetActive(true);
+        fadeOverlay.canvasRenderer.SetAlpha(1f);
+
         InitManagers();
-        UpdateAndShowMenu();
         canTakeInput = true;
+
+        // We delay the showing to get a proper fade in
+        Invoke("UpdateAndShowMenu", 0.1f); 
     }
 
     void InitManagers() {
@@ -76,7 +82,7 @@ public class MenuScreenController : MonoBehaviour {
 
     void UpdateAndShowMenu() {
         bool hasSavegame = saveGameManager.DoesGameSaveExist();
-        bool isLegalSaveGame = saveGameManager.SaveGameHasMatchingVersionNumber(currentVersion);
+        bool isLegalSaveGame = hasSavegame ? saveGameManager.SaveGameHasMatchingVersionNumber(currentVersion) : false;
 
         // Show the buttons as needed
         newGameButton.gameObject.SetActive(!hasSavegame);
@@ -85,7 +91,7 @@ public class MenuScreenController : MonoBehaviour {
         purgeButton.gameObject.SetActive(hasSavegame);
 
         // Show the purge message if needed
-        purgeSaveMessage.gameObject.SetActive(!isLegalSaveGame);
+        purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
 
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();
@@ -209,6 +215,7 @@ public class MenuScreenController : MonoBehaviour {
             return;
 
         saveGameManager.DeleteCurrentSave();
+        currentOverlay = null; // to ensure we can re-open another overlay afterwards
         FadeOut();
         Invoke("UpdateAndShowMenu", fadeDuration);
     }
