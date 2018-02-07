@@ -261,6 +261,8 @@ namespace Assets.TabletopUi {
         public void Halt() {
             //currently used only in debug. Reset to starting state (which might be weird for Time) and end timer.
             SituationClock.Halt();
+            //If we leave anything in the ongoing slot, it's lost, and also the situation ends up in an anomalous state which breaks loads
+            situationWindow.SetOutput(situationWindow.GetOngoingStacks().ToList());
         }
 
         private void AttemptAspectInductions() {
