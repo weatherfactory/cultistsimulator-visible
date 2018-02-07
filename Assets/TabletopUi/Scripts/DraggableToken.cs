@@ -77,7 +77,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected virtual bool AllowsInteraction() {
-            return !Defunct && TokenContainer != null && !IsBeingAnimated;// && TokenContainer.AllowDrag && AllowsDrag();
+            return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
         }
 
 
