@@ -5,20 +5,20 @@
         label: "THE DAWN IS COME",
         actionId: "work",
         requirements: {ritual: 1,
-		ascensionpowera:1,
+		ascensionpowerf:1,
 		forge:50},
         effects: {},
-        startdescription: "The city will end in fire. FNORD",
-        description: "The city is ending in fire. Remember that the ending text will contain the payload. FNORD.",
+        startdescription: "FNORD",
+        description: "Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
-        craftable: true
+        craftable: false
     },
 	   {
         id: "minorforgevictory",
         label: "I AM REFORGED",
         actionId: "work",
         requirements: {ritual: 1,
-		ascensionpowera:1,
+		ascensionpowerf:1,
 		forge:35},
         effects: {},
         startdescription: "I will become a name of fire. FNORD.",
@@ -31,20 +31,20 @@
         label: "THE FEAST IS NIGH",
         actionId: "work",
         requirements: {ritual: 1,
-		ascensionsensationa:1,
+		ascensionsensationf:1,
 		grail:50},
         effects: {},
-        startdescription: "The Feast will begin. FNORD",
+        startdescription: "FNORD",
         description: "The Feast is beginning. Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
-        craftable: true
+        craftable: false
     },
 	   {
         id: "minorgrailvictory",
         label: "I AM BORN AGAIN IN BLOOD",
         actionId: "work",
         requirements: {ritual: 1,
-		ascensionsensationa:1,
+		ascensionsensationf:1,
 		grail:35},
         effects: {},
         startdescription: "I will become a name of fire. FNORD.",
@@ -57,27 +57,57 @@
         label: "THE LANTERN",
         actionId: "work",
         requirements: {ritual: 1,
-		ascensionenlightenmenta:1,
+		ascensionenlightenmentf:1,
 		lantern:50},
         effects: {},
-        startdescription: "I will touch the Glory. FNORD",
+        startdescription: "FNORD",
         description: "I am approaching the Glory. Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
-        craftable: true
+        craftable: false
     },
 	   {
         id: "minorlanternvictory",
         label: "The Last Step through the Peacock Door",
         actionId: "work",
         requirements: {ritual: 1,
-		ascensionenlightenmenta:1,
+		ascensionenlightenmentf:1,
 		lantern:35},
         effects: {},
         startdescription: "I will enter the Mansus. FNORD.",
         description: "I am entering the Mansus. Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
         craftable: true
-    }
+    },
+	
+	{id:"ascensiontrycraving!type!",
+		label:"FNORD try craving"
+		actionId: "craving",
+		slots: {"Marks": {description: "Have I begun to change?",required: {marks:1}, greedy:true }},
+		startdescription: "FNORD start try craving",
+		description: "FNORD complete try craving, will show this whether activated or not",
+		effects: {},
+		warmup: 60,
+		linked: [{id:"ascensioncraving!type!"}]
+		},
+		{id:"ascensioncraving!type!",
+		label:"FNORD actual craving !type!",
+		requirements: {marks:1},
+		slots: {"Craving": {description: "I need...",required: {!cravingneed!:1}, greedy:true }}
+		startdescription: "FNORD craving will be satisfied!",
+		description: "FNORD complete actual craving satisfied - changy changy",
+		effects: {!cravingstat!:1},
+		aspects: {ascend:1},
+		alternativerecipes: [{id:"ascensionescalatecraving!type!",chance:100}]
+		},
+		{
+		id:"ascensionescalatecraving!type!",
+		label:"FNORD escalate craving !type!",
+		actionId: "craving",
+		requirements: {!cravingneed!:-1},
+		slots: {"Pain": { description: "My need gnaws at me", required: {!cravingstat!:1}, greedy:true}}
+		aspects: {descend:1},
+		effects: {!cravingstat!:-1}
+		}
 	
 ]
 }
