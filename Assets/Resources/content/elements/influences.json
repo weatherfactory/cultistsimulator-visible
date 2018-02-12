@@ -4,7 +4,7 @@
         id: "influenceedge",
             label: "influenceedge",
             aspects:
-            {edge: 2},
+            {edge: 2,influence:1},
             description: "fnord [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -12,7 +12,7 @@
         id: "influenceedgec",
             label: "influenceedgec",
             aspects:
-            {edge: 6},
+            {edge: 6,influence:1},
             description: "influenceedgec fnord. [A sixth-order influence: the signs are unmistakable.]",
 			timeout: 60
         },
@@ -20,7 +20,7 @@
         id: "influenceedgee",
             label: "influenceedgee",
             aspects:
-            {edge: 10},
+            {edge: 10,influence:1},
             description: "influenceedgee fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -28,7 +28,7 @@
         id: "influenceedgeg",
             label: "influenceedgeg",
             aspects:
-            {edge: 15},
+            {edge: 15,influence:1},
             description: "influenceedgeg fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },
@@ -37,7 +37,7 @@
         id: "influenceforge",
             label: "influenceforge",
             aspects:
-            {forge: 2},
+            {forge: 2,influence:1},
             description: "fnord [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -45,7 +45,7 @@
         id: "influenceforgec",
             label: "influenceforgec",
             aspects:
-            {forge: 6},
+            {forge: 6,influence:1},
             description: "influenceforgec fnord. [A sixth-order influence: the signs are unmistakable.]",
 			timeout: 60
         },
@@ -53,7 +53,7 @@
         id: "influenceforgee",
             label: "influenceforgee",
             aspects:
-            {forge: 10},
+            {forge: 10,influence:1},
             description: "influenceforgee fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -61,7 +61,7 @@
         id: "influenceforgeg",
             label: "influenceforgeg",
             aspects:
-            {forge: 15},
+            {forge: 15,influence:1},
             description: "influenceforgeg fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },
@@ -71,7 +71,7 @@
         id: "influencegrail",
             label: "An Awareness of Appetite",
             aspects:
-            {grail: 2},
+            {grail: 2,influence:1},
             description: "Every sense is heightened; every sensation, deepened. [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -79,7 +79,7 @@
         id: "influencegrailc",
             label: "influencegrailc",
             aspects:
-            {grail: 6},
+            {grail: 6,influence:1},
             description: "influencegrailc fnord. [A sixth-order influence: an adept of note might be active here.]",
 			timeout: 60
         },
@@ -87,7 +87,7 @@
         id: "influencegraile",
             label: "influencegraile",
             aspects:
-            {grail: 10},
+            {grail: 10,influence:1},
             description: "influencegraile fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -95,7 +95,7 @@
         id: "influencegrailg",
             label: "influencegrailg",
             aspects:
-            {grail: 15},
+            {grail: 15,influence:1},
             description: "influencegrailg fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },
@@ -104,7 +104,7 @@
         id: "influenceknock",
             label: "A Consciousness of Radiance",
             aspects:
-            {knock: 2},
+            {knock: 2,influence:1},
             description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -112,7 +112,7 @@
         id: "influenceknockc",
             label: "influenceknockc",
             aspects:
-            {knock: 6},
+            {knock: 6,influence:1},
             description: "influenceknockc fnord. [A sixth-order influence: an adept of note might be active here.]",
 			timeout: 60
         },
@@ -120,7 +120,7 @@
         id: "influenceknocke",
             label: "influenceknocke",
             aspects:
-            {knock: 10},
+            {knock: 10,influence:1},
             description: "influenceknocke fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -128,7 +128,7 @@
         id: "influenceknockg",
             label: "influenceknockg",
             aspects:
-            {knock: 15},
+            {knock: 15,influence:1},
             description: "influenceknockg fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },
@@ -137,7 +137,7 @@
         id: "influencelantern",
             label: "A Buzzing in the Brain",
             aspects:
-            {lantern: 2},
+            {lantern: 2,influence:1},
             description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -145,7 +145,7 @@
         id: "influencelanternc",
             label: "influencelanternc",
             aspects:
-            {lantern: 6},
+            {lantern: 6,influence:1},
             description: "influencelanternc fnord. [A sixth-order influence: an adept of note might be active here.]",
 			timeout: 60
         },
@@ -153,7 +153,7 @@
         id: "influencelanterne",
             label: "influencelanterne",
             aspects:
-            {lantern: 10},
+            {lantern: 10,influence:1},
             description: "influencelanterne fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -161,7 +161,7 @@
         id: "influencelanterng",
             label: "influencelanterng",
             aspects:
-            {lantern: 15},
+            {lantern: 15,influence:1},
             description: "influencelanterng fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },
@@ -170,7 +170,7 @@
         id: "influencemoth",
             label: "A Buzzing in the Brain",
             aspects:
-            {moth: 2},
+            {moth: 2,influence:1},
             description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -178,7 +178,7 @@
         id: "influencemothc",
             label: "influencemothc",
             aspects:
-            {moth: 6},
+            {moth: 6,influence:1},
             description: "influencemothc fnord. [A sixth-order influence: an adept of note might be active here.]",
 			timeout: 60
         },
@@ -186,7 +186,7 @@
         id: "influencemothe",
             label: "influencemothe",
             aspects:
-            {moth: 10},
+            {moth: 10,influence:1},
             description: "influencemothe fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -194,7 +194,7 @@
         id: "influencemothg",
             label: "influencemothg",
             aspects:
-            {moth: 15},
+            {moth: 15,influence:1},
             description: "influencemothg fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },
@@ -204,7 +204,7 @@
         id: "influencewinter",
             label: "A Chilly Atmosphere",
             aspects:
-            {winter: 2},
+            {winter: 2,influence:1},
             description: "A peculiar chill hangs around my rooms. No doubt it will pass. [A second-order influence: instantly recognisable to an Adept.]",
 			timeout: 60
         },
@@ -212,7 +212,7 @@
         id: "influencewinterc",
             label: "influencewinterc",
             aspects:
-            {winter: 6},
+            {winter: 6,influence:1},
             description: "influencewinterc fnord. [A sixth-order influence: the signs are unmistakable.]",
 			timeout: 60
         },
@@ -220,7 +220,7 @@
         id: "influencewintere",
             label: "influencewintere",
             aspects:
-            {winter: 10},
+            {winter: 10,influence:1},
             description: "influencewintere fnord. [A tenth-order influence! A gathering knot of power and peril.]",
 			timeout: 60
         },
@@ -228,7 +228,7 @@
         id: "influencewinterg",
             label: "influencewinterg",
             aspects:
-            {winter: 15},
+            {winter: 15,influence:1},
             description: "influencewinterg fnord. [A fifteenth-order influence! This might be the personal attention of an Hour]",
 			timeout: 60
         },

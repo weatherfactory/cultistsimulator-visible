@@ -66,12 +66,25 @@
             isAspect: true,
 			description: "Fuel, ointment, pigment, patience: all are consumed in time."
         },
+				        {
+            id: "influence",
+            label: "Influence",
+            isAspect: true,
+			description: "An echo, a resonance, an alignment. Something that will fade soon."
+        },
         {
             id: "tool",
             label: "Tool",
             isAspect: true,
 			description: "'A sword does not kill; it is an instrument in the hand of the killer.' - Seneca the Younger"
         },
+		{
+		id: "riddle",
+		label: "Riddle".
+		isAspect: true,
+		description: "Some questions have only one answer. Some have no answer at all."
+		},
+		
 		 {
             id: "reputation",
             label: "Reputation",
@@ -94,6 +107,16 @@
 		isAspect: true,
 		description: "The first two Marks are nothing visible. When one reaches the Third Mark, and the changes begin to touch the flesh, one's course is set."
 		},
+		{id:"ascend",
+		label: "Ascending",
+		isAspect:true,
+		description: "To the next Mark.",
+		comments: "Recipe aspect"},
+		{id:"descend",
+		label: "Descending",
+		isAspect:true,
+		description: "If I don't feed my new appetites, my Marks will fade.",
+		comments: "Recipe aspect"},
 				{
             id: "article",
             label: "Article",

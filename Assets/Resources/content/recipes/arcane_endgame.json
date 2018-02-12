@@ -79,34 +79,101 @@
         craftable: true
     },
 	
-	{id:"ascensiontrycraving!type!",
-		label:"FNORD try craving"
+	{id:"ascensiontrycravingpower",
+		label:"FNORD try craving",
 		actionId: "craving",
 		slots: {"Marks": {description: "Have I begun to change?",required: {marks:1}, greedy:true }},
 		startdescription: "FNORD start try craving",
 		description: "FNORD complete try craving, will show this whether activated or not",
 		effects: {},
 		warmup: 60,
-		linked: [{id:"ascensioncraving!type!"}]
+		linked: [{id:"ascensioncravingpower"}]
 		},
-		{id:"ascensioncraving!type!",
-		label:"FNORD actual craving !type!",
+		{id:"ascensioncravingpower",
+		label:"FNORD actual craving power",
+		actionId: "craving",
 		requirements: {marks:1},
-		slots: {"Craving": {description: "I need...",required: {!cravingneed!:1}, greedy:true }}
+		slots: {"Craving": {description: "I need...",required: {funds:1}, greedy:true }}
 		startdescription: "FNORD craving will be satisfied!",
 		description: "FNORD complete actual craving satisfied - changy changy",
-		effects: {!cravingstat!:1},
+		effects: {health:1},
 		aspects: {ascend:1},
-		alternativerecipes: [{id:"ascensionescalatecraving!type!",chance:100}]
+		alternativerecipes: [{id:"ascensionescalatecravingpower",chance:100}]
 		},
 		{
-		id:"ascensionescalatecraving!type!",
-		label:"FNORD escalate craving !type!",
+		id:"ascensionescalatecravingpower",
+		label:"FNORD escalate craving power",
 		actionId: "craving",
-		requirements: {!cravingneed!:-1},
-		slots: {"Pain": { description: "My need gnaws at me", required: {!cravingstat!:1}, greedy:true}}
+		requirements: {funds:-1},
+		slots: {"Pain": { description: "My need gnaws at me", required: {health:1}, greedy:true}}
 		aspects: {descend:1},
-		effects: {!cravingstat!:-1}
+		effects: {health:-1}
+		},
+		
+		
+		
+			{id:"ascensiontrycravingsensation",
+		label:"FNORD try craving",
+		actionId: "craving",
+		slots: {"Marks": {description: "Have I begun to change?",required: {marks:1}, greedy:true }},
+		startdescription: "FNORD start try craving",
+		description: "FNORD complete try craving, will show this whether activated or not",
+		effects: {},
+		warmup: 60,
+		linked: [{id:"ascensioncravingsensation"}]
+		},
+		{id:"ascensioncravingsensation",
+		label:"FNORD actual craving sensation",
+		actionId: "craving",
+		requirements: {marks:1},
+		slots: {"Craving": {description: "I need...",required: {corpse:1}, greedy:true }}
+		startdescription: "FNORD craving will be satisfied!",
+		description: "FNORD complete actual craving satisfied - changy changy",
+		effects: {passion:1},
+		aspects: {ascend:1},
+		alternativerecipes: [{id:"ascensionescalatecravingsensation",chance:100}]
+		},
+		{
+		id:"ascensionescalatecravingsensation",
+		label:"FNORD escalate craving sensation",
+		actionId: "craving",
+		requirements: {corpse:-1},
+		slots: {"Pain": { description: "My need gnaws at me", required: {passion:1}, greedy:true}}
+		aspects: {descend:1},
+		effects: {passion:-1}
+		},
+		
+		
+		
+			{id:"ascensiontrycravingenlightenment",
+		label:"FNORD try craving",
+		actionId: "craving",
+		slots: {"Marks": {description: "Have I begun to change?",required: {marks:1}, greedy:true }},
+		startdescription: "FNORD start try craving",
+		description: "FNORD complete try craving, will show this whether activated or not",
+		effects: {},
+		warmup: 60,
+		linked: [{id:"ascensioncravingenlightenment"}]
+		},
+		{id:"ascensioncravingenlightenment",
+		label:"FNORD actual craving enlightenment",
+		actionId: "craving",
+		requirements: {marks:1},
+		slots: {"Craving": {description: "I need...",required: {follower:1}, greedy:true }}
+		startdescription: "FNORD craving will be satisfied!",
+		description: "FNORD complete actual craving satisfied - changy changy",
+		effects: {reason:1},
+		aspects: {ascend:1},
+		alternativerecipes: [{id:"ascensionescalatecravingenlightenment",chance:100}]
+		},
+		{
+		id:"ascensionescalatecravingenlightenment",
+		label:"FNORD escalate craving enlightenment",
+		actionId: "craving",
+		requirements: {follower:-1},
+		slots: {"Pain": { description: "My need gnaws at me", required: {reason:1}, greedy:true}}
+		aspects: {descend:1},
+		effects: {reason:-1}
 		}
 	
 ]
