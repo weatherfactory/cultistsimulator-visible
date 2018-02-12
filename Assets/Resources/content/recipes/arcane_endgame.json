@@ -1,6 +1,112 @@
 {
 "recipes": [
 	   {
+	   comments: "All these rituals should kick in ahead of summoning combos because of the magic of alphabetical order. Further magics might need more thought.",
+        id: "ascensionpower_upgradetoobsession_hint",
+        label: "Not Enough, Not Yet",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:1},
+        startdescription: "Not yet enough. The Forge of Days will not attend unless I can merit her attention.",
+        description: ".",
+        warmup: 60,
+        craftable: true,
+		hintonly: true
+    },
+	   {
+        id: "ascensionpower_upgradetoobsession",
+        label: "The Burning Key",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:8},
+        effects: {ascensionpowerb:-1,ascensionpowerc:1},
+        startdescription: "This rite is the Key that will allow the Forge of Days to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Forge are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I am aglow with new needs.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+	
+	
+		   {
+        id: "ascensionsensation_upgradetoobsession_hint",
+        label: "Not Enough, Not Yet",
+        actionId: "work",
+        requirements: {ascensionsensationb:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "Not yet enough. The Red Grail will not attend unless I can merit her attention.",
+        description: ".",
+        warmup: 60,
+
+		hintonly: true
+    },
+	   {
+        id: "ascensionsensation_upgradetoobsession",
+        label: "The Sighing Key",
+        actionId: "work",
+        requirements: {ascensionsensationb:1,
+		waystag_after:1,
+		grail:8},
+        effects: {ascensionsensationb:-1,ascensionsensationc:1},
+        startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+	
+	
+	
+	
+	
+	
+			   {
+        id: "ascensionenlightenment_upgradetoobsession_hint",
+        label: "Not Enough, Not Yet",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:1},
+        startdescription: "Not yet enough. The Watchman will not attend unless I can merit his attention.",
+        description: ".",
+        warmup: 60,
+        craftable: true,
+		hintonly: true
+    },
+	   {
+        id: "ascensionenlightenment_upgradetoobsession",
+        label: "The Blinding Key",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:8},
+        effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
+        startdescription: "This rite is the Key that will allow the Watchman to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Watchman are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. My hungers have been refined, now.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	   {
         id: "majorforgevictory",
         label: "THE DAWN IS COME",
         actionId: "work",
