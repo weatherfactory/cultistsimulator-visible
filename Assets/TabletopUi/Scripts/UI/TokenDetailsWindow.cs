@@ -151,7 +151,7 @@ namespace Assets.CS.TabletopUI {
 
         void SetTextMargin(bool hasImage, bool hasHints) {
             // We show image, get us a left margin
-            title.margin = new Vector4(hasImage ? 80f : 0f, 0f, 30f, 0f);
+            title.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, 0f);
             // We show slot info? We have less room for the description. Set margin!
             description.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, hasHints ? 35f : 0f);
         }
