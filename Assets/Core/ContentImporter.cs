@@ -201,6 +201,11 @@ public class ContentImporter
                         bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
 
                         element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+
+                        if (lrChance == 0)
+                        {
+                            LogProblem("Chance 0 or not specified in induced recipes for element " + element.Id);
+                        }
                     }
                 }
 
@@ -539,6 +544,12 @@ public class ContentImporter
                         bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
                         r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional));
+
+
+                        if (raChance == 0)
+                        {
+                            LogProblem("Chance 0 or not specified in alternative recipes for recipe " + r.Id);
+                        }
                     }
                 }
             }
@@ -563,6 +574,14 @@ public class ContentImporter
                         bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
 
                         r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+
+
+
+
+                        if (lrChance == 0)
+                        {
+                            LogProblem("Chance 0 or not specified in linked recipes for recipe " + r.Id);
+                        }
                     }
                 }
 
