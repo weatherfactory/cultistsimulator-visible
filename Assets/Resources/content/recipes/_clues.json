@@ -65,6 +65,39 @@
 		hintonly: true
     },
 	
+			   {
+        id: "minorforgevictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Conflagration of the Heart. I will need to achieve the Sixth Mark, and to conjure all the power of the Forge I can muster, to at least the thirty-fifth degree of intensity.",
+        hintonly:true
+    },
+	
+				   {
+        id: "minorgrailvictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I will need to achieve the Sixth Mark, and to conjure all the power of the Grail I can muster, to at least the thirty-fifth degree of intensity.",
+        hintonly:true
+    },
+	
+				   {
+        id: "minorwatchmanvictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Incursus. I will need to achieve the Sixth Mark, and to conjure all the power of the Lantern I can muster, to at least the thirty-fifth degree of intensity.",
+        hintonly:true
+    },
+	
 	
 			{
         id: "ritehinthasknock",

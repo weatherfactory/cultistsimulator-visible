@@ -53,7 +53,7 @@ public class ResourcesManager: MonoBehaviour
     public static Sprite GetSpriteForEnding(string endingImage)
     {
         //just using images from elements for now - LB to sort out rectilinear images if we don't get suitable cards in time
-        return Resources.Load<Sprite>("elementArt/" + endingImage);
+        return Resources.Load<Sprite>("endingArt/" + endingImage);
 
     }
 
