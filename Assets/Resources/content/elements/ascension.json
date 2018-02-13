@@ -124,22 +124,21 @@
 		id:"ascensionenlightenmentd",
 		label: "Obsession: Enlightenment",
 		aspects: {desire:4,enlightenmentmarks:4},
-		xtriggers:{ascend:ascensionenlightenmente,descend:ascensionenlightnmentc},
+		xtriggers:{ascend:ascensionenlightenmente,descend:ascensionenlightenmentc},
 		description:"The Fourth Mark is the light that is found in the eyes, but it is very subtle. Most can see it only when the lamps are extinguished or the night is very dark; although when I open my eyes very wide, more light leaks out. I am growing thinner."
 		},
 						{
 		id:"ascensionenlightenmente",
 		label: "Obsession: Enlightenment",
 		aspects: {desire:5,enlightenmentmarks:5},
-		xtriggers:{ascend:ascensionenlightenmentf,descend:ascensionenlightnmentd},
-		description:"At the Fifth Mark, the light
-		may leak out wherever the skin is bruised or frayed. And now the skin is beginning to hang loose on my body as the process gnaws at my flesh. I am very thin, now. I am always hungry."
+		xtriggers:{ascend:ascensionenlightenmentf,descend:ascensionenlightenmentd},
+		description:"At the Fifth Mark, the light may leak out wherever the skin is bruised or frayed. And now the skin is beginning to hang loose on my body as the process gnaws at my flesh. I am very thin, now. I am always hungry."
 		},
 						{
 		id:"ascensionenlightenmentf",
 		label: "Obsession: Enlightenment",
 		aspects: {desire:6,enlightenmentmarks:6},
-		xtriggers:{ascend:ascensionenlightenmentf,descend:ascensionenlightnmentd},
+		xtriggers:{descend:ascensionenlightenmente},
 		description:"The Sixth Mark is said to occur when the flesh between finger and thumb can be pulled to the final finger-joint. My skin is very loose now. I think that my bones are beginning to soften. My eyes are not a human colour."
 		},
 	

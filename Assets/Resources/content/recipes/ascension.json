@@ -14,6 +14,18 @@
         craftable: true,
 		hintonly: true
     },
+		   {
+        id: "ascensionpower_upgradetoobsession_hint_dream",
+        label: "Seeking the Change",
+        actionId: "dream",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "Dream is no longer enough. I must perform the Work.",
+        description: ".",
+        warmup: 60,
+		hintonly: true
+    },
 	   {
         id: "ascensionpower_upgradetoobsession",
         label: "The Burning Key",
@@ -43,6 +55,21 @@
 
 		hintonly: true
     },
+	
+		   {
+        id: "ascensionsensation_upgradetoobsession_hint_dream",
+        label: "Seeking the Change",
+        actionId: "dream",
+        requirements: {ascensionsensationb:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "Dream is no longer enough. I must perform the Work.",
+        description: ".",
+        warmup: 60,
+		hintonly: true
+    },
+	
+	
 	   {
         id: "ascensionsensation_upgradetoobsession",
         label: "The Sighing Key",
@@ -60,9 +87,6 @@
 	
 	
 	
-	
-	
-	
 			   {
         id: "ascensionenlightenment_upgradetoobsession_hint",
         label: "Not Enough, Not Yet",
@@ -76,6 +100,20 @@
         craftable: true,
 		hintonly: true
     },
+	
+			   {
+        id: "ascensionenlightenment_upgradetoobsession_hint_dream",
+        label: "Seeking the Change",
+        actionId: "dream",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "Dream is no longer enough. I must perform the Work.",
+        description: ".",
+        warmup: 60,
+		hintonly: true
+    },
+	
 	   {
         id: "ascensionenlightenment_upgradetoobsession",
         label: "The Blinding Key",
@@ -94,12 +132,7 @@
 	
 	
 	
-	
-	
-	
-	
 
-	
 
 	   {
         id: "majorforgevictory",
@@ -211,72 +244,114 @@
 		requirements: {powermarks:1},
 		slots: {"Fuels": {description: "The fire needs feeding",required: {funds:1}, greedy:true }},
 		startdescription: "I require ever hotter fires. Their fuel now is rare and costly. If I cannot afford them, the cold will overtake me.",
-		description: "The flames yearn for me as I for them. Their touch is much more than pain. I have another Mark.",
-		effects: {health:1,funds:-1},
-		aspects: {ascend:1},
-		alternativerecipes: [{id:"ascensionescalatecravingpower",chance:100}],
+		linked: [{id:"ascensionsuccesscravingpower_descend",chance:100},
+		{id:"ascensioncravingpower_ascend",chance:100}],
 		warmup:30
 		},
+		
 		{
-		id:"ascensionescalatecravingpower",
-		label:"FNORD escalate craving power",
+		id:"ascensionsuccesscravingpower_descend",
+		label:"The Ashes of Change",		
 		actionId: "craving",
 		requirements: {funds:-1},
-		slots: {"Pain": { description: "My need gnaws at me", required: {health:1}, greedy:true}},
+		slots: {"Pain": { description: "My need gnaws at me", required: {health:1}, greedy:true}},		
+		startdescription: "I am shivering. Without the fire, my flesh will thin and weaken.",
+		description: "My strength is less. My blood is colder. I think that even some of my scars are healing. I diminish.",
 		aspects: {descend:1},
 		effects: {health:-1},
 		warmup:30
 		},
 		
+				{
+		id:"ascensioncravingpower_ascend",
+		label:"Another Mark",
+		actionId: "craving",
+		startdescription:"",
+		description: "The flames yearn for me as I for them. Their touch is much more than pain. I have another Mark.",
+		effects: {health:1,funds:-1},
+		aspects: {ascend:1}
+		},
 		
 
+		
 		{id:"ascensioncravingsensation",
 		label:"The Red Need",
 		actionId: "craving",
 		requirements: {sensationmarks:1},
-		slots: {"Sustenance": {description: "The recently dead, or the living.",required: {corpse:1, lunatic:-1, prisoner:1, follower:1}, greedy:true }},
-		startdescription: "A thirst for blood? If only it were so simple. I will drain them far more deeply.",
-		description: "When I am done, the satisfaction is deep as the moon in the sea. Another Mark buds in me.",
-		effects: {passion:1,corpse:-1,lunatic:-1,prisoner:-1,follower:-1},
-		aspects: {ascend:1},
-		alternativerecipes: [{id:"ascensionescalatecravingsensation",chance:100}],
+				slots: {"Sustenance": {description: "The recently dead, or the living.",required: {corpse:1, lunatic:-1, prisoner:1, follower:1}, greedy:true }},
+				startdescription: "A thirst for blood? If only it were so simple. I will drain them far more deeply.",
+		linked: [
+		{id:"ascensionsuccesscravingsensation_descend",chance:100},
+		{id:"ascensioncravingsensation_ascend",chance:100}
+		],
 		warmup:30
 		},
+
+		
 		{
-		id:"ascensionescalatecravingsensation",
-		label:"FNORD escalate craving sensation",
+		id:"ascensionsuccesscravingsensation_descend",
+		label:"The Desert Inside",		
 		actionId: "craving",
 		requirements: {corpse:-1,lunatic:-1,prisoner:-1,follower:-1},
-		slots: {"Pain": { description: "My need gnaws at me", required: {passion:1}, greedy:true}},
+		slots: {"Pain": { description: "My need gnaws at me", required: {passion:1}, greedy:true}},		
+		startdescription: "Without the life of others, my own life will feed on itself.",
+		description: "My fluids thin; my flesh dessicates; my changes uncoil; my passions dim. I am becoming less than I want.",
 		aspects: {descend:1},
 		effects: {passion:-1},
 		warmup:30
 		},
 		
 		
-
-		{id:"ascensioncravingenlightenment",
+				{
+		id:"ascensioncravingsensation_ascend",
+		label:"Another Mark",
+		actionId: "craving",
+		effects: {passion:1,corpse:-1,lunatic:-1,prisoner:-1,follower:-1},
+		startdescription:"",
+			description: "When I am done, the satisfaction is deep as the moon in the sea. Another Mark buds in me.",
+		aspects: {ascend:1}
+		},
+		
+		
+		
+				{id:"ascensioncravingenlightenment",
 		label:"The Curiosities of Light",
 		actionId: "craving",
 		requirements: {enlightenmentmarks:1},
 		slots: {"Conversation": {description: "The last words of a living mind.",required: {prisoner:1,follower:1}, greedy:true }},
 		startdescription: "Time alone in a quiet room with a living mind. That's all I need.",
-		description: "I have drunk the light of their mind. It thrills and fills me. The Marks brighten in me.",
-		effects: {reason:1,prisoner:-1,follower:-1},
-		aspects: {ascend:1},
-		alternativerecipes: [{id:"ascensionescalatecravingenlightenment",chance:100}],
+		linked: [,
+		{id:"ascensionsuccesscravingenlightenment_descend",chance:100},
+		{id:"ascensioncravingenlightenment_ascend",chance:100}],
 		warmup:30
 		},
+
+		
 		{
-		id:"ascensionescalatecravingenlightenment",
-		label:"FNORD escalate craving enlightenment",
+		id:"ascensionsuccesscravingenlightenment_descend",
+		label:"The Desert Inside",		
 		actionId: "craving",
 		requirements: {prisoner:-1,follower:-1},
-		slots: {"Pain": {description: "My need gnaws at me", required: {reason:1}, greedy:true}},
+		slots: {"Pain": { description: "My need gnaws at me", required: {reason:1}, greedy:true}},		
+		startdescription: "If I cannot consume the thoughts of a living mind, my need will turn in upon itself.",
+		description: "The Light of the Mansus dims in me. I am less than I was. I need conversation. I must have those particular conversations.",
 		aspects: {descend:1},
 		effects: {reason:-1},
 		warmup:30
-		} 
+		},
+		
+				{
+		id:"ascensioncravingenlightenment_ascend",
+		label:"Another Mark",
+		actionId: "craving",
+		effects: {reason:1,prisoner:-1,follower:-1},
+		startdescription:"",
+		description: "I have drunk the light of their mind. It thrills and fills me. The Marks brighten in me.",
+		aspects: {ascend:1}
+		},
+	
+		
+	
 	
 ]
 }
