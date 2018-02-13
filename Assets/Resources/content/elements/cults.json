@@ -11,7 +11,8 @@
 			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the Hours of struggle and conquest."
+            description: "An occult society dedicated to the Hours of struggle and conquest.",
+			unique:true
         },
           {
         id: "cultforge_1",
@@ -24,7 +25,8 @@
 			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the fire that changes and remakes."
+            description: "An occult society dedicated to the fire that changes and remakes.",
+			unique:true
         },
 		          {
         id: "cultgrail_1",
@@ -38,7 +40,8 @@
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
 
-            description: "An occult society dedicated to the mysteries of birth, blood and appetite."
+            description: "An occult society dedicated to the mysteries of birth, blood and appetite.",
+				unique:true
         },
 		          {
         id: "cultheart_1",
@@ -52,7 +55,8 @@
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
 
-            description: "An occult society dedicated to the drumbeat which can never end."
+            description: "An occult society dedicated to the drumbeat which can never end.",
+				unique:true
         },
 		          {
         id: "cultknock_1",
@@ -65,7 +69,8 @@
 			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the Hours which open doors."
+            description: "An occult society dedicated to the Hours which open doors.",
+				unique:true
         },
 		          {
         id: "cultlantern_1",
@@ -78,7 +83,8 @@
 			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place."
+            description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place.",
+				unique:true
         },
 		          {
         id: "cultmoth_1",
@@ -91,7 +97,8 @@
 			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to chaos, and the unexpected Hours."
+            description: "An occult society dedicated to chaos, and the unexpected Hours.",
+				unique:true
         },
 		          {
         id: "cultsecrethistories_1",
@@ -104,7 +111,8 @@
 			"Ceremony": {required: {lore: 1},description: "For the higher mysteries, deeper oaths are needed."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches."
+            description: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches.",
+				unique:true
         },
 		          {
         id: "cultwinter_1",
@@ -117,7 +125,8 @@
 			"Ceremony": {required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
 			"Trappings": {required: {tool: 1,ingredient:1,summoned:1},description: "For a proper sense of occasion."}
 			},
-            description: "An occult society dedicated to the silence that comes and the cold that ends."
+            description: "An occult society dedicated to the silence that comes and the cold that ends.",
+				unique:true
         },
 		  
 ]

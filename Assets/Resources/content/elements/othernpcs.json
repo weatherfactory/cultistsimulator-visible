@@ -6,9 +6,26 @@
             aspects:
             {mortal:1},
             description: "Some overwhelming experience has robbed this individual of their senses. They will wander off soon, never to be seen again.",
-unique:true,
-lifetime:30,
+			lifetime:60,
 xtriggers: {killmortal:corpse}
+        },
+		{
+		        id: "genericprisonerm",
+            label: "A Hapless Prisoner",
+            aspects:
+            {mortal:1},
+            description: "Someone has fallen into your clutches. They won't survive forever.",
+			lifetime:600,
+xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+				{
+		        id: "genericprisonerf",
+            label: "A Hapless Prisoner",
+            aspects:
+            {mortal:1},
+            description: "Someone has fallen into your clutches. They won't survive forever.",
+			lifetime:600,
+xtriggers: {killmortal:corpse,derangemortal:lunatic}
         },
 ]
 };

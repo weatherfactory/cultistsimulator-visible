@@ -39,7 +39,21 @@
             aspects:{location: 1,moth:1,grail:1},
             description: "A cabaret with an occult reputation.",
 			slots:{"Entry":{required:{funds:1},consumes:true}}
-        }
+        },
+			{
+        id: "generichq",
+            label: "Temporary Headquarters",
+            aspects:{location: 1},
+			description: "Our business is private. We could use somewhere more secret. [That's not available in this build, though.]",
+			slots: {
+				"Cupboard":
+					{
+					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					required: {follower: 1},
+					}
+				},
+            description: ""
+        },
 
 ]
 };
