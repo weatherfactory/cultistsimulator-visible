@@ -387,7 +387,13 @@
 								 {
             id: "derangemortal",
             label: "Derange Mortal",
-			description: "Mortals will be replaced by lunatics",
+			description: "Mortals will be replaced by Lunatics",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },								 {
+            id: "capturehunter",
+            label: "Capture Hunter",
+			description: "Hunters will be imprisoned.",
             isAspect: true,
 			comments: "Recipe aspect"
         },
