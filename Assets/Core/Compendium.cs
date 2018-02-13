@@ -220,12 +220,23 @@ public class Compendium : ICompendium
 
     public Ending GetEndingById(string endingFlag)
     {
+        if (endingFlag == "minorforgevictory")
+            return new Ending(endingFlag, "THE CONFLAGRATION OF THE HEART",
+                "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and my body stirs in the ashes. I am hairless and imperishable as marble, and the Forge's fire still burns within me. " +
+                "I carry the Shaping Strength. I will not grow old. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
+                " [Congratulations on a standard Power victory. You have wrestled the game to its knees. There are other paths.] ", "forgeofdays", "DramaticLightCool");
 
-        if(endingFlag== "minorgrailvictory")
+        if (endingFlag== "minorgrailvictory")
             return new Ending(endingFlag,"THE FEAST OF THE TRUE BIRTH",
-                "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and I tear free of the sticky rags of my old flesh. My new body is white without and red within like a sweet fruit." +
+                "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and I tear free of the sticky rags of my old flesh. My new body is smooth without and red within like a sweet fruit." +
                 " My limbs are strong as cables and my senses are knife-keen. I will not grow old. I will walk the world in the service of the Grail, feasting, growing. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
-                " [Congratulations on a minor Sensation victory. You have wrestled the game to its knees. There are other paths.] ","redgrail","DramaticLightCool");
+                " [Congratulations on a standard Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail","DramaticLightCool");
+
+        if (endingFlag == "minorlanternvictory")
+            return new Ending(endingFlag, "THE INCURSUS",
+                "I have passsed through the Tricuspid Gate, and entered the high rooms of the Mansus. The Glory is very close here. It leaks through the fabric of the House to contribute its light." +
+                " I have walked behind the Watchman: I've seen his shadow on the Stone. Sometimes I hear the Hours debate one with another on the matter of the courses of the world. I will not live. I will not die. Perhaps, one day, I will rise even higher." +
+                " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", "DramaticLightCool");
 
         if (endingFlag=="deathofthebody")
             return new Ending(endingFlag, "MY BODY IS DEAD",
@@ -241,13 +252,6 @@ public class Compendium : ICompendium
         if (endingFlag == "wintersacrifice")
             return new Ending(endingFlag, "GOING QUIETLY",
                 "In the upper room of the house where I am taken, my breath fogs and my eyes grow soft. The light in the room is the light at the end of the sun. I am a beautiful ending.", "suninrags", "DramaticLight");
-
-
-        if (endingFlag == "enlightenmentminor")
-            return new Ending(endingFlag, "EACH HOUR HAS ITS COLOUR. EACH FLAME HAS ITS FUEL",
-                "I've walked behind the Watchman: I've seen his shadow on the stone. This is the first step in understanding the shaping of fate. If I had more time, I could learn to walk the Mansus; gather disciples;" +
-                "find the star-shattered fane; watch the Hours walk; grow Long. [By the standards of this  " +
-                "beta, this is a victory. In the full game, there will be greater victories.]", "notionenlightenment", "");
 
         if (endingFlag == "arrest") 
             return new Ending(endingFlag, "Bars across the Sun",

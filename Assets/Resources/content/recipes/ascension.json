@@ -122,18 +122,12 @@
 		waystag_after:1,
 		lantern:8},
         effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
-        startdescription: "This rite is the Key that will allow the Watchman to enter me. I will be changed forever.",
+        startdescription: "This rite is the Key that will allow the Watchman's gaze to enter me. I will be changed forever.",
         description: "The Rite is complete. The Marks of the Watchman are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. My hungers have been refined, now.",
         warmup: 60,
         craftable: true,
 				burnimage: "flammarion"
     },
-	
-	
-	
-	
-
-
 	   {
         id: "majorforgevictory",
         label: "THE DAWN IS COME",
@@ -149,16 +143,17 @@
     },
 	   {
         id: "minorforgevictory",
-        label: "I AM REFORGED",
+        label: "The Conflagration of the Heart",
         actionId: "work",
         requirements: {ritual: 1,
 		ascensionpowerf:1,
 		forge:35},
         effects: {},
-        startdescription: "I will become a name of fire. FNORD.",
+        startdescription: "I have been in the flame so many times. IThe plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.",
         description: "I am becoming a name of fire. Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
-        craftable: true
+        craftable: true,
+		ending: "minorforgevictory"
     },	
 		   {
         id: "majorgrailvictory",
@@ -175,7 +170,7 @@
     },
 	   {
         id: "minorgrailvictory",
-        label: "I AM BORN AGAIN IN BLOOD",
+        label: "The Feast of the True Birth",
         actionId: "work",
         requirements: {ritual: 1,
 		ascensionsensationf:1,
@@ -202,16 +197,17 @@
     },
 	   {
         id: "minorlanternvictory",
-        label: "The Last Step through the Peacock Door",
+        label: "The Incursus",
         actionId: "work",
         requirements: {ritual: 1,
 		ascensionenlightenmentf:1,
 		lantern:35},
         effects: {},
-        startdescription: "I will enter the Mansus. FNORD.",
-        description: "I am entering the Mansus. Remember that the ending text will contain the payload. FNORD.",
+        startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that.",
+        description: "Here I go...",
         warmup: 60,
-        craftable: true
+        craftable: true,
+		ending: "minorlanternvictory"
     },
 	
 		{id:"ambition",
