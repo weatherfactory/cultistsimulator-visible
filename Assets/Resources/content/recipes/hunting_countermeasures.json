@@ -46,9 +46,23 @@
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a trophy.",
 	  effects: {hunter:-1,corpse:1,notoriety:1},
+	  alternativerecipes: [{id:"huntercapturesuccess",chance:30}]
 	  comments: "We can't use killmortal because it would kill them both!",
 	  warmup:10	  
 	  },
+	  
+	  	  {id: "huntercapturesuccess",
+	   label: "Hunting a Hunter...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a prisoner!",
+	  effects: {notoriety:1},
+	  aspects: {capturehunter:1},
+	  comments: "We can't use killmortal because it would kill them both!",
+	  warmup:10	  
+	  },
+	  
+	  
 	  {id: "hunterattackfailure",
 	   label: "Hunting a Hunter...",
 	  actionId:"talk",
