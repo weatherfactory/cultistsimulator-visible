@@ -23,7 +23,7 @@ public class Heart : MonoBehaviour
     private int housekeepingCyclesCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
-    private const int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //ysually, five minutes; number of housekeeping events that should pass before we autosave
+    private const int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //usually, five minutes; number of housekeeping events that should pass before we autosave
     
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
