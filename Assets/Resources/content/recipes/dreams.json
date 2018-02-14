@@ -295,7 +295,75 @@
 	effects: {riddle:-1,waystag_after:1}
 	},
 	
-	
+	,
+	{
+	id: "dreamsofaglory",
+	label: "Dreams of a Glory",
+	actionId: "dream",
+	requirements: {reason: 1},
+	effects: {},
+	startdescription: "There was once a man who said that the sleep of reason produced monsters.",
+	description: ".",
+	warmup: 5,
+	craftable: true,
+	linked: [
+	{id: "dreamtreeoflights",chance: 50},
+	{id: "dreamlightthroughstainedglass", chance: 100}
+	]
+	},
+	{
+	id: "dreamtreeoflights",
+	label: "The Tree of Lights",
+	actionId: "dream",
+	effects: {contentment:1,fragmentmoth:1},
+	slots: {More: {}},
+	alternativerecipes: [{id:"nightmarecleansingdawn",chance: 100}],
+	startdescription: "A dream: in the breathy hush of a summer night, a tree hangs heavy with fruit. Each glows topaz or rose, brighter than a fire-fly, dimmer than a lamp. I could consume one; or I could watch the moths flutter and the tree sway, enjoy the heady brush of the breeze.",
+	description: "The dawn will come, and I won't hasten it. Each fruit is an eye, but each eye is closed.",
+	warmup: 60,
+	maxexecutions:1
+	},
+	{
+	id: "dreamlightthroughstainedglass",
+	label: "A Journey in a Window",
+	actionId: "dream",
+	effects: {contentment:1},
+	slots: {More: {}},
+	alternativerecipes: [{id:"nightmarehersault",chance: 100}],
+	startdescription: "A dream: the stained glass of my life, in a series of windows. Here I'm born, pink and appalling. Over there, I'll die. The sunlight slants to brighten the white boards of the floor with colour. Elsewhere they're pale as bone. A curious dreamer might lift them. Most would examine their life in windows.",
+	description: "They've shown my birth in the red church and my death where the woods turn white. The longer I look at the panes between, the brighter the sun.",
+	warmup: 60,
+	},
+	{
+	id: "nightmarecleansingdawn",
+	label: "Nightmare: The Cleansing Dawn",
+	actionId: "dream",
+	requirements: {reason: 2},
+	effects: {reason: -1,fragmentlantern: 1,fascination: 1},
+		alternativerecipes: [{id: "nightmarecleansingdawnsuccess",chance: 30}],
+	startdescription: "The sun is rising. It won't spare me.",
+	description: "Now I can slough off my flesh, patch by patch, tugging the tendons free like fibres picked from teeth. My skin lies like a shredded blanket. The sun heaves itself above the horizon with a triumphant battle-yell. The light falls like acid on my naked bones. Pain wakes me. My bones will throb for days.",
+	},
+		{id: "nightmarecleansingdawnsuccess",
+		actionId:"dream",
+	effects: {reason: -1,fragmentlantern: 1,fascination: 1},
+		description: "Now I can slough off my flesh, patch by patch, tugging the tendons free like fibres picked from teeth. My skin lies like a shredded blanket. The sun heaves itself above the horizon with a triumphant battle-yell. The light falls like acid on my naked bones. Pain will wake me, and my bones will ache for days, but the Sun's  words are etched on my bones."
+	},
+	{
+	id: "nightmarehersault",
+	label: "Hersault's Nightmare",
+	actionId: "dream",
+	requirements: {reason: 2},
+	alternativerecipes: [{id: "nightmarehersaultsuccess",chance: 30}],
+	effects: {reason: -1,dread: 1},
+	startdescription: "Down I go.",
+	description: "I remember that Hersault wrote of this. I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. This time, I haven't learnt what I hoped to learn - whatever that was.",
+	},
+	{id: "nightmarehersaultsuccess",
+	actionId: "dream",
+	effects: {reason: -1,fragmentknock: 1,dread: 1},
+		description: "I've levered up floor-boards, and wriggled down snugly. Now I am compressed beneath them like a hidden corpse. The air stinks of hot dust. My mouth is full of splinters. But this is the space below."
+	},
 	
 	
 	

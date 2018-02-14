@@ -50,8 +50,8 @@
 		requirements:{reputation:1},
 		label: "Converting Clues to Evidence",
 		startdescription: "Rumour squats on rooftops and flutters in gutters. This hunter is making progress in their investigation.",
-		description:".",
-		effects:{},
+		description:"I am certain that my adversary has lodged a copy of their notes elsewhere - with their solicitor, with their superior, or even with a contact in the press. This is troubling.",
+		effects:{reputation:-1, evidence:1},
 		warmup:30},
 	
 				{id:"suspiciontrycreatehunter",
