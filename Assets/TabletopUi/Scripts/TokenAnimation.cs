@@ -10,10 +10,7 @@ public class TokenAnimation : MonoBehaviour {
 
 	protected DraggableToken token;
 
-	private RectTransform startToken;
 	private Vector3 startPosition;
-
-	private RectTransform endToken;
 	private Vector3 endPosition;
 
 	private float zPos;
@@ -28,21 +25,15 @@ public class TokenAnimation : MonoBehaviour {
 
 	public bool IsRunning { private get; set; }
 
-	private Vector3 startPos {
+    virtual protected Vector3 startPos {
 		get {
-			if (startToken != null)
-				return startToken.anchoredPosition3D;
-			else
-				return startPosition;
+			return startPosition;
 		}
 	}
 
-	private Vector3 endPos {
+    virtual protected Vector3 endPos {
 		get {
-			if (endToken != null)
-				return endToken.anchoredPosition3D;
-			else
-				return endPosition;
+			return endPosition;
 		}
 	}
 
@@ -52,31 +43,13 @@ public class TokenAnimation : MonoBehaviour {
 		this.zPos = zPos;
 	}
 
-	public void SetPositions(RectTransform startPos, Vector3 endPos, float zPos = 0f) {
-		this.startToken = startPos;
-		this.endPosition = endPos;
-		this.zPos = zPos;
-	}
-
-	public void SetPositions(Vector3 startPos, RectTransform endPos, float zPos = 0f) {
-		this.startPosition = startPos;
-		this.endToken = endPos;
-		this.zPos = zPos;
-	}
-
-	public void SetPositions(RectTransform startPos, RectTransform endPos, float zPos = 0f) {
-		this.startToken = startPos;
-		this.endToken = endPos;
-		this.zPos = zPos;
-	}
-
 	public void SetScaling(float scaleStart, float scaleEnd, float scaleDuration = 1f) {
 		this.scaleStart = scaleStart;
 		this.scaleEnd = scaleEnd;
 		this.scalePercentage = Mathf.Clamp01(scaleDuration) * ((scaleStart != 1f && scaleEnd != 1f) ? 0.5f : 1f); // may not be bigger than 0.5 for dual scaling
 	}
 
-	public void StartAnim(float duration = 1f) {
+	public virtual void StartAnim(float duration = 1f) {
 		this.duration = duration;
 		this.timeSpent = 0f;
 

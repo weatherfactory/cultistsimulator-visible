@@ -10,11 +10,24 @@ public class TokenAnimationToSlot : TokenAnimation {
 
 	TokenAndSlot targetTokenSlotPair;
 
-	public void SetTargetSlot(TokenAndSlot targetTokenSlotPair) {
-		this.targetTokenSlotPair = targetTokenSlotPair;
-	}
+    protected override Vector3 endPos {
+        get {
+            return targetTokenSlotPair.Token.GetOngoingSlotPosition();
+        }
+    }
 
-	protected override void FireCompleteEvent() {
+    public override void StartAnim(float duration = 1) {
+        base.StartAnim(duration);
+
+        transform.SetAsLastSibling();
+        targetTokenSlotPair.Token.SituationController.NotifyGreedySlotAnim(this);
+    }
+
+    public void SetTargetSlot(TokenAndSlot targetTokenSlotPair) {
+		this.targetTokenSlotPair = targetTokenSlotPair;
+    }
+
+    protected override void FireCompleteEvent() {
 		if (onElementSlotAnimDone != null)
 			onElementSlotAnimDone(token as ElementStackToken, targetTokenSlotPair);
 	}

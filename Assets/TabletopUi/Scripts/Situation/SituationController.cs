@@ -23,8 +23,11 @@ namespace Assets.TabletopUi {
         public ISituationAnchor situationToken;
         private ISituationDetails situationWindow;
         public ISituationClock SituationClock;
+
         private readonly ICompendium compendium;
         private readonly Character currentCharacter;
+
+        private bool greedyAnimIsActive;
 
         public bool IsOpen { get; set; }
         public bool EditorIsActive
@@ -163,8 +166,8 @@ namespace Assets.TabletopUi {
             HeartbeatResponse response = new HeartbeatResponse();
             RecipeConductor rc = new RecipeConductor(compendium,
                 GetAspectsAvailableToSituation(true), Registry.Retrieve<IDice>(), currentCharacter);
-
-            SituationClock.Continue(rc, interval);
+                        
+            SituationClock.Continue(rc, interval, greedyAnimIsActive);
 
             if (SituationClock.State == SituationState.Ongoing) {
                 var tokenAndSlot = new TokenAndSlot() {
@@ -456,15 +459,8 @@ namespace Assets.TabletopUi {
 
         #endregion
 
-        public void UpdateTokenResultsCountBadge() {
-            situationToken.SetCompletionCount(GetNumOutputCards());
-        }
-
-        private void BurnImageUnderToken(string burnImage) {
-            Registry.Retrieve<INotifier>()
-                .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
-                    TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
-        }
+        #region -- External Situation Change Methods --------------------
+        // letting other things change the situation
 
         public void AttemptActivateRecipe() {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
@@ -497,6 +493,28 @@ namespace Assets.TabletopUi {
             if (recipe.BurnImage != null)
                 BurnImageUnderToken(recipe.BurnImage);
         }
+
+        public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim) {
+            greedyAnimIsActive = true;
+            slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
+        }
+
+        void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
+            greedyAnimIsActive = false;
+        }
+
+        // Update Visuals
+
+        public void UpdateTokenResultsCountBadge() {
+            situationToken.SetCompletionCount(GetNumOutputCards());
+        }
+
+        private void BurnImageUnderToken(string burnImage) {
+            Registry.Retrieve<INotifier>()
+                .ShowImageBurn(burnImage, situationToken as DraggableToken, 20f, 2f,
+                    TabletopImageBurner.ImageLayoutConfig.CenterOnToken);
+        }
+
         /// <summary>
         /// This forces the situation to switch to a new recipe - used in debugging
         /// It currently does this by recreating the internal situation, so it may lose state.
@@ -518,6 +536,8 @@ namespace Assets.TabletopUi {
 
             UpdateSituationDisplayForDescription();
         }
+
+        #endregion
 
         public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
             if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier

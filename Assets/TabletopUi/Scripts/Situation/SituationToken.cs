@@ -71,7 +71,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
-           situationEditor.Initialise(SituationController);
+            situationEditor.Initialise(SituationController);
         }
 
         #region -- Token positioning --------------------------
@@ -119,8 +119,6 @@ namespace Assets.CS.TabletopUI {
             situationEditor.gameObject.SetActive(active);
         }
 
-        
-
         private void SetTimerVisibility(bool b) {
             countdownCanvas.gameObject.SetActive(b);
         }
@@ -130,6 +128,7 @@ namespace Assets.CS.TabletopUI {
 
             Color barColor = UIStyle.GetColorForCountdownBar(recipe, timeRemaining);
 
+            timeRemaining = Mathf.Max(0f, timeRemaining);
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.color = barColor;
