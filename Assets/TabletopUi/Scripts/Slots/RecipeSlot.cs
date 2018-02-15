@@ -200,8 +200,16 @@ namespace Assets.CS.TabletopUI {
                 if (notifier != null)
                     notifier.ShowNotificationWindow("I can't put that there - ", match.GetProblemDescription());
             }
-            else
-            {
+            else if (stack.Quantity != 1) {
+                // We're dropping more than one?
+                // So make sure the card we're dropping that is being returned to it's position
+                DraggableToken.SetReturn(true);
+                // And we split a new one that's 1 (leaving the returning card to be n-1)
+                var newStack = stack.SplitAllButNCardsToNewStack(stack.Quantity - 1, new Context(Context.ActionSource.PlayerDrag));
+                // And we put that into the slot
+                AcceptStack(newStack, new Context(Context.ActionSource.PlayerDrag));
+            }
+            else  {
                 //it matches. Now we check if there's a token already there, and replace it if so:
                 var currentOccupant = GetElementStackInSlot();
 
@@ -214,7 +222,7 @@ namespace Assets.CS.TabletopUI {
                 if (currentOccupant != null)
                     throw new NotImplementedException("There's still a card in the slot when this reaches the slot; it wasn't intercepted by being dropped on the current occupant. Rework.");
                     //currentOccupant.ReturnToTabletop();
-
+                                    
                 //now we put the token in the slot.
                 DraggableToken.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
                 AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));

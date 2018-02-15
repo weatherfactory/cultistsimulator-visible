@@ -36,6 +36,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Image completionBadge;
         [SerializeField] TextMeshProUGUI completionText;
         [SerializeField] private SituationEditor situationEditor;
+        [SerializeField] ParticleSystem particles;
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
@@ -94,6 +95,11 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Token Visuals --------------------------
 
+        public void SetParticleSimulationSpace(Transform transform) {
+            var mainSettings = particles.main;
+            mainSettings.customSimulationSpace = transform;
+        }
+
         private void DisplayName(IVerb v) {
             text.text = v.Label;
         }
@@ -115,8 +121,16 @@ namespace Assets.CS.TabletopUI {
             situationEditor.gameObject.SetActive(active);
         }
 
-        private void SetTimerVisibility(bool b) {
-            countdownCanvas.gameObject.SetActive(b);
+        private void SetTimerVisibility(bool show) {
+            // If we're changing the state, change the particles
+            if (show != countdownCanvas.gameObject.activeSelf) { 
+                if (show)
+                    particles.Play();
+                else
+                    particles.Stop();
+            }
+
+            countdownCanvas.gameObject.SetActive(show);
         }
 
         public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
