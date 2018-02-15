@@ -9,8 +9,7 @@ namespace Assets.CS.TabletopUI {
     public class SituationTokenDumpButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
         [SerializeField] Image buttonImg;
-        [SerializeField] GraphicFader glowImage;
-        [SerializeField] GraphicFader iconImage;
+        [SerializeField] Image iconImage;
 
         [SerializeField] Color buttonColorDefault;
         [SerializeField] Color buttonColorHover;
@@ -35,13 +34,11 @@ namespace Assets.CS.TabletopUI {
         public void ShowGlow(bool glowState, bool instant = false) {
             if (glowState) {
                 buttonImg.color = buttonColorHover;
-                glowImage.Show(instant);
-                iconImage.SetColor(UIStyle.lightBlue);
+                iconImage.color = UIStyle.lightBlue;
             }
             else {
                 buttonImg.color = buttonColorDefault;
-                iconImage.SetColor(UIStyle.hoverWhite);
-                glowImage.Hide(instant);
+                iconImage.color = UIStyle.hoverWhite;
             }
         }
     }

@@ -28,6 +28,10 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] Image artwork;
 
+        [Header("Token Body")]
+        [SerializeField] Image tokenBody;
+        [SerializeField] Sprite lightweightSprite;
+
         [Header("Countdown")]
         [SerializeField] Canvas countdownCanvas;
         [SerializeField] Image countdownBar;
@@ -74,6 +78,7 @@ namespace Assets.CS.TabletopUI {
             name = "Verb_" + Id;
 
             DisplayIcon(verb);
+            SetAsLightweight(UnityEngine.Random.value < 0.5f); // NOTE: This is random dummy stuff
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
@@ -115,6 +120,10 @@ namespace Assets.CS.TabletopUI {
         private void DisplayIcon(IVerb v) {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
             artwork.sprite = sprite;
+        }
+
+        private void SetAsLightweight(bool lightweight) {
+            tokenBody.overrideSprite = (lightweight ? lightweightSprite : null);
         }
 
         public void DisplayAsOpen() {
