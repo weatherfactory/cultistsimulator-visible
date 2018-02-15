@@ -390,6 +390,8 @@ namespace Assets.CS.TabletopUI {
                 return false; // It has been destroyed
             if (tokenSlotPair.Token.Defunct)
                 return false;
+            if (!tokenSlotPair.Token.SituationController.IsOngoing)
+                return false;
             if (tokenSlotPair.RecipeSlot.Equals(null))
                 return false; // It has been destroyed
             if (tokenSlotPair.RecipeSlot.Defunct)
