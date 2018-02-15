@@ -23,7 +23,7 @@ namespace Assets.Core.Entities {
         string GetTitle();
         string GetStartingDescription();
         string GetDescription();
-        SituationState Continue(IRecipeConductor rc, float interval);
+        SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false);
         RecipePrediction GetPrediction(IRecipeConductor rc);
         void Beginning(Recipe withRecipe);
         void Start(Recipe primaryRecipe);
@@ -95,7 +95,7 @@ namespace Assets.Core.Entities {
 
         public string GetStartingDescription() {
             return currentPrimaryRecipe == null ? "no recipe just now" :
-      currentPrimaryRecipe.StartDescription;
+            currentPrimaryRecipe.StartDescription;
         }
 
         public string GetDescription() {
@@ -104,23 +104,29 @@ namespace Assets.Core.Entities {
         }
 
 
-        public SituationState Continue(IRecipeConductor rc, float interval) {
+        public SituationState Continue(IRecipeConductor rc, float interval, bool waitForGreedyAnim = false) {
             if (State == SituationState.RequiringExecution) {
                 End(rc);
             }
-            else if (State == SituationState.Ongoing && TimeRemaining <= 0) {
-                RequireExecution(rc);
+            else if (State == SituationState.Ongoing) {
+                // Execute if we've got no time remaining and we're not waiting for a greedy anim
+                if (TimeRemaining <= 0 && !waitForGreedyAnim) {
+                    RequireExecution(rc);
+                }
+                else {
+                    TimeRemaining = TimeRemaining - interval;
+                    Ongoing();
+                }
             }
             else if (State == SituationState.FreshlyStarted) {
                 Beginning(currentPrimaryRecipe);
             }
+            /*
             else if (State == SituationState.Unstarted || State == SituationState.Complete) {
                 //do nothing: it's either not running, or it's finished running and waiting for user action
             }
-            else if (State == SituationState.Ongoing) {
-                TimeRemaining = TimeRemaining - interval;
-                Ongoing();
-            }
+            */
+
             return State;
         }
 
