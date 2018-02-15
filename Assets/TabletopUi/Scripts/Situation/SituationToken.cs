@@ -36,7 +36,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Image completionBadge;
         [SerializeField] TextMeshProUGUI completionText;
         [SerializeField] private SituationEditor situationEditor;
-        [SerializeField] ParticleSystem particles;
+        [SerializeField] ParticleSystem[] particles;
 
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
@@ -96,8 +96,12 @@ namespace Assets.CS.TabletopUI {
         #region -- Token Visuals --------------------------
 
         public void SetParticleSimulationSpace(Transform transform) {
-            var mainSettings = particles.main;
-            mainSettings.customSimulationSpace = transform;
+            ParticleSystem.MainModule mainSettings;
+
+            for (int i = 0; i < particles.Length; i++) {
+                mainSettings = particles[i].main;
+                mainSettings.customSimulationSpace = transform;
+            }
         }
 
         private void DisplayName(IVerb v) {
@@ -125,9 +129,9 @@ namespace Assets.CS.TabletopUI {
             // If we're changing the state, change the particles
             if (show != countdownCanvas.gameObject.activeSelf) { 
                 if (show)
-                    particles.Play();
+                    particles[0].Play(); // only need to hit play on the first one
                 else
-                    particles.Stop();
+                    particles[0].Stop();
             }
 
             countdownCanvas.gameObject.SetActive(show);
@@ -197,11 +201,29 @@ namespace Assets.CS.TabletopUI {
             completionText.text = newCount.ToString();
         }
 
+
+        public override bool Retire() {
+            SpawnKillFX();
+            return base.Retire();
+        }
+
+        void SpawnKillFX() {
+            var prefab = Resources.Load("FX/SituationToken/SituationTokenVanish");
+
+            if (prefab == null)
+                return;
+
+            var go = Instantiate(prefab, transform.parent) as GameObject;
+            go.transform.position = transform.position;
+            go.transform.localScale = Vector3.one;
+            go.SetActive(true);
+        }
+
         #endregion
 
-        #region -- Token interaction --------------------------
+            #region -- Token interaction --------------------------
 
-        // None of this should do view changes here. We're deferring to the SitController or TokenContainer
+            // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
         public override void OnDrop(PointerEventData eventData) {
             if (DraggableToken.itemBeingDragged != null)
