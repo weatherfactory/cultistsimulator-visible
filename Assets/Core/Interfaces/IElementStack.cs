@@ -25,7 +25,7 @@ namespace Assets.Core.Interfaces
         void SetStackManager(IElementStacksManager manager);
         List<SlotSpecification> GetChildSlotSpecifications();
         bool HasChildSlots();
-        void SplitAllButNCardsToNewStack(int n, Context context);
+        IElementStack SplitAllButNCardsToNewStack(int n, Context context);
         bool AllowsMerge();
         bool Retire(bool withVfx);
         bool Retire(string vfxName);

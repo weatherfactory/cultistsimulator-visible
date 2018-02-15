@@ -409,7 +409,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void SplitAllButNCardsToNewStack(int n, Context context) {
+        public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
                 cardLeftBehind.Populate(Id, Quantity - n, Source.Existing());
@@ -417,7 +417,7 @@ namespace Assets.CS.TabletopUI {
                 originStack = cardLeftBehind;
 
                 //goes weird when we pick things up from a slot. Do we need to refactor to Accept/Gateway in order to fix?
-                SetQuantity(1);
+                SetQuantity(n);
 
                 // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
                 cardLeftBehind.transform.position = transform.position;
@@ -427,7 +427,10 @@ namespace Assets.CS.TabletopUI {
 
                 // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
+                return cardLeftBehind;
             }
+
+            return null;
         }
 
         protected override void StartDrag(PointerEventData eventData) {
