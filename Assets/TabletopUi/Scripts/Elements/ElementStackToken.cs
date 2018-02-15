@@ -32,6 +32,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] TextMeshProUGUI stackCountText;
         [SerializeField] GameObject decayView;
         [SerializeField] TextMeshProUGUI decayCountText;
+        [SerializeField] Sprite spriteDecaysTextBG;
         [SerializeField] Sprite spriteUniqueTextBG;
         [SerializeField] GameObject shadow;
 
@@ -99,9 +100,11 @@ namespace Assets.CS.TabletopUI {
             SetQuantity(_quantity + change);
         }
 
-        void SetAsUnique(bool unique) {
+        void SetCardBG(bool unique, bool decays) {
             if (unique)
                 textBackground.overrideSprite = spriteUniqueTextBG;
+            else if (decays)
+                textBackground.overrideSprite = spriteDecaysTextBG;
             else
                 textBackground.overrideSprite = null;
         }
@@ -135,7 +138,7 @@ namespace Assets.CS.TabletopUI {
 
             try {
                 SetQuantity(quantity); // this also toggles badge visibility through second call
-                SetAsUnique(_element.Unique);
+                SetCardBG(_element.Unique, Decays);
 
                 name = "Card_" + elementId;
                 if (_element == null)
