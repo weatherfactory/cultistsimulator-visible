@@ -30,9 +30,14 @@ namespace Assets.TabletopUi {
         private bool greedyAnimIsActive;
 
         public bool IsOpen { get; set; }
+
         public bool EditorIsActive
         {
             get { return situationToken.EditorIsActive; }
+        }
+
+        public bool IsOngoing {
+            get { return SituationClock.State == SituationState.Ongoing; }
         }
 
         #region -- Construct, Initialize & Retire --------------------
@@ -101,13 +106,13 @@ namespace Assets.TabletopUi {
                 situationWindow.Title = command.OverrideTitle;
 
             //NOTE: only on Complete state. Completioncount shouldn't show on other states. This is fragile tho.
-            if (command.CompletionCount > 0)
+            if (command.CompletionCount >= 0)
                 situationToken.SetCompletionCount(command.CompletionCount);
         }
 
         // Called from importer
-        public void ModifyStoredElementStack(string elementId, int quantity) {
-            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing());
+        public void ModifyStoredElementStack(string elementId, int quantity, Context context) {
+            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
             situationWindow.DisplayStoredElements();
         }
 
@@ -199,7 +204,7 @@ namespace Assets.TabletopUi {
         void StoreStacks(IEnumerable<IElementStack> stacks) {
             var inputStacks = situationWindow.GetOngoingStacks();
             var storageStackManager = situationWindow.GetStorageStacksManager();
-            storageStackManager.AcceptStacks(inputStacks);
+            storageStackManager.AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
             situationWindow.DisplayStoredElements(); //displays the miniversion of the cards. This should 
         }
 
@@ -313,7 +318,7 @@ namespace Assets.TabletopUi {
             }
             else {
                 situationWindow.SetUnstarted();
-                situationToken.SetCompletionCount(0);
+                situationToken.SetCompletionCount(-1);
             }
         }
 

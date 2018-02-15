@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
         DraggableToken GetTokenInSlot();
         SlotMatchForAspects GetSlotMatchForStack(IElementStack stack);
         SlotSpecification GoverningSlotSpecification { get; set; }
-        void AcceptStack(IElementStack s);
+        void AcceptStack(IElementStack s, Context context);
         string AnimationTag { get; set; }
         RecipeSlot ParentSlot { get; set; }
         bool Defunct { get; set; }
@@ -30,8 +30,8 @@ namespace Assets.CS.TabletopUI {
 
     public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
 
-        public event System.Action<RecipeSlot, IElementStack> onCardDropped;
-        public event System.Action<IElementStack> OnCardRemoved;
+        public event System.Action<RecipeSlot, IElementStack, Context> onCardDropped;
+        public event System.Action<IElementStack, Context> onCardRemoved;
 
         // DATA ACCESS
         public SlotSpecification GoverningSlotSpecification { get; set; }
@@ -185,15 +185,20 @@ namespace Assets.CS.TabletopUI {
 
             //it's not an element stack; just put it down
             if (stack == null) 
-                DraggableToken.itemBeingDragged.ReturnToTabletop();
+                DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
 
             //does the token match the slot? Check that first
             SlotMatchForAspects match = GetSlotMatchForStack(stack);
 
             if (match.MatchType != SlotMatchForAspectsType.Okay)
             {
-                DraggableToken.SetReturn(true,"Didn't match recipe slot values");
-                DraggableToken.itemBeingDragged.ReturnToTabletop(new Notification("I can't put that there - ", match.GetProblemDescription()));
+                DraggableToken.SetReturn(true, "Didn't match recipe slot values");
+                DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+
+                var notifier = Registry.Retrieve<INotifier>();
+
+                if (notifier != null)
+                    notifier.ShowNotificationWindow("I can't put that there - ", match.GetProblemDescription());
             }
             else
             {
@@ -212,21 +217,21 @@ namespace Assets.CS.TabletopUI {
 
                 //now we put the token in the slot.
                 DraggableToken.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
-                AcceptStack(stack);
+                AcceptStack(stack, new Context(Context.ActionSource.PlayerDrag));
                 SoundManager.PlaySfx("CardPutInSlot");
             }
         }
 
-        public void AcceptStack(IElementStack stack) {
-            _elementStacksManager.AcceptStack(stack);
+        public void AcceptStack(IElementStack stack, Context context) {
+            _elementStacksManager.AcceptStack(stack, context);
 
             Assert.IsNotNull(onCardDropped, "no delegate set for cards dropped on recipe slots");
             // ReSharper disable once PossibleNullReferenceException
-            onCardDropped(this, stack);
+            onCardDropped(this, stack, context);
         }
 
-        public override void DisplayHere(DraggableToken token) {
-            base.DisplayHere(token);
+        public override void DisplayHere(DraggableToken token, Context context) {
+            base.DisplayHere(token, context);
             var stack = token as ElementStackToken;
 
             if (stack != null) {
@@ -250,10 +255,9 @@ namespace Assets.CS.TabletopUI {
             else
                 return GoverningSlotSpecification.GetSlotMatchForAspects(stack.GetAspects());
         }
-
         
-        public override void SignalStackRemoved(ElementStackToken elementStackToken) {
-            OnCardRemoved(elementStackToken);
+        public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
+            onCardRemoved(elementStackToken, context);
             //PROBLEM: this is called when we return a card to the desktop by clearing another slot! which is not what we want.
             //it puts us in an infinite loop where removing the card from the slot triggers a check for anything else.
             //we want to limit the OnCardPickedUpBehaviour to *only* the card being picked up
@@ -270,8 +274,8 @@ namespace Assets.CS.TabletopUI {
             if (GetSlotMatchForStack(potentialUsurper).MatchType==SlotMatchForAspectsType.Okay)
             { 
                 incumbentMoved = true;
-                incumbent.ReturnToTabletop(); //do this first; AcceptStack will trigger an update on the displayed aspects
-                AcceptStack(potentialUsurper);
+                incumbent.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag)); //do this first; AcceptStack will trigger an update on the displayed aspects
+                AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
             }
             else
                 incumbentMoved = false;

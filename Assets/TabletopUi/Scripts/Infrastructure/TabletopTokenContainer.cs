@@ -47,12 +47,12 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
     #region -- AbstractTokenContainer -------------------------------------------
 
-    public override void DisplayHere(DraggableToken token) {
+    public override void DisplayHere(DraggableToken token, Context context) {
         // We're not setting the location; this is used to display a token dragged and dropped to an arbitrary position
         // (or loaded and added to an arbitrary position)
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
-        token.SetTokenContainer(this);
+        token.SetTokenContainer(this, context);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
     }
 
@@ -65,14 +65,14 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     public override void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
-        DisplaySituationTokenOnTable(potentialUsurper);
+        DisplaySituationTokenOnTable(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
     }
 
     public override void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {
         // We don't merge here. We assume if we end up here no merge was possible
         //incumbent.RectTransform.anchoredPosition = GetFreeTokenPos(incumbent);
         incumbentMoved = true;
-        _elementStacksManager.AcceptStack(potentialUsurper);
+        _elementStacksManager.AcceptStack(potentialUsurper, new Context(Context.ActionSource.PlayerDrag));
         CheckOverlappingTokens(potentialUsurper);
     }
 
@@ -83,8 +83,8 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         return choreo.GetFreePosWithDebug(incumbent, currentPos);
     }
 
-    public void DisplaySituationTokenOnTable(SituationToken token) {
-        DisplayHere(token);
+    public void DisplaySituationTokenOnTable(SituationToken token, Context context) {
+        DisplayHere(token, context);
         CheckOverlappingTokens(token);
         token.DisplayAtTableLevel();
     }
@@ -101,12 +101,16 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         if (DraggableToken.itemBeingDragged != null) {
             DraggableToken.SetReturn(false, "dropped on the background");
 
-            if (DraggableToken.itemBeingDragged is SituationToken) 
-                DisplaySituationTokenOnTable((SituationToken)DraggableToken.itemBeingDragged);
-            else if (DraggableToken.itemBeingDragged is ElementStackToken) 
-                GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged));
-            else 
+            if (DraggableToken.itemBeingDragged is SituationToken) {
+                DisplaySituationTokenOnTable((SituationToken)DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
+            }
+            else if (DraggableToken.itemBeingDragged is ElementStackToken) {
+                GetElementStacksManager().AcceptStack(((ElementStackToken)DraggableToken.itemBeingDragged), 
+                    new Context(Context.ActionSource.PlayerDrag));
+            }
+            else { 
                 throw new NotImplementedException("Tried to put something weird on the table");
+            }
 
             CheckOverlappingTokens(DraggableToken.itemBeingDragged);
             SoundManager.PlaySfx("CardDrop");

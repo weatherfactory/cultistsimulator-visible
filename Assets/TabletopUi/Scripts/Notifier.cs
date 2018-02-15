@@ -33,11 +33,6 @@ namespace Assets.CS.TabletopUI {
             notificationLog.AddText(text);
         }
 
-        public void ShowTokenReturnToTabletopNotification(DraggableToken draggableToken, INotification reason) {
-            if (reason != null)
-                ShowNotificationWindow(reason.Title, reason.Description);
-        }
-
         public void ShowNotificationWindow(string title, string description, float duration = 10) {
             var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);

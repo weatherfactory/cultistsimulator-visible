@@ -85,12 +85,12 @@ public class DebugTools : MonoBehaviour,IRollOverride
             }
         }
         //if we didn't jump out of loop with return, above
-        stackManager.ModifyElementQuantity(elementId,1, Source.Existing());
+        stackManager.ModifyElementQuantity(elementId,1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
     void DecrementElement(string elementId)
     {
-        tabletop.GetElementStacksManager().ModifyElementQuantity(elementId, -1, Source.Existing());
+        tabletop.GetElementStacksManager().ModifyElementQuantity(elementId, -1, Source.Existing(), new Context(Context.ActionSource.Debug));
     }
 
     void BeginSituation(string recipeId)

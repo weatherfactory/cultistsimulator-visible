@@ -14,7 +14,6 @@ namespace Assets.Core.Interfaces
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot);
-        void ShowTokenReturnToTabletopNotification(DraggableToken draggableToken, INotification reason);
         void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment);
     }
 }

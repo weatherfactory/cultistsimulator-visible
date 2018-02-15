@@ -80,18 +80,18 @@ namespace Assets.CS.TabletopUI {
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
             if (stack == null) { //it's not an element stack; just put it down
-                DraggableToken.itemBeingDragged.ReturnToTabletop();
+                DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
                 return;
             }
 
             //now we put the token in the slot.
             DraggableToken.SetReturn(false, "has gone in slot"); // This tells the draggable to not reset its pos "onEndDrag", since we do that here. (Martin)
-            AcceptStack(stack);
+            AcceptStack(stack, new global::Context(Context.ActionSource.PlayerDrag));
             SoundManager.PlaySfx("CardPutInSlot");
         }
 
-        public void AcceptStack(IElementStack stack) {
-            GetElementStacksManager().AcceptStack(stack);
+        public void AcceptStack(IElementStack stack, Context context) {
+            GetElementStacksManager().AcceptStack(stack, context);
             // ReSharper disable once PossibleNullReferenceException
             onCardDropped(stack);
         }

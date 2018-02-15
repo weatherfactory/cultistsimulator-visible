@@ -41,14 +41,14 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         slot.ParentSlot = parentSlot;
         slot.Initialise(slotSpecification);
         slot.onCardDropped += RespondToStackAdded;
-        slot.OnCardRemoved += RespondToStackRemoved;
+        slot.onCardRemoved += RespondToStackRemoved;
 
         return slot;
     }
 
-    public abstract void RespondToStackRemoved(IElementStack stack);
+    public abstract void RespondToStackRemoved(IElementStack stack, Context context);
 
-    public abstract void RespondToStackAdded(RecipeSlot slot, IElementStack stack);
+    public abstract void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context);
 
     /// <summary>
     /// 
@@ -73,20 +73,26 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         return stacks;
     }
 
-    protected virtual void ClearAndDestroySlot(RecipeSlot slot) {
+    protected virtual void ClearAndDestroySlot(RecipeSlot slot, Context context) {
         if (slot == null)
             return;
+
         //if there are any child slots on this slot, recurse
         if (slot.childSlots.Count > 0) {
             List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
+
             foreach (var cs in childSlots)
-                ClearAndDestroySlot(cs);
+                ClearAndDestroySlot(cs, context);
+
             slot.childSlots.Clear();
         }
+
         DraggableToken tokenContained = slot.GetTokenInSlot();
+
         if (tokenContained != null) {
             tokenContained.ReturnToTabletop(null);
         }
+
         slot.Retire();
     }
 

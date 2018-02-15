@@ -37,13 +37,13 @@ public class SituationEditor : MonoBehaviour
     public void AddCard(string elementId)
     {
         if (CheckForIssues(elementId)) return;
-        _situationController.ModifyStoredElementStack(elementId,1);
+        _situationController.ModifyStoredElementStack(elementId, 1, new Context(Context.ActionSource.Debug));
     }
     
     public void RemoveCard(string elementId)
     {
         if (CheckForIssues(elementId)) return;
-        _situationController.ModifyStoredElementStack(elementId, -1);
+        _situationController.ModifyStoredElementStack(elementId, -1, new Context(Context.ActionSource.Debug));
     }
 
     public void OverrideRecipe(string recipeId)

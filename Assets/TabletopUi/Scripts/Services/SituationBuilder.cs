@@ -40,6 +40,7 @@ namespace Assets.TabletopUi.Scripts.Services {
         public SituationToken CreateTokenWithAttachedControllerAndSituation(SituationCreationCommand situationCreationCommand, string locatorInfo = null) {
             var situationController = new SituationController(Registry.Retrieve<ICompendium>(), Registry.Retrieve<Character>());
             var newToken = PrefabFactory.CreateToken<SituationToken>(tableLevel, locatorInfo);
+
             var window = BuiltSituationWindow(newToken);
 
             situationController.Initialise(situationCreationCommand, newToken, window);
