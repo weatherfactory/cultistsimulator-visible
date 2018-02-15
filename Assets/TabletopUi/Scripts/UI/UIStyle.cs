@@ -17,6 +17,9 @@ public static class UIStyle {
 
     public static Color slotPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF); // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT VARIANT
     public static Color slotDefault = new Color32(0x1C, 0x43, 0x62, 0xFF);
+    
+    public static Color miniSlotGreedy = new Color32(0xFF, 0x7C, 0xDF, 0xFF); 
+    public static Color miniSlotDefault = new Color32(0x15, 0xAB, 0x5A, 0xFF);
 
     public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining) {
         if (forRecipe != null && forRecipe.EndsGame()) { 

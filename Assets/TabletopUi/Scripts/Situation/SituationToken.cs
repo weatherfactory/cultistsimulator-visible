@@ -28,18 +28,26 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] Image artwork;
 
-        [SerializeField] TextMeshProUGUI text;
+        [Header("Countdown")]
         [SerializeField] Canvas countdownCanvas;
         [SerializeField] Image countdownBar;
         [SerializeField] Image countdownBadge;
         [SerializeField] TextMeshProUGUI countdownText;
-        [SerializeField] Image completionBadge;
-        [SerializeField] TextMeshProUGUI completionText;
-        [SerializeField] private SituationEditor situationEditor;
         [SerializeField] ParticleSystem[] particles;
 
+        [Header("Ongoing Slot")]
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
+
+        [Header("Completion")]
+        [SerializeField] Image completionBadge;
+        [SerializeField] TextMeshProUGUI completionText;
+
+        [Header("DumpButton")]
+        [SerializeField] SituationTokenDumpButton dumpButton;
+
+        [Header("Debug")]
+        [SerializeField] SituationEditor situationEditor;
 
         private IVerb _verb;
 
@@ -65,11 +73,11 @@ namespace Assets.CS.TabletopUI {
             SituationController = sc;
             name = "Verb_" + Id;
 
-            DisplayName(verb);
             DisplayIcon(verb);
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
+            ShowDumpButton(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
             situationEditor.Initialise(SituationController);
@@ -104,10 +112,6 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        private void DisplayName(IVerb v) {
-            text.text = v.Label;
-        }
-
         private void DisplayIcon(IVerb v) {
             Sprite sprite = ResourcesManager.GetSpriteForVerbLarge(v.Id);
             artwork.sprite = sprite;
@@ -119,6 +123,10 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayAsClosed() {
             ShowGlow(false);
+        }
+
+        void ShowDumpButton(bool showButton, bool showGlow) {
+            dumpButton.gameObject.SetActive(showButton);
         }
 
         public void SetEditorActive(bool active) {
@@ -163,9 +171,9 @@ namespace Assets.CS.TabletopUI {
 
             // We assume there's only one Slot
             if (ongoingSlots[0].Greedy)
-                ongoingSlotImage.color = UIStyle.slotPink;
+                ongoingSlotImage.color = UIStyle.miniSlotGreedy;
             else
-                ongoingSlotImage.color = UIStyle.slotDefault;
+                ongoingSlotImage.color = UIStyle.miniSlotDefault;
         }
 
         public void DisplayStackInMiniSlot(IEnumerable<IElementStack> stacksInOngoingSlots) {
@@ -199,6 +207,8 @@ namespace Assets.CS.TabletopUI {
             completionBadge.gameObject.SetActive(newCount >= 0);
             completionText.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
+
+            ShowDumpButton(newCount > 0, false);            
         }
 
 
