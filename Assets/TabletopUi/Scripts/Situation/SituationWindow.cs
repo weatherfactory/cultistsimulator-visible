@@ -271,7 +271,7 @@ namespace Assets.CS.TabletopUI {
         void HandleStartButton() {
             situationController.AttemptActivateRecipe();
         }
-        
+
         void HandleResultsButton() {
             DumpToDesktop(GetOutputStacks());
             situationController.ResetSituation();
