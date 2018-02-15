@@ -201,11 +201,29 @@ namespace Assets.CS.TabletopUI {
             completionText.text = newCount.ToString();
         }
 
+
+        public override bool Retire() {
+            SpawnKillFX();
+            return base.Retire();
+        }
+
+        void SpawnKillFX() {
+            var prefab = Resources.Load("FX/SituationToken/SituationTokenVanish");
+
+            if (prefab == null)
+                return;
+
+            var go = Instantiate(prefab, transform.parent) as GameObject;
+            go.transform.position = transform.position;
+            go.transform.localScale = Vector3.one;
+            go.SetActive(true);
+        }
+
         #endregion
 
-        #region -- Token interaction --------------------------
+            #region -- Token interaction --------------------------
 
-        // None of this should do view changes here. We're deferring to the SitController or TokenContainer
+            // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
         public override void OnDrop(PointerEventData eventData) {
             if (DraggableToken.itemBeingDragged != null)
