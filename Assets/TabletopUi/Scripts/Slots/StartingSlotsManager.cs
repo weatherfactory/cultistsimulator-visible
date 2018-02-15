@@ -33,7 +33,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack) {
+        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
             if (stack.HasChildSlots())
                 AddSlotsForStack(stack, slot);
 
@@ -50,13 +50,16 @@ namespace Assets.TabletopUi.SlotsContainers {
             }
         }
 
-        public override void RespondToStackRemoved(IElementStack stack) {
-            RemoveAnyChildSlotsWithEmptyParent();
+        public override void RespondToStackRemoved(IElementStack stack, Context context) {
+            // Only update the slots if we're doing this manually, otherwise don't
+            if (context.IsManualAction())
+                RemoveAnyChildSlotsWithEmptyParent(context);
+
             ArrangeSlots();
             controller.StartingSlotsUpdated();
         }
 
-        protected void RemoveAnyChildSlotsWithEmptyParent() {
+        public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
             IList<RecipeSlot> currentSlots = GetAllSlots();
 
             foreach (RecipeSlot s in currentSlots) {
@@ -65,7 +68,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                     s.childSlots.Clear();
 
                     foreach (RecipeSlot cs in currentChildSlots)
-                        ClearAndDestroySlot(cs);
+                        ClearAndDestroySlot(cs, context);
                 }
             }
 
@@ -78,7 +81,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             return slot;
         }
 
-        protected override void ClearAndDestroySlot(RecipeSlot slot) {
+        protected override void ClearAndDestroySlot(RecipeSlot slot, Context context) {
             if (slot == null)
                 return;
             if (slot.Defunct)
@@ -88,7 +91,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             if (slot.childSlots.Count > 0) {
                 List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
                 foreach (var cs in childSlots)
-                    ClearAndDestroySlot(cs);
+                    ClearAndDestroySlot(cs, context);
 
                 slot.childSlots.Clear();
             }
@@ -96,6 +99,9 @@ namespace Assets.TabletopUi.SlotsContainers {
             //Destroy the slot *before* returning the token to the tabletop
             //otherwise, the slot will fire OnCardRemoved again, and we get an infinte loop
             gridManager.RetireSlot(slot);
+
+            if (context != null && context.actionSource == Context.ActionSource.SituationStoreStacks)
+                return; // Don't return the tokens to tabletop if we
 
             DraggableToken tokenContained = slot.GetTokenInSlot();
 

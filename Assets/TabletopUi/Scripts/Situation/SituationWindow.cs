@@ -321,7 +321,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void StoreStacks(IEnumerable<IElementStack> stacksToStore) {
-            GetStorageStacksManager().AcceptStacks(stacksToStore);
+            GetStorageStacksManager().AcceptStacks(stacksToStore, new Context(Context.ActionSource.SituationStoreStacks));
+            // Now that we've stored stacks, make sure we update the starting slots
+            startingSlots.RemoveAnyChildSlotsWithEmptyParent(new Context(Context.ActionSource.SituationStoreStacks)); 
         }
 
 

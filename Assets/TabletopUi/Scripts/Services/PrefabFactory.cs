@@ -34,7 +34,7 @@ namespace Assets.TabletopUi.Scripts.Services
             var token = PrefabFactory.CreateLocally<T>(destination);
             var pf = Instance();
             token.SubscribeNotifier(Registry.Retrieve<INotifier>());
-            token.SetTokenContainer(pf.TabletopManager._tabletop);
+            token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
             if (saveLocationInfo != null)
                 token.SaveLocationInfo = saveLocationInfo;
 

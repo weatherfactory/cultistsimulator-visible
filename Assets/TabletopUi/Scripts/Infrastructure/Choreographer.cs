@@ -34,15 +34,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         // -- PUBLIC POSITIONING METHODS ----------------------------
 
-        public void ArrangeTokenOnTable(SituationToken token) {
+        public void ArrangeTokenOnTable(SituationToken token, Context context) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
 
-            _tabletop.DisplaySituationTokenOnTable(token);
+            _tabletop.DisplaySituationTokenOnTable(token, context);
         }
 
         //we place stacks horizontally rather than vertically
-        public void ArrangeTokenOnTable(ElementStackToken stack) {
-            _tabletop.GetElementStacksManager().AcceptStack(stack);  // this does parenting. Needs to happen before we position
+        public void ArrangeTokenOnTable(ElementStackToken stack, Context context) {
+            _tabletop.GetElementStacksManager().AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
 
             if (stack.lastTablePos != null) {
                 stack.RectTransform.anchoredPosition = GetFreePosWithDebug(stack, stack.lastTablePos.Value);
@@ -222,8 +222,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             //if new situation is beginning with an existing verb: do not action the creation.
             //oh: I could have an scc property which is a MUST CREATE override
 
-            var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-            var existingSituation = registeredSits.SingleOrDefault(sc => sc.situationToken.Id == scc.Recipe.ActionId);
+            SituationController existingSituation;
+            var sitToken = scc.SourceToken as SituationToken;
+
+            if (sitToken != null) { 
+                existingSituation = sitToken.SituationController;
+            }
+            // We don't have a source token, then get us the first token with the appopriate id.
+            else { 
+                var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+                existingSituation = registeredSits.Find(sc => sc.situationToken.Id == scc.Recipe.ActionId);
+            }
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.
             if (existingSituation != null) {
@@ -252,7 +261,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     endScale: 1f);
             }
             else {
-                Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token);
+                Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(token, null);
             }
         }
 
@@ -265,7 +274,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
 
         public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation) {
-            _tabletop.GetElementStacksManager().AcceptStack(stack); // this reparents, sets container
+            _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
             stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);
@@ -292,12 +301,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (tokenSlotPair.RecipeSlot.Equals(null))
                 return;
 
-            tokenSlotPair.RecipeSlot.AcceptStack(element);
+            tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
             tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
         }
 
         void SituationAnimDone(SituationToken token) {
-            _tabletop.DisplaySituationTokenOnTable(token);
+            _tabletop.DisplaySituationTokenOnTable(token, new Context(Context.ActionSource.AnimEnd));
         }
 
     }

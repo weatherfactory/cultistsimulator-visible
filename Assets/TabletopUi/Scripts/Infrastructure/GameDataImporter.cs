@@ -117,8 +117,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     throw new ArgumentException("Couldn't parse " + dictionaryElementStacks[SaveConstants.SAVE_QUANTITY] + " for " +
                                                 dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
 
-                tabletop.GetElementStacksManager()
-                    .IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], quantity,Source.Existing(), locationInfo.ToString());
+                tabletop.GetElementStacksManager().IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], 
+                    quantity,Source.Existing(), new Context(Context.ActionSource.Loading), locationInfo.ToString());
             }
         }
 
@@ -259,7 +259,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
                 var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
                 foreach (var eqs in elementQuantitySpecifications)   
-                    controller.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity);                    
+                    controller.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity, new Context(Context.ActionSource.Loading));                    
             }
         }
 
@@ -285,7 +285,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var slotToFill = controller.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
                     if (slotToFill != null) //a little bit robust if a higher level element slot spec has changed between saves
                         //if the game can't find a matching slot, it'll just leave it on the desktop
-                        slotToFill.AcceptStack(stackToPutInSlot);
+                        slotToFill.AcceptStack(stackToPutInSlot, new Context(Context.ActionSource.Loading));
 
                     //if this was an ongoing slot, we also need to tell the situation that the slot's filled, or it will grab another
 

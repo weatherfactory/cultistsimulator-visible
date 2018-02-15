@@ -39,11 +39,11 @@ namespace Assets.CS.TabletopUI {
             ongoingSlot.Initialise(slotSpec);
         }
 
-        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack) {
+        public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
             controller.OngoingSlotsUpdated();
         }
 
-        public override void RespondToStackRemoved(IElementStack stack) {
+        public override void RespondToStackRemoved(IElementStack stack, Context context) {
             controller.OngoingSlotsUpdated();
         }
 

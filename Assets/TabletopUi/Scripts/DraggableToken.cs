@@ -105,12 +105,12 @@ namespace Assets.CS.TabletopUI {
             notifier = n;
         }
 
-        public virtual void SetTokenContainer(ITokenContainer newContainer) {
+        public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {
             OldTokenContainer = TokenContainer;
             TokenContainer = newContainer;
         }
 
-        public virtual bool IsInContainer(ITokenContainer compareContainer) {
+        public virtual bool IsInContainer(ITokenContainer compareContainer, Context context) {
             return compareContainer == TokenContainer;
         }
 
@@ -300,7 +300,7 @@ namespace Assets.CS.TabletopUI {
         
         #region -- Move & Retire Token ------------------------------------
 
-        public abstract void ReturnToTabletop(INotification reason = null);
+        public abstract void ReturnToTabletop(Context context);
 
         public virtual void DisplayInAir() {
             IsInAir = true;

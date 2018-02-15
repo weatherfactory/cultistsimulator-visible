@@ -67,7 +67,7 @@ namespace Assets.CS.TabletopUI {
             DisplayName(verb);
             DisplayIcon(verb);
             SetTimerVisibility(false);
-            SetCompletionCount(0);
+            SetCompletionCount(-1);
             ShowGlow(false, false);
 
             ongoingSlotImage.gameObject.SetActive(false);
@@ -76,11 +76,8 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Token positioning --------------------------
 
-        public override void ReturnToTabletop(INotification reason = null) {
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
-
-            if (reason != null)
-                notifier.ShowTokenReturnToTabletopNotification(this, reason);
+        public override void ReturnToTabletop(Context context) {
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context);
         }
 
         public override void DisplayInAir() {
@@ -114,8 +111,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false);
         }
 
-        public void SetEditorActive(bool active)
-        {
+        public void SetEditorActive(bool active) {
             situationEditor.gameObject.SetActive(active);
         }
 
@@ -178,19 +174,13 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SetCompletionCount(int newCount) {
-            completionBadge.gameObject.SetActive(newCount > 0);
+            // count == -1 ? No badge
+            // count ==  0 ? badge, no text
+            // count >=  1 ? badge and text
+
+            completionBadge.gameObject.SetActive(newCount >= 0);
+            completionText.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
-            /*
-             * // Martin: Removed glow on completion count, it was muddying the feedback. Badge is enough, I think.
-             * // I'd rather turn up the badge visibility
-            if (newCount > 0) {
-                SetGlowColor(UIStyle.TokenGlowColor.Default);
-                ShowGlow(true);
-            }
-            else {
-                ShowGlow(false);
-            }
-            */
         }
 
         #endregion

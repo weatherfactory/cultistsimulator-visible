@@ -46,13 +46,13 @@ public class SituationResults : AbstractTokenContainer {
         if (allStacksToOutput.Any() == false)
             return;
 
-        GetElementStacksManager().AcceptStacks(allStacksToOutput);
+        GetElementStacksManager().AcceptStacks(allStacksToOutput, new Context(Context.ActionSource.SituationResults));
 
         //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
         cardPos.ReorderCards(allStacksToOutput);
     }
 
-    public override void SignalStackRemoved(ElementStackToken elementStackToken) {
+    public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
         // Did we just drop the last available token? 
         // Update the badge, then reorder cards?
         controller.UpdateTokenResultsCountBadge();

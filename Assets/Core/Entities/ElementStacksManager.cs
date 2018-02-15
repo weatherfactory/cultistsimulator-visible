@@ -41,11 +41,11 @@ public class ElementStacksManager : IElementStacksManager {
             catalogue.DeregisterStackManager(this);
     }
 
-    public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource) {
+    public void ModifyElementQuantity(string elementId, int quantityChange, Source stackSource, Context context) {
         if (quantityChange > 0)
-            IncreaseElement(elementId, quantityChange, stackSource);
+            IncreaseElement(elementId, quantityChange, stackSource, context);
         else
-            ReduceElement(elementId, quantityChange);
+            ReduceElement(elementId, quantityChange, context);
 
         _catalogue.NotifyStacksChanged();
     }
@@ -56,7 +56,7 @@ public class ElementStacksManager : IElementStacksManager {
     /// <param name="elementId"></param>
     /// <param name="quantityChange">must be negative</param>
     /// <returns>returns any unsatisfied change remaining</returns>
-    public int ReduceElement(string elementId, int quantityChange) {
+    public int ReduceElement(string elementId, int quantityChange, Context context) {
         CheckQuantityChangeIsNegative(elementId, quantityChange);
 
         int unsatisfiedChange = quantityChange;
@@ -81,13 +81,13 @@ public class ElementStacksManager : IElementStacksManager {
                                         quantityChange + ")");
     }
 
-    public int IncreaseElement(string elementId, int quantityChange, Source stackSource, string locatorid = null) {
+    public int IncreaseElement(string elementId, int quantityChange, Source stackSource, Context context, string locatorid = null) {
 
         if (quantityChange <= 0)
             throw new ArgumentException("Tried to call IncreaseElement for " + elementId + " with a <=0 change (" + quantityChange + ")");
 
         var newStack = _tokenContainer.ProvisionElementStack(elementId, quantityChange, stackSource, locatorid);
-        AcceptStack(newStack);
+        AcceptStack(newStack, context);
         return quantityChange;
     }
 
@@ -132,7 +132,7 @@ public class ElementStacksManager : IElementStacksManager {
         return _stacks.Where(s => !s.Defunct).ToList();
     }
 
-    public void AcceptStack(IElementStack stack) {
+    public void AcceptStack(IElementStack stack, Context context) {
         NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name, 10);
 
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
@@ -141,7 +141,7 @@ public class ElementStacksManager : IElementStacksManager {
 
         stack.SetStackManager(this);
         _stacks.Add(stack);
-        _tokenContainer.DisplayHere(stack);
+        _tokenContainer.DisplayHere(stack, context);
         _catalogue.NotifyStacksChanged();
     }
 
@@ -161,9 +161,9 @@ public class ElementStacksManager : IElementStacksManager {
         }
     }
 
-    public void AcceptStacks(IEnumerable<IElementStack> stacks) {
+    public void AcceptStacks(IEnumerable<IElementStack> stacks, Context context) {
         foreach (var eachStack in stacks) {
-            AcceptStack(eachStack);
+            AcceptStack(eachStack, context);
         }
     }
 

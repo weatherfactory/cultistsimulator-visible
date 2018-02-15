@@ -186,7 +186,7 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Return To Tabletop ------------------------------------------------------------------------------------
 
-        public override void ReturnToTabletop(INotification reason = null) {
+        public override void ReturnToTabletop(Context context) {
             if (originStack != null && originStack.IsOnTabletop()) {
                 originStack.MergeIntoStack(this);
                 return;
@@ -207,10 +207,7 @@ namespace Assets.CS.TabletopUI {
                 }
             }
 
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this);
-
-            if (reason != null)
-                notifier.ShowTokenReturnToTabletopNotification(this, reason);
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context);
             /*
             if (lastTablePos != null)
                 transform.position = (Vector3)lastTablePos;
@@ -245,16 +242,16 @@ namespace Assets.CS.TabletopUI {
         }
 
         // Called from TokenContainer, usually after StacksManager told it to
-        public override void SetTokenContainer(ITokenContainer newTokenContainer) {
+        public override void SetTokenContainer(ITokenContainer newTokenContainer, Context context) {
             OldTokenContainer = TokenContainer;
 
             if (OldTokenContainer != null && OldTokenContainer != newTokenContainer)
-                OldTokenContainer.SignalStackRemoved(this);
+                OldTokenContainer.SignalStackRemoved(this, context);
 
             TokenContainer = newTokenContainer;
 
             if (newTokenContainer != null)
-                newTokenContainer.SignalStackAdded(this);
+                newTokenContainer.SignalStackAdded(this, context);
         }
 
         #endregion
@@ -274,7 +271,7 @@ namespace Assets.CS.TabletopUI {
                 return false;
 
             SetStackManager(null); // Remove it from the StacksManager. It no longer exists in the model.
-            SetTokenContainer(null); // notify the view container that we're no longer here
+            SetTokenContainer(null, new Context(Context.ActionSource.Retire)); // notify the view container that we're no longer here
 
             //now take care of the Unity side of things.
 
@@ -412,7 +409,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public void SplitAllButNCardsToNewStack(int n) {
+        public void SplitAllButNCardsToNewStack(int n, Context context) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
                 cardLeftBehind.Populate(Id, Quantity - n, Source.Existing());
@@ -426,7 +423,7 @@ namespace Assets.CS.TabletopUI {
                 cardLeftBehind.transform.position = transform.position;
 
                 var stacksManager = TokenContainer.GetElementStacksManager();
-                stacksManager.AcceptStack(cardLeftBehind);
+                stacksManager.AcceptStack(cardLeftBehind, context);
 
                 // Accepting stack may put it to pos Vector3.zero, so this is last
                 cardLeftBehind.transform.position = transform.position;
@@ -441,7 +438,7 @@ namespace Assets.CS.TabletopUI {
 
             // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
             if (stackBadge.IsHovering() == false)
-                SplitAllButNCardsToNewStack(1);
+                SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
 
             base.StartDrag(eventData); // To ensure all events fire at the end
         }

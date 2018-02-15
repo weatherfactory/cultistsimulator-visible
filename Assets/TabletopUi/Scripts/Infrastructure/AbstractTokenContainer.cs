@@ -30,28 +30,28 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
             IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
             stack.Populate(elementId, quantity, stackSource);
-            DisplayHere(stack);
+            DisplayHere(stack, new Context(Context.ActionSource.Loading));
             return stack;
         }
 
-        public virtual void SignalStackAdded(ElementStackToken elementStackToken) {
+        public virtual void SignalStackAdded(ElementStackToken elementStackToken, Context context) {
             // By default: do nothing right now
         }
 
-        public virtual void SignalStackRemoved(ElementStackToken elementStackToken) {
+        public virtual void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
             // By default: do nothing right now
         }
 
-        public virtual void DisplayHere(IElementStack stack) {
-            DisplayHere(stack as DraggableToken);
+        public virtual void DisplayHere(IElementStack stack, Context context) {
+            DisplayHere(stack as DraggableToken, context);
         }
 
-        public virtual void DisplayHere(DraggableToken token) {
+        public virtual void DisplayHere(DraggableToken token, Context context) {
             token.transform.SetParent(transform);
             token.transform.localPosition = Vector3.zero;
             token.transform.localRotation = Quaternion.identity;
             token.transform.localScale = Vector3.one;
-            token.SetTokenContainer(this);
+            token.SetTokenContainer(this, context);
         }
 
         public virtual void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved) {

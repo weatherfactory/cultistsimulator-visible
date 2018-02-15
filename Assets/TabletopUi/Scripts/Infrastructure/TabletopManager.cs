@@ -196,10 +196,6 @@ namespace Assets.CS.TabletopUI {
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
 
-
-            
-
-
             var contentImporter = new ContentImporter();
             contentImporter.PopulateCompendium(compendium);
         }
@@ -255,7 +251,7 @@ namespace Assets.CS.TabletopUI {
 
             foreach (var e in startingElements) {
                 ElementStackToken token = _tabletop.ProvisionElementStack(e.Key, e.Value, Source.Existing()) as ElementStackToken;
-                choreographer.ArrangeTokenOnTable(token);
+                choreographer.ArrangeTokenOnTable(token, new Context(Context.ActionSource.Loading));
             }
         }
 
@@ -365,7 +361,7 @@ namespace Assets.CS.TabletopUI {
                 var stack = FindStackForSlotSpecificationOnTabletop(tokenSlotPair.RecipeSlot.GoverningSlotSpecification) as ElementStackToken;
 
                 if (stack != null) {
-                    stack.SplitAllButNCardsToNewStack(1);
+                    stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
                     choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
                     continue; // we found a stack, we're done here
                 }
@@ -373,7 +369,7 @@ namespace Assets.CS.TabletopUI {
                 stack = FindStackForSlotSpecificationInSituations(tokenSlotPair.RecipeSlot.GoverningSlotSpecification, out sit) as ElementStackToken;
 
                 if (stack != null) {
-                    stack.SplitAllButNCardsToNewStack(1);
+                    stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
                     choreo.PrepareElementForGreedyAnim(stack, sit.situationToken as SituationToken); // this reparents the card so it can animate properly
                     choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
                     continue; // we found a stack, we're done here
@@ -389,6 +385,8 @@ namespace Assets.CS.TabletopUI {
             if (tokenSlotPair.Token.Equals(null))
                 return false; // It has been destroyed
             if (tokenSlotPair.Token.Defunct)
+                return false;
+            if (!tokenSlotPair.Token.SituationController.IsOngoing)
                 return false;
             if (tokenSlotPair.RecipeSlot.Equals(null))
                 return false; // It has been destroyed
@@ -485,7 +483,7 @@ namespace Assets.CS.TabletopUI {
 
                 DraggableToken.SetReturn(false, "dropped on the map background");
                 DraggableToken.itemBeingDragged.DisplayAtTableLevel();
-                mapContainsTokens.DisplayHere(DraggableToken.itemBeingDragged);
+                mapContainsTokens.DisplayHere(DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
             }

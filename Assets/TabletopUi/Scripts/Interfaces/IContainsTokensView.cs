@@ -20,14 +20,14 @@ namespace Assets.CS.TabletopUI.Interfaces
 
         IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorId = null);
 
-        void DisplayHere(IElementStack stack);
-        void DisplayHere(DraggableToken token);
+        void DisplayHere(IElementStack stack, Context context);
+        void DisplayHere(DraggableToken token, Context context);
 
         void TryMoveAsideFor(ElementStackToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
         void TryMoveAsideFor(SituationToken potentialUsurper, DraggableToken incumbent, out bool incumbentMoved);
 
-        void SignalStackAdded(ElementStackToken elementStackToken);
-        void SignalStackRemoved(ElementStackToken elementStackToken);
+        void SignalStackAdded(ElementStackToken elementStackToken, Context context);
+        void SignalStackRemoved(ElementStackToken elementStackToken, Context context);
 
         string GetSaveLocationInfoForDraggable(DraggableToken draggable);
 
