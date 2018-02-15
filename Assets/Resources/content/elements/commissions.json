@@ -158,7 +158,7 @@
 		        id: "commissionarticleheart",
             label: "Commission: Heart",
             aspects: {commission:1},
-            description: "Count Gottlob will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the Heart. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
+            description: "The Count will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the Heart. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:2}}},
 
 			xtriggers: {commissionfulfilled: funds}
@@ -168,7 +168,7 @@
 		        id: "commissionarticleheartb",
             label: "Commission: Heart (Substantial)",
             aspects: {commission:1},
-            description: "Count Gottlob will pay for information of interest. This time, he'd like substantial research on the corporal mysteries of the Heart. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
+            description: "The Count will pay for information of interest. This time, he'd like substantial research on the corporal mysteries of the Heart. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:4}}},
 
 			xtriggers: {commissionfulfilled: compensation}
@@ -178,7 +178,7 @@
 		        id: "commissionarticleheartc",
             label: "Commission: Heart (Extensive)",
             aspects: {commission:1},
-            description: "Count Gottlob will pay for information of interest. This time, he'd like extensive research on the corporal mysteries of the Heart.[ Use <b>Talk</b> to complete this commission.]",
+            description: "The Count will pay for information of interest. This time, he'd like extensive research on the corporal mysteries of the Heart.[ Use <b>Talk</b> to complete this commission.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,heart:6}}},
 
 			xtriggers: {commissionfulfilled: compensationb}
@@ -188,7 +188,7 @@
 		        id: "commissionarticleedge",
             label: "Commission: Edge",
             aspects: {commission:1},
-            description: "Count Gottlob will pay for information of interest. This time, he'd like whatever you can assemble on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
+            description: "The Count will pay for information of interest. This time, he'd like whatever you can assemble on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:2}}},
 
 			xtriggers: {commissionfulfilled: funds}
@@ -198,7 +198,7 @@
 		        id: "commissionarticleedgeb",
             label: "Commission: Edge (Substantial)",
             aspects: {commission:1},
-            description: "Count Gottlob will pay for information of interest. This time, he'd like substantial notes on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
+            description: "The Count will pay for information of interest. This time, he'd like substantial notes on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:4}}},
 
 			xtriggers: {commissionfulfilled: compensation}
@@ -208,7 +208,7 @@
 		        id: "commissionarticleedgec",
             label: "Commission: Edge (Extensive)",
             aspects: {commission:1},
-            description: "Count Gottlob will pay for information of interest. This time, he'd like an extensive work on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
+            description: "The Count will pay for information of interest. This time, he'd like an extensive work on the practices of the Edge. [Use <b>Study</b> to complete this commission, and <b>Talk</b> to get paid for it.]",
 			slots: {"Patron":{required: {jannings:1}},"Work":{required:{article:1,edge:6}}},
 
 			xtriggers: {commissionfulfilled: compensationb}
