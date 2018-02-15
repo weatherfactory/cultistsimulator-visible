@@ -388,12 +388,24 @@ namespace Assets.CS.TabletopUI {
                 this.Retire(false);
             }
             else {
+                ShowNoMergeMessage(stackDroppedOn);
+
                 var droppedOnToken = stackDroppedOn as DraggableToken;
                 bool moveAsideFor = false;
                 droppedOnToken.TokenContainer.TryMoveAsideFor(this, droppedOnToken, out moveAsideFor);
 
                 if (moveAsideFor)
                     DraggableToken.SetReturn(false, "was moved aside for");
+            }
+        }
+
+        void ShowNoMergeMessage(IElementStack stackDroppedOn) {
+            if (stackDroppedOn.Id != this.Id)
+                return; // We're dropping on a different element? No message needed.
+
+            if (stackDroppedOn.Decays) {
+                notifier = Registry.Retrieve<INotifier>();
+                notifier.ShowNotificationWindow("Can't merge cards", "This type of card decays and can not be stacked.");
             }
         }
 
