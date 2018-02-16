@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace Assets.CS.TabletopUI {
         const float durationFadeIn = 1f;
         const float durationFadeOut = 2f;
 
+        protected AudioClip endingMusic;
+
         private void OnEnable() {
             FadeIn(durationFadeIn);
 
@@ -28,9 +31,16 @@ namespace Assets.CS.TabletopUI {
             if (ending == null)
                 return;
 
+            PlayEndingMusic(ending);
+
             header.text = ending.Title;
             flavor.text = ending.Description;
             image.sprite = ResourcesManager.GetSpriteForEnding(ending.ImageId);
+        }
+
+        private void PlayEndingMusic(Ending ending)
+        {
+            endingMusic = ResourcesManager.GetEndingMusic(ending.EndingFlavour);
         }
 
         void FadeIn(float duration) {

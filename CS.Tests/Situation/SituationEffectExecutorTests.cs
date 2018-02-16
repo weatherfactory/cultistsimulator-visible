@@ -47,7 +47,7 @@ namespace Assets.Editor.Tests
             var storage = Substitute.For<IGameEntityStorage>();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
-            mockStacksManager.Received().ModifyElementQuantity("e",1, Source.Fresh());
+            mockStacksManager.Received().ModifyElementQuantity("e",1, Source.Fresh(),null);
         }
         [Test]
         public void RecipeDeckEffect_IsApplied()
@@ -74,7 +74,7 @@ namespace Assets.Editor.Tests
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
 
-            mockStacksManager.Received().ModifyElementQuantity("e", 1, Source.Fresh());
+            mockStacksManager.Received().ModifyElementQuantity("e", 1, Source.Fresh(), null);
 
             
 
@@ -94,8 +94,8 @@ namespace Assets.Editor.Tests
             var storage = Substitute.For<IGameEntityStorage>();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
-            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing());
-            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing());
+            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing(),null);
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing(), null);
         }
 
         [Test]
@@ -116,8 +116,8 @@ namespace Assets.Editor.Tests
             var storage = Substitute.For<IGameEntityStorage>();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
-            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing());
-            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing());
+            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing(), null);
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing(), null);
         }
     }
 }
