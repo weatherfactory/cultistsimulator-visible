@@ -252,10 +252,15 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override void OnPointerClick(PointerEventData eventData) {
-            if (!SituationController.IsOpen)
-                OpenSituation();
-            else
-                CloseSituation();
+            if (dumpButton.IsHovering()) {
+                SituationController.DumpAllResults();
+            }
+            else { 
+                if (!SituationController.IsOpen)
+                    OpenSituation();
+                else
+                    CloseSituation();
+            }
         }
 
         public void OpenSituation() {
