@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DistMask:
-        m_Texture: {fileID: 2800000, guid: ac70423835dd6d0439ea7627eb98c076, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DistMax:
@@ -63,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7618cf9ba7ddd964b9e94884f598c4e3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 822023ed0d3bd104b92c034f0477ab09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -72,7 +72,7 @@ Material:
     - _EffectsLayer1Background: 1
     - _EffectsLayer1Enabled: 0
     - _EffectsLayer1Foreground: 0
-    - _EffectsLayer1MotionSpeed: 0.2
+    - _EffectsLayer1MotionSpeed: 0.6
     - _EffectsLayer1Rotation: 0
     - _EffectsLayer2Background: 1
     - _EffectsLayer2Foreground: 0
@@ -86,7 +86,7 @@ Material:
     - _EffectsLayer4MotionSpeed: 0
     - _EffectsLayer4Rotation: 0
     m_Colors:
-    - _EffectsLayer1Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EffectsLayer1Color: {r: 1, g: 1, b: 1, a: 0.678}
     - _EffectsLayer1P3vot: {r: 0, g: 0, b: 0, a: 0}
     - _EffectsLayer1Pivot: {r: 0, g: 0, b: 0, a: 0}
     - _EffectsLayer1PivotScale: {r: 0.5, g: 0.5, b: 1, a: 1}

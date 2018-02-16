@@ -6,7 +6,7 @@ Shader "Custom/MenuBackground"
 	{
 		_MainTex("Texture", 2D) = "black" {}
 		_DistTex("Distortion Texture", 2D) = "grey" {}
-		_DistMask("Distortion Mask", 2D) = "black" {}
+		_DistMask("Distortion Mask", 2D) = "white" {}
 		_DistStrength("Distortion Strength", float) = 1
 		_DistSpeed("Distortion Speed", float) = 1
 
