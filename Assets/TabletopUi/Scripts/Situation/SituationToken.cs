@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI {
             name = "Verb_" + Id;
 
             DisplayIcon(verb);
-            SetAsLightweight(UnityEngine.Random.value < 0.5f); // NOTE: This is random dummy stuff
+            SetAsLightweight(false);// UnityEngine.Random.value < 0.5f); // NOTE: This is random dummy stuff
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
@@ -222,7 +222,9 @@ namespace Assets.CS.TabletopUI {
 
 
         public override bool Retire() {
-            SpawnKillFX();
+            if (!Defunct)
+                SpawnKillFX();
+
             return base.Retire();
         }
 
