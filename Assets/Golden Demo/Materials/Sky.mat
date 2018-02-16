@@ -67,10 +67,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _DistSpeed: 1
+    - _DistStrength: 0.2
     - _EffectsLayer1Background: 1
     - _EffectsLayer1Enabled: 0
     - _EffectsLayer1Foreground: 0
-    - _EffectsLayer1MotionSpeed: 1.41
+    - _EffectsLayer1MotionSpeed: 0.2
     - _EffectsLayer1Rotation: 0
     - _EffectsLayer2Background: 1
     - _EffectsLayer2Foreground: 0
