@@ -17,7 +17,7 @@ namespace Assets.Core.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageId { get; set; }
-        public EndingFlavour EndingFlavour { get;set }
+        public EndingFlavour EndingFlavour { get; set; }
         public string Anim { get; set; }
 
         public Ending(string id, string title, string description,string imageId,EndingFlavour endingFlavour, string anim)
