@@ -507,10 +507,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -1458,157 +1458,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 286313497}
---- !u!1 &317069933
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1730258267366884, guid: 3d901299a57def14ca66ec6931695e22,
-    type: 2}
-  m_PrefabInternal: {fileID: 1727065008}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 496651667}
-  - component: {fileID: 317069934}
-  m_Layer: 0
-  m_Name: AudioManagers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &317069934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114937700222485204, guid: 3d901299a57def14ca66ec6931695e22,
-    type: 2}
-  m_PrefabInternal: {fileID: 1727065008}
-  m_GameObject: {fileID: 317069933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51162aa08f9bd534fb1496ce0e3d6a48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: TokenHover
-    randomizedClips:
-    - {fileID: 8300000, guid: 32a8faebc98e6614e8d728cd06d244d4, type: 3}
-    loop: 0
-    volume: 0.5
-    pitchVariation: 0.1
-  - name: TokenHoverOff
-    randomizedClips:
-    - {fileID: 8300000, guid: 76bb85c27938222429a7b0c6ee482248, type: 3}
-    loop: 0
-    volume: 0.5
-    pitchVariation: 0.1
-  - name: CardPutInSlot
-    randomizedClips:
-    - {fileID: 8300000, guid: e57479d031b78dc4eab00cb4edc87932, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: CardPickup
-    randomizedClips:
-    - {fileID: 8300000, guid: 94bca9f8e43abaf4abc706133d6ea26c, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: CardDrop
-    randomizedClips:
-    - {fileID: 8300000, guid: 5a72b6457d970944bad0e2608efa4e1f, type: 3}
-    - {fileID: 8300000, guid: df0f9a971a1a0514cb05c5f0e9ebe2c0, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: CardPutOnTabletop
-    randomizedClips:
-    - {fileID: 8300000, guid: 85fc6d436b61af14dae911872e90a5f4, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: CardPutOnStack
-    randomizedClips:
-    - {fileID: 8300000, guid: a6fd59f318a52f44ba75a982e4135aad, type: 3}
-    loop: 0
-    volume: 0.5
-    pitchVariation: 0
-  - name: CardDragFail
-    randomizedClips:
-    - {fileID: 8300000, guid: 9e643d3cdcb7aa0418816813795a8841, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: CardBurn
-    randomizedClips:
-    - {fileID: 8300000, guid: df052c99daafe434bac2a2ae0986b3ba, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: CardShatter
-    randomizedClips:
-    - {fileID: 8300000, guid: bfdcef8b6ad89584580f0ac9664509d0, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: EndGameBreath
-    randomizedClips:
-    - {fileID: 8300000, guid: 58e5c81dc3daa3046849ed5d1a7bf047, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: EndGameSiren
-    randomizedClips:
-    - {fileID: 8300000, guid: 4b301721b26bb71409ddf354c197836c, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: EndGameChime
-    randomizedClips:
-    - {fileID: 8300000, guid: 8cb75cb4879da12429bf5d570b26e2cd, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: UIButtonClick
-    randomizedClips:
-    - {fileID: 8300000, guid: 9e109a10e756ede48bd0e44e1565173c, type: 3}
-    loop: 0
-    volume: 0.6
-    pitchVariation: 0
-  - name: SituationAvailable
-    randomizedClips:
-    - {fileID: 8300000, guid: 64313b7b21a212a4ebeb851b4f97a7cc, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: SituationBegin
-    randomizedClips:
-    - {fileID: 8300000, guid: 8e5ca04ef2578af4981fc24c40744e6f, type: 3}
-    loop: 0
-    volume: 0.2
-    pitchVariation: 0
-  - name: SituationComplete
-    randomizedClips:
-    - {fileID: 8300000, guid: 377cdb06f5b03f54a962ab637d6d29e0, type: 3}
-    loop: 0
-    volume: 0.4
-    pitchVariation: 0
-  - name: SituationGrabsCard
-    randomizedClips:
-    - {fileID: 8300000, guid: 09f787d8ed3793e4498cefeb108633fe, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: SituationWindowShow
-    randomizedClips:
-    - {fileID: 8300000, guid: f6469360bc47282468a9b211dce55064, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
-  - name: SituationWindowHide
-    randomizedClips:
-    - {fileID: 8300000, guid: 18e9f96e87730f94db2d25549a6e71b6, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
 --- !u!1 &322650352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +1588,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Design, Writing, Coding\n\nProduction, Additional Art\n\t\nUI Design, Audio,
-    Additional Coding\n\nArt\n\n\nMusic\n\nSpecial Thanks"
+    Additional Coding\n\nArt\n\n\n\nMusic\n\nSpecial Thanks"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
@@ -1875,24 +1724,11 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 550, y: -100}
   m_Pivot: {x: 1, y: 0.5}
---- !u!1 &395819457
+--- !u!1 &395819457 stripped
 GameObject:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1972469438619750, guid: 1a6b760ab60ff74419b14dfad6d9e625,
     type: 2}
   m_PrefabInternal: {fileID: 1944925775}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 395819460}
-  - component: {fileID: 395819459}
-  - component: {fileID: 395819458}
-  m_Layer: 0
-  m_Name: MenuScreenBackgroundMusic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!114 &395819458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,101 +1742,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 395819459}
   currentTrackNumber: 0
---- !u!82 &395819459
+--- !u!82 &395819459 stripped
 AudioSource:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 82184059112683796, guid: 1a6b760ab60ff74419b14dfad6d9e625,
     type: 2}
   m_PrefabInternal: {fileID: 1944925775}
-  m_GameObject: {fileID: 395819457}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.201
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!4 &395819460
+--- !u!4 &395819460 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 4362718938660750, guid: 1a6b760ab60ff74419b14dfad6d9e625,
     type: 2}
   m_PrefabInternal: {fileID: 1944925775}
-  m_GameObject: {fileID: 395819457}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -263.342, y: -237.3549, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 182394259}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &403350553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2338,20 +2089,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 458841801}
---- !u!4 &496651667
+--- !u!4 &496651667 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 4576313819546230, guid: 3d901299a57def14ca66ec6931695e22,
     type: 2}
   m_PrefabInternal: {fileID: 1727065008}
-  m_GameObject: {fileID: 317069933}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -263.342, y: -237.3549, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 182394259}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &594253582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,7 +2162,9 @@ MonoBehaviour:
 
     Catherine Unger,
 
-    Clockwork Cuckoo
+    Clockwork Cuckoo,
+
+    Sarah Gordon
 
 
     Mickymar
@@ -4364,11 +4108,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -5042,6 +4786,47 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    speedModifier:
+      serializedVersion: 2
+      minMaxState: 0
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -6439,6 +6224,7 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
+    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -6483,12 +6269,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
+    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -7756,10 +7544,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -8270,25 +8058,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'NEVILLE''S BUILD
-
-
-    <i>This version is named for the hapless cultist that people keep trying to use
-    as currency.</i>
-
-
-    It contains incremental UI improvements and a few snippets of more content. You
-    may notice cards appear in odd places; we''re working on a better algorithm for
-    card placement.
-
-
-    Please send feedback and bug reports to support@weatherfactory.biz.
-
-
-    Thank you for your time, your enthusiasm, and the loan of your soul.
-
-
-    - Lottie and Alexis'
+  m_text: "ADEPT'S BUILD: EARLY\n\n<i>This is a mostly complete version of the Adept's
+    Build, specially prepared for press preview.</i>\n\nIt contains summoning rituals,
+    endgame rituals, loads of new content, new music, new art, more UI polish. \n\nThere
+    will be missing bits of content and other oddities.\n\nPlease send feedback and
+    bug reports to support@weatherfactory.biz.\n\nThank you for your time, your enthusiasm,
+    and the loan of your soul.\n\n- Lottie and Alexis"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
@@ -8599,10 +8374,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -9319,11 +9094,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -10039,6 +9814,47 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    speedModifier:
+      serializedVersion: 2
+      minMaxState: 0
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -11436,6 +11252,7 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
+    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -11480,12 +11297,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
+    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -14464,10 +14283,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -14816,10 +14635,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -14972,10 +14791,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -15126,10 +14945,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -15200,7 +15019,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d901299a57def14ca66ec6931695e22, type: 2}
-  m_RootGameObject: {fileID: 317069933}
   m_IsPrefabParent: 0
 --- !u!1 &1782750463
 GameObject:
@@ -15560,6 +15378,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -15664,7 +15483,6 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 114682934411112886, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1a6b760ab60ff74419b14dfad6d9e625, type: 2}
-  m_RootGameObject: {fileID: 395819457}
   m_IsPrefabParent: 0
 --- !u!1 &1952053889
 GameObject:
@@ -16500,11 +16318,11 @@ ParticleSystem:
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
+    m_MeshMaterialIndex: 0
+    m_MeshNormalOffset: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
-    m_MeshMaterialIndex: 0
-    m_MeshNormalOffset: 0
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
@@ -17154,6 +16972,47 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 0
+    speedModifier:
+      serializedVersion: 2
+      minMaxState: 0
+      scalar: 1
+      minScalar: 1
+      maxCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      minCurve:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 2
+          time: 0
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        - serializedVersion: 2
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
     inWorldSpace: 0
   InheritVelocityModule:
     enabled: 0
@@ -18545,6 +18404,7 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
+    mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
@@ -18589,12 +18449,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    ribbonCount: 1
     worldSpace: 0
     dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
     generateLightingData: 0
+    splitSubEmitterRibbons: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -19968,8 +19830,8 @@ MonoBehaviour:
   m_text: 'Dear ______,
 
 
-    This is an early build of the Perpetual Edition of Cultist Simulator. There are
-    still placeholder graphics and uneven mechanics, but it''s beginning to come together.
+    This is an development build of the Perpetual Edition of Cultist Simulator. It''s
+    a work in progress, so there will be occasional miseries.
 
 
     Do let me know what you think, and tell me about any problems you come across.

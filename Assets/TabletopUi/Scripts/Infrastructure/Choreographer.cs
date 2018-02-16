@@ -225,7 +225,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             SituationController existingSituation;
             var sitToken = scc.SourceToken as SituationToken;
 
-            if (sitToken != null) { 
+            if (sitToken != null && sitToken.Id==scc.Recipe.ActionId) { 
                 existingSituation = sitToken.SituationController;
             }
             // We don't have a source token, then get us the first token with the appopriate id.

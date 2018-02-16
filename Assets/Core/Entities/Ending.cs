@@ -29,5 +29,10 @@ namespace Assets.Core.Entities
             EndingFlavour = endingFlavour;
             Anim = anim;
         }
+
+        public static Ending DefaultEnding()
+        {
+        return new Ending("default", "IT IS FINISHED","This one is done.", "suninrags", EndingFlavour.Melancholy, "DramaticLight");
+        }
     }
 }
