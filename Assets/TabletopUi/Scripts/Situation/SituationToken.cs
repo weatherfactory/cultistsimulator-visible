@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI {
             name = "Verb_" + Id;
 
             DisplayIcon(verb);
-            SetAsLightweight(false);// UnityEngine.Random.value < 0.5f); // NOTE: This is random dummy stuff
+            SetAsLightweight(verb.Transient);
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
@@ -135,7 +135,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void ShowDumpButton(bool showButton) {
-            dumpButton.gameObject.SetActive(showButton);
+            dumpButton.gameObject.SetActive(showButton && _verb.Transient);
         }
 
         public void SetEditorActive(bool active) {
