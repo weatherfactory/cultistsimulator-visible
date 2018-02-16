@@ -224,47 +224,47 @@ public class Compendium : ICompendium
             return new Ending(endingFlag, "THE CONFLAGRATION OF THE HEART",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and my body stirs in the ashes. I am hairless and imperishable as marble, and the Forge's fire still burns within me. " +
                 "I carry the Shaping Strength. I will not grow old. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
-                " [Congratulations on a standard Power victory. You have wrestled the game to its knees. There are other paths.] ", "forgeofdays", "DramaticLightCool");
+                " [Congratulations on a standard Power victory. You have wrestled the game to its knees. There are other paths.] ", "forgeofdays", EndingFlavour.Grand, "DramaticLightCool");
 
         if (endingFlag== "minorgrailvictory")
             return new Ending(endingFlag,"THE FEAST OF THE TRUE BIRTH",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and I tear free of the sticky rags of my old flesh. My new body is smooth without and red within like a sweet fruit." +
                 " My limbs are strong as cables and my senses are knife-keen. I will not grow old. I will walk the world in the service of the Grail, feasting, growing. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
-                " [Congratulations on a standard Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail","DramaticLightCool");
+                " [Congratulations on a standard Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail", EndingFlavour.Grand, "DramaticLightCool");
 
         if (endingFlag == "minorlanternvictory")
             return new Ending(endingFlag, "THE INCURSUS",
                 "I have passsed through the Tricuspid Gate, and entered the high rooms of the Mansus. The Glory is very close here. It leaks through the fabric of the House to contribute its light." +
                 " I have walked behind the Watchman: I've seen his shadow on the Stone. Sometimes I hear the Hours debate one with another on the matter of the courses of the world. I will not live. I will not die. Perhaps, one day, I will rise even higher." +
-                " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", "DramaticLightCool");
+                " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool");
 
         if (endingFlag=="deathofthebody")
             return new Ending(endingFlag, "MY BODY IS DEAD",
                 "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
-                "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]", "suninrags", "DramaticLightEvil");
+                "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]", "suninrags", EndingFlavour.Melancholy, "DramaticLightEvil");
         if (endingFlag == "despairending")
             return new Ending(endingFlag, "NO MORE",
-                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "despair", "DramaticLightEvil");
+                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil");
         if (endingFlag == "visionsending")
             return new Ending(endingFlag, "GLORY",
-                "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "madness", "DramaticLight");
+                "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "madness", EndingFlavour.Melancholy, "DramaticLight");
 
         if (endingFlag == "wintersacrifice")
             return new Ending(endingFlag, "GOING QUIETLY",
-                "In the upper room of the house where I am taken, my breath fogs and my eyes grow soft. The light in the room is the light at the end of the sun. I am a beautiful ending.", "suninrags", "DramaticLight");
+                "In the upper room of the house where I am taken, my breath fogs and my eyes grow soft. The light in the room is the light at the end of the sun. I am a beautiful ending.", "suninrags", EndingFlavour.Melancholy, "DramaticLight");
 
         if (endingFlag == "arrest") 
             return new Ending(endingFlag, "Bars across the Sun",
                 "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
-                " that I could have done *everything* I should not.", "notorious", "DramaticLightEvil"
+                " that I could have done *everything* I should not.", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil"
                 );
 
         if (endingFlag == "workvictory")
             return new Ending(endingFlag, "This is pleasant",
                 "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is " +
-                "over the sweet earth will fill my mouth, softer than splinters. [This might be considered a victory.]", "insomnia", "DramaticLight");
+                "over the sweet earth will fill my mouth, softer than splinters. [This might be considered a victory.]", "insomnia", EndingFlavour.Melancholy, "DramaticLight");
 
-        return new Ending("default", "IT IS FINISHED","This one is done.", "suninrags", "DramaticLight");
+        return new Ending("default", "IT IS FINISHED","This one is done.", "suninrags", EndingFlavour.Melancholy, "DramaticLight");
     }
 
     public void ReplaceTokens(IGameEntityStorage populatedCharacter)
