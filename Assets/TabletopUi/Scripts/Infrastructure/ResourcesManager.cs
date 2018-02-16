@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 using UnityEngine;
 
 public class ResourcesManager: MonoBehaviour
@@ -66,5 +67,16 @@ public class ResourcesManager: MonoBehaviour
         {
             return Resources.LoadAll<AudioClip>("music/impendingdoom/");
         }
+
+    public static AudioClip GetEndingMusic(EndingFlavour endingFlavour)
+    {
+        if (endingFlavour == EndingFlavour.Grand)
+            return Resources.Load<AudioClip>("music/endings/grand");
+
+        if (endingFlavour == EndingFlavour.Grand)
+            return Resources.Load<AudioClip>("music/endings/melancholy");
+        else
+            return null;
+    }
 }
 
