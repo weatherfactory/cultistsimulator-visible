@@ -217,7 +217,7 @@ namespace Assets.CS.TabletopUI {
             completionText.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
 
-            ShowDumpButton(newCount > 0, false);            
+            //ShowDumpButton(newCount > 0, false);            
         }
 
 
