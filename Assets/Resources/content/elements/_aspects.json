@@ -4,13 +4,13 @@
         {
             id: "edge",
             label: "Edge",
-			description: "All conquest occurs at the Edge. The one who dwells there cannot see and cannot hear; cannot be wounded and cannot be denied. [Edge is the principle of contention and of battle.]",
+			description: "All conquest occurs at the Edge. One who dwells there is blind, and cannot be wounded. Another is strong, and grows stronger. [Edge is the principle of battle and of struggle.]",
             isAspect: true
         },
         {
             id: "forge",
             label: "Forge",
-			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The Forge of Days transforms and destroys.]",
+			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The principle of the Forge transforms and destroys.]",
             isAspect: true
         },
         {
@@ -34,7 +34,7 @@
         {
             id: "grail",
             label: "Grail",
-			description: "Hunger, lust, the drowning waters. [The principle of the Red Grail demands to be fed.]",
+			description: "Hunger, lust, the drowning waters. [The principle of the Grail honours both the birth and the feast.]",
         isAspect: true,
             triggers:
             {
@@ -172,7 +172,7 @@
         {
             id: "knock",
             label: "Knock",
-			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and exposes horrible secrets.]",
+			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and unseams barriers.]",
             isAspect: true
         },
 		        {
@@ -185,20 +185,20 @@
         {
             id: "secrethistories",
             label: "Secret Histories",
-			        description: "So many pasts. We could suffocate beneath them. [Secret Histories are the hidden lore that distinguishes the Know, like you.]",
+			        description: "History is the scar on the world's skin. [Secret Histories describe the unknown complexities of the world, and its many pasts.]",
             isAspect: true
         },
         {
             id: "lantern",
             label: "Lantern",
-			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of revelation, of the Mansus, and of the light above it.]",
+			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it.]",
             isAspect: true,
 			induces:[{id:"lanterninduction",chance:5}]
         },
 		        {
             id: "winter",
             label: "Winter",
-			description: "... [Winter is the principle of the White.]",
+			description: "... [Winter is the principle of silence, of endings, and of those things that are not quite dead.]",
             isAspect: true
         },
 				        {
