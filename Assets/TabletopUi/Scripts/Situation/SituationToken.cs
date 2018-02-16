@@ -82,7 +82,7 @@ namespace Assets.CS.TabletopUI {
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
-            ShowDumpButton(false, false);
+            ShowDumpButton(false);
 
             ongoingSlotImage.gameObject.SetActive(false);
             situationEditor.Initialise(SituationController);
@@ -134,7 +134,7 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false);
         }
 
-        void ShowDumpButton(bool showButton, bool showGlow) {
+        void ShowDumpButton(bool showButton) {
             dumpButton.gameObject.SetActive(showButton);
         }
 
@@ -217,7 +217,7 @@ namespace Assets.CS.TabletopUI {
             completionText.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
 
-            //ShowDumpButton(newCount > 0, false);            
+            ShowDumpButton(newCount > 0);            
         }
 
 
