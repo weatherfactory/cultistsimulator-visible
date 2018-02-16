@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Sky
-  m_Shader: {fileID: 4800000, guid: 4090321d27e38b642ac5a125935fffff, type: 3}
-  m_ShaderKeywords: EFFECTS_LAYER_1_ON EFFECTS_LAYER_2_ON EFFECTS_LAYER_3_OFF EFFECTS_LAYER_4_OFF
+  m_Shader: {fileID: 4800000, guid: 930068c32c4ff9f4b866e81f7b4b82a1, type: 3}
+  m_ShaderKeywords: EFFECTS_LAYER_1_ON EFFECTS_LAYER_2_OFF EFFECTS_LAYER_3_OFF EFFECTS_LAYER_4_OFF
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,12 +84,12 @@ Material:
     - _EffectsLayer4MotionSpeed: 0
     - _EffectsLayer4Rotation: 0
     m_Colors:
-    - _EffectsLayer1Color: {r: 0.2901961, g: 0.78823537, b: 0.85098046, a: 0.303}
+    - _EffectsLayer1Color: {r: 1, g: 1, b: 1, a: 1}
     - _EffectsLayer1P3vot: {r: 0, g: 0, b: 0, a: 0}
     - _EffectsLayer1Pivot: {r: 0, g: 0, b: 0, a: 0}
     - _EffectsLayer1PivotScale: {r: 0.5, g: 0.5, b: 1, a: 1}
     - _EffectsLayer1Translation: {r: -0, g: 0, b: 0, a: 0}
-    - _EffectsLayer2Color: {r: 0.4705882, g: 0.8685599, b: 1, a: 0.703}
+    - _EffectsLayer2Color: {r: 1, g: 1, b: 1, a: 1}
     - _EffectsLayer2Pivot: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _EffectsLayer2PivotScale: {r: 0.5, g: 0.5, b: 1.5, a: 1.5}
     - _EffectsLayer2Translation: {r: 0, g: 0, b: 0, a: 0}
