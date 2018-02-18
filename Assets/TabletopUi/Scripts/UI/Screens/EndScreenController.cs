@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using TMPro;
@@ -21,7 +22,9 @@ namespace Assets.CS.TabletopUI {
         const float durationFadeIn = 1f;
         const float durationFadeOut = 2f;
 
+        [SerializeField] private AudioSource audioSource;
         protected AudioClip endingMusic;
+        
 
         private void OnEnable() {
             FadeIn(durationFadeIn);
@@ -29,7 +32,7 @@ namespace Assets.CS.TabletopUI {
             var ending = CrossSceneState.GetCurrentEnding();
 
             if (ending == null)
-                return;
+                ending = Ending.DefaultEnding();
 
             PlayEndingMusic(ending);
 
@@ -40,7 +43,9 @@ namespace Assets.CS.TabletopUI {
 
         private void PlayEndingMusic(Ending ending)
         {
-            endingMusic = ResourcesManager.GetEndingMusic(ending.EndingFlavour);
+            endingMusic = ResourcesManager.GetEndingMusic(ending.EndingFlavour).First();
+            audioSource.Stop();
+            audioSource.PlayOneShot(endingMusic);
         }
 
         void FadeIn(float duration) {

@@ -68,13 +68,13 @@ public class ResourcesManager: MonoBehaviour
             return Resources.LoadAll<AudioClip>("music/impendingdoom/");
         }
 
-    public static AudioClip GetEndingMusic(EndingFlavour endingFlavour)
+    public static IEnumerable<AudioClip> GetEndingMusic(EndingFlavour endingFlavour)
     {
         if (endingFlavour == EndingFlavour.Grand)
-            return Resources.Load<AudioClip>("music/endings/grand");
+            return Resources.LoadAll<AudioClip>("music/endings/grand");
 
-        if (endingFlavour == EndingFlavour.Grand)
-            return Resources.Load<AudioClip>("music/endings/melancholy");
+        if (endingFlavour == EndingFlavour.Melancholy)
+            return Resources.LoadAll<AudioClip>("music/endings/melancholy");
         else
             return null;
     }
