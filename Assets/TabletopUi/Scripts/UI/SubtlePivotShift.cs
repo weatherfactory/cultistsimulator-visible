@@ -23,22 +23,11 @@ public class SubtlePivotShift : MonoBehaviour {
     [Tooltip("How strong the mouse movement influences speed.")]
     public float mouseMultiplier = 20f;
 
-	Camera canvasCamera;
-	RectTransform canvasRectTransform;
 	RectTransform rectTransform;
 	Vector2 targetPivot = new Vector2();
 	Vector2 posDelta;
-	float xPos;
-	float yPos;
 
 	void Start() {
-		var canvas = GetComponentInParent<Canvas>();
-
-		if (canvas != null) {
-			canvasCamera = canvas.worldCamera;
-			canvasRectTransform = canvas.GetComponent<RectTransform>();
-		}
-
 		rectTransform = GetComponent<RectTransform>();
 		targetPivot = rectTransform.pivot;
 	}

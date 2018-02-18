@@ -65,7 +65,6 @@ namespace Assets.CS.TabletopUI {
 			set { title.text = value; }
         }
 
-
         // INIT & LIFECYCLE
 
         void OnEnable() {
