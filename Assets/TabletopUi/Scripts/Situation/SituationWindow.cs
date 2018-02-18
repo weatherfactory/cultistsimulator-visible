@@ -274,23 +274,23 @@ namespace Assets.CS.TabletopUI {
 
         // so the token-dump button can trigger this
         public void DumpAllResultingCardsToDesktop() {
-            DumpToDesktop(GetOutputStacks());
+            DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerClick));
             situationController.ResetSituation();
         }
 
         public void DumpAllStartingCardsToDesktop() {
             if (situationController.SituationClock.State == SituationState.Unstarted)
-                DumpToDesktop(GetStartingStacks());
+                DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerClick));
         }
 
-        void DumpToDesktop(IEnumerable<IElementStack> stacks) {
+        void DumpToDesktop(IEnumerable<IElementStack> stacks, Context context) {
             DraggableToken token;
 
             foreach (var item in stacks) {
                 token = item as DraggableToken;
 
                 if (token != null)
-                    token.ReturnToTabletop(null);
+                    token.ReturnToTabletop(context);
             }
         }
 

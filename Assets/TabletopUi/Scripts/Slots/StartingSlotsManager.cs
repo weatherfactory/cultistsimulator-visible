@@ -106,7 +106,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             DraggableToken tokenContained = slot.GetTokenInSlot();
 
             if (tokenContained != null) 
-                tokenContained.ReturnToTabletop(null);
+                tokenContained.ReturnToTabletop(context);
         }
 
         void ArrangeSlots() {

@@ -221,7 +221,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         // Also called directly if we start a new drag while we have a drag going
-        public virtual void DelayedEndDrag() {
+        protected virtual void DelayedEndDrag() {
             canvasGroup.blocksRaycasts = true;
 
             if (DraggableToken.resetToStartPos)
@@ -251,7 +251,7 @@ namespace Assets.CS.TabletopUI {
         private void ReturnToStartPosition() {
             if (startParent == null) {
                 //newly created token! If we try to set it to startposition, it'll disappear into strange places
-                ReturnToTabletop(null);
+                ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
                 return; // no sound on new token
             }
 
@@ -259,7 +259,7 @@ namespace Assets.CS.TabletopUI {
 
             if (startParent.GetComponent<TabletopTokenContainer>()) {
                 //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
-                ReturnToTabletop(null);
+                ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
             else {
                 RectTransform.position = startPosition;
