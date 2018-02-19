@@ -261,7 +261,7 @@
         },
 				 {
         id: "enid_d",
-            label: "Enid, an Unraveller",
+            label: "Enid, a Key",
             aspects:
             {mortal:1,follower:3,knock:8},
             description: "Enid sees the gaps between things, and the arts that she has learned permit her, sometimes, to place her fingers in that gap.",
@@ -288,7 +288,7 @@
         },
 				 {
         id: "neville_d",
-            label: "Neville, an Unraveller",
+            label: "Neville, a Key",
             aspects:
             {mortal:1,follower:3,knock:8},
             description: "In his dreams, Neville sees the flaws where the world and its ways can be opened.",
@@ -405,5 +405,658 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
         },
-]
+		
+		
+		
+					 {
+        id: "auclair_a",
+            label: "Auclair, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Auclair has a scholarly aspect and a morbid streak.[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "auclair_b",
+            label: "Auclair, a believer",
+            aspects:
+            {mortal: 1, follower: 1,winter: 2},
+            animFrames: 1,
+			description: "Auclair is quiet, meticulous and remorseless.",
+			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+
+        },
+				 {
+        id: "auclair_c",
+            label: "Auclair, a disciple",
+            aspects:
+            {mortal:1,follower:2,winter:4},
+            description: "Auclair rarely speaks. She chooses her words with care. Even her movements have become economical. She is never seen to blink.",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+        },
+				 {
+        id: "auclair_d",
+            label: "A gaunt woman, who is silent",
+            aspects:
+            {mortal:1,follower:3,winter:8},
+            description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here..",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+        },
+		
+		
+			 {
+        id: "cat_a",
+            label: "Cat Caro, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "'Cat Caro', as she styles herself, earns a living as a stage medium and a fortune-teller. She may have deeper talents. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: cat_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "cat_b",
+            label: "Cat Caro, a believer",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2},
+            animFrames: 1,
+			description: "A bright-eyed, watchful woman who recalls her dreams perfectly.",
+			xtriggers: {promotiontodisciple: cat_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
+
+        },
+		
+				 {
+        id: "cat_c",
+            label: "Cat Caro, a disciple",
+            aspects:
+            {mortal:1,follower:2,lantern:4},
+            description: "She still performs in the theatres sometimes. 'Cat Caro,' the posters say, 'finds the path; Cat Caro knows the way.'",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
+        },
+				 {
+        id: "cat_d",
+            label: "Cat Caro, a Seer",
+            aspects:
+            {mortal:1,follower:3,lantern:8},
+            description: "Archaeologists find treasures in tombs. Farmers bring harvest from the fields. What does Cat Caro unearth in dreams?",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
+        },
+		
+		
+							 {
+        id: "clifton_a",
+            label: "'Pope' Clifton, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "A bellowing and unorthodox Catholic with a mystic streak and an untrimmed beard. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: clifton_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "clifton_b",
+            label: "'Pope' Clifton, a believer",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2},
+            animFrames: 1,
+			description: "Now Clifton improvises new prayers rich with solar metaphors. He still shouts like a soldier and drinks like a sailor.",
+			xtriggers: {promotiontodisciple: clifton_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
+
+        },
+		
+				 {
+        id: "clifton_c",
+            label: "'Pope' Clifton, a disciple",
+            aspects:
+            {mortal:1,follower:2,lantern:4},
+            description: "Clifton's devotions have grown complex. His eyes have grown wide and shining. His voice has become even louder.",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
+        },
+				 {
+        id: "clifton_d",
+            label: "'Clifton, a Seer",
+            aspects:
+            {mortal:1,follower:3,lantern:8},
+            description: "Clifton still recites his prayers, but they are grown strange as old mirrors. He rises every morning to greet the dawn. He looks it full in the face, and tells you exactly what he sees.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
+        },
+		
+					 {
+        id: "cummings_a",
+            label: "Cummings, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "N.W. Cummings, the astronomer and avant-garde poet, has developed an interest in the esoteric as his health wanes. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: cummings_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "cummings_b",
+            label: "Cummings, a believer",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2},
+            animFrames: 1,
+			description: "Cummings speaks earnestly of his theories to all who will listen: the stars as tiny wounds, and the Sun as a haemorrhage of glory. His poetry is more eccentric than ever.",
+			xtriggers: {promotiontodisciple: cummings_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
+
+        },
+		
+				 {
+        id: "cummings_c",
+            label: "Cummings, a disciple",
+            aspects:
+            {mortal:1,follower:2,lantern:4},
+            description: "Cummings' headaches have become crippling, but his theories grow more practical by the day. His poetry's getting better, too.",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: cummings_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
+        },
+				 {
+        id: "cummings_d",
+            label: "Cummings, a Seer",
+            aspects:
+            {mortal:1,follower:3,lantern:8},
+            description: "Cummings speaks exclusively in mathematics and in poetry. Both are compelling: it is increasingly difficult to tell the difference.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
+        },
+		
+					 {
+        id: "elridge_a",
+            label: "Elridge, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "An elegant man of inelegant habits. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: elridge_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "elridge_b",
+            label: "Elridge, a believer",
+            aspects:
+            {mortal: 1, follower: 1,edge: 2},
+            animFrames: 1,
+			description: "Elridge has almost learnt not to pick his teeth with his knife in conversation. He has not yet learnt to leave his knife in his boot.",
+			xtriggers: {promotiontodisciple: elridge_c,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
+
+        },
+				 {
+        id: "elridge_c",
+            label: "Elridge, a disciple",
+            aspects:
+            {mortal:1,follower:2,edge:4},
+            description: "Elridge is waiting patiently until it's time to knife someone again.",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
+        },
+				 {
+        id: "elridge_d",
+            label: "Elridge, an Assassin",
+            {mortal:1,follower:3,edge:8},
+            description: "Elridge is never seen with a spot of blood upon his person: not a spot.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
+        },
+		
+		
+		
+					 {
+        id: "laidlaw_a",
+            label: "Laidlaw, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Laidlaw is a tinkerer and mechanic with an uncanny knack. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: laidlaw_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "laidlaw_b",
+            label: "Laidlaw, a believer",
+            aspects:
+            {mortal: 1, follower: 1,forge: 2},
+            animFrames: 1,
+			description: "Laidlaw has begun to understand that the limitations of ingenuity, and the power of sacrifice.",
+			xtriggers: {promotiontodisciple: laidlaw_c,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
+
+        },
+		
+				 {
+        id: "laidlaw_c",
+            label: "Laidlaw, a disciple",
+            aspects:
+            {mortal:1,follower:2,forge:4},
+            description: "Laidlaw has learnt the cleverer uses of fire and copper, wax and acid.",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
+        },
+				 {
+        id: "laidlaw_d",
+            label: "Laidlaw, a Reshaper",
+            aspects:
+            {mortal:1,follower:3,forge:8},
+            description: "Laidlaw can shape what is broken into what is necessary.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
+        },
+		
+	
+		
+					 {
+        id: "porter_a",
+            label: "Porter, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Porter was a barber, until the court case. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: porter_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "porter_b",
+            label: "Porter, a believer",
+            aspects:
+            {mortal: 1, follower: 1,moth: 2},
+            animFrames: 1,
+			description: "Porter plies his razor and his scissors to the great advantage of his friends.",
+			xtriggers: {promotiontodisciple: porter_c,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
+
+        },
+				 {
+        id: "porter_c",
+            label: "Porter, a disciple",
+            aspects:
+            {mortal:1,follower:2,moth:4},
+            description: "Porter goes unnoticed, until he's ready.",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
+        },
+				 {
+        id: "porter_d",
+            label: "Porter, a Skintwister",
+            aspects:
+            {mortal:1,follower:3,moth:8},
+            description: "Porter, like a spider, is found in the most unexpected places.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
+        },
+		
+		
+	
+					 {
+        id: "renira_a",
+            label: "Renira, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: renira_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "renira_b",
+            label: "Renira, a believer",
+            aspects:
+            {mortal: 1, follower: 1,grail: 2},
+            animFrames: 1,
+			description: "",
+			xtriggers: {promotiontodisciple: renira_c,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
+
+        },
+		
+				 {
+        id: "renira_c",
+            label: "Renira, a disciple",
+            aspects:
+            {mortal:1,follower:2,grail:4},
+            description: "",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
+        },
+				 {
+        id: "renira_d",
+            label: "Renira, a Cyprian",
+            aspects:
+            {mortal:1,follower:3,grail:8},
+            description: "",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
+        },
+		
+		
+		
+					 {
+        id: "saliba_a",
+            label: "Saliba, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "saliba_b",
+            label: "Saliba, a believer",
+            aspects:
+            {mortal: 1, follower: 1,grail: 2},
+            animFrames: 1,
+			description: "",
+			xtriggers: {promotiontodisciple: saliba_c,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
+
+        },
+		
+				 {
+        id: "saliba_c",
+            label: "Saliba, a disciple",
+            aspects:
+            {mortal:1,follower:2,grail:4},
+            description: "",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
+        },
+				 {
+        id: "saliba_d",
+            label: "Saliba, a Cyprian",
+            aspects:
+            {mortal:1,follower:3,grail:8},
+            description: "",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
+        },
+		
+		
+		
+					 {
+        id: "sylvia_a",
+            label: "Sylvia, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: sylvia_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "sylvia_b",
+            label: "Sylvia, a believer",
+            aspects:
+            {mortal: 1, follower: 1,moth: 2},
+            animFrames: 1,
+			description: "",
+			xtriggers: {promotiontodisciple: sylvia_c,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
+
+        },
+		
+				 {
+        id: "sylvia_c",
+            label: "Sylvia, a disciple",
+            aspects:
+            {mortal:1,follower:2,moth:4},
+            description: "",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
+        },
+				 {
+        id: "sylvia_d",
+            label: "Sylvia, a Skintwister",
+            aspects:
+            {mortal:1,follower:3,moth:8},
+            description: "",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
+        },
+		
+					 {
+        id: "valciane_a",
+            label: "Valciane, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: valciane_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "valciane_b",
+            label: "Valciane, a believer",
+            aspects:
+            {mortal: 1, follower: 1,forge: 2},
+            animFrames: 1,
+			description: "",
+			xtriggers: {promotiontodisciple: valciane_c,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
+
+        },
+		
+				 {
+        id: "valciane_c",
+            label: "Valciane, a disciple",
+            aspects:
+            {mortal:1,follower:2,forge:4},
+            description: "",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
+        },
+				 {
+        id: "valciane_d",
+            label: "Valciane, a Reshaper",
+            aspects:
+            {mortal:1,follower:3,forge:8},
+            description: "",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
+        },
+		
+		
+
+					 {
+        id: "violet_a",
+            label: "Violet, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: violet_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "violet_b",
+            label: "Violet, a believer",
+            aspects:
+            {mortal: 1, follower: 1,winter: 2},
+            animFrames: 1,
+			description: "",
+			xtriggers: {promotiontodisciple: violet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
+
+        },
+		
+				 {
+        id: "violet_c",
+            label: "Violet, a disciple",
+            aspects:
+            {mortal:1,follower:2,winter:4},
+            description: "",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
+        },
+				 {
+        id: "violet_d",
+            label: "A kindly old woman, who is silent",
+            aspects:
+            {mortal:1,follower:3,winter:8},
+            description: "",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
+        },
+		
+		
+		
+					 {
+        id: "ysabet_a",
+            label: "Ysabet, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "[You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: ysabet_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "ysabet_b",
+            label: "Ysabet, a believer",
+            aspects:
+            {mortal: 1, follower: 1,moth: 2},
+            animFrames: 1,
+			description: "",
+			xtriggers: {promotiontodisciple: ysabet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
+
+        },
+		
+				 {
+        id: "ysabet_c",
+            label: "Ysabet, a disciple",
+            aspects:
+            {mortal:1,follower:2,moth:4},
+            description: "",
+			animFrames: 1,
+			xtriggers: {promotiontocultspecialisation: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
+        },
+				 {
+        id: "ysabet_d",
+            label: "Ysabet, a Skintwister",
+            aspects:
+            {mortal:1,follower:3,moth:8},
+            description: "",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
+        },
+					 {
+        id: "auclair_p",
+            label: "Auclair, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: "Auclair does not speak or eat.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "cat_p",
+            label: "Cat Caro, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: "The woman who used to call herself 'Cat Caro' sleeps whenever she can.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "clifton_p",
+            label: "'Pope' Clifton, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "cummings_p",
+            label: "Cummings, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "elridge_p",
+            label: "Elridge, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "laidlaw_p",
+            label: "Laidlaw, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "porter_p",
+            label: "Porter, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "renira_p",
+            label: "Renira, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "saliba_p",
+            label: "Saliba, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "sylvia_p",
+            label: "Sylvia, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "valciane_p",
+            label: "Valciane, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "violet_p",
+            label: "Violet, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "ysabet_p",
+            label: "Yesabet, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1},
+            description: ".",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+	
+		
+		]
 };
