@@ -173,7 +173,7 @@
             {mortal:1,follower:2,heart:4},
             description: "Clovette's optimism is daunting. She wields her joy like a hammer.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: clovette_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p}
+			xtriggers: {promotionto_d_heart: clovette_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p}
         },
 		
 		 {
@@ -183,7 +183,7 @@
             {mortal:1,follower:2,heart:4},
             description: "Dorothy's enthusiasm has become obsession. She will not cease; and how she loves to dance.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p}
+			xtriggers: {promotionto_d_heart: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p}
         },
 				 {
         id: "enid_c",
@@ -192,7 +192,7 @@
             {mortal:1,follower:2,knock:4},
             description: "Enid sees what others do not. It is becoming difficult for her, but it is very useful.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: enid_d,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p}
+			xtriggers: {promotionto_d_knock: enid_d,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p}
         },
 				 {
         id: "rose_c",
@@ -201,7 +201,7 @@
             {mortal:1,follower:2,edge:4},
             description: "Rose has sharpened her cunning to a concentrated point.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: rose_d,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p}
+			xtriggers: {promotionto_d_edge: rose_d,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p}
         },
 				 {
         id: "leo_c",
@@ -210,7 +210,7 @@
             {mortal:1,follower:2, heart:4},
             description: "Leo still yearns to preserve what is good and valuable; but he understands that to protect one's ideals, one must sometimes do questionable things.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation:leo_d,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p}
+			xtriggers: {promotionto_d_heart:leo_d,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p}
         },
 				 {
         id: "neville_c",
@@ -219,7 +219,7 @@
             {mortal:1,follower:2,knock:4},
             description: "Neville's gaze has grown furtive, and his voice is sometimes shrill. He speaks freely of his dreams.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: neville_d,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p}
+			xtriggers: {promotionto_d_knock: neville_d,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p}
         },
 						 {
         id: "tristan_c",
@@ -228,7 +228,7 @@
             {mortal:1,follower:2,forge:4},
             description: "Tristan will do what is necessary. To create, sometimes one must first destroy.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: tristan_d,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p}
+			xtriggers: {promotionto_d_forge: tristan_d,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p}
         },
 				 {
         id: "victor_c",
@@ -237,7 +237,7 @@
             {mortal:1,follower:2,edge:4},
             description: "Victor has sharpened his cunning to a concentrated point.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: victor_d,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p}
+			xtriggers: {promotionto_d_edge: victor_d,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p}
         },
 		
 		
@@ -434,7 +434,7 @@
             {mortal:1,follower:2,winter:4},
             description: "Auclair rarely speaks. She chooses her words with care. Even her movements have become economical. She is never seen to blink.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
         },
 				 {
         id: "auclair_d",
@@ -474,7 +474,7 @@
             {mortal:1,follower:2,lantern:4},
             description: "She still performs in the theatres sometimes. 'Cat Caro,' the posters say, 'finds the path; Cat Caro knows the way.'",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
+			xtriggers: {promotionto_d_lantern: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
         },
 				 {
         id: "cat_d",
@@ -514,7 +514,7 @@
             {mortal:1,follower:2,lantern:4},
             description: "Clifton's devotions have grown complex. His eyes have grown wide and shining. His voice has become even louder.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
+			xtriggers: {promotionto_d_lantern: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
         },
 				 {
         id: "clifton_d",
@@ -553,7 +553,7 @@
             {mortal:1,follower:2,lantern:4},
             description: "Cummings' headaches have become crippling, but his theories grow more practical by the day. His poetry's getting better, too.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: cummings_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
+			xtriggers: {promotionto_d_lantern: cummings_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
         },
 				 {
         id: "cummings_d",
@@ -591,7 +591,7 @@
             {mortal:1,follower:2,edge:4},
             description: "Elridge is waiting patiently until it's time to knife someone again.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
+			xtriggers: {promotionto_d_edge: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
         },
 				 {
         id: "elridge_d",
@@ -631,7 +631,7 @@
             {mortal:1,follower:2,forge:4},
             description: "Laidlaw has learnt the cleverer uses of fire and copper, wax and acid.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
+			xtriggers: {promotionto_d_forge: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
         },
 				 {
         id: "laidlaw_d",
@@ -671,7 +671,7 @@
             {mortal:1,follower:2,moth:4},
             description: "Porter goes unnoticed, until he's ready.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
+			xtriggers: {promotionto_d_moth: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
         },
 				 {
         id: "porter_d",
@@ -712,7 +712,7 @@
             {mortal:1,follower:2,grail:4},
             description: "Renira commands admiration wherever she goes. She reserves her attentions  for those who merit admiration in return.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
+			xtriggers: {promotionto_d_grail: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
         },
 				 {
         id: "renira_d",
@@ -752,7 +752,7 @@
             {mortal:1,follower:2,grail:4},
             description: "Saliba's pleasures are taken in a room without windows. His companions return to him again and again, even though each time they are a little less.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
+			xtriggers: {promotionto_d_grail: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
         },
 				 {
         id: "saliba_d",
@@ -790,7 +790,7 @@
             {mortal:1,follower:2,moth:4},
             description: "Sylvia's favourite tactic is to smile and close her eye. It is remarkable how often her interlocutor will blurt out exactly what they are thinking.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
+			xtriggers: {promotionto_d_moth: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
         },
 				 {
         id: "sylvia_d",
@@ -829,7 +829,7 @@
             {mortal:1,follower:2,forge:4},
             description: "Valciane is not a machine. We are reasonably confident of that, because she has been observed, now and then, to commit quite human errors.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
+			xtriggers: {promotionto_d_forge: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
         },
 				 {
         id: "valciane_d",
@@ -869,7 +869,7 @@
             {mortal:1,follower:2,winter:4},
             description: "Violet is always very careful.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
+			xtriggers: {promotionto_d_winter: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
         },
 				 {
         id: "violet_d",
@@ -907,7 +907,7 @@
             {mortal:1,follower:2,moth:4},
             description: "Ysabet was just here, just a moment ago. Just here. Almost certainly.",
 			animFrames: 1,
-			xtriggers: {promotiontocultspecialisation: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
+			xtriggers: {promotionto_d_moth: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
         },
 				 {
         id: "ysabet_d",
