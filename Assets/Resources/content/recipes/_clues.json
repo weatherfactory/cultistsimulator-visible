@@ -144,6 +144,108 @@
         craftable: false,
 		hintonly: true
     },
+	
+	{
+        id: "promotetodiscipleedge",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultedge_1:1,follower:1},
+
+        startdescription: "To promote a Believer to a Disciple of this cult, I will need Edge to at least the seventh intensity.",
+
+        hintonly:true,
+        craftable: true
+    },
+		  	{
+        id: "promotetodiscipleforge",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultforge_1:1,follower:1},
+
+        startdescription: "To promote a Believer to a Disciple of this cult, I will need Forge to at least the seventh intensity.",
+        hintonly:true,
+        craftable: true
+    },
+		  	{
+        id: "promotetodisciplegrail",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultgrail_1:1,follower:1},
+        startdescription: "To promote a Believer to a Disciple of this cult, I will need Grail to at least the seventh intensity.",
+
+        hintonly:true,
+        craftable: true
+    },
+			  	{
+        id: "promotetodiscipleheart",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultheart_1: 1,follower:1},
+ 
+		
+        startdescription: "To promote a Believer to a Disciple of this cult, I will need Heart to at least the seventh intensity.",
+        hintonly:true,
+        craftable: true
+    },
+				  	{
+        id: "promotetodiscipleknock",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultknock_1: 1,follower:1},
+ 
+		
+             startdescription: "To promote a Believer to a Disciple of this cult, I will need Knock to at least the seventh intensity.",
+        hintonly:true,
+        craftable: true
+    },
+					  	{
+        id: "promotetodisciplelantern",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultlantern_1: 1,follower:1},
+ 
+		
+               startdescription: "To promote a Believer to a Disciple of this cult, I will need Lantern to at least the seventh intensity.",
+        description: "'He navigates. Now you are the map. He illuminates. You were the darkness. He is not compassionate. You will not show compassion. Our compass is Knowledge and our course is Glory.'",
+        hintonly:true,
+        craftable: true
+    },
+						  	{
+        id: "promotetodisciplemoth",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultmoth_1: 1,follower:1},
+ 
+		
+             startdescription: "To promote a Believer to a Disciple of this cult, I will need Moth to at least the seventh intensity.",
+        description: "'Now the scissors, and then the knife. Now the wood, and then the bones. Now the flutter of the moon, and then the dappling of the soul. He was blood, and so will we be.'",
+        hintonly:true,
+        craftable: true
+    },
+							  	{
+        id: "promotetodisciplesecrethistories",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultsecrethistories_1: 1,follower:1},
+ 
+		
+              startdescription: "To promote a Believer to a Disciple of this cult, I will need Secret Histories to at least the seventh intensity.",
+        description: "'Five Histories join in one Future. So now are you joined to us. Be secret, be wise, be ruthless; be curious; be, above all else, loyal.'",
+        hintonly:true,
+        craftable: true
+    },
+	
+							  	{
+        id: "promotetodisciplewinter",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {cultwinter_1: 1,follower:1},
+ 
+		
+        startdescription: "To promote a Believer to a Disciple of this cult, I will need Winter to at least the seventh intensity.",
+        hintonly:true,
+        craftable: true
+    },
 
 	
 ]
