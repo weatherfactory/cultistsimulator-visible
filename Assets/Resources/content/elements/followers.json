@@ -170,7 +170,7 @@
         id: "clovette_c",
             label: "Clovette, a disciple",
             aspects:
-            {mortal:1,follower:2,heart:4},
+            {mortal:1,follower:1, disciple:1,heart:10},
             description: "Clovette's optimism is daunting. She wields her joy like a hammer.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_heart: clovette_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p}
@@ -180,7 +180,7 @@
         id: "dorothy_c",
             label: "Dorothy, a disciple",
             aspects:
-            {mortal:1,follower:2,heart:4},
+            {mortal:1,follower:1, disciple:1,heart:10},
             description: "Dorothy's enthusiasm has become obsession. She will not cease; and how she loves to dance.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_heart: dorothy_d,killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p}
@@ -189,7 +189,7 @@
         id: "enid_c",
             label: "Enid, a disciple",
             aspects:
-            {mortal:1,follower:2,knock:4},
+            {mortal:1,follower:1, disciple:1,knock:10},
             description: "Enid sees what others do not. It is becoming difficult for her, but it is very useful.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_knock: enid_d,killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p}
@@ -198,7 +198,7 @@
         id: "rose_c",
             label: "Rose, a disciple",
             aspects:
-            {mortal:1,follower:2,edge:4},
+            {mortal:1,follower:1, disciple:1,edge:10},
             description: "Rose has sharpened her cunning to a concentrated point.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_edge: rose_d,killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p}
@@ -207,7 +207,7 @@
         id: "leo_c",
             label: "Leo, a disciple",
             aspects:
-            {mortal:1,follower:2, heart:4},
+            {mortal:1,follower:1, disciple:1, heart:10},
             description: "Leo still yearns to preserve what is good and valuable; but he understands that to protect one's ideals, one must sometimes do questionable things.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_heart:leo_d,killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p}
@@ -216,7 +216,7 @@
         id: "neville_c",
             label: "Neville, a disciple",
             aspects:
-            {mortal:1,follower:2,knock:4},
+            {mortal:1,follower:1, disciple:1,knock:10},
             description: "Neville's gaze has grown furtive, and his voice is sometimes shrill. He speaks freely of his dreams.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_knock: neville_d,killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p}
@@ -225,7 +225,7 @@
         id: "tristan_c",
             label: "Tristan, a disciple",
             aspects:
-            {mortal:1,follower:2,forge:4},
+            {mortal:1,follower:1, disciple:1,forge:10},
             description: "Tristan will do what is necessary. To create, sometimes one must first destroy.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_forge: tristan_d,killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p}
@@ -234,7 +234,7 @@
         id: "victor_c",
             label: "Victor, a disciple",
             aspects:
-            {mortal:1,follower:2,edge:4},
+            {mortal:1,follower:1, disciple:1,edge:10},
             description: "Victor has sharpened his cunning to a concentrated point.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_edge: victor_d,killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p}
@@ -245,7 +245,7 @@
         id: "clovette_d",
             label: "Clovette, a Tarantellist",
             aspects:
-            {mortal:1,follower:3,heart:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,heart:8},
             description: "Clovette is always in motion. She laughs easily. Her smile is the crescent at the edge of the moon.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p}
@@ -254,7 +254,7 @@
         id: "dorothy_d",
             label: "Dorothy, a Tarantellist",
             aspects:
-            {mortal:1,follower:3,heart:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,heart:8},
             description: "When Dorothy moves, we hear the drum. When she speaks, we see the dance. Her determination is her shield and her weapon.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p}
@@ -263,7 +263,7 @@
         id: "enid_d",
             label: "Enid, a Key",
             aspects:
-            {mortal:1,follower:3,knock:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:8},
             description: "Enid sees the gaps between things, and the arts that she has learned permit her, sometimes, to place her fingers in that gap.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p}
@@ -272,7 +272,7 @@
         id: "rose_d",
             label: "Rose, an Assassin",
             aspects:
-            {mortal:1,follower:3,edge:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:8},
             description: "The night before Rose meets her subject, the subject will receive a package with a single yellow rose.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p}
@@ -281,7 +281,7 @@
         id: "leo_d",
             label: "Leo, a Tarantellist",
             aspects:
-            {mortal:1,follower:3, heart:8},
+            {mortal:1,follower:1, disciple:1,exalted:1, heart:8},
             description: "Leo will preserve, at all costs. He will not cease.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p}
@@ -290,7 +290,7 @@
         id: "neville_d",
             label: "Neville, a Key",
             aspects:
-            {mortal:1,follower:3,knock:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:8},
             description: "In his dreams, Neville sees the flaws where the world and its ways can be opened.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p}
@@ -299,7 +299,7 @@
         id: "tristan_d",
             label: "Tristan, a Reshaper",
             aspects:
-            {mortal:1,follower:3,forge:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:8},
             description: "In another age, Tristan might have been a smith. In another life, he might have been a bomb-maker.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p}
@@ -308,7 +308,7 @@
         id: "victor_d",
             label: "Victor, an Assassin",
             aspects:
-            {mortal:1,follower:3,edge:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:8},
             description: "Victor likes to become acquainted with his subjects, so he can apologise to them personally, just before the end.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p}
@@ -431,7 +431,7 @@
         id: "auclair_c",
             label: "Auclair, a disciple",
             aspects:
-            {mortal:1,follower:2,winter:4},
+            {mortal:1,follower:1, disciple:1,winter:10},
             description: "Auclair rarely speaks. She chooses her words with care. Even her movements have become economical. She is never seen to blink.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
@@ -440,7 +440,7 @@
         id: "auclair_d",
             label: "A gaunt woman, who is silent",
             aspects:
-            {mortal:1,follower:3,winter:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:8},
             description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here..",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
@@ -471,7 +471,7 @@
         id: "cat_c",
             label: "Cat Caro, a disciple",
             aspects:
-            {mortal:1,follower:2,lantern:4},
+            {mortal:1,follower:1, disciple:1,lantern:10},
             description: "She still performs in the theatres sometimes. 'Cat Caro,' the posters say, 'finds the path; Cat Caro knows the way.'",
 			animFrames: 1,
 			xtriggers: {promotionto_d_lantern: cat_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
@@ -480,7 +480,7 @@
         id: "cat_d",
             label: "Cat Caro, a Seer",
             aspects:
-            {mortal:1,follower:3,lantern:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:8},
             description: "Archaeologists find treasures in tombs. Farmers bring harvest from the fields. What does Cat Caro unearth in dreams?",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
@@ -511,7 +511,7 @@
         id: "clifton_c",
             label: "'Pope' Clifton, a disciple",
             aspects:
-            {mortal:1,follower:2,lantern:4},
+            {mortal:1,follower:1, disciple:1,lantern:10},
             description: "Clifton's devotions have grown complex. His eyes have grown wide and shining. His voice has become even louder.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_lantern: clifton_d,killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
@@ -520,7 +520,7 @@
         id: "clifton_d",
             label: "'Clifton, a Seer",
             aspects:
-            {mortal:1,follower:3,lantern:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:8},
             description: "Clifton still recites his prayers, but they are grown strange as old mirrors. He rises every morning to greet the dawn. He looks it full in the face, and tells you exactly what he sees.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
@@ -550,7 +550,7 @@
         id: "cummings_c",
             label: "Cummings, a disciple",
             aspects:
-            {mortal:1,follower:2,lantern:4},
+            {mortal:1,follower:1, disciple:1,lantern:10},
             description: "Cummings' headaches have become crippling, but his theories grow more practical by the day. His poetry's getting better, too.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_lantern: cummings_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
@@ -559,7 +559,7 @@
         id: "cummings_d",
             label: "Cummings, a Seer",
             aspects:
-            {mortal:1,follower:3,lantern:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:8},
             description: "Cummings speaks exclusively in mathematics and in poetry. Both are compelling: it is increasingly difficult to tell the difference.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
@@ -588,7 +588,7 @@
         id: "elridge_c",
             label: "Elridge, a disciple",
             aspects:
-            {mortal:1,follower:2,edge:4},
+            {mortal:1,follower:1, disciple:1,edge:10},
             description: "Elridge is waiting patiently until it's time to knife someone again.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_edge: elridge_d,killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
@@ -596,7 +596,7 @@
 				 {
         id: "elridge_d",
             label: "Elridge, an Assassin",
-            {mortal:1,follower:3,edge:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:8},
             description: "Elridge is never seen with a spot of blood upon his person. Not a spot.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
@@ -628,7 +628,7 @@
         id: "laidlaw_c",
             label: "Laidlaw, a disciple",
             aspects:
-            {mortal:1,follower:2,forge:4},
+            {mortal:1,follower:1, disciple:1,forge:10},
             description: "Laidlaw has learnt the cleverer uses of fire and copper, wax and acid.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_forge: laidlaw_d,killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
@@ -637,7 +637,7 @@
         id: "laidlaw_d",
             label: "Laidlaw, a Reshaper",
             aspects:
-            {mortal:1,follower:3,forge:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:8},
             description: "Laidlaw can shape what is broken into what is necessary.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
@@ -668,7 +668,7 @@
         id: "porter_c",
             label: "Porter, a disciple",
             aspects:
-            {mortal:1,follower:2,moth:4},
+            {mortal:1,follower:1, disciple:1,moth:10},
             description: "Porter goes unnoticed, until he's ready.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_moth: porter_d,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
@@ -677,7 +677,7 @@
         id: "porter_d",
             label: "Porter, a Skintwister",
             aspects:
-            {mortal:1,follower:3,moth:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,moth:8},
             description: "Porter, like a spider, is found in the most unexpected places.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
@@ -709,7 +709,7 @@
         id: "renira_c",
             label: "Renira, a disciple",
             aspects:
-            {mortal:1,follower:2,grail:4},
+            {mortal:1,follower:1, disciple:1,grail:10},
             description: "Renira commands admiration wherever she goes. She reserves her attentions  for those who merit admiration in return.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_grail: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
@@ -718,7 +718,7 @@
         id: "renira_d",
             label: "Renira, a Cyprian",
             aspects:
-            {mortal:1,follower:3,grail:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,grail:8},
             description: "Renira receives tokens from admirers almost daily. Some gifts are flowers, others poetry. Sometimes she receives jewels; sometimes, desperate gifts wrapped tightly in blood-stained crepe paper.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
@@ -749,7 +749,7 @@
         id: "saliba_c",
             label: "Saliba, a disciple",
             aspects:
-            {mortal:1,follower:2,grail:4},
+            {mortal:1,follower:1, disciple:1,grail:10},
             description: "Saliba's pleasures are taken in a room without windows. His companions return to him again and again, even though each time they are a little less.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_grail: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
@@ -758,7 +758,7 @@
         id: "saliba_d",
             label: "Saliba, a Cyprian",
             aspects:
-            {mortal:1,follower:3,grail:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,grail:8},
             description: "Saliba's charisma strikes with the force of a hammer. It is horribly difficult to refuse his desires.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
@@ -787,7 +787,7 @@
         id: "sylvia_c",
             label: "Sylvia, a disciple",
             aspects:
-            {mortal:1,follower:2,moth:4},
+            {mortal:1,follower:1, disciple:1,moth:10},
             description: "Sylvia's favourite tactic is to smile and close her eye. It is remarkable how often her interlocutor will blurt out exactly what they are thinking.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_moth: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
@@ -796,7 +796,7 @@
         id: "sylvia_d",
             label: "Sylvia, a Skintwister",
             aspects:
-            {mortal:1,follower:3,moth:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,moth:8},
             description: "Sylvia has learnt to get out of a place almost before she has gotten in. Sometimes, she leaves dead leaves beneath the window-sill. Sometimes, she writes her name where it won't be found.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
@@ -826,7 +826,7 @@
         id: "valciane_c",
             label: "Valciane, a disciple",
             aspects:
-            {mortal:1,follower:2,forge:4},
+            {mortal:1,follower:1, disciple:1,forge:10},
             description: "Valciane is not a machine. We are reasonably confident of that, because she has been observed, now and then, to commit quite human errors.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_forge: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
@@ -835,7 +835,7 @@
         id: "valciane_d",
             label: "Valciane, a Reshaper",
             aspects:
-            {mortal:1,follower:3,forge:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:8},
             description: "Valciane has begun to work without tools. 'They get in the way,' she claims.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
@@ -866,7 +866,7 @@
         id: "violet_c",
             label: "Violet, a disciple",
             aspects:
-            {mortal:1,follower:2,winter:4},
+            {mortal:1,follower:1, disciple:1,winter:10},
             description: "Violet is always very careful.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_winter: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
@@ -875,7 +875,7 @@
         id: "violet_d",
             label: "A kindly-faced woman, who is silent",
             aspects:
-            {mortal:1,follower:3,winter:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:8},
             description: "Sleep, now. Don't worry about a thing.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
@@ -904,7 +904,7 @@
         id: "ysabet_c",
             label: "Ysabet, a disciple",
             aspects:
-            {mortal:1,follower:2,moth:4},
+            {mortal:1,follower:1, disciple:1,moth:10},
             description: "Ysabet was just here, just a moment ago. Just here. Almost certainly.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_moth: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
@@ -913,7 +913,7 @@
         id: "ysabet_d",
             label: "Ysabet, a Skintwister",
             aspects:
-            {mortal:1,follower:3,moth:8},
+            {mortal:1,follower:1, disciple:1,exalted:1,moth:8},
             description: "Ysabet never lies, now. She doesn't need to..",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
