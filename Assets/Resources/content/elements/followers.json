@@ -390,7 +390,7 @@
             label: "Victor, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: "Victor's eyes are black wells of rage.",
+            description: "Victor's eyes are wells of rage.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -597,7 +597,7 @@
         id: "elridge_d",
             label: "Elridge, an Assassin",
             {mortal:1,follower:3,edge:8},
-            description: "Elridge is never seen with a spot of blood upon his person: not a spot.",
+            description: "Elridge is never seen with a spot of blood upon his person. Not a spot.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
         },
@@ -660,7 +660,7 @@
             aspects:
             {mortal: 1, follower: 1,moth: 2},
             animFrames: 1,
-			description: "Porter plies his razor and his scissors to the great advantage of his friends.",
+			description: "Porter plies his razor and his scissors, to the great advantage of his friends.",
 			xtriggers: {promotiontodisciple: porter_c,killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
 
         },
@@ -690,7 +690,7 @@
             label: "Renira, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "[You might be able to recruit this acquaintance as a follower.]",
+            description: "Renira has been found not guilty three times in three separate jurisdictions. She will likely never be found guilty of anything. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: renira_b,killmortal:corpse,derangemortal:lunatic}
         },
@@ -700,7 +700,7 @@
             aspects:
             {mortal: 1, follower: 1,grail: 2},
             animFrames: 1,
-			description: "",
+			description: "Renira continues to pursue her appetites discreetly, although her ambitions have grown. ",
 			xtriggers: {promotiontodisciple: renira_c,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
 
         },
@@ -710,7 +710,7 @@
             label: "Renira, a disciple",
             aspects:
             {mortal:1,follower:2,grail:4},
-            description: "",
+            description: "Renira commands admiration wherever she goes. She reserves her attentions  for those who merit admiration in return.",
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: renira_d,killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
         },
@@ -719,19 +719,18 @@
             label: "Renira, a Cyprian",
             aspects:
             {mortal:1,follower:3,grail:8},
-            description: "",
+            description: "Renira receives tokens from admirers almost daily. Some gifts are flowers, others poetry. Sometimes she receives jewels; sometimes, desperate gifts wrapped tightly in blood-stained crepe paper.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
         },
 		
-		
-		
+
 					 {
         id: "saliba_a",
             label: "Saliba, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "[You might be able to recruit this acquaintance as a follower.]",
+            description: "Saliba is a man of prodigious appetites. He is long past the point where their satisfaction has given him any pleasure; but he has learnt so very much. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic}
         },
@@ -741,7 +740,7 @@
             aspects:
             {mortal: 1, follower: 1,grail: 2},
             animFrames: 1,
-			description: "",
+			description: "Saliba understands blood. He does not yet understand birth.",
 			xtriggers: {promotiontodisciple: saliba_c,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
 
         },
@@ -751,7 +750,7 @@
             label: "Saliba, a disciple",
             aspects:
             {mortal:1,follower:2,grail:4},
-            description: "",
+            description: "Saliba's pleasures are taken in a room without windows. His companions return to him again and again, even though each time they are a little less.",
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: saliba_d,killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
         },
@@ -760,19 +759,17 @@
             label: "Saliba, a Cyprian",
             aspects:
             {mortal:1,follower:3,grail:8},
-            description: "",
+            description: "Saliba's charisma strikes with the force of a hammer. It is horribly difficult to refuse his desires.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
         },
-		
-		
 		
 					 {
         id: "sylvia_a",
             label: "Sylvia, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "[You might be able to recruit this acquaintance as a follower.]",
+            description: "Sylvia lost her eye in the woods when she was nine years old. Every year, at Candlemas, she returns to the place she buried it. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: sylvia_b,killmortal:corpse,derangemortal:lunatic}
         },
@@ -782,17 +779,16 @@
             aspects:
             {mortal: 1, follower: 1,moth: 2},
             animFrames: 1,
-			description: "",
+			description: "Sylvia has a detailed knowledge of roof-ridges, of the river at low tide, of Irish whiskey, and of conjuring tricks.",
 			xtriggers: {promotiontodisciple: sylvia_c,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
 
         },
-		
 				 {
         id: "sylvia_c",
             label: "Sylvia, a disciple",
             aspects:
             {mortal:1,follower:2,moth:4},
-            description: "",
+            description: "Sylvia's favourite tactic is to smile and close her eye. It is remarkable how often her interlocutor will blurt out exactly what they are thinking.",
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: sylvia_d,killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
         },
@@ -801,7 +797,7 @@
             label: "Sylvia, a Skintwister",
             aspects:
             {mortal:1,follower:3,moth:8},
-            description: "",
+            description: "Sylvia has learnt to get out of a place almost before she has gotten in. Sometimes, she leaves dead leaves beneath the window-sill. Sometimes, she writes her name where it won't be found.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
         },
@@ -811,7 +807,7 @@
             label: "Valciane, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "[You might be able to recruit this acquaintance as a follower.]",
+            description: "Valciane has operated her establishment for almost twenty years. She has never employed an assistant. Her hands are terribly strong. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: valciane_b,killmortal:corpse,derangemortal:lunatic}
         },
@@ -821,7 +817,7 @@
             aspects:
             {mortal: 1, follower: 1,forge: 2},
             animFrames: 1,
-			description: "",
+			description: "Valciane's ingenuities are endless, and her grip is stronger than a blacksmith's.",
 			xtriggers: {promotiontodisciple: valciane_c,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
 
         },
@@ -831,7 +827,7 @@
             label: "Valciane, a disciple",
             aspects:
             {mortal:1,follower:2,forge:4},
-            description: "",
+            description: "Valciane is not a machine. We are reasonably confident of that, because she has been observed, now and then, to commit quite human errors.",
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: valciane_d,killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
         },
@@ -840,19 +836,18 @@
             label: "Valciane, a Reshaper",
             aspects:
             {mortal:1,follower:3,forge:8},
-            description: "",
+            description: "Valciane has begun to work without tools. 'They get in the way,' she claims.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
         },
-		
-		
+			
 
 					 {
         id: "violet_a",
             label: "Violet, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "[You might be able to recruit this acquaintance as a follower.]",
+            description: "Violet has always given unstintingly of her time, easing the pain of the dying. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: violet_b,killmortal:corpse,derangemortal:lunatic}
         },
@@ -862,7 +857,7 @@
             aspects:
             {mortal: 1, follower: 1,winter: 2},
             animFrames: 1,
-			description: "",
+			description: "Violet likes to paint. She has a gift, although she's always been very modest about it. She never puts human figures in her paintings. There are enough people in the world.",
 			xtriggers: {promotiontodisciple: violet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
 
         },
@@ -872,28 +867,26 @@
             label: "Violet, a disciple",
             aspects:
             {mortal:1,follower:2,winter:4},
-            description: "",
+            description: "Violet is always very careful.",
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: violet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
         },
 				 {
         id: "violet_d",
-            label: "A kindly old woman, who is silent",
+            label: "A kindly-faced woman, who is silent",
             aspects:
             {mortal:1,follower:3,winter:8},
-            description: "",
+            description: "Sleep, now. Don't worry about a thing.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
         },
-		
-		
-		
+	
 					 {
         id: "ysabet_a",
             label: "Ysabet, an acquaintance",
             aspects:
             {mortal: 1},
-            description: "[You might be able to recruit this acquaintance as a follower.]",
+            description: "Ysabet has always been most comfortable by moonlight. She has excellent night vision. She is often overlooked in daylight.[You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: ysabet_b,killmortal:corpse,derangemortal:lunatic}
         },
@@ -903,17 +896,16 @@
             aspects:
             {mortal: 1, follower: 1,moth: 2},
             animFrames: 1,
-			description: "",
+			description: "Ysabet sleeps in fits and starts. She rises at dusk to do the things an Ysabet does.",
 			xtriggers: {promotiontodisciple: ysabet_c,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
 
         },
-		
 				 {
         id: "ysabet_c",
             label: "Ysabet, a disciple",
             aspects:
             {mortal:1,follower:2,moth:4},
-            description: "",
+            description: "Ysabet was just here, just a moment ago. Just here. Almost certainly.",
 			animFrames: 1,
 			xtriggers: {promotiontocultspecialisation: ysabet_d,killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
         },
@@ -922,7 +914,7 @@
             label: "Ysabet, a Skintwister",
             aspects:
             {mortal:1,follower:3,moth:8},
-            description: "",
+            description: "Ysabet never lies, now. She doesn't need to..",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
         },
@@ -951,7 +943,7 @@
             label: "'Pope' Clifton, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Clifton roars and curses, but the bars hold, and the walls are thick.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -961,7 +953,7 @@
             label: "Cummings, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Cummings writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -971,7 +963,7 @@
             label: "Elridge, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Elridge is not permitted a spoon, or a plate. It is probably unwise to permit him even the sharper vegetables..",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -981,7 +973,7 @@
             label: "Laidlaw, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Laidlaw's door is bolted, not locked. We know better than that.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -991,7 +983,7 @@
             label: "Porter, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Porter waits, still as a lizard.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1001,7 +993,7 @@
             label: "Renira, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Renira always finds ways to pass the time.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1011,7 +1003,7 @@
             label: "Saliba, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Saliba's anger burns like lava beneath ash.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1021,7 +1013,7 @@
             label: "Sylvia, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "We check on Sylvia every hour, just in case.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1031,7 +1023,7 @@
             label: "Valciane, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "It is very important never to get within arm's reach of Valciane.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1041,7 +1033,7 @@
             label: "Violet, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "Violet insists that she's fine. She's fine.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1051,7 +1043,7 @@
             label: "Yesabet, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: ".",
+            description: "If Ysabet is weeping, she does so with dry eyes.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
