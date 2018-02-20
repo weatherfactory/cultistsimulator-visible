@@ -90,7 +90,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         DraggableToken tokenContained = slot.GetTokenInSlot();
 
         if (tokenContained != null) {
-            tokenContained.ReturnToTabletop(null);
+            tokenContained.ReturnToTabletop(context);
         }
 
         slot.Retire();
