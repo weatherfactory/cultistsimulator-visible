@@ -55,7 +55,8 @@ defaultcard: "mistakenidentity"	},
 	"commissionarticlelanternb",
 	"commissionarticlelanternc"]
 	,
-	defaultcard:"commissionarticlesecrethistory"},
+	defaultcard:"commissionarticlesecrethistory",
+resetonexhaustion:true	},
 	
 		{id: "bechetcommissions",
 	spec:["commissionarticleforge",
@@ -68,7 +69,8 @@ defaultcard: "mistakenidentity"	},
 	"commissionarticlemothb",
 	"commissionarticlemothc"]
 	,
-	defaultcard:"commissionarticlegrail"},
+	defaultcard:"commissionarticlegrail",
+resetonexhaustion:true	},
 
 		{id: "janningscommissions",
 	spec:["commissionarticleedge",
@@ -78,7 +80,14 @@ defaultcard: "mistakenidentity"	},
 	"commissionarticleheartb",
 	"commissionarticleheartc"]
 	,
-	defaultcard:"commissionarticleedge"}
+	defaultcard:"commissionarticleedge",
+resetonexhaustion:true	},
+	
+			{id: "randomvictim",
+	spec:["genericprisonerm",
+	"genericprisonerf"],
+	defaultcard:"genericprisonerm",
+resetonexhaustion:true	}
 	
 	]
 }

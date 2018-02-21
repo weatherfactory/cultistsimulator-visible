@@ -1,0 +1,88 @@
+{
+"recipes": [
+
+{id: "talktofollower",
+label:"Discuss occult business with a Follower",
+actionId: "talk",
+requirements: {society:-1,follower: 1,summoned:-1},
+slots: {"Subject": {description:"A topic of conversation... or a target."}},
+comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+alternativerecipes:[
+{id:"followeraction_kidnaphighedge",chance:100},
+{id:"followeraction_kidnapmidedge",chance:100},
+{id:"followeraction_kidnaplowedge",chance:100},
+{id:"hunterattackhighedge",chance:100},
+{id:"hunterattackmidedge",chance:100},
+{id:"hunterattacklowedge",chance:100},
+{id: "evidencedestroymidmoth",chance:100},
+{id: "evidencedestroylowmoth",chance:100},
+{id: "inspiremystique",chance:70}, 
+{id: "inspirenotoriety",chance:100}
+],
+startdescription: "Significant conversations in a smoky meeting-room.",
+description: "",
+warmup: 60,
+craftable: true
+},
+
+	   {id: "followeraction_kidnaphighedge",
+	   label: "Send an Assassin out to Abduct a Stranger",
+	  actionId:"talk",
+	  startdescription:"An Assassin can snatch a victim off the streets with ease.",
+	  description:"100% success rate means this should never be visible.",
+	  requirements: {edge:10,follower:1},
+	  linked: [{id:"followeraction_kidnapsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_kidnapmidedge",
+	   label: "Send a Disciple out to Abduct a Stranger",
+	  actionId:"talk",
+	  startdescription:"A skilled Disciple can probably kidnap an unwary victim.",
+	  requirements: {edge:5,follower:1},
+	  linked: [{id:"followeraction_kidnapsuccess",chance:70},
+	  {id:"followeraction_kidnapfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_kidnaplowedge",
+	   label: "Send a Believer out to Abduct a Stranger",
+	  actionId:"talk",
+	  startdescription:"My Believer will struggle to kidnap a victim, but they may be lucky.",
+	  requirements: {edge:1,follower:1},
+	  linked: [{id:"followeraction_kidnapsuccess",chance:30},
+	  {id:"followeraction_kidnapfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_kidnapsuccess",
+	   label: "Attempting an Abduction",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a carefully packaged prisoner.",
+	  effects: {notoriety:1},
+	  deckeffect: "randomvictim",
+	  warmup:60	  
+	  },	  
+	  
+	  {id: "followeraction_kidnapfailure",
+	   label: "Attempting an Abduction",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, empty-handed.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_kidnapfailure_losefollower",chance:30}]
+	  warmup:60	  
+	  },
+	  	  {id: "followeraction_kidnapfailure_losefollower",
+	   label: "Attempting an Abduction",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has not returned. I'll never know exactly what happened.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_kidnapfailure_losefollower",chance:30}]
+	  warmup:60	  
+	  },
+
+]
+}
