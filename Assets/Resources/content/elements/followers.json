@@ -526,44 +526,6 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
         },
 		
-					 {
-        id: "cummings_a",
-            label: "Cummings, an acquaintance",
-            aspects:
-            {mortal: 1},
-            description: "N.W. Cummings, the astronomer and avant-garde poet, has developed an interest in the esoteric as his health wanes. [You might be able to recruit this acquaintance as a follower.]",
-			animFrames: 1,
-			xtriggers: {recruiting: cummings_b,killmortal:corpse,derangemortal:lunatic}
-        },
-										 {
-        id: "cummings_b",
-            label: "Cummings, a believer",
-            aspects:
-            {mortal: 1, follower: 1,lantern: 2},
-            animFrames: 1,
-			description: "Cummings speaks earnestly of his theories to all who will listen: the stars as tiny wounds, and the Sun as a haemorrhage of glory. His poetry is more eccentric than ever.",
-			xtriggers: {promotiontodisciple: cummings_c,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
-
-        },
-		
-				 {
-        id: "cummings_c",
-            label: "Cummings, a disciple",
-            aspects:
-            {mortal:1,follower:1, disciple:1,lantern:10},
-            description: "Cummings' headaches have become crippling, but his theories grow more practical by the day. His poetry's getting better, too.",
-			animFrames: 1,
-			xtriggers: {promotionto_d_lantern: cummings_d,killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
-        },
-				 {
-        id: "cummings_d",
-            label: "Cummings, a Seer",
-            aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,lantern:8},
-            description: "Cummings speaks exclusively in mathematics and in poetry. Both are compelling: it is increasingly difficult to tell the difference.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cummings_p}
-        },
 		
 					 {
         id: "elridge_a",
@@ -764,6 +726,46 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
         },
 		
+		
+					 {
+        id: "slee_a",
+            label: "Slee, an acquaintance",
+            aspects:
+            {mortal: 1},
+            description: "Craig Slee, the astronomer and avant-garde poet, has developed an interest in the esoteric as his health wanes. [You might be able to recruit this acquaintance as a follower.]",
+			animFrames: 1,
+			xtriggers: {recruiting: slee_b,killmortal:corpse,derangemortal:lunatic}
+        },
+										 {
+        id: "slee_b",
+            label: "Slee, a believer",
+            aspects:
+            {mortal: 1, follower: 1,lantern: 2},
+            animFrames: 1,
+			description: "Slee speaks earnestly of his theories to all who will listen: the stars as tiny wounds, and the Sun as a haemorrhage of glory. His poetry is more eccentric than ever.",
+			xtriggers: {promotiontodisciple: slee_c,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p}
+
+        },
+		
+				 {
+        id: "slee_c",
+            label: "Slee, a disciple",
+            aspects:
+            {mortal:1,follower:1, disciple:1,lantern:10},
+            description: "Slee' headaches have become crippling, but his theories grow more practical by the day. His poetry's getting better, too.",
+			animFrames: 1,
+			xtriggers: {promotionto_d_lantern: slee_d,killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p}
+        },
+				 {
+        id: "slee_d",
+            label: "Slee, a Seer",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:8},
+            description: "Slee speaks exclusively in mathematics and in poetry. Both are compelling: it is increasingly difficult to tell the difference.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p}
+        },
+		
 					 {
         id: "sylvia_a",
             label: "Sylvia, an acquaintance",
@@ -949,11 +951,11 @@
 			lifetime:600
         },
 							 {
-        id: "cummings_p",
-            label: "Cummings, a prisoner",
+        id: "slee_p",
+            label: "Slee, a prisoner",
             aspects:
             {mortal:1, prisoner:1},
-            description: "Cummings writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
+            description: "Slee writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600

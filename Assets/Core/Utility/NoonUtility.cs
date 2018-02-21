@@ -60,7 +60,7 @@ namespace Noon
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
-        public static int CurrentVerbosity =5;
+        public static int CurrentVerbosity =15;
 
         public static VersionNumber VersionNumber = new VersionNumber("2018.1.b.1");
 
