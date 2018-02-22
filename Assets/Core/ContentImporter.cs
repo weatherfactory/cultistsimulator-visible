@@ -291,8 +291,12 @@ public class ContentImporter
                 {
                     foreach (string v in htDeckSpec)
                     {
-                        LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
-                        thisDeckSpec.Add(v);
+                        //we aren't currently testing for invalid deck references, just cos I'd have to do it at the end after they're all imported and I'm in a hurry. TODO
+                        if(!v.Contains(NoonConstants.DECK_PREFIX))
+                            LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
+                        
+
+                            thisDeckSpec.Add(v);
                     }
                 }
             }
@@ -613,16 +617,16 @@ public class ContentImporter
         }
     }
 
-    private void LogIfNonexistentElementId(string elementId, string recipeId, string context)
+    private void LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
         if (!Elements.ContainsKey(elementId))
-            LogProblem("'" + recipeId + "' references non-existent element '" + elementId + "' " + " " + context);
+            LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
     }
 
-    private void LogIfNonexistentDeckId(string deckId, string recipeId)
+    private void LogIfNonexistentDeckId(string deckId, string containerId)
     {
         if (!DeckSpecs.ContainsKey(deckId))
-            LogProblem("'" + recipeId + "' references non-existent deckSpec '" + deckId + "'");
+            LogProblem("'" + containerId + "' references non-existent deckSpec '" + deckId + "'");
     }
 
     private void LogIfNonexistentRecipeId(string referencedId, string parentRecipeId, string context)

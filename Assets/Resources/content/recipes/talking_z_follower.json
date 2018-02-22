@@ -14,6 +14,9 @@ alternativerecipes:[
 {id:"followeraction_murderhighwinter",chance:100},
 {id:"followeraction_murdermidwinter",chance:100},
 {id:"followeraction_murderlowwinter",chance:100},
+{id:"followeraction_craftworkhighforge",chance:100},
+{id:"followeraction_craftworkmidforge",chance:100},
+{id:"followeraction_craftworklowforge",chance:100},
 {id:"hunterattackhighedge",chance:100},
 {id:"hunterattackmidedge",chance:100},
 {id:"hunterattacklowedge",chance:100},
@@ -85,11 +88,10 @@ craftable: true
 	  },
 	  
 	  
-	  
 	  	   {id: "followeraction_murderhighwinter",
 	   label: "Cult Business: Murder a Stranger",
 	  actionId:"talk",
-	  startdescription:"This one always returns with a death in their pocket.",
+	  startdescription:"This one always returns with a death in their pocket. [In the Adept's Build, this will sometimes allow you to gain items so you can experiment with rituals. This is a placeholder feature which will change in the Explorer's Build.]",
 	  description:"100% success rate means this should never be visible.",
 	  requirements: {society:1,winter:10,follower:1},
 	  linked: [{id:"followeraction_murdersuccess",chance:100},
@@ -99,7 +101,7 @@ craftable: true
 	  	   {id: "followeraction_murdermidwinter",
 	   label: "Cult Business: Murder a Stranger",
 	  actionId:"talk",
-	  startdescription:"A skilled Disciple can probably bring back a fresh corpse",
+	  startdescription:"A skilled Disciple can probably bring back a fresh corpse. [In the Adept's Build, this will sometimes allow you to gain items so you can experiment with rituals. This is a placeholder feature which will change in the Explorer's Build.]",
 	  requirements: {society:1,winter:5,follower:1},
 	  linked: [{id:"followeraction_murdersuccess",chance:70},
 	  {id:"followeraction_murderfailure",chance:100}
@@ -108,7 +110,7 @@ craftable: true
 	  	  	   {id: "followeraction_murderlowwinter",
 	   label: "Cult Business: Murder a Stranger",
 	  actionId:"talk",
-	  startdescription:"My Believer may very easily fail.",
+	  startdescription:"My Believer may very easily fail. [In the Adept's Build, this will sometimes allow you to gain items so you can experiment with rituals. This is a placeholder feature which will change in the Explorer's Build.]",
 	  requirements: {society:1,winter:1,follower:1},
 	  linked: [{id:"followeraction_murdersuccess",chance:30},
 	  {id:"followeraction_murderfailure",chance:100}
@@ -121,7 +123,8 @@ craftable: true
 	  actionId:"talk",
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a fresh corpse and its former belongings.",
-	  effects: {notoriety:1, funds:1,corpse:1},
+	  effects: {notoriety:1,corpse:1},
+	  deckeffect: "vaultcontentsc",
 	  warmup:30	  
 	  },	  
 	  
@@ -140,6 +143,63 @@ craftable: true
 	  startdescription: "I await word....",
 	  description:"My minion has not returned. I'll never know exactly what happened.",
 	  effects: {notoriety:1,follower:-1}
+	  warmup:60	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_craftworkhighforge",
+	   label: "Cult Business: Craftsmanship",
+	  actionId:"talk",
+	  startdescription:"My Reshaper can earn funds in illegal laboratories and shadowy manufactories. [In the Adept's Build, this will sometimes allow you to gain items so you can experiment with rituals. This is a placeholder feature which will change in the Explorer's Build.]",
+	  description:"100% success rate means this should never be visible.",
+	  requirements: {society:1,forge:10,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_craftworkmidforge",
+	   	   label: "Cult Business: Craftsmanship",
+	  actionId:"talk",
+	  startdescription:"My Disciple can probably earn funds in illegal laboratories and shadowy manufactories - but there is a risk of accidents. [In the Adept's Build, this will sometimes allow you to gain items so you can experiment with rituals. This is a placeholder feature which will change in the Explorer's Build.]",
+	  requirements: {society:1,forge:5,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:70},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_craftworklowforge",
+	   	   label: "Cult Business: Craftsmanship",
+	  actionId:"talk",
+	  startdescription:"My Believer might be able to earn funds in illegal laboratories and shadowy manufactories... if they're lucky. [In the Adept's Build, this will sometimes allow you to gain items so you can experiment with rituals. This is a placeholder feature which will change in the Explorer's Build.]",
+	  requirements: {society:1,forge:1,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:30},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_craftworksuccess",
+	   label: "Working under Contract...",
+	  actionId:"talk",
+	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+	  description:"My follower has returned with the rewards of their labour.",
+	  deckeffect: "vaultcontentsc"
+	  },	  
+	  
+	  {id: "followeraction_craftworkfailure",
+	   label: "Working under Contract...",
+	  actionId:"talk",
+	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+	  description:"My follower has returned empty-handed. Today's tasks were beyond them.",
+	  effects: {},
+	  alternativerecipes: [{id:"followeraction_craftworkfailure_losefollower",chance:30}]
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_craftworkfailure_losefollower",
+	   label: "Working under Contract...",
+	  actionId:"talk",
+	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+	  description:"There has been an accident.",
+	  aspects: {killmortal:1}
 	  warmup:60	  
 	  },
 
