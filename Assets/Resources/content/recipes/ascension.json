@@ -212,6 +212,7 @@
 	
 		{id:"ambition",
 		comments: "currently, the only effect of ambition is linking to the cravings",
+		requirements: {seasonambitions:1},
 		label:"Exotic Cravings?",
 		actionId: "craving",
 		slots: {"Obsessions": {description: "Deeper urges",required: {enlightenmentmarks:1,powermarks:1,sensationmarks:1}, greedy:true }},

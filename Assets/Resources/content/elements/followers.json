@@ -160,7 +160,7 @@
         id: "generic_b",
             label: "A Pawn",
             aspects:
-            {mortal: 1, follower: 1},
+            {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
@@ -315,96 +315,7 @@
         },
 		
 		
-			 {
-        id: "clovette_p",
-            label: "Clovette, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Clovette is waiting for things to turn around.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-		 {
-        id: "dorothy_p",
-            label: "Dorothy, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Dorothy's constant expostulations wear on the nerves.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-				 {
-        id: "enid_p",
-            label: "Enid, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Enid doesn't speak any more.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-				 {
-        id: "rose_p",
-            label: "Rose, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Rose has not given up. I suspect her of hiding cutlery.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-				 {
-        id: "leo_p",
-            label: "Leo, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Leo doesn't understand what he did wrong.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-				 {
-        id: "neville_p",
-            label: "Neville, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Neville is weeping.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-						 {
-        id: "tristan_p",
-            label: "Tristan, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Tristan will make the best of his situation.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-				 {
-        id: "victor_p",
-            label: "Victor, a prisoner",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "Victor's eyes are wells of rage.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
-						 {
-        id: "generic_p",
-            label: "A Pawn Betrayed",
-            aspects:
-            {mortal:1, prisoner:1},
-            description: "This one rails weakly against their fate.",
-			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
-        },
+	
 		
 		
 		
@@ -924,7 +835,7 @@
         id: "auclair_p",
             label: "Auclair, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3,ingredient:1},
             description: "Auclair does not speak or eat.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
@@ -934,7 +845,7 @@
         id: "cat_p",
             label: "Cat Caro, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3,ingredient:1},
             description: "The woman who used to call herself 'Cat Caro' sleeps whenever she can.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
@@ -944,27 +855,49 @@
         id: "clifton_p",
             label: "'Pope' Clifton, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3,ingredient:1},
             description: "Clifton roars and curses, but the bars hold, and the walls are thick.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
         },
-							 {
-        id: "slee_p",
-            label: "Slee, a prisoner",
+			
+				 {
+        id: "clovette_p",
+            label: "Clovette, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
-            description: "Slee writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5,ingredient:1},
+            description: "Clovette is waiting for things to turn around.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
         },
+		 {
+        id: "dorothy_p",
+            label: "Dorothy, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5,ingredient:1},
+            description: "Dorothy's constant expostulations wear on the nerves.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+				 {
+        id: "enid_p",
+            label: "Enid, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5,ingredient:1},
+            description: "Enid doesn't speak any more.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+
 							 {
         id: "elridge_p",
             label: "Elridge, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5,ingredient:1},
             description: "Elridge is not permitted a spoon, or a plate. It is probably unwise to permit him even the sharper vegetables..",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
@@ -974,8 +907,28 @@
         id: "laidlaw_p",
             label: "Laidlaw, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5,ingredient:1},
             description: "Laidlaw's door is bolted, not locked. We know better than that.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+						 {
+        id: "leo_p",
+            label: "Leo, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:5,ingredient:1},
+            description: "Leo doesn't understand what he did wrong.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+				 {
+        id: "neville_p",
+            label: "Neville, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,knock:5,ingredient:1},
+            description: "Neville is weeping.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -984,7 +937,7 @@
         id: "porter_p",
             label: "Porter, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5,ingredient:1},
             description: "Porter waits, still as a lizard.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
@@ -994,8 +947,39 @@
         id: "renira_p",
             label: "Renira, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:5,heart:3,ingredient:1},
             description: "Renira always finds ways to pass the time.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+		
+								 {
+        id: "rose_p",
+            label: "Rose, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5,ingredient:1},
+            description: "Rose has not given up. I suspect her of hiding cutlery.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+							 {
+        id: "slee_p",
+            label: "Slee, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:5,grail:3,heart:3,ingredient:1},
+            description: "Slee writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+						 {
+        id: "tristan_p",
+            label: "Tristan, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5,ingredient:1},
+            description: "Tristan will make the best of his situation.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1004,8 +988,8 @@
         id: "saliba_p",
             label: "Saliba, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
-            description: "Saliba's anger burns like lava beneath ash.",
+            {mortal:1, prisoner:1,lantern:3,grail:5,heart:3,ingredient:1},
+            description: "Saliba's anger burns like buried lava.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1014,7 +998,7 @@
         id: "sylvia_p",
             label: "Sylvia, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5,ingredient:1},
             description: "We check on Sylvia every hour, just in case.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
@@ -1024,8 +1008,19 @@
         id: "valciane_p",
             label: "Valciane, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5,ingredient:1},
             description: "It is very important never to get within arm's reach of Valciane.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
+
+				 {
+        id: "victor_p",
+            label: "Victor, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,edge:5,ingredient:1},
+            description: "Victor's eyes are wells of rage.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
@@ -1034,7 +1029,7 @@
         id: "violet_p",
             label: "Violet, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,winter:5,ingredient:1},
             description: "Violet insists that she's fine. She's fine.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
@@ -1042,15 +1037,25 @@
         },
 							 {
         id: "ysabet_p",
-            label: "Yesabet, a prisoner",
+            label: "Ysabet, a prisoner",
             aspects:
-            {mortal:1, prisoner:1},
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,moth:5,ingredient:1},
             description: "If Ysabet is weeping, she does so with dry eyes.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600
         },
-	
-		
+
+
+						 {
+        id: "generic_p",
+            label: "A Pawn Betrayed",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,ingredient:1},
+            description: "This one rails weakly against their fate.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600
+        },
 		]
 };
