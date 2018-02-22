@@ -7,7 +7,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
+			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			"Offering":{required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
 			},
             description: "This rite calls on the Witch-and-Sister to close the gap between what is and what might be. The assistant pours, or hurls, an offering into water: preferably, but not essentially, the sea."
@@ -33,7 +33,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Victim": {required: {follower:1}, consumes: true, description: "There must always be willing blood."},
+			"Victim": {required: {follower:1,prisoner:1}, consumes: true, description: "There must always be willing blood."},
 			"Instrument":{required: {tool: 1}, description: "On what will blood be shed?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
@@ -47,7 +47,7 @@
             {ritual:1},
 			slots: {
 			"Sacrifice":{required: {lore: 1}, consumes: true, description: "What will we forget?"},
-			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
+			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			"Instrument":{required: {tool: 1}, description: "What is our instrument?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
@@ -61,7 +61,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
+			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			"Offering":{required: {tool: 1}, consumes: true,description: "What will we give up?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
@@ -75,7 +75,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
+			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			"Offering":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
 			},
             description: "The assistant is offered in sacrifice to the Mother of Ants. But the Mother knows healing as well as poison, and she will be merciful, accepting the substitute of a lesser offering. Usually. The experience is not reassuring for the assistant."
@@ -99,7 +99,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
+			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			"Offering":{required: {influence: 1}, consumes:true, description: "What influence will be consumed?"},
 			},
             description: "The assistant must cry tears of genuine emotion, which are asperged in the place where the influence lies. If all is done well, the Sun-in-Rags will consume the influence, acknowledge an ending, and lend its assistance."
@@ -111,7 +111,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Victim": {required: {follower:1},description: "Who will be divided?",consumes:true},
+			"Victim": {required: {follower:1,prisoner:1},description: "Who will be divided?",consumes:true},
 			"Influence":{required: {tool: 1}, description: "What power is present?"},
 			},
             description: "The assistant's name is taken from them in a place, or on an occasion, of power; and they are divided into nine parts. They used to be hunted like an animal, too, but times changed."
@@ -123,7 +123,7 @@
             {ritual:1},
 			slots: {
 			"Sacrifice":{required: {lore: 1}, description: "Something to be lost.", consumes:true},
-			"Offering": {required: {follower:1},description: "Something to be lost.", consumes:true},
+			"Offering": {required: {follower:1,prisoner:1},description: "Something to be lost.", consumes:true},
 			"Surrender":{required: {tool: 1}, description: "Something to be lost.", consumes:true},
 			"Dissolution":{required: {influence: 1}, description: "Something to be lost.", consumes:true},
 			"Grief":{required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
