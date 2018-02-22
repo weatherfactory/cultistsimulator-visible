@@ -8,7 +8,7 @@
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
 			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
-			"Sacrifice":{required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
+			"Offering":{required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
 			},
             description: "This rite calls on the Witch-and-Sister to close the gap between what is and what might be. The assistant pours, or hurls, an offering into water: preferably, but not essentially, the sea."
         },
@@ -19,7 +19,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Sacrifice": {required: {influence:1},description: "What influence will be taken?",consumes:true},
+			"Offering": {required: {influence:1},description: "What influence will be taken?",consumes:true},
 			"Instrument":{required: {tool: 1}, description: "What is our instrument?"},
 			},
             description: "The Pilgrim is the only Hour that never enters the Mansus. This rite must be performed in the right place, in the right time, and the Pilgrim will take that rightness for his own."
@@ -33,7 +33,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Sacrifice": {required: {follower:1}, consumes: true, description: "There must always be willing blood."},
+			"Victim": {required: {follower:1}, consumes: true, description: "There must always be willing blood."},
 			"Instrument":{required: {tool: 1}, description: "On what will blood be shed?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
@@ -62,7 +62,7 @@
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
 			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
-			"Sacrifice":{required: {tool: 1}, consumes: true,description: "What will we give up?"},
+			"Offering":{required: {tool: 1}, consumes: true,description: "What will we give up?"},
 			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
             description: "This rite enacts a teaching of the Forge of Days: the artisan may achieve their highest goal only by destroying their most precious tool. The Lionsmith knew this when he shattered his sword before the Colonel. So my assistant must destroy a chosen instrument."
@@ -76,7 +76,7 @@
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
 			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
-			"Sacrifice":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
+			"Offering":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
 			},
             description: "The assistant is offered in sacrifice to the Mother of Ants. But the Mother knows healing as well as poison, and she will be merciful, accepting the substitute of a lesser offering. Usually. The experience is not reassuring for the assistant."
         },
@@ -88,7 +88,7 @@
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
 			"Influence": {required: {influence:1},description: "Who will speak the words?"},
-			"Sacrifice":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
+			"Offering":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
 			},
             description: "This rite calls on the Sister-and-Witch to close the gap between what is and what might be. The assistant offers themselves as a spouse to the unknown: essentially, but not necessarily, the sea."
         },
@@ -100,7 +100,7 @@
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
 			"Assistant": {required: {follower:1},description: "Who will speak the words?"},
-			"Sacrifice":{required: {influence: 1}, consumes:true, description: "What influence will be consumed?"},
+			"Offering":{required: {influence: 1}, consumes:true, description: "What influence will be consumed?"},
 			},
             description: "The assistant must cry tears of genuine emotion, which are asperged in the place where the influence lies. If all is done well, the Sun-in-Rags will consume the influence, acknowledge an ending, and lend its assistance."
         },
@@ -123,10 +123,10 @@
             {ritual:1},
 			slots: {
 			"Sacrifice":{required: {lore: 1}, description: "Something to be lost.", consumes:true},
-			"Sacrifice": {required: {follower:1},description: "Something to be lost.", consumes:true},
-			"Sacrifice":{required: {tool: 1}, description: "Something to be lost.", consumes:true},
-			"Sacrifice":{required: {influence: 1}, description: "Something to be lost.", consumes:true},
-			"Sacrifice":{required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
+			"Offering": {required: {follower:1},description: "Something to be lost.", consumes:true},
+			"Surrender":{required: {tool: 1}, description: "Something to be lost.", consumes:true},
+			"Dissolution":{required: {influence: 1}, description: "Something to be lost.", consumes:true},
+			"Grief":{required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
 			},
             description: "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts."
         },
