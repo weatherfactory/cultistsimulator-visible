@@ -17,6 +17,7 @@ using Noon;
 public class TabletopTokenContainer : AbstractTokenContainer {
 
     [SerializeField] TabletopBackground _background;
+    [SerializeField] protected CanvasGroupFader canvasGroupFader;
 
     protected Choreographer choreo;
 
@@ -172,6 +173,14 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     // Returns all visual tokens for use by the Choreographer
     public virtual IEnumerable<DraggableToken> GetTokens() {
         return transform.GetComponentsInChildren<DraggableToken>();
+    }
+
+    // Hide / Show for use with Mansus Map transition
+    public void Show(bool show) {
+        if (show) 
+            canvasGroupFader.Show();
+        else 
+            canvasGroupFader.Hide();
     }
 
 }

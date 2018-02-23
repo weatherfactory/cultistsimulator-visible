@@ -10,20 +10,29 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class MapController: MonoBehaviour
     {
-        //private MapContainsTokens _mapContainsTokens;
+        private MapTokenContainer _mapTokenContainer;
         //private TabletopBackground _mapBackground;
         private MapAnimation _mapAnimation;
 
-        public void Initialise(MapContainsTokens mapContainsTokens, TabletopBackground mapBackground, MapAnimation mapAnimation) {
-            //_mapContainsTokens = mapContainsTokens;
+        public void Initialise(MapTokenContainer mapTokenContainer, TabletopBackground mapBackground, MapAnimation mapAnimation) {
+            mapBackground.gameObject.SetActive(false);
+
+            mapTokenContainer.gameObject.SetActive(false);
+            _mapTokenContainer = mapTokenContainer;
+
             //_mapBackground = mapBackground;
+
             _mapAnimation = mapAnimation;
+            mapAnimation.Init();
         }
 
         public void ShowMansusMap(Transform effectCenter, bool show = true)
         {
             if (_mapAnimation.CanShow(show) == false)
                 return;
+
+            if (!show) // hide the container
+                _mapTokenContainer.Show(false);
 
             // TODO: should probably lock interface? No zoom, no tabletop interaction. Check EndGameAnim for ideas
 
@@ -36,6 +45,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         void OnMansusMapAnimDone(bool show)
         {
             _mapAnimation.onAnimDone -= OnMansusMapAnimDone;
+
+            if (show) // show the container
+                _mapTokenContainer.Show(true);
             // TODO: should probably unlock interface? No zoom, no tabletop interaction
         }
 
@@ -44,5 +56,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Debug.Log("Dropped Stack " + (stack != null ? stack.Id : "NULL"));
             ShowMansusMap(effectCenter, false);
         }
+
+#if DEBUG
+        public void CloseMap() {
+            Registry.Retrieve<TabletopManager>().HideMansusMap(_mapTokenContainer.GetDoor().transform);
+        }
+#endif
     }
 }

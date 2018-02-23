@@ -5,9 +5,7 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
 
 namespace Assets.CS.TabletopUI {
-    public class MapContainsTokens : TabletopTokenContainer {
-
-        [SerializeField] CanvasGroupFader canvasGroupFader;
+    public class MapTokenContainer : TabletopTokenContainer {
 
         DoorSlot activeSlot;
 
@@ -16,6 +14,11 @@ namespace Assets.CS.TabletopUI {
             _elementStacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
 
             choreo = Registry.Retrieve<Choreographer>();
+
+            var door = GetDoor();
+
+            if (door != null)
+                door.Initialise();
         }
 
         public DoorSlot GetDoor() {

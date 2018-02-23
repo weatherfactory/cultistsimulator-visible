@@ -98,7 +98,7 @@ public class SituationResults : AbstractTokenContainer {
 
     // public to be triggered by button
     public void ShowMap() {
-        Registry.Retrieve<MapController>().ShowMansusMap(transform, true);
+        Registry.Retrieve<TabletopManager>().ShowMansusMap(transform);
     }
 
 }

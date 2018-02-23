@@ -47,8 +47,8 @@ namespace Assets.CS.TabletopUI {
         [Header("Mansus Map")]
         [SerializeField]
         private MapController _mapController;
-        [SerializeField]
-        public MapContainsTokens mapContainsTokens;
+        [SerializeField] [UnityEngine.Serialization.FormerlySerializedAs("mapContainsTokens")]
+        public MapTokenContainer mapTokenContainer;
         [SerializeField]
         TabletopBackground mapBackground;
         [SerializeField]
@@ -87,6 +87,8 @@ namespace Assets.CS.TabletopUI {
             _cardAnimationController.CheckForCardAnimations();
         }
 
+        #region -- Intialisation -------------------------------
+
         void Start() {
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
 
@@ -112,15 +114,7 @@ namespace Assets.CS.TabletopUI {
             // Make sure dragging is reenabled
             DraggableToken.draggingEnabled = true;
 
-            if (SceneManager.GetActiveScene().name == "Tabletop-w-Map") //hack while Martin's working in test scene
-            {
-                mapAnimation.Init();
-                mapContainsTokens.gameObject.SetActive(false);
-                mapBackground.onDropped += HandleOnMapBackgroundDropped;
-            }
-
             BeginGame(_situationBuilder);
-
             _heart.StartBeatingWithDefaultValue();
         }
 
@@ -151,7 +145,7 @@ namespace Assets.CS.TabletopUI {
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
             cardAnimationController.Initialise(_tabletop.GetElementStacksManager());
-            mapController.Initialise(mapContainsTokens, mapBackground, mapAnimation);
+            mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
             optionsPanel.InitAudioSettings();
@@ -160,16 +154,19 @@ namespace Assets.CS.TabletopUI {
         private void InitialiseListeners() {
             // Init Listeners to pre-existing DisplayHere Objects
             DraggableToken.onChangeDragState += HandleDragStateChanged;
+            mapBackground.onDropped += HandleOnMapBackgroundDropped;
         }
 
         private void OnDestroy() {
             // Static event so make sure to de-init once this object is destroyed
             DraggableToken.onChangeDragState -= HandleDragStateChanged;
+            mapBackground.onDropped -= HandleOnMapBackgroundDropped;
         }
 
         void InitializeTokenContainers() {
             _tabletop.Initialise();
             Limbo.Initialise();
+            mapTokenContainer.Initialise();
         }
 
         private void SetupServices(SituationBuilder builder, TabletopTokenContainer container) {
@@ -211,13 +208,7 @@ namespace Assets.CS.TabletopUI {
             contentImporter.PopulateCompendium(compendium);
         }
 
-        public void SetPausedState(bool paused) {
-            _speedController.SetPausedState(paused);
-        }
-
-        public void BeginNewSituation(SituationCreationCommand scc) {
-            Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
-        }
+        #endregion
 
         #region -- Build / Reset -------------------------------
 
@@ -494,7 +485,7 @@ namespace Assets.CS.TabletopUI {
 
                 DraggableToken.SetReturn(false, "dropped on the map background");
                 DraggableToken.itemBeingDragged.DisplayAtTableLevel();
-                mapContainsTokens.DisplayHere(DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
+                mapTokenContainer.DisplayHere(DraggableToken.itemBeingDragged, new Context(Context.ActionSource.PlayerDrag));
 
                 SoundManager.PlaySfx("CardDrop");
             }
@@ -513,8 +504,28 @@ namespace Assets.CS.TabletopUI {
 
             var draggedElement = DraggableToken.itemBeingDragged as ElementStackToken;
 
-            if (mapContainsTokens != null)
-                mapContainsTokens.ShowDestinationsForStack(draggedElement, isDragging);
+            if (mapTokenContainer != null)
+                mapTokenContainer.ShowDestinationsForStack(draggedElement, isDragging);
+        }
+
+        public void SetPausedState(bool paused) {
+            _speedController.SetPausedState(paused);
+        }
+
+        public void ShowMansusMap(Transform origin) {
+            CloseAllSituationWindowsExcept(null);
+            _tabletop.Show(false);
+            _mapController.ShowMansusMap(origin, true);
+        }
+
+        public void HideMansusMap(Transform origin) {
+            CloseAllSituationWindowsExcept(null);
+            _tabletop.Show(true);
+            _mapController.ShowMansusMap(origin, false);
+        }
+
+        public void BeginNewSituation(SituationCreationCommand scc) {
+            Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {

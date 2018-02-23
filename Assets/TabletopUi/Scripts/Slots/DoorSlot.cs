@@ -26,10 +26,6 @@ namespace Assets.CS.TabletopUI {
         public override bool AllowStackMerge { get { return false; } }
 
         public override void Initialise() {
-            throw new NotImplementedException(); // We init via Start here.
-        }
-
-        void Start() {
             ShowGlow(false, false);
             //will this be called as necessary? we might need an Initialise()
             _elementStacksManager = new ElementStacksManager(this, "door");
