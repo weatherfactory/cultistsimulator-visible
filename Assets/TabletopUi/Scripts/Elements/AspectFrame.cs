@@ -17,18 +17,22 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [SerializeField] private LayoutElement layoutElement;
     [SerializeField] private Image aspectImage;
-    [SerializeField] private Image quantityBG;
     [SerializeField] private TextMeshProUGUI quantityText;
+
+    [SerializeField] Color brightQuantityColor;
+    [SerializeField] Color darkQuantityColor;
+
     public string AspectId { get { return aspect == null ? null : aspect.Id; } }
 
-    public float widthWithQuantity = 80f;
-    public float widthWithoutQuantity = 40f;
+    float width2Digit = 85f;
+    float width1Digit = 68f;
+    float width0Digits = 40f;
 
-    public void PopulateDisplay(Element aspect, int aspectValue) {
+    public void PopulateDisplay(Element aspect, int aspectValue, bool hasBrightBg = false) {
         this.aspect = aspect;
         Quantity = aspectValue;
         DisplayAspectImage(aspect);
-        DisplayQuantity(aspectValue);
+        DisplayQuantity(aspectValue, hasBrightBg);
         gameObject.name = "Aspect - " + aspect.Id;
     }
 
@@ -43,19 +47,18 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         aspectImage.sprite = aspectSprite;
     }
 
-    private void DisplayQuantity(int quantity) {
+    private void DisplayQuantity(int quantity, bool hasBrightBG) {
         if (quantity <= 1) {
-            quantityBG.gameObject.SetActive(false);
             quantityText.gameObject.SetActive(false);
-            layoutElement.minWidth = widthWithoutQuantity;
-            layoutElement.preferredWidth = widthWithoutQuantity;
+            layoutElement.minWidth = width0Digits;
+            layoutElement.preferredWidth = width0Digits;
         }
         else {
-            quantityBG.gameObject.SetActive(true);
             quantityText.gameObject.SetActive(true);
             quantityText.text = quantity.ToString();
-            layoutElement.minWidth = widthWithQuantity;
-            layoutElement.preferredWidth = widthWithQuantity;
+            quantityText.color = hasBrightBG ? darkQuantityColor : brightQuantityColor;
+            layoutElement.minWidth = quantity > 9 ? width2Digit : width1Digit; ;
+            layoutElement.preferredWidth = layoutElement.minWidth;
         }
     }
 
