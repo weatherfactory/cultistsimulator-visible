@@ -10,7 +10,17 @@ warmup: 1,
 craftable:false
 },
 	
-
+	{
+        id: "_mansustest",
+        label: "Test Mansus effect",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: "Mansus entry will occur on completion",
+        description: "Mansus entry occurs as this appears",
+        warmup: 5,
+        craftable: false
+	},
 	{
         id: "_dream",
         label: "Create Dream token",

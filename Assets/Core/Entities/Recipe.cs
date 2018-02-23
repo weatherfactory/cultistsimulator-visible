@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using NSubstitute.Routing.Handlers;
+
+public enum PortalEffect
+{
+    None=0,
+    Wood=10,
+    WhiteDoor=20,
+    StagDoor=30,
+    SpiderDoor=40,
+    PeacockGate=50,
+    TricuspidGate=60
+}
 
 /// <summary>
 /// This is mostly a bundle of properties, but the Do method is core logic! - it's where element countss are actually changed
@@ -18,6 +30,18 @@ public class Recipe
     public Dictionary<string, int> Requirements { get; set; }
     public Dictionary<string, int> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
+
+    public PortalEffect PortalEffect
+    {
+        get
+        {
+            if (Id == "_mansustest")
+                return PortalEffect.Wood;
+            return PortalEffect.None;
+
+
+        }
+    }
 
     public Boolean Craftable { get; set; }
     /// <summary>
