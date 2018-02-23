@@ -139,7 +139,7 @@ namespace Assets.CS.TabletopUI {
             results.gameObject.SetActive(false);
 
             DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
-            DisplayButtonState(false);
+            DisplayButtonState(false, buttonBusy);
         }
 
         // Results State
@@ -202,7 +202,7 @@ namespace Assets.CS.TabletopUI {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
 			DisplayRecipeMetaComment(recipePrediction.Commentary);
-			DisplayButtonState(false);
+			//DisplayButtonState(false);
         }
 
         public void DisplayRecipeMetaComment(string hint) {
