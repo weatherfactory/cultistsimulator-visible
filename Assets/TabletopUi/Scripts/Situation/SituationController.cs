@@ -462,6 +462,11 @@ namespace Assets.TabletopUi {
             situationWindow.ShowDestinationsForStack(stack, show);
         }
 
+        public void DumpAllResults() {
+            if (SituationClock.State == SituationState.Complete)
+                situationWindow.DumpAllResultingCardsToDesktop();
+        }
+
         #endregion
 
         #region -- External Situation Change Methods --------------------

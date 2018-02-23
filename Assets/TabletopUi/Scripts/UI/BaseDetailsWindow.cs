@@ -17,7 +17,7 @@ namespace Assets.CS.TabletopUI {
         [Header("Image")]
         [SerializeField] protected Image artwork;
 
-        const float waitTime = 10f;
+        float waitTime = 10f;
         float time;
 
         protected void Show() {
@@ -35,6 +35,10 @@ namespace Assets.CS.TabletopUI {
                 // Make the anim move out, then show the content, then move in again
                 TriggerAnim(AnimType.MoveRight, AnimType.MoveRight, UpdateContent);
             }
+        }
+
+        public void SetTimer(float time) {
+            waitTime = time;
         }
 
         public void ResetTimer() {

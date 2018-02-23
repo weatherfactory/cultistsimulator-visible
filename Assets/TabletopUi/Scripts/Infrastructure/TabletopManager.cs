@@ -97,7 +97,16 @@ namespace Assets.CS.TabletopUI {
             InitializeTokenContainers();
 
             //we hand off board functions to individual controllers
-            InitialiseSubControllers(_speedController, _hotkeyWatcher, _cardAnimationController, _mapController, _endGameAnimController, _notifier);
+            InitialiseSubControllers(
+                _speedController, 
+                _hotkeyWatcher, 
+                _cardAnimationController, 
+                _mapController, 
+                _endGameAnimController, 
+                _notifier,
+                _optionsPanel
+                );
+
             InitialiseListeners();
 
             // Make sure dragging is reenabled
@@ -136,7 +145,8 @@ namespace Assets.CS.TabletopUI {
                                               CardAnimationController cardAnimationController,
                                               MapController mapController,
                                               EndGameAnimController endGameAnimController,
-                                              Notifier notifier) {
+                                              Notifier notifier,
+                                              OptionsPanel optionsPanel) {
 
             speedController.Initialise(_heart);
             hotkeyWatcher.Initialise(_speedController, debugTools, _optionsPanel);
@@ -144,6 +154,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapContainsTokens, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
+            optionsPanel.InitAudioSettings();
         }
 
         private void InitialiseListeners() {

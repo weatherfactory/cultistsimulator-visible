@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class SoundManager : AudioManager {
 
@@ -27,6 +28,8 @@ public class SoundManager : AudioManager {
     private static SoundManager instance = null;
     public static SoundManager Instance { get { return instance; } }
 
+    [SerializeField]
+    AudioMixerGroup mixerTarget;
     // Audio Data
     [SerializeField]
     private SoundCombo[] sounds;
@@ -66,6 +69,7 @@ public class SoundManager : AudioManager {
         int index = audioSourcePool.Count;
         AudioSource newSource = gameObject.AddComponent<AudioSource>();
         newSource.clip = clip;
+        newSource.outputAudioMixerGroup = mixerTarget;
         audioSourcePool.Add(newSource);
         return index;
     }

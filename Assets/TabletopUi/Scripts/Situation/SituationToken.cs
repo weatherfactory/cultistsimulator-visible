@@ -78,11 +78,11 @@ namespace Assets.CS.TabletopUI {
             name = "Verb_" + Id;
 
             DisplayIcon(verb);
-            SetAsLightweight(false);// UnityEngine.Random.value < 0.5f); // NOTE: This is random dummy stuff
+            SetAsLightweight(verb.Transient);
             SetTimerVisibility(false);
             SetCompletionCount(-1);
             ShowGlow(false, false);
-            ShowDumpButton(false, false);
+            ShowDumpButton(false);
 
             ongoingSlotImage.gameObject.SetActive(false);
             situationEditor.Initialise(SituationController);
@@ -134,8 +134,8 @@ namespace Assets.CS.TabletopUI {
             ShowGlow(false);
         }
 
-        void ShowDumpButton(bool showButton, bool showGlow) {
-            dumpButton.gameObject.SetActive(showButton);
+        void ShowDumpButton(bool showButton) {
+            dumpButton.gameObject.SetActive(showButton && _verb.Transient);
         }
 
         public void SetEditorActive(bool active) {
@@ -217,7 +217,7 @@ namespace Assets.CS.TabletopUI {
             completionText.gameObject.SetActive(newCount > 0);
             completionText.text = newCount.ToString();
 
-            //ShowDumpButton(newCount > 0, false);            
+            ShowDumpButton(newCount >= 0);            
         }
 
 
@@ -252,10 +252,15 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override void OnPointerClick(PointerEventData eventData) {
-            if (!SituationController.IsOpen)
-                OpenSituation();
-            else
-                CloseSituation();
+            if (dumpButton.IsHovering()) {
+                SituationController.DumpAllResults();
+            }
+            else { 
+                if (!SituationController.IsOpen)
+                    OpenSituation();
+                else
+                    CloseSituation();
+            }
         }
 
         public void OpenSituation() {

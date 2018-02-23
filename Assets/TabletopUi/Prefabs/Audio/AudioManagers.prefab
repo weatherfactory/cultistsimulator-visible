@@ -51,12 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51162aa08f9bd534fb1496ce0e3d6a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixerTarget: {fileID: 24300002, guid: ffd4cf940f0723d4c98e4f8b84043864, type: 2}
   sounds:
   - name: TokenHover
     randomizedClips:
     - {fileID: 8300000, guid: 32a8faebc98e6614e8d728cd06d244d4, type: 3}
     loop: 0
-    volume: 0.5
+    volume: 0.095
     pitchVariation: 0.1
   - name: TokenHoverOff
     randomizedClips:

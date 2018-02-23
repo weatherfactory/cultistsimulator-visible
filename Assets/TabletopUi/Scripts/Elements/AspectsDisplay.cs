@@ -18,6 +18,7 @@ namespace Assets.TabletopUi.Scripts
         // There it is used in the click>Notifier call to tell the notifier where to place the details window
         [SerializeField] bool isWithinDetailsWindow;
         [SerializeField] bool hideIfEmpty;
+        [SerializeField] bool hasBrightBackground;
         [SerializeField] private TextMeshProUGUI Header;
 
         public void ShowHeader(bool show) {
@@ -45,7 +46,7 @@ namespace Assets.TabletopUi.Scripts
                 return; // We can't find the aspect? Well then don't add anything
 
             AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
-            newAspectFrame.PopulateDisplay(aspect, quantity);
+            newAspectFrame.PopulateDisplay(aspect, quantity, hasBrightBackground);
 
             if (isWithinDetailsWindow)
                 newAspectFrame.SetAsDetailWindowChild();

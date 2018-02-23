@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
         const string buttonDefault = "Start";
-        const string buttonBusy = "Waiting...";
+        const string buttonBusy = "Running...";
 
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
@@ -65,17 +65,16 @@ namespace Assets.CS.TabletopUI {
 			set { title.text = value; }
         }
 
-
         // INIT & LIFECYCLE
 
         void OnEnable() {
 			startButton.onClick.AddListener(HandleStartButton);
-            dumpResultsButton.onClick.AddListener(HandleResultsButton);
+            dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
         }
 
 		void OnDisable() {
 			startButton.onClick.RemoveListener(HandleStartButton);
-            dumpResultsButton.onClick.RemoveListener(HandleResultsButton);
+            dumpResultsButton.onClick.RemoveListener(DumpAllResultingCardsToDesktop);
         }
 
 		public void Initialise(IVerb verb, SituationController sc) {
@@ -140,7 +139,7 @@ namespace Assets.CS.TabletopUI {
             results.gameObject.SetActive(false);
 
             DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
-            DisplayButtonState(false);
+            DisplayButtonState(false, buttonBusy);
         }
 
         // Results State
@@ -203,7 +202,7 @@ namespace Assets.CS.TabletopUI {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
 			DisplayRecipeMetaComment(recipePrediction.Commentary);
-			DisplayButtonState(false);
+			//DisplayButtonState(false);
         }
 
         public void DisplayRecipeMetaComment(string hint) {
@@ -272,7 +271,8 @@ namespace Assets.CS.TabletopUI {
             situationController.AttemptActivateRecipe();
         }
 
-        void HandleResultsButton() {
+        // so the token-dump button can trigger this
+        public void DumpAllResultingCardsToDesktop() {
             DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerClick));
             situationController.ResetSituation();
         }

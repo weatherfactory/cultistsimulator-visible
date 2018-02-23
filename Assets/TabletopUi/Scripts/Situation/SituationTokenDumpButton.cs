@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.CS.TabletopUI {
-    public class SituationTokenDumpButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
+    public class SituationTokenDumpButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
         [SerializeField] Image buttonImg;
         [SerializeField] Image iconImage;
@@ -14,21 +14,31 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Color buttonColorDefault;
         [SerializeField] Color buttonColorHover;
 
+        bool isHovering;
+
         public void Show(bool show) {
             gameObject.SetActive(show);
             ShowGlow(false, true);
         }
 
-        public void OnPointerClick(PointerEventData eventData) {
-            Debug.Log("Clicked DumpButton");
+        private void OnDisable() {
+            // make sure we're no longer hovering after we hit the button
+            isHovering = false; 
         }
 
+        // to check if we're on the dump button when clicking
+        public bool IsHovering() {
+            return isHovering;
+        }
+        
         public void OnPointerEnter(PointerEventData eventData) {
             ShowGlow(true);
+            isHovering = true;
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             ShowGlow(false);
+            isHovering = false;
         }
 
         public void ShowGlow(bool glowState, bool instant = false) {
