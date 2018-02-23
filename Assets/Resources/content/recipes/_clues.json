@@ -71,7 +71,7 @@
         requirements: {ritual: 1,
 		powermarks:6},
         effects: {},
-        startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-fifth degree of intensity.",
+        startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-sixth degree of intensity.",
         hintonly:true
     },
 			   {
@@ -91,7 +91,7 @@
         requirements: {ritual: 1,
 		sensationmarks:6},
         effects: {},
-        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-fifth degree of intensity.",
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-sixth degree of intensity.",
         hintonly:true
     },
 				   {
@@ -111,7 +111,7 @@
         requirements: {ritual: 1,
 		enlightenmentmarks:6},
         effects: {},
-        startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-fifth degree of intensity.",
+        startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-sixth degree of intensity.",
         hintonly:true
     },
 				   {
@@ -144,6 +144,112 @@
         craftable: false,
 		hintonly: true
     },
+	
+	
+	
+	
+	{
+        id: "promoteto_d_edgehint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultedge_1:1,follower:1, disciple:1},
+
+        startdescription: "To Exalt a Disciple to an Assassin, I will need Edge to at least the twenty-first intensity. In any case, only the most savage will be suitable.",
+
+        hintonly:true,
+        craftable: true
+    },
+		  	{
+        id: "promoteto_d_forgehint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultforge_1:1,follower:1, disciple:1},
+
+        startdescription: "To Exalt a Disciple to a Reshaper, I will need Forge to at least the twenty-first intensity. In any case, only the most ingenious and effective will be suitable.",
+        hintonly:true,
+        craftable: true
+    },
+		  	{
+        id: "promoteto_d_grailhint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultgrail_1:1,follower:1, disciple:1},
+        startdescription: "To Exalt a Disciple to a Cyprian, I will need Grail to at least the twenty-first intensity. In any case, only those with the most inconsolable appetites will be suitable.",
+
+        hintonly:true,
+        craftable: true
+    },
+			  	{
+        id: "promoteto_d_hearthint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultheart_1: 1,follower:1, disciple:1},
+ 
+		
+        startdescription: "To Exalt a Disciple to a Tarantellist, I will need Heart to at least the twenty-first intensity. In any case, only the most spirited will be suitable.",
+        hintonly:true,
+        craftable: true
+    },
+				  	{
+        id: "promoteto_d_knockhint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultknock_1: 1,follower:1, disciple:1},
+ 
+             startdescription: "To Exalt a Disciple to a Key, I will need Knock to at least the twenty-first intensity.  In any case, only the most gifted will be suitable.",
+        hintonly:true,
+        craftable: true
+    },
+					  	{
+        id: "promoteto_d_lanternhint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultlantern_1: 1,follower:1, disciple:1},
+ 
+		
+               startdescription: "To Exalt a Disciple to a Seer, I will need Lantern to at least the twenty-first intensity.  In any case, only the most clear-sighted will be suitable.",
+
+        hintonly:true,
+        craftable: true
+    },
+						  	{
+        id: "promoteto_d_mothhint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultmoth_1: 1,follower:1, disciple:1},
+ 
+		
+             startdescription: "To Exalt a Disciple to a Skintwister, I will need Moth to at least the twenty-first intensity.  In any case, only very rare individuals will be suitable.",
+        hintonly:true,
+        craftable: true
+    },
+	
+	
+							  	{
+        id: "promoteto_d_winterhint",
+        label: "Exalt a Disciple?",
+        actionId: "talk",
+        requirements: {cultwinter_1: 1,follower:1, disciple:1},
+ 
+		
+        startdescription: "To Exalt a Disciple to a degree that has no name, I will need Winter to at least the twenty-first intensity.  In any case, only the bleakest souls will be suitable.",
+        hintonly:true,
+        craftable: true
+    },
+	
+								  	{
+        id: "promotetodisciplehint",
+        label: "Promote a Believer?",
+        actionId: "talk",
+        requirements: {society:1,follower:1},
+ 
+		
+        startdescription: "To promote a Believer to a Disciple, I'll need to provide an appropriate aspect for the cult, to at least the seventh intensity.",
+        hintonly:true,
+        craftable: true
+    },
+	
+	
 
 	
 ]

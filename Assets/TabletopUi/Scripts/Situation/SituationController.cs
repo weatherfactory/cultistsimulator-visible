@@ -443,7 +443,7 @@ namespace Assets.TabletopUi {
         }
 
         public void UpdateSituationDisplayForDescription() {
-            RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedElements(), Registry.Retrieve<IDice>(), currentCharacter);
+            RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
 

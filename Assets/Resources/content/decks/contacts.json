@@ -2,7 +2,21 @@
     [
 	{id: "acquaintances",
 	spec:
-	["clovette_a",
+	[
+	"auclair_a",
+	"cat_a",
+	"clifton_a",
+	"slee_a",			
+	"elridge_a",
+	"laidlaw_a",
+	"porter_a",
+	"renira_a",
+	"saliba_a",
+	"sylvia_a",
+	"valciane_a",
+	"violet_a",
+	"ysabet_a",
+	"clovette_a",
 	"tristan_a",
 	"dorothy_a",
 		"enid_a",
@@ -41,7 +55,8 @@ defaultcard: "mistakenidentity"	},
 	"commissionarticlelanternb",
 	"commissionarticlelanternc"]
 	,
-	defaultcard:"commissionarticlesecrethistory"},
+	defaultcard:"commissionarticlesecrethistory",
+resetonexhaustion:true	},
 	
 		{id: "bechetcommissions",
 	spec:["commissionarticleforge",
@@ -54,7 +69,8 @@ defaultcard: "mistakenidentity"	},
 	"commissionarticlemothb",
 	"commissionarticlemothc"]
 	,
-	defaultcard:"commissionarticlegrail"},
+	defaultcard:"commissionarticlegrail",
+resetonexhaustion:true	},
 
 		{id: "janningscommissions",
 	spec:["commissionarticleedge",
@@ -64,7 +80,14 @@ defaultcard: "mistakenidentity"	},
 	"commissionarticleheartb",
 	"commissionarticleheartc"]
 	,
-	defaultcard:"commissionarticleedge"}
+	defaultcard:"commissionarticleedge",
+resetonexhaustion:true	},
+	
+			{id: "randomvictim",
+	spec:["genericprisonerm",
+	"genericprisonerf"],
+	defaultcard:"genericprisonerm",
+resetonexhaustion:true	}
 	
 	]
 }

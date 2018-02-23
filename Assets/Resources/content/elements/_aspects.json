@@ -19,6 +19,18 @@
 			description: "Student, helpmeet, defender, champion, dupe, sacrifice... companion.",
             isAspect: true
         },
+		     {
+            id: "disciple",
+            label: "Disciple",
+			description: "A true initiate of the mysteries.",
+            isAspect: true
+        },
+				     {
+            id: "exalted",
+            label: "Exalted",
+			description: "This one cannot rise higher... at least, not while you lead.",
+            isAspect: true
+        },
 		        {
             id: "prisoner",
             label: "Prisoner",
@@ -340,10 +352,59 @@
             isAspect: true,
 			comments: "Recipe aspect"
         },
+					 {
+            id: "promotionto_d_edge",
+            label: "Exaltation: Edge",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
 			 {
-            id: "promotiontocultspecialisation",
-            label: "Exaltation",
-			description: "These are the true mysteries of our tradition.",
+            id: "promotionto_d_forge",
+            label: "Exaltation: Forge",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+					 {
+            id: "promotionto_d_grail",
+            label: "Exaltation: Grail",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+					 {
+            id: "promotionto_d_heart",
+            label: "Exaltation: Heart",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+					 {
+            id: "promotionto_d_knock",
+            label: "Exaltation: Knock",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+					 {
+            id: "promotionto_d_lantern",
+            label: "Exaltation: Lantern",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+					 {
+            id: "promotionto_d_moth",
+            label: "Exaltation: Moth",
+			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect"
+        },
+					 {
+            id: "promotionto_d_winter",
+            label: "Exaltation: Winter",
+			description: "These are the true mysteries of our veneration.",
             isAspect: true,
 			comments: "Recipe aspect"
         },
@@ -456,6 +517,46 @@
 	{id: "deceiver",
 		label: "Deceiver",
 		description: "If this breaks free, it may try to drive you or your followers to insanity.",
+		isAspect: true
+		},
+			{id: "venerationedge",
+		label: "Veneration: Edge",
+		description: "This organisation venerates the principle called Edge, which we call upon in the name of the Colonel and the Lionsmith... among others.",
+		isAspect: true
+		},
+					{id: "venerationforge",
+		label: "Veneration: Forge",
+		description: "This organisation venerates the principle called Forge, which we call upon in the name of the Forge of Days herself and the Madrugad... among others.",
+		isAspect: true
+		},
+					{id: "venerationgrail",
+		label: "Veneration: Grail",
+		description: "This organisation venerates the principle called Grail, which we call upon in the name of the Red Grail herself and the Sister-and-Witch... among others.",
+		isAspect: true
+		},
+					{id: "venerationheart",
+		label: "Veneration: Heart",
+		description: "This organisation venerates the principle called Heart, which we call upon in the name of the Thunderskin and the Velvet... among others.",
+		isAspect: true
+		},
+					{id: "venerationknock",
+		label: "Veneration: Knock",
+		description: "This organisation venerates the principle called Knock, which we call upon in the name of the Mother of Ants and the Meniscate... among others.",
+		isAspect: true
+		},
+					{id: "venerationlantern",
+		label: "Veneration: Lantern",
+		description: "This organisation venerates the principle called Knock, which we call upon in the name of the Door-in-the-Eye and the Flowermaker... among others.",
+		isAspect: true
+		},
+							{id: "venerationmoth",
+		label: "Veneration: Moth",
+		description: "This organisation venerates the principle called Moth, which we call upon in the name of the Moth himself and the Witch-and-Sister... among others.",
+		isAspect: true
+		},
+					{id: "venerationwinter",
+		label: "Veneration: Winter",
+		description: "This organisation venerates the principle called Winter, which we call upon in the name of the Sun-in-Rags and the Horned Axe... among others.",
 		isAspect: true
 		},
 		

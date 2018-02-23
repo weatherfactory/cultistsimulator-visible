@@ -41,26 +41,6 @@ description: "Nothing; my words cease like sand in a glass.",
 warmup: 60,
 craftable: true
 },
-{id: "talktofollower",
-label:"Discuss occult business with a Follower",
-actionId: "talk",
-requirements: {society:-1,follower: 1,summoned:-1},
-slots: {"Subject": {description:"A topic of conversation... or a target."}},
-comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
-alternativerecipes:[
-{id:"hunterattackhighedge",chance:100},
-{id:"hunterattackmidedge",chance:100},
-{id:"hunterattacklowedge",chance:100},
-{id: "evidencedestroymidmoth",chance:100},
-{id: "evidencedestroylowmoth",chance:100},
-{id: "inspiremystique",chance:70}, 
-{id: "inspirenotoriety",chance:100}
-],
-startdescription: "Significant conversations in a smoky meeting-room.",
-description: "",
-warmup: 60,
-craftable: true
-},
 
 {id: "talktoacquaintance",
 label:"Discuss occult business with an Acquaintance",

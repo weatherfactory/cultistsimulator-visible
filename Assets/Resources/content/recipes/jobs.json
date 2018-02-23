@@ -119,6 +119,21 @@
         warmup: 60,
 		craftable: true
 	},
+		{
+        id: "workhealth_noinjurychance",
+        label: "Unskilled Labour",
+        actionId: "work",
+        requirements: {health: 1},
+        effects: {
+            funds: 1
+        },
+        startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
+        description: "The day is done, and so am I; but I've earned my pay.",
+        warmup: 60,
+        craftable: true,
+		maxexecutions:2,
+		comments: "guaranteed two days without injury"
+    },
 	{
         id: "workhealth",
         label: "Unskilled Labour",

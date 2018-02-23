@@ -359,23 +359,32 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public IAspectsDictionary GetAspectsFromStartingElements(bool showElementAspects) {
-            return startingSlots.GetAspectsFromSlottedCards(showElementAspects);
+
+        public IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool includeElementAspects)
+        {
+            var aspects = GetAspectsFromAllSlottedElements(includeElementAspects);
+            var storedAspects = GetAspectsFromStoredElements(includeElementAspects);
+            aspects.CombineAspects(storedAspects);
+            return aspects;
         }
 
-        public IAspectsDictionary GetAspectsFromAllSlottedElements(bool showElementAspects) {
+        public IAspectsDictionary GetAspectsFromStartingElements(bool includeElementAspects) {
+            return startingSlots.GetAspectsFromSlottedCards(includeElementAspects);
+        }
+
+        public IAspectsDictionary GetAspectsFromAllSlottedElements(bool includeElementAspects) {
             var slottedAspects = new AspectsDictionary();
-            slottedAspects.CombineAspects(startingSlots.GetAspectsFromSlottedCards(showElementAspects));
-            slottedAspects.CombineAspects(ongoing.GetAspectsFromSlottedCards(showElementAspects));
+            slottedAspects.CombineAspects(startingSlots.GetAspectsFromSlottedCards(includeElementAspects));
+            slottedAspects.CombineAspects(ongoing.GetAspectsFromSlottedCards(includeElementAspects));
             return slottedAspects;
         }
 
-        public IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects) {
-            return GetStorageStacksManager().GetTotalAspects(showElementAspects);
+        public IAspectsDictionary GetAspectsFromStoredElements(bool includeElementAspects) {
+            return GetStorageStacksManager().GetTotalAspects(includeElementAspects);
         }
 
-        public IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects) {
-            return GetOutputStacksManager().GetTotalAspects(showElementAspects);
+        public IAspectsDictionary GetAspectsFromOutputElements(bool includeElementAspects) {
+            return GetOutputStacksManager().GetTotalAspects(includeElementAspects);
         }
 
 

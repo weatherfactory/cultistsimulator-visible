@@ -5,8 +5,9 @@
         id: "hunger",
             label: "Hunger",
             aspects:
-            {illhealth: CONVENTIONS.QUANTITY_TINY,
-			  grail: CONVENTIONS.QUANTITY_TINY},
+            {illhealth: 1,
+			  grail: 2,
+			  ingredient:1},
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
 			},
@@ -15,7 +16,8 @@
             label: "Health",
             aspects:
             {
-                heart: CONVENTIONS.QUANTITY_TINY
+                heart: 2,
+				ingredient: 1
             },
             animFrames: 1,
 			xtriggers: {damagehealth: injury},
@@ -52,7 +54,8 @@
             label: "Reason",
             aspects:
             {
-                lantern: CONVENTIONS.QUANTITY_TINY
+                lantern: 2,
+				ingredient:1
             },
             animFrames: 1,
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson",
@@ -69,9 +72,10 @@ lifetime: 300
 			{id: "dread",
             label: "Dread",
             aspects:
-            {edge: CONVENTIONS.QUANTITY_TINY,
-			unreason: CONVENTIONS.QUANTITY_TINY,
-			inducesdespair: CONVENTIONS.QUANTITY_TINY},
+            {edge: 2,
+			unreason: 1,
+			inducesdespair: 1,
+			ingredient:1},
 			xtriggers: {restorereason: reason},
             description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror."
 			},
@@ -80,7 +84,8 @@ lifetime: 300
             label: "Passion",
             aspects:
             {
-                moth: CONVENTIONS.QUANTITY_TINY
+                moth: 2,
+				ingredient:1
             },
             animFrames: 1,
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
@@ -96,7 +101,7 @@ lifetime: 300
 		{id: "fascination",
             label: "Fascination",
             aspects:
-            {moth: CONVENTIONS.QUANTITY_TINY,delirium:1,moth:1},
+            {moth:2,delirium:1,ingredient:1},
             description: "Light leaks through the cracks. My mind is brighter than it ever was..",
 			xtriggers: {restorepassion: passion},
 			},
@@ -131,11 +136,12 @@ lifetime: 300
             id: "fleeting",
             label: "Fleeting Memory",
             description: "A moment in time. In another moment, it'll be gone.",
+			aspects: {secrethistories: 2,moth:2,ingredient:1},
 			lifetime:30
         },
 		{id: "contentment",
 		label: "Contentment",
-		aspects: {lantern: 1,heart:1},
+		aspects: {lantern:2,heart:2,ingredient:1},
 		description: "I'm happy, I think.",
 		lifetime: 60
 		}
