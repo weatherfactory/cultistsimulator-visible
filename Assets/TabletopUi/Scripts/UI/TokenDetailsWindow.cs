@@ -115,10 +115,14 @@ namespace Assets.CS.TabletopUI {
                 sprite = ResourcesManager.GetSpriteForElement(element.Id);
 
             ShowImage(sprite);
-            ShowImageDecayTimer(token != null && token.Decays, token != null ? token.GetCardDecayTime() : null);
+
+            if (token != null) // only if there's a token is there ever a decay timer
+                ShowImageDecayTimer(token.Decays, token.GetCardDecayTime());
+            else
+                ShowImageDecayTimer(false);
 
             ShowText(elementHeader + element.Label, element.Description);
-            SetTextMargin(true, element.Unique || token.Decays);
+            SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
             ShowCardIcons(element.Unique, token.Decays);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
 
