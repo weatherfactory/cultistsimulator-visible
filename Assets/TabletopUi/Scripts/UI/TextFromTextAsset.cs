@@ -11,7 +11,11 @@ public class TextFromTextAsset : MonoBehaviour {
 	void Start () {
         var textAsset = Resources.Load<TextAsset>(textAssetName);
 
-        if (textAsset != null && textMesh != null)
+        if (textAsset == null)
+            Debug.LogWarning("[TextFromTextAsset] Could not load Resources/" + textAssetName);
+        else if (textMesh == null)
+            Debug.LogWarning("[TextFromTextAsset] Loaded text asset but no text mesh to use specified.");
+        else 
             textMesh.text = textAsset.text;
 	}
 	
