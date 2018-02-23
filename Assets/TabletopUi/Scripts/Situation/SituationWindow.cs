@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
         const string buttonDefault = "Start";
-        const string buttonBusy = "Waiting...";
+        const string buttonBusy = "Running...";
 
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
