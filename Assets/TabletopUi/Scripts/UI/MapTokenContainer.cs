@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Assets.CS.TabletopUI {
     public class MapTokenContainer : TabletopTokenContainer {
 
+        DoorSlot[] allSlots;
         DoorSlot activeSlot;
 
         public override void Initialise() {
@@ -15,25 +16,43 @@ namespace Assets.CS.TabletopUI {
 
             choreo = Registry.Retrieve<Choreographer>();
 
-            var door = GetDoor();
+            allSlots = GetComponentsInChildren<DoorSlot>();
 
-            if (door != null)
-                door.Initialise();
+            for (int i = 0; i < allSlots.Length; i++) 
+                allSlots[i].Initialise();
         }
 
-        public DoorSlot GetDoor() {
-            if (activeSlot == null)
-                activeSlot = GetComponentInChildren<DoorSlot>();
+        public void SetActiveDoor(PortalEffect effect) {
+            if (effect == PortalEffect.None) {
+                activeSlot = null;
+                return;
+            }
+
+            for (int i = 0; i < allSlots.Length; i++) {
+                if (allSlots[i].portalType == effect) {
+                    activeSlot = allSlots[i];
+                    return;
+                }
+            }
+
+            Debug.LogWarning("No Door Slot for " + effect + " found. Setting null");
+            activeSlot = null;
+        }
+
+        public DoorSlot GetActiveDoor() {
+            if (activeSlot == null) {
+                Debug.LogWarning("We don't have an active door slot, using a random one");
+                return allSlots[Random.Range(0, allSlots.Length)];
+            }
 
             return activeSlot;
         }
 
-        public void Show(bool show) {
+        public override void Show(bool show) {
             if (show) {
                 canvasGroupFader.Show();
 
                 activeSlot = GetComponentInChildren<DoorSlot>();
-                activeSlot.onCardDropped += HandleOnSlotFilled;
                 activeSlot.ShowGlow(false, false); // ensure we're not glowing
                 return;
             }
@@ -41,14 +60,8 @@ namespace Assets.CS.TabletopUI {
             canvasGroupFader.Hide();
 
             if (activeSlot != null) {
-                activeSlot.onCardDropped -= HandleOnSlotFilled;
                 activeSlot = null;
             }
-        }
-
-        void HandleOnSlotFilled(IElementStack stack) {
-            // Close map, retrieve the card
-            Registry.Retrieve<MapController>().HideMansusMap(activeSlot.transform, stack);
         }
 
         public void ShowDestinationsForStack(IElementStack stack, bool show) {

@@ -18,6 +18,8 @@ namespace Assets.CS.TabletopUI {
 
         public event System.Action<IElementStack> onCardDropped;
 
+        public PortalEffect portalType;
+        public Transform[] cardPositions;
         public Graphic border;
         public GraphicFader slotGlow;
         bool lastGlowState;
@@ -28,7 +30,7 @@ namespace Assets.CS.TabletopUI {
         public override void Initialise() {
             ShowGlow(false, false);
             //will this be called as necessary? we might need an Initialise()
-            _elementStacksManager = new ElementStacksManager(this, "door");
+            _elementStacksManager = new ElementStacksManager(this, "door-"+portalType);
         }
 
         // IGlowableView implementation
@@ -75,7 +77,7 @@ namespace Assets.CS.TabletopUI {
         public void OnDrop(PointerEventData eventData) {
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
-            if (stack == null) { //it's not an element stack; just put it down
+            if (stack == null && DraggableToken.itemBeingDragged != null) { //it's not an element stack; just put it down
                 DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
                 return;
             }
@@ -89,7 +91,9 @@ namespace Assets.CS.TabletopUI {
         public void AcceptStack(IElementStack stack, Context context) {
             GetElementStacksManager().AcceptStack(stack, context);
             // ReSharper disable once PossibleNullReferenceException
-            onCardDropped(stack);
+
+            if (onCardDropped != null)
+                onCardDropped(stack);
         }
 
         public DraggableToken GetTokenInSlot() {

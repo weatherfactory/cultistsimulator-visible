@@ -176,7 +176,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     // Hide / Show for use with Mansus Map transition
-    public void Show(bool show) {
+    public virtual void Show(bool show) {
         if (show) 
             canvasGroupFader.Show();
         else 

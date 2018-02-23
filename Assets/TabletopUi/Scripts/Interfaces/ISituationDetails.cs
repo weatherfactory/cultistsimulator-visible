@@ -42,6 +42,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayStoredElements();
 
         IElementStacksManager GetStorageStacksManager();
+        IElementStacksManager GetResultsStacksManager();
 
         IEnumerable<ISituationNote> GetNotes();
 

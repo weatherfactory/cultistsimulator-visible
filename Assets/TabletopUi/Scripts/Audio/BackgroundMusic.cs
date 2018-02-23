@@ -8,6 +8,7 @@ public class BackgroundMusic : MonoBehaviour {
 
     protected IEnumerable<AudioClip> backgroundMusic;
     protected IEnumerable<AudioClip> impendingDoomMusic;
+    protected IEnumerable<AudioClip> mansusMusic;
 
     [SerializeField]
     private AudioSource audioSource;
@@ -19,6 +20,7 @@ public class BackgroundMusic : MonoBehaviour {
     void Awake() {
         backgroundMusic = ResourcesManager.GetBackgroundMusic();
         impendingDoomMusic = ResourcesManager.GetImpendingDoomMusic();
+        mansusMusic = ResourcesManager.GetMansusMusic();
         random = new System.Random();
     }
 
@@ -50,6 +52,10 @@ public class BackgroundMusic : MonoBehaviour {
 
     public void PlayRandomClip() {
         PlayClip(random.Next(0, backgroundMusic.Count()), backgroundMusic);
+    }
+
+    public void PlayMansusClip() {
+        PlayClip(0, mansusMusic);
     }
 
     public void PlayImpendingDoom() {

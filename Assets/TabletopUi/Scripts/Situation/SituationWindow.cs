@@ -316,7 +316,7 @@ namespace Assets.CS.TabletopUI {
             return storage.GetElementStacksManager();
         }
 
-        public IElementStacksManager GetOutputStacksManager() {
+        public IElementStacksManager GetResultsStacksManager() {
             return results.GetElementStacksManager();
         }
 
@@ -384,7 +384,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public IAspectsDictionary GetAspectsFromOutputElements(bool includeElementAspects) {
-            return GetOutputStacksManager().GetTotalAspects(includeElementAspects);
+            return GetResultsStacksManager().GetTotalAspects(includeElementAspects);
         }
 
 

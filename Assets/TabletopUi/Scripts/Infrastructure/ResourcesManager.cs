@@ -63,10 +63,14 @@ public class ResourcesManager: MonoBehaviour
         return Resources.LoadAll<AudioClip>("music/background");
     }
 
-        public static IEnumerable<AudioClip> GetImpendingDoomMusic()
-        {
-            return Resources.LoadAll<AudioClip>("music/impendingdoom");
-        }
+    public static IEnumerable<AudioClip> GetImpendingDoomMusic()
+    {
+        return Resources.LoadAll<AudioClip>("music/impendingdoom");
+    }
+
+    public static IEnumerable<AudioClip> GetMansusMusic() {
+        return Resources.LoadAll<AudioClip>("music/mansus");
+    }
 
     public static IEnumerable<AudioClip> GetEndingMusic(EndingFlavour endingFlavour)
     {

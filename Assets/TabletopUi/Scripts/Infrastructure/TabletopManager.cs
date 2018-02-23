@@ -82,6 +82,9 @@ namespace Assets.CS.TabletopUI {
 
         private SituationBuilder _situationBuilder;
 
+        bool isInNonSaveableState;
+        private SituationController mansusSituation;
+
         public void Update() {
             _hotkeyWatcher.WatchForGameplayHotkeys();
             _cardAnimationController.CheckForCardAnimations();
@@ -322,6 +325,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SaveGame(bool withNotification) {
+            if (isInNonSaveableState)
+                return;
+
             _heart.StopBeating();
 
             //Close all windows and dump tokens to desktop before saving.
@@ -512,16 +518,50 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(paused);
         }
 
-        public void ShowMansusMap(Transform origin) {
+        void LockSpeedController(bool enabled) {
+            _speedController.LockToPause(enabled);
+        }
+
+        public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);
+
+            DraggableToken.CancelDrag();
+            LockSpeedController(true);
+            isInNonSaveableState = true;
+
+            // Play Mansus Music
+            backgroundMusic.PlayMansusClip();
+
+            // Build mansus cards and doors everything
+            mansusSituation = situation; // so we can drop the card in the right place
+            _mapController.SetupMap(effect); 
+
+            // Do transition
             _tabletop.Show(false);
             _mapController.ShowMansusMap(origin, true);
         }
 
-        public void HideMansusMap(Transform origin) {
-            CloseAllSituationWindowsExcept(null);
+        public void HideMansusMap(Transform origin, ElementStackToken mansusCard) {
+            DraggableToken.CancelDrag();
+            LockSpeedController(false);
+            isInNonSaveableState = false;
+
+            // Play Normal Music
+            backgroundMusic.PlayRandomClip();
+
+            // Cleanup mansus cards and doors everything
+            _mapController.CleanupMap();
+
+            // Do transition
             _tabletop.Show(true);
             _mapController.ShowMansusMap(origin, false);
+
+            // Put card into the original Situation Results
+            mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
+            mansusSituation = null;
+
+            // Add message to the situation notes
+            // center on origin token
         }
 
         public void BeginNewSituation(SituationCreationCommand scc) {

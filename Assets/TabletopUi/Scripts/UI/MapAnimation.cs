@@ -31,8 +31,8 @@ namespace Assets.CS.TabletopUI {
             return !isAnimating && gameObject.activeSelf != showMap;
         }
 
-        public void SetCenterForEffect(Transform doorSlot) {
-            var screenPoint = RectTransformUtility.WorldToScreenPoint(background.canvas.worldCamera, doorSlot.position);
+        public void SetCenterForEffect(Transform effectOrigin) {
+            var screenPoint = RectTransformUtility.WorldToScreenPoint(background.canvas.worldCamera, effectOrigin.position);
             Vector2 localPoint;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(background.rectTransform, screenPoint, background.canvas.worldCamera, out localPoint);
 
@@ -42,7 +42,7 @@ namespace Assets.CS.TabletopUI {
 
             Debug.Log("screen point " + screenPoint + " / Local point " +localPoint);
 
-            particles.transform.position = doorSlot.position;
+            particles.transform.position = effectOrigin.position;
             SetMaterialCenter(localPoint);
         }
 
