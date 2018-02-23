@@ -11,7 +11,54 @@
 defaultcard: "fleeting",
 resetonexhaustion:false,
 comments: "but this should only be drawn from once."
-	}
+	},
+	
+
+		{id: "mansus_wood",
+	spec:
+		["influencemoth"],
+defaultcard: "fleeting",
+	},
+	
+			{id: "mansus_wood",
+	spec:
+		["influencemoth"],
+defaultcard: "fleeting",
+resetonexhaustion:true
+	},
+	
+			{id: "mansus_templewheel",
+	spec:
+		["influenceedge"],
+defaultcard: "fleeting",
+	},
+	
+				{id: "mansus_well",
+	spec:
+		["influenceheart"],
+defaultcard: "fleeting",
+resetonexhaustion:true
+	},
+			{id: "mansus_whitedoor",
+	spec:
+		["influencemoth"],
+defaultcard: "fleeting",
+resetonexhaustion:true
+	},
+	
+			{id: "mansus_lodge",
+	spec:
+		["influenceedge"],
+defaultcard: "fleeting",
+	},
+	
+				{id: "mansus_orchard",
+	spec:
+		["influenceheart"],
+defaultcard: "fleeting",
+resetonexhaustion:true
+	},
+
 	
 	]
 }

@@ -8,8 +8,12 @@ using NSubstitute.Routing.Handlers;
 public enum PortalEffect
 {
     None=0,
-    Mansus =1
-
+    Wood=10,
+    WhiteDoor=20,
+    StagDoor=30,
+    SpiderDoor=40,
+    PeacockGate=50,
+    TricuspidGate=60
 }
 
 /// <summary>
