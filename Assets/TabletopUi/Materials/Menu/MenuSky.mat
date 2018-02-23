@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MenuSky
+  m_Shader: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: EFFECTS_LAYER_1_ON EFFECTS_LAYER_2_OFF EFFECTS_LAYER_3_OFF EFFECTS_LAYER_4_OFF
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DistMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistMax:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistTex:
+        m_Texture: {fileID: 2800000, guid: 2ab744252ac17564db1fb4983d11b854, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer1Motion:
+        m_Texture: {fileID: 2800000, guid: d460507ac8ca930418e7f9755eb461d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer1Tex:
+        m_Texture: {fileID: 2800000, guid: 8e98d88c5a4acc345a25529c383e49eb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer2Motion:
+        m_Texture: {fileID: 2800000, guid: f30e65570714b1343b9b40521895779f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer2Tex:
+        m_Texture: {fileID: 2800000, guid: 9f78f541d110dfc4a93f3e2f3716f580, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer3Motion:
+        m_Texture: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer3Tex:
+        m_Texture: {fileID: 2800000, guid: 273c4297c8efa6d4c8d925a4a7d45f20, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer4Motion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EffectsLayer4Tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 822023ed0d3bd104b92c034f0477ab09, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _DistSpeed: 1
+    - _DistStrength: 0.2
+    - _EffectsLayer1Background: 1
+    - _EffectsLayer1Enabled: 0
+    - _EffectsLayer1Foreground: 0
+    - _EffectsLayer1MotionSpeed: 0.6
+    - _EffectsLayer1Rotation: 0
+    - _EffectsLayer2Background: 1
+    - _EffectsLayer2Foreground: 0
+    - _EffectsLayer2MotionSpeed: 4.59
+    - _EffectsLayer2Rotation: -23.16
+    - _EffectsLayer3Background: 0
+    - _EffectsLayer3Foreground: 0
+    - _EffectsLayer3MotionSpeed: 0
+    - _EffectsLayer3Rotation: 0
+    - _EffectsLayer4Foreground: 0
+    - _EffectsLayer4MotionSpeed: 0
+    - _EffectsLayer4Rotation: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EffectsLayer1Color: {r: 1, g: 1, b: 1, a: 0.603}
+    - _EffectsLayer1P3vot: {r: 0, g: 0, b: 0, a: 0}
+    - _EffectsLayer1Pivot: {r: 0, g: 0, b: 0, a: 0}
+    - _EffectsLayer1PivotScale: {r: 0.5, g: 0.5, b: 1, a: 1}
+    - _EffectsLayer1Translation: {r: -0, g: 0, b: 0, a: 0}
+    - _EffectsLayer2Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EffectsLayer2Pivot: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _EffectsLayer2PivotScale: {r: 0.5, g: 0.5, b: 1.5, a: 1.5}
+    - _EffectsLayer2Translation: {r: 0, g: 0, b: 0, a: 0}
+    - _EffectsLayer3Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EffectsLayer3Pivot: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _EffectsLayer3PivotScale: {r: 0.5, g: 0.5, b: 1, a: 1}
+    - _EffectsLayer3Translation: {r: 0, g: 0, b: 0, a: 0}
+    - _EffectsLayer4Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EffectsLayer4PivotScale: {r: 0.5, g: 0.5, b: 1, a: 1}
+    - _EffectsLayer4Translation: {r: 0, g: 0, b: 0, a: 0}

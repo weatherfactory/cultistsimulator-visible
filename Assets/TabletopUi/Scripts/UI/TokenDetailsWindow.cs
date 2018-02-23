@@ -118,8 +118,8 @@ namespace Assets.CS.TabletopUI {
             ShowImageDecayTimer(token != null && token.Decays, token != null ? token.GetCardDecayTime() : null);
 
             ShowText(elementHeader + element.Label, element.Description);
-            SetTextMargin(true, element.Unique);
-            ShowCardIcons(element.Unique, element.Lifetime > 0);
+            SetTextMargin(true, element.Unique || token.Decays);
+            ShowCardIcons(element.Unique, token.Decays);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(element.Aspects);

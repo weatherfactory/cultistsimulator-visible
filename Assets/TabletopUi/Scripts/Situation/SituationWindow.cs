@@ -65,17 +65,16 @@ namespace Assets.CS.TabletopUI {
 			set { title.text = value; }
         }
 
-
         // INIT & LIFECYCLE
 
         void OnEnable() {
 			startButton.onClick.AddListener(HandleStartButton);
-            dumpResultsButton.onClick.AddListener(HandleResultsButton);
+            dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
         }
 
 		void OnDisable() {
 			startButton.onClick.RemoveListener(HandleStartButton);
-            dumpResultsButton.onClick.RemoveListener(HandleResultsButton);
+            dumpResultsButton.onClick.RemoveListener(DumpAllResultingCardsToDesktop);
         }
 
 		public void Initialise(IVerb verb, SituationController sc) {
@@ -272,7 +271,8 @@ namespace Assets.CS.TabletopUI {
             situationController.AttemptActivateRecipe();
         }
 
-        void HandleResultsButton() {
+        // so the token-dump button can trigger this
+        public void DumpAllResultingCardsToDesktop() {
             DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerClick));
             situationController.ResetSituation();
         }

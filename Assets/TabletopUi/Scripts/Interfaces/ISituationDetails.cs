@@ -31,6 +31,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void UpdateTextForPrediction(RecipePrediction recipePrediction);
 
         void DumpAllStartingCardsToDesktop();
+        void DumpAllResultingCardsToDesktop();
 
         IEnumerable<IElementStack> GetStartingStacks();
         IEnumerable<IElementStack> GetOngoingStacks();
