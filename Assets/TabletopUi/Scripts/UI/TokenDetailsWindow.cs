@@ -123,7 +123,7 @@ namespace Assets.CS.TabletopUI {
 
             ShowText(elementHeader + element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
-            ShowCardIcons(element.Unique, token.Decays);
+            ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(element.Aspects);
