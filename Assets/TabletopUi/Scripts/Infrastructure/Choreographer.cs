@@ -29,7 +29,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _situationBuilder = situationBuilder;
 
             tableRect = tabletop.GetRect();
-            Debug.Log("Tabletop Rect is " + tableRect);
+            
         }
 
         // -- PUBLIC POSITIONING METHODS ----------------------------
@@ -76,22 +76,23 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         // -- GET FREE POSITION ----------------------------
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
-#if DEBUG
-            currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
-            currentDebug.tabletop = _tabletop.transform;
-            currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
-            currentDebug.checkedPoints = new List<Vector2>();
-            currentDebug.tokenOverlaps = false;
-            currentDebug.checkedRects = new List<Rect>();
+            //hierarchy was filling up with debugs. commenting out for now. -AK
+            //#if DEBUG
+            //currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
+            //currentDebug.tabletop = _tabletop.transform;
+            //currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+            //currentDebug.checkedPoints = new List<Vector2>();
+            //currentDebug.tokenOverlaps = false;
+           // currentDebug.checkedRects = new List<Rect>();
 
-            var pos = GetFreeTokenPosition(token, centerPos, startRadius);
-            currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
-            currentDebug.hasDebugData = true;
+            //var pos = GetFreeTokenPosition(token, centerPos, startRadius);
+            //currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
+            //currentDebug.hasDebugData = true;
 
-            return pos;
-#else
+  //  return pos;
+    //#else
             return GetFreeTokenPosition(token, centerPos, startRadius);
-#endif
+    //#endif
         }
 
         public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
