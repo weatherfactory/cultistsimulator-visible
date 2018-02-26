@@ -36,7 +36,7 @@
     },
 	{id: "discardseason",
 	actionId: "time",
-	effects: {season:-1,funds:-1},
+	effects: {season:-1,funds:-999},
 	warmup:0,
 	 linked:[{id:"drawseason",chance:100}]
 	},
