@@ -24,7 +24,8 @@
         description: "I have decided to remain as I am... for now.",
         		alternativerecipes:[{id: "dreamascension_switchto_power",chance:100},
 		{id: "dreamascension_switchto_enlightenment",chance:100},
-		{id: "dreamascension_upgrade_sensation_1to2",chance:100}],
+		{id: "dreamascension_upgrade_sensation_1to2m",chance:50},
+		{id: "dreamascension_upgrade_sensation_1to2f",chance:100}],
 		warmup: 60,
         craftable: true
     },
@@ -83,13 +84,22 @@
 
 
 {
-        id: "dreamascension_upgrade_sensation_1to2",
+        id: "dreamascension_upgrade_sensation_1to2m",
 		label: "Blood's Dedication",
 		actionId: "dream",
 		requirements: {lore:1,grail:1},
 		startdescription:"I will dedicate myself to the pursuit of sensation.",
-		description: "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget. [I have advanced a step towards a terrible ascension.]",
-		effects:{ascensionsensationa:-1,ascensionsensationb:1}
+		description: "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget it. [I have advanced a step towards a terrible ascension.]",
+		effects:{ascensionsensationa:-1,ascensionsensationbm:1}
+},
+{
+        id: "dreamascension_upgrade_sensation_1to2f",
+		label: "Blood's Dedication",
+		actionId: "dream",
+		requirements: {lore:1,grail:1},
+		startdescription:"I will dedicate myself to the pursuit of sensation.",
+		description: "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget it. [I have advanced a step towards a terrible ascension.]",
+		effects:{ascensionsensationa:-1,ascensionsensationbf:1}
 },
 
 {

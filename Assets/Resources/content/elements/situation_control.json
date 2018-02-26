@@ -11,7 +11,7 @@
 		{id: "bid",
 		label: "Bid",
 		description: "A bid placed in an auction house.",
-		xtriggers:{situationaborted:funds}
+		xtriggers:{restore:funds}
 		}
 ]
 };

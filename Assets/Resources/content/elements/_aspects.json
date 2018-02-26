@@ -408,8 +408,15 @@
             isAspect: true,
 			comments: "Recipe aspect"
         },
+					 {
+            id: "invest",
+            label: "NA Commitment is Made",
+			description: "Something has occurred.",
+            isAspect: true,
+			comments: "Recipe aspect; runs to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding)."
+        },
 			 {
-            id: "situationaborted",
+            id: "restore",
             label: "Nothing has Occurred",
 			description: "All is as it was",
             isAspect: true,

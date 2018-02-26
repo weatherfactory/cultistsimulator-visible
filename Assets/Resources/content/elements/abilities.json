@@ -59,7 +59,13 @@
             },
             animFrames: 1,
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson",
-				xtriggers: {damagereason: dread},
+				xtriggers: {damagereason: dread,invest:concentration},
+        },
+		        {
+            id: "concentration",
+            label: "Concentration",
+			description: "I have invested my Reason in this process.",
+				xtriggers: {restore:reason},
         },
 				 {
             id: "erudition",

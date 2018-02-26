@@ -34,7 +34,18 @@
 			},
         },
 				 {
-            id: "ascensionsensationb",
+            id: "ascensionsensationbm",
+            label: "Dedication: Sensation",
+            aspects:
+            {desire: 2},
+            description: "I have dedicated myself to the immortal pursuit of sensation. [This makes a Feasting victory possible. I must be a true initiate of the Mansus; I'll need a rite to make me palatable to the Red Grail.]",
+			slots: {
+			"Know":{required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
+			"Power": {required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."},
+			},
+        },
+						 {
+            id: "ascensionsensationbf",
             label: "Dedication: Sensation",
             aspects:
             {desire: 2},
