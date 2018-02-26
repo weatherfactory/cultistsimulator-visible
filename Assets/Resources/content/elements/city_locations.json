@@ -19,9 +19,9 @@
             label: "Strathcoyne's Residence",
             aspects:{location: 1},
 			slots: {
-				"Burgle":
+				"Despatch":
 					{
-					required: {edge: 1,follower: 1},
+					required: {follower: 1},
 					forbidden: {}
 					}
 				},
