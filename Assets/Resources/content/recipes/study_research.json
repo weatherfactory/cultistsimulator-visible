@@ -281,6 +281,19 @@
 	warmup:0,
 	craftable: false,
 	linked: [
+	
+	{id:"studycreateritetoolconsumeingredient",chance:100},
+	{id:"studycreateritetoolconsumeinfluence",chance:100},
+	{id:"studycreateritetoolconsumefollower",chance:100},
+	{id:"studycreateritefollowerconsumetool",chance:100},	
+	
+	{id:"studycreateritefollowerconsumeingredient",chance:100},
+	{id:"studycreateriteinfluenceconsumeingredient",chance:100},
+	{id:"studycreateritefollowerconsumeinfluence",chance:100},
+	{id:"studycreateriteinfluenceconsumefollower",chance:100},
+	{id:"studycreateriteconsumetoolingredientfollowerinfluence",chance:100},
+		{id:"studycreateritetoolfollowerconsumelore",chance:0},
+	
 		{id:"studyedgeupgradeg",chance:100},
 	{id:"studyforgeupgradeg",chance:100},
 	{id:"studygrailupgradeg",chance:100},
@@ -336,17 +349,7 @@
 	{id:"studysecrethistoriesupgradeb",chance:100},
 	{id:"studywinterupgradeb",chance:100},
 	
-	{id:"studycreateritetoolconsumeingredient",chance:100},
-	{id:"studycreateritetoolconsumeinfluence",chance:100},
-	{id:"studycreateritetoolconsumefollower",chance:100},
-	{id:"studycreateritefollowerconsumetool",chance:100},	
 	
-	{id:"studycreateritefollowerconsumeingredient",chance:100},
-	{id:"studycreateriteinfluenceconsumeingredient",chance:100},
-	{id:"studycreateritefollowerconsumeinfluence",chance:100},
-	{id:"studycreateriteinfluenceconsumefollower",chance:100},
-	{id:"studycreateriteconsumetoolingredientfollowerinfluence",chance:100},
-		{id:"studycreateritetoolfollowerconsumelore",chance:100},
 	
 	{id:"studyupgradenomatch",chance:100},
 	
