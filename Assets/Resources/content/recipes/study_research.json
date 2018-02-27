@@ -161,7 +161,8 @@
 	effects: {insight:1},
 	craftable: false,
 	startdescription: "The task occupies ever more of my attention. But my efforts are paying off. [Gained Insight.].",
-	linked: [{id:"studyresearchtick",chance:100}]
+	linked: [{id:"studyresearchtick",chance:100}],
+	aspects: {invest:1}
 	},
 		{
 	id: "studyresearchneedserudition",
@@ -275,6 +276,7 @@
 	label: "Success!",
 	actionId: "study",
 	requirements: {},
+	aspects: {restore:1},
 	effects: {insight:-100},
 	startdescription: ".",
 	description: "I've learnt something new.",
@@ -292,7 +294,7 @@
 	{id:"studycreateritefollowerconsumeinfluence",chance:100},
 	{id:"studycreateriteinfluenceconsumefollower",chance:100},
 	{id:"studycreateriteconsumetoolingredientfollowerinfluence",chance:100},
-		{id:"studycreateritetoolfollowerconsumelore",chance:0},
+		{id:"studycreateritetoolfollowerconsumelore",chance:100},
 	
 		{id:"studyedgeupgradeg",chance:100},
 	{id:"studyforgeupgradeg",chance:100},
@@ -303,6 +305,7 @@
 	{id:"studymothupgradeg",chance:100},
 	{id:"studysecrethistoriesupgradeg",chance:100},
 	{id:"studywinterupgradeg",chance:100},
+	
 	{id:"studyedgeupgradef",chance:100},
 	{id:"studyforgeupgradef",chance:100},
 	{id:"studygrailupgradef",chance:100},
@@ -361,6 +364,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {insight:-100,erudition:1},
+	aspects: {restore:1},
 	startdescription: ".",
 	description: "This time, this research has failed. But I've learnt the lessons of experience.",
 	warmup:0,
