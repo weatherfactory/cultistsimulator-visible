@@ -23,7 +23,7 @@ xtriggers: {killmortal:corpse,derangemortal:lunatic,capturehunter:defaulthunterp
         id: "investigator1prisoner",
             label: "Inspector Wakefield: Captured!",
             aspects:
-            {hunter:1,mortal:1,prisoner:1},
+            {mortal:1,prisoner:1},
             description: "Zachary Wakefield: a melancholy, but remorseless, inspector of police. Let us be sure he dies in captivity.",
 unique:true,
 lifetime:600
@@ -32,7 +32,7 @@ lifetime:600
         id: "defaulthunterprisoner",
             label: "Weary Detective Captured!",
             aspects:
-            {hunter:1,mortal:1,prisoner:1},
+            {mortal:1,prisoner:1},
             description: "This gentleman would much rather be left alone with his pipe and his Illustrated London News, but now he is mewed up in some wretched hole in the ground.",
 xtriggers: {killmortal:corpse,derangemortal:lunatic,capturehunter:defaulthunterprisoner},
 lifetime:600
