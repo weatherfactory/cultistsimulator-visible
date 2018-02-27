@@ -10,7 +10,8 @@
         startdescription: "I can use this rite to give an Hour entry to my body? Power comes with them like a scent. Of course... I don't know which Hour might come.",
         description: "The ritual is complete. The door is opening.",
         warmup: 30,
-        craftable: true,
+        craftable: false,
+		comments: "legacy",
 		burnimage: "flammarion"
     },
 	  {
@@ -22,7 +23,8 @@
         startdescription: "Can I use this rite to give an Hour entry to my body? Power comes with them like a scent.",
         description: "It didn't work. I need another invocation too - something to open the way. And I require a willing sacrifice.",
         warmup: 30,
-        craftable: true,
+        craftable: false,
+		comments: "legacy",
 		burnimage: "flammarion"
     },
 	{
@@ -35,7 +37,8 @@
         startdescription: "I can use this rite to follow in the Watchman's footsteps, and learn of the house without walls.",
         description: "The ritual is complete. The door is opening.",
         warmup: 30,
-        craftable: true,
+        craftable: false,
+		comments: "legacy",
 		burnimage: "flammarion"
     },
 		{
@@ -46,7 +49,8 @@
         startdescription: "Can I use this rite to follow in the Watchman's footsteps, and learn of the house without walls?",
         description: "It didn't work. I need to call upon another power, too - a power of opening. And I'll need funds, to purchase the rare-wax candles that will light the Watchman's path.",
         warmup: 30,
-        craftable: true,
+       craftable: false,
+		comments: "legacy",
 		burnimage: "flammarion"
     },
 	{
@@ -59,7 +63,8 @@
          startdescription: "My heart swells; my blood burns. I am very close. I must devote myself more fervently.",
         description: "The rite failed! I was close - as close as the flame to a candle, as the blood to a heart. I must try again.",
         warmup: 60,
-        craftable: false,
+       craftable: false,
+		comments: "legacy",
 		burnimage: "flammarion"
     },
 		{
@@ -74,6 +79,7 @@
         description: "I touched it with my fingertips, the understanding I seek. So close. I must try again.",
         warmup: 60,
         craftable: false,
+		comments: "legacy",
 		burnimage: "flammarion"
     },
 	
