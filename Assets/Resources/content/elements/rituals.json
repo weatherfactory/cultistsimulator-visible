@@ -127,6 +127,7 @@
 			"Surrender":{required: {tool: 1}, description: "Something to be lost.", consumes:true},
 			"Dissolution":{required: {influence: 1}, description: "Something to be lost.", consumes:true},
 			"Grief":{required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
+			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
             description: "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts."
         },
