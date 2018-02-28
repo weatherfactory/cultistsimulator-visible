@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using Noon;
 using UnityEngine.Audio;
 using TMPro;
 
@@ -90,8 +91,9 @@ public class OptionsPanel : MonoBehaviour {
         else
             value = UnityEngine.Random.Range(0, 1);
 
-        SetBirdWorm(value); // this does nothing, since we're disabled but updates the value hint
+        SetBirdWorm(value);
         birdWormSlider.value = value;
+        NoonUtility.WormWar(value);
     }
 
     public void ToggleVisibility() {
