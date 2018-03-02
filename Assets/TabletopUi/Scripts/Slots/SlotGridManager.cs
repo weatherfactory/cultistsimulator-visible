@@ -31,7 +31,7 @@ namespace Assets.CS.TabletopUI {
 		void OnEnable() {
 			SetNumPerRow();
             float height = GetHeightForSlotCount();
-            SetHeight(height);
+            SetHeight(height, true);
             ToggleScrollOnSize(height);
         }
 
@@ -79,10 +79,13 @@ namespace Assets.CS.TabletopUI {
             if (numRows != oldRowCount) {
                 float targetHeight = GetHeightForSlotCount();
 
-                if (gameObject.activeSelf)
+                if (gameObject.activeSelf) { 
                     StartCoroutine(AdjustHeight(targetHeight, sizeTransitionDuration));
-                else
-                    SetHeight(targetHeight);
+                }
+                else { 
+                    SetHeight(targetHeight, true);
+                    ToggleScrollOnSize(targetHeight);
+                }
             }
 
             // Set target positions for all remaining slots
@@ -132,8 +135,12 @@ namespace Assets.CS.TabletopUI {
             ToggleScrollOnSize(target, false); // if we're not going to be scrollable at the end of this, turn it off now
         }
 
-        void SetHeight(float height) {
+        void SetHeight(float height, bool resetPos = false) {
             rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+
+            // we also want to reset the start pos
+            if (resetPos)
+                rect.anchoredPosition = Vector3.zero;
         }
 
         void ToggleScrollOnSize(float height, bool? onlyToggleTo = null) {
