@@ -14,21 +14,28 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI {
+    [ExecuteInEditMode]
     public class DoorSlot : AbstractTokenContainer, IDropHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
 
         public event System.Action<IElementStack> onCardDropped;
 
         public PortalEffect portalType;
         public Transform[] cardPositions;
-        public Graphic border;
+        public Image activeGlow;
         public GraphicFader slotGlow;
+        public Color defaultBackgroundColor;
+        public Image doorColor;
         bool lastGlowState;
+        bool isActive;
+
+        Color dropBackgroundColor = new Color(1.25f, 1.25f, 1.25f);
 
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
 
         public override void Initialise() {
-            ShowGlow(false, false);
+            ShowGlow(false, true);
+            slotGlow.Hide(true);
             //will this be called as necessary? we might need an Initialise()
             _elementStacksManager = new ElementStacksManager(this, "door-"+portalType);
         }
@@ -43,6 +50,12 @@ namespace Assets.CS.TabletopUI {
             ShowHoverGlow(false);
         }
 
+        public void SetAsActive(bool active) {
+            isActive = active;
+            activeGlow.gameObject.SetActive(active);
+            doorColor.color = defaultBackgroundColor;
+        }
+
         public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
             SetGlowColor(UIStyle.GetGlowColor(colorType));
         }
@@ -52,29 +65,38 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ShowGlow(bool glowState, bool instant) {
-            lastGlowState = glowState;
+            if (!isActive)
+                glowState = false;
 
-            if (glowState)
-                slotGlow.Show(instant);
+            if (instant)
+                doorColor.canvasRenderer.SetColor( glowState ? dropBackgroundColor : Color.white );
             else
-                slotGlow.Hide(instant);
+                doorColor.CrossFadeColor(glowState ? dropBackgroundColor : Color.white, 0.2f, false, false);
+
+            lastGlowState = glowState;
         }
 
         // Separate method from ShowGlow so we can restore the last state when unhovering
         protected virtual void ShowHoverGlow(bool show) {
+            if (!isActive)
+                return;
+
             // We're NOT dragging something and our last state was not "this is a legal drop target" glow, then don't show
             if (DraggableToken.itemBeingDragged == null && !lastGlowState)
                 return;
 
             if (show)
-                SetGlowColor(UIStyle.TokenGlowColor.OnHover);
+                slotGlow.Show();
             else
-                SetGlowColor(UIStyle.TokenGlowColor.Default);
+                slotGlow.Hide();
         }
 
         // IOnDrop Implementation
 
         public void OnDrop(PointerEventData eventData) {
+            if (!isActive)
+                return;
+
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
             if (stack == null && DraggableToken.itemBeingDragged != null) { //it's not an element stack; just put it down
@@ -107,6 +129,12 @@ namespace Assets.CS.TabletopUI {
         public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
             throw new NotImplementedException();
         }
+
+#if UNITY_EDITOR
+        void OnValidate() {
+            ShowGlow(false, true);
+        }
+#endif
 
     }
 }

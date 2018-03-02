@@ -133,6 +133,9 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     public void AcceptStack(IElementStack stack, Context context) {
+        if (stack == null)
+            return;
+
         NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name, 10);
 
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop

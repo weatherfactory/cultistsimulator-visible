@@ -28,15 +28,24 @@ namespace Assets.CS.TabletopUI {
                 return;
             }
 
+            activeSlot = null;
+
             for (int i = 0; i < allSlots.Length; i++) {
                 if (allSlots[i].portalType == effect) {
+                    allSlots[i].SetAsActive(true);
                     activeSlot = allSlots[i];
-                    return;
+                    Debug.Log("Setting Active Slot " + activeSlot + ".");
+                }
+                else {
+                    allSlots[i].SetAsActive(false);
                 }
             }
 
-            Debug.LogWarning("No Door Slot for " + effect + " found. Setting null");
-            activeSlot = null;
+            if (activeSlot == null) { 
+                Debug.LogWarning("No Door Slot for " + effect + " found. Setting a random one");
+                activeSlot = allSlots[Random.Range(0, allSlots.Length)];
+                activeSlot.SetAsActive(true);
+            }
         }
 
         public DoorSlot GetActiveDoor() {
@@ -51,22 +60,20 @@ namespace Assets.CS.TabletopUI {
         public override void Show(bool show) {
             if (show) {
                 canvasGroupFader.Show();
-
-                activeSlot = GetComponentInChildren<DoorSlot>();
-                activeSlot.ShowGlow(false, false); // ensure we're not glowing
                 return;
             }
 
             canvasGroupFader.Hide();
 
             if (activeSlot != null) {
+                activeSlot.ShowGlow(false, false); // ensure we're not glowing
                 activeSlot = null;
             }
         }
 
         public void ShowDestinationsForStack(IElementStack stack, bool show) {
             if (activeSlot != null)
-                activeSlot.ShowGlow(show, show);
+                activeSlot.ShowGlow(show, false);
         }
     }
 }
