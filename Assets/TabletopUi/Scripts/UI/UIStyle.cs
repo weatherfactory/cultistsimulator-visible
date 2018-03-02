@@ -19,8 +19,8 @@ public static class UIStyle {
     public static Color slotDefault = new Color32(0x1C, 0x43, 0x62, 0xFF);
     
     public static Color miniSlotGreedy = new Color32(0xFF, 0x7C, 0xDF, 0xFF); 
-    public static Color miniSlotDefault = new Color32(0x15, 0xAB, 0x5A, 0xFF);
-
+    public static Color miniSlotDefault = new Color32(0x15, 0x4B, 0x5A, 0xFF);
+    
     public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining) {
         if (forRecipe != null && forRecipe.EndsGame()) { 
             const float timeToBlink = 5f;
