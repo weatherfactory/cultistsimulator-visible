@@ -242,7 +242,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-            #region -- Token interaction --------------------------
+        #region -- Token interaction --------------------------
 
             // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 

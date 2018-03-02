@@ -291,7 +291,9 @@ namespace Assets.CS.TabletopUI {
             CrossSceneState.SetDefunctCharacter(Registry.Retrieve<Character>());
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
 
+            #if !DEBUG
             saveGameManager.SaveInactiveGame();
+            #endif
 
             string animName;
 
@@ -304,9 +306,9 @@ namespace Assets.CS.TabletopUI {
             _endGameAnimController.TriggerEnd((SituationToken)endingSituation.situationToken, animName);
         }
 
-        #endregion
+#endregion
 
-        #region -- Load / Save GameState -------------------------------
+#region -- Load / Save GameState -------------------------------
 
         public void LoadGame() {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
@@ -356,9 +358,9 @@ namespace Assets.CS.TabletopUI {
             _heart.ResumeBeating();
         }
 
-        #endregion
+#endregion
 
-        #region -- Greedy Grabbing -------------------------------
+#region -- Greedy Grabbing -------------------------------
 
         public HashSet<TokenAndSlot> FillTheseSlotsWithFreeStacks(HashSet<TokenAndSlot> slotsToFill) {
             var unprocessedSlots = new HashSet<TokenAndSlot>();
@@ -478,7 +480,7 @@ namespace Assets.CS.TabletopUI {
             return null;
         }
 
-        #endregion
+#endregion
 
         public void CloseAllSituationWindowsExcept(string exceptTokenId) {
             var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();

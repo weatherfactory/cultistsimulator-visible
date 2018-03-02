@@ -31,6 +31,8 @@ namespace Assets.TabletopUi {
 
         public bool IsOpen { get; set; }
 
+        public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
+
         public bool EditorIsActive
         {
             get { return situationToken.EditorIsActive; }
@@ -175,7 +177,7 @@ namespace Assets.TabletopUi {
             SituationClock.Continue(rc, interval, greedyAnimIsActive);
 
             // only pull in something if we've got a second remaining
-            if (SituationClock.State == SituationState.Ongoing && SituationClock.TimeRemaining > 1f) {
+            if (SituationClock.State == SituationState.Ongoing && SituationClock.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS) {
                 var tokenAndSlot = new TokenAndSlot() {
                     Token = situationToken as SituationToken,
                     RecipeSlot = situationWindow.GetUnfilledGreedySlot() as RecipeSlot
