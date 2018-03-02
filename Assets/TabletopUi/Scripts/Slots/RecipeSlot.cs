@@ -117,7 +117,10 @@ namespace Assets.CS.TabletopUI {
         // IGlowableView implementation
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
-            if (lastGlowState && CanInteractWithDraggedObject(DraggableToken.itemBeingDragged))
+            if (!CanInteractWithDraggedObject(DraggableToken.itemBeingDragged))
+                return;
+
+            if (lastGlowState)
                 DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
 
             if (GetTokenInSlot() == null) // Only glow if the slot is empty
@@ -177,7 +180,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnDrop(PointerEventData eventData) {
-            if (DraggableToken.itemBeingDragged == null || IsBeingAnimated)
+            if (IsBeingAnimated || DraggableToken.itemBeingDragged == null || !(DraggableToken.itemBeingDragged is ElementStackToken))
                 return;
 
             Debug.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged);

@@ -18,8 +18,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         private Rect tableRect;
 
         const float checkPointPerArcLength = 100f;
+
+        const float pointGridSize = 100f;
+        const int maxGridIterations = 4;
+
         const float radiusBase = 50f;
-        const float radiusIncrement = 35f;
+        const float radiusIncrement = 50f;
         const float radiusMaxSize = 250f;
 
         ChoreographerDebugView currentDebug;
@@ -29,7 +33,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _situationBuilder = situationBuilder;
 
             tableRect = tabletop.GetRect();
-            Debug.Log("Tabletop Rect is " + tableRect);
+            
         }
 
         // -- PUBLIC POSITIONING METHODS ----------------------------
@@ -75,8 +79,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         // -- GET FREE POSITION ----------------------------
 
-        public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
-#if DEBUG
+        public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
+            //hierarchy was filling up with debugs. commenting out for now. -AK
+            #if DEBUG
             currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
             currentDebug.tabletop = _tabletop.transform;
             currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
@@ -84,17 +89,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             currentDebug.tokenOverlaps = false;
             currentDebug.checkedRects = new List<Rect>();
 
-            var pos = GetFreeTokenPosition(token, centerPos, startRadius);
+            var pos = GetFreeTokenPosition(token, centerPos, startIteration);
             currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
             currentDebug.hasDebugData = true;
 
+            currentDebug.InitKill(10f); // In 10s, debug thing kills itself
+
             return pos;
-#else
+            #else
             return GetFreeTokenPosition(token, centerPos, startRadius);
-#endif
+            #endif
         }
 
-        public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, float startRadius = -1f) {
+        public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
+            //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
             var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
@@ -106,35 +114,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 currentDebug.tokenOverlaps = true;
             }
 
-            float radius = startRadius > 0f ? startRadius : radiusBase;
+            // We grab a bunch of test points
+            startIteration = startIteration > 0f ? startIteration : 1;
+            var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
 
-            while (radius <= radiusMaxSize) {
-                var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
-
-                foreach (var point in currentPoints) {
-                    if (currentDebug != null)
-                        currentDebug.checkedPoints.Add(point);
-
-                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
-                        return point;
-                }
-
-                radius += radiusIncrement;
+            // Go over the test points and check if there's a clear spot to place things
+            foreach (var point in currentPoints) {
+                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
+                    return point;
             }
 
-            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size / 3f), token))
+            // we've exhausted things, so we do again
+            // but we  shift the target pos a bit
+            centerPos = centerPos + targetRect.size;
+            // and we reduce the smaller rect size. This allows overlap
+            targetRect.size = targetRect.size / 3f;
+
+            //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
+
+            // request a new set of points, since the center pos has shifted
+            currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, startIteration, maxGridIterations);
+
+            if (IsLegalPosition(GetCenterPosRect(targetRect.position, targetRect.size), token))
                 return centerPos;
 
-            while (radius < radiusMaxSize) {
-                var currentPoints = GetTestPoints(targetRect.position + targetRect.size / 2f, radius);
-
-                foreach (var point in currentPoints) {
-                    if (IsLegalPosition(GetCenterPosRect(point, targetRect.size / 3f), token))
-                        return point;
-                }
-
-                radius += radiusIncrement;
+            foreach (var point in currentPoints) {
+                if (IsLegalPosition(GetCenterPosRect(point, targetRect.size), token))
+                    return point;
             }
+
+            Debug.LogWarning("Choreographer: No legal tabletop position found for " + token.Id + " (" + centerPos + ")!");
 
             return Vector2.zero;
         }
@@ -161,6 +170,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 return false;
             
             Rect rectCheck;
+            //Debug.Log("Checking if " + rect + " is a legal position");
 
             foreach (var token in _tabletop.GetTokens()) {
                 rectCheck = GetCenterPosRect(token.RectTransform);
@@ -168,13 +178,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (CanTokenBeIgnored(token, ignoreToken))
                     continue;
 
-                if (currentDebug != null && !currentDebug.checkedRects.Contains(rectCheck))
+                if (currentDebug != null && !currentDebug.checkedRects.Contains(rectCheck)) { 
                     currentDebug.checkedRects.Add(rectCheck);
+                    //Debug.Log("Checking for " + token.name + " at " + rectCheck);
+                }
 
-                if (rectCheck.Overlaps(rect))
+                if (rectCheck.Overlaps(rect)) {
+                    //Debug.Log("Not a legal pos");
                     return false;
+                }
             }
 
+            //Debug.Log("IS a legal pos");
             return true;
         }
 
@@ -191,6 +206,73 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return false;
         }
 
+        Vector2[] GetTestPoints(Vector3 pos, int startIteration, int maxIteration) {
+            int numPoints = 0;
+
+            for (int i = startIteration; i <= maxIteration; i++) {
+                numPoints += 8 * i;
+            }
+
+            var points = new Vector2[numPoints];
+
+            int p = 0;
+            float y;
+            float x;
+            
+            for (int v = 1 ; v < 2 + maxIteration * 2; v++) {
+                y = (v % 2 == 0 ? -(v / 2) : (v / 2));
+
+                for (int h = 1; h < 2 + maxIteration * 2; h++) {
+                    if (h <= -1 + startIteration * 2 && v <= -1 + startIteration * 2)
+                        continue; // don't put out points lower than our startIteration
+
+                    x = (h % 2 == 0 ? (h / 2) : -(h / 2));
+
+                    points[p] = new Vector2(pos.x + x * pointGridSize, pos.y + y * pointGridSize);
+
+                    if (currentDebug != null) 
+                        currentDebug.checkedPoints.Add(points[p]);
+
+                    p++;
+                }
+            }
+
+            return points;
+        }
+
+        /*
+
+        Vector2[] GetTestPoints(Vector3 pos, int gridIteration) {
+            var points = new Vector2[8 * gridIteration];
+
+            int p = 0;
+
+            // right side points
+            for (int i = -gridIteration; i <= gridIteration; i++) {
+                points[p] = new Vector2(pos.x + gridIteration * pointGridSize, pos.y + i * pointGridSize);
+                p++;
+            }
+
+            // left side points
+            for (int i = -gridIteration; i <= gridIteration; i++) {
+                points[p] = new Vector2(pos.x + -gridIteration * pointGridSize, pos.y + i * pointGridSize);
+                p++;
+            }
+
+            // top side points
+            for (int i = -gridIteration + 1; i <= gridIteration - 1; i++) {
+                points[p] = new Vector2(pos.x + i * pointGridSize, pos.y + gridIteration * pointGridSize);
+                p++;
+            }
+
+            // bottom side points
+            for (int i = -gridIteration + 1; i <= gridIteration - 1; i++) {
+                points[p] = new Vector2(pos.x + i * pointGridSize, pos.y + -gridIteration * pointGridSize);
+                p++;
+            }
+
+            return points;
+        }
         Vector2[] GetTestPoints(Vector3 pos, float radius) {
             float circumference = 2f * Mathf.PI * radius;
             int numPoints = Mathf.FloorToInt(circumference / checkPointPerArcLength);
@@ -212,6 +294,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return new Vector2(origin.x + radius * Mathf.Cos(angle),
                                origin.y + radius * Mathf.Sin(angle));
         }
+        */
 
         // -- SITUATION MANAGEMENT ----------------------------
 
@@ -256,7 +339,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 AnimateTokenTo(token,
                     duration: 1f,
                     startPos: scc.SourceToken.RectTransform.anchoredPosition3D,
-                    endPos: GetFreePosWithDebug(token, scc.SourceToken.RectTransform.anchoredPosition, 200f),
+                    endPos: GetFreePosWithDebug(token, scc.SourceToken.RectTransform.anchoredPosition, 3),
                     startScale: 0f,
                     endScale: 1f);
             }

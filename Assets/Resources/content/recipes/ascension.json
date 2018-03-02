@@ -1,31 +1,7 @@
 {
 "recipes": [
-	   {
-	   comments: "All these rituals should kick in ahead of summoning combos because of the magic of alphabetical order. Further magics might need more thought.",
-        id: "ascensionpower_upgradetoobsession_hint",
-        label: "Not Enough, Not Yet",
-        actionId: "work",
-        requirements: {ascensionpowerb:1,
-		waystag_after:1,
-		forge:1},
-        startdescription: "Not yet enough. The Forge of Days will not attend unless I can merit her attention.",
-        description: ".",
-        warmup: 60,
-        craftable: true,
-		hintonly: true
-    },
-		   {
-        id: "ascensionpower_upgradetoobsession_hint_dream",
-        label: "Seeking the Change",
-        actionId: "dream",
-        requirements: {ascensionpowerb:1,
-		waystag_after:1,
-		grail:1},
-        startdescription: "Dream is no longer enough. I must perform the Work.",
-        description: ".",
-        warmup: 60,
-		hintonly: true
-    },
+
+
 	   {
         id: "ascensionpower_upgradetoobsession",
         label: "The Burning Key",
@@ -42,77 +18,59 @@
     },
 	
 	
-		   {
-        id: "ascensionsensation_upgradetoobsession_hint",
-        label: "Not Enough, Not Yet",
-        actionId: "work",
-        requirements: {ascensionsensationb:1,
-		waystag_after:1,
-		grail:1},
-        startdescription: "Not yet enough. The Red Grail will not attend unless I can merit her attention.",
-        description: ".",
-        warmup: 60,
-
-		hintonly: true
-    },
-	
-		   {
-        id: "ascensionsensation_upgradetoobsession_hint_dream",
-        label: "Seeking the Change",
-        actionId: "dream",
-        requirements: {ascensionsensationb:1,
-		waystag_after:1,
-		grail:1},
-        startdescription: "Dream is no longer enough. I must perform the Work.",
-        description: ".",
-        warmup: 60,
-		hintonly: true
-    },
-	
-	
 	   {
-        id: "ascensionsensation_upgradetoobsession",
+	   comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionm",
         label: "The Sighing Key",
         actionId: "work",
-        requirements: {ascensionsensationb:1,
+        requirements: {ascensionsensationbm:1,
 		waystag_after:1,
 		grail:8},
-        effects: {ascensionsensationb:-1,ascensionsensationc:1},
+        effects: {ascensionsensationbm:-1,ascensionsensationc:1},
         startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
         description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
         warmup: 60,
         craftable: true,
 				burnimage: "flammarion"
     },
-	
-	
-	
-			   {
-        id: "ascensionenlightenment_upgradetoobsession_hint",
-        label: "Not Enough, Not Yet",
+		   {
+		comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionf",
+        label: "The Sighing Key",
         actionId: "work",
-        requirements: {ascensionenlightenmentb:1,
+        requirements: {ascensionsensationbf:1,
 		waystag_after:1,
-		lantern:1},
-        startdescription: "Not yet enough. The Watchman will not attend unless I can merit his attention.",
-        description: ".",
+		grail:8},
+        effects: {ascensionsensationbf:-1,ascensionsensationc:1},
+        startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
         warmup: 60,
         craftable: true,
-		hintonly: true
+				burnimage: "flammarion"
     },
-	
 			   {
-        id: "ascensionenlightenment_upgradetoobsession_hint_dream",
-        label: "Seeking the Change",
+        id: "ascensionsensation_switchpolarity_mtof",
+        label: "Preferences",
         actionId: "dream",
-        requirements: {ascensionenlightenmentb:1,
-		waystag_after:1,
-		grail:1},
-        startdescription: "Dream is no longer enough. I must perform the Work.",
-        description: ".",
-        warmup: 60,
-		hintonly: true
+        requirements: {ascensionsensationbm:1},
+        effects: {ascensionsensationbm:-1,ascensionsensationbf:1},
+        startdescription: "I've gone as far as I can in dream. I must perform the <b>Work</b>. But perhaps, when I consider my desires, it's not usually men that come to mind...",
+        description: "Tastes alter, desires change, thoughts bend to other forms.",
+        warmup: 3,
+        craftable: true
     },
+			   {
+        id: "ascensionsensation_switchpolarity_ftom",
+        label: "Preferences",
+        actionId: "dream",
+        requirements: {ascensionsensationbf:1},
+        effects: {ascensionsensationbf:-1,ascensionsensationbm:1},
+        startdescription: "I've gone as far as I can in dream. I must perform the <b>Work</b>. But perhaps, when I consider my desires, it's not usually women that come to mind...",
+        description: "Tastes alter, desires change, thoughts bend to other forms.",
+        warmup: 3,
+        craftable: true
+    },
+
 	
 	   {
         id: "ascensionenlightenment_upgradetoobsession",

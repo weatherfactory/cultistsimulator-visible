@@ -31,6 +31,8 @@ namespace Assets.TabletopUi {
 
         public bool IsOpen { get; set; }
 
+        public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
+
         public bool EditorIsActive
         {
             get { return situationToken.EditorIsActive; }
@@ -174,13 +176,14 @@ namespace Assets.TabletopUi {
                         
             SituationClock.Continue(rc, interval, greedyAnimIsActive);
 
-            if (SituationClock.State == SituationState.Ongoing) {
+            // only pull in something if we've got a second remaining
+            if (SituationClock.State == SituationState.Ongoing && SituationClock.TimeRemaining > HOUSEKEEPING_CYCLE_BEATS) {
                 var tokenAndSlot = new TokenAndSlot() {
                     Token = situationToken as SituationToken,
                     RecipeSlot = situationWindow.GetUnfilledGreedySlot() as RecipeSlot
                 };
 
-                if (tokenAndSlot.RecipeSlot != null)
+                if (tokenAndSlot.RecipeSlot != null && !tokenAndSlot.Token.Defunct && !tokenAndSlot.RecipeSlot.Defunct)
                     response.SlotsToFill.Add(tokenAndSlot);
             }
 
@@ -224,6 +227,8 @@ namespace Assets.TabletopUi {
         /// </summary>
         /// <param name="command"></param>
         public void SituationExecutingRecipe(ISituationEffectCommand command) {
+            var tabletopManager = Registry.Retrieve<TabletopManager>();
+
             //called here in case ongoing slots trigger consumption
             situationWindow.SetSlotConsumptions();
 
@@ -233,12 +238,10 @@ namespace Assets.TabletopUi {
 
             if (command.AsNewSituation) {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
-                SituationCreationCommand scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-                Registry.Retrieve<TabletopManager>().BeginNewSituation(scc);
+                var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
+                tabletopManager.BeginNewSituation(scc);
                 return;
             }
-
-            var tabletopManager = Registry.Retrieve<TabletopManager>();
 
             currentCharacter.AddExecutionsToHistory(command.Recipe.Id, 1);
             var executor = new SituationEffectExecutor();

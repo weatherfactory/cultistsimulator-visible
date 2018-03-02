@@ -37,6 +37,7 @@ public class Element
     public int AnimFrames { get; set; }
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
+    public bool NoArtNeeded { get; set; }
     public float Lifetime { get; set; }
     /// <summary>
     /// Note: the 'additional' value here currently does nothing, but we might later use it to determine whether quantity of an aspect increases chance of induction

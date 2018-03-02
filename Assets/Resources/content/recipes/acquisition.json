@@ -42,7 +42,7 @@
 	   actionId:"explore",
 	   label: "I haven't won the auction",
 	   		effects:{text:-1},
-		aspects: {situationaborted:1},
+		aspects: {restore:1},
 		startdescription:".",
 		description:"The auction is over. The book has gone on elsewhere. I retain my funds.",
 		warmup:0,

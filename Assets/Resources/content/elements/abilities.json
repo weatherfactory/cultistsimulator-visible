@@ -28,7 +28,7 @@
             label: "Vitality",
             aspects:
             {},
-            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i>treasure. [Vitality can sometimes be used to gain Health. It lasts only five minutes, if unused.]",
+            description: "It's been said that blood and treasure are the cost of war. But blood  <i>is</i>treasure. [Vitality can sometimes be used to gain Health. It lasts only five minutes, if unused.]",
 		lifetime: 300
         },
 			{
@@ -59,7 +59,13 @@
             },
             animFrames: 1,
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson",
-				xtriggers: {damagereason: dread},
+				xtriggers: {damagereason: dread,invest:concentration},
+        },
+		        {
+            id: "concentration",
+            label: "Concentration",
+			description: "I have invested my Reason in this process.",
+				xtriggers: {restore:reason},
         },
 				 {
             id: "erudition",
@@ -117,7 +123,7 @@ lifetime: 300
 		label: "Scholar: Greek",
 		aspects: {language:1},
 		description: "No doubt you're conversant with every variety of Greek, from the beginning to Byzantium. But it's a good thing you have those reference works. [Some books must be translated before they can be read.]",
-		unique:true
+		unique:true		
 		},
 						{
 		id: "scholararamaic",
@@ -129,7 +135,7 @@ lifetime: 300
 			{
 		id: "scholarfucine",
 		label: "Scholar: Fucine",
-		aspects: {},
+		aspects: {language:1},
 		description: "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]"
 		},
 			 {

@@ -5,8 +5,9 @@
             id: "edge",
             label: "Edge",
 			description: "All conquest occurs at the Edge. One who dwells there is blind, and cannot be wounded. Another is strong, and grows stronger. [Edge is the principle of battle and of struggle.]",
-            isAspect: true
-        },
+            isAspect: true,
+			noartneeded:true
+			},
         {
             id: "forge",
             label: "Forge",
@@ -312,12 +313,6 @@
 			description: "This may cause Despair.",
             isAspect: true
         },
-		{
-            id: "inducescraving",
-            label: "Induces Craving",
-			description: "This may encourage Craving.",
-            isAspect: true
-        },
 						 {
             id: "inducesvisions",
             label: "Induces Visions",
@@ -329,98 +324,120 @@
             label: "Commission Given",
 			description: "A task awaits your attention.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 						 {
             id: "commissionfulfilled",
             label: "Commission Fulfilled",
 			description: "You have completed a task.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 		 {
             id: "recruiting",
             label: "Recruiting",
 			description: "To see the light, one cannot be blind; but sometimes, it's the light that blinds us.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 		{
             id: "promotiontodisciple",
             label: "Promotion",
 			description: "Time to take the deeper oaths.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_edge",
             label: "Exaltation: Edge",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 			 {
             id: "promotionto_d_forge",
             label: "Exaltation: Forge",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_grail",
             label: "Exaltation: Grail",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_heart",
             label: "Exaltation: Heart",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_knock",
             label: "Exaltation: Knock",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_lantern",
             label: "Exaltation: Lantern",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_moth",
             label: "Exaltation: Moth",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 					 {
             id: "promotionto_d_winter",
             label: "Exaltation: Winter",
 			description: "These are the true mysteries of our veneration.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+					 {
+            id: "invest",
+            label: "NA Commitment is Made",
+			description: "Something has occurred.",
+            isAspect: true,
+			comments: "Recipe aspect; runs to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
+			noartneeded: true
         },
 			 {
-            id: "situationaborted",
+            id: "restore",
             label: "Nothing has Occurred",
 			description: "All is as it was",
             isAspect: true,
-			comments: "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals."
+			comments: "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals.",
+			noartneeded: true
         },
 				 {
             id: "restorehealth",
             label: "Restore Health",
 			description: "Health will return.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 		
 						 {
@@ -428,14 +445,16 @@
             label: "Damage Health",
 			description: "Health will be injured.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 								 {
             id: "damagereason",
             label: "Damage Reason",
 			description: "Reason will become Dread.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 		
 						 {
@@ -443,27 +462,31 @@
             label: "Kill Mortal",
 			description: "Mortals will be replaced by corpses",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 								 {
             id: "derangemortal",
             label: "Derange Mortal",
 			description: "Mortals will be replaced by Lunatics",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },								 {
             id: "capturehunter",
             label: "Capture Hunter",
 			description: "Hunters will be imprisoned.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 									 {
             id: "capturefollower",
             label: "Capture Follower",
 			description: "Followers will be imprisoned.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded: true
         },
 		
 		
@@ -472,14 +495,16 @@
             label: "Restore Reason",
 			description: "Reason will return.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded:true
         },
 				 {
             id: "restorepassion",
             label: "Restore Passion",
 			description: "Passion will be clarified.",
             isAspect: true,
-			comments: "Recipe aspect"
+			comments: "Recipe aspect",
+			noartneeded:true
         },
 		{
             id: "mortal",

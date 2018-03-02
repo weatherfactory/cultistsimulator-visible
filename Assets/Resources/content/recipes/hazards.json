@@ -11,7 +11,8 @@
         description: "..",
         warmup: 60,
         craftable: false,
-		alternativerecipes:[{id:"despairactive",chance:100}]
+		alternativerecipes:[{id:"despairactive",chance:100},
+		{id:"despairdefeated",chance:100}]
     },
 	{  id: "despairactive",
         label: "DESPAIR",
@@ -48,14 +49,14 @@
 		requirements: {contentment:1},
 		effects: {inducesdespair: -1,contentment:-1},
 		startdescription: "Memories of better times keep the wolf from the door. [Each Contentment destroys one Dread or Injury.]",
-		description: "..",
+		description: ".",
 		warmup: 10,
         craftable: false,
 		linked:[{id:"despairactive",chance:100},
 		{id:"despairdefeated",chance:100}]
 	},
 	{  id: "despairdefeated",
-        label: "The Clouds Parts",
+        label: "The Clouds Part",
         actionId: "despair",
 		effects: {contentment:1},
 		startdescription: ".",
@@ -74,7 +75,8 @@
         description: "..",
         warmup: 60,
         craftable: false,
-		alternativerecipes:[{id:"visionsactive",chance:100}]
+		alternativerecipes:[{id:"visionsactive",chance:100},
+		{id:"visionsdefeated",chance:100}]
     },
 	{  id: "visionsactive",
         label: "I Am Seeing Things",
@@ -105,7 +107,7 @@
 	
     },
 	{  id: "visionsabate",
-        label: "Vusions Abate",
+        label: "Visions Abate",
         actionId: "visions",
 		requirements: {contentment:1},
 		effects: {fascination: -1,contentment:-1},

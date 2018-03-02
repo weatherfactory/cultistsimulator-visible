@@ -26,6 +26,7 @@ public class ContentImporter
     private const string CONST_DESCRIPTION = "description";
     private const string CONST_ANIMFRAMES = "animFrames";
     private const string CONST_ISASPECT = "isAspect";
+    private const string CONST_NOARTNEEDED = "noartneeded";
     private const string CONST_UNIQUE = "unique";
     public ICompendium _compendium { get; private set; }
 
@@ -160,6 +161,11 @@ public class ContentImporter
                     element.IsAspect = true;
                 else
                     element.IsAspect = false;
+
+                if (htElement.GetString(CONST_NOARTNEEDED) == "true")
+                    element.NoArtNeeded = true;
+                else
+                    element.NoArtNeeded = false;
 
                 if (htElement.GetString(CONST_UNIQUE) == "true")
                     element.Unique = true;
@@ -646,9 +652,11 @@ public class ContentImporter
         int missingElementImageCount = 0;
         foreach (var k in allElements.Keys)
         {
-            if (allElements[k].IsAspect)
+           var thisElement = allElements[k];
+
+            if (thisElement.IsAspect )
             {
-                if (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME)
+                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
                     missingAspectImages += (" " + k);
                     missingAspectImageCount++;
@@ -656,7 +664,7 @@ public class ContentImporter
             }
             else
             {
-                if (ResourcesManager.GetSpriteForElement(k) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
+                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForElement(k) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
                     missingElementImages += (" " + k);
                     missingElementImageCount++;

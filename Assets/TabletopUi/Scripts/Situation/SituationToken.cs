@@ -85,6 +85,7 @@ namespace Assets.CS.TabletopUI {
             ShowDumpButton(false);
 
             ongoingSlotImage.gameObject.SetActive(false);
+            DisplayStackInMiniSlot(null);
             situationEditor.Initialise(SituationController);
         }
 
@@ -242,7 +243,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-            #region -- Token interaction --------------------------
+        #region -- Token interaction --------------------------
 
             // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 

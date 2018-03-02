@@ -22,7 +22,7 @@
 			"Offering": {required: {influence:1},description: "What influence will be taken?",consumes:true},
 			"Instrument":{required: {tool: 1}, description: "What is our instrument?"},
 			},
-            description: "The Pilgrim is the only Hour that never enters the Mansus. This rite must be performed in the right place, in the right time, and the Pilgrim will take that rightness for his own."
+            description: "The Vagabond is the only Hour that never enters the Mansus. This rite must be performed in the right place, in the right time, and the Vagabond will take that rightness for her own."
         },
 	
 		          {
@@ -127,6 +127,7 @@
 			"Surrender":{required: {tool: 1}, description: "Something to be lost.", consumes:true},
 			"Dissolution":{required: {influence: 1}, description: "Something to be lost.", consumes:true},
 			"Grief":{required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
+			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
 			},
             description: "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts."
         },

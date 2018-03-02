@@ -14,7 +14,9 @@
 		[{id: "sickness", chance:100, additional: true},
 		{id: "pleasantday", chance:100, additional: true},
 		{id: "suspicion", chance:100, additional: true},
-		{id: "ambition", chance:100,additional:true}
+		{id: "ambition", chance:100,additional:true},
+		{id: "despairrisklink", chance:100,additional:true},
+		{id: "visionsrisklink", chance:100,additional:true},
 		 {id: "starvation", chance:100, additional: true}],
         startdescription: "Time, the sundial's shadow, passes. I must have Funds to live, or I will become ill.",
         description: ".",
@@ -34,7 +36,7 @@
     },
 	{id: "discardseason",
 	actionId: "time",
-	effects: {season:-1,funds:-1},
+	effects: {season:-1,funds:-999},
 	warmup:0,
 	 linked:[{id:"drawseason",chance:100}]
 	},
@@ -65,7 +67,7 @@
         id: "pleasantday",
         label: "A Pleasant Day",
         actionId: "pleasantday",
-        requirements: {seasonpleasantday:1},
+        requirements: {seasonserenities:1},
         effects: {
 		contentment: 1,
         },

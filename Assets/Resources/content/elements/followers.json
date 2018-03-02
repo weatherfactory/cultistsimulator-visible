@@ -79,7 +79,7 @@
             {mortal: 1},
             description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
-			xtriggers: {recruiting: generic_a,killmortal:corpse,derangemortal:lunatic}
+			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic}
         },
 		
 								 {
@@ -429,7 +429,7 @@
         },
 				 {
         id: "clifton_d",
-            label: "'Clifton, a Seer",
+            label: "Clifton, a Seer",
             aspects:
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
             description: "Clifton still recites his prayers, but they are grown strange as old mirrors. He rises every morning to greet the dawn. He looks it full in the face, and tells you exactly what he sees.",
@@ -469,7 +469,7 @@
 				 {
         id: "elridge_d",
             label: "Elridge, an Assassin",
-            {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
+            aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
             description: "Elridge is never seen with a spot of blood upon his person. Not a spot.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}

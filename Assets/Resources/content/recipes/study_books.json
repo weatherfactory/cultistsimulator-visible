@@ -92,9 +92,9 @@
         label: "Read this volume of the Locksmith's Dream",
         actionId: "study",
         requirements: {locksmithsdream3: 1},
-        effects: {locksmithsdream3: -1,fragmentknock:1,erudition:1},
+        effects: {locksmithsdream3: -1,fragmentmothb:1,glimmering:1},
 		startdescription: "In this volume, notoriously, Galmier's prose begins to disintegrate, and it is not clear which dreams are in fact her own.",
-        description: "'The stairways of the Mansus go ever up. Death is down. The Mother of Ants guards both directions with each of her heads, and so the passage must always be through a wound.'",
+        description: "'The woman in the sand-coloured robe has told me: the stairways of the Mansus go ever up. Death is down. The Mother of Ants guards both directions with each of her heads, and so the passage must always be through a wound. Into the fire she goes, and we'll follow her.'",
         warmup: 60,
         craftable: true
     },
@@ -163,7 +163,7 @@
 	label: "Study Hersault's Treatise on Underplaces",
 	actionId: "study",
 	requirements: {treatiseonunderplaces:1},
-	effects: {treatiseonunderplaces:-1,fragmentknock:1},
+	effects: {treatiseonunderplaces:-1,fragmentknockb:1},
 	startdescription: "'The walls of the Mansus,' Hersault begins, 'are the size of starlight.' Many of his directions are equally unhelpful, but common relationships do emerge.",
 	description: "A picaresque account of a journey through nightmare, interspersed with what might be partial rites. 'On the eighteenth Ascent is the bud. On the thirty-sixth Ascent, the blossom.'",
 	warmup: 60,
@@ -269,6 +269,16 @@
 	warmup: 60,
 	craftable: true
 	},
+					{id: "studygeminiad",
+	label: "Read the Geminiad",
+	actionId: "study",
+	requirements: {geminiad:1},
+	effects: {geminiad:-1,geminiadread:1,fragmentgraild:1,fragmentheartd:1,fragmentmothd:1},
+	startdescription: "These pages outline the nature, and the doctrines, of an Hour that demands the union of what is at ret, an Hour that is sought at the water's edge and beneath the moon: the Witch-and-Sister. The language is knotty, poetic, wilful. It'll take some untangling.",
+	description: "The Geminiad reminds us that the Witch-and-Sister has been known to manifest as the Sister-and-Witch - and that this face may heal, while the other face is always hungry. It implies connections between the Witch-and-Sister and the Hour of the Wood - especially the secret-keeper called the Velvet - but it is ambiguous on whether the Witch-and-Sister is a Wood-hour proper. And it speaks at length about the sadness of the two-who-are-one, the sadness that remains from their time as flesh.",
+	warmup: 90,
+	craftable: true
+	},
 
 		{
         id: "studytextbooklatin",
@@ -289,6 +299,17 @@
         effects: {textbookgreek: -1,scholargreek:1},
 		startdescription: "Of course I have a little Greek already. But I'll need more than a little.",
         description: "A determined and distinctive tongue. But I have the measure of it.",
+        warmup: 60,
+        craftable: true
+    },
+				{
+        id: "studytextbookfucine",
+        label: "Develop an understanding of the long-dead Fucine language",
+        actionId: "study",
+        requirements: {textbookfucine: 1},
+        effects: {textbookfucine: -1,scholarfucine:1},
+		startdescription: "It has something in common with Latin and something else in common with the scratchings of maddened rats.",
+        description: "In places it overlaps with languages I know. In other places... well, I can see why they call it 'the tongue of witches'. But I can understand it well enough, now.",
         warmup: 60,
         craftable: true
     },

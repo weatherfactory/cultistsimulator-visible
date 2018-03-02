@@ -36,6 +36,11 @@ public class SoundManager : AudioManager {
     private Dictionary<string, SoundCombo> soundsMapped = new Dictionary<string, SoundCombo>();
     private List<AudioSource> audioSourcePool = new List<AudioSource>();
 
+    // If a sound is called, we put it here.
+    // This list is cleared at the end of each frame
+    // Used to prevent multiple sounds started in the same frame.
+    private List<string> soundsThisFrame = new List<string>();
+
     // Initalization
 
     void Awake() {
@@ -107,6 +112,9 @@ public class SoundManager : AudioManager {
         if (Instance == null)
             return -1;
 
+        if (Instance.soundsThisFrame.Contains(name))
+            return -1;
+
         return Instance.PlaySound(name, -1);
     }
 
@@ -145,6 +153,8 @@ public class SoundManager : AudioManager {
         source.loop = sound.loop;
         source.Play();
 
+        soundsThisFrame.Add(name);
+
         return id;
     }
 
@@ -174,6 +184,10 @@ public class SoundManager : AudioManager {
     private void TurnOffAllAudio() {
         foreach (AudioSource audioSource in audioSourcePool) 
             audioSource.Stop();
+    }
+
+    private void LateUpdate() {
+        soundsThisFrame.Clear();
     }
 
     private void OnDestroy() {        

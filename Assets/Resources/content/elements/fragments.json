@@ -42,10 +42,11 @@
             description: "These are the arts that ensure an ending."
         },
 		   {   id: "fragmentedgeg",
-            label: "The Alignments of Murder",
+            label: "The Mysteries of Force",
             aspects:
             {edge: 14,lore:1},
-            description: "These are the arts that ensure an ending."
+            description: "The Colonel and the Lionsmith are gods-who-were-flesh, but the Wolf-Divided is a god-who-was-blood. Cunning, Strength and Agony are the three roots of victory, and here is their secret doctrine...",
+			unique:true
         },
 		          {
         id: "fragmentforge",
@@ -68,6 +69,32 @@
             {forge:6,lore:1},
             description: "The proper words must be employed when the Change comes."
         },
+		{
+		        id: "fragmentforged",
+            label: "Callidate Invocation",
+            aspects:
+            {forge:8,lore:1},
+            description: "The Names of the Forge have all spoken these words."
+        },
+		{	id: "fragmentforgee",
+            label: "Formula Fissive",
+            aspects:
+            {forge:10,lore:1},
+            description: "Break a thing, and you have fragments. Break those fragments, and you have dust. Break the dust, and then break what remains. Here is fire."
+        },
+		{  id: "fragmentforgef",
+            label: "Furnace Paean",
+            aspects:
+            {forge:12,lore:1},
+            description: "This is the hymn the heat sings to the iron. If we imitate it faithfully enough we will parch our lips and crisp our tongue, but O, the rewards."
+        },
+		{ id: "fragmentforgeg",
+            label: "",
+            aspects:
+            {forge:14,lore:1},
+            description: "The Forge of Days, the Meniscate and the Madrugad are gods-from-Light. Mercury, silver and gold are the seeds of the Work, and here is their secret doctrine...",
+			unique:true
+        },
 						          {
         id: "fragmentgrail",
             label: "A Red Secret",
@@ -87,6 +114,32 @@
             label: "A Delightful Sacrament",
             aspects:            {grail: 6,lore:1},
             description: "So pleasant upon the ear. One could listen over and over. These are the words that make sacrifice sweet."
+        },
+			{
+		        id: "fragmentgraild",
+            label: "Thiatic Invocation",
+            aspects:
+            {grail:8,lore:1},
+            description: "Raucous shrieks attend the passage of the Names of the Grail. We reproduce them as best they can, for the pulsing power they lend."
+        },
+		{		        id: "fragmentgraile",
+            label: "Formulae Voluptuous",
+            aspects:
+            {grail:10,lore:1},
+            description: "There exist some pleasures intense enough to corrupt the laws of the physical world."
+        },
+		{  id: "fragmentgrailf",
+            label: "Anthic Elaboration",
+            aspects:
+            {grail:12,lore:1},
+            description: "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours."
+        },
+			{  id: "fragmentgrailg",
+            label: "Devouring Mysteries",
+            aspects:
+            {grail:14,lore:1},
+            description: "The Grail was the first god-who-was-blood. The Flowermaker came from Light. The Beach-Crow was flesh. Hunger and Greed and Yearning are the matrix of appetite, and here is their secret doctrine...",
+			unique:true
         },
 				          {
         id: "fragmentheart",
@@ -108,6 +161,31 @@
             aspects:
             {heart: 6,lore:1},
             description: "Who could hear this and remain unmoved? The sleeping? The dead? The earth and the sky?"
+        },
+		{id: "fragmentheartd",
+            label: "Geminate Invocation",
+            aspects:
+            {heart:8,lore:1},
+            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea."
+        },
+		{ id: "fragmenthearte",
+            label: "Formulae Vigilant",
+            aspects:
+            {heart:10,lore:1},
+            description: "One who watches does not sleep, one who sleeps watches not. <b>One who watches does not sleep, one who sleeps watches not.</b>"
+        },
+		{  id: "fragmentheartf",
+            label: "Velvet Charm",
+            aspects:
+            {heart:12,lore:1},
+            description: "The Velvet always answers 'No', but we can shelter in that 'No' like beasts in the crook of a tree."
+        },
+		{ id: "fragmentheartg",
+            label: "Unceasing Mysteries",
+            aspects:
+            {heart:14,lore:1},
+            description: "The Grail ripped the Thunderskin from flesh. The Sister-and-Witch was born from two wombs. The Velvet woke when the Wood-roots tasted blood. The Heart is Blood's Drum, and here is its secret doctrine...",
+			unique:true
         },
 
 				          {
@@ -131,6 +209,32 @@
             {knock: 6,lore:1},
             description: "To open certain Ways, one must first open oneself. This practice outlines that opening, in the name of the Mother of Ants."
         },
+		{
+		        id: "fragmentknockd",
+            label: "Meniscate Invocation",
+            aspects:
+            {knock:8,lore:1},
+            description: "When the moon's face was wounded, these words appeared."
+        },
+		{		        id: "fragmentknocke",
+            label: "Formulae Ophidian",
+            aspects:
+            {knock:10,lore:1},
+            description: "Serpents are the visitors which may not be denied."
+        },
+		{  id: "fragmentknockf",
+            label: "Liminal Evocation",
+            aspects:
+            {knock:12,lore:1},
+            description: "One god-who-was-stone remains, and she watches all thresholds."
+        },
+			{id: "fragmentknockg",
+            label: "Mysteries of Opening",
+            aspects:
+            {knock:14,lore:1},
+            description: "The Mother of Ants is the child of two rivers. The Horned-Axe is the last god-from-Stone. The Meniscate was born in the Moon from Light. The Wound and the Threshold and the Revelation are all the Gate's aspects, and here is their secret doctrine...",
+			unique:true
+        },
 				          {
         id: "fragmentlantern",
             label: "A Watchman's Secret",
@@ -151,6 +255,32 @@
             aspects:
             {lantern: 6,lore:1},
             description: "'Mercy', saith the Watchman, 'is found only in shadow.'"
+        },
+		{
+		        id: "fragmentlanternd",
+            label: "Phanaean Invocation",
+            aspects:
+            {lantern:8,lore:1},
+            description: "The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. "
+        },
+		{		        id: "fragmentlanterne",
+            label: "Formulae Concursate",
+            aspects:
+            {lantern:10,lore:1},
+            description: "The Concursum waits at the heart of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation."
+        },
+		{  id: "fragmentlanternf",
+            label: "Mantra of Ascent",
+            aspects:
+            {lantern:12,lore:1},
+            description: "The Ascent of Knives is the bloodiest of the Watchman's tests. Those who pass it and are dead enter the service of the Sun-in-Rags. Those living who pass it are a little closer to the Glory."
+        },
+			{id: "fragmentlanterng",
+            label: "Illuminate Mysteries",
+            aspects:
+            {lantern:14,lore:1},
+            description: "The Meniscate, the Madrugad, the Flowermaker and the Forge of Days are the gods-from-Light. There is a fifth, but now we know it is not the Watchman. Yet the Watchman shares a secret doctrine with those five, and here is that doctrine...",
+			unique:true
         },
 		          {
         id: "fragmentmoth",
@@ -173,6 +303,32 @@
             {moth: 6,lore:1},
             description: "The Ecdysiast's Riddle is 'What may be lost?' Each Ecdysiast's Parable is an attempt to answer the Riddle."
         },
+		{
+		        id: "fragmentmothd",
+            label: "Moldywarp Admonitions",
+            aspects:
+            {moth:8,lore:1},
+            description: "Moldywarp keeps her crowns in the moss and her feet in the dirt and the trees locked jaw-tight. Moldywarp has these warnings for you."
+        },
+		{		        id: "fragmentmothe",
+            label: "Centipede Testament",
+            aspects:
+            {moth:10,lore:1},
+            description: "The Centipede came up out of the sands and went in under the roots. She found a new home but now she can't go home. She creeps in everywhere else: keyholes and histories and the channels of birth and sight and hearing. She Here's what she has to say."
+        },
+		{  id: "fragmentmothf",
+            label: "Thigh-born Thorax-Sweet",
+            aspects:
+            {moth:12,lore:1},
+            description: "Vine-crowned moth-king hatched in the thigh of the thunder-king who's dead. Drink up his belly-lymph. These are the sights you'll see."
+        },
+			{id: "fragmentmothg",
+            label: "Mare-in-the-Yew",
+            aspects:
+            {moth:14,lore:1},
+            description: "The real Hours don't meet the gods-from-Nowhere, but the Ring-Yew meets the Mare-in-the-Tree in where the Wood grows lush. Their couplings are forbidden, and forbidden things have power, and this is the story of their couplings. ",
+			unique:true
+        },
 
 				          {
         id: "fragmentsecrethistories",
@@ -194,6 +350,31 @@
             aspects:
             {secrethistories: 6,lore:1},
             description: "A story of a city without a gate, of a queen who was not born, of a war which was not fought."
+        },{
+		        id: "fragmentsecrethistoriesd",
+            label: "Forbidden Epic",
+            aspects:
+            {secrethistories:8,lore:1},
+            description: ""
+        },
+		{		        id: "fragmentsecrethistoriese",
+            label: "Port Noon Anecdote",
+            aspects:
+            {secrethistories:10,lore:1},
+            description: "Port Noon is where the Long go to enjoy the sea and the sun, to drink from the Spring that makes them forgotten, and to stay out of trouble. Mostly out of trouble. The stories you can hear in the Hotel Ciervo are golden-dewed, quintuple-distilled toasts to memory, served straight up."
+        },
+		{  id: "fragmentsecrethistoriesf",
+            label: "Vagabond's Map",
+            aspects:
+            {secrethistories:12,lore:1},
+            description: "The Vagabond is the one Hour who can never enter the Mansus, but she goes <i>everywhere</i> else... and, if you believe her boasts, she's the only one who knows all the Histories. Sometimes, she lets someone record her travels."
+        },
+			{id: "fragmentsecrethistoriesg",
+            label: "Unresolved Ambiguity",
+            aspects:
+            {secrethistories:14,lore:1},
+            description: "In the Mansus, the Hours strive one against another. As the struggles are resolved, they iron out the impossible, exalt the possible, tie the fraying braids of what has been into one golden ribbon of future. Everything is resolved. History becomes the past. There are, however, exceptions.",
+			unique:true
         },
 				          {
         id: "fragmentwinter",
@@ -216,13 +397,33 @@
             {winter: 6,lore:1},
             description: "This ritual invokes, acknowledges and welcomes the passage to silence."
         },
-								          {
-        id: "fragmentwitchandsister",
-            label: "A Recitation of Amethyst",
+		{
+		        id: "fragmentwinterd",
+            label: "Invocation of the Ivory Dove",
             aspects:
-            {heart: 2,moth:2,grail:2, lore:1},
-		description: "The Witch-and-Sister cannot be separated."
-		}
+            {winter:8,lore:1},
+            description: "There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. You might expect to be able to crush him in your hand, into bird-bone fragments."
+        },
+		{		        id: "fragmentwintere",
+            label: "Recitation of Lost Hours",
+            aspects:
+            {winter:10,lore:1},
+            description: "Six are gone. Five came from Stone and one from Light. All went to Nowhere. Still their memories have power, and now we call upon it."
+        },
+		{  id: "fragmentwinterf",
+            label: "The Divisions of the Names",
+            aspects:
+            {winter:12,lore:1},
+            description: "When the Sun-in-Splendour was divided, its Names fractured too. Here are the shards of their names which once were hole/ "
+        },
+			{id: "fragmentwinterg",
+            label: "Wolf-Word",
+            aspects:
+            {winter:14,lore:1},
+            description: "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses its hatred.",
+			unique:true
+        },
+
 		{
         id: "fragmentglory",
             label: "A Recollection of Glory",

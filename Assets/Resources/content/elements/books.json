@@ -4,7 +4,7 @@
         id: "dehoris1latin",
             label: "De Horis (Book 1) [Latin]",
             aspects:{text:1},
-            description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work, in Latin.",
+            description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
 			xtriggers: {scholarlatin: dehoris1}
         },
           {
@@ -178,8 +178,23 @@
         id: "geminiadfucine",
             label: "The Geminiad [Fucine]",
             aspects:
-            {knock: 1,tool:1,text:1},
-            description: "A fragile manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. It might be as old as the seventh century, but the language - Fucine - is much older. Coral decorates its cover, and its page-edges are sharp enough to slash a throat. [NOTE: Fucine cannot be learnt in the current build, but the book itself has power.]"
+            {knock: 2,tool:1,text:1},
+			xtriggers: {scholarfucine: geminiad},
+            description: "A fragile manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. It might be as old as the seventh century, but the language - Fucine - is much older. Coral decorates its cover, and its page-edges are sharp enough to slash a throat."
+        },
+								 {
+        id: "geminiad",
+            label: "The Geminiad",
+            aspects:
+            {knock: 2,tool:1,text:1},
+            description: "A fragile manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. It might be as old as the seventh century, but the language - Fucine - is much older. Coral decorates its cover, and its page-edges are sharp enough to slash a throat. [I have made notes towards a translation. Now I can study it.]"
+        },
+										 {
+        id: "geminiadread",
+            label: "The Geminiad [Read]",
+            aspects:
+            {knock: 2,tool:1},
+            description: "A fragile manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. Coral decorates its cover, and its page-edges are sharp enough to slash a throat. [I've learnt everything I can from this, but the book itself still has power.]"
         },
 		 {
         id: "orchidtransfigurations1",
@@ -222,6 +237,23 @@
             aspects:
             {text:1},
             description: "An essential weapon for a ferocious struggle with a challenging language."
+        },
+						 {
+        id: "textbookfucinelatin",
+            label: "The Ciphered Journal of Alessandro Torlonia",
+            aspects:
+            {text:1},
+            description: "Prince Alessandro spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts... but it's written in a simple Latin cipher. You'll need to decipher it first.",
+			xtriggers: {scholarlatin: textbookfucine},
+			unique:true
+        },
+								 {
+        id: "textbookfucine",
+            label: "The Journal of Alexander LaCroix",
+            aspects:
+            {text:1},
+            description: "Alexander LaCroix spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts.",
+			unique:true
         },
 		 {
         id: "textbookreason",
