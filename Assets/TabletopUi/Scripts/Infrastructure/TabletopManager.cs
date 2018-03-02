@@ -291,9 +291,9 @@ namespace Assets.CS.TabletopUI {
             CrossSceneState.SetDefunctCharacter(Registry.Retrieve<Character>());
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
 
-            #if !DEBUG
+            //#if !DEBUG
             saveGameManager.SaveInactiveGame();
-            #endif
+            //#endif
 
             string animName;
 
