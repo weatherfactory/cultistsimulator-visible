@@ -85,6 +85,7 @@ namespace Assets.CS.TabletopUI {
             ShowDumpButton(false);
 
             ongoingSlotImage.gameObject.SetActive(false);
+            DisplayStackInMiniSlot(null);
             situationEditor.Initialise(SituationController);
         }
 
