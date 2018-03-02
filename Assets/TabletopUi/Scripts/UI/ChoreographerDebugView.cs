@@ -15,6 +15,18 @@ public class ChoreographerDebugView : MonoBehaviour {
 
     public bool hasDebugData;
 
+    //public List<string> debugLog = new List<string>();
+
+    // DESTROY
+
+    public void InitKill(float duration) {
+        Invoke("Kill", duration);
+    }
+
+    void Kill() {
+        Destroy(gameObject);
+    }
+
     // DRAWING
 
     private void OnDrawGizmosSelected() {
