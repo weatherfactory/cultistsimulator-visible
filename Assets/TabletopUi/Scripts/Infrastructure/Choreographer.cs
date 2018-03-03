@@ -80,7 +80,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         // -- GET FREE POSITION ----------------------------
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
-            //hierarchy was filling up with debugs. commenting out for now. -AK
+            
             #if DEBUG
             currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
             currentDebug.tabletop = _tabletop.transform;
@@ -96,9 +96,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             currentDebug.InitKill(10f); // In 10s, debug thing kills itself
 
             return pos;
-            #else
-            return GetFreeTokenPosition(token, centerPos, startRadius);
-            #endif
+#else
+            return GetFreeTokenPosition(token, centerPos, startIteration);
+#endif
         }
 
         public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {

@@ -34,7 +34,6 @@
 	actionId:"explore",
 	requirements:{vault:1,remote:1},
 	comments: "set up appropriate obstacle; move on to other setup recipes",
-		deckeffect: "remotevault",
 	craftable:false,
 		linked: [{id: "vaultsetupaccursed",chance:100},
 	{id: "vaultsetupwatched",chance:100},
@@ -45,7 +44,6 @@
 	actionId:"explore",
 	requirements:{vault:1,accursed:1},
 	comments: "set up appropriate obstacle; move on to other setup recipes",
-	deckeffect: "accursedvault",
 	craftable:false,
 		linked: [{id: "vaultsetupwatched",chance:100},
 	{id: "explorevaulttick",chance:100}]
@@ -55,7 +53,6 @@
 	actionId:"explore",
 	requirements:{vault:1,watched:1},
 	comments: "set up appropriate obstacle; move on to the recipe tick",
-	deckeffect: "watchedvault",
 	craftable:false,
 		linked: [{id: "explorevaulttick",chance:100}]
 	},
