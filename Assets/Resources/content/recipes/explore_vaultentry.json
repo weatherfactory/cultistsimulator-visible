@@ -23,35 +23,69 @@
 	startdescription: "Sending follower FNORD",
 	description: ".",
 	craftable:false,
-	comments: "Fall through each of the linked recipes in turn, to set up obstacles in the situation if we meet eligibility requirements. The last one has no eligibility requirements.",
-	linked: [{id: "vaultsetupremote",chance:100},
-	{id: "vaultsetupaccursed",chance:100},
-	{id: "vaultsetupwatched",chance:100},
+	linked: [{id: "vaultsetupcapital",chance:100},
+	{id: "vaultsetupshires",chance:100},
+	{id: "vaultsetupcontinent",chance:100},
+	{id: "vaultsetuplandbeyondforest",chance:100},
+	{id: "vaultsetuphungrymountains",chance:100},
+	{id: "vaultsetuploneandlevelsands",chance:100},
+	{id: "vaultsetupeveningisles",chance:100},
 	{id: "explorevaulttick",chance:100}]
 	},
 		{
-	id:"vaultsetupremote",
+	id:"vaultsetupcapital",
 	actionId:"explore",
-	requirements:{vault:1,remote:1},
+	requirements:{vault:1,vaultcapital:1},
 	comments: "set up appropriate obstacle; move on to other setup recipes",
 	craftable:false,
-		linked: [{id: "vaultsetupaccursed",chance:100},
-	{id: "vaultsetupwatched",chance:100},
+		linked: [
 	{id: "explorevaulttick",chance:100}]
 	},
 		{
-	id:"vaultsetupaccursed",
+	id:"vaultsetupshires",
 	actionId:"explore",
-	requirements:{vault:1,accursed:1},
+	requirements:{vault:1,vaultshires:1},
 	comments: "set up appropriate obstacle; move on to other setup recipes",
 	craftable:false,
-		linked: [{id: "vaultsetupwatched",chance:100},
+		linked: [
 	{id: "explorevaulttick",chance:100}]
 	},
 		{
-	id:"vaultsetupwatched",
+	id:"vaultsetupcontinent",
 	actionId:"explore",
-	requirements:{vault:1,watched:1},
+	requirements:{vault:1,vaultcontinent:1},
+	comments: "set up appropriate obstacle; move on to the recipe tick",
+	craftable:false,
+		linked: [{id: "explorevaulttick",chance:100}]
+	},
+			{
+	id:"vaultsetuplandbeyondforest",
+	actionId:"explore",
+	requirements:{vault:1,vaultcontinent:1},
+	comments: "set up appropriate obstacle; move on to the recipe tick",
+	craftable:false,
+		linked: [{id: "explorevaulttick",chance:100}]
+	},
+			{
+	id:"vaultsetuphungrymountains",
+	actionId:"explore",
+	requirements:{vault:1,vaultcontinent:1},
+	comments: "set up appropriate obstacle; move on to the recipe tick",
+	craftable:false,
+		linked: [{id: "explorevaulttick",chance:100}]
+	},
+			{
+	id:"vaultsetuploneandlevelsands",
+	actionId:"explore",
+	requirements:{vault:1,vaultcontinent:1},
+	comments: "set up appropriate obstacle; move on to the recipe tick",
+	craftable:false,
+		linked: [{id: "explorevaulttick",chance:100}]
+	},
+			{
+	id:"vaultsetupeveningisles",
+	actionId:"explore",
+	requirements:{vault:1,vaultcontinent:1},
 	comments: "set up appropriate obstacle; move on to the recipe tick",
 	craftable:false,
 		linked: [{id: "explorevaulttick",chance:100}]
