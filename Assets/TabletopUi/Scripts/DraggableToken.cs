@@ -213,11 +213,23 @@ namespace Assets.CS.TabletopUI {
 
         #region -- End Drag ------------------------------------
 
+        public static void CancelDrag() {
+            if (itemBeingDragged == null)
+                return;
+
+            if (itemBeingDragged.gameObject.activeInHierarchy)
+                itemBeingDragged.DelayedEndDrag();
+        }
+
         public virtual void OnEndDrag(PointerEventData eventData) {
             // This delays by one frame, because disabling and setting parent in the same frame causes issues
             // Also helps to avoid dropping and picking up in the same click
-            if (itemBeingDragged == this && eventData != null)
-                Invoke("DelayedEndDrag", 0f);
+            if (itemBeingDragged == this) {
+                if (eventData != null)
+                    Invoke("DelayedEndDrag", 0f);
+                else // if we don't have event data, we're forcing this, so don't wait the frame.
+                    DelayedEndDrag();
+            }
         }
 
         // Also called directly if we start a new drag while we have a drag going
@@ -270,7 +282,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         #endregion
-        
+
         #region -- On Drop ------------------------------------
 
         public abstract void OnDrop(PointerEventData eventData);

@@ -211,6 +211,11 @@ namespace Assets.TabletopUi {
             situationWindow.DisplayStoredElements(); //displays the miniversion of the cards. This should 
         }
 
+        public void AddToResults(ElementStackToken stack, Context context) {
+            situationWindow.GetResultsStacksManager().AcceptStack(stack, context);
+            UpdateTokenResultsCountBadge();
+        }
+
         public void SituationOngoing() {
             var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
             situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, currentRecipe);
@@ -267,6 +272,11 @@ namespace Assets.TabletopUi {
             situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
 
             AttemptAspectInductions();
+
+            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+
+            if (currentRecipe.PortalEffect != PortalEffect.None)
+                Registry.Retrieve<TabletopManager>().ShowMansusMap(this, ((MonoBehaviour) situationToken).transform, currentRecipe.PortalEffect);
         }
 
         public void Halt() {

@@ -49,7 +49,13 @@ public class SituationResults : AbstractTokenContainer {
         GetElementStacksManager().AcceptStacks(allStacksToOutput, new Context(Context.ActionSource.SituationResults));
 
         //currently, if the first stack is fresh, we'll turn it over anyway. I think that's OK for now.
-        cardPos.ReorderCards(allStacksToOutput);
+        //cardPos.ReorderCards(allStacksToOutput);
+        // we noew reorder on DisplayHere
+    }
+
+    public override void DisplayHere(IElementStack stack, Context context) {
+        base.DisplayHere(stack, context);
+        cardPos.ReorderCards(_elementStacksManager.GetStacks());
     }
 
     public override void SignalStackRemoved(ElementStackToken elementStackToken, Context context) {
@@ -95,10 +101,5 @@ public class SituationResults : AbstractTokenContainer {
         else
             dumpResultsButtonText.text = buttonClearResultsNone;
     }
-
-    // public to be triggered by button
-    public void ShowMap() {
-        Registry.Retrieve<MapController>().ShowMansusMap(transform, true);
-    }
-
+    
 }

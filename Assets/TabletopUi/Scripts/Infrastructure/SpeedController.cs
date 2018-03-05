@@ -12,8 +12,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Button normalSpeedButton;
         [SerializeField] private Button fastForwardButton;
-
-
+        
+        private bool isLocked = false;
+        private bool lastPauseState;
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
         private readonly Color inactiveSpeedColor = Color.white;
         private Heart _heart;
@@ -24,22 +25,34 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _heart = heart;
         }
 
+        public void LockToPause(bool locked) {
+            isLocked = locked;
+
+            if (locked) { 
+                lastPauseState = _heart.IsPaused;
+                SetPausedState(true);
+            }
+            else {
+                SetPausedState(lastPauseState);
+            }
+        }
+
         public void SetPausedState(bool pause)
         {
-            if (pause)
+            if (pause || isLocked)
             {
                 _heart.StopBeating();
                 pauseButton.SetPausedText(true);
                 pauseButton.GetComponent<Image>().color = activeSpeedColor;
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-
             }
             else
             {
                 _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
                 pauseButton.GetComponent<Image>().color = inactiveSpeedColor;
+
                 if (_heart.GetGameSpeed() == GameSpeed.Fast)
                 {
                     normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
@@ -53,32 +66,33 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        public void TogglePause()
-        {
+        public void TogglePause() {
+            if (isLocked)
+                return;
+
             SetPausedState(!_heart.IsPaused);
         }
 
-        public void SetNormalSpeed()
-        {
+        public void SetNormalSpeed() {
+            if (isLocked)
+                return;
             if (_heart.IsPaused)
                 SetPausedState(false);
+
             _heart.SetGameSpeed(GameSpeed.Normal);
             normalSpeedButton.GetComponent<Image>().color = activeSpeedColor;
             fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-
-
         }
 
-        public void SetFastForward()
-        {
-
+        public void SetFastForward() {
+            if (isLocked)
+                return;
             if (_heart.IsPaused)
                 SetPausedState(false);
-            _heart.SetGameSpeed(GameSpeed.Fast);
 
+            _heart.SetGameSpeed(GameSpeed.Fast);
             normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
             fastForwardButton.GetComponent<Image>().color = activeSpeedColor;
-
         }
 
     }

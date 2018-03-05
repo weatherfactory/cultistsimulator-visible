@@ -22,6 +22,7 @@ using Noon;
 namespace Assets.CS.TabletopUI {
     public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
 
+        public event System.Action<ElementStackToken> onTurnFaceUp; // only used in the map to hide the other cards
         public event System.Action<float> onDecay;
 
         [SerializeField] Image artwork;
@@ -356,6 +357,9 @@ namespace Assets.CS.TabletopUI {
             }
             else {
                 FlipToFaceUp(false);
+
+                if (onTurnFaceUp != null)
+                    onTurnFaceUp(this);
             }
 
             transform.SetAsLastSibling(); //this moves the clicked sibling on top of any other nearby cards.
