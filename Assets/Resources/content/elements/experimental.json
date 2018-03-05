@@ -6,8 +6,26 @@
             label: "The Wolf at the Door",
             aspects:{},
 			slots: {Meal: {consumes:true}},
-            description: "The Wolf will accept anything, and then devour everything, no matter what."
+            description: "The Wolf will accept anything, and then devour everything, no matter what.",
+			noartneeded:true
         },
-		
+				 {
+            id: "lionweb",
+            label: "The Lion in the Web",
+			comments:"Information is essential.",
+			noartneeded:true
+        },
+		{
+            id: "boarwords",
+            label: "The Boar in the Words",
+			comments:"Titles are inevitable.",
+			noartneeded:true
+        },
+				{
+            id: "worldbull",
+            label: "The World in the Bull",
+			comments: "We Await S.T.E.",
+			noartneeded:true
+        },
 ]
 };
