@@ -1,20 +1,18 @@
  {"recipes": [
- 		{
-	id:"vaultsetupcapital_router",
-	actionId:"explore",
-	requirements:{vault:1,vaultcapital:1},
-	craftable:false,
-		alternativerecipes: [{id: "vaultsetupcapital_2",chance:100}]
-	},
 	
-			{
-	id:"vaultsetupcapital_2",
-	actionId:"explore",
+		 	{
+	id: "explore_vaultcapital2_setup",
+	label: "Beginning an Expedition",
+	actionId: "explore",
 	requirements:{locationvaultcapital2:1},
 	effects: {seal_hiddendoor:1},
-	craftable:false,
-		linked: [
-	{id: "explorevaulttick",chance:100}]
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "I'm  convinced the Mithraeum holds more secrets. It's unlikely to be dangerous, but the search will require funds. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
 	},
 			{
 	id: "explorevaultcapital2_success",
