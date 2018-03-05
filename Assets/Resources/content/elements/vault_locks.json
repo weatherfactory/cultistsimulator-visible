@@ -1,25 +1,42 @@
 {"elements":
     [
-	{id: "cursecreepingbreath",
-	label: "The Creeping Breath Curse",
-	aspects: {curse:1},
+	
+	{id: "peril_sea",
+	label: "The Sea",
+	aspects: {peril:1},
 	description: "FNORD"
 	},
-	{id: "watcherfretfuldead",
+			{id: "seal_hiddendoor",
+	label: "A Hidden Door",
+	aspects: {seal:1},
+	description: "Hidden Doors can be found with Lantern or Knock."
+	},
+				{id: "seal_wardeddoor",
+	label: "A Warded Door",
+	aspects: {seal:1},
+	description: "FNORD"
+	},
+		{id: "watcher_fretfuldead",
 	label: "The Fretful Dead",
 	aspects: {watcher:1},
 	description: "FNORD"
 	},
-		{id: "sealdevilishdevices",
-	label: "Devilish Devices",
-	aspects: {seal:1},
-	description: "FNORD"
-	}
-	{id: "perilstormyweather",
-	label: "Stormy Weather",
-	aspects: {peril:1},
-	description: "FNORD"
-	}
+			{id: "watcher_monks",
+	label: "Monks",
+	aspects: {watcher:1},
+	description: "FNORD Monks"
+	},
+	{id: "curse_sickness",
+	label: "The Creeping Breath Curse",
+	aspects: {curse:1},
+	description: "FNORD health curse"
+	},
+	{id: "curse_visions",
+	label: "The Fifth Eye Curse",
+	aspects: {curse:1},
+	description: "FNORD visions curse"
+	},
+
 
 ]
 };

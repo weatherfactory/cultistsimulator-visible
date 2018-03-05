@@ -1,0 +1,104 @@
+ {"recipes": [
+{
+	id: "explorevaultseal_hiddendoor_encounter",
+	actionId:"explore",
+	label: "A Hidden Door",
+	requirements: {seal_hiddendoor:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultseal_hiddendoor_highlantern",chance:100},
+	{id: "explorevaultseal_hiddendoor_midlantern",chance:100},
+	{id: "explorevaultseal_hiddendoor_lowlantern",chance:100},
+	
+	{id: "explorevaultseal_hiddendoor_highknock",chance:100},
+	{id: "explorevaultseal_hiddendoor_midknock",chance:100},
+	{id: "explorevaultseal_hiddendoor_lowknock",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultseal_hiddendoor_failure",chance:100}]
+	},
+	
+	{id:"explorevaultseal_hiddendoor_highlantern",
+	actionId: "explore",
+	requirements:{lantern:10},
+	label:"We call upon the Watchman, who Illuminates",
+	startdescription:"We'll almost certainly find this Hidden Door.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultseal_hiddendoor_success",chance:100},
+	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
+		  },
+		{id:"explorevaultseal_hiddendoor_midlantern",
+	actionId: "explore",
+	requirements:{lantern:5},
+	label:"We call upon the Watchman, who Navigates",
+	startdescription:"Our senses are sharpened. We should find this Hidden Door.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultseal_hiddendoor_success",chance:70},
+	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultseal_hiddendoor_lowlantern",
+	actionId: "explore",
+	requirements:{lantern:1},
+	label:"We call upon the Watchman, who is not Compassionate",
+	startdescription:"We carry light. We might find this Hidden Door. It'll be a struggle.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultseal_hiddendoor_success",chance:30},
+	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultseal_hiddendoor_highknock",
+	actionId: "explore",
+	requirements:{knock:10},
+	label:"We call upon the Beach-Crow, who sees what is lost.",
+	startdescription:"We bear a great power of opening. We'll almost certainly find this Hidden Door.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultseal_hiddendoor_success",chance:100},
+	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultseal_hiddendoor_midknock",
+	actionId: "explore",
+	requirements:{knock:5},
+	label:"We call upon the Beach-Crow, who opens the earth.",
+	startdescription:"We are skilled in uncovering hidden ways. We'll probably find this Hidden Door.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultseal_hiddendoor_success",chance:70},
+	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultseal_hiddendoor_lowknock",
+	actionId: "explore",
+	requirements:{knock:1},
+	label:"We call upon the Beach-Crow, to whom belongs what is not possessed.",
+	startdescription:"We have some ability in the matter of opening. We might find this Hidden Door. It'll be a struggle.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultseal_hiddendoor_success",chance:30},
+	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultseal_hiddendoor_success",
+	actionId:"explore",
+	label: "A Way through the Hidden Door",
+	startdescription: "Faint lines in stone; a surface that yields to pressure. We've found it! The Hidden Door moves, with a grating shudder and a shower of dust.",
+	description: ".",
+	effects: {seal_hiddendoor:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultseal_hiddendoor_failure",
+	actionId:"explore",
+	label: "A Fruitless Search",
+	startdescription: "Where is it? We could use more Knock, or Lantern.",
+	description: ".",
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+]
+}
+

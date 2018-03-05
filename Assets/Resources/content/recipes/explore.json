@@ -121,18 +121,6 @@
         warmup: 30,
 		craftable: false
     },
-			{
-        id: "exploreremotevault",
-        label: "Send a cunning follower to break into the vault",
-        actionId: "explore",
-        requirements: {follower:1,edge:1,vault:1,location:1},
-		effects: {},
-	deckeffect: "uncommontomes",
-        startdescription: "Torches sputter. Swollen shadows twitch.",
-        description: "[FNORD]",
-        warmup: 5,
-		craftable: true
-    },
 		{
         id: "explorefollower",
         label: "Send a follower to explore the city",

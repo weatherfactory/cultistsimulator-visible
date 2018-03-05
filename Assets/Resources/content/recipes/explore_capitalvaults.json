@@ -1,0 +1,34 @@
+ {"recipes": [
+ 		{
+	id:"vaultsetupcapital_router",
+	actionId:"explore",
+	requirements:{vault:1,vaultcapital:1},
+	craftable:false,
+		alternativerecipes: [{id: "vaultsetupcapital_2",chance:100}]
+	},
+	
+			{
+	id:"vaultsetupcapital_2",
+	actionId:"explore",
+	requirements:{locationvaultcapital2:1},
+	effects: {seal_hiddendoor:1},
+	craftable:false,
+		linked: [
+	{id: "explorevaulttick",chance:100}]
+	},
+			{
+	id: "explorevaultcapital2_success",
+	label: "The Deeper Sanctuary",
+	actionId: "explore",
+	requirements: {locationvaultcapital2:1},
+	effects: {locationvaultcapital2:-1},
+	deckeffect: "vaultcontentsc",
+	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
+	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	warmup:10,
+	craftable: false
+	},
+	
+]
+}
+
