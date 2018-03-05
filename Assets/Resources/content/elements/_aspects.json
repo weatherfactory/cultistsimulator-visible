@@ -227,27 +227,48 @@
         isAspect: true
 },
        {
-            id: "remote",
-            label: "Remote",
-			description: "This place is far from anywhere that anyone would want to be.",
+            id: "vaultcapital",
+            label: "In the Capital",
+			description: "A secret place in the teeming capital city where I live.",
         isAspect: true
 },
       {
-            id: "accursed",
-            label: "Accursed",
-			description: "Malign influences linger here.",
+            id: "vaultshires",
+            label: "In the Shires",
+			description: "Green fields and grey hills.",
         isAspect: true
 },
       {
-            id: "sealed",
-            label: "Sealed",
-			description: "Traps or locks or wards or portals of impregnable stone.",
+	     id: "vaultcontinent",
+   label: "On the Continent",
+			description: "Across a narrow sea, in unsuspected corners of rival nations.",
         isAspect: true
 },
       {
-            id: "watched",
-            label: "Watched",
-			description: "An entity has been charged with preventing entry.",
+            id: "vaultlandbeyondforest"
+            label: "In the Land Beyond the Forest",
+			description: "Misty passes and remote villages, where the world's skin is thin. ",
+        isAspect: true
+},
+
+     {
+            id: "vaulthungrymountains",
+            label: "Among the Hungry Mountains",
+			description: "Tawny-flanked, snow-tipped, far from help.",
+        isAspect: true
+},
+
+     {
+            id: "vaultloneandlevelsands",
+            label: "The Lone and Level Sands",
+			description: "In a dry and distant place, dune-chained horizons await you.",
+        isAspect: true
+},
+
+     {
+            id: "vaulteveningisles",
+            label: "Among the Evening Isles",
+			description: "Wave-washed chains of rocky islands vibrant with green life.",
         isAspect: true
 },
        {
@@ -520,7 +541,7 @@
         },
 		{id: "benign",
 		label: "Sheer Good Fortune",
-		description: "How fortunate I have been.",
+		description: "How lucky I have been.",
 		isAspect: true
 		},
 				{id: "malign",
