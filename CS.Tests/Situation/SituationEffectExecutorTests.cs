@@ -47,7 +47,7 @@ namespace Assets.Editor.Tests
             var storage = Substitute.For<IGameEntityStorage>();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
-            mockStacksManager.Received().ModifyElementQuantity("e",1, Source.Fresh(),null);
+            mockStacksManager.Received().ModifyElementQuantity("e",1, Source.Fresh(), Arg.Is<Context>(c => c.actionSource == Context.ActionSource.SituationEffect));
         }
         [Test]
         public void RecipeDeckEffect_IsApplied()
@@ -74,7 +74,7 @@ namespace Assets.Editor.Tests
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
 
-            mockStacksManager.Received().ModifyElementQuantity("e", 1, Source.Fresh(), null);
+            mockStacksManager.Received().ModifyElementQuantity("e", 1, Source.Fresh(), Arg.Is<Context>(c=>c.actionSource==Context.ActionSource.SituationEffect));
 
             
 
@@ -82,7 +82,9 @@ namespace Assets.Editor.Tests
 
         [Test]
         public void XTrigger_IsTriggeredByElementAspect()
-        {
+       {
+           var r=new Registry();
+           r.Register(new StackManagersCatalogue());
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
             var estack1 = TestObjectGenerator.CreateElementCard("1",1);
             estack1.Element.XTriggers.Add("triggeraspect","alteredelement");
@@ -94,14 +96,17 @@ namespace Assets.Editor.Tests
             var storage = Substitute.For<IGameEntityStorage>();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
-            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing(),null);
-            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing(), null);
+            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing(), Arg.Is<Context>(c => c.actionSource == Context.ActionSource.SituationEffect));
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing(), Arg.Is<Context>(c => c.actionSource == Context.ActionSource.SituationEffect));
         }
 
         [Test]
         public void XTrigger_IsTriggeredByRecipeAspect()
         {
-            
+            var r = new Registry();
+            r.Register(new StackManagersCatalogue());
+            mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
+
             recipe.Aspects.Add("triggeraspect", 1);
             var estack1 = TestObjectGenerator.CreateElementCard("1", 1);
             estack1.Element.XTriggers.Add("triggeraspect", "alteredelement");
@@ -116,8 +121,8 @@ namespace Assets.Editor.Tests
             var storage = Substitute.For<IGameEntityStorage>();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
-            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing(), null);
-            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing(), null);
+            mockStacksManager.Received().ModifyElementQuantity("1", -1, Source.Existing(), Arg.Is<Context>(c => c.actionSource == Context.ActionSource.SituationEffect));
+            mockStacksManager.Received().ModifyElementQuantity("alteredelement", 1, Source.Existing(), Arg.Is<Context>(c => c.actionSource == Context.ActionSource.SituationEffect));
         }
     }
 }
