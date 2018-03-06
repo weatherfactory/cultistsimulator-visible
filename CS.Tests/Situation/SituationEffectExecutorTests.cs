@@ -52,12 +52,21 @@ namespace Assets.Editor.Tests
         [Test]
         public void RecipeDeckEffect_IsApplied()
         {
-            string firstDeckId = "did";
-            List<string> deckIds=new List<string>(){ firstDeckId };
+            string firstDeckElement1 = "deck1Element1";
+            string secondDeckElement1 = "deck2Element1";
+            string firstDeckId = "aDeckId";
+            string secondDeckId = "anotherDeckId";
+            Dictionary<string, int> deckIds = new Dictionary<string, int>
+            {
+                {firstDeckId, 1},
+                {secondDeckId ,1}
+            };
             //prep deckSpec to be drawn from
-            IDeckInstance deckInstance = Substitute.For<IDeckInstance>();
+            IDeckInstance firstDeckInstance = Substitute.For<IDeckInstance>();
+            IDeckInstance secondDeckInstance = Substitute.For<IDeckInstance>();
             //ensure it returns 'e' element, whose change we'll see applied
-            deckInstance.Draw().Returns("e");
+            firstDeckInstance.Draw().Returns(firstDeckElement1);
+            secondDeckInstance.Draw().Returns(secondDeckElement1);
 
             //return empty element changes for the recipe - so nothing will change on account of just the recipe
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
@@ -69,15 +78,18 @@ namespace Assets.Editor.Tests
             //and we set up to return the deckSpec for that ID from the compendium
             var storage = Substitute.For<IGameEntityStorage>();
             
-            storage.GetDeckInstanceById(firstDeckId).Returns(deckInstance);
+            storage.GetDeckInstanceById(firstDeckId).Returns(firstDeckInstance);
+            storage.GetDeckInstanceById(secondDeckId).Returns(secondDeckInstance);
+
 
             var ex = new SituationEffectExecutor();
 
             ex.RunEffects(mockCommand, mockStacksManager,storage);
 
-            mockStacksManager.Received().ModifyElementQuantity("e", 1, Source.Fresh(), Arg.Is<Context>(c=>c.actionSource==Context.ActionSource.SituationEffect));
+            mockStacksManager.Received().ModifyElementQuantity(firstDeckElement1, 1, Source.Fresh(), Arg.Is<Context>(c=>c.actionSource==Context.ActionSource.SituationEffect));
+            mockStacksManager.Received().ModifyElementQuantity(secondDeckElement1, 1, Source.Fresh(), Arg.Is<Context>(c => c.actionSource == Context.ActionSource.SituationEffect));
 
-            
+
 
         }
 

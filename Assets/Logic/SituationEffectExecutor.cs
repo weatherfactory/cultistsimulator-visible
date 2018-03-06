@@ -49,7 +49,7 @@ namespace Assets.Logic
             {
                 var dealer = new Dealer(storage);
 
-                foreach (var deckId in deckIds)
+                foreach (var deckId in deckIds.Keys)
                 { 
                 var deck = storage.GetDeckInstanceById(deckId);
             if (deck != null)

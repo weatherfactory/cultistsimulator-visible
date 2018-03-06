@@ -65,7 +65,7 @@ public class Recipe
     /// On completion, the recipe will draw
     ///from this deck and add the result to the outcome.
     /// </summary>
-    public List<string> DeckEffects { get; set; }
+    public new Dictionary<string, int> DeckEffects { get; set; }
 
     /// <summary>
     /// displayed in the results when the recipe is complete
@@ -124,7 +124,7 @@ public class Recipe
         LinkedRecipes=new List<LinkedRecipeDetails>();
         SlotSpecifications = new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
-        DeckEffects=new List<string>();
+        DeckEffects=new Dictionary<string,int>();
     }
 
 

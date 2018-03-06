@@ -242,7 +242,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().EndingFlag);
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS, recipesImported.First().MaxExecutions);
             Assert.AreEqual(RECIPE_BURN_IMAGE, recipesImported.First().BurnImage);
-            Assert.AreEqual(RECIPE_1_DECKEFFECT, recipesImported.First().DeckEffects.First());
+            Assert.AreEqual(RECIPE_1_DECKEFFECT, recipesImported.First().DeckEffects.First().Key);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

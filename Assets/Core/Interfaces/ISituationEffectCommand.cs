@@ -18,7 +18,7 @@ namespace Assets.Core.Interfaces
         /// returns the deck to draw from if there is one, or null if there isn't one
         /// </summary>
         /// <returns></returns>
-        List<string> GetDeckEffects();
+        new Dictionary<string, int> GetDeckEffects();
     }
 
 }

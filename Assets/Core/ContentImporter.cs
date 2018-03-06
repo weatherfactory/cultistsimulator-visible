@@ -527,7 +527,7 @@ public class ContentImporter
                     foreach (string deckId in htDecks.Keys)
                     {
                         LogIfNonexistentDeckId(deckId, r.Id);
-                        r.DeckEffects.Add(deckId);
+                        r.DeckEffects.Add(deckId,Convert.ToInt32(htDecks[deckId]));
 
                     }
             }
