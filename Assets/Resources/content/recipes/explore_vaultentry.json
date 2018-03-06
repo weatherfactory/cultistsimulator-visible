@@ -160,24 +160,11 @@
 	description:".",
 	requirements: {peril:-1,seal:-1,watcher:-1,curse:-1},
 		linked: [{id: "explorevaultcapital2_success",chance:100},
-		{id: "explorevault_u1_success",chance:100}],
+		],
 	},
 	
 
-		{
-	id: "explorevault_u1_success",
-	label: "Fane success FNORD",
-	comments: "TODO: add deck outcomes",
-	actionId: "explore",
-		comments: "wip",
-	requirements: {vaultu1:1},
-	effects: {vault:-1},
-	deckeffect: {"vaultcontentsu":1},
-	startdescription: "Finding something in the Fane FNORD",
-	description: "All done! FNORD.",
-	warmup:30,
-	craftable: false]
-	},
+
 
 ]
 }

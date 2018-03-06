@@ -1,4 +1,15 @@
  {"recipes": [
+	{ id: "explorefindvault_a",
+        label: "Seek out the secret places of the city",
+        actionId: "explore",
+        requirements: {fragmentsecrethistories:1},
+		effects: {fragmentsecrethistories:-1},
+		deckeffect: {"vaultscapital":1},
+        startdescription: "There are places in the city where I can find extraordinary things... if I can untangle clues from history and rumour.",
+        description: "This place merits closer investigation.",
+        warmup: 30,
+        craftable: true},
+	
 	{
         id: "explorelocationbookdealer",
         label: "Add to your Library",
