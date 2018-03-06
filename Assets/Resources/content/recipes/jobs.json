@@ -4,7 +4,7 @@
         id: "findclericalwork",
         label: "Find Clerical Work",
         actionId: "work",
-        requirements: {reason: 1},
+        requirements: {reason: 1,ritual:-1},
         effects: {gloverandgloverjuniorjob: 1},
         startdescription: "Find work which will spare my body, if not my mind.",
         description: "Glover & Glover have offered me a junior position. I start at eight sharp, tomorrow morning! ",
@@ -123,7 +123,7 @@
         id: "workhealth_noinjurychance",
         label: "Unskilled Labour",
         actionId: "work",
-        requirements: {health: 1},
+        requirements: {health: 1,ritual:-1},
         effects: {
             funds: 1
         },
@@ -173,7 +173,7 @@
 		{id: "paintmansus", chance:100},
 		{id: "paintsuccess", chance:30}],
         actionId: "work",
-        requirements: {passion: 1},
+        requirements: {passion: 1,ritual:-1},
         effects: {contentment:1,
         },
 					slots: {
