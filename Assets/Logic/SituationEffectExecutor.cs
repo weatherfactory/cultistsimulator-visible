@@ -42,33 +42,36 @@ namespace Assets.Logic
             }
         }
 
-        public void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
+        public void RunDeckEffect(ISituationEffectCommand command, IElementStacksManager stacksManager,
+            IGameEntityStorage storage)
         {
             var deckIds = command.GetDeckEffects();
-            if(deckIds!=null && deckIds.Any())
+            if (deckIds != null && deckIds.Any())
             {
                 var dealer = new Dealer(storage);
 
                 foreach (var deckId in deckIds.Keys)
-                { 
-                var deck = storage.GetDeckInstanceById(deckId);
-            if (deck != null)
-            {
-
-                var drawnCardId = dealer.Deal(deck);
-
-                if (drawnCardId != null)
                 {
-                    var source = Source.Fresh(); //ultimately this should correspond to deck
-                    stacksManager.ModifyElementQuantity(drawnCardId, 1, source, new Context(Context.ActionSource.SituationEffect));
+                    var deck = storage.GetDeckInstanceById(deckId);
+                    if (deck != null)
+                    {
+                        for (int i = 1; i <= deckIds[deckId]; i++)
+                        {
+                            var drawnCardId = dealer.Deal(deck);
 
+                            if (drawnCardId != null)
+                            {
+                                var source = Source.Fresh(); //ultimately this should correspond to deck
+                                stacksManager.ModifyElementQuantity(drawnCardId, 1, source,
+                                    new Context(Context.ActionSource.SituationEffect));
+                            }
+                            else
+                            {
+                                throw new ApplicationException("Couldn't retrieve a card from deck " + deckId);
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    throw new ApplicationException("Couldn't retrieve a card from deck " + deckId);
-                }
-            }
-            }
             }
         }
 
