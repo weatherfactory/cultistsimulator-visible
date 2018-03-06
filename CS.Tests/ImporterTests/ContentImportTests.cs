@@ -54,6 +54,7 @@ namespace CS.Tests
         [Test]
         public void RecipesImportFromHashtable()
         {
+            NoonUtility.UnitTestingMode = true;
             ContentImporter cm = new ContentImporter();
             ArrayList recipesToImport = new ArrayList();
             Hashtable htRecipe = new Hashtable();
@@ -121,6 +122,9 @@ namespace CS.Tests
                 {NoonConstants.KADDITIONAL,true }
             };
 
+            Hashtable deckEffects = new Hashtable();
+            deckEffects.Add(RECIPE_1_DECKEFFECT,1);
+
             allinkeds.Add(linked1);
             allinkeds.Add(linked2);
 
@@ -130,7 +134,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KACTIONID, RECIPE_1_ACTIONID);
             htRecipe.Add(NoonConstants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
             htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
-            htRecipe.Add(NoonConstants.KDECKEFFECT,RECIPE_1_DECKEFFECT);
+            htRecipe.Add(NoonConstants.KDECKEFFECT, deckEffects);
             htRecipe.Add(NoonConstants.KASIDE, RECIPE_1_ASIDE);
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
@@ -238,7 +242,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_ENDING, recipesImported.First().EndingFlag);
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS, recipesImported.First().MaxExecutions);
             Assert.AreEqual(RECIPE_BURN_IMAGE, recipesImported.First().BurnImage);
-            Assert.AreEqual(RECIPE_1_DECKEFFECT, recipesImported.First().DeckEffect);
+            Assert.AreEqual(RECIPE_1_DECKEFFECT, recipesImported.First().DeckEffects.First());
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

@@ -7,7 +7,7 @@
             {ritual:1},
 			slots: {
 			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
+			"Instrument": {required: {tool:1},description: "What is our instrument?"},
 			"Offering":{required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
 			},
             description: "This rite calls on the Witch-and-Sister to close the gap between what is and what might be. The assistant pours, or hurls, an offering into water: preferably, but not essentially, the sea."

@@ -7,7 +7,7 @@ requirements: {aladimready: 1},
 startdescription: "The doctor would like my help with his research.",
 description: "Here's what he needs.",
 warmup: 10,
-deckeffect: "aladimcommissions",
+deckeffect: {"aladimcommissions":1},
 aspects: {commissiongiven:1},
 craftable: true
 
@@ -30,7 +30,7 @@ requirements: {bechetready: 1},
 startdescription: "She's seeking pieces for the notorious 'Kerisham Review'..",
 description: "Here's what she needs.",
 warmup: 10,
-deckeffect: "bechetcommissions",
+deckeffect: {"bechetcommissions":1},
 aspects: {commissiongiven:1},
 craftable: true
 
@@ -53,7 +53,7 @@ requirements: {janningsready: 1},
 startdescription: "The good Count's fraternity in Europe is seeking particular research.",
 description: "Here's what he needs.",
 warmup: 10,
-deckeffect: "janningscommissions",
+deckeffect: {"janningscommissions":1},
 aspects: {commissiongiven:1},
 craftable: true
 

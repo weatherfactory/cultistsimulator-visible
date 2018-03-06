@@ -52,7 +52,8 @@ namespace Assets.Editor.Tests
         [Test]
         public void RecipeDeckEffect_IsApplied()
         {
-            string deckId = "did";
+            string firstDeckId = "did";
+            List<string> deckIds=new List<string>(){ firstDeckId };
             //prep deckSpec to be drawn from
             IDeckInstance deckInstance = Substitute.For<IDeckInstance>();
             //ensure it returns 'e' element, whose change we'll see applied
@@ -62,13 +63,13 @@ namespace Assets.Editor.Tests
             mockCommand.GetElementChanges().ReturnsForAnyArgs(new Dictionary<string, int>());
             
             //but we return the deckid from the deckeffect - so we will try to retrieve that deckinstance
-            mockCommand.GetDeckEffect().Returns(deckId);
+            mockCommand.GetDeckEffects().Returns(deckIds);
             mockStacksManager.GetTotalAspects().Returns(new AspectsDictionary()); //need something in the aspects to satisfy the requirement to combine 'em
 
             //and we set up to return the deckSpec for that ID from the compendium
             var storage = Substitute.For<IGameEntityStorage>();
             
-            storage.GetDeckInstanceById("did").Returns(deckInstance);
+            storage.GetDeckInstanceById(firstDeckId).Returns(deckInstance);
 
             var ex = new SituationEffectExecutor();
 

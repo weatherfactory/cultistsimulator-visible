@@ -8,7 +8,7 @@
 	startdescription:"The entrance is lost beneath soft drapes of crimson, cinnabar and incarnadine. Above the door, the club motto: 'IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI'. It has been rendered as 'into night's circle we fly, until the fire enjoys us'.",
 	description: ".",
 	craftable:true,
-	deckeffect: "cabaretevents",
+	deckeffect: {"cabaretevents":1},
 	linked:[{id:"cabaretpleasure",chance:100},
 	{id:"cabaretallure",chance:100},
 	{id:"cabareteducation",chance:100},

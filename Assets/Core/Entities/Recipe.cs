@@ -30,17 +30,6 @@ public class Recipe
     public Dictionary<string, int> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
 
-    public PortalEffect PortalEffect
-    {
-        get
-        {
-            if (Id == "_mansustest")
-                return PortalEffect.Wood;
-            return PortalEffect.None;
-
-
-        }
-    }
 
     public Boolean Craftable { get; set; }
     /// <summary>
@@ -76,7 +65,7 @@ public class Recipe
     /// On completion, the recipe will draw
     ///from this deck and add the result to the outcome.
     /// </summary>
-    public string DeckEffect { get; set; }
+    public List<string> DeckEffects { get; set; }
 
     /// <summary>
     /// displayed in the results when the recipe is complete
@@ -111,6 +100,18 @@ public class Recipe
         return MaxExecutions == 0;
     }
 
+    public PortalEffect PortalEffect
+    {
+        get
+        {
+            if (Id == "_mansustest")
+                return PortalEffect.Wood;
+            return PortalEffect.None;
+
+
+        }
+    }
+
     public List<SlotSpecification> SlotSpecifications { get; set; }
 
     //recipe to execute next; may be the loop recipe; this is null if no loop has been set
@@ -123,6 +124,7 @@ public class Recipe
         LinkedRecipes=new List<LinkedRecipeDetails>();
         SlotSpecifications = new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
+        DeckEffects=new List<string>();
     }
 
 

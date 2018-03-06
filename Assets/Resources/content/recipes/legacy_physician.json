@@ -67,7 +67,7 @@ label: "Kindred Spirits",
 actionId: "talk",
 startdescription:"One of the patients at the Institute also has a bandaged eye. A self-inflicted wound, they say. Perhaps we'll speak soon.",
 description: "My wound has healed, and so has theirs. They don't understand why they did it. But they dreamt of me, that night. We are connected.",
-deckeffect: "acquaintances",
+deckeffect: {"acquaintances":1},
 warmup:60,
 craftable: false
 }

@@ -9,7 +9,6 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Noon;
 using OrbCreationExtensions;
-using UnityEngine.Assertions;
 
 public class ContentImporter
 {
@@ -424,13 +423,7 @@ public class ContentImporter
                     r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
                 htEachRecipe.Remove(NoonConstants.KASIDE);
 
-                if (htEachRecipe.ContainsKey(NoonConstants.KDECKEFFECT))
-                {
-                    string deckId = htEachRecipe[NoonConstants.KDECKEFFECT].ToString();
-                    LogIfNonexistentDeckId(deckId, r.Id);
-                    r.DeckEffect = deckId;
-                    htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
-                }
+
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
                 htEachRecipe.Remove(NoonConstants.KWARMUP);
@@ -525,6 +518,28 @@ public class ContentImporter
             htEachRecipe.Remove(NoonConstants.KEFFECTS);
 
             /////////////////////////////////////////////
+            //DECKS
+
+            try
+            {
+                Hashtable htDecks = htEachRecipe.GetHashtable(NoonConstants.KDECKEFFECT);
+                if (htDecks != null)
+                    foreach (string deckId in htDecks.Keys)
+                    {
+                        LogIfNonexistentDeckId(deckId, r.Id);
+                        r.DeckEffects.Add(deckId);
+
+                    }
+            }
+        
+            catch (Exception e)
+            {
+                LogProblem("Problem importing decks for recipe '" + r.Id + "' - " + e.Message);
+            }
+
+            htEachRecipe.Remove(NoonConstants.KDECKEFFECT);
+            /////////////////////////////////////////////
+            //SLOTS
             try
             {
 

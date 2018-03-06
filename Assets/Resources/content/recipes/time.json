@@ -1,7 +1,7 @@
 {"recipes": [
 	{id: "drawseason",
 	actionId: "time",
-	deckeffect:"seasonevents",
+	deckeffect:{"seasonevents":1},
 	warmup:0,
 	 linked:[{id:"needs",chance:100}]
 	},

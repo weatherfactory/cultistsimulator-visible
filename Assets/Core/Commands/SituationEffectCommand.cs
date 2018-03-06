@@ -32,11 +32,11 @@ namespace Assets.Core
         /// returns the deck to draw from if there is one, or null if there isn't one
         /// </summary>
         /// <returns></returns>
-        public string GetDeckEffect()
+        public List<string> GetDeckEffects()
         {
             //we only return the name of the deck. Implementation of drawing is up to classes with access to a compendium.
 
-            return Recipe.DeckEffect;
+            return Recipe.DeckEffects;
         }
 
 
