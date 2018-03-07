@@ -1,0 +1,141 @@
+ {"recipes": [
+	
+		 	{
+	id: "explore_vaulteveningisles1_setup",
+	label: "An Expedition to Raven Isle",
+	actionId: "explore",
+	requirements:{vaulteveningisles1:1},
+	effects: {peril_sea:1,guardian_soucouyants:1,curse_visions:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+			{
+	id: "explorevaulteveningisles1_success",
+	label: "FNORD Raven Isle success",
+	actionId: "explore",
+	requirements: {vaulteveningisles1:1},
+	effects: {vaulteveningisles1:-1},
+	deckeffect: {"vaultcontentsc":1},
+	startdescription: "FNORD Raven Isle success start",
+	description: "FNORD Raven Isle end",
+	warmup:10,
+	craftable: false
+	},
+	
+			 	{
+	id: "explore_vaulteveningisles2_setup",
+	label: "An Expedition to Fort Geryk",
+	actionId: "explore",
+	requirements:{vaulteveningisles2:1},
+	effects: {peril_sea:1,seal_wardeddoor:1,guardian_dead:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "A crumbling sandstone fortress broods over an empty bay. At night the dead walk. By day they lie in wait. In a sealed vault, the old governor's hoard awaits its plunderer. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+			{
+	id: "explorevaulteveningisles2_success",
+	label: "FNORD Geryk success",
+	actionId: "explore",
+	requirements: {vaulteveningisles2:1},
+	effects: {vaulteveningisles2:-1},
+	deckeffect: {"vaultcontentsc":1},
+	startdescription: "",
+	description: "",
+	warmup:10,
+	craftable: false
+	},
+	
+			 	{
+	id: "explore_vaulteveningisles3_setup",
+	label: "An Expedition to the Wreck of the Christable",
+	actionId: "explore",
+	requirements:{vaulteveningisles3:1},
+	effects: {peril_sea:1,guardian_serpent:1, curse_wasting:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+			{
+	id: "explorevaulteveningisles3_success",
+	label: "",
+	actionId: "explore",
+	requirements: {vaulteveningisles3:1},
+	effects: {vaulteveningisles3:-1},
+	deckeffect: {"vaultcontentsc":1},
+	startdescription: "",
+	description: "",
+	warmup:10,
+	craftable: false
+	},
+	
+			 	{
+	id: "explore_vaulteveningisles4_setup",
+	label: "An Expedition to St Tentreto of the Deep Door",
+	actionId: "explore",
+	requirements:{vaulteveningisles4:1},
+	effects: {seal_hiddendoor:1,guardian_monks:1,curse_visions:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+			{
+	id: "explorevaulteveningisles4_success",
+	label: "",
+	actionId: "explore",
+	requirements: {vaulteveningisles4:1},
+	effects: {vaulteveningisles4:-1},
+	deckeffect: {"vaultcontentsc":1},
+	startdescription: "",
+	description: "",
+	warmup:10,
+	craftable: false
+	},
+	
+			 	{
+	id: "explore_vaulteveningislesdefault_setup",
+	label: "An Expedition to Port Noon",
+	actionId: "explore",
+	requirements:{vaulteveningislesdefault:1},
+	effects: {peril_sea:1,seal_wardeddoor:1,guardian_long:1,curse_visions:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+			{
+	id: "explorevaulteveningislesdefault_success",
+	label: "",
+	actionId: "explore",
+	requirements: {vaulteveningislesdefault:1},
+	effects: {vaulteveningislesdefault:-1},
+	deckeffect: {"vaultcontentsc":1},
+	startdescription: "",
+	description: "",
+	warmup:10,
+	craftable: false
+	},
+
+	
+]
+}
+
