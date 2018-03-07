@@ -1,11 +1,33 @@
 {"elements":
     [
 	
-	{id: "peril_sea",
+	{id: "peril_treacherousground",
+	label: "Treacherous Ground",
+	aspects: {peril:1},
+	description: "FNORD"
+	},
+		{id: "peril_forest",
+	label: "The Forest",
+	aspects: {peril:1},
+	description: "FNORD"
+	},
+		{id: "peril_mountains",
+	label: "The Mountains",
+	aspects: {peril:1},
+	description: "FNORD"
+	},
+		{id: "peril_desert",
+	label: "The Desert",
+	aspects: {peril:1},
+	description: "FNORD"
+	},
+		{id: "peril_sea",
 	label: "The Sea",
 	aspects: {peril:1},
 	description: "FNORD"
 	},
+	
+	
 			{id: "seal_hiddendoor",
 	label: "A Hidden Door",
 	aspects: {seal:1},
@@ -16,26 +38,62 @@
 	aspects: {seal:1},
 	description: "FNORD"
 	},
-		{id: "watcher_fretfuldead",
-	label: "The Fretful Dead",
-	aspects: {watcher:1},
-	description: "FNORD"
+	
+			{id: "guardian_serpent",
+	label: "Younger Sister",
+	aspects: {guardian:1},
+	description: "The Mother of Ants was born among serpents. She has so very many younger sisters. It can be defeated in battle; or it will respond to the Mother's power."
 	},
-			{id: "watcher_monks",
+		{id: "guardian_watchers",
+	label: "Watchers",
+	aspects: {guardian:1},
+	description: "Mortals. Perhaps even ordinary mortals. But quite a number of them. They can be fought, seduced, or deceived."
+	},
+
+			{id: "guardian_monks",
 	label: "Monks",
-	aspects: {watcher:1},
-	description: "FNORD Monks"
+	aspects: {guardian:1},
+	description: "Contemplatives blessed or condemned to service here. They're bound by their curious vows. We can murder them, or deceive them, but they will not be seduced."
 	},
-	{id: "curse_sickness",
-	label: "The Creeping Breath Curse",
-	aspects: {curse:1},
-	description: "FNORD health curse"
+	
+			{id: "guardian_fretfuldead",
+	label: "The Fretful Dead",
+	aspects: {guardian:1},
+	description: "Not all the Dead rest easy. These ones dislike our intrusion. They can be broken into pieces; or they may obey one who comes in the name of Winter."
 	},
-	{id: "curse_visions",
+	
+				{id: "guardian_soucouyants",
+	label: "Soucouyants",
+	aspects: {guardian:1},
+	description: "One might mistake them for old women, until they discard their skins. The place is aswarm with them,. They are strong as strangling roots, and at least half-Long, but they can be deceived, and they are very wary of light."
+	},
+					{id: "guardian_long",
+	label: "Long",
+	aspects: {guardian:1},
+	description: "It is very hard to kill anyone who's passed the Tricuspid Door. And here are quite a lot of anyones. But perhaps we can deceive one, or prey upon someone's appetites."
+	},
+	
+		{id: "curse_dread",
 	label: "The Fifth Eye Curse",
 	aspects: {curse:1},
 	description: "FNORD visions curse"
 	},
+		{id: "curse_visions",
+	label: "The Fifth Eye Curse",
+	aspects: {curse:1},
+	description: "FNORD visions curse"
+	},
+	{id: "curse_wasting",
+	label: "The Creeping Breath Curse",
+	aspects: {curse:1},
+	description: "FNORD health curse"
+	},
+		{id: "curse_nowhere",
+	label: "The Worms in the World",
+	aspects: {curse:1},
+	description: "FNORD nowhere curse"
+	},
+
 
 
 ]

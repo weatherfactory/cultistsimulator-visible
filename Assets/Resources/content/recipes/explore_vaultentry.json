@@ -44,93 +44,10 @@
 	effects: {funds:-1},
 	linked:[
 	{id: "explorevaultseal_hiddendoor_encounter",chance:100},
-	{id: "explorevaultseal_wardeddoor_encounter",chance:100},	
-	{id: "explorevaultperilencounter",chance:100},
-	{id: "explorevaultwatcherencounter",chance:100},
-	{id: "explorevaultcurseencounter",chance:100}]
+	{id: "explorevaultseal_wardeddoor_encounter",chance:100}]
 	craftable: false
 	},
 
-					{
-	id: "explorevaultperilencounter",
-	actionId:"explore",
-	label: "An Approaching Peril",
-	startdescription: "A peril might derail your exploration of the vault. Feed it a follower with Forge. FNORD",
-	description: "No Forge, which means it'll kill a follower and is still here. FNORD",
-	requirements: {peril:1},
-	slots:{"Catspaw": {required: {follower:1}}},
-	alternativerecipes: [
-	{id: "explorevaultperilencountersuccess",chance:100}],
-	effects: {follower:-1},
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaulttick",chance:100}]
-	},
-			{
-	id: "explorevaultperilencountersuccess",
-	actionId:"explore",
-	label: "The Peril is Defeated",
-	startdescription: "Hurray someone is practical and determined FNORD",
-	description: ".",
-	requirements: {forge:1},
-	effects: {peril:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}]	
-	},
-
-	{
-	id: "explorevaultcurseencounter",
-	label: "Facing the Curse",
-	actionId: "explore",
-	startdescription: "The curse might kill a follower. If you have Heart in play, everyone might survive. FNORD",
-	description: "The curse has killed a follower. FNORD.",
-	requirements: {curse:1},
-	effects: {curse:-1,follower:-1},
-	slots:{"Catspaw": {required: {follower:1}}},
-	alternativerecipes: [
-	{id: "explorevaultcurseencountersuccess",chance:100}],
-	warmup:30,
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}]
-	},
-				{
-	id: "explorevaultcurseencountersuccess",
-	label: "The Curse will Pass",
-	actionId:"explore",
-	startdescription: "Someone's protective talent or tenacity   saved your catspaws from further harm. FNORD",
-	description: ".",
-	requirements: {heart:1},
-	effects: {curse:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}]	
-	},
-
-	{
-		id: "explorevaultwatcherencounter",
-		label: "The Watcher Approaches",
-	actionId:"explore",
-	startdescription: "A watcher might derail your exploration of the vault. Feed it a follower with Edge. FNORD",
-	description: "No Knock, which means it'll kill a follower and is still here. FNORD",
-	requirements: {watcher:1},	
-	slots:{"Catspaw": {required: {follower:1}}},
-	alternativerecipes: [
-	{id: "explorevaultwatcherencountersuccess",chance:100}],
-	effects: {follower:-1},
-	warmup:30,
-	craftable: false,
-	linked: [{id:"explorevaulttick",chance:100}]
-	},
-			{
-	id: "explorevaultwatcherencountersuccess",
-	label: "The Watcher is Defeated",
-	actionId:"explore",
-	startdescription: "Hurray someone has kilt it FNORD",
-	description: ".",
-	requirements: {edge:1},
-	effects: {watcher:-1},
-	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}]	
-	},
 		
 		{id:"explorevaultfailure_nofunds",
 	actionId:"explore",
@@ -138,7 +55,7 @@
 	startdescription:"Supplies are low. Unless I send more funds, we will have to abandon the expedition.",
 	description: "We can try again, when the dust has settled.",
 	requirements: {funds:-1},
-	effects: {dread:1,peril:-1,seal:-1,watcher:-1,curse:-1},
+	effects: {dread:1,peril:-1,seal:-1,guardian:-1,curse:-1},
 	warmup:10
 	},
 
@@ -148,7 +65,7 @@
 	startdescription:"My agents are dead, or otherwise beyond use. I must send help, or this expedition will be over.",
 	description: "No-one returns. I can attempt the expedition again. I can even reuse the supplies.",
 	requirements: {follower:-1},
-	effects: {dread:1,peril:-1,seal:-1,watcher:-1,curse:-1},
+	effects: {dread:1,peril:-1,seal:-1,guardian:-1,curse:-1},
 	warmup:10
 	},
 
@@ -158,7 +75,7 @@
 	actionId:"explore",
 	startdescription:"Success! I'll know more soon...",
 	description:".",
-	requirements: {peril:-1,seal:-1,watcher:-1,curse:-1},
+	requirements: {peril:-1,seal:-1,guardian:-1,curse:-1},
 		linked: [{id: "explorevaultcapital2_success",chance:100},
 		],
 	},
