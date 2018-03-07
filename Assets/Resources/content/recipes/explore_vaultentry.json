@@ -44,7 +44,9 @@
 	effects: {funds:-1},
 	linked:[
 	{id: "explorevaultseal_hiddendoor_encounter",chance:100},
-	{id: "explorevaultseal_wardeddoor_encounter",chance:100}]
+	{id: "explorevaultseal_wardeddoor_encounter",chance:100},
+		{id: "explorevaultseal_guardianserpent_encounter",chance:100},
+	{id: "explorevaultseal_guardiandead_encounter",chance:100}]
 	craftable: false
 	},
 
@@ -76,7 +78,16 @@
 	startdescription:"Success! I'll know more soon...",
 	description:".",
 	requirements: {peril:-1,seal:-1,guardian:-1,curse:-1},
-		linked: [{id: "explorevaultcapital2_success",chance:100},
+		linked: [{id: "explorevaultcapital1_success",chance:100},
+		{id: "explorevaultcapital2_success",chance:100},
+		{id: "explorevaultcapital3_success",chance:100},
+		{id: "explorevaultcapital4_success",chance:100},
+		{id: "explorevaultcapitaldefault_success",chance:100},
+		{id: "explorevaulteveningisles1_success",chance:100},
+		{id: "explorevaulteveningisles2_success",chance:100},
+		{id: "explorevaulteveningisles3_success",chance:100},
+		{id: "explorevaulteveningisles4_success",chance:100},
+		{id: "explorevaulteveningislesdefault_success",chance:100},
 		],
 	},
 	

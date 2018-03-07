@@ -7,11 +7,10 @@
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
 	{id: "explorevaultseal_hiddendoor_highlantern",chance:100},
-	{id: "explorevaultseal_hiddendoor_midlantern",chance:100},
-	{id: "explorevaultseal_hiddendoor_lowlantern",chance:100},
-	
 	{id: "explorevaultseal_hiddendoor_highknock",chance:100},
+	{id: "explorevaultseal_hiddendoor_midlantern",chance:100},
 	{id: "explorevaultseal_hiddendoor_midknock",chance:100},
+	{id: "explorevaultseal_hiddendoor_lowlantern",chance:100},	
 	{id: "explorevaultseal_hiddendoor_lowknock",chance:100}],
 	warmup:30,
 	craftable: false,
@@ -111,11 +110,10 @@
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
 	{id: "explorevaultseal_wardeddoor_highforge",chance:100},
-	{id: "explorevaultseal_wardeddoor_midforge",chance:100},
-	{id: "explorevaultseal_wardeddoor_lowforge",chance:100},
-	
 	{id: "explorevaultseal_wardeddoor_highknock",chance:100},
+	{id: "explorevaultseal_wardeddoor_midforge",chance:100},
 	{id: "explorevaultseal_wardeddoor_midknock",chance:100},
+	{id: "explorevaultseal_wardeddoor_lowforge",chance:100},
 	{id: "explorevaultseal_wardeddoor_lowknock",chance:100}],
 	warmup:30,
 	craftable: false,
@@ -173,7 +171,7 @@
 		  	{id:"explorevaultseal_wardeddoor_lowknock",
 	actionId: "explore",
 	requirements:{knock:1},
-	label:"We call upon the Horned-Axe, who bears too blades.",
+	label:"We call upon the Horned-Axe, who bears two blades.",
 	startdescription:"We have some ability in the matter of opening. We might be able to penetrate this Warded Door. It'll be a struggle.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:30},
