@@ -22,7 +22,7 @@
 	actionId: "explore",
 	requirements:{edge:10},
 	label:"Out strength is matchless.",
-	startdescription:"A great Serpent is a powerful foe, but it's nothing before us.",
+	startdescription:"Eyes like gas-lamps; scales like black jade. A Serpent is a powerful foe, but it's nothing before us.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:100},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
@@ -31,7 +31,7 @@
 	actionId: "explore",
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
-	startdescription:"A great Serpent is a powerful foe, but so are we.",
+	startdescription:"Eyes like gas-lamps; fangs like stalactites. A great Serpent is a powerful foe, but so are we.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:70},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
@@ -40,7 +40,7 @@
 	actionId: "explore",
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
-	startdescription:"We might defeat this Serpent. We might regret trying.",
+	startdescription:"Eyes like gas-lamps; a mouth one could crouch in. We might defeat this Serpent. We might regret trying.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:30},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
@@ -50,7 +50,7 @@
 	actionId: "explore",
 	requirements:{knock:10},
 	label:"We call upon the Mother of Ants, which ariseth from wounds.",
-	startdescription:"Surely the Serpent will respect the power we bear.",
+	startdescription:"The Serpent's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:100},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
@@ -60,7 +60,7 @@
 	actionId: "explore",
 	requirements:{knock:5},
 	label:"We call upon the Mother of Ants, which encircleth.",
-	startdescription:"Probably the Serpent will respect the power we bear.",
+	startdescription:"The Serpent is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:70},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
@@ -70,7 +70,7 @@
 	actionId: "explore",
 	requirements:{knock:1},
 	label:"We call upon the Mother of Ants, which openeth.",
-	startdescription:"Perhaps the Serpent will respect the power we bear.",
+	startdescription:"The Serpent rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the Serpent will respect the power we bear.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:30},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
@@ -80,7 +80,7 @@
 	id: "explorevaultguardian_serpent_success_edge",
 	actionId:"explore",
 	label: "The Serpent's Struggles",
-	startdescription: "Its death throes shake the earth! But it's dying. We will pass.",
+	startdescription: "The Serpent rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
 	description: ".",
 	effects: {guardian_serpent:-1},
 	craftable: false,
@@ -133,7 +133,7 @@
 	actionId: "explore",
 	requirements:{edge:10},
 	label:"Our strength is matchless.",
-	startdescription:"the Dead can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+	startdescription:"The Dead are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:100},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -142,7 +142,7 @@
 	actionId: "explore",
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
-	startdescription:"These things have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+	startdescription:"These things, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:70},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -151,7 +151,7 @@
 	actionId: "explore",
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
-	startdescription:"The Dead remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
+	startdescription:"The Dead are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:30},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -161,7 +161,7 @@
 	actionId: "explore",
 	requirements:{winter:10},
 	label:"We call upon the Ivory Dove, who knows the names of all the dead.",
-	startdescription:"The very air around us is chill with Winter's shadow. The Dead must recognise that.",
+	startdescription:"The Dead circle the edge of our vision like frayed dreams. The very air around us is chill with Winter's shadow. They must recognise that.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_winter",chance:100},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -171,7 +171,7 @@
 	actionId: "explore",
 	requirements:{winter:5},
 	label:"We call upon the Ivory Dove, who cannot be deceived.",
-	startdescription:"We are invested with the power of Winter. Probably the Dead will recognise that.",
+	startdescription:"The Dead watch us closely, expressionless as saint-statues. But we are invested with the power of Winter. Probably the Dead will recognise that.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_winter",chance:70},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -181,7 +181,7 @@
 	actionId: "explore",
 	requirements:{winter:1},
 	label:"We call upon the Ivory Dove, from whom nothing more may be taken.",
-	startdescription:"We have been touched by the Hours of Winter. Perhaps the Dead will recognise that.",
+	startdescription:"The Dead boil and rattle in the darkness, but we have been touched by the Hours of Winter. Perhaps they will recognise that.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_winter",chance:30},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -190,8 +190,8 @@
 			{
 	id: "explorevaultguardian_dead_success_edge",
 	actionId:"explore",
-	label: "The Dead Break",
-	startdescription: "",
+	label: "The Wretched Dead",
+	startdescription: "When the Dead return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
 	description: ".",
 	effects: {guardian_dead:-1},
 	craftable: false,
@@ -202,8 +202,8 @@
 				{
 	id: "explorevaultguardian_dead_success_edge",
 	actionId:"explore",
-	label: "The Dead Bow",
-	startdescription: "",
+	label: "The Wary Dead",
+	startdescription: "The Dead draw back, their almost-faces flat and watchful. They will not trouble us.",
 	description: ".",
 	effects: {guardian_dead:-1},
 	craftable: false,
@@ -214,8 +214,8 @@
 				{
 	id: "explorevaultguardian_dead_failure",
 	actionId:"explore",
-	label: "The Purposes of Doors",
-	startdescription: "Doors have two purposes: to open, and to remain closed. Today, this door remains true to its second purpose.",
+	label: "The Wrath of the Dead",
+	startdescription: "The Dead are more like wind than flesh, but it doesn't do to underrate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
 	description: ".",
 	craftable: false,
 		linked: [{id:"explorevaulttick",chance:100}],
