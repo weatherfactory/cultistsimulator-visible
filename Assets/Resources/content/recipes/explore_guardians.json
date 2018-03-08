@@ -3,6 +3,7 @@
 	id: "explorevaultguardian_serpent_encounter",
 	actionId:"explore",
 	label: "A Younger Sister: a Serpent",
+	startdescription: "The Serpent watches us closely, swaying its great head. WIthout Edge or Knock, we cannot prevail against it.",
 	requirements: {guardian_serpent:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -106,7 +107,8 @@
 	startdescription: "Back. Back! It's too much for us!",
 	description: ".",
 	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
+		linked: [{id:"explorevault_casualty",chance:70},
+		{id:"explorevaulttick",chance:100}],
 		warmup:30
 	},
 	
@@ -115,6 +117,7 @@
 	id: "explorevaultguardian_dead_encounter",
 	actionId:"explore",
 	label: "The Fretful Dead",
+	startdescription: "The Dead clot in the air around us like stale corpse-light. Without Edge or Winter, we have no chance against them.",
 	requirements: {guardian_dead:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -142,7 +145,7 @@
 	actionId: "explore",
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
-	startdescription:"These things, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+	startdescription:"These Dead, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:70},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
@@ -200,7 +203,7 @@
 	},
 	
 				{
-	id: "explorevaultguardian_dead_success_edge",
+	id: "explorevaultguardian_dead_success_winter",
 	actionId:"explore",
 	label: "The Wary Dead",
 	startdescription: "The Dead draw back, their almost-faces flat and watchful. They will not trouble us.",
@@ -215,10 +218,11 @@
 	id: "explorevaultguardian_dead_failure",
 	actionId:"explore",
 	label: "The Wrath of the Dead",
-	startdescription: "The Dead are more like wind than flesh, but it doesn't do to underrate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
+	startdescription: "The Dead are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
 	description: ".",
 	craftable: false,
-		linked: [{id:"explorevaulttick",chance:100}],
+		linked: [{id:"explorevault_casualty",chance:70},
+		{id:"explorevaulttick",chance:100}],
 		warmup:30
 	},
 	

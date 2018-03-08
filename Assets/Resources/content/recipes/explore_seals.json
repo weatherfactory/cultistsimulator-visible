@@ -3,6 +3,7 @@
 	id: "explorevaultseal_hiddendoor_encounter",
 	actionId:"explore",
 	label: "A Hidden Door",
+	startdescription: "There must be a door here. But without Lantern or Knock, we can't uncover it.",
 	requirements: {seal_hiddendoor:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -100,12 +101,11 @@
 	
 	
 	
-	
-	
 	{
 	id: "explorevaultseal_wardeddoor_encounter",
 	actionId:"explore",
 	label: "A Warded Door",
+	startdescription: "This door has held fast for a long time. Unless we bring Forge or Knock, it will hold fast against us too.",
 	requirements: {seal_wardeddoor:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [

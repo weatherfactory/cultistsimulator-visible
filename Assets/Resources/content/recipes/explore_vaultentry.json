@@ -31,7 +31,7 @@
 		{
 	id: "explorevaulttick",
 	comments: "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
-	label: "The Expedition Continues.",
+	label: "The Expedition Continues",
 	actionId: "explore",
 		slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will defeat obstacles.", required: {follower:1,funds:1}}},
 	startdescription: "Our expedition plans for the next challenge. It'll consume Funds; I can add Funds now, or I could send another Follower.",
@@ -43,10 +43,11 @@
 	{id: "explorevaultfailure_nofollowers",chance:100}],
 	effects: {funds:-1},
 	linked:[
+{id: "explorevaultperil_sea_encounter",chance:100},
 	{id: "explorevaultseal_hiddendoor_encounter",chance:100},
 	{id: "explorevaultseal_wardeddoor_encounter",chance:100},
-		{id: "explorevaultseal_guardianserpent_encounter",chance:100},
-	{id: "explorevaultseal_guardiandead_encounter",chance:100}]
+		{id: "explorevaultguardian_serpent_encounter",chance:100},
+	{id: "explorevaultguardian_dead_encounter",chance:100}]
 	craftable: false
 	},
 
@@ -90,7 +91,18 @@
 		{id: "explorevaulteveningislesdefault_success",chance:100},
 		],
 	},
-	
+	{
+		id: "explorevault_casualty",
+	actionId:"explore",
+	label: "An expedition member is dying!",
+	startdescription: "If we fail to pass a Peril or a Guardian, we'll usually lose one of our number.",
+	effects: {follower:-1},
+	description: "They're gone.",
+	craftable: false,
+		linked: [{id: "explorevaultfailure_nofollowers",chance:100},
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
 
 
 
