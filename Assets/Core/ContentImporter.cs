@@ -712,13 +712,50 @@ public class ContentImporter
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
 
+#if DEBUG
+        CountWords();
         LogMissingImages();
         LogFnords();
-     
+#endif
+
+
 
         foreach (var p in GetContentImportProblems())
             NoonUtility.Log(p.Description);
 
+    }
+
+    private void CountWords()
+    {
+        int words = 0;
+        foreach (var r in Recipes)
+        {
+            words += (r.Label.Count(char.IsWhiteSpace)+1);
+            words += (r.StartDescription.Count(char.IsWhiteSpace) + 1);
+            words += (r.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        foreach (var e in Elements.Values)
+        {
+
+            words += (e.Label.Count(char.IsWhiteSpace) + 1);
+            words += (e.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        foreach (var v in Verbs.Values)
+        {
+            words += (v.Label.Count(char.IsWhiteSpace) + 1);
+            words += (v.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        foreach (var l in Legacies.Values)
+        {
+            words += (l.Label.Count(char.IsWhiteSpace) + 1);
+            words += (l.StartDescription.Count(char.IsWhiteSpace) + 1);
+            words += (l.Description.Count(char.IsWhiteSpace) + 1);
+        }
+
+        NoonUtility.Log("Words (based on spaces +1 count): " + words);
     }
 
     private void LogFnords()
