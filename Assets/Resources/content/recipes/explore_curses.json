@@ -21,8 +21,8 @@
 	{id:"explorevaultcurse_dread_highheart",
 	actionId: "explore",
 	requirements:{heart:10},
-	label:"We call upon the Sister-and-Witch, who cannot be touched.",
-	startdescription:"Storms rise for the Thunderskin and subside for the Sister. The right words will carry us safe across the dread.",
+	label:"We call upon the Ring-Yew, who is renewed",
+	startdescription:"We are strong enough in Heart to be secure against the Curse.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultcurse_dread_success",chance:100},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
@@ -30,8 +30,8 @@
 		{id:"explorevaultcurse_dread_midheart",
 	actionId: "explore",
 	requirements:{heart:5},
-	label:"We call upon the Sister-and-Witch, who cannot be separated.",
-	startdescription:"If storms strike, the Sister-and-Witch will keep our crew and our vessel in one piece. Probably.",
+	label:"We call upon the Ring-Yew, who encompasseth",
+	startdescription:"We carry enough Heart aspect to quell the Curse... probably.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultcurse_dread_success",chance:70},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
@@ -39,8 +39,8 @@
 		  	{id:"explorevaultcurse_dread_lowheart",
 	actionId: "explore",
 	requirements:{heart:1},
-	label:"We call upon the Sister-and-Witch, who are pearl.",
-	startdescription:"The Sister-and-Witch are not of the dread, but they walk beside it. Perhaps their protection will be sufficient.",
+	label:"We call upon the Ring-Yew, who is succulent",
+	startdescription:"Perhaps the power of that old and fecund Hour, the Ring-Yew, can protect us from the Curse. Perhaps not.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultcurse_dread_success",chance:30},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
@@ -49,8 +49,8 @@
 		  	{id:"explorevaultcurse_dread_highlantern",
 	actionId: "explore",
 	requirements:{lantern:10},
-	label:"The Sailor's Surety",
-	startdescription:"Our lantern skills represent plenty of expertise. We'll make it through.",
+	label:"FNORD high lantern curse invocation",
+	startdescription:"FNORD high lantern start",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultcurse_dread_success",chance:100},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
@@ -59,8 +59,8 @@
 		  	{id:"explorevaultcurse_dread_midlantern",
 	actionId: "explore",
 	requirements:{lantern:5},
-	label:"The Sailor's Strength",
-	startdescription:"We are practical souls, strong in lantern. We'll probably be fine.",
+	label:"FNORD mid lantern curse invocation",
+	startdescription:"FNORD mid lantern start",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultcurse_dread_success",chance:70},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
@@ -69,8 +69,8 @@
 		  	{id:"explorevaultcurse_dread_lowlantern",
 	actionId: "explore",
 	requirements:{lantern:1},
-	label:"The Sailor's Hope",
-	startdescription:"lantern-aspected followers are competent and practical, but the dread is tricksy. We will struggle to stay on course.",
+	label:"FNORD low lantern curse invocation",
+	startdescription:"FNORD low lantern start.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultcurse_dread_success",chance:30},
 	{id:"explorevaultcurse_dread_failure",chance:100}]	  
@@ -79,8 +79,8 @@
 			{
 	id: "explorevaultcurse_dread_success",
 	actionId:"explore",
-	label: "Safe Across the dread",
-	startdescription: "Wave-lashed and dread-spattered, sun-scorched and salt-stained. But here.",
+	label: "The Curse Shrivels",
+	startdescription: "Our power is stronger than the power that was here. The Curse won't touch us.",
 	description: ".",
 	effects: {curse_dread:-1},
 	craftable: false,
@@ -91,18 +91,326 @@
 				{
 	id: "explorevaultcurse_dread_failure",
 	actionId:"explore",
-	label: "Labyrinths of Salt and Basalt",
-	startdescription: "Another day battered by storms. We must be close. But the isles are a maddening maze, and the places we seek lie on no published chart.",
+	label: "The Curse Clings",
+	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the curse will tighten around us.",
 	description: ".",
+	effects: {curse_dread:-1},
+	alternativerecipes: [{id: "curse_dread_dormant",chance:100,additional:true}]
 	craftable: false,
-		linked: [
-		{id:"explorevault_casualty",chance:70},		
-		{id:"explorevaulttick",chance:100}],
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	{
+	id: "explorevaultcurse_visions_encounter",
+	actionId:"explore",
+	label: "The Dry Soul Curse",
+	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without winter or Heart, it may follow us back home and dessicate the spirit.",
+	requirements: {curse_visions:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultcurse_visions_highheart",chance:100},
+	{id: "explorevaultcurse_visions_highwinter",chance:100},
+	{id: "explorevaultcurse_visions_midheart",chance:100},
+	{id: "explorevaultcurse_visions_midwinter",chance:100},
+	{id: "explorevaultcurse_visions_lowheart",chance:100},	
+	{id: "explorevaultcurse_visions_lowwinter",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultcurse_visions_failure",chance:100}]
+	},
+	
+	{id:"explorevaultcurse_visions_highheart",
+	actionId: "explore",
+	requirements:{heart:10},
+	label:"We call upon the Ring-Yew, who is renewed",
+	startdescription:"We are strong enough in Heart to be secure against the Curse.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_visions_success",chance:100},
+	{id:"explorevaultcurse_visions_failure",chance:100}]	  
+		  },
+		{id:"explorevaultcurse_visions_midheart",
+	actionId: "explore",
+	requirements:{heart:5},
+	label:"We call upon the Ring-Yew, who encompasseth",
+	startdescription:"We carry enough Heart aspect to quell the Curse... probably.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_visions_success",chance:70},
+	{id:"explorevaultcurse_visions_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultcurse_visions_lowheart",
+	actionId: "explore",
+	requirements:{heart:1},
+	label:"We call upon the Ring-Yew, who is succulent",
+	startdescription:"Perhaps the power of that old and fecund Hour, the Ring-Yew, can protect us from the Curse. Perhaps not.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_visions_success",chance:30},
+	{id:"explorevaultcurse_visions_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_visions_highwinter",
+	actionId: "explore",
+	requirements:{winter:10},
+	label:"FNORD high winter curse invocation",
+	startdescription:"FNORD high winter start",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_visions_success",chance:100},
+	{id:"explorevaultcurse_visions_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_visions_midwinter",
+	actionId: "explore",
+	requirements:{winter:5},
+	label:"FNORD mid winter curse invocation",
+	startdescription:"FNORD mid winter start",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_visions_success",chance:70},
+	{id:"explorevaultcurse_visions_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_visions_lowwinter",
+	actionId: "explore",
+	requirements:{winter:1},
+	label:"FNORD low winter curse invocation",
+	startdescription:"FNORD low winter start.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_visions_success",chance:30},
+	{id:"explorevaultcurse_visions_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultcurse_visions_success",
+	actionId:"explore",
+	label: "The Curse Shrivels",
+	startdescription: "Our power is stronger than the power that was here. The Curse won't touch us.",
+	description: ".",
+	effects: {curse_visions:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultcurse_visions_failure",
+	actionId:"explore",
+	label: "The Curse Clings",
+	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the curse will tighten around us.",
+	description: ".",
+	effects: {curse_visions:-1},
+	alternativerecipes: [{id: "curse_visions_dormant",chance:100,additional:true}]
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
 		warmup:30
 	},
 	
 	
 	
+	{
+	id: "explorevaultcurse_affliction_encounter",
+	actionId:"explore",
+	label: "The Dry Soul Curse",
+	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without grail or Heart, it may follow us back home and dessicate the spirit.",
+	requirements: {curse_affliction:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultcurse_affliction_highheart",chance:100},
+	{id: "explorevaultcurse_affliction_highgrail",chance:100},
+	{id: "explorevaultcurse_affliction_midheart",chance:100},
+	{id: "explorevaultcurse_affliction_midgrail",chance:100},
+	{id: "explorevaultcurse_affliction_lowheart",chance:100},	
+	{id: "explorevaultcurse_affliction_lowgrail",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultcurse_affliction_failure",chance:100}]
+	},
+	
+	{id:"explorevaultcurse_affliction_highheart",
+	actionId: "explore",
+	requirements:{heart:10},
+	label:"We call upon the Ring-Yew, who is renewed",
+	startdescription:"We are strong enough in Heart to be secure against the Curse.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_affliction_success",chance:100},
+	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
+		  },
+		{id:"explorevaultcurse_affliction_midheart",
+	actionId: "explore",
+	requirements:{heart:5},
+	label:"We call upon the Ring-Yew, who encompasseth",
+	startdescription:"We carry enough Heart aspect to quell the Curse... probably.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_affliction_success",chance:70},
+	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultcurse_affliction_lowheart",
+	actionId: "explore",
+	requirements:{heart:1},
+	label:"We call upon the Ring-Yew, who is succulent",
+	startdescription:"Perhaps the power of that old and fecund Hour, the Ring-Yew, can protect us from the Curse. Perhaps not.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_affliction_success",chance:30},
+	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_affliction_highgrail",
+	actionId: "explore",
+	requirements:{grail:10},
+	label:"FNORD high grail curse invocation",
+	startdescription:"FNORD high grail start",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_affliction_success",chance:100},
+	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_affliction_midgrail",
+	actionId: "explore",
+	requirements:{grail:5},
+	label:"FNORD mid grail curse invocation",
+	startdescription:"FNORD mid grail start",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_affliction_success",chance:70},
+	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_affliction_lowgrail",
+	actionId: "explore",
+	requirements:{grail:1},
+	label:"FNORD low grail curse invocation",
+	startdescription:"FNORD low grail start.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_affliction_success",chance:30},
+	{id:"explorevaultcurse_affliction_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultcurse_affliction_success",
+	actionId:"explore",
+	label: "The Curse Shrivels",
+	startdescription: "Our power is stronger than the power that was here. The Curse won't touch us.",
+	description: ".",
+	effects: {curse_affliction:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultcurse_affliction_failure",
+	actionId:"explore",
+	label: "The Curse Clings",
+	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the curse will tighten around us.",
+	description: ".",
+	effects: {curse_affliction:-1},
+	alternativerecipes: [{id: "curse_affliction_dormant",chance:100,additional:true}]
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	{
+	id: "explorevaultcurse_nowhere_encounter",
+	actionId:"explore",
+	label: "Curse-from-Nowhere",
+	startdescription: "Here is a place where the world's skin yellowed with fever. Lantern or Moth might protect us. Nothing else will. ",
+	requirements: {curse_nowhere:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultcurse_nowhere_highmoth",chance:100},
+	{id: "explorevaultcurse_nowhere_highlantern",chance:100},
+	{id: "explorevaultcurse_nowhere_midmoth",chance:100},
+	{id: "explorevaultcurse_nowhere_midlantern",chance:100},
+	{id: "explorevaultcurse_nowhere_lowmoth",chance:100},	
+	{id: "explorevaultcurse_nowhere_lowlantern",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultcurse_nowhere_failure",chance:100}]
+	},
+	
+	{id:"explorevaultcurse_nowhere_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"We call upon the Laughingthrush, who cannot be exhausted",
+	startdescription:"We are strong enough in Moth to be secure against the Curse.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:100},
+	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
+		  },
+		{id:"explorevaultcurse_nowhere_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"We call upon the Laughingthrush, who cannot be stayed",
+	startdescription:"The Hour called the Laughingthrush may be implored to carry this Curse away. We will probably be safe.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:70},
+	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultcurse_nowhere_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"We call upon the Laughingthrush, who tells her tale to the willing and the unwilling",
+	startdescription:"The Laughingthrush is a Moth-power, and is not reliable Perhaps she will protect us.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:30},
+	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_nowhere_highlantern",
+	actionId: "explore",
+	requirements:{lantern:10},
+	label:"We call upon the Sun-in-Rags, which burns still",
+	startdescription:"The Sun-in-Rags lends Lantern-light. It will certainly end this Curse here.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:100},
+	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_nowhere_midlantern",
+	actionId: "explore",
+	requirements:{lantern:5},
+	label:"We call upon the Sun-in-Rags, which is not as it was",
+	startdescription:"The Sun-in-Rags, that weary chilly power, can lend us Lantern. It will conclude this curse... probably.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:70},
+	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_nowhere_lowlantern",
+	actionId: "explore",
+	requirements:{lantern:1},
+	label:"We call upon the Sun-in-Rags, which is distant.",
+	startdescription:"We need Lantern to end the Curse, but the Sun-in-Rags can lend us only a little.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_nowhere_success",chance:30},
+	{id:"explorevaultcurse_nowhere_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultcurse_nowhere_success",
+	actionId:"explore",
+	label: "The Curse Shrivels",
+	startdescription: "Our power is stronger than the power that was here. The Curse won't touch us.",
+	description: ".",
+	effects: {curse_nowhere:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultcurse_nowhere_failure",
+	actionId:"explore",
+	label: "The Curse Clings",
+	startdescription: "There is a price to be paid when one trespasses in a place like this. Some day soon, the Curse will tighten around us.",
+	description: ".",
+	effects: {curse_nowhere:-1},
+	alternativerecipes: [{id: "curse_nowhere_dormant",chance:100,additional:true}]
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
 	
 ]
 }
