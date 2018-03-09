@@ -113,6 +113,304 @@
 	},
 	
 	
+	
+
+	
+	{
+	id: "explorevaultguardian_watchers_encounter",
+	actionId:"explore",
+	label: "A Younger Sister: a watchers",
+	startdescription: "The watchers watches us closely, swaying its great head. WIthout Edge or grail, we cannot prevail against it.",
+	requirements: {guardian_watchers:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultguardian_watchers_highgrail",chance:100},
+	{id: "explorevaultguardian_watchers_highmoth",chance:100},
+		{id: "explorevaultguardian_watchers_highedge",chance:100},
+	{id: "explorevaultguardian_watchers_midgrail",chance:100},
+		{id: "explorevaultguardian_watchers_midmoth",chance:100},
+	{id: "explorevaultguardian_watchers_midedge",chance:100},
+	{id: "explorevaultguardian_watchers_lowgrail",chance:100},
+		{id: "explorevaultguardian_watchers_lowmoth",chance:100},
+	{id: "explorevaultguardian_watchers_lowedge",chance:100},
+	
+	],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultguardian_watchers_failure",chance:100}]
+	},
+	
+	{id:"explorevaultguardian_watchers_highedge",
+	actionId: "explore",
+	requirements:{edge:10},
+	label:"Out strength is matchless.",
+	startdescription:"Eyes like gas-lamps; scales like black jade. A watchers is a powerful foe, but it's nothing before us.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:100},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		{id:"explorevaultguardian_watchers_midedge",
+	actionId: "explore",
+	requirements:{edge:5},
+	label:"Our strength is considerable.",
+	startdescription:"Eyes like gas-lamps; fangs like stalactites. A great watchers is a powerful foe, but so are we.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:70},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultguardian_watchers_lowedge",
+	actionId: "explore",
+	requirements:{edge:1},
+	label:"Our strength may not be enough.",
+	startdescription:"Eyes like gas-lamps; a mouth one could crouch in. We might defeat this watchers. We might regret trying.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:30},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_watchers_highgrail",
+	actionId: "explore",
+	requirements:{grail:10},
+	label:"We call upon the Mother of Ants, which ariseth from wounds.",
+	startdescription:"The watchers's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:100},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_watchers_midgrail",
+	actionId: "explore",
+	requirements:{grail:5},
+	label:"We call upon the Mother of Ants, which encircleth.",
+	startdescription:"The watchers is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:70},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_watchers_lowgrail",
+	actionId: "explore",
+	requirements:{grail:1},
+	label:"We call upon the Mother of Ants, which openeth.",
+	startdescription:"The watchers rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the watchers will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:30},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  
+		  		  	{id:"explorevaultguardian_watchers_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"We call upon the Mother of Ants, which ariseth from wounds.",
+	startdescription:"The watchers's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:100},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_watchers_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"We call upon the Mother of Ants, which encircleth.",
+	startdescription:"The watchers is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:70},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_watchers_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"We call upon the Mother of Ants, which openeth.",
+	startdescription:"The watchers rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the watchers will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:30},
+	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultguardian_watchers_success_edge",
+	actionId:"explore",
+	label: "The watchers's Struggles",
+	startdescription: "The watchers rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
+	description: ".",
+	effects: {guardian_watchers:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+				{
+	id: "explorevaultguardian_watchers_success_grail",
+	actionId:"explore",
+	label: "The watchers's Sorrow",
+	startdescription: "It lowers its great head. Moisture seeps from its lidless eyes. Is it weeping? What does it remember of its eldest sister, whose power we call upon?",
+	description: ".",
+	effects: {guardian_watchers:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultguardian_watchers_failure",
+	actionId:"explore",
+	label: "The watchers's Strength",
+	startdescription: "Back. Back! It's too much for us!",
+	description: ".",
+	craftable: false,
+		linked: [{id:"explorevault_casualty",chance:70},
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{
+	id: "explorevaultguardian_monks_encounter",
+	actionId:"explore",
+	label: "Monks",
+	startdescription: "The monks watches us closely, swaying its great head. WIthout Edge or moth, we cannot prevail against it.",
+	requirements: {guardian_monks:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultguardian_monks_highmoth",chance:100},
+	{id: "explorevaultguardian_monks_highedge",chance:100},
+	{id: "explorevaultguardian_monks_midmoth",chance:100},
+	{id: "explorevaultguardian_monks_midedge",chance:100},
+	{id: "explorevaultguardian_monks_lowmoth",chance:100},
+	{id: "explorevaultguardian_monks_lowedge",chance:100}	
+	],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultguardian_monks_failure",chance:100}]
+	},
+	
+	{id:"explorevaultguardian_monks_highedge",
+	actionId: "explore",
+	requirements:{edge:10},
+	label:"Out strength is matchless.",
+	startdescription:"Eyes like gas-lamps; scales like black jade. A monks is a powerful foe, but it's nothing before us.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_monks_success_edge",chance:100},
+	{id:"explorevaultguardian_monks_failure",chance:100}]	  
+		  },
+		{id:"explorevaultguardian_monks_midedge",
+	actionId: "explore",
+	requirements:{edge:5},
+	label:"Our strength is considerable.",
+	startdescription:"Eyes like gas-lamps; fangs like stalactites. A great monks is a powerful foe, but so are we.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_monks_success_edge",chance:70},
+	{id:"explorevaultguardian_monks_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultguardian_monks_lowedge",
+	actionId: "explore",
+	requirements:{edge:1},
+	label:"Our strength may not be enough.",
+	startdescription:"Eyes like gas-lamps; a mouth one could crouch in. We might defeat this monks. We might regret trying.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_monks_success_edge",chance:30},
+	{id:"explorevaultguardian_monks_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_monks_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"We call upon the Mother of Ants, which ariseth from wounds.",
+	startdescription:"The monks's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_monks_success_moth",chance:100},
+	{id:"explorevaultguardian_monks_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_monks_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"We call upon the Mother of Ants, which encircleth.",
+	startdescription:"The monks is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_monks_success_moth",chance:70},
+	{id:"explorevaultguardian_monks_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_monks_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"We call upon the Mother of Ants, which openeth.",
+	startdescription:"The monks rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the monks will respect the power we bear.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_monks_success_moth",chance:30},
+	{id:"explorevaultguardian_monks_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultguardian_monks_success_edge",
+	actionId:"explore",
+	label: "The monks's Struggles",
+	startdescription: "The monks rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
+	description: ".",
+	effects: {guardian_monks:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+				{
+	id: "explorevaultguardian_monks_success_moth",
+	actionId:"explore",
+	label: "The monks's Sorrow",
+	startdescription: "It lowers its great head. Moisture seeps from its lidless eyes. Is it weeping? What does it remember of its eldest sister, whose power we call upon?",
+	description: ".",
+	effects: {guardian_monks:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultguardian_monks_failure",
+	actionId:"explore",
+	label: "The monks's Strength",
+	startdescription: "Back. Back! It's too much for us!",
+	description: ".",
+	craftable: false,
+		linked: [{id:"explorevault_casualty",chance:70},
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	{
 	id: "explorevaultguardian_dead_encounter",
 	actionId:"explore",
