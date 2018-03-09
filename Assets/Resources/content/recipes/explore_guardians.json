@@ -268,13 +268,6 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	{
 	id: "explorevaultguardian_monks_encounter",
 	actionId:"explore",
@@ -392,25 +385,6 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	{
 	id: "explorevaultguardian_dead_encounter",
 	actionId:"explore",
@@ -517,6 +491,240 @@
 	actionId:"explore",
 	label: "The Wrath of the Dead",
 	startdescription: "The Dead are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
+	description: ".",
+	craftable: false,
+		linked: [{id:"explorevault_casualty",chance:70},
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	{
+	id: "explorevaultguardian_soucouyant_encounter",
+	actionId:"explore",
+	label: "The Fretful soucouyant",
+	startdescription: "The soucouyant clot in the air around us like stale corpse-light. Without lantern or moth, we have no chance against them.",
+	requirements: {guardian_soucouyant:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultguardian_soucouyant_highmoth",chance:100},
+	{id: "explorevaultguardian_soucouyant_highlantern",chance:100},
+	{id: "explorevaultguardian_soucouyant_midmoth",chance:100},
+	{id: "explorevaultguardian_soucouyant_midlantern",chance:100},	
+	{id: "explorevaultguardian_soucouyant_lowmoth",chance:100},
+	{id: "explorevaultguardian_soucouyant_lowlantern",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultguardian_soucouyant_failure",chance:100}]
+	},
+	
+	{id:"explorevaultguardian_soucouyant_highlantern",
+	actionId: "explore",
+	requirements:{lantern:10},
+	label:"Our strength is matchless.",
+	startdescription:"The soucouyant are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_soucouyant_success_lantern",chance:100},
+	{id:"explorevaultguardian_soucouyant_failure",chance:100}]	  
+		  },
+		{id:"explorevaultguardian_soucouyant_midlantern",
+	actionId: "explore",
+	requirements:{lantern:5},
+	label:"Our strength is considerable.",
+	startdescription:"These soucouyant, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_soucouyant_success_lantern",chance:70},
+	{id:"explorevaultguardian_soucouyant_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultguardian_soucouyant_lowlantern",
+	actionId: "explore",
+	requirements:{lantern:1},
+	label:"Our strength may not be enough.",
+	startdescription:"The soucouyant are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_soucouyant_success_lantern",chance:30},
+	{id:"explorevaultguardian_soucouyant_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_soucouyant_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"We call upon the Ivory Dove, who knows the names of all the soucouyant.",
+	startdescription:"The soucouyant circle the lantern of our vision like frayed dreams. The very air around us is chill with moth's shadow. They must recognise that.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_soucouyant_success_moth",chance:100},
+	{id:"explorevaultguardian_soucouyant_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_soucouyant_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"We call upon the Ivory Dove, who cannot be deceived.",
+	startdescription:"The soucouyant watch us closely, expressionless as saint-statues. But we are invested with the power of moth. Probably the soucouyant will recognise that.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_soucouyant_success_moth",chance:70},
+	{id:"explorevaultguardian_soucouyant_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_soucouyant_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"We call upon the Ivory Dove, from whom nothing more may be taken.",
+	startdescription:"The soucouyant boil and rattle in the darkness, but we have been touched by the Hours of moth. Perhaps they will recognise that.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_soucouyant_success_moth",chance:30},
+	{id:"explorevaultguardian_soucouyant_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultguardian_soucouyant_success_lantern",
+	actionId:"explore",
+	label: "The Wretched soucouyant",
+	startdescription: "When the soucouyant return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
+	description: ".",
+	effects: {guardian_soucouyant:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultguardian_soucouyant_success_moth",
+	actionId:"explore",
+	label: "The Wary soucouyant",
+	startdescription: "The soucouyant draw back, their almost-faces flat and watchful. They will not trouble us.",
+	description: ".",
+	effects: {guardian_soucouyant:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultguardian_soucouyant_failure",
+	actionId:"explore",
+	label: "The Wrath of the soucouyant",
+	startdescription: "The soucouyant are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
+	description: ".",
+	craftable: false,
+		linked: [{id:"explorevault_casualty",chance:70},
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	
+	
+	
+	{
+	id: "explorevaultguardian_long_encounter",
+	actionId:"explore",
+	label: "The Fretful long",
+	startdescription: "The long clot in the air around us like stale corpse-light. Without grail or moth, we have no chance against them.",
+	requirements: {guardian_long:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultguardian_long_highmoth",chance:100},
+	{id: "explorevaultguardian_long_highgrail",chance:100},
+	{id: "explorevaultguardian_long_midmoth",chance:100},
+	{id: "explorevaultguardian_long_midgrail",chance:100},	
+	{id: "explorevaultguardian_long_lowmoth",chance:100},
+	{id: "explorevaultguardian_long_lowgrail",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultguardian_long_failure",chance:100}]
+	},
+	
+	{id:"explorevaultguardian_long_highgrail",
+	actionId: "explore",
+	requirements:{grail:10},
+	label:"Our strength is matchless.",
+	startdescription:"The long are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_long_success_grail",chance:100},
+	{id:"explorevaultguardian_long_failure",chance:100}]	  
+		  },
+		{id:"explorevaultguardian_long_midgrail",
+	actionId: "explore",
+	requirements:{grail:5},
+	label:"Our strength is considerable.",
+	startdescription:"These long, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_long_success_grail",chance:70},
+	{id:"explorevaultguardian_long_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultguardian_long_lowgrail",
+	actionId: "explore",
+	requirements:{grail:1},
+	label:"Our strength may not be enough.",
+	startdescription:"The long are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_long_success_grail",chance:30},
+	{id:"explorevaultguardian_long_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_long_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"We call upon the Ivory Dove, who knows the names of all the long.",
+	startdescription:"The long circle the grail of our vision like frayed dreams. The very air around us is chill with moth's shadow. They must recognise that.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_long_success_moth",chance:100},
+	{id:"explorevaultguardian_long_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_long_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"We call upon the Ivory Dove, who cannot be deceived.",
+	startdescription:"The long watch us closely, expressionless as saint-statues. But we are invested with the power of moth. Probably the long will recognise that.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_long_success_moth",chance:70},
+	{id:"explorevaultguardian_long_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultguardian_long_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"We call upon the Ivory Dove, from whom nothing more may be taken.",
+	startdescription:"The long boil and rattle in the darkness, but we have been touched by the Hours of moth. Perhaps they will recognise that.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultguardian_long_success_moth",chance:30},
+	{id:"explorevaultguardian_long_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultguardian_long_success_grail",
+	actionId:"explore",
+	label: "The Wretched long",
+	startdescription: "When the long return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
+	description: ".",
+	effects: {guardian_long:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultguardian_long_success_moth",
+	actionId:"explore",
+	label: "The Wary long",
+	startdescription: "The long draw back, their almost-faces flat and watchful. They will not trouble us.",
+	description: ".",
+	effects: {guardian_long:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultguardian_long_failure",
+	actionId:"explore",
+	label: "The Wrath of the long",
+	startdescription: "The long are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
 	description: ".",
 	craftable: false,
 		linked: [{id:"explorevault_casualty",chance:70},
