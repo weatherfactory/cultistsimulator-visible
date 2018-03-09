@@ -198,6 +198,8 @@ namespace Assets.TabletopUi {
 
             UpdateSituationDisplayForDescription();
 
+            situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
+
             if (withRecipe.EndsGame()) {
                 var tabletopManager = Registry.Retrieve<TabletopManager>();
                 tabletopManager.SignalImpendingDoom(situationToken);

@@ -20,7 +20,7 @@
 				ingredient: 1
             },
             animFrames: 1,
-			xtriggers: {damagehealth: injury},
+			xtriggers: {damagehealth: injury,fallsick:affliction},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
         },
 				 {
@@ -94,7 +94,8 @@ lifetime: 300
 				ingredient:1
             },
             animFrames: 1,
-			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal"
+			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal",
+			xtriggers: {damagepassion:fascination},
         },
 					 {
             id: "glimmering",

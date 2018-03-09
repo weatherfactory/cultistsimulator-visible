@@ -1,0 +1,109 @@
+ {"recipes": [
+{
+	id: "explorevaultcurse_dread_encounter",
+	actionId:"explore",
+	label: "The Dry Soul Curse",
+	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without Lantern or Heart, it may follow us back home and dessicate the spirit.",
+	requirements: {curse_dread:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultcurse_dread_highheart",chance:100},
+	{id: "explorevaultcurse_dread_highlantern",chance:100},
+	{id: "explorevaultcurse_dread_midheart",chance:100},
+	{id: "explorevaultcurse_dread_midlantern",chance:100},
+	{id: "explorevaultcurse_dread_lowheart",chance:100},	
+	{id: "explorevaultcurse_dread_lowlantern",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultcurse_dread_failure",chance:100}]
+	},
+	
+	{id:"explorevaultcurse_dread_highheart",
+	actionId: "explore",
+	requirements:{heart:10},
+	label:"We call upon the Sister-and-Witch, who cannot be touched.",
+	startdescription:"Storms rise for the Thunderskin and subside for the Sister. The right words will carry us safe across the dread.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_dread_success",chance:100},
+	{id:"explorevaultcurse_dread_failure",chance:100}]	  
+		  },
+		{id:"explorevaultcurse_dread_midheart",
+	actionId: "explore",
+	requirements:{heart:5},
+	label:"We call upon the Sister-and-Witch, who cannot be separated.",
+	startdescription:"If storms strike, the Sister-and-Witch will keep our crew and our vessel in one piece. Probably.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_dread_success",chance:70},
+	{id:"explorevaultcurse_dread_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultcurse_dread_lowheart",
+	actionId: "explore",
+	requirements:{heart:1},
+	label:"We call upon the Sister-and-Witch, who are pearl.",
+	startdescription:"The Sister-and-Witch are not of the dread, but they walk beside it. Perhaps their protection will be sufficient.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_dread_success",chance:30},
+	{id:"explorevaultcurse_dread_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_dread_highlantern",
+	actionId: "explore",
+	requirements:{lantern:10},
+	label:"The Sailor's Surety",
+	startdescription:"Our lantern skills represent plenty of expertise. We'll make it through.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_dread_success",chance:100},
+	{id:"explorevaultcurse_dread_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_dread_midlantern",
+	actionId: "explore",
+	requirements:{lantern:5},
+	label:"The Sailor's Strength",
+	startdescription:"We are practical souls, strong in lantern. We'll probably be fine.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_dread_success",chance:70},
+	{id:"explorevaultcurse_dread_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultcurse_dread_lowlantern",
+	actionId: "explore",
+	requirements:{lantern:1},
+	label:"The Sailor's Hope",
+	startdescription:"lantern-aspected followers are competent and practical, but the dread is tricksy. We will struggle to stay on course.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultcurse_dread_success",chance:30},
+	{id:"explorevaultcurse_dread_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultcurse_dread_success",
+	actionId:"explore",
+	label: "Safe Across the dread",
+	startdescription: "Wave-lashed and dread-spattered, sun-scorched and salt-stained. But here.",
+	description: ".",
+	effects: {curse_dread:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultcurse_dread_failure",
+	actionId:"explore",
+	label: "Labyrinths of Salt and Basalt",
+	startdescription: "Another day battered by storms. We must be close. But the isles are a maddening maze, and the places we seek lie on no published chart.",
+	description: ".",
+	craftable: false,
+		linked: [
+		{id:"explorevault_casualty",chance:70},		
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+]
+}
+

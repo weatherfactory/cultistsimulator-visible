@@ -469,10 +469,26 @@
 			comments: "Recipe aspect",
 			noartneeded: true
         },
+							 {
+            id: "fallsick",
+            label: "Fall Sick",
+			description: "Health will become affliction; this could also affect people potentially",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
 								 {
             id: "damagereason",
             label: "Damage Reason",
 			description: "Reason will become Dread.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+										 {
+            id: "damagepassion",
+            label: "Damage Passion",
+			description: "Passion will become Fascination.",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
