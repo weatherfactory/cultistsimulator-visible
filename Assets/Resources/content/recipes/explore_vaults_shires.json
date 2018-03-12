@@ -1,11 +1,26 @@
  {"recipes": [
 	
-		 	{
-	id: "explore_vaultcapital2_setup",
-	label: "Beginning an Expedition",
+			 	{
+	id: "explore_vaultshires1_setup",
+	label: "Beginning an Expedition: Gladwyn Lake",
 	actionId: "explore",
-	requirements:{vaultcapital2:1},
-	effects: {seal_hiddendoor:1},
+	requirements:{vaultshires1:1},
+	effects: {guardian_serpent:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+	
+		 	{
+	id: "explore_vaultshires2_setup",
+	label: "Beginning an Expedition: Locwood Feb",
+	actionId: "explore",
+	requirements:{vaultshires2:1},
+	effects: {peril_treacherousground:1,guardian_watchers:1},
 	slots:{"More": required: {follower:1,funds:1}},
 	startdescription: "I'm  convinced the Mithraeum holds more secrets. It's unlikely to be dangerous, but the search will require funds. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
@@ -14,12 +29,54 @@
 	linked: [
 	{id: "explore_settingupexpedition",chance:100}],
 	},
+				 	{
+	id: "explore_vaultshires3_setup",
+	label: "Beginning an Expedition: Crowkiss Hill",
+	actionId: "explore",
+	requirements:{vaultshires3:1},
+	effects: {seal_wardeddoor:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+				 	{
+	id: "explore_vaultshires4_setup",
+	label: "Beginning an Expedition: Keglin's Scratch",
+	actionId: "explore",
+	requirements:{vaultshires4:1},
+	effects: {peril_treacherousground:1,guardian_dead:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
+				 	{
+	id: "explore_vaultshiresdefault_setup",
+	label: "Beginning an Expedition: Kerisham",
+	actionId: "explore",
+	requirements:{vaultshiresdefault:1},
+	effects: {seal_wardeddoor:1,guardian_watchers:1,curse_visions:1},
+	slots:{"More": required: {follower:1,funds:1}},
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explore_settingupexpedition",chance:100}],
+	},
 					{
-	id: "explorevaultcapital1_success",
+	id: "explorevaultshires1_success",
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1},
+	requirements: {vaultshires1:1},
+	effects: {vaultshires1:-1},
 	deckeffect: {"vaultcontentsc":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
@@ -28,11 +85,11 @@
 	},
 	
 			{
-	id: "explorevaultcapital2_success",
+	id: "explorevaultshires2_success",
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1},
+	requirements: {vaultshires2:1},
+	effects: {vaultshires2:-1},
 	deckeffect: {"vaultcontentsc":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
@@ -46,11 +103,11 @@
 	
 	
 				{
-	id: "explorevaultcapital3_success",
+	id: "explorevaultshires3_success",
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1},
+	requirements: {vaultshires3:1},
+	effects: {vaultshires3:-1},
 	deckeffect: {"vaultcontentsc":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
@@ -60,11 +117,11 @@
 	
 	
 				{
-	id: "explorevaultcapital4_success",
+	id: "explorevaultshires4_success",
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1},
+	requirements: {vaultshires4:1},
+	effects: {vaultshires4:-1},
 	deckeffect: {"vaultcontentsc":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
@@ -73,11 +130,11 @@
 	},
 	
 				{
-	id: "explorevaultcapitaldefault_success",
+	id: "explorevaultshiresdefault_success",
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1},
+	requirements: {vaultshiresdefault:1},
+	effects: {vaultshiresdefault:-1},
 	deckeffect: {"vaultcontentsc":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",

@@ -4,25 +4,29 @@
         id: "vaultcapital1",
             label: "Strathcoyne's Rsidence",
             aspects:{vault:1,vaultcapital:1},
-            description: "The house of Mr Strathcoyne, a collector of rare objects. Strathcoyne will not sell his treasures. But a sufficiently cunning accomplice might gain entry."
+            description: "The house of Mr Strathcoyne, a collector of rare objects. Strathcoyne will not sell his treasures. But a sufficiently cunning accomplice might gain entry.",
+			unique:true
         },
 								{
         id: "vaultcapital2",
             label: "Abandoned Mithraeum",
             aspects:{vault:1,vaultcapital:1},
-            description: "Curiosity-seekers have picked over this ancient temple, but there may be a Hidden Door here somewhere."
+            description: "Curiosity-seekers have picked over this ancient temple, but there may be a Hidden Door here somewhere.",
+			unique:true
         },
 				{
         id: "vaultcapital3",
             label: "Cater & Hero Limited",
             aspects:{vault:1,vaultcapital:1},
-            description: "It's been abandoned since the explosion, when both the owners died. The machines stand silent; the building is a collapsing shell. Mr Cater was known to display peculiar trinkets in his office. Perhaps some remain. "
+            description: "It's been abandoned since the explosion, when both the owners died. The machines stand silent; the building is a collapsing shell. Mr Cater was known to display peculiar trinkets in his office. Perhaps some remain. ",
+			unique:true
         },
 				{
         id: "vaultcapital4",
             label: "St Agnes Hospital",
             aspects:{vault:1,vaultcapital:1},
-            description: "They did good work here, once. Certainly there were a few too many amputations, but then there are individuals one would prefer not to walk the city streets."
+            description: "They did good work here, once. Certainly there were a few too many amputations, but then there are individuals one would prefer not to walk the city streets.",
+			unique:true
         },
 				{
         id: "vaultcapitaldefault",
