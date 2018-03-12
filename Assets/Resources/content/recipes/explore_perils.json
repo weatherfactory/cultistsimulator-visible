@@ -1,5 +1,435 @@
  {"recipes": [
-{
+
+	
+	
+	{
+	id: "explorevaultperil_treacherousground_encounter",
+	actionId:"explore",
+	label: "FNORD",
+	startdescription: "FNORD",
+	requirements: {peril_treacherousground:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultperil_treacherousground_highlantern",chance:100},
+	{id: "explorevaultperil_treacherousground_highforge",chance:100},
+	{id: "explorevaultperil_treacherousground_midlantern",chance:100},
+	{id: "explorevaultperil_treacherousground_midforge",chance:100},
+	{id: "explorevaultperil_treacherousground_lowlantern",chance:100},	
+	{id: "explorevaultperil_treacherousground_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_treacherousground_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_treacherousground_highlantern",
+	actionId: "explore",
+	requirements:{lantern:10},
+	label:"We call upon the Sister-and-Witch, who cannot be touched.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_treacherousground_midlantern",
+	actionId: "explore",
+	requirements:{lantern:5},
+	label:"We call upon the Sister-and-Witch, who cannot be separated.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_treacherousground_lowlantern",
+	actionId: "explore",
+	requirements:{lantern:1},
+	label:"We call upon the Sister-and-Witch, who are pearl.",
+		startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_treacherousground_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"The Sailor's Surety",
+	startdescription:"Our Forge skills represent plenty of expertise. We'll make it through.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_treacherousground_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"FNORD",
+	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_treacherousground_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"",
+	startdescription:"Forge-aspected followers are competent and practical, but the FNORD is tricksy. We will struggle to stay on course.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_treacherousground_success",
+	actionId:"explore",
+	label: "Safe Across the treacherousground",
+	startdescription: "FNORD",
+	description: ".",
+	effects: {peril_treacherousground:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_treacherousground_failure",
+	actionId:"explore",
+	label: "FNORD",
+	startdescription: "FNORD",
+	description: ".",
+	craftable: false,
+		linked: [
+		{id:"explorevault_casualty",chance:70},		
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	{
+	id: "explorevaultperil_forest_encounter",
+	actionId:"explore",
+	label: "FNORD",
+	startdescription: "FNORD",
+	requirements: {peril_forest:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultperil_forest_highmoth",chance:100},
+	{id: "explorevaultperil_forest_highforge",chance:100},
+	{id: "explorevaultperil_forest_midmoth",chance:100},
+	{id: "explorevaultperil_forest_midforge",chance:100},
+	{id: "explorevaultperil_forest_lowmoth",chance:100},	
+	{id: "explorevaultperil_forest_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_forest_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_forest_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"We call upon the Sister-and-Witch, who cannot be touched.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_forest_success",chance:100},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_forest_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"We call upon the Sister-and-Witch, who cannot be separated.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_forest_success",chance:70},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_forest_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"We call upon the Sister-and-Witch, who are pearl.",
+		startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_forest_success",chance:30},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_forest_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"The Sailor's Surety",
+	startdescription:"Our Forge skills represent plenty of expertise. We'll make it through.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_forest_success",chance:100},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_forest_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"FNORD",
+	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_forest_success",chance:70},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_forest_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"",
+	startdescription:"Forge-aspected followers are competent and practical, but the FNORD is tricksy. We will struggle to stay on course.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_forest_success",chance:30},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_forest_success",
+	actionId:"explore",
+	label: "Safe Across the forest",
+	startdescription: "FNORD",
+	description: ".",
+	effects: {peril_forest:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_forest_failure",
+	actionId:"explore",
+	label: "FNORD",
+	startdescription: "FNORD",
+	description: ".",
+	craftable: false,
+		linked: [
+		{id:"explorevault_casualty",chance:70},		
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{
+	id: "explorevaultperil_mountains_encounter",
+	actionId:"explore",
+	label: "FNORD",
+	startdescription: "FNORD",
+	requirements: {peril_mountains:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultperil_mountains_highwinter",chance:100},
+	{id: "explorevaultperil_mountains_highforge",chance:100},
+	{id: "explorevaultperil_mountains_midwinter",chance:100},
+	{id: "explorevaultperil_mountains_midforge",chance:100},
+	{id: "explorevaultperil_mountains_lowwinter",chance:100},	
+	{id: "explorevaultperil_mountains_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_mountains_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_mountains_highwinter",
+	actionId: "explore",
+	requirements:{winter:10},
+	label:"We call upon the Sister-and-Witch, who cannot be touched.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_mountains_success",chance:100},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_mountains_midwinter",
+	actionId: "explore",
+	requirements:{winter:5},
+	label:"We call upon the Sister-and-Witch, who cannot be separated.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_mountains_success",chance:70},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_mountains_lowwinter",
+	actionId: "explore",
+	requirements:{winter:1},
+	label:"We call upon the Sister-and-Witch, who are pearl.",
+		startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_mountains_success",chance:30},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_mountains_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"The Sailor's Surety",
+	startdescription:"Our Forge skills represent plenty of expertise. We'll make it through.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_mountains_success",chance:100},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_mountains_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"FNORD",
+	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_mountains_success",chance:70},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_mountains_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"",
+	startdescription:"Forge-aspected followers are competent and practical, but the FNORD is tricksy. We will struggle to stay on course.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_mountains_success",chance:30},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_mountains_success",
+	actionId:"explore",
+	label: "Safe Across the mountains",
+	startdescription: "FNORD",
+	description: ".",
+	effects: {peril_mountains:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_mountains_failure",
+	actionId:"explore",
+	label: "Labyrinths of Salt and Basalt",
+	startdescription: "FNORD",
+	description: ".",
+	craftable: false,
+		linked: [
+		{id:"explorevault_casualty",chance:70},		
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	{
+	id: "explorevaultperil_desert_encounter",
+	actionId:"explore",
+	label: "FNORD",
+	startdescription: "FNORD",
+	requirements: {peril_desert:1},
+	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	alternativerecipes: [
+	{id: "explorevaultperil_desert_highgrail",chance:100},
+	{id: "explorevaultperil_desert_highforge",chance:100},
+	{id: "explorevaultperil_desert_midgrail",chance:100},
+	{id: "explorevaultperil_desert_midforge",chance:100},
+	{id: "explorevaultperil_desert_lowgrail",chance:100},	
+	{id: "explorevaultperil_desert_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_desert_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_desert_highgrail",
+	actionId: "explore",
+	requirements:{grail:10},
+	label:"We call upon the Sister-and-Witch, who cannot be touched.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_desert_success",chance:100},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_desert_midgrail",
+	actionId: "explore",
+	requirements:{grail:5},
+	label:"We call upon the Sister-and-Witch, who cannot be separated.",
+	startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_desert_success",chance:70},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_desert_lowgrail",
+	actionId: "explore",
+	requirements:{grail:1},
+	label:"We call upon the Sister-and-Witch, who are pearl.",
+		startdescription: "FNORD",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_desert_success",chance:30},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_desert_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"The Sailor's Surety",
+	startdescription:"Our Forge skills represent plenty of expertise. We'll make it through.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_desert_success",chance:100},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_desert_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"FNORD",
+	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_desert_success",chance:70},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_desert_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"",
+	startdescription:"Forge-aspected followers are competent and practical, but the FNORD is tricksy. We will struggle to stay on course.",
+		  description:"Separate failure event means this should never be visible.",
+	linked: [{id:"explorevaultperil_desert_success",chance:30},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_desert_success",
+	actionId:"explore",
+	label: "Safe Across the desert",
+	startdescription: "FNORD",
+	description: ".",
+	effects: {peril_desert:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_desert_failure",
+	actionId:"explore",
+	label: "Labyrinths of Salt and Basalt",
+	startdescription: "FNORD",
+	description: ".",
+	craftable: false,
+		linked: [
+		{id:"explorevault_casualty",chance:70},		
+		{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	{
 	id: "explorevaultperil_sea_encounter",
 	actionId:"explore",
 	label: "The Sea around the Evening Isles",
@@ -100,9 +530,6 @@
 		{id:"explorevaulttick",chance:100}],
 		warmup:30
 	},
-	
-	
-	
 	
 ]
 }
