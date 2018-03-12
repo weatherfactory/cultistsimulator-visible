@@ -43,11 +43,25 @@
 	{id: "explorevaultfailure_nofollowers",chance:100}],
 	effects: {funds:-1},
 	linked:[
+	{id: "explorevaultperil_forest_encounter",chance:100},
+	{id: "explorevaultperil_mountains_encounter",chance:100},
+	{id: "explorevaultperil_desert_encounter",chance:100},
 {id: "explorevaultperil_sea_encounter",chance:100},
+{id: "explorevaultguardian_watchers_encounter",chance:100},
+	{id: "explorevaultguardian_monks_encounter",chance:100}
+{id: "explorevaultguardian_serpent_encounter",chance:100},
+	{id: "explorevaultguardian_dead_encounter",chance:100},
+	{id: "explorevaultguardian_soucoyants_encounter",chance:100},
+	{id: "explorevaultguardian_long_encounter",chance:100},
+
 	{id: "explorevaultseal_hiddendoor_encounter",chance:100},
 	{id: "explorevaultseal_wardeddoor_encounter",chance:100},
-		{id: "explorevaultguardian_serpent_encounter",chance:100},
-	{id: "explorevaultguardian_dead_encounter",chance:100}]
+	
+		{id: "explorevaultcurse_dread_encounter",chance:100},
+		{id: "explorevaultcurse_visions_encounter",chance:100},
+		{id: "explorevaultcurse_wasting_encounter",chance:100},
+		{id: "explorevaultcurse_nowhere_encounter",chance:100},
+		]
 	craftable: false
 	},
 
