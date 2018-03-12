@@ -59,7 +59,7 @@
 	
 		{id: "explorevaultcurse_dread_encounter",chance:100},
 		{id: "explorevaultcurse_visions_encounter",chance:100},
-		{id: "explorevaultcurse_wasting_encounter",chance:100},
+		{id: "explorevaultcurse_affliction_encounter",chance:100},
 		{id: "explorevaultcurse_nowhere_encounter",chance:100},
 		]
 	craftable: false
@@ -94,10 +94,42 @@
 	description:".",
 	requirements: {peril:-1,seal:-1,guardian:-1,curse:-1},
 		linked: [{id: "explorevaultcapital1_success",chance:100},
+	{id: "explorevaultcapital1_success",chance:100},
 		{id: "explorevaultcapital2_success",chance:100},
 		{id: "explorevaultcapital3_success",chance:100},
 		{id: "explorevaultcapital4_success",chance:100},
 		{id: "explorevaultcapitaldefault_success",chance:100},
+		
+		{id: "explorevaultshires1_success",chance:100},
+		{id: "explorevaultshires2_success",chance:100},
+		{id: "explorevaultshires3_success",chance:100},
+		{id: "explorevaultshires4_success",chance:100},
+		{id: "explorevaultshiresdefault_success",chance:100},
+		
+		{id: "explorevaultcontinent1_success",chance:100},
+		{id: "explorevaultcontinent2_success",chance:100},
+		{id: "explorevaultcontinent3_success",chance:100},
+		{id: "explorevaultcontinent4_success",chance:100},
+		{id: "explorevaultcontinentdefault_success",chance:100},
+		
+		{id: "explorevaultlandbeyondforest1_success",chance:100},
+		{id: "explorevaultlandbeyondforest2_success",chance:100},
+		{id: "explorevaultlandbeyondforest3_success",chance:100},
+		{id: "explorevaultlandbeyondforest4_success",chance:100},
+		{id: "explorevaultlandbeyondforestdefault_success",chance:100},
+		
+		{id: "explorevaultrendingmountains1_success",chance:100},
+		{id: "explorevaultrendingmountains2_success",chance:100},
+		{id: "explorevaultrendingmountains3_success",chance:100},
+		{id: "explorevaultrendingmountains4_success",chance:100},
+		{id: "explorevaultrendingmountainsdefault_success",chance:100},
+		
+				{id: "explorevaultloneandlevelsands1_success",chance:100},
+		{id: "explorevaultloneandlevelsands2_success",chance:100},
+		{id: "explorevaultloneandlevelsands3_success",chance:100},
+		{id: "explorevaultloneandlevelsands4_success",chance:100},
+		{id: "explorevaultloneandlevelsandsdefault_success",chance:100},
+		
 		{id: "explorevaulteveningisles1_success",chance:100},
 		{id: "explorevaulteveningisles2_success",chance:100},
 		{id: "explorevaulteveningisles3_success",chance:100},

@@ -14,6 +14,19 @@
 	linked: [
 	{id: "explore_settingupexpedition",chance:100}],
 	},
+					{
+	id: "explorevaultcapital1_success",
+	label: "The Deeper Sanctuary",
+	actionId: "explore",
+	requirements: {vaultcapital2:1},
+	effects: {vaultcapital2:-1},
+	deckeffect: {"vaultcontentsc":1},
+	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
+	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	warmup:10,
+	craftable: false
+	},
+	
 			{
 	id: "explorevaultcapital2_success",
 	label: "The Deeper Sanctuary",
@@ -29,18 +42,7 @@
 	
 	
 	
-				{
-	id: "explorevaultcapital1_success",
-	label: "The Deeper Sanctuary",
-	actionId: "explore",
-	requirements: {vaultcapital2:1},
-	effects: {vaultcapital2:-1},
-	deckeffect: {"vaultcontentsc":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
-	warmup:10,
-	craftable: false
-	},
+
 	
 	
 				{
