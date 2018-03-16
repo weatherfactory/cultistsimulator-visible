@@ -1,26 +1,11 @@
 {"elements":
     [
-	          {
-        id: "dehoris1latin",
-            label: "De Horis (Book 1) [Latin]",
-            aspects:{text:1},
-            description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
-			xtriggers: {scholarlatin: dehoris1}
-        },
           {
         id: "dehoris1",
             label: "De Horis (Book 1)",
             aspects:
             {text:1},
             description: "An occasionally coherent catalogue of the secret gods. This is an English translation of a volume dealing with the powers of the Wood."
-        },
-			          {
-        id: "dehoris2latin",
-            label: "De Horis (Book 2) [Latin]",
-            aspects:
-            {text:1},
-            description: "An occasionally coherent catalogue of the secret gods. This is a nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
-			xtriggers: {scholarlatin: dehoris2}
         },
           {
         id: "dehoris2",
@@ -123,26 +108,12 @@
 		label:"The Burning of the Unburnt God",
 		aspects: {text:1},
 		description:"Compiled by Jay Wigglesworth Jensen from oral traditions in rural Persia."},
-		{id:"debellismurorumlatin",
-		label:"De Bellis Murorum [Latin]",
-		aspects: {text:1},
-		description:"An eighteenth-century epic poem by the pseudonymous 'Solipsistos'.",
-		xtriggers: {scholarlatin:debellismurorum}},
+	
 		{id:"debellismurorum",
 		label:"De Bellis Murorum",
 		aspects: {text:1},
 		description:"An eighteenth-century epic poem by the pseudonymous 'Solipsistos'."},
-		{id:"onwhatiscontainedbysilvergreek",
-		label:"On What Is Contained By Silver [Greek]",
-		aspects: {text:1},
-		description:"A bestiary by 'Poemander'.",
-			xtriggers: {scholargreek: onwhatiscontainedbysilver}},
-		{id:"truecompleteasclepiangreek",
-		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House [Greek]",
-		aspects: {text:1},
-		description:"Reproduced by one 'Rylee Grese' from - supposedly - a much older text.",
-			xtriggers: {scholargreek: truecompleteasclepian}},
-		
+
 		{id:"onwhatiscontainedbysilver",
 		label:"On What Is Contained By Silver",
 		aspects: {text:1},
@@ -151,37 +122,8 @@
 		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House",
 		aspects: {text:1},
 		description:"Descriptions of the 'Asclepian Mysteries', reproduced by one 'Rylee Grese' from - supposedly - a much older text. It's unlikely to be genuine, but it makes a reference to 'The House without Walls and its Wood', right there in the prologue."},
-		
-				 {
-        id: "orchidtransfigurations1latin",
-            label: "The Orchid Transfigurations, Vol 1 [Latin]",
-            aspects:
-            {text:1},
-            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
-			xtriggers: {scholarlatin: orchidtransfigurations1}
-        },
-		 {       id: "orchidtransfigurations2latin",
-            label: "The Orchid Transfigurations, Vol 2[Latin]",
-            aspects:
-            {text:1},
-            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
-			xtriggers: {scholarlatin: orchidtransfigurations2}
-        },
-		 {       id: "orchidtransfigurations3latin",
-            label: "The Orchid Transfigurations, Vol 3[Latin]",
-            aspects:
-            {text:1},
-            description: "A sixteenth-century alchemical fever-dream, attributed to Robert Fludd, frequently banned for the disturbing allure of its illustrations. This is in the original Latin.",
-			xtriggers: {scholarlatin: orchidtransfigurations3}
-        },
-						 {
-        id: "geminiadfucine",
-            label: "The Geminiad [Fucine]",
-            aspects:
-            {knock: 2,tool:1,text:1},
-			xtriggers: {scholarfucine: geminiad},
-            description: "A fragile manuscript, illuminated with twinned shapes of sad and luminous beauty, and with all the phases of the moon. It might be as old as the seventh century, but the language - Fucine - is much older. Coral decorates its cover, and its page-edges are sharp enough to slash a throat."
-        },
+	
+
 								 {
         id: "geminiad",
             label: "The Geminiad",
@@ -237,15 +179,6 @@
             aspects:
             {text:1},
             description: "An essential weapon for a ferocious struggle with a challenging language."
-        },
-						 {
-        id: "textbookfucinelatin",
-            label: "The Ciphered Journal of Alessandro Torlonia",
-            aspects:
-            {text:1},
-            description: "Prince Alessandro spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts... but it's written in a simple Latin cipher. You'll need to decipher it first.",
-			xtriggers: {scholarlatin: textbookfucine},
-			unique:true
         },
 								 {
         id: "textbookfucine",
