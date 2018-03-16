@@ -65,12 +65,518 @@
 
 							 {
         id: "textbookfucinelatin",
-            label: "The Ciphered Journal of Alessandro Torlonia",
+            label: "The Ciphered Journal of Alessandro Torlonia [Latin]",
             aspects:
             {text:1},
             description: "Prince Alessandro spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts... but it's written in a simple Latin cipher. You'll need to decipher it first.",
 			xtriggers: {scholarlatin: textbookfucine},
 			unique:true
+        },	
+
+								 {
+        id: "irreproachabletraditionssocietynobleendeavourlatin",
+            label: "The Irreproachable Traditions of the Society of the Noble Endeavour [Latin]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "roseofnurielgreek",
+            label: "The Rose of Nuriel [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "roseofhypatiagreek",
+            label: "The Rose of Hypatia [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "roseofwazneigreek",
+            label: "The Rose of Waznei [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "sunsetpassageslatin",
+            label: "Sunset Passages [Latin]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "gospelzacchaeusgreek",
+            label: "The Gospel of Zacchaeus [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "matthiasamethystlossaramaic",
+            label: "On Matthias and the Amethyst Imago: Loss [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "matthiasamethysttransformationaramaic",
+            label: "On Matthias and the Amethyst Imago: Transformation [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "matthiasamethystpursuitaramaic",
+            label: "On Matthias and the Amethyst Imago: Pursuit [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "franklinbancroftdiarieslatin",
+            label: "Lord Franklin Bancroft: Diaries, 1750-1790 [Latin]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "indignitiesobliviatelatin",
+            label: "Those Indignities Perpetrated By the Deceitful Fraternity of Obliviates [Latin]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "furioustantra",
+            label: "The Furious Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "devouredtantra",
+            label: "The Devoured Tantra []Sanskrit",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "ceaselesstantra",
+            label: "The Ceaseless Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "knownunknowntantra",
+            label: "The Known-Unknown Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "encirclingtantra",
+            label: "The Encircling Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "shavenlocktantra",
+            label: "The Shaven Lock Tantra / The One Who Has Shaven His Hair [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },						 {
+        id: "tantraworms",
+            label: "The Tantra of Worms [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "bookofcentipedegreek",
+            label: "The Book of the Centipede [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "accountkanishkspidersdooraramaic",
+            label: "The Account of Kanishk at the Spider's Door [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },      
+		{
+        id: "vinzantinscriptions",
+            label: "The Vinzant Inscriptions [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "larquebinecodex",
+            label: "The Larquebine Codex [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "againstsisterhoodknotgreek",
+            label: "Against the Sisterhood of the Knot and the Foulness of their Depraved Customs [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "morphycodexaramaic",
+            label: "The Morphy Codex [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "leoninetantra",
+            label: "The Leonine Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "incandescenttantra",
+            label: "The Incandescent Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "thirstingtantra",
+            label: "The Thirsting Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "flayedtantra",
+            label: "The Flayed Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "watchfultantra",
+            label: "The Watchful Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "twinserpenttantra",
+            label: "The Twin-Serpent Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "firecircletantra",
+            label: "The Fire-Circle Tantra [Sanskrit]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "asthesunhiscoursearamaic",
+            label: "As The Sun His Course [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "concursumdiaries",
+            label: "The Concursum Diaries [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "ironbook",
+            label: "The Iron Book [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "silverbook",
+            label: "The Silver Book [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "ivorybook",
+            label: "The Ivory Book [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "worlddoesnotweeparamaic",
+            label: "The World Does Not Weep [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "deedsofthescarredcaptaingreek",
+            label: "The Deeds of the Scarred Captain [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "bookofdissolution",
+            label: "The Book of Dissolution [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "catalogueofunchartedpleasures",
+            label: "A Catalogue of Uncharted Pleasures [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "thosewhodonotsleep",
+            label: "Those Who Do Not Sleep [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "theskythesoularamaic",
+            label: "The Sky, the Soul [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "onthematterandthedeedsofserpents",
+            label: "On the Matter and the Deeds of Serpents [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "serenityofblackwoodgreek",
+            label: "The Serenity of the Black Wood [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "bookofthrones",
+            label: "The Book of Thrones [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },{
+        id: "secondglory",
+            label: "A Second Glory [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "bookoftruebloodlatin",
+            label: "Book of True Blood [Latin]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "burningwoman",
+            label: "The Burning Woman [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		{
+        id: "twentysixenticementsseventorments",
+            label: "Twenty-Six Enticements, Seven Torments [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+		
+		{
+        id: "historyofshadowlesskingsaramaic",
+            label: "A True and Accurate History of the Shadowless Kings [Aramaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "highmysterieschurchsolar",
+            label: "The High Mysteries of the Innermost Chamber of our Church Solar [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "medusaslamentgreek",
+            label: "Medusa's Lament [Greek]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "bookofmasks",
+            label: "The Book of Masks [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "inthemountainsasupontheplain",
+            label: "In The Mountains As Upon The Plain There May Not Be A Path Where None Has Passed [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "memoryofgods",
+            label: "In Memory of Gods [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "sevenfoldslayingsevencoiled",
+            label: "The Sevenfold Slaying of the Seven-Coiled [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "bighuff",
+            label: "My Deeds, My Powers, My Achievements and the Injustices Perpetrated Against Me [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "dreamconspiracyskies",
+            label: "The Dream of the Conspiracy of the Lower Skies [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "bookwhitecat",
+            label: "The Book of the White Cat [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "focusamber",
+            label: "The Focus of Amber [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+
+				{
+        id: "songscarapacecross",
+            label: "The Songs of the Carapace Cross [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "originsofhours",
+            label: "The Origins of Hours [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "wherehasshegone",
+            label: "Where Has She Gone? [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "bookextinguishedheart",
+            label: "The Book of the Extinguished Heart [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "howendwillbegin",
+            label: "How the End will Begin [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "manneralchemistspared",
+            label: "The Manner in which the Alchemist was Spared [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "fivecreations",
+            label: "Five Creations [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "commandspreservationallexists",
+            label: "Commandments For the Preservation of All That Exists [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "timedivision",
+            label: "The Time of Division [Deep Mandaic]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "manualdeparture",
+            label: "A Manual for Departure [Vak]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "birdsong",
+            label: "Birdsong [Phrygian]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "voyagesfo",
+            label: "The Voyages of Ferninshun of Oreol [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
+        },
+						{
+        id: "scarsky",
+            label: "The Scar in the Sky [Fucine]",
+            aspects:
+            {text:1},
+            description: ""
         },
 
 ]
