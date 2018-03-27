@@ -14,19 +14,6 @@
 				},
             description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
         },
-		{
-        id: "locationprivatecollection",
-            label: "Strathcoyne's Residence FNORD",
-            aspects:{location: 1},
-			slots: {
-				"Despatch":
-					{
-					required: {follower: 1},
-					forbidden: {}
-					}
-				},
-            description: "The house of Mr Strathcoyne, a collector of rare volumes. Strathcoyne will not sell his treasures. But a sufficiently cunning accomplice might gain entry."
-        },
 				{
         id: "locationauctionhouse",
             label: "Oriflamme's Auction House",
