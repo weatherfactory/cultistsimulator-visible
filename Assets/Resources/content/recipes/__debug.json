@@ -8,7 +8,18 @@ description: "end test deck",
 warmup: 1,
 craftable:false
 },
-	
+		{
+        id: "_ascensionending",
+        label: "Display Ascension Ending",
+        actionId: "fictitiousverb",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: "Here I go",
+        description: "Ending text coming",
+        warmup: 5,
+        craftable: false,
+		ending: "minorgrailvictory"
+	},
 	{
         id: "_mansustest",
         label: "Test Mansus effect",
