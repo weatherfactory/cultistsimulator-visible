@@ -229,7 +229,7 @@ public class Compendium : ICompendium
         if (endingFlag== "minorgrailvictory")
             return new Ending(endingFlag,"THE FEAST OF THE TRUE BIRTH",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and I tear free of the sticky rags of my old flesh. My new body is smooth without and red within like a sweet fruit." +
-                " My limbs are strong as cables and my senses are knife-keen. I will not grow old. I will walk the world in the service of the Grail, feasting, growing. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
+                " My limbs are strong as cables. My senses are knives. I will not grow old. I will walk the world in the service of the Grail, feasting, growing. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
                 " [Congratulations on a standard Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail", EndingFlavour.Grand, "DramaticLightCool");
 
         if (endingFlag == "minorlanternvictory")
