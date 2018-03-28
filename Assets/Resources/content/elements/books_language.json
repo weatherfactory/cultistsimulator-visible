@@ -8,6 +8,14 @@
             {text:1},
             description: "Just what you need to refresh your knowledge of Latin."
         },
+										 {
+        id: "textbookfucine",
+            label: "The Journal of Alexander LaCroix",
+            aspects:
+            {text:1},
+            description: "Alexander LaCroix spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts.",
+			unique:true
+        },
 				 {
         id: "textbookgreek",
             label: "Kühner and Gerth's 'Ausführliche Grammatik der griechischen Sprache'",
@@ -15,12 +23,44 @@
             {text:1},
             description: "An essential weapon for a ferocious struggle with a challenging language."
         },
-								 {
-        id: "textbookfucine",
-            label: "The Journal of Alexander LaCroix",
+				 {
+        id: "textbookphrygian",
+            label: "FNORD phrygian",
             aspects:
             {text:1},
-            description: "Alexander LaCroix spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts.",
+            description: "",
+			unique:true
+        },
+					 {
+        id: "textbookaramaic",
+            label: "FNORD aramaic",
+            aspects:
+            {text:1},
+            description: "",
+			unique:true
+        },
+				 {
+        id: "textbookmandaic",
+            label: "FNORD mandaic",
+            aspects:
+            {text:1},
+            description: "",
+			unique:true
+        },
+				 {
+        id: "textbooksanskrit",
+            label: "FNORD sanskrit",
+            aspects:
+            {text:1},
+            description: "",
+			unique:true
+        },
+				 {
+        id: "textbookvak",
+            label: "FNORD vak",
+            aspects:
+            {text:1},
+            description: "",
 			unique:true
         },
 		
