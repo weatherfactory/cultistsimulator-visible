@@ -77,7 +77,7 @@
 	actionId: "explore",
 	requirements: {vaultshires1:1},
 	effects: {vaultshires1:-1},
-	deckeffect: {"vaultcontentsc":1},
+	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
 	warmup:10,
@@ -90,7 +90,7 @@
 	actionId: "explore",
 	requirements: {vaultshires2:1},
 	effects: {vaultshires2:-1},
-	deckeffect: {"vaultcontentsc":1},
+	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
 	warmup:10,
@@ -98,17 +98,13 @@
 	},
 	
 	
-	
-
-	
-	
 				{
 	id: "explorevaultshires3_success",
 	label: "The Deeper Sanctuary",
 	actionId: "explore",
 	requirements: {vaultshires3:1},
-	effects: {vaultshires3:-1},
-	deckeffect: {"vaultcontentsc":1},
+	effects: {vaultshires3:-1,toolwinterb:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
 	warmup:10,
@@ -122,7 +118,7 @@
 	actionId: "explore",
 	requirements: {vaultshires4:1},
 	effects: {vaultshires4:-1},
-	deckeffect: {"vaultcontentsc":1},
+	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
 	warmup:10,
@@ -135,7 +131,7 @@
 	actionId: "explore",
 	requirements: {vaultshiresdefault:1},
 	effects: {vaultshiresdefault:-1},
-	deckeffect: {"vaultcontentsc":1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
 	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
 	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
 	warmup:10,
