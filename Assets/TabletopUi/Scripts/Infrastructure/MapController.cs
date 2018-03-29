@@ -7,6 +7,8 @@ using Assets.CS.TabletopUI;
 using UnityEngine;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.Core.Entities;
+using Assets.Logic;
+using NSubstitute.Routing.Handlers;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -36,24 +38,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var activeDoor = _mapTokenContainer.GetActiveDoor();
             activeDoor.onCardDropped += HandleOnSlotFilled;
 
+            
+            //get card position names
+            //populate card positions 1,2,3 from decks with names of positions
+            
+
             cards = new ElementStackToken[3];
 
             // Display face-up card next to door
-            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position);
+
+            var character=Registry.Retrieve<Character>();
+            var dealer=new Dealer(character);
+            IDeckInstance doorDeck =character.GetDeckInstanceById(activeDoor.GetDeckName(0));
+            IDeckInstance subLocationDeck1 = character.GetDeckInstanceById(activeDoor.GetDeckName(1));
+            IDeckInstance subLocationDeck2 = character.GetDeckInstanceById(activeDoor.GetDeckName(2));
+            
+            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, dealer.Deal(doorDeck));
             cards[0].FlipToFaceUp(true);
 
             // Display face down card next to locations
-            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position);
+            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position,dealer.Deal(subLocationDeck1));
             cards[1].FlipToFaceDown(true);
 
-            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position);
+            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, dealer.Deal(subLocationDeck2));
             cards[2].FlipToFaceDown(true);
 
             // When one face-down card is turned, remove all face up cards.
             // On droping on door: Return
         }
 
-        ElementStackToken BuildCard(Vector3 position, string id = "funds") {
+        ElementStackToken BuildCard(Vector3 position, string id) {
             var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
             newCard.Populate(id, 1, Source.Fresh());
 

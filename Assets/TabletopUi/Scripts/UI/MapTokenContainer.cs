@@ -1,8 +1,10 @@
-﻿using Assets.Core.Interfaces;
+﻿using System;
+using Assets.Core.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.CS.TabletopUI {
     public class MapTokenContainer : TabletopTokenContainer {
@@ -50,8 +52,9 @@ namespace Assets.CS.TabletopUI {
 
         public DoorSlot GetActiveDoor() {
             if (activeSlot == null) {
-                Debug.LogWarning("We don't have an active door slot, using a random one");
-                return allSlots[Random.Range(0, allSlots.Length)];
+                throw new ApplicationException("No active door specified");
+              // Debug.LogWarning("We don't have an active door slot, using a random one");
+               // return allSlots[Random.Range(0, allSlots.Length)];
             }
 
             return activeSlot;

@@ -40,6 +40,17 @@ namespace Assets.CS.TabletopUI {
             _elementStacksManager = new ElementStacksManager(this, "door-"+portalType);
         }
 
+        public string GetDeckName(int cardPosition)
+        {
+            //cardPosition 0 is the portal itself; >0 is its sub-locations
+            string deckId = portalType.ToString();
+            if (cardPosition > 0)
+                deckId += ("_" + cardPosition.ToString());
+
+            return deckId;
+        }
+
+
         // IGlowableView implementation
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
