@@ -8,7 +8,6 @@ using UnityEngine;
 using Assets.TabletopUi.Scripts.Services;
 using Assets.Core.Entities;
 using Assets.Logic;
-using NSubstitute.Routing.Handlers;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
