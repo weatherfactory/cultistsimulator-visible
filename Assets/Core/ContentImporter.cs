@@ -408,7 +408,7 @@ public class ContentImporter
                     try
                     {
                         r.PortalEffect = (PortalEffect)Enum.Parse(typeof(PortalEffect), possiblePortalEffect, true);
-
+                        htEachRecipe.Remove(NoonConstants.KPORTALEFFECT);
                     }
                     catch 
                     {
