@@ -16,29 +16,51 @@ comments: "but this should only be drawn from once."
 	
 			{id: "mansus_wood",
 	spec:
-		["influencemoth"],
+		["influencemoth",
+		"fragmentsecrethistories",
+		"rumour"],
 resetonexhaustion:true
 	},
 	
 			{id: "mansus_wood1",
 	spec:
-		["influenceedge"],
+		["influenceknock",
+		"fragmentsecrethistoriesb",
+		"rumour"],
 resetonexhaustion:true
 	},
 	
 				{id: "mansus_wood2",
 	spec:
-		["influenceheart"],
+		["influencegraila",
+		"vitality",
+		"fragmentsecrethistoriesb",
+		"rumour"],
 resetonexhaustion:true
 
 	},
 			{id: "mansus_whitedoor",
 	spec:
-		["influencemoth"],
-defaultcard: "fleeting",
+		["influencewinterc",
+		"fragmentsecrethistoriesb",
+		"rumour"],
 resetonexhaustion:true
 	},
-	
+				{id: "mansus_whitedoor1",
+	spec:
+	["influencelanternc",
+	"glimmering",
+	"contentment",
+	"fragmentsecrethistoriesc"],
+resetonexhaustion:true
+	},
+{id: "mansus_whitedoor2",
+	spec:
+		["influenceknockc",
+		"fragmentsecrethistoriesc",
+		"rumour"],
+resetonexhaustion:true
+	},
 			{id: "mansus_lodge",
 	spec:
 		["influenceedge"],

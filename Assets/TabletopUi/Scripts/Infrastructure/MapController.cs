@@ -99,8 +99,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (cards != null)
                 for (int i = 0; i < cards.Length; i++) 
                     if (cards[i] != cardTurned)
-                        cards[i].Retire(true);
-
+                    {
+                       cards[i].FlipToFaceUp();
+                        cards[i].Retire("CardLightDramatic");
+                    }
             cards = null;
         }
 
