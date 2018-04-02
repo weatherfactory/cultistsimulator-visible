@@ -208,10 +208,10 @@
 	actionId: "dream",
 	requirements: {waywhite:1},
 	slots: {Ascent: {description:"There are higher doors than this.",requirements: {lore:1}}},
-	startdescription: "The way to the White Door is etched in my bones. When my bones are dust, perhaps they will outline the route.",
-	description: "Now I can approach the White Door through the Bounds. Now I can press my fingers to it, feel its warmth,  watch it swing open. As it opens, my mouth closes, tightens, heals over like a lost deformity. Around and about me is the cobalt light of the House of the Sun. [The Mansus is not available in this build, but there is one more door to reach.]",
+	startdescription: "Now I can approach the White Door through the Bounds. Now I can press my fingers to it, feel its warmth,  watch it swing open. As it opens, my mouth closes, tightens, heals over like a lost deformity. Around and about me is the cobalt light of the House of the Sun.",
+	description: ".",
 	craftable: true,
-	effects: {influencelantern:1},
+	portaleffect: "whitedoor",
 	linked: [
 	{id:"dreamreachstagfirst",chance:100},
 	{id:"dreamnotquitereachstag",chance:100}],

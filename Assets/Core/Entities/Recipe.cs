@@ -11,7 +11,7 @@ public enum PortalEffect
     WhiteDoor=20,
     StagDoor=30,
     SpiderDoor=40,
-    PeacockGate=50,
+    PeacockDoor=50,
     TricuspidGate=60
 }
 

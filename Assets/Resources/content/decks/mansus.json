@@ -61,19 +61,81 @@ resetonexhaustion:true
 		"rumour"],
 resetonexhaustion:true
 	},
-			{id: "mansus_lodge",
+
+
+				{id: "mansus_stagdoor",
 	spec:
-		["influenceedge"],
-defaultcard: "fleeting",
-	},
-	
-				{id: "mansus_orchard",
-	spec:
-		["influenceheart"],
-defaultcard: "fleeting",
+		["influenceknocke",
+		"fragmentsecrethistoriesc",
+		"influenceforgec"],
 resetonexhaustion:true
 	},
-
+				{id: "mansus_stagdoor1",
+	spec:
+	["influenceedgee",
+	"influencegrailc",
+	"influencewintere"],
+resetonexhaustion:true
+	},
+{id: "mansus_stagdoor2",
+	spec:
+		["erudition",
+		"fragmentsecrethistoriesd",
+		"fascination"],
+resetonexhaustion:true
+	},
+	
+					{id: "mansus_spiderdoor",
+	spec:
+		["influencegraile",
+		"fragmentsecrethistoriesd",
+		"favour"],
+resetonexhaustion:true
+	},
+				{id: "mansus_spiderdoor1",
+	spec:
+	["influenceknockg",
+	"influencelanterne",
+	"influencemothe",
+	"fragmentsecrethistoriesc"],
+resetonexhaustion:true
+	},
+{id: "mansus_spiderdoor2",
+	spec:
+		["influencewinterg",
+		"fragmentsecrethistoriese",
+		"fragmentsecrethistoriese",
+		"dread",
+		"dread"],
+resetonexhaustion:true
+	},
+	
+	
+						{id: "mansus_peacockdoor",
+	spec:
+		["scholarvak",
+		"fragmentsecrethistoriese",
+		"influencelanterng"],
+resetonexhaustion:true
+	},
+				{id: "mansus_peacockdoor1",
+	spec:
+	["influencegrailg",
+	"ingredientgraild",
+	"fragmentsecrethistoriesf",
+	"favour"],
+resetonexhaustion:true
+	},
+{id: "mansus_peacockdoor2",
+	spec:
+		["influenceforgeg",
+		"fragmentsecrethistoriesf",
+		"ingredientforgef",
+		"fascination"],
+resetonexhaustion:true
+	},
+	
+	
 	
 	]
 }
