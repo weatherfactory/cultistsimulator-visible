@@ -48,6 +48,7 @@ namespace CS.Tests
         private const int SLOT_REQUIRED_ASPECT_VALUE = 1;
         private const string SLOT_FORBIDDEN_ASPECT_ID = "slotaspect2";
         private const int SLOT_FORBIDDEN_ASPECT_VALUE = 1;
+        private const PortalEffect RECIPE_1_PORTALEFFECT = PortalEffect.PeacockGate;
 
 
 
@@ -141,6 +142,7 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KMAXEXECUTIONS, RECIPE_MAX_EXECUTIONS.ToString());
             htRecipe.Add(NoonConstants.KBURNIMAGE, RECIPE_BURN_IMAGE.ToString());
             htRecipe.Add(NoonConstants.KCRAFTABLE, RECIPE_1_CRAFTABLE);
+            htRecipe.Add(NoonConstants.KPORTALEFFECT,RECIPE_1_PORTALEFFECT.ToString());
             htRecipe.Add(NoonConstants.KREQUIREMENTS, htRequirements);
             htRecipe.Add(NoonConstants.KEFFECTS, htEffects);
             htRecipe.Add(NoonConstants.KASPECTS, htAspects);
@@ -148,6 +150,8 @@ namespace CS.Tests
 
             htRecipe.Add(NoonConstants.KALTERNATIVERECIPES, alAlternatives);
             htRecipe.Add(NoonConstants.KLINKED,allinkeds);
+
+            
 
             recipesToImport.Add(htRecipe);
 
@@ -243,6 +247,7 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_MAX_EXECUTIONS, recipesImported.First().MaxExecutions);
             Assert.AreEqual(RECIPE_BURN_IMAGE, recipesImported.First().BurnImage);
             Assert.AreEqual(RECIPE_1_DECKEFFECT, recipesImported.First().DeckEffects.First().Key);
+            Assert.AreEqual(RECIPE_1_PORTALEFFECT,recipesImported.First().PortalEffect);
         }
 
         private static void ConfirmRecipeTextImported(List<Recipe> recipesImported)

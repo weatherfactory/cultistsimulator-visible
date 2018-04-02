@@ -100,16 +100,7 @@ public class Recipe
         return MaxExecutions == 0;
     }
 
-    public PortalEffect PortalEffect
-    {
-        get
-        {
-            if (Id == "_mansustest")
-                return PortalEffect.WhiteDoor;
-            return PortalEffect.None;
-
-        }
-    }
+    public PortalEffect PortalEffect { get; set; }
 
     public List<SlotSpecification> SlotSpecifications { get; set; }
 
@@ -124,6 +115,7 @@ public class Recipe
         SlotSpecifications = new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
         DeckEffects=new Dictionary<string,int>();
+        PortalEffect = PortalEffect.None;
     }
 
 

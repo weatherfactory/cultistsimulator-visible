@@ -310,19 +310,6 @@ public class ContentImporter
                 LogProblem("Problem importing deckspec for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
                            "' - " + e.Message);
             }
-
-
-            string defaultCardId = "";
-            try
-            {
-                defaultCardId = htEachDeck.GetValue(NoonConstants.KDECKDEFAULTCARD).ToString();
-            }
-            catch (Exception e)
-            {
-                LogProblem("Problem importing default card for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
-                           "' - " + e.Message);
-            }
-
             bool resetOnExhaustion = false;
             try
             {
@@ -333,6 +320,23 @@ public class ContentImporter
                 Console.WriteLine(e);
                 throw;
             }
+
+            string defaultCardId = "";
+            //if we reset on exhaustion, we'll never see a default card, and we don't want
+            //to throw an error on failing to import an unset default card.
+            //Of course someone could have no default card and resetonexhaustion = false, but that's fundamentally their problem.
+            if (!resetOnExhaustion)
+            try
+            {
+                defaultCardId = htEachDeck.GetValue(NoonConstants.KDECKDEFAULTCARD).ToString();
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing default card for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
+            }
+
+
 
             DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
 
@@ -397,6 +401,20 @@ public class ContentImporter
 
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
                 htEachRecipe.Remove(NoonConstants.KCRAFTABLE);
+
+                if(htEachRecipe.Contains(NoonConstants.KPORTALEFFECT))
+                {
+                    string possiblePortalEffect = htEachRecipe[NoonConstants.KPORTALEFFECT].ToString();
+                    try
+                    {
+                        r.PortalEffect = (PortalEffect)Enum.Parse(typeof(PortalEffect), possiblePortalEffect, true);
+
+                    }
+                    catch 
+                    {
+                        LogProblem(r.Id + " has a PortalEffect specified that we don't think is right: " + possiblePortalEffect);
+                    }
+                    }
 
                 r.HintOnly = Convert.ToBoolean(htEachRecipe[NoonConstants.KHINTONLY]);
                 htEachRecipe.Remove(NoonConstants.KHINTONLY);

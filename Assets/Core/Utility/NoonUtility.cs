@@ -21,6 +21,7 @@ namespace Noon
         public const string KIMAGE = "image";
         public const string KACTIONID = "actionId";
         public const string KCRAFTABLE = "craftable";
+        public const string KPORTALEFFECT = "portaleffect";
         public const string KHINTONLY = "hintonly";
         public const string KSTARTDESCRIPTION = "startdescription";
         public const string KDESCRIPTION = "description";
