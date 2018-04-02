@@ -43,9 +43,9 @@ namespace Assets.CS.TabletopUI {
         public string GetDeckName(int cardPosition)
         {
             //cardPosition 0 is the portal itself; >0 is its sub-locations
-            string deckId = portalType.ToString();
+            string deckId = NoonConstants.MANSUS_DECKID_PREFIX + portalType.ToString().ToLowerInvariant();
             if (cardPosition > 0)
-                deckId += ("_" + cardPosition.ToString());
+                deckId += cardPosition.ToString();
 
             return deckId;
         }

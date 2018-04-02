@@ -55,6 +55,7 @@ namespace Noon
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
 
         public const string DECK_PREFIX = "deck:";
+        public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
     }
     public class NoonUtility

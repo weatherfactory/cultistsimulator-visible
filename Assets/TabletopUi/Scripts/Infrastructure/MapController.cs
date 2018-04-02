@@ -48,9 +48,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             var character=Registry.Retrieve<Character>();
             var dealer=new Dealer(character);
-            IDeckInstance doorDeck =character.GetDeckInstanceById(activeDoor.GetDeckName(0));
-            IDeckInstance subLocationDeck1 = character.GetDeckInstanceById(activeDoor.GetDeckName(1));
-            IDeckInstance subLocationDeck2 = character.GetDeckInstanceById(activeDoor.GetDeckName(2));
+
+            string doorDeckId = activeDoor.GetDeckName(0);
+            IDeckInstance doorDeck =character.GetDeckInstanceById(doorDeckId);
+            if(doorDeck==null)
+                throw new ApplicationException("MapController couldn't find a mansus deck for the specified door with ID " + doorDeckId);
+
+            string subLocationDeck1Id = activeDoor.GetDeckName(1);
+            IDeckInstance subLocationDeck1 = character.GetDeckInstanceById(subLocationDeck1Id);
+            if (doorDeck == null)
+                throw new ApplicationException("MapController couldn't find a mansus deck for location1 with ID " + subLocationDeck1Id);
+
+            string subLocationDeck2Id = activeDoor.GetDeckName(2);
+            IDeckInstance subLocationDeck2 = character.GetDeckInstanceById(subLocationDeck2Id);
+            if (doorDeck == null)
+                throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
             
             cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, dealer.Deal(doorDeck));
             cards[0].FlipToFaceUp(true);

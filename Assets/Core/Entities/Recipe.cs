@@ -105,7 +105,7 @@ public class Recipe
         get
         {
             if (Id == "_mansustest")
-                return PortalEffect.WhiteDoor;
+                return PortalEffect.Wood;
             return PortalEffect.None;
 
         }
