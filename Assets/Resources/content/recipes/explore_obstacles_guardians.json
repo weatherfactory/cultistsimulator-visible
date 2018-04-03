@@ -22,7 +22,7 @@
 	{id:"explorevaultguardian_serpent_highedge",
 	actionId: "explore",
 	requirements:{edge:10},
-	label:"Out strength is matchless.",
+	label:"Our strength is matchless.",
 	startdescription:"Eyes like gas-lamps; scales like black jade. A Serpent is a powerful foe, but it's nothing before us.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:100},
@@ -119,8 +119,8 @@
 	{
 	id: "explorevaultguardian_watchers_encounter",
 	actionId:"explore",
-	label: "A Younger Sister: a watchers",
-	startdescription: "The watchers watches us closely, swaying its great head. WIthout Edge or grail, we cannot prevail against it.",
+	label: "Watchers",
+	startdescription: "Locals with a grudge or a duty or a mercenary contract. We might trick them with Moth, seduce them with Grail, or battle them with Edge.",
 	requirements: {guardian_watchers:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -143,8 +143,8 @@
 	{id:"explorevaultguardian_watchers_highedge",
 	actionId: "explore",
 	requirements:{edge:10},
-	label:"Out strength is matchless.",
-	startdescription:"Eyes like gas-lamps; scales like black jade. A watchers is a powerful foe, but it's nothing before us.",
+	label:"Our strength is matchless.",
+	startdescription:"The Watchers will regret standing against us.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:100},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -153,7 +153,7 @@
 	actionId: "explore",
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
-	startdescription:"Eyes like gas-lamps; fangs like stalactites. A great watchers is a powerful foe, but so are we.",
+	startdescription:"The Watchers aren't ready for us. We should be able to bring them down.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:70},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -162,7 +162,7 @@
 	actionId: "explore",
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
-	startdescription:"Eyes like gas-lamps; a mouth one could crouch in. We might defeat this watchers. We might regret trying.",
+		startdescription:"The Watchers may be too much for us - but we still have a chance.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:30},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -171,8 +171,8 @@
 		  	{id:"explorevaultguardian_watchers_highgrail",
 	actionId: "explore",
 	requirements:{grail:10},
-	label:"We call upon the Mother of Ants, which ariseth from wounds.",
-	startdescription:"The watchers's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+	label:"Against the Watchers: The Grail's Seductions",
+	startdescription:"'Come closer, dear ones. We have something special for you.'",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:100},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -181,8 +181,8 @@
 		  	{id:"explorevaultguardian_watchers_midgrail",
 	actionId: "explore",
 	requirements:{grail:5},
-	label:"We call upon the Mother of Ants, which encircleth.",
-	startdescription:"The watchers is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+	label:"Against the Watchers: The Grail's Temptations",
+	startdescription:"Our allures should sway the Watchers' minds.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:70},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -191,8 +191,8 @@
 		  	{id:"explorevaultguardian_watchers_lowgrail",
 	actionId: "explore",
 	requirements:{grail:1},
-	label:"We call upon the Mother of Ants, which openeth.",
-	startdescription:"The watchers rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the watchers will respect the power we bear.",
+	label:"Against the Watchers: The Grail's Distractions",
+	startdescription:"Perhaps we can sway the Watchers from their purpose.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:30},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -201,8 +201,8 @@
 		  		  	{id:"explorevaultguardian_watchers_highmoth",
 	actionId: "explore",
 	requirements:{moth:10},
-	label:"We call upon the Mother of Ants, which ariseth from wounds.",
-	startdescription:"The watchers's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+	label:"Against the Watchers: A Certain Deception",
+	startdescription:"'Look closer. Closer still. Closer! Keep looking. Closer. Now close your eyes...'",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:100},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -211,8 +211,8 @@
 		  	{id:"explorevaultguardian_watchers_midmoth",
 	actionId: "explore",
 	requirements:{moth:5},
-	label:"We call upon the Mother of Ants, which encircleth.",
-	startdescription:"The watchers is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+	label:"Against the Watchers: A Likely Deception",
+	startdescription:"'Awake! Awake! They're upon us! That way, quickly!'",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:70},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -221,8 +221,8 @@
 		  	{id:"explorevaultguardian_watchers_lowmoth",
 	actionId: "explore",
 	requirements:{moth:1},
-	label:"We call upon the Mother of Ants, which openeth.",
-	startdescription:"The watchers rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the watchers will respect the power we bear.",
+	label:"Against the Watchers: A Desperate Deception",
+	startdescription:"'They went... that way?'",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:30},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
@@ -231,19 +231,19 @@
 			{
 	id: "explorevaultguardian_watchers_success_edge",
 	actionId:"explore",
-	label: "The watchers's Struggles",
-	startdescription: "The watchers rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
+	label: "The Watchers' End",
+	startdescription: "Their blood pumps bright, then dark. They should not have opposed us. We move on.",
 	description: ".",
 	effects: {guardian_watchers:-1},
 	craftable: false,
 		linked: [{id:"explorevaulttick",chance:100}],
-		warmup:30
+		warmup:3
 	},
 				{
 	id: "explorevaultguardian_watchers_success_grail",
 	actionId:"explore",
-	label: "The watchers's Sorrow",
-	startdescription: "It lowers its great head. Moisture seeps from its lidless eyes. Is it weeping? What does it remember of its eldest sister, whose power we call upon?",
+	label: "The Watchers' Fall",
+	startdescription: "Their present pleasures will end ill for them. Perhaps they'll think it's worth it. Meanwhile, we can pass.",
 	description: ".",
 	effects: {guardian_watchers:-1},
 	craftable: false,
@@ -254,8 +254,8 @@
 				{
 	id: "explorevaultguardian_watchers_success_moth",
 	actionId:"explore",
-	label: "The watchers's Struggles",
-	startdescription: "The watchers rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
+	label: "The Watchers' Confusion",
+	startdescription: "Their bewilderment is our opportunity. We'll pass in silent secrecy.",
 	description: ".",
 	effects: {guardian_watchers:-1},
 	craftable: false,
@@ -266,8 +266,8 @@
 				{
 	id: "explorevaultguardian_watchers_failure",
 	actionId:"explore",
-	label: "The watchers's Strength",
-	startdescription: "Back. Back! It's too much for us!",
+	label: "The Watchers' Victory",
+	startdescription: "They are more cunning and more numerous than we'd expected! This will end in blood for us -",
 	description: ".",
 	craftable: false,
 		linked: [{id:"explorevault_casualty",chance:70},
@@ -275,16 +275,11 @@
 		warmup:30
 	},
 	
-	
-	
-	
-	
-	
 	{
 	id: "explorevaultguardian_monks_encounter",
 	actionId:"explore",
 	label: "Monks",
-	startdescription: "The monks watches us closely, swaying its great head. WIthout Edge or moth, we cannot prevail against it.",
+	startdescription: "An order of guardians bound by oath and custom. They are too steadfast for the Grail's seductions - we must defeat them with Edge or bedazzle them with Moth.",
 	requirements: {guardian_monks:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -303,8 +298,8 @@
 	{id:"explorevaultguardian_monks_highedge",
 	actionId: "explore",
 	requirements:{edge:10},
-	label:"Out strength is matchless.",
-	startdescription:"Eyes like gas-lamps; scales like black jade. A monks is a powerful foe, but it's nothing before us.",
+	label:"Our strength is irresistible.",
+	startdescription:"We will dapple the earth with holy blood.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_monks_success_edge",chance:100},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
@@ -313,7 +308,7 @@
 	actionId: "explore",
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
-	startdescription:"Eyes like gas-lamps; fangs like stalactites. A great monks is a powerful foe, but so are we.",
+	startdescription:"We should be more than enough for these holy fools.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_monks_success_edge",chance:70},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
@@ -322,7 +317,7 @@
 	actionId: "explore",
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
-	startdescription:"Eyes like gas-lamps; a mouth one could crouch in. We might defeat this monks. We might regret trying.",
+	startdescription:"They are only monks. But they are many, many monks. We might prevail, if we're lucky.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_monks_success_edge",chance:30},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
@@ -331,8 +326,8 @@
 		  	{id:"explorevaultguardian_monks_highmoth",
 	actionId: "explore",
 	requirements:{moth:10},
-	label:"We call upon the Mother of Ants, which ariseth from wounds.",
-	startdescription:"The monks's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+	label:"The Monks: a Certain Deception",
+	startdescription:"'We have brought here with us certain sacred texts, whose meaning is apparent only in moonlight - '",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_monks_success_moth",chance:100},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
@@ -341,8 +336,8 @@
 		  	{id:"explorevaultguardian_monks_midmoth",
 	actionId: "explore",
 	requirements:{moth:5},
-	label:"We call upon the Mother of Ants, which encircleth.",
-	startdescription:"The monks is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
+	label:"The Monks: a Likely Deception",
+	startdescription:"'This writ of entry bears the seal of the highest authority. Do not stand in our way -'",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_monks_success_moth",chance:70},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
@@ -351,8 +346,8 @@
 		  	{id:"explorevaultguardian_monks_lowmoth",
 	actionId: "explore",
 	requirements:{moth:1},
-	label:"We call upon the Mother of Ants, which openeth.",
-	startdescription:"The monks rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the monks will respect the power we bear.",
+	label:"The Monks: a Desperate Deception",
+	startdescription:"'We have... relics. *Ancient* relics.'",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_monks_success_moth",chance:30},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
@@ -361,8 +356,8 @@
 			{
 	id: "explorevaultguardian_monks_success_edge",
 	actionId:"explore",
-	label: "The monks's Struggles",
-	startdescription: "The monks rolls and roars! Its death throes shake the earth! But it's dying. We will pass.",
+	label: "The Monks' Silence",
+	startdescription: "Their bodies lie in robed huddles, each indistinguishable from the next. Step over, move on.",
 	description: ".",
 	effects: {guardian_monks:-1},
 	craftable: false,
@@ -372,8 +367,8 @@
 				{
 	id: "explorevaultguardian_monks_success_moth",
 	actionId:"explore",
-	label: "The monks's Sorrow",
-	startdescription: "It lowers its great head. Moisture seeps from its lidless eyes. Is it weeping? What does it remember of its eldest sister, whose power we call upon?",
+	label: "The Monks' Delusion",
+	startdescription: "Faith is a double-edged weapon. These monks have great talent in the matter of believing, and so they have believed our lies.",
 	description: ".",
 	effects: {guardian_monks:-1},
 	craftable: false,
@@ -384,8 +379,8 @@
 				{
 	id: "explorevaultguardian_monks_failure",
 	actionId:"explore",
-	label: "The monks's Strength",
-	startdescription: "Back. Back! It's too much for us!",
+	label: "The Monks' Wrath",
+	startdescription: "They're stronger and wiser than we had supposed. And now their blows have found a mark - ",
 	description: ".",
 	craftable: false,
 		linked: [{id:"explorevault_casualty",chance:70},
@@ -394,8 +389,7 @@
 	},
 	
 	
-	
-	
+
 	
 	{
 	id: "explorevaultguardian_dead_encounter",
@@ -510,13 +504,11 @@
 		warmup:30
 	},
 	
-	
-	
 	{
 	id: "explorevaultguardian_soucouyants_encounter",
 	actionId:"explore",
-	label: "The Fretful soucouyant",
-	startdescription: "FNORD",
+	label: "Soucoyants in the Dark",
+	startdescription: "The night air rattles with them. Duck low. They are much too strong to be fought, but we may be able to deceive them, or drive them off with Mansus-light.",
 	requirements: {guardian_soucouyants:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -534,8 +526,8 @@
 	{id:"explorevaultguardian_soucouyants_highlantern",
 	actionId: "explore",
 	requirements:{lantern:10},
-	label:"Our strength is matchless.",
-	startdescription:"The soucouyant are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+	label:"We call upon the Watchman, who illuminates",
+	startdescription:"We have power enough to keep them at a distance.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:100},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
@@ -543,8 +535,8 @@
 		{id:"explorevaultguardian_soucouyants_midlantern",
 	actionId: "explore",
 	requirements:{lantern:5},
-	label:"Our strength is considerable.",
-	startdescription:"These soucouyant, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+	label:"We call upon the Watchman, who is not compassionate.",
+	startdescription:"Our power should be enough to hold them at bay - but they are ready for any lapse in vigilance.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:70},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
@@ -552,8 +544,8 @@
 		  	{id:"explorevaultguardian_soucouyants_lowlantern",
 	actionId: "explore",
 	requirements:{lantern:1},
-	label:"Our strength may not be enough.",
-	startdescription:"The soucouyant are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
+	label:"We call upon the Watchman, who navigates.",
+	startdescription:"It is possible the power we carry will see us safe through the crowded night. It's definitely possible.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:30},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
@@ -562,8 +554,8 @@
 		  	{id:"explorevaultguardian_soucouyants_highmoth",
 	actionId: "explore",
 	requirements:{moth:10},
-	label:"We call upon the Ivory Dove, who knows the names of all the soucouyant.",
-	startdescription:"The soucouyant circle the lantern of our vision like frayed dreams. The very air around us is chill with moth's shadow. They must recognise that.",
+	label:"We call upon the Moth, who seeks among the trees of the Wood",
+	startdescription:"The Moth has power in this close-crowded forest night. We will pass secretly and safely.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:100},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
@@ -572,8 +564,8 @@
 		  	{id:"explorevaultguardian_soucouyants_midmoth",
 	actionId: "explore",
 	requirements:{moth:5},
-	label:"We call upon the Ivory Dove, who cannot be deceived.",
-	startdescription:"The soucouyant watch us closely, expressionless as saint-statues. But we are invested with the power of moth. Probably the soucouyant will recognise that.",
+	label:"We call upon the Moth, who beats in the skull",
+	startdescription:"We hshould have power enough to deceive and dismay these night-winged thirsty ones.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:70},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
@@ -582,8 +574,8 @@
 		  	{id:"explorevaultguardian_soucouyants_lowmoth",
 	actionId: "explore",
 	requirements:{moth:1},
-	label:"We call upon the Ivory Dove, from whom nothing more may be taken.",
-	startdescription:"The soucouyant boil and rattle in the darkness, but we have been touched by the Hours of moth. Perhaps they will recognise that.",
+	label:"We call upon the Moth, who is dappled",
+	startdescription:"The Moth will give us a chance in the dappled shadows of the forest - but only a chance.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:30},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
@@ -592,8 +584,8 @@
 			{
 	id: "explorevaultguardian_soucouyants_success_lantern",
 	actionId:"explore",
-	label: "The Wretched soucouyant",
-	startdescription: "When the soucouyant return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
+	label: "The Soucouyants' Retreat",
+	startdescription: "They won't come close. They call out taunts in the voices of carrion birds and childre; they rattle the tree-tops; they fling stones from the dark. But they won't come close. We will pass.",
 	description: ".",
 	effects: {guardian_soucouyants:-1},
 	craftable: false,
@@ -604,8 +596,8 @@
 				{
 	id: "explorevaultguardian_soucouyants_success_moth",
 	actionId:"explore",
-	label: "The Wary soucouyant",
-	startdescription: "The soucouyant draw back, their almost-faces flat and watchful. They will not trouble us.",
+	label: "The Soucouyants' Frustrations",
+	startdescription: "Hurry from the shadow to deeper shadow. Press faces into the spongy earth. They know we're here, but they don't know where. Their cries fade behind us.",
 	description: ".",
 	effects: {guardian_soucouyants:-1},
 	craftable: false,
@@ -616,8 +608,8 @@
 				{
 	id: "explorevaultguardian_soucouyants_failure",
 	actionId:"explore",
-	label: "The Wrath of the soucouyant",
-	startdescription: "The soucouyant are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
+	label: "The Soucouyants' Hungers",
+	startdescription: "They're on us! With a leathery crack of wings, and a body is borne shrieking up into the dark - ",
 	description: ".",
 	craftable: false,
 		linked: [{id:"explorevault_casualty",chance:70},
@@ -628,14 +620,11 @@
 	
 	
 	
-	
-	
-	
 	{
 	id: "explorevaultguardian_long_encounter",
 	actionId:"explore",
-	label: "The Fretful long",
-	startdescription: "The long clot in the air around us like stale corpse-light. Without grail or moth, we have no chance against them.",
+	label: "The Long",
+	startdescription: "The Long of Port Noon have retired from the affairs of the greater world. They don't treat trespassers kindly, and it would be foolish to assault them. But they may be susceptible to the amusements of Moth, or the seductions of Grail.",
 	requirements: {guardian_long:1},
 	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
 	alternativerecipes: [
@@ -653,8 +642,8 @@
 	{id:"explorevaultguardian_long_highgrail",
 	actionId: "explore",
 	requirements:{grail:10},
-	label:"Our strength is matchless.",
-	startdescription:"The long are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+	label:"'We are here for your pleasure.'",
+	startdescription:"Even the Long know desire; perhaps especially the Long. This one will yield willingly to our attentions.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_long_success_grail",chance:100},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
@@ -662,8 +651,8 @@
 		{id:"explorevaultguardian_long_midgrail",
 	actionId: "explore",
 	requirements:{grail:5},
-	label:"Our strength is considerable.",
-	startdescription:"These long, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
+	label:"'We are here for your diversion.'",
+	startdescription:"This Long one welcomes our enticements, but they're still suspicious. We'll probably succeed.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_long_success_grail",chance:70},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
@@ -671,8 +660,8 @@
 		  	{id:"explorevaultguardian_long_lowgrail",
 	actionId: "explore",
 	requirements:{grail:1},
-	label:"Our strength may not be enough.",
-	startdescription:"The long are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
+		label:"'We... hope we may amuse you?",
+	startdescription:"The Long have the appetites of any mortal, but they are jaded by a thousand experiences. Perhaps we might yet entertain one enough, if we're lucky.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_long_success_grail",chance:30},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
@@ -681,8 +670,8 @@
 		  	{id:"explorevaultguardian_long_highmoth",
 	actionId: "explore",
 	requirements:{moth:10},
-	label:"We call upon the Ivory Dove, who knows the names of all the long.",
-	startdescription:"The long circle the grail of our vision like frayed dreams. The very air around us is chill with moth's shadow. They must recognise that.",
+	label:"'News! News from the Old Country! From all the Old Countries!'",
+	startdescription:"The Long are desperate for novelty. We'll take advantage of that, and we'll be gone before they know it.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_long_success_moth",chance:100},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
@@ -691,8 +680,8 @@
 		  	{id:"explorevaultguardian_long_midmoth",
 	actionId: "explore",
 	requirements:{moth:5},
-	label:"We call upon the Ivory Dove, who cannot be deceived.",
-	startdescription:"The long watch us closely, expressionless as saint-statues. But we are invested with the power of moth. Probably the long will recognise that.",
+	label:"'Very well: a wager.'",
+	startdescription:"Is this one toying with us? It's hard to be sure. But even if this is a game, they may permit us to leave. All will probably be well. ",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_long_success_moth",chance:70},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
@@ -701,8 +690,8 @@
 		  	{id:"explorevaultguardian_long_lowmoth",
 	actionId: "explore",
 	requirements:{moth:1},
-	label:"We call upon the Ivory Dove, from whom nothing more may be taken.",
-	startdescription:"The long boil and rattle in the darkness, but we have been touched by the Hours of moth. Perhaps they will recognise that.",
+	label:"'It's, ah, er, a funny story, actually...'",
+	startdescription:"The long boil and rattle in the darkness, but we have been touched by the Hours of moth. Perhaps they will recognise that, if we're lucky.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultguardian_long_success_moth",chance:30},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
@@ -711,8 +700,8 @@
 			{
 	id: "explorevaultguardian_long_success_grail",
 	actionId:"explore",
-	label: "The Wretched long",
-	startdescription: "When the long return to us, they use what matter they can if their bodies are gone: dust, rust, cobwebs, scraps and tatters. Now that we have broken them, these tatters are all that remain.",
+	label: "The Long Pleasure",
+	startdescription: "Did this Long really fall prey to the Grail's seductions? Or did they know exactly what they were doing? In any case, we have won both space and time enough -",
 	description: ".",
 	effects: {guardian_long:-1},
 	craftable: false,
@@ -723,8 +712,8 @@
 				{
 	id: "explorevaultguardian_long_success_moth",
 	actionId:"explore",
-	label: "The Wary long",
-	startdescription: "The long draw back, their almost-faces flat and watchful. They will not trouble us.",
+	label: "The Long Deception",
+	startdescription: "The immortal denizens of Noon are deceived, or amused, or caught up in the knots of a greater scheme yet. They won't interfere, this time.",
 	description: ".",
 	effects: {guardian_long:-1},
 	craftable: false,
@@ -735,8 +724,8 @@
 				{
 	id: "explorevaultguardian_long_failure",
 	actionId:"explore",
-	label: "The Wrath of the long",
-	startdescription: "The long are more like wind than flesh, but it doesn't do to underestimate the wind. Just now, they are a terror-fanged hurricane of pale shadow. Fall back. Fall back!",
+	label: "The Long Agony",
+	startdescription: "An immortal is angry. They may choose to strike someone down, or they may withhold their anger. It's very difficult to tell, with immortals - ",
 	description: ".",
 	craftable: false,
 		linked: [{id:"explorevault_casualty",chance:70},
