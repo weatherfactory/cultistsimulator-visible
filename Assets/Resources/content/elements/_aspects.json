@@ -91,6 +91,12 @@
             isAspect: true,
 			description: "'A sword does not kill; it is an instrument in the hand of the killer.' - Seneca the Younger"
         },
+		        {
+            id: "mirror",
+            label: "A Mirror",
+            isAspect: true,
+			description: "Crack light's skin, and light will bleed."
+        },
 		{
 		id: "riddle",
 		label: "Riddle".
@@ -539,6 +545,14 @@
             id: "restorepassion",
             label: "Restore Passion",
 			description: "Passion will be clarified.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded:true
+        },
+						 {
+            id: "crackmirror",
+            label: "Crack MirrorS",
+			description: "Mirrors will enter their cracked state.",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded:true
