@@ -174,8 +174,7 @@
 		{id: "paintsuccess", chance:30}],
         actionId: "work",
         requirements: {passion: 1,ritual:-1},
-        effects: {contentment:1,
-        },
+        deckeffect: {paintingresults:1},
 					slots: {
 				"Inspiration":
 					{
@@ -195,7 +194,8 @@
         label: "I've sold a painting!",
         actionId: "work",
         requirements: {},
-        effects: {funds: 2, contentment:1, mystique: 1},
+        effects: {funds: 2},
+		deckeffect: {paintingresults:1},
         startdescription: ".",
         description: "I've found a customer! She'll probably hang it in her spare bedroom and never look at it again. But her money is good.",
         warmup: 0,
