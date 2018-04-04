@@ -22,7 +22,7 @@
 	requirements:{vaultcontinent2:1},
 	effects: {peril_forest:1,guardian_monks:1},
 	slots:{"More": required: {follower:1,funds:1}},
-	startdescription: "I'm  convinced the Mithraeum holds more secrets. It's unlikely to be dangerous, but the search will require funds. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -73,13 +73,13 @@
 	},
 					{
 	id: "explorevaultcontinent1_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultcontinent1:1},
 	effects: {vaultcontinent1:-1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
@@ -91,8 +91,8 @@
 	requirements: {vaultcontinent2:1},
 	effects: {vaultcontinent2:-1,againstsisterhoodknotgreek:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
@@ -102,13 +102,13 @@
 	
 				{
 	id: "explorevaultcontinent3_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultcontinent3:1},
 	effects: {vaultcontinent3:-1,ingredientmothd:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
@@ -116,26 +116,26 @@
 	
 				{
 	id: "explorevaultcontinent4_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultcontinent4:1},
 	effects: {vaultcontinent4:-1,toolsecrethistoriesb:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
 	
 				{
 	id: "explorevaultcontinentdefault_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultcontinentdefault:1},
 	effects: {vaultcontinentdefault:-1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},

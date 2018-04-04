@@ -7,7 +7,7 @@
 	requirements:{vaultshires1:1},
 	effects: {guardian_serpent:1},
 	slots:{"More": required: {follower:1,funds:1}},
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Beneath the surface of the lake, or in some cliff-side nook, perhaps some relics remain for us yet. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -17,12 +17,12 @@
 	
 		 	{
 	id: "explore_vaultshires2_setup",
-	label: "Beginning an Expedition: Locwood Feb",
+	label: "Beginning an Expedition: Lockwood Fen",
 	actionId: "explore",
 	requirements:{vaultshires2:1},
 	effects: {peril_treacherousground:1,guardian_watchers:1},
 	slots:{"More": required: {follower:1,funds:1}},
-	startdescription: "I'm  convinced the Mithraeum holds more secrets. It's unlikely to be dangerous, but the search will require funds. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -73,26 +73,26 @@
 	},
 					{
 	id: "explorevaultshires1_success",
-	label: "The Deeper Sanctuary",
+	label: "The Chapel-Root",
 	actionId: "explore",
 	requirements: {vaultshires1:1},
 	effects: {vaultshires1:-1},
 	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "There are ruins beneath the water - just beneath, at wading depth. The lake has risen a little in all these years, but not enough to keep us out.",
+	description: "The chapel crypt is flooded, and the water soupy with old corpse-matter, but at last we bring up a wax-sealed coffer. Eighteenth-century? No older than that. Let's see what's within.",
 	warmup:10,
 	craftable: false
 	},
 	
 			{
 	id: "explorevaultshires2_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultshires2:1},
 	effects: {vaultshires2:-1},
 	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
@@ -100,13 +100,13 @@
 	
 				{
 	id: "explorevaultshires3_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultshires3:1},
 	effects: {vaultshires3:-1,toolwinterb:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
@@ -114,26 +114,26 @@
 	
 				{
 	id: "explorevaultshires4_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultshires4:1},
 	effects: {vaultshires4:-1},
 	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
 	
 				{
 	id: "explorevaultshiresdefault_success",
-	label: "The Deeper Sanctuary",
+	label: "",
 	actionId: "explore",
 	requirements: {vaultshiresdefault:1},
 	effects: {vaultshiresdefault:-1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "A lonely space, musty with the memory of blood. We have found the hidden door the highest grades of initiate used.",
-	description: "The altar tilts back like a jaw. Behind it is the pyramid-space where only the Sun-hunters and Dawn-givers might go. They have left their treasures.",
+	startdescription: "",
+	description: "",
 	warmup:10,
 	craftable: false
 	},
