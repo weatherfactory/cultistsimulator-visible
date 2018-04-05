@@ -28,7 +28,7 @@
 		          {
         id: "compensation",
             label: "Iron Spintria",
-			aspects: {tool:1, edge:1, secrethistories:1,,compensationvalue:2},
+			aspects: {tool:1, edge:1, secrethistories:1,compensationvalue:2},
             description: "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Iron spintriae are the lowest denomination, and display scenes of murder on their reverse side. "
         },
 		          {
@@ -93,6 +93,11 @@
             label: "Directions to Morland's",
             aspects:{},
             description: "Cryptic directions to the obscure address of a certain Morland, a dealer in the rarer sort of book."
+        },		{
+        id: "jumble",
+            label: "Jumble",
+            aspects:{},
+            description: "Old clothes, near-worthless accessories. It might pick up a few pennies somewhere, but it's of little use to me."
         }
 ]
 };

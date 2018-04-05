@@ -5,9 +5,13 @@
 label:"Discuss occult business with a Follower",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:-1},
-slots: {"Subject": {description:"Cult business; a target; or another topic.",required: {society:1,evidence:1,hunter:1}}},
+slots: {"Subject": {description:"Cult business; a target; or another topic.",required: {society:1,evidence:1,hunter:1,ingredient:1}}},
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
+{id:"followeraction_repairtoollanternbcracked",chance:100},
+{id:"followeraction_repairtoollanterndcracked",chance:100},
+{id:"followeraction_repairtoollanternfcracked",chance:100},
+
 {id:"followeraction_abducthighedge",chance:100},
 {id:"followeraction_abductmidedge",chance:100},
 {id:"followeraction_abductlowedge",chance:100},
@@ -43,6 +47,94 @@ description: "Nothing, then.",
 warmup: 60,
 craftable: true
 },
+
+{id:"followeraction_repairtoollanternbcracked",
+label:"Repair a Cracked Noonstone",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternbcracked:1},
+startdescription:"We can begin to repair this, but it will take Funds to purchase the necessary materials.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternbcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternbcracked_attempt",
+label:"Repairing a Cracked Noonstone",
+actionId: "talk",
+slots: {Materials:{description:"Rare fuels and odd powders",required:{funds:1}}},
+startdescription:"My follower needs Funds to complete their task.",
+description: "I couldn't provide the materials my follower needed. The stone is unredeemed.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternbcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternbcracked_succeed",
+label:"Repairing a Cracked Noonstone",
+actionId: "talk",
+requirements:{funds:1},
+startdescription:"My follower is at work on the mirror.",
+description: "The mirror is repaired! It shines again as it did once before.",
+effects:{funds:-1,toollanternbcracked:-1,toollanternb:1}
+},
+
+
+{id:"followeraction_repairtoollanterndcracked",
+label:"Repair a Cracked Wildering Mirror",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanterndcracked:1},
+startdescription:"We can begin to repair this, but it will take at least an Iron Spintria to purchase the necessary materials.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanterndcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanterndcracked_attempt",
+label:"Repairing a Cracked Wildering Mirror",
+actionId: "talk",
+slots: {Materials:{description:"Shining songs and exotic alloys",required:{compensationvalue:1}}},
+startdescription:"My follower needs an Iron Spintria, or better, to complete their task.",
+description: "I couldn't provide the materials my follower needed. The mirror is unredeemed.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanterndcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanterndcracked_succeed",
+label:"Repairing a Cracked Wildering Mirror",
+actionId: "talk",
+requirements:{compensationvalue:2},
+startdescription:"My follower is at work on the mirror.",
+description: "The mirror is repaired! It shines again as it did once before.",
+effects:{compensationvalue:-1,toollanterndcracked:-1,toollanternd:1}
+},
+
+
+
+{id:"followeraction_repairtoollanternfcracked",
+label:"Repair a Cracked Watchman's Glass",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternfcracked:1},
+startdescription:"We can begin to repair this, but it will take at least a Bronze Spintria to purchase the necessary materials.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternfcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternfcracked_attempt",
+label:"Repairing a Cracked Watchman's Glass",
+actionId: "talk",
+slots: {Materials:{description:"Shining songs and exotic alloys",required:{compensationvalue:1}}},
+startdescription:"My follower needs an Iron Spintria, or better, to complete their task.",
+description: "I couldn't provide the materials my follower needed. The mirror is unredeemed.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternfcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternfcracked_succeed",
+label:"Repairing a Cracked Watchman's Glass",
+actionId: "talk",
+requirements:{compensationvalue:4},
+startdescription:"My follower is at work on the mirror.",
+description: "The mirror is repaired! It shines again as it did once before.",
+effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
+},
+
+
+
+
 
 	   {id: "followeraction_abducthighedge",
 	   label: "Cult Business: Abduct a Stranger",
@@ -139,7 +231,7 @@ craftable: true
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a fresh corpse and its former belongings.",
 	  effects: {notoriety:1,corpse:1},
-	  deckeffect: {"vaultcontentsc":1},
+	  deckeffect: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
@@ -197,7 +289,7 @@ craftable: true
 	  actionId:"talk",
 	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
 	  description:"My follower has returned with the rewards of their labour.",
-	  deckeffect: {"vaultcontentsc":1},
+	  deckeffect: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
@@ -317,7 +409,7 @@ craftable: true
 	  startdescription: "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
 	  description:"My follower has returned with their haul.",
 	  effects: {notoriety:1,funds:1},
-	  deckeffect: {"vaultcontentsc":1},
+	  deckeffect: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
@@ -491,7 +583,7 @@ craftable: true
 	  startdescription: "My follower is attempting a profitable deception.",
 	  description:"A successful deception! Here are the rewards.",
 	  effects: {notoriety:1,funds:1},
-	  deckeffect: {"vaultcontentsc":1},
+	  deckeffect: {"robberyrewards":2},
 	  warmup:30	  
 	  },	  
 	  
