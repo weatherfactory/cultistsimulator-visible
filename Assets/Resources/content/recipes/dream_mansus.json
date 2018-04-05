@@ -510,53 +510,6 @@ alternativerecipes: [
 	
 	
 	
-	
-	
-	
-	
-	
-	{
-	id: "dreamsofaglory",
-	label: "Dreams of a Glory",
-	actionId: "dream",
-	requirements: {reason: 1},
-	effects: {},
-	startdescription: "There was once a man who said that the sleep of reason produced monsters.",
-	description: ".",
-	warmup: 5,
-	craftable: true,
-	linked: [
-	{id: "dreamtreeoflights",chance: 50},
-	{id: "dreamlightthroughstainedglass", chance: 100}
-	]
-	},
-	{
-	id: "dreamtreeoflights",
-	label: "The Tree of Lights",
-	actionId: "dream",
-	effects: {contentment:1,fragmentmoth:1},
-	slots: {More: {}},
-	alternativerecipes: [{id:"nightmarecleansingdawn",chance: 100}],
-	startdescription: "A dream: in the breathy hush of a summer night, a tree hangs heavy with fruit. Each glows topaz or rose, brighter than a fire-fly, dimmer than a lamp. I could consume one; or I could watch the moths flutter and the tree sway, enjoy the heady brush of the breeze.",
-	description: "The dawn will come, and I won't hasten it. Each fruit is an eye, but each eye is closed.",
-	warmup: 60,
-	maxexecutions:1
-	},
-	{
-	id: "dreamlightthroughstainedglass",
-	label: "A Journey in a Window",
-	actionId: "dream",
-	effects: {contentment:1},
-	slots: {More: {}},
-	alternativerecipes: [{id:"nightmarehersault",chance: 100}],
-	startdescription: "A dream: the stained glass of my life, in a series of windows. Here I'm born, pink and appalling. Over there, I'll die. The sunlight slants to brighten the white boards of the floor with colour. Elsewhere they're pale as bone. A curious dreamer might lift them. Most would examine their life in windows.",
-	description: "They've shown my birth in the red church and my death where the woods turn white. The longer I look at the panes between, the brighter the sun.",
-	warmup: 60,
-	}
-	
-	
-	
-	
 	]
 
 }
