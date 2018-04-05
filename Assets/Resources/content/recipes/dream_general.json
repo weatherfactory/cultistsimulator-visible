@@ -116,15 +116,21 @@
 
 
 	{
-	id: "dreamreason_router",
+	id: "dreamreason",
 	label: "The Wandering Mind",
 	actionId: "dream",
 	requirements: {reason: 1},
 	effects: {},
 	startdescription: "There was once a man who said that the sleep of reason produced monsters. Often it is healthy to let the mind wander in sleep. But if I keep dreaming, sooner or later, some sort of monster will rise from my own fears.",
 	description: ".",
-	warmup: 5,
+	warmup: 60,
 	craftable: true,
+	linked: [{id:"dream_router",chance:100}]
+	},
+	
+	{id: "dream_router",
+	label: "The Crowds of Sleep",
+	actionId: "dream",
 	deckeffect: {dreamreasonresults:1},
 	linked: [
 	{id: "dreamcontentment",chance: 100},
@@ -133,7 +139,8 @@
 	{id: "dreamglimmering", chance: 100},
 	{id: "nightmarehersault", chance: 100},
 	{id: "nightmarecleansingdawn", chance: 100},
-	]
+	],
+	warmup:10
 	},
 	{
 	id: "dreamcontentment",

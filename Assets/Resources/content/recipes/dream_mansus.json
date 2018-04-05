@@ -56,7 +56,7 @@
 	requirements: {waywood:1},
 	slots: {Path: {description:"Employ Passion to enter the Wood - or, with the right lore, find the way to the White Door, the door where the dead throng.",required: {lore:1,passion:1}}},
 	startdescription: "If I have enough Passion, I can walk the dream-road to the Wood. If I have the right knowledge, I might be able to find the way beyond it.",
-	description: "The waters of the Wood run cold and deep, but never clear. Rote memory alone will not take me there. I must engage my Passion.",
+	description: "The waters of the Wood run cold and deep, but never clear. Rote memory alone will not take me there. I must engage my Passion. Now I drift into other dreams.",
 	alternativerecipes: [
 	{id:"dreamenterwood",chance:100},
 	{id:"dreamreachwhitelantern",chance:100},
@@ -68,6 +68,8 @@
 	],
 	craftable:true,
 	warmup:60,
+	
+	linked: [{id:"dream_router",chance:100}],
 	},
 	{id: "dreamenterwood",
 	label: "Entering the Wood",
@@ -86,7 +88,8 @@
 	actionId: "dream",
 	requirements: {lore:1,lantern:1},
 	startdescription: "There is a House in the Wood. This much I know. Here is a light through the trees - ",
-	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further.",
+	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 
 	warmup:10
 	},
@@ -106,8 +109,8 @@
 	actionId: "dream",
 	requirements: {lore:1,knock:1},
 	startdescription: "There is a House in the Wood. This much I know. Here is a light through the trees - ",
-	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further.",
-
+	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	warmup:10
 	},
 		
@@ -127,7 +130,8 @@
 	actionId: "dream",
 	requirements: {lore:1,winter:1},
 	startdescription: "There is a House in the Wood. This much I know. Here is a light through the trees - ",
-	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further.",
+	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 
 	warmup:10
 	},
@@ -149,7 +153,8 @@
 	requirements: {waywhite:1},
 	slots: {Ascent: {description: "Invest Health to pass the White Door - or follow desire to the Stag Door, the door of the Know.",required: {desire:1,health:1}}},
 	startdescription: "In my dreams, I know the path to the White Door, through the Bounds. But that path is thronged with the Dead who pass that way. I will need Health to resist their chill.",
-	description: "The narrow path is crowded with slow shapes - the air shivers with their sighs. My blood is thicked with cold. I must turn back.",
+	description: "The narrow path is crowded with slow shapes - the air shivers with their sighs. My blood is thicked with cold. I must turn back. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	craftable: true,
 alternativerecipes: [
 	{id:"dreamenterwhite",chance:100},
@@ -199,7 +204,8 @@ alternativerecipes: [
 	requirements: {riddle:1},
 	slots: {Answer: {required: {lore:1},}},
 	startdescription: "In my dream, I will stand again before the Stag Door: a ridged barrier of blood-streaked horn, broken long ago, not yet quite healed. That vast and golden Head, Ghirbi, will await the answer to my riddle.",
-	description: "The Head is silent. The Door remains closed. The waking world calls me back.",
+	description: "The Head is silent. The Door remains closed. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	alternativerecipes: [{id: "dream_answerstagriddle_1",chance:100},
 	{id: "dream_answerstagriddle_1",chance:100},
 	{id: "dream_answerstagriddle_2",chance:100},
@@ -272,8 +278,8 @@ alternativerecipes: [
 	label:"This is Not the Answer",
 	requirements: {lore:1},
 	startdescription: "Ghirbi has fallen very far. It may not enter the House, and one of its few satisfactions is to deny entry. It has too much honour to mock me, but I see the satisfaction in its golden eyes. 'That is not,' it says, with relish, 'the answer.'",
-	description: "I am awake. My eyes are open, and the Stag Door remains closed.",
-	craftable: false
+	description: "I am awake. My eyes are open, and the Stag Door remains closed. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	},
 	
 					{
@@ -283,7 +289,8 @@ alternativerecipes: [
 	requirements: {waystag_after:1},
 	slots: {Ascent: {description: "Invest Reason to pass the Stag Door - or, with the right lore, find the way to the Spider's Door, the door where blood is spilled.",required: {reason:1,lore:1}}},
 	startdescription: "In my dreams, I know the path to the stag Door, through the maze of the Bounds. Ghirbi will let me pass, but the path is always a puzzle. I will need Reason.",
-	description: "Here in the high dry byways of the Bounds are the intricate fissures and snares of ten thousand years of time. My Reason is lacking. I will wake without sight of the Door.",
+	description: "Here in the high dry byways of the Bounds are the intricate fissures and snares of ten thousand years of time. My Reason is lacking. I will wake without sight of the Door. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	craftable: true,
 alternativerecipes: [
 	{id:"dreamenterstag",chance:100},
@@ -314,8 +321,8 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,lantern:1},
 	startdescription: "In dreams, the Silken Sands are the place that whispers. Grey grains sift, grey weeds quiver. I have read of the angular tracks one must follow, of the Sands' arched, unseen, slow-stepping residents - " ,
-	description: "The Sands swallow my footsteps. They rush in to clog my mouth and fill my eyes... I will wake with my tongue swollen and my throat cracked dry. This is the right approach, but I must know more to travel higher.",
-
+	description: "The Sands swallow my footsteps. They rush in to clog my mouth and fill my eyes... I will wake with my tongue swollen and my throat cracked dry. This is the right approach, but I must know more to travel higher. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	warmup:10
 	},
 		
@@ -334,7 +341,8 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,knock:1},
 	startdescription: "In dreams, the Silken Sands are the place that whispers. Grey grains sift, grey weeds quiver. I know of the words that open the wind - " ,
-	description: "The Sands swallow my footsteps. They rush in to clog my mouth and fill my eyes... I will wake with my tongue swollen and my throat cracked dry. This is the right approach, but I must know more to travel higher.",
+	description: "The Sands swallow my footsteps. They rush in to clog my mouth and fill my eyes... I will wake with my tongue swollen and my throat cracked dry. This is the right approach, but I must know more to travel higher. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 
 	warmup:10
 	},
@@ -355,7 +363,8 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,grail:1},
 	startdescription: "In dreams, the Silken Sands are the place that whispers. Grey grains sift, grey weeds quiver. THIRST is the only guide through the Sands - my THIRST, or the THIRST of the Spider's Door -" ,
-	description: "The Sands swallow my footsteps. They rush in to clog my mouth and fill my eyes... I will wake with my tongue swollen and my throat cracked dry. This is the right approach, but I must know more to travel higher.",
+	description: "The Sands swallow my footsteps. They rush in to clog my mouth and fill my eyes... I will wake with my tongue swollen and my throat cracked dry. This is the right approach, but I must know more to travel higher. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 
 	warmup:10
 	},
@@ -377,7 +386,8 @@ alternativerecipes: [
 	requirements: {wayspider:1},
 	slots: {Ascent: {description: "Provide a blood sacrifice to satisfy the THIRST of the Spider's Door - or, with the right lore, find the way to the Peacock's Door, the door where light is spilt like blood.",required: {prisoner:1,lore:1}}},
 	startdescription: "In my dreams, I know the path through the Silken Sands to the Spider's Door. If I slake its THIRST by spilling fresh blood before I sleep, it will open to me.",
-	description: "Here in the folds of dream is the door, glistening black like the abdomen of a scoliid wasp, ever marked with ever-shrinking spots of blood. I have not satisfied its THIRST, and it will not open.",
+	description: "Here in the folds of dream is the door, glistening black like the abdomen of a scoliid wasp, ever marked with ever-shrinking spots of blood. I have not satisfied its THIRST, and it will not open. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	craftable: true,
 alternativerecipes: [
 	{id:"dreamenterspider",chance:100},
@@ -408,7 +418,8 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,lantern:1},
 	startdescription: "The light of the divided Sun penetrates my dream, but not enough to thaw the long-dead frost-blossoms of the Glassgarden. Each step I take crushes another plant to powder. This is the way the brighter Hours once came, but now it's silent, here in the clouds - " ,
-	description: "The Glassgarden's chill pierces me at every pore. I will wake white-blue with cold. This is the right approach, but I must know more to travel higher."
+	description: "The Glassgarden's chill pierces me at every pore. I will wake white-blue with cold. This is the right approach, but I must know more to travel higher. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	},
 	
 		{
@@ -426,8 +437,8 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,knock:1},
 	startdescription: "The light of the divided Sun penetrates my dream, but not enough to thaw the long-dead frost-blossoms of the Glassgarden. Each step I take crushes another plant to powder.I almost know the way - " ,
-	description: "The Glassgarden's chill pierces me at every pore. I will wake white-blue with cold. This is the right approach, but I must know more to travel higher.",
-	warmup:10
+	description: "The Glassgarden's chill pierces me at every pore. I will wake white-blue with cold. This is the right approach, but I must know more to travel higher. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 	},
 		
 	{
@@ -436,7 +447,7 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,knock:10},
 	startdescription: "The light of the divided Sun penetrates my dream, but not enough to thaw the long-dead frost-blossoms of the Glassgarden. Each step I take crushes another plant to powder. I will step carefully. I have learnt the way - " ,
-	description: "The Peacock Door: proud and shining amethyst, its glow tinting the snow-pale shapes of the Glassgarden. This is the highest point where mortals may penetrate the Mansus. No crack mars its surface. This is not a door that opens, although, it is said, it may bleed light.",
+	description: "The Peacock Door: proud and shining amethyst, its glow tinting the snow-pale shapes of the Glassgarden. This is the highest point where mortals may penetrate the Mansus. No crack mars its surface. This is not a door that opens, although, it is said, it may bleed light."
 	effects: {waypeacock:1},
 	},
 	
@@ -446,7 +457,8 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {lore:1,edge:1},
 	startdescription: "The light of the divided Sun penetrates my dream, but not enough to thaw the long-dead frost-blossoms of the Glassgarden. Each step I take crushes another plant to powder. This is as it must be - " ,
-	description: "The Peacock Door: proud and shining amethyst, its glow tinting the snow-pale shapes of the Glassgarden. This is the highest point where mortals may penetrate the Mansus. No crack mars its surface. This is not a door that opens, although, it is said, it may bleed light.",
+	description: "The Peacock Door: proud and shining amethyst, its glow tinting the snow-pale shapes of the Glassgarden. This is the highest point where mortals may penetrate the Mansus. No crack mars its surface. This is not a door that opens, although, it is said, it may bleed light. Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
 
 	warmup:10
 	},
