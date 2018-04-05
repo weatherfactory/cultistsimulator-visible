@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
@@ -16,5 +17,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationComplete();
         void ResetSituation();
         void Halt();
+        void ReceiveTextNotification(INotification notification);
     }
 }

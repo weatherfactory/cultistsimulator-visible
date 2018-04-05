@@ -38,6 +38,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SetText(string description) {
+            //we often add a . to indicate that the description is intentionally empty.
+            //if we do that, or if it's a mistaken empty string, just go back.
+            if (description == "." || description == string.Empty)
+                return;
+
             if (Notes.Count == 1 && Notes[0].Description == description)
                 return;
 
@@ -54,7 +59,13 @@ namespace Assets.CS.TabletopUI {
 			ShowPageNum(setNotes.Count - 1);
 		}
 
-        public void AddText(string description) {
+        public void AddText(string description)
+        {
+            //we often add a . to indicate that the description is intentionally empty.
+            //if we do that, or if it's a mistaken empty string, just go back.
+            if (description == "." || description == string.Empty)
+                return;
+
             if (Notes.Count > 0 && Notes[Notes.Count - 1].Description == description)
                 return;
             var newNote = new SituationNote(description);

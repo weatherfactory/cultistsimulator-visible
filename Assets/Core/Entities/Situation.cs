@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
+using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -167,7 +168,10 @@ namespace Assets.Core.Entities {
 
             var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
             
-            if (linkedRecipe!=null) { 
+            if (linkedRecipe!=null) {
+                //send the completion description before we move on
+                INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
+                subscriber.ReceiveTextNotification(notification);
                 currentPrimaryRecipe = linkedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 Beginning(currentPrimaryRecipe);

@@ -255,6 +255,12 @@ namespace Assets.TabletopUi {
             }
         }
 
+        public void ReceiveTextNotification(INotification notification)
+        {
+            situationWindow.ReceiveTextNote(notification);
+        }
+
+
         /// <summary>
         /// The situation is complete. DisplayHere the output cards and description
         /// </summary>
@@ -263,7 +269,8 @@ namespace Assets.TabletopUi {
             INotification notification = new Notification(SituationClock.GetTitle(), SituationClock.GetDescription());
             SetOutput(outputStacks.ToList());
 
-            situationWindow.ReceiveTextNote(notification);
+            ReceiveTextNotification(notification);
+         
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
             situationWindow.SetComplete();
