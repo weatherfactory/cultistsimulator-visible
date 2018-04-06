@@ -46,7 +46,7 @@ alternativerecipes:[{id: "legacyphysicianopenstudy",chance:100,additional:true}]
 	actionId:"craving",
 	label:"Belief?",
 	startdescription:"I could give in to the dreams. But they <i>will</i> devour my Reason.",
-	description: "..",
+	description: ".",
 	alternativerecipes:[{id: "legacyphysicianhookfulfilment",chance:100}],
 	slots: {"Temptation": {required: {reason:1},consumes:true}},
 	linked: [{id: "legacyphysicianhook",chance:100}],
