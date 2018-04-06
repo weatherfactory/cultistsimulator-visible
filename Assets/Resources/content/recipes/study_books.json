@@ -1105,11 +1105,7 @@ craftable: true
 	
 	
 
-	
-	
-	
-	
-	
+
 	
 
 		{
@@ -1135,6 +1131,30 @@ craftable: true
         craftable: true
     },
 				{
+        id: "studytextbookaramaic",
+        label: "Improve my Aramaic",
+        actionId: "study",
+        requirements: {textbookaramaic: 1},
+        effects: {textbookaramaic: -1,scholararamaic:1},
+		startdescription: "There is, of course, no single 'Aramaic', but I will learn what I can.",
+        description: "I have achieved a basic understanding.",
+        warmup: 60,
+        craftable: true
+    },
+	
+				{
+        id: "studytextbooksanskrit",
+        label: "Improve my Sanskrit",
+        actionId: "study",
+        requirements: {textbooksanskrit: 1},
+        effects: {textbooksanskrit: -1,scholarsanskrit:1},
+		startdescription: "The name has been translated as 'the refined language'.",
+        description: "So many words, such little time. I will keep my reference works close at hand.",
+        warmup: 60,
+        craftable: true
+    },
+	
+				{
         id: "studytextbookfucine",
         label: "Develop an understanding of the long-dead Fucine language",
         actionId: "study",
@@ -1145,6 +1165,47 @@ craftable: true
         warmup: 60,
         craftable: true
     },
+	
+	
+					{
+        id: "studytextbookphrygian",
+        label: "Learn basic Phrygian",
+        actionId: "study",
+        requirements: {textbookphrygian: 1},
+        effects: {textbookphrygian: -1,scholarphrygian:1},
+		startdescription: "Phrygian, the language of Midas, of Tecmessa, of the priests of Cybele,",
+        description: "Something about this language stirs the blood. Perhaps it is fortunate that none now remembers its lost sounds.",
+        warmup: 60,
+        craftable: true
+    },
+	
+					{
+        id: "studytextbookmandaic",
+        label: "Learn something of the Deep Mandaic",
+        actionId: "study",
+        requirements: {textbookmandaic: 1},
+        effects: {textbookmandaic: -1,scholarmandaic:1},
+		startdescription: "Mandaic is the language of a Gnostic sect in the remotest part of Persia. Deep Mandaic remains the language of a sect within that sect, but once it was spoken by adepts.",
+        description: "This tongue has just enough in common with Aramaic to make my studies possible; but not to make them easy.",
+        warmup: 60,
+        craftable: true
+    },
+	
+	
+					{
+        id: "studytextbookvak",
+        label: "Acquire some knowledge of Vak",
+        actionId: "study",
+        requirements: {textbookvak: 1},
+        effects: {textbookvak: -1,scholarvak:1},
+		startdescription: "Do the Hours speak? If they do, this may be the language they use.",
+        description: "It has been said that one does not learn Vak, so much as come to know here. Well, now she and I are a little better acquainted.",
+        warmup: 60,
+        craftable: true
+    },
+	
+	
+	
 		{
         id: "studytextbookreason",
         label: "Improve my Reason",

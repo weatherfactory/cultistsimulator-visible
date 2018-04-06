@@ -68,10 +68,41 @@
             label: "The Ciphered Journal of Alessandro Torlonia [Latin]",
             aspects:
             {text:1},
-            description: "Prince Alessandro spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to decipher Fucine texts... but it's written in a simple Latin cipher. You'll need to decipher it first.",
+            description: "Prince Alessandro spent years in secret study of the tablets taken from the Fucine Marshes in central Italy. His work will allow you to read Fucine texts... but it's written in a simple Latin cipher. You'll need to decipher it first.",
 			xtriggers: {scholarlatin: textbookfucine},
 			unique:true
         },	
+		
+									 {
+        id: "textbookphrygiangreek",
+            label: "The Velshorn Inscriptions [Greek]",
+            aspects:
+            {text:1},
+            description: "Hundreds of matching lines in Greek and Phrygian poetry, copied from a wall. Similar identical to the inscriptions Cal Velshorn discovered in Halicarnassus",
+			xtriggers: {scholargreek: textbookphrygian},
+			unique:true
+        },	
+											 {
+        id: "textbookmandaicaramaic",
+            label: "The August Stone [Aramaic]",
+            aspects:
+            {text:1},
+            description: "A tremendous bowl, big as a gong, carved from black basalt, with matching incantations in Aramaic and Mandaic. [If you speak Aramaic, you can use this as a key to Mandaic.]",
+			xtriggers: {scholararamaic: textbookmandaic},
+			unique:true
+        },	
+		
+											 {
+        id: "textbookvaksanskrit",
+            label: "An Enigmatic Sculpture [Sanskrit]",
+            aspects:
+            {text:1},
+            description: "An elaborate ivory sculpture of impossible intricacy. Around and across its surfaces, Sanskrit inscriptions spiral against matching lines of Vak. [If you speak Sanskrit, you can use this to learn Vak, the first language of the world.]",
+			xtriggers: {scholarsanskrit: textbookvak},
+			unique:true
+        },	
+		
+		
 
 								 {
         id: "irreproachabletraditionssocietynobleendeavourlatin",
