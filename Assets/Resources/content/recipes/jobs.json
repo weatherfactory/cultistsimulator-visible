@@ -15,7 +15,7 @@
     },
 	{id: "gloverandgloverjuniorwork",
 	label: "Junior Work at Glover & Glover",
-	  requirements: {gloverandgloverjuniorjob: 1},
+	  requirements: {gloverandgloverjuniorjob: 1,ritual:-1},
 	          alternativerecipes:
 		[{id: "gloverandglover_diligence", chance:100}],
 		effects: { funds: 1},
@@ -111,7 +111,7 @@
 	},
 	{id: "institutephysicianwork",
 	label: "Work at the Institute",
-	  requirements: {institutephysicianjob: 1},
+	  requirements: {institutephysicianjob: 1,ritual:-1},
 		effects: { funds: 2},
 	actionId:"work",
         startdescription: "There is a dank and clinging smell to the Institute halls that never quite leaves one. Perhaps it is the paint. Perhaps it is the patients. Perhaps it is something in the walls.",
