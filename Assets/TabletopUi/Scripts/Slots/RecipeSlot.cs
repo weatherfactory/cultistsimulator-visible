@@ -63,14 +63,14 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        public bool IsGreedy {
-            get { return GreedyIcon.activeInHierarchy; }
-            set { GreedyIcon.SetActive(value); }
+        public bool IsGreedy
+        {
+            get { return GoverningSlotSpecification.Greedy; }
         }
 
-        public bool IsConsuming {
-            get { return ConsumingIcon.activeInHierarchy; }
-            set { ConsumingIcon.SetActive(value); }
+        public bool IsConsuming
+        {
+            get { return GoverningSlotSpecification.Consumes; }
         }
 
         public enum SlotModifier { Locked, Ongoing, Greedy, Consuming };
@@ -95,8 +95,8 @@ namespace Assets.CS.TabletopUI {
 
             SlotLabel.text = slotSpecification.Label;
             GoverningSlotSpecification = slotSpecification;
-            IsGreedy = slotSpecification.Greedy;
-            IsConsuming = slotSpecification.Consumes;
+            GreedyIcon.SetActive(slotSpecification.Greedy);
+            ConsumingIcon.SetActive(slotSpecification.Consumes);
         }
 
         bool CanInteractWithDraggedObject(DraggableToken token) {

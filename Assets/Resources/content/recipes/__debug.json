@@ -8,6 +8,29 @@ description: "end test deck",
 warmup: 1,
 craftable:false
 },
+
+
+{id: "_pulla",
+label: "Pull A",
+actionId: "pulla",
+startdescription: "Pulling A..."
+description: "...pulled",
+warmup: 60,
+craftable:false,
+slots: {Reputation: {required:{reputation:1},greedy:true}},
+},
+
+{id: "_pullb",
+label: "Pull B",
+actionId: "pullb",
+startdescription: "Pulling AB.."
+description: "...pulled",
+warmup: 60,
+craftable:false,
+slots: {Reputation: {required:{reputation:1},greedy:true}},
+},
+
+
 		{
         id: "_ascensionending",
         label: "Display Ascension Ending",
