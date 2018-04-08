@@ -54,34 +54,23 @@
         id: "gloverandgloverjob",
             label: "Position at Glover & Glover",
             aspects:{},
-			slots: {
-							"Diligence":
-					{
+			slots: [{id:"Diligence",
 					required: {reason: 1},
-					forbidden: {},
 					description: "Extra effort. It might help, if I'm very lucky."
-					}
-					},
+					}],
             description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk."
         },
 						     {
         id: "gloverandgloverseniorjob",
             label: "Senior Position at Glover & Glover",
             aspects:{},
-			slots: {
-					"Diligence":
-					{
+			slots: [{id:"Diligence":
 					required: {reason: 1},
-					forbidden: {},
 					description: "Extra effort. I don't know why I would bother."
 					},
-				"Devotion":
-					{
-					required: {reason: 1},
-					forbidden: {},
+			{id:"Devotion":required: {reason: 1},
 					description: "Extra effort. I don't know why I would bother."
-					}
-				},
+				}],
             description: "I suppose, theoretically, I could rise higher, if someone died."
         },
 			{id: "institutephysicianjob",

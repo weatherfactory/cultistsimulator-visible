@@ -57,19 +57,16 @@ public class ContentImporter
         contentImportProblems.Add(new ContentImportProblem(problemDesc));
     }
 
-    public List<SlotSpecification> AddSlotsFromHashtable(Hashtable htSlots)
+    public List<SlotSpecification> AddSlotsFromArrayList(ArrayList alSlots)
     {
         List<SlotSpecification> cssList = new List<SlotSpecification>();
 
-
-        if (htSlots != null)
-        {
-            foreach (string k in htSlots.Keys)
+   
+            foreach (Hashtable htThisSlot in alSlots)
             {
+                string slotId = htThisSlot[NoonConstants.KID].ToString();
 
-                Hashtable htThisSlot = htSlots[k] as Hashtable;
-
-                SlotSpecification slotSpecification = new SlotSpecification(k);
+                SlotSpecification slotSpecification = new SlotSpecification(slotId);
                 try
                 {
                     if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
@@ -97,12 +94,12 @@ public class ContentImporter
                 }
                 catch (Exception e)
                 {
-                    LogProblem("Couldn't retrieve slot " + k + " - " + e.Message);
+                    LogProblem("Couldn't retrieve slot " + slotId + " - " + e.Message);
                 }
 
                 cssList.Add(slotSpecification);
             }
-        }
+        
 
         return cssList;
 
@@ -136,7 +133,7 @@ public class ContentImporter
 
 
             Hashtable htAspects = htElement.GetHashtable(NoonConstants.KASPECTS);
-            Hashtable htSlots = htElement.GetHashtable(NoonConstants.KSLOTS);
+            ArrayList alSlots = htElement.GetArrayList(NoonConstants.KSLOTS);
             Hashtable htXTriggers = htElement.GetHashtable(NoonConstants.KXTRIGGERS);
 
 
@@ -172,7 +169,8 @@ public class ContentImporter
                     element.Unique = false;
 
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
-                element.ChildSlotSpecifications = AddSlotsFromHashtable(htSlots);
+                if(alSlots!=null)
+                element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
                 if (htXTriggers != null)
                 {
                     foreach (string k in htXTriggers.Keys)
@@ -561,8 +559,9 @@ public class ContentImporter
             try
             {
 
-                Hashtable htSlots = htEachRecipe.GetHashtable(NoonConstants.KSLOTS);
-                r.SlotSpecifications = AddSlotsFromHashtable(htSlots);
+                ArrayList alSlots = htEachRecipe.GetArrayList(NoonConstants.KSLOTS);
+                if(alSlots!=null)
+                r.SlotSpecifications = AddSlotsFromArrayList(alSlots);
                 if (r.SlotSpecifications.Count > 1)
                     LogProblem(r.Id + " has more than one slot specified, which we don't allow at the moment.");
             }

@@ -5,7 +5,7 @@
 	label: "The Dry Soul Curse",
 	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without Lantern or Heart, it may follow us back home and dessicate the spirit.",
 	requirements: {curse_dread:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance",description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_dread_highheart",chance:100},
 	{id: "explorevaultcurse_dread_highlantern",chance:100},
@@ -107,7 +107,7 @@
 	label: "The Dry Soul Curse",
 	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without winter or Heart, it may follow us back home and dessicate the spirit.",
 	requirements: {curse_visions:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_visions_highheart",chance:100},
 	{id: "explorevaultcurse_visions_highwinter",chance:100},
@@ -211,7 +211,7 @@
 	label: "The Dry Soul Curse",
 	startdescription: "The treasures ahead lie under a Dry Soul Curse. Without grail or Heart, it may follow us back home and dessicate the spirit.",
 	requirements: {curse_affliction:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_affliction_highheart",chance:100},
 	{id: "explorevaultcurse_affliction_highgrail",chance:100},
@@ -316,7 +316,7 @@
 	label: "Curse-from-Nowhere",
 	startdescription: "Here is a place where the world's skin yellowed with fever. Lantern or Moth might protect us. Nothing else will. ",
 	requirements: {curse_nowhere:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultcurse_nowhere_highmoth",chance:100},
 	{id: "explorevaultcurse_nowhere_highlantern",chance:100},

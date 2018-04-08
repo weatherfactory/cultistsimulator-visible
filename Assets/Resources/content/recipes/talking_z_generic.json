@@ -6,7 +6,7 @@
 label:"Arrange a meeting with an adversary",
 actionId: "talk",
 requirements: {hunter: 1},
-slots: {"Subject": {description:"A topic of conversation... or a minion who will destroy them."}},
+slots: [{id:"Subject",description:"A topic of conversation... or a minion who will destroy them."}],
 alternativerecipes:[
 {id:"hunterattackhighedge",chance:100},
 {id:"hunterattackmidedge",chance:100},
@@ -25,7 +25,7 @@ craftable: true
 label:"Speak to something I have summoned",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:1},
-slots: {"Subject": {description:"A topic of conversation... or a target."}},
+slots: [{id:"Subject",description:"A topic of conversation... or a target."}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 {id:"discussfucinespirit",chance:100},

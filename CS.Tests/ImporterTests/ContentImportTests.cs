@@ -48,7 +48,7 @@ namespace CS.Tests
         private const int SLOT_REQUIRED_ASPECT_VALUE = 1;
         private const string SLOT_FORBIDDEN_ASPECT_ID = "slotaspect2";
         private const int SLOT_FORBIDDEN_ASPECT_VALUE = 1;
-        private const PortalEffect RECIPE_1_PORTALEFFECT = PortalEffect.PeacockGate;
+        private const PortalEffect RECIPE_1_PORTALEFFECT = PortalEffect.PeacockDoor;
 
 
 

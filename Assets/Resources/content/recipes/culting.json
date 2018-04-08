@@ -263,7 +263,7 @@
         actionId: "cult",
         requirements: {},
         effects: {},
-		slots: {"Doctrine": {required: {lore: 1},description: "My society will focus on one principle."}}
+		slots: [{id:"Doctrine",required: {lore: 1},description: "My society will focus on one principle."}],
         startdescription: "I will determine a name, a doctrine, an oath. [You need lore to determine a founding principle.]",
         description: "",
         warmup: 10,

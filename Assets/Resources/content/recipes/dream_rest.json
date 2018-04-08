@@ -6,8 +6,7 @@
         label: "Heal?",
         actionId: "dream",
         requirements: {illhealth: 1},
-            		slots:
-						{Nourishment: {required: {funds: 1},forbidden: {}}},
+            		slots:[{id:"Nourishment",required: {funds: 1},forbidden: {}}],
 		alternativerecipes: [{id:"recoverhealth",chance:100}],
         startdescription: "To recover my health, I'll need money for food and medicine.",
         description: "Rested, but not recovered. I need money for food and medicine.",
@@ -33,8 +32,7 @@
         label: "Clear my Mind?",
         actionId: "dream",
         requirements: {unreason: 1},
-              		slots:
-						{Reminders: {required: {contentment:1},consumes:true}},
+              		slots:	[{id:"Reminders",required: {contentment:1},consumes:true}],
 		alternativerecipes: [{id:"recoverreason",chance:100}],
         startdescription: "Was I different, before?",
         description: "I remember that I was different: but I no longer remember how.",
@@ -57,8 +55,7 @@
         label: "Seek Composure",
         actionId: "dream",
         requirements: {delirium: 1},
-              		slots:
-						{Reminders: {required: {dread:1}}},
+              		slots:[{id:"Reminders",required: {dread:1}}],
 		alternativerecipes: [{id:"recoverpassion",chance:100}],
         startdescription: "The doors of vision have cracked open. Perhaps I should calm myself, somehow. Even Dread has its uses.",
         description: "A little darkness will mellow my light; a little ballast will bring me back to earth.",

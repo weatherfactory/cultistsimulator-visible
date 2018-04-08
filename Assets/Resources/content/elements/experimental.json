@@ -5,7 +5,7 @@
             id: "wolfatthedoor",
             label: "The Wolf at the Door",
             aspects:{},
-			slots: {Meal: {consumes:true}},
+			slots: [{id:"Meal",consumes:true}],
             description: "The Wolf will accept anything, and then devour everything, no matter what.",
 			noartneeded:true
         },

@@ -6,7 +6,7 @@
 	label: "Preparations for an Expedition ",
 	comments: "may well replace with specific vault entry for individual locations",
 	actionId: "explore",
-	slots:{"More": required: {vault:1,follower:1,funds:1}},
+	slots:[{id:"More",required: {vault:1,follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevault_expeditionbegun",chance:100}],
 	startdescription: "The Expedition will begin when we have at least one Funds and one Follower. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
@@ -33,7 +33,7 @@
 	comments: "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
 	label: "The Expedition Continues",
 	actionId: "explore",
-		slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will defeat obstacles.", required: {follower:1,funds:1}}},
+		slots:[{id:"Assistance",description: "Funds are essential for expeditions. Followers will defeat obstacles.", required: {follower:1,funds:1}}],
 	startdescription: "Our expedition plans for the next challenge. It'll consume Funds; I can add Funds now, or I could send another Follower.",
 	description: ".",
 	warmup:30,

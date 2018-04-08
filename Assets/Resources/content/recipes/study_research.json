@@ -5,7 +5,7 @@
 	actionId: "study",
 	requirements: {lore:1, edge:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "All of the greatest struggles end in death. The Lore of the Knife holds the lessons of those struggles.",
@@ -19,7 +19,7 @@
 	actionId: "study",
 	requirements: {lore:1, forge:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
@@ -33,7 +33,7 @@
 	actionId: "study",
 	requirements: {lore:1, grail:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [{id: "studyresearchtick",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
 	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
@@ -46,7 +46,7 @@
 	actionId: "study",
 	requirements: {lore:1, heart:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
 	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
@@ -59,7 +59,7 @@
 	actionId: "study",
 	requirements: {lore:1, knock:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables.",
@@ -73,7 +73,7 @@
 	actionId: "study",
 	requirements: {lore:1, lantern:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
 	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
@@ -86,7 +86,7 @@
 	actionId: "study",
 	requirements: {lore:1, moth:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
@@ -100,7 +100,7 @@
 	actionId: "study",
 	requirements: {lore:1, secrethistories:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "History is less certain than we are taught. I can learn from the study of its blurred edges.",
@@ -114,7 +114,7 @@
 	actionId: "study",
 	requirements: {lore:1, winter:1},
 	effects: {},
-	slots:{"More": required: {lore:1}},
+	slots:[{id:"More",required: {lore:1}}],
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
@@ -144,7 +144,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"Reason": {required: {reason:1}}},
+	slots:[{id:"Reason",required: {reason:1}}],
 	alternativerecipes: [
 	{id: "studyresearchreasonsuccess",chance:100}],
 	startdescription: "Confusion shrouds the path. I must use more of my Reason.",
@@ -170,7 +170,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"Erudition": {required: {erudition:1},consumes:true}},
+	slots:[{id:"Erudition",required: {erudition:1},consumes:true}],
 	alternativerecipes: [
 	{id: "studyresearcheruditionsuccess",chance:100}],
 	startdescription: "My research needs Erudition.",
@@ -195,7 +195,7 @@
 	actionId: "study",
 	requirements: {},
 	effects: {},
-	slots:{"Glimmering": {required: {glimmering:1},consumes:true}},
+	slots:[{id:"Glimmering",required: {glimmering:1},consumes:true}],
 	alternativerecipes: [
 	{id: "studyresearchglimmeringsuccess",chance:100}],
 	startdescription: "My research needs a Glimmering. ",

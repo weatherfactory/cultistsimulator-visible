@@ -8,7 +8,7 @@
 	label: "FNORD",
 	startdescription: "FNORD",
 	requirements: {peril_treacherousground:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_treacherousground_highlantern",chance:100},
 	{id: "explorevaultperil_treacherousground_highforge",chance:100},
@@ -117,7 +117,7 @@
 	label: "FNORD",
 	startdescription: "FNORD",
 	requirements: {peril_forest:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_forest_highmoth",chance:100},
 	{id: "explorevaultperil_forest_highforge",chance:100},
@@ -227,7 +227,7 @@
 	label: "FNORD",
 	startdescription: "FNORD",
 	requirements: {peril_mountains:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_mountains_highwinter",chance:100},
 	{id: "explorevaultperil_mountains_highforge",chance:100},
@@ -330,7 +330,7 @@
 	label: "FNORD",
 	startdescription: "FNORD",
 	requirements: {peril_desert:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_desert_highgrail",chance:100},
 	{id: "explorevaultperil_desert_highforge",chance:100},
@@ -435,7 +435,7 @@
 	label: "The Sea around the Evening Isles",
 	startdescription: "The sea we sail is plagued by storms. The isles we seek are tucked in the corners of unmapped history. We will need Heart or Forge or both.",
 	requirements: {peril_sea:1},
-	slots:{"Assistance": {description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}},
+	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
 	{id: "explorevaultperil_sea_highheart",chance:100},
 	{id: "explorevaultperil_sea_highforge",chance:100},

@@ -16,7 +16,7 @@
 	actionId:"haunting",
 	startdescription: "Your escaped summoning haunts the district, seeking mortals to devour.",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
-	slots: {Consuming:{required: {mortal:1},greedy:true}},
+	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow devourers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"devourer_haunting_mortal_highedge",chance:100},
@@ -84,7 +84,7 @@
 	actionId:"haunting",
 	startdescription: "Your escaped summoning will take something from you, before it returns to the place beneath the world's skin.",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
-	slots: {Consuming:{required: {health:1},greedy:true}},
+	slots: [{id:"consuming",required: {health:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"devourer_haunting_damageshealth_highedge",chance:100},
@@ -162,7 +162,7 @@ alternativerecipes:	[
 	actionId:"haunting",
 	startdescription: "Your escaped summoning haunts you, seeking to drive you to despair -",
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
-	slots: {Consuming:{required: {health:1},greedy:true}},
+	slots: [{id:"Consuming,"required: {health:1},greedy:true}],
 	warmup:30,
 alternativerecipes:	[
 {id:"deceiver_haunting_health_highedge",chance:100},
@@ -230,7 +230,7 @@ alternativerecipes:	[
 	description: "The thing you conjured has returned to its own place. It will do you no more harm, for now.",
 	effects: {notoriety:1},
 	aspects: {derangemortal:1},
-	slots: {Consuming:{required: {mortal:1},greedy:true}},
+	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
 	comments: "This isn't currently in use. We only allow Deceivers to destroy evidence, not haunt investigators, so summoners might be understandably annoyed.",
 	alternativerecipes:[
 {id:"deceiver_haunting_mortal_highedge",chance:100},

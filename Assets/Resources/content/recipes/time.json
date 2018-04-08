@@ -22,16 +22,11 @@
         description: ".",
         warmup: 60,
         craftable: false,
-		slots: {
-				"Expenses":
-					{
+		slots: [{id:"Expenses",
 					required: {funds: 1},
-					forbidden: {},
 				greedy: true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
-					}
-
-				},
+				}],
         linked:[{id:"discardseason",chance:100}]
     },
 	{id: "discardseason",
@@ -53,15 +48,10 @@
         startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
         description: "The sickness has ravaged my body.",
         warmup: 60,
-		slots: {
-		"Affliction": 
-					{
+		slots: [{id:"Affliction",
 					required: {health: 1},
-					forbidden: {},
 					greedy: true
-					}
-		}
-        craftable: false
+		}]
     },
 		   {
         id: "pleasantday",
@@ -108,15 +98,9 @@
         startdescription: ".",
         description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
         warmup: 60,
-		slots: {
-		"Starvation": 
-					{
-					required: {health: 1},
-					forbidden: {},
+		slots: [{id:"Starvation",required: {health: 1},
 					greedy: true
-					}
-		}
-        craftable: false
+		}]
     }
 ]
 }

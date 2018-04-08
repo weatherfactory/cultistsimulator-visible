@@ -24,14 +24,11 @@
         description: "The clerks file out in silence. I am free for now.",
 		aside: "(I could devote extra effort to the work...)",
         warmup:50,
-			slots: {
-				"Diligence":
-					{
+			slots: [{id:"Diligence",
 					required: {reason: 1},
 					forbidden: {},
 					description: "Extra effort. It might help, sometimes."
-					}
-				},
+				}],
 				craftable: true
 	},
 		{id: "gloverandglover_diligence",
@@ -69,14 +66,10 @@
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
 		aside: "(I could devote extra effort to the work...)",
         warmup: 90,
-			slots: {
-				"Devotion":
-					{
+			slots: [{id:"Devotion":,
 					required: {reason: 1},
-					forbidden: {},
 					description: "Extra effort. It might help, if I'm very lucky."
-					}
-				},
+				}],
 				craftable: true
 	},
 			{id: "gloverandglover_diligence_promotion",
@@ -98,14 +91,10 @@
         description: "I am always the last to leave, even after the elder Glover.",
 		aside: "(I could devote extra effort to the work...)",
         warmup: 90,
-			slots: {
-				"Acceptance":
-					{
+			slots: [{id:"Acceptance",
 					required: {passion: 1},
-					forbidden: {},
 					description: "I could devote my life to this."
-					}
-				},
+				}],
 				alternativerecipes: [{id: "workvictory",chance:100}],
 				craftable: true
 	},
@@ -175,15 +164,11 @@
         actionId: "work",
         requirements: {passion: 1,ritual:-1},
         deckeffect: {paintingresults:1},
-					slots: {
-				"Inspiration":
-					{
+					slots: [{id:"Inspiration",
 					required: {lore:1,ingredient:1,influence:1},
-					forbidden: {},
 					description: "Feed my art.",
 					consumes:true
-					}
-				},
+				}],
         startdescription: "I have seen a curious beauty in the waking world, and in my dreams. I might sell a painting. I probably won't.",
         description: "I've finished a painting, to the excitement of absolutely no-one: no-one but me.",
         warmup: 60,

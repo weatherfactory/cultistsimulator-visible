@@ -48,7 +48,7 @@ alternativerecipes:[{id: "legacyphysicianopenstudy",chance:100,additional:true}]
 	startdescription:"I could give in to the dreams. But they <i>will</i> devour my Reason.",
 	description: ".",
 	alternativerecipes:[{id: "legacyphysicianhookfulfilment",chance:100}],
-	slots: {"Temptation": {required: {reason:1},consumes:true}},
+	slots: [{id:"Temptation",required: {reason:1},consumes:true}],
 	linked: [{id: "legacyphysicianhook",chance:100}],
 	warmup:60
 	},

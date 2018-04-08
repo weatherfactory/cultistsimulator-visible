@@ -5,8 +5,7 @@
         label: "Attend a Duelling Club",
         actionId: "study",
         requirements: {vitality:1},
-			slots:
-		{Costs: {required: {funds: 1}}},
+			slots:		[{id:"Costs",required: {funds: 1}}],
 				alternativerecipes: [{id:"studyvitalitypaidlucky",chance:30},
 		{id:"studyvitalitypaidunlucky",chance:70}],
 		startdescription: "I am abrim with vitality. If I can afford to pay the club fees, I may grow my strength - or learn something of myself. But I might come to harm.",
@@ -43,8 +42,7 @@
         label: "Study Esoteric Philosophies",
         actionId: "study",
         requirements: {erudition:1},
-		slots:
-		{Costs: {required: {funds: 1}}},
+		slots:[{id:"Costs",required: {funds: 1}}],
 		alternativerecipes: [{id:"studyeruditionpaidlucky",chance:30},
 		{id:"studyeruditionpaidunlucky",chance:70}],
 		startdescription: "If I can afford to buy the necessary texts and journals, I can learn the disturbing philosophies of the new century. But many truths are hard to bear.",
@@ -80,8 +78,7 @@
         label: "Seek Wisdom through Indulgence",
         actionId: "study",
         requirements: {glimmering:1},
-			slots:
-		{Costs: {required: {funds: 1}}},
+			slots:[{id:"Costs",required: {funds: 1}}],
 		alternativerecipes: [{id:"studyglimmeringpaidlucky",chance:30},
 		{id:"studyglimmeringpaidunlucky",chance:70}],
 		startdescription: "I've glimpsed something wonderful, but I can't grasp it. So I'll seek it in sensation: the pleasures of sight, flesh and spirit. But all delights have their dangers.",

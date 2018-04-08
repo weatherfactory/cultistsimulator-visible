@@ -5,11 +5,10 @@
             label: "Rite of the Sea's Feasting",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Instrument": {required: {tool:1},description: "What is our instrument?"},
-			"Offering":{required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Instrument",required: {tool:1},description: "What is our instrument?"},
+			{id:"Offering",required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
+			],
             description: "This rite calls on the Witch-and-Sister to close the gap between what is and what might be. The assistant pours, or hurls, an offering into water: preferably, but not essentially, the sea."
         },
 								          {
@@ -17,11 +16,10 @@
             label: "Rite of the Map's Edge",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Offering": {required: {influence:1},description: "What influence will be taken?",consumes:true},
-			"Instrument":{required: {tool: 1}, description: "What is our instrument?"},
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Offering",required: {influence:1},description: "What influence will be taken?",consumes:true},
+			{id:"Instrument",required: {tool: 1}, description: "What is our instrument?"},
+			],
             description: "The Vagabond is the only Hour that never enters the Mansus. This rite must be performed in the right place, in the right time, and the Vagabond will take that rightness for her own."
         },
 	
@@ -31,12 +29,11 @@
 			comments: "endgame rite",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Victim": {required: {follower:1,prisoner:1}, consumes: true, description: "There must always be willing blood."},
-			"Instrument":{required: {tool: 1}, description: "On what will blood be shed?"},
-			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Victim",required: {follower:1,prisoner:1}, consumes: true, description: "There must always be willing blood."},
+			{id:"Instrument",required: {tool: 1}, description: "On what will blood be shed?"},
+			{id:"Desire",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			],
             description: "This rite uses an instrument of power to set the blood afire: fire is the lesion in the skin of the world. The assistant rarely survives unharmed."
         },
 		          {
@@ -45,12 +42,11 @@
 			comments: "endgame rite",
             aspects:
             {ritual:1},
-			slots: {
-			"Sacrifice":{required: {lore: 1}, consumes: true, description: "What will we forget?"},
-			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
-			"Instrument":{required: {tool: 1}, description: "What is our instrument?"},
-			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
-			},
+			slots: [{id:"Sacrifice",required: {lore: 1}, consumes: true, description: "What will we forget?"},
+			{id:"Assistant",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
+			{id:"Instrument",required: {tool: 1}, description: "What is our instrument?"},
+			{id:"Desire",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			],
             description: "This rite recalls the loss of the Watchman, who walks the house which has no walls.(Light goes before him and shadow behind. He must not see you.) The instrument of power is used to summon him to take his sacrifice: precious knowledge from the root of your thoughts. The assistant must speak the words that anchor your sanity, so choose someone you trust."
         },
 		
@@ -59,12 +55,11 @@
             label: "Rite of the Rebel Striving",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
-			"Offering":{required: {tool: 1}, consumes: true,description: "What will we give up?"},
-			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Assistant",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
+			{id:"Offering",required: {tool: 1}, consumes: true,description: "What will we give up?"},
+			{id:"Desire",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			],
             description: "This rite enacts a teaching of the Forge of Days: the artisan may achieve their highest goal only by destroying their most precious tool. The Lionsmith knew this when he shattered his sword before the Colonel. So my assistant must destroy a chosen instrument."
         },
 		
@@ -73,11 +68,10 @@
             label: "Rite of the Mother's Mercy",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
-			"Offering":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Assistant",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
+			{id:"Offering",required: {ingredient: 1}, description: "What will be offered?",consumes:true},
+			],
             description: "The assistant is offered in sacrifice to the Mother of Ants. But the Mother knows healing as well as poison, and she will be merciful, accepting the substitute of a lesser offering. Usually. The experience is not reassuring for the assistant."
         },
 						          {
@@ -85,11 +79,10 @@
             label: "The Rite of the Sea's Marriage",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Influence": {required: {influence:1},description: "Who will speak the words?"},
-			"Offering":{required: {ingredient: 1}, description: "What will be offered?",consumes:true},
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Influence",required: {influence:1},description: "Who will speak the words?"},
+			{id:"Offering",required: {ingredient: 1}, description: "What will be offered?",consumes:true},
+			],
             description: "This rite calls on the Sister-and-Witch to close the gap between what is and what might be. The assistant offers themselves as a spouse to the unknown: essentially, but not necessarily, the sea."
         },
 						          {
@@ -97,11 +90,10 @@
             label: "Sunset Rite",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Assistant": {required: {follower:1,prisoner:1},description: "Who will speak the words?"},
-			"Offering":{required: {influence: 1}, consumes:true, description: "What influence will be consumed?"},
-			},
+			slots: [{id:"Invocation",required: {lore: 1}, description: "What are the words?"},
+			{id:"Assistant",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
+			{id:"Offering",required: {influence: 1}, consumes:true, description: "What influence will be consumed?"},
+			],
             description: "The assistant must cry tears of genuine emotion, which are asperged in the place where the influence lies. If all is done well, the Sun-in-Rags will consume the influence, acknowledge an ending, and lend its assistance."
         },
 						          {
@@ -109,11 +101,10 @@
             label: "Rite of the Beast's Division",
             aspects:
             {ritual:1},
-			slots: {
-			"Invocation":{required: {lore: 1}, description: "What are the words?"},
-			"Victim": {required: {follower:1,prisoner:1},description: "Who will be divided?",consumes:true},
-			"Influence":{required: {tool: 1}, description: "What power is present?"},
-			},
+			slots: [{id:"Invocation", required: {lore: 1}, description: "What are the words?"},
+			{id:"Victim", required: {follower:1,prisoner:1},description: "Who will be divided?",consumes:true},
+			{id:"Influence", required: {tool: 1}, description: "What power is present?"}
+			],
             description: "The assistant's name is taken from them in a place, or on an occasion, of power; and they are divided into nine parts. They used to be hunted like an animal, too, but times changed."
         },
 						          {
@@ -121,14 +112,13 @@
             label: "Rite Intercalate",
             aspects:
             {ritual:1},
-			slots: {
-			"Sacrifice":{required: {lore: 1}, description: "Something to be lost.", consumes:true},
-			"Offering": {required: {follower:1,prisoner:1},description: "Something to be lost.", consumes:true},
-			"Surrender":{required: {tool: 1}, description: "Something to be lost.", consumes:true},
-			"Dissolution":{required: {influence: 1}, description: "Something to be lost.", consumes:true},
-			"Grief":{required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
-			"Desire": {required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
-			},
+			slots: [{id:"Sacrifice",required: {lore: 1}, description: "Something to be lost.", consumes:true},
+			{id:"Offering",required: {follower:1,prisoner:1},description: "Something to be lost.", consumes:true},
+			{id:"Surrender",required: {tool: 1}, description: "Something to be lost.", consumes:true},
+			{id:"Dissolution",required: {influence: 1}, description: "Something to be lost.", consumes:true},
+			{id:"Grief",required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
+			{id:"Desire",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			],
             description: "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts."
         },
 

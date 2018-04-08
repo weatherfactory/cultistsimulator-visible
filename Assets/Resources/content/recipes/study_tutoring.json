@@ -5,8 +5,7 @@
         label: "Study Latin with a Tutor",
         actionId: "study",
         requirements: {tutorlatin:1,commission:-1,article:-1},
-			slots:
-		{Costs: {required: {compensationvalue: 1}}},
+			slots:[{id:"Costs",required: {compensationvalue: 1}}],
 				alternativerecipes: [{id:"studylatintutoringpaid",chance:100}],
 		startdescription: "If I need to learn Latin, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
         description: "Tutors don't work for free. Another time.",
@@ -28,8 +27,7 @@
         label: "Study Greek with a Tutor",
         actionId: "study",
         requirements: {tutorgreek:1,commission:-1,article:-1},
-			slots:
-		{Costs: {required: {compensationvalue: 1}}},
+			slots:[	{id:"Costs",required: {compensationvalue: 1}}],
 				alternativerecipes: [{id:"studygreektutoringpaid",chance:100}],
 		startdescription: "If I need to learn Greek, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
         description: "Tutors don't work for free. Another time.",
@@ -51,8 +49,7 @@
         label: "Study Aramaic with a Tutor",
         actionId: "study",
         requirements: {tutoraramaic:1,commission:-1,article:-1},
-			slots:
-		{Costs: {required: {compensationvalue: 1}}},
+			slots:[{id:"Costs",required: {compensationvalue: 1}}],
 				alternativerecipes: [{id:"studyaramaictutoringpaid",chance:100}],
 		startdescription: "If I need to learn Aramaic, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
         description: "Tutors don't work for free. Another time.",
@@ -74,8 +71,7 @@
         label: "Study Fucine with a Tutor",
         actionId: "study",
         requirements: {spirittutorfucine:1,summoned:1},
-			slots:
-		{Costs: {required: {scholarlatin: 1}}},
+			slots:[{id:"Costs:",required: {scholarlatin: 1}}],
 				alternativerecipes: [{id:"studyfucinetutoringsuccessful",chance:100}],
 		startdescription: "'Fucine? Yes, I get by in Fucine. I can teach you, if you have Latin as a grounding. But if I hear one crack about the 'tongue of witches', it's off.'",
         description: "I don't have the grounding I needed.",
@@ -98,8 +94,7 @@
         label: "Study Phrygian with a Tutor",
         actionId: "study",
         requirements: {spirittutorphrygian:1,summoned:1},
-			slots:
-		{Costs: {required: {scholargreek: 1}}},
+			slots:[{id:"Costs",required: {scholargreek: 1}}],
 				alternativerecipes: [{id:"studyphrygiantutoringsuccessful",chance:100}],
 		startdescription: "'Phrygian! The Great Mother's tongue! Of course. If you have enough Greek, I guarantee that the experience of learning Phrygian will be <i>very</i> pleasant.'",
         description: "I don't have the grounding I needed.",
@@ -121,8 +116,7 @@
         label: "Study Deep Mandaic with a Tutor",
         actionId: "study",
         requirements: {spirittutormandaic:1,summoned:1},
-			slots:
-		{Costs: {required: {scholararamaic: 1}}},
+			slots:[{id:"Costs",required: {scholararamaic: 1}}],
 				alternativerecipes: [{id:"studymandaictutoringsuccessful",chance:100}],
 		startdescription: "'TOGETHER WE WILL COMMEMORATE THE TONGUE OF THE UNBURNT GOD.'",
         description: "I don't have the grounding I needed.",
