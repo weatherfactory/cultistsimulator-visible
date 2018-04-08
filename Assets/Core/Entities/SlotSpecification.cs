@@ -68,7 +68,11 @@ public class SlotSpecification
 
         foreach (string k in Required.Keys) //only one needs to match
         {
-            if (aspects.ContainsKey(k))
+            if (!aspects.ContainsKey(k))
+               return new SlotMatchForAspects(Required.Keys, SlotMatchForAspectsType.RequiredAspectMissing);
+
+            int aspectAtValue = aspects[k];
+            if (aspectAtValue >= Required[k])
                 return new SlotMatchForAspects(null, SlotMatchForAspectsType.Okay);
         }
 

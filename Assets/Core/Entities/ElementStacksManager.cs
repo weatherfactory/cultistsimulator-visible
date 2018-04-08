@@ -181,6 +181,12 @@ public class ElementStacksManager : IElementStacksManager {
         _catalogue.NotifyStacksChanged();
     }
 
+    /// <summary>
+    /// This was relevant for a refactoring of the greedy slot code; I decided to do something else
+    /// but this code might still be useful elsewhere!
+    /// </summary>
+    /// <param name="requirement"></param>
+    /// <returns></returns>
     public List<IElementStack> GetStacksWithAspect(KeyValuePair<string,int> requirement)
     {
         List<IElementStack> matchingStacks = new List<IElementStack>();

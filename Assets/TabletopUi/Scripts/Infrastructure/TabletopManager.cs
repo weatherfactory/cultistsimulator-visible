@@ -412,14 +412,13 @@ namespace Assets.CS.TabletopUI {
 
         private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
-            foreach(var requirement in slotSpec.Required)
-            { 
-            var stacks = _tabletop.GetElementStacksManager().GetStacksWithAspect(requirement);
+    
+            var stacks = _tabletop.GetElementStacksManager().GetStacks();
 
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
                     return stack;
-            }
+    
             return null;
         }
 

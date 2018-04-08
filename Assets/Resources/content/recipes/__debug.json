@@ -2,7 +2,7 @@
 {id: "_testdecks",
 label: "Testing deck functionality",
 actionId: "frurbble",
-deckeffect: {"stagriddles":2,acquaintances:3},
+deckeffect: {"stagriddles":2,"acquaintances":3},
 startdescription: "starting test deck",
 description: "end test deck",
 warmup: 1,
@@ -17,7 +17,7 @@ startdescription: "Pulling A..."
 description: "...pulled",
 warmup: 60,
 craftable:false,
-slots: [{id:"Reputation",required:{reputation:1,funds:2},greedy:true}],
+slots: [{id:"lore",required:{heart:6},greedy:true}],
 },
 
 {id: "_pullb",

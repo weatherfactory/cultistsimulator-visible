@@ -33,7 +33,7 @@ namespace Assets.Core.Entities
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription();
-                description += "To go here, a card must have at least one of these aspects: " + problemAspects;
+                description += "That card must have enough of these aspects: " + problemAspects;
             }
 
             return description;
