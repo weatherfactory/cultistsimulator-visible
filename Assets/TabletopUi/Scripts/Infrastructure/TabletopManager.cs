@@ -24,6 +24,7 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.WSA;
+using Random = System.Random;
 
 namespace Assets.CS.TabletopUI {
     public class TabletopManager : MonoBehaviour {
@@ -412,8 +413,8 @@ namespace Assets.CS.TabletopUI {
 
         private IElementStack FindStackForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
 
-    
-            var stacks = _tabletop.GetElementStacksManager().GetStacks();
+            var rnd = new Random();
+            var stacks = _tabletop.GetElementStacksManager().GetStacks().OrderBy(x=>rnd.Next());
 
             foreach (var stack in stacks)
                 if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec))
@@ -434,12 +435,14 @@ namespace Assets.CS.TabletopUI {
         }
 
         private IElementStack FindStackForSlotSpecificationInSituations(SlotSpecification slotSpec, out SituationController sit) {
+            var rnd = new Random();
+
             // Nothing on the table? Look at the Situations.
             var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
             // We grab output first
             foreach (var controller in situationControllers) {
-                foreach (var stack in controller.GetOutputStacks()) {
+                foreach (var stack in controller.GetOutputStacks().OrderBy(x=>rnd.Next())) {
                     if (CanPullCardToGreedySlot(stack as ElementStackToken, slotSpec)) {
                         sit = controller;
                         return stack;
@@ -458,7 +461,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             // Nothing? Then we grab ongoing
-            foreach (var controller in situationControllers) {
+            foreach (var controller in situationControllers.OrderBy(x => rnd.Next())) {
                 foreach (var slot in controller.GetOngoingSlots()) {
                     if (slot.IsGreedy)
                         continue; // Greedy? Don't grab.
