@@ -85,14 +85,14 @@ public class ContentImporter
                     if (htRequired != null)
                     {
                         foreach (string rk in htRequired.Keys)
-                            slotSpecification.Required.Add(rk, 1);
+                            slotSpecification.Required.Add(rk, Convert.ToInt32(htRequired[rk]));
                     }
 
                     Hashtable htForbidden = htThisSlot["forbidden"] as Hashtable;
                     if (htForbidden != null)
                     {
                         foreach (string fk in htForbidden.Keys)
-                            slotSpecification.Forbidden.Add(fk, 1);
+                            slotSpecification.Forbidden.Add(fk, Convert.ToInt32(htRequired[fk]));
                     }
                 }
                 catch (Exception e)

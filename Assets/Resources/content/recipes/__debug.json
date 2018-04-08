@@ -17,7 +17,7 @@ startdescription: "Pulling A..."
 description: "...pulled",
 warmup: 60,
 craftable:false,
-slots: {Reputation: {required:{reputation:1},greedy:true}},
+slots: {Reputation: {required:{reputation:1,funds:2},greedy:true}},
 },
 
 {id: "_pullb",
@@ -27,7 +27,7 @@ startdescription: "Pulling AB.."
 description: "...pulled",
 warmup: 60,
 craftable:false,
-slots: {Reputation: {required:{reputation:1},greedy:true}},
+slots: {Reputation: {required:{funds:1,reputation:1},greedy:true}},
 },
 
 

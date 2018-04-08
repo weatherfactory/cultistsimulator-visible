@@ -180,5 +180,19 @@ public class ElementStacksManager : IElementStacksManager {
             throw new ApplicationException("StacksManager is trying to notify the catalogue, but there's no catalogue! - for stacksmanager " + Name);
         _catalogue.NotifyStacksChanged();
     }
+
+    public List<IElementStack> GetStacksWithAspect(KeyValuePair<string,int> requirement)
+    {
+        List<IElementStack> matchingStacks = new List<IElementStack>();
+        var candidateStacks = GetStacks(); //room here for caching
+        foreach (var stack in candidateStacks)
+        {
+            int aspectAtValue = stack.GetAspects(true).AspectValue(requirement.Key);
+            if (aspectAtValue>=requirement.Value)
+                matchingStacks.Add(stack);
+        }
+
+        return matchingStacks;
+    }
 }
 

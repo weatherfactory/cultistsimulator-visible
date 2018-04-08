@@ -122,7 +122,6 @@ public class Recipe
 
     public bool RequirementsSatisfiedBy(IAspectsDictionary aspects)
     {
-        //must be satisfied by concrete elements in possession, not by aspects (tho this may some day change)
         foreach (var req in Requirements)
         {
             if (req.Value == -1) //req -1 means there must be none of the element
