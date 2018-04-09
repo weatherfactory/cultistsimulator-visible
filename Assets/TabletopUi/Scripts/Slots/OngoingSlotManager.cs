@@ -26,6 +26,10 @@ namespace Assets.CS.TabletopUI {
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
             ongoingSlot = BuildSlot("ongoing", null, null);
+            SetSlotToPos();
+        }
+
+        public void SetSlotToPos() {
             ongoingSlot.transform.position = slotHolder.position;
         }
 

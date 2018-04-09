@@ -239,8 +239,8 @@ namespace Assets.CS.TabletopUI {
                 else
                     rectTrans.anchoredPosition = rectTrans.anchoredPosition - new Vector2(100f, 0f);
 
-                // Updates the grid row numbers
-                startingSlots.SetGridNumPerRow();
+                startingSlots.SetGridNumPerRow(); // Updates the grid row numbers
+                ongoing.SetSlotToPos(); // Updates the ongoing slot position
             }
 
             windowIsWide = wide;
