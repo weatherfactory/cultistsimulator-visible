@@ -40,28 +40,15 @@ namespace Assets.CS.TabletopUI {
         */
 
         public void ReorderCards(IEnumerable<IElementStack> elementStacks) {
-            //Order the stacks to put the existing ones first.
-            List<IElementStack> existingStacks = new List<IElementStack>();
-            List<IElementStack> freshStacks = new List<IElementStack>();
-
-            foreach (var stack in elementStacks)
-            {
-                if (stack.StackSource.SourceType == SourceType.Fresh)
-                    freshStacks.Add(stack);
-                else
-                    existingStacks.Add(stack);
-            }
-
-            var sortedStacks = new List<IElementStack>();
-            sortedStacks.AddRange(freshStacks); //new stacks go after that
-            sortedStacks.AddRange(existingStacks); //existing stacks go first
-
+            var sortedStacks = SortStacks(elementStacks);
 
             ElementStackToken token;
             int i = 1; // index starts at 1 for positioning math reasons
             int amount = 0;
 
             SetAvailableSpace();
+
+            string debugText = "Reorder Results: ";
 
             foreach (var stack in sortedStacks)
                 if (stack is ElementStackToken)
@@ -74,22 +61,36 @@ namespace Assets.CS.TabletopUI {
                     continue;
 
                 MoveToPosition(token.transform as RectTransform, GetPositionForIndex(i, amount), 0f);
-
                 token.transform.SetSiblingIndex(i-1); //each card is conceptually on top of the last. Set sibling index to make sure they appear that way.
 
-                //if any stacks are fresh, flip them face down,
-                //then mark them as existing
-                if (token.StackSource.SourceType==SourceType.Fresh)  
-                    token.FlipToFaceDown(true);
+                //if any stacks are fresh, flip them face down, otherwise face up
+                if (token.StackSource.SourceType == SourceType.Fresh)
+                    token.FlipToFaceDown(true); // flip down instantly
+                else
+                    token.FlipToFaceUp(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
 
-                // turn over last card if we're visible
-                /*
-                if (i == amount && token.gameObject.activeInHierarchy) 
-                    token.FlipToFaceUp();
-                */
+                debugText += stack.Id + " (" + token.StackSource.SourceType + ") ";
 
                 i++;
             }
+
+            Debug.Log(debugText);
+        }
+
+        List<IElementStack> SortStacks(IEnumerable<IElementStack> elementStacks) {
+            var freshStacks = new List<IElementStack>();
+            var existingStacks = new List<IElementStack>();
+
+            foreach (var stack in elementStacks) {
+                if (stack.StackSource.SourceType == SourceType.Fresh)
+                    freshStacks.Add(stack);
+                else
+                    existingStacks.Add(stack);
+            }
+
+            freshStacks.AddRange(existingStacks); //existing stacks go after fresh stacks
+
+            return freshStacks;
         }
 
         Vector2 GetPositionForIndex(int i, int num) {

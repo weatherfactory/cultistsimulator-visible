@@ -538,7 +538,7 @@ namespace Assets.CS.TabletopUI {
             isFront = state;
             //if a card has just been turned face up in a situation, it's now an existing, established card
             if (isFront && StackSource.SourceType == SourceType.Fresh)
-                StackSource.SourceType = SourceType.Existing;
+                StackSource = Source.Existing();
 
             if (gameObject.activeInHierarchy == false || instant) {
                 transform.localRotation = GetFrontRotation(isFront);
