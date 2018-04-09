@@ -121,7 +121,7 @@ namespace Assets.CS.TabletopUI {
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
             }
-            else { 
+            else if (CanInteractWithDraggedObject(DraggableToken.itemBeingDragged)) { 
                 if (lastGlowState)
                     DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
 
