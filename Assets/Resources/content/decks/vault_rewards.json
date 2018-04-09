@@ -1,6 +1,8 @@
 {"decks":
 [
 {id: "vaultcontentsc",
+label:"Common Treasures",
+description: "Archaeologist's gleanings and lesser relics",
 spec:
 [
 "textbookfucine",
@@ -76,6 +78,8 @@ defaultcard: "compensation",
 resetonexhaustion:false
 },
 {id: "vaultcontentsu",
+label:"Uncommon Treasures",
+description: "Items of notable value or particular power",
 spec:
 [
 "ingredientedged",
@@ -145,6 +149,8 @@ defaultcard: "compensationb",
 resetonexhaustion:false
 },
 {id: "vaultcontentsr",
+label:"Rare Treasures",
+description: "Objects of potency and peril.",
 spec:
 ["ingredientedgef",
 "ingredientforgef",
