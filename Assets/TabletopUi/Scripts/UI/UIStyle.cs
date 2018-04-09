@@ -14,10 +14,12 @@ public static class UIStyle {
     public static Color lightBlue = new Color32(0x94, 0xE2, 0xEF, 0xFF);
     public static Color warmWhite = new Color32(0xFF, 0xEA, 0x77, 0xFF); // ffea77
     //public static Color warmWhite = new Color32(0xFF, 0xEB, 0xB0, 0xFF);
-
+    
     public static Color slotPink = new Color32(0xFF, 0xA8, 0xEA, 0xFF); // new Color32(0x8E, 0x5D, 0x82, 0xFF) // DARKER HIGHLIGHT VARIANT
     public static Color slotDefault = new Color32(0x1C, 0x43, 0x62, 0xFF);
     
+    public static Color textColorLight = new Color32(0x24, 0x80, 0x89, 0xFF); // 248089FF
+
     public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining) {
         if (forRecipe != null && forRecipe.EndsGame()) { 
             const float timeToBlink = 5f;

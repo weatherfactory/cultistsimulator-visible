@@ -23,13 +23,17 @@ namespace Assets.CS.TabletopUI {
 
         [Header("Slot Infos")]
         [SerializeField] GameObject slotInfoHolder;
-        [SerializeField] GameObject greedyInfo;
-        [SerializeField] GameObject consumesInfo;
+        [SerializeField] TextMeshProUGUI greedyInfo;
+        [SerializeField] TextMeshProUGUI consumesInfo;
+        [SerializeField] Image greedyIcon;
+        [SerializeField] Image consumesIcon;
 
         [Header("Aspect Display")]
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
         [SerializeField] AspectsDisplay aspectsDisplayRequired;
         [SerializeField] AspectsDisplay aspectsDisplayForbidden;
+
+        Coroutine infoHighlight;
 
         const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
@@ -172,5 +176,65 @@ namespace Assets.CS.TabletopUI {
             consumesInfo.gameObject.SetActive(consumes);
         }
 
+        public void HighlightSlotIcon(bool isGreedy, bool consumes) {
+            if (infoHighlight != null)
+                StopCoroutine(infoHighlight);
+
+            // note can only Highlight one of the two
+
+            if (isGreedy) {
+                infoHighlight = StartCoroutine(DoHighlightSlotIcon(greedyIcon, greedyInfo));
+            }
+            else {
+                greedyIcon.transform.localScale = Vector3.one;
+                greedyIcon.color = UIStyle.slotDefault;
+                greedyInfo.color = UIStyle.textColorLight;
+
+                if (consumes) {
+                    infoHighlight = StartCoroutine(DoHighlightSlotIcon(consumesIcon, consumesInfo));
+                }
+                else {
+                    consumesIcon.transform.localScale = Vector3.one;
+                    consumesIcon.color = UIStyle.slotDefault;
+                    consumesInfo.color = UIStyle.textColorLight;
+                }
+            }
+        }
+
+        IEnumerator DoHighlightSlotIcon(Image icon, TextMeshProUGUI text) {
+            const float durationAttack = 0.2f;
+            const float durationDecay = 0.4f;
+            Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
+            float lerp;
+
+            float time = 0f;
+
+            while (time < durationAttack) {
+                time += Time.deltaTime;
+                lerp = time / durationAttack;
+                icon.transform.localScale = Vector3.Lerp(Vector3.one, targetScale, lerp);
+                icon.color = Color.Lerp(UIStyle.slotDefault, Color.black, lerp);
+                text.color = Color.Lerp(UIStyle.textColorLight, Color.black, lerp);
+                yield return null;
+            }
+
+            time = 0f;
+
+            while (time < durationDecay) {
+                time += Time.deltaTime;
+                lerp = time / durationDecay;
+                icon.transform.localScale = Vector3.Lerp(targetScale, Vector3.one, lerp);
+                icon.color = Color.Lerp(Color.black, UIStyle.slotDefault, lerp);
+                text.color = Color.Lerp(Color.black, UIStyle.textColorLight, lerp);
+                yield return null;
+            }
+
+            icon.transform.localScale = Vector3.one;
+            icon.color = UIStyle.slotDefault;
+            text.color = UIStyle.textColorLight;
+            infoHighlight = null;
+        }
+
     }
 }
+

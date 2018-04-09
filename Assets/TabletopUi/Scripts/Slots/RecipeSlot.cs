@@ -117,14 +117,17 @@ namespace Assets.CS.TabletopUI {
         // IGlowableView implementation
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
-            if (!CanInteractWithDraggedObject(DraggableToken.itemBeingDragged))
-                return;
+            if (DraggableToken.itemBeingDragged == null) {
+                if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                    ShowHoverGlow(true);
+            }
+            else { 
+                if (lastGlowState)
+                    DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
 
-            if (lastGlowState)
-                DraggableToken.itemBeingDragged.ShowHoveringGlow(true);
-
-            if (GetTokenInSlot() == null) // Only glow if the slot is empty
-                ShowHoverGlow(true); 
+                if (GetTokenInSlot() == null) // Only glow if the slot is empty
+                    ShowHoverGlow(true);
+            }
         }
 
         public virtual void OnPointerExit(PointerEventData eventData) {
@@ -330,7 +333,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification);
+            bool highlightGreedy = GreedyIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(GreedyIcon);
+            bool highlightConsumes = ConsumingIcon.gameObject.activeInHierarchy && eventData.hovered.Contains(ConsumingIcon);
+
+            Registry.Retrieve<INotifier>().ShowSlotDetails(GoverningSlotSpecification, highlightGreedy, highlightConsumes);
+
         }
 
     }
