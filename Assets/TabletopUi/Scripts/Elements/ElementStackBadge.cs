@@ -20,22 +20,8 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] ElementStackToken token;
         [SerializeField] Image image;
         [SerializeField] Sprite badgeHoverSprite;
-        //[SerializeField] Sprite stackBageUniqueSprite;
 
         bool isHovering;
-        //bool isUnique;
-
-        /*
-        public void SetAsUnique(bool isUnique) {
-            this.isUnique = isUnique;
-            UnHover(); // can not hover when card is unique
-
-            if (isUnique)
-                image.overrideSprite = stackBageUniqueSprite; // If we re-enable hover this does not work, cause the override sprite is used for hover
-            else
-                image.overrideSprite = null;
-        }
-        */
 
         // to check if we're dragging the badge or the stack when starting the drag
         public bool IsHovering() {
@@ -43,9 +29,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
-            //if (isUnique)
-            //    return;
-
             isHovering = true;
 
             // only highlight if we're not dragging anything
@@ -54,9 +37,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void OnPointerExit(PointerEventData eventData) {
-            //if (isUnique)
-            //    return;
-
             image.overrideSprite = null;
 
             // We unhover later, so hover is still true in the frame in which the drag starts
