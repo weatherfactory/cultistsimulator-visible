@@ -166,6 +166,7 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.SetText(Verb.Description);
             DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
+            SetWindowSize(false);
         }
 
 		public void DisplayNoRecipeFound() {
@@ -173,7 +174,8 @@ namespace Assets.CS.TabletopUI {
 			PaginatedNotes.SetText(Verb.Description);
 			DisplayRecipeMetaComment("This does nothing. If I experiment further, I may find another combination.");
 			DisplayButtonState(false);
-		}
+            SetWindowSize(false);
+        }
 
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
@@ -181,8 +183,53 @@ namespace Assets.CS.TabletopUI {
             DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayRecipeMetaComment(null);
 			DisplayButtonState(true);
+            SetWindowSize(IsWideRecipe(r));
 
             SoundManager.PlaySfx("SituationAvailable");
+        }
+
+        bool isWide = false;
+
+        bool IsWideRecipe(Recipe r) {
+            // This is dummy to test
+            if (r.BurnImage != null)
+                return true;
+
+            // If we're not in an explore or work action, we can't be wide.
+            if (r.ActionId != "explore" && r.ActionId != "work")
+                return false;
+
+            // This means we're an exploration, so we're wide.
+            if (r.Id == "explore_settingupexpedition")
+                return true;
+
+            if (r.Id == "ritehint")
+                return true;
+
+            // Work verb +Rite - aspected element in the primary slot
+            // Explore verb + Vault - aspected element in the primary slot
+            return false;
+        }
+
+        void SetWindowSize(bool wide) {
+            RectTransform rectTrans = transform as RectTransform;
+
+            if (wide)
+                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 900f);
+            else
+                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 700f);
+
+            if (wide != isWide) { 
+                if (wide)
+                    rectTrans.anchoredPosition = rectTrans.anchoredPosition + new Vector2(100f, 0f);
+                else
+                    rectTrans.anchoredPosition = rectTrans.anchoredPosition - new Vector2(100f, 0f);
+
+                // Updates the grid row numbers
+                startingSlots.SetGridNumPerRow();
+            }
+
+            isWide = wide;
         }
 
         public void DisplayHintRecipeFound(Recipe r) {
@@ -190,6 +237,7 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
             DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
+            SetWindowSize(IsWideRecipe(r));
 
             SoundManager.PlaySfx("SituationAvailable");
         }

@@ -13,7 +13,7 @@ namespace Assets.Core.Interfaces
         void ShowNotificationWindow(string title, string description, float duration = 10);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
-        void ShowSlotDetails(SlotSpecification slot);
+        void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);
         void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment);
     }
 }

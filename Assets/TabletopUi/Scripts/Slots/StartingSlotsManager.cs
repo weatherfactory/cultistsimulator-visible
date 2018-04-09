@@ -34,11 +34,13 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
+            // startingSlots updated may resize window
+            controller.StartingSlotsUpdated();
+
             if (stack.HasChildSlots())
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
-            controller.StartingSlotsUpdated();
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
@@ -51,12 +53,14 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackRemoved(IElementStack stack, Context context) {
+            // startingSlots updated may resize window
+            controller.StartingSlotsUpdated();
+
             // Only update the slots if we're doing this manually, otherwise don't
             if (context.IsManualAction())
                 RemoveAnyChildSlotsWithEmptyParent(context);
 
             ArrangeSlots();
-            controller.StartingSlotsUpdated();
         }
 
         public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
@@ -111,6 +115,10 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         void ArrangeSlots() {
             gridManager.ReorderSlots();
+        }
+
+        public void SetGridNumPerRow() {
+            gridManager.SetNumPerRow();
         }
     }
 

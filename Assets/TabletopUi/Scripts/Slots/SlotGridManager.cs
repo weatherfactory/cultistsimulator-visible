@@ -94,7 +94,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        void SetNumPerRow() {
+        public void SetNumPerRow() {
             // one extra spacing added to width to compensate for spacing added to n slots, not n-1 slots.
 			numPerRow = Mathf.Max(1, Mathf.FloorToInt((rect.rect.width - margin.x - margin.x + spacing.x) / (slotSize.x + spacing.x)));
 			numRows = Mathf.Max(1, Mathf.CeilToInt(slots.Count / (float) numPerRow));
