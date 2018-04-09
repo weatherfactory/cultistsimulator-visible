@@ -63,18 +63,22 @@ public class SlotSpecification
             }
         }
         
+        //passed the forbidden check
+        //if there are no specific requirements, then we're now okay
         if(Required.Keys.Count==0)
             return new SlotMatchForAspects(null,SlotMatchForAspectsType.Okay);
 
+
         foreach (string k in Required.Keys) //only one needs to match
         {
-            if (!aspects.ContainsKey(k))
-               return new SlotMatchForAspects(Required.Keys, SlotMatchForAspectsType.RequiredAspectMissing);
-
+            if (aspects.ContainsKey(k))
+            { 
             int aspectAtValue = aspects[k];
             if (aspectAtValue >= Required[k])
                 return new SlotMatchForAspects(null, SlotMatchForAspectsType.Okay);
+            }
         }
+
 
         return new SlotMatchForAspects(Required.Keys, SlotMatchForAspectsType.RequiredAspectMissing);
 
