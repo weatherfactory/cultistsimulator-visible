@@ -134,6 +134,7 @@ namespace Assets.CS.TabletopUI {
 
             // If our recipe has at least one slot specified, we use that - only one slot supported for now (and maybe forever)
             ongoing.SetupSlot(recipe);
+            ongoing.ShowDeckEffects(recipe.DeckEffects);
             ongoing.gameObject.SetActive(true);
 
             results.gameObject.SetActive(false);
@@ -146,7 +147,6 @@ namespace Assets.CS.TabletopUI {
 
         public void SetOutput(List<IElementStack> stacks) {
             results.SetOutput(stacks);
- 
         }
 
         public void SetComplete() {
@@ -209,14 +209,14 @@ namespace Assets.CS.TabletopUI {
             if (r.ActionId != "explore" && r.ActionId != "work")
                 return false;
 
-            // This means we're an exploration, so we're wide.
-            if (r.Id == "explore_settingupexpedition")
+            // This means we're a vault exploration, so we're wide.
+            if (r.Id.Contains("vault"))
                 return true;
 
             // This means we're in a rite, so we're wide
             if (r.Id.Substring(0,4) == "rite")
                 return true;
-
+            
             // Other ideas: 
             // Work verb +Rite - aspected element in the primary slot
             // Explore verb + Vault - aspected element in the primary slot

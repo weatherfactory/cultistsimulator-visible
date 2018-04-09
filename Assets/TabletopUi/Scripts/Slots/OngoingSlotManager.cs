@@ -23,6 +23,8 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] LayoutGroup storedCardsLayout;
         public CanvasGroupFader canvasGroupFader;
 
+        [SerializeField] DeckEffectView[] deckEffectViews; 
+
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
             ongoingSlot = BuildSlot("ongoing", null, null);
@@ -98,6 +100,25 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
+        public void ShowDeckEffects(Dictionary<string, int> deckEffects) {
+            // Note, We shouldn't have more effects than we have views
+            UnityEngine.Assertions.Assert.IsTrue(deckEffects.Count <= deckEffectViews.Length);
+
+            int i = 0;
+
+            // Populate those we need
+            foreach (var item in deckEffects) {
+                deckEffectViews[i].PopulateDisplay(item.Key, item.Value);
+                deckEffectViews[i].gameObject.SetActive(true);
+                i++;
+            }
+
+            // All those we didn't need? Hide them.
+            while (i < deckEffectViews.Length) {
+                deckEffectViews[i].gameObject.SetActive(false);
+                i++;
+            }
+        }
 
     }
 }

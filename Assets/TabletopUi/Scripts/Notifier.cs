@@ -67,11 +67,15 @@ namespace Assets.CS.TabletopUI {
             else 
                 tokenDetails.Hide(); // hide the token window
         }
-
+        
         public void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes) {
             tokenDetails.ShowSlotDetails(slot);
             tokenDetails.HighlightSlotIcon(highlightGreedy, highlightConsumes);
             aspectDetails.Hide();
+        }
+
+        public void ShowDeckDetails(string deckId, int quantity) {
+            Debug.Log("Doing nothing yet");
         }
 
         // TabletopImageBurner
