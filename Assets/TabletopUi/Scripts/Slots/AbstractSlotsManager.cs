@@ -23,9 +23,13 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     public virtual IList<RecipeSlot> GetAllSlots() {
         var children = GetComponentsInChildren<RecipeSlot>();
-        var allSlots = new List<RecipeSlot>(children);
-        var undestroyedSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false));
-        return undestroyedSlots;
+        var allSlots = new List<RecipeSlot>(children.Length);
+
+        foreach (var item in children) 
+            if (item.Defunct == false)
+                allSlots.Add(item);
+
+        return allSlots;
     }
 
     public IRecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
@@ -57,18 +61,28 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     /// <returns></returns>
     public AspectsDictionary GetAspectsFromSlottedCards(bool includeElementAspects) {
         AspectsDictionary currentAspects = new AspectsDictionary();
-        foreach (IRecipeSlot slot in GetAllSlots())
-            if (slot.GetElementStackInSlot() != null)
-                currentAspects.CombineAspects(slot.GetElementStackInSlot().GetAspects(includeElementAspects));
+        IElementStack stack;
+
+        foreach (IRecipeSlot slot in GetAllSlots()) {
+            stack = slot.GetElementStackInSlot();
+
+            if (stack != null)
+                currentAspects.CombineAspects(stack.GetAspects(includeElementAspects));
+        }
 
         return currentAspects;
     }
 
     public IEnumerable<IElementStack> GetStacksInSlots() {
         IList<IElementStack> stacks = new List<IElementStack>();
-        foreach (IRecipeSlot slot in GetAllSlots())
-            if (slot.GetElementStackInSlot() != null)
-                stacks.Add(slot.GetElementStackInSlot());
+        IElementStack stack;
+
+        foreach (IRecipeSlot slot in GetAllSlots()) {
+            stack = slot.GetElementStackInSlot();
+
+            if (stack != null)
+                stacks.Add(stack);
+        }
 
         return stacks;
     }
