@@ -18,6 +18,8 @@ namespace Assets.Core.Entities
         List<string> StartingCards { get; set; }
         string DefaultCardId { get; set; }
         bool ResetOnExhaustion { get; set; }
+        string Label { get; set; }
+        string Description { get; set; }
     }
 
 
@@ -42,6 +44,8 @@ namespace Assets.Core.Entities
         public List<string> StartingCards { get; set; }
         public string DefaultCardId { get; set; }
         public bool ResetOnExhaustion { get; set; }
+        public string Label { get; set; }
+        public string Description { get; set; }
 
         public DeckSpec(string id,List<string> startingCards,string defaultCardId,bool resetOnExhaustion)
         {

@@ -338,7 +338,12 @@ public class ContentImporter
 
             DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
 
-            DeckSpecs.Add(d.Id, d);
+            if(htEachDeck.ContainsKey(NoonConstants.KLABEL))
+               d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
+            if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
+                d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();
+
+                DeckSpecs.Add(d.Id, d);
         }
 
     }
