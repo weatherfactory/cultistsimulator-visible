@@ -188,10 +188,20 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        bool isWide = false;
+        public void DisplayHintRecipeFound(Recipe r) {
+            Title = r.Label;
+            PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
+            DisplayRecipeMetaComment(null);
+            DisplayButtonState(false);
+            SetWindowSize(IsWideRecipe(r));
+
+            SoundManager.PlaySfx("SituationAvailable");
+        }
+
+        bool windowIsWide = false;
 
         bool IsWideRecipe(Recipe r) {
-            // This is dummy to test
+            // This is dummy to test with dream + passion
             if (r.BurnImage != null)
                 return true;
 
@@ -203,11 +213,15 @@ namespace Assets.CS.TabletopUI {
             if (r.Id == "explore_settingupexpedition")
                 return true;
 
-            if (r.Id == "ritehint")
+            // This means we're in a rite, so we're wide
+            if (r.Id.Substring(0,4) == "rite")
                 return true;
 
+            // Other ideas: 
             // Work verb +Rite - aspected element in the primary slot
             // Explore verb + Vault - aspected element in the primary slot
+            // Though these require us to check the element.
+
             return false;
         }
 
@@ -219,7 +233,7 @@ namespace Assets.CS.TabletopUI {
             else
                 rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 700f);
 
-            if (wide != isWide) { 
+            if (wide != windowIsWide) {
                 if (wide)
                     rectTrans.anchoredPosition = rectTrans.anchoredPosition + new Vector2(100f, 0f);
                 else
@@ -229,17 +243,7 @@ namespace Assets.CS.TabletopUI {
                 startingSlots.SetGridNumPerRow();
             }
 
-            isWide = wide;
-        }
-
-        public void DisplayHintRecipeFound(Recipe r) {
-            Title = r.Label;
-            PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
-            DisplayRecipeMetaComment(null);
-            DisplayButtonState(false);
-            SetWindowSize(IsWideRecipe(r));
-
-            SoundManager.PlaySfx("SituationAvailable");
+            windowIsWide = wide;
         }
 
         public void ReceiveTextNote(INotification notification) {
