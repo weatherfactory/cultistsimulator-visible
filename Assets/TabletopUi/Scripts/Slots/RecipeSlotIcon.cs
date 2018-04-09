@@ -1,51 +1,34 @@
 ﻿#pragma warning disable 0649
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.CS.TabletopUI
-{
-    /// <summary>
-    /// NOT CURRENTLY IN USE
-    /// </summary>
-	public class RecipeSlotIcon : MonoBehaviour {
+// Should inherit from a "TabletopToken" base class same as VerbBox
 
-		public Sprite iconLocked;
-		public Sprite iconConsumes;
-		public Sprite iconOngoing;
-		public Sprite iconGreedy;
+namespace Assets.CS.TabletopUI {
+    public class RecipeSlotIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-		[SerializeField] Graphic border;
-		[SerializeField] Image sprite;
+        [SerializeField] Image image;
 
-		public void Hide() {
-			gameObject.SetActive(false);
-		}
+        bool isHovering;
 
-		public void SetSprite(RecipeSlot.SlotModifier modifier) {
-			gameObject.SetActive(true);
-			sprite.sprite = GetSprite(modifier);
-		}
+        // to check if we're dragging the badge or the stack when starting the drag
+        public bool IsHovering() {
+            return isHovering;
+        }
 
-		Sprite GetSprite(RecipeSlot.SlotModifier modifier) {
-			switch(modifier) {
-			case RecipeSlot.SlotModifier.Consuming:
-				return iconConsumes;
-			case RecipeSlot.SlotModifier.Greedy:
-				return iconGreedy;
-			case RecipeSlot.SlotModifier.Locked:
-				return iconLocked;
-			case RecipeSlot.SlotModifier.Ongoing:
-				return iconOngoing;
-			default:
-				return null;
-			}
-		}
+        public void OnPointerEnter(PointerEventData eventData) {
+            isHovering = true;
 
-		public void SetColor(Color color) {
-			border.color = color;
-		}
+            // only highlight if we're not dragging anything
+            if (DraggableToken.itemBeingDragged == null)
+                image.color = UIStyle.hoverWhite;
+        }
 
-	}
+        public void OnPointerExit(PointerEventData eventData) {
+            isHovering = false;
+            image.color = UIStyle.slotDefault;
+        }
+
+    }
 }

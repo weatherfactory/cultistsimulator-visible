@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
+using Assets.Core.Entities;
 
 namespace Assets.Core.Interfaces
 {
@@ -13,8 +14,8 @@ namespace Assets.Core.Interfaces
         void ShowNotificationWindow(string title, string description, float duration = 10);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
-        void ShowDeckDetails(string deckId, int deckQuantity);
         void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);
+        void ShowDeckDetails(IDeckSpec deckId, int deckQuantity);
         void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment);
     }
 }

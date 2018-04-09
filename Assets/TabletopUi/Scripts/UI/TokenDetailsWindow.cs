@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
     public class TokenDetailsWindow : BaseDetailsWindow {
@@ -28,6 +29,9 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Image greedyIcon;
         [SerializeField] Image consumesIcon;
 
+        [Header("Deck Infos")]
+        [SerializeField] TextMeshProUGUI deckInfos;
+
         [Header("Aspect Display")]
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
         [SerializeField] AspectsDisplay aspectsDisplayRequired;
@@ -43,7 +47,11 @@ namespace Assets.CS.TabletopUI {
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
         ElementStackToken token;
+
         SlotSpecification slotSpec;
+
+        IDeckSpec deckSpec;
+        int deckQuantity;
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
             // Check if we'd show the same, if so: do nothing
@@ -63,6 +71,8 @@ namespace Assets.CS.TabletopUI {
             this.element = element;
             this.token = token; // To be able to update the card's remaining time
             this.slotSpec = null;
+            this.deckSpec = null;
+            this.deckQuantity = 0;
             Show();
         }
 
@@ -75,6 +85,18 @@ namespace Assets.CS.TabletopUI {
             this.element = null;
             this.token = null;
             this.slotSpec = slotSpec;
+            this.deckSpec = null;
+            this.deckQuantity = 0;
+            Show();
+        }
+
+        public void ShowDeckDetails(IDeckSpec deckSpec, int quantity) {
+            SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
+            this.element = null;
+            this.token = null;
+            this.slotSpec = null;
+            this.deckSpec = deckSpec;
+            this.deckQuantity = quantity;
             Show();
         }
 
@@ -108,7 +130,12 @@ namespace Assets.CS.TabletopUI {
             else if (slotSpec != null) {
                 SetSlot(slotSpec);
             }
+            else if (deckSpec != null) {
+                SetDeck(deckSpec, deckQuantity);
+            }
         }
+
+        // SET TOKEN TYPE CONTENT VISUALS
 
         void SetElementCard(Element element, ElementStackToken token = null) {
             Sprite sprite;
@@ -118,6 +145,7 @@ namespace Assets.CS.TabletopUI {
             else
                 sprite = ResourcesManager.GetSpriteForElement(element.Id);
 
+            SetImageNarrow(false);
             ShowImage(sprite);
 
             if (token != null) // only if there's a token is there ever a decay timer
@@ -127,8 +155,10 @@ namespace Assets.CS.TabletopUI {
 
             ShowText(elementHeader + element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
+
             ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
+            ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(element.Aspects);
             aspectsDisplayForbidden.DisplayAspects(null);
@@ -144,12 +174,38 @@ namespace Assets.CS.TabletopUI {
                 (string.IsNullOrEmpty(slotSpec.Description) ? defaultSlotDesc : slotSpec.Description)
                 );
             SetTextMargin(false, slotSpec.Greedy || slotSpec.Consumes);
-            ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
+
             ShowCardIcons(false, false); // Make sure the other hint icons are gone
+            ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
+            ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(null);
             aspectsDisplayForbidden.DisplayAspects(slotSpec.Forbidden);
             aspectsDisplayRequired.DisplayAspects(slotSpec.Required);
+        }
+
+        void SetDeck(IDeckSpec deckId, int deckQuantity) {
+            var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
+            SetImageNarrow(true);
+            ShowImage(sprite);
+            ShowImageDecayTimer(false);
+
+            ShowText(deckId.Label, deckId.Description);
+            SetTextMargin(sprite != null, true);
+
+            ShowCardIcons(false, false); // Make sure the other hint icons are gone
+            ShowSlotIcons(false, false); // Make sure the other hint icons are gone
+            ShowDeckInfos(deckQuantity);
+
+            aspectsDisplayFlat.DisplayAspects(null);
+            aspectsDisplayForbidden.DisplayAspects(null);
+            aspectsDisplayRequired.DisplayAspects(null);
+        }
+
+        // SUB VISUAL SETTERS
+
+        void SetImageNarrow(bool narrow) {
+            artwork.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, narrow ? 65f : 100f);
         }
 
         void ShowImageDecayTimer(bool show, string timeString = null) {
@@ -174,6 +230,11 @@ namespace Assets.CS.TabletopUI {
             slotInfoHolder.gameObject.SetActive(isGreedy || consumes);
             greedyInfo.gameObject.SetActive(isGreedy);
             consumesInfo.gameObject.SetActive(consumes);
+        }
+
+        void ShowDeckInfos(int quantity) {
+            deckInfos.gameObject.SetActive(quantity >= 0);
+            deckInfos.text = "Cards drawn: " + quantity;
         }
 
         public void HighlightSlotIcon(bool isGreedy, bool consumes) {

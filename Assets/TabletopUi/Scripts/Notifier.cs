@@ -6,6 +6,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
+using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
 
@@ -74,8 +75,9 @@ namespace Assets.CS.TabletopUI {
             aspectDetails.Hide();
         }
 
-        public void ShowDeckDetails(string deckId, int quantity) {
-            Debug.Log("Doing nothing yet");
+        public void ShowDeckDetails(IDeckSpec deckSpec, int quantity) {
+            tokenDetails.ShowDeckDetails(deckSpec, quantity);
+            aspectDetails.Hide();
         }
 
         // TabletopImageBurner

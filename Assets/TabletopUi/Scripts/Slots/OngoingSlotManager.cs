@@ -105,13 +105,16 @@ namespace Assets.CS.TabletopUI {
             UnityEngine.Assertions.Assert.IsTrue(deckEffects.Count <= deckEffectViews.Length);
 
             int i = 0;
+            IDeckSpec deckSpec;
 
             // Populate those we need
             foreach (var item in deckEffects) {
-                deckEffectViews[i].PopulateDisplay(item.Key, item.Value);
+                deckSpec = Registry.Retrieve<ICompendium>().GetDeckSpecById(item.Key);
+                deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
                 deckEffectViews[i].gameObject.SetActive(true);
                 i++;
             }
+
 
             // All those we didn't need? Hide them.
             while (i < deckEffectViews.Length) {

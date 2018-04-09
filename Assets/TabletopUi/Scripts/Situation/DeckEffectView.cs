@@ -8,41 +8,27 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using Assets.Core.Entities;
 
 public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
     [SerializeField] private Image deckBack;
     [SerializeField] private TextMeshProUGUI deckQuantity;
 
-    private string deckId;
+    private IDeckSpec deckSpec;
     private int quantity;
 
-    public void PopulateDisplay(string deckId, int quantity) {
-        this.deckId = deckId;
+    public void PopulateDisplay(IDeckSpec deckSpeck, int quantity) {
+        this.deckSpec = deckSpeck;
         this.quantity = quantity;
 
-        deckBack.sprite = GetSpriteForDeck(deckId);
+        // we're using the override, so the default is the base image and is visible if we get NULL
+        deckBack.overrideSprite = ResourcesManager.GetSpriteForCardBack(deckSpeck.Id); 
 
         deckQuantity.gameObject.SetActive(quantity > 1);
         deckQuantity.text = (quantity > 1 ? quantity.ToString() : null);
 
-        gameObject.name = "DeckEffectView - " + deckId + " - " + quantity;
-    }
-
-    Sprite GetSpriteForDeck(string deckId) {
-        // TODO: This is temp since I can't get from the string to the card back yet
-        float random = UnityEngine.Random.value;
-
-        if (random < 0.33f)
-            return ResourcesManager.GetSpriteForCardBack("books");
-        else if (random < 0.66f)
-            return ResourcesManager.GetSpriteForCardBack("eye");
-        else 
-            return ResourcesManager.GetSpriteForCardBack("default");
-
-        // Something along these lines instead
-        //IGameEntityStorage storage;
-        //var deck = storage.GetDeckInstanceById(deckId)
+        gameObject.name = "DeckEffectView - " + deckSpeck + " - " + quantity;
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -55,7 +41,7 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Registry.Retrieve<INotifier>().ShowDeckDetails(deckId, quantity);
+        Registry.Retrieve<INotifier>().ShowDeckDetails(deckSpec, quantity);
     }
 
 
