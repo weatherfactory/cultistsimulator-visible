@@ -362,7 +362,10 @@ namespace Assets.CS.TabletopUI {
                     onTurnFaceUp(this);
             }
 
-            transform.SetAsLastSibling(); //this moves the clicked sibling on top of any other nearby cards.
+            // this moves the clicked sibling on top of any other nearby cards.
+            // NOTE: We shouldn't do this if we're in a RecipeSlot.
+            if (TokenContainer.GetType() != typeof(RecipeSlot))
+                transform.SetAsLastSibling(); 
         }
 
         public override void OnDrop(PointerEventData eventData) {
