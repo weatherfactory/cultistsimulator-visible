@@ -22,8 +22,7 @@ public class DeckEffectView : MonoBehaviour, IPointerClickHandler, IPointerEnter
         this.deckSpec = deckSpeck;
         this.quantity = quantity;
 
-        // we're using the override, so the default is the base image and is visible if we get NULL
-        deckBack.overrideSprite = ResourcesManager.GetSpriteForCardBack(deckSpeck.Id); 
+        deckBack.sprite = ResourcesManager.GetSpriteForCardBack(deckSpeck.Id); 
 
         deckQuantity.gameObject.SetActive(quantity > 1);
         deckQuantity.text = (quantity > 1 ? quantity.ToString() : null);

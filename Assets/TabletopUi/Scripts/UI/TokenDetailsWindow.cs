@@ -90,13 +90,17 @@ namespace Assets.CS.TabletopUI {
             Show();
         }
 
-        public void ShowDeckDetails(IDeckSpec deckSpec, int quantity) {
+        public void ShowDeckDetails(IDeckSpec deckSpec, int numCards) {
+            // Check if we'd show the same, if so: do nothing
+            if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
+                return;
+
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
             this.element = null;
             this.token = null;
             this.slotSpec = null;
             this.deckSpec = deckSpec;
-            this.deckQuantity = quantity;
+            this.deckQuantity = numCards;
             Show();
         }
 
@@ -186,6 +190,7 @@ namespace Assets.CS.TabletopUI {
 
         void SetDeck(IDeckSpec deckId, int deckQuantity) {
             var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
+            
             SetImageNarrow(true);
             ShowImage(sprite);
             ShowImageDecayTimer(false);
