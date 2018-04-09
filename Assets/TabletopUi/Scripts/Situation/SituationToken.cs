@@ -42,6 +42,7 @@ namespace Assets.CS.TabletopUI {
         [Header("Ongoing Slot")]
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
+        [SerializeField] GameObject ongoingSlotGreedyIcon;
 
         [Header("Completion")]
         [SerializeField] Image completionBadge;
@@ -179,11 +180,7 @@ namespace Assets.CS.TabletopUI {
             if (ongoingSlots.Count > 1)
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
 
-            // We assume there's only one Slot
-            if (ongoingSlots[0].Greedy)
-                ongoingSlotImage.color = UIStyle.miniSlotGreedy;
-            else
-                ongoingSlotImage.color = UIStyle.miniSlotDefault;
+            ongoingSlotGreedyIcon.gameObject.SetActive(ongoingSlots[0].Greedy);
         }
 
         public void DisplayStackInMiniSlot(IEnumerable<IElementStack> stacksInOngoingSlots) {
