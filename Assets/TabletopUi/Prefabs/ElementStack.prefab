@@ -476,6 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25276b2f900a74c9e98eea696ba3a251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowOffset: {x: -2, y: -2}
   shadow: {fileID: 224000013083219016}
   card: {fileID: 224000011999988054}
 --- !u!114 &114000013698684494
@@ -1079,7 +1080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -5}
+  m_AnchoredPosition: {x: -2, y: -2}
   m_SizeDelta: {x: 75, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000013844614364
