@@ -263,6 +263,13 @@ namespace Assets.CS.TabletopUI {
             return Retire(defaultRetireFX);
         }
 
+        public bool ChangeTo(string elementId)
+        {
+            //some sort of transition/animation, but not the flames one
+            //flipping the card might be good!
+            throw new NotImplementedException();
+        }
+
         public bool Retire(bool useDefaultFX) {
             return Retire(useDefaultFX ? defaultRetireFX : null);
         }
