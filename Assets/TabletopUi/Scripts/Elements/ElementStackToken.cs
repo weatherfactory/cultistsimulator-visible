@@ -257,17 +257,41 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
+        #region -- Change & Replace Card ------------------------------------------------------------------------------------
+
+        public bool ChangeTo(string elementId) {
+            // Save this, since we're retiring and that sets quantity to 0
+            int quantity = Quantity;      
+
+            // Note, this is a temp effect
+            Retire("CardDrown");
+
+            var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
+            cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+            cardLeftBehind.lastTablePos = lastTablePos;
+            cardLeftBehind.originStack = null;
+            
+            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
+            cardLeftBehind.transform.position = transform.position;
+
+            // Put it behind the card being burned
+            cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
+
+            var stacksManager = TokenContainer.GetElementStacksManager();
+            stacksManager.AcceptStack(cardLeftBehind, new Context(Context.ActionSource.ChangeTo));
+
+            // Accepting stack may put it to pos Vector3.zero, so this is last
+            cardLeftBehind.transform.position = transform.position;
+
+            return true;
+        }
+
+        #endregion
+
         #region -- Retire + FX ------------------------------------------------------------------------------------
 
         public override bool Retire() {
             return Retire(defaultRetireFX);
-        }
-
-        public bool ChangeTo(string elementId)
-        {
-            //some sort of transition/animation, but not the flames one
-            //flipping the card might be good!
-            throw new NotImplementedException();
         }
 
         public bool Retire(bool useDefaultFX) {
@@ -494,8 +518,10 @@ namespace Assets.CS.TabletopUI {
 
             lifetimeRemaining = lifetimeRemaining - interval;
 
-            if (lifetimeRemaining < 0)
+            if (lifetimeRemaining < 0) { 
+                // If we ChangeTo, then we do that here.
                 Retire(true);
+            }
 
             if (lifetimeRemaining < _element.Lifetime / 2) {
                 ShowCardDecayTimer(true);
