@@ -520,7 +520,7 @@ namespace Assets.CS.TabletopUI {
 
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
-            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
         }
 
         public void ShowCardShadow(bool show) {
@@ -553,7 +553,7 @@ namespace Assets.CS.TabletopUI {
             cardLeftBehind.transform.position = transform.position;
 
             // Note, this is a temp effect
-            Retire("CardTransformYellow");
+            Retire("CardTransformWhite");
 
             return true;
         }
