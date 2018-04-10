@@ -5,8 +5,8 @@
 	{
 	id: "explorevaultperil_treacherousground_encounter",
 	actionId:"explore",
-	label: "FNORD",
-	startdescription: "FNORD",
+	label: "FNORD [This text is not available in the development build]",
+	startdescription: "FNORD [This text is not available in the development build]",
 	requirements: {peril_treacherousground:1},
 	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
@@ -25,7 +25,7 @@
 	actionId: "explore",
 	requirements:{lantern:10},
 	label:"We call upon the Sister-and-Witch, who cannot be touched.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
 	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
@@ -34,7 +34,7 @@
 	actionId: "explore",
 	requirements:{lantern:5},
 	label:"We call upon the Sister-and-Witch, who cannot be separated.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
 	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
@@ -43,7 +43,7 @@
 	actionId: "explore",
 	requirements:{lantern:1},
 	label:"We call upon the Sister-and-Witch, who are pearl.",
-		startdescription: "FNORD",
+		startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
 	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
@@ -62,7 +62,7 @@
 		  	{id:"explorevaultperil_treacherousground_midforge",
 	actionId: "explore",
 	requirements:{forge:5},
-	label:"FNORD",
+	label:"FNORD [This text is not available in the development build]",
 	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
@@ -83,7 +83,7 @@
 	id: "explorevaultperil_treacherousground_success",
 	actionId:"explore",
 	label: "Safe Across the treacherousground",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	effects: {peril_treacherousground:-1},
 	craftable: false,
@@ -94,8 +94,8 @@
 				{
 	id: "explorevaultperil_treacherousground_failure",
 	actionId:"explore",
-	label: "FNORD",
-	startdescription: "FNORD",
+	label: "FNORD [This text is not available in the development build]",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	craftable: false,
 		linked: [
@@ -114,8 +114,8 @@
 	{
 	id: "explorevaultperil_forest_encounter",
 	actionId:"explore",
-	label: "FNORD",
-	startdescription: "FNORD",
+	label: "FNORD [This text is not available in the development build]",
+	startdescription: "FNORD [This text is not available in the development build]",
 	requirements: {peril_forest:1},
 	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
@@ -134,7 +134,7 @@
 	actionId: "explore",
 	requirements:{moth:10},
 	label:"We call upon the Sister-and-Witch, who cannot be touched.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_forest_success",chance:100},
 	{id:"explorevaultperil_forest_failure",chance:100}]	  
@@ -143,7 +143,7 @@
 	actionId: "explore",
 	requirements:{moth:5},
 	label:"We call upon the Sister-and-Witch, who cannot be separated.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_forest_success",chance:70},
 	{id:"explorevaultperil_forest_failure",chance:100}]	  
@@ -152,7 +152,7 @@
 	actionId: "explore",
 	requirements:{moth:1},
 	label:"We call upon the Sister-and-Witch, who are pearl.",
-		startdescription: "FNORD",
+		startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_forest_success",chance:30},
 	{id:"explorevaultperil_forest_failure",chance:100}]	  
@@ -171,7 +171,7 @@
 		  	{id:"explorevaultperil_forest_midforge",
 	actionId: "explore",
 	requirements:{forge:5},
-	label:"FNORD",
+	label:"FNORD [This text is not available in the development build]",
 	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_forest_success",chance:70},
@@ -192,7 +192,7 @@
 	id: "explorevaultperil_forest_success",
 	actionId:"explore",
 	label: "Safe Across the forest",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	effects: {peril_forest:-1},
 	craftable: false,
@@ -203,8 +203,8 @@
 				{
 	id: "explorevaultperil_forest_failure",
 	actionId:"explore",
-	label: "FNORD",
-	startdescription: "FNORD",
+	label: "FNORD [This text is not available in the development build]",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	craftable: false,
 		linked: [
@@ -224,8 +224,8 @@
 	{
 	id: "explorevaultperil_mountains_encounter",
 	actionId:"explore",
-	label: "FNORD",
-	startdescription: "FNORD",
+	label: "FNORD [This text is not available in the development build]",
+	startdescription: "FNORD [This text is not available in the development build]",
 	requirements: {peril_mountains:1},
 	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
@@ -244,7 +244,7 @@
 	actionId: "explore",
 	requirements:{winter:10},
 	label:"We call upon the Sister-and-Witch, who cannot be touched.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_mountains_success",chance:100},
 	{id:"explorevaultperil_mountains_failure",chance:100}]	  
@@ -253,7 +253,7 @@
 	actionId: "explore",
 	requirements:{winter:5},
 	label:"We call upon the Sister-and-Witch, who cannot be separated.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_mountains_success",chance:70},
 	{id:"explorevaultperil_mountains_failure",chance:100}]	  
@@ -262,7 +262,7 @@
 	actionId: "explore",
 	requirements:{winter:1},
 	label:"We call upon the Sister-and-Witch, who are pearl.",
-		startdescription: "FNORD",
+		startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_mountains_success",chance:30},
 	{id:"explorevaultperil_mountains_failure",chance:100}]	  
@@ -281,7 +281,7 @@
 		  	{id:"explorevaultperil_mountains_midforge",
 	actionId: "explore",
 	requirements:{forge:5},
-	label:"FNORD",
+	label:"FNORD [This text is not available in the development build]",
 	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_mountains_success",chance:70},
@@ -302,7 +302,7 @@
 	id: "explorevaultperil_mountains_success",
 	actionId:"explore",
 	label: "Safe Across the mountains",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	effects: {peril_mountains:-1},
 	craftable: false,
@@ -314,7 +314,7 @@
 	id: "explorevaultperil_mountains_failure",
 	actionId:"explore",
 	label: "Labyrinths of Salt and Basalt",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	craftable: false,
 		linked: [
@@ -327,8 +327,8 @@
 	{
 	id: "explorevaultperil_desert_encounter",
 	actionId:"explore",
-	label: "FNORD",
-	startdescription: "FNORD",
+	label: "FNORD [This text is not available in the development build]",
+	startdescription: "FNORD [This text is not available in the development build]",
 	requirements: {peril_desert:1},
 	slots:[{id:"Assistance", description: "Funds are essential for expeditions. Followers will allow me to pass obstacles.",required: {follower:1,funds:1}}],
 	alternativerecipes: [
@@ -347,7 +347,7 @@
 	actionId: "explore",
 	requirements:{grail:10},
 	label:"We call upon the Sister-and-Witch, who cannot be touched.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_desert_success",chance:100},
 	{id:"explorevaultperil_desert_failure",chance:100}]	  
@@ -356,7 +356,7 @@
 	actionId: "explore",
 	requirements:{grail:5},
 	label:"We call upon the Sister-and-Witch, who cannot be separated.",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_desert_success",chance:70},
 	{id:"explorevaultperil_desert_failure",chance:100}]	  
@@ -365,7 +365,7 @@
 	actionId: "explore",
 	requirements:{grail:1},
 	label:"We call upon the Sister-and-Witch, who are pearl.",
-		startdescription: "FNORD",
+		startdescription: "FNORD [This text is not available in the development build]",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_desert_success",chance:30},
 	{id:"explorevaultperil_desert_failure",chance:100}]	  
@@ -384,7 +384,7 @@
 		  	{id:"explorevaultperil_desert_midforge",
 	actionId: "explore",
 	requirements:{forge:5},
-	label:"FNORD",
+	label:"FNORD [This text is not available in the development build]",
 	startdescription:"We are practical souls, strong in Forge. We'll probably be fine.",
 		  description:"Separate failure event means this should never be visible.",
 	linked: [{id:"explorevaultperil_desert_success",chance:70},
@@ -405,7 +405,7 @@
 	id: "explorevaultperil_desert_success",
 	actionId:"explore",
 	label: "Safe Across the desert",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	effects: {peril_desert:-1},
 	craftable: false,
@@ -417,7 +417,7 @@
 	id: "explorevaultperil_desert_failure",
 	actionId:"explore",
 	label: "Labyrinths of Salt and Basalt",
-	startdescription: "FNORD",
+	startdescription: "FNORD [This text is not available in the development build]",
 	description: ".",
 	craftable: false,
 		linked: [
