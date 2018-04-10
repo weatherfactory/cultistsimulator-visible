@@ -11,7 +11,8 @@ public class Context {
         GreedySlot,
         AnimEnd,
         Retire,
-        Debug
+        Debug,
+        ChangeTo
     }
 
     public ActionSource actionSource;
