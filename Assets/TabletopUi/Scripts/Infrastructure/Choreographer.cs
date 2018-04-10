@@ -89,6 +89,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
+        // Note: If we're using the world pos while an object is dragged we get the wrong pos, since we project from cam through the raised pos
         public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
             Vector2 localPoint;
             var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
