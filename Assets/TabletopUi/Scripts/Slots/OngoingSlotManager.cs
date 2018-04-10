@@ -31,6 +31,14 @@ namespace Assets.CS.TabletopUI {
             SetSlotToPos();
         }
 
+        public override IList<RecipeSlot> GetAllSlots() {
+            // Is the active slot enabled?
+            if (ongoingSlot.gameObject.activeSelf)
+                return base.GetAllSlots();
+            else
+                return new List<RecipeSlot>(0);
+        }
+
         public void SetSlotToPos() {
             ongoingSlot.transform.position = slotHolder.position;
         }

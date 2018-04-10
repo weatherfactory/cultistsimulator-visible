@@ -64,7 +64,8 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
-            IList<RecipeSlot> currentSlots = GetAllSlots();
+            // We get a copy of the list, since it modifies itself when slots are removed
+            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetAllSlots());
 
             foreach (RecipeSlot s in currentSlots) {
                 if (s != null & s.GetElementStackInSlot() == null & s.childSlots.Count > 0) {
@@ -90,6 +91,8 @@ namespace Assets.TabletopUi.SlotsContainers {
                 return;
             if (slot.Defunct)
                 return;
+
+            allSlots.Remove(slot);
 
             // This is all copy & paste from the parent class except for the last line
             if (slot.childSlots.Count > 0) {

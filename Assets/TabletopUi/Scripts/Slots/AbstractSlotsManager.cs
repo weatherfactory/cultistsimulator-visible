@@ -16,19 +16,28 @@ using Assets.TabletopUi.Scripts.Services;
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
     protected SituationController controller;
+    protected List<RecipeSlot> allSlots;
+
+    public bool AllowDrag { get { return true; } }
 
     public virtual void Initialise(SituationController sc) {
         controller = sc;
+
+        allSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>(true));
     }
 
     public virtual IList<RecipeSlot> GetAllSlots() {
-        var children = GetComponentsInChildren<RecipeSlot>();
+        /*
+        var children = GetComponentsInChildren<RecipeSlot>(true);
         var allSlots = new List<RecipeSlot>(children.Length);
 
         foreach (var item in children) 
             if (item.Defunct == false)
                 allSlots.Add(item);
 
+        if (this.allSlots.Count != allSlots.Count)
+            Debug.LogWarning("Both ALL SLOTS are not the same!");
+        */
         return allSlots;
     }
 
@@ -46,6 +55,8 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         slot.Initialise(slotSpecification);
         slot.onCardDropped += RespondToStackAdded;
         slot.onCardRemoved += RespondToStackRemoved;
+
+        allSlots.Add(slot);
 
         return slot;
     }
@@ -91,6 +102,8 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         if (slot == null)
             return;
 
+        allSlots.Remove(slot);
+
         //if there are any child slots on this slot, recurse
         if (slot.childSlots.Count > 0) {
             List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
@@ -113,5 +126,4 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
 
 
-    public bool AllowDrag { get { return true; } }
 }
