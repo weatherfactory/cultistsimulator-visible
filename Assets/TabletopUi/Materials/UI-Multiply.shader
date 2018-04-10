@@ -97,7 +97,7 @@ Shader "Custom/UI-Multiply"
 			{
 				half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
 				color.rgb += (1 - IN.color.a);
-				color.rgb *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
+				color.rgb += 1 - UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 				
 				#ifdef UNITY_UI_ALPHACLIP
 				clip (color.rgb - 0.001);
