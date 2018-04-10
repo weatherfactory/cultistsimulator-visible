@@ -208,15 +208,7 @@ namespace Assets.CS.TabletopUI {
                 }
             }
 
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context);
-            /*
-            if (lastTablePos != null)
-                transform.position = (Vector3)lastTablePos;
-            else
-                lastTablePos = transform.position;
-
-            DisplayAtTableLevel();
-            */
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, lastTablePos != null);
         }
 
         private bool IsOnTabletop() {
@@ -488,9 +480,19 @@ namespace Assets.CS.TabletopUI {
             lifetimeRemaining = lifetimeRemaining - interval;
 
             if (lifetimeRemaining < 0) {
-                // If we ChangeTo, then we do that here.
+                // We're dragging this thing? Then return it?
+                if (DraggableToken.itemBeingDragged == this) {
+                    // Set our table pos based on our current world pos
+                    lastTablePos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(transform.position);
+                    // Then cancel our drag, which will return us to our new pos
+                    DraggableToken.CancelDrag();
+                }
+
+                // TODO: This is a temp hack for testing purposes
                 if (Id == "contentment")
                     ChangeTo("lunatic");
+
+                // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(_element.DecayTo))
                     Retire(true);
                 else

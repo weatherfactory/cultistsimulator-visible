@@ -33,10 +33,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _situationBuilder = situationBuilder;
 
             tableRect = tabletop.GetRect();
-            
         }
 
-        // -- PUBLIC POSITIONING METHODS ----------------------------
+        #region -- PUBLIC POSITIONING METHODS ----------------------------
 
         public void ArrangeTokenOnTable(SituationToken token, Context context) {
             token.RectTransform.anchoredPosition = GetFreePosWithDebug(token, Vector2.zero);
@@ -44,22 +43,35 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _tabletop.DisplaySituationTokenOnTable(token, context);
         }
 
-        //we place stacks horizontally rather than vertically
+        // Elements are we placed differently than tokens
+
         public void ArrangeTokenOnTable(ElementStackToken stack, Context context) {
+            ArrangeTokenOnTable(stack, context, stack.lastTablePos, false);
+        }
+
+        public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false) {
             _tabletop.GetElementStacksManager().AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
 
-            if (stack.lastTablePos != null) {
-                stack.RectTransform.anchoredPosition = GetFreePosWithDebug(stack, stack.lastTablePos.Value);
+            if (pushOthers && pos != null) { 
+                pos = GetPosClampedToTable(pos.Value);
             }
             else {
-                stack.RectTransform.anchoredPosition = GetFreePosWithDebug(stack, Vector2.zero);
-                stack.lastTablePos = stack.RectTransform.anchoredPosition;
+                pos = GetFreePosWithDebug(stack, pos != null ? pos.Value : Vector2.zero);
             }
 
+            stack.RectTransform.anchoredPosition = pos.Value;
+            stack.lastTablePos = pos.Value;
             stack.transform.localRotation = Quaternion.identity;
             stack.DisplayAtTableLevel();
             stack.FlipToFaceUp(true);
+
+            if (pushOthers)
+                MoveAllTokensOverlappingWith(stack);
         }
+
+        #endregion
+
+        #region -- POSITIONING HELP METHODS ----------------------------
 
         public void MoveAllTokensOverlappingWith(DraggableToken pushingToken) {
             var targetRect = GetCenterPosRect(pushingToken.RectTransform);
@@ -77,11 +89,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
-        // -- GET FREE POSITION ----------------------------
+        public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
+            Vector2 localPoint;
+            var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
+            var tablePos = RectTransformUtility.ScreenPointToLocalPointInRectangle(_tabletop.transform as RectTransform, screenPoint, Camera.main, out localPoint);
+
+            return localPoint;
+        }
+
+        #endregion
+
+        #region -- GET FREE POSITION ----------------------------
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
-            
-            #if DEBUG
+#if DEBUG
             currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
             currentDebug.tabletop = _tabletop.transform;
             currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
@@ -101,7 +122,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 #endif
         }
 
-        public Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
+        Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
             var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
@@ -296,7 +317,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
         */
 
-        // -- SITUATION MANAGEMENT ----------------------------
+        #endregion
+
+        #region -- SITUATION MANAGEMENT ----------------------------
 
         public void BeginNewSituation(SituationCreationCommand scc) {
             if (scc.Recipe == null)
@@ -348,6 +371,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
+        #endregion
+
+        #region -- ANIMATIONS ------------------------
+
         void AnimateTokenTo(DraggableToken token, float duration, Vector3 startPos, Vector3 endPos, float startScale = 1f, float endScale = 1f) {
             var tokenAnim = token.gameObject.AddComponent<TokenAnimation>();
             tokenAnim.onAnimDone += SituationAnimDone;
@@ -391,6 +418,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         void SituationAnimDone(SituationToken token) {
             _tabletop.DisplaySituationTokenOnTable(token, new Context(Context.ActionSource.AnimEnd));
         }
+
+        #endregion
 
     }
 }

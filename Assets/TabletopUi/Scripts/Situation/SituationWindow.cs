@@ -327,13 +327,13 @@ namespace Assets.CS.TabletopUI {
 
         // so the token-dump button can trigger this
         public void DumpAllResultingCardsToDesktop() {
-            DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerClick));
+            DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerDumpAll));
             situationController.ResetSituation();
         }
 
         public void DumpAllStartingCardsToDesktop() {
             if (situationController.SituationClock.State == SituationState.Unstarted)
-                DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerClick));
+                DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerDumpAll));
         }
 
         void DumpToDesktop(IEnumerable<IElementStack> stacks, Context context) {

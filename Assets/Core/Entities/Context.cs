@@ -5,6 +5,7 @@ public class Context {
         Loading,
         PlayerDrag,
         PlayerClick,
+        PlayerDumpAll,
         SituationStoreStacks,
         SituationEffect,
         SituationResults,
@@ -22,7 +23,15 @@ public class Context {
     }
 
     public bool IsManualAction() {
-        return actionSource == ActionSource.PlayerDrag || actionSource == ActionSource.PlayerClick;
+        switch (actionSource) {
+            case ActionSource.PlayerDrag:
+            case ActionSource.PlayerClick:
+            case ActionSource.PlayerDumpAll:
+                return true;
+
+            default:
+                return false;
+        }
     }
 
 }
