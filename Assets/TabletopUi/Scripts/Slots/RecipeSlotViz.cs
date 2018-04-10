@@ -59,8 +59,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void MoveToPosition(Vector2 pos, float duration) {
-            Debug.Log("Moving slot (was at " + lastPos.x + ") from " + targetPos.x + " to " + pos.x);
-
             if (lastPos == pos || Vector2.Distance(pos, lastPos) < minDistToMove)
                 return;
             
