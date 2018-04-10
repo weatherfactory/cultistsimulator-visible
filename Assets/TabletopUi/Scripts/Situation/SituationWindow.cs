@@ -141,6 +141,8 @@ namespace Assets.CS.TabletopUI {
 
             DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
             DisplayButtonState(false, buttonBusy);
+
+            SetWindowSize(IsWideRecipe(recipe));
         }
 
         // Results State

@@ -65,7 +65,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool IsGreedy
         {
-            get { return GoverningSlotSpecification.Greedy; }
+            get { return GoverningSlotSpecification != null && GoverningSlotSpecification.Greedy; }
         }
 
         public bool IsConsuming
