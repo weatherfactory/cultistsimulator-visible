@@ -5,7 +5,7 @@ namespace Assets.CS.TabletopUI
 {
     public class BasicShadowImplementation : MonoBehaviour {
 
-        [SerializeField] Vector2 shadowOffset = new Vector2(-5f, -5f);
+        [SerializeField] float shadowOffset = -5;
 
         // This is not a good class.
         // Ideally the ElementCard would set it's shadow whenever it sets it's position, since then it knows it's z position based on it's current state
@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI
         // This only works if the card is a child of a main group directly, not if it's parented to a window.
         
         void Update () {
-            shadow.anchoredPosition3D = new Vector3(shadowOffset.x, shadowOffset.y, -card.anchoredPosition3D.z);
+            shadow.anchoredPosition3D = new Vector3(shadowOffset, shadowOffset, -card.anchoredPosition3D.z);
         }
         
     }
