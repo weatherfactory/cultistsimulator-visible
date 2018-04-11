@@ -1,0 +1,72 @@
+{elements:[
+		     {
+        id: "gloverandgloverjuniorjob",
+            label: "Junior Position at Glover & Glover",
+            aspects:{},
+            description: "My intellect should be put to better use! But the pay is better than labourer's work."
+        },
+				     {
+        id: "gloverandgloverjob",
+            label: "Position at Glover & Glover",
+            aspects:{},
+			slots: [{id:"Diligence",
+					required: {reason: 1},
+					description: "Extra effort. It might help, if I'm very lucky."
+					}],
+            description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk."
+        },
+						     {
+        id: "gloverandgloverseniorjob",
+            label: "Senior Position at Glover & Glover",
+            aspects:{},
+			slots: [{id:"Diligence":
+					required: {reason: 1},
+					description: "Extra effort. I don't know why I would bother."
+					},
+			{id:"Devotion":required: {reason: 1},
+					description: "Extra effort. I don't know why I would bother."
+				}],
+            description: "I suppose, theoretically, I could rise higher, if someone died."
+        },
+			{id: "institutephysicianjob",
+	description: "Long hours; but good pay.",
+	label: "A Position at the Institute"
+},
+
+			{id: "investmentsjob",
+	label: "Independent Means"
+	description: "Independent Means"
+	aspects: {benign:1}
+	
+},
+
+
+		{id: "mediumjob",
+	label: "A Reputation as a Medium"
+	description: ""
+	
+},
+
+		{id: "auctioneerjob",
+	label: "A Position at Oriflamme's Auction House"
+	description: ""
+	
+},
+
+		{id: "detectivejob",
+	label: "A Position as a Police Detective"
+	description: ""
+	
+},
+		{id: "dancerjob",
+	label: "Dancing at the Ecdysis Club"
+	description: ""
+	
+		{id: "priestjob",
+	label: "Priestly Stipend"
+	description: ""
+	
+},
+
+
+]};

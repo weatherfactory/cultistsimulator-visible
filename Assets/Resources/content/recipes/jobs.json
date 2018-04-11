@@ -207,5 +207,20 @@
 		hintonly: true
     },
 	
+	{id: "work",
+label: "Manage my Affairs",
+actionId: "work",
+requirements: {investmentsjob:1},
+effects: {funds: 2},
+alternativerecipes: [
+{id:workbytjobend,chance:30}],
+startdescription: "Check in on my investments",
+description: "It's all going swimmingly. Although Papa's health is still not improving.",
+warmup:30,
+craftable: true	},
+
+	
+},
+	
 ]
 }

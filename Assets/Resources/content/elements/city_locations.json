@@ -9,20 +9,23 @@
 					consumes: true
 					}
 				],
-            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
+            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books.",
+			unique:true
         },
 				{
         id: "locationauctionhouse",
             label: "Oriflamme's Auction House",
             aspects:{location: 1},
-            description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire."
+            description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire.",
+			unique:true
         },
 						{
         id: "locationcabaret",
             label: "The Ecdysis Club",
             aspects:{location: 1,moth:1,grail:1},
             description: "A cabaret with an occult reputation.",
-			slots:[{id:"Entry",required:{funds:1},consumes:true}]
+			slots:[{id:"Entry",required:{funds:1},consumes:true}],
+			unique:true
         },
 			{
         id: "generichq",
