@@ -33,10 +33,25 @@
 	label: "A Position at the Institute"
 },
 
-			{id: "investmentsjob",
-	label: "Independent Means"
-	description: "Independent Means"
-	aspects: {benign:1}
+			{id: "investmentsjobc",
+	label: "A Generous Private Income",
+	description: "I am well provided for.",
+	aspects: {benign:1},
+		xtriggers: {decline: investmentsjobb}
+	
+},
+			{id: "investmentsjobb",
+	label: "A Substantial Private Income",
+		description: "Enough of an income to live in comfort."
+	aspects: {benign:1},
+	xtriggers: {decline: investmentsjoba}
+	
+},
+			{id: "investmentsjoba",
+	label: "A Modest Private Income",
+	description: "My investments provide more than enough to live on.", 
+	aspects: {benign:1},
+	xtriggers: {decline: jumble}
 	
 },
 

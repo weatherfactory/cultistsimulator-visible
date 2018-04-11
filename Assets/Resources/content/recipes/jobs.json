@@ -207,20 +207,48 @@
 		hintonly: true
     },
 	
-	{id: "work",
+	{id: "workinvestmentjobc",
 label: "Manage my Affairs",
 actionId: "work",
-requirements: {investmentsjob:1},
-effects: {funds: 2},
-alternativerecipes: [
-{id:workbytjobend,chance:30}],
-startdescription: "Check in on my investments",
-description: "It's all going swimmingly. Although Papa's health is still not improving.",
-warmup:30,
+requirements: {investmentsjobc:1},
+effects: {funds: 4},
+linked: [
+{id:investmentsjobdecline,chance:30}],
+startdescription: "My investments will provide well for me, if I pay attention to them.",
+description: "A neat white cheque in a neat white envelope, for a handsome sum.",
+warmup:60,
 craftable: true	},
+	{id: "workinvestmentjobb",
+label: "Manage my Affairs",
+actionId: "work",
+requirements: {investmentsjobb:1},
+effects: {funds: 3},
+linked: [
+{id:investmentsjobdecline,chance:30}],
+startdescription: "My investments will provide sufficiently for me, if I pay attention to them.",
+description: "A neat white cheque in a neat white envelope, for a reasonably attractive sum.",
+warmup:60,
+craftable: true	},
+	{id: "workinvestmentjoba",
+label: "Manage my Affairs",
+actionId: "work",
+requirements: {investmentsjoba:1},
+effects: {funds: 2},
+linked: [
+{id:investmentsjobdecline,chance:30}],
+startdescription: "My investments will just about provide for me, if I pay attention to them.",
+description: "A neat white cheque in a neat white envelope, for a modest sum.",
+warmup:60,
+craftable: true	},
+	{id: "investmentsjobdecline",
+label: "A Decline in Circumstances",
+aspects: {decline:1},
+actionId: "work",
+startdescription: ".",
+description: "I have received the usual cheque, but it comes with disquieting news. My investments have suffered - ill luck, or, just possibly, an enemy's malice.",
+warmup:5,
+craftable: false}
 
-	
-},
 	
 ]
 }

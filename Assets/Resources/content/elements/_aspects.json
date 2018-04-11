@@ -482,6 +482,14 @@
 			comments: "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals.",
 			noartneeded: true
         },
+					 {
+            id: "decline",
+            label: "Decline",
+			description: "Something is Ending",
+            isAspect: true,
+			comments: "Recipe aspect; runs when we want to decay something like an investment.",
+			noartneeded: true
+        },
 				 {
             id: "restorehealth",
             label: "Restore Health",
