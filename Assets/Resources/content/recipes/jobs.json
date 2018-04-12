@@ -61,10 +61,11 @@ My new position is better paid, and the desk stands by the street window. But I 
 	actionId:"work",
 	label:"Work at Glover & Glover",
 	requirements: "gloverandglover_difficultbossa_job",
-	startdescription:"I am better-paid than I was. But Mr Alden has taken an interest in me. Mr Alden is very particular. Mr Alden likes things done just so. And Mr Alden does not believe I am suitable for this position.",
+	startdescription:"I am better-paid than I was. But Mr Alden has taken an interest in me. Mr Alden is very particular. Mr Alden likes things done just so. And Mr Alden has never believed that I am qualified for this position.",
 	description:".",
 		effects: {funds:2},
 			linked: [{id:"gloverandglover_difficultbossa_overtime",chance:70},
+			{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:1},
 			{id:"gloverandglover_difficultbossa_no_overtime",chance:100}],
 	warmup:90,
 	craftable:true
@@ -75,6 +76,20 @@ My new position is better paid, and the desk stands by the street window. But I 
 	startdescription:".",
 	description:"Mr Alden has found nothing to criticise in my work, today. He does not look up as I leave."
 	},
+	
+			{id:"gloverandglover_difficultbossa_patienceisavirtue",
+	actionId:"work",
+	label:"Mr Alden is retiring!",
+	startdescription:"'I shall be leaving Glover & Glover tomorrow. When you've finished your work for the day, come and see me.'",
+	description:"'Under my direction, you have shown some improvement. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'
+	
+'One more thing! I had almost forgotten - '
+	
+'Be especially punctual tomorrow, please.'
+	",
+	effects: {funds:1,gloverandglover_difficultbossa_job:-1, gloverandgloverseniorjob: 1},
+	warmup:30
+	}
 	
 	{id:"gloverandglover_difficultbossa_overtime",
 	actionId:"work",
@@ -91,6 +106,9 @@ My new position is better paid, and the desk stands by the street window. But I 
 	effects: {funds:1},
 	warmup:60
 	},
+
+	
+	
 	{id:"gloverandglover_difficultbossa_overtime_fail",
 	actionId:"work",
 	label:"Work overtime, at Mr Alden's insistence",
