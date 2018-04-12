@@ -59,7 +59,8 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 			required: {reason: 1},
 					description: "Extra effort."
 				}],
-            description: "With the younger Glover gone, I might rise even higher."
+            description: "With the younger Glover gone, I might rise even higher.",
+			xtriggers: {careeradvancement:gloverandglovertopjob}
         },
 		{
         id: "gloverandglovertopjob",
