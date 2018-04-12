@@ -22,8 +22,7 @@
 	actionId:"work",
         startdescription: "The scratching of pens, the sourness of dust, the sighing of the younger Glover, the greedy gurgling of the elder.",
         description: "The clerks file out in silence. I am free for now.",
-		aside: "(I could devote extra effort to the work...)",
-        warmup:50,
+        warmup:60,
 			slots: [{id:"Diligence",
 					required: {reason: 1},
 					forbidden: {},
@@ -34,22 +33,19 @@
 		{id: "gloverandglover_diligence",
 	label: "Extra Effort at Glover & Glover",
 	  requirements: {reason: 1},
-	          alternativerecipes:
-		[{id: "gloverandgloverjunior_diligence_promotion", chance:70},
-		{id: "gloverandglover_diligence_promotion", chance:30},
-		],
+	          alternativerecipes:[{id: "gloverandgloverjunior_diligence_promotion", chance:30}],
 		effects: { funds: 1},
 	actionId:"work",
-        startdescription: "I will work whatever overtime is required. Perhaps they'll appreciate it.",
-        description: ".",
-		aside: "(Is this all I am meant for?)",
+        startdescription: "I will apply extra effort. Perhaps they'll appreciate it.",
+        description: "The end of the day. My neck aches. There is as much work to do tomorrow as there ever was.",
         warmup: 0,
 		craftable:false
 	},
 		{id: "gloverandgloverjunior_diligence_promotion",
 	label: "A Promotion!",
 	  requirements: {gloverandgloverjuniorjob: 1,reason:1},
-		effects: {funds: 3, gloverandgloverjuniorjob: -1, gloverandglover_difficultbossa_job: 1},
+		effects: {funds: 1},
+		aspects: {careeradvancement:1},
 	actionId:"work",
         startdescription: "",
         description: "Mr Alden, the Supervisor of Records, has called me into his office to recognise my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion!
@@ -82,7 +78,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	actionId:"work",
 	label:"Mr Alden is retiring!",
 	startdescription:"'I shall be leaving Glover & Glover tomorrow. When you've finished your work for the day, come and see me.'",
-	description:"'Under my direction, you have shown some improvement. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'
+	description:"'You <i>have</i> shown some improvement, under my direction. I have recommended you as my replacement. Remember what I have taught you, and you might one day be a credit to this department. You may go.'
 	
 'One more thing! I had almost forgotten - '
 	
@@ -90,7 +86,8 @@ My new position is better paid, and the desk stands by the street window. But I 
 	",
 	effects: {gloverandglover_difficultbossa_job:-1, gloverandgloverseniorjob: 1},
 	warmup:30,
-	craftable:false
+	craftable:false,
+	aspects:{careeradvancement:1}
 	},
 		{id:"gloverandglover_difficultbossa_overtime_initial",
 		comments:"Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
@@ -110,8 +107,6 @@ My new position is better paid, and the desk stands by the street window. But I 
 maxexecutions:10
 	},
 
-	
-	
 	{id:"gloverandglover_difficultbossa_overtime",
 	actionId:"work",
 	label:"work overtime, at Mr Alden's insistence",
@@ -129,7 +124,6 @@ maxexecutions:10
 	linked: [{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:5}]
 	},
 
-	
 	
 	{id:"gloverandglover_difficultbossa_overtime_fail",
 	actionId:"work",
@@ -166,7 +160,7 @@ maxexecutions:10
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
 		aside: "(I could devote extra effort to the work...)",
         warmup: 70,
-			slots: [{id:"Devotion":,
+			slots: [{id:"Devotion",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 				}],
@@ -176,13 +170,15 @@ maxexecutions:10
 			{id: "gloverandglover_diligence_promotion",
 	label: "Extra Hours at Glover & Glover",
 	  	  requirements: {gloverandgloverjob: 1,reason:2},
-		effects: { funds: 2,gloverandgloverjob: -1, gloverandgloverseniorjob: 1},
+		  aspects: {careeradvancement:1},
+		effects: {funds: 3},
+		aspects:{careeradvancement:1},
 	actionId:"work",
         startdescription: "",
-        description: "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for him.",
+        description: "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for his father.",
         warmup: 0
 	},
-			{id: "gloverandgloverseniorworkretirementoption",
+			{id: "gloverandgloverseniorwork_retirementoption",
 	label: "Work at Glover & Glover",
 	  requirements: {gloverandgloverseniorjob: 1,reason:2},
 		effects: { funds: 3},
@@ -190,7 +186,7 @@ maxexecutions:10
 	actionId:"work",
         startdescription: "Curl my hands into the correct shapes, and begin.",
         description: "I am always the last to leave, even after the elder Glover.",
-		aside: "(I could devote extra effort to the work...)",
+	
         warmup: 70,
 			slots: [{id:"Acceptance",
 					required: {passion: 1},
@@ -199,6 +195,8 @@ maxexecutions:10
 				alternativerecipes: [{id: "workvictory",chance:100}],
 				craftable: true
 	},
+	
+		
 				{id: "gloverandgloverseniorwork",
 	label: "Work at Glover & Glover",
 	  requirements: {gloverandgloverseniorjob: 1},
@@ -206,11 +204,29 @@ maxexecutions:10
 		
 	actionId:"work",
         startdescription: "Curl my hands into the correct shapes, and begin.",
-        description: "I am always the last to leave, even after the elder Glover.",
-		aside: "(I could devote extra effort to the work...)",
-        warmup: 90,
+        description: "When I close my eyes, figures march behind my eyelids. When I open them, the light hurts.",
+        warmup: 70,
 				craftable: true
 	},
+	
+				{id: "gloverandgloverseniorworkyoungerglovergone",
+	label: "Work at Glover & Glover",
+	  requirements: {gloverandgloverseniorjob_youngerglovergone: 1,reason:2},
+		effects: {funds: 3},
+		
+	actionId:"work",
+        startdescription: "Curl my hands into the correct shapes, and begin.",
+        description: "I am always the last to leave, even after the elder Glover. I am on good terms with the younger Glover. He likes to joke that I might even take his job. I won't, of course. His father will see to that. He makes the joke to put me in my place. It is beginning to annoy me.",
+        warmup: 70,
+			slots: [{1:"Ambition",
+					required: {passion: 1},
+					description: "The younger Glover's board seat remains unoccupied..."
+				}],
+				alternativerecipes: [{id: "gloverandglover_diligence_promotion",chance:30}],
+				craftable: true
+	},
+	
+
 	{id: "institutephysicianwork",
 	label: "Work at the Institute",
 	  requirements: {institutephysicianjob: 1,ritual:-1},
