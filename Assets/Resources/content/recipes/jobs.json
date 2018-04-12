@@ -65,7 +65,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	description:".",
 		effects: {funds:2},
 			linked: [{id:"gloverandglover_difficultbossa_overtime",chance:70},
-			{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:1},
+			{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:5},
 			{id:"gloverandglover_difficultbossa_no_overtime",chance:100}],
 	warmup:90,
 	craftable:true
@@ -162,9 +162,9 @@ My new position is better paid, and the desk stands by the street window. But I 
         description: "The younger Glover has taken me out for a lunch at his club. I am to do more of the things that I do, more carefully, and in return, he will give me a little more of the money I earn for him.",
         warmup: 0
 	},
-			{id: "gloverandgloverseniorwork",
+			{id: "gloverandgloverseniorworkretirementoption",
 	label: "Work at Glover & Glover",
-	  requirements: {gloverandgloverseniorjob: 1},
+	  requirements: {gloverandgloverseniorjob: 1,reason:2},
 		effects: { funds: 3},
 		
 	actionId:"work",
@@ -177,6 +177,18 @@ My new position is better paid, and the desk stands by the street window. But I 
 					description: "I could devote my life to this."
 				}],
 				alternativerecipes: [{id: "workvictory",chance:100}],
+				craftable: true
+	},
+				{id: "gloverandgloverseniorwork",
+	label: "Work at Glover & Glover",
+	  requirements: {gloverandgloverseniorjob: 1},
+		effects: { funds: 3},
+		
+	actionId:"work",
+        startdescription: "Curl my hands into the correct shapes, and begin.",
+        description: "I am always the last to leave, even after the elder Glover.",
+		aside: "(I could devote extra effort to the work...)",
+        warmup: 90,
 				craftable: true
 	},
 	{id: "institutephysicianwork",
