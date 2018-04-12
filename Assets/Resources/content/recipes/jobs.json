@@ -148,9 +148,9 @@ maxexecutions:10
 	actionId:"work",
 	label:"Work at Glover & Glover",
 	requirements: {gloverandglover_difficultbossa_gone_job:1},
-	startdescription:"The office crackles with the news of Alden's unexpected absence. A scrawny, nervous fellow from the fourth floor has been appointed Supervisor of Record (Temporary). Unlike Alden, he does not interfere with my work.",
+	startdescription:"The office crackles with the news of Alden's unexpected absence. A scrawny, nervous fellow from the fourth floor has been appointed Supervisor of Records (Temporary). Unlike Alden, he does not interfere with my work.",
 	description:"Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. But I leave at the appointed time.",
-		effects: { funds: 2,gloverandglover_difficultbossa_gone_job:-1,gloverandgloverjob:1},
+		effects: {funds: 2,gloverandglover_difficultbossa_gone_job:-1,gloverandgloverjob:1},
 	warmup:60,
 	craftable:true
 	},
@@ -160,7 +160,7 @@ maxexecutions:10
 	  requirements: {gloverandgloverjob: 1},
 	          alternativerecipes:
 		[{id: "gloverandglover_diligence_promotion", chance:100}],
-		effects: { funds: 2},
+		effects: {funds: 2},
 	actionId:"work",
         startdescription: "The work is more demanding, now, but it's better-paid.",
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
