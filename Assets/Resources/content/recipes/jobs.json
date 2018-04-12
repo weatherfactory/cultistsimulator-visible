@@ -204,7 +204,7 @@ maxexecutions:10
 		
 	actionId:"work",
         startdescription: "Curl my hands into the correct shapes, and begin.",
-        description: "When I close my eyes, figures march behind my eyelids. When I open them, the light hurts.",
+        description: "I am always the last to leave, even after the elder Glover. I am on good terms with the younger Glover. He likes to joke that I might take his job next. I won't, of course. His father will see to that. He makes the joke to put me in my place. It is beginning to annoy me.",
         warmup: 70,
 				craftable: true
 	},
@@ -216,13 +216,13 @@ maxexecutions:10
 		
 	actionId:"work",
         startdescription: "Curl my hands into the correct shapes, and begin.",
-        description: "I am always the last to leave, even after the elder Glover. I am on good terms with the younger Glover. He likes to joke that I might even take his job. I won't, of course. His father will see to that. He makes the joke to put me in my place. It is beginning to annoy me.",
+        description: "When I close my eyes, figures march behind my eyelids. When I open them, the light hurts.",
         warmup: 70,
 			slots: [{1:"Ambition",
 					required: {passion: 1},
 					description: "The younger Glover's board seat remains unoccupied..."
 				}],
-				alternativerecipes: [{id: "gloverandglover_diligence_promotion",chance:30}],
+				alternativerecipes: [{id: "gloverandglover_diligence_promotion",chance:300}],
 				craftable: true
 	},
 	
