@@ -57,6 +57,45 @@
 My new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
         warmup: 0
 	},
+		{id:"gloverandgloverwork_difficultbossa",
+	actionId:"work",
+	label:"Work at Glover & Glover",
+	requirements: "gloverandglover_difficultbossa_job",
+	startdescription:"I am better-paid than I was. But Mr Alden has taken an interest in me. Mr Alden is very particular. Mr Alden likes things done just so. And Mr Alden does not believe I am suitable for this position.",
+	description:"Ink, paper, and the fizzing of the electric lights. The office is dark when I leave.",
+		effects: {funds:2},
+			linked: {id:"gloverandglover_difficultbossa_overtime",chance:100},
+	warmup:90,
+	craftable:true
+	},
+	
+	{id:"gloverandglover_difficultbossa_overtime",
+	actionId:"work",
+	label:"Work overtime at Glover & Glover, at Mr Alden's request ",
+	startdescription:"'The work is complete when I determine that the work is complete. I am glad that we understand each other.'",
+			slots: [{id:"Attention":
+					required: {reason: 1,passion:1},
+					description: "Extra effort. It might help, if I'm very lucky."
+				}],
+	description:"'On this occasion I have determined that your work is of an acceptable standard. I will even authorise an additional payment, although naturally it will be a modest one. You may go. Be punctual tomorrow, please.'
+	
+	[There may be ways to deal with Mr Alden.]",
+	alternativerecipes:{id:"gloverandglover_difficultbossa_overtime_fail",chance:100},
+	effects: {funds:1},
+	warmup:60
+	},
+	{id:"gloverandglover_difficultbossa_overtime_fail",
+	actionId:"work",
+	label:"Work overtime at Glover & Glover, at Mr Alden's request ",
+	startdescription:"'I do not believe that you have properly understood the importance of our work here. This task will require your <i>full</i> attention. [Add Reason or Passion to satisfy Mr Glover.]",
+	description:"'I would like to say that I am disappointed, but my expectations of you were already low. I have no choice but to withhold a portion of your pay. You may go, but be punctual tomorrow, please.'
+	
+	[There may be ways to deal with Mr Alden.]
+	",
+	requirements: {reason:-1,passion:-1}
+	effects:{funds:-1}
+	},
+	
 	
 	{id:"gloverandgloverwork_difficultbossa_gone",
 	actionId:"work",
