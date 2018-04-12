@@ -200,8 +200,10 @@ namespace Assets.CS.TabletopUI {
 
                 var notifier = Registry.Retrieve<INotifier>();
 
+                var compendium = Registry.Retrieve<ICompendium>();
+
                 if (notifier != null)
-                    notifier.ShowNotificationWindow("I can't put that there - ", match.GetProblemDescription());
+                    notifier.ShowNotificationWindow("I can't put that there - ", match.GetProblemDescription(compendium));
             }
             else if (stack.Quantity != 1) {
                 // We're dropping more than one?

@@ -5,7 +5,7 @@
 label:"Discuss occult business with a Follower",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:-1},
-slots: [{id:"Subject",description:"Cult business; a target; or another topic.",required: {society:1,evidence:1,hunter:1,ingredient:1}}],
+slots: [{id:"Subject",description:"Cult business; a target; or another topic.",required: {society:1,evidence:1,hunter:1,ingredient:1,annoyance:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 {id:"followeraction_repairtoollanternbcracked",chance:100},
