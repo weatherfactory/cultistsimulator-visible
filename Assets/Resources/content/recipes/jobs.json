@@ -60,7 +60,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 		{id:"gloverandgloverwork_difficultbossa",
 	actionId:"work",
 	label:"Work at Glover & Glover",
-	requirements: "gloverandglover_difficultbossa_job",
+	requirements: {gloverandglover_difficultbossa_job:1},
 	startdescription:"I am better-paid than I was. But Mr Alden has taken an interest in me. Mr Alden is very particular. Mr Alden likes things done just so. And Mr Alden has never believed that I am qualified for this position.",
 	description:".",
 		effects: {funds:2},
@@ -88,8 +88,9 @@ My new position is better paid, and the desk stands by the street window. But I 
 'Be especially punctual tomorrow, please.'
 	",
 	effects: {funds:1,gloverandglover_difficultbossa_job:-1, gloverandgloverseniorjob: 1},
-	warmup:30
-	}
+	warmup:30,
+	craftable:false
+	},
 	
 	{id:"gloverandglover_difficultbossa_overtime",
 	actionId:"work",
@@ -104,7 +105,8 @@ My new position is better paid, and the desk stands by the street window. But I 
 [There may be ways to deal with Mr Alden.]",
 	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	effects: {funds:1},
-	warmup:60
+	warmup:60,
+	craftable:false
 	},
 
 	
@@ -117,14 +119,15 @@ My new position is better paid, and the desk stands by the street window. But I 
 	
 [There may be ways to deal with Mr Alden.]",
 	requirements: {reason:-1,passion:-1},
-	effects:{funds:-1}
+	effects:{funds:-1},
+	craftable:false
 	},
 	
 	
 	{id:"gloverandgloverwork_difficultbossa_gone",
 	actionId:"work",
 	label:"Work at Glover & Glover",
-	requirements: "gloverandglover_difficultbossa_gone_job",
+	requirements: {gloverandglover_difficultbossa_gone_job:1},
 	startdescription:"The office crackles with the news of Alden's unexpected absence. A scrawny, nervous fellow from the fourth floor has been appointed Supervisor of Record (Temporary). Unlike Alden, he does not interfere with my work.",
 	description:"Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. But I leave at the appointed time.",
 		effects: { funds: 2,gloverandglover_difficultbossa_gone_job:-1,gloverandgloverjob:1},
