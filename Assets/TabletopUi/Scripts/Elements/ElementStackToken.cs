@@ -157,7 +157,7 @@ namespace Assets.CS.TabletopUI {
                 //when first created, it should be in Limbo
             }
             catch (Exception e) {
-                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
+                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(false);
             }
         }

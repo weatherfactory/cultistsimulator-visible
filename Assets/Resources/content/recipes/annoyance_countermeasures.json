@@ -1,0 +1,79 @@
+{"recipes": [
+	  
+	    {id: "annoyanceattackhighedge",
+	   label: "Send an Unstoppable Force to murder an Annoyance",
+	  actionId:"talk",
+	  startdescription:"I am out of patience with this nuisance. Unless they have some unusual protection, they're already dead. But their demise will attract attention.",
+	  description:"100% success rate means this should never be visible.",
+	  requirements: {annoyance:1,edge:10,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "annoyanceattackmidedge",
+	   label: "Send a Potent Minion to murder an Annoyance",
+	  actionId:"talk",
+	  startdescription:"I am out of patience with this nuisance. This should be an end to the matter. But they could possibly survive, and the attempt will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,edge:5,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:70},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyanceattacklowedge",
+	   label: "Send a Minion to murder an Annoyance",
+	  actionId:"talk",
+	  startdescription:"I want this Annoyance gone. But this approach is risky, unless my minion is more skilled. They might very easily survive, and the attempt will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,edge:1,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:30},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	   {id: "annoyanceattacknoedge",
+	   label: "Send Someone Unsuitable to Murder an Annoyance",
+	  actionId:"talk",
+	  startdescription:"My minion lacks the Edge aspect, and is woefully unsuited to attacking the Annoyance. There's a small chance they might succeed.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:10},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "annoyanceattacksuccess",
+	   label: "Ending an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a trophy. The Annoyance has been extirpated.",
+	  aspects:{endannoyance:1},
+	  effects: {corpse:1,notoriety:1},
+	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}]
+	  
+	  warmup:10	  
+	  },
+	  
+	  	  {id: "annoyancecapturesuccess",
+	   label: "Ending an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a prisoner! ...who will have time now to regret his choices.",
+	  aspects: {endannoyance:1},
+	  effects: {notoriety:1,genericprisonerm:1},
+	  aspects: {endannoyance:1},
+	  
+	  warmup:10	  
+	  },
+	  
+	  
+	  {id: "annoyanceattackfailure",
+	   label: "Hunting an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has not returned. They must have failed. This may yet prove embarrassing.",
+	  effects: {follower:-1,notoriety:1},
+	  warmup:10	  
+	  },
+	  
+]
+}

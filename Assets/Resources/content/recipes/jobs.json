@@ -40,7 +40,7 @@
 		],
 		effects: { funds: 1},
 	actionId:"work",
-        startdescription: "I will work whatever overtime the elder Glover requires. Perhaps he'll appreciate it.",
+        startdescription: "I will work whatever overtime is required. Perhaps they'll appreciate it.",
         description: ".",
 		aside: "(Is this all I am meant for?)",
         warmup: 0,
@@ -49,12 +49,26 @@
 		{id: "gloverandgloverjunior_diligence_promotion",
 	label: "A Promotion!",
 	  requirements: {gloverandgloverjuniorjob: 1,reason:1},
-		effects: { funds: 3, gloverandgloverjuniorjob: -1, gloverandgloverjob: 1},
+		effects: {funds: 3, gloverandgloverjuniorjob: -1, gloverandglover_difficultbossa_job: 1},
 	actionId:"work",
         startdescription: "",
-        description: "The elder Glover has called me into his office to congratulate me on my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion. My new position is better paid, and the desk stands by the street window.",
+        description: "Mr Alden, the Supervisor of Records, has called me into his office to recognise my diligence. I watch the mole on his neck as he talks; and talks; and talks. But at the end of it, I have a promotion!
+		
+My new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
         warmup: 0
 	},
+	
+	{id:"gloverandgloverwork_difficultbossa_gone",
+	actionId:"work",
+	label:"Work at Glover & Glover",
+	requirements: "gloverandglover_difficultbossa_gone_job",
+	startdescription:"The office crackles with the news of Alden's unexpected absence. A scrawny, nervous fellow from the fourth floor has been appointed Supervisor of Record (Temporary). Unlike Alden, he does not interfere with my work.",
+	description:"Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. But I leave at the appointed time.",
+		effects: { funds: 2,gloverandglover_difficultbossa_gone_job:-1,gloverandgloverjob:1},
+	warmup:90,
+	craftable:true
+	},
+	
 		{id: "gloverandgloverwork",
 	label: "Work at Glover & Glover",
 	  requirements: {gloverandgloverjob: 1},
@@ -72,6 +86,7 @@
 				}],
 				craftable: true
 	},
+	
 			{id: "gloverandglover_diligence_promotion",
 	label: "Extra Hours at Glover & Glover",
 	  	  requirements: {gloverandgloverjob: 1,reason:2},

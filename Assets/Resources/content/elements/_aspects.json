@@ -44,6 +44,12 @@
 			description: "The laws of civilisation are younger than the Laws of the Hours, but they, too, sometimes require a sacrifice. This one is an agent of the law.",
             isAspect: true
         },
+				        {
+            id: "annoyance",
+            label: "Annoyance",
+			description: "Here is a thorn in my side.",
+            isAspect: true
+        },
         {
             id: "grail",
             label: "Grail",
@@ -536,6 +542,14 @@
             id: "killmortal",
             label: "Kill Mortal",
 			description: "Mortals will be replaced by corpses",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+								 {
+            id: "endannoyance",
+            label: "End Annoyance",
+			description: "Annoyances like difficult bosses will be resolved.",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
