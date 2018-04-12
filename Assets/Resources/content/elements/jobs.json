@@ -11,7 +11,7 @@
             label: "A Position at Glover and Glover",
             aspects:
             {annoyance:1},
-            description: "A position in Records under Mr Alden. I earn a little more; I stay a little later. Mr Alden is a demanding superior.",
+            description: "A position in Records under Mr Alden. I earn a little more; I stay a little later. Mr Alden always watches me closely.",
 xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job}
         },
 						     {
@@ -34,7 +34,7 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job}
         id: "gloverandgloverseniorjob",
             label: "Senior Position at Glover & Glover",
             aspects:{annoyance:1},
-			slots: [{id:"Diligence":
+			slots: [{id:"Diligence",
 					required: {reason: 1},
 					description: "Extra effort. I don't know why I would bother."
 					},
