@@ -57,6 +57,7 @@
 My new position is better paid, and the desk stands by the street window. But I work directly for Mr Alden now. Mr Alden is known to be exacting.",
         warmup: 0
 	},
+	
 		{id:"gloverandgloverwork_difficultbossa",
 	actionId:"work",
 	label:"Work at Glover & Glover",
@@ -64,10 +65,10 @@ My new position is better paid, and the desk stands by the street window. But I 
 	startdescription:"I am better-paid than I was. But Mr Alden has taken an interest in me. Mr Alden is very particular. Mr Alden likes things done just so. And Mr Alden has never believed that I am qualified for this position.",
 	description:".",
 		effects: {funds:2},
-			linked: [{id:"gloverandglover_difficultbossa_overtime",chance:70},
-			{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:5},
+			linked: [{id:"gloverandglover_difficultbossa_overtime_initial",chance:100}
+			{id:"gloverandglover_difficultbossa_overtime",chance:70},
 			{id:"gloverandglover_difficultbossa_no_overtime",chance:100}],
-	warmup:90,
+	warmup:60,
 	craftable:true
 	},
 	{id:"gloverandglover_difficultbossa_no_overtime",
@@ -87,12 +88,12 @@ My new position is better paid, and the desk stands by the street window. But I 
 	
 'Be especially punctual tomorrow, please.'
 	",
-	effects: {funds:1,gloverandglover_difficultbossa_job:-1, gloverandgloverseniorjob: 1},
+	effects: {gloverandglover_difficultbossa_job:-1, gloverandgloverseniorjob: 1},
 	warmup:30,
 	craftable:false
 	},
-	
-	{id:"gloverandglover_difficultbossa_overtime",
+		{id:"gloverandglover_difficultbossa_overtime_initial",
+		comments:"Player will need to go through this minimum ten times. After that, the chance of overtime is reduced, and there is a small possibility Alden will retire.",
 	actionId:"work",
 	label:"Work overtime, at Mr Alden's insistence",
 	startdescription:"'The work is complete when I have assessed the work as complete, and not before. I trust we understand each other.'",
@@ -100,13 +101,32 @@ My new position is better paid, and the desk stands by the street window. But I 
 					required: {reason: 1,passion:1},
 					description: "Extra effort. It might help, if I'm very lucky."
 				}],
-	description:"'On this occasion I have determined that your work is of an acceptable standard. I will even authorise an additional payment, although naturally it will be a modest one. You may go. Be punctual tomorrow, please.'
+	description:"'On this occasion I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'
 	
 [There may be ways to deal with Mr Alden.]",
 	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
-	effects: {funds:1},
-	warmup:60,
-	craftable:false
+	warmup:30,
+	craftable:false,
+maxexecutions:10
+	},
+
+	
+	
+	{id:"gloverandglover_difficultbossa_overtime",
+	actionId:"work",
+	label:"work overtime, at Mr Alden's insistence",
+	startdescription:"'The work is complete when I have assessed the work as complete, and not before. I trust we understand each other.'",
+			slots: [{id:"Attention",
+					required: {reason: 1,passion:1},
+					description: "Extra effort. It might help, if I'm very lucky."
+				}],
+	description:"'Once again, I have determined that your work is of an acceptable standard. You may go. Be punctual tomorrow, please.'
+	
+[There may be ways to deal with Mr Alden.]",
+	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
+	warmup:30,
+	craftable:false,
+	linked: [{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:5}]
 	},
 
 	
@@ -131,7 +151,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	startdescription:"The office crackles with the news of Alden's unexpected absence. A scrawny, nervous fellow from the fourth floor has been appointed Supervisor of Record (Temporary). Unlike Alden, he does not interfere with my work.",
 	description:"Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. But I leave at the appointed time.",
 		effects: { funds: 2,gloverandglover_difficultbossa_gone_job:-1,gloverandgloverjob:1},
-	warmup:90,
+	warmup:60,
 	craftable:true
 	},
 	
@@ -142,10 +162,10 @@ My new position is better paid, and the desk stands by the street window. But I 
 		[{id: "gloverandglover_diligence_promotion", chance:100}],
 		effects: { funds: 2},
 	actionId:"work",
-        startdescription: "I work longer hours now, but they're better-paid.",
+        startdescription: "The work is more demanding, now, but it's better-paid.",
         description: "Ink, paper, and the fizzing of the electric lights. The office is dark when I leave. Outside on the pavement, I turn up my collar.",
 		aside: "(I could devote extra effort to the work...)",
-        warmup: 90,
+        warmup: 60,
 			slots: [{id:"Devotion":,
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
@@ -171,7 +191,7 @@ My new position is better paid, and the desk stands by the street window. But I 
         startdescription: "Curl my hands into the correct shapes, and begin.",
         description: "I am always the last to leave, even after the elder Glover.",
 		aside: "(I could devote extra effort to the work...)",
-        warmup: 90,
+        warmup: 70,
 			slots: [{id:"Acceptance",
 					required: {passion: 1},
 					description: "I could devote my life to this."
