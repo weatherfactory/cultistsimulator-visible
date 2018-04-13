@@ -1,11 +1,10 @@
  {"recipes":
  [
-   	
   	{
         id: "recruitacquaintance",
         label: "Recruit an Acquaintance",
         actionId: "talk",
-        requirements: {society: 1,reputation: 1,mortal: 1,follower:-1},
+        requirements: {society: 1,reputation: 1,mortal: 1,follower:-1,patron:-1},
 		aspects: {recruiting: 1},
         startdescription: "This one is ready.",
         description: "The oaths are resonant as thunder in a church. I know them well. I wrote them myself.",

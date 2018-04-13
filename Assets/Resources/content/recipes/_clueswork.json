@@ -1,5 +1,14 @@
  {"recipes":
  [
+  			{
+        id: "commissionhint",
+        label: "Hint: Fulfilling a Commission",
+        actionId: "work",
+        requirements: {commission:1},
+        startdescription: "If I use Work with the right Lore fragment, I can create a manuscript to fulfil this Commission. I'll need to Talk to my Patron about this Commission when it's finished.",
+        craftable: false,
+		hintonly: true
+    },
  			{
         id: "ritehinthasforge",
         label: "Hint: Opening the Way",

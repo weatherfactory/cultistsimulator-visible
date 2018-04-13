@@ -100,7 +100,25 @@
         hintonly:true,
         craftable: true
     },
+		  	{
+        id: "recruitpatronattempthint",
+        label: "Recruit a new Follower?",
+        actionId: "talk",
+        requirements: {society: 1,mortal: 1,follower:-1,patron:1},
+        startdescription: "Perhaps some day it might be possible to recruit this redoubtable individual. But I would need something extraordinary to convince them.",
+        craftable: false,
+		hintonly: true
+    },
 	
+	  	{
+        id: "recruitacquaintancehint",
+        label: "Recruit a new Follower?",
+        actionId: "talk",
+        requirements: {society: 1,mortal: 1,follower:-1},
+        startdescription: "To recruit a follower, I will need to impress them with my Notoriety, my Mystique, or another reputation.",
+        craftable: false,
+		hintonly: true
+    },
 	
 
 	
