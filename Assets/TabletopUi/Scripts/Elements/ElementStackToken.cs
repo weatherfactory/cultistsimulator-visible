@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
@@ -121,12 +122,12 @@ namespace Assets.CS.TabletopUI {
                 return _element.Aspects;
         }
 
-        public List<SlotSpecification> GetChildSlotSpecifications() {
-            return _element.ChildSlotSpecifications;
+        public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
+            return _element.ChildSlotSpecifications.Where(cs=>cs.ForVerb==forVerb || cs.ForVerb==string.Empty).ToList();
         }
 
-        public bool HasChildSlots() {
-            return _element.HasChildSlots();
+        public bool HasChildSlotsForVerb(string verb) {
+            return _element.HasChildSlotsForVerb(verb);
         }
 
 

@@ -5,19 +5,18 @@
             label: "A Collection of Essays",
             aspects:
             {text:1},
-            description: "If the mind is a blade, this is a whetstone. [Use with three Erudition to gain Reason.]",
-			slots: [{id:"Insight",required: {erudition:1},consumes:true},
-			{id:"Understanding", required: {erudition:1},consumes:true},
-			{id:"Experience",required: {erudition:1},consumes:true}]
+            description: "If the mind is a blade, this is a whetstone. [Study with two Erudition to gain Reason.]",
+			slots: [{id:"Insight",actionId: "study", required: {erudition:1},consumes:true},
+			{id:"Understanding", actionId: "study",  required: {erudition:1},consumes:true}]
         },
 		 {
         id: "textbookpassion",
             label: "A Collection of Poetry",
             aspects:
             {text:1},
-            description: "'The poet makes himself a seer by an immense, long, deliberate derangement of all the senses...' The opposite of wisdom, thankfully. [Use with two Glimmerings to gain Passion... though this sometimes fails.]",
-			slots:[ {id:"Inspiration",required: {glimmering:1},consumes:true},
-			{id:"Influence",required: {glimmering:1},consumes:true}]
+            description: "'The poet makes himself a seer by an immense, long, deliberate derangement of all the senses...' The opposite of wisdom, thankfully. [Study with two Glimmerings to gain Passion... though this sometimes fails.]",
+			slots:[{id:"Inspiration", actionId: "study", required: {glimmering:1},consumes:true},
+			{id:"Influence", actionId: "study", required: {glimmering:1},consumes:true}]
         },
 						 {
         id: "genericrubbishbook",
