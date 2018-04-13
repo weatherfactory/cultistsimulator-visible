@@ -6,7 +6,7 @@
             aspects:
             {},
             description: "A package of peculiar papers from my correspondent's executor. I must STUDY it, using either Passion or Reason.",
-						slots:[{id:"Approach", required: {reason: 1, passion: 1},
+						slots:[{id:"Approach", actionId:"study",required: {reason: 1, passion: 1},
 						description: "Am I a passionate individual, or a reasonable one?"}]
         },
 			{id: "startingletter",

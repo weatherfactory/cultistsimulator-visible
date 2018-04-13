@@ -27,6 +27,7 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             label: "Position at Glover & Glover",
             aspects:{},
 			slots: [{id:"Diligence",
+			actionId:"work",
 					required: {reason: 1},
 					description: "Extra effort. It might help, if I'm very lucky."
 					}],
@@ -39,10 +40,12 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             aspects:{annoyance:1},
 			slots: [{id:"Diligence",
 					required: {reason: 1},
+					actionId:"work",
 					description: "Extra effort."
 					},
 			{id:"Devotion",
 			required: {reason: 1},
+			actionId:"work",
 					description: "Extra effort."
 				}],
             description: "I suppose, theoretically, I could rise higher, if someone died.",
@@ -53,10 +56,12 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
             label: "Senior Position at Glover & Glover",
 			slots: [{id:"Diligence",
 					required: {reason: 1},
+					actionId:"work",
 					description: "Extra effort."
 					},
 			{id:"Devotion",
 			required: {reason: 1},
+			actionId:"work",
 					description: "Extra effort."
 				}],
             description: "With the younger Glover gone, I might rise even higher.",
