@@ -19,6 +19,15 @@
         craftable: false,
 		hintonly: true
     },
+			{
+        id: "tryrecoverillhealth",
+        label: "Recover?",
+        actionId: "dream",
+        requirements: {illhealth: 1},
+        startdescription: "Resting will restore my health - if I have the necessary resources.",
+        craftable: false,
+		hintonly: true
+    },
 	
 	
 ]
