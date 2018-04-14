@@ -1,5 +1,32 @@
  {"recipes":
  [
+     			{
+        id: "vitalityhint",
+        label: "Hint: Vitality",
+        actionId: "dream",
+        requirements: {vitality:1},
+        startdescription: "This provokes no dreams; but I could Study it to increase my Health.",
+        craftable: false,
+		hintonly: true
+    },
+	    			{
+        id: "eruditionhint",
+        label: "Hint: Erudition",
+        actionId: "dream",
+        requirements: {erudition:1},
+        startdescription: "This provokes no dreams; but I could Study it to increase my Reason.",
+        craftable: false,
+		hintonly: true
+    },
+	    			{
+        id: "glimmeringhint",
+        label: "Hint: Glimmering",
+        actionId: "dream",
+        requirements: {glimmering:1},
+        startdescription: "This provokes no dreams, just now; but I could Study it to increase my Passion.",
+        craftable: false,
+		hintonly: true
+    },
     			{
         id: "contentmenthint",
         label: "Hint: Contentment",

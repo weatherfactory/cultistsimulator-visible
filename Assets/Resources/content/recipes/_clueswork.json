@@ -1,5 +1,32 @@
  {"recipes":
  [
+     			{
+        id: "vitalityhint",
+        label: "Hint: Vitality",
+        actionId: "work",
+        requirements: {vitality:1},
+        startdescription: "This isn't a matter for work; but I could Study it to increase my Health.",
+        craftable: false,
+		hintonly: true
+    },
+	    			{
+        id: "eruditionhint",
+        label: "Hint: Erudition",
+        actionId: "work",
+        requirements: {erudition:1},
+        startdescription: "This isn't a matter for work;but I could Study it to increase my Reason.",
+        craftable: false,
+		hintonly: true
+    },
+	    			{
+        id: "glimmeringhint",
+        label: "Hint: Glimmering",
+        actionId: "work",
+        requirements: {glimmering:1},
+        startdescription: "This isn't a matter for work; but I could Study it to increase my Passion.",
+        craftable: false,
+		hintonly: true
+    },
    			{
         id: "contentmenthint",
         label: "Hint: Contentment",
