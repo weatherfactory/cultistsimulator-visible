@@ -5,9 +5,9 @@
             label: "Church of the Bright Edge",
             aspects:
             {society:1,venerationedge:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."}],
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk",  required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."}],
             description: "An occult society dedicated to the Hours of struggle and conquest.[You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Assassins.]",
 			unique:true
         },
@@ -16,9 +16,9 @@
             label: "Unflinching Order",
             aspects:
             {society:1,venerationforge:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
 			}],
             description: "An occult society dedicated to the fire that changes and remakes. [You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Reshapers.]",
 			unique:true
@@ -28,10 +28,10 @@
             label: "Order of the Bloody Cup",
             aspects:
             {society:1,venerationgrail:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
 			
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
 			}],
 
             description: "An occult society dedicated to the mysteries of birth, blood and appetite. [You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Cyprians.]",
@@ -42,10 +42,10 @@
             label: "Temple Unceasing",
             aspects:
             {society:1,venerationheart:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
 			
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
 			}],
 
             description: "An occult society dedicated to the drumbeat which can never end.[You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Tarantellists.]",
@@ -56,9 +56,9 @@
             label: "Society of the Holy Wound",
             aspects:
             {society:1,venerationknock:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
 			}],
             description: "An occult society dedicated to the Hours which open doors. [You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Keys.]",
 				unique:true
@@ -68,10 +68,10 @@
             label: "Mirror of Glory",
             aspects:
             {society:1,venerationlantern:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
 			
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
 			}],
             description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place.[You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Seers.]",
 				unique:true
@@ -81,9 +81,9 @@
             label: "Wildwood Club",
             aspects:
             {society:1,venerationmoth:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."
 			}],
             description: "An occult society dedicated to chaos, and the unexpected Hours.[You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to Skintwisters.]",
 				unique:true
@@ -93,9 +93,9 @@
             label: "Society of St Hydra",
             aspects:
             {society:1,venerationedge:1,venerationforge:1,venerationgrail:1,venerationheart:1,venerationlantern:1,venerationknock:1,venerationmoth:1,venerationwinter:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			{id:"Ceremony", required: {lore: 1, reputation:1},description: "For the higher mysteries, deeper oaths are needed."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."}],
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", actionId:"talk",  required: {lore: 1, reputation:1},description: "For the higher mysteries, deeper oaths are needed."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."}],
             description: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches.[St Hydra, unusually, allows you to use any aspect to promote Believers; but it has no Exalted specialists.]",
 				unique:true
         },
@@ -104,9 +104,9 @@
             label: "Children of Silence",
             aspects:
             {society:1,venerationwinter:1},
-			slots: [{id:"Associate",required: {mortal: 1},description: "A new recruit, or a hardened disciple."},
-			{id:"Ceremony",required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
-			{id:"Trappings",required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."}],
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1,hunter:-1},description: "A new recruit, or a hardened disciple."},
+			{id:"Ceremony", actionId:"talk", required: {lore: 1, reputation:1},description: "To recruit a novice, I only need sufficient fear, or awe. The higher mysteries require deeper oaths."},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "For a proper sense of occasion."}],
             description: "An occult society dedicated to the silence that comes and the cold that ends.[You can use Cults with the Talk verb to recruit or promote followers, and to send them out on errands to gather resources. A Believer can be promoted to a Disciple; a few gifted Disciples can be exalted even higher, to a condition of lethal silence.]",
 				unique:true
         },

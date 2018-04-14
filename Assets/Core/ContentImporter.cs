@@ -78,7 +78,10 @@ public class ContentImporter
                     if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
                         slotSpecification.Consumes = true;
 
-                    Hashtable htRequired = htThisSlot["required"] as Hashtable;
+                    if (htThisSlot[NoonConstants.KACTIONID] != null)
+                        slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
+
+                Hashtable htRequired = htThisSlot["required"] as Hashtable;
                     if (htRequired != null)
                     {
                         foreach (string rk in htRequired.Keys)

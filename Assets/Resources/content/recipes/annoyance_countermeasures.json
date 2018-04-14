@@ -1,4 +1,55 @@
 {"recipes": [
+	  	  	   {id: "annoyanceseducehighgrail",
+	   label: "Send an Irrestible Minion to Ensnare and Disgrace an Annoyance",
+	  actionId:"talk",
+	  startdescription:"I want this irritation out of my way. They may even enjoy their downfall.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,grail:10,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:70},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  	   {id: "annoyanceseducemidgrail",
+	   label: "Send an Alluring Minion to Ensnare and Disgrace an Annoyance",
+	  actionId:"talk",
+	  startdescription:"Everyone has a weakness for one particular pleasure. I will send a minion who understands the many natures of pleasure. They will very likely succeed.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,grail:5,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:70},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyanceseducelowgrail",
+	   label: "Send a Tempting Minion to Ensnare and Disgrace an Annoyance",
+	  actionId:"talk",
+	  startdescription: "Who knows if this will succeed? The Annoyance may not find my minion appealing at all.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,grail:1,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:30},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  
+	  {id: "annoyanceseducesuccess",
+	   label: "Offering Temptations to an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned. They found a particular temptation to which our Annoyance succumbed readily; at the small cost of the utter destruction of their reputation.",
+	  aspects:{endannoyance:1},	  
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  {id: "annoyanceseducefailure",
+	   label: "Offering Temptations to an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned with disappointing news. They could not find a pleasure that would tempt our Annoyance into folly.",
+	  warmup:30	  
+	  },
+	  
+	  
 	  
 	    {id: "annoyanceattackhighedge",
 	   label: "Send an Unstoppable Force to murder an Annoyance",
@@ -22,7 +73,7 @@
 	  	  	   {id: "annoyanceattacklowedge",
 	   label: "Send a Minion to murder an Annoyance",
 	  actionId:"talk",
-	  startdescription:"I want this Annoyance gone. But this approach is risky, unless my minion is more skilled. They might very easily survive, and the attempt will draw attention.",
+	  startdescription:"I want this Annoyance gone. But this approach is risky: my minion's strength is limited. The Annoyance might very easily survive, and the attempt will draw attention.",
 	  description:"Separate failure event means this should never be visible.",
 	  requirements: {annoyance:1,edge:1,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:30},
@@ -48,9 +99,9 @@
 	  description:"My minion has returned, with a trophy. The Annoyance has been extirpated.",
 	  aspects:{endannoyance:1},
 	  effects: {corpse:1,notoriety:1},
-	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}]
+	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}],
 	  
-	  warmup:10	  
+	  warmup:30	  
 	  },
 	  
 	  	  {id: "annoyancecapturesuccess",
@@ -67,7 +118,7 @@
 	  
 	  
 	  {id: "annoyanceattackfailure",
-	   label: "Hunting an Annoyance...",
+	   label: "Ending an Annoyance...",
 	  actionId:"talk",
 	  startdescription: "I await word....",
 	  description:"My minion has not returned. They must have failed. This may yet prove embarrassing.",
@@ -75,5 +126,48 @@
 	  warmup:10	  
 	  },
 	  
+	  
+	  
+	  
+	  	   {id: "annoyancederangemidmoth",
+	   label: "Send a Devious Minion to Drive an Annoyance Insane",
+	  actionId:"talk",
+	  startdescription:"I want this irritation out of my way. This scheme will probably succeed, but if it fails, it will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,moth:5,follower:1},
+	  linked: [{id:"annoyancederangesuccess",chance:70},
+	  {id:"annoyancederangefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyancederangelowmoth",
+	   label: "Send a Devious Minion to Drive an Annoyance Insane",
+	  actionId:"talk",
+	  startdescription:"I want this Annoyance gone. But my minion's abilities are limited. This might very well fail, and if it does, it will draw attention.",
+	  description:"Separate failure event means this should never be visible.",
+	  requirements: {annoyance:1,moth:1,follower:1},
+	  linked: [{id:"annoyancederangesuccess",chance:30},
+	  {id:"annoyancederangefailure",chance:100}
+	  ]
+	  },
+	  
+	  {id: "annoyancederangesuccess",
+	   label: "Arranging Night Terrors for an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned. The Annoyance is no longer capable of lucid speech, let alone capable of annoying me further.",
+	  aspects:{endannoyance:1},	  
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  {id: "annoyancederangefailure",
+	   label: "Arranging Night Terrors for an Annoyance...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned. The Annoyance has proven more resilient than we had expected. Their mind remains intact.",
+	  effects: {notoriety:1},
+	  warmup:30	  
+	  },
 ]
 }

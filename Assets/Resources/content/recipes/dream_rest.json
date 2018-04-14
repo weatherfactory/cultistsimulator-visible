@@ -1,20 +1,44 @@
 {
 "recipes": [
-
-		{
-        id: "tryrecoverhealth",
-        label: "Heal?",
+			{
+        id: "dreamfunds",
+        label: "Purchase a Tincture of Opium",
         actionId: "dream",
-        requirements: {illhealth: 1},
-            		slots:[{id:"Nourishment",required: {funds: 1},forbidden: {}}],
-		alternativerecipes: [{id:"recoverhealth",chance:100}],
-        startdescription: "To recover my health, I'll need money for food and medicine.",
-        description: "Rested, but not recovered. I need money for food and medicine.",
+        requirements: {funds:1},
+		effects: {contentment:1},
+		startdescription: "In times of especial crisis, I might visit a discreet pharmacist, to purchase a tincture of opium and make my dreams sweet. But only in times of especial crisis. [This is an expensive and risky way to gain Contentment.]",
+        description: "Oh, that deep peace. But I should not do this again.",
         warmup: 90,
-        craftable: true
+        craftable: true,
+    },
+			{
+        id: "dreamhealth",
+        label: "An Early Night",
+        actionId: "dream",
+        requirements: {health:1},
+		effects: {vitality:1},
+		startdescription: "With luck, I'll wake refreshed.",
+        description: "Sometimes, I have dreamt of a tall woman in a sand-coloured coat, who stands at the foot of my bed, smiling as she watches me sleep. In that dream, she turns her head with the swiftness of a bird, and her fingers flex like talons. I do not think I dreamt of her last night. If I had, I could not have slept so soundly.",
+        warmup: 60,
+        craftable: true,
     },
 	{
-        id: "recoverhealth",
+        id: "recoverhunger",
+        label: "Restore my Strength",
+        actionId: "dream",
+        requirements: {funds: 1, hunger: 1},
+        effects: {
+			funds:-1,
+        },
+		aspects:{restorehealth:1},
+        startdescription: "I have gone some time without food. I should eat carefully.",
+        description: "My strength returns. The wheeling dark at the corners of my sight is gone.",
+        warmup: 30,
+		craftable:true
+    },
+
+	{
+        id: "recoverillhealthfunds",
         label: "Heal",
         actionId: "dream",
         requirements: {funds: 1, illhealth: 1},
@@ -22,9 +46,24 @@
 			funds:-1,
         },
 		aspects:{restorehealth:1},
+        startdescription: "The medicine is dark and bitter as tar. It would be easy to suspect I am being poisoned.",
+        description: "The sick-room grows close and stale. Time to get up.",
+        warmup: 60,
+		craftable:true
+    },
+		{
+        id: "recoverillhealthfundsvitality",
+        label: "Heal",
+        actionId: "dream",
+        requirements: {vitality: 1, illhealth: 1},
+        effects: {
+			vitality:-1,
+        },
+		aspects:{restorehealth:1},
         startdescription: "All I need now is time.",
         description: "The sick-room grows close and stale. Time to get up.",
-        warmup: 90,
+        warmup: 60,
+		craftable:true
     },
 	
 			{
@@ -36,7 +75,7 @@
 		alternativerecipes: [{id:"recoverreason",chance:100}],
         startdescription: "Was I different, before?",
         description: "I remember that I was different: but I no longer remember how.",
-        warmup: 90,
+        warmup: 60,
         craftable: true
     },
 	{
@@ -48,7 +87,7 @@
 		aspects:{restorereason:1},
         startdescription: "I remember that I was different, before.",
         description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
-        warmup: 90
+        warmup: 60
     },
 				{
         id: "tryrecoverpassion",
@@ -59,7 +98,7 @@
 		alternativerecipes: [{id:"recoverpassion",chance:100}],
         startdescription: "The doors of vision have cracked open. Perhaps I should calm myself, somehow. Even Dread has its uses.",
         description: "A little darkness will mellow my light; a little ballast will bring me back to earth.",
-        warmup: 90,
+        warmup: 60,
         craftable: true
     },
 	{
@@ -73,6 +112,6 @@
 		aspects:{restorepassion:1},
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
-        warmup: 90
+        warmup: 60
     }
 }

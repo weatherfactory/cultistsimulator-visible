@@ -1,5 +1,50 @@
  {"recipes":
  [
+     			{
+        id: "vitalityhint",
+        label: "Hint: Vitality",
+        actionId: "work",
+        requirements: {vitality:1},
+        startdescription: "This isn't a matter for work; but I could Study it to increase my Health.",
+        craftable: false,
+		hintonly: true
+    },
+	    			{
+        id: "eruditionhint",
+        label: "Hint: Erudition",
+        actionId: "work",
+        requirements: {erudition:1},
+        startdescription: "This isn't a matter for work;but I could Study it to increase my Reason.",
+        craftable: false,
+		hintonly: true
+    },
+	    			{
+        id: "glimmeringhint",
+        label: "Hint: Glimmering",
+        actionId: "work",
+        requirements: {glimmering:1},
+        startdescription: "This isn't a matter for work; but I could Study it to increase my Passion.",
+        craftable: false,
+		hintonly: true
+    },
+   			{
+        id: "contentmenthint",
+        label: "Hint: Contentment",
+        actionId: "work",
+        requirements: {contentment:1},
+        startdescription: "One cannot earn a living by being happy. But happiness may be something to cling to, when the night closes round me.",
+        craftable: false,
+		hintonly: true
+    },
+  			{
+        id: "commissionhint",
+        label: "Hint: Fulfilling a Commission",
+        actionId: "work",
+        requirements: {commission:1},
+        startdescription: "If I use Work with the right Lore fragment, I can create a manuscript to fulfil this Commission. I'll need to Talk to my Patron about this Commission when it's finished.",
+        craftable: false,
+		hintonly: true
+    },
  			{
         id: "ritehinthasforge",
         label: "Hint: Opening the Way",

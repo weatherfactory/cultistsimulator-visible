@@ -34,17 +34,17 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
-            if (stack.HasChildSlots())
+            if (stack.HasChildSlotsForVerb(situationController.GetTokenId()))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
-            controller.StartingSlotsUpdated();
+            situationController.StartingSlotsUpdated();
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
             RecipeSlot slot;
 
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecifications()) {
+            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(situationController.GetTokenId())) {
                 slot = BuildSlot("childslot of " + stack.Id, childSlotSpecification, parentSlot);
                 parentSlot.childSlots.Add(slot);
             }
@@ -56,7 +56,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 RemoveAnyChildSlotsWithEmptyParent(context);
 
             ArrangeSlots();
-            controller.StartingSlotsUpdated();
+            situationController.StartingSlotsUpdated();
         }
 
         public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
@@ -72,7 +72,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 }
             }
 
-            controller.StartingSlotsUpdated();
+            situationController.StartingSlotsUpdated();
         }
 
         protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot) {

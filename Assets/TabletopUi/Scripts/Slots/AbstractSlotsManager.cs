@@ -15,10 +15,10 @@ using Assets.TabletopUi.Scripts.Services;
 
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
-    protected SituationController controller;
+    protected SituationController situationController;
 
     public virtual void Initialise(SituationController sc) {
-        controller = sc;
+        situationController = sc;
     }
 
     public virtual IList<RecipeSlot> GetAllSlots() {

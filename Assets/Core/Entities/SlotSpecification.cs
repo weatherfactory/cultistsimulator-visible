@@ -13,6 +13,7 @@ public class SlotSpecification
 {
     public string Id { get; set; }
     public string Label { get; set; }
+    public string ForVerb { get; set; }
 
     /// <summary>
     /// currently, this is only used by the primary slot specification
@@ -42,6 +43,7 @@ public class SlotSpecification
         Label = id;
         Required = new AspectsDictionary();
         Forbidden = new AspectsDictionary();
+        ForVerb = string.Empty;
     }
 
     public static SlotSpecification CreatePrimarySlotSpecification()

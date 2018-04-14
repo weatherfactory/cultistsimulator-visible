@@ -8,7 +8,8 @@
             {illhealth: 1,
 			  grail: 2,
 			  ingredient:1},
-            description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger will also allow you to recover Health.]",
+			  slots: [{id:"Nourishment",description: "To recover, I must eat.",required:{funds:1}}],
+            description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger before the card fades will allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
 			},
         {
@@ -28,8 +29,8 @@
             label: "Vitality",
             aspects:
             {},
-            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i> treasure. [Vitality can sometimes be used to gain Health. It lasts only five minutes, if unused.]",
-		lifetime: 300
+            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i> treasure. [Vitality can sometimes be used to gain Health. It lasts only three minutes, if unused.]",
+		lifetime: 180
         },
 		
 						 {
@@ -49,15 +50,21 @@
 			  knock: 2,
 			  inducesdespair: 1,
 			  ingredient:1},
-            description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury will also allow you to recover Health.]",
+			  			slots: [{id:"Medicines",description: "I could pay for a doctor's visit...",required:{funds:1}},
+			{id:"Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
+            description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
+			lifetime: 180
 			},
 			{
 			id: "affliction",
             label: "An Affliction",
             aspects:{illhealth: 1, winter:2,ingredient:1},
 			xtriggers: {restorehealth: health},
-            description: "Disease has left me weak. I need rest and nourishment, if I am to recover.",
+						slots: [{id:"Medicines",description: "I could pay for a doctor's visit...",required:{funds:1}},
+			{id:"Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
+            description: "Disease has left me weak. I need rest and nourishment, if I am to recover. [Dreaming with an Affliction before the card fades will also allow you to recover Health.]",
+			lifetime: 180
 			},
         {
             id: "reason",
@@ -82,8 +89,8 @@
             label: "Erudition",
             aspects:
             {},
-            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason. It lasts only five minutes, if unused.]",
-lifetime: 300
+            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason. It lasts only three minutes, if unused.]",
+lifetime: 180
         },
 			{id: "dread",
             label: "Dread",
@@ -112,8 +119,8 @@ lifetime: 300
             label: "Glimmering",
             aspects:
             {},
-            description: "There are things I'll never understand, and those things will always be precious. [Glimmering can sometimes be used to gain Passion. It lasts only five minutes, if unused.]",
-			lifetime: 300
+            description: "There are things I'll never understand, and those things will always be precious. [Glimmering can sometimes be used to gain Passion. It lasts only three minutes, if unused.]",
+			lifetime: 180
         },
 		{id: "fascination",
             label: "Fascination",
@@ -133,7 +140,8 @@ lifetime: 300
 		id: "scholarfucine",
 		label: "Scholar: Fucine",
 		aspects: {language:1},
-		description: "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]"
+		description: "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]",
+		unique:true
 		},
 				{
 		id: "scholargreek",
@@ -146,7 +154,8 @@ lifetime: 300
 		id: "scholarphrygian",
 		label: "Scholar: Phrygian",
 		aspects: {language:1},
-		description: "A people lived east of the lost lake Fucino. Horace warned that their land was the source of lust-spells and love-curses. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'. This is the tongue in which the Thunderskin pleaded, at his ascension. [Some books must be translated before they can be read.]"
+		description: "A people lived east of the lost lake Fucino. Horace warned that their land was the source of lust-spells and love-curses. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'. This is the tongue in which the Thunderskin pleaded, at his ascension. [Some books must be translated before they can be read.]",
+		unique:true
 		},
 						{
 		id: "scholararamaic",
