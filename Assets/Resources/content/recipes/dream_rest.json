@@ -1,16 +1,6 @@
 {
 "recipes": [
-			{
-        id: "dreamfunds",
-        label: "Purchase a Tincture of Opium",
-        actionId: "dream",
-        requirements: {funds:1},
-		effects: {contentment:1},
-		startdescription: "In times of especial crisis, I might visit a discreet pharmacist, to purchase a tincture of opium and make my dreams sweet. But only in times of especial crisis. [This is an expensive and risky way to gain Contentment.]",
-        description: "Oh, that deep peace. But I should not do this again.",
-        warmup: 90,
-        craftable: true,
-    },
+
 			{
         id: "dreamhealth",
         label: "An Early Night",
@@ -113,5 +103,16 @@
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
         warmup: 60
-    }
+    },
+				{
+        id: "dreamfunds",
+        label: "Purchase a Tincture of Opium",
+        actionId: "dream",
+        requirements: {funds:1},
+		effects: {contentment:1},
+		startdescription: "In times of especial crisis, I might visit a discreet pharmacist, to purchase a tincture of opium and make my dreams sweet. But only in times of especial crisis. [This is an expensive and risky way to gain Contentment.]",
+        description: "Oh, that deep peace. But I should not do this again.",
+        warmup: 90,
+        craftable: true,
+    },
 }
