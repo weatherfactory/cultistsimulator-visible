@@ -54,6 +54,7 @@ namespace Noon
         public const string KCHARACTERLASTNAME = "lastname";
 
         public const string KLIFETIME = "lifetime";
+        public const string KDECAYTO = "decayTo";
         public const string KANIMFRAMES = "animFrames";
         public const string KISASPECT = "isAspect";
         public const string KNOARTNEEDED = "noartneeded";

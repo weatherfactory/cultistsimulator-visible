@@ -147,6 +147,8 @@ public class ContentImporter
 
                 if (htElement.ContainsKey(NoonConstants.KLIFETIME))
                     element.Lifetime = float.Parse(htElement[NoonConstants.KLIFETIME].ToString());
+                if (htElement.ContainsKey(NoonConstants.KDECAYTO))
+                    element.DecayTo = htElement.GetString(NoonConstants.KDECAYTO);
 
                 if (htElement.GetString(NoonConstants.KISASPECT) == "true")
                     element.IsAspect = true;
