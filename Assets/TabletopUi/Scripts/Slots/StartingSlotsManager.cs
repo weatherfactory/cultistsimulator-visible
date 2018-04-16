@@ -34,11 +34,15 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
+
+            // startingSlots updated may resize window
+            situationController.StartingSlotsUpdated();
+
             if (stack.HasChildSlotsForVerb(situationController.GetTokenId()))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
-            situationController.StartingSlotsUpdated();
+
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
@@ -51,16 +55,21 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackRemoved(IElementStack stack, Context context) {
+            // startingSlots updated may resize window
+            situationController.StartingSlotsUpdated();
+
             // Only update the slots if we're doing this manually, otherwise don't
             if (context.IsManualAction())
                 RemoveAnyChildSlotsWithEmptyParent(context);
 
             ArrangeSlots();
             situationController.StartingSlotsUpdated();
+
         }
 
         public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
-            IList<RecipeSlot> currentSlots = GetAllSlots();
+            // We get a copy of the list, since it modifies itself when slots are removed
+            List<RecipeSlot> currentSlots = new List<RecipeSlot>(GetAllSlots());
 
             foreach (RecipeSlot s in currentSlots) {
                 if (s != null & s.GetElementStackInSlot() == null & s.childSlots.Count > 0) {
@@ -87,6 +96,8 @@ namespace Assets.TabletopUi.SlotsContainers {
             if (slot.Defunct)
                 return;
 
+            validSlots.Remove(slot);
+
             // This is all copy & paste from the parent class except for the last line
             if (slot.childSlots.Count > 0) {
                 List<RecipeSlot> childSlots = new List<RecipeSlot>(slot.childSlots);
@@ -111,6 +122,10 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         void ArrangeSlots() {
             gridManager.ReorderSlots();
+        }
+
+        public void SetGridNumPerRow() {
+            gridManager.SetNumPerRow();
         }
     }
 

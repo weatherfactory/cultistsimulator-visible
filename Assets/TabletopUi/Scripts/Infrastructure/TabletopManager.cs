@@ -506,6 +506,7 @@ namespace Assets.CS.TabletopUI {
 
         public void DecayStacksOnTable(float interval) {
             var decayingStacks = _tabletop.GetElementStacksManager().GetStacks().Where(s => s.Decays);
+
             foreach (var d in decayingStacks)
                 d.Decay(interval);
         }

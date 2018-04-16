@@ -6,6 +6,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using UnityEngine;
+using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
 
@@ -67,9 +68,15 @@ namespace Assets.CS.TabletopUI {
             else 
                 tokenDetails.Hide(); // hide the token window
         }
-
-        public void ShowSlotDetails(SlotSpecification slot) {
+        
+        public void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes) {
             tokenDetails.ShowSlotDetails(slot);
+            tokenDetails.HighlightSlotIcon(highlightGreedy, highlightConsumes);
+            aspectDetails.Hide();
+        }
+
+        public void ShowDeckDetails(IDeckSpec deckSpec, int quantity) {
+            tokenDetails.ShowDeckDetails(deckSpec, quantity);
             aspectDetails.Hide();
         }
 

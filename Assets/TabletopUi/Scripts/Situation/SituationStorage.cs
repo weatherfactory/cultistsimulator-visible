@@ -21,4 +21,11 @@ public class SituationStorage : AbstractTokenContainer {
         return "slot_storage";
     }
 
+    public override void DisplayHere(IElementStack stack, Context context) {
+        base.DisplayHere(stack, context);
+
+        // We ensure all stored cards are always face down
+        stack.FlipToFaceDown(true);
+    }
+
 }

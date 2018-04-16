@@ -53,6 +53,13 @@ namespace Noon
         public const string KCHARACTERFIRSTNAME= "firstname";
         public const string KCHARACTERLASTNAME = "lastname";
 
+        public const string KLIFETIME = "lifetime";
+        public const string KANIMFRAMES = "animFrames";
+        public const string KISASPECT = "isAspect";
+        public const string KNOARTNEEDED = "noartneeded";
+        public const string KUNIQUE = "unique";
+
+
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
 
         public const string DECK_PREFIX = "deck:";

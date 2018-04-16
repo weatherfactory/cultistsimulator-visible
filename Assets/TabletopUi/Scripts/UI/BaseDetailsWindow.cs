@@ -60,6 +60,7 @@ namespace Assets.CS.TabletopUI {
         protected void ShowImage(Sprite image) {
             artwork.gameObject.SetActive(image != null);
             artwork.sprite = image;
+            artwork.transform.localEulerAngles = new Vector3(0f, 0f, -5f + Random.value * 10f);
         }
 
         IEnumerator DoWaitForHide() {

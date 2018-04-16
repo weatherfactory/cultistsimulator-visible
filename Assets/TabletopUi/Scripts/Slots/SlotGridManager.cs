@@ -49,7 +49,7 @@ namespace Assets.CS.TabletopUI {
             slot.viz.rectTrans.localRotation = Quaternion.identity;
 			slot.viz.rectTrans.anchorMin = new Vector2(0f, 1f);
 			slot.viz.rectTrans.anchorMax = slot.viz.rectTrans.anchorMin;
-			slot.viz.rectTrans.anchoredPosition = GetPositionForIndex(slots.Count);
+			slot.viz.SetPosition( GetPositionForIndex(slots.Count) );
 			slots.Add(slot); // add after index was used
 
             // do not animate if we're not visible - usually only for first slot being created in Initialise
@@ -94,7 +94,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        void SetNumPerRow() {
+        public void SetNumPerRow() {
             // one extra spacing added to width to compensate for spacing added to n slots, not n-1 slots.
 			numPerRow = Mathf.Max(1, Mathf.FloorToInt((rect.rect.width - margin.x - margin.x + spacing.x) / (slotSize.x + spacing.x)));
 			numRows = Mathf.Max(1, Mathf.CeilToInt(slots.Count / (float) numPerRow));

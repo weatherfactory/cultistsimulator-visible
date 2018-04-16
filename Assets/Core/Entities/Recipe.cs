@@ -65,7 +65,7 @@ public class Recipe
     /// On completion, the recipe will draw
     ///from this deck and add the result to the outcome.
     /// </summary>
-    public new Dictionary<string, int> DeckEffects { get; set; }
+    public Dictionary<string, int> DeckEffects { get; set; }
 
     /// <summary>
     /// displayed in the results when the recipe is complete

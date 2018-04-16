@@ -42,16 +42,29 @@ public interface ICompendium
 public class Compendium : ICompendium
 {
     private List<Recipe> _recipes;
+    private Dictionary<string, Recipe> _recipeDict;
     private Dictionary<string, Element> _elements;
     private Dictionary<string, IVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
     private Dictionary<string, IDeckSpec> _decks;
 
+    // -- Update Collections ------------------------------
 
     public void UpdateRecipes(List<Recipe> allRecipes)
     {
         _recipes = allRecipes;
+        _recipeDict = new Dictionary<string, Recipe>();
 
+        foreach (var item in allRecipes) {
+            if (_recipeDict.ContainsKey(item.Id)) {
+                #if UNITY_EDITOR
+                UnityEngine.Debug.LogWarning("Duplicate Recipe Id " + item.Id + "! Skipping...");
+                #endif
+                continue;
+            }
+
+            _recipeDict.Add(item.Id, item);
+        }
     }
 
     public void UpdateElements(Dictionary<string, Element> elements)
@@ -74,17 +87,18 @@ public class Compendium : ICompendium
         _legacies = legacies;
     }
 
+    // -- Misc Getters ------------------------------
+
     /// <summary>
-    
+
     /// </summary>
     /// <param name="aspects"></param>
     /// <param name="verb"></param>
     /// <param name="character"></param>
     /// <param name="getHintRecipes">If true, get recipes with hintonly=true (and *only* hintonly=true)</param>
     /// <returns></returns>
-    public Recipe GetFirstRecipeForAspectsWithVerb(IAspectsDictionary aspects, string verb, Character character,bool getHintRecipes)
+    public Recipe GetFirstRecipeForAspectsWithVerb(IAspectsDictionary aspects, string verb, Character character, bool getHintRecipes)
     {
-        
         //for each recipe,
         //note: we *either* get craftable recipes *or* if we're getting hint recipes we don't care if they're craftable
         List<Recipe> candidateRecipes=_recipes.Where(r => r.ActionId == verb && ( r.Craftable || getHintRecipes) && r.HintOnly==getHintRecipes && !character.HasExhaustedRecipe(r)).ToList();
@@ -111,98 +125,70 @@ public class Compendium : ICompendium
         return null;
     }
 
-    public List<Recipe> GetAllRecipesAsList()
-    {
+    public Boolean IsKnownElement(string elementId) {
+        return _elements.ContainsKey(elementId);
+    }
+
+    // -- Get All ------------------------------
+
+    public List<Recipe> GetAllRecipesAsList() {
         return _recipes;
     }
 
-    public Recipe GetRecipeById(string recipeId)
-    {
-        if (_recipes.Count(r=> r.Id==recipeId) > 1)
-            throw new ApplicationException("Found more than one recipe with id " + recipeId);
-
-
-        return _recipes.SingleOrDefault(r => r.Id == recipeId);   
-    }
-
-    public Dictionary<string,Element> GetAllElementsAsDictionary()
-    {
+    public Dictionary<string, Element> GetAllElementsAsDictionary() {
         return _elements;
     }
 
-    public Element GetElementById(string elementId)
-    {
-        if (!_elements.ContainsKey(elementId))
-            return null;
-        return _elements[elementId];
-
+    public List<IVerb> GetAllVerbs() {
+        return new List<IVerb>(_verbs.Values);
     }
 
-    public Boolean IsKnownElement(string elementId)
-    {
-        return _elements.ContainsKey(elementId);
-
+    public List<IDeckSpec> GetAllDeckSpecs() {
+        return new List<IDeckSpec>(_decks.Values);
     }
 
-
-    public List<IVerb> GetAllVerbs()
-    {
-        List<IVerb> verbsList = new List<IVerb>();
-
-        foreach (KeyValuePair<string, IVerb> keyValuePair in _verbs)
-        {
-            verbsList.Add(keyValuePair.Value);
-        }
-
-        return verbsList;
+    public List<Legacy> GetAllLegacies() {
+        return new List<Legacy>(_legacies.Values);
     }
 
-    public List<IDeckSpec> GetAllDeckSpecs()
-    {
-        List<IDeckSpec> decksList = new List<IDeckSpec>();
+    // -- Get By Id ------------------------------
 
-        foreach (KeyValuePair<string, IDeckSpec> keyValuePair in _decks)
-        {
-            decksList.Add(keyValuePair.Value);
-        }
+    public Recipe GetRecipeById(string recipeId) {
+        Recipe recipe;
+        _recipeDict.TryGetValue(recipeId, out recipe);
 
-        return decksList;
+        return recipe;
     }
 
-    public List<Legacy> GetAllLegacies()
-    {
-        List<Legacy> legaciesList = new List<Legacy>();
+    public Element GetElementById(string elementId) {
+        Element element;
+        _elements.TryGetValue(elementId, out element);
 
-        foreach (KeyValuePair<string, Legacy> keyValuePair in _legacies)
-        {
-            legaciesList.Add(keyValuePair.Value);
-        }
-
-        return legaciesList;
+        return element;
     }
 
-    public IVerb GetVerbById(string verbId)
-    {
-        if (!_verbs.ContainsKey(verbId))
-            return null;
+    public IVerb GetVerbById(string verbId) {
+        IVerb verb;
+        _verbs.TryGetValue(verbId, out verb);
 
-        return _verbs[verbId];
+        return verb;
     }
 
-    public IDeckSpec GetDeckSpecById(string id)
-    {
-        if (!_decks.ContainsKey(id))
-            return null;
-        return _decks[id];
+    public IDeckSpec GetDeckSpecById(string id) {
+        IDeckSpec deck;
+        _decks.TryGetValue(id, out deck);
+
+        return deck;
     }
 
+    public Legacy GetLegacyById(string legacyId) {
+        Legacy legacy;
+        _legacies.TryGetValue(legacyId, out legacy);
 
-    public Legacy GetLegacyById(string legacyId)
-    {
-        if (!_legacies.ContainsKey(legacyId))
-            return null;
-        return _legacies[legacyId];
+        return legacy;
     }
+
+    // -- Assorted Methods ------------------------------
 
     public IVerb GetOrCreateVerbForCommand(ISituationEffectCommand command)
     {
@@ -215,8 +201,6 @@ public class Compendium : ICompendium
 
         return createdVerb;
     }
-
-
 
     public Ending GetEndingById(string endingFlag)
     {

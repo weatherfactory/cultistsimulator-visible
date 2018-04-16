@@ -55,18 +55,19 @@ namespace Assets.CS.TabletopUI {
 
         public void SetPosition(Vector2 pos) {
             rectTrans.anchoredPosition = pos;
+            lastPos = pos;
         }
 
         public void MoveToPosition(Vector2 pos, float duration) {
             if (lastPos == pos || Vector2.Distance(pos, lastPos) < minDistToMove)
                 return;
-
-            lastPos = rectTrans.anchoredPosition;
+            
             targetPos = pos;
             moveTime = 0f;
 
             if (moving == null)
                 moving = StartCoroutine(DoMove(duration));
+            // otherwise the changed pos will automatically move the thing to where it has to go
         } 
 
         IEnumerator DoMove(float duration) {
@@ -78,8 +79,8 @@ namespace Assets.CS.TabletopUI {
                 lerp = moveTime / duration;
                 easeX = Easing.Ease(easeTypeX, lerp);
                 easeY = Easing.Ease(easeTypeY, lerp);
-                SetPosition(new Vector2(Mathf.Lerp(lastPos.x, targetPos.x, easeX),
-                                        Mathf.Lerp(lastPos.y, targetPos.y, easeY)));
+                rectTrans.anchoredPosition = new Vector2(Mathf.Lerp(lastPos.x, targetPos.x, easeX),
+                                        Mathf.Lerp(lastPos.y, targetPos.y, easeY));
                 moveTime += Time.deltaTime;
             }
 

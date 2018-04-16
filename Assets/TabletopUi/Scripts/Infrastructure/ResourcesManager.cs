@@ -35,14 +35,21 @@ public class ResourcesManager: MonoBehaviour
     }
 
     public static Sprite GetSpriteForCardBack(string backId) {
-        return Resources.Load<Sprite>("cardBacks/" + backId);
+        var sprite = Resources.Load<Sprite>("cardBacks/" + backId);
+
+        if (sprite == null)
+            sprite = Resources.Load<Sprite>("cardBacks/" + PLACEHOLDER_IMAGE_NAME);
+
+        return sprite;
     }
 
     public static Sprite GetSpriteForAspect(string aspectId)
     {
-        var sprite= Resources.Load<Sprite>("icons40/aspects/" + aspectId);
-        if(sprite==null)
-            sprite= Resources.Load<Sprite>("icons40/aspects/" + PLACEHOLDER_IMAGE_NAME);
+        var sprite = Resources.Load<Sprite>("icons40/aspects/" + aspectId);
+
+        if (sprite == null)
+            sprite = Resources.Load<Sprite>("icons40/aspects/" + PLACEHOLDER_IMAGE_NAME);
+
         return sprite;
     }
         public static Sprite GetSpriteForLegacy(string legacyImage)

@@ -134,19 +134,21 @@ namespace Assets.CS.TabletopUI {
 
             // If our recipe has at least one slot specified, we use that - only one slot supported for now (and maybe forever)
             ongoing.SetupSlot(recipe);
+            ongoing.ShowDeckEffects(recipe.DeckEffects);
             ongoing.gameObject.SetActive(true);
 
             results.gameObject.SetActive(false);
 
             DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
             DisplayButtonState(false, buttonBusy);
+
+            SetWindowSize(IsWideRecipe(recipe));
         }
 
         // Results State
 
         public void SetOutput(List<IElementStack> stacks) {
             results.SetOutput(stacks);
- 
         }
 
         public void SetComplete() {
@@ -166,6 +168,7 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.SetText(Verb.Description);
             DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
+            SetWindowSize(false);
         }
 
 		public void DisplayNoRecipeFound() {
@@ -173,7 +176,8 @@ namespace Assets.CS.TabletopUI {
 			PaginatedNotes.SetText(Verb.Description);
 			DisplayRecipeMetaComment("This does nothing. If I experiment further, I may find another combination.");
 			DisplayButtonState(false);
-		}
+            SetWindowSize(false);
+        }
 
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
@@ -181,6 +185,7 @@ namespace Assets.CS.TabletopUI {
             DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayRecipeMetaComment(null);
 			DisplayButtonState(true);
+            SetWindowSize(IsWideRecipe(r));
 
             SoundManager.PlaySfx("SituationAvailable");
         }
@@ -190,8 +195,57 @@ namespace Assets.CS.TabletopUI {
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
             DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
+            SetWindowSize(IsWideRecipe(r));
 
             SoundManager.PlaySfx("SituationAvailable");
+        }
+
+        bool windowIsWide = false;
+
+        bool IsWideRecipe(Recipe r) {
+            // This is dummy to test with dream + passion
+            if (r.BurnImage != null)
+                return true;
+
+            // If we're not in an explore or work action, we can't be wide.
+            if (r.ActionId != "explore" && r.ActionId != "work")
+                return false;
+
+            // This means we're a vault exploration, so we're wide.
+            if (r.Id.Contains("vault"))
+                return true;
+
+            // This means we're in a rite, so we're wide
+            if (r.Id.Substring(0,4) == "rite")
+                return true;
+            
+            // Other ideas: 
+            // Work verb +Rite - aspected element in the primary slot
+            // Explore verb + Vault - aspected element in the primary slot
+            // Though these require us to check the element.
+
+            return false;
+        }
+
+        void SetWindowSize(bool wide) {
+            RectTransform rectTrans = transform as RectTransform;
+
+            if (wide)
+                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 900f);
+            else
+                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 700f);
+
+            if (wide != windowIsWide) {
+                if (wide)
+                    rectTrans.anchoredPosition = rectTrans.anchoredPosition + new Vector2(100f, 0f);
+                else
+                    rectTrans.anchoredPosition = rectTrans.anchoredPosition - new Vector2(100f, 0f);
+
+                startingSlots.SetGridNumPerRow(); // Updates the grid row numbers
+                ongoing.SetSlotToPos(); // Updates the ongoing slot position
+            }
+
+            windowIsWide = wide;
         }
 
         public void ReceiveTextNote(INotification notification) {
@@ -273,13 +327,13 @@ namespace Assets.CS.TabletopUI {
 
         // so the token-dump button can trigger this
         public void DumpAllResultingCardsToDesktop() {
-            DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerClick));
+            DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerDumpAll));
             situationController.ResetSituation();
         }
 
         public void DumpAllStartingCardsToDesktop() {
             if (situationController.SituationClock.State == SituationState.Unstarted)
-                DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerClick));
+                DumpToDesktop(GetStartingStacks(), new Context(Context.ActionSource.PlayerDumpAll));
         }
 
         void DumpToDesktop(IEnumerable<IElementStack> stacks, Context context) {

@@ -16,20 +16,39 @@ using Assets.TabletopUi.Scripts.Services;
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
     protected SituationController situationController;
+    
+    protected List<RecipeSlot> validSlots;
+
+    public bool AllowDrag { get { return true; } }
 
     public virtual void Initialise(SituationController sc) {
         situationController = sc;
-    }
-
-    public virtual IList<RecipeSlot> GetAllSlots() {
         var children = GetComponentsInChildren<RecipeSlot>();
         var allSlots = new List<RecipeSlot>(children);
-        var validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));
+         validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));
         //There is a case - on game load, perhaps? where windows have ongoing slots, but where the slot hasn't been initialised
         //I saw it happen with the pleasantday recipe, but there may be others.
         //the guard clause where we check for a null GoverningSlotSpecification fixes the issue and removes NullReferenceExceptions, but
         //it is prolly only masking an underlying weirdness.
         // - AK
+
+        allSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>(true));
+    }
+
+    public virtual IList<RecipeSlot> GetAllSlots() {
+        /*
+        var children = GetComponentsInChildren<RecipeSlot>(true);
+        var allSlots = new List<RecipeSlot>(children.Length);
+
+        foreach (var item in children) 
+            if (item.Defunct == false)
+                allSlots.Add(item);
+
+        if (this.allSlots.Count != allSlots.Count)
+            Debug.LogWarning("Both ALL SLOTS are not the same!");
+        */
+        //AK says: I found this comment above from you, Martin? idk if you were addressing the same issue I mention in the comments in Initialise()
+
         return validSlots;
     }
 
@@ -48,6 +67,8 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         slot.onCardDropped += RespondToStackAdded;
         slot.onCardRemoved += RespondToStackRemoved;
 
+        validSlots.Add(slot);
+
         return slot;
     }
 
@@ -62,18 +83,28 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     /// <returns></returns>
     public AspectsDictionary GetAspectsFromSlottedCards(bool includeElementAspects) {
         AspectsDictionary currentAspects = new AspectsDictionary();
-        foreach (IRecipeSlot slot in GetAllSlots())
-            if (slot.GetElementStackInSlot() != null)
-                currentAspects.CombineAspects(slot.GetElementStackInSlot().GetAspects(includeElementAspects));
+        IElementStack stack;
+
+        foreach (IRecipeSlot slot in GetAllSlots()) {
+            stack = slot.GetElementStackInSlot();
+
+            if (stack != null)
+                currentAspects.CombineAspects(stack.GetAspects(includeElementAspects));
+        }
 
         return currentAspects;
     }
 
     public IEnumerable<IElementStack> GetStacksInSlots() {
         IList<IElementStack> stacks = new List<IElementStack>();
-        foreach (IRecipeSlot slot in GetAllSlots())
-            if (slot.GetElementStackInSlot() != null)
-                stacks.Add(slot.GetElementStackInSlot());
+        IElementStack stack;
+
+        foreach (IRecipeSlot slot in GetAllSlots()) {
+            stack = slot.GetElementStackInSlot();
+
+            if (stack != null)
+                stacks.Add(stack);
+        }
 
         return stacks;
     }
@@ -81,6 +112,8 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
     protected virtual void ClearAndDestroySlot(RecipeSlot slot, Context context) {
         if (slot == null)
             return;
+
+        validSlots.Remove(slot);
 
         //if there are any child slots on this slot, recurse
         if (slot.childSlots.Count > 0) {
@@ -104,5 +137,4 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
 
 
-    public bool AllowDrag { get { return true; } }
 }

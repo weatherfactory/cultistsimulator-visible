@@ -209,15 +209,7 @@ namespace Assets.CS.TabletopUI {
                 }
             }
 
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context);
-            /*
-            if (lastTablePos != null)
-                transform.position = (Vector3)lastTablePos;
-            else
-                lastTablePos = transform.position;
-
-            DisplayAtTableLevel();
-            */
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, lastTablePos != null);
         }
 
         private bool IsOnTabletop() {
@@ -262,13 +254,6 @@ namespace Assets.CS.TabletopUI {
 
         public override bool Retire() {
             return Retire(defaultRetireFX);
-        }
-
-        public bool ChangeTo(string elementId)
-        {
-            //some sort of transition/animation, but not the flames one
-            //flipping the card might be good!
-            throw new NotImplementedException();
         }
 
         public bool Retire(bool useDefaultFX) {
@@ -370,7 +355,10 @@ namespace Assets.CS.TabletopUI {
                     onTurnFaceUp(this);
             }
 
-            transform.SetAsLastSibling(); //this moves the clicked sibling on top of any other nearby cards.
+            // this moves the clicked sibling on top of any other nearby cards.
+            // NOTE: We shouldn't do this if we're in a RecipeSlot.
+            if (TokenContainer.GetType() != typeof(RecipeSlot))
+                transform.SetAsLastSibling(); 
         }
 
         public override void OnDrop(PointerEventData eventData) {
@@ -492,8 +480,21 @@ namespace Assets.CS.TabletopUI {
 
             lifetimeRemaining = lifetimeRemaining - interval;
 
-            if (lifetimeRemaining < 0)
-                Retire(true);
+            if (lifetimeRemaining < 0) {
+                // We're dragging this thing? Then return it?
+                if (DraggableToken.itemBeingDragged == this) {
+                    // Set our table pos based on our current world pos
+                    lastTablePos = Registry.Retrieve<Choreographer>().GetTablePosForWorldPos(transform.position);
+                    // Then cancel our drag, which will return us to our new pos
+                    DraggableToken.CancelDrag();
+                }
+
+                // If we DecayTo, then do that. Otherwise straight up retire the card
+                if (string.IsNullOrEmpty(_element.DecayTo))
+                    Retire(true);
+                else
+                    ChangeTo(_element.DecayTo);
+            }
 
             if (lifetimeRemaining < _element.Lifetime / 2) {
                 ShowCardDecayTimer(true);
@@ -518,11 +519,42 @@ namespace Assets.CS.TabletopUI {
 
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
-            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1.5f - percentage);
+            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
         }
 
         public void ShowCardShadow(bool show) {
             shadow.gameObject.SetActive(show);
+        }
+
+        #endregion
+
+        #region -- Change & Replace Card ------------------------------------------------------------------------------------
+
+        public bool ChangeTo(string elementId) {
+            // Save this, since we're retiring and that sets quantity to 0
+            int quantity = Quantity;
+
+            var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
+            cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+            cardLeftBehind.lastTablePos = lastTablePos;
+            cardLeftBehind.originStack = null;
+
+            // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
+            cardLeftBehind.transform.position = transform.position;
+
+            // Put it behind the card being burned
+            cardLeftBehind.transform.SetSiblingIndex(transform.GetSiblingIndex() - 1);
+
+            var stacksManager = TokenContainer.GetElementStacksManager();
+            stacksManager.AcceptStack(cardLeftBehind, new Context(Context.ActionSource.ChangeTo));
+
+            // Accepting stack may put it to pos Vector3.zero, so this is last
+            cardLeftBehind.transform.position = transform.position;
+
+            // Note, this is a temp effect
+            Retire("CardTransformWhite");
+
+            return true;
         }
 
         #endregion
@@ -546,7 +578,7 @@ namespace Assets.CS.TabletopUI {
             isFront = state;
             //if a card has just been turned face up in a situation, it's now an existing, established card
             if (isFront && StackSource.SourceType == SourceType.Fresh)
-                StackSource.SourceType = SourceType.Existing;
+                StackSource = Source.Existing();
 
             if (gameObject.activeInHierarchy == false || instant) {
                 transform.localRotation = GetFrontRotation(isFront);

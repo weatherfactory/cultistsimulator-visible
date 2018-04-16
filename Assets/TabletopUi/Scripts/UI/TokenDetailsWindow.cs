@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
     public class TokenDetailsWindow : BaseDetailsWindow {
@@ -23,13 +24,20 @@ namespace Assets.CS.TabletopUI {
 
         [Header("Slot Infos")]
         [SerializeField] GameObject slotInfoHolder;
-        [SerializeField] GameObject greedyInfo;
-        [SerializeField] GameObject consumesInfo;
+        [SerializeField] TextMeshProUGUI greedyInfo;
+        [SerializeField] TextMeshProUGUI consumesInfo;
+        [SerializeField] Image greedyIcon;
+        [SerializeField] Image consumesIcon;
+
+        [Header("Deck Infos")]
+        [SerializeField] TextMeshProUGUI deckInfos;
 
         [Header("Aspect Display")]
         [SerializeField] AspectsDisplay aspectsDisplayFlat;
         [SerializeField] AspectsDisplay aspectsDisplayRequired;
         [SerializeField] AspectsDisplay aspectsDisplayForbidden;
+
+        Coroutine infoHighlight;
 
         const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
@@ -39,7 +47,11 @@ namespace Assets.CS.TabletopUI {
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
         ElementStackToken token;
+
         SlotSpecification slotSpec;
+
+        IDeckSpec deckSpec;
+        int deckQuantity;
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
             // Check if we'd show the same, if so: do nothing
@@ -59,6 +71,8 @@ namespace Assets.CS.TabletopUI {
             this.element = element;
             this.token = token; // To be able to update the card's remaining time
             this.slotSpec = null;
+            this.deckSpec = null;
+            this.deckQuantity = 0;
             Show();
         }
 
@@ -71,6 +85,22 @@ namespace Assets.CS.TabletopUI {
             this.element = null;
             this.token = null;
             this.slotSpec = slotSpec;
+            this.deckSpec = null;
+            this.deckQuantity = 0;
+            Show();
+        }
+
+        public void ShowDeckDetails(IDeckSpec deckSpec, int numCards) {
+            // Check if we'd show the same, if so: do nothing
+            if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
+                return;
+
+            SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
+            this.element = null;
+            this.token = null;
+            this.slotSpec = null;
+            this.deckSpec = deckSpec;
+            this.deckQuantity = numCards;
             Show();
         }
 
@@ -104,7 +134,12 @@ namespace Assets.CS.TabletopUI {
             else if (slotSpec != null) {
                 SetSlot(slotSpec);
             }
+            else if (deckSpec != null) {
+                SetDeck(deckSpec, deckQuantity);
+            }
         }
+
+        // SET TOKEN TYPE CONTENT VISUALS
 
         void SetElementCard(Element element, ElementStackToken token = null) {
             Sprite sprite;
@@ -114,6 +149,7 @@ namespace Assets.CS.TabletopUI {
             else
                 sprite = ResourcesManager.GetSpriteForElement(element.Id);
 
+            SetImageNarrow(false);
             ShowImage(sprite);
 
             if (token != null) // only if there's a token is there ever a decay timer
@@ -123,8 +159,10 @@ namespace Assets.CS.TabletopUI {
 
             ShowText(elementHeader + element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
+
             ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
+            ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(element.Aspects);
             aspectsDisplayForbidden.DisplayAspects(null);
@@ -140,12 +178,39 @@ namespace Assets.CS.TabletopUI {
                 (string.IsNullOrEmpty(slotSpec.Description) ? defaultSlotDesc : slotSpec.Description)
                 );
             SetTextMargin(false, slotSpec.Greedy || slotSpec.Consumes);
-            ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
+
             ShowCardIcons(false, false); // Make sure the other hint icons are gone
+            ShowSlotIcons(slotSpec.Greedy, slotSpec.Consumes);
+            ShowDeckInfos(0); // Make sure the other hint icons are gone
 
             aspectsDisplayFlat.DisplayAspects(null);
             aspectsDisplayForbidden.DisplayAspects(slotSpec.Forbidden);
             aspectsDisplayRequired.DisplayAspects(slotSpec.Required);
+        }
+
+        void SetDeck(IDeckSpec deckId, int deckQuantity) {
+            var sprite = ResourcesManager.GetSpriteForCardBack(deckId.Id);
+            
+            SetImageNarrow(true);
+            ShowImage(sprite);
+            ShowImageDecayTimer(false);
+
+            ShowText(deckId.Label, deckId.Description);
+            SetTextMargin(sprite != null, true);
+
+            ShowCardIcons(false, false); // Make sure the other hint icons are gone
+            ShowSlotIcons(false, false); // Make sure the other hint icons are gone
+            ShowDeckInfos(deckQuantity);
+
+            aspectsDisplayFlat.DisplayAspects(null);
+            aspectsDisplayForbidden.DisplayAspects(null);
+            aspectsDisplayRequired.DisplayAspects(null);
+        }
+
+        // SUB VISUAL SETTERS
+
+        void SetImageNarrow(bool narrow) {
+            artwork.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, narrow ? 65f : 100f);
         }
 
         void ShowImageDecayTimer(bool show, string timeString = null) {
@@ -172,5 +237,70 @@ namespace Assets.CS.TabletopUI {
             consumesInfo.gameObject.SetActive(consumes);
         }
 
+        void ShowDeckInfos(int quantity) {
+            deckInfos.gameObject.SetActive(quantity > 0);
+            deckInfos.text = quantity > 0 ? "Cards drawn: " + quantity : null;
+        }
+
+        public void HighlightSlotIcon(bool isGreedy, bool consumes) {
+            if (infoHighlight != null)
+                StopCoroutine(infoHighlight);
+
+            // note can only Highlight one of the two
+
+            if (isGreedy) {
+                infoHighlight = StartCoroutine(DoHighlightSlotIcon(greedyIcon, greedyInfo));
+            }
+            else {
+                greedyIcon.transform.localScale = Vector3.one;
+                greedyIcon.color = UIStyle.slotDefault;
+                greedyInfo.color = UIStyle.textColorLight;
+
+                if (consumes) {
+                    infoHighlight = StartCoroutine(DoHighlightSlotIcon(consumesIcon, consumesInfo));
+                }
+                else {
+                    consumesIcon.transform.localScale = Vector3.one;
+                    consumesIcon.color = UIStyle.slotDefault;
+                    consumesInfo.color = UIStyle.textColorLight;
+                }
+            }
+        }
+
+        IEnumerator DoHighlightSlotIcon(Image icon, TextMeshProUGUI text) {
+            const float durationAttack = 0.2f;
+            const float durationDecay = 0.4f;
+            Vector3 targetScale = new Vector3(1.5f, 1.5f, 1.5f);
+            float lerp;
+
+            float time = 0f;
+
+            while (time < durationAttack) {
+                time += Time.deltaTime;
+                lerp = time / durationAttack;
+                icon.transform.localScale = Vector3.Lerp(Vector3.one, targetScale, lerp);
+                icon.color = Color.Lerp(UIStyle.slotDefault, Color.black, lerp);
+                text.color = Color.Lerp(UIStyle.textColorLight, Color.black, lerp);
+                yield return null;
+            }
+
+            time = 0f;
+
+            while (time < durationDecay) {
+                time += Time.deltaTime;
+                lerp = time / durationDecay;
+                icon.transform.localScale = Vector3.Lerp(targetScale, Vector3.one, lerp);
+                icon.color = Color.Lerp(Color.black, UIStyle.slotDefault, lerp);
+                text.color = Color.Lerp(Color.black, UIStyle.textColorLight, lerp);
+                yield return null;
+            }
+
+            icon.transform.localScale = Vector3.one;
+            icon.color = UIStyle.slotDefault;
+            text.color = UIStyle.textColorLight;
+            infoHighlight = null;
+        }
+
     }
 }
+

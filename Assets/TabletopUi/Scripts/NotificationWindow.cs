@@ -24,7 +24,7 @@ namespace Assets.CS.TabletopUI
 
         public void SetDuration(float duration)
         {
-            Invoke("Hide", 5);
+            Invoke("Hide", 30);
         }
 
         public void SetDetails(string title, string description)

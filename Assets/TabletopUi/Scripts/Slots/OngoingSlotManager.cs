@@ -23,10 +23,24 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] LayoutGroup storedCardsLayout;
         public CanvasGroupFader canvasGroupFader;
 
+        [SerializeField] DeckEffectView[] deckEffectViews; 
+
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
             ongoingSlot = BuildSlot("ongoing", null, null);
-            ongoingSlot.transform.position = slotHolder.transform.position;
+            SetSlotToPos();
+        }
+
+        public override IList<RecipeSlot> GetAllSlots() {
+            // Is the active slot enabled?
+            if (ongoingSlot.gameObject.activeSelf)
+                return base.GetAllSlots();
+            else
+                return new List<RecipeSlot>(0);
+        }
+
+        public void SetSlotToPos() {
+            ongoingSlot.transform.position = slotHolder.position;
         }
 
         public virtual void DoReset() {
@@ -94,6 +108,28 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
+        public void ShowDeckEffects(Dictionary<string, int> deckEffects) {
+            // Note, We shouldn't have more effects than we have views
+            UnityEngine.Assertions.Assert.IsTrue(deckEffects.Count <= deckEffectViews.Length);
+
+            int i = 0;
+            IDeckSpec deckSpec;
+
+            // Populate those we need
+            foreach (var item in deckEffects) {
+                deckSpec = Registry.Retrieve<ICompendium>().GetDeckSpecById(item.Key);
+                deckEffectViews[i].PopulateDisplay(deckSpec, item.Value);
+                deckEffectViews[i].gameObject.SetActive(true);
+                i++;
+            }
+
+
+            // All those we didn't need? Hide them.
+            while (i < deckEffectViews.Length) {
+                deckEffectViews[i].gameObject.SetActive(false);
+                i++;
+            }
+        }
 
     }
 }
