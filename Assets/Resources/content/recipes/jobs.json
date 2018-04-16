@@ -127,7 +127,7 @@ maxexecutions:1
 	{id:"gloverandglover_difficultbossa_overtime_fail",
 	actionId:"work",
 	label:"Work overtime, at Mr Alden's insistence",
-	startdescription:"'I do not believe that you have properly understood the importance of our work here. This task will require your <i>full</i> attention.' [Add Reason to satisfy Mr Glover.]",
+	startdescription:"'I do not believe that you have properly understood the importance of our work here. This task will require your <i>full</i> attention.' [Add Reason to satisfy Mr Alden.]",
 	description:"'I would like to say that I am disappointed, but my expectations of you were already low. I have no choice but to withhold a portion of your pay. You may go, but be punctual tomorrow, please.'
 	
 [There may be ways to deal with Mr Alden.]",
@@ -294,6 +294,47 @@ maxexecutions:1
 		craftable: true
 	},
 		{
+        id: "workhealthskilla",
+        label: "Unskilled Labour: Arms of Bronze",
+		alternativerecipes:
+		[{id: "workhealthinjury", chance:10}],
+        actionId: "work",
+        requirements: {health: 1,skillhealtha:1},
+        effects: {
+            funds: 1
+        },
+        startdescription: "To work, then.",
+        description: "I've finished early. Here's my pay.",
+        warmup: 50,
+        craftable: true
+    },
+			{
+        id: "workhealthskillb",
+        label: "Unskilled Labour: Arms of Iron",
+        actionId: "work",
+        requirements: {health: 1,skillhealthb:1},
+        effects: {
+            funds: 1
+        },
+        startdescription: "I will work with speed and in silence. I don't fear injury.",
+        description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
+        warmup: 40,
+        craftable: true
+    },
+			{
+        id: "workhealthskillc",
+        label: "Unskilled Labour: Arms of Steel",
+        actionId: "work",
+        requirements: {health: 1,skillhealthc:1},
+        effects: {
+            funds: 1
+        },
+        startdescription: "Once again I put my strength to use.",
+        description: "My strength attracts comment. Not all the comments are compliments. I draw my pay and leave.",
+        warmup: 30,
+        craftable: true
+    },
+		{
         id: "workhealth_noinjurychance",
         label: "Unskilled Labour",
         actionId: "work",
@@ -305,7 +346,7 @@ maxexecutions:1
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
         craftable: true,
-		maxexecutions:10,
+		maxexecutions:3,
 		comments: "guaranteed three days without injury"
     },
 	{
