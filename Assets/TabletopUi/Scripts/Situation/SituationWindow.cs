@@ -203,9 +203,7 @@ namespace Assets.CS.TabletopUI {
         bool windowIsWide = false;
 
         bool IsWideRecipe(Recipe r) {
-            // This is dummy to test with dream + passion
-            if (r.BurnImage != null)
-                return true;
+
 
             // If we're not in an explore or work action, we can't be wide.
             if (r.ActionId != "explore" && r.ActionId != "work")

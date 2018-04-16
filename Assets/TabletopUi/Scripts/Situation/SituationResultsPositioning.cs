@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Assets.Core.Interfaces;
+using Noon;
 
 namespace Assets.CS.TabletopUI {
     public class SituationResultsPositioning : MonoBehaviour {
@@ -74,7 +75,7 @@ namespace Assets.CS.TabletopUI {
                 i++;
             }
 
-            Debug.Log(debugText);
+            NoonUtility.Log(debugText,10);
         }
 
         List<IElementStack> SortStacks(IEnumerable<IElementStack> elementStacks) {
