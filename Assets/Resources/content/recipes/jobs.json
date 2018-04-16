@@ -299,9 +299,9 @@ maxexecutions:1
 		alternativerecipes:
 		[{id: "workhealthinjury", chance:10}],
         actionId: "work",
-        requirements: {health: 1,skillhealtha:1},
+        requirements: {health: 1,skillhealtha:1,ritual:-1},
         effects: {
-            funds: 1
+            funds: 1,vitality:1
         },
         startdescription: "To work, then.",
         description: "I've finished early. Here's my pay.",
@@ -312,9 +312,9 @@ maxexecutions:1
         id: "workhealthskillb",
         label: "Unskilled Labour: Arms of Iron",
         actionId: "work",
-        requirements: {health: 1,skillhealthb:1},
+        requirements: {health: 1,skillhealthb:1,ritual:-1},
         effects: {
-            funds: 1
+            funds: 1,vitality:1
         },
         startdescription: "I will work with speed and in silence. I don't fear injury.",
         description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
@@ -325,9 +325,9 @@ maxexecutions:1
         id: "workhealthskillc",
         label: "Unskilled Labour: Arms of Steel",
         actionId: "work",
-        requirements: {health: 1,skillhealthc:1},
+        requirements: {health: 1,skillhealthc:1,ritual:-1},
         effects: {
-            funds: 1
+            funds: 1,vitality:1
         },
         startdescription: "Once again I put my strength to use.",
         description: "My strength attracts comment. Not all the comments are compliments. I draw my pay and leave.",
@@ -340,7 +340,7 @@ maxexecutions:1
         actionId: "work",
         requirements: {health: 1,ritual:-1},
         effects: {
-            funds: 1
+            funds: 1,vitality:1
         },
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
@@ -357,7 +357,7 @@ maxexecutions:1
         actionId: "work",
         requirements: {health: 1},
         effects: {
-            funds: 1
+            funds: 1,vitality:1
         },
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
