@@ -84,7 +84,6 @@ My new position is better paid, and the desk stands by the street window. But I 
 	
 'Be especially punctual tomorrow, please.'
 	",
-	effects: {gloverandglover_difficultbossa_job:-1, gloverandgloverseniorjob: 1},
 	warmup:30,
 	craftable:false,
 	aspects:{careeradvancement:1}
@@ -104,7 +103,7 @@ My new position is better paid, and the desk stands by the street window. But I 
 	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	warmup:30,
 	craftable:false,
-maxexecutions:10
+maxexecutions:1
 	},
 
 	{id:"gloverandglover_difficultbossa_overtime",
@@ -121,7 +120,7 @@ maxexecutions:10
 	alternativerecipes:[{id:"gloverandglover_difficultbossa_overtime_fail",chance:100}],
 	warmup:30,
 	craftable:false,
-	linked: [{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:5}]
+	linked: [{id:"gloverandglover_difficultbossa_patienceisavirtue",chance:2}]
 	},
 
 	
@@ -306,7 +305,7 @@ maxexecutions:10
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
         craftable: true,
-		maxexecutions:3,
+		maxexecutions:10,
 		comments: "guaranteed three days without injury"
     },
 	{
