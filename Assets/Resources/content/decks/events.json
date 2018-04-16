@@ -1,6 +1,8 @@
 {"decks":
     [
 	{id: "seasonevents",
+		label:"Seasons",
+	description:"Whenever Time Passes, an unexpected event might occur.",
 	spec:["seasonsickness",
 	"seasonserenities",
 	"seasonsuspicion",
@@ -18,6 +20,8 @@
 resetonexhaustion:true	
 	},
 	{id: "cabaretevents",
+		label:"An Evening at the Club",
+	description:"Each evening brings different delights, and occasionally perils.",
 	spec:
 	["contentment",
 	"contentment",
@@ -35,6 +39,8 @@ resetonexhaustion:true
 	},
 	
 	{id: "dreamreasonresults",
+		label:"Dream's Hinterlands",
+	description:"Sleep usually brings rest and peace; but not always. Not always.",
 	spec:
 	["dread",
 	"fascination",
@@ -46,6 +52,8 @@ resetonexhaustion:true
 	},
 	
 		{id: "paintingresults",
+				label:"Art's Rewards",
+	description:"Painting often brings contentment. Sometimes, my work will attract attention.",
 	spec:
 	["contentment",
 	"contentment",
@@ -55,6 +63,8 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 			{id: "robberyrewards",
+					label:"The Wages of Sin",
+	description:"My minions will usually bring me back petty treasures; sometimes junk; rarely, something extraordinary.",
 	spec:
 	["funds",
 	"funds",

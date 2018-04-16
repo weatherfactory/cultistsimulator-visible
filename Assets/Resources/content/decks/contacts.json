@@ -1,6 +1,8 @@
 {"decks":
     [
 	{id: "acquaintances",
+	label:"Acquaintances",
+	description:"So many people in the world, and so few worth knowing.",
 	spec:
 	[
 	"auclair_a",
@@ -36,18 +38,22 @@
 defaultcard: "mistakenidentity"	
 	},
 		{id: "hunters",
+			label:"Hunters",
+	description:"Those who wish me ill.",
 	spec:
 	["investigator1"],
 defaultcard: "defaulthunter"	
 	},
 
-{id: "scholarpatrons",
+{id: "scholarpatrons",	label:"Patrons",
+	description:"Those who might assist me.",
 	spec:["aladimready",
 	"bechetready",
 	"janningsready"],
 defaultcard: "mistakenidentity"	},
 	
-	{id: "aladimcommissions",
+	{id: "aladimcommissions",	label:"Al-Adim's Interests",
+	description:"",
 	spec:["commissionarticlesecrethistory",
 	"commissionarticlesecrethistoryb",
 	"commissionarticlesecrethistoryc",
@@ -59,6 +65,8 @@ defaultcard: "mistakenidentity"	},
 resetonexhaustion:true	},
 	
 		{id: "bechetcommissions",
+			label:"Bechet's Interests",
+	description:"",
 	spec:["commissionarticleforge",
 	"commissionarticleforgeb",
 	"commissionarticleforgec",
@@ -73,6 +81,8 @@ resetonexhaustion:true	},
 resetonexhaustion:true	},
 
 		{id: "janningscommissions",
+			label:"Jannings' Interests",
+	description:"",
 	spec:["commissionarticleedge",
 	"commissionarticleedgeb",
 	"commissionarticleedgec",
@@ -84,6 +94,8 @@ resetonexhaustion:true	},
 resetonexhaustion:true	},
 	
 			{id: "randomvictim",
+				label:"The Unwise and the Unwary",
+	description:"We'll make of them what we must.",
 	spec:["genericprisonerm",
 	"genericprisonerf"],
 	defaultcard:"genericprisonerm",
