@@ -38,7 +38,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             // startingSlots updated may resize window
             situationController.StartingSlotsUpdated();
 
-            if (stack.HasChildSlotsForVerb(situationController.GetTokenId()))
+            if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(situationController.GetTokenId()))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
@@ -46,10 +46,10 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
-            RecipeSlot slot;
 
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(situationController.GetTokenId())) {
-                slot = BuildSlot("childslot of " + stack.Id, childSlotSpecification, parentSlot);
+            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(situationController.GetTokenId()))
+            {
+                var slot = BuildSlot("childslot of " + stack.Id, childSlotSpecification, parentSlot);
                 parentSlot.childSlots.Add(slot);
             }
         }

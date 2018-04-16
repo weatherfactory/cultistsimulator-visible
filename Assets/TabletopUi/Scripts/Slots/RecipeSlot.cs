@@ -26,6 +26,7 @@ namespace Assets.CS.TabletopUI {
         RecipeSlot ParentSlot { get; set; }
         bool Defunct { get; set; }
         bool Retire();
+        bool IsPrimarySlot();
     }
 
     public class RecipeSlot : AbstractTokenContainer, IDropHandler, IRecipeSlot, IPointerClickHandler, IGlowableView, IPointerEnterHandler, IPointerExitHandler {
@@ -332,6 +333,11 @@ namespace Assets.CS.TabletopUI {
 
             Defunct = true;
             return true;
+        }
+
+        public bool IsPrimarySlot()
+        {
+            return ParentSlot == null;
         }
 
         public void OnPointerClick(PointerEventData eventData) {

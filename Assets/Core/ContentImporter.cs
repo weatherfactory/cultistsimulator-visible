@@ -61,7 +61,10 @@ public class ContentImporter
                 SlotSpecification slotSpecification = new SlotSpecification(slotId);
                 try
                 {
-                    if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
+                    if (htThisSlot[NoonConstants.KLABEL] != null)
+                        slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
+
+                if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
                         slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
 
                     if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")

@@ -22,14 +22,15 @@
             },
             animFrames: 1,
 			xtriggers: {damagehealth: injury,fallsick:affliction},
-			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil."
+			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
         },
 				 {
             id: "vitality",
             label: "Vitality",
+				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality, I can increase my Health.",required:{vitality:1}}],
             aspects:
             {},
-            description: "It's been said that blood and treasure are the cost of war. But blood <i>is</i> treasure. [Vitality can sometimes be used to gain Health. It lasts only three minutes, if unused.]",
+            description: "I feel a little stronger than usual. [Vitality can sometimes be used to gain Health. It lasts only three minutes, if unused.]",
 		lifetime: 180
         },
 		
@@ -76,7 +77,9 @@
 				ingredient:1
             },
             animFrames: 1,
-			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson",
+			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
+
+[With Erudition, you can Study to gain more Reason.]",
 				xtriggers: {damagereason: dread,invest:concentration},
         },
 		        {
@@ -88,9 +91,10 @@
 				 {
             id: "erudition",
             label: "Erudition",
+			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
             aspects:
             {},
-            description: "I should seek knowledge as a fire seeks fuel, as a jackal seeks scraps. I never know what'll be useful. [Erudition can sometimes be used to gain Reason. It lasts only three minutes, if unused.]",
+            description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can sometimes be used to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180
         },
 			{id: "dread",
@@ -101,7 +105,8 @@ lifetime: 180
 			inducesdespair: 1,
 			ingredient:1},
 			xtriggers: {restorereason: reason},
-            description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror."
+            description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror.",
+			lifetime: 180
 			},
 		        {
             id: "passion",
@@ -112,15 +117,18 @@ lifetime: 180
 				ingredient:1
             },
             animFrames: 1,
-			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal",
+			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
+			
+[With enough Glimmering, you can Study to gain more Passion.]",
 			xtriggers: {damagepassion:fascination},
         },
 					 {
             id: "glimmering",
             label: "Glimmering",
+			slots: [{id:"More Glimmering",actionId:"study",description: "With enough Glimmering, I can increase my Passion.",required:{glimmering:1}}],
             aspects:
             {},
-            description: "There are things I'll never understand, and those things will always be precious. [Glimmering can sometimes be used to gain Passion. It lasts only three minutes, if unused.]",
+            description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can sometimes be used to gain Passion. It lasts only three minutes, if unused.]",
 			lifetime: 180
         },
 		{id: "fascination",
@@ -129,6 +137,7 @@ lifetime: 180
             {moth:2,delirium:1,ingredient:1},
             description: "Light leaks through the cracks. My mind is brighter than it ever was..",
 			xtriggers: {restorepassion: passion},
+			lifetime: 180
 			},
 		{
 		id: "scholarlatin",
