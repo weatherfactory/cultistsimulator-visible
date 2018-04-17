@@ -268,9 +268,11 @@ namespace Assets.CS.TabletopUI {
             }
 
             SoundManager.PlaySfx("CardDragFail");
-
-            if (startParent.GetComponent<TabletopTokenContainer>()) {
-                //Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
+            var tabletopContainer = startParent.GetComponent<TabletopTokenContainer>();
+            
+            // Token was from tabletop - return it there. This auto-merges it back in case of ElementStacks
+            // The map is not the tabletop but inherits from it, so we do the IsTabletop check
+            if (tabletopContainer != null && tabletopContainer.IsTabletop) {
                 ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
             else {

@@ -55,6 +55,7 @@ namespace Assets.CS.TabletopUI {
 
 		private SituationController situationController;
 		private IVerb Verb;
+        private bool windowIsWide = false;
 
         public bool IsOpen {
             get { return gameObject.activeInHierarchy; }
@@ -200,11 +201,7 @@ namespace Assets.CS.TabletopUI {
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        bool windowIsWide = false;
-
         bool IsWideRecipe(Recipe r) {
-
-
             // If we're not in an explore or work action, we can't be wide.
             if (r.ActionId != "explore" && r.ActionId != "work")
                 return false;

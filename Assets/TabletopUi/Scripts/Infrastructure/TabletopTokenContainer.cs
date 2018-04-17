@@ -24,6 +24,10 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     public override bool AllowDrag { get { return true; } }
     public override bool AllowStackMerge { get { return true; } }
 
+    // This is used to determine if this component is the tabletop. 
+    // Needed because the MapTokenContainer inherits from TabletopTokenContainer but is not the Tabletop
+    public virtual bool IsTabletop { get { return true; } }
+
     public override void Initialise() {
         _elementStacksManager = new ElementStacksManager(this, "tabletop");
         _elementStacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 
