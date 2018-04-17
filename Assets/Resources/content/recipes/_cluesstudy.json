@@ -1,15 +1,37 @@
  {"recipes":
  [
 	{
-        id: "increashealthfurtherhint",
+        id: "increasehealthfurtherhint",
         label: "Increase my Health?",
         actionId: "study",
         requirements: {vitality:2},
-        startdescription: "I've already grown stronger. I'll need more. [Use Skill: Physique to increase Health further.]",
+        startdescription: "IThe more Health I gain, the more Vitality I'll need. [Use Skill: Physique to increase Health further.]",
 
         hintonly:true,
         craftable: true
     },
+			{
+        id: "increasereasonfurtherhint",
+        label: "Increase my Reason?",
+        actionId: "study",
+        requirements: {erudition:2},
+        startdescription: "IThe more Reason I gain, the more Erudition I'll need. [Use Skill: Scholarship to increase Reason further.]",
+
+        hintonly:true,
+        craftable: true
+    },
+	
+		{
+        id: "increasepassionfurtherhint",
+        label: "Increase my Passion?",
+        actionId: "study",
+        requirements: {glimmering:2},
+        startdescription: "IThe more Passion I gain, the more Glimmering I'll need. [Use Skill: Imagination to increase Passion further.]",
+
+        hintonly:true,
+        craftable: true
+    },
+		
 		
 	
 

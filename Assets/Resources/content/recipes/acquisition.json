@@ -2,11 +2,11 @@
 
 		{
         id: "auction",
-        label: "Bid in an Auction on a Book",
+        label: "Bid in an Auction",
         actionId: "explore",
 		effects: {},
 		slots:[{id:"Bid",required: {funds:1}}],
-        startdescription: "A crowd of pinched faces, glinting eyes. Who will bid? [The book at auction is visible on the right. It will be gone forever if the auction is lost.]",
+        startdescription: "A crowd of pinched faces, glinting eyes. Who will bid? [The item at auction is visible on the right. It will be gone forever if the auction is lost.]",
         description: ".",
 
         warmup: 30,
@@ -24,7 +24,7 @@
 	   effects:{funds:-1,bid:1}
 	   warmup:0,
 	   linked:[
-	   {id:"auctionsuccess",chance:30},
+	   {id:"auctionsuccess",chance:70},
 	   {id:"auctionbidmatched",chance:100}
 	   ]
 	   },
