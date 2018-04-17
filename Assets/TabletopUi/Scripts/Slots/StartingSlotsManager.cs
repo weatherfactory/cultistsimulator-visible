@@ -59,7 +59,8 @@ namespace Assets.TabletopUi.SlotsContainers {
             situationController.StartingSlotsUpdated();
 
             // Only update the slots if we're doing this manually, otherwise don't
-            if (context.IsManualAction())
+            // Addendum: We also do this when retiring a card - Martin
+            if (context.IsManualAction() || context.actionSource == Context.ActionSource.Retire)
                 RemoveAnyChildSlotsWithEmptyParent(context);
 
             ArrangeSlots();
