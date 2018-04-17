@@ -81,7 +81,20 @@ description: ".",
 craftable: true
 },
 
-
+{
+        id: "begincultfoundation",
+        label: "Found a Mystical Organisation",
+		alternativerecipes:
+		[{id: "cultfoundation", chance:100, additional: true}],
+        actionId: "talk",
+        requirements: {mortal:1,society: -1,ritual:-1,society:-1,location:-1,patron:-1,hunter:-1,prisoner:-1},
+        effects: {notoriety:1},
+        startdescription: "Here is someone who might become an assistant, a companion - a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
+        description: "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",
+        warmup: 10,
+        craftable: true,
+		maxexecutions: 1
+    },
 
 
 {id: "talktoacquaintance",
@@ -114,10 +127,9 @@ craftable: true
 label:"Speak of esoteric matters",
 actionId: "talk",
 requirements: {society:-1,lore: 1},
-alternativerecipes:[{id: "inspiremystique",chance:30},
-{id: "inspirenotoriety",chance:30}],
 deckeffect: {"acquaintances":1},
-startdescription: "I might make a useful contact or improve my reputation; or I might draw the wrong kind of attention.",
+effects: {mystique:1},
+startdescription: "I might make a useful contact. I will likely attract attention.",
 description: "Here's someone who might be useful.",
 warmup: 60,
 craftable: true

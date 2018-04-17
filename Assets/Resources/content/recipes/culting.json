@@ -4,7 +4,7 @@
         id: "recruitacquaintance",
         label: "Recruit an Acquaintance",
         actionId: "talk",
-        requirements: {society: 1,reputation: 1,mortal: 1,follower:-1,patron:-1},
+        requirements: {society: 1,reputation: 1,mortal: 1,follower:-1,patron:-1,hunter:-1},
 		aspects: {recruiting: 1},
         startdescription: "This one is ready.",
         description: "The oaths are resonant as thunder in a church. I know them well. I wrote them myself.",
@@ -217,12 +217,6 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	  	{
         id: "recruitacquaintanceclue",
         label: "Recruit an Acquaintance?",
@@ -232,20 +226,7 @@
         craftable: false,
 		hintonly: true
     },
- 	{
-        id: "begincultfoundation",
-        label: "Found a Mystical Organisation",
-		alternativerecipes:
-		[{id: "cultfoundation", chance:100, additional: true}],
-        actionId: "talk",
-        requirements: {reputation: 1,ritual:-1,society:-1,location:-1},
-        effects: {generichq:1},
-        startdescription: "I need assistants, companions - followers. I must give them something to follow. A society; a sodality; an order; a cult.",
-        description: "Tradition and compulsion - old, new, or both together. [I'll need lore to determine a founding principle for the cult.]",
-        warmup: 10,
-        craftable: true,
-		maxexecutions: 1
-    },
+ 	
 	 	{
         id: "cultfoundation",
         label: "Choose Founding Principles",
@@ -262,10 +243,10 @@
         actionId: "cult",
         requirements: {},
         effects: {},
-		slots: [{id:"Doctrine",required: {lore: 1},description: "My society will focus on one principle."}],
-        startdescription: "I will determine a name, a doctrine, an oath. [You need lore to determine a founding principle.]",
+		slots: [{id:"Doctrine",required: {lore: 1},description: "What do we seek?"}],
+        startdescription: "Tradition and compulsion - old, new, or both together. [Add Lore to determine your cult's founding principles.]",
         description: "",
-        warmup: 10,
+        warmup: 30,
         craftable: false,
 		linked:[{id:"cultfoundation",chance:100}]
     },
@@ -275,8 +256,8 @@
 	actionId: "establishcult",
 	requirements: {edge: 1},
 	effects: {cultedge_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the Hours of struggle and conquest."
+	startdescription: "An occult society dedicated to the Hours of struggle and conquest.",
+		linked: [{id: "cultfoundation_health",chance:100}],
 	},
 			{
 	id: "cultfoundationforge",
@@ -284,8 +265,8 @@
 	actionId: "establishcult",
 	requirements: {forge: 1},
 	effects: {cultforge_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the fire that changes and remakes."
+	startdescription: "An occult society dedicated to the fire that changes and remakes.",
+		linked: [{id: "cultfoundation_health",chance:100}],
 	},
 	{
 	id: "cultfoundationgrail",
@@ -293,8 +274,8 @@
 	actionId: "establishcult",
 	requirements: {grail: 1},
 	effects: {cultgrail_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the mysteries of birth, blood and appetite."
+	startdescription: "An occult society dedicated to the mysteries of birth, blood and appetite.",
+		linked: [{id: "cultfoundation_passion",chance:100}],
 	},
 		{
 	id: "cultfoundationheart",
@@ -302,8 +283,8 @@
 	actionId: "establishcult",
 	requirements: {heart: 1},
 	effects: {cultheart_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the drumbeat which can never end."
+	startdescription: "An occult society dedicated to the drumbeat which can never end.",
+		linked: [{id: "cultfoundation_passion",chance:100}],
 	},
 			{
 	id: "cultfoundationknock",
@@ -311,8 +292,9 @@
 	actionId: "establishcult",
 	requirements: {knock: 1},
 	effects: {cultknock_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the Hours which open doors."
+
+	startdescription: "An occult society dedicated to the Hours which open doors.",
+		linked: [{id: "cultfoundation_health",chance:100}],
 	},
 				{
 	id: "cultfoundationlantern",
@@ -320,8 +302,8 @@
 	actionId: "establishcult",
 	requirements: {lantern: 1},
 	effects: {cultlantern_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place."
+	startdescription: "An occult society dedicated to the understanding of the Light that leaks from a fiercer place.",
+		linked: [{id: "cultfoundation_reason",chance:100}],
 	},
 					{
 	id: "cultfoundationmoth",
@@ -329,8 +311,8 @@
 	actionId: "establishcult",
 	requirements: {moth: 1},
 	effects: {cultmoth_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to chaos, and the unexpected Hours."
+	startdescription: "An occult society dedicated to chaos, and the unexpected Hours.",
+		linked: [{id: "cultfoundation_passion",chance:100}],
 	},
 						{
 	id: "cultfoundationsecrethistories",
@@ -338,8 +320,8 @@
 	actionId: "establishcult",
 	requirements: {secrethistories: 1},
 	effects: {cultsecrethistories_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches."
+	startdescription: "An occult society dedicated to the study of the five Histories and their thousand demi-real branches.",
+		linked: [{id: "cultfoundation_reason",chance:100}],
 	},
 							{
 	id: "cultfoundationwinter",
@@ -347,8 +329,76 @@
 	actionId: "establishcult",
 	requirements: {winter: 1},
 	effects: {cultwinter_1: 1},
-	startdescription: "",
-	description: "An occult society dedicated to the silence that comes and the cold that ends."
-	}
+	startdescription: "An occult society dedicated to the silence that comes and the cold that ends.",
+		linked: [{id: "cultfoundation_reason",chance:100}],
+	},
+								{
+	id: "cultfoundation_health",
+	label: "A Sacrifice of Pain",
+	actionId: "establishcult",
+	requirements: {injury:-1},
+	slots: [{id:"Health",label: "My Health",required: {health: 1},description: "I must give of myself to honour the power we will serve."}],
+	aspects: {damagehealth:1},
+	warmup:30,
+	startdescription: "The Hour we will serve requires pain. I must give of myself.",
+	description: "",
+	linked: [{id: "cultfoundation_health",chance:100},
+	{id: "cultfoundation_firstrecruit",chance:100},
+	]
+	},
+									{
+	id: "cultfoundation_reason",
+	label: "A Terrible Clarity",
+	actionId: "establishcult",
+	requirements: {dread:-1},
+	slots: [{id:"Reason",label: "My Reason",required: {reason: 1},description: "I must give of myself to honour the power we will serve."}],
+	aspects: {damagereason:1},
+	warmup:30,
+	startdescription: "Our purpose demands we recognise truths that chill the spirit. I must give of myself.",
+	description: "",
+	linked: [{id: "cultfoundation_reason",chance:100},
+	{id: "cultfoundation_firstrecruit",chance:100},
+	]
+	},
+	
+									{
+	id: "cultfoundation_passion",
+	label: "A Pledge of Devotion",
+	actionId: "establishcult",
+	requirements: {fascination:-1},
+	slots: [{id:"Passion",label: "My Passion",required: {passion: 1},description: "I must give of myself to honour the power we will serve."}],
+	aspects: {damagepassion:1},
+	warmup:30,
+	startdescription: "The Hour we will serve demands that our passions are devoted to its purpose. I must give of myself.",
+	description: "",
+	linked: [{id: "cultfoundation_passion",chance:100},
+	{id: "cultfoundation_firstrecruit",chance:100},
+	]
+	},
+	
+	
+						{
+	id: "cultfoundation_firstrecruit",
+	label: "My First Recruit",
+	actionId: "establishcult",
+	requirements: {follower:-1},
+	slots: [{id:"Recruit",label:"My First Recruit",required: {mortal: 1,prisoner:-1,hunter:-1,patron:-1},description: "One who is ready."}],
+	warmup:30,
+	startdescription: "A cult with one member is only an unusual habit. I must have a recruit.",
+	aspects:{recruiting:1},
+	linked: [{id: "cultfoundation_firstrecruit",chance:100},
+	{id: "cultfoundation_complete",chance:100},
+	]
+	},
+	
+					{
+	id: "cultfoundation_complete",
+	label: "OUR RISE BEGINS.",
+	actionId: "establishcult",
+	effects: {generichq:1},
+	description: "I have founded my cult. This is a step to greater power. [Use your cult to recruit and promote followers. Talk with followers about your cult to send them out on cult business.]"
+	},
+	
+	
 ]
 }

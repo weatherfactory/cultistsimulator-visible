@@ -8,7 +8,7 @@
         actionId: "work",
         requirements: {ascensionpowerb:1,
 		waystag_after:1,
-		forge:8},
+		forge:6},
         effects: {ascensionpowerb:-1,ascensionpowerc:1},
         startdescription: "This rite is the Key that will allow the Forge of Days to enter me. I will be changed forever.",
         description: "The Rite is complete. The Marks of the Forge are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I am aglow with new needs.",
@@ -25,7 +25,7 @@
         actionId: "work",
         requirements: {ascensionsensationbm:1,
 		waystag_after:1,
-		grail:8},
+		grail:6},
         effects: {ascensionsensationbm:-1,ascensionsensationc:1},
         startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
         description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
@@ -40,7 +40,7 @@
         actionId: "work",
         requirements: {ascensionsensationbf:1,
 		waystag_after:1,
-		grail:8},
+		grail:6},
         effects: {ascensionsensationbf:-1,ascensionsensationc:1},
         startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
         description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
@@ -78,7 +78,7 @@
         actionId: "work",
         requirements: {ascensionenlightenmentb:1,
 		waystag_after:1,
-		lantern:8},
+		lantern:6},
         effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
         startdescription: "This rite is the Key that will allow the Watchman's gaze to enter me. I will be changed forever.",
         description: "The Rite is complete. The Marks of the Watchman are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. My hungers have been refined, now.",
@@ -178,7 +178,8 @@
 		description: "",
 		effects: {},
 		warmup: 10,
-		linked: [{id:"ascensioncravingpower",chance:100},
+		linked: [	
+		{id:"ascensioncravingpower",chance:100},
 		{id:"ascensioncravingsensation",chance:100},
 		{id:"ascensioncravingenlightenment",chance:100},
 		{id:"ascensionnotyet",chance:100}]
@@ -187,12 +188,100 @@
 		{id:"ascensionnotyet",
 		label:"Mortal Frustrations",
 		actionId: "craving",
-		requirements: {enlightenmentmarks:-1,powermarks:-1,sensationmarks:-1}
-		startdescription: "",
-		description: "As yet I have only the needs and desires of any other mortal. But what stirs in me?",
-		warmup:0
-		}
-	
+		requirements: {enlightenmentmarks:-1,powermarks:-1,sensationmarks:-1},
+		slots: [{id:"Temptations",description: "The fire needs feeding",required: {desire:1}, greedy:true }],
+		startdescription: ".",
+		effects: {restlessness:1},
+		description: "As yet, I have only the needs and desires of any other mortal. But what stirs in me?",
+		alternativerecipes: [
+		{id:"ascensionhintpower2",chance:100},
+		{id:"ascensionhintenlightenment2",chance:100},
+{id:"ascensionhintsensation2m",chance:100},
+		{id:"ascensionhintsensation2f",chance:100},
+		
+		{id:"ascensionhintpower1",chance:100},
+		{id:"ascensionhintenlightenment1",chance:100},
+		{id:"ascensionhintsensation1",chance:100},
+		],
+		warmup:10
+		},
+		
+		
+				{id:"ascensionhintpower2",
+		label:"The Forge's Roar",
+		actionId:"craving",
+		requirements:{ascensionpowerb:1},
+		startdescription:"I am never quite warm enough, now.",
+		description: "I have dreamed of the Forge, and I long for the heat of her flames. It is almost time to perform the Work and begin the changes - but I must have enough Forge-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment2",
+		label:"The Watchman's Light",
+		actionId:"craving",
+		requirements:{ascensionenlightenmentb:1},
+		startdescription:"Even in waking hours, I have begun to see new colours.",
+		description: "My curiosity is becoming a physical need. My eyes will be thresholds. It is almost time to perform the Work and begin the changes - but I must have enough Lantern-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation2m",
+		label:"The Grail's Touch",
+		actionId:"craving",
+		requirements:{ascensionsensationbm:1},
+		startdescription:"My desires are changing.",
+		description: "The Grail's wonderful tides move in me. It is almost time to perform the Work and begin the changes - but I must have enough Grail-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+						{id:"ascensionhintsensation2f",
+		label:"The Grail's Touch",
+		actionId:"craving",
+		requirements:{ascensionsensationbf:1},
+		startdescription:"My desires are changing.",
+		description: "The Grail has touched me with her wonderful fingers. It is almost time to perform the Work and begin the changes - but I must have enough Grail-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		{id:"ascensionhintpower1",
+		label:"The Forge's Glow",
+		actionId:"craving",
+		requirements:{ascensionpowera:1},
+		startdescription:"Hunger burns in my heart - hunger for the power the secret arts might bring.",
+		description: "The Forge of Days waits in my dreams. If I learn the Forge's lore, and I dream of this temptation, I can advance my purpose. The need gnaws at me.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment1",
+		label:"The Watchman's Footsteps",
+		actionId:"craving",
+		requirements:{ascensionenlightenmenta:1},
+		startdescription:"Hunger glows in my brain - hunger for the knowledge the secret arts might bring.",
+		description: "The Watchman, who is the Door-in-the-Eye, waits in my dreams. If I learn the Lantern-lore, and I dream of this temptation, I can advance my purpose. The need gnaws at me.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation1",
+		label:"The Grail's Whispers",
+		actionId:"craving",
+		requirements:{ascensionsensationa:1},
+		startdescription:"Hungers roam my body - hunger for the pleasures the secret arts might bring.",
+		description: "The red cup, the cup of drowning and devouring, waits in my dreams. If I learn the Grail-lore, and I dream of this temptation, I can advance my
+		purpose. The need gnaws at me.",
+		effects:{restlessness:1},
+		warmup:10
+		},
 
 		{id:"ascensioncravingpower",
 		label:"The Shaping Heat",

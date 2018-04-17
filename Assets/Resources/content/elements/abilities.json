@@ -31,7 +31,7 @@
 				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality, I can increase my Health.",required:{vitality:1}}],
             aspects:
             {},
-            description: "Exercise, or something rarer, has invigorated me. [Vitality can sometimes be used to gain Health. It lasts only three minutes, if unused.]",
+            description: "Exercise, or something rarer, has invigorated me. [Vitality can be used with Study to gain Health. It lasts only three minutes, if unused.]",
 		lifetime: 180
         },
 		
@@ -39,7 +39,7 @@
             id: "restlessness",
             label: "Restlessness",
             aspects:
-            {},
+            {influence:1, forge:3,grail:3,lantern:3},
             description: "A restless longing has me. I feel that I want to do... <i>something</i>. What, exactly?",
 		lifetime: 60,
 		decayTo:"dread"
@@ -95,7 +95,7 @@
 			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
             aspects:
             {},
-            description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can sometimes be used to gain Reason. It lasts only three minutes, if unused.]",
+            description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180
         },
 			{id: "dread",
@@ -129,7 +129,7 @@ lifetime: 180
 			slots: [{id:"More Glimmering",actionId:"study",description: "With enough Glimmering, I can increase my Passion.",required:{glimmering:1}}],
             aspects:
             {},
-            description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can sometimes be used to gain Passion. It lasts only three minutes, if unused.]",
+            description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can be used with Study to gain Passion. It lasts only three minutes, if unused.]",
 			lifetime: 180
         },
 		{id: "fascination",

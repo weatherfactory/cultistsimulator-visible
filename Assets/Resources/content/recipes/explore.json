@@ -112,8 +112,7 @@
 		{id: "inspirenotoriety",chance:30}],
         startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
         description: "Each dawn arrives like a fire, and each night falls like a stone.",
-        warmup: 60,
-        craftable: true
+        warmup: 60
     },
 		{
         id: "explorepassion",
@@ -127,8 +126,22 @@
         startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
         description: "Each dawn arrives like a fire, and each night falls like a stone.",
         warmup: 60,
-        craftable: true,
-		comments: "artist patrons, later"
+        craftable: true
+    },
+			{
+        id: "exploremystique",
+        label: "Seek out those with an uncanny reputation.",
+        actionId: "explore",
+        requirements: {mystique:1},
+		alternativerecipes:	[
+		{id: "explorefindscholarpatron", chance: 70},
+		{id: "inspiremystique",chance:30},
+		{id: "inspirenotoriety",chance:30}],
+        startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
+        description: "Each dawn arrives like a fire, and each night falls like a stone.",
+        warmup: 60,
+        craftable: true
+		
     },
 	{id: "explorefindscholarpatron",
 	label: "Find Commissions for Scholarly Work",
@@ -138,6 +151,7 @@
 	deckeffect: {"scholarpatrons":1},
 	warmup:0,
 	craftable:false
-	}
+	},
+	
 ]
 }
