@@ -37,6 +37,10 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
 
     public virtual IList<RecipeSlot> GetAllSlots() {
         /*
+        // Old system to generate slots. Was removed for performance issues
+        // Is still here to re-enable in case anything is weird with the slots
+        // - Martin
+
         var children = GetComponentsInChildren<RecipeSlot>(true);
         var allSlots = new List<RecipeSlot>(children.Length);
 
@@ -44,10 +48,10 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
             if (item.Defunct == false)
                 allSlots.Add(item);
 
+        // Test debug message to see if the slots aren't the same for some reason
         if (this.allSlots.Count != allSlots.Count)
             Debug.LogWarning("Both ALL SLOTS are not the same!");
         */
-        //AK says: I found this comment above from you, Martin? idk if you were addressing the same issue I mention in the comments in Initialise()
 
         return validSlots;
     }
