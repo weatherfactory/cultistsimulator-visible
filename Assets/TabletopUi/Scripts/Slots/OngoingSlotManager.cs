@@ -64,6 +64,11 @@ namespace Assets.CS.TabletopUI {
         public IRecipeSlot GetUnfilledGreedySlot() {
             if (ongoingSlot == null || ongoingSlot.GoverningSlotSpecification == null)
                 return null;
+            //code smell here. Why is the slot either null or GoverningSlotSpecificationNull? How does it get into each situation?
+            //Possibly it should be set to null again when returned to starting state?
+            //there was an issue where once created, a greedy slot would never be retired, and would always grab whenever that verb was used
+            //I resolved this by setting GoverningSlotSpecification to null when null is passed to SetupSlot, but this is all a bit fragile. - AK
+
             else if (ongoingSlot.GoverningSlotSpecification.Greedy && ongoingSlot.GetElementStackInSlot() == null)
                 return ongoingSlot;
             else 

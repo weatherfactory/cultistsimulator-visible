@@ -349,9 +349,6 @@ namespace Assets.TabletopUi {
         #region -- SituationClock Window Communication --------------------
 
         public void OpenWindow() {
-            // Make sure we're displaying as unstarted if for some reason we did not reset the window
-            if (SituationClock.State == SituationState.Unstarted)
-                situationWindow.SetUnstarted();
 
             IsOpen = true;
             situationToken.DisplayAsOpen();
