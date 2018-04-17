@@ -1,16 +1,22 @@
 {"decks":
     [
-	{id: "vaultscapital",
+	{id: "locationscapital",
+	label:"Hidden Locations in the Capital",
+	description:"Places close at hand.",
 	spec:
 	["vaultcapital1",
 	"vaultcapital2",
 	"vaultcapital3",
-	"vaultcapital4"
+	"vaultcapital4",
+	"locationauctionhouse",
+	"locationcabaret"
 	],
 defaultcard: "vaultcapitaldefault",
 resetonexhaustion:false	
 	},
 		{id: "vaultsshires",
+	label:"Hidden Locations in the Shires",
+	description:"An opportunity for a day out in the country, perhaps.",
 	spec:
 	["vaultshires1",
 	"vaultshires2",
@@ -21,6 +27,8 @@ defaultcard: "vaultshiresdefault",
 resetonexhaustion:false	
 	},
 		{id: "vaultscontinent",
+		label:"Hidden Locations on the Continent",
+	description:"A wider world lies across the narrow sea.",
 	spec:
 	["vaultcontinent1",
 	"vaultcontinent2",
@@ -32,6 +40,8 @@ resetonexhaustion:false
 	},
 	
 		{id: "vaultslandbeyondforest",
+		label:"Hidden Locations in the Land beyond the Forest",
+	description:"A patchwork of possibilities in a troubled part of the world.",
 	spec:
 	["vaultlandbeyondforest1",
 	"vaultlandbeyondforest2",
@@ -43,6 +53,8 @@ resetonexhaustion:false
 	},
 	
 		{id: "vaultsrendingmountains",
+		label:"Hidden Locations in the Rending Mountains",
+	description:"Remote and dangerous vaults and temples",
 	spec:
 	["vaultrendingmountains1",
 	"vaultrendingmountains2",
@@ -54,6 +66,8 @@ resetonexhaustion:false
 	},
 	
 			{id: "vaultsloneandlevelsands",
+				label:"Hidden Locations in the Lone and Level Sands",
+	description:"Here lie the treasures of antiquity, for those who can seize them.",
 	spec:
 	["vaultloneandlevelsands1",
 	"vaultloneandlevelsands2",
@@ -65,6 +79,8 @@ resetonexhaustion:false
 	},
 	
 				{id: "vaultseveningisles",
+					label:"Hidden Locations in the Evening Isles",
+	description:"Unmapped islands in the ambit of Port Noon.",
 	spec:
 	["vaulteveningisles1",
 	"vaulteveningisles2",

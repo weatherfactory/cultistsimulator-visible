@@ -239,7 +239,7 @@ namespace Assets.CS.TabletopUI {
 
         void ShowDeckInfos(int quantity) {
             deckInfos.gameObject.SetActive(quantity > 0);
-            deckInfos.text = quantity > 0 ? "Cards drawn: " + quantity : null;
+            deckInfos.text = quantity > 0 ? "Upcoming draws: " + quantity : null;
         }
 
         public void HighlightSlotIcon(bool isGreedy, bool consumes) {

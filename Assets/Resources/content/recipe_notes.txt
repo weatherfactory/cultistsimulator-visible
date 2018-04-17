@@ -41,8 +41,8 @@ someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
 
       },
       alternativerecipes: [{id: '', chance:100}],
-      startdescription: "FNORD",
-      description: "FNORD",
+      startdescription: "FNORD [This text is not available in the development build]",
+      description: "FNORD [This text is not available in the development build]",
       warmup: CONVENTIONS.TIME_SIGNIFICANT,
       craftable: true,
       loop: ''

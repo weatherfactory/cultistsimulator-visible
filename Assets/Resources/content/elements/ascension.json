@@ -3,24 +3,24 @@
       
 		 {
             id: "ascensionpowera",
-            label: "Notion: Power",
+            label: "Temptation: Power",
             aspects:
             {desire: 1},
-            description: "It has occurred to me that I hold the key to power. [This makes a Power victory possible. Dreaming about it might advance or change it.]"
+            description: "It has occurred to me that I hold the key to power. [Upgrade this card enough, and you can win a Power victory. Dreaming about it might advance or change it.]"
         },
 				 {
             id: "ascensionsensationa",
-            label: "Notion: Sensation",
+            label: "Temptation: Sensation",
             aspects:
             {desire: 1},
-            description: "I could achieve experiences of an intensity few could imagine. [This makes a Sensation victory possible. Dreaming about it might advance or change it.]"
+            description: "I could achieve experiences of an intensity few could imagine. [Upgrade this card enough, and you can win a Sensation victory. Dreaming about it might advance or change it.]"
         },
 		 {
             id: "ascensionenlightenmenta",
-            label: "Notion: Enlightenment",
+            label: "Temptation: Enlightenment",
             aspects:
             {desire: 1},
-            description: "It has occurred to me that I hold the key to wisdom. [This makes an Enlightenment victory possible. Dreaming about it might advance or change it.]"
+            description: "It has occurred to me that I hold the key to wisdom. [Upgrade this card enough, and you can win an Enlightenment victory. Dreaming about it might advance or change it.]"
         },
 				 {
             id: "ascensionpowerb",
@@ -28,8 +28,8 @@
             aspects:
             {desire: 2},
             description: "I have dedicated myself to the acquisition of immortal power, at any cost. [This makes a Dawn victory possible. I must be a true initiate of the Mansus; I'll need a rite to invoke the Forge of Days and begin the change.]",
-			slots: [{id:"Know", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
-			{id: "Power", required: {forge:1},description: "I will require sufficient of the furious incandescence of the Forge."}],
+			slots: [{id:"Know", actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
+			{id: "Power", actionId: "work", required: {forge:1},description: "I will require sufficient of the furious incandescence of the Forge."}],
 			
         },
 				 {
@@ -38,8 +38,8 @@
             aspects:
             {desire: 2},
             description: "I have dedicated myself to the immortal pursuit of sensation. [This makes a Feasting victory possible. I must be a true initiate of the Mansus; I'll need a rite to make me palatable to the Red Grail.]",
-			slots: [{id:"Know",required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
-			{id:"Power", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
+			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
+			{id:"Power", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
 			
         },
 						 {
@@ -48,8 +48,8 @@
             aspects:
             {desire: 2},
             description: "I have dedicated myself to the immortal pursuit of sensation. [This makes a Feasting victory possible. I must be a true initiate of the Mansus; I'll need a rite to make me palatable to the Red Grail.]",
-			slots: [{id:"Know",required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
-			{id:"Power", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
+			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
+			{id:"Power", actionId: "work", required: {grail:1},description: "I will require sufficient of the surging intensities of the Grail."}],
 			
         },
 		 {
@@ -58,8 +58,8 @@
             aspects:
             {desire: 2},
             description: "I have dedicated myself to the pursuit of higher understanding. I must see beneath the skin, whatever the cost. [This makes an Enlightenment victory possible. I must be a true initiate of the Mansus; I'll need a rite to allow the Watchman to see me.]",
-						slots: [{id:"Know",required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
-			{id:"Power", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
+						slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "Only a true adept, a Know, may take this step."},
+			{id:"Power", actionId: "work", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
         },
 		{
 		id:"ascensionpowerc",

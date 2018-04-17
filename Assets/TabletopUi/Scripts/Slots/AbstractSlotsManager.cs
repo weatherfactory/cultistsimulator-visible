@@ -15,13 +15,22 @@ using Assets.TabletopUi.Scripts.Services;
 
 public abstract class AbstractSlotsManager : MonoBehaviour {
 
-    protected SituationController controller;
-    protected List<RecipeSlot> allSlots;
+    protected SituationController situationController;
+    
+    protected List<RecipeSlot> validSlots;
 
     public bool AllowDrag { get { return true; } }
 
     public virtual void Initialise(SituationController sc) {
-        controller = sc;
+        situationController = sc;
+        var children = GetComponentsInChildren<RecipeSlot>();
+        var allSlots = new List<RecipeSlot>(children);
+         validSlots = new List<RecipeSlot>(allSlots.Where(rs => rs.Defunct == false && rs.GoverningSlotSpecification!=null));
+        //There is a case - on game load, perhaps? where windows have ongoing slots, but where the slot hasn't been initialised
+        //I saw it happen with the pleasantday recipe, but there may be others.
+        //the guard clause where we check for a null GoverningSlotSpecification fixes the issue and removes NullReferenceExceptions, but
+        //it is prolly only masking an underlying weirdness.
+        // - AK
 
         allSlots = new List<RecipeSlot>(GetComponentsInChildren<RecipeSlot>(true));
     }
@@ -38,7 +47,9 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         if (this.allSlots.Count != allSlots.Count)
             Debug.LogWarning("Both ALL SLOTS are not the same!");
         */
-        return allSlots;
+        //AK says: I found this comment above from you, Martin? idk if you were addressing the same issue I mention in the comments in Initialise()
+
+        return validSlots;
     }
 
     public IRecipeSlot GetSlotBySaveLocationInfoPath(string saveLocationInfoPath) {
@@ -56,7 +67,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         slot.onCardDropped += RespondToStackAdded;
         slot.onCardRemoved += RespondToStackRemoved;
 
-        allSlots.Add(slot);
+        validSlots.Add(slot);
 
         return slot;
     }
@@ -102,7 +113,7 @@ public abstract class AbstractSlotsManager : MonoBehaviour {
         if (slot == null)
             return;
 
-        allSlots.Remove(slot);
+        validSlots.Remove(slot);
 
         //if there are any child slots on this slot, recurse
         if (slot.childSlots.Count > 0) {

@@ -839,7 +839,7 @@
             description: "Auclair does not speak or eat.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "cat_p",
@@ -849,7 +849,7 @@
             description: "The woman who used to call herself 'Cat Caro' sleeps whenever she can.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "clifton_p",
@@ -859,7 +859,7 @@
             description: "Clifton roars and curses, but the bars hold, and the walls are thick.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 			
 				 {
@@ -870,7 +870,7 @@
             description: "Clovette is waiting for things to turn around.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 		 {
         id: "dorothy_p",
@@ -880,7 +880,7 @@
             description: "Dorothy's constant expostulations wear on the nerves.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 				 {
         id: "enid_p",
@@ -890,7 +890,7 @@
             description: "Enid doesn't speak any more.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 
 							 {
@@ -901,7 +901,7 @@
             description: "Elridge is not permitted a spoon, or a plate. It is probably unwise to permit him even the sharper vegetables..",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "laidlaw_p",
@@ -911,7 +911,7 @@
             description: "Laidlaw's door is bolted, not locked. We know better than that.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 						 {
         id: "leo_p",
@@ -921,7 +921,7 @@
             description: "Leo doesn't understand what he did wrong.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 				 {
         id: "neville_p",
@@ -931,7 +931,7 @@
             description: "Neville is weeping.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "porter_p",
@@ -941,7 +941,7 @@
             description: "Porter waits, still as a lizard.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "renira_p",
@@ -951,7 +951,7 @@
             description: "Renira always finds ways to pass the time.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 		
 								 {
@@ -962,7 +962,7 @@
             description: "Rose has not given up. I suspect her of hiding cutlery.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "slee_p",
@@ -972,7 +972,7 @@
             description: "Slee writes poetry on the walls, obsessively. If we don't provide ink, he uses what he can.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 						 {
         id: "tristan_p",
@@ -982,7 +982,7 @@
             description: "Tristan will make the best of his situation.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "saliba_p",
@@ -992,7 +992,7 @@
             description: "Saliba's anger burns like buried lava.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "sylvia_p",
@@ -1002,7 +1002,7 @@
             description: "We check on Sylvia every hour, just in case.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "valciane_p",
@@ -1012,7 +1012,7 @@
             description: "It is very important never to get within arm's reach of Valciane.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 
 				 {
@@ -1023,7 +1023,7 @@
             description: "Victor's eyes are wells of rage.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "violet_p",
@@ -1033,7 +1033,7 @@
             description: "Violet insists that she's fine. She's fine.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 							 {
         id: "ysabet_p",
@@ -1043,7 +1043,7 @@
             description: "If Ysabet is weeping, she does so with dry eyes.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 
 
@@ -1055,7 +1055,7 @@
             description: "This one rails weakly against their fate.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600
+			lifetime:600, decayTo: "corpse"
         },
 		]
 };

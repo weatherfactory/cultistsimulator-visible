@@ -189,6 +189,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
                 ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_ONGOINGSLOTELEMENTS);
+                
 
                 ImportSituationStoredElements(htSituationValues, situationController);
                 ImportOutputs(htSituationValues, situationController, tabletop);
@@ -267,6 +268,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportSlotContents(Hashtable htSituationValues,
          SituationController controller, TabletopTokenContainer tabletop,string slotTypeKey)
         {
+            //I think there's a problem here. There is an issue where we were creating ongoing slots with null GoverningSlotSpecifications for transient verbs
+            //I don't know if this happens all the time? some saves? Starting slots as well but it doesn't matter?
+            //(this showed up a problem where greedy slots were trying to grab from ongoing slots that didn't really exist, and threw a nullref error - I've added a guard there but the problem remains).
             if (htSituationValues.ContainsKey(slotTypeKey))
             {
                 var htElements = htSituationValues.GetHashtable(slotTypeKey);

@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
+using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
@@ -121,12 +122,12 @@ namespace Assets.CS.TabletopUI {
                 return _element.Aspects;
         }
 
-        public List<SlotSpecification> GetChildSlotSpecifications() {
-            return _element.ChildSlotSpecifications;
+        public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
+            return _element.ChildSlotSpecifications.Where(cs=>cs.ForVerb==forVerb || cs.ForVerb==string.Empty).ToList();
         }
 
-        public bool HasChildSlots() {
-            return _element.HasChildSlots();
+        public bool HasChildSlotsForVerb(string verb) {
+            return _element.HasChildSlotsForVerb(verb);
         }
 
 
@@ -157,7 +158,7 @@ namespace Assets.CS.TabletopUI {
                 //when first created, it should be in Limbo
             }
             catch (Exception e) {
-                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message);
+                NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
                 Retire(false);
             }
         }
@@ -487,10 +488,6 @@ namespace Assets.CS.TabletopUI {
                     // Then cancel our drag, which will return us to our new pos
                     DraggableToken.CancelDrag();
                 }
-
-                // TODO: This is a temp hack for testing purposes
-                if (Id == "contentment")
-                    ChangeTo("lunatic");
 
                 // If we DecayTo, then do that. Otherwise straight up retire the card
                 if (string.IsNullOrEmpty(_element.DecayTo))

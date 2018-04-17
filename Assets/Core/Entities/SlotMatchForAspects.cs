@@ -21,32 +21,32 @@ namespace Assets.Core.Entities
             MatchType = esm;
         }
 
-        public string GetProblemDescription()
+        public string GetProblemDescription(ICompendium compendium)
         {
             string description = "";
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
-                string problemAspects = ProblemAspectsDescription();
+                string problemAspects = ProblemAspectsDescription(compendium);
                 description += "A card may not go here if it has any of these aspects: " + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
-                string problemAspects = ProblemAspectsDescription();
-                description += "That card must have enough of these aspects: " + problemAspects;
+                string problemAspects = ProblemAspectsDescription(compendium);
+                description += "That card must have at least one of these aspects: " + problemAspects;
             }
 
             return description;
         }
 
-        public  string ProblemAspectsDescription()
+        public  string ProblemAspectsDescription(ICompendium compendium)
         {
             string problemAspects = "";
             foreach (var problemAspectId in ProblemAspectIds)
             {
                 if (problemAspects != "")
-                    problemAspects += " or ";
-                problemAspects += problemAspectId;
+                    problemAspects += ", or ";
+                problemAspects += compendium.GetElementById(problemAspectId).Label;
             }
             return problemAspects;
         }

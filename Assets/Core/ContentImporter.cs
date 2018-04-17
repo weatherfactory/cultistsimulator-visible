@@ -19,14 +19,6 @@ public class ContentImporter
     private const string CONST_VERBS = "verbs";
     private const string CONST_DECKS = "decks";
     private const string CONST_LEGACIES = "legacies";
-    private const string CONST_ID = "id";
-    private const string CONST_LABEL = "label";
-    private const string CONST_LIFETIME = "lifetime";
-    private const string CONST_DESCRIPTION = "description";
-    private const string CONST_ANIMFRAMES = "animFrames";
-    private const string CONST_ISASPECT = "isAspect";
-    private const string CONST_NOARTNEEDED = "noartneeded";
-    private const string CONST_UNIQUE = "unique";
     public ICompendium _compendium { get; private set; }
 
 
@@ -69,7 +61,10 @@ public class ContentImporter
                 SlotSpecification slotSpecification = new SlotSpecification(slotId);
                 try
                 {
-                    if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
+                    if (htThisSlot[NoonConstants.KLABEL] != null)
+                        slotSpecification.Label = htThisSlot[NoonConstants.KLABEL].ToString();
+
+                if (htThisSlot[NoonConstants.KDESCRIPTION] != null)
                         slotSpecification.Description = htThisSlot[NoonConstants.KDESCRIPTION].ToString();
 
                     if ((string) htThisSlot[NoonConstants.KGREEDY] == "true")
@@ -78,7 +73,10 @@ public class ContentImporter
                     if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
                         slotSpecification.Consumes = true;
 
-                    Hashtable htRequired = htThisSlot["required"] as Hashtable;
+                    if (htThisSlot[NoonConstants.KACTIONID] != null)
+                        slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
+
+                Hashtable htRequired = htThisSlot["required"] as Hashtable;
                     if (htRequired != null)
                     {
                         foreach (string rk in htRequired.Keys)
@@ -137,10 +135,10 @@ public class ContentImporter
             Hashtable htXTriggers = htElement.GetHashtable(NoonConstants.KXTRIGGERS);
 
 
-            Element element = new Element(htElement.GetString(CONST_ID),
-                htElement.GetString(CONST_LABEL),
-                htElement.GetString(CONST_DESCRIPTION),
-                htElement.GetInt(CONST_ANIMFRAMES));
+            Element element = new Element(htElement.GetString(NoonConstants.KID),
+                htElement.GetString(NoonConstants.KLABEL),
+                htElement.GetString(NoonConstants.KDESCRIPTION),
+                htElement.GetInt(NoonConstants.KANIMFRAMES));
 
             if(element.Label==null)
                 LogProblem("No label for element " + element.Id);
@@ -150,20 +148,22 @@ public class ContentImporter
             try
             {
 
-                if (htElement.ContainsKey(CONST_LIFETIME))
-                    element.Lifetime = float.Parse(htElement[CONST_LIFETIME].ToString());
+                if (htElement.ContainsKey(NoonConstants.KLIFETIME))
+                    element.Lifetime = float.Parse(htElement[NoonConstants.KLIFETIME].ToString());
+                if (htElement.ContainsKey(NoonConstants.KDECAYTO))
+                    element.DecayTo = htElement.GetString(NoonConstants.KDECAYTO);
 
-                if (htElement.GetString(CONST_ISASPECT) == "true")
+                if (htElement.GetString(NoonConstants.KISASPECT) == "true")
                     element.IsAspect = true;
                 else
                     element.IsAspect = false;
 
-                if (htElement.GetString(CONST_NOARTNEEDED) == "true")
+                if (htElement.GetString(NoonConstants.KNOARTNEEDED) == "true")
                     element.NoArtNeeded = true;
                 else
                     element.NoArtNeeded = false;
 
-                if (htElement.GetString(CONST_UNIQUE) == "true")
+                if (htElement.GetString(NoonConstants.KUNIQUE) == "true")
                     element.Unique = true;
                 else
                     element.Unique = false;

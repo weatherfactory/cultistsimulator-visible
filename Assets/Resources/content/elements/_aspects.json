@@ -44,6 +44,18 @@
 			description: "The laws of civilisation are younger than the Laws of the Hours, but they, too, sometimes require a sacrifice. This one is an agent of the law.",
             isAspect: true
         },
+				        {
+            id: "patron",
+            label: "Patron",
+			description: "A figure of note in the circles where I move.",
+            isAspect: true
+        },
+				        {
+            id: "annoyance",
+            label: "Annoyance",
+			description: "Here is a thorn in my side. I may yet find a way to remove it.",
+            isAspect: true
+        },
         {
             id: "grail",
             label: "Grail",
@@ -115,6 +127,12 @@
             label: "Evidence Level",
             isAspect: true,
 			description: "Some forms of proof are stronger than others."
+        },
+						 {
+            id: "healthskill",
+            label: "Strength",
+            isAspect: true,
+			description: "I am strong by day as well as by night.[This may allow you to perform better as a manual labourer.]"
         },
 		{id: "desire",
 		label: "Desire",
@@ -482,6 +500,14 @@
 			comments: "Recipe aspect; runs when an situation fails to convert situation control elements back to their originals.",
 			noartneeded: true
         },
+					 {
+            id: "decline",
+            label: "Decline",
+			description: "Something is Ending",
+            isAspect: true,
+			comments: "Recipe aspect; runs when we want to decay something like an investment.",
+			noartneeded: true
+        },
 				 {
             id: "restorehealth",
             label: "Restore Health",
@@ -528,6 +554,22 @@
             id: "killmortal",
             label: "Kill Mortal",
 			description: "Mortals will be replaced by corpses",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+								 {
+            id: "endannoyance",
+            label: "End Annoyance",
+			description: "Annoyances like difficult bosses will be resolved.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+										 {
+            id: "careeradvancement",
+            label: "Career Advancement",
+			description: "A promotion or skill increase",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true

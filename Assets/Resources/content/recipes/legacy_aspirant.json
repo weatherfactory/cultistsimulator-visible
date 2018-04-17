@@ -59,9 +59,9 @@ id: "studybequestreason",
 label: "Examine the Bequest, employing Reason",
 actionId: "study",
 requirements: {bequestintro:1,reason:1},
-effects: {bequestintro: -1,ascensionenlightenmenta: 1, mapbookdealer: 1,textbookreason:1,contactintro:1},
+effects: {bequestintro: -1,ascensionenlightenmenta: 1, mapbookdealer: 1,fragmentlantern:1,contactintro:1},
 startdescription: "I'll examine each item with meticulous care. ",
-description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. They knew secrets beneath time and the skin of the world. A new curiosity burns in me.\n
+description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. They knew secrets beneath time and the skin of the world. <b>A new curiosity burns in me</b>.\n
 There is a note here - directions to a book shop that does not advertise its wares -\n
 [<b>Explore</b> is unlocked.]",
 warmup: 30,
@@ -72,9 +72,9 @@ id: "studybequestpassion",
 label: "Examine my Bequest, employing Passion",
 actionId: "study",
 requirements: {bequestintro:1,passion:1},
-effects: {bequestintro: -1,ascensionpowera: 1, mapbookdealer:1,textbookpassion:1,contactintro:1},
+effects: {bequestintro: -1,ascensionpowera: 1, mapbookdealer:1,fragmentforge:1,contactintro:1},
 startdescription: "I'll read, theorise, pace, sketch, clutch at my hair in wonder, rise in elation, collapse in despair.",
-description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. I sense here a power that generals and kings would envy. A new desire burns in me.\n
+description: "My correspondent describes my dreams exactly! They use names that are instantly familiar - the House, the Wood, the Hours, the Glory. I sense here a power that generals and kings would envy. <b>A new desire burns in me.</b>\n
 There is a note here - directions to a book shop that does not advertise its wares -\n",
 warmup: 30,
 craftable: true

@@ -8,7 +8,7 @@
 	},
 		{id: "favour",
 	label: "A Favour from Authority",
-	description: "FNORD",
+	description: "FNORD [This text is not available in the development build]",
 	aspects:{}
 	lifetime: 300
 	},
@@ -44,39 +44,6 @@
             description: "Initiates of the hidden world use spintriae to pay for services. They can easily be sold for more traditional funds. Silver spintriae are more valuable, and usually display scenes of debauchery on their reverse side."
         },
 
-		     {
-        id: "gloverandgloverjuniorjob",
-            label: "Junior Position at Glover & Glover",
-            aspects:{},
-            description: "My intellect should be put to better use! But the pay is better than labourer's work."
-        },
-				     {
-        id: "gloverandgloverjob",
-            label: "Position at Glover & Glover",
-            aspects:{},
-			slots: [{id:"Diligence",
-					required: {reason: 1},
-					description: "Extra effort. It might help, if I'm very lucky."
-					}],
-            description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk."
-        },
-						     {
-        id: "gloverandgloverseniorjob",
-            label: "Senior Position at Glover & Glover",
-            aspects:{},
-			slots: [{id:"Diligence":
-					required: {reason: 1},
-					description: "Extra effort. I don't know why I would bother."
-					},
-			{id:"Devotion":required: {reason: 1},
-					description: "Extra effort. I don't know why I would bother."
-				}],
-            description: "I suppose, theoretically, I could rise higher, if someone died."
-        },
-			{id: "institutephysicianjob",
-	description: "Long hours; but good pay.",
-	label: "A Position at the Institute"
-},
 		{
         id: "mapbookdealer",
             label: "Directions to Morland's",

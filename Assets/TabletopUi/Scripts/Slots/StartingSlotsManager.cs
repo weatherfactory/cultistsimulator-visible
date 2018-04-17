@@ -34,33 +34,37 @@ namespace Assets.TabletopUi.SlotsContainers {
         }
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
-            // startingSlots updated may resize window
-            controller.StartingSlotsUpdated();
 
-            if (stack.HasChildSlots())
+            // startingSlots updated may resize window
+            situationController.StartingSlotsUpdated();
+
+            if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(situationController.GetTokenId()))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
+
         }
 
         protected void AddSlotsForStack(IElementStack stack, RecipeSlot parentSlot) {
-            RecipeSlot slot;
 
-            foreach (var childSlotSpecification in stack.GetChildSlotSpecifications()) {
-                slot = BuildSlot("childslot of " + stack.Id, childSlotSpecification, parentSlot);
+            foreach (var childSlotSpecification in stack.GetChildSlotSpecificationsForVerb(situationController.GetTokenId()))
+            {
+                var slot = BuildSlot("childslot of " + stack.Id, childSlotSpecification, parentSlot);
                 parentSlot.childSlots.Add(slot);
             }
         }
 
         public override void RespondToStackRemoved(IElementStack stack, Context context) {
             // startingSlots updated may resize window
-            controller.StartingSlotsUpdated();
+            situationController.StartingSlotsUpdated();
 
             // Only update the slots if we're doing this manually, otherwise don't
             if (context.IsManualAction())
                 RemoveAnyChildSlotsWithEmptyParent(context);
 
             ArrangeSlots();
+            situationController.StartingSlotsUpdated();
+
         }
 
         public void RemoveAnyChildSlotsWithEmptyParent(Context context) {
@@ -77,7 +81,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 }
             }
 
-            controller.StartingSlotsUpdated();
+            situationController.StartingSlotsUpdated();
         }
 
         protected override RecipeSlot BuildSlot(string slotName, SlotSpecification slotSpecification, RecipeSlot parentSlot) {
@@ -92,7 +96,7 @@ namespace Assets.TabletopUi.SlotsContainers {
             if (slot.Defunct)
                 return;
 
-            allSlots.Remove(slot);
+            validSlots.Remove(slot);
 
             // This is all copy & paste from the parent class except for the last line
             if (slot.childSlots.Count > 0) {

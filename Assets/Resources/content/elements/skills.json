@@ -1,0 +1,42 @@
+{"elements":
+    [
+	{id: "skillhealtha",
+	label: "Skill: a Stronger Physique",
+	aspects: {healthskill:1},
+	description: "I have benefited from exercise. [Use this with four Vitality to gain more Health.]",
+	slots:[{id:"V1",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"},
+	{id:"V2",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"},
+	{id:"V3",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"},
+	{id:"V4",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"}
+	],
+	xtriggers:{careeradvancement:skillhealthb}
+	},
+		{id: "skillhealthb",
+	label: "Skill: a Hardened Physique",
+	description: "I have grown strong as a smith or a soldier.",
+	xtriggers:{careeradvancement:skillhealthc},
+	aspects: {healthskill:2},
+	slots:[{id:"V1",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger yet?"},
+	{id:"V2",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger yet?"},
+	{id:"V3",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger yet?"},
+	{id:"V4",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger yet?"},
+	{id:"V5",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger yet?"},
+	{id:"V6",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger yet?"}
+	],
+	},	
+			{id: "skillhealthc",
+	label: "Skill: a Steely Physique",
+	description: "There are many things now that I could crush in my fists.",
+	aspects: {healthskill:3},
+	slots:[{id:"V1",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V2",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V3",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V4",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V5",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V6",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V7",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	{id:"V8",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
+	],
+	},	
+]
+};

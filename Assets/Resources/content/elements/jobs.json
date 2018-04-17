@@ -1,0 +1,140 @@
+{elements:[
+		     {
+        id: "gloverandgloverjuniorjob",
+            label: "Junior Position at Glover & Glover",
+            aspects:{},
+            description: "My intellect should be put to better use! But the pay is better than labourer's work.",
+			xtriggers: {careeradvancement:gloverandglover_difficultbossa_job}
+        },
+		
+								{
+		        id: "gloverandglover_difficultbossa_job",
+            label: "A Position at Glover and Glover",
+			
+            aspects:
+            {annoyance:1},
+            description: "A position in Records under Mr Alden. I earn a little more; I stay a little later. Mr Alden always watches me closely.",
+xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvancement:gloverandgloverseniorjob}
+        },
+						     {
+        id: "gloverandglover_difficultbossa_gone_job",
+            label: "Position at Glover & Glover",
+            aspects:{},
+            description: "The man called Alden is gone. I may find matters easier when I return to work.",
+        },
+				     {
+        id: "gloverandgloverjob",
+            label: "Position at Glover & Glover",
+            aspects:{},
+			slots: [{id:"Diligence",
+			actionId:"work",
+					required: {reason: 1},
+					description: "Extra effort. It might help, if I'm very lucky."
+					}],
+            description: "I earn a little more; I stay a little later. Envy glints in the eye of the junior clerk who occupies my old desk.",
+			xtriggers: {careeradvancement:gloverandgloverseniorjob}
+        },
+		{
+        id: "gloverandgloverseniorjob",
+            label: "Senior Position at Glover & Glover",
+            aspects:{annoyance:1},
+			slots: [{id:"Diligence",
+					required: {reason: 1},
+					actionId:"work",
+					description: "Extra effort."
+					},
+			{id:"Devotion",
+			required: {reason: 1},
+			actionId:"work",
+					description: "Extra effort."
+				}],
+            description: "I suppose, theoretically, I could rise higher, if someone died.",
+			xtriggers: {endannoyance:gloverandgloverseniorjob_youngerglovergone}
+        },
+				{
+        id: "gloverandgloverseniorjob_youngerglovergone",
+            label: "Senior Position at Glover & Glover",
+			slots: [{id:"Diligence",
+					required: {reason: 1},
+					actionId:"work",
+					description: "Extra effort."
+					},
+			{id:"Devotion",
+			required: {reason: 1},
+			actionId:"work",
+					description: "Extra effort."
+				}],
+            description: "With the younger Glover gone, I might rise even higher.",
+			xtriggers: {careeradvancement:gloverandglovertopjob}
+        },
+		{
+        id: "gloverandglovertopjob",
+            label: "Board Seat at Glover & Glover",
+            description: "The younger Glover's disappearance left a board seat empty. I now occupy it."
+        },
+				{
+        id: "gloverandglovertopjob_tainted",
+            label: "Board Seat at Glover & Glover",
+            description: "Rumours of my esoteric interests have reached the ears of the elder Glover. This has left my position uncertain."
+        },
+		
+			{id: "institutephysicianjob",
+	description: "Long hours; but good pay.",
+	label: "A Position at the Institute"
+},
+
+			{id: "investmentsjobc",
+	label: "A Generous Private Income",
+	description: "I am well provided for.",
+	aspects: {benign:1},
+		xtriggers: {decline: investmentsjobb}
+	
+},
+			{id: "investmentsjobb",
+	label: "A Substantial Private Income",
+		description: "Enough of an income to live in comfort."
+	aspects: {benign:1},
+	xtriggers: {decline: investmentsjoba}
+	
+},
+			{id: "investmentsjoba",
+	label: "A Modest Private Income",
+	description: "My investments provide more than enough to live on.", 
+	aspects: {benign:1},
+	xtriggers: {decline: jumble}
+	
+},
+
+
+		{id: "mediumjob",
+	label: "A Reputation as a Medium"
+	description: ""
+	
+},
+
+		{id: "auctioneerjob",
+	label: "A Position at Oriflamme's Auction House"
+	description: ""
+	
+},
+
+		{id: "detectivejob",
+	label: "A Position as a Police Detective"
+	description: ""
+	
+},
+		{id: "dancerjob",
+	label: "Dancing at the Ecdysis Club"
+	description: ""
+	
+		{id: "priestjob",
+	label: "Priestly Stipend"
+	description: ""
+	
+},
+
+
+
+
+
+]};

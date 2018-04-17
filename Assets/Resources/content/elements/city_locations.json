@@ -6,23 +6,27 @@
             aspects:{location: 1},
 			slots: [{id:"Cost",
 					required: {funds: 1},
-					consumes: true
+					consumes: true,
+					actionId: "explore"
 					}
 				],
-            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books."
+            description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books.",
+			unique:true
         },
 				{
         id: "locationauctionhouse",
             label: "Oriflamme's Auction House",
             aspects:{location: 1},
-            description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire."
+            description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire.",
+			unique:true
         },
 						{
         id: "locationcabaret",
             label: "The Ecdysis Club",
             aspects:{location: 1,moth:1,grail:1},
             description: "A cabaret with an occult reputation.",
-			slots:[{id:"Entry",required:{funds:1},consumes:true}]
+			slots:[{id:"Entry", actionId: "explore", required:{funds:1},consumes:true}],
+			unique:true
         },
 			{
         id: "generichq",
@@ -31,6 +35,7 @@
 			description: "Our business is private. We could use somewhere more secret. [That's not available in this build, though.]",
 			slots: [{id:"Cupboard",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
+					actionId: "talk",
 					required: {follower: 1},
 				}],
         unique:true

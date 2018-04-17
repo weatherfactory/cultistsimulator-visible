@@ -84,9 +84,12 @@ public class Element
         Induces=new List<LinkedRecipeDetails>();
     }
 
-    public Boolean HasChildSlots()
+    public Boolean HasChildSlotsForVerb(string forVerb)
     {
-        return ChildSlotSpecifications.Count > 0;
+        return ChildSlotSpecifications.Any(cs => cs.ForVerb == forVerb || cs.ForVerb == String.Empty);
+
+
+
     }
 }
 

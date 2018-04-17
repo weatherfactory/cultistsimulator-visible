@@ -23,8 +23,8 @@ namespace Assets.Core.Interfaces
         void SetQuantity(int quantity);
         void Populate(string elementId, int quantity,Source source);
         void SetStackManager(IElementStacksManager manager);
-        List<SlotSpecification> GetChildSlotSpecifications();
-        bool HasChildSlots();
+        List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb);
+        bool HasChildSlotsForVerb(string forVerb);
         IElementStack SplitAllButNCardsToNewStack(int n, Context context);
         bool AllowsMerge();
         bool Retire(bool withVfx);

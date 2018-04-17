@@ -4,7 +4,7 @@
         id: "aladim",
             label: "Dr Ibn al-Adim",
             aspects:
-            {tutoraramaic:1},
+            {tutoraramaic:1,patron:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
 unique:true,
 			xtriggers: {commissionfulfilled: aladimready,killmortal:rumour,derangemortal:rumour}
@@ -13,7 +13,7 @@ unique:true,
         id: "aladimready",
             label: "Dr Ibn al-Adim",
             aspects:
-            {tutoraramaic:1},
+            {tutoraramaic:1,patron:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He could use your assistance.",
 			unique:true,
 			xtriggers: {commissiongiven: aladim,killmortal:rumour,derangemortal:rumour}
@@ -22,7 +22,7 @@ unique:true,
         id: "bechet",
             label: "Mme Bechet",
             aspects:
-            {mortal:1,tutorgreek:1},
+            {mortal:1,patron:1,tutorgreek:1},
             description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She has offered you a commission.",
 unique:true,
 			xtriggers: {commissionfulfilled: bechetready,killmortal:corpse,derangemortal:lunatic}
@@ -31,7 +31,7 @@ unique:true,
         id: "bechetready",
             label: "Mme Bechet",
             aspects:
-            {mortal: 1,tutorgreek:1},
+            {mortal:1,patron:1,tutorgreek:1},
             description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She could use your assistance.",
 unique:true,
 			xtriggers: {commissiongiven: bechet,killmortal:corpse,derangemortal:lunatic}
@@ -39,7 +39,7 @@ unique:true,
         id: "jannings",
             label: "Count Jannings",
             aspects:
-            {mortal: 1,tutorlatin:1},
+            {mortal:1,patron:1,tutorlatin:1},
             description: "Count Gottlob Jannings represents a Continentalt confraternity of physicians and duellists. He has offered you a commission",
 unique:true,
 			xtriggers: {commissionfulfilled: janningsready,killmortal:corpse,derangemortal:lunatic}
@@ -48,7 +48,7 @@ unique:true,
         id: "janningsready",
             label: "Count Jannings",
             aspects:
-            {mortal: 1,tutorlatin:1},
+            {mortal:1,patron:1,tutorlatin:1},
             description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He could use your assistance.",
 unique:true,
 			xtriggers: {commissiongiven: jannings,killmortal:corpse,derangemortal:lunatic}
@@ -57,7 +57,7 @@ unique:true,
         id: "poppyready",
             label: "Poppy Lascelles",
             aspects:
-            {mortal: 1},
+            {mortal:1,patron:1},
             description: "An amiable woman of property. She'd like to talk to you.",
 unique:true,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -66,7 +66,7 @@ unique:true,
         id: "poppy",
             label: "Poppy Lascelles",
             aspects:
-            {mortal: 1},
+            {mortal:1,patron:1},
             description: "An amiable woman of property."
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic}

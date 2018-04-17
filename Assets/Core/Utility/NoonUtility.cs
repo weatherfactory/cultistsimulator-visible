@@ -53,6 +53,14 @@ namespace Noon
         public const string KCHARACTERFIRSTNAME= "firstname";
         public const string KCHARACTERLASTNAME = "lastname";
 
+        public const string KLIFETIME = "lifetime";
+        public const string KDECAYTO = "decayTo";
+        public const string KANIMFRAMES = "animFrames";
+        public const string KISASPECT = "isAspect";
+        public const string KNOARTNEEDED = "noartneeded";
+        public const string KUNIQUE = "unique";
+
+
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
 
         public const string DECK_PREFIX = "deck:";
@@ -62,9 +70,9 @@ namespace Noon
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
-        public static int CurrentVerbosity =15;
+        public static int CurrentVerbosity =5;
 
-        public static VersionNumber VersionNumber = new VersionNumber("2018.4.a.4");
+        public static VersionNumber VersionNumber = new VersionNumber("2018.4.g.1");
 
         public static void Log(string message,int verbosityNeeded=0)
         {

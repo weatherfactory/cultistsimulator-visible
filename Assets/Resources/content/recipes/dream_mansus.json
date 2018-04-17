@@ -6,15 +6,15 @@
 	label: "The Moonlit Road",
 	actionId: "dream",
 	requirements: {passion: 1},
-	slots: [{id:"Bedtime",description:"I might engage in an occult practice before I sleep.",required: {lore:1,waywood:1}}],
-	effects: {contentment: 1},
-	startdescription: "The road crests the hill-top, and the air is silver-bright -",
+	slots: [{id:"Lore",description:"If I engage in an occult practice before I sleep, I might find the way to deeper dream.",required: {lore:1,waywood:1}}],
+	startdescription: "I know this dream. A road crests a hill-top, and the air is silver-bright -",
 	description: "Rumpled fields, the wink of a river. A tingling chill.",
 	alternativerecipes: [
 	{id:"dreamreachwoodknock",chance:100},
 	{id:"dreamreachwoodlantern",chance:100},
 	{id:"dreamreachwoodmoth",chance:100},
 	{id:"dreamenterwood",chance:100}],
+	linked: [{id:"dream_router",chance:100}],
 	warmup: 60,
 	craftable: true,
 	burnimage: moon

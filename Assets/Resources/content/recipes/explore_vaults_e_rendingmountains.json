@@ -33,7 +33,7 @@
 	id: "explore_vaultrendingmountains3_setup",
 	label: "Beginning an Expedition: the Eye of Ikirmawi",
 	actionId: "explore",
-	requirements:{vaultrendingmountains4:1},
+	requirements:{vaultrendingmountains3:1},
 	effects: {peril_mountains:1,seal_wardeddoor:1,curse_visions:1},
 	slots:[{id:"More",required: {follower:1,funds:1}}],
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",

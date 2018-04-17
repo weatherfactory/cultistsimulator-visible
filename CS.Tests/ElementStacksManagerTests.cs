@@ -245,12 +245,12 @@ namespace Assets.Editor.Tests
             Quantity = quantity;
         }
 
-        public List<SlotSpecification> GetChildSlotSpecifications()
+        public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb)
         {
             throw new NotImplementedException();
         }
 
-        public bool HasChildSlots()
+        public bool HasChildSlotsForVerb(string forVerb)
         {
             throw new NotImplementedException();
         }
