@@ -452,13 +452,16 @@ namespace Assets.CS.TabletopUI {
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
             if (CanInteractWithTokenDroppedOn(tokenDroppedOn)) {
+                // This will put it into the ongoing or the starting slot, token determines
+                tokenDroppedOn.SituationController.PushDraggedStackIntoToken(this);
+
+                // Then we open the situation (cause this closes other situations and this may return the stack we try to move
+                // back onto the tabletop - if it was in its starting slots. - Martin
                 if (!tokenDroppedOn.SituationController.IsOpen)
                     tokenDroppedOn.OpenSituation();
                 else
                     tokenDroppedOn.DisplayAsOpen(); // This will turn off any uneeded hover effects
 
-                // This will put it into the ongoing or the starting slot, token determines
-                tokenDroppedOn.SituationController.PushDraggedStackIntoToken(this);
                 return;
             }
 
