@@ -61,10 +61,7 @@
             label: "Grail",
 			description: "Hunger, lust, the drowning waters. [The principle of the Grail honours both the birth and the feast.]",
         isAspect: true,
-            triggers:
-            {
-                grailhunger: 10
-            }
+			induces:[{id:"grailinduction",chance:5}]
         },
         {
             id: "heart",
