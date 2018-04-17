@@ -54,6 +54,17 @@ slots: [{id:"Reputation",required:{funds:1,reputation:1},greedy:true}],
         warmup: 1,
         craftable: false,
 		portaleffect: "wood"
+	},	{
+        id: "_mansustest2",
+        label: "Test Mansus effect for door",
+        actionId: "fictitiousverb2",
+        requirements: {},
+        effects: {contentment:1},
+		startdescription: "Mansus entry will occur on completion",
+        description: "Mansus entry occurs as this appears",
+        warmup: 1,
+        craftable: false,
+		portaleffect: "whitedoor"
 	},
 	{
         id: "_dream",
