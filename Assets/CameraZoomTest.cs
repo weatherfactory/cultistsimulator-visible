@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Camera))]
 public class CameraZoomTest : MonoBehaviour {
 
     public float zoomScaleIn = 2f; // 1 == 100% = pixel perfect zoom
@@ -19,7 +20,7 @@ public class CameraZoomTest : MonoBehaviour {
     private const float zoomTolerance = 0.00001f; // snap when this close to target
 
     public bool enablePlayerZoom = true;
-    Camera camera;
+    Camera zoomCam;
 
     protected void Start() {
         Init();
@@ -27,7 +28,7 @@ public class CameraZoomTest : MonoBehaviour {
     
     private void Init() {
         enabled = true;
-        camera = GetComponent<Camera>();
+        zoomCam = GetComponent<Camera>();
         SetScale(currentZoom);
     }
 
@@ -68,7 +69,7 @@ public class CameraZoomTest : MonoBehaviour {
     // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
     void SetScale(float zoom) {
-        camera.fieldOfView = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
+        zoomCam.fieldOfView = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
     }
 
 }
