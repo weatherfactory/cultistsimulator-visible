@@ -28,7 +28,7 @@ namespace Assets.CS.TabletopUI {
         bool lastGlowState;
         bool isActive;
 
-        Color dropBackgroundColor = new Color(1.25f, 1.25f, 1.25f);
+        const float glowDefaultFactor = 0.65f;
 
         public override bool AllowDrag { get { return false; } }
         public override bool AllowStackMerge { get { return false; } }
@@ -65,6 +65,8 @@ namespace Assets.CS.TabletopUI {
             isActive = active;
             activeGlow.gameObject.SetActive(active);
             doorColor.color = defaultBackgroundColor;
+            activeGlow.color = defaultBackgroundColor;
+            ShowGlow(false, true);
         }
 
         public void SetGlowColor(UIStyle.TokenGlowColor colorType) {
@@ -79,11 +81,21 @@ namespace Assets.CS.TabletopUI {
             if (!isActive)
                 glowState = false;
 
+            if (glowState) {
+                slotGlow.SetColor(defaultBackgroundColor * glowDefaultFactor);
+                slotGlow.Show(instant);
+            }
+            else { 
+                slotGlow.Hide(instant);
+            }
+
+            // Setting initial slot hover color
+            /*
             if (instant)
                 doorColor.canvasRenderer.SetColor( glowState ? dropBackgroundColor : Color.white );
             else
                 doorColor.CrossFadeColor(glowState ? dropBackgroundColor : Color.white, 0.2f, false, false);
-
+            */
             lastGlowState = glowState;
         }
 
@@ -97,9 +109,15 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             if (show)
+                slotGlow.SetColor(UIStyle.hoverWhite);
+            else
+                slotGlow.SetColor(defaultBackgroundColor * glowDefaultFactor);
+            /*
+            if (show)
                 slotGlow.Show();
             else
                 slotGlow.Hide();
+                */
         }
 
         // IOnDrop Implementation
