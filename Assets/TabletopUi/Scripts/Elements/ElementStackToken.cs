@@ -457,7 +457,8 @@ namespace Assets.CS.TabletopUI {
                 else
                     tokenDroppedOn.DisplayAsOpen(); // This will turn off any uneeded hover effects
 
-                tokenDroppedOn.SituationController.PushDraggedStackIntoStartingSlots(this);
+                // This will put it into the ongoing or the starting slot, token determines
+                tokenDroppedOn.SituationController.PushDraggedStackIntoToken(this);
                 return;
             }
 

@@ -369,37 +369,67 @@ namespace Assets.TabletopUi {
         }
 
         public bool CanTakeDroppedToken(IElementStack stack) {
-            if (SituationClock.State != SituationState.Unstarted)
-                return false;
-
-            return HasEmptyStartingSlots();
-        }
-
-        bool HasEmptyStartingSlots() {
-            var win = situationWindow as SituationWindow;
-            var startSlots = win.GetStartingSlots();
-
-            for (int i = 0; i < startSlots.Count; i++) {
-                if (startSlots[i].GetElementStackInSlot() != null)
-                    return false;
-            }
-
-            return true;
-        }
-
-        public bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
-            var win = situationWindow as SituationWindow;
-            var startSlots = win.GetStartingSlots();
-
-            for (int i = 0; i < startSlots.Count; i++) {
-                if (startSlots[i].GetElementStackInSlot() != null)
-                    continue; // occupied slot? Go on
-
-                startSlots[i].OnDrop(null); // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
-                return true;
-            }
+            if (SituationClock.State == SituationState.Unstarted)
+                return HasEmptyStartingSlot();
+            if (SituationClock.State == SituationState.Ongoing) 
+                return HasEmptyOngoingSlot();
 
             return false;
+        }
+
+        bool HasEmptyStartingSlot() {
+            var win = situationWindow as SituationWindow;
+            var startSlots = win.GetStartingSlots();
+
+            if (startSlots.Count == 0)
+                return false;
+
+            return startSlots[0].GetElementStackInSlot() == null;
+        }
+
+        bool HasEmptyOngoingSlot() {
+            var ongoingSlots = situationWindow.GetOngoingSlots();
+
+            if (ongoingSlots.Count == 0)
+                return false;
+
+            return ongoingSlots[0].IsGreedy == false && ongoingSlots[0].GetElementStackInSlot() == null;
+        }
+
+        public bool PushDraggedStackIntoToken(IElementStack stack) {
+            if (SituationClock.State == SituationState.Unstarted)
+                return PushDraggedStackIntoStartingSlots(stack);
+            if (SituationClock.State == SituationState.Ongoing)
+                return PushDraggedStackIntoOngoingSlot(stack);
+
+            return false;
+        }
+
+        bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
+            var win = situationWindow as SituationWindow;
+            var startSlots = win.GetStartingSlots();
+
+            if (startSlots.Count == 0)
+                return false;
+
+            if (startSlots[0].GetElementStackInSlot() != null)
+                return false;
+
+            startSlots[0].OnDrop(null); // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
+                return true;
+        }
+
+        bool PushDraggedStackIntoOngoingSlot(IElementStack stack) {
+            var ongoingSlots = situationWindow.GetOngoingSlots();
+
+            if (ongoingSlots.Count == 0 )
+                return false;
+
+            if (ongoingSlots[0].GetElementStackInSlot() != null || ongoingSlots[0].IsGreedy)
+                return false;
+
+            ongoingSlots[0].OnDrop(null); // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
+            return true;
         }
 
         public void StartingSlotsUpdated() {
