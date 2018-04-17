@@ -383,9 +383,10 @@ namespace Assets.TabletopUi {
 
             if (startSlots.Count == 0)
                 return false;
-
-            if (startSlots[0].GetElementStackInSlot() != null)
-                return false;
+            
+            // Alexis want's token-drop actions to be able to replace existing tokens
+            //if (startSlots[0].GetElementStackInSlot() != null)
+            //    return false;
             
             return true;
         }
@@ -396,8 +397,9 @@ namespace Assets.TabletopUi {
             if (ongoingSlots.Count == 0)
                 return false;
             
-            if (ongoingSlots[0].GetElementStackInSlot() != null)
-                return false;
+            // Alexis want's token-drop actions to be able to replace existing tokens
+            //if (ongoingSlots[0].GetElementStackInSlot() != null)
+            //    return false;
             
             return ongoingSlots[0].IsGreedy == false && ongoingSlots[0].GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
@@ -412,24 +414,36 @@ namespace Assets.TabletopUi {
         }
 
         bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
-            var win = situationWindow as SituationWindow;
-            var startSlots = win.GetStartingSlots();
-
             if (HasEmptyStartingSlot() == false)
                 return false;
 
-            startSlots[0].OnDrop(null); 
-            return true;
+            var win = situationWindow as SituationWindow;
+            var startSlots = win.GetStartingSlots();
+
+            return PushDraggedStackIntoSlot(stack, startSlots[0]);
         }
 
         bool PushDraggedStackIntoOngoingSlot(IElementStack stack) {
-            var ongoingSlots = situationWindow.GetOngoingSlots();
-
             if (HasEmptyOngoingSlot(stack) == false)
                 return false;
 
+            var ongoingSlots = situationWindow.GetOngoingSlots();
+
+            return PushDraggedStackIntoSlot(stack, ongoingSlots[0]);
+        }
+
+        bool PushDraggedStackIntoSlot(IElementStack stack, RecipeSlot slot) {
+            if (stack == null || slot == null)
+                return false;
+
+            var targetElement = slot.GetElementStackInSlot() as ElementStackToken;
+
+            if (targetElement != null)
+                targetElement.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+
             // On drop pushes the currently dragged stack into this slot, with all the movement and parenting
-            ongoingSlots[0].OnDrop(null); 
+            slot.OnDrop(null);
+
             return true;
         }
 
