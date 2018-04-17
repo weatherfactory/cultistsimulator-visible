@@ -323,6 +323,7 @@ namespace Assets.CS.TabletopUI {
         public virtual void DisplayAtTableLevel() {
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
+            RectTransform.localScale = Vector3.one;
             IsInAir = false;
         }
 
