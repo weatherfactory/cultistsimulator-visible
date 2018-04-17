@@ -504,7 +504,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224304412388731658}
-  - component: {fileID: 223377834024246592}
   m_Layer: 5
   m_Name: CountdownCanvas
   m_TagString: Untagged
@@ -718,7 +717,7 @@ MonoBehaviour:
   artwork: {fileID: 114000010823524724}
   tokenBody: {fileID: 114049641112244420}
   lightweightSprite: {fileID: 21300000, guid: 4ad73a08864fa9541961ac78c0864e50, type: 3}
-  countdownCanvas: {fileID: 223377834024246592}
+  countdownCanvas: {fileID: 1709556903175534}
   countdownBar: {fileID: 114531832462908390}
   countdownBadge: {fileID: 114802758540714072}
   countdownText: {fileID: 114879177225288478}
@@ -743,6 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25276b2f900a74c9e98eea696ba3a251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shadowOffset: -5
   shadow: {fileID: 224000010364467008}
   card: {fileID: 224000012250353942}
 --- !u!114 &114000012681419938
@@ -12593,26 +12593,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1045492137083324}
---- !u!223 &223377834024246592
-Canvas:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709556903175534}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: -7
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_TargetDisplay: 0
 --- !u!224 &224000010282503830
 RectTransform:
   m_ObjectHideFlags: 1

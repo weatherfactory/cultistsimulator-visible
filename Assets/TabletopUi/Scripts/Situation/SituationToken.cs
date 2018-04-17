@@ -33,7 +33,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Sprite lightweightSprite;
 
         [Header("Countdown")]
-        [SerializeField] Canvas countdownCanvas;
+        [SerializeField] GameObject countdownCanvas;
         [SerializeField] Image countdownBar;
         [SerializeField] Image countdownBadge;
         [SerializeField] TextMeshProUGUI countdownText;
@@ -96,6 +96,8 @@ namespace Assets.CS.TabletopUI {
             Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context);
         }
 
+        /*
+        // CountdownCanvas no longer has a Canvas component - sorting was shitty    
         public override void DisplayInAir() {
             base.DisplayInAir();
             countdownCanvas.overrideSorting = false;
@@ -105,6 +107,7 @@ namespace Assets.CS.TabletopUI {
             base.DisplayAtTableLevel();
             countdownCanvas.overrideSorting = true;
         }
+        */
 
         #endregion
 
