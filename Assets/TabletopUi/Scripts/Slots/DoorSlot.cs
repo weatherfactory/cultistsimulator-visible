@@ -105,12 +105,12 @@ namespace Assets.CS.TabletopUI {
         // IOnDrop Implementation
 
         public void OnDrop(PointerEventData eventData) {
-            if (!isActive)
+            if (!isActive || DraggableToken.itemBeingDragged == null)
                 return;
 
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
-            if (stack == null && DraggableToken.itemBeingDragged != null) { //it's not an element stack; just put it down
+            if (stack == null) { //it's not an element stack; just put it down
                 DraggableToken.itemBeingDragged.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
                 return;
             }

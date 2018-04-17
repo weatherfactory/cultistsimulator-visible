@@ -12,6 +12,9 @@ namespace Assets.CS.TabletopUI {
         DoorSlot[] allSlots;
         DoorSlot activeSlot;
 
+        public override bool AllowStackMerge { get { return false; } }
+        public override bool IsTabletop { get { return false; } }
+
         public override void Initialise() {
             _elementStacksManager = new ElementStacksManager(this, "map");
             _elementStacksManager.EnforceUniqueStacks = true; // Martin: This ensures that this stackManager kills other copies when a unique is dropped in 

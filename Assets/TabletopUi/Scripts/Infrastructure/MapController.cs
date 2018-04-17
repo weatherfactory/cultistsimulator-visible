@@ -40,8 +40,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             
             //get card position names
             //populate card positions 1,2,3 from decks with names of positions
-            
-
             cards = new ElementStackToken[3];
 
             // Display face-up card next to door
@@ -51,7 +49,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             string doorDeckId = activeDoor.GetDeckName(0);
             IDeckInstance doorDeck =character.GetDeckInstanceById(doorDeckId);
-            if(doorDeck==null)
+            if (doorDeck==null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for the specified door with ID " + doorDeckId);
 
             string subLocationDeck1Id = activeDoor.GetDeckName(1);
@@ -100,9 +98,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 for (int i = 0; i < cards.Length; i++) 
                     if (cards[i] != cardTurned)
                     {
-                       cards[i].FlipToFaceUp();
+                        cards[i].FlipToFaceUp();
                         cards[i].Retire("CardLightDramatic");
                     }
+
             cards = null;
         }
 
@@ -111,10 +110,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             HideMansusMap(activeDoor.transform, stack);
         }
 
-        public void CleanupMap() {
+        public void CleanupMap(ElementStackToken pickedStack) {
             var activeDoor = _mapTokenContainer.GetActiveDoor();
             activeDoor.onCardDropped -= HandleOnSlotFilled;
             _mapTokenContainer.SetActiveDoor(PortalEffect.None);
+
+            // Kill all still existing cards
+            if (cards != null) { 
+                foreach (var item in cards) {
+                    if (item != pickedStack)
+                        item.Retire(false);
+                }
+            }
+
             cards = null;
         }
 

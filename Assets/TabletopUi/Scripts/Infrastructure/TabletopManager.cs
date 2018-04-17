@@ -558,7 +558,7 @@ namespace Assets.CS.TabletopUI {
             backgroundMusic.PlayRandomClip();
 
             // Cleanup mansus cards and doors everything
-            _mapController.CleanupMap();
+            _mapController.CleanupMap(mansusCard);
 
             // Do transition
             _tabletop.Show(true);
