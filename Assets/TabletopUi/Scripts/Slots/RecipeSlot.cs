@@ -90,12 +90,15 @@ namespace Assets.CS.TabletopUI {
 
         public void Initialise(SlotSpecification slotSpecification) {
             _elementStacksManager = new ElementStacksManager(this, "slot");
+            GoverningSlotSpecification = slotSpecification;
+            //we need to do this first. Code checks if an ongoing slot is active by checking whether it has a slotspecification
+            //slots with null slotspecification are inactive.
 
             if (slotSpecification == null)
                 return;
 
             SlotLabel.text = slotSpecification.Label;
-            GoverningSlotSpecification = slotSpecification;
+            
             GreedyIcon.SetActive(slotSpecification.Greedy);
             ConsumingIcon.SetActive(slotSpecification.Consumes);
         }
@@ -187,7 +190,7 @@ namespace Assets.CS.TabletopUI {
             if (IsBeingAnimated || DraggableToken.itemBeingDragged == null || !(DraggableToken.itemBeingDragged is ElementStackToken))
                 return;
 
-            Debug.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged);
+            NoonUtility.Log("Dropping into " + name + " obj " + DraggableToken.itemBeingDragged,10);
             IElementStack stack = DraggableToken.itemBeingDragged as IElementStack;
 
             //it's not an element stack; just put it down
