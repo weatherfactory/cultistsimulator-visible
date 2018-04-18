@@ -386,8 +386,8 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public IList<RecipeSlot> GetStartingSlots() {
-            return startingSlots.GetAllSlots();
+        public RecipeSlot GetPrimarySlot() {
+            return startingSlots.GetAllSlots().FirstOrDefault();
         }
 
         public IRecipeSlot GetStartingSlotBySaveLocationInfoPath(string locationInfo) {

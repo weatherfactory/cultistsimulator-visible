@@ -368,27 +368,32 @@ namespace Assets.TabletopUi {
             situationToken.DisplayAsClosed();
         }
 
-        public bool CanTakeDroppedToken(IElementStack stack) {
+        public void ShowVisualEffectIfCanTakeDroppedToken(IElementStack stack,bool show)
+        {
+            situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
+            situationToken.ShowGlow(show && CanAcceptStackWhenClosed(stack));
+        }
+
+        public bool CanAcceptStackWhenClosed(IElementStack stack) {
             if (SituationClock.State == SituationState.Unstarted)
-                return HasEmptyStartingSlot();
+                return HasSuitableStartingSlot(stack);
             if (SituationClock.State == SituationState.Ongoing) 
                 return HasEmptyOngoingSlot(stack);
 
             return false;
         }
 
-        bool HasEmptyStartingSlot() {
+        bool HasSuitableStartingSlot(IElementStack forStack) {
             var win = situationWindow as SituationWindow;
-            var startSlots = win.GetStartingSlots();
+            var primarySlot = win.GetPrimarySlot();
 
-            if (startSlots.Count == 0)
+            if (primarySlot==null)
                 return false;
-            
-            // Alexis want's token-drop actions to be able to replace existing tokens
-            //if (startSlots[0].GetElementStackInSlot() != null)
-            //    return false;
-            
-            return true;
+
+            bool allowedInSlot = primarySlot.GetSlotMatchForStack(forStack).MatchType == SlotMatchForAspectsType.Okay;
+            return allowedInSlot;
+
+
         }
 
         bool HasEmptyOngoingSlot(IElementStack stack) {
@@ -414,13 +419,13 @@ namespace Assets.TabletopUi {
         }
 
         bool PushDraggedStackIntoStartingSlots(IElementStack stack) {
-            if (HasEmptyStartingSlot() == false)
+            if (HasSuitableStartingSlot(stack) == false)
                 return false;
 
             var win = situationWindow as SituationWindow;
-            var startSlots = win.GetStartingSlots();
+            var primarySlot = win.GetPrimarySlot();
 
-            return PushDraggedStackIntoSlot(stack, startSlots[0]);
+            return PushDraggedStackIntoSlot(stack, primarySlot);
         }
 
         bool PushDraggedStackIntoOngoingSlot(IElementStack stack) {

@@ -447,7 +447,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override bool CanInteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {
-            return tokenDroppedOn.SituationController.CanTakeDroppedToken(this);
+            return tokenDroppedOn.SituationController.CanAcceptStackWhenClosed(this);
         }
 
         public override void InteractWithTokenDroppedOn(SituationToken tokenDroppedOn) {

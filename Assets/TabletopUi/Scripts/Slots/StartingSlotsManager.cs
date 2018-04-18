@@ -23,7 +23,18 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
-            primarySlot = BuildSlot("Primary recipe slot", SlotSpecification.CreatePrimarySlotSpecification(), null);
+            if (sc.GetTokenId() == "explore")
+            {
+                var experimentalSlotSpecification=new SlotSpecification("Experimental");
+
+                experimentalSlotSpecification.Required.Add("health",1);
+                experimentalSlotSpecification.Required.Add("follower", 1);
+
+
+                primarySlot = BuildSlot("Experimental explore slot", experimentalSlotSpecification, null);
+            }
+            else
+            primarySlot = BuildSlot("Primary recipe slot",SlotSpecification.CreatePrimarySlotSpecification(), null);
         }
 
         public void DoReset() {

@@ -161,8 +161,8 @@ public class TabletopTokenContainer : AbstractTokenContainer {
             if (sit.IsOpen)
                 sit.ShowDestinationsForStack(draggedElement, show);
 
-            sit.situationToken.SetGlowColor(UIStyle.TokenGlowColor.Default);
-            sit.situationToken.ShowGlow(show && sit.CanTakeDroppedToken(draggedElement));
+            sit.ShowVisualEffectIfCanTakeDroppedToken(draggedElement,show);
+       
         }
     }
 
