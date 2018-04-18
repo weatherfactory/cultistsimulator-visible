@@ -20,7 +20,7 @@
                 heart: 2,
 				ingredient: 1
             },
-			slots:[{id:"Strength",description:"A stronger worker might finish their tasks more quickly.",required:{healthskill:1}}]
+			slots:[{id:"Strength",actionId:"work",description:"A stronger worker might finish their tasks more quickly.",required:{healthskill:1}}]
             animFrames: 1,
 			xtriggers: {damagehealth: injury,fallsick:affliction},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"

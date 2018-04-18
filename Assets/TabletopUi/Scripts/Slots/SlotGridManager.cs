@@ -70,6 +70,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ReorderSlots() {
+
             int oldRowCount = numRows;
 
             // Set dimension values

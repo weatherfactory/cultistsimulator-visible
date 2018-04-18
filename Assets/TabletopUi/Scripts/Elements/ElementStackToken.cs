@@ -461,6 +461,7 @@ namespace Assets.CS.TabletopUI {
                     tokenDroppedOn.OpenSituation();
                 else
                     tokenDroppedOn.DisplayAsOpen(); // This will turn off any uneeded hover effects
+                
 
                 return;
             }

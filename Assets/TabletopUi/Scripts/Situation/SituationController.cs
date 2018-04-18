@@ -42,6 +42,11 @@ namespace Assets.TabletopUi {
             get { return SituationClock.State == SituationState.Ongoing; }
         }
 
+        public SlotSpecification GetPrimarySlotSpecificationForVerb()
+        {
+            return situationToken.GetPrimarySlotSpecificationForVerb();
+        }
+
         #region -- Construct, Initialize & Retire --------------------
 
         public SituationController(ICompendium co, Character ch) {
@@ -411,6 +416,8 @@ namespace Assets.TabletopUi {
                 return PushDraggedStackIntoStartingSlots(stack);
             if (SituationClock.State == SituationState.Ongoing)
                 return PushDraggedStackIntoOngoingSlot(stack);
+
+           
 
             return false;
         }

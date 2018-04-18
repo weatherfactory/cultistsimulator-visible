@@ -58,15 +58,22 @@ namespace Assets.CS.TabletopUI {
             lastPos = pos;
         }
 
-        public void MoveToPosition(Vector2 pos, float duration) {
+        public void MoveToPosition(Vector2 pos, float duration)
+        {
+            if (!gameObject.activeInHierarchy)
+                return;
+
             if (lastPos == pos || Vector2.Distance(pos, lastPos) < minDistToMove)
                 return;
             
             targetPos = pos;
             moveTime = 0f;
-
+            gameObject.SetActive(true);
             if (moving == null)
+            {
                 moving = StartCoroutine(DoMove(duration));
+            }
+
             // otherwise the changed pos will automatically move the thing to where it has to go
         } 
 

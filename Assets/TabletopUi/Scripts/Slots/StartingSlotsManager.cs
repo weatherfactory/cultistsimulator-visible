@@ -23,15 +23,12 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public override void Initialise(SituationController sc) {
             base.Initialise(sc);
-            if (sc.GetTokenId() == "explore")
+
+            var primarySlotSpecification = sc.GetPrimarySlotSpecificationForVerb();
+            if(primarySlotSpecification!=null)
             {
-                var experimentalSlotSpecification=new SlotSpecification("Experimental");
 
-                experimentalSlotSpecification.Required.Add("health",1);
-                experimentalSlotSpecification.Required.Add("follower", 1);
-
-
-                primarySlot = BuildSlot("Experimental explore slot", experimentalSlotSpecification, null);
+                primarySlot = BuildSlot(primarySlotSpecification.Label, primarySlotSpecification, null);
             }
             else
             primarySlot = BuildSlot("Primary recipe slot",SlotSpecification.CreatePrimarySlotSpecification(), null);
@@ -132,7 +129,7 @@ namespace Assets.TabletopUi.SlotsContainers {
                 tokenContained.ReturnToTabletop(context);
         }
 
-        void ArrangeSlots() {
+        public void ArrangeSlots() {
             gridManager.ReorderSlots();
         }
 

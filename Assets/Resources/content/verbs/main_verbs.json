@@ -28,9 +28,9 @@
 	  {
             "id": "explore",
             "label": "Explore",
-            "description": "Exploration finds interesting things in locations, but can be unpredictable.",
+            "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore.",
 			"atStart":false,
-			  slots: [{id:"primary",description: "Explore a Location, or look for interesting places and people.",required:{health:1,follower:1,lore:1,location:1}}],
+			  slots: [{id:"Explore",description: "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore.",required:{health:1,follower:1,lore:1,location:1}}],
         },
 			  {
             "id": "time",

@@ -64,6 +64,12 @@ namespace Assets.CS.TabletopUI {
             get { return _verb.Transient; }
         }
 
+        public SlotSpecification GetPrimarySlotSpecificationForVerb()
+        {
+            return _verb.PrimarySlotSpecification;
+        }
+
+
         public bool EditorIsActive
         {
             get { return situationEditor.isActiveAndEnabled; }

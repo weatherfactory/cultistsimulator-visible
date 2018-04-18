@@ -36,5 +36,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SetGlowColor(UIStyle.TokenGlowColor colorType);
         void ShowGlow(bool glowState, bool instant = false);
         void SetEditorActive(bool active);
+        SlotSpecification GetPrimarySlotSpecificationForVerb();
     }
 }
