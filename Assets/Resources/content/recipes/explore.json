@@ -99,59 +99,59 @@
 		linked:[{id:"auction",chance:100}]
     },
 	
-
 	 {
  
-        id: "explorereason",
-        label: "Seek out those with secret knowledge.",
+        id: "explorehealth",
+        label: "Search the City",
         actionId: "explore",
-        requirements: {reason:1},
-		alternativerecipes:	[
-		{id: "explorefindscholarpatron", chance: 70},
-		{id: "inspiremystique",chance:30},
-		{id: "inspirenotoriety",chance:30}],
-        startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
-        description: "Each dawn arrives like a fire, and each night falls like a stone.",
-        warmup: 60
-    },
-		{
-        id: "explorepassion",
-        label: "Seek out those with unusual passions.",
-        actionId: "explore",
-        requirements: {passion:1},
-		alternativerecipes:	[
-		{id: "explorefindscholarpatron", chance: 70},
-		{id: "inspiremystique",chance:30},
-		{id: "inspirenotoriety",chance:30}],
-        startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
+        requirements: {health:1},
+		deckeffect: {exploreevents:1},
+		linked:	[
+		{id: "explorefindacquaintance", chance: 100},
+		{id: "explorefindpatron",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll walk the streets, seeking secrets, until I can walk no more.",
         description: "Each dawn arrives like a fire, and each night falls like a stone.",
         warmup: 60,
-        craftable: true
+		craftable:true
     },
 			{
-        id: "exploremystique",
-        label: "Seek out those with an uncanny reputation.",
+        id: "explorefindacquaintance",
+        label: "An Acquaintance?",
         actionId: "explore",
-        requirements: {mystique:1},
-		alternativerecipes:	[
-		{id: "explorefindscholarpatron", chance: 70},
-		{id: "inspiremystique",chance:30},
-		{id: "inspirenotoriety",chance:30}],
-        startdescription: "I'll ask questions around town. I may attract other kinds of interest.",
-        description: "Each dawn arrives like a fire, and each night falls like a stone.",
-        warmup: 60,
-        craftable: true
-		
+        requirements: {dayacquaintances:1},
+        startdescription: "I've found someone who may be a kindred spirit.",
+        description: ".",
+		deckeffect: {"acquaintances":1},
+		effects:{season:-1},
+        warmup: 5
     },
-	{id: "explorefindscholarpatron",
-	label: "Find Commissions for Scholarly Work",
-	actionId: "explore",
-	startdescription: ".",
-	description: "Here is someone with curious interests.",
-	deckeffect: {"scholarpatrons":1},
-	warmup:0,
-	craftable:false
-	},
+	 {
+ 
+        id: "explorefindpatron",
+        label: "A Patron?",
+        actionId: "explore",
+        requirements: {daypatrons:1},
+        startdescription: "I've found someone who may have resources of use to me.",
+        description: ".",
+		deckeffect: {"scholarpatrons":1},
+		effects:{season:-1},
+        warmup: 5
+    },
+	
+		 {
+ 
+        id: "explorefindplace",
+        label: "An Overlooked Place?",
+        actionId: "explore",
+        requirements: {dayplaces:1},
+        startdescription: "I might have found somewhere unusual.",
+        description: ".",
+		deckeffect: {"citysecrets":1},
+		effects:{season:-1},
+        warmup: 5
+    },
+
 	
 ]
 }

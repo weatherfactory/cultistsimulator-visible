@@ -115,6 +115,27 @@ resetonexhaustion:true
 		"ingredientmothb"],
 resetonexhaustion:true	
 	},
+		{id: "exploreevents",
+		label:"Seasons",
+	description:"Searching the city can find...",
+	spec:["dayacquaintances",
+	"daypatrons",
+	"daycriminals",
+	"dayplaces",
+	"dayacquaintances",
+	"daypatrons",
+	"daycriminals",
+	"dayplaces"
+	],
+resetonexhaustion:true	
+	},
+	{id:"citysecrets",
+	label:"City Secrets",
+	description: "Easily overlooked locations.",
+	spec:[	"locationauctionhouse",
+	"locationcabaret"],
+	defaultcard: "contentment"
+	}
 	
 	]
 }
