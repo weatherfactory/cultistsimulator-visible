@@ -266,6 +266,15 @@ public class ContentImporter
         {
             IVerb v = new BasicVerb(h["id"].ToString(), h["label"].ToString(), h["description"].ToString(),
                 Convert.ToBoolean(h["atStart"]));
+            ArrayList alSlots = h.GetArrayList(NoonConstants.KSLOTS);
+            if (alSlots != null)
+            { 
+        var slots=AddSlotsFromArrayList(alSlots);
+                if (slots.Count > 1)
+                    LogProblem(v.Id + " has more than one slot specified - we should only have a primary slot");
+                else
+                    v.PrimarySlotSpecification = slots.First();
+            }
             Verbs.Add(v.Id, v);
         }
 

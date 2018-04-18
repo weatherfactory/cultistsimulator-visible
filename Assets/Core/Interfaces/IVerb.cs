@@ -12,6 +12,7 @@ namespace Assets.Core.Interfaces
         string Description { get; }
         bool AtStart { get; }
         bool Transient { get; }
+      SlotSpecification PrimarySlotSpecification { get; set; }
     }
 
 }

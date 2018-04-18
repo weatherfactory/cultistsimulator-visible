@@ -14,6 +14,7 @@ using Assets.Core.Interfaces;
         private string _label;
         private string _description;
     private bool _atStart;
+    private SlotSpecification _primarySlotSpecification;
 
     
 
@@ -39,6 +40,13 @@ using Assets.Core.Interfaces;
     }
 
     public abstract bool Transient { get; }
+
+    public SlotSpecification PrimarySlotSpecification
+    {
+        get { return _primarySlotSpecification; }
+        set { _primarySlotSpecification = value; }
+
+    }
 
     public AbstractVerb(string id, string label, string description)
         {
