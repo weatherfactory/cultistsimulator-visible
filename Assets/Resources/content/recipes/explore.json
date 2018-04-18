@@ -100,7 +100,6 @@
     },
 	
 	 {
- 
         id: "explorehealth",
         label: "Search the City",
         actionId: "explore",
@@ -113,6 +112,34 @@
 		{id: "explorefindplace",chance:100}],
         startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll walk the streets, seeking secrets, until I can walk no more.",
         description: ".",
+        warmup: 60,
+		craftable:true
+    },
+	
+		 {
+        id: "explorefollower",
+        label: "Search the City",
+        actionId: "explore",
+        requirements: {follower:1},
+		deckeffect: {exploreevents:1},
+		linked:	[
+		{id: "explorefindacquaintance", chance: 100},
+			{id: "explorefindcriminal",chance:100},
+		{id: "explorefindpatron",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll send my minions out to searching for opportunities",
+        description: ".",
+        warmup: 60,
+		craftable:true
+    },
+			 {
+        id: "explorerumour",
+        label: "Track down a rumour",
+        actionId: "explore",
+        requirements: {rumour:1},
+		deckeffect: {"acquaintances":1},
+        startdescription: "I suspect that, at the end of this story, I may find someone who will hear what I have to say.",
+        description: "An unpromising address: buta promising resident.",
         warmup: 60,
 		craftable:true
     },
