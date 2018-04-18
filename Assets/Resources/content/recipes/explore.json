@@ -108,10 +108,11 @@
 		deckeffect: {exploreevents:1},
 		linked:	[
 		{id: "explorefindacquaintance", chance: 100},
+			{id: "explorefindcriminal",chance:100},
 		{id: "explorefindpatron",chance:100},
 		{id: "explorefindplace",chance:100}],
         startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll walk the streets, seeking secrets, until I can walk no more.",
-        description: "Each dawn arrives like a fire, and each night falls like a stone.",
+        description: ".",
         warmup: 60,
 		craftable:true
     },
@@ -125,6 +126,35 @@
 		deckeffect: {"acquaintances":1},
 		effects:{season:-1},
         warmup: 5
+    },
+					{
+        id: "explorefindcriminal",
+        label: "A Hireling?",
+        actionId: "explore",
+        requirements: {daycriminals:1},
+		deckeffect: {"hirelings":1},
+		effects:{season:-1},
+        warmup: 0,
+		linked:[{id:"explorechoosepaycriminal",chance:100}]
+    },
+				{
+        id: "explorechoosepaycriminal",
+        label: "A Hireling?",
+        actionId: "explore",
+        startdescription: "I've found someone whom I might pay to enact regrettable necessities. [Add Funds to hire them, for a limited time.]",
+slots:[{id:"Payment",required:{funds:1},consumes:true}],
+alternativerecipes:[{id:"explorepaycriminal",chance:100}],
+		effects:{hireling:-1},
+		 description: "Better not. I must be careful of the company I keep.",
+        warmup: 30
+    },
+					{
+        id: "explorepaycriminal",
+        label: "A Hireling",
+		requirements: {funds:1},
+        actionId: "explore",
+        startdescription: "This will buy their loyalty, for now.",
+		effects:{funds:-1}
     },
 	 {
  

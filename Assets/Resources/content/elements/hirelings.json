@@ -1,0 +1,22 @@
+{"elements":
+    [
+			 {
+        id: "thugedge",
+            label: "A Hulking Fellow",
+            aspects:
+            {mortal: 1,hireling:1,follower:1,edge:5},
+              description: "'I get the job done.'",
+			xtriggers: {hire: thugedge,killmortal:corpse,derangemortal:lunatic},
+			lifetime:60
+        },
+		 {
+        id: "thugmoth",
+            label: "A Shifty Woman",
+            aspects:
+            {mortal: 1,hireling:1,follower:1,moth:5},
+            description: "'I haven't been caught yet.'",
+			xtriggers: {hire:thugmoth,killmortal:corpse,derangemortal:lunatic},
+			lifetime:60
+        },
+		]
+};
