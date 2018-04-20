@@ -59,6 +59,16 @@
 			xtriggers: {restorehealth: health},
 			lifetime: 180
 			},
+						{
+        id: "fatigue",
+            label: "Health (Fatigued)",
+            aspects:
+            {illhealth: 1},
+            description: "Fatigue will become Health again after sixty seconds, but I can recover it slightly faster by Dreaming.",
+			xtriggers: {restorehealth: health},
+			lifetime: 60,
+			decayTo:"health"
+			},
 			{
 			id: "affliction",
             label: "An Affliction",

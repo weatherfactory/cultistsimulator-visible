@@ -26,7 +26,17 @@
         warmup: 30,
 		craftable:true
     },
-
+	{
+        id: "recoverfatigue",
+        label: "Nap to recover from Fatigue",
+        actionId: "dream",
+        requirements: {fatigue: 1},
+		aspects:{restorehealth:1},
+        startdescription: "I just need a little time to recover my energies.",
+        description: "I am refreshed.",
+        warmup: 30,
+		craftable:true
+    },
 	{
         id: "recoverillhealthfunds",
         label: "Heal",

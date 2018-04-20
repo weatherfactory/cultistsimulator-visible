@@ -39,25 +39,7 @@
         warmup: 30,
         craftable: true
     },
-	
-	 {
-        id: "explorehealth",
-        label: "Search the City",
-        actionId: "explore",
-        requirements: {health:1},
-		deckeffect: {exploreevents:1},
-		linked:	[
-		{id: "explorefindacquaintance", chance: 100},
-			{id: "explorefindcriminal",chance:100},
-		{id: "explorefindpatron",chance:100},
-		{id: "explorefindplace",chance:100}],
-        startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll walk the streets, seeking secrets, until I can walk no more.",
-        description: ".",
-        warmup: 60,
-		craftable:true
-    },
-	
-		 {
+			 {
         id: "explorefollower",
         label: "Search the City",
         actionId: "explore",
@@ -84,15 +66,58 @@
         warmup: 60,
 		craftable:true
     },
-			{
+	 {
+        id: "explorehealth",
+        label: "Search the City",
+        actionId: "explore",
+        requirements: {health:1},
+		deckeffect: {exploreevents:1},
+		effects:{health:-1,fatigue:1},
+		linked:	[
+		{id: "explorefindacquaintance", chance: 100},
+			{id: "explorefindcriminal",chance:100},
+		{id: "explorefindpatron",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll walk the streets, seeking secrets, until I can walk no more.",
+        description: ".",
+        warmup: 30,
+		craftable:true
+    },
+	
+				{
         id: "explorefindacquaintance",
         label: "An Acquaintance?",
         actionId: "explore",
         requirements: {dayacquaintances:1},
-        startdescription: "I've found someone who may be a kindred spirit.",
+		slots:[{id:"escalation",label:"Passion",description:"I must be fervent and convincing.",required:{passion:1}}],
+        startdescription: "I've found someone who may be a kindred spirit - but I'll need to win them over. [Add Passion to gain an Acquaintance.]",
+		alternativerecipes:[{id:"exploremeetacquaintance",chance:100}],
+        description: "I have not chosen to bring them into my circle. Perhaps another time.",
+		effects:{season:-1},
+        warmup: 30
+    },
+					{
+        id: "explorefindpatron",
+        label: "A Patron?",
+        actionId: "explore",
+        requirements: {daypatrons:1},
+		slots:[{id:"escalation",label:"Reason",description:"I must be articulate and credible.",required:{reason:1}}],
+        startdescription: "I've found someone with an interest in secret knowledge, someone who may have resources of use to me - but I'll need to convince them I'm worth their time. [Add Reason to find a potential Patron]",
+		alternativerecipes:[{id:"exploremeetpatron",chance:100}],
+        description: "I have not chosen to show them what I am. Perhaps another time.",
+		effects:{season:-1},
+        warmup: 30
+    },
+
+			{
+        id: "exploremeetacquaintance",
+        label: "An Acquaintance",
+        actionId: "explore",
+		requirements:{passion:1},
+        startdescription: "'Come with me.'",
         description: ".",
 		deckeffect: {"acquaintances":1},
-		effects:{season:-1},
+				effects:{season:-1},
         warmup: 5
     },
 					{
@@ -125,15 +150,14 @@ alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{funds:-1}
     },
 	 {
- 
-        id: "explorefindpatron",
-        label: "A Patron?",
+        id: "exploremeetpatron",
+        label: "A Patron",
         actionId: "explore",
-        requirements: {daypatrons:1},
-        startdescription: "I've found someone who may have resources of use to me.",
+		requirements:{reason:1},
+        startdescription: "'We can learn from each other.'",
         description: ".",
 		deckeffect: {"scholarpatrons":1},
-		effects:{season:-1},
+				effects:{season:-1},
         warmup: 5
     },
 	
