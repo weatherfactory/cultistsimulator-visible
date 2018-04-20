@@ -1,5 +1,16 @@
 {
 "recipes": [
+{id: "talktohireling_rehire",
+actionId:"talk",
+label:"Offer this hireling another payment.",
+requirements: {hireling:1,funds:1},
+startdescription:"I could pay to extend this hireling's period of service.",
+description:"'All right. Same terms as before.'",
+aspects:{hiring:1},
+effects:{funds:-1},
+craftable:true,
+warmup:10
+},
 
 {id: "talktofollower",
 label:"Discuss occult business with a Follower",

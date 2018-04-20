@@ -415,6 +415,14 @@
 			noartneeded: true
         },
 		{
+            id: "hiring",
+            label: "Hiring",
+			description: "Extend a hireling's period of service.",
+            isAspect: true,
+			comments: "Recipe aspect. Use to rehire hirelings.",
+			noartneeded: true
+        },
+		{
             id: "promotiontodisciple",
             label: "Promotion",
 			description: "Time to take the deeper oaths.",
