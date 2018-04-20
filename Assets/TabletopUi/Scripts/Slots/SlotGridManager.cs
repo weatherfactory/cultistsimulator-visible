@@ -80,7 +80,7 @@ namespace Assets.CS.TabletopUI {
             if (numRows != oldRowCount) {
                 float targetHeight = GetHeightForSlotCount();
 
-                if (gameObject.activeSelf) { 
+                if (gameObject.activeInHierarchy) { 
                     StartCoroutine(AdjustHeight(targetHeight, sizeTransitionDuration));
                 }
                 else { 
