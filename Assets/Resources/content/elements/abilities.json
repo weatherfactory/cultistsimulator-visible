@@ -64,7 +64,7 @@
             label: "Health (Fatigued)",
             aspects:
             {illhealth: 1},
-            description: "Fatigue will become Health again after sixty seconds, but I can recover it slightly faster by Dreaming.",
+            description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
 			xtriggers: {restorehealth: health},
 			lifetime: 60,
 			decayTo:"health"
