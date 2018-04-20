@@ -29,7 +29,7 @@ actionId: "talk",
 requirements: {passion:1},
 startdescription: "'Yes, that's exactly right. I'll come back tonight.'",
 description: "A tiny packet of tiny treasures: a gift from Poppy. She'll see me again in the Season of Rags, for me to make the introduction I promised.",
-effects: {compensation:1,compensationb:1,compensationc:1,poppyready:-1},
+effects: {funds:10,compensationc:1,poppyready:-1},
 alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
 },
 {id: "poppyofferquery",
