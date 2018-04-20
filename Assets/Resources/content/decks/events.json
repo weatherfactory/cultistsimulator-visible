@@ -133,7 +133,18 @@ resetonexhaustion:true
 	label:"City Secrets",
 	description: "Easily overlooked locations.",
 	spec:[	"locationauctionhouse",
-	"locationcabaret"],
+	"locationcabaret",
+	"locationstreetsstrange"],
+	defaultcard: "locationstreetsstrange"
+	},
+		{id:"streetsstrangefinds",
+	label:"Strange Streets",
+	description: "Insights and influences.",
+	spec:[	"influenceknockc",
+	"influenceknockc",
+	"glimmering",
+	"glimmering",
+	"fascination"],
 	defaultcard: "contentment"
 	}
 	

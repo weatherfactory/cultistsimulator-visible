@@ -27,6 +27,19 @@
 		linked:[{id:"auction",chance:100}]
     },
 	
+		{
+        id: "explorelocationstreetsstrange",
+        label: "Explore an uncanny tangle of streets by the light of the moon.",
+        actionId: "explore",
+        requirements: {locationstreetsstrange:1},
+		
+		deckeffect: {"streetsstrangefinds":1},
+        startdescription: "Streets are strange in the hour called Meniscate.",
+        description: "Visions pass me with pavane grace - a window over a wood, a garden of ice, a shivering sun, a woman of glass. I will return home reluctantly.",
+        warmup: 30,
+        craftable: true
+    },
+	
 	 {
         id: "explorehealth",
         label: "Search the City",
