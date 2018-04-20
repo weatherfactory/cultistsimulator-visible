@@ -1,17 +1,112 @@
  {"recipes":
  [
-  	{
-        id: "recruitacquaintance",
-        label: "Recruit an Acquaintance",
+	 	{
+        id: "recruitacquaintanceedge",
+        label: "Recruit an Acquaintance, by invoking Edge",
         actionId: "talk",
-        requirements: {society: 1,reputation: 1,mortal: 1,follower:-1,patron:-1,hunter:-1},
-		aspects: {recruiting: 1},
+        requirements: {venerationedge: 1, follower:-1,edge:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting:1},
         startdescription: "This one is ready.",
-        description: "The oaths are resonant as thunder in a church. I know them well. I wrote them myself.",
+    description: "Before they speak the words, the novice must sharpen a knife so it can separate a drifting thread. And it be not sharp enough, it will be the worse for them.",
         warmup: 30,
         craftable: true,
 		burnimage: freemasons
     },
+		  	{
+        id: "recruitacquaintanceforge",
+        label: "Recruit an Acquaintance, by invoking Forge",
+        actionId: "talk",
+        requirements: {venerationforge: 1, follower:-1,forge:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+        startdescription: "This one is ready.",
+        description: "The ceremony requires a searing. Only a little one; but they will carry the mark all their life.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+		  	{
+        id: "recruitacquaintancegrail",
+        label: "Recruit an Acquaintance, by invoking Grail",
+        actionId: "talk",
+        requirements: {venerationgrail: 1, follower:-1,grail:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+        startdescription: "This one is ready.",
+        description: "They will not forget the savour I have given them.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+			  	{
+        id: "recruitacquaintanceheart",
+        label: "Recruit an Acquaintance, by invoking Heart",
+        actionId: "talk",
+        requirements: {venerationheart: 1, follower:-1,heart:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+        startdescription: "This one is ready.",
+        description: "The ceremony is resonant as thunder in a church. I know it well. I wrote it myself.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+				  	{
+        id: "recruitacquaintanceknock",
+        label: "Recruit an Acquaintance, by invoking Knock",
+        actionId: "talk",
+        requirements: {venerationknock: 1, follower:-1,knock:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+             startdescription: "This one is ready.",
+        description: "Only a little wound. Just enough to give homage to the powers that open.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+					  	{
+        id: "recruitacquaintancelantern",
+        label: "Recruit an Acquaintance, by invoking Lantern",
+        actionId: "talk",
+        requirements: {venerationlantern: 1, follower:-1,lantern:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+               startdescription: "This one is ready.",
+        description: "A dozen lights blaze. There is no place for shadow in these rites, and no place for mercy.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+						  	{
+        id: "recruitacquaintancemoth",
+        label: "Recruit an Acquaintance, by invoking Moth",
+        actionId: "talk",
+        requirements: {venerationmoth: 1, follower:-1,moth:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+             startdescription: "This one is ready.",
+        description: "Moth sheds its skin. The novice must only shed their clothes, and their past.",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+
+							  	{
+        id: "recruitacquaintancewinter",
+        label: "Recruit an Acquaintance, by invoking Winter",
+        actionId: "talk",
+        requirements: {venerationwinter: 1, follower:-1,winter:1},
+        effects: {ingredient:-1,influence:-1},
+		aspects: {recruiting: 1},
+        startdescription: "This one is ready.",
+        description: "I will speak only and exactly nine words. The novice will speak none at all. ",
+        warmup: 30,
+        craftable: true,
+		burnimage: freemasons
+    },
+	
+	
 	  	{
         id: "promotetodiscipleedge",
         label: "Promote a Believer by invoking Edge",
@@ -219,7 +314,7 @@
 	
 	  	{
         id: "recruitacquaintanceclue",
-        label: "Recruit an Acquaintance?",
+        label: "Recruit an Acquaintance,?",
         actionId: "talk",
         requirements: {society: 1,mortal: 1,follower:-1},
         startdescription: "This one might be ready to achieve the next level, if I can supply something more.",

@@ -127,10 +127,9 @@ craftable: true
 label:"Speak of esoteric matters",
 actionId: "talk",
 requirements: {society:-1,lore: 1},
-deckeffect: {"acquaintances":1},
 effects: {mystique:1},
-startdescription: "I might make a useful contact. I will likely attract attention.",
-description: "Here's someone who might be useful.",
+startdescription: "I will likely attract attention. Perhaps that's what I want. [NOTE: looking for Acquaintance recruitment? You can find them in Explore, now.]",
+description: "I am afraid, sometimes, that they can see what I am, as one sees ink coiling under glass.",
 warmup: 60,
 craftable: true
 },
