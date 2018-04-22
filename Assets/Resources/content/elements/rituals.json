@@ -32,7 +32,7 @@
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Victim",actionId: "work",required: {follower:1,prisoner:1}, consumes: true, description: "There must always be willing blood."},
 			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "On what will blood be shed?"},
-			{id:"Desire",actionId: "work",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "This rite uses an instrument of power to set the blood afire: fire is the lesion in the skin of the world. The assistant rarely survives unharmed."
         },
@@ -45,7 +45,7 @@
 			slots: [{id:"Sacrifice",actionId: "work",required: {lore: 1}, consumes: true, description: "What will we forget?"},
 			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "What is our instrument?"},
-			{id:"Desire",actionId: "work",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "This rite recalls the loss of the Watchman, who walks the house which has no walls.(Light goes before him and shadow behind. He must not see you.) The instrument of power is used to summon him to take his sacrifice: precious knowledge from the root of your thoughts. The assistant must speak the words that anchor your sanity, so choose someone you trust."
         },
@@ -58,7 +58,7 @@
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			{id:"Offering",actionId: "work",required: {tool: 1}, consumes: true,description: "What will we give up?"},
-			{id:"Desire",actionId: "work",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "This rite enacts a teaching of the Forge of Days: the artisan may achieve their highest goal only by destroying their most precious tool. The Lionsmith knew this when he shattered his sword before the Colonel. So my assistant must destroy a chosen instrument."
         },
@@ -117,7 +117,7 @@
 			{id:"Surrender",actionId: "work",required: {tool: 1}, description: "Something to be lost.", consumes:true},
 			{id:"Dissolution",actionId: "work",required: {influence: 1}, description: "Something to be lost.", consumes:true},
 			{id:"Grief",actionId: "work",required: {ingredient: 1}, description: "Something to be lost.", consumes:true},
-			{id:"Desire",actionId: "work",required: {desire:1}, description: "Why must I do this? [Use this to complete a Great Work.]"}
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "This rite recapitulates the Sun's abominable fate. It is used in extreme times by foolish adepts."
         },

@@ -8,8 +8,8 @@
         actionId: "work",
         requirements: {ritual:1,corpse:1,winter:4,edge:2,desire:-1},
 		effects: {spirit_wintera_edge:1,corpse:-1},
-        startdescription: "A shattering force will infuse its flesh. You must begin the process. Ready your hammer.",
-        description: "The corpse lurches groaning to its feet: or what is left of its feet.",
+        startdescription: "A shattering force will infuse its flesh, so that it joins the Shattered Risen. You must begin the process. Ready your hammer.",
+        description: "The corpse lurches groaning to its feet: or what is left of its feet. I have conjured a Shattered Risen.",
         warmup: 60,
         craftable: true,
 		linked: [{id:"summoninglosingcontrol",chance:30}]
@@ -20,8 +20,8 @@
         actionId: "work",
         requirements: {ritual:1,corpse:1,winter:4,moth:2,desire:-1},
 		effects: {spirit_wintera_moth:1,corpse:-1},
-        startdescription: "First you must plant the seeds: under the eyelids, under the tongue, in all the secret openings of the body.",
-        description: "The corpse sways to its feet. Its eyes struggle open. Sap trickles from its mouth.",
+        startdescription: "First I must plant the seeds: under the eyelids, under the tongue, in all the secret openings of the body. It will awaken as a Burgeoning Risen.",
+        description: "The corpse sways to its feet. Its eyes struggle open. Sap trickles from its mouth. It burgeons; it has risen.",
         warmup: 60,
         craftable: true,
 		linked: [{id:"summoninglosingcontrol",chance:30}]
