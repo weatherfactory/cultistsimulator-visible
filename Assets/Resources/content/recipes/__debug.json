@@ -9,28 +9,6 @@ warmup: 1,
 craftable:false
 },
 
-
-{id: "_pulla",
-label: "Pull A",
-actionId: "pulla",
-startdescription: "Pulling A..."
-description: "...pulled",
-warmup: 60,
-craftable:false,
-slots: [{id:"lore",required:{moth:1},greedy:true}],
-},
-
-{id: "_pullb",
-label: "Pull B",
-actionId: "pullb",
-startdescription: "Pulling AB.."
-description: "...pulled",
-warmup: 60,
-craftable:false,
-slots: [{id:"Reputation",required:{funds:1,reputation:1},greedy:true}],
-},
-
-
 		{
         id: "_ascensionending",
         label: "Display Ascension Ending",
