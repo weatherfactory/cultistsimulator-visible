@@ -22,8 +22,11 @@
 		{
             "id": "talk",
             "label": "Talk",
-            "description": "Interrogate, intimidate, beguile, recruit.",
-			"atStart": false
+            "description": "Interrogate, intimidate, beguile, instruct, recruit.",
+				"atStart": false,
+			 slots: [{id:"Work",description: "An ally, an enemy, or something in between.",
+			  required:{mortal:1,summoned:1,patron:1,hq:1,text:1}}],
+		
         },
 		{
             "id": "study",
