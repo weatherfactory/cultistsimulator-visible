@@ -91,7 +91,7 @@
 	  startdescription:"My minion's talent for deceit is limited, and this is a difficult task. They will likely fail.",
 	  description:"Separate failure event means this should never be visible.",
 	  requirements: {follower:1,moth:1,evidencelevel:1},
-	  linked: [{id:"evidencedestroysuccess",chance:70},
+	  linked: [{id:"evidencedestroysuccess",chance:30},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
@@ -101,7 +101,7 @@
 	  startdescription:"My minion lacks the Moth aspect, and will be out of their depth. There's a small chance they might succeed.",
 	  description:"Separate failure event means this should never be visible.",
 	  requirements: {evidencelevel:1},
-	  linked: [{id:"evidencedestroysuccess",chance:70},
+	  linked: [{id:"evidencedestroysuccess",chance:10},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },

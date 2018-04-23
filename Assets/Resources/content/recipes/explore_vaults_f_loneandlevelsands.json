@@ -4,72 +4,72 @@
 	id: "explore_vaultloneandlevelsands1_setup",
 	label: "Beginning an Expedition: the Star-Shattered Fane",
 	actionId: "explore",
-	requirements:{vaultloneandlevelsands1:1},
+	requirements:{funds:1,follower:1,vaultloneandlevelsands1:1},
 	effects: {peril_desert:1, seal_hiddendoor:1, curse_visions:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 	
 		 	{
 	id: "explore_vaultloneandlevelsands2_setup",
 	label: "Beginning an Expedition: Lagun's Tomb",
 	actionId: "explore",
-	requirements:{vaultloneandlevelsands2:1},
+	requirements:{funds:1,follower:1,vaultloneandlevelsands2:1},
 	effects: {peril_desert:1, seal_wardeddoor:1,curse_dread:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultloneandlevelsands3_setup",
 	label: "Beginning an Expedition: Messana",
 	actionId: "explore",
-	requirements:{vaultloneandlevelsands3:1},
+	requirements:{funds:1,follower:1,vaultloneandlevelsands3:1},
 	effects: {peril_desert:1,seal_wardeddoor:1,curse_dread:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultloneandlevelsands4_setup",
 	label: "Beginning an Expedition: the Temple of Seven Coils",
 	actionId: "explore",
-	requirements:{vaultloneandlevelsands4:1},
+	requirements:{funds:1,follower:1,vaultloneandlevelsands4:1},
 	effects: {peril_desert:1,seal_wardeddoor:1,curse_nowhere:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultloneandlevelsandsdefault_setup",
 	label: "Beginning an Expedition: Miah",
 	actionId: "explore",
-	requirements:{vaultloneandlevelsandsdefault:1},
+	requirements:{funds:1,follower:1,vaultloneandlevelsandsdefault:1},
 	effects: {peril_desert:1,seal_hiddendoor:1,guardian_dead:1,curse_affliction:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 					{
 	id: "explorevaultloneandlevelsands1_success",

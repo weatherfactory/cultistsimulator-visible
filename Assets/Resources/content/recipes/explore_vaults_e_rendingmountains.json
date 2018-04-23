@@ -4,72 +4,71 @@
 	id: "explore_vaultrendingmountains1_setup",
 	label: "Beginning an Expedition: Hunter's Pit",
 	actionId: "explore",
-	requirements:{vaultrendingmountains1:1},
+	requirements:{funds:1,follower:1,vaultrendingmountains1:1},
 	effects: {peril_mountains:1,guardian_watchers:1,guardian_serpent:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
-	
 		 	{
 	id: "explore_vaultrendingmountains2_setup",
 	label: "Beginning an Expedition: Snow's Keeper",
 	actionId: "explore",
-	requirements:{vaultrendingmountains2:1},
+	requirements:{funds:1,follower:1,vaultrendingmountains2:1},
 	effects: {peril_mountains:1,guardian_dead:1,curse_nowhere:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultrendingmountains3_setup",
 	label: "Beginning an Expedition: the Eye of Ikirmawi",
 	actionId: "explore",
-	requirements:{vaultrendingmountains3:1},
+	requirements:{funds:1,follower:1,vaultrendingmountains3:1},
 	effects: {peril_mountains:1,seal_wardeddoor:1,curse_visions:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultrendingmountains4_setup",
 	label: "Beginning an Expedition: the Mausoleum of Wolves",
 	actionId: "explore",
-	requirements:{vaultrendingmountains4:1},
+	requirements:{funds:1,follower:1,vaultrendingmountains4:1},
 	effects: {peril_mountains:1,seal_wardeddoor:1,guardian_dead:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultrendingmountainsdefault_setup",
 	label: "Beginning an Expedition: Tombs of the Shadowless Kings",
 	actionId: "explore",
-	requirements:{vaultrendingmountainsdefault:1},
+	requirements:{funds:1,follower:1,vaultrendingmountainsdefault:1},
 	effects: {peril_mountains:1,seal_hiddendoor:1,guardian_watchers:1,curse_affliction:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 					{
 	id: "explorevaultrendingmountains1_success",

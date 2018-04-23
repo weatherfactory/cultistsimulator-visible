@@ -4,72 +4,72 @@
 	id: "explore_vaultcontinent1_setup",
 	label: "Beginning an Expedition: Chateau Raveline",
 	actionId: "explore",
-	requirements:{vaultcontinent1:1},
+	requirements:{funds:1,follower:1,vaultcontinent1:1},
 	effects: {seal_hiddendoor:1,curse_dread:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 	
 		 	{
 	id: "explore_vaultcontinent2_setup",
 	label: "Beginning an Expedition: Fermier Abbey",
 	actionId: "explore",
-	requirements:{vaultcontinent2:1},
+	requirements:{funds:1,follower:1,vaultcontinent2:1},
 	effects: {peril_forest:1,guardian_monks:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultcontinent3_setup",
 	label: "Beginning an Expedition: Orthos Wood",
 	actionId: "explore",
-	requirements:{vaultcontinent3:1},
+	requirements:{funds:1,follower:1,vaultcontinent3:1},
 	effects: {peril_forest:1,guardian_watchers:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultcontinent4_setup",
 	label: "Beginning an Expedition: the Vanderschaaf Collection",
 	actionId: "explore",
-	requirements:{vaultcontinent4:1},
+	requirements:{funds:1,follower:1,vaultcontinent4:1},
 	effects: {seal_wardeddoor:1,curse_visions:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultcontinentdefault_setup",
 	label: "Beginning an Expedition: the Unnumbered Stones",
 	actionId: "explore",
-	requirements:{vaultcontinentdefault:1},
+	requirements:{funds:1,follower:1,vaultcontinentdefault:1},
 	effects: {peril_forest:1,seal_hiddendoor:1,guardian_watchers:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 					{
 	id: "explorevaultcontinent1_success",

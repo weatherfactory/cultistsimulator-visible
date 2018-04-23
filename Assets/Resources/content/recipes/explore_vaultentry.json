@@ -2,19 +2,26 @@
 
 
 		{
-	id: "explore_settingupexpedition",
+	id: "explorevault_hint_funds",
 	label: "Preparations for an Expedition ",
-	comments: "may well replace with specific vault entry for individual locations",
 	actionId: "explore",
-	slots:[{id:"More",required: {vault:1,follower:1,funds:1}}],
+	requirements: {vault:1,follower:1},
 	alternativerecipes: [
 	{id: "explorevault_expeditionbegun",chance:100}],
 	startdescription: "The Expedition will begin when we have at least one Funds and one Follower. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
-	description: "",
-	warmup:10,
+	hintonly:true,
 	craftable: false,
-	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	},
+			{
+	id: "explorevault_hint_funds",
+	label: "Preparations for an Expedition ",
+	actionId: "explore",
+	requirements: {vault:1,funds:1},
+	alternativerecipes: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	startdescription: "The Expedition will begin when we have at least one Funds and one Follower. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	hintonly:true,
+	craftable: false,
 	},
 	
 	{
@@ -24,8 +31,8 @@
 	requirements:{vault:1,follower:1,funds:1},
 	startdescription: "I have given my agents the opportunity to serve. Let us hope it ends well for us all.",
 	description: ".",
-	craftable:false,
-	linked: [{id: "explorevaulttick",chance:100}]
+	linked: [{id: "explorevaulttick",chance:100}],
+	craftable:false
 	},
 
 		{

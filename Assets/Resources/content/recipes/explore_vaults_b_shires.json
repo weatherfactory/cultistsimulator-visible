@@ -4,72 +4,72 @@
 	id: "explore_vaultshires1_setup",
 	label: "Beginning an Expedition: Gladwyn Lake",
 	actionId: "explore",
-	requirements:{vaultshires1:1},
+	requirements:{funds:1,follower:1,funds:1,follower:1,vaultshires1:1},
 	effects: {guardian_serpent:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "Beneath the surface of the lake, or in some cliff-side nook, perhaps some relics remain for us yet. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 	
 		 	{
 	id: "explore_vaultshires2_setup",
 	label: "Beginning an Expedition: Lockwood Fen",
 	actionId: "explore",
-	requirements:{vaultshires2:1},
+	requirements:{funds:1,follower:1,vaultshires2:1},
 	effects: {peril_treacherousground:1,guardian_watchers:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "Out into the mudlands. Somewhere, we are certain, is a shrine bedecked with precious oddments. If the locals try to kill us, we are probably heading in the right direction. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultshires3_setup",
 	label: "Beginning an Expedition: Crowkiss Hill",
 	actionId: "explore",
-	requirements:{vaultshires3:1},
+	requirements:{funds:1,follower:1,vaultshires3:1},
 	effects: {seal_wardeddoor:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "The one who came here before us had marked the door in the hillside. And here it may yet be, but it is sealed besides with stone and binding-spell. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultshires4_setup",
 	label: "Beginning an Expedition: Keglin's Scratch",
 	actionId: "explore",
-	requirements:{vaultshires4:1},
+	requirements:{funds:1,follower:1,vaultshires4:1},
 	effects: {peril_treacherousground:1,guardian_dead:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: "We prepare for the descent. We bring rope, tools, light; we arm ourselves against anything down there that may yet move.",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultshiresdefault_setup",
 	label: "Beginning an Expedition: Kerisham",
 	actionId: "explore",
-	requirements:{vaultshiresdefault:1},
+	requirements:{funds:1,follower:1,vaultshiresdefault:1},
 	effects: {seal_wardeddoor:1,guardian_watchers:1,curse_visions:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "Slink along the streets to a once-fine townhouse. Surreptitiously case the back garden. Odd stories circulate about the woman who lives here. She might be an adept, a collector, or even the rare thing called <i>empousa</i>. We must be watchful. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 					{
 	id: "explorevaultshires1_success",

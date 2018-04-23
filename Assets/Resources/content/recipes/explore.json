@@ -43,7 +43,7 @@
         id: "explorefollower",
         label: "Search the City",
         actionId: "explore",
-        requirements: {follower:1},
+        requirements: {follower:1,location:-1},
 		deckeffect: {exploreevents:1},
 		linked:	[
 		{id: "explorefindacquaintance", chance: 100},
@@ -52,7 +52,7 @@
 		{id: "explorefindplace",chance:100}],
         startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll send my minions out to searching for opportunities",
         description: ".",
-        warmup: 60,
+        warmup: 10,
 		craftable:true
     },
 			 {
@@ -81,7 +81,7 @@
 		{id: "explorefindplace",chance:100}],
         startdescription: "Crowded thoroughfares by day, a fog-wrapped labyrinth by night. I'll walk the streets, seeking secrets, until I can walk no more.",
         description: ".",
-        warmup: 30,
+        warmup: 10,
 		craftable:true
     },
 	
@@ -95,7 +95,7 @@
 		alternativerecipes:[{id:"exploremeetacquaintance",chance:100}],
         description: "I have not chosen to bring them into my circle. Perhaps another time.",
 		effects:{season:-1},
-        warmup: 30
+        warmup: 60
     },
 					{
         id: "explorefindpatron",
@@ -107,7 +107,7 @@
 		alternativerecipes:[{id:"exploremeetpatron",chance:100}],
         description: "I have not chosen to show them what I am. Perhaps another time.",
 		effects:{season:-1},
-        warmup: 30
+        warmup: 60
     },
 
 			{
@@ -140,7 +140,7 @@ slots:[{id:"Payment",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},
 		 description: "Better not. I must be careful of the company I keep.",
-        warmup: 30
+        warmup: 60
     },
 					{
         id: "explorepaycriminal",

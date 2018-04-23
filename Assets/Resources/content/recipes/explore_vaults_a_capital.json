@@ -4,30 +4,29 @@
 	id: "explore_vaultcapital1_setup",
 	label: "Beginning an Expedition: Strathcoyne's Collection",
 	actionId: "explore",
-	requirements:{vaultcapital1:1},
+	requirements:{vaultcapital1:1,funds:1,follower:1},
 	effects: {guardian_watchers:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Mr Strathcoyne has forbidden entry to his library. Unfortunate. Let's see what we can do.[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 	
 		 	{
 	id: "explore_vaultcapital2_setup",
 	label: "Beginning an Expedition: the Forgotten Mithraeum",
 	actionId: "explore",
-	requirements:{vaultcapital2:1},
+	requirements:{funds:1,follower:1,vaultcapital2:1},
 	effects: {seal_hiddendoor:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "I'm convinced the Mithraeum still holds secrets that its discoverers never found. It's unlikely to be dangerous, but the search will require funds. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultcapital3_setup",
@@ -35,41 +34,41 @@
 	actionId: "explore",
 	requirements:{vaultcapital3:1},
 	effects: {peril_treacherousground:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "The remaining factory walls could topple at any moment. Blackened timbers creak in pain. We must equip ourselves properly and move with dreadful care. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultcapital4_setup",
 	label: "Beginning an Expedition: St Agnes Hospital",
 	actionId: "explore",
-	requirements:{vaultcapital4:1},
+	requirements:{funds:1,follower:1,vaultcapital4:1},
 	effects: {curse_dread:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "Only echoes walk the hospital halls now, but malice lingers in the air. We must search meticulously, room by room. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultcapitaldefault_setup",
 	label: "Beginning an Expedition: The Forsaken Reach",
 	actionId: "explore",
-	requirements:{vaultcapitaldefault:1},
+	requirements:{funds:1,follower:1,vaultcapitaldefault:1},
 	effects: {peril_treacherousground:1,guardian_watchers:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "The law does not touch this decaying fringe of the city. The mud here has claimed many lives, and there will, no doubt, be some wretched criminals or other lairing in the warehouse. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 					{
 	id: "explorevaultcapital1_success",
@@ -79,7 +78,7 @@
 	effects: {vaultcapital1:-1,wainscothistories:1},
 	deckeffect: {"vaultcontentsc":3},
 	startdescription: "Strathcoyne's cosy sanctum. A fire smoulders in the grate. Glass cases display hard-won trinkets. We must seize what we can, quickly! Strathcoyne may already have telephoned the police.",
-	description: "Out into the night! We escape unseen, but the next day there are reports of a fire at Strathcoyne's. Did someone knock a live coal on to the hearth-rug? or ",
+	description: "Out into the night! We escape unseen, but the next day there are reports of a fire at Strathcoyne's. Did someone knock a live coal on to the hearth-rug? Or did Strathcoyne destroy the  place himself, as part of some larger scheme?",
 	warmup:10,
 	craftable: false
 	},

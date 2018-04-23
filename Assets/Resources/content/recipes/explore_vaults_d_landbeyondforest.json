@@ -4,72 +4,72 @@
 	id: "explore_vaultlandbeyondforest1_setup",
 	label: "Beginning an Expedition: the Cave of Candles",
 	actionId: "explore",
-	requirements:{vaultlandbeyondforest1:1},
+	requirements:{funds:1,follower:1,vaultlandbeyondforest1:1},
 	effects: {peril_mountains:1,guardian_serpent:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 	
 		 	{
 	id: "explore_vaultlandbeyondforest2_setup",
 	label: "Beginning an Expedition: the Voivode's Citadel",
 	actionId: "explore",
-	requirements:{vaultlandbeyondforest2:1},
+	requirements:{funds:1,follower:1,vaultlandbeyondforest2:1},
 	effects: {seal_hiddendoor:1,guardian_dead:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultlandbeyondforest3_setup",
 	label: "Beginning an Expedition: Grunewald's Permanent Circus",
 	actionId: "explore",
-	requirements:{vaultlandbeyondforest3:1},
+	requirements:{funds:1,follower:1,vaultlandbeyondforest3:1},
 	effects: {guardian_watchers:1,curse_nowhere:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultlandbeyondforest4_setup",
 	label: "Beginning an Expedition: Tower Revek",
 	actionId: "explore",
-	requirements:{vaultlandbeyondforest4:1},
+	requirements:{funds:1,follower:1,vaultlandbeyondforest4:1},
 	effects: {seal_hiddendoor:1,curse_affliction:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 				 	{
 	id: "explore_vaultlandbeyondforestdefault_setup",
 	label: "Beginning an Expedition: Foxlily Meadows",
 	actionId: "explore",
-	requirements:{vaultlandbeyondforestdefault:1},
+	requirements:{funds:1,follower:1,vaultlandbeyondforestdefault:1},
 	effects: {peril_mountains:1,guardian_watchers:1,curse_visions:1},
-	slots:[{id:"More",required: {follower:1,funds:1}}],
+
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
 	linked: [
-	{id: "explore_settingupexpedition",chance:100}],
+	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 					{
 	id: "explorevaultlandbeyondforest1_success",

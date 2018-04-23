@@ -16,7 +16,7 @@ warmup:10
 label:"Discuss occult business with a Follower",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:-1},
-slots: [{id:"Subject",description:"Cult business; a target; or another topic.",required: {society:1,evidence:1,hunter:1,ingredient:1,annoyance:1}}],
+slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,ingredient:1,annoyance:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 {id:"followeraction_repairtoollanternbcracked",chance:100},
@@ -67,13 +67,12 @@ alternativerecipes:[
 
 
 
-
-
-
 {id: "evidencedestroymidmoth",chance:100},
-{id: "evidencedestroylowmoth",chance:100}
+{id: "evidencedestroylowmoth",chance:100},
+{id: "evidencedestroynomoth",chance:100}
+
 ],
-startdescription: "Significant conversations in a smoky meeting-room. What do I need from my follower? I could direct them to carry out activities for our cult; or I could raise another matter.",
+startdescription: "Significant conversations in a smoky meeting-room. What do I need from my follower? [Add your cult, to send them out on cult business; send them after enemies; or raise another matter.]",
 description: "Nothing, then.",
 warmup: 60,
 craftable: true
