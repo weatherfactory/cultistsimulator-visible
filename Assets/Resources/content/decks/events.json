@@ -116,18 +116,24 @@ resetonexhaustion:true
 resetonexhaustion:true	
 	},
 		{id: "exploreevents",
-		label:"Seasons",
+		label:"Exploring the Capital",
 	description:"Searching the city can find...",
-	spec:["dayacquaintances",
-	"daypatrons",
+	spec:[
 	"daycriminals",
 	"dayplaces",
-	"dayacquaintances",
-	"daypatrons",
 	"daycriminals",
 	"dayplaces"
 	],
 resetonexhaustion:true	
+	},
+		{id:"talkevents",
+	label:"Midnight Meetings",
+	description: "I might find recruits, allies, or rivals.",
+	spec:["dayacquaintances",
+	"daypatrons",
+	"dayacquaintances",
+	"daypatrons"],
+	resetonexhaustion:true	
 	},
 	{id:"citysecrets",
 	label:"City Secrets",

@@ -6,12 +6,63 @@ label:"Speak of esoteric matters",
 actionId: "talk",
 requirements: {society:-1,lore: 1},
 effects: {mystique:1},
-startdescription: "I will likely attract attention. Perhaps that's what I want. [NOTE: looking for Acquaintance recruitment? You can find them in Explore, now.]",
-description: "I am afraid, sometimes, that they can see what I am, as one sees ink coiling under glass.",
+startdescription: "Talking publicly about the secret arts will attract attention. Perhaps that's what I want.",
+description: ".",
 warmup: 60,
-craftable: true
+craftable: true,
+deckeffect: {talkevents:1},
+linked:[{id: "talkfindacquaintance", chance: 100},
+		{id: "talkfindpatron",chance:100}],
 },
 
+
+	{
+        id: "talkfindacquaintance",
+        label: "An Acquaintance?",
+        actionId: "talk",
+        requirements: {dayacquaintances:1},
+		slots:[{id:"escalation",label:"Passion",description:"I must be fervent and convincing.",required:{passion:1},greedy:true}],
+        startdescription: "I've found someone who may be a kindred spirit - but I'll need to win them over. [Winning over an Acquaintance requires your Passion.]",
+		alternativerecipes:[{id:"talkmeetacquaintance",chance:100}],
+        description: "I could not muster the Passion to bring them into my circle. Perhaps another time.",
+		effects:{season:-1},
+        warmup: 60
+    },
+					{
+        id: "talkfindpatron",
+        label: "A Patron?",
+        actionId: "talk",
+        requirements: {daypatrons:1},
+		slots:[{id:"escalation",label:"Reason",description:"I must be articulate and credible.",required:{reason:1},greedy:true}],
+        startdescription: "I've found someone who may have resources of use to me - but I'll need to impress them. [Impressing a Patron demands your Reason.]",
+		alternativerecipes:[{id:"talkmeetpatron",chance:100}],
+        description: "I could not muster the mental energy to show them what I am. Perhaps another time.",
+		effects:{season:-1},
+        warmup: 60
+    },
+
+			{
+        id: "talkmeetacquaintance",
+        label: "An Acquaintance",
+        actionId: "talk",
+		requirements:{passion:1},
+        startdescription: "'Come with me.'",
+        description: ".",
+		deckeffect: {"acquaintances":1},
+				effects:{season:-1},
+        warmup: 5
+    },
+		 {
+        id: "talkmeetpatron",
+        label: "A Patron",
+        actionId: "talk",
+		requirements:{reason:1},
+        startdescription: "'We can learn from each other.'",
+        description: ".",
+		deckeffect: {"scholarpatrons":1},
+				effects:{season:-1},
+        warmup: 5
+    },
 
 {id: "talktohunter",
 label:"Arrange a meeting with an adversary",
@@ -131,6 +182,7 @@ startdescription: "There are hours and there are hours. This hour is mine.",
 description: "Parted lips; glittering eyes.",
 warmup: 10,
 craftable: false},
+
 
 	   {
         id: "findacquaintanceopentalk",
