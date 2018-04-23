@@ -80,7 +80,7 @@
             aspects:
             {ritual:1},
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
-			{id:"Influence",actionId: "work",required: {influence:1},description: "Who will speak the words?"},
+			{id:"Influence",actionId: "work",required: {influence:1},description: "What power is present?"},
 			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "What will be offered?",consumes:true},
 			],
             description: "This rite calls on the Sister-and-Witch to close the gap between what is and what might be. The assistant offers themselves as a spouse to the unknown: essentially, but not necessarily, the sea."
