@@ -7,7 +7,9 @@
             {tutoraramaic:1,patron:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
 unique:true,
-			xtriggers: {commissionfulfilled: aladimready,killmortal:rumour,derangemortal:rumour}
+			xtriggers: {commissionfulfilled: aladimready,killmortal:rumour,derangemortal:rumour},
+					slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}],
         },
 		 {
         id: "aladimready",
@@ -25,7 +27,9 @@ unique:true,
             {mortal:1,patron:1,tutorgreek:1},
             description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She has offered you a commission.",
 unique:true,
-			xtriggers: {commissionfulfilled: bechetready,killmortal:corpse,derangemortal:lunatic}
+			xtriggers: {commissionfulfilled: bechetready,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "bechetready",
@@ -42,7 +46,9 @@ unique:true,
             {mortal:1,patron:1,tutorlatin:1},
             description: "Count Gottlob Jannings represents a Continentalt confraternity of physicians and duellists. He has offered you a commission",
 unique:true,
-			xtriggers: {commissionfulfilled: janningsready,killmortal:corpse,derangemortal:lunatic}
+			xtriggers: {commissionfulfilled: janningsready,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}]
         },
 		 {
         id: "janningsready",

@@ -108,19 +108,7 @@ craftable: true
     },
 
 
-{id: "talktoacquaintance",
-label:"Discuss occult business with an Acquaintance",
-actionId: "talk",
-requirements: {society:-1,mortal: 1},
-comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation. Unlike the Follower version, this doesn't have a topic slot, but it possibly should.",
-alternativerecipes:[{id: "inspiremystique",chance:70},
-{id: "inspirenotoriety",chance:100}
-],
-startdescription: "Significant conversations in a smoky meeting-room.",
-description: "",
-warmup: 60,
-craftable: true
-},
+
 
 {id: "publicreadingrubbish",
 label:"Public Readings of Grandiose Risqué Nonsense",
@@ -143,14 +131,7 @@ startdescription: "There are hours and there are hours. This hour is mine.",
 description: "Parted lips; glittering eyes.",
 warmup: 10,
 craftable: false},
-{id: "inspirenotoriety",
-actionId: "talk",
-label: "Attracting Concern",
-effects: {notoriety: 1},
-startdescription: "I am afraid, sometimes, that they can see what I am, as one sees ink coiling under glass.",
-description: "Averted faces; widened eyes.",
-warmup: 10,
-craftable: false},
+
 	   {
         id: "findacquaintanceopentalk",
         label: "An Acquaintance",
