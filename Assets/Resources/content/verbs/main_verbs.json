@@ -5,7 +5,7 @@
             "label": "Work",
             "description": "Earn a living, or practice the secret arts.",
 			"atStart": true,
-						  slots: [{id:"Work",description: "Earn a living, or practice the secret arts.",
+						  slots: [{id:"Work",description: "Something I can do; something I know; or something I am.",
 			  required:{ability:1,job:1,lore:1,ritual:1,desire:1}
 			  }],
 			
@@ -14,7 +14,10 @@
             "id": "dream",
             "label": "Dream",
             "description": "Rest; reconsider your priorities; or risk yourself in exploration of the kingdoms of sleep.",
-			"atStart": false
+			"atStart": false,
+			 slots: [{id:"Work",description: "A direction for my dreams; or a trouble to recover from.",
+			  required:{ability:1,desire:1,illhealth:1}
+			  }],
         },
 		{
             "id": "talk",
@@ -33,7 +36,7 @@
             "label": "Explore",
             "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore. Exploration is often unpredictable.",
 			"atStart":false,
-			  slots: [{id:"Explore",description: "Explore the city with Health or Followers; explore locations; or follow a clue.",
+			  slots: [{id:"Explore",description: "A place; a person; a location; a secret.",
 			  required:{health:1,follower:1,secrethistories:1,location:1},
 			  forbidden:{hireling:1}}],
         },

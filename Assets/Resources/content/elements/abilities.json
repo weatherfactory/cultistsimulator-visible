@@ -113,9 +113,10 @@ lifetime: 180
             label: "Dread",
             aspects:
             {edge: 2,
-			unreason: 1,
 			inducesdespair: 1,
-			ingredient:1},
+			ingredient:1,
+			illhealth:1},
+			slots:	[{id:"Reminders",required: {contentment:1},description:"I need a little peace, or a moment of happiness."}],
 			xtriggers: {restorereason: reason},
             description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror.",
 			lifetime: 180
@@ -147,8 +148,9 @@ lifetime: 180
 		{id: "fascination",
             label: "Fascination",
             aspects:
-            {moth:2,delirium:1,ingredient:1},
-            description: "Light leaks through the cracks. My mind is brighter than it ever was..",
+            {moth:2,illhealth:1,ingredient:1},
+			              		slots:[{id:"Reminders",required: {dread:1},actionId:"dream",description:"Grey reality will steady my soul."}],
+            description: "Light LEAKS through the CRACKS. My mind is BRIGHTER than it EVER was. THE HIGHER I RISE THE MORE I SEE.",
 			xtriggers: {restorepassion: passion},
 			lifetime: 180
 			},

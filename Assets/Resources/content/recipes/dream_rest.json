@@ -66,53 +66,32 @@
 		craftable:true
     },
 	
-			{
-        id: "tryrecoverreason",
-        label: "Clear my Mind?",
-        actionId: "dream",
-        requirements: {unreason: 1},
-              		slots:	[{id:"Reminders",required: {contentment:1},consumes:true}],
-		alternativerecipes: [{id:"recoverreason",chance:100}],
-        startdescription: "Was I different, before?",
-        description: "I remember that I was different: but I no longer remember how.",
-        warmup: 60,
-        craftable: true
-    },
 	{
         id: "recoverreason",
         label: "Clear my Mind",
         actionId: "dream",
-        requirements: {heart: 1, unreason: 1},
-        effects: {},
+        requirements: {contentment: 1, dread: 1},
+        effects: {contentment:-1},
 		aspects:{restorereason:1},
         startdescription: "I remember that I was different, before.",
         description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
-        warmup: 60
-    },
-				{
-        id: "tryrecoverpassion",
-        label: "Seek Composure",
-        actionId: "dream",
-        requirements: {delirium: 1},
-              		slots:[{id:"Reminders",required: {dread:1}}],
-		alternativerecipes: [{id:"recoverpassion",chance:100}],
-        startdescription: "The doors of vision have cracked open. Perhaps I should calm myself, somehow. Even Dread has its uses.",
-        description: "A little darkness will mellow my light; a little ballast will bring me back to earth.",
         warmup: 60,
-        craftable: true
+		craftable:true
     },
+
 	{
         id: "recoverpassion",
         label: "Composure",
         actionId: "dream",
-        requirements: {dread: 1, delirium: 1},
+        requirements: {dread: 1, fascination: 1},
         effects: {
 			dread:-1,
         },
 		aspects:{restorepassion:1},
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
-        warmup: 60
+        warmup: 60,
+		craftable:true
     },
 				{
         id: "dreamfunds",
