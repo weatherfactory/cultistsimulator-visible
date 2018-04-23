@@ -1,5 +1,14 @@
  {"recipes":
  [
+      			{
+        id: "skillhealthhintwork",
+        label: "Hint: Health",
+        actionId: "work",
+        requirements: {healthskill:1},
+        startdescription: "I have grown strong, but I must still devote my Health to a day's work.",
+        craftable: false,
+		hintonly: true,
+    },
      			{
         id: "vitalityhintwork",
         label: "Hint: Vitality",
@@ -7,7 +16,8 @@
         requirements: {vitality:1},
         startdescription: "This isn't a matter for work; but I could Study it to increase my Health.",
         craftable: false,
-		hintonly: true
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
     },
 	    			{
         id: "eruditionhintwork",
@@ -16,7 +26,8 @@
         requirements: {erudition:1},
         startdescription: "This isn't a matter for work;but I could Study it to increase my Reason.",
         craftable: false,
-		hintonly: true
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
     },
 	    			{
         id: "glimmeringhintwork",
@@ -25,7 +36,8 @@
         requirements: {glimmering:1},
         startdescription: "This isn't a matter for work; but I could Study it to increase my Passion.",
         craftable: false,
-		hintonly: true
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
     },
    			{
         id: "contentmenthintwork",
@@ -34,7 +46,8 @@
         requirements: {contentment:1},
         startdescription: "One cannot earn a living by being happy. But happiness may be something to cling to, when the night closes round me.",
         craftable: false,
-		hintonly: true
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
     },
   			{
         id: "commissionhint",

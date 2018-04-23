@@ -18,9 +18,9 @@
             aspects:
             {
                 heart: 2,
-				ingredient: 1
+				ingredient: 1,
+				ability:1
             },
-			slots:[{id:"Strength",actionId:"work",description:"A stronger worker might finish their tasks more quickly.",required:{healthskill:1}}]
             animFrames: 1,
 			xtriggers: {damagehealth: injury,fallsick:affliction},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
@@ -85,7 +85,8 @@
             aspects:
             {
                 lantern: 2,
-				ingredient:1
+				ingredient:1,
+				ability:1
             },
             animFrames: 1,
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
@@ -125,7 +126,8 @@ lifetime: 180
             aspects:
             {
                 moth: 2,
-				ingredient:1
+				ingredient:1,
+				ability:1
             },
             animFrames: 1,
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal

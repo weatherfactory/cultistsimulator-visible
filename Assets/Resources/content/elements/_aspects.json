@@ -75,6 +75,18 @@
             isAspect: true,
 			induces:[{id:"heartinduction",chance:5}]
         },
+								{
+            id: "ability",
+            label: "Ability",
+            isAspect: true,
+			description: "Brain or heart or hand or eye. Most of us are born with most of them."
+        },
+						{
+            id: "job",
+            label: "Job",
+            isAspect: true,
+			description: "An arrangement to exchange one's life for money."
+        },
 		{
             id: "ritual",
             label: "Ritual",

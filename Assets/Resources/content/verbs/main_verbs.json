@@ -3,8 +3,11 @@
         {
             "id": "work",
             "label": "Work",
-            "description": "Earn your living, or practice your arts.",
-			"atStart": true
+            "description": "Earn a living, or practice the secret arts.",
+			"atStart": true,
+						  slots: [{id:"Work",description: "Earn a living, or practice the secret arts.",
+			  required:{ability:1,job:1,lore:1,ritual:1,desire:1}
+			  }],
 			
         },
         {
@@ -28,7 +31,7 @@
 	  {
             "id": "explore",
             "label": "Explore",
-            "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore.",
+            "description": "Explore the city with Health or Followers; explore locations; or investigate the possibilities of lore. Exploration is often unpredictable.",
 			"atStart":false,
 			  slots: [{id:"Explore",description: "Explore the city with Health or Followers; explore locations; or follow a clue.",
 			  required:{health:1,follower:1,secrethistories:1,location:1},
