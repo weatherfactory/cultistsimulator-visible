@@ -1,0 +1,38 @@
+ {"recipes": [
+ 		{
+        id: "auctionsellcompensationc",
+        label: "Sell Silver Spintria",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,compensationvalue:8},
+        effects: {funds:8,compensationvalue:-8},
+		startdescription: "This will earn me a large sum of worldly currency.",
+        description: "A discreet transaction in a railway station.",
+        warmup: 30,
+        craftable: true
+    },
+			{
+        id: "auctionsellcompensationb",
+        label: "Sell Bronze Spintria",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,compensationvalue:4},
+        effects: {funds:4,compensationvalue:-4},
+		startdescription: "This will earn me a larger sum of worldly currency.",
+        description: "A hasty transaction in a deserted public house.",
+        warmup: 30,
+        craftable: true
+    },
+	{
+        id: "auctionsellcompensation",
+        label: "Sell Iron Spintria",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,compensationvalue:2},
+        effects: {funds:2,compensationvalue:-2},
+		startdescription: "This will earn me a small sum of worldly currency.",
+        description: "A furtive transaction in an unlit alley.",
+        warmup: 30,
+        craftable: true
+    },
+
+
+]
+}

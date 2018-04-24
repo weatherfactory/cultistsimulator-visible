@@ -4,7 +4,7 @@
 	label: "Skill: a Stronger Physique",
 	aspects: {healthskill:1,ability:1},
 	description: "I have benefited from exercise. [Use this with four Vitality to gain more Health.]",
-	slots:[{id:"Strength",actionId:"work",description:"A stronger worker might finish their tasks more quickly.",required:{health:1}},
+	slots:[{id:"Health",actionId:"work",description:"I must devote my energies to this..",required:{health:1}},
 	{id:"V1",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"},
 	{id:"V2",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"},
 	{id:"V3",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?"},
@@ -18,7 +18,7 @@
 	xtriggers:{careeradvancement:skillhealthc},
 	aspects: {healthskill:2,ability:1},
 	slots:[
-		{id:"Strength",actionId:"work",description:"A stronger worker might finish their tasks more quickly.",required:{health:1}},
+		{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
 	{id:"V1",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?[Use this with six Vitality to gain more Health.]"},
 	{id:"V2",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?"},
 	{id:"V3",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?"},
@@ -32,7 +32,7 @@
 	description: "There are many things now that I could crush in my fists.",
 	aspects: {healthskill:3,ability:1},
 	slots:[
-	{id:"Strength",actionId:"work",description:"A stronger worker might finish their tasks more quickly.",required:{health:1}},
+	{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
 	{id:"V1",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still? [Use this with eight Vitality to gain more Health.]"},
 	{id:"V2",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},
 	{id:"V3",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?"},

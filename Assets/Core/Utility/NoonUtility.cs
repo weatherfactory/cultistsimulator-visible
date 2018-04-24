@@ -72,7 +72,7 @@ namespace Noon
         public static bool UnitTestingMode { get; set; }
         public static int CurrentVerbosity =5;
 
-        public static VersionNumber VersionNumber = new VersionNumber("2018.4.k.1");
+        public static VersionNumber VersionNumber = new VersionNumber("2018.4.k.7");
 
         public static void Log(string message,int verbosityNeeded=0)
         {

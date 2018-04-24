@@ -74,8 +74,8 @@
             label: "An Affliction",
             aspects:{illhealth: 1, winter:2,ingredient:1},
 			xtriggers: {restorehealth: health},
-						slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
-			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
+						slots: [{id: "Medicine",label:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
+			{id:"Vitality",label:"...Vitality",actionId:"dream",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
             description: "Disease has left me weak. I need rest and nourishment, if I am to recover. [Dream on an Affliction to transform it back to Health, before the card decays.]",
 			lifetime: 180
 			},

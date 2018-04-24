@@ -17,7 +17,8 @@
         id: "locationauctionhouse",
             label: "Oriflamme's Auction House",
             aspects:{location: 1},
-            description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire.",
+            description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire. [You can buy or sell items at Oriflamme's.]",
+				slots:[{id:"Sell",Description: "Add an item here to auction it off.", required: {compensationvalue:1}}],
 			unique:true
         },
 						{
@@ -36,7 +37,7 @@
 			slots: [{id:"Cupboard",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
-					required: {follower: 1},
+					required: {follower: 1,hireling:-1,summoned:-1},
 				}],
         unique:true
         },
