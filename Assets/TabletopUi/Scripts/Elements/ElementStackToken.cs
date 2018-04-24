@@ -483,6 +483,9 @@ namespace Assets.CS.TabletopUI {
             if (!Decays)
                 return;
 
+            if(!isFront)
+                FlipToFaceUp(true); //never leave a decaying card face down.
+
             lifetimeRemaining = lifetimeRemaining - interval;
 
             if (lifetimeRemaining < 0) {

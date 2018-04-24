@@ -109,6 +109,7 @@ public class Heart : MonoBehaviour
         }
 
         tabletopManager.DecayStacksOnTable(intervalThisBeat);
+        tabletopManager.DecayStacksInResults(intervalThisBeat);
     }
 
     bool OutstandingSlotAlreadySaved(TokenAndSlot slot) {

@@ -65,5 +65,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayRecipeMetaComment(string hint);
         void DisplayHintRecipeFound(Recipe r);
         IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool showElementAspects);
+        void TryDecayResults(float interval);
     }
 }

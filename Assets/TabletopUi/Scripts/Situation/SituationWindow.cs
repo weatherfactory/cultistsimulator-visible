@@ -419,6 +419,13 @@ namespace Assets.CS.TabletopUI {
             return aspects;
         }
 
+        public void TryDecayResults(float interval)
+        {
+            var stacksToDecay = GetResultsStacksManager().GetStacks();
+            foreach(var s in stacksToDecay)
+                s.Decay(interval);
+        }
+
         public IAspectsDictionary GetAspectsFromStartingElements(bool includeElementAspects) {
             return startingSlots.GetAspectsFromSlottedCards(includeElementAspects);
         }
