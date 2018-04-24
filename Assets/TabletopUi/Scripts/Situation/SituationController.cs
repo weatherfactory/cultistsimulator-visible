@@ -543,6 +543,16 @@ namespace Assets.TabletopUi {
                 situationWindow.DumpAllResultingCardsToDesktop();
         }
 
+        /// <summary>
+        /// if the situation is complete, decay any cards in results.
+        /// Don't do anything with cards in slots for non-complete situations..... yet.
+        /// </summary>
+        public void TryDecayContents(float interval)
+        {
+            if (SituationClock.State == SituationState.Complete)
+                situationWindow.TryDecayResults(interval);
+        }
+
         #endregion
 
         #region -- External Situation Change Methods --------------------

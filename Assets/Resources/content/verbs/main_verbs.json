@@ -15,7 +15,7 @@
             "label": "Dream",
             "description": "Rest; reconsider your priorities; or risk yourself in exploration of the kingdoms of sleep.",
 			"atStart": false,
-			 slots: [{id:"Work",description: "A direction for my dreams; or a trouble to recover from.",
+			 slots: [{id:"Dream",description: "A direction for my dreams; or a trouble to recover from.",
 			  required:{ability:1,desire:1,illhealth:1,way:1,funds:1}
 			  }],
         },
@@ -24,7 +24,7 @@
             "label": "Talk",
             "description": "Interrogate, intimidate, beguile, instruct, recruit.",
 				"atStart": false,
-			 slots: [{id:"Work",description: "An ally, an enemy, or something in between.",
+			 slots: [{id:"Talk",description: "An ally, an enemy, or something in between.",
 			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1}}],
 		
         },
@@ -32,7 +32,9 @@
             "id": "study",
             "label": "Study",
             "description": "Unlock books and other treasures.",
-			"atStart": false
+			"atStart": false,
+						 slots: [{id:"Study",description: "The secret arts could occupy ten lifetimes of study.",
+			  forbidden:{hq:1}}],
         },
 	  {
             "id": "explore",
