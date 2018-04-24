@@ -1,28 +1,7 @@
  {"recipes": [
 
 
-		{
-	id: "explorevault_hint_funds",
-	label: "Preparations for an Expedition ",
-	actionId: "explore",
-	requirements: {vault:1,follower:1},
-	alternativerecipes: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	startdescription: "The Expedition will begin when we have at least one Funds and one Follower. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
-	hintonly:true,
-	craftable: false,
-	},
-			{
-	id: "explorevault_hint_funds",
-	label: "Preparations for an Expedition ",
-	actionId: "explore",
-	requirements: {vault:1,funds:1},
-	alternativerecipes: [
-	{id: "explorevault_expeditionbegun",chance:100}],
-	startdescription: "The Expedition will begin when we have at least one Funds and one Follower. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
-	hintonly:true,
-	craftable: false,
-	},
+
 	
 	{
 	id:"explorevault_expeditionbegun",
