@@ -160,20 +160,6 @@ craftable: true
 
 
 
-
-{id: "publicreadingrubbish",
-label:"Public Readings of Grandiose Risqué Nonsense",
-actionId: "talk",
-requirements: {society:-1,genericrubbishbook: 1},
-deckeffect: {"acquaintances":1},
-effects: {notoriety:1,genericrubbishbook:-1},
-alternativerecipes:[{id: "inspiremystique",chance:30}],
-startdescription: "This is nonsense, but it's probably exciting enough to attract potential followers.",
-description: "Here's someone who might be useful.",
-warmup: 60,
-craftable: true
-},
-
 {id: "inspiremystique",
 actionId: "talk",
 label: "Attracting Attention",
