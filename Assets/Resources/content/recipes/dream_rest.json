@@ -6,10 +6,20 @@
         label: "An Early Night",
         actionId: "dream",
         requirements: {health:1},
-		effects: {vitality:1},
-		startdescription: "With luck, I'll wake refreshed.",
+		effects: {fleeting:1},
+		alternativerecipes: [{id:"dreamhealthcontentment",chance:30},
+		{id:"dream_router",chance:30}]
+		startdescription: "With luck, I'll wake refreshed. [Sometimes, this will provide Contentment. Often, it will do nothing.]",
         description: "Sometimes, I have dreamt of a tall woman in a sand-coloured coat, who stands at the foot of my bed, smiling as she watches me sleep. In that dream, she turns her head with the swiftness of a bird, and her fingers flex like talons. I do not think I dreamt of her last night. If I had, I could not have slept so soundly.",
         warmup: 60,
+        craftable: true,
+    },
+	{
+        id: "dreamhealthcontentment",
+        label: "An Early Night",
+        actionId: "dream",
+		effects: {contentment:1},
+		description: "Sleep is a long dark ocean, but sometimes, when we reach the farther shore, there is lamp-light.",
         craftable: true,
     },
 	{
