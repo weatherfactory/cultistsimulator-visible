@@ -511,6 +511,20 @@ namespace Assets.CS.TabletopUI {
                 d.Decay(interval);
         }
 
+
+        public void DecayStacksInResults(float interval)
+        {
+            var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+            foreach (var s in situationControllers)
+            {
+                s.TryDecayContents(interval);
+            }
+
+            //foreach (var d in decayingStacks)
+              //  d.Decay(interval);
+        }
+
         private void HandleDragStateChanged(bool isDragging) {
             // not dragging a stack? then do nothing. _tabletop was destroyed (end of game?)
             if (_tabletop == null)
