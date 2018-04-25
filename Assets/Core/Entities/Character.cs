@@ -7,6 +7,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using JetBrains.Annotations;
 using Noon;
+using NUnit.Framework.Constraints;
 
 public enum LegacyEventRecordId
 {
@@ -43,7 +44,7 @@ public class Character:IGameEntityStorage
         State = CharacterState.Viable;
         recipeExecutions = new Dictionary<string, int>();
         DeckInstances = new List<IDeckInstance>();
-        if (previousCharacter == null)
+        if (previousCharacter == null && _pastLegacyEventRecords==null)
 
             _pastLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
         else
@@ -81,6 +82,16 @@ public class Character:IGameEntityStorage
 
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
     }
+
+    public void ReestablishPastLegacyEventRecord(LegacyEventRecordId id, string value)
+    {
+        if (_pastLegacyEventRecords.ContainsKey(id))
+            throw new ApplicationException(
+                "Trying to overwrite the past! ReestablishPastLegacyEventRecord should only be called on character load");
+        else
+            _pastLegacyEventRecords.Add(id, value);
+    }
+
 
     public void SetFutureLegacyEventRecord(LegacyEventRecordId id, string value)
     {

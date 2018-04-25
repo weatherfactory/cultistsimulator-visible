@@ -16,6 +16,7 @@ namespace Assets.Core.Interfaces
         int GetExecutionsCount(string forRecipeId);
         bool HasExhaustedRecipe(Recipe forRecipe);
         void SetFutureLegacyEventRecord(LegacyEventRecordId id,string value);
+        void ReestablishPastLegacyEventRecord(LegacyEventRecordId id, string value);
         string GetFutureLegacyEventRecord(LegacyEventRecordId forId);
         string GetPastLegacyEventRecord(LegacyEventRecordId forId);
 
