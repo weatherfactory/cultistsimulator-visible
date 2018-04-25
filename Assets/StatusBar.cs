@@ -20,7 +20,8 @@ public class StatusBar : MonoBehaviour
         Character currentCharacter = Registry.Retrieve<Character>();
         currentCharacter.Name = newName;
         Chronicler chronicler = Registry.Retrieve<Chronicler>();
-        chronicler.CharacterNameChanged(newName);
+        if(currentCharacter.Name!=newName)
+            chronicler.CharacterNameChanged(newName);
     }
 
     public void UpdateCharacterDetailsView(IGameEntityStorage storage)

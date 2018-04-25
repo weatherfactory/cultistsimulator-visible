@@ -231,7 +231,7 @@ namespace Assets.CS.TabletopUI {
 
             builder.CreateInitialTokensOnTabletop();
             ProvisionStartingElements(chosenLegacy, Registry.Retrieve<Choreographer>());
-            SetStartingCharacterInfo(chosenLegacy, CrossSceneState.GetDefunctCharacterName());
+            SetStartingCharacterInfo(chosenLegacy);
             StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());
 
             DealStartingDecks();
@@ -239,7 +239,7 @@ namespace Assets.CS.TabletopUI {
             _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
         }
 
-        private void SetStartingCharacterInfo(Legacy chosenLegacy, string previousCharacterName) {
+        private void SetStartingCharacterInfo(Legacy chosenLegacy) {
             Character newCharacter = Registry.Retrieve<Character>();
             newCharacter.Name = "[click to name]";
             Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history

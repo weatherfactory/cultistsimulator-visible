@@ -35,16 +35,16 @@ namespace Assets.Core.Services
             IAspectsDictionary tokenAspects = token.GetAspects();
 
             if(tokenAspects.Keys.Contains(BOOK_ASPECT))
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook,token.Label);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook,token.Id);
 
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             { 
                 if(token.Id.Contains("sensation"))
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "Sensation");
+                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionsensationa");
                 else if (token.Id.Contains("power"))
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "Power");
+                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionpowera");
                 else if(token.Id.Contains("enlightenment"))
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "Enlightenment");
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionenlightenmenta");
             }
 
         }
