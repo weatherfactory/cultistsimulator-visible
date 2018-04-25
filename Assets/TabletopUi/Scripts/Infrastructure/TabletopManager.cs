@@ -182,8 +182,6 @@ namespace Assets.CS.TabletopUI {
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
             var chronicler = new Chronicler(character);
 
-            chronicler.CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
-
             var situationsCatalogue = new SituationsCatalogue();
             var elementStacksCatalogue = new StackManagersCatalogue();
 
@@ -244,6 +242,7 @@ namespace Assets.CS.TabletopUI {
         private void SetStartingCharacterInfo(Legacy chosenLegacy, string previousCharacterName) {
             Character newCharacter = Registry.Retrieve<Character>();
             newCharacter.Name = "[click to name]";
+            Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
             newCharacter.Profession = chosenLegacy.Label;
            
         }
