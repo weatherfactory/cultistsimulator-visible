@@ -228,6 +228,11 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        protected override void NotifyChroniclerPlacedOnTabletop()
+        {
+            //currently, we never tell chroniclers about verb placement
+        }
+
         public override bool Retire() {
             if (!Defunct)
                 SpawnKillFX();

@@ -12,13 +12,12 @@ namespace Assets.Core.Interfaces
         IDeckInstance GetDeckInstanceById(string id);
         string Name { get; set; }
         string Profession { get; set; }
-        string PreviousCharacterName { get; set; }
-        string ReplaceTextFor(string text);
         void AddExecutionsToHistory(string forRecipeId,int executions);
         int GetExecutionsCount(string forRecipeId);
         bool HasExhaustedRecipe(Recipe forRecipe);
-        void SetLegacyEventRecord(LegacyEventRecordId id,string value);
-       string GetLegacyEventRecord(LegacyEventRecordId forId);
+        void SetFutureLegacyEventRecord(LegacyEventRecordId id,string value);
+        string GetFutureLegacyEventRecord(LegacyEventRecordId forId);
+        string GetPastLegacyEventRecord(LegacyEventRecordId forId);
 
     }
 }

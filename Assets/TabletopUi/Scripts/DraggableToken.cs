@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Core.Commands;
 using Assets.Core.Interfaces;
+using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
@@ -54,6 +55,7 @@ namespace Assets.CS.TabletopUI {
         public ITokenContainer TokenContainer;
         protected ITokenContainer OldTokenContainer; // Used to tell OldContainsTokens that this thing was dropped successfully
         protected INotifier notifier;
+        protected Chronicler subscribedChronicler;
 
         bool lastGlowState;
         Color lastGlowColor;
@@ -62,6 +64,8 @@ namespace Assets.CS.TabletopUI {
             RectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             lastGlowColor = glowImage.currentColor;
+            SubscribeNotifier(Registry.Retrieve<INotifier>());
+            SubscribeChronicler(Registry.Retrieve<Chronicler>());
         }
 
         #region -- Basic Getters ------------------------------------
@@ -103,6 +107,10 @@ namespace Assets.CS.TabletopUI {
 
         public void SubscribeNotifier(INotifier n) {
             notifier = n;
+        }
+        public void SubscribeChronicler(Chronicler c)
+        {
+            subscribedChronicler = c;
         }
 
         public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {
@@ -325,7 +333,10 @@ namespace Assets.CS.TabletopUI {
             RectTransform.localRotation = Quaternion.identity;
             RectTransform.localScale = Vector3.one;
             IsInAir = false;
+            NotifyChroniclerPlacedOnTabletop();
         }
+
+        protected abstract void NotifyChroniclerPlacedOnTabletop();
 
         public virtual bool Retire() {
             Destroy(gameObject);

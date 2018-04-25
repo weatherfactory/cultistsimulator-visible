@@ -11,7 +11,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static string SAVE_EXECUTIONS="executions";
         public static string SAVE_METAINFO="metainfo";
         public static string SAVE_VERSIONNUMBER="VERSIONNUMBER";
-        public static string SAVE_LEVERS="levers";
+        public static string SAVE_PAST_LEVERS="pastLevers";
+        public static string SAVE_FUTURE_LEVERS = "futureLevers";
         public const string SAVE_EXTRAGAME_STATE="extrastate";
         public const string SAVE_DECKS="decks";
         public const string SAVE_CURRENTENDING = "currentending";
@@ -27,7 +28,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_ELEMENTSTACKS = "elementStacks";
         public const string SAVE_SITUATIONS = "situations";
         public const string SAVE_CHARACTER_DETAILS = "characterDetails";
-        public const string SAVE_PREVIOUS_CHARACTER_NAME = "previousCharacterName";
+       
         public const string SAVE_DEFUNCT_CHARACTER_DETAILS = "defunctCharacterDetails";
         public const string SAVE_ONGOINGSLOTELEMENTS = "ongoingSlotElements";
         public const string SAVE_SITUATIONSTOREDELEMENTS = "situationStoredElements";

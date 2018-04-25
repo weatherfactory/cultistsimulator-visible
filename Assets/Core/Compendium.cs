@@ -8,6 +8,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
@@ -253,18 +254,22 @@ public class Compendium : ICompendium
 
     public void ReplaceTokens(IGameEntityStorage populatedCharacter)
     {
+
+        TokenReplacer tr = new TokenReplacer(populatedCharacter);
+
         foreach (var r in _recipes)
         {
-            r.Label = populatedCharacter.ReplaceTextFor(r.Label);
-            r.StartDescription = populatedCharacter.ReplaceTextFor(r.StartDescription);
-            r.Description = populatedCharacter.ReplaceTextFor(r.Description);
+            
+            r.Label = tr.ReplaceTextFor(r.Label);
+            r.StartDescription = tr.ReplaceTextFor(r.StartDescription);
+            r.Description = tr.ReplaceTextFor(r.Description);
         }
 
         foreach (var k in _elements.Keys)
         {
             var e = _elements[k];
-            e.Label = populatedCharacter.ReplaceTextFor(e.Label);
-            e.Description = populatedCharacter.ReplaceTextFor(e.Description);
+            e.Label = tr.ReplaceTextFor(e.Label);
+            e.Description = tr.ReplaceTextFor(e.Description);
 
         }
        

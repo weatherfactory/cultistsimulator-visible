@@ -10,7 +10,8 @@ using Noon;
 
 public enum LegacyEventRecordId
 {
-    LastNotion,
+    LastCharacterName,
+    LastDesire,
     LastTool,
     LastBook,
     LastSignificantPainting,
@@ -22,11 +23,12 @@ public enum LegacyEventRecordId
 public class Character:IGameEntityStorage
 {
     private string _name="[unnamed]";
-    private string _previouscharactername = "[UNKNOWN]";
     
     public CharacterState State { get; set; }
     public List<IDeckInstance> DeckInstances { get; set; }
-    public Dictionary<LegacyEventRecordId, string> _legacyEventRecords;
+    private Dictionary<LegacyEventRecordId, string> _futureLegacyEventRecords;
+    private Dictionary<LegacyEventRecordId, string> _pastLegacyEventRecords;
+
 
     private Dictionary<string, int> recipeExecutions;
     private string _endingTriggeredId = null;
@@ -42,9 +44,13 @@ public class Character:IGameEntityStorage
         recipeExecutions = new Dictionary<string, int>();
         DeckInstances = new List<IDeckInstance>();
         if (previousCharacter == null)
-            _legacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
+
+            _pastLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
         else
-            _legacyEventRecords = previousCharacter.GetAllLegacyEventRecords();
+            _pastLegacyEventRecords = previousCharacter.GetAllFutureLegacyEventRecords(); //THEIR FUTURE IS OUR PAST
+
+
+        _futureLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>(_pastLegacyEventRecords);
     }
 
     public Dictionary<string, int> GetAllExecutions()
@@ -76,15 +82,26 @@ public class Character:IGameEntityStorage
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
     }
 
-    public void SetLegacyEventRecord(LegacyEventRecordId id, string value)
+    public void SetFutureLegacyEventRecord(LegacyEventRecordId id, string value)
     {
-        _legacyEventRecords.Add(id,value);
+        if (_futureLegacyEventRecords.ContainsKey(id))
+            _futureLegacyEventRecords[id] = value;
+        else
+            _futureLegacyEventRecords.Add(id, value);
+    }
+    public string GetFutureLegacyEventRecord(LegacyEventRecordId forId)
+    {
+        if (_futureLegacyEventRecords.ContainsKey(forId))
+            return _futureLegacyEventRecords[forId];
+        else
+            return null;
     }
 
-    public string GetLegacyEventRecord(LegacyEventRecordId forId)
+
+    public string GetPastLegacyEventRecord(LegacyEventRecordId forId)
     {
-        if (_legacyEventRecords.ContainsKey(forId))
-            return _legacyEventRecords[forId];
+        if (_pastLegacyEventRecords.ContainsKey(forId))
+            return _pastLegacyEventRecords[forId];
         else
             return null;
     }
@@ -101,11 +118,7 @@ public class Character:IGameEntityStorage
     }
 
     public string Profession { get ; set; }
-    public string PreviousCharacterName
-    {
-        get { return _previouscharactername; }
-        set { _previouscharactername = value; }
-    }
+
 
     public string EndingTriggeredId
     {
@@ -113,19 +126,16 @@ public class Character:IGameEntityStorage
     }
 
 
-    public string ReplaceTextFor(string text)
+
+
+    public Dictionary<LegacyEventRecordId, string> GetAllFutureLegacyEventRecords()
     {
-        if (text == null)
-            return null; //huh. It really shouldn't be - I should be assigning empty string on load -  and yet sometimes it is. This is a guard clause to stop a basic nullreferenceexception
-        var replaced = text.Replace(NoonConstants.TOKEN_PREVIOUS_CHARACTER_NAME, PreviousCharacterName);
-        
-        return replaced;
+        return new Dictionary<LegacyEventRecordId, string>(_futureLegacyEventRecords);
     }
 
-
-    public Dictionary<LegacyEventRecordId, string> GetAllLegacyEventRecords()
+    public Dictionary<LegacyEventRecordId, string> GetAllPastLegacyEventRecords()
     {
-        return new Dictionary<LegacyEventRecordId,string>(_legacyEventRecords);
+        return new Dictionary<LegacyEventRecordId,string>(_pastLegacyEventRecords);
     }
 }
 

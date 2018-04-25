@@ -8,6 +8,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Core.Services;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
 using Assets.TabletopUi;
@@ -177,7 +178,12 @@ namespace Assets.CS.TabletopUI {
             var registry = new Registry();
             var compendium = new Compendium();
             var character = new Character(CrossSceneState.GetDefunctCharacter());
+
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
+            var chronicler = new Chronicler(character);
+
+            chronicler.CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
+
             var situationsCatalogue = new SituationsCatalogue();
             var elementStacksCatalogue = new StackManagersCatalogue();
 
@@ -202,6 +208,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<INotifier>(_notifier);
             registry.Register<Character>(character);
             registry.Register<Choreographer>(choreographer);
+            registry.Register<Chronicler>(chronicler);
             registry.Register<MapController>(_mapController);
             registry.Register<Limbo>(Limbo);
             registry.Register<SituationsCatalogue>(situationsCatalogue);
@@ -238,7 +245,7 @@ namespace Assets.CS.TabletopUI {
             Character newCharacter = Registry.Retrieve<Character>();
             newCharacter.Name = "[click to name]";
             newCharacter.Profession = chosenLegacy.Label;
-            newCharacter.PreviousCharacterName = previousCharacterName;
+           
         }
 
         private void DealStartingDecks() {

@@ -57,6 +57,10 @@ namespace Assets.CS.TabletopUI {
         public override string Id {
             get { return _element == null ? null : _element.Id; }
         }
+        public string Label
+        {
+            get { return _element == null ? null : _element.Label; }
+        }
 
         public bool Decays {
             get { return _element.Lifetime > 0; }
@@ -252,6 +256,11 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Retire + FX ------------------------------------------------------------------------------------
 
+        protected override void NotifyChroniclerPlacedOnTabletop()
+        {
+            subscribedChronicler.TokenPlacedOnTabletop(this);
+        }
+
         public override bool Retire() {
             return Retire(defaultRetireFX);
         }
@@ -404,7 +413,7 @@ namespace Assets.CS.TabletopUI {
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays) {
-                notifier = Registry.Retrieve<INotifier>();
+             
                 notifier.ShowNotificationWindow("Can't merge cards", "This type of card decays and can not be stacked.");
             }
         }

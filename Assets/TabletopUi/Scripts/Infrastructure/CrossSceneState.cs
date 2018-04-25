@@ -71,11 +71,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htDC = new Hashtable();
                 htDC.Add(SaveConstants.SAVE_NAME,c.Name);
                 
-                var htLevers=new Hashtable();
-                foreach (var record in c.GetAllLegacyEventRecords())
-                    htLevers.Add(record.Key.ToString(), record.Value);
+                var htFutureLevers=new Hashtable();
+                foreach (var record in c.GetAllFutureLegacyEventRecords())
+                    htFutureLevers.Add(record.Key.ToString(), record.Value);
 
-                htDC.Add(SaveConstants.SAVE_LEVERS,htLevers);
+                htDC.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);
 
                 ht.Add(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS, htDC);
             }            

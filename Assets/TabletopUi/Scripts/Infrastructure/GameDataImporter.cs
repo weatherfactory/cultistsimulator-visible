@@ -57,8 +57,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if(htCharacter.ContainsKey(SaveConstants.SAVE_NAME))
                 storage.Name = htCharacter[SaveConstants.SAVE_NAME].ToString();
 
-            if (htCharacter.ContainsKey(SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME))
-                storage.PreviousCharacterName = htCharacter[SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME].ToString();
 
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
                 storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
@@ -70,13 +68,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     storage.AddExecutionsToHistory(key.ToString(),GetIntFromHashtable(htExecutions,key.ToString()));
             }
 
-            if (htCharacter.ContainsKey(SaveConstants.SAVE_LEVERS))
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_PAST_LEVERS))
             {
-                var htLevers = htCharacter.GetHashtable(SaveConstants.SAVE_LEVERS);
-                foreach (var key in htLevers.Keys)
+                var htPastLevers = htCharacter.GetHashtable(SaveConstants.SAVE_PAST_LEVERS);
+                foreach (var key in htPastLevers.Keys)
                 {
                     var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                    storage.SetLegacyEventRecord(enumKey,htLevers[key].ToString());
+                    storage.SetFutureLegacyEventRecord(enumKey, htPastLevers[key].ToString());
+
+                }
+            }
+
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
+            {
+                var htFutureLevers = htCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
+                foreach (var key in htFutureLevers.Keys)
+                {
+                    var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
+                    storage.SetFutureLegacyEventRecord(enumKey, htFutureLevers[key].ToString());
 
                 }
             }
@@ -106,16 +115,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htDefunctCharacter != null)
             {
                 Character defunctCharacter=new Character();
-                defunctCharacter.PreviousCharacterName = htDefunctCharacter.GetValue(SaveConstants.SAVE_NAME)
-                    .ToString();
 
-                if (htDefunctCharacter.ContainsKey(SaveConstants.SAVE_LEVERS))
+                if (htDefunctCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
                 {
-                    var htLevers = htDefunctCharacter.GetHashtable(SaveConstants.SAVE_LEVERS);
-                    foreach (var key in htLevers.Keys)
+                    var htFutureLevers = htDefunctCharacter.GetHashtable(SaveConstants.SAVE_FUTURE_LEVERS);
+                    foreach (var key in htFutureLevers.Keys)
                     {
                         var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                        defunctCharacter.SetLegacyEventRecord(enumKey, htLevers[key].ToString());
+                        defunctCharacter.SetFutureLegacyEventRecord(enumKey, htFutureLevers[key].ToString());
 
                     }
                 }

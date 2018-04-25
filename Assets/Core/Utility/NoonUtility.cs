@@ -44,6 +44,7 @@ namespace Noon
         public const string KDECKSPEC = "spec";
         public const string KDECKDEFAULTCARD = "defaultcard";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
+        public static string DEFAULT_CHARACTER_NAME="Sinombre";
         public const string KINDUCES = "induces";
 
 
@@ -62,6 +63,14 @@ namespace Noon
 
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
+        public const string TOKEN_LAST_DESIRE = "#LAST_DESIRE#";
+        public const string TOKEN_LAST_TOOL = "#LAST_TOOL#";
+        public const string TOKEN_LAST_BOOK = "#LAST_BOOK#";
+        public const string TOKEN_LAST_SIGNIFICANT_PAINTING = "#LAST_SIGNIFICANT_PAINTING#";
+        public const string TOKEN_LAST_CULT = "#LAST_CULT#";
+        public const string TOKEN_LAST_HEADQUARTERS = "#LAST_HEADQUARTERS#";
+        public const string TOKEN_LAST_PERSON_KILLED_NAME = "#LAST_PERSON_KILLED_NAME#";
+
 
         public const string DECK_PREFIX = "deck:";
         public const string MANSUS_DECKID_PREFIX = "mansus_";

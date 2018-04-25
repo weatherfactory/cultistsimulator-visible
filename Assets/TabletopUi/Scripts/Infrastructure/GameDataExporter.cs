@@ -53,7 +53,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htCharacter=new Hashtable();
             htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
             htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
-            htCharacter.Add(SaveConstants.SAVE_PREVIOUS_CHARACTER_NAME,character.PreviousCharacterName);
 
             var htExecutions=new Hashtable();
             foreach (var e in character.GetAllExecutions())
@@ -63,13 +62,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
 
-            var htLevers = new Hashtable();
-            foreach(var record in character.GetAllLegacyEventRecords())
-                htLevers.Add(record.Key.ToString(), record.Value);
+            var htPastLevers = new Hashtable();
+            foreach(var record in character.GetAllPastLegacyEventRecords())
+                htPastLevers.Add(record.Key.ToString(), record.Value);
 
-             htCharacter.Add(SaveConstants.SAVE_LEVERS,htLevers);
+             htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
 
-            
+
+            var htFutureLevers = new Hashtable();
+            foreach (var record in character.GetAllFutureLegacyEventRecords())
+                htFutureLevers.Add(record.Key.ToString(), record.Value);
+
+            htCharacter.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);
+
 
             return htCharacter;
         }
