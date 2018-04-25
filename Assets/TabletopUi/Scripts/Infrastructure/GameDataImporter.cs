@@ -69,16 +69,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach(var key in htExecutions.Keys)
                     storage.AddExecutionsToHistory(key.ToString(),GetIntFromHashtable(htExecutions,key.ToString()));
             }
+
+            if (htCharacter.ContainsKey(SaveConstants.SAVE_LEVERS))
+            {
+                var htLevers = htCharacter.GetHashtable(SaveConstants.SAVE_LEVERS);
+                foreach (var key in htLevers.Keys)
+                {
+                    var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
+                    storage.SetLegacyEventRecord(enumKey,htLevers[key].ToString());
+
+                }
+            }
         }
 
 
         public SavedCrossSceneState ImportCrossSceneState(Hashtable htSave)
         {
-            SavedCrossSceneState state=new SavedCrossSceneState();
+            SavedCrossSceneState crossSceneState=new SavedCrossSceneState();
             
             //load current ending, if it exists
             if (htSave.ContainsKey(SaveConstants.SAVE_CURRENTENDING))
-              state.CurrentEnding =compendium.GetEndingById(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
+              crossSceneState.CurrentEnding =compendium.GetEndingById(htSave[SaveConstants.SAVE_CURRENTENDING].ToString());
 
             //load legacies, if they exist
             var htLegacies = htSave.GetHashtable(SaveConstants.SAVE_AVAILABLELEGACIES);
@@ -87,21 +98,37 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             {
                 Legacy l = compendium.GetLegacyById(k.ToString());
                 if(l!=null)
-                    state.AvailableLegacies.Add(l);
+                    crossSceneState.AvailableLegacies.Add(l);
             }
 
             //load previous character state, if it exists
             var htDefunctCharacter = htSave.GetHashtable(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS);
             if (htDefunctCharacter != null)
             {
-                Character pc=new Character();
-                pc.PreviousCharacterName = htDefunctCharacter.GetValue(SaveConstants.SAVE_NAME)
+                Character defunctCharacter=new Character();
+                defunctCharacter.PreviousCharacterName = htDefunctCharacter.GetValue(SaveConstants.SAVE_NAME)
                     .ToString();
-                state.DefunctCharacter = pc;
+
+                if (htDefunctCharacter.ContainsKey(SaveConstants.SAVE_LEVERS))
+                {
+                    var htLevers = htDefunctCharacter.GetHashtable(SaveConstants.SAVE_LEVERS);
+                    foreach (var key in htLevers.Keys)
+                    {
+                        var enumKey = (LegacyEventRecordId)Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
+                        defunctCharacter.SetLegacyEventRecord(enumKey, htLevers[key].ToString());
+
+                    }
+                }
+
+
+                crossSceneState.DefunctCharacter = defunctCharacter;
+
+                
+
             }
 
 
-            return state;
+            return crossSceneState;
         }
 
         private static void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)

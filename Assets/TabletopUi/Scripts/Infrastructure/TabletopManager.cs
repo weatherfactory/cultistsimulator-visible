@@ -176,7 +176,7 @@ namespace Assets.CS.TabletopUI {
         private void SetupServices(SituationBuilder builder, TabletopTokenContainer container) {
             var registry = new Registry();
             var compendium = new Compendium();
-            var character = new Character();
+            var character = new Character(CrossSceneState.GetDefunctCharacter());
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
             var situationsCatalogue = new SituationsCatalogue();
             var elementStacksCatalogue = new StackManagersCatalogue();

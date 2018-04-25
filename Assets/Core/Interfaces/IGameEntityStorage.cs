@@ -17,5 +17,8 @@ namespace Assets.Core.Interfaces
         void AddExecutionsToHistory(string forRecipeId,int executions);
         int GetExecutionsCount(string forRecipeId);
         bool HasExhaustedRecipe(Recipe forRecipe);
+        void SetLegacyEventRecord(LegacyEventRecordId id,string value);
+       string GetLegacyEventRecord(LegacyEventRecordId forId);
+
     }
 }

@@ -12,6 +12,7 @@ using OrbCreationExtensions;
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
 
+
    public static class CrossSceneState
     {
         private static Ending _currentEnding;
@@ -20,6 +21,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //record the previous character when ending a game, so we can use their deets for setting the scene / recording in ongoing save
         private static Character _defunctCharacter;
         private static MetaInfo _metaInfo;
+
 
         /// <summary>
         /// This is currently set, rather casually, in the MenuScreenController
@@ -38,8 +40,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public static Hashtable GetHashTableForCrossSceneState()
+        public static Hashtable GetSaveDataForCrossSceneState()
         {
+
             var ht=new Hashtable();
             AddMetaInfoToHashtable(ht);
             AddCurrentEndingToHashtable(ht);
@@ -49,24 +52,36 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return ht;
         }
 
+
+
         private static void AddMetaInfoToHashtable(Hashtable ht)
         {
 
-            var htMetaInfo = new Hashtable();
-            htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber);
+            var htMetaInfo = new Hashtable {{SaveConstants.SAVE_VERSIONNUMBER, _metaInfo.VersionNumber}};
             ht.Add(SaveConstants.SAVE_METAINFO,htMetaInfo);
 
         }
+
 
         private static void AddDefunctCharacterToHashtable(Hashtable ht)
         {
             var c = GetDefunctCharacter();
             if (c != null)
             {
-                var htDC = new Hashtable {{SaveConstants.SAVE_NAME, c.Name}};
+                var htDC = new Hashtable();
+                htDC.Add(SaveConstants.SAVE_NAME,c.Name);
+                
+                var htLevers=new Hashtable();
+                foreach (var record in c.GetAllLegacyEventRecords())
+                    htLevers.Add(record.Key.ToString(), record.Value);
+
+                htDC.Add(SaveConstants.SAVE_LEVERS,htLevers);
+
                 ht.Add(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS, htDC);
             }            
         }
+
+
 
         private static void AddCurrentEndingToHashtable(Hashtable ht)
         {

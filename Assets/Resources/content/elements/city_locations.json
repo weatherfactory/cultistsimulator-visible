@@ -37,7 +37,8 @@
 			slots: [{id:"Cupboard",
 					description: "Place a Follower in here to convert them, permanently, into a Prisoner.",
 					actionId: "talk",
-					required: {follower: 1,hireling:-1,summoned:-1},
+					required: {follower: 1},
+					forbidden:{hireling:-1,summoned:-1} 
 				}],
         unique:true
         },
