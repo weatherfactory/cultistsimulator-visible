@@ -61,7 +61,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 htExecutions.Add(e.Key,e.Value);
             }
 
-            htCharacter.Add(SaveConstants.SAVE_EXECUTIONS,htExecutions);
+            htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
+
+            var htLevers = new Hashtable();
+            foreach(var record in character.GetAllLegacyEventRecords())
+                htLevers.Add(record.Key.ToString(), record.Value);
+
+             htCharacter.Add(SaveConstants.SAVE_LEVERS,htLevers);
+
+            
 
             return htCharacter;
         }
@@ -116,7 +124,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public Hashtable GetHashtableForExtragameState()
         {
-            return CrossSceneState.GetHashTableForCrossSceneState();
+            return CrossSceneState.GetSaveDataForCrossSceneState();
         }
 
 private Hashtable GetHashtableForThisStack(IElementStack e)

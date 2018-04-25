@@ -660,8 +660,12 @@ public class ContentImporter
 
         }
 
+       //check for common issues in recipes
         foreach (var r in Recipes)
         {
+            if(r.Craftable && !r.Requirements.Any())
+                LogProblem(r.Id + " is craftable, but has no requirements, so it will make its verb useless :O ");
+
             foreach (var n in r.LinkedRecipes)
                 LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
             foreach (var a in r.AlternativeRecipes)

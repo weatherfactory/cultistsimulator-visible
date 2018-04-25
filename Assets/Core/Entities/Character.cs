@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,17 @@ using Assets.Core.Interfaces;
 using JetBrains.Annotations;
 using Noon;
 
+public enum LegacyEventRecordId
+{
+    LastNotion,
+    LastTool,
+    LastBook,
+    LastSignificantPainting,
+    LastCult,
+    LastHeadquarters,
+    LastPersonKilledName
+}
+
 public class Character:IGameEntityStorage
 {
     private string _name="[unnamed]";
@@ -14,15 +26,25 @@ public class Character:IGameEntityStorage
     
     public CharacterState State { get; set; }
     public List<IDeckInstance> DeckInstances { get; set; }
+    public Dictionary<LegacyEventRecordId, string> _legacyEventRecords;
 
     private Dictionary<string, int> recipeExecutions;
     private string _endingTriggeredId = null;
 
-    public Character()
+    public Character() : this(null)
+    {
+
+    }
+
+    public Character(Character previousCharacter)
     {
         State = CharacterState.Viable;
-        recipeExecutions=new Dictionary<string, int>();
-        DeckInstances=new List<IDeckInstance>();
+        recipeExecutions = new Dictionary<string, int>();
+        DeckInstances = new List<IDeckInstance>();
+        if (previousCharacter == null)
+            _legacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
+        else
+            _legacyEventRecords = previousCharacter.GetAllLegacyEventRecords();
     }
 
     public Dictionary<string, int> GetAllExecutions()
@@ -54,6 +76,18 @@ public class Character:IGameEntityStorage
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
     }
 
+    public void SetLegacyEventRecord(LegacyEventRecordId id, string value)
+    {
+        _legacyEventRecords.Add(id,value);
+    }
+
+    public string GetLegacyEventRecord(LegacyEventRecordId forId)
+    {
+        if (_legacyEventRecords.ContainsKey(forId))
+            return _legacyEventRecords[forId];
+        else
+            return null;
+    }
 
     public IDeckInstance GetDeckInstanceById(string id)
     {
@@ -78,6 +112,7 @@ public class Character:IGameEntityStorage
         get { return _endingTriggeredId; }
     }
 
+
     public string ReplaceTextFor(string text)
     {
         if (text == null)
@@ -87,5 +122,10 @@ public class Character:IGameEntityStorage
         return replaced;
     }
 
+
+    public Dictionary<LegacyEventRecordId, string> GetAllLegacyEventRecords()
+    {
+        return new Dictionary<LegacyEventRecordId,string>(_legacyEventRecords);
+    }
 }
 
