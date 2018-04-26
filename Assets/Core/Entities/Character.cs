@@ -44,16 +44,20 @@ public class Character:IGameEntityStorage
         State = CharacterState.Viable;
         recipeExecutions = new Dictionary<string, int>();
         DeckInstances = new List<IDeckInstance>();
-        if (previousCharacter == null && _pastLegacyEventRecords==null)
-        { 
-            HistoryBuilder hb=new HistoryBuilder();
-            _pastLegacyEventRecords = hb.SpecifyDefaultPast();
-        }
-        else if(previousCharacter!=null)
+        //if we have a previous character, base our past on their future
+        if (previousCharacter != null)
+        {
             _pastLegacyEventRecords = previousCharacter.GetAllFutureLegacyEventRecords(); //THEIR FUTURE IS OUR PAST
-        else
-        throw new ApplicationException("Previous character supplied, but past legacy event records are already in current character. Where did they come from?");
+        }
+        //otherwise, create a blank slate
+        else 
+            _pastLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
 
+        //the history builder will then provide a default value for any empty ones.
+        HistoryBuilder hb = new HistoryBuilder();
+        _pastLegacyEventRecords = hb.FillInDefaultPast(_pastLegacyEventRecords);
+
+        //finally, set our starting future to be our present, ie our past.
         _futureLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>(_pastLegacyEventRecords);
     }
 
@@ -86,11 +90,12 @@ public class Character:IGameEntityStorage
         return forRecipe.MaxExecutions <= GetExecutionsCount(forRecipe.Id);
     }
 
-    public void ReestablishPastLegacyEventRecord(LegacyEventRecordId id, string value)
+    public void SetOrOverwritePastLegacyEventRecord(LegacyEventRecordId id, string value)
     {
+if(string.IsNullOrEmpty(value))
+    throw new ApplicationException("Error in LegacyEventRecord overwrite: shouldn't overwrite with an empty value, trying to erase the past for " + id.ToString());
         if (_pastLegacyEventRecords.ContainsKey(id))
-            throw new ApplicationException(
-                "Trying to overwrite the past! ReestablishPastLegacyEventRecord should only be called on character load");
+            _pastLegacyEventRecords[id] = value;
         else
             _pastLegacyEventRecords.Add(id, value);
     }

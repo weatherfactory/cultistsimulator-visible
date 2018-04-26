@@ -74,7 +74,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach (var key in htPastLevers.Keys)
                 {
                     var enumKey = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), key.ToString());
-                    storage.ReestablishPastLegacyEventRecord(enumKey, htPastLevers[key].ToString());
+                    string value = htPastLevers[key].ToString();
+                    if(!string.IsNullOrEmpty(value))
+                        storage.SetOrOverwritePastLegacyEventRecord(enumKey, htPastLevers[key].ToString());
 
                 }
             }
