@@ -87,6 +87,12 @@
             isAspect: true,
 			description: "An arrangement to exchange one's life for money."
         },
+								{
+            id: "demotion",
+            label: "Demotion",
+            isAspect: true,
+			description: "I have spent too long away from work."
+        },
 		{
             id: "ritual",
             label: "Rite",
@@ -177,11 +183,15 @@
 		label: "Ascending",
 		isAspect:true,
 		description: "To the next Mark.",
-		comments: "Recipe aspect"},
+		comments: "Recipe aspect"
+			noartneeded: true
+		},
 		{id:"descend",
 		label: "Descending",
 		isAspect:true,
 		description: "If I don't feed my new appetites, my Marks will fade.",
+
+			noartneeded: true
 		comments: "Recipe aspect"},
 				{
             id: "article",
@@ -619,19 +629,18 @@
 			noartneeded: true
         },
 		
-		
-				 {
-            id: "restorereason",
-            label: "Restore Reason",
-			description: "Reason will return.",
-            isAspect: true,
-			comments: "Recipe aspect",
-			noartneeded:true
-        },
 				 {
             id: "restorepassion",
             label: "Restore Passion",
 			description: "Passion will be clarified.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded:true
+        },
+						 {
+            id: "plead",
+            label: "Plead",
+			description: "Mercy may be shown.",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded:true
