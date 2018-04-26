@@ -249,6 +249,7 @@ public class Compendium : ICompendium
             return new Ending(endingFlag, "MY BODY IS DEAD",
                 "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
                 "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]", "suninrags", EndingFlavour.Melancholy, "DramaticLightEvil");
+
         if (endingFlag == "despairending")
             return new Ending(endingFlag, "NO MORE",
                 "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil");

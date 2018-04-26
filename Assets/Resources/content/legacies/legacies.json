@@ -6,35 +6,136 @@ description: "June the 28th, once again.",
 startdescription: "Alone in this chilly city, with my useless education, and my dreams.\n
 What now? Could I become something more?",
 effects: {introjob:1},
-image: "aspirant"
+image: "aspirant",
+fromEnding:"default",
+availableWithoutEndingMatch:true
 },
 {id: "brightyoungthing",
 label: "Bright Young Thing",
 description: "Endowed from birth with wealth and talent. A life of ease, comfort and delight stretches ahead like an amber carpet.",
 startdescription: "I missed the dawn. I generally do. There'll be plenty more.",
 effects: {legacybytjob:1},
-image: "byt"
+image: "byt",
+fromEnding:"deathofthebody",
+availableWithoutEndingMatch:true
 },
 {id: "physician",
 label: "Physician",
 description: "As the patient descended into the final delirium, you made copious notes. In the buzzing heat of the night, you re-read those notes, and they began, at last, to make a kind of sense.",
 startdescription: "Today is the day I return to my post at the Institute. I have a position, and a reputation. That should mean something; but I am beginning to dream of something else.",
 effects: {legacyphysicianjob:1},
-image: "physician"
+image: "physician",
+fromEnding:"deathofthebody",
+availableWithoutEndingMatch:true
 },
-{id: "haunted",
-label: "Haunted",
+{id: "detective",
+label: "Detective",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"arrest",
+availableWithoutEndingMatch:true
+},
+{id: "dancer",
+label: "Dancer",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"workvictory",
+availableWithoutEndingMatch:true
+},
+{id: "apostle",
+label: "Apostle",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"visionsending",
+availableWithoutEndingMatch:true
+},
+
+{id: "auctioneer",
+label: "Auctioneer",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"workvictory",
+availableWithoutEndingMatch:false
+},
+{id: "priest",
+label: "Priest",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"despairending",
+availableWithoutEndingMatch:false
+},
+
+{id: "medium",
+label: "Medium",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"visionsending",
+availableWithoutEndingMatch:false
+},
+
+
+
+{id: "survivor",
+label: "Survivor",
 description: "At times, in mirrors, in crowds, you see the face of one now lost.",
 startdescription: "Haunted starting note",
 effects: {introjob:1},
-image: "moth"
+image: "moth",
+fromEnding:"visionsending",
+availableWithoutEndingMatch:false
 },
-{id: "inheritor",
-label: "Inheritor",
+
+
+
+{id: "vessel",
+label: "Vessel",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"minorlanternvictory",
+availableWithoutEndingMatch:false
+},
+{id: "tainted",
+label: "Vessel",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"minorlanternvictory",
+availableWithoutEndingMatch:false
+},
+{id: "shaped",
+label: "Vessel",
+description: "",
+startdescription: "",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"minorforgevictory",
+availableWithoutEndingMatch:false
+},
+{id: "cousin",
+label: "Cousin",
 description: "One morning, when the Sun is high and the mirrors all are sealed, there will come a knock on your door. \"A benefactor\", the gentleman in grey will say. \"A bequest. Perhaps you hadn't known you were related.\"",
 startdescription: "Inheritor starting note",
 effects: {introjob:1},
-image: "knock"
-}
+image: "knock",
+fromEnding:"",
+availableWithoutEndingMatch:false
+},
+
+
 ]
 };

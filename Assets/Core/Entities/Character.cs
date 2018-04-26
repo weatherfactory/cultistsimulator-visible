@@ -19,6 +19,7 @@ public enum LegacyEventRecordId
     LastCult,
     LastHeadquarters,
     LastPersonKilled
+
 }
 
 public class Character:IGameEntityStorage
