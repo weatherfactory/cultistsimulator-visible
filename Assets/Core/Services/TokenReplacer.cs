@@ -23,17 +23,20 @@ namespace Assets.Core.Services
             string previousCharacterName = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastCharacterName);
             string lastDesireId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastDesire);
             string lastBookId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastBook);
-            string lastBookLabel = "";
-            string lastDesireLabel = "";
-            try
-            {
-                lastBookLabel = _compendium.GetElementById(lastBookId).Label;
-                lastDesireLabel = _compendium.GetElementById(lastDesireId).Label;
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log("Duff elementId in PastLegacyEventRecord",1);
-            }
+            string lastBookLabel = string.Empty;
+            string lastDesireLabel=String.Empty;
+
+            var lastBook = _compendium.GetElementById(lastBookId);
+            if (lastBook == null)
+                NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastBookId, 1);
+            else lastBookLabel = lastBook.Label;
+
+            var lastDesire = _compendium.GetElementById(lastDesireId);
+            if (lastDesire == null)
+                NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastDesireId, 1);
+            else lastDesireLabel = lastDesire.Label;
+
+
             if (text == null)
                 return null; //huh. It really shouldn't be - I should be assigning empty string on load -  and yet sometimes it is. This is a guard clause to stop a basic nullreferenceexception
             string replaced = text;

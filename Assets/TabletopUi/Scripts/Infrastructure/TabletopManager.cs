@@ -242,7 +242,7 @@ namespace Assets.CS.TabletopUI {
         private void SetStartingCharacterInfo(Legacy chosenLegacy) {
             Character newCharacter = Registry.Retrieve<Character>();
             newCharacter.Name = "[click to name]";
-            Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
+           // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
             newCharacter.Profession = chosenLegacy.Label;
            
         }

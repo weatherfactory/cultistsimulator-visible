@@ -44,7 +44,7 @@ namespace Noon
         public const string KDECKSPEC = "spec";
         public const string KDECKDEFAULTCARD = "defaultcard";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
-        public static string DEFAULT_CHARACTER_NAME="Sinombre";
+
         public const string KINDUCES = "induces";
 
 

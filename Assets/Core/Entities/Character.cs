@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Core.Services;
 using JetBrains.Annotations;
 using Noon;
 
@@ -44,11 +45,14 @@ public class Character:IGameEntityStorage
         recipeExecutions = new Dictionary<string, int>();
         DeckInstances = new List<IDeckInstance>();
         if (previousCharacter == null && _pastLegacyEventRecords==null)
-
-            _pastLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>();
-        else
+        { 
+            HistoryBuilder hb=new HistoryBuilder();
+            _pastLegacyEventRecords = hb.SpecifyDefaultPast();
+        }
+        else if(previousCharacter!=null)
             _pastLegacyEventRecords = previousCharacter.GetAllFutureLegacyEventRecords(); //THEIR FUTURE IS OUR PAST
-
+        else
+        throw new ApplicationException("Previous character supplied, but past legacy event records are already in current character. Where did they come from?");
 
         _futureLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>(_pastLegacyEventRecords);
     }
