@@ -16,12 +16,14 @@ namespace Assets.Logic
         public List<Legacy> DetermineLegacies(Ending ending, List<IElementStack> stacksAtEnd)
         {
             //we always need three legacies.
-            int randomLegaciesToDraw = 2; 
+            int randomLegaciesToDraw = 2;
+            Random rnd = new Random();
 
             List<Legacy> selectedLegacies=new List<Legacy>();
+            
 
             //try to find a legacy that matches the death.
-            Legacy deathDependentLegacy = _compendium.GetAllLegacies().Find(l => l.FromEnding == ending.Id);
+            Legacy deathDependentLegacy = _compendium.GetAllLegacies().OrderBy(l=>rnd.Next()).ToList().Find(l => l.FromEnding == ending.Id);
 
             //there should be one! but in case there's not, log it, and get prepped to draw an extra random legacy.
             if (deathDependentLegacy == null)
@@ -38,7 +40,7 @@ namespace Assets.Logic
             //find: randomly selected legacies from the remaining list that are
             //- available for random draw
             //- not the death-dependent legacy, if there is one
-            Random rnd=new Random();
+            
             IEnumerable<Legacy> drawingLegacies = _compendium.GetAllLegacies().Where(l => l.AvailableWithoutEndingMatch)
                 .OrderBy(l => rnd.Next());
             drawingLegacies = drawingLegacies.Take(randomLegaciesToDraw);
