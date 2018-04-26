@@ -7,7 +7,6 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using JetBrains.Annotations;
 using Noon;
-using NUnit.Framework.Constraints;
 
 public enum LegacyEventRecordId
 {

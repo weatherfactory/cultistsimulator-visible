@@ -59,6 +59,13 @@
 			xtriggers: {restorehealth: health},
 			lifetime: 180
 			},
+									{
+        id: "disillusionment",
+            label: "Passion (Disillusioned)",
+            description: "I have gone against my own principles or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
+			lifetime: 60,
+			decayTo:"passion"
+			},
 						{
         id: "fatigue",
             label: "Health (Fatigued)",
@@ -93,6 +100,7 @@
 
 [With Erudition, you can Study to gain more Reason.]",
 				xtriggers: {damagereason: dread,invest:concentration},
+				
         },
 		        {
             id: "concentration",
@@ -133,7 +141,7 @@ lifetime: 180
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
 [With enough Glimmering, you can Study to gain more Passion.]",
-			xtriggers: {damagepassion:fascination},
+			xtriggers: {damagepassion:fascination,plead:disillusionment},
         },
 					 {
             id: "glimmering",
