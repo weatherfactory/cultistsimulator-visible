@@ -20,5 +20,7 @@ namespace Assets.Core.Interfaces
         string GetFutureLegacyEventRecord(LegacyEventRecordId forId);
         string GetPastLegacyEventRecord(LegacyEventRecordId forId);
 
+        Dictionary<LegacyEventRecordId, string> GetAllFutureLegacyEventRecords();
+        Dictionary<LegacyEventRecordId, string> GetAllPastLegacyEventRecords();
     }
 }

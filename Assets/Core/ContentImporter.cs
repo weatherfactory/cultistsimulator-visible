@@ -675,7 +675,7 @@ public class ContentImporter
 
     private void LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
-        if (!Elements.ContainsKey(elementId))
+        if (!elementId.StartsWith(NoonConstants.LEVER_PREFIX) && !Elements.ContainsKey(elementId))
             LogProblem("'" + containerId + "' references non-existent element '" + elementId + "' " + " " + context);
     }
 

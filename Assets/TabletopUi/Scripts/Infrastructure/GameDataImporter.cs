@@ -42,7 +42,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             ImportCharacter(storage, htCharacter);
             //update the compendium text with tokens for this character
-            compendium.ReplaceTokens(storage);
+            compendium.SupplyLevers(storage);
 
             ImportTabletopElementStacks(tabletop, htElementStacks);
 

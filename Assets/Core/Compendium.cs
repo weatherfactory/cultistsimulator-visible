@@ -10,6 +10,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
 using Assets.CS.TabletopUI;
+using Noon;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
 
@@ -37,7 +38,7 @@ public interface ICompendium
 
     List<IDeckSpec> GetAllDeckSpecs();
     IDeckSpec GetDeckSpecById(string id);
-    void ReplaceTokens(IGameEntityStorage populatedCharacter);
+    void SupplyLevers(IGameEntityStorage populatedCharacter);
 }
 
 public class Compendium : ICompendium
@@ -48,6 +49,7 @@ public class Compendium : ICompendium
     private Dictionary<string, IVerb> _verbs;
     private Dictionary<string, Legacy> _legacies;
     private Dictionary<string, IDeckSpec> _decks;
+    private Dictionary<LegacyEventRecordId, string> _pastLevers;
 
     // -- Update Collections ------------------------------
 
@@ -87,6 +89,7 @@ public class Compendium : ICompendium
     {
         _legacies = legacies;
     }
+
 
     // -- Misc Getters ------------------------------
 
@@ -163,6 +166,25 @@ public class Compendium : ICompendium
 
     public Element GetElementById(string elementId) {
         Element element;
+        if (elementId.StartsWith(NoonConstants.LEVER_PREFIX))
+        {
+            
+            string leverId = elementId.Replace(NoonConstants.LEVER_PREFIX, "");
+            if (!Enum.IsDefined(typeof(LegacyEventRecordId), leverId))
+                return null;
+            else
+            { 
+            LegacyEventRecordId leverEnum = (LegacyEventRecordId) Enum.Parse(typeof(LegacyEventRecordId), leverId);
+                if (!_pastLevers.ContainsKey(leverEnum))
+                    return null;
+                else
+                elementId = _pastLevers[leverEnum];
+
+            }
+
+        }
+
+
         _elements.TryGetValue(elementId, out element);
 
         return element;
@@ -251,11 +273,16 @@ public class Compendium : ICompendium
 
         return Ending.DefaultEnding();
     }
-
-    public void ReplaceTokens(IGameEntityStorage populatedCharacter)
+    /// <summary>
+    /// allow the character to specify levers (legacy event records)
+    /// replace tokens with lever values, and also store the levers for later use
+    /// if we want to retrieve the actual levered elements.
+    /// </summary>
+    /// <param name="populatedCharacter"></param>
+    public void SupplyLevers(IGameEntityStorage populatedCharacter)
     {
-
-        TokenReplacer tr = new TokenReplacer(populatedCharacter);
+        _pastLevers = populatedCharacter.GetAllPastLegacyEventRecords();
+        TokenReplacer tr = new TokenReplacer(populatedCharacter,this);
 
         foreach (var r in _recipes)
         {

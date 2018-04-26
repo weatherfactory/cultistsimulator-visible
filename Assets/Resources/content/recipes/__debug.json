@@ -8,7 +8,15 @@ description: "end test deck",
 warmup: 1,
 craftable:false
 },
-
+		{
+        id: "_memoryvault",
+        label: "Retrieve stored things",
+        actionId: "fictitiousverb",
+                effects: {LEVER_LastDesire:1,LEVER_LastBook:1},
+		startdescription: "This is what we had:",
+        warmup: 5,
+        craftable: false,
+	},
 		{
         id: "_ascensionending",
         label: "Display Ascension Ending",

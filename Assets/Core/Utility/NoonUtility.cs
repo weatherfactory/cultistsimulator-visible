@@ -73,6 +73,7 @@ namespace Noon
 
 
         public const string DECK_PREFIX = "deck:";
+        public const string LEVER_PREFIX = "LEVER_";
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
     }

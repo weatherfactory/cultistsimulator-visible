@@ -13,6 +13,18 @@
 		maxexecutions: 1,
 		burnimage: "office"
     },
+	 	{
+        id: "job_plead",
+        label: "Plead to Keep my Job",
+        actionId: "work",
+        requirements: {passion: 1,demotion:1},
+		aspects:{plead:1},       
+        startdescription: "This is not a pleasant conversation, but it may be a necessary one.",
+        description: "I have been offered another chance. I am, apparently, expected to be grateful.",
+        craftable: true,
+		warmup:30
+		
+    },
 	{id: "gloverandgloverjuniorwork",
 	label: "Junior Work at Glover & Glover",
 	  requirements: {gloverandgloverjuniorjob: 1,ritual:-1},

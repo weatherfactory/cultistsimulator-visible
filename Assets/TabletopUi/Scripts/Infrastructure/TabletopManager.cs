@@ -135,7 +135,7 @@ namespace Assets.CS.TabletopUI {
             else {
                 SetupNewBoard(builder);
                 var populatedCharacter = Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
-                Registry.Retrieve<ICompendium>().ReplaceTokens(populatedCharacter);
+                Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
             }
         }
 
