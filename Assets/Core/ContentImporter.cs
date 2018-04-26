@@ -373,22 +373,35 @@ public class ContentImporter
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
 
-            Legacy l = new Legacy(htEachLegacy[NoonConstants.KID].ToString(),
-                htEachLegacy[NoonConstants.KLABEL].ToString(), htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
-                htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(),
-                htEachLegacy[NoonConstants.KIMAGE].ToString());
-
-            Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
-            if (htEffects != null)
+            try
             {
-                foreach (string k in htEffects.Keys)
+
+                Legacy l = new Legacy(htEachLegacy[NoonConstants.KID].ToString(),
+                    htEachLegacy[NoonConstants.KLABEL].ToString(), htEachLegacy[NoonConstants.KDESCRIPTION].ToString(),
+                    htEachLegacy[NoonConstants.KSTARTDESCRIPTION].ToString(),
+                    htEachLegacy[NoonConstants.KIMAGE].ToString(),
+                    htEachLegacy[NoonConstants.KFROMENDING].ToString(),
+                    Convert.ToBoolean(htEachLegacy[NoonConstants.KAVAILABLEWITHOUTENDINGMATCH])
+
+                );
+
+                Hashtable htEffects = htEachLegacy.GetHashtable(NoonConstants.KEFFECTS);
+                if (htEffects != null)
                 {
-                    LogIfNonexistentElementId(k, l.Id, "(effects)");
-                    l.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                    foreach (string k in htEffects.Keys)
+                    {
+                        LogIfNonexistentElementId(k, l.Id, "(effects)");
+                        l.Effects.Add(k, Convert.ToInt32(htEffects[k]));
+                    }
                 }
+
+                Legacies.Add(l.Id, l);
             }
 
-            Legacies.Add(l.Id, l);
+            catch
+            {
+                LogProblem("Can't parse this legacy: " + htEachLegacy[NoonConstants.KID].ToString());
+            }
         }
 
 

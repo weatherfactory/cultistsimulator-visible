@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Core.Entities
 {
-    //TODO: rename Martin's UI class once he's done in there
+
     /// <summary>
     /// A specification for an effect available to the player after a game completes, which determines the starting situation of the next character.
     /// </summary>
@@ -22,10 +22,12 @@ namespace Assets.Core.Entities
         //displays after game start
         public string StartDescription { get; set; }
         public string Image { get; set; }
+        public string FromEnding { get; set; }
+        public bool AvailableWithoutEndingMatch { get; set; }
         public IAspectsDictionary Effects;
 
 
-        public Legacy(string id, string label, string description, string startdescription, string image)
+        public Legacy(string id, string label, string description, string startdescription, string image,string fromEnding,bool availableWithoutEndingMatch)
         {
             Id = id;
             Label = label;
@@ -33,6 +35,8 @@ namespace Assets.Core.Entities
             StartDescription = startdescription;
             Image = image;
             Effects = new AspectsDictionary();
+            FromEnding = fromEnding;
+            AvailableWithoutEndingMatch = availableWithoutEndingMatch;
         }
     }
 }
