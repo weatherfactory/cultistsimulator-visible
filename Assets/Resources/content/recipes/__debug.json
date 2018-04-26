@@ -12,9 +12,17 @@ craftable:false
         id: "_memoryvault",
         label: "Retrieve stored things",
         actionId: "fictitiousverb",
-                effects: {LEVER_LastDesire:1,LEVER_LastBook:1},
+                effects: {
+				LEVER_LastBook:1,
+				LEVER_LastDesire:1,
+				    LEVER_LastTool:1,
+    LEVER_LastSignificantPainting:1,
+    LEVER_LastCult:1,
+    LEVER_LastHeadquarters:1,
+    LEVER_LastPersonKilled:1
+				},
 		startdescription: "This is what we had:",
-        warmup: 5,
+        warmup: 1,
         craftable: false,
 	},
 		{
