@@ -108,7 +108,7 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 		aspects:{job:1},
             label: "Board Seat at Glover & Glover",
             description: "The younger Glover's disappearance left a board seat empty. I now occupy it. [If you don't attend this job regularly, you might suffer a demotion.]",
-			lifetime:150,
+			lifetime:100,
 			decayTo:"gloverandglovertopjob_tainted_demotion",
 			xtriggers:{employment:gloverandglovertopjob}
         },
@@ -117,7 +117,7 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 		aspects:{job:1},
             label: "Board Seat at Glover & Glover",
             description: "Rumours of my esoteric interests have reached the ears of the elder Glover. This has left my position uncertain. [If you don't attend this job regularly, you might suffer a demotion.]",
-			lifetime:120,
+			lifetime:100,
 			decayTo:"gloverandglovertopjob_tainted_demotion",
 			xtriggers:{employment:gloverandglovertopjob_tainted}
         },
