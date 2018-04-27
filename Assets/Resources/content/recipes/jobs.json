@@ -4,7 +4,7 @@
         id: "findclericalwork",
         label: "Find Clerical Work",
         actionId: "work",
-        requirements: {reason: 1,ritual:-1},
+        requirements: {reason: 1,ritual:-1,job:-1},
         effects: {gloverandgloverjuniorjob: 1},
         startdescription: "Find work which will spare my body, if not my mind.",
         description: "Glover & Glover have offered me a junior position. I start at eight sharp, tomorrow morning! ",

@@ -104,9 +104,10 @@
         },
 		        {
             id: "concentration",
-            label: "Concentration",
-			description: "I have invested my Reason in this process.",
-				xtriggers: {restore:reason},
+            label: "Reason [Dimmed]",
+			description: "My mind is weary.  [This card can't be used, but it will recover after sixty seconds.]",
+			lifetime:60,
+			decayTo:"reason"
         },
 				 {
             id: "erudition",
