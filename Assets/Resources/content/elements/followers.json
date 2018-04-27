@@ -4,7 +4,7 @@
         id: "clovette_a",
             label: "Clovette, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Clovette is happy in way that brooks no counter-argument to happiness. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: clovette_b,killmortal:corpse,derangemortal:lunatic}
@@ -13,7 +13,7 @@
         id: "dorothy_a",
             label: "Dorothy, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Dorothy is an enthusiastic sort with an eclectic reading habit. She's fascinated by your hints about the shapes beneath the world's skin. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: dorothy_b,killmortal:corpse,derangemortal:lunatic}
@@ -22,7 +22,7 @@
         id: "enid_a",
             label: "Enid, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Enid speaks softly, and sometimes her gaze doesn't focus on anything visible. It may be that you've dreamed the same dreams. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: enid_b,killmortal:corpse,derangemortal:lunatic}
@@ -31,7 +31,7 @@
         id: "rose_a",
             label: "Rose, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Rose is a sly miss, and she recognises you as someone uncommon. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: rose_b,killmortal:corpse,derangemortal:lunatic}
@@ -40,7 +40,7 @@
         id: "leo_a",
             label: "Leo, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Leo is an earnest sort with an interest in the occult. He hangs on your hints about the invisible arts. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting:leo_b,killmortal:corpse,derangemortal:lunatic}
@@ -49,7 +49,7 @@
         id: "neville_a",
             label: "Neville, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Neville pauses before he speaks, and flinches easily. He laughs whenever he thinks you've made a joke. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: neville_b,killmortal:corpse,derangemortal:lunatic}
@@ -58,7 +58,7 @@
         id: "tristan_a",
             label: "Tristan, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Tristan dislikes distractions. Tristan gets things done. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: tristan_b,killmortal:corpse,derangemortal:lunatic}
@@ -67,7 +67,7 @@
         id: "victor_a",
             label: "Victor, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Victor is a sly fellow, and he knows an unusual opportunity when he sees it. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: victor_b,killmortal:corpse,derangemortal:lunatic}
@@ -76,7 +76,7 @@
         id: "generic_a",
             label: "A Hanger-On",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic}
@@ -248,7 +248,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,heart:10},
             description: "Clovette is always in motion. She laughs easily. Her smile is the crescent at the edge of the moon.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r}
         },
 		 {
         id: "dorothy_d",
@@ -257,7 +257,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,heart:10},
             description: "When Dorothy moves, we hear the drum. When she speaks, we see the dance. Her determination is her shield and her weapon.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r}
         },
 				 {
         id: "enid_d",
@@ -266,7 +266,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,knock:10},
             description: "Enid sees the gaps between things, and the arts that she has learned permit her, sometimes, to place her fingers in that gap.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:enid_p,rebellion:enid_r}
         },
 				 {
         id: "rose_d",
@@ -275,7 +275,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
             description: "The night before Rose meets her subject, the subject will receive a package with a single yellow rose.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:rose_p,rebellion:rose_r}
         },
 				 {
         id: "leo_d",
@@ -284,7 +284,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1, heart:10},
             description: "Leo will preserve, at all costs. He will not cease.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r}
         },
 				 {
         id: "neville_d",
@@ -293,7 +293,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,knock:10},
             description: "In his dreams, Neville sees the flaws where the world and its ways can be opened.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:neville_p,rebellion:neville_r}
         },
 						 {
         id: "tristan_d",
@@ -302,7 +302,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
             description: "In another age, Tristan might have been a smith. In another life, he might have been a bomb-maker.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:tristan_p,,rebellion:tristan_r}
         },
 				 {
         id: "victor_d",
@@ -311,7 +311,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
             description: "Victor likes to become acquainted with his subjects, so he can apologise to them personally, just before the end.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:victor_p,rebellion:victor_r}
         },
 		
 		
@@ -323,7 +323,7 @@
         id: "auclair_a",
             label: "Auclair, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Auclair has a scholarly aspect and a morbid streak.[You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic}
@@ -354,7 +354,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
             description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,,rebellion:auclair_r}
         },
 		
 		
@@ -362,7 +362,7 @@
         id: "cat_a",
             label: "Cat Caro, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "'Cat Caro', as she styles herself, earns a living as a stage medium and a fortune-teller. She may have deeper talents. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: cat_b,killmortal:corpse,derangemortal:lunatic}
@@ -394,7 +394,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
             description: "Archaeologists find treasures in tombs. Farmers bring harvest from the fields. What does Cat Caro unearth in dreams?",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:cat_p,rebellion:cat_r}
         },
 		
 		
@@ -402,7 +402,7 @@
         id: "clifton_a",
             label: "'Pope' Clifton, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "A bellowing and unorthodox Catholic with a mystic streak and an untrimmed beard. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: clifton_b,killmortal:corpse,derangemortal:lunatic}
@@ -434,7 +434,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
             description: "Clifton still recites his prayers, but they are grown strange as old mirrors. He rises every morning to greet the dawn. He looks it full in the face, and tells you exactly what he sees.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clifton_p,rebellion:clifton_r}
         },
 		
 		
@@ -442,7 +442,7 @@
         id: "elridge_a",
             label: "Elridge, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "An elegant man of inelegant habits. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: elridge_b,killmortal:corpse,derangemortal:lunatic}
@@ -472,7 +472,7 @@
             aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
             description: "Elridge is never seen with a spot of blood upon his person. Not a spot.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r}
         },
 		
 		
@@ -481,7 +481,7 @@
         id: "laidlaw_a",
             label: "Laidlaw, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Laidlaw is a tinkerer and mechanic with an uncanny knack. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: laidlaw_b,killmortal:corpse,derangemortal:lunatic}
@@ -513,7 +513,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
             description: "Laidlaw can shape what is broken into what is necessary.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:laidlaw_p,rebellion:laidlaw_r}
         },
 		
 	
@@ -522,7 +522,7 @@
         id: "porter_a",
             label: "Porter, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Porter was a barber, until the court case. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: porter_b,killmortal:corpse,derangemortal:lunatic}
@@ -553,7 +553,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,moth:10},
             description: "Porter, like a spider, is found in the most unexpected places.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:porter_p,rebellion:porter_r}
         },
 		
 		
@@ -562,7 +562,7 @@
         id: "renira_a",
             label: "Renira, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Renira has been found not guilty three times in three separate jurisdictions. She will likely never be found guilty of anything. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: renira_b,killmortal:corpse,derangemortal:lunatic}
@@ -594,7 +594,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,grail:10},
             description: "Renira receives tokens from admirers almost daily. Some gifts are flowers, others poetry. Sometimes she receives jewels; sometimes, desperate gifts wrapped tightly in blood-stained crepe paper.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:renira_p,rebellion:renira_r}
         },
 		
 
@@ -602,7 +602,7 @@
         id: "saliba_a",
             label: "Saliba, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Saliba is a man of prodigious appetites. He is long past the point where their satisfaction has given him any pleasure; but he has learnt so very much. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: saliba_b,killmortal:corpse,derangemortal:lunatic}
@@ -634,7 +634,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,grail:10},
             description: "Saliba's charisma strikes with the force of a hammer. It is horribly difficult to refuse his desires.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:saliba_p,rebellion:saliba_r}
         },
 		
 		
@@ -642,7 +642,7 @@
         id: "slee_a",
             label: "Slee, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Craig Slee, the astronomer and avant-garde poet, has developed an interest in the esoteric as his health wanes. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: slee_b,killmortal:corpse,derangemortal:lunatic}
@@ -674,14 +674,14 @@
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
             description: "Slee speaks exclusively in mathematics and in poetry. Both are compelling: it is increasingly difficult to tell the difference.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:slee_p,rebellion:slee_r}
         },
 		
 					 {
         id: "sylvia_a",
             label: "Sylvia, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Sylvia lost her eye in the woods when she was nine years old. Every year, at Candlemas, she returns to the place she buried it. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: sylvia_b,killmortal:corpse,derangemortal:lunatic}
@@ -712,14 +712,14 @@
             {mortal:1,follower:1, disciple:1,exalted:1,moth:10},
             description: "Sylvia has learnt to get out of a place almost before she has gotten in. Sometimes, she leaves dead leaves beneath the window-sill. Sometimes, she writes her name where it won't be found.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:sylvia_p,rebellion:sylvia_r}
         },
 		
 					 {
         id: "valciane_a",
             label: "Valciane, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Valciane has operated her establishment for almost twenty years. She has never employed an assistant. Her hands are terribly strong. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: valciane_b,killmortal:corpse,derangemortal:lunatic}
@@ -751,7 +751,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
             description: "Valciane has begun to work without tools. 'They get in the way,' she claims.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:valciane_p,rebellion:valciane_r}
         },
 			
 
@@ -759,7 +759,7 @@
         id: "violet_a",
             label: "Violet, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Violet has always given unstintingly of her time, easing the pain of the dying. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: violet_b,killmortal:corpse,derangemortal:lunatic}
@@ -791,14 +791,14 @@
             {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
             description: "Sleep, now. Don't worry about a thing.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:violet_p,rebellion:violet_r}
         },
 	
 					 {
         id: "ysabet_a",
             label: "Ysabet, an acquaintance",
             aspects:
-            {mortal: 1},
+            {mortal: 1,acquaintance:1},
             description: "Ysabet has always been most comfortable by moonlight. She has excellent night vision. She is often overlooked in daylight.[You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: ysabet_b,killmortal:corpse,derangemortal:lunatic}
@@ -829,7 +829,7 @@
             {mortal:1,follower:1, disciple:1,exalted:1,moth:10},
             description: "Ysabet never lies, now. She doesn't need to.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r}
         },
 					 {
         id: "auclair_p",
@@ -1057,5 +1057,6 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse"
         },
+
 		]
 };

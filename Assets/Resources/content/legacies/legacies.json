@@ -32,7 +32,7 @@ availableWithoutEndingMatch:true
 label: "Detective",
 description: "--",
 startdescription: "--",
-effects: {introjob:1},
+effects: {legacydetectivejob:1,reason:1},
 image: "moth",
 fromEnding:"arrest",
 availableWithoutEndingMatch:true
@@ -41,7 +41,7 @@ availableWithoutEndingMatch:true
 label: "Dancer",
 description: "--",
 startdescription: "--",
-effects: {introjob:1},
+effects: {legacydancerjob:1,health:1,passion:1},
 image: "moth",
 fromEnding:"workvictory",
 availableWithoutEndingMatch:true
@@ -60,7 +60,7 @@ availableWithoutEndingMatch:true
 label: "Auctioneer",
 description: "--",
 startdescription: "--",
-effects: {introjob:1},
+effects: {legacyauctioneerjob:1,funds:5},
 image: "moth",
 fromEnding:"workvictory",
 availableWithoutEndingMatch:false
@@ -69,7 +69,7 @@ availableWithoutEndingMatch:false
 label: "Priest",
 description: "--",
 startdescription: "--",
-effects: {introjob:1},
+effects: {legacypriestjob:1},
 image: "moth",
 fromEnding:"despairending",
 availableWithoutEndingMatch:false

@@ -149,7 +149,7 @@ craftable: true
 		alternativerecipes:
 		[{id: "cultfoundation", chance:100, additional: true}],
         actionId: "talk",
-        requirements: {mortal:1,society: -1,ritual:-1,society:-1,location:-1,patron:-1,hunter:-1,prisoner:-1},
+        requirements: {acquaintance:1,society: -1,ritual:-1,location:-1},
         effects: {notoriety:1},
         startdescription: "Here is someone who might become an assistant, a companion - a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
         description: "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",

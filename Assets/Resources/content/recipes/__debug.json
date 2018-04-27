@@ -37,6 +37,17 @@ craftable:false
         craftable: false,
 		ending: "minorgrailvictory"
 	},
+			{
+        id: "_arrest",
+        label: "Display Imprisonment Ending",
+        actionId: "fictitiousverb",
+        requirements: {},
+		startdescription: "Here I go",
+        description: "Ending text coming",
+        warmup: 5,
+        craftable: false,
+		ending: "arrest"
+	},
 	{
         id: "_mansustest",
         label: "Test Mansus effect",

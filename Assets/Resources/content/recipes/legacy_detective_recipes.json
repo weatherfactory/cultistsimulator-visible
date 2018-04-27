@@ -1,0 +1,133 @@
+{
+"recipes": [
+{id: "workdetectivejob_start",
+label: "At the Station",
+actionId: "work",
+requirements: {legacydetectivejob:1},
+aspects: {careeradvancement:1},
+effects: {LEVER_FollowerAtGameEnd:1,funds:2},
+aspects: {rebellion:1},
+alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
+startdescription: "Once again, I have been seconded to the Suppression Bureau, the government office which concerns itself with 'occult' crimes. The Bureau has a poor reputation.",
+description: "The Bureau has identified a troublesome individual I am to investigate. My breath tightens when I see the name. There was another case, one I remember all too well...",
+warmup:10,
+craftable: true,
+linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}]
+},
+
+{id: "workdetectivejob_start_promote_lever_believer",
+actionId:"work",
+aspects: {promotiontodisciple:1},
+craftable:false,
+linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:100}],
+},
+
+{id: "workdetectivejob_start_promote_lever_disciple",
+actionId:"work",
+aspects: {promotionto_d_edge:1,
+promotionto_d_forge:1,
+promotionto_d_grail:1,
+promotionto_d_heart:1,
+promotionto_d_knock:1,
+promotionto_d_lantern:1,
+promotionto_d_moth:1,
+promotionto_d_winter:1,
+rebellion:1},
+linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
+craftable:false
+},
+{id: "workdetectivejob_start_rebellion",
+actionId:"work",
+aspects: {rebellion:1},
+craftable:false
+},
+{id: "workdetectivejob_matured",
+label: "",
+actionId: "work",
+requirements: {legacydetectivejob_matured:1,independent:1},
+alternativerecipes: [{id:needs,chance:100,additional:true}],
+effects: {funds:2},
+
+startdescription: "Doing mah job. Pick a target.",
+description: "",
+warmup:60,
+craftable: true	},
+
+
+{id: "workdetectivejob_epilogue",
+label: "",
+actionId: "work",
+effects: {legacydetectivejob_matured:-1},
+startdescription: "Lost mah job",
+description: "",
+craftable: false},
+
+{id: "detectiveopendream",
+label: "OPEN DREAM",
+actionId: "dream",
+startdescription:"",
+description:"",
+effects: {LEVER_LastDesire:1},
+warmup:60,
+craftable: false,
+alternativerecipes:[
+{id:visionsrisk,chance:100,additional:true}
+],
+},
+
+
+{id: "detectiveopenstudy",
+label: "OPEN STUDY",
+actionId: "study",
+startdescription:"",
+description:"",
+alternativerecipes: [
+{id:"detectiveopendream",chance:100,additional:true}
+],
+description: "",
+effects: {reason:1},
+warmup:30,
+craftable: false
+},
+
+ 
+{id: "detectiveopenexplore",
+label: "OPEN EXPLORE",
+actionId: "explore",
+startdescription:"",
+description:"",
+warmup:10,
+effects: {locationbookdealer:1,locationcabaret:1},
+craftable: false
+},
+
+{id: "detectiveopentalk",
+label: "",
+actionId: "talk",
+startdescription:"",
+description:"",
+effects: {},
+warmup:60,
+craftable: false
+},
+
+
+{id: "detectivestudy_plotitem",
+label: "",
+actionId: "study",
+requirements: {legacydetective_plotitem:1},
+
+alternativerecipes: [
+{id:"detectiveopendream",chance:100,additional:true}
+],
+effects: {legacydetective_plotitem:-1,fascination:1}
+startdescription:"",
+description:"",
+warmup:10,
+craftable: true
+},
+
+
+
+]
+}

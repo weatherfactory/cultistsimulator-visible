@@ -478,6 +478,7 @@
 	actionId: "establishcult",
 	requirements: {follower:-1},
 	slots: [{id:"Recruit",label:"My First Recruit",required: {mortal: 1},forbidden:{prisoner:1,hunter:1,patron:1,hireling:1},description: "One who is ready."}],
+	comments: "This *can* hire an independent.",
 	warmup:30,
 	startdescription: "A cult with one member is only an unusual habit. I must have a recruit.",
 	aspects:{recruiting:1},

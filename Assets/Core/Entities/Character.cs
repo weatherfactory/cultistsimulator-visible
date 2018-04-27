@@ -18,6 +18,7 @@ public enum LegacyEventRecordId
     LastSignificantPainting,
     LastCult,
     LastHeadquarters,
+    FollowerAtGameEnd,
     LastPersonKilled
 
 }

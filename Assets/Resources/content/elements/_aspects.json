@@ -14,6 +14,18 @@
 			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The principle of the Forge transforms and destroys.]",
             isAspect: true
         },
+		        {
+            id: "acquaintance",
+            label: "Acquaintance",
+			description: "Not yet a friend, nor yet an enemy.",
+            isAspect: true
+        },
+		        {
+            id: "independent",
+            label: "Maverick",
+			description: "A student of the secret arts, with an agenda of their own.",
+            isAspect: true
+        }, 		
         {
             id: "follower",
             label: "Follower",
@@ -584,6 +596,14 @@
             id: "killmortal",
             label: "Kill Mortal",
 			description: "Mortals will be replaced by corpses",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+								 {
+            id: "rebellion",
+            label: "Rebellion",
+			description: "Followers will become Rivals",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
