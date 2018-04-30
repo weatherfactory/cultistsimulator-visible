@@ -86,6 +86,13 @@ namespace Assets.Core.Entities
             _cards.Push(elementId);
         }
 
+        public void RemoveAllCardsWithId(string elementId)
+        {
+            var cardsList = new List<string>(_cards);
+            cardsList.RemoveAll(c => c == elementId);
+            _cards=new Stack<string>(cardsList);
+        }
+
 
         public List<string> GetCurrentCardsAsList()
         {

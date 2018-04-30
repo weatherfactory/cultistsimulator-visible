@@ -46,7 +46,8 @@ public class Element
     /// </summary>
     public List<LinkedRecipeDetails> Induces { get; set; }
     /// <summary>
-    /// This is currently not implemented or loaded! It's a placeholder to allow for enforced uniqueness
+    /// If a Unique element is created and another one exists in games, the first one should be quietly removed. When a unique element is created, all references to it should be removed from all decks.
+    /// [Note: if a deck resets on exhaustion, the rest will add a new element. So ideally, whenever a card is drawn from a deck, it should be checked for existing uniqueness. Chris' Mansus-management deck is a good place to enforce this if it doesn't already do it..]
     /// </summary>
     public bool Unique { get; set; }
 

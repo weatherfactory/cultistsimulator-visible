@@ -15,6 +15,7 @@ using System.Linq;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Enums;
+using Assets.Logic;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
@@ -141,6 +142,11 @@ namespace Assets.CS.TabletopUI {
 
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+            IGameEntityStorage character = Registry.Retrieve<Character>();
+            var dealer = new Dealer(character);
+            if(_element.Unique)
+                dealer.RemoveFromAllDecks(_element.Id);
+
 
             try {
                 SetQuantity(quantity); // this also toggles badge visibility through second call

@@ -34,6 +34,7 @@ namespace Assets.Core.Entities
         string Draw();
         void Add(string elementId);
         List<string> GetCurrentCardsAsList();
+        void RemoveAllCardsWithId(string elementId);
     }
 
 

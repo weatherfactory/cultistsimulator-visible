@@ -29,5 +29,13 @@ namespace Assets.Logic
             else
                 return drawnId;
         }
+
+        public void RemoveFromAllDecks(string elementId)
+        {
+            foreach (var d in _storage.DeckInstances)
+                d.RemoveAllCardsWithId(elementId);
+                
+
+        }
     }
 }
