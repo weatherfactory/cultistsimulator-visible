@@ -87,6 +87,9 @@ namespace Assets.CS.TabletopUI {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
         }
 
+		public bool IsGlowing() {
+			return glowImage.gameObject.activeSelf;
+		}
 
         /// <summary>
         /// This is an underscore-separated x, y localPosition in the current transform/containsTokens
