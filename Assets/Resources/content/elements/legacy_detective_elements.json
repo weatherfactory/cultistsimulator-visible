@@ -11,7 +11,7 @@
 	label: "Inspector's Position",
 	description: "I have a senior position in the capital's police force, although I have been seconded to the Suppression Bureau.",
 	aspects: {job:1},
-	slots:[{id:"target",label:"Subject",required:{independent:1,myevidence:1,myevidenceb:1},description:"Until I have evidence, I must start by observing my quarry directly.",actionId:"work"},
+	slots:[{id:"target",label:"Subject",required:{suspicious:1},description:"Until I have evidence, I must start by observing my quarry directly.",actionId:"work"},
 	{id:"meticulous",label:"Meticulous",description:"More Reason will give my investigation a better chance of success.",required:{reason:1},actionId:"work"},
 	{id:"vigilant",label:"Vigilant",description:"More Reason will give my investigation a better chance of success.",required:{reason:1},actionId:"work"},
 	{id:"singleminded",label:"Singleminded", description:"More Reason will give my investigation a better chance of success.",required:{reason:1},actionId:"work"},],
@@ -48,5 +48,11 @@ description: "A file on the enigmatic #PREVIOUSCHARACTERNAME#. I sealed it mysel
 			lifetime:300,
 			aspects:{suspicious:1}
         },
+		
+{id: "legacydetective_plotitem_burning",
+label: "Burning Bureau File",
+description: "It's almost gone.",
+lifetime: 10
+}
 ] 
 };

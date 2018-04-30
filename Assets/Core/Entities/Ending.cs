@@ -21,6 +21,7 @@ namespace Assets.Core.Entities
         public string Anim { get; set; }
         public string GivesLegacyId { get; set; }
 
+
         public Ending(string id, string title, string description,string imageId,EndingFlavour endingFlavour, string anim)
         {
             Id = id;

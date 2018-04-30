@@ -268,9 +268,14 @@ public class Compendium : ICompendium
                 );
 
         if (endingFlag == "workvictory")
-            return new Ending(endingFlag, "This is pleasant",
+            return new Ending(endingFlag, "Evening Falls",
                 "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is " +
                 "over the sweet earth will fill my mouth, softer than splinters. [This might be considered a victory.]", "insomnia", EndingFlavour.Melancholy, "DramaticLight");
+
+        if (endingFlag == "workvictoryb")
+            return new Ending(endingFlag, "Ambition's Tide",
+                "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my  rivals. I will grow" +
+                "used to the sound of my name. Then one day, I will die, and some time after that, my name will be heard no more. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Melancholy, "DramaticLight");
 
         return Ending.DefaultEnding();
     }
