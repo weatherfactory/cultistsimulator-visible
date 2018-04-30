@@ -54,14 +54,14 @@ namespace Assets.TabletopUi {
             currentCharacter = ch;
         }
 
-        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w) {
+        public void Initialise(SituationCreationCommand command, ISituationAnchor t, ISituationDetails w, Heart heart) {
             Registry.Retrieve<SituationsCatalogue>().RegisterSituation(this);
 
             situationToken = t;
-            situationToken.Initialise(command.GetBasicOrCreatedVerb(), this);
+            situationToken.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
             situationWindow = w;
-            situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this);
+            situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
             SituationClock = new SituationClock(command.TimeRemaining, command.State, command.Recipe, this);
 

@@ -14,10 +14,12 @@ namespace Assets.TabletopUi.Scripts.Services {
 
         private Transform tableLevel;
         private Transform windowLevel;
+		private Heart _heart;
 
-        public SituationBuilder(Transform tableLevel, Transform windowLevel) {
+        public SituationBuilder(Transform tableLevel, Transform windowLevel, Heart heart) {
             this.tableLevel = tableLevel;
             this.windowLevel = windowLevel;
+			this._heart = heart;
         }
 
         public void CreateInitialTokensOnTabletop() {
@@ -44,7 +46,7 @@ namespace Assets.TabletopUi.Scripts.Services {
 
             var window = BuiltSituationWindow(newToken);
 
-            situationController.Initialise(situationCreationCommand, newToken, window);
+            situationController.Initialise(situationCreationCommand, newToken, window, _heart);
 
             return newToken;
         }

@@ -79,7 +79,7 @@ namespace Assets.CS.TabletopUI {
             get { return _verb == null ? null : _verb.Id; }
         }
 
-        public void Initialise(IVerb verb, SituationController sc) {
+        public void Initialise(IVerb verb, SituationController sc, Heart heart) {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + Id;

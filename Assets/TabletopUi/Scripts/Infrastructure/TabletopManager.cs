@@ -95,7 +95,7 @@ namespace Assets.CS.TabletopUI {
         #region -- Intialisation -------------------------------
 
         void Start() {
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
             //register everything used gamewide
             SetupServices(_situationBuilder, _tabletop);
