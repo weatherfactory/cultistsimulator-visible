@@ -7,7 +7,8 @@
             {ritual:1},
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Instrument",actionId: "work",required: {tool:1},description: "What is our instrument?"},
-			{id:"Offering",actionId: "work",required: {ingredient: 1}, consumes: true,description: "What will we give up?"}
+			{id:"Offering",actionId: "work",required: {ingredient: 1}, consumes: true,description: "What will we give up?"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Obsession. If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "This rite calls on the Witch-and-Sister to close the gap between what is and what might be. The assistant pours, or hurls, an offering into water: preferably, but not essentially, the sea."
         },
@@ -19,6 +20,7 @@
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Offering",actionId: "work",required: {influence:1},description: "What influence will be taken?",consumes:true},
 			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "What is our instrument?"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Obsession. If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "The Vagabond is the only Hour that never enters the Mansus. This rite must be performed in the right place, in the right time, and the Vagabond will take that rightness for her own."
         },
@@ -71,6 +73,7 @@
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "What will be offered?",consumes:true},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Obsession. If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "The assistant is offered in sacrifice to the Mother of Ants. But the Mother knows healing as well as poison, and she will be merciful, accepting the substitute of a lesser offering. Usually. The experience is not reassuring for the assistant."
         },
@@ -82,6 +85,7 @@
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Influence",actionId: "work",required: {influence:1},description: "What power is present?"},
 			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "What will be offered?",consumes:true},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Obsession. If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "This rite calls on the Sister-and-Witch to close the gap between what is and what might be. The assistant offers themselves as a spouse to the unknown: essentially, but not necessarily, the sea."
         },
@@ -93,6 +97,7 @@
 			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "What are the words?"},
 			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "Who will speak the words?"},
 			{id:"Offering",actionId: "work",required: {influence: 1}, consumes:true, description: "What influence will be consumed?"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Obsession. If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "The assistant must cry tears of genuine emotion, which are asperged in the place where the influence lies. If all is done well, the Sun-in-Rags will consume the influence, acknowledge an ending, and lend its assistance."
         },
@@ -103,7 +108,8 @@
             {ritual:1},
 			slots: [{id:"Invocation", actionId: "work", required: {lore: 1}, description: "What are the words?"},
 			{id:"Victim", actionId: "work",required: {follower:1,prisoner:1},description: "Who will be divided?",consumes:true},
-			{id:"Influence", actionId: "work",required: {influence: 1}, description: "What power is present?"}
+			{id:"Influence", actionId: "work",required: {influence: 1}, description: "What power is present?"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "What might I become? [This slot only accepts the final stage of Obsession. If you have achieved the Sixth Mark, add your Obsession to this slot to complete a Great Work.]"}
 			],
             description: "The assistant's name is taken from them in a place, or on an occasion, of power; and they are divided into nine parts. They used to be hunted like an animal, too, but times changed."
         },
