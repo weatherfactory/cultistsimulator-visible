@@ -166,6 +166,10 @@ lifetime: 180
 		id: "scholarlatin",
 		label: "Scholar: Latin",
 		aspects: {language:1},
+		slots: [{id:"Text",
+				required: {textlatin:1},
+				actionId:"study",
+			}],
 		description: "A dead language: dead as diamonds. [Some books must be translated before they can be read.]",
 		unique:true
 		},
@@ -173,6 +177,10 @@ lifetime: 180
 		id: "scholarfucine",
 		label: "Scholar: Fucine",
 		aspects: {language:1},
+				slots: [{id:"Text",
+				required: {textfucine:1},
+				actionId:"study",
+			}],
 		description: "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]",
 		unique:true
 		},
@@ -180,12 +188,20 @@ lifetime: 180
 		id: "scholargreek",
 		label: "Scholar: Greek",
 		aspects: {language:1},
+						slots: [{id:"Text",
+				required: {textgreek:1},
+				actionId:"study",
+			}],
 		description: "No doubt you're conversant with every variety of Greek, from the beginning to Byzantium. But it's a good thing you have those reference works. [Some books must be translated before they can be read.]",
 		unique:true		
 		},
 					{
 		id: "scholarphrygian",
 		label: "Scholar: Phrygian",
+		slots: [{id:"Text",
+				required: {textphrygian:1},
+				actionId:"study",
+			}],
 		aspects: {language:1},
 		description: "A people lived east of the lost lake Fucino. Horace warned that their land was the source of lust-spells and love-curses. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'. This is the tongue in which the Thunderskin pleaded, at his ascension. [Some books must be translated before they can be read.]",
 		unique:true
@@ -193,6 +209,10 @@ lifetime: 180
 						{
 		id: "scholararamaic",
 		label: "Scholar: Aramaic",
+						slots: [{id:"Text",
+				required: {textaramaic:1},
+				actionId:"study",
+			}],
 		aspects: {language:1},
 		description: "The language of Aram, and all her many children these three thousand years and more. [Some books must be translated before they can be read.]",
 		unique:true
@@ -200,6 +220,10 @@ lifetime: 180
 							{
 		id: "scholarmandaic",
 		label: "Scholar: Deep Mandaic",
+						slots: [{id:"Text",
+				required: {textmandaic:1},
+				actionId:"study",
+			}],
 		aspects: {language:1},
 		description: "The most secret script of the innermost rites of the deep sects of the deep desert. The birth-tongue, it is claimed, of the Mother of Ants herself. [Some books must be translated before they can be read.]",
 		unique:true
@@ -207,6 +231,10 @@ lifetime: 180
 									{
 		id: "scholarsanskrit",
 		label: "Scholar: Sanskrit",
+						slots: [{id:"Text",
+				required: {textsanskrit:1},
+				actionId:"study",
+			}],
 		aspects: {language:1},
 		description: "The holy tongue of the Subcontinent. The door to four thousand years of poetry, ceremony and mystery now opens before you, if you can struggle through the lotus convolutions of its vocabulary.[Some books must be translated before they can be read.]",
 		unique:true
@@ -214,10 +242,16 @@ lifetime: 180
 									{
 		id: "scholarvak",
 		label: "Scholar: Vak",
+						slots: [{id:"Text",
+				required: {textvak:1},
+				actionId:"study",
+			}],
 		aspects: {language:1},
 		description: "Before gods arose from blood, before ever ape stood upright, this was the language heard in the House of the Sun.[Some books must be translated before they can be read.]",
 		unique:true
 		},
+		
+	
 			
 		
 			 {
