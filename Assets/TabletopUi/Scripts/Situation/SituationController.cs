@@ -170,6 +170,16 @@ namespace Assets.TabletopUi {
             return situationWindow.GetStartingStacks();
         }
 
+        public IEnumerable<IElementStack> GetOngoingStacks()
+        {
+            return situationWindow.GetOngoingStacks();
+        }
+
+        public IEnumerable<IElementStack> GetStoredStacks()
+        {
+            return situationWindow.GetStoredStacks();
+        }
+
         #endregion
 
         #region -- SituationClock Execution (Heartbeat) --------------------

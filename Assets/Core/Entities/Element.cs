@@ -28,6 +28,7 @@ public class Element
         set { _label = value ?? ""; }
     }
 
+
     public string Description
     {
         get { return _description; }
@@ -83,6 +84,7 @@ public class Element
 
         Induces=new List<LinkedRecipeDetails>();
     }
+
 
     public Boolean HasChildSlotsForVerb(string forVerb)
     {

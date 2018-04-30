@@ -69,6 +69,7 @@ namespace Noon
         public const string TOKEN_LAST_TOOL = "#LAST_TOOL#";
         public const string TOKEN_LAST_BOOK = "#LAST_BOOK#";
         public const string TOKEN_LAST_SIGNIFICANT_PAINTING = "#LAST_SIGNIFICANT_PAINTING#";
+        public const string TOKEN_LAST_FOLLOWER= "#LAST_FOLLOWER#";
         public const string TOKEN_LAST_CULT = "#LAST_CULT#";
         public const string TOKEN_LAST_HEADQUARTERS = "#LAST_HEADQUARTERS#";
         public const string TOKEN_LAST_PERSON_KILLED_NAME = "#LAST_PERSON_KILLED_NAME#";

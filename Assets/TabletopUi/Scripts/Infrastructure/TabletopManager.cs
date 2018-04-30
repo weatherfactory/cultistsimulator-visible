@@ -180,7 +180,7 @@ namespace Assets.CS.TabletopUI {
             var character = new Character(CrossSceneState.GetDefunctCharacter());
 
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
-            var chronicler = new Chronicler(character);
+            var chronicler = new Chronicler(character,compendium);
 
             var situationsCatalogue = new SituationsCatalogue();
             var elementStacksCatalogue = new StackManagersCatalogue();
@@ -288,8 +288,14 @@ namespace Assets.CS.TabletopUI {
             var ls = new LegacySelector(Registry.Retrieve<ICompendium>());
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
+            var character = Registry.Retrieve<Character>();
+            var chronicler = Registry.Retrieve<Chronicler>();
+            
+            chronicler.ChronicleGameEnd(Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations(), Registry.Retrieve<StackManagersCatalogue>().GetRegisteredStackManagers());
+
+
             CrossSceneState.SetCurrentEnding(ending);
-            CrossSceneState.SetDefunctCharacter(Registry.Retrieve<Character>());
+            CrossSceneState.SetDefunctCharacter(character);
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
 
             //#if !DEBUG

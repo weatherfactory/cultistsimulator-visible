@@ -21,10 +21,12 @@ namespace Assets.Core.Services
         public string ReplaceTextFor(string text)
         {
             string previousCharacterName = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastCharacterName);
+            string lastFollowerId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastFollower);
             string lastDesireId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastDesire);
             string lastBookId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastBook);
             string lastBookLabel = string.Empty;
             string lastDesireLabel=String.Empty;
+            string lastFollowerLabel = String.Empty;
 
             var lastBook = _compendium.GetElementById(lastBookId);
             if (lastBook == null)
@@ -36,12 +38,18 @@ namespace Assets.Core.Services
                 NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastDesireId, 1);
             else lastDesireLabel = lastDesire.Label;
 
+            var lastFollower = _compendium.GetElementById(lastFollowerId);
+            if (lastFollower == null)
+                NoonUtility.Log("Duff elementId in PastLegacyEventRecord: " + lastFollowerId, 1);
+            else lastFollowerLabel = lastFollower.Label;
+
 
             if (text == null)
                 return null; //huh. It really shouldn't be - I should be assigning empty string on load -  and yet sometimes it is. This is a guard clause to stop a basic nullreferenceexception
             string replaced = text;
 
             replaced= replaced.Replace(NoonConstants.TOKEN_PREVIOUS_CHARACTER_NAME, previousCharacterName);
+            replaced = replaced.Replace(NoonConstants.TOKEN_LAST_FOLLOWER, lastFollowerLabel);
 
             replaced = replaced.Replace(NoonConstants.TOKEN_LAST_DESIRE, lastDesireLabel);
             replaced = replaced.Replace(NoonConstants.TOKEN_LAST_BOOK, lastBookLabel);

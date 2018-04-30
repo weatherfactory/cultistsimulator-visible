@@ -19,7 +19,7 @@ namespace Assets.Core.Services
         public const string DEFAULT_LAST_CULT = "cultgrail_1";
         public const string DEFAULT_LAST_HEADQUARTERS = "generichq";
         public const string DEFAULT_LAST_PERSON_KILLED = "neville_a";
-        public const string DEFAULT_FOLLOWER_AT_GAME_END = "rose_c";
+        public const string DEFAULT_FOLLOWER_AT_GAME_END = "rose_b";
 
         public Dictionary<LegacyEventRecordId, string> FillInDefaultPast(Dictionary<LegacyEventRecordId, string> currentPast)
         {
@@ -52,8 +52,8 @@ namespace Assets.Core.Services
 
             if (!populatedPast.ContainsKey(LegacyEventRecordId.LastPersonKilled))
             populatedPast.Add(LegacyEventRecordId.LastPersonKilled, DEFAULT_LAST_PERSON_KILLED);
-            if (!populatedPast.ContainsKey(LegacyEventRecordId.FollowerAtGameEnd))
-                populatedPast.Add(LegacyEventRecordId.FollowerAtGameEnd, DEFAULT_FOLLOWER_AT_GAME_END);
+            if (!populatedPast.ContainsKey(LegacyEventRecordId.LastFollower))
+                populatedPast.Add(LegacyEventRecordId.LastFollower, DEFAULT_FOLLOWER_AT_GAME_END);
 
 
             return populatedPast;
