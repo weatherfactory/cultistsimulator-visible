@@ -68,7 +68,7 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 	{id: "talktotroublemaker",
 label:"Arrange a meeting on neutral ground.",
 actionId: "talk",
-requirements: {independent: 1},
+requirements: {independent: 1,society:-1,ritual:-1},
 slots: [{id:"Subject",description:"A topic of conversation."}],
 alternativerecipes:[
 {id:"independentloreconversation",chance:100},
@@ -95,8 +95,8 @@ deckeffect: {troublemakerconversations:1}
 label:"Arrange a meeting on neutral ground.",
 actionId: "talk",
 requirements: {desire: 1},
-startdescription: "'It seems we <i>do</i> have something to discuss...'",
-description:"A hushed and elliptical conversation by lamp-light, with glints of truth like gold in river-mud. Who knows? Perhaps, one day, we might speak less guardedly.",
+startdescription: "'Do you propose we make common cause? Are you serious?'",
+description:"'Perhaps. Eventually. Prove yourself to me. Let's talk...' [If you have a cult, it is possible, although difficult, to win a Troublemaker to your side.]",
 deckeffect: {troublemakerconversations:1}
 },
 
@@ -189,7 +189,7 @@ craftable: true
         actionId: "talk",
         requirements: {acquaintance:1,society: -1,ritual:-1,location:-1},
         effects: {notoriety:1},
-        startdescription: "Here is someone who might become an assistant, a companion - a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
+        startdescription: "Here is someone I might work with. A companion, or a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
         description: "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",
         warmup: 10,
         craftable: true,
