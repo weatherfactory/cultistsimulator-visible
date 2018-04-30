@@ -311,10 +311,16 @@ namespace Assets.TabletopUi {
         }
 
         private void AttemptAspectInductions() {
-            //If any elements in the output have inductions, test whether to start a new recipe
-            var outputAspects = situationWindow.GetAspectsFromOutputElements(true);
+            //If any elements in the output, or in the situation itself, have inductions, test whether to start a new recipe
 
-            foreach (var a in outputAspects) {
+            var inducingAspects = situationWindow.GetAspectsFromOutputElements(true);
+
+            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+
+            inducingAspects.CombineAspects(currentRecipe.Aspects);
+
+
+            foreach (var a in inducingAspects) {
                 var aspectElement = compendium.GetElementById(a.Key);
 
                 if (aspectElement != null)

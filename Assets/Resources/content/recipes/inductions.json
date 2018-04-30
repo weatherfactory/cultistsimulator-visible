@@ -39,6 +39,26 @@
         warmup: 30,
         craftable: false
     },
+				{
+        id: "dreadinduction",
+        label: "Night Terrors",
+        actionId: "dreadinduction",
+        effects: {dread:1},
+		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
+        description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something remains, like spiderwebs in the corner of the room.",
+        warmup: 60,
+        craftable: false
+    },
 	
+					{
+        id: "fascinationinduction",
+        label: "New Colours",
+        actionId: "fascinationinduction",
+        effects: {fascination:1},
+		startdescription: "I have begun to notice colours in the world for which I have no name.",
+        description: "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
+        warmup: 60,
+        craftable: false
+    },
 ]
 }

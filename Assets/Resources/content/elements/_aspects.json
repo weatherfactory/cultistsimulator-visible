@@ -87,6 +87,13 @@
             isAspect: true,
 			induces:[{id:"heartinduction",chance:5}]
         },
+		        {
+            id: "heart",
+            label: "Heart",
+			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle that continues and preserves.]",
+            isAspect: true,
+			induces:[{id:"heartinduction",chance:5}]
+        },
 								{
             id: "ability",
             label: "Ability",
@@ -527,11 +534,11 @@
 			noartneeded: true
         },
 					 {
-            id: "invest",
-            label: "NA Commitment is Made",
+            id: "fatiguing",
+            label: "A Commitment is Made",
 			description: "Something has occurred.",
             isAspect: true,
-			comments: "Recipe aspect; runs to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
+			comments: "Recipe aspect; runs to fatigue stats, or to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
 			noartneeded: true
         },
 			 {
@@ -582,6 +589,24 @@
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
+        },
+										 {
+            id: "dreadful",
+            label: "Dreadful",
+			description: "Risk of generating Dread.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true,			
+			induces:[{id:"dreadinduction",chance:10}]
+        },
+												 {
+            id: "fascinating",
+            label: "Fascinating",
+			description: "Risk of generating Fascination.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true,			
+			induces:[{id:"fascinationinduction",chance:10}]
         },
 										 {
             id: "damagepassion",
