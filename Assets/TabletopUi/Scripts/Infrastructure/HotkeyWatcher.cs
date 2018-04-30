@@ -55,7 +55,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
-                _speedController.TogglePause();
+				_speedController.TogglePause();
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 _optionsPanel.ToggleVisibility();

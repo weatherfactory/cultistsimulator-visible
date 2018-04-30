@@ -153,7 +153,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitAudioSettings();
+            optionsPanel.InitAudioSettings(_speedController);
         }
 
         private void InitialiseListeners() {
@@ -544,6 +544,10 @@ namespace Assets.CS.TabletopUI {
 
         public void SetPausedState(bool paused) {
             _speedController.SetPausedState(paused);
+        }
+
+		public bool GetPausedState() {
+            return _speedController.GetPausedState();
         }
 
         void LockSpeedController(bool enabled) {
