@@ -4,12 +4,9 @@
         label: "Attempt a translation of a text",
         actionId: "study",
         requirements: {language:1},
-        effects: {},
-					slots: [{id:"Text",
-				required: {text:1},
-			}],
-		startdescription: "If I have a text in this language, I can translate it.",
-        description: "If I matched the text and the language correctly, the text is now translated.",
+        effects: {},,
+		startdescription: "If I have a text in this language, I can begin to translate it.",
+        description: "I've prepared the text for study.",
         warmup: 60,
         craftable: true
     }

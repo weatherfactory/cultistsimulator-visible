@@ -83,8 +83,8 @@
 
 				{id: "toollanternb",
 	label: "Noonstone",
-	description: "Noon, the saying goes, is not what it was; but this polished stone still reflects more light than one might expect.",
-	aspects: {lantern:4,tool:1,mirror:1},
+	description: "Noon, the saying goes, is not what it was; but this polished stone still retains a sunset glow.",
+	aspects: {lantern:4,tool:1},
 	xtriggers: {crackmirror:toollanternbcracked}
 	},
 		{id: "toollanternd",
@@ -145,7 +145,7 @@
 	
 					{id: "toollanternbcracked",
 	label: "Cracked Noonstone",
-	description: "Noon, the saying goes, is not what it was; but this polished stone still reflects more light than one might expect. A deep crack runs across it, but a Forge-aspected follower could repair it, with sufficient resources - or I could use up what power remains in it.",
+	description: "Noon, the saying goes, is not what it was; but this stone still retains an embery glow. It has been cracked. A Forge-aspected follower could restore it, with sufficient resources - or I could use up what power remains in it.",
 	aspects: {lantern:1,ingredient:1}
 	},
 		{id: "toollanterndcracked",

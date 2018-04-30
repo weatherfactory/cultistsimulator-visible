@@ -63,6 +63,44 @@ linked:[{id: "talkfindacquaintance", chance: 100},
 				effects:{season:-1},
         warmup: 5
     },
+	
+	
+	{id: "talktotroublemaker",
+label:"Arrange a meeting on neutral ground.",
+actionId: "talk",
+requirements: {independent: 1,society:-1,ritual:-1},
+slots: [{id:"Subject",description:"A topic of conversation."}],
+alternativerecipes:[
+{id:"independentloreconversation",chance:100},
+{id:"independentdesireconversation",chance:100},
+],
+startdescription: "'Are we enemies? Perhaps we don't have to  be.'",
+description: "A guarded conversation in an early-opening coffee-shop in the rain-swept wind-shivering after dawn. I've learnt nothing.",
+effects: {mystique:1},
+warmup: 60,
+craftable: true
+},
+
+	{id: "independentloreconversation",
+label:"Arrange a meeting on neutral ground.",
+actionId: "talk",
+requirements: {lore: 1},
+startdescription: "'It seems we <i>do</i> have something to discuss...'",
+description:"A hushed and elliptical conversation by lamp-light, with glints of truth like gold in river-mud. Who knows? Perhaps, one day, we might speak less guardedly.",
+deckeffect: {troublemakerconversations:1}
+
+},
+
+	{id: "independentdesireconversation",
+label:"Arrange a meeting on neutral ground.",
+actionId: "talk",
+requirements: {desire: 1},
+startdescription: "'Do you propose we make common cause? Are you serious?'",
+description:"'Perhaps. Eventually. Prove yourself to me. Let's talk...' [If you have a cult, it is possible, although difficult, to win a Troublemaker to your side.]",
+deckeffect: {troublemakerconversations:1}
+},
+
+
 
 {id: "talktohunter",
 label:"Arrange a meeting with an adversary",
@@ -75,7 +113,7 @@ alternativerecipes:[
 {id:"hunterattacklowedge",chance:100},
 {id:"hunterattacknoedge",chance:100}
 ],
-startdescription: "Perhaps we could parley. Or perhaps I could send something to ambush him..",
+startdescription: "Perhaps we could parley. Or perhaps I could send something to ambush him.",
 description: "This was rash. Perhaps I shouldn't have exposed myself so.",
 effects: {notoriety:1},
 warmup: 60,
@@ -151,7 +189,7 @@ craftable: true
         actionId: "talk",
         requirements: {acquaintance:1,society: -1,ritual:-1,location:-1},
         effects: {notoriety:1},
-        startdescription: "Here is someone who might become an assistant, a companion - a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
+        startdescription: "Here is someone I might work with. A companion, or a follower. But first, I must give them something to follow. A society; a sodality; an order; a cult.",
         description: "I have begun my true work. The authorities will take an interest in it. I must be ready for them. [You have begun to establish your cult. It will need a little more, before you can recruit followers.]",
         warmup: 10,
         craftable: true,
