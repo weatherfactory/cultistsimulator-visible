@@ -4,7 +4,7 @@
         id: "dehoris1latin",
             label: "De Horis (Book 1)",
             aspects:{text:1,textlatin:1},
-            description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
+            description: "In Latin. A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
 			xtriggers: {scholarlatin: dehoris1}
         },
 			          {
@@ -12,24 +12,25 @@
             label: "De Horis (Book 2)",
             aspects:
             {text:1,textlatin:1},
-            description: "A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
+            description: "In Latin. A nineteenth-century reprint of a fourteenth-century Latin translation of a fourth-century work.",
 			xtriggers: {scholarlatin: dehoris2}
         },
 
 		{id:"debellismurorumlatin",
 		label:"De Bellis Murorum",
 		aspects: {text:1,textlatin:1},
-		description:"An eighteenth-century epic poem by the pseudonymous 'Solipsistos'.",
+		description:"In Latin. An eighteenth-century epic poem by the pseudonymous 'Solipsistos'.",
 		xtriggers: {scholarlatin:debellismurorum}},
+		
 		{id:"onwhatiscontainedbysilvergreek",
 		label:"On What Is Contained By Silver",
 		aspects: {text:1,textgreek:1},
-		description:"A bestiary by 'Poemander'.",
+		description:"A bestiary by 'Poemander'. In Greek.",
 			xtriggers: {scholargreek: onwhatiscontainedbysilver}},
 		{id:"truecompleteasclepiangreek",
 		label:"A True and Complete Accounting of the Asclepian Mysteries of the Roots of the House",
 		aspects: {text:1,textgreek:1},
-		description:"Reproduced by one 'Rylee Grese' from - supposedly - a much older text.",
+		description:"Reproduced by one 'Rylee Grese' from - supposedly - a much older text. In Greek.",
 			xtriggers: {scholargreek: truecompleteasclepian}},
 
 				 {
@@ -56,7 +57,7 @@
         },
 						 {
         id: "geminiadfucine",
-            label: "The Geminiad [Fucine]",
+            label: "The Geminiad",
             aspects:
             {knock: 2,tool:1,text:1,textfucine:1},
 			xtriggers: {scholarfucine: geminiad},
@@ -78,13 +79,13 @@
             label: "The Velshorn Inscriptions",
             aspects:
             {text:1,textgreek:1},
-            description: "Hundreds of matching lines in Greek and Phrygian poetry, copied from a wall. Similar identical to the inscriptions Cal Velshorn discovered in Halicarnassus",
+            description: "Hundreds of matching lines in Greek and Phrygian poetry, copied from a wall. Similar - or identical - to the inscriptions Cal Velshorn discovered in Halicarnassus. [If you speek Greek, you can use this as a key to Phrygian.]",
 			xtriggers: {scholargreek: textbookphrygian},
 			unique:true
         },	
 											 {
         id: "textbookmandaicaramaic",
-            label: "The August Stone [Aramaic]",
+            label: "The August Stone",
             aspects:
             {text:1,textaramaic:1},
             description: "A tremendous bowl, big as a gong, carved from black basalt, with matching incantations in Aramaic and Mandaic. [If you speak Aramaic, you can use this as a key to Mandaic.]",
@@ -109,21 +110,21 @@
             label: "The Irreproachable Traditions...",
             aspects:
             {text:1,textlatin:1},
-            description: "The Irreproachable Traditions of the Society of the Noble Endeavour",
+            description: "The Irreproachable Traditions of the Society of the Noble Endeavour. In Latin. ",
 			xtriggers: {scholarlatin: irreproachabletraditionssocietynobleendeavour}
         },						 {
         id: "roseofnurielgreek",
             label: "The Rose of Nuriel",
             aspects:
             {text:1,textgreek:1},
-            description: "Marked with the tripled sign of the arcane-contemplative order known as the Sisterhood of the Knot.",
+            description: "Marked with the tripled sign of the arcane-contemplative order known as the Sisterhood of the Knot. In Greek.",
 			xtriggers: {scholargreek: roseofnuriel}
         },						 {
         id: "roseofhypatiagreek",
             label: "The Rose of Hypatia",
             aspects:
             {text:1,textgreek:1},
-            description: "Marked with the tripled sign of the arcane-contemplative order known as the Sisterhood of the Knot.",
+            description: "Marked with the tripled sign of the arcane-contemplative order known as the Sisterhood of the Knot. In Greek.",
 			xtriggers: {scholargreek:roseofhypatia }
         },						 {
         id: "roseofwazneigreek",
@@ -148,21 +149,21 @@
 			xtriggers: {scholargreek:gospelzacchaeus }
         },						 {
         id: "matthiasamethystlossaramaic",
-            label: "On Matthias and the Amethyst Imago: Loss [Aramaic]",
+            label: "On Matthias and the Amethyst Imago: Loss",
             aspects:
             {text:1,textaramaic:1},
             description: "The diagrams and illustrations, even across the centuries, are elegant, hypnotic, occasionally erotic.",
 			xtriggers: {scholararamaic: matthiasamethystloss}
         },						 {
         id: "matthiasamethysttransformationaramaic",
-            label: "On Matthias and the Amethyst Imago: Transformation [Aramaic]",
+            label: "On Matthias and the Amethyst Imago: Transformation",
             aspects:
             {text:1,textaramaic:1},
             description: "The diagrams and illustrations, even across the centuries, are elegant, hypnotic, occasionally erotic.",
 			xtriggers: {scholararamaic:matthiasamethysttransformation }
         },						 {
         id: "matthiasamethystpursuitaramaic",
-            label: "On Matthias and the Amethyst Imago: Pursuit [Aramaic]",
+            label: "On Matthias and the Amethyst Imago: Pursuit",
             aspects:
             {text:1,textaramaic:1},
             description: "The diagrams and illustrations, even across the centuries, are elegant, hypnotic, occasionally erotic.",
@@ -241,7 +242,7 @@
         },
 		{
         id: "accountkanishkspidersdooraramaic",
-            label: "The Account of Kanishk at the Spider's Door [Aramaic]",
+            label: "The Account of Kanishk at the Spider's Door",
             aspects:
             {text:1,textaramaic:1},
             description: "Lok Kahuli, Kanishk's victim and lover, wrote this account, perhaps posthumously. ",
@@ -273,7 +274,7 @@
         },
 		{
         id: "morphycodexaramaic",
-            label: "The Morphy Codex [Aramaic]",
+            label: "The Morphy Codex",
             aspects:
             {text:1,textaramaic:1},
             description: "",
@@ -337,7 +338,7 @@
         },
 		{
         id: "asthesunhiscoursearamaic",
-            label: "As The Sun His Course [Aramaic]",
+            label: "As The Sun His Course",
             aspects:
             {text:1,textaramaic:1},
             description: "",
@@ -353,7 +354,7 @@
         },
 		{
         id: "ironbookfucine",
-            label: "The Iron Book [Fucine]",
+            label: "The Iron Book",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -361,7 +362,7 @@
         },
 		{
         id: "silverbookfucine",
-            label: "The Silver Book [Fucine]",
+            label: "The Silver Book",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -369,7 +370,7 @@
         },
 		{
         id: "ivorybookfucine",
-            label: "The Ivory Book [Fucine]",
+            label: "The Ivory Book",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -377,7 +378,7 @@
         },
 		{
         id: "worlddoesnotweeparamaic",
-            label: "The World Does Not Weep [Aramaic]",
+            label: "The World Does Not Weep",
             aspects:
             {text:1,textaramaic:1},
             description: "",
@@ -393,7 +394,7 @@
         },
 		{
         id: "bookofdissolutionmandaic",
-            label: "The Book of Dissolution [Deep Mandaic]",
+            label: "The Book of Dissolution",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -409,7 +410,7 @@
         },
 		{
         id: "thosewhodonotsleepfucine",
-            label: "Those Who Do Not Sleep [Fucine]",
+            label: "Those Who Do Not Sleep",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -417,7 +418,7 @@
         },
 		{
         id: "theskythesoularamaic",
-            label: "The Sky, the Soul [Aramaic]",
+            label: "The Sky, the Soul",
             aspects:
             {text:1,textaramaic:1},
             description: "",
@@ -425,7 +426,7 @@
         },
 		{
         id: "onthematterandthedeedsofserpentsvak",
-            label: "On the Matter and the Deeds of Serpents [Vak]",
+            label: "On the Matter and the Deeds of Serpents",
             aspects:
             {text:1,textvak:1},
             description: "",
@@ -448,7 +449,7 @@
 			xtriggers: {scholarphrygian: bookofthrones}
         },{
         id: "secondglorymandaic",
-            label: "A Second Glory [Deep Mandaic]",
+            label: "A Second Glory",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -472,7 +473,7 @@
         },
 		{
         id: "twentysixenticementsseventormentsfucine",
-            label: "Twenty-Six Enticements, Seven Torments [Fucine]",
+            label: "Twenty-Six Enticements, Seven Torments",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -481,7 +482,7 @@
 		
 		{
         id: "historyofshadowlesskingsaramaic",
-            label: "A True and Accurate History of the Shadowless Kings [Aramaic]",
+            label: "A True and Accurate History of the Shadowless Kings",
             aspects:
             {text:1,textaramaic:1},
             description: "",
@@ -490,7 +491,7 @@
 
 				{
         id: "highmysterieschurchsolarfucine",
-            label: "The High Mysteries of the Innermost... [Fucine]",
+            label: "The High Mysteries of the Innermost...",
             aspects:
             {text:1,textfucine:1},
             description: "'The High Mysteries of the Innermost Chamber of our Church Solar'",
@@ -517,7 +518,7 @@
 
 				{
         id: "inthemountainsasupontheplainvak",
-            label: "In The Mountains As Upon The Plain... [Vak]",
+            label: "In The Mountains As Upon The Plain...",
             aspects:
             {text:1,textvak:1},
             description: "'In The Mountains As Upon The Plain There May Not Be A Path Where None Has Passed '",
@@ -526,7 +527,7 @@
 
 				{
         id: "memoryofgodsfucine",
-            label: "In Memory of Gods [Fucine]",
+            label: "In Memory of Gods",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -535,7 +536,7 @@
 
 				{
         id: "sevenfoldslayingsevencoiledfucine",
-            label: "The Sevenfold Slaying of the Seven-Coiled [Fucine]",
+            label: "The Sevenfold Slaying of the Seven-Coiled",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -544,7 +545,7 @@
 
 				{
         id: "bighufffucine",
-            label: "My Deeds, My Powers, My Achievements... [Fucine]",
+            label: "My Deeds, My Powers, My Achievements...",
             aspects:
             {text:1,textfucine:1},
             description: "'My Deeds, My Powers, My Achievements and the Injustices Perpetrated Against Me'",
@@ -571,7 +572,7 @@
 
 				{
         id: "focusambermandaic",
-            label: "The Focus of Amber [Deep Mandaic]",
+            label: "The Focus of Amber",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -580,7 +581,7 @@
 
 				{
         id: "songscarapacecrossmandaic",
-            label: "The Songs of the Carapace Cross [Deep Mandaic]",
+            label: "The Songs of the Carapace Cross",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -588,7 +589,7 @@
         },
 						{
         id: "originsofhoursvak",
-            label: "The Origins of Hours [Vak]",
+            label: "The Origins of Hours",
             aspects:
             {text:1,textvak:1},
             description: "",
@@ -596,7 +597,7 @@
         },
 						{
         id: "wherehasshegonevak",
-            label: "Where Has She Gone? [Vak]",
+            label: "Where Has She Gone?",
             aspects:
             {text:1,textvak:1},
             description: "",
@@ -604,7 +605,7 @@
         },
 						{
         id: "bookextinguishedheartmandaic",
-            label: "The Book of the Extinguished Heart [Deep Mandaic]",
+            label: "The Book of the Extinguished Heart",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -612,7 +613,7 @@
         },
 						{
         id: "howendwillbeginvak",
-            label: "How the End will Begin [Vak]",
+            label: "How the End will Begin",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -620,7 +621,7 @@
         },
 						{
         id: "manneralchemistsparedvak",
-            label: "The Manner in which the Alchemist was Spared [Vak]",
+            label: "The Manner in which the Alchemist was Spared",
             aspects:
             {text:1,textvak:1},
             description: "",
@@ -628,7 +629,7 @@
         },
 						{
         id: "fivecreationsvak",
-            label: "Five Creations [Vak]",
+            label: "Five Creations",
             aspects:
             {text:1,textvak:1},
             description: "",
@@ -644,7 +645,7 @@
         },
 						{
         id: "timedivisionmandaic",
-            label: "The Time of Division [Deep Mandaic]",
+            label: "The Time of Division",
             aspects:
             {text:1,textmandaic:1},
             description: "",
@@ -652,7 +653,7 @@
         },
 						{
         id: "manualdeparturevak",
-            label: "A Manual for Departure [Vak]",
+            label: "A Manual for Departure",
             aspects:
             {text:1,textvak:1},
             description: "",
@@ -668,7 +669,7 @@
         },
 						{
         id: "voyagesfofucine",
-            label: "The Voyages of Ferninshun of Oreol [Fucine]",
+            label: "The Voyages of Ferninshun of Oreol",
             aspects:
             {text:1,textfucine:1},
             description: "",
@@ -676,7 +677,7 @@
         },
 						{
         id: "scarskyfucine",
-            label: "The Scar in the Sky [Fucine]",
+            label: "The Scar in the Sky",
             aspects:
             {text:1,textfucine:1},
             description: "",
