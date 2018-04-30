@@ -136,7 +136,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (!show) // hide the container
                 _mapTokenContainer.Show(false);
 
-            // TODO: should probably lock interface? No zoom, no tabletop interaction. Check EndGameAnim for ideas
+            // Lock interface. No zoom, no tabletop interaction? Check EndGameAnim for ideas
+			DraggableToken.draggingEnabled = false;
 
             _mapAnimation.onAnimDone += OnMansusMapAnimDone;
             _mapAnimation.SetCenterForEffect(effectCenter);
@@ -150,7 +151,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (show) // show the container
                 _mapTokenContainer.Show(true);
-            // TODO: should probably unlock interface? No zoom, no tabletop interaction
+
+            // Unlock interface. No zoom, no tabletop interaction
+			DraggableToken.draggingEnabled = true;
         }
 
         public void HideMansusMap(Transform effectCenter, IElementStack stack)
