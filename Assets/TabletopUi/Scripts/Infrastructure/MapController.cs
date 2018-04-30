@@ -62,14 +62,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (doorDeck == null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
             
-            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, dealer.Deal(doorDeck));
+			string cardid0 = dealer.Deal(doorDeck);
+            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0);
             cards[0].FlipToFaceUp(true);
 
-            // Display face down card next to locations
-            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position,dealer.Deal(subLocationDeck1));
+            // Display face down cards next to locations
+			int counter = 0;
+			string cardid1 = dealer.Deal(subLocationDeck1);
+			while (cardid1 == cardid0)
+			{
+				cardid1 = dealer.Deal(subLocationDeck1);	// Repeat until we get a non-matching card
+				counter++;
+				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
+			}
+            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1);
             cards[1].FlipToFaceDown(true);
 
-            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, dealer.Deal(subLocationDeck2));
+			counter = 0;
+			string cardid2 = dealer.Deal(subLocationDeck2);
+			while (cardid2 == cardid1 || cardid2 == cardid0)
+			{
+				cardid2 = dealer.Deal(subLocationDeck2);	// Repeat until we get a non-matching card
+				counter++;
+				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
+			}
+            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2);
             cards[2].FlipToFaceDown(true);
 
             // When one face-down card is turned, remove all face up cards.
