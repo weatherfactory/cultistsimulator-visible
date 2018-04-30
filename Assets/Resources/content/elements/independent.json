@@ -5,7 +5,7 @@
         id: "rose_r",
             label: "Rose, a troublemaker",
             aspects:
-            {mortal:1,independent:1},
+            {mortal:1,independent:1,suspicious:1, edge:5},
             description: "Rose has long since ceased to fear her enemies.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -14,7 +14,7 @@
         id: "clovette_r",
             label: "Clovette, a troublemaker",
             aspects:
-            {mortal:1,independent:1, heart:5},
+            {mortal:1,independent:1, suspicious:1, heart:5},
             description: "It's difficult to dislike Clovette, even when one knows what she's done.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -24,7 +24,7 @@
         id: "dorothy_r",
             label: "Dorothy, a troublemaker",
             aspects:
-            {mortal:1,independent:1, heart:5},
+            {mortal:1,independent:1, suspicious:1, heart:5},
             description: "Dorothy will not cease. She will never cease. She has vowed as much.",
 			animFrames: 1,
 				xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -33,7 +33,7 @@
         id: "enid_r",
             label: "Enid, a troublemaker",
             aspects:
-            {mortal:1,independent:1, knock:5},
+            {mortal:1,independent:1, suspicious:1, knock:5},
             description: "Enid always sees her enemies coming. All the time.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic}
         },
@@ -41,7 +41,7 @@
         id: "leo_r",
             label: "Leo, a troublemaker",
             aspects:
-            {mortal:1,independent:1,  heart:5},
+            {mortal:1,independent:1, suspicious:1,  heart:5},
             description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -50,7 +50,7 @@
         id: "neville_r",
             label: "Neville, a troublemaker",
             aspects:
-            {mortal:1,independent:1, knock:5},
+            {mortal:1,independent:1, suspicious:1, knock:5},
             description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -59,7 +59,7 @@
         id: "tristan_r",
             label: "Tristan, a troublemaker",
             aspects:
-            {mortal:1,independent:1, forge:5},
+            {mortal:1,independent:1, suspicious:1, forge:5},
             description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire..",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -68,7 +68,7 @@
         id: "victor_r",
             label: "Victor, a troublemaker",
             aspects:
-            {mortal:1,independent:1, edge:5},
+            {mortal:1,independent:1, suspicious:1, edge:5},
             description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -87,7 +87,7 @@
         id: "auclair_r",
             label: "Auclair, a troublemaker",
             aspects:
-            {mortal:1,independent:1, winter:5},
+            {mortal:1,independent:1, suspicious:1, winter:5},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -133,7 +133,7 @@
         id: "renira_r",
             label: "Renira, a troublemaker",
             aspects:
-            {mortal:1,independent:1, grail:5},
+            {mortal:1,independent:1, suspicious:1, grail:5},
             description: "Renira likes to convert admirers into worshippers.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -142,7 +142,7 @@
         id: "saliba_r",
             label: "Saliba, a troublemaker",
             aspects:
-            {mortal:1,independent:1, grail:5},
+            {mortal:1,independent:1, suspicious:1, grail:5},
             description: "Saliba does not tolerate boredom.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -151,7 +151,7 @@
         id: "slee_r",
             label: "Slee, a troublemaker",
             aspects:
-            {mortal:1,independent:1, lantern:5},
+            {mortal:1,independent:1, suspicious:1, lantern:5},
             description: "Slee is always hungry for resources to pursue his theories.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -160,7 +160,7 @@
         id: "sylvia_r",
             label: "Sylvia, a troublemaker",
             aspects:
-            {mortal:1,independent:1, moth:5},
+            {mortal:1,independent:1, suspicious:1, moth:5},
             description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -169,7 +169,7 @@
         id: "valciane_r",
             label: "Valciane, a troublemaker",
             aspects:
-            {mortal:1,independent:1, forge:5},
+            {mortal:1,independent:1, suspicious:1, forge:5},
             description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -179,7 +179,7 @@
         id: "violet_r",
             label: "Violet, a troublemaker",
             aspects:
-            {mortal:1,independent:1, winter:5},
+            {mortal:1,independent:1, suspicious:1, winter:5},
             description: "Violet has found new hobbies.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic}
@@ -188,7 +188,7 @@
         id: "ysabet_r",
             label: "Ysabet, a troublemaker",
             aspects:
-            {mortal:1,independent:1, moth:5},
+            {mortal:1,independent:1, suspicious:1, moth:5},
             description: "Ysabet waits where she cannot be seen.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic}

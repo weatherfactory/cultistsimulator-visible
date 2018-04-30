@@ -87,13 +87,6 @@
             isAspect: true,
 			induces:[{id:"heartinduction",chance:5}]
         },
-		        {
-            id: "heart",
-            label: "Heart",
-			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle that continues and preserves.]",
-            isAspect: true,
-			induces:[{id:"heartinduction",chance:5}]
-        },
 								{
             id: "ability",
             label: "Ability",
@@ -166,6 +159,12 @@
             label: "Evidence Level",
             isAspect: true,
 			description: "Some forms of proof are stronger than others."
+        },
+						 {
+            id: "suspicious",
+            label: "Suspicious",
+            isAspect: true,
+			description: "A detective may wish to investigate this."
         },
 						 {
             id: "healthskill",
@@ -597,7 +596,7 @@
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true,			
-			induces:[{id:"dreadinduction",chance:10}]
+			induces:[{id:"dreadinduction",chance:30}]
         },
 												 {
             id: "fascinating",
@@ -606,7 +605,7 @@
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true,			
-			induces:[{id:"fascinationinduction",chance:10}]
+			induces:[{id:"fascinationinduction",chance:30}]
         },
 										 {
             id: "damagepassion",
@@ -695,6 +694,14 @@
 			description: "I've done a day's work.",
             isAspect: true,
 			comments: "Recipe aspect. Refreshes job timers.",
+			noartneeded:true
+        },
+										 {
+            id: "investigatingsuccess",
+            label: "Investigation Success",
+			description: "Upgrades evidence. Initially only used in the Detective legacy.",
+            isAspect: true,
+			comments: "Recipe aspect.",
 			noartneeded:true
         },
 						 {
