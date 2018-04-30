@@ -89,6 +89,8 @@ namespace Assets.Core.Entities
         public void RemoveAllCardsWithId(string elementId)
         {
             var cardsList = new List<string>(_cards);
+            if(cardsList.Contains(elementId))
+                NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id,10);
             cardsList.RemoveAll(c => c == elementId);
             _cards=new Stack<string>(cardsList);
         }
