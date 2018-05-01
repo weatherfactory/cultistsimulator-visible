@@ -24,7 +24,7 @@
 	requirements:{edge:10},
 	label:"Our strength is matchless.",
 	startdescription:"Eyes like gas-lamps; scales like black jade. A Serpent is a powerful foe, but it's nothing before us.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:100},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
@@ -33,7 +33,7 @@
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
 	startdescription:"Eyes like gas-lamps; fangs like stalactites. A great Serpent is a powerful foe, but so are we.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:70},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
@@ -42,7 +42,7 @@
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
 	startdescription:"Eyes like gas-lamps; a mouth one could crouch in. We might defeat this Serpent. We might regret trying.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:30},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
@@ -52,7 +52,7 @@
 	requirements:{knock:10},
 	label:"We call upon the Mother of Ants, which ariseth from wounds.",
 	startdescription:"The Serpent's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:100},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
@@ -62,7 +62,7 @@
 	requirements:{knock:5},
 	label:"We call upon the Mother of Ants, which encircleth.",
 	startdescription:"The Serpent is long enough to coil round a cottage. Its fangs glisten like ice. Probably it will respect the power we bear.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:70},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
@@ -72,7 +72,7 @@
 	requirements:{knock:1},
 	label:"We call upon the Mother of Ants, which openeth.",
 	startdescription:"The Serpent rears up like swelling river. Its eyes are slitted pits of hunger. Perhaps the Serpent will respect the power we bear.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:30},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
@@ -145,7 +145,7 @@
 	requirements:{edge:10},
 	label:"Our strength is matchless.",
 	startdescription:"The Watchers will regret standing against us.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:100},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -154,7 +154,7 @@
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
 	startdescription:"The Watchers aren't ready for us. We should be able to bring them down.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:70},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -163,7 +163,7 @@
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
 		startdescription:"The Watchers may be too much for us - but we still have a chance.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:30},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -173,7 +173,7 @@
 	requirements:{grail:10},
 	label:"Against the Watchers: The Grail's Seductions",
 	startdescription:"'Come closer, dear ones. We have something special for you.'",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:100},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -183,7 +183,7 @@
 	requirements:{grail:5},
 	label:"Against the Watchers: The Grail's Temptations",
 	startdescription:"Our allures should sway the Watchers' minds.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:70},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -193,7 +193,7 @@
 	requirements:{grail:1},
 	label:"Against the Watchers: The Grail's Distractions",
 	startdescription:"Perhaps we can sway the Watchers from their purpose.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:30},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -203,7 +203,7 @@
 	requirements:{moth:10},
 	label:"Against the Watchers: A Certain Deception",
 	startdescription:"'Look closer. Closer still. Closer! Keep looking. Closer. Now close your eyes...'",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:100},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -213,7 +213,7 @@
 	requirements:{moth:5},
 	label:"Against the Watchers: A Likely Deception",
 	startdescription:"'Awake! Awake! They're upon us! That way, quickly!'",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:70},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -223,7 +223,7 @@
 	requirements:{moth:1},
 	label:"Against the Watchers: A Desperate Deception",
 	startdescription:"'They went... that way?'",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:30},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
@@ -300,7 +300,7 @@
 	requirements:{edge:10},
 	label:"Our strength is irresistible.",
 	startdescription:"We will dapple the earth with holy blood.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_monks_success_edge",chance:100},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
@@ -309,7 +309,7 @@
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
 	startdescription:"We should be more than enough for these holy fools.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_monks_success_edge",chance:70},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
@@ -318,7 +318,7 @@
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
 	startdescription:"They are only monks. But they are many, many monks. We might prevail, if we're lucky.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_monks_success_edge",chance:30},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
@@ -328,7 +328,7 @@
 	requirements:{moth:10},
 	label:"The Monks: a Certain Deception",
 	startdescription:"'We have brought here with us certain sacred texts, whose meaning is apparent only in moonlight - '",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_monks_success_moth",chance:100},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
@@ -338,7 +338,7 @@
 	requirements:{moth:5},
 	label:"The Monks: a Likely Deception",
 	startdescription:"'This writ of entry bears the seal of the highest authority. Do not stand in our way -'",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_monks_success_moth",chance:70},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
@@ -348,7 +348,7 @@
 	requirements:{moth:1},
 	label:"The Monks: a Desperate Deception",
 	startdescription:"'We have... relics. *Ancient* relics.'",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_monks_success_moth",chance:30},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
@@ -415,7 +415,7 @@
 	requirements:{edge:10},
 	label:"Our strength is matchless.",
 	startdescription:"The Dead are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:100},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
@@ -424,7 +424,7 @@
 	requirements:{edge:5},
 	label:"Our strength is considerable.",
 	startdescription:"These Dead, with their avid, pitiful eyes, have died once already. Their hold on the waking world is weak. We should be able to send them down into darkness, but we must take care.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:70},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
@@ -433,7 +433,7 @@
 	requirements:{edge:1},
 	label:"Our strength may not be enough.",
 	startdescription:"The Dead are slow as the movement of a sundial's shadow - slow, but ceaseless. They remember pain and fear, but not clearly. We know both sensations too well. They may be too much for us.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_dead_success_edge",chance:30},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
@@ -443,7 +443,7 @@
 	requirements:{winter:10},
 	label:"We call upon the Ivory Dove, who knows the names of all the dead.",
 	startdescription:"The Dead circle the edge of our vision like frayed dreams. The very air around us is chill with Winter's shadow. They must recognise that.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_dead_success_winter",chance:100},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
@@ -453,7 +453,7 @@
 	requirements:{winter:5},
 	label:"We call upon the Ivory Dove, who cannot be deceived.",
 	startdescription:"The Dead watch us closely, expressionless as saint-statues. But we are invested with the power of Winter. Probably the Dead will recognise that.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_dead_success_winter",chance:70},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
@@ -463,7 +463,7 @@
 	requirements:{winter:1},
 	label:"We call upon the Ivory Dove, from whom nothing more may be taken.",
 	startdescription:"The Dead boil and rattle in the darkness, but we have been touched by the Hours of Winter. Perhaps they will recognise that.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_dead_success_winter",chance:30},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
@@ -528,7 +528,7 @@
 	requirements:{lantern:10},
 	label:"We call upon the Watchman, who illuminates",
 	startdescription:"We have power enough to keep them at a distance.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:100},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
@@ -537,7 +537,7 @@
 	requirements:{lantern:5},
 	label:"We call upon the Watchman, who is not compassionate.",
 	startdescription:"Our power should be enough to hold them at bay - but they are ready for any lapse in vigilance.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:70},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
@@ -546,7 +546,7 @@
 	requirements:{lantern:1},
 	label:"We call upon the Watchman, who navigates.",
 	startdescription:"It is possible the power we carry will see us safe through the crowded night. It's definitely possible.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:30},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
@@ -556,7 +556,7 @@
 	requirements:{moth:10},
 	label:"We call upon the Moth, who seeks among the trees of the Wood",
 	startdescription:"The Moth has power in this close-crowded forest night. We will pass secretly and safely.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:100},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
@@ -566,7 +566,7 @@
 	requirements:{moth:5},
 	label:"We call upon the Moth, who beats in the skull",
 	startdescription:"We hshould have power enough to deceive and dismay these night-winged thirsty ones.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:70},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
@@ -576,7 +576,7 @@
 	requirements:{moth:1},
 	label:"We call upon the Moth, who is dappled",
 	startdescription:"The Moth will give us a chance in the dappled shadows of the forest - but only a chance.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:30},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
@@ -644,7 +644,7 @@
 	requirements:{grail:10},
 	label:"'We are here for your pleasure.'",
 	startdescription:"Even the Long know desire; perhaps especially the Long. This one will yield willingly to our attentions.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_long_success_grail",chance:100},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
@@ -653,7 +653,7 @@
 	requirements:{grail:5},
 	label:"'We are here for your diversion.'",
 	startdescription:"This Long one welcomes our enticements, but they're still suspicious. We'll probably succeed.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_long_success_grail",chance:70},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
@@ -662,7 +662,7 @@
 	requirements:{grail:1},
 		label:"'We... hope we may amuse you?",
 	startdescription:"The Long have the appetites of any mortal, but they are jaded by a thousand experiences. Perhaps we might yet entertain one enough, if we're lucky.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_long_success_grail",chance:30},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
@@ -672,7 +672,7 @@
 	requirements:{moth:10},
 	label:"'News! News from the Old Country! From all the Old Countries!'",
 	startdescription:"The Long are desperate for novelty. We'll take advantage of that, and we'll be gone before they know it.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_long_success_moth",chance:100},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
@@ -682,7 +682,7 @@
 	requirements:{moth:5},
 	label:"'Very well: a wager.'",
 	startdescription:"Is this one toying with us? It's hard to be sure. But even if this is a game, they may permit us to leave. All will probably be well. ",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_long_success_moth",chance:70},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
@@ -692,7 +692,7 @@
 	requirements:{moth:1},
 	label:"'It's, ah, er, a funny story, actually...'",
 	startdescription:"The long boil and rattle in the darkness, but we have been touched by the Hours of moth. Perhaps they will recognise that, if we're lucky.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultguardian_long_success_moth",chance:30},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
