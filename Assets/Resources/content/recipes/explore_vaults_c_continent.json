@@ -7,7 +7,7 @@
 	requirements:{funds:1,follower:1,vaultcontinent1:1},
 	effects: {seal_hiddendoor:1,curse_dread:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "The remote and rotting chateau of the Comtes des Raveline was looted long ago. We have found hints that it was not looted thoroughly enough. There may be a secret room. Equally, there may be a curse.[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -15,14 +15,14 @@
 	{id: "explorevault_expeditionbegun",chance:100}],
 	},
 	
-		 	{
+{
 	id: "explore_vaultcontinent2_setup",
 	label: "Beginning an Expedition: Fermier Abbey",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultcontinent2:1},
 	effects: {peril_forest:1,guardian_monks:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Fermier Abbey, folded into the forest like a jewel-box smuggled in a green robe. If we can make it through the forest, we'll still have to face the monks.[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -36,7 +36,7 @@
 	requirements:{funds:1,follower:1,vaultcontinent3:1},
 	effects: {peril_forest:1,guardian_watchers:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "In the black heart of Orthos Wood, we might find the tree where the masked Crow met its peers. But the forest itself is a peril, and the cannibal clans who live there are another. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
