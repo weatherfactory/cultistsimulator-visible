@@ -50,7 +50,7 @@
 	requirements:{funds:1,follower:1,vaultcontinent4:1},
 	effects: {seal_wardeddoor:1,curse_visions:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "The door to the Painted Chamber of the Vanderschaaf Collection is locked and warded. The building is said to be 'haunted by flowers'. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -64,7 +64,7 @@
 	requirements:{funds:1,follower:1,vaultcontinentdefault:1},
 	effects: {peril_forest:1,seal_hiddendoor:1,guardian_watchers:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Treasure-seekers visiting the Stones must penetrate the forest that conceals them; grapple with the locals who revere them; and finally be prepared to do some digging, even if they can find a hidden door.  [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:10,
 	craftable: true,
@@ -78,8 +78,8 @@
 	requirements: {vaultcontinent1:1},
 	effects: {vaultcontinent1:-1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
-	description: "Success! [FNORD higher level vault texts next build]",
+	startdescription: "Behind a rotting tapestry of wolves hunting men, a panelled wall. In the panelled wall, a secret door. The spring is long gone, of course. We had to smash it in with hammers.",
+	description: "The last treasures of the Comtes des Raveline lie here, in a surprisingly airy room. High skylight windows have long since broken, and the floor is lost underneath leaves and debris, but once the place was furnished as a nursery. Here is a cradle, with the skeleton of a puppy.",
 	warmup:10,
 	craftable: false
 	},
@@ -91,13 +91,11 @@
 	requirements: {vaultcontinent2:1},
 	effects: {vaultcontinent2:-1,againstsisterhoodknotgreek:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
-	description: "Success! [FNORD higher level vault texts next build]",
+	startdescription: "The monks and their miseries lie behind us. Here in their chapel-courtyard, a great yew rises beside a granite altar, lidded like a sarcophagus. What's within?",
+	description: "The space inside the altar is filled with broken cups, every one painted red, every one scrawled with vile graffiti and otherwise befouled. The monks must have held great ceremonies of detestation, and kept the remains as trophies. Buried among the cup-corpses are other treasures.",
 	warmup:10,
 	craftable: false
 	},
-	
-	
 	
 	
 				{
@@ -107,8 +105,8 @@
 	requirements: {vaultcontinent3:1},
 	effects: {vaultcontinent3:-1,ingredientmothd:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
-	description: "Success! [FNORD higher level vault texts next build]",
+	startdescription: "This is the great oak where the masked Crow once roosted. Lightning has split it from head to heart, and the tree is charred and rotting. It squrms with finger-length worms. Something glints dully in the swarm of dead roots.",
+	description: "A root coils around a lead of egg the size of a child. Perhaps it was plated with another metal, once, but the weather has removed all trace of any coating. After a struggle, the halves of the egg come apart to reveal its contents.",
 	warmup:10,
 	craftable: false
 	},
