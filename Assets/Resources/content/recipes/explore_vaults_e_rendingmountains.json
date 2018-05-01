@@ -8,7 +8,7 @@
 	effects: {peril_mountains:1,guardian_watchers:1,guardian_serpent:1},
 
 	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
-	description: ".",
+	description: "The trap-labyrinths of the Tearing Tribes. We'll have to scale the mountains and battle our way through the tribes. After that, no doubt, there will be something else.",
 	warmup:30,
 	craftable: true,
 	linked: [
@@ -21,7 +21,7 @@
 	requirements:{funds:1,follower:1,vaultrendingmountains2:1},
 	effects: {peril_mountains:1,guardian_dead:1,curse_nowhere:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "We'll brave the mountain-snows to reach the temple. If the dead rise against us, we'll suppress them. But there is a malignity here that we must suppress, or it will return home with us. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -35,7 +35,7 @@
 	requirements:{funds:1,follower:1,vaultrendingmountains3:1},
 	effects: {peril_mountains:1,seal_wardeddoor:1,curse_visions:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "The Rending Mountains stand between us and the observatory. The door will be sealed and barred against us. The visions we find may tear at our senses. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -49,7 +49,7 @@
 	requirements:{funds:1,follower:1,vaultrendingmountains4:1},
 	effects: {peril_mountains:1,seal_wardeddoor:1,guardian_dead:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Did the Sun ever come here, when its death was pronounced? Perhaps that pronouncement was premature. In any case, if we usurp its progress, we'll have to face avalanches, furious ghosts, and a door sealed by adept-architects. Let's be ready.[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -63,7 +63,7 @@
 	requirements:{funds:1,follower:1,vaultrendingmountainsdefault:1},
 	effects: {peril_mountains:1,seal_hiddendoor:1,guardian_watchers:1,curse_affliction:1},
 
-	startdescription: "[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "We must penetrate the mountains, pass the guardians, and brave the curse the Shadowless Kings left behind. Perhaps then we will find treasures. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -75,10 +75,10 @@
 	label: "",
 	actionId: "explore",
 	requirements: {vaultrendingmountains1:1},
-	effects: {vaultrendingmountains1:-1,tooledgef:1},
-	deckeffect: {"vaultcontentsu":2,},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
-	description: "Success! [FNORD higher level vault texts next build]",
+	effects: {vaultrendingmountains1:-1,tooledgef:1,influenceedgee:1},
+	deckeffect: {"vaultcontentsu":2},
+	startdescription: "In the crumbling depths of the Hunter's Pits, we've found a room where battle-scenes are painted on the walls. Here are the shrines of all the greatest hunters on the Tearing Tribes.",
+	description: "These are the trophies the hunters one. Not all the beasts they slew are beasts that walk the earth today.",
 	warmup:30,
 	craftable: false
 	},
@@ -90,8 +90,8 @@
 	requirements: {vaultrendingmountains2:1},
 	effects: {vaultrendingmountains2:-1},
 	deckeffect: {"vaultcontentsu":2,"vaultcontentsr":1},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
-	description: "Success! [FNORD higher level vault texts next build]",
+	startdescription: "The interior of the temple throbs with luminescent fungi. We must peel them from the altar with our gloves hands before we can loot the place. It is as cold as rain-chilled flesh. Our gloves now are stained with light. Our breath mists in the temple chill.",
+	description: "The treasures that unknown priests left here. nd a pitiful huddle of bones. A sacrifice? Or did a later visitor end their visit here? The glowing fungus has etched their skeleton with its acids.",
 	warmup:30,
 	craftable: false
 	},
@@ -102,7 +102,7 @@
 	requirements: {vaultrendingmountains3:1},
 	effects: {vaultrendingmountains3:-1},
 	deckeffect: {"vaultcontentsu":2,"vaultcontentsr":1},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
+	startdescription: "FNORD",
 	description: "Success! [FNORD higher level vault texts next build]",
 	warmup:30,
 	craftable: false
