@@ -43,7 +43,7 @@
 	   label: "An Escaped Summoning Closes on its Victim",
 	  actionId:"haunting",
 	  startdescription:"The victim will know that something is amiss, by now. They will listen to the sounds in the night and try to make preparations.",
-	  description:"Separate failure event means this should never be visible. devourer_haunting_mortal_midedge",
+	  description:". devourer_haunting_mortal_midedge",
 	  requirements: {mortal:1,edge:5},
 	  linked: [{id:"devourer_haunting_mortal_success",chance:70},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
@@ -54,7 +54,7 @@
 	   label: "An Escaped Summoning Closes on its Victim",
 	  actionId:"haunting",
 	  startdescription:"This thing is only a moderate menace, but even a moderate menace can be lethal sometimes.",
-	  description:"Separate failure event means this should never be visible. devourer_haunting_mortal_lowedge",
+	  description:". devourer_haunting_mortal_lowedge",
 	  requirements: {mortal:1,edge:1},
 	  linked: [{id:"devourer_haunting_mortal_success",chance:30},
 	  {id:"devourer_haunting_mortal_failure",chance:100}
@@ -97,7 +97,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Awaits Its Moment",
 	  actionId:"haunting",
 	  startdescription:"Is it toying with me?",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {health:1,edge:10},
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:100},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
@@ -109,7 +109,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Lies in Wait for you",
 	  actionId:"haunting",
 	  startdescription:"There are so many ways to undo a human body. My skin feels vulnerable as an open door.",
-	  description:"Separate failure event means this should never be visible. devourer_haunting_damageshealth_midedge",
+	  description:". devourer_haunting_damageshealth_midedge",
 	  requirements: {health:1,edge:5},
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:70},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
@@ -120,7 +120,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Lies in Wait for you",
 	  actionId:"haunting",
 	  startdescription:"I will watch the windows and bolt the doors and keep oak and silver by the bed. That might be sufficient..",
-	  description:"Separate failure event means this should never be visible. devourer_haunting_damageshealth_lowedge",
+	  description:". devourer_haunting_damageshealth_lowedge",
 	  requirements: {health:1,edge:1},
 	  linked: [{id:"devourer_haunting_damageshealth_success",chance:30},
 	  {id:"devourer_haunting_damageshealth_failure",chance:100}
@@ -174,7 +174,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Lies in Wait for you",
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, and this thing is all but irresistible.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {health:1,edge:10},
 	  linked: [{id:"deceiver_haunting_health_success",chance:100},
 	  {id:"deceiver_haunting_health_failure",chance:100}
@@ -186,7 +186,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Lies in Wait for you",
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, and this thing is potent.",
-	  description:"Separate failure event means this should never be visible. deceiver_haunting_health_midedge",
+	  description:". deceiver_haunting_health_midedge",
 	  requirements: {health:1,edge:5},
 	  linked: [{id:"deceiver_haunting_health_success",chance:70},
 	  {id:"deceiver_haunting_health_failure",chance:100}
@@ -197,7 +197,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Lies in Wait for you",
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
-	  description:"Separate failure event means this should never be visible. deceiver_haunting_health_lowedge",
+	  description:". deceiver_haunting_health_lowedge",
 	  requirements: {health:1,edge:1},
 	  linked: [{id:"deceiver_haunting_health_success",chance:30},
 	  {id:"deceiver_haunting_health_failure",chance:100}
@@ -245,7 +245,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Closes on its Victim",
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, and this thing is all but irresistible.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {mortal:1,edge:10},
 	  linked: [{id:"deceiver_haunting_mortal_success",chance:100},
 	  {id:"deceiver_haunting_mortal_failure",chance:100}
@@ -257,7 +257,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Closes on its Victim",
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, and this thing is potent.",
-	  description:"Separate failure event means this should never be visible. deceiver_haunting_mortal_midedge",
+	  description:". deceiver_haunting_mortal_midedge",
 	  requirements: {mortal:1,edge:5},
 	  linked: [{id:"deceiver_haunting_mortal_success",chance:70},
 	  {id:"deceiver_haunting_mortal_failure",chance:100}
@@ -268,7 +268,7 @@ alternativerecipes:	[
 	   label: "An Escaped Summoning Closes on its Victim",
 	  actionId:"haunting",
 	  startdescription:"Human sanity is fragile, but perhaps this thing might cause more mischief than harm.",
-	  description:"Separate failure event means this should never be visible. deceiver_haunting_mortal_lowedge",
+	  description:". deceiver_haunting_mortal_lowedge",
 	  requirements: {mortal:1,edge:1},
 	  linked: [{id:"deceiver_haunting_mortal_success",chance:30},
 	  {id:"deceiver_haunting_mortal_failure",chance:100}
