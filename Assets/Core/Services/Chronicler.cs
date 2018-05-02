@@ -30,6 +30,8 @@ namespace Assets.Core.Services
         private const string DISCIPLE_ASPECT = "disciple";
         private const string FOLLOWER_ASPECT = "follower";
         private const string MORTAL_ASPECT = "mortal";
+        private const string SUMMONED_ASPECT = "summoned";
+        private const string HIRELING_ASPECT = "hireling";
 
 
 
@@ -93,18 +95,10 @@ namespace Assets.Core.Services
 
         private void TryUpdateBestFollower(List<IElementStack> stacks)
         {
-            //var pastFollowerId = _storage.GetFutureLegacyEventRecord(LegacyEventRecordId.LastFollower);
-
-            //var currentFollower = _compendium.GetElementById(pastFollowerId);
-            //if (currentFollower == null)
-            //{
-            //    NoonUtility.Log("Couldn't find a matching follower for CurrentFollowerId lever when trying to update follower");
-            //    return;
-            //}
 
             Element currentFollower=null;
 
-            foreach (var stack in stacks.Where(s=>s.GetAspects().ContainsKey(FOLLOWER_ASPECT) && s.GetAspects().ContainsKey(MORTAL_ASPECT)))
+            foreach (var stack in stacks.Where(s=>s.GetAspects().ContainsKey(FOLLOWER_ASPECT) && !s.GetAspects().ContainsKey(HIRELING_ASPECT) && !s.GetAspects().ContainsKey(SUMMONED_ASPECT)))
             {
                 var aspects = stack.GetAspects();
                 //if the follower is Exalted, update it.
