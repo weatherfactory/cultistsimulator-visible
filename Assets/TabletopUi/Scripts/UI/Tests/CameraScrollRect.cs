@@ -218,7 +218,7 @@ namespace UnityEngine.UI {
 
             if (position != scrollPosition) {
                 scrollPosition = position;
-                Debug.Log("ScrollPos " + scrollPosition + " normalized " + normalizedPosition + " -" + m_ContentBounds.size + " -" + m_ViewBounds.size);
+                //Debug.Log("ScrollPos " + scrollPosition + " normalized " + normalizedPosition + " -" + m_ContentBounds.size + " -" + m_ViewBounds.size);
                 
                 UpdateBounds();
                 scrollCamera.transform.position = startPosition + Vector2.Scale(scrollPosition , new Vector2(cameraBounds.x / m_ContentBounds.size.x, cameraBounds.y / m_ContentBounds.size.y) );
