@@ -3,7 +3,7 @@
 	   label: "Send an Irrestible Minion to Ensnare and Disgrace an Annoyance",
 	  actionId:"talk",
 	  startdescription:"I want this irritation out of my way. They may even enjoy their downfall.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,grail:10,follower:1},
 	  linked: [{id:"annoyanceseducesuccess",chance:70},
 	  {id:"annoyanceseducefailure",chance:100}
@@ -13,7 +13,7 @@
 	   label: "Send an Alluring Minion to Ensnare and Disgrace an Annoyance",
 	  actionId:"talk",
 	  startdescription:"Everyone has a weakness for one particular pleasure. I will send a minion who understands the many natures of pleasure. They will very likely succeed.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,grail:5,follower:1},
 	  linked: [{id:"annoyanceseducesuccess",chance:70},
 	  {id:"annoyanceseducefailure",chance:100}
@@ -23,7 +23,7 @@
 	   label: "Send a Tempting Minion to Ensnare and Disgrace an Annoyance",
 	  actionId:"talk",
 	  startdescription: "Who knows if this will succeed? The Annoyance may not find my minion appealing at all.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,grail:1,follower:1},
 	  linked: [{id:"annoyanceseducesuccess",chance:30},
 	  {id:"annoyanceseducefailure",chance:100}
@@ -64,7 +64,7 @@
 	   label: "Send a Potent Minion to murder an Annoyance",
 	  actionId:"talk",
 	  startdescription:"I am out of patience with this nuisance. This should be an end to the matter. But they could possibly survive, and the attempt will draw attention.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,edge:5,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:70},
 	  {id:"annoyanceattackfailure",chance:100}
@@ -74,7 +74,7 @@
 	   label: "Send a Minion to murder an Annoyance",
 	  actionId:"talk",
 	  startdescription:"I want this Annoyance gone. But this approach is risky: my minion's strength is limited. The Annoyance might very easily survive, and the attempt will draw attention.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,edge:1,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:30},
 	  {id:"annoyanceattackfailure",chance:100}
@@ -84,7 +84,7 @@
 	   label: "Send Someone Unsuitable to Murder an Annoyance",
 	  actionId:"talk",
 	  startdescription:"My minion lacks the Edge aspect, and is woefully unsuited to attacking the Annoyance. There's a small chance they might succeed.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:10},
 	  {id:"annoyanceattackfailure",chance:100}
@@ -133,7 +133,7 @@
 	   label: "Send a Devious Minion to Drive an Annoyance Insane",
 	  actionId:"talk",
 	  startdescription:"I want this irritation out of my way. This scheme will probably succeed, but if it fails, it will draw attention.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,moth:5,follower:1},
 	  linked: [{id:"annoyancederangesuccess",chance:70},
 	  {id:"annoyancederangefailure",chance:100}
@@ -143,7 +143,7 @@
 	   label: "Send a Devious Minion to Drive an Annoyance Insane",
 	  actionId:"talk",
 	  startdescription:"I want this Annoyance gone. But my minion's abilities are limited. This might very well fail, and if it does, it will draw attention.",
-	  description:"Separate failure event means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,moth:1,follower:1},
 	  linked: [{id:"annoyancederangesuccess",chance:30},
 	  {id:"annoyancederangefailure",chance:100}

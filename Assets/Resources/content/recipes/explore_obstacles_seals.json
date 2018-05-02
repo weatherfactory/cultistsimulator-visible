@@ -23,7 +23,7 @@
 	requirements:{lantern:10},
 	label:"We call upon the Watchman, who Illuminates",
 	startdescription:"We'll almost certainly find this Hidden Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_hiddendoor_success",chance:100},
 	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
 		  },
@@ -32,7 +32,7 @@
 	requirements:{lantern:5},
 	label:"We call upon the Watchman, who Navigates",
 	startdescription:"Our senses are sharpened. We should find this Hidden Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_hiddendoor_success",chance:70},
 	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
 		  },
@@ -41,7 +41,7 @@
 	requirements:{lantern:1},
 	label:"We call upon the Watchman, who is not Compassionate",
 	startdescription:"We carry light. We might find this Hidden Door. It'll be a struggle.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_hiddendoor_success",chance:30},
 	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
 		  },
@@ -51,7 +51,7 @@
 	requirements:{knock:10},
 	label:"We call upon the Beach-Crow, who sees what is lost.",
 	startdescription:"We bear a great power of opening. We'll almost certainly find this Hidden Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_hiddendoor_success",chance:100},
 	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
 		  },
@@ -61,7 +61,7 @@
 	requirements:{knock:5},
 	label:"We call upon the Beach-Crow, who opens the earth.",
 	startdescription:"We are skilled in uncovering hidden ways. We'll probably find this Hidden Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_hiddendoor_success",chance:70},
 	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
 		  },
@@ -71,7 +71,7 @@
 	requirements:{knock:1},
 	label:"We call upon the Beach-Crow, to whom belongs what is not possessed.",
 	startdescription:"We have some ability in the matter of opening. We might find this Hidden Door. It'll be a struggle.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_hiddendoor_success",chance:30},
 	{id:"explorevaultseal_hiddendoor_failure",chance:100}]	  
 		  },
@@ -125,7 +125,7 @@
 	requirements:{forge:10},
 	label:"We call upon the Forge of Days, who will end all nights.",
 	startdescription:"We'll almost certainly shatter this Warded Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:100},
 	{id:"explorevaultseal_wardeddoor_failure",chance:100}]	  
 		  },
@@ -134,7 +134,7 @@
 	requirements:{forge:5},
 	label:"We call upon the Forge of Days, who ends what will not change",
 	startdescription:"Our tools are ready. We should be able to penetrate this Warded Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:70},
 	{id:"explorevaultseal_wardeddoor_failure",chance:100}]	  
 		  },
@@ -143,7 +143,7 @@
 	requirements:{forge:1},
 	label:"We call upon the Forge of Days, who remakes with fire. ",
 	startdescription:"We are ready with the Forge's fire. We might be able to penetrate this Warded Door. It'll be a struggle.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:30},
 	{id:"explorevaultseal_wardeddoor_failure",chance:100}]	  
 		  },
@@ -153,7 +153,7 @@
 	requirements:{knock:10},
 	label:"We call upon the Horned-Axe, who waits at the threshold",
 	startdescription:"We bear a great power of opening. We'll almost certainly shatter this Warded Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:100},
 	{id:"explorevaultseal_wardeddoor_failure",chance:100}]	  
 		  },
@@ -163,7 +163,7 @@
 	requirements:{knock:5},
 	label:"We call upon the Horned-Axe, who permits passage when passage is to be permitted.",
 	startdescription:"We are skilled in uncovering warded ways. We'll probably penetrate this Warded Door.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:70},
 	{id:"explorevaultseal_wardeddoor_failure",chance:100}]	  
 		  },
@@ -173,7 +173,7 @@
 	requirements:{knock:1},
 	label:"We call upon the Horned-Axe, who bears two blades.",
 	startdescription:"We have some ability in the matter of opening. We might be able to penetrate this Warded Door. It'll be a struggle.",
-		  description:"Separate failure event means this should never be visible.",
+		  description:".",
 	linked: [{id:"explorevaultseal_wardeddoor_success",chance:30},
 	{id:"explorevaultseal_wardeddoor_failure",chance:100}]	  
 		  },
