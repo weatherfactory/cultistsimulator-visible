@@ -26,10 +26,13 @@ namespace Assets.CS.TabletopUI {
         public static DraggableToken itemBeingDragged;
         public static bool draggingEnabled = true;
         private static bool resetToStartPos = false;
+		private static string resetToStartPosReason = null;	// For debug purposes only - CP
         // This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
 
         public static void SetReturn(bool value, string reason = "") {
             resetToStartPos = value;
+			resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
+			Debug.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )"  );
             //log here if necessary
         }
 
@@ -84,6 +87,9 @@ namespace Assets.CS.TabletopUI {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
         }
 
+		public bool IsGlowing() {
+			return glowImage.gameObject.activeSelf;
+		}
 
         /// <summary>
         /// This is an underscore-separated x, y localPosition in the current transform/containsTokens
@@ -155,8 +161,8 @@ namespace Assets.CS.TabletopUI {
                 rectCanvas = GetComponentInParent<Canvas>().GetComponent<RectTransform>();
 
             DraggableToken.itemBeingDragged = this;
-            DraggableToken.resetToStartPos = true;
             DraggableToken.dragCamera = eventData.pressEventCamera;
+			SetReturn( true, "start drag" );
             canvasGroup.blocksRaycasts = false;
 
             DisplayInAir();

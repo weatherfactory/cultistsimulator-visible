@@ -95,7 +95,7 @@ namespace Assets.CS.TabletopUI {
         #region -- Intialisation -------------------------------
 
         void Start() {
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
             //register everything used gamewide
             SetupServices(_situationBuilder, _tabletop);
@@ -153,7 +153,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitAudioSettings();
+            optionsPanel.InitAudioSettings(_speedController);
         }
 
         private void InitialiseListeners() {
@@ -550,6 +550,10 @@ namespace Assets.CS.TabletopUI {
 
         public void SetPausedState(bool paused) {
             _speedController.SetPausedState(paused);
+        }
+
+		public bool GetPausedState() {
+            return _speedController.GetPausedState();
         }
 
         void LockSpeedController(bool enabled) {

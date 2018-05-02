@@ -54,6 +54,7 @@ namespace Assets.CS.TabletopUI {
 		[SerializeField] TextMeshProUGUI startButtonText;
 
 		private SituationController situationController;
+		private Heart _heart;
 		private IVerb Verb;
         private bool windowIsWide = false;
 
@@ -78,8 +79,9 @@ namespace Assets.CS.TabletopUI {
             dumpResultsButton.onClick.RemoveListener(DumpAllResultingCardsToDesktop);
         }
 
-		public void Initialise(IVerb verb, SituationController sc) {
+		public void Initialise(IVerb verb, SituationController sc, Heart heart) {
 			situationController = sc;
+			_heart = heart;
 			Verb = verb;
             name = "Window_" + verb.Id;
             artwork.sprite = ResourcesManager.GetSpriteForVerbLarge(Verb.Id);
@@ -146,6 +148,8 @@ namespace Assets.CS.TabletopUI {
             DisplayButtonState(false, buttonBusy);
 
             SetWindowSize(IsWideRecipe(recipe));
+
+			_heart.AdvanceTime( 0.0f );	// Force a refresh of desktop without actually advancing time, so that new timer will appear on verb token - CP
         }
 
         // Results State
