@@ -8,6 +8,7 @@ using Assets.CS.TabletopUI.Interfaces;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.UI;
+using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -32,7 +33,7 @@ namespace Assets.CS.TabletopUI {
         public static void SetReturn(bool value, string reason = "") {
             resetToStartPos = value;
 			resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
-			Debug.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )"  );
+			NoonUtility.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )"  );
             //log here if necessary
         }
 

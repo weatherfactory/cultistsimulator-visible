@@ -1,6 +1,7 @@
 ﻿#pragma warning disable 0649
 using System.Collections;
 using System.Collections.Generic;
+using Noon;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +23,7 @@ namespace Assets.CS.TabletopUI {
             var sprite = LoadBurnSprite(spriteName);
 
             if (sprite == null) {
-                Debug.LogWarning("Can't find a sprite at " + burnImagePath + spriteName + "!");
+                NoonUtility.Log("Can't find a sprite at " + burnImagePath + spriteName + "!",1);
                 return;
             }
 

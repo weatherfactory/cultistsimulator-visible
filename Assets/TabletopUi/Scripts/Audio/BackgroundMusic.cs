@@ -47,7 +47,6 @@ public class BackgroundMusic : MonoBehaviour {
         audioSource.Stop();
         var clip = clips.ElementAt(trackNumber);
         audioSource.PlayOneShot(clip);
-        Debug.Log(clip.name);
     }
 
     public void PlayRandomClip() {

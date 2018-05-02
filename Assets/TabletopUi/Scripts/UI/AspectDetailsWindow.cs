@@ -36,7 +36,7 @@ namespace Assets.CS.TabletopUI {
             this.element = null;
         }
 
-        override protected void UpdateContent() {
+        protected override void UpdateContent() {
             if (element != null)
                 SetAspect(element);
 

@@ -32,7 +32,7 @@ public class ElementOverview : MonoBehaviour, IStacksChangeSubscriber {
 
     public void SetElement(int i, string elementId, int count) {
         if (i < 0 || i >= elementImages.Length || i >= elementCounts.Length) {
-            Debug.LogWarning("Can not display Resource for index " + i);
+            NoonUtility.Log("Can not display Resource for index " + i);
             return;
         }
 

@@ -39,7 +39,7 @@ namespace Assets.CS.TabletopUI {
                 if (allSlots[i].portalType == effect) {
                     allSlots[i].SetAsActive(true);
                     activeSlot = allSlots[i];
-                    Debug.Log("Setting Active Slot " + activeSlot + ".");
+                    //Debug.Log("Setting Active Slot " + activeSlot + ".");
                 }
                 else {
                     allSlots[i].SetAsActive(false);
@@ -47,7 +47,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             if (activeSlot == null) { 
-                Debug.LogWarning("No Door Slot for " + effect + " found. Setting a random one");
+               // Debug.LogWarning("No Door Slot for " + effect + " found. Setting a random one");
                 activeSlot = allSlots[Random.Range(0, allSlots.Length)];
                 activeSlot.SetAsActive(true);
             }
