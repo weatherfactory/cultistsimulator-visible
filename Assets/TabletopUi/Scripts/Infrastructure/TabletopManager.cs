@@ -132,11 +132,18 @@ namespace Assets.CS.TabletopUI {
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
                 LoadGame();
             }
-            else {
-                SetupNewBoard(builder);
-                var populatedCharacter = Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
-                Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
+            else
+            {
+                BeginNewGame(builder);
             }
+        }
+
+        private void BeginNewGame(SituationBuilder builder)
+        {
+            SetupNewBoard(builder);
+            var populatedCharacter =
+                Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
+            Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
@@ -280,7 +287,7 @@ namespace Assets.CS.TabletopUI {
 
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame();
+            saveGameManager.SaveInactiveGame(CrossSceneState.GetChosenLegacy());
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -299,7 +306,7 @@ namespace Assets.CS.TabletopUI {
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
 
             //#if !DEBUG
-            saveGameManager.SaveInactiveGame();
+            saveGameManager.SaveInactiveGame(null);
             //#endif
 
             string animName;

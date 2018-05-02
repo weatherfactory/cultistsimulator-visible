@@ -45,7 +45,7 @@ namespace Assets.Editor.Tests
             sc = new SituationController(compendiumMock,characterMock);
             
             var command=new SituationCreationCommand(basicVerb,null,SituationState.Unstarted);
-            sc.Initialise(command, situationAnchorMock,situationDetailsMock);
+            sc.Initialise(command, situationAnchorMock,situationDetailsMock,null);
 
             sc.SituationClock = _situationClockMock;
 
