@@ -77,7 +77,7 @@
 	},
 		{
 	id: "explorevaulteveningisles1_success",
-	label: "What Remains",
+	label: "Raven Feathers",
 	actionId: "explore",
 	requirements: {vaulteveningisles1:1},
 	effects: {vaulteveningisles1:-1},
@@ -102,7 +102,7 @@ deckeffect: {"vaultcontentsr":3},
 	
 			{
 	id: "explorevaulteveningisles3_success",
-	label: "What is Forgotten",
+	label: "A Closed Eye",
 	actionId: "explore",
 	requirements: {vaulteveningisles3:1},
 	effects: {vaulteveningisles3:-1},
@@ -116,25 +116,25 @@ deckeffect: {"vaultcontentsr":3},
 	
 			{
 	id: "explorevaulteveningisles4_success",
-	label: "What was Given",
+	label: "The First Tremors",
 	actionId: "explore",
 	requirements: {vaulteveningisles4:1},
 	effects: {vaulteveningisles4:-1},
 	deckeffect: {"vaultcontentsr":3},
 	startdescription: "Here we are in the cave of the deep sea-pool, beneath the monastery. Dark water shivers in the light of our lamps. As we approach, the level of the water suddenly drops. There are no tides in this sea. What's happening?",
-	description: "We have profaned the cave! Already the Hours withdraw their blessing. The water sinks away, leaving the pool empty. Offerings lie on its bed. We must snatch them up quickly. Already the first tremors have begun - the fore-runners of the long-delayed earthquake that the monks held at bay for so long.",
+	description: "We have profaned the cave! Already the Hours withdraw their blessing. The water sinks away, leaving the pool empty. Offerings lie on its bed. We must snatch them up quickly. Already the first tremors have begun - the forerunners of the long-delayed earthquake that the monks held at bay for so long.",
 	warmup:30,
 	craftable: false
 	},
 			{
 	id: "explorevaulteveningislesdefault_success",
-	label: "What is Remembered",
+	label: "All the Way from Gallaecia",
 	actionId: "explore",
 	requirements: {vaulteveningislesdefault:1},
 	effects: {vaulteveningislesdefault:-1},
 	deckeffect: {"vaultcontentsr":2},
-	startdescription: "Success! [FNORD higher level vault texts next build]",
-	description: "Success! [FNORD higher level vault texts next build]",
+	startdescription: "This is the secret sub-cellar of the Hotel Ciervo. The walls are whitewashed; the floor is freshly scrubbed; shelves bulge with oddities. A caged man with a wild beard peers morosely at you from a cage in the corner. 'Again?' he says. 'Or are you a different lot? No, I don't need rescuing, thank you. It's much worse out there.' ",
+	description: "'Grab what you can, quickly!' the caged man hisses. 'They'll be back soon. Only please leave the gladius. I brought that all the way from Gallaecia, back in the day. There, that shelf's good. Hurry, they're coming! You can escape up the delivery stairs.'",
 	warmup:30,
 	craftable: false
 	},
