@@ -57,7 +57,8 @@
 			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
-			lifetime: 180
+			lifetime: 150,
+			decayTo: "decrepitude"
 			},
 									{
         id: "disillusionment",
@@ -144,6 +145,14 @@ lifetime: 180
 [With enough Glimmering, you can Study to gain more Passion.]",
 			xtriggers: {damagepassion:fascination,plead:disillusionment},
         },
+		
+		
+		        {
+            id: "decrepitude",
+            label: "Decrepitude",
+			description: "Some wounds never quite heal. [Untreated injuries become Decrepitude, which cannot be returned to Health. Decrepitude remains until you die.]"
+            },
+		
 					 {
             id: "glimmering",
             label: "Glimmering",
