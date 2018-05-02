@@ -216,6 +216,7 @@ namespace Assets.CS.TabletopUI {
         void ShowImageDecayTimer(bool show, string timeString = null) {
             decayView.gameObject.SetActive(show);
             decayCountText.text = timeString;
+			decayCountText.richText = true;
         }
 
         void SetTextMargin(bool hasImage, bool hasHints) {

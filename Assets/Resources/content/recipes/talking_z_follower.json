@@ -1,16 +1,6 @@
 {
 "recipes": [
-{id: "talktohireling_rehire",
-actionId:"talk",
-label:"Offer this hireling another payment.",
-requirements: {hireling:1,funds:1},
-startdescription:"I could pay to extend this hireling's period of service.",
-description:"'All right. Same terms as before.'",
-aspects:{hiring:1},
-effects:{funds:-1},
-craftable:true,
-warmup:10
-},
+
 
 {id: "talktofollower",
 label:"Discuss occult business with a Follower",
@@ -19,6 +9,9 @@ requirements: {society:-1,follower: 1,summoned:-1},
 slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,ingredient:1,annoyance:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
+
+{id:"talktohireling_rehire",chance:100},
+
 {id:"followeraction_repairtoollanternbcracked",chance:100},
 {id:"followeraction_repairtoollanterndcracked",chance:100},
 {id:"followeraction_repairtoollanternfcracked",chance:100},
@@ -76,6 +69,19 @@ startdescription: "Significant conversations in a smoky meeting-room. What do I 
 description: "Nothing, then.",
 warmup: 60,
 craftable: true
+},
+
+
+{id: "talktohireling_rehire",
+actionId:"talk",
+label:"Offer this hireling another payment.",
+requirements: {hireling:1,funds:1},
+startdescription:"I could pay to extend this hireling's period of service.",
+description:"'All right. Same terms as before.'",
+aspects:{hiring:1},
+effects:{funds:-1},
+craftable:true,
+warmup:10
 },
 
 {id:"followeraction_repairtoollanternbcracked",

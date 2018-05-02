@@ -9,6 +9,7 @@ using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using UnityEngine;
 using Assets.TabletopUi.Scripts;
+using Noon;
 using Object = UnityEngine.Object;
 
 
@@ -54,7 +55,7 @@ namespace Assets.TabletopUi.Scripts.Services
             }
             catch (Exception e)
             {
-                Debug.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
+                NoonUtility.Log("Couldn't instantiate prefab " + typeof(T) + "\n" + e);
                 return null;
             }
 

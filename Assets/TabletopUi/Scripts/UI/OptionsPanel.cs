@@ -9,6 +9,7 @@ using System;
 using Noon;
 using UnityEngine.Audio;
 using TMPro;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 public class OptionsPanel : MonoBehaviour {
     [Header("Controls")]
@@ -38,13 +39,17 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField]
     private AudioMixer audioMixer;
 
+	SpeedController speedController;
     BackgroundMusic backgroundMusic;
     SoundManager soundManager;
     BaseDetailsWindow[] infoWindows;
 
-    public void InitAudioSettings() {
+	private bool pauseStateWhenOptionsRequested = false;
+
+    public void InitAudioSettings( SpeedController spdctrl ) {
         gameObject.SetActive(false);
 
+		speedController = spdctrl;
         backgroundMusic = FindObjectOfType<BackgroundMusic>();
         soundManager = FindObjectOfType<SoundManager>();
         infoWindows = FindObjectsOfType<BaseDetailsWindow>();
@@ -96,9 +101,24 @@ public class OptionsPanel : MonoBehaviour {
         NoonUtility.WormWar(value);
     }
 
+	public bool GetVisibility()
+	{
+		return gameObject.activeSelf;
+	}
+
     public void ToggleVisibility() {
         gameObject.SetActive(!gameObject.activeSelf);
-        Registry.Retrieve<TabletopManager>().SetPausedState(gameObject.activeInHierarchy);
+		if (gameObject.activeInHierarchy)
+		{
+			pauseStateWhenOptionsRequested = Registry.Retrieve<TabletopManager>().GetPausedState();
+			Registry.Retrieve<TabletopManager>().SetPausedState(true);
+			speedController.LockToPause(true);
+		}
+		else
+		{
+			Registry.Retrieve<TabletopManager>().SetPausedState(pauseStateWhenOptionsRequested);
+			speedController.LockToPause(false);
+		}
     }
 
     public void RestartGame() {

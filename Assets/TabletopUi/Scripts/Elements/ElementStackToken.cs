@@ -46,6 +46,12 @@ namespace Assets.CS.TabletopUI {
         private Element _element;
         private int _quantity;
 
+		// Cached data for fading decay timer nicely - CP
+		private bool decayVisible = false;
+		private Image decayBackgroundImage;
+		private float decayAlpha = 0.0f;
+		private Color cachedDecayBackgroundColor;
+
         private float lifetimeRemaining;
         private bool isFront = true;
         public Source StackSource { get; set; }
@@ -162,6 +168,8 @@ namespace Assets.CS.TabletopUI {
                 ShowCardDecayTimer(false);
                 SetCardDecay(0f);
                 lifetimeRemaining = _element.Lifetime;
+				decayBackgroundImage = decayView.GetComponent<Image>();
+				cachedDecayBackgroundColor = decayBackgroundImage.color;
 
                 StackSource = source;
                 CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
@@ -496,7 +504,7 @@ namespace Assets.CS.TabletopUI {
 
         public void Decay(float interval) {
             if (!Decays)
-                return;
+			    return;
 
             if(!isFront)
                 FlipToFaceUp(true); //never leave a decaying card face down.
@@ -519,10 +527,10 @@ namespace Assets.CS.TabletopUI {
                     ChangeTo(_element.DecayTo);
             }
 
-            if (lifetimeRemaining < _element.Lifetime / 2) {
-                ShowCardDecayTimer(true);
-                decayCountText.text = GetCardDecayTime();
-            }
+            decayCountText.text = GetCardDecayTime();
+			decayCountText.richText = true;
+
+			UpdateDecayVisuals( interval );
 
             SetCardDecay(1 - lifetimeRemaining / _element.Lifetime);
 
@@ -530,14 +538,43 @@ namespace Assets.CS.TabletopUI {
                 onDecay(lifetimeRemaining);
         }
 
+		void UpdateDecayVisuals( float interval )
+		{
+			// Decide whether timer should be visible or not
+            if (lifetimeRemaining < _element.Lifetime / 2)
+                ShowCardDecayTimer(true);
+			else
+				ShowCardDecayTimer(IsGlowing() || itemBeingDragged==this);	// Allow timer to show when hovering over card
+
+			// This handles moving the alpha value towards the desired target
+			if (decayVisible)
+				decayAlpha = Mathf.MoveTowards( decayAlpha, 1.0f, interval );
+			else
+				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, interval );
+			if (lifetimeRemaining <= 0.0f)
+				decayAlpha = 0.0f;
+			decayView.gameObject.SetActive( decayAlpha > 0.0f );
+
+			// Set the text and background alpha so it fades on and off smoothly
+			Color col = decayCountText.color;
+			col.a = decayAlpha;
+			decayCountText.color = col;
+			col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
+			col.a *= decayAlpha;
+			decayBackgroundImage.color = col;		
+		}
+
         // Card Decay Timer
         public void ShowCardDecayTimer(bool showTimer) {
-            decayView.gameObject.SetActive(showTimer);
+			if (Decays)
+				decayVisible = showTimer;
+			else
+				decayView.gameObject.SetActive( showTimer );
         }
 
         // Public so TokenWindow can access this
         public string GetCardDecayTime() {
-            return lifetimeRemaining.ToString("0.0") + "s";
+            return "<mspace=1.6em>" + lifetimeRemaining.ToString("0.0") + "s";
         }
 
         public void SetCardDecay(float percentage) {

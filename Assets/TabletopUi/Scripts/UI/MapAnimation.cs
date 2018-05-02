@@ -40,7 +40,7 @@ namespace Assets.CS.TabletopUI {
             localPoint.y /= background.rectTransform.rect.height;
             localPoint += background.rectTransform.pivot;
 
-            Debug.Log("screen point " + screenPoint + " / Local point " +localPoint);
+            //  Debug.Log("screen point " + screenPoint + " / Local point " +localPoint);
 
             particles.transform.position = effectOrigin.position;
             SetMaterialCenter(localPoint);

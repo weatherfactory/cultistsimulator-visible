@@ -166,7 +166,7 @@ public class CameraScrollRectTwo : UIBehaviour, IBeginDragHandler, IEndDragHandl
         currentCamPos = startCamPos + new Vector3(scrollOffset.x * camOffset.x, scrollOffset.y * camOffset.y);
         
         m_ScrollCamera.transform.position = currentCamPos;
-        Debug.Log("Setting to " + scrollPosition + " - " + currentCamPos);
+      //  Debug.Log("Setting to " + scrollPosition + " - " + currentCamPos);
     }
 
     private void OnDrawGizmos() {

@@ -79,7 +79,7 @@ namespace Assets.CS.TabletopUI {
             get { return _verb == null ? null : _verb.Id; }
         }
 
-        public void Initialise(IVerb verb, SituationController sc) {
+        public void Initialise(IVerb verb, SituationController sc, Heart heart) {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + Id;
@@ -174,7 +174,8 @@ namespace Assets.CS.TabletopUI {
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.color = barColor;
-            countdownText.text = timeRemaining.ToString("0.0") + "s";
+            countdownText.text = "<mspace=1.6em>" + timeRemaining.ToString("0.0") + "s";
+            countdownText.richText = true;
         }
 
         public Vector3 GetOngoingSlotPosition() {

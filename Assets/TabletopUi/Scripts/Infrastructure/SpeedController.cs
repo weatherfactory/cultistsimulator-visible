@@ -37,6 +37,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
+        public bool GetPausedState()
+        {
+			return _heart.IsPaused;
+		}
+
         public void SetPausedState(bool pause)
         {
             if (pause || isLocked)

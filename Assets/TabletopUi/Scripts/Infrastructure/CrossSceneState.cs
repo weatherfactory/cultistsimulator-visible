@@ -40,13 +40,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
 
-        public static Hashtable GetSaveDataForCrossSceneState()
+        public static Hashtable GetSaveDataForCrossSceneState(Legacy activeLegacy)
         {
 
             var ht=new Hashtable();
             AddMetaInfoToHashtable(ht);
             AddCurrentEndingToHashtable(ht);
-            AddAvailableLegaciesToHashtable(ht);
+            AddAvailableLegaciesToHashtable(ht,activeLegacy);
             AddDefunctCharacterToHashtable(ht);
 
             return ht;
@@ -90,12 +90,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 ht.Add(SaveConstants.SAVE_CURRENTENDING, GetCurrentEnding().Id);
         }
 
-        private static void AddAvailableLegaciesToHashtable(Hashtable ht)
+        private static void AddAvailableLegaciesToHashtable(Hashtable ht,Legacy activeLegacy)
         {
             var htLegacies = new Hashtable();
             var availableLegacies = GetAvailableLegacies();
 
-            if (availableLegacies==null && !availableLegacies.Any())
+            if (activeLegacy != null)
+            {
+                //the player is in an active game, but we've just saved their game as inactive. This is most likely because 
+                //we are saving an inactive game to restart it immediately. Make this the only available legacy, so the trap below
+                //doesn't worry.
+                htLegacies.Add(activeLegacy.Id,activeLegacy.Id);
+            }
+
+            else if (availableLegacies==null && !availableLegacies.Any())
             {
                 throw new ApplicationException("Tried to save game with no available legacies. This should never happen, and if it does, it'll corrupt your save. Please let us know what happened at " + NoonConstants.SupportEmail + " - thank you!");
             }

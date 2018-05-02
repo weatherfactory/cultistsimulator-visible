@@ -95,7 +95,7 @@ namespace Assets.CS.TabletopUI {
         #region -- Intialisation -------------------------------
 
         void Start() {
-            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform);
+            _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
 
             //register everything used gamewide
             SetupServices(_situationBuilder, _tabletop);
@@ -132,11 +132,18 @@ namespace Assets.CS.TabletopUI {
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
                 LoadGame();
             }
-            else {
-                SetupNewBoard(builder);
-                var populatedCharacter = Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
-                Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
+            else
+            {
+                BeginNewGame(builder);
             }
+        }
+
+        private void BeginNewGame(SituationBuilder builder)
+        {
+            SetupNewBoard(builder);
+            var populatedCharacter =
+                Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
+            Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
@@ -153,7 +160,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitAudioSettings();
+            optionsPanel.InitAudioSettings(_speedController);
         }
 
         private void InitialiseListeners() {
@@ -280,7 +287,7 @@ namespace Assets.CS.TabletopUI {
 
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame();
+            saveGameManager.SaveInactiveGame(CrossSceneState.GetChosenLegacy());
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -299,7 +306,7 @@ namespace Assets.CS.TabletopUI {
             CrossSceneState.SetAvailableLegacies(ls.DetermineLegacies(ending, null));
 
             //#if !DEBUG
-            saveGameManager.SaveInactiveGame();
+            saveGameManager.SaveInactiveGame(null);
             //#endif
 
             string animName;
@@ -550,6 +557,10 @@ namespace Assets.CS.TabletopUI {
 
         public void SetPausedState(bool paused) {
             _speedController.SetPausedState(paused);
+        }
+
+		public bool GetPausedState() {
+            return _speedController.GetPausedState();
         }
 
         void LockSpeedController(bool enabled) {

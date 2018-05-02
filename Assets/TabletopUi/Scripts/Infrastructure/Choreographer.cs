@@ -165,7 +165,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     return point;
             }
 
-            Debug.LogWarning("Choreographer: No legal tabletop position found for " + token.Id + " (" + centerPos + ")!");
+            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Id + " (" + centerPos + ")!",1);
 
             return Vector2.zero;
         }

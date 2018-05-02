@@ -73,7 +73,7 @@ namespace Assets.CS.TabletopUI {
         private void ReturnToMenuInternal() {
             //save on exit, so the player will return here, not begin a new game
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame();
+            saveGameManager.SaveInactiveGame(null);
             SceneManager.LoadScene(SceneNumber.MenuScene);
         }
 

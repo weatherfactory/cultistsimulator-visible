@@ -17,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
         Hashtable GetHashTableForSituationNotes(IEnumerable<ISituationNote> notes);
-        Hashtable GetHashtableForExtragameState();
+        Hashtable GetHashtableForExtragameState(Legacy withActiveLegacy);
 }
 
     public class GameDataExporter: IGameDataExporter
@@ -127,9 +127,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return htDecks;
         }
 
-        public Hashtable GetHashtableForExtragameState()
+        public Hashtable GetHashtableForExtragameState(Legacy withActiveLegacy)
         {
-            return CrossSceneState.GetSaveDataForCrossSceneState();
+            return CrossSceneState.GetSaveDataForCrossSceneState(withActiveLegacy);
         }
 
 private Hashtable GetHashtableForThisStack(IElementStack e)
