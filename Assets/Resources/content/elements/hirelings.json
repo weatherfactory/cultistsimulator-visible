@@ -5,18 +5,45 @@
             label: "A Hulking Fellow",
             aspects:
             {mortal: 1,hireling:1,follower:1,edge:5},
-              description: "'I get the job done.'",
+              description: "'I get the job done.' [This Hireling may be useful for some Expeditions, and can help with Hunters and Annoyances.]",
 			xtriggers: {hiring: thugedge,killmortal:corpse,derangemortal:lunatic},
-			lifetime:60
+			lifetime:120
         },
 		 {
+        id: "thugforgeedge",
+            label: "A Bomb-Maker",
+            aspects:
+            {mortal: 1,hireling:1,follower:1,forge:5,edge:3},
+            description: "'Perhaps we shouldn't discuss politics just yet.' [This Hireling may be useful for some Expeditions, and can help with Hunters and Annoyances.]",
+			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic},
+			lifetime:120
+        },
+				 {
+        id: "thugknock",
+            label: "An Entry Consultant",
+            aspects:
+            {mortal: 1,hireling:1,follower:1,knock:5},
+            description: "'I'm good with doors. [This Hireling may be useful for some Expeditions.]'",
+			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic},
+			lifetime:120
+        },
+				 {
+        id: "thuglanternmoth",
+            label: "A Fortune-Teller",
+            aspects:
+            {mortal: 1,hireling:1,follower:1,lantern:5,moth:3},
+            description: "'I see things. I see that you're different.' [This Hireling may be useful for some Expeditions, and can help with Hunters and Annoyances.]",
+			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic},
+			lifetime:120
+        },
+						 {
         id: "thugmoth",
             label: "A Shifty Woman",
             aspects:
             {mortal: 1,hireling:1,follower:1,moth:5},
-            description: "'I haven't been caught yet.'",
+            description: "'I haven't been caught yet.' [This Hireling may be useful for some Expeditions, and can help with Hunters and Annoyances.]",
 			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic},
-			lifetime:60
+			lifetime:120
         },
 		]
 };

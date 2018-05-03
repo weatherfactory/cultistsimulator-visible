@@ -59,7 +59,7 @@
 	startdescription:"Supplies are low. Unless I send more funds, we will have to abandon the expedition.",
 	description: "We can try again, when the dust has settled.",
 	requirements: {funds:-1},
-	effects: {dread:1,peril:-1,seal:-1,guardian:-1,curse:-1},
+	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10},
 	warmup:10
 	},
 
@@ -69,7 +69,7 @@
 	startdescription:"My agents are dead, or otherwise beyond use. I must send help, or this expedition will be over.",
 	description: "No-one returns. I can attempt the expedition again. I can even reuse the supplies.",
 	requirements: {follower:-1},
-	effects: {dread:1,peril:-1,seal:-1,guardian:-1,curse:-1},
+	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10},
 	warmup:10
 	},
 
