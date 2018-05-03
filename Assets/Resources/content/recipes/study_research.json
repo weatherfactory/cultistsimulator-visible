@@ -1,10 +1,10 @@
  {"recipes": [
   	{
 	id: "studyupgradelore_hint",
-	label: "Improve my Knowledge of the Secret Arts?",
+	label: "Improve my Knowledge of the invisible arts?",
 	actionId: "study",
 	requirements: {lore:1},	
-	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. Or I can use contradictory lore to subvert it...",
+	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. Or I can use another type of lore to subvert it...",
 		craftable: false,
 		hintonly:true
 	},
@@ -60,7 +60,7 @@
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
-	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
+	startdescription: "The Hour called Lionsmith shattered his own sword to escape his master's dominion. All things can be overcome, with sufficient force. [This will create Edge lore instead of Forge.]",
 	
 	warmup:30,
 	craftable: true
@@ -89,7 +89,7 @@
 	effects:{project_subvert_grailtomoth:1},
 
 	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
+	startdescription: "It has been claimed that Grail was born from the first sacrifice. But Moth knows better. [This will create Moth lore instead of Grail.]",
 	
 	warmup:30,
 	craftable: true,
@@ -118,7 +118,7 @@
 	effects:{project_subvert_hearttograil:1},
 
 	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
+	startdescription: "What does not cease will succumb, at last, to temptation. [This will create Grail lore instead of Heart.]",
 	
 	warmup:30,
 	craftable: true,
@@ -132,7 +132,7 @@
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
-	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables.",
+	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables. When a thing is opened, we will know its nature. [Any Lore studied with Knock becomes Knock.]",
 	
 	warmup:30,
 	craftable: true
@@ -159,7 +159,7 @@
 	effects:{project_subvert_lanterntoforge:1},
 
 	linked: [{id: "studyresearchtick",chance:100}],
-	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
+	startdescription: "The magus Julian Coseley claims the Forge of Days split the Sun. Perhaps he was right. [This will create Forge lore instead of Lantern.]",
 	
 	warmup:30,
 	craftable: true,
@@ -188,7 +188,7 @@
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
-	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
+	startdescription: "The Glory is a question, and the Moth always answers, Yes. [This will create Lantern lore instead of Moth.]",
 	
 	warmup:30,
 	craftable: true
@@ -231,7 +231,7 @@
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
-	startdescription: "These are the words which chill the air and drink the colour of my skin.",
+	startdescription: "Even the snow, in the silence, in the white without colours, life will never quite cease. [This will create Heart lore instead of Winter.]",
 	
 	warmup:30,
 	craftable: true
@@ -246,7 +246,6 @@
 	startdescription: "This project has possibilities. When research requirements appear, I must fulfil them to gain Insight. If I gain three Insight, I will succeed; otherwise, I may fail.",
 	description: ".",
 	warmup:30,
-	alternativerecipes:[{id:"studyresearchsuccess",chance:100}],
 	linked:[
 	{id: "studyresearchearlyconclusion",chance:100},
 	{id: "studyresearchneedsreason",chance:50},
@@ -426,7 +425,7 @@
 	]
 	},
 	{id:"studyproject_upgrade_edge",
-	label:"Strength is Knowledge",
+	label:"The Lore of the Knife",
 	actionId:"study",
 	requirements:{project_upgrade_edge:1},
 	effects:{edge:-1},
@@ -437,60 +436,60 @@
 	
 
 			{id:"studyproject_upgrade_forge",
-	label:"",
+	label:"The Lore that Burns",
 	actionId:"study",
 	requirements:{project_upgrade_forge:1},
 	effects:{forge:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, forge."	
+	description:"I've increased my mastery of the Lore that Burns, which we call by its aspect, Forge."	
 	},
 			{id:"studyproject_upgrade_grail",
-	label:"",
+	label:"The Succulent Lore",
 	actionId:"study",
 	requirements:{project_upgrade_grail:1},
 	effects:{grail:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, grail."	
+	description:"I've increased my mastery of the Succulent Lore, which we call by its aspect, Grail."	
 	},
 			{id:"studyproject_upgrade_heart",
-	label:"",
+	label:"The Lore Unceasing",
 	actionId:"study",
 	requirements:{project_upgrade_heart:1},
 	effects:{heart:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, heart."	
+	description:"I've increased my mastery of the Lore Unceasing, which we call by its aspect, Heart."	
 	},
 			{id:"studyproject_upgrade_lantern",
-	label:"",
+	label:"The Glorious Lore",
 	actionId:"study",
 	requirements:{project_upgrade_lantern:1},
 	effects:{lantern:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, lantern."	
+	description:"I've increased my mastery of the Glorious Lore, which we call by its aspect, Lantern."	
 	},
 			{id:"studyproject_upgrade_moth",
-	label:"",
+	label:"The Lore of the Wood",
 	actionId:"study",
 	requirements:{project_upgrade_moth:1},
 	effects:{moth:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, moth."	
+	description:"I've increased my mastery of the Lore of the Wood, which we call by its aspect, Moth."	
 	},
 			{id:"studyproject_upgrade_secrethistories",
-	label:"",
+	label:"The Secret Histories",
 	actionId:"study",
 	requirements:{project_upgrade_secrethistories:1},
 	effects:{secrethistories:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, secrethistories."	
+	description:"I've increased my knowledge of the secret histories behind the one we know."	
 	},
 			{id:"studyproject_upgrade_winter",
-	label:"",
+	label:"The Ragged Lore",
 	actionId:"study",
 	requirements:{project_upgrade_winter:1},
 	effects:{winter:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, winter."	
+	description:"I've increased my mastery of the Ragged Lore, which we call by its aspect, Winter."	
 	},
 
 
@@ -501,66 +500,66 @@
 	requirements:{project_subvert_edgetowinter:1},
 	effects:{edge:-1},
 	aspects:{epiphany:1},
-	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, Edge."	
+	description:"Patience defeats strength. I've subverted my Edge lore to Winter."	
 	},
 	
 			{id:"studyproject_subvert_forgetoedge",
-	label:"",
+	label:"Force Conquers All",
 	actionId:"study",
 	requirements:{project_subvert_forgetoedge:1},
 	effects:{forge:-1},
 	aspects:{epiphany:1},
-	description:"I've subverted the Lore of the Knife, which we call by its aspect, forge."	
+	description:"I've shattered what I believed before. Thus have I subverted my Forge lore to Edge."	
 	},
 			{id:"studyproject_subvert_grailtomoth",
-	label:"",
+	label:"Hunger is Folly",
 	actionId:"study",
 	requirements:{project_subvert_grailtomoth:1},
 	effects:{grail:-1},
 	aspects:{epiphany:1},
-	description:"I've subverted the Lore of the Knife, which we call by its aspect, grail."	
+	description:"Even the Red Grail falls prey to the buzzing in the brain. I've subverted my Grail lore to Moth."	
 	},
 			{id:"studyproject_subvert_hearttograil",
-	label:"",
+	label:"What Does Not Cease Eventually Yields",
 	actionId:"study",
 	requirements:{project_subvert_hearttograil:1},
 	effects:{heart:-1},
 	aspects:{epiphany:1},
-	description:"I've subverted the Lore of the Knife, which we call by its aspect, heart."	
+	description:"All that moves must succumb to hunger. I've subverted my Heart lore to Grail."	
 	},
 			{id:"studyproject_subvert_lanterntoforge",
-	label:"",
+	label:"Sunset at Noon",
 	actionId:"study",
 	requirements:{project_subvert_lanterntoforge:1},
 	effects:{lantern:-1},
 	aspects:{epiphany:1},
-	description:"I've subverted the Lore of the Knife, which we call by its aspect, lantern."	
+	description:"There are arts in Forge which may split even the sun. I've subverted my Lantern lore to Forge."	
 	},
 			{id:"studyproject_subvert_mothtolantern",
-	label:"",
+	label:"The Light Above",
 	actionId:"study",
 	requirements:{project_subvert_mothtolantern:1},
 	effects:{moth:-1},
 	aspects:{epiphany:1},
-	description:"I've subverted the Lore of the Knife, which we call by its aspect, moth."	
+	description:"The Glory is a question, and Moth always answers Yes. I've subverted my Moth lore to Lantern."	
 	},
 
 			{id:"studyproject_subvert_wintertoheart",
-	label:"",
+	label:"The Life Beneath",
 	actionId:"study",
 	requirements:{project_subvert_wintertoheart:1},
 	effects:{winter:-1},
 	aspects:{epiphany:1},
-	description:"I've subverted the Lore of the Knife, which we call by its aspect, winter."	
+	description:"Winter's coming must yield at last to spring. I've subverted my Winter lore to Heart."	
 	},
 	
 				{id:"studyproject_upgrade_subvert_knock",
-	label:"",
+	label:"Nothing shall be Hidden",
 	actionId:"study",
 	requirements:{project_upgrade_subvert_knock:1},
 	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
 	aspects:{epiphany:1},
-	description:"sgsag",
+	description:"When we open a thing, then we learn its nature. I've deepened my understanding of the Lore that Opens, which we call by its aspect, Knock."	
 	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
 	},
 	{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",
