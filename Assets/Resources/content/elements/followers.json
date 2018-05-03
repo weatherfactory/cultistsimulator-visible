@@ -79,6 +79,7 @@
             {mortal: 1,acquaintance:1},
             description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
+			comments:"legacy element to keep saves valid",
 			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic}
         },
 									 {
