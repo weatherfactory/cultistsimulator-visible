@@ -15,7 +15,7 @@ warmup:10
 label:"Speak to Poppy Lascelles",
 actionId: "talk",
 requirements: {poppyready: 1},
-slots: [{id:"Consent",id:required: {passion:1,reason:1}}],
+slots: [{id:"Consent",description:"Add Passion to accept, or Reason to interrogate Poppy further.",required: {passion:1,reason:1}}],
 alternativerecipes: [{id: "poppyofferaccept",chance:100},
 {id:"poppyofferquery",chance:100}],
 startdescription: "'My dear, I've been wanting to talk to you. Sometimes, I fund scholars of the invisible arts. I'd like to offer you my support. A substantial contribution. And all you need to do, some day, is to introduce me to someone else who'll end matters properly.' She smiles, benignly. [Add <b>Passion</b> to accept, or <b>Reason</b> to interrogate her further.]",
