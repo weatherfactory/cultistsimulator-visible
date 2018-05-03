@@ -63,7 +63,14 @@
 									{
         id: "disillusionment",
             label: "Passion (Disillusioned)",
-            description: "I have gone against my own principles or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
+            description: "I have gone against my own principles, or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
+			lifetime: 60,
+			decayTo:"passion"
+			},
+												{
+        id: "passionexhausted",
+            label: "Passion (Exhausted)",
+            description: "My passions burn low. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion"
 			},
@@ -143,7 +150,7 @@ lifetime: 180
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
 [With enough Glimmering, you can Study to gain more Passion.]",
-			xtriggers: {damagepassion:fascination,plead:disillusionment,employment:disillusionment},
+			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:disillusionment,},
         },
 		
 		

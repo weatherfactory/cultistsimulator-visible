@@ -17,7 +17,8 @@
 	linked: [{id:"dream_router",chance:100}],
 	warmup: 60,
 	craftable: true,
-	burnimage: moon
+	burnimage: moon,
+	aspects:{fatiguing:1}
 	},
 {
 	id: "dreamreachwoodmoth",
@@ -27,7 +28,8 @@
 	comments: "requirement 3, not 2, because there's already moth in the mix.",
 	startdescription: "I could cut a lock of hair before I sleep, to honour a power of the Wood.",
 	description: "The road ducks into the trees. Pale wings move deep in the wood. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. The moon passes behind the black leaves, though her fingers remain in my hair. I will not forget the way to this place.",
-	effects: {waywood:1,influencemoth:1}
+	effects: {waywood:1,influencemoth:1},
+	aspects:{fatiguing:1}
 	
 	},
 		{
@@ -38,6 +40,7 @@
 	startdescription: "Locksmiths often have the Dream after the sole of the foot is wounded - especially if it has been snake-bitten. I could try that.",
 	description: "I limp along the road, and so it is that I see the serpent in the ditch. I follow it across the waste places and into the root-maze. Is it hair that brushes my face, or hanging moss? I bend low, to stay close to the earth, like my guide. I will not forget the way to this place.",
 	effects: {waywood:1,influencemoth:1},
+	aspects:{fatiguing:1}
 	},
 	
 	{
@@ -47,7 +50,8 @@
 	requirements: {lore:1,lantern:2},
 	startdescription: "I could sleep in a room without colours: bleach the sheets, whitewash the walls, dye my hair and paint my skin.",
 	description: "'Colour exists only where there is light': and the Wood is the place where light does not walk. In the dream, I close my eyes, and walk, stumbling, bruising my feet and knees. At last the undergrowth before me grows too thick to pass, and when I open my eyes, I am adrift among black trees. Shadows flutter. My feet will know the way back to this place.",
-	effects: {waywood:1,influencemoth:1}
+	effects: {waywood:1,influencemoth:1},
+	aspects:{fatiguing:1}
 	},
 	{
 	id: "dreamusewoodway",
@@ -57,6 +61,7 @@
 	slots: [{id:"Path",description:"Employ Passion to enter the Wood - or, with the right lore, find the way to the White Door, the door where the dead throng.",required: {lore:1,passion:1}}],
 	startdescription: "If I have enough Passion, I can walk the dream-road to the Wood. If I have the right knowledge, I might be able to find the way beyond it.",
 	description: "The waters of the Wood run cold and deep, but never clear. Rote memory alone will not take me there. I must engage my Passion. Now I drift into other dreams.",
+	aspects:{fatiguing:1},
 	alternativerecipes: [
 	{id:"dreamenterwood",chance:100},
 	{id:"dreamreachwhitelantern",chance:100},
@@ -79,7 +84,8 @@
 	startdescription: "Now I pass between scar-barked trees. The moon passes behind branches, though her fingers remain in my hair. I am stumbling over roots, now. It is tempting to drop to all fours, to avoid the low branches. Pale wings move, deep in the night.",
 	description: "[FNORD a little more later.]",
 	portaleffect: "Wood",
-	warmup:0	
+	warmup:0,
+	aspects:{fatiguing:1}
 	}
 	
 		{
@@ -90,6 +96,7 @@
 	startdescription: "There is a House in the Wood. This much I know. Here is a light through the trees - ",
 	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further. Now I drift into other dreams.",
 	linked: [{id:"dream_router",chance:100}],
+	aspects:{fatiguing:1}
 
 	warmup:10
 	},
@@ -102,6 +109,7 @@
 	startdescription: "There is a House in the Wood. I know something of that House. Enough to find my way to its light?",
 	description: "These are the Bounds about the House, with their mists and their traces. This the rock called the Temple of the Wheel, high as a church spire, patched with black lichen and daubed with eye-signs. I round it, and there ahead of me is the White Door. The light of the House leaks round its edges.",
 	effects: {waywhite:1},
+	aspects:{fatiguing:1}
 	},
 			{
 		id: "dreamnotquitereachwhiteknock",
@@ -111,7 +119,8 @@
 	startdescription: "There is a House in the Wood. This much I know. Here is a light through the trees - ",
 	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further. Now I drift into other dreams.",
 	linked: [{id:"dream_router",chance:100}],
-	warmup:10
+	warmup:10,
+	aspects:{fatiguing:1}
 	},
 		
 	{
@@ -122,6 +131,7 @@
 	startdescription: "There is a House in the Wood. I know enough Knock-secrets to find the hidden paths through the tangled trees.",
 	description: "These are the Bounds about the House, with their mists and their traces. This the rock called the Temple of the Wheel, high as a church spire, patched with black lichen and daubed with eye-signs. I round it, and there ahead of me is the White Door: open, as was prescribed so long ago.",
 	effects: {waywhite:1},
+	aspects:{fatiguing:1}
 	},
 	
 			{
@@ -132,6 +142,7 @@
 	startdescription: "There is a House in the Wood. This much I know. Here is a light through the trees - ",
 	description: "My dream-skin is dream-pierced by dream-thorns. My bed will be spotted with blood when I awaken. This is the right approach, but I must know more to travel further. Now I drift into other dreams.",
 	linked: [{id:"dream_router",chance:100}],
+	aspects:{fatiguing:1}
 
 	warmup:10
 	},
@@ -144,6 +155,7 @@
 	startdescription: "There is a House in the Wood, and a door where the Dead sometimes go. I have read of the paths the Dead take.",
 	description: "These are the Bounds about the House, with their mists and their traces. This the rock called the Temple of the Wheel, high as a church spire, patched with black lichen and daubed with eye-signs. I round it, and there ahead of me is the White Door, aglow like the moon in Winter.",
 	effects: {waywhite:1},
+	aspects:{fatiguing:1}
 	},
 
 					{
@@ -163,6 +175,7 @@ alternativerecipes: [
 	],
 	craftable:true,
 	warmup:60,
+	aspects:{fatiguing:1}
 	},
 		{id: "dreamenterwhite",
 	label: "Entering the White Door",
@@ -172,7 +185,8 @@ alternativerecipes: [
 	startdescription: "Now I can approach the White Door through the Bounds. Now I can press my fingers to it, feel its chill, watch it swing open. As it opens, my mouth closes, tightens, heals over like a lost deformity. Around and about me is the cobalt light of the Mansus...",
 	description: "[FNORD a little more later.]",
 	portaleffect: "whitedoor",
-	warmup:0	
+	warmup:0,
+	aspects:{fatiguing:1}
 	}
 	
 						{
@@ -184,7 +198,8 @@ alternativerecipes: [
 	description:"The Stag Door: a ridged barrier of blood-streaked horn, huge enough for a ship to pass. It was broken long ago, and even now the scars are not quite healed. In a declivity beside the door rests a vast and wounded golden Head. Its mouth would be large enough to swallow me, were its jaw not shattered. It is the Name, Ghirbi. It begins to intone its riddle. ",
 	deckeffect: {"stagriddles":1},
 	maxexecutions:1,
-	warmup:30
+	warmup:30,
+	aspects:{fatiguing:1}
 	},
 	
 							{
@@ -194,7 +209,8 @@ alternativerecipes: [
 	requirements: {waywhite:1,desire:1},
 	startdescription:"I have made this ascent before. It will not profit me. I should answer the Riddle if I must, or use the Way to the Stag Door if I can.",
 	description:"The Stag Door: a ridged barrier of blood-streaked horn, huge enough for a ship to pass. It was broken long ago, and even now the scars are not quite healed. In a declivity beside the door rests the vast and wounded golden Head, Ghirbi. It has given me its riddle, which I must answer if I am to enter the Stag Door. [Dream on the Riddle to answer it, or Way: the Stag Door if you have already answered.]",
-	warmup:10
+	warmup:10,
+	aspects:{fatiguing:1}
 	},
 	
 		{
@@ -205,6 +221,7 @@ alternativerecipes: [
 	slots: [{id:"Answer",required: {lore:1}}],
 	startdescription: "In my dream, I will stand again before the Stag Door: a ridged barrier of blood-streaked horn, broken long ago, not yet quite healed. That vast and golden Head, Ghirbi, will await the answer to my riddle.",
 	description: "The Head is silent. The Door remains closed. Now I drift into other dreams.",
+	aspects:{fatiguing:1},
 	linked: [{id:"dream_router",chance:100}],
 	alternativerecipes: [{id: "dream_answerstagriddle_1",chance:100},
 	{id: "dream_answerstagriddle_1",chance:100},
@@ -288,8 +305,9 @@ alternativerecipes: [
 	actionId: "dream",
 	requirements: {waystag_after:1},
 	slots: [{id:"Ascent",description: "Invest Reason to pass the Stag Door - or, with the right lore, find the way to the Spider's Door, the door where blood is spilled.",required: {reason:1,lore:1}}],
-	startdescription: "In my dreams, I know the path to the stag Door, through the maze of the Bounds. Ghirbi will let me pass, but the path is always a puzzle. I will need Reason.",
+	startdescription: "In my dreams, I know the path to the Stag Door, through the maze of the Bounds. Ghirbi will let me pass, but the path is always a puzzle. I will need Reason.",
 	description: "Here in the high dry byways of the Bounds are the intricate fissures and snares of ten thousand years of time. My Reason is lacking. I will wake without sight of the Door. Now I drift into other dreams.",
+	aspects:{fatiguing:1},
 	linked: [{id:"dream_router",chance:100}],
 	craftable: true,
 alternativerecipes: [
@@ -388,6 +406,7 @@ alternativerecipes: [
 	startdescription: "In my dreams, I know the path through the Silken Sands to the Spider's Door. If I slake its THIRST by spilling fresh blood before I sleep, it will open to me.",
 	description: "Here in the folds of dream is the door, glistening black like the abdomen of a scoliid wasp, ever marked with ever-shrinking spots of blood. I have not satisfied its THIRST, and it will not open. Now I drift into other dreams.",
 	linked: [{id:"dream_router",chance:100}],
+	aspects:{fatiguing:1},
 	craftable: true,
 alternativerecipes: [
 	{id:"dreamenterspider",chance:100},
@@ -488,6 +507,7 @@ alternativerecipes: [
 	startdescription: "In my dreams, I know the path through the Glassgarden to the Peacock's Door: the most admirable of Doors, the Door which shines like a mirror. Perhaps, with the right resources, I can pass it. ",
 	description: "The Peacock's Door is purple as the sweetest gem, as the ripest fruit, as the most depthless prose. It takes my reflection and returns nothing. When I wake, I won't recall my dream.",
 	craftable: true,
+	aspects:{fatiguing:1},
 	alternativerecipes: [
 	{id:"dreamenterpeacockmirror",chance:100},
 	{id:"dreamenterpeacockfrangiclave",chance:100},
