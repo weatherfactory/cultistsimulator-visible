@@ -13,7 +13,7 @@
 	id: "studyupgradelore_edge",
 	label: "Study the Lore of the Knife",
 	actionId: "study",
-	requirements: {lore:2, edge:1,winter:-1},
+	requirements: {lore:2, edge:1,winter:-1,forge:-1,knock-1},
 	effects: {project_upgrade_edge:1},
 	linked: [
 	{id: "studyresearchtick",chance:100}],
@@ -40,10 +40,10 @@
 	id: "studyforgelore",
 	label: "Study the Lore which Burns",
 	actionId: "study",
-	requirements: {lore:2, forge:1,edge:-1},
-	effects: {},
+	requirements: {lore:2, forge:1,edge:-1,lantern:-1,knock-1},
+	effects:{project_upgrade_forge:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
 	
@@ -56,9 +56,9 @@
 	label: "Subvert the Lore which Burns",
 	actionId: "study",
 	requirements: {lore:2, forge:1,edge:1},
-	effects: {},
+	effects:{project_subvert_forgetoedge:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
 	
@@ -70,10 +70,10 @@
 	id: "studygraillore",
 	label: "Study the Succulent Lore",
 	actionId: "study",
-	requirements: {lore:2, grail:1,moth:-1},
-	effects: {},
+	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock-1},
+	effects:{project_upgrade_grail:1},
 
-	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
 	
 	warmup:30,
@@ -86,9 +86,9 @@
 	label: "Subvert the Succulent Lore",
 	actionId: "study",
 	requirements: {lore:2, grail:1,moth:1},
-	effects: {},
+	effects:{project_subvert_grailtomoth:1},
 
-	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
 	
 	warmup:30,
@@ -100,10 +100,10 @@
 	id: "studyheartlore",
 	label: "Study the Lore Unceasing",
 	actionId: "study",
-	requirements: {lore:2, heart:1,grail:-1},
-	effects: {},
+	requirements: {lore:2, heart:1,grail:-1,winter:-1,knock-1},
+	effects:{project_upgrade_heart:1},
 
-	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
 	
 	warmup:30,
@@ -115,9 +115,9 @@
 	label: "Subvert the Lore Unceasing",
 	actionId: "study",
 	requirements: {lore:2, heart:1,grail:1},
-	effects: {},
+	effects:{project_subvert_hearttograil:1},
 
-	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
 	
 	warmup:30,
@@ -128,9 +128,9 @@
 	label: "Study the Lore which Opens",
 	actionId: "study",
 	requirements: {lore:2, knock:1},
-	effects: {},
+	effects:{project_upgrade_subvert_knock:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables.",
 	
@@ -142,10 +142,10 @@
 	id: "studylanternlore",
 	label: "Study the Glorious Lore",
 	actionId: "study",
-	requirements: {lore:2, lantern:1,forge:-1},
-	effects: {},
+	requirements: {lore:2, lantern:1,forge:-1,moth:-1,knock-1},
+	effects:{project_upgrade_lantern:1},
 
-	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
 	
 	warmup:30,
@@ -156,9 +156,9 @@
 	label: "Subvert the Glorious Lore",
 	actionId: "study",
 	requirements: {lore:2, lantern:1,forge:1},
-	effects: {},
+	effects:{project_subvert_lanterntoforge:1},
 
-	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
 	
 	warmup:30,
@@ -168,10 +168,10 @@
 	id: "studymothlore",
 	label: "Study the Lore of the Wood",
 	actionId: "study",
-	requirements: {lore:2, moth:1,lantern:-1},
-	effects: {},
+	requirements: {lore:2, moth:1,lantern:-1,grail:-1,knock-1},
+	effects:{project_upgrade_moth:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
 	
@@ -184,9 +184,9 @@
 	label: "Subvert the Lore of the Wood",
 	actionId: "study",
 	requirements: {lore:2, moth:1,lantern:1},
-	effects: {},
+	effects:{project_subvert_mothtolantern:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
 	
@@ -199,9 +199,9 @@
 	label: "Study the Histories",
 	actionId: "study",
 	requirements: {lore:2, secrethistories:1},
-	effects: {},
+	effects:{project_upgrade_secrethistories:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "History is less certain than we are taught. I can learn from the study of its blurred edges.",
 	
@@ -212,10 +212,10 @@
 	id: "studywinterlore",
 	label: "Study the Ragged Lore",
 	actionId: "study",
-	requirements: {lore:2, winter:1,heart:-1},
-	effects: {},
+	requirements: {lore:2, winter:1,heart:-1,knock-1},
+	effects:{project_upgrade_winter:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
 	
@@ -227,9 +227,9 @@
 	label: "Subvert the Ragged Lore",
 	actionId: "study",
 	requirements: {lore:2, winter:1,heart:1},
-	effects: {},
+	effects:{project_upgrade_winter:1},
 
-	alternativerecipes: [
+	linked: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
 	
@@ -246,6 +246,7 @@
 	startdescription: "This project has possibilities. When research requirements appear, I must fulfil them to gain Insight. If I gain three Insight, I will succeed; otherwise, I may fail.",
 	description: ".",
 	warmup:30,
+	alternativerecipes:[{id:"studyresearchsuccess",chance:100}],
 	linked:[
 	{id: "studyresearchearlyconclusion",chance:100},
 	{id: "studyresearchneedsreason",chance:50},
