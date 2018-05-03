@@ -23,7 +23,7 @@
 	craftable: true
 	},
 		{
-	id: "studychangelore_edgetowinter",
+	id: "studysubvertlore_edgetowinter",
 	label: "Subvert the Lore of the Knife",
 	actionId: "study",
 	requirements: {lore:2, edge:1,winter:1},
@@ -40,66 +40,127 @@
 	id: "studyforgelore",
 	label: "Study the Lore which Burns",
 	actionId: "study",
-	requirements: {lore:1, forge:1},
+	requirements: {lore:2, forge:1,edge:-1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
 	warmup:30,
 	craftable: true
 	},
+	
+		{
+	id: "studysubvertlore_forgetoedge",
+	label: "Subvert the Lore which Burns",
+	actionId: "study",
+	requirements: {lore:2, forge:1,edge:1},
+	effects: {},
+
+	alternativerecipes: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
+	
+	warmup:30,
+	craftable: true
+	},
+	
 			{
 	id: "studygraillore",
 	label: "Study the Succulent Lore",
 	actionId: "study",
-	requirements: {lore:1, grail:1},
+	requirements: {lore:2, grail:1,moth:-1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [{id: "studyresearchtick",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
 	warmup:30,
 	craftable: true,
 	},
+	
+		
+			{
+	id: "studysubvertlore_grailtomoth",
+	label: "Subvert the Succulent Lore",
+	actionId: "study",
+	requirements: {lore:2, grail:1,moth:1},
+	effects: {},
+
+	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
+	
+	warmup:30,
+	craftable: true,
+	},
+	
+	
 				{
 	id: "studyheartlore",
 	label: "Study the Lore Unceasing",
 	actionId: "study",
-	requirements: {lore:1, heart:1},
+	requirements: {lore:2, heart:1,grail:-1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
+	warmup:30,
+	craftable: true,
+	},
+	
+					{
+	id: "studysubvertlore_hearttograil",
+	label: "Subvert the Lore Unceasing",
+	actionId: "study",
+	requirements: {lore:2, heart:1,grail:1},
+	effects: {},
+
+	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
+	
 	warmup:30,
 	craftable: true,
 	},
 		{
 	id: "studyknocklore",
-	label: "Study the Lore which Unlocks",
+	label: "Study the Lore which Opens",
 	actionId: "study",
-	requirements: {lore:1, knock:1},
+	requirements: {lore:2, knock:1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
 	warmup:30,
 	craftable: true
 	},
+
 		{
 	id: "studylanternlore",
 	label: "Study the Glorious Lore",
 	actionId: "study",
-	requirements: {lore:1, lantern:1},
+	requirements: {lore:2, lantern:1,forge:-1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [{id: "studyresearchtick",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
+	warmup:30,
+	craftable: true,
+	},
+			{
+	id: "studysubvertlore_lanterntoforge",
+	label: "Subvert the Glorious Lore",
+	actionId: "study",
+	requirements: {lore:2, lantern:1,forge:1},
+	effects: {},
+
+	alternativerecipes: [{id: "studyresearchtick",chance:100}],
+	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
+	
 	warmup:30,
 	craftable: true,
 	},
@@ -107,27 +168,43 @@
 	id: "studymothlore",
 	label: "Study the Lore of the Wood",
 	actionId: "study",
-	requirements: {lore:1, moth:1},
+	requirements: {lore:2, moth:1,lantern:-1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
 	warmup:30,
 	craftable: true
 	},
+	
+				{
+	id: "studysubvertlore_mothtolantern",
+	label: "Subvert the Lore of the Wood",
+	actionId: "study",
+	requirements: {lore:2, moth:1,lantern:1},
+	effects: {},
+
+	alternativerecipes: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
+	
+	warmup:30,
+	craftable: true
+	},
+	
 				{
 	id: "studysecrethistorieslore",
 	label: "Study the Histories",
 	actionId: "study",
-	requirements: {lore:1, secrethistories:1},
+	requirements: {lore:2, secrethistories:1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "History is less certain than we are taught. I can learn from the study of its blurred edges.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
 	warmup:30,
 	craftable: true
 	},
@@ -135,13 +212,27 @@
 	id: "studywinterlore",
 	label: "Study the Ragged Lore",
 	actionId: "study",
-	requirements: {lore:1, winter:1},
+	requirements: {lore:2, winter:1,heart:-1},
 	effects: {},
-	slots:[{id:"More",required: {lore:1}}],
+
 	alternativerecipes: [
 	{id: "studyresearchtick",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
-	description: "I've learnt nothing of practical use. What if I combined this with other lore?",
+	
+	warmup:30,
+	craftable: true
+	},
+			{
+	id: "subvertwinterlore",
+	label: "Subvert the Ragged Lore",
+	actionId: "study",
+	requirements: {lore:2, winter:1,heart:1},
+	effects: {},
+
+	alternativerecipes: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "These are the words which chill the air and drink the colour of my skin.",
+	
 	warmup:30,
 	craftable: true
 	},
@@ -309,8 +400,24 @@
 	
 
 	
-		{id:"studyproject_upgrade_edge",chance:100},
+		{id:"studyproject_upgrade_edge",chance:100},		
+		{id:"studyproject_upgrade_forge",chance:100},		
+		{id:"studyproject_upgrade_grail",chance:100},		
+		{id:"studyproject_upgrade_heart",chance:100},			
+		{id:"studyproject_upgrade_lantern",chance:100},		
+		{id:"studyproject_upgrade_moth",chance:100},		
+		{id:"studyproject_upgrade_secrethistories",chance:100},
+		{id:"studyproject_upgrade_winter",chance:100},
+		
 		{id:"studyproject_subvert_edgetowinter",chance:100},
+		{id:"studyproject_subvert_forgetoedge",chance:100},
+		{id:"studyproject_subvert_grailtomoth",chance:100},
+		{id:"studyproject_subvert_hearttograil",chance:100},
+		{id:"studyproject_subvert_lanterntoforge",chance:100},
+		{id:"studyproject_subvert_mothtolantern",chance:100},
+		{id:"studyproject_subvert_wintertoheart",chance:100},
+		
+		{id:"studyproject_upgrade_subvert_knock",chance:100},
 
 	
 	
@@ -325,14 +432,145 @@
 	aspects:{epiphany:1},
 	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, Edge."	
 	},
-		{id:"studyproject_subvert_edgetowinter",
-	label:"Strength is Knowledge",
+
+	
+
+			{id:"studyproject_upgrade_forge",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_forge:1},
+	effects:{forge:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, forge."	
+	},
+			{id:"studyproject_upgrade_grail",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_grail:1},
+	effects:{grail:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, grail."	
+	},
+			{id:"studyproject_upgrade_heart",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_heart:1},
+	effects:{heart:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, heart."	
+	},
+			{id:"studyproject_upgrade_lantern",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_lantern:1},
+	effects:{lantern:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, lantern."	
+	},
+			{id:"studyproject_upgrade_moth",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_moth:1},
+	effects:{moth:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, moth."	
+	},
+			{id:"studyproject_upgrade_secrethistories",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_secrethistories:1},
+	effects:{secrethistories:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, secrethistories."	
+	},
+			{id:"studyproject_upgrade_winter",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_winter:1},
+	effects:{winter:-1},
+	aspects:{epiphany:1},
+	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, winter."	
+	},
+
+
+	
+			{id:"studyproject_subvert_edgetowinter",
+	label:"All Things End",
 	actionId:"study",
 	requirements:{project_subvert_edgetowinter:1},
 	effects:{edge:-1},
 	aspects:{epiphany:1},
 	description:"I've increased my mastery of the Lore of the Knife, which we call by its aspect, Edge."	
 	},
+	
+			{id:"studyproject_subvert_forgetoedge",
+	label:"",
+	actionId:"study",
+	requirements:{project_subvert_forgetoedge:1},
+	effects:{forge:-1},
+	aspects:{epiphany:1},
+	description:"I've subverted the Lore of the Knife, which we call by its aspect, forge."	
+	},
+			{id:"studyproject_subvert_grailtomoth",
+	label:"",
+	actionId:"study",
+	requirements:{project_subvert_grailtomoth:1},
+	effects:{grail:-1},
+	aspects:{epiphany:1},
+	description:"I've subverted the Lore of the Knife, which we call by its aspect, grail."	
+	},
+			{id:"studyproject_subvert_hearttograil",
+	label:"",
+	actionId:"study",
+	requirements:{project_subvert_hearttograil:1},
+	effects:{heart:-1},
+	aspects:{epiphany:1},
+	description:"I've subverted the Lore of the Knife, which we call by its aspect, heart."	
+	},
+			{id:"studyproject_subvert_lanterntoforge",
+	label:"",
+	actionId:"study",
+	requirements:{project_subvert_lanterntoforge:1},
+	effects:{lantern:-1},
+	aspects:{epiphany:1},
+	description:"I've subverted the Lore of the Knife, which we call by its aspect, lantern."	
+	},
+			{id:"studyproject_subvert_mothtolantern",
+	label:"",
+	actionId:"study",
+	requirements:{project_subvert_mothtolantern:1},
+	effects:{moth:-1},
+	aspects:{epiphany:1},
+	description:"I've subverted the Lore of the Knife, which we call by its aspect, moth."	
+	},
+
+			{id:"studyproject_subvert_wintertoheart",
+	label:"",
+	actionId:"study",
+	requirements:{project_subvert_wintertoheart:1},
+	effects:{winter:-1},
+	aspects:{epiphany:1},
+	description:"I've subverted the Lore of the Knife, which we call by its aspect, winter."	
+	},
+	
+				{id:"studyproject_upgrade_subvert_knock",
+	label:"",
+	actionId:"study",
+	requirements:{project_upgrade_subvert_knock:1},
+	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
+	aspects:{epiphany:1},
+	description:"sgsag",
+	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
+	},
+	{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",
+	label:"",
+	comments:"This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+	actionId:"study",
+	requirements:{lore:2},
+	effects:{knock:-1},
+	description:"."
+	},
+	
 	
 	
 								{
