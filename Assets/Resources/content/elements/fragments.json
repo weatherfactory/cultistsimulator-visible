@@ -5,41 +5,53 @@
             label: "A Knife's Secret",
             aspects:
             {edge: 2,lore:1},
-            description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]"
+			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to change your understanding, and get Winter lore instead.",required:{fragmentedge:1,fragmentwinter:1},actionId:"study"}],
+            description: "When our ancestors forged swords, taught the arts of martial movement, spoke curses on the eve of battle - all these things shared certain patterns. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]",
+			xtriggers:{epiphany:fragmentedgeb}
         },
 		 {
         id: "fragmentedgeb",
             label: "Chiliarch's Lesson",
             aspects:
             {edge: 4,lore:1},
-            description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]"
+			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to change your understanding, and get Winter lore instead.",required:{fragmentedgeb:1,fragmentwinterb:1},actionId:"study"}],
+            description: "This is the bone-deep story the thousandman learnt in antiquity, of blood and its exits. To speak it aloud is to hear the sword hiss. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]",
+			xtriggers:{epiphany:fragmentedgec}
         },
 				 {
         id: "fragmentedgec",
             label: "An Operation of the Labhite",
             aspects:
             {edge: 6,lore:1},
-            description: "A series of mystic exercises that requires both dedication and terror. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]"
+			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to change your understanding, and get Winter lore instead.",required:{fragmentedgec:1,fragmentwinterc:1},actionId:"study"}],
+            description: "A series of mystic exercises that requires both dedication and terror. [Use this in a Rite with a corpse and Winter power, and the corpse will rise.]",
+			xtriggers:{epiphany:fragmentedged}
         },
 						 {
         id: "fragmentedged",
             label: "The Lionsmith's Names",
             aspects:
             {edge: 8,lore:1},
-            description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power."
+			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to change your understanding, and get Winter lore instead.",required:{fragmentedged:1,fragmentwinterd:1},actionId:"study"}],
+            description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+			xtriggers:{epiphany:fragmentedgee}
         },{
         id: "fragmentedgee",
             label: "The Colonel's Names",
             aspects:
             {edge: 10,lore:1},
-            description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be."
+			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to change your understanding, and get Winter lore instead.",required:{fragmentedgee:1,fragmentwintere:1},actionId:"study"}],
+            description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+			xtriggers:{epiphany:fragmentedgef}
         },
 		{
         id: "fragmentedgef",
             label: "The Alignments of Murder",
             aspects:
             {edge: 12,lore:1},
-            description: "These are the arts that ensure an ending."
+			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to change your understanding, and get Winter lore instead.",required:{fragmentedgef:1,fragmentwinterf:1},actionId:"study"}],
+            description: "These are the arts that ensure an ending.",
+			xtriggers:{epiphany:fragmentedgeg}
         },
 		   {   id: "fragmentedgeg",
             label: "The Mysteries of Force",
@@ -381,40 +393,46 @@
             label: "A Sexton's Secret",
             aspects:
             {winter: 2,lore:1},
-            description: "Certain knowledge, it is said, can be expressed only through the particular quality of a silence. It has been suggested that one can only read such knowledge with one's eyes closed, but only by mischievous commentators. [Use this in a Rite with a corpse and Edge aspect, and the corpse will rise.]"
+            description: "Certain knowledge, it is said, can be expressed only through the particular quality of a silence. It has been suggested that one can only read such knowledge with one's eyes closed, but only by mischievous commentators. [Use this in a Rite with a corpse and Edge aspect, and the corpse will rise.]",
+			xtriggers:{epiphany:fragmentwinterb}
         },
 						          {
         id: "fragmentwinterb",
             label: "A White Ceremony",
             aspects:
             {winter: 4,lore:1},
-            description: "When I speak it, my lips don't crisp with frost. Each time, this is surprising. [Use this in a Rite with a Heart influence and Byzantine Tinct to summon the Voiceless Dead.]"
+            description: "When I speak it, my lips don't crisp with frost. Each time, this is surprising. [Use this in a Rite with a Heart influence and Byzantine Tinct to summon the Voiceless Dead.]",
+			xtriggers:{epiphany:fragmentwinterc}
         },
 								          {
         id: "fragmentwinterc",
             label: "An Operation of the Declining Sun",
             aspects:
             {winter: 6,lore:1},
-            description: "This invokes, acknowledges and welcomes the passage to silence. [Use this in a Rite with a Heart influence and Byzantine Tinct to summon the Voiceless Dead.]"
+            description: "This invokes, acknowledges and welcomes the passage to silence. [Use this in a Rite with a Heart influence and Byzantine Tinct to summon the Voiceless Dead.]",
+			xtriggers:{epiphany:fragmentwinterd}
         },
 		{
 		        id: "fragmentwinterd",
             label: "Invocation of the Ivory Dove",
             aspects:
             {winter:8,lore:1},
-            description: "There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. You might expect to be able to crush him in your hand, into bird-bone fragments. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]"
+            description: "There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. You might expect to be able to crush him in your hand, into bird-bone fragments. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]",
+			xtriggers:{epiphany:fragmentwintere}
         },
 		{		        id: "fragmentwintere",
             label: "Recitation of Lost Hours",
             aspects:
             {winter:10,lore:1},
-            description: "Six are gone. Five came from Stone and one from Light. All went to Nowhere. Still their memories have power, and now we call upon it. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]"
+            description: "Six are gone. Five came from Stone and one from Light. All went to Nowhere. Still their memories have power, and now we call upon it. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]",
+			xtriggers:{epiphany:fragmentwinterf}
         },
 		{  id: "fragmentwinterf",
             label: "The Divisions of the Names",
             aspects:
             {winter:12,lore:1},
-            description: "When the Sun-in-Splendour was divided, its Names fractured too. Here are the shards of their names which once were whole. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]"
+            description: "When the Sun-in-Splendour was divided, its Names fractured too. Here are the shards of their names which once were whole. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]",
+			xtriggers:{epiphany:fragmentwinterg}
         },
 			{id: "fragmentwinterg",
             label: "Wolf-Word",
