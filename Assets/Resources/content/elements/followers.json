@@ -81,6 +81,78 @@
 			animFrames: 1,
 			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic}
         },
+									 {
+        id: "generic_a_edge",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b}
+        },
+										 {
+        id: "generic_a_forge",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_forge}
+        },
+										 {
+        id: "generic_a_grail",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_grail}
+        },
+										 {
+        id: "generic_a_heart",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_heart}
+        },
+										 {
+        id: "generic_a_knock",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_knock}
+        },
+										 {
+        id: "generic_a_lantern",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_lantern}
+        },
+										 {
+        id: "generic_a_moth",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_ppromotiontodisciple:generic_c_moth}
+        },
+										 {
+        id: "generic_a_winter",
+            label: "A Hanger-On",
+            aspects:
+            {mortal: 1,acquaintance:1},
+            animFrames: 1,
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_winter}
+        },
 		
 								 {
         id: "clovette_b",
@@ -163,8 +235,156 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
+			comments: "This is a legacy element to support older saves.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
+        },
+								 {
+        id: "generic_b_edge",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_edge}
+        },
+										 {
+        id: "generic_b_forge",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_forge}
+        },
+										 {
+        id: "generic_b_grail",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_grail}
+        },
+										 {
+        id: "generic_b_heart",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_heart}
+        },
+										 {
+        id: "generic_b_knock",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
+        },
+										 {
+        id: "generic_b_lantern",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_lantern}
+        },
+										 {
+        id: "generic_b_moth",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_ppromotiontodisciple:generic_c_moth}
+        },
+										 {
+        id: "generic_b_winter",
+            label: "A Pawn",
+            aspects:
+            {mortal: 1, follower: 1,edge:1},
+            animFrames: 1,
+			description: "This one is loyal, but lacks initiative.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_winter}
+        },
+										 {
+        id: "generic_c_edge",
+            label: "A Sturdy Disciple",
+            aspects:
+            {mortal: 1, follower: 1,edge:2},
+            animFrames: 1,
+			description: "Loyalty,and muscles.",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
         },
+										 {
+        id: "generic_c_forge",
+            label: "A Practical Disciple",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,forge:2},
+            animFrames: 1,
+			description: "Loyalty, and good with their hands.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+        },
+										 {
+        id: "generic_c_grail",
+            label: "An Avid Disciple",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,grail:2},
+            animFrames: 1,
+			description: "Loyal, but greedy.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+        },
+										 {
+        id: "generic_c_heart",
+            label: "A Lively Disciple ",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,heart:2},
+            animFrames: 1,
+			description: "Loyal, and always ready with a song.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+        },
+								 {
+        id: "generic_c_knock",
+            label: "A Dextrous Disciple ",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,knock:2},
+            animFrames: 1,
+			description: "Loyal, and clever with locks.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+        },
+
+										 {
+        id: "generic_c_lantern",
+            label: "A Percipient Disciple",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,lantern:2},
+            animFrames: 1,
+			description: "Loyal, and keen-sighted.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+        },
+												 {
+        id: "generic_c_moth",
+            label: "An Erratic Disciple",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,moth:2},
+            animFrames: 1,
+			description: "Loyal, if peculiar; peculiar even for one of our kind.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
+			lifetime:600,
+			decayTo: lunatic
+        },
+														 {
+        id: "generic_c_winter",
+            label: "A Silent Disciple",
+            aspects:
+            {mortal: 1, follower: 1,edge:1,winter:2},
+            animFrames: 1,
+			description: "Loyal, and quiet as falling snow.",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+        },		
 		
 		 {
         id: "clovette_c",
