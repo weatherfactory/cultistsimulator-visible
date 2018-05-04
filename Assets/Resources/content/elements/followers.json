@@ -89,7 +89,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_edge}
         },
 										 {
         id: "generic_a_forge",
@@ -97,8 +97,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_forge}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_forge}
         },
 										 {
         id: "generic_a_grail",
@@ -106,8 +106,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_grail}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_grail}
         },
 										 {
         id: "generic_a_heart",
@@ -115,8 +115,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_heart}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_heart}
         },
 										 {
         id: "generic_a_knock",
@@ -124,8 +124,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_knock}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_knock}
         },
 										 {
         id: "generic_a_lantern",
@@ -133,8 +133,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_lantern}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_lantern}
         },
 										 {
         id: "generic_a_moth",
@@ -142,8 +142,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_ppromotiontodisciple:generic_c_moth}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,recruiting:generic_b_moth}
         },
 										 {
         id: "generic_a_winter",
@@ -151,8 +151,8 @@
             aspects:
             {mortal: 1,acquaintance:1},
             animFrames: 1,
-		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]"
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,promotiontodisciple:generic_c_winter}
+		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_winter}
         },
 		
 								 {
