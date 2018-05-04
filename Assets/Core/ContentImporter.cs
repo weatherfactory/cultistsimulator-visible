@@ -138,7 +138,8 @@ public class ContentImporter
             Element element = new Element(htElement.GetString(NoonConstants.KID),
                 htElement.GetString(NoonConstants.KLABEL),
                 htElement.GetString(NoonConstants.KDESCRIPTION),
-                htElement.GetInt(NoonConstants.KANIMFRAMES));
+                htElement.GetInt(NoonConstants.KANIMFRAMES),
+                htElement.GetString(NoonConstants.KICON));
 
             if(element.Label==null)
                 LogProblem("No label for element " + element.Id);
@@ -727,7 +728,9 @@ public class ContentImporter
             }
             else
             {
-                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForElement(k) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                
+
+                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForElement(thisElement.Icon) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
                     missingElementImages += (" " + k);
                     missingElementImageCount++;

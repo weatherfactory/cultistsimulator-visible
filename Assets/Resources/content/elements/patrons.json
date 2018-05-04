@@ -77,5 +77,25 @@ unique:true,
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic}
         },
+						 {
+        id: "poppycommissionready",
+            label: "Poppy Lascelles",
+            aspects:
+            {mortal:1,patron:1},
+            description: "An amiable woman of property. She'd like your help with something.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic},
+icon:"poppyready"
+        },
+						 {
+        id: "poppycommission",
+            label: "Poppy Lascelles",
+            aspects:
+            {mortal:1,patron:1},
+            description: "An amiable woman of property. She has offered you a commission.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic},
+icon:"poppy"
+        },
 ]
 };

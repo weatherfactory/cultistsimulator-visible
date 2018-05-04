@@ -38,6 +38,18 @@ aspects: {commissiongiven:1},
 craftable: true
 
 },
+{id: "getcommissionpoppy",
+label:"Get a Commission from Poppy Lascelles",
+actionId: "talk",
+requirements: {janningsready: 1},
+startdescription: "The good Count's fraternity in Europe is seeking particular research.",
+description: "Here's what he needs.",
+warmup: 10,
+deckeffect: {"janningscommissions":1},
+aspects: {commissiongiven:1},
+craftable: true
+
+},
 
 {id: "fulfilcommissionaladimsecrethistoriesc",
 label:"Fulfil a Commission for Dr al-Adim",
