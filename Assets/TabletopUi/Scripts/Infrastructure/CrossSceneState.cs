@@ -149,9 +149,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return _currentEnding;
         }
 
-        public static void ClearEndingAndLegacies()
+        public static void ClearEnding()
         {
             _currentEnding = null;
+        }
+
+        public static void ClearLegacies()
+        {
             _availableLegacies = null;
         }
 
