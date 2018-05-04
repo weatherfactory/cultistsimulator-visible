@@ -404,6 +404,34 @@ maxexecutions:1
         warmup: 60,
 		craftable: true
 	},
+			{
+        id: "workbeg",
+        label: "Beg in the Streets",
+        actionId: "work",
+        requirements: {decrepitude:1},
+        effects: {
+            funds: 1,dread:1
+        },
+		alternativerecipes:[{id:"workbeg_lucky",chance:30}]
+        startdescription: "I'll display my infirmities, and hope for compassion from passers-by.",
+        description: "A long day. Some flung coins, most turned away. It is difficult to watch so many retreating backs for so many hours.",
+        warmup: 90,
+        craftable: true
+    },
+				{
+        id: "workbeg_lucky",
+        label: "Beg in the Streets",
+        actionId: "work",
+        requirements: {decrepitude:1},
+        effects: {
+            funds: 2
+        },
+		alternativerecipes:[{id:"workbeg_lucky",chance:30}]
+        startdescription: "To work, then.",
+        description: "A long day. Some flung coins, most turned away. But there is a gold sovereign in my bowl! A generous donation, or an accident?",
+        warmup: 90,
+        craftable: true
+    },
 		{
         id: "workhealthskilla",
         label: "Unskilled Labour: Arms of Bronze",
