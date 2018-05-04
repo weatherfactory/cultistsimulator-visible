@@ -39,7 +39,6 @@ namespace Assets.CS.TabletopUI {
 
         Coroutine infoHighlight;
 
-        const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
         const string slotUnnamed = "Unnamed Slot";
         const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu.";
@@ -157,7 +156,7 @@ namespace Assets.CS.TabletopUI {
             else
                 ShowImageDecayTimer(false);
 
-            ShowText(elementHeader + element.Label, element.Description);
+            ShowText(element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
 
             ShowCardIcons(element.Unique, element.Lifetime > 0);
@@ -229,7 +228,7 @@ namespace Assets.CS.TabletopUI {
         void ShowCardIcons(bool isUnique, bool decays) {
             cardInfoHolder.gameObject.SetActive(isUnique || decays);
             uniqueInfo.gameObject.SetActive(isUnique);
-            decayInfo.gameObject.SetActive(decays);
+           // decayInfo.gameObject.SetActive(decays); -- trying it without the icon; feedback has been that it's surplus, and it uses up text space
         }
 
         void ShowSlotIcons(bool isGreedy, bool consumes) {
