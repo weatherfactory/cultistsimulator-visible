@@ -26,8 +26,16 @@
 	description: "My absence has been noted. I've been suspended. [Plead your case soon, or lose your position forever.]",
 	slots:[{id:"passion",label:"Passion",required:{passion:1},actionId:"work"}],
 	aspects: {job:1},
-	xtriggers:{plead:legacydetectivejob_matured}
+	xtriggers:{plead:legacydetectivejob_matured},
 	lifetime:90,
+	decayTo:"legacydetectivejob_disgraced"
+	},
+	
+	{id: "legacydetectivejob_disgraced",
+	label: "Inspector of Police [Disgraced]",
+	description: "I've lost my position. I'm unlikely to regain it. I must find my own way in the civilian world.",
+	lifetime:120,
+	decayTo:"mystique"
 	},
 {id: "legacydetective_plotitem",
 label: "Sealed Bureau File",
