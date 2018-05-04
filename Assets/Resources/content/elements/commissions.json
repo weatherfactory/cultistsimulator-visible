@@ -242,5 +242,70 @@
 
 			xtriggers: {commissionfulfilled: compensationc}
         },
+		
+						{
+		
+		        id: "commissionarticleknock",
+            label: "Commission: knock",
+            aspects: {commission:1,job:1},
+            description: "poppy will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the knock. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:2}}],
+
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleknockb",
+            label: "Commission: knock (Substantial)",
+            aspects: {commission:1,job:1},
+            description: "poppy will pay for information of interest. This time, he'd like Substantial research on the corporal mysteries of the knock. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:4}}],
+
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleknockc",
+            label: "Commission: knock (Very Substantial)",
+            aspects: {commission:1,job:1},
+            description: "poppy will pay for information of interest. This time, he'd like Very Substantial research on the corporal mysteries of the knock.[ Use <b>Talk</b> to complete this commission.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:6}}],
+
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+								{
+		
+		        id: "commissionarticlewinter",
+            label: "Commission: winter",
+            aspects: {commission:1,job:1},
+            description: "Poppy will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the winter. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:2}}],
+
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlewinterb",
+            label: "Commission: winter (Substantial)",
+            aspects: {commission:1,job:1},
+            description: "Poppy will pay for information of interest. This time, he'd like Substantial research on the corporal mysteries of the winter. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:4}}],
+
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlewinterc",
+            label: "Commission: winter (Very Substantial)",
+            aspects: {commission:1,job:1},
+            description: "Poppy will pay for information of interest. This time, he'd like Very Substantial research on the corporal mysteries of the winter.[ Use <b>Talk</b> to complete this commission.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:6}}],
+
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+						
+		
+		
 ]
 };
