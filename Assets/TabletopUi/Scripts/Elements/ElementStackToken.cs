@@ -193,7 +193,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void DisplayIcon() {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
+            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Icon);
             artwork.sprite = sprite;
 
             if (sprite == null)
@@ -722,7 +722,7 @@ namespace Assets.CS.TabletopUI {
             Sprite[] animSprites = new Sprite[frameCount];
 
             for (int i = 0; i < animSprites.Length; i++)
-                animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
+                animSprites[i] = ResourcesManager.GetSpriteForElement(_element.Icon, frameIndex + i);
 
             float time = 0f;
             int spriteIndex = -1;

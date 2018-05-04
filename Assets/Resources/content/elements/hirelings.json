@@ -15,7 +15,7 @@
             aspects:
             {mortal: 1,hireling:1,follower:1,forge:5,edge:3},
             description: "'Perhaps we shouldn't discuss politics just yet.' [This Hireling may be useful for some Expeditions, and can help with Hunters and Annoyances.]",
-			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
+			xtriggers: {hiring:thugforgeedge,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
 				 {
@@ -24,7 +24,7 @@
             aspects:
             {mortal: 1,hireling:1,follower:1,knock:5},
             description: "'I'm good with doors. [This Hireling may be useful for some Expeditions.]'",
-			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
+			xtriggers: {hiring:thugknock,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
 				 {
@@ -33,7 +33,7 @@
             aspects:
             {mortal: 1,hireling:1,follower:1,lantern:5,moth:3},
             description: "'I see things. I see that you're different.' [This Hireling may be useful for some Expeditions, and can help with Hunters and Annoyances.]",
-			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
+			xtriggers: {hiring:thuglanternmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
 						 {

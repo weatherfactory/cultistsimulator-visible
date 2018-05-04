@@ -19,19 +19,19 @@ public class ResourcesManager: MonoBehaviour
             return sprite;
     }
 
-	public static Sprite GetSpriteForElement(string elementId)
+	public static Sprite GetSpriteForElement(string imageName)
     {
-        var sprite = Resources.Load<Sprite>("elementArt/" + elementId);
+        var sprite = Resources.Load<Sprite>("elementArt/" + imageName);
         if (sprite == null)
             sprite = Resources.Load<Sprite>("elementArt/" + PLACEHOLDER_IMAGE_NAME);
         return sprite;
     }
 
-    public static Sprite GetSpriteForElement(string elementId, int animFrame) {
+    public static Sprite GetSpriteForElement(string imageName, int animFrame) {
 
         //This doesn't look for the placeholder image: this is intentional (we don't want a flickering pink question mark)
         //but might be a good way to spot missing animations
-        return Resources.Load<Sprite>("elementArt/anim/" + elementId + "_" + animFrame);
+        return Resources.Load<Sprite>("elementArt/anim/" + imageName + "_" + animFrame);
     }
 
     public static Sprite GetSpriteForCardBack(string backId) {

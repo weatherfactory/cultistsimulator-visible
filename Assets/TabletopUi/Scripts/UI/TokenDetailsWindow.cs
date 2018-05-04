@@ -147,7 +147,7 @@ namespace Assets.CS.TabletopUI {
             if (element.IsAspect)
                 sprite = ResourcesManager.GetSpriteForAspect(element.Id);
             else
-                sprite = ResourcesManager.GetSpriteForElement(element.Id);
+                sprite = ResourcesManager.GetSpriteForElement(element.Icon);
 
             SetImageNarrow(false);
             ShowImage(sprite);

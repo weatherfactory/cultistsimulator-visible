@@ -442,6 +442,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "To work, then.",
         description: "I've finished early. Here's my pay.",
         warmup: 55,
@@ -455,6 +456,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "I will work with speed and in silence. I don't fear injury.",
         description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
         warmup: 50,
@@ -468,6 +470,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "Once again I put my strength to use.",
         description: "My strength attracts comment. Not all the comments are compliments. I draw my pay and leave.",
         warmup: 45,
@@ -478,8 +481,9 @@ maxexecutions:1
         label: "Unskilled Labour",
         actionId: "work",
         requirements: {health: 1,ritual:-1},
+		aspects:{employment:1},
         effects: {
-            funds: 1,vitality:1
+          vitality:1,funds:1
         },
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
@@ -498,6 +502,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,

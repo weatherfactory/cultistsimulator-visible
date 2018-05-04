@@ -46,6 +46,7 @@ namespace Noon
         public const string KDECKSPEC = "spec";
         public const string KDECKDEFAULTCARD = "defaultcard";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
+        public static string KICON="icon";
 
         public const string KINDUCES = "induces";
 
@@ -85,7 +86,7 @@ namespace Noon
         public static bool UnitTestingMode { get; set; }
         public static int CurrentVerbosity =1;
 
-        public static VersionNumber VersionNumber = new VersionNumber("2018.4.n.2");
+        public static VersionNumber VersionNumber = new VersionNumber("2018.4.n.4");
 
         public static void Log(string message,int verbosityNeeded=0)
         {
