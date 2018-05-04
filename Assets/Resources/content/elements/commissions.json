@@ -29,56 +29,61 @@
 				 {
         id: "commissionarticlesecrethistories",
             label: "Commission: Secret Histories",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the secret histories of the world. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
-
+	slots:[{id:"lore",label:"Lore", required:{lore:1},actionId:"work"}],
 			xtriggers: {commissionfulfilled: compensation}
         },
 				 {
         id: "commissionarticlesecrethistoriesb",
             label: "Commission: Secret Histories (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for a Substantial treatise on the secret histories of the world. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
-			
+			slots:[{id:"lore",label:"Lore", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Reason", required:{reason:1},actionId:"work"}	],
 			xtriggers: {commissionfulfilled: compensationb}
         },
 				 {
         id: "commissionarticlesecrethistoriesc",
             label: "Commission: Secret Histories (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1,job:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He's looking for particularly obscure information on the secret histories of the world. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
-	
-
+						slots:[{id:"lore",label:"Lore", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Reason", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Reason", required:{reason:1},actionId:"work"}	],
 			xtriggers: {commissionfulfilled: compensationc}
         },
 		{
 		
 		        id: "commissionarticlelantern",
             label: "Commission: Lantern",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with any information you can assemble on the severe mysteries of the Lantern. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:2}}],
-
+						slots:[{id:"lore",label:"Lore", required:{lore:1},actionId:"work"}],
 			xtriggers: {commissionfulfilled: compensation}
         },
 		{
 		
 		        id: "commissionarticlelanternb",
             label: "Commission: Lantern (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with a Substantial discussion of the severe mysteries of the Lantern. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:4}}],
-
+						slots:[{id:"lore",label:"Lore", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Reason", required:{reason:1},actionId:"work"}	],
 			xtriggers: {commissionfulfilled: compensationb}
         },
 		{
 		
 		        id: "commissionarticlelanternc",
             label: "Commission: Lantern (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Dr Ibn al-Adim, called the Aleppine, has offered you a commission. He would like you to provide him with an Very Substantial investigation of the severe mysteries of the Lantern. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:6}}],
-
+						slots:[{id:"lore",label:"Lore", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Reason", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Reason", required:{reason:1},actionId:"work"}	],
 			xtriggers: {commissionfulfilled: compensationc}
         },
 		
@@ -86,7 +91,7 @@
 		
 		        id: "commissionarticleforge",
             label: "Commission: Forge",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something inspired by the principle of the Forge. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:2}}],
 
@@ -96,7 +101,7 @@
 		
 		        id: "commissionarticleforgeb",
             label: "Commission: Forge (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something more Substantial on the Forge. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots:[{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:4}}],
 
@@ -106,7 +111,7 @@
 		
 		        id: "commissionarticleforgec",
             label: "Commission: Forge (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like something Very Substantial, or indeed intense, on the change and the suffering the Forge brings. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:6}}],
 
@@ -117,7 +122,7 @@
 		
 		        id: "commissionarticlegrail",
             label: "Commission: Grail",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She would like something titillating about the Red Grail. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:2}}],
 
@@ -127,7 +132,7 @@
 		
 		        id: "commissionarticlegrailb",
             label: "Commission: Grail (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She's interested in a more Substantial response to the Red Grail and its allure. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:4}}],
 
@@ -137,7 +142,7 @@
 		
 		        id: "commissionarticlegrailc",
             label: "Commission: Grail (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She wants something Very Substantial and 'unflinching' on the Red Grail. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:6}}],
 
@@ -149,7 +154,7 @@
 		
 		        id: "commissionarticlemoth",
             label: "Commission: Moth",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. In particular, she wants something suitably intriguing about the principle called Moth. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:2}}],
 
@@ -159,7 +164,7 @@
 		
 		        id: "commissionarticlemothb",
             label: "Commission: Moth (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She wants a Substantially enigmatic piece on Moth. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:4}}],
 
@@ -169,7 +174,7 @@
 		
 		        id: "commissionarticlemothc",
             label: "Commission: Moth (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "Mme Olympe Bechet is seeking suitable articles for the 'Kerisham Review'. She'd like an Very Substantial elaboration of Moth and its enigmas. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:6}}],
 
@@ -181,7 +186,7 @@
 		
 		        id: "commissionarticleheart",
             label: "Commission: Heart",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "The Count will pay for information of interest. This time, he'd like some notes on the corporal mysteries of the Heart. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:2}}],
 
@@ -191,7 +196,7 @@
 		
 		        id: "commissionarticleheartb",
             label: "Commission: Heart (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "The Count will pay for information of interest. This time, he'd like Substantial research on the corporal mysteries of the Heart. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:4}}],
 
@@ -201,7 +206,7 @@
 		
 		        id: "commissionarticleheartc",
             label: "Commission: Heart (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "The Count will pay for information of interest. This time, he'd like Very Substantial research on the corporal mysteries of the Heart.[ Use <b>Talk</b> to complete this commission.]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:6}}],
 
@@ -211,7 +216,7 @@
 		
 		        id: "commissionarticleedge",
             label: "Commission: Edge",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "The Count will pay for information of interest. This time, he'd like whatever you can assemble on the practices of the Edge. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:2}}],
 
@@ -221,7 +226,7 @@
 		
 		        id: "commissionarticleedgeb",
             label: "Commission: Edge (Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "The Count will pay for information of interest. This time, he'd like Substantial notes on the practices of the Edge. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:4}}],
 
@@ -231,7 +236,7 @@
 		
 		        id: "commissionarticleedgec",
             label: "Commission: Edge (Very Substantial)",
-            aspects: {commission:1},
+            aspects: {commission:1,job:1},
             description: "The Count will pay for information of interest. This time, he'd like an Very Substantial work on the practices of the Edge. [Use <b>Work</b> with appropriate Lore to complete this commission; <b>Talk</b> to the patron again to get paid for it.]",
 			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:6}}],
 

@@ -7,13 +7,18 @@
             description: "The Owl says that our last character was #PREVIOUSCHARACTERNAME#, our last desire was #LAST_DESIRE#, our last best follower was #LAST_FOLLOWER# and our last book was #LAST_BOOK#.",
 			noartneeded:true
         },
-		 {
+				 {
             id: "wolfatthedoor",
             label: "The Wolf at the Door",
-            aspects:{},
+            aspects:{ability:1,location:1,acquaintance:1},
 			slots: [{id:"Meal",consumes:true}],
             description: "The Wolf will accept anything, and then devour everything, no matter what.",
 			noartneeded:true
+        },
+		 {
+            id: "wolf",
+      lifetime:1,
+	  decayTo:"wolfatthedoor"
         },
 				 {
             id: "lionweb",
