@@ -219,6 +219,16 @@ namespace Assets.Editor.Tests
                 return Element.Aspects;
         }
 
+        public Dictionary<string, int> GetCurrentMutations()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetMutation(string aspectId, int value)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public Dictionary<string, string> GetXTriggers()
         {

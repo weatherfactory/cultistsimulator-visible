@@ -333,16 +333,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private List<ElementQuantitySpecification> PopulateElementQuantitySpecificationsList(Hashtable htElements)
+        private List<ElementQuantitySpecification> PopulateElementQuantitySpecificationsList(Hashtable htStacks)
         {
             var elementQuantitySpecifications = new List<ElementQuantitySpecification>();
-            foreach (var locationInfo in htElements.Keys)
+            foreach (var locationInfoKey in htStacks.Keys)
             {
-                var elementValues =
-                    NoonUtility.HashtableToStringStringDictionary(htElements.GetHashtable(locationInfo));
+                var eachStack= htStacks.GetHashtable(locationInfoKey);
+                Dictionary<string,int> mutations=new Dictionary<string, int>();
+
+                string elementId = TryGetStringFromHashtable(eachStack, SaveConstants.SAVE_ELEMENTID);
+                int elementQuantity = GetIntFromHashtable(eachStack, SaveConstants.SAVE_QUANTITY);
+                if (eachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
+                    mutations = NoonUtility.HashtableToStringIntDictionary(
+                        eachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
+
                 elementQuantitySpecifications.Add(new ElementQuantitySpecification(
-                    elementValues[SaveConstants.SAVE_ELEMENTID],
-                    GetQuantityFromElementHashtable(elementValues), locationInfo.ToString()));
+                    elementId,
+                    elementQuantity,
+                    locationInfoKey.ToString(),
+                    mutations));
             }
             return elementQuantitySpecifications;
         }

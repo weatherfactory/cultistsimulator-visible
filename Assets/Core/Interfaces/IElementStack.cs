@@ -17,6 +17,8 @@ namespace Assets.Core.Interfaces
         bool MarkedForConsumption { get; set; }
         bool Decays { get; }
         IAspectsDictionary GetAspects(bool includingSelf = true);
+        Dictionary<string,int> GetCurrentMutations();
+        void SetMutation(string aspectId, int value);
         Dictionary<string, string> GetXTriggers();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
@@ -42,6 +44,7 @@ namespace Assets.Core.Interfaces
         void ShowGlow(bool glowState, bool instant);
 
         Source StackSource { get; set; }
+
         
     
     }

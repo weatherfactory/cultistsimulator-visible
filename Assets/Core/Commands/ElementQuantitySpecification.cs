@@ -15,14 +15,16 @@ namespace Assets.Core.Commands
         public string ElementId { get; private set; }
         public int ElementQuantity { get; private set; }
         public string LocationInfo { get; private set; }
+        public Dictionary<string,int> Mutations { get; private set; }
         public int Depth { get; private set; }
 
-        public ElementQuantitySpecification(string elementId, int elementQuantity, string locationInfo)
+        public ElementQuantitySpecification(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations)
         {
             ElementId = elementId;
             ElementQuantity = elementQuantity;
             LocationInfo = locationInfo;
             Depth = locationInfo.Count(c => c == SaveConstants.SEPARATOR);
+            Mutations=new Dictionary<string, int>(mutations);
         }
     }
 }

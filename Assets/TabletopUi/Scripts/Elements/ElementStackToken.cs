@@ -60,7 +60,7 @@ namespace Assets.CS.TabletopUI {
         private Coroutine animCoroutine;
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
-        private Dictionary<string,int> _mutations; //not strictly an aspects dictionary; it can contain negatives
+        private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -122,6 +122,19 @@ namespace Assets.CS.TabletopUI {
                 textBackground.overrideSprite = null;
         }
 
+        public Dictionary<string, int> GetCurrentMutations()
+        {
+            return new Dictionary<string, int>(_currentMutations);
+        }
+
+        public void SetMutation(string aspectId, int value)
+        {
+            if (_currentMutations.ContainsKey(aspectId))
+                _currentMutations[aspectId] = value;
+            else
+            _currentMutations.Add(aspectId,value);
+        }
+
         public Dictionary<string, string> GetXTriggers() {
             return _element.XTriggers;
         }
@@ -135,7 +148,7 @@ namespace Assets.CS.TabletopUI {
             else
                 aspectsToReturn = _element.Aspects;
 
-            foreach(KeyValuePair<string,int> mutation in _mutations)
+            foreach(KeyValuePair<string,int> mutation in _currentMutations)
             {
                 if (mutation.Value > 0)
                 {
@@ -177,7 +190,7 @@ namespace Assets.CS.TabletopUI {
     
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
-            _mutations=new AspectsDictionary();
+            _currentMutations=new AspectsDictionary();
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
