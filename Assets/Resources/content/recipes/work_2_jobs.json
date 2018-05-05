@@ -532,7 +532,7 @@ maxexecutions:1
 		{id: "paintmansus", chance:100},
 		{id: "paintsuccess", chance:30}],
         actionId: "work",
-        requirements: {passion: 1,ritual:-1},
+        requirements: {passion: 1,ritual:-1,job:-1},
         deckeffect: {paintingresults:1},
 					slots: [{id:"Inspiration",
 					required: {lore:1,ingredient:1,influence:1},
