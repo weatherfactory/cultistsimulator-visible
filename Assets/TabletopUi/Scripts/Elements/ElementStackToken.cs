@@ -60,8 +60,9 @@ namespace Assets.CS.TabletopUI {
         private Coroutine animCoroutine;
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
+        private Dictionary<string,int> _mutations; //not strictly an aspects dictionary; it can contain negatives
 
-        public override string Id {
+        public override string EntityId {
             get { return _element == null ? null : _element.Id; }
         }
         public string Label
@@ -79,7 +80,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool MarkedForConsumption { get; set; }
 
-        #region -- Lifecycle  ------------------------------------------------------------------------------------
+
 
         protected override void Awake() {
             base.Awake();
@@ -96,10 +97,9 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        #endregion 
+     
 
-        #region -- Set & Get Basic Values ------------------------------------------------------------------------------------
-
+        
         public void SetQuantity(int quantity) {
             _quantity = quantity;
             if (quantity <= 0) {
@@ -126,11 +126,43 @@ namespace Assets.CS.TabletopUI {
             return _element.XTriggers;
         }
 
-        public IAspectsDictionary GetAspects(bool includeSelf = true) {
+        public IAspectsDictionary GetAspects(bool includeSelf = true)
+        {
+            IAspectsDictionary aspectsToReturn;
+
             if (includeSelf)
-                return _element.AspectsIncludingSelf;
+                aspectsToReturn = _element.AspectsIncludingSelf;
             else
-                return _element.Aspects;
+                aspectsToReturn = _element.Aspects;
+
+            foreach(KeyValuePair<string,int> mutation in _mutations)
+            {
+                if (mutation.Value > 0)
+                {
+                    if (aspectsToReturn.ContainsKey(mutation.Key))
+                        aspectsToReturn[mutation.Key] += mutation.Value;
+                    else
+                        aspectsToReturn.Add(mutation.Key,mutation.Value);
+                }
+                else if (mutation.Value < 0)
+                {
+                    if (aspectsToReturn.ContainsKey(mutation.Key))
+                    {
+                        if (aspectsToReturn.AspectValue(mutation.Key)+ mutation.Value<=0)
+                            aspectsToReturn.Remove(mutation.Key);
+                        else
+                            aspectsToReturn[mutation.Key] += mutation.Value;
+                    }
+                    else
+                    {
+                        NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
+                    }
+
+                }
+
+                    
+            }
+            return aspectsToReturn;
         }
 
         public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
@@ -142,12 +174,10 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        #endregion
-
-        #region -- Create & populate ------------------------------------------------------------------------------------
-
+    
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+            _mutations=new AspectsDictionary();
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
@@ -202,9 +232,7 @@ namespace Assets.CS.TabletopUI {
                 artwork.color = Color.white;
         }
 
-        #endregion
 
-        #region -- Return To Tabletop ------------------------------------------------------------------------------------
 
         public override void ReturnToTabletop(Context context) {
             if (originStack != null && originStack.IsOnTabletop()) {
@@ -239,10 +267,7 @@ namespace Assets.CS.TabletopUI {
             merge.Retire(false);
         }
 
-        #endregion
-
-        #region -- Assign to Stack & Container ------------------------------------------------------------------------------------
-
+ 
         // Called from StacksManager
         public void SetStackManager(IElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
@@ -265,11 +290,7 @@ namespace Assets.CS.TabletopUI {
             if (newTokenContainer != null)
                 newTokenContainer.SignalStackAdded(this, context);
         }
-
-        #endregion
-
-        #region -- Retire + FX ------------------------------------------------------------------------------------
-
+        
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
             subscribedChronicler.TokenPlacedOnTabletop(this);
@@ -343,7 +364,6 @@ namespace Assets.CS.TabletopUI {
             Destroy(gameObject);
         }
 
-        #endregion
 
         #region -- Allowed Interaction ------------------------------------------------------------------------------------
 
@@ -369,7 +389,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerClick(PointerEventData eventData) {
             if (isFront) {
-                notifier.ShowCardElementDetails(_element, this);
+                notifier.ShowCardElementDetails(this._element, this);
             }
             else {
                 FlipToFaceUp(false);
@@ -394,7 +414,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         bool CanMergeWith(IElementStack stack) {
-            return stack.Id == this.Id && stack.AllowsMerge();
+            return stack.EntityId == this.EntityId && stack.AllowsMerge();
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
@@ -423,7 +443,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void ShowNoMergeMessage(IElementStack stackDroppedOn) {
-            if (stackDroppedOn.Id != this.Id)
+            if (stackDroppedOn.EntityId != this.EntityId)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays) {
@@ -435,7 +455,7 @@ namespace Assets.CS.TabletopUI {
         public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(Id, Quantity - n, Source.Existing());
+                cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
 
                 originStack = cardLeftBehind;
 
@@ -498,9 +518,7 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(true);
         }
 
-        #endregion
-
-        #region -- Decay, Timers & general Viz ------------------------------------------------------------------------------------
+     
 
         public void Decay(float interval) {
             if (!Decays)
@@ -588,8 +606,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- Change & Replace Card ------------------------------------------------------------------------------------
-
+        
         public bool ChangeTo(string elementId) {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
@@ -617,9 +634,7 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        #endregion
-
-        #region -- Turn Card ------------------------------------------------------------------------------------
+        
 
         public void FlipToFaceUp(bool instant = false) {
             Flip(true, instant);
@@ -686,9 +701,6 @@ namespace Assets.CS.TabletopUI {
             backArtwork.overrideSprite = sprite;
         }
 
-        #endregion
-
-        #region -- Animated Artwork ------------------------------------------------------------------------------------
 
         public bool CanAnimate() {
             if (gameObject.activeInHierarchy == false)
@@ -743,8 +755,6 @@ namespace Assets.CS.TabletopUI {
             // remove anim 
             artwork.overrideSprite = null;
         }
-
-        #endregion
-
+        
     }
 }

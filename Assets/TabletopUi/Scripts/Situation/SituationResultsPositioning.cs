@@ -70,7 +70,7 @@ namespace Assets.CS.TabletopUI {
                 else
                     token.FlipToFaceUp(gameObject.activeInHierarchy); // flip up with anim, if we're visible 
 
-                debugText += stack.Id + " (" + token.StackSource.SourceType + ") ";
+                debugText += stack.EntityId + " (" + token.StackSource.SourceType + ") ";
 
                 i++;
             }

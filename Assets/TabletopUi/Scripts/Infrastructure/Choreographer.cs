@@ -165,7 +165,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     return point;
             }
 
-            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.Id + " (" + centerPos + ")!",1);
+            NoonUtility.Log("Choreographer: No legal tabletop position found for " + token.EntityId + " (" + centerPos + ")!",1);
 
             return Vector2.zero;
         }
@@ -332,13 +332,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             SituationController existingSituation;
             var sitToken = scc.SourceToken as SituationToken;
 
-            if (sitToken != null && sitToken.Id==scc.Recipe.ActionId) { 
+            if (sitToken != null && sitToken.EntityId==scc.Recipe.ActionId) { 
                 existingSituation = sitToken.SituationController;
             }
             // We don't have a source token, then get us the first token with the appopriate id.
             else { 
                 var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
-                existingSituation = registeredSits.Find(sc => sc.situationToken.Id == scc.Recipe.ActionId);
+                existingSituation = registeredSits.Find(sc => sc.situationToken.EntityId == scc.Recipe.ActionId);
             }
 
             //grabbing existingtoken: just in case some day I want to, e.g., add additional tokens to an ongoing one rather than silently fail the attempt.

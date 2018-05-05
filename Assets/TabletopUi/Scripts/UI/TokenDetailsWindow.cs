@@ -163,7 +163,7 @@ namespace Assets.CS.TabletopUI {
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(0); // Make sure the other hint icons are gone
 
-            aspectsDisplayFlat.DisplayAspects(element.Aspects);
+            aspectsDisplayFlat.DisplayAspects(token.GetAspects(false)); //token, not element: cater for possible mutations
             aspectsDisplayForbidden.DisplayAspects(null);
             aspectsDisplayRequired.DisplayAspects(null);
         }

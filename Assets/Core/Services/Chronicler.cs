@@ -104,17 +104,17 @@ namespace Assets.Core.Services
                 //if the follower is Exalted, update it.
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
-                    currentFollower = _compendium.GetElementById(stack.Id);
+                    currentFollower = _compendium.GetElementById(stack.EntityId);
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
                     {
-                        currentFollower = _compendium.GetElementById(stack.Id);
+                        currentFollower = _compendium.GetElementById(stack.EntityId);
                     }
                 else if (currentFollower==null || (!currentFollower.Aspects.ContainsKey(EXALTED_ASPECT) &&
                          !currentFollower.Aspects.ContainsKey(DISCIPLE_ASPECT)))
                 {
-                    currentFollower = _compendium.GetElementById(stack.Id);
+                    currentFollower = _compendium.GetElementById(stack.EntityId);
 
                 }
 
@@ -131,19 +131,19 @@ namespace Assets.Core.Services
         private void TryUpdateHqLever(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastHeadquarters, token.Id);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastHeadquarters, token.EntityId);
         }
 
         private void TryUpdateCultLever(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.Id);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.EntityId);
         }
 
         private void TryUpdateToolLever(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastTool, token.Id);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastTool, token.EntityId);
         }
 
         private void TryUpdateDesireLever(IAspectsDictionary tokenAspects)
@@ -165,7 +165,7 @@ namespace Assets.Core.Services
         private void TryUpdateBookLever(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
-                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook, token.Id);
+                _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook, token.EntityId);
         }
     }
 }

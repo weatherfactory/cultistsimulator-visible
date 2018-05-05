@@ -134,7 +134,7 @@ namespace Assets.TabletopUi {
         #region -- State Getters --------------------
 
         public string GetTokenId() {
-            return situationToken.Id;
+            return situationToken.EntityId;
         }
 
         private IAspectsDictionary GetAspectsAvailableToSituation(bool showElementAspects) {
@@ -374,7 +374,7 @@ namespace Assets.TabletopUi {
             IsOpen = true;
             situationToken.DisplayAsOpen();
             situationWindow.Show();
-            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.Id);
+            Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
         }
 
         public void CloseWindow() {
@@ -480,7 +480,7 @@ namespace Assets.TabletopUi {
 
             // Get all aspects and find a recipe
             IAspectsDictionary allAspects = situationWindow.GetAspectsFromAllSlottedElements();
-            Recipe matchingRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, false);
+            Recipe matchingRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.EntityId, currentCharacter, false);
 
             // Update the aspects in the window
             IAspectsDictionary aspectsNoElementsSelf = situationWindow.GetAspectsFromAllSlottedElements(false);
@@ -499,7 +499,7 @@ namespace Assets.TabletopUi {
             }
 
             //if we can't find a matching craftable recipe, check for matching hint recipes
-            Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.Id, currentCharacter, true); ;
+            Recipe matchingHintRecipe = compendium.GetFirstRecipeForAspectsWithVerb(allAspects, situationToken.EntityId, currentCharacter, true); ;
 
             //perhaps we didn't find an executable recipe, but we did find a hint recipe to display
             if (matchingHintRecipe != null)  
@@ -576,7 +576,7 @@ namespace Assets.TabletopUi {
 
         public void AttemptActivateRecipe() {
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
-            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.Id, currentCharacter, false);
+            var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.EntityId, currentCharacter, false);
 
             //no recipe found? get outta here
             if (recipe == null)
@@ -662,7 +662,7 @@ namespace Assets.TabletopUi {
             var situationSaveData = new Hashtable();
             IGameDataExporter exporter = new GameDataExporter();
 
-            situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.Id);
+            situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.EntityId);
             if (SituationClock != null) {
                 situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindow.Title);
                 situationSaveData.Add(SaveConstants.SAVE_RECIPEID, SituationClock.RecipeId);

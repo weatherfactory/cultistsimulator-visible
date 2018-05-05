@@ -12,7 +12,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 {
     public interface ISituationAnchor
     {
-        string Id { get; }
+        string EntityId { get; }
 
         SituationController SituationController { get; }
 
