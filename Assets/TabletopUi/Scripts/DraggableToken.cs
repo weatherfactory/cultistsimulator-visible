@@ -74,7 +74,7 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Basic Getters ------------------------------------
 
-        public abstract string Id { get; }
+        public abstract string EntityId { get; }
         public bool IsBeingAnimated { get; set; }
 
         public bool Defunct { get; protected set; }

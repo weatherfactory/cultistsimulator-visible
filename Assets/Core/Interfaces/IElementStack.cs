@@ -9,7 +9,7 @@ namespace Assets.Core.Interfaces
 {
     public interface IElementStack
     {
-        string Id { get; }
+        string EntityId { get; }
         
         string SaveLocationInfo { get; set; }
         int Quantity { get; }

@@ -103,7 +103,7 @@ icon:"poppy"
 				 {
         id: "aladimaway",
             label: "Dr Ibn al-Adim",
-            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He's incommunicado just now.",
+            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He's incommunicado just now, but will be back soon.",
 lifetime:120,
 decayTo: "aladimready",
 icon:"aladim"
@@ -111,7 +111,7 @@ icon:"aladim"
 					 {
         id: "bechetaway",
             label: "Mme Bechet",
-            description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. Just now, she's busy preparing for publication.",
+            description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. Just now, she's busy preparing for publication, but she'll be available again soon.",
 lifetime:120,
 decayTo: "bechetready",
 icon:"bechet"
@@ -120,6 +120,7 @@ icon:"bechet"
         id: "janningsaway",
             label: "Count Jannings",
 			lifetime:120,
+			description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. Just now, he's out of the country, but he'll be back soon.",
 decayTo: "janningsready",
 icon:"jannings"
         },

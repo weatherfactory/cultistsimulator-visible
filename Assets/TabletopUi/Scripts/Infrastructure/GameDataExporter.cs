@@ -135,7 +135,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 private Hashtable GetHashtableForThisStack(IElementStack e)
         {
             var htStackProperties = new Hashtable();
-            htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);
+            htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.EntityId);
             htStackProperties.Add(SaveConstants.SAVE_QUANTITY, e.Quantity);
             return htStackProperties;
         }

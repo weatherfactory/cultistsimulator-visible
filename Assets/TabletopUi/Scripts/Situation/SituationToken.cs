@@ -75,14 +75,14 @@ namespace Assets.CS.TabletopUI {
             get { return situationEditor.isActiveAndEnabled; }
         }
 
-        public override string Id {
+        public override string EntityId {
             get { return _verb == null ? null : _verb.Id; }
         }
 
         public void Initialise(IVerb verb, SituationController sc, Heart heart) {
             _verb = verb;
             SituationController = sc;
-            name = "Verb_" + Id;
+            name = "Verb_" + EntityId;
 
             DisplayIcon(verb);
             SetAsLightweight(verb.Transient);
@@ -206,7 +206,7 @@ namespace Assets.CS.TabletopUI {
                 ongoingSlotArtImage.color = Color.black;
             }
             else {
-                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.Id);
+                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.EntityId);
                 ongoingSlotArtImage.color = Color.white;
             }
         }

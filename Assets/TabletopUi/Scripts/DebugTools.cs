@@ -77,7 +77,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         if (!element.Unique) { 
             foreach (var stack in existingStacks)
             {
-                if(stack.Id==elementId)
+                if(stack.EntityId==elementId)
                 { 
                     stack.ModifyQuantity(1);
                     return;

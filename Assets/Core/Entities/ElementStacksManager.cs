@@ -93,14 +93,14 @@ public class ElementStacksManager : IElementStacksManager {
 
 
     public int GetCurrentElementQuantity(string elementId) {
-        return _stacks.Where(e => e.Id == elementId).Sum(e => e.Quantity);
+        return _stacks.Where(e => e.EntityId == elementId).Sum(e => e.Quantity);
     }
     /// <summary>
     /// All the elements in all the stacks (there may be duplicate elements in multiple stacks)
     /// </summary>
     /// <returns></returns>
     public IDictionary<string, int> GetCurrentElementTotals() {
-        var totals = _stacks.GroupBy(c => c.Id)
+        var totals = _stacks.GroupBy(c => c.EntityId)
             .Select(g => new KeyValuePair<string, int>(g.Key, g.Sum(q => q.Quantity)))
             .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
@@ -136,7 +136,7 @@ public class ElementStacksManager : IElementStacksManager {
         if (stack == null)
             return;
 
-        NoonUtility.Log("Reassignment: " + stack.Id + " to " + this.Name, 10);
+        NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.Name, 10);
 
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
         if (EnforceUniqueStacks) 
@@ -149,14 +149,14 @@ public class ElementStacksManager : IElementStacksManager {
     }
 
     void RemoveDuplicates(IElementStack stack) {
-        var element = Registry.Retrieve<ICompendium>().GetElementById(stack.Id);
+        var element = Registry.Retrieve<ICompendium>().GetElementById(stack.EntityId);
 
         if (element == null || !element.Unique)
             return;
 
         foreach (var existingStack in _stacks) {
             // not the one we dropped AND the same ID? It's a copy!
-            if (existingStack != stack && existingStack.Id == stack.Id) {
+            if (existingStack != stack && existingStack.EntityId == stack.EntityId) {
                 existingStack.Retire("hide");
                 return; // should only ever be one stack to retire!
                         // Otherwise this crashes cause Retire changes the collection we are looking at

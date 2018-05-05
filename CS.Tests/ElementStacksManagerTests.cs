@@ -55,7 +55,7 @@ namespace Assets.Editor.Tests
             var d = elementStacksManager.GetCurrentElementTotals();
             foreach(var c in stacks)
             {
-                Assert.AreEqual(1, d[c.Id]);
+                Assert.AreEqual(1, d[c.EntityId]);
                 
             }
         }
@@ -63,14 +63,14 @@ namespace Assets.Editor.Tests
         [Test]
         public void Manager_SumsExtraNonUniqueElements()
         {
-         IElementStack newStack= TestObjectGenerator.CreateElementCard(stacks[0].Id,1);
+         IElementStack newStack= TestObjectGenerator.CreateElementCard(stacks[0].EntityId,1);
 
             elementStacksManager.AcceptStack(newStack, null);
 
             var d = elementStacksManager.GetCurrentElementTotals();
-             Assert.AreEqual(2,d[stacks[0].Id]);
-            Assert.AreEqual(1, d[stacks[1].Id]);
-            Assert.AreEqual(1, d[stacks[2].Id]);
+             Assert.AreEqual(2,d[stacks[0].EntityId]);
+            Assert.AreEqual(1, d[stacks[1].EntityId]);
+            Assert.AreEqual(1, d[stacks[2].EntityId]);
 
         }
 
@@ -118,7 +118,7 @@ namespace Assets.Editor.Tests
         {
             
             FakeElementStack stackToRemove = stacks[0] as FakeElementStack;
-            elementStacksManager.ReduceElement(stackToRemove.Id,-1, null);
+            elementStacksManager.ReduceElement(stackToRemove.EntityId,-1, null);
             Assert.IsTrue(stackToRemove.Defunct);
         }
 
@@ -131,7 +131,7 @@ namespace Assets.Editor.Tests
             secondStackToRemove.Element = firstStackToRemove.Element;
                 
             
-            Assert.AreEqual(0, elementStacksManager.ReduceElement(firstStackToRemove.Id, -2, null));
+            Assert.AreEqual(0, elementStacksManager.ReduceElement(firstStackToRemove.EntityId, -2, null));
             Assert.IsTrue(firstStackToRemove.Defunct);
             Assert.IsTrue(secondStackToRemove.Defunct);
             //1 stack remaining out of 3
@@ -147,7 +147,7 @@ namespace Assets.Editor.Tests
             secondStackToRemove.Element = firstStackToRemove.Element;
 
 
-            Assert.AreEqual(-1, elementStacksManager.ReduceElement(firstStackToRemove.Id, -3, null));
+            Assert.AreEqual(-1, elementStacksManager.ReduceElement(firstStackToRemove.EntityId, -3, null));
             Assert.IsTrue(firstStackToRemove.Defunct);
             Assert.IsTrue(secondStackToRemove.Defunct);
 
@@ -168,10 +168,10 @@ namespace Assets.Editor.Tests
         {
          
             FakeElementStack newStack = TestObjectGenerator.CreateElementCard(stacks.Count + 1.ToString(), 2);
-            wrapper.ProvisionElementStack(newStack.Id, newStack.Quantity,Source.Existing()).Returns(newStack);
-            elementStacksManager.IncreaseElement(newStack.Id,newStack.Quantity,Source.Existing(), null);
+            wrapper.ProvisionElementStack(newStack.EntityId, newStack.Quantity,Source.Existing()).Returns(newStack);
+            elementStacksManager.IncreaseElement(newStack.EntityId,newStack.Quantity,Source.Existing(), null);
 
-            wrapper.Received().ProvisionElementStack(newStack.Id, newStack.Quantity,Source.Existing());
+            wrapper.Received().ProvisionElementStack(newStack.EntityId, newStack.Quantity,Source.Existing());
         }
 
         [Test]
@@ -193,7 +193,7 @@ namespace Assets.Editor.Tests
     public class FakeElementStack : IElementStack
     {
         public Element Element { get; set; }
-        public string Id { get { return Element.Id; } }
+        public string EntityId { get { return Element.Id; } }
 
         public string SaveLocationInfo { get; set; }
         public int Quantity { get; set; }
