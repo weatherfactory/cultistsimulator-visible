@@ -52,7 +52,7 @@ namespace Assets.CS.TabletopUI {
 		private float decayAlpha = 0.0f;
 		private Color cachedDecayBackgroundColor;
 
-        private float lifetimeRemaining;
+        public float LifetimeRemaining { get; set; }
         private bool isFront = true;
         public Source StackSource { get; set; }
 
@@ -210,7 +210,7 @@ namespace Assets.CS.TabletopUI {
                 ShowGlow(false, false);
                 ShowCardDecayTimer(false);
                 SetCardDecay(0f);
-                lifetimeRemaining = _element.Lifetime;
+                LifetimeRemaining = _element.Lifetime;
 				decayBackgroundImage = decayView.GetComponent<Image>();
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
 
@@ -540,9 +540,9 @@ namespace Assets.CS.TabletopUI {
             if(!isFront)
                 FlipToFaceUp(true); //never leave a decaying card face down.
 
-            lifetimeRemaining = lifetimeRemaining - interval;
+            LifetimeRemaining = LifetimeRemaining - interval;
 
-            if (lifetimeRemaining < 0) {
+            if (LifetimeRemaining < 0) {
                 // We're dragging this thing? Then return it?
                 if (DraggableToken.itemBeingDragged == this) {
                     // Set our table pos based on our current world pos
@@ -563,16 +563,16 @@ namespace Assets.CS.TabletopUI {
 
 			UpdateDecayVisuals( interval );
 
-            SetCardDecay(1 - lifetimeRemaining / _element.Lifetime);
+            SetCardDecay(1 - LifetimeRemaining / _element.Lifetime);
 
             if (onDecay != null)
-                onDecay(lifetimeRemaining);
+                onDecay(LifetimeRemaining);
         }
 
 		void UpdateDecayVisuals( float interval )
 		{
 			// Decide whether timer should be visible or not
-            if (lifetimeRemaining < _element.Lifetime / 2)
+            if (LifetimeRemaining < _element.Lifetime / 2)
                 ShowCardDecayTimer(true);
 			else
 				ShowCardDecayTimer(IsGlowing() || itemBeingDragged==this);	// Allow timer to show when hovering over card
@@ -582,7 +582,7 @@ namespace Assets.CS.TabletopUI {
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 1.0f, interval );
 			else
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, interval );
-			if (lifetimeRemaining <= 0.0f)
+			if (LifetimeRemaining <= 0.0f)
 				decayAlpha = 0.0f;
 			decayView.gameObject.SetActive( decayAlpha > 0.0f );
 
@@ -605,7 +605,7 @@ namespace Assets.CS.TabletopUI {
 
         // Public so TokenWindow can access this
         public string GetCardDecayTime() {
-            return "<mspace=1.6em>" + lifetimeRemaining.ToString("0.0") + "s";
+            return "<mspace=1.6em>" + LifetimeRemaining.ToString("0.0") + "s";
         }
 
         public void SetCardDecay(float percentage) {

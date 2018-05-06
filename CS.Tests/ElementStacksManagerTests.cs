@@ -331,6 +331,7 @@ namespace Assets.Editor.Tests
         }
 
         public Source StackSource { get; set; }
+        public float LifetimeRemaining { get; set; }
 
         public void MoveTo<T>(T newLocation)
         {

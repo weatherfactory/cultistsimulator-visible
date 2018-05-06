@@ -20,6 +20,8 @@ namespace Assets.Logic
             var aspectsPresent = stacksManager.GetTotalAspects();
             aspectsPresent.CombineAspects(command.Recipe.Aspects);
 
+            RunMutationEffects(command, stacksManager);
+
             RunXTriggers(stacksManager, aspectsPresent);
             //note: standard effects happen *after* XTrigger effects
             RunDeckEffect(command,stacksManager,storage);
@@ -29,7 +31,19 @@ namespace Assets.Logic
             RunConsumptions(stacksManager);
         }
 
-        private void RunConsumptions(IElementStacksManager stacksManager)
+       private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
+       {
+           foreach(var mutationEffect in command.Recipe.MutationEffects)
+           { 
+               foreach (var stack in stacksManager.GetStacks())
+               {
+                    if(stack.GetAspects(true).ContainsKey(mutationEffect.FilterOnAspectId))
+                        stack.SetMutation(mutationEffect.MutateAspectId,mutationEffect.MutationLevel);
+               }
+            }
+        }
+
+       private void RunConsumptions(IElementStacksManager stacksManager)
         {
 
             var stacks = stacksManager.GetStacks();

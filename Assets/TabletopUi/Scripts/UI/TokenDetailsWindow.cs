@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Linq;
 using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
@@ -55,7 +56,7 @@ namespace Assets.CS.TabletopUI {
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
             // Check if we'd show the same, if so: do nothing
             if (this.element == element && gameObject.activeSelf) {
-                if (this.token == token)
+                if (this.token == token && token.GetCurrentMutations().Any())
                     return;
 
                 bool oldDecays = (this.token != null && this.token.Decays);

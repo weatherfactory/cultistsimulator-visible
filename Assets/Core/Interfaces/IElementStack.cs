@@ -44,8 +44,6 @@ namespace Assets.Core.Interfaces
         void ShowGlow(bool glowState, bool instant);
 
         Source StackSource { get; set; }
-
-        
-    
+        float LifetimeRemaining { get; set; }
     }
 }
