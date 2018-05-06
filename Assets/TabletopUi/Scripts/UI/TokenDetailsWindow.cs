@@ -54,18 +54,20 @@ namespace Assets.CS.TabletopUI {
         int deckQuantity;
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
+
+            //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
-            if (this.element == element && gameObject.activeSelf) {
-                if (this.token == token && token.GetCurrentMutations().Any())
-                    return;
+            //if (this.element == element && gameObject.activeSelf) {
+            //    if (this.token == token)
+            //        return;
 
-                bool oldDecays = (this.token != null && this.token.Decays);
-                bool newDecays = (token != null && token.Decays);
+            //    bool oldDecays = (this.token != null && this.token.Decays);
+            //    bool newDecays = (token != null && token.Decays);
 
-                // Is there was and will be no decay visible? Do nothing
-                if (!oldDecays && !newDecays)
-                    return;
-            }
+            //    // Is there was and will be no decay visible? Do nothing
+            //    if (!oldDecays && !newDecays)
+            //        return;
+            //}
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
             this.element = element;

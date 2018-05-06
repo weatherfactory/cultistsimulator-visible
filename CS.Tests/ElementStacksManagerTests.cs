@@ -224,11 +224,10 @@ namespace Assets.Editor.Tests
             throw new NotImplementedException();
         }
 
-        public void SetMutation(string aspectId, int value)
+        public void SetMutation(string aspectId, int value, bool additive = true)
         {
             throw new NotImplementedException();
         }
-
 
         public Dictionary<string, string> GetXTriggers()
         {

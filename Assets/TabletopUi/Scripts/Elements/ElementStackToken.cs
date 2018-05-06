@@ -127,10 +127,18 @@ namespace Assets.CS.TabletopUI {
             return new Dictionary<string, int>(_currentMutations);
         }
 
-        public void SetMutation(string aspectId, int value)
+        public void SetMutation(string aspectId, int value,bool additive=false)
         {
             if (_currentMutations.ContainsKey(aspectId))
-                _currentMutations[aspectId] = value;
+            {
+                if (additive)
+                    _currentMutations[aspectId] += value;
+                else
+                  _currentMutations[aspectId] = value;
+
+                if (_currentMutations[aspectId] == 0)
+                    _currentMutations.Remove(aspectId);
+            }
             else
             _currentMutations.Add(aspectId,value);
         }
@@ -141,12 +149,12 @@ namespace Assets.CS.TabletopUI {
 
         public IAspectsDictionary GetAspects(bool includeSelf = true)
         {
-            IAspectsDictionary aspectsToReturn;
+            IAspectsDictionary aspectsToReturn=new AspectsDictionary();
 
             if (includeSelf)
-                aspectsToReturn = _element.AspectsIncludingSelf;
+                aspectsToReturn.CombineAspects(_element.AspectsIncludingSelf);
             else
-                aspectsToReturn = _element.Aspects;
+                aspectsToReturn.CombineAspects(_element.Aspects);
 
             foreach(KeyValuePair<string,int> mutation in _currentMutations)
             {
