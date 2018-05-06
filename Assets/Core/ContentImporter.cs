@@ -600,7 +600,8 @@ public class ContentImporter
             }
 
             htEachRecipe.Remove(NoonConstants.KSLOTS);
-
+            /////////////////////////////////////////////
+            //ALTERNATIVES
             try
             {
 
@@ -663,6 +664,44 @@ public class ContentImporter
             }
 
             htEachRecipe.Remove(NoonConstants.KLINKED);
+
+
+            /////////////////////////////////////////////
+            //MUTATIONEFFECTS
+            try
+            {
+
+                ArrayList alMutations = htEachRecipe.GetArrayList(NoonConstants.KMUTATIONS);
+                if (alMutations != null)
+                {
+                    foreach (Hashtable htMutationEffect in alMutations)
+                    {
+                        string filterOnAspectId = htMutationEffect[NoonConstants.KFILTERONASPECTID].ToString();
+                        string mutateAspectId = htMutationEffect[NoonConstants.KMUTATEASPECTID].ToString();
+                        int mutationLevel= Convert.ToInt32(htMutationEffect[NoonConstants.KMUTATIONLEVEL]);
+                        
+                        bool additive = Convert.ToBoolean(htMutationEffect[NoonConstants.KADDITIVE] ?? false);
+
+                        r.MutationEffects.Add(new MutationEffect(filterOnAspectId,mutateAspectId,mutationLevel,additive));
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                LogProblem("Problem importing mutationEffects recipes for recipe '" + r.Id + "' - " + e.Message);
+            }
+
+            htEachRecipe.Remove(NoonConstants.KMUTATIONS);
+
+
+
+
+           
+
+
+            //Finished! Import, tidy up.
             Recipes.Add(r);
 
             htEachRecipe.Remove("comments"); //this should be the only nonprocessed property at this point
@@ -684,6 +723,12 @@ public class ContentImporter
                 LogIfNonexistentRecipeId(n.Id, r.Id, " - as next recipe");
             foreach (var a in r.AlternativeRecipes)
                 LogIfNonexistentRecipeId(a.Id, r.Id, " - as alternative");
+
+            foreach (var m in r.MutationEffects)
+            {
+                LogIfNonexistentElementId(m.FilterOnAspectId,r.Id," - as mutation filter");
+                LogIfNonexistentElementId(m.MutateAspectId, r.Id, " - as mutated aspect");
+            }
         }
     }
 
