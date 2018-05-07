@@ -9,10 +9,11 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 
-public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int Quantity;
-    private Element aspect=null;
+    private Element _aspect=null;
+    private ElementStackToken _elementStackToken;
     private bool parentIsDetailsWindow = false; // set by AspectsDisplay. Used in Notifier call.
 
     [SerializeField] private LayoutElement layoutElement;
@@ -22,14 +23,17 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [SerializeField] Color brightQuantityColor;
     [SerializeField] Color darkQuantityColor;
 
-    public string AspectId { get { return aspect == null ? null : aspect.Id; } }
+    public string ElementId { get { return _aspect == null ? null : _aspect.Id; } }
 
+   
     float width2Digit = 85f;
     float width1Digit = 68f;
     float width0Digits = 40f;
 
-    public void PopulateDisplay(Element aspect, int aspectValue, bool hasBrightBg = false) {
-        this.aspect = aspect;
+    public void PopulateDisplay(Element aspect, int aspectValue, ElementStackToken elementStackToken, bool hasBrightBg = false) {
+        
+        _aspect = aspect;
+        _elementStackToken = elementStackToken; //this is populated only if the frame reflects a card that's being displayed in a situation storage
         Quantity = aspectValue;
         DisplayAspectImage(aspect);
         DisplayQuantity(aspectValue, hasBrightBg);
@@ -76,7 +80,10 @@ public class AspectFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        Registry.Retrieve<INotifier>().ShowElementDetails(aspect, parentIsDetailsWindow);
+        if(_elementStackToken!=null)
+            Registry.Retrieve<INotifier>().ShowCardElementDetails(_aspect, _elementStackToken);
+        else
+            Registry.Retrieve<INotifier>().ShowElementDetails(_aspect, parentIsDetailsWindow);
     }
 
     public Vector3 GetNotificationPosition()

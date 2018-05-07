@@ -88,20 +88,20 @@ namespace Assets.CS.TabletopUI {
         public void ShowStoredAspects(IEnumerable<IElementStack> stacks) {
             int i = 0;
 
-            var aspectFrames = storedCardsLayout.GetComponentsInChildren<AspectFrame>();
-            AspectFrame frame;
+            var aspectFrames = storedCardsLayout.GetComponentsInChildren<ElementFrame>();
+            ElementFrame frame;
             Element element;
 
-            foreach (var item in stacks) {
-                element = Registry.Retrieve<ICompendium>().GetElementById(item.EntityId);
+            foreach (var stack in stacks) {
+                element = Registry.Retrieve<ICompendium>().GetElementById(stack.EntityId);
 
-                for (int q = 0; q < item.Quantity; q++) {
+                for (int q = 0; q < stack.Quantity; q++) {
                     if (i < aspectFrames.Length)
                         frame = aspectFrames[i];
                     else
-                        frame = PrefabFactory.CreateLocally<AspectFrame>(storedCardsLayout.transform);
+                        frame = PrefabFactory.CreateLocally<ElementFrame>(storedCardsLayout.transform);
 
-                    frame.PopulateDisplay(element, 1);
+                    frame.PopulateDisplay(element,1, stack as ElementStackToken);
                     frame.gameObject.SetActive(true);
                     i++;
                 }

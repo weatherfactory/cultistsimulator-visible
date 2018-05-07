@@ -18,7 +18,7 @@ namespace Assets.TabletopUi.Scripts.Services
     class PrefabFactory : MonoBehaviour
     {
         [Header("Prefabs")]
-        public AspectFrame AspectFrame = null;
+        public ElementFrame ElementFrame = null;
         public SituationToken SituationToken = null;
         public ElementStackToken ElementStackToken = null;
         public SituationWindow SituationWindow = null;

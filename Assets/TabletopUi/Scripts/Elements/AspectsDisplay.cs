@@ -45,15 +45,15 @@ namespace Assets.TabletopUi.Scripts
             if (aspect == null)
                 return; // We can't find the aspect? Well then don't add anything
 
-            AspectFrame newAspectFrame = PrefabFactory.CreateLocally<AspectFrame>(transform);
-            newAspectFrame.PopulateDisplay(aspect, quantity, hasBrightBackground);
+            ElementFrame newElementFrame = PrefabFactory.CreateLocally<ElementFrame>(transform);
+            newElementFrame.PopulateDisplay(aspect, quantity, null,hasBrightBackground);
 
             if (isWithinDetailsWindow)
-                newAspectFrame.SetAsDetailWindowChild();
+                newElementFrame.SetAsDetailWindowChild();
         }
 
         public void ClearCurrentlyDisplayedAspects() {
-            foreach (AspectFrame a in GetComponentsInChildren<AspectFrame>())
+            foreach (ElementFrame a in GetComponentsInChildren<ElementFrame>())
                 DestroyObject(a.gameObject);
         }
 

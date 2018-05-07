@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114000012559859656}
   - component: {fileID: 114761968690729052}
   m_Layer: 5
-  m_Name: AspectFrame
+  m_Name: ElementFrame
   m_TagString: Element
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,9 +108,6 @@ MonoBehaviour:
   quantityText: {fileID: 114609939226103704}
   brightQuantityColor: {r: 0.5803922, g: 0.8862746, b: 0.93725497, a: 1}
   darkQuantityColor: {r: 0.14117648, g: 0.5019608, b: 0.5372549, a: 1}
-  width2Digit: 100
-  width1Digit: 80
-  width0Digits: 40
 --- !u!114 &114609939226103704
 MonoBehaviour:
   m_ObjectHideFlags: 1
