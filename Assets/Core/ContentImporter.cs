@@ -187,8 +187,6 @@ public class ContentImporter
                     {
                         //the element we want to transform this element to when the trigger fires
                         var xid = htXTriggers[k].ToString();
-                        LogIfNonexistentElementId(k, element.Id, "(aspect that fires an xtrigger)");
-                        LogIfNonexistentElementId(k, xid, "(xtrigger x id)");
                         element.XTriggers.Add(k, xid);
                     }
                 }
