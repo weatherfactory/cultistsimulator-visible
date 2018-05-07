@@ -85,34 +85,122 @@
         description: "inv end - won't display, loops straight to trial. I should prepare myself.",
         warmup: 30,
         craftable: false,
-		linked:[{id:"suspiciontrial",chance:100}]
+		linked:[{id:"suspicion_attemptmitigation_me",chance:300},{id:"suspicion_questionfollower",chance:100}]
     },
-			    {
-        id: "suspiciontrial",
+					    {
+        id: "suspicion_questionme",
+        label: "I am to be tried in court!",
+        actionId: "suspicion",
+        startdescription: "The Suppression Bureau has taken ne in for questioning.",
+        description: ".",
+        craftable: false,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_me"}],
+		        warmup: 30
+    },
+					    {
+        id: "suspicion_questionfollower",
         label: "A Trial!",
         actionId: "suspicion",
-        requirements: {evidenceb:1},
-        effects: {},
-		alternativerecipes: [{id: "scapegoat",chance: 100}],
-		slots: [{id:"Diversion",required: {follower:1}, forbidden:{summoned:1,hireling:1} description: "I need someone to take the blame."}],
+		slots: [{id:"Suspect",required: {follower:1}, forbidden:{summoned:1,hireling:1}, description: "The Bureau thirsts for suspects.",greedy:true}],
+        startdescription: "The Suppression Bureau is seeking a follower of mine for questioning. If they can't find one, they'll come after me directly.",
+        description: ".",
+        craftable: false,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_follower"},
+		{chance:100,id:"suspicion_attemptmitigation_me"}],
+		        warmup: 30
+
+    },
+	{
+	id:"suspicion_attemptmitigation_me",
+	actionId:"suspicion",
+	label: "The Suppression Bureau intends to try me in court!",
+	startdescription:"There are crimes the state does not openly recognise. I am accused of one of these. The Suppression Bureau holds their trials in closed court, and they are not merciful. Unless I can take advantage of a connection, I risk imprisonment!",
+	description:".",
+	slots:[{id:"favour",label:"A Favour",required:{favour:1}}],
+	linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_meimprisoned"},
+	{chance:100,id:"suspicion_meexonerated"}],
+	warmup:60
+	},
+	{
+	id:"suspicion_attemptmitigation_follower",
+	label:"fnord",
+	actionId:"suspicion",
+	requirements: {follower:1},
+	startdescription:"There are crimes the state does not openly recognise. My follower has been implicated in one of these. The Suppression Bureau holds their trials in closed court, and they are not merciful. Unless I can take advantage of a connection, I may lose the follower forever!",
+	description:"FNORD attempt migitation follower end",
+	slots:[{id:"favour",label:"A Favour",required:{favour:1}}],
+		linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_followerimprisoned"},
+	{chance:100,id:"suspicion_followerexonerated"}],
+	warmup:60,
+	},
+		{
+	id:"suspicion_favourused",
+	actionId:"suspicion",
+	label:"fnord",
+	requirements:{favour:1},
+	effects:{favour:-1}
+		startdescription:"FNORD favour used start",
+	description:"FNORD favour used end",
+	warmup:30,
+	},
+	{
+	id:"suspicion_followerimprisoned",
+	actionId:"suspicion",
+	label:"fnord",
+			startdescription:"FNORD follower imprisoned start",
+	description:"FNORD follower arrested end. The Bureau's appetite is satisfied for the moment; but what did my follower tell them?",
+		aspects:{investigatingsetback:1},
+	effects:{follower:-1}
+	warmup:30,
+	},
+	{
+	id:"suspicion_meimprisoned",
+	actionId:"suspicion",
+	label:"fnord",
+			startdescription:"FNORD start",
+	description:"FNORD attempt end",
+	warmup:30,
+	ending:arrest
+	},
+	{
+	id:"suspicion_followerexonerated",
+	actionId:"suspicion",
+	label:"fnord",
+				startdescription:"FNORD follower exonerated start",
+				description:"FNORD follower exonerated setback. The Bureau has been stymied for the moment; but what did they learn from my follower?",
+	aspects:{investigatingsetback:1},
+	effects:{follower:-1},
+	warmup:30
+	},
+	{
+	id:"suspicion_meexonerated",
+	actionId:"suspicion",
+	label:"fnord",
+	aspects:{evidencelevel:-1},
+	warmup:30,
+	},		
+	   {
+        id: "suspiciontrial",
+		comments: "Here for legacy compatibility",
+        actionId: "suspicion",
         startdescription: "There are crimes the state does not openly recognise. I am accused of one of these. The Suppression Bureau holds their trials in closed court, and they are not merciful. I must find a scapegoat, or all is lost.",
         description: "ARREST!",
-        warmup: 60,
-        craftable: false,
-		ending: arrest
-		
+        warmup: 0,
+		linked:[{id:"suspicionpretrial",chance:100}],
     },
+
 
 	  {
         id: "scapegoat",
-        label: "A Scapegoat",
-        actionId: "suspicion",
-        requirements: {follower: 1},
-        effects: {follower: -1,evidenceb:-1,notoriety:1},
-        startdescription: "A believer is ready to make a sacrifice for the cause.",
-        description: "I regret the loss. But better them than me.",
-        warmup: 60,
-        craftable: false
-    }
+		actionId: "suspicion",
+		comments: "Here for legacy compatibility",
+	comments:"here for legacy",
+	warmup:0,
+	linked:[{id:"suspicionpretrial",chance:100}],
+
+    },
+
 ]
 }

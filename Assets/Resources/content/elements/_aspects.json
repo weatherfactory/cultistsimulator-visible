@@ -210,6 +210,7 @@
 		description: "If I don't feed my new appetites, my Marks will fade.",
 			noartneeded: true,
 		comments: "Recipe aspect"},
+		
 				{
             id: "article",
             label: "Article",
@@ -707,7 +708,15 @@
 										 {
             id: "investigatingsuccess",
             label: "Investigation Success",
-			description: "Upgrades evidence. Initially only used in the Detective legacy.",
+			description: "Upgrades evidence.",
+            isAspect: true,
+			comments: "Recipe aspect.",
+			noartneeded:true
+        },
+												 {
+            id: "investigatingsetback",
+            label: "Investigation Setback",
+			description: "Downgrades evidence.",
             isAspect: true,
 			comments: "Recipe aspect.",
 			noartneeded:true

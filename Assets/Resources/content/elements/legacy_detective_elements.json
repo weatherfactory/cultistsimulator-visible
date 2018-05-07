@@ -15,7 +15,7 @@
 	{id:"meticulous",label:"Meticulous",description:"More Reason will give my investigation a better chance of success.",required:{reason:1},actionId:"work"},
 	{id:"vigilant",label:"Vigilant",description:"More Reason will give my investigation a better chance of success.",required:{reason:1},actionId:"work"},
 	{id:"singleminded",label:"Singleminded", description:"More Reason will give my investigation a better chance of success.",required:{reason:1},actionId:"work"},],
-	xtriggers:{employment:legacydetectivejob_matured,careeradvancement:legacydetectivejob_promoted},
+	xtriggers:{employment:legacydetectivejob_matured},
 	lifetime:90,
 	decayTo:"legacydetectivejob_suspended"
 	
