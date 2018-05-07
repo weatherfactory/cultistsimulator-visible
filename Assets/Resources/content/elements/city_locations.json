@@ -21,6 +21,15 @@
 				slots:[{id:"Sell",description: "Add an item here to auction it off.", required: {tool:1,text:1,compensationvalue:1}}],
 			unique:true
         },
+										{
+        id: "locationcabaretclosed",
+            label: "The Ecdysis Club [Closed]",
+            description: "A cabaret with an occult reputation. It opens only certain nights of the week; it'll re-open soon.",
+			unique:true,
+			icon: "locationcabaret",
+			lifetime:60,
+			decayTo: locationcabaret
+        },
 						{
         id: "locationcabaret",
             label: "The Ecdysis Club",
@@ -30,15 +39,7 @@
 			xtriggers:{locationcabaret:locationcabaretclosed},
 			unique:true
         },
-								{
-        id: "locationcabaretclosed",
-            label: "The Ecdysis Club [Closed]",
-            description: "A cabaret with an occult reputation. It opens only certain nights of the week; it'll re-open soon.",
-			unique:true,
-			icon: "locationcabaret",
-			lifetime:60,
-			decayTo: locationcabaret
-        },
+
 		
 			{
         id: "generichq",
