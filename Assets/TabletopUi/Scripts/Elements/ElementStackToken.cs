@@ -386,8 +386,6 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        #region -- Allowed Interaction ------------------------------------------------------------------------------------
-
         protected override bool AllowsDrag() {
             return isFront && turnCoroutine == null; // no dragging while not front or busy turning
         }
@@ -398,13 +396,12 @@ namespace Assets.CS.TabletopUI {
         }
 
         public bool AllowsMerge() {
-            if (Decays || _element.Unique || IsBeingAnimated)
+            if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
         }
 
-        #endregion
 
         #region -- Interaction ------------------------------------------------------------------------------------
 
