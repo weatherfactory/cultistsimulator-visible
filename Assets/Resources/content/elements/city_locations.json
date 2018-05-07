@@ -27,8 +27,19 @@
             aspects:{location: 1,moth:1,grail:1},
             description: "A cabaret with an occult reputation.",
 			slots:[{id:"Entry", actionId: "explore", required:{funds:1},consumes:true}],
+			xtriggers:{locationcabaret:locationcabaretclosed},
 			unique:true
         },
+								{
+        id: "locationcabaretclosed",
+            label: "The Ecdysis Club [Closed]",
+            description: "A cabaret with an occult reputation. It opens only certain nights of the week; it'll re-open soon.",
+			unique:true,
+			icon: "locationcabaret",
+			lifetime:60,
+			decayTo: locationcabaret
+        },
+		
 			{
         id: "generichq",
             label: "Temporary Headquarters",
