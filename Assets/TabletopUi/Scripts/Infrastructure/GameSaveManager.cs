@@ -116,6 +116,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             string savedVersionString=htMetaInfo[SaveConstants.SAVE_VERSIONNUMBER].ToString();
 
+            //2018.5 is our 1.0 release date. After this, all saves are considered compatible unless we reconsider the decision.
+            if (currentVersionNumber.GetVersionYear() > 2018 ||
+                (currentVersionNumber.GetVersionYear()== 2018 && currentVersionNumber.GetVersionMonth() > 5))
+                return true;
+
             return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
         }
     }
