@@ -79,14 +79,19 @@ public class Heart : MonoBehaviour
             outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
                 .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
-
-        if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
-        {
-            housekeepingCyclesCounter = 0;
-            Registry.Retrieve<TabletopManager>().SaveGame(false);
-        }
+        //commenting out autosave until I fix the windows issue
+        //if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
+        //{
+        //    housekeepingCyclesCounter = 0;
+        //    Registry.Retrieve<TabletopManager>().SaveGame(true);
+        //}
     }
-    
+
+
+    void OnApplicationQuit()
+    {
+        Registry.Retrieve<TabletopManager>().SaveGame(true);
+    }
 
     public void AdvanceTime(float intervalThisBeat)
     {

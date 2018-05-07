@@ -42,7 +42,7 @@ namespace Assets.Logic
             //- not the death-dependent legacy, if there is one
             
             IEnumerable<Legacy> drawingLegacies = _compendium.GetAllLegacies().Where(l => l.AvailableWithoutEndingMatch)
-                .OrderBy(l => rnd.Next());
+                .OrderBy(l => rnd.Next()).ToList();
             drawingLegacies = drawingLegacies.Take(randomLegaciesToDraw);
             drawingLegacies = drawingLegacies.Where(l=>l.Id!=(deathDependentLegacy==null ? "" : deathDependentLegacy.Id));
 

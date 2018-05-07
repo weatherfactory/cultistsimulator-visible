@@ -44,7 +44,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var animatableStacks = new List<IElementStack>();
 
             foreach (var stack in stacks)
-                if (!stack.Defunct && stack.CanAnimate() && stack.Id != lastAnimID)
+                if (!stack.Defunct && stack.CanAnimate() && stack.EntityId != lastAnimID)
                     animatableStacks.Add(stack);
 
             if (animatableStacks.Count > 0)
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 int index = UnityEngine.Random.Range(0, animatableStacks.Count);
 
                 animatableStacks[index].StartArtAnimation();
-                lastAnimID = animatableStacks[index].Id;
+                lastAnimID = animatableStacks[index].EntityId;
             }
         }
 

@@ -23,7 +23,7 @@
 		        {
             id: "independent",
             label: "Maverick",
-			description: "A student of the secret arts, with an agenda of their own.",
+			description: "A student of the invisible arts, with an agenda of their own.",
             isAspect: true
         }, 		
         {
@@ -226,7 +226,7 @@
             id: "lore",
             label: "Lore",
             isAspect: true,
-			description: "'A desire of knowledge is the natural feeling of mankind; and every human being whose mind is not debauched, will be willing to give all that he has to get knowledge.' - Samuel Johnson"
+			description: "Knowledge of the invisible arts. I can use it to attract followers, to perform rites, to open the way to the Mansus, to seek my ascension... [Lore fragments can sometimes be upgraded with Study, and with matching fragments.]"
         },
 				{
             id: "language",
@@ -693,7 +693,15 @@
             label: "Employment",
 			description: "I've done a day's work.",
             isAspect: true,
-			comments: "Recipe aspect. Refreshes job timers.",
+			comments: "Recipe aspect. Refreshes job timers and fatigues stats",
+			noartneeded:true
+        },
+										 {
+            id: "epiphany",
+            label: "Epiphany",
+			description: "My understanding's increased.",
+            isAspect: true,
+			comments: "Recipe aspect. Upgrades lore.",
 			noartneeded:true
         },
 										 {

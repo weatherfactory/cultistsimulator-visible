@@ -1,4 +1,5 @@
-﻿using Assets.Core.Entities;
+﻿using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -20,13 +21,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             return _elementStacksManager;
         }
 
-        /*
-        // Not currently in use
-        public virtual void SignalElementStackAddedToContainer(ElementStackToken elementStackToken) {
-            // By default: do nothing right now
+        public IElementStack ReprovisionExistingElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        {
+            var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
+                stackSource, locatorid);
+            foreach(var m in stackSpecification.Mutations)
+                stack.SetMutation(m.Key,m.Value);
+            if(stackSpecification.LifetimeRemaining>0)
+                stack.LifetimeRemaining = stackSpecification.LifetimeRemaining;
+            return stack;
         }
-        */
-
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
             IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
             stack.Populate(elementId, quantity, stackSource);

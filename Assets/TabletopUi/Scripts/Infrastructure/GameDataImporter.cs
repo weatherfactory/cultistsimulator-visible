@@ -140,22 +140,30 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return crossSceneState;
         }
 
-        private static void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
+        private void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
         {
-            foreach (var locationInfo in htElementStacks.Keys)
+
+            var elementStackSpecificatons = PopulateElementStackSpecificationsList(htElementStacks);
+            foreach (var ess in elementStackSpecificatons)
             {
-                var dictionaryElementStacks =
-                    NoonUtility.HashtableToStringStringDictionary(htElementStacks.GetHashtable(locationInfo));
-
-                int quantity;
-                var couldParse = Int32.TryParse(dictionaryElementStacks[SaveConstants.SAVE_QUANTITY], out quantity);
-                if (!couldParse)
-                    throw new ArgumentException("Couldn't parse " + dictionaryElementStacks[SaveConstants.SAVE_QUANTITY] + " for " +
-                                                dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
-
-                tabletop.GetElementStacksManager().IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], 
-                    quantity,Source.Existing(), new Context(Context.ActionSource.Loading), locationInfo.ToString());
+                tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),ess.LocationInfo),new Context(Context.ActionSource.Loading));
             }
+
+            //This code should now be obsolete! everything goes through reprovision. Leaving for the mo in case I missed something
+            //foreach (var locationInfo in htElementStacks.Keys)
+            //{
+            //    var dictionaryElementStacks =
+            //        NoonUtility.HashtableToStringStringDictionary(htElementStacks.GetHashtable(locationInfo));
+
+            //    int quantity;
+            //    var couldParse = Int32.TryParse(dictionaryElementStacks[SaveConstants.SAVE_QUANTITY], out quantity);
+            //    if (!couldParse)
+            //        throw new ArgumentException("Couldn't parse " + dictionaryElementStacks[SaveConstants.SAVE_QUANTITY] + " for " +
+            //                                    dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID] + " as a valid quantity.");
+
+            //    tabletop.GetElementStacksManager().IncreaseElement(dictionaryElementStacks[SaveConstants.SAVE_ELEMENTID], 
+            //        quantity,Source.Existing(), new Context(Context.ActionSource.Loading), locationInfo.ToString());
+            //}
         }
 
         private void ImportDecks(IGameEntityStorage storage, Hashtable htDeckInstances)
@@ -247,7 +255,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         private List<IElementStack> ImportOutputStacks(Hashtable htSituationValues, TabletopTokenContainer tabletop)
         {
-            List<IElementStack> outputStack = new List<IElementStack>();
+            List<IElementStack> outputStacks = new List<IElementStack>();
 
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS))
             {
@@ -255,14 +263,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var htSituationOutputStacks = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONOUTPUTSTACKS);
 
                     
-                    var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htSituationOutputStacks);
-                    foreach (var eqs in elementQuantitySpecifications)
+                    var stackSpecification = PopulateElementStackSpecificationsList(htSituationOutputStacks);
+                    foreach (var ess in stackSpecification)
                     {
-                        outputStack.Add(tabletop.ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity,Source.Existing()));
+                        outputStacks.Add(tabletop.ReprovisionExistingElementStack(ess,Source.Existing()));
                     }
 
             }
-            return outputStack;
+            return outputStacks;
         }
 
         private void ImportSituationNotes(Hashtable htSituationValues,SituationController controller)
@@ -294,7 +302,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
             {
                 var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-                var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
+                var elementQuantitySpecifications = PopulateElementStackSpecificationsList(htElements);
                 foreach (var eqs in elementQuantitySpecifications)   
                     controller.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity, new Context(Context.ActionSource.Loading));                    
             }
@@ -310,16 +318,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htSituationValues.ContainsKey(slotTypeKey))
             {
                 var htElements = htSituationValues.GetHashtable(slotTypeKey);
-                var elementQuantitySpecifications = PopulateElementQuantitySpecificationsList(htElements);
+                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
 
-                foreach (var eqs in elementQuantitySpecifications.OrderBy(spec=>spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
+                foreach (var ess in elementStackSpecifications.OrderBy(spec=>spec.Depth)) //this order-by is important if we're populating something with elements which create child slots -
                     //in that case we need to do it from the top down, or the slots won't be there
                 {
                     var stackToPutInSlot =
-                        tabletop.ProvisionElementStack(eqs.ElementId, eqs.ElementQuantity, Source.Existing());
+                        tabletop.ReprovisionExistingElementStack(ess, Source.Existing());
 
                     //SaveLocationInfos are recorded with an appended Guid. We should have a SaveLocationInfo object that translates to/from safely: this is a hack.
-                    var slotId = eqs.LocationInfo.Split('_')[0];
+                    var slotId = ess.LocationInfo.Split('_')[0];
 
 
                     var slotToFill = controller.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);
@@ -333,16 +341,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             }
         }
 
-        private List<ElementQuantitySpecification> PopulateElementQuantitySpecificationsList(Hashtable htElements)
+        private List<ElementStackSpecification> PopulateElementStackSpecificationsList(Hashtable htStacks)
         {
-            var elementQuantitySpecifications = new List<ElementQuantitySpecification>();
-            foreach (var locationInfo in htElements.Keys)
+            var elementQuantitySpecifications = new List<ElementStackSpecification>();
+            foreach (var locationInfoKey in htStacks.Keys)
             {
-                var elementValues =
-                    NoonUtility.HashtableToStringStringDictionary(htElements.GetHashtable(locationInfo));
-                elementQuantitySpecifications.Add(new ElementQuantitySpecification(
-                    elementValues[SaveConstants.SAVE_ELEMENTID],
-                    GetQuantityFromElementHashtable(elementValues), locationInfo.ToString()));
+                var eachStack= htStacks.GetHashtable(locationInfoKey);
+                Dictionary<string,int> mutations=new Dictionary<string, int>();
+
+                string elementId = TryGetStringFromHashtable(eachStack, SaveConstants.SAVE_ELEMENTID);
+                int elementQuantity = GetIntFromHashtable(eachStack, SaveConstants.SAVE_QUANTITY);
+                int lifetimeRemaining = GetIntFromHashtable(eachStack, SaveConstants.LIFETIME_REMAINING);
+                if (eachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
+                    mutations = NoonUtility.HashtableToStringIntDictionary(
+                        eachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
+
+                elementQuantitySpecifications.Add(new ElementStackSpecification(
+                    elementId,
+                    elementQuantity,
+                    locationInfoKey.ToString(),
+                    mutations,
+                    lifetimeRemaining));
             }
             return elementQuantitySpecifications;
         }

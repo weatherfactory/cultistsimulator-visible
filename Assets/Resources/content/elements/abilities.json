@@ -22,7 +22,7 @@
 				ability:1
             },
             animFrames: 1,
-			xtriggers: {damagehealth: injury,fallsick:affliction},
+			xtriggers: {damagehealth: injury,fallsick:affliction,fatiguing:fatigue,employment:fatigue,job:fatigue},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
         },
 				 {
@@ -53,8 +53,8 @@
 			  knock: 2,
 			  inducesdespair: 1,
 			  ingredient:1},
-			  			slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
-			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
+			  			slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1},actionId:"dream"},
+			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1},actionId:"dream"}],
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
 			lifetime: 150,
@@ -63,7 +63,14 @@
 									{
         id: "disillusionment",
             label: "Passion (Disillusioned)",
-            description: "I have gone against my own principles or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
+            description: "I have gone against my own principles, or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
+			lifetime: 60,
+			decayTo:"passion"
+			},
+												{
+        id: "passionexhausted",
+            label: "Passion (Exhausted)",
+            description: "My passions burn low. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion"
 			},
@@ -85,7 +92,8 @@
 						slots: [{id: "Medicine",label:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
 			{id:"Vitality",label:"...Vitality",actionId:"dream",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
             description: "Disease has left me weak. I need rest and nourishment, if I am to recover. [Dream on an Affliction to transform it back to Health, before the card decays.]",
-			lifetime: 180
+			lifetime: 180,
+			decayTo: "decrepitude"
 			},
         {
             id: "reason",
@@ -100,7 +108,7 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration},
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration},
 				
         },
 		        {
@@ -143,14 +151,15 @@ lifetime: 180
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
 [With enough Glimmering, you can Study to gain more Passion.]",
-			xtriggers: {damagepassion:fascination,plead:disillusionment},
+			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted},
         },
 		
 		
 		        {
             id: "decrepitude",
             label: "Decrepitude",
-			description: "Some wounds never quite heal. [Untreated injuries become Decrepitude, which cannot be returned to Health. Decrepitude remains until you die.]"
+			description: "Some wounds never quite heal. [Untreated injuries become Decrepitude, which cannot be returned to Health. Decrepitude remains until you die.]",
+			aspects: {ability:1}
             },
 		
 					 {
@@ -216,7 +225,7 @@ lifetime: 180
 				actionId:"study",
 			}],
 		aspects: {language:1},
-		description: "A people lived east of the lost lake Fucino. Horace warned that their land was the source of lust-spells and love-curses. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'. This is the tongue in which the Thunderskin pleaded, at his ascension. [Some books must be translated before they can be read.]",
+		description: "The Phrygians worshipped the Great Mother, who we call the Grail. Theirs was the land in which the Sisterhood of the Knot was born, and this is the tongue in which the Thunderskin pleaded, at his ascension. [Some books must be translated before they can be read.]",
 		unique:true
 		},
 						{

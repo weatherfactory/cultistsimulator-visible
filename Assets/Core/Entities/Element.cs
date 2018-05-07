@@ -21,11 +21,19 @@ public class Element
     private string _label="";
     private string _description="";
     public string Id { get; set; }
+    public string _icon;
 
     public string Label
     {
         get { return _label; }
         set { _label = value ?? ""; }
+    }
+
+    
+
+    public string Icon
+    {
+        get { return _icon; }
     }
 
 
@@ -70,9 +78,10 @@ public class Element
         }
     }
 
-    
 
-    public Element(string id, string label, string description, int animFrames)
+
+
+    public Element(string id, string label, string description, int animFrames,string icon)
     {
         Id = id;
         Label = label;
@@ -84,6 +93,13 @@ public class Element
         XTriggers=new Dictionary<string, string>();
 
         Induces=new List<LinkedRecipeDetails>();
+
+        if (!string.IsNullOrEmpty(icon))
+        
+            _icon = icon;
+                else
+            _icon = id;
+        
     }
 
 

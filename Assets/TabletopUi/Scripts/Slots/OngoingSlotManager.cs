@@ -93,7 +93,7 @@ namespace Assets.CS.TabletopUI {
             Element element;
 
             foreach (var item in stacks) {
-                element = Registry.Retrieve<ICompendium>().GetElementById(item.Id);
+                element = Registry.Retrieve<ICompendium>().GetElementById(item.EntityId);
 
                 for (int q = 0; q < item.Quantity; q++) {
                     if (i < aspectFrames.Length)

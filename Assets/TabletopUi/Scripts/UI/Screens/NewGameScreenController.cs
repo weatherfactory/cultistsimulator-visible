@@ -78,7 +78,7 @@ namespace Assets.CS.TabletopUI {
         public void StartGame() {
             
             CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
-            CrossSceneState.ClearEndingAndLegacies();
+            CrossSceneState.ClearEnding();
 
             SceneManager.LoadScene(SceneNumber.GameScene);
         }

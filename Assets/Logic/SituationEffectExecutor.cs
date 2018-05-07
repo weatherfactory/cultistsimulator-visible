@@ -13,11 +13,14 @@ using UnityEngine;
 namespace Assets.Logic
 {
    public class SituationEffectExecutor
-    {
+   {
+
         public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
             var aspectsPresent = stacksManager.GetTotalAspects();
             aspectsPresent.CombineAspects(command.Recipe.Aspects);
+
+            RunMutationEffects(command, stacksManager);
 
             RunXTriggers(stacksManager, aspectsPresent);
             //note: standard effects happen *after* XTrigger effects
@@ -28,7 +31,19 @@ namespace Assets.Logic
             RunConsumptions(stacksManager);
         }
 
-        private void RunConsumptions(IElementStacksManager stacksManager)
+       private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
+       {
+           foreach(var mutationEffect in command.Recipe.MutationEffects)
+           { 
+               foreach (var stack in stacksManager.GetStacks())
+               {
+                    if(stack.GetAspects(true).ContainsKey(mutationEffect.FilterOnAspectId))
+                        stack.SetMutation(mutationEffect.MutateAspectId,mutationEffect.MutationLevel);
+               }
+            }
+        }
+
+       private void RunConsumptions(IElementStacksManager stacksManager)
         {
 
             var stacks = stacksManager.GetStacks();
@@ -86,6 +101,7 @@ namespace Assets.Logic
 
         private static void RunXTriggers(IElementStacksManager stacksManager, AspectsDictionary aspectsPresent)
         {
+            ICompendium _compendium = Registry.Retrieve<ICompendium>();
             foreach (var eachStack in stacksManager.GetStacks())
             {
                 var xTriggers = eachStack.GetXTriggers();
@@ -93,15 +109,30 @@ namespace Assets.Logic
                     //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
                     if (aspectsPresent.ContainsKey(triggerKey))
                     {
-                        //if they do:
+                        Element effectElement = _compendium.GetElementById(xTriggers[triggerKey]);
+                        if (effectElement == null)
+                        {
+                            NoonUtility.Log("Tried to run an xtrigger with an element effect id that doesn't exist: " + xTriggers[triggerKey],1);
+                            return;
+                        }
+
+                        if (effectElement.IsAspect)
+                        {
+
+                        }
+                        else
+                        {
                         var existingQuantity = eachStack.Quantity;
                         //replace the element that has the trigger with the trigger result
                         //eg, if an individual has a Recruiting: individual_b trigger, and there's a Recruiting aspect in the stack, then replace the individual with individual_b
-                        stacksManager.ModifyElementQuantity(eachStack.Id, -existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
+                        stacksManager.ModifyElementQuantity(eachStack.EntityId, -existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
                         stacksManager.ModifyElementQuantity(xTriggers[triggerKey], existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
 
-                        NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + eachStack.Id + " to transform into " +
-                                        xTriggers[triggerKey]);
+                        NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + eachStack.EntityId + " to transform into " +
+                                        xTriggers[triggerKey],10);
+
+
+                        }
                     }
             }
         }

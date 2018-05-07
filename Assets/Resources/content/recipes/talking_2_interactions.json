@@ -6,7 +6,7 @@ actionId: "talk",
 requirements: {hq:1,follower:1},
 startdescription: "This one must serve another purpose now. Into the cupboard they go.",
 description: "I've locked this one away safely. When their screaming and raving subsides, I will subdue them properly.",
-aspects: {capturefollower:1},
+aspects: {capturefollower:1,notoriety:1},
 craftable:true,
 warmup:10
 },
@@ -74,8 +74,8 @@ actionId: "poppytime",
 label:"A Suitable Conclusion",
 requirements: {follower:1},
 startdescription: "'What a loyal friend you have here! Do say goodbye, now.'",
-description: "My follower is gone. I remain. Poppy Lascelles is seen, here and there, but she is not currently accepting callers.",
-effects: {poppy:1,influencewinter:1,follower:-1}
+description: "My follower is gone. I remain. Poppy Lascelles is seen, here and there. She may have more to say to you.",
+effects: {poppycommissionready:1,influencewinter:1,follower:-1}
 }
 ]
 }

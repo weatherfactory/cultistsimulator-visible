@@ -132,11 +132,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return CrossSceneState.GetSaveDataForCrossSceneState(withActiveLegacy);
         }
 
-private Hashtable GetHashtableForThisStack(IElementStack e)
+private Hashtable GetHashtableForThisStack(IElementStack stack)
         {
             var htStackProperties = new Hashtable();
-            htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, e.Id);
-            htStackProperties.Add(SaveConstants.SAVE_QUANTITY, e.Quantity);
+            htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, stack.EntityId);
+            htStackProperties.Add(SaveConstants.SAVE_QUANTITY, stack.Quantity);
+
+            var currentMutations = stack.GetCurrentMutations();
+            if (currentMutations.Any())
+            {
+                var htMutations = new Hashtable();
+                foreach (var kvp in currentMutations)
+                {
+                    htMutations.Add(kvp.Key,kvp.Value);
+                }
+                htStackProperties.Add(SaveConstants.SAVE_MUTATIONS, htMutations);
+
+            }
+
             return htStackProperties;
         }
 

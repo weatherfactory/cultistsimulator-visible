@@ -141,7 +141,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         ElementStackToken token;
 
         foreach (var card in tabletopStacks) {
-            if (card.Id != draggedElement.Id || card.Defunct)
+            if (card.EntityId != draggedElement.EntityId || card.Defunct)
                 continue;
 
             if (!show || card.AllowsMerge()) {

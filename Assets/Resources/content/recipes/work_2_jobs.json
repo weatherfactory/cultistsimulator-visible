@@ -404,6 +404,34 @@ maxexecutions:1
         warmup: 60,
 		craftable: true
 	},
+			{
+        id: "workbeg",
+        label: "Beg in the Streets",
+        actionId: "work",
+        requirements: {decrepitude:1},
+        effects: {
+            funds: 1,dread:1
+        },
+		alternativerecipes:[{id:"workbeg_lucky",chance:30}]
+        startdescription: "I'll display my infirmities, and hope for compassion from passers-by.",
+        description: "A long day. Some flung coins, most turned away. It is difficult to watch so many retreating backs for so many hours.",
+        warmup: 90,
+        craftable: true
+    },
+				{
+        id: "workbeg_lucky",
+        label: "Beg in the Streets",
+        actionId: "work",
+        requirements: {decrepitude:1},
+        effects: {
+            funds: 2
+        },
+		alternativerecipes:[{id:"workbeg_lucky",chance:30}]
+        startdescription: "To work, then.",
+        description: "A long day. Some flung coins, most turned away. But there is a gold sovereign in my bowl! A generous donation, or an accident?",
+        warmup: 90,
+        craftable: true
+    },
 		{
         id: "workhealthskilla",
         label: "Unskilled Labour: Arms of Bronze",
@@ -414,6 +442,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "To work, then.",
         description: "I've finished early. Here's my pay.",
         warmup: 55,
@@ -427,6 +456,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "I will work with speed and in silence. I don't fear injury.",
         description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
         warmup: 50,
@@ -440,6 +470,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "Once again I put my strength to use.",
         description: "My strength attracts comment. Not all the comments are compliments. I draw my pay and leave.",
         warmup: 45,
@@ -450,8 +481,9 @@ maxexecutions:1
         label: "Unskilled Labour",
         actionId: "work",
         requirements: {health: 1,ritual:-1},
+		aspects:{employment:1},
         effects: {
-            funds: 1,vitality:1
+          vitality:1,funds:1
         },
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
@@ -470,6 +502,7 @@ maxexecutions:1
         effects: {
             funds: 1,vitality:1
         },
+		aspects:{employment:1},
         startdescription: "Back-breaking work for meagre pay. Is this the best I can do?",
         description: "The day is done, and so am I; but I've earned my pay.",
         warmup: 60,
@@ -499,7 +532,7 @@ maxexecutions:1
 		{id: "paintmansus", chance:100},
 		{id: "paintsuccess", chance:30}],
         actionId: "work",
-        requirements: {passion: 1,ritual:-1},
+        requirements: {passion: 1,ritual:-1,job:-1},
         deckeffect: {paintingresults:1},
 					slots: [{id:"Inspiration",
 					required: {lore:1,ingredient:1,influence:1},

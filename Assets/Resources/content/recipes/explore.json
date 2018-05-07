@@ -72,7 +72,7 @@
         actionId: "explore",
         requirements: {health:1},
 		deckeffect: {exploreevents:1},
-		effects:{health:-1,fatigue:1},
+		aspects:{fatiguing:1},
 		linked:	[
 			{id: "explorefindcriminal",chance:100},
 		{id: "explorefindplace",chance:100}],

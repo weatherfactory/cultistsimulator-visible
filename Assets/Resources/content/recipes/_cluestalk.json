@@ -131,7 +131,87 @@
 		hintonly: true
     },
 	
+		  	{
+        id: "talk_aladim_wantscommission",
+        label: "A Commission?",
+        actionId: "talk",
+        requirements: {aladim:1},
+        startdescription: "'How's that Commission coming along? I'm looking forward to your thoughts.'",
+        hintonly:true,
+        craftable: true
+    },
+			  	{
+        id: "talk_bechet_wantscommission",
+        label: "A Commission?",
+        actionId: "talk",
+        requirements: {bechet:1},
+        startdescription: "'Hullo. Do you have something for me? The Commission?'",
+        hintonly:true,
+        craftable: true
+    },
+			  	{
+        id: "talk_jannings_wantscommission",
+        label: "A Commission?",
+        actionId: "talk",
+        requirements: {jannings:1},
+        startdescription: "'Please, will you conclude the Commission? My colleagues are in urgent need of the information.'",
+        hintonly:true,
+        craftable: true
+    },
+			  	{
+        id: "talk_poppy_wantscommission",
+        label: "A Commission?",
+        actionId: "talk",
+        requirements: {poppycommission:1},
+        startdescription: "'Oh, do hurry with that Commission! I can't wait.'",
+        hintonly:true,
+        craftable: true
+    },
+	
+	{id: "fulfilcommission_aladimhint",
+label:"Fulfil a Commission for the Doctor?",
+actionId: "talk",
+requirements: {commission: 1,aladim:1,article:1},
+startdescription: "'Mm. I was hoping for more.' [Check the Commission details.]",
+warmup: 10,
+craftable: false,
+hintonly:true
 
+},
+
+{id: "fulfilcommission_bechethint",
+label:"Fulfil a Commission for Mme Bechet?",
+actionId: "talk",
+requirements: {commission: 1,bechet:1,article:1},
+startdescription: "'Sorry, not quite. I wanted something a little different.' [Check the Commission details.]",
+warmup: 10,
+craftable: false,
+hintonly:true
+
+},
+
+
+{id: "fulfilcommission_janningshint",
+label:"Fulfil a Commission for the Count?",
+actionId: "talk",
+requirements: {commission: 1,jannings:1,article:1},
+startdescription: "'No no no. This will not do. My instructions were most specific.' [Check the Commission details.]",
+warmup: 10,
+craftable: false,
+hintonly:true
+
+},
+
+{id: "fulfilcommission_poppyhint",
+label:"Fulfil a Commission for Poppy?",
+actionId: "talk",
+requirements: {commission: 1,poppycommission:1,article:1},
+startdescription: "'Oh, dear. I'm sorry. I need more... insight.' [Check the Commission details.]",
+warmup: 10,
+craftable: false,
+hintonly:true
+
+},
 	
 ]
 }

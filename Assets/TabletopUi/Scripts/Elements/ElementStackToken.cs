@@ -52,7 +52,7 @@ namespace Assets.CS.TabletopUI {
 		private float decayAlpha = 0.0f;
 		private Color cachedDecayBackgroundColor;
 
-        private float lifetimeRemaining;
+        public float LifetimeRemaining { get; set; }
         private bool isFront = true;
         public Source StackSource { get; set; }
 
@@ -60,8 +60,9 @@ namespace Assets.CS.TabletopUI {
         private Coroutine animCoroutine;
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
+        private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
 
-        public override string Id {
+        public override string EntityId {
             get { return _element == null ? null : _element.Id; }
         }
         public string Label
@@ -79,7 +80,7 @@ namespace Assets.CS.TabletopUI {
 
         public bool MarkedForConsumption { get; set; }
 
-        #region -- Lifecycle  ------------------------------------------------------------------------------------
+
 
         protected override void Awake() {
             base.Awake();
@@ -96,10 +97,9 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-        #endregion 
+     
 
-        #region -- Set & Get Basic Values ------------------------------------------------------------------------------------
-
+        
         public void SetQuantity(int quantity) {
             _quantity = quantity;
             if (quantity <= 0) {
@@ -122,15 +122,68 @@ namespace Assets.CS.TabletopUI {
                 textBackground.overrideSprite = null;
         }
 
+        public Dictionary<string, int> GetCurrentMutations()
+        {
+            return new Dictionary<string, int>(_currentMutations);
+        }
+
+        public void SetMutation(string aspectId, int value,bool additive=false)
+        {
+            if (_currentMutations.ContainsKey(aspectId))
+            {
+                if (additive)
+                    _currentMutations[aspectId] += value;
+                else
+                  _currentMutations[aspectId] = value;
+
+                if (_currentMutations[aspectId] == 0)
+                    _currentMutations.Remove(aspectId);
+            }
+            else
+            _currentMutations.Add(aspectId,value);
+        }
+
         public Dictionary<string, string> GetXTriggers() {
             return _element.XTriggers;
         }
 
-        public IAspectsDictionary GetAspects(bool includeSelf = true) {
+        public IAspectsDictionary GetAspects(bool includeSelf = true)
+        {
+            IAspectsDictionary aspectsToReturn=new AspectsDictionary();
+
             if (includeSelf)
-                return _element.AspectsIncludingSelf;
+                aspectsToReturn.CombineAspects(_element.AspectsIncludingSelf);
             else
-                return _element.Aspects;
+                aspectsToReturn.CombineAspects(_element.Aspects);
+
+            foreach(KeyValuePair<string,int> mutation in _currentMutations)
+            {
+                if (mutation.Value > 0)
+                {
+                    if (aspectsToReturn.ContainsKey(mutation.Key))
+                        aspectsToReturn[mutation.Key] += mutation.Value;
+                    else
+                        aspectsToReturn.Add(mutation.Key,mutation.Value);
+                }
+                else if (mutation.Value < 0)
+                {
+                    if (aspectsToReturn.ContainsKey(mutation.Key))
+                    {
+                        if (aspectsToReturn.AspectValue(mutation.Key)+ mutation.Value<=0)
+                            aspectsToReturn.Remove(mutation.Key);
+                        else
+                            aspectsToReturn[mutation.Key] += mutation.Value;
+                    }
+                    else
+                    {
+                        NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
+                    }
+
+                }
+
+                    
+            }
+            return aspectsToReturn;
         }
 
         public List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb) {
@@ -142,12 +195,10 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        #endregion
-
-        #region -- Create & populate ------------------------------------------------------------------------------------
-
+    
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+            _currentMutations=new AspectsDictionary();
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
@@ -167,7 +218,7 @@ namespace Assets.CS.TabletopUI {
                 ShowGlow(false, false);
                 ShowCardDecayTimer(false);
                 SetCardDecay(0f);
-                lifetimeRemaining = _element.Lifetime;
+                LifetimeRemaining = _element.Lifetime;
 				decayBackgroundImage = decayView.GetComponent<Image>();
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
 
@@ -193,7 +244,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         private void DisplayIcon() {
-            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Id);
+            Sprite sprite = ResourcesManager.GetSpriteForElement(_element.Icon);
             artwork.sprite = sprite;
 
             if (sprite == null)
@@ -202,9 +253,7 @@ namespace Assets.CS.TabletopUI {
                 artwork.color = Color.white;
         }
 
-        #endregion
 
-        #region -- Return To Tabletop ------------------------------------------------------------------------------------
 
         public override void ReturnToTabletop(Context context) {
             if (originStack != null && originStack.IsOnTabletop()) {
@@ -239,10 +288,7 @@ namespace Assets.CS.TabletopUI {
             merge.Retire(false);
         }
 
-        #endregion
-
-        #region -- Assign to Stack & Container ------------------------------------------------------------------------------------
-
+ 
         // Called from StacksManager
         public void SetStackManager(IElementStacksManager manager) {
             var oldStacksManager = CurrentStacksManager;
@@ -265,11 +311,7 @@ namespace Assets.CS.TabletopUI {
             if (newTokenContainer != null)
                 newTokenContainer.SignalStackAdded(this, context);
         }
-
-        #endregion
-
-        #region -- Retire + FX ------------------------------------------------------------------------------------
-
+        
         protected override void NotifyChroniclerPlacedOnTabletop()
         {
             subscribedChronicler.TokenPlacedOnTabletop(this);
@@ -343,7 +385,6 @@ namespace Assets.CS.TabletopUI {
             Destroy(gameObject);
         }
 
-        #endregion
 
         #region -- Allowed Interaction ------------------------------------------------------------------------------------
 
@@ -369,7 +410,7 @@ namespace Assets.CS.TabletopUI {
 
         public override void OnPointerClick(PointerEventData eventData) {
             if (isFront) {
-                notifier.ShowCardElementDetails(_element, this);
+                notifier.ShowCardElementDetails(this._element, this);
             }
             else {
                 FlipToFaceUp(false);
@@ -394,7 +435,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         bool CanMergeWith(IElementStack stack) {
-            return stack.Id == this.Id && stack.AllowsMerge();
+            return stack.EntityId == this.EntityId && stack.AllowsMerge();
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {
@@ -423,7 +464,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void ShowNoMergeMessage(IElementStack stackDroppedOn) {
-            if (stackDroppedOn.Id != this.Id)
+            if (stackDroppedOn.EntityId != this.EntityId)
                 return; // We're dropping on a different element? No message needed.
 
             if (stackDroppedOn.Decays) {
@@ -435,7 +476,7 @@ namespace Assets.CS.TabletopUI {
         public IElementStack SplitAllButNCardsToNewStack(int n, Context context) {
             if (Quantity > n) {
                 var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
-                cardLeftBehind.Populate(Id, Quantity - n, Source.Existing());
+                cardLeftBehind.Populate(EntityId, Quantity - n, Source.Existing());
 
                 originStack = cardLeftBehind;
 
@@ -498,9 +539,7 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(true);
         }
 
-        #endregion
-
-        #region -- Decay, Timers & general Viz ------------------------------------------------------------------------------------
+     
 
         public void Decay(float interval) {
             if (!Decays)
@@ -509,9 +548,9 @@ namespace Assets.CS.TabletopUI {
             if(!isFront)
                 FlipToFaceUp(true); //never leave a decaying card face down.
 
-            lifetimeRemaining = lifetimeRemaining - interval;
+            LifetimeRemaining = LifetimeRemaining - interval;
 
-            if (lifetimeRemaining < 0) {
+            if (LifetimeRemaining < 0) {
                 // We're dragging this thing? Then return it?
                 if (DraggableToken.itemBeingDragged == this) {
                     // Set our table pos based on our current world pos
@@ -532,16 +571,16 @@ namespace Assets.CS.TabletopUI {
 
 			UpdateDecayVisuals( interval );
 
-            SetCardDecay(1 - lifetimeRemaining / _element.Lifetime);
+            SetCardDecay(1 - LifetimeRemaining / _element.Lifetime);
 
             if (onDecay != null)
-                onDecay(lifetimeRemaining);
+                onDecay(LifetimeRemaining);
         }
 
 		void UpdateDecayVisuals( float interval )
 		{
 			// Decide whether timer should be visible or not
-            if (lifetimeRemaining < _element.Lifetime / 2)
+            if (LifetimeRemaining < _element.Lifetime / 2)
                 ShowCardDecayTimer(true);
 			else
 				ShowCardDecayTimer(IsGlowing() || itemBeingDragged==this);	// Allow timer to show when hovering over card
@@ -551,7 +590,7 @@ namespace Assets.CS.TabletopUI {
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 1.0f, interval );
 			else
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, interval );
-			if (lifetimeRemaining <= 0.0f)
+			if (LifetimeRemaining <= 0.0f)
 				decayAlpha = 0.0f;
 			decayView.gameObject.SetActive( decayAlpha > 0.0f );
 
@@ -574,7 +613,7 @@ namespace Assets.CS.TabletopUI {
 
         // Public so TokenWindow can access this
         public string GetCardDecayTime() {
-            return "<mspace=1.6em>" + lifetimeRemaining.ToString("0.0") + "s";
+            return "<mspace=1.6em>" + LifetimeRemaining.ToString("0.0") + "s";
         }
 
         public void SetCardDecay(float percentage) {
@@ -588,8 +627,7 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- Change & Replace Card ------------------------------------------------------------------------------------
-
+        
         public bool ChangeTo(string elementId) {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
@@ -617,9 +655,7 @@ namespace Assets.CS.TabletopUI {
             return true;
         }
 
-        #endregion
-
-        #region -- Turn Card ------------------------------------------------------------------------------------
+        
 
         public void FlipToFaceUp(bool instant = false) {
             Flip(true, instant);
@@ -686,9 +722,6 @@ namespace Assets.CS.TabletopUI {
             backArtwork.overrideSprite = sprite;
         }
 
-        #endregion
-
-        #region -- Animated Artwork ------------------------------------------------------------------------------------
 
         public bool CanAnimate() {
             if (gameObject.activeInHierarchy == false)
@@ -722,7 +755,7 @@ namespace Assets.CS.TabletopUI {
             Sprite[] animSprites = new Sprite[frameCount];
 
             for (int i = 0; i < animSprites.Length; i++)
-                animSprites[i] = ResourcesManager.GetSpriteForElement(Id, frameIndex + i);
+                animSprites[i] = ResourcesManager.GetSpriteForElement(_element.Icon, frameIndex + i);
 
             float time = 0f;
             int spriteIndex = -1;
@@ -743,8 +776,6 @@ namespace Assets.CS.TabletopUI {
             // remove anim 
             artwork.overrideSprite = null;
         }
-
-        #endregion
-
+        
     }
 }

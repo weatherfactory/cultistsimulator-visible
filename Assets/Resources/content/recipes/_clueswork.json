@@ -49,9 +49,18 @@
 		hintonly: true,
 		comments: "Not currently possible with restrictions on work primary slot"
     },
+	  			{
+        id: "commissionhint_wronglore",
+        label: "Hint: Fulfilling a Commission",
+        actionId: "work",
+        requirements: {commission:1,lore:1},
+        startdescription: "I need the right Lore, and I need to dedicate my abilities to the work. [The Commission description will remind you what Lore you need.]",
+        craftable: false,
+		hintonly: true
+    },
   			{
         id: "commissionhint",
-        label: "Hint: Fulfilling a Commission",
+        label: "Hint: Fulfilling a Commission?",
         actionId: "work",
         requirements: {commission:1},
         startdescription: "If I use Work with the right Lore fragment, I can create a manuscript to fulfil this Commission. I'll need to Talk to my Patron about this Commission when it's finished.",

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Entities;
 
 public enum PortalEffect
 {
@@ -29,6 +30,7 @@ public class Recipe
     public Dictionary<string, int> Requirements { get; set; }
     public Dictionary<string, int> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
+    public List<MutationEffect> MutationEffects { get; set; }
 
 
     public Boolean Craftable { get; set; }
@@ -115,6 +117,7 @@ public class Recipe
         SlotSpecifications = new List<SlotSpecification>();
         Aspects=new AspectsDictionary();
         DeckEffects=new Dictionary<string,int>();
+        MutationEffects=new List<MutationEffect>();
         PortalEffect = PortalEffect.None;
     }
 

@@ -36,7 +36,7 @@ public class TestObjectGenerator
 
     public static Element CreateElement(int key)
     {
-        return new Element(key.ToString(), "label" + key, "description" + key,0);
+        return new Element(key.ToString(), "label" + key, "description" + key,0,"");
     }
 
     public static Dictionary<string,Element> ElementDictionary(int minKey, int MaxKey)

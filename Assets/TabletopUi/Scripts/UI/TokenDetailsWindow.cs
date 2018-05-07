@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Linq;
 using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
@@ -39,7 +40,6 @@ namespace Assets.CS.TabletopUI {
 
         Coroutine infoHighlight;
 
-        const string elementHeader = "Card: ";
         const string slotHeader = "Slot: ";
         const string slotUnnamed = "Unnamed Slot";
         const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu.";
@@ -54,18 +54,20 @@ namespace Assets.CS.TabletopUI {
         int deckQuantity;
 
         public void ShowElementDetails(Element element, ElementStackToken token = null) {
+
+            //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
-            if (this.element == element && gameObject.activeSelf) {
-                if (this.token == token)
-                    return;
+            //if (this.element == element && gameObject.activeSelf) {
+            //    if (this.token == token)
+            //        return;
 
-                bool oldDecays = (this.token != null && this.token.Decays);
-                bool newDecays = (token != null && token.Decays);
+            //    bool oldDecays = (this.token != null && this.token.Decays);
+            //    bool newDecays = (token != null && token.Decays);
 
-                // Is there was and will be no decay visible? Do nothing
-                if (!oldDecays && !newDecays)
-                    return;
-            }
+            //    // Is there was and will be no decay visible? Do nothing
+            //    if (!oldDecays && !newDecays)
+            //        return;
+            //}
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
             this.element = element;
@@ -147,7 +149,7 @@ namespace Assets.CS.TabletopUI {
             if (element.IsAspect)
                 sprite = ResourcesManager.GetSpriteForAspect(element.Id);
             else
-                sprite = ResourcesManager.GetSpriteForElement(element.Id);
+                sprite = ResourcesManager.GetSpriteForElement(element.Icon);
 
             SetImageNarrow(false);
             ShowImage(sprite);
@@ -157,14 +159,14 @@ namespace Assets.CS.TabletopUI {
             else
                 ShowImageDecayTimer(false);
 
-            ShowText(elementHeader + element.Label, element.Description);
+            ShowText(element.Label, element.Description);
             SetTextMargin(true, element.Unique || element.Lifetime > 0); // if the general lifetime is > 0 it decays
 
             ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(0); // Make sure the other hint icons are gone
 
-            aspectsDisplayFlat.DisplayAspects(element.Aspects);
+            aspectsDisplayFlat.DisplayAspects(token.GetAspects(false)); //token, not element: cater for possible mutations
             aspectsDisplayForbidden.DisplayAspects(null);
             aspectsDisplayRequired.DisplayAspects(null);
         }
@@ -229,7 +231,7 @@ namespace Assets.CS.TabletopUI {
         void ShowCardIcons(bool isUnique, bool decays) {
             cardInfoHolder.gameObject.SetActive(isUnique || decays);
             uniqueInfo.gameObject.SetActive(isUnique);
-            decayInfo.gameObject.SetActive(decays);
+           // decayInfo.gameObject.SetActive(decays); -- trying it without the icon; feedback has been that it's surplus, and it uses up text space
         }
 
         void ShowSlotIcons(bool isGreedy, bool consumes) {

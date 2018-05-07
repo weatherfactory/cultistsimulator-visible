@@ -94,7 +94,7 @@
         requirements: {evidenceb:1},
         effects: {},
 		alternativerecipes: [{id: "scapegoat",chance: 100}],
-		slots: [{id:"Diversion",required: {follower:1}, description: "I need someone to take the blame."}],
+		slots: [{id:"Diversion",required: {follower:1}, forbidden:{summoned:1,hireling:1} description: "I need someone to take the blame."}],
         startdescription: "There are crimes the state does not openly recognise. I am accused of one of these. The Suppression Bureau holds their trials in closed court, and they are not merciful. I must find a scapegoat, or all is lost.",
         description: "ARREST!",
         warmup: 60,
