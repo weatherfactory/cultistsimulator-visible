@@ -231,6 +231,7 @@ namespace Assets.CS.TabletopUI {
         void ShowCardIcons(bool isUnique, bool decays) {
             cardInfoHolder.gameObject.SetActive(isUnique || decays);
             uniqueInfo.gameObject.SetActive(isUnique);
+            decayInfo.gameObject.SetActive(false);
            // decayInfo.gameObject.SetActive(decays); -- trying it without the icon; feedback has been that it's surplus, and it uses up text space
         }
 
