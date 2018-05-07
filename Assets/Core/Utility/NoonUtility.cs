@@ -91,9 +91,9 @@ namespace Noon
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
-        public static int CurrentVerbosity =1;
+        public static int CurrentVerbosity =11;
 
-        public static VersionNumber VersionNumber = new VersionNumber("2018.4.n.4");
+        public static VersionNumber VersionNumber = new VersionNumber("2018.5.a.2");
 
         public static void Log(string message,int verbosityNeeded=0)
         {
