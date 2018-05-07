@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Core.Entities;
 using UnityEngine;
 
 public static class UIStyle {
@@ -21,12 +22,12 @@ public static class UIStyle {
     public static Color textColorLight = new Color32(0x24, 0x80, 0x89, 0xFF); // 248089FF
 
     public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining) {
-        if (forRecipe != null && forRecipe.EndsGame()) { 
+        if (forRecipe != null && forRecipe.SignalEndingFlavour!=EndingFlavour.None) { 
             const float timeToBlink = 5f;
 
             Color warningColor;
 
-            if (forRecipe.IsPositiveEnding())
+            if (forRecipe.SignalEndingFlavour==EndingFlavour.Grand)
                 warningColor = warmWhite;
             else
                 warningColor = lightRed;

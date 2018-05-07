@@ -65,6 +65,7 @@ actionId: "poppytime",
 slots: [{id:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
 alternativerecipes: [{id:"poppysatiated",chance:100}],
 warmup:60,
+signalEndingFlavour:Melancholy,
 ending: "wintersacrifice",
 startdescription: "'This is the time, my dear. The Sun-in-Rags requires his conclusion. Will it be you? Or do you have a friend?'",
 description: "."

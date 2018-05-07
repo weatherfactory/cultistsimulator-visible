@@ -40,6 +40,7 @@
         craftable: false,
 		alternativerecipes: [{id:"despairabate",chance:100}],
 		ending:"despairending",
+				signalEndingFlavour:Melancholy,
 		comments:"Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated".
 	
     },
@@ -103,6 +104,7 @@
         warmup: 60,
         craftable: false,
 		alternativerecipes: [{id:"visionsabate",chance:100}],
+				signalEndingFlavour:Melancholy,
 		ending:"visionsending"
 	
     },

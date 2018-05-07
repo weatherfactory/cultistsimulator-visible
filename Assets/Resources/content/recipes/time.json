@@ -48,6 +48,7 @@
         startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
         description: "The sickness has ravaged my body.",
         warmup: 60,
+		signalEndingFlavour:Melancholy,
 		slots: [{id:"Affliction",
 					required: {health: 1},
 					greedy: true

@@ -15,6 +15,7 @@ namespace Noon
         public const string KCHARACTERSTATE = "state";
         public const string KLINKED="linked";
         public const string KENDING="ending";
+        public const string KSIGNALENDINGFLAVOUR = "signalEndingFlavour";
         public const string KMAXEXECUTIONS = "maxexecutions";
         public const string KID = "id";
         public const string KFILTERONASPECTID = "filterOnAspectId";

@@ -31,7 +31,7 @@ public class Recipe
     public Dictionary<string, int> Effects { get; set; }
     public AspectsDictionary Aspects { get; set; }
     public List<MutationEffect> MutationEffects { get; set; }
-
+    public EndingFlavour SignalEndingFlavour { get; set; } //separate from Ending, because some recipes may be menacing but route to another recipe that actually does the ending
 
     public Boolean Craftable { get; set; }
     /// <summary>
@@ -82,15 +82,8 @@ public class Recipe
     public List<LinkedRecipeDetails> LinkedRecipes { get; set; }
     public string EndingFlag { get; set; }
 
-    public bool EndsGame()
-    {
-        return EndingFlag != null;
-    }
 
-    public bool IsPositiveEnding() {
-        // just something consistently random
-        return Id.Length % 2 == 0;
-    }
+    
     /// <summary>
     /// 0 means any number of executions; otherwise, this recipe may only be executed this many times by a given character.
     /// </summary>

@@ -483,6 +483,19 @@ public class ContentImporter
                     : htEachRecipe[NoonConstants.KENDING].ToString();
                 htEachRecipe.Remove(NoonConstants.KENDING);
 
+               if(htEachRecipe[NoonConstants.KSIGNALENDINGFLAVOUR]==null)
+
+                    r.SignalEndingFlavour=EndingFlavour.None;
+               else
+               {
+                  string possibleSignalEndingFlavour= htEachRecipe[NoonConstants.KSIGNALENDINGFLAVOUR].ToString();
+                   r.SignalEndingFlavour =
+                       (EndingFlavour) Enum.Parse(typeof(EndingFlavour), possibleSignalEndingFlavour, true);
+                   htEachRecipe.Remove(NoonConstants.KSIGNALENDINGFLAVOUR);
+               }
+
+
+
                 if (htEachRecipe.ContainsKey(NoonConstants.KMAXEXECUTIONS))
                     r.MaxExecutions = Convert.ToInt32(htEachRecipe[NoonConstants.KMAXEXECUTIONS]);
                 htEachRecipe.Remove(NoonConstants.KMAXEXECUTIONS);

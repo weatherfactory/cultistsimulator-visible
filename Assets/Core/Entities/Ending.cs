@@ -7,6 +7,7 @@ namespace Assets.Core.Entities
 {
     public enum EndingFlavour
     {
+        None=0,
         Grand=1,
         Melancholy=2
     }

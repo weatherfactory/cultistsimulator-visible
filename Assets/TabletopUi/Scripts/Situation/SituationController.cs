@@ -215,7 +215,7 @@ namespace Assets.TabletopUi {
 
             situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
 
-            if (withRecipe.EndsGame()) {
+            if (withRecipe.SignalEndingFlavour!=EndingFlavour.None) {
                 var tabletopManager = Registry.Retrieve<TabletopManager>();
                 tabletopManager.SignalImpendingDoom(situationToken);
             }
