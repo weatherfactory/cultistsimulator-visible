@@ -4,7 +4,7 @@
         label: "The Wrong Kind of Attention",
         actionId: "suspicion",
         requirements: {seasonsuspicion:1},
-		slots: [{id:"Suspicion", required: {hunter: 1}, greedy: true}],
+		slots: [{id:"Suspicion", label:"An Adversary?", required: {hunter: 1}, greedy: true}],
         startdescription: "The city is rife with journalists and detectives and other meddlers. How long will they leave me in peace?",
         description: ".",
         warmup: 10,
@@ -21,7 +21,8 @@
 		description: "",
 		slots: [{id:"Clues",required: {reputation: 1}, greedy: true}], 
 		warmup:30,
-		linked: [{id:"suspiciongrabevidence",chance:100}]
+		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
+		{id:"suspiciongrabevidence",chance:100}]
 		},
 		
 		{id:"suspiciongrabevidence",
@@ -34,6 +35,18 @@
 		{id:"suspicionpromoteevidence",chance:100},
 		{id:"suspicioncreateevidence",chance:100}],
 		warmup:30,
+		},
+		
+				{id:"suspicion_searchlongerforevidence",
+		actionId:"suspicion",
+		requirements:{mystique:1},
+		label: "The Perils of Renown",
+		startdescription: "My Mystique has attracted this hunter's attention. They can prove nothing yet, but they'll keep looking for longer, now.",
+		effects:{mystique:-1},
+		slots: [{id:"Clues",required: {reputation: 1}, greedy: true}], 
+		warmup:60,
+		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
+		{id:"suspiciongrabevidence",chance:100}]
 		},
 		
 		{id:"suspicionpromoteevidence",
@@ -85,7 +98,7 @@
         description: "inv end - won't display, loops straight to trial. I should prepare myself.",
         warmup: 30,
         craftable: false,
-		linked:[{id:"suspicion_attemptmitigation_me",chance:300},{id:"suspicion_questionfollower",chance:100}]
+		linked:[{id:"suspicion_attemptmitigation_me",chance:30},{id:"suspicion_questionfollower",chance:100}]
     },
 					    {
         id: "suspicion_questionme",
@@ -188,7 +201,7 @@
 	id:"suspicion_meexonerated",
 	actionId:"suspicion",
 	label:"The Bureau's Fury",
-	startdescription: "I have been exonerated! The evidence was not sufficiently compelling to convict me, and I'm free to go."
+	startdescription: "I have been exonerated! The evidence was not sufficiently compelling to convict me, and I'm free to go.",
 	requirements:{follower:-1},
 	aspects:{evidencelevel:-1}
 	},		

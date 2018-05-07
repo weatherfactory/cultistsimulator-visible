@@ -5,15 +5,15 @@
             id: "mystique",
             label: "Mystique",
             aspects: {reputation: 1},
-            description: "They remember who I am. [Mystique will face quickly, but it may attract the attention of the authorities.]",
-		lifetime: 180
+            description: "They remember who I am. [Mystique may attract the attention of Hunters. They can't use it to build a case against you, but it will encourage them to look harder.]",
+		lifetime: 300
         },
 							 {
             id: "notoriety",
             label: "Notoriety",
             aspects:
             {reputation: 1},
-            description: "They remember what I've done. [Notoriety will fade over time, but more slowly than Mystique. It may attract the attention of the authorities.]",
+            description: "They remember what I've done. [Notoriety may allow Hunters to build a case against you.]",
 	lifetime: 300
         },
 									 {
