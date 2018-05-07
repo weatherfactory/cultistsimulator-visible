@@ -116,6 +116,15 @@ public class ContentImporter
         }
 
         NoonUtility.Log("Total elements found: " + totalElementsFound,9);
+
+        foreach (var e in Elements)
+        {
+            foreach (var xt in e.Value.XTriggers)
+            {
+                if (!Elements.ContainsKey(xt.Value))
+                    LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
+            }
+        }
     }
 
     public int PopulateElements(Hashtable htElements)
@@ -219,8 +228,6 @@ public class ContentImporter
 
                 LogProblem("Problem importing induced recipes for element '" + element.Id + "' - " + e.Message);
             }
-
-
         }
 
         return alElements.Count;

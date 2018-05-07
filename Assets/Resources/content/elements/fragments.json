@@ -256,7 +256,7 @@
             aspects:
             {knock:10,lore:1},
             description: "Serpents are the visitors which may not be denied. [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
-			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore.",required:{fragmentedgee:1,fragmentforgee:1,fragmentgraile:1,fragmenthearte:1,fragmentknocke:1,fragmentlanterne:1,fragmentmothe:1,fragmentwintere:1},actionId:"study"}],xtriggers:{epiphany:fragmentf}
+			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore.",required:{fragmentedgee:1,fragmentforgee:1,fragmentgraile:1,fragmenthearte:1,fragmentknocke:1,fragmentlanterne:1,fragmentmothe:1,fragmentwintere:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockf}
         },
 		{  id: "fragmentknockf",
             label: "Liminal Evocation",
@@ -498,7 +498,7 @@
             {lantern: 6,forge:6,lore:1},
             description: "--",
 			comments: "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull. - AK.",
-			xtriggers:{epiphany:fragmenthermes}
+			xtriggers:{epiphany:bequestintro}
         }
 ]
 };
