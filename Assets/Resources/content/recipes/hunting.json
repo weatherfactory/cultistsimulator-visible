@@ -28,17 +28,37 @@
 		{id:"suspiciongrabevidence",
 		actionId:"suspicion",
 		label:"Considering the Evidence...",
-		startdescription: "We are all the sum of our deeds; that is the basis for any accounting.",
+		startdescription: "If a Hunter has found Notoriety, they will try to use it to create or upgrade Evidence. If they're Meticulous, they'll always succeed. If they're Erratic, they're more likely to fail... but they can occasionally create Evidence even without Notoriety.",
 		description: "I am safe, for now. My adversary has not enough evidence to bring a case against me, and they've found no new clues.",
 		slots: [{id:"Evidence",required: {evidenceb:1,evidence: 1}, greedy: true}],
 		alternativerecipes:[{id:"suspicionpretrial",chance:100},
+		{id:"suspicionerratic_alwaysfail",chance:10},
 		{id:"suspicionpromoteevidencemeticulous",chance:100},
-			{id:"suspicionpromoteevidence",chance:70},
 		{id:"suspicionpromoteevidence",chance:70},
 		{id:"suspicioncreateevidencemeticulous",chance:100},
 		{id:"suspicioncreateevidence",chance:70}],
 		warmup:30,
+		linked:[{id:"suspicionerratic_alwayssucceed",chance:10}]
 		},
+		{id:"suspicionerratic_alwaysfail",
+		actionId:"suspicion",
+		label:"Curious Habits",
+		requirements:{erratic:1,reputation:1},
+		startdescription:"My adversary is behaving eccentrically. [This happens only occasionally.]",
+		description:"Has my adversary been practising a musical instrument instead of pursuing the investigation? Flinging darts at a cork board? Or just taking very long naps? Reports are inconsistent, but so is their behaviour. They've made no progress.",
+		effects:{reputation:-1}		
+		},
+		{id:"suspicionerratic_alwayssucceed",
+		actionId:"suspicion",
+		label:"Bewildering Successes",
+		requirements:{erratic:1,reputation:-1},
+		effects:{notoriety:1},
+		startdescription:"A rumour claims my adversary has taken to casting oracles with the I Ching. Another claims they seek answers in dreams. Yet another, that they select which questions to ask by rolling dice. They've found evidence where there should be no evidence to find. [This happens only occasionally.]",
+	linked:[{id:"suspicionpromoteevidence",chance:100},
+		{id:"suspicioncreateevidence",chance:100}],
+		warmup:30
+		},
+		
 		
 				{id:"suspicion_searchlongerforevidence",
 		actionId:"suspicion",
@@ -83,6 +103,9 @@
 		description:"I am certain that my adversary has lodged a copy of their notes elsewhere - with their solicitor, with their superior, or even with a contact in the press. This is troubling.",
 		effects:{reputation:-1, evidence:1},
 		warmup:30},
+			
+		
+		
 	
 				{id:"suspiciontrycreatehunter",
 		label: "The Curious Few",
