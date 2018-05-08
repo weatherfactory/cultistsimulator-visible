@@ -32,8 +32,11 @@
 		description: "I am safe, for now. My adversary has not enough evidence to bring a case against me, and they've found no new clues.",
 		slots: [{id:"Evidence",required: {evidenceb:1,evidence: 1}, greedy: true}],
 		alternativerecipes:[{id:"suspicionpretrial",chance:100},
-		{id:"suspicionpromoteevidence",chance:100},
-		{id:"suspicioncreateevidence",chance:100}],
+		{id:"suspicionpromoteevidencemeticulous",chance:100},
+			{id:"suspicionpromoteevidence",chance:70},
+		{id:"suspicionpromoteevidence",chance:70},
+		{id:"suspicioncreateevidencemeticulous",chance:100},
+		{id:"suspicioncreateevidence",chance:70}],
 		warmup:30,
 		},
 		
@@ -48,6 +51,13 @@
 		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
 		{id:"suspiciongrabevidence",chance:100}]
 		},
+				{id:"suspicionpromoteevidencemeticulous",
+		actionId:"suspicion",
+		label: "Creating Damning Evidence",
+		requirements:{evidence:1,reputation:1,meticulous:1},
+		linked:[{id:"suspicionpromoteevidence",chance:100}]
+		},
+		
 		
 		{id:"suspicionpromoteevidence",
 		actionId:"suspicion",
@@ -57,6 +67,13 @@
 		description:"If this ever reaches trial, I will be in serious danger. Even if this hunter is disposed of, another may find their notes.",
 		effects:{evidence:-1,evidenceb:1,reputation:-1},
 		warmup:30},
+		
+						{id:"suspicioncreateevidencemeticulous",
+		actionId:"suspicion",
+			label: "Converting Clues to Evidence",
+		requirements:{reputation:1,meticulous:1},
+		linked:[{id:"suspicioncreateevidence",chance:100}]
+		},
 		
 		{id:"suspicioncreateevidence",
 		actionId:"suspicion",

@@ -664,6 +664,14 @@
 			comments: "Recipe aspect",
 			noartneeded: true
         },
+				 {
+            id: "killhunter",
+            label: "Kill Hunter",
+			description: "Hunters will become corpses.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
 									 {
             id: "capturefollower",
             label: "Capture Follower",
@@ -767,6 +775,26 @@
 		description: "If this breaks free, it may try to drive you or your followers to insanity.",
 		isAspect: true
 		},
+		{id:"mystic",
+		label:"Mystic",
+		description:"This Hunter will usually survive attacks by creatures of the Mansus, even if they would otherwise be unstoppable.",
+		isAspect:true},
+		{id:"erratic",
+		label:"Erratic",
+		description:"This Hunter often fails to create Evidence from Notoriety. Conversely, they'll sometimes create Evidence even when they can't find Notoriety.",
+		isAspect:true},
+		
+		{id:"meticulous",
+		label:"Meticulous",
+		description:"This Hunter always succeeds at creating Evidence from Notoriety.",
+		isAspect:true},
+		
+		{id:"tenacious",
+		label:"Tenacious",
+		description:"This Hunter will sometimes unexpectedly survive physical attacks, even if they would otherwise be unstoppable.",
+		isAspect:true},
+		
+		
 			{id: "venerationedge",
 		label: "Veneration: Edge",
 		description: "This organisation venerates the principle called Edge, which we call upon in the name of the Colonel and the Lionsmith... among others.",

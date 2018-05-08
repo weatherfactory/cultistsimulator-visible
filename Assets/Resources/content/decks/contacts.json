@@ -62,8 +62,12 @@ resetonexhaustion:true	}
 			label:"Hunters",
 	description:"Those who wish me ill.",
 	spec:
-	["investigator1"],
-defaultcard: "defaulthunter"	
+	["investigator1",
+	"investigator2",
+	"investigator3",
+	"investigator4",
+	"defaulthunter"],
+defaultcard: "defaulthunter"
 	},
 
 {id: "scholarpatrons",	label:"Patrons",
