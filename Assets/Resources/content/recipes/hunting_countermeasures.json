@@ -33,6 +33,17 @@ When a Hunter survives an attack by a summoned creature, occasionally they'll be
 mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
 effects:{notoriety:1,summoned:-1}
    },
+      {id: "hunterspeakpoison",
+	   label: "Employ a Remarkable Poison against a Hunter",
+	  actionId:"talk",
+	  requirements:{poison:1},
+	  startdescription:"'Enjoying your tea?'",
+	  description:"The end is not pretty, but it's quick and almost painless. There are much worse ways to die.",
+	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  effects:{poison:-1,notoriety:1},
+	  aspects:{killhunter:1},
+	  },
+   
    {id: "hunterattackhighwinter",
 	   label: "Send a silent Minion to resolve the problem of a Hunter",
 	  actionId:"talk",
