@@ -23,7 +23,7 @@ public class Heart : MonoBehaviour
     private int housekeepingCyclesCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
-    private const int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //usually, five minutes; number of housekeeping events that should pass before we autosave
+    private int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //usually, five minutes; number of housekeeping events that should pass before we autosave
     
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
@@ -36,13 +36,13 @@ public class Heart : MonoBehaviour
     {
         StartBeating(0.05f);
     }
-  public void StartBeating(float startingInterval)
-  {
+	public void StartBeating(float startingInterval)
+	{
         CancelInvoke(METHODNAME_BEAT);
         usualInterval = startingInterval;
         InvokeRepeating(METHODNAME_BEAT,0, usualInterval);
         IsPaused = false;
-  }
+	}
 
     public void StopBeating()
     {
@@ -79,12 +79,12 @@ public class Heart : MonoBehaviour
             outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
                 .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
         }
-        //commenting out autosave until I fix the windows issue
-        //if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
-        //{
-        //    housekeepingCyclesCounter = 0;
-        //    Registry.Retrieve<TabletopManager>().SaveGame(true);
-        //}
+        
+		if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
+        {
+            housekeepingCyclesCounter = 0;
+            Registry.Retrieve<TabletopManager>().SaveGame(true);
+        }
     }
 
 
@@ -124,6 +124,12 @@ public class Heart : MonoBehaviour
 
         return false;
     }
+
+	public void SetAutosaveInterval( float minutes )
+	{
+		AUTOSAVE_CYCLE_HOUSEKEEPINGS = (int)(minutes * 60.0f);	// Roughly. Doesn't need to be millisecond accurate - CP
+		Debug.Log("AUTOSAVE_CYCLE_HOUSEKEEPINGS now " + AUTOSAVE_CYCLE_HOUSEKEEPINGS);
+	}
 
     //remove any outstanding state when loading the game
     public void Clear()

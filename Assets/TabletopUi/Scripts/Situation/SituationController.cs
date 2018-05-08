@@ -662,6 +662,9 @@ namespace Assets.TabletopUi {
             var situationSaveData = new Hashtable();
             IGameDataExporter exporter = new GameDataExporter();
 
+			// Added by CP to allow autosave while player is working
+            situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_OPEN, this.IsOpen);
+
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.EntityId);
             if (SituationClock != null) {
                 situationSaveData.Add(SaveConstants.SAVE_TITLE, situationWindow.Title);

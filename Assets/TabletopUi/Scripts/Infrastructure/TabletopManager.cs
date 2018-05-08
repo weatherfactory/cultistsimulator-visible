@@ -336,6 +336,15 @@ namespace Assets.CS.TabletopUI {
             ClearGameState(_heart, storage, _tabletop);
             saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
             StatusBar.UpdateCharacterDetailsView(storage);
+
+			// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
+			var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            foreach (var s in allSituationControllers)
+			{
+				if (s.IsOpen)
+	                s.OpenWindow();
+			}
+
             _notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
             //}
@@ -352,11 +361,13 @@ namespace Assets.CS.TabletopUI {
 
             _heart.StopBeating();
 
+			/*
             //Close all windows and dump tokens to desktop before saving.
             //We don't want or need to track half-started situations.
             var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             foreach (var s in allSituationControllers)
                 s.CloseWindow();
+			*/
 
             // try
             //  {
@@ -566,6 +577,11 @@ namespace Assets.CS.TabletopUI {
         void LockSpeedController(bool enabled) {
             _speedController.LockToPause(enabled);
         }
+
+		public void SetAutosaveInterval( float minutes )
+		{
+			_heart.SetAutosaveInterval( minutes );
+		}
 
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);

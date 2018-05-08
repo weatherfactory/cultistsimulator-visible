@@ -229,6 +229,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 var situationAnchor = CreateSituation(command, locationInfo.ToString());
                 var situationController = situationAnchor.SituationController;
 
+				// Import window state so we can restore the desktop roughly how the player left it - CP
+				situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+
                 ImportSituationNotes(htSituationValues, situationController);
 
                 ImportSlotContents(htSituationValues, situationController, tabletop, SaveConstants.SAVE_STARTINGSLOTELEMENTS);
