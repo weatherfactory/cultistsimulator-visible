@@ -1,9 +1,17 @@
 {"recipes": [
-{id: "huntertenacioussurvives",
+{id: "huntermysticsurvives",
+actionId:"talk",
+label:"Wards and Seals",
+requirements:{mystic:1,summoned:1},
+description:"'Our enemy has the most dangerous weapon of all: knowledge.'\n
+Your summoning has fallen prey to your adversary's countermeasures. Mystic Hunters know the proper protections, and will usually survive attacks from summoned Minions. But sooner or later, they'll make a mistake.",
+effects:{notoriety:1,summoned:-1},
+   },
+   {id: "huntertenacioussurvives",
 actionId:"talk",
 label:"Tenacity",
 requirements:{tenacious:1},
-startdescription:"'But - no-one could have survived that!'\n
+description:"'But - no-one could have survived that!'\n
 Now and then, Tenacious Hunters somehow survive attacks that should have killed them. But their luck always runs out in the end; and there are other ways to destroy a Hunter beside physical assault.",
 effects:{notoriety:1}
    },
@@ -45,7 +53,9 @@ effects:{notoriety:1}
 	  description:"My minion has returned, with a trophy.",
 	  effects: {notoriety:1},
 	  aspects:{killhunter:1},
-	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30},
+	  {id:"huntermysticsurvives",chance:70}],
+	  comments:"No summoned creatures currently attack with Winter. This is in case I add one later.",
 	  warmup:10	  
 	  },
 	  
@@ -106,8 +116,9 @@ effects:{notoriety:1}
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a trophy.",
 	  effects: {hunter:-1,corpse:1,notoriety:1},
-	  alternativerecipes: [{id:"huntertenacioussurvives",chance:30},
-	  {id:"huntercapturesuccess",chance:30}]
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:70},
+	  {id:"huntermysticsurvives",chance:70},
+	  {id:"huntercapturesuccess",chance:30}],
 	  warmup:10	  
 	  },
 	  
