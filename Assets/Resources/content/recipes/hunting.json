@@ -6,11 +6,11 @@
         requirements: {seasonsuspicion:1},
 		slots: [{id:"Suspicion", label:"An Adversary?", required: {hunter: 1}, greedy: true}],
         startdescription: "The city is rife with journalists and detectives and other meddlers. How long will they leave me in peace?",
-        description: ".",
+        description: "I'm safe for now. The meddlers' attention must be elsewhere. A relief.",
         warmup: 10,
         craftable: false,
 		linked: [{id: "suspiciongrabreputation",chance: 100},		
-		{id:"suspiciontrycreatehunter",chance:100}]
+		{id:"suspiciontrycreatehunter",chance:70}]
 		},
 		
 		{id:"suspiciongrabreputation",
