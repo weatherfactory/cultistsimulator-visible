@@ -108,8 +108,12 @@ actionId: "talk",
 requirements: {hunter: 1},
 slots: [{id:"Subject",description:"A topic of conversation... or a minion who will destroy them."}],
 alternativerecipes:[
+{id:"hunterspeakwinterg",chance:100},
+{id:"hunterspeakwinterd",chance:100},
 {id:"hunterspeakwinter",chance:100},
 {id:"hunterspeakdread",chance:100},
+{id:"hunterspeaklanterng",chance:100},
+{id:"hunterspeaklanternd",chance:100},
 {id:"hunterspeaklantern",chance:100},
 {id:"hunterspeakfascination",chance:100},
 

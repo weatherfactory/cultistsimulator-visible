@@ -180,6 +180,27 @@ effects:{notoriety:1}
 	  effects: {follower:-1,notoriety:1},
 	  warmup:10	  
 	  },
+	  	  	  {id:"hunterspeakwinterg",
+	  actionId:"talk",
+	  label:"Share a terrible mystery of the Ragged Lore",
+	  startdescription:"'When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. Hear me now...'",
+	  requirements:{winter:14,lore:1},
+	  mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:100},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+	  	  {id:"hunterspeakwinterd",
+	  actionId:"talk",
+	  label:"Share the colder invocations of the Ragged Lore",
+	  startdescription:"'There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. I will tell you that power's name. Listen to me...'",
+	  requirements:{winter:8,lore:1},
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:100},
+{id:"hunterspeakdread_demoralised",chance:70},
+{id:"hunterspeakdread_survives",chance:100}]
+},
 	  
 	  {id:"hunterspeakwinter",
 	  actionId:"talk",
@@ -237,6 +258,18 @@ aspects:{dreadful:1}
 {id:"hunterspeakdread_survives",
 actionId:"talk",
 label:"The Horrors Beneath the World's Skin",
+alternativerecipes:[{id:"hunterspeakdread_survives_becometenacious",chance:100}],
+startdescription:"",
+description:"'Yes, there are terrible things in the world, but that's all the more reason to resist them. I should thank you. You've shown me what I must do.' [This Hunter has become an Idealist.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1},
+aspects:{dreadful:1}
+
+},
+{id:"hunterspeakdread_survives_becometenacious",
+actionId:"talk",
+label:"The Horrors Beneath the World's Skin",
+requirements:{tenacious:-1}
 startdescription:"",
 description:"'Yes, there are terrible things in the world, but that's all the more reason to resist them. I should thank you. You've shown me what I must do.' [This Hunter has become an Idealist.]",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
@@ -245,11 +278,33 @@ aspects:{dreadful:1}
 
 },
 
+	  {id:"hunterspeaklanterng",
+	  actionId:"talk",
+	  label:"Share a terrible mystery of the Glorious Lore",
+	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...'",
+	  requirements:{lantern:14,lore:1},
+	  mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:100},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+	  {id:"hunterspeaklanternd",
+	  actionId:"talk",
+	  label:"Share the brighter invocations of the Glorious Lore",
+	  startdescription:"'The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. Listen, and be illuminated...'",
+	  requirements:{lantern:8,lore:1},
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:100},
+{id:"hunterspeakfascination_fascinated",chance:70},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
 	  {id:"hunterspeaklantern",
 	  actionId:"talk",
 	  label:"Hint at the Glorious Lore",
 	  startdescription:"'There are finer things than we see. You must have felt it. Consider the possibilities of eternity...'",
-	  requirements:{lantern:1,lore:1},
+	  requirements:{lantern:1,lore:1},	  
 linked:[{id:"hunterspeakfascination_resistant",chance:100},
 {id:"hunterspeakfascination_vulnerable_fascinated",chance:70},
 {id:"hunterspeakfascination_fascinated",chance:30},
@@ -300,11 +355,21 @@ aspects:{fascinating:1}
 {id:"hunterspeakfascination_survives",
 actionId:"talk",
 label:"Visions of Glory",
+alternativerecipes:[{id:"hunterspeakfascination_survives_becometenacious",chance:100}],
 description:"'Yes, I could be something finer, but what we are is less important than what we do. The world is where we live, and I will defend it till I die. You can keep your visions.' [This Hunter has become Grim.]",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
 effects:{notoriety:1},
 aspects:{fascinating:1}
-
+},
+{id:"hunterspeakfascination_survives_becometenacious",
+actionId:"talk",
+label:"Visions of Glory",
+requirements:{tenacious:-1},
+description:"'Yes, I could be something finer, but what we are is less important than what we do. The world is where we live, and I will defend it till I die. You can keep your visions.' [This Hunter has become Grim and Tenacious.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1},
+{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
+effects:{notoriety:1},
+aspects:{fascinating:1}
 },
 
 ]

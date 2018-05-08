@@ -4,7 +4,7 @@
         id: "investigator1",
             label: "Inspector Wakefield",
             aspects:
-            {hunter:1,mortal:1,tenacious:1,meticulous:1,grim:1},
+            {hunter:1,mortal:1,meticulous:1,grim:1},
             description: "Zachary Wakefield: a melancholy, but remorseless, inspector of police. He has recently been seconded to the Suppression Bureau.",
 unique:true,
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator1prisoner}
@@ -32,7 +32,7 @@ xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehun
         id: "investigator4",
             label: "Doctor Natalia Dragon",
             aspects:
-            {hunter:1,mortal:1,idealist:1,brilliant:1},
+            {hunter:1,mortal:1,idealist:1,meticulous:1},
             description: "She was laughed out of academia for her analyses of alternate histories, and it only made her more resolute. Now she works with the Suppression Bureau.",
 unique:true,
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator4prisoner}
