@@ -67,6 +67,11 @@ namespace Assets.CS.TabletopUI {
 			set { title.text = value; }
         }
 
+		public Vector3 Position
+		{
+			get { return positioner.GetPosition(); }
+			set { positioner.SetPosition( value ); }
+		}
         // INIT & LIFECYCLE
 
         void OnEnable() {
@@ -103,9 +108,9 @@ namespace Assets.CS.TabletopUI {
 
         // BASIC DISPLAY
 
-        public void Show() {
+        public void Show( Vector3 targetPosOverride ) {
 			canvasGroupFader.Show();
-            positioner.Show(canvasGroupFader.durationTurnOn); // Animates the window
+            positioner.Show(canvasGroupFader.durationTurnOn, targetPosOverride); // Animates the window (position allows optional change is position)
             SoundManager.PlaySfx("SituationWindowShow");
             results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed

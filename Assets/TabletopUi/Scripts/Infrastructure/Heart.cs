@@ -20,10 +20,10 @@ public class Heart : MonoBehaviour
     [SerializeField] private Transform allContent;
     private HashSet<TokenAndSlot> outstandingSlotsToFill=new HashSet<TokenAndSlot>();
     private int beatCounter = 0;
-    private int housekeepingCyclesCounter = 0;
     //do major housekeeping every n beats
     private const int HOUSEKEEPING_CYCLE_BEATS = 20; //usually, a second
-    private int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //usually, five minutes; number of housekeeping events that should pass before we autosave
+	// Autosave tracking is now done in TabletopManager.Update()
+    //private int AUTOSAVE_CYCLE_HOUSEKEEPINGS = 300; //usually, five minutes; number of housekeeping events that should pass before we autosave
     
     private const string METHODNAME_BEAT="Beat"; //so we don't get a tiny daft typo with the Invoke
     private float usualInterval;
@@ -68,22 +68,20 @@ public class Heart : MonoBehaviour
 
     public void Beat()
     {
-        AdvanceTime(usualInterval);
+		// Moved this outside AdvanceTime so that the interval parameter is respected (and I can call it with 0 reliably) - CP
+		float beatInterval = usualInterval;
+		if (CurrentGameSpeed == GameSpeed.Fast)
+			beatInterval = usualInterval * 2;
+
+        AdvanceTime(beatInterval);
         beatCounter++;
 
         if (beatCounter >= HOUSEKEEPING_CYCLE_BEATS)
         {
             beatCounter = 0;
-            housekeepingCyclesCounter++;
 
             outstandingSlotsToFill = Registry.Retrieve<TabletopManager>()
                 .FillTheseSlotsWithFreeStacks(outstandingSlotsToFill);
-        }
-        
-		if (housekeepingCyclesCounter >= AUTOSAVE_CYCLE_HOUSEKEEPINGS)
-        {
-            housekeepingCyclesCounter = 0;
-            Registry.Retrieve<TabletopManager>().SaveGame(true);
         }
     }
 
@@ -102,9 +100,6 @@ public class Heart : MonoBehaviour
 
         foreach (var sc in situationControllers)
         {
-            if (CurrentGameSpeed == GameSpeed.Fast)
-                intervalThisBeat = usualInterval * 2;
-
             HeartbeatResponse response = sc.ExecuteHeartbeat(intervalThisBeat);
 
             foreach (var r in response.SlotsToFill) {
@@ -124,12 +119,6 @@ public class Heart : MonoBehaviour
 
         return false;
     }
-
-	public void SetAutosaveInterval( float minutes )
-	{
-		AUTOSAVE_CYCLE_HOUSEKEEPINGS = (int)(minutes * 60.0f);	// Roughly. Doesn't need to be millisecond accurate - CP
-		Debug.Log("AUTOSAVE_CYCLE_HOUSEKEEPINGS now " + AUTOSAVE_CYCLE_HOUSEKEEPINGS);
-	}
 
     //remove any outstanding state when loading the game
     public void Clear()

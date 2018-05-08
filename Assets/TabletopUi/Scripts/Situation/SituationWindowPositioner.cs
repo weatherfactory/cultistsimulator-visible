@@ -39,14 +39,17 @@ namespace Assets.CS.TabletopUI {
 
         // SHOW ANIM
 
-        public void Show(float duration) {
+        public void Show(float duration, Vector3 targetPosOverride) {
             StopAllCoroutines();
-            StartCoroutine(DoShowAnim(duration));
+			Vector3 pos = token.position;
+			if (targetPosOverride.sqrMagnitude > 0.0f)	// Ugly, but no way to pass a null Vector3 reference in C#, so using zero vec as "invalid" - CP
+				pos = targetPosOverride;
+            StartCoroutine(DoShowAnim(duration, pos));
         }
 
-        IEnumerator DoShowAnim(float duration) {
+        IEnumerator DoShowAnim(float duration, Vector3 targetPosition) {
             var time = 0f;
-            var targetPos = GetBoundCorrectedWorldPos(token.position);
+            var targetPos = GetBoundCorrectedWorldPos(targetPosition);
             var startPos = token.position;
             float lerp;
 
@@ -181,8 +184,13 @@ namespace Assets.CS.TabletopUI {
             SetPosition(new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y));
         }
 
-        void SetPosition(Vector3 pos) {
+		// Raw position get/set are exposed to allow saving of window coords - CP
+        public void SetPosition(Vector3 pos) {
             rectTrans.position = new Vector3(pos.x, pos.y, rectTrans.position.z);
+        }
+
+        public Vector3 GetPosition() {
+            return rectTrans.position;
         }
 
         public virtual void OnEndDrag(PointerEventData eventData) {

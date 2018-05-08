@@ -10,6 +10,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using OrbCreationExtensions;
+using UnityEngine;
 using UnityEngine.Assertions;
 using Assets.TabletopUi.Scripts.Services;
 
@@ -231,6 +232,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 				// Import window state so we can restore the desktop roughly how the player left it - CP
 				situationController.IsOpen = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_OPEN].MakeBool();
+				Vector3 pos = situationController.situationWindow.Position;
+				pos.x = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_X].MakeFloat();
+				pos.y = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Y].MakeFloat();
+				pos.z = htSituationValues[SaveConstants.SAVE_SITUATION_WINDOW_Z].MakeFloat();
+				situationController.RestoreWindowPosition = pos;
 
                 ImportSituationNotes(htSituationValues, situationController);
 
@@ -241,7 +247,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 ImportSituationStoredElements(htSituationValues, situationController);
                 ImportOutputs(htSituationValues, situationController, tabletop);
 
-                
             }
         }
 

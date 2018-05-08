@@ -583,10 +583,11 @@ namespace Assets.CS.TabletopUI {
 				ShowCardDecayTimer(IsGlowing() || itemBeingDragged==this);	// Allow timer to show when hovering over card
 
 			// This handles moving the alpha value towards the desired target
+			float cosmetic_dt = Mathf.Max(interval,Time.deltaTime) * 2.0f;	// This allows us to call AdvanceTime with 0 delta and still get animation
 			if (decayVisible)
-				decayAlpha = Mathf.MoveTowards( decayAlpha, 1.0f, interval );
+				decayAlpha = Mathf.MoveTowards( decayAlpha, 1.0f, cosmetic_dt );
 			else
-				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, interval );
+				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, cosmetic_dt );
 			if (LifetimeRemaining <= 0.0f)
 				decayAlpha = 0.0f;
 			decayView.gameObject.SetActive( decayAlpha > 0.0f );

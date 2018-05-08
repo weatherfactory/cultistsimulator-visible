@@ -24,6 +24,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_VERBID = "verbId";
         public const string SAVE_RECIPEID = "recipeId";
         public const string SAVE_SITUATION_WINDOW_OPEN = "situationWindowOpen";
+        public const string SAVE_SITUATION_WINDOW_X = "situationWindowX";
+        public const string SAVE_SITUATION_WINDOW_Y = "situationWindowY";
+        public const string SAVE_SITUATION_WINDOW_Z = "situationWindowZ";
         public const string SAVE_SITUATIONSTATE = "state";
         public const string SAVE_TIMEREMAINING = "timeRemaining";
         public const string SAVE_STARTINGSLOTELEMENTS = "startingSlotElements";
