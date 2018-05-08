@@ -3,7 +3,7 @@
 actionId:"talk",
 label:"Wards and Seals",
 requirements:{mystic:1,summoned:1},
-description:"'Our enemy has the most dangerous weapon of all: knowledge.'\n
+description:"'Our enemy possesses the most dangerous weapon of all: knowledge.'\n
 Your summoning has fallen prey to your adversary's countermeasures. Mystic Hunters know the proper protections, and will usually survive attacks from summoned Minions. But sooner or later, they'll make a mistake.",
 effects:{notoriety:1,summoned:-1},
    },
@@ -14,6 +14,24 @@ requirements:{tenacious:1},
 description:"'But - no-one could have survived that!'\n
 Now and then, Tenacious Hunters somehow survive attacks that should have killed them. But their luck always runs out in the end; and there are other ways to destroy a Hunter beside physical assault.",
 effects:{notoriety:1}
+   },
+      {id: "huntersurvives_becomestenacious",
+actionId:"talk",
+label:"Scars",
+requirements:{tenacious:-1},
+description:"'They're tougher than they look.'\n
+A Hunter who survives a physical attack may sometimes become Tenacious. Tenacious Hunters are harder to kill.",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
+effects:{notoriety:1,follower:-1}
+   },
+         {id: "huntersurvives_becomesmystic",
+actionId:"talk",
+label:"Harsh Lessons",
+requirements:{summoned:1,mystic:-1},
+description:"'What does not kill sometimes them makes them stranger.'\n
+When a Hunter survives an attack by a summoned creature, occasionally they'll be inspired to learn countermeasures against Mansus-things, becoming Mystic. Mystic Hunters usually survive further attacks by summoned creatures.",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
+effects:{notoriety:1,summoned:-1}
    },
    {id: "hunterattackhighwinter",
 	   label: "Send a silent Minion to resolve the problem of a Hunter",
@@ -139,6 +157,8 @@ effects:{notoriety:1}
 	  startdescription: "I await word....",
 	  description:"My minion has not returned. They must have failed.",
 	  effects: {follower:-1,notoriety:1},
+	  alternativerecipes:[{id:"huntersurvives_becomesmystic",chance:30},
+	  {id:"huntersurvives_becomestenacious",chance:10}]	  
 	  warmup:10	  
 	  },
 	  
