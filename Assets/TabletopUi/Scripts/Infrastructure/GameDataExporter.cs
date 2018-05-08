@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -137,6 +138,7 @@ private Hashtable GetHashtableForThisStack(IElementStack stack)
             var htStackProperties = new Hashtable();
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, stack.EntityId);
             htStackProperties.Add(SaveConstants.SAVE_QUANTITY, stack.Quantity);
+			htStackProperties.Add(SaveConstants.LIFETIME_REMAINING, Mathf.CeilToInt(stack.LifetimeRemaining));
 
             var currentMutations = stack.GetCurrentMutations();
             if (currentMutations.Any())
