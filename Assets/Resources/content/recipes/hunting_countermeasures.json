@@ -1,4 +1,64 @@
 {"recipes": [
+{id: "huntertenacioussurvives",
+actionId:"suspicion",
+label:"Tenacity",
+requirements:{tenacious:1},
+startdescription:"'But - no-one could have survived that!'\n
+Now and then, Tenacious Hunters somehow survive attacks that should have killed them. But their luck always runs out in the end; and there are other ways to destroy a Hunter beside physical assault.",
+effects:{notoriety:1}
+   },
+   {id: "hunterattackhighwinter",
+	   label: "Send a silent Minion to resolve the problem of a Hunter",
+	  actionId:"talk",
+	  startdescription:"This will probably ensure the Hunter ceases to trouble us. [This is less likely to succeed than an Edge attack, and success or failure will both draw attention, but the minion will usually survive.]",
+	  requirements: {hunter:1,winter:10,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:70},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+	  	   {id: "hunterattackmidwinter",
+	   label: "Send a quiet Minion to resolve the problem of a Hunter",
+	  actionId:"talk",
+	  startdescription:"My Minion will watch and wait. If we're lucky, they may have an opportunity to dispose of our enemy. [This is less likely to succeed than an Edge attack, and success or failure will both draw attention, but the minion will usually survive.]",
+	  description:".",
+	  requirements: {hunter:1,winter:5,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:30},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "hunterattacklowwinter",
+	   label: "Send a cautious Minion to resolve the problem of a Hunter",
+	  actionId:"talk",
+	  startdescription:"My Minion will wait for the right moment, though most likely that moment will never come. [This is less likely to succeed than an Edge attack, and success or failure will both draw attention, but the minion will usually survive.]",
+	  description:".",
+	  requirements: {hunter:1,winter:1,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:10},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+
+	  
+	  	  {id: "hunterstealthattacksuccess",
+	   label: "Patience...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a trophy.",
+	  effects: {notoriety:1},
+	  aspects:{killhunter:1},
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  warmup:10	  
+	  },
+	  
+	  	  {id: "hunterstealthattackfailure",
+	   label: "Patience...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned. There was no opportunity to end the Hunter's life; and the Hunter may now be aware of danger.",
+	  effects: {notoriety:1},
+	  warmup:10	  
+	  },
+
+
 	   {id: "hunterattackhighedge",
 	   label: "Send an Unstoppable Force to murder a Hunter",
 	  actionId:"talk",
@@ -46,8 +106,8 @@
 	  startdescription: "I await word....",
 	  description:"My minion has returned, with a trophy.",
 	  effects: {hunter:-1,corpse:1,notoriety:1},
-	  alternativerecipes: [{id:"huntercapturesuccess",chance:30}]
-	  comments: "We can't use killmortal because it would kill them both!",
+	  alternativerecipes: [{id:"huntertenacioussurvives",chance:30},
+	  {id:"huntercapturesuccess",chance:30}]
 	  warmup:10	  
 	  },
 	  
@@ -58,7 +118,6 @@
 	  description:"My minion has returned, with a prisoner!",
 	  effects: {notoriety:1},
 	  aspects: {capturehunter:1},
-	  comments: "We can't use killmortal because it would kill them both!",
 	  warmup:10	  
 	  },
 	  
@@ -69,7 +128,6 @@
 	  startdescription: "I await word....",
 	  description:"My minion has not returned. They must have failed.",
 	  effects: {follower:-1,notoriety:1},
-	  comments: "We can't use killmortal because it would kill them both - and we don't recover the follower's corpse.",
 	  warmup:10	  
 	  },
 	  

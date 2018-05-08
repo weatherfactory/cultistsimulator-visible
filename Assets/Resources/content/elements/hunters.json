@@ -30,7 +30,7 @@ xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehun
 		
 						 {
         id: "investigator4",
-            label: "Doctor Natalie Dragon",
+            label: "Doctor Natalia Dragon",
             aspects:
             {hunter:1,mortal:1},
             description: "She was laughed out of academia for her analyses of alternate histories, and it only made her more resolute. Now she works with the Suppression Bureau.",
@@ -56,6 +56,16 @@ xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehun
 unique:true,
 lifetime:600,decayTo:"corpse"
         },
+								 {
+        id: "investigator2prisoner",
+            label: "Spencer Hobson: Captured!",
+            aspects:
+            {hunter:1,mortal:1},
+              description: "Hobson has been a journalist, a private detective and, rather briefly, a priest. Let us be sure he dies in captivity.",
+unique:true,
+xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic}
+        },
+		
 						 {
         id: "investigator3prisoner",
             label: "Connie Lee: Captured!",
@@ -68,7 +78,7 @@ xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic}
 		
 						 {
         id: "investigator4prisoner",
-            label: "Doctor Natalie Dragon Captured!",
+            label: "Doctor Natalia Dragon: Captured!",
             aspects:
             {hunter:1,mortal:1},
             description: "She was laughed out of academia for her analyses of alternate histories, and it only made her more resolute.  Let us be sure she dies in captivity.",
