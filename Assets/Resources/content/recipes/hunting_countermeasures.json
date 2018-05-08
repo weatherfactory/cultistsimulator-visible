@@ -1,6 +1,6 @@
 {"recipes": [
 {id: "huntertenacioussurvives",
-actionId:"suspicion",
+actionId:"talk",
 label:"Tenacity",
 requirements:{tenacious:1},
 startdescription:"'But - no-one could have survived that!'\n
@@ -180,5 +180,55 @@ effects:{notoriety:1}
 	  effects: {follower:-1,notoriety:1},
 	  warmup:10	  
 	  },
+{id:"hunterspeakdread",
+actionId:"talk",
+label:"Describe the horrors awaiting an adversary",
+requirements:{dread:1},
+startdescription:"'Something to think about, every time you close your eyes.' [This may demoralise the Hunter, but may also increase your own Dread.]",
+description:"",
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:70},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+
+},
+{id:"hunterspeakdread_resistant",
+actionId:"talk",
+requirements:{idealist:1},
+label:"The Horrors Beneath the World's Skin",
+startdescription:"",
+description:"'All right, it might end badly for me, but it's worth the sacrifice. And others will carry on the struggle. We'll meet again. [Idealists cannot be destroyed with Dread.]",
+effects:{notoriety:1},
+aspects:{dreadful:1}
+
+},
+{id:"hunterspeakdread_vulnerable_demoralised",
+actionId:"talk",
+requirements:{grim:1},
+label:"The Horrors Beneath the World's Skin",
+startdescription:"Your account is too much for the Hunter. Their eyes bulge. Their jaw tightens. In the days to come, they will sink inexorably into despair.",
+description:"",
+aspects:{derangemortal:1}
+
+},
+{id:"hunterspeakdread_demoralised",
+actionId:"talk",
+requirements:{grim:-1},
+label:"The Horrors Beneath the World's Skin",
+startdescription:"This Hunter growls defiance, but you can see that your words have found their mark. [This Hunter has become Grim.] ",
+description:"",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+effects:{notoriety:1}
+
+},
+{id:"hunterspeakdread_survives",
+actionId:"talk",
+label:"The Horrors Beneath the World's Skin",
+startdescription:"",
+description:"'Yes, there are terrible things in the world, but that's all the more reason to resist them. I should thank you. You've shown me what I must do.' [This Hunter has become an Idealist.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1}
+
+},
 ]
 }

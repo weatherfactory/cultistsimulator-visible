@@ -4,7 +4,7 @@
         id: "investigator1",
             label: "Inspector Wakefield",
             aspects:
-            {hunter:1,mortal:1,tenacious:1,meticulous:1},
+            {hunter:1,mortal:1,tenacious:1,meticulous:1,grim:1},
             description: "Zachary Wakefield: a melancholy, but remorseless, inspector of police. He has recently been seconded to the Suppression Bureau.",
 unique:true,
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator1prisoner}
