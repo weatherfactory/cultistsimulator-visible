@@ -264,7 +264,7 @@ public class Compendium : ICompendium
         if (endingFlag == "arrest") 
             return new Ending(endingFlag, "Bars across the Sun",
                 "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
-                " that I could have done <i>everything</i> I should not.", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil"
+                " that I could have done <i>everything</i> I should not. [Many Hunters have specific weaknesses. Perhaps you can use those weaknesses to stop them before they bring you to trial.]", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil"
                 );
 
         if (endingFlag == "workvictory")
