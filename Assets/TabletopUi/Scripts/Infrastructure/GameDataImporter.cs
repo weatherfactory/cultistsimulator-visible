@@ -334,8 +334,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     var stackToPutInSlot =
                         tabletop.ReprovisionExistingElementStack(ess, Source.Existing());
 
-                    //SaveLocationInfos are recorded with an appended Guid. We should have a SaveLocationInfo object that translates to/from safely: this is a hack.
-                    var slotId = ess.LocationInfo.Split('_')[0];
+                    //SaveLocationInfo for slots are recorded with an appended Guid. Everything up until the last separator is the slotId
+
+                    //var slotId = ess.LocationInfo.Split(SaveConstants.SEPARATOR)[0];
+
+                    int lastSeparatorPosition = ess.LocationInfo.LastIndexOf(SaveConstants.SEPARATOR);
+                    var slotId = ess.LocationInfo.Substring(0, lastSeparatorPosition); //if lastseparatorposition zero-indexed is 4, length before separator - 1-indexed - is also 4
 
 
                     var slotToFill = controller.GetSlotBySaveLocationInfoPath(slotId, slotTypeKey);

@@ -137,7 +137,6 @@ namespace Assets.Logic
                         NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + oldElementId + " to transform into " +
                                         newElementId, 10);
 
-
                         }
                     }
             }

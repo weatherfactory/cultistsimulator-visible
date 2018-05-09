@@ -658,7 +658,7 @@ namespace Assets.TabletopUi {
         #endregion
 
         public IRecipeSlot GetSlotBySaveLocationInfoPath(string locationInfo, string slotType) {
-            if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS) //hacky! this should  be an enum or something OOier
+            if (slotType == SaveConstants.SAVE_STARTINGSLOTELEMENTS) 
                 return situationWindow.GetStartingSlotBySaveLocationInfoPath(locationInfo);
             else
                 return situationWindow.GetOngoingSlotBySaveLocationInfoPath(locationInfo);

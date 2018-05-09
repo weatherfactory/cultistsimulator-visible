@@ -304,7 +304,7 @@ namespace Assets.CS.TabletopUI {
 
 
         /// <summary>
-        /// path to slot expressed in underscore-separated slot specification labels: eg "primary_sacrifice"
+        /// path to slot expressed in underscore-separated slot specification labels: eg "work_sacrifice"
         /// </summary>
         public string SaveLocationInfoPath {
             get {
