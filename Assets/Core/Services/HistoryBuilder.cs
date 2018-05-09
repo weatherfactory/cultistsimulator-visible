@@ -10,7 +10,7 @@ namespace Assets.Core.Services
     /// </summary>
  public class HistoryBuilder
     {
-        public const string DEFAULT_CHARACTER_NAME = "Sinombre";
+        public const string DEFAULT_CHARACTER_NAME = "J.N. Sinombre";
         public const string DEFAULT_LAST_BOOK = "textbooksanskrit";
         public const string DEFAULT_LAST_DESIRE = "ascensionsensationa";
         public const string DEFAULT_LAST_TOOL = "toolknockb";
