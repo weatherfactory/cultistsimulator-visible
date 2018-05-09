@@ -195,7 +195,13 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-    
+    /// <summary>
+    /// This is uses both for population and for repopulation - eg when an xtrigger transforms a stack
+    /// Note that it (intentionally) resets the timer.
+    /// </summary>
+    /// <param name="elementId"></param>
+    /// <param name="quantity"></param>
+    /// <param name="source"></param>
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
             _currentMutations=new AspectsDictionary();
