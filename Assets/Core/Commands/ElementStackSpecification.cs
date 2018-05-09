@@ -16,16 +16,19 @@ namespace Assets.Core.Commands
         public int ElementQuantity { get; private set; }
         public string LocationInfo { get; private set; }
         public Dictionary<string,int> Mutations { get; private set; }
+        public Dictionary<string, string> Illuminations { get; private set; }
+
         public int Depth { get; private set; }
         public float LifetimeRemaining { get; private set; }
 
-        public ElementStackSpecification(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,float lifetimeRemaining)
+        public ElementStackSpecification(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining)
         {
             ElementId = elementId;
             ElementQuantity = elementQuantity;
             LocationInfo = locationInfo;
             Depth = locationInfo.Count(c => c == SaveConstants.SEPARATOR);
             Mutations=new Dictionary<string, int>(mutations);
+            Illuminations=new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;
         }
     }

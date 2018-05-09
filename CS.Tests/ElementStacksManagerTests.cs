@@ -331,6 +331,10 @@ namespace Assets.Editor.Tests
 
         public Source StackSource { get; set; }
         public float LifetimeRemaining { get; set; }
+        public Dictionary<string, string> GetCurrentIlluminations()
+        {
+            throw new NotImplementedException();
+        }
 
         public void MoveTo<T>(T newLocation)
         {

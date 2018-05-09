@@ -8,6 +8,14 @@ description: "end test deck",
 warmup: 1,
 craftable:false
 },
+{id: "_testmutations",
+label: "Testing mutation",
+actionId: "work",
+requires:{health:1},
+mutations:[{filterOnAspectId:health,mutateAspectId:dreadful,mutationLevel:10}],
+warmup: 1,
+craftable:false
+},
 		{
         id: "_memoryvault",
         label: "Retrieve stored things",

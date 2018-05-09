@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
             
 			string cardid0 = dealer.Deal(doorDeck);
-            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0);
+            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0,activeDoor.portalType);
             cards[0].FlipToFaceUp(true);
 
             // Display face down cards next to locations
@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1);
+            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1, activeDoor.portalType);
             cards[1].FlipToFaceDown(true);
 
 			counter = 0;
@@ -86,14 +86,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2);
+            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2, activeDoor.portalType);
             cards[2].FlipToFaceDown(true);
 
             // When one face-down card is turned, remove all face up cards.
             // On droping on door: Return
         }
 
-        ElementStackToken BuildCard(Vector3 position, string id) {
+        ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType) {
             var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
             newCard.Populate(id, 1, Source.Fresh());
 

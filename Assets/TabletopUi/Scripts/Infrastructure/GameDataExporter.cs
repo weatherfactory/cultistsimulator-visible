@@ -152,6 +152,18 @@ private Hashtable GetHashtableForThisStack(IElementStack stack)
 
             }
 
+            var currentIlluminations = stack.GetCurrentIlluminations();
+            if (currentIlluminations.Any())
+            {
+                var htIlluminations = new Hashtable();
+                foreach (var kvp in currentIlluminations)
+                {
+                    htIlluminations.Add(kvp.Key, kvp.Value);
+                }
+                htStackProperties.Add(SaveConstants.SAVE_ILLUMINATIONS, htIlluminations);
+
+            }
+
             return htStackProperties;
         }
 

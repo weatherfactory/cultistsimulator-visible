@@ -61,6 +61,7 @@ namespace Assets.CS.TabletopUI {
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
+        private Dictionary<string, string> _currentIlluminations;
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -125,6 +126,10 @@ namespace Assets.CS.TabletopUI {
         public Dictionary<string, int> GetCurrentMutations()
         {
             return new Dictionary<string, int>(_currentMutations);
+        }
+        public Dictionary<string, string> GetCurrentIlluminations()
+        {
+            return new Dictionary<string, string>(_currentIlluminations);
         }
 
         public void SetMutation(string aspectId, int value,bool additive=false)
@@ -204,7 +209,8 @@ namespace Assets.CS.TabletopUI {
     /// <param name="source"></param>
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
-            _currentMutations=new AspectsDictionary();
+        _currentMutations = new Dictionary<string, int>();
+        _currentIlluminations =new Dictionary<string, string>();
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)

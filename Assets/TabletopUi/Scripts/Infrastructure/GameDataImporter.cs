@@ -359,20 +359,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             foreach (var locationInfoKey in htStacks.Keys)
             {
                 var eachStack= htStacks.GetHashtable(locationInfoKey);
-                Dictionary<string,int> mutations=new Dictionary<string, int>();
+                
 
                 string elementId = TryGetStringFromHashtable(eachStack, SaveConstants.SAVE_ELEMENTID);
                 int elementQuantity = GetIntFromHashtable(eachStack, SaveConstants.SAVE_QUANTITY);
                 int lifetimeRemaining = GetIntFromHashtable(eachStack, SaveConstants.LIFETIME_REMAINING);
+
+                Dictionary<string, int> mutations = new Dictionary<string, int>();
                 if (eachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
                     mutations = NoonUtility.HashtableToStringIntDictionary(
                         eachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
+
+                Dictionary<string, string> illuminations = new Dictionary<string, string>();
+
+
+                if (eachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
+                    illuminations = NoonUtility.HashtableToStringStringDictionary(
+                        eachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
+
 
                 elementQuantitySpecifications.Add(new ElementStackSpecification(
                     elementId,
                     elementQuantity,
                     locationInfoKey.ToString(),
                     mutations,
+                    illuminations,
                     lifetimeRemaining));
             }
             return elementQuantitySpecifications;
