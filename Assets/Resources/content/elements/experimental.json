@@ -11,7 +11,11 @@
             id: "wolfatthedoor",
             label: "The Wolf at the Door",
             aspects:{ability:1,location:1,acquaintance:1},
-			slots: [{id:"Meal",consumes:true}],
+			slots: [{id:"Meal1",consumes:true,actionId:"work"}],
+			slots: [{id:"Meal2",consumes:true,actionId:"dream"}],
+			slots: [{id:"Meal3",consumes:true,actionId:"study"}],
+			slots: [{id:"Meal4",consumes:true,actionId:"talk"}],
+			slots: [{id:"Meal5",consumes:true,actionId:"explore"}],
             description: "The Wolf will accept anything, and then devour everything, no matter what.",
 			noartneeded:true
         },

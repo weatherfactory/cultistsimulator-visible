@@ -18,7 +18,7 @@
             label: "Oriflamme's Auction House",
             aspects:{location: 1},
             description: "Oriflamme's specialises in curios, perfumes, taxidermy specimens, and rare texts. It operates from cramped new premises, now, since the destruction of the old by an unexplained fire. [You can buy or sell items at Oriflamme's.]",
-				slots:[{id:"Sell",description: "Add an item here to auction it off.", required: {tool:1,text:1,compensationvalue:1}}],
+				slots:[{id:"Sell",description: "Add an item here to auction it off.", required: {tool:1,text:1,compensationvalue:1},actionId:"explore"}],
 			unique:true
         },
 										{

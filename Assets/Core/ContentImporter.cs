@@ -75,6 +75,7 @@ public class ContentImporter
 
                     if (htThisSlot[NoonConstants.KACTIONID] != null)
                         slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
+       
 
                 Hashtable htRequired = htThisSlot["required"] as Hashtable;
                     if (htRequired != null)
@@ -181,6 +182,11 @@ public class ContentImporter
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
                 if(alSlots!=null)
                 element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
+                foreach(var css in element.ChildSlotSpecifications)
+                { 
+                    if(string.IsNullOrEmpty(css.ForVerb))
+                LogProblem("No actionId for a slot on " + element.Id + " with id " + css.Id);
+                }
                 if (htXTriggers != null)
                 {
                     foreach (string k in htXTriggers.Keys)

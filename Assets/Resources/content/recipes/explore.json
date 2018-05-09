@@ -17,10 +17,10 @@
         id: "explorelocationauctionhouse",
         label: "Attend an Auction at Oriflamme's",
         actionId: "explore",
-        requirements: {locationauctionhouse:1,ingredient:-1,tool:-1},
+        requirements: {locationauctionhouse:1,ingredient:-1,tool:-1,text:-1},
 		effects: {},
-		deckeffect: {"commontomes":1},
-        startdescription: "We perch on alarming Rietveld chairs in a windowless auction room with vividly burnt orange walls, waiting for the auctioneer to announce what he's offering. The reek of new paint makes the brain spin. [See what's on offer; or add an item you'd like to sell.]",
+		deckeffect: {"auctionedcommontomes":1},
+        startdescription: "We perch on alarming Rietveld chairs in a windowless auction room with vividly burnt orange walls, waiting for the auctioneer to announce what he's offering. The reek of new paint makes the brain spin. [Hit Start to see what's on offer; or add an item you'd like to sell.]",
         description: ".",
 			
         warmup: 5,
