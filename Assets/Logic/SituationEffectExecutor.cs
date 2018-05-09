@@ -118,18 +118,24 @@ namespace Assets.Logic
 
                         if (effectElement.IsAspect)
                         {
+                            NoonUtility.Log("Tried to run an xtrigger to transfomr an aspect into another aspect:" + xTriggers[triggerKey] + " - which might ultimately mean a mutationeffect, but doesn't do anything now.", 1);
 
                         }
                         else
                         {
-                        var existingQuantity = eachStack.Quantity;
+                         string newElementId = xTriggers[triggerKey];
+                            string oldElementId = eachStack.EntityId;
+                        int existingQuantity = eachStack.Quantity;
                         //replace the element that has the trigger with the trigger result
                         //eg, if an individual has a Recruiting: individual_b trigger, and there's a Recruiting aspect in the stack, then replace the individual with individual_b
-                        stacksManager.ModifyElementQuantity(eachStack.EntityId, -existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
-                        stacksManager.ModifyElementQuantity(xTriggers[triggerKey], existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
+                        //stacksManager.ModifyElementQuantity(eachStack.EntityId, -existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
+                        //stacksManager.ModifyElementQuantity(xTriggers[triggerKey], existingQuantity, Source.Existing(), new Context(Context.ActionSource.SituationEffect));
 
-                        NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + eachStack.EntityId + " to transform into " +
-                                        xTriggers[triggerKey],10);
+                       eachStack.Populate(newElementId, existingQuantity, Source.Existing());
+
+
+                        NoonUtility.Log("xtrigger aspect " + triggerKey + " caused " + oldElementId + " to transform into " +
+                                        newElementId, 10);
 
 
                         }

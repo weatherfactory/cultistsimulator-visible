@@ -24,6 +24,7 @@ namespace Assets.CS.TabletopUI {
         public CanvasGroupFader canvasFader;
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
+        public TextMeshProUGUI availableBecause;
         public ElementStackSimple[] rewardTokens;
 
         [Header("Buttons")]
@@ -123,6 +124,11 @@ namespace Assets.CS.TabletopUI {
 
             title.text = legacySelected.Label;
             description.text = legacySelected.Description;
+            var ending = CrossSceneState.GetCurrentEnding();
+            if (legacySelected.FromEnding == ending.Id)
+                availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";
+            else
+                availableBecause.text = "";
 
             //display effects for legacy:
             //clear out any existing effect stacks
