@@ -229,7 +229,8 @@ namespace Assets.CS.TabletopUI {
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
 
                 StackSource = source;
-                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+                if(CurrentStacksManager==null) //we might be repopulating - in which case there may already be one
+                    CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
                 //when first created, it should be in Limbo
             }
             catch (Exception e) {
