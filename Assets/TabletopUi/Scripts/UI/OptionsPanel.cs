@@ -16,11 +16,13 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider soundSlider;
     [SerializeField] private Slider inspectionTimeSlider;
+    [SerializeField] private Slider autosaveSlider;
     [SerializeField] private Slider birdWormSlider;
     
     [SerializeField] private TextMeshProUGUI musicSliderValue;
     [SerializeField] private TextMeshProUGUI soundSliderValue;
     [SerializeField] private TextMeshProUGUI inspectionTimeSliderValue;
+    [SerializeField] private TextMeshProUGUI autosaveSliderValue;
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
 
     [Header("Settings")]
@@ -89,6 +91,17 @@ public class OptionsPanel : MonoBehaviour {
         SetInspectionWindowTimeInternal(value);
         inspectionTimeSlider.value = value;
 
+        // Loading Autosave interval default
+
+        if (PlayerPrefs.HasKey("AutosaveInterval"))
+            value = PlayerPrefs.GetFloat("AutosaveInterval");
+        else 
+            value = 5f;
+
+        SetAutosaveInterval(value); // this does nothing, since we're disabled but updates the value hint
+        SetAutosaveIntervalInternal(value);
+        autosaveSlider.value = value;
+
         // Loading Bird/Worm Slider
 
         if (PlayerPrefs.HasKey("BirdWormSlider"))
@@ -134,6 +147,11 @@ public class OptionsPanel : MonoBehaviour {
         SceneManager.LoadScene(SceneNumber.MenuScene);
     }
 
+    public void BrowseFiles()
+	{
+        OpenInFileBrowser.Open( NoonUtility.GetGameSaveLocation() );
+    }
+
     // public button events
 
     public void SetMusicVolume(float volume) {
@@ -164,6 +182,17 @@ public class OptionsPanel : MonoBehaviour {
 
         SoundManager.PlaySfx("TokenHover");
         SetInspectionWindowTimeInternal(timer);
+    }
+
+    public void SetAutosaveInterval(float timer) {
+		int mins = (int)timer;
+        autosaveSliderValue.text = mins + " min";
+
+        if (gameObject.activeInHierarchy == false)
+            return; // don't update anything if we're not visible.
+
+        SoundManager.PlaySfx("TokenHover");
+        SetAutosaveIntervalInternal(timer);
     }
 
     public void SetBirdWorm(float value) {
@@ -223,8 +252,15 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     float GetInspectionTimeForValue(float value) {
-        return baseInfoTimer + value * baseTimePerNotch; ;
+        return baseInfoTimer + value * baseTimePerNotch;
     }
 
+    void SetAutosaveIntervalInternal(float value)
+	{
+        // value ranges from 1 to 10 in mins
+        PlayerPrefs.SetFloat("AutosaveInterval", value);
 
+		var tabletopManager = Registry.Retrieve<TabletopManager>();
+		tabletopManager.SetAutosaveInterval( value );
+    }
 }

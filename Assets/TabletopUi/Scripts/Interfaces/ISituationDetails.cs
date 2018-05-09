@@ -8,6 +8,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using TMPro;
+using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Interfaces
 {
@@ -16,7 +17,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void Initialise(IVerb verb,SituationController controller, Heart heart);
 
-        void Show();
+        void Show( Vector3 targetPosOverride );
         void Hide();
         
         void DisplayAspects(IAspectsDictionary forAspects);
@@ -66,5 +67,8 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void DisplayHintRecipeFound(Recipe r);
         IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool showElementAspects);
         void TryDecayResults(float interval);
+
+		// Added to allow saving of window positions. Better than inserting save code into the SituationDetails IMHO - CP
+		Vector3 Position { get; set; }
     }
 }

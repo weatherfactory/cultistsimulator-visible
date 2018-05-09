@@ -79,19 +79,27 @@ namespace Assets.CS.TabletopUI {
         }
 
         List<IElementStack> SortStacks(IEnumerable<IElementStack> elementStacks) {
-            var freshStacks = new List<IElementStack>();
-            var existingStacks = new List<IElementStack>();
+			var hiddenStacks = new List<IElementStack>();	// Hidden fresh cards
+            var freshStacks = new List<IElementStack>();	// Face-up fresh cards
+            var existingStacks = new List<IElementStack>(); // Face-up existing cards
 
-            foreach (var stack in elementStacks) {
+            foreach (var stack in elementStacks)
+			{
                 if (stack.StackSource.SourceType == SourceType.Fresh)
-                    freshStacks.Add(stack);
+				{
+					if (stack.Decays)
+	                    freshStacks.Add(stack);
+					else
+						hiddenStacks.Add(stack);
+				}
                 else
                     existingStacks.Add(stack);
             }
 
-            freshStacks.AddRange(existingStacks); //existing stacks go after fresh stacks
+			hiddenStacks.AddRange(freshStacks); //fresh face-up stacks go after hidden stacks
+            hiddenStacks.AddRange(existingStacks); //existing stacks go after fresh stacks
 
-            return freshStacks;
+            return hiddenStacks;
         }
 
         Vector2 GetPositionForIndex(int i, int num) {

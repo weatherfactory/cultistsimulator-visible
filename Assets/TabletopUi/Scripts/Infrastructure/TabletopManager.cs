@@ -87,9 +87,29 @@ namespace Assets.CS.TabletopUI {
         bool isInNonSaveableState;
         private SituationController mansusSituation;
 
-        public void Update() {
+		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
+		private float AUTOSAVE_INTERVAL = 300.0f;
+
+        public void Update()
+		{
+			//
+			// Game is structured to minimise Update processing, so keep this lean - CP
+			// But some things do have to be updated outside the main gameplay Heart.Beat
+			//
             _hotkeyWatcher.WatchForGameplayHotkeys();
             _cardAnimationController.CheckForCardAnimations();
+
+			if (_heart.IsPaused)
+			{
+				_heart.AdvanceTime( 0.0f );		// If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
+			}
+
+			housekeepingTimer += Time.deltaTime;
+			if (housekeepingTimer >= AUTOSAVE_INTERVAL && !isInNonSaveableState)	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
+			{
+			    housekeepingTimer = 0.0f;
+			    SaveGame(true);
+			}
         }
 
         #region -- Intialisation -------------------------------
@@ -336,6 +356,18 @@ namespace Assets.CS.TabletopUI {
             ClearGameState(_heart, storage, _tabletop);
             saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
             StatusBar.UpdateCharacterDetailsView(storage);
+
+			// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
+			var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+            foreach (var s in allSituationControllers)
+			{
+				if (s.IsOpen)
+				{
+					Vector3 tgtPos = s.RestoreWindowPosition;
+	                s.OpenWindow( tgtPos );
+				}
+			}
+
             _notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
 
             //}
@@ -349,14 +381,21 @@ namespace Assets.CS.TabletopUI {
         public void SaveGame(bool withNotification) {
             if (isInNonSaveableState)
                 return;
-
-            _heart.StopBeating();
-
+			
+			// Check state so that autosave behaves correctly if called while paused - CP
+			bool wasBeating = false;
+			if (!_heart.IsPaused)
+			{
+		        _heart.StopBeating();
+				wasBeating = true;
+			}
+			/*
             //Close all windows and dump tokens to desktop before saving.
             //We don't want or need to track half-started situations.
             var allSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             foreach (var s in allSituationControllers)
                 s.CloseWindow();
+			*/
 
             // try
             //  {
@@ -372,7 +411,10 @@ namespace Assets.CS.TabletopUI {
             //      _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             // }
 
-            _heart.ResumeBeating();
+			if (wasBeating)
+			{
+	            _heart.ResumeBeating();
+			}
         }
 
 #endregion
@@ -566,6 +608,11 @@ namespace Assets.CS.TabletopUI {
         void LockSpeedController(bool enabled) {
             _speedController.LockToPause(enabled);
         }
+
+		public void SetAutosaveInterval( float minutes )
+		{
+			AUTOSAVE_INTERVAL = minutes * 60.0f;
+		}
 
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);

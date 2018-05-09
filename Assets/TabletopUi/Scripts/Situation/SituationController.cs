@@ -21,7 +21,7 @@ namespace Assets.TabletopUi {
     public class SituationController : ISituationSubscriber, ISaveable {
 
         public ISituationAnchor situationToken;
-        private ISituationDetails situationWindow;
+        public ISituationDetails situationWindow;
         public ISituationClock SituationClock;
 
         private readonly ICompendium compendium;
@@ -30,6 +30,7 @@ namespace Assets.TabletopUi {
         private bool greedyAnimIsActive;
 
         public bool IsOpen { get; set; }
+		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
 
         public const float HOUSEKEEPING_CYCLE_BEATS = 1f;
 
@@ -369,12 +370,17 @@ namespace Assets.TabletopUi {
 
         #region -- SituationClock Window Communication --------------------
 
-        public void OpenWindow() {
-
+        public void OpenWindow( Vector3 targetPosOverride )
+		{
             IsOpen = true;
             situationToken.DisplayAsOpen();
-            situationWindow.Show();
+            situationWindow.Show( targetPosOverride );
             Registry.Retrieve<TabletopManager>().CloseAllSituationWindowsExcept(situationToken.EntityId);
+        }
+
+		public void OpenWindow()
+		{
+            OpenWindow( Vector3.zero );
         }
 
         public void CloseWindow() {
@@ -661,6 +667,13 @@ namespace Assets.TabletopUi {
         public Hashtable GetSaveData() {
             var situationSaveData = new Hashtable();
             IGameDataExporter exporter = new GameDataExporter();
+
+			// Added by CP to allow autosave while player is working
+			Vector3 pos = situationWindow.Position;
+            situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_OPEN, this.IsOpen);
+			situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_X, pos.x);
+			situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_Y, pos.y);
+			situationSaveData.Add(SaveConstants.SAVE_SITUATION_WINDOW_Z, pos.z);
 
             situationSaveData.Add(SaveConstants.SAVE_VERBID, situationToken.EntityId);
             if (SituationClock != null) {
