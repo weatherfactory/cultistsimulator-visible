@@ -20,7 +20,6 @@ namespace Assets.CS.TabletopUI
             }
         }
  
-        [UnityEditor.MenuItem("Window/Test OpenInFileBrowser")]
         public static void Test()
         {
             Open(UnityEngine.Application.dataPath);
