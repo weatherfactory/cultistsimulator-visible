@@ -51,7 +51,7 @@ craftable:false
 {id: "workdetectivejob_matured_investigate_hint",
 label: "Pursuing an Investigation?",
 actionId: "work",
-requirements: {job:1,suspicious:1},
+requirements: {legacydetectivejob_matured:1,suspicious:1},
 startdescription:"If I apply my Reason, perhaps I can learn more about my target.",
 hintonly:true,
 craftable:false
