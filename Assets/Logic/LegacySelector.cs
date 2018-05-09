@@ -29,7 +29,7 @@ namespace Assets.Logic
             if (deathDependentLegacy == null)
             { 
                 NoonUtility.Log("Couldn't find a death-dependent ending for " + ending.Id +
-                                " so we'll draw a full 3 randoms. But this is a problem!");
+                                " so we'll draw a full 3 randoms. But this is a problem!",1);
                 randomLegaciesToDraw++;
             }
             else
@@ -43,10 +43,20 @@ namespace Assets.Logic
             
             IEnumerable<Legacy> drawingLegacies = _compendium.GetAllLegacies().Where(l => l.AvailableWithoutEndingMatch)
                 .OrderBy(l => rnd.Next()).ToList();
-            drawingLegacies = drawingLegacies.Take(randomLegaciesToDraw);
-            drawingLegacies = drawingLegacies.Where(l=>l.Id!=(deathDependentLegacy==null ? "" : deathDependentLegacy.Id));
+
+            NoonUtility.Log(drawingLegacies.Count() + " legacies available to draw from");
+
+            NoonUtility.Log(randomLegaciesToDraw + "  legacies drawing");
+
+
+            if (deathDependentLegacy == null)
+                drawingLegacies = drawingLegacies.Take(randomLegaciesToDraw);
+            else
+                drawingLegacies = drawingLegacies.Where(l => l.Id != deathDependentLegacy.Id).Take(randomLegaciesToDraw);
 
            selectedLegacies.AddRange(drawingLegacies);
+
+            
 
             return selectedLegacies;
         }
