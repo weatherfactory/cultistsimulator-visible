@@ -219,7 +219,7 @@ namespace Assets.CS.TabletopUI {
             if(CrossSceneState.GetMetaInfo()==null)
             {
                           //This can happen if we start running the scene in the editor, so it hasn't been set in menu screen
-                NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set");
+                NoonUtility.Log("Setting meta info in CrossSceneState in Tabletop scene - it hadn't already been set",10);
                 CrossSceneState.SetMetaInfo(metaInfo);
             }
 

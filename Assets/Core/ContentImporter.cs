@@ -116,7 +116,7 @@ public class ContentImporter
             totalElementsFound += PopulateElements(htElements);
         }
 
-        NoonUtility.Log("Total elements found: " + totalElementsFound,9);
+        NoonUtility.Log("Total elements found: " + totalElementsFound,2);
 
         foreach (var e in Elements)
         {
@@ -260,7 +260,7 @@ public class ContentImporter
         }
 
         PopulateRecipeList(recipesArrayList);
-        NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,9);
+        NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,2);
 
     }
 
@@ -875,7 +875,7 @@ public class ContentImporter
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        NoonUtility.Log("Words (based on spaces +1 count): " + words);
+        NoonUtility.Log("Words (based on spaces +1 count): " + words,2);
     }
 
     private void LogFnords()
