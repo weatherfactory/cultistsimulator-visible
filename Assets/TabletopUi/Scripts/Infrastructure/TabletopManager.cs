@@ -63,6 +63,7 @@ namespace Assets.CS.TabletopUI {
         Transform tableLevelTransform;
         [SerializeField]
         Transform windowLevelTransform;
+        [SerializeField] private ScrollRect tableScroll;
 
         [Header("Options Bar & Notes")]
         [SerializeField]
@@ -655,10 +656,13 @@ namespace Assets.CS.TabletopUI {
             // Put card into the original Situation Results
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
+            mansusSituation.OpenWindow();
+
+            //hasty crappy lline from AK, feel free to improve if you're passing!
+            SituationWindow zoomTo= mansusSituation.situationWindow as SituationWindow;
+            tableScroll.content.anchoredPosition = zoomTo.transform.position;
             mansusSituation = null;
 
-            // Add message to the situation notes
-            // center on origin token
         }
 
         public void BeginNewSituation(SituationCreationCommand scc) {

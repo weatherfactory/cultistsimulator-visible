@@ -40,7 +40,7 @@ namespace Assets.Logic
             else
             {
                 if (deck.GetDefaultDrawMessages().Any())
-                   drawWithMessage.WithMessage=deck.GetDrawMessages().OrderBy(x => Random.value).First().Value;
+                   drawWithMessage.WithMessage=deck.GetDefaultDrawMessages().OrderBy(x => Random.value).First().Value;
             }
 
             return drawWithMessage;
