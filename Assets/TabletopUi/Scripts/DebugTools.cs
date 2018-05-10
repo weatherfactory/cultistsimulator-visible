@@ -10,6 +10,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Facepunch.Steamworks;
 using Noon;
 using TMPro;
@@ -127,33 +128,14 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void TriggerAchievement(string achievementId)
     {
-
-        var steamClient = Client.Instance;
-        if (steamClient == null)
-            return;
-        if (string.IsNullOrEmpty(achievementId))
-            return;
-
-        var achievement = steamClient.Achievements.Find(achievementId);
-        if (achievement == null)
-            return;
-        if (!achievement.State)
-            achievement.Trigger(true);
+        var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
+        storeClientProvider.SetAchievement(achievementId,true);
     }
 
     void ResetAchievement(string achievementId)
     {
-
-        var steamClient = Client.Instance;
-        if (steamClient == null)
-            return;
-        if (string.IsNullOrEmpty(achievementId))
-            return;
-
-        var achievement = steamClient.Achievements.Find(achievementId);
-        if (achievement == null)
-            return;
-        achievement.Reset();
+        var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
+        storeClientProvider.SetAchievement(achievementId, false);
     }
 
     void FastForward(float interval)
