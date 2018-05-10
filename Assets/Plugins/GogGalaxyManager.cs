@@ -53,7 +53,8 @@ public class GogGalaxyManager : MonoBehaviour
         {
             InitParams initParams = new InitParams(clientID, clientSecret);
 
-            GalaxyInstance.Init(initParams);
+            if(!isInitialized)
+                GalaxyInstance.Init(initParams);
         }
         catch (GalaxyInstance.Error error)
         {

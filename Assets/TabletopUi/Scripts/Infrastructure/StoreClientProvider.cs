@@ -32,18 +32,15 @@ Gog=2
             if (storeClient == StoreClient.Steam && Facepunch.Steamworks.Client.Instance != null)
                 return true;
             if (storeClient == StoreClient.Gog)
-                if (GogGalaxyManager.Instance == null)
+
+            if (GogGalaxyManager.Instance == null)
                     return false;
-            if (!GogGalaxyManager.IsInitialized())
-                return false;
-            if (!GalaxyInstance.User().SignedIn())
-                return false;
-            if (!GalaxyInstance.User().IsLoggedOn())
-                return false;
 
 
+            if (GalaxyInstance.User().SignedIn())
+                return true;
 
-            return true;
+            return false;
         }
 
         public void SetAchievement(string id,bool setStatus)
