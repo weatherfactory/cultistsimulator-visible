@@ -24,7 +24,7 @@ public class SteamworksIntegration: MonoBehaviour
         
 
         // Create the steam client using the test AppID (or your own AppID eventually)
-       var client=new Facepunch.Steamworks.Client(NoonUtility.AppId);
+       var client=new Facepunch.Steamworks.Client(NoonUtility.CultistSimulatorSteamAppId);
 
         // Make sure we started up okay
         if (Client.Instance == null)

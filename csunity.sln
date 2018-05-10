@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csunity", "csunity.csproj", "{D787ECE3-EC66-C960-D8CC-F8FBA21763A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csunity.Plugins", "csunity.Plugins.csproj", "{A5EE1E36-28E6-47AF-1E13-C6609AA3DF2F}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csunity.Editor", "csunity.Editor.csproj", "{996FB6AB-FD47-C665-5C3E-862C8A13384C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Tests", "CS.Tests\CS.Tests.csproj", "{E61A9AEF-644D-42D8-B6A7-8A30622927FE}"
@@ -17,6 +19,10 @@ Global
 		{D787ECE3-EC66-C960-D8CC-F8FBA21763A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D787ECE3-EC66-C960-D8CC-F8FBA21763A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D787ECE3-EC66-C960-D8CC-F8FBA21763A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5EE1E36-28E6-47AF-1E13-C6609AA3DF2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EE1E36-28E6-47AF-1E13-C6609AA3DF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EE1E36-28E6-47AF-1E13-C6609AA3DF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5EE1E36-28E6-47AF-1E13-C6609AA3DF2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{996FB6AB-FD47-C665-5C3E-862C8A13384C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{996FB6AB-FD47-C665-5C3E-862C8A13384C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{996FB6AB-FD47-C665-5C3E-862C8A13384C}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Galaxy.Api;
 using Noon;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
@@ -9,14 +10,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     public interface IStoreClientProvider
     {
-        StoreClientType GetCurrentStoreClientType();
+        bool IsAvailable(StoreClient storeClient);
         void SetAchievement(string id, bool setStatus);
     }
 
 
-    public enum StoreClientType
+    public enum StoreClient
     {
-    None=0,
     Steam=1,
 Gog=2
 
@@ -27,12 +27,23 @@ Gog=2
     public class StoreClientProvider : IStoreClientProvider
     {
 
-        public StoreClientType GetCurrentStoreClientType()
+        public bool IsAvailable(StoreClient storeClient)
         {
-            if (Facepunch.Steamworks.Client.Instance != null)
-                return StoreClientType.Steam;
-            else
-                return StoreClientType.None;
+            if (storeClient == StoreClient.Steam && Facepunch.Steamworks.Client.Instance != null)
+                return true;
+            if (storeClient == StoreClient.Gog)
+                if (GogGalaxyManager.Instance == null)
+                    return false;
+            if (!GogGalaxyManager.IsInitialized())
+                return false;
+            if (!GalaxyInstance.User().SignedIn())
+                return false;
+            if (!GalaxyInstance.User().IsLoggedOn())
+                return false;
+
+
+
+            return true;
         }
 
         public void SetAchievement(string id,bool setStatus)
@@ -43,21 +54,26 @@ Gog=2
             if (string.IsNullOrEmpty(id))
                 return;
 
-            if (GetCurrentStoreClientType() == StoreClientType.Steam)
+            if (IsAvailable(StoreClient.Steam))
             { 
                 var steamClient = Facepunch.Steamworks.Client.Instance;
                 var achievement = steamClient.Achievements.Find(id);
-                if (achievement == null)
-                    return;
-
+                if (achievement != null)
+                { 
                 if (setStatus && !achievement.State)
                     achievement.Trigger(true);
                 else if (!setStatus)
                     achievement.Reset();
                 else
-                NoonUtility.Log("Trying to set achievement " + id + ", but it's already set",10);
+                NoonUtility.Log("Trying to set Steam achievement " + id + ", but it's already set",10);
+                }
+                else
+                    NoonUtility.Log("Trying to set Steam achievement " + id + ", but it doesn't exist", 10);
+            }
 
-
+            if (IsAvailable(StoreClient.Gog))
+            {
+                NoonUtility.Log("Logged on!",1);
             }
 
         }
