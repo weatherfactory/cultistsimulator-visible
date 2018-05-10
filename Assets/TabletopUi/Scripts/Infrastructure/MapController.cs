@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
             
 			string cardid0 = dealer.Deal(doorDeck);
-            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0,activeDoor.portalType);
+            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0,activeDoor.portalType, "[Door location]");
             cards[0].FlipToFaceUp(true);
 
             // Display face down cards next to locations
@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1, activeDoor.portalType);
+            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1, activeDoor.portalType, "[First location]");
             cards[1].FlipToFaceDown(true);
 
 			counter = 0;
@@ -86,16 +86,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2, activeDoor.portalType);
+            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2, activeDoor.portalType, "[Second location]");
             cards[2].FlipToFaceDown(true);
 
             // When one face-down card is turned, remove all face up cards.
             // On droping on door: Return
         }
 
-        ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType) {
+        ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage) {
             var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
             newCard.Populate(id, 1, Source.Fresh());
+
+            newCard.IlluminateLibrarian.AddMansusJournalEntry(mansusJournalEntryMessage);
 
             // Accepting stack will trigger overlap checks, so make sure we're not in the default pos but where we want to be.
             newCard.transform.position = position;
@@ -175,12 +177,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void HideMansusMap(Transform effectCenter, IElementStack stack)
         {
-            Registry.Retrieve<TabletopManager>().HideMansusMap(effectCenter, (ElementStackToken)stack);
+            Registry.Retrieve<TabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
         }
 
 #if DEBUG
         public void CloseMap() {
-            Registry.Retrieve<TabletopManager>().HideMansusMap(_mapTokenContainer.GetActiveDoor().transform, null);
+            Registry.Retrieve<TabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
         }
 #endif
     }

@@ -637,7 +637,7 @@ namespace Assets.CS.TabletopUI {
             _mapController.ShowMansusMap(origin, true);
         }
 
-        public void HideMansusMap(Transform origin, ElementStackToken mansusCard) {
+        public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard) {
             DraggableToken.CancelDrag();
             LockSpeedController(false);
             isInNonSaveableState = false;
@@ -654,6 +654,7 @@ namespace Assets.CS.TabletopUI {
 
             // Put card into the original Situation Results
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
+            mansusSituation.AddNote(new Notification("I remember...",mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation = null;
 
             // Add message to the situation notes

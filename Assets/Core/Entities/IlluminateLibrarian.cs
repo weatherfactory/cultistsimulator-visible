@@ -8,11 +8,12 @@ namespace Assets.Core.Entities
     public class IlluminateLibrarian
     {
         private Dictionary<string, string> _currentIlluminations;
+        private const string KEY_MANSUSJOURNAL = "mansusjournal";
 
 
         public IlluminateLibrarian(Dictionary<string, string> currentIlluminations)
         {
-        _currentIlluminations = currentIlluminations;
+            _currentIlluminations = currentIlluminations;
         }
 
 
@@ -20,10 +21,26 @@ namespace Assets.Core.Entities
         {
         }
 
-    public Dictionary<string, string> GetCurrentIlluminations()
+        public Dictionary<string, string> GetCurrentIlluminations()
         {
             return new Dictionary<string, string>(_currentIlluminations);
         }
 
-}
+        public void AddMansusJournalEntry(string value)
+        {
+            _currentIlluminations.Add(KEY_MANSUSJOURNAL, value);
+        }
+
+        public string PopMansusJournalEntry()
+        {
+            if (_currentIlluminations.ContainsKey(KEY_MANSUSJOURNAL))
+            {
+                string je = _currentIlluminations[KEY_MANSUSJOURNAL];
+                _currentIlluminations.Remove(KEY_MANSUSJOURNAL);
+                return je;
+            }
+
+            return string.Empty;
+        }
+    }
 }
