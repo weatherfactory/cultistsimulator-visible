@@ -654,7 +654,7 @@ namespace Assets.CS.TabletopUI {
 
             // Put card into the original Situation Results
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
-            mansusSituation.AddNote(new Notification("I remember...",mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
+            mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation = null;
 
             // Add message to the situation notes

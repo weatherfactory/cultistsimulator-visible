@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
             
 			string cardid0 = dealer.Deal(doorDeck);
-            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0,activeDoor.portalType, "[Door location]");
+            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0,activeDoor.portalType, GetMansusJournalEntry(doorDeckId, cardid0));
             cards[0].FlipToFaceUp(true);
 
             // Display face down cards next to locations
@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1, activeDoor.portalType, "[First location]");
+            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1, activeDoor.portalType, GetMansusJournalEntry(subLocationDeck1Id, cardid1));
             cards[1].FlipToFaceDown(true);
 
 			counter = 0;
@@ -86,11 +86,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2, activeDoor.portalType, "[Second location]");
+            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2, activeDoor.portalType, GetMansusJournalEntry(subLocationDeck2Id,cardid2));
             cards[2].FlipToFaceDown(true);
 
             // When one face-down card is turned, remove all face up cards.
             // On droping on door: Return
+        }
+
+        private string GetMansusJournalEntry(string deckId, string elementId)
+        {
+            return "Drew " + elementId + " from " + deckId;
         }
 
         ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage) {
@@ -180,10 +185,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Registry.Retrieve<TabletopManager>().ReturnFromMansus(effectCenter, (ElementStackToken)stack);
         }
 
-#if DEBUG
+
+//not currently in use, preserve for quick debug
         public void CloseMap() {
             Registry.Retrieve<TabletopManager>().ReturnFromMansus(_mapTokenContainer.GetActiveDoor().transform, null);
         }
-#endif
     }
 }
