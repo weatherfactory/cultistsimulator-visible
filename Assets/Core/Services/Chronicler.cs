@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
+using Facepunch.Steamworks;
 using Noon;
 
 namespace Assets.Core.Services
@@ -66,9 +68,25 @@ namespace Assets.Core.Services
 
         }
 
-        public void ChronicleGameEnd(List<SituationController> situations, List<IElementStacksManager> stacksManagers)
+        private void SetAchievementsForEnding(Ending ending)
+        {
+            var steamClient = Client.Instance;
+            if (steamClient == null)
+                return;
+            if (string.IsNullOrEmpty(ending.AchievementId))
+                return;
+
+            var achievement=steamClient.Achievements.Find(ending.AchievementId);
+            if (achievement == null)
+                return;
+            if (!achievement.State)
+                achievement.Trigger(true);
+        }
+
+        public void ChronicleGameEnd(List<SituationController> situations, List<IElementStacksManager> stacksManagers,Ending ending)
         {
             //a lot of the stuff in TokenPlacedOnTabletop might be better here, actually
+            SetAchievementsForEnding(ending);
 
             List<IElementStack> allStacksInGame=new List<IElementStack>();
 

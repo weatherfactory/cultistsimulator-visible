@@ -10,6 +10,7 @@ using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
+using Facepunch.Steamworks;
 using Noon;
 using TMPro;
 using UnityEngine.UI;
@@ -25,6 +26,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnBeginSituation;
     [SerializeField] private Button btnHaltVerb;
+    [SerializeField] private Button btnTriggerAchievement;
+    [SerializeField] private Button btnResetAchivement;
     [SerializeField] private Button btnFastForward;
     [SerializeField] private Button btnNextTrack;
     [SerializeField] private Button btnUpdateContent;
@@ -55,6 +58,8 @@ public class DebugTools : MonoBehaviour,IRollOverride
         btnNextTrack.onClick.AddListener(NextTrack);
         btnBeginSituation.onClick.AddListener(()=>BeginSituation(input.text));
         btnHaltVerb.onClick.AddListener(() => HaltVerb(input.text));
+        btnTriggerAchievement.onClick.AddListener(()=>TriggerAchievement(input.text));
+        btnResetAchivement.onClick.AddListener(() => ResetAchievement(input.text));
 
         btnQueueRoll.onClick.AddListener(()=>QueueRoll(rollToQueue.text));
 
@@ -118,6 +123,37 @@ public class DebugTools : MonoBehaviour,IRollOverride
                 s.Halt();
         }
 
+    }
+
+    void TriggerAchievement(string achievementId)
+    {
+
+        var steamClient = Client.Instance;
+        if (steamClient == null)
+            return;
+        if (string.IsNullOrEmpty(achievementId))
+            return;
+
+        var achievement = steamClient.Achievements.Find(achievementId);
+        if (achievement == null)
+            return;
+        if (!achievement.State)
+            achievement.Trigger(true);
+    }
+
+    void ResetAchievement(string achievementId)
+    {
+
+        var steamClient = Client.Instance;
+        if (steamClient == null)
+            return;
+        if (string.IsNullOrEmpty(achievementId))
+            return;
+
+        var achievement = steamClient.Achievements.Find(achievementId);
+        if (achievement == null)
+            return;
+        achievement.Reset();
     }
 
     void FastForward(float interval)

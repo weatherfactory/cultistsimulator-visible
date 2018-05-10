@@ -21,9 +21,10 @@ namespace Assets.Core.Entities
         public EndingFlavour EndingFlavour { get; set; }
         public string Anim { get; set; }
         public string GivesLegacyId { get; set; }
+        public string AchievementId { get; set; }
 
 
-        public Ending(string id, string title, string description,string imageId,EndingFlavour endingFlavour, string anim)
+        public Ending(string id, string title, string description,string imageId,EndingFlavour endingFlavour, string anim,string achievementId)
         {
             Id = id;
             Title = title;
@@ -31,11 +32,14 @@ namespace Assets.Core.Entities
             ImageId = imageId;
             EndingFlavour = endingFlavour;
             Anim = anim;
+            AchievementId = achievementId;
         }
+
+        
 
         public static Ending DefaultEnding()
         {
-        return new Ending("default", "IT IS FINISHED","This one is done.", "suninrags", EndingFlavour.Melancholy, "DramaticLight");
+        return new Ending("default", "IT IS FINISHED","This one is done.", "suninrags", EndingFlavour.Melancholy, "DramaticLight",null);
         }
     }
 }

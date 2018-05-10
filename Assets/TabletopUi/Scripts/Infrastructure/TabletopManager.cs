@@ -318,7 +318,7 @@ namespace Assets.CS.TabletopUI {
             var character = Registry.Retrieve<Character>();
             var chronicler = Registry.Retrieve<Chronicler>();
             
-            chronicler.ChronicleGameEnd(Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations(), Registry.Retrieve<StackManagersCatalogue>().GetRegisteredStackManagers());
+            chronicler.ChronicleGameEnd(Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations(), Registry.Retrieve<StackManagersCatalogue>().GetRegisteredStackManagers(),ending);
 
 
             CrossSceneState.SetCurrentEnding(ending);
