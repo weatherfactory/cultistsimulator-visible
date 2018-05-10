@@ -47,6 +47,8 @@ namespace Assets.Core.Entities
         public bool ResetOnExhaustion { get; set; }
         public string Label { get; set; }
         public string Description { get; set; }
+        public Dictionary<string,string> DrawMessages { get; set; }
+        public Dictionary<string, string> DefaultDrawMessages { get; set; }
 
         public DeckSpec(string id,List<string> startingCards,string defaultCardId,bool resetOnExhaustion)
         {
@@ -54,6 +56,8 @@ namespace Assets.Core.Entities
             StartingCards = startingCards;
             DefaultCardId = defaultCardId;
             ResetOnExhaustion = resetOnExhaustion;
+            DrawMessages=new Dictionary<string, string>();
+            DefaultDrawMessages=new Dictionary<string, string>();
         }
 
         

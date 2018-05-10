@@ -43,7 +43,7 @@ resetonexhaustion:true
 	spec:
 		["influencewinterc",
 		"fragmentsecrethistoriesb",
-		"rumour"],
+		"rumour"],	
 resetonexhaustion:true
 	},
 				{id: "mansus_whitedoor1",
@@ -68,6 +68,9 @@ resetonexhaustion:true
 		["influenceknocke",
 		"fragmentsecrethistoriesc",
 		"influenceforgec"],
+		drawmessages:[{influenceforgec:"Ghirbi was weeping again. I scooped up his molten tears in my cupped palm. In the dream, my skin peeled and blistered, but only in the dream."},
+		{fragmentsecrethistoriesc:"Last night, Ghirbi was talkative. He spoke in his siege-engine voice of the histories he'd overheard in the waking world. I listened, until his stories tailed off again into weeping."}],
+		defaultdrawmessages:[{a:"Painted ships passed upon the Painted River. I met the painted eyes of a painted captain. She saluted, and the motion was like the layered movement of clouds."}],
 resetonexhaustion:true
 	},
 				{id: "mansus_stagdoor1",

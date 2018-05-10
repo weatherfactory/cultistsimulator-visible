@@ -315,7 +315,6 @@ public class ContentImporter
                 {
                     foreach (string v in htDeckSpec)
                     {
-                        //we aren't currently testing for invalid deck references, just cos I'd have to do it at the end after they're all imported and I'm in a hurry. TODO
                         if(!v.Contains(NoonConstants.DECK_PREFIX))
                             LogIfNonexistentElementId(v, htEachDeck[NoonConstants.KID].ToString(), "(deckSpec spec items)");
                         
@@ -326,10 +325,12 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                LogProblem("Problem importing deckspec for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                LogProblem("Problem importing drawable items for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
                            "' - " + e.Message);
             }
-            bool resetOnExhaustion = false;
+       
+
+            bool resetOnExhaustion;
             try
             {
                 resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
@@ -359,7 +360,44 @@ public class ContentImporter
 
             DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
 
-            if(htEachDeck.ContainsKey(NoonConstants.KLABEL))
+
+            try
+            {
+                Hashtable htDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC);
+                if (htDrawMessages != null)
+                {
+                    d.DrawMessages = NoonUtility.HashtableToStringStringDictionary(htDrawMessages);
+
+                    foreach (var drawmessagekey in d.DrawMessages.Keys)
+                    {
+                        if(!d.StartingCards.Contains(drawmessagekey))
+                        LogProblem("Deckspec " + d.Id + " has a drawmessage for card " + drawmessagekey + ", but that card isn't in the list of drawable cards.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing drawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
+            }
+
+            try
+            {
+                Hashtable htDefaultDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC);
+                if (htDefaultDrawMessages != null)
+                {
+                    d.DefaultDrawMessages = NoonUtility.HashtableToStringStringDictionary(htDefaultDrawMessages);
+
+                }
+            }
+            catch (Exception e)
+            {
+                LogProblem("Problem importing defaultdrawmessages for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
+            }
+
+
+            if (htEachDeck.ContainsKey(NoonConstants.KLABEL))
                d.Label = htEachDeck.GetValue(NoonConstants.KLABEL).ToString();
             if (htEachDeck.ContainsKey(NoonConstants.KDESCRIPTION))
                 d.Description = htEachDeck.GetValue(NoonConstants.KDESCRIPTION).ToString();

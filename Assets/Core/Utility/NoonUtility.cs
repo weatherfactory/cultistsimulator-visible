@@ -50,6 +50,8 @@ namespace Noon
         public const string KCONSUMES = "consumes";
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
+        public const string KDECKSPEC_DRAWMESSAGES = "drawmessages";
+        public const string KDECKSPEC_DEFAULTDRAWMESSAGES = "defaultdrawmessages";
         public const string KDECKDEFAULTCARD = "defaultcard";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public static string KICON="icon";
@@ -61,9 +63,6 @@ namespace Noon
 
         public const string KCHANCE = "chance";
         public const string KADDITIONAL = "additional";
-        public const string KCHARACTERTITLE = "title";
-        public const string KCHARACTERFIRSTNAME= "firstname";
-        public const string KCHARACTERLASTNAME = "lastname";
 
         public const string KLIFETIME = "lifetime";
         public const string KDECAYTO = "decayTo";
