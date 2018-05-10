@@ -63,9 +63,7 @@ namespace Assets.Core.Services
             
             TryUpdateCultLever(token, tokenAspects);
             
-            TryUpdateHqLever(token, tokenAspects);
-
-            
+            TryUpdateHqLever(token, tokenAspects);          
 
         }
 

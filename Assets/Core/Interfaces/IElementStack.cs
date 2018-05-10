@@ -45,6 +45,7 @@ namespace Assets.Core.Interfaces
 
         Source StackSource { get; set; }
         float LifetimeRemaining { get; set; }
+        IlluminateLibrarian IlluminateLibrarian { get; set; }
         Dictionary<string, string> GetCurrentIlluminations();
     }
 }

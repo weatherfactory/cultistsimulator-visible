@@ -27,7 +27,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 stackSource, locatorid);
             foreach(var m in stackSpecification.Mutations)
                 stack.SetMutation(m.Key,m.Value);
-            if(stackSpecification.LifetimeRemaining>0)
+
+            stack.IlluminateLibrarian=new IlluminateLibrarian(stackSpecification.Illuminations);
+
+            if (stackSpecification.LifetimeRemaining>0)
                 stack.LifetimeRemaining = stackSpecification.LifetimeRemaining;
             return stack;
         }

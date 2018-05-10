@@ -61,7 +61,7 @@ namespace Assets.CS.TabletopUI {
 
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
-        private Dictionary<string, string> _currentIlluminations;
+        private IlluminateLibrarian _illuminateLibrarian;
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -81,6 +81,11 @@ namespace Assets.CS.TabletopUI {
 
         public bool MarkedForConsumption { get; set; }
 
+        public IlluminateLibrarian IlluminateLibrarian
+        {
+            get { return _illuminateLibrarian; }
+            set { _illuminateLibrarian = value; }
+        }
 
 
         protected override void Awake() {
@@ -129,7 +134,7 @@ namespace Assets.CS.TabletopUI {
         }
         public Dictionary<string, string> GetCurrentIlluminations()
         {
-            return new Dictionary<string, string>(_currentIlluminations);
+            return IlluminateLibrarian.GetCurrentIlluminations();
         }
 
         public void SetMutation(string aspectId, int value,bool additive=false)
@@ -147,6 +152,9 @@ namespace Assets.CS.TabletopUI {
             else
             _currentMutations.Add(aspectId,value);
         }
+
+
+
 
         public Dictionary<string, string> GetXTriggers() {
             return _element.XTriggers;
@@ -199,18 +207,33 @@ namespace Assets.CS.TabletopUI {
             return _element.HasChildSlotsForVerb(verb);
         }
 
+        private void InitialiseIfStackIsNew()
+        {
+            //these things should only be initialised if we've just created the stack
+            //if we're repopulating, they'll already exist
 
-    /// <summary>
-    /// This is uses both for population and for repopulation - eg when an xtrigger transforms a stack
-    /// Note that it (intentionally) resets the timer.
-    /// </summary>
-    /// <param name="elementId"></param>
-    /// <param name="quantity"></param>
-    /// <param name="source"></param>
+            if (_currentMutations == null)
+                _currentMutations = new Dictionary<string, int>();
+            if (_illuminateLibrarian == null)
+                _illuminateLibrarian = new IlluminateLibrarian();
+            if (CurrentStacksManager == null) 
+                CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
+            //when first created, it should be in Limbo
+        }
+
+
+        /// <summary>
+        /// This is uses both for population and for repopulation - eg when an xtrigger transforms a stack
+        /// Note that it (intentionally) resets the timer.
+        /// </summary>
+        /// <param name="elementId"></param>
+        /// <param name="quantity"></param>
+        /// <param name="source"></param>
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
-        _currentMutations = new Dictionary<string, int>();
-        _currentIlluminations =new Dictionary<string, string>();
+
+            InitialiseIfStackIsNew();
+        
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
@@ -235,9 +258,8 @@ namespace Assets.CS.TabletopUI {
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
 
                 StackSource = source;
-                if(CurrentStacksManager==null) //we might be repopulating - in which case there may already be one
-                    CurrentStacksManager = Registry.Retrieve<Limbo>().GetElementStacksManager(); //a stack must always have a parent stacks manager, or we get a null reference exception
-                //when first created, it should be in Limbo
+
+
             }
             catch (Exception e) {
                 NoonUtility.Log("Couldn't create element with ID " + elementId + " - " + e.Message + "(This might be an element that no longer exists being referenced in a save file?)");
