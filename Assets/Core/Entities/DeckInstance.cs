@@ -103,6 +103,17 @@ namespace Assets.Core.Entities
             return cardsList;
         }
 
+
+        public Dictionary<string, string> GetDefaultDrawMessages()
+        {
+            return new Dictionary<string, string>(_deckSpec.DefaultDrawMessages);
+        }
+
+        public Dictionary<string, string> GetDrawMessages()
+        {
+            return new Dictionary<string, string>(_deckSpec.DrawMessages);
+        }
+
         public Hashtable GetSaveData()
         {
             var cardsHashtable = new Hashtable();

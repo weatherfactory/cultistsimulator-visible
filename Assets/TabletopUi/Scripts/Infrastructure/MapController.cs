@@ -62,41 +62,37 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (doorDeck == null)
                 throw new ApplicationException("MapController couldn't find a mansus deck for location2 with ID " + subLocationDeck2Id);
             
-			string cardid0 = dealer.Deal(doorDeck);
-            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, cardid0,activeDoor.portalType, GetMansusJournalEntry(doorDeckId, cardid0));
+			DrawWithMessage dwm0 = dealer.DealWithMessage(doorDeck);
+            cards[0] = BuildCard(activeDoor.cardPositions[0].transform.position, dwm0.DrawnCard,activeDoor.portalType, dwm0.WithMessage);
             cards[0].FlipToFaceUp(true);
 
             // Display face down cards next to locations
 			int counter = 0;
-			string cardid1 = dealer.Deal(subLocationDeck1);
-			while (cardid1 == cardid0)
+            DrawWithMessage dwm1 = dealer.DealWithMessage(subLocationDeck1);
+			while (dwm1.DrawnCard == dwm0.DrawnCard)
 			{
-				cardid1 = dealer.Deal(subLocationDeck1);	// Repeat until we get a non-matching card
+				dwm1 = dealer.DealWithMessage(subLocationDeck1);	// Repeat until we get a non-matching card
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, cardid1, activeDoor.portalType, GetMansusJournalEntry(subLocationDeck1Id, cardid1));
+            cards[1] = BuildCard(activeDoor.cardPositions[1].transform.position, dwm1.DrawnCard, activeDoor.portalType,  dwm1.WithMessage);
             cards[1].FlipToFaceDown(true);
 
 			counter = 0;
-			string cardid2 = dealer.Deal(subLocationDeck2);
-			while (cardid2 == cardid1 || cardid2 == cardid0)
+            DrawWithMessage dwm2 = dealer.DealWithMessage(subLocationDeck2);
+			while (dwm2.DrawnCard == dwm1.DrawnCard || dwm2.DrawnCard == dwm0.DrawnCard)
 			{
-				cardid2 = dealer.Deal(subLocationDeck2);	// Repeat until we get a non-matching card
+				dwm2 = dealer.DealWithMessage(subLocationDeck2);	// Repeat until we get a non-matching card
 				counter++;
 				Debug.Assert( counter<10, "SetupMap() : Unlikely number of retries. Could be stuck in while loop?" );
 			}
-            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, cardid2, activeDoor.portalType, GetMansusJournalEntry(subLocationDeck2Id,cardid2));
+            cards[2] = BuildCard(activeDoor.cardPositions[2].transform.position, dwm2.DrawnCard, activeDoor.portalType, dwm2.WithMessage);
             cards[2].FlipToFaceDown(true);
 
             // When one face-down card is turned, remove all face up cards.
             // On droping on door: Return
         }
 
-        private string GetMansusJournalEntry(string deckId, string elementId)
-        {
-            return "Drew " + elementId + " from " + deckId;
-        }
 
         ElementStackToken BuildCard(Vector3 position, string id,PortalEffect portalType,string mansusJournalEntryMessage) {
             var newCard = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);

@@ -363,7 +363,7 @@ public class ContentImporter
 
             try
             {
-                Hashtable htDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC);
+                Hashtable htDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DRAWMESSAGES);
                 if (htDrawMessages != null)
                 {
                     d.DrawMessages = NoonUtility.HashtableToStringStringDictionary(htDrawMessages);
@@ -383,7 +383,7 @@ public class ContentImporter
 
             try
             {
-                Hashtable htDefaultDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC);
+                Hashtable htDefaultDrawMessages = htEachDeck.GetHashtable(NoonConstants.KDECKSPEC_DEFAULTDRAWMESSAGES);
                 if (htDefaultDrawMessages != null)
                 {
                     d.DefaultDrawMessages = NoonUtility.HashtableToStringStringDictionary(htDefaultDrawMessages);

@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Noon;
+using Random = UnityEngine.Random;
 
 namespace Assets.Logic
 {
@@ -29,6 +30,23 @@ namespace Assets.Logic
             else
                 return drawnId;
         }
+
+        public DrawWithMessage DealWithMessage(IDeckInstance deck)
+        {
+            var drawnCard = Deal(deck);
+            var drawWithMessage = new DrawWithMessage {DrawnCard = drawnCard};
+            if (deck.GetDrawMessages().ContainsKey(drawnCard))
+                drawWithMessage.WithMessage = deck.GetDrawMessages()[drawnCard];
+            else
+            {
+                if (deck.GetDefaultDrawMessages().Any())
+                   drawWithMessage.WithMessage=deck.GetDrawMessages().OrderBy(x => Random.value).First().Value;
+            }
+
+            return drawWithMessage;
+        }
+
+
 
         public void RemoveFromAllDecks(string elementId)
         {

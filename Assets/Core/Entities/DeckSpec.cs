@@ -20,6 +20,8 @@ namespace Assets.Core.Entities
         bool ResetOnExhaustion { get; set; }
         string Label { get; set; }
         string Description { get; set; }
+        Dictionary<string, string> DrawMessages { get; set; }
+        Dictionary<string, string> DefaultDrawMessages { get; set; }
     }
 
 
@@ -35,6 +37,8 @@ namespace Assets.Core.Entities
         void Add(string elementId);
         List<string> GetCurrentCardsAsList();
         void RemoveAllCardsWithId(string elementId);
+        Dictionary<string, string> GetDefaultDrawMessages();
+        Dictionary<string, string> GetDrawMessages();
     }
 
 
