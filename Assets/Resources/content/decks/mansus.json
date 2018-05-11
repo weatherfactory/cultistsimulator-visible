@@ -135,7 +135,9 @@ resetonexhaustion:true
 		["influencegraile",
 		"fragmentsecrethistoriesd",
 		"favour"],
-				drawmessages:{},
+				drawmessages:{influencegraile:"The THIRST of the Spider's Door is second only to that of the Grail, or perhaps it's even the same thing.",
+		fragmentsecrethistoriesd:"",
+		favour:"Last night behind the Spider's Door I found an agent of door who had strayed into an unwise dream. The things that walk the Silken Sands, that greyness in which the Door is set, have an especial taste for policemen. He screamed until I freed him, but I did not free him until he had told me what I needed to know."},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
@@ -156,13 +158,13 @@ resetonexhaustion:true
 		"fragmentsecrethistoriese",
 		"dread",
 		"dread"],
-				drawmessages:{},
+				drawmessages:{influencewinterg:"Chamber of Ways",
+		fragmentsecrethistoriese:"",
+		dread:""},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
-	
-	
-						{id: "mansus_peacockdoor",
+							{id: "mansus_peacockdoor",
 	spec:
 		["scholarvak",
 		"fragmentsecrethistoriesf",
@@ -177,9 +179,11 @@ resetonexhaustion:true
 	"ingredientgraild",
 	"fragmentsecrethistoriesg",
 	"favour"],
-			drawmessages:{},
+			drawmessages:{	[influencegrailg:"When one dreams of the Red Church, one hears the voices of the Grail's Names, the Thirstlies and the Ivories and the Lovelies and the rest. 'Not all the empousai are women,' they might be heard to say 'The hungers of women run no deeper than the hungers of men. But a mother is never far from her child at its birth, and that is not always true of a father. Come closer, and we will show you what we mean.'",
+	ingredientgraild:"When I visited the Red Church last night, they told me, between their clawings and their caresses, that the Flowermaker had visited but lately.",
+	fragmentsecrethistoriesg:"I saw the Red Church again last night, with its pwes of bone, the stained glass in a shades of ruby, the golden altar that beats like a heart. That night the Names of the Grail gathered to speak of those Long who've sworn off the pleasures of the bedchamber - save between man and man, or woman and woman. 'They still pay the tribute of delight,' an Ivory said. 'They do not bear fruit,' a Lovely said. 'If Forge and Sun had only joined -' a Thirstly lamented. Then they fell to gossipping of the Long of the Ordo Limiae, and their deeds across the evening sea in Noon. I remember it still.",
+	favour:""],},
 		defaultdrawmessages:{},
-		comments:"NOt all empousai are women. But a mother is never far from her child at its birth, and that is not always true of a father.",
 resetonexhaustion:true
 	},
 {id: "mansus_peacockdoor2",
@@ -188,7 +192,10 @@ resetonexhaustion:true
 		"fragmentsecrethistoriesg",
 		"ingredientforgef",
 		"fascination"],
-				drawmessages:{},
+				drawmessages:{influenceforgeg:"",
+		fragmentsecrethistoriesg:"",,
+		ingredientforgef:"",,
+		fascination:"",},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
