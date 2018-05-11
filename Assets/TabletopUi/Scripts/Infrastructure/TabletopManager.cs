@@ -658,7 +658,7 @@ namespace Assets.CS.TabletopUI {
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
 
-            //hasty crappy lline from AK, feel free to improve if you're passing!
+            //hasty crappy line from AK, feel free to improve if you're passing!
             SituationWindow zoomTo= mansusSituation.situationWindow as SituationWindow;
             tableScroll.content.anchoredPosition = zoomTo.transform.position;
             mansusSituation = null;
