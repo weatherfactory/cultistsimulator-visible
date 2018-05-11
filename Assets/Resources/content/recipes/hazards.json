@@ -203,7 +203,7 @@
 	label:"The Worms in the World",
 	actionId: "curse_nowhere",
 	requirements: {notoriety:-1},
-	startdescription: "There are Worms in the city. One does not see Worms, but neither does one forget them. They will enter  someone through the spaces in the skin and do what Worms will.",
+	startdescription: "There are Worms in the city. One does not see Worms, but neither does one forget them. They will enter someone through the spaces in the skin and do what Worms will.",
 	description:"There is nothing that can be done. If we find what is left, we must burn and sift with the utmost care.",
 	effects:{mortal:-1,notoriety:1},
 	slots: [{id:"Someone",greedy:true,required:{mortal:1}}],
