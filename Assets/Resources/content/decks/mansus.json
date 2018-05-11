@@ -19,31 +19,47 @@ comments: "but this should only be drawn from once."
 		["influencemoth",
 		"fragmentsecrethistories",
 		"rumour"],
+		drawmessages:{influencemoth:"'In the midst of the journey of our life, I found myself in a dark wood without paths. It is difficult to express how wild, harsh and impenetrable that wood was...' I don't recall exactly what occurred, last night, in the beating black between the trunks of the trees, where winged things moved beneath my hands. But now this morning my brain fizzes with fragments: IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI RUM IMUS NOC TE ET CON SUMI MUR -'",
+		fragmentsecrethistories:"I walked in the Wood last night, and the scissors worked in the distance and the furred things crammed my mouth and swarmed my ears, and I felt the old urge to drop to wolf-fours and nose among the roots. But I remembered that I walk upright by day and I know fire and steel and words, and at last I found where the Velvet had concealed a secret on tree-bark beneath moss. I read it then with the tips of my fingers, and I think now that I could write it in full.",
+		rumour:"'While I was returning to the depths, one appeared, in front of my eyes, whose mouth was sealed. When I saw them, in the great emptiness, I cried out...' I think that last night I met another soul in the Wood. I will never recall exactly what we said, one to another, but I think that we might find each other in waking.",
+		},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
-	
-			{id: "mansus_wood1",
-	spec:
-		["influenceknock",
-		"fragmentsecrethistoriesb",
-		"rumour"],
-resetonexhaustion:true
-	},
-	
-				{id: "mansus_wood2",
+		
+				{id: "mansus_wood1",
 	spec:
 		["influencegrail",
 		"vitality",
 		"fragmentsecrethistoriesb",
 		"rumour"],
+				drawmessages:{influencegrail:"The Well in the Wood is never dry, but it is never clear. One night it might heave with crawling roots; on another, it will pulse with bright moss. On nights of the full moon its waters are choked with the fat dappled bodies of moths. Last night, I saw it brimming with dark and viscous blood. Gelatinous shreds drifted on its surface; clots of Grail-matter.",
+		vitality:"The Well in the Wood is sacred to the Grail, the Hour that hungers, and to the Velvet, the Hour that guards secrets... tonight as I approached, it heaved with the Velvet's moss, struggling waves of deep and vibrant green, pulsing againand again from its throat. It surged around my calves, rose to my thighs, and this morning I still feel the Velvet's breath, strong within me.",
+		fragmentsecrethistoriesb:"The Velvet is strong at the Well in the Wood, and the Velvet is the Hour that keeps secrets; but now and then she lets a little secret fall, like a crumb at a feast. Last night I found a moss-clad rock written all around with the secrets of another history. I might give thanks to the Velvet, but it will be wiser not to draw her attention.",
+		rumour:"So many things rise from the Well in the Wood. Last night it was aswarm with wormy roots The tree clustered and whispered. Perhaps they were welcooming the influx. I found a sleeping soul ensnared in the roots, and I helped them struggle free. When they wake, they will recall my face, as I do theirs."},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 
+	},
+	
+				{id: "mansus_wood2",
+	spec:
+		["influenceknock",
+		"fragmentsecrethistoriesb",
+		"rumour"],
+				drawmessages:{influenceknock:"Last night I came in the Wood to the high jagged rock called the Temple of the Wheel. It opened like a mouth beneath my hands, and I walked in the whispering space within. The Gods-who-were-stone, the first of the Hours, are almost all gone now, but here their voices remain: Wheel, Flint, Tide, the others without names.",
+				fragmentsecrethistoriesb:"In my sleep I came to the high jagged rock which is still called the Temple of the Wheel, though the hour called Wheel is long extinct. Another hand had chalked a secret on its flank. I burned it in my memory to preserve it for waking, before the Velvet came out of the velvet Wood-depths and erased it. The Velvet is jealous of her secrets.",
+				rumour:"I came to the Temple of the Wheel, that high and jagged rock, that memorial to dead gods. Those who take their own lives sometimes first cast themselves from its peak in dream. I found another sleeping soul making the ascent. I do not recall what passed between us, but if I would know their face in the waking world."},
+		defaultdrawmessages:{},
+resetonexhaustion:true
 	},
 			{id: "mansus_whitedoor",
 	spec:
 		["influencewinterc",
 		"fragmentsecrethistoriesb",
 		"rumour"],	
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 				{id: "mansus_whitedoor1",
@@ -52,6 +68,8 @@ resetonexhaustion:true
 	"glimmering",
 	"contentment",
 	"fragmentsecrethistoriesc"],
+			drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 {id: "mansus_whitedoor2",
@@ -59,6 +77,8 @@ resetonexhaustion:true
 		["influenceknockc",
 		"fragmentsecrethistoriesc",
 		"rumour"],
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 
@@ -68,8 +88,9 @@ resetonexhaustion:true
 		["influenceknocke",
 		"fragmentsecrethistoriesc",
 		"influenceforgec"],
-		drawmessages:{influenceforgec:"Ghirbi was weeping again. I scooped up his molten tears in my cupped palm. In the dream, my skin peeled and blistered, but only in the dream.",
-		fragmentsecrethistoriesc:"Last night, Ghirbi was talkative. He spoke in his siege-engine voice of the histories he'd overheard in the waking world. I listened, until his stories tailed off again into weeping."},
+		drawmessages:{influenceknocke:"In sleep, I ran my fingers along the ridged edges of the Stag Door's scars. 'Our company it was that shattered it,' Ghirbi says suddenly. 'Before the Gods-who-were-flesh, the Mansus was forbidden to mortals. We were the first Know.' He begins again to weep his molten tears. 'I wish that we had not. I wish I had died in the world....' I have forgotten what else he said. But I remember the shape of the fissures in the Stag Door, and for all of today, doors will fear my touch.",
+		fragmentsecrethistoriesc:"Last night, Ghirbi was talkative. He spoke in his siege-engine voice of the histories he'd overheard in the waking world. I listened, until his stories tailed off again into weeping.",
+		influenceforgec:"Ghirbi was weeping again. I scooped up his molten tears in my cupped palm. In the dream, my skin peeled and blistered, but only in the dream.",},
 		defaultdrawmessages:{a:"Painted ships passed upon the Painted River. I met the painted eyes of a painted captain. She saluted, and the motion was like the layered movement of clouds."},
 resetonexhaustion:true
 	},
@@ -78,6 +99,8 @@ resetonexhaustion:true
 	["influenceedgee",
 	"influencegrailc",
 	"influencewintere"],
+			drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 {id: "mansus_stagdoor2",
@@ -85,6 +108,8 @@ resetonexhaustion:true
 		["erudition",
 		"fragmentsecrethistoriesd",
 		"fascination"],
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 	
@@ -93,6 +118,8 @@ resetonexhaustion:true
 		["influencegraile",
 		"fragmentsecrethistoriesd",
 		"favour"],
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 				{id: "mansus_spiderdoor1",
@@ -101,6 +128,8 @@ resetonexhaustion:true
 	"influencelanterne",
 	"influencemothe",
 	"fragmentsecrethistoriesc"],
+			drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 {id: "mansus_spiderdoor2",
@@ -110,6 +139,8 @@ resetonexhaustion:true
 		"fragmentsecrethistoriese",
 		"dread",
 		"dread"],
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 	
@@ -119,6 +150,8 @@ resetonexhaustion:true
 		["scholarvak",
 		"fragmentsecrethistoriesf",
 		"influencelanterng"],
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 				{id: "mansus_peacockdoor1",
@@ -127,6 +160,8 @@ resetonexhaustion:true
 	"ingredientgraild",
 	"fragmentsecrethistoriesg",
 	"favour"],
+			drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 {id: "mansus_peacockdoor2",
@@ -135,6 +170,8 @@ resetonexhaustion:true
 		"fragmentsecrethistoriesg",
 		"ingredientforgef",
 		"fascination"],
+				drawmessages:{},
+		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 	
