@@ -60,30 +60,34 @@ resetonexhaustion:true
 		"restlessness"],	
 				drawmessages:{influencewinterc:"Last night the White Door is bright as a mirror, bright as fresh snow, bright as the migraine moon. I remember its brightness, but I remember its chill the most. I laid my cheek against it. I still feel the ache of its cold in my skull.",
 		fragmentsecrethistoriesb:"Many of the Dead enter the Mansus through the White Door. They wander its corridors in silence until they are lost. Some embrace each other, some devour each other, some force their way into the dreams of the living. A few record their memories on the Mansus-stone where it is soft. They scratch it with their nails, you see. Last night I rad one of those memories. ",
-		restlessness:"Some Dead are lost in the Wood, some rise higher, but many - so many - pass the White Door into the House, and become silent forever. Last night they thronged the entrance. Our mouths were healed wounds. Their eyes roamed my skin. Their hands sought my warmth, but my touch burnt, and they drew back. Their urgency infected me.",
+		restlessness:"Some Dead are lost in the Wood, some rise higher, but many - so many - pass the White Door into the House, and become silent forever. Last night they thronged the entrance. Our mouths were healed wounds. Their eyes roamed my skin. Their hands sought my warmth, but my touch burnt, and they drew back. Their urgency infected me."},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
-				{id: "mansus_whitedoor1",
+	{id: "mansus_whitedoor1",
+	spec:
+		["influenceknockc",
+		"fragmentsecrethistoriesc",
+		"glimmering"],
+				drawmessages:{influenceknockc:"Last night, in the great Pavilion above the grey sprawl of the bounds, a woman who once called herself Teresa Galmier sat on a gilt-fringed pillow, and offered me a horn cup of dream-wine. 'The wine is imaginary,' she explained, 'but the cup is not. To navigate the Mansus one must understand the distinction. Perhaps one day you'll join me on the Pilgrimage, or I'll join you. So here, let us share a secret -' and her breath tickled my ear.",
+				fragmentsecrethistoriesc:"Last night I visited Galmier's Lodge. My hostess manifested as an elegant woman with fashionably short hair and dark glasses. 'No,' she admits, 'I don't need them any more, any more than I need eyes. Allow me my sentimentalities. But you've come for knowledge, I expect? Here is a story I heard in my Kerisham days. You are welcome to it. Only remember me, if you come to make the Pilgrimage.",
+				glimmering:"I recall my dream. This was the Lodge of blue silk, flapping in the winds of the Bounds at the Mansus' edge, and here was its mistress, who welcomed me as she welcomes all travellers. 'Company is nice,' she confided, 'but I still miss my Christopher. Ten years! Ten years, and and not enough. But we could not have been Long together - not without touching each other. And you know what occurs when a man-Long lies with a Long woman. Or perhaps you don't. I hope you don't. I won't tell you, just in case. I will give you a tiny gift.'"},
+		defaultdrawmessages:{},
+resetonexhaustion:true
+	},
+				{id: "mansus_whitedoor2",
 	spec:
 	["influencelanternc",
 	"glimmering",
 	"contentment",
 	"fragmentsecrethistoriesc"],
-			drawmessages:{},
+			drawmessages:{influencelanternc:"'The invisible arts,'  Christopher Illopoly is said to have remarked, 'are as profitable as macramé, as ethical as tobacco-smuggling, and in general as beneficial as roulette. Still, there is always the Orchard of Lights.' And indeed, the Orchard, with is glowing fruit and its peaceful mists, is a place to be yearned for. Last night I walked there, and after waking I still carry with me a little of the glory of the old Sun.",
+	glimmering:"The Sun-in-Splendour, the Hour who once ruled the Mansus, was known to walk in the Orchard, before his terrible division. Sometimes his remnants walk here still - sometimes I see the chilly radiance of the Meniscate through the trees, or the chillier radiance of the Sun-in-Rags. Were they to come upon me, it might be my end, but to see them in the distance is a gift of insight.",
+	contentment:"The Hours have been called unmerciful, but they permit sleepers, sometimes, to walk in the Orchard of Lights, where each fruit glows like a sunset, where the roots of the trees are shaped for peaceful rest, where the mist soothes the heart. I was there last night, and the taste of the fruit lingers, sharp and sweet as the passage of spring to summer.",
+	fragmentsecrethistoriesc:"Last night I walked in the Orchard of Lights. I plucked the fruit (which is always ripe) and consumed it in two bites (the taste is not to be forgotten). As I licked the glowing juices from my fingers, I saw a message carved in the bark of the tree. When I woke, I recorded that message - all I could remember - in my diary."},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
-{id: "mansus_whitedoor2",
-	spec:
-		["influenceknockc",
-		"fragmentsecrethistoriesc",
-		"rumour"],
-				drawmessages:{},
-		defaultdrawmessages:{},
-resetonexhaustion:true
-	},
-
 
 				{id: "mansus_stagdoor",
 	spec:
@@ -101,16 +105,20 @@ resetonexhaustion:true
 	["influenceedgee",
 	"influencegrailc",
 	"influencewintere"],
-			drawmessages:{},
+			drawmessages:{influenceedgee:"knives",
+	influencegrailc:"knives",
+	influencewintere:"knives"},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
 {id: "mansus_stagdoor2",
 	spec:
-		["erudition",
+		["fascination",
 		"fragmentsecrethistoriesd",
-		"fascination"],
-				drawmessages:{},
+		"erudition"],
+	drawmessages:{fascination:"I dreamt of the Mansus behind the White Door, of the great space above the Orchard, the space that overlooks the Bounds, the space where the Vagabond once painted her River. Painted ships passed upon the Painted River. I met the painted eyes of a painted captain. She saluted, and the motion was like the layered movement of clouds. The sail of the ship was amber and the captain's eyes the green of new barley and the river, aquamarine. Now that I'm awake, I see those colours still.",
+				fragmentsecrethistoriesd:"There is a great chamber in the Mansus through which a Painted River flows. The Vagabond, it is claimed, painted it from memory in the years before she left the House. Certainly there are histories concealed in its design. I traced them with my hand last night. There were fragments of aquamarine paint beneath my nails, flecks of gold leaf, when I was done.",
+				erudition:"The Painted River runs from a great chamber near the White Door, far through the Mansus, to its far edge where it enters a painted delta of far cloud. I voyaged half its length last night with a stern-faced captain beneath a rust-red sail. As the clouds rose before us, the sailors raised a yearning shanty, and close-hauled the sails to best use the painted wind. And all the while the captain and I discoursed on the secrets of the House of the Sun...."},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
