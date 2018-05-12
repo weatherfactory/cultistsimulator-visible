@@ -626,6 +626,7 @@ namespace Assets.CS.TabletopUI {
             LockSpeedController(true);
             isInNonSaveableState = true;
 
+            SoundManager.PlaySfx("MansusEntry");
             // Play Mansus Music
             backgroundMusic.PlayMansusClip();
 
@@ -652,6 +653,7 @@ namespace Assets.CS.TabletopUI {
             // Do transition
             _tabletop.Show(true);
             _mapController.ShowMansusMap(origin, false);
+            SoundManager.PlaySfx("MansusExit");
 
             // Put card into the original Situation Results
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));

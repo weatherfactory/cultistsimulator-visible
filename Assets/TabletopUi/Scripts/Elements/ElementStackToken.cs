@@ -692,7 +692,11 @@ namespace Assets.CS.TabletopUI {
 
         
 
-        public void FlipToFaceUp(bool instant = false) {
+        public void FlipToFaceUp(bool instant = false)
+        {
+            if (!instant)
+                SoundManager.PlaySfx("CardTurnOver");
+
             Flip(true, instant);
         }
 
