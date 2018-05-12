@@ -9,6 +9,8 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using Noon;
 
 namespace OrbCreationExtensions
 {
@@ -42,14 +44,30 @@ namespace OrbCreationExtensions
             return GetString(hash, key, null);
         }
         public static string GetString(this Hashtable hash, object key, string defaultValue) {
+            
             object value = null;
             if(hash.ContainsKey(key)) {
                 value = hash[key];
+                string result;
                 if(value == null) return defaultValue;
-                if(value.GetType() == typeof(string)) return (string)value;
-                if(value.GetType() == typeof(bool)) return ((bool)value).MakeString();
-                if(value.GetType() == typeof(int) || value.GetType() == typeof(long)) return ((int)value).MakeString();
-                if(value.GetType() == typeof(float) || value.GetType() == typeof(double)) return ((float)value).MakeString();
+
+                if (value is Hashtable)
+                {
+                    string offendingLines=String.Empty;
+                    foreach(var k in ((Hashtable)value).Keys)
+                        offendingLines =offendingLines+ k + ":" + ((Hashtable)value)[k] + "||";
+                   NoonUtility.Log("Trying to parse a hashtable as a string, which probably means a missing comma. Offending lines: " + offendingLines,1);
+                    return string.Empty;
+                }
+                
+
+                else if(value is string) result= (string)value;
+                else if(value is bool) result = ((bool)value).MakeString();
+                else if(value is int || value is long) result = ((int)value).MakeString();
+                else if(value is float || value is double) result = ((float)value).MakeString();
+                else throw new ApplicationException("Unrecognised type importing this value from JSON as a string :" + value);
+
+                return result;
             }
             return defaultValue;
         }

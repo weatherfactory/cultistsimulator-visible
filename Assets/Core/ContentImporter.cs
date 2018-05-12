@@ -111,8 +111,7 @@ public class ContentImporter
         foreach (TextAsset ta in elementTextAssets)
         {
             string json = ta.text;
-            Hashtable htElements = new Hashtable();
-            htElements = SimpleJsonImporter.Import(json);
+            var htElements = SimpleJsonImporter.Import(json);
             totalElementsFound += PopulateElements(htElements);
         }
 
@@ -146,7 +145,7 @@ public class ContentImporter
 
 
             Element element = new Element(htElement.GetString(NoonConstants.KID),
-                htElement.GetString(NoonConstants.KLABEL),
+              htElement.GetString(NoonConstants.KLABEL),
                 htElement.GetString(NoonConstants.KDESCRIPTION),
                 htElement.GetInt(NoonConstants.KANIMFRAMES),
                 htElement.GetString(NoonConstants.KICON));
@@ -963,4 +962,5 @@ public class ContentImporter
 
 
     }
+
 }

@@ -178,7 +178,7 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 },
 			{id: "investmentsjobb",
 	label: "A Substantial Private Income",
-		description: "Enough of an income to live in comfort."
+		description: "Enough of an income to live in comfort.",
 	aspects: {benign:1},
 	xtriggers: {decline: investmentsjoba}
 	
@@ -195,26 +195,27 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 
 		{id: "mediumjob",
 		aspects:{job:1},
-	label: "A Reputation as a Medium"
+	label: "A Reputation as a Medium",
 	description: ""
 	
 },
 
 		{id: "auctioneerjob",
 		aspects:{job:1},
-	label: "A Position at Oriflamme's Auction House"
+	label: "A Position at Oriflamme's Auction House",
 	description: ""
 	
 },
 
 		{id: "dancerjob",
 		aspects:{job:1},
-	label: "Dancing at the Ecdysis Club"
+	label: "Dancing at the Ecdysis Club",
 	description: ""
+},
 	
 		{id: "priestjob",
 		aspects:{job:1},
-	label: "Priestly Stipend"
+	label: "Priestly Stipend",
 	description: ""
 	
 },
