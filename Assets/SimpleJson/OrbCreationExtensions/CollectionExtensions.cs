@@ -7,10 +7,7 @@
 
 using UnityEngine;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using Noon;
+using System.Collections;using Noon;
 
 namespace OrbCreationExtensions
 {
