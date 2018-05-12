@@ -48,7 +48,6 @@ namespace Assets.CS.TabletopUI {
 
         [Space]
         [SerializeField] AspectsDisplay aspectsDisplay;
-        [SerializeField] TextMeshProUGUI hintText;
 
 		[SerializeField] Button startButton;
 		[SerializeField] TextMeshProUGUI startButtonText;
@@ -149,7 +148,6 @@ namespace Assets.CS.TabletopUI {
 
             results.gameObject.SetActive(false);
 
-            DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
             DisplayButtonState(false, buttonBusy);
 
             SetWindowSize(IsWideRecipe(recipe));
@@ -169,7 +167,6 @@ namespace Assets.CS.TabletopUI {
             results.gameObject.SetActive(true);
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
 
-            hintText.text = "";
             results.UpdateDumpButtonText();
         }
 
@@ -178,15 +175,14 @@ namespace Assets.CS.TabletopUI {
         public void DisplayUnstarted() {
             Title = Verb.Label;
             PaginatedNotes.SetText(Verb.Description);
-            DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
             SetWindowSize(false);
         }
 
 		public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
-			PaginatedNotes.SetText(Verb.Description);
-			DisplayRecipeMetaComment("This does nothing. If I experiment further, I may find another combination.");
+			//PaginatedNotes.SetText(Verb.Description);
+            PaginatedNotes.SetText("Nothing. I could try something else...");
 			DisplayButtonState(false);
             SetWindowSize(false);
         }
@@ -195,7 +191,6 @@ namespace Assets.CS.TabletopUI {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
             DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
-			DisplayRecipeMetaComment(null);
 			DisplayButtonState(true);
             SetWindowSize(IsWideRecipe(r));
 
@@ -205,7 +200,6 @@ namespace Assets.CS.TabletopUI {
         public void DisplayHintRecipeFound(Recipe r) {
             Title = r.Label;
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
-            DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
             SetWindowSize(IsWideRecipe(r));
 
@@ -261,19 +255,9 @@ namespace Assets.CS.TabletopUI {
         public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
-			DisplayRecipeMetaComment(recipePrediction.Commentary);
-			//DisplayButtonState(false);
+
         }
 
-        public void DisplayRecipeMetaComment(string hint) {
-            bool isActive = !string.IsNullOrEmpty(hint);
-            hintText.gameObject.SetActive(isActive);
-
-            if (!isActive)
-                return;
-
-            hintText.text = hint;
-        }
 
         public void DisplayAspects(IAspectsDictionary forAspects) {
 			aspectsDisplay.DisplayAspects(forAspects);

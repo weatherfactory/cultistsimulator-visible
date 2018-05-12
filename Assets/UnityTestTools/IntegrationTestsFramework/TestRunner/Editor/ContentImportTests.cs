@@ -243,7 +243,6 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_LABEL, recipesImported.First().Label);
             Assert.AreEqual(RECIPE_1_START_DESCRIPTION, recipesImported.First().StartDescription);
             Assert.AreEqual(RECIPE_1_DESCRIPTION, recipesImported.First().Description);
-            Assert.AreEqual(RECIPE_1_ASIDE,recipesImported.First().Aside);
         }
     }
 }

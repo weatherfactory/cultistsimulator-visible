@@ -510,11 +510,7 @@ public class ContentImporter
                 htEachRecipe.Remove(NoonConstants.KDESCRIPTION);
 
                 
-
-                if (htEachRecipe.ContainsKey(NoonConstants.KASIDE))
-                    r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
-                htEachRecipe.Remove(NoonConstants.KASIDE);
-
+                
 
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);

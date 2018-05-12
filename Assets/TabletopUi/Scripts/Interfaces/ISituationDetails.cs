@@ -63,7 +63,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void ReceiveTextNote(INotification notification);
         IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
         IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects);
-        void DisplayRecipeMetaComment(string hint);
         void DisplayHintRecipeFound(Recipe r);
         IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool showElementAspects);
         void TryDecayResults(float interval);

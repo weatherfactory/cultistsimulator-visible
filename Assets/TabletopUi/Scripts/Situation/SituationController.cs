@@ -495,12 +495,6 @@ namespace Assets.TabletopUi {
             //if we found a recipe, display it, and get ready to activate
             if (matchingRecipe != null) {
                 situationWindow.DisplayStartingRecipeFound(matchingRecipe);
-
-                if (matchingRecipe.MaxExecutions == 1)
-                    situationWindow.DisplayRecipeMetaComment("This will only happen once.");
-                if (matchingRecipe.MaxExecutions > 1)
-                    situationWindow.DisplayRecipeMetaComment("This will only happen " + matchingRecipe.MaxExecutions + " times.");
-
                 return;
             }
 
