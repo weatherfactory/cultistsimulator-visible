@@ -103,7 +103,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 htLegacies.Add(activeLegacy.Id,activeLegacy.Id);
             }
 
-            else if (availableLegacies==null && !availableLegacies.Any())
+            else if (availableLegacies==null || !availableLegacies.Any())
             {
                 throw new ApplicationException("Tried to save game with no available legacies. This should never happen, and if it does, it'll corrupt your save. Please let us know what happened at " + NoonConstants.SupportEmail + " - thank you!");
             }

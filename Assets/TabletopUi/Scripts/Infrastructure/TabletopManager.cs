@@ -259,6 +259,7 @@ namespace Assets.CS.TabletopUI {
             if (chosenLegacy == null) {
                 NoonUtility.Log("No initial Legacy specified");
                 chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
+                CrossSceneState.SetChosenLegacy(chosenLegacy);
             }
 
             builder.CreateInitialTokensOnTabletop();
@@ -268,7 +269,7 @@ namespace Assets.CS.TabletopUI {
 
             DealStartingDecks();
 
-            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
+            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription);
         }
 
         private void SetStartingCharacterInfo(Legacy chosenLegacy) {
