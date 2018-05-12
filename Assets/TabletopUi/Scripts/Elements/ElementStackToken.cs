@@ -291,11 +291,13 @@ namespace Assets.CS.TabletopUI {
 
 
         public override void ReturnToTabletop(Context context) {
-            if (originStack != null && originStack.IsOnTabletop()) {
+            //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
+            //We might have changed the element that a stack is associated with... so check we can still merge it
+            if (originStack != null && originStack.IsOnTabletop() && CanMergeWith(originStack)) {
                 originStack.MergeIntoStack(this);
                 return;
             }
-            // In case we're not unique and we've never been on the table, auto-merge us!
+            // If we're not unique and we've never been on the table, auto-merge us!
             else if (!_element.Unique && lastTablePos == null) {
                 var tabletop = Registry.Retrieve<TabletopManager>();
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
