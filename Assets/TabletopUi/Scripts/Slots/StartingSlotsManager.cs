@@ -43,13 +43,15 @@ namespace Assets.TabletopUi.SlotsContainers {
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
 
-            // startingSlots updated may resize window
+            
             situationController.StartingSlotsUpdated();
 
             if (slot.IsPrimarySlot() && stack.HasChildSlotsForVerb(situationController.GetTokenId()))
                 AddSlotsForStack(stack, slot);
 
             ArrangeSlots();
+
+            situationController.TryResizeWindow(GetAllSlots().Count);
 
         }
 

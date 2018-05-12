@@ -510,6 +510,7 @@ namespace Assets.TabletopUi {
             //no recipe, no hint, no aspects. Just set back to unstarted
             else
                 situationWindow.SetUnstarted();
+
         }
 
         public void OngoingSlotsUpdated() {
@@ -714,6 +715,11 @@ namespace Assets.TabletopUi {
         public void SetEditorActive(bool active)
         {
             situationToken.SetEditorActive(active);
+        }
+
+        public void TryResizeWindow(int slotsCount)
+        {
+                situationWindow.SetWindowSize(slotsCount > 3);
         }
     }
 }

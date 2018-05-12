@@ -149,8 +149,8 @@ namespace Assets.CS.TabletopUI {
             results.gameObject.SetActive(false);
 
             DisplayButtonState(false, buttonBusy);
-
-            SetWindowSize(IsWideRecipe(recipe));
+            
+            SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
 
 			_heart.AdvanceTime( 0.0f );	// Force a refresh of desktop without actually advancing time, so that new timer will appear on verb token - CP
         }
@@ -181,10 +181,9 @@ namespace Assets.CS.TabletopUI {
 
 		public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
-			//PaginatedNotes.SetText(Verb.Description);
-            PaginatedNotes.SetText("Nothing. I could try something else...");
+			PaginatedNotes.SetText(Verb.Description);
+            
 			DisplayButtonState(false);
-            SetWindowSize(false);
         }
 
         public void DisplayStartingRecipeFound(Recipe r) {
@@ -192,7 +191,6 @@ namespace Assets.CS.TabletopUI {
 			PaginatedNotes.SetText(r.StartDescription);
             DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayButtonState(true);
-            SetWindowSize(IsWideRecipe(r));
 
             SoundManager.PlaySfx("SituationAvailable");
         }
@@ -201,33 +199,12 @@ namespace Assets.CS.TabletopUI {
             Title = r.Label;
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
             DisplayButtonState(false);
-            SetWindowSize(IsWideRecipe(r));
+            
 
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        bool IsWideRecipe(Recipe r) {
-            // If we're not in an explore or work action, we can't be wide.
-            if (r.ActionId != "explore" && r.ActionId != "work")
-                return false;
-
-            // This means we're a vault exploration, so we're wide.
-            if (r.Id.Contains("vault"))
-                return true;
-
-            // This means we're in a rite, so we're wide
-            if (r.Id.Substring(0,4) == "rite")
-                return true;
-            
-            // Other ideas: 
-            // Work verb +Rite - aspected element in the primary slot
-            // Explore verb + Vault - aspected element in the primary slot
-            // Though these require us to check the element.
-
-            return false;
-        }
-
-        void SetWindowSize(bool wide) {
+       public void SetWindowSize(bool wide) {
             RectTransform rectTrans = transform as RectTransform;
 
             if (wide)
@@ -246,6 +223,8 @@ namespace Assets.CS.TabletopUI {
             }
 
             windowIsWide = wide;
+
+           startingSlots.ArrangeSlots();
         }
 
         public void ReceiveTextNote(INotification notification) {
