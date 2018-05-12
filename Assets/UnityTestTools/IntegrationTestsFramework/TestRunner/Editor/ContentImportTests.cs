@@ -19,7 +19,6 @@ namespace CS.Tests
         private const string RECIPE_1_CRAFTABLE = "false";
         private const string RECIPE_1_START_DESCRIPTION = "this # is the start!";
         private const string RECIPE_1_DESCRIPTION = "to play / us out...";
-        private const string RECIPE_1_ASIDE = "(by the way...)";
         private const string RECIPE_1_WARMUP = "6";
         private const string RECIPE_1_LINKED = "someid";
         private const string RECIPE_1_ENDING = "anending";
@@ -131,7 +130,6 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KACTIONID, RECIPE_1_ACTIONID);
             htRecipe.Add(NoonConstants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
             htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
-            htRecipe.Add(NoonConstants.KASIDE,RECIPE_1_ASIDE);
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
             htRecipe.Add(NoonConstants.KMAXEXECUTIONS,RECIPE_MAX_EXECUTIONS.ToString());

@@ -255,7 +255,6 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- Token interaction --------------------------
 
             // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
@@ -314,6 +313,6 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(true);
         }
 
-        #endregion
+
     }    
 }

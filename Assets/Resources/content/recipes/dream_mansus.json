@@ -404,7 +404,7 @@ alternativerecipes: [
 	requirements: {wayspider:1},
 	slots: [{id:"Ascent",description: "Provide a blood sacrifice to satisfy the THIRST of the Spider's Door - or, with the right lore, find the way to the Peacock's Door, the door where light is spilt like blood.",required: {prisoner:1,lore:1}}],
 	startdescription: "In my dreams, I know the path through the Silken Sands to the Spider's Door. If I slake its THIRST by spilling fresh blood before I sleep, it will open to me.",
-	description: "Here in the folds of dream is the door, glistening black like the abdomen of a scoliid wasp, ever marked with ever-shrinking spots of blood. I have not satisfied its THIRST, and it will not open. Now I drift into other dreams."
+	description: "Here in the folds of dream is the door, glistening black like the abdomen of a scoliid wasp, ever marked with ever-shrinking spots of blood. I have not satisfied its THIRST, and it will not open. Now I drift into other dreams.",
 	linked: [{id:"dream_router",chance:100}],
 	aspects:{fatiguing:1},
 	craftable: true,

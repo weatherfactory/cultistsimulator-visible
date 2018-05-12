@@ -164,7 +164,7 @@ namespace Assets.Core.Entities {
         }
 
         private void End(IRecipeConductor rc) {
-            SoundManager.PlaySfx("SituationComplete");
+            
 
             var linkedRecipe = rc.GetLinkedRecipe(currentPrimaryRecipe);
             
@@ -174,6 +174,14 @@ namespace Assets.Core.Entities {
                 subscriber.ReceiveTextNotification(notification);
                 currentPrimaryRecipe = linkedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
+                if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
+                {
+                    if(currentPrimaryRecipe.SignalImportantLoop)
+                        SoundManager.PlaySfx("TimePassing");
+                    else
+                    SoundManager.PlaySfx("SituationLoop");
+
+                }
                 Beginning(currentPrimaryRecipe);
             }
             else { 
@@ -184,6 +192,7 @@ namespace Assets.Core.Entities {
         private void Complete() {
             State = global::SituationState.Complete;
             subscriber.SituationComplete();
+            SoundManager.PlaySfx("SituationComplete");
         }
 
     }

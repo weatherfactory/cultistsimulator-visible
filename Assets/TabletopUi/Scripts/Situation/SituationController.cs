@@ -128,6 +128,7 @@ namespace Assets.TabletopUi {
             situationToken.Retire();
             situationWindow.Retire();
             Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
+            SoundManager.PlaySfx("VerbDisappear");
         }
 
         #endregion

@@ -476,7 +476,10 @@ public class ContentImporter
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
                 htEachRecipe.Remove(NoonConstants.KCRAFTABLE);
 
-                if(htEachRecipe.Contains(NoonConstants.KPORTALEFFECT))
+                r.SignalImportantLoop = Convert.ToBoolean(htEachRecipe[NoonConstants.KSIGNALIMPORTANTLOOP]);
+                htEachRecipe.Remove(NoonConstants.KSIGNALIMPORTANTLOOP);
+
+                if (htEachRecipe.Contains(NoonConstants.KPORTALEFFECT))
                 {
                     string possiblePortalEffect = htEachRecipe[NoonConstants.KPORTALEFFECT].ToString();
                     try

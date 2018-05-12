@@ -32,7 +32,7 @@ namespace Noon
         public const string KHINTONLY = "hintonly";
         public const string KSTARTDESCRIPTION = "startdescription";
         public const string KDESCRIPTION = "description";
-        public const string KASIDE = "aside";
+        public const string KSIGNALIMPORTANTLOOP = "signalimportantloop";
         public const string KWARMUP = "warmup";
         public const string KREQUIREMENTS = "requirements";
         public const string KEFFECTS = "effects";

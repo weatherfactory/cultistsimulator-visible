@@ -27,7 +27,8 @@
 				greedy: true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
 				}],
-        linked:[{id:"discardseason",chance:100}]
+        linked:[{id:"discardseason",chance:100}],
+		signalimportantloop:true
     },
 	{id: "discardseason",
 	actionId: "time",

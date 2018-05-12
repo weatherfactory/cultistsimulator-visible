@@ -129,7 +129,10 @@ public class Recipe
         }
         return true;
     }
-
+    /// <summary>
+    /// do something grander like a bong when we loop this recipe
+    /// </summary>
+    public bool SignalImportantLoop { get; set; }
 
 }
 
