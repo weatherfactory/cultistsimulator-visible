@@ -559,7 +559,7 @@ namespace Assets.TabletopUi {
         public void DumpAllResults() {
             if (SituationClock.State == SituationState.Complete)
             {
-               // SoundManager.PlaySfx("CollectAll");
+                SoundManager.PlaySfx("CollectAll");
                 situationWindow.DumpAllResultingCardsToDesktop();
             }
         }
