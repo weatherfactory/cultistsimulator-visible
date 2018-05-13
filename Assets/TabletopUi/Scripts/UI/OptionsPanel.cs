@@ -41,27 +41,41 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField]
     private AudioMixer audioMixer;
 
-	SpeedController speedController;
+    [Header("Detail Windows")]
+    [SerializeField]
+    private AspectDetailsWindow aspectDetailsWindow;
+    [SerializeField]
+    private TokenDetailsWindow tokenDetailsWindow;
+
+    SpeedController speedController;
     BackgroundMusic backgroundMusic;
     SoundManager soundManager;
-    BaseDetailsWindow[] infoWindows;
 
-	private bool pauseStateWhenOptionsRequested = false;
+    private const string MUSICVOLUME="MusicVolume";
+    private const string SOUNDVOLUME = "SoundVolume";
+    private const string NOTIFICATIONTIME = "NotificationTime";
+    private const string AUTOSAVEINTERVAL = "AutosaveInterval";
+    private const string BIRDWORMSLIDER = "BirdWormSlider";
 
-    public void InitAudioSettings( SpeedController spdctrl ) {
+
+
+    private bool pauseStateWhenOptionsRequested = false;
+
+    public void InitPreferences( SpeedController spdctrl ) {
         gameObject.SetActive(false);
 
 		speedController = spdctrl;
         backgroundMusic = FindObjectOfType<BackgroundMusic>();
         soundManager = FindObjectOfType<SoundManager>();
-        infoWindows = FindObjectsOfType<BaseDetailsWindow>();
+            //infoWindows = FindObjectsOfType<BaseDetailsWindow>(); //This code looks like it never worked. The windows were inactive when it ran. Was it never tested, or have I misunderstood something about the implementation? - AK
+
 
         float value;
 
         // Loading Music / Setting default
 
-        if (PlayerPrefs.HasKey("MusicVolume")) 
-            value = PlayerPrefs.GetFloat("MusicVolume");
+        if (PlayerPrefs.HasKey(MUSICVOLUME)) 
+            value = PlayerPrefs.GetFloat(MUSICVOLUME);
         else
             value = 1f;
 
@@ -71,8 +85,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Sound / Setting default
 
-        if (PlayerPrefs.HasKey("SoundVolume")) 
-            value = PlayerPrefs.GetFloat("SoundVolume");
+        if (PlayerPrefs.HasKey(SOUNDVOLUME)) 
+            value = PlayerPrefs.GetFloat(SOUNDVOLUME);
         else 
             value = 1f;
 
@@ -82,8 +96,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Timer / Setting default
 
-        if (PlayerPrefs.HasKey("NotificationTime"))
-            value = PlayerPrefs.GetFloat("NotificationTime");
+        if (PlayerPrefs.HasKey(NOTIFICATIONTIME))
+            value = PlayerPrefs.GetFloat(NOTIFICATIONTIME);
         else 
             value = 0f;
 
@@ -93,8 +107,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Autosave interval default
 
-        if (PlayerPrefs.HasKey("AutosaveInterval"))
-            value = PlayerPrefs.GetFloat("AutosaveInterval");
+        if (PlayerPrefs.HasKey(AUTOSAVEINTERVAL))
+            value = PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
         else 
             value = 5f;
 
@@ -104,8 +118,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Bird/Worm Slider
 
-        if (PlayerPrefs.HasKey("BirdWormSlider"))
-            value = PlayerPrefs.GetFloat("BirdWormSlider");
+        if (PlayerPrefs.HasKey(BIRDWORMSLIDER))
+            value = PlayerPrefs.GetFloat(BIRDWORMSLIDER);
         else
             value = UnityEngine.Random.Range(0, 1);
 
@@ -197,6 +211,7 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetBirdWorm(float value) {
         birdWormSliderValue.text = (value > 0.5f ? "Bird" : "Worm");
+        PlayerPrefs.SetFloat(BIRDWORMSLIDER, value);
 
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
@@ -211,7 +226,7 @@ public class OptionsPanel : MonoBehaviour {
             return;
 
         backgroundMusic.SetVolume(GetClampedVol(volume) * musicVolMax);
-        PlayerPrefs.SetFloat("MusicVolume", volume);
+        PlayerPrefs.SetFloat(MUSICVOLUME, volume);
 
         if (volume == 0f && backgroundMusic.GetMute() == false)
             backgroundMusic.SetMute(true);
@@ -226,7 +241,7 @@ public class OptionsPanel : MonoBehaviour {
         float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
 
         audioMixer.SetFloat("masterVol", dbVol);
-        PlayerPrefs.SetFloat("SoundVolume", volume);
+        PlayerPrefs.SetFloat(SOUNDVOLUME, volume);
         SoundManager.PlaySfx("TokenHover");
 
         if (volume == 0f && soundManager.IsOn())
@@ -240,15 +255,13 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     void SetInspectionWindowTimeInternal(float value) {
-        if (infoWindows == null || infoWindows.Length == 0)
-            return;
 
         // value ranges from -4 to 1
         float timer = GetInspectionTimeForValue(value);
-        PlayerPrefs.SetFloat("NotificationTime", value);
+        PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
+        aspectDetailsWindow.SetTimer(timer);
+        tokenDetailsWindow.SetTimer(timer);
 
-        for (int i = 0; i < infoWindows.Length; i++) 
-            infoWindows[i].SetTimer(timer);
     }
 
     float GetInspectionTimeForValue(float value) {
@@ -258,7 +271,7 @@ public class OptionsPanel : MonoBehaviour {
     void SetAutosaveIntervalInternal(float value)
 	{
         // value ranges from 1 to 10 in mins
-        PlayerPrefs.SetFloat("AutosaveInterval", value);
+        PlayerPrefs.SetFloat(AUTOSAVEINTERVAL, value);
 
 		var tabletopManager = Registry.Retrieve<TabletopManager>();
 		tabletopManager.SetAutosaveInterval( value );

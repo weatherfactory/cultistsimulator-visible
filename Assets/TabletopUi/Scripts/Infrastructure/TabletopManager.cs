@@ -181,7 +181,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitAudioSettings(_speedController);
+            optionsPanel.InitPreferences(_speedController);
         }
 
         private void InitialiseListeners() {
