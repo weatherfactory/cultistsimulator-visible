@@ -844,10 +844,10 @@ public class ContentImporter
         }
 
         if (missingAspectImages != "")
-            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
+            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1);
 
         if (missingElementImages != "")
-            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages);
+            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages,1);
     }
 
     public void PopulateCompendium(ICompendium compendium)

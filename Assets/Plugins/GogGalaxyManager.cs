@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.IO;
 using Galaxy.Api;
@@ -48,21 +49,25 @@ public class GogGalaxyManager : MonoBehaviour
 
         // We want our GogGalaxyManager Instance to persist across scenes.
         DontDestroyOnLoad(gameObject);
-
-        try
+    try
         {
             InitParams initParams = new InitParams(clientID, clientSecret);
-
-            if(!isInitialized)
-                GalaxyInstance.Init(initParams);
+   
+            GalaxyInstance.Init(initParams);
+            GalaxyInstance.User().SignIn();
         }
+    catch (GalaxyInstance.InvalidStateError e)
+    {
+        Console.WriteLine("Invalid state error for GOG Galax, probably already initialised: " + e.Message);
+
+    }
         catch (GalaxyInstance.Error error)
         {
-            Debug.LogError("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
+            Console.WriteLine("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
             return;
         }
 
-        Debug.Log("Galaxy SDK was initialized", this);
+        
 
         isInitialized = true;
     }
@@ -93,4 +98,6 @@ public class GogGalaxyManager : MonoBehaviour
 
         GalaxyInstance.ProcessData();
     }
+
 }
+

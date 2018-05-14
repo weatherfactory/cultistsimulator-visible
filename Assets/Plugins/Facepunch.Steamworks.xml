@@ -14,7 +14,7 @@
             Current running program's AppId
             </summary>
         </member>
-        <member name="P:Facepunch.Steamworks.BaseSteamworks.IsValid">
+        <member name="P:Facepunch.Steamworks.BaseSteamworks.IsValachievementId">
             <summary>
             Returns true if this instance has initialized properly.
             If this returns false you should Dispose and throw an error.
@@ -115,7 +115,7 @@
         </member>
         <member name="P:Facepunch.Steamworks.Client.IsLowViolence">
             <summary>
-            True if we're in low violence mode (germans are only allowed to see the insides of bodies in porn)
+            True if we're in low violence mode (germans are only allowed to see the insachievementIdes of bodies in porn)
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Client.RestartIfNecessary(System.UInt32)">
@@ -126,9 +126,9 @@
             not relaunch the exact executable that called it, as it will always relaunch from the version installed 
             in your Steam library folder.
             If it returns false, then your game was launched by the Steam client and no action needs to be taken.
-            One exception is if a steam_appid.txt file is present then this will return false regardless. This allows
+            One exception is if a steam_appachievementId.txt file is present then this will return false regardless. This allows
             you to develop and test without launching your game through the Steam client. Make sure to remove the 
-            steam_appid.txt file when uploading the game to your Steam depot!
+            steam_appachievementId.txt file when uploading the game to your Steam depot!
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Achievements.Find(System.String)">
@@ -138,14 +138,14 @@
         </member>
         <member name="M:Facepunch.Steamworks.Achievements.Trigger(System.String,System.Boolean)">
             <summary>
-            Unlock an achievement by identifier. If apply is true this will happen as expected
+            Unlock an achievement by achievementIdentifier. If apply is true this will happen as expected
             and the achievement overlay will popup etc. If it's false then you'll have to manually
             call Stats.StoreStats() to actually trigger it.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Achievements.Reset(System.String)">
             <summary>
-            Reset an achievement by identifier
+            Reset an achievement by achievementIdentifier
             </summary>
         </member>
         <member name="P:Facepunch.Steamworks.Achievement.State">
@@ -186,7 +186,7 @@
         </member>
         <member name="M:Facepunch.Steamworks.App.MarkContentCorrupt(System.Boolean)">
             <summary>
-            Mark the content as corrupt, so it will validate the downloaded files
+            Mark the content as corrupt, so it will valachievementIdate the downloaded files
             once the app is closed. This is good to call when you detect a crash happening
             or a file is missing that is meant to be there.
             </summary>
@@ -203,7 +203,7 @@
         </member>
         <member name="M:Facepunch.Steamworks.App.PurchaseTime(System.UInt32)">
             <summary>
-            Get the purchase time for this appid. Will return DateTime.MinValue if none.
+            Get the purchase time for this appachievementId. Will return DateTime.MinValue if none.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.App.IsSubscribed(System.UInt32)">
@@ -224,7 +224,7 @@
         </member>
         <member name="M:Facepunch.Steamworks.App.GetName(System.UInt32)">
             <summary>
-            Returns the appid's name
+            Returns the appachievementId's name
             Returns error if the current app Id does not have permission to use this interface
             </summary>
         </member>
@@ -236,7 +236,7 @@
         </member>
         <member name="M:Facepunch.Steamworks.App.GetBuildId(System.UInt32)">
             <summary>
-            Returns the app's current build id
+            Returns the app's current build achievementId
             Returns 0 if the current app Id does not have permission to use this interface
             </summary>
         </member>
@@ -368,9 +368,9 @@
                 The total number of entries on this board
             </summary>
         </member>
-        <member name="P:Facepunch.Steamworks.Leaderboard.IsValid">
+        <member name="P:Facepunch.Steamworks.Leaderboard.IsValachievementId">
             <summary>
-                Returns true if this board is valid, ie, we've received
+                Returns true if this board is valachievementId, ie, we've received
                 a positive response from Steam about it.
             </summary>
         </member>
@@ -473,9 +473,9 @@
             The LobbyData of the CurrentLobby. Note this is the global data for the lobby. Use SetMemberData to set specific member data.
             </summary>
         </member>
-        <member name="P:Facepunch.Steamworks.Lobby.IsValid">
+        <member name="P:Facepunch.Steamworks.Lobby.IsValachievementId">
             <summary>
-            Returns true if this lobby is valid, ie, we've succesffuly created and/or joined a lobby.
+            Returns true if this lobby is valachievementId, ie, we've succesffuly created and/or joined a lobby.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Lobby.Join(System.UInt64)">
@@ -569,7 +569,7 @@
         </member>
         <member name="P:Facepunch.Steamworks.Lobby.Owner">
             <summary>
-            The Owner of the current lobby. Returns 0 if you are not in a valid lobby.
+            The Owner of the current lobby. Returns 0 if you are not in a valachievementId lobby.
             </summary>
         </member>
         <member name="P:Facepunch.Steamworks.Lobby.Joinable">
@@ -625,7 +625,7 @@
         </member>
         <member name="F:Facepunch.Steamworks.Lobby.OnLobbyJoinRequested">
             <summary>
-            Called when a user accepts an invitation to a lobby while the game is running. The parameter is a lobby id.
+            Called when a user accepts an invitation to a lobby while the game is running. The parameter is a lobby achievementId.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Lobby.OnLobbyJoinRequestedAPI(SteamNative.GameLobbyJoinRequested_t)">
@@ -642,7 +642,7 @@
             <summary>
             Sets the game server associated with the lobby.
             This can only be set by the owner of the lobby.
-            Either the IP/Port or the Steam ID of the game server must be valid, depending on how you want the clients to be able to connect.
+            Either the IP/Port or the Steam ID of the game server must be valachievementId, depending on how you want the clients to be able to connect.
             </summary>
         </member>
         <member name="P:Facepunch.Steamworks.Lobby.GameServerIp">
@@ -680,7 +680,7 @@
         </member>
         <member name="M:Facepunch.Steamworks.Lobby.LobbyData.SetData(System.String,System.String)">
             <summary>
-            Set the value for specified Key. Note that the keys "joinable", "appid", "name", and "lobbytype" are reserved for internal library use.
+            Set the value for specified Key. Note that the keys "joinable", "appachievementId", "name", and "lobbytype" are reserved for internal library use.
             </summary>
             <param name="k">The key to set the value for</param>
             <param name="v">The value of the Key</param>
@@ -688,14 +688,14 @@
         </member>
         <member name="M:Facepunch.Steamworks.Lobby.LobbyData.RemoveData(System.String)">
             <summary>
-            Remove the key from the LobbyData. Note that the keys "joinable", "appid", "name", and "lobbytype" are reserved for internal library use.
+            Remove the key from the LobbyData. Note that the keys "joinable", "appachievementId", "name", and "lobbytype" are reserved for internal library use.
             </summary>
             <param name="k">The key to remove</param>
             <returns>True if Key successfully removed</returns>
         </member>
         <member name="M:Facepunch.Steamworks.LobbyList.Refresh(Facepunch.Steamworks.LobbyList.Filter)">
             <summary>
-            Refresh the List of Lobbies. If no filter is passed in, a default one is created that filters based on AppId ("appid").
+            Refresh the List of Lobbies. If no filter is passed in, a default one is created that filters based on AppId ("appachievementId").
             </summary>
             <param name="filter"></param>
         </member>
@@ -950,7 +950,7 @@
         </member>
         <member name="F:Facepunch.Steamworks.ServerList.Request.Unresponsive">
             <summary>
-            A list of servers that were in the master list but didn't respond. 
+            A list of servers that were in the master list but dachievementIdn't respond. 
             </summary>
         </member>
         <member name="F:Facepunch.Steamworks.ServerList.Request.Finished">
@@ -1025,7 +1025,7 @@
         <member name="M:Facepunch.Steamworks.Stats.Add(System.String,System.Int32,System.Boolean)">
             <summary>
             Adds this amount to the named stat. Internally this calls Get() and adds 
-            to that value. Steam doesn't provide a mechanism for atomically increasing
+            to that value. Steam doesn't provachievementIde a mechanism for atomically increasing
             stats like this, this functionality is added here as a convenience.
             </summary>
         </member>
@@ -1140,7 +1140,7 @@
         </member>
         <member name="M:Facepunch.Steamworks.Voice.Update">
             <summary>
-            This gets called inside Update - so there's no need to call this manually if you're calling update
+            This gets called insachievementIde Update - so there's no need to call this manually if you're calling update
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Config.ForUnity(System.String)">
@@ -1220,7 +1220,7 @@
         <member name="M:Facepunch.Steamworks.Inventory.PlaytimeHeartbeat">
             <summary>
             Call this at least every two minutes, every frame doesn't hurt.
-            You should call it when you consider it active play time.
+            You should call it when you consachievementIder it active play time.
             IE - your player is alive, and playing.
             Don't stress on it too much tho cuz it's super hijackable anyway.
             </summary>
@@ -1339,7 +1339,7 @@
         <member name="P:Facepunch.Steamworks.Inventory.Definition.ExchangeSchema">
             <summary>
             If this item can be created using other items this string will contain a comma seperated 
-            list of definition ids that can be used, ie "100,101;102x5;103x3,104x3"
+            list of definition achievementIds that can be used, ie "100,101;102x5;103x3,104x3"
             </summary>
         </member>
         <member name="P:Facepunch.Steamworks.Inventory.Definition.Recipes">
@@ -1445,7 +1445,7 @@
         <member name="F:Facepunch.Steamworks.Inventory.Recipe.Ingredient.Definition">
             <summary>
             If we don't know about this item definition this might be null.
-            In which case, DefinitionId should still hold the correct id.
+            In which case, DefinitionId should still hold the correct achievementId.
             </summary>
         </member>
         <member name="F:Facepunch.Steamworks.Inventory.Recipe.Ingredient.Count">
@@ -1545,7 +1545,7 @@
         <member name="F:Facepunch.Steamworks.Networking.SendType.Reliable">
             <summary>
             Reliable message send. Can send up to 1MB of data in a single message.
-            Does fragmentation/re-assembly of messages under the hood, as well as a sliding window for efficient sends of large chunks of data.
+            Does fragmentation/re-assembly of messages under the hood, as well as a slachievementIding window for efficient sends of large chunks of data.
             </summary>
         </member>
         <member name="F:Facepunch.Steamworks.Networking.SendType.ReliableWithBuffering">
@@ -1615,7 +1615,7 @@
             <summary>
             Create a new Editor object with the intention of creating a new item.
             Your item won't actually be created until you call Publish() on the object.
-            Your item will be published to the provided appId.
+            Your item will be published to the provachievementIded appId.
             </summary>
             <remarks>You need to add app publish permissions for cross app uploading to work.</remarks> 
         </member>
@@ -1677,7 +1677,7 @@
         </member>
         <member name="P:Facepunch.Steamworks.Workshop.Query.AppId">
             <summary>
-            The AppId you're querying. This defaults to this appid.
+            The AppId you're querying. This defaults to this appachievementId.
             </summary>
         </member>
         <member name="P:Facepunch.Steamworks.Workshop.Query.UploaderAppId">
@@ -1862,7 +1862,7 @@
         </member>
         <member name="F:Facepunch.Steamworks.ServerAuth.OnAuthChange">
             <summary>
-            Steamid, Ownerid, Status
+            SteamachievementId, OwnerachievementId, Status
             </summary>
         </member>
         <member name="T:Facepunch.Steamworks.ServerAuth.Status">
@@ -1996,26 +1996,26 @@
         <member name="M:Facepunch.Steamworks.ServerStats.GetInt(System.UInt64,System.String,System.Int32)">
             <summary>
             Get the named stat for this user. If getting the stat failed, will return
-            defaultValue. You should have called Refresh for this userid - which downloads
-            the stats from the backend. If you didn't call it this will always return defaultValue.
+            defaultValue. You should have called Refresh for this userachievementId - which downloads
+            the stats from the backend. If you dachievementIdn't call it this will always return defaultValue.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.ServerStats.GetFloat(System.UInt64,System.String,System.Single)">
             <summary>
             Get the named stat for this user. If getting the stat failed, will return
-            defaultValue. You should have called Refresh for this userid - which downloads
-            the stats from the backend. If you didn't call it this will always return defaultValue.
+            defaultValue. You should have called Refresh for this userachievementId - which downloads
+            the stats from the backend. If you dachievementIdn't call it this will always return defaultValue.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.ServerStats.SetAchievement(System.UInt64,System.String)">
             <summary>
-            Unlocks the specified achievement for the specified user. Must have called Refresh on a steamid first.
+            Unlocks the specified achievement for the specified user. Must have called Refresh on a steamachievementId first.
             Remember to use Commit after use.
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.ServerStats.ClearAchievement(System.UInt64,System.String)">
             <summary>
-            Resets the unlock status of an achievement for the specified user. Must have called Refresh on a steamid first.
+            Resets the unlock status of an achievement for the specified user. Must have called Refresh on a steamachievementId first.
             Remember to use Commit after use.
             </summary>
         </member>
