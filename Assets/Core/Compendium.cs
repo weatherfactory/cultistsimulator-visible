@@ -241,8 +241,8 @@ public class Compendium : ICompendium
 
         if (endingFlag == "minorlanternvictory")
             return new Ending(endingFlag, "THE INCURSUS",
-                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. The Glory is very close here. It leaks through the fabric of the House to contribute its light." +
-                " I have walked behind the Watchman: I've seen his shadow on the Stone. Sometimes I hear the Hours debate one with another on the matter of the courses of the world. I will not live. I will not die. Perhaps, one day, I will rise even higher." +
+                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
+                " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first. Perhaps I will be the seventh." +
                 " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", null);
 
         if (endingFlag=="deathofthebody")
