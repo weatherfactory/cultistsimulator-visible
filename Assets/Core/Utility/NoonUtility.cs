@@ -93,13 +93,13 @@ namespace Noon
         public static bool UnitTestingMode { get; set; }
         
 
-        public static int CurrentVerbosity =1;
+        public static int CurrentVerbosity =2;
         public static uint CultistSimulatorSteamAppId = 718670;
         //public static string CultistSimulatorGOGProductId = "1456702644";
         //public static string CultistSimulatorGOGClientId = "50757209545787544";
         //public static string CultistSimulatorGOGClientSecret = "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
 
-        public static VersionNumber VersionNumber = new VersionNumber("2018.5.d.1");
+        public static VersionNumber VersionNumber = new VersionNumber("2018.5.d.3");
         public static bool AchievementsActive = false;
 
         public static void Log(string message,int verbosityNeeded=0)
