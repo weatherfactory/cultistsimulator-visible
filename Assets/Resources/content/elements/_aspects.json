@@ -589,9 +589,41 @@
 			noartneeded: true
         },
 								 {
+            id: "destroyhealth",
+            label: "Destroy Health",
+			description: "Health will be destroyed.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+								 {
             id: "damagereason",
             label: "Damage Reason",
 			description: "Reason will become Dread.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+										 {
+            id: "toreason",
+            label: "To Reason",
+			description: "...will become Reason.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+					 {
+            id: "topassion",
+            label: "To Passion",
+			description: "...will become Passion.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+							 {
+            id: "tohealth",
+            label: "To Health",
+			description: "...will become Health.",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true

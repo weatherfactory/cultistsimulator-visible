@@ -1,0 +1,95 @@
+{
+"recipes": [
+	   {
+        label: "Reason's Sword [Grand]",
+        id: "arcane_edge_lantern_grand",
+        actionId: "work",
+        requirements: {ritual: 1, knock:-1,desire:-1,edge:15,lantern:1},
+        effects: {},
+        startdescription: "The Hour called the Colonel is patient, disciplined, scarred. If I subject my Passion to him, he will transform it permanently to Reason. If this magic fails, my Passion will be lost. [You are calling on a Grand degree of Edge, and this will almost certainly succeed, but there are always risks.] ",
+        description: "You ",
+		slots:[{id:"passion",label:"Give up your Passion",required:{passion:1},greedy:true}],
+		alternativerecipes:[{chance:10,id:"arcane_edge_lantern_failure"}],
+		aspects:{toreason:1,dreadful:1},
+        warmup: 60,
+        craftable: true,
+    },
+		   {
+        label: "Passion's Hammer [Grand]",
+        id: "arcane_edge_moth_grand",
+        actionId: "work",
+        requirements: {ritual: 1, knock:-1,desire:-1,edge:15,moth:1},
+        effects: {},
+        startdescription: "The Hour called the Lionsmith grows strong and stronger, and will brook no restraint. If I surrender my Reason to him, he will transform it permanently to Passion. If this magic fails, my Passion will be lost. [You are calling on a Grand degree of Edge, and this will almost certainly succeed, but there are always risks.] ",
+        description: "You ",
+		slots:[{id:"reason",label:"Give up your Reason",required:{reason:1},greedy:true}],
+		alternativerecipes:[{chance:10,id:"arcane_edge_moth_failure"}],
+		aspects:{topassion:1,fascinating:1},
+        warmup: 60,
+        craftable: true,
+    },
+			   {
+        label: "Forge's Redemption [Grand]",
+        id: "arcane_forge_grail_grand",
+        actionId: "work",
+        requirements: {ritual: 1, knock:-1,desire:-1,forge:15,grail:1},
+        effects: {},
+        startdescription: "The Forge of Days destroys and renews. I will invoke it with the Grail to renew my aging flesh. [You are calling on a Grand degree of Forge, and this will almost certainly succeed, but there are always risks.] ",
+        description: "You ",
+		slots:[{id:"decrepitude",label:"Decrepitude",required:{decrepitude:1},greedy:true}],
+		alternativerecipes:[{chance:10,id:"arcane_forge_grail_failure"}],
+		aspects:{tohealth:1,fascinating:1},
+        warmup: 60,
+        craftable: true,
+    },
+	
+				   {
+        label: "The End is Beautiful [Grand]",
+        id: "arcane_winter_moth_grand",
+        actionId: "work",
+        requirements: {ritual: 1,knock:-1,desire:-1,winter:15,moth:1},
+        startdescription:"The Sun-in-Rags brings beautiful endings. This sudden and perilous magic will end someone or something, but it's impossible to know what. It will also kill any mortal or spirit that assists with the ritual. [You are calling on a Grand degree of Winter, and this will almost certainly succeed, although it might be safer if it fails.] ",
+        description: "You ",
+		slots:[{id:"conclusion",label:"A Conclusion",required:{mortal:1,summoned:1},greedy:true}],
+		alternativerecipes:[{chance:10,id:"arcane_winter_moth_failure"}],
+		aspects:{killhunter:1,killmortal:1,dreadful:1},
+		effects:{summoned:-1},
+        warmup: 15,
+        craftable: true,
+    },
+	  
+
+	  
+	  
+	  {
+        id: "arcane_edge_lantern_failure",
+        label: "Reason's Sword [Failure!]",
+        actionId: "work",
+		description:"This magic has gone awry. There is a cold place where my Passion was.",
+        
+		effects:{passion:-1,dread:1}
+		},
+			  {
+        id: "arcane_edge_moth_failure",
+        label: "Passion's Hammer [Failure!]",
+        actionId: "work",
+		description:"This magic has gone askew. My Reason is shattered, but the Lionsmith has not favoured me.",
+        
+		effects:{reason:-1,fascination:1}
+		},
+					  {
+        id: "arcane_forge_grail_failure",
+        label: "Forge's Redemption [Failure!]",
+        actionId: "work",
+		description:"The Forge has failed me. This magic has only withered me further.",        
+		effects:{decrepitude:-1,dread:1}
+		},
+							  {
+        id: "arcane_winter_moth_failure",
+        label: "The End is Beautiful [Failure!]",
+        actionId: "work",
+		description:"The Sun-in-Rags has brought me only the foreknowledge of winter.",        
+		effects:{dread:1}
+		},
+]
+}

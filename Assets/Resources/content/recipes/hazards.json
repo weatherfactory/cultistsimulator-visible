@@ -29,7 +29,7 @@
 	},
 	   {
         id: "despairdeath",
-        label: "DESPAIR OVERHELMS ME",
+        label: "DESPAIR OVERWHELMS ME",
         actionId: "despair",
         requirements: {inducesdespair: 3},
 		slots: [{id:"Thoughts",required: {contentment: 1},greedy:true}],
@@ -180,7 +180,7 @@
 	{id: "curse_affliction_active",
 	label:"Creeping Breath Curse",
 	actionId: "curse_affliction",
-	requirements: {affliction:-1},
+	requirements: {decrepitude:-1},
 	startdescription:"The Creeping Breath Curse begins with a cough: a cough that loiters in one's throat like a debt-collector.",
 	description:"Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
 	aspects: {fallsick:1},
