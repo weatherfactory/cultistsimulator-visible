@@ -187,16 +187,18 @@
             label: "A Blaze of Radiance",
             aspects:
             {lantern: 10,influence:1},
-            description: "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+            description: "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions. If unused, it will become Fascination.]",
+			lifetime: 60,
+			decayTo: "fascination"
         },
 								          {
         id: "influencelanterng",
             label: "A Splendour",
             aspects:
             {lantern: 15,influence:1},
-            description: "Cover your eyes, if you like. It will serve no purpose. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+            description: "Cover your eyes, if you like. It will serve no purpose. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions. If unused, it will become Fascination.]",
+			lifetime: 60,
+			decayTo: "fascination"
         },
 		
 						          {
@@ -205,7 +207,8 @@
             aspects:
             {moth: 2,influence:1},
             description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "restlessness"
         },
 								          {
         id: "influencemothc",
@@ -213,7 +216,8 @@
             aspects:
             {moth: 6,influence:1},
             description: "Oh the friends that we played and the skins that we made; still they drive us! [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "restlessness"
         },
 						          {
         id: "influencemothe",
@@ -221,7 +225,8 @@
             aspects:
             {moth: 10,influence:1},
             description: "Emotions contort our thoughts. One passion yields to the next like leaves in the wind's grip! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "restlessness"
         },
 								          {
         id: "influencemothg",
@@ -230,7 +235,8 @@
             {moth: 15,influence:1},
             description: "			
 			please",		
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "restlessness"
         },
 		
 				          {
@@ -262,8 +268,9 @@
             label: "Perfect Frost",
             aspects:
             {winter: 15,influence:1},
-            description: "The world is still as ice. Each movement is a journey. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+            description: "The world is still as ice. Each movement is a journey. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions. If unused, it will become Dread.]",
+			lifetime: 60,
+			decayTo: "dread"
         },
 
 ]
