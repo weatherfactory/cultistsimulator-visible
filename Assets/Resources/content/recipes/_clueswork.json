@@ -2,7 +2,7 @@
  [
       			{
         id: "skillhealthhintwork",
-        label: "Hint: Health",
+        label: "Health",
         actionId: "work",
         requirements: {healthskill:1},
         startdescription: "I have grown strong, but I must still devote my Health to a day's work.",
@@ -11,7 +11,7 @@
     },
      			{
         id: "vitalityhintwork",
-        label: "Hint: Vitality",
+        label: "Vitality",
         actionId: "work",
         requirements: {vitality:1},
         startdescription: "This isn't a matter for work; but I could Study it to increase my Health.",
@@ -21,7 +21,7 @@
     },
 	    			{
         id: "eruditionhintwork",
-        label: "Hint: Erudition",
+        label: "Erudition",
         actionId: "work",
         requirements: {erudition:1},
         startdescription: "This isn't a matter for work;but I could Study it to increase my Reason.",
@@ -31,7 +31,7 @@
     },
 	    			{
         id: "glimmeringhintwork",
-        label: "Hint: Glimmering",
+        label: "Glimmering",
         actionId: "work",
         requirements: {glimmering:1},
         startdescription: "This isn't a matter for work; but I could Study it to increase my Passion.",
@@ -41,7 +41,7 @@
     },
    			{
         id: "contentmenthintwork",
-        label: "Hint: Contentment",
+        label: "Contentment",
         actionId: "work",
         requirements: {contentment:1},
         startdescription: "One cannot earn a living by being happy. But happiness may be something to cling to, when the night closes round me.",
@@ -51,7 +51,7 @@
     },
 	  			{
         id: "commissionhint_wronglore",
-        label: "Hint: Fulfilling a Commission",
+        label: "Fulfilling a Commission",
         actionId: "work",
         requirements: {commission:1,lore:1},
         startdescription: "I need the right Lore, and I need to dedicate my abilities to the work. [The Commission description will remind you what Lore you need.]",
@@ -60,7 +60,7 @@
     },
   			{
         id: "commissionhint",
-        label: "Hint: Fulfilling a Commission?",
+        label: "Fulfilling a Commission?",
         actionId: "work",
         requirements: {commission:1},
         startdescription: "If I use Work with the right Lore fragment, I can create a manuscript to fulfil this Commission. I'll need to Talk to my Patron about this Commission when it's finished.",
@@ -69,7 +69,7 @@
     },
  			{
         id: "ritehinthasforge",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1,forge:1},
         startdescription: "This is a start, but I'll need more power.",
@@ -79,7 +79,7 @@
 	
 	 			{
         id: "ritehinthasgrail",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1,grail:1},
         startdescription: "This is a start, but I'll need more power.",
@@ -88,7 +88,7 @@
     },
 		 			{
         id: "ritehinthasheart",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1,heart:1},
         startdescription: "This is a start, but I'll need more power.",
@@ -97,7 +97,7 @@
     },
 		 			{
         id: "ritehinthaslantern",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1,lantern:1},
         startdescription: "This is a start, but I'll need more power.",
@@ -106,7 +106,7 @@
     },
 		 			{
         id: "ritehinthasmoth",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1,moth:1},
         startdescription: "This is a start, but I'll need more power.",
@@ -115,7 +115,7 @@
     },
 		 			{
          id: "ritehinthassecrethistories",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1,secrethistories:1},
         startdescription: "This is a start, but I'll need more power. Not many creatures are drawn to knowledge alone",
@@ -124,7 +124,7 @@
     },
 		 			{
         id: "ritehinthaswinter",
-        label: "Hint: Winter",
+        label: "Winter",
         actionId: "work",
         requirements: {ritual:1,knock:1,winter:1},
         startdescription: "This is a start, but I'll need more power.",
@@ -192,10 +192,20 @@
         hintonly:true
     },
 	
+							   {
+        label: "The End is Beautiful?",
+        id: "arcane_winter_lantern_hint",
+        actionId: "work",
+        requirements: {ritual: 1,knock:-1,desire:-1,winter:1,lantern:1},
+		startdescription:"With at least 5 Winter and 1 Lantern, I could beseech the Hour of endings, the Sun-in-Rags, to destroy someone... but not someone in particular. The Sun-in-Rags alone will choose.",
+				craftable:false,
+		hintonly:true
+		},
+		
 	
 			{
         id: "ritehinthasknock",
-        label: "Hint: Opening the Way",
+        label: "Opening the Way",
         actionId: "work",
         requirements: {ritual:1,knock:1},
         startdescription: "A summoning begins with Knock, but it usually requires two other aspects besides.",
@@ -204,7 +214,7 @@
     },
 		{
         id: "ritehint",
-        label: "Hint: Rites",
+        label: "Rites",
         actionId: "work",
         requirements: {ritual:1,lore:-1,ingredient:-1,influence:-1,follower:-1,tool:-1,desire:-1},
         startdescription: "Each rite can be used for many purposes. For a summoning, I must begin by calling upon the power of the Knock, which will open the way.",

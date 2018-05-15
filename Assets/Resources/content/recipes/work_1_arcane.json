@@ -43,15 +43,7 @@
         warmup: 60,
         craftable: true,
     },
-			   {
-        label: "Reason's Glory?",
-        id: "arcane_lantern_edge_hint",
-		requirements: {ritual: 1,knock:-1,desire:-1,lantern:1,edge:1},
-        actionId: "work",
-		startdescription:"With at least 5 Lantern and 1 Edge, I could use the mystic discipline called Reason's Glory to transform my Passion to Reason.",
-		craftable:false,
-		hintonly:true
-		},
+
 				  {
         id: "arcane_lantern_edge_failure",
         label: "Reason's Glory [Failure!]",
@@ -105,15 +97,7 @@
         craftable: true,
 		linked:[{id:"arcane_moth_edge_runaway_link",chance:30}]
     },
-			   {
-        label: "Passion's Gyre?",
-        id: "arcane_moth_edge_hint",
-		requirements: {ritual: 1,knock:-1,desire:-1,moth:1,edge:1},
-        actionId: "work",
-		startdescription:"With at least 5 Moth and 1 Edge, I could use the ecstatic practice called Passion's Gyre to transform my Reason to Passion.",
-		craftable:false,
-		hintonly:true
-		},
+			
 
 			  {
         id: "arcane_moth_edge_failure",
@@ -191,15 +175,7 @@
         warmup: 60,
         craftable: true,
     },
-					   {
-        label: "Forge's Redemption?",
-        id: "arcane_forge_grail_hint",
-        actionId: "work",
-        requirements: {ritual: 1, knock:-1,desire:-1,forge:1,grail:1},
-				startdescription:"With at least 5 Forge and 1 Grail, I could use the forbidden magic known as Forge's Redemption to return Decrepitude to Health.",
-		craftable:false,
-		hintonly:true
-		},
+
 	
 		  {
         id: "arcane_forge_grail_failure",
@@ -252,15 +228,7 @@
         warmup: 60,
         craftable: true,
     },
-						   {
-        label: "The End is Beautiful?",
-        id: "arcane_winter_lantern_hint",
-        actionId: "work",
-        requirements: {ritual: 1,knock:-1,desire:-1,winter:1,lantern:1},
-		startdescription:"With at least 5 Winter and 1 Lantern, I could beseech the Hour of endings, the Sun-in-Rags, to destroy someone... but not someone in particular. The Sun-in-Rags alone will choose.",
-				craftable:false,
-		hintonly:true
-		}
+
 
 							  {
         id: "arcane_winter_lantern_failure",

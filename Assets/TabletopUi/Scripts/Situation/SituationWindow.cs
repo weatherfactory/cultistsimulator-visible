@@ -196,7 +196,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void DisplayHintRecipeFound(Recipe r) {
-            Title = r.Label;
+            Title = "Hint:" + r.Label;
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
             DisplayButtonState(false);
             
