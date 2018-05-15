@@ -1,20 +1,6 @@
 {"elements":
     [
-
-        {
-            id: "edge",
-            label: "Edge",
-			description: "All conquest occurs at the Edge. One who dwells there is blind, and cannot be wounded. Another is strong, and grows stronger. [Edge is the principle of battle and of struggle.]",
-            isAspect: true,
-			noartneeded:true
-			},
-        {
-            id: "forge",
-            label: "Forge",
-			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The principle of the Forge transforms and destroys.]",
-            isAspect: true
-        },
-		        {
+   {
             id: "acquaintance",
             label: "Acquaintance",
 			description: "Not yet a friend, nor yet an enemy.",
@@ -74,6 +60,20 @@
             isAspect: true
         },
         {
+            id: "edge",
+            label: "Edge",
+			description: "All conquest occurs at the Edge. One who dwells there is blind, and cannot be wounded. Another is strong, and grows stronger. [Edge is the principle of battle and of struggle.]",
+            isAspect: true,
+			noartneeded:true
+			},
+        {
+            id: "forge",
+            label: "Forge",
+			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The principle of the Forge transforms and destroys.]",
+            isAspect: true
+        },
+		     
+        {
             id: "grail",
             label: "Grail",
 			description: "Hunger, lust, the drowning waters. [The principle of the Grail honours both the birth and the feast.]",
@@ -86,6 +86,39 @@
 			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle that continues and preserves.]",
             isAspect: true,
 			induces:[{id:"heartinduction",chance:5}]
+        },
+		        {
+            id: "knock",
+            label: "Knock",
+			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and unseams barriers.]",
+            isAspect: true
+        },
+			 {
+            id: "lantern",
+            label: "Lantern",
+			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it.]",
+            isAspect: true,
+			induces:[{id:"lanterninduction",chance:5}]
+        },
+		        {
+        id: "moth",
+        label: "Moth",
+        isAspect: true,
+		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
+			induces:[{id:"mothinduction",chance:5}]
+    },
+	        {
+            id: "secrethistories",
+            label: "Secret Histories",
+			        description: "History is the scar on the world's skin. [Secret Histories describe the unknown complexities of the world, and its many pasts.]",
+            isAspect: true
+        },
+
+		        {
+            id: "winter",
+            label: "Winter",
+			description: "... [Winter is the principle of silence, of endings, and of those things that are not quite dead.]",
+            isAspect: true
         },
 								{
             id: "ability",
@@ -283,38 +316,9 @@
 		
 		
 		
-        {
-            id: "knock",
-            label: "Knock",
-			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and unseams barriers.]",
-            isAspect: true
-        },
-		        {
-        id: "moth",
-        label: "Moth",
-        isAspect: true,
-		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
-			induces:[{id:"mothinduction",chance:5}]
-    },
-        {
-            id: "secrethistories",
-            label: "Secret Histories",
-			        description: "History is the scar on the world's skin. [Secret Histories describe the unknown complexities of the world, and its many pasts.]",
-            isAspect: true
-        },
-        {
-            id: "lantern",
-            label: "Lantern",
-			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it.]",
-            isAspect: true,
-			induces:[{id:"lanterninduction",chance:5}]
-        },
-		        {
-            id: "winter",
-            label: "Winter",
-			description: "... [Winter is the principle of silence, of endings, and of those things that are not quite dead.]",
-            isAspect: true
-        },
+
+
+       
 				        {
             id: "compensationvalue",
             label: "Spintria Value",

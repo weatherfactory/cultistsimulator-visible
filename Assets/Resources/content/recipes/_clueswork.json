@@ -172,7 +172,7 @@
         craftable: false
     },
 	 			{
-        id: "ritehinthasforge",
+        id: "ritehinthasknockedge",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
@@ -181,7 +181,7 @@
 		hintonly: true
     },
  			{
-        id: "ritehinthasforge",
+        id: "ritehinthasknockforge",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
@@ -191,7 +191,7 @@
     },
 	
 	 			{
-        id: "ritehinthasgrail",
+        id: "ritehinthasknockgrail",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
@@ -200,7 +200,7 @@
 		hintonly: true
     },
 		 			{
-        id: "ritehinthasheart",
+        id: "ritehinthasknockheart",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
@@ -209,7 +209,7 @@
 		hintonly: true
     },
 		 			{
-        id: "ritehinthaslantern",
+        id: "ritehinthasknocklantern",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
@@ -218,7 +218,7 @@
 		hintonly: true
     },
 		 			{
-        id: "ritehinthasmoth",
+        id: "ritehinthasknockmoth",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
@@ -227,7 +227,7 @@
 		hintonly: true
     },
 		 			{
-         id: "ritehinthassecrethistories",
+         id: "ritehinthasknocksecrethistories",
         label: "Summoning Something?",
         actionId: "work",
         requirements: {ritual:1,knock:2,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
@@ -236,11 +236,142 @@
 		hintonly: true
     },
 		 			{
-        id: "ritehinthaswinter",
+        id: "ritehinthasknockwinter",
         label: "Winter",
         actionId: "work",
         requirements: {ritual:1,knock:2,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
         startdescription: "There are possibilities here, if I add Edge, or Heart, or Forge.",
+        craftable: false,
+		hintonly: true
+    },
+
+					   {
+        label: "Reason's Glory?",
+        id: "arcane_lantern_edge_hint",
+		requirements: {ritual: 1,knock:-1,desire:-1,lantern:1,edge:1},
+        actionId: "work",
+		startdescription:"With at least 5 Lantern and 1 Edge, I could use the mystic discipline called Reason's Glory to transform my Passion to Reason.",
+		craftable:false,
+		hintonly:true
+		},
+				   {
+        label: "Passion's Gyre?",
+        id: "arcane_moth_edge_hint",
+		requirements: {ritual: 1,knock:-1,desire:-1,moth:1,edge:1},
+        actionId: "work",
+		startdescription:"With at least 5 Moth and 1 Edge, I could use the ecstatic practice called Passion's Gyre to transform my Reason to Passion.",
+		craftable:false,
+		hintonly:true
+		},
+								   {
+        label: "Forge's Redemption?",
+        id: "arcane_forge_grail_hint",
+        actionId: "work",
+        requirements: {ritual: 1, knock:-1,desire:-1,forge:1,grail:1},
+				startdescription:"With at least 5 Forge and 1 Grail, I could use the forbidden procedure known as Forge's Redemption to return Decrepitude to Health.",
+		craftable:false,
+		hintonly:true
+		},
+	
+								   {
+        label: "The End is Beautiful?",
+        id: "arcane_winter_lantern_hint",
+        actionId: "work",
+        requirements: {ritual: 1,knock:-1,desire:-1,winter:1,lantern:1},
+		startdescription:"With at least 5 Winter and 1 Lantern, I could beseech the Hour of endings, the Sun-in-Rags, to destroy someone... but not someone in particular. The Sun-in-Rags alone will choose.",
+				craftable:false,
+		hintonly:true
+		},
+		
+	
+		{
+        id: "ritehinthasedge",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Edge is the aspect of battle and of struggle. If I add Knock, I might be able to attempt a summoning; if I add Lantern or Moth, I could enact a battle in my own soul.",
+        craftable: false,
+		hintonly: true
+    },
+ 			{
+        id: "ritehinthasforge",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Edge is the aspect that transforms and destroys. If I add Knock, I might be able to attempt a summoning; or if I have grown decrepit, then if I add Grail, perhaps I could renew my body.",
+        craftable: false,
+		hintonly: true
+    },
+	
+	 			{
+        id: "ritehinthasgrail",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Grail is the aspect of appetite, blood, and birth. If I add Knock, I might be able to attempt a summoning; or if I have grown decrepit, then if I add Forge, perhaps I could renew my body.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasheart",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Heart is the aspect of preservation, but also of ceaseless motion. If I add Knock, I might be able to attempt a summoning.",
+        craftable: false,
+		hintonly: true
+    },
+				{
+        id: "ritehinthasknock",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
+        startdescription: "A summoning begins with Knock, but it usually requires two other aspects besides. If I don't use Knock, I might find other occult operations besides summoning.",
+        craftable: false,
+		hintonly: true
+    },
+					{
+        id: "ritehinthasmicroknock",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
+        startdescription: "A summoning begins with Knock; but I will need at least a little more Knock.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaslantern",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Lantern is the aspect of preservation, but also of ceaseless motion. If I add Knock, I might be able to attempt a summoning. If I add Edge, I can try to conquer my Passion with Reason. If I add Winter, I can attempt a foolish, beautiful magic.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasmoth",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
+        startdescription: "Moth is the wild and perilous aspect of chaos and yearning. If I add Knock, I might be able to attempt a summoning. If I add Edge, I can try to drown my Reason in Passion.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+         id: "ritehinthassecrethistories",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
+        startdescription: "Secret Histories describe the unknown complexities of the world, and its many pasts. They're not usually used directly in the invisible arts, but if I add Knock, who knows what might be possible?",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaswinter",
+        label: "Winter",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
+        startdescription: "Winter is the aspect of silence, of endings, and of those things that are not entirely dead. If I add Knock, I might be able to attempt a summoning. If I add Lantern, I can attempt a foolish, beautiful magic.",
         craftable: false,
 		hintonly: true
     },
@@ -305,26 +436,8 @@
         hintonly:true
     },
 	
-							   {
-        label: "The End is Beautiful?",
-        id: "arcane_winter_lantern_hint",
-        actionId: "work",
-        requirements: {ritual: 1,knock:-1,desire:-1,winter:1,lantern:1},
-		startdescription:"With at least 5 Winter and 1 Lantern, I could beseech the Hour of endings, the Sun-in-Rags, to destroy someone... but not someone in particular. The Sun-in-Rags alone will choose.",
-				craftable:false,
-		hintonly:true
-		},
-		
-	
-			{
-        id: "ritehinthasknock",
-        label: "Summoning Something?",
-        actionId: "work",
-        requirements: {ritual:1,knock:2,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
-        startdescription: "A summoning begins with Knock, but it usually requires two other aspects besides.",
-        craftable: false,
-		hintonly: true
-    },
+
+
 		{
         id: "ritehint",
         label: "Rites",
@@ -388,10 +501,6 @@
     },
 	
 
-	
-	
-	
-	
 	
 	
 

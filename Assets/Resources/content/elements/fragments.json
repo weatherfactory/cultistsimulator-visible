@@ -194,7 +194,7 @@
             label: "Geminate Invocation",
             aspects:
             {heart:8,lore:1},
-            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]"
+            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead.",required:{fragmentheartd:1,fragmentgraild:1},actionId:"study"}],xtriggers:{epiphany:fragmenthearte}
         },
 		{ id: "fragmenthearte",

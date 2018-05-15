@@ -62,6 +62,8 @@ namespace OrbCreationExtensions
                 else if(value is bool) result = ((bool)value).MakeString();
                 else if(value is int || value is long) result = ((int)value).MakeString();
                 else if(value is float || value is double) result = ((float)value).MakeString();
+                else if(value is ArrayList)
+                    throw new ApplicationException("Trying to import an ArrayList from JSON as a string, which probably means a missing comma. Debug / breakpoint is my friend.");
                 else throw new ApplicationException("Unrecognised type importing this value from JSON as a string :" + value);
 
                 return result;

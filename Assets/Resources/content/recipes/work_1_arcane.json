@@ -119,7 +119,7 @@
 		label: "Passion's Gyre [UNCEASING!]",        
         actionId: "work",
         requirements: {ritual: 1, knock:-1,desire:-1,moth:15,edge:1},
-        startdescription: "The Moth has me! The Gyre will not cease! My Reason may be drowned entirely!",
+        startdescription: "The Moth has me! The Gyre widens! My Reason may be drowned entirely!",
         description: "At last the Gyre has drawn to its close, but It is difficult to think straight. I have changed. [Reason has been transformed to Passion.]",
 		slots:[{id:"reason",label:"Give up my Reason",required:{reason:1},greedy:true}],
 		alternativerecipes:[{chance:10,id:"arcane_moth_edge_failure"}],
