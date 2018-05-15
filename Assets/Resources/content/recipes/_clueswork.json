@@ -67,58 +67,171 @@
         craftable: false,
 		hintonly: true
     },
+
+ 
+ 		{
+        id: "hint_summon_spirit_forgee_edge",
+        label: "Summon a mighty creature of the Forge of Days?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
+		effects: {spirit_forgee_edge:1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more. To conjure a thing of fire and Glory, I'll need a great power of Forge; a significant power of Knock; and some Lantern.",     
+   hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_graile_edge",
+        label: "Summon a mighty creature of the Red Grail?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,forge:1,desire:-1},
+		effects: {spirit_graile_edge:1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. To conjure a thing of blood and change, I'll need a great power of Grail; a significant power of Knock; and some Forge.",  
+   hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_lanterne_secret",
+        label: "Summon something unusual?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,secrethistories:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. With enough Lantern, a significant degree of Knock, and a teasing taste of secrets, perhaps I can conjure someone interesting.",
+   hintonly:true,
+        craftable: false
+    },
+		{
+        id: "hint_summon_spirit_forgec_winter",
+        label: "Summon a creature of the Forge of Days?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,winter:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. To call forth this smoky, tricksy entity, I'll need a significant power of Forge, as well as a little Winter and Knock.",
+      hintonly:true,
+        craftable: false
+    },
+				{
+        id: "hint_summon_spirit_grailc_moth",
+        label: "Summon a creature of the Red Grail?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,moth:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. To call forth this monstrous, if affectionate, entity, I'll need a significant intensity of Grail, and a little Moth and Knock.",
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_lanternc_edge",
+        label: "Summon a thing from behind mirrors?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,edge:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. To call forth this subtle, fragile, murderous thing, I'll need a significant intensity of Lantern, and a little Knock and Edge.",   
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_heartc_edge",
+        label: "Summon a creature of the Thunderskin?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:1,edge:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. To call forth this merry, ceaseless, merciless thing, I'll need a significant intensity of Heart, and a little Knock and Edge.",
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_winterd_edge",
+        label: "Summon a creature of the Sun-in-Rags?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,edge:1,desire:-1},
+		startdescription: "I've found a useful conjunction of aspects, but I need more power. To call forth this chilly and shining thing, I'll need a very significant intensity of Winter, and a little Knock and Edge.",
+      hintonly:true,
+        craftable: false
+    },
+		{
+        id: "hint_summon_spirit_winterb_heart",
+        label: "Summon one of the throng of the Dead?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,heart:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more power. To call forth this wretched, voiceless thing, I'll need Winter at the fourth intensity, and a little Knock and Heart.",
+      hintonly:true,
+        craftable: false
+    },
+		 	{
+        id: "hint_summon_spirit_wintera_edge",
+        label: "Infuse a corpse with the power of the Cartographer of Scars?",
+        actionId: "work",
+        requirements: {ritual:1,winter:1,edge:1,desire:-1},
+        startdescription: "I've found a useful conjunction of aspects, but I need more. With a little more Winter aspect, a little more Edge, and a Corpse, I might create a brutal servant.",
+  hintonly:true,
+        craftable: false,
+	
+    },
+  	{
+        id: "hint_summon_spirit_wintera_moth",
+        label: "Infuse a corpse with the power of the Ring-Yew?",
+        actionId: "work",
+        requirements: {ritual:1,winter:1,moth:1,desire:-1},
+        startdescription: "With a little more Winter aspect, a little more Moth, and a Corpse, I might create a cunning servant.",
+   hintonly:true,
+        craftable: false
+    },
+	 			{
+        id: "ritehinthasforge",
+        label: "Summoning Something?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "There are possibilities here, if I add Lantern, or Heart, or Winter.",
+        craftable: false,
+		hintonly: true
+    },
  			{
         id: "ritehinthasforge",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1,forge:1},
-        startdescription: "This is a start, but I'll need more power.",
+        requirements: {ritual:1,knock:2,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "There are possibilities here. If I add Winter, I might contact something smoky; if I add Lantern, I might contact an incandescent power.",
         craftable: false,
 		hintonly: true
     },
 	
 	 			{
         id: "ritehinthasgrail",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1,grail:1},
-        startdescription: "This is a start, but I'll need more power.",
+        requirements: {ritual:1,knock:2,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "There are possibilities here. If I add Moth, I might contact something shapeless; if I add Forge, I might contact a seductive, savage power.",
         craftable: false,
 		hintonly: true
     },
 		 			{
         id: "ritehinthasheart",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1,heart:1},
-        startdescription: "This is a start, but I'll need more power.",
+        requirements: {ritual:1,knock:2,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "There are possibilities here. If I add Edge, I might contact something irrepressible; if I add Winter, I might summon up one of the Dead.",
         craftable: false,
 		hintonly: true
     },
 		 			{
         id: "ritehinthaslantern",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1,lantern:1},
-        startdescription: "This is a start, but I'll need more power.",
+        requirements: {ritual:1,knock:2,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "There are possibilities here. If I add Edge, I might bring something out from behind mirrors; if I add Forge, I might contact something incandescent.",
         craftable: false,
 		hintonly: true
     },
 		 			{
         id: "ritehinthasmoth",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1,moth:1},
-        startdescription: "This is a start, but I'll need more power.",
+        requirements: {ritual:1,knock:2,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
+        startdescription: "There are possibilities here. If I add Grail, I might contact something shapeless.",
         craftable: false,
 		hintonly: true
     },
 		 			{
          id: "ritehinthassecrethistories",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1,secrethistories:1},
-        startdescription: "This is a start, but I'll need more power. Not many creatures are drawn to knowledge alone",
+        requirements: {ritual:1,knock:2,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
+        startdescription: "There are possibilities here. If I add enough Lantern, who knows what I could attract?",
         craftable: false,
 		hintonly: true
     },
@@ -126,8 +239,8 @@
         id: "ritehinthaswinter",
         label: "Winter",
         actionId: "work",
-        requirements: {ritual:1,knock:1,winter:1},
-        startdescription: "This is a start, but I'll need more power.",
+        requirements: {ritual:1,knock:2,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
+        startdescription: "There are possibilities here, if I add Edge, or Heart, or Forge.",
         craftable: false,
 		hintonly: true
     },
@@ -205,9 +318,9 @@
 	
 			{
         id: "ritehinthasknock",
-        label: "Opening the Way",
+        label: "Summoning Something?",
         actionId: "work",
-        requirements: {ritual:1,knock:1},
+        requirements: {ritual:1,knock:2,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
         startdescription: "A summoning begins with Knock, but it usually requires two other aspects besides.",
         craftable: false,
 		hintonly: true
@@ -230,8 +343,8 @@
 		forge:1},
         startdescription: "Not yet enough. The Forge of Days will not attend unless I can merit her attention. I need Forge power of at least the sixth intensity.",
         description: ".",
-        warmup: 60,
-        craftable: true,
+   
+        craftable: false,
 		hintonly: true
     },
 		   {
@@ -243,7 +356,7 @@
 		grail:1},
         startdescription: "Not yet enough. The Red Grail will not attend unless I can merit her attention. I need Grail power of at least the sixth intensity.",
         description: ".",
-        warmup: 60,
+   
 
 		hintonly: true
     },		   {
@@ -255,7 +368,7 @@
 		grail:1},
         startdescription: "Not yet enough. The Red Grail will not attend unless I can merit her attention. I need Grail power of at least the sixth intensity.",
         description: ".",
-        warmup: 60,
+   
 
 		hintonly: true
     },
@@ -269,8 +382,8 @@
 		lantern:1},
         startdescription: "Not yet enough. The Watchman will not attend unless I can merit his attention. I need Lantern power of at least the sixth intensity.",
         description: ".",
-        warmup: 60,
-        craftable: true,
+   
+        craftable: false,
 		hintonly: true
     },
 	

@@ -498,7 +498,7 @@ maxexecutions:1
 		alternativerecipes:
 		[{id: "workhealthinjury", chance:30}],
         actionId: "work",
-        requirements: {health: 1},
+        requirements: {health: 1,ritual:-1},
         effects: {
             funds: 1,vitality:1
         },
