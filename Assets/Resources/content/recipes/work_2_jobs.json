@@ -531,14 +531,16 @@ maxexecutions:1
 		startdescription:"I used to paint. I could paint those sights I half-remember from my dreams. I might sell something. I probably won't.",
 		description:"I've finished a painting, to the excitement of absolutely no-one: no-one but me. [Sometimes, painting will gain you Glimmerings. <b>Study</b> them to unlock more advanced painting options.]",
 		        deckeffect: {paintingresults:1},
-					slots: [{id:"Inspiration",
+					slots: [{id:"Yearning",
 					required: {restlessness:1},
 					consumes:true,
-					description: "This is yearning, and this is my work.",
+					description: "If I am restless, perhaps this is what I want.",
 				}],
 		alternativerecipes:[{id:"paintbasicsuccess",chance:30}],
 		deckeffect:{paintingresultsbasic:1},
-		craftable:true
+		aspects:{fatiguing:1},
+		craftable:true,
+		warmup:60
 		},
 		{
 		  id: "paintbasicsuccess",
@@ -546,6 +548,7 @@ maxexecutions:1
 		actionId:"work",
 		description:"I've found a customer! She'll probably hang it in her spare bedroom and never look at it again. But her money is good. [Sometimes, painting will gain you Glimmerings. <b>Study</b> them to unlock more advanced painting options.]",
 		deckeffect:{paintingresultsbasic:2},
+		aspects:{fatiguing:1},
 		effects:{funds:2}
 		}
 		
@@ -566,6 +569,7 @@ maxexecutions:1
         craftable: true,
 		alternativerecipes:[{id:"painthaslore",chance:100},
 	{id:"painthasinfluence",chance:100},
+	{id:"painthassummoned",chance:100}
 	{id:"painthasfollower",chance:100}],
 	linked:[{id:"paintaddpigment",chance:100}]
     },
@@ -574,7 +578,7 @@ maxexecutions:1
 	actionId:"work",
 	label:"Esoteric Art",
 	requirements:{lore:1},
-	effects:{insight:1},
+	effects:{insight:1,notoriety:1},
 	warmup:5,
 	linked:[{id:"paintaddpigment",chance:100}]
 	},
@@ -591,6 +595,14 @@ maxexecutions:1
 		label:"A Portrait",
 	effects:{insight:1},
 	requirements:{follower:1},
+	warmup:5,
+	linked:[{id:"paintaddpigment",chance:100}]
+	},
+			{id:"painthassummoned",
+		actionId:"work",
+		label:"An unusualPortrait",
+	requirements:{summoned:1},
+	effects:{insight:1,notoriety:1},	
 	warmup:5,
 	linked:[{id:"paintaddpigment",chance:100}]
 	},		
@@ -658,7 +670,7 @@ maxexecutions:1
 {id:"paintcheckpigment",
 actionId:"work",
 alternativerecipes:[{id:"painthaspigment",chance:100},
-{id:"paintresults",chance:100},
+{id:"paintresults",chance:100}
 ]
 },
 	
@@ -735,21 +747,21 @@ warmup:5,
 	{id:"paintresults",chance:100}]},
 	
 				{id:"paintmasteredge_unique",requirements:{insight:6,edge:9},maxexecutions:1,effects:{paintingmasterforge:1},
-			actionId:"work",linked:[{id:"paintresults",chance:90}]},
+			actionId:"work",linked:[{id:"paintresults",chance:100}]},
 			{id:"paintmasterforge_unique",requirements:{insight:6,forge:9},maxexecutions:1,effects:{paintingmasterforge:1},
-			actionId:"work",linked:[{id:"paintresults",chance:90}]},
+			actionId:"work",linked:[{id:"paintresults",chance:100}]},
 		{id:"paintmastergrail_unique",requirements:{insight:6,grail:9},maxexecutions:1,effects:{paintingmastergrail:1},
-		actionId:"work",linked:[{id:"paintresults",chance:90}]},
+		actionId:"work",linked:[{id:"paintresults",chance:100}]},
 		{id:"paintmasterheart_unique",requirements:{insight:6,heart:9},maxexecutions:1,effects:{paintingmasterheart:1},
-		actionId:"work",linked:[{id:"paintresults",chance:90}]},
+		actionId:"work",linked:[{id:"paintresults",chance:100}]},
 		{id:"paintmasterknock_unique",requirements:{insight:6,knock:9},maxexecutions:1,effects:{paintingmasterknock:1},
-		actionId:"work",linked:[{id:"paintresults",chance:90}]},
+		actionId:"work",linked:[{id:"paintresults",chance:100}]},
 		{id:"paintmasterlantern_unique",requirements:{insight:6,lantern:9},maxexecutions:1,effects:{paintingmasterlantern:1},
 		actionId:"work",linked:[{id:"paintmastermoth_unique",chance:90}]},
 		{id:"paintmastermoth_unique",requirements:{insight:6,moth:9},maxexecutions:1,effects:{paintingmastermoth:1},
-		actionId:"work",linked:[{id:"paintresults",chance:90}]},
+		actionId:"work",linked:[{id:"paintresults",chance:100}]},
 		{id:"paintmasterwinter_unique",requirements:{insight:6,winter:9},maxexecutions:1,effects:{paintingmasterwinter:1},
-		actionId:"work",linked:[{id:"paintresults",chance:90}]},
+		actionId:"work",linked:[{id:"paintresults",chance:100}]},
 	
 	{
         id: "paintresults",
@@ -760,14 +772,52 @@ warmup:5,
         description: "",
         warmup: 5,
         craftable: false,
-		linked:[{id:"paintcleanup",chance:100}]},
+		effects:{restlessness:-1,pigment:-1},
+		linked:[{id:"paintingqualitymaster_unique",chance:100},
+		{id:"paintingqualityextraordinary",chance:100},
+		{id:"paintingqualityexceptional",chance:100},
+		{id:"paintingqualityverygood",chance:100},
+		{id:"paintingqualitygood",chance:100},
+		{id:"paintingqualitycompetent",chance:100},
+		{id:"paintingqualityadequate",chance:100},
+		{id:"paintingqualityfailure",chance:100}]},
 		
+		{id:"paintingqualitymaster_unique",actionId:"work",requirements:{tool:1},effects:{glimmering:3,contentment:1,fascination:1},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualityextraordinary",actionId:"work",requirements:{insight:8},deckeffect:{paintingresults:8},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualityexceptional",actionId:"work",requirements:{insight:6},deckeffect:{paintingresults:6},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualityverygood",actionId:"work",requirements:{insight:4},deckeffect:{paintingresults:5},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualitygood",actionId:"work",requirements:{insight:3},deckeffect:{paintingresults:4},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualitycompetent",actionId:"work",requirements:{insight:2},deckeffect:{paintingresults:3},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualityadequate",actionId:"work",requirements:{insight:1},deckeffect:{paintingresults:1},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
+		{id:"paintingqualityfailure",actionId:"work",requirements:{insight:-1},effects:{dread:1},
+		linked:[{id:"paintingreputationcheck",chance:100}]},
 		
-		{id:"paintcleanup",
+		{id:"paintingreputationcheck",
 		actionId:"work",
-		effects:{restlessness:-1,pigment:-1}
-		},
-   
+		effects:{insight:-1},
+		linked:[
+		{id:"paintingreputation_scandalous",chance:100},
+		{id:"paintingreputation_celebrated",chance:100},
+		{id:"paintingreputation_famed",chance:100},
+		{id:"paintingreputation_noteworthy",chance:100},
+		{id:"paintingreputation_known",chance:100},
+		{id:"paintingreputation_unknown",chance:100},
+		]},
+		
+			{id:"paintingreputation_scandalous",actionId:"work",requirements:{reputation:10},deckeffect:{paintingresultsreputation:10}},
+		{id:"paintingreputation_celebrated",actionId:"work",requirements:{reputation:8},deckeffect:{paintingresultsreputation:8}},
+		{id:"paintingreputation_famed",actionId:"work",requirements:{reputation:6},deckeffect:{paintingresultsreputation:6}},
+		{id:"paintingreputation_noteworthy",actionId:"work",requirements:{reputation:4},deckeffect:{paintingresultsreputation:4}},
+		{id:"paintingreputation_known",actionId:"work",requirements:{reputation:2},deckeffect:{paintingresultsreputation:2}},
+		{id:"paintingreputation_unknown",actionId:"work",requirements:{reputation:-1},deckeffect:{paintingresultsreputation:0}},
+		  
 		{
         id: "paintmansus",
         label: "Depicting the Mansus",
