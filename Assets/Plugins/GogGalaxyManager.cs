@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if UNITY_STANDALONE_LINUX
+#else
+using System;
 using UnityEngine;
 using System.Collections;
 using System.IO;
@@ -100,4 +102,4 @@ public class GogGalaxyManager : MonoBehaviour
     }
 
 }
-
+#endif
