@@ -206,7 +206,7 @@
         id: "ritehint",
         label: "Hint: Rites",
         actionId: "work",
-        requirements: {ritual:1},
+        requirements: {ritual:1,lore:-1,ingredient:-1,influence:-1,follower:-1,tool:-1,desire:-1},
         startdescription: "Each rite can be used for many purposes. For a summoning, I must begin by calling upon the power of the Knock, which will open the way.",
         craftable: false,
 		hintonly: true
