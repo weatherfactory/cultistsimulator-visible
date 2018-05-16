@@ -165,7 +165,10 @@ namespace Assets.CS.TabletopUI {
             IAspectsDictionary aspectsToReturn=new AspectsDictionary();
 
             if (includeSelf)
+            { 
                 aspectsToReturn.CombineAspects(_element.AspectsIncludingSelf);
+                aspectsToReturn[_element.Id] = aspectsToReturn[_element.Id] * Quantity; //This might be a stack. In this case, we always want to return the multiple of the aspect of the element itself (only).
+            }
             else
                 aspectsToReturn.CombineAspects(_element.Aspects);
 
