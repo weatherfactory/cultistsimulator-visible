@@ -234,6 +234,8 @@ namespace Assets.CS.TabletopUI {
         /// <param name="source"></param>
         public void Populate(string elementId, int quantity, Source source) {
             _element = Registry.Retrieve<ICompendium>().GetElementById(elementId);
+            if(_element==null)
+            NoonUtility.Log("Trying to create nonexistent element! - '" + elementId + "'");
 
             InitialiseIfStackIsNew();
         
