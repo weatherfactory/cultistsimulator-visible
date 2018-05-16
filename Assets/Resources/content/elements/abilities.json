@@ -290,12 +290,12 @@ lifetime: 180
             id: "fleeting",
             label: "Fleeting Memory",
             description: "A moment in time. In another moment, it'll be gone.",
-			aspects: {secrethistories: 2,moth:2,ingredient:1},
+			aspects: {secrethistories: 2,moth:2,influence:1},
 			lifetime:30
         },
 		{id: "contentment",
 		label: "Contentment",
-		aspects: {lantern:2,heart:2,ingredient:1},
+		aspects: {lantern:2,heart:2,influence:1},
 		description: "I'm happy, I think. [Contentment defends against Dread; but Contentment doesn't last.]",
 		lifetime: 60
 		}
