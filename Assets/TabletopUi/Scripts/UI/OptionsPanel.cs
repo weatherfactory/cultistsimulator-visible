@@ -55,8 +55,7 @@ public class OptionsPanel : MonoBehaviour {
     private const string SOUNDVOLUME = "SoundVolume";
     private const string NOTIFICATIONTIME = "NotificationTime";
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
-    private const string BIRDWORMSLIDER = "BirdWormSlider";
-
+    
 
 
     private bool pauseStateWhenOptionsRequested = false;
@@ -118,8 +117,8 @@ public class OptionsPanel : MonoBehaviour {
 
         // Loading Bird/Worm Slider
 
-        if (PlayerPrefs.HasKey(BIRDWORMSLIDER))
-            value = PlayerPrefs.GetFloat(BIRDWORMSLIDER);
+        if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
+            value = PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER);
         else
             value = UnityEngine.Random.Range(0, 1);
 
@@ -211,7 +210,7 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetBirdWorm(float value) {
         birdWormSliderValue.text = (value > 0.5f ? "Bird" : "Worm");
-        PlayerPrefs.SetFloat(BIRDWORMSLIDER, value);
+        PlayerPrefs.SetFloat(NoonConstants.BIRDWORMSLIDER, value);
 
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
