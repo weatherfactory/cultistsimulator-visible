@@ -51,7 +51,7 @@
 	{id:"painthaslore",
 	actionId:"work",
 	label:"Esoteric Art",
-	startdescription:"Those who know will understand.",
+	startdescription:"Those who know will understand. [As will the Suppression Bureau.]",
 	requirements:{lore:1},
 	effects:{insight:1,notoriety:1},
 	
@@ -79,7 +79,7 @@
 			{id:"painthassummoned",
 		actionId:"work",
 		label:"An Unusual Portrait",
-		startdescription:"I'll paint them into our world, and perhaps they'll stay a little longer.",
+		startdescription:"I'll paint them into our world, and perhaps they'll stay a little longer.  [The Suppression Bureau will likely take an interest.]",
 	requirements:{summoned:2},
 	effects:{insight:1,notoriety:1},	
 	warmup:5,
