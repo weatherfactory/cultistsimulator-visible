@@ -14,7 +14,8 @@
             aspects:
             {edge: 6,influence:1},
             description: "The passions are roused. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 						          {
         id: "influenceedgee",
@@ -22,7 +23,8 @@
             aspects:
             {edge: 10,influence:1},
             description: "Anger is implicit in every shape. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 								          {
         id: "influenceedgeg",
@@ -30,7 +32,8 @@
             aspects:
             {edge: 15,influence:1},
             description: "Who can avert the finality of battle? [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 		
 								          {
@@ -47,7 +50,8 @@
             aspects:
             {forge: 6,influence:1},
             description: "The possibility of sparks. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo:"fascination"
         },
 						          {
         id: "influenceforgee",
@@ -55,7 +59,8 @@
             aspects:
             {forge: 10,influence:1},
             description: "This is the aura at the volcano's edge. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo:"fascination"
         },
 								          {
         id: "influenceforgeg",
@@ -63,7 +68,8 @@
             aspects:
             {forge: 15,influence:1},
             description: "Change follows fire. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo:"fascination"
         },
 		
 		
@@ -81,7 +87,8 @@
             aspects:
             {grail: 6,influence:1},
             description: "It is difficult to control oneself. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 						          {
         id: "influencegraile",
@@ -89,7 +96,8 @@
             aspects:
             {grail: 10,influence:1},
             description: "The lips ache to savour; the fingers ache to clutch. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 								          {
         id: "influencegrailg",
@@ -97,7 +105,8 @@
             aspects:
             {grail: 15,influence:1},
             description: "The very air is succulent with possibility. Pierce it, and it might bleed. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 		
 							          {
@@ -114,7 +123,8 @@
             aspects:
             {heart: 6,influence:1},
             description: "A rising power; a reassuring energy. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo:"vitality"
         },
 						          {
         id: "influencehearte",
@@ -122,7 +132,8 @@
             aspects:
             {heart: 10,influence:1},
             description: "The heart moves; the world moves. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo:"vitality"
         },
 								          {
         id: "influenceheartg",
@@ -130,7 +141,8 @@
             aspects:
             {heart: 15,influence:1},
             description: "The sky is a drum; the earth is ready for its ecstacy. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo:"vitality"
         },
 		
 								          {
@@ -147,7 +159,8 @@
             aspects:
             {knock: 6,influence:1},
             description: "Clouds part -- walls creak -- old wounds ache.[A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 						          {
         id: "influenceknocke",
@@ -155,7 +168,8 @@
             aspects:
             {knock: 10,influence:1},
             description: "Geometry contorts -- doors burst open -- snakes boil from the earth! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 								          {
         id: "influenceknockg",
@@ -163,7 +177,8 @@
             aspects:
             {knock: 15,influence:1},
             description: "There is a Door that should not open, and even now its hinges are roused -- [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "bloodshed"
         },
 		
 								          {
@@ -180,7 +195,8 @@
             aspects:
             {lantern: 6,influence:1},
             description: "Light dews the skin and suffuses the air. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "fascination"
         },
 						          {
         id: "influencelanterne",
@@ -207,8 +223,7 @@
             aspects:
             {moth: 2,influence:1},
             description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
-			decayTo: "restlessness"
+			lifetime: 60
         },
 								          {
         id: "influencemothc",
@@ -253,7 +268,8 @@
             aspects:
             {winter: 6,influence:1},
             description: "The air crisps the skin. Frost marks the glass. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "dread"
         },
 						          {
         id: "influencewintere",
@@ -261,7 +277,8 @@
             aspects:
             {winter: 10,influence:1},
             description: "Winter passes the clothes, passes the skin, nestles in the veins. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,
+			decayTo: "dread"
         },
 								          {
         id: "influencewinterg",

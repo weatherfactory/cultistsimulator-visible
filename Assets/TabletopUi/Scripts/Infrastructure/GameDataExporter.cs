@@ -7,6 +7,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
+using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
@@ -46,6 +47,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
             var htMetaInfo=new Hashtable();
             htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER,metaInfo.VersionNumber);
+            //Bird, Worm enigma persist
+            if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
+            { 
+                htMetaInfo.Add(NoonConstants.BIRDWORMSLIDER, PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER));
+                htMetaInfo.Add("WeAwaitSTE", "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull, and present it in turn to the sky.");
+            }
             return htMetaInfo;
         }
 

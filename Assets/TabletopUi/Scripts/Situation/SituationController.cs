@@ -266,9 +266,6 @@ namespace Assets.TabletopUi {
             var executor = new SituationEffectExecutor();
             executor.RunEffects(command, situationWindow.GetStorageStacksManager(), currentCharacter);
 
-            if(situationWindow.GetAspectsFromAllSlottedAndStoredElements(true).ContainsKey("insight"))
-            NoonUtility.Log("Insights in recipe: " + situationWindow.GetAspectsFromAllSlottedAndStoredElements(true)["insight"]);
-
             if (command.Recipe.EndingFlag != null) {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
                 tabletopManager.EndGame(ending, this);

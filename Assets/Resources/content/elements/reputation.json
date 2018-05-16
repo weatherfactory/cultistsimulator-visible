@@ -6,7 +6,8 @@
             label: "Mystique",
             aspects: {reputation: 1},
             description: "They remember who I am. [Mystique may attract the attention of Hunters. They can't use it to build a case against you, but it will encourage them to look harder.]",
-		lifetime: 300
+		lifetime: 300,
+	xtriggers:{scandalous:mystique}
         },
 							 {
             id: "notoriety",
@@ -14,7 +15,8 @@
             aspects:
             {reputation: 1},
             description: "They remember what I've done. [Notoriety may allow Hunters to build a case against you.]",
-	lifetime: 300
+	lifetime: 300,
+	xtriggers:{scandalous:notoriety}
         },
 									 {
             id: "evidence",
