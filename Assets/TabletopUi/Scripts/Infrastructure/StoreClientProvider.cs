@@ -45,8 +45,9 @@ Gog=2
         {
             if(!_initialised)
                 throw new ApplicationException("Store client provider wasn't initialised");
-            if (storeClient == StoreClient.Steam && Facepunch.Steamworks.Client.Instance != null)
-                return true;
+          //  if (storeClient == StoreClient.Steam && Facepunch.Steamworks.Client.Instance != null)
+            //    return true;
+            return false;
             if (storeClient == StoreClient.Gog)
 #if UNITY_STANDALONE_LINUX
                 return false;
@@ -68,26 +69,26 @@ Gog=2
             if (string.IsNullOrEmpty(achievementId))
                 return;
 
-            if (IsAvailable(StoreClient.Steam))
-            { 
-                var steamClient = Facepunch.Steamworks.Client.Instance;
-                var achievement = steamClient.Achievements.Find(achievementId);
-                if (achievement != null)
-                { 
-                if (setStatus && !achievement.State)
-                    {
-                        achievement.Trigger(true);
-                        NoonUtility.Log("Set Steam achievement:" + achievementId, 5);
-                    }
+            //if (IsAvailable(StoreClient.Steam))
+            //{ 
+            //    var steamClient = Facepunch.Steamworks.Client.Instance;
+            //    var achievement = steamClient.Achievements.Find(achievementId);
+            //    if (achievement != null)
+            //    { 
+            //    if (setStatus && !achievement.State)
+            //        {
+            //            achievement.Trigger(true);
+            //            NoonUtility.Log("Set Steam achievement:" + achievementId, 5);
+            //        }
 
-                    else if (!setStatus)
-                    achievement.Reset();
-                else
-                NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it's already set",10);
-                }
-                else
-                    NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it doesn't exist", 10);
-            }
+            //        else if (!setStatus)
+            //        achievement.Reset();
+            //    else
+            //    NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it's already set",10);
+            //    }
+            //    else
+            //        NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it doesn't exist", 10);
+            //}
 
 #if UNITY_STANDALONE_LINUX
 #else

@@ -9,7 +9,6 @@ using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.Core.Services;
-using Assets.CS.TabletopUI;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
@@ -157,11 +156,18 @@ public class Compendium : ICompendium
 
     // -- Get By Id ------------------------------
 
-    public Recipe GetRecipeById(string recipeId) {
-        Recipe recipe;
-        _recipeDict.TryGetValue(recipeId, out recipe);
-
-        return recipe;
+    public Recipe GetRecipeById(string recipeId)
+    {
+        if (recipeId == null || recipeId=="NULL") //sometimes this gets parsed out of the save data?
+            return null;
+        if (_recipeDict.ContainsKey(recipeId))
+        {
+            var recipe = _recipeDict[recipeId];
+            return recipe;
+        }
+        else
+        throw new ApplicationException("Can't find recipe id " + recipeId);
+        
     }
 
     public Element GetElementById(string elementId) {
