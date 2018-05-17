@@ -116,6 +116,7 @@ namespace Assets.Core
    //set this up to return if we pass through the list below without finding anything interesting.
                 rp.Title = currentRecipe.Label;
                 rp.DescriptiveText = currentRecipe.StartDescription;
+            rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
   
                 
             foreach (var ar in currentRecipe.AlternativeRecipes)
@@ -138,8 +139,9 @@ namespace Assets.Core
                             rp.Title = candidateRecipe.Label;
                             rp.DescriptiveText = candidateRecipe.StartDescription;
                             rp.BurnImage = candidateRecipe.BurnImage;
-                            //we are not in the additional branch, so just return this predictioin.
-                            return rp;
+                        rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
+                        //we are not in the additional branch, so just return this predictioin.
+                        return rp;
                     }
                 }
             }

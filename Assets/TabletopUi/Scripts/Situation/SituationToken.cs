@@ -165,10 +165,10 @@ namespace Assets.CS.TabletopUI {
             countdownCanvas.gameObject.SetActive(show);
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
+        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour) {
             SetTimerVisibility(true);
 
-            Color barColor = UIStyle.GetColorForCountdownBar(recipe, timeRemaining);
+            Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
 
             timeRemaining = Mathf.Max(0f, timeRemaining);
             countdownBar.color = barColor;

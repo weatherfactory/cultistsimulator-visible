@@ -21,13 +21,13 @@ public static class UIStyle {
     
     public static Color textColorLight = new Color32(0x24, 0x80, 0x89, 0xFF); // 248089FF
 
-    public static Color GetColorForCountdownBar(Recipe forRecipe, float timeRemaining) {
-        if (forRecipe != null && forRecipe.SignalEndingFlavour!=EndingFlavour.None) { 
+    public static Color GetColorForCountdownBar(EndingFlavour forEndingFlavour, float timeRemaining) {
+        if (forEndingFlavour != EndingFlavour.None) { 
             const float timeToBlink = 5f;
 
             Color warningColor;
 
-            if (forRecipe.SignalEndingFlavour==EndingFlavour.Grand)
+            if (forEndingFlavour == EndingFlavour.Grand)
                 warningColor = warmWhite;
             else
                 warningColor = lightRed;

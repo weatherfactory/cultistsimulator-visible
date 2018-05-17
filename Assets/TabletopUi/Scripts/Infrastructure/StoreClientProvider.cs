@@ -48,17 +48,17 @@ Gog=2
           //  if (storeClient == StoreClient.Steam && Facepunch.Steamworks.Client.Instance != null)
             //    return true;
             return false;
-            if (storeClient == StoreClient.Gog)
-#if UNITY_STANDALONE_LINUX
-                return false;
-#else
-               if (GogGalaxyManager.Instance == null)
-                    return false;
-            if (Galaxy.Api.GalaxyInstance.User().SignedIn())
-                return true;
+//            if (storeClient == StoreClient.Gog)
+//#if UNITY_STANDALONE_LINUX
+//                return false;
+//#else
+//               if (GogGalaxyManager.Instance == null)
+//                    return false;
+//            if (Galaxy.Api.GalaxyInstance.User().SignedIn())
+//                return true;
 
-#endif
-            return false;
+//#endif
+//            return false;
         }
 
         public void SetAchievement(string achievementId,bool setStatus)

@@ -15,6 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
@@ -189,7 +190,7 @@ namespace Assets.CS.TabletopUI {
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
-            DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
+            DisplayTimeRemaining(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayButtonState(true);
 
             SoundManager.PlaySfx("SituationAvailable");
@@ -246,8 +247,8 @@ namespace Assets.CS.TabletopUI {
             ongoing.ShowStoredAspects(GetStoredStacks());
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
-            ongoing.UpdateTime(duration, timeRemaining,recipe);
+        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour forEndingFlavour) {
+            ongoing.UpdateTime(duration, timeRemaining, forEndingFlavour);
         }
 
         void DisplayButtonState(bool interactable, string text = null) {
