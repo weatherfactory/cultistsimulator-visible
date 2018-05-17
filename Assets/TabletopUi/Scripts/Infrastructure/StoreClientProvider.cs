@@ -30,15 +30,15 @@ Gog=2
 
         public StoreClientProvider()
         {
-#if UNITY_STANDALONE_LINUX
-#else
-            Galaxy.Api.IAuthListener authListener = new GogAuthListener();
+//#if UNITY_STANDALONE_LINUX
+//#else
+//            Galaxy.Api.IAuthListener authListener = new GogAuthListener();
 
-            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
+//            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
 
-            _initialised = true;
+//            _initialised = true;
 
-#endif
+//#endif
         }
 
         public bool IsAvailable(StoreClient storeClient)
