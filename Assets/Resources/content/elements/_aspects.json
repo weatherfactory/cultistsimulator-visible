@@ -563,6 +563,13 @@
 			comments: "Recipe aspect; runs to fatigue stats, or to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
 			noartneeded: true
         },
+							 {
+            id: "exhaustlocation",
+            label: "Location Exhausted",
+			description: "A location has been exhausted, and won't reopen unless explicitly renewed.",
+            isAspect: true,
+			noartneeded: true
+        },
 			 {
             id: "restore",
             label: "Nothing has Occurred",
