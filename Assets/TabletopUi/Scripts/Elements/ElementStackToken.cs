@@ -647,8 +647,8 @@ namespace Assets.CS.TabletopUI {
         public void ShowCardDecayTimer(bool showTimer) {
 			if (Decays)
 				decayVisible = showTimer;
-			else
-				decayView.gameObject.SetActive( showTimer );
+			
+			decayView.gameObject.SetActive( showTimer );
         }
 
         // Public so TokenWindow can access this
