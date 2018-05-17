@@ -45,8 +45,8 @@ namespace Assets.CS.TabletopUI {
         const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu.";
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
-        Element element;
-        ElementStackToken token;
+        Element _element;
+        ElementStackToken _token;
 
         SlotSpecification slotSpec;
 
@@ -57,7 +57,7 @@ namespace Assets.CS.TabletopUI {
 
             //AK: removed for now. Mutations complicate things, but also, clicking on the card and getting no response feels stuck
             // Check if we'd show the same, if so: do nothing
-            //if (this.element == element && gameObject.activeSelf) {
+            //if (this._element == _element && gameObject.activeSelf) {
             //    if (this.token == token)
             //        return;
 
@@ -70,8 +70,8 @@ namespace Assets.CS.TabletopUI {
             //}
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
-            this.element = element;
-            this.token = token; // To be able to update the card's remaining time
+            this._element = element;
+            this._token = token; // To be able to update the card's remaining time
             this.slotSpec = null;
             this.deckSpec = null;
             this.deckQuantity = 0;
@@ -84,8 +84,8 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
-            this.element = null;
-            this.token = null;
+            this._element = null;
+            this._token = null;
             this.slotSpec = slotSpec;
             this.deckSpec = null;
             this.deckQuantity = 0;
@@ -98,8 +98,8 @@ namespace Assets.CS.TabletopUI {
                 return;
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
-            this.element = null;
-            this.token = null;
+            this._element = null;
+            this._token = null;
             this.slotSpec = null;
             this.deckSpec = deckSpec;
             this.deckQuantity = numCards;
@@ -109,29 +109,29 @@ namespace Assets.CS.TabletopUI {
         protected override void ClearContent() {
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
 
-            this.element = null;
-            this.token = null;
+            this._element = null;
+            this._token = null;
             this.slotSpec = null;
         }
 
         void SetTokenDecayEventListener(bool add) {
-            if (this.token == null || !this.token.Decays)
+            if (this._token == null || !this._token.Decays)
                 return;
 
             if (add)
-                this.token.onDecay += HandleOnTokenDecay;
+                this._token.onDecay += HandleOnTokenDecay;
             else
-                this.token.onDecay -= HandleOnTokenDecay;
+                this._token.onDecay -= HandleOnTokenDecay;
         }
 
         void HandleOnTokenDecay(float timeRemaining) {
-            if(token!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
-                ShowImageDecayTimer(true, token.GetCardDecayTime());
+            if(_token!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
+                ShowImageDecayTimer(true, _token.GetCardDecayTime());
         }
 
         protected override void UpdateContent() {
-            if (element != null) {
-                SetElementCard(element, token);
+            if (_element != null) {
+                SetElementCard(_element, _token);
                 SetTokenDecayEventListener(true); // Add decay listener if we need one
             }
             else if (slotSpec != null) {
@@ -144,7 +144,7 @@ namespace Assets.CS.TabletopUI {
 
         // SET TOKEN TYPE CONTENT VISUALS
 
-        void SetElementCard(Element element, ElementStackToken token = null) {
+        void SetElementCard(Element element, ElementStackToken token) {
             Sprite sprite;
 
             if (element.IsAspect)
@@ -155,8 +155,12 @@ namespace Assets.CS.TabletopUI {
             SetImageNarrow(false);
             ShowImage(sprite);
 
-            if (token != null) // only if there's a token is there ever a decay timer
+            if (token != null)
+            {
                 ShowImageDecayTimer(token.Decays, token.GetCardDecayTime());
+                aspectsDisplayFlat.DisplayAspects(
+                    token.GetAspects(false)); //token, not _element: cater for possible mutations
+            }
             else
                 ShowImageDecayTimer(false);
 
@@ -166,10 +170,9 @@ namespace Assets.CS.TabletopUI {
             ShowCardIcons(element.Unique, element.Lifetime > 0);
             ShowSlotIcons(false, false); // Make sure the other hint icons are gone
             ShowDeckInfos(0); // Make sure the other hint icons are gone
-
-            aspectsDisplayFlat.DisplayAspects(token.GetAspects(false)); //token, not element: cater for possible mutations
             aspectsDisplayForbidden.DisplayAspects(null);
             aspectsDisplayRequired.DisplayAspects(null);
+
         }
 
         void SetSlot(SlotSpecification slotSpec) {
