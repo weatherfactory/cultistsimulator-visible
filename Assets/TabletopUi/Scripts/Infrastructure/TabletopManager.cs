@@ -686,7 +686,7 @@ namespace Assets.CS.TabletopUI {
 
         public void NoMoreImpendingDoom(ISituationAnchor situationToken)
         {
-            backgroundMusic.PlayRandomClip();
+            backgroundMusic.NoMoreImpendingDoom();
         }
     }
 
