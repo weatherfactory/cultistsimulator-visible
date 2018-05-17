@@ -278,7 +278,7 @@
             aspects:
             {lantern: 2,lore:1},
             description: "It has been expressed like this: 'Each Hour has its colour, but colour exists only where there is light.'",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlantern:1,fragmentforge:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternb}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlantern:1,fragmentforge:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternb}
         },
 				 {
         id: "fragmentlanternb",
@@ -286,7 +286,7 @@
             aspects:
             {lantern: 4,lore:1},
             description: "A snatch of poetry; a single memory of a certain house that all of us visit at least twice in our lives. For one's first visit to the Mansus, this lore is almost essential.",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternb:1,fragmentforgeb:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternc}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternb:1,fragmentforgeb:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternc}
         },
 						 {
         id: "fragmentlanternc",
@@ -294,7 +294,7 @@
             aspects:
             {lantern: 6,lore:1},
             description: "'Mercy', saith the Watchman, 'is found only in shadow.'",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternc:1,fragmentforgec:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternd}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternc:1,fragmentforgec:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternd}
         },
 		{
 		        id: "fragmentlanternd",
@@ -302,21 +302,21 @@
             aspects:
             {lantern:8,lore:1},
             description: "The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternd:1,fragmentforged:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterne}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternd:1,fragmentforged:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterne}
         },
 		{		        id: "fragmentlanterne",
             label: "Formulae Concursate",
             aspects:
             {lantern:10,lore:1},
-            description: "The Concursum waits at the heart of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanterne:1,fragmentforgee:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternf}
+            description: "The Concursum waits at the Lantern of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanterne:1,fragmentforgee:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternf}
         },
 		{  id: "fragmentlanternf",
             label: "Mantra of Ascent",
             aspects:
             {lantern:12,lore:1},
             description: "The Ascent of Knives is the bloodiest of the Watchman's tests. Those who pass it and are dead enter the service of the Sun-in-Rags. Those living who pass it are a little closer to the Glory. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternf:1,fragmentforgef:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterng}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternf:1,fragmentforgef:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterng}
         },
 			{id: "fragmentlanterng",
             label: "Illuminate Mysteries",
