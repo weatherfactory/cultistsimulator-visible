@@ -125,7 +125,8 @@ namespace Assets.CS.TabletopUI {
         }
 
         void HandleOnTokenDecay(float timeRemaining) {
-            ShowImageDecayTimer(true, token.GetCardDecayTime());
+            if(token!=null) //seeing some nullreference errors in the Unity analytics; maybe this is being called after the token is no longer in the window?
+                ShowImageDecayTimer(true, token.GetCardDecayTime());
         }
 
         protected override void UpdateContent() {
