@@ -276,7 +276,7 @@ warmup:5,
 	linked:[{id:"paintmasterwinter_unique",chance:100},
 	{id:"paintresults",chance:100}]},
 	
-				{id:"paintmasteredge_unique",requirements:{insight:7,edge:9},maxexecutions:1,effects:{paintingmasterforge:1},
+				{id:"paintmasteredge_unique",requirements:{insight:7,edge:9},maxexecutions:1,effects:{paintingmasteredge:1},
 			actionId:"work",linked:[{id:"paintresults",chance:100}]},
 			{id:"paintmasterforge_unique",requirements:{insight:7,forge:9},maxexecutions:1,effects:{paintingmasterforge:1},
 			actionId:"work",linked:[{id:"paintresults",chance:100}]},

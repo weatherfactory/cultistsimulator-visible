@@ -76,6 +76,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     public class AchievementList : IUserStatsAndAchievementsRetrieveListener
 
     {
+        // ReSharper disable once NotAccessedField.Local
         private IStats _gogStats;
 
 
