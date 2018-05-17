@@ -11712,12 +11712,12 @@ Prefab:
     - target: {fileID: 114623892956103322, guid: d7d403c27a1f7e9418edf2a7eb153728,
         type: 2}
       propertyPath: m_Text
-      value: Bugs?
+      value: PROBLEMS?
       objectReference: {fileID: 0}
     - target: {fileID: 114623892956103322, guid: d7d403c27a1f7e9418edf2a7eb153728,
         type: 2}
       propertyPath: m_FontData.m_FontSize
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114007766782849930, guid: d7d403c27a1f7e9418edf2a7eb153728,
         type: 2}
@@ -11843,7 +11843,7 @@ Prefab:
     - target: {fileID: 114477796898511788, guid: d7d403c27a1f7e9418edf2a7eb153728,
         type: 2}
       propertyPath: m_Text
-      value: PLEASE TELL US EVERYTHING.
+      value: FOUND A BUG? TELL US EVERYTHING.
       objectReference: {fileID: 0}
     - target: {fileID: 114938565604161022, guid: d7d403c27a1f7e9418edf2a7eb153728,
         type: 2}
@@ -11964,6 +11964,16 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: cb22c9998f6d7d9439f6f1f6cb430e05,
         type: 3}
+    - target: {fileID: 114623892956103322, guid: d7d403c27a1f7e9418edf2a7eb153728,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114507749335404710, guid: d7d403c27a1f7e9418edf2a7eb153728,
+        type: 2}
+      propertyPath: m_Text
+      value: SUBMITTING REPORT NOW
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7d403c27a1f7e9418edf2a7eb153728, type: 2}
   m_IsPrefabParent: 0
