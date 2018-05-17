@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System;
-
+using Noon;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
-using Noon;
 using OrbCreationExtensions;
 
 public class ContentImporter

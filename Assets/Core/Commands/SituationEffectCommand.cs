@@ -13,7 +13,6 @@ namespace Assets.Core
         public string Description { get; set; }
         public Recipe Recipe { get; set; }
         public bool AsNewSituation { get; set; } //determines whether the recipe will spawn a new situation.
-        //this currently happens if the verb is different from the original verb *and* if it's specified as additional
 
         public SituationEffectCommand(Recipe recipe,bool asNewSituation)
         {
