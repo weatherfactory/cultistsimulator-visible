@@ -490,8 +490,15 @@ namespace Assets.CS.TabletopUI {
             return null;
         }
 
-        private bool CanPullCardToGreedySlot(ElementStackToken stack, SlotSpecification slotSpec) {
-            if (stack.Defunct)
+        private bool CanPullCardToGreedySlot(ElementStackToken stack, SlotSpecification slotSpec)
+        {
+            if (slotSpec == null)
+                return false; //We were seeing NullReferenceExceptions in the Unity analytics from the bottom line; stack is referenced okay so it shouldn't be stack, so probably a null slotspec is being specified somewhere
+
+            if (stack == null) //..but just in case.
+                return false;
+
+                if (stack.Defunct)
                 return false; // don't pull defunct cards
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards

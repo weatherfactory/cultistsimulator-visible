@@ -124,6 +124,12 @@ public class ContentImporter
                 if (!Elements.ContainsKey(xt.Value))
                     LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
             }
+            if(!string.IsNullOrEmpty(e.Value.DecayTo))
+            { 
+                if(!Elements.ContainsKey(e.Value.DecayTo))
+                    LogProblem("Element " + e.Key + " specifies an invalid result (" + e.Value.DecayTo + ") for DecayTo. ");
+
+            }
         }
     }
 
