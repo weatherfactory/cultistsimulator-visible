@@ -69,34 +69,26 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
         id: "gloverandgloverseniorjob",
             label: "Senior Position at Glover & Glover",
             aspects:{annoyance:1,job:1},
-			slots: [{id:"Diligence",
-					required: {reason: 1},
-					actionId:"work",
-					description: "Extra effort."
-					},
+			slots: [
 			{id:"Devotion",
 			required: {reason: 1},
 			actionId:"work",
-					description: "Extra effort."
+					description: "My position is demanding. I must concentrate my mind."
 				}],
             description: "I suppose, theoretically, I could rise higher, if someone died. [If you don't attend this job regularly, you might suffer a demotion.]",
 			xtriggers: {endannoyance:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverseniorjob},
-			lifetime:59,
+			lifetime:60,
 			decayTo:"gloverandgloverjob_demotion"
         },
 				{
         id: "gloverandgloverseniorjob_youngerglovergone",
             label: "Senior Position at Glover & Glover",
 			aspects:{job:1},
-			slots: [{id:"Diligence",
-					required: {reason: 1},
-					actionId:"work",
-					description: "Extra effort."
-					},
+			slots: [
 			{id:"Devotion",
 			required: {reason: 1},
 			actionId:"work",
-					description: "Extra effort."
+					description: "My position is demanding. I must concentrate my mind."
 				}],
             description: "With the younger Glover gone, I might rise even higher. [If you don't attend this job regularly, you might suffer a demotion.]",
 			xtriggers: {careeradvancement:gloverandglovertopjob,employment:gloverandgloverseniorjob_youngerglovergone},
