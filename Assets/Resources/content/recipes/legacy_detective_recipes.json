@@ -131,7 +131,7 @@ requirements: {myevidenceb:1},
 slots:[{id:"Culprit",required:{independent:1},greedy:true}],
 startdescription: "I've turned over my evidence to the Assistant Director General of the Suppression Bureau.... but there's no-one to arrest.",
 description: "I've provided the Suspicion Bureau with enough evidence to make an arrest... but there's no-one to arrest.",
-alternativerecipes:[{id:"workdetectivejob_matured_solvecase",chance:100}]
+alternativerecipes:[{id:"workdetectivejob_matured_solvecase",chance:100}],
 warmup:60,
 aspects:{employment:1,fatiguing:1},
 effects:{funds:2,suspicious:-99},

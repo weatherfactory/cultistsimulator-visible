@@ -93,7 +93,7 @@
 		ascensionpowerf:1,
 		forge:50},
         effects: {},
-        startdescription: "FNORD [This text is not available in the development build]",
+        startdescription: "FNORD [This text is not available yet.]",
         description: "Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
         craftable: false
@@ -121,7 +121,7 @@
 		ascensionsensationf:1,
 		grail:50},
         effects: {},
-        startdescription: "FNORD [This text is not available in the development build]",
+        startdescription: "FNORD [This text is not available yet.]",
         description: "The Feast is beginning. Remember that the ending text will contain the payload. FNORD.",
         warmup: 60,
         craftable: false
@@ -300,11 +300,11 @@
 		label:"The Ashes of Change",		
 		actionId: "craving",
 		requirements: {funds:-1},
-		slots: [{id:"Pain",description: "My need gnaws at me", required: {health:1}, greedy:true}],		
+		slots: [{id:"Pain",description: "My need gnaws at me", required: {health:1,vitality:1}, greedy:true}],		
 		startdescription: "I am shivering. Without the fire, my flesh will thin and weaken.",
 		description: "My strength is less. My blood is colder. I think that even some of my scars are healing. I diminish.",
-		aspects: {descend:1},
-		effects: {health:-1},
+		aspects: {descend:1,damagehealth:1},
+		effects:{vitality:-1},
 		warmup:30
 		},
 		
@@ -314,7 +314,7 @@
 		actionId: "craving",
 		startdescription:"",
 		description: "The flames yearn for me as I for them. Their touch is much more than pain. I have another Mark.",
-		effects: {health:1,funds:-1},
+		effects: {vitality:2,funds:-1},
 		aspects: {ascend:1}
 		},
 		
@@ -339,11 +339,11 @@
 		label:"The Desert Inside",		
 		actionId: "craving",
 		requirements: {corpse:-1,lunatic:-1,prisoner:-1},
-		slots: [{id:"Pain",description: "My need gnaws at me", required: {passion:1}, greedy:true}],		
+		slots: [{id:"Pain",description: "My need gnaws at me", required: {passion:1,glimmering:1}, greedy:true}],		
 		startdescription: "Without the life of others, my own life will feed on itself.",
 		description: "My fluids thin; my flesh dessicates; my changes uncoil; my passions dim. I am becoming less than I want.",
-		aspects: {descend:1},
-		effects: {passion:-1},
+		aspects: {descend:1,fatiguing:1},
+		effects:{glimmering:-1},
 		warmup:30
 		},
 		
@@ -352,7 +352,7 @@
 		id:"ascensioncravingsensation_ascend",
 		label:"Another Mark",
 		actionId: "craving",
-		effects: {passion:1,corpse:-1,lunatic:-1,prisoner:-1},
+		effects: {glimmering:2,corpse:-1,lunatic:-1,prisoner:-1},
 		startdescription:"",
 			description: "When I am done, the satisfaction is deep as the moon in the sea. Another Mark buds in me.",
 		aspects: {ascend:1}
@@ -378,11 +378,11 @@
 		label:"The Desert Inside",		
 		actionId: "craving",
 		requirements: {prisoner:-1},
-		slots: [{id:"Pain",description: "My need gnaws at me", required: {reason:1}, greedy:true}],		
+		slots: [{id:"Pain",description: "My need gnaws at me", required: {reason:1,erudition:1}, greedy:true}],		
 		startdescription: "If I cannot consume the thoughts of a living mind, my need will turn in upon itself.",
 		description: "The Light of the Mansus dims in me. I am less than I was. I need conversation. I must have those particular conversations.",
-		aspects: {descend:1},
-		effects: {reason:-1},
+		aspects: {descend:1,fatiguing:1},
+		effects:{erudition:-1},
 		warmup:30
 		},
 		
@@ -390,7 +390,7 @@
 		id:"ascensioncravingenlightenment_ascend",
 		label:"Another Mark",
 		actionId: "craving",
-		effects: {reason:1,prisoner:-1},
+		effects: {erudition:2,prisoner:-1},
 		startdescription:"",
 		description: "I have drunk the light of their mind. It thrills and fills me. The Marks brighten in me.",
 		aspects: {ascend:1}

@@ -10,13 +10,14 @@ using UnityEngine.UI;
 
 public class SituationEditor : MonoBehaviour
 {
+#pragma warning disable 649
     [SerializeField] private TMP_InputField input;
     [SerializeField] private Button btnPlusOne;
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnChangeRecipe;
     [SerializeField] private Button btnForwardTen;
     [SerializeField] private Button btnBackTen;
-
+#pragma warning restore 649
 
     private SituationController _situationController;
 

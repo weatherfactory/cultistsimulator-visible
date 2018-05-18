@@ -15,6 +15,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Assets.Core.Entities;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
@@ -48,7 +49,6 @@ namespace Assets.CS.TabletopUI {
 
         [Space]
         [SerializeField] AspectsDisplay aspectsDisplay;
-        [SerializeField] TextMeshProUGUI hintText;
 
 		[SerializeField] Button startButton;
 		[SerializeField] TextMeshProUGUI startButtonText;
@@ -149,10 +149,9 @@ namespace Assets.CS.TabletopUI {
 
             results.gameObject.SetActive(false);
 
-            DisplayRecipeMetaComment(null); // TODO: Start showing timer instead
             DisplayButtonState(false, buttonBusy);
-
-            SetWindowSize(IsWideRecipe(recipe));
+            
+            SetWindowSize(false); //always collapse the window if we don't need to display multiple slots
 
 			_heart.AdvanceTime( 0.0f );	// Force a refresh of desktop without actually advancing time, so that new timer will appear on verb token - CP
         }
@@ -169,7 +168,6 @@ namespace Assets.CS.TabletopUI {
             results.gameObject.SetActive(true);
             aspectsDisplay.ClearCurrentlyDisplayedAspects();
 
-            hintText.text = "";
             results.UpdateDumpButtonText();
         }
 
@@ -178,7 +176,6 @@ namespace Assets.CS.TabletopUI {
         public void DisplayUnstarted() {
             Title = Verb.Label;
             PaginatedNotes.SetText(Verb.Description);
-            DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
             SetWindowSize(false);
         }
@@ -186,54 +183,29 @@ namespace Assets.CS.TabletopUI {
 		public void DisplayNoRecipeFound() {
 			Title = Verb.Label;
 			PaginatedNotes.SetText(Verb.Description);
-			DisplayRecipeMetaComment("This does nothing. If I experiment further, I may find another combination.");
+            
 			DisplayButtonState(false);
-            SetWindowSize(false);
         }
 
         public void DisplayStartingRecipeFound(Recipe r) {
 			Title = r.Label;
 			PaginatedNotes.SetText(r.StartDescription);
-            DisplayTimeRemaining(r.Warmup, r.Warmup, r); //Ensures that the time bar is set to 0 to avoid a flicker
-			DisplayRecipeMetaComment(null);
+            DisplayTimeRemaining(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayButtonState(true);
-            SetWindowSize(IsWideRecipe(r));
 
             SoundManager.PlaySfx("SituationAvailable");
         }
 
         public void DisplayHintRecipeFound(Recipe r) {
-            Title = r.Label;
+            Title = "Hint: " + r.Label;
             PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
-            DisplayRecipeMetaComment(null);
             DisplayButtonState(false);
-            SetWindowSize(IsWideRecipe(r));
+            
 
             SoundManager.PlaySfx("SituationAvailable");
         }
 
-        bool IsWideRecipe(Recipe r) {
-            // If we're not in an explore or work action, we can't be wide.
-            if (r.ActionId != "explore" && r.ActionId != "work")
-                return false;
-
-            // This means we're a vault exploration, so we're wide.
-            if (r.Id.Contains("vault"))
-                return true;
-
-            // This means we're in a rite, so we're wide
-            if (r.Id.Substring(0,4) == "rite")
-                return true;
-            
-            // Other ideas: 
-            // Work verb +Rite - aspected element in the primary slot
-            // Explore verb + Vault - aspected element in the primary slot
-            // Though these require us to check the element.
-
-            return false;
-        }
-
-        void SetWindowSize(bool wide) {
+       public void SetWindowSize(bool wide) {
             RectTransform rectTrans = transform as RectTransform;
 
             if (wide)
@@ -252,6 +224,8 @@ namespace Assets.CS.TabletopUI {
             }
 
             windowIsWide = wide;
+
+           startingSlots.ArrangeSlots();
         }
 
         public void ReceiveTextNote(INotification notification) {
@@ -261,19 +235,9 @@ namespace Assets.CS.TabletopUI {
         public void UpdateTextForPrediction(RecipePrediction recipePrediction) {
 			Title = recipePrediction.Title;
 			PaginatedNotes.AddText(recipePrediction.DescriptiveText);
-			DisplayRecipeMetaComment(recipePrediction.Commentary);
-			//DisplayButtonState(false);
+
         }
 
-        public void DisplayRecipeMetaComment(string hint) {
-            bool isActive = !string.IsNullOrEmpty(hint);
-            hintText.gameObject.SetActive(isActive);
-
-            if (!isActive)
-                return;
-
-            hintText.text = hint;
-        }
 
         public void DisplayAspects(IAspectsDictionary forAspects) {
 			aspectsDisplay.DisplayAspects(forAspects);
@@ -283,8 +247,8 @@ namespace Assets.CS.TabletopUI {
             ongoing.ShowStoredAspects(GetStoredStacks());
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
-            ongoing.UpdateTime(duration, timeRemaining,recipe);
+        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour forEndingFlavour) {
+            ongoing.UpdateTime(duration, timeRemaining, forEndingFlavour);
         }
 
         void DisplayButtonState(bool interactable, string text = null) {

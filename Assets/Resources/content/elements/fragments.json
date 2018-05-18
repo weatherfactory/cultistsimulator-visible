@@ -83,7 +83,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "A Shaping Chant",
             aspects:
             {forge:6,lore:1},
-            description: "The proper words must be employed when the Change comes. [Use this in a Rite with a Knock influence and a Bone Flute, or similar sources of power, to summon a Caligine.]",
+            description: "The proper words must be employed when the Change comes. [Use this in a Rite with a Knock influence and a Bone Flute - or other resources of equal power - to summon a Caligine.]",
 			slots:[{id:"with",label:"With",description:"Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead.",required:{fragmentforgec:1,fragmentedgec:1},actionId:"study"}],xtriggers:{epiphany:fragment},xtriggers:{epiphany:fragmentforged}
         },
 		{
@@ -91,28 +91,28 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Callidate Invocation",
             aspects:
             {forge:8,lore:1},
-            description: "The Names of the Forge have all spoken these words. [Use this in a Rite with a Knock influence and a Bone Flute, or similar sources of power, to summon a Caligine.]",
+            description: "The Names of the Forge have all spoken these words. [Use this in a Rite with a Knock influence and a Bone Flute - or other resources of equal power - to summon a Caligine.]",
 			slots:[{id:"with",label:"With",description:"Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead.",required:{fragmentforged:1,fragmentedged:1},actionId:"study"}],xtriggers:{epiphany:fragment},xtriggers:{epiphany:fragmentforgee}
         },
 		{	id: "fragmentforgee",
             label: "Formula Fissive",
             aspects:
             {forge:10,lore:1},
-            description: "Break a thing, and you have fragments. Break those fragments, and you have dust. Break the dust, and then break what remains. Here is fire. [Use this in a rite with a Consecrated Lintel and a little Refulgin, or similar sources of power, to summon King Crucible.]",
+            description: "Break a thing, and you have fragments. Break those fragments, and you have dust. Break the dust, and then break what remains. Here is fire. [Use this in a rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
 			slots:[{id:"with",label:"With",description:"Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead.",required:{fragmentforgee:1,fragmentedgee:1},actionId:"study"}],xtriggers:{epiphany:fragment},xtriggers:{epiphany:fragmentforgef}
         },
 		{  id: "fragmentforgef",
             label: "Furnace Paean",
             aspects:
             {forge:12,lore:1},
-            description: "This is the hymn the heat sings to the iron. If we imitate it faithfully enough we will parch our lips and crisp our tongue, but O, the rewards. [Use this in a rite with a Consecrated Lintel and a little Refulgin, or similar sources of power, to summon King Crucible.]",
+            description: "This is the hymn the heat sings to the iron. If we imitate it faithfully enough we will parch our lips and crisp our tongue, but O, the rewards. [Use this in a rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
 			slots:[{id:"with",label:"With",description:"Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead.",required:{fragmentforgef:1,fragmentedgef:1},actionId:"study"}],xtriggers:{epiphany:fragment},xtriggers:{epiphany:fragmentforgeg}
         },
 		{ id: "fragmentforgeg",
             label: "Mysteries of Making",
             aspects:
             {forge:14,lore:1},
-            description: "The Forge of Days, the Meniscate and the Madrugad are gods-from-Light. Mercury, silver and gold are the seeds of the Work, and here is their secret doctrine... [Use this in a rite with a Consecrated Lintel and a little Refulgin, or similar sources of power, to summon King Crucible.]",
+            description: "The Forge of Days, the Meniscate and the Madrugad are gods-from-Light. Mercury, silver and gold are the seeds of the Work, and here is their secret doctrine... [Use this in a rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
 			unique:true
         },
 						          {
@@ -135,7 +135,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
         id: "fragmentgrailc",
             label: "A Delightful Sacrament",
             aspects:            {grail: 6,lore:1},
-            description: "So pleasant upon the ear. One could listen over and over. These are the words that make sacrifice sweet. [Use this with Byzantine Tinct and a Moth influence, or similar sources of power, to summon a Raw Prophet.]",
+            description: "So pleasant upon the ear. One could listen over and over. These are the words that make sacrifice sweet. [Use this with Byzantine Tinct and a Moth influence - or other resources of equal power - to summon a Raw Prophet.]",
 			slots:[{id:"with",label:"With",description:"Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead.",required:{fragmentgrailc:1,fragmentmothc:1},actionId:"study"}],xtriggers:{epiphany:fragmentgraild}
         },
 			{
@@ -143,28 +143,28 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Thiatic Invocation",
             aspects:
             {grail:8,lore:1},
-            description: "Raucous shrieks attend the passage of the Names of the Grail. We reproduce them as best they can, for the pulsing power they lend. [Use this with Byzantine Tinct and a Moth influence, or similar sources of power, to summon a Raw Prophet.]",
+            description: "Raucous shrieks attend the passage of the Names of the Grail. We reproduce them as best they can, for the pulsing power they lend. [Use this with Byzantine Tinct and a Moth influence - or other resources of equal power - to summon a Raw Prophet.]",
 			slots:[{id:"with",label:"With",description:"Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead.",required:{fragmentgraild:1,fragmentmothd:1},actionId:"study"}],xtriggers:{epiphany:fragmentgraile}
         },
 		{		        id: "fragmentgraile",
             label: "Formulae Voluptuous",
             aspects:
             {grail:10,lore:1},
-            description: "There exist some pleasures intense enough to corrupt the laws of the physical world. [Use this formula can be used in a Rite with Bitterblack Salts and a Knock influence - or similar sources of power - to summon Ezeem itself.]",
+            description: "There exist some pleasures intense enough to corrupt the laws of the physical world. [This formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
 			slots:[{id:"with",label:"With",description:"Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead.",required:{fragmentgraile:1,fragmentmothe:1},actionId:"study"}],xtriggers:{epiphany:fragmentgrailf}
         },
 		{  id: "fragmentgrailf",
             label: "Anthic Elaboration",
             aspects:
             {grail:12,lore:1},
-            description: "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours.  [Use this formula can be used in a Rite with Bitterblack Salts and a Knock influence - or similar sources of power - to summon Ezeem itself.]",
+            description: "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours.  [Use this formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
 			slots:[{id:"with",label:"With",description:"Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead.",required:{fragmentgrailf:1,fragmentmothf:1},actionId:"study"}],xtriggers:{epiphany:fragmentgrailg}
         },
 			{  id: "fragmentgrailg",
             label: "Devouring Mysteries",
             aspects:
             {grail:14,lore:1},
-            description: "The Grail was the first god-who-was-blood. The Flowermaker came from Light. The Beach-Crow was flesh. Hunger and Greed and Yearning are the matrix of appetite, and here is their secret doctrine...  [Use this formula in Rite with Bitterblack Salts and a Knock influence - or similar sources of power - to summon Ezeem itself.]",
+            description: "The Grail was the first god-who-was-blood. The Flowermaker came from Light. The Beach-Crow was flesh. Hunger and Greed and Yearning are the matrix of appetite, and here is their secret doctrine...  [Use this formula in Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
 			unique:true
         },
 				          {
@@ -188,35 +188,35 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "A Waking Chant",
             aspects:
             {heart: 6,lore:1},
-            description: "Who could hear this and remain unmoved? The sleeping? The dead? The earth and the sky? [Use this in a rite with Byzantine Tinct and a Meteoric Bullet, or similar sources of power, to summon a Percussigant.]",
+            description: "Who could hear this and remain unmoved? The sleeping? The dead? The earth and the sky? [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead.",required:{fragmentheartc:1,fragmentgrailc:1},actionId:"study"}],xtriggers:{epiphany:fragmentheartd}
         },
 		{id: "fragmentheartd",
             label: "Geminate Invocation",
             aspects:
             {heart:8,lore:1},
-            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet, or similar sources of power, to summon a Percussigant.]",
+            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead.",required:{fragmentheartd:1,fragmentgraild:1},actionId:"study"}],xtriggers:{epiphany:fragmenthearte}
         },
 		{ id: "fragmenthearte",
             label: "Formulae Vigilant",
             aspects:
             {heart:10,lore:1},
-            description: "One who watches does not sleep, one who sleeps watches not. <b>One who watches does not sleep, one who sleeps watches not.</b> [Use this in a rite with Byzantine Tinct and a Meteoric Bullet, or similar sources of power, to summon a Percussigant.]",
+            description: "One who watches does not sleep, one who sleeps watches not. <b>One who watches does not sleep, one who sleeps watches not.</b> [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead.",required:{fragmenthearte:1,fragmentgraile:1},actionId:"study"}],xtriggers:{epiphany:fragmentheartf}
         },
 		{  id: "fragmentheartf",
             label: "Velvet Charm",
             aspects:
             {heart:12,lore:1},
-            description: "The Velvet always answers 'No', but we can shelter in that 'No' like beasts in the crook of a tree. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet, or similar sources of power, to summon a Percussigant.]",
+            description: "The Velvet always answers 'No', but we can shelter in that 'No' like beasts in the crook of a tree. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead.",required:{fragmentheartf:1,fragmentgrailf:1},actionId:"study"}],xtriggers:{epiphany:fragmentheartg}
         },
 		{ id: "fragmentheartg",
             label: "Unceasing Mysteries",
             aspects:
             {heart:14,lore:1},
-            description: "The Grail ripped the Thunderskin from flesh. The Sister-and-Witch was born from two wombs. The Velvet woke when the Wood-roots tasted blood. The Heart is Blood's Drum, and here is its secret doctrine... [Use this in a rite with Byzantine Tinct and a Meteoric Bullet, or similar sources of power, to summon a Percussigant.]",
+            description: "The Grail ripped the Thunderskin from flesh. The Sister-and-Witch was born from two wombs. The Velvet woke when the Wood-roots tasted blood. The Heart is Blood's Drum, and here is its secret doctrine... [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			unique:true
         },
 
@@ -279,7 +279,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {lantern: 2,lore:1},
             description: "It has been expressed like this: 'Each Hour has its colour, but colour exists only where there is light.'",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlantern:1,fragmentforge:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternb}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlantern:1,fragmentforge:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternb}
         },
 				 {
         id: "fragmentlanternb",
@@ -287,7 +287,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {lantern: 4,lore:1},
             description: "A snatch of poetry; a single memory of a certain house that all of us visit at least twice in our lives. For one's first visit to the Mansus, this lore is almost essential.",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternb:1,fragmentforgeb:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternc}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternb:1,fragmentforgeb:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternc}
         },
 						 {
         id: "fragmentlanternc",
@@ -295,35 +295,35 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {lantern: 6,lore:1},
             description: "'Mercy', saith the Watchman, 'is found only in shadow.'",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternc:1,fragmentforgec:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternd}
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternc:1,fragmentforgec:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternd}
         },
 		{
 		        id: "fragmentlanternd",
             label: "Phanaean Invocation",
             aspects:
             {lantern:8,lore:1},
-            description: "The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. [Use this in a Rite with a Knock tool and a Thrilling Air, or similar sources of power, to summon a Hint from behind mirrors.]",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternd:1,fragmentforged:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterne}
+            description: "The Door-in-the-Eye navigates; he is not merciful; but first and always, he illuminates. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternd:1,fragmentforged:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterne}
         },
 		{		        id: "fragmentlanterne",
             label: "Formulae Concursate",
             aspects:
             {lantern:10,lore:1},
-            description: "The Concursum waits at the heart of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation. [Use this in a Rite with a Knock tool and a Thrilling Air, or similar sources of power, to summon a Hint from behind mirrors.]",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanterne:1,fragmentforgee:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternf}
+            description: "The Concursum waits at the Lantern of the Mansus. It has been called the Chamber of Ways and also the Chamber of Endings. Its intricacies are probably beyond human comprehension, but these formulae are a first approximation. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanterne:1,fragmentforgee:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanternf}
         },
 		{  id: "fragmentlanternf",
             label: "Mantra of Ascent",
             aspects:
             {lantern:12,lore:1},
-            description: "The Ascent of Knives is the bloodiest of the Watchman's tests. Those who pass it and are dead enter the service of the Sun-in-Rags. Those living who pass it are a little closer to the Glory. [Use this in a Rite with a Knock tool and a Thrilling Air, or similar sources of power, to summon a Hint from behind mirrors.]",
-			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternf:1,fragmentforgef:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterng}
+            description: "The Ascent of Knives is the bloodiest of the Watchman's tests. Those who pass it and are dead enter the service of the Sun-in-Rags. Those living who pass it are a little closer to the Glory. [Use this in a Rite with a Knock tool and a Thrilling Air - or other resources of equal power - to summon a Hint from behind mirrors.]",
+			slots:[{id:"with",label:"With",description:"Study with a Lantern lore fragment of the same level to upgrade to the next level. Study with Forge lore of the same level to subvert it, and get Forge lore instead.",required:{fragmentlanternf:1,fragmentforgef:1},actionId:"study"}],xtriggers:{epiphany:fragmentlanterng}
         },
 			{id: "fragmentlanterng",
             label: "Illuminate Mysteries",
             aspects:
             {lantern:14,lore:1},
-            description: "The Meniscate, the Madrugad, the Flowermaker and the Forge of Days are the gods-from-Light. There is a fifth, but now we know it is not the Watchman. Yet the Watchman shares a secret doctrine with those five, and here is that doctrine... [Use this in a Rite with Knock influence and a Paradoxical Curio, and someone will come. Speak it to a Hunter, and it will likely drive them insane on the spot.]",
+            description: "The Meniscate, the Madrugad, the Flowermaker and the Forge of Days are the gods-from-Light. There is a fifth, but now we know it is not the Watchman. Yet the Watchman shares a secret doctrine with those five, and here is that doctrine... [Use this in a Rite with a Subtle Rupture and a Paradoxical Curio, and someone will come. Speak it to a Hunter, and it might drive them insane on the spot.]",
 			unique:true
         },
 		          {
@@ -464,7 +464,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Invocation of the Ivory Dove",
             aspects:
             {winter:8,lore:1},
-            description: "There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. You might expect to be able to crush him in your hand, into bird-bone fragments. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]",
+            description: "There is a power that commemorates and grieves, from whom nothing is taken, but who cannot be deceived. You might expect to be able to crush him in your hand, into bird-bone fragments. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock - or other resources of equal power - to summon a Maid-in-the-Mirror.]",
 			xtriggers:{epiphany:fragmentwintere},
 			slots:[{id:"with",label:"With",description:"Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead.",required:{fragmentwinterd:1,fragmentheartd:1},actionId:"study"}],xtriggers:{epiphany:fragmentwintere}
         },
@@ -472,7 +472,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Recitation of Lost Hours",
             aspects:
             {winter:10,lore:1},
-            description: "Six are gone. Five came from Stone and one from Light. All went to Nowhere. Still their memories have power, and now we call upon it. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]",
+            description: "Six are gone. Five came from Stone and one from Light. All went to Nowhere. Still their memories have power, and now we call upon it. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock - or other resources of equal power - to summon a Maid-in-the-Mirror.]",
 			xtriggers:{epiphany:fragmentwinterf},
 			slots:[{id:"with",label:"With",description:"Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead.",required:{fragmentwintere:1,fragmenthearte:1},actionId:"study"}],xtriggers:{epiphany:fragmentwinterf}
         },
@@ -480,7 +480,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "The Divisions of the Names",
             aspects:
             {winter:12,lore:1},
-            description: "When the Sun-in-Splendour was divided, its Names fractured too. Here are the shards of their names which once were whole. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock, or similar sources of power, to summon a Maid-in-the-Mirror.]",
+            description: "When the Sun-in-Splendour was divided, its Names fractured too. Here are the shards of their names which once were whole. [Use this in a Rite with Martensite Paste and an assistant dedicated to Knock - or other resources of equal power - to summon a Maid-in-the-Mirror.]",
 			xtriggers:{epiphany:fragmentwinterg},
 			slots:[{id:"with",label:"With",description:"Study with a Winter lore fragment of the same level to upgrade to the next level. Study with Heart lore of the same level to subvert it, and get Heart lore instead.",required:{fragmentwinterf:1,fragmentheartf:1},actionId:"study"}],xtriggers:{epiphany:fragmentwinterg}
         },
@@ -488,7 +488,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Wolf-Word",
             aspects:
             {winter:14,lore:1},
-            description: "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses the Divided One's hatred.[Speak this to a Hunter, and it will likely drive them insane on the spot.]",
+            description: "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses the Divided One's hatred.[Speak this to a Hunter, and it might drive them insane on the spot.]",
 			unique:true
         },
 

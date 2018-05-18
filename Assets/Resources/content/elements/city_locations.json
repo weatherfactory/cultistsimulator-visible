@@ -11,7 +11,15 @@
 					}
 				],
             description: "The dim premises of Miss Morland, who deals in rare and sometimes dangerous books.",
-			unique:true
+			unique:true,
+			xtriggers:{exhaustlocation:locationbookdealer_exhausted}
+        },
+				{
+        id: "locationbookdealer_exhausted",
+            label: "Morland's Shop [Closed]",
+            aspects:{location: 1},
+            description: "This used to be the address of Morland's, the book dealer, but I'll have to look elsewhere for knowledge, now.",
+			unique:true,
         },
 				{
         id: "locationauctionhouse",

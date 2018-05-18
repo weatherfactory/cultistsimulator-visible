@@ -116,8 +116,8 @@ namespace Assets.Core
    //set this up to return if we pass through the list below without finding anything interesting.
                 rp.Title = currentRecipe.Label;
                 rp.DescriptiveText = currentRecipe.StartDescription;
-                rp.Commentary = currentRecipe.Aside;
-   
+            rp.SignalEndingFlavour = currentRecipe.SignalEndingFlavour;
+  
                 
             foreach (var ar in currentRecipe.AlternativeRecipes)
             {
@@ -132,38 +132,16 @@ namespace Assets.Core
                     !currentCharacter.HasExhaustedRecipe(candidateRecipe))
 
                 {
-                    if (!ar.Additional)
+                    if (!ar.Additional && ar.Chance>=100)
                     {
-                        if (ar.Chance < 100)
-                        {
-                            //there is uncertainty! Leave the headline decision where it is, but tell the player.
-                            Recipe thisAlternateRecipe = compendium.GetRecipeById(ar.Id);
-                            if(thisAlternateRecipe==null)
-                            { 
-                                NoonUtility.Log("Tried to predict a recipe that doesn't exist, with id " + ar.Id);
-                            }
-                            else
-                            {
-                                string chanceDescription;
-                                if (ar.Chance > 50)
-                                    chanceDescription = "This is likely to happen: ";
-                                else
-                                    chanceDescription = "This might happen: ";
-
-                                rp.Commentary += chanceDescription + "<b>" + thisAlternateRecipe.Label + "</b>\n";
-                            }
-                            
-                        }
-                        else
-                        {
                             //we have a candidate which will execute instead. NB we don't recurse - we assume the first level
                             //alternative will have a useful description.
                             rp.Title = candidateRecipe.Label;
                             rp.DescriptiveText = candidateRecipe.StartDescription;
                             rp.BurnImage = candidateRecipe.BurnImage;
-                            //we are not in the additional branch, so just return this predictioin.
-                            return rp;
-                        }
+                        rp.SignalEndingFlavour = candidateRecipe.SignalEndingFlavour;
+                        //we are not in the additional branch, so just return this predictioin.
+                        return rp;
                     }
                 }
             }

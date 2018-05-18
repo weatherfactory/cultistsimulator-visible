@@ -136,7 +136,6 @@ namespace CS.Tests
             htRecipe.Add(NoonConstants.KSTARTDESCRIPTION, RECIPE_1_START_DESCRIPTION);
             htRecipe.Add(NoonConstants.KDESCRIPTION, RECIPE_1_DESCRIPTION);
             htRecipe.Add(NoonConstants.KDECKEFFECT, deckEffects);
-            htRecipe.Add(NoonConstants.KASIDE, RECIPE_1_ASIDE);
             htRecipe.Add(NoonConstants.KWARMUP, RECIPE_1_WARMUP);
             htRecipe.Add(NoonConstants.KENDING, RECIPE_1_ENDING);
             htRecipe.Add(NoonConstants.KMAXEXECUTIONS, RECIPE_MAX_EXECUTIONS.ToString());
@@ -256,7 +255,6 @@ namespace CS.Tests
             Assert.AreEqual(RECIPE_1_LABEL, recipesImported.First().Label);
             Assert.AreEqual(RECIPE_1_START_DESCRIPTION, recipesImported.First().StartDescription);
             Assert.AreEqual(RECIPE_1_DESCRIPTION, recipesImported.First().Description);
-            Assert.AreEqual(RECIPE_1_ASIDE, recipesImported.First().Aside);
         }
     }
 }

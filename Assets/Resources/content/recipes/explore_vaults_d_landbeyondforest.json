@@ -73,7 +73,7 @@
 	},
 					{
 	id: "explorevaultlandbeyondforest1_success",
-	label: "",
+	label: "A Nest of Lights",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest1:1},
 	effects: {vaultlandbeyondforest1:-1,influencelanternc:1},
@@ -86,7 +86,7 @@
 	
 			{
 	id: "explorevaultlandbeyondforest2_success",
-	label: "",
+	label: "The Empty Tomb",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest2:1},
 	effects: {vaultlandbeyondforest2:-1,,influencegrailc:1},
@@ -100,12 +100,11 @@
 	
 				{
 	id: "explorevaultlandbeyondforest3_success",
-	label: "",
+	label: "After the Circus",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest3:1},
-	effects: {vaultlandbeyondforest3:-1},
+	effects: {vaultlandbeyondforest3:-1,erudition:1,glimmering:1, jumble:1},
 	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1,"vaultcontentsr":1},
-	effects:{erudition:1,glimmering:1, jumble:1},
 	startdescription: "In the striped tent, coiling teratologies behind smeared and murky glass. In the grey tent, dripping fog that nuzzles us like a hunting cat - fog rank as an animal. In the black-and-starred tent, wonderful meshes of orrery and sculpture spangled with costume gems. In the red tent...",
 	description: "In the red tent, a madness of paper. The circus folk have pasted diagram-crowded paper to every surface: the anatomies of time, the dissections of old weather. The place stinks of Nowhere. We should burn it when we leave. A trestle table holds an unceremonious muddle of trophies and keepsakes.",
 	warmup:30,
@@ -115,7 +114,7 @@
 	
 				{
 	id: "explorevaultlandbeyondforest4_success",
-	label: "",
+	label: "A Long-Delayed Conclusion",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforest4:1},
 	effects: {vaultlandbeyondforest4:-1},
@@ -128,7 +127,7 @@
 	
 				{
 	id: "explorevaultlandbeyondforestdefault_success",
-	label: "",
+	label: "The Nourishment of BLossoms",
 	actionId: "explore",
 	requirements: {vaultlandbeyondforestdefault:1},
 	effects: {vaultlandbeyondforestdefault:-1},

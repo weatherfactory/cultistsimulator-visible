@@ -20,6 +20,7 @@ namespace Assets.Core.Services
 
         public string ReplaceTextFor(string text)
         {
+            
             string previousCharacterName = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastCharacterName);
             string lastFollowerId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastFollower);
             string lastDesireId = _character.GetPastLegacyEventRecord(LegacyEventRecordId.LastDesire);

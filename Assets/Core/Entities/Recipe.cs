@@ -60,10 +60,6 @@ public class Recipe
     }
 
     /// <summary>
-    /// often empty string; displayed as an aside/commentary wheile a recipe is running. NOTE: currently has no effect - it's been exiled by the situation update
-    /// </summary>
-    public string Aside { get; set; }
-    /// <summary>
     /// On completion, the recipe will draw
     ///from this deck and add the result to the outcome.
     /// </summary>
@@ -133,7 +129,10 @@ public class Recipe
         }
         return true;
     }
-
+    /// <summary>
+    /// do something grander like a bong when we loop this recipe
+    /// </summary>
+    public bool SignalImportantLoop { get; set; }
 
 }
 

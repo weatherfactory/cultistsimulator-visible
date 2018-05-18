@@ -77,7 +77,7 @@
     },
 	
 	{
-        id: "recoverreason",
+        id: "reducedread",
         label: "Clear my Mind",
         actionId: "dream",
         requirements: {contentment: 1, dread: 1},
@@ -89,14 +89,13 @@
     },
 
 	{
-        id: "recoverpassion",
+        id: "reducefascination",
         label: "Composure",
         actionId: "dream",
         requirements: {dread: 1, fascination: 1},
         effects: {
-			dread:-1,
+			fascination:-1,
         },
-		aspects:{restorepassion:1},
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
         warmup: 60,

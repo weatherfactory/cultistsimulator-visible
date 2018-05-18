@@ -1,20 +1,6 @@
 {"elements":
     [
-
-        {
-            id: "edge",
-            label: "Edge",
-			description: "All conquest occurs at the Edge. One who dwells there is blind, and cannot be wounded. Another is strong, and grows stronger. [Edge is the principle of battle and of struggle.]",
-            isAspect: true,
-			noartneeded:true
-			},
-        {
-            id: "forge",
-            label: "Forge",
-			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The principle of the Forge transforms and destroys.]",
-            isAspect: true
-        },
-		        {
+   {
             id: "acquaintance",
             label: "Acquaintance",
 			description: "Not yet a friend, nor yet an enemy.",
@@ -74,6 +60,20 @@
             isAspect: true
         },
         {
+            id: "edge",
+            label: "Edge",
+			description: "All conquest occurs at the Edge. One who dwells there is blind, and cannot be wounded. Another is strong, and grows stronger. [Edge is the principle of battle and of struggle.]",
+            isAspect: true,
+			noartneeded:true
+			},
+        {
+            id: "forge",
+            label: "Forge",
+			description: "'Fire', I once read, 'is the winter that warms and the spring that consumes.' [The principle of the Forge transforms and destroys.]",
+            isAspect: true
+        },
+		     
+        {
             id: "grail",
             label: "Grail",
 			description: "Hunger, lust, the drowning waters. [The principle of the Grail honours both the birth and the feast.]",
@@ -86,6 +86,39 @@
 			description: "The Heart Relentless beats to protect the skin of the world we understand. [The Heart is the principle that continues and preserves.]",
             isAspect: true,
 			induces:[{id:"heartinduction",chance:5}]
+        },
+		        {
+            id: "knock",
+            label: "Knock",
+			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and unseams barriers.]",
+            isAspect: true
+        },
+			 {
+            id: "lantern",
+            label: "Lantern",
+			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it.]",
+            isAspect: true,
+			induces:[{id:"lanterninduction",chance:5}]
+        },
+		        {
+        id: "moth",
+        label: "Moth",
+        isAspect: true,
+		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
+			induces:[{id:"mothinduction",chance:5}]
+    },
+	        {
+            id: "secrethistories",
+            label: "Secret Histories",
+			        description: "History is the scar on the world's skin. [Secret Histories describe the unknown complexities of the world, and its many pasts.]",
+            isAspect: true
+        },
+
+		        {
+            id: "winter",
+            label: "Winter",
+			description: "... [Winter is the principle of silence, of endings, and of those things that are not quite dead.]",
+            isAspect: true
         },
 								{
             id: "ability",
@@ -122,6 +155,12 @@
             label: "Ingredient",
             isAspect: true,
 			description: "Fuel, ointment, pigment, patience: all are consumed in time."
+        },
+				        {
+            id: "pigment",
+            label: "Pigment",
+            isAspect: true,
+			description: "It might be possible to apply this to canvas."
         },
 				        {
             id: "poison",
@@ -176,7 +215,13 @@
             id: "healthskill",
             label: "Strength",
             isAspect: true,
-			description: "I am strong by day as well as by night.[This may allow you to perform better as a manual labourer.]"
+			description: "I am strong by day as well as by night. [This may allow you to perform better as a manual labourer.]"
+        },
+								 {
+            id: "passionskill",
+            label: "Imagination",
+            isAspect: true,
+			description: "My skull roils with visions. [This may allow you create more ambitious paintings.]"
         },
 		{id: "way",
 		label: "Way",
@@ -283,38 +328,9 @@
 		
 		
 		
-        {
-            id: "knock",
-            label: "Knock",
-			description: "The Knock permits no seal and no isolation. It thrusts us gleefully out of the safety of ignorance. [The Knock is the principle that opens doors and unseams barriers.]",
-            isAspect: true
-        },
-		        {
-        id: "moth",
-        label: "Moth",
-        isAspect: true,
-		description: "I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle. [Moth is the wild and perilous principle of chaos and yearning.]",
-			induces:[{id:"mothinduction",chance:5}]
-    },
-        {
-            id: "secrethistories",
-            label: "Secret Histories",
-			        description: "History is the scar on the world's skin. [Secret Histories describe the unknown complexities of the world, and its many pasts.]",
-            isAspect: true
-        },
-        {
-            id: "lantern",
-            label: "Lantern",
-			description: "'Life is a pure flame, and we live by an invisible Sun within us.' - Thomas Browne. [Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it.]",
-            isAspect: true,
-			induces:[{id:"lanterninduction",chance:5}]
-        },
-		        {
-            id: "winter",
-            label: "Winter",
-			description: "... [Winter is the principle of silence, of endings, and of those things that are not quite dead.]",
-            isAspect: true
-        },
+
+
+       
 				        {
             id: "compensationvalue",
             label: "Spintria Value",
@@ -547,6 +563,13 @@
 			comments: "Recipe aspect; runs to fatigue stats, or to convert situation-invested elements into a form that won't keep triggering a recipe that wants more of them (eg reason in Research, funds in bidding).",
 			noartneeded: true
         },
+							 {
+            id: "exhaustlocation",
+            label: "Location Exhausted",
+			description: "A location has been exhausted, and won't reopen unless explicitly renewed.",
+            isAspect: true,
+			noartneeded: true
+        },
 			 {
             id: "restore",
             label: "Nothing has Occurred",
@@ -589,9 +612,41 @@
 			noartneeded: true
         },
 								 {
+            id: "destroyhealth",
+            label: "Destroy Health",
+			description: "Health will be destroyed.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+								 {
             id: "damagereason",
             label: "Damage Reason",
 			description: "Reason will become Dread.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+										 {
+            id: "toreason",
+            label: "To Reason",
+			description: "...will become Reason.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+					 {
+            id: "topassion",
+            label: "To Passion",
+			description: "...will become Passion.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+							 {
+            id: "tohealth",
+            label: "To Health",
+			description: "...will become Health.",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
@@ -712,6 +767,14 @@
 			noartneeded:true
         },
 										 {
+            id: "scandalous",
+            label: "Scandalous",
+			description: "I won't be easily forgotten.",
+            isAspect: true,
+			comments: "Recipe aspect. Refreshes reputation timers.",
+			noartneeded:true
+        },
+										 {
             id: "epiphany",
             label: "Epiphany",
 			description: "My understanding's increased.",
@@ -788,6 +851,7 @@
 		{id:"brilliant",
 		label:"Brilliant",
 		description:"Brilliant Hunters find meaning in the tiniest detail. They can convert Notoriety directly into Damning Evidence.",
+		noartneeded:true,
 		isAspect:true},
 		
 		{id:"erratic",
@@ -878,7 +942,7 @@
 		id: "textphrygian",
 		label: "Written in Phrygian",
 		aspects: {language:1},
-		description: "A people lived east of the lost lake Fucino. Horace warned that their land was the source of lust-spells and love-curses. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'. This is the tongue in which the Thunderskin pleaded, at his ascension. [Some books must be translated before they can be read.]",
+		description: "The Phrygians worshipped the Great Mother, who we call the Grail. Theirs was the land in which the Sisterhood of the Knot was born, and this is the tongue in which the Thunderskin pleaded, at his ascension.  [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 						{

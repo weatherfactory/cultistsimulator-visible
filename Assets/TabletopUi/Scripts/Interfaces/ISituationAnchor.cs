@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 
@@ -26,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void Initialise(IVerb verb, SituationController controller, Heart heart);
 
         void DisplayMiniSlot(IList<SlotSpecification> ongoingSlots);
-        void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe);
+        void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour);
         void DisplayStackInMiniSlot(IEnumerable<IElementStack> getStacksInOngoingSlots);
         void DisplayComplete();
         bool Retire();

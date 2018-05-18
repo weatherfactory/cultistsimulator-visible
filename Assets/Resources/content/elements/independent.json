@@ -78,7 +78,7 @@
         id: "cat_r",
             label: "Cat Caro, a troublemaker",
             aspects:
-            {mortal: 1,independent:1,lantern:5},
+            {mortal: 1,independent:1,suspicious:1,lantern:5},
             description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one knows seems to know exactly what she is now.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:cat_d}
@@ -96,7 +96,7 @@
         id: "clifton_r",
             label: "'Pope' Clifton, a troublemaker",
             aspects:
-            {mortal: 1,independent:1,lantern:5},
+            {mortal: 1,independent:1,suspicious:1,lantern:5},
             description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d}
@@ -105,7 +105,7 @@
         id: "elridge_r",
             label: "Elridge, a troublemaker",
             aspects:
-            {mortal: 1,independent:1,edge:4},
+            {mortal: 1,independent:1,suspicious:1,edge:4},
             description: "Elridge's shoes are often spotted with blood.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
@@ -114,7 +114,7 @@
         id: "laidlaw_r",
             label: "Laidlaw, a troublemaker",
             aspects:
-            {mortal: 1,independent:1,forge:5},
+            {mortal: 1,independent:1,suspicious:1,forge:5},
             description: "Laidlaw's schemes are intricate as fern-shadow.",
 			animFrames: 1,
 			xtriggers: 
@@ -124,7 +124,7 @@
         id: "porter_r",
             label: "Porter, a troublemaker",
             aspects:
-            {mortal: 1,independent:1,moth:5},
+            {mortal: 1,independent:1,suspicious:1,moth:5},
             description: "Porter has begun to collect names.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d}

@@ -32,7 +32,7 @@ namespace Noon
         public const string KHINTONLY = "hintonly";
         public const string KSTARTDESCRIPTION = "startdescription";
         public const string KDESCRIPTION = "description";
-        public const string KASIDE = "aside";
+        public const string KSIGNALIMPORTANTLOOP = "signalimportantloop";
         public const string KWARMUP = "warmup";
         public const string KREQUIREMENTS = "requirements";
         public const string KEFFECTS = "effects";
@@ -82,6 +82,8 @@ namespace Noon
         public const string TOKEN_LAST_HEADQUARTERS = "#LAST_HEADQUARTERS#";
         public const string TOKEN_LAST_PERSON_KILLED_NAME = "#LAST_PERSON_KILLED_NAME#";
 
+        public const string BIRDWORMSLIDER = "BirdWormSlider";
+
 
         public const string DECK_PREFIX = "deck:";
         public const string LEVER_PREFIX = "LEVER_";
@@ -94,12 +96,12 @@ namespace Noon
         
 
         public static int CurrentVerbosity =1;
-        public static uint CultistSimulatorSteamAppId = 718670;
+        //public static uint CultistSimulatorSteamAppId = 718670;
         //public static string CultistSimulatorGOGProductId = "1456702644";
         //public static string CultistSimulatorGOGClientId = "50757209545787544";
         //public static string CultistSimulatorGOGClientSecret = "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
 
-        public static VersionNumber VersionNumber = new VersionNumber("2018.5.c.4");
+        public static VersionNumber VersionNumber = new VersionNumber(Application.version);
         public static bool AchievementsActive = false;
 
         public static void Log(string message,int verbosityNeeded=0)

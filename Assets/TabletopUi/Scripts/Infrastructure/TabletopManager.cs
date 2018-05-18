@@ -181,7 +181,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitAudioSettings(_speedController);
+            optionsPanel.InitPreferences(_speedController);
         }
 
         private void InitialiseListeners() {
@@ -259,6 +259,7 @@ namespace Assets.CS.TabletopUI {
             if (chosenLegacy == null) {
                 NoonUtility.Log("No initial Legacy specified");
                 chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
+                CrossSceneState.SetChosenLegacy(chosenLegacy);
             }
 
             builder.CreateInitialTokensOnTabletop();
@@ -268,7 +269,7 @@ namespace Assets.CS.TabletopUI {
 
             DealStartingDecks();
 
-            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription, 30);
+            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription);
         }
 
         private void SetStartingCharacterInfo(Legacy chosenLegacy) {
@@ -489,8 +490,15 @@ namespace Assets.CS.TabletopUI {
             return null;
         }
 
-        private bool CanPullCardToGreedySlot(ElementStackToken stack, SlotSpecification slotSpec) {
-            if (stack.Defunct)
+        private bool CanPullCardToGreedySlot(ElementStackToken stack, SlotSpecification slotSpec)
+        {
+            if (slotSpec == null)
+                return false; //We were seeing NullReferenceExceptions in the Unity analytics from the bottom line; stack is referenced okay so it shouldn't be stack, so probably a null slotspec is being specified somewhere
+
+            if (stack == null) //..but just in case.
+                return false;
+
+                if (stack.Defunct)
                 return false; // don't pull defunct cards
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards
@@ -626,6 +634,7 @@ namespace Assets.CS.TabletopUI {
             LockSpeedController(true);
             isInNonSaveableState = true;
 
+            SoundManager.PlaySfx("MansusEntry");
             // Play Mansus Music
             backgroundMusic.PlayMansusClip();
 
@@ -652,13 +661,14 @@ namespace Assets.CS.TabletopUI {
             // Do transition
             _tabletop.Show(true);
             _mapController.ShowMansusMap(origin, false);
+            SoundManager.PlaySfx("MansusExit");
 
             // Put card into the original Situation Results
             mansusSituation.AddToResults(mansusCard, new Context(Context.ActionSource.PlayerDrag));
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
 
-            //hasty crappy lline from AK, feel free to improve if you're passing!
+            //hasty crappy line from AK, feel free to improve if you're passing!
             SituationWindow zoomTo= mansusSituation.situationWindow as SituationWindow;
             tableScroll.content.anchoredPosition = zoomTo.transform.position;
             mansusSituation = null;
@@ -674,6 +684,10 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        public void NoMoreImpendingDoom(ISituationAnchor situationToken)
+        {
+            backgroundMusic.NoMoreImpendingDoom();
+        }
     }
 
 }

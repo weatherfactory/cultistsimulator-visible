@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core;
 using Assets.Core.Commands;
+using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
@@ -58,17 +59,17 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 
         void ShowDestinationsForStack(IElementStack stack, bool show);
 
-        void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe);
+        void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour endingFlavour);
         void DisplayNoRecipeFound();
         void ReceiveTextNote(INotification notification);
         IAspectsDictionary GetAspectsFromStoredElements(bool showElementAspects);
         IAspectsDictionary GetAspectsFromOutputElements(bool showElementAspects);
-        void DisplayRecipeMetaComment(string hint);
         void DisplayHintRecipeFound(Recipe r);
         IAspectsDictionary GetAspectsFromAllSlottedAndStoredElements(bool showElementAspects);
         void TryDecayResults(float interval);
 
 		// Added to allow saving of window positions. Better than inserting save code into the SituationDetails IMHO - CP
 		Vector3 Position { get; set; }
+        void SetWindowSize(bool wide);
     }
 }

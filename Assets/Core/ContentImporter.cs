@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System;
-
+using Noon;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
-using Noon;
 using OrbCreationExtensions;
 
 public class ContentImporter
@@ -111,8 +110,7 @@ public class ContentImporter
         foreach (TextAsset ta in elementTextAssets)
         {
             string json = ta.text;
-            Hashtable htElements = new Hashtable();
-            htElements = SimpleJsonImporter.Import(json);
+            var htElements = SimpleJsonImporter.Import(json);
             totalElementsFound += PopulateElements(htElements);
         }
 
@@ -124,6 +122,12 @@ public class ContentImporter
             {
                 if (!Elements.ContainsKey(xt.Value))
                     LogProblem("Element " + e.Key + " specifies an invalid result (" + xt.Value + ") for xtrigger " + xt.Key);
+            }
+            if(!string.IsNullOrEmpty(e.Value.DecayTo))
+            { 
+                if(!Elements.ContainsKey(e.Value.DecayTo))
+                    LogProblem("Element " + e.Key + " specifies an invalid result (" + e.Value.DecayTo + ") for DecayTo. ");
+
             }
         }
     }
@@ -146,7 +150,7 @@ public class ContentImporter
 
 
             Element element = new Element(htElement.GetString(NoonConstants.KID),
-                htElement.GetString(NoonConstants.KLABEL),
+              htElement.GetString(NoonConstants.KLABEL),
                 htElement.GetString(NoonConstants.KDESCRIPTION),
                 htElement.GetInt(NoonConstants.KANIMFRAMES),
                 htElement.GetString(NoonConstants.KICON));
@@ -477,7 +481,10 @@ public class ContentImporter
                 r.Craftable = Convert.ToBoolean(htEachRecipe[NoonConstants.KCRAFTABLE]);
                 htEachRecipe.Remove(NoonConstants.KCRAFTABLE);
 
-                if(htEachRecipe.Contains(NoonConstants.KPORTALEFFECT))
+                r.SignalImportantLoop = Convert.ToBoolean(htEachRecipe[NoonConstants.KSIGNALIMPORTANTLOOP]);
+                htEachRecipe.Remove(NoonConstants.KSIGNALIMPORTANTLOOP);
+
+                if (htEachRecipe.Contains(NoonConstants.KPORTALEFFECT))
                 {
                     string possiblePortalEffect = htEachRecipe[NoonConstants.KPORTALEFFECT].ToString();
                     try
@@ -511,11 +518,7 @@ public class ContentImporter
                 htEachRecipe.Remove(NoonConstants.KDESCRIPTION);
 
                 
-
-                if (htEachRecipe.ContainsKey(NoonConstants.KASIDE))
-                    r.Aside = htEachRecipe[NoonConstants.KASIDE].ToString();
-                htEachRecipe.Remove(NoonConstants.KASIDE);
-
+                
 
 
                 r.Warmup = Convert.ToInt32(htEachRecipe[NoonConstants.KWARMUP]);
@@ -846,10 +849,10 @@ public class ContentImporter
         }
 
         if (missingAspectImages != "")
-            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages);
+            NoonUtility.Log("Missing " + missingAspectImageCount + " images for aspects:" + missingAspectImages,1);
 
         if (missingElementImages != "")
-            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages);
+            NoonUtility.Log("Missing " + missingElementImageCount + " images for elements:" + missingElementImages,1);
     }
 
     public void PopulateCompendium(ICompendium compendium)
@@ -963,4 +966,5 @@ public class ContentImporter
 
 
     }
+
 }

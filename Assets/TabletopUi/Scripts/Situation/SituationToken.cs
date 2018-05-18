@@ -165,10 +165,10 @@ namespace Assets.CS.TabletopUI {
             countdownCanvas.gameObject.SetActive(show);
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, Recipe recipe) {
+        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour) {
             SetTimerVisibility(true);
 
-            Color barColor = UIStyle.GetColorForCountdownBar(recipe, timeRemaining);
+            Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
 
             timeRemaining = Mathf.Max(0f, timeRemaining);
             countdownBar.color = barColor;
@@ -255,7 +255,6 @@ namespace Assets.CS.TabletopUI {
 
         #endregion
 
-        #region -- Token interaction --------------------------
 
             // None of this should do view changes here. We're deferring to the SitController or TokenContainer
 
@@ -314,6 +313,6 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(true);
         }
 
-        #endregion
+
     }    
 }

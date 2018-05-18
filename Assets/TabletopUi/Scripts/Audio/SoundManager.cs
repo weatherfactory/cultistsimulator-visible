@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Noon;
 using UnityEngine.Audio;
 
 public class SoundManager : AudioManager {
@@ -114,6 +115,8 @@ public class SoundManager : AudioManager {
 
         if (Instance.soundsThisFrame.Contains(name))
             return -1;
+
+       // NoonUtility.Log("Playing sound: " + name,1);
 
         return Instance.PlaySound(name, -1);
     }

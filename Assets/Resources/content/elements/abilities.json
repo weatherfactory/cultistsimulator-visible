@@ -11,6 +11,7 @@
 			  slots: [{id:"Nourishment",actionId:"dream",description: "To recover, I must eat.",required:{funds:1}}],
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger before the card fades will allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
+			lifetime:60
 			},
         {
             id: "health",
@@ -22,7 +23,7 @@
 				ability:1
             },
             animFrames: 1,
-			xtriggers: {damagehealth: injury,fallsick:affliction,fatiguing:fatigue,employment:fatigue,job:fatigue},
+			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
         },
 				 {
@@ -44,7 +45,13 @@
 		lifetime: 60,
 		decayTo:"dread"
         },
-		
+				{
+        id: "bloodshed",
+            label: "Bloodshed",
+			description:"Blood has been spilt.",
+			lifetime:1
+			},
+			
 			{
         id: "injury",
             label: "An Injury",
@@ -108,7 +115,7 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration},
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion},
 				
         },
 		        {
@@ -132,7 +139,7 @@ lifetime: 180
             aspects:
             {edge: 2,
 			inducesdespair: 1,
-			ingredient:1,
+			influence:1,
 			illhealth:1},
 			slots:	[{id:"Reminders",actionId:"dream",required: {contentment:1},description:"I need a little peace, or a moment of happiness. [Too much Dread will destroy you. Contentment can cure it.]"}],
             description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror.",
@@ -151,15 +158,16 @@ lifetime: 180
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
 [With enough Glimmering, you can Study to gain more Passion.]",
-			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted},
+			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason},
         },
 		
 		
 		        {
             id: "decrepitude",
             label: "Decrepitude",
-			description: "Some wounds never quite heal. [Untreated injuries become Decrepitude, which cannot be returned to Health. Decrepitude remains until you die.]",
-			aspects: {ability:1}
+			description: "Some wounds never quite heal. [Untreated injuries become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
+			aspects: {ability:1},
+			xtriggers: {tohealth:health}
             },
 		
 					 {
@@ -174,10 +182,9 @@ lifetime: 180
 		{id: "fascination",
             label: "Fascination",
             aspects:
-            {moth:2,illhealth:1,ingredient:1},
+            {moth:2,illhealth:1,influence:1},
 			              		slots:[{id:"Reminders",required: {dread:1},actionId:"dream",description:"Grey reality will steady my soul."}],
             description: "Light LEAKS through the CRACKS. My mind is BRIGHTER than it EVER was. THE HIGHER I RISE THE MORE I SEE.",
-			xtriggers: {restorepassion: passion},
 			lifetime: 180
 			},
 		{
@@ -284,12 +291,12 @@ lifetime: 180
             id: "fleeting",
             label: "Fleeting Memory",
             description: "A moment in time. In another moment, it'll be gone.",
-			aspects: {secrethistories: 2,moth:2,ingredient:1},
+			aspects: {secrethistories: 2,moth:2,influence:1},
 			lifetime:30
         },
 		{id: "contentment",
 		label: "Contentment",
-		aspects: {lantern:2,heart:2,ingredient:1},
+		aspects: {lantern:2,heart:2,influence:1},
 		description: "I'm happy, I think. [Contentment defends against Dread; but Contentment doesn't last.]",
 		lifetime: 60
 		}

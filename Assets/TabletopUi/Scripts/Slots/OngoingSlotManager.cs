@@ -75,8 +75,8 @@ namespace Assets.CS.TabletopUI {
                 return null;
         }
 
-        public void UpdateTime(float duration, float timeRemaining, Recipe recipe) {
-            Color barColor = UIStyle.GetColorForCountdownBar(recipe, timeRemaining);
+        public void UpdateTime(float duration, float timeRemaining, EndingFlavour forEndingFlavour) {
+            Color barColor = UIStyle.GetColorForCountdownBar(forEndingFlavour, timeRemaining);
 
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));

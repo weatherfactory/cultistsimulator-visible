@@ -27,13 +27,14 @@ namespace Assets.CS.TabletopUI {
         public static DraggableToken itemBeingDragged;
         public static bool draggingEnabled = true;
         private static bool resetToStartPos = false;
-		private static string resetToStartPosReason = null;	// For debug purposes only - CP
+        // ReSharper disable once NotAccessedField.Local
+        private static string resetToStartPosReason = null;	// For debug purposes only - CP
         // This is used in DelayedEndDrag, which occurs one frame after EndDrag. If it's set to true, the token will be returned to where it began the drag (default is false).
 
         public static void SetReturn(bool value, string reason = "") {
             resetToStartPos = value;
 			resetToStartPosReason = reason;	// So that we can see why this variable was last changed... - CP
-			NoonUtility.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )"  );
+			NoonUtility.Log( "DraggableToken::SetReturn( " + value + ", " + reason + " )",10 );
             //log here if necessary
         }
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Noon;
 using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour {
@@ -15,6 +16,7 @@ public class BackgroundMusic : MonoBehaviour {
     [SerializeField]
     public int currentTrackNumber;
     private System.Random random;
+    private AudioClip currentClip;
 
     // Use this for initialization
     void Awake() {
@@ -41,16 +43,19 @@ public class BackgroundMusic : MonoBehaviour {
         //PlayClip(currentTrackNumber);
 
         PlayClip(random.Next(1, backgroundMusic.Count()), backgroundMusic); //never plays the first clip
+
     }
 
     public void PlayClip(int trackNumber, IEnumerable<AudioClip> clips) {
         audioSource.Stop();
-        var clip = clips.ElementAt(trackNumber);
-        audioSource.PlayOneShot(clip);
+        currentClip = clips.ElementAt(trackNumber);
+        audioSource.PlayOneShot(currentClip);
+        NoonUtility.Log("Playing" + currentClip.name, 8);
     }
 
     public void PlayRandomClip() {
         PlayClip(random.Next(0, backgroundMusic.Count()), backgroundMusic);
+
     }
 
     public void PlayMansusClip() {
@@ -58,7 +63,14 @@ public class BackgroundMusic : MonoBehaviour {
     }
 
     public void PlayImpendingDoom() {
-        PlayClip(0, impendingDoomMusic);
+        if(currentClip!=impendingDoomMusic.ElementAt(0))
+            PlayClip(0,impendingDoomMusic);
+    }
+
+    public void NoMoreImpendingDoom()
+    {
+        if (currentClip == impendingDoomMusic.ElementAt(0))
+            PlayNextClip();
     }
 
     // Options Control

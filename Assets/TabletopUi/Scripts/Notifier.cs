@@ -34,7 +34,10 @@ namespace Assets.CS.TabletopUI {
             notificationLog.AddText(text);
         }
 
-        public void ShowNotificationWindow(string title, string description, float duration = 10) {
+        public void ShowNotificationWindow(string title, string description) {
+       
+            float duration = (title.Length + description.Length) / 7; //average reading speed in English is c. 15 characters a second
+            
             var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);
         }
