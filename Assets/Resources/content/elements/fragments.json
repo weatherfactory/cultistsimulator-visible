@@ -29,19 +29,20 @@
         },
 						 {
         id: "fragmentedged",
-            label: "The Lionsmith's Names",
+            label: "The Colonel's Names",
             aspects:
             {edge: 8,lore:1},
 			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead.",required:{fragmentedged:1,fragmentwinterd:1},actionId:"study"}],
-            description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
+description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+			
 			xtriggers:{epiphany:fragmentedgee}
         },{
         id: "fragmentedgee",
-            label: "The Colonel's Names",
+            label: "The Lionsmith's Names",
             aspects:
             {edge: 10,lore:1},
 			slots:[{id:"with",label:"With",description:"Study with an Edge lore fragment of the same level to upgrade to the next level. Study with Winter lore of the same level to subvert it, and get Winter lore instead.",required:{fragmentedgee:1,fragmentwintere:1},actionId:"study"}],
-            description: "The Colonel has been many things in many ages. He is blind; he is deaf; he cannot be wounded; he cannot be denied. His Names are cunning as only the very old can be.",
+                        description: "The Lionsmith is young by the standards of the Hours, but old by the standards of war. His Names are recent recruits, and their recitation has a savage power.",
 			xtriggers:{epiphany:fragmentedgef}
         },
 		{
