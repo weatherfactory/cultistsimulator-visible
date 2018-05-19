@@ -226,7 +226,8 @@ namespace Assets.CS.TabletopUI {
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
-            var storeClientProvider=new StoreFrontClientProvider();
+            var storeClientProvider=new StorefrontServicesProvider();
+            storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
 
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);
@@ -242,7 +243,8 @@ namespace Assets.CS.TabletopUI {
             registry.Register<SituationsCatalogue>(situationsCatalogue);
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
-            registry.Register<IStoreFrontClientProvider>(storeClientProvider);
+            registry.Register<StorefrontServicesProvider>(storeClientProvider);
+            
 
 
             var contentImporter = new ContentImporter();

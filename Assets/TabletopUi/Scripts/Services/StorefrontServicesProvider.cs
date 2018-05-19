@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Services
 {
    public class StorefrontServicesProvider
-    {
-        public void InitialiseStorefrontClient(StoreClient client)
+   {
+       private IStoreFrontClientProvider _steamClientProvider;
+        public void InitialiseForStorefrontClientType(StoreClient clientType)
         {
-            if (client == StoreClient.Steam)
-                return;
-            if (client == StoreClient.Gog)
+            if (clientType == StoreClient.Steam)
+            {
+                _steamClientProvider=new SteamworksStorefrontClientProvider();
+
+            }
+                
+            if (clientType == StoreClient.Gog)
             {
                 if(SystemInfo.operatingSystemFamily==OperatingSystemFamily.Linux)
                     throw new ApplicationException("Can't initialise GOG services on Linux");
@@ -23,6 +29,10 @@ namespace Assets.TabletopUi.Scripts.Services
         }
         public void SetAchievementForCurrentStorefronts(string achievementId, bool setStatus)
         {
+            if (!NoonUtility.AchievementsActive)
+                return;
+            if(_steamClientProvider!=null)
+                _steamClientProvider.SetAchievement(achievementId,setStatus);
 
         }
     }
