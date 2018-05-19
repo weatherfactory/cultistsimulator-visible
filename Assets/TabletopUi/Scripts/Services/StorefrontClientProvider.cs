@@ -8,7 +8,7 @@ using Noon;
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
 
-    public interface IStoreClientProvider
+    public interface IStoreFrontClientProvider
     {
         bool IsAvailable(StoreClient storeClient);
         void SetAchievement(string achievementId, bool setStatus);
@@ -24,11 +24,11 @@ Gog=2
 
 
 
-    public class StoreClientProvider : IStoreClientProvider
+    public class StoreFrontClientProvider : IStoreFrontClientProvider
     {
         private bool _initialised;
 
-        public StoreClientProvider()
+        public StoreFrontClientProvider()
         {
 //#if UNITY_STANDALONE_LINUX
 //#else

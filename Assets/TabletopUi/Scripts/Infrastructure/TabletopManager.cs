@@ -226,7 +226,7 @@ namespace Assets.CS.TabletopUI {
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
-            var storeClientProvider=new StoreClientProvider();
+            var storeClientProvider=new StoreFrontClientProvider();
 
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);
@@ -242,7 +242,7 @@ namespace Assets.CS.TabletopUI {
             registry.Register<SituationsCatalogue>(situationsCatalogue);
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
-            registry.Register<IStoreClientProvider>(storeClientProvider);
+            registry.Register<IStoreFrontClientProvider>(storeClientProvider);
 
 
             var contentImporter = new ContentImporter();

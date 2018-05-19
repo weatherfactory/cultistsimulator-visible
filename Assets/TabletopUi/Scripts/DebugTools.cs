@@ -127,13 +127,13 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void TriggerAchievement(string achievementId)
     {
-        var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
+        var storeClientProvider = Registry.Retrieve<IStoreFrontClientProvider>();
         storeClientProvider.SetAchievement(achievementId,true);
     }
 
     void ResetAchievement(string achievementId)
     {
-        var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
+        var storeClientProvider = Registry.Retrieve<IStoreFrontClientProvider>();
         storeClientProvider.SetAchievement(achievementId, false);
     }
 

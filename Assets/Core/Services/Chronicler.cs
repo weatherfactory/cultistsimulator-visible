@@ -72,7 +72,7 @@ namespace Assets.Core.Services
             if (string.IsNullOrEmpty(ending.AchievementId))
                 return;
 
-            var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
+            var storeClientProvider = Registry.Retrieve<IStoreFrontClientProvider>();
             storeClientProvider.SetAchievement(ending.AchievementId, true);
         }
 
