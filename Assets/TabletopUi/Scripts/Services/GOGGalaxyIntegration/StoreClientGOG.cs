@@ -1,4 +1,9 @@
-﻿using System;
+﻿#if UNITY_STANDALONE_LINUX
+
+
+#else
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,49 +12,39 @@ using Noon;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
+    public class GOGStorefrontProvider : IStoreFrontClientProvider
+    {
+        public GOGStorefrontProvider()
+        {
+            Galaxy.Api.IAuthListener authListener = new GogAuthListener();
 
-//    public StoreFrontClientProvider()
-//    {
-//    //            Galaxy.Api.IAuthListener authListener = new GogAuthListener();
+            Galaxy.Api.GalaxyInstance.ListenerRegistrar()
+                .Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
 
-//    //            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
+        }
 
-//    //            _initialised = true;
+        public void SetAchievement(string achievementId, bool setStatus)
+        {
+            var gogStats = Galaxy.Api.GalaxyInstance.Stats();
 
-//    }
+            Galaxy.Api.IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
+            Galaxy.Api.IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
+            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerUserStatsAndAchievementsRetrieve.GetListenerType(), statsRetrieveListener);
+            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerStatsAndAchievementsStore.GetListenerType(), statsStoreListener);
 
-//    public bool IsAvailable(StoreClient storeClient)
-//    {
-//    if (!_initialised)
-//    throw new ApplicationException("Store client provider wasn't initialised");
-//    //  if (storeClient == StoreClient.Steam && Facepunch.Steamworks.Client.Instance != null)
-//    //    return true;
-//    return false;
-//    //            if (storeClient == StoreClient.Gog)
-//    //                return false;
+            gogStats.RequestUserStatsAndAchievements(); //when the request completes, the callback will fire Execute on the AchievementRequest we attached above
+        }
 
-//    //               if (GogGalaxyManager.Instance == null)
-//    //                    return false;
-//    //            if (Galaxy.Api.GalaxyInstance.User().SignedIn())
-//    //                return true;
-
-
-//    //            return false;
-//}
-
-
-//var gogStats = Galaxy.Api.GalaxyInstance.Stats();
-
-//Galaxy.Api.IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
-//Galaxy.Api.IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
-//Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerUserStatsAndAchievementsRetrieve.GetListenerType(), statsRetrieveListener);
-//Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerStatsAndAchievementsStore.GetListenerType(), statsStoreListener);
-
-//gogStats.RequestUserStatsAndAchievements(); //when the request completes, the callback will fire Execute on the AchievementRequest we attached above
+    }
 
 
 
-    public class GogAuthListener : IAuthListener
+
+
+
+
+
+        public class GogAuthListener : IAuthListener
     {
         public override void OnAuthSuccess()
         {
@@ -151,4 +146,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             NoonUtility.Log("Couldn't store achievements: " + failureReason, 10);
         }
     }
-}
+
+        
+    }
+#endif

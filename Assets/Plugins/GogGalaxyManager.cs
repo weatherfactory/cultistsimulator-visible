@@ -1,9 +1,17 @@
-﻿#if UNITY_STANDALONE_LINUX
-#else
+﻿
 using System;
 using UnityEngine;
 using System.Collections;
 using System.IO;
+#if UNITY_STANDALONE_LINUX
+public class GogGalaxyManager : MonoBehaviour
+    {
+       private void Awake()
+    {
+    Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
+    }
+}
+#else
 using Galaxy.Api;
 
 
@@ -41,7 +49,7 @@ public class GogGalaxyManager : MonoBehaviour
 
     private void Awake()
     {
-
+        
         if (singleton != null)
         {
             Destroy(gameObject);
