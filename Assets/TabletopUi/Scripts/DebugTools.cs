@@ -11,6 +11,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts;
 using Assets.TabletopUi.Scripts.Infrastructure;
+using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using TMPro;
 using UnityEngine.UI;
@@ -127,14 +128,14 @@ public class DebugTools : MonoBehaviour,IRollOverride
 
     void TriggerAchievement(string achievementId)
     {
-        var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
-        storeClientProvider.SetAchievement(achievementId,true);
+        var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+        storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId,true);
     }
 
     void ResetAchievement(string achievementId)
     {
-        var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
-        storeClientProvider.SetAchievement(achievementId, false);
+        var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+        storefrontServicesProvider.SetAchievementForCurrentStorefronts(achievementId, false);
     }
 
     void FastForward(float interval)
