@@ -959,10 +959,10 @@ public class ContentImporter
 
 
         if (elementFnords != "")
-            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords,9);
+            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords,1);
 
         if (recipeFnords != "")
-            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords,9);
+            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords,1);
 
 
     }
