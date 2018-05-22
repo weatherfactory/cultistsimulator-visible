@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
 
 
-            var chosenLegacyForCharacterId = htCharacter[SaveConstants.SAVE_ACTIVELEGACY].ToString();
+            var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
             Legacy chosenLegacyForCharacter;
             if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
                 chosenLegacyForCharacter =
@@ -130,7 +130,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htDefunctCharacter = htSave.GetHashtable(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS);
             if (htDefunctCharacter != null)
             {
-                var chosenLegacyForDefunctCharacterId = htDefunctCharacter[SaveConstants.SAVE_ACTIVELEGACY].ToString();
+                var chosenLegacyForDefunctCharacterId = TryGetStringFromHashtable(htDefunctCharacter, SaveConstants.SAVE_ACTIVELEGACY);
                 Legacy chosenLegacyForDefunctCharacter;
                 if (string.IsNullOrEmpty(chosenLegacyForDefunctCharacterId))
                     chosenLegacyForDefunctCharacter =
