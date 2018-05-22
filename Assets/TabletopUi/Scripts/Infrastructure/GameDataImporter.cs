@@ -62,6 +62,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
                 storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
 
+
+            var chosenLegacyForCharacterId = htCharacter[SaveConstants.SAVE_ACTIVELEGACY].ToString();
+            Legacy chosenLegacyForCharacter;
+            if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
+                chosenLegacyForCharacter =
+                    compendium.GetAllLegacies()
+                        .First(); //support active legacies for characters who preceded saved active legacies
+            else
+                chosenLegacyForCharacter = compendium.GetLegacyById(chosenLegacyForCharacterId);
+
+            storage.ActiveLegacy = chosenLegacyForCharacter;
+
+
             if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
             {
                 var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
@@ -117,7 +130,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htDefunctCharacter = htSave.GetHashtable(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS);
             if (htDefunctCharacter != null)
             {
-                Character defunctCharacter=new Character();
+                var chosenLegacyForDefunctCharacterId = htDefunctCharacter[SaveConstants.SAVE_ACTIVELEGACY].ToString();
+                Legacy chosenLegacyForDefunctCharacter;
+                if (string.IsNullOrEmpty(chosenLegacyForDefunctCharacterId))
+                    chosenLegacyForDefunctCharacter =
+                        compendium.GetAllLegacies()
+                            .First(); //support active legacies for characters who preceded saved active legacies
+                else
+                    chosenLegacyForDefunctCharacter = compendium.GetLegacyById(chosenLegacyForDefunctCharacterId);
+
+                Character defunctCharacter=new Character(chosenLegacyForDefunctCharacter);
 
                 if (htDefunctCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
                 {

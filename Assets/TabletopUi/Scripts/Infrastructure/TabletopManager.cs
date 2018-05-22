@@ -217,7 +217,14 @@ namespace Assets.CS.TabletopUI {
         private void SetupServices(SituationBuilder builder, TabletopTokenContainer container) {
             var registry = new Registry();
             var compendium = new Compendium();
-            var character = new Character(CrossSceneState.GetDefunctCharacter());
+            var contentImporter = new ContentImporter();
+            contentImporter.PopulateCompendium(compendium);
+
+            Character character;
+            if (CrossSceneState.GetChosenLegacy() != null)
+                character = new Character(CrossSceneState.GetChosenLegacy(), CrossSceneState.GetDefunctCharacter());
+            else
+                character = new Character(compendium.GetAllLegacies().First());
 
 
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
@@ -262,8 +269,7 @@ namespace Assets.CS.TabletopUI {
 
 
 
-            var contentImporter = new ContentImporter();
-            contentImporter.PopulateCompendium(compendium);
+         
         }
 
         #endregion

@@ -16,6 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static string SAVE_MUTATIONS="mutations";
         public static string SAVE_ILLUMINATIONS = "illuminations";
         public static string LIFETIME_REMAINING="lifetimeRemaining";
+        public static string SAVE_ACTIVELEGACY="activeLegacy";
         public const string SAVE_EXTRAGAME_STATE="extrastate";
         public const string SAVE_DECKS="decks";
         public const string SAVE_CURRENTENDING = "currentending";
@@ -31,7 +32,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_SITUATIONSTATE = "state";
         public const string SAVE_TIMEREMAINING = "timeRemaining";
         public const string SAVE_STARTINGSLOTELEMENTS = "startingSlotElements";
-        public const string SAVE_RECIPESKNOWN = "recipesKnown";
         public const string SAVE_ELEMENTSTACKS = "elementStacks";
         public const string SAVE_SITUATIONS = "situations";
         public const string SAVE_CHARACTER_DETAILS = "characterDetails";
@@ -43,7 +43,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public const string SAVE_SITUATIONNOTES = "situationOutputNotes";
         public const string SAVE_TITLE = "title";
         public const string SAVE_NAME = "name";
-        public const string SAVE_DESCRIPTION = "description";
 
         public const string SAVE_COMPLETIONCOUNT = "completioncount";
 

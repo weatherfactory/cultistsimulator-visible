@@ -36,12 +36,12 @@ public class Character:IGameEntityStorage
     private Dictionary<string, int> recipeExecutions;
     private string _endingTriggeredId = null;
 
-    public Character() : this(null)
+    public Character(Legacy activeLegacy) : this(activeLegacy,null)
     {
 
     }
 
-    public Character(Character previousCharacter)
+    public Character(Legacy activeLegacy,Character previousCharacter)
     {
         State = CharacterState.Viable;
         recipeExecutions = new Dictionary<string, int>();
@@ -61,6 +61,8 @@ public class Character:IGameEntityStorage
 
         //finally, set our starting future to be our present, ie our past.
         _futureLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>(_pastLegacyEventRecords);
+
+        ActiveLegacy = activeLegacy;
 
     }
 

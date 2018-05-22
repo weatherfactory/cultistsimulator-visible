@@ -18,7 +18,7 @@ namespace Assets.Editor.Tests
         {
             var r = TestObjectGenerator.GenerateRecipe(1);
             r.MaxExecutions = 2;
-            var c=new Character();
+            var c=new Character(null);
             c.AddExecutionsToHistory(r.Id,1);
             Assert.IsFalse(c.HasExhaustedRecipe(r));
 
@@ -29,7 +29,7 @@ namespace Assets.Editor.Tests
         {
             var r = TestObjectGenerator.GenerateRecipe(1);
             r.MaxExecutions = 1;
-            var c = new Character();
+            var c = new Character(null);
             c.AddExecutionsToHistory(r.Id,1);
             Assert.IsTrue(c.HasExhaustedRecipe(r));
 
@@ -40,7 +40,7 @@ namespace Assets.Editor.Tests
         {
             var r = TestObjectGenerator.GenerateRecipe(1);
             r.MaxExecutions = 0;
-            var c = new Character();
+            var c = new Character(null);
             c.AddExecutionsToHistory(r.Id,1);
             Assert.IsFalse(c.HasExhaustedRecipe(r));
 
