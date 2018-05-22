@@ -873,6 +873,30 @@ public class ContentImporter
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
 
+
+        //List<string> studyRequirements=new List<string>();
+        //string studyReqs=String.Empty;
+        //foreach (var r in Recipes)
+        //{
+        //    if(r.Craftable && r.ActionId=="study")
+        //    {
+        //        foreach(var req in r.Requirements)
+        //        {
+        //            var reqElement = _compendium.GetElementById(req.Key);
+
+        //        if(!studyRequirements.Contains(req.Key) && req.Value>0 && !reqElement.Aspects.ContainsKey("text"))
+        //            studyRequirements.Add(req.Key);
+
+        //        }
+        //    }
+        //}
+
+        //foreach (var req in studyRequirements)
+        //    studyReqs = studyReqs + req + ":1, ";
+
+
+        //NoonUtility.Log(studyReqs);
+
 #if DEBUG
         CountWords();
         LogMissingImages();

@@ -95,7 +95,7 @@ namespace Noon
         public static bool UnitTestingMode { get; set; }
         
 
-        public static int CurrentVerbosity =10;
+        public static int CurrentVerbosity =1;
         public static uint CultistSimulatorSteamAppId = 718670;
         //public static string CultistSimulatorGOGProductId = "1456702644";
         //public static string CultistSimulatorGOGClientId = "50757209545787544";
