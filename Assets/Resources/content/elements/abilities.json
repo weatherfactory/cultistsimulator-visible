@@ -30,8 +30,8 @@
             id: "vitality",
             label: "Vitality",
 				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality, I can increase my Health.",required:{vitality:1}}],
-            aspects:
-            {},
+          aspects:
+            {advancement:1},
             description: "Exercise, or something rarer, has invigorated me. [Vitality can be used with Study to gain Health. It lasts only three minutes, if unused.]",
 		lifetime: 180
         },
@@ -129,8 +129,7 @@
             id: "erudition",
             label: "Erudition",
 			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
-            aspects:
-            {},
+            aspects: {advancement:1},
             description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180
         },
@@ -175,7 +174,7 @@ lifetime: 180
             label: "Glimmering",
 			slots: [{id:"More Glimmering",actionId:"study",description: "With enough Glimmering, I can increase my Passion.",required:{glimmering:1}}],
             aspects:
-            {},
+            {advancement:1},
             description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can be used with Study to gain Passion. It lasts only three minutes, if unused.]",
 			lifetime: 180
         },
