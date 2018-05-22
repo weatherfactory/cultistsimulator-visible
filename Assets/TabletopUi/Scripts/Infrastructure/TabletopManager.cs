@@ -148,6 +148,18 @@ namespace Assets.CS.TabletopUI {
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
         private void BeginGame(SituationBuilder builder) {
+            //CHECK LEGACY POPULATED FOR CHARACTERS
+            //this is all a bit post facto and could do with being tidied up
+            //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
+            var chosenLegacy = CrossSceneState.GetChosenLegacy();
+            if (chosenLegacy == null)
+            {
+                NoonUtility.Log("No initial Legacy specified");
+                chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
+                CrossSceneState.SetChosenLegacy(chosenLegacy);
+                Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
+            }
+
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
@@ -207,6 +219,7 @@ namespace Assets.CS.TabletopUI {
             var compendium = new Compendium();
             var character = new Character(CrossSceneState.GetDefunctCharacter());
 
+
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
             var chronicler = new Chronicler(character,compendium);
 
@@ -244,7 +257,9 @@ namespace Assets.CS.TabletopUI {
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
-            
+
+
+
 
 
             var contentImporter = new ContentImporter();
@@ -256,22 +271,19 @@ namespace Assets.CS.TabletopUI {
         #region -- Build / Reset -------------------------------
 
         public void SetupNewBoard(SituationBuilder builder) {
-            var chosenLegacy = CrossSceneState.GetChosenLegacy();
 
-            if (chosenLegacy == null) {
-                NoonUtility.Log("No initial Legacy specified");
-                chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
-                CrossSceneState.SetChosenLegacy(chosenLegacy);
-            }
 
             builder.CreateInitialTokensOnTabletop();
-            ProvisionStartingElements(chosenLegacy, Registry.Retrieve<Choreographer>());
-            SetStartingCharacterInfo(chosenLegacy);
+            Character _character = Registry.Retrieve<Character>();
+            if(_character.ActiveLegacy==null)
+                throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
+            ProvisionStartingElements(_character.ActiveLegacy, Registry.Retrieve<Choreographer>());
+            SetStartingCharacterInfo(_character.ActiveLegacy);
             StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());
 
             DealStartingDecks();
 
-            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription);
+            _notifier.ShowNotificationWindow(_character.ActiveLegacy.Label, _character.ActiveLegacy.StartDescription);
         }
 
         private void SetStartingCharacterInfo(Legacy chosenLegacy) {
