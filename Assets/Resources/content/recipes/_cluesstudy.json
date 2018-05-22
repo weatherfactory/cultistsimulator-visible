@@ -1,5 +1,75 @@
  {"recipes":
  [
+ {id:"translatelatinhint",
+ label:"Translate from Latin?",
+ actionId:"study",
+ requirements:{textlatin:1},
+ startdescription:"My Latin skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+ hintonly:true,
+ craftable:false
+ },
+ {id:"translategreekhint",
+ label:"Translate from Greek?",
+ actionId:"study",
+ requirements:{textgreek:1},
+ startdescription:"My Greek skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ {id:"translatearamaichint",
+ label:"Translate from Aramaic?",
+ actionId:"study",
+ requirements:{textaramaic:1},
+ startdescription:"My Aramaic skills are too limited to read this. I might be able to find a textbook, or hire a tutor.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+  
+ {id:"translatearamaichint",
+ label:"Translate from Sanskrit?",
+ actionId:"study",
+ requirements:{textsanskrit:1},
+ startdescription:"My Sanskrit skills are too limited to read this. I might be able to find a textbook.",
+ hintonly:true,
+ craftable:false
+ },
+  {id:"translatemandaichint",
+ label:"Translate from mandaic?",
+ actionId:"study",
+ requirements:{textmandaic:1},
+ startdescription:"I don't know mandaic; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+ hintonly:true,
+ craftable:false
+ },
+   {id:"translatephrygianhint",
+ label:"Translate from Phrygian?",
+ actionId:"study",
+ requirements:{textphrygian:1},
+ startdescription:"I don't know Phrygian; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+   {id:"translatemandaichint",
+ label:"Translate from Deep Mandaic?",
+ actionId:"study",
+ requirements:{textmandaic:1},
+ startdescription:"I don't know Deep Mandaic; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+ hintonly:true,
+ craftable:false
+ },
+    {id:"translatevakh1int",
+ label:"Translate from Vak?",
+ actionId:"study",
+ requirements:{textvak:1},
+ startdescription:"I don't know Vak; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ 
 	{
         id: "increasehealthfurtherhint",
         label: "Increase my Health?",
