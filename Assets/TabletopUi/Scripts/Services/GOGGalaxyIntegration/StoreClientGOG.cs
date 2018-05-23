@@ -28,6 +28,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public void SetAchievement(string achievementId, bool setStatus)
         {
             var gogStats = Galaxy.Api.GalaxyInstance.Stats();
+            if (!GalaxyInstance.User().SignedIn())
+                return;
 
             Galaxy.Api.IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
             Galaxy.Api.IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
@@ -46,8 +48,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         public override void OnAuthSuccess()
         {
-            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn(), 1);
-            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn(), 1);
+            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn(), 10);
+            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn(), 10);
         }
 
         public override void OnAuthFailure(FailureReason failureReason)
@@ -57,7 +59,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public override void OnAuthLost()
         {
-            NoonUtility.Log("Authentication lost",1);
+            NoonUtility.Log("Authentication lost",10);
         }
     }
 
@@ -88,7 +90,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 _gogStats.ClearAchievement(_forAchievementId);
             _gogStats.StoreStatsAndAchievements();
 
-            NoonUtility.Log("Set GOG achievement: " + _forAchievementId, 10);
+            NoonUtility.Log("Set GOG achievement: " + _forAchievementId, 1);
         }
 
         public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)
