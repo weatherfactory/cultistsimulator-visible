@@ -948,7 +948,7 @@ public class ContentImporter
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        NoonUtility.Log("Words (based on spaces +1 count): " + words,2);
+        NoonUtility.Log("Words (based on spaces +1 count): " + words,1);
     }
 
     private void LogFnords()
