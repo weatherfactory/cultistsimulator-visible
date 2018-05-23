@@ -90,7 +90,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 _gogStats.ClearAchievement(_forAchievementId);
             _gogStats.StoreStatsAndAchievements();
 
-            NoonUtility.Log("Set GOG achievement: " + _forAchievementId, 1);
+            NoonUtility.Log("Set GOG achievement: " + _forAchievementId + " (" + _setStatus +")", 1);
         }
 
         public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)
