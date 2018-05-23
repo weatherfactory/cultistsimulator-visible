@@ -14,7 +14,7 @@ namespace Assets.CS.TabletopUI {
         
         [Header("Notification")]
         [SerializeField] Transform notificationHolder;
-        [SerializeField] NotificationLog notificationLog;
+        //[SerializeField] NotificationLog notificationLog;
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
@@ -30,9 +30,12 @@ namespace Assets.CS.TabletopUI {
 
         // Notifications
 
+
+		// Text Log Disabled
         public void PushTextToLog(string text) {
-            notificationLog.AddText(text);
+        	//notificationLog.AddText(text);
         }
+        
 
         public void ShowNotificationWindow(string title, string description) {
        
@@ -40,6 +43,7 @@ namespace Assets.CS.TabletopUI {
             
             var notification = BuildNotificationWindow(duration);
             notification.SetDetails(title, description);
+			notification.Show();
         }
 
         private NotificationWindow BuildNotificationWindow(float duration) {
