@@ -874,6 +874,14 @@ public class ContentImporter
         _compendium.UpdateLegacies(Legacies);
 
 
+        //var orderedElements = Elements.OrderByDescending(r => r.Value.Label.Length);
+        //string output = string.Empty;
+        //foreach (var or in orderedElements.Take(30))
+        //    output += or.Key + "- " + or.Value.Label.Length+ "\n" + or.Value.Label + "\n\n";
+
+        //Debug.Log(output);
+
+
         //List<string> studyRequirements=new List<string>();
         //string studyReqs=String.Empty;
         //foreach (var r in Recipes)
