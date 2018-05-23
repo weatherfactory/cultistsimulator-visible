@@ -840,7 +840,7 @@ public class ContentImporter
             {
                 
 
-                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForElement(thisElement.Icon) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
                     missingElementImages += (" " + k);
                     missingElementImageCount++;

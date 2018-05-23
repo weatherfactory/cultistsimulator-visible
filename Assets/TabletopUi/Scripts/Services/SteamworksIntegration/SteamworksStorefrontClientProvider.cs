@@ -25,7 +25,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         var steamClient = Facepunch.Steamworks.Client.Instance;
             if (steamClient == null)
             {
-                                NoonUtility.Log("Trying to use an uninitialised Facepuch Steamworks client");
+                                NoonUtility.Log("No Facepunch Steamworks client not initialised: not setting a Steam achievement for " + achievementId,10);
                 return;
             }
             var achievement = steamClient.Achievements.Find(achievementId);

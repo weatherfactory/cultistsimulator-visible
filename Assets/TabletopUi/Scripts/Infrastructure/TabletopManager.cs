@@ -248,6 +248,7 @@ namespace Assets.CS.TabletopUI {
 
             var storeClientProvider=new StorefrontServicesProvider();
             storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
+            storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
 
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);

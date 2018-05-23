@@ -21,6 +21,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Galaxy.Api.GalaxyInstance.ListenerRegistrar()
                 .Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
 
+            GalaxyInstance.User().SignIn();
+
         }
 
         public void SetAchievement(string achievementId, bool setStatus)
@@ -37,29 +39,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
     }
 
-
-
-
-
-
+    
 
 
         public class GogAuthListener : IAuthListener
     {
         public override void OnAuthSuccess()
         {
-            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn(), 10);
-            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn(), 10);
+            NoonUtility.Log("GOG Galaxy logged on?" + GalaxyInstance.User().IsLoggedOn(), 1);
+            NoonUtility.Log("GOG Galaxy signed in? " + GalaxyInstance.User().SignedIn(), 1);
         }
 
         public override void OnAuthFailure(FailureReason failureReason)
         {
-            NoonUtility.Log("GOG Galaxy auth failed:" + failureReason, 10);
+            NoonUtility.Log("GOG Galaxy auth failed:" + failureReason, 1);
         }
 
         public override void OnAuthLost()
         {
-            NoonUtility.Log("Authentication lost");
+            NoonUtility.Log("Authentication lost",1);
         }
     }
 
