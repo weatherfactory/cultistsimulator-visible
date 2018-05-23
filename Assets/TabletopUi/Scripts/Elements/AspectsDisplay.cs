@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts
                 Header.enabled = show;
         }
 
-        public void DisplayAspects(IAspectsDictionary aspects) {            
+        public virtual void DisplayAspects(IAspectsDictionary aspects) {            
             ClearCurrentlyDisplayedAspects();
 
             bool anyAspects = aspects != null && aspects.Keys.Any();
@@ -52,7 +52,7 @@ namespace Assets.TabletopUi.Scripts
                 newElementFrame.SetAsDetailWindowChild();
         }
 
-        public void ClearCurrentlyDisplayedAspects() {
+        public virtual void ClearCurrentlyDisplayedAspects() {
             foreach (ElementFrame a in GetComponentsInChildren<ElementFrame>())
                 DestroyObject(a.gameObject);
         }
