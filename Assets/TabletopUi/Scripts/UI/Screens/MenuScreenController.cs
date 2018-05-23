@@ -43,6 +43,8 @@ public class MenuScreenController : MonoBehaviour {
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
 
+    public GameObject Subtitle;
+
     bool canTakeInput;
     int sceneToLoad;
     VersionNumber currentVersion;
@@ -54,12 +56,17 @@ public class MenuScreenController : MonoBehaviour {
         // make sure the screen is black
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
+        if(NoonUtility.PerpetualEdition)
+            Subtitle.SetActive(true);
+        else
+            Subtitle.SetActive(false);
 
 		InitManagers();
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
         // We delay the showing to get a proper fade in
         Invoke("UpdateAndShowMenu", 0.1f); 
+
     }
 
     void InitManagers() {

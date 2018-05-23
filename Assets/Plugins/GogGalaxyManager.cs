@@ -64,18 +64,17 @@ public class GogGalaxyManager : MonoBehaviour
     try
         {
             InitParams initParams = new InitParams(clientID, clientSecret);
-   
+
             GalaxyInstance.Init(initParams);
-            GalaxyInstance.User().SignIn();
         }
     catch (GalaxyInstance.InvalidStateError e)
     {
-        Console.WriteLine("Invalid state error for GOG Galax, probably already initialised: " + e.Message);
+        Debug.Log("Invalid state error for GOG Galax, probably already initialised: " + e.Message);
 
     }
         catch (GalaxyInstance.Error error)
         {
-            Console.WriteLine("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
+            Debug.Log("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
             return;
         }
 

@@ -840,7 +840,7 @@ public class ContentImporter
             {
                 
 
-                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForElement(thisElement.Icon) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
                     missingElementImages += (" " + k);
                     missingElementImageCount++;
@@ -872,6 +872,14 @@ public class ContentImporter
         _compendium.UpdateVerbs(Verbs);
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
+
+
+        //var orderedElements = Elements.OrderByDescending(r => r.Value.Label.Length);
+        //string output = string.Empty;
+        //foreach (var or in orderedElements.Take(30))
+        //    output += or.Key + "- " + or.Value.Label.Length+ "\n" + or.Value.Label + "\n\n";
+
+        //Debug.Log(output);
 
 
         //List<string> studyRequirements=new List<string>();
@@ -940,7 +948,7 @@ public class ContentImporter
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        NoonUtility.Log("Words (based on spaces +1 count): " + words,2);
+        NoonUtility.Log("Words (based on spaces +1 count): " + words,1);
     }
 
     private void LogFnords()

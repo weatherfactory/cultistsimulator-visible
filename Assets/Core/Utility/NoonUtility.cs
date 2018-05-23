@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace Noon
 {
-
     public class NoonConstants
     {
         public const string KCHARACTERSTATE = "state";
@@ -103,6 +102,7 @@ namespace Noon
 
         public static VersionNumber VersionNumber = new VersionNumber(Application.version);
         public static bool AchievementsActive = true;
+        public static bool PerpetualEdition = true;
 
         public static void Log(string message,int verbosityNeeded=0)
         {
