@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (!enabled)
                 return;
 
-            if (Input.GetKeyDown("`") || (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Tab)))
+            if ((Input.GetKeyDown("`") && Input.GetKey(KeyCode.LeftControl) ))
             { 
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
                 var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
