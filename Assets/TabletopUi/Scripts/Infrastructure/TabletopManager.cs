@@ -661,7 +661,12 @@ namespace Assets.CS.TabletopUI {
 
             // Build mansus cards and doors everything
             mansusSituation = situation; // so we can drop the card in the right place
-            _mapController.SetupMap(effect); 
+            _mapController.SetupMap(effect);
+
+            var chronicler = Registry.Retrieve<Chronicler>();
+            chronicler.ChronicleMansusEntry(effect);
+
+
 
             // Do transition
             _tabletop.Show(false);

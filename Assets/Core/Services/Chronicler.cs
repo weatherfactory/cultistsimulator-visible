@@ -265,5 +265,32 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook, token.EntityId);
         }
+
+        public void ChronicleMansusEntry(PortalEffect portalEffect)
+        {
+            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+
+            switch (portalEffect)
+            {
+                case PortalEffect.Wood:
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WOOD",true);
+                    break;
+                case PortalEffect.WhiteDoor:
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_WHITEDOOR", true);
+                    break;
+                case PortalEffect.StagDoor:
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_STAGDOOR", true);
+                    break;
+                case PortalEffect.SpiderDoor:
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_SPIDERDOOR", true);
+                    break;
+                case PortalEffect.PeacockDoor:
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_PEACOCKDOOR", true);
+                    break;
+                case PortalEffect.TricuspidGate:
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_MANSUS_TRICUSPIDGATE", true);
+                    break;
+            }
+        }
     }
 }
