@@ -116,7 +116,7 @@ public class SoundManager : AudioManager {
         if (Instance.soundsThisFrame.Contains(name))
             return -1;
 
-       // NoonUtility.Log("Playing sound: " + name,1);
+		NoonUtility.Log("Playing sound: " + name,1);
 
         return Instance.PlaySound(name, -1);
     }
@@ -199,4 +199,13 @@ public class SoundManager : AudioManager {
         if (Instance == this)
             instance = null;
     }
+
+	#if UNITY_EDITOR
+	public void SortSounds() {
+		var soundList = new List<SoundCombo>(sounds);
+		soundList.Sort((x, y) => x.name.CompareTo(y.name));
+
+		sounds = soundList.ToArray();
+	}
+	#endif
 }

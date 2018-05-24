@@ -194,7 +194,7 @@ namespace Assets.CS.TabletopUI {
 			// We're not a no-anim slot? Then show the anim!
 			if (!ongoingSlots[0].NoAnim) {				
 				ongoingSlotAppearFX.Play();
-				SoundManager.PlaySfx("SituationShowOngoingSlot");
+				SoundManager.PlaySfx("SituationTokenShowOngoingSlot");
 			}
 
 			ongoingSlotGreedyIcon.gameObject.SetActive(ongoingSlots[0].Greedy);
