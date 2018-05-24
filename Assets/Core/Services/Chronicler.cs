@@ -24,7 +24,7 @@ namespace Assets.Core.Services
         private const string BOOK_ASPECT = "text";
         private const string DESIRE_ASPECT = "desire";
         private const string TOOL_ASPECT = "tool";
-        private const string CULT_ASPECT = "cult";
+        private const string CULT_ASPECT = "society";
         private const string HQ_ASPECT = "hq";
         private const string POWER_ASPECT="powermarks";
         private const string SENSATION_ASPECT="sensationmarks";
@@ -35,6 +35,16 @@ namespace Assets.Core.Services
         private const string MORTAL_ASPECT = "mortal";
         private const string SUMMONED_ASPECT = "summoned";
         private const string HIRELING_ASPECT = "hireling";
+        private const string EDGE = "edge";
+        private const string FORGE = "forge";
+        private const string GRAIL = "grail";
+        private const string HEART = "heart";
+        private const string KNOCK = "knock";
+        private const string LANTERN = "lantern";
+        private const string MOTH = "moth";
+        private const string SECRETHISTORIES = "secrethistories";
+        private const string WINTER = "winter";
+
 
 
 
@@ -52,21 +62,29 @@ namespace Assets.Core.Services
 
         public void TokenPlacedOnTabletop(ElementStackToken token)
         {
+
+            if (token.PlacementAlreadyChronicled)
+                return;
+
             IAspectsDictionary tokenAspects = token.GetAspects();
 
-            
-            TryUpdateBookLever(token, tokenAspects);
+            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
 
-            TryUpdateDesireLever(tokenAspects);
+            TryChronicleBookPlaced(token, tokenAspects);
 
-            TryUpdateToolLever(token, tokenAspects);
+            TryChronicleDesirePlaced(tokenAspects);
+
+            TryChronicleFollowerPlaced(token, tokenAspects, storefrontServicesProvider);
+
+            TryChronicleToolPlaced(token, tokenAspects);
             
-            TryUpdateCultLever(token, tokenAspects);
+            TryChronicleCultPlaced(token, tokenAspects, storefrontServicesProvider);
             
-            TryUpdateHqLever(token, tokenAspects);          
+            TryCHronicleHQPlaced(token, tokenAspects);          
 
         }
 
+        
         private void SetAchievementsForEnding(Ending ending)
         {
             if (string.IsNullOrEmpty(ending.AchievementId))
@@ -116,6 +134,7 @@ namespace Assets.Core.Services
                 if (aspects.ContainsKey(EXALTED_ASPECT))
                 {
                     currentFollower = _compendium.GetElementById(stack.EntityId);
+
                 }
 
                 else if (aspects.ContainsKey(DISCIPLE_ASPECT) && currentFollower!=null && !currentFollower.Aspects.ContainsKey(EXALTED_ASPECT))
@@ -135,47 +154,83 @@ namespace Assets.Core.Services
 
             _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastFollower, currentFollower.Id);
 
+        }
 
+        private void TryChronicleFollowerPlaced(ElementStackToken token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
+        {
+            if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
+                storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_SUMMON_GENERIC", true);
+
+            if (tokenAspects.ContainsKey(EXALTED_ASPECT))
+            {
+
+
+                if (tokenAspects.Keys.Contains(EDGE) && tokenAspects[EDGE]==10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_EDGE", true);
+
+                if (tokenAspects.Keys.Contains(FORGE) && tokenAspects[FORGE] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_FORGE", true);
+
+                if (tokenAspects.Keys.Contains(GRAIL) && tokenAspects[GRAIL] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_GRAIL", true);
+
+                if (tokenAspects.Keys.Contains(HEART) && tokenAspects[HEART] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_HEART", true);
+
+                if (tokenAspects.Keys.Contains(KNOCK) && tokenAspects[KNOCK] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_KNOCK", true);
+
+                if (tokenAspects.Keys.Contains(LANTERN) && tokenAspects[LANTERN] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_LANTERN", true);
+
+                if (tokenAspects.Keys.Contains(MOTH) && tokenAspects[MOTH] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_MOTH", true);
+
+                if (tokenAspects.Keys.Contains(WINTER) && tokenAspects[WINTER] == 10)
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_WINTER", true);
+
+            }
 
         }
 
-        private void TryUpdateHqLever(ElementStackToken token, IAspectsDictionary tokenAspects)
+
+        private void TryCHronicleHQPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastHeadquarters, token.EntityId);
         }
 
-        private void TryUpdateCultLever(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryChronicleCultPlaced(ElementStackToken token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             { 
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.EntityId);
-                var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
                 
-                if (tokenAspects.Keys.Contains("edge"))
+                
+                if (tokenAspects.Keys.Contains("venerationedge"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_EDGE",true);
 
-                if (tokenAspects.Keys.Contains("forge"))
+                if (tokenAspects.Keys.Contains("venerationforge"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_FORGE", true);
 
-                if (tokenAspects.Keys.Contains("grail"))
+                if (tokenAspects.Keys.Contains("venerationgrail"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_GRAIL", true);
 
-                if (tokenAspects.Keys.Contains("heart"))
+                if (tokenAspects.Keys.Contains("venerationheart"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_HEART", true);
 
-                if (tokenAspects.Keys.Contains("knock"))
+                if (tokenAspects.Keys.Contains("venerationknock"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_KNOCK", true);
 
-                if (tokenAspects.Keys.Contains("lantern"))
+                if (tokenAspects.Keys.Contains("lvenerationantern"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_LANTERN", true);
 
-                if (tokenAspects.Keys.Contains("moth"))
+                if (tokenAspects.Keys.Contains("venerationmoth"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_MOTH", true);
-                if (tokenAspects.Keys.Contains("secrethistories"))
+                if (tokenAspects.Keys.Contains("venerationsecrethistories"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_SECRETHISTORIES", true);
 
-                if (tokenAspects.Keys.Contains("winter"))
+                if (tokenAspects.Keys.Contains("venerationwinter"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_WINTER", true);
 
 
@@ -183,13 +238,13 @@ namespace Assets.Core.Services
             }
         }
 
-        private void TryUpdateToolLever(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryChronicleToolPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastTool, token.EntityId);
         }
 
-        private void TryUpdateDesireLever(IAspectsDictionary tokenAspects)
+        private void TryChronicleDesirePlaced(IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
@@ -205,7 +260,7 @@ namespace Assets.Core.Services
             }
         }
 
-        private void TryUpdateBookLever(ElementStackToken token, IAspectsDictionary tokenAspects)
+        private void TryChronicleBookPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook, token.EntityId);
