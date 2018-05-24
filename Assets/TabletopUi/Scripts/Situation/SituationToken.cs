@@ -43,6 +43,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Image ongoingSlotImage;
         [SerializeField] Image ongoingSlotArtImage;
         [SerializeField] GameObject ongoingSlotGreedyIcon;
+		[SerializeField] ParticleSystem ongoingSlotAppearFX;
 
         [Header("Completion")]
         [SerializeField] Image completionBadge;
@@ -189,9 +190,14 @@ namespace Assets.CS.TabletopUI {
                 return;
             if (ongoingSlots.Count > 1)
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
+			
+			// We're not a no-anim slot? Then show the anim!
+			if (!ongoingSlots[0].NoAnim) {				
+				ongoingSlotAppearFX.Play();
+				SoundManager.PlaySfx("SituationShowOngoingSlot");
+			}
 
-            ongoingSlotGreedyIcon.gameObject.SetActive(ongoingSlots[0].Greedy);
-			SoundManager.PlaySfx("SituationShowOngoingSlot");
+			ongoingSlotGreedyIcon.gameObject.SetActive(ongoingSlots[0].Greedy);
 		}
 
 
