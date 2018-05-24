@@ -53,13 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerTarget: {fileID: 24300002, guid: ffd4cf940f0723d4c98e4f8b84043864, type: 2}
   sounds:
-  - name: CardBurn
-    randomizedClips:
-    - {fileID: 8300000, guid: 79168dfead8698e4daa04394aeaf6e97, type: 3}
-    - {fileID: 8300000, guid: 814042c492a836c429bd0b43e59e6799, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0.025
   - name: CardDragFail
     randomizedClips:
     - {fileID: 8300000, guid: 9e643d3cdcb7aa0418816813795a8841, type: 3}
@@ -72,12 +65,6 @@ MonoBehaviour:
     loop: 0
     volume: 0.247
     pitchVariation: 0.05
-  - name: CardGlow
-    randomizedClips:
-    - {fileID: 8300000, guid: c3be09184f09fbc4e9fa0186ac741a9e, type: 3}
-    loop: 0
-    volume: 0.247
-    pitchVariation: 0
   - name: CardPickup
     randomizedClips:
     - {fileID: 8300000, guid: 94bca9f8e43abaf4abc706133d6ea26c, type: 3}
@@ -97,37 +84,91 @@ MonoBehaviour:
     loop: 0
     volume: 0.5
     pitchVariation: 0.05
-  - name: CardShatter
-    randomizedClips:
-    - {fileID: 8300000, guid: bfdcef8b6ad89584580f0ac9664509d0, type: 3}
-    loop: 0
-    volume: 1
-    pitchVariation: 0
   - name: CardTurnOver
     randomizedClips:
     - {fileID: 8300000, guid: bdf9f2d80b9435345a5d2fc21ad51d51, type: 3}
     - {fileID: 8300000, guid: a501402cd806d194cafd2ca4cd1d4669, type: 3}
     loop: 0
     volume: 0.365
+    pitchVariation: 0.05
+  - name: FXBurnImage
+    randomizedClips:
+    - {fileID: 8300000, guid: 0bc07dc5c01bab64896daf2977562187, type: 3}
+    loop: 0
+    volume: 0.8
     pitchVariation: 0
-  - name: EndGameBreath
+  - name: FXCardBleed
+    randomizedClips:
+    - {fileID: 8300000, guid: 7eecb0c25e605474fa5a89585840eaae, type: 3}
+    loop: 0
+    volume: 0.7
+    pitchVariation: 0.025
+  - name: FXCardBurn
+    randomizedClips:
+    - {fileID: 8300000, guid: df052c99daafe434bac2a2ae0986b3ba, type: 3}
+    loop: 0
+    volume: 0.7
+    pitchVariation: 0.025
+  - name: FXCardDrown
+    randomizedClips:
+    - {fileID: 8300000, guid: c89e4601c6cd9fd468455dd709369ca4, type: 3}
+    loop: 0
+    volume: 0.7
+    pitchVariation: 0.025
+  - name: FXCardShatter
+    randomizedClips:
+    - {fileID: 8300000, guid: bfdcef8b6ad89584580f0ac9664509d0, type: 3}
+    loop: 0
+    volume: 1
+    pitchVariation: 0
+  - name: FXCardShatterSlow
+    randomizedClips:
+    - {fileID: 8300000, guid: 20931188daa2ab04592588e5c5abab67, type: 3}
+    loop: 0
+    volume: 0.7
+    pitchVariation: 0.025
+  - name: FXCardSpend
+    randomizedClips:
+    - {fileID: 8300000, guid: eb661f57ccbed64489d35eecd0220f73, type: 3}
+    loop: 0
+    volume: 0.7
+    pitchVariation: 0.025
+  - name: FXCardTakeSlow
+    randomizedClips:
+    - {fileID: 8300000, guid: 75999a3cdefac334ba556a15679688d9, type: 3}
+    loop: 0
+    volume: 0.7
+    pitchVariation: 0.025
+  - name: FXCardTransform
+    randomizedClips:
+    - {fileID: 8300000, guid: c3be09184f09fbc4e9fa0186ac741a9e, type: 3}
+    loop: 0
+    volume: 0.247
+    pitchVariation: 0
+  - name: FXEndGameBreath
     randomizedClips:
     - {fileID: 8300000, guid: 58e5c81dc3daa3046849ed5d1a7bf047, type: 3}
     loop: 0
     volume: 1
     pitchVariation: 0
-  - name: EndGameChime
+  - name: FXEndGameChime
     randomizedClips:
     - {fileID: 8300000, guid: 8cb75cb4879da12429bf5d570b26e2cd, type: 3}
     loop: 0
     volume: 1
     pitchVariation: 0
-  - name: EndGameSiren
+  - name: FXEndGameSiren
     randomizedClips:
     - {fileID: 8300000, guid: 4b301721b26bb71409ddf354c197836c, type: 3}
     loop: 0
     volume: 0.365
     pitchVariation: 0
+  - name: InfoWindowShow
+    randomizedClips:
+    - {fileID: 8300000, guid: 4c84cf5b45c044221b99d311995d267d, type: 3}
+    loop: 0
+    volume: 0.15
+    pitchVariation: 0.05
   - name: MansusEntry
     randomizedClips:
     - {fileID: 8300000, guid: 57fa4cff48a41ec4d8ed0b00a564dbf5, type: 3}
@@ -152,12 +193,6 @@ MonoBehaviour:
     loop: 0
     volume: 0.454
     pitchVariation: 0
-  - name: SituationLoop
-    randomizedClips:
-    - {fileID: 8300000, guid: 913d7c61f4d64ef4aa7aaa28dd3ac37e, type: 3}
-    loop: 0
-    volume: 0.454
-    pitchVariation: 0
   - name: SituationCollectAll
     randomizedClips:
     - {fileID: 8300000, guid: bd19a03a8c7735e4889e622134f2566e, type: 3}
@@ -176,6 +211,18 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitchVariation: 0
+  - name: SituationLoop
+    randomizedClips:
+    - {fileID: 8300000, guid: 913d7c61f4d64ef4aa7aaa28dd3ac37e, type: 3}
+    loop: 0
+    volume: 0.454
+    pitchVariation: 0
+  - name: SituationLoopImportant
+    randomizedClips:
+    - {fileID: 8300000, guid: 28fe89f0e565ff94b91e43f9ec3f3723, type: 3}
+    loop: 0
+    volume: 1
+    pitchVariation: 0.05
   - name: SituationTokenRetire
     randomizedClips:
     - {fileID: 8300000, guid: e4721316ad208a94db2935c7edce39ef, type: 3}
@@ -192,17 +239,17 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 3ec4617681ce69e43bd718c20ee58346, type: 3}
     loop: 0
-    volume: 0.454
+    volume: 0.25
     pitchVariation: 0
   - name: SituationWindowShow
     randomizedClips:
     - {fileID: 8300000, guid: 3e92bad48d4e8094ab33712112b8c66d, type: 3}
     loop: 0
-    volume: 0.454
+    volume: 0.25
     pitchVariation: 0
-  - name: UIButtonClick
+  - name: SituationWindowTextMove
     randomizedClips:
-    - {fileID: 8300000, guid: 810cb91932f714ded93c69e6388ceba6, type: 3}
+    - {fileID: 8300000, guid: a7c2d672ce7b947bf8aa782784504985, type: 3}
     loop: 0
     volume: 1
     pitchVariation: 0
@@ -210,11 +257,35 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 32a8faebc98e6614e8d728cd06d244d4, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.15
     pitchVariation: 0.05
-  - name: SituationLoopImportant
+  - name: UIButtonClick
     randomizedClips:
-    - {fileID: 8300000, guid: 28fe89f0e565ff94b91e43f9ec3f3723, type: 3}
+    - {fileID: 8300000, guid: 810cb91932f714ded93c69e6388ceba6, type: 3}
+    loop: 0
+    volume: 0.6
+    pitchVariation: 0
+  - name: UIButtonClose
+    randomizedClips:
+    - {fileID: 8300000, guid: 810cb91932f714ded93c69e6388ceba6, type: 3}
+    loop: 0
+    volume: 0.5
+    pitchVariation: 0
+  - name: UIPauseEnd
+    randomizedClips:
+    - {fileID: 8300000, guid: 50824328db75f43cab71bc1c33022184, type: 3}
     loop: 0
     volume: 1
-    pitchVariation: 0.05
+    pitchVariation: 0
+  - name: UIPauseStart
+    randomizedClips:
+    - {fileID: 8300000, guid: c7f8fcea5d3334be28410db3892cce53, type: 3}
+    loop: 0
+    volume: 0.8
+    pitchVariation: 0
+  - name: UISliderMove
+    randomizedClips:
+    - {fileID: 8300000, guid: 2daef4ca10c2847259857460c1cd0857, type: 3}
+    loop: 0
+    volume: 0.3
+    pitchVariation: 0.08

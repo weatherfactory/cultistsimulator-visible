@@ -375,7 +375,7 @@ namespace Assets.CS.TabletopUI {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
             IGameEntityStorage storage = Registry.Retrieve<Character>();
 
-            _speedController.SetPausedState(true);
+            _speedController.SetPausedState(true, false);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             //try
             //{
@@ -402,7 +402,7 @@ namespace Assets.CS.TabletopUI {
             //{
             //    _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             //}
-            _speedController.SetPausedState(false);
+            _speedController.SetPausedState(false, false);
         }
 
         public void SaveGame(bool withNotification) {

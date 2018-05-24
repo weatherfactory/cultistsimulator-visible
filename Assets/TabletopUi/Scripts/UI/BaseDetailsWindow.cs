@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
         float time;
 
         protected void Show() {
-            SoundManager.PlaySfx("SituationWindowShow");
+			SoundManager.PlaySfx("InfoWindowShow");
             ResetTimer();
 
             if (gameObject.activeSelf == false) {

@@ -42,7 +42,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			return _heart.IsPaused;
 		}
 
-        public void SetPausedState(bool pause)
+		public void SetPausedState(bool pause, bool withSFX = true)
         {
             if (pause || isLocked)
             {
@@ -51,9 +51,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 pauseButton.GetComponent<Image>().color = activeSpeedColor;
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
+
+				if (withSFX)
+					SoundManager.PlaySfx("UIPauseStart");
             }
             else
-            {
+			{
+				if (withSFX)
+					SoundManager.PlaySfx("UIPauseEnd");
+				
                 _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
                 pauseButton.GetComponent<Image>().color = inactiveSpeedColor;

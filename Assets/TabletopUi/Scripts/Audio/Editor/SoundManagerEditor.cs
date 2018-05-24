@@ -10,6 +10,7 @@ public class SoundManagerEditor : Editor {
 		base.OnInspectorGUI();
 
 		if (GUILayout.Button("Sort")) {
+			Undo.RecordObject(target, "Sorting sounds on SoundManager");
 			var soundManager = target as SoundManager;
 			soundManager.SortSounds();
 			UnityEditor.EditorUtility.SetDirty(target);

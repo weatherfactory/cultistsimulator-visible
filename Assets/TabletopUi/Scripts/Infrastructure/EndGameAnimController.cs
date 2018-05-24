@@ -51,7 +51,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             _hotkeyWatcher.enabled = false; // Disable shortcuts
 
             // pause game
-            _speedController.SetPausedState(true);
+            _speedController.SetPausedState(true, false);
 
             // Abort all interactions
             DraggableToken.draggingEnabled = false; // this SHOULD disable the dragging

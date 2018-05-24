@@ -210,8 +210,8 @@ public class OptionsPanel : MonoBehaviour {
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
-        SoundManager.PlaySfx("TokenHover");
         SetMusicVolumeInternal(volume);
+		SoundManager.PlaySfx("UISliderMove");
     }
 
     public void SetSoundVolume(float volume) {
@@ -220,8 +220,8 @@ public class OptionsPanel : MonoBehaviour {
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
-        SoundManager.PlaySfx("TokenHover");
         SetSoundVolumeInternal(volume);
+		SoundManager.PlaySfx("UISliderMove"); // After So we have the sound applied
     }
 
     public void SetInspectionWindowTime(float timer) {
@@ -230,8 +230,8 @@ public class OptionsPanel : MonoBehaviour {
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
-        SoundManager.PlaySfx("TokenHover");
         SetInspectionWindowTimeInternal(timer);
+		SoundManager.PlaySfx("UISliderMove");
 	}
 
 	public void SetCanvasScaleSize(float size) {
@@ -240,7 +240,7 @@ public class OptionsPanel : MonoBehaviour {
 		if (gameObject.activeInHierarchy == false)
 			return; // don't update anything if we're not visible.
 
-		SoundManager.PlaySfx("TokenHover");
+		SoundManager.PlaySfx("UISliderMove");
 		SetCanvasScaleSizeInternal(size);
 	}
 
@@ -251,8 +251,8 @@ public class OptionsPanel : MonoBehaviour {
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
-        SoundManager.PlaySfx("TokenHover");
         SetAutosaveIntervalInternal(timer);
+		SoundManager.PlaySfx("UISliderMove");
     }
 
     public void SetBirdWorm(float value) {
@@ -262,7 +262,7 @@ public class OptionsPanel : MonoBehaviour {
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
-        SoundManager.PlaySfx("TokenHover");
+		SoundManager.PlaySfx("UISliderMove");
     }
 
     // INTERNAL Setters
@@ -288,7 +288,6 @@ public class OptionsPanel : MonoBehaviour {
 
         audioMixer.SetFloat("masterVol", dbVol);
         PlayerPrefs.SetFloat(SOUNDVOLUME, volume);
-        SoundManager.PlaySfx("TokenHover");
 
         if (volume == 0f && soundManager.IsOn())
             soundManager.SetVolume(0f);
