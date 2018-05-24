@@ -55,9 +55,9 @@ MonoBehaviour:
   sounds:
   - name: CardDragFail
     randomizedClips:
-    - {fileID: 8300000, guid: 9e643d3cdcb7aa0418816813795a8841, type: 3}
+    - {fileID: 8300000, guid: 83a56b01514d64b2598c04d46f307b64, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.7
     pitchVariation: 0
   - name: CardDrop
     randomizedClips:
@@ -145,19 +145,19 @@ MonoBehaviour:
     loop: 0
     volume: 0.247
     pitchVariation: 0
-  - name: FXEndGameBreath
+  - name: FXEndGameGlory
     randomizedClips:
     - {fileID: 8300000, guid: 58e5c81dc3daa3046849ed5d1a7bf047, type: 3}
     loop: 0
     volume: 1
     pitchVariation: 0
-  - name: FXEndGameChime
+  - name: FXEndGameMediocre
     randomizedClips:
     - {fileID: 8300000, guid: 8cb75cb4879da12429bf5d570b26e2cd, type: 3}
     loop: 0
     volume: 1
     pitchVariation: 0
-  - name: FXEndGameSiren
+  - name: FXEndGameDoom
     randomizedClips:
     - {fileID: 8300000, guid: 4b301721b26bb71409ddf354c197836c, type: 3}
     loop: 0
