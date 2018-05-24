@@ -79,9 +79,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ShowSlotDetails(SlotSpecification slotSpec) {
+			/*
             // Check if we'd show the same, if so: do nothing
             if (this.slotSpec == slotSpec && gameObject.activeSelf)
                 return;
+			*/
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
             this._element = null;
@@ -93,9 +95,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void ShowDeckDetails(IDeckSpec deckSpec, int numCards) {
+			/*
             // Check if we'd show the same, if so: do nothing
             if (this.deckSpec == deckSpec && this.deckQuantity == numCards && gameObject.activeSelf)
                 return;
+			*/
 
             SetTokenDecayEventListener(false); // remove decay listener if we had one on an old token
             this._element = null;
@@ -135,7 +139,8 @@ namespace Assets.CS.TabletopUI {
                 SetTokenDecayEventListener(true); // Add decay listener if we need one
             }
             else if (slotSpec != null) {
-                SetSlot(slotSpec);
+				SetSlot(slotSpec);
+				HighlightSlotCompatibleCards(slotSpec);
             }
             else if (deckSpec != null) {
                 SetDeck(deckSpec, deckQuantity);
@@ -309,6 +314,13 @@ namespace Assets.CS.TabletopUI {
             infoHighlight = null;
         }
 
+		void HighlightSlotCompatibleCards(SlotSpecification slotSpec) {
+			if (slotSpec.Greedy) // Greedy slots get no possible cards
+				return;
+			
+			var tabletop = Registry.Retrieve<TabletopManager>();
+			tabletop.HighlightAllStacksForSlotSpecificationOnTabletop(slotSpec);
+		}
     }
 }
 
