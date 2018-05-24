@@ -11,10 +11,10 @@ craftable:false
 {id: "_testmutations",
 label: "Testing mutation",
 actionId: "work",
-requirements:{health:1},
-mutations:[{filterOnAspectId:health,mutateAspectId:dreadful,mutationLevel:10}],
+requirements:{owl:1},
+mutations:[{filterOnAspectId:owl,mutateAspectId:dreadful,mutationLevel:10}],
 warmup: 1,
-craftable:false
+craftable:true
 },
 {id:"_adeptskit",
 label:"Adept's Kit",
