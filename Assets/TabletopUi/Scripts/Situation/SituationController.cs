@@ -28,7 +28,9 @@ namespace Assets.TabletopUi {
         private readonly Character currentCharacter;
 
         private bool greedyAnimIsActive;
-        private EndingFlavour _currentEndingFlavourToSignal=EndingFlavour.None;
+        private EndingFlavour _currentEndingFlavourToSignal=EndingFlavour.None; //encapsulating; want to be able to catch calls to thie slightly sloppy bit of state
+
+        
 
         public bool IsOpen { get; set; }
 		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
@@ -42,6 +44,12 @@ namespace Assets.TabletopUi {
 
         public bool IsOngoing {
             get { return SituationClock.State == SituationState.Ongoing; }
+        }
+
+        public EndingFlavour CurrentEndingFlavourToSignal
+        {
+            get { return _currentEndingFlavourToSignal; }
+            set { _currentEndingFlavourToSignal = value; }
         }
 
         public SlotSpecification GetPrimarySlotSpecificationForVerb()
@@ -97,14 +105,15 @@ namespace Assets.TabletopUi {
             situationWindow.SetOngoing(command.Recipe);
 
             situationToken.DisplayMiniSlot(command.Recipe.SlotSpecifications);
-            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
-            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
+            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
             if (command.OverrideTitle != null)
                 situationWindow.Title = command.OverrideTitle;
 
-            _currentEndingFlavourToSignal = command.Recipe.SignalEndingFlavour;
+            UpdateSituationDisplayForPossiblePredictedRecipe();
+
         }
 
         void InitialiseCompletedSituation(SituationCreationCommand command) {
@@ -216,7 +225,7 @@ namespace Assets.TabletopUi {
             situationWindow.SetOngoing(withRecipe);
             StoreStacks(situationWindow.GetStartingStacks());
 
-            UpdateSituationDisplayForPrediction();
+            UpdateSituationDisplayForPossiblePredictedRecipe();
 
             situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
             
@@ -246,8 +255,8 @@ namespace Assets.TabletopUi {
 
         public void SituationOngoing() {
             var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
-            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
-            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
+            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
         }
 
         /// <summary>
@@ -534,11 +543,11 @@ namespace Assets.TabletopUi {
 
             if (rp != null)
             {
-                _currentEndingFlavourToSignal = rp.SignalEndingFlavour;
-            if ( rp.BurnImage != null)
-                    BurnImageUnderToken(rp.BurnImage);
-            PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
-            situationWindow.UpdateTextForPrediction(rp);
+                CurrentEndingFlavourToSignal = rp.SignalEndingFlavour;
+                if ( rp.BurnImage != null)
+                BurnImageUnderToken(rp.BurnImage);
+                PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
+                situationWindow.UpdateTextForPrediction(rp);
             }
 
             situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
@@ -552,11 +561,12 @@ namespace Assets.TabletopUi {
             return SituationClock.GetPrediction(rc);
         }
 
-        public void UpdateSituationDisplayForPrediction() {
+        public void UpdateSituationDisplayForPossiblePredictedRecipe() {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
+            CurrentEndingFlavourToSignal = nextRecipePrediction.SignalEndingFlavour;
             PossiblySignalImpendingDoom(nextRecipePrediction.SignalEndingFlavour);
         }
 
@@ -667,7 +677,7 @@ namespace Assets.TabletopUi {
 
             SituationClock =new SituationClock(SituationClock.TimeRemaining,SituationClock.State,newRecipe,this);
 
-            UpdateSituationDisplayForPrediction();
+            UpdateSituationDisplayForPossiblePredictedRecipe();
         }
 
         #endregion
