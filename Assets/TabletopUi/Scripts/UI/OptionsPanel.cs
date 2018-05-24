@@ -12,6 +12,11 @@ using TMPro;
 using Assets.TabletopUi.Scripts.Infrastructure;
 
 public class OptionsPanel : MonoBehaviour {
+
+	[Tooltip("If this is true, it will assume we're in the Tabletop game scene and try to communicate with present components.")]
+	[SerializeField] private bool isInGame = true;
+	[SerializeField] private GameObject windowGO;
+
     [Header("Controls")]
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider soundSlider;
@@ -65,17 +70,16 @@ public class OptionsPanel : MonoBehaviour {
 	private const string SCREENCANVASSIZE = "ScreenCanvasSize";
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
 
-
     private bool pauseStateWhenOptionsRequested = false;
 
     public void InitPreferences( SpeedController spdctrl ) {
-        gameObject.SetActive(false);
+		windowGO.SetActive(false);
 
-		speedController = spdctrl;
-        backgroundMusic = FindObjectOfType<BackgroundMusic>();
-        soundManager = FindObjectOfType<SoundManager>();
-            //infoWindows = FindObjectsOfType<BaseDetailsWindow>(); //This code looks like it never worked. The windows were inactive when it ran. Was it never tested, or have I misunderstood something about the implementation? - AK
-
+		if (isInGame) {
+			speedController = spdctrl;
+	        backgroundMusic = FindObjectOfType<BackgroundMusic>();
+	        soundManager = FindObjectOfType<SoundManager>();
+		}
 
         float value;
 
@@ -117,10 +121,10 @@ public class OptionsPanel : MonoBehaviour {
 		if (PlayerPrefs.HasKey(SCREENCANVASSIZE))
 			value = PlayerPrefs.GetFloat(SCREENCANVASSIZE);
 		else 
-			value = 1f / scaleSliderFactor; // Set default scale to 100%
+			value = 1f; // Set default scale to 100%
 
-		SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
-		SetInspectionWindowTimeInternal(value);
+		SetCanvasScaleSize(value); // this does nothing, since we're disabled but updates the value hint
+		SetCanvasScaleSizeInternal(value);
 		screenCanvasSizeSlider.value = value;
 
         // Loading Autosave interval default
@@ -148,30 +152,44 @@ public class OptionsPanel : MonoBehaviour {
 
 	public bool GetVisibility()
 	{
-		return gameObject.activeSelf;
+		return windowGO.activeSelf;
 	}
 
     public void ToggleVisibility() {
-        gameObject.SetActive(!gameObject.activeSelf);
-		if (gameObject.activeInHierarchy)
+		windowGO.SetActive(!windowGO.activeSelf);
+
+		if (!isInGame)
+			return;
+
+		if (windowGO.activeInHierarchy)
 		{
 			pauseStateWhenOptionsRequested = Registry.Retrieve<TabletopManager>().GetPausedState();
 			Registry.Retrieve<TabletopManager>().SetPausedState(true);
-			speedController.LockToPause(true);
+
+			if (speedController != null)
+				speedController.LockToPause(true);
 		}
 		else
 		{
 			Registry.Retrieve<TabletopManager>().SetPausedState(pauseStateWhenOptionsRequested);
-			speedController.LockToPause(false);
+
+			if (speedController != null)
+				speedController.LockToPause(false);
 		}
     }
 
     public void RestartGame() {
+		if (!isInGame)
+			return;
+		
         Registry.Retrieve<TabletopManager>().RestartGame();
         ToggleVisibility();
     }
 
-    public void LeaveGame() {
+	public void LeaveGame() {
+		if (!isInGame)
+			return;
+		
         var tabletopManager = Registry.Retrieve<TabletopManager>();
         tabletopManager.SetPausedState(true);
         tabletopManager.SaveGame(true);
@@ -288,9 +306,15 @@ public class OptionsPanel : MonoBehaviour {
 		// value ranges from -4 to 1
 		float timer = GetInspectionTimeForValue(value);
 		PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
-		aspectDetailsWindow.SetTimer(timer);
-		tokenDetailsWindow.SetTimer(timer);
 
+		if (!isInGame)
+			return;
+
+		if (aspectDetailsWindow != null)
+			aspectDetailsWindow.SetTimer(timer);
+
+		if (tokenDetailsWindow != null)
+			tokenDetailsWindow.SetTimer(timer);
 	}
 
 	float GetInspectionTimeForValue(float value) {
@@ -302,14 +326,17 @@ public class OptionsPanel : MonoBehaviour {
 	void SetCanvasScaleSizeInternal(float value) {
 		// value ranges from 0.5 to 2
 		float scale = GetCanvasScaleForValue(value);
-		PlayerPrefs.SetFloat(SCREENCANVASSIZE, scale);
+		PlayerPrefs.SetFloat(SCREENCANVASSIZE, value);
+
+		if (!isInGame)
+			return;
+
 		screenCanvasScaler.SetTargetScaleFactor(scale);
 	}
 
 	float GetCanvasScaleForValue(float value) {
 		return value * scaleSliderFactor;
 	}
-
 
 	// 
 
@@ -318,6 +345,9 @@ public class OptionsPanel : MonoBehaviour {
         // value ranges from 1 to 10 in mins
         PlayerPrefs.SetFloat(AUTOSAVEINTERVAL, value);
 
+		if (!isInGame)
+			return;
+		
 		var tabletopManager = Registry.Retrieve<TabletopManager>();
 		tabletopManager.SetAutosaveInterval( value );
     }
