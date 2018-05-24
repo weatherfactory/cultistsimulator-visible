@@ -519,7 +519,7 @@ namespace Assets.CS.TabletopUI {
             if (stack == null) //..but just in case.
                 return false;
 
-                if (stack.Defunct)
+            if (stack.Defunct)
                 return false; // don't pull defunct cards
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards
@@ -714,6 +714,48 @@ namespace Assets.CS.TabletopUI {
         {
             backgroundMusic.NoMoreImpendingDoom();
         }
+
+		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+			var stacks = FindAllStacksForSlotSpecificationOnTabletop(slotSpec);
+
+			foreach (var stack in stacks) {
+				ShowFXonToken("FX/CardPingEffect", stack.transform);
+			}
+		}
+
+		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+			var stackList = new List<ElementStackToken>();
+			var stacks = _tabletop.GetElementStacksManager().GetStacks();
+			ElementStackToken stackToken;
+
+			foreach (var stack in stacks) {
+				stackToken = stack as ElementStackToken;
+
+				if (stackToken != null && CanPullCardToGreedySlot(stackToken, slotSpec))
+					stackList.Add(stackToken);
+			}
+
+			return stackList;
+		}
+
+		private void ShowFXonToken(string name, Transform parent) {
+			var prefab = Resources.Load(name);
+
+			if (prefab == null)
+				return;
+
+			var obj = Instantiate(prefab) as GameObject;
+
+			if (obj == null)
+				return;
+
+			obj.transform.SetParent(parent);
+			obj.transform.localScale = Vector3.one;
+			obj.transform.localPosition = Vector3.zero;
+			obj.transform.localRotation = Quaternion.identity;
+			obj.gameObject.SetActive(true);
+		}
+
     }
 
 }

@@ -31,8 +31,10 @@ public class MenuScreenController : MonoBehaviour {
     [Header("Overlays")]
     public CanvasGroupFader modal;
     public CanvasGroupFader purgeConfirm;
-    public CanvasGroupFader credits;
+	public CanvasGroupFader credits;
+	public CanvasGroupFader settings;
     public CanvasGroupFader versionHints;
+	public OptionsPanel optionsPanel;
 
     [Header("Fade Visuals")]
     public Image fadeOverlay;
@@ -81,6 +83,8 @@ public class MenuScreenController : MonoBehaviour {
         var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
         registry.Register<MetaInfo>(metaInfo);
         CrossSceneState.SetMetaInfo(metaInfo);
+
+		optionsPanel.InitPreferences(null);
 
         saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
@@ -140,7 +144,7 @@ public class MenuScreenController : MonoBehaviour {
     }
 
     void ShowOverlay(CanvasGroupFader overlay) {
-        if (currentOverlay != null)
+		if (currentOverlay != null)
             return;
 
         currentOverlay = overlay;
@@ -235,7 +239,14 @@ public class MenuScreenController : MonoBehaviour {
             return;
 
         ShowOverlay(credits);
-    }
+	}
+
+	public void ShowSettings() {
+		if (!canTakeInput)
+			return;
+
+		ShowOverlay(settings);
+	}
 
     public void ShowVersionHints() {
         if (!canTakeInput)

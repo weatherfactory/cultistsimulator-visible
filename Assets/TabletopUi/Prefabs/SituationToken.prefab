@@ -760,6 +760,7 @@ MonoBehaviour:
   ongoingSlotImage: {fileID: 114814801908003096}
   ongoingSlotArtImage: {fileID: 114441914037949354}
   ongoingSlotGreedyIcon: {fileID: 1125526856113138}
+  ongoingSlotAppearFX: {fileID: 198616618233813950}
   completionBadge: {fileID: 114064244030047632}
   completionText: {fileID: 114659663056171282}
   dumpButton: {fileID: 114665147498409792}
@@ -2348,7 +2349,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1927585319
+  randomSeed: -2064252890
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5754,7 +5755,7 @@ ParticleSystem:
   moveWithTransform: 2
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -346634267
+  randomSeed: -1993715872
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9115,7 +9116,7 @@ ParticleSystem:
   moveWithTransform: 2
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -798508739
+  randomSeed: -689159937
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12428,7 +12429,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

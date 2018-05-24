@@ -284,7 +284,9 @@ namespace Assets.CS.TabletopUI {
             if (slot.GetElementStackInSlot() != null)
                 return false; // Slot is filled? Don't highlight it as interactive
             if (slot.IsBeingAnimated)
-                return false; // Slot is being animated? Don't hihglight
+                return false; // Slot is being animated? Don't highlight
+			if (slot.IsGreedy)
+				return false; // Slot is greedy? It can never take anything.
 
             return slot.GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
