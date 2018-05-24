@@ -25,6 +25,7 @@
 		slots: [{id:"Expenses",
 					required: {funds: 1},
 				greedy: true,
+				noanim:true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
 				}],
         linked:[{id:"discardseason",chance:100}],

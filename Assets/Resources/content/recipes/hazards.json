@@ -87,7 +87,7 @@
 		startdescription: "Paintings whisper. Windows wink. I know these things are not true, but how can I be certain? [You can defeat Visions with Dread; otherwise,  you will lose yourself completely at Fascination 3.]",
 		description: ".",
 		warmup: 60,
-		slots: [{id:"Thoughts",required: {dread: 1,fascination:1},greedy:true}],
+		slots: [{id:"Thoughts",required: {dread: 1,fascination:1},greedy:true,noanim:true}],
         craftable: false,
 		linked:[{id:"visionsabate",chance:100},
 		{id:"visionsdeath",chance:100},
