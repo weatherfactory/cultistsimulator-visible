@@ -71,7 +71,7 @@ public class Heart : MonoBehaviour
 		// Moved this outside AdvanceTime so that the interval parameter is respected (and I can call it with 0 reliably) - CP
 		float beatInterval = usualInterval;
 		if (CurrentGameSpeed == GameSpeed.Fast)
-			beatInterval = usualInterval * 2;
+			beatInterval = usualInterval * 3;
 
         AdvanceTime(beatInterval);
         beatCounter++;
