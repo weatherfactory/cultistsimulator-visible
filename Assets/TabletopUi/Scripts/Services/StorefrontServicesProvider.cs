@@ -19,7 +19,9 @@ namespace Assets.TabletopUi.Scripts.Services
                 _steamClientProvider=new SteamworksStorefrontClientProvider();
 
             }
-                
+
+#if UNITY_STANDALONE_LINUX
+#else
             if (clientType == StoreClient.Gog)
             {
                 if(SystemInfo.operatingSystemFamily==OperatingSystemFamily.Linux)
@@ -28,6 +30,7 @@ namespace Assets.TabletopUi.Scripts.Services
                 _gogClientProvider=new GOGStorefrontProvider();
                 return;
             }
+#endif
         }
         public void SetAchievementForCurrentStorefronts(string achievementId, bool setStatus)
         {
