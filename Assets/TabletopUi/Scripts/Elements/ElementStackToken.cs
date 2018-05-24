@@ -63,6 +63,9 @@ namespace Assets.CS.TabletopUI {
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
 
+        //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
+        public bool PlacementAlreadyChronicled=false;
+
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
         }

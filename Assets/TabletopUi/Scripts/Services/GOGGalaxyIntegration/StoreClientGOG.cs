@@ -71,6 +71,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private bool _setStatus;
         private IStats _gogStats;
 
+
         public AchievementRequest(string achievementId, bool setStatus, IStats gogStats)
         {
             if (string.IsNullOrEmpty(achievementId))
@@ -81,17 +82,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _forAchievementId = achievementId;
             _setStatus = setStatus;
             _gogStats = gogStats;
+
         }
 
         private void Execute()
         {
+            try { 
             if (_setStatus)
                 _gogStats.SetAchievement(_forAchievementId);
             else
                 _gogStats.ClearAchievement(_forAchievementId);
-            _gogStats.StoreStatsAndAchievements();
 
-            NoonUtility.Log("Set GOG achievement: " + _forAchievementId + " (" + _setStatus +")", 1);
+                _gogStats.StoreStatsAndAchievements();
+            NoonUtility.Log("Set GOG achievement: " + _forAchievementId + " (" + _setStatus + ")", 1);
+
+            }
+            catch(GalaxyInstance.InvalidArgumentError e)
+            {
+                NoonUtility.Log(e.Message,1);
+            }
+
+            
         }
 
         public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)

@@ -25,6 +25,7 @@
 		slots: [{id:"Expenses",
 					required: {funds: 1},
 				greedy: true,
+				noanim:true,
 				description: "The shop-keepers will have their due. I must pay it or starve."
 				}],
         linked:[{id:"discardseason",chance:100}],
@@ -99,7 +100,6 @@
         startdescription: ".",
         description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
         warmup: 60,
-		signalEndingFlavour:Melancholy,
 		slots: [{id:"Starvation",required: {health: 1},
 					greedy: true
 		}]

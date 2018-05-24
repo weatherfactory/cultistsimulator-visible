@@ -34,16 +34,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     if (setStatus && !achievement.State)
                     {
                         achievement.Trigger(true);
-                        NoonUtility.Log("Set Steam achievement:" + achievementId, 5);
+                        NoonUtility.Log("Set Steam achievement:" + achievementId, 1);
                     }
 
                     else if (!setStatus)
                         achievement.Reset();
                     else
-                        NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it's already set", 10);
+                        NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it's already set", 1);
                 }
                 else
-                    NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it doesn't exist", 10);
+                    NoonUtility.Log("Trying to set Steam achievement " + achievementId + ", but it doesn't exist", 11);
             
 
         }

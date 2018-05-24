@@ -216,10 +216,10 @@ namespace Assets.TabletopUi {
             situationWindow.SetOngoing(withRecipe);
             StoreStacks(situationWindow.GetStartingStacks());
 
-            UpdateSituationDisplayForDescription();
+            UpdateSituationDisplayForPrediction();
 
             situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
-            PossiblySignalImpendingDoom(withRecipe.SignalEndingFlavour);
+            
         }
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
@@ -552,12 +552,12 @@ namespace Assets.TabletopUi {
             return SituationClock.GetPrediction(rc);
         }
 
-        public void UpdateSituationDisplayForDescription() {
+        public void UpdateSituationDisplayForPrediction() {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
-
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
+            PossiblySignalImpendingDoom(nextRecipePrediction.SignalEndingFlavour);
         }
 
         public void SetOutput(List<IElementStack> stacksForOutput) {
@@ -667,7 +667,7 @@ namespace Assets.TabletopUi {
 
             SituationClock =new SituationClock(SituationClock.TimeRemaining,SituationClock.State,newRecipe,this);
 
-            UpdateSituationDisplayForDescription();
+            UpdateSituationDisplayForPrediction();
         }
 
         #endregion
