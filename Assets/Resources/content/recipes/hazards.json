@@ -21,7 +21,7 @@
 		startdescription: "Despair is the wolf that devours thought. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
 		description: ".",
 		warmup: 60,
-		slots: [{id:"Thoughts",required: {contentment: 1,inducesdespair:1},greedy:true}],
+		slots: [{id:"Thoughts",required: {contentment: 1,inducesdespair:1},greedy:true,noanim:true}],
         craftable: false,
 		linked:[{id:"despairabate",chance:100},
 		{id:"despairdeath",chance:100},

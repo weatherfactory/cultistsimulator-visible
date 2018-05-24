@@ -40,13 +40,12 @@ namespace Noon
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
-        public const string KPERSISTINGREDIENTSWITH = "persistIngredientsWith";
-        public const string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";
         public const string KSLOTS="slots";
         public const string KREQUIRED="required";
         public const string KFORBIDDEN = "forbidden";
         public const string KGREEDY = "greedy";
         public const string KCONSUMES = "consumes";
+        public const string KNOANIM = "noanim";
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
         public const string KDECKSPEC_DRAWMESSAGES = "drawmessages";

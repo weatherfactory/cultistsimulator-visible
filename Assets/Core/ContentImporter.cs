@@ -72,7 +72,11 @@ public class ContentImporter
                     if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
                         slotSpecification.Consumes = true;
 
-                    if (htThisSlot[NoonConstants.KACTIONID] != null)
+
+                    if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
+                        slotSpecification.NoAnim = true;
+
+                if (htThisSlot[NoonConstants.KACTIONID] != null)
                         slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
        
 
