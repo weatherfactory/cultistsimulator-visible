@@ -19,16 +19,16 @@ namespace Assets.CS.TabletopUI {
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
-		bool noTokenDetails;
+		bool _noTokenDetails;
 
         public void ShowAspectDetails(Element element, bool noTokenDetails) {
             // Check if we'd show the same, if so: do nothing
-            if (this.element == element && gameObject.activeSelf && noTokenDetails == noTokenDetails)
+            if (this.element == element && gameObject.activeSelf && _noTokenDetails == noTokenDetails)
                 return;
 
             Debug.Log("Position" + (transform as RectTransform).anchoredPosition);
 
-            this.noTokenDetails = noTokenDetails;
+            this._noTokenDetails = noTokenDetails;
             this.element = element;
             Show();
         }
@@ -41,7 +41,7 @@ namespace Assets.CS.TabletopUI {
             if (element != null)
                 SetAspect(element);
 
-			if (noTokenDetails)
+			if (_noTokenDetails)
 				(transform as RectTransform).anchoredPosition = posNoTokenDetails;
 			else 
 				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);

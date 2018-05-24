@@ -35,6 +35,11 @@ public class SlotSpecification
     /// A Consuming slot will destroy its contents when a recipe begins
     /// </summary>
     public bool Consumes = false;
+
+    /// <summary>
+    /// An slot with NoAnim set to true won't display the VFX/SFX when it appears as an ongoing slot. So! it has no effect on startingslots
+    /// </summary>
+    public bool NoAnim = false;
     private const string PRIMARY_SLOT="primary";
 
     public SlotSpecification(string id)

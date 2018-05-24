@@ -318,7 +318,7 @@
             {mortal: 1, follower: 1,edge:2},
             animFrames: 1,
 			description: "Loyalty,and muscles.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },
 										 {
         id: "generic_c_forge",
@@ -327,7 +327,7 @@
             {mortal: 1, follower: 1,edge:1,forge:2},
             animFrames: 1,
 			description: "Loyalty, and good with their hands.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },
 										 {
         id: "generic_c_grail",
@@ -336,7 +336,7 @@
             {mortal: 1, follower: 1,edge:1,grail:2},
             animFrames: 1,
 			description: "Loyal, but greedy.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },
 										 {
         id: "generic_c_heart",
@@ -345,7 +345,7 @@
             {mortal: 1, follower: 1,edge:1,heart:2},
             animFrames: 1,
 			description: "Loyal, and always ready with a song.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },
 								 {
         id: "generic_c_knock",
@@ -354,7 +354,7 @@
             {mortal: 1, follower: 1,edge:1,knock:2},
             animFrames: 1,
 			description: "Loyal, and clever with locks.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },
 
 										 {
@@ -364,7 +364,7 @@
             {mortal: 1, follower: 1,edge:1,lantern:2},
             animFrames: 1,
 			description: "Loyal, and keen-sighted.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },
 												 {
         id: "generic_c_moth",
@@ -373,7 +373,7 @@
             {mortal: 1, follower: 1,edge:1,moth:2},
             animFrames: 1,
 			description: "Loyal, if peculiar; peculiar even for one of our kind.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r},
 			lifetime:600,
 			decayTo: lunatic
         },
@@ -384,7 +384,7 @@
             {mortal: 1, follower: 1,edge:1,winter:2},
             animFrames: 1,
 			description: "Loyal, and quiet as falling snow.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
         },		
 		
 		 {

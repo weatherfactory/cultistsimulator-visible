@@ -21,7 +21,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Galaxy.Api.GalaxyInstance.ListenerRegistrar()
                 .Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
 
-            GalaxyInstance.User().SignIn();
+            if(!GalaxyInstance.User().SignedIn())
+                GalaxyInstance.User().SignIn();
 
         }
 
