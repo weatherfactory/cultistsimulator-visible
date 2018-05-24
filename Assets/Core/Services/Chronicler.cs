@@ -148,7 +148,39 @@ namespace Assets.Core.Services
         private void TryUpdateCultLever(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
+            { 
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.EntityId);
+                var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
+                
+                if (tokenAspects.Keys.Contains("edge"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_EDGE",true);
+
+                if (tokenAspects.Keys.Contains("forge"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_FORGE", true);
+
+                if (tokenAspects.Keys.Contains("grail"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_GRAIL", true);
+
+                if (tokenAspects.Keys.Contains("heart"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_HEART", true);
+
+                if (tokenAspects.Keys.Contains("knock"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_KNOCK", true);
+
+                if (tokenAspects.Keys.Contains("lantern"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_LANTERN", true);
+
+                if (tokenAspects.Keys.Contains("moth"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_MOTH", true);
+                if (tokenAspects.Keys.Contains("secrethistories"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_SECRETHISTORIES", true);
+
+                if (tokenAspects.Keys.Contains("winter"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_WINTER", true);
+
+
+         
+            }
         }
 
         private void TryUpdateToolLever(ElementStackToken token, IAspectsDictionary tokenAspects)
