@@ -100,7 +100,6 @@
         startdescription: ".",
         description: "Without money, I'll soon starve. [If an illness cannot consume Health, it will cause death.]",
         warmup: 60,
-		signalEndingFlavour:Melancholy,
 		slots: [{id:"Starvation",required: {health: 1},
 					greedy: true
 		}]
