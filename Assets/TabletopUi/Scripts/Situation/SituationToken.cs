@@ -194,21 +194,6 @@ namespace Assets.CS.TabletopUI {
 			SoundManager.PlaySfx("SituationShowOngoingSlot");
 		}
 
-		/*
-		CardEffectRemove InstantiateEffect(string effectName) {
-			var prefab = Resources.Load("FX/RemoveCard/" + effectName);
-
-			if (prefab == null)
-				return null;
-
-			var obj = Instantiate(prefab) as GameObject;
-
-			if (obj == null)
-				return null;
-
-			return obj.GetComponent<CardEffectRemove>();
-		}
-*/
 
         public void DisplayStackInMiniSlot(IEnumerable<IElementStack> stacksInOngoingSlots) {
             IElementStack stack;
