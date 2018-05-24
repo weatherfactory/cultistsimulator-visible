@@ -49,10 +49,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 if (Input.GetKeyDown(KeyCode.M))
                     _speedController.SetFastForward();
             }
-            else {
-                if (Input.GetKeyDown(KeyCode.E) && Input.GetKey(KeyCode.LeftShift))
-                    _debugTools.EndGame();
-            }
+
 
             if (Input.GetKeyDown(KeyCode.Space))
 				_speedController.TogglePause();
