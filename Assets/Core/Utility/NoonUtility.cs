@@ -100,7 +100,7 @@ namespace Noon
         //public static string CultistSimulatorGOGClientSecret = "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
 
         public static VersionNumber VersionNumber = new VersionNumber(Application.version);
-        public static bool AchievementsActive = true;
+        public static bool AchievementsActive = false;
         public static bool PerpetualEdition = true;
 
         public static void Log(string message,int verbosityNeeded=0)
