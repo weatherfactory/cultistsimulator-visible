@@ -10,17 +10,11 @@ using UnityEngine.UI;
 
 namespace Assets.CS.TabletopUI
 {
-    public class NotificationWindow: MonoBehaviour, IPointerClickHandler
+	public class NotificationWindow: AnimatedNoteBase, IPointerClickHandler
     {
-        [SerializeField] CanvasGroupFader canvasGroupFader;
         [SerializeField] Image artwork;
         [SerializeField] TextMeshProUGUI _titleTxt;
         [SerializeField] TextMeshProUGUI _descriptionTxt;
-
-        public void Awake()
-        {
-			canvasGroupFader.Show();
-        }
 
         public void SetDuration(float duration)
         {
@@ -33,10 +27,24 @@ namespace Assets.CS.TabletopUI
             _descriptionTxt.text = description;
         }
 
+		public void Show() {
+			SoundManager.PlaySfx("SituationWindowShow");
+			gameObject.SetActive(true);
+
+			// Make the anim move out, then show the content, then move in again
+			TriggerAnim(AnimType.None, AnimType.MoveLeft);
+		}
+
         public void Hide()
-        {
-            canvasGroupFader.Hide();
+		{
+			TriggerAnim(AnimType.MoveRight, AnimType.None, DoDisable);
         }
+
+		protected void DoDisable()
+		{
+			StopAllCoroutines();
+			Destroy(gameObject);
+		}
 
         public void OnPointerClick(PointerEventData eventData)
         {

@@ -15,13 +15,15 @@ public class OptionsPanel : MonoBehaviour {
     [Header("Controls")]
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider soundSlider;
-    [SerializeField] private Slider inspectionTimeSlider;
+	[SerializeField] private Slider inspectionTimeSlider;
+	[SerializeField] private Slider screenCanvasSizeSlider;
     [SerializeField] private Slider autosaveSlider;
     [SerializeField] private Slider birdWormSlider;
     
     [SerializeField] private TextMeshProUGUI musicSliderValue;
     [SerializeField] private TextMeshProUGUI soundSliderValue;
-    [SerializeField] private TextMeshProUGUI inspectionTimeSliderValue;
+	[SerializeField] private TextMeshProUGUI inspectionTimeSliderValue;
+	[SerializeField] private TextMeshProUGUI screenCanvasSizeSliderValue;
     [SerializeField] private TextMeshProUGUI autosaveSliderValue;
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
 
@@ -37,6 +39,8 @@ public class OptionsPanel : MonoBehaviour {
     public float baseInfoTimer = 10f;
     public float baseTimePerNotch = 2f;
 
+	public float scaleSliderFactor = 0.5f;
+
     [Header("External Ref")]
     [SerializeField]
     private AudioMixer audioMixer;
@@ -47,6 +51,10 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField]
     private TokenDetailsWindow tokenDetailsWindow;
 
+	[Header("ScreenCanvas")]
+	[SerializeField]
+	private CanvasScaleManager screenCanvasScaler;
+
     SpeedController speedController;
     BackgroundMusic backgroundMusic;
     SoundManager soundManager;
@@ -54,8 +62,8 @@ public class OptionsPanel : MonoBehaviour {
     private const string MUSICVOLUME="MusicVolume";
     private const string SOUNDVOLUME = "SoundVolume";
     private const string NOTIFICATIONTIME = "NotificationTime";
+	private const string SCREENCANVASSIZE = "ScreenCanvasSize";
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
-    
 
 
     private bool pauseStateWhenOptionsRequested = false;
@@ -102,7 +110,18 @@ public class OptionsPanel : MonoBehaviour {
 
         SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
         SetInspectionWindowTimeInternal(value);
-        inspectionTimeSlider.value = value;
+		inspectionTimeSlider.value = value;
+
+		// Loading Timer / Setting default
+
+		if (PlayerPrefs.HasKey(SCREENCANVASSIZE))
+			value = PlayerPrefs.GetFloat(SCREENCANVASSIZE);
+		else 
+			value = 1f / scaleSliderFactor; // Set default scale to 100%
+
+		SetInspectionWindowTime(value); // this does nothing, since we're disabled but updates the value hint
+		SetInspectionWindowTimeInternal(value);
+		screenCanvasSizeSlider.value = value;
 
         // Loading Autosave interval default
 
@@ -195,7 +214,17 @@ public class OptionsPanel : MonoBehaviour {
 
         SoundManager.PlaySfx("TokenHover");
         SetInspectionWindowTimeInternal(timer);
-    }
+	}
+
+	public void SetCanvasScaleSize(float size) {
+		screenCanvasSizeSliderValue.text = GetCanvasScaleForValue(size) * 100 + "%";
+
+		if (gameObject.activeInHierarchy == false)
+			return; // don't update anything if we're not visible.
+
+		SoundManager.PlaySfx("TokenHover");
+		SetCanvasScaleSizeInternal(size);
+	}
 
     public void SetAutosaveInterval(float timer) {
 		int mins = (int)timer;
@@ -218,7 +247,7 @@ public class OptionsPanel : MonoBehaviour {
         SoundManager.PlaySfx("TokenHover");
     }
 
-    // Actual audio setting
+    // INTERNAL Setters
 
     void SetMusicVolumeInternal(float volume) {
         if (backgroundMusic == null)
@@ -253,19 +282,36 @@ public class OptionsPanel : MonoBehaviour {
         return Mathf.Pow(sliderValue / 10f, 2f); // slider has whole numbers only and goes from 0 to 10
     }
 
-    void SetInspectionWindowTimeInternal(float value) {
+	// 
 
-        // value ranges from -4 to 1
-        float timer = GetInspectionTimeForValue(value);
-        PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
-        aspectDetailsWindow.SetTimer(timer);
-        tokenDetailsWindow.SetTimer(timer);
+	void SetInspectionWindowTimeInternal(float value) {
+		// value ranges from -4 to 1
+		float timer = GetInspectionTimeForValue(value);
+		PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
+		aspectDetailsWindow.SetTimer(timer);
+		tokenDetailsWindow.SetTimer(timer);
 
-    }
+	}
 
-    float GetInspectionTimeForValue(float value) {
-        return baseInfoTimer + value * baseTimePerNotch;
-    }
+	float GetInspectionTimeForValue(float value) {
+		return baseInfoTimer + value * baseTimePerNotch;
+	}
+
+	//
+
+	void SetCanvasScaleSizeInternal(float value) {
+		// value ranges from 0.5 to 2
+		float scale = GetCanvasScaleForValue(value);
+		PlayerPrefs.SetFloat(SCREENCANVASSIZE, scale);
+		screenCanvasScaler.SetTargetScaleFactor(scale);
+	}
+
+	float GetCanvasScaleForValue(float value) {
+		return value * scaleSliderFactor;
+	}
+
+
+	// 
 
     void SetAutosaveIntervalInternal(float value)
 	{

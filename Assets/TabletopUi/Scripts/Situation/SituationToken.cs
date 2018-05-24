@@ -191,7 +191,24 @@ namespace Assets.CS.TabletopUI {
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
 
             ongoingSlotGreedyIcon.gameObject.SetActive(ongoingSlots[0].Greedy);
-        }
+			SoundManager.PlaySfx("SituationShowOngoingSlot");
+		}
+
+		/*
+		CardEffectRemove InstantiateEffect(string effectName) {
+			var prefab = Resources.Load("FX/RemoveCard/" + effectName);
+
+			if (prefab == null)
+				return null;
+
+			var obj = Instantiate(prefab) as GameObject;
+
+			if (obj == null)
+				return null;
+
+			return obj.GetComponent<CardEffectRemove>();
+		}
+*/
 
         public void DisplayStackInMiniSlot(IEnumerable<IElementStack> stacksInOngoingSlots) {
             IElementStack stack;

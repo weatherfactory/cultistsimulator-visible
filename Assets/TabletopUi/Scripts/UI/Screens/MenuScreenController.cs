@@ -61,8 +61,8 @@ public class MenuScreenController : MonoBehaviour {
         else
             Subtitle.SetActive(false);
 
-        InitManagers();
-        canTakeInput = true;
+		InitManagers();
+		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
         // We delay the showing to get a proper fade in
         Invoke("UpdateAndShowMenu", 0.1f); 
@@ -103,6 +103,9 @@ public class MenuScreenController : MonoBehaviour {
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();
         FadeIn();
+
+		// now we can take input
+		canTakeInput = true;
     }
 
     void UpdateVersionNumber(bool hasNews) {
