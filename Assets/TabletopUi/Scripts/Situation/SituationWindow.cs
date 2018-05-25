@@ -311,8 +311,12 @@ namespace Assets.CS.TabletopUI {
 			// Only play collect all if there's actually something to collect 
 			// Only play collect all if it's not transient - cause that will retire it and play the retire sound
 			// Note: If we collect all from the window we also get the default button sound in any case.
-			if (results.Count() > 0 && !situationController.situationToken.IsTransient)
+			if (results.Count() > 0)
 				SoundManager.PlaySfx("SituationCollectAll");
+			else if (situationController.situationToken.IsTransient)
+				SoundManager.PlaySfx("SituationTokenRetire");
+			else 
+				SoundManager.PlaySfx("UIButtonClick");
         }
 
         public void DumpAllStartingCardsToDesktop() {

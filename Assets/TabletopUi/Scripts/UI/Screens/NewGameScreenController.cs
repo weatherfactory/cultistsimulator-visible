@@ -29,6 +29,12 @@ namespace Assets.CS.TabletopUI {
         [Header("Buttons")]
         public Button startGameButton;
 
+		[Header("Fade Visuals")]
+		public Image fadeOverlay;
+		public float fadeDuration = 0.25f;
+
+		bool canInteract;
+
         void Start() {
             var registry = new Registry();
             var compendium = new Compendium();
@@ -38,6 +44,9 @@ namespace Assets.CS.TabletopUI {
 
             InitLegacyButtons();
             canvasFader.SetAlpha(0f);
+
+			FadeIn();
+			canInteract = true;
         }
 
         #if DEBUG
@@ -46,6 +55,19 @@ namespace Assets.CS.TabletopUI {
             InitLegacyButtons();
         }
         #endif
+
+		void FadeIn() {
+			fadeOverlay.gameObject.SetActive(true);
+			fadeOverlay.canvasRenderer.SetAlpha(1f);
+			fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
+		}
+
+		void FadeOut() {
+			fadeOverlay.gameObject.SetActive(true);
+			fadeOverlay.canvasRenderer.SetAlpha(0f);
+			fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
+		}
+
    
         void InitLegacyButtons() {
             for (int i = 0; i < CrossSceneState.GetAvailableLegacies().Count; i++)
@@ -61,22 +83,41 @@ namespace Assets.CS.TabletopUI {
         // Exposed for in-scene buttons
 
         public void ReturnToMenu() {
+			if (!canInteract)
+				return;
+			
             //save on exit, so the player will return here, not begin a new game
-
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame(null);
-            SceneManager.LoadScene(SceneNumber.MenuScene);
+			FadeOut();
+			canInteract = false;
+			Invoke("ReturnToMenuDelayed", fadeDuration);
         }
 
-        public void StartGame() {
-            CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
-            CrossSceneState.ClearEnding();
+		void ReturnToMenuDelayed() {
+			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+			saveGameManager.SaveInactiveGame(null);
+			SceneManager.LoadScene(SceneNumber.MenuScene);
+		}
 
+		public void StartGame() {
+			if (!canInteract)
+				return;
+			
+			FadeOut();
+			canInteract = false;
 			SoundManager.PlaySfx("UIStartgame");
-            SceneManager.LoadScene(SceneNumber.GameScene);
+			Invoke("StartGameDelayed", fadeDuration);
         }
 
-        public void SelectLegacy(int legacy) {
+		void StartGameDelayed() {
+			CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
+			CrossSceneState.ClearEnding();
+			SceneManager.LoadScene(SceneNumber.GameScene);
+		}
+
+		public void SelectLegacy(int legacy) {
+			if (!canInteract)
+				return;
+			
             if (legacy < 0)
                 return;
 			
