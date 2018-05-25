@@ -426,7 +426,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 61}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fabe8f01c85034bd1aaf4235ab7e1dc5, type: 3}
   m_Name: 
@@ -436,6 +436,7 @@ MonoBehaviour:
   minAcceleration: 100
   maxAcceleration: 1000
   maxVelocity: 2000
+  timeout: 0.1
 --- !u!1 &65
 GameObject:
   m_ObjectHideFlags: 0
@@ -5368,6 +5369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 720216898}
+  soundIn: 
+  soundOut: 
   title: {fileID: 129009709}
   description: {fileID: 645842631}
   artwork: {fileID: 698320778}
@@ -17828,6 +17831,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4dd81ddfcc21604482ff07d2560e734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientID: 
+  clientSecret: 
 --- !u!1 &980569403
 GameObject:
   m_ObjectHideFlags: 0
@@ -18536,6 +18541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 711045996}
+  soundIn: 
+  soundOut: 
   text: {fileID: 986317340}
   prevPage: {fileID: 505522067}
   nextPage: {fileID: 1031086523}
