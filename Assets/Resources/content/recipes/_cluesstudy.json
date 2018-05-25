@@ -26,23 +26,6 @@
  craftable:false
  },
  
-  
- {id:"translatearamaichint",
- label:"Translate from Sanskrit?",
- actionId:"study",
- requirements:{textsanskrit:1},
- startdescription:"My Sanskrit skills are too limited to read this. I might be able to find a textbook.",
- hintonly:true,
- craftable:false
- },
-  {id:"translatemandaichint",
- label:"Translate from mandaic?",
- actionId:"study",
- requirements:{textmandaic:1},
- startdescription:"I don't know mandaic; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
- hintonly:true,
- craftable:false
- },
    {id:"translatephrygianhint",
  label:"Translate from Phrygian?",
  actionId:"study",
