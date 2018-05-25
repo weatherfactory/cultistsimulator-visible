@@ -12,7 +12,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Button normalSpeedButton;
         [SerializeField] private Button fastForwardButton;
-        
+		[SerializeField] private ScrollRectMouseMover scrollRectMover;
+
         private bool isLocked = false;
         private bool lastPauseState;
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
@@ -35,6 +36,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             else {
                 SetPausedState(lastPauseState);
             }
+
+			// We lock, that means we also don't want the player moving the table.
+			scrollRectMover.enabled = !isLocked;
         }
 
         public bool GetPausedState()
