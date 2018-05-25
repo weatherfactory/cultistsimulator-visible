@@ -15,7 +15,8 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] protected TextMeshProUGUI description;
 
         [Header("Image")]
-        [SerializeField] protected Image artwork;
+		[SerializeField] protected Image artwork;
+		[SerializeField] protected Image artworkPin;
 
         float waitTime = 10f;
         float time;
@@ -57,6 +58,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected void ShowImage(Sprite image) {
+			artworkPin.gameObject.SetActive(image != null);
             artwork.gameObject.SetActive(image != null);
             artwork.sprite = image;
             artwork.transform.localEulerAngles = new Vector3(0f, 0f, -5f + Random.value * 10f);
