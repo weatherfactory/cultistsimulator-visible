@@ -5,10 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(ScrollRect))]
-public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHandler  {
-
+public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
+	
 	ScrollRect scrollRect;
-	Canvas canvas;
 
 	// Vector4 order is Top, Right, Bottom, Left
 
@@ -20,6 +19,10 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 	[SerializeField] float maxAcceleration = 1000f;
 	[SerializeField] float maxVelocity = 2000f;
 
+	[SerializeField] float timeout = 0.1f;
+
+	bool pointerInRect;
+	float pointerEnterEdgeTime = 0f;
 	bool isManualDragActive;
 	bool blockScrolling;
 
@@ -30,7 +33,6 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 	void Start() {
 		scrollRect = GetComponent<ScrollRect>();
-		canvas = GetComponentInParent<Canvas>();
 		// TODO: Disable on touch?
 
 		marginVect = new Vector2();
@@ -47,6 +49,14 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		innerBounds = new Vector4(0.5f - edgePadding.x - marginVect.y, 0.5f - edgePadding.y - marginVect.x, -0.5f + edgePadding.z + marginVect.y, -0.5f + edgePadding.w + marginVect.x);
 	}
 
+	public void OnPointerEnter(PointerEventData eventData) {
+		pointerInRect = true;
+	}
+
+	public void OnPointerExit(PointerEventData eventData) {
+		pointerInRect = false;
+	}
+
 	public void OnBeginDrag(PointerEventData eventData) {
 		if (scrollRect.isActiveAndEnabled)
 			isManualDragActive = true;
@@ -60,6 +70,9 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		// We are dragging manually? then block this thing and stop
 		if (isManualDragActive) {
 			blockScrolling = true;
+			return;
+		}
+		else if (!pointerInRect) {
 			return;
 		}
 		
@@ -90,11 +103,21 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		// We are not in a zone? Then stop doing this and unblock us if needed
 		if (Mathf.Approximately(magnitude, 0f)) {
 			blockScrolling = false; // enable scrolling starting with the next frame
+			pointerEnterEdgeTime = 0f;	
 			return;
 		}
 		// We are blocked - IE we had a manual drag and we're still in the scroll-zone?
 		else if (blockScrolling) {
 			return;
+		}
+
+		// Increment our edgeTimer if we're not over the timeout
+		if (pointerEnterEdgeTime < timeout) {
+			pointerEnterEdgeTime += Time.deltaTime;
+
+			// Still not enough, then get us out of here
+			if (pointerEnterEdgeTime < timeout) 
+				return;
 		}
 
 		magnitude = Mathf.Lerp(minAcceleration, maxAcceleration, magnitude);

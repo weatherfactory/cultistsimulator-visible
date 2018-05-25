@@ -21,7 +21,6 @@ namespace Assets.CS.TabletopUI {
         float time;
 
         protected void Show() {
-			SoundManager.PlaySfx("InfoWindowShow");
             ResetTimer();
 
             if (gameObject.activeSelf == false) {
@@ -75,8 +74,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void Hide() {
-            if (gameObject.activeInHierarchy)
-                TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
+			if (gameObject.activeInHierarchy) {
+				TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
+			}
         }
 
         void DoHide() {

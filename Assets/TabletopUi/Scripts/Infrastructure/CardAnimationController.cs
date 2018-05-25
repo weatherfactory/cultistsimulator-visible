@@ -14,11 +14,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private float nextAnimTime;
         private string lastAnimID; // to not animate the same twice. Keep palyer on their toes
         private IElementStacksManager _tabletopStacksManager;
+		int numAnimsRemainingToAirSound = 0;
 
         public void Initialise(IElementStacksManager tabletopStacksManager)
         {
             _tabletopStacksManager = tabletopStacksManager;
             SetNextAnimTime();
+			SetNextAirSoundCount();
         }
 
         void SetNextAnimTime()
@@ -26,6 +28,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             nextAnimTime = Time.time + timeBetweenAnims - timeBetweenAnimsVariation + UnityEngine.Random.value * timeBetweenAnimsVariation * 2f;
         }
 
+		void SetNextAirSoundCount()
+		{
+			numAnimsRemainingToAirSound = UnityEngine.Random.Range(8, 20);
+		}
 
         public void CheckForCardAnimations()
         {
@@ -53,6 +59,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
                 animatableStacks[index].StartArtAnimation();
                 lastAnimID = animatableStacks[index].EntityId;
+				numAnimsRemainingToAirSound--;
+
+				if (numAnimsRemainingToAirSound <= 8) {
+					SoundManager.PlaySfx("TokenAnimAir");
+					SetNextAirSoundCount();
+				}
             }
         }
 

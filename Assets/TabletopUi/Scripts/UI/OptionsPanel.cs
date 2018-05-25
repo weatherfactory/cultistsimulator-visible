@@ -164,17 +164,27 @@ public class OptionsPanel : MonoBehaviour {
 		if (windowGO.activeInHierarchy)
 		{
 			pauseStateWhenOptionsRequested = Registry.Retrieve<TabletopManager>().GetPausedState();
-			Registry.Retrieve<TabletopManager>().SetPausedState(true);
 
+			// only pause if we need to (since it triggers sfx)
+			if (!pauseStateWhenOptionsRequested)
+				Registry.Retrieve<TabletopManager>().SetPausedState(true);
+
+			// now lock the pause so players can't manually 
 			if (speedController != null)
-				speedController.LockToPause(true);
+				speedController.LockToPause(true); // this also pauses, so we pause twice?
 		}
 		else
 		{
-			Registry.Retrieve<TabletopManager>().SetPausedState(pauseStateWhenOptionsRequested);
+			// only unpause if we need to (since it triggers sfx)
+			if (!pauseStateWhenOptionsRequested)
+				Registry.Retrieve<TabletopManager>().SetPausedState(pauseStateWhenOptionsRequested);
 
+			// TODO: This should be first, so we can actually restore the last state. 
+			// With the potential unpause above it can not do so cause we're still locked
+			// This also means it's currently playing the un-pause sound even though it doesn't unpause
+			// - Martin
 			if (speedController != null)
-				speedController.LockToPause(false);
+				speedController.LockToPause(false);			
 		}
     }
 

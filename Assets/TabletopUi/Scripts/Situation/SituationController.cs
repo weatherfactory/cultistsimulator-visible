@@ -70,6 +70,9 @@ namespace Assets.TabletopUi {
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
+			if (command.SourceToken != null)
+				SoundManager.PlaySfx("SituationTokenCreate");
+
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
@@ -140,7 +143,6 @@ namespace Assets.TabletopUi {
             situationToken.Retire();
             situationWindow.Retire();
             Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
-			SoundManager.PlaySfx("SituationTokenRetire");
         }
 
         #endregion
@@ -584,10 +586,7 @@ namespace Assets.TabletopUi {
 
         public void DumpAllResults() {
             if (SituationClock.State == SituationState.Complete)
-            {
-                SoundManager.PlaySfx("SituationCollectAll");
                 situationWindow.DumpAllResultingCardsToDesktop();
-            }
         }
 
         /// <summary>
@@ -615,7 +614,10 @@ namespace Assets.TabletopUi {
 
             //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
             //as if we're removing items from an unstarted situation
-            SituationClock.Start(recipe);
+			SituationClock.Start(recipe);
+
+			// Play the SFX here (not in the clock) so it is only played when we manually start
+			SoundManager.PlaySfx("SituationBegin");
 
             //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();

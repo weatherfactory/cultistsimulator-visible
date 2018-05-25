@@ -56,6 +56,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // Abort all interactions
             DraggableToken.draggingEnabled = false; // this SHOULD disable the dragging
             tableScroll.StopMovement(); // make sure the scroll rect stops
+			tableScroll.movementType = ScrollRect.MovementType.Unrestricted; // this allows us to leave the boundaries on the anim in case our token is at the table edges
             _tabletopManager.CloseAllSituationWindowsExcept(null); // no window has an id of NULL, so all close
 
             // TODO: play death effect / music
