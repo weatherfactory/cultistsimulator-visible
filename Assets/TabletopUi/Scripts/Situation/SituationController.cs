@@ -62,6 +62,9 @@ namespace Assets.TabletopUi {
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
+			if (command.SourceToken != null)
+				SoundManager.PlaySfx("SituationTokenCreate");
+
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
 
@@ -574,10 +577,7 @@ namespace Assets.TabletopUi {
 
         public void DumpAllResults() {
             if (SituationClock.State == SituationState.Complete)
-            {
-                SoundManager.PlaySfx("SituationCollectAll");
                 situationWindow.DumpAllResultingCardsToDesktop();
-            }
         }
 
         /// <summary>
