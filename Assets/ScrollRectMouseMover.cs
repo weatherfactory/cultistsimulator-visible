@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 [RequireComponent(typeof(ScrollRect))]
 public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
 	
 	ScrollRect scrollRect;
-
 	// Vector4 order is Top, Right, Bottom, Left
 
 	[Range(0.01f, 0.49f)]
@@ -72,32 +72,21 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 			blockScrolling = true;
 			return;
 		}
-		else if (!pointerInRect) {
+		// We're pressing a hotkey? Then move!
+		if (PressingMoveKey()) {
+			mousePos = GetMousePosFromKeys();
+			magnitude = 2f;
+			pointerEnterEdgeTime = timeout;
+		}
+		// Pointer is in our rect? Then move
+		else if (pointerInRect) {
+			// point ranging from (-0.5, -0.5) to (0.5, 0.5)
+			mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);
+			SetMagnitudeFromMouse();
+		}
+		// We got neither a button nor a pointer? Nothing.
+		else {
 			return;
-		}
-		
-		// point ranging from (-0.5, -0.5) to (0.5, 0.5)
-		mousePos = new Vector2(Input.mousePosition.x / Screen.width - 0.5f, Input.mousePosition.y / Screen.height - 0.5f);
-		magnitude = 0f;
-
-		// Vertical
-		// up
-		if (mousePos.y > innerBounds.x) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.x) / marginVect.y);
-		}
-		// down
-		else if (mousePos.y < innerBounds.z) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.z) / marginVect.y);
-		}
-
-		// Horizontal
-		// right
-		if (mousePos.x > innerBounds.y) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.y) / marginVect.x);
-		}
-		// left
-		else if (mousePos.x < innerBounds.w) {
-			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.w) / marginVect.x);
 		}
 
 		// We are not in a zone? Then stop doing this and unblock us if needed
@@ -139,6 +128,57 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 		// Push the velocity into the scrollRect
 		scrollRect.velocity = vector;
+	}
+
+	bool PressingMoveKey() {
+		return (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
+	}
+
+	void SetMagnitudeFromMouse() {
+		magnitude = 0f;
+		// Vertical
+		// up
+		if (mousePos.y > innerBounds.x) {
+			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.x) / marginVect.y);
+		}
+		// down
+		else if (mousePos.y < innerBounds.z) {
+			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.y - innerBounds.z) / marginVect.y);
+		}
+
+		// Horizontal
+		// right
+		if (mousePos.x > innerBounds.y) {
+			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.y) / marginVect.x);
+		}
+		// left
+		else if (mousePos.x < innerBounds.w) {
+			magnitude = Mathf.Max(magnitude, Mathf.Abs(mousePos.x - innerBounds.w) / marginVect.x);
+		}
+	}
+
+	Vector2 GetMousePosFromKeys() {
+		if (HotkeyWatcher.IsInInputField())
+			return Vector2.zero;
+
+		float y;
+		float x;
+
+		if (Input.GetKey(KeyCode.UpArrow))
+			y = 0.5f;
+		else if (Input.GetKey(KeyCode.DownArrow))
+			y = -0.5f;
+		else 
+			y = 0f;
+
+		if (Input.GetKey(KeyCode.RightArrow)) 
+			x = 0.5f;
+		else if (Input.GetKey(KeyCode.LeftArrow)) 
+			x = -0.5f;
+		else 
+			x = 0f;
+
+		return new Vector2(x, y);
 	}
 
 }

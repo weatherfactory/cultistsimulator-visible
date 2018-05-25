@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Assets.TabletopUi.Scripts.Infrastructure;
 
 [RequireComponent(typeof(Camera))]
 public class CameraZoomTest : MonoBehaviour {
@@ -34,14 +35,26 @@ public class CameraZoomTest : MonoBehaviour {
 
     void Update () {
         if (enablePlayerZoom) { 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
-                targetZoom -= 0.1f;
-                targetZoom = Mathf.Clamp01(targetZoom);
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && targetZoom < 1f) {
-                targetZoom += 0.1f;
-                targetZoom = Mathf.Clamp01(targetZoom);
-            }
+			if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
+				targetZoom -= 0.1f;
+				targetZoom = Mathf.Clamp01(targetZoom);
+			}
+			else if (Input.GetAxis("Mouse ScrollWheel") < 0f && targetZoom < 1f) {
+				targetZoom += 0.1f;
+				targetZoom = Mathf.Clamp01(targetZoom);
+			}
+			else if (HotkeyWatcher.IsInInputField() == false) {
+				if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+					targetZoom = 0f;
+				else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+					targetZoom = 0.4f;
+				else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+					targetZoom = 1f;
+				else if (Input.GetKey(KeyCode.Q))
+					targetZoom -= 0.5f * Time.deltaTime;
+				else if (Input.GetKey(KeyCode.E))
+					targetZoom += 0.5f * Time.deltaTime;
+			}
         }
 
         if (targetZoom != currentZoom) {

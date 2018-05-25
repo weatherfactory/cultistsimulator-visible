@@ -434,8 +434,8 @@ MonoBehaviour:
   edgeAreaSize: 0.1
   edgePadding: {x: 0, y: 0, z: 0.08, w: 0}
   minAcceleration: 100
-  maxAcceleration: 1000
-  maxVelocity: 2000
+  maxAcceleration: 2000
+  maxVelocity: 4000
   timeout: 0.1
 --- !u!1 &65
 GameObject:
@@ -18836,6 +18836,7 @@ MonoBehaviour:
   pauseButton: {fileID: 617}
   normalSpeedButton: {fileID: 1123572853}
   fastForwardButton: {fileID: 1989268491}
+  scrollRectMover: {fileID: 62}
 --- !u!224 &1069940687 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224000011432727912, guid: b61b75a0ff5f8434fb2f202cca9514bb,

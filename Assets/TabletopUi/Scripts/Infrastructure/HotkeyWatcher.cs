@@ -5,6 +5,7 @@ using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -15,6 +16,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private DebugTools _debugTools;
         private OptionsPanel _optionsPanel;
 
+		public static bool IsInInputField() {
+			return inInputField;
+		}
+
+		private static bool inInputField;
+
         public void Initialise(SpeedController speedController,DebugTools debugTools,OptionsPanel optionsPanel)
         {
             _speedController=speedController;
@@ -22,10 +29,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _optionsPanel = optionsPanel;
         }
 
+		void OnDisable() {
+			inInputField = false;
+		}
+
         public void WatchForGameplayHotkeys()
         {
             if (!enabled)
                 return;
+
+			UpdateInputFieldState();
+
+			if (IsInInputField())
+				return;
 
             if ((Input.GetKeyDown("`") && Input.GetKey(KeyCode.LeftControl) ))
             { 
@@ -57,6 +73,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (Input.GetKeyDown(KeyCode.Escape))
                 _optionsPanel.ToggleVisibility();
         }
+
+		void UpdateInputFieldState() {
+			if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null) {
+				inInputField = EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null;
+			}
+			else {
+				inInputField = false;
+			}
+		}
 
         public bool IsPressingAbortHotkey() {
             if (Input.GetKeyDown(KeyCode.Escape))
