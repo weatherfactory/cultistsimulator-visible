@@ -572,6 +572,11 @@ namespace Assets.CS.TabletopUI {
                 return;
             }
 
+			// We can't interact? Then dump us on the tabletop
+			DraggableToken.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+			ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+
+			/*
             bool moveAsideFor = false;
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
@@ -579,6 +584,7 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(false, "was moved aside for");
             else
                 DraggableToken.SetReturn(true);
+            */
         }
 
      
