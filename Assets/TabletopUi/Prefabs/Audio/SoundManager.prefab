@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730258267366884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -76,7 +76,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4802cbbe439b1004b8a1b36198367062, type: 3}
     - {fileID: 8300000, guid: c7424d25bf7a5c3429e5e4ff1e5b1d37, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.7
     pitchVariation: 0.08
   - name: CardPutOnStack
     randomizedClips:
@@ -107,7 +107,7 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: df052c99daafe434bac2a2ae0986b3ba, type: 3}
     loop: 0
-    volume: 0.7
+    volume: 0.55
     pitchVariation: 0.025
   - name: FXCardDrown
     randomizedClips:
@@ -183,7 +183,7 @@ MonoBehaviour:
     pitchVariation: 0
   - name: SituationAvailable
     randomizedClips:
-    - {fileID: 8300000, guid: 64313b7b21a212a4ebeb851b4f97a7cc, type: 3}
+    - {fileID: 8300000, guid: 78f8b392a02914f3d9e371be72215cae, type: 3}
     loop: 0
     volume: 1
     pitchVariation: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: ff1af733342562848923922624c5b9da, type: 3}
     loop: 0
-    volume: 0.454
+    volume: 0.55
     pitchVariation: 0
   - name: SituationCollectAll
     randomizedClips:
@@ -221,19 +221,19 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 28fe89f0e565ff94b91e43f9ec3f3723, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.7
     pitchVariation: 0.05
   - name: SituationTokenRetire
     randomizedClips:
     - {fileID: 8300000, guid: e4721316ad208a94db2935c7edce39ef, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.4
     pitchVariation: 0
   - name: SituationTokenShowOngoingSlot
     randomizedClips:
     - {fileID: 8300000, guid: 55ccadbb42efec6489e6f186741100dc, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.4
     pitchVariation: 0
   - name: SituationWindowHide
     randomizedClips:
@@ -245,7 +245,7 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 3e92bad48d4e8094ab33712112b8c66d, type: 3}
     loop: 0
-    volume: 0.25
+    volume: 0.3
     pitchVariation: 0
   - name: SituationWindowTextMove
     randomizedClips:
@@ -257,7 +257,7 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 32a8faebc98e6614e8d728cd06d244d4, type: 3}
     loop: 0
-    volume: 0.15
+    volume: 0.1
     pitchVariation: 0.05
   - name: UIButtonClick
     randomizedClips:
@@ -267,7 +267,7 @@ MonoBehaviour:
     pitchVariation: 0
   - name: UIButtonClose
     randomizedClips:
-    - {fileID: 8300000, guid: 810cb91932f714ded93c69e6388ceba6, type: 3}
+    - {fileID: 8300000, guid: 57124a3a2480349ee9ec223346060755, type: 3}
     loop: 0
     volume: 0.5
     pitchVariation: 0
@@ -275,13 +275,13 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 50824328db75f43cab71bc1c33022184, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.4
     pitchVariation: 0
   - name: UIPauseStart
     randomizedClips:
     - {fileID: 8300000, guid: c7f8fcea5d3334be28410db3892cce53, type: 3}
     loop: 0
-    volume: 0.8
+    volume: 0.5
     pitchVariation: 0
   - name: UISliderMove
     randomizedClips:
@@ -289,3 +289,9 @@ MonoBehaviour:
     loop: 0
     volume: 0.3
     pitchVariation: 0.08
+  - name: UIStartGame
+    randomizedClips:
+    - {fileID: 8300000, guid: 977989f11ab924cc98b3f294908a5fce, type: 3}
+    loop: 0
+    volume: 1
+    pitchVariation: 0

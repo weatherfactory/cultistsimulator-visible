@@ -25,13 +25,9 @@ namespace Assets.CS.TabletopUI {
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
         public TextMeshProUGUI availableBecause;
-        public ElementStackSimple[] rewardTokens;
 
         [Header("Buttons")]
         public Button startGameButton;
-
-
-
 
         void Start() {
             var registry = new Registry();
@@ -51,8 +47,6 @@ namespace Assets.CS.TabletopUI {
         }
         #endif
    
-
-
         void InitLegacyButtons() {
             for (int i = 0; i < CrossSceneState.GetAvailableLegacies().Count; i++)
             {
@@ -60,13 +54,11 @@ namespace Assets.CS.TabletopUI {
                 legacyArtwork[i].sprite = legacySprite;
             }
 
-
             // No button is selected, so start game button starts deactivated
             startGameButton.interactable = false;
         }
         
         // Exposed for in-scene buttons
-
 
         public void ReturnToMenu() {
             //save on exit, so the player will return here, not begin a new game
@@ -77,18 +69,17 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void StartGame() {
-            
             CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
             CrossSceneState.ClearEnding();
 
+			SoundManager.PlaySfx("UIStartgame");
             SceneManager.LoadScene(SceneNumber.GameScene);
         }
-
 
         public void SelectLegacy(int legacy) {
             if (legacy < 0)
                 return;
-
+			
             if (selectedLegacy == legacy)
                 return;
 
@@ -119,7 +110,6 @@ namespace Assets.CS.TabletopUI {
         }
 
         void UpdateSelectedLegacyInfo() {
-           
             Legacy legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
 
             title.text = legacySelected.Label;
@@ -138,7 +128,6 @@ namespace Assets.CS.TabletopUI {
             	Destroy(effectStack.gameObject);
 
             //and add effects for this legacy
-
             foreach (var e in legacySelected.Effects)
             {
                 var effectStack = Object.Instantiate(elementStackSimplePrefab, elementsHolder, false);

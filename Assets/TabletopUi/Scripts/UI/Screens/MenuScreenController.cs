@@ -206,9 +206,13 @@ public class MenuScreenController : MonoBehaviour {
         LoadScene(SceneNumber.NewGameScene);
     }
 
-    void LoadScene(int sceneNr) {
+    void LoadScene(int sceneNr) {		
         canTakeInput = false;
         sceneToLoad = sceneNr;
+
+		if (sceneToLoad == SceneNumber.GameScene)
+			SoundManager.PlaySfx("UIStartGame");
+
         FadeOut();
         Invoke("LoadSceneDelayed", fadeDuration);
     }

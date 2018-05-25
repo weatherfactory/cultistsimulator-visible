@@ -45,12 +45,15 @@ public class SoundManager : AudioManager {
     // Initalization
 
     void Awake() {
+		// Instances in scenes were going to are being killed
         if (Instance != null) {
-            Destroy(gameObject);
+			DestroyImmediate(this.gameObject);
             return;
         }
 
-        instance = this;
+		// make sure we set our instance and don't ever destroy it
+		instance = this;
+		DontDestroyOnLoad(this.gameObject);
 
         foreach (SoundCombo sound in sounds) {
             if (soundsMapped.ContainsKey(sound.name)) 
@@ -58,6 +61,7 @@ public class SoundManager : AudioManager {
 
             soundsMapped[sound.name] = sound;
         }
+
     }
 
     // Delivery of Audio Clips & Sources
@@ -113,10 +117,13 @@ public class SoundManager : AudioManager {
         if (Instance == null)
             return -1;
 
+		if (string.IsNullOrEmpty(name))
+			return -1;
+
         if (Instance.soundsThisFrame.Contains(name))
             return -1;
 
-		NoonUtility.Log("Playing sound: " + name,1);
+		NoonUtility.Log("Playing sound: " + name + " add " + Time.time, 1);
 
         return Instance.PlaySound(name, -1);
     }
