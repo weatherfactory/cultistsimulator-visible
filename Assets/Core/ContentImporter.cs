@@ -885,26 +885,26 @@ public class ContentImporter
 
         //Debug.Log(output);
 
-
-        //List<string> studyRequirements=new List<string>();
-        //string studyReqs=String.Empty;
+  
+        //List<string> studyRequirements = new List<string>();
+        //string studyReqs = String.Empty;
         //foreach (var r in Recipes)
         //{
-        //    if(r.Craftable && r.ActionId=="study")
+        //    if (r.Craftable && r.ActionId == "work")
         //    {
-        //        foreach(var req in r.Requirements)
+        //        foreach (var req in r.Requirements)
         //        {
         //            var reqElement = _compendium.GetElementById(req.Key);
 
-        //        if(!studyRequirements.Contains(req.Key) && req.Value>0 && !reqElement.Aspects.ContainsKey("text"))
-        //            studyRequirements.Add(req.Key);
+        //            if (!studyRequirements.Contains(req.Key) && req.Value > 0 && !reqElement.Aspects.ContainsKey("text"))
+        //                studyRequirements.Add(r. Id + " - " + req.Key);
 
         //        }
         //    }
         //}
 
         //foreach (var req in studyRequirements)
-        //    studyReqs = studyReqs + req + ":1, ";
+        //    studyReqs = studyReqs + req + ":1\n ";
 
 
         //NoonUtility.Log(studyReqs);
