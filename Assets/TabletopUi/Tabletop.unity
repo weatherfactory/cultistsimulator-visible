@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4798,7 +4798,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 49.5
+      value: 148.82092
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -4808,7 +4808,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 99
+      value: 297.64185
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -9357,7 +9357,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 158.5
+      value: 456.46277
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -9367,7 +9367,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 99
+      value: 297.64185
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -10075,7 +10075,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 376.5
+      value: 1071.7465
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -10085,7 +10085,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 99
+      value: 297.64185
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -11903,7 +11903,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.5
+      value: 764.1046
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -11913,7 +11913,7 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 99
+      value: 297.64185
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -14480,10 +14480,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -17641,8 +17641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4dd81ddfcc21604482ff07d2560e734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientID: 
-  clientSecret: 
 --- !u!1 &980569403
 GameObject:
   m_ObjectHideFlags: 0
@@ -25349,10 +25347,10 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -25585,10 +25583,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -26168,7 +26166,8 @@ MonoBehaviour:
   m_text: 'Preferences vary: the Red Grail, among others, has taught us that.
 
 
-    [Incidentally: the mouse wheel zooms.]'
+    [The mouse wheel zooms. If you have no mouse wheel, 1, 2 and 3 switch zoom levels,
+    and Q and E zoom in and out.]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
