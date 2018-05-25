@@ -76,7 +76,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4802cbbe439b1004b8a1b36198367062, type: 3}
     - {fileID: 8300000, guid: c7424d25bf7a5c3429e5e4ff1e5b1d37, type: 3}
     loop: 0
-    volume: 0.7
+    volume: 0.5
     pitchVariation: 0.08
   - name: CardPutOnStack
     randomizedClips:
@@ -141,9 +141,9 @@ MonoBehaviour:
     pitchVariation: 0.025
   - name: FXCardTransform
     randomizedClips:
-    - {fileID: 8300000, guid: c3be09184f09fbc4e9fa0186ac741a9e, type: 3}
+    - {fileID: 8300000, guid: aeb271eeeacb34f52958a1a4610d8f2d, type: 3}
     loop: 0
-    volume: 0.247
+    volume: 0.4
     pitchVariation: 0
   - name: FXEndGameGlory
     randomizedClips:
@@ -168,6 +168,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4c84cf5b45c044221b99d311995d267d, type: 3}
     loop: 0
     volume: 0.15
+    pitchVariation: 0.05
+  - name: InfoWindowHide
+    randomizedClips:
+    - {fileID: 8300000, guid: d414975f3375a457eb4e5044342e4480, type: 3}
+    loop: 0
+    volume: 0.1
     pitchVariation: 0.05
   - name: MansusEntry
     randomizedClips:
@@ -197,7 +203,7 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: bd19a03a8c7735e4889e622134f2566e, type: 3}
     loop: 0
-    volume: 0.7
+    volume: 0.35
     pitchVariation: 0
   - name: SituationComplete
     randomizedClips:
@@ -215,13 +221,13 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: 913d7c61f4d64ef4aa7aaa28dd3ac37e, type: 3}
     loop: 0
-    volume: 0.454
+    volume: 0.4
     pitchVariation: 0
   - name: SituationLoopImportant
     randomizedClips:
     - {fileID: 8300000, guid: 28fe89f0e565ff94b91e43f9ec3f3723, type: 3}
     loop: 0
-    volume: 0.7
+    volume: 0.65
     pitchVariation: 0.05
   - name: SituationTokenCreate
     randomizedClips:
@@ -233,7 +239,7 @@ MonoBehaviour:
     randomizedClips:
     - {fileID: 8300000, guid: e4721316ad208a94db2935c7edce39ef, type: 3}
     loop: 0
-    volume: 0.2
+    volume: 0.15
     pitchVariation: 0
   - name: SituationTokenShowOngoingSlot
     randomizedClips:

@@ -28,7 +28,6 @@ namespace Assets.CS.TabletopUI
         }
 
 		public void Show() {
-			SoundManager.PlaySfx("InfoWindowShow");
 			gameObject.SetActive(true);
 
 			// Make the anim move out, then show the content, then move in again
@@ -37,7 +36,9 @@ namespace Assets.CS.TabletopUI
 
         public void Hide()
 		{
-			TriggerAnim(AnimType.MoveRight, AnimType.None, DoDisable);
+			if (gameObject.activeInHierarchy && !IsBusy()) {
+				TriggerAnim(AnimType.MoveRight, AnimType.None, DoDisable);
+			}
         }
 
 		protected void DoDisable()

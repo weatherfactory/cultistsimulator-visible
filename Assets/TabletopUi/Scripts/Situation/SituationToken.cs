@@ -80,10 +80,13 @@ namespace Assets.CS.TabletopUI {
             get { return _verb == null ? null : _verb.Id; }
         }
 
+		private bool isNew; // used for sound and SFX purposes
+
         public void Initialise(IVerb verb, SituationController sc, Heart heart) {
             _verb = verb;
             SituationController = sc;
             name = "Verb_" + EntityId;
+			isNew = true;
 
             DisplayIcon(verb);
             SetAsLightweight(verb.Transient);
@@ -192,7 +195,7 @@ namespace Assets.CS.TabletopUI {
                 throw new InvalidOperationException("More than one ongoing slot specified for this recipe, and we don't currently know how to deal with that");
 			
 			// We're not a no-anim slot? Then show the anim!
-			if (!ongoingSlots[0].NoAnim) {				
+			if (!ongoingSlots[0].NoAnim && !isNew) {				
 				ongoingSlotAppearFX.Play();
 				SoundManager.PlaySfx("SituationTokenShowOngoingSlot");
 			}
@@ -222,6 +225,7 @@ namespace Assets.CS.TabletopUI {
         public void DisplayComplete() {
             SetTimerVisibility(false);
             DisplayMiniSlot(null); 
+			isNew = false;
         }
 
         public void SetCompletionCount(int newCount) {

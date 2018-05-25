@@ -70,7 +70,6 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
             State = global::SituationState.FreshlyStarted;
-            SoundManager.PlaySfx("SituationBegin");
         }
 
 

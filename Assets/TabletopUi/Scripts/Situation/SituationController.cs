@@ -605,7 +605,10 @@ namespace Assets.TabletopUi {
 
             //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
             //as if we're removing items from an unstarted situation
-            SituationClock.Start(recipe);
+			SituationClock.Start(recipe);
+
+			// Play the SFX here (not in the clock) so it is only played when we manually start
+			SoundManager.PlaySfx("SituationBegin");
 
             //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();
