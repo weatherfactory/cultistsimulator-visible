@@ -176,10 +176,10 @@ namespace Assets.Core.Entities {
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
                 {
-                    if(currentPrimaryRecipe.SignalImportantLoop)
-                        SoundManager.PlaySfx("TimePassing");
+                    if (currentPrimaryRecipe.SignalImportantLoop)
+                        SoundManager.PlaySfx("SituationLoopImportant");
                     else
-                    SoundManager.PlaySfx("SituationLoop");
+                    	SoundManager.PlaySfx("SituationLoop");
 
                 }
                 Beginning(currentPrimaryRecipe);

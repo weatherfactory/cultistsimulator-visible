@@ -28,7 +28,7 @@ namespace Assets.CS.TabletopUI
         }
 
 		public void Show() {
-			SoundManager.PlaySfx("SituationWindowShow");
+			SoundManager.PlaySfx("InfoWindowShow");
 			gameObject.SetActive(true);
 
 			// Make the anim move out, then show the content, then move in again

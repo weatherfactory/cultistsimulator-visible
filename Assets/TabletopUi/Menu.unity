@@ -5379,6 +5379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346824185}
   - component: {fileID: 346824186}
+  - component: {fileID: 346824187}
   m_Layer: 5
   m_Name: SettingsBtn
   m_TagString: Untagged
@@ -5458,6 +5459,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &346824187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346824184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5585818c4039d14f831b156427b1f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXName: UIButtonClick
+  hoverFXName: TokenHover
 --- !u!1 &355081986
 GameObject:
   m_ObjectHideFlags: 0
@@ -21133,7 +21147,6 @@ GameObject:
   - component: {fileID: 837709058}
   - component: {fileID: 837709057}
   - component: {fileID: 837709056}
-  - component: {fileID: 837709055}
   - component: {fileID: 837709054}
   - component: {fileID: 837709053}
   m_Layer: 5
@@ -21193,19 +21206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXName: UIButtonClick
   hoverFXName: TokenHover
---- !u!114 &837709055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 837709051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2bf7704154e894ab77e627bad3deca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisButton: {fileID: 0}
-  ButtonText: {fileID: 612091862}
 --- !u!114 &837709056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29592,6 +29592,7 @@ GameObject:
   - component: {fileID: 1077128017}
   - component: {fileID: 1077128016}
   - component: {fileID: 1077128015}
+  - component: {fileID: 1077128018}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -29706,6 +29707,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1077128013}
+--- !u!114 &1077128018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1077128013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5585818c4039d14f831b156427b1f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXName: UIButtonClose
+  hoverFXName: TokenHover
 --- !u!1 &1079870539
 GameObject:
   m_ObjectHideFlags: 0
@@ -29984,7 +29998,6 @@ GameObject:
   - component: {fileID: 1099072638}
   - component: {fileID: 1099072637}
   - component: {fileID: 1099072636}
-  - component: {fileID: 1099072635}
   - component: {fileID: 1099072634}
   - component: {fileID: 1099072633}
   m_Layer: 5
@@ -30044,19 +30057,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXName: UIButtonClick
   hoverFXName: TokenHover
---- !u!114 &1099072635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1099072631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2bf7704154e894ab77e627bad3deca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisButton: {fileID: 0}
-  ButtonText: {fileID: 913784096}
 --- !u!114 &1099072636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30871,6 +30871,7 @@ GameObject:
   - component: {fileID: 1246557481}
   - component: {fileID: 1246557480}
   - component: {fileID: 1246557479}
+  - component: {fileID: 1246557482}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -30985,6 +30986,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1246557477}
+--- !u!114 &1246557482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1246557477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5585818c4039d14f831b156427b1f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXName: UIButtonClose
+  hoverFXName: TokenHover
 --- !u!1 &1259248463
 GameObject:
   m_ObjectHideFlags: 0
@@ -35675,7 +35689,6 @@ GameObject:
   - component: {fileID: 1410388574}
   - component: {fileID: 1410388573}
   - component: {fileID: 1410388572}
-  - component: {fileID: 1410388571}
   - component: {fileID: 1410388570}
   - component: {fileID: 1410388569}
   m_Layer: 5
@@ -35735,19 +35748,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXName: UIButtonClick
   hoverFXName: TokenHover
---- !u!114 &1410388571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410388567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2bf7704154e894ab77e627bad3deca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ThisButton: {fileID: 0}
-  ButtonText: {fileID: 2000443281}
 --- !u!114 &1410388572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36066,6 +36066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1432055250}
   - component: {fileID: 1432055251}
+  - component: {fileID: 1432055252}
   m_Layer: 5
   m_Name: VersionBtn
   m_TagString: Untagged
@@ -36145,6 +36146,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1432055252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432055249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5585818c4039d14f831b156427b1f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXName: UIButtonClick
+  hoverFXName: TokenHover
 --- !u!1 &1437298070
 GameObject:
   m_ObjectHideFlags: 0
@@ -36952,6 +36966,7 @@ GameObject:
   - component: {fileID: 1524263865}
   - component: {fileID: 1524263864}
   - component: {fileID: 1524263863}
+  - component: {fileID: 1524263866}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -37066,6 +37081,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1524263861}
+--- !u!114 &1524263866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1524263861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5585818c4039d14f831b156427b1f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXName: UIButtonClose
+  hoverFXName: TokenHover
 --- !u!1 &1536397326
 GameObject:
   m_ObjectHideFlags: 0
@@ -37078,6 +37106,7 @@ GameObject:
   - component: {fileID: 1536397330}
   - component: {fileID: 1536397329}
   - component: {fileID: 1536397328}
+  - component: {fileID: 1536397331}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -37192,6 +37221,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1536397326}
+--- !u!114 &1536397331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1536397326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5585818c4039d14f831b156427b1f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXName: UIButtonClose
+  hoverFXName: TokenHover
 --- !u!1 &1602220988
 GameObject:
   m_ObjectHideFlags: 0

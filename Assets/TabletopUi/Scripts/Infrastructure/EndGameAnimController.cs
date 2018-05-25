@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         
         [Header("Visuals")]
         [SerializeField] private Canvas tableCanvas;
-        [SerializeField] private CanvasZoomTest tableZoom;
+		[SerializeField] private CameraZoomTest cameraZoom;
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] private Canvas menuCanvas;
         [SerializeField] private Image fadeOverlay;
@@ -47,11 +47,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
             rayCaster.enabled = false; // Disable clicks on Screen
 
-            tableZoom.enablePlayerZoom = false; // Disable player zoom control
+			cameraZoom.enablePlayerZoom = false;
             _hotkeyWatcher.enabled = false; // Disable shortcuts
 
             // pause game
-            _speedController.SetPausedState(true);
+            _speedController.SetPausedState(true, false);
 
             // Abort all interactions
             DraggableToken.draggingEnabled = false; // this SHOULD disable the dragging
@@ -69,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Debug.Log("Target Zoom Pos " + targetPos);
 
             // Start zoom in on offending token 
-            tableZoom.StartFixedZoom(0f, zoomDuration);
+			cameraZoom.StartFixedZoom(0f, zoomDuration);
 
             // Start hiding all tokens
             RetireAllStacks("CardBurn");

@@ -140,7 +140,7 @@ namespace Assets.TabletopUi {
             situationToken.Retire();
             situationWindow.Retire();
             Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
-            SoundManager.PlaySfx("VerbDisappear");
+			SoundManager.PlaySfx("SituationTokenRetire");
         }
 
         #endregion
@@ -585,7 +585,7 @@ namespace Assets.TabletopUi {
         public void DumpAllResults() {
             if (SituationClock.State == SituationState.Complete)
             {
-                SoundManager.PlaySfx("CollectAll");
+                SoundManager.PlaySfx("SituationCollectAll");
                 situationWindow.DumpAllResultingCardsToDesktop();
             }
         }
