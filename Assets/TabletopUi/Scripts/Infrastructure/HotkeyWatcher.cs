@@ -72,6 +72,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             if (Input.GetKeyDown(KeyCode.Escape))
                 _optionsPanel.ToggleVisibility();
+
+			if (Input.GetKeyDown(KeyCode.S)) {
+				var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+				foreach (var controller in situationControllers) {
+					if (controller.IsOpen) {
+						controller.AttemptActivateRecipe();
+						break;
+					}
+				}
+			}
         }
 
 		void UpdateInputFieldState() {
