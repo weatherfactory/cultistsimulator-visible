@@ -256,7 +256,7 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationOngoing() {
-            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+            //var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
             situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
             situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
         }
@@ -531,7 +531,6 @@ namespace Assets.TabletopUi {
             //no recipe, no hint, no aspects. Just set back to unstarted
             else
                 situationWindow.SetUnstarted();
-
         }
 
         public void OngoingSlotsUpdated() {

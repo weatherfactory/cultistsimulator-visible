@@ -75,11 +75,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void MoveAllTokensOverlappingWith(DraggableToken pushingToken) {
             var targetRect = GetCenterPosRect(pushingToken.RectTransform);
+			// Reduce the target Rect size to be less finnicky
+			targetRect.size = targetRect.size * 0.6f;
+
+			Rect pushedRect;
 
             foreach (var token in _tabletop.GetTokens()) {
                 if (CanTokenBeIgnored(token, pushingToken))
                     continue;
-                if (!GetCenterPosRect(token.RectTransform).Overlaps(targetRect))
+
+				pushedRect = GetCenterPosRect(token.RectTransform);
+
+				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
                 AnimateTokenTo(token,
@@ -93,7 +100,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
             Vector2 localPoint;
             var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
-            var tablePos = RectTransformUtility.ScreenPointToLocalPointInRectangle(_tabletop.transform as RectTransform, screenPoint, Camera.main, out localPoint);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_tabletop.transform as RectTransform, screenPoint, Camera.main, out localPoint);
 
             return localPoint;
         }
@@ -126,7 +133,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
-            var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+			var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
             if (IsLegalPosition(targetRect, token))
                 return centerPos;
@@ -134,7 +141,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (currentDebug != null) {
                 currentDebug.targetRect = targetRect;
                 currentDebug.tokenOverlaps = true;
-            }
+			}
 
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
@@ -150,7 +157,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // but we  shift the target pos a bit
             centerPos = centerPos + targetRect.size;
             // and we reduce the smaller rect size. This allows overlap
-            targetRect.size = targetRect.size / 3f;
+            targetRect.size = targetRect.size * 0.4f;
 
             //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
 

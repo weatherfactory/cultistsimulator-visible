@@ -87,6 +87,7 @@ namespace Assets.CS.TabletopUI {
 
         bool isInNonSaveableState;
         private SituationController mansusSituation;
+		//private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
 		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
 		private float AUTOSAVE_INTERVAL = 300.0f;
@@ -666,7 +667,7 @@ namespace Assets.CS.TabletopUI {
             var chronicler = Registry.Retrieve<Chronicler>();
             chronicler.ChronicleMansusEntry(effect);
 
-
+			//preMansusTabletopPos = tableScroll.content.anchoredPosition;
 
             // Do transition
             _tabletop.Show(false);
@@ -694,11 +695,9 @@ namespace Assets.CS.TabletopUI {
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
 
-            //hasty crappy line from AK, feel free to improve if you're passing!
-            SituationWindow zoomTo= mansusSituation.situationWindow as SituationWindow;
-            tableScroll.content.anchoredPosition = zoomTo.transform.position;
+            // insta setting back to last position before the mansus was transformed, but I don't like it. Feels jerky. - martin
+			//tableScroll.content.anchoredPosition = preMansusTabletopPos;
             mansusSituation = null;
-
         }
 
         public void BeginNewSituation(SituationCreationCommand scc) {
