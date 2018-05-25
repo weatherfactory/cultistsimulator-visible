@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
-        const string buttonDefault = "Start";
+        const string buttonDefault = "[S]tart";
         const string buttonBusy = "Running...";
 
 		[Header("Visuals")]
