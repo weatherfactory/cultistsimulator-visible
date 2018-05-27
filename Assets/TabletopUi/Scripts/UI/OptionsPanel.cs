@@ -335,6 +335,7 @@ public class OptionsPanel : MonoBehaviour {
 	void SetCanvasScaleSizeInternal(float value) {
 		// value ranges from 0.5 to 2
 		float scale = GetCanvasScaleForValue(value);
+		scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
 		PlayerPrefs.SetFloat(SCREENCANVASSIZE, value);
 
 		if (!isInGame)
