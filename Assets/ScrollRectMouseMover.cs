@@ -68,7 +68,7 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 
 	void Update() {
 		// We are dragging manually? then block this thing and stop
-		if (isManualDragActive) {
+		if (isManualDragActive || Assets.CS.TabletopUI.DraggableToken.itemBeingDragged==null) {
 			blockScrolling = true;
 			return;
 		}
