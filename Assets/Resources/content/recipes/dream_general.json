@@ -79,7 +79,8 @@
 		requirements: {lore:1,forge:1},
 		startdescription:"I will dedicate myself to the pursuit of power.",
 		description: "I've whispered the words that the smith speaks to the iron, that the murderer speaks to their victims, that the fire speaks to its fuel. Only I know what I have done, but it has shaped my path now. [I have advanced a step towards a terrible ascension.]",
-		effects:{ascensionpowera:-1,ascensionpowerb:1}
+		effects:{ascensionpowera:-1,ascensionpowerb:1},
+		burnimage: "forgededication"
 },
 
 
@@ -90,7 +91,8 @@
 		requirements: {lore:1,grail:1},
 		startdescription:"I will dedicate myself to the pursuit of sensation.",
 		description: "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget it. [I have advanced a step towards a terrible ascension.]",
-		effects:{ascensionsensationa:-1,ascensionsensationbm:1}
+		effects:{ascensionsensationa:-1,ascensionsensationbm:1},
+		burnimage: "graildedication"
 },
 {
         id: "dreamascension_upgrade_sensation_1to2f",
@@ -99,7 +101,8 @@
 		requirements: {lore:1,grail:1},
 		startdescription:"I will dedicate myself to the pursuit of sensation.",
 		description: "Some words are best heard. Some words are best tasted. That taste is on my tongue now, and I will never forget it. [I have advanced a step towards a terrible ascension.]",
-		effects:{ascensionsensationa:-1,ascensionsensationbf:1}
+		effects:{ascensionsensationa:-1,ascensionsensationbf:1},		
+		burnimage: "graildedication"
 },
 
 {
@@ -109,7 +112,8 @@
 		requirements: {lore:1,lantern:1},
 		startdescription:"I will dedicate myself to the pursuit of knowledge.",
 		description: "I have spoken the words: 'Each Hour has its colour, but colour exists only where there is light.' I will go where there is light, though it bleach me to glass. [I have advanced a step towards a terrible ascension.]",
-		effects:{ascensionenlightenmenta:-1,ascensionenlightenmentb:1}
+		effects:{ascensionenlightenmenta:-1,ascensionenlightenmentb:1},		
+		burnimage: "lanterndedication"
 },
 
 
