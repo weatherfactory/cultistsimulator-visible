@@ -1140,7 +1140,7 @@ MonoBehaviour:
   purgeSaveMessage: {fileID: 972627038}
   VersionNumber: {fileID: 458841803}
   versionAnim: {fileID: 1502385832}
-  Subtitle: {fileID: 1405857545}
+  Subtitle: {fileID: 1405857547}
 --- !u!4 &182394259
 Transform:
   m_ObjectHideFlags: 0
@@ -5599,10 +5599,10 @@ MonoBehaviour:
     lineCount: 22
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -9865,10 +9865,10 @@ MonoBehaviour:
     lineCount: 25
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -10178,10 +10178,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -35619,6 +35619,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1405857546}
+  - component: {fileID: 1405857547}
   m_Layer: 5
   m_Name: Subtitle
   m_TagString: Untagged
@@ -35646,6 +35647,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &1405857547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1405857545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91933ea97da5684b996602e05d5950f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SubtitleText: {fileID: 1715696422}
+  SubtitleTextShadow: {fileID: 1634584444}
 --- !u!1 &1410388567
 GameObject:
   m_ObjectHideFlags: 0
@@ -36888,10 +36902,10 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_uvOffset: {x: 0, y: 0}
   m_uvLineOffset: 0
@@ -40828,7 +40842,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: PERPETUAL EDITION
+  m_text: SUBTITLE TEXT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b925783294fd8cb49862e058e1931f2b, type: 2}
   m_sharedMaterial: {fileID: 21723337095257772, guid: b925783294fd8cb49862e058e1931f2b,
@@ -40887,7 +40901,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1634584444}
-    characterCount: 17
+    characterCount: 13
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -41334,7 +41348,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: PERPETUAL EDITION
+  m_text: SUBTITLE TEXT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b925783294fd8cb49862e058e1931f2b, type: 2}
   m_sharedMaterial: {fileID: 21723337095257772, guid: b925783294fd8cb49862e058e1931f2b,
@@ -41393,7 +41407,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1715696422}
-    characterCount: 17
+    characterCount: 13
     spriteCount: 0
     spaceCount: 1
     wordCount: 2

@@ -117,6 +117,9 @@ namespace Assets.TabletopUi {
 
             UpdateSituationDisplayForPossiblePredictedRecipe();
 
+            if (command.Recipe!=null && command.Recipe.BurnImage != null)
+                BurnImageUnderToken(command.Recipe.BurnImage);
+
         }
 
         void InitialiseCompletedSituation(SituationCreationCommand command) {

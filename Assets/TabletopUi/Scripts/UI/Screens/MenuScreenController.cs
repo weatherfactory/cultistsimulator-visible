@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
@@ -45,7 +46,7 @@ public class MenuScreenController : MonoBehaviour {
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
 
-    public GameObject Subtitle;
+    public MenuSubtitle Subtitle;
 
     bool canTakeInput;
     int sceneToLoad;
@@ -59,13 +60,15 @@ public class MenuScreenController : MonoBehaviour {
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
 
+        SetEditionStatus();
 
-        NoonUtility.PerpetualEdition = true;
 
         if (NoonUtility.PerpetualEdition)
-            Subtitle.SetActive(true);
+        { 
+            Subtitle.SetText("PERPETUAL EDITION");
+        }
         else
-            Subtitle.SetActive(false);
+            Subtitle.SetText("BRING THE DAWN");
 
 		InitialiseServices();
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
@@ -73,6 +76,13 @@ public class MenuScreenController : MonoBehaviour {
         // We delay the showing to get a proper fade in
         Invoke("UpdateAndShowMenu", 0.1f); 
 
+    }
+
+    private static void SetEditionStatus()
+    {
+        string perpetualEditionDumbfileLocation = Application.streamingAssetsPath + "/edition/semper.txt";
+        if (File.Exists(perpetualEditionDumbfileLocation))
+            NoonUtility.PerpetualEdition = true;
     }
 
     void InitialiseServices() {
