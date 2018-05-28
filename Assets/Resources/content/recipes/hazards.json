@@ -182,9 +182,9 @@
 	label:"Creeping Breath Curse",
 	actionId: "curse_affliction",
 	requirements: {decrepitude:-1},
-	startdescription:"The Creeping Breath Curse begins with a cough: a cough that loiters in one's throat like a debt-collector.",
+	startdescription:"The Creeping Breath Curse begins with a cough - a cough that loiters in one's throat like a debt-collector.",
 	description:"Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
-	aspects: {fallsick:1},
+	aspects: {destroyhealth:1},
 	slots: [{id:"Health",greedy:true,required:{health:1}}],
 	linked: [{id: "curse_affliction_active",chance:100}],
 	warmup:60

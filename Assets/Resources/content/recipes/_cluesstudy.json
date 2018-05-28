@@ -1,5 +1,25 @@
  {"recipes":
  [
+ 	{
+	id: "studyupgrade_downgrade_lore_hint",
+	label: "Improve my Knowledge of the invisible arts?",
+	actionId: "study",
+	requirements: {lore:1,fragmentedge:-1,fragmentforge:-1,fragmentgrail:-1,fragmentheart:-1,fragmentknock:-1,fragmentlantern:-1,fragmentmoth:-1,fragmentsecrethistories:-1,fragmentwinter:-1},	
+	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. If I use Reason, I can analyse the lore, breaking it down into lower-level fragments. Or I can use another type of lore to subvert it...",
+		craftable: false,
+		hintonly:true
+	},
+   	{
+	id: "studyupgradelore_hint",
+	label: "Improve my Knowledge of the invisible arts?",
+	actionId: "study",
+	requirements: {lore:1},	
+	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. Or I can use another type of lore to subvert it...",
+		craftable: false,
+		hintonly:true
+	},
+	
+	  
  {id:"translatelatinhint",
  label:"Translate from Latin?",
  actionId:"study",

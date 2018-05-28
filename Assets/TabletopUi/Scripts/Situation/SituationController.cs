@@ -583,6 +583,7 @@ namespace Assets.TabletopUi {
             situationWindow.ShowDestinationsForStack(stack, show);
         }
 
+        //also called from hotkey
         public void DumpAllResults() {
             if (SituationClock.State == SituationState.Complete)
                 situationWindow.DumpAllResultingCardsToDesktop();

@@ -188,6 +188,7 @@ namespace Assets.CS.TabletopUI {
             }
 
             SoundManager.PlaySfx("CardPickup");
+			TabletopManager.RequestNonSaveableState( true );
 
             if (onChangeDragState != null)
                 onChangeDragState(true);
@@ -260,6 +261,7 @@ namespace Assets.CS.TabletopUI {
 
             // Last call so that when the event hits it's still available
             DraggableToken.itemBeingDragged = null;
+			TabletopManager.RequestNonSaveableState( false );
 
             ShowGlow(false, false);
         }
