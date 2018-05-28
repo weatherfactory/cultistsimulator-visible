@@ -6,6 +6,7 @@ using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -86,8 +87,14 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
 		void UpdateInputFieldState() {
-			if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null) {
-				inInputField = EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null;
+			if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
+			{
+			    if (EventSystem.current.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>() != null)
+			        inInputField = true;
+
+			    if (EventSystem.current.currentSelectedGameObject.GetComponent<InputField>() != null)
+			        inInputField = true;
+
 			}
 			else {
 				inInputField = false;
