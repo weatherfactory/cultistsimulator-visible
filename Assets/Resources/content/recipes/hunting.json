@@ -138,7 +138,8 @@
         description: "inv end - won't display, loops straight to trial. I should prepare myself.",
         warmup: 30,
         craftable: false,
-		linked:[{id:"suspicion_attemptmitigation_me",chance:30},{id:"suspicion_questionfollower",chance:100}]
+		linked:[{id:"suspicion_attemptmitigation_me",chance:30},{id:"suspicion_questionfollower",chance:100}],
+		burnimage:"beforetrial"
     },
 					    {
         id: "suspicion_questionme",
