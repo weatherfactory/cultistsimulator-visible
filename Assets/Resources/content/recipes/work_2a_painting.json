@@ -278,18 +278,25 @@ warmup:5,
 	
 				{id:"paintmasteredge_unique",requirements:{insight:7,edge:9},maxexecutions:1,effects:{paintingmasteredge:1},
 			actionId:"work",linked:[{id:"paintresults",chance:100}]},
+			
 			{id:"paintmasterforge_unique",requirements:{insight:7,forge:9},maxexecutions:1,effects:{paintingmasterforge:1},
 			actionId:"work",linked:[{id:"paintresults",chance:100}]},
+			
 		{id:"paintmastergrail_unique",requirements:{insight:7,grail:9},maxexecutions:1,effects:{paintingmastergrail:1},
 		actionId:"work",linked:[{id:"paintresults",chance:100}]},
+		
 		{id:"paintmasterheart_unique",requirements:{insight:7,heart:9},maxexecutions:1,effects:{paintingmasterheart:1},
 		actionId:"work",linked:[{id:"paintresults",chance:100}]},
+		
 		{id:"paintmasterknock_unique",requirements:{insight:7,knock:9},maxexecutions:1,effects:{paintingmasterknock:1},
 		actionId:"work",linked:[{id:"paintresults",chance:100}]},
+		
 		{id:"paintmasterlantern_unique",requirements:{insight:7,lantern:9},maxexecutions:1,effects:{paintingmasterlantern:1},
-		actionId:"work",linked:[{id:"paintmastermoth_unique",chance:90}]},
+		actionId:"work",linked:[{id:"paintresults",chance:100}]},
+		
 		{id:"paintmastermoth_unique",requirements:{insight:7,moth:9},maxexecutions:1,effects:{paintingmastermoth:1},
 		actionId:"work",linked:[{id:"paintresults",chance:100}]},
+		
 		{id:"paintmasterwinter_unique",requirements:{insight:7,winter:9},maxexecutions:1,effects:{paintingmasterwinter:1},
 		actionId:"work",linked:[{id:"paintresults",chance:100}]},
 	
