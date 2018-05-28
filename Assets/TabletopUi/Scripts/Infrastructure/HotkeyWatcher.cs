@@ -84,6 +84,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 					}
 				}
 			}
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+
+                foreach (var controller in situationControllers)
+                {
+                    if (controller.IsOpen)
+                    {
+                        controller.DumpAllResults();
+                        break;
+                    }
+                }
+            }
         }
 
 		void UpdateInputFieldState() {

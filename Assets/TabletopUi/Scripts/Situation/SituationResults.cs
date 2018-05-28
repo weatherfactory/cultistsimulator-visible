@@ -21,8 +21,8 @@ public class SituationResults : AbstractTokenContainer {
     [SerializeField] SituationResultsPositioning cardPos;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
-    const string buttonClearResultsDefault = "Collect All";
-    const string buttonClearResultsNone = "Accept";
+    const string buttonClearResultsDefault = "[C]ollect All";
+    const string buttonClearResultsNone = "Accept [C]";
 
     private SituationController controller;
 
