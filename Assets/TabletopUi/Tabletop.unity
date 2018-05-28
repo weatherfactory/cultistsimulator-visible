@@ -345,7 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b172d61edc13e468e17037397851a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollRect: {fileID: 0}
   zoomScaleIn: 20
   zoomScaleOut: 75
   zoomSpeed: 5
@@ -4800,22 +4799,22 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 150.36554
+      value: 146.99738
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 300.73108
+      value: 293.99475
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -9359,22 +9358,22 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 461.09662
+      value: 450.99213
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 300.73108
+      value: 293.99475
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -10077,22 +10076,22 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1082.5588
+      value: 1058.9817
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 300.73108
+      value: 293.99475
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -11905,22 +11904,22 @@ Prefab:
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 771.8277
+      value: 754.9869
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 300.73108
+      value: 293.99475
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224897930012580128, guid: ea82801221b5ee843a4659abfa127edc,
         type: 2}
@@ -26258,8 +26257,8 @@ MonoBehaviour:
   m_text: 'Preferences vary: the Red Grail, among others, has taught us that.
 
 
-    [The mouse wheel zooms. If you have no mouse wheel, 1, 2 and 3 switch zoom levels,
-    and Q and E zoom in and out.]'
+    [You can drag a stack by its number badge to move the whole stack. You can zoom
+    with the mouse wheel, 1, 2 and 3 switch zoom levels, and Q and E zoom in and out.]'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
@@ -26286,8 +26285,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
