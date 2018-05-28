@@ -261,7 +261,7 @@ namespace Assets.CS.TabletopUI {
 
             // Last call so that when the event hits it's still available
             DraggableToken.itemBeingDragged = null;
-			TabletopManager.RequestNonSaveableState( true );
+			TabletopManager.RequestNonSaveableState( false );
 
             ShowGlow(false, false);
         }
