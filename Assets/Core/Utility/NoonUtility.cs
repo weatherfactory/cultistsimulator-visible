@@ -101,7 +101,7 @@ namespace Noon
 
         public static VersionNumber VersionNumber = new VersionNumber(Application.version);
         public static bool AchievementsActive = false;
-        public static bool PerpetualEdition = true;
+        public static bool PerpetualEdition = false;
 
         public static void Log(string message,int verbosityNeeded=0)
         {

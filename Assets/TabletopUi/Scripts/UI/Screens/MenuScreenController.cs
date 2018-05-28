@@ -58,12 +58,16 @@ public class MenuScreenController : MonoBehaviour {
         // make sure the screen is black
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
-        if(NoonUtility.PerpetualEdition)
+
+
+        NoonUtility.PerpetualEdition = true;
+
+        if (NoonUtility.PerpetualEdition)
             Subtitle.SetActive(true);
         else
             Subtitle.SetActive(false);
 
-		InitManagers();
+		InitialiseServices();
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
         // We delay the showing to get a proper fade in
@@ -71,7 +75,7 @@ public class MenuScreenController : MonoBehaviour {
 
     }
 
-    void InitManagers() {
+    void InitialiseServices() {
         var registry = new Registry();
 
         var compendium = new Compendium();
@@ -89,6 +93,7 @@ public class MenuScreenController : MonoBehaviour {
         saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
         currentVersion = metaInfo.VersionNumber;
+
     }
 
     void UpdateAndShowMenu() {
