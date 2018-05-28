@@ -219,7 +219,7 @@
         id: "arcane_winter_lantern_minor",
         actionId: "work",
         requirements: {ritual: 1,knock:-1,desire:-1,winter:5,lantern:1},
-        startdescription:"The Sun-in-Rags brings beautiful endings. This sudden and perilous magic will end someone or something, but it's impossible to know what. It will also kill any mortal or spirit that assists with the ritual. [You are calling only a Minor degree of Winter, so this will often gail. Call on at least 10 Winter to increase your chances, although it might in fact be safer if it does fail.] ",
+        startdescription:"The Sun-in-Rags brings beautiful endings. This sudden and perilous magic will end someone or something, but it's impossible to know what. It will also kill any mortal or spirit that assists with the ritual. [You are calling only a Minor degree of Winter, so this will often fail. Call on at least 10 Winter to increase your chances, although it might in fact be safer if it does fail.] ",
         description: "Snow has settled on every surface in my work-chamber. The fire gives no heat, but I cannot extinguish it, nor can I extinguish the candles, which burn with a red nimbus and a gold flame and a heart of black. As the ritual reaches its climax, someone, somewhere, will conclude.",
 		slots:[{id:"conclusion",label:"A Conclusion",required:{mortal:1,summoned:1},greedy:true}],
 		alternativerecipes:[{chance:30,id:"arcane_winter_lantern_failure"}],
