@@ -93,6 +93,7 @@ namespace Assets.CS.TabletopUI {
 
 		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
 		private float AUTOSAVE_INTERVAL = 300.0f;
+        private List<string> currentDoomTokens=new List<string>();
 
         public void Update()
 		{
@@ -731,13 +732,18 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
+            if(!currentDoomTokens.Contains(situationToken.EntityId))
+                currentDoomTokens.Add(situationToken.EntityId);
             backgroundMusic.PlayImpendingDoom();
         }
 
 
         public void NoMoreImpendingDoom(ISituationAnchor situationToken)
         {
-            backgroundMusic.NoMoreImpendingDoom();
+            if (currentDoomTokens.Contains(situationToken.EntityId))
+                currentDoomTokens.Remove(situationToken.EntityId);
+            if(!currentDoomTokens.Any())
+                backgroundMusic.NoMoreImpendingDoom();
         }
 
 		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {

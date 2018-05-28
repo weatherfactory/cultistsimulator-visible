@@ -72,14 +72,16 @@
             label: "Passion (Disillusioned)",
             description: "I have gone against my own principles, or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
-			decayTo:"passion"
+			decayTo:"passion",
+			icon:passion
 			},
 												{
         id: "passionexhausted",
             label: "Passion (Exhausted)",
             description: "My passions burn low. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
-			decayTo:"passion"
+			decayTo:"passion",
+			icon:passion
 			},
 						{
         id: "fatigue",
@@ -89,7 +91,8 @@
             description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
 			xtriggers: {restorehealth: health},
 			lifetime: 60,
-			decayTo:"health"
+			decayTo:"health",
+			icon:health
 			},
 			{
 			id: "affliction",
@@ -115,7 +118,7 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion},
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion}
 				
         },
 		        {
@@ -131,7 +134,8 @@
 			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
             aspects: {advancement:1},
             description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
-lifetime: 180
+lifetime: 180,
+icon:reason
         },
 			{id: "dread",
             label: "Dread",
@@ -157,7 +161,7 @@ lifetime: 180
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
 [With enough Glimmering, you can Study to gain more Passion.]",
-			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason},
+			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason}
         },
 		
 		
