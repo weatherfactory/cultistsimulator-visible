@@ -11,7 +11,8 @@
 			  slots: [{id:"Nourishment",actionId:"dream",description: "To recover, I must eat.",required:{funds:1}}],
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger before the card fades will allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
-			lifetime:60
+			lifetime:60,
+			decayTo:"decrepitude"
 			},
         {
             id: "health",
@@ -163,7 +164,7 @@ lifetime: 180
 		        {
             id: "decrepitude",
             label: "Decrepitude",
-			description: "Some wounds never quite heal. [Untreated injuries become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
+			description: "Some wounds never quite heal. [Untreated Injuries and Hunger become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
 			aspects: {ability:1},
 			xtriggers: {tohealth:health}
             },
