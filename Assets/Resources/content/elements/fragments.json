@@ -491,7 +491,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             aspects:
             {winter:14,lore:1},
             description: "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses the Divided One's hatred.[Speak this to a Hunter, and it might drive them insane on the spot.]",
-			slots:[{id:"with",label:"With",description:"Study with Reason to break the lore into lower-level fragments.",required:{reason:1}}],
+			slots:[{id:"with",label:"With",description:"Study with Reason to break the lore into lower-level fragments.",required:{reason:1},actionId:"study"}],
 			unique:true
         },
 
