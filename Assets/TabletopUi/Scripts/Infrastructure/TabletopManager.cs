@@ -78,6 +78,8 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField]
         private Notifier _notifier;
+		[SerializeField]
+        private AutosaveWindow _autosaveNotifier;
         [SerializeField]
         private OptionsPanel _optionsPanel;
         [SerializeField]
@@ -85,7 +87,7 @@ namespace Assets.CS.TabletopUI {
 
         private SituationBuilder _situationBuilder;
 
-        bool isInNonSaveableState;
+        static private int isInNonSaveableState;
         private SituationController mansusSituation;
 		//private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
@@ -107,7 +109,7 @@ namespace Assets.CS.TabletopUI {
 			}
 
 			housekeepingTimer += Time.deltaTime;
-			if (housekeepingTimer >= AUTOSAVE_INTERVAL && !isInNonSaveableState)	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
+			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
 			{
 			    housekeepingTimer = 0.0f;
 			    SaveGame(true);
@@ -407,7 +409,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SaveGame(bool withNotification) {
-            if (isInNonSaveableState)
+            if (!IsSafeToAutosave())
                 return;
 			
 			// Check state so that autosave behaves correctly if called while paused - CP
@@ -430,8 +432,11 @@ namespace Assets.CS.TabletopUI {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
             saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
             if (withNotification)
-                _notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-
+			{
+                //_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+				_autosaveNotifier.SetDuration( 3.0f );
+				_autosaveNotifier.Show();
+			}
             //}
             //catch (Exception e)
             //{
@@ -632,6 +637,27 @@ namespace Assets.CS.TabletopUI {
                 mapTokenContainer.ShowDestinationsForStack(draggedElement, isDragging);
         }
 
+		static public void RequestNonSaveableState( bool forbidden )
+		{
+			// This allows multiple systems to request overlapping NonSaveableStates - CP
+			// Currently no overlapping states but just in case...
+			if (forbidden)
+				isInNonSaveableState++;
+			else
+				isInNonSaveableState--;
+			Debug.Assert( isInNonSaveableState>=0, "Mismatched RequestNonSaveableState, counter below zero" );
+		}
+
+		static public void FlushNonSaveableState()	// For use when we absolutely, definitely want to restore autosave permission - CP
+		{
+			isInNonSaveableState = 0;
+		}
+
+		static public bool IsSafeToAutosave()
+		{
+			return isInNonSaveableState==0;
+		}
+
         public void SetPausedState(bool paused) {
             _speedController.SetPausedState(paused);
         }
@@ -654,7 +680,7 @@ namespace Assets.CS.TabletopUI {
 
             DraggableToken.CancelDrag();
             LockSpeedController(true);
-            isInNonSaveableState = true;
+            RequestNonSaveableState( true );
 
             SoundManager.PlaySfx("MansusEntry");
             // Play Mansus Music
@@ -677,7 +703,7 @@ namespace Assets.CS.TabletopUI {
         public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard) {
             DraggableToken.CancelDrag();
             LockSpeedController(false);
-            isInNonSaveableState = false;
+            FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
 
             // Play Normal Music
             backgroundMusic.PlayRandomClip();
