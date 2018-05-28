@@ -9,7 +9,13 @@ public class ResourcesManager: MonoBehaviour
 {
     public const string PLACEHOLDER_IMAGE_NAME = "_x";
 
-	public static Sprite GetSpriteForVerbLarge(string verbId)
+    public static Sprite GetBurnImage(string imageName)
+    {
+        var sprite= Resources.Load<Sprite>("burnImages/" + imageName) as Sprite;
+        return sprite;
+    }
+
+    public static Sprite GetSpriteForVerbLarge(string verbId)
 	{
 
         var sprite = Resources.Load<Sprite>("icons100/verbs/" + verbId);

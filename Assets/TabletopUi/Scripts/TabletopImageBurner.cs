@@ -14,16 +14,16 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] AnimationCurve burnAlphaCurve;
 
         bool coroutineRunning = false;
-        string burnImagePath = "burnImages/";
+        
 
         List<Image> imagePool = new List<Image>();
         List<BurnImage> activeImages = new List<BurnImage>();
         
         public void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, ImageLayoutConfig config) { 
-            var sprite = LoadBurnSprite(spriteName);
+            var sprite = ResourcesManager.GetBurnImage(spriteName);
 
             if (sprite == null) {
-                NoonUtility.Log("Can't find a sprite at " + burnImagePath + spriteName + "!",1);
+                NoonUtility.Log("Can't find burnimage " + spriteName + "!",1);
                 return;
             }
 
@@ -96,9 +96,7 @@ namespace Assets.CS.TabletopUI {
             return newImg;
         }
 
-        Sprite LoadBurnSprite(string imageName) {
-            return Resources.Load<Sprite>(burnImagePath + imageName) as Sprite;
-        }
+
 
         class BurnImage {
             public Image image;
