@@ -87,7 +87,13 @@ namespace Assets.CS.TabletopUI {
 
         private SituationBuilder _situationBuilder;
 
-        static private int isInNonSaveableState;
+		public enum NonSaveableType
+		{
+			Drag,	// Cannot save because held card gets lost
+			Mansus,	// Cannot save by design
+			NumNonSaveableTypes
+		};
+        static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
         private SituationController mansusSituation;
 		//private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
@@ -107,6 +113,10 @@ namespace Assets.CS.TabletopUI {
 			{
 				_heart.AdvanceTime( 0.0f );		// If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
 			}
+
+			// Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
+			if (DraggableToken.itemBeingDragged == null)
+				TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );
 
 			housekeepingTimer += Time.deltaTime;
 			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
@@ -637,25 +647,32 @@ namespace Assets.CS.TabletopUI {
                 mapTokenContainer.ShowDestinationsForStack(draggedElement, isDragging);
         }
 
-		static public void RequestNonSaveableState( bool forbidden )
+		static public void RequestNonSaveableState( NonSaveableType type, bool forbidden )
 		{
 			// This allows multiple systems to request overlapping NonSaveableStates - CP
-			// Currently no overlapping states but just in case...
-			if (forbidden)
-				isInNonSaveableState++;
-			else
-				isInNonSaveableState--;
-			Debug.Assert( isInNonSaveableState>=0, "Mismatched RequestNonSaveableState, counter below zero" );
+			// Removed the counter, as it kept creeping up (must be a loophole if a drag is aborted oddly)
+			// For safety I've changed it to array of seperate flags (so you can drag in the Mansus without enabled autosave)
+			// and added a failsafe in the update, which flushes the Drag flag whenever nothing is held (rather than relying on catching all exit points)
+			Debug.Assert( type<NonSaveableType.NumNonSaveableTypes, "Bad nonsaveable type" );
+			isInNonSaveableState[(int)type] = forbidden;
 		}
 
 		static public void FlushNonSaveableState()	// For use when we absolutely, definitely want to restore autosave permission - CP
 		{
-			isInNonSaveableState = 0;
+			for (int i=0; i<(int)NonSaveableType.NumNonSaveableTypes; i++)
+			{
+				isInNonSaveableState[i] = false;
+			}
 		}
 
 		static public bool IsSafeToAutosave()
 		{
-			return isInNonSaveableState==0;
+			for (int i=0; i<(int)NonSaveableType.NumNonSaveableTypes; i++)
+			{
+				if (isInNonSaveableState[i])
+					return false;
+			}
+			return true;
 		}
 
         public void SetPausedState(bool paused) {
@@ -680,7 +697,7 @@ namespace Assets.CS.TabletopUI {
 
             DraggableToken.CancelDrag();
             LockSpeedController(true);
-            RequestNonSaveableState( true );
+            RequestNonSaveableState( NonSaveableType.Mansus, true );
 
             SoundManager.PlaySfx("MansusEntry");
             // Play Mansus Music
