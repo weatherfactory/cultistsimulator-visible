@@ -2,9 +2,10 @@
     [
 					{id: "corpse",
 	label: "A Human Corpse",
-	description: "The spirit is departed. At some point, the smell will be so bad you'll have to dispose of it, but here it is for now. It may attract attention; it may be used to impress the impressionable.",
-	aspects: {winter:3,grail:3,ingredient:1,reputation:1},
-	lifetime:60
+	description: "The spirit is departed. At some point, the smell will be so bad you'll have to dispose of it, but here it is for now. It may attract attention; it may be used to impress the impressionable. [Even after the Corpse is gone, Notoriety will remain.]",
+	aspects: {winter:3,grail:3,ingredient:1,reputation:2},
+	lifetime:60,
+	decayTo:"notoriety"
 	},
 				{id: "ingredientedgeb",
 	label: "Martensite Paste",
