@@ -233,6 +233,8 @@ namespace TMPro
 
         private bool m_isLastKeyBackspace = false;
 
+		private string m_altCharacterBuffer = "";
+
         // Doesn't include dot and @ on purpose! See usage for details.
         const string kEmailSpecialCharacters = "!#$%&'*+-/=?^_`{|}~";
 
@@ -1086,6 +1088,24 @@ namespace TMPro
                         MoveDown(shift);
                         return EditState.Continue;
                     }
+				case KeyCode.Keypad0:
+				case KeyCode.Keypad1:
+				case KeyCode.Keypad2:
+				case KeyCode.Keypad3:
+				case KeyCode.Keypad4:
+				case KeyCode.Keypad5:
+				case KeyCode.Keypad6:
+				case KeyCode.Keypad7:
+				case KeyCode.Keypad8:
+				case KeyCode.Keypad9:
+					{
+						if (alt)
+						{
+							m_altCharacterBuffer += (char)((int)'0'+(evt.keyCode - KeyCode.Keypad0));
+							return EditState.Continue;
+						}
+						break;
+					}
 
                 // Submit
                 case KeyCode.Return:
@@ -1128,6 +1148,48 @@ namespace TMPro
             }
             return EditState.Continue;
         }
+
+		protected EditState KeyReleased(Event evt)
+        {
+            var currentEventModifiers = evt.modifiers;
+            RuntimePlatform rp = Application.platform;
+#if UNITY_5_4
+            bool isMac = (rp == RuntimePlatform.OSXEditor || rp == RuntimePlatform.OSXPlayer);
+#else
+            bool isMac = (rp == RuntimePlatform.OSXEditor || rp == RuntimePlatform.OSXPlayer);
+#endif
+            bool ctrl = isMac ? (currentEventModifiers & EventModifiers.Command) != 0 : (currentEventModifiers & EventModifiers.Control) != 0;
+            bool shift = (currentEventModifiers & EventModifiers.Shift) != 0;
+            bool alt = (currentEventModifiers & EventModifiers.Alt) != 0;
+            bool ctrlOnly = ctrl && !alt && !shift;
+
+			switch (evt.keyCode)
+            {
+			case KeyCode.AltGr:
+			case KeyCode.LeftAlt:
+			case KeyCode.RightAlt:
+				if (m_altCharacterBuffer.Length > 0)
+				{
+					// Attempt to parse the ALT-number typed by user
+					//Debug.Log("ALT-buffer = " + m_altCharacterBuffer);
+					int unicode = -1;
+					if (int.TryParse( m_altCharacterBuffer, out unicode ))
+					{
+						//Debug.Log("ALT-char = " + (char)unicode);
+						if (IsValidChar((char)unicode))
+						{
+							Append((char)unicode);
+						}
+					}
+					m_altCharacterBuffer = "";
+				}
+				break;
+			default:
+				break;
+			}
+
+			return EditState.Continue;
+		}
 
         private bool IsValidChar(char c)
         {
@@ -1173,6 +1235,11 @@ namespace TMPro
                         DeactivateInputField();
                         break;
                     }
+                }
+				if (m_ProcessingEvent.rawType == EventType.KeyUp)
+                {
+                    consumedEvent = true;
+                    KeyReleased(m_ProcessingEvent);
                 }
 
                 switch (m_ProcessingEvent.type)
