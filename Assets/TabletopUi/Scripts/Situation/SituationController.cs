@@ -607,7 +607,11 @@ namespace Assets.TabletopUi {
         #region -- External Situation Change Methods --------------------
         // letting other things change the situation
 
-        public void AttemptActivateRecipe() {
+        public void AttemptActivateRecipe()
+        {
+            if (SituationClock.State != SituationState.Unstarted)
+                return;
+
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.EntityId, currentCharacter, false);
 
