@@ -94,8 +94,8 @@
 	{id:"G2",label:"Glimmering",required:{glimmering:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
 	{id:"G3",label:"Glimmering",required:{glimmering:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
 	{id:"G4",label:"Glimmering",required:{glimmering:1},consumes:true,description:"Am I ready to feed my passions further?",actionId:"study"},
-{id:"painting1",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}
+{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}
 	],
 	xtriggers:{careeradvancement:skillpassionb}
 	},
@@ -110,9 +110,9 @@
 	{id:"G4",label:"Glimmering",required:{glimmering:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
 	{id:"G5",label:"Glimmering",required:{glimmering:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
 	{id:"G6",label:"Glimmering",required:{glimmering:1},consumes:true,description:"What could I see, what could I be?",actionId:"study"},
-	{id:"painting1",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-{id:"painting3",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
+	{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
 	],
 	},	
 			{id: "skillpassionc",
@@ -127,10 +127,10 @@
 	{id:"G6",label:"Glimmering",required:{glimmering:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
 	{id:"G7",label:"Glimmering",required:{glimmering:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
 	{id:"G8",label:"Glimmering",required:{glimmering:1},consumes:true,description:"What furious visions remain?",actionId:"study"},
-	{id:"painting1",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting2",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-	{id:"painting3",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
-{id:"painting4",label:"Art or Bread",required:{passion:1,reputation:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
+	{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
 	],
 	},	
 ]
