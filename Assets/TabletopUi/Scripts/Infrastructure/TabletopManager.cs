@@ -652,7 +652,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			// This allows multiple systems to request overlapping NonSaveableStates - CP
 			// Removed the counter, as it kept creeping up (must be a loophole if a drag is aborted oddly)
-			// For safety I've changed it to array of seperate flags (so you can drag in the Mansus without enabled autosave)
+			// For safety I've changed it to array of separate flags (so you can drag in the Mansus without enabled autosave)
 			// and added a failsafe in the update, which flushes the Drag flag whenever nothing is held (rather than relying on catching all exit points)
 			Debug.Assert( type<NonSaveableType.NumNonSaveableTypes, "Bad nonsaveable type" );
 			isInNonSaveableState[(int)type] = forbidden;
