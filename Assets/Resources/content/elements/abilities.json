@@ -73,7 +73,7 @@
             description: "I have gone against my own principles, or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion",
-			icon:passion
+			icon:"passion"
 			},
 												{
         id: "passionexhausted",
@@ -81,7 +81,7 @@
             description: "My passions burn low. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion",
-			icon:passion
+			icon:"passion"
 			},
 						{
         id: "fatigue",
@@ -92,7 +92,7 @@
 			xtriggers: {restorehealth: health},
 			lifetime: 60,
 			decayTo:"health",
-			icon:health
+			icon:"health"
 			},
 			{
 			id: "affliction",
@@ -126,7 +126,8 @@
             label: "Reason [Dimmed]",
 			description: "My mind is weary.  [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime:60,
-			decayTo:"reason"
+			decayTo:"reason",		
+icon:"reason"
         },
 				 {
             id: "erudition",
@@ -134,8 +135,7 @@
 			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
             aspects: {advancement:1},
             description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
-lifetime: 180,
-icon:reason
+lifetime: 180
         },
 			{id: "dread",
             label: "Dread",
