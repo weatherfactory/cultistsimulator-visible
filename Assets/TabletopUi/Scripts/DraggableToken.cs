@@ -261,11 +261,9 @@ namespace Assets.CS.TabletopUI {
 
             // Last call so that when the event hits it's still available
             DraggableToken.itemBeingDragged = null;
-<<<<<<< HEAD
-			TabletopManager.RequestNonSaveableState( false );
-=======
+
 			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );	// There is also a failsafe to catch unexpected aborts of Drag state - CP
->>>>>>> origin/chrispayne_prelaunch_changes
+
 
             ShowGlow(false, false);
         }
