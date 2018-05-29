@@ -84,11 +84,11 @@
 	craftable: true
 	},
 			{id: "writewinterc",
-	label: "winter write c",
+	label: "Write an extensive treatise on the White Lore",
 	actionId: "work",
 	requirements: {commissionarticlewinterc:1,lore:1,winter:6,reason:2},
 	effects: {articlewinterc:1},
-	startdescription: "Write an extensive treatise on the White Lore.",
+	startdescription: "This may be useful for a Commission.",
 	description: "You've finished the manuscript.",
 	warmup: 60,	
 	craftable: true

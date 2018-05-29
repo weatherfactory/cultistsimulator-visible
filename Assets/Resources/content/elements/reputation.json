@@ -21,7 +21,7 @@
             id: "evidence",
 			aspects:{evidencelevel:1},
             label: "Tentative Evidence",
-            description: "A hunter has found evidence - real or imagined - of my sins. [Hunters with Evidence become more dangerous. Evidence may survive the death ot the Hunter who created it.]",
+            description: "A hunter has found evidence - real or imagined - of my sins. [Hunters with Evidence become more dangerous. Evidence may survive the death of the Hunter who created it.]",
 						xtriggers:{investigatingsuccess:evidenceb,investigatingsetback:notoriety},
 						lifetime: 600,
 			
