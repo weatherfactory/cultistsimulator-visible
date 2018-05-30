@@ -22,10 +22,9 @@ using Galaxy.Api;
 [DisallowMultipleComponent]
 public class GogGalaxyManager : MonoBehaviour
 {
-    [SerializeField]
-    public string clientID;
-    [SerializeField]
-    public string clientSecret;
+    
+    private string clientID= "50757209545787544";
+    private string clientSecret= "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
 
     private static GogGalaxyManager singleton;
     public static GogGalaxyManager Instance

@@ -8,7 +8,7 @@ using UnityEngine;
 public class SteamworksIntegration : MonoBehaviour
 {
 
-    [SerializeField] private uint SteamAppId;
+    private uint SteamAppId=718670;
 	// Use this for initialization
 	void Start () {
 	    Facepunch.Steamworks.Config.ForUnity(Application.platform.ToString());
