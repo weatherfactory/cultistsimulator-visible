@@ -205,32 +205,32 @@ namespace Assets.Core.Services
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
             { 
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.EntityId);
-                
-                
-                if (tokenAspects.Keys.Contains("venerationedge"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_EDGE",true);
 
-                if (tokenAspects.Keys.Contains("venerationforge"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_FORGE", true);
-
-                if (tokenAspects.Keys.Contains("venerationgrail"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_GRAIL", true);
-
-                if (tokenAspects.Keys.Contains("venerationheart"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_HEART", true);
-
-                if (tokenAspects.Keys.Contains("venerationknock"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_KNOCK", true);
-
-                if (tokenAspects.Keys.Contains("lvenerationantern"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_LANTERN", true);
-
-                if (tokenAspects.Keys.Contains("venerationmoth"))
-                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_MOTH", true);
-                if (tokenAspects.Keys.Contains("venerationsecrethistories"))
+                if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_SECRETHISTORIES", true);
 
-                if (tokenAspects.Keys.Contains("venerationwinter"))
+                else if (tokenAspects.Keys.Contains("venerationedge"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_EDGE",true);
+
+                else if (tokenAspects.Keys.Contains("venerationforge"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_FORGE", true);
+
+                else if (tokenAspects.Keys.Contains("venerationgrail"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_GRAIL", true);
+
+                else if (tokenAspects.Keys.Contains("venerationheart"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_HEART", true);
+
+                else if (tokenAspects.Keys.Contains("venerationknock"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_KNOCK", true);
+
+                else if (tokenAspects.Keys.Contains("venerationlantern"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_LANTERN", true);
+
+                else if (tokenAspects.Keys.Contains("venerationmoth"))
+                    storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_MOTH", true);
+                
+                else if (tokenAspects.Keys.Contains("venerationwinter"))
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_WINTER", true);
 
 

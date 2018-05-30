@@ -45,6 +45,7 @@ public class MenuScreenController : MonoBehaviour {
     public GameObject purgeSaveMessage;
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
+    public GameObject LinuxHints;
 
     public MenuSubtitle Subtitle;
 
@@ -60,17 +61,10 @@ public class MenuScreenController : MonoBehaviour {
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
 
-        SetEditionStatus();
 
 
-        if (NoonUtility.PerpetualEdition)
-        { 
-            Subtitle.SetText("PERPETUAL EDITION");
-        }
-        else
-            Subtitle.SetText("BRING THE DAWN");
 
-		InitialiseServices();
+        InitialiseServices();
 		canTakeInput = false; // The UpdateAndShowMenu reenables the input
 
         // We delay the showing to get a proper fade in
@@ -116,8 +110,28 @@ public class MenuScreenController : MonoBehaviour {
         continueGameButton.interactable = isLegalSaveGame;
         purgeButton.gameObject.SetActive(hasSavegame);
 
+
+        //update subtitle text
+        SetEditionStatus();
+        if (NoonUtility.PerpetualEdition)
+        {
+            Subtitle.SetText("PERPETUAL EDITION");
+        }
+        else
+            Subtitle.SetText("BRING THE DAWN");
+
+
         // Show the purge message if needed
         purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
+        //warn about possible Linux issues
+#if UNITY_STANDALONE_LINUX
+        LinuxHints.gameObject.SetActive(true);
+#else
+        LinuxHints.gameObject.SetActive(false);
+#endif
+
+
+
 
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();
@@ -144,7 +158,7 @@ public class MenuScreenController : MonoBehaviour {
         versionHints.gameObject.SetActive(false);
     }
 
-    #region -- View Changes ------------------------
+#region -- View Changes ------------------------
 
     void FadeIn() {
         fadeOverlay.gameObject.SetActive(true);
@@ -177,9 +191,9 @@ public class MenuScreenController : MonoBehaviour {
         currentOverlay = null;
     }
 
-    #endregion
+#endregion
 
-    #region -- User Actions via Scene Buttons ------------------------
+#region -- User Actions via Scene Buttons ------------------------
 
     public void StartGame() {
         if (!canTakeInput)
@@ -289,6 +303,6 @@ public class MenuScreenController : MonoBehaviour {
         Application.Quit();
     }
 
-    #endregion
+#endregion
 
 }
