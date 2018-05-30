@@ -11,6 +11,14 @@ public class GogGalaxyManager : MonoBehaviour
     Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
     }
 }
+#elif UNITY_STANDALONE_OSX
+public class GogGalaxyManager : MonoBehaviour
+{
+    private void Awake()
+    {
+        Debug.Log("OSX build: not initialising GOG Galaxy, because it's temporarily disabled");
+    }
+}
 #else
 using Galaxy.Api;
 
