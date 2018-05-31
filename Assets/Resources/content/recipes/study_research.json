@@ -219,7 +219,7 @@
 	label: "Subvert the Ragged Lore",
 	actionId: "study",
 	requirements: {lore:2, winter:1,heart:1},
-	effects:{project_upgrade_winter:1},
+	effects:{project_subvert_edgetowinter:1},
 
 	linked: [
 	{id: "studyresearchtick",chance:100}],
