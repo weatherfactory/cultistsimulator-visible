@@ -1,5 +1,18 @@
  {"recipes": [
+		{
+	id: "studyknocklore",
+	label: "Study the Lore which Opens",
+	actionId: "study",
+	requirements: {lore:2, knock:1},
+	effects:{project_upgrade_subvert_knock:1},
 
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables. When a thing is opened, we will know its nature. [Any Lore studied with Knock becomes Knock.]",
+	
+	warmup:30,
+	craftable: true
+	},
 
 	{
 	id: "studyupgradelore_edge",
@@ -115,20 +128,7 @@
 	warmup:30,
 	craftable: true,
 	},
-		{
-	id: "studyknocklore",
-	label: "Study the Lore which Opens",
-	actionId: "study",
-	requirements: {lore:2, knock:1},
-	effects:{project_upgrade_subvert_knock:1},
 
-	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables. When a thing is opened, we will know its nature. [Any Lore studied with Knock becomes Knock.]",
-	
-	warmup:30,
-	craftable: true
-	},
 
 		{
 	id: "studylanternlore",
