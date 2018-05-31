@@ -280,7 +280,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "workvictoryb")
             return new Ending(endingFlag, "Ambition's Tide",
-                "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my  rivals. I will grow" +
+                "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my  rivals. I will grow " +
                 "used to the sound of my name. Then one day, I will die, and some time after that, my name will be heard no more. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORYB");
 
         return Ending.DefaultEnding();
