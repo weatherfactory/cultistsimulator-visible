@@ -165,8 +165,11 @@ alternativerecipes:[
 {id:"annoyanceattacklowedge",chance:100},
 {id:"annoyancederangelowmoth",chance:100},
 {id:"annoyanceattacknoedge",chance:100},
+{id: "teresadiscusslocksmithsdream1",chance:100},
+{id: "teresadiscusslocksmithsdream2",chance:100},
+{id: "teresadiscusslocksmithsdream3",chance:100},
 ],
-startdescription: "Not everything from the Mansus can speak, but everything can understand mortal speech, even it has  passed the White Door.",
+startdescription: "Not everything from the Mansus can speak, but everything can understand mortal speech, even it has passed the White Door.",
 description: "Nothing; my words cease like sand in a glass.",
 warmup: 60,
 craftable: true
@@ -197,6 +200,34 @@ startdescription: "'TOGETHER WE WILL COMMEMORATE THE TONGUE OF THE UNBURNT GOD.'
 description: ".",
 craftable: true
 },
+
+	  {id:"teresadiscusslocksmithsdream1",
+	  label:"Discuss the Locksmith's Dream, Volume 1",
+	  requirements:{spirit_lanterne_secret:1,locksmithsdream1:1,autographed:-1},
+	  actionId:"talk",
+	  startdescription:'"Shall I autograph it? I think that would be rather fun, wouldn't it?'",
+	  description:"'I used to live by Camden Lock, when I started writing this stuff down. If that isn't a joke of the Hours, I don't know what is. Let me tell you of my sources -'",
+	  effects:{erudition:1},
+	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  },
+	  	  	  {id:"teresadiscusslocksmithsdream2",
+	  label:"Discuss the Locksmith's Dream, Volume 2",
+	  requirements:{spirit_lanterne_secret:1,locksmithsdream2:1,autographed:-1},
+	  actionId:"talk",
+	  startdescription:"'Shall I autograph it? Would that be a little precious? No-one will believe it's the real thing, anyway. I'm supposed to be dead.'",
+	  description:"'I still think the Doors have to do with artisans' work - with making. I think that's how we begun to find our way into the House. But of course our ascents were always limited, until we learnt to speak. I'll try to explain...'",
+	  effects:{glimmering:1},
+	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  },
+	  	  {id:"teresadiscusslocksmithsdream3",
+	  label:"Discuss the Locksmith's Dream, Volume 3",
+	  requirements:{spirit_lanterne_secret:1,locksmithsdream3:1,autographed:-1},
+	  actionId:"talk",
+	  startdescription:"'I'll write my name in it, shall I? Only the name that Christopher called me. Not the name I use in here.'",
+	  description:"Oh, my, I was in a state when I wrote this, wasn't I? Sorry about that. But I was right that death is down. That's one of the reasons I usually stay pretty high in the Mansus. I'll try to explain what I mean, a little -'",
+	  effects:{glimmering:1},
+	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  },
 
 {
         id: "begincultfoundation",
