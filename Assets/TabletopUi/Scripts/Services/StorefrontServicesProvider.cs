@@ -19,19 +19,20 @@ namespace Assets.TabletopUi.Scripts.Services
                 _steamClientProvider=new SteamworksStorefrontClientProvider();
 
             }
-
-#if UNITY_STANDALONE_LINUX
-#elif UNITY_STANDALONE_OSX
-#else
             if (clientType == StoreClient.Gog)
             {
-                if(SystemInfo.operatingSystemFamily==OperatingSystemFamily.Linux)
-                    throw new ApplicationException("Can't initialise GOG services on Linux");
-                else
-                _gogClientProvider=new GOGStorefrontProvider();
+#if UNITY_STANDALONE_LINUX
+return;
+#elif UNITY_STANDALONE_OSX
                 return;
-            }
+#else
+        
+                _gogClientProvider = new GOGStorefrontProvider();
+               return;
 #endif
+
+            }
+
         }
         public void SetAchievementForCurrentStorefronts(string achievementId, bool setStatus)
         {
