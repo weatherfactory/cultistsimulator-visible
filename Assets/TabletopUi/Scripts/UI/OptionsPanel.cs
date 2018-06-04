@@ -49,6 +49,10 @@ public class OptionsPanel : MonoBehaviour {
     [Header("External Ref")]
     [SerializeField]
     private AudioMixer audioMixer;
+    [SerializeField]
+    BackgroundMusic backgroundMusic;
+
+    [SerializeField] private SoundManager soundManager;
 
     [Header("Detail Windows")]
     [SerializeField]
@@ -60,9 +64,9 @@ public class OptionsPanel : MonoBehaviour {
 	[SerializeField]
 	private CanvasScaleManager screenCanvasScaler;
 
+    
     SpeedController speedController;
-    BackgroundMusic backgroundMusic;
-    SoundManager soundManager;
+    
 
     private const string MUSICVOLUME="MusicVolume";
     private const string SOUNDVOLUME = "SoundVolume";
@@ -77,8 +81,6 @@ public class OptionsPanel : MonoBehaviour {
 
 		if (isInGame) {
 			speedController = spdctrl;
-	        backgroundMusic = FindObjectOfType<BackgroundMusic>();
-	        soundManager = FindObjectOfType<SoundManager>();
 		}
 
         float value;
@@ -88,7 +90,7 @@ public class OptionsPanel : MonoBehaviour {
         if (PlayerPrefs.HasKey(MUSICVOLUME)) 
             value = PlayerPrefs.GetFloat(MUSICVOLUME);
         else
-            value = 1f;
+            value = 10f;
 
         SetMusicVolume(value); // this does nothing, since we're disabled but updates the value hint
         SetMusicVolumeInternal(value);
@@ -99,7 +101,7 @@ public class OptionsPanel : MonoBehaviour {
         if (PlayerPrefs.HasKey(SOUNDVOLUME)) 
             value = PlayerPrefs.GetFloat(SOUNDVOLUME);
         else 
-            value = 1f;
+            value = 10f;
 
         SetSoundVolume(value); // this does nothing, since we're disabled but updates the value hint
         SetSoundVolumeInternal(value);

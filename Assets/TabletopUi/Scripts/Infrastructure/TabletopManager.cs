@@ -281,10 +281,6 @@ namespace Assets.CS.TabletopUI {
             registry.Register<StorefrontServicesProvider>(storeClientProvider);
 
 
-
-
-
-         
         }
 
         #endregion
