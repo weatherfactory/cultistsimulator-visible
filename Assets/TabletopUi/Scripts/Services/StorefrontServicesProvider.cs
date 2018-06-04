@@ -36,6 +36,9 @@ return;
         }
         public void SetAchievementForCurrentStorefronts(string achievementId, bool setStatus)
         {
+            try
+            {
+            
             if (!NoonUtility.AchievementsActive)
                 return;
             if(_steamClientProvider!=null)
@@ -43,7 +46,14 @@ return;
 
             if(_gogClientProvider!=null)
                 _gogClientProvider.SetAchievement(achievementId,setStatus);
-
+            }
+            catch (Exception e)
+            {
+                //let's try not to bring down the house because the phone line isn't working
+                NoonUtility.Log("WARNING: tried to set achievement" + achievementId + ", but failed: " + e.Message);
+                throw;
+            }
+            
         }
     }
 }

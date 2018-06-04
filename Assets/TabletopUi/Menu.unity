@@ -347,8 +347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00005909376}
-  m_SizeDelta: {x: 0, y: 507.29}
+  m_AnchoredPosition: {x: 0, y: -0.00001707445}
+  m_SizeDelta: {x: 0, y: 526.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &39930711
 MonoBehaviour:
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 213562481}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5662,8 +5662,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -507.29}
-  m_SizeDelta: {x: 530, y: 469.28}
+  m_AnchoredPosition: {x: 0, y: -526.8}
+  m_SizeDelta: {x: 530, y: 488.79}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &355081988
 MonoBehaviour:
@@ -5686,8 +5686,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Design, Writing, Coding\n\nProduction, Marketing, Biz\n\t\nUI Design and
-    Coding\n\nArt\n\n\n\n\nMusic\n\n\n\n\nAudio\n\nAdditional Coding\n\n\nSpecial
-    Thanks"
+    Coding\n\nArt\n\n\n\n\nMusic\n\n\n\n\nAudio\n\nAdditional Coding\n\nAdditional
+    Design\n\nSpecial Thanks"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 924035b7778230945bf7c1c414c6a332, type: 2}
   m_sharedMaterial: {fileID: 21087872997083736, guid: 924035b7778230945bf7c1c414c6a332,
@@ -5746,12 +5746,12 @@ MonoBehaviour:
   m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_textInfo:
     textComponent: {fileID: 355081988}
-    characterCount: 135
+    characterCount: 153
     spriteCount: 0
-    spaceCount: 31
-    wordCount: 17
+    spaceCount: 33
+    wordCount: 19
     linkCount: 0
-    lineCount: 22
+    lineCount: 23
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 1
@@ -9951,7 +9951,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "Alexis Kennedy\n\nLottie Bevan\n\nMartin Nerurkar\n\nCatherine Unger,\nClockwork
     Cuckoo,\nLottie Bevan,\nSarah Gordon\n\nMaribeth Solomon\r\nBrent Barkman\r\nMicky
-    Erbe\r\nfor Mickymar Productions Ltd.\n\nSoundcuts\n\nChris Payne\n\n\n\n\nSonja
+    Erbe\r\nfor Mickymar Productions Ltd.\n\nSoundcuts\n\nChris Payne\n\nCaolain Porter\n\n\nSonja
     & PK; Matt Hosty; Haley Uyrus; and literally everyone who has ever sent feedback
     or a bug report. Thank you."
   m_isRightToLeft: 0
@@ -10012,10 +10012,10 @@ MonoBehaviour:
   m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_textInfo:
     textComponent: {fileID: 594253584}
-    characterCount: 327
+    characterCount: 341
     spriteCount: 0
-    spaceCount: 57
-    wordCount: 47
+    spaceCount: 58
+    wordCount: 49
     linkCount: 0
     lineCount: 25
     pageCount: 1
@@ -43197,6 +43197,16 @@ Prefab:
       propertyPath: m_SizeDelta.x
       value: 495
       objectReference: {fileID: 0}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 2}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 395819458}
+    - target: {fileID: 114343856453346478, guid: b01924c99f42946fd8aba56d7f2c1aa2,
+        type: 2}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 2056116635}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b01924c99f42946fd8aba56d7f2c1aa2, type: 2}
   m_IsPrefabParent: 0
@@ -53857,6 +53867,12 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2056116635 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114937700222485204, guid: 3d901299a57def14ca66ec6931695e22,
+    type: 2}
+  m_PrefabInternal: {fileID: 1727065008}
+  m_Script: {fileID: 11500000, guid: 51162aa08f9bd534fb1496ce0e3d6a48, type: 3}
 --- !u!1 &2058073375
 GameObject:
   m_ObjectHideFlags: 0
