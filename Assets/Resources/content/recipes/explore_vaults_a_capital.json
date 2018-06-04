@@ -32,7 +32,7 @@
 	id: "explore_vaultcapital3_setup",
 	label: "Beginning an Expedition: Cater & Hero Limited",
 	actionId: "explore",
-	requirements:{vaultcapital3:1},
+	requirements:{vaultcapital3:1,funds:1,follower:1},
 	effects: {peril_treacherousground:1},
 
 	startdescription: "The remaining factory walls could topple at any moment. Blackened timbers creak in pain. We must equip ourselves properly and move with dreadful care. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
