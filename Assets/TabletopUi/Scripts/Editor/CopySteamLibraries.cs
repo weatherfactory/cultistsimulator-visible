@@ -30,8 +30,9 @@ namespace Facepunch.Editor
             if (target == BuildTarget.StandaloneWindows64)
                 FileUtil.ReplaceFile("steam_api64.dll", System.IO.Path.GetDirectoryName(pathToBuiltProject) + "/steam_api64.dll");
 
+            //Apple dylibs need to go deeper
             if (target == BuildTarget.StandaloneOSX)
-                FileUtil.ReplaceFile("libsteam_api.dylib", System.IO.Path.GetDirectoryName(pathToBuiltProject) + "/libsteam_api.dylib");
+                FileUtil.ReplaceFile("libsteam_api.dylib", System.IO.Path.GetDirectoryName(pathToBuiltProject) + "/OSX.app/Contents/Frameworks/MonoEmbedRuntime/osx/libsteam_api.dylib");
 
             if (target == BuildTarget.StandaloneLinux64 || target == BuildTarget.StandaloneLinuxUniversal)
                 FileUtil.ReplaceFile("libsteam_api64.so", System.IO.Path.GetDirectoryName(pathToBuiltProject) + "/libsteam_api64.so");
