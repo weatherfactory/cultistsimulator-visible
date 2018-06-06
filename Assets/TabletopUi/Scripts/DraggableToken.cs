@@ -89,7 +89,10 @@ namespace Assets.CS.TabletopUI {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
         }
 
-		public bool IsGlowing() {
+		public bool IsGlowing()
+		{
+		    if (glowImage == null)
+		        return false;
 			return glowImage.gameObject.activeSelf;
 		}
 

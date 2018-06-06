@@ -1,4 +1,5 @@
-﻿using Assets.Core.Commands;
+﻿using System;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
@@ -36,6 +37,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         }
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {
             IElementStack stack = PrefabFactory.CreateToken<ElementStackToken>(transform, locatorid);
+            if (stack == null)
+            {
+                string stackInfo = "Can't create elementId" + elementId + " from " + stackSource.SourceType;
+                if (locatorid != null)
+                    stackInfo += " with " + locatorid;
+
+                throw new ApplicationException(stackInfo);
+            }
+
+
             stack.Populate(elementId, quantity, stackSource);
             DisplayHere(stack, new Context(Context.ActionSource.Loading));
             return stack;

@@ -278,8 +278,20 @@ public class ContentImporter
         TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
         foreach (TextAsset ta in verbTextAssets)
         {
+            if(verbTextAssets.Length==0)
+                NoonUtility.Log("Can't find any verbs to import as content");
+
             string json = ta.text;
+            try
+            {
+
             verbsArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("verbs"));
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log("Can't import this JSON: " + json);
+                throw;
+            }
         }
 
         foreach (Hashtable h in verbsArrayList)

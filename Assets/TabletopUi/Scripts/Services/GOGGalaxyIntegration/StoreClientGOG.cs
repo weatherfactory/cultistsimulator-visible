@@ -22,8 +22,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             Galaxy.Api.GalaxyInstance.ListenerRegistrar()
                 .Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
 
+            try
+            {
+
             if(!GalaxyInstance.User().SignedIn())
                 GalaxyInstance.User().SignIn();
+            }
+            catch (GalaxyInstance.InvalidStateError e)
+            {
+                NoonUtility.Log(e.Message,1);
+            }
 
         }
 

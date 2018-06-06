@@ -654,9 +654,10 @@ namespace Assets.CS.TabletopUI {
 
         // Card Decay Timer
         public void ShowCardDecayTimer(bool showTimer) {
+            
 			if (Decays)
 				decayVisible = showTimer;
-			
+			if(decayView!=null)
 			decayView.gameObject.SetActive( showTimer );
         }
 
@@ -787,7 +788,11 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public bool CanAnimate() {
+        public bool CanAnimate()
+        {
+            if (gameObject == null)
+                return false;
+
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
 

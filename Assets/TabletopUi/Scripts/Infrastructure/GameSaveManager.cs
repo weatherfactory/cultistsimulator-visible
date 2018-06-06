@@ -110,6 +110,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public bool SaveGameHasMatchingVersionNumber(VersionNumber currentVersionNumber)
         {
             var htSave = RetrieveHashedSaveFromFile();
+            if (htSave == null)
+                return false;
             var htMetaInfo = htSave.GetHashtable(SaveConstants.SAVE_METAINFO);
             if (htMetaInfo == null)
                 return false;
