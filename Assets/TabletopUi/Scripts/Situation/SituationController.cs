@@ -135,10 +135,18 @@ namespace Assets.TabletopUi {
             if (command.CompletionCount >= 0)
                 situationToken.SetCompletionCount(command.CompletionCount);
         }
+        // Called from importer
+        public void ModifyStoredElementStack(string elementId, int quantity, Context context)
+        {
+            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
+            situationWindow.DisplayStoredElements();
+        }
 
         // Called from importer
-        public void ModifyStoredElementStack(string elementId, int quantity, Context context) {
-            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
+        public void ReprovisionStoredElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        {
+            var stack=situationWindow.ReprovisionExistingElementStackInStorage(stackSpecification, stackSource, locatorid);
+            situationWindow.GetStorageStacksManager().AcceptStack(stack,new Context(Context.ActionSource.Loading));
             situationWindow.DisplayStoredElements();
         }
 

@@ -71,5 +71,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
 		// Added to allow saving of window positions. Better than inserting save code into the SituationDetails IMHO - CP
 		Vector3 Position { get; set; }
         void SetWindowSize(bool wide);
+        IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null);
     }
 }

@@ -166,8 +166,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
         {
 
-            var elementStackSpecificatons = PopulateElementStackSpecificationsList(htElementStacks);
-            foreach (var ess in elementStackSpecificatons)
+            var elementStackSpecifications = PopulateElementStackSpecificationsList(htElementStacks);
+            foreach (var ess in elementStackSpecifications)
             {
                 tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),ess.LocationInfo),new Context(Context.ActionSource.Loading));
             }
@@ -332,9 +332,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
             {
                 var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-                var elementQuantitySpecifications = PopulateElementStackSpecificationsList(htElements);
-                foreach (var eqs in elementQuantitySpecifications)   
-                    controller.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity, new Context(Context.ActionSource.Loading));                    
+                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
+                foreach (var ess in elementStackSpecifications)  
+                    controller.ReprovisionStoredElementStack(ess,Source.Existing());
+                    
             }
         }
 

@@ -357,6 +357,10 @@ namespace Assets.CS.TabletopUI {
         public IElementStacksManager GetStorageStacksManager() {
             return storage.GetElementStacksManager();
         }
+        public IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        {
+            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, locatorid);
+        }
 
         public IElementStacksManager GetResultsStacksManager() {
             return results.GetElementStacksManager();
