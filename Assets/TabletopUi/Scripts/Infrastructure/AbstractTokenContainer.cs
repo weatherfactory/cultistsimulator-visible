@@ -33,6 +33,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             if (stackSpecification.LifetimeRemaining>0)
                 stack.LifetimeRemaining = stackSpecification.LifetimeRemaining;
+
+            if (stackSpecification.MarkedForConsumption)
+                stack.MarkedForConsumption = true;
+
             return stack;
         }
         public IElementStack ProvisionElementStack(string elementId, int quantity, Source stackSource, string locatorid = null) {

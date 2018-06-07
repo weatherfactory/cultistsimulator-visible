@@ -16,6 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static string SAVE_MUTATIONS="mutations";
         public static string SAVE_ILLUMINATIONS = "illuminations";
         public static string LIFETIME_REMAINING="lifetimeRemaining";
+        public static string MARKED_FOR_CONSUMPTION = "markedForConsumption";
         public static string SAVE_ACTIVELEGACY="activeLegacy";
         public const string SAVE_EXTRAGAME_STATE="extrastate";
         public const string SAVE_DECKS="decks";

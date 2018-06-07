@@ -147,6 +147,7 @@ private Hashtable GetHashtableForThisStack(IElementStack stack)
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, stack.EntityId);
             htStackProperties.Add(SaveConstants.SAVE_QUANTITY, stack.Quantity);
 			htStackProperties.Add(SaveConstants.LIFETIME_REMAINING, Mathf.CeilToInt(stack.LifetimeRemaining));
+            htStackProperties.Add(SaveConstants.MARKED_FOR_CONSUMPTION,stack.MarkedForConsumption);
 
             var currentMutations = stack.GetCurrentMutations();
             if (currentMutations.Any())

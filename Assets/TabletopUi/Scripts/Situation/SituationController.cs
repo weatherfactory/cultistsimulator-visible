@@ -544,7 +544,7 @@ namespace Assets.TabletopUi {
                 situationWindow.SetUnstarted();
         }
 
-        public void OngoingSlotsUpdated() {
+        public void OngoingSlotsOrStorageUpdated() {
             //we don't display the elements themselves, just their aspects.
             //But we *do* take the elements themselves into consideration for determining recipe execution
             var aspectsToDisplayInBottomBar = GetAspectsAvailableToSituation(false);

@@ -336,6 +336,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 foreach (var ess in elementStackSpecifications)  
                     controller.ReprovisionStoredElementStack(ess,Source.Existing());
                     
+                controller.OngoingSlotsOrStorageUpdated();
             }
         }
 
@@ -381,24 +382,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var elementQuantitySpecifications = new List<ElementStackSpecification>();
             foreach (var locationInfoKey in htStacks.Keys)
             {
-                var eachStack= htStacks.GetHashtable(locationInfoKey);
+                var htEachStack= htStacks.GetHashtable(locationInfoKey);
                 
 
-                string elementId = TryGetStringFromHashtable(eachStack, SaveConstants.SAVE_ELEMENTID);
-                int elementQuantity = GetIntFromHashtable(eachStack, SaveConstants.SAVE_QUANTITY);
-                int lifetimeRemaining = GetIntFromHashtable(eachStack, SaveConstants.LIFETIME_REMAINING);
+                string elementId = TryGetStringFromHashtable(htEachStack, SaveConstants.SAVE_ELEMENTID);
+                int elementQuantity = GetIntFromHashtable(htEachStack, SaveConstants.SAVE_QUANTITY);
+                int lifetimeRemaining = GetIntFromHashtable(htEachStack, SaveConstants.LIFETIME_REMAINING);
+                bool markedForConsumption = htEachStack[SaveConstants.MARKED_FOR_CONSUMPTION].MakeBool();
 
                 Dictionary<string, int> mutations = new Dictionary<string, int>();
-                if (eachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
+                if (htEachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
                     mutations = NoonUtility.HashtableToStringIntDictionary(
-                        eachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
+                        htEachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
 
                 Dictionary<string, string> illuminations = new Dictionary<string, string>();
 
 
-                if (eachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
+                if (htEachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
                     illuminations = NoonUtility.HashtableToStringStringDictionary(
-                        eachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
+                        htEachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
 
 
                 elementQuantitySpecifications.Add(new ElementStackSpecification(
@@ -407,7 +409,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     locationInfoKey.ToString(),
                     mutations,
                     illuminations,
-                    lifetimeRemaining));
+                    lifetimeRemaining,
+                    markedForConsumption));
             }
             return elementQuantitySpecifications;
         }
