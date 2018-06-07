@@ -1,8 +1,10 @@
-﻿
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+//
+// The GogGalaxyManager provides a base implementation of GOGGalaxy C# wrapper on which you can build upon.
+// It handles the basics of starting up and shutting down the GOG Galaxy for use.
+//
 #if UNITY_STANDALONE_LINUX
 public class GogGalaxyManager : MonoBehaviour
     {
@@ -11,28 +13,14 @@ public class GogGalaxyManager : MonoBehaviour
     Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
     }
 }
-#elif UNITY_STANDALONE_OSX
-public class GogGalaxyManager : MonoBehaviour
-{
-    private void Awake()
-    {
-        Debug.Log("OSX build: not initialising GOG Galaxy, because it's temporarily disabled");
-    }
-}
 #else
 using Galaxy.Api;
 
-
-//
-// The GogGalaxyManager provides a base implementation of GOGGalaxy C# wrapper on which you can build upon.
-// It handles the basics of starting up and shutting down the GOG Galaxy for use.
-//
 [DisallowMultipleComponent]
 public class GogGalaxyManager : MonoBehaviour
 {
-    
-    private string clientID= "50757209545787544";
-    private string clientSecret= "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
+    public string clientID = "50757209545787544";
+    public string clientSecret = "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
 
     private static GogGalaxyManager singleton;
     public static GogGalaxyManager Instance
@@ -58,7 +46,11 @@ public class GogGalaxyManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        if (Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            Debug.Log("Not currently integrating with Galaxy on OSX");
+            return;
+        }
         if (singleton != null)
         {
             Destroy(gameObject);
@@ -68,26 +60,25 @@ public class GogGalaxyManager : MonoBehaviour
 
         // We want our GogGalaxyManager Instance to persist across scenes.
         DontDestroyOnLoad(gameObject);
-    try
+
+        if(!isInitialized)
+        { 
+        try
         {
             InitParams initParams = new InitParams(clientID, clientSecret);
 
             GalaxyInstance.Init(initParams);
         }
-    catch (GalaxyInstance.InvalidStateError e)
-    {
-        Debug.Log("Invalid state error for GOG Galax, probably already initialised: " + e.Message);
-
-    }
         catch (GalaxyInstance.Error error)
         {
-            Debug.Log("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
+            Debug.LogError("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
             return;
         }
 
-        
+        Debug.Log("Galaxy SDK was initialized", this);
 
         isInitialized = true;
+        }
     }
 
     private void OnDestroy()
@@ -104,6 +95,8 @@ public class GogGalaxyManager : MonoBehaviour
             return;
         }
 
+        // PS4 requires explicit loading/unloading dependency
+        // this parameter is ignored for all platforms other than PS4
         GalaxyInstance.Shutdown(true);
     }
 
@@ -116,6 +109,5 @@ public class GogGalaxyManager : MonoBehaviour
 
         GalaxyInstance.ProcessData();
     }
-
 }
 #endif

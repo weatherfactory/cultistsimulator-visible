@@ -92,7 +92,7 @@ public class MenuScreenController : MonoBehaviour {
         registry.Register<MetaInfo>(metaInfo);
         CrossSceneState.SetMetaInfo(metaInfo);
 
-		optionsPanel.InitPreferences(null);
+		optionsPanel.InitPreferences(null,false);
 
         saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 

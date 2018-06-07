@@ -130,13 +130,17 @@ namespace Assets.CS.TabletopUI {
         #region -- Intialisation -------------------------------
 
         void Start() {
+           
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
-
+            NoonUtility.Log("Setting up services",10);
             //register everything used gamewide
             SetupServices(_situationBuilder, _tabletop);
 
+            NoonUtility.Log("Initialising token containers", 10);
             // This ensures that we have an ElementStackManager in Limbo & Tabletop
             InitializeTokenContainers();
+
+            NoonUtility.Log("Initialising subcontrollers", 10);
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
@@ -154,6 +158,8 @@ namespace Assets.CS.TabletopUI {
             // Make sure dragging is reenabled
             DraggableToken.draggingEnabled = true;
 
+            
+
             BeginGame(_situationBuilder);
             _heart.StartBeatingWithDefaultValue();
         }
@@ -165,6 +171,7 @@ namespace Assets.CS.TabletopUI {
             //CHECK LEGACY POPULATED FOR CHARACTERS
             //this is all a bit post facto and could do with being tidied up
             //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
+            NoonUtility.Log("Checking chosen legacy", 10);
             var chosenLegacy = CrossSceneState.GetChosenLegacy();
             if (chosenLegacy == null)
             {
@@ -174,13 +181,16 @@ namespace Assets.CS.TabletopUI {
                 Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
             }
 
+            NoonUtility.Log("Checking if save game exists", 10);
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
             if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
+                NoonUtility.Log("Loading game", 10);
                 LoadGame();
             }
             else
             {
+                NoonUtility.Log("Beginning new game", 10);
                 BeginNewGame(builder);
             }
         }
@@ -207,7 +217,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitPreferences(_speedController);
+            optionsPanel.InitPreferences(_speedController,true);
         }
 
         private void InitialiseListeners() {

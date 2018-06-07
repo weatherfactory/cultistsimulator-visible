@@ -23,10 +23,10 @@ namespace Assets.TabletopUi.Scripts.Services
             {
 #if UNITY_STANDALONE_LINUX
 return;
-#elif UNITY_STANDALONE_OSX
-                return;
 #else
-        
+                if (Application.platform == RuntimePlatform.OSXPlayer)
+                    return;
+
                 _gogClientProvider = new GOGStorefrontProvider();
                return;
 #endif

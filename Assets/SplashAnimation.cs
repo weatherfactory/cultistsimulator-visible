@@ -23,7 +23,12 @@ public class SplashAnimation : MonoBehaviour
 	            SceneManager.LoadScene(SceneNumber.QuoteScene);
 	            return;
             }
-        }
+
+	        if (contents.Contains("verbosity=10")) //yeah I know. Sorry future me
+	        {
+	            NoonUtility.CurrentVerbosity = 10;
+	        }
+	    }
 	    else
 	    {
 	        

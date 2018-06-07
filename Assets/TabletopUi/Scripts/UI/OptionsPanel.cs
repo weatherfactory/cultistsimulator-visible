@@ -13,8 +13,8 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 
 public class OptionsPanel : MonoBehaviour {
 
-	[Tooltip("If this is true, it will assume we're in the Tabletop game scene and try to communicate with present components.")]
-	[SerializeField] private bool isInGame = true;
+    
+	
 	[SerializeField] private GameObject windowGO;
 
     [Header("Controls")]
@@ -75,11 +75,15 @@ public class OptionsPanel : MonoBehaviour {
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
 
     private bool pauseStateWhenOptionsRequested = false;
+    //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
+    //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
+    private bool _isInGame = true;
 
-    public void InitPreferences( SpeedController spdctrl ) {
+    public void InitPreferences( SpeedController spdctrl,bool isInGame) {
 		windowGO.SetActive(false);
+        _isInGame = isInGame;
 
-		if (isInGame) {
+		if (_isInGame) {
 			speedController = spdctrl;
 		}
 
@@ -160,7 +164,7 @@ public class OptionsPanel : MonoBehaviour {
     public void ToggleVisibility() {
 		windowGO.SetActive(!windowGO.activeSelf);
 
-		if (!isInGame)
+		if (!_isInGame)
 			return;
 
 		if (windowGO.activeInHierarchy)
@@ -191,7 +195,7 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     public void RestartGame() {
-		if (!isInGame)
+		if (!_isInGame)
 			return;
 		
         Registry.Retrieve<TabletopManager>().RestartGame();
@@ -199,7 +203,7 @@ public class OptionsPanel : MonoBehaviour {
     }
 
 	public void LeaveGame() {
-		if (!isInGame)
+		if (!_isInGame)
 			return;
 		
         var tabletopManager = Registry.Retrieve<TabletopManager>();
@@ -318,7 +322,7 @@ public class OptionsPanel : MonoBehaviour {
 		float timer = GetInspectionTimeForValue(value);
 		PlayerPrefs.SetFloat(NOTIFICATIONTIME, value);
 
-		if (!isInGame)
+		if (!_isInGame)
 			return;
 
 		if (aspectDetailsWindow != null)
@@ -340,7 +344,7 @@ public class OptionsPanel : MonoBehaviour {
 		scale = Mathf.Max( scale, 0.75f );	// ensure we never get tiny menu scale - CP
 		PlayerPrefs.SetFloat(SCREENCANVASSIZE, value);
 
-		if (!isInGame)
+		if (!_isInGame)
 			return;
 
 		screenCanvasScaler.SetTargetScaleFactor(scale);
@@ -357,7 +361,7 @@ public class OptionsPanel : MonoBehaviour {
         // value ranges from 1 to 10 in mins
         PlayerPrefs.SetFloat(AUTOSAVEINTERVAL, value);
 
-		if (!isInGame)
+		if (!_isInGame)
 			return;
 		
 		var tabletopManager = Registry.Retrieve<TabletopManager>();
