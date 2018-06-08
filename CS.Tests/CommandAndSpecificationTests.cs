@@ -13,13 +13,13 @@ namespace Assets.Editor.Tests
         [Test]
         public void Test_ElementQuantitySpecification_CalculatesDepthFromLocationPath()
         {
-            var eqs0=new ElementStackSpecification("element",1,"primary",new Dictionary<string, int>(),null,  0);
+            var eqs0=new ElementStackSpecification("element",1,"primary",new Dictionary<string, int>(),null,  0,false);
             Assert.AreEqual(0,eqs0.Depth);
 
-            var eqs1 = new ElementStackSpecification("element", 1, "primary_foo", new Dictionary<string, int>(), null, 0);
+            var eqs1 = new ElementStackSpecification("element", 1, "primary_foo", new Dictionary<string, int>(), null, 0, false);
             Assert.AreEqual(1, eqs1.Depth);
 
-            var eqs2 = new ElementStackSpecification("element", 1, "primary_foo_bar", new Dictionary<string, int>(), null, 0);
+            var eqs2 = new ElementStackSpecification("element", 1, "primary_foo_bar", new Dictionary<string, int>(), null, 0, false);
             Assert.AreEqual(2, eqs2.Depth);
         }
     }
