@@ -46,6 +46,14 @@
  craftable:false
  },
  
+   {id:"translatefucinehint",
+ label:"Translate from Fucine?",
+ actionId:"study",
+ requirements:{textfucine:1},
+ startdescription:"I don't know Fucine; perhaps no-one living does. There might be a Rosetta Stone somewhere... or I might find a tutor who is not living, not exactly.",
+ hintonly:true,
+ craftable:false
+ },
    {id:"translatephrygianhint",
  label:"Translate from Phrygian?",
  actionId:"study",

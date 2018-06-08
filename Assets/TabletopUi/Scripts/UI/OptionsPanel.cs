@@ -32,6 +32,8 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI autosaveSliderValue;
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
 
+    [SerializeField] private RestartButton restartButton;
+
     [Header("Settings")]
     [Tooltip("Music volume goes from 0 to 1")]
     public float musicVolMax = 0.25f;
@@ -163,11 +165,15 @@ public class OptionsPanel : MonoBehaviour {
 
     public void ToggleVisibility() {
 		windowGO.SetActive(!windowGO.activeSelf);
-
-		if (!_isInGame)
+        
+        if (!_isInGame)
 			return;
 
-		if (windowGO.activeInHierarchy)
+        //reset the state on the must-confirm Restart button. doesn't matter if this is closing or opening,
+        //let's reset it either way
+        restartButton.ResetState();
+
+        if (windowGO.activeInHierarchy)
 		{
 			pauseStateWhenOptionsRequested = Registry.Retrieve<TabletopManager>().GetPausedState();
 
@@ -197,9 +203,12 @@ public class OptionsPanel : MonoBehaviour {
     public void RestartGame() {
 		if (!_isInGame)
 			return;
+        if(restartButton.AttemptRestart())
+        { 
 		
         Registry.Retrieve<TabletopManager>().RestartGame();
         ToggleVisibility();
+        }
     }
 
 	public void LeaveGame() {
