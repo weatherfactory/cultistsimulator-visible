@@ -7,12 +7,23 @@ requirements: {legacydetectivejob:1},
 aspects: {careeradvancement:1},
 effects: {LEVER_LastFollower:1,legacydetective_plotitem:1,funds:3,health:1},
 
-alternativerecipes: [{id:needs,chance:100,additional:true}],
+alternativerecipes: [{id:"needs",chance:100,additional:true},
+{id:"detectiveopendream",chance:100,additional:true}],
 startdescription: "Once again, I have been seconded to the Suppression Bureau, the government office which concerns itself with 'occult' crimes. The Bureau has a poor reputation.",
 description: "The Bureau has identified a troublesome individual I am to investigate. My breath tightens when I see the name. There was another case, one I remember all too well...",
 warmup:10,
 craftable: true,
 linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}]
+},
+
+{id: "detectiveopendream",
+label: "Dreaming...",
+actionId: "dream",
+startdescription:"The Suppression Bureau publishes memoranda on the dangers of dreams. Every week, there's another.",
+description:"'Report dreams of moonlight. Report dreams of a night-bound forest. Draw back your curtains to be woken by the sun. Do not cut your hair before you sleep. Never sleep before a cracked mirror.'",
+effects: {passion:1},
+warmup:30,
+craftable: false
 },
 
 {id: "workdetectivejob_start_promote_lever_believer",
@@ -182,7 +193,7 @@ startdescription: "I cannot forget what I saw in the file on #PREVIOUSCHARACTERN
 description:"The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
 effects:{legacydetective_plotitem:-1,LEVER_LastDesire:1,fascination:1,dread:1},
 alternativerecipes:[{id:"legacydetectiveplotitem_tempt_resist",chance:100},
-{id:"detectiveopendream",chance:100,additional:true}],
+{id:"visionsrisk",chance:100,additional:true}],
 warmup:60,
 craftable: false},
 
@@ -194,18 +205,7 @@ startdescription:"I am discipline. I am all discipline. I haven't lasted this lo
 aspects:{fatiguing:1},
 description:"The temptation has passed, for now."},
 
-{id: "detectiveopendream",
-label: "Dreaming...",
-actionId: "dream",
-startdescription:"The Suppression Bureau publishes memoranda on the dangers of dreams. Every week, there's another.",
-description:"'Report dreams of moonlight. Report dreams of a night-bound forest. Draw back your curtains to be woken by the sun. Do not cut your hair before you sleep. Never sleep before a cracked mirror.'",
-effects: {passion:1},
-warmup:30,
-craftable: false,
-alternativerecipes:[
-{id:visionsrisk,chance:100,additional:true}
-],
-},
+
 
 
 {id: "detectiveopenstudy",
@@ -248,7 +248,7 @@ label: "I Should Not Open the Sealed File",
 actionId: "study",
 requirements: {legacydetective_plotitem:1},
 alternativerecipes: [{id:"detectiveopendream",chance:100,additional:true}],
-effects: {legacydetective_plotitem:-1,fascination:1,LEVER_LastDesire:1,dread:1}
+effects: {legacydetective_plotitem:-1,fascination:1,LEVER_LastDesire:1,dread:1},
 startdescription:"I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
 description:"The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
 warmup:60,
