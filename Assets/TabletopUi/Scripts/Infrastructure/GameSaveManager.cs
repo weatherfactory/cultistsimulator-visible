@@ -11,6 +11,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using OrbCreationExtensions;
+using UnityEngine;	// added for debug asserts - CP
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -78,6 +79,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             var metaInfo = Registry.Retrieve<MetaInfo>();
             var allDecks = character.DeckInstances;
+
+			Debug.Assert( currentSituationControllers.Count > 0, "No situation controllers!" );
 
             var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,
                 currentSituationControllers,allDecks);

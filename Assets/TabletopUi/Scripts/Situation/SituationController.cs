@@ -657,10 +657,17 @@ namespace Assets.TabletopUi {
         public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim) {
             greedyAnimIsActive = true;
             slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
+			
+			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, true );
+
+			// Hack to try to repro bug #1253 - CP
+			//var tabletop = Registry.Retrieve<TabletopManager>();
+			//tabletop.ForceAutosave();
         }
 
         void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
             greedyAnimIsActive = false;
+			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, false );
         }
 
         // Update Visuals
