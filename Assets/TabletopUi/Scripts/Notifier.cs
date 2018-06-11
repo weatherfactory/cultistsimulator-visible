@@ -14,7 +14,7 @@ namespace Assets.CS.TabletopUI {
         
         [Header("Notification")]
         [SerializeField] Transform notificationHolder;
-        //[SerializeField] NotificationLog notificationLog;
+        [SerializeField] NotificationLog notificationLog;
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
@@ -33,7 +33,7 @@ namespace Assets.CS.TabletopUI {
 
 		// Text Log Disabled
         public void PushTextToLog(string text) {
-        	//notificationLog.AddText(text);
+        	notificationLog.AddText(text);
         }
         
 
