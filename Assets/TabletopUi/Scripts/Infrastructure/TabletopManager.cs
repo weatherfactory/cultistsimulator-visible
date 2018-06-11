@@ -91,6 +91,7 @@ namespace Assets.CS.TabletopUI {
 		{
 			Drag,	// Cannot save because held card gets lost
 			Mansus,	// Cannot save by design
+			Greedy,	// Cannot save during Magnet grab (spec fix for #1253)
 			NumNonSaveableTypes
 		};
         static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
@@ -100,6 +101,11 @@ namespace Assets.CS.TabletopUI {
 		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
 		private float AUTOSAVE_INTERVAL = 300.0f;
         private List<string> currentDoomTokens=new List<string>();
+
+		public void ForceAutosave()	// Useful for forcing autosave to happen at tricky moments for debugging - CP
+		{
+			housekeepingTimer = AUTOSAVE_INTERVAL;
+		}
 
         public void Update()
 		{
@@ -810,6 +816,15 @@ namespace Assets.CS.TabletopUI {
 			obj.gameObject.SetActive(true);
 		}
 
-    }
+#if UNITY_EDITOR
+		private void OnGUI()
+		{
+			if (!IsSafeToAutosave())
+			{
+				GUI.TextArea( new Rect(Screen.width * 0.5f - 100f, 10f, 200f, 20f), "Autosave Blocked" );
+			}
+		}
+#endif
+	}
 
 }
