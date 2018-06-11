@@ -117,9 +117,9 @@ namespace Noon
             return wholePath;
         }
 
-        public static string GetBackupGameSaveLocation()
+        public static string GetBackupGameSaveLocation( int index )
         {
-            string wholePath = Application.persistentDataPath + "/backup_save.txt";
+		    string wholePath = Application.persistentDataPath + "/backup_save" + index + ".txt";
             return wholePath;
         }
 
