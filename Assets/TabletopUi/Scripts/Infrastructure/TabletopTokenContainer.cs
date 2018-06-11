@@ -100,7 +100,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
 
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
         }
-        catch (Exception e)
+        catch (Exception)
         {
             //in case the token is misbehaving somehow and TRAPPED BETWEEN WORLS
             return 0.ToString() + SaveConstants.SEPARATOR + 0.ToString();

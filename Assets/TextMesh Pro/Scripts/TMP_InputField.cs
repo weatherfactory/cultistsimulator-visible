@@ -1161,7 +1161,7 @@ namespace TMPro
             bool ctrl = isMac ? (currentEventModifiers & EventModifiers.Command) != 0 : (currentEventModifiers & EventModifiers.Control) != 0;
             bool shift = (currentEventModifiers & EventModifiers.Shift) != 0;
             bool alt = (currentEventModifiers & EventModifiers.Alt) != 0;
-            bool ctrlOnly = ctrl && !alt && !shift;
+            //bool ctrlOnly = ctrl && !alt && !shift;
 
 			switch (evt.keyCode)
             {

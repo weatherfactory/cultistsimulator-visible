@@ -59,11 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Core\Utility\Editor\BuildUtility.cs" />
     <Compile Include="Assets\Editor\BugReporting\DevLogWindow.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Audio\Editor\SoundManagerEditor.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Editor\BuildScripts.cs" />
-    <Compile Include="Assets\TabletopUi\Scripts\Editor\CopySteamLibraries.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Editor\BuildScripts\BuildScripts.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Editor\BuildScripts\BuildUtility.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Editor\BuildScripts\CopyGalaxyLibraries.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\Editor\BuildScripts\CopySteamLibraries.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Editor\SetMipMapBiasInSelection.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\Editor\SlotGridManagerEditor.cs" />
     <Compile Include="Assets\TextMesh Pro\Editor\Property Drawers\DropdownOptionListDrawer.cs" />

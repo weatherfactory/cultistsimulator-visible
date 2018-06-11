@@ -1,14 +1,15 @@
 ﻿using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEngine;
 
 namespace Facepunch.Editor
 {
     public class CopySteamLibraries
     {
         //this code credit FACEPUNCH thank you sweary Garry
-        [PostProcessBuild(1)]
         public static void Copy(BuildTarget target, string pathToBuiltProject)
         {
+            Debug.Log("BUILD: copying Steam libraries to useful locations.");
             //
             // Only steam
             //

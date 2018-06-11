@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         const float radiusIncrement = 50f;
         const float radiusMaxSize = 250f;
 
-        ChoreographerDebugView currentDebug;
+        private ChoreographerDebugView _currentDebug;
 
         public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform) {
             _tabletop = tabletop;
@@ -111,18 +111,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
 #if DEBUG
-            currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
-            currentDebug.tabletop = _tabletop.transform;
-            currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
-            currentDebug.checkedPoints = new List<Vector2>();
-            currentDebug.tokenOverlaps = false;
-            currentDebug.checkedRects = new List<Rect>();
+            _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
+            _currentDebug.tabletop = _tabletop.transform;
+            _currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+            _currentDebug.checkedPoints = new List<Vector2>();
+            _currentDebug.tokenOverlaps = false;
+            _currentDebug.checkedRects = new List<Rect>();
 
             var pos = GetFreeTokenPosition(token, centerPos, startIteration);
-            currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
-            currentDebug.hasDebugData = true;
+            _currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
+            _currentDebug.hasDebugData = true;
 
-            currentDebug.InitKill(10f); // In 10s, debug thing kills itself
+            _currentDebug.InitKill(10f); // In 10s, debug thing kills itself
 
             return pos;
 #else
@@ -138,9 +138,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             if (IsLegalPosition(targetRect, token))
                 return centerPos;
 
-            if (currentDebug != null) {
-                currentDebug.targetRect = targetRect;
-                currentDebug.tokenOverlaps = true;
+            if (_currentDebug != null) {
+                _currentDebug.targetRect = targetRect;
+                _currentDebug.tokenOverlaps = true;
 			}
 
             // We grab a bunch of test points
@@ -207,8 +207,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (CanTokenBeIgnored(token, ignoreToken))
                     continue;
 
-                if (currentDebug != null && !currentDebug.checkedRects.Contains(rectCheck)) { 
-                    currentDebug.checkedRects.Add(rectCheck);
+                if (_currentDebug != null && !_currentDebug.checkedRects.Contains(rectCheck)) { 
+                    _currentDebug.checkedRects.Add(rectCheck);
                     //Debug.Log("Checking for " + token.name + " at " + rectCheck);
                 }
 
@@ -259,8 +259,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                     points[p] = new Vector2(pos.x + x * pointGridSize, pos.y + y * pointGridSize);
 
-                    if (currentDebug != null) 
-                        currentDebug.checkedPoints.Add(points[p]);
+                    if (_currentDebug != null) 
+                        _currentDebug.checkedPoints.Add(points[p]);
 
                     p++;
                 }
