@@ -1,0 +1,14 @@
+{"elements":
+    [
+		{id: "insight",
+		label: "Insight",
+		description: "An insight into this mystery.",
+		lifetime:1
+		},
+		{id: "bid",
+		label: "Bid",
+		description: "A bid placed in an auction house.",
+		xtriggers:{restore:funds}
+		}
+]
+};

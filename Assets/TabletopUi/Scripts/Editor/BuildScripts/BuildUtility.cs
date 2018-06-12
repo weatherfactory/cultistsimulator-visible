@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Facepunch.Editor;
 using Galaxy;
 using Noon;
@@ -20,11 +21,13 @@ namespace Assets.Core.Utility
         [PostProcessBuild]
         public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
         {
-            CopySteamLibraries.Copy(target,pathToBuiltProject);
+            CopySteamLibraries.Copy(target, pathToBuiltProject);
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
+            Thread.Sleep(1000);
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
             AddVersionNumber(exeFolder);
             RenameExecutable(target, pathToBuiltProject, exeFolder);
+
 
         }
 

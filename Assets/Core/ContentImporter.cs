@@ -3,6 +3,7 @@ using System;
 using Noon;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
@@ -13,6 +14,8 @@ public class ContentImporter
 {
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
+    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/";
+    private readonly string CORE_OVERRIDE_DIR = Application.streamingAssetsPath + "/content/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -105,6 +108,39 @@ public class ContentImporter
 
         return cssList;
 
+    }
+
+    private ArrayList GetContentItems(string contentOfType)
+    {
+        var contentFolder = Application.streamingAssetsPath + "/content/core/" + contentOfType;
+        var contentOverrideFolder = Application.streamingAssetsPath + "/content/override/" + contentOfType;
+        var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList();
+
+        contentFiles.AddRange(overridecontentFiles);
+        if (!contentFiles.Any())
+            NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
+
+        ArrayList contentItemArrayList = new ArrayList();
+        foreach (var contentFile in contentFiles)
+        {
+            string json = File.ReadAllText(contentFile);
+
+
+            try
+            {
+                contentItemArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(contentOfType));
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
+                throw;
+            }
+        }
+        return contentItemArrayList;
+
+
+    
     }
 
     public void ImportElements()
@@ -247,25 +283,10 @@ public class ContentImporter
 
     public void ImportRecipes()
     {
-        TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
-        ArrayList recipesArrayList = new ArrayList();
-
-        foreach (TextAsset ta in recipeTextAssets)
-        {
-            string json = ta.text;
-            try
-            {
-                recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
-            }
+        //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        ArrayList recipesArrayList = GetContentItems("recipes");
 
 
-            catch (Exception e)
-            {
-                NoonUtility.Log("This file broke: " + ta.name + " with error " + e.Message);
-                throw;
-            }
-
-        }
 
         PopulateRecipeList(recipesArrayList);
         NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,2);
@@ -274,25 +295,12 @@ public class ContentImporter
 
     public void ImportVerbs()
     {
-        ArrayList verbsArrayList = new ArrayList();
-        TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
-        foreach (TextAsset ta in verbTextAssets)
-        {
-            if(verbTextAssets.Length==0)
-                NoonUtility.Log("Can't find any verbs to import as content");
+        
+            //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
 
-            string json = ta.text;
-            try
-            {
+   
+        ArrayList verbsArrayList = GetContentItems("verbs");
 
-            verbsArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("verbs"));
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log("Can't import this JSON: " + json);
-                throw;
-            }
-        }
 
         foreach (Hashtable h in verbsArrayList)
         {
@@ -311,6 +319,8 @@ public class ContentImporter
         }
 
     }
+
+
 
     private void ImportDeckSpecs()
     {

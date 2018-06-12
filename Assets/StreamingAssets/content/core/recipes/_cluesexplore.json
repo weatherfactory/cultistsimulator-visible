@@ -1,0 +1,34 @@
+ {"recipes":
+ [
+
+     					{
+	id: "explorevault_hint_addfunds",
+	label: "Preparations for an Expedition?",
+	actionId: "explore",
+	requirements: {vault:1,follower:1},
+	startdescription: "If I add at least one Funds, I can begin the Expedition. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	hintonly:true,
+	craftable: false,
+	},
+			{
+	id: "explorevault_hint_addfollower",
+	label: "Preparations for an Expedition?",
+	actionId: "explore",
+	requirements: {vault:1,funds:1},
+	startdescription: "If I add a Follower, I can begin the Expedition. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	hintonly:true,
+	craftable: false,
+	},
+      					{
+	id: "explorevault_hint",
+	label: "Preparations for an Expedition?",
+	actionId: "explore",
+	requirements: {vault:1},
+	startdescription: "I could send an Expedition here to find books, treasures, tools of power. But I'll need Followers to send, and Funds to supply them.",
+	hintonly:true,
+	craftable: false,
+	},
+	
+	
+]
+}
