@@ -641,15 +641,21 @@ namespace Assets.CS.TabletopUI {
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, cosmetic_dt );
 			if (LifetimeRemaining <= 0.0f)
 				decayAlpha = 0.0f;
-			decayView.gameObject.SetActive( decayAlpha > 0.0f );
+			if (decayView && decayView.gameObject)
+			{
+				decayView.gameObject.SetActive( decayAlpha > 0.0f );
+			}
 
 			// Set the text and background alpha so it fades on and off smoothly
-			Color col = decayCountText.color;
-			col.a = decayAlpha;
-			decayCountText.color = col;
-			col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
-			col.a *= decayAlpha;
-			decayBackgroundImage.color = col;		
+			if (decayCountText && decayBackgroundImage)
+			{
+				Color col = decayCountText.color;
+				col.a = decayAlpha;
+				decayCountText.color = col;
+				col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
+				col.a *= decayAlpha;
+				decayBackgroundImage.color = col;
+			}
 		}
 
         // Card Decay Timer
