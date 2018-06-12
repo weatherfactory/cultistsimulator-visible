@@ -3,6 +3,7 @@ using System;
 using Noon;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
@@ -13,6 +14,8 @@ public class ContentImporter
 {
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
+    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
+    private readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -107,16 +110,48 @@ public class ContentImporter
 
     }
 
+    private ArrayList GetContentItems(string contentOfType)
+    {
+        var contentFolder = CORE_CONTENT_DIR + contentOfType;
+        var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
+        var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
+
+        contentFiles.AddRange(overridecontentFiles);
+        if (!contentFiles.Any())
+            NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
+
+        ArrayList contentItemArrayList = new ArrayList();
+        foreach (var contentFile in contentFiles)
+        {
+            string json = File.ReadAllText(contentFile);
+
+
+            try
+            {
+                contentItemArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(contentOfType));
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
+                throw;
+            }
+        }
+        return contentItemArrayList;
+
+
+    
+    }
+
     public void ImportElements()
     {
-        TextAsset[] elementTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS);
+
+
+        ArrayList alElements = GetContentItems(CONST_ELEMENTS);
+
         int totalElementsFound = 0;
-        foreach (TextAsset ta in elementTextAssets)
-        {
-            string json = ta.text;
-            var htElements = SimpleJsonImporter.Import(json);
-            totalElementsFound += PopulateElements(htElements);
-        }
+
+        totalElementsFound += PopulateElements(alElements);
 
         NoonUtility.Log("Total elements found: " + totalElementsFound,2);
 
@@ -136,13 +171,15 @@ public class ContentImporter
         }
     }
 
-    public int PopulateElements(Hashtable htElements)
+    public int PopulateElements(ArrayList alElements)
     {
 
-        if (htElements == null)
-            LogProblem("Elements were never imported; PopulateElementForId failed");
+        if (alElements == null)
+        { 
+            LogProblem("Elements were never imported; PopulateElements failed");
+            return 0;
+        }
 
-        ArrayList alElements = htElements.GetArrayList("elements");
 
         foreach (Hashtable htElement in alElements)
         {
@@ -247,25 +284,10 @@ public class ContentImporter
 
     public void ImportRecipes()
     {
-        TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
-        ArrayList recipesArrayList = new ArrayList();
-
-        foreach (TextAsset ta in recipeTextAssets)
-        {
-            string json = ta.text;
-            try
-            {
-                recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
-            }
+        //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        ArrayList recipesArrayList = GetContentItems(CONST_RECIPES);
 
 
-            catch (Exception e)
-            {
-                NoonUtility.Log("This file broke: " + ta.name + " with error " + e.Message);
-                throw;
-            }
-
-        }
 
         PopulateRecipeList(recipesArrayList);
         NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,2);
@@ -274,25 +296,12 @@ public class ContentImporter
 
     public void ImportVerbs()
     {
-        ArrayList verbsArrayList = new ArrayList();
-        TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
-        foreach (TextAsset ta in verbTextAssets)
-        {
-            if(verbTextAssets.Length==0)
-                NoonUtility.Log("Can't find any verbs to import as content");
+        
+            //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
 
-            string json = ta.text;
-            try
-            {
+   
+        ArrayList verbsArrayList = GetContentItems(CONST_VERBS);
 
-            verbsArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("verbs"));
-            }
-            catch (Exception e)
-            {
-                NoonUtility.Log("Can't import this JSON: " + json);
-                throw;
-            }
-        }
 
         foreach (Hashtable h in verbsArrayList)
         {
@@ -312,16 +321,12 @@ public class ContentImporter
 
     }
 
+
+
     private void ImportDeckSpecs()
     {
-        ArrayList decksArrayList = new ArrayList();
-        TextAsset[] deckTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
-        foreach (TextAsset ta in deckTextAssets)
-        {
-            string json = ta.text;
-            decksArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_DECKS));
-        }
-
+        ArrayList decksArrayList = GetContentItems(CONST_DECKS);
+        
         for (int i = 0; i < decksArrayList.Count; i++)
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
@@ -431,14 +436,8 @@ public class ContentImporter
 
     public void ImportLegacies()
     {
-        ArrayList legaciesArrayList = new ArrayList();
-        TextAsset[] legacyTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_LEGACIES);
-        foreach (TextAsset ta in legacyTextAssets)
-        {
-            string json = ta.text;
-            legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_LEGACIES));
-        }
-
+        ArrayList legaciesArrayList = GetContentItems(CONST_LEGACIES);
+        
         for (int i = 0; i < legaciesArrayList.Count; i++)
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
