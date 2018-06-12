@@ -102,8 +102,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htSituations = new Hashtable();
             foreach (var s in situationControllers)
             {
-                var htSituationProperties = s.GetSaveData(); 
-                htSituations.Add(s.situationToken.SaveLocationInfo, htSituationProperties);
+				if (s.situationToken != null && s.situationToken.SaveLocationInfo != null)
+				{
+					var htSituationProperties = s.GetSaveData(); 
+					htSituations.Add(s.situationToken.SaveLocationInfo, htSituationProperties);
+				}
             }
             return htSituations;
         }
@@ -117,10 +120,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htElementStacks = new Hashtable();
             foreach (var e in stacks)
             {
-               var stackHashtable=GetHashtableForThisStack(e);
+				if (e!=null && e.SaveLocationInfo!=null)
+				{
+					var stackHashtable=GetHashtableForThisStack(e);
 
-                    htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
-
+					htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
+				}
             }
             return htElementStacks;
         }

@@ -41,9 +41,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //copies old version in case of corruption
         private void BackupSave()
         {
-            if(DoesGameSaveExist()) //otherwise we can't copy it
-                File.Copy(NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(),true);
-       }
+			const int MAX_BACKUPS = 5;
+			// Back up a number of previous saves
+            for (int i=MAX_BACKUPS-1; i>=1; i--)
+			{
+				if (File.Exists(NoonUtility.GetBackupGameSaveLocation(i)))	//otherwise we can't copy it
+	                File.Copy  (NoonUtility.GetBackupGameSaveLocation(i), NoonUtility.GetBackupGameSaveLocation(i+1),true);			
+			}
+			// Back up the main save
+			if (File.Exists(NoonUtility.GetGameSaveLocation()))	//otherwise we can't copy it
+                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(1),true);
+		}
         
         /// <summary>
         /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game

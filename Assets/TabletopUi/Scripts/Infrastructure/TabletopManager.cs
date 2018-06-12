@@ -819,9 +819,16 @@ namespace Assets.CS.TabletopUI {
 #if UNITY_EDITOR
 		private void OnGUI()
 		{
+			// Extra tools for debugging autosave.
+			// Counter to show time to next autosave. Click it to reduce to a five second countdown
+			if (GUI.Button( new Rect(Screen.width * 0.5f - 100f, 10f, 150f, 20f), "Autosave in " + (int)(AUTOSAVE_INTERVAL-housekeepingTimer) ))
+			{
+				housekeepingTimer = AUTOSAVE_INTERVAL - 5f;		// Click 
+			}
+
 			if (!IsSafeToAutosave())
 			{
-				GUI.TextArea( new Rect(Screen.width * 0.5f - 100f, 10f, 200f, 20f), "Autosave Blocked" );
+				GUI.TextArea( new Rect(Screen.width * 0.5f + 50f, 10f, 70f, 20f), "BLOCKED" );
 			}
 		}
 #endif
