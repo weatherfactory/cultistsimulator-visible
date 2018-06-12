@@ -14,8 +14,8 @@ public class ContentImporter
 {
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
-    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core";
-    private readonly string CORE_OVERRIDE_DIR = Application.streamingAssetsPath + "/content/override";
+    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
+    private readonly string CORE_OVERRIDE_DIR = Application.streamingAssetsPath + "/content/override/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -145,14 +145,13 @@ public class ContentImporter
 
     public void ImportElements()
     {
-        TextAsset[] elementTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS);
+
+
+        ArrayList alElements = GetContentItems(CONST_ELEMENTS);
+
         int totalElementsFound = 0;
-        foreach (TextAsset ta in elementTextAssets)
-        {
-            string json = ta.text;
-            var htElements = SimpleJsonImporter.Import(json);
-            totalElementsFound += PopulateElements(htElements);
-        }
+
+        totalElementsFound += PopulateElements(alElements);
 
         NoonUtility.Log("Total elements found: " + totalElementsFound,2);
 
@@ -172,13 +171,15 @@ public class ContentImporter
         }
     }
 
-    public int PopulateElements(Hashtable htElements)
+    public int PopulateElements(ArrayList alElements)
     {
 
-        if (htElements == null)
-            LogProblem("Elements were never imported; PopulateElementForId failed");
+        if (alElements == null)
+        { 
+            LogProblem("Elements were never imported; PopulateElements failed");
+            return 0;
+        }
 
-        ArrayList alElements = htElements.GetArrayList("elements");
 
         foreach (Hashtable htElement in alElements)
         {
@@ -435,14 +436,8 @@ public class ContentImporter
 
     public void ImportLegacies()
     {
-        ArrayList legaciesArrayList = new ArrayList();
-        TextAsset[] legacyTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_LEGACIES);
-        foreach (TextAsset ta in legacyTextAssets)
-        {
-            string json = ta.text;
-            legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_LEGACIES));
-        }
-
+        ArrayList legaciesArrayList = GetContentItems(CONST_LEGACIES);
+        
         for (int i = 0; i < legaciesArrayList.Count; i++)
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
