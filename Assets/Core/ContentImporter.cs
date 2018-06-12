@@ -14,8 +14,8 @@ public class ContentImporter
 {
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
-    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/";
-    private readonly string CORE_OVERRIDE_DIR = Application.streamingAssetsPath + "/content/";
+    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core";
+    private readonly string CORE_OVERRIDE_DIR = Application.streamingAssetsPath + "/content/override";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -112,8 +112,8 @@ public class ContentImporter
 
     private ArrayList GetContentItems(string contentOfType)
     {
-        var contentFolder = Application.streamingAssetsPath + "/content/core/" + contentOfType;
-        var contentOverrideFolder = Application.streamingAssetsPath + "/content/override/" + contentOfType;
+        var contentFolder = CORE_CONTENT_DIR + contentOfType;
+        var contentOverrideFolder = CORE_OVERRIDE_DIR + contentOfType;
         var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
         var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList();
 
@@ -284,7 +284,7 @@ public class ContentImporter
     public void ImportRecipes()
     {
         //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
-        ArrayList recipesArrayList = GetContentItems("recipes");
+        ArrayList recipesArrayList = GetContentItems(CONST_RECIPES);
 
 
 
@@ -299,7 +299,7 @@ public class ContentImporter
             //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
 
    
-        ArrayList verbsArrayList = GetContentItems("verbs");
+        ArrayList verbsArrayList = GetContentItems(CONST_VERBS);
 
 
         foreach (Hashtable h in verbsArrayList)
@@ -324,14 +324,8 @@ public class ContentImporter
 
     private void ImportDeckSpecs()
     {
-        ArrayList decksArrayList = new ArrayList();
-        TextAsset[] deckTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
-        foreach (TextAsset ta in deckTextAssets)
-        {
-            string json = ta.text;
-            decksArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_DECKS));
-        }
-
+        ArrayList decksArrayList = GetContentItems(CONST_DECKS);
+        
         for (int i = 0; i < decksArrayList.Count; i++)
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
