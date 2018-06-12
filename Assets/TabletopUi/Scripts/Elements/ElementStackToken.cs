@@ -802,6 +802,9 @@ namespace Assets.CS.TabletopUI {
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
 
+            if (_element == null)
+                return false;
+
             return _element.AnimFrames > 0;
         }
 

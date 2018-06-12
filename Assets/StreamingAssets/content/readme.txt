@@ -10,6 +10,7 @@ Things you currently can't do that I might add later:
 
 - set the priority of a recipe - this is determined by the alpha order in the folder (/core always precedes /more)
 - add your own art
+- add your own endings
 - get remotely useful feedback on why the game has crashed because you left a curly bracket out.
 - read any documentation, except that I believe #datamining on the community Discord has already created their own.
 
