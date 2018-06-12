@@ -23,7 +23,7 @@ namespace Assets.Core.Utility
         {
             CopySteamLibraries.Copy(target, pathToBuiltProject);
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
-            Thread.Sleep(1000);
+            
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
             AddVersionNumber(exeFolder);
             RenameExecutable(target, pathToBuiltProject, exeFolder);

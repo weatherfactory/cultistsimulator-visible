@@ -15,7 +15,7 @@ public class ContentImporter
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
     private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
-    private readonly string CORE_OVERRIDE_DIR = Application.streamingAssetsPath + "/content/override/";
+    private readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -113,9 +113,9 @@ public class ContentImporter
     private ArrayList GetContentItems(string contentOfType)
     {
         var contentFolder = CORE_CONTENT_DIR + contentOfType;
-        var contentOverrideFolder = CORE_OVERRIDE_DIR + contentOfType;
+        var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
         var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
-        var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList();
+        var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
 
         contentFiles.AddRange(overridecontentFiles);
         if (!contentFiles.Any())
