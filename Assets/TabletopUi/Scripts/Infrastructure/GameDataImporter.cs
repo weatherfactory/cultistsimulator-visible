@@ -167,6 +167,57 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         {
 
             var elementStackSpecifications = PopulateElementStackSpecificationsList(htElementStacks);
+
+			//
+			// BEGIN SAVE REPAIR
+			//
+			// Failsafe save repair - we know that the save can sometimes fill with duplicate cards causing massive slowdown. - CP
+			// This looks for identical dupes and removes them, so the savegame is useful again.
+			float startTime = Time.timeSinceLevelLoad;
+			int dupeCount = 0;
+			bool[] dupes = new bool[ elementStackSpecifications.Count() ];	// Alloc and init a bool per card in the list. Allows quick discards.
+			for ( int n=0; n<dupes.Length; n++)
+				dupes[n] = false;
+			for ( int i=0; i<elementStackSpecifications.Count()-1; i++ )	// Iterate from 0 to all but the last entry
+			{
+				var stackToTest = elementStackSpecifications.ElementAt(i);
+
+				// Expecting a LocationInfo of the form "100_0_hashcode" or "Work_hashcode"
+				int underscore1 = stackToTest.LocationInfo.IndexOf( '_' );					// Find first underscore
+				int underscore2 = stackToTest.LocationInfo.IndexOf( '_', underscore1+1 );	// Find second (optional) underscore
+				string locString = stackToTest.LocationInfo.Truncate( underscore2>0?underscore2:underscore1 );	// Trim so we can compare the non-hashcode bit
+
+				// Compare current card against all cards after it in the list
+				for ( int j=i+1; j<elementStackSpecifications.Count(); j++ )	
+				{
+					var stackToCompare = elementStackSpecifications.ElementAt(j);
+					
+					if (dupes[j])	
+						continue;	// Already marked this entry as a dupe - next!
+
+					if (stackToTest.ElementId.Equals( stackToCompare.ElementId ) == false)
+						continue;	// Different card type - next!
+
+					string tempLoc = stackToCompare.LocationInfo.Truncate( locString.Length );
+					if (tempLoc.Equals( locString ) == false)
+						continue;	// Different position - next!
+
+					dupes[j] = true;
+					dupeCount++;
+				}
+			}
+
+			for ( int n=dupes.Length-1; n>=0; n--)
+			{
+				if (dupes[n])
+					elementStackSpecifications.RemoveAt( n );
+			}
+			float repairTime = Time.timeSinceLevelLoad - startTime;
+			Debug.Log("Repaired " + dupeCount + " duplicates in " + repairTime + "s");
+			//
+			// END SAVE REPAIR
+			//
+
             foreach (var ess in elementStackSpecifications)
             {
                 tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),ess.LocationInfo),new Context(Context.ActionSource.Loading));
