@@ -23,6 +23,7 @@ public class OptionsPanel : MonoBehaviour {
 	[SerializeField] private Slider inspectionTimeSlider;
 	[SerializeField] private Slider screenCanvasSizeSlider;
     [SerializeField] private Slider autosaveSlider;
+	[SerializeField] private Slider	snapGridSlider;
     [SerializeField] private Slider birdWormSlider;
     
     [SerializeField] private TextMeshProUGUI musicSliderValue;
@@ -31,6 +32,7 @@ public class OptionsPanel : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI screenCanvasSizeSliderValue;
     [SerializeField] private TextMeshProUGUI autosaveSliderValue;
     [SerializeField] private TextMeshProUGUI birdWormSliderValue;
+    [SerializeField] private TextMeshProUGUI snapGridSliderValue;
 
     [SerializeField] private RestartButton restartButton;
 
@@ -75,6 +77,7 @@ public class OptionsPanel : MonoBehaviour {
     private const string NOTIFICATIONTIME = "NotificationTime";
 	private const string SCREENCANVASSIZE = "ScreenCanvasSize";
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
+    private const string GRIDSNAPSIZE = "GridSnapSize";
 
     private bool pauseStateWhenOptionsRequested = false;
     //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
@@ -145,6 +148,17 @@ public class OptionsPanel : MonoBehaviour {
         SetAutosaveInterval(value); // this does nothing, since we're disabled but updates the value hint
         SetAutosaveIntervalInternal(value);
         autosaveSlider.value = value;
+
+        // Loading Grid Snap Size Slider
+
+        if (PlayerPrefs.HasKey(GRIDSNAPSIZE))
+            value = PlayerPrefs.GetFloat(GRIDSNAPSIZE);
+        else
+            value = 0f;
+
+        SetSnapGrid(value);
+		SetSnapGridInternal(value);
+        snapGridSlider.value = value;
 
         // Loading Bird/Worm Slider
 
@@ -290,6 +304,25 @@ public class OptionsPanel : MonoBehaviour {
 		SoundManager.PlaySfx("UISliderMove");
     }
 
+    public void SetSnapGrid(float value)
+	{
+		int snap = Mathf.RoundToInt( value );
+		switch (snap)
+		{
+		default:
+		case 0:		snapGridSliderValue.text = "OFF"; break;
+		case 1:		snapGridSliderValue.text = "1 CARD"; break;		
+		case 2:		snapGridSliderValue.text = "½ CARD"; break;
+		case 3:		snapGridSliderValue.text = "¼ CARD"; break;
+		}
+
+        if (gameObject.activeInHierarchy == false)
+            return; // don't update anything if we're not visible.
+		
+		SetSnapGridInternal(value);
+		SoundManager.PlaySfx("UISliderMove");
+    }
+
     // INTERNAL Setters
 
     void SetMusicVolumeInternal(float volume) {
@@ -375,5 +408,17 @@ public class OptionsPanel : MonoBehaviour {
 		
 		var tabletopManager = Registry.Retrieve<TabletopManager>();
 		tabletopManager.SetAutosaveInterval( value );
+    }
+
+    void SetSnapGridInternal(float value)
+	{
+        // value ranges from 0 to 10
+        PlayerPrefs.SetFloat(GRIDSNAPSIZE, value);
+
+		if (!_isInGame)
+			return;
+		
+		var tabletopManager = Registry.Retrieve<TabletopManager>();
+		tabletopManager.SetGridSnapSize( value );
     }
 }

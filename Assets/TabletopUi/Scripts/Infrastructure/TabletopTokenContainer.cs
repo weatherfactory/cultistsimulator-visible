@@ -57,6 +57,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // (or loaded and added to an arbitrary position)
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
+		token.SnapToGrid();
         token.SetTokenContainer(this, context);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
     }

@@ -9,7 +9,7 @@ public class RestartButton : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI ButtonText;
 
-    private const string DEFAULT_MESSAGE = "RESTART GAME";
+    private const string DEFAULT_MESSAGE = "RESTART";
     private bool clickedOnce = true;
 
     public void Awake()
@@ -22,7 +22,7 @@ public class RestartButton : MonoBehaviour
         if (clickedOnce)
             return true;
         
-        ButtonText.text = "DEFINITELY RESTART?(??)";
+        ButtonText.text = "DEFINITELY RESTART?";
         clickedOnce = true;
         StartCoroutine(BrieflyDisable());
         return false;

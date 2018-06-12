@@ -124,6 +124,22 @@ namespace Assets.CS.TabletopUI {
             subscribedChronicler = c;
         }
 
+		public virtual void SnapToGrid()
+		{
+			if (TabletopManager.GetGridSnapSize() > 0f)
+			{
+				// Magical maths to snap cards to fractions of approx card dimensions - CP
+				float snap_x = 90.0f * TabletopManager.GetGridSnapSize();
+				float snap_y = 130.0f * TabletopManager.GetGridSnapSize();
+				float recip_x = 1.0f / snap_x;
+				float recip_y = 1.0f / snap_y;
+				Vector3 v = transform.localPosition;
+				v.x *= recip_x;	v.x = (float)Mathf.RoundToInt(v.x);	v.x *= snap_x;
+				v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
+				transform.localPosition = v;
+			}
+		}
+
         public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {
             OldTokenContainer = TokenContainer;
             TokenContainer = newContainer;
