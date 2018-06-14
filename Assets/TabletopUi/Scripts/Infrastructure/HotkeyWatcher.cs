@@ -74,7 +74,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (Input.GetKeyDown(KeyCode.Escape))
                 _optionsPanel.ToggleVisibility();
 
-			if (Input.GetKeyDown(KeyCode.S)) {
+			if ((int)Input.GetAxis("Start Recipe")>0) {
 				var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
 				foreach (var controller in situationControllers) {
@@ -85,7 +85,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 				}
 			}
 
-            if (Input.GetKeyDown(KeyCode.C))
+            if ((int)Input.GetAxis("Collect All")>0)
             {
                 var situationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 

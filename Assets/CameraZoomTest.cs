@@ -44,16 +44,17 @@ public class CameraZoomTest : MonoBehaviour {
 				targetZoom = Mathf.Clamp01(targetZoom);
 			}
 			else if (HotkeyWatcher.IsInInputField() == false) {
-				if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
-					targetZoom = 0f;
-				else if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
-					targetZoom = 0.4f;
-				else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
-					targetZoom = 1f;
-				else if (Input.GetKey(KeyCode.Q))
-					targetZoom -= 0.5f * Time.deltaTime;
-				else if (Input.GetKey(KeyCode.E))
-					targetZoom += 0.5f * Time.deltaTime;
+				if ((int)Input.GetAxis("Zoom Level 1")>0)
+                    targetZoom = 0f;
+			    if ((int)Input.GetAxis("Zoom Level 2") > 0)
+                    targetZoom = 0.4f;
+			    if ((int)Input.GetAxis("Zoom Level 3") > 0)
+                    targetZoom = 1f;
+                //commented out so I can just use the axis; leaving in case we do want to make keyboard zoom more dramatic
+			//	else if (Input.GetKey(KeyCode.Q))
+			//		targetZoom -= 0.5f * Time.deltaTime;
+			//	else if (Input.GetKey(KeyCode.E))
+			//		targetZoom += 0.5f * Time.deltaTime;
 			}
         }
 
