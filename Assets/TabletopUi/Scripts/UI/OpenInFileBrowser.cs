@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Diagnostics;
 namespace Assets.CS.TabletopUI
 {
     public static class OpenInFileBrowser
@@ -20,6 +20,16 @@ namespace Assets.CS.TabletopUI
             }
         }
  
+        public static bool IsInInLinuxOS
+        {
+            get{
+                #if UNITY_STANDALONE_LINUX||UNITY_EDITOR_LINUX
+                        return true;
+                #else
+                        return false;
+                #endif
+            }
+        }
         public static void Test()
         {
             Open(UnityEngine.Application.dataPath);
@@ -86,10 +96,45 @@ namespace Assets.CS.TabletopUI
                 e.HelpLink = ""; // do anything with this variable to silence warning about not using it
             }
         }
+
+        public static void OpenInLinux(string path)
+        {
+           
+        
+            string linuxPath = System.IO.Path.GetFullPath(path);
+            string dirPath = System.IO.Path.GetDirectoryName(path);
+            if(System.IO.Directory.Exists(dirPath))
+            {
+                linuxPath = dirPath; // open the directory if it exists
+            }
+            linuxPath = '"'+linuxPath.Replace("\"","\\\"")+'"';// replace any quotes, wrap path in quotes
+            Noon.NoonUtility.Log("Linux open path: "+linuxPath, 10);
+            try
+            {
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.FileName = "xdg-open";
+                info.UseShellExecute = true;
+                info.Arguments = linuxPath;
+                System.Diagnostics.Process.Start(info);
+            }
+            catch ( System.Exception e )
+            {
+                  Noon.NoonUtility.Log(e.ToString(), 10);
+                // tried to open linux explorer not on linux
+                // just silently skip error
+                // we currently have no platform define for the current OS we are in, so we resort to this
+                e.HelpLink = ""; // do anything with this variable to silence warning about not using it
+            }
+        }
  
         public static void Open(string path)
         {
-            if ( IsInWinOS )
+            
+            if(IsInInLinuxOS)
+            {
+                OpenInLinux(path);
+            }
+            else if ( IsInWinOS )
             {
                 OpenInWin(path);
             }
@@ -97,11 +142,14 @@ namespace Assets.CS.TabletopUI
             {
                 OpenInMac(path);
             }
+           
             else // couldn't determine OS
             {
+               
                 OpenInWin(path);
                 OpenInMac(path);
-            }
+                OpenInLinux(path);
+            }  
         }
     }
 }
