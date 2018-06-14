@@ -12,7 +12,10 @@ public class SplashAnimation : MonoBehaviour
     public VideoPlayer player;
 	void Awake()
 	{
-		
+		// force invariant culture to fix Linux save file issues
+		System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
+		// log the current system settings
 		string info = "Cultist Simulator Version: "+Application.version+"\n";
 		info += "OS: "+SystemInfo.operatingSystem+"\n";
 		info += "Processor: "+SystemInfo.processorType+" Count: "+SystemInfo.processorCount+"\n";
