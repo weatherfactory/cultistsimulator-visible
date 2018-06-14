@@ -34,7 +34,7 @@ namespace Assets.Core.Utility
         public static void AddVersionNumber(string exeFolder)
         {
             
-            string versionPath=exeFolder+"/v" + NoonUtility.VersionNumber + ".txt";
+            string versionPath=exeFolder+"/version.txt";
 
             File.WriteAllText(versionPath,NoonUtility.VersionNumber.ToString());
 
