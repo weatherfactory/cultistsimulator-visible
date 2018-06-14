@@ -331,7 +331,14 @@ namespace Assets.CS.TabletopUI {
                 token = item as DraggableToken;
 
                 if (token != null)
+                {       
+                    if(token == DraggableToken.itemBeingDragged)
+                    {
+                        DraggableToken.CancelDrag();
+                    }
+
                     token.ReturnToTabletop(context);
+                }
             }
         }
 
