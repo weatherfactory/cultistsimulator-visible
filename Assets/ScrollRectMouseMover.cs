@@ -130,8 +130,10 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 		scrollRect.velocity = vector;
 	}
 
-	bool PressingMoveKey() {
-		return (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
+	bool PressingMoveKey()
+	{
+	    return ((int) Input.GetAxis("Horizontal") != 0 || (int) Input.GetAxis("Vertical") != 0);
+	    //	return (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow));
 	}
 
 	void SetMagnitudeFromMouse() {

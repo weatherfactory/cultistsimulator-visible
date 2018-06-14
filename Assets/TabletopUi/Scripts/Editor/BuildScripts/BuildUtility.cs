@@ -26,7 +26,8 @@ namespace Assets.Core.Utility
             
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
             AddVersionNumber(exeFolder);
-            RenameExecutable(target, pathToBuiltProject, exeFolder);
+            //leaving out for now cos permissions issues
+         //   RenameExecutable(target, pathToBuiltProject, exeFolder);
 
 
         }
