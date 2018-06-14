@@ -150,11 +150,10 @@ public class OptionsPanel : MonoBehaviour {
         autosaveSlider.value = value;
 
         // Loading Grid Snap Size Slider
-
         if (PlayerPrefs.HasKey(GRIDSNAPSIZE))
             value = PlayerPrefs.GetFloat(GRIDSNAPSIZE);
         else
-            value = 0f;
+            value = 1f;
 
         SetSnapGrid(value);
 		SetSnapGridInternal(value);
