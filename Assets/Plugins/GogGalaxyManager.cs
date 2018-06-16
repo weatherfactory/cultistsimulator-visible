@@ -13,6 +13,15 @@ public class GogGalaxyManager : MonoBehaviour
     Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
     }
 }
+#elif UNITY_WEBGL
+public class GogGalaxyManager : MonoBehaviour
+{
+    private void Awake()
+    {
+        Debug.Log("Linux build: not initialising GOG Galaxy, cos there's no Linux support for it yet.");
+    }
+}
+
 #else
 using Galaxy.Api;
 

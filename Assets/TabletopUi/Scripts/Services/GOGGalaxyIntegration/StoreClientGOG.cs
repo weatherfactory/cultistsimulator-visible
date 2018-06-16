@@ -1,5 +1,7 @@
 ﻿#if UNITY_STANDALONE_LINUX
 
+#elif UNITY_WEBGL
+
 #else
 
 using System;

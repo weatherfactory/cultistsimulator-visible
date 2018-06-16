@@ -23,6 +23,8 @@ namespace Assets.TabletopUi.Scripts.Services
             {
 #if UNITY_STANDALONE_LINUX
 return;
+#elif UNITY_WEBGL
+                return;
 #else
                 if (Application.platform == RuntimePlatform.OSXPlayer)
                     return;

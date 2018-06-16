@@ -18,6 +18,56 @@ namespace Assets.Core.Utility
     public class BuildUtility
     {
 
+        private static string[] GetScenes()
+        {
+            string[] scenes =
+            {
+                "Assets/TabletopUi/Logo.unity",
+                "Assets/TabletopUi/Quote.unity",
+                "Assets/TabletopUi/Menu.unity",
+                "Assets/TabletopUi/Tabletop.unity",
+                "Assets/TabletopUi/GameOver.unity",
+                "Assets/TabletopUi/NewGame.unity",
+            };
+
+            return scenes;
+        }
+
+        public static void PerformWindowsBuild()
+        {
+            BuildPlayerOptions windowsBuildPlayerOptions=new BuildPlayerOptions();
+
+            windowsBuildPlayerOptions.target = BuildTarget.StandaloneWindows;
+            windowsBuildPlayerOptions.locationPathName = "D:/Dropbox (Weather Factory)/CS/builds/Windows/cultistsimulator.exe";
+            windowsBuildPlayerOptions.scenes = GetScenes();
+
+            BuildPipeline.BuildPlayer(windowsBuildPlayerOptions);
+        }
+
+        public static void PerformOsxBuild()
+        {
+            BuildPlayerOptions osxBuildPlayerOptions = new BuildPlayerOptions();
+
+            osxBuildPlayerOptions.target = BuildTarget.StandaloneOSX;
+            osxBuildPlayerOptions.locationPathName = "D:/Dropbox (Weather Factory)/CS/builds/OSX/OSX.app";
+            osxBuildPlayerOptions.scenes = GetScenes();
+
+            BuildPipeline.BuildPlayer(osxBuildPlayerOptions);
+
+        }
+
+        public static void PerformLinuxBuild()
+        {
+            BuildPlayerOptions linuxBuildPlayerOptions = new BuildPlayerOptions();
+            linuxBuildPlayerOptions.target = BuildTarget.StandaloneLinuxUniversal;
+            linuxBuildPlayerOptions.locationPathName = "D:/Dropbox (Weather Factory)/CS/builds/Linux/CS.x86";
+            linuxBuildPlayerOptions.scenes = GetScenes();
+
+            BuildPipeline.BuildPlayer(linuxBuildPlayerOptions);
+        }
+
+
+
         [PostProcessBuild]
         public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
         {
