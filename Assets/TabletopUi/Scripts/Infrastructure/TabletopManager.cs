@@ -134,7 +134,7 @@ namespace Assets.CS.TabletopUI {
 			}
         }
 
-        #region -- Intialisation -------------------------------
+      
 
         void Start() {
            
@@ -188,17 +188,30 @@ namespace Assets.CS.TabletopUI {
                 Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
             }
 
-            NoonUtility.Log("Checking if save game exists", 10);
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            if (CrossSceneState.GameState == GameState.Restarting)
+            {
+                NoonUtility.Log("Restarting game", 11);
+                CrossSceneState.RestartingGame();
+                BeginNewGame(builder);
 
-            if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
-                NoonUtility.Log("Loading game", 10);
-                LoadGame();
             }
             else
             {
-                NoonUtility.Log("Beginning new game", 10);
-                BeginNewGame(builder);
+
+
+                NoonUtility.Log("Checking if save game exists", 10);
+                var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+
+                if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
+                {
+                    NoonUtility.Log("Loading game", 10);
+                    LoadGame();
+                }
+                else
+                {
+                    NoonUtility.Log("Beginning new game", 10);
+                    BeginNewGame(builder);
+                }
             }
         }
 
@@ -300,7 +313,7 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        #endregion
+
 
         #region -- Build / Reset -------------------------------
 
@@ -361,7 +374,9 @@ namespace Assets.CS.TabletopUI {
 
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame(CrossSceneState.GetChosenLegacy());
+            CrossSceneState.RestartingGame();
+            
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
