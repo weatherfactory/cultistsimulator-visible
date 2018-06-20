@@ -51,9 +51,15 @@ namespace Assets.Logic
         public void RemoveFromAllDecks(string elementId)
         {
             foreach (var d in _storage.DeckInstances)
+            { 
                 d.RemoveAllCardsWithId(elementId);
-                
+            }
 
+        }
+
+        public void RemoveFromAllDecksIfInUniquenessGroup(string elementUniquenessGroup)
+        {
+            throw new NotImplementedException();
         }
     }
 }

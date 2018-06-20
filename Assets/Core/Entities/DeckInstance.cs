@@ -11,6 +11,7 @@ namespace Assets.Core.Entities
     {
         private IDeckSpec _deckSpec;
         private Stack<string> _cards;
+        private List<string> _removedCards;
 
         public string Id
         {
@@ -29,6 +30,7 @@ namespace Assets.Core.Entities
 
             _deckSpec = spec;
             _cards = new Stack<string>();
+            _removedCards=new List<string>();
 
         }
 
@@ -93,6 +95,13 @@ namespace Assets.Core.Entities
                 NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id,10);
             cardsList.RemoveAll(c => c == elementId);
             _cards=new Stack<string>(cardsList);
+            AddToRemovedCards(elementId);
+        }
+
+        private  void AddToRemovedCards(string elementId)
+        {
+            if(!_removedCards.Contains(elementId))
+                _removedCards.Add(elementId);
         }
 
 
