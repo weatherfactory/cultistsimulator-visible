@@ -246,6 +246,8 @@ namespace Assets.CS.TabletopUI {
             var dealer = new Dealer(character);
             if(_element.Unique)
                 dealer.RemoveFromAllDecks(_element.Id);
+            if(!String.IsNullOrEmpty(_element.UniquenessGroup))
+                dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
 
             try {
