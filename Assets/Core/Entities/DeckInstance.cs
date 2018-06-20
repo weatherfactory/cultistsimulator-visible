@@ -41,7 +41,8 @@ namespace Assets.Core.Entities
             var unshuffledStack = new Stack<string>();
             foreach (var eId in _deckSpec.StartingCards)
             {
-                unshuffledStack.Push(eId);
+                if(!_eliminatedCards.Contains(eId))
+                 unshuffledStack.Push(eId);
             }
 
             _cards = new Stack<string>(unshuffledStack.OrderBy(x => rnd.Next()));
