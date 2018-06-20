@@ -55,7 +55,7 @@
 	   label: "Send an Unstoppable Force to murder an Annoyance",
 	  actionId:"talk",
 	  startdescription:"I am out of patience with this nuisance. Unless they have some unusual protection, they're already dead. But their demise will attract attention.",
-	  description:"100% success rate means this should never be visible.",
+	  description:".",
 	  requirements: {annoyance:1,edge:10,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:100},
 	  ]

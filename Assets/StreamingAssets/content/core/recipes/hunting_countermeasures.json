@@ -102,7 +102,7 @@ effects:{notoriety:1,summoned:-1}
 	   label: "Send an Unstoppable Force to murder a Hunter",
 	  actionId:"talk",
 	  startdescription:"Unless this Hunter has some unusual protection, they're already dead. But their demise will attract attention.",
-	  description:"100% success rate means this should never be visible.",
+	  description:".",
 	  requirements: {hunter:1,edge:10,follower:1},
 	  linked: [{id:"hunterattacksuccess",chance:100},
 	  ]
