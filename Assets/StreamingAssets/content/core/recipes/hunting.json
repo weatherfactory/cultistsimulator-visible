@@ -135,7 +135,7 @@
         actionId: "suspicion",
         requirements: {evidenceb:1},
 		startdescription: "My adversary has convinced the Suppression Bureau to consider my case. The Bureau is charged with punishment of the less usual type of criminal - the criminal whose crimes may exist only in dreams.",
-        description: "inv end - won't display, loops straight to trial. I should prepare myself.",
+        description: ".",
         warmup: 30,
         craftable: false,
 		linked:[{id:"suspicion_attemptmitigation_me",chance:30},{id:"suspicion_questionfollower",chance:100}],
