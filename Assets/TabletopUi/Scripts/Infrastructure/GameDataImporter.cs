@@ -253,9 +253,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 else
                 { 
                     IDeckInstance deckInstance =  new DeckInstance(spec);
+                    if (htEachDeck.ContainsKey(SaveConstants.SAVE_ELIMINATEDCARDS))
+                    { 
+                        ArrayList alEliminated = htEachDeck.GetArrayList(SaveConstants.SAVE_ELIMINATEDCARDS);
+                        htEachDeck.Remove(SaveConstants.SAVE_ELIMINATEDCARDS);
 
-                //this is pretty fragile. It assumes that the keys are contiguous integers starting at 1
-                for(int i=1;i<=htEachDeck.Count;i++)
+                       foreach(var e in alEliminated)
+                           deckInstance.AddToEliminatedCards(e.ToString() );
+                    }
+
+
+                    //Now we assume that the remaining keys are contiguous integers starting at 1
+                    for (int i=1;i<=htEachDeck.Count;i++)
                     deckInstance.Add(htEachDeck[i.ToString()].ToString());
 
                 storage.DeckInstances.Add(deckInstance);
