@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 namespace Assets.Core.Entities
@@ -11,7 +12,7 @@ namespace Assets.Core.Entities
     {
         private IDeckSpec _deckSpec;
         private Stack<string> _cards;
-        private List<string> _removedCards;
+        private List<string> _eliminatedCards;
 
         public string Id
         {
@@ -30,7 +31,7 @@ namespace Assets.Core.Entities
 
             _deckSpec = spec;
             _cards = new Stack<string>();
-            _removedCards=new List<string>();
+            _eliminatedCards=new List<string>();
 
         }
 
@@ -40,7 +41,8 @@ namespace Assets.Core.Entities
             var unshuffledStack = new Stack<string>();
             foreach (var eId in _deckSpec.StartingCards)
             {
-                unshuffledStack.Push(eId);
+                if(!_eliminatedCards.Contains(eId))
+                 unshuffledStack.Push(eId);
             }
 
             _cards = new Stack<string>(unshuffledStack.OrderBy(x => rnd.Next()));
@@ -92,16 +94,18 @@ namespace Assets.Core.Entities
         {
             var cardsList = new List<string>(_cards);
             if(cardsList.Contains(elementId))
+            { 
                 NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id,10);
             cardsList.RemoveAll(c => c == elementId);
             _cards=new Stack<string>(cardsList);
-            AddToRemovedCards(elementId);
+            AddToEliminatedCards(elementId);
+            }
         }
 
-        private  void AddToRemovedCards(string elementId)
+        public  void AddToEliminatedCards(string elementId)
         {
-            if(!_removedCards.Contains(elementId))
-                _removedCards.Add(elementId);
+            if(!_eliminatedCards.Contains(elementId))
+                _eliminatedCards.Add(elementId);
         }
 
 
@@ -126,11 +130,21 @@ namespace Assets.Core.Entities
         public Hashtable GetSaveData()
         {
             var cardsHashtable = new Hashtable();
+       
+
             foreach (var c in GetCurrentCardsAsList())
             {
                 var indexForTable = (cardsHashtable.Count + 1).ToString();
                 cardsHashtable.Add(indexForTable, c);
             }
+
+            var alEliminatedCards=new ArrayList();
+            foreach (var e in _eliminatedCards)
+            {
+                alEliminatedCards.Add(e);
+            }
+            cardsHashtable.Add(SaveConstants.SAVE_ELIMINATEDCARDS,alEliminatedCards);
+
             return cardsHashtable;
         }
     }

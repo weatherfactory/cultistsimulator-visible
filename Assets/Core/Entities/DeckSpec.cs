@@ -39,6 +39,7 @@ namespace Assets.Core.Entities
         void EliminateCardWithId(string elementId);
         Dictionary<string, string> GetDefaultDrawMessages();
         Dictionary<string, string> GetDrawMessages();
+        void AddToEliminatedCards(string elementId);
     }
 
 
