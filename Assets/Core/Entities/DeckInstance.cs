@@ -88,7 +88,7 @@ namespace Assets.Core.Entities
             _cards.Push(elementId);
         }
 
-        public void RemoveAllCardsWithId(string elementId)
+        public void EliminateCardWithId(string elementId)
         {
             var cardsList = new List<string>(_cards);
             if(cardsList.Contains(elementId))

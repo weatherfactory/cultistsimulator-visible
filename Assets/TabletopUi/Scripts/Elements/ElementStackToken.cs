@@ -245,7 +245,7 @@ namespace Assets.CS.TabletopUI {
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
-                dealer.RemoveFromAllDecks(_element.Id);
+                dealer.IndicateUniqueCardManifested(_element.Id);
             if(!String.IsNullOrEmpty(_element.UniquenessGroup))
                 dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
