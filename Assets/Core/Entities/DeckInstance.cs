@@ -35,6 +35,7 @@ namespace Assets.Core.Entities
 
         }
 
+
         public void Reset()
         {
             var rnd = new Random();
@@ -89,23 +90,42 @@ namespace Assets.Core.Entities
         {
             _cards.Push(elementId);
         }
-
+        /// <summary>
+        /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere
+        /// </summary>
+        /// <param name="elementId"></param>
         public void EliminateCardWithId(string elementId)
         {
             var cardsList = new List<string>(_cards);
             if(cardsList.Contains(elementId))
-            { 
-                NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id,10);
-            cardsList.RemoveAll(c => c == elementId);
-            _cards=new Stack<string>(cardsList);
-            AddToEliminatedCards(elementId);
+            {
+                RemoveCardFromDeckInstance(elementId, cardsList);
+                TryAddToEliminatedCardsList(elementId); //if the card isn't in the list, it's either (a) already been drawn or (b) isn't in the deck to begin with. If it's already been drawn, then it itself should be the sole non-eliminated card.
             }
         }
-
-        public  void AddToEliminatedCards(string elementId)
+        ///remove this from the undrawn cards. This won't affect default draws.
+        private void RemoveCardFromDeckInstance(string elementId, List<string> cardsList)
+        {
+            NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id, 10);
+            cardsList.RemoveAll(c => c == elementId);
+            _cards = new Stack<string>(cardsList);
+        }
+        /// <summary>
+        /// add this to a list of permanently eliminated cards, so it doesn't appear on reshuffles.
+        /// </summary>
+        /// <param name="elementId"></param>
+        public  void TryAddToEliminatedCardsList(string elementId)
         {
             if(!_eliminatedCards.Contains(elementId))
                 _eliminatedCards.Add(elementId);
+        }
+
+        public void EliminateCardsInUniquenessGroup(string elementUniquenessGroup)
+        {
+            List<string> cardsToEliminate = _deckSpec.CardsInUniquenessGroup(elementUniquenessGroup);
+            if(cardsToEliminate!=null)
+                foreach(var c in cardsToEliminate)
+                    EliminateCardWithId(c);
         }
 
 

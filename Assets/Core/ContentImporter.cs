@@ -224,6 +224,11 @@ public class ContentImporter
                 else
                     element.Unique = false;
 
+                if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
+                {
+                    element.UniquenessGroup = htElement.GetString(NoonConstants.KUNIQUENESSGROUP);
+                }
+
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
                 if(alSlots!=null)
                 element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
@@ -384,6 +389,7 @@ public class ContentImporter
 
 
             DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
+            
 
 
             try
@@ -888,37 +894,9 @@ public class ContentImporter
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
 
+foreach(var d in _compendium.GetAllDeckSpecs())
+    d.RegisterUniquenessGroups(_compendium);
 
-        //var orderedElements = Elements.OrderByDescending(r => r.Value.Label.Length);
-        //string output = string.Empty;
-        //foreach (var or in orderedElements.Take(30))
-        //    output += or.Key + "- " + or.Value.Label.Length+ "\n" + or.Value.Label + "\n\n";
-
-        //Debug.Log(output);
-
-  
-        //List<string> studyRequirements = new List<string>();
-        //string studyReqs = String.Empty;
-        //foreach (var r in Recipes)
-        //{
-        //    if (r.Craftable && r.ActionId == "work")
-        //    {
-        //        foreach (var req in r.Requirements)
-        //        {
-        //            var reqElement = _compendium.GetElementById(req.Key);
-
-        //            if (!studyRequirements.Contains(req.Key) && req.Value > 0 && !reqElement.Aspects.ContainsKey("text"))
-        //                studyRequirements.Add(r. Id + " - " + req.Key);
-
-        //        }
-        //    }
-        //}
-
-        //foreach (var req in studyRequirements)
-        //    studyReqs = studyReqs + req + ":1\n ";
-
-
-        //NoonUtility.Log(studyReqs);
 
 #if DEBUG
         CountWords();

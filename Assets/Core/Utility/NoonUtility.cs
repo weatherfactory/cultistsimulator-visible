@@ -68,6 +68,7 @@ namespace Noon
         public const string KISASPECT = "isAspect";
         public const string KNOARTNEEDED = "noartneeded";
         public const string KUNIQUE = "unique";
+        public const string KUNIQUENESSGROUP = "uniquenessgroup";
 
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";

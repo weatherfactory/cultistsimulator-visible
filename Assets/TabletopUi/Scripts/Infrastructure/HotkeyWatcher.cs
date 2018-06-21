@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
+using Noon;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -56,17 +57,25 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     sc.SetEditorActive(false);
                 }
             }
-            if (!_debugTools.isActiveAndEnabled)
+
+            try
             {
-                //...it's nice to be able to type N and M
+                if (!_debugTools.isActiveAndEnabled)
+                {
+                    //...it's nice to be able to type N and M
 
-                if (Input.GetKeyDown(KeyCode.N))
-                    _speedController.SetNormalSpeed();
+                    if (Input.GetKeyDown(KeyCode.N))
+                        _speedController.SetNormalSpeed();
 
-                if (Input.GetKeyDown(KeyCode.M))
-                    _speedController.SetFastForward();
+                    if (Input.GetKeyDown(KeyCode.M))
+                        _speedController.SetFastForward();
+                }
             }
-
+            
+            catch (Exception e)
+            {
+                NoonUtility.Log("Problem with debug tools: " + e.Message);
+            }
 
             if (Input.GetKeyDown(KeyCode.Space))
 				_speedController.TogglePause();

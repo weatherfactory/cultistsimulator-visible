@@ -100,7 +100,8 @@
             {mortal:1,independent:1, suspicious:1, winter:5},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
+			uniquenessgroup:"auclair"
         },
 									 {
         id: "clifton_r",

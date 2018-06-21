@@ -259,7 +259,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                         htEachDeck.Remove(SaveConstants.SAVE_ELIMINATEDCARDS);
 
                        foreach(var e in alEliminated)
-                           deckInstance.AddToEliminatedCards(e.ToString() );
+                           deckInstance.TryAddToEliminatedCardsList(e.ToString() );
                     }
 
 

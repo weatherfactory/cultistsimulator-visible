@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core.Interfaces;
+using Noon;
 using UnityEngine;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
@@ -35,10 +36,21 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public void CheckForCardAnimations()
         {
+            try
+            {
+
+    
             if (Time.time >= nextAnimTime)
             {
                 TriggerArtAnimation();
                 SetNextAnimTime();
+            }
+            }
+
+
+            catch (Exception e)
+            {
+               NoonUtility.Log("Problem in checking for card animations: " + e.Message);
             }
         }
 

@@ -547,7 +547,8 @@
             {mortal: 1,acquaintance:1},
             description: "Auclair has a scholarly aspect and a morbid streak.[You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
-			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic}
+			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic},
+			uniquenessgroup:"auclair"
         },
 										 {
         id: "auclair_b",
@@ -556,7 +557,8 @@
             {mortal: 1, follower: 1,winter: 2},
             animFrames: 1,
 			description: "Auclair is quiet, meticulous and remorseless.",
-			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p},
+			uniquenessgroup:"auclair"
 
         },
 				 {
@@ -566,7 +568,8 @@
             {mortal:1,follower:1, disciple:1,potential:1,winter:5},
             description: "Auclair rarely speaks. She chooses her words with care. Even her movements have become economical. She is never seen to blink.",
 			animFrames: 1,
-			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p}
+			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p},
+			uniquenessgroup:"auclair"
         },
 				 {
         id: "auclair_d",
@@ -575,7 +578,8 @@
             {mortal:1,follower:1, disciple:1,potential:1,exalted:1,winter:10},
             description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,,rebellion:auclair_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,,rebellion:auclair_r},
+			uniquenessgroup:"auclair"
         },
 		
 		
@@ -1060,7 +1064,8 @@
             description: "Auclair does not speak or eat.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
-			lifetime:600, decayTo: "corpse"
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"auclair"
         },
 							 {
         id: "cat_p",

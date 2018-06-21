@@ -59,7 +59,10 @@ namespace Assets.Logic
 
         public void RemoveFromAllDecksIfInUniquenessGroup(string elementUniquenessGroup)
         {
-            throw new NotImplementedException();
+            foreach (var d in _storage.DeckInstances)
+            {
+                d.EliminateCardsInUniquenessGroup(elementUniquenessGroup);
+            }
         }
     }
 }
