@@ -159,7 +159,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Anthic Elaboration",
             aspects:
             {grail:12,lore:1},
-            description: "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours.  [Use this formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
+            description: "The Flowermaker cannot touch you; he cannot find you; he always has what you desire. Even an elaboration of the properties of his works can draw the attention of Hours. [This formula can be used in a Rite with Bitterblack Salts and a Subtle Rupture - or similar sources of power - to summon Ezeem itself.]",
 			slots:[{id:"with",label:"With",description:"Study with a Grail lore fragment of the same level to upgrade to the next level. Study with Moth lore of the same level to subvert it, and get Moth lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentgrailf:1,fragmentmothf:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentgrailg}
         },
 			{  id: "fragmentgrailg",
