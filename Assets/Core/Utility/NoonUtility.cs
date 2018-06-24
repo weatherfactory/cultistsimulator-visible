@@ -53,6 +53,9 @@ namespace Noon
         public const string KDECKDEFAULTCARD = "defaultcard";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public static string KICON="icon";
+        public static string KEXPULSION="expulsion";
+        public static string KLIMIT = "limit";
+        public static string KFILTER = "filter";
 
         public const string KINDUCES = "induces";
 

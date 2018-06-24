@@ -261,13 +261,16 @@ public class ContentImporter
                 ArrayList alInducedRecipes = htElement.GetArrayList(NoonConstants.KINDUCES);
                 if (alInducedRecipes != null)
                 {
-                    foreach (Hashtable lr in alInducedRecipes)
+                    foreach (Hashtable ir in alInducedRecipes)
                     {
-                        string lrID = lr[NoonConstants.KID].ToString();
-                        int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
-                        bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
+                        string lrID = ir[NoonConstants.KID].ToString();
+                        int lrChance = Convert.ToInt32(ir[NoonConstants.KCHANCE]);
+                        bool lrAdditional = Convert.ToBoolean(ir[NoonConstants.KADDITIONAL] ?? false);
 
-                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+                        var lrExpulsion = GetExpulsionDetailsIfAny(ir);
+
+
+                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion));
 
                         if (lrChance == 0)
                         {
@@ -291,9 +294,6 @@ public class ContentImporter
     {
         //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
         ArrayList recipesArrayList = GetContentItems(CONST_RECIPES);
-
-
-
         PopulateRecipeList(recipesArrayList);
         NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,2);
 
@@ -700,7 +700,9 @@ public class ContentImporter
                         int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
                         bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
-                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional));
+                        var raExpulsion = GetExpulsionDetailsIfAny(ra);
+
+                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion));
 
 
                         if (raChance == 0)
@@ -730,7 +732,9 @@ public class ContentImporter
                         int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
                         bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
 
-                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+                        var lrExpulsion = GetExpulsionDetailsIfAny(lr);
+
+                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion));
 
 
 
@@ -816,6 +820,25 @@ public class ContentImporter
                 LogIfNonexistentElementId(m.MutateAspectId, r.Id, " - as mutated aspect");
             }
         }
+    }
+
+    private static Expulsion GetExpulsionDetailsIfAny(Hashtable linkedrecipedetails)
+    {
+        Expulsion possibleExpulsion = null;
+
+        Hashtable htExpulsion = linkedrecipedetails.GetHashtable(NoonConstants.KEXPULSION);
+        if (htExpulsion != null)
+        {
+            possibleExpulsion = new Expulsion();
+            possibleExpulsion.Limit = htExpulsion.GetInt(NoonConstants.KLIMIT);
+            Hashtable htFilter = htExpulsion.GetHashtable(NoonConstants.KFILTER);
+            foreach (var k in htFilter.Keys)
+            {
+                possibleExpulsion.Filter.Add(k.ToString(), Convert.ToInt32(htFilter[k]));
+            }
+        }
+
+        return possibleExpulsion;
     }
 
     private void LogIfNonexistentElementId(string elementId, string containerId, string context)
