@@ -52,7 +52,7 @@ namespace Assets.Editor.Tests
             
             primaryRecipe.Effects.Add("primaryrecipeeffect", 1);
 
-            _linkedRecipeDetails = new LinkedRecipeDetails(secondaryRecipe.Id, 50, false);
+            _linkedRecipeDetails = new LinkedRecipeDetails(secondaryRecipe.Id, 50, false,null);
             primaryRecipe.AlternativeRecipes.Add(_linkedRecipeDetails);
 
 
@@ -64,7 +64,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void RecipeConductor_SuppliesLoopRecipeToCompletedSituation()
         {
-            LinkedRecipeDetails lrd=new LinkedRecipeDetails(primaryRecipe.Id,100,false);
+            LinkedRecipeDetails lrd=new LinkedRecipeDetails(primaryRecipe.Id,100,false, null);
             primaryRecipe.LinkedRecipes.Add(lrd);
            
            rc = new RecipeConductor(compendium, null,mockDice,new Character(null));
@@ -76,8 +76,8 @@ namespace Assets.Editor.Tests
         [Test]
         public void RecipeConductor_SuppliesSecondLoopRecipeIfDiceRollForFirstFails()
         {
-            LinkedRecipeDetails lrd1 = new LinkedRecipeDetails(primaryRecipe.Id, 99, false);
-            LinkedRecipeDetails lrd2 = new LinkedRecipeDetails(secondaryRecipe.Id, 100, false);
+            LinkedRecipeDetails lrd1 = new LinkedRecipeDetails(primaryRecipe.Id, 99, false, null);
+            LinkedRecipeDetails lrd2 = new LinkedRecipeDetails(secondaryRecipe.Id, 100, false, null);
             primaryRecipe.LinkedRecipes.Add(lrd1);
             primaryRecipe.LinkedRecipes.Add(lrd2);
 
@@ -92,7 +92,7 @@ namespace Assets.Editor.Tests
         [Test]
         public void RecipeConductor_SuppliesNullLoopedRecipe_WhenRecipeConditionsNotSatisfied()
         {
-            LinkedRecipeDetails lrd = new LinkedRecipeDetails(primaryRecipe.Id, 100, false);
+            LinkedRecipeDetails lrd = new LinkedRecipeDetails(primaryRecipe.Id, 100, false, null);
             primaryRecipe.LinkedRecipes.Add(lrd);
             primaryRecipe.Requirements.Add("loopedRecipeReq", 2);
             rc = new RecipeConductor(compendium, new AspectsDictionary() { { "loopedRecipeReq", 1 } }, mockDice, new Character(null));
