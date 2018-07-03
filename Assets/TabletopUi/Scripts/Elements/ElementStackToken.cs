@@ -595,6 +595,12 @@ namespace Assets.CS.TabletopUI {
             if (!Decays)
 			    return;
 
+			var stackAnim = this.gameObject.GetComponent<TokenAnimationToSlot>();
+			if (stackAnim)
+			{
+				return;	// Do not decay while being dragged into greedy slot (#1335) - CP
+			}
+
             if(!isFront)
                 FlipToFaceUp(true); //never leave a decaying card face down.
 
