@@ -20,7 +20,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private readonly IGameDataImporter dataImporter;
         private readonly IGameDataExporter dataExporter;
 
-        
+		// Save game safety
+		public static int failedSaveCount = 0;
+		public static bool saveErrorWarningTriggered = false;	// so that tabletop knows not to unpause
+#if UNITY_EDITOR
+		public static bool simulateBrokenSave = false;	// For debugging
+#endif
         public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
         {
             this.dataImporter = dataImporter;
@@ -81,7 +86,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //for saving from the tabletop
-        public void SaveActiveGame(TabletopTokenContainer tabletop,Character character)
+        public bool SaveActiveGame(TabletopTokenContainer tabletop,Character character,bool forceBadSave = false)
         {
             var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
@@ -90,11 +95,38 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 			Debug.Assert( currentSituationControllers.Count > 0, "No situation controllers!" );
 
-            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,
-                currentSituationControllers,allDecks);
+			// GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP
+            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,currentSituationControllers,allDecks,forceBadSave);
 
-            BackupSave();
-            File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+			// Universal catch-all. If data is broken, abort save and retry 5 seconds later - assuming problem circumstance has completed - CP
+			// If we fail several of these in a row then something is permanently broken in the data and we should alert user :(
+			if (htSaveTable == null && !forceBadSave)
+			{
+				failedSaveCount++;
+				if (failedSaveCount==3)	// Check ==3 not >3 so that we don't write any more ErrorReport saves after the first one - CP
+				{
+					// Back up main save
+					if (File.Exists(NoonUtility.GetGameSaveLocation()))	//otherwise we can't copy it
+		                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "pre"),true);
+					// Force a bad save into a different filename
+					SaveActiveGame( tabletop, character, true );
+					// Pop up warning message
+					Registry.Retrieve<INotifier>().ShowSaveError(true);
+					saveErrorWarningTriggered = true;
+				}
+				return false;	// Something went wrong with the save
+			}
+			if (forceBadSave)
+			{
+				File.WriteAllText(NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "post" ), htSaveTable.JsonString());
+			}
+			else
+			{
+				BackupSave();
+				File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+				failedSaveCount = 0;
+			}
+			return true;
         }
 
         public Hashtable RetrieveHashedSaveFromFile()

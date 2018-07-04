@@ -15,6 +15,7 @@ namespace Assets.CS.TabletopUI {
         [Header("Notification")]
         [SerializeField] Transform notificationHolder;
         [SerializeField] NotificationLog notificationLog;
+		[SerializeField] NotificationWindow saveErrorWindow;
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
@@ -26,6 +27,7 @@ namespace Assets.CS.TabletopUI {
         public void Initialise() {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
             aspectDetails.gameObject.SetActive(false);
+			saveErrorWindow.gameObject.SetActive(false);
         }
 
         // Notifications
@@ -86,6 +88,22 @@ namespace Assets.CS.TabletopUI {
             tokenDetails.ShowDeckDetails(deckSpec, quantity);
             aspectDetails.Hide();
         }
+
+		public void ShowSaveError( bool on )
+		{
+			if (saveErrorWindow == null)
+				return;
+
+			if (on)
+			{
+				saveErrorWindow.Show();
+			}
+			else
+			{
+				saveErrorWindow.HideNoDestroy();
+			}
+		}
+
 
         // TabletopImageBurner
 

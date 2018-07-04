@@ -240,6 +240,20 @@ public class OptionsPanel : MonoBehaviour {
         OpenInFileBrowser.Open( NoonUtility.GetGameSaveLocation() );
     }
 
+	public void SaveErrorContinue()
+	{
+		// Just close window and resume play
+		Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError( false );
+	}
+
+	public void SaveErrorReload()
+	{
+		// Reload last good savegame
+		Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError(false);
+
+		Registry.Retrieve<TabletopManager>().LoadGame();
+	}
+
     // public button events
 
     public void SetMusicVolume(float volume) {

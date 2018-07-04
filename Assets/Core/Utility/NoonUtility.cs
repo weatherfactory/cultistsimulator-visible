@@ -127,6 +127,11 @@ namespace Noon
             return wholePath;
         }
 
+        public static string GetErrorSaveLocation( DateTime timestamp, string postfix )
+        {
+		    string wholePath = Application.persistentDataPath + "/error_save_" + timestamp.ToString("yyyyMMdd_HHmmss") + "_" + postfix + ".txt";
+            return wholePath;
+        }
 
         public static Dictionary<string, int> HashtableToStringIntDictionary(Hashtable table)
         {

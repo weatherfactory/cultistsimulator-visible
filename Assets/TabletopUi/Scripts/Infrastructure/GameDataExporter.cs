@@ -14,7 +14,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public interface IGameDataExporter
     {
-        Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character, IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> decks);
+        Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character, IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> decks,bool forceBadSave);
 
         Hashtable GetHashTableForStacks(IEnumerable<IElementStack> stacks);
 
@@ -30,15 +30,41 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// Currently we only have stacks and situations passes in (each of those is then investigated); more entities would need more params
         /// </summary>
         /// <returns>a hashtable ready to be jsonised (or otherwise stored)</returns>
-        public Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances)
+        public Hashtable GetSaveHashTable(MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances, bool forceBadSave)
         {
+			var htMeta = GetHashTableForMetaInfo(metaInfo);
+			var htChar = GetHashTableForCharacter(character);
+			var htStacks = GetHashTableForStacks(stacks);
+			var htSituations = GetHashTableForSituations(situationControllers);
+			var htDecks = GetHashTableForDecks(deckInstances);
+
+			if (!forceBadSave)
+			{
+#if UNITY_EDITOR
+				if (GameSaveManager.simulateBrokenSave)
+					htSituations.Clear();	// Force failure
+#endif
+				// Do validity checks
+				if (htSituations.Count==0)
+				{
+					Debug.Log( "Save aborted; no verbs!" );
+					return null;
+				}
+				if (htStacks.Count==0)
+				{
+					Debug.Log( "Save aborted; no stacks!" );
+					return null;
+				}
+			}
+
+			// Build complete hashtable only if all subtables are valid
             var htAll = new Hashtable()
             {
-                {SaveConstants.SAVE_METAINFO,GetHashTableForMetaInfo(metaInfo) },
-                {SaveConstants.SAVE_CHARACTER_DETAILS,GetHashTableForCharacter(character) },
-                {SaveConstants.SAVE_ELEMENTSTACKS, GetHashTableForStacks(stacks)},
-                {SaveConstants.SAVE_SITUATIONS, GetHashTableForSituations(situationControllers)},
-                {SaveConstants.SAVE_DECKS,GetHashTableForDecks(deckInstances) }
+                {SaveConstants.SAVE_METAINFO,			htMeta },
+                {SaveConstants.SAVE_CHARACTER_DETAILS,	htChar },
+                {SaveConstants.SAVE_ELEMENTSTACKS,		htStacks },
+                {SaveConstants.SAVE_SITUATIONS,			htSituations },
+                {SaveConstants.SAVE_DECKS,				htDecks }
             };
             return htAll;
         }
