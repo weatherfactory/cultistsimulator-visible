@@ -547,10 +547,14 @@ namespace Assets.CS.TabletopUI {
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
 
-            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
-            if (stackBadge.IsHovering() == false)
+            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards
+			// Now also allowing both shift keys to drag entire stack - CP
+            if (stackBadge.IsHovering() == false &&
+				Input.GetKey(KeyCode.LeftShift) == false &&
+				Input.GetKey(KeyCode.RightShift) == false)
+			{
                 SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
-
+			}
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
