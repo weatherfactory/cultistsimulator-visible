@@ -171,13 +171,25 @@ public class LinkedRecipeDetails
         get { return _additional; }
     }
 
+    public Expulsion Expulsion
+    {
+        get
+        {
+            return _expulsion;
+        }
+
+        set
+        {
+            _expulsion = value;
+        }
+    }
 
     public LinkedRecipeDetails(string id, int chance, bool additional,Expulsion expulsion)
     {
         _additional = additional;
         _id = id;
         _chance = chance;
-        _expulsion = expulsion;
+        Expulsion = expulsion;
     }
 }
 

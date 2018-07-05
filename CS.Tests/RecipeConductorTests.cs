@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
+using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Noon;
 using NSubstitute;
@@ -106,9 +107,9 @@ namespace Assets.Editor.Tests
             mockDice.Rolld100().Returns(_linkedRecipeDetails.Chance);
 
      rc = new RecipeConductor(compendium, null, mockDice, new Character(null));
-            IEnumerable<Recipe> recipesToExecute = rc.GetActualRecipesToExecute(primaryRecipe);
+            IEnumerable<RecipeExecutionCommand> recipesToExecute = rc.GetActualRecipesToExecute(primaryRecipe);
 
-            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Id);
+            Assert.AreEqual(secondaryRecipe.Id, recipesToExecute.Single().Recipe.Id);
         }
 
     }
