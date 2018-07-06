@@ -113,4 +113,26 @@ public class LanguageManager : MonoBehaviour
 			return fontStyles[style].fontMaterial;
 		return null;		
 	}
+
+#if UNITY_EDITOR
+	bool showDebugLanguageSelect = false;
+
+	void OnGUI()
+	{
+		if (GUI.Button( new Rect(Screen.width - 60, 10, 50, 20), "LANG"))
+		{
+			showDebugLanguageSelect = !showDebugLanguageSelect;
+		}
+		if (showDebugLanguageSelect)
+		{
+			for (int i=0; i<LanguageTable.GetSupportedCultures(); i++)
+			{
+				if (GUI.Button( new Rect(Screen.width - 200, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
+				{
+					SetLanguage( LanguageTable.GetCultureCode(i) );
+				}
+			}
+		}
+	}
+#endif
 }

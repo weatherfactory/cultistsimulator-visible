@@ -92,11 +92,11 @@ public class LanguageTable : MonoBehaviour
 				if (entries!=null && entries.Length>cultureIndex)
 				{
 					LocTriplet tri = new LocTriplet( entries[0], entries[cultureIndex] );
-					Debug.Log("Adding " + entries[0] + " <" + tri.GetHashCode() + "> " + entries[cultureIndex]);
+					//Debug.Log("Adding " + entries[0] + " <" + tri.GetHashCode() + "> " + entries[cultureIndex]);
 					locTriplets.Add( tri );
 				}
 			}
-			Debug.Log( "Imported " + locTriplets.Count + " strings" );
+			//Debug.Log( "Imported " + locTriplets.Count + " strings" );
 
 			// TODO: sort into hash order so we can binary chop the lookup for speed
 		}

@@ -108,6 +108,11 @@ namespace Assets.CS.TabletopUI {
 			housekeepingTimer = AUTOSAVE_INTERVAL;
 		}
 
+		public bool IsPaused()
+		{
+			return _heart.IsPaused;
+		}
+
         public void Update()
 		{
 			//

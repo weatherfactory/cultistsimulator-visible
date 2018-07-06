@@ -37,7 +37,7 @@ public class LocalizationResponder : MonoBehaviour
         LanguageManager.LanguageChanged -= OnLanguageChanged;
     }
 
-    public void OnLanguageChanged()
+    public virtual void OnLanguageChanged()
     {
 		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle );
 		if (font != null)
