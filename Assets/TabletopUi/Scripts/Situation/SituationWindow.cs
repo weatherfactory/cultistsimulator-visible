@@ -403,6 +403,10 @@ namespace Assets.CS.TabletopUI {
         }
 
 
+        public IList<RecipeSlot> GetStartingSlots() {
+            return startingSlots.GetAllSlots();
+        }
+
         public IList<RecipeSlot> GetOngoingSlots() {
             return ongoing.GetAllSlots();
         }

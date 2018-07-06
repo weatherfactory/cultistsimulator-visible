@@ -527,7 +527,7 @@ namespace Assets.CS.TabletopUI {
 
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
 
@@ -536,7 +536,7 @@ namespace Assets.CS.TabletopUI {
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
                     choreo.PrepareElementForGreedyAnim(stack, sit.situationToken as SituationToken); // this reparents the card so it can animate properly
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
                 
