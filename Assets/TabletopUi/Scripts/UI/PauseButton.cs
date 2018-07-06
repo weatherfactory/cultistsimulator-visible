@@ -17,12 +17,13 @@ public class PauseButton : MonoBehaviour
     {
         if (isPaused)
         { 
-            ButtonText.text = "Unpause <size=60%><alpha=#99>[SPACE]";
-
+			//ButtonText.text = "Unpause <size=60%><alpha=#99>[SPACE]";
+			ButtonText.text = LanguageTable.Get("UI_UNPAUSE");
         }
         else
         { 
-            ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
+			//ButtonText.text = "Pause <size=60%><alpha=#99>[SPACE]";
+			ButtonText.text = LanguageTable.Get("UI_PAUSE");
         }
     }
 
