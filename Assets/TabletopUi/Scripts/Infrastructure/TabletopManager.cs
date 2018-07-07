@@ -108,6 +108,11 @@ namespace Assets.CS.TabletopUI {
 			housekeepingTimer = AUTOSAVE_INTERVAL;
 		}
 
+		public bool IsPaused()
+		{
+			return _heart.IsPaused;
+		}
+
         public void Update()
 		{
 			//
@@ -129,8 +134,14 @@ namespace Assets.CS.TabletopUI {
 			housekeepingTimer += Time.deltaTime;
 			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
 			{
-			    housekeepingTimer = 0.0f;
-			    SaveGame(true);
+			    if (SaveGame(true))
+				{
+					housekeepingTimer = 0.0f;	// Successful save
+				}
+				else
+				{
+					housekeepingTimer = AUTOSAVE_INTERVAL-5.0f;		// Failed save - try again in 5 secs
+				}
 			}
         }
 
@@ -447,10 +458,13 @@ namespace Assets.CS.TabletopUI {
             _speedController.SetPausedState(false, false);
         }
 
-        public void SaveGame(bool withNotification) {
+        public bool SaveGame(bool withNotification)
+		{
             if (!IsSafeToAutosave())
-                return;
+                return false;
 			
+			bool success = true;	// Assume everything will be OK to begin with...
+
 			// Check state so that autosave behaves correctly if called while paused - CP
 			bool wasBeating = false;
 			if (!_heart.IsPaused)
@@ -469,17 +483,19 @@ namespace Assets.CS.TabletopUI {
             // try
             //  {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
-            if (withNotification)
+            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
+			if (success)
 			{
-                //_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-				_autosaveNotifier.SetDuration( 3.0f );
-				_autosaveNotifier.Show();
+				if (withNotification)
+				{
+					//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+					_autosaveNotifier.SetDuration( 3.0f );
+					_autosaveNotifier.Show();
+				}
 			}
             //}
             //catch (Exception e)
             //{
-
             //      _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             // }
 
@@ -487,6 +503,16 @@ namespace Assets.CS.TabletopUI {
 			{
 	            _heart.ResumeBeating();
 			}
+
+			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
+			{
+				bool pauseStateWhenErrorRequested = GetPausedState();
+				if (!pauseStateWhenErrorRequested)			// only pause if we need to (since it triggers sfx)
+					SetPausedState(true);
+				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
+			}
+
+			return success;
         }
 
 #endregion
@@ -506,7 +532,7 @@ namespace Assets.CS.TabletopUI {
 
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
 
@@ -515,7 +541,7 @@ namespace Assets.CS.TabletopUI {
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
                     choreo.PrepareElementForGreedyAnim(stack, sit.situationToken as SituationToken); // this reparents the card so it can animate properly
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
                 
@@ -854,6 +880,13 @@ namespace Assets.CS.TabletopUI {
 		private void OnGUI()
 		{
 			// Extra tools for debugging autosave.
+
+			// Toggle to simulate bad save
+			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 10f, 180f, 20f), "Simulate bad save: " + (GameSaveManager.simulateBrokenSave?"ON":"off") ))
+			{
+				GameSaveManager.simulateBrokenSave = !GameSaveManager.simulateBrokenSave;		// Click 
+			}
+
 			// Counter to show time to next autosave. Click it to reduce to a five second countdown
 			if (GUI.Button( new Rect(Screen.width * 0.5f - 100f, 10f, 150f, 20f), "Autosave in " + (int)(AUTOSAVE_INTERVAL-housekeepingTimer) ))
 			{

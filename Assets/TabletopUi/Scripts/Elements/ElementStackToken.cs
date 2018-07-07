@@ -52,6 +52,9 @@ namespace Assets.CS.TabletopUI {
 		private float decayAlpha = 0.0f;
 		private Color cachedDecayBackgroundColor;
 
+		// Interaction handling - CP
+		private bool singleClickPending = false;
+
         public float LifetimeRemaining { get; set; }
         private bool isFront = true;
         public Source StackSource { get; set; }
@@ -452,21 +455,124 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Interaction ------------------------------------------------------------------------------------
 
-        public override void OnPointerClick(PointerEventData eventData) {
-            if (isFront) {
-                notifier.ShowCardElementDetails(this._element, this);
-            }
-            else {
-                FlipToFaceUp(false);
+		IEnumerator DelayedShowCardDetails()
+		{
+			yield return new WaitForSeconds(.5f);
+			if (singleClickPending)
+			{
+				notifier.ShowCardElementDetails(this._element, this);
+				singleClickPending = false;
+			}
+		}
 
-                if (onTurnFaceUp != null)
-                    onTurnFaceUp(this);
-            }
+		private List<TabletopUi.TokenAndSlot> FindValidSlot( IList<RecipeSlot> slots, TabletopUi.SituationController situation )
+		{
+			List<TabletopUi.TokenAndSlot> results = new List<TabletopUi.TokenAndSlot>();
 
-            // this moves the clicked sibling on top of any other nearby cards.
-            // NOTE: We shouldn't do this if we're in a RecipeSlot.
-            if (TokenContainer.GetType() != typeof(RecipeSlot))
-                transform.SetAsLastSibling(); 
+			foreach (RecipeSlot slot in slots)
+			{
+				if (!slot.IsGreedy &&
+					slot.GetTokenInSlot() == null &&
+					slot.GetSlotMatchForStack(this).MatchType == SlotMatchForAspectsType.Okay)
+				{
+					// Create token/slot pair
+					var tokenSlotPair = new TabletopUi.TokenAndSlot()
+					{
+						Token = situation.situationToken as SituationToken,
+						RecipeSlot = slot as RecipeSlot
+					};
+
+					results.Add( tokenSlotPair );
+				}
+			}
+			return results;
+		}
+
+		private void SendStackToNearestValidSlot()
+		{
+			// Compile list of valid slots
+			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
+			var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
+			foreach(TabletopUi.SituationController situ in registeredSits)
+			{
+				if (situ.SituationClock.State != SituationState.Complete)
+				{
+					if (situ.IsOngoing)
+					{
+						// Check for ongoing slots only
+						var ongoingSlots = situ.GetOngoingSlots();
+						targetSlots.AddRange( FindValidSlot( ongoingSlots, situ ) );
+					}
+					else if (!situ.situationToken.IsTransient)
+					{
+						// Look for starting slots (most common case)
+						var startSlots = situ.situationWindow.GetStartingSlots();
+						targetSlots.AddRange( FindValidSlot( startSlots, situ ) );
+					}
+				}
+			}
+
+			// Now find the best target from that list
+			if (targetSlots!=null && targetSlots.Count > 0)
+			{
+				TabletopUi.TokenAndSlot selectedSlot = null;
+				float selectedSlotDist = 999999.9f;
+
+				// Find closest token to stack
+				foreach (TabletopUi.TokenAndSlot tokenpair in targetSlots)
+				{
+					Vector3 dist = tokenpair.Token.transform.position - transform.position;
+					//Debug.Log("Dist to " + tokenpair.Token.EntityId + " = " + dist.magnitude );
+					if (tokenpair.Token.SituationController.IsOpen)
+						dist = Vector3.zero;	// Prioritise open windows above all else
+					if (dist.sqrMagnitude < selectedSlotDist)
+					{
+						selectedSlotDist = dist.sqrMagnitude;
+						selectedSlot = tokenpair;
+					}
+				}
+
+				Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
+
+				var choreo = Registry.Retrieve<Choreographer>();
+				SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
+				choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
+				choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone );
+			}			
+		}
+
+        public override void OnPointerClick(PointerEventData eventData)
+		{
+			if (eventData.clickCount > 1)
+			{
+				// Double-click, so abort any pending single-clicks
+				singleClickPending = false;
+
+				SendStackToNearestValidSlot();
+			}
+			else
+			{
+				// Single-click BUT might be first half of a double-click
+				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
+				singleClickPending = true;
+
+				if (isFront)
+				{
+					StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
+				}
+				else
+				{
+					FlipToFaceUp(false);
+
+					if (onTurnFaceUp != null)
+						onTurnFaceUp(this);
+				}
+
+				// this moves the clicked sibling on top of any other nearby cards.
+				// NOTE: We shouldn't do this if we're in a RecipeSlot.
+				if (TokenContainer.GetType() != typeof(RecipeSlot))
+					transform.SetAsLastSibling();
+			}
         }
 
         public override void OnDrop(PointerEventData eventData) {
@@ -547,10 +653,14 @@ namespace Assets.CS.TabletopUI {
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
 
-            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
-            if (stackBadge.IsHovering() == false)
+            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards
+			// Now also allowing both shift keys to drag entire stack - CP
+            if (stackBadge.IsHovering() == false &&
+				Input.GetKey(KeyCode.LeftShift) == false &&
+				Input.GetKey(KeyCode.RightShift) == false)
+			{
                 SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
-
+			}
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
@@ -594,6 +704,12 @@ namespace Assets.CS.TabletopUI {
         public void Decay(float interval) {
             if (!Decays)
 			    return;
+
+			var stackAnim = this.gameObject.GetComponent<TokenAnimationToSlot>();
+			if (stackAnim)
+			{
+				return;	// Do not decay while being dragged into greedy slot (#1335) - CP
+			}
 
             if(!isFront)
                 FlipToFaceUp(true); //never leave a decaying card face down.

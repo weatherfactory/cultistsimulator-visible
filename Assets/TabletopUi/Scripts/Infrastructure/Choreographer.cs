@@ -391,21 +391,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             tokenAnim.StartAnim(duration);
         }
 
-        public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation) {
+        public void PrepareElementForSendAnim(ElementStackToken stack, SituationToken ownerSituation)
+		{
+            _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
+            //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
+            //stack.transform.position = ownerSituation.transform.position;
+            stack.FlipToFaceUp(true);
+        }
+
+        public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation)
+		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
             stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
+        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken,TokenAndSlot> callOnAnimDone)
+		{
             var startPos = stack.RectTransform.anchoredPosition3D;
             var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
             float distance = Vector3.Distance(startPos, endPos);
             float duration = Mathf.Max(0.3f, distance * 0.001f);
 
             var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
-            stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
+            stackAnim.onElementSlotAnimDone += callOnAnimDone;
             stackAnim.SetPositions(startPos, endPos);
             stackAnim.SetScaling(1f, 0.35f);
             stackAnim.SetTargetSlot(tokenSlotPair);
@@ -415,7 +425,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stackAnim.StartAnim(duration);
         }
 
-        void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
+        public void ElementSendAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
+		{
+            if (tokenSlotPair.RecipeSlot.Equals(null))
+                return;
+
+            tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
+            tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
+			if (!tokenSlotPair.Token.SituationController.IsOpen)
+				tokenSlotPair.Token.OpenSituation();
+        }
+
+        public void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
+		{
             if (tokenSlotPair.RecipeSlot.Equals(null))
                 return;
 

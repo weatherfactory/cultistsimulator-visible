@@ -360,15 +360,15 @@ public class ContentImporter
             }
        
 
-            bool resetOnExhaustion;
+            bool resetOnExhaustion=false;
             try
             {
                 resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
             }
 
             string defaultCardId = "";

@@ -290,6 +290,8 @@ namespace Assets.TabletopUi {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
                 var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
                 tabletopManager.BeginNewSituation(scc);
+                
+
                 return;
             }
 

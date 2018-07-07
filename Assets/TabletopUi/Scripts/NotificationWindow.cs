@@ -41,6 +41,13 @@ namespace Assets.CS.TabletopUI
 			}
         }
 
+        public void HideNoDestroy()
+		{
+			if (gameObject.activeInHierarchy && !IsBusy()) {
+				TriggerAnim(AnimType.MoveRight, AnimType.None, StopAllCoroutines);
+			}
+        }
+
 		protected void DoDisable()
 		{
 			StopAllCoroutines();
