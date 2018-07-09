@@ -205,7 +205,7 @@ craftable: true
 	  label:"Discuss the Locksmith's Dream, Volume 1",
 	  requirements:{spirit_lanterne_secret:1,locksmithsdream1:1,autographed:-1},
 	  actionId:"talk",
-	  startdescription:'"Shall I autograph it? I think that would be rather fun, wouldn't it?'",
+	  startdescription:'"'Shall I autograph it? I think that would be rather fun, wouldn't it?'",
 	  description:"'I used to live by Camden Lock, when I started writing this stuff down. If that isn't a joke of the Hours, I don't know what is. Let me tell you of my sources -'",
 	  effects:{erudition:1},
 	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
