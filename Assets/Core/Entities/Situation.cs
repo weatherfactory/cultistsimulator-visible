@@ -149,14 +149,14 @@ namespace Assets.Core.Entities {
         private void RequireExecution(IRecipeConductor rc) {
             State = SituationState.RequiringExecution;
 
-            IList<RecipeExecutionCommand> recipesToExecute = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
+            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
 
             //actually replace the current recipe with the first on the list: any others will be additionals,
             //but we want to loop from this one.
-            if (recipesToExecute.First().Recipe.Id != currentPrimaryRecipe.Id)
-                currentPrimaryRecipe = recipesToExecute.First().Recipe;
+            if (recipeExecutionCommands.First().Recipe.Id != currentPrimaryRecipe.Id)
+                currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
-            foreach (var r in recipesToExecute) {
+            foreach (var r in recipeExecutionCommands) {
                 ISituationEffectCommand ec = new SituationEffectCommand(r.Recipe, r.Recipe.ActionId != currentPrimaryRecipe.ActionId);
                 subscriber.SituationExecutingRecipe(ec);
             }

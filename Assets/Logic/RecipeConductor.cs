@@ -152,9 +152,9 @@ namespace Assets.Core
 
         public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
         {
-            IList<RecipeExecutionCommand> actualRecipesToExecute = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null) }; ;
+            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null) }; ;
             if (recipe.AlternativeRecipes.Count == 0)
-                return actualRecipesToExecute;
+                return recipeExecutionCommands;
 
 
             foreach (var ar in recipe.AlternativeRecipes)
@@ -183,7 +183,7 @@ namespace Assets.Core
                     }
                     if (ar.Additional)
                     {
-                        actualRecipesToExecute.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion)); //add the additional recipe, and keep going
+                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion)); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe " + ar.Id +
                                         " to execute - adding it to executiion listand looking for more");
                     }
@@ -205,7 +205,7 @@ namespace Assets.Core
                 }
             }
 
-            return actualRecipesToExecute; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
+            return recipeExecutionCommands; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
         }
 
     }
