@@ -49,7 +49,7 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneLinux:17</UnityBuildTarget>
+    <UnityBuildTarget>StandaloneLinuxUniversal:25</UnityBuildTarget>
     <UnityVersion>2018.1.6f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -72,6 +72,7 @@
     <Compile Include="Assets\Core\Commands\ElementStackSpecification.cs" />
     <Compile Include="Assets\Core\Commands\HeartbeatResponse.cs" />
     <Compile Include="Assets\Core\Commands\Notification.cs" />
+    <Compile Include="Assets\Core\Commands\RecipeExecutionCommand.cs" />
     <Compile Include="Assets\Core\Commands\RecipePrediction.cs" />
     <Compile Include="Assets\Core\Commands\SituationCreationCommand.cs" />
     <Compile Include="Assets\Core\Commands\SituationEffectCommand.cs" />
@@ -237,8 +238,11 @@
     <Compile Include="Assets\TabletopUi\Scripts\UI\FX\CardEffectRemoveColorAnim.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\FX\FXTestController.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\GraphicFader.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\LanguageManager.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\LanguageTable.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\LoadingIcon.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\Loading\SplashScreen.cs" />
+    <Compile Include="Assets\TabletopUi\Scripts\UI\LocalizationResponder.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\MapAnimation.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\MapTokenContainer.cs" />
     <Compile Include="Assets\TabletopUi\Scripts\UI\OpenInFileBrowser.cs" />

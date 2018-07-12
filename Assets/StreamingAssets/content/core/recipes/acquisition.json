@@ -10,7 +10,7 @@
         description: ".",
         warmup: 30,
         craftable: false,
-		alternativerecipes:[{id:"playerincreasedbid",chance:100,expulsion:{limit:1,filter:{follower:1,mortal:1}}}],
+		alternativerecipes:[{id:"playerincreasedbid",chance:100,expulsion:}],
 		linked:[{id:"auctionfailure",chance:100}]
 		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
        },
