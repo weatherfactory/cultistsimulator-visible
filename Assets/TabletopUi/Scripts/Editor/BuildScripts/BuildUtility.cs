@@ -17,7 +17,7 @@ namespace Assets.Core.Utility
 {
     public class BuildUtility
     {
-
+        
         private static string[] GetScenes()
         {
             string[] scenes =
