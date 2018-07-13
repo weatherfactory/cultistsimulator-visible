@@ -294,7 +294,7 @@ namespace Assets.TabletopUi {
                 //if there's an expulsion
                 if (command.Expulsion != null)
                 {
-                    //find one or more matching stacks
+                    //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
                     AspectMatchFilter filter = new AspectMatchFilter(command.Expulsion.Filter);
                     var filteredStacks = filter.FilterElementStacks(situationWindow.GetStoredStacks()).ToList();
                     if (filteredStacks.Any() && command.Expulsion.Limit > 0)
@@ -304,6 +304,7 @@ namespace Assets.TabletopUi {
                             filteredStacks.RemoveAt(filteredStacks.Count - 1);
                         }
 
+                        stacksToAddToNewSituation = filteredStacks;
                     }
 
 
