@@ -816,8 +816,8 @@ namespace Assets.CS.TabletopUI {
             mansusSituation = null;
         }
 
-        public void BeginNewSituation(SituationCreationCommand scc) {
-            Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
+        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
+            Registry.Retrieve<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {

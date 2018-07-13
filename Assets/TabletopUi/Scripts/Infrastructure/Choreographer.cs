@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
+using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
@@ -327,11 +328,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         #endregion
 
-        #region -- SITUATION MANAGEMENT ----------------------------
-
-        public void BeginNewSituation(SituationCreationCommand scc) {
+        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
             if (scc.Recipe == null)
                 throw new ApplicationException("DON'T PASS AROUND SITUATIONCREATIONCOMMANDS WITH RECIPE NULL");
+            if(withStacksInStorage==null)
+                throw new ApplicationException("WITHSTACKSINSTORAGE SHOULD NEVER BE NULL");
 
             //if new situation is beginning with an existing verb: do not action the creation.
             //oh: I could have an scc property which is a MUST CREATE override
@@ -365,6 +366,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
             var token = _situationBuilder.CreateTokenWithAttachedControllerAndSituation(scc);
 
+            //if there's been (for instance) an expulsion, we now want to add the relevant stacks to this situation
+            if (withStacksInStorage.Any())
+                token.SituationController.StoreStacks(withStacksInStorage);
+
             //if token has been spawned from an existing token, animate its appearance
             if (scc.SourceToken != null) {
                 AnimateTokenTo(token,
@@ -379,7 +384,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             }
         }
 
-        #endregion
 
         #region -- ANIMATIONS ------------------------
 

@@ -13,13 +13,15 @@ namespace Assets.Core
         public string Description { get; set; }
         public Recipe Recipe { get; set; }
         public bool AsNewSituation { get; set; } //determines whether the recipe will spawn a new situation.
+        public Expulsion Expulsion { get; set; }
 
-        public SituationEffectCommand(Recipe recipe,bool asNewSituation)
+        public SituationEffectCommand(Recipe recipe,bool asNewSituation,Expulsion expulsion)
         {
             Recipe = recipe;
             Title = "default title";
             Description = recipe.Description;
             AsNewSituation = asNewSituation;
+            Expulsion = expulsion;
         }
 
         public Dictionary<string, int> GetElementChanges()

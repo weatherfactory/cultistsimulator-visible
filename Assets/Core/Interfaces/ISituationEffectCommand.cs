@@ -13,6 +13,7 @@ namespace Assets.Core.Interfaces
         Recipe Recipe { get; }
         Dictionary<string, int> GetElementChanges();
         bool AsNewSituation { get; }
+        Expulsion Expulsion { get; set; }
 
         /// <summary>
         /// returns the deck to draw from if there is one, or null if there isn't one

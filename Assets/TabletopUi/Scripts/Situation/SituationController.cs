@@ -254,11 +254,11 @@ namespace Assets.TabletopUi {
 
         }
 
-        void StoreStacks(IEnumerable<IElementStack> stacks) {
-            var inputStacks = situationWindow.GetOngoingStacks();
+        public void StoreStacks(IEnumerable<IElementStack> inputStacks) {
+          //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
             var storageStackManager = situationWindow.GetStorageStacksManager();
             storageStackManager.AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
-            situationWindow.DisplayStoredElements(); //displays the miniversion of the cards. This should 
+            situationWindow.DisplayStoredElements(); //displays the miniversion of the cards.
         }
 
         public void AddToResults(ElementStackToken stack, Context context) {
@@ -286,12 +286,35 @@ namespace Assets.TabletopUi {
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             StoreStacks(situationWindow.GetOngoingStacks());
 
+            
+
             if (command.AsNewSituation) {
+
+                List<IElementStack> stacksToAddToNewSituation=new List<IElementStack>();
+                //if there's an expulsion
+                if (command.Expulsion != null)
+                {
+                    //find one or more matching stacks
+                    AspectMatchFilter filter = new AspectMatchFilter(command.Expulsion.Filter);
+                    var filteredStacks = filter.FilterElementStacks(situationWindow.GetStoredStacks()).ToList();
+                    if (filteredStacks.Any() && command.Expulsion.Limit > 0)
+                    {
+                        while (filteredStacks.Count > command.Expulsion.Limit)
+                        {
+                            filteredStacks.RemoveAt(filteredStacks.Count - 1);
+                        }
+
+                    }
+
+
+                    //nb if 2, there might be two stacks implicated
+
+                    //take this opportunity to tidy stacks??
+                }
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
                 var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-                tabletopManager.BeginNewSituation(scc);
+                tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
                 
-
                 return;
             }
 
@@ -384,7 +407,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation);
+            Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
         }
 
         public void ResetSituation() {

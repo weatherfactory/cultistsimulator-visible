@@ -156,8 +156,10 @@ namespace Assets.Core.Entities {
             if (recipeExecutionCommands.First().Recipe.Id != currentPrimaryRecipe.Id)
                 currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
-            foreach (var r in recipeExecutionCommands) {
-                ISituationEffectCommand ec = new SituationEffectCommand(r.Recipe, r.Recipe.ActionId != currentPrimaryRecipe.ActionId);
+            foreach (var c in recipeExecutionCommands) {
+
+
+                ISituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,null);
                 subscriber.SituationExecutingRecipe(ec);
             }
         }
