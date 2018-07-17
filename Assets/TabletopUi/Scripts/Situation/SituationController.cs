@@ -315,7 +315,7 @@ namespace Assets.TabletopUi {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
                 var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
                 tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
-                
+                situationWindow.DisplayStoredElements();             //in case expulsions have removed anything
                 return;
             }
 
@@ -329,7 +329,6 @@ namespace Assets.TabletopUi {
             }
 
 
-            //and always update the aspects display. I'm particularly worried about expulsions changing content, but it's good for belt and braces anyway.
             situationWindow.DisplayStoredElements();
         }
 
