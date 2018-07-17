@@ -957,59 +957,72 @@
 				{
 		id: "textlatin",
 		label: "Written in Latin",
-		aspects: {language:1},
 		description: "A dead language: dead as diamonds. [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 					{
 		id: "textfucine",
 		label: "Written in Fucine",
-		aspects: {language:1},
 		description: "A people lived east of the lost lake Fucino. Horace warned that theirs was the land of witches. This was their language, called by some 'the dry tongue' and by others 'the tongue of witches'.[Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 				{
 		id: "textgreek",
 		label: "Written in Greek",
-		aspects: {language:1},
 		description: "A tongue for philosophers, theologians and heroes. [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 					{
 		id: "textphrygian",
 		label: "Written in Phrygian",
-		aspects: {language:1},
 		description: "The Phrygians worshipped the Great Mother, who we call the Grail. Theirs was the land in which the Sisterhood of the Knot was born, and this is the tongue in which the Thunderskin pleaded, at his ascension.  [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 						{
 		id: "textaramaic",
 		label: "Written in Aramaic",
-		aspects: {language:1},
 		description: "The language of Aram, and all her many children these three thousand years and more. [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 							{
 		id: "textmandaic",
 		label: "Written in Deep Mandaic",
-		aspects: {language:1},
 		description: "The most secret script of the innermost rites of the deep sects of the deep desert. The birth-tongue, it is claimed, of the Mother of Ants herself. [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 									{
 		id: "textsanskrit",
 		label: "Written in Sanskrit",
-		aspects: {language:1},
 		description: "The holy tongue of the Subcontinent. The door to four thousand years of poetry, ceremony and mystery now opens before you, if you can struggle through the lotus convolutions of its vocabulary.[Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 									{
 		id: "textvak",
 		label: "Written in Vak",
-		aspects: {language:1},
 		description: "Before gods arose from blood, before ever ape stood upright, this was the language heard in the House of the Sun.[Some books must be translated before they can be read.]",
 		isAspect:true
 		},
+				{id: "follower_wound",
+		label:"Wound",
+		description:"This one has suffered in my service. [Wounded followers can't be sent on Expeditions or on cult business. They may die in the Season of Sickness. Heal them by Talking with them.]",
+		isAspect:true
+		},
+		{id: "follower_scar_edge",
+		label:"Scar: Brutal Experience",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a follower.]",
+		isAspect:true
+		},
+		
+				{id: "follower_scar_knock",
+		label:"Scar: Half-Healed Fistula",
+		description:"Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a follower.]",
+		isAspect:true
+		},
+				{id: "follower_scar_winter",
+		label:"Scar: Old Wound",
+		description:"Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a follower.]",
+		isAspect:true
+		}
 		
 ]
 }

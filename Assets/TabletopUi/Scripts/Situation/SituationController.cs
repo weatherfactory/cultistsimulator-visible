@@ -327,6 +327,10 @@ namespace Assets.TabletopUi {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
                 tabletopManager.EndGame(ending, this);
             }
+
+
+            //and always update the aspects display. I'm particularly worried about expulsions changing content, but it's good for belt and braces anyway.
+            situationWindow.DisplayStoredElements();
         }
 
         public void ReceiveTextNotification(INotification notification)

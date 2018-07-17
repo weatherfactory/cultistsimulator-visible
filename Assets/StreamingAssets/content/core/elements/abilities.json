@@ -169,7 +169,7 @@ lifetime: 180
             id: "decrepitude",
             label: "Decrepitude",
 			description: "Some wounds never quite heal. [Untreated Injuries and Hunger become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
-			aspects: {ability:1},
+			aspects: {ability:1,winter:1},
 			xtriggers: {tohealth:health}
             },
 		

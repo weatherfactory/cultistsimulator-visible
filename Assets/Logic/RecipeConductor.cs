@@ -185,7 +185,7 @@ namespace Assets.Core
                     {
                         recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion)); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe " + ar.Id +
-                                        " to execute - adding it to executiion listand looking for more");
+                                        " to execute - adding it to execution list and looking for more");
                     }
                     else
                     {

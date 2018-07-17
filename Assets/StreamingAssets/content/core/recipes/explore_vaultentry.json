@@ -133,15 +133,13 @@
 	},
 	{
 		id: "explorevault_casualty",
-	actionId:"explore",
-	label: "An expedition member is dying!",
-	startdescription: "If we fail to pass a Peril or a Guardian, we'll usually lose one of our number.",
-	effects: {follower:-1},
-	description: "They're gone.",
+	actionId:"explorevault_casualty",
+	label: "An expedition member has fallen!",
+	startdescription: "They may yet survive - ",
+	description: "Their wounds are grievous. [Heal a fallen Follower with Talk.]",
 	craftable: false,
-		linked: [{id: "explorevaultfailure_nofollowers",chance:100},
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
+	mutations:[{filterOnAspectId:follower,mutateAspectId:follower_wound,mutationLevel:1}],
+		warmup:1
 	},
 
 
