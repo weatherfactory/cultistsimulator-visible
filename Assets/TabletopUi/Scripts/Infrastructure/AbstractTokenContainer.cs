@@ -27,7 +27,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             var stack = ProvisionElementStack(stackSpecification.ElementId, stackSpecification.ElementQuantity,
                 stackSource, locatorid);
             foreach(var m in stackSpecification.Mutations)
-                stack.SetMutation(m.Key,m.Value);
+                stack.SetMutation(m.Key,m.Value,false);
 
             stack.IlluminateLibrarian=new IlluminateLibrarian(stackSpecification.Illuminations);
 

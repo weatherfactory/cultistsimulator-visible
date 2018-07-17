@@ -143,7 +143,7 @@ namespace Assets.CS.TabletopUI {
             return IlluminateLibrarian.GetCurrentIlluminations();
         }
 
-        public void SetMutation(string aspectId, int value,bool additive=false)
+        public void SetMutation(string aspectId, int value,bool additive)
         {
             if (_currentMutations.ContainsKey(aspectId))
             {

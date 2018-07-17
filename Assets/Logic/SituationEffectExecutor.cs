@@ -38,7 +38,7 @@ namespace Assets.Logic
                foreach (var stack in stacksManager.GetStacks())
                {
                     if(stack.GetAspects(true).ContainsKey(mutationEffect.FilterOnAspectId))
-                        stack.SetMutation(mutationEffect.MutateAspectId,mutationEffect.MutationLevel);
+                        stack.SetMutation(mutationEffect.MutateAspectId,mutationEffect.MutationLevel,mutationEffect.Additive);
                }
             }
         }
