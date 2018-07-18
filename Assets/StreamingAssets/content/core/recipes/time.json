@@ -41,20 +41,31 @@
         label: "Sickness",
         actionId: "illhealth",
         requirements: {seasonsickness:1},
+				slots: [{id:"Affliction",
+					required: {health: 1,follower_wound:1},
+					greedy: true
+		}],
         effects: {
             health: -1,
             affliction: 1,
         },
 		alternativerecipes:
-		[{id: "deathofthebody",chance:100}],
+		[
+		{id: "deathofthewoundedfollower",chance:100},
+		{id: "deathofthebody",chance:100}],
         startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
         description: "The sickness has ravaged my body.",
-        warmup: 60,
-		slots: [{id:"Affliction",
-					required: {health: 1},
-					greedy: true
-		}]
+        warmup: 60
     },
+	
+	{id:"deathofthewoundedfollower",
+	label:"My Follower is dying!",
+	requirements:{follower_wound:1},
+	startdescription: "Their wounds are mortal. There's nothing to be done.",
+	description: "Perhaps their spirit walks the House. Perhaps it's lost in the Wood, to sink ever lower. Their mortal shell remains.",
+	aspects:{killmortal:1}	
+	},
+	
 		   {
         id: "pleasantday",
         label: "A Pleasant Day",
