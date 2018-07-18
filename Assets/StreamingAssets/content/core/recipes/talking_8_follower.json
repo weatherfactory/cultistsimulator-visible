@@ -2,7 +2,7 @@
 "recipes": [
 
 {id: "talktofollower_attemptheal",
-label:"See to a Follower's healing",
+label:"Attempt the healing of a Follower",
 actionId:"talk",
 startdescription: "Compassion, or convenience?",
 description:"I could not or would not provide medical assistance.",
@@ -13,33 +13,79 @@ warmup:60,
 craftable:true
 },
 {id:"talktofollower_heal",
+label:"Complete the healing of a Follower",
+startdescription:"Perhaps, now, they'll survive. But there are limits to what the human body can sustain.",
 actionId:"talk",
 requirements:{funds:1},
 mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:0,additive:false},
 {filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:0,additive:false}],
 effects:{funds:-1},
-linked:[{id:"givescar_edge",chance:33},
+linked:[{id:"givescar_edge",chance:30},
 {id:"givescar_knock",chance:50},
 {id:"givescar_winter",chance:100}]
 },
 {id:"givescar_edge",
 actionId:"talk",
+label:"The Lessons of Experience",
 description:"The wound is healed. The scar remains. But each scar, as the scholar Shulga once observed, is a lesson.",
-mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:1},
-{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:2}],
+mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:1,additive:true},
+{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:2,additive:true}],
+linked:[{id:"deathscar_edge",chance:100}]
 },
 {id:"givescar_knock",
+label:"Pain's Gate",
 actionId:"talk",
 description:"The wound is healed - as much as it will ever be. A gate of pain and possibility remains",
-mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:1},
-{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:2}],
+mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:1,additive:true},
+{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:2,additive:true}],
+linked:[{id:"deathscar_knock",chance:100}]
 },
 {id:"givescar_winter",
 actionId:"talk",
+label:"The Beginning of an Ending",
 description:"The wound is healed, but this one came very close to death. Silence has touched them, like snow.",
-mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:1},
-{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:2}],
+mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_winter,mutationLevel:1,additive:true},
+{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:2,additive:true}],
+linked:[{id:"deathscar_winter",chance:100}]
 },
+{id:"deathscar_edge",
+actionId:"talk",
+label:"Death: a Defeat",
+requirements:{follower_scar_edge:3},
+description:"This one showed courage and endurance. In the end, that wasn't enough.[Your Follower acquired three Edge-Scars, and died.]",
+mutations:[
+{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:0,additive:false},
+{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:0,additive:false}
+{filterOnAspectId:follower,mutateAspectId:follower_scar_winter,mutationLevel:0,additive:false},
+{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:0,additive:false}],
+aspects:{killmortal:1}
+},
+{id:"deathscar_knock",
+actionId:"talk",
+label:"Death: an Opening",
+requirements:{follower_scar_knock:3},
+description:"To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Follower acquired three Knock-Scars, and died.]",
+mutations:[
+{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:0,additive:false},
+{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:0,additive:false}
+{filterOnAspectId:follower,mutateAspectId:follower_scar_winter,mutationLevel:0,additive:false},
+{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:0,additive:false}],
+aspects:{killmortal:1}
+},
+{id:"deathscar_winter",
+actionId:"talk",
+label:"Death: an Ending",
+requirements:{follower_scar_winter:3},
+description:"The year turns Westwards, towards Winter. This one has chosen to close their eyes. [Your Follower acquired three Winter-Scars, and died.]",
+mutations:[
+{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:0,additive:false},
+{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:0,additive:false}
+{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:0,additive:false},
+{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:0,additive:false}],
+aspects:{killmortal:1}
+},
+
+
 {id: "talktofollower",
 label:"Discuss occult business with a Follower",
 actionId: "talk",
