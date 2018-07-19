@@ -53,11 +53,6 @@ actionId:"talk",
 label:"Death: a Defeat",
 requirements:{follower_scar_edge:3},
 description:"This one showed courage and endurance. In the end, that wasn't enough.[Your Follower acquired three Edge-Scars, and died.]",
-mutations:[
-{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:0,additive:false},
-{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:0,additive:false}
-{filterOnAspectId:follower,mutateAspectId:follower_scar_winter,mutationLevel:0,additive:false},
-{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:0,additive:false}],
 aspects:{killmortal:1}
 },
 {id:"deathscar_knock",
@@ -65,11 +60,6 @@ actionId:"talk",
 label:"Death: an Opening",
 requirements:{follower_scar_knock:3},
 description:"To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Follower acquired three Knock-Scars, and died.]",
-mutations:[
-{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:0,additive:false},
-{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:0,additive:false}
-{filterOnAspectId:follower,mutateAspectId:follower_scar_winter,mutationLevel:0,additive:false},
-{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:0,additive:false}],
 aspects:{killmortal:1}
 },
 {id:"deathscar_winter",
@@ -77,11 +67,6 @@ actionId:"talk",
 label:"Death: an Ending",
 requirements:{follower_scar_winter:3},
 description:"The year turns Westwards, towards Winter. This one has chosen to close their eyes. [Your Follower acquired three Winter-Scars, and died.]",
-mutations:[
-{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:0,additive:false},
-{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:0,additive:false}
-{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:0,additive:false},
-{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:0,additive:false}],
 aspects:{killmortal:1}
 },
 
@@ -89,7 +74,7 @@ aspects:{killmortal:1}
 {id: "talktofollower",
 label:"Discuss occult business with a Follower",
 actionId: "talk",
-requirements: {society:-1,follower: 1,summoned:-1,follower_wound:-1},
+requirements: {society:-1,follower: 1,summoned:-1},
 slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,ingredient:1,annoyance:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
@@ -100,41 +85,40 @@ alternativerecipes:[
 {id:"followeraction_repairtoollanterndcracked",chance:100},
 {id:"followeraction_repairtoollanternfcracked",chance:100},
 
-{id:"followeraction_abducthighedge",chance:100},
-{id:"followeraction_abductmidedge",chance:100},
-{id:"followeraction_abductlowedge",chance:100},
+
 {id:"followeraction_murderhighwinter",chance:100},
-{id:"followeraction_murdermidwinter",chance:100},
-{id:"followeraction_murderlowwinter",chance:100},
 {id:"followeraction_craftworkhighforge",chance:100},
-{id:"followeraction_craftworkmidforge",chance:100},
-{id:"followeraction_craftworklowforge",chance:100},
 {id:"followeraction_seducehighgrail",chance:100},
-{id:"followeraction_seducemidgrail",chance:100},
-{id:"followeraction_seducelowgrail",chance:100},
 {id:"followeraction_burglehighknock",chance:100},
-{id:"followeraction_burglemidknock",chance:100},
-{id:"followeraction_burglelowknock",chance:100},
 {id:"followeraction_charmhighheart",chance:100},
-{id:"followeraction_charmmidheart",chance:100},
-{id:"followeraction_charmlowheart",chance:100},
 {id:"followeraction_auguryhighlantern",chance:100},
-{id:"followeraction_augurymidlantern",chance:100},
-{id:"followeraction_augurylowlantern",chance:100},
 {id:"followeraction_hoodwinkhighmoth",chance:100},
+{id:"followeraction_abducthighedge",chance:100},
+{id:"followeraction_murdermidwinter",chance:100},
+{id:"followeraction_craftworkmidforge",chance:100},
+{id:"followeraction_seducemidgrail",chance:100},
+{id:"followeraction_burglemidknock",chance:100},
+{id:"followeraction_charmmidheart",chance:100},
+{id:"followeraction_augurymidlantern",chance:100},
 {id:"followeraction_hoodwinkmidmoth",chance:100},
+{id:"followeraction_abductmidedge",chance:100},
+{id:"followeraction_murderlowwinter",chance:100},
+
+{id:"followeraction_craftworklowforge",chance:100},
+{id:"followeraction_seducelowgrail",chance:100},
+{id:"followeraction_burglelowknock",chance:100},
+{id:"followeraction_charmlowheart",chance:100},
+{id:"followeraction_augurylowlantern",chance:100},
 {id:"followeraction_hoodwinklowmoth",chance:100},
+{id:"followeraction_abductlowedge",chance:100},
 
 {id:"hunterattackhighedge",chance:100},
 {id:"hunterattackmidedge",chance:100},
 {id:"hunterattacklowedge",chance:100},
-
 {id:"hunterattackhighwinter",chance:100},
 {id:"hunterattackmidwinter",chance:100},
 {id:"hunterattacklowwinter",chance:100},
-
 {id:"hunterattacknoedge",chance:100},
-
 
 
 {id:"annoyanceseducehighgrail",chance:100},
@@ -146,8 +130,6 @@ alternativerecipes:[
 {id:"annoyanceattacklowedge",chance:100},
 {id:"annoyancederangelowmoth",chance:100},
 {id:"annoyanceattacknoedge",chance:100},
-
-
 
 
 {id: "evidencedestroymidmoth",chance:100},
@@ -312,8 +294,10 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Attempting an Abduction",
 	  actionId:"talk",
 	  startdescription: "I await word....",
-	  description:"My minion has not returned. I'll never know exactly what happened.",
-	  effects: {notoriety:1,follower:-1},
+	  description:"My minion has returned, empty-handed and grievously wounded. Their victim showed pluck. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
 	  warmup:30	  
 	  },
 	  
@@ -371,8 +355,8 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Attempting a Murder...",
 	  actionId:"talk",
 	  startdescription: "I await word....",
-	  description:"My minion has not returned. I'll never know exactly what happened.",
-	  effects: {notoriety:1,follower:-1},
+	  description:"My minion has returned to report failure. They can barely stand. Their victim put up a fight. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
 	  warmup:30	  
 	  },
 	  
@@ -429,8 +413,9 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Working under Contract...",
 	  actionId:"talk",
 	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
-	  description:"There has been an accident.",
-	  aspects: {killmortal:1},
+	  description:"There has been an accident. [Heal a fallen Follower with Talk.]",
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
 	  warmup:30	  
 	  },
 	  
@@ -487,8 +472,10 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Attempting a Seduction",
 	  actionId:"talk",
 	  startdescription: "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
-	  description:"My minion has not returned. I'll never know exactly what happened.",
-	  effects: {notoriety:1,follower:-1},
+	  description:"My minion has returned, half-conscious, bleeding badly. It seems a rival suitor took exception to their efforts. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
 	  warmup:30	  
 	  },
 	  
@@ -549,8 +536,10 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Breaking, Entering, Returning...",
 	  actionId:"talk",
 	  startdescription: "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
-	  description:"There has been an accident.",
-	  effects: {notoriety:1,follower:-1},
+	  description:"There has been an accident. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
 	  warmup:30	  
 	  },
 	  
@@ -662,9 +651,10 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Beneath the World's Skin",
 	  actionId:"talk",
 	  startdescription: "Hours of scholarship and meditation...",
-		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their own psychic defences have crumpled into chaos.",
+		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could do further harm to themself. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]"
 	  effects: {fascination:1},
-	  aspects: {derangemortal:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
 	  warmup:30	  
 	  },
 	  
@@ -723,8 +713,10 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 		label: "Deceit and Confusion",
 	  actionId:"talk",
 	  startdescription: "My follower is attempting a profitable deception.",
-	  description:"My follower hasn't returned. Perhaps their final trick was to arrange their own disappearance.",
-	  effects: {notoriety:1,follower:-1},
+	  description:"I was beginning to worry that my follower had arranged their own disappearance. But it seems their deception was detected. The victim was outraged, and my follower barely escaped alive. [Heal a fallen Follower with Talk.]",
+	  	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  effects: {notoriety:1},
 	  warmup:30	  
 	  },
 
