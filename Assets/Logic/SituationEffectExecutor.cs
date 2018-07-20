@@ -28,7 +28,7 @@ namespace Assets.Logic
             //and after deck effect
             RunRecipeEffects(command, stacksManager);
             //Do this last: remove any stacks marked for consumption by being placed in a consuming slot
-            RunConsumptions(stacksManager);
+            RunConsumptions(stacksManager); //NOTE: If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
         }
 
        private void RunMutationEffects(ISituationEffectCommand command, IElementStacksManager stacksManager)
