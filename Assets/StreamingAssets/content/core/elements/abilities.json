@@ -19,12 +19,12 @@
             label: "Health",
             aspects:
             {
-                heart: 2,
+                heart: 1,
 				ingredient: 1,
 				ability:1
             },
             animFrames: 1,
-			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:injury,society:injury},
+			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:fatigue,society:fatigue},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
         },
 				 {
@@ -63,7 +63,7 @@
 			  			slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1},actionId:"dream"},
 			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1},actionId:"dream"}],
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
-			xtriggers: {restorehealth: health,rite:decrepitude,society:decrepitude},
+			xtriggers: {restorehealth: health,rite:scar_knock,society:scar_knock},
 			lifetime: 150,
 			decayTo: "decrepitude"
 			},
@@ -288,8 +288,6 @@ lifetime: 180
 		},
 		
 	
-			
-		
 			 {
             id: "fleeting",
             label: "Fleeting Memory",
@@ -302,6 +300,22 @@ lifetime: 180
 		aspects: {lantern:2,heart:2,influence:1},
 		description: "I'm happy, I think. [Contentment defends against Dread; but Contentment doesn't last.]",
 		lifetime: 60
-		}
+		},
+				{id: "scar_edge",
+		label:"Scar: Brutal Experience",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,edge:2}
+		},
+		
+				{id: "scar_knock",
+		label:"Scar: Half-Healed Fistula",
+		description:"Not all doors are wounds; but all wounds are doors. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,knock:2}
+		},
+				{id: "scar_winter",
+		label:"Scar: Old Wound",
+		description:"Step closer to the sunset, and see the first stars of night.[You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,winter:2}
+		},
 ]
 };
