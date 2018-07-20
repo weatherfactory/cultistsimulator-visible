@@ -35,11 +35,11 @@ public class CameraZoomTest : MonoBehaviour {
 
     void Update () {
         if (enablePlayerZoom) { 
-			if (Input.GetAxis("Zoom") > 0f && targetZoom > 0f) {
+			if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && targetZoom > 0f) {
 				targetZoom -= 0.1f;
 				targetZoom = Mathf.Clamp01(targetZoom);
 			}
-			else if (Input.GetAxis("Zoom") < 0f && targetZoom < 1f) {
+			else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && targetZoom < 1f) {
 				targetZoom += 0.1f;
 				targetZoom = Mathf.Clamp01(targetZoom);
 			}
