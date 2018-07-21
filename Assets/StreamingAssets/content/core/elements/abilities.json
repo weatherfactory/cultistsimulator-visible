@@ -89,7 +89,7 @@
             aspects:
             {illhealth: 1},
             description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
-			xtriggers: {restorehealth: health},
+			xtriggers: {restorehealth: health,damagehealth:injury},
 			lifetime: 60,
 			decayTo:"health",
 			icon:"health"

@@ -544,9 +544,18 @@
 	warmup:30,
 	startdescription: "The Hour we will serve requires pain. I must give of myself.",
 	description: "",
-	linked: [{id: "cultfoundation_health",chance:100},
+	linked: [{id: "cultfoundation_fatigue",chance:100},
+	{id: "cultfoundation_health",chance:100},
 	{id: "cultfoundation_firstrecruit",chance:100},
 	]
+	},
+	{id:"cultfoundation_fatigue",
+	label: "A Sacrifice of Pain",
+	requirements:{fatigue:1},
+	actionId:"establishcult",
+	aspects: {damagehealth:1},
+	comments: "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
+	linked: [{id: "cultfoundation_firstrecruit",chance:100}]
 	},
 									{
 	id: "cultfoundation_reason",
