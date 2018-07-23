@@ -224,15 +224,31 @@ public class OptionsPanel : MonoBehaviour {
         }
     }
 
-	public void LeaveGame() {
+	public void LeaveGame()
+	{
 		if (!_isInGame)
 			return;
 		
         var tabletopManager = Registry.Retrieve<TabletopManager>();
         tabletopManager.SetPausedState(true);
-        tabletopManager.SaveGame(true);
+        if (tabletopManager.SaveGame(true))
+		{
+			// Save was successful, OK to exit
+	        SceneManager.LoadScene(SceneNumber.MenuScene);
+		}
+		else
+		{
+			// Save failed, need to let player know there's an issue
+			// Autosave would wait and retry in a few seconds, but player is expecting results NOW.
+			ToggleVisibility();
+			Registry.Retrieve<Assets.Core.Interfaces.INotifier>().ShowSaveError( true );
+		}
+    }
 
-        SceneManager.LoadScene(SceneNumber.MenuScene);
+	// Leave game without saving
+	public void AbandonGame()
+	{
+	    SceneManager.LoadScene(SceneNumber.MenuScene);
     }
 
     public void BrowseFiles()
