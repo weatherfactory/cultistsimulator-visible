@@ -274,8 +274,6 @@ namespace Assets.CS.TabletopUI {
 
             if (DraggableToken.resetToStartPos)
                 ReturnToStartPosition();
-			else
-				lastTablePos = RectTransform.anchoredPosition;
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
@@ -365,6 +363,7 @@ namespace Assets.CS.TabletopUI {
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
             RectTransform.localScale = Vector3.one;
+			lastTablePos = RectTransform.anchoredPosition3D;
             IsInAir = false;
             NotifyChroniclerPlacedOnTabletop();
         }
