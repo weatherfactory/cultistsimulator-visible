@@ -89,9 +89,10 @@ namespace Assets.CS.TabletopUI {
 
 		public enum NonSaveableType
 		{
-			Drag,	// Cannot save because held card gets lost
-			Mansus,	// Cannot save by design
-			Greedy,	// Cannot save during Magnet grab (spec fix for #1253)
+			Drag,		// Cannot save because held card gets lost
+			Mansus,		// Cannot save by design
+			Greedy,		// Cannot save during Magnet grab (spec fix for #1253)
+			WindowAnim,	// Cannot save during situation window open
 			NumNonSaveableTypes
 		};
         static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
@@ -179,13 +180,13 @@ namespace Assets.CS.TabletopUI {
             
 
             BeginGame(_situationBuilder);
-            _heart.StartBeatingWithDefaultValue();
         }
 
         /// <summary>
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
-        private void BeginGame(SituationBuilder builder) {
+        private void BeginGame(SituationBuilder builder)
+		{
             //CHECK LEGACY POPULATED FOR CHARACTERS
             //this is all a bit post facto and could do with being tidied up
             //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
@@ -208,8 +209,6 @@ namespace Assets.CS.TabletopUI {
             }
             else
             {
-
-
                 NoonUtility.Log("Checking if save game exists", 10);
                 var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
@@ -224,6 +223,8 @@ namespace Assets.CS.TabletopUI {
                     BeginNewGame(builder);
                 }
             }
+			_heart.StartBeatingWithDefaultValue();			// Init heartbeat duration...
+			_speedController.SetPausedState(true, false);	// ...but pause game while the player gets their bearings.
         }
 
         private void BeginNewGame(SituationBuilder builder)
@@ -455,7 +456,7 @@ namespace Assets.CS.TabletopUI {
             //{
             //    _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             //}
-            _speedController.SetPausedState(false, false);
+            _speedController.SetPausedState(true, false);
         }
 
         public bool SaveGame(bool withNotification)

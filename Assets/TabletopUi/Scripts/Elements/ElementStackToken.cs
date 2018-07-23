@@ -533,12 +533,18 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-				Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
-
-				var choreo = Registry.Retrieve<Choreographer>();
-				SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
-				choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
-				choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone );
+				if (selectedSlot.RecipeSlot.IsBeingAnimated)
+				{
+					//Debug.Log("Already sending something to " + selectedSlot.Token.EntityId);
+				}
+				else
+				{	
+					//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
+					var choreo = Registry.Retrieve<Choreographer>();
+					SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
+					choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
+					choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone, 0.2f );
+				}
 			}			
 		}
 
@@ -548,7 +554,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-
+				notifier.HideDetails();
 				SendStackToNearestValidSlot();
 			}
 			else
@@ -559,7 +565,8 @@ namespace Assets.CS.TabletopUI {
 
 				if (isFront)
 				{
-					StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
+					//StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
+					notifier.ShowCardElementDetails(this._element, this);
 				}
 				else
 				{

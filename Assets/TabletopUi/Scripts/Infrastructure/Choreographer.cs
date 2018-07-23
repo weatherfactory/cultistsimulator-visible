@@ -411,12 +411,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.FlipToFaceUp(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken,TokenAndSlot> callOnAnimDone)
+        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken,TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)
 		{
             var startPos = stack.RectTransform.anchoredPosition3D;
             var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
             float distance = Vector3.Distance(startPos, endPos);
-            float duration = Mathf.Max(0.3f, distance * 0.001f);
+            float duration = durationOverride>0.0f ? durationOverride : Mathf.Max(0.3f, distance * 0.001f);
 
             var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
             stackAnim.onElementSlotAnimDone += callOnAnimDone;
