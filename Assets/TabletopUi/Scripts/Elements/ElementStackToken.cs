@@ -537,7 +537,7 @@ namespace Assets.CS.TabletopUI {
 				var choreo = Registry.Retrieve<Choreographer>();
 				SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
 				choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
-				choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone );
+				choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone, 0.25f );
 			}			
 		}
 

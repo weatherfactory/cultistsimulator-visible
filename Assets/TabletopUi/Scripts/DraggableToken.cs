@@ -274,6 +274,8 @@ namespace Assets.CS.TabletopUI {
 
             if (DraggableToken.resetToStartPos)
                 ReturnToStartPosition();
+			else
+				lastTablePos = RectTransform.anchoredPosition;
 
             if (onChangeDragState != null)
                 onChangeDragState(false);
