@@ -89,9 +89,10 @@ namespace Assets.CS.TabletopUI {
 
 		public enum NonSaveableType
 		{
-			Drag,	// Cannot save because held card gets lost
-			Mansus,	// Cannot save by design
-			Greedy,	// Cannot save during Magnet grab (spec fix for #1253)
+			Drag,		// Cannot save because held card gets lost
+			Mansus,		// Cannot save by design
+			Greedy,		// Cannot save during Magnet grab (spec fix for #1253)
+			WindowAnim,	// Cannot save during situation window open
 			NumNonSaveableTypes
 		};
         static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
