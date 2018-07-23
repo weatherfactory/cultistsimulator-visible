@@ -89,6 +89,12 @@ namespace Assets.CS.TabletopUI {
             aspectDetails.Hide();
         }
 
+        public void HideDetails()
+		{
+            tokenDetails.Hide();
+            aspectDetails.Hide();
+        }
+
 		public void ShowSaveError( bool on )
 		{
 			if (saveErrorWindow == null)

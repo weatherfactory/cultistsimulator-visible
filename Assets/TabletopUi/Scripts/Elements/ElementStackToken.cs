@@ -547,7 +547,7 @@ namespace Assets.CS.TabletopUI {
 			{
 				// Double-click, so abort any pending single-clicks
 				singleClickPending = false;
-
+				notifier.HideDetails();
 				SendStackToNearestValidSlot();
 			}
 			else
@@ -558,7 +558,8 @@ namespace Assets.CS.TabletopUI {
 
 				if (isFront)
 				{
-					StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
+					//StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
+					notifier.ShowCardElementDetails(this._element, this);
 				}
 				else
 				{

@@ -11,6 +11,7 @@ namespace Assets.Core.Interfaces
     public interface INotifier
     {
         void PushTextToLog(string text);
+        void HideDetails();
         void ShowNotificationWindow(string title, string description);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
