@@ -15,13 +15,13 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] protected TextMeshProUGUI description;
 
         [Header("Image")]
-        [SerializeField] protected Image artwork;
+		[SerializeField] protected Image artwork;
+		[SerializeField] protected Image artworkPin;
 
         float waitTime = 10f;
         float time;
 
         protected void Show() {
-            SoundManager.PlaySfx("SituationWindowShow");
             ResetTimer();
 
             if (gameObject.activeSelf == false) {
@@ -58,6 +58,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         protected void ShowImage(Sprite image) {
+			artworkPin.gameObject.SetActive(image != null);
             artwork.gameObject.SetActive(image != null);
             artwork.sprite = image;
             artwork.transform.localEulerAngles = new Vector3(0f, 0f, -5f + Random.value * 10f);
@@ -75,8 +76,9 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void Hide() {
-            if (gameObject.activeInHierarchy)
-                TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
+			if (gameObject.activeInHierarchy) {
+				TriggerAnim(AnimType.MoveRight, AnimType.None, DoHide);
+			}
         }
 
         void DoHide() {

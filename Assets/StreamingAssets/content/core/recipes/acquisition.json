@@ -1,0 +1,63 @@
+ {"recipes": [
+
+		{
+        id: "auctionbuy",
+        label: "Bid in an Auction",
+        actionId: "explore",
+		effects: {},
+		slots:[{id:"Bid",required: {funds:1}}],
+        startdescription: "A crowd of pinched faces, glinting eyes. Who will bid? [The item at auction is visible on the right. It will be gone forever if the auction is lost.]",
+        description: ".",
+        warmup: 30,
+        craftable: false,
+		alternativerecipes:[{id:"playerincreasedbid",chance:100,expulsion:}],
+		linked:[{id:"auctionfailure",chance:100}]
+		comments: "The auction item should be inherited from the linking recipe. If this event completes, the auction has failed and the item is removed. NB the auctioncomplete aspect, which converts existing bids back into funds."
+       },
+	   {id: "playerincreasedbid",
+	   actionId:"explore",
+	   label:"I've bid!",
+	   requirements:{funds:1},
+	   startdescription: "I've raised my hand. The auctioneer raps out an acknowledgement. Will anyone match me?",
+	   description:".",
+	   effects:{funds:-1,bid:1}
+	   warmup:0,
+	   linked:[
+	   {id:"auctionsuccess",chance:70},
+	   {id:"auctionbidmatched",chance:100}
+	   ]
+	   },
+	   {id:"auctionbidmatched",
+	   label: "Another bidder!",
+	   actionId:"explore",
+	   startdescription:"Someone else has matched my bid! I must match it with more funds, or forgo my prize.",
+	   description:".",
+	   slots:[{id:"Bid",required: {funds:1}}],
+		alternativerecipes:[{id:"playerincreasedbid",chance:100}],
+		linked:[{id:"auctionfailure",chance:100}],
+		warmup:30
+	},
+	   {id:"auctionfailure",
+	   actionId:"explore",
+	   label: "I haven't won the auction",
+	   		effects:{text:-1},
+		aspects: {restore:1},
+		startdescription:".",
+		description:"The auction is over. The book has gone on elsewhere. I retain my funds.",
+		warmup:0,
+	   },
+	   {
+        id: "auctionsuccess",
+        label: "I've won the auction!",
+        actionId: "explore",
+		effects: {funds:-100,bid:-100},
+        startdescription: ".",
+        description: "The auctioneer makes a note of my name, and signals one of the attendants. I have my prize. I hope it's worth it.",
+        warmup: 0,
+        craftable: false,
+		comments: "The auction item should be inherited from the linking recipe."
+       },
+			
+	
+]
+}

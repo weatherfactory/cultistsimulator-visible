@@ -1,4 +1,10 @@
 ﻿#if UNITY_STANDALONE_LINUX
+<<<<<<< HEAD:Assets/TabletopUi/Scripts/Infrastructure/StoreClientGOG.cs
+=======
+
+#elif UNITY_WEBGL
+
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe:Assets/TabletopUi/Scripts/Services/GOGGalaxyIntegration/StoreClientGOG.cs
 #else
 using System;
 using System.Collections.Generic;
@@ -9,8 +15,53 @@ using Noon;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
+<<<<<<< HEAD:Assets/TabletopUi/Scripts/Infrastructure/StoreClientGOG.cs
 
     public class GogAuthListener : IAuthListener
+=======
+    public class GOGStorefrontProvider : IStoreFrontClientProvider
+    {
+        public GOGStorefrontProvider()
+        {
+            Galaxy.Api.IAuthListener authListener = new GogAuthListener();
+
+            Galaxy.Api.GalaxyInstance.ListenerRegistrar()
+                .Register(Galaxy.Api.GalaxyTypeAwareListenerAuth.GetListenerType(), authListener);
+
+            try
+            {
+
+            if(!GalaxyInstance.User().SignedIn())
+                GalaxyInstance.User().SignIn();
+            }
+            catch (GalaxyInstance.InvalidStateError e)
+            {
+                NoonUtility.Log(e.Message,1);
+            }
+
+        }
+
+        public void SetAchievement(string achievementId, bool setStatus)
+        {
+            var gogStats = Galaxy.Api.GalaxyInstance.Stats();
+            if (!GalaxyInstance.User().SignedIn())
+                return;
+
+            Galaxy.Api.IUserStatsAndAchievementsRetrieveListener statsRetrieveListener = new AchievementRequest(achievementId, setStatus, gogStats);
+            Galaxy.Api.IStatsAndAchievementsStoreListener statsStoreListener = new GogStatsAndAchievementsStoreListener();
+            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerUserStatsAndAchievementsRetrieve.GetListenerType(), statsRetrieveListener);
+            Galaxy.Api.GalaxyInstance.ListenerRegistrar().Register(Galaxy.Api.GalaxyTypeAwareListenerStatsAndAchievementsStore.GetListenerType(), statsStoreListener);
+
+            gogStats.RequestUserStatsAndAchievements(); //when the request completes, the callback will fire Execute on the AchievementRequest we attached above
+        }
+
+    }
+
+    
+
+
+        public class GogAuthListener : IAuthListener
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe:Assets/TabletopUi/Scripts/Services/GOGGalaxyIntegration/StoreClientGOG.cs
     {
         public override void OnAuthSuccess()
         {
@@ -20,12 +71,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
         public override void OnAuthFailure(FailureReason failureReason)
         {
-            NoonUtility.Log("GOG Galaxy auth failed:" + failureReason, 10);
+            NoonUtility.Log("GOG Galaxy auth failed:" + failureReason, 1);
         }
 
         public override void OnAuthLost()
         {
-            NoonUtility.Log("Authentication lost");
+            NoonUtility.Log("Authentication lost",10);
         }
     }
 
@@ -35,6 +86,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private string _forAchievementId;
         private bool _setStatus;
         private IStats _gogStats;
+
 
         public AchievementRequest(string achievementId, bool setStatus, IStats gogStats)
         {
@@ -46,17 +98,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             _forAchievementId = achievementId;
             _setStatus = setStatus;
             _gogStats = gogStats;
+
         }
 
         private void Execute()
         {
+            try { 
             if (_setStatus)
                 _gogStats.SetAchievement(_forAchievementId);
             else
                 _gogStats.ClearAchievement(_forAchievementId);
-            _gogStats.StoreStatsAndAchievements();
 
-            NoonUtility.Log("Set GOG achievement: " + _forAchievementId, 10);
+                _gogStats.StoreStatsAndAchievements();
+            NoonUtility.Log("Set GOG achievement: " + _forAchievementId + " (" + _setStatus + ")", 1);
+
+            }
+            catch(GalaxyInstance.InvalidArgumentError e)
+            {
+                NoonUtility.Log(e.Message,1);
+            }
+
+            
         }
 
         public override void OnUserStatsAndAchievementsRetrieveSuccess(GalaxyID userID)

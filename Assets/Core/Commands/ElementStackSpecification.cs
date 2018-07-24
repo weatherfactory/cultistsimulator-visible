@@ -20,8 +20,9 @@ namespace Assets.Core.Commands
 
         public int Depth { get; private set; }
         public float LifetimeRemaining { get; private set; }
+        public bool MarkedForConsumption { get; private set; }
 
-        public ElementStackSpecification(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining)
+        public ElementStackSpecification(string elementId, int elementQuantity, string locationInfo,Dictionary<string,int> mutations,Dictionary<string,string> illuminations, float lifetimeRemaining,bool markedForConsumption)
         {
             ElementId = elementId;
             ElementQuantity = elementQuantity;
@@ -30,6 +31,7 @@ namespace Assets.Core.Commands
             Mutations=new Dictionary<string, int>(mutations);
             Illuminations=new Dictionary<string, string>(illuminations);
             LifetimeRemaining = lifetimeRemaining;
+            MarkedForConsumption = markedForConsumption;
         }
     }
 }

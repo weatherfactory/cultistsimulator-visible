@@ -26,7 +26,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         const float radiusIncrement = 50f;
         const float radiusMaxSize = 250f;
 
-        ChoreographerDebugView currentDebug;
+        private ChoreographerDebugView _currentDebug;
 
         public Choreographer(TabletopTokenContainer tabletop, SituationBuilder situationBuilder, Transform tableLevelTransform, Transform WindowLevelTransform) {
             _tabletop = tabletop;
@@ -75,11 +75,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void MoveAllTokensOverlappingWith(DraggableToken pushingToken) {
             var targetRect = GetCenterPosRect(pushingToken.RectTransform);
+			// Reduce the target Rect size to be less finnicky
+			targetRect.size = targetRect.size * 0.6f;
+
+			Rect pushedRect;
 
             foreach (var token in _tabletop.GetTokens()) {
                 if (CanTokenBeIgnored(token, pushingToken))
                     continue;
-                if (!GetCenterPosRect(token.RectTransform).Overlaps(targetRect))
+
+				pushedRect = GetCenterPosRect(token.RectTransform);
+
+				if (!pushedRect.Overlaps(targetRect))
                     continue;
 
                 AnimateTokenTo(token,
@@ -93,7 +100,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public Vector2 GetTablePosForWorldPos(Vector3 worldPos) {
             Vector2 localPoint;
             var screenPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos);
-            var tablePos = RectTransformUtility.ScreenPointToLocalPointInRectangle(_tabletop.transform as RectTransform, screenPoint, Camera.main, out localPoint);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_tabletop.transform as RectTransform, screenPoint, Camera.main, out localPoint);
 
             return localPoint;
         }
@@ -104,18 +111,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public Vector2 GetFreePosWithDebug(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
 #if DEBUG
-            currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
-            currentDebug.tabletop = _tabletop.transform;
-            currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
-            currentDebug.checkedPoints = new List<Vector2>();
-            currentDebug.tokenOverlaps = false;
-            currentDebug.checkedRects = new List<Rect>();
+            _currentDebug = new GameObject("ChoreoDebugInfo_" + token.name).AddComponent<ChoreographerDebugView>();
+            _currentDebug.tabletop = _tabletop.transform;
+            _currentDebug.targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+            _currentDebug.checkedPoints = new List<Vector2>();
+            _currentDebug.tokenOverlaps = false;
+            _currentDebug.checkedRects = new List<Rect>();
 
             var pos = GetFreeTokenPosition(token, centerPos, startIteration);
-            currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
-            currentDebug.hasDebugData = true;
+            _currentDebug.finalRect = GetCenterPosRect(pos, token.RectTransform.rect.size);
+            _currentDebug.hasDebugData = true;
 
-            currentDebug.InitKill(10f); // In 10s, debug thing kills itself
+            _currentDebug.InitKill(10f); // In 10s, debug thing kills itself
 
             return pos;
 #else
@@ -126,15 +133,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
-            var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
+			var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
             if (IsLegalPosition(targetRect, token))
                 return centerPos;
 
-            if (currentDebug != null) {
-                currentDebug.targetRect = targetRect;
-                currentDebug.tokenOverlaps = true;
-            }
+            if (_currentDebug != null) {
+                _currentDebug.targetRect = targetRect;
+                _currentDebug.tokenOverlaps = true;
+			}
 
             // We grab a bunch of test points
             startIteration = startIteration > 0f ? startIteration : 1;
@@ -150,7 +157,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             // but we  shift the target pos a bit
             centerPos = centerPos + targetRect.size;
             // and we reduce the smaller rect size. This allows overlap
-            targetRect.size = targetRect.size / 3f;
+            targetRect.size = targetRect.size * 0.4f;
 
             //Debug.Log("Did not find a legal pos for " + token.Id + ", allowing for overlap!");
 
@@ -200,8 +207,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                 if (CanTokenBeIgnored(token, ignoreToken))
                     continue;
 
-                if (currentDebug != null && !currentDebug.checkedRects.Contains(rectCheck)) { 
-                    currentDebug.checkedRects.Add(rectCheck);
+                if (_currentDebug != null && !_currentDebug.checkedRects.Contains(rectCheck)) { 
+                    _currentDebug.checkedRects.Add(rectCheck);
                     //Debug.Log("Checking for " + token.name + " at " + rectCheck);
                 }
 
@@ -252,8 +259,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
                     points[p] = new Vector2(pos.x + x * pointGridSize, pos.y + y * pointGridSize);
 
-                    if (currentDebug != null) 
-                        currentDebug.checkedPoints.Add(points[p]);
+                    if (_currentDebug != null) 
+                        _currentDebug.checkedPoints.Add(points[p]);
 
                     p++;
                 }
@@ -384,21 +391,31 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             tokenAnim.StartAnim(duration);
         }
 
-        public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation) {
+        public void PrepareElementForSendAnim(ElementStackToken stack, SituationToken ownerSituation)
+		{
+            _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.DoubleClickSend)); // this reparents, sets container
+            //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
+            //stack.transform.position = ownerSituation.transform.position;
+            stack.FlipToFaceUp(true);
+        }
+
+        public void PrepareElementForGreedyAnim(ElementStackToken stack, SituationToken ownerSituation)
+		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, new Context(Context.ActionSource.GreedySlot)); // this reparents, sets container
             //_tabletop.DisplayHere(stack as Core.Interfaces.IElementStack); // this reparents, sets container
             stack.transform.position = ownerSituation.transform.position;
             stack.FlipToFaceUp(true);
         }
 
-        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair) {
+        public void MoveElementToSituationSlot(ElementStackToken stack, TokenAndSlot tokenSlotPair, Action<ElementStackToken,TokenAndSlot> callOnAnimDone, float durationOverride = -1.0f)
+		{
             var startPos = stack.RectTransform.anchoredPosition3D;
             var endPos = tokenSlotPair.Token.GetOngoingSlotPosition();
             float distance = Vector3.Distance(startPos, endPos);
-            float duration = Mathf.Max(0.3f, distance * 0.001f);
+            float duration = durationOverride>0.0f ? durationOverride : Mathf.Max(0.3f, distance * 0.001f);
 
             var stackAnim = stack.gameObject.AddComponent<TokenAnimationToSlot>();
-            stackAnim.onElementSlotAnimDone += ElementGreedyAnimDone;
+            stackAnim.onElementSlotAnimDone += callOnAnimDone;
             stackAnim.SetPositions(startPos, endPos);
             stackAnim.SetScaling(1f, 0.35f);
             stackAnim.SetTargetSlot(tokenSlotPair);
@@ -408,7 +425,19 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stackAnim.StartAnim(duration);
         }
 
-        void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
+        public void ElementSendAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
+		{
+            if (tokenSlotPair.RecipeSlot.Equals(null))
+                return;
+
+            tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
+            tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
+			if (!tokenSlotPair.Token.SituationController.IsOpen)
+				tokenSlotPair.Token.OpenSituation();
+        }
+
+        public void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
+		{
             if (tokenSlotPair.RecipeSlot.Equals(null))
                 return;
 

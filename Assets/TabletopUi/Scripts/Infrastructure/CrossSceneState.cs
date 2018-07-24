@@ -11,7 +11,14 @@ using OrbCreationExtensions;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
-
+    /// <summary>
+    ///I wish I'd thought of doing this earlier. rn it's used just to track
+    /// </summary>
+    public enum GameState
+    {
+        Normal=0,
+        Restarting=1
+    }
 
    public static class CrossSceneState
     {
@@ -21,6 +28,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //record the previous character when ending a game, so we can use their deets for setting the scene / recording in ongoing save
         private static Character _defunctCharacter;
         private static MetaInfo _metaInfo;
+        private static GameState _gameState;
 
 
         /// <summary>
@@ -38,6 +46,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return _metaInfo;
         }
 
+        public static GameState GameState
+        {
+            get { return _gameState; }
+        }
+
+        public static void RestartingGame()
+        {
+            _gameState = GameState.Restarting;
+        }
+
+        public static void RestartedGame()
+        {
+            _gameState = GameState.Normal;
+        }
 
 
         public static Hashtable GetSaveDataForCrossSceneState(Legacy activeLegacy)

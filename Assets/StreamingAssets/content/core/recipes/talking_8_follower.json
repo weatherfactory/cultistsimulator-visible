@@ -1,0 +1,651 @@
+{
+"recipes": [
+
+
+{id: "talktofollower",
+label:"Discuss occult business with a Follower",
+actionId: "talk",
+requirements: {society:-1,follower: 1,summoned:-1},
+slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,ingredient:1,annoyance:1}}],
+comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+alternativerecipes:[
+
+{id:"talktohireling_rehire",chance:100},
+
+{id:"followeraction_repairtoollanternbcracked",chance:100},
+{id:"followeraction_repairtoollanterndcracked",chance:100},
+{id:"followeraction_repairtoollanternfcracked",chance:100},
+
+{id:"followeraction_abducthighedge",chance:100},
+{id:"followeraction_abductmidedge",chance:100},
+{id:"followeraction_abductlowedge",chance:100},
+{id:"followeraction_murderhighwinter",chance:100},
+{id:"followeraction_murdermidwinter",chance:100},
+{id:"followeraction_murderlowwinter",chance:100},
+{id:"followeraction_craftworkhighforge",chance:100},
+{id:"followeraction_craftworkmidforge",chance:100},
+{id:"followeraction_craftworklowforge",chance:100},
+{id:"followeraction_seducehighgrail",chance:100},
+{id:"followeraction_seducemidgrail",chance:100},
+{id:"followeraction_seducelowgrail",chance:100},
+{id:"followeraction_burglehighknock",chance:100},
+{id:"followeraction_burglemidknock",chance:100},
+{id:"followeraction_burglelowknock",chance:100},
+{id:"followeraction_charmhighheart",chance:100},
+{id:"followeraction_charmmidheart",chance:100},
+{id:"followeraction_charmlowheart",chance:100},
+{id:"followeraction_auguryhighlantern",chance:100},
+{id:"followeraction_augurymidlantern",chance:100},
+{id:"followeraction_augurylowlantern",chance:100},
+{id:"followeraction_hoodwinkhighmoth",chance:100},
+{id:"followeraction_hoodwinkmidmoth",chance:100},
+{id:"followeraction_hoodwinklowmoth",chance:100},
+
+{id:"hunterattackhighedge",chance:100},
+{id:"hunterattackmidedge",chance:100},
+{id:"hunterattacklowedge",chance:100},
+
+{id:"hunterattackhighwinter",chance:100},
+{id:"hunterattackmidwinter",chance:100},
+{id:"hunterattacklowwinter",chance:100},
+
+{id:"hunterattacknoedge",chance:100},
+
+
+
+{id:"annoyanceseducehighgrail",chance:100},
+{id:"annoyanceattackhighedge",chance:100},
+{id:"annoyanceseducemidgrail",chance:100},
+{id:"annoyanceattackmidedge",chance:100},
+{id:"annoyancederangemidmoth",chance:100},
+{id:"annoyanceseducelowgrail",chance:100},
+{id:"annoyanceattacklowedge",chance:100},
+{id:"annoyancederangelowmoth",chance:100},
+{id:"annoyanceattacknoedge",chance:100},
+
+
+
+
+{id: "evidencedestroymidmoth",chance:100},
+{id: "evidencedestroylowmoth",chance:100},
+{id: "evidencedestroynomoth",chance:100}
+
+],
+startdescription: "Significant conversations in a smoky meeting-room. What do I need from my follower? [Add your cult, to send them out on cult business; send them after enemies; or raise another matter.]",
+description: "Nothing, then.",
+warmup: 60,
+craftable: true
+},
+
+
+{id: "talktohireling_rehire",
+actionId:"talk",
+label:"Offer this hireling another payment.",
+requirements: {hireling:1,funds:1},
+startdescription:"I could pay to extend this hireling's period of service.",
+description:"'All right. Same terms as before.'",
+aspects:{hiring:1},
+effects:{funds:-1},
+craftable:true,
+warmup:10
+},
+
+{id:"followeraction_repairtoollanternbcracked",
+label:"Repair a Cracked Noonstone",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternbcracked:1},
+startdescription:"We can begin to repair this, but it will take Funds to purchase the necessary materials.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternbcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternbcracked_attempt",
+label:"Repairing a Cracked Noonstone",
+actionId: "talk",
+slots: [{id:"Materials",description:"Rare fuels and odd powders",required:{funds:1}}],
+startdescription:"My follower needs Funds to complete their task.",
+description: "I couldn't provide the materials my follower needed. The stone is unredeemed.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternbcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternbcracked_succeed",
+label:"Repairing a Cracked Noonstone",
+actionId: "talk",
+requirements:{funds:1},
+startdescription:"My follower is at work on the mirror.",
+description: "The stone is repaired! It shines again as it did once before.",
+effects:{funds:-1,toollanternbcracked:-1,toollanternb:1}
+},
+
+
+{id:"followeraction_repairtoollanterndcracked",
+label:"Repair a Cracked Wildering Mirror",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanterndcracked:1},
+startdescription:"We can begin to repair this, but it will take at least a Bronze Spintria to purchase the necessary materials.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanterndcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanterndcracked_attempt",
+label:"Repairing a Cracked Wildering Mirror",
+actionId: "talk",
+slots: [{id:"Materials",description:"Rare metals and improbable tints",required:{compensationvalue:4}}],
+startdescription:"My follower needs a Bronze Spintria, or better, to complete their task.",
+description: "I couldn't provide the materials my follower needed. The mirror is unredeemed.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanterndcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanterndcracked_succeed",
+label:"Repairing a Cracked Wildering Mirror",
+actionId: "talk",
+requirements:{compensationvalue:4},
+startdescription:"My follower is at work on the mirror.",
+description: "The mirror is repaired! It shines again as it did once before.",
+effects:{compensationvalue:-1,toollanterndcracked:-1,toollanternd:1}
+},
+
+
+
+{id:"followeraction_repairtoollanternfcracked",
+label:"Repair a Cracked Watchman's Glass",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternfcracked:1},
+startdescription:"We can begin to repair this, but it will take at least a Silver Spintria to purchase the necessary materials.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternfcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternfcracked_attempt",
+label:"Repairing a Cracked Watchman's Glass",
+actionId: "talk",
+slots: [{id:"Materials",description:"Shining songs and exotic alloys",required:{compensationvalue:8}}],
+startdescription:"My follower needs a Silver Spintria, or better, to complete their task.",
+description: "I couldn't provide the materials my follower needed. The mirror is unredeemed.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternfcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternfcracked_succeed",
+label:"Repairing a Cracked Watchman's Glass",
+actionId: "talk",
+requirements:{compensationvalue:8},
+startdescription:"My follower is at work on the mirror.",
+description: "The mirror is repaired! It shines again as it did once before.",
+effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
+},
+
+
+	   {id: "followeraction_abducthighedge",
+	   label: "Cult Business: Abduct a Stranger",
+	  actionId:"talk",
+	  startdescription:"An Assassin can snatch a victim off the streets with ease.",
+	  description:".",
+	  requirements: {society:1,edge:10,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_abductmidedge",
+	   label: "Cult Business: Abduct a Stranger",
+	  actionId:"talk",
+	  startdescription:"A skilled Disciple can probably abduct an unwary victim.",
+	  requirements: {society:1,edge:5,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:70},
+	  {id:"followeraction_abductfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_abductlowedge",
+	   label: "Cult Business: Abduct a Stranger",
+	  actionId:"talk",
+	  startdescription:"My Believer will struggle to abduct a victim, but they may be lucky.",
+	  requirements: {society:1,edge:1,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:30},
+	  {id:"followeraction_abductfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_abductsuccess",
+	   label: "Attempting an Abduction",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a carefully packaged prisoner.",
+	  effects: {notoriety:1, funds:1},
+	  deckeffect: {"randomvictim":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_abductfailure",
+	   label: "Attempting an Abduction",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, empty-handed.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_abductfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_abductfailure_losefollower",
+	   label: "Attempting an Abduction",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has not returned. I'll never know exactly what happened.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_murderhighwinter",
+	   label: "Cult Business: Murder a Stranger",
+	  actionId:"talk",
+	  startdescription:"This one always returns with a death in their pocket.",
+	  description:".",
+	  requirements: {society:1,winter:10,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_murdermidwinter",
+	   label: "Cult Business: Murder a Stranger",
+	  actionId:"talk",
+	  startdescription:"A skilled Disciple can probably bring back a fresh corpse.",
+	  requirements: {society:1,winter:5,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:70},
+	  {id:"followeraction_murderfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_murderlowwinter",
+	   label: "Cult Business: Murder a Stranger",
+	  actionId:"talk",
+	  startdescription:"My Believer may very easily fail.",
+	  requirements: {society:1,winter:1,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:30},
+	  {id:"followeraction_murderfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_murdersuccess",
+	   label: "Attempting a Murder...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, with a fresh corpse and its former belongings.",
+	  effects: {notoriety:1,corpse:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_murderfailure",
+	   label: "Attempting a Murder...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has returned, empty-handed.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_murderfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_murderfailure_losefollower",
+	   label: "Attempting a Murder...",
+	  actionId:"talk",
+	  startdescription: "I await word....",
+	  description:"My minion has not returned. I'll never know exactly what happened.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_craftworkhighforge",
+	   label: "Cult Business: Craftsmanship",
+	  actionId:"talk",
+	  startdescription:"My Reshaper can earn funds in illegal laboratories and shadowy manufactories.",
+	  description:".",
+	  requirements: {society:1,forge:10,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_craftworkmidforge",
+	   	   label: "Cult Business: Craftsmanship",
+	  actionId:"talk",
+	  startdescription:"My Disciple can probably earn funds in illegal laboratories and shadowy manufactories - but there is a risk of accidents.",
+	  requirements: {society:1,forge:5,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:70},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_craftworklowforge",
+	   	   label: "Cult Business: Craftsmanship",
+	  actionId:"talk",
+	  startdescription:"My Believer might be able to earn funds in illegal laboratories and shadowy manufactories... if they're lucky.",
+	  requirements: {society:1,forge:1,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:30},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_craftworksuccess",
+	   label: "Working under Contract...",
+	  actionId:"talk",
+	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+	  description:"My follower has returned with the rewards of their labour.",
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_craftworkfailure",
+	   label: "Working under Contract...",
+	  actionId:"talk",
+	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+	  description:"My follower has returned empty-handed. Today's tasks were beyond them.",
+	  effects: {},
+	  alternativerecipes: [{id:"followeraction_craftworkfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_craftworkfailure_losefollower",
+	   label: "Working under Contract...",
+	  actionId:"talk",
+	  startdescription: "There are devices in this city that defy the law of the land. There are a few that defy the laws of nature. Some are very dangerous.",
+	  description:"There has been an accident.",
+	  aspects: {killmortal:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	    {id: "followeraction_seducehighgrail",
+	   label: "Cult Business: Seduce a Stranger",
+	  actionId:"talk",
+	  startdescription:"No-one refuses a Cyprian.",
+	  description:".",
+	  requirements: {society:1,grail:10,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_seducemidgrail",
+	   label: "Cult Business: Seduce a Stranger",
+	  actionId:"talk",
+	  startdescription:"A sufficiently persuasive Disciple can probably lure a susceptible companion back to us.",
+	  requirements: {society:1,grail:5,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:70},
+	  {id:"followeraction_seducefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_seducelowgrail",
+	   label: "Cult Business: Seduce a Stranger",
+	  actionId:"talk",
+	  startdescription:"My Believer might be able to lure a victim back to us.",
+	  requirements: {society:1,grail:1,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:30},
+	  {id:"followeraction_seducefailure",chance:100}]
+	  },
+
+	  
+	  {id: "followeraction_seducesuccess",
+	   label: "Attempting a Seduction",
+	  actionId:"talk",
+	  startdescription: "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
+	  description:"My minion has returned, attended by a prisoner rendered docile with delight.",
+	  effects: {notoriety:1, funds:1},
+	  deckeffect: {"randomvictim":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_seducefailure",
+	   label: "Attempting a Seduction",
+	  actionId:"talk",
+	  startdescription: "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
+	  description:"My minion has returned, empty-handed.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_seducefailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_seducefailure_losefollower",
+	   label: "Attempting a Seduction",
+	  actionId:"talk",
+	  startdescription: "Out in the night, my follower is whispering words that sometimes they might mean. Even if their victim knows the words are lies, they might not care.",
+	  description:"My minion has not returned. I'll never know exactly what happened.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  
+	  
+	  	   {id: "followeraction_burglehighknock",
+	   label: "Cult Business: Burglary",
+	  actionId:"talk",
+	  startdescription:"My Key can defeat any lock in this city.",
+	  description:".",
+	  requirements: {society:1,knock:10,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_burglemidknock",
+	   	   label: "Cult Business: Burglary",
+	  actionId:"talk",
+	  startdescription:"My Disciple can probably use their talents to harvest treasures from the unsuspecting.",
+	  requirements: {society:1,knock:5,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:70},
+	  {id:"followeraction_burglefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_burglelowknock",
+	   	   label: "Cult Business: Burglary",
+	  actionId:"talk",
+	  startdescription:"My Believer might be able to harvest treasures from the unsuspecting... if they're lucky.",
+	  requirements: {society:1,knock:1,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:30},
+	  {id:"followeraction_burglefailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_burglesuccess",
+	   label: "Breaking, Entering, Returning...",
+	  actionId:"talk",
+	  startdescription: "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
+	  description:"My follower has returned with their haul.",
+	  effects: {notoriety:1,funds:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_burglefailure",
+	   label: "Breaking, Entering, Returning...",
+	  actionId:"talk",
+	  startdescription: "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
+	  description:"My follower has returned empty-handed. Today's tasks were beyond them.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_burglefailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_burglefailure_losefollower",
+	   label: "Breaking, Entering, Returning...",
+	  actionId:"talk",
+	  startdescription: "In cellars and in attics, in secret compartments and sealed closets, the rich and not-so-rich conceal their treasures.",
+	  description:"There has been an accident.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	  
+	  
+	  	   {id: "followeraction_charmhighheart",
+	   label: "Cult Business: Charm",
+	  actionId:"talk",
+	  startdescription:"Not everyone is sympathetic to our aims, but my Tarantellist is popular everywhere. If we have problems with our reputation, they can certainly smooth them over.",
+	  description:".",
+	  requirements: {society:1,heart:10,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_charmmidheart",
+	   	   label: "Cult Business: Charm",
+	  actionId:"talk",
+	  startdescription:"Not everyone is sympathetic to our aims, but if we have problems with our reputation, our Disciple can probably smooth them over.",
+	  requirements: {society:1,heart:5,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:70},
+	  {id:"followeraction_charmfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_charmlowheart",
+	   	   label: "Cult Business: Charm",
+	  actionId:"talk",
+	  startdescription:"Not everyone is sympathetic to our aims, but if we have problems with our reputation, our Believer might be able to smooth them over. ",
+	  requirements: {society:1,heart:1,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:30},
+	  {id:"followeraction_charmfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_charmsuccess",
+	   label: "Earnest Speeches, Affable Conversation",
+	  actionId:"talk",
+	  slots: [{id:"Reputation",required:{reputation:1},greedy:true}],
+	  startdescription: "The standards of daylight society cannot apply to us. But perhaps we won't emphasise that point. Perhaps we'll rely on charm and good humour.  I have supplied elegant platitudes about the high principles of our organisation.",
+	  description:"Optimism is the spice which saves.",
+	  effects: {reputation:-1},
+	  warmup:30
+	  },	  
+	  
+	  {id: "followeraction_charmfailure",
+	   label: "Earnest Speeches, Affable Conversation",
+	  actionId:"talk",
+	  slots: [{id:"Reputation",required:{reputation:1},greedy:true}],
+	  startdescription: "The standards of daylight society cannot apply to us. But perhaps we won't emphasise that point. Perhaps we'll rely on charm and good humour.  I have supplied elegant platitudes about the high principles of our organisation.",
+	  description:"No-one understands us, or else they understand us too well.",
+	  effects: {rumour:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  	   {id: "followeraction_auguryhighlantern",
+	   label: "Cult Business: Augury",
+	  actionId:"talk",
+	  startdescription:"My Seer can determine times and places where power will be available for our uses.",
+	  description:".",
+	  requirements: {society:1,lantern:10,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_augurymidlantern",
+	   	   label: "Cult Business: Augury",
+	  actionId:"talk",
+	  startdescription:"My Disciple can probably determine times and places where power will be available for our uses: but in matters of the Mansus, there is always danger.",
+	  requirements: {society:1,lantern:5,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:70},
+	  {id:"followeraction_auguryfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_augurylowlantern",
+	   	   label: "Cult Business: Augury",
+	  actionId:"talk",
+	  startdescription:"My Believer might be able to determine times and places where power will be available for our uses: but in matters of the Mansus, there is always danger.",
+	  requirements: {society:1,lantern:1,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:30},
+	  {id:"followeraction_auguryfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_augurysuccess",
+	   label: "Beneath the World's Skin",
+	  actionId:"talk",
+	  startdescription: "Hours of scholarship and meditation...",
+	  description:"My follower has found one more way to align our work with the greater work of the Hours.",
+	  effects: {erudition:1},
+	  deckeffect: {"randominfluencelow":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_auguryfailure",
+	   label: "Beneath the World's Skin",
+	  actionId:"talk",
+	  startdescription: "Hours of scholarship and meditation...",
+	  description:"My follower has committed a dangerous error. Their mind is still intact, but the light of the Mansus has touched the world here.",
+	  effects: {fascination:1},
+	  alternativerecipes: [{id:"followeraction_auguryfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_auguryfailure_losefollower",
+	   label: "Beneath the World's Skin",
+	  actionId:"talk",
+	  startdescription: "Hours of scholarship and meditation...",
+		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their own psychic defences have crumpled into chaos.",
+	  effects: {fascination:1},
+	  aspects: {derangemortal:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  	   {id: "followeraction_hoodwinkhighmoth",
+	   label: "Cult Business: Hoodwink",
+	  actionId:"talk",
+	  startdescription:"My Skintwister's is cunning enough to part fools from their treasure as easily as picking pears in an orchard.",
+	  description:".",
+	  requirements: {society:1,moth:10,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_hoodwinkmidmoth",
+	   	   label: "Cult Business: Hoodwink",
+	  actionId:"talk",
+	  startdescription:"My Disciple can probably use their talents to part fools from their treasures.",
+	  requirements: {society:1,moth:5,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:70},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_hoodwinklowmoth",
+	   	   label: "Cult Business: Hoodwink",
+	  actionId:"talk",
+	  startdescription:"My Believer might be able to part fools from their treasures... if they're lucky.",
+	  requirements: {society:1,moth:1,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:30},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_hoodwinksuccess",
+	   label: "Deceit and Confusion",
+	  actionId:"talk",
+	  startdescription: "My follower is attempting a profitable deception.",
+	  description:"A successful deception! Here are the rewards.",
+	  effects: {notoriety:1,funds:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_hoodwinkfailure",
+	label: "Deceit and Confusion",
+	  actionId:"talk",
+	  startdescription: "My follower is attempting a profitable deception.",
+	  description:"My follower has returned empty-handed. Their scheme came unravelled.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_hoodwinkfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_hoodwinkfailure_losefollower",
+		label: "Deceit and Confusion",
+	  actionId:"talk",
+	  startdescription: "My follower is attempting a profitable deception.",
+	  description:"My follower hasn't returned. Perhaps their final trick was to arrange their own disappearance.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+
+
+
+
+]
+}

@@ -78,6 +78,8 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField]
         private Notifier _notifier;
+		[SerializeField]
+        private AutosaveWindow _autosaveNotifier;
         [SerializeField]
         private OptionsPanel _optionsPanel;
         [SerializeField]
@@ -85,11 +87,32 @@ namespace Assets.CS.TabletopUI {
 
         private SituationBuilder _situationBuilder;
 
-        bool isInNonSaveableState;
+		public enum NonSaveableType
+		{
+			Drag,		// Cannot save because held card gets lost
+			Mansus,		// Cannot save by design
+			Greedy,		// Cannot save during Magnet grab (spec fix for #1253)
+			WindowAnim,	// Cannot save during situation window open
+			NumNonSaveableTypes
+		};
+        static private bool[] isInNonSaveableState = new bool[(int)NonSaveableType.NumNonSaveableTypes];
         private SituationController mansusSituation;
+		//private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
 		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
 		private float AUTOSAVE_INTERVAL = 300.0f;
+		private static float gridSnapSize = 0.0f;
+        private List<string> currentDoomTokens=new List<string>();
+
+		public void ForceAutosave()	// Useful for forcing autosave to happen at tricky moments for debugging - CP
+		{
+			housekeepingTimer = AUTOSAVE_INTERVAL;
+		}
+
+		public bool IsPaused()
+		{
+			return _heart.IsPaused;
+		}
 
         public void Update()
 		{
@@ -105,24 +128,40 @@ namespace Assets.CS.TabletopUI {
 				_heart.AdvanceTime( 0.0f );		// If the game is now calling Heart.Beat, we still need to update cosmetic stuff like Decay timers
 			}
 
+			// Failsafe to ensure that NonSaveableType.Drag never gets left on due to unusual exits from drag state - CP
+			if (DraggableToken.itemBeingDragged == null)
+				TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );
+
 			housekeepingTimer += Time.deltaTime;
-			if (housekeepingTimer >= AUTOSAVE_INTERVAL && !isInNonSaveableState)	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
+			if (housekeepingTimer >= AUTOSAVE_INTERVAL && IsSafeToAutosave())	// Hold off autsave until it's safe, rather than waiting for the next autosave - CP
 			{
-			    housekeepingTimer = 0.0f;
-			    SaveGame(true);
+			    if (SaveGame(true))
+				{
+					housekeepingTimer = 0.0f;	// Successful save
+				}
+				else
+				{
+					housekeepingTimer = AUTOSAVE_INTERVAL-5.0f;		// Failed save - try again in 5 secs
+				}
 			}
         }
 
-        #region -- Intialisation -------------------------------
+      
 
-        void Start() {
+        void Start()
+		{
+			QualitySettings.vSyncCount = 1;	// Force VSync on in case user has tried to disable it. No benefit, just burns CPU - CP
+		   
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
-
+            NoonUtility.Log("Setting up services",10);
             //register everything used gamewide
             SetupServices(_situationBuilder, _tabletop);
 
+            NoonUtility.Log("Initialising token containers", 10);
             // This ensures that we have an ElementStackManager in Limbo & Tabletop
             InitializeTokenContainers();
+
+            NoonUtility.Log("Initialising subcontrollers", 10);
 
             //we hand off board functions to individual controllers
             InitialiseSubControllers(
@@ -140,23 +179,55 @@ namespace Assets.CS.TabletopUI {
             // Make sure dragging is reenabled
             DraggableToken.draggingEnabled = true;
 
+            
+
             BeginGame(_situationBuilder);
-            _heart.StartBeatingWithDefaultValue();
         }
 
         /// <summary>
         /// if a game exists, load it; otherwise, create a fresh state and setup
         /// </summary>
-        private void BeginGame(SituationBuilder builder) {
-            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+        private void BeginGame(SituationBuilder builder)
+		{
+            //CHECK LEGACY POPULATED FOR CHARACTERS
+            //this is all a bit post facto and could do with being tidied up
+            //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
+			bool shouldStartPaused = false;
+            NoonUtility.Log("Checking chosen legacy", 10);
+            var chosenLegacy = CrossSceneState.GetChosenLegacy();
+            if (chosenLegacy == null)
+            {
+                NoonUtility.Log("No initial Legacy specified");
+                chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
+                CrossSceneState.SetChosenLegacy(chosenLegacy);
+                Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;
+            }
 
-            if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive()) {
-                LoadGame();
+            if (CrossSceneState.GameState == GameState.Restarting)
+            {
+                NoonUtility.Log("Restarting game", 11);
+                CrossSceneState.RestartingGame();
+                BeginNewGame(builder);
             }
             else
             {
-                BeginNewGame(builder);
+                NoonUtility.Log("Checking if save game exists", 10);
+                var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+
+                if (saveGameManager.DoesGameSaveExist() && saveGameManager.IsSavedGameActive())
+                {
+                    NoonUtility.Log("Loading game", 10);
+                    LoadGame();
+					shouldStartPaused = true;
+                }
+                else
+                {
+                    NoonUtility.Log("Beginning new game", 10);
+                    BeginNewGame(builder);
+                }
             }
+			_heart.StartBeatingWithDefaultValue();						// Init heartbeat duration...
+			_speedController.SetPausedState(shouldStartPaused, false);	// ...but (optionally) pause game while the player gets their bearings.
         }
 
         private void BeginNewGame(SituationBuilder builder)
@@ -181,7 +252,7 @@ namespace Assets.CS.TabletopUI {
             mapController.Initialise(mapTokenContainer, mapBackground, mapAnimation);
             endGameAnimController.Initialise();
             notifier.Initialise();
-            optionsPanel.InitPreferences(_speedController);
+            optionsPanel.InitPreferences(_speedController,true);
         }
 
         private void InitialiseListeners() {
@@ -205,7 +276,15 @@ namespace Assets.CS.TabletopUI {
         private void SetupServices(SituationBuilder builder, TabletopTokenContainer container) {
             var registry = new Registry();
             var compendium = new Compendium();
-            var character = new Character(CrossSceneState.GetDefunctCharacter());
+            var contentImporter = new ContentImporter();
+            contentImporter.PopulateCompendium(compendium);
+
+            Character character;
+            if (CrossSceneState.GetChosenLegacy() != null)
+                character = new Character(CrossSceneState.GetChosenLegacy(), CrossSceneState.GetDefunctCharacter());
+            else
+                character = new Character(compendium.GetAllLegacies().First());
+
 
             var choreographer = new Choreographer(container, builder, tableLevelTransform, windowLevelTransform);
             var chronicler = new Chronicler(character,compendium);
@@ -226,7 +305,13 @@ namespace Assets.CS.TabletopUI {
 
             var draggableHolder = new DraggableHolder(draggableHolderRectTransform);
 
+<<<<<<< HEAD
             var storeClientProvider=new StoreClientProvider();
+=======
+            var storeClientProvider=new StorefrontServicesProvider();
+            storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Steam);
+            storeClientProvider.InitialiseForStorefrontClientType(StoreClient.Gog);
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe
 
             registry.Register<ICompendium>(compendium);
             registry.Register<IDraggableHolder>(draggableHolder);
@@ -242,34 +327,33 @@ namespace Assets.CS.TabletopUI {
             registry.Register<SituationsCatalogue>(situationsCatalogue);
             registry.Register<StackManagersCatalogue>(elementStacksCatalogue);
             registry.Register<MetaInfo>(metaInfo);
+<<<<<<< HEAD
             registry.Register<IStoreClientProvider>(storeClientProvider);
+=======
+            registry.Register<StorefrontServicesProvider>(storeClientProvider);
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe
 
 
-            var contentImporter = new ContentImporter();
-            contentImporter.PopulateCompendium(compendium);
         }
 
-        #endregion
+
 
         #region -- Build / Reset -------------------------------
 
         public void SetupNewBoard(SituationBuilder builder) {
-            var chosenLegacy = CrossSceneState.GetChosenLegacy();
 
-            if (chosenLegacy == null) {
-                NoonUtility.Log("No initial Legacy specified");
-                chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
-                CrossSceneState.SetChosenLegacy(chosenLegacy);
-            }
 
             builder.CreateInitialTokensOnTabletop();
-            ProvisionStartingElements(chosenLegacy, Registry.Retrieve<Choreographer>());
-            SetStartingCharacterInfo(chosenLegacy);
+            Character _character = Registry.Retrieve<Character>();
+            if(_character.ActiveLegacy==null)
+                throw new ApplicationException("Trying to set up a new board for a character with no chosen legacy. Even fresh characters should have a legacy when created, but this code has always been hinky.");
+            ProvisionStartingElements(_character.ActiveLegacy, Registry.Retrieve<Choreographer>());
+            SetStartingCharacterInfo(_character.ActiveLegacy);
             StatusBar.UpdateCharacterDetailsView(Registry.Retrieve<Character>());
 
             DealStartingDecks();
 
-            _notifier.ShowNotificationWindow(chosenLegacy.Label, chosenLegacy.StartDescription);
+            _notifier.ShowNotificationWindow(_character.ActiveLegacy.Label, _character.ActiveLegacy.StartDescription);
         }
 
         private void SetStartingCharacterInfo(Legacy chosenLegacy) {
@@ -313,7 +397,9 @@ namespace Assets.CS.TabletopUI {
 
         public void RestartGame() {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveInactiveGame(CrossSceneState.GetChosenLegacy());
+            CrossSceneState.RestartingGame();
+            
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -354,7 +440,7 @@ namespace Assets.CS.TabletopUI {
             ICompendium compendium = Registry.Retrieve<ICompendium>();
             IGameEntityStorage storage = Registry.Retrieve<Character>();
 
-            _speedController.SetPausedState(true);
+            _speedController.SetPausedState(true, false);
             var saveGameManager = new GameSaveManager(new GameDataImporter(compendium), new GameDataExporter());
             //try
             //{
@@ -381,13 +467,16 @@ namespace Assets.CS.TabletopUI {
             //{
             //    _notifier.ShowNotificationWindow("Couldn't load game - ", e.Message);
             //}
-            _speedController.SetPausedState(false);
+            _speedController.SetPausedState(true, false);
         }
 
-        public void SaveGame(bool withNotification) {
-            if (isInNonSaveableState)
-                return;
+        public bool SaveGame(bool withNotification)
+		{
+            if (!IsSafeToAutosave())
+                return false;
 			
+			bool success = true;	// Assume everything will be OK to begin with...
+
 			// Check state so that autosave behaves correctly if called while paused - CP
 			bool wasBeating = false;
 			if (!_heart.IsPaused)
@@ -406,14 +495,19 @@ namespace Assets.CS.TabletopUI {
             // try
             //  {
             var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-            saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
-            if (withNotification)
-                _notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
-
+            success = saveGameManager.SaveActiveGame(_tabletop, Registry.Retrieve<Character>());
+			if (success)
+			{
+				if (withNotification)
+				{
+					//_notifier.ShowNotificationWindow("SAVED THE GAME", "BUT NOT THE WORLD");
+					_autosaveNotifier.SetDuration( 3.0f );
+					_autosaveNotifier.Show();
+				}
+			}
             //}
             //catch (Exception e)
             //{
-
             //      _notifier.ShowNotificationWindow("Couldn't save game - ", e.Message); ;
             // }
 
@@ -421,6 +515,16 @@ namespace Assets.CS.TabletopUI {
 			{
 	            _heart.ResumeBeating();
 			}
+
+			if (GameSaveManager.saveErrorWarningTriggered)	// Do a full pause after resuming heartbeat (to update UI, SFX, etc)
+			{
+				bool pauseStateWhenErrorRequested = GetPausedState();
+				if (!pauseStateWhenErrorRequested)			// only pause if we need to (since it triggers sfx)
+					SetPausedState(true);
+				GameSaveManager.saveErrorWarningTriggered = false;	// Clear after we've used it
+			}
+
+			return success;
         }
 
 #endregion
@@ -440,7 +544,7 @@ namespace Assets.CS.TabletopUI {
 
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
 
@@ -449,7 +553,7 @@ namespace Assets.CS.TabletopUI {
                 if (stack != null) {
                     stack.SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.GreedySlot));
                     choreo.PrepareElementForGreedyAnim(stack, sit.situationToken as SituationToken); // this reparents the card so it can animate properly
-                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair);
+                    choreo.MoveElementToSituationSlot(stack, tokenSlotPair, choreo.ElementGreedyAnimDone);
                     continue; // we found a stack, we're done here
                 }
                 
@@ -498,7 +602,7 @@ namespace Assets.CS.TabletopUI {
             if (stack == null) //..but just in case.
                 return false;
 
-                if (stack.Defunct)
+            if (stack.Defunct)
                 return false; // don't pull defunct cards
             else if (stack.IsBeingAnimated)
                 return false; // don't pull animated cards
@@ -610,6 +714,34 @@ namespace Assets.CS.TabletopUI {
                 mapTokenContainer.ShowDestinationsForStack(draggedElement, isDragging);
         }
 
+		static public void RequestNonSaveableState( NonSaveableType type, bool forbidden )
+		{
+			// This allows multiple systems to request overlapping NonSaveableStates - CP
+			// Removed the counter, as it kept creeping up (must be a loophole if a drag is aborted oddly)
+			// For safety I've changed it to array of separate flags (so you can drag in the Mansus without enabled autosave)
+			// and added a failsafe in the update, which flushes the Drag flag whenever nothing is held (rather than relying on catching all exit points)
+			Debug.Assert( type<NonSaveableType.NumNonSaveableTypes, "Bad nonsaveable type" );
+			isInNonSaveableState[(int)type] = forbidden;
+		}
+
+		static public void FlushNonSaveableState()	// For use when we absolutely, definitely want to restore autosave permission - CP
+		{
+			for (int i=0; i<(int)NonSaveableType.NumNonSaveableTypes; i++)
+			{
+				isInNonSaveableState[i] = false;
+			}
+		}
+
+		static public bool IsSafeToAutosave()
+		{
+			for (int i=0; i<(int)NonSaveableType.NumNonSaveableTypes; i++)
+			{
+				if (isInNonSaveableState[i])
+					return false;
+			}
+			return true;
+		}
+
         public void SetPausedState(bool paused) {
             _speedController.SetPausedState(paused);
         }
@@ -627,12 +759,30 @@ namespace Assets.CS.TabletopUI {
 			AUTOSAVE_INTERVAL = minutes * 60.0f;
 		}
 
+		public void SetGridSnapSize( float snapsize )
+		{
+			int snap = Mathf.RoundToInt( snapsize );
+			switch (snap)
+			{
+			default:
+			case 0:		gridSnapSize = 0.0f; break;
+			case 1:		gridSnapSize = 1.0f; break;		// 1 card
+			case 2:		gridSnapSize = 0.5f; break;		// ½ card
+			case 3:		gridSnapSize = 0.25f; break;	// ¼ card
+			}
+		}
+
+		public static float GetGridSnapSize()
+		{
+			return gridSnapSize;
+		}
+
         public void ShowMansusMap(SituationController situation, Transform origin, PortalEffect effect) {
             CloseAllSituationWindowsExcept(null);
 
             DraggableToken.CancelDrag();
             LockSpeedController(true);
-            isInNonSaveableState = true;
+            RequestNonSaveableState( NonSaveableType.Mansus, true );
 
             SoundManager.PlaySfx("MansusEntry");
             // Play Mansus Music
@@ -640,7 +790,12 @@ namespace Assets.CS.TabletopUI {
 
             // Build mansus cards and doors everything
             mansusSituation = situation; // so we can drop the card in the right place
-            _mapController.SetupMap(effect); 
+            _mapController.SetupMap(effect);
+
+            var chronicler = Registry.Retrieve<Chronicler>();
+            chronicler.ChronicleMansusEntry(effect);
+
+			//preMansusTabletopPos = tableScroll.content.anchoredPosition;
 
             // Do transition
             _tabletop.Show(false);
@@ -650,7 +805,7 @@ namespace Assets.CS.TabletopUI {
         public void ReturnFromMansus(Transform origin, ElementStackToken mansusCard) {
             DraggableToken.CancelDrag();
             LockSpeedController(false);
-            isInNonSaveableState = false;
+            FlushNonSaveableState();	// On return from Mansus we can't possibly be overlapping with any other non-autosave state so force a reset for safety - CP
 
             // Play Normal Music
             backgroundMusic.PlayRandomClip();
@@ -668,11 +823,9 @@ namespace Assets.CS.TabletopUI {
             mansusSituation.AddNote(new Notification(string.Empty, mansusCard.IlluminateLibrarian.PopMansusJournalEntry()));
             mansusSituation.OpenWindow();
 
-            //hasty crappy line from AK, feel free to improve if you're passing!
-            SituationWindow zoomTo= mansusSituation.situationWindow as SituationWindow;
-            tableScroll.content.anchoredPosition = zoomTo.transform.position;
+            // insta setting back to last position before the mansus was transformed, but I don't like it. Feels jerky. - martin
+			//tableScroll.content.anchoredPosition = preMansusTabletopPos;
             mansusSituation = null;
-
         }
 
         public void BeginNewSituation(SituationCreationCommand scc) {
@@ -680,14 +833,84 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {
+            if(!currentDoomTokens.Contains(situationToken.EntityId))
+                currentDoomTokens.Add(situationToken.EntityId);
             backgroundMusic.PlayImpendingDoom();
         }
 
 
         public void NoMoreImpendingDoom(ISituationAnchor situationToken)
         {
-            backgroundMusic.NoMoreImpendingDoom();
+            if (currentDoomTokens.Contains(situationToken.EntityId))
+                currentDoomTokens.Remove(situationToken.EntityId);
+            if(!currentDoomTokens.Any())
+                backgroundMusic.NoMoreImpendingDoom();
         }
-    }
+
+		public void HighlightAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+			var stacks = FindAllStacksForSlotSpecificationOnTabletop(slotSpec);
+
+			foreach (var stack in stacks) {
+				ShowFXonToken("FX/CardPingEffect", stack.transform);
+			}
+		}
+
+		private List<ElementStackToken> FindAllStacksForSlotSpecificationOnTabletop(SlotSpecification slotSpec) {
+			var stackList = new List<ElementStackToken>();
+			var stacks = _tabletop.GetElementStacksManager().GetStacks();
+			ElementStackToken stackToken;
+
+			foreach (var stack in stacks) {
+				stackToken = stack as ElementStackToken;
+
+				if (stackToken != null && CanPullCardToGreedySlot(stackToken, slotSpec))
+					stackList.Add(stackToken);
+			}
+
+			return stackList;
+		}
+
+		private void ShowFXonToken(string name, Transform parent) {
+			var prefab = Resources.Load(name);
+
+			if (prefab == null)
+				return;
+
+			var obj = Instantiate(prefab) as GameObject;
+
+			if (obj == null)
+				return;
+
+			obj.transform.SetParent(parent);
+			obj.transform.localScale = Vector3.one;
+			obj.transform.localPosition = Vector3.zero;
+			obj.transform.localRotation = Quaternion.identity;
+			obj.gameObject.SetActive(true);
+		}
+
+#if UNITY_EDITOR
+		private void OnGUI()
+		{
+			// Extra tools for debugging autosave.
+
+			// Toggle to simulate bad save
+			if (GUI.Button( new Rect(Screen.width * 0.5f - 300f, 10f, 180f, 20f), "Simulate bad save: " + (GameSaveManager.simulateBrokenSave?"ON":"off") ))
+			{
+				GameSaveManager.simulateBrokenSave = !GameSaveManager.simulateBrokenSave;		// Click 
+			}
+
+			// Counter to show time to next autosave. Click it to reduce to a five second countdown
+			if (GUI.Button( new Rect(Screen.width * 0.5f - 100f, 10f, 150f, 20f), "Autosave in " + (int)(AUTOSAVE_INTERVAL-housekeepingTimer) ))
+			{
+				housekeepingTimer = AUTOSAVE_INTERVAL - 5f;		// Click 
+			}
+
+			if (!IsSafeToAutosave())
+			{
+				GUI.TextArea( new Rect(Screen.width * 0.5f + 50f, 10f, 70f, 20f), "BLOCKED" );
+			}
+		}
+#endif
+	}
 
 }

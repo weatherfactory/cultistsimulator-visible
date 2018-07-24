@@ -54,11 +54,11 @@ namespace Assets.CS.TabletopUI {
         }
 
         public override void RespondToStackAdded(RecipeSlot slot, IElementStack stack, Context context) {
-            situationController.OngoingSlotsUpdated();
+            situationController.OngoingSlotsOrStorageUpdated();
         }
 
         public override void RespondToStackRemoved(IElementStack stack, Context context) {
-            situationController.OngoingSlotsUpdated();
+            situationController.OngoingSlotsOrStorageUpdated();
         }
 
         public IRecipeSlot GetUnfilledGreedySlot() {

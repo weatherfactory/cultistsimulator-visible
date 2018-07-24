@@ -11,6 +11,7 @@ using Assets.TabletopUi.Scripts.Interfaces;
 using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using OrbCreationExtensions;
+using UnityEngine;	// added for debug asserts - CP
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -19,7 +20,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private readonly IGameDataImporter dataImporter;
         private readonly IGameDataExporter dataExporter;
 
-        
+		// Save game safety
+		public static int failedSaveCount = 0;
+		public static bool saveErrorWarningTriggered = false;	// so that tabletop knows not to unpause
+#if UNITY_EDITOR
+		public static bool simulateBrokenSave = false;	// For debugging
+#endif
         public GameSaveManager(IGameDataImporter dataImporter,IGameDataExporter dataExporter)
         {
             this.dataImporter = dataImporter;
@@ -40,9 +46,17 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         //copies old version in case of corruption
         private void BackupSave()
         {
-            if(DoesGameSaveExist()) //otherwise we can't copy it
-                File.Copy(NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(),true);
-       }
+			const int MAX_BACKUPS = 5;
+			// Back up a number of previous saves
+            for (int i=MAX_BACKUPS-1; i>=1; i--)
+			{
+				if (File.Exists(NoonUtility.GetBackupGameSaveLocation(i)))	//otherwise we can't copy it
+	                File.Copy  (NoonUtility.GetBackupGameSaveLocation(i), NoonUtility.GetBackupGameSaveLocation(i+1),true);			
+			}
+			// Back up the main save
+			if (File.Exists(NoonUtility.GetGameSaveLocation()))	//otherwise we can't copy it
+                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetBackupGameSaveLocation(1),true);
+		}
         
         /// <summary>
         /// for saving from the game over or legacy choice screen, when the player is between active games. It's also used when restarting the game
@@ -72,18 +86,47 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         }
 
         //for saving from the tabletop
-        public void SaveActiveGame(TabletopTokenContainer tabletop,Character character)
+        public bool SaveActiveGame(TabletopTokenContainer tabletop,Character character,bool forceBadSave = false)
         {
             var allStacks = tabletop.GetElementStacksManager().GetStacks();
             var currentSituationControllers = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
             var metaInfo = Registry.Retrieve<MetaInfo>();
             var allDecks = character.DeckInstances;
 
-            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,
-                currentSituationControllers,allDecks);
+			Debug.Assert( currentSituationControllers.Count > 0, "No situation controllers!" );
 
-            BackupSave();
-            File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+			// GetSaveHashTable now does basic validation of the data and might return null if it's bad - CP
+            var htSaveTable = dataExporter.GetSaveHashTable(metaInfo,character,allStacks,currentSituationControllers,allDecks,forceBadSave);
+
+			// Universal catch-all. If data is broken, abort save and retry 5 seconds later - assuming problem circumstance has completed - CP
+			// If we fail several of these in a row then something is permanently broken in the data and we should alert user :(
+			if (htSaveTable == null && !forceBadSave)
+			{
+				failedSaveCount++;
+				if (failedSaveCount==3)	// Check ==3 not >3 so that we don't write any more ErrorReport saves after the first one - CP
+				{
+					// Back up main save
+					if (File.Exists(NoonUtility.GetGameSaveLocation()))	//otherwise we can't copy it
+		                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "pre"),true);
+					// Force a bad save into a different filename
+					SaveActiveGame( tabletop, character, true );
+					// Pop up warning message
+					Registry.Retrieve<INotifier>().ShowSaveError(true);
+					saveErrorWarningTriggered = true;
+				}
+				return false;	// Something went wrong with the save
+			}
+			if (forceBadSave)
+			{
+				File.WriteAllText(NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "post" ), htSaveTable.JsonString());
+			}
+			else
+			{
+				BackupSave();
+				File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+				failedSaveCount = 0;
+			}
+			return true;
         }
 
         public Hashtable RetrieveHashedSaveFromFile()
@@ -110,6 +153,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public bool SaveGameHasMatchingVersionNumber(VersionNumber currentVersionNumber)
         {
             var htSave = RetrieveHashedSaveFromFile();
+            if (htSave == null)
+                return false;
             var htMetaInfo = htSave.GetHashtable(SaveConstants.SAVE_METAINFO);
             if (htMetaInfo == null)
                 return false;

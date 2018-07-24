@@ -1,0 +1,83 @@
+{
+"recipes": [
+{id: "lockfollowerincupboard",
+label: "Betray and Imprison a Follower",
+actionId: "talk",
+requirements: {hq:1,follower:1},
+startdescription: "This one must serve another purpose now. Into the cupboard they go.",
+description: "I've locked this one away safely. When their screaming and raving subsides, I will subdue them properly.",
+aspects: {capturefollower:1},
+effects: {notoriety:1},
+craftable:true,
+warmup:10
+},
+
+{id: "poppyoffer",
+label:"Speak to Poppy Lascelles",
+actionId: "talk",
+requirements: {poppyready: 1},
+slots: [{id:"Consent",description:"Add Passion to accept, or Reason to interrogate Poppy further.",required: {passion:1,reason:1}}],
+alternativerecipes: [{id: "poppyofferaccept",chance:100},
+{id:"poppyofferquery",chance:100}],
+startdescription: "'My dear, I've been wanting to talk to you. Sometimes, I fund scholars of the invisible arts. I'd like to offer you my support. A substantial contribution. And all you need to do, some day, is to introduce me to someone else who'll end matters properly.' She smiles, benignly. [Add <b>Passion</b> to accept, or <b>Reason</b> to interrogate her further.]",
+description: "I didn't take up Poppy's offer.",
+warmup:60,
+craftable: true
+},
+{id: "poppyofferaccept",
+label: "Accept Poppy's Offer",
+actionId: "talk",
+requirements: {passion:1},
+startdescription: "'Yes, that's exactly right. I'll come back tonight.'",
+description: "A tiny packet of tiny treasures: a gift from Poppy. She'll see me again in the Season of Rags, for me to make the introduction I promised.",
+effects: {funds:10,compensationc:1,poppyready:-1},
+alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
+},
+{id: "poppyofferquery",
+label: "Question Poppy closely",
+actionId: "talk",
+requirements: {reason:1},
+startdescription: "Someone who'll end matters properly?",
+description: "'Yes. When the Season of Rags comes round again, my sponsor will require someone for an ending. You can provide someone sufficiently loyal, or you can provide yourself. As you prefer. I don't want to be any trouble.'",
+effects: {influencewinter:1}
+},
+{
+id:"poppytimebomb",
+label:"Poppy's Request",
+actionId:"poppytime",
+startdescription: "In the 'Season of Rags', Poppy will return...",
+description: ".",
+linked: [{id:"poppysafefornow",chance:7},
+{id:"poppywantssoul",chance:100}],
+warmup:300
+},
+{id:"poppysafefornow",
+actionId: "poppytime",
+label:"Silence from Poppy",
+startdescription:"Poppy is seen around town, assisting at charitable events, smiling benignly.",
+description: ".",
+linked: [{id: "poppytimebomb",chance:100}],
+warmup:10
+},
+
+{id:"poppywantssoul",
+label:"A Friendly Visit from Poppy",
+actionId: "poppytime",
+slots: [{id:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
+alternativerecipes: [{id:"poppysatiated",chance:100}],
+warmup:60,
+signalEndingFlavour:Melancholy,
+ending: "wintersacrifice",
+startdescription: "'This is the time, my dear. The Sun-in-Rags requires his conclusion. Will it be you? Or do you have a friend?'",
+description: "."
+},
+{id:"poppysatiated",
+actionId: "poppytime",
+label:"A Suitable Conclusion",
+requirements: {follower:1},
+startdescription: "'What a loyal friend you have here! Do say goodbye, now.'",
+description: "My follower is gone. I remain. Poppy Lascelles is seen, here and there. She may have more to say to me.",
+effects: {poppycommissionready:1,influencewinter:1,follower:-1}
+}
+]
+}

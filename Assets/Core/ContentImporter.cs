@@ -3,6 +3,7 @@ using System;
 using Noon;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Assets.Core;
 using Assets.Core.Entities;
@@ -13,6 +14,8 @@ public class ContentImporter
 {
     private IList<ContentImportProblem> contentImportProblems;
     private const string CONST_CONTENTDIR = "content/";
+    private readonly string CORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/core/";
+    private readonly string MORE_CONTENT_DIR = Application.streamingAssetsPath + "/content/more/";
     private const string CONST_ELEMENTS = "elements";
     private const string CONST_RECIPES = "recipes";
     private const string CONST_VERBS = "verbs";
@@ -72,7 +75,11 @@ public class ContentImporter
                     if ((string) htThisSlot[NoonConstants.KCONSUMES] == "true")
                         slotSpecification.Consumes = true;
 
-                    if (htThisSlot[NoonConstants.KACTIONID] != null)
+
+                    if ((string)htThisSlot[NoonConstants.KNOANIM] == "true")
+                        slotSpecification.NoAnim = true;
+
+                if (htThisSlot[NoonConstants.KACTIONID] != null)
                         slotSpecification.ForVerb = htThisSlot[NoonConstants.KACTIONID].ToString();
        
 
@@ -103,16 +110,48 @@ public class ContentImporter
 
     }
 
+    private ArrayList GetContentItems(string contentOfType)
+    {
+        var contentFolder = CORE_CONTENT_DIR + contentOfType;
+        var contentOverrideFolder = MORE_CONTENT_DIR + contentOfType;
+        var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+        var overridecontentFiles = Directory.GetFiles(contentOverrideFolder).ToList().FindAll(f => f.EndsWith(".json"));
+
+        contentFiles.AddRange(overridecontentFiles);
+        if (!contentFiles.Any())
+            NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
+
+        ArrayList contentItemArrayList = new ArrayList();
+        foreach (var contentFile in contentFiles)
+        {
+            string json = File.ReadAllText(contentFile);
+
+
+            try
+            {
+                contentItemArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(contentOfType));
+            }
+            catch (Exception e)
+            {
+                NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
+                throw;
+            }
+        }
+        return contentItemArrayList;
+
+
+    
+    }
+
     public void ImportElements()
     {
-        TextAsset[] elementTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_ELEMENTS);
+
+
+        ArrayList alElements = GetContentItems(CONST_ELEMENTS);
+
         int totalElementsFound = 0;
-        foreach (TextAsset ta in elementTextAssets)
-        {
-            string json = ta.text;
-            var htElements = SimpleJsonImporter.Import(json);
-            totalElementsFound += PopulateElements(htElements);
-        }
+
+        totalElementsFound += PopulateElements(alElements);
 
         NoonUtility.Log("Total elements found: " + totalElementsFound,2);
 
@@ -132,13 +171,15 @@ public class ContentImporter
         }
     }
 
-    public int PopulateElements(Hashtable htElements)
+    public int PopulateElements(ArrayList alElements)
     {
 
-        if (htElements == null)
-            LogProblem("Elements were never imported; PopulateElementForId failed");
+        if (alElements == null)
+        { 
+            LogProblem("Elements were never imported; PopulateElements failed");
+            return 0;
+        }
 
-        ArrayList alElements = htElements.GetArrayList("elements");
 
         foreach (Hashtable htElement in alElements)
         {
@@ -183,6 +224,11 @@ public class ContentImporter
                 else
                     element.Unique = false;
 
+                if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
+                {
+                    element.UniquenessGroup = htElement.GetString(NoonConstants.KUNIQUENESSGROUP);
+                }
+
                 element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
                 if(alSlots!=null)
                 element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
@@ -215,13 +261,16 @@ public class ContentImporter
                 ArrayList alInducedRecipes = htElement.GetArrayList(NoonConstants.KINDUCES);
                 if (alInducedRecipes != null)
                 {
-                    foreach (Hashtable lr in alInducedRecipes)
+                    foreach (Hashtable ir in alInducedRecipes)
                     {
-                        string lrID = lr[NoonConstants.KID].ToString();
-                        int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
-                        bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
+                        string lrID = ir[NoonConstants.KID].ToString();
+                        int lrChance = Convert.ToInt32(ir[NoonConstants.KCHANCE]);
+                        bool lrAdditional = Convert.ToBoolean(ir[NoonConstants.KADDITIONAL] ?? false);
 
-                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+                        var lrExpulsion = GetExpulsionDetailsIfAny(ir);
+
+
+                        element.Induces.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion));
 
                         if (lrChance == 0)
                         {
@@ -243,26 +292,8 @@ public class ContentImporter
 
     public void ImportRecipes()
     {
-        TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
-        ArrayList recipesArrayList = new ArrayList();
-
-        foreach (TextAsset ta in recipeTextAssets)
-        {
-            string json = ta.text;
-            try
-            {
-                recipesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("recipes"));
-            }
-
-
-            catch (Exception e)
-            {
-                NoonUtility.Log("This file broke: " + ta.name + " with error " + e.Message);
-                throw;
-            }
-
-        }
-
+        //TextAsset[] recipeTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_RECIPES);
+        ArrayList recipesArrayList = GetContentItems(CONST_RECIPES);
         PopulateRecipeList(recipesArrayList);
         NoonUtility.Log("Total recipes found: " + recipesArrayList.Count,2);
 
@@ -270,13 +301,12 @@ public class ContentImporter
 
     public void ImportVerbs()
     {
-        ArrayList verbsArrayList = new ArrayList();
-        TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
-        foreach (TextAsset ta in verbTextAssets)
-        {
-            string json = ta.text;
-            verbsArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList("verbs"));
-        }
+        
+            //TextAsset[] verbTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_VERBS);
+
+   
+        ArrayList verbsArrayList = GetContentItems(CONST_VERBS);
+
 
         foreach (Hashtable h in verbsArrayList)
         {
@@ -296,16 +326,12 @@ public class ContentImporter
 
     }
 
+
+
     private void ImportDeckSpecs()
     {
-        ArrayList decksArrayList = new ArrayList();
-        TextAsset[] deckTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_DECKS);
-        foreach (TextAsset ta in deckTextAssets)
-        {
-            string json = ta.text;
-            decksArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_DECKS));
-        }
-
+        ArrayList decksArrayList = GetContentItems(CONST_DECKS);
+        
         for (int i = 0; i < decksArrayList.Count; i++)
         {
             Hashtable htEachDeck = decksArrayList.GetHashtable(i);
@@ -334,15 +360,15 @@ public class ContentImporter
             }
        
 
-            bool resetOnExhaustion;
+            bool resetOnExhaustion=false;
             try
             {
                 resetOnExhaustion = Convert.ToBoolean(htEachDeck.GetValue(NoonConstants.KRESETONEXHAUSTION));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                LogProblem("Problem importing resetOnExhaustion  for deckSpec '" + htEachDeck[NoonConstants.KID].ToString() +
+                           "' - " + e.Message);
             }
 
             string defaultCardId = "";
@@ -363,6 +389,7 @@ public class ContentImporter
 
 
             DeckSpec d = new DeckSpec(htEachDeck["id"].ToString(), thisDeckSpec, defaultCardId, resetOnExhaustion);
+            
 
 
             try
@@ -415,14 +442,8 @@ public class ContentImporter
 
     public void ImportLegacies()
     {
-        ArrayList legaciesArrayList = new ArrayList();
-        TextAsset[] legacyTextAssets = Resources.LoadAll<TextAsset>(CONST_CONTENTDIR + CONST_LEGACIES);
-        foreach (TextAsset ta in legacyTextAssets)
-        {
-            string json = ta.text;
-            legaciesArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(CONST_LEGACIES));
-        }
-
+        ArrayList legaciesArrayList = GetContentItems(CONST_LEGACIES);
+        
         for (int i = 0; i < legaciesArrayList.Count; i++)
         {
             Hashtable htEachLegacy = legaciesArrayList.GetHashtable(i);
@@ -679,7 +700,9 @@ public class ContentImporter
                         int raChance = Convert.ToInt32(ra[NoonConstants.KCHANCE]);
                         bool raAdditional = Convert.ToBoolean(ra[NoonConstants.KADDITIONAL] ?? false);
 
-                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional));
+                        var raExpulsion = GetExpulsionDetailsIfAny(ra);
+
+                        r.AlternativeRecipes.Add(new LinkedRecipeDetails(raID, raChance, raAdditional, raExpulsion));
 
 
                         if (raChance == 0)
@@ -709,7 +732,9 @@ public class ContentImporter
                         int lrChance = Convert.ToInt32(lr[NoonConstants.KCHANCE]);
                         bool lrAdditional = Convert.ToBoolean(lr[NoonConstants.KADDITIONAL] ?? false);
 
-                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional));
+                        var lrExpulsion = GetExpulsionDetailsIfAny(lr);
+
+                        r.LinkedRecipes.Add(new LinkedRecipeDetails(lrID, lrChance, lrAdditional, lrExpulsion));
 
 
 
@@ -797,6 +822,25 @@ public class ContentImporter
         }
     }
 
+    private static Expulsion GetExpulsionDetailsIfAny(Hashtable linkedrecipedetails)
+    {
+        Expulsion possibleExpulsion = null;
+
+        Hashtable htExpulsion = linkedrecipedetails.GetHashtable(NoonConstants.KEXPULSION);
+        if (htExpulsion != null)
+        {
+            possibleExpulsion = new Expulsion();
+            possibleExpulsion.Limit = htExpulsion.GetInt(NoonConstants.KLIMIT);
+            Hashtable htFilter = htExpulsion.GetHashtable(NoonConstants.KFILTER);
+            foreach (var k in htFilter.Keys)
+            {
+                possibleExpulsion.Filter.Add(k.ToString(), Convert.ToInt32(htFilter[k]));
+            }
+        }
+
+        return possibleExpulsion;
+    }
+
     private void LogIfNonexistentElementId(string elementId, string containerId, string context)
     {
         if (!elementId.StartsWith(NoonConstants.LEVER_PREFIX) && !Elements.ContainsKey(elementId))
@@ -840,7 +884,7 @@ public class ContentImporter
             {
                 
 
-                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForElement(thisElement.Icon) == null || ResourcesManager.GetSpriteForElement(k).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if (!thisElement.NoArtNeeded && ResourcesManager.GetSpriteForElement(thisElement.Icon).name==ResourcesManager.PLACEHOLDER_IMAGE_NAME)
                 {
                     missingElementImages += (" " + k);
                     missingElementImageCount++;
@@ -872,6 +916,10 @@ public class ContentImporter
         _compendium.UpdateVerbs(Verbs);
         _compendium.UpdateDeckSpecs(DeckSpecs);
         _compendium.UpdateLegacies(Legacies);
+
+foreach(var d in _compendium.GetAllDeckSpecs())
+    d.RegisterUniquenessGroups(_compendium);
+
 
 #if DEBUG
         CountWords();
@@ -916,7 +964,7 @@ public class ContentImporter
             words += (l.Description.Count(char.IsWhiteSpace) + 1);
         }
 
-        NoonUtility.Log("Words (based on spaces +1 count): " + words,2);
+        NoonUtility.Log("Words (based on spaces +1 count): " + words,1);
     }
 
     private void LogFnords()
@@ -959,10 +1007,10 @@ public class ContentImporter
 
 
         if (elementFnords != "")
-            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords,9);
+            NoonUtility.Log(elementFnordCount + "  fnords for elements:" + elementFnords,1);
 
         if (recipeFnords != "")
-            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords,9);
+            NoonUtility.Log(recipeFnordCount + "  fnords for recipes:" + recipeFnords,1);
 
 
     }
