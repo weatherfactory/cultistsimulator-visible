@@ -79,7 +79,6 @@ public class OptionsPanel : MonoBehaviour {
     private const string AUTOSAVEINTERVAL = "AutosaveInterval";
     private const string GRIDSNAPSIZE = "GridSnapSize";
 
-    private bool pauseStateWhenOptionsRequested = false;
     //This options panel class is used in both the main and the menu screen. IsInGame determines which version of behaviour. (You think this is iffy,
     //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
     private bool _isInGame = true;
@@ -186,30 +185,17 @@ public class OptionsPanel : MonoBehaviour {
         //let's reset it either way
         restartButton.ResetState();
 
+		// Simplified to use Martin's LockToPause code which handles everything nicely - CP
         if (windowGO.activeInHierarchy)
 		{
-			pauseStateWhenOptionsRequested = Registry.Retrieve<TabletopManager>().GetPausedState();
-
-			// only pause if we need to (since it triggers sfx)
-			if (!pauseStateWhenOptionsRequested)
-				Registry.Retrieve<TabletopManager>().SetPausedState(true);
-
-			// now lock the pause so players can't manually 
+			// now lock the pause so players can't do it manually - this also pauses
 			if (speedController != null)
-				speedController.LockToPause(true); // this also pauses, so we pause twice?
+				speedController.LockToPause(true);
 		}
 		else
 		{
-			// only unpause if we need to (since it triggers sfx)
-			if (!pauseStateWhenOptionsRequested)
-				Registry.Retrieve<TabletopManager>().SetPausedState(pauseStateWhenOptionsRequested);
-
-			// TODO: This should be first, so we can actually restore the last state. 
-			// With the potential unpause above it can not do so cause we're still locked
-			// This also means it's currently playing the un-pause sound even though it doesn't unpause
-			// - Martin
 			if (speedController != null)
-				speedController.LockToPause(false);			
+				speedController.LockToPause(false);
 		}
     }
 

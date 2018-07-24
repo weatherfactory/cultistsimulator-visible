@@ -48,6 +48,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 		public void SetPausedState(bool pause, bool withSFX = true)
         {
+			if (_heart.IsPaused == pause)	// No SFX if no change of state - CP
+				withSFX = false;
+
             if (pause || isLocked)
             {
                 _heart.StopBeating();
