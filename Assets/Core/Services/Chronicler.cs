@@ -7,7 +7,7 @@ using Assets.Core.Interfaces;
 using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
-using Assets.TabletopUi.Scripts.Services;
+
 using Noon;
 
 namespace Assets.Core.Services
@@ -90,8 +90,8 @@ namespace Assets.Core.Services
             if (string.IsNullOrEmpty(ending.AchievementId))
                 return;
 
-            var storefrontServicesProvider = Registry.Retrieve<StorefrontServicesProvider>();
-            storefrontServicesProvider.SetAchievementForCurrentStorefronts(ending.AchievementId, true);
+            var storeClientProvider = Registry.Retrieve<IStoreClientProvider>();
+            storeClientProvider.SetAchievement(ending.AchievementId, true);
         }
 
         public void ChronicleGameEnd(List<SituationController> situations, List<IElementStacksManager> stacksManagers,Ending ending)

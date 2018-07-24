@@ -1,9 +1,11 @@
 ﻿#if UNITY_STANDALONE_LINUX
+<<<<<<< HEAD:Assets/TabletopUi/Scripts/Infrastructure/StoreClientGOG.cs
+=======
 
 #elif UNITY_WEBGL
 
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe:Assets/TabletopUi/Scripts/Services/GOGGalaxyIntegration/StoreClientGOG.cs
 #else
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,10 @@ using Noon;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
+<<<<<<< HEAD:Assets/TabletopUi/Scripts/Infrastructure/StoreClientGOG.cs
+
+    public class GogAuthListener : IAuthListener
+=======
     public class GOGStorefrontProvider : IStoreFrontClientProvider
     {
         public GOGStorefrontProvider()
@@ -55,6 +61,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
 
         public class GogAuthListener : IAuthListener
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe:Assets/TabletopUi/Scripts/Services/GOGGalaxyIntegration/StoreClientGOG.cs
     {
         public override void OnAuthSuccess()
         {
@@ -167,7 +174,5 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             NoonUtility.Log("Couldn't store achievements: " + failureReason, 10);
         }
     }
-
-        
-    }
-#endif
+}
+    #endif

@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+﻿#if UNITY_STANDALONE_LINUX
+#else
+using System;
+using UnityEngine;
+using System.Collections;
+using System.IO;
+=======
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
@@ -23,6 +31,7 @@ public class GogGalaxyManager : MonoBehaviour
 }
 
 #else
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe
 using Galaxy.Api;
 
 [DisallowMultipleComponent]
@@ -55,11 +64,15 @@ public class GogGalaxyManager : MonoBehaviour
 
     private void Awake()
     {
+<<<<<<< HEAD
+
+=======
         if (Application.platform == RuntimePlatform.OSXPlayer)
         {
             Debug.Log("Not currently integrating with Galaxy on OSX");
             return;
         }
+>>>>>>> 3c5a77ddeeef66ad8bcd3e59d5dc6d5ca218a2fe
         if (singleton != null)
         {
             Destroy(gameObject);
