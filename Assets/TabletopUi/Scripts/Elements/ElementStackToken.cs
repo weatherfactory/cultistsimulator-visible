@@ -532,17 +532,20 @@ namespace Assets.CS.TabletopUI {
 					}
 				}
 
-				if (selectedSlot.RecipeSlot.IsBeingAnimated)
+				if (selectedSlot != null && selectedSlot.RecipeSlot !=null)
 				{
-					//Debug.Log("Already sending something to " + selectedSlot.Token.EntityId);
-				}
-				else
-				{	
-					//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
-					var choreo = Registry.Retrieve<Choreographer>();
-					SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
-					choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
-					choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone, 0.2f );
+					if (selectedSlot.RecipeSlot.IsBeingAnimated)
+					{
+						//Debug.Log("Already sending something to " + selectedSlot.Token.EntityId);
+					}
+					else
+					{	
+						//Debug.Log("Sending " + this.EntityId + " to " + selectedSlot.Token.EntityId);
+						var choreo = Registry.Retrieve<Choreographer>();
+						SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
+						choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
+						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone, 0.2f );
+					}
 				}
 			}			
 		}
