@@ -89,10 +89,7 @@ namespace Assets.CS.TabletopUI {
             return !Defunct && TokenContainer != null && !IsBeingAnimated && TokenContainer.AllowDrag && AllowsDrag();
         }
 
-		public bool IsGlowing()
-		{
-		    if (glowImage == null)
-		        return false;
+		public bool IsGlowing() {
 			return glowImage.gameObject.activeSelf;
 		}
 
@@ -123,22 +120,6 @@ namespace Assets.CS.TabletopUI {
         {
             subscribedChronicler = c;
         }
-
-		public virtual void SnapToGrid()
-		{
-			if (TabletopManager.GetGridSnapSize() > 0f)
-			{
-				// Magical maths to snap cards to fractions of approx card dimensions - CP
-				float snap_x = 90.0f * TabletopManager.GetGridSnapSize();
-				float snap_y = 130.0f * TabletopManager.GetGridSnapSize();
-				float recip_x = 1.0f / snap_x;
-				float recip_y = 1.0f / snap_y;
-				Vector3 v = transform.localPosition;
-				v.x *= recip_x;	v.x = (float)Mathf.RoundToInt(v.x);	v.x *= snap_x;
-				v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
-				transform.localPosition = v;
-			}
-		}
 
         public virtual void SetTokenContainer(ITokenContainer newContainer, Context context) {
             OldTokenContainer = TokenContainer;
@@ -207,7 +188,6 @@ namespace Assets.CS.TabletopUI {
             }
 
             SoundManager.PlaySfx("CardPickup");
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, true );
 
             if (onChangeDragState != null)
                 onChangeDragState(true);
@@ -280,9 +260,6 @@ namespace Assets.CS.TabletopUI {
 
             // Last call so that when the event hits it's still available
             DraggableToken.itemBeingDragged = null;
-
-			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Drag, false );	// There is also a failsafe to catch unexpected aborts of Drag state - CP
-
 
             ShowGlow(false, false);
         }
@@ -363,7 +340,6 @@ namespace Assets.CS.TabletopUI {
             RectTransform.anchoredPosition3D = new Vector3(RectTransform.anchoredPosition3D.x, RectTransform.anchoredPosition3D.y, 0f);
             RectTransform.localRotation = Quaternion.identity;
             RectTransform.localScale = Vector3.one;
-			lastTablePos = RectTransform.anchoredPosition3D;
             IsInAir = false;
             NotifyChroniclerPlacedOnTabletop();
         }

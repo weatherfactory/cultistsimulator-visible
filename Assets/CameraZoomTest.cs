@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Assets.TabletopUi.Scripts.Infrastructure;
 
 [RequireComponent(typeof(Camera))]
 public class CameraZoomTest : MonoBehaviour {
@@ -34,31 +33,15 @@ public class CameraZoomTest : MonoBehaviour {
     }
 
     void Update () {
-        if (enablePlayerZoom)
-        {
-            if ((Input.GetAxis("Zoom") > 0f || Input.GetAxis("MouseZoom") > 0f) && !HotkeyWatcher.IsInInputField() && targetZoom > 0f)
-            {
+        if (enablePlayerZoom) { 
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
                 targetZoom -= 0.1f;
                 targetZoom = Mathf.Clamp01(targetZoom);
             }
-            else if ((Input.GetAxis("Zoom") < 0f || Input.GetAxis("MouseZoom") < 0f) && !HotkeyWatcher.IsInInputField() && targetZoom < 1f)
-            {
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && targetZoom < 1f) {
                 targetZoom += 0.1f;
                 targetZoom = Mathf.Clamp01(targetZoom);
-			}
-			else if (HotkeyWatcher.IsInInputField() == false) {
-				if ((int)Input.GetAxis("Zoom Level 1")>0)
-                    targetZoom = 0f;
-			    if ((int)Input.GetAxis("Zoom Level 2") > 0)
-                    targetZoom = 0.4f;
-			    if ((int)Input.GetAxis("Zoom Level 3") > 0)
-                    targetZoom = 1f;
-                //commented out so I can just use the axis; leaving in case we do want to make keyboard zoom more dramatic
-			//	else if (Input.GetKey(KeyCode.Q))
-			//		targetZoom -= 0.5f * Time.deltaTime;
-			//	else if (Input.GetKey(KeyCode.E))
-			//		targetZoom += 0.5f * Time.deltaTime;
-			}
+            }
         }
 
         if (targetZoom != currentZoom) {

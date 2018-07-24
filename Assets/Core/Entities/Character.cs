@@ -31,17 +31,17 @@ public class Character:IGameEntityStorage
     public List<IDeckInstance> DeckInstances { get; set; }
     private Dictionary<LegacyEventRecordId, string> _futureLegacyEventRecords;
     private Dictionary<LegacyEventRecordId, string> _pastLegacyEventRecords;
-    public Legacy ActiveLegacy { get; set; }
+
 
     private Dictionary<string, int> recipeExecutions;
     private string _endingTriggeredId = null;
 
-    public Character(Legacy activeLegacy) : this(activeLegacy,null)
+    public Character() : this(null)
     {
 
     }
 
-    public Character(Legacy activeLegacy,Character previousCharacter)
+    public Character(Character previousCharacter)
     {
         State = CharacterState.Viable;
         recipeExecutions = new Dictionary<string, int>();
@@ -61,12 +61,7 @@ public class Character:IGameEntityStorage
 
         //finally, set our starting future to be our present, ie our past.
         _futureLegacyEventRecords = new Dictionary<LegacyEventRecordId, string>(_pastLegacyEventRecords);
-
-        ActiveLegacy = activeLegacy;
-
     }
-
-    
 
     public Dictionary<string, int> GetAllExecutions()
     {
@@ -163,7 +158,5 @@ if(string.IsNullOrEmpty(value))
     {
         return new Dictionary<LegacyEventRecordId,string>(_pastLegacyEventRecords);
     }
-
-    
 }
 

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 
 namespace Assets.Core.Entities
@@ -12,7 +11,6 @@ namespace Assets.Core.Entities
     {
         private IDeckSpec _deckSpec;
         private Stack<string> _cards;
-        private List<string> _eliminatedCards;
 
         public string Id
         {
@@ -31,10 +29,8 @@ namespace Assets.Core.Entities
 
             _deckSpec = spec;
             _cards = new Stack<string>();
-            _eliminatedCards=new List<string>();
 
         }
-
 
         public void Reset()
         {
@@ -42,8 +38,7 @@ namespace Assets.Core.Entities
             var unshuffledStack = new Stack<string>();
             foreach (var eId in _deckSpec.StartingCards)
             {
-                if(!_eliminatedCards.Contains(eId))
-                 unshuffledStack.Push(eId);
+                unshuffledStack.Push(eId);
             }
 
             _cards = new Stack<string>(unshuffledStack.OrderBy(x => rnd.Next()));
@@ -90,42 +85,14 @@ namespace Assets.Core.Entities
         {
             _cards.Push(elementId);
         }
-        /// <summary>
-        /// This card is unique and has been drawn elsewhere, or belongs to the same uniqueness group as one that has been drawn elsewhere
-        /// </summary>
-        /// <param name="elementId"></param>
-        public void EliminateCardWithId(string elementId)
+
+        public void RemoveAllCardsWithId(string elementId)
         {
             var cardsList = new List<string>(_cards);
             if(cardsList.Contains(elementId))
-            {
-                RemoveCardFromDeckInstance(elementId, cardsList);
-                TryAddToEliminatedCardsList(elementId); //if the card isn't in the list, it's either (a) already been drawn or (b) isn't in the deck to begin with. If it's already been drawn, then it itself should be the sole non-eliminated card.
-            }
-        }
-        ///remove this from the undrawn cards. This won't affect default draws.
-        private void RemoveCardFromDeckInstance(string elementId, List<string> cardsList)
-        {
-            NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id, 10);
+                NoonUtility.Log("Removing " + elementId + " from " + _deckSpec.Id,10);
             cardsList.RemoveAll(c => c == elementId);
-            _cards = new Stack<string>(cardsList);
-        }
-        /// <summary>
-        /// add this to a list of permanently eliminated cards, so it doesn't appear on reshuffles.
-        /// </summary>
-        /// <param name="elementId"></param>
-        public  void TryAddToEliminatedCardsList(string elementId)
-        {
-            if(!_eliminatedCards.Contains(elementId))
-                _eliminatedCards.Add(elementId);
-        }
-
-        public void EliminateCardsInUniquenessGroup(string elementUniquenessGroup)
-        {
-            List<string> cardsToEliminate = _deckSpec.CardsInUniquenessGroup(elementUniquenessGroup);
-            if(cardsToEliminate!=null)
-                foreach(var c in cardsToEliminate)
-                    EliminateCardWithId(c);
+            _cards=new Stack<string>(cardsList);
         }
 
 
@@ -150,21 +117,11 @@ namespace Assets.Core.Entities
         public Hashtable GetSaveData()
         {
             var cardsHashtable = new Hashtable();
-       
-
             foreach (var c in GetCurrentCardsAsList())
             {
                 var indexForTable = (cardsHashtable.Count + 1).ToString();
                 cardsHashtable.Add(indexForTable, c);
             }
-
-            var alEliminatedCards=new ArrayList();
-            foreach (var e in _eliminatedCards)
-            {
-                alEliminatedCards.Add(e);
-            }
-            cardsHashtable.Add(SaveConstants.SAVE_ELIMINATEDCARDS,alEliminatedCards);
-
             return cardsHashtable;
         }
     }

@@ -81,7 +81,6 @@ namespace Assets.CS.TabletopUI {
 
         void ShowPrevPage() {
 			ShowPage(-1, AnimDirection.MoveLeft);
-			SoundManager.PlaySfx("SituationWindowTextMove");
         }
 
         void ShowFinalPage() {
@@ -91,7 +90,6 @@ namespace Assets.CS.TabletopUI {
 
         void ShowNextPage() {
 			ShowPage(1, AnimDirection.MoveRight);
-			SoundManager.PlaySfx("SituationWindowTextMove");
         }
 
 		void ShowPage(int offset, AnimDirection anim) {

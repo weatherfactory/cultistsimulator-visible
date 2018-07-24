@@ -21,7 +21,7 @@ namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
-        const string buttonDefault = "[S]tart";
+        const string buttonDefault = "Start";
         const string buttonBusy = "Running...";
 
 		[Header("Visuals")]
@@ -109,21 +109,17 @@ namespace Assets.CS.TabletopUI {
         // BASIC DISPLAY
 
         public void Show( Vector3 targetPosOverride ) {
-			if (!gameObject.activeInHierarchy)
-				SoundManager.PlaySfx("SituationWindowShow");
-
 			canvasGroupFader.Show();
             positioner.Show(canvasGroupFader.durationTurnOn, targetPosOverride); // Animates the window (position allows optional change is position)
+            SoundManager.PlaySfx("SituationWindowShow");
             results.UpdateDumpButtonText(); // ensures that we've updated the dump button accordingly
             startingSlots.ArrangeSlots(); //won't have been arranged if a card was dumped in while the window was closed
           
         }
 
 		public void Hide() {
-			if (gameObject.activeInHierarchy)
-				SoundManager.PlaySfx("SituationWindowHide");
-
 			canvasGroupFader.Hide();
+            SoundManager.PlaySfx("SituationWindowHide");
         }
 
         // Start State
@@ -288,9 +284,7 @@ namespace Assets.CS.TabletopUI {
             if (slot.GetElementStackInSlot() != null)
                 return false; // Slot is filled? Don't highlight it as interactive
             if (slot.IsBeingAnimated)
-                return false; // Slot is being animated? Don't highlight
-			if (slot.IsGreedy)
-				return false; // Slot is greedy? It can never take anything.
+                return false; // Slot is being animated? Don't hihglight
 
             return slot.GetSlotMatchForStack(stack).MatchType == SlotMatchForAspectsType.Okay;
         }
@@ -303,20 +297,8 @@ namespace Assets.CS.TabletopUI {
 
         // so the token-dump button can trigger this
         public void DumpAllResultingCardsToDesktop() {
-			var results = GetOutputStacks();
-
-			DumpToDesktop(results, new Context(Context.ActionSource.PlayerDumpAll));
-			situationController.ResetSituation();
-
-			// Only play collect all if there's actually something to collect 
-			// Only play collect all if it's not transient - cause that will retire it and play the retire sound
-			// Note: If we collect all from the window we also get the default button sound in any case.
-			if (results.Count() > 0)
-				SoundManager.PlaySfx("SituationCollectAll");
-			else if (situationController.situationToken.IsTransient)
-				SoundManager.PlaySfx("SituationTokenRetire");
-			else 
-				SoundManager.PlaySfx("UIButtonClick");
+            DumpToDesktop(GetOutputStacks(), new Context(Context.ActionSource.PlayerDumpAll));
+            situationController.ResetSituation();
         }
 
         public void DumpAllStartingCardsToDesktop() {
@@ -331,14 +313,7 @@ namespace Assets.CS.TabletopUI {
                 token = item as DraggableToken;
 
                 if (token != null)
-                {       
-                    if(token == DraggableToken.itemBeingDragged)
-                    {
-                        DraggableToken.CancelDrag();
-                    }
-
                     token.ReturnToTabletop(context);
-                }
             }
         }
 
@@ -363,10 +338,6 @@ namespace Assets.CS.TabletopUI {
 
         public IElementStacksManager GetStorageStacksManager() {
             return storage.GetElementStacksManager();
-        }
-        public IElementStack ReprovisionExistingElementStackInStorage(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
-        {
-            return storage.ReprovisionExistingElementStack(stackSpecification, stackSource, locatorid);
         }
 
         public IElementStacksManager GetResultsStacksManager() {
@@ -402,10 +373,6 @@ namespace Assets.CS.TabletopUI {
             return ongoing.GetSlotBySaveLocationInfoPath(locationInfo);
         }
 
-
-        public IList<RecipeSlot> GetStartingSlots() {
-            return startingSlots.GetAllSlots();
-        }
 
         public IList<RecipeSlot> GetOngoingSlots() {
             return ongoing.GetAllSlots();

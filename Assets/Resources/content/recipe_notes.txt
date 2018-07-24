@@ -29,6 +29,23 @@ someresource: CONVENTIONS.SOME_VALUE //effects can only be concrete resources
      linked: recipeids + chance of executing. These are tested in order: if one has fulfilled requirements, isn't exhausted, and if the chance roll is made, it'll execute.
 	 NB if an alternative recipe is triggered, the loop from that will apply instead; NB also 'additional' linked recipes are marked unimplemented until I decide if we want them.
  }
+ template for convenience:
+ {
+      id: "",
+      label: "",
+      actionId: "",
+      requirements: {
 
+      },
+      effects: {
+
+      },
+      alternativerecipes: [{id: '', chance:100}],
+      startdescription: "FNORD [This text is not available in the development build]",
+      description: "FNORD [This text is not available in the development build]",
+      warmup: CONVENTIONS.TIME_SIGNIFICANT,
+      craftable: true,
+      loop: ''
+  }
 
  */

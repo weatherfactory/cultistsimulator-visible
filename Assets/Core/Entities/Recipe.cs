@@ -136,25 +136,12 @@ public class Recipe
 
 }
 
-public class Expulsion
-{
- 
-    public AspectsDictionary Filter { get; set; }
-    public int Limit { get; set; }
-
-    public Expulsion()
-    {
-        Limit = 0;
-        Filter=new AspectsDictionary();
-    }
-}
 
 public class LinkedRecipeDetails
 {
     private readonly bool _additional;
     private readonly string _id;
     private readonly int _chance;
-    private Expulsion _expulsion;
 
     public string Id
     {
@@ -171,25 +158,12 @@ public class LinkedRecipeDetails
         get { return _additional; }
     }
 
-    public Expulsion Expulsion
-    {
-        get
-        {
-            return _expulsion;
-        }
 
-        set
-        {
-            _expulsion = value;
-        }
-    }
-
-    public LinkedRecipeDetails(string id, int chance, bool additional,Expulsion expulsion)
+    public LinkedRecipeDetails(string id, int chance, bool additional)
     {
         _additional = additional;
         _id = id;
         _chance = chance;
-        Expulsion = expulsion;
     }
 }
 

@@ -26,7 +26,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
     [SerializeField] private Button btnMinusOne;
     [SerializeField] private Button btnBeginSituation;
     [SerializeField] private Button btnHaltVerb;
-    [SerializeField] public Button btnTriggerAchievement;
+    [SerializeField] private Button btnTriggerAchievement;
     [SerializeField] private Button btnResetAchivement;
     [SerializeField] private Button btnFastForward;
     [SerializeField] private Button btnNextTrack;

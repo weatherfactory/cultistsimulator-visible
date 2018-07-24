@@ -62,19 +62,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htCharacter.ContainsKey(SaveConstants.SAVE_PROFESSION))
                 storage.Profession = htCharacter[SaveConstants.SAVE_PROFESSION].ToString();
 
-
-            var chosenLegacyForCharacterId =TryGetStringFromHashtable(htCharacter, SaveConstants.SAVE_ACTIVELEGACY);
-            Legacy chosenLegacyForCharacter;
-            if (string.IsNullOrEmpty(chosenLegacyForCharacterId))
-                chosenLegacyForCharacter =
-                    compendium.GetAllLegacies()
-                        .First(); //support active legacies for characters who preceded saved active legacies
-            else
-                chosenLegacyForCharacter = compendium.GetLegacyById(chosenLegacyForCharacterId);
-
-            storage.ActiveLegacy = chosenLegacyForCharacter;
-
-
             if (htCharacter.ContainsKey(SaveConstants.SAVE_EXECUTIONS))
             {
                 var htExecutions = htCharacter.GetHashtable(SaveConstants.SAVE_EXECUTIONS);
@@ -130,16 +117,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htDefunctCharacter = htSave.GetHashtable(SaveConstants.SAVE_DEFUNCT_CHARACTER_DETAILS);
             if (htDefunctCharacter != null)
             {
-                var chosenLegacyForDefunctCharacterId = TryGetStringFromHashtable(htDefunctCharacter, SaveConstants.SAVE_ACTIVELEGACY);
-                Legacy chosenLegacyForDefunctCharacter;
-                if (string.IsNullOrEmpty(chosenLegacyForDefunctCharacterId))
-                    chosenLegacyForDefunctCharacter =
-                        compendium.GetAllLegacies()
-                            .First(); //support active legacies for characters who preceded saved active legacies
-                else
-                    chosenLegacyForDefunctCharacter = compendium.GetLegacyById(chosenLegacyForDefunctCharacterId);
-
-                Character defunctCharacter=new Character(chosenLegacyForDefunctCharacter);
+                Character defunctCharacter=new Character();
 
                 if (htDefunctCharacter.ContainsKey(SaveConstants.SAVE_FUTURE_LEVERS))
                 {
@@ -166,59 +144,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private void ImportTabletopElementStacks(TabletopTokenContainer tabletop, Hashtable htElementStacks)
         {
 
-            var elementStackSpecifications = PopulateElementStackSpecificationsList(htElementStacks);
-
-			//
-			// BEGIN SAVE REPAIR
-			//
-			// Failsafe save repair - we know that the save can sometimes fill with duplicate cards causing massive slowdown. - CP
-			// This looks for identical dupes and removes them, so the savegame is useful again.
-			float startTime = Time.timeSinceLevelLoad;
-			int dupeCount = 0;
-			bool[] dupes = new bool[ elementStackSpecifications.Count() ];	// Alloc and init a bool per card in the list. Allows quick discards.
-			for ( int n=0; n<dupes.Length; n++)
-				dupes[n] = false;
-			for ( int i=0; i<elementStackSpecifications.Count()-1; i++ )	// Iterate from 0 to all but the last entry
-			{
-				var stackToTest = elementStackSpecifications.ElementAt(i);
-
-				// Expecting a LocationInfo of the form "100_0_hashcode" or "Work_hashcode"
-				int underscore1 = stackToTest.LocationInfo.IndexOf( '_' );					// Find first underscore
-				int underscore2 = stackToTest.LocationInfo.IndexOf( '_', underscore1+1 );	// Find second (optional) underscore
-				string locString = stackToTest.LocationInfo.Truncate( underscore2>0?underscore2:underscore1 );	// Trim so we can compare the non-hashcode bit
-
-				// Compare current card against all cards after it in the list
-				for ( int j=i+1; j<elementStackSpecifications.Count(); j++ )	
-				{
-					var stackToCompare = elementStackSpecifications.ElementAt(j);
-					
-					if (dupes[j])	
-						continue;	// Already marked this entry as a dupe - next!
-
-					if (stackToTest.ElementId.Equals( stackToCompare.ElementId ) == false)
-						continue;	// Different card type - next!
-
-					string tempLoc = stackToCompare.LocationInfo.Truncate( locString.Length );
-					if (tempLoc.Equals( locString ) == false)
-						continue;	// Different position - next!
-
-					dupes[j] = true;
-					dupeCount++;
-				}
-			}
-
-			for ( int n=dupes.Length-1; n>=0; n--)
-			{
-				if (dupes[n])
-					elementStackSpecifications.RemoveAt( n );
-			}
-			float repairTime = Time.timeSinceLevelLoad - startTime;
-			Debug.Log("Repaired " + dupeCount + " duplicates in " + repairTime + "s");
-			//
-			// END SAVE REPAIR
-			//
-
-            foreach (var ess in elementStackSpecifications)
+            var elementStackSpecificatons = PopulateElementStackSpecificationsList(htElementStacks);
+            foreach (var ess in elementStackSpecificatons)
             {
                 tabletop.GetElementStacksManager().AcceptStack(tabletop.ReprovisionExistingElementStack(ess,Source.Existing(),ess.LocationInfo),new Context(Context.ActionSource.Loading));
             }
@@ -253,18 +180,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 else
                 { 
                     IDeckInstance deckInstance =  new DeckInstance(spec);
-                    if (htEachDeck.ContainsKey(SaveConstants.SAVE_ELIMINATEDCARDS))
-                    { 
-                        ArrayList alEliminated = htEachDeck.GetArrayList(SaveConstants.SAVE_ELIMINATEDCARDS);
-                        htEachDeck.Remove(SaveConstants.SAVE_ELIMINATEDCARDS);
 
-                       foreach(var e in alEliminated)
-                           deckInstance.TryAddToEliminatedCardsList(e.ToString() );
-                    }
-
-
-                    //Now we assume that the remaining keys are contiguous integers starting at 1
-                    for (int i=1;i<=htEachDeck.Count;i++)
+                //this is pretty fragile. It assumes that the keys are contiguous integers starting at 1
+                for(int i=1;i<=htEachDeck.Count;i++)
                     deckInstance.Add(htEachDeck[i.ToString()].ToString());
 
                 storage.DeckInstances.Add(deckInstance);
@@ -392,11 +310,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if (htSituationValues.ContainsKey(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS))
             {
                 var htElements = htSituationValues.GetHashtable(SaveConstants.SAVE_SITUATIONSTOREDELEMENTS);
-                var elementStackSpecifications = PopulateElementStackSpecificationsList(htElements);
-                foreach (var ess in elementStackSpecifications)  
-                    controller.ReprovisionStoredElementStack(ess,Source.Existing());
-                    
-                controller.OngoingSlotsOrStorageUpdated();
+                var elementQuantitySpecifications = PopulateElementStackSpecificationsList(htElements);
+                foreach (var eqs in elementQuantitySpecifications)   
+                    controller.ModifyStoredElementStack(eqs.ElementId,eqs.ElementQuantity, new Context(Context.ActionSource.Loading));                    
             }
         }
 
@@ -442,25 +358,24 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var elementQuantitySpecifications = new List<ElementStackSpecification>();
             foreach (var locationInfoKey in htStacks.Keys)
             {
-                var htEachStack= htStacks.GetHashtable(locationInfoKey);
+                var eachStack= htStacks.GetHashtable(locationInfoKey);
                 
 
-                string elementId = TryGetStringFromHashtable(htEachStack, SaveConstants.SAVE_ELEMENTID);
-                int elementQuantity = GetIntFromHashtable(htEachStack, SaveConstants.SAVE_QUANTITY);
-                int lifetimeRemaining = GetIntFromHashtable(htEachStack, SaveConstants.LIFETIME_REMAINING);
-                bool markedForConsumption = htEachStack[SaveConstants.MARKED_FOR_CONSUMPTION].MakeBool();
+                string elementId = TryGetStringFromHashtable(eachStack, SaveConstants.SAVE_ELEMENTID);
+                int elementQuantity = GetIntFromHashtable(eachStack, SaveConstants.SAVE_QUANTITY);
+                int lifetimeRemaining = GetIntFromHashtable(eachStack, SaveConstants.LIFETIME_REMAINING);
 
                 Dictionary<string, int> mutations = new Dictionary<string, int>();
-                if (htEachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
+                if (eachStack.ContainsKey(SaveConstants.SAVE_MUTATIONS))
                     mutations = NoonUtility.HashtableToStringIntDictionary(
-                        htEachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
+                        eachStack.GetHashtable(SaveConstants.SAVE_MUTATIONS));
 
                 Dictionary<string, string> illuminations = new Dictionary<string, string>();
 
 
-                if (htEachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
+                if (eachStack.ContainsKey(SaveConstants.SAVE_ILLUMINATIONS))
                     illuminations = NoonUtility.HashtableToStringStringDictionary(
-                        htEachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
+                        eachStack.GetHashtable(SaveConstants.SAVE_ILLUMINATIONS));
 
 
                 elementQuantitySpecifications.Add(new ElementStackSpecification(
@@ -469,8 +384,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                     locationInfoKey.ToString(),
                     mutations,
                     illuminations,
-                    lifetimeRemaining,
-                    markedForConsumption));
+                    lifetimeRemaining));
             }
             return elementQuantitySpecifications;
         }

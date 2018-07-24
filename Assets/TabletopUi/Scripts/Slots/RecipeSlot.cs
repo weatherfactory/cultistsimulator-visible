@@ -103,7 +103,7 @@ namespace Assets.CS.TabletopUI {
             ConsumingIcon.SetActive(slotSpecification.Consumes);
         }
 
-		bool CanInteractWithDraggedObject(DraggableToken token) {
+        bool CanInteractWithDraggedObject(DraggableToken token) {
             if (lastGlowState == false || token == null) // we're not hoverable? Don't worry
                 return false;
 
@@ -120,10 +120,7 @@ namespace Assets.CS.TabletopUI {
 
         // IGlowableView implementation
 
-		public virtual void OnPointerEnter(PointerEventData eventData) {
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-				return;
-
+        public virtual void OnPointerEnter(PointerEventData eventData) {
             if (DraggableToken.itemBeingDragged == null) {
                 if (GetTokenInSlot() == null) // Only glow if the slot is empty
                     ShowHoverGlow(true);
@@ -137,10 +134,7 @@ namespace Assets.CS.TabletopUI {
             }
         }
 
-		public virtual void OnPointerExit(PointerEventData eventData) {
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-				return;
-			
+        public virtual void OnPointerExit(PointerEventData eventData) {
             if (lastGlowState && DraggableToken.itemBeingDragged != null)
                 DraggableToken.itemBeingDragged.ShowHoveringGlow(false);
 
@@ -192,10 +186,7 @@ namespace Assets.CS.TabletopUI {
             return childSlots.Count > 0;
         }
 
-		public void OnDrop(PointerEventData eventData) {
-			if (GoverningSlotSpecification.Greedy) // we're greedy? No interaction.
-				return;
-			
+        public void OnDrop(PointerEventData eventData) {
             if (IsBeingAnimated || DraggableToken.itemBeingDragged == null || !(DraggableToken.itemBeingDragged is ElementStackToken))
                 return;
 

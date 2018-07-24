@@ -22,8 +22,6 @@ namespace Assets.Core.Entities
         string Description { get; set; }
         Dictionary<string, string> DrawMessages { get; set; }
         Dictionary<string, string> DefaultDrawMessages { get; set; }
-        void RegisterUniquenessGroups(ICompendium compendium);
-        List<string> CardsInUniquenessGroup(string uniquenessGroupId);
     }
 
 
@@ -38,11 +36,9 @@ namespace Assets.Core.Entities
         string Draw();
         void Add(string elementId);
         List<string> GetCurrentCardsAsList();
-        void EliminateCardWithId(string elementId);
+        void RemoveAllCardsWithId(string elementId);
         Dictionary<string, string> GetDefaultDrawMessages();
         Dictionary<string, string> GetDrawMessages();
-        void TryAddToEliminatedCardsList(string elementId);
-        void EliminateCardsInUniquenessGroup(string elementUniquenessGroup);
     }
 
 
@@ -57,54 +53,16 @@ namespace Assets.Core.Entities
         public string Description { get; set; }
         public Dictionary<string,string> DrawMessages { get; set; }
         public Dictionary<string, string> DefaultDrawMessages { get; set; }
-        private Dictionary<string, List<string>> _uniquenessGroupsWithCards;
 
-        public DeckSpec(string id, List<string> startingCards, string defaultCardId, bool resetOnExhaustion)
+        public DeckSpec(string id,List<string> startingCards,string defaultCardId,bool resetOnExhaustion)
         {
             _id = id;
             StartingCards = startingCards;
             DefaultCardId = defaultCardId;
             ResetOnExhaustion = resetOnExhaustion;
-            DrawMessages = new Dictionary<string, string>();
-            DefaultDrawMessages = new Dictionary<string, string>();
-            _uniquenessGroupsWithCards=new Dictionary<string, List<string>>();
+            DrawMessages=new Dictionary<string, string>();
+            DefaultDrawMessages=new Dictionary<string, string>();
         }
-
-
-
-        public void RegisterUniquenessGroups(ICompendium compendium)
-        {
-            if(!StartingCards.Any())
-                throw new NotImplementedException("We're trying to register uniqueness groups for a DeckSpec before populating it with cards.");
-
-            foreach (var c in StartingCards)
-            { 
-                var e = compendium.GetElementById(c);
-                if (!string.IsNullOrEmpty(e.UniquenessGroup))
-                {
-                    if (!_uniquenessGroupsWithCards.ContainsKey(e.UniquenessGroup))
-                    {
-                        _uniquenessGroupsWithCards.Add(e.UniquenessGroup,new List<string>());
-                    }
-
-                    if(!_uniquenessGroupsWithCards[e.UniquenessGroup].Contains(c))
-                        _uniquenessGroupsWithCards[e.UniquenessGroup].Add(c);
-                }
-            }
-        }
-
-        public List<string> CardsInUniquenessGroup(string uniquenessGroupId)
-        {
-            if (_uniquenessGroupsWithCards.ContainsKey(uniquenessGroupId))
-
-                return _uniquenessGroupsWithCards[uniquenessGroupId];
-            else
-                return null;
-
-
-        
-        }
-
 
         
 

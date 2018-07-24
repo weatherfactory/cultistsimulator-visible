@@ -23,7 +23,7 @@ namespace Assets.Core
         /// </summary>
 
         /// <returns> this may be the original recipe, or it may be an alternative recipe, it may be any number of recipes possible including the original</returns>
-        IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe);
+        IList<Recipe> GetActualRecipesToExecute(Recipe recipe);
 
         RecipePrediction GetRecipePrediction(Recipe currentRecipe);
     }
@@ -150,11 +150,11 @@ namespace Assets.Core
             return rp;
         }
 
-        public IList<RecipeExecutionCommand> GetActualRecipesToExecute(Recipe recipe)
+        public IList<Recipe> GetActualRecipesToExecute(Recipe recipe)
         {
-            IList<RecipeExecutionCommand> recipeExecutionCommands = new List<RecipeExecutionCommand>() {new RecipeExecutionCommand(recipe,null) }; ;
+            IList<Recipe> actualRecipesToExecute = new List<Recipe>() { recipe }; ;
             if (recipe.AlternativeRecipes.Count == 0)
-                return recipeExecutionCommands;
+                return actualRecipesToExecute;
 
 
             foreach (var ar in recipe.AlternativeRecipes)
@@ -183,20 +183,21 @@ namespace Assets.Core
                     }
                     if (ar.Additional)
                     {
-                        recipeExecutionCommands.Add(new RecipeExecutionCommand(candidateRecipe,ar.Expulsion)); //add the additional recipe, and keep going
+                        actualRecipesToExecute.Add(candidateRecipe); //add the additional recipe, and keep going
                         NoonUtility.Log(recipe.Id + " says: Found additional recipe " + ar.Id +
                                         " to execute - adding it to executiion listand looking for more");
                     }
                     else
                     {
-                        IList<RecipeExecutionCommand>
+                        IList<Recipe>
                             recursiveRange =
-                                GetActualRecipesToExecute(candidateRecipe); //check if this recipe has any substitutes in turn, and then
+                                GetActualRecipesToExecute(
+                                    candidateRecipe); //check if this recipe has any substitutes in turn, and then
 
                         string logmessage =
                             recipe.Id + " says: reached the bottom of the execution list: returning ";
                         foreach (var r in recursiveRange)
-                            logmessage += r.Recipe.Id + "; ";
+                            logmessage += r.Id + "; ";
                         NoonUtility.Log(logmessage);
 
                         return
@@ -205,7 +206,7 @@ namespace Assets.Core
                 }
             }
 
-            return recipeExecutionCommands; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
+            return actualRecipesToExecute; //we either found no matching candidates and are returning the original, or we added one or more additional recipes to the list
         }
 
     }

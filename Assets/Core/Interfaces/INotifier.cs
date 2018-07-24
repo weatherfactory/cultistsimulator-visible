@@ -11,13 +11,11 @@ namespace Assets.Core.Interfaces
     public interface INotifier
     {
         void PushTextToLog(string text);
-        void HideDetails();
         void ShowNotificationWindow(string title, string description);
         void ShowCardElementDetails(Element element, ElementStackToken token);
         void ShowElementDetails(Element element, bool fromDetailsWindow = false);
         void ShowSlotDetails(SlotSpecification slot, bool highlightGreedy, bool highlightConsumes);
         void ShowDeckDetails(IDeckSpec deckId, int deckQuantity);
-        void ShowSaveError(bool on);
         void ShowImageBurn(string spriteName, DraggableToken token, float duration, float scale, TabletopImageBurner.ImageLayoutConfig alignment);
     }
 }

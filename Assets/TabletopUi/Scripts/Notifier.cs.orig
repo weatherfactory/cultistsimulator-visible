@@ -41,7 +41,7 @@ namespace Assets.CS.TabletopUI
                 currentElementDetails.Show();
             }
 
-            SoundManager.PlaySfx("InfoWindowShow");
+            SoundManager.PlaySfx("SituationWindowShow");
             currentElementDetails.SetElementCard(element);
         }
 

@@ -12,8 +12,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Button normalSpeedButton;
         [SerializeField] private Button fastForwardButton;
-		[SerializeField] private ScrollRectMouseMover scrollRectMover;
-
+        
         private bool isLocked = false;
         private bool lastPauseState;
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);
@@ -36,9 +35,6 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             else {
                 SetPausedState(lastPauseState);
             }
-
-			// We lock, that means we also don't want the player moving the table.
-			scrollRectMover.enabled = !isLocked;
         }
 
         public bool GetPausedState()
@@ -46,11 +42,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			return _heart.IsPaused;
 		}
 
-		public void SetPausedState(bool pause, bool withSFX = true)
+        public void SetPausedState(bool pause)
         {
-			if (_heart.IsPaused == pause)	// No SFX if no change of state - CP
-				withSFX = false;
-
             if (pause || isLocked)
             {
                 _heart.StopBeating();
@@ -58,15 +51,9 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
                 pauseButton.GetComponent<Image>().color = activeSpeedColor;
                 normalSpeedButton.GetComponent<Image>().color = inactiveSpeedColor;
                 fastForwardButton.GetComponent<Image>().color = inactiveSpeedColor;
-
-				if (withSFX)
-					SoundManager.PlaySfx("UIPauseStart");
             }
             else
-			{
-				if (withSFX)
-					SoundManager.PlaySfx("UIPauseEnd");
-				
+            {
                 _heart.ResumeBeating();
                 pauseButton.SetPausedText(false);
                 pauseButton.GetComponent<Image>().color = inactiveSpeedColor;

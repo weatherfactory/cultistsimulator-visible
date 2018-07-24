@@ -45,15 +45,12 @@ public class SoundManager : AudioManager {
     // Initalization
 
     void Awake() {
-		// Instances in scenes were going to are being killed
         if (Instance != null) {
-			DestroyImmediate(this.gameObject);
+            Destroy(gameObject);
             return;
         }
 
-		// make sure we set our instance and don't ever destroy it
-		instance = this;
-		DontDestroyOnLoad(this.gameObject);
+        instance = this;
 
         foreach (SoundCombo sound in sounds) {
             if (soundsMapped.ContainsKey(sound.name)) 
@@ -61,7 +58,6 @@ public class SoundManager : AudioManager {
 
             soundsMapped[sound.name] = sound;
         }
-
     }
 
     // Delivery of Audio Clips & Sources
@@ -117,13 +113,10 @@ public class SoundManager : AudioManager {
         if (Instance == null)
             return -1;
 
-		if (string.IsNullOrEmpty(name))
-			return -1;
-
         if (Instance.soundsThisFrame.Contains(name))
             return -1;
 
-		NoonUtility.Log("Playing sound: " + name + " add " + Time.time, 10);
+       // NoonUtility.Log("Playing sound: " + name,1);
 
         return Instance.PlaySound(name, -1);
     }
@@ -172,7 +165,7 @@ public class SoundManager : AudioManager {
         AudioSource source = GetAudioSource(id);
 
         if (source == null) {
-            //Debug.LogWarning("StopAudio: AudioSource with id " + id + " not found");
+            Debug.LogWarning("StopAudio: AudioSource with id " + id + " not found");
             return;
         }
 
@@ -206,13 +199,4 @@ public class SoundManager : AudioManager {
         if (Instance == this)
             instance = null;
     }
-
-	#if UNITY_EDITOR
-	public void SortSounds() {
-		var soundList = new List<SoundCombo>(sounds);
-		soundList.Sort((x, y) => x.name.CompareTo(y.name));
-
-		sounds = soundList.ToArray();
-	}
-	#endif
 }

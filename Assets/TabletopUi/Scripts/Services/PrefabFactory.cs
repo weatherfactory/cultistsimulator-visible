@@ -33,21 +33,11 @@ namespace Assets.TabletopUi.Scripts.Services
         public static T CreateToken<T>(Transform destination, string saveLocationInfo = null) where T : DraggableToken
         {
             var token = PrefabFactory.CreateLocally<T>(destination);
-            try
-            {
-                
-                var pf = Instance();
+            var pf = Instance();
 
-                token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
-                if (saveLocationInfo != null)
-                    token.SaveLocationInfo = saveLocationInfo;
-
-                
-            }
-            catch
-            {
-                Debug.Log("problem: " + saveLocationInfo);
-            }
+            token.SetTokenContainer(pf.TabletopManager._tabletop, new Context(Context.ActionSource.Unknown));
+            if (saveLocationInfo != null)
+                token.SaveLocationInfo = saveLocationInfo;
 
             return token;
         }

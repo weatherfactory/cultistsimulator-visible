@@ -1,0 +1,139 @@
+{"elements":
+    [
+		 {
+        id: "aladim",
+            label: "Dr Ibn al-Adim",
+            aspects:
+            {tutoraramaic:1,patron:1},
+            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He has offered you a commission.",
+unique:true,
+			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
+					slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}],
+        },
+		 {
+        id: "aladimready",
+            label: "Dr Ibn al-Adim",
+            aspects:
+            {tutoraramaic:1,patron:1},
+            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He could use your assistance.",
+			unique:true,
+			xtriggers: {commissiongiven: aladim,killmortal:rumour,derangemortal:rumour}
+        },
+					 {
+        id: "bechet",
+            label: "Mme Bechet",
+            aspects:
+            {mortal:1,patron:1,tutorgreek:1},
+            description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She has offered you a commission.",
+unique:true,
+			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}]
+        },
+		 {
+        id: "bechetready",
+            label: "Mme Bechet",
+            aspects:
+            {mortal:1,patron:1,tutorgreek:1},
+            description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. She could use your assistance.",
+unique:true,
+			xtriggers: {commissiongiven: bechet,killmortal:corpse,derangemortal:lunatic}
+        },		 {
+        id: "jannings",
+            label: "Count Jannings",
+            aspects:
+            {mortal:1,patron:1,tutorlatin:1},
+            description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He has offered you a commission",
+unique:true,
+			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}]
+        },
+		 {
+        id: "janningsready",
+            label: "Count Jannings",
+            aspects:
+            {mortal:1,patron:1,tutorlatin:1},
+            description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. He could use your assistance.",
+unique:true,
+			xtriggers: {commissiongiven: jannings,killmortal:corpse,derangemortal:lunatic}
+        },
+						 {
+        id: "poppyready",
+            label: "Poppy Lascelles",
+            aspects:
+            {mortal:1,patron:1},
+            description: "An amiable woman of property. She'd like to talk to you.",
+unique:true,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+				 {
+        id: "poppy",
+            label: "Poppy Lascelles",
+            aspects:
+            {mortal:1,patron:1},
+            description: "An amiable woman of property.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+						 {
+        id: "poppycommissionready",
+            label: "Poppy Lascelles",
+            aspects:
+            {mortal:1,patron:1},
+            description: "An amiable woman of property. She'd like your help with something.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic,commissiongiven:poppycommission},
+icon:"poppyready"
+        },
+						 {
+        id: "poppycommission",
+            label: "Poppy Lascelles",
+            aspects:
+            {mortal:1,patron:1},
+            description: "An amiable woman of property. She has offered you a commission.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
+				slots: [{id:"Commission",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",actionId:"talk",required:{article:1}}],
+icon:"poppy"
+        },
+		
+				 {
+        id: "aladimaway",
+            label: "Dr Ibn al-Adim",
+            description: "Dr Ibn al-Adim, called the Aleppine, has an interest in overlooked history. He's incommunicado just now, but will be back soon.",
+lifetime:120,
+decayTo: "aladimready",
+icon:"aladim"
+        },
+					 {
+        id: "bechetaway",
+            label: "Mme Bechet",
+            description: "Mme Olympe Bechet edits the Kerisham Review, which publishes material too ghastly or thrilling for other literary magazines. Just now, she's busy preparing for publication, but she'll be available again soon.",
+lifetime:120,
+decayTo: "bechetready",
+icon:"bechet"
+        },
+				 {
+        id: "janningsaway",
+            label: "Count Jannings",
+			lifetime:120,
+			description: "Count Gottlob Jannings represents a Continental confraternity of physicians and duellists. Just now, he's out of the country, but he'll be back soon.",
+decayTo: "janningsready",
+icon:"jannings"
+        },
+		
+						 {
+        id: "poppyaway",
+            label: "Poppy Lascelles",
+            description: "An amiable woman of property. She's not currently receiving visitors.",
+lifetime:120,
+decayTo: "poppycommissionready",
+icon:"poppy"
+        },
+		
+		
+]
+};

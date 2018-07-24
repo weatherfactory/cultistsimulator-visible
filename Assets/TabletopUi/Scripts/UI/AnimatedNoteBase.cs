@@ -8,8 +8,6 @@ public abstract class AnimatedNoteBase : MonoBehaviour {
     protected enum AnimType { None, MoveRight, MoveLeft }
 
     [SerializeField] Animation anim;
-	[SerializeField] string soundIn;
-	[SerializeField] string soundOut;
 
     private bool isBusy;
 
@@ -31,7 +29,6 @@ public abstract class AnimatedNoteBase : MonoBehaviour {
 
         clipName = GetOutClip(animOut);
         if (clipName != null) { 
-			SoundManager.PlaySfx(soundOut);
             anim.Play(clipName);
 
             while (anim.isPlaying)
@@ -43,7 +40,6 @@ public abstract class AnimatedNoteBase : MonoBehaviour {
 
         clipName = GetInClip(animIn);
         if (clipName != null) { 
-			SoundManager.PlaySfx(soundIn);
             anim.Play(clipName);
 
             while (anim.isPlaying)

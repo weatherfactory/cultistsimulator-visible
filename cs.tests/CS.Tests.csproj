@@ -71,9 +71,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Assembly-CSharp.csproj">
-      <Project>{B7CB79B0-D2B1-F4B8-B154-ED66CC9027FB}</Project>
-      <Name>Assembly-CSharp</Name>
+    <ProjectReference Include="..\csunity.csproj">
+      <Project>{d787ece3-ec66-c960-d8cc-f8fba21763a1}</Project>
+      <Name>csunity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cultist Simulator.csproj">
+      <Project>{29bbf29a-ef03-c211-8570-f3eae320ec5e}</Project>
+      <Name>Cultist Simulator</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

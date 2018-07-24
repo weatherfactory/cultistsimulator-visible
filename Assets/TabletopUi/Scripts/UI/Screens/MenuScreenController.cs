@@ -10,7 +10,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
-using System.IO;
 using System.Linq;
 using Assets.Core.Entities;
 using Assets.CS.TabletopUI;
@@ -32,10 +31,8 @@ public class MenuScreenController : MonoBehaviour {
     [Header("Overlays")]
     public CanvasGroupFader modal;
     public CanvasGroupFader purgeConfirm;
-	public CanvasGroupFader credits;
-	public CanvasGroupFader settings;
+    public CanvasGroupFader credits;
     public CanvasGroupFader versionHints;
-	public OptionsPanel optionsPanel;
 
     [Header("Fade Visuals")]
     public Image fadeOverlay;
@@ -45,9 +42,6 @@ public class MenuScreenController : MonoBehaviour {
     public GameObject purgeSaveMessage;
     public TextMeshProUGUI VersionNumber;
     public Animation versionAnim;
-    public GameObject LinuxHints;
-
-    public MenuSubtitle Subtitle;
 
     bool canTakeInput;
     int sceneToLoad;
@@ -61,25 +55,14 @@ public class MenuScreenController : MonoBehaviour {
         fadeOverlay.gameObject.SetActive(true);
         fadeOverlay.canvasRenderer.SetAlpha(1f);
 
-
-
-
-        InitialiseServices();
-		canTakeInput = false; // The UpdateAndShowMenu reenables the input
+        InitManagers();
+        canTakeInput = true;
 
         // We delay the showing to get a proper fade in
         Invoke("UpdateAndShowMenu", 0.1f); 
-
     }
 
-    private static void SetEditionStatus()
-    {
-        string perpetualEditionDumbfileLocation = Application.streamingAssetsPath + "/edition/semper.txt";
-        if (File.Exists(perpetualEditionDumbfileLocation))
-            NoonUtility.PerpetualEdition = true;
-    }
-
-    void InitialiseServices() {
+    void InitManagers() {
         var registry = new Registry();
 
         var compendium = new Compendium();
@@ -92,12 +75,9 @@ public class MenuScreenController : MonoBehaviour {
         registry.Register<MetaInfo>(metaInfo);
         CrossSceneState.SetMetaInfo(metaInfo);
 
-		optionsPanel.InitPreferences(null,false);
-
         saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
         currentVersion = metaInfo.VersionNumber;
-
     }
 
     void UpdateAndShowMenu() {
@@ -110,35 +90,12 @@ public class MenuScreenController : MonoBehaviour {
         continueGameButton.interactable = isLegalSaveGame;
         purgeButton.gameObject.SetActive(hasSavegame);
 
-
-        //update subtitle text
-        SetEditionStatus();
-        if (NoonUtility.PerpetualEdition)
-        {
-            Subtitle.SetText("PERPETUAL EDITION");
-        }
-        else
-            Subtitle.SetText("BRING THE DAWN");
-
-
         // Show the purge message if needed
         purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
-        //warn about possible Linux issues
-#if UNITY_STANDALONE_LINUX
-        LinuxHints.gameObject.SetActive(true);
-#else
-        LinuxHints.gameObject.SetActive(false);
-#endif
-
-
-
 
         UpdateVersionNumber(!isLegalSaveGame);
         HideAllOverlays();
         FadeIn();
-
-		// now we can take input
-		canTakeInput = true;
     }
 
     void UpdateVersionNumber(bool hasNews) {
@@ -158,7 +115,7 @@ public class MenuScreenController : MonoBehaviour {
         versionHints.gameObject.SetActive(false);
     }
 
-#region -- View Changes ------------------------
+    #region -- View Changes ------------------------
 
     void FadeIn() {
         fadeOverlay.gameObject.SetActive(true);
@@ -173,7 +130,7 @@ public class MenuScreenController : MonoBehaviour {
     }
 
     void ShowOverlay(CanvasGroupFader overlay) {
-		if (currentOverlay != null)
+        if (currentOverlay != null)
             return;
 
         currentOverlay = overlay;
@@ -191,9 +148,9 @@ public class MenuScreenController : MonoBehaviour {
         currentOverlay = null;
     }
 
-#endregion
+    #endregion
 
-#region -- User Actions via Scene Buttons ------------------------
+    #region -- User Actions via Scene Buttons ------------------------
 
     public void StartGame() {
         if (!canTakeInput)
@@ -235,13 +192,9 @@ public class MenuScreenController : MonoBehaviour {
         LoadScene(SceneNumber.NewGameScene);
     }
 
-    void LoadScene(int sceneNr) {		
+    void LoadScene(int sceneNr) {
         canTakeInput = false;
         sceneToLoad = sceneNr;
-
-		if (sceneToLoad == SceneNumber.GameScene)
-			SoundManager.PlaySfx("UIStartGame");
-
         FadeOut();
         Invoke("LoadSceneDelayed", fadeDuration);
     }
@@ -272,14 +225,7 @@ public class MenuScreenController : MonoBehaviour {
             return;
 
         ShowOverlay(credits);
-	}
-
-	public void ShowSettings() {
-		if (!canTakeInput)
-			return;
-
-		ShowOverlay(settings);
-	}
+    }
 
     public void ShowVersionHints() {
         if (!canTakeInput)
@@ -303,6 +249,6 @@ public class MenuScreenController : MonoBehaviour {
         Application.Quit();
     }
 
-#endregion
+    #endregion
 
 }

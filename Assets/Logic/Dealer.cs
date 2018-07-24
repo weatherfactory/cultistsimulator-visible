@@ -48,21 +48,12 @@ namespace Assets.Logic
 
 
 
-        public void IndicateUniqueCardManifested(string elementId)
+        public void RemoveFromAllDecks(string elementId)
         {
             foreach (var d in _storage.DeckInstances)
-            { 
-                d.EliminateCardWithId(elementId);
-            }
+                d.RemoveAllCardsWithId(elementId);
+                
 
-        }
-
-        public void RemoveFromAllDecksIfInUniquenessGroup(string elementUniquenessGroup)
-        {
-            foreach (var d in _storage.DeckInstances)
-            {
-                d.EliminateCardsInUniquenessGroup(elementUniquenessGroup);
-            }
         }
     }
 }

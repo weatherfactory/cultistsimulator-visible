@@ -16,7 +16,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         
         [Header("Visuals")]
         [SerializeField] private Canvas tableCanvas;
-		[SerializeField] private CameraZoomTest cameraZoom;
+        [SerializeField] private CanvasZoomTest tableZoom;
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] private Canvas menuCanvas;
         [SerializeField] private Image fadeOverlay;
@@ -47,16 +47,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             rayCaster = menuCanvas.GetComponent<GraphicRaycaster>();
             rayCaster.enabled = false; // Disable clicks on Screen
 
-			cameraZoom.enablePlayerZoom = false;
+            tableZoom.enablePlayerZoom = false; // Disable player zoom control
             _hotkeyWatcher.enabled = false; // Disable shortcuts
 
             // pause game
-            _speedController.SetPausedState(true, false);
+            _speedController.SetPausedState(true);
 
             // Abort all interactions
             DraggableToken.draggingEnabled = false; // this SHOULD disable the dragging
             tableScroll.StopMovement(); // make sure the scroll rect stops
-			tableScroll.movementType = ScrollRect.MovementType.Unrestricted; // this allows us to leave the boundaries on the anim in case our token is at the table edges
             _tabletopManager.CloseAllSituationWindowsExcept(null); // no window has an id of NULL, so all close
 
             // TODO: play death effect / music
@@ -70,7 +69,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             Debug.Log("Target Zoom Pos " + targetPos);
 
             // Start zoom in on offending token 
-			cameraZoom.StartFixedZoom(0f, zoomDuration);
+            tableZoom.StartFixedZoom(0f, zoomDuration);
 
             // Start hiding all tokens
             RetireAllStacks("CardBurn");

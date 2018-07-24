@@ -27,8 +27,6 @@ namespace Assets.CS.TabletopUI {
                 return;
             }
 
-			SoundManager.PlaySfx("FXBurnImage");
-
             var image = GetUnusedImage();
             image.sprite = sprite;
             image.SetNativeSize();

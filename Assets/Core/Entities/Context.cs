@@ -13,8 +13,7 @@ public class Context {
         AnimEnd,
         Retire,
         Debug,
-        ChangeTo,
-		DoubleClickSend
+        ChangeTo
     }
 
     public ActionSource actionSource;

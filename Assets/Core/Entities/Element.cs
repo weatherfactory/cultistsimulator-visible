@@ -59,8 +59,6 @@ public class Element
     /// </summary>
     public bool Unique { get; set; }
 
-    public string UniquenessGroup { get; set; }
-
     /// <summary>
     /// all aspects the element has, *including* the aspect itself as an element
     /// </summary>

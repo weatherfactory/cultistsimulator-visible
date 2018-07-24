@@ -13,7 +13,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
     {
         public Ending CurrentEnding;
         public List<Legacy> AvailableLegacies = new List<Legacy>();
-        public Character DefunctCharacter;
+        public Character DefunctCharacter = new Character();
 
     }
 }

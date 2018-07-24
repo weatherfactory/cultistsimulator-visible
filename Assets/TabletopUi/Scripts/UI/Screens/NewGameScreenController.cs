@@ -25,15 +25,13 @@ namespace Assets.CS.TabletopUI {
         public TextMeshProUGUI title;
         public TextMeshProUGUI description;
         public TextMeshProUGUI availableBecause;
+        public ElementStackSimple[] rewardTokens;
 
         [Header("Buttons")]
         public Button startGameButton;
 
-		[Header("Fade Visuals")]
-		public Image fadeOverlay;
-		public float fadeDuration = 0.25f;
 
-		bool canInteract;
+
 
         void Start() {
             var registry = new Registry();
@@ -44,9 +42,6 @@ namespace Assets.CS.TabletopUI {
 
             InitLegacyButtons();
             canvasFader.SetAlpha(0f);
-
-			FadeIn();
-			canInteract = true;
         }
 
         #if DEBUG
@@ -55,20 +50,9 @@ namespace Assets.CS.TabletopUI {
             InitLegacyButtons();
         }
         #endif
-
-		void FadeIn() {
-			fadeOverlay.gameObject.SetActive(true);
-			fadeOverlay.canvasRenderer.SetAlpha(1f);
-			fadeOverlay.CrossFadeAlpha(0, fadeDuration, true);
-		}
-
-		void FadeOut() {
-			fadeOverlay.gameObject.SetActive(true);
-			fadeOverlay.canvasRenderer.SetAlpha(0f);
-			fadeOverlay.CrossFadeAlpha(1, fadeDuration, true);
-		}
-
    
+
+
         void InitLegacyButtons() {
             for (int i = 0; i < CrossSceneState.GetAvailableLegacies().Count; i++)
             {
@@ -76,51 +60,35 @@ namespace Assets.CS.TabletopUI {
                 legacyArtwork[i].sprite = legacySprite;
             }
 
+
             // No button is selected, so start game button starts deactivated
             startGameButton.interactable = false;
         }
         
         // Exposed for in-scene buttons
 
+
         public void ReturnToMenu() {
-			if (!canInteract)
-				return;
-			
             //save on exit, so the player will return here, not begin a new game
-			FadeOut();
-			canInteract = false;
-			Invoke("ReturnToMenuDelayed", fadeDuration);
+
+            var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
+            saveGameManager.SaveInactiveGame(null);
+            SceneManager.LoadScene(SceneNumber.MenuScene);
         }
 
-		void ReturnToMenuDelayed() {
-			var saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
-			saveGameManager.SaveInactiveGame(null);
-			SceneManager.LoadScene(SceneNumber.MenuScene);
-		}
+        public void StartGame() {
+            
+            CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
+            CrossSceneState.ClearEnding();
 
-		public void StartGame() {
-			if (!canInteract)
-				return;
-			
-			FadeOut();
-			canInteract = false;
-			SoundManager.PlaySfx("UIStartgame");
-			Invoke("StartGameDelayed", fadeDuration);
+            SceneManager.LoadScene(SceneNumber.GameScene);
         }
 
-		void StartGameDelayed() {
-			CrossSceneState.SetChosenLegacy(CrossSceneState.GetAvailableLegacies()[selectedLegacy]);
-			CrossSceneState.ClearEnding();
-			SceneManager.LoadScene(SceneNumber.GameScene);
-		}
 
-		public void SelectLegacy(int legacy) {
-			if (!canInteract)
-				return;
-			
+        public void SelectLegacy(int legacy) {
             if (legacy < 0)
                 return;
-			
+
             if (selectedLegacy == legacy)
                 return;
 
@@ -151,6 +119,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void UpdateSelectedLegacyInfo() {
+           
             Legacy legacySelected = CrossSceneState.GetAvailableLegacies()[selectedLegacy];
 
             title.text = legacySelected.Label;
@@ -169,6 +138,7 @@ namespace Assets.CS.TabletopUI {
             	Destroy(effectStack.gameObject);
 
             //and add effects for this legacy
+
             foreach (var e in legacySelected.Effects)
             {
                 var effectStack = Object.Instantiate(elementStackSimplePrefab, elementsHolder, false);

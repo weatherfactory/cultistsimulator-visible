@@ -11,7 +11,6 @@ using System.Collections;
 namespace Assets.CS.TabletopUI {
     public class AspectDetailsWindow : BaseDetailsWindow {
         
-		[SerializeField] RectTransform tokenDetailsHeight;
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);
         [SerializeField] Vector2 posWithTokenDetails = new Vector2(0f, -220f);
 
@@ -19,16 +18,16 @@ namespace Assets.CS.TabletopUI {
 
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
-		bool _noTokenDetails;
+        bool isPositionedAbove;
 
-        public void ShowAspectDetails(Element element, bool noTokenDetails) {
+        public void ShowAspectDetails(Element element, bool postionAbove) {
             // Check if we'd show the same, if so: do nothing
-            if (this.element == element && gameObject.activeSelf && _noTokenDetails == noTokenDetails)
+            if (this.element == element && gameObject.activeSelf && postionAbove == isPositionedAbove)
                 return;
 
             Debug.Log("Position" + (transform as RectTransform).anchoredPosition);
 
-            this._noTokenDetails = noTokenDetails;
+            this.isPositionedAbove = postionAbove;
             this.element = element;
             Show();
         }
@@ -41,12 +40,7 @@ namespace Assets.CS.TabletopUI {
             if (element != null)
                 SetAspect(element);
 
-			if (_noTokenDetails)
-				(transform as RectTransform).anchoredPosition = posNoTokenDetails;
-			else 
-				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
-
-			Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
+            (transform as RectTransform).anchoredPosition = isPositionedAbove ? posNoTokenDetails : posWithTokenDetails;
         }
 
         void SetAspect(Element element) {

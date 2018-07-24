@@ -57,7 +57,6 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // (or loaded and added to an arbitrary position)
         token.transform.SetParent(transform, true);
         token.transform.localRotation = Quaternion.identity;
-		token.SnapToGrid();
         token.SetTokenContainer(this, context);
         token.DisplayAtTableLevel(); // This puts it on the table, so now the choreographer will pick it up
     }
@@ -96,17 +95,7 @@ public class TabletopTokenContainer : AbstractTokenContainer {
     }
 
     public override string GetSaveLocationInfoForDraggable(DraggableToken draggable) {
-        try
-        {
-
         return (draggable.RectTransform.localPosition.x.ToString() + SaveConstants.SEPARATOR + draggable.RectTransform.localPosition.y).ToString();
-        }
-        catch (Exception)
-        {
-            //in case the token is misbehaving somehow and TRAPPED BETWEEN WORLS
-            return 0.ToString() + SaveConstants.SEPARATOR + 0.ToString();
-        }
-
     }
 
     #endregion

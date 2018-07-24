@@ -27,8 +27,7 @@ public class CanvasZoomTest : UIBehaviour {
     private Canvas canvas;
 
     protected override void Start() {
-        //disabled init and update. I believe this is now defunct. - AK
-     //   Init();
+        Init();
     }
 
     protected override void OnRectTransformDimensionsChange() {
@@ -52,27 +51,27 @@ public class CanvasZoomTest : UIBehaviour {
         SetScale(currentZoom);
     }
 
-   // void Update () {
-        //if (enablePlayerZoom) { 
-        //    if (Input.GetAxis("Zoom") > 0f && targetZoom > 0f) {
-        //        targetZoom -= 0.1f;
-        //        targetZoom = Mathf.Clamp01(targetZoom);
-        //    }
-        //    else if (Input.GetAxis("Zoom") < 0f && targetZoom < 1f) {
-        //        targetZoom += 0.1f;
-        //        targetZoom = Mathf.Clamp01(targetZoom);
-        //    }
-        //}
+    void Update () {
+        if (enablePlayerZoom) { 
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f && targetZoom > 0f) {
+                targetZoom -= 0.1f;
+                targetZoom = Mathf.Clamp01(targetZoom);
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f && targetZoom < 1f) {
+                targetZoom += 0.1f;
+                targetZoom = Mathf.Clamp01(targetZoom);
+            }
+        }
 
-        //if (targetZoom != currentZoom) {
-        //    if (Mathf.Approximately(targetZoom, currentZoom))
-        //        currentZoom = targetZoom;
-        //    else
-        //        currentZoom += (targetZoom - currentZoom) * Time.deltaTime * zoomSpeed;
+        if (targetZoom != currentZoom) {
+            if (Mathf.Approximately(targetZoom, currentZoom))
+                currentZoom = targetZoom;
+            else
+                currentZoom += (targetZoom - currentZoom) * Time.deltaTime * zoomSpeed;
 
-        //    SetScale(currentZoom);
-        //}
-  //  }
+            SetScale(currentZoom);
+        }
+    }
 
     public void SetTargetZoom(float value) {
         targetZoom = Mathf.Clamp01(value);
@@ -89,8 +88,7 @@ public class CanvasZoomTest : UIBehaviour {
     // We use that to evaluate the curve to get another value between 0 and 1. This distorts the zoom so that zooming out is slower
     // Then we use that value to get a scale factor between our min and max zoomScales and put that in the canvas
     void SetScale(float zoom) {
-		// Disabled to eliminate
-		//canvas.scaleFactor = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
+        canvas.scaleFactor = Mathf.Lerp(zoomScaleIn, zoomScaleOut, zoomCurve.Evaluate(zoom));
     }
 
 }

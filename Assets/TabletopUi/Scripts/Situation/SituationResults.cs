@@ -21,8 +21,8 @@ public class SituationResults : AbstractTokenContainer {
     [SerializeField] SituationResultsPositioning cardPos;
     [SerializeField] TextMeshProUGUI dumpResultsButtonText;
 
-    string buttonClearResultsDefault = "[C]ollect All";
-    string buttonClearResultsNone = "Accept [C]";
+    const string buttonClearResultsDefault = "Collect All";
+    const string buttonClearResultsNone = "Accept";
 
     private SituationController controller;
 
@@ -36,8 +36,6 @@ public class SituationResults : AbstractTokenContainer {
     public void Initialise(SituationController sc) {
         controller = sc;
         _elementStacksManager = new ElementStacksManager(this, "situationresults");
-        buttonClearResultsDefault = "[C]ollect All";
-        buttonClearResultsNone = "Accept [C]";
     }
 
     public void DoReset() {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Core;
-using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.TabletopUi.Scripts.Interfaces;
 using NSubstitute;
@@ -65,7 +64,28 @@ namespace Assets.Editor.Tests
             Assert.AreEqual(SituationState.Ongoing, s.State);
         }
 
+        [Test]
+        public void SituationMovesFromOngoingToRequiringExecution_WhenContinuingAtTimeBelowZero()
+        {
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
+            Assert.AreEqual(SituationState.Ongoing,s.State);
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
+            s.Continue(rc, 1);
+            Assert.AreEqual(SituationState.RequiringExecution, s.State);
+        }
 
+        [Test]
+        public void Situation_RequiresExecution_When_ContinuingAtTimeBelowZero()
+        {
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0,SituationState.Ongoing,r1, subscriber);
+
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r1 });
+
+            s.Continue(rc, 1);
+
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec => ec.Recipe == r1));
+
+        }
 
 
         [Test]
@@ -120,11 +140,25 @@ namespace Assets.Editor.Tests
 
 
         [Test]
+        public void Situation_ExecutesAlternativesSpecifiedByRecipeConductor()
+        {
+            Core.Entities.SituationClock s = new Core.Entities.SituationClock(0,SituationState.Ongoing, r1, subscriber);
+
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> {r2, r3});
+
+            s.Continue(rc, 1);
+
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec=>ec.Recipe==r2));
+            subscriber.Received().SituationExecutingRecipe(Arg.Is<SituationEffectCommand>(ec => ec.Recipe == r3));
+
+        }
+
+        [Test]
         public void Situation_SpecifiesAdditional_ShouldRunAsNewSituation_IfVerbIsDifferent()
         {
             Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
             
-            rc.GetActualRecipesToExecute(r1).Returns(new List<RecipeExecutionCommand> { new RecipeExecutionCommand(r2,null), new RecipeExecutionCommand(r3,null) });
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r2, r3 });
             r3.ActionId = r2.ActionId + " a difference";
             s.Continue(rc, 1);
 
@@ -137,7 +171,7 @@ namespace Assets.Editor.Tests
         {
             Core.Entities.SituationClock s = new Core.Entities.SituationClock(0, SituationState.Ongoing, r1, subscriber);
             
-            rc.GetActualRecipesToExecute(r1).Returns(new List<RecipeExecutionCommand> { new RecipeExecutionCommand(r2,null), new RecipeExecutionCommand(r3,null) });
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> { r2, r3 });
             r3.ActionId = r2.ActionId;
             s.Continue(rc, 1);
 
@@ -154,7 +188,7 @@ namespace Assets.Editor.Tests
 
             Recipe loopedRecipe = TestObjectGenerator.GenerateRecipe(99);
 
-            rc.GetActualRecipesToExecute(r1).Returns(new List<RecipeExecutionCommand> { new RecipeExecutionCommand(r2, null), new RecipeExecutionCommand(r3, null) });
+            rc.GetActualRecipesToExecute(r1).Returns(new List<Recipe> {r2, r3});
             rc.GetLinkedRecipe(r2).Returns(loopedRecipe);
 
             s.Continue(rc, 1); //executes
