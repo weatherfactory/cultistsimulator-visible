@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace Noon
 {
-
     public class NoonConstants
     {
         public const string KCHARACTERSTATE = "state";
@@ -41,13 +40,12 @@ namespace Noon
         public const string KASPECTS = "aspects";
         public const string KXTRIGGERS = "xtriggers";
         public const string KALTERNATIVERECIPES = "alternativerecipes";
-        public const string KPERSISTINGREDIENTSWITH = "persistIngredientsWith";
-        public const string KRETRIEVESCONTENTSWITH = "retrievesContentsWith";
         public const string KSLOTS="slots";
         public const string KREQUIRED="required";
         public const string KFORBIDDEN = "forbidden";
         public const string KGREEDY = "greedy";
         public const string KCONSUMES = "consumes";
+        public const string KNOANIM = "noanim";
         public const string KBURNIMAGE = "burnimage";
         public const string KDECKSPEC = "spec";
         public const string KDECKSPEC_DRAWMESSAGES = "drawmessages";
@@ -55,6 +53,9 @@ namespace Noon
         public const string KDECKDEFAULTCARD = "defaultcard";
         public static string KRESETONEXHAUSTION = "resetonexhaustion";
         public static string KICON="icon";
+        public static string KEXPULSION="expulsion";
+        public static string KLIMIT = "limit";
+        public static string KFILTER = "filter";
 
         public const string KINDUCES = "induces";
 
@@ -70,6 +71,7 @@ namespace Noon
         public const string KISASPECT = "isAspect";
         public const string KNOARTNEEDED = "noartneeded";
         public const string KUNIQUE = "unique";
+        public const string KUNIQUENESSGROUP = "uniquenessgroup";
 
 
         public const string TOKEN_PREVIOUS_CHARACTER_NAME = "#PREVIOUSCHARACTERNAME#";
@@ -96,13 +98,10 @@ namespace Noon
         
 
         public static int CurrentVerbosity =1;
-        //public static uint CultistSimulatorSteamAppId = 718670;
-        //public static string CultistSimulatorGOGProductId = "1456702644";
-        //public static string CultistSimulatorGOGClientId = "50757209545787544";
-        //public static string CultistSimulatorGOGClientSecret = "72e691b01ad6060c8716bb4155b305c68048585aae07d1227eecc5a6c959161c";
 
         public static VersionNumber VersionNumber = new VersionNumber(Application.version);
-        public static bool AchievementsActive = false;
+        public static bool AchievementsActive = true;
+        public static bool PerpetualEdition = false;
 
         public static void Log(string message,int verbosityNeeded=0)
         {
@@ -122,12 +121,17 @@ namespace Noon
             return wholePath;
         }
 
-        public static string GetBackupGameSaveLocation()
+        public static string GetBackupGameSaveLocation( int index )
         {
-            string wholePath = Application.persistentDataPath + "/backup_save.txt";
+		    string wholePath = Application.persistentDataPath + "/backup_save" + index + ".txt";
             return wholePath;
         }
 
+        public static string GetErrorSaveLocation( DateTime timestamp, string postfix )
+        {
+		    string wholePath = Application.persistentDataPath + "/error_save_" + timestamp.ToString("yyyyMMdd_HHmmss") + "_" + postfix + ".txt";
+            return wholePath;
+        }
 
         public static Dictionary<string, int> HashtableToStringIntDictionary(Hashtable table)
         {

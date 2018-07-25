@@ -1,0 +1,403 @@
+{
+"recipes": [
+
+
+	   {
+        id: "ascensionpower_upgradetoobsession",
+        label: "The Burning Key",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:6},
+        effects: {ascensionpowerb:-1,ascensionpowerc:1},
+        startdescription: "This rite is the Key that will allow the Forge of Days to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Forge are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I am aglow with new needs.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+		
+	   {
+	   comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionm",
+        label: "The Sighing Key",
+        actionId: "work",
+        requirements: {ascensionsensationbm:1,
+		waystag_after:1,
+		grail:6},
+        effects: {ascensionsensationbm:-1,ascensionsensationc:1},
+        startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+		   {
+		comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionf",
+        label: "The Sighing Key",
+        actionId: "work",
+        requirements: {ascensionsensationbf:1,
+		waystag_after:1,
+		grail:6},
+        effects: {ascensionsensationbf:-1,ascensionsensationc:1},
+        startdescription: "This rite is the Key that will allow the Red Grail to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Grail are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. I thrill with new appetites.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+			   {
+        id: "ascensionsensation_switchpolarity_mtof",
+        label: "Preferences",
+        actionId: "dream",
+        requirements: {ascensionsensationbm:1},
+        effects: {ascensionsensationbm:-1,ascensionsensationbf:1},
+        startdescription: "I've gone as far as I can in dream. I must perform the <b>Work</b>. But perhaps, when I consider my desires, it's not usually men that come to mind...",
+        description: "Tastes alter, desires change, thoughts bend to other forms.",
+        warmup: 3,
+        craftable: true
+    },
+			   {
+        id: "ascensionsensation_switchpolarity_ftom",
+        label: "Preferences",
+        actionId: "dream",
+        requirements: {ascensionsensationbf:1},
+        effects: {ascensionsensationbf:-1,ascensionsensationbm:1},
+        startdescription: "I've gone as far as I can in dream. I must perform the <b>Work</b>. But perhaps, when I consider my desires, it's not usually women that come to mind...",
+        description: "Tastes alter, desires change, thoughts bend to other forms.",
+        warmup: 3,
+        craftable: true
+    },
+
+	
+	   {
+        id: "ascensionenlightenment_upgradetoobsession",
+        label: "The Blinding Key",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:6},
+        effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
+        startdescription: "This rite is the Key that will allow the Watchman's gaze to enter me. I will be changed forever.",
+        description: "The Rite is complete. The Marks of the Watchman are upon me. The First Mark is what I have said, and the second is what I have done. If I inspect my body, I'll find the Third. My hungers have been refined, now.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+	   {
+        id: "majorforgevictory",
+        label: "THE DAWN IS COME",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:50},
+        effects: {},
+        startdescription: "[This text is available when advanced legacies arrive.]",
+        description: "Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorforgevictory",
+        label: "The Conflagration of the Heart",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:36},
+        effects: {},
+        startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.",
+        description: "I am becoming a name of fire. Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorforgevictory"
+    },	
+		   {
+        id: "majorgrailvictory",
+        label: "THE FEAST IS NIGH",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:50},
+        effects: {},
+        startdescription: "[This text is available when advanced legacies arrive.]",
+        description: "The Feast is beginning. Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorgrailvictory",
+        label: "The Feast of the True Birth",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:36},
+        effects: {},
+        startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.",
+        description: "Here I go...",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorgrailvictory"
+    },
+		   {
+        id: "majorlanternvictory",
+        label: "THE LANTERN",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:50},
+        effects: {},
+        startdescription: "[This text is available when advanced legacies arrive.]",
+        description: "I am approaching the Glory. Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorlanternvictory",
+        label: "The Incursus",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:36},
+        effects: {},
+        startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that.",
+        description: "Here I go...",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorlanternvictory"
+    },
+	
+		{id:"ambition",
+		requirements: {seasonambitions:1},
+		label:"Exotic Cravings?",
+		actionId: "craving",
+		slots: [{id:"Obsessions",description: "Deeper urges",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3}, greedy:true }],
+		startdescription: "What hungers drive me?",
+		description: "",
+		effects: {},
+		warmup: 10,
+		linked: [	
+		{id:"ascensioncravingpower",chance:100},
+		{id:"ascensioncravingsensation",chance:100},
+		{id:"ascensioncravingenlightenment",chance:100},
+		{id:"ascensionnotyet",chance:100}]
+		},
+		
+		{id:"ascensionnotyet",
+		label:"Mortal Frustrations",
+		actionId: "craving",
+		requirements: {enlightenmentmarks:-1,powermarks:-1,sensationmarks:-1},
+		slots: [{id:"Temptations",description: "The fire needs feeding",required: {desire:1}, greedy:true }],
+		startdescription: "What hungers drive me?",
+		effects: {restlessness:1},
+		description: "As yet, I have only the needs and desires of any other mortal. But what stirs in me?",
+		alternativerecipes: [
+		{id:"ascensionhintpower2",chance:100},
+		{id:"ascensionhintenlightenment2",chance:100},
+{id:"ascensionhintsensation2m",chance:100},
+		{id:"ascensionhintsensation2f",chance:100},
+		
+		{id:"ascensionhintpower1",chance:100},
+		{id:"ascensionhintenlightenment1",chance:100},
+		{id:"ascensionhintsensation1",chance:100},
+		{id:"legacydetectiveplotitem_tempt",chance:100}
+		],
+		warmup:10
+		},
+		
+		
+				{id:"ascensionhintpower2",
+		label:"The Forge's Roar",
+		actionId:"craving",
+		requirements:{ascensionpowerb:1},
+		startdescription:"I am never quite warm enough, now.",
+		description: "I have dreamed of the Forge, and I long for the heat of her flames. It is almost time to perform the Work and begin the changes - but I must have enough Forge-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment2",
+		label:"The Watchman's Light",
+		actionId:"craving",
+		requirements:{ascensionenlightenmentb:1},
+		startdescription:"Even in waking hours, I have begun to see new colours.",
+		description: "My curiosity is becoming a physical need. My eyes will be thresholds. It is almost time to perform the Work and begin the changes - but I must have enough Lantern-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation2m",
+		label:"The Grail's Touch",
+		actionId:"craving",
+		requirements:{ascensionsensationbm:1},
+		startdescription:"My desires are changing.",
+		description: "The Grail's wonderful tides move in me. It is almost time to perform the Work and begin the changes - but I must have enough Grail-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+						{id:"ascensionhintsensation2f",
+		label:"The Grail's Touch",
+		actionId:"craving",
+		requirements:{ascensionsensationbf:1},
+		startdescription:"My desires are changing.",
+		description: "The Grail has touched me with her wonderful fingers. It is almost time to perform the Work and begin the changes - but I must have enough Grail-aspect. <b>Exploration</b> might find more.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		{id:"ascensionhintpower1",
+		label:"The Forge's Glow",
+		actionId:"craving",
+		requirements:{ascensionpowera:1},
+		startdescription:"Hunger burns in my heart - hunger for the power the invisible arts might bring.",
+		description: "The Forge of Days waits in my dreams. If I learn the Forge's lore, and I dream of this temptation, I can advance my purpose. The need gnaws at me.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment1",
+		label:"The Watchman's Footsteps",
+		actionId:"craving",
+		requirements:{ascensionenlightenmenta:1},
+		startdescription:"Hunger glows in my brain - hunger for the knowledge the invisible arts might bring.",
+		description: "The Watchman, who is the Door-in-the-Eye, waits in my dreams. If I learn the Lantern-lore, and I dream of this temptation, I can advance my purpose. The need gnaws at me.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation1",
+		label:"The Grail's Whispers",
+		actionId:"craving",
+		requirements:{ascensionsensationa:1},
+		startdescription:"Hungers roam my body - hungers for the pleasures that the invisible arts might bring.",
+		description: "The red cup, the cup of drowning and devouring, waits in my dreams. If I learn the Grail-lore, and I dream of this temptation, I can advance my purpose. The need gnaws at me.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+
+		{id:"ascensioncravingpower",
+		label:"The Shaping Heat",
+		actionId: "craving",
+		requirements: {powermarks:1},
+		slots: [{id:"Fuels",description: "The fire needs feeding",required: {funds:1}, greedy:true }],
+		startdescription: "I require ever hotter fires. Their fuel now is rare and costly. If I cannot afford them, the cold will overtake me.",
+		linked: [{id:"ascensionsuccesscravingpower_descend",chance:100},
+		{id:"ascensioncravingpower_ascend",chance:100}],
+		warmup:30
+		},
+		
+		{
+		id:"ascensionsuccesscravingpower_descend",
+		label:"The Ashes of Change",		
+		actionId: "craving",
+		requirements: {funds:-1},
+		slots: [{id:"Pain",description: "My need gnaws at me", required: {health:1,vitality:1}, greedy:true}],		
+		startdescription: "I am shivering. Without the fire, my flesh will thin and weaken.",
+		description: "My strength is less. My blood is colder. I think that even some of my scars are healing. I diminish.",
+		aspects: {descend:1,damagehealth:1},
+		effects:{vitality:-1},
+		warmup:30
+		},
+		
+				{
+		id:"ascensioncravingpower_ascend",
+		label:"Another Mark",
+		actionId: "craving",
+		startdescription:"",
+		description: "The flames yearn for me as I for them. Their touch is much more than pain. I have another Mark.",
+		effects: {vitality:2,funds:-1},
+		aspects: {ascend:1}
+		},
+		
+
+		
+		{id:"ascensioncravingsensation",
+		label:"The Red Need",
+		actionId: "craving",
+		requirements: {sensationmarks:1},
+				slots: [{id:"Sustenance",description: "The recently dead, or the living.",required: {corpse:1, lunatic:-1, prisoner:1}, greedy:true }],
+				startdescription: "A thirst for blood? If only it were so simple. I will drain them far more deeply.",
+		linked: [
+		{id:"ascensionsuccesscravingsensation_descend",chance:100},
+		{id:"ascensioncravingsensation_ascend",chance:100}
+		],
+		warmup:30
+		},
+
+		
+		{
+		id:"ascensionsuccesscravingsensation_descend",
+		label:"The Desert Inside",		
+		actionId: "craving",
+		requirements: {corpse:-1,lunatic:-1,prisoner:-1},
+		slots: [{id:"Pain",description: "My need gnaws at me", required: {passion:1,glimmering:1}, greedy:true}],		
+		startdescription: "Without the life of others, my own life will feed on itself.",
+		description: "My fluids thin; my flesh dessicates; my changes uncoil; my passions dim. I am becoming less than I want.",
+		aspects: {descend:1,fatiguing:1},
+		effects:{glimmering:-1},
+		warmup:30
+		},
+		
+		
+				{
+		id:"ascensioncravingsensation_ascend",
+		label:"Another Mark",
+		actionId: "craving",
+		effects: {glimmering:2,corpse:-1,lunatic:-1,prisoner:-1},
+		startdescription:"",
+			description: "When I am done, the satisfaction is deep as the moon in the sea. Another Mark buds in me.",
+		aspects: {ascend:1}
+		},
+		
+		
+		
+				{id:"ascensioncravingenlightenment",
+		label:"The Curiosities of Light",
+		actionId: "craving",
+		requirements: {enlightenmentmarks:1},
+		slots: [{id:"Conversation",description: "The last words of a living mind.",required: {prisoner:1}, greedy:true }],
+		startdescription: "Time alone in a quiet room with a living mind. That's all I need.",
+		linked: [,
+		{id:"ascensionsuccesscravingenlightenment_descend",chance:100},
+		{id:"ascensioncravingenlightenment_ascend",chance:100}],
+		warmup:30
+		},
+
+		
+		{
+		id:"ascensionsuccesscravingenlightenment_descend",
+		label:"The Desert Inside",		
+		actionId: "craving",
+		requirements: {prisoner:-1},
+		slots: [{id:"Pain",description: "My need gnaws at me", required: {reason:1,erudition:1}, greedy:true}],		
+		startdescription: "If I cannot consume the thoughts of a living mind, my need will turn in upon itself.",
+		description: "The Light of the Mansus dims in me. I am less than I was. I need conversation. I must have those particular conversations.",
+		aspects: {descend:1,fatiguing:1},
+		effects:{erudition:-1},
+		warmup:30
+		},
+		
+				{
+		id:"ascensioncravingenlightenment_ascend",
+		label:"Another Mark",
+		actionId: "craving",
+		effects: {erudition:2,prisoner:-1},
+		startdescription:"",
+		description: "I have drunk the light of their mind. It thrills and fills me. The Marks brighten in me.",
+		aspects: {ascend:1}
+		},
+	
+		
+	
+	
+]
+}

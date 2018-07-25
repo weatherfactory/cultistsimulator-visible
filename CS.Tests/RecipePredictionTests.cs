@@ -70,7 +70,7 @@ namespace Assets.Editor.Tests
             AspectsDictionary aspects = new AspectsDictionary {{"e", 1}};
             primaryRecipe.Requirements.Add("e",2);
 
-            var resultRecipe=compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(), false);
+            var resultRecipe=compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id,resultRecipe.Id);
         }
         [Test]
@@ -79,7 +79,7 @@ namespace Assets.Editor.Tests
             AspectsDictionary aspects = new AspectsDictionary { { "e", 1 } };
             primaryRecipe.Requirements.Add("e", -1); //-1 means 'should have none of this aspect.'
 
-            var resultRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(), false);
+            var resultRecipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, ACTIONID, new Character(null), false);
             Assert.AreEqual(secondaryRecipe.Id, resultRecipe.Id);
         }
     }

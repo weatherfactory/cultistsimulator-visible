@@ -70,7 +70,6 @@ namespace Assets.Core.Entities {
             currentPrimaryRecipe = primaryRecipe;
             TimeRemaining = primaryRecipe.Warmup;
             State = global::SituationState.FreshlyStarted;
-            SoundManager.PlaySfx("SituationBegin");
         }
 
 
@@ -150,15 +149,15 @@ namespace Assets.Core.Entities {
         private void RequireExecution(IRecipeConductor rc) {
             State = SituationState.RequiringExecution;
 
-            IList<Recipe> recipesToExecute = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
+            IList<RecipeExecutionCommand> recipeExecutionCommands = rc.GetActualRecipesToExecute(currentPrimaryRecipe);
 
             //actually replace the current recipe with the first on the list: any others will be additionals,
             //but we want to loop from this one.
-            if (recipesToExecute.First().Id != currentPrimaryRecipe.Id)
-                currentPrimaryRecipe = recipesToExecute.First();
+            if (recipeExecutionCommands.First().Recipe.Id != currentPrimaryRecipe.Id)
+                currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
-            foreach (var r in recipesToExecute) {
-                ISituationEffectCommand ec = new SituationEffectCommand(r, r.ActionId != currentPrimaryRecipe.ActionId);
+            foreach (var r in recipeExecutionCommands) {
+                ISituationEffectCommand ec = new SituationEffectCommand(r.Recipe, r.Recipe.ActionId != currentPrimaryRecipe.ActionId);
                 subscriber.SituationExecutingRecipe(ec);
             }
         }
@@ -176,10 +175,10 @@ namespace Assets.Core.Entities {
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones
                 {
-                    if(currentPrimaryRecipe.SignalImportantLoop)
-                        SoundManager.PlaySfx("TimePassing");
+                    if (currentPrimaryRecipe.SignalImportantLoop)
+                        SoundManager.PlaySfx("SituationLoopImportant");
                     else
-                    SoundManager.PlaySfx("SituationLoop");
+                    	SoundManager.PlaySfx("SituationLoop");
 
                 }
                 Beginning(currentPrimaryRecipe);

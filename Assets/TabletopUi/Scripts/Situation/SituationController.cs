@@ -28,7 +28,9 @@ namespace Assets.TabletopUi {
         private readonly Character currentCharacter;
 
         private bool greedyAnimIsActive;
-        private EndingFlavour _currentEndingFlavourToSignal=EndingFlavour.None;
+        private EndingFlavour _currentEndingFlavourToSignal=EndingFlavour.None; //encapsulating; want to be able to catch calls to thie slightly sloppy bit of state
+
+        
 
         public bool IsOpen { get; set; }
 		public Vector3 RestoreWindowPosition { get; set; }	// For saving window positions - CP
@@ -42,6 +44,12 @@ namespace Assets.TabletopUi {
 
         public bool IsOngoing {
             get { return SituationClock.State == SituationState.Ongoing; }
+        }
+
+        public EndingFlavour CurrentEndingFlavourToSignal
+        {
+            get { return _currentEndingFlavourToSignal; }
+            set { _currentEndingFlavourToSignal = value; }
         }
 
         public SlotSpecification GetPrimarySlotSpecificationForVerb()
@@ -61,6 +69,9 @@ namespace Assets.TabletopUi {
 
             situationToken = t;
             situationToken.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
+
+			if (command.SourceToken != null)
+				SoundManager.PlaySfx("SituationTokenCreate");
 
             situationWindow = w;
             situationWindow.Initialise(command.GetBasicOrCreatedVerb(), this, heart);
@@ -97,14 +108,18 @@ namespace Assets.TabletopUi {
             situationWindow.SetOngoing(command.Recipe);
 
             situationToken.DisplayMiniSlot(command.Recipe.SlotSpecifications);
-            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
-            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
+            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
 
             //this is a little ugly here; but it makes the intent clear. The best way to deal with it is probably to pass the whole Command down to the situationwindow for processing.
             if (command.OverrideTitle != null)
                 situationWindow.Title = command.OverrideTitle;
 
-            _currentEndingFlavourToSignal = command.Recipe.SignalEndingFlavour;
+            UpdateSituationDisplayForPossiblePredictedRecipe();
+
+            if (command.Recipe!=null && command.Recipe.BurnImage != null)
+                BurnImageUnderToken(command.Recipe.BurnImage);
+
         }
 
         void InitialiseCompletedSituation(SituationCreationCommand command) {
@@ -120,10 +135,18 @@ namespace Assets.TabletopUi {
             if (command.CompletionCount >= 0)
                 situationToken.SetCompletionCount(command.CompletionCount);
         }
+        // Called from importer
+        public void ModifyStoredElementStack(string elementId, int quantity, Context context)
+        {
+            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
+            situationWindow.DisplayStoredElements();
+        }
 
         // Called from importer
-        public void ModifyStoredElementStack(string elementId, int quantity, Context context) {
-            situationWindow.GetStorageStacksManager().ModifyElementQuantity(elementId, quantity, Source.Existing(), context);
+        public void ReprovisionStoredElementStack(ElementStackSpecification stackSpecification, Source stackSource, string locatorid = null)
+        {
+            var stack=situationWindow.ReprovisionExistingElementStackInStorage(stackSpecification, stackSource, locatorid);
+            situationWindow.GetStorageStacksManager().AcceptStack(stack,new Context(Context.ActionSource.Loading));
             situationWindow.DisplayStoredElements();
         }
 
@@ -131,7 +154,6 @@ namespace Assets.TabletopUi {
             situationToken.Retire();
             situationWindow.Retire();
             Registry.Retrieve<SituationsCatalogue>().DeregisterSituation(this);
-            SoundManager.PlaySfx("VerbDisappear");
         }
 
         #endregion
@@ -216,10 +238,10 @@ namespace Assets.TabletopUi {
             situationWindow.SetOngoing(withRecipe);
             StoreStacks(situationWindow.GetStartingStacks());
 
-            UpdateSituationDisplayForDescription();
+            UpdateSituationDisplayForPossiblePredictedRecipe();
 
             situationWindow.DisplayAspects(GetAspectsAvailableToSituation(false));
-            PossiblySignalImpendingDoom(withRecipe.SignalEndingFlavour);
+            
         }
 
         private void PossiblySignalImpendingDoom(EndingFlavour endingFlavour)
@@ -245,9 +267,9 @@ namespace Assets.TabletopUi {
         }
 
         public void SituationOngoing() {
-            var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
-            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
-            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, _currentEndingFlavourToSignal);
+            //var currentRecipe = compendium.GetRecipeById(SituationClock.RecipeId);
+            situationToken.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
+            situationWindow.DisplayTimeRemaining(SituationClock.Warmup, SituationClock.TimeRemaining, CurrentEndingFlavourToSignal);
         }
 
         /// <summary>
@@ -268,6 +290,8 @@ namespace Assets.TabletopUi {
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
                 var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
                 tabletopManager.BeginNewSituation(scc);
+                
+
                 return;
             }
 
@@ -520,10 +544,9 @@ namespace Assets.TabletopUi {
             //no recipe, no hint, no aspects. Just set back to unstarted
             else
                 situationWindow.SetUnstarted();
-
         }
 
-        public void OngoingSlotsUpdated() {
+        public void OngoingSlotsOrStorageUpdated() {
             //we don't display the elements themselves, just their aspects.
             //But we *do* take the elements themselves into consideration for determining recipe execution
             var aspectsToDisplayInBottomBar = GetAspectsAvailableToSituation(false);
@@ -534,11 +557,11 @@ namespace Assets.TabletopUi {
 
             if (rp != null)
             {
-                _currentEndingFlavourToSignal = rp.SignalEndingFlavour;
-            if ( rp.BurnImage != null)
-                    BurnImageUnderToken(rp.BurnImage);
-            PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
-            situationWindow.UpdateTextForPrediction(rp);
+                CurrentEndingFlavourToSignal = rp.SignalEndingFlavour;
+                if ( rp.BurnImage != null)
+                BurnImageUnderToken(rp.BurnImage);
+                PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
+                situationWindow.UpdateTextForPrediction(rp);
             }
 
             situationToken.DisplayStackInMiniSlot(situationWindow.GetOngoingStacks());
@@ -552,12 +575,13 @@ namespace Assets.TabletopUi {
             return SituationClock.GetPrediction(rc);
         }
 
-        public void UpdateSituationDisplayForDescription() {
+        public void UpdateSituationDisplayForPossiblePredictedRecipe() {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
-
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
+            CurrentEndingFlavourToSignal = nextRecipePrediction.SignalEndingFlavour;
+            PossiblySignalImpendingDoom(nextRecipePrediction.SignalEndingFlavour);
         }
 
         public void SetOutput(List<IElementStack> stacksForOutput) {
@@ -572,12 +596,10 @@ namespace Assets.TabletopUi {
             situationWindow.ShowDestinationsForStack(stack, show);
         }
 
+        //also called from hotkey
         public void DumpAllResults() {
             if (SituationClock.State == SituationState.Complete)
-            {
-                SoundManager.PlaySfx("CollectAll");
                 situationWindow.DumpAllResultingCardsToDesktop();
-            }
         }
 
         /// <summary>
@@ -595,7 +617,11 @@ namespace Assets.TabletopUi {
         #region -- External Situation Change Methods --------------------
         // letting other things change the situation
 
-        public void AttemptActivateRecipe() {
+        public void AttemptActivateRecipe()
+        {
+            if (SituationClock.State != SituationState.Unstarted)
+                return;
+
             var aspects = situationWindow.GetAspectsFromAllSlottedElements();
             var recipe = compendium.GetFirstRecipeForAspectsWithVerb(aspects, situationToken.EntityId, currentCharacter, false);
 
@@ -605,7 +631,10 @@ namespace Assets.TabletopUi {
 
             //kick off the situation. We want to do this first, so that modifying the stacks next won't cause the window to react
             //as if we're removing items from an unstarted situation
-            SituationClock.Start(recipe);
+			SituationClock.Start(recipe);
+
+			// Play the SFX here (not in the clock) so it is only played when we manually start
+			SoundManager.PlaySfx("SituationBegin");
 
             //called here in case starting slots trigger consumption
             situationWindow.SetSlotConsumptions();
@@ -630,10 +659,17 @@ namespace Assets.TabletopUi {
         public void NotifyGreedySlotAnim(TokenAnimationToSlot slotAnim) {
             greedyAnimIsActive = true;
             slotAnim.onElementSlotAnimDone += HandleOnGreedySlotAnimDone;
+			
+			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, true );
+
+			// Hack to try to repro bug #1253 - CP
+			//var tabletop = Registry.Retrieve<TabletopManager>();
+			//tabletop.ForceAutosave();
         }
 
         void HandleOnGreedySlotAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair) {
             greedyAnimIsActive = false;
+			TabletopManager.RequestNonSaveableState( TabletopManager.NonSaveableType.Greedy, false );
         }
 
         // Update Visuals
@@ -667,7 +703,7 @@ namespace Assets.TabletopUi {
 
             SituationClock =new SituationClock(SituationClock.TimeRemaining,SituationClock.State,newRecipe,this);
 
-            UpdateSituationDisplayForDescription();
+            UpdateSituationDisplayForPossiblePredictedRecipe();
         }
 
         #endregion

@@ -52,6 +52,9 @@ namespace Assets.CS.TabletopUI {
 		private float decayAlpha = 0.0f;
 		private Color cachedDecayBackgroundColor;
 
+		// Interaction handling - CP
+		private bool singleClickPending = false;
+
         public float LifetimeRemaining { get; set; }
         private bool isFront = true;
         public Source StackSource { get; set; }
@@ -62,6 +65,9 @@ namespace Assets.CS.TabletopUI {
         private ElementStackToken originStack = null; // if it was pulled from a stack, save that stack!
         private Dictionary<string,int> _currentMutations; //not strictly an aspects dictionary; it can contain negatives
         private IlluminateLibrarian _illuminateLibrarian;
+
+        //set true when the Chronicler notices it's been placed on the desktop. This ensures we don't keep spamming achievements / Lever requests. It isn't persisted in saves! which is probably fine.
+        public bool PlacementAlreadyChronicled=false;
 
         public override string EntityId {
             get { return _element == null ? null : _element.Id; }
@@ -242,7 +248,9 @@ namespace Assets.CS.TabletopUI {
             IGameEntityStorage character = Registry.Retrieve<Character>();
             var dealer = new Dealer(character);
             if(_element.Unique)
-                dealer.RemoveFromAllDecks(_element.Id);
+                dealer.IndicateUniqueCardManifested(_element.Id);
+            if(!String.IsNullOrEmpty(_element.UniquenessGroup))
+                dealer.RemoveFromAllDecksIfInUniquenessGroup(_element.UniquenessGroup);
 
 
             try {
@@ -447,14 +455,39 @@ namespace Assets.CS.TabletopUI {
 
         #region -- Interaction ------------------------------------------------------------------------------------
 
-        public override void OnPointerClick(PointerEventData eventData) {
-            if (isFront) {
-                notifier.ShowCardElementDetails(this._element, this);
-            }
-            else {
-                FlipToFaceUp(false);
+		IEnumerator DelayedShowCardDetails()
+		{
+			yield return new WaitForSeconds(.5f);
+			if (singleClickPending)
+			{
+				notifier.ShowCardElementDetails(this._element, this);
+				singleClickPending = false;
+			}
+		}
 
-<<<<<<< HEAD
+		private List<TabletopUi.TokenAndSlot> FindValidSlot( IList<RecipeSlot> slots, TabletopUi.SituationController situation )
+		{
+			List<TabletopUi.TokenAndSlot> results = new List<TabletopUi.TokenAndSlot>();
+
+			foreach (RecipeSlot slot in slots)
+			{
+				if (!slot.IsGreedy &&
+					slot.GetTokenInSlot() == null &&
+					slot.GetSlotMatchForStack(this).MatchType == SlotMatchForAspectsType.Okay)
+				{
+					// Create token/slot pair
+					var tokenSlotPair = new TabletopUi.TokenAndSlot()
+					{
+						Token = situation.situationToken as SituationToken,
+						RecipeSlot = slot as RecipeSlot
+					};
+
+					results.Add( tokenSlotPair );
+				}
+			}
+			return results;
+		}
+
 		private void SendStackToNearestValidSlot()
 		{
 			// Compile list of valid slots
@@ -516,16 +549,40 @@ namespace Assets.CS.TabletopUI {
 				}
 			}			
 		}
-=======
-                if (onTurnFaceUp != null)
-                    onTurnFaceUp(this);
-            }
->>>>>>> parent of 0f3d3280... Merge branch 'master' of https://github.com/alexiskennedy/csunity
 
-            // this moves the clicked sibling on top of any other nearby cards.
-            // NOTE: We shouldn't do this if we're in a RecipeSlot.
-            if (TokenContainer.GetType() != typeof(RecipeSlot))
-                transform.SetAsLastSibling(); 
+        public override void OnPointerClick(PointerEventData eventData)
+		{
+			if (eventData.clickCount > 1)
+			{
+				// Double-click, so abort any pending single-clicks
+				singleClickPending = false;
+				notifier.HideDetails();
+				SendStackToNearestValidSlot();
+			}
+			else
+			{
+				// Single-click BUT might be first half of a double-click
+				// Most of these functions are OK to fire instantly - just the ShowCardDetails we want to wait and confirm it's not a double
+				singleClickPending = true;
+
+				if (isFront)
+				{
+					//StartCoroutine("DelayedShowCardDetails");	// Trigger after waiting to make sure it's not a double-click
+					notifier.ShowCardElementDetails(this._element, this);
+				}
+				else
+				{
+					FlipToFaceUp(false);
+
+					if (onTurnFaceUp != null)
+						onTurnFaceUp(this);
+				}
+
+				// this moves the clicked sibling on top of any other nearby cards.
+				// NOTE: We shouldn't do this if we're in a RecipeSlot.
+				if (TokenContainer.GetType() != typeof(RecipeSlot))
+					transform.SetAsLastSibling();
+			}
         }
 
         public override void OnDrop(PointerEventData eventData) {
@@ -606,10 +663,14 @@ namespace Assets.CS.TabletopUI {
             IsInAir = true; // This makes sure we don't consider it when checking for overlap
             ShowCardShadow(true); // Ensure we always have a shadow when dragging
 
-            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards 
-            if (stackBadge.IsHovering() == false)
+            // A bit hacky, but it works: DID NOT start dragging from badge? Split cards
+			// Now also allowing both shift keys to drag entire stack - CP
+            if (stackBadge.IsHovering() == false &&
+				Input.GetKey(KeyCode.LeftShift) == false &&
+				Input.GetKey(KeyCode.RightShift) == false)
+			{
                 SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.PlayerDrag));
-
+			}
             base.StartDrag(eventData); // To ensure all events fire at the end
         }
 
@@ -633,6 +694,11 @@ namespace Assets.CS.TabletopUI {
                 return;
             }
 
+			// We can't interact? Then dump us on the tabletop
+			DraggableToken.SetReturn(false, "Tried to drop on non-compatible token, return to tabletop");
+			ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+
+			/*
             bool moveAsideFor = false;
             tokenDroppedOn.TokenContainer.TryMoveAsideFor(this, tokenDroppedOn, out moveAsideFor);
 
@@ -640,6 +706,7 @@ namespace Assets.CS.TabletopUI {
                 DraggableToken.SetReturn(false, "was moved aside for");
             else
                 DraggableToken.SetReturn(true);
+            */
         }
 
      
@@ -647,6 +714,12 @@ namespace Assets.CS.TabletopUI {
         public void Decay(float interval) {
             if (!Decays)
 			    return;
+
+			var stackAnim = this.gameObject.GetComponent<TokenAnimationToSlot>();
+			if (stackAnim)
+			{
+				return;	// Do not decay while being dragged into greedy slot (#1335) - CP
+			}
 
             if(!isFront)
                 FlipToFaceUp(true); //never leave a decaying card face down.
@@ -696,22 +769,29 @@ namespace Assets.CS.TabletopUI {
 				decayAlpha = Mathf.MoveTowards( decayAlpha, 0.0f, cosmetic_dt );
 			if (LifetimeRemaining <= 0.0f)
 				decayAlpha = 0.0f;
-			decayView.gameObject.SetActive( decayAlpha > 0.0f );
+			if (decayView && decayView.gameObject)
+			{
+				decayView.gameObject.SetActive( decayAlpha > 0.0f );
+			}
 
 			// Set the text and background alpha so it fades on and off smoothly
-			Color col = decayCountText.color;
-			col.a = decayAlpha;
-			decayCountText.color = col;
-			col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
-			col.a *= decayAlpha;
-			decayBackgroundImage.color = col;		
+			if (decayCountText && decayBackgroundImage)
+			{
+				Color col = decayCountText.color;
+				col.a = decayAlpha;
+				decayCountText.color = col;
+				col = cachedDecayBackgroundColor;	// Caching the color so that we can multiply with the non-1 alpha - CP
+				col.a *= decayAlpha;
+				decayBackgroundImage.color = col;
+			}
 		}
 
         // Card Decay Timer
         public void ShowCardDecayTimer(bool showTimer) {
+            
 			if (Decays)
 				decayVisible = showTimer;
-			
+			if(decayView!=null)
 			decayView.gameObject.SetActive( showTimer );
         }
 
@@ -722,7 +802,18 @@ namespace Assets.CS.TabletopUI {
 
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
-            artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
+            //these hardcoded ids are a launch hack. Resaturating elements should instead have a 'resaturate' property
+            //anyway they appear as cards slowly gaining, not losing, colour. Thank you the community!
+            if(_element.Id== "fatigue" || _element.Id == "passionexhausted" || _element.Id == "disillusionment" || _element.Id == "concentration" || _element.Id == "locationcabaretclosed")
+            {
+                float reversePercentage = 1f - percentage;
+                artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
+            }
+            else
+            {
+                artwork.color = new Color(1f - percentage, 1f - percentage, 1f - percentage, 1f);
+            }
+            
         }
 
         public void ShowCardShadow(bool show) {
@@ -831,9 +922,16 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        public bool CanAnimate() {
+        public bool CanAnimate()
+        {
+            if (gameObject == null)
+                return false;
+
             if (gameObject.activeInHierarchy == false)
                 return false; // can not animate if deactivated
+
+            if (_element == null)
+                return false;
 
             return _element.AnimFrames > 0;
         }

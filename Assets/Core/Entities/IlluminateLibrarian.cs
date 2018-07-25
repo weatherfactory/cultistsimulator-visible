@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Assets.Core.Entities
 {
+    /// <summary>
+    /// Illuminations are text annotations added to stacks to allow for unique alerts and messages.
+    /// </summary>
     public class IlluminateLibrarian
     {
         private Dictionary<string, string> _currentIlluminations;
