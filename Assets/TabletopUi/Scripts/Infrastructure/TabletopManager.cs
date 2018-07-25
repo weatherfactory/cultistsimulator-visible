@@ -148,8 +148,10 @@ namespace Assets.CS.TabletopUI {
 
       
 
-        void Start() {
-           
+        void Start()
+		{
+			QualitySettings.vSyncCount = 1;	// Force VSync on in case user has tried to disable it. No benefit, just burns CPU - CP
+		   
             _situationBuilder = new SituationBuilder(tableLevelTransform, windowLevelTransform, _heart);
             NoonUtility.Log("Setting up services",10);
             //register everything used gamewide
@@ -190,6 +192,7 @@ namespace Assets.CS.TabletopUI {
             //CHECK LEGACY POPULATED FOR CHARACTERS
             //this is all a bit post facto and could do with being tidied up
             //BUT now that legacies are saved in character data, it should only be relevant for old prelaunch saves.
+			bool shouldStartPaused = false;
             NoonUtility.Log("Checking chosen legacy", 10);
             var chosenLegacy = CrossSceneState.GetChosenLegacy();
             if (chosenLegacy == null)
@@ -205,7 +208,6 @@ namespace Assets.CS.TabletopUI {
                 NoonUtility.Log("Restarting game", 11);
                 CrossSceneState.RestartingGame();
                 BeginNewGame(builder);
-
             }
             else
             {
@@ -216,6 +218,7 @@ namespace Assets.CS.TabletopUI {
                 {
                     NoonUtility.Log("Loading game", 10);
                     LoadGame();
+					shouldStartPaused = true;
                 }
                 else
                 {
@@ -223,8 +226,8 @@ namespace Assets.CS.TabletopUI {
                     BeginNewGame(builder);
                 }
             }
-			_heart.StartBeatingWithDefaultValue();			// Init heartbeat duration...
-			_speedController.SetPausedState(true, false);	// ...but pause game while the player gets their bearings.
+			_heart.StartBeatingWithDefaultValue();						// Init heartbeat duration...
+			_speedController.SetPausedState(shouldStartPaused, false);	// ...but (optionally) pause game while the player gets their bearings.
         }
 
         private void BeginNewGame(SituationBuilder builder)
