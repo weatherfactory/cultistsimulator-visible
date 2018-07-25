@@ -44,8 +44,10 @@ public class LanguageTable : MonoBehaviour
 	private static List<LocTriplet> locTriplets;
 	private static List<LocTriplet> cultures;
 
-	public static void LoadCulture( string targetCulture )
+	public static void LoadCulture( string newTargetCulture )
 	{
+		targetCulture = newTargetCulture;
+
 		if (csvFile != null)
 		{
 			string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, csvFile);
