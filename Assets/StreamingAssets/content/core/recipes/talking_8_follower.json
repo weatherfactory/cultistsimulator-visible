@@ -651,7 +651,7 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Beneath the World's Skin",
 	  actionId:"talk",
 	  startdescription: "Hours of scholarship and meditation...",
-		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could do further harm to themself. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]"
+		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could do further harm to themself. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]",
 	  effects: {fascination:1},
 	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
 	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
