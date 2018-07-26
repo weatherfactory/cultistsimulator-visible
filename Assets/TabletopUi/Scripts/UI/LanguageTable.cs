@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 class LocTriplet
@@ -44,6 +45,27 @@ public class LanguageTable : MonoBehaviour
 	private static List<LocTriplet> locTriplets;
 	private static List<LocTriplet> cultures;
 
+	public static string[] SplitCSVLine(string input)
+	{
+		// The standard string.Split(',') does not correctly handle commas inside quotes,
+		// so I've made a bespoke function (courtesy of StackOverflow for the regex because OMG NO) 
+		Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)");
+		List<string> list = new List<string>();
+		string curr = null;
+		foreach (Match match in csvSplit.Matches(input))
+		{        
+			curr = match.Value;
+			if (0 == curr.Length)
+			{
+				list.Add("");
+			}
+
+			list.Add(curr.TrimStart(',').TrimStart('"').TrimEnd('"'));
+		}
+
+		return list.ToArray();
+	}
+
 	public static void LoadCulture( string newTargetCulture )
 	{
 		targetCulture = newTargetCulture;
@@ -51,10 +73,16 @@ public class LanguageTable : MonoBehaviour
 		if (csvFile != null)
 		{
 			string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, csvFile);
-			string filetext = System.IO.File.ReadAllText(filePath);
-			//TextAsset txtAsset = Resources.Load( csvFile, typeof(TextAsset) ) as TextAsset;
-			Debug.Assert( filetext!=null, "Invalid CSV filename <" + filePath + ">!" );
+			string filetext = System.IO.File.ReadAllText(filePath, System.Text.Encoding.UTF8);		// Expects System.Text.Encoding.UTF8
 
+#if UNITY_EDITOR
+			Debug.Assert( filetext!=null, "Invalid CSV filename <" + filePath + ">!" );
+			if (filetext == "")
+			{
+				Debug.LogError("Unable to read <" + filePath + "> - locked by another app?");
+				Debug.Break();	// Prevent script running on if we hit this assert
+			}
+#endif
 			if (locTriplets != null)
 				locTriplets.Clear();
 			else
@@ -69,7 +97,7 @@ public class LanguageTable : MonoBehaviour
 				return;
 
 			string[] lines = filetext.Split('\n');
-			string[] entries = lines[0].Trim().Split(',');
+			string[] entries = SplitCSVLine( lines[0] );
 
 			// Populate internal list of languages available in the data
 			Debug.Assert( entries.Length>=2, "Not enough columns for minimum ID and DATA!" );
@@ -90,7 +118,7 @@ public class LanguageTable : MonoBehaviour
 
 			for (int i=1; i<lines.Length; i++)
 			{
-				entries = lines[i].Trim().Split(',');
+				entries = SplitCSVLine( lines[i] );
 				if (entries!=null && entries.Length>cultureIndex)
 				{
 					LocTriplet tri = new LocTriplet( entries[0], entries[cultureIndex] );

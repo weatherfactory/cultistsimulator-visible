@@ -10,11 +10,13 @@ using UnityEngine;
 /// You can set the fontStyle to BodyText, Heading or Button (or add new styles) to tell it which font to use.
 /// That way you only have one place to update the font (LanguageManager.cs) and it is reflected throughout the game.
 
-public class LocalizationResponder : MonoBehaviour
+public class Babelfish : MonoBehaviour
 {
+	[Tooltip("Strings.csv label\n(if null then TextMeshPro string is left alone)")]
+    [SerializeField] private string						locLabel;
 
-    [SerializeField] private string						locLabel;   	// localization label for display text
-	[SerializeField] private LanguageManager.eFontStyle fontStyle;		// determines only which font to use (no size/colour inferred)
+	[Tooltip("Which font set should this text use?\nFont sets assigned in LanguageManager")]
+	[SerializeField] private LanguageManager.eFontStyle fontStyle;
 
     private TMP_Text tmpText;       // text mesh pro text object.
 
