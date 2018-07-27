@@ -88,6 +88,7 @@ public class LanguageManager : MonoBehaviour
             case "cjk":
             case "ko":
             case "zh":
+			case "zh-hans":
             case "jp":
                 if (fontStyles[style].fontCJK != null)
                     return fontStyles[style].fontCJK;
@@ -119,7 +120,7 @@ public class LanguageManager : MonoBehaviour
 
 	void OnGUI()
 	{
-		if (GUI.Button( new Rect(Screen.width - 60, 10, 50, 20), "LANG"))
+		if (GUI.Button( new Rect(Screen.width - 200, 10, 90, 20), "LANGUAGE"))
 		{
 			showDebugLanguageSelect = !showDebugLanguageSelect;
 		}

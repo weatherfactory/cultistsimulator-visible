@@ -310,7 +310,8 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     public void SetBirdWorm(float value) {
-        birdWormSliderValue.text = (value > 0.5f ? "Bird" : "Worm");
+        //commented out for deploy
+        //  birdWormSliderValue.text = LanguageTable.Get( value > 0.5f ? "UI_BIRD" : "UI_WORM" );
         PlayerPrefs.SetFloat(NoonConstants.BIRDWORMSLIDER, value);
 
         if (gameObject.activeInHierarchy == false)

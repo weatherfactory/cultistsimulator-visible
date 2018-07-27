@@ -35,7 +35,7 @@
         id: "auclair_d",
             label: "A gaunt woman, who is silent",
             aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,exalted:1,winter:10},
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
             description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,,rebellion:auclair_r},

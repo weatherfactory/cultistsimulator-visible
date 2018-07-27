@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 224615886852246078}
   - component: {fileID: 222640036613501256}
   - component: {fileID: 114934531875725958}
+  - component: {fileID: 114839239175269086}
   m_Layer: 5
   m_Name: SliderTimerHint
   m_TagString: Untagged
@@ -122,6 +123,7 @@ GameObject:
   - component: {fileID: 224517055611113970}
   - component: {fileID: 222518995691971464}
   - component: {fileID: 114762102686187848}
+  - component: {fileID: 114392780200386920}
   m_Layer: 5
   m_Name: SliderSoundHint
   m_TagString: Untagged
@@ -190,6 +192,7 @@ GameObject:
   - component: {fileID: 224739150526228234}
   - component: {fileID: 222068625707986870}
   - component: {fileID: 114903892093605224}
+  - component: {fileID: 114172057744432570}
   m_Layer: 5
   m_Name: SliderSnapGridHint
   m_TagString: Untagged
@@ -303,6 +306,7 @@ GameObject:
   - component: {fileID: 224100065655883826}
   - component: {fileID: 222030084615083638}
   - component: {fileID: 114106390357995946}
+  - component: {fileID: 114268662110461910}
   m_Layer: 5
   m_Name: SliderBirdWormHint
   m_TagString: Untagged
@@ -352,6 +356,7 @@ GameObject:
   - component: {fileID: 224781045084140542}
   - component: {fileID: 222303247574064978}
   - component: {fileID: 114778361574855810}
+  - component: {fileID: 114299118226991458}
   m_Layer: 5
   m_Name: SliderMusicHint
   m_TagString: Untagged
@@ -695,6 +700,7 @@ GameObject:
   - component: {fileID: 224721958566225074}
   - component: {fileID: 222560109552176392}
   - component: {fileID: 114991534671649908}
+  - component: {fileID: 114629996480944080}
   m_Layer: 5
   m_Name: SliderAutosaveHint
   m_TagString: Untagged
@@ -794,6 +800,7 @@ GameObject:
   - component: {fileID: 224678012232489594}
   - component: {fileID: 222523381612697558}
   - component: {fileID: 114762748877149174}
+  - component: {fileID: 114626370243510138}
   m_Layer: 5
   m_Name: SliderScreenCanvasHint
   m_TagString: Untagged
@@ -1876,6 +1883,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114172057744432570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1184511254971268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: UI_OPT_GRIDSNAPSIZE
+  fontStyle: 0
 --- !u!114 &114215247476463432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1962,6 +1982,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114268662110461910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281760584636458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: UI_OPT_BIRDWORM
+  fontStyle: 0
 --- !u!114 &114295464204856650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2048,6 +2081,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114299118226991458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373259308282324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: UI_OPT_MUSICVOL
+  fontStyle: 0
 --- !u!114 &114302347477363316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2195,6 +2241,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114392780200386920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1097391969511528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: UI_OPT_SOUNDVOL
+  fontStyle: 0
 --- !u!114 &114395430493382510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2640,6 +2699,32 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &114626370243510138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794977107950846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: UI_OPT_UISCALING
+  fontStyle: 0
+--- !u!114 &114629996480944080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709744950883228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: 'UI_OPT_AUTOSAVEINTERVAL '
+  fontStyle: 0
 --- !u!114 &114636427947511734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3245,6 +3330,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114839239175269086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055870219222108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: UI_OPT_INFODURATION
+  fontStyle: 0
 --- !u!114 &114872917360618884
 MonoBehaviour:
   m_ObjectHideFlags: 1

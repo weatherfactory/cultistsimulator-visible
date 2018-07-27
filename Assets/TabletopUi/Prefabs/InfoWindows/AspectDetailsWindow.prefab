@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 224755288510652958}
   - component: {fileID: 222377687633766210}
   - component: {fileID: 114886156176962910}
+  - component: {fileID: 114760737468313096}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -97,7 +98,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1920102610850512
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +146,7 @@ GameObject:
   - component: {fileID: 224166701671499332}
   - component: {fileID: 222140936902406218}
   - component: {fileID: 114084739214997046}
+  - component: {fileID: 114179564748378186}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -310,6 +312,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114179564748378186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952839231208140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: 
+  fontStyle: 0
 --- !u!114 &114249641603422210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -490,6 +505,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXName: UIButtonClose
   hoverFXName: TokenHover
+--- !u!114 &114760737468313096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211888927926734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: 
+  fontStyle: 0
 --- !u!114 &114824784949416406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -763,7 +791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: 0}
+  m_AnchoredPosition: {x: 80, y: 40}
   m_SizeDelta: {x: 4, y: 4}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &224755288510652958

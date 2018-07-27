@@ -9,12 +9,11 @@ public class RestartButton : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI ButtonText;
 
-    private const string DEFAULT_MESSAGE = "RESTART";
     private bool clickedOnce = true;
 
     public void Awake()
     {
-        ButtonText.text = DEFAULT_MESSAGE;
+        OnLanguageChanged();
     }
 
     public bool AttemptRestart()
@@ -22,7 +21,7 @@ public class RestartButton : MonoBehaviour
         if (clickedOnce)
             return true;
         
-        ButtonText.text = "DEFINITELY RESTART?";
+        ButtonText.text = LanguageTable.Get( "UI_RESTARTSURE" );
         clickedOnce = true;
         StartCoroutine(BrieflyDisable());
         return false;
@@ -30,9 +29,9 @@ public class RestartButton : MonoBehaviour
 
     public void ResetState()
     {
-        ButtonText.text = DEFAULT_MESSAGE;
+        OnLanguageChanged();
         clickedOnce = false;
-
+		gameObject.GetComponent<Button>().interactable = true;	// Re-enable button in case menu was closed during coroutine
     }
 
     public IEnumerator BrieflyDisable()
@@ -41,4 +40,10 @@ public class RestartButton : MonoBehaviour
         yield return new WaitForSeconds(2);
         gameObject.GetComponent<Button>().interactable = true;
     }
+
+	public virtual void OnLanguageChanged()
+    {
+        ButtonText.text = LanguageTable.Get( "UI_RESTART" );
+    }
+
 }

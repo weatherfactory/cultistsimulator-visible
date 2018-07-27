@@ -1,12 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
 
-/// Localization responder - assumes a singleton centralized manager class (LanguageManager{}) that maintains 
-/// fields for the font assets for different language sets being parsed (in this case: CJK, RU,
-/// and EN -- all other). These centralized font assets may be overridden in the public fields here.
+/// Localization responder - assumes a singleton centralized manager class (LanguageManager{})
+/// that maintains fields for the font assets for different language sets being parsed
+/// (in this case: CJK, RU, and EN for everything else).
 ///
 /// It is expected the LanguageManager defines an event used to indicate a language change has occurred.
-
+///
+/// You can set the fontStyle to BodyText, Heading or Button (or add new styles) to tell it which font to use.
+/// That way you only have one place to update the font (LanguageManager.cs) and it is reflected throughout the game.
 
 public class LocalizationResponder : MonoBehaviour
 {
