@@ -197,6 +197,8 @@ public class OptionsPanel : MonoBehaviour {
 			if (speedController != null)
 				speedController.LockToPause(false);
 		}
+
+		RefreshOptionsText();
     }
 
     public void RestartGame() {
@@ -278,13 +280,13 @@ public class OptionsPanel : MonoBehaviour {
 		SoundManager.PlaySfx("UISliderMove"); // After So we have the sound applied
     }
 
-    public void SetInspectionWindowTime(float timer) {
-        inspectionTimeSliderValue.text = GetInspectionTimeForValue(timer) + "s";
+    public void SetInspectionWindowTime(float timer){
 
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
         SetInspectionWindowTimeInternal(timer);
+		RefreshOptionsText();
 		SoundManager.PlaySfx("UISliderMove");
 	}
 
@@ -299,20 +301,18 @@ public class OptionsPanel : MonoBehaviour {
 	}
 
     public void SetAutosaveInterval(float timer) {
-		int mins = (int)timer;
-        autosaveSliderValue.text = mins + " min";
 
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 
         SetAutosaveIntervalInternal(timer);
+		RefreshOptionsText();
 		SoundManager.PlaySfx("UISliderMove");
     }
 
     public void SetBirdWorm(float value) {
-        //commented out for deploy
-        //  birdWormSliderValue.text = LanguageTable.Get( value > 0.5f ? "UI_BIRD" : "UI_WORM" );
         PlayerPrefs.SetFloat(NoonConstants.BIRDWORMSLIDER, value);
+		RefreshOptionsText();
 
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
@@ -322,22 +322,37 @@ public class OptionsPanel : MonoBehaviour {
 
     public void SetSnapGrid(float value)
 	{
-		int snap = Mathf.RoundToInt( value );
-		switch (snap)
-		{
-		default:
-		case 0:		snapGridSliderValue.text = "OFF"; break;
-		case 1:		snapGridSliderValue.text = "1 CARD"; break;		
-		case 2:		snapGridSliderValue.text = "½ CARD"; break;
-		case 3:		snapGridSliderValue.text = "¼ CARD"; break;
-		}
-
         if (gameObject.activeInHierarchy == false)
             return; // don't update anything if we're not visible.
 		
 		SetSnapGridInternal(value);
+		RefreshOptionsText();
 		SoundManager.PlaySfx("UISliderMove");
     }
+
+	public void RefreshOptionsText()
+	{
+		// Inspect time
+		inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
+
+		// Autosave
+		int mins = (int)PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
+        autosaveSliderValue.text = mins + LanguageTable.Get( "UI_MINUTES_POSTFIX" );
+
+		// Snap grid
+		int snap = Mathf.RoundToInt( PlayerPrefs.GetFloat(GRIDSNAPSIZE) );
+		switch (snap)
+		{
+		default:
+		case 0:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_0" ); break;
+		case 1:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_1" ); break;		
+		case 2:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_2" ); break;
+		case 3:		snapGridSliderValue.text = LanguageTable.Get( "UI_SNAP_3" ); break;
+		}
+
+		// Bird/worm
+        birdWormSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM" );
+	}
 
     // INTERNAL Setters
 
