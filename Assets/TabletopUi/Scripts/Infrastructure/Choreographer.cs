@@ -62,6 +62,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             stack.RectTransform.anchoredPosition = pos.Value;
             stack.lastTablePos = pos.Value;
             stack.transform.localRotation = Quaternion.identity;
+     
             stack.DisplayAtTableLevel();
             stack.FlipToFaceUp(true);
 
@@ -428,12 +429,18 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         public void ElementSendAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
 		{
             if (tokenSlotPair.RecipeSlot.Equals(null))
-                return;
-
+            {
+                element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+            }
+            else
+            {
+             
             tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
             tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
 			if (!tokenSlotPair.Token.SituationController.IsOpen)
 				tokenSlotPair.Token.OpenSituation();
+
+            }
         }
 
         public void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
