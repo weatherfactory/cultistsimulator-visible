@@ -332,11 +332,18 @@ public class OptionsPanel : MonoBehaviour {
 
 	public void RefreshOptionsText()
 	{
-		// Inspect time
-		inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
+
+	    int mins = (int)PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
+
+	    try
+	    {
+
+	    
+        // Inspect time
+        inspectionTimeSliderValue.text = GetInspectionTimeForValue( PlayerPrefs.GetFloat(NOTIFICATIONTIME) ) + LanguageTable.Get("UI_SECONDS_POSTFIX");
 
 		// Autosave
-		int mins = (int)PlayerPrefs.GetFloat(AUTOSAVEINTERVAL);
+
         autosaveSliderValue.text = mins + LanguageTable.Get( "UI_MINUTES_POSTFIX" );
 
 		// Snap grid
@@ -351,7 +358,13 @@ public class OptionsPanel : MonoBehaviour {
 		}
 
 		// Bird/worm
+        
         birdWormSliderValue.text = LanguageTable.Get( PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER) > 0.5f ? "UI_BIRD" : "UI_WORM" );
+	    }
+	    catch (NullReferenceException)
+	    {
+	        NoonUtility.Log("Not currently using loc text for options panel controls - needs fix from loc branch for nullref when called early",10);
+	    }
 	}
 
     // INTERNAL Setters
