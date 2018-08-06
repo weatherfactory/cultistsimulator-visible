@@ -166,7 +166,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             //2018.5 is our 1.0 release date. After this, all saves are considered compatible unless we reconsider the decision.
 
 
-            return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
+           // return currentVersionNumber.MajorVersionMatches(new VersionNumber(savedVersionString));
+            return true;
         }
     }
 }
