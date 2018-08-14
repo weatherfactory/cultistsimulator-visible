@@ -33,6 +33,54 @@ When a Hunter survives an attack by a summoned creature, occasionally they'll be
 mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
 effects:{notoriety:1,summoned:-1}
    },
+               {id: "hunterfitewithpowerascension",
+	   label: "A Surprise Attack on an Adversary",
+	  actionId:"talk",
+	  requirements:{skillhealthd_edge:1},
+	  startdescription:"My adversary insists on a public meeting-place. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
+	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:70},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+            {id: "hunterfitewithextraswole",
+	   label: "A Surprise Attack on an Adversary",
+	  actionId:"talk",
+	  requirements:{murderskill:1},
+	  startdescription:"My adversary insists on a public meeting-place. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
+	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:70},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+         {id: "hunterfitewithswole",
+	   label: "A Surprise Attack on an Adversary",
+	  actionId:"talk",
+	  requirements:{healthskill:1},
+	  startdescription:"My adversary insists on a public meeting-place. They have taken all reasonable precautions, and a direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This is a very long shot indeed.]",
+	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:90},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+	  {id:"hunterfitewithswole_failure",
+	  label:"A Surprise Attack has Failed!",
+	  actionId:"talk",
+	  startdescription:".",
+	  description:"With a cry, my adversary leaps back, kicking over the table! All around us, heads turn. No-one saw me move. The only real witness is my adversary. But I must leave immediately.",
+	  craftable:false,
+	  effects:{notoriety:1},
+	  	  mutations:[{filterOnAspectId:hunter,mutateAspectId:wary,mutationLevel:1}],
+	  },
+	  
+	  
+	  
       {id: "hunterspeakpoison",
 	   label: "Employ a Remarkable Poison against a Hunter",
 	  actionId:"talk",
@@ -42,6 +90,7 @@ effects:{notoriety:1,summoned:-1}
 	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
 	  effects:{poison:-1,notoriety:1},
 	  aspects:{killhunter:1},
+	  craftable:false
 	  },
    
    {id: "hunterattackhighwinter",
@@ -51,7 +100,8 @@ effects:{notoriety:1,summoned:-1}
 	  requirements: {hunter:1,winter:10,follower:1},
 	  linked: [{id:"hunterstealthattacksuccess",chance:70},
 	  {id:"hunterstealthattackfailure",chance:100}
-	  ]
+	  ],
+	  craftable:false
 	  },
 	  	   {id: "hunterattackmidwinter",
 	   label: "Send a quiet Minion to resolve the problem of a Hunter",

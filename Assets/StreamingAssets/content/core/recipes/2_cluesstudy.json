@@ -1,10 +1,11 @@
  {"recipes":
  [
+
  	{
 	id: "studyupgrade_downgrade_lore_hint",
 	label: "Improve my Knowledge of the invisible arts?",
 	actionId: "study",
-	requirements: {lore:1,fragmentedge:-1,fragmentforge:-1,fragmentgrail:-1,fragmentheart:-1,fragmentknock:-1,fragmentlantern:-1,fragmentmoth:-1,fragmentsecrethistories:-1,fragmentwinter:-1},	
+	requirements: {lore:1,edge:-1,forge:-1,grail:-1,heart:-1,knock:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},	
 	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. If I use Reason, I can analyse the lore, breaking it down into lower-level fragments. Or I can use another type of lore to subvert it...",
 		craftable: false,
 		hintonly:true
@@ -13,7 +14,7 @@
 	id: "studyupgradelore_hint",
 	label: "Improve my Knowledge of the invisible arts?",
 	actionId: "study",
-	requirements: {lore:1},	
+	requirements: {lore:1,healthskill:-1},	
 	startdescription: "If I have two lore fragments of the same level and aspect, I can study them together to improve my understanding. Or I can use another type of lore to subvert it...",
 		craftable: false,
 		hintonly:true
@@ -71,7 +72,7 @@
  hintonly:true,
  craftable:false
  },
-    {id:"translatevakh1int",
+    {id:"translatevakhint",
  label:"Translate from Vak?",
  actionId:"study",
  requirements:{textvak:1},
@@ -79,7 +80,33 @@
  hintonly:true,
  craftable:false
  },
- 
+   			{
+        id: "studyincreasehealthskilld_edge",
+        label: "Exercise the Body: Secret Techniques?",
+        actionId: "study",
+        requirements: {skillhealthc:1,lore:1,edge:1},
+		startdescription: "With these secrets, and enough Vitality, I can harden myself to an instrument of strength.",
+		hintonly:true,
+        craftable: false,
+    },
+  			{
+        id: "studyincreasehealthskilld_grail",
+        label: "Exercise the Body: Secret Techniques?",
+        actionId: "study",
+        requirements: {skillhealthc:1,lore:1,grail:1},
+		startdescription: "With these secrets, and enough Vitality, I can align flesh with appetite.",
+		hintonly:true,
+        craftable: false,
+    },
+  			{
+        id: "studyincreasehealthskilld_wronglore",
+        label: "Exercise the Body: Secret Techniques?",
+        actionId: "study",
+        requirements: {skillhealthc:1,lore:1},
+		startdescription: "Nothing in this lore will be of use here. I must choose a lore of strength, or a lore of desire.",
+		hintonly:true,
+        craftable: false,
+    },
  
 	{
         id: "increasehealthfurtherhint",
@@ -89,7 +116,7 @@
         startdescription: "The more Health I gain, the more Vitality I'll need. [Use Skill: Physique to increase Health further.]",
 
         hintonly:true,
-        craftable: true
+        craftable: false
     },
 			{
         id: "increasereasonfurtherhint",
@@ -99,7 +126,7 @@
         startdescription: "The more Reason I gain, the more Erudition I'll need. [Use Skill: Scholarship to increase Reason further.]",
 
         hintonly:true,
-        craftable: true
+        craftable: false
     },
 	
 		{
@@ -110,7 +137,7 @@
         startdescription: "The more Passion I gain, the more Glimmering I'll need. [Use Skill: Imagination to increase Passion further.]",
 
         hintonly:true,
-        craftable: true
+        craftable: false
     },
 		
 		
@@ -122,7 +149,7 @@
         startdescription: "I'll need more than one.",
 
         hintonly:true,
-        craftable: true
+        craftable: false
     },
 			{
         id: "increasereasonfurtherhint1",
@@ -132,7 +159,7 @@
         startdescription: "I'll need more than one.",
 
         hintonly:true,
-        craftable: true
+        craftable: false
     },
 	
 		{
@@ -143,7 +170,7 @@
         startdescription: "I'll need more than one.",
 
         hintonly:true,
-        craftable: true
+        craftable: false
     },
 
 	
