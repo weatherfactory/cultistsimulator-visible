@@ -1,0 +1,17 @@
+{
+"recipes": [
+{id: "workbytjobstart",
+label: "A Golden Day of Occasional Work",
+actionId: "work",
+requirements: {legacybytjob:1},
+effects: {funds: 2,legacybytjob:-1,legacybytjobmatured:1},
+alternativerecipes: [
+{id:bytopenexplore,chance:100,additional:true}],
+startdescription: "Possibly I'll get something done today.",
+description: "It's all going swimmingly. Although Papa's health is not improving. [<b>Explore</b> unlocked.]",
+warmup:10,
+craftable: true	},
+
+
+]
+}
