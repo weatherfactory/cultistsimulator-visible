@@ -66,6 +66,28 @@
         description: "The language of the Visions of Aram, of the Book of Daniel, and of the Account of Kanishk at the Spider's Door." 
     },
 	
+	
+			{
+        id: "studysanskrittutoring",
+        label: "Study Sanskrit with a Tutor",
+        actionId: "study",
+        requirements: {tutorsanskrit:1,commission:-1,article:-1},
+			slots:[{id:"Costs",required: {compensationvalue: 1}}],
+				alternativerecipes: [{id:"studysanskrittutoringpaid",chance:100}],
+		startdescription: "If I need to learn Sanskrit, here's one who will help; but I'll need to pay in spintriae, the currency of the hidden world.",
+        description: "Tutors don't work for free. Another time.",
+        warmup: 60,
+        craftable: true,
+    },
+		{
+        id: "studysanskrittutoringpaid",
+        label: "Study Sanskrit with a Tutor",
+        actionId: "study",
+        requirements: {compensationvalue:2},
+			effects: {scholarsanskrit:1,compensationvalue:-2},
+		startdescription: "This will be sufficient. I'll listen carefully.",
+        description: "The holy tongue of the Subcontinent. The door to four thousand years of poetry, ceremony and mystery." 
+    },
 			{
         id: "studyfucinetutoringspirit",
         label: "Study Fucine with a Tutor",

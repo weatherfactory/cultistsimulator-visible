@@ -11,7 +11,13 @@
             label: "Maverick",
 			description: "A student of the invisible arts, with an agenda of their own.",
             isAspect: true
-        }, 		
+        }, 
+		        {
+            id: "benefactor",
+            label: "Benefactor",
+			description: "An aficionado of my work, with whom I have grown close.",
+            isAspect: true
+        }, 				
         {
             id: "follower",
             label: "Follower",
@@ -1003,7 +1009,7 @@
 									{
 		id: "textsanskrit",
 		label: "Written in Sanskrit",
-		description: "The holy tongue of the Subcontinent. The door to four thousand years of poetry, ceremony and mystery now opens before you, if you can struggle through the lotus convolutions of its vocabulary.[Some books must be translated before they can be read.]",
+		description: "The holy tongue of the Subcontinent. The door to four thousand years of poetry, ceremony and mystery now opens before you, if you can struggle through the lotus convolutions of its vocabulary. [Some books must be translated before they can be read.]",
 		isAspect:true
 		},
 									{
@@ -1040,6 +1046,42 @@
 						{id: "corpse_scar",
 		label:"Old Scar",
 		description:"This was someone who knew pain.",
+		isAspect:true
+		},
+								{id: "resentment",
+		label:"Resentment",
+		description:"Too many grievances can compromise loyalty.",
+		isAspect:true
+		},
+									{id: "boredom",
+		label:"Boredom",
+		description:"My benefactor's interest will eventually wane.",
+		isAspect:true
+		},
+											{id: "desiremothtrack",
+		label:"Old Form",
+		description:"FNORD",
+		isAspect:true
+		},
+													{id: "desirehearttrack",
+		label:"New Form",
+		description:"FNORD",
+		isAspect:true
+		},
+															{id: "potentialbenefactorm",
+		label:"The Gentlemen at the Stage Door",
+		description:"A gentleman of means sometimes attends performances. He has been known to pay his respects to chorus members after the show.",
+		isAspect:true
+		},
+		
+																	{id: "potentialbenefactorf",
+		label:"The Lady in the Box",
+		description:"A lady of means sometimes attends performances. She has been known to show a keen interest in chorus members.",
+		isAspect:true
+		},
+																			{id: "potentialecdysite",
+		label:"A Bright-Eyed Watcher",
+		description:"Sometimes she sits in the second row, seeking new talent for her peculiar establishment. Those she employs are rarely seen about town.",
 		isAspect:true
 		},
 		
