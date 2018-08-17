@@ -1,58 +1,67 @@
 {
 "recipes": [
+{id: "worklegacydancerjob_pleadforreinstatement",
+label: "Perform at the Gaiety Theatre",
+actionId: "work",
+requirements: {legacydancerjob_suspended:1,passion:1,healthskill:1},
+aspects:{plead:1},
+startdescription: "FNORD plead",
+description: "FNORD end plead",
+warmup:30,
+craftable: true},
+
 {id: "worklegacydancerjob",
 label: "Perform at the Gaiety Theatre",
 actionId: "work",
 requirements: {legacydancerjob:1,healthskill:1,health:1},
 effects: {funds: 1},
-alternativerecipes: [
-{id:worklegacydancerjob_more,chance:30,additional:true}],
-startdescription: "FNORD start dancer job"
+linked: [{id:worklegacydancerjob_more,chance:30}],
+startdescription: "FNORD start dancer job",
 description: "FNORD end dancer job",
 warmup:45,
-craftable: true	},
+craftable: true},
 
 {id: "worklegacydancerjob_more",
 actionId: "work",
 label: "An Opportunity at the Gaiety Theatre",
-startdescription: "FNORD an extra opportunity"
+startdescription: "FNORD an extra opportunity",
 description: "FNORD end dancer job extra",
 
 slots:[{id:"more",label:"Extra Effort",required:{ability:1}}],
-effects:{funds:1},
-linked:[{id:"worklegacydancerjob_more_benefactorm",chance:50},
-{id:"worklegacydancerjob_more_benefactorm",chance:100},
-{id:"worklegacydancerjob_more_ecdysiast",chance:100}]
+alternativerecipes:[{id:"worklegacydancerjob_more_benefactorm",chance:50},
+{id:"worklegacydancerjob_more_benefactorf",chance:100},
+{id:"worklegacydancerjob_more_ecdysiast",chance:100}],
+warmup:10
 },
 
-{id:"worklegacydancerjob_more_benefactor",
+{id:"worklegacydancerjob_more_benefactorm",
 actionId: "work",
-requirements:{potentialbenefactorm:1,health:2},
-label:"FNORD potential male benefactor",
+requirements:{potentialbenefactorm:1,health:1},
+label:"A Potential Benefactor",
 startdescription:"FNORD potential malebenefactor start",
 description:"male pot ben end",
-effects:{benefactorm:1},
+effects:{benefactorm:1,funds:1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorm,mutationLevel:-1}]
 
 },
-{id:"worklegacydancerjob_more_benefactor",
+{id:"worklegacydancerjob_more_benefactorf",
 actionId: "work",
-requirements:{potentialbenefactorf:1,health:2},
-label:"FNORD potential femefactor",
+requirements:{potentialbenefactorf:1,health:1 },
+label:"A Potential Benefactor",
 startdescription:"FNORD potential femefactor start",
 description:"female pot ben end",
-effects:{benefactorf:1},
+effects:{benefactorf:1,funds:1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorf,mutationLevel:-1}]
 
 }
-{id:"worklegacydancerjob_more_benefactor",
+{id:"worklegacydancerjob_more_ecdysiast",
 actionId: "work",
-requirements:{potentialecdysite:1,passion:1},
+requirements:{potentialecdysiast:1,passion:1},
 label:"FNORD potential ecd",
-startdescription:"FNORD potential femefactor start",
-description:"female pot ben end",
-effects:{sulochana:1},
-mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorf,mutationLevel:-1}]
+startdescription:"FNORD potential ecdys start",
+description:"ecdys pot ben end",
+effects:{sulochana:1,funds:1},
+mutations:[{filterOnAspectId:job,mutateAspectId:potentialecdysiast,mutationLevel:-1}]
 
 }
 

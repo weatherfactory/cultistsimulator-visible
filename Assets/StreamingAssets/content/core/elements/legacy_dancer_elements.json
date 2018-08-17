@@ -4,15 +4,21 @@
 	{id: "legacydancerjob",
 	label: "A Contract at the Gaiety",
 		description: "I have a position in the chorus at the Gaiety. It's mine until my luck or my looks run out... or until I find something better.",
-	aspects: {job:1,potentialbenefactorm:1,potentialbenefactorf:1},
+	aspects: {job:1,potentialbenefactorm:1,potentialbenefactorf:1,potentialecdysiast:1},
 	lifetime:120,
-	decayTo: "legacydancerjob_suspended"
+	decayTo: legacydancerjob_suspended,
+	xtriggers:{job:legacydancerjob},
+	slots:[{id:"healthskill",label:"Training",actionId:"work",required:{healthskill:1}},
+	{id:"health",label:"Health",actionId:"work",required:{health:1}}]
 },
 	{id: "legacydancerjob_suspended",
 	label: "A Contract at the Gaiety: Suspended",
 		description: "FNORD",
 	aspects: {job:1},
-	lifetime:120
+	lifetime:120,
+	xtriggers:{plead:legacydancerjob},
+		slots:[{id:"healthskill",label:"Training",actionId:"work",required:{healthskill:1}},
+	{id:"passion",label:"Passion",actionId:"work",required:{passion:1}}]
 },
 {id: "dancerjobbenefactor",
 	label: "The Interest of a Benefactor",
