@@ -312,7 +312,7 @@ actionId:"talk",
 label:"The Horrors Beneath the World's Skin",
 requirements:{tenacious:-1}
 startdescription:"",
-description:"'Yes, there are terrible things in the world, but that's all the more reason to resist them. I should thank you. You've shown me what I must do.' [This Hunter has become an Idealist.]",
+description:"'Yes, there are terrible things in the world, but that's all the more reason to resist them. I should thank you. You've shown me what I must do.' [This Hunter has become Tenacious, and an Idealist.]",
 mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1},
 {filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
 effects:{notoriety:1,dread:1}
