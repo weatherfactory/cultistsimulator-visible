@@ -21,15 +21,15 @@
 	{id:"passion",label:"Passion",actionId:"work",required:{passion:1}}]
 },
 {id: "dancerjobbenefactor",
-label: "An Arrangement with a Benefactor",
-	description: "Sometimes I spend time with my benefactor, and sometimes my benefactor gives me gifts.",
+label: "Time with a Benefactor",
+	description: "I have learnt that when I spend time with a benefactor, sometimes my benefactor gives me gifts.",
 		slots:[{id:"benefactor",actionId:"work",label:"My Benefactor",required:{benefactor:1}},
 	{id:"healthskill",actionId:"work",label:"Training",required:{healthskill:1}},
 		{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
 	aspects: {job:1},
 },
-{id: "dancerjobbenefactorc",
+{id: "dancerjobbenefactor_proposal",
 	label: "A Proposal from a Benefactor",
 	description: "In a moment of passion, my benefactor has proposed marriage. If I accept, this will transform my life... and close other doors forever.",
 
