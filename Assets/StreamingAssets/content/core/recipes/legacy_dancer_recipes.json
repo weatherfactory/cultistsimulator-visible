@@ -28,16 +28,16 @@ startdescription: "FNORD an extra opportunity",
 description: "FNORD end dancer job extra",
 
 slots:[{id:"more",label:"Extra Effort",required:{ability:1}}],
-alternativerecipes:[{id:"worklegacydancerjob_more_benefactorm",chance:50},
-{id:"worklegacydancerjob_more_benefactorf",chance:100},
-{id:"worklegacydancerjob_more_ecdysiast",chance:100},
-{id:"worklegacydancerjob_more_health",chance:100},
-{id:"worklegacydancerjob_more_passion",chance:100},
+alternativerecipes:[{id:"A_worklegacydancerjob_more_benefactorm",chance:50},
+{id:"A_worklegacydancerjob_more_benefactorf",chance:100},
+{id:"A_worklegacydancerjob_more_ecdysiast",chance:100},
+{id:"A_worklegacydancerjob_more_health",chance:100},
+{id:"A_worklegacydancerjob_more_passion",chance:100},
 ],
 warmup:10
 },
 
-{id:"worklegacydancerjob_more_benefactorm",
+{id:"A_worklegacydancerjob_more_benefactorm",
 actionId: "work",
 requirements:{potentialbenefactorm:1,health:1},
 label:"A Potential Benefactor",
@@ -47,7 +47,7 @@ effects:{benefactorm:1,funds:1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorm,mutationLevel:-1}]
  
 },
-{id:"worklegacydancerjob_more_benefactorf",
+{id:"A_worklegacydancerjob_more_benefactorf",
 actionId: "work",
 requirements:{potentialbenefactorf:1,health:1 },
 label:"A Potential Benefactor",
@@ -57,7 +57,7 @@ effects:{benefactorf:1,funds:1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorf,mutationLevel:-1}]
 
 }
-{id:"worklegacydancerjob_more_ecdysiast",
+{id:"A_worklegacydancerjob_more_ecdysiast",
 actionId: "work",
 requirements:{potentialecdysiast:1,passion:1},
 label:"FNORD potential ecd",
@@ -67,7 +67,7 @@ effects:{sulochana:1,funds:1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialecdysiast,mutationLevel:-1}]
 
 },
-{id:"worklegacydancerjob_more_health",
+{id:"A_worklegacydancerjob_more_health",
 actionId: "work",
 requirements:{health:1},
 label:"FNORD health tips",
@@ -76,7 +76,7 @@ description:"FNORD health tips",
 effects:{funds:1}
 },
 
-{id:"worklegacydancerjob_more_passion",
+{id:"A_worklegacydancerjob_more_passion",
 actionId: "work",
 requirements:{passion:1},
 label:"FNORD passon tips",
@@ -107,33 +107,42 @@ label: "My Benefactor: Energy",
 startdescription: "Today, my Benefactor is full of energy. I should be, too!",
 description: "FNORD Benefactor energy",
 slots:[{id:"energy",label:"Energy",required:{health:1}}],
-alternativerecipes:[{id:"workdancerjobbenefactor_satisfactory",chance:30},
+linked:[{id:"workdancerjobbenefactor_satisfactory",chance:30},
 {id:"workdancerjobbenefactor_bored",chance:100}],
 warmup:10
 },
 
-{id: "workdancerjobbenefactor_more_passion",
+{id: "L_workdancerjobbenefactor_more_passion",
 actionId: "work",
 label: "My Benefactor: Vivacity",
 startdescription: "Today, my Benefactor would be pleased by vivacity.",
 description: "FNORD Benefactor vivacity",
 slots:[{id:"vivacity",label:"Vivacity",required:{passion:1}}],
-alternativerecipes:[{id:"workdancerjobbenefactor_satisfactory",chance:30},
-{id:"workdancerjobbenefactor_bored",chance:100}],
+linked:[{id:"L_workdancerjobbenefactor_satisfactory",chance:30},
+{id:"L_workdancerjobbenefactor_bored",chance:100}],
 warmup:10
 },
 
 
-{id: "workdancerjobbenefactor_more_reason",
+{id: "L_workdancerjobbenefactor_more_reason",
 actionId: "work",
 label: "My Benefactor: the Life of the Mind ",
 startdescription: "Today, my Benefactor's mood is conversational.",
 description: "FNORD Benefactor reason",
 slots:[{id:"conversation",label:"Conversation",required:{reason:1}}],
-alternativerecipes:[{id:"workdancerjobbenefactor_satisfactory",chance:30},
+linked:[{id:"workdancerjobbenefactor_satisfactory",chance:30},
 {id:"workdancerjobbenefactor_bored",chance:100}],
 warmup:10
 },
+{id:"L_workdancerjobbenefactor_satisfactory",
+actionId:"work",
+label: "My Benefactor Still Finds Me Engaging",
+startdescription:".",
+description:"FNORD",
+mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorm,mutationLevel:-1}]
+
+
+}
 
 
 ]
