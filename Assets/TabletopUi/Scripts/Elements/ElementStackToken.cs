@@ -22,7 +22,9 @@ using Noon;
 // Should inherit from a "TabletopToken" base class same as VerbBox
 
 namespace Assets.CS.TabletopUI {
-    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView {
+    public class ElementStackToken : DraggableToken, IElementStack, IGlowableView
+    {
+        public const float SEND_STACK_TO_SLOT_DURATION = 0.2f;
 
         public event System.Action<ElementStackToken> onTurnFaceUp; // only used in the map to hide the other cards
         public event System.Action<float> onDecay;
@@ -545,7 +547,7 @@ namespace Assets.CS.TabletopUI {
 						var choreo = Registry.Retrieve<Choreographer>();
 						SplitAllButNCardsToNewStack(1, new Context(Context.ActionSource.DoubleClickSend));
 						choreo.PrepareElementForSendAnim( this, selectedSlot.Token ); // this reparents the card so it can animate properly
-						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone, 0.2f );
+						choreo.MoveElementToSituationSlot( this, selectedSlot, choreo.ElementSendAnimDone,SEND_STACK_TO_SLOT_DURATION);
 					}
 				}
 			}			
