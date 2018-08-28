@@ -638,6 +638,22 @@
 			comments: "Recipe aspect; runs when we want to decay something like an investment.",
 			noartneeded: true
         },
+				{
+            id: "avowal",
+            label: "Avowal",
+			description: "A Positive Change in Loyalties",
+            isAspect: true,
+			comments: "Recipe aspect; runs when we want to flip someone's loyalties positively",
+			noartneeded: true
+        },
+		{
+            id: "rejection",
+            label: "Rejection",
+			description: "A Change in Loyalties",
+            isAspect: true,
+			comments: "Recipe aspect; runs when we want to flip someone's loyalties",
+			noartneeded: true
+        },
 				 {
             id: "restorehealth",
             label: "Restore Health",
@@ -1076,7 +1092,7 @@
 		},
 		{id: "benefactor_proposal",
 	label: "A Proposal from a Benefactor",
-	description: "In a moment of passion, my benefactor has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever.",
+	description: "In a moment of passion, my benefactor has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Benefactor before their enthusiasm wanes.]",
 },
 											{id: "desiremothtrack",
 		label:"Old Form",

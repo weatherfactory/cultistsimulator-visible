@@ -136,33 +136,65 @@ icon:"poppy"
 		{id:"benefactorm",
 		label: "Lord Timothy Munday",
 		description:"FNORD",
-		unique:true,
+		uniquenessgroup:benefactorm,
 		aspects:{benefactor:1,mortal:1},
 			slots:[{id:"healthskill",actionId:"work",label:"Training",required:{healthskill:1}},
 		{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
-	aspects: {job:1},
-				xtriggers:{employment:benefactorm},
+				xtriggers:{employment:benefactorm,rejection:benefactorm_rejectedplayer,killmortal:corpse},
 			lifetime:180
 		},
 				{id:"benefactorf",
 		label: "Nicole, Fourth Marchioness of Stanford",
 		description:"FNORD",
-		unique:true,
+		uniquenessgroup:benefactorf,
 		aspects:{benefactor:1,mortal:1},
 		slots:[{id:"healthskill",actionId:"work",label:"Training",required:{healthskill:1}},
 		{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
-			xtriggers:{employment:benefactorf},
-			lifetime:180
+			xtriggers:{employment:benefactorf,rejection:benefactorf_rejectedplayer,killmortal:corpse},
+			lifetime:180,
+			decayTo:benefactorf_rejectedplayer
 		},
-						{id:"sulochana",
+
+				{id:"benefactorm_rejectedplayer",
+		label: "Lord Timothy Munday",
+		description:"Lord Timothy no longer sends me his little notes.",
+		uniquenessgroup:benefactorm,
+		aspects:{mortal:1},
+			xtriggers:{killmortal:corpse}
+		},
+				{id:"benefactorf_rejectedplayer",
+		label: "Nicole, Fourth Marchioness of Stanford",
+		description:"The Most Honourable Marchioness of Stanford has been heard to declare that she doesn't quite understand exactly what she saw in me.",
+		uniquenessgroup:benefactorf,
+		aspects:{mortal:1},
+			xtriggers:{killmortal:corpse}
+		},
+						{id:"benefactorm_proposedtoplayer",
+		label: "Lord Timothy Munday",
+		description:"In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes.]",
+		uniquenessgroup:benefactorm,
+		aspects:{mortal:1,benefactor_proposal:1},
+			xtriggers:{killmortal:corpse},
+			lifetime:180,
+			decayTo:benefactorm
+		},
+				{id:"benefactorf_proposedtoplayer",
+		label: "Nicole, Fourth Marchioness of Stanford",
+		description:"In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes.]",
+		uniquenessgroup:benefactorf,
+		aspects:{mortal:1,benefactor_proposal:1},
+			xtriggers:{killmortal:corpse},
+				lifetime:180,
+			decayTo:benefactorf
+		},
+								{id:"sulochana",
 		label: "Sulochana Amavasya",
 		description:"The laconic, energetic, bright-eyed, unblinking owner of the Ecdysis Club.",
 		unique:true,
 		aspects:{tutorsanskrit:1,tutor:1}
-		}
-		
+		},
 		
 		
 ]
