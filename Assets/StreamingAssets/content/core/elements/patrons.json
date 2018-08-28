@@ -141,7 +141,7 @@ icon:"poppy"
 			slots:[{id:"healthskill",actionId:"work",label:"Training",required:{healthskill:1}},
 		{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
-				xtriggers:{employment:benefactorm,rejection:benefactorm_rejectedplayer,killmortal:corpse},
+				xtriggers:{employment:benefactorm,rejection:benefactorm_rejectedplayer,killmortal:corpse,avowal:benefactorm_proposedtoplayer},
 			lifetime:180
 		},
 				{id:"benefactorf",
@@ -152,7 +152,7 @@ icon:"poppy"
 		slots:[{id:"healthskill",actionId:"work",label:"Training",required:{healthskill:1}},
 		{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
-			xtriggers:{employment:benefactorf,rejection:benefactorf_rejectedplayer,killmortal:corpse},
+			xtriggers:{employment:benefactorf,rejection:benefactorf_rejectedplayer,killmortal:corpse,,avowal:benefactorf_proposedtoplayer},
 			lifetime:180,
 			decayTo:benefactorf_rejectedplayer
 		},
