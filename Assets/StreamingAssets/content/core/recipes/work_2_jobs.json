@@ -451,7 +451,7 @@ maxexecutions:1
         id: "workhealthskilld_edge",
         label: "Unskilled Labour: Like the Mountain",
         actionId: "work",
-        requirements: {health: 1,skillhealthd_edge:1,ritual:-1,job:-1},
+        requirements: {health: 1,skillhealthd_edge:1,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },
@@ -465,7 +465,7 @@ maxexecutions:1
         id: "workhealthskillc",
         label: "Unskilled Labour: Arms of Steel",
         actionId: "work",
-        requirements: {health: 1,healthskill:3,ritual:-1},
+        requirements: {health: 1,healthskill:3,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },
@@ -479,7 +479,7 @@ maxexecutions:1
         id: "workhealthskillb",
         label: "Unskilled Labour: Arms of Iron",
         actionId: "work",
-        requirements: {health: 1,healthskill:2,ritual:-1,job:-1},
+        requirements: {health: 1,healthskill:2,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },
@@ -495,7 +495,7 @@ maxexecutions:1
 		alternativerecipes:
 		[{id: "workhealthinjury", chance:10}],
         actionId: "work",
-        requirements: {health: 1,healthskill:1,ritual:-1,job:-1},
+        requirements: {health: 1,healthskill:1,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },
