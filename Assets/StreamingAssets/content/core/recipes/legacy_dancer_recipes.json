@@ -1,5 +1,73 @@
 {
 "recipes": [
+{id: "legacydancer_openstudy",
+actionId:"study",
+startdescription:"find a little poem",
+description:"find a little poem",
+effects:{passion:1,dancerlegacy_plotitem_a:1},
+warmup:15,
+comments:"Opened from initial work"},
+
+{id:"legacydancer_study_plotitema_heart",
+actionId:"study",
+requirements: {dancerlegacy_plotitem_a:1,health:1},
+startdescription:"study. With health ",
+description:"FNORD",
+alternativerecipes:[
+{id:"legacydancer_opendream_heart",chance:100,additional:true}
+],
+warmup:15,
+craftable:true
+},
+
+{id:"legacydancer_study_plotitema_moth",
+actionId:"study",
+requirements: {dancerlegacy_plotitem_a:1,passion:1},
+startdescription:"study. With passion ",
+description:"FNORD",
+alternativerecipes:[
+{id:"legacydancer_opendream_moth",chance:100,additional:true}
+],
+warmup:15,
+craftable:true
+},
+
+
+{id: "legacydancer_opendream_heart",
+actionId:"dream",
+startdescription:"FNORD dream of a marruvine idol",
+description:"",
+effects: {ascensionchangea:1,dancerlegacy_plotitem_a:-1},
+mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,,mutationLevel:1,additive:true}],
+comments:"opened from studying about first plot object with health"
+},
+{id: "legacydancer_opendream_moth",
+actionId:"dream",
+startdescription:"FNORD dream of a doll",
+effects: {ascensionchangea:1,dancerlegacy_plotitem_a:-1},
+mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
+description:"",
+comments:"opened from studying about first plot object with passion"
+},
+
+{id: "legacydancer_openexplore_heart",
+actionId:"explore",
+startdescription:"",
+description:"",
+effects:{reason:1,toolheartb:1},
+comments:"opened from dreaming second plot object"},
+{id: "legacydancer_openexplore_moth",
+actionId:"explore",
+startdescription:"",
+description:"",
+effects:{reason:1,toolmothb:1},
+comments:"opened from dreaming second plot object"},
+{id: "legacydancer_opentalk",
+actionId:"talk",
+comments:"opened from first audience interaction"},
+
+
+
 {id: "worklegacydancerjob_pleadforreinstatement",
 label: "Perform at the Gaiety Theatre",
 actionId: "work",
@@ -222,7 +290,7 @@ aspects:{rejection:1},
 effects:{funds:2}
 },
 
-{id:"L_workdancerjobbenefactor_proposes_always"
+{id:"L_workdancerjobbenefactor_proposes_always",
 actionId:"work",
 requirements:{besotment:10,benefactor_proposal:-1},
 label:"Is my Benefactor about to Propose?",

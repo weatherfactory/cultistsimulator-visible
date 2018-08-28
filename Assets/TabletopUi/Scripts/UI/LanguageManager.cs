@@ -115,25 +115,25 @@ public class LanguageManager : MonoBehaviour
 		return null;		
 	}
 
-#if UNITY_EDITOR
-	bool showDebugLanguageSelect = false;
+//#if UNITY_EDITOR
+//	bool showDebugLanguageSelect = false;
 
-	void OnGUI()
-	{
-		if (GUI.Button( new Rect(Screen.width - 200, 10, 90, 20), "LANGUAGE"))
-		{
-			showDebugLanguageSelect = !showDebugLanguageSelect;
-		}
-		if (showDebugLanguageSelect)
-		{
-			for (int i=0; i<LanguageTable.GetSupportedCultures(); i++)
-			{
-				if (GUI.Button( new Rect(Screen.width - 200, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
-				{
-					SetLanguage( LanguageTable.GetCultureCode(i) );
-				}
-			}
-		}
-	}
-#endif
+//	void OnGUI()
+//	{
+//		if (GUI.Button( new Rect(Screen.width - 200, 10, 90, 20), "LANGUAGE"))
+//		{
+//			showDebugLanguageSelect = !showDebugLanguageSelect;
+//		}
+//		if (showDebugLanguageSelect)
+//		{
+//			for (int i=0; i<LanguageTable.GetSupportedCultures(); i++)
+//			{
+//				if (GUI.Button( new Rect(Screen.width - 200, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
+//				{
+//					SetLanguage( LanguageTable.GetCultureCode(i) );
+//				}
+//			}
+//		}
+//	}
+//#endif
 }
