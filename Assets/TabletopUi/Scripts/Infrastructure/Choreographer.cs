@@ -428,19 +428,20 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void ElementSendAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
 		{
-            if (tokenSlotPair.RecipeSlot.Equals(null))
-            {
-                element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
-            }
-            else
-            {
-             
-            tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
-            tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
-			if (!tokenSlotPair.Token.SituationController.IsOpen)
-				tokenSlotPair.Token.OpenSituation();
-
-            }
+			if (tokenSlotPair.RecipeSlot.Equals(null) ||
+				tokenSlotPair.Token.SituationController.situationWindow.GetStartingSlots().Contains( tokenSlotPair.RecipeSlot )==false)
+			{
+				// Abort - either the slot has gone or it's been removed from the valid list
+				element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+			}
+			else
+			{
+				// Assign element to new slot
+				tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
+				tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
+				if (!tokenSlotPair.Token.SituationController.IsOpen)
+					tokenSlotPair.Token.OpenSituation();
+			}
         }
 
         public void ElementGreedyAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
