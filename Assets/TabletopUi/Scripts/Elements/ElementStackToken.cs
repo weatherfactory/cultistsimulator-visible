@@ -447,13 +447,19 @@ namespace Assets.CS.TabletopUI {
             return !isFront || base.AllowsInteraction();
         }
 
-        public bool AllowsMerge() {
+        public bool AllowsIncomingMerge() {
             if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
                 return false;
             else
                 return TokenContainer.AllowStackMerge;
         }
 
+        public bool AllowsOutgoingMerge() {
+            if (Decays || _element.Unique || IsBeingAnimated || GetCurrentMutations().Any())
+                return false;
+            else
+                return true;	// If outgoing, it doesn't matter what it's current container is - CP
+        }
 
         #region -- Interaction ------------------------------------------------------------------------------------
 
@@ -597,7 +603,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         bool CanMergeWith(IElementStack stack) {
-            return stack.EntityId == this.EntityId && stack.AllowsMerge() && this.AllowsMerge();
+            return stack.EntityId == this.EntityId && stack.AllowsIncomingMerge() && this.AllowsOutgoingMerge();
         }
 
         public override void InteractWithTokenDroppedOn(IElementStack stackDroppedOn) {

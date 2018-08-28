@@ -146,16 +146,19 @@ public class TabletopTokenContainer : AbstractTokenContainer {
             ShowDestinationsForStack(draggedElement, isDragging);
     }
 
-    private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show) {
+    private void ShowDestinationsForStack(ElementStackToken draggedElement, bool show)
+	{
         // Stacks on Tabletop
         var tabletopStacks = GetElementStacksManager().GetStacks();
         ElementStackToken token;
 
-        foreach (var card in tabletopStacks) {
+        foreach (var card in tabletopStacks)
+		{
             if (card.EntityId != draggedElement.EntityId || card.Defunct)
                 continue;
 
-            if (!show || card.AllowsMerge()) {
+            if (!show || card.AllowsIncomingMerge())
+			{
                 token = card as ElementStackToken;
 
                 if (token != null && token != draggedElement) {
@@ -168,7 +171,8 @@ public class TabletopTokenContainer : AbstractTokenContainer {
         // Situations on Tabletop
         var situations = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();
 
-        foreach (var sit in situations) {
+        foreach (var sit in situations)
+		{
             if (sit.IsOpen)
                 sit.ShowDestinationsForStack(draggedElement, show);
 
