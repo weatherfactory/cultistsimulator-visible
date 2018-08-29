@@ -28,7 +28,8 @@ namespace Assets.Core.Interfaces
         List<SlotSpecification> GetChildSlotSpecificationsForVerb(string forVerb);
         bool HasChildSlotsForVerb(string forVerb);
         IElementStack SplitAllButNCardsToNewStack(int n, Context context);
-        bool AllowsMerge();
+        bool AllowsIncomingMerge();	// Can cards be merged onto this stack?
+		bool AllowsOutgoingMerge();	// Can this stack be merged onto another stack?
         bool Retire(bool withVfx);
         bool Retire(string vfxName);
         void Decay(float interval);

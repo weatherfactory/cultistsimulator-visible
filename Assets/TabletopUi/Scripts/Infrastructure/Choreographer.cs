@@ -432,18 +432,27 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 
         public void ElementSendAnimDone(ElementStackToken element, TokenAndSlot tokenSlotPair)
 		{
-            if (tokenSlotPair.RecipeSlot.Equals(null))
+            try
             {
-                element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+				if (tokenSlotPair.RecipeSlot.Equals(null) ||
+					tokenSlotPair.Token.SituationController.situationWindow.GetStartingSlots().Contains( tokenSlotPair.RecipeSlot )==false)
+				{
+					// Abort - either the slot has gone or it's been removed from the valid list
+					element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
+				}
+				else
+				{
+					// Assign element to new slot
+					tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
+					tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
+					if (!tokenSlotPair.Token.SituationController.IsOpen)
+						tokenSlotPair.Token.OpenSituation();
+				}
             }
-            else
+            catch
             {
-             
-            tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
-            tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
-			if (!tokenSlotPair.Token.SituationController.IsOpen)
-				tokenSlotPair.Token.OpenSituation();
-
+				// If anything goes wrong just dump the card back on the desk
+				element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
             }
         }
 
