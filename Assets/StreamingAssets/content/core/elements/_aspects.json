@@ -157,6 +157,13 @@
 			description: "An arrangement to exchange one's life for money."
         },
 								{
+            id: "dance",
+            label: "Dance",
+            isAspect: true,
+			description: "Older than language, younger than life.",
+			induces:[{id:"heartinduction",chance:30},{id:"mothglimmeringinduction",chance:30}]
+        },
+								{
             id: "demotion",
             label: "Demotion",
             isAspect: true,
@@ -178,7 +185,9 @@
             id: "ingredient",
             label: "Ingredient",
             isAspect: true,
-			description: "Fuel, ointment, pigment, patience: all are consumed in time."
+			description: "Fuel, ointment, pigment, patience: all are consumed in time.",
+			induces:[{id:"needs",chance:100}],
+			comments:"This is so anything that generates Funds will always trigger the needs timer if it's not already running."
         },
 				        {
             id: "pigment",

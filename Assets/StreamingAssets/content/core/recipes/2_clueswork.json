@@ -12,7 +12,7 @@
         id: "skillhealthhintwork",
         label: "Health",
         actionId: "work",
-        requirements: {healthskill:1},
+        requirements: {healthskill:1,job:-1},
         startdescription: "I have grown strong, but I must still devote my Health to a day's work.",
         craftable: false,
 		hintonly: true,

@@ -41,7 +41,7 @@
             id: "restlessness",
             label: "Restlessness",
             aspects:
-            {influence:1, forge:3,grail:3,lantern:3},
+            {influence:1, forge:3,grail:3,lantern:3,moth:3},
             description: "A restless longing has me. I feel that I want to do... <i>something</i>. What, exactly?",
 		lifetime: 60,
 		decayTo:"dread"
@@ -87,9 +87,9 @@
         id: "fatigue",
             label: "Health (Fatigued)",
             aspects:
-            {illhealth: 1},
+            {illhealth: 1,heart:1},
             description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
-			xtriggers: {restorehealth: health,damagehealth:injury},
+			xtriggers: {restorehealth: health,damagehealth:injury,fallsick:affliction},
 			lifetime: 60,
 			decayTo:"health",
 			icon:"health"

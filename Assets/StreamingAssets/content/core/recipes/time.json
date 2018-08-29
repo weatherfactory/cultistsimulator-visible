@@ -42,13 +42,10 @@
         actionId: "illhealth",
         requirements: {seasonsickness:1},
 				slots: [{id:"Affliction",
-					required: {health: 1,follower_wound:1},
+					required: {health: 1,follower_wound:1,fatigue:1},
 					greedy: true
 		}],
-        effects: {
-            health: -1,
-            affliction: 1,
-        },
+		aspects:{fallsick:1},
 		alternativerecipes:
 		[
 		{id: "deathofthewoundedfollower",chance:100},
