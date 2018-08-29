@@ -99,6 +99,11 @@ namespace Assets.CS.TabletopUI {
         private SituationController mansusSituation;
 		//private Vector2 preMansusTabletopPos; // Disabled cause it looks jerky -Martin
 
+		public static bool IsInMansus()
+		{
+			return isInNonSaveableState[(int)NonSaveableType.Mansus];
+		}
+
 		private float housekeepingTimer = 0.0f;	// Now a float so that we can time autosaves independent of Heart.Beat - CP
 		private float AUTOSAVE_INTERVAL = 300.0f;
 		private static float gridSnapSize = 0.0f;
