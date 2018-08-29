@@ -46,7 +46,13 @@ public class LanguageManager : MonoBehaviour
 
 	private void Awake()
 	{
+		if (_instance)
+		{
+			Debug.LogError("More than one instance of LanguageManager created!");
+		}
+		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
+		LanguageTable.LoadCulture( "en" );	// Initial load
 		FixFontStyleSlots();
 	}
 
