@@ -54,6 +54,9 @@ public class LanguageManager : MonoBehaviour
 		DontDestroyOnLoad(this.gameObject);
 		LanguageTable.LoadCulture( "en" );	// Initial load
 		FixFontStyleSlots();
+
+		// force invariant culture to fix Linux save file issues
+		System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 	}
 
 	private void FixFontStyleSlots() // Naff way to label them in the Unity editor
