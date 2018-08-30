@@ -43,6 +43,17 @@
 		warmup: 60,
         craftable: true
     },
+	{
+        id: "dreamascension_switchfromchange",
+		label: "Pursue Sensation rather than Change",
+		requirements:{ascensionchangea:1},
+		actionId: "dream",
+		effects:{desire:-1,ascensionsensationa:1},
+		startdescription:"Of all things, the desire for change is most susceptible to change. [It isn't possible to regain the desire for Change, once it's lost.]",
+		description: "I have refocused my intentions. There are experiences tucked like veins beneath the world's skin. I will know the deepest of them, though the experience might devour me.",
+		warmup: 60,
+		craftable:true
+},
 {
         id: "dreamascension_switchto_power",
 		label: "My goal is Power, now.",
