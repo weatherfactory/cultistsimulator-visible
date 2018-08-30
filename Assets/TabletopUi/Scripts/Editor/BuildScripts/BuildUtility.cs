@@ -54,6 +54,16 @@ namespace Assets.Core.Utility
 
             BuildPipeline.BuildPlayer(osxBuildPlayerOptions);
 
+            //for some reason, the OSX build barfs when copying the steam libraries in PostProcessHook...but not in here.
+            //does the folder not exist at that point?
+            //I am doing this painful hardcoded thing for now, repeating the postprocesshook for OSX only.
+
+            string pathToBuiltProject = "D:/Dropbox (Weather Factory)/CS/builds/OSX/";
+            CopySteamLibraries.Copy(osxBuildPlayerOptions.target, "D:/Dropbox (Weather Factory)/CS/builds/OSX/");
+            CopyGalaxyLibraries.Copy(osxBuildPlayerOptions.target, "D:/Dropbox (Weather Factory)/CS/builds/OSX/");
+            string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
+            AddVersionNumber(exeFolder);
+
         }
 
         public static void PerformLinuxBuild()
@@ -71,13 +81,19 @@ namespace Assets.Core.Utility
         [PostProcessBuild]
         public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
         {
+            try
+            {
+
             CopySteamLibraries.Copy(target, pathToBuiltProject);
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
             
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
             AddVersionNumber(exeFolder);
-            //leaving out for now cos permissions issues
-         //   RenameExecutable(target, pathToBuiltProject, exeFolder);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("ERROR:" + e.Message);
+            }
 
 
         }

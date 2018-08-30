@@ -269,6 +269,16 @@ namespace Assets.Editor.Tests
             throw new NotImplementedException();
         }
 
+        public bool AllowsIncomingMerge()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AllowsOutgoingMerge()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SplitAllButNCardsToNewStack(int n)
         {
             throw new NotImplementedException();
