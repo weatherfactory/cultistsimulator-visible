@@ -285,7 +285,7 @@ public class Compendium : ICompendium
         if (endingFlag == "workvictorymarriage")
             return new Ending(endingFlag, "A New Life",
                 "I was poor, and now I am rich. I was something common, and now I am something rare. On summer mornings the hills outside my bedroom window are green with sun and on winter mornings they are white with snow and over all of it is the sound of " +
-                "the laughter of our heirs, and the sound of the wind. The wind rattles the casements and runs into the hills and is gone. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORYB");
+                "the laughter of our heirs, and the sound of the wind. The wind rattles the casements and runs into the hills and is gone. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Grand, "DramaticLight", "A_ENDING_WORKVICTORYMARRIAGE");
 
         return Ending.DefaultEnding();
     }

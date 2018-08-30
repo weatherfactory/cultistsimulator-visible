@@ -176,7 +176,7 @@ icon:"poppy"
 		description:"In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes.]",
 		uniquenessgroup:benefactorm,
 		aspects:{mortal:1,benefactor_proposal:1},
-			xtriggers:{killmortal:corpse},
+			xtriggers:{killmortal:corpsevaluable},
 			lifetime:180,
 			decayTo:benefactorm
 		},
@@ -185,7 +185,7 @@ icon:"poppy"
 		description:"In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes.]",
 		uniquenessgroup:benefactorf,
 		aspects:{mortal:1,benefactor_proposal:1},
-			xtriggers:{killmortal:corpse},
+			xtriggers:{killmortal:corpsevaluable},
 				lifetime:180,
 			decayTo:benefactorf
 		},
