@@ -34,17 +34,19 @@
             label: "The Ecdysis Club [Closed]",
             description: "A cabaret with an occult reputation. It opens only certain nights of the week; it'll re-open soon.",
 			unique:true,
-			lifetime:60,
-			decayTo: locationcabaret
+			lifetime:30,
+			decayTo: locationcabaret,
+			uniquenessgroup:cabaret
         },
 						{
         id: "locationcabaret",
             label: "The Ecdysis Club",
             aspects:{location: 1,moth:1,grail:1},
             description: "A cabaret with an occult reputation.",
-			slots:[{id:"Entry", actionId: "explore", required:{funds:1},consumes:true}],
+			slots:[{id:"Entry", actionId: "explore", required:{funds:1,sulochana:1},}],
 			xtriggers:{locationcabaret:locationcabaretclosed},
-			unique:true
+			unique:true,
+			uniquenessgroup:cabaret
         },
 
 		
