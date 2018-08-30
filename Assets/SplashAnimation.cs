@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using Noon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,28 +26,10 @@ public class SplashAnimation : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	    string hackyConfigLocation = Application.persistentDataPath + "/config.ini";
-
-	    if (File.Exists(hackyConfigLocation))
-	    {
-	        string contents = File.ReadAllText(hackyConfigLocation);
-            if(contents.Contains("skiplogo=1"))
-            { 
-	            SceneManager.LoadScene(SceneNumber.QuoteScene);
-	            return;
-            }
-
-	        if (contents.Contains("verbosity=10")) //yeah I know. Sorry future me
-	        {
-	            NoonUtility.CurrentVerbosity = 10;
-	        }
-	    }
-	    else
-	    {
-	        
-            File.WriteAllText(hackyConfigLocation,"skiplogo=0");
-	    }
-	    
+		if (Config.Instance.skiplogo)	// This will allocate and read in config.ini
+		{
+			SceneManager.LoadScene(SceneNumber.QuoteScene);
+		}
 
         player.loopPointReached += EndReached;
 	    try
