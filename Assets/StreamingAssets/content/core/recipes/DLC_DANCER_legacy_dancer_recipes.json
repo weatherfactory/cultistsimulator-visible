@@ -5,7 +5,7 @@ label:"A Discarded Mystery",
 actionId:"study",
 startdescription:"Hundreds of dancers have passed through this changing room. Now and then one finds their traces like dropped petals: a lost glove, a faded photograph, an admirer's note...",
 description:"A crumpled poem - a dozen pages long - has been stuffed into an abandoned shoe. Not a love poem. I'm almost sure it's not a love poem. But when I read it, my breath comes faster, and I wonder if I am remembering something I had lost.",
-effects:{passion:1,dancerlegacy_plotitem_a:1},
+effects:{dancerlegacy_plotitem_a:1},
 
 warmup:60,
 comments:"Opened from initial work"},
@@ -16,7 +16,7 @@ label:"Consider the Crumpled Poem as a Physical Challenge",
 requirements: {dancerlegacy_plotitem_a:1,heart:1},
 startdescription:"Is this some sort of code? Are there hints here towards an unusual set of dance steps?",
 effects:{vitality:2,dancerlegacy_plotitem_a:-1},
-description:"The directions are coming clear. There are steps, certainly - steps I begin to feel - and the steps end somewhere.",
+description:"The directions are coming clear. There are steps, certainly - steps I begin to feel - and the steps end somewhere - somewhere beneath waking life.",
 alternativerecipes:[{id:"legacydancer_opendream_heart",chance:100,additional:true}],
 warmup:60,
 craftable:true
@@ -37,16 +37,24 @@ craftable:true
 
 {id: "legacydancer_opendream_heart",
 actionId:"dream",
-label:"A Dream of an Other Self",
+label:"A Dream of Another Self",
 startdescription:"In my dreams, it's coming clear. This is a dance one cannot perform alone, nor with a partner. This is a dance once dances with a doll.",
 description:"I've performed the steps, with a rag doll, but it wasn't quite right. When I peeled the doll's fabric away like skin, I felt relief, but then, of course, it fell apart... Something is wrong - wrong with the doll, or the world, or me.",
 effects: {ascensionchangea:1},
-mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,,mutationLevel:1,additive:true}],
 comments:"opened from studying about first plot object with health",
 alternativerecipes:[{id:"legacydancer_openexplore_heart",chance:100,additional:true}],
+linked:[{id:"L_desire_addhearttrack",chance:100}],
 warmup:60
-
 },
+{
+id:"L_desire_addhearttrack",
+actionId:"dream",
+label:"A Dream of Another Self",
+mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],
+},
+
+
+
 {id: "legacydancer_opendream_moth",
 label: "A Dream of an Older Self",
 actionId:"dream",
