@@ -499,6 +499,9 @@ namespace Assets.CS.TabletopUI {
 
 		private void SendStackToNearestValidSlot()
 		{
+			if (TabletopManager.IsInMansus())	// Prevent SendTo while in Mansus
+				return;
+			
 			// Compile list of valid slots
 			List<TabletopUi.TokenAndSlot> targetSlots = new List<TabletopUi.TokenAndSlot>();
 			var registeredSits = Registry.Retrieve<SituationsCatalogue>().GetRegisteredSituations();

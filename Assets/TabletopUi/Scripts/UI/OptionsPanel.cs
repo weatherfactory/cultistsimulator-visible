@@ -56,8 +56,6 @@ public class OptionsPanel : MonoBehaviour {
     [SerializeField]
     BackgroundMusic backgroundMusic;
 
-    [SerializeField] private SoundManager soundManager;
-
     [Header("Detail Windows")]
     [SerializeField]
     private AspectDetailsWindow aspectDetailsWindow;
@@ -383,7 +381,7 @@ public class OptionsPanel : MonoBehaviour {
     }
 
     void SetSoundVolumeInternal(float volume) {
-        if (soundManager == null)
+        if (SoundManager.Instance == null)
             return;
 
         float dbVol = Mathf.Lerp(soundDbMin, soundDbMax, 1f - GetClampedVol(10f - volume));
@@ -391,10 +389,10 @@ public class OptionsPanel : MonoBehaviour {
         audioMixer.SetFloat("masterVol", dbVol);
         PlayerPrefs.SetFloat(SOUNDVOLUME, volume);
 
-        if (volume == 0f && soundManager.IsOn())
-            soundManager.SetVolume(0f);
-        else if (volume > 0f && soundManager.IsOn() == false)
-            soundManager.SetVolume(1f);
+        if (volume == 0f && SoundManager.Instance.IsOn())
+            SoundManager.Instance.SetVolume(0f);
+        else if (volume > 0f && SoundManager.Instance.IsOn() == false)
+            SoundManager.Instance.SetVolume(1f);
     }
 
     float GetClampedVol(float sliderValue) {

@@ -19,6 +19,7 @@ public class Babelfish : MonoBehaviour
 	[SerializeField] private LanguageManager.eFontStyle fontStyle;
 
     private TMP_Text tmpText;       // text mesh pro text object.
+	private bool initComplete = false;
 
     private void Awake()
     {
@@ -41,8 +42,11 @@ public class Babelfish : MonoBehaviour
         LanguageManager.LanguageChanged -= OnLanguageChanged;
     }
 
-    public virtual void OnLanguageChanged()
+	public virtual void OnLanguageChanged()
     {
+		if (LanguageManager.Instance==null)
+			return;
+
 		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle );
 		if (font != null)
 		{
