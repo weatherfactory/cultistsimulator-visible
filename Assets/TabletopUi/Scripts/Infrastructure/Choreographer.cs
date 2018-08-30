@@ -435,7 +435,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             try
             {
 				if (tokenSlotPair.RecipeSlot.Equals(null) ||
-					tokenSlotPair.Token.SituationController.situationWindow.GetStartingSlots().Contains( tokenSlotPair.RecipeSlot )==false)
+					(tokenSlotPair.Token.SituationController.situationWindow.GetStartingSlots().Contains( tokenSlotPair.RecipeSlot )==false &&
+					 tokenSlotPair.Token.SituationController.situationWindow.GetOngoingSlots().Contains( tokenSlotPair.RecipeSlot )==false))
 				{
 					// Abort - either the slot has gone or it's been removed from the valid list
 					element.ReturnToTabletop(new Context(Context.ActionSource.PlayerDrag));
@@ -444,10 +445,11 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
 				{
 					// Assign element to new slot
 					tokenSlotPair.RecipeSlot.AcceptStack(element, new global::Context(Context.ActionSource.AnimEnd));
-					tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
 					if (!tokenSlotPair.Token.SituationController.IsOpen)
 						tokenSlotPair.Token.OpenSituation();
 				}
+				// Clear this whether the card arrived successfully or not, otherwise slot is locked for rest of session - CP
+				tokenSlotPair.RecipeSlot.IsBeingAnimated = false;
             }
             catch
             {
