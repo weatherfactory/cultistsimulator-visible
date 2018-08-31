@@ -305,10 +305,11 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  	   {id: "followeraction_murderhighwinter",
 	   label: "Cult Business: Murder a Stranger",
 	  actionId:"talk",
-	  startdescription:"This one always returns with a death in their pocket.",
+	  startdescription:"This one nearly always returns with a death in their pocket.",
 	  description:".",
 	  requirements: {society:1,winter:10,follower:1},
-	  linked: [{id:"followeraction_murdersuccess",chance:100},
+	  linked: [{id:"followeraction_murdersuccess",chance:90},
+	  	 {id:"followeraction_murderfailure",chance:100}
 	  ]
 	  },
 
@@ -364,10 +365,11 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  	   {id: "followeraction_craftworkhighforge",
 	   label: "Cult Business: Craftsmanship",
 	  actionId:"talk",
-	  startdescription:"My Reshaper can earn funds in illegal laboratories and shadowy manufactories.",
+	  startdescription:"My Reshaper can earn funds in illegal laboratories and shadowy manufactories. Occasionally, something may go awry.",
 	  description:".",
 	  requirements: {society:1,forge:10,follower:1},
-	  linked: [{id:"followeraction_craftworksuccess",chance:100},
+	  linked: [{id:"followeraction_craftworksuccess",chance:90},
+	  {id:"followeraction_craftworkfailure",chance:100}
 	  ]
 	  },
 
@@ -423,10 +425,11 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	    {id: "followeraction_seducehighgrail",
 	   label: "Cult Business: Seduce a Stranger",
 	  actionId:"talk",
-	  startdescription:"No-one refuses a Cyprian.",
+	  startdescription:"No-one refuses a Cyprian. Almost no-one.",
 	  description:".",
 	  requirements: {society:1,grail:10,follower:1},
-	  linked: [{id:"followeraction_seducesuccess",chance:100},
+	  linked: [{id:"followeraction_seducesuccess",chance:90},
+	  {id:"followeraction_seducefailure",chance:100}
 	  ]
 	  },
 
@@ -481,15 +484,14 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  
 	  
 	  
-	  
-	  
 	  	   {id: "followeraction_burglehighknock",
 	   label: "Cult Business: Burglary",
 	  actionId:"talk",
-	  startdescription:"My Key can defeat any lock in this city.",
+	  startdescription:"My Key should be capable of defeating any lock in this city.",
 	  description:".",
 	  requirements: {society:1,knock:10,follower:1},
-	  linked: [{id:"followeraction_burglesuccess",chance:100},
+	  linked: [{id:"followeraction_burglesuccess",chance:90},
+	  {id:"followeraction_burglefailure",chance:100}
 	  ]
 	  },
 
@@ -549,10 +551,11 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  	   {id: "followeraction_charmhighheart",
 	   label: "Cult Business: Charm",
 	  actionId:"talk",
-	  startdescription:"Not everyone is sympathetic to our aims, but my Tarantellist is popular everywhere. If we have problems with our reputation, they can certainly smooth them over.",
+	  startdescription:"Not everyone is sympathetic to our aims, but my Tarantellist is popular everywhere. If we have problems with our reputation, they can almost certainly smooth them over.",
 	  description:".",
 	  requirements: {society:1,heart:10,follower:1},
-	  linked: [{id:"followeraction_charmsuccess",chance:100},
+	  linked: [{id:"followeraction_charmsuccess",chance:90},
+	  {id:"followeraction_charmfailure",chance:100}
 	  ]
 	  },
 
@@ -601,10 +604,11 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  	   {id: "followeraction_auguryhighlantern",
 	   label: "Cult Business: Augury",
 	  actionId:"talk",
-	  startdescription:"My Seer can determine times and places where power will be available for our uses.",
+	  startdescription:"My Seer can determine times and places where power will be available for our uses. There is a small risk.",
 	  description:".",
 	  requirements: {society:1,lantern:10,follower:1},
-	  linked: [{id:"followeraction_augurysuccess",chance:100},
+	  linked: [{id:"followeraction_augurysuccess",chance:90},
+	  {id:"followeraction_auguryfailure",chance:100}
 	  ]
 	  },
 
@@ -651,7 +655,7 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	   label: "Beneath the World's Skin",
 	  actionId:"talk",
 	  startdescription: "Hours of scholarship and meditation...",
-		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could do further harm to themself. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]",
+		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could themself further harm. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]",
 	  effects: {fascination:1},
 	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
 	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
@@ -663,10 +667,11 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  	   {id: "followeraction_hoodwinkhighmoth",
 	   label: "Cult Business: Hoodwink",
 	  actionId:"talk",
-	  startdescription:"My Skintwister's is cunning enough to part fools from their treasure as easily as picking pears in an orchard.",
+	  startdescription:"My Skintwister's is cunning enough to part fools from their treasure as easily as picking pears in an orchard. (Although even a pear orchard has the occasional hazard. Wasps, perhaps.)",
 	  description:".",
 	  requirements: {society:1,moth:10,follower:1},
-	  linked: [{id:"followeraction_hoodwinksuccess",chance:100},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:90},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
 	  ]
 	  },
 
