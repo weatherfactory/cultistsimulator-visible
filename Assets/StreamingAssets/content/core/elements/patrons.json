@@ -173,22 +173,31 @@ icon:"poppy"
 		},
 						{id:"benefactorm_proposedtoplayer",
 		label: "Lord Timothy Munday",
-		description:"In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes.]",
+		description:"In a moment of passion, Lord Timothy has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to his Lordship before his enthusiasm wanes, or he'll feel spurned.]",
 		uniquenessgroup:benefactorm,
 		aspects:{mortal:1,benefactor_proposal:1},
-			xtriggers:{killmortal:corpsevaluable},
+			xtriggers:{killmortal:benefactorwill},
 			lifetime:180,
-			decayTo:benefactorm
+			decayTo:benefactorm_rejectedplayer
 		},
 				{id:"benefactorf_proposedtoplayer",
 		label: "Nicole, Fourth Marchioness of Stanford",
-		description:"In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes.]",
+		description:"In a moment of passion, the Most Honourable Nicole has proposed marriage. If I seize the moment and accept, this will transform my life... and close other doors forever. [Talk to the Marchioness before her enthusiasm wanes, or she'll feel spurned.]",
 		uniquenessgroup:benefactorf,
 		aspects:{mortal:1,benefactor_proposal:1},
-			xtriggers:{killmortal:corpsevaluable},
+			xtriggers:{killmortal:benefactorwill},
 				lifetime:180,
-			decayTo:benefactorf
+			decayTo:benefactorf_rejectedplayer
 		},
+		
+								{id: "benefactorwill",
+	label: "Dearly Departed's Papers",
+	description: "Someone who loved me has died. Perhaps they left me something in their will. I should speak to a solicitor. [Take action if you wish to pursue the matter... but there is a small chance that suspicion may fall on you.]",
+	slots:[{id:"lawyerfees",actionId:"study",label:"Lawyer's Fees",consumes:true,required:{funds:1}}],
+	aspects:{text:1},
+	icon:"documentgeneric"
+	},
+		
 								{id:"sulochana",
 		label: "Sulochana Amavasya",
 		description:"The laconic, energetic, bright-eyed, unblinking owner of the Ecdysis Club.",
