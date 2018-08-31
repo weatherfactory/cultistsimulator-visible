@@ -110,7 +110,15 @@
         hintonly:true,
         craftable: true
     },
-
+		  	{
+        id: "talktobenefactorhint",
+        label: "My Benefactor is Miffed",
+        actionId: "talk",
+        requirements: {benefactor:1},
+        startdescription: "'Not here, my dear. Let's be discreet.'",
+        craftable: false,
+		hintonly: true
+    },
 		  	{
         id: "recruitacquaintancenoculthint",
         label: "Recruit a new Follower?",

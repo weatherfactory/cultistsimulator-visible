@@ -513,7 +513,7 @@ maxexecutions:1
         id: "workhealth_noinjurychance",
         label: "Unskilled Labour",
         actionId: "work",
-        requirements: {health: 1,ritual:-1,job:-1},
+        requirements: {health: 1,ritual:-1,job:-1,benefactor:-1},
 		aspects:{employment:1},
         effects: {
           vitality:1,funds:1
@@ -531,7 +531,7 @@ maxexecutions:1
 		alternativerecipes:
 		[{id: "workhealthinjury", chance:30}],
         actionId: "work",
-        requirements: {health: 1,ritual:-1,job:-1},
+        requirements: {health: 1,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },
