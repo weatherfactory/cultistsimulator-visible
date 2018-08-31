@@ -25,7 +25,7 @@
 	label:"Our strength is matchless.",
 	startdescription:"Eyes like gas-lamps; scales like black jade. A Serpent is a powerful foe, but it's nothing before us.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:100},
+	linked: [{id:"explorevaultguardian_serpent_success_edge",chance:90},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
 		{id:"explorevaultguardian_serpent_midedge",
@@ -51,9 +51,9 @@
 	actionId: "explore",
 	requirements:{knock:10},
 	label:"We call upon the Mother of Ants, which ariseth from wounds.",
-	startdescription:"The Serpent's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But surely it will respect the power we bear.",
+	startdescription:"The Serpent's mouth is large enough to crouch in. Its tongue is the thickness of a man's shoulders. But almost certainly it will respect the power we bear.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:100},
+	linked: [{id:"explorevaultguardian_serpent_success_knock",chance:90},
 	{id:"explorevaultguardian_serpent_failure",chance:100}]	  
 		  },
 		  
@@ -144,9 +144,9 @@
 	actionId: "explore",
 	requirements:{edge:10},
 	label:"Our strength is matchless.",
-	startdescription:"The Watchers will regret standing against us.",
+	startdescription:"The Watchers will almost certainly regret standing against us.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:100},
+	linked: [{id:"explorevaultguardian_watchers_success_edge",chance:90},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
 		{id:"explorevaultguardian_watchers_midedge",
@@ -174,7 +174,7 @@
 	label:"Against the Watchers: The Grail's Seductions",
 	startdescription:"'Come closer, dear ones. We have something special for you.'",
 		  description:".",
-	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:100},
+	linked: [{id:"explorevaultguardian_watchers_success_grail",chance:90},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
 		  
@@ -201,10 +201,10 @@
 		  		  	{id:"explorevaultguardian_watchers_highmoth",
 	actionId: "explore",
 	requirements:{moth:10},
-	label:"Against the Watchers: A Certain Deception",
+	label:"Against the Watchers: A Powerful Deception",
 	startdescription:"'Look closer. Closer still. Closer! Keep looking. Closer. Now close your eyes...'",
 		  description:".",
-	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:100},
+	linked: [{id:"explorevaultguardian_watchers_success_moth",chance:90},
 	{id:"explorevaultguardian_watchers_failure",chance:100}]	  
 		  },
 		  
@@ -298,10 +298,10 @@
 	{id:"explorevaultguardian_monks_highedge",
 	actionId: "explore",
 	requirements:{edge:10},
-	label:"Our strength is irresistible.",
+	label:"Our strength is all but irresistible.",
 	startdescription:"We will dapple the earth with holy blood.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_monks_success_edge",chance:100},
+	linked: [{id:"explorevaultguardian_monks_success_edge",chance:90},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
 		{id:"explorevaultguardian_monks_midedge",
@@ -326,10 +326,10 @@
 		  	{id:"explorevaultguardian_monks_highmoth",
 	actionId: "explore",
 	requirements:{moth:10},
-	label:"The Monks: a Certain Deception",
+	label:"The Monks: a Potent Deception",
 	startdescription:"'We have brought here with us certain sacred texts, whose meaning is apparent only in moonlight - '",
 		  description:".",
-	linked: [{id:"explorevaultguardian_monks_success_moth",chance:100},
+	linked: [{id:"explorevaultguardian_monks_success_moth",chance:90},
 	{id:"explorevaultguardian_monks_failure",chance:100}]	  
 		  },
 		  
@@ -414,9 +414,9 @@
 	actionId: "explore",
 	requirements:{edge:10},
 	label:"Our strength is matchless.",
-	startdescription:"The Dead are pale as inverse shadows. They move like cobwebs in a breeze. They can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
+	startdescription:"The Dead are pale as inverse shadows. They move like cobwebs in a breeze. Almost certainly, they can't stand before us. We'll send them mumbling back into the shadows of the Wood.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_dead_success_edge",chance:100},
+	linked: [{id:"explorevaultguardian_dead_success_edge",chance:90},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
 		{id:"explorevaultguardian_dead_midedge",
@@ -444,7 +444,7 @@
 	label:"We call upon the Ivory Dove, who knows the names of all the dead.",
 	startdescription:"The Dead circle the edge of our vision like frayed dreams. The very air around us is chill with Winter's shadow. They must recognise that.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_dead_success_winter",chance:100},
+	linked: [{id:"explorevaultguardian_dead_success_winter",chance:90},
 	{id:"explorevaultguardian_dead_failure",chance:100}]	  
 		  },
 		  
@@ -527,9 +527,9 @@
 	actionId: "explore",
 	requirements:{lantern:10},
 	label:"We call upon the Watchman, who illuminates",
-	startdescription:"We have power enough to keep them at a distance.",
+	startdescription:"We most likely have power enough to keep them at a distance.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:100},
+	linked: [{id:"explorevaultguardian_soucouyants_success_lantern",chance:90},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
 		{id:"explorevaultguardian_soucouyants_midlantern",
@@ -555,9 +555,9 @@
 	actionId: "explore",
 	requirements:{moth:10},
 	label:"We call upon the Moth, who seeks among the trees of the Wood",
-	startdescription:"The Moth has power in this close-crowded forest night. We will pass secretly and safely.",
+	startdescription:"The Moth has power in this close-crowded forest night. We will pass secretly and safely... unless we are very unlucky.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:100},
+	linked: [{id:"explorevaultguardian_soucouyants_success_moth",chance:90},
 	{id:"explorevaultguardian_soucouyants_failure",chance:100}]	  
 		  },
 		  
@@ -643,9 +643,9 @@
 	actionId: "explore",
 	requirements:{grail:10},
 	label:"'We are here for your pleasure.'",
-	startdescription:"Even the Long know desire; perhaps especially the Long. This one will yield willingly to our attentions.",
+	startdescription:"Even the Long know desire; perhaps especially the Long. This one will almost certainly yield willingly to our attentions.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_long_success_grail",chance:100},
+	linked: [{id:"explorevaultguardian_long_success_grail",chance:90},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
 		{id:"explorevaultguardian_long_midgrail",
@@ -671,9 +671,9 @@
 	actionId: "explore",
 	requirements:{moth:10},
 	label:"'News! News from the Old Country! From all the Old Countries!'",
-	startdescription:"The Long are desperate for novelty. We'll take advantage of that, and we'll be gone before they know it.",
+	startdescription:"The Long are desperate for novelty. We'll take advantage of that, and if all goes well we'll be gone before they know it.",
 		  description:".",
-	linked: [{id:"explorevaultguardian_long_success_moth",chance:100},
+	linked: [{id:"explorevaultguardian_long_success_moth",chance:90},
 	{id:"explorevaultguardian_long_failure",chance:100}]	  
 		  },
 		  
