@@ -25,9 +25,9 @@
 	actionId: "explore",
 	requirements:{lantern:10},
 	label:"We call upon the Watchman, who navigates.",
-	startdescription: "The Watchman will clear our sight, so that we can pass without error.",
+	startdescription: "The Watchman will clear our sight, so that we can almost certainly pass without error.",
 		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:90},
 	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
 		  },
 		{id:"explorevaultperil_treacherousground_midlantern",
@@ -53,9 +53,9 @@
 	actionId: "explore",
 	requirements:{forge:10},
 	label:"We call upon the Madrugad, who cannot be unbalanced.",
-	startdescription:"We invoke the Madrugad, an Hour of Forge as well as Winter. We'll make our own path through. Success is certain.",
+	startdescription:"We invoke the Madrugad, an Hour of Forge as well as Winter. We'll make our own path through. Success is almost certain.",
 		  description:".",
-	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:90},
 	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
 		  },
 		  
@@ -128,9 +128,9 @@
 	actionId: "explore",
 	requirements:{moth:10},
 	label:"We call upon the Moth, who seeks among the trees of the Wood. ",
-	startdescription: "The Wood beneath the Mansus is darker even than this place. The Moth will guide our footfalls.",
+	startdescription: "The Wood beneath the Mansus is darker even than this place. The Moth will guide our footfalls. Success is very likely.",
 		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:100},
+	linked: [{id:"explorevaultperil_forest_success",chance:90},
 	{id:"explorevaultperil_forest_failure",chance:100}]	  
 		  },
 		{id:"explorevaultperil_forest_midmoth",
@@ -156,9 +156,9 @@
 	actionId: "explore",
 	requirements:{forge:10},
 	label:"Steel and Fire",
-	startdescription:"Forge is ingenious, Forge is ruthless. We'll make it through.",
+	startdescription:"Forge is ingenious, Forge is ruthless. We'll almost certainly make it through.",
 		  description:".",
-	linked: [{id:"explorevaultperil_forest_success",chance:100},
+	linked: [{id:"explorevaultperil_forest_success",chance:90},
 	{id:"explorevaultperil_forest_failure",chance:100}]	  
 		  },
 		  
@@ -237,9 +237,9 @@
 	actionId: "explore",
 	requirements:{winter:10},
 	label:"We call upon the Madrugad, who cannot be unbalanced",
-	startdescription: "The Hour called the Madrugad is at home in the cold. She will keep us from falling.",
+	startdescription: "The Hour called the Madrugad is at home in the cold. She will almost certainly keep us from falling.",
 		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:100},
+	linked: [{id:"explorevaultperil_mountains_success",chance:90},
 	{id:"explorevaultperil_mountains_failure",chance:100}]	  
 		  },
 		{id:"explorevaultperil_mountains_midwinter",
@@ -265,9 +265,9 @@
 	actionId: "explore",
 	requirements:{forge:10},
 	label:"The Mountaineer's Road",
-	startdescription:"Our Forge skills represent plenty of expertise. We'll make it through.",
+	startdescription:"Our Forge skills represent plenty of expertise. We'll almost certainly make it through.",
 		  description:".",
-	linked: [{id:"explorevaultperil_mountains_success",chance:100},
+	linked: [{id:"explorevaultperil_mountains_success",chance:90},
 	{id:"explorevaultperil_mountains_failure",chance:100}]	  
 		  },
 		  
@@ -339,9 +339,9 @@
 	actionId: "explore",
 	requirements:{grail:10},
 	label:"We call upon the Sister-and-Witch, who are pearl.",
-	startdescription: "The Sister-and-Witch will see us safe through the dry places.",
+	startdescription: "The Sister-and-Witch should see us safe through the dry places.",
 		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:100},
+	linked: [{id:"explorevaultperil_desert_success",chance:90},
 	{id:"explorevaultperil_desert_failure",chance:100}]	  
 		  },
 		{id:"explorevaultperil_desert_midgrail",
@@ -367,9 +367,9 @@
 	actionId: "explore",
 	requirements:{forge:10},
 	label:"The Sun-Scorched Road",
-	startdescription:"Our Forge skills will keep us safe and lead us through the baking rocks to the green places. We'll be fine.",
+	startdescription:"Our Forge skills should keep us safe and lead us through the baking rocks to the green places. We'll almost certainly be fine.",
 		  description:".",
-	linked: [{id:"explorevaultperil_desert_success",chance:100},
+	linked: [{id:"explorevaultperil_desert_success",chance:90},
 	{id:"explorevaultperil_desert_failure",chance:100}]	  
 		  },
 		  
@@ -443,9 +443,9 @@
 	actionId: "explore",
 	requirements:{heart:10},
 	label:"We call upon the Sister-and-Witch, who cannot be touched.",
-	startdescription:"Storms rise for the Thunderskin and subside for the Sister. The right words will carry us safe across the sea.",
+	startdescription:"Storms rise for the Thunderskin and subside for the Sister. The right words should carry us safe across the sea.",
 		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:100},
+	linked: [{id:"explorevaultperil_sea_success",chance:90},
 	{id:"explorevaultperil_sea_failure",chance:100}]	  
 		  },
 		{id:"explorevaultperil_sea_midheart",
@@ -471,9 +471,9 @@
 	actionId: "explore",
 	requirements:{forge:10},
 	label:"The Sailor's Surety",
-	startdescription:"Our Forge skills represent plenty of expertise. We'll make it through.",
+	startdescription:"Our Forge skills represent plenty of expertise. We'll almost certainly make it through.",
 		  description:".",
-	linked: [{id:"explorevaultperil_sea_success",chance:100},
+	linked: [{id:"explorevaultperil_sea_success",chance:90},
 	{id:"explorevaultperil_sea_failure",chance:100}]	  
 		  },
 		  
