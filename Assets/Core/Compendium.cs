@@ -268,24 +268,24 @@ public class Compendium : ICompendium
                 "In the upper room of the house where I am taken, my breath fogs and my eyes grow soft. The light in the room is the light at the end of the sun. I am a beautiful ending.", "suninrags", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WINTERSACRIFICE");
 
         if (endingFlag == "arrest") 
-            return new Ending(endingFlag, "Bars across the Sun",
+            return new Ending(endingFlag, "BARS ACROSS THE SUN",
                 "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
                 " that I could have done <i>everything</i> I should not. [Many Hunters have specific weaknesses. Perhaps you can use those weaknesses to stop them before they bring you to trial.]", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_ARREST"
                 );
 
         if (endingFlag == "workvictory")
-            return new Ending(endingFlag, "Evening Falls",
+            return new Ending(endingFlag, "EVENING FALLS",
                 "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is " +
                 "over the sweet earth will fill my mouth, softer than splinters. [This might be considered a victory.]", "insomnia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORY");
 
         if (endingFlag == "workvictoryb")
-            return new Ending(endingFlag, "Ambition's Tide",
+            return new Ending(endingFlag, "AMBITION'S TIDE",
                 "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my  rivals. I will grow " +
                 "used to the sound of my name. Then one day, I will die, and some time after that, my name will be heard no more. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORYB");
         if (endingFlag == "workvictorymarriage")
-            return new Ending(endingFlag, "A New Life",
+            return new Ending(endingFlag, "A NEW LIFE",
                 "I was poor, and now I am rich. I was something common, and now I am something rare. On summer mornings the hills outside my bedroom window are green with sun and on winter mornings they are white with snow and over all of it is the sound of " +
-                "the laughter of our heirs, and the sound of the wind. The wind rattles the casements and runs into the hills and is gone. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Grand, "DramaticLight", "A_ENDING_WORKVICTORYMARRIAGE");
+                "the laughter of our heirs, and the sound of the wind. The wind rattles the casements and runs into the hills and is gone. [This should be considered a minor victory.]", "moonlitcastle", EndingFlavour.Grand, "DramaticLight", "A_ENDING_WORKVICTORYMARRIAGE");
 
         return Ending.DefaultEnding();
     }
