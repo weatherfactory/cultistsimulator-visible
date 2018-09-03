@@ -17,6 +17,12 @@ namespace Assets.Core.Utility
 {
     public class BuildUtility
     {
+        private const string CONST_ELEMENTS = "elements";
+        private const string CONST_RECIPES = "recipes";
+        private const string CONST_VERBS = "verbs";
+        private const string CONST_DECKS = "decks";
+        private const string CONST_LEGACIES = "legacies";
+
 
         private static string[] GetScenes()
         {
@@ -34,15 +40,25 @@ namespace Assets.Core.Utility
             return scenes;
         }
 
-        private static void MoveDLCContent()
+
+        private static void MoveDLCContent(string contentOfType, BuildTarget target)
         {
             //for every folder in [outputpath]/[datafolder]/StreamingAssets/content/core/
-            //for every file in that folder
-            //does it begin DLC_
-            //if so, get its title (DLC_[title]_)
-            //get the DLC location (../DLC/[DLCName]/[platform]/[datafolder]/StreamingAssets/content/core/[currentfolder]/[thatfile]
-            //throw an error if it doesn't exist
-            //move (don't copy) the file to that location.
+
+
+            var contentFolder = GetCoreContentPath() + contentOfType;
+            var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+
+
+            foreach (var contentFile in contentFiles)
+            {
+                //for every file in that folder
+                //does it begin DLC_
+                //if so, get its title (DLC_[title]_)
+                //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
+                //throw an error if it doesn't exist
+                //move (don't copy) the file to that location.
+            }
 
         }
 
@@ -56,12 +72,50 @@ namespace Assets.Core.Utility
 
         }
 
+        private static string GetExeNameForTarget(BuildTarget target)
+        {
+            if (target == BuildTarget.StandaloneWindows)
+                return "cultistsimulator.exe";
+
+            if (target == BuildTarget.StandaloneOSX)
+                return "OSX.app";
+
+            if (target == BuildTarget.StandaloneLinuxUniversal)
+                return "CS.x86";
+
+            throw new ApplicationException("We don't know how to handle this build target: " + target);
+        }
+
+        private static string dataFolderForTarget(string exeName)
+        {
+            return exeName.Split('.')[0];
+        }
+
+        private static string platformFolderForTarget(BuildTarget target)
+        {
+            if (target == BuildTarget.StandaloneWindows)
+                return "Windows";
+
+            if (target == BuildTarget.StandaloneOSX)
+                return "OSX";
+
+            if (target == BuildTarget.StandaloneLinuxUniversal)
+                return "Linux";
+
+            throw new ApplicationException("We don't know how to handle this build target: " + target);
+        }
+
         private static void PostBuildFileTasks(BuildTarget target, string pathToBuiltProject)
         {
             CopySteamLibraries.Copy(target, pathToBuiltProject);
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
             AddVersionNumber(exeFolder);
+        }
+
+        private static string GetCoreContentPath()
+        {
+            return GetBuildPath();
         }
 
     private static string GetBuildPath()
@@ -79,7 +133,7 @@ namespace Assets.Core.Utility
                 new BuildPlayerOptions
                 {
                     target = BuildTarget.StandaloneWindows,
-                    locationPathName = GetBuildPath() + "cultistsimulator.exe"
+                    locationPathName = GetBuildPath() + GetExeNameForTarget(BuildTarget.StandaloneWindows)
                 };
 
             Debug.Log(">>>>>> Building Windows version to " + GetBuildPath());
@@ -105,7 +159,7 @@ namespace Assets.Core.Utility
             BuildPlayerOptions osxBuildPlayerOptions = new BuildPlayerOptions
             {
                 target = BuildTarget.StandaloneOSX,
-                locationPathName = GetBuildPath() + "OSX.app",
+                locationPathName = GetBuildPath() + GetExeNameForTarget(BuildTarget.StandaloneOSX),
                 scenes = GetScenes()
             };
 
@@ -136,8 +190,8 @@ namespace Assets.Core.Utility
                 new BuildPlayerOptions
                 {
                     target = BuildTarget.StandaloneLinuxUniversal,
-                    locationPathName =  GetBuildPath()+ "CS.x86",
-                    scenes = GetScenes()
+                    locationPathName =  GetBuildPath()+ GetExeNameForTarget(BuildTarget.StandaloneLinuxUniversal),
+                scenes = GetScenes()
                 };
             Debug.Log(">>>>>> Building Linux version to " + GetBuildPath());
 
