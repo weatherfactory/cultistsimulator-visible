@@ -17,7 +17,7 @@ namespace Assets.Core.Utility
 {
     public class BuildUtility
     {
-        
+
         private static string[] GetScenes()
         {
             string[] scenes =
@@ -28,128 +28,195 @@ namespace Assets.Core.Utility
                 "Assets/TabletopUi/Tabletop.unity",
                 "Assets/TabletopUi/GameOver.unity",
                 "Assets/TabletopUi/NewGame.unity",
+                "Assets/TabletopUi/Global.unity",
             };
 
             return scenes;
         }
 
-        public static void PerformWindowsBuild()
+        private static void MoveDLCContent()
         {
-            BuildPlayerOptions windowsBuildPlayerOptions=new BuildPlayerOptions();
-
-            windowsBuildPlayerOptions.target = BuildTarget.StandaloneWindows;
-            windowsBuildPlayerOptions.locationPathName = "D:/Dropbox (Weather Factory)/CS/builds/Windows/cultistsimulator.exe";
-            windowsBuildPlayerOptions.scenes = GetScenes();
-
-            BuildPipeline.BuildPlayer(windowsBuildPlayerOptions);
-        }
-
-        public static void PerformOsxBuild()
-        {
-            BuildPlayerOptions osxBuildPlayerOptions = new BuildPlayerOptions();
-
-            osxBuildPlayerOptions.target = BuildTarget.StandaloneOSX;
-            osxBuildPlayerOptions.locationPathName = "D:/Dropbox (Weather Factory)/CS/builds/OSX/OSX.app";
-            osxBuildPlayerOptions.scenes = GetScenes();
-
-            BuildPipeline.BuildPlayer(osxBuildPlayerOptions);
-
-            //for some reason, the OSX build barfs when copying the steam libraries in PostProcessHook...but not in here.
-            //does the folder not exist at that point?
-            //I am doing this painful hardcoded thing for now, repeating the postprocesshook for OSX only.
-
-            string pathToBuiltProject = "D:/Dropbox (Weather Factory)/CS/builds/OSX/";
-            CopySteamLibraries.Copy(osxBuildPlayerOptions.target, "D:/Dropbox (Weather Factory)/CS/builds/OSX/");
-            CopyGalaxyLibraries.Copy(osxBuildPlayerOptions.target, "D:/Dropbox (Weather Factory)/CS/builds/OSX/");
-            string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
-            AddVersionNumber(exeFolder);
-
-        }
-
-        public static void PerformLinuxBuild()
-        {
-            BuildPlayerOptions linuxBuildPlayerOptions = new BuildPlayerOptions();
-            linuxBuildPlayerOptions.target = BuildTarget.StandaloneLinuxUniversal;
-            linuxBuildPlayerOptions.locationPathName = "D:/Dropbox (Weather Factory)/CS/builds/Linux/CS.x86";
-            linuxBuildPlayerOptions.scenes = GetScenes();
-
-            BuildPipeline.BuildPlayer(linuxBuildPlayerOptions);
-        }
-
-
-
-        [PostProcessBuild]
-        public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
-        {
-            try
-            {
-
-            CopySteamLibraries.Copy(target, pathToBuiltProject);
-            CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
-            
-            string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
-            AddVersionNumber(exeFolder);
-            }
-            catch (Exception e)
-            {
-                Debug.Log("ERROR:" + e.Message);
-            }
-
+            //for every folder in [outputpath]/[datafolder]/StreamingAssets/content/core/
+            //for every file in that folder
+            //does it begin DLC_
+            //if so, get its title (DLC_[title]_)
+            //get the DLC location (../DLC/[DLCName]/[platform]/[datafolder]/StreamingAssets/content/core/[currentfolder]/[thatfile]
+            //throw an error if it doesn't exist
+            //move (don't copy) the file to that location.
 
         }
 
         public static void AddVersionNumber(string exeFolder)
         {
-            
-            string versionPath=exeFolder+"/version.txt";
 
-            File.WriteAllText(versionPath,NoonUtility.VersionNumber.ToString());
+            string versionPath = exeFolder + "/version.txt";
+
+            File.WriteAllText(versionPath, NoonUtility.VersionNumber.ToString());
 
 
         }
 
-        public static void RenameExecutable(BuildTarget target, string pathToBuiltProject,string exeFolder)
+        private static void PostBuildFileTasks(BuildTarget target, string pathToBuiltProject)
         {
-            if (target == BuildTarget.StandaloneOSX)
-                return; //we dont rename OSX and their weird package file folder thing
+            CopySteamLibraries.Copy(target, pathToBuiltProject);
+            CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
+            string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
+            AddVersionNumber(exeFolder);
+        }
 
-                string currentExeName = Path.GetFileNameWithoutExtension(pathToBuiltProject);
-            string renameExecutableTo;
-            string dataFolder;
-            string renameDataFolderTo;
-            if (target == BuildTarget.StandaloneLinux || target == BuildTarget.StandaloneLinux64)
+    private static string GetBuildPath()
+        {
+            return System.Environment.GetCommandLineArgs()[1];
+        }
+
+        public static void PerformWindowsBuild()
+        {
+            try
             {
-                //I just wrote the code below, but now it looks like Unity still lets us decide the Linux executable name.
-                return;
+
+
+            BuildPlayerOptions windowsBuildPlayerOptions =
+                new BuildPlayerOptions
+                {
+                    target = BuildTarget.StandaloneWindows,
+                    locationPathName = GetBuildPath() + "cultistsimulator.exe"
+                };
+
+            Debug.Log(">>>>>> Building Windows version to " + GetBuildPath());
+
+            windowsBuildPlayerOptions.scenes = GetScenes();
+
+            BuildPipeline.BuildPlayer(windowsBuildPlayerOptions);
+            PostBuildFileTasks(windowsBuildPlayerOptions.target, GetBuildPath());
+            }
+            catch (Exception e)
+            {
+                Debug.Log("ERROR: " + e.Message);
+            }
+
+        }
+
+        public static void PerformOsxBuild()
+        {
+            try
+            {
+
+
+            BuildPlayerOptions osxBuildPlayerOptions = new BuildPlayerOptions
+            {
+                target = BuildTarget.StandaloneOSX,
+                locationPathName = GetBuildPath() + "OSX.app",
+                scenes = GetScenes()
+            };
+
+            Debug.Log(">>>>>> Building OSX version to " + GetBuildPath());
+
+            BuildPipeline.BuildPlayer(osxBuildPlayerOptions);
+
+            //for some reason, the OSX build barfs when copying the steam libraries in PostProcessHook...but not in here.
+            //So I've moved it to here.
+            //does the folder not exist at that point?
+
+        PostBuildFileTasks(osxBuildPlayerOptions.target,GetBuildPath());
+
+            }
+            catch (Exception e)
+            {
+                Debug.Log("ERROR: " + e.Message);
+            }
+        }
+
+        public static void PerformLinuxBuild()
+        {
+            try
+            {
+
+
+            BuildPlayerOptions linuxBuildPlayerOptions =
+                new BuildPlayerOptions
+                {
+                    target = BuildTarget.StandaloneLinuxUniversal,
+                    locationPathName =  GetBuildPath()+ "CS.x86",
+                    scenes = GetScenes()
+                };
+            Debug.Log(">>>>>> Building Linux version to " + GetBuildPath());
+
+            BuildPipeline.BuildPlayer(linuxBuildPlayerOptions);
+
+            PostBuildFileTasks(linuxBuildPlayerOptions.target, GetBuildPath());
+            }
+            catch (Exception e)
+            {
+                Debug.Log("ERROR: " + e.Message);
+            }
+        }
+
+
+
+        //[PostProcessBuild]
+        //public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
+        //{
+        //    try
+        //    {
+
+        //    CopySteamLibraries.Copy(target, pathToBuiltProject);
+        //    CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
+            
+        //    string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
+        //    AddVersionNumber(exeFolder);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.Log("ERROR: " + e.Message);
+        //    }
+
+
+        //}
+
+
+
+        //public static void RenameExecutable(BuildTarget target, string pathToBuiltProject,string exeFolder)
+        //{
+        //    if (target == BuildTarget.StandaloneOSX)
+        //        return; //we dont rename OSX and their weird package file folder thing
+
+        //        string currentExeName = Path.GetFileNameWithoutExtension(pathToBuiltProject);
+        //    string renameExecutableTo;
+        //    string dataFolder;
+        //    string renameDataFolderTo;
+        //    if (target == BuildTarget.StandaloneLinux || target == BuildTarget.StandaloneLinux64)
+        //    {
+        //        //I just wrote the code below, but now it looks like Unity still lets us decide the Linux executable name.
+        //        return;
                 
-                //renameExecutableTo = exeFolder + "/CS.x86";
-                //dataFolder = exeFolder + "/" + currentExeName + "_Data";
-                //renameDataFolderTo = exeFolder + "/CS_Data";
-            }
+        //        //renameExecutableTo = exeFolder + "/CS.x86";
+        //        //dataFolder = exeFolder + "/" + currentExeName + "_Data";
+        //        //renameDataFolderTo = exeFolder + "/CS_Data";
+        //    }
 
-            else if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
-            {
+        //    else if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
+        //    {
 
-                renameExecutableTo = exeFolder + "/cultistsimulator.exe";
-                dataFolder = exeFolder + "/" + currentExeName + "_Data";
-                renameDataFolderTo = exeFolder + "/cultistsimulator_Data";
+        //        renameExecutableTo = exeFolder + "/cultistsimulator.exe";
+        //        dataFolder = exeFolder + "/" + currentExeName + "_Data";
+        //        renameDataFolderTo = exeFolder + "/cultistsimulator_Data";
 
-            }
+        //    }
 
-            else
-            {
-                throw new ApplicationException("Can't find a way to handle this build target in RenameExecutable: " +
-                                               target);
-            }
+        //    else
+        //    {
+        //        throw new ApplicationException("Can't find a way to handle this build target in RenameExecutable: " +
+        //                                       target);
+        //    }
 
-            if (File.Exists(renameExecutableTo))
-                    File.Delete(renameExecutableTo);
-                if(Directory.Exists(renameDataFolderTo))
-                    Directory.Delete(renameDataFolderTo,true);
+        //    if (File.Exists(renameExecutableTo))
+        //            File.Delete(renameExecutableTo);
+        //        if(Directory.Exists(renameDataFolderTo))
+        //            Directory.Delete(renameDataFolderTo,true);
 
-           File.Move(pathToBuiltProject, renameExecutableTo);
-            Directory.Move(dataFolder,renameDataFolderTo);
-            }
+        //   File.Move(pathToBuiltProject, renameExecutableTo);
+        //    Directory.Move(dataFolder,renameDataFolderTo);
+        //    }
         }
     }
 
