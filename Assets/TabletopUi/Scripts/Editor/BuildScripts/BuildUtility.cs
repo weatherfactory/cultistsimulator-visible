@@ -163,7 +163,8 @@ namespace Assets.Core.Utility
             Console.WriteLine(">>>>> Copying Steam libraries");
             CopySteamLibraries.Copy(target, pathToBuiltProject);
             Console.WriteLine(">>>>> Copying Galaxy libraries");
-            CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
+            CopyGalaxyLibraries.Copy(target, pathToBuiltProject + "/"); //we need the extra slash; we've been avoiding using it elsewhere in this code, but the GOG code expects it, and I don't want to edit it
+            //It belatedly occurs to me that there's a reason for using trailing slashes to indicate folders.
 
             AddVersionNumber(pathToBuiltProject);
 
