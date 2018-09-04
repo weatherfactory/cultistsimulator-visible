@@ -14,19 +14,29 @@ public class SteamworksIntegration : MonoBehaviour
 
 	    try
 	    {
-	        Facepunch.Steamworks.Config.ForUnity(Application.platform.ToString());
+
+	        NoonUtility.Log("Steamworks integration startup.", 1);
+            Facepunch.Steamworks.Config.ForUnity(Application.platform.ToString());
 	        if (Client.Instance == null)
 	            new Facepunch.Steamworks.Client(SteamAppId);
-	    }
-	    catch
+
+	        NoonUtility.Log("Initialised Facepunch Steamworks client", 1);
+
+        }
+        catch (Exception e)
 	    {
-            NoonUtility.Log("Failed Steam integration startup, which is fine if you're not on Steam.",1);
+            NoonUtility.Log("Failed Steamworks integration startup with error " + e.Message + " which is fine if you're not on Steam.",1);
+
+            NoonUtility.Log(e.StackTrace);
 	    }
     }
 	
-	// Update is called once per frame
-	void Update ()
+	
+	void OnDestroy ()
 	{
-
-	}
+	    if (Client.Instance != null)
+	    {
+	        Client.Instance.Dispose();
+	    }
+    }
 }
