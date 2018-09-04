@@ -111,8 +111,9 @@ namespace Assets.Core.Utility
 
         public static void AddVersionNumber(string exeFolder)
         {
-
+            
             string versionPath = exeFolder + "/version.txt";
+            Console.WriteLine(">>>>> Writing version to " + versionPath);
 
             File.WriteAllText(versionPath, NoonUtility.VersionNumber.ToString());
 
@@ -159,10 +160,14 @@ namespace Assets.Core.Utility
         {
             Console.WriteLine("pathToBuiltProject in postfilebuildtasks: " + pathToBuiltProject);
 
+            Console.WriteLine(">>>>> Copying Steam libraries");
             CopySteamLibraries.Copy(target, pathToBuiltProject);
+            Console.WriteLine(">>>>> Copying Galaxy libraries");
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
-            string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
-            AddVersionNumber(exeFolder);
+
+            AddVersionNumber(pathToBuiltProject);
+
+            Console.WriteLine(">>>>> Moving DLC content to individual DLC locations");
 
             MoveDLCContent(target, CONST_ELEMENTS);
             MoveDLCContent(target, CONST_RECIPES);
