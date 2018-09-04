@@ -22,7 +22,12 @@ namespace Assets.Core.Utility
         private const string CONST_VERBS = "verbs";
         private const string CONST_DECKS = "decks";
         private const string CONST_LEGACIES = "legacies";
-
+        private const string CONST_DLC = "DLC";
+        private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
+        private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
+        private const char CONST_NAME_SEPARATOR_CHAR = '_';
+        private const char CONST_SLASH_CHAR = '/';
+        
 
         private static string[] GetScenes()
         {
@@ -41,23 +46,65 @@ namespace Assets.Core.Utility
         }
 
 
-        private static void MoveDLCContent(string contentOfType, BuildTarget target)
+        private static void MoveDLCContent(BuildTarget target, string contentOfType)
         {
             //for every folder in [outputpath]/[datafolder]/StreamingAssets/content/core/
 
 
-            var contentFolder = GetCoreContentPath() + contentOfType;
-            var contentFiles = Directory.GetFiles(contentFolder).ToList().FindAll(f => f.EndsWith(".json"));
+            var contentPathThisFolder = GetCoreContentPath(target) + CONST_SLASH_CHAR + contentOfType;
+            Console.WriteLine(">>>>>> Searching for DLC in " + contentPathThisFolder);
+
+            var contentFiles = Directory.GetFiles(contentPathThisFolder).ToList().FindAll(f => f.EndsWith(".json"));
 
 
-            foreach (var contentFile in contentFiles)
+            foreach (var contentFileNameWithPath in contentFiles)
             {
-                //for every file in that folder
+                Console.WriteLine("checking " + contentFileNameWithPath);
+
+                int dlcMarkerIndex=contentFileNameWithPath.IndexOf(CONST_DLC + CONST_NAME_SEPARATOR_CHAR);
+
                 //does it begin DLC_
+                if (dlcMarkerIndex>-1)
+                {
                 //if so, get its title (DLC_[title]_)
-                //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
-                //throw an error if it doesn't exist
-                //move (don't copy) the file to that location.
+                    string dlcFilenameWithoutPath = contentFileNameWithPath.Substring(dlcMarkerIndex);
+                    Console.WriteLine("DLC file found! -" + dlcFilenameWithoutPath);
+
+                    string dlctitle = dlcFilenameWithoutPath.Split(CONST_NAME_SEPARATOR_CHAR)[1];
+                    if (string.IsNullOrEmpty(dlctitle))
+                        throw new ApplicationException("Couldn't find DLC title for file " + contentFileNameWithPath );
+
+                    //get the DLC location (../DLC/[title]/[platform]/[datafolder]/StreamingAssets/content/core/[contentOfType]/[thatfile]
+
+                    string dlcDestinationDir =
+                        getBuildRootPath() + CONST_SLASH_CHAR + CONST_DLC + CONST_SLASH_CHAR +
+                        dlctitle + CONST_SLASH_CHAR +
+                        platformFolderForTarget(target) + CONST_SLASH_CHAR +
+                        dataFolderForTarget(exeNameForTarget(target)) + CONST_SLASH_CHAR +
+                        CONST_CORE_CONTENT_LOCATION + CONST_SLASH_CHAR +
+                        contentOfType;
+
+                        String dlcFileDestination=dlcDestinationDir + CONST_SLASH_CHAR + dlcFilenameWithoutPath;
+                    if (!Directory.Exists(dlcDestinationDir))
+                    {
+                        Console.WriteLine(">>>>>> creating directory: " + dlcFileDestination);
+                        Directory.CreateDirectory(dlcDestinationDir);
+                    }
+
+                    if (File.Exists(dlcFileDestination))
+                    {
+                        Console.WriteLine(">>>>>> deleting old file at this destination");
+                        File.Delete(dlcFileDestination);
+                    }
+                        
+
+                    Console.WriteLine(">>>>>> moving file " + contentFileNameWithPath + " to " + dlcFileDestination);
+                    File.Move(contentFileNameWithPath, dlcFileDestination);
+                    
+                    //throw an error if it doesn't exist
+                    //move (don't copy) the file to that location.
+                }
+
             }
 
         }
@@ -72,7 +119,7 @@ namespace Assets.Core.Utility
 
         }
 
-        private static string GetExeNameForTarget(BuildTarget target)
+        private static string exeNameForTarget(BuildTarget target)
         {
             if (target == BuildTarget.StandaloneWindows)
                 return "cultistsimulator.exe";
@@ -88,7 +135,7 @@ namespace Assets.Core.Utility
 
         private static string dataFolderForTarget(string exeName)
         {
-            return exeName.Split('.')[0];
+            return exeName.Split('.')[0] + CONST_DATA_FOLDER_SUFFIX;
         }
 
         private static string platformFolderForTarget(BuildTarget target)
@@ -111,20 +158,34 @@ namespace Assets.Core.Utility
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
             AddVersionNumber(exeFolder);
+
+            MoveDLCContent(target, CONST_ELEMENTS);
+            MoveDLCContent(target, CONST_RECIPES);
+            MoveDLCContent(target, CONST_VERBS);
+            MoveDLCContent(target, CONST_DECKS);
+            MoveDLCContent(target, CONST_LEGACIES);
         }
 
-        private static string GetCoreContentPath()
+        private static string GetCoreContentPath(BuildTarget target)
         {
-            return GetBuildPath();
+            return getBuildOutputPathForPlatform(target) + CONST_SLASH_CHAR +  dataFolderForTarget(exeNameForTarget(target)) +  CONST_SLASH_CHAR +  CONST_CORE_CONTENT_LOCATION;
         }
 
-    private static string GetBuildPath()
+        private static string getBuildRootPath()
         {
             return System.Environment.GetCommandLineArgs()[1];
+
+        }
+
+        private static string getBuildOutputPathForPlatform(BuildTarget target)
+        {
+            return getBuildRootPath() + CONST_SLASH_CHAR + platformFolderForTarget(target);
         }
 
         public static void PerformWindowsBuild()
         {
+
+            BuildTarget thisBuildTarget = BuildTarget.StandaloneWindows;
             try
             {
 
@@ -133,37 +194,39 @@ namespace Assets.Core.Utility
                 new BuildPlayerOptions
                 {
                     target = BuildTarget.StandaloneWindows,
-                    locationPathName = GetBuildPath() + GetExeNameForTarget(BuildTarget.StandaloneWindows)
+                    locationPathName = getBuildOutputPathForPlatform(thisBuildTarget) + CONST_SLASH_CHAR + exeNameForTarget(thisBuildTarget)
                 };
 
-            Debug.Log(">>>>>> Building Windows version to " + GetBuildPath());
+                Console.WriteLine(">>>>>> Building Windows version to " + windowsBuildPlayerOptions.locationPathName);
 
             windowsBuildPlayerOptions.scenes = GetScenes();
 
             BuildPipeline.BuildPlayer(windowsBuildPlayerOptions);
-            PostBuildFileTasks(windowsBuildPlayerOptions.target, GetBuildPath());
+
+            PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
             }
             catch (Exception e)
             {
-                Debug.Log("ERROR: " + e.Message);
+                Debug.Log(">>>>>>ERROR: " + e.Message);
             }
 
         }
 
         public static void PerformOsxBuild()
         {
+            BuildTarget thisBuildTarget = BuildTarget.StandaloneOSX;
+
             try
             {
-
 
             BuildPlayerOptions osxBuildPlayerOptions = new BuildPlayerOptions
             {
                 target = BuildTarget.StandaloneOSX,
-                locationPathName = GetBuildPath() + GetExeNameForTarget(BuildTarget.StandaloneOSX),
+                locationPathName = getBuildOutputPathForPlatform(thisBuildTarget) + CONST_SLASH_CHAR + exeNameForTarget(thisBuildTarget),
                 scenes = GetScenes()
             };
 
-            Debug.Log(">>>>>> Building OSX version to " + GetBuildPath());
+           Console.WriteLine(">>>>>> Building OSX version to " + osxBuildPlayerOptions.locationPathName);
 
             BuildPipeline.BuildPlayer(osxBuildPlayerOptions);
 
@@ -171,7 +234,7 @@ namespace Assets.Core.Utility
             //So I've moved it to here.
             //does the folder not exist at that point?
 
-        PostBuildFileTasks(osxBuildPlayerOptions.target,GetBuildPath());
+        PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
 
             }
             catch (Exception e)
@@ -182,22 +245,24 @@ namespace Assets.Core.Utility
 
         public static void PerformLinuxBuild()
         {
+            BuildTarget thisBuildTarget = BuildTarget.StandaloneLinuxUniversal;
+
+
             try
             {
-
 
             BuildPlayerOptions linuxBuildPlayerOptions =
                 new BuildPlayerOptions
                 {
                     target = BuildTarget.StandaloneLinuxUniversal,
-                    locationPathName =  GetBuildPath()+ GetExeNameForTarget(BuildTarget.StandaloneLinuxUniversal),
+                    locationPathName =  getBuildOutputPathForPlatform(thisBuildTarget) + CONST_SLASH_CHAR + exeNameForTarget(thisBuildTarget),
                 scenes = GetScenes()
                 };
-            Debug.Log(">>>>>> Building Linux version to " + GetBuildPath());
+                Console.WriteLine(">>>>>> Building Linux version to " + linuxBuildPlayerOptions.locationPathName);
 
             BuildPipeline.BuildPlayer(linuxBuildPlayerOptions);
 
-            PostBuildFileTasks(linuxBuildPlayerOptions.target, GetBuildPath());
+            PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
             }
             catch (Exception e)
             {
@@ -228,49 +293,6 @@ namespace Assets.Core.Utility
         //}
 
 
-
-        //public static void RenameExecutable(BuildTarget target, string pathToBuiltProject,string exeFolder)
-        //{
-        //    if (target == BuildTarget.StandaloneOSX)
-        //        return; //we dont rename OSX and their weird package file folder thing
-
-        //        string currentExeName = Path.GetFileNameWithoutExtension(pathToBuiltProject);
-        //    string renameExecutableTo;
-        //    string dataFolder;
-        //    string renameDataFolderTo;
-        //    if (target == BuildTarget.StandaloneLinux || target == BuildTarget.StandaloneLinux64)
-        //    {
-        //        //I just wrote the code below, but now it looks like Unity still lets us decide the Linux executable name.
-        //        return;
-                
-        //        //renameExecutableTo = exeFolder + "/CS.x86";
-        //        //dataFolder = exeFolder + "/" + currentExeName + "_Data";
-        //        //renameDataFolderTo = exeFolder + "/CS_Data";
-        //    }
-
-        //    else if (target == BuildTarget.StandaloneWindows || target == BuildTarget.StandaloneWindows64)
-        //    {
-
-        //        renameExecutableTo = exeFolder + "/cultistsimulator.exe";
-        //        dataFolder = exeFolder + "/" + currentExeName + "_Data";
-        //        renameDataFolderTo = exeFolder + "/cultistsimulator_Data";
-
-        //    }
-
-        //    else
-        //    {
-        //        throw new ApplicationException("Can't find a way to handle this build target in RenameExecutable: " +
-        //                                       target);
-        //    }
-
-        //    if (File.Exists(renameExecutableTo))
-        //            File.Delete(renameExecutableTo);
-        //        if(Directory.Exists(renameDataFolderTo))
-        //            Directory.Delete(renameDataFolderTo,true);
-
-        //   File.Move(pathToBuiltProject, renameExecutableTo);
-        //    Directory.Move(dataFolder,renameDataFolderTo);
-        //    }
         }
     }
 
