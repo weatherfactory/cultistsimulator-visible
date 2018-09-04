@@ -135,6 +135,9 @@ namespace Assets.Core.Utility
 
         private static string dataFolderForTarget(string exeName)
         {
+            if (exeName.Contains("OSX")) //OSX is cray
+                return "OSX.app/Contents/Resources/Data";
+            else
             return exeName.Split('.')[0] + CONST_DATA_FOLDER_SUFFIX;
         }
 
@@ -154,6 +157,8 @@ namespace Assets.Core.Utility
 
         private static void PostBuildFileTasks(BuildTarget target, string pathToBuiltProject)
         {
+            Console.WriteLine("pathToBuiltProject in postfilebuildtasks: " + pathToBuiltProject);
+
             CopySteamLibraries.Copy(target, pathToBuiltProject);
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
             string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
@@ -179,7 +184,8 @@ namespace Assets.Core.Utility
 
         private static string getBuildOutputPathForPlatform(BuildTarget target)
         {
-            return getBuildRootPath() + CONST_SLASH_CHAR + platformFolderForTarget(target);
+
+                return getBuildRootPath() + CONST_SLASH_CHAR + platformFolderForTarget(target);
         }
 
         public static void PerformWindowsBuild()
@@ -233,6 +239,7 @@ namespace Assets.Core.Utility
             //for some reason, the OSX build barfs when copying the steam libraries in PostProcessHook...but not in here.
             //So I've moved it to here.
             //does the folder not exist at that point?
+
 
         PostBuildFileTasks(thisBuildTarget, getBuildOutputPathForPlatform(thisBuildTarget));
 

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Facepunch.Editor
         //this code credit FACEPUNCH thank you sweary Garry
         public static void Copy(BuildTarget target, string pathToBuiltProject)
         {
-            Debug.Log("BUILD: copying Steam libraries to useful locations.");
+          Console.WriteLine("BUILD: copying Steam libraries to useful locations.");
             //
             // Only steam
             //
@@ -33,8 +34,10 @@ namespace Facepunch.Editor
 
             //Apple dylibs need to go deeper
             if (target == BuildTarget.StandaloneOSX)
-                FileUtil.ReplaceFile("libsteam_api.dylib", System.IO.Path.GetDirectoryName(pathToBuiltProject) + "/OSX.app/Contents/Frameworks/MonoEmbedRuntime/osx/libsteam_api.dylib");
-
+            {
+                Console.WriteLine("pathToBuiltProject in CopySteamLibraries: " + pathToBuiltProject);
+                FileUtil.ReplaceFile("libsteam_api.dylib", pathToBuiltProject + "/OSX.app/Contents/Frameworks/MonoEmbedRuntime/osx/libsteam_api.dylib");
+            }
             if (target == BuildTarget.StandaloneLinux64 || target == BuildTarget.StandaloneLinuxUniversal)
                 FileUtil.ReplaceFile("libsteam_api64.so", System.IO.Path.GetDirectoryName(pathToBuiltProject) + "/libsteam_api64.so");
 
