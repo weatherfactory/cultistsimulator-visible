@@ -89,6 +89,7 @@ public class Heart : MonoBehaviour
     void OnApplicationQuit()
     {
         Registry.Retrieve<TabletopManager>().SaveGame(true);
+        SteamworksIntegration.Release();
     }
 
     public void AdvanceTime(float intervalThisBeat)
