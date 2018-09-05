@@ -833,6 +833,11 @@
             Total size of the file in bytes.
             </summary>
         </member>
+        <member name="P:Facepunch.Steamworks.RemoteFile.FileTimestamp">
+            <summary>
+            Date modified timestamp in epoch format.
+            </summary>
+        </member>
         <member name="M:Facepunch.Steamworks.RemoteFile.OpenWrite">
             <summary>
             Creates a <see cref="T:Facepunch.Steamworks.RemoteFileWriteStream"/> used to write to this file.
@@ -1117,6 +1122,21 @@
             Sends a message to a Steam friend. Returns true if success
             </summary>
         </member>
+        <member name="M:Facepunch.Steamworks.User.GetRichPresence(System.String)">
+            <summary>
+            Find a rich presence value by key for current user. Will be null if not found.
+            </summary>
+        </member>
+        <member name="M:Facepunch.Steamworks.User.SetRichPresence(System.String,System.String)">
+            <summary>
+            Sets a rich presence value by key for current user.
+            </summary>
+        </member>
+        <member name="M:Facepunch.Steamworks.User.ClearRichPresence">
+            <summary>
+            Clears all of the current user's rich presence data.
+            </summary>
+        </member>
         <member name="P:Facepunch.Steamworks.Voice.OptimalSampleRate">
             <summary>
             Returns the optimal sample rate for voice - according to Steam
@@ -1158,11 +1178,6 @@
             or patience to find this shit on my own, so massive thanks to him. And also massive thanks to him
             for releasing his shit open source under the MIT license so we can all learn and iterate.
             
-            </summary>
-        </member>
-        <member name="P:Facepunch.Steamworks.Config.IsUnity">
-            <summary>
-            Should be true if we're using Unity
             </summary>
         </member>
         <member name="M:Facepunch.Steamworks.Config.ForcePlatform(Facepunch.Steamworks.OperatingSystem,Facepunch.Steamworks.Architecture)">
@@ -1597,6 +1612,17 @@
             You should never have to call this manually
             </summary>
         </member>
+        <member name="M:Facepunch.Steamworks.Workshop.GetSubscribedItemIds">
+            <summary>
+            Get the IDs of all subscribed workshop items. Not all items may be currently installed.
+            </summary>
+        </member>
+        <member name="M:Facepunch.Steamworks.Workshop.GetSubscribedItemIds(System.Collections.Generic.List{System.UInt64})">
+            <summary>
+            Get the IDs of all subscribed workshop items, avoiding repeated allocations.
+            Not all items may be currently installed.
+            </summary>
+        </member>
         <member name="M:Facepunch.Steamworks.Workshop.CreateQuery">
             <summary>
             Creates a query object, which is used to get a list of items.
@@ -1668,6 +1694,11 @@
             <summary>
             When querying a specific user's items this defines what
             type of items you're looking for.
+            </summary>
+        </member>
+        <member name="E:Facepunch.Steamworks.Workshop.Editor.OnChangesSubmitted">
+            <summary>
+            Called when published changes have finished being submitted.
             </summary>
         </member>
         <member name="P:Facepunch.Steamworks.Workshop.Item.Url">
