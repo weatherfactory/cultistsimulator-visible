@@ -162,14 +162,16 @@ icon:"poppy"
 		description:"Lord Timothy no longer sends me his little notes.",
 		uniquenessgroup:benefactorm,
 		aspects:{mortal:1},
-			xtriggers:{killmortal:corpse}
+			xtriggers:{killmortal:corpse},
+			icon:benefactorm
 		},
 				{id:"benefactorf_rejectedplayer",
 		label: "Nicole, Fourth Marchioness of Stanford",
 		description:"The Most Honourable Marchioness of Stanford has been heard to declare that she doesn't quite understand exactly what she saw in me.",
 		uniquenessgroup:benefactorf,
 		aspects:{mortal:1},
-			xtriggers:{killmortal:corpse}
+			xtriggers:{killmortal:corpse},
+			icon:benefactorf
 		},
 						{id:"benefactorm_proposedtoplayer",
 		label: "Lord Timothy Munday",
@@ -178,7 +180,8 @@ icon:"poppy"
 		aspects:{mortal:1,benefactor_proposal:1},
 			xtriggers:{killmortal:benefactorwill},
 			lifetime:180,
-			decayTo:benefactorm_rejectedplayer
+			decayTo:benefactorm_rejectedplayer,
+			icon:benefactorm
 		},
 				{id:"benefactorf_proposedtoplayer",
 		label: "Nicole, Fourth Marchioness of Stanford",
@@ -187,7 +190,8 @@ icon:"poppy"
 		aspects:{mortal:1,benefactor_proposal:1},
 			xtriggers:{killmortal:benefactorwill},
 				lifetime:180,
-			decayTo:benefactorf_rejectedplayer
+			decayTo:benefactorf_rejectedplayer,
+			icon:benefactorf
 		},
 		
 								{id: "benefactorwill",
