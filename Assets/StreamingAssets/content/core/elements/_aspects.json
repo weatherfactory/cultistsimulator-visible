@@ -139,6 +139,12 @@
 			description: "Brain or heart or hand or eye. Most of us are born with most of them."
         },
 										{
+            id: "scar",
+            label: "Scar",
+            isAspect: true,
+			description: "The irrevocable outcome of an irrevocable act."
+        },
+										{
             id: "advancement",
             label: "Advancement",
             isAspect: true,
@@ -663,6 +669,12 @@
 			comments: "Recipe aspect; runs when we want to flip someone's loyalties",
 			noartneeded: true
         },
+		{id:"scarability",
+		label:"Scar Ability",
+		description:"Permanently converts an ability (active or exhausted) to its scar version",
+		isAspect:true,
+		noartneeded:true},
+		
 				 {
             id: "restorehealth",
             label: "Restore Health",

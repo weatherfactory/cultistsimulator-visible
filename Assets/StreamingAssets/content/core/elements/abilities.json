@@ -24,7 +24,7 @@
 				ability:1
             },
             animFrames: 1,
-			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:fatigue,society:fatigue},
+			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:fatigue,society:fatigue,scar_ability:scar_heart},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
         },
 				 {
@@ -63,7 +63,7 @@
 			  			slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1},actionId:"dream"},
 			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1},actionId:"dream"}],
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
-			xtriggers: {restorehealth: health,rite:scar_knock,society:scar_knock},
+			xtriggers: {restorehealth: health,rite:scar_knock,society:scar_knock,scar_ability:scar_heart},
 			lifetime: 150,
 			decayTo: "decrepitude"
 			},
@@ -73,7 +73,8 @@
             description: "I have gone against my own principles, or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion",
-			icon:"passion"
+			icon:"passion",
+			xtriggers:{scarability:scar_moth},
 			},
 												{
         id: "passionexhausted",
@@ -81,7 +82,8 @@
             description: "My passions burn low. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion",
-			icon:"passion"
+			icon:"passion",
+			xtriggers:{scarability:scar_moth},
 			},
 						{
         id: "fatigue",
@@ -89,7 +91,7 @@
             aspects:
             {illhealth: 1,heart:1},
             description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
-			xtriggers: {restorehealth: health,damagehealth:injury,fallsick:affliction},
+			xtriggers: {restorehealth: health,damagehealth:injury,fallsick:affliction,scarability:scar_heart},
 			lifetime: 60,
 			decayTo:"health",
 			icon:"health"
@@ -98,7 +100,7 @@
 			id: "affliction",
             label: "An Affliction",
             aspects:{illhealth: 1, winter:2,ingredient:1},
-			xtriggers: {restorehealth: health},
+			xtriggers: {restorehealth: health,,scarability:scar_heart},
 						slots: [{id: "Medicine",label:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
 			{id:"Vitality",label:"...Vitality",actionId:"dream",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
             description: "Disease has left me weak. I need rest and nourishment, if I am to recover. [Dream on an Affliction to transform it back to Health, before the card decays.]",
@@ -118,7 +120,7 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration}
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern}
 				
         },
 		        {
@@ -127,7 +129,8 @@
 			description: "My mind is weary.  [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime:60,
 			decayTo:"reason",		
-icon:"reason"
+icon:"reason",
+			xtriggers:{scarability:scar_lantern},
         },
 				 {
             id: "erudition",
