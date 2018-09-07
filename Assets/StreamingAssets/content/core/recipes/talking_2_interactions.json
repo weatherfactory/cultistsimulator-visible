@@ -24,10 +24,12 @@ alternativerecipes:[{id:"sulochanachat_health",chance:100},
 {id:"sulochanachat_cabaret",chance:100},
 {id:"sulochanachat_desireheart_track",chance:100},
 {id:"sulochanachat_desiremoth_track",chance:100},
-{id:"sulochanachat_desire",chance:100},],
+{id:"sulochanachat_desire",chance:100},
+{id:"sulochanachat_secrethistoriesrouter",chance:100}],
 warmup:60,
 craftable:true
 },
+
 {id:"sulochanachat_health",
 actionId:"talk",
 requirements:{sulochana:1,health:1},
@@ -71,7 +73,83 @@ requirements:{sulochana:1,desire:1},
 startdescription:"That's what steers you?",
 description:"We have no common ground there. I chose my road a very long time ago."
 },
+{id:"sulochanachat_secrethistoriesrouter",
+actionId:"talk",
+requirements:{sulochana:1,lore:1,secrethistories:1},
+startdescription:"As to that...",
+description:".",
+linked:[{id:"sulochanachat_secrethistoriesg",chance:100},
+{id:"sulochanachat_secrethistoriesf",chance:100},
+{id:"sulochanachat_secrethistoriese",chance:100},
+{id:"sulochanachat_secrethistoriesd",chance:100},
+{id:"sulochanachat_secrethistoriesc",chance:100},
+{id:"sulochanachat_secrethistoriesb",chance:100},
+{id:"sulochanachat_secrethistoriesa",chance:100}
+]
+},
 
+{id:"sulochanachat_secrethistoriesg",
+actionId:"talk",
+label:"On the Road to Ivory",
+requirements:{sulochana:1,fragmentsecrethistoriesg:1},
+startdescription:"FNORD about g",
+description:"FNORD",
+effects:{lore:-1,vaulteveningislesdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesf",
+actionId:"talk",
+label:"On the Road to Pupil",
+requirements:{sulochana:1,fragmentsecrethistoriesf:1},
+startdescription:"FNORD about f",
+description:"FNORD",
+effects:{lore:-1,vaultloneandlevelsands:1}
+},
+
+{id:"sulochanachat_secrethistoriese",
+actionId:"talk",
+label:"Too Dangerous",
+requirements:{sulochana:1,fragmentsecrethistoriese:1},
+startdescription:"FNORD about e",
+description:"FNORD",
+effects:{}
+},
+
+{id:"sulochanachat_secrethistoriesd",
+actionId:"talk",
+label:"On the Road to Stigma",
+requirements:{sulochana:1,fragmentsecrethistoriesd:1},
+startdescription:"FNORD about d - ",
+description:"FNORD",
+effects:{lore:-1,vaultlandbeyondforestdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesc",
+actionId:"talk",
+label:"On the Road to Antumbra",
+requirements:{sulochana:1,fragmentsecrethistoriesc:1},
+startdescription:"FNORD about c - Unnumbered Stones",
+description:"FNORD",
+effects:{lore:-1,vaultcontinentdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesb",
+actionId:"talk",
+label:"On the Road to Pearl",
+requirements:{sulochana:1,fragmentsecrethistoriesb:1},
+startdescription:"FNORD about b - to Kerisham",
+description:"FNORD",
+effects:{lore:-1,vaultshiresdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesa",
+actionId:"talk",
+label:"On the Road to Ivory",
+requirements:{sulochana:1,fragmentsecrethistories:1},
+startdescription:"FNORD about a - everywhere",
+description:"FNORD",
+effects:{}
+},
 
 
 {id: "poppyoffer",

@@ -36,15 +36,65 @@ description:".",
 aspects:{ascend:1},
 
 warmup:60},
+
 {id: "ascensionmothf_complete",
 label:"The Ivory",
 actionId:"explore",
 startdescription:"Sister-and-Witch - Kerisham",
 description:".",
 aspects:{ascend:1},
-
-
 warmup:60},
+
+{
+id: "expeditionascensionmothb",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingmothb:1,vaultshiresdefault:1},
+warmup:30,
+startdescription: "Integument, Surrendered",
+effects:{ascensionlessonmothb:1},
+description: "x",
+},
+{
+id: "expeditionascensionmothc",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingmothc:1,vaultcontinentdefault:1},
+warmup:30,
+startdescription: "Steps, Surrendered",
+effects:{ascensionlessonmothc:1},
+description: "x",
+},
+{
+id: "expeditionascensionmothd",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingmothd:1,vaultlandbeyondforestdefault:1},
+warmup:30,
+startdescription: "Hues, Surrendered",
+effects:{ascensionlessonmothd:1},
+description: "x",
+},
+{
+id: "expeditionascensionmothe",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingmothe:1,vaultloneandlevelsandsdefault:1},
+warmup:30,
+startdescription: "Sight, Surrendered",
+effects:{ascensionlessonmothe:1},
+description: "x",
+},
+{
+id: "expeditionascensionmothf",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingmothf:1,vaulteveningislesdefault:1},
+warmup:30,
+startdescription: "Bones, Surrendered",
+effects:{ascensionlessonmothf:1},
+            description: "x",
+        },
 
 
 ]

@@ -44,6 +44,7 @@ description:".",
 aspects:{ascend:1},
 
 warmup:60},
+
 {id: "ascensionheartf_complete",
 label:"The Ivory",
 actionId:"explore",
@@ -52,6 +53,58 @@ description:".",
 aspects:{ascend:1},
 
 warmup:60},
+
+
+{
+id: "expeditionascensionheartb",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingheartb:1,vaultshiresdefault:1},
+warmup:30,
+startdescription: "Integument, Surrendered",
+effects:{ascensionlessonheartb:1},
+description: "x",
+},
+{
+id: "expeditionascensionheartc",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingheartc:1,vaultcontinentdefault:1},
+warmup:30,
+startdescription: "Steps, Surrendered",
+effects:{ascensionlessonheartc:1},
+description: "x",
+},
+{
+id: "expeditionascensionheartd",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingheartd:1,vaultlandbeyondforestdefault:1},
+warmup:30,
+startdescription: "Hues, Surrendered",
+effects:{ascensionlessonheartd:1},
+description: "x",
+},
+{
+id: "expeditionascensionhearte",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendinghearte:1,vaultloneandlevelsandsdefault:1},
+warmup:30,
+startdescription: "Sight, Surrendered",
+effects:{ascensionlessonhearte:1},
+description: "x",
+},
+{
+id: "expeditionascensionheartf",
+label:"FNORD",
+actionId:"explore",
+requirements:{sendingheartf:1,vaulteveningislesdefault:1},
+warmup:30,
+startdescription: "Bones, Surrendered",
+effects:{ascensionlessonheartf:1},
+            description: "x",
+        },
 
 ]
 }
