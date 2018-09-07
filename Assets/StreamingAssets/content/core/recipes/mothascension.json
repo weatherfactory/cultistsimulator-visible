@@ -1,19 +1,13 @@
 {
 "recipes": [
-{id: "ascensionmotha_complete",
-label:"The Leaf",
-actionId:"explore",
-startdescription:"Malachite - Ecdysis",
-description:".",
-effects:{sendingmotha:1},
 
-warmup:60},
+
 {id: "ascensionmothb_complete",
 label:"The Pearl",
 actionId:"explore",
 startdescription:"Mother of Ants - Kerisham",
 description:".",
-effects:{sendingmothb:1},
+aspects:{ascend:1},
 
 warmup:60},
 {id: "ascensionmothc_complete",
@@ -21,7 +15,7 @@ label:"The Antumbra",
 actionId:"explore",
 startdescription:"Velvet - Kerisham",
 description:".",
-effects:{sendingmothc:1},
+aspects:{ascend:1},
 
 warmup:60},
 {id: "ascensionmothd_complete",
@@ -29,7 +23,7 @@ label:"The Stigma",
 actionId:"explore",
 startdescription:"Flowermaker - Kerisham",
 description:".",
-effects:{sendingmothd:1},
+aspects:{ascend:1},
 
 warmup:60},
 
@@ -39,7 +33,7 @@ label:"The Pupil",
 actionId:"explore",
 startdescription:"Vagabond - Kerisham",
 description:".",
-effects:{sendingmothe:1},
+aspects:{ascend:1},
 
 warmup:60},
 {id: "ascensionmothf_complete",
@@ -47,15 +41,8 @@ label:"The Ivory",
 actionId:"explore",
 startdescription:"Sister-and-Witch - Kerisham",
 description:".",
-effects:{sendingmothf:1},
+aspects:{ascend:1},
 
-warmup:60},
-{id: "ascensionmothg_complete",
-label:"The Dappled",
-actionId:"explore",
-startdescription:"Wheel - Medusa's Key to open Door in the Wood with Emerald and Stag sacrifice ",
-description:".",
-effects:{sendingmothg:1},
 
 warmup:60},
 
