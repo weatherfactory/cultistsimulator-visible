@@ -116,6 +116,8 @@
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sending:1},actionId:"explore"},
+
 			],
             description: "Drive through the downs to the coast where the grey-green land meets Atlantic grey. Search along the road for signs to Kerisham town. You will rarely find it, even if you have visited before; and its inhabitants guard their secrets with curse and cudgel and fast-bolted door."
         },
@@ -176,6 +178,8 @@
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sending:1},actionId:"explore"},
+
 			],
             description: "Megaliths placed in obsessive, inerrant rows by priest-castes long dead. Time has long erased the original blood-stains, but on moonless nights, the locals supplement what remains. Hidden chambers might guard hidden treasures."
         },
@@ -236,6 +240,8 @@
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sending:1},actionId:"explore"},
+
 			],
             description: "The scent of foxlilies inspires ferocious appetites. It is probably fortunate that they grow only at this altitude. The peasants have organised to keep treasure-seekers away, but some treasure-seekers fall prey to lily-hungers. Their own treasures lie among their bones; and so the cycle continues."
         },
@@ -356,6 +362,8 @@
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sending:1},actionId:"explore"},
+
 			],
             description: "There was a city here. We can pick over its remains like jackals over old bones: palace walls, buried roads, shattered fountains. Sometimes we may find the knowledge of the  dead, and sometimes the dead may find us."
         },
@@ -416,6 +424,8 @@
 			{id:"expeditionmember",label:"Leader",description:"I must have at least one Follower to start the expedition. I can add more later.",required:{follower:1},actionId:"explore"},{id:"expeditionmember2",label:"Assistant",description:"Optionally, I can add an extra Follower now, if I think they'll be useful.",required:{follower:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Funds",description:"I must have at least one Funds to begin the expedition.",required:{funds:1},actionId:"explore"},
 			{id:"expeditionfunds",label:"Further Funds",description:"Optionally, I can add more Funds now, if I'm worried about running out.",required:{funds:1},actionId:"explore"},
+							{id:"sending",label:"Sending",description:"Now and then, the expedition might have another purpose.",required:{sending:1},actionId:"explore"},
+
 			],
             description: "There is a choice that every immortal must make: enter the service of an Hour, or return to the mortal ranks, or face extinction. The sunny little island-port called Noon is the exile-realm of the immortals who refused all those options."
         },

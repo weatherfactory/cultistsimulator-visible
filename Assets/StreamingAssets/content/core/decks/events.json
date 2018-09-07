@@ -114,6 +114,23 @@ resetonexhaustion:true
 "mystique"],
 resetonexhaustion:true	
 	},
+	
+		{id: "ecdysisrewards",
+					label:"The Offerings at the End",
+	description:"The Club guarantees a minimum, but the audience sometimes offer contributions of their own.",
+	spec:
+	["funds",
+	"funds",
+		"funds",
+		"funds",
+		"compensationb",
+		"compensationb",
+		"compensationc",
+		"jumble"
+		],
+resetonexhaustion:true	
+	},
+	
 			{id: "robberyrewards",
 					label:"The Wages of Sin",
 	description:"My minions will usually bring me back petty treasures; sometimes junk; rarely, something extraordinary.",
@@ -226,7 +243,9 @@ resetonexhaustion:true
 	"glimmering",
 	"glimmering"],
 	defaultcard: "contentment"
-	}
+	},
+	
+	
 	
 	]
 }
