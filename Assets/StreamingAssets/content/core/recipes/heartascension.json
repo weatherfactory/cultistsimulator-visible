@@ -1,59 +1,64 @@
 {
 "recipes": [
+
+
 {id: "ascensionhearta_complete",
 label:"The Leaf",
 actionId:"explore",
 startdescription:"Malachite - Ecdysis",
 description:".",
-effects:{heartsending_a:1},
+effects:{sendinghearta:1},
 
 warmup:60},
-{id: "ascensionheartb_complete",
-label:"The Shorn",
+{id: "ascensionheartbcomplete",
+label:"The Pearl",
 actionId:"explore",
-startdescription:"Mother of Ants - Kerisham",
+startdescription:"Witch-and-Sister AND MoA - Kerisham",
 description:".",
-effects:{heartsending_b:1},
+effects:{sendingheartb:1},
 
 warmup:60},
-{id: "ascensionheartc_complete",
-label:"The Mask",
+
+{id: "ascensionheartccomplete",
+label:"The Antumbra",
 actionId:"explore",
 startdescription:"Velvet - Stones",
 description:".",
-effects:{heartsending_c:1},
+effects:{sendingheartc:1},
 
 warmup:60},
-{id: "ascensionheartd_complete",
-label:"The Pupil",
+
+{id: "ascensionheartdcomplete",
+label:"The Stigma",
 actionId:"explore",
 startdescription:"Flowermaker - Meadows",
 description:".",
-effects:{heartsending_d:1},
+effects:{sendingheartd:1},
 
+warmup:60},
 
 {id: "ascensionhearte_complete",
-label:"The Imago",
+label:"The Pupil",
 actionId:"explore",
 startdescription:"Vagabond - Miah",
 description:".",
-effects:{heartsending_e:1},
+effects:{sendinghearte:1},
 
 warmup:60},
 {id: "ascensionheartf_complete",
-label:"The Pearl",
+label:"The Ivory",
 actionId:"explore",
 startdescription:"Sister-and-Witch - Port Noon",
 description:".",
-effects:{heartsending_f:1},
+effects:{sendingheartf:1},
 
 warmup:60},
 {id: "ascensionheartg_complete",
-label:"The Dappled",
+label:"The Torn",
 actionId:"explore",
 startdescription:"Unclad - Marinette's Key to open the Kingskin Gate with Ruby and Pig sacrifice ",
 description:".",
-effects:{heartsending_g:1},
+effects:{sendingheartg:1},
 
 warmup:60},
 

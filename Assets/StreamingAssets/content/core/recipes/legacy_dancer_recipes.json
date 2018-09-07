@@ -145,7 +145,7 @@ actionId: "work",
 requirements:{potentialbenefactorm:1,heart:2},
 label:"A Potential Benefactor",
 startdescription:".",
-description:"A gentleman has prevailed on the stage manager to arrange an introduction to me backstageHe is courteous; he says all the right things about my work; he has brought a gift. He hopes that we can be friends.",
+description:"A gentleman has prevailed on the stage manager to arrange an introduction to me backstage. He is courteous; he says all the right things about my work; he has brought a gift. He hopes that we can be friends.",
 effects:{benefactorm:1,funds:2,influence:-1},
 mutations:[{filterOnAspectId:job,mutateAspectId:potentialbenefactorm,mutationLevel:-1}],
 alternativerecipes:[{id:"legacydancer_opentalk",chance:100,additional:true}]
