@@ -406,13 +406,13 @@
 		requirements: {ascensionchangea:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonhearta:1,ascensionlessonmotha:1}, greedy:true }],
 		startdescription: "FNORD",
-		linked: [{id:"ascensioncravingchange_heartlessonaascendfroma",chance:100},
-		{id:"ascensioncravingchange_mothlessonaascendfroma",chance:100},
+		linked: [{id:"ascensioncravingchange_heartlessonascendfroma",chance:100},
+		{id:"ascensioncravingchange_mothlessonascendfroma",chance:100},
 		{id:"ascensioncravingchange_noascension",chance:100}],
 		warmup:30
 		},
 		
-		{id:"ascensioncravingchange_heartlessonaascendfroma",
+		{id:"ascensioncravingchange_heartlessonascendfroma",
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonhearta:1},
@@ -421,7 +421,7 @@
 		effects:{ascensionlessonhearta:-1},
 		warmup:10
 		},
-		{id:"ascensioncravingchange_mothlessonaascendfroma",
+		{id:"ascensioncravingchange_mothlessonascendfroma",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmotha:1},
@@ -439,13 +439,13 @@
 		requirements: {ascensionchangea:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartb:1,ascensionlessonmothb:1}, greedy:true }],
 		startdescription: "FNORD",
-		linked: [{id:"ascensioncravingchange_heartlessonaascendfromb",chance:100},
-		{id:"ascensioncravingchange_mothlessonaascendfromb",chance:100},
+		linked: [{id:"ascensioncravingchange_heartlessonascendfromb",chance:100},
+		{id:"ascensioncravingchange_mothlessonascendfromb",chance:100},
 		{id:"ascensioncravingchange_noascension",chance:100}],
 		warmup:30
 		},
 		
-		{id:"ascensioncravingchange_heartlessonaascendfromb",
+		{id:"ascensioncravingchange_heartlessonascendfromb",
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartb:1},
@@ -454,8 +454,8 @@
 		effects:{ascensionlessonheartb:-1},
 		warmup:10
 		},
-		{id:"ascensioncravingchange_mothlessonaascendfroma",
-		label:"FNORD successful change ascension from a via moth",
+		{id:"ascensioncravingchange_mothlessonascendfromb",
+		label:"FNORD successful change ascension from b via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothb:1},
 		description: "FNORD completed moth ascension step"
@@ -472,13 +472,13 @@
 		requirements: {ascensionchangec:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartc:1,ascensionlessonmothc:1}, greedy:true }],
 		startdescription: "FNORD",
-		linked: [{id:"ascensioncravingchange_heartlessonaascendfromc",chance:100},
-		{id:"ascensioncravingchange_mothlessonaascendfromc",chance:100},
+		linked: [{id:"ascensioncravingchange_heartlessonascendfromc",chance:100},
+		{id:"ascensioncravingchange_mothlessonascendfromc",chance:100},
 		{id:"ascensioncravingchange_noascension",chance:100}],
 		warmup:30
 		},
 		
-		{id:"ascensioncravingchange_heartlessonaascendfromc",
+		{id:"ascensioncravingchange_heartlessonascendfromc",
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartc:1},
@@ -487,7 +487,7 @@
 		effects:{ascensionlessonheartc:-1},
 		warmup:10
 		},
-		{id:"ascensioncravingchange_mothlessonaascendfromc",
+		{id:"ascensioncravingchange_mothlessonascendfromc",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothc:1},
@@ -504,13 +504,13 @@
 		requirements: {ascensionchanged:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartd:1,ascensionlessonmothd:1}, greedy:true }],
 		startdescription: "FNORD",
-		linked: [{id:"ascensioncravingchange_heartlessonaascendfromd",chance:100},
-		{id:"ascensioncravingchange_mothlessonaascendfromd",chance:100},
+		linked: [{id:"ascensioncravingchange_heartlessonascendfromd",chance:100},
+		{id:"ascensioncravingchange_mothlessonascendfromd",chance:100},
 		{id:"ascensioncravingchange_noascension",chance:100}],
 		warmup:30
 		},
 		
-		{id:"ascensioncravingchange_heartlessonaascendfromd",
+		{id:"ascensioncravingchange_heartlessonascendfromd",
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartd:1},
@@ -519,7 +519,7 @@
 		effects:{ascensionlessonheartd:-1},
 		warmup:10
 		},
-		{id:"ascensioncravingchange_mothlessonaascendfromd",
+		{id:"ascensioncravingchange_mothlessonascendfromd",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothd:1},
@@ -536,13 +536,13 @@
 		requirements: {ascensionchangee:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonhearte:1,ascensionlessonmothe:1}, greedy:true }],
 		startdescription: "FNORD",
-		linked: [{id:"ascensioncravingchange_heartlessonaascendfrome",chance:100},
-		{id:"ascensioncravingchange_mothlessonaascendfrome",chance:100},
+		linked: [{id:"ascensioncravingchange_heartlessonascendfrome",chance:100},
+		{id:"ascensioncravingchange_mothlessonascendfrome",chance:100},
 		{id:"ascensioncravingchange_noascension",chance:100}],
 		warmup:30
 		},
 		
-		{id:"ascensioncravingchange_heartlessonaascendfrome",
+		{id:"ascensioncravingchange_heartlessonascendfrome",
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonhearte:1},
@@ -551,7 +551,7 @@
 		effects:{ascensionlessonhearte:-1},
 		warmup:10
 		},
-		{id:"ascensioncravingchange_mothlessonaascendfrome",
+		{id:"ascensioncravingchange_mothlessonascendfrome",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothe:1},
@@ -568,13 +568,13 @@
 		requirements: {ascensionchangef:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartf:1,ascensionlessonmothf:1}, greedy:true }],
 		startdescription: "FNORD",
-		linked: [{id:"ascensioncravingchange_heartlessonaascendfromf",chance:100},
-		{id:"ascensioncravingchange_mothlessonaascendfromf",chance:100},
+		linked: [{id:"ascensioncravingchange_heartlessonascendfromf",chance:100},
+		{id:"ascensioncravingchange_mothlessonascendfromf",chance:100},
 		{id:"ascensioncravingchange_noascension",chance:100}],
 		warmup:30
 		},
 		
-		{id:"ascensioncravingchange_heartlessonaascendfromf",
+		{id:"ascensioncravingchange_heartlessonascendfromf",
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartf:1},
@@ -583,7 +583,7 @@
 		effects:{ascensionlessonheartf:-1},
 		warmup:10
 		},
-		{id:"ascensioncravingchange_mothlessonaascendfromf",
+		{id:"ascensioncravingchange_mothlessonascendfromf",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothf:1},
