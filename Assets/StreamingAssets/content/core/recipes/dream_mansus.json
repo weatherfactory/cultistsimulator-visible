@@ -86,7 +86,7 @@
 	portaleffect: "Wood",
 	warmup:0,
 	aspects:{fatiguing:1}
-	}
+	},
 	
 		{
 		id: "dreamnotquitereachwhitelantern",
@@ -187,7 +187,7 @@ alternativerecipes: [
 	portaleffect: "whitedoor",
 	warmup:0,
 	aspects:{fatiguing:1}
-	}
+	},
 	
 						{
 	id: "dreamreachstagfirst",
@@ -493,11 +493,6 @@ alternativerecipes: [
 	effects: {waypeacock:1},
 	},
 	
-	
-	
-	
-	
-		
 						{
 	id: "dreamusepeacockway",
 	label: "The Way to the Peacock's Door",
@@ -538,8 +533,27 @@ alternativerecipes: [
 	portaleffect: "peacockdoor",
 	warmup:0	
 	},
+		
+		{id: "dreamheartvictory",
+	label: "FNORD Kingskin Gate",
+	actionId: "dream",
+	requirements: {sendingheartg:1},
+	startdescription: "FNORD countdown to entry",
+	ending: "minorheartvictory",
+	warmup:60,
+	craftable: true,
+	},
 	
 	
+		{id: "dreammothvictory",
+	label: "FNORD Door in the Wood",
+	actionId: "dream",
+	requirements: {sendingmothg:1},
+	startdescription: "FNORD countdown to entry",
+	ending: "minormothvictory",
+	warmup:60,
+	craftable: true,
+	},
 	
 	
 	

@@ -295,7 +295,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "minormothvictory")
             return new Ending(endingFlag, "THINGS WITH WINGS",
-                "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are polished anthracite. I have not passed " +
+                "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are shining anthracite. I have not passed " +
                 "the Tricuspid Gate; I have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
                 "[Congratulations on a standard Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
 
