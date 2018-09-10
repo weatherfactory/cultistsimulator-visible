@@ -287,6 +287,18 @@ public class Compendium : ICompendium
                 "I was poor, and now I am rich. I was something common, and now I am something rare. On summer mornings the hills outside my bedroom window are green with sun and on winter mornings they are white with snow and over all of it is the sound of " +
                 "the laughter of our heirs, and the sound of the wind. The wind rattles the casements and runs into the hills and is gone. [This should be considered a minor victory.]", "moonlitcastle", EndingFlavour.Grand, "DramaticLight", "A_ENDING_WORKVICTORYMARRIAGE");
 
+        if(endingFlag=="minorheartvictory")
+            return new Ending(endingFlag,"LIFE, UNENDING",
+                "As the pain fades, so does my voice, but now my heart will speak for me. In the scales of Time shall it be weighed against a feather, and it shall not be found wanting. In my final shape I shall pass the Tricuspid Gate, and add my heart's beat to the Thunderskin's chorus. " +
+                "Our rhythm is the rhythm of the Hours: and the Hours have promised that we shall endure with the world unceasing. I move eternally through the Mansus, and in eternity is my constancy assured. " +
+                "[Congratulations on a standard Change: Feather victory. You have wrestled the game to its knees. There are other paths.] ", "thunderskin",EndingFlavour.Grand,"DramaticLight","A_ENDING_MINORHEARTVICTORY");
+
+        if (endingFlag == "minormothvictory")
+            return new Ending(endingFlag, "THINGS WITH WINGS",
+                "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are polished anthracite. I have not passed " +
+                "the Tricuspid Gate; I have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
+                "[Congratulations on a standard Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
+
         return Ending.DefaultEnding();
     }
     /// <summary>
