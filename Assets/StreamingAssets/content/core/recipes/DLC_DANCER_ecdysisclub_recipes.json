@@ -1,5 +1,98 @@
 y{
 "recipes": [
+
+{id:"explorecabaret_meetsulochana",
+	actionId: "explore",
+	label: "Meet Sulochana at the Ecdysis Club",
+	requirements: {locationcabaret:1,sulochana:1},
+	startdescription: "Sulochana Amasvaya stands just inside the red-swagged doorway, smoking one of her peculiar imported clove cigarettes, speaking to a lean, very tall man with a Greek look about him. She watches me approach without blinking or changing her expression.",
+	slots:[{id:"Subject",description:"I'm here to talk about...",required:{desire:1}}],
+	description:"'No? Don't waste my time.'",
+	alternativerecipes:[{id:"A_ecdysis_beginheart",chance:100},
+	{id:"A_ecdysis_beginmoth",chance:100},
+	{id:"A_ecdysis_switchtochangefromsensation",chance:100},
+	{id:"A_ecdysis_switchtochangefrompower",chance:100},
+	{id:"A_ecdysis_cantswitchtochangefromenlightenment",chance:100},
+	{id:"A_ecdysis_alreadyonchange",chance:100},
+	{id:"A_ecdysis_cantswitch",chance:100}],
+	craftable:true,
+	warmup:60
+	},
+	
+	
+	{id:"A_ecdysis_beginheart",
+	actionId:"explore",
+	maxexecutions:1,
+	requirements:{desireheart_track:1},
+	label:"The Unveiling of the Flesh",
+	startdescription:"'Very well,' Sulochana says, 'I have a job for you. This is a one-time offer.' She takes a drag on her cigarette. 'You'll be taking off your clothes,' she adds. Smoke wreathes her face. She still doesn't blink. 'Your outer layers.'",
+	description:"I am assigned a narrow dressing room of my own - very narrow - hardly more than a cupboard. I am given my first costume. Downstairs, the drums roll in crescendo. This is the precise moment that the lean Greek enters without warning, and bends to whisper a secret to me.",
+	effects:{dancerjobecdysisa:1,fragmentheart:1}
+
+	},
+		{id:"A_ecdysis_beginmoth",
+	actionId:"explore",
+		maxexecutions:1,
+			requirements:{desiremoth_track:1},
+	label:"The Unveiling of the Self",
+	startdescription:"'Very well,' Sulochana says, 'I have a job for you. This is a one-time offer.' She takes a drag on her cigarette. 'You'll be taking off your clothes,' she adds. She leans in very close. 'And that's not all.'",
+	description:"I am assigned a narrow dressing room of my own - very narrow - hardly more than a cupboard. I am given my first costume. Sulochana cuts a lock of my hair with a little pair of silver scissors, and whispers a secret in my ear.",
+		effects:{dancerjobecdysisa:1,fragmentmoth:1}
+	},
+
+	{
+        id: "A_ecdysis_switchtochangefromsensation",
+		label: "Pursue Change, not Sensation",
+		requirements:{ascensionsensationa:1},
+		actionId: "dream",
+		effects:{ascensionsensationa:-1,ascensionchangea:1},
+		startdescription:"'Reconsidering the Grail's path, are we? Be sure. The Forms are no easier. But if you truly want to Change -'",
+		description: "Sulochana moves close, studies my face, places her hand on my cheek. Her skin is cold: her breath is warm. The corners of her mouth writhe. 'Sleep on it. Come and see me again next time the club opens. We'll talk more.'",
+		linked:[{id:"L_desire_addmothtrack",chance:100}]
+},
+
+
+	{
+        id: "A_ecdysis_switchtochangefrompower",
+		label: "Pursue Change, not Power",
+		requirements:{ascensionpowera:1},
+		actionId: "explore",
+		effects:{ascensionpowera:-1,ascensionchangea:1},
+		startdescription:"'Reconsidering the Forge's path, are we? Be certain. The fire is a different fire, but the Forms are no easier - '",
+		description: "Sulochana moves close, studies my face. She flicks ash from her cigarette. The coal at its end glows softly. She chuckles. 'Sleep on it. Come and see me again next time the club opens. We'll talk more.'",
+		linked:[{id:"L_desire_addmothtrack",chance:100}]
+},
+
+	{
+        id: "A_ecdysis_cantswitchtochangefromenlightenment",
+		label: "Pursue Change, not enlightenment",
+		requirements:{ascensionenlightenmenta:1},
+		actionId: "explore",
+		startdescription:"'Reconsidering the Watchman's path, are we? Good. But you have a way to go yet.'",
+		description: "Sulochana shakes her head slowly, without breaking eye contact. 'Remember what you are, first.' [Dream on your Temptation to change it before talking to Sulochana, if you wish to pursue Change.]"
+
+},
+	{
+        id: "A_ecdysis_alreadyonchange",
+		label: "The Forms To Come",
+		actionId: "explore",
+		requirements:{changemarks:1},
+		startdescription:"'Are you ready to work? Why are we wasting time here? [Use your Contract with the Club to dance.]'",
+		description: "'Yes, I know what you want.' She indicates the Greek. 'So does he. You're too late to dance tonight. Be prompter, next time.'",
+
+},
+
+	{
+        id: "A_ecdysis_cantswitch",
+		label: "Too Late to Change",
+		actionId: "explore",
+		requirements:{desire:1},
+		comments:"Need the desire requirement so we only fall through to this if there's an incompatible desire.",
+		startdescription:"'No. You are what you are. It isn't possible.'",
+		description: "'Do you hear me? It isn't possible. You'll succeed, or you'll fail. But you won't truly change.' She flicks the glowing stub of her cigarette out into the dark. 'Dream furiously.'"
+
+},
+
 {id:"ecdysisjobupgrade_tob",
 label:"More Exacting Dances",
 actionId:"work",
@@ -29,7 +122,7 @@ actionId:"work",
 startdescription:"FNORD ecdysisdance_genericheart start desc",
 description:"FNORD ecdysisdance_genericheart end desc",
 requirements:{job:1,dance:1,heart:2},
-effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -39,7 +132,7 @@ actionId:"work",
 startdescription:"FNORD Thunderskin g start desc",
 description:"FNORD Thunderskin g end desc",
 requirements:{job:1,dance:1,heart:18,changemarks:7},
-effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -50,7 +143,7 @@ actionId:"work",
 startdescription:"FNORD Thunderskin f start desc",
 description:"FNORD Thunderskin f end desc",
 requirements:{job:1,dance:1,heart:15,changemarks:6},
-effects:{funds:1,mystique:1,sendingheartf:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingheartf:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -62,7 +155,7 @@ actionId:"work",
 startdescription:"FNORD Thunderskin e start desc",
 description:"FNORD Thunderskin e end desc",
 requirements:{job:1,dance:1,heart:12,changemarks:5},
-effects:{funds:1,mystique:1,sendinghearte:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendinghearte:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -73,7 +166,7 @@ actionId:"work",
 startdescription:"FNORD Thunderskin d start desc",
 description:"FNORD Thunderskin d end desc",
 requirements:{job:1,dance:1,heart:9,changemarks:4},
-effects:{funds:1,mystique:1,sendingheartd:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingheartd:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -84,7 +177,7 @@ actionId:"work",
 startdescription:"FNORD Thunderskin c start desc",
 description:"FNORD Thunderskin c end desc",
 requirements:{job:1,dance:1,heart:7,changemarks:3},
-effects:{funds:1,mystique:1,sendingheartc:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingheartc:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -111,7 +204,7 @@ actionId:"work",
 startdescription:"FNORD Thunderskin a start desc",
 description:"FNORD Thunderskin a end desc",
 requirements:{job:1,dance:1,heart:3,changemarks:1},
-effects:{funds:1,mystique:1,ascensionlessonhearta:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,ascensionlessonhearta:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -122,7 +215,7 @@ actionId:"work",
 startdescription:"FNORD ecdysisdance_genericmoth start desc",
 description:"FNORD ecdysisdance_genericmoth end desc",
 requirements:{job:1,dance:1,moth:2},
-effects:{funds:1,mystique:1,sending:},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sending:},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{health:1}}}],
 warmup:60,craftable:true
 },
@@ -133,7 +226,7 @@ actionId:"work",
 startdescription:"FNORD Moth g start desc",
 description:"FNORD Moth g end desc",
 requirements:{job:1,dance:1,moth:18,changemarks:7},
-effects:{funds:1,mystique:1,sendingmothg:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingmothg:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -143,7 +236,7 @@ actionId:"work",
 startdescription:"FNORD Moth f start desc",
 description:"FNORD Moth f end desc",
 requirements:{job:1,dance:1,moth:15,changemarks:6},
-effects:{funds:1,mystique:1,sendingmothf:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingmothf:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -154,7 +247,7 @@ actionId:"work",
 startdescription:"FNORD Moth e start desc",
 description:"FNORD Moth e end desc",
 requirements:{job:1,dance:1,moth:12,changemarks:5},
-effects:{funds:1,mystique:1,sendingmothe:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingmothe:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -165,7 +258,7 @@ actionId:"work",
 startdescription:"FNORD Moth d start desc",
 description:"FNORD Moth d end desc",
 requirements:{job:1,mystique:1dance:1,moth:9,changemarks:4},
-effects:{funds:1,mystique:1,sendingmothd:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingmothd:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -176,7 +269,7 @@ actionId:"work",
 startdescription:"FNORD Moth c start desc",
 description:"FNORD Moth c end desc",
 requirements:{job:1,dance:1,moth:7,changemarks:3},
-effects:{funds:1,mystique:1,sendingmothc:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingmothc:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -187,7 +280,7 @@ actionId:"work",
 startdescription:"FNORD Moth b start desc",
 description:"FNORD Moth b end desc",
 requirements:{job:1,dance:1,moth:5,changemarks:2},
-effects:{funds:1,mystique:1,sendingmothb:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,sendingmothb:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -200,7 +293,7 @@ actionId:"work",
 startdescription:"FNORD Moth a start desc",
 description:"FNORD Moth a end desc",
 requirements:{job:1,dance:1,moth:3,changemarks:1},
-effects:{funds:1,mystique:1,ascensionlessonmotha:1},deckeffect:{ecdysisrewards:1}.,
+effects:{funds:1,mystique:1,ascensionlessonmotha:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passion:1}}}],
 warmup:60,craftable:true
 },
@@ -228,6 +321,8 @@ requirements:{},
 aspects:{scarability:1},
 warmup:10,
 },
+
+ 
 
 ]
 }

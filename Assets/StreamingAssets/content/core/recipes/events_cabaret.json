@@ -1,37 +1,7 @@
  {"recipes": [
 
- {id:"explorecabaret_meetsulochana",
-	actionId: "explore",
-	label: "Meet Sulochana at the Ecdysis Club",
-	requirements: {locationcabaret:1,sulochana:1},
-	startdescription: "Sulochana Amasvaya stands just inside the red-swagged doorway, smoking one of her peculiar imported clove cigarettes, speaking to a lean, very tall man with a Greek look about him. She watches me approach without blinking or changing her expression.",
-	slots:[{id:"Subject",description:"I'm here to talk about..."}],
-	description:"'No? Don't waste my time.'",
-	alternativerecipes:[{id:"ecdysis_beginheart",chance:100},
-	{id:"ecdysis_beginmoth",chance:100}],
-	craftable:true,
-	warmup:60
-	},
-	
-	{id:"ecdysis_beginheart",
-	actionId:"explore",
-	maxexecutions:1,
-	requirements:{desireheart_track:1},
-	label:"The Unveiling of the Flesh",
-	startdescription:"'Very well,' Sulochana says, 'I have a job for you. This is a one-time offer.' She takes a drag on her cigarette. 'You'll be taking off your clothes,' she adds. Smoke wreathes her face. She still doesn't blink. 'Your outer layers.'",
-	description:"I am assigned a narrow dressing room of my own - very narrow - hardly more than a cupboard. I am given my first costume. Downstairs, the drums roll in crescendo. This is the precise moment that the lean Greek enters without warning, and bends to whisper a secret to me. [Here for the preview of the DLC in the beta? FNORD! this ends here for now. ]",
-	effects:{dancerjobecdysisa:1,fragmentheart:1}
 
-	},
-		{id:"ecdysis_beginmoth",
-	actionId:"explore",
-		maxexecutions:1,
-			requirements:{desiremoth_track:1},
-	label:"The Unveiling of the Self",
-	startdescription:"'Very well,' Sulochana says, 'I have a job for you. This is a one-time offer.' She takes a drag on her cigarette. 'You'll be taking off your clothes,' she adds. She leans in very close. 'And that's not all.'",
-	description:"I am assigned a narrow dressing room of my own - very narrow - hardly more than a cupboard. I am given my first costume. Sulochana cuts a lock of my hair with a little pair of silver scissors, and whispers a secret in my ear. [Here for the preview of the DLC in the beta? FNORD! this ends here for now. ]",
-		effects:{dancerjobecdysisa:1,fragmentmoth:1}
-	},
+	
 	{id:"explorecabaret",
 	actionId: "explore",
 	label: "Visit the Ecdysis Club",
