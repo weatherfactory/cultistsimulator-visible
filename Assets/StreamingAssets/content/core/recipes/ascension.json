@@ -2,6 +2,10 @@
 "recipes": [
 
 
+		
+
+
+
 	   {
         id: "ascensionpower_upgradetoobsession",
         label: "The Burning Key",
@@ -183,6 +187,13 @@
 		{id:"ascensioncravingpower",chance:100},
 		{id:"ascensioncravingsensation",chance:100},
 		{id:"ascensioncravingenlightenment",chance:100},
+		{id:"ascensioncravingchange_tryascendfroma",chance:100},
+		{id:"ascensioncravingchange_tryascendfromb",chance:100},
+		{id:"ascensioncravingchange_tryascendfromc",chance:100},
+		{id:"ascensioncravingchange_tryascendfromd",chance:100},
+		{id:"ascensioncravingchange_tryascendfrome",chance:100},
+		{id:"ascensioncravingchange_tryascendfromf",chance:100},
+		
 		{id:"ascensionnotyet",chance:100}]
 		},
 		
@@ -248,14 +259,6 @@
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		{id:"ascensionhintpower1",
 		label:"The Forge's Glow",
 		actionId:"craving",
@@ -283,6 +286,8 @@
 		effects:{restlessness:1},
 		warmup:10
 		},
+		
+		
 
 		{id:"ascensioncravingpower",
 		label:"The Shaping Heat",
@@ -332,7 +337,6 @@
 		],
 		warmup:30
 		},
-
 		
 		{
 		id:"ascensionsuccesscravingsensation_descend",
@@ -396,6 +400,211 @@
 		aspects: {ascend:1}
 		},
 	
+		{id:"ascensioncravingchange_tryascendfroma",
+		label:"FNORD tryascend a",
+		actionId: "craving",
+		requirements: {ascensionchangea:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonhearta:1,ascensionlessonmotha:1}, greedy:true }],
+		startdescription: "FNORD",
+		linked: [{id:"ascensioncravingchange_heartlessonaascendfroma",chance:100},
+		{id:"ascensioncravingchange_mothlessonaascendfroma",chance:100},
+		{id:"ascensioncravingchange_noascension",chance:100}],
+		warmup:30
+		},
+		
+		{id:"ascensioncravingchange_heartlessonaascendfroma",
+		label:"FNORD successful change ascension from a via heart",
+		actionId: "craving",
+		requirements: {ascensionlessonhearta:1},
+		description: "FNORD completed heart ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonhearta:-1},
+		warmup:10
+		},
+		{id:"ascensioncravingchange_mothlessonaascendfroma",
+		label:"FNORD successful change ascension from a via moth",
+		actionId: "craving",
+		requirements: {ascensionlessonmotha:1},
+		description: "FNORD completed moth ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonmotha:-1},
+		warmup:10
+		},
+		
+		
+			
+		{id:"ascensioncravingchange_tryascendfromb",
+		label:"FNORD tryascend fromb",
+		actionId: "craving",
+		requirements: {ascensionchangea:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartb:1,ascensionlessonmothb:1}, greedy:true }],
+		startdescription: "FNORD",
+		linked: [{id:"ascensioncravingchange_heartlessonaascendfromb",chance:100},
+		{id:"ascensioncravingchange_mothlessonaascendfromb",chance:100},
+		{id:"ascensioncravingchange_noascension",chance:100}],
+		warmup:30
+		},
+		
+		{id:"ascensioncravingchange_heartlessonaascendfromb",
+		label:"FNORD successful change ascension from a via heart",
+		actionId: "craving",
+		requirements: {ascensionlessonheartb:1},
+		description: "FNORD completed heart ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonheartb:-1},
+		warmup:10
+		},
+		{id:"ascensioncravingchange_mothlessonaascendfroma",
+		label:"FNORD successful change ascension from a via moth",
+		actionId: "craving",
+		requirements: {ascensionlessonmothb:1},
+		description: "FNORD completed moth ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonmothb:-1},
+		warmup:10
+		},
+		
+		
+					
+		{id:"ascensioncravingchange_tryascendfromc",
+		label:"FNORD tryascend fromc",
+		actionId: "craving",
+		requirements: {ascensionchangec:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartc:1,ascensionlessonmothc:1}, greedy:true }],
+		startdescription: "FNORD",
+		linked: [{id:"ascensioncravingchange_heartlessonaascendfromc",chance:100},
+		{id:"ascensioncravingchange_mothlessonaascendfromc",chance:100},
+		{id:"ascensioncravingchange_noascension",chance:100}],
+		warmup:30
+		},
+		
+		{id:"ascensioncravingchange_heartlessonaascendfromc",
+		label:"FNORD successful change ascension from a via heart",
+		actionId: "craving",
+		requirements: {ascensionlessonheartc:1},
+		description: "FNORD completed heart ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonheartc:-1},
+		warmup:10
+		},
+		{id:"ascensioncravingchange_mothlessonaascendfromc",
+		label:"FNORD successful change ascension from a via moth",
+		actionId: "craving",
+		requirements: {ascensionlessonmothc:1},
+		description: "FNORD completed moth ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonmothc:-1},
+		warmup:10
+		},
+		
+					
+		{id:"ascensioncravingchange_tryascendfromd",
+		label:"FNORD tryascend fromd",
+		actionId: "craving",
+		requirements: {ascensionchanged:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartd:1,ascensionlessonmothd:1}, greedy:true }],
+		startdescription: "FNORD",
+		linked: [{id:"ascensioncravingchange_heartlessonaascendfromd",chance:100},
+		{id:"ascensioncravingchange_mothlessonaascendfromd",chance:100},
+		{id:"ascensioncravingchange_noascension",chance:100}],
+		warmup:30
+		},
+		
+		{id:"ascensioncravingchange_heartlessonaascendfromd",
+		label:"FNORD successful change ascension from a via heart",
+		actionId: "craving",
+		requirements: {ascensionlessonheartd:1},
+		description: "FNORD completed heart ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonheartd:-1},
+		warmup:10
+		},
+		{id:"ascensioncravingchange_mothlessonaascendfromd",
+		label:"FNORD successful change ascension from a via moth",
+		actionId: "craving",
+		requirements: {ascensionlessonmothd:1},
+		description: "FNORD completed moth ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonmothd:-1},
+		warmup:10
+		},
+		
+					
+		{id:"ascensioncravingchange_tryascendfrome",
+		label:"FNORD tryascend frome",
+		actionId: "craving",
+		requirements: {ascensionchangee:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonhearte:1,ascensionlessonmothe:1}, greedy:true }],
+		startdescription: "FNORD",
+		linked: [{id:"ascensioncravingchange_heartlessonaascendfrome",chance:100},
+		{id:"ascensioncravingchange_mothlessonaascendfrome",chance:100},
+		{id:"ascensioncravingchange_noascension",chance:100}],
+		warmup:30
+		},
+		
+		{id:"ascensioncravingchange_heartlessonaascendfrome",
+		label:"FNORD successful change ascension from a via heart",
+		actionId: "craving",
+		requirements: {ascensionlessonhearte:1},
+		description: "FNORD completed heart ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonhearte:-1},
+		warmup:10
+		},
+		{id:"ascensioncravingchange_mothlessonaascendfrome",
+		label:"FNORD successful change ascension from a via moth",
+		actionId: "craving",
+		requirements: {ascensionlessonmothe:1},
+		description: "FNORD completed moth ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonmothe:-1},
+		warmup:10
+		},
+		
+					
+		{id:"ascensioncravingchange_tryascendfromf",
+		label:"FNORD tryascend fromf",
+		actionId: "craving",
+		requirements: {ascensionchangef:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartf:1,ascensionlessonmothf:1}, greedy:true }],
+		startdescription: "FNORD",
+		linked: [{id:"ascensioncravingchange_heartlessonaascendfromf",chance:100},
+		{id:"ascensioncravingchange_mothlessonaascendfromf",chance:100},
+		{id:"ascensioncravingchange_noascension",chance:100}],
+		warmup:30
+		},
+		
+		{id:"ascensioncravingchange_heartlessonaascendfromf",
+		label:"FNORD successful change ascension from a via heart",
+		actionId: "craving",
+		requirements: {ascensionlessonheartf:1},
+		description: "FNORD completed heart ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonheartf:-1},
+		warmup:10
+		},
+		{id:"ascensioncravingchange_mothlessonaascendfromf",
+		label:"FNORD successful change ascension from a via moth",
+		actionId: "craving",
+		requirements: {ascensionlessonmothf:1},
+		description: "FNORD completed moth ascension step"
+		aspects:{ascend:1},
+		effects:{ascensionlessonmothf:-1},
+		warmup:10
+		},
+		
+		
+		
+				{id:"ascensioncravingchange_noascension",
+		label:"FNORD no change ascension",
+		actionId: "craving",
+		description: "FNORD no change ascension"
+		effects:{restlessness:1}.
+		warmup:10
+		},
+		
+		
+		
 		
 	
 	
