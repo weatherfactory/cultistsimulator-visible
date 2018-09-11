@@ -5,42 +5,49 @@
             label: "Temptation: Change",
             aspects:
             {desire: 1,changemarks:1},
-            description: "On certain nights before the audience, there is the wing-lift of something more. What more could I become? [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]"
+            description: "On certain nights before the audience, there is the wing-lift of something more. What more could I become? [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+			xtriggers:{ascend:ascensionchangeb}
         },
 		      		 {
             id: "ascensionchangeb",
             label: "Dedication: Change",
             aspects:
             {desire: 1,changemarks:2},
-            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]"
+            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+			xtriggers:{ascend:ascensionchangec}
         },
 				      		 {
             id: "ascensionchangec",
             label: "Ascension: Change",
             aspects:
             {desire: 1,changemarks:3},
-            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]"
+            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+			xtriggers:{ascend:ascensionchanged}
         },
 			      		 {
             id: "ascensionchanged",
             label: "Ascension: Change",
             aspects:
             {desire: 1,changemarks:4},
-            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]"
+            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+			xtriggers:{ascend:ascensionchangee}
         },
 			      		 {
             id: "ascensionchangee",
             label: "Ascension: Change",
             aspects:
             {desire: 1,changemarks:5},
-            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]"
+            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+			xtriggers:{ascend:ascensionchangef}
         },
 			      		 {
             id: "ascensionchangef",
             label: "Ascension: Change",
             aspects:
             {desire: 1,changemarks:6},
-            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]"
+            description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+						xtriggers:{ascend:ascensionchangeg}
+
         },
       		 {
             id: "sendingheartb",
@@ -146,74 +153,74 @@
             id: "ascensionlessonhearta",
             label: "Garments, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonheartb",
             label: "Integument, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonheartc",
             label: "Steps, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonheartd",
             label: "Hues, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonhearte",
             label: "Sight, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonheartf",
             label: "Bones, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 		
 				{
             id: "ascensionlessonmotha",
             label: "Garments, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonmothb",
             label: "Integument, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonmothc",
             label: "Steps, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonmothd",
             label: "Hues, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonmothe",
             label: "Sight, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 				{
             id: "ascensionlessonmothf",
             label: "Bones, Surrendered",
             aspects:{},
-            description: "x",
+            description: "x",unique:true
         },
 
 		

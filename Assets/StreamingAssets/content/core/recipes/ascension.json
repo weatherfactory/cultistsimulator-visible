@@ -178,7 +178,7 @@
 		requirements: {seasonambitions:1},
 		label:"Exotic Cravings?",
 		actionId: "craving",
-		slots: [{id:"Obsessions",description: "Deeper urges",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3}, greedy:true }],
+		slots: [{id:"Obsessions",description: "Deeper urges",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3,changemarks:1}, greedy:true }],
 		startdescription: "What hungers drive me?",
 		description: "",
 		effects: {},
@@ -416,18 +416,20 @@
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonhearta:1},
-		description: "FNORD completed heart ascension step"
+		description: "FNORD completed heart ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonhearta:-1},
+mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		{id:"ascensioncravingchange_mothlessonascendfroma",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmotha:1},
-		description: "FNORD completed moth ascension step"
+		description: "FNORD completed moth ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonmotha:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		
@@ -449,9 +451,10 @@
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartb:1},
-		description: "FNORD completed heart ascension step"
+		description: "FNORD completed heart ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonheartb:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		{id:"ascensioncravingchange_mothlessonascendfromb",
@@ -461,6 +464,7 @@
 		description: "FNORD completed moth ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonmothb:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		
@@ -482,18 +486,20 @@
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartc:1},
-		description: "FNORD completed heart ascension step"
+		description: "FNORD completed heart ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonheartc:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],	
 		warmup:10
 		},
 		{id:"ascensioncravingchange_mothlessonascendfromc",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothc:1},
-		description: "FNORD completed moth ascension step"
+		description: "FNORD completed moth ascension step",
 		aspects:{ascend:1},
-		effects:{ascensionlessonmothc:-1},
+		effects:{ascensionless	onmothc:-1},
+				mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		
@@ -514,18 +520,20 @@
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartd:1},
-		description: "FNORD completed heart ascension step"
+		description: "FNORD completed heart ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonheartd:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		{id:"ascensioncravingchange_mothlessonascendfromd",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothd:1},
-		description: "FNORD completed moth ascension step"
+		description: "FNORD completed moth ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonmothd:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		
@@ -546,18 +554,20 @@
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonhearte:1},
-		description: "FNORD completed heart ascension step"
+		description: "FNORD completed heart ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonhearte:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		{id:"ascensioncravingchange_mothlessonascendfrome",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothe:1},
-		description: "FNORD completed moth ascension step"
+		description: "FNORD completed moth ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonmothe:-1},
+				mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		
@@ -578,22 +588,22 @@
 		label:"FNORD successful change ascension from a via heart",
 		actionId: "craving",
 		requirements: {ascensionlessonheartf:1},
-		description: "FNORD completed heart ascension step"
+		description: "FNORD completed heart ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonheartf:-1},
+		mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
 		{id:"ascensioncravingchange_mothlessonascendfromf",
 		label:"FNORD successful change ascension from a via moth",
 		actionId: "craving",
 		requirements: {ascensionlessonmothf:1},
-		description: "FNORD completed moth ascension step"
+		description: "FNORD completed moth ascension step",
 		aspects:{ascend:1},
 		effects:{ascensionlessonmothf:-1},
+				mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
-		
-		
 		
 				{id:"ascensioncravingchange_noascension",
 		label:"FNORD no change ascension",
