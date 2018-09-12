@@ -41,7 +41,7 @@
 						{
         id: "locationcabaret",
             label: "The Ecdysis Club",
-            aspects:{location: 1,moth:1,grail:1},
+            aspects:{location: 1,moth:1,grail:1,heart:1},
             description: "A cabaret with an occult reputation.",
 			slots:[{id:"Entry", actionId: "explore", required:{funds:1,sulochana:1},}],
 			xtriggers:{locationcabaret:locationcabaretclosed},

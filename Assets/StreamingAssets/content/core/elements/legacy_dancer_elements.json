@@ -17,8 +17,7 @@
 	aspects: {job:1},
 	lifetime:120,
 	xtriggers:{plead:legacydancerjob},
-		slots:[{id:"healthskill",label:"Training",actionId:"work",required:{healthskill:1}},
-	{id:"passion",label:"Passion",actionId:"work",required:{passion:1}}]
+		slots:[{id:"passion",label:"Passion",actionId:"work",required:{passion:1}}]
 },
 
 {id:"dancerlegacy_plotitem_a",
@@ -34,7 +33,6 @@ aspects:{text:1}},
 slots:[{id:"location",label:"The Ecdysis Club",description:"The Ecdysis Club, where I enact revelations before witnesses",actionId:work,required:{locationcabaret:1}},
 {id:"abilityfirst",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{ability:1,scar:1}},
 {id:"influence",label:"Influence",description:"What stirs me today?",actionId:work,required:{influence:1}},
-{id:"training",label:"Training",actionId:work,required:{healthskill:1}},
 {id:"desire",label:"Desire",actionId:work,required:{changemarks:1}}
 ],
 	aspects: {job:1,dance:1,ecdysijob:1},
@@ -46,7 +44,6 @@ slots:[{id:"location",label:"The Ecdysis Club",description:"The Ecdysis Club, wh
 slots:[{id:"location",label:"Ability, or Scar",label:"The Ecdysis Club",description:"The Ecdysis Club, where I enact revelations before witnesses",actionId:work,required:{locationcabaret:1}},{id:"abilityfirst",description:"What of myself shall I commit?",actionId:work,required:{ability:1,scar:1}},
 	{id:"abilitysecond",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{ability:1,scar:1}},
 	{id:"influence",label:"Influence",description:"What stirs me today?",actionId:work,required:{influence:1}},
-	{id:"training",label:"Training",actionId:work,required:{healthskill:1}},
 	{id:"desire",label:"Desire",actionId:work,required:{changemarks:1}}
 ],
 	aspects: {job:1,dance:1,ecdysijob:1},
@@ -61,7 +58,6 @@ slots:[{id:"location",label:"Ability, or Scar",label:"The Ecdysis Club",descript
 	{id:"abilitysecond",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{ability:1,scar:1}},
 	{id:"abilitythird",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{ability:1,scar:1}},
 	{id:"influence",label:"Influence",description:"What stirs me today?",actionId:work,required:{influence:1}},
-	{id:"training",label:"Training",actionId:work,required:{healthskill:1}},
 	{id:"desire",label:"Desire",actionId:work,required:{changemarks:1}}],
 	aspects: {job:1,dance:1,ecdysijob:1},
 },
