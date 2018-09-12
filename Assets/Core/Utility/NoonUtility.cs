@@ -70,6 +70,8 @@ namespace Noon
         public const string KANIMFRAMES = "animFrames";
         public const string KISASPECT = "isAspect";
         public const string KNOARTNEEDED = "noartneeded";
+        public const string KRESATURATE = "resaturate";
+
         public const string KUNIQUE = "unique";
         public const string KUNIQUENESSGROUP = "uniquenessgroup";
 
@@ -95,7 +97,6 @@ namespace Noon
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
-        
 
         public static int CurrentVerbosity =1;
 

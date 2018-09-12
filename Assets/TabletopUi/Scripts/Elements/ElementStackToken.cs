@@ -814,9 +814,8 @@ namespace Assets.CS.TabletopUI {
 
         public void SetCardDecay(float percentage) {
             percentage = Mathf.Clamp01(percentage);
-            //these hardcoded ids are a launch hack. Resaturating elements should instead have a 'resaturate' property
-            //anyway they appear as cards slowly gaining, not losing, colour. Thank you the community!
-            if(_element.Id== "fatigue" || _element.Id == "passionexhausted" || _element.Id == "disillusionment" || _element.Id == "concentration" || _element.Id == "locationcabaretclosed")
+
+            if(_element.Resaturate)
             {
                 float reversePercentage = 1f - percentage;
                 artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);

@@ -22,18 +22,25 @@ public class Element
     private string _description="";
     public string Id { get; set; }
     public string _icon;
+    private bool _resaturate;
 
     public string Label
     {
         get { return _label; }
         set { _label = value ?? ""; }
     }
-
     
 
     public string Icon
     {
         get { return _icon; }
+    }
+
+    //if true, when the card decays it should become more, rather than less saturated with colour (eg Fatigue->Health)
+    public bool Resaturate
+    {
+        get { return _resaturate; }
+        set { _resaturate = value; }
     }
 
 

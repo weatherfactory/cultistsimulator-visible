@@ -75,6 +75,7 @@
 			decayTo:"passion",
 			icon:"passion",
 			xtriggers:{scarability:scar_moth},
+			resaturate: true
 			},
 												{
         id: "passionexhausted",
@@ -84,6 +85,7 @@
 			decayTo:"passion",
 			icon:"passion",
 			xtriggers:{scarability:scar_moth},
+			resaturate: true
 			},
 						{
         id: "fatigue",
@@ -94,7 +96,8 @@
 			xtriggers: {restorehealth: health,damagehealth:injury,fallsick:affliction,scarability:scar_heart},
 			lifetime: 60,
 			decayTo:"health",
-			icon:"health"
+			icon:"health",
+			resaturate: true
 			},
 			{
 			id: "affliction",
@@ -120,7 +123,9 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern}
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern},
+				
+			resaturate: true
 				
         },
 		        {
@@ -322,14 +327,31 @@ lifetime: 180
 		},
 						{id: "scar_heart",
 		label:"Scar: A Wandering Heart",
-		description:"I have so much life in me. It is difficult not to move. When I sit, my joints burn. I know that if I stop, I might stop for always. [You've made a permanent sacrifice for power.]",
-		aspects:{tool:1,heart:4,scar:1}
+		description:"I have so much life in me. It is difficult not to move. When I sit, my joints burn. I know that if I stop, I might stop for always. [You've made a permanent sacrifice for power. Be careful: unlike Health, this card will not satisfy Sickness or Starvation.]",
+		aspects:{tool:1,heart:4,scar:1},
+		xtriggers:{job:scar_heart_fatigued,employment:scar_heart_fatigued,ritual:scar_heart_fatigued}
+		},
+								{id: "scar_heart_fatigued",
+		label:"Scar: A Wandering Heart (Strained)",
+		description:"My arteries sing, my veins burn. I cannot push myself any further. [Wait.]",
+	decayTo: scar_heart,
+	lifetime:60,
+			resaturate: true
 		},
 					{id: "scar_moth",
 		label:"Scar: A Flexible Aspect",
 		description:"I've worn so many guises. With each new guise it is harder to recall my original face. Even the cartilage softens when my tempers are high. [You've made a permanent sacrifice for power.]",
-		aspects:{tool:1,moth:4,scar:1}
+		aspects:{tool:1,moth:4,scar:1},
+		xtriggers:{job:scar_moth_fatigued,employment:scar_moth_fatigued,ritual:scar_moth_fatigued}
 		},
+							{id: "scar_moth_fatigued",
+		label:"Scar: A Flexible Aspect (Strained)",
+		description:"With each new expression my features ripple like water. If I am not careful I shall entirely dissolve. [Wait.]",
+		decayTo: scar_moth,
+		lifetime:60,
+			resaturate: true
+		},
+		
 						{id: "scar_lantern",
 		label:"Scar: A Translucency",
 	description:"Sometimes now I am beautiful beneath my skin. When I bend to the right angle - when my garments falls aside - when the eye is keen - my shape is a perfect revelation. [You've made a permanent sacrifice for power.]",

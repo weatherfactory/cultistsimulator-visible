@@ -219,6 +219,11 @@ public class ContentImporter
                 else
                     element.NoArtNeeded = false;
 
+                if (htElement.GetString(NoonConstants.KRESATURATE) == "true")
+                    element.Resaturate = true;
+                else
+                    element.Resaturate = false;
+
                 if (htElement.GetString(NoonConstants.KUNIQUE) == "true")
                     element.Unique = true;
                 else

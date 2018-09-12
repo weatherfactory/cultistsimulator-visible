@@ -36,7 +36,8 @@
 			unique:true,
 			lifetime:30,
 			decayTo: locationcabaret,
-			uniquenessgroup:cabaret
+			uniquenessgroup:cabaret,
+			resaturate: true
         },
 						{
         id: "locationcabaret",
