@@ -451,7 +451,7 @@ maxexecutions:1
         id: "workhealthskilld_edge",
         label: "Unskilled Labour: Like the Mountain",
         actionId: "work",
-        requirements: {health: 1,skillhealthd_edge:1,ritual:-1,job:-1,benefactor:-1},
+        requirements: {health: 1,skillhealthd_strength:1,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },

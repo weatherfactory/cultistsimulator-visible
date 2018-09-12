@@ -36,7 +36,7 @@ effects:{notoriety:1,summoned:-1}
                {id: "hunterfitewithpowerascension",
 	   label: "A Surprise Attack on an Adversary",
 	  actionId:"talk",
-	  requirements:{skillhealthd_edge:1},
+	  requirements:{skillhealthd_strength:1},
 	  startdescription:"My adversary insists on a public meeting-place. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
 	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
 	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:70},

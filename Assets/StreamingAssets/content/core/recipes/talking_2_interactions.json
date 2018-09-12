@@ -103,7 +103,7 @@ label:"On the Road to Pupil",
 requirements:{sulochana:1,fragmentsecrethistoriesf:1},
 startdescription:"FNORD about f",
 description:"FNORD",
-effects:{lore:-1,vaultloneandlevelsands:1}
+effects:{lore:-1,vaultloneandlevelsandsdefault:1}
 },
 
 {id:"sulochanachat_secrethistoriese",
@@ -144,11 +144,10 @@ effects:{lore:-1,vaultshiresdefault:1}
 
 {id:"sulochanachat_secrethistoriesa",
 actionId:"talk",
-label:"On the Road to Ivory",
+label:"On the Roads to Change",
 requirements:{sulochana:1,fragmentsecrethistories:1},
-startdescription:"FNORD about a - everywhere",
-description:"FNORD",
-effects:{}
+startdescription:"'I can help you with that... if you want to Change.'",
+description:"'We always change at the sea first. Kerisham is a good place, these days. Then further and further afield. But not in person. Never in person. In your other self. Feel free to come back to me with more lore, if you're not sure where to go. If you're looking for anything but Change... I can't help you.'",
 },
 
 

@@ -44,7 +44,7 @@
 	{id:"V8",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"}	
 	],
 	},
-				{id: "skillhealthd_edge",
+				{id: "skillhealthd_strength",
 	label: "Skill: a Matchless Physique",
 	description: "I move like a mountain and strike like the sky. 'To master others is strength. To master yourself is power.' [Health and Skill can increase no further.]",
 	aspects: {healthskill:4,ability:1,murderskill:1},
@@ -52,7 +52,7 @@
 	{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}}
 	],
 	},
-					{id: "skillhealthd_grail",
+					{id: "skillhealthd_grace",
 	label: "Skill: a Flawless Physique",
 	description: "Machine perfection. Sinew-bound ivory, tight in satin skin. 'From here, I can only deteriorate.' [Health and Skill can increase no further.]",
 	aspects: {healthskill:4,ability:1},

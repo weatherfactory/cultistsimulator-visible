@@ -10,7 +10,7 @@
         },
 		      		 {
             id: "ascensionchangeb",
-            label: "Dedication: Change",
+            label: "Change: Leaf",
             aspects:
             {desire: 1,changemarks:2},
             description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
@@ -18,7 +18,7 @@
         },
 				      		 {
             id: "ascensionchangec",
-            label: "Ascension: Change",
+            label: "Change: Pearl",
             aspects:
             {desire: 1,changemarks:3},
             description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
@@ -26,7 +26,7 @@
         },
 			      		 {
             id: "ascensionchanged",
-            label: "Ascension: Change",
+            label: "Change: Antumbra",
             aspects:
             {desire: 1,changemarks:4},
             description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
@@ -34,7 +34,7 @@
         },
 			      		 {
             id: "ascensionchangee",
-            label: "Ascension: Change",
+            label: "Change: Stigma",
             aspects:
             {desire: 1,changemarks:5},
             description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
@@ -42,7 +42,17 @@
         },
 			      		 {
             id: "ascensionchangef",
-            label: "Ascension: Change",
+            label: "Change: Pupil",
+            aspects:
+            {desire: 1,changemarks:6},
+            description: "A final stage of patience before the great change. [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
+						xtriggers:{ascend:ascensionchangeg}
+
+        },
+		
+					      		 {
+            id: "ascensionchangeg",
+            label: "Change: Ivory",
             aspects:
             {desire: 1,changemarks:6},
             description: "FNORD [This card will allow you to win a Change victory, if you upgrade it far enough. Devote enough effort to your dances, and you'll find the next step.]",
@@ -96,7 +106,7 @@
             label: "Guise: Great Serpent",
             aspects:
             {sending:1,way:1},
-            description: "FNORD",
+            description: "When I dream, this is the guise in which I will pass the Kingskin Gate.",
 			icon:"greatserpent"
         },
 
@@ -145,8 +155,7 @@
             label: "Imago",
             aspects:
             {sending:1,way:1},
-            description: "FNORD",
-			icon:"greatserpent"
+            description: "When I dream, this is the guise in which I will pass the Door in the Wood.",
         },
 		
 		{

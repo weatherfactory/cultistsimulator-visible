@@ -187,13 +187,12 @@
 		{id:"ascensioncravingpower",chance:100},
 		{id:"ascensioncravingsensation",chance:100},
 		{id:"ascensioncravingenlightenment",chance:100},
-		{id:"ascensioncravingchange_tryascendfroma",chance:100},
-		{id:"ascensioncravingchange_tryascendfromb",chance:100},
-		{id:"ascensioncravingchange_tryascendfromc",chance:100},
-		{id:"ascensioncravingchange_tryascendfromd",chance:100},
-		{id:"ascensioncravingchange_tryascendfrome",chance:100},
 		{id:"ascensioncravingchange_tryascendfromf",chance:100},
-		
+		{id:"ascensioncravingchange_tryascendfrome",chance:100},
+		{id:"ascensioncravingchange_tryascendfromd",chance:100},
+		{id:"ascensioncravingchange_tryascendfromc",chance:100},
+		{id:"ascensioncravingchange_tryascendfromb",chance:100},
+		{id:"ascensioncravingchange_tryascendfroma",chance:100},
 		{id:"ascensionnotyet",chance:100}]
 		},
 		
@@ -438,7 +437,7 @@ mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLev
 		{id:"ascensioncravingchange_tryascendfromb",
 		label:"FNORD tryascend fromb",
 		actionId: "craving",
-		requirements: {ascensionchangea:1},
+		requirements: {ascensionchangeb:1},
 		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartb:1,ascensionlessonmothb:1}, greedy:true }],
 		startdescription: "FNORD",
 		linked: [{id:"ascensioncravingchange_heartlessonascendfromb",chance:100},
@@ -608,7 +607,7 @@ mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLev
 				{id:"ascensioncravingchange_noascension",
 		label:"FNORD no change ascension",
 		actionId: "craving",
-		description: "FNORD no change ascension"
+		description: "FNORD no change ascension",
 		effects:{restlessness:1}.
 		warmup:10
 		},
