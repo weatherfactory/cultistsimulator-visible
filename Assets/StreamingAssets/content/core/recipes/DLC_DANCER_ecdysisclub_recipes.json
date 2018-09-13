@@ -160,7 +160,7 @@ warmup:60,craftable:true,hintonly:true
 {id: "ecdysisdance_sendingheartg",
 label:"",
 actionId:"work",
-startdescription:"FNORD Thunderskin g start desc",
+startdescription:"The Last Dance",
 description:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound lke an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
 requirements:{ecdysijob:1,locationcabaret:1,heart:18,ascensionchangeg:1},
 effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1},
@@ -275,7 +275,7 @@ warmup:60,craftable:true
 
 
 {id: "ecdysisdance_sendingmothg",
-label:"",
+startdescription:"The Last Dance",
 actionId:"work",
 startdescription:"FNORD Moth g start desc",
 description:"'I don't hold the key for the door you must pass. But my sister, who is the oldest of our kind still living (not that she's alive) - my sister will bring it to you in dream. I tell you this as a favour to you and to her: do not look upon her face.' FNORD",
@@ -285,7 +285,7 @@ alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expuls
 warmup:60,craftable:true
 },
 {id: "ecdysisdance_sendingmothf",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Moth f start desc",
 description:"FNORD Moth f end desc",
