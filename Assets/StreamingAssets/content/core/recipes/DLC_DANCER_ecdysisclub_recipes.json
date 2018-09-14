@@ -161,9 +161,10 @@ warmup:60,craftable:true,hintonly:true
 label:"The Last Dance",
 actionId:"work",
 startdescription:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound lke an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
-description: "FNORD",
+description: "When the dance is done, when my body is wracked and torn, when Mr Agdistis' tears are warm on my broken flesh, then my shadow has become the shadow of a great tusked beast. 'Go quickly,' Mr Agdistis says.'Sleep quickly. My lady Sulochana has already called the lady Marinette. She will be the one to flay the skin from you.'",
 requirements:{ecdysijob:1,locationcabaret:1,heart:18,ascensionchangeg:1},
 effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1},
+aspects:{damagehealth:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
 warmup:60,craftable:true
 },
@@ -270,18 +271,16 @@ alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsi
 warmup:60,craftable:true
 },
 
-
-
-
-
 {id: "ecdysisdance_sendingmothg",
 startdescription:"The Last Dance",
 actionId:"work",
-startdescription:"FNORD Moth g start desc",
-description:"'I don't hold the key for the door you must pass. But my sister, who is the oldest of our kind still living (not that she's alive) - my sister will bring it to you in dream. I tell you this as a favour to you and to her: do not look upon her face.' FNORD",
+startdescription:"Sulochana is there for my last performance. 'Almost there. I don't hold the key for the door you must pass. But my sister, who is the oldest of our kind still living (not that she's alive) - my sister will bring it to you in dream. I tell you this as a favour to you and to her: do not look upon her face.'
+
+She lights a cigarette. 'It'll hurt,' she adds, with some amusement.",
+description:"'When the dance is done, when my mind is mazed and stumbling, when my emotions rear like serpents, I cannot easily tell what is real, any more. Sulochana is real, I think. My reflection in the mirror = the reflection of a grey mare - that is very real. 'Go quickly,' Sulochana says. She clasps my shoulder, and kisses me on the mouth, softly as a moth-wing. Her lips are cold. Her breath is carrion. Her eyes are lovely night. Is that real?",
 requirements:{ecdysijob:1,locationcabaret:1,moth:18,changemarks:7},
 effects:{funds:1,mystique:1,sendingmothg:1},deckeffect:{ecdysisrewards:1},
-alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{passionexhausted:1}}}],
+alternativerecipes:[{id:"passion_expel_to_scar",chance:100,additional:true,expulsion:{limit:3,filter:{passionexhausted:1}}}],
 warmup:60,craftable:true
 },
 {id: "ecdysisdance_sendingmothf",
