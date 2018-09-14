@@ -171,8 +171,8 @@ warmup:60,craftable:true
 {id: "ecdysisdance_sendingheartf",
 label:"Work at the Ecdysis Club: Beyond the Pale",
 actionId:"work",
-startdescription:"Dove fnord",
-description:"FNORD Thunderskin f end desc",
+startdescription:"This dance is performed naked. Mr Agdistis joins me in my dressing room in to paint my body the necessary white. He is weeping.",
+description:"The auditorium is dark and silent. A single spotlight follows my movements. It is possible, but unlikely, that there is no-one watching me at all - no-one to see the slow fade of the spotlight, and my final fall - no-one to see the white bird rise from my open mouth, and pass forgotten into the night.",
 requirements:{ecdysijob:1,locationcabaret:1,heart:15,ascensionchangef:1},
 effects:{funds:1,mystique:1,sendingheartf:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
@@ -384,13 +384,11 @@ alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expuls
 warmup:60,craftable:true
 },
 
-
-
 {id: "work_changedesire",
-label:"FNORD meditate on your desires",
+label:"Follow my desire wherever it might lead",
 actionId:"work",
-startdescription:"FNORD meditate on your desires",
-description:"Got some influences",
+startdescription:"Out for the evening...",
+description:"As the sun rises the next morning I find myself propped against a chimney-stack, overlooking the dawn-filtered city. My hair is a mess, and someone has stolen my shoes.",
 requirements:{changemarks:1,ecdysijob:-1,job:-1,dance:-1,location:-1},
 effects:{glimmering:1,vitality:1},
 alternativerecipes: [{id:"work_changedesire_restlessness",chance:70}],
@@ -398,9 +396,9 @@ warmup:60,craftable:true
 },
  
 {id: "work_changedesire_restlessness",
-label:"FNORD cgange desire brings restlessness",
+label:"Follow my desire wherever it might lead",
 actionId:"work",
-description:"Got restless",
+description:"I drank pale wine with a priest - I watched a dog-fight by the wharves - was sketched in silhouette in a room of mannequins. None of it was what I wanted.",
 
 effects:{restlessness:1},
 },
