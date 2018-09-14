@@ -96,7 +96,7 @@ y{
 {id:"ecdysisjobupgradehint_maxedout",
 label:"Furthest Steps?",
 actionId:"work",
-startdescription:"I am already in demand for the most exactng of dances.",
+startdescription:"I am already in demand for the most exacting of dances.",
 comments:"Hint appears if we have max skill and don't qualify for an ecdysijob upgrade",
 requirements:{ecdysijob:1,healthskill:4},
 craftable:true,hintonly:true
@@ -111,7 +111,7 @@ craftable:true,hintonly:true
 {id:"ecdysisjobupgrade_tob",
 label:"Demonstrate my Abilities to Mr Agdistis",
 actionId:"work",
-startdescription:"I am ready for the more exactng dances that occur deeper in the club, in the room behind the red baize door. Mr Agdistis will adjudge my suitability.",
+startdescription:"I am ready for the more exacting dances that occur deeper in the club, in the room behind the red baize door. Mr Agdistis will adjudge my suitability.",
 description: "Mr Agdistis clasps his long and beautiful hands together; he smiles fondly. He will take a very little of my blood, just in case, and then we'll be ready.",
 requirements:{dancerjobecdysisa:1,healthskill:2},
 aspects:{careeradvancement:1},
@@ -158,7 +158,7 @@ warmup:60,craftable:true,hintonly:true
 
 
 {id: "ecdysisdance_sendingheartg",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"The Last Dance",
 description:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound lke an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
@@ -169,7 +169,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingheartf",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Thunderskin f start desc",
 description:"FNORD Thunderskin f end desc",
@@ -181,7 +181,7 @@ warmup:60,craftable:true
 
 
 {id: "ecdysisdance_sendinghearte",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Thunderskin e start desc",
 description:"FNORD Thunderskin e end desc",
@@ -192,7 +192,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingheartd",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Thunderskin d start desc",
 description:"FNORD Thunderskin d end desc",
@@ -203,7 +203,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingheartc",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Thunderskin c start desc",
 description:"FNORD Thunderskin c end desc",
@@ -215,10 +215,10 @@ warmup:60,craftable:true
 
 
 {id: "ecdysisdance_sendingheartb",
-label:"",
+label:"Work at the Ecdysis Club: a Rising Viper",
 actionId:"work",
-startdescription:"FNORD Thunderskin b start desc",
-description:"FNORD Thunderskin a end desc",
+startdescription:"Tonight we bring serpents to the stage to move with us, and we are scale-masked and sinuous, like serpents ourselves. ",
+description:"At the dance's climax, the paroxysm seizes me, and I convulse, until the movement in my chest realises itself - a rising viper! It pours from my mouth like sickness, streams down my body, and is gone from the stage. The audience applauds wildly! I stumble away, chest heaving. I know the serpent will return the same way it came, when it and I are ready.",
 requirements:{ecdysijob:1,locationcabaret:1,heart:6,ascensionchangeb:1},
 effects:{funds:1,mystique:1,sendingheartb:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
@@ -227,10 +227,10 @@ warmup:60,craftable:true
 
 
 {id: "ecdysisdance_ascensionlessonhearta",
-label:"",
+label:"Work at the Ecdysis Club: the Vehemence of Skin",
 actionId:"work",
-startdescription:"FNORD Thunderskin a start desc",
-description:"FNORD Thunderskin a end desc",
+startdescription:"Tonight we are wrapped tightly in scarves of green silk. We will disrobe with more vehemence than usual. Before I begin, Mr Agdistis hands me up a mouthless oval mask, the green of spring leaves. I hesitate a moment before I put it on. He has smeared its inner surface with fresh loam.",
+description:"When the first scarf comes away, the pain is shocking, like a tearing scab. The next one is easier, and the next, but I stagger a little. My compatriots glance at me in concern: I know that my expression is invisible behind the mask. For our conclusion, we wind together in a ring. When I tear away the last scarf, the wrench is like a root torn from the earth. I dare not remove the mask. Afterwards, my skin is unmarked."
 requirements:{ecdysijob:1,locationcabaret:1,heart:4,ascensionchangea:1},
 effects:{funds:1,mystique:1,ascensionlessonhearta:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
@@ -238,10 +238,10 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_ascensionlessonheart_fallthrough",
-label:"",
+label:"Work at the Ecdysis Club: Thunder, Almost",
 actionId:"work",
-startdescription:"FNORD need a bit more heart",
-description:"FNORD Not enough heart but not a bad dance",
+startdescription:"Tonight we are masked, and move like celebrants. Mr Agdistis watches closely.",
+description:"There is something tonight that almost happens - a gathering thunder; a moment when the scent of mountain pine freshens the air. But we remove everything except the masks, and all that occurs is applause. [Add a little more Heart to achieve something more. The further advanced your Desire, the more Heart you'll need.]",
 requirements:{ecdysijob:1,locationcabaret:1,heart:3,changemarks:1},
 effects:{funds:1,mystique:1,sending:},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{healthexhausted:1}}}],
@@ -249,10 +249,10 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_genericheart",
-label:"",
+label:"Inspired Work at the Ecdysis Club",
 actionId:"work",
-startdescription:"FNORD ecdysisdance_genericheart start desc",
-description:"FNORD ecdysisdance_genericheart end desc",
+startdescription:"The air is ashiver. My companions on the stage are electric slashes of flesh and velvet. Mr Agdistis' drums pound. We begin.",
+description:"The musicians close with a flourish. Some of the audience start as if waking from sleep. Others applaud. One forces his way through the crowd to the exit, face drawn. There's always one. As we skip from the stage, Mr Agdistis winks. And here is Sulochana, with her clever hands, to bandage those of us who went too far.",
 requirements:{ecdysijob:1,locationcabaret:1,heart:3},
 effects:{funds:1,mystique:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
@@ -260,10 +260,10 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_genericheart_rote",
-label:"",
+label:"Uninspired Work at the Ecdysis Club",
 actionId:"work",
-startdescription:"FNORD ecdysisdance_genericheart start desc",
-description:"FNORD Sulochana disappointed",
+startdescription:"We stride out on to the stage, seven of us, heads flung back and scarves afloat. But I can already tell there's something missing. Through the blue of their smoke, the faces of the audience turn our way, then back to their cocktails and their companions. I suppress a cough from the smoke as it drifts across the stage.",
+description:"Mr Agdistis sits at his drums with the other musicians. I feel his eyes on me as the performance ends. He is disappointed, but I know he won't say anything unkind. Most likely,he won't say anything at all.",
 requirements:{ecdysijob:1,locationcabaret:1,heart:2},
 effects:{funds:1,mystique:1},
 alternativerecipes:[{id:"health_expel_to_scar",chance:30,additional:true,expulsion:{limit:1,filter:{fatigue:1}}}],
@@ -296,7 +296,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingmothe",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Moth e start desc",
 description:"FNORD Moth e end desc",
@@ -307,7 +307,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingmothd",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Moth d start desc",
 description:"FNORD Moth d end desc",
@@ -318,7 +318,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingmothc",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Moth c start desc",
 description:"FNORD Moth c end desc",
@@ -329,7 +329,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_sendingmothb",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Moth b start desc",
 description:"FNORD Moth b end desc",
@@ -341,7 +341,7 @@ warmup:60,craftable:true
 
 
 {id: "ecdysisdance_ascensionlessonmotha",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD Moth a start desc",
 description:"FNORD Moth a end desc",
@@ -351,7 +351,7 @@ alternativerecipes:[{id:"passion_expel_to_scar",chance:30,additional:true,expuls
 warmup:60,craftable:true
 },
 {id: "ecdysisdance_ascensionlessonmoth_fallthrough",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD need a bit more moth",
 description:"FNORD Not enough moth but not a bad dance",
@@ -362,7 +362,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_genericmoth",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD ecdysisdance_genericmoth start desc",
 description:"FNORD ecdysisdance_genericmoth end desc",
@@ -373,7 +373,7 @@ warmup:60,craftable:true
 },
 
 {id: "ecdysisdance_genericmoth_rote",
-label:"",
+label:"FNORD",
 actionId:"work",
 startdescription:"FNORD ecdysisdance_genericheart start desc",
 description:"FNORD Sulochana disappointed",
