@@ -533,26 +533,41 @@ alternativerecipes: [
 	portaleffect: "peacockdoor",
 	warmup:0	
 	},
-		
-		{id: "dreamheartvictory",
-	label: "FNORD Kingskin Gate",
+	{id: "dreamheartvictoryintro",
+	label: "Drums in the Storm",
 	actionId: "dream",
 	requirements: {sendingheartg:1},
-	startdescription: "FNORD countdown to entry, mention Marinette, consider a second cycle",
-	ending: "minorheartvictory",
-	warmup:60,
+		startdescription: "The wind rises and the roof rattles as I settle myself to sleep. There is a bitter herb that will help me pass from my body. The Wood opens around me, but with my new eyes, I see another path now. The one called Marinette waits along that path, with the Key that will end me and begin me.",
+	warmup:30,
 	craftable: true,
+	linked:[{id:"dreamheartvictory",chance:100}]
+
 	},
-	
-	
-		{id: "dreammothvictory",
-	label: "FNORD Door in the Wood",
+		
+		{id: "dreamheartvictory",
+	label: "The Kingskin Gate",
+	actionId: "dream",
+	startdescription: "Marinette waits in the shadow of a pine tree, dark skin gleaming, white bone glinting, claws bright as brass. She carries a red Key that might be a bloody knife or a ruby wound. When she brings it down, the pain of it is all red.",
+	ending: "minorheartvictory",
+	warmup:30
+	},
+		{id: "dreammothvictoryintro",
+	label: "Drums in the Storm",
 	actionId: "dream",
 	requirements: {sendingmothg:1},
-	startdescription: "FNORD countdown to entry",
-	ending: "minormothvictory",
-	warmup:60,
+		startdescription: "I drift down sleep's familiar pathways, until the Wood comes clear before me with its grasping trees and shadow-fringed paths. The Door in the Wood lies beneath the waters of the well. I know that now. I cannot pass it living and I cannot pass it dead. Medusa, who is neither living nor dead, will clear the way. I break into a trot.",
+	warmup:30,
 	craftable: true,
+	linked:[{id:"dreammothvictory",chance:100}]
+	},
+	
+		{id: "dreammothvictory",
+	label: "The Door in the Wood",
+	actionId: "dream",
+	requirements: {sendingmothg:1},
+	startdescription: "The moonlight parts the trees to blacken what the well holds, to limn the tree-roots, to touch Medusa's twining limbs where she waits by the well. She lifts her dripping arms, which hold a pale Key, twisting like a fanged worm. I kneel, a red deer, and offer my neck. A gout of blood spills into the well; and then Medusa begins to carve my new shape.",
+	ending: "minormothvictory",
+	warmup:30
 	},
 	
 	
