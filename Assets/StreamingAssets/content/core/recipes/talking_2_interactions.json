@@ -92,8 +92,8 @@ linked:[{id:"sulochanachat_secrethistoriesg",chance:100},
 actionId:"talk",
 label:"On the Road to Ivory",
 requirements:{sulochana:1,fragmentsecrethistoriesg:1},
-startdescription:"FNORD about g",
-description:"FNORD",
+startdescription:"'You need to go to Noon? Hah. Sorry to hear it.' Sulochana speaks with unusual venom.",
+description:"'Here. This map will work for a little while. If any of them ask after me, tell them I'll come for their children next.'",
 effects:{lore:-1,vaulteveningislesdefault:1}
 },
 
@@ -101,8 +101,7 @@ effects:{lore:-1,vaulteveningislesdefault:1}
 actionId:"talk",
 label:"On the Road to Pupil",
 requirements:{sulochana:1,fragmentsecrethistoriesf:1},
-startdescription:"FNORD about f",
-description:"FNORD",
+description:"'Here. This is the address of someone who'll guide you. If the Thief of Sights asks after me... tell her to give my regards to Kleido... you know what? Don't say anything about me. Here's your address.'",
 effects:{lore:-1,vaultloneandlevelsandsdefault:1}
 },
 
@@ -110,8 +109,8 @@ effects:{lore:-1,vaultloneandlevelsandsdefault:1}
 actionId:"talk",
 label:"Too Dangerous",
 requirements:{sulochana:1,fragmentsecrethistoriese:1},
-startdescription:"FNORD about e",
-description:"FNORD",
+startdescription:"'The Shadowless Kings? No - '",
+description:"'There's nothing there for my kind or yours. No dance is worth dancing in that place.'.'",
 effects:{}
 },
 
@@ -119,8 +118,9 @@ effects:{}
 actionId:"talk",
 label:"On the Road to Stigma",
 requirements:{sulochana:1,fragmentsecrethistoriesd:1},
-startdescription:"FNORD about d - ",
-description:"FNORD",
+startdescription:"'You need to go to the Meadows? Mm.'",
+description:"'This is the easiest road at this time of year. But it won't be easy. Enjoy yourself.'",
+
 effects:{lore:-1,vaultlandbeyondforestdefault:1}
 },
 
@@ -128,8 +128,8 @@ effects:{lore:-1,vaultlandbeyondforestdefault:1}
 actionId:"talk",
 label:"On the Road to Antumbra",
 requirements:{sulochana:1,fragmentsecrethistoriesc:1},
-startdescription:"FNORD about c - Unnumbered Stones",
-description:"FNORD",
+startdescription:"'You want to go to the Stones?'",
+description:"'Here. This will get you to the last mile, and then you'll have to walk. There is a little auberge I used to stay at when I went. But I burnt it down.' She lights a cigarette.",
 effects:{lore:-1,vaultcontinentdefault:1}
 },
 
@@ -137,8 +137,8 @@ effects:{lore:-1,vaultcontinentdefault:1}
 actionId:"talk",
 label:"On the Road to Pearl",
 requirements:{sulochana:1,fragmentsecrethistoriesb:1},
-startdescription:"FNORD about b - to Kerisham",
-description:"FNORD",
+startdescription:"'You want to go to Kerisham? Yes. The trains are difficult.'",
+description:"Sulochana hands you a printed slip of paper. 'These are the numbers, this month. Be sure you get the right platform. Much easier to get there now, hm? There was a time you'd have had to pass the Wrong Door, and I have better things to do.' She chuckles richly.",
 effects:{lore:-1,vaultshiresdefault:1}
 },
 
