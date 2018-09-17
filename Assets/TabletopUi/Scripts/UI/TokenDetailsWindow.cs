@@ -21,7 +21,6 @@ namespace Assets.CS.TabletopUI {
         [Header("Card Infos")]
         [SerializeField] GameObject cardInfoHolder;
         [SerializeField] GameObject uniqueInfo;
-        [SerializeField] GameObject decayInfo;
 
         [Header("Slot Infos")]
         [SerializeField] GameObject slotInfoHolder;
@@ -230,18 +229,17 @@ namespace Assets.CS.TabletopUI {
 			decayCountText.richText = true;
         }
 
-        void SetTextMargin(bool hasImage, bool hasHints) {
-            // We show image, get us a left margin
-            title.margin = new Vector4(hasImage ? 80f : 0f, 0f, 30f, 0f);
+        void SetTextMargin(bool hasImage, bool hasHints)
+		{
+            // We show image, get us a left margin - magic number have changed since I rejigged it to allow the aspect area to expand - CP
+            title.margin = new Vector4(hasImage ? 100f : 20f, 0f, 50f, 0f);
             // We show slot info? We have less room for the description. Set margin!
-            description.margin = new Vector4(hasImage ? 80f : 0f, 0f, 0f, hasHints ? 35f : 0f);
+            description.margin = new Vector4(hasImage ? 100f : 20f, 0f, 20f, 0f);
         }
 
         void ShowCardIcons(bool isUnique, bool decays) {
             cardInfoHolder.gameObject.SetActive(isUnique || decays);
             uniqueInfo.gameObject.SetActive(isUnique);
-            decayInfo.gameObject.SetActive(false);
-           // decayInfo.gameObject.SetActive(decays); -- trying it without the icon; feedback has been that it's surplus, and it uses up text space
         }
 
         void ShowSlotIcons(bool isGreedy, bool consumes) {
