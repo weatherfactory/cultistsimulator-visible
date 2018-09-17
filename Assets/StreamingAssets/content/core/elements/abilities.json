@@ -123,9 +123,7 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern},
-				
-			resaturate: true
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern}
 				
         },
 		        {
@@ -134,8 +132,9 @@
 			description: "My mind is weary.  [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime:60,
 			decayTo:"reason",		
-icon:"reason",
+		icon:"reason",
 			xtriggers:{scarability:scar_lantern},
+			resaturate: true
         },
 				 {
             id: "erudition",
