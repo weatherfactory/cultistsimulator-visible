@@ -483,7 +483,8 @@ mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLev
 		{id:"ascensioncravingchange_heartlessonascendfromc",
 		label:"Steps, Surrendered",
 		actionId: "craving",
-		requirements: "Without footsteps to follow, who will know our destination? I wish so very much to go.",
+		requirements: {ascensionlessonheartc:1},
+description: "Without footsteps to follow, who will know our destination? I wish so very much to go.",
 		aspects:{ascend:1},
 		effects:{ascensionlessonheartc:-1},
 		mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLevel:1,additive:true}],	
@@ -496,7 +497,7 @@ mutations:[{filterOnAspectId:desire,mutateAspectId:desireheart_track,mutationLev
 		description: "Moldywarp's oldest lesson: between music, silence",
 		comments: "lack of full stop intentional",
 		aspects:{ascend:1},
-		effects:{ascensionless	onmothc:-1},
+		effects:{ascensionlessonmothc:-1},
 				mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
