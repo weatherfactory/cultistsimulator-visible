@@ -445,6 +445,7 @@ namespace Assets.CS.TabletopUI {
             var htSave = saveGameManager.RetrieveHashedSaveFromFile();
             ClearGameState(_heart, storage, _tabletop);
             saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
+            CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
             StatusBar.UpdateCharacterDetailsView(storage);
 
 			// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP

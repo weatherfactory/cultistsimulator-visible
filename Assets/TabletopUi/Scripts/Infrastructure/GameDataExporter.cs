@@ -87,7 +87,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             var htCharacter=new Hashtable();
             htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
             htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
-            htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy);
+            htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy.Id);
 
             var htExecutions=new Hashtable();
             foreach (var e in character.GetAllExecutions())
