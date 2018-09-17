@@ -23,9 +23,13 @@ namespace Assets.Logic
 
             RunMutationEffects(command, stacksManager);
 
+            //note: xtriggers for recipe aspects happen before xtriggers for card aspects. Within that precedence, aspects take effect in non-specific order.
+            //I think this will generally make sense. Recipe aspects are 'specifically, I want to do this'
+            //Card aspects are 'this should generally happen'
+            //If this basic logic doesn't work, solutions under consideration: (1) xtrigger priorities (2) feeding a stack back in if it's transformed to react to its new xtriggers (with guard against loop)
+
             RunXTriggers(stacksManager, recipeAspects);
             RunXTriggers(stacksManager, cardAspects);
-
 
             //note: standard effects happen *after* XTrigger effects
             RunDeckEffect(command,stacksManager,storage);
