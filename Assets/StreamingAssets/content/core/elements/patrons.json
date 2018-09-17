@@ -142,7 +142,8 @@ icon:"poppy"
 		{id:"health",actionId:"work",label:"Health",required:{health:1}},
 			{id:"funds",actionId:"work",label:"Glamour",required:{funds:1}}],
 				xtriggers:{employment:benefactorm,rejection:benefactorm_rejectedplayer,killmortal:corpse,avowal:benefactorm_proposedtoplayer},
-			lifetime:180
+			lifetime:180,
+			decayTo:benefactorm_rejectedplayer
 		},
 				{id:"benefactorf",
 		label: "Nicole, Fourth Marchioness of Stanford",
