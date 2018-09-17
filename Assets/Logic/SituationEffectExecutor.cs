@@ -17,12 +17,16 @@ namespace Assets.Logic
 
         public void RunEffects(ISituationEffectCommand command, IElementStacksManager stacksManager,IGameEntityStorage storage)
         {
-            var aspectsPresent = stacksManager.GetTotalAspects();
-            aspectsPresent.CombineAspects(command.Recipe.Aspects);
+            var recipeAspects = command.Recipe.Aspects;
+            var cardAspects = stacksManager.GetTotalAspects();
+ 
 
             RunMutationEffects(command, stacksManager);
 
-            RunXTriggers(stacksManager, aspectsPresent);
+            RunXTriggers(stacksManager, recipeAspects);
+            RunXTriggers(stacksManager, cardAspects);
+
+
             //note: standard effects happen *after* XTrigger effects
             RunDeckEffect(command,stacksManager,storage);
             //and after deck effect
@@ -135,6 +139,8 @@ namespace Assets.Logic
 
                //run xtriggers on stacks: repopulate that stack with the replacing element
                var xTriggers = eachStack.GetXTriggers();
+                
+
                foreach (var triggerKey in xTriggers.Keys)
                    //for each XTrigger in the stack, check if any of the aspects present in all the recipe's stacks match the trigger key
                    if (aspectsPresent.ContainsKey(triggerKey))

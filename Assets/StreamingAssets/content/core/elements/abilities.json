@@ -74,7 +74,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth},
+			xtriggers:{scarability:scar_moth,toreason:concentration},
 			resaturate: true
 			},
 												{
@@ -84,7 +84,7 @@
 			lifetime: 60,
 			decayTo:"passion",
 			icon:"passion",
-			xtriggers:{scarability:scar_moth},
+			xtriggers:{scarability:scar_moth,toreason:concentration},
 			resaturate: true
 			},
 						{
@@ -133,7 +133,7 @@
 			lifetime:60,
 			decayTo:"reason",		
 		icon:"reason",
-			xtriggers:{scarability:scar_lantern},
+			xtriggers:{scarability:scar_lantern,topassion:passionexhausted},
 			resaturate: true
         },
 				 {
