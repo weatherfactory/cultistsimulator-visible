@@ -241,6 +241,7 @@ namespace Assets.CS.TabletopUI {
             var populatedCharacter =
                 Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
             Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
+            CrossSceneState.RestartedGame();
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
