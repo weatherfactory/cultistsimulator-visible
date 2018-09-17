@@ -4,10 +4,10 @@
 label: "Another Shift at the Hospital",
 actionId: "work",
 requirements: {introjob:1},
-effects: {introjob: -1, health: 1, funds: 1},
+effects: {introjob: -1, health: 1, funds: 2},
 alternativerecipes: [{id:introdream,chance:100,additional:true}],
 startdescription: "Another shift: mopping the darkened hallways, delivering post to hollow-eyed invalids, trundling corpse-laden gurneys to the basement.",
-description: "Halfway through your shift, the head porter beckons you aside. 'We won't require your services any longer', he says. 'Here: your last payment.'\n
+description: "Halfway through your shift, the head porter beckons you aside. 'We won't require your services any longer', he says. 'Here: your last payment. We've paid you through the end of the month.'\n
 I have lost my job. At least now I have a little time to rest, and my Health improves.\n
 [<b>Dream</b> is unlocked.]",
 warmup:10,
@@ -23,22 +23,20 @@ alternativerecipes: [{id:bequestcountdown,chance:100,additional:true}],
 startdescription: "Once again, I dream of a glow beneath the filthy skin of the world. The light through the black wood. The pale door. The old man - ",
 description: "It began when I spoke to the old man in the hospital. He knew my name. But he's dead now. The pneumonia. Why do I dream of him still? What is the cobalt light in my dreams?\n
 [Time is now passing.]",
-warmup: 20,
+warmup: 30,
 craftable: false,
 comments: "This is triggered from the intro work recipe only."
     },
 
 	 { id: "bequestcountdown",
         label: "Time Passes",
-        actionId: "time",
+        actionId: "study",
         requirements: {},
-        alternativerecipes:
-		[{id: "bequestarrives", chance:100, additional: true}],
         startdescription: "I need Funds to live. But perhaps this recent upset in my circumstances is a secret blessing. Is there something to my dreams? There is a change in the air.",
         description: ".",
         warmup: 60,
         craftable: false,
-        linked:[{id:"needs",chance:100}]
+        linked:	[{id: "bequestarrives", chance:100}],
     },
 		 {
 id: "bequestarrives",
