@@ -25,9 +25,9 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 
     public string ElementId { get { return _aspect == null ? null : _aspect.Id; } }
 
-   
-    float width2Digit = 85f;
-    float width1Digit = 68f;
+	// Hardwired widths for aspect icons depending on number of digits. Tweaked to make them look neater when wrapping onto two rows - CP
+    float width2Digit = 80f; //85f;
+    float width1Digit = 60f; //68f;
     float width0Digits = 40f;
 
     public void PopulateDisplay(Element aspect, int aspectValue, ElementStackToken elementStackToken, bool hasBrightBg = false) {
