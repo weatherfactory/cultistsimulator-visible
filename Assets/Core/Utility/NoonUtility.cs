@@ -69,6 +69,7 @@ namespace Noon
         public const string KDECAYTO = "decayTo";
         public const string KANIMFRAMES = "animFrames";
         public const string KISASPECT = "isAspect";
+        public const string KISHIDDEN = "isHidden";
         public const string KNOARTNEEDED = "noartneeded";
         public const string KRESATURATE = "resaturate";
 

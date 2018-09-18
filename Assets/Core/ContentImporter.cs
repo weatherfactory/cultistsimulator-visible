@@ -214,6 +214,11 @@ public class ContentImporter
                 else
                     element.IsAspect = false;
 
+                if (htElement.GetString(NoonConstants.KISHIDDEN) == "true")
+                    element.IsHidden = true;
+                else
+                    element.IsHidden = false;
+
                 if (htElement.GetString(NoonConstants.KNOARTNEEDED) == "true")
                     element.NoArtNeeded = true;
                 else
@@ -229,13 +234,19 @@ public class ContentImporter
                 else
                     element.Unique = false;
 
+     
+
+                element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
+
                 if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
                 {
                     element.UniquenessGroup = htElement.GetString(NoonConstants.KUNIQUENESSGROUP);
+                    //and also... uniqueness groups are now also imported as aspects
+                    //so this line needs to go below the assignment of aspects
+                    element.Aspects.Add(element.UniquenessGroup,1);
                 }
 
-                element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
-                if(alSlots!=null)
+                if (alSlots!=null)
                 element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
                 foreach(var css in element.ChildSlotSpecifications)
                 { 
@@ -879,7 +890,7 @@ public class ContentImporter
 
             if (thisElement.IsAspect )
             {
-                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if ((!thisElement.NoArtNeeded || thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
                     missingAspectImages += (" " + k);
                     missingAspectImageCount++;

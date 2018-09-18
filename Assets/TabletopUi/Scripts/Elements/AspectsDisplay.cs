@@ -45,6 +45,9 @@ namespace Assets.TabletopUi.Scripts
             if (aspect == null)
                 return; // We can't find the aspect? Well then don't add anything
 
+            if (aspect.IsHidden)
+                return; //...because it's hidden
+
             ElementFrame newElementFrame = PrefabFactory.CreateLocally<ElementFrame>(transform);
             newElementFrame.PopulateDisplay(aspect, quantity, null,hasBrightBackground);
 

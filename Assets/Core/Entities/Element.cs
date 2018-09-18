@@ -53,6 +53,8 @@ public class Element
     public int AnimFrames { get; set; }
     public List<SlotSpecification> ChildSlotSpecifications { get; set; }
     public bool IsAspect { get; set; }
+    public bool IsHidden { get; set; } //use with caution! this is intended specifically for uniqueness group aspects.
+
     public bool NoArtNeeded { get; set; }
     public float Lifetime { get; set; }
     public string DecayTo { get; set; }
