@@ -8,6 +8,7 @@ using Assets.CS.TabletopUI;
 using Assets.TabletopUi;
 using Assets.TabletopUi.Scripts.Infrastructure;
 using Assets.TabletopUi.Scripts.Services;
+using UnityEngine.Analytics;
 using Noon;
 
 namespace Assets.Core.Services
@@ -72,7 +73,7 @@ namespace Assets.Core.Services
 
             TryChronicleBookPlaced(token, tokenAspects);
 
-            TryChronicleDesirePlaced(tokenAspects);
+            TryChronicleDesirePlaced(token, tokenAspects);
 
             TryChronicleFollowerPlaced(token, tokenAspects, storefrontServicesProvider);
 
@@ -159,36 +160,53 @@ namespace Assets.Core.Services
         private void TryChronicleFollowerPlaced(ElementStackToken token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.ContainsKey(SUMMONED_ASPECT))
+			{
+				Analytics.CustomEvent( "A_SUMMON_GENERIC", new Dictionary<string,object>{ {"id",token.EntityId} } );
                 storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_SUMMON_GENERIC", true);
+			}
 
             if (tokenAspects.ContainsKey(EXALTED_ASPECT))
             {
-
-
                 if (tokenAspects.Keys.Contains(EDGE) && tokenAspects[EDGE]==10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_EDGE" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_EDGE", true);
-
+				}
                 if (tokenAspects.Keys.Contains(FORGE) && tokenAspects[FORGE] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_FORGE" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_FORGE", true);
-
+				}
                 if (tokenAspects.Keys.Contains(GRAIL) && tokenAspects[GRAIL] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_GRAIL" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_GRAIL", true);
-
+				}
                 if (tokenAspects.Keys.Contains(HEART) && tokenAspects[HEART] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_HEART" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_HEART", true);
-
+				}
                 if (tokenAspects.Keys.Contains(KNOCK) && tokenAspects[KNOCK] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_KNOCK" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_KNOCK", true);
-
+				}
                 if (tokenAspects.Keys.Contains(LANTERN) && tokenAspects[LANTERN] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_LANTERN" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_LANTERN", true);
-
+				}
                 if (tokenAspects.Keys.Contains(MOTH) && tokenAspects[MOTH] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_MOTH" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_MOTH", true);
-
+				}
                 if (tokenAspects.Keys.Contains(WINTER) && tokenAspects[WINTER] == 10)
+				{
+					Analytics.CustomEvent( "A_PROMOTED_EXALTED_WINTER" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_WINTER", true);
-
+				}
             }
 
         }
@@ -197,73 +215,98 @@ namespace Assets.Core.Services
         private void TryCHronicleHQPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(HQ_ASPECT))
+			{
+				Analytics.CustomEvent( "A_HQ_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastHeadquarters, token.EntityId);
+			}
         }
 
         private void TryChronicleCultPlaced(ElementStackToken token, IAspectsDictionary tokenAspects, StorefrontServicesProvider storefrontServicesProvider)
         {
             if (tokenAspects.Keys.Contains(CULT_ASPECT))
-            { 
+            {
+				Analytics.CustomEvent( "A_CULT_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastCult, token.EntityId);
 
                 if (tokenAspects.Keys.Contains("cultsecrethistories_1"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_SECRETHISTORIES", true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationedge"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_EDGE",true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationforge"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_FORGE", true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationgrail"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_GRAIL", true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationheart"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_HEART", true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationknock"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_KNOCK", true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationlantern"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_LANTERN", true);
-
+				}
                 else if (tokenAspects.Keys.Contains("venerationmoth"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_MOTH", true);
-                
+                }
                 else if (tokenAspects.Keys.Contains("venerationwinter"))
+				{
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_CULT_WINTER", true);
-
-
-         
+				}
             }
         }
 
         private void TryChronicleToolPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(TOOL_ASPECT))
+			{
+				Analytics.CustomEvent( "A_TOOL_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastTool, token.EntityId);
+			}
         }
 
-        private void TryChronicleDesirePlaced(IAspectsDictionary tokenAspects)
+        private void TryChronicleDesirePlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(DESIRE_ASPECT))
             {
+				Analytics.CustomEvent( "A_DESIRE_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
+
                 if (tokenAspects.Keys.Contains(POWER_ASPECT))
+				{
+					Analytics.CustomEvent( "A_DESIRE_POWER" );
                     _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionpowera");
-
+				}
                 else if (tokenAspects.Keys.Contains(SENSATION_ASPECT))
-                    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionsensationa");
-
+                {
+					Analytics.CustomEvent( "A_DESIRE_SENSATION" );
+				    _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionsensationa");
+				}
                 else if (tokenAspects.Keys.Contains(ENLIGHTENMENT_ASPECT))
-
+				{
+					Analytics.CustomEvent( "A_DESIRE_ENLIGHTENMENT" );
                     _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastDesire, "ascensionenlightenmenta");
+				}
             }
         }
 
         private void TryChronicleBookPlaced(ElementStackToken token, IAspectsDictionary tokenAspects)
         {
             if (tokenAspects.Keys.Contains(BOOK_ASPECT))
+			{
+				Analytics.CustomEvent( "A_BOOK_PLACED", new Dictionary<string,object>{ {"id",token.EntityId} } );
                 _storage.SetFutureLegacyEventRecord(LegacyEventRecordId.LastBook, token.EntityId);
+			}
         }
 
         public void ChronicleMansusEntry(PortalEffect portalEffect)
