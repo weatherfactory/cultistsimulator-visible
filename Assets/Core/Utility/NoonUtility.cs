@@ -6,6 +6,7 @@ using System.Text;
 using Assets.Core;
 using Assets.Core.Entities;
 using UnityEngine;
+using Assets.CS.TabletopUI;
 
 namespace Noon
 {
@@ -206,6 +207,21 @@ namespace Noon
         {
             //hi.
         }
+
+		public static Vector3 SnapToGrid( Vector3 v )
+		{
+			if (TabletopManager.GetGridSnapSize() > 0f)
+			{
+				// Magical maths to snap cards to fractions of approx card dimensions - CP
+				float snap_x = 90.0f * TabletopManager.GetGridSnapSize();
+				float snap_y = 130.0f * TabletopManager.GetGridSnapSize();
+				float recip_x = 1.0f / snap_x;
+				float recip_y = 1.0f / snap_y;
+				v.x *= recip_x;	v.x = (float)Mathf.RoundToInt(v.x);	v.x *= snap_x;
+				v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
+			}
+			return v;
+		}
     }
 
 }
