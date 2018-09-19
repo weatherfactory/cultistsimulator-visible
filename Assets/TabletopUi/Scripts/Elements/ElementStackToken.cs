@@ -305,22 +305,27 @@ namespace Assets.CS.TabletopUI {
 
 
 
-        public override void ReturnToTabletop(Context context) {
+        public override void ReturnToTabletop(Context context)
+		{
             //if we have an origin stack and the origin stack is on the tabletop, merge it with that.
             //We might have changed the element that a stack is associated with... so check we can still merge it
-            if (originStack != null && originStack.IsOnTabletop() && CanMergeWith(originStack)) {
+            if (originStack != null && originStack.IsOnTabletop() && CanMergeWith(originStack))
+			{
                 originStack.MergeIntoStack(this);
                 return;
             }
             // If we're not unique and we've never been on the table, auto-merge us!
-            else if (!_element.Unique && lastTablePos == null) {
+            else if (!_element.Unique && lastTablePos == null)
+			{
                 var tabletop = Registry.Retrieve<TabletopManager>();
                 var stackManager = tabletop._tabletop.GetElementStacksManager();
                 var existingStacks = stackManager.GetStacks();
 
                 //check if there's an existing stack of that type to merge with
-                foreach (var stack in existingStacks) {
-                    if (CanMergeWith(stack)) {
+                foreach (var stack in existingStacks)
+				{
+                    if (CanMergeWith(stack))
+					{
                         var elementStack = stack as ElementStackToken;
                         elementStack.MergeIntoStack(this);
                         return;
@@ -328,7 +333,7 @@ namespace Assets.CS.TabletopUI {
                 }
             }
 
-            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, lastTablePos != null);
+            Registry.Retrieve<Choreographer>().ArrangeTokenOnTable(this, context, lastTablePos, false);	// Never push other cards aside - CP
         }
 
         private bool IsOnTabletop() {

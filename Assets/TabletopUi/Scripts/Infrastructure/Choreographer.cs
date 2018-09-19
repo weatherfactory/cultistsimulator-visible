@@ -49,13 +49,16 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
             ArrangeTokenOnTable(stack, context, stack.lastTablePos, false);
         }
 
-        public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false) {
+        public void ArrangeTokenOnTable(ElementStackToken stack, Context context, Vector2? pos = null, bool pushOthers = false)
+		{
             _tabletop.GetElementStacksManager().AcceptStack(stack, context);  // this does parenting. Needs to happen before we position
 
-            if (pushOthers && pos != null) { 
+            if (pushOthers && pos != null)
+			{ 
                 pos = GetPosClampedToTable(pos.Value);
             }
-            else {
+            else
+			{
                 pos = GetFreePosWithDebug(stack, pos != null ? pos.Value : Vector2.zero);
             }
 
@@ -65,6 +68,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
      
             stack.DisplayAtTableLevel();
             stack.FlipToFaceUp(true);
+			stack.SnapToGrid();
 
             if (pushOthers)
                 MoveAllTokensOverlappingWith(stack);
@@ -134,6 +138,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         Vector2 GetFreeTokenPosition(DraggableToken token, Vector2 centerPos, int startIteration = -1) {
             //Debug.Log("Trying to find FREE POS for " + token.Id);
             centerPos = GetPosClampedToTable(centerPos);
+			centerPos = NoonUtility.SnapToGrid( centerPos );
 			var targetRect = GetCenterPosRect(centerPos, token.RectTransform.rect.size);
 
             if (IsLegalPosition(targetRect, token))
@@ -259,6 +264,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
                     x = (h % 2 == 0 ? (h / 2) : -(h / 2));
 
                     points[p] = new Vector2(pos.x + x * pointGridSize, pos.y + y * pointGridSize);
+					points[p] = NoonUtility.SnapToGrid( points[p] );
 
                     if (_currentDebug != null) 
                         _currentDebug.checkedPoints.Add(points[p]);
