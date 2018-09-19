@@ -9,6 +9,7 @@ using Assets.Core.Interfaces;
 using Assets.TabletopUi.Scripts.Interfaces;
 using Noon;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -45,16 +46,15 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 					htSituations.Clear();	// Force failure
 #endif
 				// Do validity checks
-				if (htSituations.Count==0)
+				if (htSituations.Count==0 ||
+					htStacks.Count==0 ||
+					htDecks.Count==0)
 				{
-					Debug.Log( "Save aborted; no verbs!" );
+					AnalyticsReport( false, metaInfo, character, stacks, situationControllers, deckInstances );
 					return null;
 				}
-				if (htStacks.Count==0)
-				{
-					Debug.Log( "Save aborted; no stacks!" );
-					return null;
-				}
+
+				AnalyticsReport( true, metaInfo, character, stacks, situationControllers, deckInstances );
 			}
 
 			// Build complete hashtable only if all subtables are valid
@@ -153,6 +153,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 					htElementStacks.Add(e.SaveLocationInfo, stackHashtable);
 				}
             }
+
             return htElementStacks;
         }
 
@@ -172,7 +173,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             return CrossSceneState.GetSaveDataForCrossSceneState(withActiveLegacy);
         }
 
-private Hashtable GetHashtableForThisStack(IElementStack stack)
+		private Hashtable GetHashtableForThisStack(IElementStack stack)
         {
             var htStackProperties = new Hashtable();
             htStackProperties.Add(SaveConstants.SAVE_ELEMENTID, stack.EntityId);
@@ -221,5 +222,30 @@ private Hashtable GetHashtableForThisStack(IElementStack stack)
             return htNotes;
         }
         
-    }
+
+		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances )
+		{
+			// Report very basic info	- success/failure (so we can measure failure %)
+			//							- Data counts so we can see what is going missing (0 == empty, -1 == null ref)
+			//							- one sample save location in case that is getting cleared
+			int numStacks		= (stacks!=null) ?					stacks.Count() : -1;
+			int numSituations	= (situationControllers!=null) ?	situationControllers.Count() : -1;
+			int numDecks		= (deckInstances!=null) ?			deckInstances.Count() : -1;
+
+			string stacksSaveLoc	= "n/a";
+			if (numStacks>0)
+			{
+				stacksSaveLoc = stacks.ElementAt(0).SaveLocationInfo;
+			}
+
+			Analytics.CustomEvent( "autosave_report", new Dictionary<string,object>
+			{
+				{ "success",		success },
+				{ "stacks",			numStacks },
+				{ "stacks_save_loc",stacksSaveLoc },	// Sample save location so if a save fails with valid lists, we can see if the saveLocInfo was valid
+				{ "situations",		numSituations },
+				{ "decks",			numDecks }
+			} );
+		}
+	}
 }

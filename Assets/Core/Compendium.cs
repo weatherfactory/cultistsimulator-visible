@@ -12,7 +12,7 @@ using Assets.Core.Services;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine.Rendering;
-
+using UnityEngine.Analytics;
 
 public interface ICompendium
 {
@@ -233,6 +233,8 @@ public class Compendium : ICompendium
 
     public Ending GetEndingById(string endingFlag)
     {
+		Analytics.CustomEvent( "A_ENDING", new Dictionary<string,object>{ {"id",endingFlag} } );
+
         if (endingFlag == "minorforgevictory")
             return new Ending(endingFlag, "THE CONFLAGRATION OF THE HEART",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and my body stirs in the ashes. I am hairless and imperishable as marble, and the Forge's fire still burns within me. " +
