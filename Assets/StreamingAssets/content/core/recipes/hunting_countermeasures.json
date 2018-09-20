@@ -231,6 +231,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:".",
 	  requirements: {follower:1,moth:5,evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:70},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ],
 	  	  comments: "We don't want a 100% chance because there's no downside. This could easily change later."
@@ -242,6 +243,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:".",
 	  requirements: {follower:1,moth:1,evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:30},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
@@ -252,6 +254,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:".",
 	  requirements: {evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:10},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
@@ -272,6 +275,19 @@ effects:{notoriety:1,summoned:-1}
 	  effects: {follower:-1,notoriety:1},
 	  warmup:10	  
 	  },
+	  
+	  {id: "evidencedestroyfailure_mortalfollower",
+	   label: "Tampering with Records...",
+	  actionId:"talk",
+	  requirements:{summoned:-1},
+	  startdescription: "I await word....",
+	  description:"My minion has returned, stumblng, mumbling, clumsily bandaged. They were caught in the coils of their own plan. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:10	  
+	  },
+	  
 	  	  	  {id:"hunterspeakwinterg",
 	  actionId:"talk",
 	  label:"Share a terrible mystery of the Ragged Lore",
