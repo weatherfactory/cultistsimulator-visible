@@ -63,7 +63,7 @@
 			  			slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1},actionId:"dream"},
 			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1},actionId:"dream"}],
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
-			xtriggers: {restorehealth: health,rite:scar_knock,society:scar_knock,scar_ability:scar_heart},
+			xtriggers: {restorehealth: health,scar_ability:scar_heart},
 			lifetime: 150,
 			decayTo: "decrepitude"
 			},

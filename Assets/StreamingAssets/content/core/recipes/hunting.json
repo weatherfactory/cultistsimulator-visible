@@ -104,19 +104,29 @@
 		effects:{reputation:-1, evidence:1},
 		warmup:30},
 			
-		
-		
 	
 				{id:"suspiciontrycreatehunter",
 		label: "The Curious Few",
 		actionId: "suspicion",
 		startdescription: "The wrong kind of reputation might awaken the interest of the curious, the puritanical, or the vengeful. [A Reputation may inspire an adversary to emerge.]",
 		slots: [{id:"Clues", required: {reputation: 1}, greedy: true}],
-		alternativerecipes:[{id:"suspicioncreatehunter",chance:100}],
+		alternativerecipes:[{id:"suspicioncreatefirsthunter",chance:100},
+		{id:"suspicioncreatehunter",chance:100}],
 		description: "My name, just now, is clear. Any guardians remain in the shadows.",
 		effects:{contentment:1},
 		warmup:30
 		},
+		
+				{id:"suspicioncreatefirsthunter",
+		actionId:"suspicion",
+		label: "An Adversary!",
+		requirements:{reputation:1},
+		startdescription: "Someone is meddling.",
+		description:"There's always someone who doesn't understand, or who understands too well. This troublemaker may seek evidence on my activities to share with the authorities.",
+		effects: {reputation:-1,defaulthunter:1},
+		maxexecutions:1,
+		warmup:0},
+
 		
 		{id:"suspicioncreatehunter",
 		actionId:"suspicion",

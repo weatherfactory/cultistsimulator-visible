@@ -1102,8 +1102,39 @@ startdescription:"Each page of this book contains one word only, but as each pag
             description:"The final page is crowded. Each reader of the book records the same word. Now it is my turn.",
 craftable: true
         },
-	
-	
+							{
+        id: "studykitlingripe",
+            label: "Read 'Kitling Ripe and the Moldywarp's Grave (and Other Stories)'",
+            actionId:"study",
+            requirements:{kitlingripe:1},
+effects:{kitlingripe:-1,fragmentmothb:1,glimmering:1},
+warmup:60,
+startdescription:"The protagonist, a speechless cat-thing called Kitling Ripe, performs a series of elaborate rites to rescue members of her extended famly, culminating in the resurrection of her 'other grandmother', Moldywarp.",
+            description:"'When the Snake-Witch killed the horse, Kitling snatched one of its eyes. When the Dry-Witch killed the pig, Kitling stole a cup of its blood. Then she took them to the place Moldywarp lay buried, and she shook out her hair, and she began to dance...'",
+craftable: true
+        },
+								{
+        id: "studyraptintheking",
+            label: "Read 'Rapt in the King'",
+            actionId:"study",
+            requirements:{raptintheking:1},
+effects:{raptintheking:-1,fragmentheartc:1,vitality:1},
+warmup:60,
+startdescription:"The dances draw from the traditions of the Mysteries, of the cults of Isis and of Cybele, but include both symbolic and literal flayings, and the human heart is always central in the rites. The author punctuates his accounts with queasily sensuous descriptions of his own interrupted feasts.",
+            description:"'At these greater Feasts a Black Pig is always crowned as King before its Slaying. On this Occasion, its Heart was weighed in the Balance against a Knot of Feathers, and its Skin became a Cape for the Officiant. Its Flesh was is left for the Crows, but I must confess my Interest was not in its Carcass but in the Perfumed Flesh of the Milliner laid fresh in the Earth.'",
+craftable: true
+        },
+									{
+        id: "studyvienneseconundra",
+            label: "Read 'The Viennese Conundra'",
+            actionId:"study",
+            requirements:{vienneseconundra:1},
+effects:{vienneseconundra:-1,fragmentmothc:1,glimmering:1},
+warmup:60,
+startdescription:"'When the individual K. attends the meetings, black dogs are sacrificed and quartered. When the individual M. is in attendance, black mares are found with their throats slashed. I propose that these sacrifices are not necessary, but that our Ligeian friends may consider them 'fitting'. Herewith diagrams of the mutilations -'",
+            description:"'When the individual K. attends the meetings, black dogs are sacrificed and quartered. When the element M. is in attendance, black mares are found with their throats slashed. I propose that these sacrifices are not necessary, but that our Ligeian friends may consider them 'fitting'. Herewith diagrams of the mutilations -'",
+craftable: true
+        },
 
 
 	
