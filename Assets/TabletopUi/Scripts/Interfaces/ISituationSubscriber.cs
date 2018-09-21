@@ -17,6 +17,6 @@ namespace Assets.TabletopUi.Scripts.Interfaces
         void SituationComplete();
         void ResetSituation();
         void Halt();
-        void ReceiveTextNotification(INotification notification);
+        void ReceiveAndRefineTextNotification(INotification notification);
     }
 }

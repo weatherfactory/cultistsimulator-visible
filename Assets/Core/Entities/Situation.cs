@@ -170,7 +170,7 @@ namespace Assets.Core.Entities {
             if (linkedRecipe!=null) {
                 //send the completion description before we move on
                 INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
-                subscriber.ReceiveTextNotification(notification);
+                subscriber.ReceiveAndRefineTextNotification(notification);
                 currentPrimaryRecipe = linkedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones

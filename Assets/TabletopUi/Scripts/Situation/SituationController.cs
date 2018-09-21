@@ -8,6 +8,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
@@ -332,9 +333,22 @@ namespace Assets.TabletopUi {
             situationWindow.DisplayStoredElements();
         }
 
-        public void ReceiveTextNotification(INotification notification)
+        public void ReceiveAndRefineTextNotification(INotification notification)
         {
-            situationWindow.ReceiveTextNote(notification);
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspectsAvailableToSituation(true);
+            var outputAspects = situationWindow.GetAspectsFromOutputElements(true);
+            aspectsInSituation.CombineAspects(outputAspects);
+
+
+            TextRefiner tr=new TextRefiner(aspectsInSituation);
+
+
+            Notification refinedNotification=new Notification(notification.Title,
+                tr.RefineString(notification.Description));
+           
+            
+            situationWindow.ReceiveTextNote(refinedNotification);
         }
 
 
@@ -346,7 +360,7 @@ namespace Assets.TabletopUi {
             INotification notification = new Notification(SituationClock.GetTitle(), SituationClock.GetDescription());
             SetOutput(outputStacks.ToList());
 
-            ReceiveTextNotification(notification);
+            ReceiveAndRefineTextNotification(notification);
          
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
