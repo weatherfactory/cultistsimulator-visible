@@ -12,6 +12,7 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 using OrbCreationExtensions;
 using UnityEngine;	// added for debug asserts - CP
+using UnityEngine.Analytics;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure
 {
@@ -110,6 +111,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 		                File.Copy  (NoonUtility.GetGameSaveLocation(), NoonUtility.GetErrorSaveLocation( System.DateTime.Now, "pre"),true);
 					// Force a bad save into a different filename
 					SaveActiveGame( tabletop, character, true );
+					Analytics.CustomEvent( "autosave_corrupt_notified" );
 					// Pop up warning message
 					Registry.Retrieve<INotifier>().ShowSaveError(true);
 					saveErrorWarningTriggered = true;
@@ -124,6 +126,10 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			{
 				BackupSave();
 				File.WriteAllText(NoonUtility.GetGameSaveLocation(), htSaveTable.JsonString());
+				if (failedSaveCount > 0)
+				{
+					Analytics.CustomEvent( "autosave_recovered", new Dictionary<string,object>{ { "failedSaveCount", failedSaveCount } } );	
+				}
 				failedSaveCount = 0;
 			}
 			return true;

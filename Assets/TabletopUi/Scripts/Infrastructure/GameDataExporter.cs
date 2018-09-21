@@ -85,31 +85,38 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private Hashtable GetHashTableForCharacter(Character character)
         {
             var htCharacter=new Hashtable();
-            htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
-            htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
-            htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy);
+			if (character == null)
+			{
+				string name = "none";
+				htCharacter.Add(SaveConstants.SAVE_NAME,name);
+			}
+			else
+			{
+				htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
+				htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
+				htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy);
 
-            var htExecutions=new Hashtable();
-            foreach (var e in character.GetAllExecutions())
-            {
-                htExecutions.Add(e.Key,e.Value);
-            }
+				var htExecutions=new Hashtable();
+				foreach (var e in character.GetAllExecutions())
+				{
+					htExecutions.Add(e.Key,e.Value);
+				}
 
-            htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
+				htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
 
-            var htPastLevers = new Hashtable();
-            foreach(var record in character.GetAllPastLegacyEventRecords())
-                htPastLevers.Add(record.Key.ToString(), record.Value);
+				var htPastLevers = new Hashtable();
+				foreach(var record in character.GetAllPastLegacyEventRecords())
+					htPastLevers.Add(record.Key.ToString(), record.Value);
 
-             htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
+				 htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
 
 
-            var htFutureLevers = new Hashtable();
-            foreach (var record in character.GetAllFutureLegacyEventRecords())
-                htFutureLevers.Add(record.Key.ToString(), record.Value);
+				var htFutureLevers = new Hashtable();
+				foreach (var record in character.GetAllFutureLegacyEventRecords())
+					htFutureLevers.Add(record.Key.ToString(), record.Value);
 
-            htCharacter.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);
-
+				htCharacter.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);
+			}
 
             return htCharacter;
         }
