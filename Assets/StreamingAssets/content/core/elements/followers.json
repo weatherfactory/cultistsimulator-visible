@@ -4,7 +4,7 @@
         id: "auclair_a",
             label: "Auclair, an acquaintance",
             aspects:
-            {mortal: 1,acquaintance:1},
+            {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
             description: "Auclair has a scholarly aspect and a morbid streak.[You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic},
@@ -14,7 +14,7 @@
         id: "auclair_b",
             label: "Auclair, a believer",
             aspects:
-            {mortal: 1, follower: 1,winter: 2},
+            {mortal: 1, follower: 1,winter: 2,follower_lustenlightenment:1},
             animFrames: 1,
 			description: "Auclair is quiet, meticulous and remorseless.",
 			xtriggers: {promotiontodisciple: auclair_c,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p},
@@ -25,7 +25,7 @@
         id: "auclair_c",
             label: "Auclair, a disciple",
             aspects:
-            {mortal:1,follower:1, disciple:1,potential:1,winter:5},
+            {mortal:1,follower:1, disciple:1,potential:1,winter:5,follower_lustenlightenment:1},
             description: "Auclair rarely speaks. She chooses her words with care. Even her movements have become economical. She is never seen to blink.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_winter: auclair_d,killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p},
@@ -35,7 +35,7 @@
         id: "auclair_d",
             label: "A gaunt woman, who is silent",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10,follower_lustenlightenment:1},
             description: "The air is frosty, the candles gutter, the street-sounds are hushed. Someone is here.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:auclair_p,,rebellion:auclair_r},
@@ -64,7 +64,6 @@
 			uniquenessgroup:"uqcat"
 
         },
-		
 				 {
         id: "cat_c",
             label: "Cat Caro, a disciple",

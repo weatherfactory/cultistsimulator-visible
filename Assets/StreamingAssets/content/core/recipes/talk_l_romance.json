@@ -6,17 +6,195 @@
 label:"The Unfurling Rose",
 comments:"generated from induction or contentment season; allows player to pick a potential romantic interest",
 actionId:"romance",
-slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:-1}}],
+slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:1,mortal_interested:1}}],
 startdescription:"FNORD start interest",
 description:"FNORD interest desc - nobody!",
-warmup:60,
+warmup:30,
 craftable:false,
-linked:[{id:"romancerouter",chance:100}]
+linked:[{id:"L_startrose_matchascension",chance:100}]
 },
+
+
+
+{id:"L_startrose_matchascension",
+actionId:"romance",
+slots:[{id:"ascension",label:"Kindred Spirits?",required:{desire:1}}],
+alternativerecipes:[{id:"A_startrose_power_initiate",chance:100},
+{id:"A_startrose_sensation_initiate",chance:100},
+{id:"A_startrose_change_initiate",chance:100},
+{id:"A_startrose_enlightenment_initiate",chance:100}],
+startdescription:"FNORD what do you have in common?",
+description:"FNORD failed interest",
+craftable:false,
+warmup:30
+},
+
+{id:"A_startrose_power_initiate",
+actionId:"romance",
+requirements:{follower_lustpower:1},
+startdescription:"FNORD begin power romance start ",
+description:"FNORD begin power romance end",
+craftable:false
+},
+
+
+{id:"A_startrose_sensation_initiate",
+actionId:"romance",
+requirements:{follower_lustsensation:1},
+startdescription:"FNORD begin sensation romance start ",
+description:"FNORD begin sensation romance end",
+craftable:false
+},
+
+{id:"A_startrose_change_initiate",
+actionId:"romance",
+requirements:{follower_lustchange:1},
+startdescription:"FNORD begin change romance start ",
+description:"FNORD begin change romance end",
+craftable:false
+},
+
+{id:"A_startrose_enlightenment_initiate",
+actionId:"romance",
+requirements:{follower_lustenlightenment:1},
+startdescription:"FNORD begin enlightenment romance start ",
+description:"FNORD begin enlightenment romance end",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:mortal_interested,mutationLevel:1},
+{filterOnAspectId:mortal,mutateAspectId:lantern,mutationLevel:1}],
+
+craftable:false
+},
+
+{id:"romancecontinue",
+label:"Trysts and Interludes",
+actionId:"romance",
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+linked:[{id:"L_continuerose_power",chance:100},
+{id:"L_continuerose_sensation",chance:100},
+{id:"L_continuerose_change",chance:100},
+{id:"L_continuerose_enlightenment",chance:100},
+{id:"L_continuerose_noone",chance:100}],
+startdescription: "FNORD seein ur bae",
+description:".",
+warmup:30,
+craftable:false,
+},
+
+
+{id:"L_continuerose_power",
+actionId:"romance",
+requirements:{follower_lustpower:1,mortal_interested:1},
+slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
+startdescription:"FNORD power test start",
+description:"FNORD power test fail",
+alternativerecipes:[{id:"A_continuerose_power_success",chance:100}],
+warmup:30,
+
+craftable:false
+},
+
+
+
+{id:"A_continuerose_power_success",
+actionId:"romance",
+requirements:{follower_lustpower:1,mortal_interested:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+startdescription:"FNORD power test success start",
+description:"FNORD power  test success end",
+effects:{contentment:1},
+craftable:false
+},
+
+
+{id:"L_continuerose_sensation",
+actionId:"romance",
+requirements:{health:1},
+slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
+startdescription:"FNORD sensation test start",
+description:"FNORD sensation test fail",
+alternativerecipes:[{id:"A_continuerose_sensation_success",chance:100}],
+warmup:30,
+craftable:false
+},
+
+
+
+{id:"A_continuerose_sensation_success",
+actionId:"romance",
+requirements:{passion:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+startdescription:"FNORD sensation test success start",
+description:"FNORD sensation  test success end",
+effects:{contentment:1},
+craftable:false
+},
+
+
+{id:"L_continuerose_change",
+actionId:"romance",
+requirements:{follower_lustchange:1,mortal_interested:1},
+slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
+startdescription:"FNORD change test start",
+description:"FNORD change test fail",
+alternativerecipes:[{id:"A_continuerose_change_success",chance:100}],
+warmup:30,
+
+craftable:false
+},
+
+
+
+{id:"A_continuerose_change_success",
+actionId:"romance",
+requirements:{passion:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+startdescription:"FNORD change test success start",
+description:"FNORD change  test success end",
+effects:{contentment:1},
+craftable:false
+},
+
+
+
+{id:"L_continuerose_enlightenment",
+actionId:"romance",
+requirements:{follower_lustenlightenment:1,mortal_interested:1},
+slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
+startdescription:"FNORD enlightenment test start",
+description:"FNORD enlightenment test fail",
+alternativerecipes:[{id:"A_continuerose_enlightenment_success",chance:100}],
+warmup:30,
+
+craftable:false
+},
+
+
+
+{id:"A_continuerose_enlightenment_success",
+actionId:"romance",
+requirements:{reason:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+startdescription:"FNORD enlightenment test success start",
+description:"FNORD enlightenment  test success end",
+effects:{contentment:1},
+craftable:false
+},
+
+
+
+{id:"L_continuerose_noone",
+actionId:"romance",
+startdescription:"FNORD noone start",
+description:"FNORD noone end",
+
+craftable:false
+},
+
+
 
 {id:"romancerouter",
 label:"A Potential Beginning",
-comments:"needs requirements. This could be linked to with expulsion by a nursing or gifting rec, too",
+comments:"needs requirements. This could be linked to with expulsion by a nursing or gifting rec, too.",
 actionId:"romance", 
 linked:[{id:"L_startrose_auclair",chance:100},
 {id:"L_startrose_cat",chance:100},
@@ -40,42 +218,19 @@ linked:[{id:"L_startrose_auclair",chance:100},
 {id:"L_startrose_violet",chance:100},
 {id:"L_startrose_ysabet",chance:100},
 {id:"L_startrose_generic",chance:100}],
-
+warmup:30,
 },
+
 
 
 {id:"L_startrose_auclair",
 actionId:"romance",
-slots:[{id:"reason",label:"Kindred Spirits?",required:{reason:1}}],
-alternativerecipes:[{id:"A_startrose_auclair_succeed",chance:100}],
+requirements:{},
 startdescription:"FNORD attempt interest from Auclair ",
 description:"FNORD failed interest from Auclair",
 craftable:false,
 warmup:30
 },
-
-{id:"A_startrose_auclair_succeed",
-actionId:"romance",
-requirements:{reason:1},
-startdescription:"FNORD sufficient interest! start",
-description:"FNORD success interest: end",
-craftable:false},
-
-
-{id:"L_continuerose_auclair",
-actionId:"romance",
-startdescription:"FNORD ",
-description:"FNORD",
-alternativerecipes:[{id:"A_crisisrose_auclair",chance:30}],
-craftable:false},
-
-{id:"A_crisisrose_auclair",
-actionId:"talk",
-slots:[{id:"choice",label:"What now?"}],
-alternativerecipes:[{id:"L_crisisrose_option",chance:70}],
-startdescription:"FNORD ",
-description:"FNORD",
-craftable:false},
 
 
 {id:"L_startrose_cat",
