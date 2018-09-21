@@ -569,6 +569,8 @@ namespace Assets.TabletopUi {
 
             //if we found a recipe, display it, and get ready to activate
             if (matchingRecipe != null) {
+
+
                 situationWindow.DisplayStartingRecipeFound(matchingRecipe);
                 return;
             }
@@ -602,6 +604,10 @@ namespace Assets.TabletopUi {
                 if ( rp.BurnImage != null)
                 BurnImageUnderToken(rp.BurnImage);
                 PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
+                //Check for possible text refinements based on the aspects in context
+                var aspectsInSituation = GetAspectsAvailableToSituation(true);
+                TextRefiner tr=new TextRefiner(aspectsInSituation);
+                rp.DescriptiveText = tr.RefineString(rp.DescriptiveText);
                 situationWindow.UpdateTextForPrediction(rp);
             }
 
@@ -620,6 +626,10 @@ namespace Assets.TabletopUi {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspectsAvailableToSituation(true);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+            nextRecipePrediction.DescriptiveText = tr.RefineString(nextRecipePrediction.DescriptiveText);
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
             CurrentEndingFlavourToSignal = nextRecipePrediction.SignalEndingFlavour;
             PossiblySignalImpendingDoom(nextRecipePrediction.SignalEndingFlavour);

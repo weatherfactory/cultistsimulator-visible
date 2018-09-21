@@ -16,6 +16,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using Assets.Core.Entities;
+using Assets.Core.Services;
 
 namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
@@ -192,8 +193,14 @@ namespace Assets.CS.TabletopUI {
         }
 
         public void DisplayStartingRecipeFound(Recipe r) {
-			Title = r.Label;
-			PaginatedNotes.SetText(r.StartDescription);
+
+
+            Title = r.Label;
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+            PaginatedNotes.SetText(tr.RefineString(r.StartDescription));
+
             DisplayTimeRemaining(r.Warmup, r.Warmup, r.SignalEndingFlavour); //Ensures that the time bar is set to 0 to avoid a flicker
 			DisplayButtonState(true);
 
@@ -202,7 +209,11 @@ namespace Assets.CS.TabletopUI {
 
         public void DisplayHintRecipeFound(Recipe r) {
             Title = "Hint: " + r.Label;
-            PaginatedNotes.SetText("<i>" + r.StartDescription + "</i>");
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspectsFromAllSlottedElements(true);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+
+            PaginatedNotes.SetText("<i>" + tr.RefineString(r.StartDescription) + "</i>");
             DisplayButtonState(false);
             
 
