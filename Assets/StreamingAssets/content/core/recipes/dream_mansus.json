@@ -549,6 +549,7 @@ alternativerecipes: [
 		{id: "dreamheartvictory",
 	label: "The Kingskin Gate",
 	actionId: "dream",
+	requirements: {sendingheartg:1},
 	startdescription: "Marinette waits in the shadow of a pine tree, dark skin gleaming, white bone glinting, claws bright as brass. She carries a red Key that might be a bloody knife or a ruby wound. When she brings it down, the pain of it is all red.",
 	ending: "minorheartvictory",
 	warmup:30
@@ -593,9 +594,8 @@ alternativerecipes: [
 		startdescription:"Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
         actionId: "dream",
         craftable: false,
-	alternativerecipes:[{id:"minorlanternvictory",chance:100},
-	{id:"minorgrailvictory",chance:100},
-	{id:"minorforgevictory",chance:100}
+	alternativerecipes:[{id:"dreammothvictory",chance:100},
+	{id:"dreamheartvictory",chance:100}
 	],
     },
 	
