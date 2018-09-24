@@ -540,7 +540,9 @@ alternativerecipes: [
 		startdescription: "The wind rises and the roof rattles as I settle myself to sleep. There is a bitter herb that will help me pass from my body. The Wood opens around me, but with my new eyes, I see another path now. The one called Marinette waits along that path, with the Key that will end me and begin me.",
 	warmup:30,
 	craftable: true,
-	linked:[{id:"dreamheartvictory",chance:100}]
+		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+	linked:[{chance:100,id:"belovedfarewelldream"},
+	{id:"dreamheartvictory",chance:100}]
 
 	},
 		
@@ -558,7 +560,9 @@ alternativerecipes: [
 		startdescription: "I drift down sleep's familiar pathways, until the Wood comes clear before me with its grasping trees and shadow-fringed paths. The Door in the Wood lies beneath the waters of the well. I know that now. I cannot pass it living and I cannot pass it dead. Medusa, who is neither living nor dead, will clear the way. I break into a trot.",
 	warmup:30,
 	craftable: true,
-	linked:[{id:"dreammothvictory",chance:100}]
+	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+	linked:[{chance:100,id:"belovedfarewelldream"},
+	{id:"dreammothvictory",chance:100}]
 	},
 	
 		{id: "dreammothvictory",
@@ -569,7 +573,44 @@ alternativerecipes: [
 	ending: "minormothvictory",
 	warmup:30
 	},
+
+		{id:"belovedfarewelldream",
+	label:"The Threshold Choice",
+	actionId:"dream",
+	requirements:{romanticinterest:1},
+	startdescription:"The final farewell. They will remain, and I will ascend.",
+	slots: [{id:"decision",label:"Decision",description:"[Add Passion to turn aside from your ascent... and live as a mortal with your beloved. Do nothing to continue.]",required:{passion:1}}],
+	alternativerecipes:[{id:"turnasidevictorydream",chance:100},
+	{id:"imnotinlovedream",chance:100}
+	],
+	warmup:30
 	
+	},
+	
+				   {
+        id: "imnotinlovedream",
+        label: "Dedication",
+		startdescription:"Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
+        actionId: "dream",
+        craftable: false,
+	alternativerecipes:[{id:"minorlanternvictory",chance:100},
+	{id:"minorgrailvictory",chance:100},
+	{id:"minorforgevictory",chance:100}
+	],
+    },
+	
+			   {
+        id: "turnasidevictorydream",
+        label: "Love?",
+        actionId: "dream",
+		requirements: {romanticinterest: 1,passion:1},
+        startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with your beloved.]",
+        description: ".",
+        warmup: 60,
+        craftable: false,
+		signalEndingFlavour: Grand,
+		ending: "turnasidevictory"
+    },
 	
 	
 	]
