@@ -6,7 +6,7 @@
 label:"The Unfurling Rose",
 comments:"generated from induction or contentment season; allows player to pick a potential romantic interest",
 actionId:"romance",
-slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:1,mortal_interested:1}}],
+slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:1,romanticinterest:1}}],
 startdescription:"FNORD start interest",
 description:"FNORD interest desc - nobody!",
 warmup:30,
@@ -59,7 +59,7 @@ actionId:"romance",
 requirements:{follower_lustenlightenment:1},
 startdescription:"FNORD begin enlightenment romance start ",
 description:"FNORD begin enlightenment romance end",
-mutations:[{filterOnAspectId:mortal,mutateAspectId:mortal_interested,mutationLevel:1},
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:lantern,mutationLevel:1}],
 
 craftable:false
@@ -68,7 +68,7 @@ craftable:false
 {id:"romancecontinue",
 label:"Trysts and Interludes",
 actionId:"romance",
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 linked:[{id:"L_continuerose_power",chance:100},
 {id:"L_continuerose_sensation",chance:100},
 {id:"L_continuerose_change",chance:100},
@@ -83,11 +83,12 @@ craftable:false,
 
 {id:"L_continuerose_power",
 actionId:"romance",
-requirements:{follower_lustpower:1,mortal_interested:1},
+requirements:{follower_lustpower:1,romanticinterest:1},
 slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
 startdescription:"FNORD power test start",
 description:"FNORD power test fail",
 alternativerecipes:[{id:"A_continuerose_power_success",chance:100}],
+mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
 warmup:30,
 
 craftable:false
@@ -97,8 +98,8 @@ craftable:false
 
 {id:"A_continuerose_power_success",
 actionId:"romance",
-requirements:{follower_lustpower:1,mortal_interested:1},
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+requirements:{follower_lustpower:1,romanticinterest:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription:"FNORD power test success start",
 description:"FNORD power  test success end",
 effects:{contentment:1},
@@ -113,6 +114,7 @@ slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}]
 startdescription:"FNORD sensation test start",
 description:"FNORD sensation test fail",
 alternativerecipes:[{id:"A_continuerose_sensation_success",chance:100}],
+mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
 warmup:30,
 craftable:false
 },
@@ -122,7 +124,7 @@ craftable:false
 {id:"A_continuerose_sensation_success",
 actionId:"romance",
 requirements:{passion:1},
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription:"FNORD sensation test success start",
 description:"FNORD sensation  test success end",
 effects:{contentment:1},
@@ -132,13 +134,13 @@ craftable:false
 
 {id:"L_continuerose_change",
 actionId:"romance",
-requirements:{follower_lustchange:1,mortal_interested:1},
+requirements:{follower_lustchange:1,romanticinterest:1},
 slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
 startdescription:"FNORD change test start",
 description:"FNORD change test fail",
 alternativerecipes:[{id:"A_continuerose_change_success",chance:100}],
 warmup:30,
-
+mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
 craftable:false
 },
 
@@ -147,7 +149,7 @@ craftable:false
 {id:"A_continuerose_change_success",
 actionId:"romance",
 requirements:{passion:1},
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription:"FNORD change test success start",
 description:"FNORD change  test success end",
 effects:{contentment:1},
@@ -158,13 +160,13 @@ craftable:false
 
 {id:"L_continuerose_enlightenment",
 actionId:"romance",
-requirements:{follower_lustenlightenment:1,mortal_interested:1},
+requirements:{follower_lustenlightenment:1,romanticinterest:1},
 slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
 startdescription:"FNORD enlightenment test start",
 description:"FNORD enlightenment test fail",
 alternativerecipes:[{id:"A_continuerose_enlightenment_success",chance:100}],
 warmup:30,
-
+mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
 craftable:false
 },
 
@@ -173,7 +175,7 @@ craftable:false
 {id:"A_continuerose_enlightenment_success",
 actionId:"romance",
 requirements:{reason:1},
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{mortal_interested:1},greedy:true}],
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription:"FNORD enlightenment test success start",
 description:"FNORD enlightenment  test success end",
 effects:{contentment:1},

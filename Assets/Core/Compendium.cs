@@ -301,6 +301,10 @@ public class Compendium : ICompendium
                 "the Tricuspid Gate; I have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
                 "[Congratulations on a standard Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
 
+        if (endingFlag == "turnasidevictory")
+            return new Ending(endingFlag, "AFTER HAPPILY",
+                "FNORD","moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
+
         return Ending.DefaultEnding();
     }
     /// <summary>

@@ -613,7 +613,7 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  actionId:"talk",
 	  startdescription:"My Believer will struggle to abduct a victim, but they may be lucky.",
 	  requirements: {society:1,edge:1,follower:1},
-	  linked: [{id:"followeraction_abductsuccess",chance:30},
+	  linked: [{id:"followeraction_abductsuccess",chance:3},
 	  {id:"followeraction_abductfailure",chance:100}
 	  ]
 	  },
@@ -635,7 +635,7 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  startdescription: "I await word....",
 	  description:"My minion has returned, empty-handed.",
 	  effects: {notoriety:1},
-	  alternativerecipes: [{id:"followeraction_abductfailure_losefollower",chance:30}],
+	  alternativerecipes: [{id:"followeraction_abductfailure_losefollower",chance:300}],
 	  warmup:30	  
 	  },
 	  	  {id: "followeraction_abductfailure_losefollower",

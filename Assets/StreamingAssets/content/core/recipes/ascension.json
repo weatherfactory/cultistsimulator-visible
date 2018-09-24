@@ -137,7 +137,7 @@
 		grail:36},
         effects: {},
         startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.",
-        description: "Here I go...",
+        description: ".",
         warmup: 60,
         craftable: true,
 		signalEndingFlavour: Grand,
@@ -156,21 +156,65 @@
         warmup: 60,
         craftable: false
     },
+		 
+	{id:"belovedfarewell",
+	label:"The Threshold Choice",
+	actionId:"work",
+	requirements:{romanticinterest:1},
+	startdescription:"The final farewell. They will remain, and I will ascend.",
+	slots: [{id:"decision",label:"Decision",description:"[Add Passion to turn aside from your ascent... and live as a mortal with your beloved. Do nothing to continue.]",required:{passion:1}}],
+	alternativerecipes:[{id:"turnasidevictory",chance:100},
+	{id:"imnotinlove",chance:100}
+	],
+	warmup:30
+	
+	},
+		   {
+        id: "turnasidevictory",
+        label: "Love?",
+        actionId: "work",
+		requirements: {romanticinterest: 1,passion:1},
+        startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, although the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with your beloved.]",
+        description: ".",
+        warmup: 60,
+        craftable: false,
+		signalEndingFlavour: Grand,
+		ending: "turnasidevictory"
+    },
+			   {
+        id: "imnotinlove",
+        label: "Dedication",
+		startdescription:"Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
+        actionId: "work",
+        craftable: false,
+	alternativerecipes:[{id:"minorlanternvictory",chance:100},
+	{id:"minorgrailvictory",chance:100},
+	{id:"minorforgevictory",chance:100}
+	],
+    },
 	   {
-        id: "minorlanternvictory",
+        id: "minorlanternvictory_overture",
         label: "The Incursus",
         actionId: "work",
-        requirements: {ritual: 1,
+		requirements: {ritual: 1,
 		ascensionenlightenmentf:1,
 		lantern:36},
-        effects: {},
         startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that.",
-        description: "Here I go...",
+        description: ".",
         warmup: 60,
         craftable: true,
+		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		signalEndingFlavour: Grand,
-		ending: "minorlanternvictory"
+		linked:[{chance:100,id:"belovedfarewell"},
+		{chance:100,id:"minorlanternvictory"}]
     },
+		   {
+        id: "minorlanternvictory",
+		label: "The Incursus",
+		ending: "minorlanternvictory",
+        actionId: "work",
+		},
+	
 	
 		{id:"ambition",
 		requirements: {seasonambitions:1},

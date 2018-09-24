@@ -450,6 +450,12 @@ namespace Assets.CS.TabletopUI {
             var htSave = saveGameManager.RetrieveHashedSaveFromFile();
             ClearGameState(_heart, storage, _tabletop);
             saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
+
+            //my early Jenga code: the gift that keeps on giving. Here, we cater for cases where a gently borked saved game just imported a null ActiveLegacy
+            /////
+            if (storage.ActiveLegacy == null)
+                storage.ActiveLegacy = compendium.GetAllLegacies().First();
+            /////
             CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
             StatusBar.UpdateCharacterDetailsView(storage);
 
