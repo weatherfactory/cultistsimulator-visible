@@ -101,20 +101,29 @@
         craftable: false
     },
 	   {
-        id: "minorforgevictory",
+        id: "minorforgevictory_overture",
         label: "The Conflagration of the Heart",
         actionId: "work",
         requirements: {ritual: 1,
 		ascensionpowerf:1,
 		forge:36},
-        effects: {},
         startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.",
         description: "I am becoming a name of fire. Remember that the ending text will contain the payload.",
         warmup: 60,
         craftable: true,
+	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		signalEndingFlavour: Grand,
-		ending: "minorforgevictory"
+		linked:[{chance:100,id:"belovedfarewell"},
+		{chance:100,id:"minorforgevictory"}]
     },	
+	
+				   {
+        id: "minorforgevictory",
+        label: "The Conflagration of the Heart",
+		ending: "minorforgevictory",
+        actionId: "work",
+		},
+	
 		   {
         id: "majorgrailvictory",
         label: "THE FEAST IS NIGH",
@@ -128,21 +137,30 @@
         warmup: 60,
         craftable: false
     },
+	
 	   {
-        id: "minorgrailvictory",
+        id: "minorgrailvictory_overture",
         label: "The Feast of the True Birth",
         actionId: "work",
         requirements: {ritual: 1,
 		ascensionsensationf:1,
 		grail:36},
-        effects: {},
         startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.",
         description: ".",
         warmup: 60,
         craftable: true,
 		signalEndingFlavour: Grand,
-		ending: "minorgrailvictory"
+		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+		linked:[{chance:100,id:"belovedfarewell"},
+		{chance:100,id:"minorgrailvictory"}]
     },
+			   {
+        id: "minorgrailvictory",
+		        label: "The Feast of the True Birth",
+		ending: "minorgrailvictory",
+        actionId: "work",
+		},
+	
 		   {
         id: "majorlanternvictory",
         label: "THE LANTERN",
