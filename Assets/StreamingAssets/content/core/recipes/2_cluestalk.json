@@ -1,9 +1,21 @@
  {"recipes":
- [	  	  	{
+ [	  
+  	  	{
+        id: "recruitindependentresentmenthint",
+        label: "Find Forgiveness?",
+        actionId: "talk",
+        requirements: {independent:1, mortal:1,resentment:1},
+
+        startdescription: "No. This one will not forget what occurred between us.",
+    
+        craftable: false,
+		hintonly:true
+    },
+ {
         id: "recruitindependenthint",
         label: "Recruit a Troublemaker?",
         actionId: "talk",
-        requirements: {venerationedge: 1, independent:1, mortal:1},
+        requirements: {independent:1, mortal:1,resentment:-1},
 
         startdescription: "This one might join me... if I can muster the Aspect of our cult, to the twenty-first degree. [You can recruit a Troublemaker, even one of a different persuasion, if you can provide enough power].",
     
