@@ -68,11 +68,12 @@ craftable:false
 label:"Trysts and Interludes",
 actionId:"rose",
 slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
-startdescription: "FNORD seein ur bae",
+startdescription: "If I have a particular friend, now is the time to renew our connection.",
 description:".",
-linked:[{id:"L_checkjealousy",chance:300},
+linked:[{id:"L_roseend",chance:100},
+{id:"L_checkjealousy",chance:30},
 {id:"L_roserouter",chance:100}],
-warmup:10
+warmup:5
 },
 
 {id:"L_checkjealousy",
@@ -97,7 +98,21 @@ startdescription: "Two of my particular friends have chosen to call on me at the
 description: "As the evening proceeds, tempers become strained, and there is a difficult scene.",
 warmup:10,
 effects:{mystique:1},
+alternativerecipes:[{id:"A_roseend_expulsion",chance:100,additional:true,expulsion:{limit:1,filter:{resentment:3}}}],
 mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}]
+},
+
+{id:"A_roseend_expulsion",
+actionId:"roseextra",
+comments:"allows us to have only one of a jealous lover break up with the player",
+label:"Consequences!",
+startdescription:"My lover will tolerate my neglect no longer.",
+description:"Neither of us will remember this moment kindly.",
+slots:[{id:"glummer",label:"What Remains",required:{contentment:1},greedy:true}],
+mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
+effects:{dread:1,contentment:-1},
+warmup:10,
+craftable:false
 },
 
 
@@ -231,11 +246,12 @@ craftable:false
 },
 
 {id:"L_continuerose_noone",
+label:"Solitude",
 actionId:"rose",
 requirements:{},
-startdescription:"FNORD no one end start",
-description:"FNORD no one end end",
-
+startdescription:"I am alone, but there is peace in that also.",
+description:"Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
+contentment:1,
 craftable:false
 },
 
