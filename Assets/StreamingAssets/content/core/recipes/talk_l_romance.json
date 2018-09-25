@@ -6,7 +6,7 @@
 label:"The Unfurling Rose",
 comments:"generated from induction or contentment season; allows player to pick a potential romantic interest",
 actionId:"romance",
-slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:1,romanticinterest:1}}],
+slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:1,romanticinterest:1,resentment:1}}],
 startdescription:"FNORD start interest",
 description:"FNORD interest desc - nobody!",
 warmup:30,
@@ -31,7 +31,7 @@ warmup:30
 
 {id:"A_startrose_power_initiate",
 actionId:"romance",
-requirements:{follower_lustpower:1},
+requirements:{follower_lustpower:1,resentment:-1},
 startdescription:"FNORD begin power romance start ",
 description:"FNORD begin power romance end",
 craftable:false
@@ -40,7 +40,7 @@ craftable:false
 
 {id:"A_startrose_sensation_initiate",
 actionId:"romance",
-requirements:{follower_lustsensation:1},
+requirements:{follower_lustsensation:1,resentment:-1},
 startdescription:"FNORD begin sensation romance start ",
 description:"FNORD begin sensation romance end",
 craftable:false
@@ -48,7 +48,7 @@ craftable:false
 
 {id:"A_startrose_change_initiate",
 actionId:"romance",
-requirements:{follower_lustchange:1},
+requirements:{follower_lustchange:1,resentment:-1},
 startdescription:"FNORD begin change romance start ",
 description:"FNORD begin change romance end",
 craftable:false
@@ -56,7 +56,7 @@ craftable:false
 
 {id:"A_startrose_enlightenment_initiate",
 actionId:"romance",
-requirements:{follower_lustenlightenment:1},
+requirements:{follower_lustenlightenment:1,resentment:-1},
 startdescription:"FNORD begin enlightenment romance start ",
 description:"FNORD begin enlightenment romance end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
