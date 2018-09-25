@@ -64,17 +64,7 @@ mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLeve
 
 craftable:false
 },
-{id:"rosenext",
-label:"Trysts and Interludes",
-actionId:"rose",
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
-startdescription: "If I have a particular friend, now is the time to renew our connection.",
-description:".",
-linked:[{id:"L_roseend",chance:100},
-{id:"L_checkjealousy",chance:30},
-{id:"L_roserouter",chance:100}],
-warmup:5
-},
+
 
 {id:"L_checkjealousy",
 label:"Another?",
@@ -251,7 +241,7 @@ actionId:"rose",
 requirements:{},
 startdescription:"I am alone, but there is peace in that also.",
 description:"Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
-contentment:1,
+effects:{contentment:1},
 craftable:false
 },
 

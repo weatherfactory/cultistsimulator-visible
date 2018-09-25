@@ -17,7 +17,9 @@
 		{id: "ambition", chance:100,additional:true},
 		{id: "despairrisklink", chance:100,additional:true},
 		{id: "visionsrisklink", chance:100,additional:true},
-		 {id: "starvation", chance:100, additional: true}],
+		 {id: "starvation", chance:100, additional: true},
+		 {id: "rosenext", chance:100, additional: true},
+		 ],
         startdescription: "Time, the sundial's shadow, passes. I must have Funds to live, or I will become ill.",
         description: ".",
         warmup: 60,
@@ -63,7 +65,18 @@
 	description: "Perhaps their spirit walks the House. Perhaps it's lost in the Wood, to sink ever lower. Their mortal shell remains.",
 	aspects:{killmortal:1}	
 	},
-	
+	{id:"rosenext",
+label:"Trysts and Interludes",
+actionId:"rose",
+requirements:{seasonardours:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
+startdescription: "If I have a particular friend, now is the time to renew our connection.",
+description:".",
+linked:[{id:"L_roseend",chance:100},
+{id:"L_checkjealousy",chance:30},
+{id:"L_roserouter",chance:100}],
+warmup:5
+},
 		   {
         id: "pleasantday",
         label: "A Pleasant Day",
