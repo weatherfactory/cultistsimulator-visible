@@ -90,8 +90,8 @@ description:"FNORD power test fail",
 alternativerecipes:[{id:"A_continuerose_power_success",chance:100}],
 mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
 warmup:30,
-
-craftable:false
+craftable:false,
+linked:[{id:"L_roseend",chance:100}]
 },
 
 
@@ -116,7 +116,8 @@ description:"FNORD sensation test fail",
 alternativerecipes:[{id:"A_continuerose_sensation_success",chance:100}],
 mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
 warmup:30,
-craftable:false
+craftable:false,
+linked:[{id:"L_roseend",chance:100}]
 },
 
 
@@ -132,30 +133,6 @@ craftable:false
 },
 
 
-{id:"L_continuerose_change",
-actionId:"romance",
-requirements:{follower_lustchange:1,romanticinterest:1},
-slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
-startdescription:"FNORD change test start",
-description:"FNORD change test fail",
-alternativerecipes:[{id:"A_continuerose_change_success",chance:100}],
-warmup:30,
-mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
-craftable:false
-},
-
-
-
-{id:"A_continuerose_change_success",
-actionId:"romance",
-requirements:{passion:1},
-slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
-startdescription:"FNORD change test success start",
-description:"FNORD change  test success end",
-effects:{contentment:1},
-craftable:false
-},
-
 
 
 {id:"L_continuerose_enlightenment",
@@ -167,7 +144,8 @@ description:"FNORD enlightenment test fail",
 alternativerecipes:[{id:"A_continuerose_enlightenment_success",chance:100}],
 warmup:30,
 mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
-craftable:false
+craftable:false,
+linked:[{id:"L_roseend",chance:100}]
 },
 
 
@@ -183,14 +161,51 @@ craftable:false
 },
 
 
+{id:"L_continuerose_change",
+actionId:"romance",
+requirements:{follower_lustchange:1,romanticinterest:1},
+slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1}}],
+startdescription:"FNORD change test start",
+description:"FNORD change test fail",
+alternativerecipes:[{id:"A_continuerose_change_success",chance:100}],
+warmup:30,
+mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,additive:true}],
+craftable:false,
+linked:[{id:"L_roseend",chance:100}]
+},
+
+
+
+{id:"A_continuerose_change_success",
+actionId:"romance",
+requirements:{passion:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
+startdescription:"FNORD change test success start",
+description:"FNORD change  test success end",
+effects:{contentment:1},
+craftable:false
+},
 
 {id:"L_continuerose_noone",
 actionId:"romance",
-startdescription:"FNORD noone start",
-description:"FNORD noone end",
+requirements:{},
+startdescription:"FNORD no one end start",
+description:"FNORD no one end end",
 
 craftable:false
 },
+
+
+{id:"L_roseend",
+actionId:"romance",
+requirements:{resentment:3},
+startdescription:"FNORD you messed up",
+description:"FNORD dump your ass",
+mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
+craftable:false
+},
+
+
 
 
 
