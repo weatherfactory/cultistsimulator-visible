@@ -38,7 +38,16 @@ resetonexhaustion:true
 defaultcard: "contentment",
 resetonexhaustion:true	
 	},
-	
+	{id:"romancerewards",
+	label:"Romance's Reward",
+	description:"Then, now, when?",
+		spec:
+	["memorybittersweet",
+	"memorypleasant",
+	"memorypassionate",
+	"fleeting"],
+	resetonexhaustion:true	
+	},
 	{id: "dreamreasonresults",
 		label:"Dream's Hinterlands",
 	description:"Sleep usually brings rest and peace; but not always. Not always.",

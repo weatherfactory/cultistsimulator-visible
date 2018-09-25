@@ -294,20 +294,41 @@ lifetime: 180
 		unique:true
 		},
 		
-	
 			 {
             id: "fleeting",
-            label: "Fleeting Memory",
+            label: "Fleeting Reminiscence",
             description: "A moment in time. In another moment, it'll be gone.",
 			aspects: {secrethistories: 2,moth:2,influence:1},
-			lifetime:30
+			lifetime:300
         },
+
 		{id: "contentment",
 		label: "Contentment",
 		aspects: {lantern:2,heart:2,influence:1},
 		description: "I'm happy, I think. [Contentment defends against Dread; but Contentment doesn't last.]",
 		lifetime: 60
 		},
+									 {
+            id: "memorybittersweet",
+            label: "Bittersweet Memory",
+            description: "I could recall a complex time.",
+			aspects: {way:1},
+			lifetime:300
+        },
+					 {
+            id: "memorypleasant",
+            label: "Pleasant Memory",
+            description: "I could recall a happier time.",
+			aspects: {way:1},
+			lifetime:300
+        },
+							 {
+            id: "memorypassionate",
+            label: "Passionate Memory",
+            description: "I could recall a warmer time.",
+			aspects: {way:1},
+			lifetime:300
+        },
 				{id: "scar_edge",
 		label:"Scar: Brutal Experience",
 		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [You've made a permanent sacrifice for power.]",
