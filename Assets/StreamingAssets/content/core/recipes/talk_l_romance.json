@@ -31,7 +31,7 @@ warmup:30
 
 {id:"A_startrose_power_initiate",
 actionId:"rose",
-requirements:{follower_lustpower:1,resentment:-1},
+requirements:{follower_lustpower:1,resentment:-1,powermarks:1},
 startdescription:"FNORD begin power rose start ",
 description:"FNORD begin power rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
@@ -42,7 +42,7 @@ craftable:false
 
 {id:"A_startrose_sensation_initiate",
 actionId:"rose",
-requirements:{follower_lustsensation:1,resentment:-1},
+requirements:{follower_lustsensation:1,resentment:-1,sensationmarks:1},
 startdescription:"FNORD begin sensation rose start ",
 description:"FNORD begin sensation rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
@@ -52,7 +52,7 @@ craftable:false
 
 {id:"A_startrose_change_initiate",
 actionId:"rose",
-requirements:{follower_lustchange:1,resentment:-1},
+requirements:{follower_lustchange:1,resentment:-1,changemarks:1},
 startdescription:"FNORD begin change rose start ",
 description:"FNORD begin change rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
@@ -63,7 +63,7 @@ craftable:false
 
 {id:"A_startrose_enlightenment_initiate",
 actionId:"rose",
-requirements:{follower_lustenlightenment:1,resentment:-1},
+requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmarks:1},
 startdescription:"FNORD begin enlightenment rose start ",
 description:"FNORD begin enlightenment rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
@@ -288,172 +288,7 @@ mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:resentment,mutation
 }
 
 
-{id:"roserouter",
-label:"A Potential Beginning",
-comments:"needs requirements. This could be linked to with expulsion by a nursing or gifting rec, too.",
-actionId:"rose", 
-linked:[{id:"L_startrose_auclair",chance:100},
-{id:"L_startrose_cat",chance:100},
-{id:"L_startrose_clovette",chance:100},
-{id:"L_startrose_clifton",chance:100},
-{id:"L_startrose_dorothy",chance:100},
-{id:"L_startrose_elridge",chance:100},
-{id:"L_startrose_enid",chance:100},
-{id:"L_startrose_laidlaw",chance:100},
-{id:"L_startrose_leo",chance:100},
-{id:"L_startrose_neville",chance:100},
-{id:"L_startrose_porter",chance:100},
-{id:"L_startrose_renira",chance:100},
-{id:"L_startrose_rose",chance:100},
-{id:"L_startrose_saliba",chance:100},
-{id:"L_startrose_slee",chance:100},
-{id:"L_startrose_sylvia",chance:100},
-{id:"L_startrose_tristan",chance:100},
-{id:"L_startrose_valciane",chance:100},
-{id:"L_startrose_victor",chance:100},
-{id:"L_startrose_violet",chance:100},
-{id:"L_startrose_ysabet",chance:100},
-{id:"L_startrose_generic",chance:100}],
-warmup:30,
-},
 
-
-
-{id:"L_startrose_auclair",
-actionId:"rose",
-requirements:{},
-startdescription:"FNORD attempt interest from Auclair ",
-description:"FNORD failed interest from Auclair",
-craftable:false,
-warmup:30
-},
-
-
-{id:"L_startrose_cat",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_clovette",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_clifton",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_dorothy",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_elridge",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_enid",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_laidlaw",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_leo",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_neville",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_porter",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_renira",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_rose",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_saliba",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_slee",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_sylvia",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_tristan",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_valciane",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_victor",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_violet",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_ysabet",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
-
-{id:"L_startrose_generic",
-actionId:"rose",
-startdescription:"FNORD",
-description:"FNORD",
-craftable:false},
 
 
 ]
