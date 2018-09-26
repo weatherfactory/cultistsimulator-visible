@@ -75,12 +75,17 @@ aspects:{killmortal:1}
 label:"Discuss occult business with a Follower",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:-1},
-slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,tool:1,ingredient:1,annoyance:1}}],
+slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,tool:1,ingredient:1,annoyance:1,locationcabaret:1,locationstreetsstrange:1,locationauctionhouse:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 
 {id:"talktohireling_rehire",chance:100},
 {id:"A_talktofollower_givetool_router",chance:100},
+
+{id:"A_talktofollower_locationcabaret_lustsensation",chance:100},
+{id:"A_talktofollower_locationcabaret_lustchange",chance:100},
+{id:"A_talktofollower_locationstreetsstrange_lustenlightenment",chance:100},
+{id:"A_talktofollower_locationauctionhouse_lustpower",chance:100},
 
 {id:"followeraction_repairtoollanternbcracked",chance:100},
 {id:"followeraction_repairtoollanterndcracked",chance:100},
@@ -503,6 +508,43 @@ mutations:[{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:3,addi
 label:"Not all gifts are suitable",
 actionId:"talk",
 description:"This is something that cannot be given away; or something that no-one would accept.",
+},
+
+
+{id:"A_talktofollower_locationcabaret_lustsensation",
+label:"Arrange an evening at the Ecdysis Club",
+actionId:"talk",
+requirements:{romanticinterest:-1,follower_lustsensation:1,locationcabaret:1},
+startdescription:"FNORD e likes it",
+description:".",
+linked:[{id:"L_talk_roseopportunity",chance:100}]
+},
+
+{id:"A_talktofollower_locationcabaret_lustchange",
+label:"Arrange an evening at the Ecdysis Club",
+actionId:"talk",
+requirements:{romanticinterest:-1,follower_lustchange:1,locationcabaret:1},
+startdescription:"FNORD e likes it",
+description:".",
+linked:[{id:"L_talk_roseopportunity",chance:100}]
+},
+
+{id:"A_talktofollower_locationstreetsstrange_lustenlightenment",
+label:"Arrange a walk in strange streets",
+actionId:"talk",
+requirements:{romanticinterest:-1,follower_lustenlightenment:1,locationstreetsstrange:1},
+startdescription:"FNORD e likes it",
+description:".",
+linked:[{id:"L_talk_roseopportunity",chance:100}]
+},
+
+{id:"A_talktofollower_locationauctionhouse_lustpower",
+label:"Arrange an evening at Oriflamme's",
+actionId:"talk",
+requirements:{romanticinterest:-1,follower_lustpower:1,locationauctionhouse:1},
+startdescription:"FNORD e likes it",
+description:".",
+linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
 

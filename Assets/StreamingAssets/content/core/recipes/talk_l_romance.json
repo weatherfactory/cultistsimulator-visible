@@ -2,22 +2,12 @@
 "recipes": [
 
 
-{id:"roseopportunity",
-label:"The Unfurling Rose",
-comments:"generated from induction or contentment season; allows player to pick a potential romantic interest",
-actionId:"rose",
-slots: [{id:"Who?",description:"Whose eyes have returned, again, to meet mine?",required:{follower:1,acquaintance:1},forbidden:{summoned:1,romanticinterest:1,resentment:1}}],
-startdescription:"FNORD start interest",
-description:"FNORD interest desc - nobody!",
-warmup:30,
-craftable:false,
-linked:[{id:"L_startrose_matchascension",chance:100}]
-},
 
 
 
-{id:"L_startrose_matchascension",
-actionId:"rose",
+
+{id:"L_talk_roseopportunity",
+actionId:"talk",
 slots:[{id:"ascension",label:"Kindred Spirits?",required:{desire:1}}],
 alternativerecipes:[{id:"A_startrose_power_initiate",chance:100},
 {id:"A_startrose_sensation_initiate",chance:100},
@@ -63,7 +53,7 @@ craftable:false
 
 {id:"A_startrose_enlightenment_initiate",
 actionId:"rose",
-requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmarks:1},
+requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmentmarks:1},
 startdescription:"FNORD begin enlightenment rose start ",
 description:"FNORD begin enlightenment rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
