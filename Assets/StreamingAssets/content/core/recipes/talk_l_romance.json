@@ -34,6 +34,8 @@ actionId:"rose",
 requirements:{follower_lustpower:1,resentment:-1},
 startdescription:"FNORD begin power rose start ",
 description:"FNORD begin power rose end",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
+{filterOnAspectId:mortal,mutateAspectId:forge,mutationLevel:1}],
 craftable:false
 },
 
@@ -43,6 +45,8 @@ actionId:"rose",
 requirements:{follower_lustsensation:1,resentment:-1},
 startdescription:"FNORD begin sensation rose start ",
 description:"FNORD begin sensation rose end",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
+{filterOnAspectId:mortal,mutateAspectId:grail,mutationLevel:1}],
 craftable:false
 },
 
@@ -51,6 +55,9 @@ actionId:"rose",
 requirements:{follower_lustchange:1,resentment:-1},
 startdescription:"FNORD begin change rose start ",
 description:"FNORD begin change rose end",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
+{filterOnAspectId:mortal,mutateAspectId:heart,mutationLevel:1}
+{filterOnAspectId:mortal,mutateAspectId:moth,mutationLevel:1}],
 craftable:false
 },
 
@@ -81,6 +88,7 @@ warmup:5
 
 {id:"L_activatejealousy",
 label:"O Rose Thou Art Sick",
+actionId:"rose",
 requirements:{romanticinterest:2},
 comments: "careful: this is a potential weak spot if we ever start making romantic interest additive not binary"
 actionId:"rose",
