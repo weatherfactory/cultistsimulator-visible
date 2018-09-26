@@ -137,7 +137,21 @@
         warmup: 60,
         craftable: false
     },
-	
+		   {
+        id: "minorgrailvictory_withromanticsacrifice",
+        label: "The Feast of the Heart's Remembrance",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		romanticinterest:1,
+		grail:27},
+        startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. One is here who loved me and whom perhaps I have loved, as perhaps the Red Grail loved the Thunderskin before his end. With this sacrifice, the invocation is both easier and more terrible. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail, and one who loved me will be remembered as long as I endure.",
+        description: ".",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending:"minorgrailvictory"]
+    },
 	   {
         id: "minorgrailvictory_overture",
         label: "The Feast of the True Birth",

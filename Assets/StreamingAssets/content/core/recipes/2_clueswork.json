@@ -75,7 +75,80 @@
         craftable: false,
 		hintonly: true
     },
-
+   {
+        id: "minorforgevictory_hint_sixth",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:6},
+        effects: {},
+        startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-sixth degree of intensity.",
+        hintonly:true
+    },
+			   {
+        id: "minorforgevictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Conflagration of the Heart. I will first need to achieve the Sixth Mark.",
+        hintonly:true
+    },
+	
+					   {
+        id: "minorgrailvictory_hint_sixth_with_romantic",
+        label: "A quicker way to the Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:6,
+		romanticinterest:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need more... but the Grail once sacrificed one she had loved, and those sacrifices are precious to her. If I am willing to sacrifice a lover, I will need power to only the twenty-seventh degree of intensity.",
+        hintonly:true
+    },
+	
+					   {
+        id: "minorgrailvictory_hint_sixth",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:6},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-sixth degree of intensity.",
+        hintonly:true
+    },
+				   {
+        id: "minorgrailvictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I will first need to achieve the Sixth Mark.",
+        hintonly:true
+    },
+					   {
+        id: "minorlanternvictory_hint_sixth",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:6},
+        effects: {},
+        startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-sixth degree of intensity.",
+        hintonly:true
+    },
+				   {
+        id: "minorlanternvictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Incursus. I will first need to achieve the Sixth Mark.",
+        hintonly:true
+    },
+	
  
  		{
         id: "hint_summon_spirit_forgee_edge",
@@ -383,67 +456,7 @@
         craftable: false,
 		hintonly: true
     },
-				   {
-        id: "minorforgevictory_hint_sixth",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		powermarks:6},
-        effects: {},
-        startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-sixth degree of intensity.",
-        hintonly:true
-    },
-			   {
-        id: "minorforgevictory_hint",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		powermarks:1},
-        effects: {},
-        startdescription: "The Seventh Mark is the Conflagration of the Heart. I will first need to achieve the Sixth Mark.",
-        hintonly:true
-    },
-					   {
-        id: "minorgrailvictory_hint_sixth",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		sensationmarks:6},
-        effects: {},
-        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-sixth degree of intensity.",
-        hintonly:true
-    },
-				   {
-        id: "minorgrailvictory_hint",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		sensationmarks:1},
-        effects: {},
-        startdescription: "The Seventh Mark is the Feast of the True Birth. I will first need to achieve the Sixth Mark.",
-        hintonly:true
-    },
-					   {
-        id: "minorlanternvictory_hint_sixth",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		enlightenmentmarks:6},
-        effects: {},
-        startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-sixth degree of intensity.",
-        hintonly:true
-    },
-				   {
-        id: "minorlanternvictory_hint",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		enlightenmentmarks:1},
-        effects: {},
-        startdescription: "The Seventh Mark is the Incursus. I will first need to achieve the Sixth Mark.",
-        hintonly:true
-    },
-	
+				
 
 
 		{
