@@ -512,7 +512,7 @@ description:"This is something that cannot be given away; or something that no-o
 
 
 {id:"A_talktofollower_locationcabaret_lustsensation",
-label:"Arrange an evening at the Ecdysis Club",
+label:"Invite them to an evening at the Ecdysis Club",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustsensation:1,locationcabaret:1},
 startdescription:"@#uqrose|Rose
@@ -525,21 +525,21 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
 {id:"A_talktofollower_locationcabaret_lustchange",
-label:"Arrange an evening at the Ecdysis Club",
+label:"Invite them to an evening at the Ecdysis Club",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustchange:1,locationcabaret:1},
-startdescription:"@#uqporter|Porter
-#uqysabet|Ysabet
-#uqclovette|Clovette
-#uqdorothy|Dorothy
-#uqsylvia|Sylvia
-#uqleo|Leo@",
+startdescription:"@#uqporter|Porter hunches his shoulders and chews on a piece of liquorice root. 'Right,' he says.
+#uqysabet|Ysabet tilts her head reflectively. 'I might do,' she says. She hesitates for a batwing's beat. 'That would be gorgeous,' she adds.
+#uqclovette|Clovette claps her hands. 'I thought you'd never ask!'
+#uqdorothy|Dorothy nods decisively, twice, thrice. 'It's time,' she says softly.
+#uqsylvia|Sylvia yawns. She lifts her eye-patch edge to scratch an itch in the hollow beneath. 'Ripping,' she drawls.
+#uqleo|Leo ducks his head. He glances up at you and then at the ground. 'I would be delighted to,' he says, very formally, to the ground.@",
 description:"Your companion's breath comes short as they watch the display on the stage; not particularly when the bodies of the performers are unsheathed, but most of all when certain transformations are manifested. [To begin an affair with this character, show them that your deepest desires are aligned.]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
 {id:"A_talktofollower_locationstreetsstrange_lustenlightenment",
-label:"Arrange a walk in strange streets",
+label:"Invite them for a walk in strange streets",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustenlightenment:1,locationstreetsstrange:1},
 startdescription:"@#uqenid|Enid
@@ -553,7 +553,7 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
 {id:"A_talktofollower_locationauctionhouse_lustpower",
-label:"Arrange an evening at Oriflamme's",
+label:"Invite them to an evening at Oriflamme's",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustpower:1,locationauctionhouse:1},
 startdescription:"@#uqtristan|Tristan nods emphatically, without speaking.
