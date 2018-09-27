@@ -13,7 +13,7 @@ alternativerecipes:[{id:"A_startrose_power_initiate",chance:100},
 {id:"A_startrose_sensation_initiate",chance:100},
 {id:"A_startrose_change_initiate",chance:100},
 {id:"A_startrose_enlightenment_initiate",chance:100}],
-startdescription:"FNORD what do you have in common?",
+startdescription:".",
 description:"FNORD failed interest",
 craftable:false,
 warmup:30
@@ -22,7 +22,10 @@ warmup:30
 {id:"A_startrose_power_initiate",
 actionId:"rose",
 requirements:{follower_lustpower:1,resentment:-1,powermarks:1},
-startdescription:"FNORD begin power rose start ",
+startdescription:"@#uqtristan|Tristan rises before you've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on your shoulder, the hand trembles. 
+#uqvalciane|Valciane inches closer as you speak together. When she takes your hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns you. 'We should establish tolerances.'
+#uqelridge|Elridge listens intently to every word. His eyes never leave yours. The only thing he says is 'Yes', but by the time you reach your home, he has begun to say it even when you haven't asked a question.
+#uqlaidlaw|Laidlaw's eyes shine as you speak. He can't seem to look away. His hands are upon you before either of you quite seem clear how it happened. Just for a moment, the auctioneer falters. You leave together before you attract comment.@",
 description:"FNORD begin power rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:forge,mutationLevel:1}],
@@ -33,32 +36,53 @@ craftable:false
 {id:"A_startrose_sensation_initiate",
 actionId:"rose",
 requirements:{follower_lustsensation:1,resentment:-1,sensationmarks:1},
-startdescription:"FNORD begin sensation rose start ",
+startdescription:"FNORD begin sensation rose start
+@#uqrose|Rose
+#uqsaliba|Saliba
+#uqvictor|Victor
+#uqviolet|Violet
+#uqrenira|Renira@",
 description:"FNORD begin sensation rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:grail,mutationLevel:1}],
 craftable:false
 },
 
-{id:"A_startrose_change_initiate",
-actionId:"rose",
-requirements:{follower_lustchange:1,resentment:-1,changemarks:1},
-startdescription:"FNORD begin change rose start ",
-description:"FNORD begin change rose end",
-mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
-{filterOnAspectId:mortal,mutateAspectId:heart,mutationLevel:1}
-{filterOnAspectId:mortal,mutateAspectId:moth,mutationLevel:1}],
-craftable:false
-},
+
 
 {id:"A_startrose_enlightenment_initiate",
 actionId:"rose",
 requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmentmarks:1},
-startdescription:"FNORD begin enlightenment rose start ",
+startdescription:"FNORD begin enlightenment rose start
+@#uqenid|Enid
+#uqauclair|Auclair
+#uqcat|Cat
+#uqclifton|Clifton
+#uqneville|Neville
+#uqslee|Slee@
+
+ ",
 description:"FNORD begin enlightenment rose end",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:lantern,mutationLevel:1}],
 
+craftable:false
+},
+
+{id:"A_startrose_change_initiate",
+actionId:"rose",
+requirements:{follower_lustchange:1,resentment:-1,changemarks:1},
+startdescription:"FNORD begin change rose start 
+@#uqporter|Porter
+#uqysabet|Ysabet
+#uqclovette|Clovette
+#uqdorothy|Dorothy
+#uqsylvia|Sylvia
+#uqleo|Leo@ ",
+description:"FNORD begin change rose end",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
+{filterOnAspectId:mortal,mutateAspectId:heart,mutationLevel:1}
+{filterOnAspectId:mortal,mutateAspectId:moth,mutationLevel:1}],
 craftable:false
 },
 
@@ -83,7 +107,36 @@ requirements:{romanticinterest:2},
 comments: "careful: this is a potential weak spot if we ever start making romantic interest additive not binary"
 actionId:"rose",
 startdescription: "Two of my particular friends have chosen to call on me at the same hour. The conversation is stilted.",
-description: "As the evening proceeds, tempers become strained, and there is a difficult scene.",
+description: "As the evening proceeds, tempers become strained, and there is a difficult scene.
+
+@#uqtristan|Tristan
+#uqvalciane|Valciane
+#uqelridge|Elridge
+#uqlaidlaw|Laidlaw@
+
+
+@#uqenid|Enid
+#uqauclair|Auclair
+#uqcat|Cat
+#uqclifton|Clifton
+#uqneville|Neville
+#uqslee|Slee@
+
+
+@#uqrose|Rose
+#uqsaliba|Saliba
+#uqvictor|Victor
+#uqviolet|Violet
+#uqrenira|Renira@
+
+@#uqporter|Porter
+#uqysabet|Ysabet
+#uqclovette|Clovette
+#uqdorothy|Dorothy
+#uqsylvia|Sylvia
+#uqleo|Leo@ 
+
+",
 warmup:10,
 effects:{mystique:1},
 alternativerecipes:[{id:"A_roseend_expulsion",chance:100,additional:true,expulsion:{limit:1,filter:{resentment:3}}}],

@@ -515,8 +515,12 @@ description:"This is something that cannot be given away; or something that no-o
 label:"Arrange an evening at the Ecdysis Club",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustsensation:1,locationcabaret:1},
-startdescription:"FNORD e likes it",
-description:".",
+startdescription:"@#uqrose|Rose
+#uqsaliba|Saliba
+#uqvictor|Victor
+#uqviolet|Violet
+#uqrenira|Renira@",
+description:"If you're thinking of beginning a dalliance, then really, this is the place. If you and your companion share the same sensibilities. [To begin an affair with this character, show them that your deepest desires are aligned.]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
@@ -524,8 +528,13 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 label:"Arrange an evening at the Ecdysis Club",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustchange:1,locationcabaret:1},
-startdescription:"FNORD e likes it",
-description:".",
+startdescription:"@#uqporter|Porter
+#uqysabet|Ysabet
+#uqclovette|Clovette
+#uqdorothy|Dorothy
+#uqsylvia|Sylvia
+#uqleo|Leo@",
+description:"Your companion's breath comes short as they watch the display on the stage; not particularly when the bodies of the performers are unsheathed, but most of all when certain transformations are manifested. [To begin an affair with this character, show them that your deepest desires are aligned.]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
@@ -533,8 +542,13 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 label:"Arrange a walk in strange streets",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustenlightenment:1,locationstreetsstrange:1},
-startdescription:"FNORD e likes it",
-description:".",
+startdescription:"@#uqenid|Enid
+#uqauclair|Auclair
+#uqcat|Cat
+#uqclifton|Clifton
+#uqneville|Neville
+#uqslee|Slee@",
+description:"The light is silver; the breeze is cool; the night's silence invites words as dark velvet invites a finger's touch. [To begin an affair with this character, show them that your deepest desires are aligned.]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
@@ -542,8 +556,11 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 label:"Arrange an evening at Oriflamme's",
 actionId:"talk",
 requirements:{romanticinterest:-1,follower_lustpower:1,locationauctionhouse:1},
-startdescription:"FNORD e likes it",
-description:".",
+startdescription:"@#uqtristan|Tristan nods emphatically, without speaking.
+#uqvalciane|Valciane nods curtly, but her eyes glow as coals do when a furnace door is opened.
+#uqelridge|Elridge folds his knife shut with a click, and focuses his whole attention on you. 'Yes, please,' he says.
+#uqlaidlaw|Laidlaw beams. 'That sounds pretty!'@",
+description:"Some prefer moonlit walks. Some prefer soft music. But there are those whose enjoy shining opulence, high company, and the soft click of the operations of power. [To begin an affair with this character, show them that your deepest desires are aligned.]",
 linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
