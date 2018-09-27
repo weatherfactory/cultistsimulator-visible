@@ -16,7 +16,7 @@ namespace Assets.Core.Services
 
         public Refinement(string refinementString)
         {
-            _refinementString = refinementString;
+            _refinementString = refinementString.Replace("\r", "").Replace("\n", "");
             string[] _refinementParts = _refinementString.Split('|');
             if (_refinementParts.Length != 2)
             {
@@ -68,6 +68,7 @@ namespace Assets.Core.Services
             //take the @s out (if we have more than two, this breaks, but dw for now)
            //and then split into #-headed segments
            string replaceableSegmentInternal = replaceableSegment.Replace("@", string.Empty);
+       
            List<string> candidateRefinements = new List<string>(replaceableSegmentInternal.Split('#'));
            candidateRefinements.RemoveAll(cr => cr.Length == 0); //there's  an empty string in there from the bit before the first #
 
@@ -81,7 +82,7 @@ namespace Assets.Core.Services
                         //we've got as far as the default candidate. Stop worrying, return this, go on with your life.
                        return stringToRefine.Replace(replaceableSegment, r.Text);
 
-                    if (_aspectsInContext.ContainsKey(r.ForAspectId))
+                    if (_aspectsInContext.ContainsKey(r.ForAspectId.ToLower())) //in case we've given someone an upper case initial letter eg
                    {
                        //we've found a matching candidate. Stop worrying, return this, go on with your life.
                        return stringToRefine.Replace(replaceableSegment, r.Text);

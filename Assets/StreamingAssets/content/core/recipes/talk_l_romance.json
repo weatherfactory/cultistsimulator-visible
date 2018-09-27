@@ -94,8 +94,10 @@ mutations:[{filterOnAspectId:mortal,mutateAspectId:resentment,mutationLevel:1,ad
 actionId:"roseextra",
 comments:"allows us to have only one of a jealous lover break up with the player",
 label:"Consequences!",
-startdescription:"@#auclair|Auclair
-	{id:"uqcat",label:"Cat Caro",description:"@#clovette|Clovette#clifton|Clifton#dorothy|Dorothy#elridge|Elridge#enid|Enid#laidlaw|Laidlaw#leo|Leo#neville|Neville#porter|Porter#renira|Renira#rose|Rose#saliba|Saliba#slee|Slee#sylvia|Sylvia#tristan|Tristan#valciane|Valciane#victor|Victor#violet|Violet#ysabet|Ysabet#|My lover@ will tolerate my neglect no longer.",
+startdescription:"@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge
+#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose
+#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan
+#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#uq|My lover@ will tolerate my neglect no longer.",
 description:"Neither of us will remember this moment kindly.",
 slots:[{id:"glummer",label:"What Remains",required:{contentment:1},greedy:true}],
 mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
@@ -120,7 +122,7 @@ craftable:false,
 {id:"L_continuerose_power",
 actionId:"rose",
 requirements:{follower_lustpower:1,romanticinterest:1},
-slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1,dread:1,funds:1}}],
+slots: [{id:"What?",description:"The spirit's true light.",required:{health:1,dread:1,funds:1}}],
 startdescription:"FNORD power test start",
 description:"FNORD power test fail",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
@@ -136,7 +138,7 @@ linked:[{id:"L_roseend",chance:100}]
 
 {id:"A_continuerose_power_success",
 actionId:"rose",
-requirements:{follower_lustpower:1,romanticinterest:1},
+requirements:{health:1},
 startdescription:"FNORD power test success start",
 description:"FNORD power  test success end",
 effects:{contentment:1},
@@ -148,8 +150,8 @@ craftable:false
 
 {id:"L_continuerose_sensation",
 actionId:"rose",
-requirements:{health:1},
-slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1,dread:1,funds:1}}],
+requirements:{follower_lustsensation:1,romanticinterest:1},
+slots: [{id:"What?",description:"The spirit's true light.",required:{passion:1,dread:1,funds:1}}],
 startdescription:"FNORD sensation test start",
 description:"FNORD sensation test fail",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
@@ -249,7 +251,7 @@ craftable:false
 actionId:"rose",
 requirements:{resentment:3},
 label:"Consequences!",
-startdescription:"My lover will tolerate my neglect no longer.",
+startdescription:"@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#uq|My lover@ will tolerate my neglect no longer.",
 description:"Neither of us will remember this moment kindly.",
 slots:[{id:"glummer",label:"What Remains",required:{contentment:1},greedy:true}],
 mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
