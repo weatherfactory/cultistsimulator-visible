@@ -7,6 +7,7 @@
 
 
 {id:"L_talk_roseopportunity",
+label:"A Liaison?",
 actionId:"talk",
 slots:[{id:"ascension",label:"Kindred Spirits?",required:{desire:1}}],
 alternativerecipes:[{id:"A_startrose_power_initiate",chance:100},
@@ -26,7 +27,7 @@ startdescription:"@#uqtristan|Tristan rises before you've finished speaking. 'We
 #uqvalciane|Valciane inches closer as you speak together. When she takes your hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns you. 'We should establish tolerances.'
 #uqelridge|Elridge listens intently to every word. His eyes never leave yours. The only thing he says is 'Yes', but by the time you reach your home, he has begun to say it even when you haven't asked a question.
 #uqlaidlaw|Laidlaw's eyes shine as you speak. He can't seem to look away. His hands are upon you before either of you quite seem clear how it happened. Just for a moment, the auctioneer falters. You leave together before you attract comment.@",
-description:"FNORD begin power rose end",
+description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:forge,mutationLevel:1}],
 craftable:false
@@ -36,13 +37,12 @@ craftable:false
 {id:"A_startrose_sensation_initiate",
 actionId:"rose",
 requirements:{follower_lustsensation:1,resentment:-1,sensationmarks:1},
-startdescription:"FNORD begin sensation rose start
-@#uqrose|Rose
-#uqsaliba|Saliba
-#uqvictor|Victor
-#uqviolet|Violet
+startdescription:"@#uqrose|Rose lolls back into the crook of your arm, smiling contentedly. 'Just like old times,' she says. 'When are you going to take me home?'
+#uqsaliba|Saliba has twined his fingers in your hair, musingly. 'This will end badly,' he says, with some satisfaction.
+#uqvictor|Above table level, Victor is a perfect gentleman. The hand he keeps above the table is placed palm upwards. A moth lands on the outstretched palm: he closes his hand to crush it. 
+#uqviolet|Violet has, somehow, entwined herself with you, and begun to bestow melting kisses like momentary snowflakes. 'I'm not going to wait,' she warns you. 'Take me home if you know what's good for you.'
 #uqrenira|Renira@",
-description:"FNORD begin sensation rose end",
+description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:grail,mutationLevel:1}],
 craftable:false
@@ -53,16 +53,16 @@ craftable:false
 {id:"A_startrose_enlightenment_initiate",
 actionId:"rose",
 requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmentmarks:1},
-startdescription:"FNORD begin enlightenment rose start
-@#uqenid|Enid
-#uqauclair|Auclair
-#uqcat|Cat
-#uqclifton|Clifton
-#uqneville|Neville
-#uqslee|Slee@
+startdescription:"
+@#uqenid|Enid drifts closer to you, and closer, like a reflection on a wave-crest, until she fits against your side. She says nothing at all, neither then, nor later.
+#uqauclair|Speaking with Auclair is always a little like fencing and a little like accounting, so it's a surprise when she hesitates and lets the hesitation draw out inelegantly far. 'I don't want to touch you,' she says at last, 'but I want to be in your bed. Tonight.'
+#uqcat|Cat Caro listens as you speak. She links her arm through yours. 'This isn't what I dreamt would happen,' she remarks, 'but I like it that way.' She smiles. 'I dreamt I'd take you home. Perhaps, instead, you should take me home.'
+#uqclifton|Clifton sways closer to you. 'I haven't drunk anything,' he assures you, 'but I'm drunk anyway. Maybe it's the moon.' He places an experimental hand on your hip. 'Maybe it's you. Are we going home now?'
+#uqneville|Neville can't seem to stop smiling. He hangs on your every word. 'I never imagined - ' he breathes.
+#uqslee|Slee, it transpires, has prepared a poem dedicated to you. It's very flattering. But it does go on. @
 
  ",
-description:"FNORD begin enlightenment rose end",
+description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:lantern,mutationLevel:1}],
 
