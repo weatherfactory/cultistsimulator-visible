@@ -109,29 +109,7 @@ requirements:{romanticinterest:2},
 comments: "careful: this is a potential weak spot if we ever start making romantic interest additive not binary"
 actionId:"rose",
 startdescription: "Two of my particular friends have chosen to call on me at the same hour. The conversation is stilted.",
-description: "As the evening proceeds, tempers become strained, and there is a difficult scene.
-@#uqenid|Enid
-#uqauclair|Auclair
-#uqcat|Cat
-#uqclifton|Clifton
-#uqneville|Neville
-#uqslee|Slee@
-
-
-@#uqrose|Rose
-#uqsaliba|Saliba
-#uqvictor|Victor
-#uqviolet|Violet
-#uqrenira|Renira@
-
-@#uqporter|Porter
-#uqysabet|Ysabet
-#uqclovette|Clovette
-#uqdorothy|Dorothy
-#uqsylvia|Sylvia
-#uqleo|Leo@ 
-
-",
+description: "As the evening proceeds, tempers become strained, and there is a difficult scene.",
 warmup:10,
 effects:{mystique:1},
 alternativerecipes:[{id:"A_roseend_expulsion",chance:100,additional:true,expulsion:{limit:1,filter:{resentment:3}}}],
@@ -224,11 +202,11 @@ actionId:"rose",
 label:"A Liaison: the Imperatives of Delight",
 requirements:{passion:1},
 startdescription:"For days - for days - the memories of this will interrupt my thoughts like lightning on a summer night."
-description:"@#uqrose|Rose
-#uqsaliba|Saliba
-#uqvictor|Victor
-#uqviolet|Violet
-#uqrenira|Renira@",
+description:"@#uqrose|Rose is on me, devouringly, the moment I pass the threshold. Once only, she called me 'Victor'. We never mentioned it after.
+#uqsaliba|Saliba is always relentless, always tireless. He never smiles. Sometimes, afterwards, his voice cracks as if he might be close to tears, but his eyes remain dry.
+#uqvictor|Victor always brings me a single rose. He always hesitates when he hands it to me. He never shows any hesitation afterward.
+#uqviolet|Violet's enthusiasms are depthless as a dark well. There's something remorseless about her pleasures, but she never once causes any lasting pain.
+#uqrenira|When I arrive, Renira is hazed in perfumes. When I leave, she's coiled in a glorious sprawl of limbs. I'll carry her with me for days.@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -261,12 +239,12 @@ actionId:"rose",
 label:"A Liaison: the Raptures of Understanding",
 requirements:{reason:1},
 startdescription:"Together we are brighter.",
-description:"@#uqenid|Enid
-#uqauclair|Auclair
-#uqcat|Cat
-#uqclifton|Clifton
-#uqneville|Neville
-#uqslee|Slee@",
+description:"@#uqenid|Enid prefers to close her eyes rather than look at me. She says it hurts to look. She says it with such longing that I can't take offence.
+#uqauclair|Auclair sets up the chess board. The rules are a little different every evening. By the evening's end, we have always been distracted from them.
+#uqcat|Cat Caro knows the way; Cat Caro knows so many ways. We'll walk them together, when the moon parts the curtains to peep into dark.
+#uqclifton|When I come to Clifton, his rooms are always blazingly lit - candles, arc-lights, even oil-lamps. He insists. As the evening goes on, the lights fail, one by one, until our ultimate business is conducted in perfect darkness.
+#uqneville|Neville welcomes me with tea and flowers. He sits cross-legged at my feet and waits for me to speak. It always takes an effort to coax him into initative, but I am never disappointed.
+#uqslee|Invariably Slee comes armed with poetry. Sometimes I'm in the mood for poetry. Sometimes I'm in the mood for something else.@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
