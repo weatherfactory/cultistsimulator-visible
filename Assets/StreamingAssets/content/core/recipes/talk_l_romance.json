@@ -15,13 +15,14 @@ alternativerecipes:[{id:"A_startrose_power_initiate",chance:100},
 {id:"A_startrose_change_initiate",chance:100},
 {id:"A_startrose_enlightenment_initiate",chance:100}],
 startdescription:".",
-description:"FNORD failed interest",
+description:"The evening is going in a direction I hadn't intended. Did I say the wrong thing? Or are we just hopelessly unsited?",
 craftable:false,
 warmup:30
 },
 
 {id:"A_startrose_power_initiate",
 actionId:"rose",
+label:"To Rise Together",
 requirements:{follower_lustpower:1,resentment:-1,powermarks:1},
 startdescription:"@#uqtristan|Tristan rises before I've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on my shoulder, the hand trembles. 
 #uqvalciane|Valciane inches closer as we speak together. When she takes my hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns me. 'We should establish tolerances.'
@@ -36,6 +37,7 @@ craftable:false
 
 {id:"A_startrose_sensation_initiate",
 actionId:"rose",
+label:"Fellow Explorers",
 requirements:{follower_lustsensation:1,resentment:-1,sensationmarks:1},
 startdescription:"@#uqrose|Rose lolls back into the crook of my arm, smiling contentedly. 'Just like old times,' she says. 'When are you going to take me home?'
 #uqsaliba|Saliba has twined his fingers in my hair, musingly. 'This will end badly,' he says, with some satisfaction.
@@ -52,9 +54,9 @@ craftable:false
 
 {id:"A_startrose_enlightenment_initiate",
 actionId:"rose",
+label:"Shared Light",
 requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmentmarks:1},
-startdescription:"
-@#uqenid|Enid drifts closer to me, and closer, like a reflection on a wave-crest, until she fits against my side. She says nothing at all, neither then, nor later.
+startdescription:"@#uqenid|Enid drifts closer to me, and closer, like a reflection on a wave-crest, until she fits against my side. She says nothing at all, neither then, nor later.
 #uqauclair|Speaking with Auclair is always a little like fencing and a little like accounting, so it's a surprise when she hesitates and lets the hesitation draw out inelegantly far. 'I don't want to touch you,' she says at last, 'but I want to be in your bed. Tonight.'
 #uqcat|Cat Caro listens as I speak. She links her arm through mine. 'This isn't what I dreamt would happen,' she remarks, 'but I like it that way.' She smiles. 'I dreamt I'd take you home. Perhaps, instead, you should take me home.'
 #uqclifton|Clifton sways closer to me. 'I haven't drunk anything,' he assures me, 'but I'm drunk anyway. Maybe it's the moon.' He places an experimental hand on my hip. 'Maybe it's you. Are we going home now?'
@@ -71,14 +73,14 @@ craftable:false
 
 {id:"A_startrose_change_initiate",
 actionId:"rose",
+label:"Those Who Will Be Different",
 requirements:{follower_lustchange:1,resentment:-1,changemarks:1},
-startdescription:"FNORD begin change rose start 
-@#uqporter|Porter sits curled in his seat, motionless, but his eyes glitter as he watches the stage, and they glitter the same way when I lean in to kiss him. 'Your taste,' he says. He chuckles, and then he puts his hands back on me.
+startdescription:"@#uqporter|Porter sits curled in his seat, motionless, but his eyes glitter as he watches the stage, and they glitter the same way when I lean in to kiss him. 'Your taste,' he says. 'We're the same.' He chuckles, and then he puts his hands back on me.
 #uqysabet|Ysabet applauds enthusiastically at the end of every performance. With each cocktail she drinks, her applause grows more vigorous. After our first kiss, she leans back, considers me, and begins, once more, to applaud.
-#uqclovette|Clovette 
-#uqdorothy|Dorothy
-#uqsylvia|Sylvia
-#uqleo|Leo@",
+#uqclovette|Clovette clasps my arm in excitement. 'I'm beginning to understand something. I don't know what, but there's something. And it's you, too - it's you!' She says nothing for a little while, and then, much later, long after we have left the club, she says again, very softly, 'It's you, too.'
+#uqdorothy|Dorothy hums along with the music. Dorothy unconsciously moves in time with the dancers' actions. When I kiss Dorothy, she kisses me back in equal measure. She's breathing heavily as she draws back. 'We'll be different, now,' she says.
+#uqsylvia|Sylvia pops olives into her mouth as she watches the stage, chewwing noisily. When she kisses me, she bites my upper lip hard enough to draw blood, and I can taste olives for hours. 'I'll get inside your clothes,' she says hungriy, 'all the way inside. If we fit.'
+#uqleo|Leo sits very straight, to begin with, but as excitement and cocktails overcome him, he begins to relax, until he relaxes all the way into me. 'I want to be different,' he whispers, 'but I don't know how.' His eyes are wide; his mouth is supple.@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId  :mortal,mutateAspectId:heart,mutationLevel:1}
@@ -93,7 +95,7 @@ actionId:"rose",
 requirements:{romanticinterest:1},
 comments:"re requirements: can't be another if there isn't even one",
 slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
-startdescription: "FNORD is there another?",
+startdescription: "Is there another? ",
 description:".",
 linked:[{id:"L_activatejealousy",chance:100},
 {id:"L_roserouter",chance:100}],
@@ -108,13 +110,6 @@ comments: "careful: this is a potential weak spot if we ever start making romant
 actionId:"rose",
 startdescription: "Two of my particular friends have chosen to call on me at the same hour. The conversation is stilted.",
 description: "As the evening proceeds, tempers become strained, and there is a difficult scene.
-
-@#uqtristan|Tristan
-#uqvalciane|Valciane
-#uqelridge|Elridge
-#uqlaidlaw|Laidlaw@
-
-
 @#uqenid|Enid
 #uqauclair|Auclair
 #uqcat|Cat
@@ -174,10 +169,11 @@ craftable:false,
 
 {id:"L_continuerose_power",
 actionId:"rose",
+label:"A Liaison: the Uses of Strength",
 requirements:{follower_lustpower:1,romanticinterest:1},
-slots: [{id:"What?",description:"The spirit's true light.",required:{health:1,dread:1,funds:1}}],
-startdescription:"FNORD power test start",
-description:"FNORD power test fail",
+slots: [{id:"What?",description:"The body's strengths",required:{health:1,dread:1,funds:1}}],
+startdescription:"My lover is not easily satisfied - but then, nor am I.",
+description:"Just now... I can't spare the energy.",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
 {id:"A_rose_binoff_funds",chance:100},
 {id:"A_continuerose_power_success",chance:100}],
@@ -191,9 +187,13 @@ linked:[{id:"L_roseend",chance:100}]
 
 {id:"A_continuerose_power_success",
 actionId:"rose",
+label:"A Liaison: the Uses of Strength"
 requirements:{health:1},
-startdescription:"FNORD power test success start",
-description:"FNORD power  test success end",
+startdescription:"When I am done, we'll both sleep deeply. But I'm not done yet.",
+description:"@#uqtristan|Tristan 
+#uqvalciane|Valciane 
+#uqelridge|Elridge
+#uqlaidlaw|Laidlaw beams.@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -203,10 +203,11 @@ craftable:false
 
 {id:"L_continuerose_sensation",
 actionId:"rose",
+label:"A Liaison: the Imperatives of Delight",
 requirements:{follower_lustsensation:1,romanticinterest:1},
-slots: [{id:"What?",description:"The spirit's true light.",required:{passion:1,dread:1,funds:1}}],
-startdescription:"FNORD sensation test start",
-description:"FNORD sensation test fail",
+slots: [{id:"What?",description:"The last commitment.",required:{passion:1,dread:1,funds:1}}],
+startdescription:"My lover's experiments in pleasure are endless in their ingenuity - but so far, I can match them.",
+description:"Just now... I can't spare the time.",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
 {id:"A_rose_binoff_funds",chance:100},
 {id:"A_continuerose_sensation_success",chance:100}],
@@ -220,9 +221,14 @@ linked:[{id:"L_roseend",chance:100}]
 
 {id:"A_continuerose_sensation_success",
 actionId:"rose",
+label:"A Liaison: the Imperatives of Delight",
 requirements:{passion:1},
-startdescription:"FNORD sensation test success start",
-description:"FNORD sensation  test success end",
+startdescription:"For days - for days - the memories of this will interrupt my thoughts like lightning on a summer night."
+description:"@#uqrose|Rose
+#uqsaliba|Saliba
+#uqvictor|Victor
+#uqviolet|Violet
+#uqrenira|Renira@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -234,10 +240,11 @@ craftable:false
 
 {id:"L_continuerose_enlightenment",
 actionId:"rose",
+label:"A Liaison: the Raptures of Understanding",
 requirements:{follower_lustenlightenment:1,romanticinterest:1},
 slots: [{id:"What?",description:"The spirit's true light.",required:{reason:1,dread:1,funds:1}}],
-startdescription:"FNORD enlightenment test start",
-description:"FNORD enlightenment test fail",
+startdescription:"My lover and I contend in the spaces above and beneath the flesh. I must match their intensity.",
+description:"Just now... I can't spare the attention.",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
 {id:"A_rose_binoff_funds",chance:100},
 {id:"A_continuerose_enlightenment_success",chance:100}],
@@ -251,9 +258,15 @@ linked:[{id:"L_roseend",chance:100}]
 
 {id:"A_continuerose_enlightenment_success",
 actionId:"rose",
+label:"A Liaison: the Raptures of Understanding",
 requirements:{reason:1},
-startdescription:"FNORD enlightenment test success start",
-description:"FNORD enlightenment  test success end",
+startdescription:"Together we are brighter.",
+description:"@#uqenid|Enid
+#uqauclair|Auclair
+#uqcat|Cat
+#uqclifton|Clifton
+#uqneville|Neville
+#uqslee|Slee@",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
@@ -263,10 +276,11 @@ craftable:false
 
 {id:"L_continuerose_change",
 actionId:"rose",
+label:"A Liaison: When We Were...",
 requirements:{follower_lustchange:1,romanticinterest:1},
-slots: [{id:"What?",description:"The spirit's true light.",required:{passion:1,dread:1,funds:1}}],
-startdescription:"FNORD change test start",
-description:"FNORD change test fail",
+slots: [{id:"What?",description:"An urgency.",required:{passion:1,dread:1,funds:1}}],
+startdescription:"My lover and I share a desire, even though we may not yet quite understand it.",
+description:"Just now... I just can't.",
 alternativerecipes:[{id:"A_rose_binoff_dread",chance:100},
 {id:"A_rose_binoff_funds",chance:100},
 {id:"A_continuerose_change_success",chance:100}],
@@ -280,9 +294,16 @@ linked:[{id:"L_roseend",chance:100}]
 
 {id:"A_continuerose_change_success",
 actionId:"rose",
+label:"A Liaison: When We Were...",
 requirements:{passion:1},
-startdescription:"FNORD change test success start",
-description:"FNORD change  test success end",
+startdescription:"Together we become something else.",
+description:"
+@#uqporter|Porter
+#uqysabet|Ysabet
+#uqclovette|Clovette
+#uqdorothy|Dorothy
+#uqsylvia|Sylvia
+#uqleo|Leo@ ",
 effects:{contentment:1},
 deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
