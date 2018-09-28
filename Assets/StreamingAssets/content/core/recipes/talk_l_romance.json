@@ -23,10 +23,10 @@ warmup:30
 {id:"A_startrose_power_initiate",
 actionId:"rose",
 requirements:{follower_lustpower:1,resentment:-1,powermarks:1},
-startdescription:"@#uqtristan|Tristan rises before you've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on your shoulder, the hand trembles. 
-#uqvalciane|Valciane inches closer as you speak together. When she takes your hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns you. 'We should establish tolerances.'
-#uqelridge|Elridge listens intently to every word. His eyes never leave yours. The only thing he says is 'Yes', but by the time you reach your home, he has begun to say it even when you haven't asked a question.
-#uqlaidlaw|Laidlaw's eyes shine as you speak. He can't seem to look away. His hands are upon you before either of you quite seem clear how it happened. Just for a moment, the auctioneer falters. You leave together before you attract comment.@",
+startdescription:"@#uqtristan|Tristan rises before I've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on my shoulder, the hand trembles. 
+#uqvalciane|Valciane inches closer as we speak together. When she takes my hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns me. 'We should establish tolerances.'
+#uqelridge|Elridge listens intently to every word. His eyes never leave mine. The only thing he says is 'Yes', but by the time we reach my home, he has begun to say it even when I haven't asked a question.
+#uqlaidlaw|Laidlaw's eyes shine as you speak. He can't seem to look away. His hands are upon me before either of us quite seem clear how it happened. Just for a moment, the auctioneer falters. We leave together before we attract comment.@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:forge,mutationLevel:1}],
@@ -37,11 +37,11 @@ craftable:false
 {id:"A_startrose_sensation_initiate",
 actionId:"rose",
 requirements:{follower_lustsensation:1,resentment:-1,sensationmarks:1},
-startdescription:"@#uqrose|Rose lolls back into the crook of your arm, smiling contentedly. 'Just like old times,' she says. 'When are you going to take me home?'
-#uqsaliba|Saliba has twined his fingers in your hair, musingly. 'This will end badly,' he says, with some satisfaction.
-#uqvictor|Above table level, Victor is a perfect gentleman. The hand he keeps above the table is placed palm upwards. A moth lands on the outstretched palm: he closes his hand to crush it. 
-#uqviolet|Violet has, somehow, entwined herself with you, and begun to bestow melting kisses like momentary snowflakes. 'I'm not going to wait,' she warns you. 'Take me home if you know what's good for you.'
-#uqrenira|Renira@",
+startdescription:"@#uqrose|Rose lolls back into the crook of my arm, smiling contentedly. 'Just like old times,' she says. 'When are you going to take me home?'
+#uqsaliba|Saliba has twined his fingers in my hair, musingly. 'This will end badly,' he says, with some satisfaction.
+#uqvictor|Above table level, Victor is a perfect gentleman. The hand he keeps above the table is placed palm upwards. A moth lands on the outstretched palm: he closes his hand to crush it. 'Good memories,' he says. 'Let's go.'
+#uqviolet|Violet has, somehow, arranged herself against and across me, and begun to bestow melting kisses like momentary snowflakes. 'I'm not going to wait,' she warns me. 'Take me home if you know what's good for you.'
+#uqrenira|Renira sits perfectly composed at the intersection of attention. Some audience members pay more attention to her than they do to the dancers. We move together like one hot drop of wax running into another. 'I do hope you're not going to be foolish,' she breathes, just before our lips meet. @",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:grail,mutationLevel:1}],
@@ -54,12 +54,12 @@ craftable:false
 actionId:"rose",
 requirements:{follower_lustenlightenment:1,resentment:-1,enlightenmentmarks:1},
 startdescription:"
-@#uqenid|Enid drifts closer to you, and closer, like a reflection on a wave-crest, until she fits against your side. She says nothing at all, neither then, nor later.
+@#uqenid|Enid drifts closer to me, and closer, like a reflection on a wave-crest, until she fits against my side. She says nothing at all, neither then, nor later.
 #uqauclair|Speaking with Auclair is always a little like fencing and a little like accounting, so it's a surprise when she hesitates and lets the hesitation draw out inelegantly far. 'I don't want to touch you,' she says at last, 'but I want to be in your bed. Tonight.'
-#uqcat|Cat Caro listens as you speak. She links her arm through yours. 'This isn't what I dreamt would happen,' she remarks, 'but I like it that way.' She smiles. 'I dreamt I'd take you home. Perhaps, instead, you should take me home.'
-#uqclifton|Clifton sways closer to you. 'I haven't drunk anything,' he assures you, 'but I'm drunk anyway. Maybe it's the moon.' He places an experimental hand on your hip. 'Maybe it's you. Are we going home now?'
+#uqcat|Cat Caro listens as I speak. She links her arm through mine. 'This isn't what I dreamt would happen,' she remarks, 'but I like it that way.' She smiles. 'I dreamt I'd take you home. Perhaps, instead, you should take me home.'
+#uqclifton|Clifton sways closer to me. 'I haven't drunk anything,' he assures me, 'but I'm drunk anyway. Maybe it's the moon.' He places an experimental hand on my hip. 'Maybe it's you. Are we going home now?'
 #uqneville|Neville can't seem to stop smiling. He hangs on your every word. 'I never imagined - ' he breathes.
-#uqslee|Slee, it transpires, has prepared a poem dedicated to you. It's very flattering. But it does go on. @
+#uqslee|Slee, it transpires, has prepared a poem dedicated to me. It's very flattering. But it does go on. Kissing him is an effective way to curtail it. @
 
  ",
 description:".",
@@ -73,15 +73,15 @@ craftable:false
 actionId:"rose",
 requirements:{follower_lustchange:1,resentment:-1,changemarks:1},
 startdescription:"FNORD begin change rose start 
-@#uqporter|Porter
-#uqysabet|Ysabet
-#uqclovette|Clovette
+@#uqporter|Porter sits curled in his seat, motionless, but his eyes glitter as he watches the stage, and they glitter the same way when I lean in to kiss him. 'Your taste,' he says. He chuckles, and then he puts his hands back on me.
+#uqysabet|Ysabet applauds enthusiastically at the end of every performance. With each cocktail she drinks, her applause grows more vigorous. After our first kiss, she leans back, considers me, and begins, once more, to applaud.
+#uqclovette|Clovette 
 #uqdorothy|Dorothy
 #uqsylvia|Sylvia
 #uqleo|Leo@",
-description:"FNORD begin change rose end",
+description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
-{filterOnAspectId:mortal,mutateAspectId:heart,mutationLevel:1}
+{filterOnAspectId  :mortal,mutateAspectId:heart,mutationLevel:1}
 {filterOnAspectId:mortal,mutateAspectId:moth,mutationLevel:1}],
 craftable:false
 },
