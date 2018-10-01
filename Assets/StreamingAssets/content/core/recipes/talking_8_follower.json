@@ -81,6 +81,7 @@ alternativerecipes:[
 
 {id:"talktohireling_rehire",chance:100},
 {id:"A_talktofollower_givetool_router",chance:100},
+{id:"A_talktofollower_cantgivetool",chance:100},
 
 {id:"A_talktofollower_locationcabaret_lustsensation",chance:100},
 {id:"A_talktofollower_locationcabaret_lustchange",chance:100},
@@ -160,6 +161,14 @@ aspects:{hiring:1},
 effects:{funds:-1},
 craftable:true,
 warmup:10
+},
+
+
+{id:"A_talktofollower_cantgivetool",
+label:"Not Wise, or Not Permitted?",
+actionId: "talk",
+requirements:{follower:1,tool:1,summoned:-1,follower_honoured:1},
+startdescription:"I have already given this follower a gift. [A follower cannot receive a second gift.]",
 },
 
 {id:"A_talktofollower_givetool_router",
