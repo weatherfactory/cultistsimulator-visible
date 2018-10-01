@@ -8,8 +8,7 @@
 	lifetime:120,
 	decayTo: legacydancerjob_suspended,
 	xtriggers:{job:legacydancerjob},
-	slots:[{id:"healthskill",label:"Training",actionId:"work",required:{healthskill:1}},
-	{id:"health",label:"Health",actionId:"work",required:{health:1}}]
+	slots:[	{id:"health",label:"Health",actionId:"work",required:{health:1}}]
 },
 	{id: "legacydancerjob_suspended",
 	label: "A Contract at the Gaiety: Suspended",
