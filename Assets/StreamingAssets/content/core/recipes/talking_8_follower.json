@@ -768,6 +768,8 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 	  startdescription: "I await word....",
 	  description:"My minion has returned to report failure. They can barely stand. Their victim put up a fight. [Heal a fallen Follower with Talk.]",
 	  effects: {notoriety:1},
+	  	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
 	  warmup:30	  
 	  },
 	  
