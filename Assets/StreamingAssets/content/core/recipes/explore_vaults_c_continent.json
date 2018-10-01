@@ -135,7 +135,9 @@
 	startdescription: "The moonlight bleaches the grass to winter. All around, the stones loom. Here in the tumulus side beneath the turf is a stone that will rise like a trap-door. We must put our backs into it. ",
 	description: "The chamber inside the tumulus has half-collapsed with the years. Fat white spiders crawl from the touch of our lamplight, insolently slow. The stone reliefs are cracked and dripping. But here is the offering-hole still, with its treasures.",
 	warmup:10,
-	craftable: false
+	craftable: false,
+	linked:[			{id: "expeditionascensionheartc",chance:100},
+			{id: "expeditionascensionmothc",chance:100}]
 	},
 	
 ]

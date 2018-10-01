@@ -135,7 +135,10 @@
 	startdescription: "We've dipped cloths in ammonia, and bound them round our faces, to deaden the foxlily scent. Even so, our heads swim, our bodies respond to a half-dozen contradictory desires. Here are the bones we sought. Loot them and get out.",
 	description: "The foxlilies are white as cave-skin, white as frost, white as unsullied sheets. It is hard to look away. We will close our eyes and struggle away with our treasures.",
 	warmup:30,
-	craftable: false
+	craftable: false,
+	linked:[			{id: "expeditionascensionheartd",chance:100},
+			{id: "expeditionascensionmothd",chance:100},
+			]
 	},
 	
 ]
