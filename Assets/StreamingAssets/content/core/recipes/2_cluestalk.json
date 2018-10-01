@@ -135,7 +135,7 @@
         id: "recruitacquaintancenoculthint",
         label: "Recruit a new Follower?",
         actionId: "talk",
-        requirements: {society: -1,mortal: 1,follower:-1,patron:-1},
+        requirements: {society: -1,acquaintance:1},
         startdescription: "[Once you've established a cult, use <b>TALK</b> with the Cult to recruit an Acquaintance to your Cult's ranks.]",
         craftable: false,
 		hintonly: true
@@ -144,7 +144,7 @@
         id: "recruitacquaintancehint",
         label: "Recruit a new Follower?",
         actionId: "talk",
-        requirements: {society: 1,mortal: 1,follower:-1},
+        requirements: {society: 1,acquaintance:1},
         startdescription: "To recruit a follower, I will need a little of the power we revere. I might glean it from an Influence, or a Tool, or an Ingredient, or just the Lore of our tradition.",
         craftable: false,
 		hintonly: true
