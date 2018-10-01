@@ -33,6 +33,7 @@ craftable:true
 
 {id:"sulochanachat_health",
 actionId:"talk",
+label:"On the Body's Strengths",
 requirements:{sulochana:1,health:1},
 startdescription:"'You're young. Congratulations.'",
 description:"'We were all of us young. Everyone. That's the only thing most of us have in common.'"
@@ -76,6 +77,7 @@ description:"We have no common ground there. I chose my road a very long time ag
 },
 {id:"sulochanachat_secrethistoriesrouter",
 actionId:"talk",
+label:"On Secret Places",
 requirements:{sulochana:1,lore:1,secrethistories:1},
 startdescription:"As to that...",
 description:".",
