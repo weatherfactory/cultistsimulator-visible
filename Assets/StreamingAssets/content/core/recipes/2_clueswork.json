@@ -1,5 +1,15 @@
  {"recipes":
- [		{
+ [		
+ 
+ 	{id:"workbenefactorhint",
+	label: "Private Performances?",
+	actionId:"work",
+	requirements:{benefactor:1},
+	startdescription:"To satisfy my benefactor, I'll need to exert myself; to demonstrate suitable skill; and to ensure I look my best. That always has a cost.",
+	craftable:false,
+	hintonly:true
+	},
+ {
         id: "workfundshint",
         label: "Money",
         actionId: "work",
@@ -8,6 +18,7 @@
         craftable: false,
 		hintonly: true
     },
+
       			{
         id: "skillhealthhintwork",
         label: "Health",
