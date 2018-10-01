@@ -231,6 +231,16 @@ craftable: false,
 hintonly:true
 
 },
+
+	  	{
+        id: "talk_nointeraction_mortal",
+        label: "Nothing to say?",
+        actionId: "talk",
+        requirements: {mortal:1},
+        startdescription: "'I don't believe we have anything to say to each other.'",
+        craftable: false,
+		hintonly: true
+    },
 	
 ]
 }
