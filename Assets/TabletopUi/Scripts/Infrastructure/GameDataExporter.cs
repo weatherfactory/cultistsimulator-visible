@@ -75,7 +75,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             htMetaInfo.Add(SaveConstants.SAVE_VERSIONNUMBER,metaInfo.VersionNumber);
             //Bird, Worm enigma persist
             if (PlayerPrefs.HasKey(NoonConstants.BIRDWORMSLIDER))
-            { 
+            {
                 htMetaInfo.Add(NoonConstants.BIRDWORMSLIDER, PlayerPrefs.GetFloat(NoonConstants.BIRDWORMSLIDER));
                 htMetaInfo.Add("WeAwaitSTE", "Hello, Seeker. If you're here to decipher enigmas, familiarise yourself with the eidesis in which were presented the Lion, the Boar and the Bull, and present it in turn to the sky.");
             }
@@ -85,31 +85,38 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private Hashtable GetHashTableForCharacter(Character character)
         {
             var htCharacter=new Hashtable();
-            htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
-            htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
-            htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy.Id);
+			if (character == null)
+			{
+				string name = "none";
+				htCharacter.Add(SaveConstants.SAVE_NAME,name);
+			}
+			else
+			{
+				htCharacter.Add(SaveConstants.SAVE_NAME,character.Name);
+				htCharacter.Add(SaveConstants.SAVE_PROFESSION, character.Profession);
+				htCharacter.Add(SaveConstants.SAVE_ACTIVELEGACY,character.ActiveLegacy.Id);
 
-            var htExecutions=new Hashtable();
-            foreach (var e in character.GetAllExecutions())
-            {
-                htExecutions.Add(e.Key,e.Value);
-            }
+				var htExecutions=new Hashtable();
+				foreach (var e in character.GetAllExecutions())
+				{
+					htExecutions.Add(e.Key,e.Value);
+				}
 
-            htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
+				htCharacter.Add(SaveConstants.SAVE_EXECUTIONS, htExecutions);
 
-            var htPastLevers = new Hashtable();
-            foreach(var record in character.GetAllPastLegacyEventRecords())
-                htPastLevers.Add(record.Key.ToString(), record.Value);
+				var htPastLevers = new Hashtable();
+				foreach(var record in character.GetAllPastLegacyEventRecords())
+					htPastLevers.Add(record.Key.ToString(), record.Value);
 
-             htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
+				 htCharacter.Add(SaveConstants.SAVE_PAST_LEVERS,htPastLevers);
 
 
-            var htFutureLevers = new Hashtable();
-            foreach (var record in character.GetAllFutureLegacyEventRecords())
-                htFutureLevers.Add(record.Key.ToString(), record.Value);
+				var htFutureLevers = new Hashtable();
+				foreach (var record in character.GetAllFutureLegacyEventRecords())
+					htFutureLevers.Add(record.Key.ToString(), record.Value);
 
-            htCharacter.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);
-
+				htCharacter.Add(SaveConstants.SAVE_FUTURE_LEVERS, htFutureLevers);
+			}
 
             return htCharacter;
         }
@@ -124,13 +131,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         /// <returns></returns>
         private Hashtable GetHashTableForSituations(IEnumerable<SituationController> situationControllers)
         {
-   
+
             var htSituations = new Hashtable();
             foreach (var s in situationControllers)
             {
 				if (s.situationToken != null && s.situationToken.SaveLocationInfo != null)
 				{
-					var htSituationProperties = s.GetSaveData(); 
+					var htSituationProperties = s.GetSaveData();
 					htSituations.Add(s.situationToken.SaveLocationInfo, htSituationProperties);
 				}
             }
@@ -221,7 +228,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 
             return htNotes;
         }
-        
+
 
 		public void AnalyticsReport( bool success, MetaInfo metaInfo, Character character,IEnumerable<IElementStack> stacks, IEnumerable<SituationController> situationControllers,IEnumerable<IDeckInstance> deckInstances )
 		{

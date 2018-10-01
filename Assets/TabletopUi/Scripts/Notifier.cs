@@ -16,6 +16,7 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Transform notificationHolder;
         [SerializeField] NotificationLog notificationLog;
 		[SerializeField] NotificationWindow saveErrorWindow;
+		[SerializeField] NotificationWindow saveDeniedWindow;
 
         [Header("Token Details")]
         [SerializeField] TokenDetailsWindow tokenDetails;
@@ -28,6 +29,7 @@ namespace Assets.CS.TabletopUI {
             tokenDetails.gameObject.SetActive(false); // ensure this is turned off at the start
             aspectDetails.gameObject.SetActive(false);
 			saveErrorWindow.gameObject.SetActive(false);
+			saveDeniedWindow.gameObject.SetActive(false);
         }
 
         // Notifications
@@ -97,16 +99,33 @@ namespace Assets.CS.TabletopUI {
 
 		public void ShowSaveError( bool on )
 		{
-			if (saveErrorWindow == null)
-				return;
-
-			if (on)
+			if (TabletopManager.IsInMansus())
 			{
-				saveErrorWindow.Show();
+				if (saveDeniedWindow == null)
+					return;
+
+				if (on)
+				{
+					saveDeniedWindow.Show();
+				}
+				else
+				{
+					saveDeniedWindow.HideNoDestroy();
+				}
 			}
 			else
 			{
-				saveErrorWindow.HideNoDestroy();
+				if (saveErrorWindow == null)
+					return;
+
+				if (on)
+				{
+					saveErrorWindow.Show();
+				}
+				else
+				{
+					saveErrorWindow.HideNoDestroy();
+				}
 			}
 		}
 

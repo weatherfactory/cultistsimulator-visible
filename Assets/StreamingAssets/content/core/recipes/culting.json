@@ -592,7 +592,7 @@
 	id: "cultfoundation_firstrecruit",
 	label: "My First Recruit",
 	actionId: "establishcult",
-	requirements: {follower:-1},
+	requirements: {acquaintance:1},
 	slots: [{id:"Recruit",label:"My First Recruit",required: {mortal: 1},forbidden:{independent:1,prisoner:1,hunter:1,patron:1,hireling:1},description: "One who is ready."}],
 	warmup:30,
 	startdescription: "A cult with one member is only an unusual habit. I must have a recruit.",
