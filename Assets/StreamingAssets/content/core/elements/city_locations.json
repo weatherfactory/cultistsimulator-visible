@@ -36,7 +36,7 @@
 			unique:true,
 			lifetime:30,
 			decayTo: locationcabaret,
-			uniquenessgroup:cabaret,
+			uniquenessgroup:uqcabaret,
 			resaturate: true
         },
 						{
@@ -47,7 +47,7 @@
 			slots:[{id:"Entry", actionId: "explore", required:{funds:1,sulochana:1},}],
 			xtriggers:{locationcabaret:locationcabaretclosed},
 			unique:true,
-			uniquenessgroup:cabaret
+			uniquenessgroup:uqcabaret
         },
 
 		
