@@ -261,6 +261,7 @@
 		{id:"ascensioncravingpower",chance:100},
 		{id:"ascensioncravingsensation",chance:100},
 		{id:"ascensioncravingenlightenment",chance:100},
+		{id:"ascensioncravingchange_tryascendfromg",chance:100},
 		{id:"ascensioncravingchange_tryascendfromf",chance:100},
 		{id:"ascensioncravingchange_tryascendfrome",chance:100},
 		{id:"ascensioncravingchange_tryascendfromd",chance:100},
@@ -645,7 +646,15 @@ description: "Without footsteps to follow, who will know our destination? I wish
 				mutations:[{filterOnAspectId:desire,mutateAspectId:desiremoth_track,mutationLevel:1,additive:true}],
 		warmup:10
 		},
-		
+						
+		{id:"ascensioncravingchange_tryascendfromg",
+				actionId: "craving",
+		label:"The Pulse Inside",
+		requirements: {ascensionchangeg:1},
+		slots: [{id:"Lesson",description: "Surrender, to become",required: {ascensionlessonheartf:1,ascensionlessonmothf:1}, greedy:true }],
+		startdescription: "I must dream soon, before my soul bursts.",
+		warmup:10
+		},
 					
 		{id:"ascensioncravingchange_tryascendfromf",
 				actionId: "craving",
