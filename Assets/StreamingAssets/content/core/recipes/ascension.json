@@ -277,8 +277,10 @@
 			label:"Rivalry!",
 			actionId:"ambition",
 			requirements:{independent:1},
-			startdescription:"Here is another who would ascend before me. [Independent occultists will try to monopolise the attention of the Hours.]",
+			startdescription:"Here is another who would ascend before me. [Independent occultists will try to monopolise the attention of the Hours. They may also conduct other schemes, whether you like it or not.]",
 			description:"FNORD that's all for now.",
+			alternativerecipes:[{id:"scheme_murderhunter",chance:30, additional:true,expulsion:{limit:1,filter:{independent:1}}},
+			{id:"scheme_activities",chance:100}]
 			warmup:30
 			},
 		
