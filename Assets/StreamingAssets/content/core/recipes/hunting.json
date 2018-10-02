@@ -245,8 +245,9 @@
 	actionId:"suspicion",
 	requirements:{follower:1},
 	label:"The Bureau's Fury",
-				startdescription:"My follower has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go. The Bureau has been stymied for the moment; but what did they learn?",
-	aspects:{investigatingsetback:1}	
+				startdescription:"My follower has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go. The Bureau has been stymied for the moment; but perhaps my follower's loyalty has been shaken.",
+	aspects:{investigatingsetback:1},
+mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
 	},
 	{
 	id:"suspicion_meexonerated",

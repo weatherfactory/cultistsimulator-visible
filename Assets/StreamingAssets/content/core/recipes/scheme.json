@@ -1,0 +1,107 @@
+ {"recipes": [
+	{
+        id: "scheme_murderhunter",
+        label: "Someone is scheming to murder a Hunter",
+        actionId: "scheme",
+    
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false,
+		linked:[{id:"scheme_murderhunter_grab",chance:100}]
+    },
+	
+		{
+        id: "scheme_murderhunter_grab",
+        label: "Someone is seeking prey...",
+        actionId: "scheme",
+		slots:[{id:"victim",greedy:true,required:{hunter:1}}],
+    
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false,
+		linked:[{id:"scheme_murderhunter_success",chance:30},
+		{id:"scheme_murderhunter_failure",chance:100},
+		{id:"scheme_murderhunter_nohunterfound",chance:100}]
+    },
+	
+	{
+        id: "scheme_murderhunter_success",
+        label: "Someone has murdered a Hunter!",
+        actionId: "scheme",
+    aspects:{killhunter:1},
+	   effects:{notoriety:1},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup:5,
+        craftable: false
+    },
+	
+		
+	{
+        id: "scheme_murderhunter_failure",
+        label: "Someone has failed to murder a Hunter!",
+        actionId: "scheme",
+    
+   effects:{notoriety:1},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false
+    },
+	
+		{
+        id: "scheme_murderhunter_nohunterfound",
+        label: "A scheme to murder a Hunter has ended without consequences.",
+        actionId: "scheme",
+    
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false
+    },
+	
+	
+	
+		{
+        id: "scheme_ascend",
+        label: "Someone is scheming for their own ascension",
+        actionId: "scheme",
+    
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false
+    },
+	
+			{
+        id: "scheme_expedition",
+        label: "Someone is scheming to complete an Expedition before me.",
+        actionId: "scheme",
+    
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false
+    },
+	
+				{
+        id: "scheme_activities",
+        label: "Someone is just generally doing mischief",
+        actionId: "scheme",
+    
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false
+    },
+]
+]
+}
