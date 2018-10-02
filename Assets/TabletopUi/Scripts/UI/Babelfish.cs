@@ -18,6 +18,9 @@ public class Babelfish : MonoBehaviour
 	[Tooltip("Which font set should this text use?\nFont sets assigned in LanguageManager")]
 	[SerializeField] private LanguageManager.eFontStyle fontStyle;
 
+	[Tooltip("Force this string to use the font for a specific language (empty by default)")]
+    [SerializeField] private string						forceFontLanguage;
+
     private TMP_Text tmpText;       // text mesh pro text object.
 	private bool initComplete = false;
 
@@ -46,8 +49,8 @@ public class Babelfish : MonoBehaviour
     {
 		if (LanguageManager.Instance==null)
 			return;
-
-		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle );
+		
+		TMP_FontAsset font = LanguageManager.Instance.GetFont( fontStyle, (forceFontLanguage==null || forceFontLanguage.Length==0) ? LanguageTable.targetCulture : forceFontLanguage );
 		if (font != null)
 		{
 			tmpText.font = font;

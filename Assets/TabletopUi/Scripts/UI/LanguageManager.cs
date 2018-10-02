@@ -17,6 +17,13 @@ public class FontStyle
 
 public class LanguageManager : MonoBehaviour
 {
+	public enum eLanguage
+	{
+		en,
+		ru,
+		zh
+	};
+
 	public enum eFontStyle
 	{
 		BodyText,
@@ -59,7 +66,7 @@ public class LanguageManager : MonoBehaviour
 		System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 	}
 
-	private void FixFontStyleSlots() // Naff way to label them in the Unity editor
+	private void FixFontStyleSlots() // Naff way to initialise font styles so they'll readable in the Unity editor
 	{
 		int count = Mathf.Min( (int)eFontStyle.FontStyleCount, fontStyles.Length );
 		for (int i=0; i<count; i++)
@@ -88,11 +95,11 @@ public class LanguageManager : MonoBehaviour
         LanguageChangeHasOccurred();
     }
 
-	public TMP_FontAsset GetFont( eFontStyle fs )
+	public TMP_FontAsset GetFont( eFontStyle fs, string culture )
 	{
 		int style = (int)fs;
 		// determine which language is being used:
-        switch (LanguageTable.targetCulture)
+        switch (culture)
         {
             case "cjk":
             case "ko":
@@ -129,7 +136,7 @@ public class LanguageManager : MonoBehaviour
 
 	void OnGUI()
 	{
-		if (GUI.Button( new Rect(Screen.width - 200, 10, 90, 20), "LANGUAGE"))
+		if (GUI.Button( new Rect(Screen.width - 400, 10, 90, 20), "LANGUAGE"))
 		{
 			showDebugLanguageSelect = !showDebugLanguageSelect;
 		}
@@ -137,7 +144,7 @@ public class LanguageManager : MonoBehaviour
 		{
 			for (int i=0; i<LanguageTable.GetSupportedCultures(); i++)
 			{
-				if (GUI.Button( new Rect(Screen.width - 200, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
+				if (GUI.Button( new Rect(Screen.width - 400, 35 + 25*i, 190, 20), LanguageTable.GetCultureName(i)))
 				{
 					SetLanguage( LanguageTable.GetCultureCode(i) );
 				}

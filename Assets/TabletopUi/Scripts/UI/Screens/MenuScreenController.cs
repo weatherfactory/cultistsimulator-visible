@@ -34,6 +34,7 @@ public class MenuScreenController : MonoBehaviour {
     public CanvasGroupFader purgeConfirm;
 	public CanvasGroupFader credits;
 	public CanvasGroupFader settings;
+	public CanvasGroupFader language;
     public CanvasGroupFader versionHints;
 	public OptionsPanel optionsPanel;
 
@@ -279,6 +280,27 @@ public class MenuScreenController : MonoBehaviour {
 			return;
 
 		ShowOverlay(settings);
+	}
+
+	public void ShowLanguage()
+	{
+		if (!canTakeInput)
+			return;
+		
+		ShowOverlay(language);
+	}
+
+	public void SetLanguage( string lang_code )
+	{
+		if (!canTakeInput)
+			return;
+
+		if (LanguageManager.Instance)
+		{		
+			LanguageManager.Instance.SetLanguage( lang_code );
+		}
+
+		HideCurrentOverlay();
 	}
 
     public void ShowVersionHints() {
