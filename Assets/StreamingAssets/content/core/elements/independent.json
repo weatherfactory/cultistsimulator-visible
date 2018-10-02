@@ -2,7 +2,7 @@
     [
 							 {
         id: "generic_r",
-            icon:"generic_r", label "A Troublemaker",
+            icon:"generic_r", label: "A Troublemaker",
             aspects:
             {mortal:1,independent:1,suspicious:1},
             description: "Someone who's lost all sense of proportion.",
@@ -12,7 +12,7 @@
         },
 								 {
         id: "auclair_r",
-            icon:"auclair_r", label "Auclair, a troublemaker",
+            icon:"auclair_r", label: "Auclair, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
@@ -22,7 +22,7 @@
         },
 				 {
         id: "cat_r",
-            icon:"cat_r", label "Cat Caro, a troublemaker",
+            icon:"cat_r", label: "Cat Caro, a troublemaker",
             aspects:
             {mortal: 1,independent:1,suspicious:1},
             description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one knows seems to know exactly what she is now.",
@@ -33,7 +33,7 @@
 
 									 {
         id: "clifton_r",
-            icon:"clifton_r", label "'Pope' Clifton, a troublemaker",
+            icon:"clifton_r", label: "'Pope' Clifton, a troublemaker",
             aspects:
             {mortal: 1,independent:1,suspicious:1},
             description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
@@ -44,7 +44,7 @@
 	
 		 {
         id: "clovette_r",
-            icon:"clovette_r", label "Clovette, a troublemaker",
+            icon:"clovette_r", label: "Clovette, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "It's difficult to dislike Clovette, even when one knows what she's done.",
@@ -55,7 +55,7 @@
 		
 		 {
         id: "dorothy_r",
-            icon:"dorothy_r", label "Dorothy, a troublemaker",
+            icon:"dorothy_r", label: "Dorothy, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Dorothy will not cease. She will never cease. She has vowed as much.",
@@ -65,7 +65,7 @@
         },
 								 {
         id: "elridge_r",
-            icon:"elridge_r", label "Elridge, a troublemaker",
+            icon:"elridge_r", label: "Elridge, a troublemaker",
             aspects:
             {mortal: 1,independent:1,suspicious:1},
             description: "Elridge's shoes are often spotted with blood.",
@@ -74,7 +74,7 @@
         },
 				 {
         id: "enid_r",
-            icon:"enid_r", label "Enid, a troublemaker",
+            icon:"enid_r", label: "Enid, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Enid always sees her enemies coming. All the time.",
@@ -84,7 +84,7 @@
 	
 							 {
         id: "laidlaw_r",
-            icon:"laidlaw_r", label "Laidlaw, a troublemaker",
+            icon:"laidlaw_r", label: "Laidlaw, a troublemaker",
             aspects:
             {mortal: 1,independent:1,suspicious:1},
             description: "Laidlaw's schemes are intricate as fern-shadow.",
@@ -96,7 +96,7 @@
         },
 		{
         id: "leo_r",
-            icon:"leo_r", label "Leo, a troublemaker",
+            icon:"leo_r", label: "Leo, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1,},
             description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
@@ -106,9 +106,9 @@
         },
 				 {
         id: "neville_r",
-            icon:"neville_r", label "Neville, a troublemaker",
-            aspects:
-            {mortal:1,independent:1, suspicious:1},
+            image:"neville_r",
+			label: "Neville, a troublemaker",
+            aspects:{mortal:1,independent:1, suspicious:1},
             description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
 			animFrames: 1,
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
@@ -117,7 +117,7 @@
 				
 							 {
         id: "porter_r",
-            icon:"porter_r", label "Porter, a troublemaker",
+            icon:"porter_r", label: "Porter, a troublemaker",
             aspects:
             {mortal: 1,independent:1,suspicious:1},
             description: "Porter has begun to collect names.",
@@ -127,7 +127,7 @@
         },
 						 {
         id: "renira_r",
-            icon:"renira_r", label "Renira, a troublemaker",
+            icon:"renira_r", label: "Renira, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Renira likes to convert admirers into worshippers.",
@@ -137,7 +137,7 @@
         },
 							 {
         id: "rose_r",
-            icon:"rose_r", label "Rose, a troublemaker",
+            icon:"rose_r", label: "Rose, a troublemaker",
             aspects:
             {mortal:1,independent:1,suspicious:1},
             description: "Rose has long since ceased to fear her enemies.",
@@ -147,7 +147,7 @@
         },
 						 {
         id: "saliba_r",
-            icon:"saliba_r", label "Saliba, a troublemaker",
+            icon:"saliba_r", label: "Saliba, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Saliba does not tolerate boredom.",
@@ -157,7 +157,7 @@
         },
 						 {
         id: "slee_r",
-            icon:"slee_r", label "Slee, a troublemaker",
+            icon:"slee_r", label: "Slee, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Slee is always hungry for resources to pursue his theories.",
@@ -167,7 +167,7 @@
         },
 						 {
         id: "sylvia_r",
-            icon:"sylvia_r", label "Sylvia, a troublemaker",
+            icon:"sylvia_r", label: "Sylvia, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
@@ -177,7 +177,7 @@
         },
 				 {
         id: "tristan_r",
-            icon:"tristan_r", label "Tristan, a troublemaker",
+            icon:"tristan_r", label: "Tristan, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire..",
@@ -188,7 +188,7 @@
 			
 						 {
         id: "valciane_r",
-            icon:"valciane_r", label "Valciane, a troublemaker",
+            icon:"valciane_r", label: "Valciane, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
@@ -198,7 +198,7 @@
         },
 			 {
         id: "victor_r",
-            icon:"victor_r", label "Victor, a troublemaker",
+            icon:"victor_r", label: "Victor, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1,},
             description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
@@ -209,7 +209,7 @@
 		
 						 {
         id: "violet_r",
-            icon:"violet_r", label "Violet, a troublemaker",
+            icon:"violet_r", label: "Violet, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Violet has found new hobbies.",
@@ -219,7 +219,7 @@
         },
 						 {
         id: "ysabet_r",
-            icon:"ysabet_r", label "Ysabet, a troublemaker",
+            icon:"ysabet_r", label: "Ysabet, a troublemaker",
             aspects:
             {mortal:1,independent:1, suspicious:1},
             description: "Ysabet waits where she cannot be seen.",
@@ -230,7 +230,7 @@
 		
 						 {
         id: "generic_r_c",
-            icon:"generic_r", label "A Rival",
+            icon:"generic_r", label: "A Rival",
             aspects:
             {mortal:1,independent:1, disciple:1,suspicious:1},
             description: "Someone who's lost all sense of proportion.",
@@ -240,7 +240,7 @@
         },
 								 {
         id: "auclair_r_c",
-            icon:"auclair_r", label "Auclair, a rival",
+            icon:"auclair_r", label: "Auclair, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
@@ -250,7 +250,7 @@
         },
 				 {
         id: "cat_r_c",
-            icon:"cat_r", label "Cat Caro, a rival",
+            icon:"cat_r", label: "Cat Caro, a rival",
             aspects:
             {mortal: 1,independent:1, disciple:1,suspicious:1},
             description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one knows seems to know exactly what she is now.",
@@ -261,7 +261,7 @@
 
 									 {
         id: "clifton_r_c",
-            icon:"clifton_r", label "'Pope' Clifton, a rival",
+            icon:"clifton_r", label: "'Pope' Clifton, a rival",
             aspects:
             {mortal: 1,independent:1, disciple:1,suspicious:1},
             description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
@@ -272,7 +272,7 @@
 	
 		 {
         id: "clovette_r_c",
-            icon:"clovette_r", label "Clovette, a rival",
+            icon:"clovette_r", label: "Clovette, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "It's difficult to dislike Clovette, even when one knows what she's done.",
@@ -283,7 +283,7 @@
 		
 		 {
         id: "dorothy_r_c",
-            icon:"dorothy_r", label "Dorothy, a rival",
+            icon:"dorothy_r", label: "Dorothy, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Dorothy will not cease. She will never cease. She has vowed as much.",
@@ -293,7 +293,7 @@
         },
 								 {
         id: "elridge_r_c",
-            icon:"elridge_r", label "Elridge, a rival",
+            icon:"elridge_r", label: "Elridge, a rival",
             aspects:
             {mortal: 1,independent:1, disciple:1,suspicious:1},
             description: "Elridge's shoes are often spotted with blood.",
@@ -302,7 +302,7 @@
         },
 				 {
         id: "enid_r_c",
-            icon:"enid_r", label "Enid, a rival",
+            icon:"enid_r", label: "Enid, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Enid always sees her enemies coming. All the time.",
@@ -312,7 +312,7 @@
 	
 							 {
         id: "laidlaw_r_c",
-            icon:"laidlaw_r", label "Laidlaw, a rival",
+            icon:"laidlaw_r", label: "Laidlaw, a rival",
             aspects:
             {mortal: 1,independent:1, disciple:1,suspicious:1},
             description: "Laidlaw's schemes are intricate as fern-shadow.",
@@ -324,7 +324,7 @@
         },
 		{
         id: "leo_r_c",
-            icon:"leo_r", label "Leo, a rival",
+            icon:"leo_r", label: "Leo, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1,},
             description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
@@ -334,7 +334,7 @@
         },
 				 {
         id: "neville_r_c",
-            icon:"neville_r", label "Neville, a rival",
+            icon:"neville_r", label: "Neville, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
@@ -345,7 +345,7 @@
 				
 							 {
         id: "porter_r_c",
-            icon:"porter_r", label "Porter, a rival",
+            icon:"porter_r", label: "Porter, a rival",
             aspects:
             {mortal: 1,independent:1, disciple:1,suspicious:1},
             description: "Porter has begun to collect names.",
@@ -355,7 +355,7 @@
         },
 						 {
         id: "renira_r_c",
-            icon:"renira_r", label "Renira, a rival",
+            icon:"renira_r", label: "Renira, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Renira likes to convert admirers into worshippers.",
@@ -365,7 +365,7 @@
         },
 							 {
         id: "rose_r_c",
-            icon:"rose_r", label "Rose, a rival",
+            icon:"rose_r", label: "Rose, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1,suspicious:1},
             description: "Rose has long since ceased to fear her enemies.",
@@ -375,7 +375,7 @@
         },
 						 {
         id: "saliba_r_c",
-            icon:"saliba_r", label "Saliba, a rival",
+            icon:"saliba_r", label: "Saliba, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Saliba does not tolerate boredom.",
@@ -385,7 +385,7 @@
         },
 						 {
         id: "slee_r_c",
-            icon:"slee_r", label "Slee, a rival",
+            icon:"slee_r", label: "Slee, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Slee is always hungry for resources to pursue his theories.",
@@ -395,7 +395,7 @@
         },
 						 {
         id: "sylvia_r_c",
-            icon:"sylvia_r", label "Sylvia, a rival",
+            icon:"sylvia_r", label: "Sylvia, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
@@ -405,7 +405,7 @@
         },
 				 {
         id: "tristan_r_c",
-            icon:"tristan_r", label "Tristan, a rival",
+            icon:"tristan_r", label: "Tristan, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire..",
@@ -416,7 +416,7 @@
 			
 						 {
         id: "valciane_r_c",
-            icon:"valciane_r", label "Valciane, a rival",
+            icon:"valciane_r", label: "Valciane, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
@@ -426,7 +426,7 @@
         },
 			 {
         id: "victor_r_c",
-            icon:"victor_r", label "Victor, a rival",
+            icon:"victor_r", label: "Victor, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1,},
             description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
@@ -437,7 +437,7 @@
 		
 						 {
         id: "violet_r_c",
-            icon:"violet_r", label "Violet, a rival",
+            icon:"violet_r", label: "Violet, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Violet has found new hobbies.",
@@ -447,7 +447,7 @@
         },
 						 {
         id: "ysabet_r_c",
-            icon:"ysabet_r", label "Ysabet, a rival",
+            icon:"ysabet_r", label: "Ysabet, a rival",
             aspects:
             {mortal:1,independent:1, disciple:1, suspicious:1},
             description: "Ysabet waits where she cannot be seen.",
@@ -460,7 +460,7 @@
 		
 				 {
         id: "generic_r_d",
-            icon:"generic_r", label "A Long in the making",
+            icon:"generic_r", label: "A Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1,suspicious:1},
             description: "Someone who's lost all sense of proportion.",
@@ -470,7 +470,7 @@
         },
 								 {
         id: "auclair_r_d",
-            icon:"auclair_r", label "Auclair, a Long in the making",
+            icon:"auclair_r", label: "Auclair, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
@@ -480,7 +480,7 @@
         },
 				 {
         id: "cat_r_d",
-            icon:"cat_r", label "Cat Caro, a Long in the making",
+            icon:"cat_r", label: "Cat Caro, a Long in the making",
             aspects:
             {mortal: 1,independent:1, exalted:1,suspicious:1},
             description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one knows seems to know exactly what she is now.",
@@ -491,7 +491,7 @@
 
 									 {
         id: "clifton_r_d",
-            icon:"clifton_r", label "'Pope' Clifton, a Long in the making",
+            icon:"clifton_r", label: "'Pope' Clifton, a Long in the making",
             aspects:
             {mortal: 1,independent:1, exalted:1,suspicious:1},
             description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
@@ -502,7 +502,7 @@
 	
 		 {
         id: "clovette_r_d",
-            icon:"clovette_r", label "Clovette, a Long in the making",
+            icon:"clovette_r", label: "Clovette, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "It's difficult to dislike Clovette, even when one knows what she's done.",
@@ -513,7 +513,7 @@
 		
 		 {
         id: "dorothy_r_d",
-            icon:"dorothy_r", label "Dorothy, a Long in the making",
+            icon:"dorothy_r", label: "Dorothy, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Dorothy will not cease. She will never cease. She has vowed as much.",
@@ -523,7 +523,7 @@
         },
 								 {
         id: "elridge_r_d",
-            icon:"elridge_r", label "Elridge, a Long in the making",
+            icon:"elridge_r", label: "Elridge, a Long in the making",
             aspects:
             {mortal: 1,independent:1, exalted:1,suspicious:1},
             description: "Elridge's shoes are often spotted with blood.",
@@ -532,7 +532,7 @@
         },
 				 {
         id: "enid_r_d",
-            icon:"enid_r", label "Enid, a Long in the making",
+            icon:"enid_r", label: "Enid, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Enid always sees her enemies coming. All the time.",
@@ -542,7 +542,7 @@
 	
 							 {
         id: "laidlaw_r_d",
-            icon:"laidlaw_r", label "Laidlaw, a Long in the making",
+            icon:"laidlaw_r", label: "Laidlaw, a Long in the making",
             aspects:
             {mortal: 1,independent:1, exalted:1,suspicious:1},
             description: "Laidlaw's schemes are intricate as fern-shadow.",
@@ -554,7 +554,7 @@
         },
 		{
         id: "leo_r_d",
-            icon:"leo_r", label "Leo, a Long in the making",
+            icon:"leo_r", label: "Leo, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1,},
             description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
@@ -564,7 +564,7 @@
         },
 				 {
         id: "neville_r_d",
-            icon:"neville_r", label "Neville, a Long in the making",
+            icon:"neville_r", label: "Neville, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
@@ -575,7 +575,7 @@
 				
 							 {
         id: "porter_r_d",
-            icon:"porter_r", label "Porter, a Long in the making",
+            icon:"porter_r", label: "Porter, a Long in the making",
             aspects:
             {mortal: 1,independent:1, exalted:1,suspicious:1},
             description: "Porter has begun to collect names.",
@@ -585,7 +585,7 @@
         },
 						 {
         id: "renira_r_d",
-            icon:"renira_r", label "Renira, a Long in the making",
+            icon:"renira_r", label: "Renira, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Renira likes to convert admirers into worshippers.",
@@ -595,7 +595,7 @@
         },
 							 {
         id: "rose_r_d",
-            icon:"rose_r", label "Rose, a Long in the making",
+            icon:"rose_r", label: "Rose, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1,suspicious:1},
             description: "Rose has long since ceased to fear her enemies.",
@@ -605,7 +605,7 @@
         },
 						 {
         id: "saliba_r_d",
-            icon:"saliba_r", label "Saliba, a Long in the making",
+            icon:"saliba_r", label: "Saliba, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Saliba does not tolerate boredom.",
@@ -615,7 +615,7 @@
         },
 						 {
         id: "slee_r_d",
-            icon:"slee_r", label "Slee, a Long in the making",
+            icon:"slee_r", label: "Slee, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Slee is always hungry for resources to pursue his theories.",
@@ -625,7 +625,7 @@
         },
 						 {
         id: "sylvia_r_d",
-            icon:"sylvia_r", label "Sylvia, a Long in the making",
+            icon:"sylvia_r", label: "Sylvia, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
@@ -635,7 +635,7 @@
         },
 				 {
         id: "tristan_r_d",
-            icon:"tristan_r", label "Tristan, a Long in the making",
+            icon:"tristan_r", label: "Tristan, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire..",
@@ -646,7 +646,7 @@
 			
 						 {
         id: "valciane_r_d",
-            icon:"valciane_r", label "Valciane, a Long in the making",
+            icon:"valciane_r", label: "Valciane, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
@@ -656,7 +656,7 @@
         },
 			 {
         id: "victor_r_d",
-            icon:"victor_r", label "Victor, a Long in the making",
+            icon:"victor_r", label: "Victor, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1,},
             description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
@@ -667,7 +667,7 @@
 		
 						 {
         id: "violet_r_d",
-            icon:"violet_r", label "Violet, a Long in the making",
+            icon:"violet_r", label: "Violet, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Violet has found new hobbies.",
@@ -677,7 +677,7 @@
         },
 						 {
         id: "ysabet_r_d",
-            icon:"ysabet_r", label "Ysabet, a Long in the making",
+            icon:"ysabet_r", label: "Ysabet, a Long in the making",
             aspects:
             {mortal:1,independent:1, exalted:1, suspicious:1},
             description: "Ysabet waits where she cannot be seen.",
