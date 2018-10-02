@@ -252,12 +252,13 @@
 		requirements: {seasonambitions:1},
 		label:"Exotic Cravings?",
 		actionId: "craving",
-		slots: [{id:"Obsessions",description: "Deeper urges",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3,changemarks:1}, greedy:true }],
-		startdescription: "What hungers drive me?",
+		slots: [{id:"Obsessions",description: "Deeper urges",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3,changemarks:1,independent:1,resentment:3}, greedy:true }],
+		startdescription: "What hungers drive us?",
 		description: "",
 		effects: {},
 		warmup: 10,
-		linked: [	
+		linked: [
+		{id:"L_rebellion_activate",chance:100},
 		{id:"ascensioncravingpower",chance:100},
 		{id:"ascensioncravingsensation",chance:100},
 		{id:"ascensioncravingenlightenment",chance:100},
@@ -270,6 +271,15 @@
 		{id:"ascensioncravingchange_tryascendfroma",chance:100},
 		{id:"ascensionnotyet",chance:100}]
 		},
+		{id:"L_rebellion_activate",
+		label:"Rebellion!",
+		actionId:"ambition",
+		requirements:{resentment:3},
+		startdescription:"Too much, or not enough? Whatever I've done, it's angered someone beyond forbearance.",
+		description:"An ally has broken away from me. They might not be an enemy - not yet - not exactly - but they will no longer serve me.",
+		aspects:{rebellion:1},
+		warmup:30
+		}
 		
 		{id:"ascensionnotyet",
 		label:"Mortal Frustrations",
