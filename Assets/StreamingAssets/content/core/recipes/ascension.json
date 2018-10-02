@@ -258,7 +258,9 @@
 		effects: {},
 		warmup: 10,
 		linked: [
-		{id:"L_rebellion_activate",chance:100},
+		{id:"L_independent",chance:100},
+		{id:"L_rebellion_activate",chance:70},
+		{id:"L_rebellion_noactivation",chance:100},
 		{id:"ascensioncravingpower",chance:100},
 		{id:"ascensioncravingsensation",chance:100},
 		{id:"ascensioncravingenlightenment",chance:100},
@@ -271,6 +273,16 @@
 		{id:"ascensioncravingchange_tryascendfroma",chance:100},
 		{id:"ascensionnotyet",chance:100}]
 		},
+			{id:"L_independent",
+			label:"Rivalry!",
+			actionId:"ambition",
+			requirements:{independent:1},
+			startdescription:"Here is another who would ascend before me. [Independent occultists will try to monopolise the attention of the Hours.]",
+			description:"FNORD that's all for now.",
+			warmup:30
+			},
+		
+		
 		{id:"L_rebellion_activate",
 		label:"Rebellion!",
 		actionId:"ambition",
@@ -279,7 +291,16 @@
 		description:"An ally has broken away from me. They might not be an enemy - not yet - not exactly - but they will no longer serve me.",
 		aspects:{rebellion:1},
 		warmup:30
-		}
+		},
+				{id:"L_rebellion_noactivation",
+		label:"Discontent",
+		actionId:"ambition",
+		requirements:{resentment:3},
+		startdescription:"Too much, or not enough? Whatever I've done, it's angered an ally.",
+		description:"This one has spent some time in sulky solitude. For now, they'll return to the fold.",
+		mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:-1,additive:true}],
+		warmup:30
+		},
 		
 		{id:"ascensionnotyet",
 		label:"Mortal Frustrations",
