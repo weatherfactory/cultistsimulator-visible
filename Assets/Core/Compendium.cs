@@ -305,6 +305,106 @@ public class Compendium : ICompendium
             return new Ending(endingFlag, "AFTER HAPPILY",
                 "FNORD","moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
 
+        if (endingFlag == "tristanvictory")
+            return new Ending(endingFlag, "xx",
+                "Our flesh may tire. We may grow old. But I will not regret. He is seared into my memory: the sure, strong strokes of handwritten notes; the shape he leaves in pillows; the supple swell of his arms by the fire. Brightest of all is his body beside mine, flush with the flames of the dawn." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "tristan", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_TRISTANVICTORY");
+
+        if (endingFlag == "valcianevictory")
+            return new Ending(endingFlag, "xx",
+                "She fills our lives with shapely things: treasures of porcelain, nacre, blown glass. Some are the products of her work. Some are tokens from trips abroad. They collect in piles around our home, forming curious passageways. But I find her among the mazes she builds. She wants very much to be found." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "valciane", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VALCIANEVICTORY");
+
+        if (endingFlag == "laidlawvictory")
+            return new Ending(endingFlag, "xx",
+                "We have our patterns. Our visits to the auction house, the flickering films we watch together, the rhythm we know in the night. But he is unpredictable as the sparking of wood in the hearth. When next will he spit embers? When next will his fires cool? I shape myself around his flares. We find, we think, a way." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "laidlaw", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_LAIDLAWVICTORY");
+
+        if (endingFlag == "elridgevictory")
+            return new Ending(endingFlag, "xx",
+                "Our home is ordered, polished, controlled. He knows always where the tools are that we need. He knows afterwards to clean, to put them back once more. Sometimes I must wait, while he does the things he must do. But when he is finished, he may look up at me, and I may give him his reward." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "elridge", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_ELRIDGEVICTORY");
+
+        if (endingFlag == "rosevictory")
+            return new Ending(endingFlag, "xx",
+                "Our lives are happy ones. We seem a suited pair. There are, of course, those visits from her brother - but she is lonely when I travel, and needs the company. When I return her eyes are softer than before, and her kisses wine and caramel." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "rose", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_ROSEVICTORY");
+
+        if (endingFlag == "victorvictory")
+            return new Ending(endingFlag, "xx",
+                "Our evenings together are elegant things. The sweep of the stairwell all glittered with gold. The sighs of the audience close to the stage. The chink of our knives, further back, through fillet. We often run into his sister, whose tastes mirror our own. But when we are alone again, he lavishes his gaze on me. He offers kisses, caresses, caramel. We are happy, I think." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "victor", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VICTORVICTORY");
+
+        if (endingFlag == "salibavictory")
+            return new Ending(endingFlag, "xx",
+                "I would not say it ended badly. But there is little of me, now. Our outside activities waned over time, and so, I know, have I. As I dwindle, my lover takes greater and greater interest in me: these days he hardly leaves my side, and I, hardly, his room. Soon, he tells me, a smear of something wet beneath his eye. Soon." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "saliba", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_SALIBAVICTORY");
+
+        if (endingFlag == "reniravictory")
+            return new Ending(endingFlag, "xx",
+                "I am drunk with her. Bare shoulders at the opera, a hundred ruby smiles across a crowded restaurant. Her smile dims if I am caught, even for the shortest of times, admiring another pretty thing. But she knows she is the beating heart of me, the lifeblood of my work. I am lost in her lovely arms, her mouth as sweet as myrrh. Hers is my heart. My goddess. She." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "renira", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_RENIRAVICTORY");
+
+        if (endingFlag == "violetvictory")
+            return new Ending(endingFlag, "xx",
+                "The house is alive with candles. But they never last that long. She lies with me in the guttering dark, as our windows frost with breath, with ice, with the silence of the night. One by one we douse the flames and listen to the sound of nothingness, clasped in each other's arms." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "violet", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VIOLETVICTORY");
+
+        if (endingFlag == "auclairvictory")
+            return new Ending(endingFlag, "xx",
+                "My mind is crowded with her. The catechisms over soup, the dialogues of daily life. What once were strolls beneath the moon are now our cherished memories, of her and I before we truly knew ourselves. Now we know. Now we are scholars of the heart. Now we are each other's." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "auclair", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_AUCLAIRVICTORY");
+
+        if (endingFlag == "enidvictory")
+            return new Ending(endingFlag, "xx",
+                "She does not talk, when she is sad. But she is often sad. I know now to place myself, know to leave my hand just so, and coax that lovely neck upon my shoulder. Our lives are mottled with moments like this, unspoken, unseen, us. And in the morning, when the day before her lies open and wide, she smiles the smile only I know, and I am well repaid." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "enid", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_ENIDVICTORY");
+
+        if (endingFlag == "nevillevictory")
+            return new Ending(endingFlag, "xx",
+                "I find notes among my papers, chocolates at my desk. When we dine, he sits close beside me, no matter the remonstrations of the waiter. I have sometimes caught him, blue in the dawn, stroking a lock of my hair. I kiss him, then; I make him mine. He thanks me afterwards." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "neville", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_NEVILLEVICTORY");
+
+        if (endingFlag == "catvictory")
+            return new Ending(endingFlag, "xx",
+                "Our house is ever stocked with what we need, before I know we need it. It is hard to know whether my desires are anticipated before I am aware of them, or whether she molds them from the start. But I sometimes catch her lost in thought, haloed in lamp-light and smoke. I know to move quietly, and chink our cups together when I carry them, so she is not startled. She laughs at me for this, but ensures I have sweet dreams." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "cat", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_CATVICTORY");
+
+        if (endingFlag == "cliftonvictory")
+            return new Ending(endingFlag, "xx",
+                "It is hard to tell, with him, whether to laugh or cry. Sometimes he stumbles in at dawn, dripping Turkish cigarettes. Other times he drapes our home with hanging lamps, and may or may not persuade a battered gramophone to play. Those nights, we sample food, and then each other, in the glittering gloom of the night." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "clifton", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_CLIFTONVICTORY");
+
+        if (endingFlag == "sleevictory")
+            return new Ending(endingFlag, "xx",
+                "Our home is littered with his notes. They touch upon the grandnesses of love, of birth, of everything. Among them we laugh at limericks and fall drunkenly to bed. When we wake, we are cocooned, warm in the crooks of each other. Sometimes I nudge a scrap of paper out from the coverlet. Sometimes I let it stay." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "slee", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_SLEEVICTORY");
+
+        if (endingFlag == "portervictory")
+            return new Ending(endingFlag, "xx",
+                "He is very specific about what he does, and does not, enjoy. I learn his ways: to draw in circles by his ear, to vex until he lights his pipe, to sweeten his tempers with sugared delights. I will never fully grasp this man, as he will not grasp me. But our years are speckled with what some might call love, and that is enough." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "porter", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_PORTERVICTORY");
+
+        if (endingFlag == "ysabetvictory")
+            return new Ending(endingFlag, "xx",
+                "Our lives are rich, chaotic days. I note appointments in her diary several hours before we're due to meet, but still she is rarely on time. I lie in bed, awaiting her, only to wake in the early dawn as she slides, cold, beside me. But her smile is warm against my neck. Her eyes are hot with love for me. Our house is home to fluttering things, and she must beat her wings." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "ysabet", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_YSABETVICTORY");
+
+        if (endingFlag == "sylviavictory")
+            return new Ending(endingFlag, "xx",
+                "Life is not easy with her. There are arguments. There are times when I roam the streets, seeking whichever bright window -  that night - frames her and another. But she is unmercifully charming when she returns. There is always cause. We are drawn back together, again and again, and blot out the world with desire." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "sylvia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_SYLVIAVICTORY");
+
+        if (endingFlag == "dorothyvictory")
+            return new Ending(endingFlag, "xx",
+                "There are lulls in the music between us, but there are far more crescendos than falls. We live together, we travel as one, we fall naturally into perfect step. Before we sleep we often dance, to the low, slow rhythm of the streets outside. Those nights we dream the same pink dreams and waken, flushed, in the dawn." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "dorothy", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_DOROTHYVICTORY");
+
+        if (endingFlag == "leovictory")
+            return new Ending(endingFlag, "xx",
+                "His love is irrepressible. It sprouts like weeds in sunny spots and cannot be constrained. I was not entirely certain, to begin with, what was the moon, and what the man. But he has sown our home with richness. He has filled it with trinkets from our shared life. He is the melody of love, and I hear him now." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "leo", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_LEOVICTORY");
+
         return Ending.DefaultEnding();
     }
     /// <summary>
