@@ -395,6 +395,11 @@ public class Compendium : ICompendium
                 "Life is not easy with her. There are arguments. There are times when I roam the streets, seeking whichever bright window -  that night - frames her and another. But she is unmercifully charming when she returns. There is always cause. We are drawn back together, again and again, and blot out the world with desire." +
                 "[This might be considered a victory. But the House is no place for lovers.]", "sylvia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_SYLVIAVICTORY");
 
+        if (endingFlag == "clovettevictory")
+            return new Ending(endingFlag, "xx",
+                "My life follows the path of her joy - powerful, merciless, hers. I must sometimes remind her of our vows, but she is always regretful, and always irresistible. I am rich in the glow of her attention, once I have pulled her from the parties we attend each night. And when she is mine, oh, I am hers, and our heartbeats quicken together." +
+                "[This might be considered a victory. But the House is no place for lovers.]", "clovette", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_CLOVETTEVICTORY");
+
         if (endingFlag == "dorothyvictory")
             return new Ending(endingFlag, "xx",
                 "There are lulls in the music between us, but there are far more crescendos than falls. We live together, we travel as one, we fall naturally into perfect step. Before we sleep we often dance, to the low, slow rhythm of the streets outside. Those nights we dream the same pink dreams and waken, flushed, in the dawn." +
