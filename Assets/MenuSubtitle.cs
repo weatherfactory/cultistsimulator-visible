@@ -12,7 +12,20 @@ public class MenuSubtitle : MonoBehaviour
 
     public void SetText(string text)
     {
-        SubtitleText.text = text;
-        SubtitleTextShadow.text = text;
+		Babelfish fish = SubtitleText.gameObject.GetComponent<Babelfish>();
+		if (fish)
+		{
+			fish.SetLocLabel( text );
+		}
+		fish = SubtitleTextShadow.gameObject.GetComponent<Babelfish>();
+		if (fish)
+		{
+			fish.SetLocLabel( text );
+		}
+
+        SubtitleText.text		= LanguageTable.Get(text);
+        SubtitleTextShadow.text = LanguageTable.Get(text);
     }
+
+
 }

@@ -358,12 +358,12 @@ namespace Assets.CS.TabletopUI {
             _notifier.ShowNotificationWindow(_character.ActiveLegacy.Label, _character.ActiveLegacy.StartDescription);
         }
 
-        private void SetStartingCharacterInfo(Legacy chosenLegacy) {
+        private void SetStartingCharacterInfo(Legacy chosenLegacy)
+		{
             Character newCharacter = Registry.Retrieve<Character>();
-            newCharacter.Name = "[click to name]";
+            newCharacter.Name = LanguageTable.Get("UI_CLICK_TO_NAME");
            // Registry.Retrieve<Chronicler>().CharacterNameChanged(NoonConstants.DEFAULT_CHARACTER_NAME);//so we never see a 'click to rename' in future history
-            newCharacter.Profession = chosenLegacy.Label;
-           
+            newCharacter.Profession = chosenLegacy.Label;   
         }
 
         private void DealStartingDecks() {

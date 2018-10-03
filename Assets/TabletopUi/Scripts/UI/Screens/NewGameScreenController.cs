@@ -157,9 +157,14 @@ namespace Assets.CS.TabletopUI {
             description.text = legacySelected.Description;
             var ending = CrossSceneState.GetCurrentEnding();
             if (legacySelected.FromEnding == ending.Id)
-                availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";
+			{
+                //availableBecause.text = "[Always available after " + ending.Title.ToUpper() + "]";
+				availableBecause.text = LanguageTable.Get("LEGACY_BECAUSE_PREFIX") + ending.Title.ToUpper() + LanguageTable.Get("LEGACY_BECAUSE_POSTFIX");
+			}
             else
+			{
                 availableBecause.text = "";
+			}
 
             //display effects for legacy:
             //clear out any existing effect stacks

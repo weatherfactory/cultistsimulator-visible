@@ -45,6 +45,11 @@ public class Babelfish : MonoBehaviour
         LanguageManager.LanguageChanged -= OnLanguageChanged;
     }
 
+	public void SetLocLabel( string label )	// Allows code to modify string label such that it can swap languages later
+	{
+		locLabel = label;
+	}
+
 	public virtual void OnLanguageChanged()
     {
 		if (LanguageManager.Instance==null)

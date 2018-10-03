@@ -116,11 +116,12 @@ public class MenuScreenController : MonoBehaviour {
         SetEditionStatus();
         if (NoonUtility.PerpetualEdition)
         {
-            Subtitle.SetText("PERPETUAL EDITION");
+            Subtitle.SetText("UI_PERPETUAL_EDITION");
         }
         else
-            Subtitle.SetText("BRING THE DAWN");
-
+		{
+            Subtitle.SetText("UI_BRING_THE_DAWN");
+		}
 
         // Show the purge message if needed
         purgeSaveMessage.gameObject.SetActive(hasSavegame && !isLegalSaveGame);
