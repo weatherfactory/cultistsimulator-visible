@@ -296,6 +296,12 @@
 		isAspect: true,
 		description: "My ultimate aim. There will be a price."
 		},
+								{id: "rivalmarks",
+		label: "A Rival's Ascension",
+		isAspect: true,
+		description: "Opportunities to ascend to the House of the Sun are rare. If another achieves it, I may miss my chance. [If this reaches seven, your Rival may win the game instead of you.]"
+		},
+		
 						{id: "changemarks",
 		label: "The Forms of Change",
 		isAspect: true,
@@ -646,6 +652,13 @@
             id: "promotionto_d_winter",
             label: "Exaltation: Winter",
 			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+							 {
+            id: "rival_promotion",
+            label: "Promotion: Rival",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
@@ -1198,6 +1211,10 @@
 		description:"Sometimes she sits in the second row, seeking new talent for her peculiar establishment. Those she employs are rarely seen about town.",
 		isAspect:true
 		},
+		{id:"snarelevel",
+		label:"Snare Effectiveness",
+		description:"Some snares are easy to escape. Some are webs of steel.",
+		isAspect:true}
 		
 ]
 }

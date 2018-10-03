@@ -16,7 +16,7 @@
         id: "scheme_murderhunter_grab",
         label: "Someone is seeking prey...",
         actionId: "scheme",
-		slots:[{id:"victim",greedy:true,required:{hunter:1}}],
+		slots:[{id:"victim",label:"Victim",greedy:true,required:{hunter:1}}],
     
    effects:{},
    startdescription:"FNORD",
@@ -79,17 +79,123 @@
         craftable: false
     },
 	
-			{
-        id: "scheme_expedition",
-        label: "Someone is scheming to complete an Expedition before me.",
+
+	
+				{
+        id: "scheme_expedition_grab",
+        label: "GRAB",
         actionId: "scheme",
-    
+		requirements:{vault:-1},
+    	slots:[{id:"target",label:"Target",greedy:true,required:{vault:1}}],
    effects:{},
+   startdescription:"FNORD My Rival is looking for a place to ransack before me. [If they can't find a Vault, they'll give up, eventually.]",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false,
+		linked: [{chance:70,id:"scheme_expedition_prep"},
+		{id:"scheme_expedition_prep",chance:100}]
+    },
+	
+					{
+        id: "scheme_expedition_prep",
+        label: "prep",
+        actionId: "scheme",
+    slots:[{id:"snare",label:"Ambush",required:{snare:1}}],
+requirements:{vault:1},
    startdescription:"FNORD",
    description:"FNORD",
         warmup: 60,
+        craftable: false,
+		linked:[{chance:90,id:"scheme_expedition_snare_great"},
+		{chance:70,id:"scheme_expedition_snare_good"},
+		{chance:30,id:"scheme_expedition_snare_poor"},
+		{chance:10,id:"scheme_expedition_snare_rubbish"},
+			{chance:100,id:"scheme_expedition_snare_failure"},
+				{chance:70,id:"scheme_expedition_success"},
+				{chance:100,id:"scheme_expedition_failure"},]
+    },
+				{
+        id: "scheme_expedition_snare_great",
+        label: "FNORD v likely snare",
+        actionId: "scheme",
+    requirements:{snarelevel:4},
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
         craftable: false
     },
+							{
+        id: "scheme_expedition_snare_good",
+        label: "FNORD probably snare",
+        actionId: "scheme",
+        requirements:{snarelevel:3},
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false
+    },
+								{
+        id: "scheme_expedition_snare_poor",
+        label: "FNORD maybe snare",
+        actionId: "scheme",
+        requirements:{snarelevel:2},
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false
+    },
+									{
+        id: "scheme_expedition_snare_rubbish",
+        label: "FNORD ugh snare",
+        actionId: "scheme",
+        requirements:{snarelevel:1},
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false
+    },
+										{
+        id: "scheme_expedition_snare_failure",
+        label: "FNORD ugh snare",
+        actionId: "scheme",
+      requirements:{snarelevel:1},
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false
+    },
+	
+					{
+        id: "scheme_expedition_success",
+        label: "SCHEME SUCCESS",
+        actionId: "scheme",
+    requirements:{vault:1},
+   effects:{vault:-1},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false,
+		linked:[{id:"scheme_promotion",chance:100}]
+    },
+	
+						{
+        id: "scheme_expedition_failure",
+        label: "My Rival has failed in their Expedition.",
+        actionId: "scheme",
+      requirements:{vault:1},
+   effects:{},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 5,
+        craftable: false
+    },
+	
+	
 	
 				{
         id: "scheme_activities",
@@ -99,6 +205,33 @@
    effects:{mystique:1},
    startdescription:"FNORD",
    description:"FNORD",
+        warmup: 60,
+        craftable: false
+    },
+	
+		
+				{
+        id: "scheme_promotion",
+        label: "My rival has gained power.",
+        actionId: "scheme",
+    alternativerecipes:[{chance:100,id:"scheme_promotion_ascension"}],
+   effects:{mystique:1},
+   aspects:{rival_promotion:1},
+   startdescription:"FNORD",
+   description:"FNORD",
+        warmup: 60,
+        craftable: false
+    },
+	
+					{
+        id: "scheme_promotion_ascension",
+        label: "My rival strives to pass the Tricuspid Gate, and become something greater..",
+        actionId: "scheme",
+    requirements:{exalted:1},
+   effects:{mystique:1},
+   startdescription:"FNORD [Beware: if your Rival's Ascension reaches 7, they will win the game instead of you.]",
+   description:"FNORD",
+   mutations:[{filterOnAspectId:independent,mutateAspectId:rivalmarks,mutationLevel:1,additive:true}]
         warmup: 60,
         craftable: false
     },

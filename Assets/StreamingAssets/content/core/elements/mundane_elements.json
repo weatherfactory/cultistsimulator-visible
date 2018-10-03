@@ -60,6 +60,13 @@
             label: "Jumble",
             aspects:{auctionable:1},
             description: "Old clothes, near-worthless accessories. It might pick up a few pennies somewhere, but it's of little use to me."
+        },
+		{
+		        id: "snare",
+            label: "Snare",
+            aspects:{snarelevel:1},
+            description: "I have prepared an ambush for a rival.",
+			lifetime: 300
         }
 ]
 };
