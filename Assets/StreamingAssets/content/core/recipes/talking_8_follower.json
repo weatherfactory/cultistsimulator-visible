@@ -75,7 +75,7 @@ aspects:{killmortal:1}
 label:"Discuss occult business with a Follower",
 actionId: "talk",
 requirements: {society:-1,follower: 1,summoned:-1},
-slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,tool:1,ingredient:1,annoyance:1,locationcabaret:1,locationstreetsstrange:1,locationauctionhouse:1}}],
+slots: [{id:"Subject",description:"Our cult, for cult business; a target; or another topic.",required: {society:1,evidencelevel:1,hunter:1,independent:1,tool:1,ingredient:1,annoyance:1,location:1}}],
 comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
 alternativerecipes:[
 
@@ -91,6 +91,9 @@ alternativerecipes:[
 {id:"followeraction_repairtoollanternbcracked",chance:100},
 {id:"followeraction_repairtoollanterndcracked",chance:100},
 {id:"followeraction_repairtoollanternfcracked",chance:100},
+
+{id:"A_follower_settrap_independent",chance:100},
+{id:"A_follower_settrap_vault",chance:100},
 
 
 {id:"followeraction_murderhighwinter",chance:100},
@@ -658,6 +661,89 @@ startdescription:"My follower is at work on the mirror.",
 description: "The mirror is repaired! It shines again as it did once before.",
 effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 },
+
+{id:"A_follower_settrap_independent",
+actionId:"talk",
+label:"Create a Snare to delay or defeat a Rival",
+startdescription:"Rivals are cautious. To defeat one, we must prepare a trap they may stumble into. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.].]",
+requirements:{independent:1},
+alternativerecipes:[{id:"expel_independent",chance:100,additional:true,expulsion:{limit:1,filter:{independent:1}}}],
+linked:[{id:"L_set_trap_router",chance:100}]
+},
+
+{id:"A_follower_settrap_vault",
+actionId:"talk",
+label:"Create a Snare to delay or defeat a Rival",
+startdescription:"Rivals are cautious. To defeat one, we must prepare a trap, and await an opportunity. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
+requirements:{vault:1},
+linked:[{id:"L_set_trap_router",chance:100}]},
+
+{id:"L_set_trap_router",
+actionId:"talk",
+effects:{snare:1},
+linked:[{id:"L_settrap_highedge",chance:100},
+{id:"L_settrap_highwinter",chance:100},
+{id:"L_settrap_highforge",chance:100},
+{id:"L_settrap_highmoth",chance:100},
+{id:"L_settrap_midedge",chance:100},
+{id:"L_settrap_midwinter",chance:100},
+{id:"L_settrap_midforge",chance:100},
+{id:"L_settrap_midmoth",chance:100},
+{id:"L_settrap_lowedge",chance:100},
+{id:"L_settrap_lowwinter",chance:100},
+{id:"L_settrap_lowforge",chance:100},
+{id:"L_settrap_lowmoth",chance:100},
+{id:"L_createsnare_rubbish",chance:100}],
+},
+
+{id:"L_settrap_highedge",actionId:"talk",requirements:{edge:10},linked:[{id:"L_createsnare_great",chance:100}]},
+{id:"L_settrap_highwinter",actionId:"talk",requirements:{winter:10},linked:[{id:"L_createsnare_great",chance:100}]},
+{id:"L_settrap_highforge",actionId:"talk",requirements:{forge:10},linked:[{id:"L_createsnare_great",chance:100}]},
+{id:"L_settrap_highmoth",actionId:"talk",requirements:{moth:10},linked:[{id:"L_createsnare_great",chance:100}]},
+{id:"L_settrap_midedge",actionId:"talk",requirements:{edge:7},linked:[{id:"L_createsnare_good",chance:100}]},
+{id:"L_settrap_midwinter",actionId:"talk",requirements:{winter:7},linked:[{id:"L_createsnare_good",chance:100}]},
+{id:"L_settrap_midforge",actionId:"talk",requirements:{forge:7},linked:[{id:"L_createsnare_good",chance:100}]},
+{id:"L_settrap_midmoth",actionId:"talk",requirements:{moth:7},linked:[{id:"L_createsnare_good",chance:100}]},
+{id:"L_settrap_lowedge",actionId:"talk",requirements:{edge:3},linked:[{id:"L_createsnare_poor",chance:100}]},
+{id:"L_settrap_lowwinter",actionId:"talk",requirements:{winter:3},linked:[{id:"L_createsnare_poor",chance:100}]},
+{id:"L_settrap_lowforge",actionId:"talk",requirements:{forge:3},linked:[{id:"L_createsnare_poor",chance:100}]},
+{id:"L_settrap_lowmoth",actionId:"talk",requirements:{moth:3},linked:[{id:"L_createsnare_poor",chance:100}]}
+
+
+
+{id:"L_createsnare_great",
+actionId:"talk",
+label:"A Lethal Snare",
+		description:"My follower has set a lethally cunning ambuscade - one that will almost certainly succeed.",
+		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
+		warmup:30
+		},
+		
+		{id:"L_createsnare_good",
+actionId:"talk",
+label:"A Cunning Snare",
+		description:"My follower has set a cunning ambuscade - one that will likely succeed.",
+		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:2,additive:true}],
+		warmup:30
+		},
+
+		{id:"L_createsnare_poor",
+actionId:"talk",
+label:"An Adequate Snare",
+		description:"My follower has prepared a stratagem which - with considerable luck - might defeat a rival's plans.",
+		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:1,additive:true}],
+		warmup:30
+		},
+		{id:"L_createsnare_rubbish",
+actionId:"talk",
+label:"A Desperate Attempt",
+		description:"My follower's plan is eccentric at best and incompetent at worst, but perhaps an enemy will stumble into it.",
+		warmup:30
+		},
+
+
+
+
 
 
 	   {id: "followeraction_abducthighedge",
