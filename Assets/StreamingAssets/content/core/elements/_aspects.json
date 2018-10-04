@@ -1142,20 +1142,20 @@
 		},
 		{id: "follower_scar_edge",
 		label:"Scar: Brutal Experience",
-		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a follower.]",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a mortal.]",
 		isAspect:true,
 		{xtriggers:{killmortal:corpse_scar}}
 		},
 		
 				{id: "follower_scar_knock",
 		label:"Scar: Half-Healed Fistula",
-		description:"Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a follower.]",
+		description:"Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a mortal.]",
 		isAspect:true,
 		{xtriggers:{killmortal:corpse_scar}}
 		},
 				{id: "follower_scar_winter",
 		label:"Scar: Old Wound",
-		description:"Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a follower.]",
+		description:"Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a mortal.]",
 		isAspect:true,
 		{xtriggers:{killmortal:corpse_scar}}
 		},

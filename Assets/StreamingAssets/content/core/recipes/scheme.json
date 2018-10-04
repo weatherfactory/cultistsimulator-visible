@@ -65,21 +65,16 @@
         craftable: false
     },
 	
-	
-	
-		{
-        id: "scheme_ascend",
-        label: "Someone is scheming for their own ascension",
+					{
+        id: "scheme_expedition_debug",
+        label: "FORCE EXP START",
         actionId: "scheme",
-    
-   effects:{},
-   startdescription:"FNORD",
-   description:"FNORD",
-        warmup: 60,
-        craftable: false
-    },
-	
+    	slots:[{id:"target",label:"Actor",required:{independent:1}}],
 
+        warmup: 30,
+        craftable: false,
+		linked: [{chance:100,id:"scheme_expedition_grab"}]
+    },
 	
 				{
         id: "scheme_expedition_grab",
@@ -92,7 +87,7 @@
    description:"FNORD",
         warmup: 60,
         craftable: false,
-		linked: [{chance:70,id:"scheme_expedition_prep"},
+		linked: [{chance:70,id:"scheme_expedition_grab"},
 		{id:"scheme_expedition_prep",chance:100}]
     },
 	
@@ -106,73 +101,83 @@ requirements:{vault:1},
    description:"FNORD",
         warmup: 60,
         craftable: false,
-		linked:[{chance:90,id:"scheme_expedition_snare_great"},
-		{chance:70,id:"scheme_expedition_snare_good"},
-		{chance:30,id:"scheme_expedition_snare_poor"},
-		{chance:10,id:"scheme_expedition_snare_rubbish"},
+		linked:[{chance:90,id:"scheme_expedition_snare_great_success"},
+		{chance:70,id:"scheme_expedition_snare_good_success"},
+		{chance:30,id:"scheme_expedition_snare_poor_success"},
+		{chance:10,id:"scheme_expedition_snare_rubbish_success"},
 			{chance:100,id:"scheme_expedition_snare_failure"},
 				{chance:70,id:"scheme_expedition_success"},
-				{chance:100,id:"scheme_expedition_failure"},]
+				{chance:100,id:"scheme_expedition_failure"}],
     },
-				{
-        id: "scheme_expedition_snare_great",
+	{
+        id: "scheme_expedition_snare_great_success",
         label: "FNORD v likely snare",
         actionId: "scheme",
     requirements:{snarelevel:4},
    effects:{},
    startdescription:"FNORD",
-   description:"FNORD",
+      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
         warmup: 5,
-        craftable: false
+        craftable: false,
+			effects:{snare:-1},
+		linked:[{id:"independent_scar",chance:100}]
     },
 							{
-        id: "scheme_expedition_snare_good",
+        id: "scheme_expedition_snare_good_success",
         label: "FNORD probably snare",
         actionId: "scheme",
         requirements:{snarelevel:3},
    effects:{},
    startdescription:"FNORD",
-   description:"FNORD",
+      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
         warmup: 5,
-        craftable: false
+        craftable: false,
+			effects:{snare:-1},
+		linked:[{id:"independent_scar",chance:100}]
     },
 								{
-        id: "scheme_expedition_snare_poor",
+        id: "scheme_expedition_snare_poor_success",
         label: "FNORD maybe snare",
         actionId: "scheme",
         requirements:{snarelevel:2},
    effects:{},
    startdescription:"FNORD",
-   description:"FNORD",
+      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
         warmup: 5,
-        craftable: false
+        craftable: false,
+		effects:{snare:-1},
+		linked:[{id:"independent_scar",chance:100}]
     },
 									{
-        id: "scheme_expedition_snare_rubbish",
+        id: "scheme_expedition_snare_rubbish_success",
         label: "FNORD ugh snare",
         actionId: "scheme",
         requirements:{snarelevel:1},
    effects:{},
    startdescription:"FNORD",
-   description:"FNORD",
+      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
         warmup: 5,
-        craftable: false
+        craftable: false,
+			effects:{snare:-1},
+		linked:[{id:"independent_scar",chance:100}]
     },
 										{
         id: "scheme_expedition_snare_failure",
         label: "FNORD ugh snare",
         actionId: "scheme",
       requirements:{snarelevel:1},
-   effects:{},
-   startdescription:"FNORD",
-   description:"FNORD",
+
+   startdescription:"FNORD snare failed s",
+   description:"FNORD snare failed d",
+   mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],
+   			effects:{snare:-1},
         warmup: 5,
         craftable: false
     },
 	
 					{
         id: "scheme_expedition_success",
-        label: "SCHEME SUCCESS",
+        label: "SCHEME SUCCESS FNORD",
         actionId: "scheme",
     requirements:{vault:1},
    effects:{vault:-1},
@@ -235,6 +240,61 @@ requirements:{vault:1},
         warmup: 60,
         craftable: false
     },
-]
+	
+	
+	{id:"independent_scar",
+label:"A Rival has been Scarred",
+startdescription:"There are limits to what the human body can sustain.",
+actionId:"scheme",
+linked:[{id:"independent_givescar_edge",chance:30},
+{id:"independent_givescar_knock",chance:50},
+{id:"independent_givescar_winter",chance:100}]
+},
+{id:"independent_givescar_edge",
+actionId:"scheme",
+label:"A Setback for a Rival",
+description:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_edge,mutationLevel:1,additive:true},
+{filterOnAspectId:mortal,mutateAspectId:edge,mutationLevel:2,additive:true}],
+linked:[{id:"independent_deathscar_edge",chance:100}]
+},
+{id:"independent_givescar_knock",
+label:"A Setback for a Rival",
+actionId:"scheme",
+description:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_knock,mutationLevel:1,additive:true},
+{filterOnAspectId:mortal,mutateAspectId:knock,mutationLevel:2,additive:true}],
+linked:[{id:"independent_deathscar_knock",chance:100}]
+},
+{id:"independent_givescar_winter",
+actionId:"scheme",
+label:"A Setback for a Rival",
+description:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_winter,mutationLevel:1,additive:true},
+{filterOnAspectId:mortal,mutateAspectId:winter,mutationLevel:2,additive:true}],
+linked:[{id:"independent_deathscar_winter",chance:100}]
+},
+{id:"independent_deathscar_edge",
+actionId:"scheme",
+label:"Death: a Defeat",
+requirements:{follower_scar_edge:3},
+description:"This one showed courage and endurance. In the end, that wasn't enough. [Your Rival acquired three Edge-Scars, and died.]",
+aspects:{killmortal:1}
+},
+{id:"independent_deathscar_knock",
+actionId:"scheme",
+label:"Death: an Opening",
+requirements:{follower_scar_knock:3},
+description:"To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Rival acquired three Knock-Scars, and died.]",
+aspects:{killmortal:1}
+},
+{id:"independent_deathscar_winter",
+actionId:"scheme",
+label:"Death: an Ending",
+requirements:{follower_scar_winter:3},
+description:"Snow falls softly. Sunset is a stain of light. [Your Rival acquired three Winter-Scars, and died.]",
+aspects:{killmortal:1}
+},
+
 ]
 }

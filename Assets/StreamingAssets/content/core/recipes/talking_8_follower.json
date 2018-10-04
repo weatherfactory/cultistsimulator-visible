@@ -665,7 +665,7 @@ effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
 {id:"A_follower_settrap_independent",
 actionId:"talk",
 label:"Create a Snare to delay or defeat a Rival",
-startdescription:"Rivals are cautious: they don't prowl the streets like Hunters. To defeat one, we must prepare a trap they may stumble into. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.].]",
+startdescription:"Rivals are cautious: they don't prowl the streets like Hunters. To defeat one, we must prepare a trap they may stumble into. [Edge, Forge, Moth or Winter are useful for creating Snares. Once created, a Snare can be used when an Independent makes an attempt on any Vault.]",
 requirements:{independent:1},
 alternativerecipes:[{id:"expel_independent",chance:100,additional:true,expulsion:{limit:1,filter:{independent:1}}}],
 linked:[{id:"L_set_trap_router",chance:100}]

@@ -591,11 +591,19 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                if (htEachRecipe[NoonConstants.KID] == null)
+                string rawOutput = string.Empty;
+                foreach (var v in htEachRecipe.Values)
+                    rawOutput = rawOutput + v + "||";
 
-                    LogProblem("Problem importing recipe with unknown id - " + e.Message);
+                if (htEachRecipe[NoonConstants.KID] == null)
+                {
+                 
+                    LogProblem("Problem importing recipe with unknown id - " + rawOutput + e.Message);
+                }
                 else
+                { 
                     LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
+                }
             }
 
             //REQUIREMENTS
