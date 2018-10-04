@@ -52,6 +52,7 @@ public class MenuScreenController : MonoBehaviour {
 
     bool canTakeInput;
     int sceneToLoad;
+	private string cultureContentLoaded = "none";	// Used to track which culture we have got loaded. If language changes on the Menu screen, we must re-import the content.
     VersionNumber currentVersion;
     CanvasGroupFader currentOverlay;
 
@@ -80,14 +81,11 @@ public class MenuScreenController : MonoBehaviour {
             NoonUtility.PerpetualEdition = true;
     }
 
-    void InitialiseServices() {
+    void InitialiseServices()
+	{
+		InitialiseContent();	// Moved content into it's own function, so it can happen again after language select if necessary
+
         var registry = new Registry();
-
-        var compendium = new Compendium();
-        registry.Register<ICompendium>(compendium);
-
-        var contentImporter = new ContentImporter();
-        contentImporter.PopulateCompendium(compendium);
 
         var metaInfo = new MetaInfo(NoonUtility.VersionNumber);
         registry.Register<MetaInfo>(metaInfo);
@@ -98,8 +96,23 @@ public class MenuScreenController : MonoBehaviour {
         saveGameManager = new GameSaveManager(new GameDataImporter(Registry.Retrieve<ICompendium>()), new GameDataExporter());
 
         currentVersion = metaInfo.VersionNumber;
-
     }
+
+	void InitialiseContent()
+	{
+		if (cultureContentLoaded.CompareTo(LanguageTable.targetCulture) != 0)
+		{
+			var registry = new Registry();
+
+			var compendium = new Compendium();
+			registry.Register<ICompendium>(compendium);
+
+			var contentImporter = new ContentImporter();
+			contentImporter.PopulateCompendium(compendium);
+
+			cultureContentLoaded = LanguageTable.targetCulture;
+		}
+	}
 
     void UpdateAndShowMenu() {
         bool hasSavegame = saveGameManager.DoesGameSaveExist();
@@ -197,9 +210,12 @@ public class MenuScreenController : MonoBehaviour {
 
 #region -- User Actions via Scene Buttons ------------------------
 
-    public void StartGame() {
+    public void StartGame()
+	{
         if (!canTakeInput)
             return;
+		
+		InitialiseContent();
 
         // Set the legacy to the first in the list; this should be the starting legacy
         CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
@@ -207,9 +223,12 @@ public class MenuScreenController : MonoBehaviour {
         LoadScene(SceneNumber.GameScene);
     }
 
-    public void ContinueGame() {
+    public void ContinueGame()
+	{
         if (!canTakeInput)
             return;
+		
+		InitialiseContent();
 
         if (saveGameManager.IsSavedGameActive()) {
             //back into the game!
