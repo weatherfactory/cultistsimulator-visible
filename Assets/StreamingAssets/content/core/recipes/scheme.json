@@ -150,7 +150,7 @@ requirements:{vault:1},
     },
 									{
         id: "scheme_expedition_snare_rubbish_success",
-        label: "FNORD ugh snare",
+        label: "FNORD snare whoa success",
         actionId: "scheme",
         requirements:{snarelevel:1},
    effects:{},
@@ -172,7 +172,8 @@ requirements:{vault:1},
    mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],
    			effects:{snare:-1},
         warmup: 5,
-        craftable: false
+        craftable: false,
+		linked:[{id:"scheme_expedition_success",chance:100}]
     },
 	
 					{
