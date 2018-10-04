@@ -1,12 +1,11 @@
  {"recipes": [
 	{
         id: "scheme_murderhunter",
-        label: "Someone is scheming to murder a Hunter",
+        label: "A scheme to murder a Hunter is afoot",
         actionId: "scheme",
     
    effects:{},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"A Rival intends to end a Hunter. This may be to my advantage... but it may also draw attention.",
         warmup: 60,
         craftable: false,
 		linked:[{id:"scheme_murderhunter_grab",chance:100}]
@@ -14,13 +13,11 @@
 	
 		{
         id: "scheme_murderhunter_grab",
-        label: "Someone is seeking prey...",
+        label: "A scheme to murder a Hunter is afoot",
         actionId: "scheme",
 		slots:[{id:"victim",label:"Victim",greedy:true,required:{hunter:1}}],
     
    effects:{},
-   startdescription:"FNORD",
-   description:"FNORD",
         warmup: 60,
         craftable: false,
 		linked:[{id:"scheme_murderhunter_success",chance:30},
@@ -34,8 +31,7 @@
         actionId: "scheme",
     aspects:{killhunter:1},
 	   effects:{notoriety:1},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"This may give me breathing space - but it may ultimately bring the Suppression Bureau to my door.",
         warmup:5,
         craftable: false
     },
@@ -47,8 +43,7 @@
         actionId: "scheme",
     
    effects:{notoriety:1},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"This may ultimately bring the Suppression Bureau to my door.",
         warmup: 5,
         craftable: false
     },
@@ -59,8 +54,7 @@
         actionId: "scheme",
     
    effects:{},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"Perhaps this was for the best.",
         warmup: 60,
         craftable: false
     },
@@ -78,13 +72,12 @@
 	
 				{
         id: "scheme_expedition_grab",
-        label: "GRAB",
+        label: "A Rival is Seeking an Advantage...",
         actionId: "scheme",
 		requirements:{vault:-1},
     	slots:[{id:"target",label:"Target",greedy:true,required:{vault:1}}],
    effects:{},
-   startdescription:"FNORD My Rival is looking for a place to ransack before me. [If they can't find a Vault, they'll give up, eventually.]",
-   description:"FNORD",
+   startdescription:"My Rival seeks tools and lore for their own ascension. [If they can't find a Vault to ransack, they'll give up, eventually.]",
         warmup: 60,
         craftable: false,
 		linked: [{chance:70,id:"scheme_expedition_grab"},
@@ -93,97 +86,78 @@
 	
 					{
         id: "scheme_expedition_prep",
-        label: "prep",
+        label: "An Opportunity to Use a Snare",
         actionId: "scheme",
     slots:[{id:"snare",label:"Ambush",required:{snare:1}}],
 requirements:{vault:1},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"If I've prepared a Snare, I can try to set an ambush for my Rival, to defeat their Expedition and even injure them...",
         warmup: 60,
         craftable: false,
-		linked:[{chance:90,id:"scheme_expedition_snare_great_success"},
-		{chance:70,id:"scheme_expedition_snare_good_success"},
-		{chance:30,id:"scheme_expedition_snare_poor_success"},
-		{chance:10,id:"scheme_expedition_snare_rubbish_success"},
-			{chance:100,id:"scheme_expedition_snare_failure"},
-				{chance:70,id:"scheme_expedition_success"},
-				{chance:100,id:"scheme_expedition_failure"}],
+		linked:[{chance:100,id:"scheme_expedition_snare_great"},
+		{chance:100,id:"scheme_expedition_snare_good"},
+		{chance:100,id:"scheme_expedition_snare_poor"},
+		{chance:100,id:"scheme_expedition_snare_rubbish"},
+		{chance:70,id:"scheme_expedition_success"},
+		{chance:100,id:"scheme_expedition_failure"}],
     },
+	{id:"scheme_expedition_snare_great",
+	actionId:"scheme",
+	requirements:{snarelevel:4},
+	alternativerecipes:[{id:"scheme_expedition_snare_success",chance:90},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+		{id:"scheme_expedition_snare_good",
+	actionId:"scheme",
+	requirements:{snarelevel:3},
+	alternativerecipes:[{id:"scheme_expedition_snare_success",chance:70},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+		{id:"scheme_expedition_snare_poor",
+	actionId:"scheme",
+	requirements:{snarelevel:2},
+	alternativerecipes:[{id:"scheme_expedition_snare_success",chance:30},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+		{id:"scheme_expedition_snare_rubbish",
+	actionId:"scheme",
+	requirements:{snarelevel:1},
+	alternativerecipes:[{id:"scheme_expedition_snare_success",chance:10},
+	{id:"scheme_expedition_snare_failure",chance:100}]
+	},
+	
 	{
-        id: "scheme_expedition_snare_great_success",
-        label: "FNORD v likely snare",
+        id: "scheme_expedition_snare_success",
+        label: "Our Snare has succeeded!",
         actionId: "scheme",
-    requirements:{snarelevel:4},
-   effects:{},
-   startdescription:"FNORD",
+		   			effects:{snare:-1},
+   startdescription:"My Rival has fallen into our trap! They'll try to retreat to lick their wounds.",
       mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
         warmup: 5,
         craftable: false,
-			effects:{snare:-1},
 		linked:[{id:"independent_scar",chance:100}]
     },
-							{
-        id: "scheme_expedition_snare_good_success",
-        label: "FNORD probably snare",
-        actionId: "scheme",
-        requirements:{snarelevel:3},
-   effects:{},
-   startdescription:"FNORD",
-      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
-        warmup: 5,
-        craftable: false,
-			effects:{snare:-1},
-		linked:[{id:"independent_scar",chance:100}]
-    },
-								{
-        id: "scheme_expedition_snare_poor_success",
-        label: "FNORD maybe snare",
-        actionId: "scheme",
-        requirements:{snarelevel:2},
-   effects:{},
-   startdescription:"FNORD",
-      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
-        warmup: 5,
-        craftable: false,
-		effects:{snare:-1},
-		linked:[{id:"independent_scar",chance:100}]
-    },
-									{
-        id: "scheme_expedition_snare_rubbish_success",
-        label: "FNORD snare whoa success",
-        actionId: "scheme",
-        requirements:{snarelevel:1},
-   effects:{},
-   startdescription:"FNORD",
-      mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],	
-        warmup: 5,
-        craftable: false,
-			effects:{snare:-1},
-		linked:[{id:"independent_scar",chance:100}]
-    },
-										{
-        id: "scheme_expedition_snare_failure",
-        label: "FNORD ugh snare",
-        actionId: "scheme",
-      requirements:{snarelevel:1},
 
-   startdescription:"FNORD snare failed s",
-   description:"FNORD snare failed d",
+{
+        id: "scheme_expedition_snare_failure",
+        label: "Our Snare has failed!",
+        actionId: "scheme",
+
+   startdescription:"My Rival has evaded our trap...",
    mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additive:true}],
    			effects:{snare:-1},
         warmup: 5,
         craftable: false,
-		linked:[{id:"scheme_expedition_success",chance:100}]
+		linked:[{id:"scheme_expedition_success",chance:70},
+		{id:"scheme_expedition_failure",chance:100},]
     },
 	
 					{
         id: "scheme_expedition_success",
-        label: "SCHEME SUCCESS FNORD",
+        label: "My Rival has ransacked this place...",
         actionId: "scheme",
     requirements:{vault:1},
    effects:{vault:-1},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"Whatever they sought here, they've found it.",
         warmup: 5,
         craftable: false,
 		linked:[{id:"scheme_promotion",chance:100}]
@@ -195,15 +169,11 @@ requirements:{vault:1},
         actionId: "scheme",
       requirements:{vault:1},
    effects:{},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"Whatever they sought here, they haven't found it. They've abandoned their expedition... for now.",
         warmup: 5,
         craftable: false
     },
-	
-	
-	
-				{
+	{
         id: "scheme_activities",
         label: "Someone is just generally doing mischief",
         actionId: "scheme",
@@ -218,20 +188,19 @@ requirements:{vault:1},
 		
 				{
         id: "scheme_promotion",
-        label: "My rival has gained power.",
+        label: "My Rival has advanced their cause.",
         actionId: "scheme",
     alternativerecipes:[{chance:100,id:"scheme_promotion_ascension"}],
    effects:{mystique:1},
    aspects:{rival_promotion:1},
    startdescription:"FNORD",
-   description:"FNORD",
         warmup: 60,
         craftable: false
     },
 	
 					{
         id: "scheme_promotion_ascension",
-        label: "My rival strives to pass the Tricuspid Gate, and become something greater..",
+        label: "My rival strives to pass the Tricuspid Gate, and become something greater.",
         actionId: "scheme",
     requirements:{exalted:1},
    effects:{mystique:1},
@@ -245,7 +214,7 @@ requirements:{vault:1},
 	
 	{id:"independent_scar",
 label:"A Rival has been Scarred",
-startdescription:"There are limits to what the human body can sustain.",
+startdescription:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
 actionId:"scheme",
 linked:[{id:"independent_givescar_edge",chance:30},
 {id:"independent_givescar_knock",chance:50},
@@ -254,15 +223,14 @@ linked:[{id:"independent_givescar_edge",chance:30},
 {id:"independent_givescar_edge",
 actionId:"scheme",
 label:"A Setback for a Rival",
-description:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_edge,mutationLevel:1,additive:true},
 {filterOnAspectId:mortal,mutateAspectId:edge,mutationLevel:2,additive:true}],
 linked:[{id:"independent_deathscar_edge",chance:100}]
 },
+
 {id:"independent_givescar_knock",
 label:"A Setback for a Rival",
 actionId:"scheme",
-description:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_knock,mutationLevel:1,additive:true},
 {filterOnAspectId:mortal,mutateAspectId:knock,mutationLevel:2,additive:true}],
 linked:[{id:"independent_deathscar_knock",chance:100}]
@@ -270,7 +238,6 @@ linked:[{id:"independent_deathscar_knock",chance:100}]
 {id:"independent_givescar_winter",
 actionId:"scheme",
 label:"A Setback for a Rival",
-description:"My Rival has met with a misfortune. They have been scarred by their defeat; they will be angry with me. [Three Scars of the same type will kill any mortal.]",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_scar_winter,mutationLevel:1,additive:true},
 {filterOnAspectId:mortal,mutateAspectId:winter,mutationLevel:2,additive:true}],
 linked:[{id:"independent_deathscar_winter",chance:100}]
