@@ -8,7 +8,7 @@
             description: "Someone who's lost all sense of proportion.",
 			animFrames: 1,
 			icon:"generic_b",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+			xtriggers: {rival_promotion:generic_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
         },
 								 {
         id: "auclair_r",
@@ -17,7 +17,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
+			xtriggers: {rival_promotion:auclair_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
 			uniquenessgroup:"uqauclair"
         },
 				 {
@@ -27,7 +27,7 @@
             {mortal: 1,independent:1,rivalmarks:1,suspicious:1},
             description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one knows seems to know exactly what she is now.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
+						xtriggers: {rival_promotion:cat_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
 			uniquenessgroup:"uqcat"
         },
 
@@ -38,7 +38,7 @@
             {mortal: 1,independent:1,rivalmarks:1,suspicious:1},
             description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
+						xtriggers: {rival_promotion:clifton_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
 			uniquenessgroup:"uqclifton"
         },
 	
@@ -49,7 +49,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "It's difficult to dislike Clovette, even when one knows what she's done.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
+			xtriggers: {rival_promotion:clovette_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
 			uniquenessgroup:"uqclovette"
         },
 		
@@ -60,7 +60,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Dorothy will not cease. She will never cease. She has vowed as much.",
 			animFrames: 1,
-				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
+				xtriggers: {rival_promotion:dorothy_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
 			uniquenessgroup:"uqdorothy"
         },
 								 {
@@ -70,7 +70,7 @@
             {mortal: 1,independent:1,rivalmarks:1,suspicious:1},
             description: "Elridge's shoes are often spotted with blood.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
+						xtriggers: {rival_promotion:elridge_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
         },
 				 {
         id: "enid_r",
@@ -78,7 +78,7 @@
             aspects:
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Enid always sees her enemies coming. All the time.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
+			xtriggers: {rival_promotion:enid_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
 			uniquenessgroup:"uqenid"
         },
 	
@@ -90,7 +90,7 @@
             description: "Laidlaw's schemes are intricate as fern-shadow.",
 			animFrames: 1,
 			xtriggers: 
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
+						xtriggers: {rival_promotion:laidlaw_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
 			uniquenessgroup:"uqlaidlaw"
 						
         },
@@ -101,7 +101,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1,},
             description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
+			xtriggers: {rival_promotion:leo_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
 			uniquenessgroup:"uqleo"
         },
 				 {
@@ -111,7 +111,7 @@
             aspects:{mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
+						xtriggers: {rival_promotion:neville_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
 			uniquenessgroup:"uqneville"
         },
 				
@@ -122,7 +122,7 @@
             {mortal: 1,independent:1,rivalmarks:1,suspicious:1},
             description: "Porter has begun to collect names.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
+						xtriggers: {rival_promotion:porter_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
 			uniquenessgroup:"uqporter"
         },
 						 {
@@ -132,7 +132,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Renira likes to convert admirers into worshippers.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
+						xtriggers: {rival_promotion:renira_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
 			uniquenessgroup:"uqrenira"
         },
 							 {
@@ -142,7 +142,7 @@
             {mortal:1,independent:1,rivalmarks:1,suspicious:1},
             description: "Rose has long since ceased to fear her enemies.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
+			xtriggers: {rival_promotion:rose_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
 			uniquenessgroup:"uqrose"
         },
 						 {
@@ -152,7 +152,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Saliba does not tolerate boredom.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
+						xtriggers: {rival_promotion:saliba_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
 			uniquenessgroup:"uqsaliba"
         },
 						 {
@@ -162,7 +162,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Slee is always hungry for resources to pursue his theories.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
+						xtriggers: {rival_promotion:slee_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
 			uniquenessgroup:"uqslee"
         },
 						 {
@@ -172,7 +172,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
+						xtriggers: {rival_promotion:sylvia_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
 			uniquenessgroup:"uqsylvia"
         },
 				 {
@@ -182,7 +182,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire..",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
+						xtriggers: {rival_promotion:tristan_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
 			uniquenessgroup:"uqtristan"
         },
 			
@@ -193,7 +193,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
+						xtriggers: {rival_promotion:valciane_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
 			uniquenessgroup:"uqvalciane"
         },
 			 {
@@ -203,7 +203,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1,},
             description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
+						xtriggers: {rival_promotion:valciane_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
 			uniquenessgroup:"uqvictor"
         },
 		
@@ -214,7 +214,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Violet has found new hobbies.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
+						xtriggers: {rival_promotion:violet_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
 			uniquenessgroup:"uqviolet"
         },
 						 {
@@ -224,7 +224,7 @@
             {mortal:1,independent:1,rivalmarks:1, suspicious:1},
             description: "Ysabet waits where she cannot be seen.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
+			xtriggers: {rival_promotion:ysabet_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
 			uniquenessgroup:"uqysabet",
         },
 		
@@ -236,7 +236,7 @@
             description: "Someone who's lost all sense of proportion.",
 			animFrames: 1,
 			icon:"generic_b",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+			xtriggers: {rival_promotion:generic_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
         },
 								 {
         id: "auclair_r_c",
@@ -245,7 +245,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Auclair enjoys chess, now more than ever. The black, the white.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
+			xtriggers: {rival_promotion:auclair_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
 			uniquenessgroup:"uqauclair"
         },
 				 {
@@ -255,7 +255,7 @@
             {mortal: 1,independent:1, disciple:1,rivalmarks:2,suspicious:1},
             description: "'Cat Caro', she calls herself. Once she was a fortune teller. No-one knows seems to know exactly what she is now.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
+						xtriggers: {rival_promotion:cat_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
 			uniquenessgroup:"uqcat"
         },
 
@@ -266,7 +266,7 @@
             {mortal: 1,independent:1, disciple:1,rivalmarks:2,suspicious:1},
             description: "Clifton likes to be addressed as 'your Holiness'. When he is not so addressed, there may be a scene.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
+						xtriggers: {rival_promotion:clifton_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
 			uniquenessgroup:"uqclifton"
         },
 	
@@ -277,7 +277,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "It's difficult to dislike Clovette, even when one knows what she's done.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
+			xtriggers: {rival_promotion:clifton_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
 			uniquenessgroup:"uqclovette"
         },
 		
@@ -288,7 +288,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Dorothy will not cease. She will never cease. She has vowed as much.",
 			animFrames: 1,
-				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
+				xtriggers: {rival_promotion:dorothy_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
 			uniquenessgroup:"uqdorothy"
         },
 								 {
@@ -298,7 +298,7 @@
             {mortal: 1,independent:1, disciple:1,rivalmarks:2,suspicious:1},
             description: "Elridge's shoes are often spotted with blood.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
+						xtriggers: {rival_promotion:elridge_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
         },
 				 {
         id: "enid_r_c",
@@ -306,7 +306,7 @@
             aspects:
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Enid always sees her enemies coming. All the time.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
+			xtriggers: {rival_promotion:enid_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
 			uniquenessgroup:"uqenid"
         },
 	
@@ -318,7 +318,7 @@
             description: "Laidlaw's schemes are intricate as fern-shadow.",
 			animFrames: 1,
 			xtriggers: 
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
+						xtriggers: {rival_promotion:laidlaw_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
 			uniquenessgroup:"uqlaidlaw"
 						
         },
@@ -329,7 +329,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1,},
             description: "Leo has chosen his cause, and he will do what is necessary to preserve it.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
+			xtriggers: {rival_promotion:leo_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
 			uniquenessgroup:"uqleo"
         },
 				 {
@@ -339,7 +339,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Neville knows this can't last. But while it does, by God, he will open whatever doors present themselves.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
+						xtriggers: {rival_promotion:neville_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
 			uniquenessgroup:"uqneville"
         },
 				
@@ -350,7 +350,7 @@
             {mortal: 1,independent:1, disciple:1,rivalmarks:2,suspicious:1},
             description: "Porter has begun to collect names.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
+						xtriggers: {rival_promotion:porter_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
 			uniquenessgroup:"uqporter"
         },
 						 {
@@ -360,7 +360,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Renira likes to convert admirers into worshippers.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
+						xtriggers: {rival_promotion:renira_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
 			uniquenessgroup:"uqrenira"
         },
 							 {
@@ -370,7 +370,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2,suspicious:1},
             description: "Rose has long since ceased to fear her enemies.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
+			xtriggers: {rival_promotion:rose_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
 			uniquenessgroup:"uqrose"
         },
 						 {
@@ -380,7 +380,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Saliba does not tolerate boredom.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
+						xtriggers: {rival_promotion:saliba_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
 			uniquenessgroup:"uqsaliba"
         },
 						 {
@@ -390,7 +390,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Slee is always hungry for resources to pursue his theories.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
+						xtriggers: {rival_promotion:slee_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
 			uniquenessgroup:"uqslee"
         },
 						 {
@@ -400,7 +400,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Sylvia's agenda is not clear. One suspects it is not clear even to Sylvia.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
+						xtriggers: {rival_promotion:sylvia_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
 			uniquenessgroup:"uqsylvia"
         },
 				 {
@@ -410,7 +410,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Tristan is forging a little kingdom. When fire is necessary, he will use fire..",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
+						xtriggers: {rival_promotion:tristan_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
 			uniquenessgroup:"uqtristan"
         },
 			
@@ -421,7 +421,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Valciane attends to her opposition with the remorseless brio of a youth smashing bottles.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
+						xtriggers: {rival_promotion:valciane_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
 			uniquenessgroup:"uqvalciane"
         },
 			 {
@@ -431,7 +431,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1,},
             description: "Victor is ready for what may come. All his knives are keen as new soldiers.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
+						xtriggers: {rival_promotion:victor_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
 			uniquenessgroup:"uqvictor"
         },
 		
@@ -442,7 +442,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Violet has found new hobbies.",
 			animFrames: 1,
-						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
+						xtriggers: {rival_promotion:violet_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
 			uniquenessgroup:"uqviolet"
         },
 						 {
@@ -452,7 +452,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:2, suspicious:1},
             description: "Ysabet waits where she cannot be seen.",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
+			xtriggers: {rival_promotion:ysabet_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
 			uniquenessgroup:"uqysabet",
         },
 		
