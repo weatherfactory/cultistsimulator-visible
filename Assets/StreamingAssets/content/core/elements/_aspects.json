@@ -296,6 +296,12 @@
 		isAspect: true,
 		description: "My ultimate aim. There will be a price."
 		},
+								{id: "rivalmarks",
+		label: "A Rival's Ascension",
+		isAspect: true,
+		description: "Opportunities to ascend to the House of the Sun are rare. If another achieves it, I may miss my chance. [If this reaches seven, your Rival may win the game instead of you.]"
+		},
+		
 						{id: "changemarks",
 		label: "The Forms of Change",
 		isAspect: true,
@@ -646,6 +652,13 @@
             id: "promotionto_d_winter",
             label: "Exaltation: Winter",
 			description: "These are the true mysteries of our veneration.",
+            isAspect: true,
+			comments: "Recipe aspect",
+			noartneeded: true
+        },
+							 {
+            id: "rival_promotion",
+            label: "Promotion: Rival",
             isAspect: true,
 			comments: "Recipe aspect",
 			noartneeded: true
@@ -1129,20 +1142,20 @@
 		},
 		{id: "follower_scar_edge",
 		label:"Scar: Brutal Experience",
-		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a follower.]",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a mortal.]",
 		isAspect:true,
 		{xtriggers:{killmortal:corpse_scar}}
 		},
 		
 				{id: "follower_scar_knock",
 		label:"Scar: Half-Healed Fistula",
-		description:"Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a follower.]",
+		description:"Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a mortal.]",
 		isAspect:true,
 		{xtriggers:{killmortal:corpse_scar}}
 		},
 				{id: "follower_scar_winter",
 		label:"Scar: Old Wound",
-		description:"Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a follower.]",
+		description:"Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a mortal.]",
 		isAspect:true,
 		{xtriggers:{killmortal:corpse_scar}}
 		},
@@ -1198,6 +1211,10 @@
 		description:"Sometimes she sits in the second row, seeking new talent for her peculiar establishment. Those she employs are rarely seen about town.",
 		isAspect:true
 		},
+		{id:"snarelevel",
+		label:"Snare Effectiveness",
+		description:"Some snares are easy to escape. Some are webs of steel.",
+		isAspect:true}
 		
 ]
 }

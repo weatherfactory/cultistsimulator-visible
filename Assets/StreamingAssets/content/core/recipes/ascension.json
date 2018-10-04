@@ -518,6 +518,7 @@
 		effects: {},
 		warmup: 10,
 		linked: [
+		{id:"L_ascension_rival",chance:100},
 		{id:"L_independent",chance:100},
 		{id:"L_rebellion_activate",chance:70},
 		{id:"L_rebellion_noactivation",chance:100},
@@ -539,10 +540,22 @@
 			requirements:{independent:1},
 			startdescription:"Here is another who would ascend before me. [Independent occultists will try to monopolise the attention of the Hours. They may also conduct other schemes, whether you like it or not.]",
 			description:"FNORD that's all for now.",
-			alternativerecipes:[{id:"scheme_murderhunter",chance:30, additional:true,expulsion:{limit:1,filter:{independent:1}}},
+			alternativerecipes:[
+			{id:"scheme_murderhunter",chance:30, additional:true,expulsion:{limit:1,filter:{independent:1}}},
+			{id:"scheme_expedition_grab",chance:30, additional:true,expulsion:{limit:1,filter:{independent:1}}},
 			{id:"scheme_activities",chance:100}]
 			warmup:30
 			},
+			
+			{id:"L_ascension_rival",
+			actionId:"ambition",
+			requirements:{rivalmarks:7},
+			label:"A Pretender Victorious",
+			startdescription:"My Rival's achievements eclipse my own. Now they will ascend to a place in the House of the Sun, while here, in the world, I will remain alone with my frustrations.",
+			ending:"rivalascension",
+			signalEndingFlavour: Melancholy,
+			warmup:60
+			}
 		
 		
 		{id:"L_rebellion_activate",

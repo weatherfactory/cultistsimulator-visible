@@ -1,14 +1,20 @@
  {"recipes": [
- {id: "_testexpulsion",
-label: "Testing expulsion",
-actionId: "work",
-requirements:{skillhealtha:1,health:1},
-startdescription: "test variation on work health with expulsion",
-description: "end test variation on work health with expulsion",
-		alternativerecipes:[{id:"_testexpelled",chance:100,additional:true, expulsion:{limit:1,filter:{health:1}}}],
-warmup: 1,
-craftable:false
-},
+{id:"debugsnare",
+actionId:"x",
+label:"Create Great Snares",
+		
+		effects:{snare:1},
+		warmup:1,
+		linked:[{id:"debugsnareaddmutation",chance:100}]
+		},
+		{id:"debugsnareaddmutation",
+actionId:"x",
+label:"Create Great Snares+",
+		
+		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
+		warmup:1
+		},
+
 
 {id:"_testexpelled",
 actionId:"testexpelled",
