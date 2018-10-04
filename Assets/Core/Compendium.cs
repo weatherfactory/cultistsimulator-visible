@@ -275,6 +275,13 @@ public class Compendium : ICompendium
                 " that I could have done <i>everything</i> I should not. [Many Hunters have specific weaknesses. Perhaps you can use those weaknesses to stop them before they bring you to trial.]", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_ARREST"
                 );
 
+        if (endingFlag == "rivalascension")
+            return new Ending(endingFlag, "NOT LONG ENOUGH",
+                "Perhaps I waited too long. Or perhaps this victory was never meant for me. Another has ascended in my place. Where they have risen, " +
+                "I will diminish, until I am only a memory. Perhaps another will avenge my defeat. ['Heaven hath no rage like love to hatred turned.' Your one-time ally turned against you, and surpassed you.]", "lionsmith", EndingFlavour.Melancholy, "DramaticLightEvil", "A_RIVAL_ASCENSION"
+            );
+
+
         if (endingFlag == "workvictory")
             return new Ending(endingFlag, "EVENING FALLS",
                 "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is " +

@@ -88,6 +88,11 @@ alternativerecipes:[
 {id:"A_talktofollower_locationstreetsstrange_lustenlightenment",chance:100},
 {id:"A_talktofollower_locationauctionhouse_lustpower",chance:100},
 
+{id:"A_talktofollower_locationcabaret_notinterested",chance:100},
+{id:"A_talktofollower_locationstreetsstrange_notinterested",chance:100},
+{id:"A_talktofollower_locationauctionhouse_notinterested",chance:100},
+
+
 {id:"followeraction_repairtoollanternbcracked",chance:100},
 {id:"followeraction_repairtoollanterndcracked",chance:100},
 {id:"followeraction_repairtoollanternfcracked",chance:100},
@@ -578,6 +583,32 @@ linked:[{id:"L_talk_roseopportunity",chance:100}]
 },
 
 
+{id:"A_talktofollower_locationcabaret_notinterested",
+label:"Invite them to an evening at the Ecdysis Club",
+actionId:"talk",
+requirements:{romanticinterest:-1,locationcabaret:1},
+startdescription:"'I... don't think that's for me.'",
+description:"[Your follower has no especial interest in this place.]"
+},
+
+{id:"A_talktofollower_locationauctionhouse_notinterested",
+label:"Invite them to an evening at Oriflamme's",
+actionId:"talk",
+requirements:{romanticinterest:-1,locationauctionhouse:1},
+startdescription:"'I... don't think that's for me.'",
+description:"[Your follower has no especial interest in this place.]"
+},
+
+{id:"A_talktofollower_locationstreetsstrange_notinterested",
+label:"Invite them to take a walk in an uncanny place.",
+actionId:"talk",
+requirements:{romanticinterest:-1,locationstreetsstrange:1},
+startdescription:"'I... don't think that's for me.'",
+description:"[Your follower has no especial interest in this place.]"
+},
+
+
+
 {id:"followeraction_repairtoollanternbcracked",
 label:"Repair a Cracked Noonstone",
 actionId: "talk",
@@ -713,8 +744,8 @@ linked:[{id:"L_settrap_highedge",chance:100},
 
 {id:"L_createsnare_great",
 actionId:"talk",
-label:"A Lethal Snare",
-		description:"My follower has set a lethally cunning ambuscade - one that will almost certainly succeed.",
+label:"A Perilous Snare",
+		description:"My follower has set a perilously cunning ambuscade - one that will almost certainly succeed.",
 		mutations:[{filterOnAspectId:snare,mutateAspectId:snarelevel,mutationLevel:3,additive:true}],
 		warmup:30
 		},
