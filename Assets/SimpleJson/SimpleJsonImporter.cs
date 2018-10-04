@@ -95,7 +95,7 @@ public class SimpleJsonImporter {
 
 			if(!skipThisChar) {
 				// read the char into the current key or the value
-				if(isReading == 1 && ignoreCharsKey.IndexOf(c)<0) key = key + c;
+				if(isReading == 1 && ignoreCharsKey.IndexOf(c)<0) key = key + (caseInsensitive ? char.ToLower(c) : c);
 				if(isReading == 2) value = value + c;
 			}
 		}

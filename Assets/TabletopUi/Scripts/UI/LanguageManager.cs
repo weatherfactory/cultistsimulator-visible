@@ -5,6 +5,7 @@ using UnityEngine;
 // Manager for global language settings
 //
 
+
 [System.Serializable]
 public class FontStyle
 {
@@ -17,6 +18,8 @@ public class FontStyle
 
 public class LanguageManager : MonoBehaviour
 {
+	private const string CULTURE="Culture";
+
 	public enum eLanguage
 	{
 		en,
@@ -44,8 +47,17 @@ public class LanguageManager : MonoBehaviour
         {
             if (_instance == null)
 			{
+				// Removed - doesn't work unless Awake has been called anyway.
+				/*
+				string defaultCulture = "en";
+				if (PlayerPrefs.HasKey(CULTURE)) 
+				{
+					defaultCulture = PlayerPrefs.GetString(CULTURE);
+				}
+
                 _instance = GameObject.FindObjectOfType<LanguageManager>();
-				LanguageTable.LoadCulture( "en" );	// Initial load
+				LanguageTable.LoadCulture( defaultCulture );	// Initial load
+				*/
 			}
             return _instance;
         }
@@ -59,12 +71,24 @@ public class LanguageManager : MonoBehaviour
 		}
 		_instance = this;
 		DontDestroyOnLoad(this.gameObject);
-		LanguageTable.LoadCulture( "en" );	// Initial load
+
+		string defaultCulture = "en";
+		if (PlayerPrefs.HasKey(CULTURE)) 
+		{
+			defaultCulture = PlayerPrefs.GetString(CULTURE);
+		}
+		LanguageTable.LoadCulture( defaultCulture );	// Initial load
+
 		FixFontStyleSlots();
 
 		// force invariant culture to fix Linux save file issues
 		System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
+        // inform systems and components that the language has been changed (to catch UI that was initialised before this Awake call).
+        LanguageChangeHasOccurred();
 	}
+
+
 
 	private void FixFontStyleSlots() // Naff way to initialise font styles so they'll readable in the Unity editor
 	{
@@ -89,6 +113,8 @@ public class LanguageManager : MonoBehaviour
     // Pass standard language codes.
     public void SetLanguage(string lang)
     {
+		PlayerPrefs.SetString( CULTURE, lang );
+
         LanguageTable.LoadCulture( lang );
 
         // inform systems and components that the language has been changed.

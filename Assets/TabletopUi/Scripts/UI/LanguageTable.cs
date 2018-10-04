@@ -49,7 +49,7 @@ public class LanguageTable : MonoBehaviour
 	{
 		// The standard string.Split(',') does not correctly handle commas inside quotes,
 		// so I've made a bespoke function (courtesy of StackOverflow for the regex because OMG NO) 
-		Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)");
+		Regex csvSplit = new Regex("(?:^|,)(\"(?:([^\"]|\"\")*)*\"|[^,]*)");
 		List<string> list = new List<string>();
 		string curr = null;
 		foreach (Match match in csvSplit.Matches(input))

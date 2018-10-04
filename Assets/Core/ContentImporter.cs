@@ -122,26 +122,126 @@ public class ContentImporter
             NoonUtility.Log("Can't find any " + contentOfType + " to import as content");
 
         ArrayList contentItemArrayList = new ArrayList();
+		ArrayList originalArrayList = new ArrayList();
+        ArrayList localisedArrayList = new ArrayList();
         foreach (var contentFile in contentFiles)
         {
             string json = File.ReadAllText(contentFile);
-
-
             try
             {
-                contentItemArrayList.AddRange(SimpleJsonImporter.Import(json).GetArrayList(contentOfType));
+                originalArrayList = SimpleJsonImporter.Import(json).GetArrayList(contentOfType);
             }
             catch (Exception e)
             {
                 NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
                 throw;
             }
+
+			// Now look for localised language equivalent of the same file and parse that
+			string locFolder = "core_" + LanguageTable.targetCulture;
+			string locFile = contentFile;
+			locFile = locFile.Replace( "core", locFolder );
+			if (File.Exists(locFile))	// If no file exists, no localisation happens
+			{
+				json = File.ReadAllText(locFile);
+				if (json.Length > 0)
+				{
+					try
+					{
+						localisedArrayList = SimpleJsonImporter.Import(json,true).GetArrayList(contentOfType);
+					}
+					catch (Exception e)
+					{
+						NoonUtility.Log("This file broke: " + contentFile + " with error " + e.Message);
+						throw;
+					}
+
+					// We now have two sets of data which SHOULD match pair for pair - english and translated.
+					// Traverse the dataset copying selected fields into the core data. Add new fields here if they need translating.
+					string[] fieldsToTranslate = { "label", "description", "startdescription" };
+					CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate );
+				}
+			}
+
+			contentItemArrayList.AddRange( originalArrayList );
         }
         return contentItemArrayList;
 
 
     
     }
+
+	private void CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate )
+	{
+		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
+		
+		// First : Validation!
+		if (dest.Count != src.Count)
+		{
+			Debug.LogWarning("JSON original and translated don't match!");
+			return;
+		}
+
+		// Next
+		for (int i=0; i<dest.Count; i++)
+        {
+			Debug.Assert(src[i].GetType()==dest[i].GetType(), "Type mismatch in JSON original vs. translated");
+
+			if (dest[i].GetType()==typeof(ArrayList))
+			{
+				CopyFields( dest[i] as ArrayList, src[i] as ArrayList, fieldsToTranslate );
+			}
+			else if (dest[i].GetType()==typeof(Hashtable))
+			{
+				CopyFields( dest[i] as Hashtable, src[i] as Hashtable, fieldsToTranslate );
+			}
+		}
+	}
+
+	private void CopyFields( Hashtable dest, Hashtable src, string[] fieldsToTranslate )
+	{
+		// Copy localised language feilds from one dataset to the other
+		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
+		
+		// First : Validation!
+		if (dest.Keys.Count != src.Keys.Count)
+		{
+			Debug.LogWarning("JSON original and translated don't match!");
+			return;
+		}
+
+		// Prep array lists so we can iterate in sync
+		ArrayList destList = new ArrayList(dest.Values);
+		ArrayList srcList = new ArrayList(src.Values);
+
+		// Check for our fields of interest
+		for (int j=0; j<fieldsToTranslate.Length; j++)
+		{
+			if (dest.ContainsKey(fieldsToTranslate[j]))
+			{
+				dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
+			}
+		}
+
+		// Now recurse into any nested lists
+		for (int i=0; i<destList.Count; i++)
+        {
+
+			/*
+			if (dest.Keys. GetType()==typeof(ArrayList))
+			{
+				Debug.Assert(src[i].GetType()==dest[i].GetType(), "Type mismatch in JSON original vs. translated");
+				// Recurse
+				CopyFields( dest[i] as ArrayList, src[i] as ArrayList, fieldsToTranslate );
+			}
+			else if (dest[i].GetType()==typeof(Hashtable))
+			{
+				//((Hashtable)dest[i]).
+			}
+			*/
+		}
+	}
+
 
     public void ImportElements()
     {
@@ -933,6 +1033,10 @@ foreach(var d in _compendium.GetAllDeckSpecs())
             NoonUtility.Log(p.Description);
 
     }
+
+	private void OnLanguageChanged()
+	{
+	}
 
     private void CountWords()
     {

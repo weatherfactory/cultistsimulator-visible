@@ -36,6 +36,9 @@ public class OptionsPanel : MonoBehaviour {
 
     [SerializeField] private RestartButton restartButton;
 
+    [SerializeField] private GameObject manageSavesWindow;
+    [SerializeField] private GameObject optionsWindow;
+
     [Header("Settings")]
     [Tooltip("Music volume goes from 0 to 1")]
     public float musicVolMax = 0.25f;
@@ -81,7 +84,8 @@ public class OptionsPanel : MonoBehaviour {
     //you shoulda seen the version where it was set with an editor tickbox and overwriting the prefab was a severity 1 error).
     private bool _isInGame = true;
 
-    public void InitPreferences( SpeedController spdctrl,bool isInGame) {
+    public void InitPreferences( SpeedController spdctrl,bool isInGame)
+	{	
 		windowGO.SetActive(false);
         _isInGame = isInGame;
 
@@ -168,6 +172,11 @@ public class OptionsPanel : MonoBehaviour {
         NoonUtility.WormWar(value);
     }
 
+    private void OnEnable()
+    {
+        RefreshOptionsText();
+    }
+
 	public bool GetVisibility()
 	{
 		return windowGO.activeSelf;
@@ -240,6 +249,12 @@ public class OptionsPanel : MonoBehaviour {
     public void BrowseFiles()
 	{
         OpenInFileBrowser.Open( NoonUtility.GetGameSaveLocation() );
+    }
+
+    public void ManageSaves( bool open )
+	{
+		this.gameObject.SetActive( !open );
+		manageSavesWindow.SetActive( open );  
     }
 
 	public void SaveErrorContinue()
