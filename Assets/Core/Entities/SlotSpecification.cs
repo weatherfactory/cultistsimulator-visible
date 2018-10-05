@@ -55,7 +55,7 @@ public class SlotSpecification
     {
         var spec=new SlotSpecification(PRIMARY_SLOT);
         spec.Label = "";
-        spec.Description = "'It is the empty space which makes the bowl useful.' - Lao Tzu. [Drop any card here.]";
+        spec.Description = LanguageTable.Get("UI_EMPTYSPACE");
         return spec;
     }
 

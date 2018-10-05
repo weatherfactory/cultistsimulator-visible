@@ -80,7 +80,7 @@ public class GogGalaxyManager : MonoBehaviour
         }
         catch (GalaxyInstance.Error error)
         {
-            Debug.LogError("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
+            Debug.LogWarning("Failed to initialize GOG Galaxy: Error = " + error.ToString(), this);
             return;
         }
 

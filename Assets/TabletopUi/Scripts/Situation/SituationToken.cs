@@ -169,7 +169,8 @@ namespace Assets.CS.TabletopUI {
             countdownCanvas.gameObject.SetActive(show);
         }
 
-        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour) {
+        public void DisplayTimeRemaining(float duration, float timeRemaining, EndingFlavour signalEndingFlavour)
+		{
             SetTimerVisibility(true);
 
             Color barColor = UIStyle.GetColorForCountdownBar(signalEndingFlavour, timeRemaining);
@@ -178,7 +179,7 @@ namespace Assets.CS.TabletopUI {
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.color = barColor;
-            countdownText.text = "<mspace=1.6em>" + timeRemaining.ToString("0.0") + "s";
+			countdownText.text = NoonUtility.MakeTimeString( timeRemaining );
             countdownText.richText = true;
         }
 

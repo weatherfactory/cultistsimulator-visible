@@ -96,7 +96,8 @@ namespace Assets.CS.TabletopUI {
         }
 
 
-        protected override void Awake() {
+        protected override void Awake()
+		{
             base.Awake();
         }
 
@@ -643,9 +644,9 @@ namespace Assets.CS.TabletopUI {
             if (stackDroppedOn.EntityId != this.EntityId)
                 return; // We're dropping on a different element? No message needed.
 
-            if (stackDroppedOn.Decays) {
-             
-                notifier.ShowNotificationWindow("Can't merge cards", "This type of card decays and can not be stacked.");
+            if (stackDroppedOn.Decays)
+			{ 
+                notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTMERGE"), LanguageTable.Get("UI_DECAYS") );
             }
         }
 
@@ -803,8 +804,8 @@ namespace Assets.CS.TabletopUI {
 		}
 
         // Card Decay Timer
-        public void ShowCardDecayTimer(bool showTimer) {
-            
+        public void ShowCardDecayTimer(bool showTimer)
+		{    
 			if (Decays)
 				decayVisible = showTimer;
 			if(decayView!=null)
@@ -812,11 +813,13 @@ namespace Assets.CS.TabletopUI {
         }
 
         // Public so TokenWindow can access this
-        public string GetCardDecayTime() {
-            return "<mspace=1.6em>" + LifetimeRemaining.ToString("0.0") + "s";
+        public string GetCardDecayTime()
+		{
+			return NoonUtility.MakeTimeString( LifetimeRemaining );
         }
 
-        public void SetCardDecay(float percentage) {
+        public void SetCardDecay(float percentage)
+		{
             percentage = Mathf.Clamp01(percentage);
             //these hardcoded ids are a launch hack. Resaturating elements should instead have a 'resaturate' property
             //anyway they appear as cards slowly gaining, not losing, colour. Thank you the community!
@@ -832,7 +835,8 @@ namespace Assets.CS.TabletopUI {
             
         }
 
-        public void ShowCardShadow(bool show) {
+        public void ShowCardShadow(bool show)
+		{
             shadow.gameObject.SetActive(show);
         }
 

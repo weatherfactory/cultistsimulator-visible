@@ -219,7 +219,7 @@ namespace Assets.CS.TabletopUI {
                 var compendium = Registry.Retrieve<ICompendium>();
 
                 if (notifier != null)
-                    notifier.ShowNotificationWindow("I can't put that there - ", match.GetProblemDescription(compendium));
+                    notifier.ShowNotificationWindow( LanguageTable.Get("UI_CANTPUT"), match.GetProblemDescription(compendium));
             }
             else if (stack.Quantity != 1) {
                 // We're dropping more than one?

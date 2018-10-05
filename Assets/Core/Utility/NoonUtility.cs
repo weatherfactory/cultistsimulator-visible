@@ -104,6 +104,12 @@ namespace Noon
         public static bool AchievementsActive = true;
         public static bool PerpetualEdition = false;
 
+		// Centralised the time string creation so it's 100% consistent throughout game - CP
+		private static bool stringsUpdated = false;
+		private static string fixedspace = "<mspace=1.6em>";	// defaults are overriden by strings.csv
+		private static string secondsPostfix = "s";
+		private static string timeSeperator = ".";
+
         public static void Log(string message,int verbosityNeeded=0)
         {
             if(verbosityNeeded<=CurrentVerbosity)
@@ -219,6 +225,22 @@ namespace Noon
 				v.y *= recip_y;	v.y = (float)Mathf.RoundToInt(v.y);	v.y *= snap_y;
 			}
 			return v;
+		}
+
+		public static string MakeTimeString( float time )
+		{
+			if (!stringsUpdated)	// Slightly clumsy one-time lookup of strings, but this way they are guaranteed to be localised on first use and never looked up again
+			{
+				// One-time lookup of static strings, on first time request only
+				fixedspace		= LanguageTable.Get("UI_FIXEDSPACE");				// Contains rich text fixed spacing size (and <b> for some langs)
+				secondsPostfix	= LanguageTable.Get("UI_SECONDS_POSTFIX_SHORT");	// Contains localised abbreviation for seconds, maybe a space and maybe a </b>
+				timeSeperator	= LanguageTable.Get("UI_TIME_SEPERATOR");			// '.' for most langs but some prefer ','
+				stringsUpdated	= true;
+			}
+
+			string s = time.ToString("0.0");
+			s = s.Replace( '.', timeSeperator[0] );
+			return fixedspace + s + secondsPostfix;
 		}
     }
 

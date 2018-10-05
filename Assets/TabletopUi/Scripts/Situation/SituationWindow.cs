@@ -21,8 +21,8 @@ namespace Assets.CS.TabletopUI {
     [RequireComponent(typeof(SituationWindowPositioner))]
     public class SituationWindow : MonoBehaviour, ISituationDetails {
 
-        const string buttonDefault = "[S]tart";
-        const string buttonBusy = "Running...";
+        string buttonDefault;
+        string buttonBusy;
 
 		[Header("Visuals")]
 		[SerializeField] CanvasGroupFader canvasGroupFader;
@@ -74,9 +74,13 @@ namespace Assets.CS.TabletopUI {
 		}
         // INIT & LIFECYCLE
 
-        void OnEnable() {
+        void OnEnable()
+		{
 			startButton.onClick.AddListener(HandleStartButton);
             dumpResultsButton.onClick.AddListener(DumpAllResultingCardsToDesktop);
+
+			buttonDefault = LanguageTable.Get("VERB_START");
+			buttonBusy = LanguageTable.Get("VERB_RUNNING");
         }
 
 		void OnDisable() {

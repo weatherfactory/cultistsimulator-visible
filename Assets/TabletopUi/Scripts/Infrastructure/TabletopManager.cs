@@ -462,7 +462,7 @@ namespace Assets.CS.TabletopUI {
 				}
 			}
 
-            _notifier.ShowNotificationWindow("Where were we?", " - we have loaded the game.");
+            _notifier.ShowNotificationWindow( LanguageTable.Get("UI_LOADEDTITLE"), LanguageTable.Get("UI_LOADEDDESC"));
 
             //}
             //catch (Exception e)

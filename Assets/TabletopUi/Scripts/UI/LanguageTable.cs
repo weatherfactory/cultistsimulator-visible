@@ -134,6 +134,12 @@ public class LanguageTable : MonoBehaviour
 	
 	static public string Get( string id )
 	{
+		if (locTriplets == null)
+		{
+			Debug.LogError("locTriplets garbage collected!? Something badly wrong...");
+			return null;
+		}
+
 		int tgtHash = Animator.StringToHash( id );
 
 		// TODO: binary chop this instead of linear iteration - CP

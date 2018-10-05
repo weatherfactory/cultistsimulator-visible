@@ -32,6 +32,7 @@ public class LanguageManager : MonoBehaviour
 		BodyText,
 		Heading,
 		Button,
+		Numbers,
 
 		FontStyleCount		// always last
 	};

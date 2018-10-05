@@ -27,13 +27,13 @@ namespace Assets.Core.Entities
             if (MatchType == SlotMatchForAspectsType.ForbiddenAspectPresent)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += "A card may not go here if it has any of these aspects: " + problemAspects;
+                description += LanguageTable.Get("UI_ASPECTSFORBIDDEN") + problemAspects;
             }
 
             if (MatchType == SlotMatchForAspectsType.RequiredAspectMissing)
             {
                 string problemAspects = ProblemAspectsDescription(compendium);
-                description += "That card must have at least one of these aspects: " + problemAspects;
+                description += LanguageTable.Get("UI_ASPECTSREQUIRED") + problemAspects;
             }
 
             return description;
@@ -45,9 +45,10 @@ namespace Assets.Core.Entities
             foreach (var problemAspectId in ProblemAspectIds)
             {
                 if (problemAspects != "")
-                    problemAspects += ", or ";
+                    problemAspects += LanguageTable.Get("UI_OR");
                 problemAspects += compendium.GetElementById(problemAspectId).Label;
             }
+			problemAspects += LanguageTable.Get("UI_FULLSTOP");
             return problemAspects;
         }
     }

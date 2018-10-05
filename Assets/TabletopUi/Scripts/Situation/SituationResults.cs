@@ -36,8 +36,8 @@ public class SituationResults : AbstractTokenContainer {
     public void Initialise(SituationController sc) {
         controller = sc;
         _elementStacksManager = new ElementStacksManager(this, "situationresults");
-        buttonClearResultsDefault = "[C]ollect All";
-        buttonClearResultsNone = "Accept [C]";
+        buttonClearResultsDefault = LanguageTable.Get("VERB_COLLECT");
+        buttonClearResultsNone = LanguageTable.Get("VERB_ACCEPT");
     }
 
     public void DoReset() {

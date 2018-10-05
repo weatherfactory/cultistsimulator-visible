@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Assets.TabletopUi.Scripts.Services;
+using Noon;
 
 namespace Assets.CS.TabletopUI {
     public class OngoingSlotManager : AbstractSlotsManager {
@@ -25,7 +26,8 @@ namespace Assets.CS.TabletopUI {
 
         [SerializeField] DeckEffectView[] deckEffectViews; 
 
-        public override void Initialise(SituationController sc) {
+        public override void Initialise(SituationController sc)
+		{
             base.Initialise(sc);
             ongoingSlot = BuildSlot("ongoing", null, null);
             SetSlotToPos();
@@ -75,13 +77,14 @@ namespace Assets.CS.TabletopUI {
                 return null;
         }
 
-        public void UpdateTime(float duration, float timeRemaining, EndingFlavour forEndingFlavour) {
+        public void UpdateTime(float duration, float timeRemaining, EndingFlavour forEndingFlavour)
+		{
             Color barColor = UIStyle.GetColorForCountdownBar(forEndingFlavour, timeRemaining);
 
             countdownBar.color = barColor;
             countdownBar.fillAmount = Mathf.Lerp(0.055f, 0.945f, 1f - (timeRemaining / duration));
             countdownText.color = barColor;
-            countdownText.text = "<mspace=1.6em>" + timeRemaining.ToString("0.0") + "s";
+			countdownText.text = NoonUtility.MakeTimeString( timeRemaining );
             countdownText.richText = true;
         }
 

@@ -15,8 +15,6 @@ namespace Assets.CS.TabletopUI {
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);
         [SerializeField] Vector2 posWithTokenDetails = new Vector2(0f, -220f);
 
-        const string aspectHeader = "Aspect: ";
-
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element element;
 		bool _noTokenDetails;
@@ -49,9 +47,10 @@ namespace Assets.CS.TabletopUI {
 			Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
         }
 
-        void SetAspect(Element element) {
+        void SetAspect(Element element)
+		{
             ShowImage(ResourcesManager.GetSpriteForAspect(element.Id));
-            ShowText(aspectHeader + element.Label, element.Description);
+            ShowText(LanguageTable.Get("UI_ASPECT") + element.Label, element.Description);
         }
     }
 }

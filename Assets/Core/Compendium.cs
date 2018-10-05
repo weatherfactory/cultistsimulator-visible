@@ -235,55 +235,43 @@ public class Compendium : ICompendium
     {
 		Analytics.CustomEvent( "A_ENDING", new Dictionary<string,object>{ {"id",endingFlag} } );
 
+		string textId1 = "END_" + endingFlag.ToUpper() + "_1";
+		string textId2 = "END_" + endingFlag.ToUpper() + "_2";
+		string textId3 = "END_" + endingFlag.ToUpper() + "_3";
+		string textId4 = "END_" + endingFlag.ToUpper() + "_4";
+
+		string title = LanguageTable.Get( textId1 );
+		string desc = LanguageTable.Get( textId2 ) + " " + LanguageTable.Get( textId3 ) + " " + LanguageTable.Get( textId4 );
+
         if (endingFlag == "minorforgevictory")
-            return new Ending(endingFlag, "THE CONFLAGRATION OF THE HEART",
-                "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and my body stirs in the ashes. I am hairless and imperishable as marble, and the Forge's fire still burns within me. " +
-                "I carry the Shaping Strength. I will not grow old. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
-                " [Congratulations on a standard Power victory. You have wrestled the game to its knees. There are other paths.] ", "forgeofdays", EndingFlavour.Grand, "DramaticLightCool","A_ENDING_MINORFORGEVICTORY");
+            return new Ending(endingFlag, title, desc, "forgeofdays", EndingFlavour.Grand, "DramaticLightCool","A_ENDING_MINORFORGEVICTORY");
 
         if (endingFlag== "minorgrailvictory")
-            return new Ending(endingFlag,"THE FEAST OF THE TRUE BIRTH",
-                "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and I tear free of the sticky rags of my old flesh. My new body is smooth without and red within like a sweet fruit." +
-                " My limbs are strong as cables. My senses are knives. I will not grow old. I will walk the world in the service of the Grail, feasting, growing. Perhaps I will rebel. Perhaps, one day, I will rise even higher." +
-                " [Congratulations on a standard Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORGRAILVICTORY");
+            return new Ending(endingFlag, title, desc, "redgrail", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORGRAILVICTORY");
 
         if (endingFlag == "minorlanternvictory")
-            return new Ending(endingFlag, "THE INCURSUS",
-                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
-                " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first. Perhaps I will be the seventh." +
-                " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY");
+            return new Ending(endingFlag, title, desc, "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY");
 
         if (endingFlag=="deathofthebody")
-            return new Ending(endingFlag, "MY BODY IS DEAD",
-                "Where will they find me? I am not here. In the end, my strength was insufficient to sustain my failing heart. [I was starving, and I had no Health remaining. I should have " +
-                "ensured I had money to purchase essentials; I could have used Dream to rest and recover from my weakness.]", "suninrags", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DEATHOFTHEBODY");
+            return new Ending(endingFlag, title, desc, "suninrags", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DEATHOFTHEBODY");
 
         if (endingFlag == "despairending")
-            return new Ending(endingFlag, "NO MORE",
-                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DESPAIRENDING");
+            return new Ending(endingFlag, title, desc, "despair", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DESPAIRENDING");
+
         if (endingFlag == "visionsending")
-            return new Ending(endingFlag, "GLORY",
-                "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "madness", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VISIONSENDING");
+            return new Ending(endingFlag, title, desc, "madness", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VISIONSENDING");
 
         if (endingFlag == "wintersacrifice")
-            return new Ending(endingFlag, "GOING QUIETLY",
-                "In the upper room of the house where I am taken, my breath fogs and my eyes grow soft. The light in the room is the light at the end of the sun. I am a beautiful ending.", "suninrags", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WINTERSACRIFICE");
+            return new Ending(endingFlag, title, desc, "suninrags", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WINTERSACRIFICE");
 
         if (endingFlag == "arrest") 
-            return new Ending(endingFlag, "Bars across the Sun",
-                "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
-                " that I could have done <i>everything</i> I should not. [Many Hunters have specific weaknesses. Perhaps you can use those weaknesses to stop them before they bring you to trial.]", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_ARREST"
-                );
+            return new Ending(endingFlag, title, desc, "notorious", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_ARREST");
 
         if (endingFlag == "workvictory")
-            return new Ending(endingFlag, "Evening Falls",
-                "I have my fire, my books, my clock, my window on the world where they do other things. I could have been unhappy. I'm not unhappy. This was a successful life, and when it is " +
-                "over the sweet earth will fill my mouth, softer than splinters. [This might be considered a victory.]", "insomnia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORY");
+            return new Ending(endingFlag, title, desc, "insomnia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORY");
 
         if (endingFlag == "workvictoryb")
-            return new Ending(endingFlag, "Ambition's Tide",
-                "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my  rivals. I will grow " +
-                "used to the sound of my name. Then one day, I will die, and some time after that, my name will be heard no more. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORYB");
+            return new Ending(endingFlag, title, desc, "finehouse", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORYB");
 
         return Ending.DefaultEnding();
     }

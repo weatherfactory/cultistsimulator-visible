@@ -39,10 +39,6 @@ namespace Assets.CS.TabletopUI {
 
         Coroutine infoHighlight;
 
-        const string slotHeader = "Slot: ";
-        const string slotUnnamed = "Unnamed Slot";
-        const string defaultSlotDesc = "'It is the empty space which makes the bowl useful.' - Lao Tzu.";
-
         // These are saved here to make sure we have a ref when we're kicking off the anim
         Element _element;
         ElementStackToken _token;
@@ -179,9 +175,14 @@ namespace Assets.CS.TabletopUI {
 
         }
 
-        void SetSlot(SlotSpecification slotSpec) {
+        void SetSlot(SlotSpecification slotSpec)
+		{
             ShowImage(null);
             ShowImageDecayTimer(false);
+
+			string slotHeader		= LanguageTable.Get("UI_SLOT");
+			string slotUnnamed		= LanguageTable.Get("UI_ASPECT");
+			string defaultSlotDesc	= LanguageTable.Get("UI_EMPTYSPACE");
 
             ShowText(
                 (string.IsNullOrEmpty(slotSpec.Label) ? slotHeader + slotUnnamed : slotHeader + slotSpec.Label),
@@ -250,7 +251,7 @@ namespace Assets.CS.TabletopUI {
 
         void ShowDeckInfos(int quantity) {
             deckInfos.gameObject.SetActive(quantity > 0);
-            deckInfos.text = quantity > 0 ? "Upcoming draws: " + quantity : null;
+            deckInfos.text = quantity > 0 ? LanguageTable.Get("UI_UPCOMINGDRAWS") + quantity : null;
         }
 
         public void HighlightSlotIcon(bool isGreedy, bool consumes) {

@@ -100,18 +100,20 @@ public class MenuScreenController : MonoBehaviour {
 
 	void InitialiseContent()
 	{
-		if (cultureContentLoaded.CompareTo(LanguageTable.targetCulture) != 0)
+		if (cultureContentLoaded.CompareTo(LanguageTable.targetCulture) == 0)	// Bail if we have the correct culture loaded already
 		{
-			var registry = new Registry();
-
-			var compendium = new Compendium();
-			registry.Register<ICompendium>(compendium);
-
-			var contentImporter = new ContentImporter();
-			contentImporter.PopulateCompendium(compendium);
-
-			cultureContentLoaded = LanguageTable.targetCulture;
+			return;
 		}
+
+		var registry = new Registry();
+
+		var compendium = new Compendium();
+		registry.Register<ICompendium>(compendium);
+
+		var contentImporter = new ContentImporter();
+		contentImporter.PopulateCompendium(compendium);
+
+		cultureContentLoaded = LanguageTable.targetCulture;
 	}
 
     void UpdateAndShowMenu() {

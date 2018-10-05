@@ -614,6 +614,7 @@ GameObject:
   - component: {fileID: 224144698916996572}
   - component: {fileID: 222471840366193572}
   - component: {fileID: 114757642370397554}
+  - component: {fileID: 114154739982928756}
   m_Layer: 5
   m_Name: DecayCount
   m_TagString: Untagged
@@ -1411,6 +1412,20 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114154739982928756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847081351267616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83c98b9569822d429150a33ef1efa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locLabel: 
+  fontStyle: 3
+  forceFontLanguage: 
 --- !u!114 &114190642769784562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1485,6 +1500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locLabel: UI_CONSUMES
   fontStyle: 0
+  forceFontLanguage: 
 --- !u!114 &114259595235262754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1736,11 +1752,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2117,6 +2133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locLabel: UI_UNIQUE
   fontStyle: 0
+  forceFontLanguage: 
 --- !u!114 &114450258425913206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2179,6 +2196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locLabel: UI_GREEDY
   fontStyle: 0
+  forceFontLanguage: 
 --- !u!114 &114505913549723556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2577,6 +2595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locLabel: 
   fontStyle: 0
+  forceFontLanguage: 
 --- !u!114 &114631784558222816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2590,6 +2609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locLabel: 
   fontStyle: 0
+  forceFontLanguage: 
 --- !u!114 &114670742229870540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2781,11 +2801,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3007,11 +3027,11 @@ MonoBehaviour:
     lineCount: 3
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3257,11 +3277,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3365,6 +3385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locLabel: 
   fontStyle: 0
+  forceFontLanguage: 
 --- !u!222 &222082190526001910
 CanvasRenderer:
   m_ObjectHideFlags: 1

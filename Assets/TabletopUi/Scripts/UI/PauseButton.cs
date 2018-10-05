@@ -25,8 +25,9 @@ public class PauseButton : MonoBehaviour
 
     public void OnLanguageChanged()
     {
-		var tabletop = Registry.Retrieve<TabletopManager>();
-		SetPausedText( tabletop.IsPaused() );
+		// Temp removed because we've settled on language switching ONLY in front end, so this is redundant.
+		//var tabletop = Registry.Retrieve<TabletopManager>();
+		//SetPausedText( tabletop.IsPaused() );
 	}
 
     public void SetPausedText(bool isPaused)
