@@ -72,7 +72,7 @@
 	
 				{
         id: "scheme_expedition_grab",
-        label: "A Rival is Seeking an Advantage...",
+        label: "A Rival is Considering an Expedition...",
         actionId: "scheme",
 		requirements:{schemeexpedition:1},
     	slots:[{id:"target",label:"Target",greedy:true,required:{vault:1}}],
@@ -178,13 +178,23 @@ requirements:{vault:1},
         actionId: "scheme",
     requirements:{schemeactivities:1},
    effects:{mystique:1},
-   startdescription:"[Usually, a Rival will need to conduct Expeditions to increase their power. Occasionally, they'll manage it on their own. Consider tempting them out from hiding by leaving an Expedition open.]",
+   startdescription:"They're still in hiding. What exactly are they up to? [Almost always, this will end inconclusively, but occasionally a Rival will manage to increase their power in secret. Consider tempting them out from hiding by leaving an Expedition open.]",
    description:"My Rival has been up to some kind of mischief. The Suppression Bureau may take note.",
-   alternativerecipes:[{id:"scheme_promotion",chance:10}],
+   alternativerecipes:[{id:"scheme_calm",chance:10},
+   {id:"scheme_promotion",chance:11}],
         warmup: 60,
         craftable: false
     },
-	
+					{
+        id: "scheme_calm",
+        label: "My Rival's mood has softened.",
+        actionId: "scheme",
+   effects:{influenceheartc:1},
+   description:"My Rival is observing professional courtesies: I have received a cautiously civil letter, although it discusses nothing of consequence... might there, some day, be an opportunity for us to join our powers? [Resentment will drop occasionally over time.]",
+         mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:-1,additive:true}],
+        warmup: 60,
+        craftable: false
+    },
 		
 				{
         id: "scheme_promotion",
@@ -193,7 +203,7 @@ requirements:{vault:1},
     alternativerecipes:[{chance:100,id:"scheme_promotion_ascension"}],
    effects:{mystique:1},
    aspects:{rival_promotion:1},
-   startdescription:"My Rival has acquired more lore, more treasures, more connections... and in turn, they've become something more.",
+   description:"My Rival has acquired more lore, more treasures, more connections... and in turn, they've become something more.",
         warmup: 60,
         craftable: false
     },
