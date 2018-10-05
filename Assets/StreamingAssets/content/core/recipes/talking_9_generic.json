@@ -71,6 +71,7 @@ actionId: "talk",
 requirements: {independent: 1,society:-1,ritual:-1},
 slots: [{id:"Subject",description:"A topic of conversation."}],
 alternativerecipes:[
+{id:"A_follower_settrap_independent",chance:100},
 {id:"independentloreconversation",chance:100},
 {id:"independentdesireconversation",chance:100},
 ],

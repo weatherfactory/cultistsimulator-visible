@@ -2,7 +2,7 @@
  [	  
   	  	{
         id: "recruitindependentresentmenthint",
-        label: "Find Forgiveness?",
+        label: "Recruit an Independent?",
         actionId: "talk",
         requirements: {independent:1, mortal:1,resentment:1},
 
@@ -13,11 +13,11 @@
     },
  {
         id: "recruitindependenthint",
-        label: "Recruit a Troublemaker?",
+        label: "Recruit an Independent?",
         actionId: "talk",
         requirements: {independent:1, mortal:1,resentment:-1},
 
-        startdescription: "This one might join me... if I can muster the Aspect of our cult, to the twenty-first degree. [You can recruit a Troublemaker, even one of a different persuasion, if you can provide enough power].",
+        startdescription: "This one might join me... if I can muster the Aspect of our cult, to the twenty-first degree. [You can recruit a Troublemaker, even one of a different persuasion, if you can provide enough power - but you must include at least one Tool as a gift to the independent.].",
     
         craftable: false,
 		hintonly:true
