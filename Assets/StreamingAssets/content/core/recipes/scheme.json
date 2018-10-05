@@ -3,7 +3,7 @@
         id: "scheme_murderhunter",
         label: "A scheme to murder a Hunter is afoot",
         actionId: "scheme",
-    
+    requirements:{schememurder:1},
    effects:{},
    startdescription:"A Rival intends to end a Hunter. This may be to my advantage... but it may also draw attention.",
         warmup: 60,
@@ -74,14 +74,13 @@
         id: "scheme_expedition_grab",
         label: "A Rival is Seeking an Advantage...",
         actionId: "scheme",
-		requirements:{vault:-1},
+		requirements:{schemeexpedition:1},
     	slots:[{id:"target",label:"Target",greedy:true,required:{vault:1}}],
    effects:{},
-   startdescription:"My Rival seeks tools and lore for their own ascension. [If they can't find a Vault to ransack, they'll give up, eventually.]",
+   startdescription:"My Rival seeks tools and lore for their own ascension.",
         warmup: 60,
         craftable: false,
-		linked: [{chance:70,id:"scheme_expedition_grab"},
-		{id:"scheme_expedition_prep",chance:100}]
+		linked: [{id:"scheme_expedition_prep",chance:100}]
     },
 	
 					{
@@ -175,12 +174,13 @@ requirements:{vault:1},
     },
 	{
         id: "scheme_activities",
-        label: "Someone is just generally doing mischief",
+        label: "A Rival is at their business in the shadows.",
         actionId: "scheme",
-    
+    requirements:{schemeactivities:1},
    effects:{mystique:1},
-   startdescription:"FNORD",
-   description:"FNORD",
+   startdescription:"[Usually, a Rival will need to conduct Expeditions to increase their power. Occasionally, they'll manage it on their own. Consider tempting them out from hiding by leaving an Expedition open.]",
+   description:"My Rival has been up to some kind of mischief. The Suppression Bureau may take note.",
+   alternativerecipes:[{id:"scheme_promotion",chance:10}],
         warmup: 60,
         craftable: false
     },
@@ -193,7 +193,7 @@ requirements:{vault:1},
     alternativerecipes:[{chance:100,id:"scheme_promotion_ascension"}],
    effects:{mystique:1},
    aspects:{rival_promotion:1},
-   startdescription:"FNORD",
+   startdescription:"My Rival has acquired more lore, more treasures, more connections... and in turn, they've become something more.",
         warmup: 60,
         craftable: false
     },
@@ -204,8 +204,7 @@ requirements:{vault:1},
         actionId: "scheme",
     requirements:{exalted:1},
    effects:{mystique:1},
-   startdescription:"FNORD [Beware: if your Rival's Ascension reaches 7, they will win the game instead of you.]",
-   description:"FNORD",
+   startdescription:"One step closer to their goal. One degree higher in the great machinery of the House of the Sun. [Beware: if your Rival's Ascension reaches 7, they will win the game instead of you.]",
    mutations:[{filterOnAspectId:independent,mutateAspectId:rivalmarks,mutationLevel:1,additive:true}]
         warmup: 60,
         craftable: false
