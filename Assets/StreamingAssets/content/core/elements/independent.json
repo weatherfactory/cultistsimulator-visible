@@ -290,6 +290,16 @@
 			xtriggers: {rival_promotion:clifton_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:clovette_c},
 			uniquenessgroup:"uqclovette"
         },
+		{
+		        id: "connie_r_c",
+            icon:"connie_r", label: "Connie, a rival",
+            aspects:
+            {mortal: 1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
+            description: "Connie's... Connie's thinking things over.",
+			animFrames: 1,
+						xtriggers: {rival_promotion:connie_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:connie_c},
+			uniquenessgroup:"uqconnie"
+        },
 		
 		 {
         id: "dorothy_r_c",
@@ -303,7 +313,7 @@
         },
 						 {
         id: "douglas_r_c",
-            icon:"defaulthunter", label: "Douglas, a troublemaker",
+            icon:"defaulthunter", label: "Douglas, a rival",
             aspects:
             {mortal:1,independent:1,disciple:1,rivalmarks:3, suspicious:1},
             description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
@@ -353,6 +363,18 @@
 			xtriggers: {rival_promotion:leo_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:leo_c},
 			uniquenessgroup:"uqleo"
         },
+		
+						 {
+        id: "natalia_r_c",
+            icon:"natalia_r", label: "Neville, a rival",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "Natalia has learnt truths that were too long hidden. In consequence, she has adjusted her agenda.",
+			animFrames: 1,
+						xtriggers: {rival_promotion:natalia_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:natalia_c},
+			uniquenessgroup:"uqnatalia"
+        },
+		
 				 {
         id: "neville_r_c",
             icon:"neville_r", label: "Neville, a rival",
@@ -413,6 +435,17 @@
 			animFrames: 1,
 						xtriggers: {rival_promotion:slee_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:slee_c},
 			uniquenessgroup:"uqslee"
+        },
+		
+								 {
+        id: "spencer_r_c",
+            icon:"spencer_r", label: "Spencer, a rival",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "For so long, Spencer flirted with these possibilities... and now he's made his decision.",
+			animFrames: 1,
+						xtriggers: {rival_promotion:spencer_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:spencer_c},
+			uniquenessgroup:"uqspencer"
         },
 						 {
         id: "sylvia_r_c",
@@ -477,6 +510,17 @@
 			uniquenessgroup:"uqysabet",
         },
 		
+								 {
+        id: "zachary_r_c",
+            icon:"zachary_r", label: "Zachary, a rival",
+            aspects:
+            {mortal:1,independent:1, disciple:1,rivalmarks:3, suspicious:1},
+            description: "Zachary has always followed his reasoning wherever it leads: and now, it has led him out of the Suppression Bureau, into a bitter dawn.",
+			animFrames: 1,
+			xtriggers: {rival_promotion:zachary_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:zachary_c},
+			uniquenessgroup:"uqzachary",
+        },
+		
 		
 		
 				 {
@@ -532,6 +576,17 @@
 			uniquenessgroup:"uqclovette"
         },
 		
+				{
+		        id: "connie_r_d",
+            icon:"connie_r", label: "Connie,a Long in the making",
+            aspects:
+            {mortal: 1,independent:1, exalted:1,rivalmarks:3,suspicious:1},
+            description: "Connie never could resist a challenge.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:connie_d},
+			uniquenessgroup:"uqconnie"
+        },
+		
 		 {
         id: "dorothy_r_d",
             icon:"dorothy_r", label: "Dorothy, a Long in the making",
@@ -544,10 +599,10 @@
         },
 								 {
         id: "douglas_r_d",
-            icon:"defaulthunter", label: "Douglas, a troublemaker",
+            icon:"defaulthunter", label: "Douglas, a Long in the Making",
             aspects:
             {mortal:1,independent:1,disciple:1,rivalmarks:4, suspicious:1},
-            description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
+            description: "Douglas has found the fire.",
 			animFrames: 1,
 				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:douglas_d},
 			uniquenessgroup:"uqdouglas"
@@ -592,6 +647,16 @@
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
 			uniquenessgroup:"uqleo"
+        },
+						 {
+        id: "natalia_r_d",
+            icon:"natalia_r", label: "Natalia, a Long in the making",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "Natalia has learnt so much, and at such cost. She won't stop now.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:natalia_d},
+			uniquenessgroup:"uqnatalia"
         },
 				 {
         id: "neville_r_d",
@@ -654,6 +719,17 @@
 						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
 			uniquenessgroup:"uqslee"
         },
+								 {
+        id: "spencer_r_d",
+            icon:"spencer_r", label: "Spencer, a Long in the making",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "Spencer will no longer permit anything to be kept from him. Now he approaches the final threshold.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:spencer_d},
+			uniquenessgroup:"uqspencer"
+        },
+		
 						 {
         id: "sylvia_r_d",
             icon:"sylvia_r", label: "Sylvia, a Long in the making",
@@ -715,6 +791,17 @@
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
 			uniquenessgroup:"uqysabet",
+        },
+		
+								 {
+        id: "zachary_r_d",
+            icon:"zachary_r", label: "Zachary, a Long in the making",
+            aspects:
+            {mortal:1,independent:1, exalted:1,rivalmarks:4, suspicious:1},
+            description: "Zachary approaches his inevitable conclusion.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:zachary_d},
+			uniquenessgroup:"uqzachary",
         },
 		
 		
