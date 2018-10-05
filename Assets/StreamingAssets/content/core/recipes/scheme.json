@@ -190,7 +190,7 @@ requirements:{vault:1},
         label: "My Rival's mood has softened.",
         actionId: "scheme",
    effects:{influenceheartc:1},
-   description:"My Rival is observing professional courtesies: I have received a cautiously civil letter, although it discusses nothing of consequence... might there, some day, be an opportunity for us to join our powers? [Resentment will drop occasionally over time.]",
+   description:"My Rival is observing professional courtesies: I have received a cautiously civil letter, although it discusses nothing of consequence... might there, some day, be an opportunity for us to join our powers? [Occasionally, a Rival's Resentment may diminish.]",
          mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:-1,additive:true}],
         warmup: 60,
         craftable: false
