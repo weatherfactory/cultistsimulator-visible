@@ -207,6 +207,37 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:dorothy_p,rebellion:dorothy_r},
 			uniquenessgroup:"uqdorothy"
         },
+		
+									 {
+        id: "douglas_b",
+            label: "Douglas, a believer",
+            aspects:
+            {mortal: 1, follower: 1,forge: 2},
+            animFrames: 1,
+			description: "Douglas has exchanged the Force for the Forge.",
+			xtriggers: {promotiontodisciple: douglas_c,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
+			uniquenessgroup:"uqdouglas"
+        },
+				 {
+        id: "douglas_c",
+            label: "Douglas, a disciple",
+            aspects:
+            {mortal:1,follower:1, disciple:1,potential:1,forge:5},
+            description: "Douglas doesn't like hammers. They remind him of an Incident. But he uses what instruments he must.",
+			animFrames: 1,
+			xtriggers: {promotionto_d_forge: douglas_d,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
+			uniquenessgroup:"uqdouglas"
+        },
+				 {
+        id: "douglas_d",
+            label: "Douglas, a Shaper",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,forge:10},
+            description: "Douglas has changed so much. His eyes glow like smithy windows in fog. His voice is the rattle of coal in the chute. His arm is long.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
+			uniquenessgroup:"uqdouglas"
+        },
 							 {
         id: "elridge_a",
             label: "Elridge, an acquaintance",
@@ -924,6 +955,17 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
 			uniquenessgroup:"uqdorothy"
+        },
+				 {
+        id: "douglas_p",
+            label: "Douglas, a prisoner",
+            aspects:
+            {mortal:1, prisoner:1,lantern:3,grail:3,heart:3,forge:5},
+            description: "Douglas shakes his head sadly. 'Never thought I'd end on the wrong side of the bars. Should have listened to me old mum.'",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic},
+			lifetime:600, decayTo: "corpse",
+			uniquenessgroup:"uqdouglas"
         },
 				 {
         id: "enid_p",

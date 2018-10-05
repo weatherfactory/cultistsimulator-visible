@@ -52,7 +52,7 @@
 			xtriggers: {rival_promotion:clovette_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:clovette_b},
 			uniquenessgroup:"uqclovette"
         },
-		
+	
 		 {
         id: "dorothy_r",
             icon:"dorothy_r", label: "Dorothy, a troublemaker",
@@ -62,6 +62,16 @@
 			animFrames: 1,
 				xtriggers: {rival_promotion:dorothy_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_b},
 			uniquenessgroup:"uqdorothy"
+        },
+						 {
+        id: "douglas_r",
+            icon:"defaulthunter", label: "Douglas, a troublemaker",
+            aspects:
+            {mortal:1,independent:1,rivalmarks:2, suspicious:1},
+            description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
+			animFrames: 1,
+				xtriggers: {rival_promotion:douglas_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:douglas_b},
+			uniquenessgroup:"uqdouglas"
         },
 								 {
         id: "elridge_r",
@@ -291,6 +301,17 @@
 				xtriggers: {rival_promotion:dorothy_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_c},
 			uniquenessgroup:"uqdorothy"
         },
+						 {
+        id: "douglas_r_c",
+            icon:"defaulthunter", label: "Douglas, a troublemaker",
+            aspects:
+            {mortal:1,independent:1,disciple:1,rivalmarks:3, suspicious:1},
+            description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
+			animFrames: 1,
+				xtriggers: {rival_promotion:douglas_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:douglas_c},
+			uniquenessgroup:"uqdouglas"
+        },
+		
 								 {
         id: "elridge_r_c",
             icon:"elridge_r", label: "Elridge, a rival",
@@ -520,6 +541,16 @@
 			animFrames: 1,
 				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
 			uniquenessgroup:"uqdorothy"
+        },
+								 {
+        id: "douglas_r_d",
+            icon:"defaulthunter", label: "Douglas, a troublemaker",
+            aspects:
+            {mortal:1,independent:1,disciple:1,rivalmarks:4, suspicious:1},
+            description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
+			animFrames: 1,
+				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:douglas_d},
+			uniquenessgroup:"uqdouglas"
         },
 								 {
         id: "elridge_r_d",

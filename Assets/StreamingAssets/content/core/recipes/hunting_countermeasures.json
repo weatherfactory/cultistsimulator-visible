@@ -336,7 +336,7 @@ effects:{notoriety:1,dread:1}
 actionId:"talk",
 requirements:{grim:1},
 label:"The Horrors Beneath the World's Skin",
-startdescription:"Your account is too much for the Hunter. Their eyes bulge. Their jaw tightens. In the days to come, they will sink inexorably into despair.",
+startdescription:"Your account is too much for the Hunter. Their eyes bulge. Their jaw tightens. In the days to come, they will sink inexorably into despair... unless they can find a new truth to cling to.",
 description:"",
 effects:{dread:1},
 aspects:{derangemortal:1}
@@ -377,7 +377,7 @@ effects:{notoriety:1,dread:1}
 	  {id:"hunterspeaklanterng",
 	  actionId:"talk",
 	  label:"Share a terrible mystery of the Glorious Lore",
-	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...' [This will is likely to fascinate the Hunter, but will always increase your own Fascination.]",
+	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...' [This is likely to fascinate the Hunter, but will always increase your own Fascination.]",
 	  requirements:{lantern:14,lore:1},
 	  mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
 linked:[{id:"hunterspeakfascination_resistant",chance:100},
