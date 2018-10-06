@@ -24,7 +24,7 @@
             isAspect: true
         },
 		     {
-            id: "门徒",
+            id: "disciple",
             label: "门徒",
 			description: "初窥真知",
             isAspect: true
@@ -151,7 +151,7 @@
 			description: "一种以健康换取财富的方式。"
         },
 								{
-            id: "降职",
+            id: "demotion",
             label: "降职",
             isAspect: true,
 			description: "我已经很长时间没工作了。"
@@ -163,7 +163,7 @@
 			description: "“当我们以适当的方式和顺序做适当的事情时，神就会帮助我们。”——大概是海索说的 吧。[仪式可以让你将要素结合从而进行召唤。]"
         },
 				{
-            id: "社团",
+            id: "society",
             label: "社团",
             isAspect: true,
 			description: "要想招募信徒，我必须构建一些让他们赖以信仰的东西。"
@@ -224,13 +224,13 @@
 			description: "有些证据更为有力。"
         },
 						 {
-            id: "嫌疑",
+            id: "suspicious",
             label: "嫌疑",
             isAspect: true,
 			description: "侦探大概会希望将其调查清楚吧。"
         },
 						 {
-            id: "封印thskill",
+            id: "healthskill",
             label: "力量",
             isAspect: true,
 			description: "我白天很强，晚上也不差。[它可能会让你在进行体力劳动时表现更出色。]"
@@ -242,7 +242,7 @@
 			description: "我的脑袋瓜里充满了幻想。[它可能会让你创作出更多充满热情的画作。]"
         },
 										 {
-            id: "时期skill",
+            id: "reasonskill",
             label: "学问",
             isAspect: true,
 			description: "智慧有七柱，而我就是其中之一。[它目前仅能让你提高理智。]"
@@ -252,7 +252,7 @@
 		isAspect: true,
 		description: "我学会了如何越过屏障，现在我要从林地前往位于其上的居所。"
 		},
-			{id: "欲望",
+			{id: "desire",
 		label: "欲望",
 		isAspect: true,
 		description: "我的终极目标。完成此目标势必需要付出代价。"
@@ -442,7 +442,7 @@
         isAspect: true
 },
       {
-            id: "封印",
+            id: "seal",
             label: "封印",
 			description: "你的前进遭到了阻碍。",
         isAspect: true
@@ -456,7 +456,7 @@
 
 
         {
-            id: "召唤物",
+            id: "summoned",
             label: "召唤物",
 			description: "这东西可不属于这个世界。",
             isAspect: true
@@ -608,7 +608,7 @@
 			noartneeded: true
         },
 					 {
-            id: "拒绝",
+            id: "decline",
             label: "拒绝",
 			description: "终结之物",
             isAspect: true,
@@ -681,7 +681,7 @@
 			noartneeded: true
         },
 										 {
-            id: "恐惧化",
+            id: "dreadful",
             label: "恐惧化",
 			description: "有产生恐惧的危险。",
             isAspect: true,
@@ -796,7 +796,7 @@
 			noartneeded:true
         },
 										 {
-            id: "诽谤",
+            id: "scandalous",
             label: "诽谤",
 			description: "我无法被人轻易忘却。",
             isAspect: true,
@@ -812,7 +812,7 @@
 			noartneeded:true
         },
 												 {
-            id: "蒙昧",
+            id: "depiphany",
             label: "蒙昧",
 			description: "我现在理解事物的方式更简单了。",
             isAspect: true,
@@ -865,18 +865,18 @@
 		description: "不受欢迎的东西。",
 		isAspect: true
 		},
-		{id:"时期",
+		{id:"season",
 		label:"时期",
 		description: "一些相关的事情很快就会发生",
 		isAspect: true,
 		comments:"能辨识出可能引发期间性事件的卡牌" 
 		},
-		{id: "吞噬者",
+		{id: "devourer",
 		label: "吞噬者",
 		description: "如果它挣脱了束缚，它可能会攻击你或是你的从者。",
 		isAspect: true
 		},
-	{id: "欺诈者",
+	{id: "deceiver",
 		label: "欺诈者",
 		description: "如果它挣脱了束缚，它可能会让你或你的从者陷入疯狂。",
 		isAspect: true
