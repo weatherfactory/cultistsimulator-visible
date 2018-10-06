@@ -156,6 +156,8 @@ public class ContentImporter
 						throw;
 					}
 
+					Debug.Log("Localising ["+ locFile +"]");
+
 					// We now have two sets of data which SHOULD match pair for pair - english and translated.
 					// Traverse the dataset copying selected fields into the core data. Add new fields here if they need translating.
 					string[] fieldsToTranslate = { "label", "description", "startdescription" };
@@ -171,44 +173,61 @@ public class ContentImporter
     
     }
 
-	private void CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate )
+	private bool CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate )
 	{
 		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
 		
 		// First : Validation!
 		if (dest.Count != src.Count)
 		{
-			Debug.LogWarning("JSON original and translated don't match!");
-			return;
+			Debug.LogWarning("Native entries=" + dest.Count + " but loc entries=" + src.Count);
+		}
+		if (dest.Count == 0 || src.Count == 0)
+		{
+			return false;
 		}
 
-		// Next
-		for (int i=0; i<dest.Count; i++)
-        {
-			Debug.Assert(src[i].GetType()==dest[i].GetType(), "Type mismatch in JSON original vs. translated");
+		// Split the indexing in order to try to step over missing/extra entries to get back in sync, but actually...
+		// ...REQUIRING the loc data to remain in sync is the only reliable way to detect errors.
+		int srcIdx = 0;
+		int destIdx = 0;
 
-			if (dest[i].GetType()==typeof(ArrayList))
+		do
+		{
+			Debug.Assert(src[srcIdx].GetType()==dest[destIdx].GetType(), "Type mismatch in JSON original vs. translated");
+
+			if (dest[destIdx].GetType()==typeof(ArrayList))
 			{
-				CopyFields( dest[i] as ArrayList, src[i] as ArrayList, fieldsToTranslate );
+				CopyFields( dest[destIdx] as ArrayList, src[srcIdx] as ArrayList, fieldsToTranslate );
 			}
-			else if (dest[i].GetType()==typeof(Hashtable))
+			else if (dest[destIdx].GetType()==typeof(Hashtable))
 			{
-				CopyFields( dest[i] as Hashtable, src[i] as Hashtable, fieldsToTranslate );
+				CopyFields( dest[destIdx] as Hashtable, src[srcIdx] as Hashtable, fieldsToTranslate );
 			}
+
+			srcIdx++;
+			destIdx++;
 		}
+		while (srcIdx<src.Count && destIdx<dest.Count);	// Bail as soon as either list runs out of elements
+
+		return true;
 	}
 
-	private void CopyFields( Hashtable dest, Hashtable src, string[] fieldsToTranslate )
+	private bool CopyFields( Hashtable dest, Hashtable src, string[] fieldsToTranslate )
 	{
 		// Copy localised language feilds from one dataset to the other
 		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
 		
 		// First : Validation!
-		if (dest.Keys.Count != src.Keys.Count)
+		if (dest["id"].MakeString().CompareTo( src["id"].MakeString() ) != 0)
 		{
-			Debug.LogWarning("JSON original and translated don't match!");
-			return;
+			Debug.LogWarning("Localisation expected ["+ dest["id"].MakeString() +"] but found ["+ src["id"].MakeString() +"]");
+
+			//Debug.LogWarning("JSON original and translated don't match!");
+			return false;
 		}
+
+		//Debug.Log("Localising ["+ dest["id"].MakeString() +"]");		// Commented out, too much spam!
 
 		// Prep array lists so we can iterate in sync
 		ArrayList destList = new ArrayList(dest.Values);
@@ -219,14 +238,20 @@ public class ContentImporter
 		{
 			if (dest.ContainsKey(fieldsToTranslate[j]))
 			{
-				dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
+				if (src.ContainsKey(fieldsToTranslate[j]))
+				{
+					dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
+				}
+				else
+				{
+					Debug.LogWarning("Missing field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
+				}
 			}
 		}
 
 		// Now recurse into any nested lists
 		for (int i=0; i<destList.Count; i++)
         {
-
 			/*
 			if (dest.Keys. GetType()==typeof(ArrayList))
 			{
@@ -240,12 +265,12 @@ public class ContentImporter
 			}
 			*/
 		}
+		return true;
 	}
 
 
     public void ImportElements()
     {
-
 
         ArrayList alElements = GetContentItems(CONST_ELEMENTS);
 

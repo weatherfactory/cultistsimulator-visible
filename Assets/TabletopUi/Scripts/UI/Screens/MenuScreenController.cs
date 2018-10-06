@@ -217,8 +217,6 @@ public class MenuScreenController : MonoBehaviour {
         if (!canTakeInput)
             return;
 		
-		InitialiseContent();
-
         // Set the legacy to the first in the list; this should be the starting legacy
         CrossSceneState.SetChosenLegacy(Registry.Retrieve<ICompendium>().GetAllLegacies().First());
         // Load directly into the game scene, no legacy select
@@ -230,8 +228,6 @@ public class MenuScreenController : MonoBehaviour {
         if (!canTakeInput)
             return;
 		
-		InitialiseContent();
-
         if (saveGameManager.IsSavedGameActive()) {
             //back into the game!
             LoadScene(SceneNumber.GameScene);
