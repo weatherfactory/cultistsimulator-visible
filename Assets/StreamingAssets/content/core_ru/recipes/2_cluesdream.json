@@ -1,0 +1,96 @@
+﻿ {"recipes":
+ [
+     			{
+        id: "vitalityhintdream",
+        label: "Бодрость",
+        actionId: "dream",
+        requirements: {vitality:1},
+        startdescription: "Не приносит снов; но я могу Изучить её, чтобы набраться Здоровья.",
+        craftable: false,
+		hintonly: true,
+		
+		comments: "Not currently possible with restrictions on Dream primary slot"
+    },
+	    			{
+        id: "eruditionhintdream",
+        label: "Размышление",
+        actionId: "dream",
+        requirements: {erudition:1},
+        startdescription: "Не приносит снов; но я могу Изучить его, чтобы набраться Разума.",
+        craftable: false,
+		hintonly: true,
+				comments: "Not currently possible with restrictions on Dream primary slot"
+    },
+	    			{
+        id: "glimmeringhintdream",
+        label: "Мечтание",
+        actionId: "dream",
+        requirements: {glimmering:1},
+        startdescription: "Не приносит снов, пока что; но я могу Изучить его, чтобы набраться Страсти.",
+        craftable: false,
+		hintonly: true,
+				comments: "Not currently possible with restrictions on Dream primary slot"
+    },
+    			{
+        id: "contentmenthintdream",
+        label: "Довольство",
+        actionId: "dream",
+        requirements: {contentment:1},
+        startdescription: "Довольство — не ключ к снам, хотя иногда сны приносят его.",
+        craftable: false,
+		hintonly: true,
+				comments: "Not currently possible with restrictions on Dream primary slot"
+    },
+ 			{
+        id: "dedicationtoobsession_power_hint",
+        label: "Следующий шаг",
+        actionId: "dream",
+        requirements: {ascensionpowerb:1},
+        startdescription: "Для продолжения пути снов уже недостаточно. Предстоит выполнить <b>Труд</b>.",
+        craftable: false,
+		hintonly: true,
+		
+    },
+	
+	 			{
+        id: "dedicationtoobsession_enlightenment_hint",
+        label: "Следующий шаг",
+        actionId: "dream",
+        requirements: {ascensionenlightenmentb:1},
+        startdescription: "Для продолжения пути снов уже недостаточно. Предстоит выполнить <b>Труд</b>.",
+        craftable: false,
+		hintonly: true
+    },
+						{
+        id: "tryreducefascination",
+        label: "Найти самообладание?",
+        actionId: "dream",
+        requirements: {fascination: 1},
+        startdescription: "Двери видений распахнуты. Доля тьмы придаст зрелости моему свету. Даже Страх может пригодиться.",
+hintonly:true,
+        craftable: false
+    },
+				{
+        id: "tryrecoverreason",
+        label: "Прояснить мысли?",
+        actionId: "dream",
+        requirements: {dread: 1},
+        startdescription: "Я помню, что раньше было иначе: но я ещё не помню, как именно. [Страх можно вновь обратить в Разум — должными мерами.]",
+     hintonly:true,
+        craftable: false
+    },
+			{
+        id: "tryrecoverillhealth",
+        label: "Восстановление?",
+        actionId: "dream",
+        requirements: {illhealth: 1},
+        startdescription: "Отдых поможет мне востановиться — если есть необходимые ресурсы.",
+        craftable: false,
+		hintonly: true,
+		comments: "This one's generic."
+    },
+
+	
+	
+]
+}

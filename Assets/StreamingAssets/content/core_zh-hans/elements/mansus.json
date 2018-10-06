@@ -1,0 +1,64 @@
+{"elements":
+    [
+	{id: "waywood",
+	label: "道路：林地",
+	description: "我找到了前往林地的道路，在漫索周围的墙上（尽管漫索并没有墙），黑暗缠作一团，漫无边际地延展。我可以通过<b>梦</b> 到它来回到那片林地。",
+	aspects: {way:1},
+	unique:true
+	},
+	{id: "waywhite",
+	label: "道路：纯白之门",
+	description: "在梦中，我穿过了那扇纯白之门，那扇门又被称为骨门或者象牙之门。每当我踏入时，我的声音都会留在居所外。",
+	aspects: {way:1},
+	unique:true
+	},
+	{id: "waystagbefore_1",
+	label: "雄鹿之门的谜题",
+	description: "“什么会遗失？”解开这个谜题就可以穿过雄鹿之门，成为一名通晓者。",
+	aspects: {riddle:1,way:1},
+	unique:true
+	},
+		{id: "waystagbefore_2",
+	label: "雄鹿之门的谜题",
+	description: "“何处能觅得仁慈？”解开这个谜题就可以穿过雄鹿之门，成为一名通晓者。",
+	aspects: {riddle:1,way:1},
+	unique:true
+	},
+		{id: "waystagbefore_3",
+	label: "雄鹿之门的谜题",
+	description: "“什么样的话语能让献祭变得甘甜？”解开这个谜题就可以穿过雄鹿之门，成为一名通晓者。",
+	aspects: {riddle:1,way:1},
+	unique:true
+	},
+			{id: "waystagbefore_4",
+	label: "雄鹿之门的谜题",
+	description: "“在这条道路开启之前，必须先开启什么？”解开这个谜题就可以穿过雄鹿之门，成为一名通晓者。",
+	aspects: {riddle:1,way:1},
+	unique:true
+	},
+				{id: "waystagbefore_5",
+	label: "雄鹿之门的谜题",
+	description: "“还未出世的女王身在何处？”解开这个谜题就可以穿过雄鹿之门，成为一名通晓者。",
+	aspects: {riddle:1,way:1},
+	unique:true
+	},
+		{id: "waystag_after",
+	label: "道路：穿过雄鹿之门",
+	description: "在梦中，我找到了前往雄鹿之门的路，那扇门又被称为号角之门或者老手之门。我解开了谜题，成为了一名通晓者。",
+	aspects: {way:1},
+	unique:true
+	},
+		{id: "wayspider",
+	label: "道路：蜘蛛之门",
+	description: "在梦中，我找到了前往蜘蛛之门的路，那扇门又被称为血腥之门，或者通俗一点来说，它是扇错误之门。",
+	aspects: {way:1},
+	unique:true
+	},
+			{id: "waypeacock",
+	label: "道路：孔雀之门",
+	description: "在梦中，我找到了前往孔雀之门的路，那扇门又被称为瞳之扉，有或者叫作自满之沮。",
+	aspects: {way:1},
+	unique:true
+	},
+]
+};

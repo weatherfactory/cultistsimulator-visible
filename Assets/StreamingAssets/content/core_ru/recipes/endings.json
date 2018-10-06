@@ -1,0 +1,30 @@
+﻿{
+"recipes": [
+   {
+        id: "deathofthebody",
+        label: "Больше нет Здоровья",
+        actionId: "healthend",
+        requirements: {health: -1},
+        effects: {},
+        startdescription: "Моя жизнь ускользает -",
+        description: "Где найдут меня? Я не здесь.",
+        warmup: 0,
+        craftable: false,
+		ending: "deathofthebody",
+		signalEndingFlavour: Melancholy
+    },
+		{
+        id: "workvictory",
+        label: "Я удовлетворюсь житейским комфортом",
+        actionId: "workwin",
+        requirements: {passion:1},
+        effects: {},
+        startdescription: "Снов больше нет и никогда не будет; я буду жить сравнительно неплохо.",
+        description: "Всё кончено",
+        warmup: 0,
+        craftable: false,
+		ending: "workvictory",
+		burnimage: "retirement"
+    }
+]
+}

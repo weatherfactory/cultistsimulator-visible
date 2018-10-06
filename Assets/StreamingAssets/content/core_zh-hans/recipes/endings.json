@@ -1,0 +1,30 @@
+{
+"recipes": [
+   {
+        id: "deathofthebody",
+        label: "健康已耗尽",
+        actionId: "healthend",
+        requirements: {health: -1},
+        effects: {},
+        startdescription: "我的生命正在流逝——",
+        description: "他们会在哪里找到我？我不在此处。",
+        warmup: 0,
+        craftable: false,
+		ending: "deathofthebody",
+		signalEndingFlavour: Melancholy
+    },
+		{
+        id: "workvictory",
+        label: "我将会在舒适的生活中安顿下来。",
+        actionId: "workwin",
+        requirements: {passion:1},
+        effects: {},
+        startdescription: "我已经放弃了我的梦想。我会过得很好的。",
+        description: "结束了",
+        warmup: 0,
+        craftable: false,
+		ending: "workvictory",
+		burnimage: "retirement"
+    }
+]
+}

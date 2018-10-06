@@ -1,0 +1,101 @@
+﻿{"elements":
+    [
+		 {
+        id: "investigator1",
+            label: "Инспектор Уэйкфилд",
+            aspects:
+            {hunter:1,mortal:1,meticulous:1,grim:1},
+            description: "Захари Уэйкфилд: меланхоличный и безжалостный полицейский инспектор. Недавно откомандирован в Бюро Подавления.",
+unique:true,
+xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator1prisoner}
+        },
+						 {
+        id: "investigator2",
+            label: "Спенсер Хобсон",
+            aspects:
+            {hunter:1,mortal:1,mystic:1,erratic:1},
+            description: "Хобсон был журналистом, частным детективом и, очень недолго, священником. Сейчас он — агент Бюро Подавления.",
+unique:true,
+xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator2prisoner}
+        },
+				 {
+        id: "investigator3",
+            label: "Конни Ли",
+            aspects:
+            {hunter:1,mortal:1,tenacious:1,mystic:1},
+            description: "Наследница, суфражистка, авантюристка. С недавнего времени направляет свой донкихотский энтузиазм и значительное состояние на службу Бюро Подавления.",
+unique:true,
+xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator3prisoner}
+        },
+		
+						 {
+        id: "investigator4",
+            label: "Доктор Наталия Дракон",
+            aspects:
+            {hunter:1,mortal:1,idealist:1,meticulous:1},
+            description: "Её с позором изгнали из академической науки за труды в области альтернативных историй, но это лишь укрепило её уверенность. Теперь она сотрудничает с Бюро Подавления.",
+unique:true,
+xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator4prisoner}
+        },
+				 {
+        id: "defaulthunter",
+            label: "Усталый детектив",
+            aspects:
+            {hunter:1,mortal:1},
+            description: "Этот джентльмен предпочёл бы, чтобы его оставили наедине с трубкой и «Иллюстрированными Лондонскими Новостями», но нет, <i>конечно же,</i> какого-то призывателя адских тварей надо выследить и загнать в клетку как опасного зверя, и, <i>конечно же,</i> больше ни у кого на это нет времени.",
+xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:defaulthunterprisoner}
+        },
+		
+				 {
+        id: "investigator1prisoner",
+            label: "Инспектор Уэйкфилд: захвачен!",
+            aspects:
+            {mortal:1,prisoner:1,lantern:4,grail:3,heart:3,winter:3},
+            description: "Захари Уэйкфилд: меланхоличный, но безжалостный, полицейский инспектор. Удостоверимся, что он умрёт в неволе.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic},
+lifetime:600,decayTo:"corpse"
+        },
+								 {
+        id: "investigator2prisoner",
+            label: "Спенсер Хобсон: захвачен!",
+            aspects:
+            {prisoner:1,mortal:1,lantern:3,grail:3,heart:3},
+              description: "Хобсон был журналистом, частным детективом и, очень недолго, священником. Удостоверимся, что он умрёт в неволе.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic},
+lifetime:600,decayTo:"corpse"
+        },
+		
+						 {
+        id: "investigator3prisoner",
+            label: "Конни Ли: захвачена!",
+            aspects:
+            {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,edge:3},
+            description: "Наследница, суфражистка, авантюристка. Удостоверимся, что она умрёт в неволе.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic},
+lifetime:600,decayTo:"corpse"
+        },
+		
+						 {
+        id: "investigator4prisoner",
+            label: "Доктор Наталия Дракон: захвачена!",
+            aspects:
+            {prisoner:1,mortal:1,lantern:5,grail:3,heart:3},
+            description: "Её с позором изгнали из академической науки за труды в области альтернативных историй, но это лишь укрепило её уверенность. Удостоверимся, что она умрёт в неволе.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic},
+lifetime:600,decayTo:"corpse"
+        },
+				 {
+        id: "defaulthunterprisoner",
+            label: "Усталый детектив: захвачен!",
+            aspects:
+            {mortal:1,prisoner:1,lantern:5,grail:3,heart:3},
+            description: "Этот джентльмен с куда большим удовольствием остался бы наедине с трубкой и «Иллюстрированными Лондонскими Новостями», но сидит в клетке в какой-то гнусной яме в земле.",
+xtriggers: {killmortal:corpse,derangemortal:lunatic,capturehunter:defaulthunterprisoner},
+lifetime:600,decayTo:"corpse"
+        }
+]
+};

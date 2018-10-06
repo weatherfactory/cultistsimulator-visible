@@ -1,0 +1,204 @@
+ {"recipes": [
+ 
+ 
+ 
+ 	{
+        id: "summon_spirit_wintera_edge",
+        label: "借助伤疤制图师使尸体复生",
+        actionId: "work",
+        requirements: {ritual:1,corpse:1,winter:4,edge:2,desire:-1},
+		effects: {spirit_wintera_edge:1,corpse:-1},
+        startdescription: "一股破坏性的力量将渗透进这具肉体，以使它成为一具破碎之骸。我必须开始这项仪式。我将准备好我的锤子。",
+        description: "这尸体呻吟着摇摇晃晃地用双脚站了起来：也可以说是双脚的残留。我召唤出了破碎之骸。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+  	{
+        id: "summon_spirit_wintera_moth",
+        label: "借助环杉使尸体复生",
+        actionId: "work",
+        requirements: {ritual:1,corpse:1,winter:4,moth:2,desire:-1},
+		effects: {spirit_wintera_moth:1,corpse:-1},
+        startdescription: "首先我得在尸体的眼睑下，舌头下等等一切有孔的地方植入种子。然后它就将以发芽木骸的姿态苏醒。",
+        description: "尸体摇晃地站起来。眼睛努力地睁开。树汁从嘴中滴落。它发芽了；它复生了。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+ 
+ 		{
+        id: "summon_spirit_forgee_edge",
+        label: "召唤日月之炉的一个化身",
+        actionId: "work",
+        requirements: {ritual:1,knock:5,forge:10,lantern:2,desire:-1},
+		effects: {spirit_forgee_edge:1},
+        startdescription: "熔炉王只会出现在充斥铸之力的地方。同时也需要加一些灯之力，因为祂号称通晓光界的光芒。",
+        description: "在必要的情况下，祂能藏进烛火之中。不过在这，祂完全展现了祂那宏大的气场。在和祂交流之后，我的脸和手像是曝晒过一样泛红。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_graile_edge",
+        label: "召唤赤杯的一个化身",
+        actionId: "work",
+        requirements: {ritual:1,knock:5,grail:10,forge:2,desire:-1},
+		effects: {spirit_graile_edge:1},
+        startdescription: "伊泽姆只能进入存在庞大杯之力的地方；而且只有用铸之力吸引祂，祂才会选择出现，毕竟那是祂浸淫许久的力量。",
+        description: "如此多种浓郁的气味，仿佛是一场欢宴一般！不过最先闻到的，最浓厚的，是血的味道。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_lanterne_secret",
+        label: "召唤以巴尔德蒙人之名为人所知的神秘生物",
+        actionId: "work",
+        requirements: {ritual:1,knock:5,lantern:10,secrethistories:2,desire:-1},
+		effects: {spirit_lanterne_secret:1},
+        startdescription: "强大的灯之力会吸引到巴尔德蒙人的注意，加上一点秘密为饵，她就会靠得更近。",
+        description: "巴尔德蒙人如老学究般弓着背，有着学校老师般的声音，脸上有着多如繁星的雀斑。她没有影子。",
+        warmup: 60,
+        craftable: true,
+		comments: "特蕾莎从来不会抗拒交流；她一直期待聊天"
+    },
+
+		{
+        id: "summon_spirit_forgec_winter",
+        label: "召唤一个烟雾般的生物",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:6,winter:2,desire:-1},
+		effects: {spirit_forgec_winter:1},
+        startdescription: "铸之力用来召唤，冬之力进行拘束。必须让它知道是谁来控制它。",
+        description: "并非所有铸之子都是明亮的。铸之子们诞生时产生的废料和残屑会像铁匠铺地面缝隙里的铁屑一样聚集在一起。我们就召出了一个。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+				{
+        id: "summon_spirit_grailc_moth",
+        label: "召唤赤杯之下的一个令人十分困惑的生物",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:6,moth:2,desire:-1},
+		effects: {spirit_grailc_moth:1},
+        startdescription: "杯之力为源，再加一点蛾之力，因为它痴迷混乱。",
+        description: "它一次降临一条肢体，蛇一样扭动，乌鸦一样大叫，血管一样跳动。它会尝试抱紧我的腿，如果我不阻止，接下来我就得把鞋扔了。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_lanternc_edge",
+        label: "召唤一个锋利的灯之物",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:6,edge:2,desire:-1},
+		effects: {spirit_lanternc_edge:1},
+        startdescription: "迹曾是一个活人，然后成了个死人，而现在成了某种别的东西。召唤它们需要使用灯之力，因为是光把它们吸引到居所的，而刃则代表了它们在镜中忍受的挣扎。",
+        description: "迹不喜欢华丽的登场。活人的视线会使它们崩解。我知道它现在在这，就够了。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_heartc_edge",
+        label: "召唤雷肤的一个生物",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:6,edge:2,desire:-1},
+		effects: {spirit_heartc_edge:1},
+        startdescription: "残忍而又欢快的律动者！心之力将它带来，刃之力约束它。",
+        description: "首先传来的是击打声，它在林中庆典时会发出的吼叫和打击声。现在它来了，用力穿过世界之肤，像一个长着利爪的无情的莽汉或是一只无头的跳跃着的熊。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+			{
+        id: "summon_spirit_winterd_edge",
+        label: "召唤一名残阳的仆从",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:8,edge:2,desire:-1},
+		effects: {spirit_winterd_edge:1},
+        startdescription: "以深冬之寒呼唤镜中淑女。加上刃之力，因她热衷残虐。",
+        description: "那个曾是女人的东西没有自己的表情。她的眼睛和嘴完全是随着我的眼睛和嘴而移动，就像照镜子一样。她的手指甲和玻璃一样锋利。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+		{
+        id: "summon_spirit_winterb_heart",
+        label: "召唤一个无声亡者",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:4,heart:2,desire:-1},
+		effects: {spirit_winterb_heart:1},
+        startdescription: "这些是无法上升也无法堕落的死者，它们留在了居所和冬之梦中。冬的力量加上一点心的温暖，就能吸引它们来此。",
+        description: "冬光勾勒出一个影子。它无法发声，它的眼睛充满渴望地看着，看着。终于，它看到了一直渴望着的世界。",
+        warmup: 60,
+        craftable: true,
+		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+	
+	{id: "summoninglosingcontrol",
+	label: "召唤中：一个叛逆的灵魂",
+	actionId: "work",
+	requirements: {},
+	startdescription: "召唤物在抵抗我的控制！我可以使用理智来驱散它，这是最安全的做法。我也可以用热情坚持对它控制，这样风险很大。或者我也可以遂它的心愿。",
+	description: "它脱离控制了！",
+	alternativerecipes:[{id:"summoningshutitdown",chance:100},
+	{id:"summoningfightformastery",chance:100}],
+	slots: [{id:"Effort",required: {passion:1,reason:1}}],
+	warmup: 30,
+	craftable: false,
+	linked:[{id:"summoningescaped",chance:100}]},
+	
+	{id:"summoningshutitdown",
+	label: "召唤中：驱逐它回去",
+	actionId:"work",
+	requirements: {reason:1},
+	effects: {summoned:-1},
+	{aspects:fatiguing:1},
+	startdescription: "Pronounce the words of dismissal. Seal the circle tight. Erase every trace.",
+	description: "It's gone. We are safe.",
+	warmup:10
+	},
+	{
+	id:"summoningfightformastery",
+	label: "召唤中：争夺控制权",
+	actionId:"work",
+	startdescription: "异世界的生物使用许多种武器：小刀和谜语，火焰与绝望。而我也有自己的武器。[这通常会起作用，不过不能保证一直有效。]",
+	description:"",
+	requirements: {passion:1},
+	{aspects:fatiguing:1},
+	warmup:10,
+	linked:[{id:"summoningmasteryregained",chance:70},
+	{id:"summoningescaped",chance:100}]
+	},	
+		{id:"summoningescaped",
+	label: "Summoning: a Breach!",
+
+	actionId:"work",
+	requirements: {},
+	effects: {summoned:-1},
+	startdescription: "It's free!",
+	description: "My summoning has escaped my control, where it'll wreak havoc, no doubt - ",
+	warmup:5,
+		alternativerecipes: [{id: "summoning_haunt_devourer",chance:100,additional:true},
+		{id: "summoning_haunt_deceiver",chance:100,additional:true}]
+	},
+	
+			{id:"summoningmasteryregained",
+	label: "召唤中：重新获得控制权",
+	actionId:"work",
+	requirements: {},
+	effects: {},
+	startdescription: "我成功了！",
+	description: "我召唤出的生物将听从我的指示——至少现在没有失控。",
+	warmup:10
+	}
+	
+	
+
+
+	
+	
+]
+}

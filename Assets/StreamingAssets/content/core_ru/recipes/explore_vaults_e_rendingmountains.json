@@ -1,0 +1,140 @@
+﻿ {"recipes": [
+	
+			 	{
+	id: "explore_vaultrendingmountains1_setup",
+	label: "Начало экспедиции: Провалы Охотника",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains1:1},
+	effects: {peril_mountains:1,guardian_watchers:1,guardian_serpent:1},
+
+	startdescription: "Ловчие лабиринты Рвущих Племён. Нам надо взойти на горы и с боем пробиться через племена. После них, несомненно, нас ждёт что-то ещё. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+		 	{
+	id: "explore_vaultrendingmountains2_setup",
+	label: "Начало экспедиции: Хранитель снега",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains2:1},
+	effects: {peril_mountains:1,guardian_dead:1,curse_nowhere:1},
+
+	startdescription: "Мы преодолеем горные снега, чтобы достичь храма. Если мёртвые восстанут против нас, мы подавим их. Но кроме них есть ещё злая сила, которую тоже необходимо подавить, или она последует домой за нами. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultrendingmountains3_setup",
+	label: "Начало экспедиции: Глаз Икирмави",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains3:1},
+	effects: {peril_mountains:1,seal_wardeddoor:1,curse_visions:1},
+
+	startdescription: "Раздирающие Горы высятся между нами и обсерваторией. Дверь будет запечатана и закрыта на засов против нас. Видения, что мы найдём, могут вгрызться в наши чувства. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultrendingmountains4_setup",
+	label: "Начало экспедиции: Волчий мавзолей",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains4:1},
+	effects: {peril_mountains:1,seal_wardeddoor:1,guardian_dead:1},
+
+	startdescription: "Было ли Солнце здесь, когда огласили его смерть? Возможно, пророчество прозвучало слишком рано. В любом случае, если мы перехватим его ход, нас ждут лавины, яростные призраки, и дверь, закрытая посвящёнными архитекторами. Подготовимся же. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultrendingmountainsdefault_setup",
+	label: "Начало экспедиции: гробницы Королей-без-Тени",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountainsdefault:1},
+	effects: {peril_mountains:1,seal_hiddendoor:1,guardian_watchers:1,curse_affliction:1},
+
+	startdescription: "Нам надо пройти через горы, одолеть стражей и сразиться с проклятьем, оставленным Королями-без-Тени. Возможно, затем мы найдём сокровища. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+					{
+	id: "explorevaultrendingmountains1_success",
+	label: "Память войны",
+	actionId: "explore",
+	requirements: {vaultrendingmountains1:1},
+	effects: {vaultrendingmountains1:-1,tooledgef:1,influenceedgee:1},
+	deckeffect: {"vaultcontentsu":2},
+	startdescription: "В осыпающихся глубинах Провалов Охотника мы нашли залу, на стенах которой изображены боевые сцены. Это — святыни всех величайших охотников Рвущих Племён.",
+	description: "Это трофеи, добытые охотниками. Не все из убитых ими зверей и поныне попирают землю.",
+	warmup:30,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultrendingmountains2_success",
+	label: "Украшение алтаря",
+	actionId: "explore",
+	requirements: {vaultrendingmountains2:1},
+	effects: {vaultrendingmountains2:-1},
+	deckeffect: {"vaultcontentsu":2,"vaultcontentsr":1},
+	startdescription: "Помещения храма заселены люминесцентными грибами. Нам придётся, не забыв о перчатках, отделить их от алтаря, и лишь затем обыскать место. Грибы холодны как кожа, орошенная осенним дождём. Наши перчатки — в пятнах света. Наше дыхание туманно в морозном воздухе.",
+	description: "Сокровища, оставленные здесь неизвестными жрецами, и жалкая кучка костей. Жертва? Или поздний посетитель не смог покинуть эти залы? Светящиеся грибы разъели его скелет.",
+	warmup:30,
+	craftable: false
+	},
+				{
+	id: "explorevaultrendingmountains3_success",
+	label: "Движение небес",
+	actionId: "explore",
+	requirements: {vaultrendingmountains3:1},
+	effects: {vaultrendingmountains3:-1},
+	deckeffect: {"vaultcontentsu":2,"vaultcontentsr":1},
+	startdescription: "Великий телескоп проржавел и выпал из купола. Линзы разбиты. Но бледный свет медленно кружится над полом, словно лампы в руках невидимых танцоров. Возможно, они подражают движению небесных тел. Возможно, их движение — траур по ушедшему Солнцу.",
+	description: "Главный астроном, обитавший здесь, наверняка практиковал незримые искусства. В его комнате, в коробке из кедра под разлагающейся кроватью, мы нашли то, что искали.",
+	warmup:30,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultrendingmountains4_success",
+	label: "Приход Волка",
+	actionId: "explore",
+	requirements: {vaultrendingmountains4:1},
+	effects: {vaultrendingmountains4:-1,ingredientwinterd:1},
+	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":1},
+	startdescription: "Шепот Мертвецов тих, но иной звук отдаётся эхом в мавзолее: тихий понижающийся вой, словно металл, рвущийся в корпусе корабля; тон уходит ниже и ниже, пока не отдаётся в наших костях. Это почти что ветер, но не ветер. Нам не стоит задерживаться здесь.",
+	description: "Холод в воздухе сгущается, на нашей коже искрится лёд. В центре мавзолея — чаша белого мрамора на гранитном постаменте. Она полна снегом, обжигающим кожу — и, погруженными в тот же снег, хранит примечательные вещи. Их спрятали здесь? Или принесли в жертву? Кроме них ничего не осталось.",
+	warmup:30,
+	craftable: false
+	},
+	
+				{
+	id: "explorevaultrendingmountainsdefault_success",
+	label: "Останки",
+	actionId: "explore",
+	requirements: {vaultrendingmountainsdefault:1},
+	effects: {vaultrendingmountainsdefault:-1},
+	deckeffect: {"vaultcontentsu":2},
+	startdescription: "Мы откатили в сторону камень, и свет заполнил гробницу. Это — король, высохший до бумажной кожи и сыплющихся костей. Он не двигается. Этот — не бессмертен.",
+	description: "Королей-без-Тени хоронили только с самыми личными вещами. Они не ждали роскоши в посмертии. Так что здесь лишь маленькая кучка вещей, драгоценных для этого короля.",
+	warmup:30,
+	craftable: false
+	},
+	
+]
+}
+

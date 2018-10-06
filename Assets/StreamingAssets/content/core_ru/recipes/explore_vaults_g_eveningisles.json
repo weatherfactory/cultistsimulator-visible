@@ -1,0 +1,145 @@
+﻿ {"recipes": [
+	
+		 	{
+	id: "explore_vaulteveningisles1_setup",
+	label: "Экспедиция на Вороний Остров",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaulteveningisles1:1},
+	effects: {peril_sea:1,guardian_soucouyants:1,curse_visions:1},
+
+	startdescription: "Главная угроза Вороньего Острова — соукоянты, якобы-старухи, падшие бессмертные. Но путь через море будет непрост, и остров полон голосов, несущих проклятие видений. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+
+	
+			 	{
+	id: "explore_vaulteveningisles2_setup",
+	label: "Экспедиция в форт Герик",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaulteveningisles2:1},
+	effects: {peril_sea:1,seal_wardeddoor:1,guardian_dead:1},
+
+	startdescription: "Осыпающаяся известняковая крепость нависает над пустым заливом. По ночам мёртвые ходят. Днём они выжидают. В запечатанном укрытии сокровищница старого губернатора ждёт тех, кто её разграбит. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+			
+			 	{
+	id: "explore_vaulteveningisles3_setup",
+	label: "Экспедиция к остову Кристабель",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaulteveningisles3:1},
+	effects: {peril_sea:1,guardian_serpent:1, curse_affliction:1},
+
+	startdescription: "Штормы вынесли Кристабель из моря и уложили на риф, но обломки столь печальной судьбы несут проклятие. И зверь, что любил её, всё ещё здесь. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+	
+			 	{
+	id: "explore_vaulteveningisles4_setup",
+	label: "Экспедиция в монастырь Глубинной Двери св. Тентрето",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaulteveningisles4:1},
+	effects: {seal_hiddendoor:1,guardian_monks:1,curse_visions:1},
+
+	startdescription: "Монахи святого Тентрето не будут расположены к нашему визиту. Они глубоко утаят сокровища, и если мы сможем их забрать, то, несомненно, будем прокляты. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+		
+			 	{
+	id: "explore_vaulteveningislesdefault_setup",
+	label: "Экспедиция в Полуденный Порт",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaulteveningislesdefault:1},
+	effects: {peril_sea:1,seal_wardeddoor:1,guardian_long:1,curse_visions:1},
+
+	startdescription: "Если мы пересечём море и доплывём до Полуденного Порта; если мы победим Долгих, которые не умирают; если мы достигнем их тайных укрытий... помимо этого нам предстоит отразить соблазны видений. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+		{
+	id: "explorevaulteveningisles1_success",
+	label: "Вороньи перья",
+	actionId: "explore",
+	requirements: {vaulteveningisles1:1},
+	effects: {vaulteveningisles1:-1},
+deckeffect: {"vaultcontentsr":3},
+	startdescription: "Горная пещера, осквернённая соукоянтами. На стенах — печальные истории их жизни, выцарапанные на сотне языков потрясающе изящным почерком: создания, которыми они были, истории, где они властвовали, дети, от которых осталось только горе.",
+	description: "В глубине пещеры соукоянты сплели гнездо — или музей. Прекрасные одеяния прошлого, служившие им, а ныне украшенные вороньими перьями. Маленькая подборка личных портретов и истлевших семейных альбомов. Несколько предметов, не утративших силу.",
+	warmup:30,
+	craftable: false
+	},
+			{
+	id: "explorevaulteveningisles2_success",
+	label: "Последний ход губернатора",
+	actionId: "explore",
+	requirements: {vaulteveningisles2:1},
+	effects: {vaulteveningisles2:-1},
+	deckeffect: {"vaultcontentsr":3},
+	startdescription: "Сокровищница Форта Герик. Мозаика — как игровая доска грандиозного размера и сложности: карта Вечерних Островов. Морские плитки — ляпис, острова — нефрит и обсидиан. Игрушечные корабли, оловянные солдатики. Остров св. Фомы осаждён. Вороний Остров заполнен чёрными шахматными ферзями.",
+	description: "Среди игровых фигур предметы истинной силы служат временными пометками. Это попытка их скрыть? Или губернатор не подозревал об их истинной силе?",
+	warmup:30,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaulteveningisles3_success",
+	label: "Закрытый глаз",
+	actionId: "explore",
+	requirements: {vaulteveningisles3:1},
+	effects: {vaulteveningisles3:-1},
+	deckeffect: {"vaultcontentsr":3},
+	startdescription: "Корабль всё ещё прописан запахом моря. Медлительный осьминог отползает от наших фонарей. Балки наполовину покрыты кораллами. Где тела команды? Известен только один выживший. Всех прочих пожрал змей?",
+	description: "Мы нашли каюту капитана. Путевой журнал лежит здесь, но его страницы — пропитанная солью сплошная масса. Кто-то нацарапал знак закрытого глаза на крышке, к которой он был прикован. Под знаком — секретный сейф в столе; мы можем взломать его и забрать сокровища...",
+	warmup:30,
+	craftable: false
+	},
+	
+	
+			{
+	id: "explorevaulteveningisles4_success",
+	label: "Первая дрожь",
+	actionId: "explore",
+	requirements: {vaulteveningisles4:1},
+	effects: {vaulteveningisles4:-1},
+	deckeffect: {"vaultcontentsr":3},
+	startdescription: "Мы добрались до глубинного морского протока в озеро под монастырём. Тёмная вода дрожит в свете наших ламп. Когда мы подходим, уровень воды резко падает. В этом море нет приливов. Что происходит?",
+	description: "Мы осквернили пещеру! Часы отзывают благословение. Вода уходит, ложе озера обнажается. Жертвы лежат на открывшемся дне. Их надо забрать, и быстро — уже прошла первая волна дрожи, предвестник землетрясения, которое монахи сдерживали столь долго.",
+	warmup:30,
+	craftable: false
+	},
+			{
+	id: "explorevaulteveningislesdefault_success",
+	label: "Из самой Галлеции",
+	actionId: "explore",
+	requirements: {vaulteveningislesdefault:1},
+	effects: {vaulteveningislesdefault:-1},
+	deckeffect: {"vaultcontentsr":2},
+	startdescription: "Это тайный второй подвал отеля Сьерво. Стены выбелены; пол свежевымыт, полки ломятся от редкостей. Сидящий в клетке человек с неухоженной бородой угрюмо взирает на вас из угла. «Опять? — спрашивает он. — Или вы другие? Нет, меня не нужно спасать, спасибо. Снаружи намного хуже».",
+	description: "«Хватайте что можете, быстрее! — шипит человек в клетке. — Скоро они вернутся. Только, прошу, оставьте гладиус. Я привёз его из самой Галлеции, ещё тогда. Вот, эта полка подойдёт. Торопитесь, они идут! Выход — там, по лестнице для доставки».",
+	warmup:30,
+	craftable: false
+	},
+
+	
+]
+}
+

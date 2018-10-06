@@ -1,0 +1,153 @@
+{"elements":
+    [
+      
+		 {
+            id: "ascensionpowera",
+            label: "诱惑：力量",
+            aspects:
+            {desire: 1,powermarks:1},
+            description: "我突然意识到我手里握着通往力量的钥匙。[只要你将其升级到一定程度，你就能用它获取力量胜利。用它来发梦可以升级或者转变它。]"
+        },
+				 {
+            id: "ascensionsensationa",
+            label: "诱惑：灵感",
+            aspects:
+            {desire: 1,sensationmarks:1},
+            description: "我能感受到那种几乎无人体会过的强烈冲动。[只要你将其升级到一定程度，你就能用它获取感官胜利。用它来发梦可以升级或者转变它。]"
+        },
+		 {
+            id: "ascensionenlightenmenta",
+            label: "诱惑：启蒙",
+            aspects:
+            {desire: 1,enlightenmentmarks:1},
+            description: "我突然意识到我手里握着前往智慧的钥匙。[只要你将其升级到一定程度，你就能用它获取启智胜利。用它来发梦可以升级或者转变它。]"
+        },
+				 {
+            id: "ascensionpowerb",
+            label: "奉献：力量",
+            aspects:
+            {desire: 2,powermarks:2},
+            description: "我将不惜一切代价获取不朽的力量。[将此卡牌升级更有可能获得力量的胜利。我必须指引出莽宿的真理;我需要更多的铸要素去激发铸造天来开始改变自己。]",
+			slots: [{id:"Know", actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的专家，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
+			{id: "Power", actionId: "work", required: {forge:1},description: "我需要足够的狂热来引亮熔炉。"}],
+			
+        },
+				 {
+            id: "ascensionsensationbm",
+            label: "奉献：感觉",
+            aspects:
+            {desire: 2,sensationmarks:2},
+            description: "我将不惜一切代价追求不朽的感觉。[继续升级这张卡牌或许可以达成感官胜利。我必须指引出莽宿的真理;我需要继续研究杯要素来让我找到最适合我的赤杯。]",
+			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的专家，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
+			{id:"Power", actionId: "work", required: {grail:1},description: "我需要足够的刺激的感觉来提升赤杯"}],
+			
+        },
+						 {
+            id: "ascensionsensationbf",
+            label: "奉献：感觉",
+            aspects:
+            {desire: 2,sensationmarks:2},
+            description: "我将不惜一切代价追求不朽的感觉。[继续升级这张卡牌或许可以达成感官胜利。我必须指引出莽宿的真理;我需要继续研究杯要素来让我找到最适合我的赤杯。]",
+			slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的专家，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
+			{id:"Power", actionId: "work", required: {grail:1},description: "我需要足够的刺激的感觉来提升赤杯"}],
+			
+        },
+		 {
+            id: "ascensionenlightenmentb",
+            label: "奉献：启蒙",
+            aspects:
+            {desire: 2,enlightenmentmarks:2},
+            description: "我致力于追求更高层次的理解。我需要看透世界的本质，不论付出何种代价。[这使得启示胜利成为可能。我必须指引出莽宿的真理;我需要研究更多的灯要素来让守夜人注意到我的存在。]",
+						slots: [{id:"Know",actionId: "work", required: {waystag_after: 1}, description: "只有那些真正的专家，所谓的通晓者，才可能做到这一步。通晓者，就是那些在梦境中穿越了雄鹿之门的存在。"},
+			{id:"Power", actionId: "work", required: {lantern:1},description: "我需要象征着Mansus的残忍之光的标志。"}],
+        },
+		{
+		id:"ascensionpowerc",
+		label: "飞升：力量",
+		aspects: {desire:3,powermarks:3},
+		xtriggers: {ascend:ascensionpowerd},
+		description:"Forge在我肉体上留下了回应的火花。我越发渴望接触到火焰的热度。我想我立刻就应该开始睡觉去梦中看看。非常需要，就像生命离不开水一样。我很确定这就是第三Mark。"
+		},
+				{
+		id:"ascensionpowerd",
+		label: "飞升：力量",
+		aspects: {desire:4,powermarks:4},
+		xtriggers: {ascend:ascensionpowere,descend:ascensionpowerc},
+		description:"虽然火焰还是能弄的我遍体鳞伤，但是每次想要伤害到我的肉体却很困难。我现在开始渐渐变得不再害怕火焰，就像巨龙或者一块石头。这是第四道标记。"
+		},
+						{
+		id:"ascensionpowere",
+		label: "飞升：力量",
+		aspects: {desire:5,powermarks:5},
+		xtriggers: {ascend:ascensionpowerf,descend:ascensionpowerd},
+		description:"第五道标记：我的身体没有一根毛发。我变得像魔鬼一样强壮。如果我远离火焰，我就会不停地颤抖。"
+		},
+						{
+		id:"ascensionpowerf",
+		label: "飞升：力量",
+		aspects: {desire:6,powermarks:6},
+		xtriggers: {descend:ascensionpowere},
+		description:"我很难屈服。我满身伤疤。我几乎不会让人们看到我的脸。我能手握燃烧的煤炭而毫无感觉。虽然会冒出一丝气味和令我舒服的嘶嘶声。这是第六道标记。"
+		},		
+				{
+		id:"ascensionsensationc",
+		label: "飞升：感觉",
+		aspects: {desire:3,sensationmarks:3},
+		xtriggers:{ascend:ascensionsensationd},
+		description:"赤杯让我温暖。它的渴望让我的嘴唇变干，手开始发痒。我知道这是第三道标记。"
+		},
+				{
+		id:"ascensionsensationd",
+		label: "飞升：感觉",
+		aspects: {desire:4,sensationmarks:4},
+		xtriggers:{ascend:ascensionsensatione,descend:ascensionsensationc},
+		description:"第四道标记是断断续续地发生在我的皮肤上。像补丁一样，从手臂到大腿，十分清晰，缓慢的生长，就好像新生的婴儿皮肤，从地下涌出的泉水。但是只是像补丁一样。"
+		},
+						{
+		id:"ascensionsensatione",
+		label: "飞升：感觉",
+		aspects: {desire:5,sensationmarks:5},
+		xtriggers:{ascend:ascensionsensationf,descend:ascensionsensationd},
+		description:"“增生和出疹”是第五道标记的昵称。我已经长出了两根新的手指，但是只有一根是长在我的手上的。我的膝盖弯曲的地方出现了一个瘘管。它这种处在边缘的压力是一种愉快的感受。我认为我背上的小小隆起是一个新的器官。"
+		},
+						{
+		id:"ascensionsensationf",
+		label: "飞升：感觉",
+		aspects: {desire:6,sensationmarks:6},
+		xtriggers:{descend:ascensionsensatione},
+		description:"第六道标记"
+		},
+		
+				{
+		id:"ascensionenlightenmentc",
+		label: "飞升：启蒙",
+		aspects: {desire:3,enlightenmentmarks:3},
+		xtriggers:{ascend:ascensionenlightenmentd},
+		description:"观察者，来自眼中之门，触碰到了我。现在每天我的好奇心都会增强：一种急迫，身体上的需求，就像饥饿一样折磨我。我知道这就是第三道标记。"
+		},
+				{
+		id:"ascensionenlightenmentd",
+		label: "飞升：启蒙",
+		aspects: {desire:4,enlightenmentmarks:4},
+		xtriggers:{ascend:ascensionenlightenmente,descend:ascensionenlightenmentc},
+		description:"第四道标记是从眼中找到的光，但是却难以发现。大多数情况下，只有在油灯熄灭时或者午夜的黑暗之中；虽然当我瞪大眼睛的时候，会有更多的光开始溢出。我开始日渐消瘦了。"
+		},
+						{
+		id:"ascensionenlightenmente",
+		label: "飞升：启蒙",
+		aspects: {desire:5,enlightenmentmarks:5},
+		xtriggers:{ascend:ascensionenlightenmentf,descend:ascensionenlightenmentd},
+		description:"在第五道标记的时候，光芒会从我身上皮肤受损或者擦伤的地方漏出来。我先我的皮肤开始变得逐渐松弛了起来因为我的肉体再逐渐消失。我现在已经相当的瘦弱了。而且我总是很饿。"
+		},
+						{
+		id:"ascensionenlightenmentf",
+		label: "飞升：启蒙",
+		aspects: {desire:6,enlightenmentmarks:6},
+		xtriggers:{descend:ascensionenlightenmente},
+		description:"据说第六道圣痕出现的标记就是虎口间的皮肤可以拉到小指关节处。我的皮肤已经变得非常非常非常松弛了。我认为我的骨头也开始变软了。我的眼中再也没有人类的眼神了。"
+		},
+	
+
+		
+]
+};

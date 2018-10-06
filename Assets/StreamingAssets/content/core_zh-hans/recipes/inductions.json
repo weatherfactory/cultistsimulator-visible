@@ -1,0 +1,64 @@
+ {"recipes": [
+	{
+        id: "heartinduction",
+        label: "心之进程",
+        actionId: "heartinduction",
+        effects: {vitality:1},
+		startdescription: "每当心之原则受牵连时，我能获得活力。",
+        description: "今天，我的心脏更有力地搏动。",
+        warmup: 30,
+        craftable: false
+    },
+		{
+        id: "lanterninduction",
+        label: "骷髅之光",
+        actionId: "lanterninduction",
+        effects: {erudition:1},
+		startdescription: "当灯之教条点亮我的进程时，我也许能想起什么忽略的知识。",
+        description: "脑中的杂续一扫而空，至少现在是的。",
+        warmup: 30,
+        craftable: false
+    },
+		{
+        id: "mothinduction",
+        label: "陈旧遥远的不快之事",
+        actionId: "mothinduction",
+        effects: {restlessness:1},
+		startdescription: "蛾在黑暗中寻觅光芒，而我也如此。",
+        description: "一丝忧愁在我脑海中闪过。",
+        warmup: 30,
+        craftable: false
+    },
+			{
+        id: "grailinduction",
+        label: "欲望里侧的地方",
+        actionId: "grailinduction",
+        effects: {glimmering:1},
+		startdescription: "我能从欲望的满足中学到什么吗？",
+        description: "某种类似启蒙的感觉。",
+        warmup: 30,
+        craftable: false
+    },
+				{
+        id: "dreadinduction",
+        label: "噩梦",
+        actionId: "dreadinduction",
+        effects: {dread:1},
+		startdescription: "半夜惊醒。手，脸，都渗出了汗珠。",
+        description: "慢慢的，我松开了紧紧握着的拳头。我回到了睡梦中。但还是有什么东西，像是房间角落无人注意的蜘蛛网。",
+        warmup: 60,
+        craftable: false
+    },
+	
+					{
+        id: "fascinationinduction",
+        label: "新的色彩",
+        actionId: "fascinationinduction",
+        effects: {fascination:1},
+		startdescription: "我开始注意到了周围未名的色彩。",
+        description: "我看到了我不该看见的东西。我知道这很危险，但要忍住不看却十分困难。",
+        warmup: 60,
+        craftable: false
+    },
+]
+}

@@ -1,0 +1,32 @@
+﻿{
+"recipes": [
+
+		{
+        id: "studymapbookdealer",
+        label: "Поиск магазина Морланд",
+        actionId: "study",
+        requirements: {mapbookdealer:1},
+		effects: {mapbookdealer:-1,locationbookdealer:1},
+		alternativerecipes:	[{id: "openexplore",chance:100, additional: true}],
+        startdescription: "Указания на магазин Морланд туманны. Когда торгуешь книгами того сорта, что затронут в моей переписке, стоит хранить осторожность.",
+        description: "Плохо освещённая улочка в малонаселённом районе на изгибе одной из меньших рек. Мягкий жёлтый свет струится из закопчённого окна. Мисс Морланд кивнула мне, но не поднялась навстречу. «Я никогда не спрашиваю имена клиентов», — так она сказала, не дав мне представиться.\n
+		[Доступен <b>Поиск</b>.]",
+        warmup: 30,
+        craftable: true,
+		comments: "This is one way the Explore verb may be opened."
+    },
+
+{
+id: "openexplore",
+label: "Поиск",
+actionId: "explore",
+requirements: {},
+effects: {fragmentsecrethistories:1},
+startdescription: ".",
+description: "Теперь, когда я знаю место, ПОИСК позволит изучить его.",
+warmup: 0,
+maxexecutions: 1,
+craftable: false
+}
+]
+}\

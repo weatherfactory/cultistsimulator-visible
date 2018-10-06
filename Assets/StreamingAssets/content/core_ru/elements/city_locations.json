@@ -1,0 +1,73 @@
+﻿{"elements":
+    [
+		{
+        id: "locationbookdealer",
+            label: "Магазин Морланд",
+            aspects:{location: 1},
+			slots: [{id:"Cost",label:"Цена",
+					required: {funds: 1},
+					consumes: true,
+					actionId: "explore"
+					}
+				],
+            description: "Мрачные комнаты мисс Морланд, торговки редкими и зачастую опасными книгами.",
+			unique:true,
+			xtriggers:{exhaustlocation:locationbookdealer_exhausted}
+        },
+				{
+        id: "locationbookdealer_exhausted",
+            label: "Магазин Морланд [закрыт]",
+            aspects:{location: 1},
+            description: "Здесь был магазин Морланд, торговки книгами, но её больше нет, и мне придётся искать знаний где-то ещё.",
+			unique:true,
+        },
+				{
+        id: "locationauctionhouse",
+            label: "Аукционный дом «Орифламма»",
+            aspects:{location: 1},
+            description: "«Орифламма» работает с редкостями, парфюмами, чучелами и редкими текстами. Сейчас — в тесном новом помещении, так как старое необъяснимо сгорело. [В «Орифламме» вы можете покупать и продавать вещи.]",
+				slots:[{id:"Sell",label:"Продажа",description: "Положите сюда товар, чтобы выставить его на аукцион.", required: {auctionable:1},actionId:"explore"}],
+			unique:true
+        },
+										{
+        id: "locationcabaretclosed",
+            label: "«Экдисийский клуб» [закрыт]",
+            description: "Кабаре с оккультной репутацией. Открывается только в определённые ночи недели; скоро откроется снова.",
+			unique:true,
+			lifetime:60,
+			decayTo: locationcabaret
+        },
+						{
+        id: "locationcabaret",
+            label: "«Экдисийский клуб»",
+            aspects:{location: 1,moth:1,grail:1},
+            description: "Кабаре с оккультной репутацией.",
+			slots:[{id:"Entry",label:"Вход", actionId: "explore", required:{funds:1},consumes:true}],
+			xtriggers:{locationcabaret:locationcabaretclosed},
+			unique:true
+        },
+
+		
+			{
+        id: "generichq",
+            label: "Временный штаб",
+            aspects:{hq: 1},
+			description: "Наши дела секретны; нам бы не помешало что-то более уединённое.",
+			slots: [{id:"Cupboard",label:"Чулан",
+					description: "Поместите сюда Приспешника, и получите Арестанта. Решение необратимо.",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:-1} 
+				}],
+        unique:true
+        },
+				{
+        id: "locationstreetsstrange",
+            label: "Чужие переулки под Луной",
+            aspects:{location: 1},
+            description: "Иногда свет луны открывает пути к иным пространствам. Я знаю место, где, на ночь или две, повороты улиц становятся незнакомыми. Если я прогуляюсь по ним, я могу испытать озарение — или на шаг приблизиться к безумию.",
+			lifetime:120
+        },
+
+]
+};

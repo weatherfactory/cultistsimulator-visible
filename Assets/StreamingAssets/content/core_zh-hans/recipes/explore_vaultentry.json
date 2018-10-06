@@ -1,0 +1,157 @@
+ {"recipes": [
+
+
+
+	
+	{
+	id:"explorevault_expeditionbegun",
+	label: "探险队出发",
+	actionId:"explore",
+	requirements:{vault:1,follower:1,funds:1},
+	startdescription: "我已经赋予了我的追随者为我服务的机会。祈祷能有个好结果吧。",
+	description: ".",
+	linked: [{id: "explorevaulttick",chance:100}],
+	craftable:false
+	},
+
+		{
+	id: "explorevaulttick",
+	comments: "如果所有资源均消耗殆尽，探险将失败。只要不存在阻碍且追随者和金钱均未耗尽探险即可继续。",
+	label: "探险进行中",
+	actionId: "explore",
+		slots:[{id:"Assistance",description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。", required: {follower:1,funds:1}}],
+	startdescription: "我们的探险队计划迎接下一次挑战，而这会消耗金钱。我现在可以追加金钱投入，或者再派去一位追随者。",
+	description: ".",
+	warmup:30,
+	alternativerecipes: [
+	{id: "explorevaultsuccesslink",chance:100},
+	{id: "explorevaultfailure_nofunds",chance:100},
+	{id: "explorevaultfailure_nofollowers",chance:100}],
+	effects: {funds:-1},
+	linked:[
+	{id: "explorevaultperil_treacherousground_encounter",chance:100},
+	{id: "explorevaultperil_forest_encounter",chance:100},
+	{id: "explorevaultperil_mountains_encounter",chance:100},
+	{id: "explorevaultperil_desert_encounter",chance:100},
+{id: "explorevaultperil_sea_encounter",chance:100},
+{id: "explorevaultguardian_watchers_encounter",chance:100},
+	{id: "explorevaultguardian_monks_encounter",chance:100}
+{id: "explorevaultguardian_serpent_encounter",chance:100},
+	{id: "explorevaultguardian_dead_encounter",chance:100},
+	{id: "explorevaultguardian_soucouyants_encounter",chance:100},
+	{id: "explorevaultguardian_long_encounter",chance:100},
+
+	{id: "explorevaultseal_hiddendoor_encounter",chance:100},
+	{id: "explorevaultseal_wardeddoor_encounter",chance:100},
+	
+		{id: "explorevaultcurse_dread_encounter",chance:100},
+		{id: "explorevaultcurse_visions_encounter",chance:100},
+		{id: "explorevaultcurse_affliction_encounter",chance:100},
+		{id: "explorevaultcurse_nowhere_encounter",chance:100},
+		]
+	craftable: false
+	},
+
+		
+		{id:"explorevaultfailure_nofunds",
+	actionId:"explore",
+	label:"后勤问题",
+	startdescription:"补给开始紧缺。除非投入更多金钱，否则我只能被迫放弃这次探险了。",
+	description: "尘埃落定后，我们可以再试一次。",
+	requirements: {funds:-1},
+	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10,mystique:1},
+	warmup:10
+	},
+
+		{id:"explorevaultfailure_nofollowers",
+	actionId:"explore",
+	label:"无人归来",
+	startdescription:"No expedition members remain. I must send help, or this expedition will be over.",
+	description: "无人归来。我可以再试一次，甚至可以重复利用之前的补给。",
+	requirements: {follower:-1},
+	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10,mystique:1},
+	warmup:10
+	},
+	{id: "explorevaultsuccesslink",
+	label:"财宝近在眼前",
+    requirements: {peril:-1,seal:-1,guardian:-1,curse:-1},
+	actionId:"explore",
+	comments:"Separate recipe link to remove the confusing slot from Success, next.",
+	linked:[{id:"explorevaultsuccess",chance:100}]
+	},
+	
+				{
+	id: "explorevaultsuccess",
+	label:"财宝近在眼前",
+	actionId:"explore",
+	startdescription:"成功了！我很快就能知道更多……",
+	description:".",
+	effects:{notoriety:1},
+		linked: [{id: "explorevaultcapital1_success",chance:100},
+	{id: "explorevaultcapital1_success",chance:100},
+		{id: "explorevaultcapital2_success",chance:100},
+		{id: "explorevaultcapital3_success",chance:100},
+		{id: "explorevaultcapital4_success",chance:100},
+		{id: "explorevaultcapitaldefault_success",chance:100},
+		
+		{id: "explorevaultshires1_success",chance:100},
+		{id: "explorevaultshires2_success",chance:100},
+		{id: "explorevaultshires3_success",chance:100},
+		{id: "explorevaultshires4_success",chance:100},
+		{id: "explorevaultshiresdefault_success",chance:100},
+		
+		{id: "explorevaultcontinent1_success",chance:100},
+		{id: "explorevaultcontinent2_success",chance:100},
+		{id: "explorevaultcontinent3_success",chance:100},
+		{id: "explorevaultcontinent4_success",chance:100},
+		{id: "explorevaultcontinentdefault_success",chance:100},
+		
+		{id: "explorevaultlandbeyondforest1_success",chance:100},
+		{id: "explorevaultlandbeyondforest2_success",chance:100},
+		{id: "explorevaultlandbeyondforest3_success",chance:100},
+		{id: "explorevaultlandbeyondforest4_success",chance:100},
+		{id: "explorevaultlandbeyondforestdefault_success",chance:100},
+		
+		{id: "explorevaultrendingmountains1_success",chance:100},
+		{id: "explorevaultrendingmountains2_success",chance:100},
+		{id: "explorevaultrendingmountains3_success",chance:100},
+		{id: "explorevaultrendingmountains4_success",chance:100},
+		{id: "explorevaultrendingmountainsdefault_success",chance:100},
+		
+				{id: "explorevaultloneandlevelsands1_success",chance:100},
+		{id: "explorevaultloneandlevelsands2_success",chance:100},
+		{id: "explorevaultloneandlevelsands3_success",chance:100},
+		{id: "explorevaultloneandlevelsands4_success",chance:100},
+		{id: "explorevaultloneandlevelsandsdefault_success",chance:100},
+		
+		{id: "explorevaulteveningisles1_success",chance:100},
+		{id: "explorevaulteveningisles2_success",chance:100},
+		{id: "explorevaulteveningisles3_success",chance:100},
+		{id: "explorevaulteveningisles4_success",chance:100},
+		{id: "explorevaulteveningislesdefault_success",chance:100},
+		],
+	},
+	{
+		id: "explorevault_casualty",
+	actionId:"explorevault_casualty",
+	label: "An expedition member has fallen!",
+	startdescription: "Our numbers dwindle.",
+	description: "Their wounds are grievous. [Heal a fallen Follower with Talk.]",
+	alternativerecipes:[{id:"explorevault_casualty_summoning",chance:100}],
+	craftable: false,
+	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+		warmup:5
+	},
+	{		id: "explorevault_casualty_summoning",
+	actionId:"explorevault_casualty",
+	requirements:{summoned:1},
+		label: "My summoning has been defeated!",
+	description:"It is banished, or destroyed.",
+	effects:{summoned:-1}
+	}
+
+
+
+]
+}

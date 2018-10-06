@@ -1,0 +1,172 @@
+{"elements":
+    [
+					{id: "tooledgeb",
+	label: "陨铁子弹",
+	description: "罕见野兽骸骨中发现的镍铁子弹，出土地点跨越欧洲，中东以及印度。曾经有人一度从事猎杀怪兽的活动。",
+	aspects: {edge:4,auctionable:3,tool:1}
+	},
+				{id: "tooledged",
+	label: "比德之刃",
+	description: "这把刀刃造成的伤口在愈合前会不停地流血。有种说法是比德是十八世纪图卢兹的一位喜欢收集刀具的强盗，据传他是名用刀好手。另一种说法是比德只是阿拉伯语中的“蚊子”混传而来。",
+	aspects: {edge:8,auctionable:5,tool:1}
+	},
+		{id: "tooledgef",
+	label: "狂怒银剑",
+	description: "当狮头铁匠背叛上校时，他诅咒自己手中的剑。至今这把剑的每一小块都在因愤怒而颤动。",
+	aspects: {edge:12,auctionable:6,tool:1}
+	},
+			{id: "toolforgeb",
+	label: "朱砂护身符",
+	description: " 猩红乃炽热之色，而水银则是终极的溶剂。",
+	aspects: {forge:4,auctionable:3,tool:1}
+	},
+		{id: "toolforged",
+	label: "蛮横锤骨",
+	description: "一小块被高温熏黑的耳骨。使用得当的话，它可以击碎石头。",
+	aspects: {forge:8,auctionable:5,tool:1}
+	},
+	{id: "toolforgef",
+	label: "光之余烬",
+	description: "一块巨大光源的残余，发出如同腐朽般柔和的光。可能是分裂的太阳的一粒残粒。",
+	aspects: {forge:12,auctionable:6,tool:1}
+	},
+	{id: "toolgrailmoth",
+	label: "轻语护符",
+	description: "它知道我想要什么，或者这只是我的幻想罢了。",
+	aspects: {grail:2,moth:2,auctionable:2,tool:1}
+	},
+		{id: "toolgrailb",
+	label: "破烂手套",
+	description: "它们有什么用？它们能教会我的双手什么呢？",
+	aspects: {grail:4,auctionable:3,tool:1}
+	},
+		{id: "toolgraild",
+	label: "神圣衬衫",
+	description: "这衬衫是一顶属于野人母亲的环冠，沾有香精，以乱七八糟的头发编成，并以皮肤残块加之祝福。",
+	aspects: {grail:8,auctionable:5,tool:1}
+	},
+	{id: "toolgrailf",
+	label: "低语酒杯",
+	description: "在那些夜晚，我们曾用这酒杯畅饮，我们不确定我们到底做了些什么，但我们确信就和一直以来一样，如果我们实在记不起来发生了什么的话，我们的孩子会想起的，在他们最猩红的梦中想起。",
+	aspects: {grail:12,auctionable:6,tool:1}
+	},
+					{id: "toolheartb",
+	label: "马若欧维人偶",
+	description: "马若欧维人制作木头的小人偶并丢入湖中来安抚那可怖的双子巫女。如今湖水已经基本干涸了，但湖底的人偶和巫女仍没有消亡，",
+	aspects: {heart:4,auctionable:3,tool:1}
+	},
+		{id: "toolheartd",
+	label: "醒神之鼓",
+	description: "在他们将怒号剥皮的小林子里，他们击打鼓乐来激起狂暴。那股力量就像气味一样萦绕不去。",
+	aspects: {heart:8,auctionable:5,tool:1}
+	},
+	{id: "toolheartf",
+	label: "王皮的爱尔兰鼓",
+	description: "在森林深处，君王献上了他们所必须供上的最后一样东西——他的们的皮肤，之后这个鼓就被制作出来以永远保护他们的国土安全。后来，就像所有帝国一直在做的一样，一个帝国把这面鼓偷走了。",
+	aspects: {heart:12,auctionable:6,tool:1}
+	},
+						{id: "toolknockb",
+	label: "圣阿格尼丝徽记",
+	description: "波希米亚的圣阿格尼丝因虔诚地献身于肉体地苦修而闻名。这个徽记看上去很可怕。",
+	aspects: {knock:4,auctionable:3,tool:1}
+	},
+		{id: "toolknockd",
+	label: "神圣门楣",
+	description: "这是一道能量穿过的门剩下来的门楣。",
+	aspects: {knock:8,auctionable:5,tool:1}
+	},
+	{id: "toolknockf",
+	label: "裂楔",
+	description: "钥匙用来打开门，而这东西则用来摧毁门。",
+	aspects: {knock:12,auctionable:6,tool:1}
+	},
+
+				{id: "toollanternb",
+	label: "午之石",
+	description: "日光挪转不可追，唯以宝石存残辉。",
+	aspects: {lantern:4,auctionable:3,tool:1},
+	xtriggers: {crackmirror:toollanternbcracked}
+	},
+		{id: "toollanternd",
+	label: "迷惑之镜",
+	description: "多重的景观！迷乱的视觉！盯着我，感受你感官的消解吧！",
+	aspects: {lantern:8,auctionable:5,tool:1,mirror:1},
+	xtriggers: {crackmirror:toollanterndcracked}
+	},
+	{id: "toollanternf",
+	label: "守望者之镜",
+	description: "这是一面照向了不可直视之存在的镜子。",
+	aspects: {lantern:12,auctionable:6,tool:1,mirror:1},
+	xtriggers: {crackmirror:toollanternfcracked},
+	animFrames:1
+	},
+
+				{id: "toolmothb",
+	label: "双翼之偶",
+	description: "骨楼上的阁楼，有扇窗户。窗的一边，有个盒子。盒子里面，有卷绷带。绷带夹着的，是团乱发。而头发之中，则缠着一只玩偶，这只是因为窗户从未被打开过。",
+	aspects: {moth:4,auctionable:3,tool:1}
+	},
+		{id: "toolmothd",
+	label: "斑纹面具",
+	description: "在月光都照不进的森林之中，树枝像绷带和恋人一样缠绕在一起。月亮将自己变成一只蚂蚁，一只小鸟或是自己的姐妹，但不管月光如何爱抚森林，森林仍然抗拒着月光进入。有一天，我们带着剪刀过来，将树枝统统剪断，直到月光和鲜血斑驳地撒在林中那腐烂的落叶上。",
+	aspects: {moth:8,auctionable:5,tool:1}
+	},
+	{id: "toolmothf",
+	label: "阿拉卡普零剪刀",
+	description: "在北方，有一座富足的城市，里面住着一位世界的守护者。有一天，他陷入了永恒的沉寂。这把剪刀就被用来瓜分他的头发，他的手指以及剩下的一切。",
+	aspects: {moth:12,auctionable:6,tool:1}
+	},
+					{id: "toolsecrethistoriesb",
+	label: "悖论的古董",
+	description: "有时，很难确定这只箭是杀了希罗底皇后还是欧多基娅皇后。有时，一只被藏在罗马保险柜里的金表也可能被传言在维也纳的一个袋子里被偷走了。",
+	aspects: {secrethistories:4,auctionable:3,tool:1}
+	},
+						{id: "toolsecrethistoriesd",
+	label: "梦之地图",
+	description: "世界的形状在每一段过去中都发生了变化，但漫索的形状投影在了所有的过去当中。没有人能描画出漫索本身的地图，但是或许有人能够描绘出它投影出的地图。",
+	aspects: {secrethistories:8,auctionable:5,tool:1}
+	},
+
+				{id: "toolwinterb",
+	label: "骨笛",
+	description: "它的声响断绝一切生机。",
+	aspects: {winter:4,auctionable:3,tool:1}
+	},
+		{id: "toolwinterd",
+	label: "埃拉伽巴林镣铐",
+	description: "它永远不会放松它的钳制。",
+	aspects: {winter:8,auctionable:5,tool:1}
+	},
+	{id: "toolwinterf",
+	label: "分裂之铃",
+	description: "一声铃响之后，万物归于寂静。",
+	aspects: {winter:12,auctionable:6,tool:1}
+	},
+	
+	
+					{id: "toollanternbcracked",
+	label: "破裂的午之石",
+	description: "午的含义，在古代的拉丁语中，已和现代的英语所不同。但这块石头仍透着琥珀般的光泽。它露出了裂缝。一位铸属性的追随者可以利用相应材料修好它——或者我可以利用其中残余的能量。",
+	aspects: {lantern:1,ingredient:1}
+	},
+		{id: "toollanterndcracked",
+	label: "破裂的迷惑之镜",
+	description: "一道深深的裂痕蔓延过这闪烁的金属。一位铸属性的追随者可以利用相应材料修好它——或者我可以利用其中残余的能量。",
+	aspects: {lantern:2,ingredient:1}
+	},
+	{id: "toollanternfcracked",
+	label: "碎裂的守望者之镜",
+	description: "一位铸属性的追随者可以利用相应材料修好它，但代价可能会很高昂——或者我可以利用其中残余的能量。",
+	aspects: {lantern:3,ingredient:1}
+	},
+	{id:"paintingmasteredge",label:"'上校与狮头铁匠'",description:"从伊苏斯战役开始时，他们的纷争就打响了。",aspects:{edge:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmasterforge",label:"'光阴之炉'",description:"如果光阴之炉有什么后悔的事情话，祂会去惋惜化闰之时，但对祂其他的杰作，祂只会感到愉悦。",aspects:{forge:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmastergrail",label:"'赤杯'",description:"她并没有撕裂太阳，但我们可以想象她对此有多么渴望。",aspects:{grail:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmasterheart",label:"'女与巫'",description:"她曾经是一对送葬鸟，现在她就像她本希望的那样淹没于湖中。",aspects:{heart:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmasterknock",label:"‘蚁母’",description:"即使是在埃兰的时候，她就表现出这样了。",aspects:{knock:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmasterlantern",label:"'瞳中之扉'",description:"他自光界而来。我们情不自禁地看着这一切。",aspects:{lantern:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmastermoth",label:"‘蛾’",description:"在第一个大陆的丛林之中，我们的祖先借由他们的神向自己施下诅咒。",aspects:{moth:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmastersecrethistories",label:"'特蕾莎与克里斯托弗'",description:"爱，就像居所一般，打破了界限。",aspects:{secrethistories:8,auctionable:5,tool:1},unique:true},
+		{id:"paintingmasterwinter",label:"'裂狼'",description:"狼子野心。太阳分裂之后，留下了这样的伤口。",aspects:{winter:8,auctionable:5,tool:1},unique:true}
+]
+};

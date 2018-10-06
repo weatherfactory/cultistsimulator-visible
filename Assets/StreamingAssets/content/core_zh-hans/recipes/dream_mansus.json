@@ -1,0 +1,548 @@
+{
+"recipes": [
+		{
+    
+	id: "dreamstartingpassion",
+	label: "洒满月光之路",
+	actionId: "dream",
+	requirements: {passion: 1},
+	slots: [{id:"Lore",description:"如果我在睡前专心修习神秘学，或许我能进入更深一层的梦境。",required: {lore:1,waywood:1}}],
+	startdescription: "我知道这个梦。有条弥漫着银白色雾气的道路，这条道路通往山顶-",
+	description: "一片凌乱的田野，一撇河流的眨眼，一阵彻骨的寒冷。",
+	alternativerecipes: [
+	{id:"dreamreachwoodknock",chance:100},
+	{id:"dreamreachwoodlantern",chance:100},
+	{id:"dreamreachwoodmoth",chance:100},
+	{id:"dreamenterwood",chance:100}],
+	linked: [{id:"dream_router",chance:100}],
+	warmup: 60,
+	craftable: true,
+	burnimage: moon,
+	aspects:{fatiguing:1}
+	},
+{
+	id: "dreamreachwoodmoth",
+	label: "丰饶之道",
+	actionId: "dream",
+	requirements: {lore:1,moth:3},
+	comments: "requirement 3, not 2, because there's already moth in the mix.",
+	startdescription: "我可以在睡前剪掉一绺头发，以示对林地的力量的尊崇。",
+	description: "道路通往树林。树林深处苍白的翅膀在舞动。我在树根之间蹒跚而行，甚至想匍匐前进，好避开低矮的枝桠。月光从黑色的树叶间洒落下来，轻拂着我的发。我不会忘记通往此处的这条道路。",
+	effects: {waywood:1,influencemoth:1},
+	aspects:{fatiguing:1}
+	
+	},
+		{
+	id: "dreamreachwoodknock",
+	label: "巨蛇道途",
+	actionId: "dream",
+	requirements: {lore:1,knock:2},
+	startdescription: "锁匠信徒通常在脚底受伤后 - 尤其是被蛇咬后 - 进入这个梦境 。我可以试试看。",
+	description: "我一瘸一拐地沿着道路前行，看到了沟渠的巨蛇。我跟着它穿越了蛮荒之地，进入了盘综交错的树根之间。从我脸上拂过的究竟是头发，还是悬挂的苔藓？我压低身体，和向导一样，靠近地面。我不会忘记这趟旅途。",
+	effects: {waywood:1,influencemoth:1},
+	aspects:{fatiguing:1}
+	},
+	
+	{
+	id: "dreamreachwoodlantern",
+	label: "无色道途",
+	actionId: "dream",
+	requirements: {lore:1,lantern:2},
+	startdescription: "我可以在没有色彩的房间睡觉：白色的被单，一白如洗的墙壁，漂染我的头发，漂白我的皮肤。",
+	description: "'有光的地方，才有色彩': 而光不属于林间。在梦中，我闭上双眼，漫步，绊倒，摔伤脚和膝盖。直到面前的灌木丛太过茂密无法通过时，我才睁开双眼，此刻，自己正在黑色的树林间游荡。暗影盘旋。我的双脚已记住了回来的路。",
+	effects: {waywood:1,influencemoth:1},
+	aspects:{fatiguing:1}
+	},
+	{
+	id: "dreamusewoodway",
+	label: "通往林地之路",
+	actionId: "dream",
+	requirements: {waywood:1},
+	slots: [{id:"Path",description:"使用热情进入林地 - 或者，当使用正确的学识时，找到通往纯白之门，即死者蜂拥之门的道路。",required: {lore:1,passion:1}}],
+	startdescription: "如果我有足够的热情，我可以踏上梦境的路程，来到林地。如果我有所需的知识，也许可以找到穿越林地的路。",
+	description: "林地的水流冰冷深沉，却又浑浊不堪。刻板的记忆不足以引领我，我必须使用我的热情。现在我在其他梦境中盘旋。",
+	aspects:{fatiguing:1},
+	alternativerecipes: [
+	{id:"dreamenterwood",chance:100},
+	{id:"dreamreachwhitelantern",chance:100},
+	{id:"dreamreachwhiteknock",chance:100},
+	{id:"dreamreachwhitewinter",chance:100},
+	{id:"dreamnotquitereachwhitelantern",chance:100},
+	{id:"dreamnotquitereachwhiteknock",chance:100},
+	{id:"dreamnotquitereachwhitewinter",chance:100}
+	],
+	craftable:true,
+	warmup:60,
+	
+	linked: [{id:"dream_router",chance:100}],
+	},
+	{id: "dreamenterwood",
+	label: "踏入林地",
+	actionId: "dream",
+	craftable: false,
+	requirements: {waywood:1,passion:1},
+	startdescription: "现在我穿梭在斑驳剥落的树丛间，在树枝后可以看到月亮的移动，月光洒满我的头发。我在树根间蹒跚而行，甚至想匍匐前进，好避开低矮的枝桠。黑夜深处，白翼起舞。",
+	description: ".",
+	portaleffect: "Wood",
+	warmup:0,
+	aspects:{fatiguing:1}
+	}
+	
+		{
+		id: "dreamnotquitereachwhitelantern",
+	label: "林地之光：半途！",
+	actionId: "dream",
+	requirements: {lore:1,lantern:1},
+	startdescription: "林中有间房屋。我只知道这么多。树木之间洒落着一束光 - ",
+	description: "我梦中的皮肤被梦中的荆棘梦一般地刺穿。当我醒来时，我的床将洒满献血。这是正确的途径，但如果要走得更远，我必须知道更多。现在我穿梭进其他梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	aspects:{fatiguing:1}
+
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachwhitelantern",
+	label: "走向纯白之门",
+	actionId: "dream",
+	requirements: {lore:1,lantern:4},
+	startdescription: "林地中有居所。对于居所我有所耳闻，但足以让我找到通往它的光芒的道路吗？",
+	description: "迷雾和痕迹为居所划下了边界。这里矗立着名为车轮之寺的巨石，高耸如教堂尖塔，涂有眼睛的标志，黑色的地衣如补丁般爬满其上。绕过它，前面即是纯白之门。从门的边缘透露出居所的光亮。",
+	effects: {waywhite:1},
+	aspects:{fatiguing:1}
+	},
+			{
+		id: "dreamnotquitereachwhiteknock",
+	label: "林地之光：半途！",
+	actionId: "dream",
+	requirements: {lore:1,knock:1},
+	startdescription: "林中有间房屋。我只知道这么多。树木之间洒落着一束光 - ",
+	description: "我梦中的皮肤被梦中的荆棘梦一般地刺穿。当我醒来时，我的床将洒满献血。这是正确的途径，但如果要走得更远，我必须知道更多。现在我穿梭进其他梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	warmup:10,
+	aspects:{fatiguing:1}
+	},
+		
+	{
+		id: "dreamreachwhiteknock",
+	label: "走向纯白之门",
+	actionId: "dream",
+	requirements: {lore:1,knock:4},
+	startdescription: "林地中有居所。我知道足够多的启示，足以找到穿过枝叶纠缠的森林的隐藏通道。",
+	description: "迷雾和痕迹为居所划下了边界。这里矗立着名为车轮之寺的巨石，高耸如教堂尖塔，涂有眼睛的标志，黑色的地衣如补丁般爬满其上。绕过它，前面即是纯白之门：门户大开，本该如此。",
+	effects: {waywhite:1},
+	aspects:{fatiguing:1}
+	},
+	
+			{
+		id: "dreamnotquitereachwhitewinter",
+	label: "林地之光：半途！",
+	actionId: "dream",
+	requirements: {lore:1,winter:1},
+	startdescription: "林中有间房屋。我只知道这么多。树木之间洒落着一束光 - ",
+	description: "我梦中的皮肤被梦中的荆棘梦一般地刺穿。当我醒来时，我的床将洒满献血。这是正确的途径，但如果要走得更远，我必须知道更多。现在我穿梭进其他梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	aspects:{fatiguing:1}
+
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachwhitewinter",
+	label: "走向纯白之门",
+	actionId: "dream",
+	requirements: {lore:1,winter:4},
+	startdescription: "林地中有居所，还有扇门，偶尔亡者会通过那扇门。我读到过亡者所选择的道路。",
+	description: "迷雾和痕迹为居所划下了边界。这里矗立着名为车轮之寺的巨石，高耸如教堂尖塔，涂有眼睛的标志，黑色的地衣如补丁般爬满其上。绕过它，前面即是纯白之门，如冬月般散发着红光",
+	effects: {waywhite:1},
+	aspects:{fatiguing:1}
+	},
+
+					{
+	id: "dreamusewhiteway",
+	label: "通往纯白之门的道路",
+	actionId: "dream",
+	requirements: {waywhite:1},
+	slots: [{id:"Ascent",description: "提高健康以通过纯白之门 - 或遵从欲望走向雄鹿之门，即通晓者之门",required: {desire:1,health:1}}],
+	startdescription: "在梦中，我知晓穿越边界、通往纯白之门的道路。但路上挤满了路过的亡者。 我需要健康来抵御他们带来的寒意。",
+	description: "狭窄的通道上挤满了缓慢的身型 - 当他们叹息时，空气为之战栗。我的血液因冰冷而凝结。我必须转身。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	craftable: true,
+alternativerecipes: [
+	{id:"dreamenterwhite",chance:100},
+	{id:"dreamreachstagfirst",chance:100},
+	{id:"dreamreachstagsubsequent",chance:100},
+	],
+	craftable:true,
+	warmup:60,
+	aspects:{fatiguing:1}
+	},
+		{id: "dreamenterwhite",
+	label: "踏入纯白之门",
+	actionId: "dream",
+	craftable: false,
+	requirements: {waywhite:1,health:1},
+	startdescription: "现在我可以穿越边界，靠近纯白之门。我终于可以用手指碰触着它，感受着它的冰冷，注视着它回转打开。当门开时，我的嘴闭上，紧缩，粘合，仿佛终于消除了的畸形。我的身边，我的四周，仅存莽宿幽蓝的光。",
+	description: ".",
+	portaleffect: "whitedoor",
+	warmup:0,
+	aspects:{fatiguing:1}
+	}
+	
+						{
+	id: "dreamreachstagfirst",
+	label: "通往雄鹿之门",
+	actionId: "dream",
+	requirements: {waywhite:1,desire:1},
+	startdescription:"飞升的过程相当缓慢。不知何处的风向我嘶吼。我的皮肤落满光亮。在我脚下遥远的地方，林地在移动，在颤抖。",
+	description:"雄鹿之门：巨大的血迹斑斑的鹿角组成了山脊状的屏障，足以让船只通过。很久以前它就被损坏，至今都未完全修复。门旁边的斜坡中，躺着一个受伤的硕大的金色头颅。要不是它的下巴碎裂， 它的嘴巴大得足够吞下我。此乃具名者吉尔比。它开始咏唱它的谜题。",
+	deckeffect: {"stagriddles":1},
+	maxexecutions:1,
+	warmup:30,
+	aspects:{fatiguing:1}
+	},
+	
+							{
+	id: "dreamreachstagsubsequent",
+	label: "再次来到雄鹿之门",
+	actionId: "dream",
+	requirements: {waywhite:1,desire:1},
+	startdescription:"我曾经如此飞升过。它对我无益。如果必须的话，我应当先回答谜题，或者在可以的情况下，使用道途。",
+	description:"雄鹿之门：巨大的血迹斑斑的鹿角组成了山脊状的屏障，足以让船只通过。很久以前它就被损坏，至今都未完全修复。门旁边的斜坡中，躺着一个受伤的硕大的金色头颅。要不是它的下巴碎裂， 它的嘴巴大得足够吞下我。此乃具名者吉尔比。它给了我一个谜题，如果要进入雄鹿之门，我必须回答这个谜题。[使用谜题入梦以解答，如果已经解答，则使用道途：雄鹿之门。]",
+	warmup:10,
+	aspects:{fatiguing:1}
+	},
+	
+		{
+	id: "dream_answerstagriddle_router",
+	actionId:"dream",
+	label: "吉尔比的谜题",
+	requirements: {riddle:1},
+	slots: [{id:"Answer",required: {lore:1}}],
+	startdescription: "在梦境中，我将再次站在雄鹿之门前：巨大的血迹斑斑的鹿角组成了山脊状的屏障，足以让船只通过。很久以前它就被损坏，至今都未完全修复。巨大的金色头颅，吉尔比，将静候我给出答案。",
+	description: "头颅一言不发。大门紧闭。于是我进入其他的梦境。",
+	aspects:{fatiguing:1},
+	linked: [{id:"dream_router",chance:100}],
+	alternativerecipes: [{id: "dream_answerstagriddle_1",chance:100},
+	{id: "dream_answerstagriddle_1",chance:100},
+	{id: "dream_answerstagriddle_2",chance:100},
+	{id: "dream_answerstagriddle_3",chance:100},
+	{id: "dream_answerstagriddle_4",chance:100},
+	{id: "dream_answerstagriddle_5",chance:100},
+	{id: "dream_wronganswerstagriddle",chance:100}],
+	warmup:60,
+	comments: "通过这条路线解答谜题",
+	craftable: true
+	},
+			{
+	id: "dream_answerstagriddle_1",
+	label: "迷宫中的线索",
+	actionId:"dream",
+	requirements: {waystagbefore_1:1, fragmentmothc:1},
+	startdescription: "'这个问题有无数答案，正如蜕皮者所知晓的。这是我的答案...'",
+	description: "大门沉重地打开。守望者的光芒从里面的走廊中涌现。那颗头颅，吉尔比，发出令人难以忍受的悲吟。融化的黄铜之泪自他双眼流下，滑落面颊，灼伤地面。 我可以进入！",
+	effects: {riddle:-1,waystag_after:1,reason:1},
+	linked: [{id: "dreamenterstag",chance:100}]
+	},
+	
+				{
+	id: "dream_answerstagriddle_2",
+	label: "毋庸置疑的答案",
+	actionId:"dream",
+	requirements: {waystagbefore_2:1, fragmentlanternc:1},
+	startdescription: "'仅存于暗影。'",
+	description: "大门沉重地打开。守望者的光芒从里面的走廊中涌现。那颗头颅，吉尔比，发出令人难以忍受的悲吟。融化的黄铜之泪自他双眼流下，滑落面颊，灼伤地面。 我可以进入！",
+	effects: {riddle:-1,waystag_after:1,reason:1},
+	linked: [{id: "dreamenterstag",chance:100}]
+	},
+	
+				{
+	id: "dream_answerstagriddle_3",
+	actionId:"dream",
+	label: "令人满意的答案",
+	requirements: {waystagbefore_3:1, fragmentgrailc:1},
+	startdescription: "'正是这些话语...'",
+	description: "大门沉重地打开。守望者的光芒从里面的走廊中涌现。那颗头颅，吉尔比，发出令人难以忍受的悲吟。融化的黄铜之泪自他双眼流下，滑落面颊，灼伤地面。 我可以进入！",
+	effects: {riddle:-1,waystag_after:1,reason:1},
+	linked: [{id: "dreamenterstag",chance:100}]
+	},
+	
+				{
+	id: "dream_answerstagriddle_4",
+	actionId:"dream",
+	label: "巨蛇的答案",
+	requirements: {waystagbefore_4:1, fragmentknockc:1},
+	startdescription: "'我本人，必须被切开。看啊，这是我流出的血。'",
+	description: "大门沉重地打开。守望者的光芒从里面的走廊中涌现。那颗头颅，吉尔比，发出令人难以忍受的悲吟。融化的黄铜之泪自他双眼流下，滑落面颊，灼伤地面。 我可以进入！",
+	effects: {riddle:-1,waystag_after:1,reason:1},
+	linked: [{id: "dreamenterstag",chance:100}]
+	},
+	
+				{
+	id: "dream_answerstagriddle_5",
+	actionId:"dream",
+	label:"历史的答案",
+	requirements: {waystagbefore_5:1, fragmentsecrethistoriesc:1},
+	startdescription: "'她的心脏埋藏在另一段历史中。'",
+	description: "大门沉重地打开。守望者的光芒从里面的走廊中涌现。那颗头颅，吉尔比，发出令人难以忍受的悲吟。融化的黄铜之泪自他双眼流下，滑落面颊，灼伤地面。 我可以进入！",
+	effects: {riddle:-1,waystag_after:1,reason:1},
+	linked: [{id: "dreamenterstag",chance:100}]
+	},
+	
+					{
+	id: "dream_wronganswerstagriddle",
+	actionId:"dream",
+	label:"这并非答案",
+	requirements: {lore:1},
+	startdescription: "吉尔比坠落至遥远的地方。它不可进入居所，因此它少得可怜的快乐来源之一就是阻止他人进入。出于荣誉感，它不会嘲讽我，但我在它金色的眼里读出了满足。'这并非',它宽慰地说.'答案'。",
+	description: "我醒了。我的眼睛睁开了，而雄鹿之门仍然禁闭。于是我进入其他的梦境",
+	linked: [{id:"dream_router",chance:100}],
+	},
+	
+					{
+	id: "dreamusestagway",
+	label: "通往雄鹿之门的道路",
+	actionId: "dream",
+	requirements: {waystag_after:1},
+	slots: [{id:"Ascent",description: "提高理智以通过雄鹿之门 - 或者，当使用正确的学识时，找到通往蜘蛛之门，即血液溅洒之门的道路。",required: {reason:1,lore:1}}],
+	startdescription: "在梦中，我知道穿越边界的迷宫，从而通往雄鹿之门的道路。吉尔比会让我通过，但道路永远捉摸不透。我需要理智。",
+	description: "边界的偏僻小路高耸而干燥，布满了亿万年来所形成的错综复杂的裂缝和陷阱。我没有足够的理智。我将在见到门之前醒来。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	craftable: true,
+alternativerecipes: [
+	{id:"dreamenterstag",chance:100},
+	{id:"dreamreachspiderlantern",chance:100},
+	{id:"dreamreachspiderknock",chance:100},
+	{id:"dreamreachspidergrail",chance:100},
+	{id:"dreamnotquitereachspiderlantern",chance:100},
+	{id:"dreamnotquitereachspiderknock",chance:100},
+	{id:"dreamnotquitereachspidergrail",chance:100}
+	],
+	craftable:true,
+	warmup:60,
+	},
+	
+			{id: "dreamenterstag",
+	label: "踏入雄鹿之门",
+	actionId: "dream",
+	craftable: false,
+	requirements: {waystag_after:1,reason:1},
+	aspects:{fatiguing:1},
+	startdescription: "雄鹿之门乃学徒之门。要穿越它，必须了解太阳居所的第一重奥秘。头颅吉尔比抽泣着目送我踏入它无法进入的大门：但它必须让我通过。大门斑驳的阀门沉重地打开了。",
+	description: ".",
+	portaleffect: "stagdoor",
+	warmup:30	
+	},
+	{
+		id: "dreamnotquitereachspiderlantern",
+	label: "丝滑沙地：半途！",
+	actionId: "dream",
+	requirements: {lore:1,lantern:1},
+	startdescription: "在梦中，丝滑沙地不断地低语。灰色的谷物抖落，灰色的杂草颤抖。沙地的子民佝偻、罕见，移动缓慢，我曾读到过如果发现了他们呈角状的足迹，必须跟随着它们前行 - " ,
+	description: "沙地吞噬了我的足迹。它们奔涌地填满我的嘴巴，充满我的眼睛…醒来时我的舌头肿胀不堪，我的喉咙开裂干燥。但这是正确的道路，只是如果要走得更高，我必须知道更多。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachspiderlantern",
+	label: "走向蜘蛛之门",
+	actionId: "dream",
+	requirements: {lore:1,lantern:8},
+	startdescription: "在梦中，丝滑沙地不断地低语。灰色的谷物抖落，灰色的杂草颤抖。沙地的子民佝偻、罕见，移动缓慢，我曾读到过如果发现了他们呈角状的足迹，必须跟随着它们前行 - " ,
+	description: "沙地如水体般干涸消失，其下是远古时期诸神诞生之石。前方即是那扇门，如雨滴般闪烁，血滴自其黑色的表面涌出，颗颗饱满如肥大的蜱虫。",
+	effects: {wayspider:1},
+	},
+			{
+		id: "dreamnotquitereachspiderknock",
+	label: "丝滑沙地：半途！",
+	actionId: "dream",
+	requirements: {lore:1,knock:1},
+	startdescription: "在梦中，丝滑沙地不断地低语。灰色的谷物抖落，灰色的杂草颤抖。我知道打开风的语句 - " ,
+	description: "沙地吞噬了我的足迹。它们奔涌地填满我的嘴巴，充满我的眼睛…醒来时我的舌头肿胀不堪，我的喉咙开裂干燥。但这是正确的道路，只是如果要走得更高，我必须知道更多。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachspiderknock",
+	label: "走向蜘蛛之门",
+	actionId: "dream",
+	requirements: {lore:1,knock:8},
+	startdescription: "在梦中，丝滑沙地不断地低语。灰色的谷物抖落，灰色的杂草颤抖。我知道打开风的语句，只有这样沙地才允许我的通行 - " ,
+	description: "沙地如水体般干涸消失，其下是远古时期诸神诞生之石。前方即是那扇门，如雨滴般闪烁，血滴自其黑色的表面涌出，颗颗饱满如肥大的蜱虫。",
+	effects: {wayspider:1},
+	},
+	
+			{
+		id: "dreamnotquitereachspidergrail",
+	label: "丝滑沙地：半途！",
+	actionId: "dream",
+	requirements: {lore:1,grail:1},
+	startdescription: "在梦中，丝滑沙地不断地低语。灰色的谷物抖落，灰色的杂草颤抖。饥渴是沙地中唯一的向导 - 我的饥渴，亦或是蜘蛛之门的饥渴 - " ,
+	description: "沙地吞噬了我的足迹。它们奔涌地填满我的嘴巴，充满我的眼睛…醒来时我的舌头肿胀不堪，我的喉咙开裂干燥。但这是正确的道路，只是如果要走得更高，我必须知道更多。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachspidergrail",
+	label: "走向蜘蛛之门",
+	actionId: "dream",
+	requirements: {lore:1,grail:8},
+	startdescription: "在梦中，丝滑沙地不断地低语。灰色的谷物抖落，灰色的杂草颤抖。饥渴是沙地中唯一的向导 - 我的饥渴，亦或是蜘蛛之门的饥渴 - " ,
+	description: "沙地如水体般干涸消失，其下是远古时期诸神诞生之石。前方即是那扇门，如雨滴般闪烁，血滴自其黑色的表面涌出，颗颗饱满如肥大的蜱虫。",
+	effects: {wayspider:1},
+	},
+	
+						{
+	id: "dreamusespiderway",
+	label: "通向蜘蛛之门的道路",
+	actionId: "dream",
+	requirements: {wayspider:1},
+	slots: [{id:"Ascent",description: "献祭血液以抚平蜘蛛之门的饥渴 - 或者，当使用正确的学识时，找到通往孔雀之门，即光芒倾洒如血液之门的道路。",required: {prisoner:1,lore:1}}],
+	startdescription: "在梦中，我知晓通过丝滑沙地到达蜘蛛之门的道路。如果在睡前洒下新鲜的血液，即可满足它的饥渴，蜘蛛之门就会门户大开。。",
+	description: "在层层的梦境中是那扇门，如同黄蜂的腹部般闪烁着黑光，甚至带有永远在收缩的血迹。我没有满足它的饥渴，它不愿为我而开。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	aspects:{fatiguing:1},
+	craftable: true,
+alternativerecipes: [
+	{id:"dreamenterspider",chance:100},
+	{id:"dreamreachpeacocklantern",chance:100},
+	{id:"dreamreachpeacockknock",chance:100},
+	{id:"dreamreachpeacockedge",chance:100},
+	{id:"dreamnotquitereachpeacocklantern",chance:100},
+	{id:"dreamnotquitereachpeacockknock",chance:100},
+	{id:"dreamnotquitereachpeacockedge",chance:100}
+	],
+	craftable:true,
+	warmup:60,
+	},
+	
+			{id: "dreamenterspider",
+	label: "踏入蜘蛛之门",
+	actionId: "dream",
+	craftable: false,
+	requirements: {wayspider:1,prisoner:1},
+	startdescription: "蜘蛛之门永远饥渴。永远。我所献祭的血液从缝中渗透漏出，洒在世界的表面，痛饮后在暂时的满足中，门舒展自身，直到我通过其中。",
+	effects: {prisoner:-1},
+	description: ".",
+	portaleffect: "spiderdoor",
+	warmup:0	
+	},
+			{
+		id: "dreamnotquitereachpeacocklantern",
+	label: "玻璃花园：半途！",
+	actionId: "dream",
+	requirements: {lore:1,lantern:1},
+	startdescription: "分离之日的光芒刺穿我的梦境，但仍不足以融化玻璃花园里死寂已久的霜花。伴随着我的每一步都有一朵霜花化为粉末。这是更为光明的时枢神曾经的降临之路，但此刻在云中，它寂静无声 - " ,
+	description: "玻璃花园的冷寂袭向我的每个毛孔。醒来时我将因寒冷而面色蓝白。但这是正确的道路，只是如果要走得更高，我必须知道更多。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	},
+	
+		{
+		id: "dreamreachpeacocklantern",
+	label: "玻璃花园：走向孔雀之门",
+	actionId: "dream",
+	requirements: {lore:1,lantern:10},
+	startdescription: "分离之日的光芒刺穿我的梦境，但仍不足以融化玻璃花园里死寂已久的霜花。伴随着我的每一步都有一朵霜花化为粉末。这是更为光明的时枢神曾经的降临之路，但此刻在云中，它寂静无声 - " ,
+	description: "孔雀之门：骄傲和闪耀的紫水晶，玻璃花园雪白的世界因它的光亮而拥有了色彩。这是在莽宿中凡人所能达到的至高点。它的表面完美无瑕。这扇门不是为打开而存在，尽管，据说它会流出光芒。",
+	effects: {waypeacock:1},
+	},
+			{
+		id: "dreamnotquitereachpeacockknock",
+	label: "玻璃花园：半途！",
+	actionId: "dream",
+	requirements: {lore:1,knock:1},
+	startdescription: "分离之日的光芒刺穿我的梦境，但仍不足以融化玻璃花园里死寂已久的霜花。伴随着我的每一步都有一朵霜花化为粉末。我几乎知道了道路 - " ,
+	description: "玻璃花园的冷寂袭向我的每个毛孔。醒来时我将因寒冷而面色蓝白。但这是正确的道路，只是如果要走得更高，我必须知道更多。于是我进入其他的梦境。",
+	linked: [{id:"dream_router",chance:100}],
+	},
+		
+	{
+		id: "dreamreachpeacockknock",
+	label: "玻璃花园：走向孔雀之门",
+	actionId: "dream",
+	requirements: {lore:1,knock:10},
+	startdescription: "分离之日的光芒刺穿我的梦境，但仍不足以融化玻璃花园里死寂已久的霜花。伴随着我的每一步都有一朵霜花化为粉末。我必须谨慎迈步。我已知晓道路 - " ,
+	description: "孔雀之门：骄傲和闪耀的紫水晶，玻璃花园雪白的世界因它的光亮而拥有了色彩。这是在莽宿中凡人所能达到的至高点。它的表面完美无瑕。这扇门不是为打开而存在，尽管，据说它会流出光芒。",
+	effects: {waypeacock:1},
+	},
+	
+			{
+		id: "dreamnotquitereachpeacockedge",
+	label: "玻璃花园：半途！",
+	actionId: "dream",
+	requirements: {lore:1,edge:1},
+	startdescription: "分离之日的光芒刺穿我的梦境，但仍不足以融化玻璃花园里死寂已久的霜花。伴随着我的每一步都有一朵霜花化为粉末。它本应如此 - " ,
+	description: "孔雀之门：骄傲和闪耀的紫水晶，玻璃花园雪白的世界因它的光亮而拥有了色彩。这是在莽宿中凡人所能达到的至高点。它的表面完美无瑕。这扇门不是为打开而存在，尽管，据说它会流出光芒。 Now I drift into other dreams.",
+	linked: [{id:"dream_router",chance:100}],
+
+	warmup:10
+	},
+		
+	{
+		id: "dreamreachpeacockedge",
+	label: "玻璃花园：走向孔雀之门",
+	actionId: "dream",
+	requirements: {lore:1,edge:10},
+	startdescription: "分离之日的光芒刺穿我的梦境，但仍不足以融化玻璃花园里死寂已久的霜花。伴随着我的每一步都有一朵霜花化为粉末。它本应如此。我必须谨慎地选择方向，依照学识所规定的道路前进 - " ,
+	description: "孔雀之门：骄傲和闪耀的紫水晶，玻璃花园雪白的世界因它的光亮而拥有了色彩。这是在莽宿中凡人所能达到的至高点。它的表面完美无瑕。这扇门不是为打开而存在，尽管，据说它会流出光芒。",
+	effects: {waypeacock:1},
+	},
+	
+	
+	
+	
+	
+		
+						{
+	id: "dreamusepeacockway",
+	label: "通往孔雀之门的道路",
+	actionId: "dream",
+	requirements: {waypeacock:1},
+	slots: [{id:"Ascent",description: "孔雀之门不可打开。",required: {tool:1}}],
+	startdescription: "在梦中，我知晓穿过玻璃花园到达孔雀之门的道路：众门中最为景仰之门，光芒如镜之门。也许，使用恰当的资源，我终将穿越它。",
+	description: "孔雀之门的紫色，宛如最美丽的宝石，宛如最成熟的过失，宛如最浅显的散文。它矗立在我的面前，却无法映照出我的身影。当我醒来，我将想不起这个梦境。",
+	craftable: true,
+	aspects:{fatiguing:1},
+	alternativerecipes: [
+	{id:"dreamenterpeacockmirror",chance:100},
+	{id:"dreamenterpeacockfrangiclave",chance:100},
+	],
+	craftable:true,
+	warmup:60,
+	},
+	
+			{id: "dreamenterpeacockmirror",
+	label: "跨过孔雀之门",
+	actionId: "dream",
+	craftable: false,
+	requirements: {waypeacock:1,mirror:1},
+	startdescription: "孔雀之门映照出我在梦中紧握的镜子，而镜子也映照出孔雀之门。它的表面已经可以感受到波动。它渴望着碎裂，当它的渴望得到满足时，我就可以进入。",
+	description: ".",
+	portaleffect: "peacockdoor",
+	aspects: {"crackmirror":1},
+	warmup:0	
+	},
+	
+				{id: "dreamenterpeacockfrangiclave",
+	label: "跨过孔雀之门",
+	actionId: "dream",
+	craftable: false,
+	requirements: {waypeacock:1,toolknockf:1},
+	startdescription: "音叉发出嗡嗡声，在我的掌中化成钥匙；孔雀之门发出呻吟作为回应。它的表面已经可以感受到波动。它渴望着碎裂，当它的渴望得到满足时，我就可以进入。",
+	description: ".",
+	portaleffect: "peacockdoor",
+	warmup:0	
+	},
+	
+	
+	
+	
+	
+	]
+
+}

@@ -1,0 +1,31 @@
+{"elements":
+    [
+		 {
+        id: "textbookreason",
+            label: "《随笔集》",
+            aspects:
+            {text:1,auctionable:1},
+            description: "头脑犹如刀刃，而本书恰似磨刀之石。 [使用两点博闻来研究，可以获得理性。]",
+			slots: [{id:"Insight",actionId: "study", required: {erudition:1},consumes:true},
+			{id:"Understanding", actionId: "study",  required: {erudition:1},consumes:true}]
+        },
+		 {
+        id: "textbookpassion",
+            label: "《诗集》",
+            aspects:
+            {text:1,auctionable:1},
+            description: "“使人通过对自身所有感官进行自愿长久且彻底的混淆让自己成为一位预言者。。。” 幸亏是智慧的对立面。[使用两点灵感来研究，可以获得热情。]",
+			slots:[{id:"Inspiration", actionId: "study", required: {glimmering:1},consumes:true},
+			{id:"Influence", actionId: "study", required: {glimmering:1},consumes:true}]
+        },
+						 {
+        id: "genericrubbishbook",
+            label: "《稀奇古怪、玄奥难解、这般那样的文本》",
+            aspects:
+            {text:1,auctionable:1},
+            description: "不知所云的残片断章，有关某个“秘密的世界”，与现世格格不入，包含了一些不知如何分类的文章，或许是某种臆造或是嗑药后的产物。[如果你从店铺里买到了本书，那么商店库存里恐怕已经没有任何有趣的书籍了。]"
+        }
+		 
+
+]
+};

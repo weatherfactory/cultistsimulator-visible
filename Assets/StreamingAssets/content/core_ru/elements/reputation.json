@@ -1,0 +1,40 @@
+﻿{"elements":
+    [
+
+	 {
+            id: "mystique",
+            label: "Загадочность",
+            aspects: {reputation: 1},
+            description: "Они помнят, кто я. [Загадочность может привлечь внимание Охотников. Они не могут выстроить дело против вас на её основе, но Загадочность побудит их смотреть пристальнее.]",
+		lifetime: 300
+        },
+							 {
+            id: "notoriety",
+            label: "Слухи",
+            aspects:
+            {reputation: 2},
+            description: "Они помнят мои дела. [Слухи могут позволить Охотникам выстроить дело против вас.]",
+	lifetime: 300,
+	xtriggers:{scandalous:notoriety}
+        },
+									 {
+            id: "evidence",
+			aspects:{evidencelevel:1},
+            label: "Недостаточные улики",
+            description: "Охотникам удалось найти — реальные или воображаемые — свидетельства моих грехов. [Охотники с Уликами становятся опаснее. Улики могут пережить тех, кто их нашёл.]",
+						xtriggers:{investigatingsuccess:evidenceb,investigatingsetback:notoriety},
+						lifetime: 600,
+			
+        },
+											 {
+            id: "evidenceb",
+			aspects:{evidencelevel:2},
+            label: "Убийственные улики",
+            description: "«Земля, разверзнись! Нет, она не хочет дать мне приют!» [С Убийственными уликами Бюро Подавления сможет осудить вас. Улики могут пережить тех, кто их нашёл.]",
+			xtriggers:{investigatingsetback:evidence},
+			lifetime: 600,
+			decayTo: "evidence"
+        },
+
+]
+};

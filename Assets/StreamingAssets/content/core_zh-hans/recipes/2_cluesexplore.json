@@ -1,0 +1,34 @@
+ {"recipes":
+ [
+
+     					{
+	id: "explorevault_hint_addfunds",
+	label: "为探险做准备？",
+	actionId: "explore",
+	requirements: {vault:1,follower:1},
+	startdescription: "如果我投入至少一份金钱，我就可以开始探险了。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者者全部牺牲时，探索将终止。]",
+	hintonly:true,
+	craftable: false,
+	},
+			{
+	id: "explorevault_hint_addfollower",
+	label: "为探险做准备？",
+	actionId: "explore",
+	requirements: {vault:1,funds:1},
+	startdescription: "如果我派遣至少一位追随者者，我就可以开始探险了。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者者全部牺牲时，探索将终止。]",
+	hintonly:true,
+	craftable: false,
+	},
+      					{
+	id: "explorevault_hint",
+	label: "为探险做准备？",
+	actionId: "explore",
+	requirements: {vault:1},
+	startdescription: "我能派出一支探险队前往这里寻找书籍、宝藏以及带有力量的媒介。但我需要分配追随者，并且耗费金钱来为他们提供补给。",
+	hintonly:true,
+	craftable: false,
+	},
+	
+	
+]
+}

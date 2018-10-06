@@ -1,0 +1,31 @@
+﻿{"elements":
+    [
+		 {
+        id: "textbookreason",
+            label: "Сборник эссе",
+            aspects:
+            {text:1,auctionable:1},
+            description: "Если разум — клинок, то это — точильный камень. [Изучите с двумя Размышлениями, чтобы получить Разум.]",
+			slots: [{id:"Insight",label:"Озарение",actionId: "study", required: {erudition:1},consumes:true},
+			{id:"Understanding",label:"Понимание", actionId: "study",  required: {erudition:1},consumes:true}]
+        },
+		 {
+        id: "textbookpassion",
+            label: "Сборник поэзии",
+            aspects:
+            {text:1,auctionable:1},
+            description: "«Поэт превращает себя в ясновидца длительным, безмерным и обдуманным приведением в расстройство всех чувств». Противоположность мудрости. К счастью. [Изучите с двумя Мечтаниями, чтобы получить Страсть.]",
+			slots:[{id:"Inspiration",label:"Вдохновение", actionId: "study", required: {glimmering:1},consumes:true},
+			{id:"Influence",label:"Влияние", actionId: "study", required: {glimmering:1},consumes:true}]
+        },
+						 {
+        id: "genericrubbishbook",
+            label: "Что-то такое ГЛУБОКИЕ МИСТЕРИИ сякое",
+            aspects:
+            {text:1,auctionable:1},
+            description: "Ужасная мешанина полупереваренных слухов о «Тайных Мирах» и о неуместности современной морали, с каталогом извращений — неправдоподобных и, похоже, высосанных из пальца. [Если мне продали это в магазине, то, вероятно, на складах больше ничего интересного не осталось.]"
+        }
+		 
+
+]
+};

@@ -1,0 +1,233 @@
+﻿{"elements":
+    [
+							 {
+        id: "generic_r",
+            label: "Смутьян",
+            aspects:
+            {mortal:1,independent:1,suspicious:1, edge:5},
+            description: "Некто совершенно без чувства меры.",
+			animFrames: 1,
+			icon:"generic_b",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+        },
+								 {
+        id: "auclair_r",
+            label: "Оклер, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, winter:5},
+            description: "Теперь Оклер ещё больше нравятся шахматы. Чёрное, белое.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
+			uniquenessgroup:"auclair"
+        },
+				 {
+        id: "cat_r",
+            label: "Кэт Каро, смутьян",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,lantern:5},
+            description: "«Кэт Каро», так она себя называет. Она была гадалкой. Кажется, никто уже не знает точно, кто она сейчас.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
+			uniquenessgroup:"cat"
+        },
+
+									 {
+        id: "clifton_r",
+            label: "«Папа» Клифтон, смутьян",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,lantern:5},
+            description: "Клифтон предпочитает, чтобы его называли «Ваше святейшество». Когда его зовут по-другому, он может закатить сцену.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
+			uniquenessgroup:"clifton"
+        },
+	
+		 {
+        id: "clovette_r",
+            label: "Кловетта, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, heart:5},
+            description: "Сложно испытывать неприязнь к Кловетте, даже когда точно знаешь, что она сделала.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
+			uniquenessgroup:"clovette"
+        },
+		
+		 {
+        id: "dorothy_r",
+            label: "Дороти, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, heart:5},
+            description: "Дороти не прервётся. Никогда не прервётся. Таков её обет.",
+			animFrames: 1,
+				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
+			uniquenessgroup:"dorothy"
+        },
+								 {
+        id: "elridge_r",
+            label: "Элридж, смутьян",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,edge:4},
+            description: "Ботинки Элриджа зачастую запятнаны кровью.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d},
+			uniquenessgroup:"elridge"
+        },
+				 {
+        id: "enid_r",
+            label: "Энид, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, knock:5},
+            description: "Энид предвидит врагов. Всегда.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
+			uniquenessgroup:"enid"
+        },
+	
+							 {
+        id: "laidlaw_r",
+            label: "Лейдло, смутьян",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,forge:5},
+            description: "Планы Лейдло изощрённы как тень папоротника.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
+			uniquenessgroup:"laidlaw"
+						
+        },
+		{
+        id: "leo_r",
+            label: "Лео, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1,  heart:5},
+            description: "Лео выбрал свою сторону, и сделает то, что необходимо, чтобы охранить её.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
+			uniquenessgroup:"leo"
+        },
+				 {
+        id: "neville_r",
+            label: "Невилл, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, knock:5},
+            description: "Невилл знает, что долго так продолжаться не может — но покуда он в силах, он клянётся, что откроет все двери, решившие встать у него на пути.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
+			uniquenessgroup:"neville"
+        },
+				
+							 {
+        id: "porter_r",
+            label: "Портер, смутьян",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,moth:5},
+            description: "Портер начал собирать имена.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
+			uniquenessgroup:"porter"
+        },
+						 {
+        id: "renira_r",
+            label: "Ренира, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, grail:5},
+            description: "Ренира любит превращать поклонников в служителей.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
+			uniquenessgroup:"renira"
+        },
+							 {
+        id: "rose_r",
+            label: "Роуз, смутьян",
+            aspects:
+            {mortal:1,independent:1,suspicious:1, edge:5},
+            description: "Роуз давно прекратила бояться своих врагов.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
+			uniquenessgroup:"rose"
+        },
+						 {
+        id: "saliba_r",
+            label: "Салиб, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, grail:5},
+            description: "Салиб не терпит скуки.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
+			uniquenessgroup:"saliba"
+        },
+						 {
+        id: "slee_r",
+            label: "Сли, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, lantern:5},
+            description: "Сли никогда не хватает материалов для доработки его теорий.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
+			uniquenessgroup:"slee"
+        },
+						 {
+        id: "sylvia_r",
+            label: "Сильвия, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, moth:5},
+            description: "Планы Сильвии неясны. Кажется, они неясны даже самой Сильвии.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
+			uniquenessgroup:"sylvia"
+        },
+				 {
+        id: "tristan_r",
+            label: "Тристан, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, forge:5},
+            description: "Тристан куёт маленькое королевство. Когда огонь будет необходим, он применит огонь.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
+			uniquenessgroup:"tristan"
+        },
+			
+						 {
+        id: "valciane_r",
+            label: "Вальчиана, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, forge:5},
+            description: "Вальчиана расправляется со своими противниками с беспощадной живостью молодёжи, бьющей бутылки.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
+			uniquenessgroup:"valciane"
+        },
+			 {
+        id: "victor_r",
+            label: "Виктор, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, edge:5},
+            description: "Виктор готов ко всему. Все его ножи рвутся в бой как новобранцы.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
+			uniquenessgroup:"victor"
+        },
+		
+						 {
+        id: "violet_r",
+            label: "Виолет, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, winter:5},
+            description: "Виолет нашла новые увлечения.",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
+			uniquenessgroup:"violet"
+        },
+						 {
+        id: "ysabet_r",
+            label: "Изабет, смутьян",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, moth:5},
+            description: "Изабет ждёт там, где её не увидеть.",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
+			uniquenessgroup:"ysabet"
+        },
+		
+		]
+};

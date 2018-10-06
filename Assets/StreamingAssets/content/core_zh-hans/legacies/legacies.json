@@ -1,0 +1,150 @@
+{"legacies":
+    [
+{id: "aspirant",
+label: "初出茅庐",
+description: "6月28日，轮回再启。",
+startdescription: "孤身踏入这个寒风彻骨的城市，带着我一文不值的文凭和梦想。
+现在呢？我能否过上不一样的人生？",
+effects: {introjob:1},
+image: "aspirant",
+fromEnding:"default",
+availableWithoutEndingMatch:true
+},
+{id: "brightyoungthing",
+label: "富家子弟",
+description: "天擢一身通悟，地降富贵人家。前程洞明铺锦绣，自在只隔层纱。",
+startdescription: "我思念那黎明，一向皆然。而这样的思念，只会愈加生发。",
+effects: {legacybytjob:1,health:1},
+image: "byt",
+fromEnding:"deathofthebody",
+availableWithoutEndingMatch:true
+},
+{id: "physician",
+label: "医者",
+description: "每当病人命烛将熄，言语谵妄之时，我都会将他们的话悉数记录下来，并借此积攒了大量的记录——而在闷热喧嚣的夜晚中，我便会细加阅读这些记录，而读之弥久，集中的机理也越发清晰。",
+startdescription: "今天是我回到诊所务正业的日子——毕竟，我有工作要做，也有声名要保。而这些自然有所意义；然而，一些其它的东西，却渐渐出现在我的梦乡里面、",
+effects: {legacyphysicianjob:1,reason:1},
+image: "physician",
+fromEnding:"deathofthebody",
+availableWithoutEndingMatch:true
+},
+{id: "侦探",
+label: "侦探",
+description: "身为首都警察系统下的一名巡官，我的职责是追查那些一个人会对另一个人做下的，最为恶劣卑鄙的行为。",
+startdescription: "我曾终结过许多人的罪恶旅程：窃贼，杀人凶犯，勒索者，纵火人。然而，有些罪人的行径还要恶劣许多；而有时，在迎来清晨的时候，我的手都在莫名地颤抖。",
+effects: {legacydetectivejob:1,reason:1,health:1},
+image: "侦探",
+fromEnding:"arrest",
+availableWithoutEndingMatch:true
+},
+{id: "侦探postpromotion",
+label: "侦探",
+description: "身为首都警察系统下的一名巡官，我的职责是追查那些一个人会对另一个人做下的，最为恶劣卑鄙的行为。",
+startdescription: "我曾终结过许多人的罪恶旅程：窃贼，杀人凶犯，勒索者，纵火人。然而，有些罪人的行径还要恶劣许多；而有时，在迎来清晨的时候，我的手都在莫名地颤抖。",
+effects: {legacydetectivejob:1,reason:1,health:1},
+image: "lantern",
+fromEnding:"workvictoryb",
+availableWithoutEndingMatch:false
+},
+{id: "舞者",
+label: "舞者",
+description: "--",
+startdescription: "--",
+effects: {health:1,passion:1},
+image: "moth",
+fromEnding:"_workvictory",
+availableWithoutEndingMatch:false
+},
+{id: "apostle",
+label: "宣道者",
+description: "--",
+startdescription: "--",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_visionsending",
+availableWithoutEndingMatch:false
+},
+
+{id: "auctioneer",
+label: "拍卖师",
+description: "--",
+startdescription: "--",
+effects: {funds:5},
+image: "moth",
+fromEnding:"_workvictory",
+availableWithoutEndingMatch:false
+},
+{id: "priest",
+label: "圣职者",
+description: "--",
+startdescription: "--",
+effects: {passion:1},
+image: "moth",
+fromEnding:"_despairending",
+availableWithoutEndingMatch:false
+},
+
+{id: "medium",
+label: "媒者",
+description: "--",
+startdescription: "--",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_visionsending",
+availableWithoutEndingMatch:false
+},
+
+
+
+{id: "残存者",
+label: "残存者",
+description: "镜像中，人群间，既殁者，惊可见。",
+startdescription: "附有邪秽的起始符",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_wintersacrifice",
+availableWithoutEndingMatch:false
+},
+
+
+
+{id: "vessel",
+label: "化身",
+description: "--",
+startdescription: "--",
+effects: {introjob:1},
+image: "moth",
+fromEnding:_"minorlanternvictory",
+availableWithoutEndingMatch:false
+},
+{id: "tainted",
+label: "化身",
+description: "--",
+startdescription: "--",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_minorgrailvictory",
+availableWithoutEndingMatch:false
+},
+{id: "shaped",
+label: "化身",
+description: "--",
+startdescription: "--",
+effects: {introjob:1},
+image: "moth",
+fromEnding:"_minorforgevictory",
+availableWithoutEndingMatch:false
+},
+{id: "cousin",
+label: "同辈",
+description: "某日上午，日正高悬，万镜毕封之时，自会有物来叩你家门。“一位垂慈之人”，那灰衣的绅士将言道，“有一笔遗赠给你——不过，你许也根本不知道自己与其有所关联便是。”",
+startdescription: "继承者的初始笔记",
+effects: {introjob:1},
+image: "knock",
+fromEnding:"_",
+availableWithoutEndingMatch:false
+},
+
+
+]
+};

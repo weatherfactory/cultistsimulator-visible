@@ -1,0 +1,173 @@
+﻿{"recipes": [
+	  	  	   {id: "annoyanceseducehighgrail",
+	   label: "Я пошлю неотразимого миньона — заманить и обесчестить Помеху",
+	  actionId:"talk",
+	  startdescription:"Я хочу, чтобы это раздражение прекратилось. Не исключено, Помеха будет даже счастлива своим падением.",
+	  description:".",
+	  requirements: {annoyance:1,grail:10,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:70},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  	   {id: "annoyanceseducemidgrail",
+	   label: "Я пошлю обольстительного миньона — заманить и обесчестить Помеху",
+	  actionId:"talk",
+	  startdescription:"У каждого из нас есть слабость перед одним особым наслаждением. Я пошлю миньона, знающего многие лики удовольствий. Успех... очень вероятен.",
+	  description:".",
+	  requirements: {annoyance:1,grail:5,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:70},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyanceseducelowgrail",
+	   label: "Я пошлю привлекательного миньона — заманить и обесчестить Помеху",
+	  actionId:"talk",
+	  startdescription: "Кто знает, справится ли мой миньон? Помеха может даже не ощутить ни капли влечения.",
+	  description:".",
+	  requirements: {annoyance:1,grail:1,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:30},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  
+	  {id: "annoyanceseducesuccess",
+	   label: "Соблазнение Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной — и вполне удалось найти особый соблазн, которому готовно отдалась наша Помеха; цена была невысока — полностью уничтоженная репутация.",
+	  aspects:{endannoyance:1},	  
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  {id: "annoyanceseducefailure",
+	   label: "Соблазнение Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной, но вести разочаровывают. Подобрать ключ удовольствия, который соблазнил бы Помеху на безрассудство, не удалось.",
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	    {id: "annoyanceattackhighedge",
+	   label: "Я пошлю неостановимую силу для убийства Помехи",
+	  actionId:"talk",
+	  startdescription:"Моё терпение лопнуло, так что... Если только у моей цели нет какой-то необычной защиты, она уже мертва. Но эта смерть привлечёт внимание.",
+	  description:".",
+	  requirements: {annoyance:1,edge:10,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "annoyanceattackmidedge",
+	   label: "Я отправлю сильного миньона на убийство Помехи",
+	  actionId:"talk",
+	  startdescription:"Моё терпение лопнуло, так что... на этом вопрос должен быть исчерпан. Но у цели есть шансы выжить, и эта попытка привлечёт внимание.",
+	  description:".",
+	  requirements: {annoyance:1,edge:5,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:70},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyanceattacklowedge",
+	   label: "Я отправлю миньона на убийство Помехи",
+	  actionId:"talk",
+	  startdescription:"Помехе следует исчезнуть. Но этот подход связан с риском: сил у моего миньона не так уж много. Помеха вполне может выжить, и моя попытка привлечёт внимание.",
+	  description:".",
+	  requirements: {annoyance:1,edge:1,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:30},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	   {id: "annoyanceattacknoedge",
+	   label: "Я отправлю кого-то неподходящего на убийство Помехи",
+	  actionId:"talk",
+	  startdescription:"У моего миньона нет аспекта Грани; мой выбор прискорбно не подходит для нападения на Помеху. Может случиться чудо, и атака всё же увенчается успехом.",
+	  description:".",
+	  requirements: {annoyance:1,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:10},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "annoyanceattacksuccess",
+	   label: "Убийство Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной — и с трофеем. Помеха искоренена.",
+	  aspects:{endannoyance:1},
+	  effects: {corpse:1,notoriety:1},
+	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}],
+	  
+	  warmup:30	  
+	  },
+	  
+	  	  {id: "annoyancecapturesuccess",
+	   label: "Убийство Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной — и более того, Помеха захвачена в плен! Теперь у пленника будет время сожалеть о своих решениях.",
+	  aspects: {endannoyance:1},
+	  effects: {notoriety:1,genericprisonerm:1},
+	  aspects: {endannoyance:1},
+	  
+	  warmup:10	  
+	  },
+	  
+	  
+	  {id: "annoyanceattackfailure",
+	   label: "Убийство Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Вестей нет, как и миньона. Миссия провалилась. Вероятно, это мне ещё аукнется.",
+	  effects: {follower:-1,notoriety:1},
+	  warmup:10	  
+	  },
+	  
+	  
+	  
+	  
+	  	   {id: "annoyancederangemidmoth",
+	   label: "Я отправлю коварного миньона, чтобы свести Помеху с ума",
+	  actionId:"talk",
+	  startdescription:"Я хочу, чтобы это раздражение прекратилось. Наш план, вероятно, будет успешен, но если он провалится, то привлечёт внимание.",
+	  description:".",
+	  requirements: {annoyance:1,moth:5,follower:1},
+	  linked: [{id:"annoyancederangesuccess",chance:70},
+	  {id:"annoyancederangefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyancederangelowmoth",
+	   label: "Я отправлю коварного миньона, чтобы свести Помеху с ума",
+	  actionId:"talk",
+	  startdescription:"Я хочу, чтобы эта Помеха исчезла. Но способности моего миньона ограничены. Весьма вероятно, что миссия провалится, и в таком случае она привлечёт внимание.",
+	  description:".",
+	  requirements: {annoyance:1,moth:1,follower:1},
+	  linked: [{id:"annoyancederangesuccess",chance:30},
+	  {id:"annoyancederangefailure",chance:100}
+	  ]
+	  },
+	  
+	  {id: "annoyancederangesuccess",
+	   label: "Плетение ужасов чёрной ночи для Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной. Помеха даже не способна к членораздельной речи, и уж тем более больше меня не побеспокоит.",
+	  aspects:{endannoyance:1},	  
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  {id: "annoyancederangefailure",
+	   label: "Плетение ужасов чёрной ночи для Помехи...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной. Помеха оказалась устойчивее, чем мы полагали, и смогла сохранить разум в целости.",
+	  effects: {notoriety:1},
+	  warmup:30	  
+	  },
+]
+}

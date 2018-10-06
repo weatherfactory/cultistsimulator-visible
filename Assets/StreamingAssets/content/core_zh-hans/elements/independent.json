@@ -1,0 +1,232 @@
+{"elements":
+    [
+							 {
+        id: "generic_r",
+            label: "一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1,suspicious:1, edge:5},
+            description: "某个完全失去主次观念的人。",
+			animFrames: 1,
+			icon:"generic_b",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
+        },
+								 {
+        id: "auclair_r",
+            label: "奥克莱尔，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, winter:5},
+            description: "奥克莱尔喜欢国际象棋，现在更是如此。黑白对立，判然二分。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:auclair_d},
+			uniquenessgroup:"auclair"
+        },
+				 {
+        id: "cat_r",
+            label: "亲爱的主子，一个捣乱分子",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,lantern:5},
+            description: "她称呼自己为“亲爱的主子”。她曾是一名算命师，而现在则无人知晓。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:cat_d},
+			uniquenessgroup:"cat"
+        },
+
+									 {
+        id: "clifton_r",
+            label: "“教皇”克利夫顿，一个捣乱分子",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,lantern:5},
+            description: "克利夫顿喜欢被人称为“神圣的克里夫顿大人”。如果有人不这么称呼他，他要表现的可就不那么神圣了。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clifton_d},
+			uniquenessgroup:"clifton"
+        },
+	
+		 {
+        id: "clovette_r",
+            label: "柯洛维特，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, heart:5},
+            description: "即使知道她的劣迹，也很难讨厌柯洛维特。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:clovette_d},
+			uniquenessgroup:"clovette"
+        },
+		
+		 {
+        id: "dorothy_r",
+            label: "多萝西，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, heart:5},
+            description: "多萝西不会停止，她永远不会停止。她曾对此发誓。",
+			animFrames: 1,
+				xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:dorothy_d},
+			uniquenessgroup:"dorothy"
+        },
+								 {
+        id: "elridge_r",
+            label: "埃尔里奇，一个捣乱分子",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,edge:4},
+            description: "埃尔里奇的鞋子上总是有斑斑血迹。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:elridge_d}
+        },
+				 {
+        id: "enid_r",
+            label: "伊妮德，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, knock:5},
+            description: "伊妮德总能提前发现敌人来袭，每次都是如此。",
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:enid_d},
+			uniquenessgroup:"enid"
+        },
+	
+							 {
+        id: "laidlaw_r",
+            label: "莱德劳，一个捣乱分子",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,forge:5},
+            description: "莱德劳的计划总是错综复杂。",
+			animFrames: 1,
+			xtriggers: 
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:laidlaw_d},
+			uniquenessgroup:"laidlaw"
+						
+        },
+		{
+        id: "leo_r",
+            label: "里奥，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1,  heart:5},
+            description: "里奥已经选定了他的事业，而他将尽己所能来保护它。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:leo_d},
+			uniquenessgroup:"leo"
+        },
+				 {
+        id: "neville_r",
+            label: "内维尔，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, knock:5},
+            description: "当那一天来临时，内维尔将采取任何手段展示自我，即使他知道这不是长久之计。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:neville_d},
+			uniquenessgroup:"neville"
+        },
+				
+							 {
+        id: "porter_r",
+            label: "波特，一个捣乱分子",
+            aspects:
+            {mortal: 1,independent:1,suspicious:1,moth:5},
+            description: "波特已经开始编排名单了。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:porter_d},
+			uniquenessgroup:"porter"
+        },
+						 {
+        id: "renira_r",
+            label: "芮妮拉，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, grail:5},
+            description: "芮妮拉喜欢将他人的尊敬转变为崇拜。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:renira_d},
+			uniquenessgroup:"renira"
+        },
+							 {
+        id: "rose_r",
+            label: "蔷薇，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1,suspicious:1, edge:5},
+            description: "蔷薇早已不再畏惧她的敌人。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:rose_d},
+			uniquenessgroup:"rose"
+        },
+						 {
+        id: "saliba_r",
+            label: "萨利巴，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, grail:5},
+            description: "萨利巴无法忍受枯燥。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:saliba_d},
+			uniquenessgroup:"saliba"
+        },
+						 {
+        id: "slee_r",
+            label: "思蕾，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, lantern:5},
+            description: "思蕾总是渴望更多资源来推进她的理论。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:slee_d},
+			uniquenessgroup:"slee"
+        },
+						 {
+        id: "sylvia_r",
+            label: "西尔维娅，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, moth:5},
+            description: "西尔维娅的日程安排总是含混不清。有人怀疑甚至她自己也不太确定。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:sylvia_d},
+			uniquenessgroup:"sylvia"
+        },
+				 {
+        id: "tristan_r",
+            label: "崔斯坦，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, forge:5},
+            description: "崔斯坦正在建立一个小小王国。当有必要开启战端时，他会做的……",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:tristan_d},
+			uniquenessgroup:"tristan"
+        },
+			
+						 {
+        id: "valciane_r",
+            label: "万查妮，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, forge:5},
+            description: "万查妮通常用一个刚敲碎的瓶子来回应他人的反对。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:valciane_d},
+			uniquenessgroup:"valciane"
+        },
+			 {
+        id: "victor_r",
+            label: "维克多，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, edge:5},
+            description: "维克多已经准备好迎接可能来临的一切，他的所有刀刃都锋利如新。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:victor_d},
+			uniquenessgroup:"victor"
+        },
+		
+						 {
+        id: "violet_r",
+            label: "紫罗兰，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, winter:5},
+            description: "紫罗兰找到了新的乐子。",
+			animFrames: 1,
+						xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:violet_d},
+			uniquenessgroup:"violet"
+        },
+						 {
+        id: "ysabet_r",
+            label: "乌赛贝，一个捣乱分子",
+            aspects:
+            {mortal:1,independent:1, suspicious:1, moth:5},
+            description: "乌赛贝躲藏在阴影中等待。",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:ysabet_d},
+			uniquenessgroup:"ysabet"
+        },
+		
+		]
+};

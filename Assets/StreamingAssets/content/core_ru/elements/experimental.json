@@ -1,0 +1,53 @@
+﻿{"elements":
+    [
+      		 {
+            id: "owl",
+            label: "Сова без шляпы",
+            aspects:{job:1},
+            description: "Сова говорит: наш последний персонаж — #PREVIOUSCHARACTERNAME#, наше последнее желание — #LAST_DESIRE#, наш лучший приспешник — #LAST_FOLLOWER# и наша последняя книга #LAST_BOOK#.",
+			noartneeded:true
+        },
+				 {
+            id: "wolfatthedoor",
+            label: "Волк у Двери",
+            aspects:{ability:1,location:1,acquaintance:1},
+			slots: [{id:"Meal1",label:"Еда1",consumes:true,actionId:"work"}],
+			slots: [{id:"Meal2",label:"Еда2",consumes:true,actionId:"dream"}],
+			slots: [{id:"Meal3",label:"Еда3",consumes:true,actionId:"study"}],
+			slots: [{id:"Meal4",label:"Еда4",consumes:true,actionId:"talk"}],
+			slots: [{id:"Meal5",label:"Еда5",consumes:true,actionId:"explore"}],
+            description: "Волк примет всё, затем поглотит всё, неважно, что.",
+			noartneeded:true
+        },
+		 {
+            id: "wolf",
+      lifetime:1,
+	  decayTo:"wolfatthedoor",
+			noartneeded:true
+        },
+				 {
+            id: "lionweb",
+            label: "Лев в сети",
+			comments:"Information lives in the sky.",
+			noartneeded:true
+        },
+		{
+            id: "boarwords",
+            label: "Кабан в словах",
+			comments:"Titles are criminal.",
+			noartneeded:true
+        },
+				{
+            id: "worldbull",
+            label: "Мир в быке",
+			comments: "The crime At the beginning",
+			noartneeded:true
+        },
+						{
+            id: "notaworm",
+            label: "Возможно, птица",
+			comments: "We Await S.T.E.",
+			noartneeded:true
+        },
+]
+};

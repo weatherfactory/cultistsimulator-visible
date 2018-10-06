@@ -1,0 +1,96 @@
+ {"recipes":
+ [
+     			{
+        id: "vitalityhintdream",
+        label: "活力",
+        actionId: "dream",
+        requirements: {vitality:1},
+        startdescription: "它无法令我入梦。但我能研究它来增加健康。",
+        craftable: false,
+		hintonly: true,
+		
+		comments: "受到入梦首栏的条件限制，当前不可用。"
+    },
+	    			{
+        id: "eruditionhintdream",
+        label: "博学",
+        actionId: "dream",
+        requirements: {erudition:1},
+        startdescription: "它无法令我入梦。但我能研究它来增加理智。",
+        craftable: false,
+		hintonly: true,
+				comments: "受到入梦首栏的条件限制，当前不可用。"
+    },
+	    			{
+        id: "glimmeringhintdream",
+        label: "灵感",
+        actionId: "dream",
+        requirements: {glimmering:1},
+        startdescription: "它无法令我入梦。但我能研究它来增加热情。",
+        craftable: false,
+		hintonly: true,
+				comments: "受到入梦首栏的条件限制，当前不可用。"
+    },
+    			{
+        id: "contentmenthintdream",
+        label: "安逸",
+        actionId: "dream",
+        requirements: {contentment:1},
+        startdescription: "安逸的感觉于梦境而言并不关键，但梦境时常会让我产生安逸感……",
+        craftable: false,
+		hintonly: true,
+				comments: "受到入梦首栏的条件限制，当前不可用。"
+    },
+ 			{
+        id: "dedicationtoobsession_power_hint",
+        label: "下一步",
+        actionId: "dream",
+        requirements: {ascensionpowerb:1},
+        startdescription: "我已经没法继续在梦境中前行。我需要开始<b>工作</b>了。",
+        craftable: false,
+		hintonly: true,
+		
+    },
+	
+	 			{
+        id: "dedicationtoobsession_enlightenment_hint",
+        label: "下一步",
+        actionId: "dream",
+        requirements: {ascensionenlightenmentb:1},
+        startdescription: "我已经没法继续在梦境中前行。我需要开始<b>工作</b>了。",
+        craftable: false,
+		hintonly: true
+    },
+						{
+        id: "tryreducefascination",
+        label: "寻求冷静？",
+        actionId: "dream",
+        requirements: {fascination: 1},
+        startdescription: "幻象之门纷纷向我敞开。些微渗入的黑暗柔和了光芒。即使是恐惧，也并非全然无用。",
+hintonly:true,
+        craftable: false
+    },
+				{
+        id: "tryrecoverreason",
+        label: "放空下头脑？",
+        actionId: "dream",
+        requirements: {dread: 1},
+        startdescription: "我只记得我已经有所改变；但我想不起来究竟是如何改变的。[配合合适的资源，恐惧可以被还原成理智。]",
+     hintonly:true,
+        craftable: false
+    },
+			{
+        id: "tryrecoverillhealth",
+        label: "恢复？",
+        actionId: "dream",
+        requirements: {illhealth: 1},
+        startdescription: "休息能够让我恢复 - 如果我拥有必要的资源。",
+        craftable: false,
+		hintonly: true,
+		comments: "此项为通用。"
+    },
+
+	
+	
+]
+}

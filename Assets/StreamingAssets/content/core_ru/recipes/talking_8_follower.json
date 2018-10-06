@@ -1,0 +1,651 @@
+﻿{
+"recipes": [
+
+
+{id: "talktofollower",
+label:"Обсудить с приспешниками дела культа",
+actionId: "talk",
+requirements: {society:-1,follower: 1,summoned:-1},
+slots: [{id:"Subject",label:"Тема",description:"Наш культ, для дел культа; цель атаки; или иная тема.",required: {society:1,evidencelevel:1,hunter:1,ingredient:1,annoyance:1}}],
+comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+alternativerecipes:[
+
+{id:"talktohireling_rehire",chance:100},
+
+{id:"followeraction_repairtoollanternbcracked",chance:100},
+{id:"followeraction_repairtoollanterndcracked",chance:100},
+{id:"followeraction_repairtoollanternfcracked",chance:100},
+
+{id:"followeraction_abducthighedge",chance:100},
+{id:"followeraction_abductmidedge",chance:100},
+{id:"followeraction_abductlowedge",chance:100},
+{id:"followeraction_murderhighwinter",chance:100},
+{id:"followeraction_murdermidwinter",chance:100},
+{id:"followeraction_murderlowwinter",chance:100},
+{id:"followeraction_craftworkhighforge",chance:100},
+{id:"followeraction_craftworkmidforge",chance:100},
+{id:"followeraction_craftworklowforge",chance:100},
+{id:"followeraction_seducehighgrail",chance:100},
+{id:"followeraction_seducemidgrail",chance:100},
+{id:"followeraction_seducelowgrail",chance:100},
+{id:"followeraction_burglehighknock",chance:100},
+{id:"followeraction_burglemidknock",chance:100},
+{id:"followeraction_burglelowknock",chance:100},
+{id:"followeraction_charmhighheart",chance:100},
+{id:"followeraction_charmmidheart",chance:100},
+{id:"followeraction_charmlowheart",chance:100},
+{id:"followeraction_auguryhighlantern",chance:100},
+{id:"followeraction_augurymidlantern",chance:100},
+{id:"followeraction_augurylowlantern",chance:100},
+{id:"followeraction_hoodwinkhighmoth",chance:100},
+{id:"followeraction_hoodwinkmidmoth",chance:100},
+{id:"followeraction_hoodwinklowmoth",chance:100},
+
+{id:"hunterattackhighedge",chance:100},
+{id:"hunterattackmidedge",chance:100},
+{id:"hunterattacklowedge",chance:100},
+
+{id:"hunterattackhighwinter",chance:100},
+{id:"hunterattackmidwinter",chance:100},
+{id:"hunterattacklowwinter",chance:100},
+
+{id:"hunterattacknoedge",chance:100},
+
+
+
+{id:"annoyanceseducehighgrail",chance:100},
+{id:"annoyanceattackhighedge",chance:100},
+{id:"annoyanceseducemidgrail",chance:100},
+{id:"annoyanceattackmidedge",chance:100},
+{id:"annoyancederangemidmoth",chance:100},
+{id:"annoyanceseducelowgrail",chance:100},
+{id:"annoyanceattacklowedge",chance:100},
+{id:"annoyancederangelowmoth",chance:100},
+{id:"annoyanceattacknoedge",chance:100},
+
+
+
+
+{id: "evidencedestroymidmoth",chance:100},
+{id: "evidencedestroylowmoth",chance:100},
+{id: "evidencedestroynomoth",chance:100}
+
+],
+startdescription: "Важные беседы в задымлённой комнате для переговоров. Что я хочу от моих приспешников? [Добавьте культ, чтобы отправить собеседника на дела культа; покажите врага для устранения; или обсудите иные вопросы.]",
+description: "Значит, ничего.",
+warmup: 60,
+craftable: true
+},
+
+
+{id: "talktohireling_rehire",
+actionId:"talk",
+label:"Предложить наёмнику ещё один платёж.",
+requirements: {hireling:1,funds:1},
+startdescription:"Я могу добавить Средства и продлить верность этого наёмника.",
+description:"«Хорошо. На тех же условиях».",
+aspects:{hiring:1},
+effects:{funds:-1},
+craftable:true,
+warmup:10
+},
+
+{id:"followeraction_repairtoollanternbcracked",
+label:"Починить треснувший Полуденный Камень",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternbcracked:1},
+startdescription:"Мы можем приступить к починке, но для покупки необходимых материалов потребуются Средства.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternbcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternbcracked_attempt",
+label:"Починка треснувшего Полуденного Камня",
+actionId: "talk",
+slots: [{id:"Materials",label:"Материалы",description:"Редкие виды топлива, странные порошки",required:{funds:1}}],
+startdescription:"Чтобы завершить работу, требуются Средства.",
+description: "У меня не получилось найти нужные мастеру материалы. Камень не восстановлен.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternbcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternbcracked_succeed",
+label:"Починка треснувшего Полуденного Камня",
+actionId: "talk",
+requirements:{funds:1},
+startdescription:"Идёт работа над камнем.",
+description: "Камень цел! Он сияет вновь, как сиял раньше.",
+effects:{funds:-1,toollanternbcracked:-1,toollanternb:1}
+},
+
+
+{id:"followeraction_repairtoollanterndcracked",
+label:"Починить треснувшее Бесящее Зеркальце",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanterndcracked:1},
+startdescription:"Мы можем приступить к починке, но для покупки необходимых материалов потребуется как минимум бронзовая Спинтрия.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanterndcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanterndcracked_attempt",
+label:"Починка треснувшего Бесящего Зеркальца",
+actionId: "talk",
+slots: [{id:"Materials",label:"Материалы",description:"Редкие металлы, невозможные краски",required:{compensationvalue:4}}],
+startdescription:"Чтобы завершить работу, требуется Спинтрия, как минимум бронзовая.",
+description: "У меня не получилось найти нужные мастеру материалы. Зеркальце не восстановлено.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanterndcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanterndcracked_succeed",
+label:"Починка треснувшего Бесящего Зеркальца",
+actionId: "talk",
+requirements:{compensationvalue:4},
+startdescription:"Идёт работа над зеркалом.",
+description: "Зеркальце цело! Оно блестит вновь, как блестело раньше.",
+effects:{compensationvalue:-1,toollanterndcracked:-1,toollanternd:1}
+},
+
+
+
+{id:"followeraction_repairtoollanternfcracked",
+label:"Починить треснувшее Зеркало Дозорного",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternfcracked:1},
+startdescription:"Чтобы завершить работу, требуется Спинтрия, как минимум серебряная.",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternfcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternfcracked_attempt",
+label:"Починка треснувшего Зеркала Дозорного",
+actionId: "talk",
+slots: [{id:"Materials",label:"Материалы",description:"Искристые песни, экзотические сплавы",required:{compensationvalue:8}}],
+startdescription:"Чтобы завершить работу, требуется Спинтрия, как минимум серебряная.",
+description: "У меня не получилось найти нужные мастеру материалы. Зеркало не восстановлено.",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternfcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternfcracked_succeed",
+label:"Починка треснувшего Зеркала Дозорного",
+actionId: "talk",
+requirements:{compensationvalue:8},
+startdescription:"Идёт работа над зеркалом.",
+description: "Зеркало цело! Оно блестит вновь, как блестело раньше.",
+effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
+},
+
+
+	   {id: "followeraction_abducthighedge",
+	   label: "Дела культа: похищение незнакомца",
+	  actionId:"talk",
+	  startdescription:"Ассасин с лёгкостью заберёт незнакомца с улиц.",
+	  description:".",
+	  requirements: {society:1,edge:10,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_abductmidedge",
+	   label: "Дела культа: похищение незнакомца",
+	  actionId:"talk",
+	  startdescription:"Адепт, вероятно, в силах похитить опрометчивую жертву.",
+	  requirements: {society:1,edge:5,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:70},
+	  {id:"followeraction_abductfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_abductlowedge",
+	   label: "Дела культа: похищение незнакомца",
+	  actionId:"talk",
+	  startdescription:"Неофиту будет сложно похитить жертву, но удача может и улыбнуться.",
+	  requirements: {society:1,edge:1,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:30},
+	  {id:"followeraction_abductfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_abductsuccess",
+	   label: "Попытка похищения...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной. Живой трофей — в аккуратной упаковке.",
+	  effects: {notoriety:1, funds:1},
+	  deckeffect: {"randomvictim":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_abductfailure",
+	   label: "Попытка похищения...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной, но с пустыми руками.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_abductfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_abductfailure_losefollower",
+	   label: "Попытка похищения...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньона нет. Я никогда не узнаю, что же произошло.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_murderhighwinter",
+	   label: "Дела культа: убийство незнакомца",
+	  actionId:"talk",
+	  startdescription:"Возвращение с трупом совершенно неизбежно.",
+	  description:".",
+	  requirements: {society:1,winter:10,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_murdermidwinter",
+	   label: "Дела культа: убийство незнакомца",
+	  actionId:"talk",
+	  startdescription:"Адепт, вероятно, сможет вернуться со свежим трупом.",
+	  requirements: {society:1,winter:5,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:70},
+	  {id:"followeraction_murderfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_murderlowwinter",
+	   label: "Дела культа: убийство незнакомца",
+	  actionId:"talk",
+	  startdescription:"Неофит, очень вероятно, провалится.",
+	  requirements: {society:1,winter:1,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:30},
+	  {id:"followeraction_murderfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_murdersuccess",
+	   label: "Попытка убийства...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной, со свежим трупом и тем, что жертве принадлежало.",
+	  effects: {notoriety:1,corpse:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_murderfailure",
+	   label: "Попытка убийства...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной, но с пустыми руками.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_murderfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_murderfailure_losefollower",
+	   label: "Попытка убийства...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньона нет. Я никогда не узнаю, что же произошло.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_craftworkhighforge",
+	   label: "Дела культа: труд мастеровых",
+	  actionId:"talk",
+	  startdescription:"Меняющие точно найдут себе место в нелегальных лабораториях и сомнительных производствах.",
+	  description:".",
+	  requirements: {society:1,forge:10,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_craftworkmidforge",
+	   	   label: "Дела культа: труд мастеровых",
+	  actionId:"talk",
+	  startdescription:"Адепт, вероятно, найдёт заработок в нелегальных лабораториях и сомнительных производствах — но могут быть несчастные случаи.",
+	  requirements: {society:1,forge:5,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:70},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_craftworklowforge",
+	   	   label: "Дела культа: труд мастеровых",
+	  actionId:"talk",
+	  startdescription:"Неофит может найти заработок в нелегальных лабораториях и сомнительных производствах... если повезёт.",
+	  requirements: {society:1,forge:1,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:30},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_craftworksuccess",
+	   label: "Труд по контракту...",
+	  actionId:"talk",
+	  startdescription: "В городе есть устройства, незаконные для государства. Есть и незаконные для природы. Некоторые — крайне опасны.",
+	  description:"Миньон со мной, как и плоды труда.",
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_craftworkfailure",
+	   label: "Труд по контракту...",
+	  actionId:"talk",
+	  startdescription: "В городе есть устройства, незаконные для государства. Есть и незаконные для природы. Некоторые — крайне опасны.",
+	  description:"Миньон с пустыми руками. Сегодняшние задачи были слишком сложны.",
+	  effects: {},
+	  alternativerecipes: [{id:"followeraction_craftworkfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_craftworkfailure_losefollower",
+	   label: "Труд по контракту...",
+	  actionId:"talk",
+	  startdescription: "В городе есть устройства, незаконные для государства. Есть и незаконные для природы. Некоторые — крайне опасны.",
+	  description:"Произошёл несчастный случай.",
+	  aspects: {killmortal:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	    {id: "followeraction_seducehighgrail",
+	   label: "Дела культа: соблазнение незнакомцев",
+	  actionId:"talk",
+	  startdescription:"Никто не отказывает Распутникам.",
+	  description:".",
+	  requirements: {society:1,grail:10,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_seducemidgrail",
+	   label: "Дела культа: соблазнение незнакомцев",
+	  actionId:"talk",
+	  startdescription:"Адепт, вероятно, сможет заманить к нам доверчивую жертву — если найдёт слова, чтобы убедить её.",
+	  requirements: {society:1,grail:5,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:70},
+	  {id:"followeraction_seducefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_seducelowgrail",
+	   label: "Дела культа: соблазнение незнакомцев",
+	  actionId:"talk",
+	  startdescription:"Неофит, может быть, сможет заманить к нам жертву.",
+	  requirements: {society:1,grail:1,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:30},
+	  {id:"followeraction_seducefailure",chance:100}]
+	  },
+
+	  
+	  {id: "followeraction_seducesuccess",
+	   label: "Попытка соблазнения...",
+	  actionId:"talk",
+	  startdescription: "Где-то в ночи будущей жертве шепчут слова, и некоторые из них, возможно, искренни. Может быть, жертва знает, что слышит ложь. Может быть, это не важно.",
+	  description:"Миньон со мной, и рядом — жертва, покорённая наслаждением.",
+	  effects: {notoriety:1, funds:1},
+	  deckeffect: {"randomvictim":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_seducefailure",
+	   label: "Попытка соблазнения...",
+	  actionId:"talk",
+	  startdescription: "Где-то в ночи будущей жертве шепчут слова, и некоторые из них, возможно, искренни. Может быть, жертва знает, что слышит ложь. Может быть, это не важно.",
+	  description:"Миньон со мной, и с пустыми руками.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_seducefailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_seducefailure_losefollower",
+	   label: "Попытка соблазнения...",
+	  actionId:"talk",
+	  startdescription: "Где-то в ночи будущей жертве шепчут слова, и некоторые из них, возможно, искренни. Может быть, жертва знает, что слышит ложь. Может быть, это не важно.",
+	  description:"Миньона нет. Я никогда не узнаю, что же произошло.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  
+	  
+	  	   {id: "followeraction_burglehighknock",
+	   label: "Дела культа: кража со взломом",
+	  actionId:"talk",
+	  startdescription:"Мой Ключ может открыть любой замок в этом городе.",
+	  description:".",
+	  requirements: {society:1,knock:10,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_burglemidknock",
+	   	   label: "Дела культа: кража со взломом",
+	  actionId:"talk",
+	  startdescription:"Адепт, вероятно, сможет применить свои таланты, чтобы найти трофеи в чужих домах.",
+	  requirements: {society:1,knock:5,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:70},
+	  {id:"followeraction_burglefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_burglelowknock",
+	   	   label: "Дела культа: кража со взломом",
+	  actionId:"talk",
+	  startdescription:"Неофит, может быть, сумеет найти трофеи в чужих домах, если повезёт.",
+	  requirements: {society:1,knock:1,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:30},
+	  {id:"followeraction_burglefailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_burglesuccess",
+	   label: "Взлом, вход, выход...",
+	  actionId:"talk",
+	  startdescription: "Чердаки и подвалы, запертые шкафы и потайные отсеки — им равно доверяют свои ценности люди, очень неравные по достатку.",
+	  description:"Миньон со мной — и с добычей.",
+	  effects: {notoriety:1,funds:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_burglefailure",
+	   label: "Взлом, вход, выход...",
+	  actionId:"talk",
+	  startdescription: "Чердаки и подвалы, запертые шкафы и потайные отсеки — им равно доверяют свои ценности люди, очень неравные по достатку.",
+	  description:"Миньон с пустыми руками. Сегодняшние дела были слишком сложны.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_burglefailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_burglefailure_losefollower",
+	   label: "Взлом, вход, выход...",
+	  actionId:"talk",
+	  startdescription: "Чердаки и подвалы, запертые шкафы и потайные отсеки — им равно доверяют свои ценности люди, очень неравные по достатку.",
+	  description:"Произошёл несчастный случай.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	  
+	  
+	  	   {id: "followeraction_charmhighheart",
+	   label: "Дела культа: обаяние",
+	  actionId:"talk",
+	  startdescription:"Не все сочувствуют нашим целям, но Тарантеллиста знают все в округе. Если у нас есть проблемы с репутацией, Тарантеллист безусловно сгладит их.",
+	  description:".",
+	  requirements: {society:1,heart:10,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_charmmidheart",
+	   	   label: "Дела культа: обаяние",
+	  actionId:"talk",
+	  startdescription:"Не все сочувствуют нашим целям, но если у нас есть проблемы с репутацией, наш Адепт, вероятно, сгладит их.",
+	  requirements: {society:1,heart:5,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:70},
+	  {id:"followeraction_charmfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_charmlowheart",
+	   	   label: "Дела культа: обаяние",
+	  actionId:"talk",
+	  startdescription:"Не все сочувствуют нашим целям, но если у нас есть проблемы с репутацией, наш Неофит, возможно, сгладит их.",
+	  requirements: {society:1,heart:1,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:30},
+	  {id:"followeraction_charmfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_charmsuccess",
+	   label: "Искренние речи, учтивые беседы",
+	  actionId:"talk",
+	  slots: [{id:"Reputation",label:"Репутация",required:{reputation:1},greedy:true}],
+	  startdescription: "Правила и ожидания обыденного общества к нам неприменимы. Но, возможно, мы не будем это подчёркивать. Возможно, мы сделаем упор на обаяние и чувство юмора. На такой случай у меня уже заготовлены элегантные банальности о высших принципах нашей организации.",
+	  description:"Оптимизм — маленький, но спасительный, штрих.",
+	  effects: {reputation:-1},
+	  warmup:30
+	  },	  
+	  
+	  {id: "followeraction_charmfailure",
+	   label: "Искренние речи, учтивые беседы",
+	  actionId:"talk",
+	  slots: [{id:"Reputation",label:"Репутация",required:{reputation:1},greedy:true}],
+	  startdescription: "Правила и ожидания обыденного общества к нам неприменимы. Но, возможно, мы не будем это подчёркивать. Возможно, мы сделаем упор на обаяние и чувство юмора. На такой случай у меня уже заготовлены элегантные банальности о высших принципах нашей организации.",
+	  description:"Никто не понимает нас; или понимает слишком хорошо.",
+	  effects: {rumour:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  	   {id: "followeraction_auguryhighlantern",
+	   label: "Дела культа: прорицание",
+	  actionId:"talk",
+	  startdescription:"Пророк может определить времена и места, где мы сможем дотянуться до силы.",
+	  description:".",
+	  requirements: {society:1,lantern:10,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_augurymidlantern",
+	   	   label: "Дела культа: прорицание",
+	  actionId:"talk",
+	  startdescription:"Адепт, вероятно, сможет определить времена и места, где мы сможем дотянуться до силы; но в делах Обители безопасности нет.",
+	  requirements: {society:1,lantern:5,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:70},
+	  {id:"followeraction_auguryfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_augurylowlantern",
+	   	   label: "Дела культа: прорицание",
+	  actionId:"talk",
+	  startdescription:"Неофит, возможно, сможет определить времена и места, где мы сможем дотянуться до силы; но в делах Обители безопасности нет.",
+	  requirements: {society:1,lantern:1,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:30},
+	  {id:"followeraction_auguryfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_augurysuccess",
+	   label: "Под кожей мира",
+	  actionId:"talk",
+	  startdescription: "Часы изучения и медитации...",
+	  description:"Исследователь знает ещё один путь, как совместить наш труд с великой работой Часов.",
+	  effects: {erudition:1},
+	  deckeffect: {"randominfluencelow":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_auguryfailure",
+	   label: "Под кожей мира",
+	  actionId:"talk",
+	  startdescription: "Часы изучения и медитации...",
+	  description:"Поиск завёл слишком далеко. Разум исследователя не пострадал, но свет Обители проник в мир.",
+	  effects: {fascination:1},
+	  alternativerecipes: [{id:"followeraction_auguryfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_auguryfailure_losefollower",
+	   label: "Под кожей мира",
+	  actionId:"talk",
+	  startdescription: "Часы изучения и медитации...",
+		  description:"Поиск завёл слишком далеко. Свет Обители коснулся мира в этом месте — и рассудок исследователя растаял под ним.",
+	  effects: {fascination:1},
+	  aspects: {derangemortal:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  	   {id: "followeraction_hoodwinkhighmoth",
+	   label: "Дела культа: обман",
+	  actionId:"talk",
+	  startdescription:"Кожевенник совершенным коварством разлучит дураков с их ценностями так же легко, как нарвёт груш с дерева в саду.",
+	  description:".",
+	  requirements: {society:1,moth:10,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_hoodwinkmidmoth",
+	   	   label: "Дела культа: обман",
+	  actionId:"talk",
+	  startdescription:"Вероятно, Адепт сможет воспользоваться своими навыками, чтобы разлучить дураков с их ценностями.",
+	  requirements: {society:1,moth:5,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:70},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_hoodwinklowmoth",
+	   	   label: "Дела культа: обман",
+	  actionId:"talk",
+	  startdescription:"Неофит, возможно, сможет разлучить дураков с их ценностями... если повезёт.",
+	  requirements: {society:1,moth:1,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:30},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_hoodwinksuccess",
+	   label: "Обман и заблуждение",
+	  actionId:"talk",
+	  startdescription: "Приспешник обманывает, чтобы получить доход...",
+	  description:"Успешный обман! Вот мои трофеи.",
+	  effects: {notoriety:1,funds:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_hoodwinkfailure",
+	label: "Обман и заблуждение",
+	  actionId:"talk",
+	  startdescription: "Приспешник обманывает, чтобы получить доход...",
+	  description:"Миньон со мной, и с пустыми руками. Коварная схема была раскрыта.",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_hoodwinkfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_hoodwinkfailure_losefollower",
+		label: "Обман и заблуждение",
+	  actionId:"talk",
+	  startdescription: "Приспешник обманывает, чтобы получить доход...",
+	  description:"Миньона нет. Возможно, и это тоже всего лишь обман — чтобы подстроить собственное исчезновение.",
+	  effects: {notoriety:1,follower:-1},
+	  warmup:30	  
+	  },
+
+
+
+
+]
+}

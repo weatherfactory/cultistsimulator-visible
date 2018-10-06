@@ -1,0 +1,403 @@
+﻿{
+"recipes": [
+
+
+	   {
+        id: "ascensionpower_upgradetoobsession",
+        label: "Горящий Ключ",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:6},
+        effects: {ascensionpowerb:-1,ascensionpowerc:1},
+        startdescription: "Этот ритуал — Ключ, который откроет Кузне Дней путь в меня. Я изменюсь навсегда.",
+        description: "Ритуал завершён. Знаки Кузни на мне. Первый Знак — то, что сказано, Второй Знак — то, что сделано. Третий Знак я найду, осмотрев своё тело. Я пылаю новыми потребностями.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+		
+	   {
+	   comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionm",
+        label: "Стонущий Ключ",
+        actionId: "work",
+        requirements: {ascensionsensationbm:1,
+		waystag_after:1,
+		grail:6},
+        effects: {ascensionsensationbm:-1,ascensionsensationc:1},
+        startdescription: "Этот ритуал — Ключ, который откроет Алой Чаше путь в меня. Я изменюсь навсегда.",
+        description: "Ритуал завершён. Знаки Чаши на мне. Первый Знак — то, что сказано, Второй Знак — то, что сделано. Третий Знак я найду, осмотрев своё тело. Я дрожу от новых желаний.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+		   {
+		comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionf",
+        label: "Стонущий Ключ",
+        actionId: "work",
+        requirements: {ascensionsensationbf:1,
+		waystag_after:1,
+		grail:6},
+        effects: {ascensionsensationbf:-1,ascensionsensationc:1},
+        startdescription: "Этот ритуал — Ключ, который откроет Алой Чаше путь в меня. Я изменюсь навсегда.",
+        description: "Ритуал завершён. Знаки Чаши на мне. Первый Знак — то, что сказано, Второй Знак — то, что сделано. Третий Знак я найду, осмотрев своё тело. Я дрожу от новых желаний.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+			   {
+        id: "ascensionsensation_switchpolarity_mtof",
+        label: "Предпочтения",
+        actionId: "dream",
+        requirements: {ascensionsensationbm:1},
+        effects: {ascensionsensationbm:-1,ascensionsensationbf:1},
+        startdescription: "Для продолжения пути снов уже недостаточно. Предстоит выполнить <b>Труд</b>. Но, возможно, в снах и фантазиях я предпочитаю не мужчин...",
+        description: "Вкусы переиначиваются, желания меняются, мысли склоняются к иным формам.",
+        warmup: 3,
+        craftable: true
+    },
+			   {
+        id: "ascensionsensation_switchpolarity_ftom",
+        label: "Предпочтения",
+        actionId: "dream",
+        requirements: {ascensionsensationbf:1},
+        effects: {ascensionsensationbf:-1,ascensionsensationbm:1},
+        startdescription: "Для продолжения пути снов уже недостаточно. Предстоит выполнить <b>Труд</b>. Но, возможно, в моих снах и фантазиях я предпочитаю не женщин...",
+        description: "Вкусы переиначиваются, желания меняются, мысли склоняются к иным формам.",
+        warmup: 3,
+        craftable: true
+    },
+
+	
+	   {
+        id: "ascensionenlightenment_upgradetoobsession",
+        label: "Слепящий Ключ",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:6},
+        effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
+        startdescription: "Этот ритуал — Ключ, который откроет взгляду Дозорного путь в меня. Я изменюсь навсегда.",
+        description: "Ритуал завершён. Знаки Дозорного на мне. Первый Знак — то, что сказано, Второй Знак — то, что сделано. Третий Знак я найду, осмотрев своё тело. Мои потребности утончены.",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+	   {
+        id: "majorforgevictory",
+        label: "РАССВЕТ ПРИШЁЛ",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:50},
+        effects: {},
+        startdescription: "[Этот текст доступен при продвинутых наследиях.]",
+        description: "Помните, что текст окончания будет содержать суть.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorforgevictory",
+        label: "Сожжение сердца",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:36},
+        effects: {},
+        startdescription: "Огонь знаком мне не меньше родного дома. Плиты моей плоти со скрежетом трутся друг об друга. Я призываю огонь Кузни, и он отделит меня от того, что считалось мной. Я умру, когда пройду Трёхстворчатые Врата, но смерть — это не конец. Я достигну бессмертия; я буду среди Долгих, избранных Кузней.",
+        description: "Я становлюсь именем огня. Помните, что текст окончания будет содержать суть.",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorforgevictory"
+    },	
+		   {
+        id: "majorgrailvictory",
+        label: "ПИР БЛИЗОК",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:50},
+        effects: {},
+        startdescription: "[Этот текст доступен при продвинутых наследиях.]",
+        description: "Пир начинается. Помните, что текст окончания будет содержать суть.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorgrailvictory",
+        label: "Пир истинного рождения",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:36},
+        effects: {},
+        startdescription: "Меня переполняют чужие жизни. Швы моего тела начинают рваться. Теперь я призываю Алую Чашу, Источник, Мать Гор. Во имя Её я рожусь из себя. Трёхстворчатые Врата открываются. Я достигну бессмертия; я буду среди Долгих, возлюбленных Чашей.",
+        description: "Я иду...",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorgrailvictory"
+    },
+		   {
+        id: "majorlanternvictory",
+        label: "ЛАМПАДА",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:50},
+        effects: {},
+        startdescription: "[Этот текст доступен при продвинутых наследиях.]",
+        description: "Я приближаюсь к Славе. Помните, что текст окончания будет содержать суть.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorlanternvictory",
+        label: "Вторжение",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:36},
+        effects: {},
+        startdescription: "От этой плоти почти ничего не осталось. Я пройду через Трёхстворчатые Врата и не вернусь. Дозорный ждёт меня. По Его следам я найду свет Славы. Понимание слишком велико для моей души, и душа раскроется. Я не буду среди бессмертных: я превзойду их.",
+        description: "Я иду...",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorlanternvictory"
+    },
+	
+		{id:"ambition",
+		requirements: {seasonambitions:1},
+		label:"Странные влечения?",
+		actionId: "craving",
+		slots: [{id:"Obsessions",label:"Одержимости",description: "Глубинная жажда",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3}, greedy:true }],
+		startdescription: "Какие желания необоримо влекут меня?",
+		description: "",
+		effects: {},
+		warmup: 10,
+		linked: [	
+		{id:"ascensioncravingpower",chance:100},
+		{id:"ascensioncravingsensation",chance:100},
+		{id:"ascensioncravingenlightenment",chance:100},
+		{id:"ascensionnotyet",chance:100}]
+		},
+		
+		{id:"ascensionnotyet",
+		label:"Смертные расстройства",
+		actionId: "craving",
+		requirements: {enlightenmentmarks:-1,powermarks:-1,sensationmarks:-1},
+		slots: [{id:"Temptations",label:"Соблазны",description: "Огонь требует пищи",required: {desire:1}, greedy:true }],
+		startdescription: "Какие желания необоримо влекут меня?",
+		effects: {restlessness:1},
+		description: "Пока что мои нужды и желания — те же, что у прочих смертных. Но что меня так беспокоит?",
+		alternativerecipes: [
+		{id:"ascensionhintpower2",chance:100},
+		{id:"ascensionhintenlightenment2",chance:100},
+{id:"ascensionhintsensation2m",chance:100},
+		{id:"ascensionhintsensation2f",chance:100},
+		
+		{id:"ascensionhintpower1",chance:100},
+		{id:"ascensionhintenlightenment1",chance:100},
+		{id:"ascensionhintsensation1",chance:100},
+		{id:"legacydetectiveplotitem_tempt",chance:100}
+		],
+		warmup:10
+		},
+		
+		
+				{id:"ascensionhintpower2",
+		label:"Рёв Кузни",
+		actionId:"craving",
+		requirements:{ascensionpowerb:1},
+		startdescription:"Мне постоянно не хватает тепла.",
+		description: "Я помню сны о Кузне, и я тоскую по жару её пламени. Почти пришло время выполнить Труд и начать изменение, надо лишь найти достаточно силы Кузни. Возможно, пора отправиться в <b>Поиск</b>.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment2",
+		label:"Свет Дозорного",
+		actionId:"craving",
+		requirements:{ascensionenlightenmentb:1},
+		startdescription:"Даже когда не сплю, я замечаю новые цвета.",
+		description: "Моё любопытство превращается в физическую потребность. Мои глаза станут преддвериями. Почти пришло время выполнить Труд и начать изменение, надо лишь найти достаточно силы Лампады. Возможно, пора отправиться в <b>Поиск</b>.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation2m",
+		label:"Касание Чаши",
+		actionId:"craving",
+		requirements:{ascensionsensationbm:1},
+		startdescription:"Мои желания меняются.",
+		description: "Чудесные волны Чаши скользят во мне. Почти пришло время выполнить Труд и начать изменение, надо лишь найти достаточно силы Чаши. Возможно, пора отправиться в <b>Поиск</b>.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+						{id:"ascensionhintsensation2f",
+		label:"Касание Чаши",
+		actionId:"craving",
+		requirements:{ascensionsensationbf:1},
+		startdescription:"Мои желания меняются.",
+		description: "Чудесные волны Чаши скользят во мне. Почти пришло время выполнить Труд и начать изменение, надо лишь найти достаточно силы Чаши. Возможно, пора отправиться в <b>Поиск</b>.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		{id:"ascensionhintpower1",
+		label:"Сияние Кузни",
+		actionId:"craving",
+		requirements:{ascensionpowera:1},
+		startdescription:"Голод сжигает моё сердце — голод по силе, что могут принести незримые искусства.",
+		description: "Кузня Дней ждёт в моих снах. Если я освою знание Кузни и направлю этот соблазн в сны, я смогу шагнуть по пути дальше. Нужда снедает меня.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment1",
+		label:"Следы Дозорного",
+		actionId:"craving",
+		requirements:{ascensionenlightenmenta:1},
+		startdescription:"Голод сияет в моём мозгу — голод по знанию, что могут принести незримые искусства.",
+		description: "Дозорный, или Вход-в-Глаз, ждёт в моих снах. Если я освою знание Лампады и направлю этот соблазн в сны, я смогу шагнуть по пути дальше. Нужда снедает меня.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation1",
+		label:"Шёпот Чаши",
+		actionId:"craving",
+		requirements:{ascensionsensationa:1},
+		startdescription:"Желания рыщут в моём теле — желания удовольствий, что могут принести незримые искусства.",
+		description: "Алая Чаша, чаша поглощения и пожирания, ждёт в моих снах. Если я освою знание Чаши и направлю этот соблазн в сны, я смогу шагнуть по пути дальше. Нужда снедает меня.",
+		effects:{restlessness:1},
+		warmup:10
+		},
+
+		{id:"ascensioncravingpower",
+		label:"Формующий жар",
+		actionId: "craving",
+		requirements: {powermarks:1},
+		slots: [{id:"Fuels",label:"Топливо",description: "Огонь требует пищи",required: {funds:1}, greedy:true }],
+		startdescription: "Мне необходимы ещё более жаркие огни. Сейчас это топливо редко и дорого. Если средств на них не хватит, холод одолеет меня.",
+		linked: [{id:"ascensionsuccesscravingpower_descend",chance:100},
+		{id:"ascensioncravingpower_ascend",chance:100}],
+		warmup:30
+		},
+		
+		{
+		id:"ascensionsuccesscravingpower_descend",
+		label:"Пепел изменения",		
+		actionId: "craving",
+		requirements: {funds:-1},
+		slots: [{id:"Pain",label:"Боль",description: "Нужда снедает меня", required: {health:1,vitality:1}, greedy:true}],		
+		startdescription: "Я дрожу. Без огня моя плоть истончится и ослабнет.",
+		description: "Моя сила гаснет. Моя кровь холодеет. Кажется, даже некоторые шрамы затягиваются. Я уменьшаюсь.",
+		aspects: {descend:1,damagehealth:1},
+		effects:{vitality:-1},
+		warmup:30
+		},
+		
+				{
+		id:"ascensioncravingpower_ascend",
+		label:"Ещё один Знак",
+		actionId: "craving",
+		startdescription:"",
+		description: "Пламя жаждет меня не меньше, чем я — его. Касание огня — далеко за пределами боли. На мне ещё один Знак.",
+		effects: {vitality:2,funds:-1},
+		aspects: {ascend:1}
+		},
+		
+
+		
+		{id:"ascensioncravingsensation",
+		label:"Красная нужда",
+		actionId: "craving",
+		requirements: {sensationmarks:1},
+				slots: [{id:"Sustenance",label:"Питание",description: "Свежая падаль, или кто-то живой.",required: {corpse:1, lunatic:-1, prisoner:1}, greedy:true }],
+				startdescription: "Жажда крови? О, если бы так просто. Я упьюсь этим телом намного глубже.",
+		linked: [
+		{id:"ascensionsuccesscravingsensation_descend",chance:100},
+		{id:"ascensioncravingsensation_ascend",chance:100}
+		],
+		warmup:30
+		},
+
+		
+		{
+		id:"ascensionsuccesscravingsensation_descend",
+		label:"Пустыня внутри",		
+		actionId: "craving",
+		requirements: {corpse:-1,lunatic:-1,prisoner:-1},
+		slots: [{id:"Pain",label:"Боль",description: "Нужда снедает меня", required: {passion:1,glimmering:1}, greedy:true}],		
+		startdescription: "Без чужой жизни моя собственная жизнь начнёт пожирать себя.",
+		description: "Мои соки разжижаются; моя плоть сохнет; метаморфозы отступают. Я становлюсь меньше своих желаний.",
+		aspects: {descend:1,fatiguing:1},
+		effects:{glimmering:-1},
+		warmup:30
+		},
+		
+		
+				{
+		id:"ascensioncravingsensation_ascend",
+		label:"Ещё один Знак",
+		actionId: "craving",
+		effects: {glimmering:2,corpse:-1,lunatic:-1,prisoner:-1},
+		startdescription:"",
+			description: "Всё кончено, и моё удовлетворение глубже, чем луна в море. Ещё один Знак набухает во мне.",
+		aspects: {ascend:1}
+		},
+		
+		
+		
+				{id:"ascensioncravingenlightenment",
+		label:"Любопытство Света",
+		actionId: "craving",
+		requirements: {enlightenmentmarks:1},
+		slots: [{id:"Conversation",label:"Беседа",description: "Последние слова живого разума.",required: {prisoner:1}, greedy:true }],
+		startdescription: "Время в тихой комнате наедине с живым разумом. Это всё, что мне нужно.",
+		linked: [,
+		{id:"ascensionsuccesscravingenlightenment_descend",chance:100},
+		{id:"ascensioncravingenlightenment_ascend",chance:100}],
+		warmup:30
+		},
+
+		
+		{
+		id:"ascensionsuccesscravingenlightenment_descend",
+		label:"Пустыня внутри",		
+		actionId: "craving",
+		requirements: {prisoner:-1},
+		slots: [{id:"Pain",label:"Боль",description: "Нужда снедает меня", required: {reason:1,erudition:1}, greedy:true}],		
+		startdescription: "Если я окажусь не в силах поглотить мысли живого разума, моя нужда обернётся против себя же.",
+		description: "Свет Обители гаснет во мне. Теперь я меньше, чем раньше. Мне нужна беседа. Мне нужны очень определённые беседы.",
+		aspects: {descend:1,fatiguing:1},
+		effects:{erudition:-1},
+		warmup:30
+		},
+		
+				{
+		id:"ascensioncravingenlightenment_ascend",
+		label:"Ещё один Знак",
+		actionId: "craving",
+		effects: {erudition:2,prisoner:-1},
+		startdescription:"",
+		description: "Свет разума выпит — о, как он волнует и наполняет. Знак разгорается во мне.",
+		aspects: {ascend:1}
+		},
+	
+		
+	
+	
+]
+}

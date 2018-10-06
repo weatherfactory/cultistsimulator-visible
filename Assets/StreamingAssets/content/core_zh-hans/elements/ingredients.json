@@ -1,0 +1,138 @@
+{"elements":
+    [
+					{id: "corpse",
+	label: "一具人类尸体",
+	description: "这具肉体的灵魂已经离开。它腐败后散发的气味会让你不得不把它处理掉，但至少现在还没到那时候。尸体会吸引额外的注意；也可以用来震慑那些容易动摇的人。[即使是在把尸体处理掉之后，邪名依旧存在。]",
+	aspects: {winter:3,grail:3,ingredient:1,reputation:2},
+	lifetime:60,
+	decayTo:"notoriety"
+	},
+				{id: "ingredientedgeb",
+	label: "马氏膏",
+	description: "剑上使用的圣油。有着令人着迷的银绿色。",
+	aspects: {edge:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientedged",
+	label: "拉比特的谷物",
+	description: "拉比特们是锻狮最年轻的仆从。当磨制这种粉末时，他们更注重效力而不是外观……",
+	aspects: {edge:8,auctionable:4,ingredient:1}
+	},
+	{id: "ingredientedgef",
+	label: "斯加普托顿的獠牙",
+	description: "现在，锻狮几乎不制造斯加普托顿了；他们非常难以击杀，并拥有极长的寿命。",
+	aspects: {edge:12,auctionable:6,ingredient:1}
+	},
+	
+					{id: "ingredientforgeb",
+	label: "苦黑盐",
+	description: "没有化学家可以制造出这种黑亮的晶体——至少在不借助铸之力的情况下不行。",
+	aspects: {forge:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientforged",
+	label: "黄色精华",
+	description: "我们经历弦月之弧再到拂晓之时，这在某些铸的运行中被认为是阳光压倒了月光。这种精华曾经含有水银，不过现在它的颜色如夏日的午后一般，富含黄金。真美。",
+	aspects: {forge:8,auctionable:4,ingredient:1}
+	},
+	{id: "ingredientforgef",
+	label: "激流精华",
+	description: "再铸后期的运行中，拂晓屈从于真实的日月之炉，这种精华会开始变红。也许，也不会变，至少现在我们手中的是这样。",
+	aspects: {forge:12,auctionable:6,ingredient:1}
+	},
+		
+						{id: "ingredientgrailb",
+	label: "生命颜料",
+	description: "在身体死亡后，如此红的红依然保留着，这很少见。",
+	aspects: {grail:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientgraild",
+	label: "紫红花蜜",
+	description: "这是制花者的许多赠物之一。在更加光明的年代，它也许被赐予了不朽。即使在现今这已枯萎的历史里，它依旧拥有无法比拟的甜腻。",
+	aspects: {grail:8,auctionable:4,ingredient:1}
+	},
+	{id: "ingredientgrailf",
+	label: "扭动的胎膜",
+	description: "把你的手放在那些破烂的褶皱上，感受它们的温暖；继续放在其上，它将尝试包裹你。",
+	aspects: {grail:12,auctionable:6,ingredient:1}
+	},
+	
+					{id: "ingredientheartb",
+	label: "玫瑰色珍珠粉",
+	description: "珍珠是巫与女的圣物，特别是这种颜色的。它们曾被用在防护性的仪式中。",
+	aspects: {heart:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientheartd",
+	label: "巫吻之油",
+	description: "从十字路口地带崇拜赫卡忒开始，配方就一直没有改变过。",
+	aspects: {heart:8,auctionable:4,ingredient:1}
+	},
+	{id: "ingredientheartf",
+	label: "圣雅纳略的真血",
+	description: "雷肤从每一个过去历史的危险中保护了一个叫做雅纳略的人。直到今天，雅纳略的血液依旧在跳动。",
+	aspects: {heart:12,auctionable:6,ingredient:1}
+	},
+	
+						{id: "ingredientknockb",
+	label: "拜占庭染料",
+	description: "这深远的紫色只有在提尔染料不足以支持帝皇日常使用之时才会褪色。现在，穿这种颜色衣服的人很难通过酒吧的入口。",
+	aspects: {knock:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientknockd",
+	label: "强力剧毒",
+	description: "一直以来，蚁母也被称为剧毒之女。这种物质在不计其数的地方产生过作用。",
+	aspects: {knock:8,auctionable:4,ingredient:1,poison:2}
+	},
+	{id: "ingredientknockf",
+	label: "万灵药",
+	description: "只能储存在一种纯净元素制成的容器内，温度必须保持恒定。也许这不是炼金术士们追寻的最终溶剂。但是，对我们的目的来说，这就够了。",
+	aspects: {knock:12,auctionable:6,ingredient:1}
+	},
+	
+							{id: "ingredientlanternb",
+	label: "纯白",
+	description: "如此纯净的白色，即使在完全的黑暗中依然那么显眼。",
+	aspects: {lantern:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientlanternd",
+	label: "玻璃手指毒素",
+	description: "‘在外的，亦在内。’一种对弦月之弧的信徒们来说十分神圣的毒素。",
+	aspects: {lantern:8,auctionable:4,ingredient:1,poison:2}
+	},
+	{id: "ingredientlanternf",
+	label: "玻璃质灵液",
+	description: "有时在瞳中之扉开启时，能收集到一种苍白并且需要警惕的液体。",
+	aspects: {lantern:12,auctionable:6,ingredient:1}
+	},
+	
+	{id: "ingredientmothb",
+	label: "黑白颜料",
+	description: "碾碎一种稀有鳞翅类昆虫的翅膀得到的。‘想涂黑，亦或涂白，这种颜料都能满足你。’",
+	aspects: {moth:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientmothd",
+	label: "忘河之水",
+	description: "一种黑色粘稠的液体，在不知名的森林村庄中十分流行。‘闭上眼睛，仔细品味，现在我们开始饮用！忘记你的名字，忘记你的身体。’",
+	aspects: {moth:8,auctionable:4,ingredient:1}
+	},
+	{id: "ingredientmothf",
+	label: "至圣血淋巴",
+	description: "犯下一种古老罪行时，洒落在现场的某种神秘物质留下的淡淡痕迹，紧紧地密封在一个玻璃安瓿里。‘谁会记得那个理发师的儿子呢？’",
+	aspects: {moth:12,auctionable:6,ingredient:1}
+	},
+	
+						{id: "ingredientwinterb",
+	label: "灰色黎明油",
+	description: "最能表现失眠之时的颜色。",
+	aspects: {winter:4,auctionable:2,ingredient:1,pigment:1}
+	},
+		{id: "ingredientwinterd",
+	label: "狼雪",
+	description: "实在太过寒冷，只有最炎热的正午阳光才能使它融化。它会渐渐吞噬人的血肉。",
+	aspects: {winter:8,auctionable:4,ingredient:1}
+	},
+	{id: "ingredientwinterf",
+	label: "监视虫",
+	description: "第一次蠕虫大战遗留下的一小罐发育不良的干瘪的幼虫残余，据说能寄生死去的时枢神。",
+	aspects: {winter:12,auctionable:6,ingredient:1,poison:3}
+	},
+]
+};

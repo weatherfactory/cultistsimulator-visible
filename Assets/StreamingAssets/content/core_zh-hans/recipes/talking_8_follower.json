@@ -1,0 +1,727 @@
+{
+"recipes": [
+
+{id: "talktofollower_attemptheal",
+label:"Attempt the healing of a Follower",
+actionId:"talk",
+startdescription: "Compassion, or convenience?",
+description:"I could not or would not provide medical assistance.",
+requirements: {follower_wound:1},
+slots:[{id:"Healing",description: "Funds will buy medicine.", required: {funds:1}}],
+alternativerecipes:[{id:"talktofollower_heal",chance:100}],
+warmup:60,
+craftable:true
+},
+{id:"talktofollower_heal",
+label:"Complete the healing of a Follower",
+startdescription:"Perhaps, now, they'll survive. But there are limits to what the human body can sustain.",
+actionId:"talk",
+requirements:{funds:1},
+mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:0,additive:false},
+{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:0,additive:false}],
+effects:{funds:-1},
+linked:[{id:"givescar_edge",chance:30},
+{id:"givescar_knock",chance:50},
+{id:"givescar_winter",chance:100}]
+},
+{id:"givescar_edge",
+actionId:"talk",
+label:"The Lessons of Experience",
+description:"The wound is healed. The scar remains. But each scar, as the scholar Shulga once observed, is a lesson.",
+mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_edge,mutationLevel:1,additive:true},
+{filterOnAspectId:follower,mutateAspectId:edge,mutationLevel:2,additive:true}],
+linked:[{id:"deathscar_edge",chance:100}]
+},
+{id:"givescar_knock",
+label:"Pain's Gate",
+actionId:"talk",
+description:"The wound is healed - as much as it will ever be. A gate of pain and possibility remains",
+mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_knock,mutationLevel:1,additive:true},
+{filterOnAspectId:follower,mutateAspectId:knock,mutationLevel:2,additive:true}],
+linked:[{id:"deathscar_knock",chance:100}]
+},
+{id:"givescar_winter",
+actionId:"talk",
+label:"The Beginning of an Ending",
+description:"The wound is healed, but this one came very close to death. Silence has touched them, like snow.",
+mutations:[{filterOnAspectId:follower,mutateAspectId:follower_scar_winter,mutationLevel:1,additive:true},
+{filterOnAspectId:follower,mutateAspectId:winter,mutationLevel:2,additive:true}],
+linked:[{id:"deathscar_winter",chance:100}]
+},
+{id:"deathscar_edge",
+actionId:"talk",
+label:"Death: a Defeat",
+requirements:{follower_scar_edge:3},
+description:"This one showed courage and endurance. In the end, that wasn't enough.[Your Follower acquired three Edge-Scars, and died.]",
+aspects:{killmortal:1}
+},
+{id:"deathscar_knock",
+actionId:"talk",
+label:"Death: an Opening",
+requirements:{follower_scar_knock:3},
+description:"To operate effectively, one must keep one's insides inside, and discourage what is outside from coming inside. When sufficient of one's insides pass outside, one is no longer a going concern. [Your Follower acquired three Knock-Scars, and died.]",
+aspects:{killmortal:1}
+},
+{id:"deathscar_winter",
+actionId:"talk",
+label:"Death: an Ending",
+requirements:{follower_scar_winter:3},
+description:"The year turns Westwards, towards Winter. This one has chosen to close their eyes. [Your Follower acquired three Winter-Scars, and died.]",
+aspects:{killmortal:1}
+},
+
+
+{id: "talktofollower",
+label:"与从者讨论密教事宜",
+actionId: "talk",
+requirements: {society:-1,follower: 1,summoned:-1},
+slots: [{id:"Subject",description:"参与我们密教事宜的信徒；一个目标；或是一个主题",required: {society:1,evidencelevel:1,hunter:1,ingredient:1,annoyance:1}}],
+comments: "我们发现征募/宣传活动遇到了阻碍，我们不希望这种趋势压倒活动，因此进行了社会干预",
+alternativerecipes:[
+
+{id:"talktohireling_rehire",chance:100},
+
+{id:"followeraction_repairtoollanternbcracked",chance:100},
+{id:"followeraction_repairtoollanterndcracked",chance:100},
+{id:"followeraction_repairtoollanternfcracked",chance:100},
+
+
+{id:"followeraction_murderhighwinter",chance:100},
+{id:"followeraction_craftworkhighforge",chance:100},
+{id:"followeraction_seducehighgrail",chance:100},
+{id:"followeraction_burglehighknock",chance:100},
+{id:"followeraction_charmhighheart",chance:100},
+{id:"followeraction_auguryhighlantern",chance:100},
+{id:"followeraction_hoodwinkhighmoth",chance:100},
+{id:"followeraction_abducthighedge",chance:100},
+{id:"followeraction_murdermidwinter",chance:100},
+{id:"followeraction_craftworkmidforge",chance:100},
+{id:"followeraction_seducemidgrail",chance:100},
+{id:"followeraction_burglemidknock",chance:100},
+{id:"followeraction_charmmidheart",chance:100},
+{id:"followeraction_augurymidlantern",chance:100},
+{id:"followeraction_hoodwinkmidmoth",chance:100},
+{id:"followeraction_abductmidedge",chance:100},
+{id:"followeraction_murderlowwinter",chance:100},
+
+{id:"followeraction_craftworklowforge",chance:100},
+{id:"followeraction_seducelowgrail",chance:100},
+{id:"followeraction_burglelowknock",chance:100},
+{id:"followeraction_charmlowheart",chance:100},
+{id:"followeraction_augurylowlantern",chance:100},
+{id:"followeraction_hoodwinklowmoth",chance:100},
+{id:"followeraction_abductlowedge",chance:100},
+
+{id:"hunterattackhighedge",chance:100},
+{id:"hunterattackmidedge",chance:100},
+{id:"hunterattacklowedge",chance:100},
+{id:"hunterattackhighwinter",chance:100},
+{id:"hunterattackmidwinter",chance:100},
+{id:"hunterattacklowwinter",chance:100},
+{id:"hunterattacknoedge",chance:100},
+
+
+{id:"annoyanceseducehighgrail",chance:100},
+{id:"annoyanceattackhighedge",chance:100},
+{id:"annoyanceseducemidgrail",chance:100},
+{id:"annoyanceattackmidedge",chance:100},
+{id:"annoyancederangemidmoth",chance:100},
+{id:"annoyanceseducelowgrail",chance:100},
+{id:"annoyanceattacklowedge",chance:100},
+{id:"annoyancederangelowmoth",chance:100},
+{id:"annoyanceattacknoedge",chance:100},
+
+
+{id: "evidencedestroymidmoth",chance:100},
+{id: "evidencedestroylowmoth",chance:100},
+{id: "evidencedestroynomoth",chance:100}
+
+],
+startdescription: "在烟雾弥漫的会议室里进行着一场重要的谈话。我需要我的追随者怎么做呢？[添加你的信徒，并派他进行密教活动；派他跟踪敌人；或再次起事]",
+description: "无事发生",
+warmup: 60,
+craftable: true
+},
+
+
+{id: "talktohireling_rehire",
+actionId:"talk",
+label:"再给这名雇员一笔钱",
+requirements: {hireling:1,funds:1},
+startdescription:"我可以花钱延长这名雇员的工期",
+description:"‘好吧，条款和之前一样’",
+aspects:{hiring:1},
+effects:{funds:-1},
+craftable:true,
+warmup:10
+},
+
+{id:"followeraction_repairtoollanternbcracked",
+label:"修复裂损的午长石",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternbcracked:1},
+startdescription:"我们可以开始修复工作了，不过修复会消耗金钱以购买所需资源",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternbcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternbcracked_attempt",
+label:"正在修复裂损的午长石",
+actionId: "talk",
+slots: [{id:"Materials",description:"稀有燃料与古怪粉末",required:{funds:1}}],
+startdescription:"我的从者需要金钱才能完成工作",
+description: "我无法提供我的从者所需的物资，这块石头无法修复",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternbcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternbcracked_succeed",
+label:"正在修复裂损的午长石",
+actionId: "talk",
+requirements:{funds:1},
+startdescription:"我的从者正在忙着修理镜子",
+description: "The stone is repaired! It shines again as it did once before.",
+effects:{funds:-1,toollanternbcracked:-1,toollanternb:1}
+},
+
+
+{id:"followeraction_repairtoollanterndcracked",
+label:"修复裂损的入歧之镜",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanterndcracked:1},
+startdescription:"我们可以开始修复工作了，不过修复需要消耗至少一枚古铜币以购买所需资源",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanterndcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanterndcracked_attempt",
+label:"正在修复裂损的入歧之镜",
+actionId: "talk",
+slots: [{id:"Materials",description:"稀有金属与乌有之色",required:{compensationvalue:4}}],
+startdescription:"我的从者需要至少一枚古铜币才可以完成他们的工作",
+description: "我无法提供我的从者所需的物资，这面镜子无法修复",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanterndcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanterndcracked_succeed",
+label:"正在修复裂损的入歧之镜",
+actionId: "talk",
+requirements:{compensationvalue:4},
+startdescription:"我的从者正在忙着修理镜子",
+description: "镜子已经修理完毕！它现在光亮如新",
+effects:{compensationvalue:-1,toollanterndcracked:-1,toollanternd:1}
+},
+
+
+
+{id:"followeraction_repairtoollanternfcracked",
+label:"修复裂损的守夜人之镜",
+actionId: "talk",
+requirements:{follower:1,forge:1,toollanternfcracked:1},
+startdescription:"我们可以开始修复工作了，不过修复需要消耗至少一枚古银币以购买所需资源",
+description: ".",
+linked: [{chance:100,id: "followeraction_repairtoollanternfcracked_attempt"}]
+},
+
+{id:"followeraction_repairtoollanternfcracked_attempt",
+label:"正在修复裂损的守夜人之镜",
+actionId: "talk",
+slots: [{id:"Materials",description:"明媚之歌与异域合金",required:{compensationvalue:8}}],
+startdescription:"我的从者需要至少一枚古银币才可以完成他们的工作",
+description: "我无法提供我的从者所需的物资，这面镜子无法修复",
+warmup:30,
+alternativerecipes:[{id:"followeraction_repairtoollanternfcracked_succeed",chance:100}]
+},
+{id:"followeraction_repairtoollanternfcracked_succeed",
+label:"正在修复裂损的守夜人之镜",
+actionId: "talk",
+requirements:{compensationvalue:8},
+startdescription:"我的从者正在忙着修理镜子",
+description: "镜子已经修理完毕！它现在光亮如新",
+effects:{compensationvalue:-1,toollanternfcracked:-1,toollanternf:1}
+},
+
+
+	   {id: "followeraction_abducthighedge",
+	   label: "信徒活动：绑架一名陌生人",
+	  actionId:"talk",
+	  startdescription:"暗杀者可以轻而易举地将牺牲者从大街上抓走",
+	  description:".",
+	  requirements: {society:1,edge:10,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_abductmidedge",
+	   label: "信徒活动：绑架一名陌生人",
+	  actionId:"talk",
+	  startdescription:"熟练的门徒可能会诱拐到缺乏警惕的牺牲者",
+	  requirements: {society:1,edge:5,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:70},
+	  {id:"followeraction_abductfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_abductlowedge",
+	   label: "信徒活动：绑架一名陌生人",
+	  actionId:"talk",
+	  startdescription:"我的信徒会努力去诱拐牺牲者，不过成功与否得看运气",
+	  requirements: {society:1,edge:1,follower:1},
+	  linked: [{id:"followeraction_abductsuccess",chance:30},
+	  {id:"followeraction_abductfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_abductsuccess",
+	   label: "正在筹划一场绑架",
+	  actionId:"talk",
+	  startdescription: "我等待着结果……",
+	  description:"我的仆从带着一个仔细捆绑的囚犯归来",
+	  effects: {notoriety:1, funds:1},
+	  deckeffect: {"randomvictim":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_abductfailure",
+	   label: "正在筹划一场绑架",
+	  actionId:"talk",
+	  startdescription: "我等待着结果……",
+	  description:"我的仆从空手而归",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_abductfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_abductfailure_losefollower",
+	   label: "正在筹划一场绑架",
+	  actionId:"talk",
+	  startdescription: "我等待着结果……",
+	  description:"我的仆从空手而归and grievously wounded. Their victim showed pluck. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:30	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_murderhighwinter",
+	   label: "信徒活动：谋杀一名陌生人",
+	  actionId:"talk",
+	  startdescription:"这位信徒每次归来时，袋子里都装着一个死人",
+	  description:".",
+	  requirements: {society:1,winter:10,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_murdermidwinter",
+	   label: "信徒活动：谋杀一名陌生人",
+	  actionId:"talk",
+	  startdescription:"熟练的门徒可能会带回一具刚死不久的尸体",
+	  requirements: {society:1,winter:5,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:70},
+	  {id:"followeraction_murderfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_murderlowwinter",
+	   label: "信徒活动：谋杀一名陌生人",
+	  actionId:"talk",
+	  startdescription:"我的信徒可能会很容易失手",
+	  requirements: {society:1,winter:1,follower:1},
+	  linked: [{id:"followeraction_murdersuccess",chance:30},
+	  {id:"followeraction_murderfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_murdersuccess",
+	   label: "正在筹划一场谋杀……",
+	  actionId:"talk",
+	  startdescription: "我等待着结果……",
+	  description:"我的仆从带着一具刚死不久的尸体与其所有物归来",
+	  effects: {notoriety:1,corpse:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_murderfailure",
+	   label: "正在筹划一场谋杀……",
+	  actionId:"talk",
+	  startdescription: "我等待着结果……",
+	  description:"我的仆从空手而归",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_murderfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_murderfailure_losefollower",
+	   label: "正在筹划一场谋杀……",
+	  actionId:"talk",
+	  startdescription: "我等待着结果……",
+	  description:"My minion has returned to report failure. They can barely stand. Their victim put up a fight. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  	   {id: "followeraction_craftworkhighforge",
+	   label: "信徒活动：工艺",
+	  actionId:"talk",
+	  startdescription:"我的使徒可以从非法实验室和地下工厂赚钱",
+	  description:".",
+	  requirements: {society:1,forge:10,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_craftworkmidforge",
+	   	   label: "信徒活动：工艺",
+	  actionId:"talk",
+	  startdescription:"我的门徒也许可以从非法实验室和地下工厂赚钱——可是也会有意外发生的可能",
+	  requirements: {society:1,forge:5,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:70},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_craftworklowforge",
+	   	   label: "信徒活动：工艺",
+	  actionId:"talk",
+	  startdescription:"我的信徒或许可以从非法实验室和地下工厂赚钱……如果他们够幸运的话",
+	  requirements: {society:1,forge:1,follower:1},
+	  linked: [{id:"followeraction_craftworksuccess",chance:30},
+	  {id:"followeraction_craftworkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_craftworksuccess",
+	   label: "按合同工作……",
+	  actionId:"talk",
+	  startdescription: "在这座城市里的有些设备是违反土地法的，有些违反了自然规律，而还有些异常危险",
+	  description:"我的从者带着劳动的回报归来",
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_craftworkfailure",
+	   label: "按合同工作……",
+	  actionId:"talk",
+	  startdescription: "在这座城市里的有些设备是违反土地法的，有些违反了自然规律，而还有些异常危险",
+	  description:"我的从者空手而归。今天的任务超出了其能力范围",
+	  effects: {},
+	  alternativerecipes: [{id:"followeraction_craftworkfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_craftworkfailure_losefollower",
+	   label: "按合同工作……",
+	  actionId:"talk",
+	  startdescription: "在这座城市里的有些设备是违反土地法的，有些违反了自然规律，而还有些异常危险",
+	  description:"一场意外发生了 [Heal a fallen Follower with Talk.]",
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:30	  
+	  },
+	  
+	  
+	    {id: "followeraction_seducehighgrail",
+	   label: "信徒活动：引诱一名陌生人",
+	  actionId:"talk",
+	  startdescription:"没人会拒绝一位塞浦路斯人",
+	  description:".",
+	  requirements: {society:1,grail:10,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_seducemidgrail",
+	   label: "信徒活动：引诱一名陌生人",
+	  actionId:"talk",
+	  startdescription:"具有强大说服力的门徒或许可以帮我们引诱回一名易受影响的同伴",
+	  requirements: {society:1,grail:5,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:70},
+	  {id:"followeraction_seducefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_seducelowgrail",
+	   label: "信徒活动：引诱一名陌生人",
+	  actionId:"talk",
+	  startdescription:"我的信徒或许能够帮我们引诱回一名牺牲者",
+	  requirements: {society:1,grail:1,follower:1},
+	  linked: [{id:"followeraction_seducesuccess",chance:30},
+	  {id:"followeraction_seducefailure",chance:100}]
+	  },
+
+	  
+	  {id: "followeraction_seducesuccess",
+	   label: "正在筹划一场绑架",
+	  actionId:"talk",
+	  startdescription: "夜晚时分，我的从者低声说着一些颇有意味的话语。就算那些牺牲者知道这些话语都是谎言，他们大概也不会在乎",
+	  description:"我的仆从带着一名乐意顺从的囚犯归来",
+	  effects: {notoriety:1, funds:1},
+	  deckeffect: {"randomvictim":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_seducefailure",
+	   label: "正在筹划一场绑架",
+	  actionId:"talk",
+	  startdescription: "夜晚时分，我的从者低声说着一些颇有意味的话语。就算那些牺牲者知道这些话语都是谎言，他们大概也不会在乎",
+	  description:"我的仆从空手而归",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_seducefailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_seducefailure_losefollower",
+	   label: "正在筹划一场绑架",
+	  actionId:"talk",
+	  startdescription: "夜晚时分，我的从者低声说着一些颇有意味的话语。就算那些牺牲者知道这些话语都是谎言，他们大概也不会在乎",
+	  description:"My minion has returned, half-conscious, bleeding badly. It seems a rival suitor took exception to their efforts. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  
+	  
+	  	   {id: "followeraction_burglehighknock",
+	   label: "信徒活动：盗窃",
+	  actionId:"talk",
+	  startdescription:"我的钥匙能开启这个城里的任何一把锁",
+	  description:".",
+	  requirements: {society:1,knock:10,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_burglemidknock",
+	   	   label: "信徒活动：盗窃",
+	  actionId:"talk",
+	  startdescription:"我的门徒也许可以利用其天赋从毫无戒心之人那里敛财",
+	  requirements: {society:1,knock:5,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:70},
+	  {id:"followeraction_burglefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_burglelowknock",
+	   	   label: "信徒活动：盗窃",
+	  actionId:"talk",
+	  startdescription:"我的信徒或许可以从毫无戒心之人那里敛财……只要他们够幸运的话",
+	  requirements: {society:1,knock:1,follower:1},
+	  linked: [{id:"followeraction_burglesuccess",chance:30},
+	  {id:"followeraction_burglefailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_burglesuccess",
+	   label: "破门而入，满载而归……",
+	  actionId:"talk",
+	  startdescription: "在地下室和阁楼里，在秘密的隔间和封闭的壁橱里，不论富人与否，大家都在某处藏匿着自己的财宝",
+	  description:"我的从者带着收获归来",
+	  effects: {notoriety:1,funds:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_burglefailure",
+	   label: "破门而入，满载而归……",
+	  actionId:"talk",
+	  startdescription: "在地下室和阁楼里，在秘密的隔间和封闭的壁橱里，不论富人与否，大家都在某处藏匿着自己的财宝",
+	  description:"我的从者空手而归。今天的任务超出了其能力范围",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_burglefailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_burglefailure_losefollower",
+	   label: "破门而入，满载而归……",
+	  actionId:"talk",
+	  startdescription: "在地下室和阁楼里，在秘密的隔间和封闭的壁橱里，不论富人与否，大家都在某处藏匿着自己的财宝",
+	  description:"一场意外发生了 [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:30	  
+	  },
+	  
+	  
+	  	  
+	  
+	  	   {id: "followeraction_charmhighheart",
+	   label: "信徒活动：魅力",
+	  actionId:"talk",
+	  startdescription:"Not everyone is sympathetic to our aims, but my Tarantellist is popular everywhere. If we have problems with our reputation, they can certainly smooth them over.",
+	  description:".",
+	  requirements: {society:1,heart:10,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_charmmidheart",
+	   	   label: "信徒活动：魅力",
+	  actionId:"talk",
+	  startdescription:"并非所有人都能理解我们的目标，不过如果我们的声誉受损，我们的门徒必然会将问题解决",
+	  requirements: {society:1,heart:5,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:70},
+	  {id:"followeraction_charmfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_charmlowheart",
+	   	   label: "信徒活动：魅力",
+	  actionId:"talk",
+	  startdescription:"并非所有人都能理解我们的目标，不过如果我们的声誉受损，我们的信徒必然会将问题解决",
+	  requirements: {society:1,heart:1,follower:1},
+	  linked: [{id:"followeraction_charmsuccess",chance:30},
+	  {id:"followeraction_charmfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_charmsuccess",
+	   label: "认真地演讲、友善地交谈",
+	  actionId:"talk",
+	  slots: [{id:"Reputation",required:{reputation:1},greedy:true}],
+	  startdescription: "当今社会的标准并不适用于我们。但我们不会强调这一点，反而会靠魅力和良好的心境来做事。我用了高雅的言语来谈论我们组织的崇高原则",
+	  description:"乐观乃生命之良药",
+	  effects: {reputation:-1},
+	  warmup:30
+	  },	  
+	  
+	  {id: "followeraction_charmfailure",
+	   label: "认真地演讲、友善地交谈",
+	  actionId:"talk",
+	  slots: [{id:"Reputation",required:{reputation:1},greedy:true}],
+	  startdescription: "当今社会的标准并不适用于我们。但我们不会强调这一点，反而会靠魅力和良好的心境来做事。我用了高雅的言语来谈论我们组织的崇高原则",
+	  description:"没人能够理解我们，或者说，人们对我们都太过了解",
+	  effects: {rumour:1},
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  	   {id: "followeraction_auguryhighlantern",
+	   label: "信徒活动：占卜",
+	  actionId:"talk",
+	  startdescription:"我的预言者可以帮我们确定在何时何地会有一股力量可为我们所用",
+	  description:".",
+	  requirements: {society:1,lantern:10,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_augurymidlantern",
+	   	   label: "信徒活动：占卜",
+	  actionId:"talk",
+	  startdescription:"我的门徒可以帮我们确定在何时何地会有一股力量可为我们所用：但是由于居所的关系，这种事情总会有危险",
+	  requirements: {society:1,lantern:5,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:70},
+	  {id:"followeraction_auguryfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_augurylowlantern",
+	   	   label: "信徒活动：占卜",
+	  actionId:"talk",
+	  startdescription:"我的信徒可以帮我们确定在何时何地会有一股力量可为我们所用：但是由于居所的关系，这种事情总会有危险",
+	  requirements: {society:1,lantern:1,follower:1},
+	  linked: [{id:"followeraction_augurysuccess",chance:30},
+	  {id:"followeraction_auguryfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_augurysuccess",
+	   label: "在世界的表象之下",
+	  actionId:"talk",
+	  startdescription: "学识和冥想的时枢神啊……",
+	  description:"我的从者已经找到了一种能让我们的工作和时枢神伟大事业紧密联系的方法",
+	  effects: {erudition:1},
+	  deckeffect: {"randominfluencelow":1},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_auguryfailure",
+	   label: "在世界的表象之下",
+	  actionId:"talk",
+	  startdescription: "学识和冥想的时枢神啊……",
+	  description:"我的从者犯下一个危险的错误。他的思想仍未动摇，但是居所的存在已经被这个世界所知晓",
+	  effects: {fascination:1},
+	  alternativerecipes: [{id:"followeraction_auguryfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_auguryfailure_losefollower",
+	   label: "在世界的表象之下",
+	  actionId:"talk",
+	  startdescription: "学识和冥想的时枢神啊……",
+		  description:"My follower has committed a dangerous error. The light of the Mansus has touched the world here. Their psychic defences crumble to chaos, and we had to restrain them before they could do further harm to themself. They will recover their senses in time, but they are badly hurt. [Heal a fallen Follower with Talk.]",
+	  effects: {fascination:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  	   {id: "followeraction_hoodwinkhighmoth",
+	   label: "信徒活动：欺瞒",
+	  actionId:"talk",
+	  startdescription:"我的缠绕者非常狡猾，他甚至可以像从果园中摘梨般轻而易举地从傻瓜那儿取得财物",
+	  description:".",
+	  requirements: {society:1,moth:10,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:100},
+	  ]
+	  },
+
+	  	   {id: "followeraction_hoodwinkmidmoth",
+	   	   label: "信徒活动：欺瞒",
+	  actionId:"talk",
+	  startdescription:"我的门徒也许可以利用其天赋从傻瓜那儿取得财物",
+	  requirements: {society:1,moth:5,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:70},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "followeraction_hoodwinklowmoth",
+	   	   label: "信徒活动：欺瞒",
+	  actionId:"talk",
+	  startdescription:"我的信徒或许可以从傻瓜那儿取得财物……只要他们够幸运的话",
+	  requirements: {society:1,moth:1,follower:1},
+	  linked: [{id:"followeraction_hoodwinksuccess",chance:30},
+	  {id:"followeraction_hoodwinkfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "followeraction_hoodwinksuccess",
+	   label: "欺骗与迷惑",
+	  actionId:"talk",
+	  startdescription: "我的从者正在筹划一场有利可图的骗局",
+	  description:"骗局成功了！奖励在此",
+	  effects: {notoriety:1,funds:1},
+	  deckeffect: {"robberyrewards":2},
+	  warmup:30	  
+	  },	  
+	  
+	  {id: "followeraction_hoodwinkfailure",
+	label: "欺骗与迷惑",
+	  actionId:"talk",
+	  startdescription: "我的从者正在筹划一场有利可图的骗局",
+	  description:"由于计划败露，我的从者空手而归",
+	  effects: {notoriety:1},
+	  alternativerecipes: [{id:"followeraction_hoodwinkfailure_losefollower",chance:30}],
+	  warmup:30	  
+	  },
+	  	  {id: "followeraction_hoodwinkfailure_losefollower",
+		label: "欺骗与迷惑",
+	  actionId:"talk",
+	  startdescription: "我的从者正在筹划一场有利可图的骗局",
+	  description:"I was beginning to worry that my follower had arranged their own disappearance. But it seems their deception was detected. The victim was outraged, and my follower barely escaped alive. [Heal a fallen Follower with Talk.]",
+	  	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  effects: {notoriety:1},
+	  warmup:30	  
+	  },
+
+
+
+
+]
+}

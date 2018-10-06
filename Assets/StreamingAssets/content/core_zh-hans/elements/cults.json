@@ -1,0 +1,115 @@
+{"elements":
+    [
+          {
+        id: "cultedge_1",
+            label: "桥隅教堂",
+            aspects:
+            {society:1,venerationedge:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk",  required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"}],
+            description: "一个信奉象征奋斗与征服的时序诸神的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为教团的刺客。]",
+			unique:true
+        },
+          {
+        id: "cultforge_1",
+            label: "无畏教团",
+            aspects:
+            {society:1,venerationforge:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"
+			}],
+            description: "祭奉“变化与重造之火”的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为赋形者。]",
+			unique:true
+        },
+		          {
+        id: "cultgrail_1",
+            label: "血杯教团",
+            aspects:
+            {society:1,venerationgrail:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"
+			}],
+
+            description: "祭奉有关降生，血液和欲望的诸多神秘的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为引蝶人。]",
+				unique:true
+        },
+		          {
+        id: "cultheart_1",
+            label: "不绝圣庙",
+            aspects:
+            {society:1,venerationheart:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"
+			}],
+
+            description: "祭奉永不停息鼓声的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为蛊舞者。]",
+				unique:true
+        },
+		          {
+        id: "cultknock_1",
+            label: "圣创教团",
+            aspects:
+            {society:1,venerationknock:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"
+			}],
+            description: "祭奉开启门扉的时序诸神的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为灵钥。]",
+				unique:true
+        },
+		          {
+        id: "cultlantern_1",
+            label: "光界之镜",
+            aspects:
+            {society:1,venerationlantern:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"
+			}],
+            description: "致力祭奉与解明从苛烈境地漏出的光芒的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为预言者。]",
+				unique:true
+        },
+		          {
+        id: "cultmoth_1",
+            label: "野木社",
+            aspects:
+            {society:1,venerationmoth:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"
+			}],
+            description: "祭奉混沌本身，及未料而生的时序诸神的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为易容者。]",
+				unique:true
+        },
+		          {
+        id: "cultsecrethistories_1",
+            label: "圣许德拉教团",
+            aspects:
+            {society:1,venerationedge:1,venerationforge:1,venerationgrail:1,venerationheart:1,venerationlantern:1,venerationknock:1,venerationmoth:1,venerationwinter:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			{id:"Ceremony", actionId:"talk",  required: {lore:1},description: "若欲触及更高阶的神秘，必须立下更加深刻的誓约。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"}],
+            description: "致力解明“五干史”以及其下数以千计，虚实共存的枝史的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；然而，本教团并没有特别拔擢的成员。]",
+				unique:true
+        },
+		          {
+        id: "cultwinter_1",
+            label: "静默之子",
+            aspects:
+            {society:1,venerationwinter:1},
+			slots: [{id:"Associate", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "新信众，或者一名坚定的门徒"},
+			{id:"Ceremony", actionId:"talk", required: {lore:1},description: "若要发展信众，我只须开示些微神秘。而更加幽玄的物事，需要更深刻的誓约才能得见。"},
+			{id:"Trappings", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "用于将场景安排至所需的状态。如此行动定会对物料和影响力有所消耗，不过召唤行为和工具并不在损耗物之列。"}],
+            description: "祭奉来临沉默和终末之寒的地下教团。[在创立教派之后，你便可以在“交谈”界面中使用各种异教物事将协力者转换为信众或擢升他们的等级，被吸纳和拔擢的信众可以被派遣外出，以收集各种资源。信众可以被擢为门徒；而天赋异禀的门徒可以得到进一步的拔擢，成为夺命默者。]",
+				unique:true
+        },
+		  
+]
+};

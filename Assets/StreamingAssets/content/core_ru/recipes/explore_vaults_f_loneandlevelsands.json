@@ -1,0 +1,138 @@
+﻿ {"recipes": [
+	
+			 	{
+	id: "explore_vaultloneandlevelsands1_setup",
+	label: "Начало экспедиции: храм Расколотой Звезды",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultloneandlevelsands1:1},
+	effects: {peril_desert:1, seal_hiddendoor:1, curse_visions:1},
+	startdescription: "Звезда упала в глубине пустыни. Она не совсем разрушила пораженную ею святыню. Сокровища старого алтаря могли остаться, скрытые под могилой звезды. Но нам следует подходить к звезде с осторожностью — в ней всё ещё живы энергии не из нашего мира. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+	{
+	id: "explore_vaultloneandlevelsands2_setup",
+	label: "Начало экспедиции: гробница Лагу",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultloneandlevelsands2:1},
+	effects: {peril_desert:1, seal_wardeddoor:1,curse_dread:1},
+
+	startdescription: "Гробницу Лагу будет непросто найти в пустыне. Нам предстоит ориентироваться по звёздам. Его дверь долго противостояла расхитителям могил, так что нам понадобится вся возможная сила. Вероятно, гробница будет проклята. К этому тоже надо подготовиться. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultloneandlevelsands3_setup",
+	label: "Начало экспедиции: Мессана",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultloneandlevelsands3:1},
+	effects: {peril_desert:1,guardian_watchers:1,curse_affliction:1},
+	startdescription: "Мессана, где жители обычно остаются бодрыми и здоровыми, перешагнув столетний рубеж. Они воспротивятся попыткам разузнать их секреты, и, не исключено, умеют проклинать — не считая, что добраться до них мы сможем лишь после долгого пустынного похода. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultloneandlevelsands4_setup",
+	label: "Начало экспедиции: храм Семи Витков",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultloneandlevelsands4:1},
+	effects: {peril_desert:1,seal_wardeddoor:1,curse_nowhere:1},
+
+	startdescription: "«Место не потерпит жизни» — сказано в дневнике Зейна Марка Гентиса. Так что змей не будет. Но по описанию место проклято, и Гентис упомянул дверь, не поддавшуюся его экспедиции. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultloneandlevelsandsdefault_setup",
+	label: "Начало экспедиции: Миа",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultloneandlevelsandsdefault:1},
+	effects: {peril_desert:1,seal_hiddendoor:1,guardian_dead:1,curse_affliction:1},
+
+	startdescription: "Этот город, Миа, давно уже погружен в пески пустыни. Лишь призраки гуляют по его улицам. Всё, что осталось, будет хорошо спрятано. Кроме того, над этим местом тяготеет проклятие Бродяги — её месть городу, который так подвёл её. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+					{
+	id: "explorevaultloneandlevelsands1_success",
+	label: "Открывающий Камень",
+	actionId: "explore",
+	requirements: {vaultloneandlevelsands1:1},
+	effects: {vaultloneandlevelsands1:-1},
+	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":2},
+	startdescription: "Метеорит лежит в расколотом храме, в выступах как морской зверь, сглаженный в полёте через атмосферу. Старый алтарь наверняка расплющен много веков назад, но метеорит отвечает нашим касаниям. Он гудит как провода на ветру. Его поверхность смещается, он открывается как глаз — ",
+	description: "Что случилось? Метеорит холоден, закрыт и безмолвен. Песок столетий по-прежнему нетронутым лежит на нём. Но здесь, в наших руках, сокровища, что мы нашли внутри.",
+	warmup:30,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultloneandlevelsands2_success",
+	label: "Завершение Лагу",
+	actionId: "explore",
+	requirements: {vaultloneandlevelsands2:1},
+	effects: {vaultloneandlevelsands2:-1,toolsecrethistoriesd:1},
+	deckeffect: {"vaultcontentsr":2},
+	startdescription: "В центральной камере Лагу, бывший бессмертным Долгим, мирно лежал обнажённым на сандаловом одре. Его тело сохранилось идеально — худой темнокожий человек в отличной физической форме — но стоило нам приблизиться, и он рассыпался чёрными хлопьями, как опавшими листьями. Сокровища блеснули в его останках.",
+	description: "Мы нашли карманные часы, книгу, небольшую сумму в алжирской валюте — всё из нашей собственной эры. Наверняка он много раз уходил отсюда и возвращался перед тем, как в конце концов уйти на последний отдых. На обратной стороне часов мы нашли гравировку закрытого глаза — символа Забвенных, тайного общества Долгих...",
+	warmup:30,
+	craftable: false
+	},
+		{
+	id: "explorevaultloneandlevelsands3_success",
+	label: "Долгий пир",
+	actionId: "explore",
+	requirements: {vaultloneandlevelsands3:1},
+	effects: {vaultloneandlevelsands3:-1},
+	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":2},
+	startdescription: "Под амбаром мы нашли глубочайший секрет Мессаны: алтарь, на котором разложены куски бальзамированного человеческого тела. От него осталось немногое. Видимо, посетители медленно поедали его годами. Плоть Долгого? Это объяснило бы их долгожительство.",
+	description: "Примечательные вещи выставлены на стенах. Возможно, трофеи, снятые с безрассудных путешественников, или принадлежности Долгого. Неясно, был ли Долгий добровольной жертвой, предком или заключённым, и жители деревни больше не смогут ничего подсказать нам. Греческая надпись на алтаре гласит: ДЛЯ ПРИЛИВА.",
+	warmup:30,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultloneandlevelsands4_success",
+	label: "Витки бога",
+	actionId: "explore",
+	requirements: {vaultloneandlevelsands4:1},
+	effects: {vaultloneandlevelsands4:-1,ingredientwinterf:1,influencewintere:1},
+	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":1},
+	startdescription: "«Семь витков», судя по журналу Гентиса, но идол внутри — невероятное сплетение извивов каменной змеи. Виток за витком, узлы, скручивающие саму душу. Нечто совершенно неправильное движется в углах храма. Мы должны обыскать место немедля, пока его влияние не поглотило нас.",
+	description: "Храм чист так, словно в нём только что убрались. Ни песчинки за порогом, ни пылинки на ужасающих извивах идола. Мы нашли ценности, спрятанные здесь и там среди витков, как если бы их ради развлечения оставили специально для нас, или как если бы идол свернулся вокруг них.",
+	warmup:30,
+	craftable: false
+	},
+	
+				{
+	id: "explorevaultloneandlevelsandsdefault_success",
+	label: "Город, которого нет",
+	actionId: "explore",
+	requirements: {vaultloneandlevelsandsdefault:1},
+	effects: {vaultloneandlevelsandsdefault:-1},
+	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":1},
+	startdescription: "Ветер Миа обидчив. Он цепляется за нашу одежду как требовательный ребёнок; он бросает песок нам в лица; он ноет среди камней, задушенных песком. Мы не сочтём опустошение города абсолютным — остались колонны, арки, ослеплённые песком статуи, лестницы в никуда.",
+	description: "Мы нашли реликвии в заброшенной камере — она могла равно быть подвалом или святилищем. Стены растрескались, песок просочился внутрь. Когда мы вернулись на поверхность, поднялся ветер. Он чуть не сбил нас с ног. Возможно, соскучился.",
+	warmup:30,
+	craftable: false
+	},
+	
+]
+}
+

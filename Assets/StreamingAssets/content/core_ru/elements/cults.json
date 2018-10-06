@@ -1,0 +1,115 @@
+﻿{"elements":
+    [
+          {
+        id: "cultedge_1",
+            label: "Церковь Сияющей Грани",
+            aspects:
+            {society:1,venerationedge:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk",  required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."}],
+            description: "Оккультное общество, посвящённое Часам борьбы и завоеваний. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Ассасинами.]",
+			unique:true
+        },
+          {
+        id: "cultforge_1",
+            label: "Орден Неустрашимых",
+            aspects:
+            {society:1,venerationforge:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."
+			}],
+            description: "Оккультное общество, посвящённое огню, который меняет и перековывает. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Меняющими.]",
+			unique:true
+        },
+		          {
+        id: "cultgrail_1",
+            label: "Орден Кровавой Чаши",
+            aspects:
+            {society:1,venerationgrail:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."
+			}],
+
+            description: "Оккультное общество, посвящённое мистериям рождения, крови и желаний. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Распутниками.]",
+				unique:true
+        },
+		          {
+        id: "cultheart_1",
+            label: "Безустанный Храм",
+            aspects:
+            {society:1,venerationheart:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."
+			}],
+
+            description: "Оккультное общество, посвящённое барабанному ритму, который нескончаем. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Тарантеллистами.]",
+				unique:true
+        },
+		          {
+        id: "cultknock_1",
+            label: "Общество Святой Раны",
+            aspects:
+            {society:1,venerationknock:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."
+			}],
+            description: "Оккультное общество, посвящённое Часам, отпирающим двери. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Ключами.]",
+				unique:true
+        },
+		          {
+        id: "cultlantern_1",
+            label: "Зеркало Славы",
+            aspects:
+            {society:1,venerationlantern:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."
+			}],
+            description: "Оккультное общество, посвящённое пониманию Света, протекающего из иных, более ярких, мест. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Пророками.]",
+				unique:true
+        },
+		          {
+        id: "cultmoth_1",
+            label: "Клуб Диколесья",
+            aspects:
+            {society:1,venerationmoth:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."
+			}],
+            description: "Оккультное общество, посвящённое хаосу и нежданным Часам. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше, став Кожевенниками.]",
+				unique:true
+        },
+		          {
+        id: "cultsecrethistories_1",
+            label: "Общество св. Гидры",
+            aspects:
+            {society:1,venerationedge:1,venerationforge:1,venerationgrail:1,venerationheart:1,venerationlantern:1,venerationknock:1,venerationmoth:1,venerationwinter:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			{id:"Ceremony",label:"Церемония", actionId:"talk",  required: {lore:1},description: "Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."}],
+            description: "Оккультное общество, посвящённое изучению пяти Историй и многих тысяч полуреальных ответвлений от них. [Общество св. Гидры уникально тем, что позволяет Неофитам стать Адептами с помощью любого из аспектов; при этом в нём нет специалистов-Магистров.]",
+				unique:true
+        },
+		          {
+        id: "cultwinter_1",
+            label: "Дети Молчания",
+            aspects:
+            {society:1,venerationwinter:1},
+			slots: [{id:"Associate",label:"Сообщник", actionId:"talk", required: {mortal: 1},forbidden: {hunter:1,hireling:1,prisoner:1},description: "Новичок или закалённый адепт."},
+			{id:"Ceremony",label:"Церемония", actionId:"talk", required: {lore:1},description: "Чтобы завербовать новичка, хватит малых секретов. Высшие мистерии требуют углублённых обетов."},
+			{id:"Trappings",label:"Атмосфера", actionId:"talk", required: {tool: 1,ingredient:1,influence:1,summoned:1},description: "Для впечатлений, отвечающих важности момента. Расходует Ингредиенты и Влияния; использует, но не расходует, Призванных и Инструменты."}],
+            description: "Оккультное общество, посвящённое приходящему молчанию и завершающему холоду. [Начав Разговор о Культе, можно завербовать или повысить приспешников, или послать их на задания для сбора ресурсов. Неофиты могут стать Адептами; некоторые одарённые Адепты могут подняться ещё выше и погрузиться в фатальное молчание.]",
+				unique:true
+        },
+		  
+]
+};

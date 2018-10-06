@@ -1,0 +1,222 @@
+﻿{
+"recipes": [
+		{
+        id: "dreamascensionpowera",
+        label: "Мысли о стремлении к неземной силе",
+        actionId: "dream",
+        requirements: {ascensionpowera: 1},
+		slots: [{id:"Calculation",label:"Оценки",required:{lore:1,health:1,reason:1}, description: "Посвятить себя знанию принципа, к которому стремлюсь; или сосредоточиться на чем-то ином."}],
+        startdescription: "Посвятить себя моей цели? Или же приложить усилия где-то ещё?",
+        description: "Мой путь останется тем же... пока что.",
+		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		{id: "dreamascension_switchto_enlightenment",chance:100},
+		{id: "dreamascension_upgrade_power_1to2",chance:100}],
+        warmup: 60,
+        craftable: true
+    },
+				{
+        id: "dreamascensionsensationa",
+        label: "Мысли об охоте за наслаждениями",
+        actionId: "dream",
+        requirements: {ascensionsensationa: 1},
+		slots: [{id:"Musing",label:"Фантазии",required:{lore:1,passion:1,reason:1}, description: "Посвятить себя знанию принципа, к которому стремлюсь; или сосредоточиться на чем-то ином."}],
+        startdescription: "Посвятить себя моей цели? Или же приложить усилия где-то ещё?",
+        description: "Мой путь останется тем же... пока что.",
+        		alternativerecipes:[{id: "dreamascension_switchto_power",chance:100},
+		{id: "dreamascension_switchto_enlightenment",chance:100},
+		{id: "dreamascension_upgrade_sensation_1to2m",chance:50},
+		{id: "dreamascension_upgrade_sensation_1to2f",chance:100}],
+		warmup: 60,
+        craftable: true
+    },
+			{
+        id: "dreamascensionenlightenmenta",
+        label: "Мысли о стремлении к сверхчеловеческому знанию",
+        actionId: "dream",
+        requirements: {ascensionenlightenmenta: 1},
+		slots: [{id:"Reflection",label:"Раздумья",required:{lore:1,passion:1,health:1},description: "Посвятить себя знанию принципа, к которому стремлюсь; или сосредоточиться на чем-то ином."}],
+        startdescription: "Посвятить себя моей цели? Или же приложить усилия где-то ещё?",
+        description: "Мой путь останется тем же... пока что.",
+        		alternativerecipes:[{id: "dreamascension_switchto_sensation",chance:100},
+		{id: "dreamascension_switchto_power",chance:100},
+		{id: "dreamascension_upgrade_enlightenment_1to2",chance:100}],
+		warmup: 60,
+        craftable: true
+    },
+{
+        id: "dreamascension_switchto_power",
+		label: "Теперь я стремлюсь к Силе.",
+		actionId: "dream",
+		requirements: {passion:1},
+		effects:{desire:-1,ascensionpowera:1},
+		startdescription:"Возможно, Сила — более убедительная цель.",
+		description: "Мои намерения изменились. Мои предшественники владели силой изменения: силой, о которой императрицы, генералы и физики могли только мечтать. Эта сила должна покориться и мне, даже если её огонь опалит меня.",
+},
+{
+        id: "dreamascension_switchto_sensation",
+		label: "Теперь я стремлюсь к Чувственности.",
+		actionId: "dream",
+		requirements: {health:1},
+		effects:{desire:-1,ascensionsensationa:1},
+		startdescription:"Возможно, Чувственность — более приятная цель.",
+		description: "Мои намерения изменились. Есть впечатления, вьющиеся словно вены под кожей мира. Я познаю глубочайшие из них, хоть они и могут поглотить меня.",
+},
+
+{
+        id: "dreamascension_switchto_enlightenment",
+		label: "Теперь я стремлюсь к Просветлению.",
+		actionId: "dream",
+		requirements: {reason:1},
+				effects:{desire:-1,ascensionenlightenmenta:1},
+		startdescription:"Возможно, знание — более изящная цель.",
+				description: "Мои намерения изменились. Мои предшественники знали наивысшие тайны, проницающие тайны, секреты, для света которых кости были стеклом, а кожа — пергаментом. Их буду знать и я, хотя знание может отменить меня.",
+},
+
+{
+        id: "dreamascension_upgrade_power_1to2",
+		label: "Преданность Огня",
+		actionId: "dream",
+		requirements: {lore:1,forge:1},
+		startdescription:"Я посвящу себя достижению силы.",
+		description: "В моём шепоте прозвучали слова, которые кузнец шепчет железу, которые убийца шепчет жертвам, которые огонь говорит своему топливу. Кроме меня, никто не знает мои действия, но теперь мой путь определён. [Я на шаг ближе к ужасающему восхождению.]",
+		effects:{ascensionpowera:-1,ascensionpowerb:1},
+		burnimage: "forgededication"
+},
+
+
+{
+        id: "dreamascension_upgrade_sensation_1to2m",
+		label: "Преданность Крови",
+		actionId: "dream",
+		requirements: {lore:1,grail:1},
+		startdescription:"Я посвящаю себя погоне за чувствами.",
+		description: "Некоторые слова лучше слышать. Другие слова лучше знать на вкус. Этот вкус у меня на языке, и я никогда его не забуду. [Я на шаг ближе к ужасающему восхождению.]",
+		effects:{ascensionsensationa:-1,ascensionsensationbm:1},
+		burnimage: "graildedication"
+},
+{
+        id: "dreamascension_upgrade_sensation_1to2f",
+		label: "Преданность Крови",
+		actionId: "dream",
+		requirements: {lore:1,grail:1},
+		startdescription:"Я посвящаю себя погоне за чувствами.",
+		description: "Некоторые слова лучше слышать. Другие слова лучше знать на вкус. Этот вкус у меня на языке, и я никогда его не забуду. [Я на шаг ближе к ужасающему восхождению.]",
+		effects:{ascensionsensationa:-1,ascensionsensationbf:1},		
+		burnimage: "graildedication"
+},
+
+{
+        id: "dreamascension_upgrade_enlightenment_1to2",
+		label: "Преданность Света",
+		actionId: "dream",
+		requirements: {lore:1,lantern:1},
+		startdescription:"Я посвящаю себя поиску знания.",
+		description: "Я знаю слова, что сказаны мной: «У каждого Часа свой цвет, но цвет существует лишь там, где есть свет». Я буду идти туда, где есть свет, хоть он и выбелит меня до стеклянной ясности. [Я на шаг ближе к ужасающему восхождению.]",
+		effects:{ascensionenlightenmenta:-1,ascensionenlightenmentb:1},		
+		burnimage: "lanterndedication"
+},
+
+
+
+
+	{
+	id: "dreamreason",
+	label: "Блуждающий разум",
+	actionId: "dream",
+	requirements: {reason: 1},
+	effects: {},
+	startdescription: "Однажды было сказано, что сон разума рождает чудовищ. Зачастую полезно для здоровья отправить разум странствовать во сне. Но если я продолжу спать, то, рано или поздно, мои опасения породят чудовище.",
+	description: ".",
+	warmup: 60,
+	craftable: true,
+	linked: [{id:"dream_router",chance:100}]
+	},
+	
+	{id: "dream_router",
+	label: "Скопления снов",
+	actionId: "dream",
+	deckeffect: {dreamreasonresults:1},
+	linked: [
+	{id: "dreamcontentment",chance: 100},
+	{id: "dreamrestlessness",chance: 100},
+{id: "dreamvitality",chance: 100},	
+	{id: "dreamglimmering", chance: 100},
+	{id: "nightmarehersault", chance: 100},
+	{id: "nightmarecleansingdawn", chance: 100},
+	],
+	warmup:10
+	},
+	{
+	id: "dreamcontentment",
+	label: "Сны о дожде",
+	actionId: "dream",
+	requirements: {contentment:1},
+	
+	startdescription: "Приходит дождь; но это правильный дождь.",
+	description: "Я вижу дождь, шепчущий на крышах, постукивающий в окна как старый друг, игриво шипящий в дымоходах. Сложно помнить о несчастье под правильным дождём.",
+	warmup: 10,
+	},
+	{
+	id: "dreamrestlessness",
+	label: "Сны о дверях",
+	actionId: "dream",
+	requirements: {restlessness:1},
+	startdescription: "Сегодня — сон о лабиринте дверей.",
+	description: "Я вижу, как открываю двери. Красные двери, золотые двери, двери из стекла, оплетённые подобно книгам двери, вагонные двери, замковые врата. За одной из них — то, что я ищу. Утром хлопанье дверей всё ещё стоит в моих ушах.",
+	warmup: 10,
+	},{
+	id: "dreamvitality",
+	label: "Глубокий здоровый сон",
+	actionId: "dream",
+	requirements: {vitality:1},
+	startdescription: "Сегодня ночью во снах -",
+	description: "Мне ничего не снилось. Проснуться, потянуться, неспешно встать. Эти тихие часы наполнили меня энергией.",
+	warmup: 10,
+	},
+	{
+	id: "dreamglimmering",
+	label: "Сны об экспонатах за стеклом",
+	actionId: "dream",
+	requirements: {glimmering:1},
+	startdescription: "Сегодня я увижу сон о музее.",
+	description: "В витринах невозможного музея я всегда нахожу яблоко, белое как снег и твёрдое как мрамор. Золотого жука в жёсткой коробке. Застенчивый геометрический образ, ждущий моего касания. Чёрный футляр, разрываемый изнутри пружиной. Медная ложа с инструментами для записи и измерения. Шторм в банке. Я всегда просыпаюсь, не успев увидеть конец коридора.",
+	warmup: 10,
+	},
+		{
+	id: "nightmarecleansingdawn",
+	label: "Кошмар: Очищающая заря",
+	actionId: "dream",
+	requirements: {fascination: 1},
+		alternativerecipes: [{id: "nightmarecleansingdawnsuccess",chance: 30}],
+	startdescription: "Солнце восходит. Оно не пощадит меня.",
+	description: "Теперь я могу кусок за куском отшелушить мою плоть, вытягивая сухожилия как мясные волокна из зубов. Моя кожа лежит как изрезанное покрывало. Солнце нависает над горизонтом с победным боевым кличем. Свет, как кислота, падает на мои обнаженные кости. Боль будит меня. В моих костях ещё долго будет биться пульс.",
+	warmup: 10,
+	},
+		{id: "nightmarecleansingdawnsuccess",
+		actionId:"dream",
+	effects: {influencelanternc: 1},
+		description: "Теперь я могу кусок за куском отшелушить мою плоть, вытягивая сухожилия как мясные волокна из зубов. Моя кожа лежит как изрезанное покрывало. Солнце нависает над горизонтом с победным боевым кличем. Свет, как кислота, падает на мои обнаженные кости. Боль разбудит меня, мои кости будут ныть очень долго, но на них выжжены слова Солнца."
+	},
+	{
+	id: "nightmarehersault",
+	label: "Кошмар Херсо",
+	actionId: "dream",
+	requirements: {dread: 1},
+	alternativerecipes: [{id: "nightmarehersaultsuccess",chance: 30}],
+	startdescription: "Спускаюсь.",
+	description: "Я помню, что об этом сказано у Херсо. Сначала я поднимаю доски пола, наклоняюсь и заползаю под них. Теперь я под ними, словно спрятанное мёртвое тело, и они давят сверху. Воздух смердит горячей пылью. Рот набит щепками. В этот раз не удалось узнать то, что хотелось — чем бы это ни было.",
+	warmup: 10,
+	},
+	{id: "nightmarehersaultsuccess",
+	label: "Кошмар Херсо",
+	actionId: "dream",
+	effects: {influenceknockc: 1},
+		description: "Я поднимаю доски пола, наклоняюсь и заползаю под них. Теперь я под ними, словно спрятанное мёртвое тело, и они давят сверху. Воздух смердит горячей пылью. Рот набит щепками. Но это и есть место снизу."
+	},
+	
+	
+	
+	
+	]
+
+}

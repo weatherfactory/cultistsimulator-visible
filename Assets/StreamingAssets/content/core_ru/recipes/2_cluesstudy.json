@@ -1,0 +1,151 @@
+﻿ {"recipes":
+ [
+ 	{
+	id: "studyupgrade_downgrade_lore_hint",
+	label: "Улучшить знание незримых искусств?",
+	actionId: "study",
+	requirements: {lore:1,fragmentedge:-1,fragmentforge:-1,fragmentgrail:-1,fragmentheart:-1,fragmentknock:-1,fragmentlantern:-1,fragmentmoth:-1,fragmentsecrethistories:-1,fragmentwinter:-1},	
+	startdescription: "Если у меня есть два осколка знания, совпадающих по уровню и аспекту, я могу изучить их совместно и вникнуть в них глубже. Если я воспользуюсь Разумом, я проанализирую знание и разобью его на осколки меньшего уровня. Кроме того, я могу приложить знание иного аспекта и извратить его...",
+		craftable: false,
+		hintonly:true
+	},
+   	{
+	id: "studyupgradelore_hint",
+	label: "Улучшить знание незримых искусств?",
+	actionId: "study",
+	requirements: {lore:1},	
+	startdescription: "Если у меня есть два осколка знания, совпадающих по уровню и аспекту, я могу изучить их совместно и вникнуть в них глубже. Кроме того, я могу приложить знание иного аспекта и извратить его...",
+		craftable: false,
+		hintonly:true
+	},
+	
+	  
+ {id:"translatelatinhint",
+ label:"Перевести с латыни?",
+ actionId:"study",
+ requirements:{textlatin:1},
+ startdescription:"Моего знания латыни недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
+ hintonly:true,
+ craftable:false
+ },
+ {id:"translategreekhint",
+ label:"Перевести с греческого языка?",
+ actionId:"study",
+ requirements:{textgreek:1},
+ startdescription:"Моего знания греческого недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ {id:"translatearamaichint",
+ label:"Перевести с арамейского языка?",
+ actionId:"study",
+ requirements:{textaramaic:1},
+ startdescription:"Моего знания арамейского недостаточно, чтобы это прочесть. Возможно, я смогу найти учебник или нанять учителя.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+   {id:"translatefucinehint",
+ label:"Перевести с фуцинского языка?",
+ actionId:"study",
+ requirements:{textfucine:1},
+ startdescription:"Фуцинский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+ hintonly:true,
+ craftable:false
+ },
+   {id:"translatephrygianhint",
+ label:"Перевести с фригийского языка?",
+ actionId:"study",
+ requirements:{textphrygian:1},
+ startdescription:"Фригийский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+   {id:"translatemandaichint",
+ label:"Перевести с глубокого мандейского языка?",
+ actionId:"study",
+ requirements:{textmandaic:1},
+ startdescription:"Глубокий мандейский язык незнаком мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+ hintonly:true,
+ craftable:false
+ },
+    {id:"translatevakh1int",
+ label:"Перевести с ваки?",
+ actionId:"study",
+ requirements:{textvak:1},
+ startdescription:"Вака незнакома мне; вероятно, и никому из живущих. Может быть, где-то найдётся «розеттский камень»... или я найду учителя из числа неживых; то есть, не совсем живых.",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ 
+	{
+        id: "increasehealthfurtherhint",
+        label: "Набраться Здоровья?",
+        actionId: "study",
+        requirements: {vitality:2},
+        startdescription: "Чем больше Здоровья я получаю, тем больше Бодрости мне нужно. [Используйте Навык Тела, чтобы набрать ещё больше Здоровья.]",
+
+        hintonly:true,
+        craftable: true
+    },
+			{
+        id: "increasereasonfurtherhint",
+        label: "Набраться Разума",
+        actionId: "study",
+        requirements: {erudition:2},
+        startdescription: "Чем больше Разума я получаю, тем больше Размышлений мне нужно. [Используйте Навык Учёности, чтобы набрать ещё больше Разума.]",
+
+        hintonly:true,
+        craftable: true
+    },
+	
+		{
+        id: "increasepassionfurtherhint",
+        label: "Набраться Страсти?",
+        actionId: "study",
+        requirements: {glimmering:2},
+        startdescription: "Чем больше Страсти я получаю, тем больше Мечтаний мне нужно. [Используйте Навык Воображения, чтобы набрать ещё больше Страсти.]",
+
+        hintonly:true,
+        craftable: true
+    },
+		
+		
+	{
+        id: "increasehealthfurtherhint1",
+        label: "Набраться Здоровья?",
+        actionId: "study",
+        requirements: {vitality:1},
+        startdescription: "Одной не хватит.",
+
+        hintonly:true,
+        craftable: true
+    },
+			{
+        id: "increasereasonfurtherhint1",
+        label: "Набраться Разума?",
+        actionId: "study",
+        requirements: {erudition:1},
+        startdescription: "Одного не хватит.",
+
+        hintonly:true,
+        craftable: true
+    },
+	
+		{
+        id: "increasepassionfurtherhint1",
+        label: "Набраться Страсти?",
+        actionId: "study",
+        requirements: {glimmering:1},
+        startdescription: "Одного не хватит.",
+
+        hintonly:true,
+        craftable: true
+    },
+
+	
+]
+}

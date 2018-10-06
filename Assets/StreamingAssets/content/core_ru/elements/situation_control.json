@@ -1,0 +1,14 @@
+﻿{"elements":
+    [
+		{id: "insight",
+		label: "Озарение",
+		description: "Озарение об этой тайне.",
+		lifetime:1
+		},
+		{id: "bid",
+		label: "Ставка",
+		description: "Ставка, размещённая на аукционе.",
+		xtriggers:{restore:funds}
+		}
+]
+};

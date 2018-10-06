@@ -1,0 +1,143 @@
+ {"recipes": [
+	
+			 	{
+	id: "explore_vaultcontinent1_setup",
+	label: "开始探索: 拉维林城堡",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent1:1},
+	effects: {seal_hiddendoor:1,curse_dread:1},
+
+	startdescription: "拉维林伯爵的城堡偏远而破败，早已经历过掠夺。然而我们找到证据，那里尚未被洗劫一空。那里也许有个秘密房间。与此相对，那里也许存在着诅咒。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+	
+{
+	id: "explore_vaultcontinent2_setup",
+	label: "开始探索: 费尔米尔修道院",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent2:1},
+	effects: {peril_forest:1,guardian_monks:1},
+
+	startdescription: "费尔米尔修道院，深藏于森林之中，宛如被塞入绿色外袍中偷运的珠宝盒。纵使我们设法穿越了森林，我们仍然得面对僧侣们。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultcontinent3_setup",
+	label: "开始探索: 俄耳托斯树林",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent3:1},
+	effects: {peril_forest:1,guardian_watchers:1},
+
+	startdescription: "在黑暗的俄耳托斯树林的中心，我们也许能找到那棵戴面具的乌鸦与它的党徒用以会面的树木。但树林本身就是险境，居住其中的食人部落则是另外个危险因素。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultcontinent4_setup",
+	label: "开始探索: 范德沙夫收藏馆",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent4:1},
+	effects: {seal_wardeddoor:1,curse_visions:1},
+
+	startdescription: "通往范德沙夫收藏馆的绘彩室的大门紧锁，守卫重重。并且那幢建筑据说'花影幢幢'。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultcontinentdefault_setup",
+	label: "开始探索: 一望无际的巨石阵",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinentdefault:1},
+	effects: {peril_forest:1,seal_hiddendoor:1,guardian_watchers:1},
+
+	startdescription: "前来拜访石岗的寻宝者们必须穿越隐藏着石岗的森林；和崇敬石岗的土著格斗；最后即使发现了隐藏的大门，仍需为挖掘做好准备。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+					{
+	id: "explorevaultcontinent1_success",
+	label: "童年终焉",
+	actionId: "explore",
+	requirements: {vaultcontinent1:1},
+	effects: {vaultcontinent1:-1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
+	startdescription: "在一幅破败的描绘着狼群猎杀人类的挂毯背后，是一堵镶板墙。在镶板墙之中，隐藏着一扇门。弹簧失踪已久，这丝毫不让人意外。我们不得不用锤子砸门而入。",
+	description: "拉维林伯爵最后的宝藏位于此处，在一个空气出乎意料地流通的房间里。高处的天窗早已破损，地板被树叶和碎片所掩埋，但曾经这个地方曾被布置成育婴室。 这里有一个摇篮，里面放着小狗的骨骸。",
+	warmup:10,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultcontinent2_success",
+	label: "枝干之下",
+	actionId: "explore",
+	requirements: {vaultcontinent2:1},
+	effects: {vaultcontinent2:-1,againstsisterhoodknotgreek:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "在他们的礼拜堂的庭院中，一棵巨大的红豆杉矗立在花岗岩祭坛旁生长着，宛如石棺盖。里面有什么？",
+	description: "祭坛内部装满了损毁的杯子，每只都涂成红色，每只都绘有丑恶的涂鸦，或其他污秽的图案。僧侣们必定进行了令人憎恶的庞大仪式，保留了残余部分作为纪念品。别的宝藏被埋藏在杯子的残骸中。",
+	warmup:10,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultcontinent3_success",
+	label: "群鸦记忆",
+	actionId: "explore",
+	requirements: {vaultcontinent3:1},
+	effects: {vaultcontinent3:-1,ingredientmothd:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "这是面具乌鸦曾栖息的大橡树。它被闪电纵向劈开，焦黑腐烂。其上爬满了手指长度的虫子。在死亡的树根堆中有什么东西微微闪光。",
+	description: "一枝树根围绕着一个孩子大小的铅蛋。 也许它曾被镀上另一种金属，但气候已经抹消了所有涂层的痕迹。 经过一番努力后，蛋一分为二，显露出内部。",
+	warmup:10,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultcontinent4_success",
+	label: "绘厅之中",
+	actionId: "explore",
+	requirements: {vaultcontinent4:1},
+	effects: {vaultcontinent4:-1,toolsecrethistoriesb:1,jumble:1,influencemothc:1,funds:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "绘厅的墙上绘有所有重大历史战争的场景：虫攻陷维也纳，受缚之火的主宰焚烧结绳姐妹会殉道的战士，亚历山大与无影之王的会晤。一面墙上靠立着一个架子，堆满了垃圾和古董。",
+	description: "一本关于标本花的书籍，散发着异香； 三位上了年纪的贝德克尔家族成员; 被涂成黑白两色蝴蝶藏品；最后是真正的宝藏。 一个装在玻璃箱中的罕见之物和装在景泰蓝保险箱中的古董。",
+	warmup:10,
+	craftable: false
+	},
+	
+				{
+	id: "explorevaultcontinentdefault_success",
+	label: "石之下",
+	actionId: "explore",
+	requirements: {vaultcontinentdefault:1},
+	effects: {vaultcontinentdefault:-1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
+	startdescription: "月光将草地漂染成冬天的颜色。环顾四周，石岗隐约可见。在草地下面的古墓中，有一块石头会像陷阱门一样升起。我们必须紧紧背靠着它。",
+	description: "岁月让古墓里的空间坍塌了一半。肥胖的白色蜘蛛从我们的灯光边缘缓缓爬处，缓慢得近乎傲慢。画像砖开裂，碎屑不断落下。但这里仍然有着用以供奉的孔洞，装着宝藏。",
+	warmup:10,
+	craftable: false
+	},
+	
+]
+}
+

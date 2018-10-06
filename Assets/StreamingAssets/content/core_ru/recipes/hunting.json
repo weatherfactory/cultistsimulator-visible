@@ -1,0 +1,268 @@
+﻿{"recipes": [
+	    {
+        id: "suspicion",
+        label: "Опасное внимание",
+        actionId: "suspicion",
+        requirements: {seasonsuspicion:1},
+		slots: [{id:"Suspicion", label:"Враг?", required: {hunter: 1}, greedy: true}],
+        startdescription: "Город кишит журналистами, детективами и прочими назойливыми людьми. Сколько ещё продлится мой покой?",
+        description: "Сейчас я в безопасности. Надоедливое внимание привлечено не мной. Можно выдохнуть.",
+        warmup: 10,
+        craftable: false,
+		linked: [{id: "suspiciongrabreputation",chance: 100},		
+		{id:"suspiciontrycreatehunter",chance:70}]
+		},
+		
+		{id:"suspiciongrabreputation",
+		label: "Поиск следов...",
+		actionId:"suspicion",
+		requirements:{hunter:1},
+		startdescription: "Враг тщательно расспрашивает о моих действиях.",
+		description: "",
+		slots: [{id:"Clues",label:"Следы",required: {reputation: 1}, greedy: true}], 
+		warmup:30,
+		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
+		{id:"suspiciongrabevidence",chance:100}]
+		},
+		
+		{id:"suspiciongrabevidence",
+		actionId:"suspicion",
+		label:"Рассмотрение улик...",
+		startdescription: "Если Охотнику удалось обнаружить Слухи, далее следует попытка вычленить или улучшить Улики. Педанты прорабатывают Слухи абсолютно надёжно; Эксцентрики склонны ошибаться... но иногда получают Улики даже без опоры на Слухи.",
+		description: "Пока я в безопасности. У Охотника не хватает улик, чтобы отправиться с ними в суд, и у него нет новых следов.",
+		slots: [{id:"Evidence",label:"Улики",required: {evidenceb:1,evidence: 1}, greedy: true}],
+		alternativerecipes:[{id:"suspicionpretrial",chance:100},
+		{id:"suspicionerratic_alwaysfail",chance:10},
+		{id:"suspicionpromoteevidencemeticulous",chance:100},
+		{id:"suspicionpromoteevidence",chance:70},
+		{id:"suspicioncreateevidencemeticulous",chance:100},
+		{id:"suspicioncreateevidence",chance:70}],
+		warmup:30,
+		linked:[{id:"suspicionerratic_alwayssucceed",chance:10}]
+		},
+		{id:"suspicionerratic_alwaysfail",
+		actionId:"suspicion",
+		label:"Любопытные привычки",
+		requirements:{erratic:1,reputation:1},
+		startdescription:"Мой враг ведёт себя эксцентрично. [Это случается лишь иногда.]",
+		description:"Мой враг вместо расследования совершенствуется в музыкальном мастерстве? Метает дротики в пробковую доску? Или просто часами лежит в кровати? Сообщения неясны, как и само поведение. Расследование не продвинулось.",
+		effects:{reputation:-1}		
+		},
+		{id:"suspicionerratic_alwayssucceed",
+		actionId:"suspicion",
+		label:"Загадочные успехи",
+		requirements:{erratic:1,reputation:-1},
+		effects:{notoriety:1},
+		startdescription:"По слухам, мой враг гадает по Канону Перемен. По другим слухам, ищет ответы в снах. По третьим, выбирает, какие вопросы задать, кидая кости. Так или иначе, улики найдены там, где их просто не должно было быть. [Это случается лишь иногда.]",
+	linked:[{id:"suspicionpromoteevidence",chance:100},
+		{id:"suspicioncreateevidence",chance:100}],
+		warmup:30
+		},
+		
+		
+				{id:"suspicion_searchlongerforevidence",
+		actionId:"suspicion",
+		requirements:{mystique:1},
+		label: "Опасности известности",
+		startdescription: "Моя Загадочность привлекла внимание Охотника. Для доказательств её недостаточно, но теперь вести наблюдение за нами будут дольше.",
+		effects:{mystique:-1},
+		slots: [{id:"Clues",label:"Следы",required: {reputation: 1}, greedy: true}], 
+		warmup:60,
+		linked: [{id:"suspicion_searchlongerforevidence",chance:100},
+		{id:"suspiciongrabevidence",chance:100}]
+		},
+				{id:"suspicionpromoteevidencemeticulous",
+		actionId:"suspicion",
+		label: "Создание Убийственных улик",
+		requirements:{evidence:1,reputation:1,meticulous:1},
+		linked:[{id:"suspicionpromoteevidence",chance:100}]
+		},
+		
+		
+		{id:"suspicionpromoteevidence",
+		actionId:"suspicion",
+		requirements:{evidence:1,reputation:1},
+		label: "Создание Убийственных улик",
+		startdescription: "Охотник наносит финальные штрихи на картину своего расследования.",
+		description:"Если это дойдёт до суда, я буду в серьёзной опасности. Даже если мы позаботимся об этом Охотнике, другой Охотник может найти сохранившиеся заметки.",
+		effects:{evidence:-1,evidenceb:1,reputation:-1},
+		warmup:30},
+		
+						{id:"suspicioncreateevidencemeticulous",
+		actionId:"suspicion",
+			label: "Поиск Улик в Следах",
+		requirements:{reputation:1,meticulous:1},
+		linked:[{id:"suspicioncreateevidence",chance:100}]
+		},
+		
+		{id:"suspicioncreateevidence",
+		actionId:"suspicion",
+		requirements:{reputation:1},
+		label: "Поиск Улик в Следах",
+		startdescription: "Слухи селятся на крышах и застревают в водостоках. Расследование этого Охотника близится к успеху.",
+		description:"Не сомневаюсь, что заметки моего врага уже на всякий случай скопированы — душеприказчику, начальству, или даже журналисту. Это беспокоит.",
+		effects:{reputation:-1, evidence:1},
+		warmup:30},
+			
+		
+		
+	
+				{id:"suspiciontrycreatehunter",
+		label: "Любопытные",
+		actionId: "suspicion",
+		startdescription: "Опасная репутация может заинтересовать чрезмерно любопытных, мстительных или высокоморальных. [Репутация может вдохновить врага на действия.]",
+		slots: [{id:"Clues",label:"Следы", required: {reputation: 1}, greedy: true}],
+		alternativerecipes:[{id:"suspicioncreatehunter",chance:100}],
+		description: "Сейчас моё имя чисто. Все стражи остаются в тени.",
+		effects:{contentment:1},
+		warmup:30
+		},
+		
+		{id:"suspicioncreatehunter",
+		actionId:"suspicion",
+		label: "Враг!",
+		requirements:{reputation:1},
+		startdescription: "Кто-то лезет в мои дела.",
+		description:"Всегда найдутся те, кто не понимает, или те, кто понимает слишком хорошо. Всплывший баламут будет искать улики в моих делах, чтобы передать их властям.",
+		deckeffect: {"hunters":1},
+		effects: {reputation:-1},
+		warmup:0},
+
+
+		    {
+        id: "suspicionpretrial",
+        label: "Бюро рассматривает моё дело",
+        actionId: "suspicion",
+        requirements: {evidenceb:1},
+		startdescription: "Мой враг убедил Бюро, что стоит рассмотреть моё дело. Бюро выносит наказания не самым обычным преступникам — тех, чьи преступления, возможно, существуют только во снах.",
+        description: ".",
+        warmup: 30,
+        craftable: false,
+		linked:[{id:"suspicion_attemptmitigation_me",chance:30},{id:"suspicion_questionfollower",chance:100}],
+		burnimage:"beforetrial"
+    },
+					    {
+        id: "suspicion_questionme",
+        label: "Меня вызывают !",
+        actionId: "suspicion",
+        startdescription: "Бюро Подавления вызвало меня на допрос.",
+        description: ".",
+        craftable: false,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_me"}],
+		        warmup: 30
+    },
+					    {
+        id: "suspicion_questionfollower",
+        label: "Суд!",
+        actionId: "suspicion",
+		slots: [{id:"Suspect",label:"Подозреваемый",required: {follower:1}, forbidden:{summoned:1,hireling:1}, description: "Бюро требует подозреваемых.",greedy:true}],
+        startdescription: "Бюро Подавления ищет кого-то из моих приспешников для допроса. Если не найдёт, они придут прямо за мной.",
+        description: ".",
+        craftable: false,
+		linked:[{chance:100,id:"suspicion_attemptmitigation_follower"},
+		{chance:100,id:"suspicion_attemptmitigation_me"}],
+		        warmup: 30
+
+    },
+	{
+	id:"suspicion_attemptmitigation_me",
+	actionId:"suspicion",
+	label: "Бюро Подавления готово судить меня!",
+	startdescription:"Есть преступления, о которых государство якобы не знает. Меня обвиняют в одном из них. Суд Бюро Подавления закрыт и не склонен к снисхождению. Если только я не воспользуюсь связями, я почти на пороге тюрьмы!",
+	description:".",
+	slots:[{id:"favour",label:"Заслуга",required:{favour:1}}],
+	linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_meimprisoned"},
+	{chance:100,id:"suspicion_meexonerated"}],
+	warmup:60
+	},
+	{
+	id:"suspicion_attemptmitigation_follower",
+	label: "Бюро Подавления готово судить приспешника!",
+	actionId:"suspicion",
+	requirements: {follower:1},
+	startdescription:"Есть преступления, о которых государство якобы не знает. Моего приспешника обвиняют в одном из них. Суд Бюро Подавления закрыт и не склонен к снисхождению. Если только я не воспользуюсь связями, приспешник может исчезнуть навсегда!",
+	description:".",
+	slots:[{id:"favour",label:"Заслуга",required:{favour:1}}],
+		linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_followerimprisoned"},
+	{chance:100,id:"suspicion_followerexonerated"}],
+	warmup:60,
+	},
+		{
+	id:"suspicion_favourused",
+	actionId:"suspicion",
+	label:"Союзник в тенях",
+	requirements:{favour:1},
+	effects:{favour:-1},
+		startdescription:"Я напоминаю о заслуге перед примечательным человеком. Возможно, он прикроет меня, но никаких гарантий.",
+		description:".",
+	warmup:30,
+	linked:[{chance:70,id:"suspicion_followerexonerated"},
+	{chance:70,id:"suspicion_meexonerated"},
+	{chance:100,id:"suspicion_favourused_failure"}],
+	},
+			{
+	id:"suspicion_favourused_failure",
+	actionId:"suspicion",
+	label:"Недостаточно!",
+	startdescription: "Все мои ниточки — и их недостаточно! Бюро беспощадно. Если у меня есть другие связи, стоило бы обратиться к ним. В противном случае нас ждёт суд.",
+	description:".",
+	warmup:30,
+		linked:[{chance:70,id:"suspicion_attemptmitigation_follower"},
+	{chance:100,id:"suspicion_attemptmitigation_me"}],
+	},
+	{
+	id:"suspicion_followerimprisoned",
+	actionId:"suspicion",
+	label:"Победа Бюро",
+	description:"Теперь приспешник — в далёкой тюрьме без права посещений, и даже срок выхода на свободу туманен. Аппетиты Бюро временно удовлетворены — но что осталось в протоколах допросов?",
+		aspects:{investigatingsetback:1},
+	effects:{follower:-1}
+	},
+	{
+	id:"suspicion_meimprisoned",
+	actionId:"suspicion",
+	label:"Победа Бюро",
+			startdescription:"Моя вина доказана в суде! Все мои планы на этом кончаются. Мне надо подготовиться.",
+	description:".",
+	warmup:10,
+			signalEndingFlavour:Melancholy,
+	ending:arrest
+	},
+	{
+	id:"suspicion_followerexonerated",
+	actionId:"suspicion",
+	requirements:{follower:1},
+	label:"Ярость Бюро",
+				startdescription:"Приспешник на свободе! Улики были недостаточно убедительны для обвинительного приговора. Сейчас Бюро в тупике; но что они узнали?",
+	aspects:{investigatingsetback:1}	
+	},
+	{
+	id:"suspicion_meexonerated",
+	actionId:"suspicion",
+	label:"Ярость Бюро",
+	startdescription: "Я на свободе! Улики были недостаточно убедительны для обвинительного приговора, и я могу идти куда угодно",
+	requirements:{follower:-1},
+	aspects:{evidencelevel:-1}
+	},		
+	   {
+        id: "suspiciontrial",
+		comments: "Here for legacy compatibility",
+        actionId: "suspicion",
+        description: "АРЕСТ!",
+        warmup: 0,
+		linked:[{id:"suspicionpretrial",chance:100}],
+    },
+
+
+	  {
+        id: "scapegoat",
+		actionId: "suspicion",
+		comments: "Here for legacy compatibility",
+	warmup:0
+
+    },
+
+]
+}

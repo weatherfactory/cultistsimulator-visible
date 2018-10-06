@@ -1,0 +1,143 @@
+﻿{"elements":
+    [
+	          {
+        id: "ritetoolconsumeingredient",
+            label: "Ритуал Морского Пира",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Instrument",label:"Инструмент",actionId: "work",required: {tool:1},description: "Каков наш инструмент?"},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {ingredient: 1}, consumes: true,description: "Что мы отдадим?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ритуал обращается к Ведьме-и-Сестре, чтобы закрыть проём между существующим и возможным. Посвящённый выливает, либо бросает, подношение в воду: предпочтительно, но не обязательно, в море.",
+			unique:true
+        },
+								          {
+        id: "ritetoolconsumeinfluence",
+            label: "Ритуал Грани Карты",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {influence:1},description: "Каким влиянием мы жертвуем?",consumes:true},
+			{id:"Instrument",label:"Инструмент",actionId: "work",required: {tool: 1}, description: "Каков наш инструмент?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Бродяга — единственный Час, который никогда не входит в Обитель. Ритуал должен быть выполнен в правильном месте в правильное время; верны ли они — решит сама Бродяга.",
+			unique:true
+        },
+	
+		          {
+        id: "ritetoolconsumefollower",
+            label: "Ритуал Души Тигеля",
+			comments: "endgame rite",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Victim",label:"Кровь",actionId: "work",required: {follower:1,prisoner:1}, consumes: true, description: "Здесь необходима добровольная кровь."},
+			{id:"Instrument",label:"Инструмент",actionId: "work",required: {tool: 1}, description: "На что прольётся кровь?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ритуал использует орудие силы, чтобы поджечь кровь: огонь — повреждение в коже мира. Ассистент вряд ли уцелеет.",
+			unique:true
+        },
+		          {
+        id: "ritetoolfollowerconsumelore",
+            label: "Ритуал Печали Дозорного",
+			comments: "endgame rite",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Sacrifice",label:"Жертва",actionId: "work",required: {lore: 1}, consumes: true, description: "Что мы забудем?"},
+			{id:"Assistant",label:"Ассистент",actionId: "work",required: {follower:1,prisoner:1},description: "Кто скажет все слова?"},
+			{id:"Instrument",label:"Инструмент",actionId: "work",required: {tool: 1}, description: "Каков наш инструмент?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ритуал напоминает об утрате Дозорного, который ходит по дому без стен. (Свет идёт перед ним, тень следует позади. Он не должен вас видеть.) Орудие силы используется, чтобы призвать его к его жертве: к драгоценному знанию, скрытому в корнях ваших мыслей. Ассистенту следует произносить слова, удерживающие ваш здравый рассудок; сделайте выбор исходя из доверия.",
+			unique:true
+        },
+		
+		          {
+        id: "ritefollowerconsumetool",
+            label: "Ритуал Борьбы Мятежника",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Assistant",label:"Ассистент",actionId: "work",required: {follower:1,prisoner:1},description: "Кто скажет все слова?"},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {tool: 1}, consumes: true,description: "Что мы отдадим?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ритуал воспроизводит урок Кузни Дней: мастер может достичь высшей цели только уничтожив свой лучший инструмент. Львокузнец знал это, когда разбил свой меч перед Полковником. Так что моему ассистенту следует уничтожить выбранный инструмент.",
+			unique:true
+        },
+		
+				          {
+        id: "ritefollowerconsumeingredient",
+            label: "Ритуал Милости Матери",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Assistant",label:"Ассистент",actionId: "work",required: {follower:1,prisoner:1},description: "Кто скажет все слова?"},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {ingredient: 1}, description: "Что я предложу?",consumes:true},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ассистента предлагают в жертву Матери Муравьёв. Но Мать знает лечение так же, как знает яд, и будет милостива, приняв взамен меньшее подношение. Обычно. Предыдущие опыты не вселяют в ассистента уверенность.",
+			unique:true
+        },
+						          {
+        id: "riteinfluenceconsumeingredient",
+            label: "Ритуал Морской Свадьбы",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Influence",label:"Влияние",actionId: "work",required: {influence:1},description: "Какая сила здесь?"},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {ingredient: 1}, description: "Что я предложу?",consumes:true},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ритуал обращается к Сестре-и-Ведьме, чтобы закрыть проём между существующим и возможным. Ассистент предлагает себя в супружество неведомому; по существу, но не обязательно, морю.",
+			unique:true
+        },
+						          {
+        id: "ritefollowerconsumeinfluence",
+            label: "Ритуал Заката",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание",actionId: "work",required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Assistant",label:"Ассистент",actionId: "work",required: {follower:1,prisoner:1},description: "Кто скажет все слова?"},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {influence: 1}, consumes:true, description: "Каким влиянием мы жертвуем?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ассистенту следует пролить слёзы настоящих чувств, которые окропят место, подверженное влиянию. Если всё выполнено верно, Солнце-в-Рубище поглотит влияние, примет финал, и одолжит свою поддержку.",
+			unique:true
+        },
+						          {
+        id: "riteinfluenceconsumefollower",
+            label: "Ритуал Деления Зверя",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",label:"Заклинание", actionId: "work", required: {lore: 1}, description: "Каковы слова?"},
+			{id:"Victim",label:"Кровь", actionId: "work",required: {follower:1,prisoner:1},description: "Кто будет разделён?",consumes:true},
+			{id:"Influence",label:"Влияние",actionId: "work",required: {influence: 1}, description: "Какая сила здесь?"},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Имя ассистента отнимают от него в месте, либо по случаю, силы; ассистент делится на девять частей. Раньше, помимо того, на них охотились как на животных, но теперь другие времена.",
+			unique:true
+        },
+						          {
+        id: "riteconsumetoolingredientfollowerinfluence",
+            label: "Ритуал Внедрения",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Sacrifice",label:"Жертва",actionId: "work",required: {lore: 1}, description: "То, что предстоит утратить.", consumes:true},
+			{id:"Offering",label:"Подношение",actionId: "work",required: {follower:1,prisoner:1},description: "То, что предстоит утратить.", consumes:true},
+			{id:"Surrender",label:"Лишение",actionId: "work",required: {tool: 1}, description: "То, что предстоит утратить.", consumes:true},
+			{id:"Dissolution",label:"Расточение",actionId: "work",required: {influence: 1}, description: "То, что предстоит утратить.", consumes:true},
+			{id:"Grief",label:"Горе",required: {ingredient: 1}, description: "То, что предстоит утратить.", consumes:true},
+			{id:"Desire",label:"Желание",actionId: "work",required: {desire:6}, description: "Чем я стану? [Этот разъём принимает только последний шаг Восхождения. Если вы достигли Шестого Знака, добавьте сюда ваше Восхождение, чтобы завершить Великое Делание.]"}
+			],
+            description: "Ритуал воспроизводит ужасающую судьбу Солнца. Используется в отчаянные времена безрассудными служителями",
+			unique:true
+        },
+
+		
+]
+};

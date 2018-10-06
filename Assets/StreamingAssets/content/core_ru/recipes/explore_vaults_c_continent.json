@@ -1,0 +1,143 @@
+﻿ {"recipes": [
+	
+			 	{
+	id: "explore_vaultcontinent1_setup",
+	label: "Начало экспедиции: замок Равлен",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent1:1},
+	effects: {seal_hiddendoor:1,curse_dread:1},
+
+	startdescription: "Отдалённые руины замка графов Равлен давно разграблены. Мы нашли признаки, что мародёры не осмотрели его достаточно тщательно. Здесь может быть секретная комната. Точно так же здесь может быть проклятие. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+	
+{
+	id: "explore_vaultcontinent2_setup",
+	label: "Начало экспедиции: аббатство Фермье",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent2:1},
+	effects: {peril_forest:1,guardian_monks:1},
+
+	startdescription: "Аббатство Фермье скрыто в лесу как шкатулка драгоценностей скрыта в зелёной робе. Если мы пройдём через лес, нам всё равно придётся встретиться с монахами. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultcontinent3_setup",
+	label: "Начало экспедиции: Орфский лес",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent3:1},
+	effects: {peril_forest:1,guardian_watchers:1},
+
+	startdescription: "В чёрном сердце Орфского леса мы можем найти дерево, где Ворон в маске встречается со своим родом. Но лес — угроза сам по себе, а кланы каннибалов, живущие в нём — ещё одна. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultcontinent4_setup",
+	label: "Начало экспедиции: коллекция Вандершаафа",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinent4:1},
+	effects: {seal_wardeddoor:1,curse_visions:1},
+
+	startdescription: "Дверь в Красочную Камеру коллекции Вандершаафа заперта и закрыта на засов. Как говорят, строение «одержимо цветами». [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultcontinentdefault_setup",
+	label: "Начало экспедиции: Несчётные Камни",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultcontinentdefault:1},
+	effects: {peril_forest:1,seal_hiddendoor:1,guardian_watchers:1},
+
+	startdescription: "Искатели сокровищ, идущие к Камням, сначала должны пройти через лес, где они сокрыты; затем им предстоит победить местных служителей Камней; и наконец, их ждут раскопки, даже если они в силах найти скрытую дверь. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, Экспедиция прекратится.]",
+	description: ".",
+	warmup:10,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+					{
+	id: "explorevaultcontinent1_success",
+	label: "Конец детства",
+	actionId: "explore",
+	requirements: {vaultcontinent1:1},
+	effects: {vaultcontinent1:-1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
+	startdescription: "За истлевшими занавесями с изображениями волков, охотящихся за человеком, стенная панель. В панели — секретная дверь. Механизм, конечно, давно испортился. Нам пришлось пробить её молотами.",
+	description: "Последние сокровища графов де Равелин лежат здесь в неожиданно просторной комнате. Высокие потолочные окна давно разбиты, пол не виден под листвой и обломками, но когда-то эта комната была обставлена как детская. В колыбели лежит скелет щенка.",
+	warmup:10,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultcontinent2_success",
+	label: "Под ветвями",
+	actionId: "explore",
+	requirements: {vaultcontinent2:1},
+	effects: {vaultcontinent2:-1,againstsisterhoodknotgreek:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "Монахи и их печали позади. Здесь, во внутреннем дворе церкви огромный тис возвышается за гранитным алтарём с крышкой как у саркофага. Что внутри?",
+	description: "Пространство под алтарём заполнено разбитыми кубками, каждый — заляпан красным, на каждом омерзительные граффити, каждый тщательно изуродован. Наверняка монахи проводили большие церемонии отвращения, и эти останки чаш — их трофеи. Среди осколков — иные сокровища.",
+	warmup:10,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultcontinent3_success",
+	label: "Память-Ворон",
+	actionId: "explore",
+	requirements: {vaultcontinent3:1},
+	effects: {vaultcontinent3:-1,ingredientmothd:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "Это великий дуб, где восседал Ворон в маске. Молния расколола его от вершины до сердцевины, дерево обгорело и медленно гниёт. Оно кишит червями длиной в палец. Что-то тускло блестит под сплетением мёртвых корней.",
+	description: "Корень обвивается вокруг медного яйца размером с ребёнка. Возможно, раньше поверх меди был другой металл, но погода удалила все следы этого покрытия. С трудом мы смогли разделить половинки яйца и добыть его содержимое.",
+	warmup:10,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultcontinent4_success",
+	label: "В Красочной Камере",
+	actionId: "explore",
+	requirements: {vaultcontinent4:1},
+	effects: {vaultcontinent4:-1,toolsecrethistoriesb:1,jumble:1,influencemothc:1,funds:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "На стенах Красочной Камеры — сцены войн из всех главных Историй. Вена, павшая перед Червями, Повелители Захваченного Пламени сжигают солдат-мучениц из ордена Сестёр Узла, встречу Александра и Короля-без-Тени. Вдоль одной из стен — полка, забитая мусором и редкостями.",
+	description: "Книга прессованных цветов источает странный аромат; три древних бедекера; коллекция чёрно-белых бабочек; и настоящие сокровища. Причудливая вещь в стеклянном ящике, и маленький ящичек любопытных мелочей, гнездящихся в перегородчатой эмали.",
+	warmup:10,
+	craftable: false
+	},
+	
+				{
+	id: "explorevaultcontinentdefault_success",
+	label: "Под камнем",
+	actionId: "explore",
+	requirements: {vaultcontinentdefault:1},
+	effects: {vaultcontinentdefault:-1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":2},
+	startdescription: "Лунный свет выбелил траву до цвета снега. Со всех сторон нависают камни. Здесь, на склоне кургана, под дёрном — камень, который поднимется словно откидная дверь. Нам придётся поднапрячься.",
+	description: "Камера под курганом наполовину обрушена ходом времени. Жирные белые пауки с насмешливой леностью расползаются от света наших фонарей. Каменные стены сочатся влагой из трещин. Но ниша для подношений осталась, и остались дары в ней.",
+	warmup:10,
+	craftable: false
+	},
+	
+]
+}
+

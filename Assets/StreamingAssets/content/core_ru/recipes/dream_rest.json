@@ -1,0 +1,120 @@
+﻿{
+"recipes": [
+
+			{
+        id: "dreamhealth",
+        label: "Ранняя ночь",
+        actionId: "dream",
+        requirements: {health:1},
+		effects: {fleeting:1},
+		alternativerecipes: [{id:"dreamhealthcontentment",chance:30},
+		{id:"dream_router",chance:30}],
+		startdescription: "Если повезёт, сон освежит меня. [Иногда такой сон приносит Довольство. Часто — ничего.]",
+        description: "Иногда я вижу сны о высокой женщине в робе песочного цвета. Она стоит у ног моего ложа, смотрит, как я сплю, и улыбается. В этом сне она поворачивает голову по-птичьи быстро, её пальцы скрючены как когти. Вряд ли она была в моём сне этой ночью. Иначе не получилось бы выспаться так крепко.",
+        warmup: 60,
+        craftable: true,
+    },
+	{
+        id: "dreamhealthcontentment",
+        label: "Ранняя ночь",
+        actionId: "dream",
+		effects: {contentment:1},
+		description: "Сон — широкий тёмный океан, но иногда на его дальнем берегу меня ждёт тёплый жёлтый свет.",
+        craftable: false,
+    },
+	{
+        id: "recoverhunger",
+        label: "Восстановление сил",
+        actionId: "dream",
+        requirements: {funds: 1, hunger: 1},
+        effects: {
+			funds:-1,
+        },
+		aspects:{restorehealth:1},
+        startdescription: "Мне долго не хватало еды. Стоит питаться с осторожностью.",
+        description: "Силы возвращаются. Клубящаяся тьма в уголках зрения отступила.",
+        warmup: 30,
+		craftable:true
+    },
+	{
+        id: "recoverfatigue",
+        label: "Отдых при усталости",
+        actionId: "dream",
+        requirements: {fatigue: 1},
+		aspects:{restorehealth:1},
+        startdescription: "Немного времени, чтобы восстановить силы.",
+        description: "Мне лучше.",
+        warmup: 30,
+		craftable:true
+    },
+	{
+        id: "recoverillhealthfunds",
+        label: "Лечение",
+        actionId: "dream",
+        requirements: {funds: 1, illhealth: 1},
+        effects: {
+			funds:-1,
+        },
+		aspects:{restorehealth:1},
+        startdescription: "Лекарство темно и горько как смола. Несложно заподозрить, что я принимаю яд.",
+        description: "Палата тесна и воздух в ней спёрт. Пора вставать.",
+        warmup: 60,
+		craftable:true
+    },
+		{
+        id: "recoverillhealthfundsvitality",
+        label: "Лечение",
+        actionId: "dream",
+        requirements: {vitality: 1, illhealth: 1},
+        effects: {
+			vitality:-1,
+        },
+		aspects:{restorehealth:1},
+        startdescription: "Теперь мне нужно только время.",
+        description: "Палата тесна и воздух в ней спёрт. Пора вставать.",
+        warmup: 60,
+		craftable:true
+    },
+	
+	{
+        id: "reducedread",
+        label: "Ясность мысли",
+        actionId: "dream",
+        requirements: {contentment: 1, dread: 1},
+        effects: {contentment:-1,dread:-1},
+        startdescription: "Я помню, что раньше было иначе.",
+        description: "Солнце ещё движется. Ветер ещё дует. Мои дневники — нить в лабиринте.",
+        warmup: 60,
+		craftable:true
+    },
+
+	{
+        id: "reducefascination",
+        label: "Самообладание",
+        actionId: "dream",
+        requirements: {dread: 1, fascination: 1},
+        effects: {
+			fascination:-1,
+        },
+        startdescription: ".",
+        description: "Воздух сгустился. Я снова дома, в этой мирской плоти. Возможно, так лучше.",
+        warmup: 60,
+		craftable:true
+    },
+				{
+        id: "dreamfunds",
+        label: "Купить настойку опия",
+        actionId: "dream",
+        requirements: {funds:1},
+		effects: {contentment:1,funds:-1},
+		startdescription: "В особенно мрачные времена я могу посетить сдержанного фармацевта, купить у него настойку опия и подсластить свои сны. Но только в особенно мрачные времена. [Это дорогой и ненадёжный способ достичь Довольства. Он может привести к болезни или отчаянию.]",
+        description: "О, совершенный глубокий покой. Но мне не стоит сворачивать на эту тропу",
+        warmup: 30,
+        craftable: true,
+		alternativerecipes: [
+		{id:"grailinduction",chance:30,additional:true},
+		{id:"despairrisk",chance:10,additional:true},
+		{id:"sickness",chance:10,additional:true}]
+    },
+]
+}

@@ -1,0 +1,83 @@
+﻿{
+"recipes": [
+	   {
+        id: "conjurationpower",
+        label: "Ключ к моему сердцу",
+        actionId: "work",
+        requirements: {ritual: 1, knock: 2, follower:1,ascensionpowera:1},
+        effects: {},
+        startdescription: "Я могу использовать этот ритуал, чтобы открыть Часу вход в моё тело? Сила приходит с ними, словно аромат. Конечно... я не знаю, какой Час может прийти.",
+        description: "Ритуал завершён. Дверь открывается.",
+        warmup: 30,
+        craftable: false,
+		comments: "legacy",
+		burnimage: "flammarion"
+    },
+	  {
+        id: "conjurationpowerclue",
+        label: "Ключ к моему сердцу?",
+        actionId: "work",
+        requirements: {ritual: 1,ascensionpowera:1},
+        effects: {mystique: 1},
+        startdescription: "Могу ли я использовать этот ритуал, чтобы открыть Часу вход в моё тело? Сила приходит с ними, словно аромат.",
+        description: "Это не работает. Мне нужно, кроме того, другое заклинание — что-то, чтобы открыть путь. И добровольная жертва",
+        warmup: 30,
+        craftable: false,
+		comments: "legacy",
+		burnimage: "flammarion"
+    },
+	{
+        id: "conjurationenlightenment",
+        label: "Дверь в моих снах",
+        actionId: "work",
+        requirements: {ritual: 1, knock: 2, funds:1,ascensionenlightenmenta:1},
+        effects: {},
+        startdescription: "Я могу использовать этот ритуал, чтобы пройти по следам Дозорного и узнать о доме без стен.",
+        description: "Ритуал завершён. Дверь открывается.",
+        warmup: 30,
+        craftable: false,
+		comments: "legacy",
+		burnimage: "flammarion"
+    },
+		{
+        id: "conjurationenlightenmentclue",
+        label: "Дверь в моих снах?",
+        actionId: "work",
+        requirements: {ritual: 1,ascensionenlightenmenta:1},
+        startdescription: "Могу ли я использовать этот ритуал, чтобы пройти по следам Дозорного и узнать о доме без стен?",
+        description: "Это не работает. Мне нужно, кроме того, призвать другую силу — силу открытия. И понадобятся средства, чтобы приобрести свечи редкого воска, что осветят путь Дозорного.",
+        warmup: 30,
+       craftable: false,
+		comments: "legacy",
+		burnimage: "flammarion"
+    },
+	{
+        id: "ascensionpowerapromotion",
+        label: "КРАСНАЯ ЧАША ИДЁТ",
+        actionId: "grailminorpromotion",
+        requirements: {},
+		slots: [{id:"Dedication",label:"Преданность",required: {passion:1}}],
+         startdescription: "Сердце переполнено; кровь горит. Я так близко. Мне надо отдаваться ещё ревностнее.",
+        description: "Ритуал не сработал! Но так близко — как пламя к свече, как кровь к сердцу. Нужно попытаться снова.",
+        warmup: 60,
+       craftable: false,
+		comments: "legacy",
+		burnimage: "flammarion"
+    },
+		{
+        id: "ascensionenlightenmentapromotion",
+        label: "Я СЛЫШУ ШАГИ ДОЗОРНОГО",
+        actionId: "watchmanminorpromotion",
+        requirements: {},
+        effects: {mystique: 1},
+		slots: [{id:"Dedication",label:"Преданность",required: {reason:1}}],
+        startdescription: "Стены мира дрожат как шёлк. Я так близко! Все мысли должны сойтись в точку.",
+        description: "Понимание, что я ищу — оно было на самых кончиках пальцев. Так близко. Нужно попытаться снова.",
+        warmup: 60,
+        craftable: false,
+		comments: "legacy",
+		burnimage: "flammarion"
+    },
+	
+]
+}

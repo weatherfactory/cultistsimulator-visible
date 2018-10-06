@@ -1,0 +1,219 @@
+﻿{elements:[
+		     {
+        id: "gloverandgloverjuniorjob",
+            label: "Стажировка в «Гловер и Гловер»",
+            aspects:{job:1},
+            description: "Мой интеллект заслуживает большего! Но платят здесь лучше, чем рабочим. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			xtriggers: {careeradvancement:gloverandglover_difficultbossa_job,employment:gloverandgloverjuniorjob},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_demotion",
+        },
+				     {
+        id: "gloverandgloverjuniorjob_nodifficultbossa",
+            label: "Стажировка в «Гловер и Гловер»",
+            aspects:{job:1},
+            description: "Мой интеллект заслуживает большего! Но платят здесь лучше, чем рабочим. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			xtriggers: {careeradvancement:gloverandgloverjob,employment:gloverandgloverjuniorjob_nodifficultbossa},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_demotion"
+        },
+		
+		
+								{
+		        id: "gloverandglover_difficultbossa_job",
+            label: "Должность в «Гловер и Гловер»",
+			
+            aspects:
+            {annoyance:1,job:1},
+            description: "Место в Архиве под началом мистера Алдена. Я зарабатываю чуть больше; я задерживаюсь чуть дольше. Мистер Алден внимательно присматривает за мной. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvancement:gloverandgloverseniorjob,employment:gloverandglover_difficultbossa_job},
+			lifetime:59,
+			decayTo:"gloverandgloverjuniorjob_demotion"
+        },
+						     {
+        id: "gloverandglover_difficultbossa_gone_job",
+            label: "Должность в «Гловер и Гловер»",
+            aspects:{job:1},
+            description: "Человек по имени Алден исчез. Возможно, когда вернусь на работу, мне будет легче.",
+			comments:"interim job that immediately changes to standard one."
+        },
+				     {
+        id: "gloverandgloverjob",
+            label: "Должность в «Гловер и Гловер»",
+            aspects:{job:1},
+			slots: [{id:"Diligence",label:"Усердие",
+			actionId:"work",
+					required: {reason: 1},
+					description: "Дополнительные усилия. Могут помочь, если очень повезёт."
+					}],
+            description: "Я зарабатываю чуть больше; я задерживаюсь чуть дольше. В глазах младшего клерка за моим старым столом светится зависть. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			xtriggers: {careeradvancement:gloverandgloverseniorjob,employment:gloverandgloverjob},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_nodifficultbossa_demotion"
+        },
+						     {
+        id: "gloverandgloverjob_youngerglovergone",
+            label: "Должность в «Гловер и Гловер»",
+            aspects:{job:1},
+			slots: [{id:"Diligence",label:"Усердие",
+			actionId:"work",
+					required: {reason: 1},
+					description: "Дополнительные усилия. Могут помочь, если очень повезёт."
+					}],
+            description: "Я зарабатываю чуть больше; я задерживаюсь чуть дольше. В глазах младшего клерка за моим старым столом светится зависть. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			xtriggers: {careeradvancement:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverjob_youngerglovergone},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_nodifficultbossa_demotion"
+        },
+		{
+        id: "gloverandgloverseniorjob",
+            label: "Начальство в «Гловер и Гловер»",
+            aspects:{annoyance:1,job:1},
+			slots: [
+			{id:"Devotion",label:"Вовлечённость",
+			required: {reason: 1},
+			actionId:"work",
+					description: "Работа требует моего внимания. Надо как следует сосредоточиться."
+				}],
+            description: "Думаю, теоретически, я могу подняться в должности ещё выше, если кто-то умрёт. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			xtriggers: {endannoyance:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverseniorjob},
+			lifetime:60,
+			decayTo:"gloverandgloverjob_demotion"
+        },
+				{
+        id: "gloverandgloverseniorjob_youngerglovergone",
+            label: "Начальство в «Гловер и Гловер»",
+			aspects:{job:1},
+			slots: [
+			{id:"Devotion",label:"Вовлечённость",
+			required: {reason: 1},
+			actionId:"work",
+					description: "Работа требует моего внимания. Надо как следует сосредоточиться."
+				}],
+            description: "Младшего Гловера нет, и я могу подняться ещё выше. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			xtriggers: {careeradvancement:gloverandglovertopjob,employment:gloverandgloverseniorjob_youngerglovergone},
+			lifetime:90,
+			decayTo:"gloverandgloverjob_youngerglovergone_demotion"
+        },
+		{
+        id: "gloverandglovertopjob",
+		aspects:{job:1},
+            label: "Член совета в «Гловер и Гловер»",
+            description: "Исчезновение младшего Гловера освободило место в совете. Теперь это кресло занято мной. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			lifetime:100,
+			decayTo:"gloverandglovertopjob_tainted_demotion",
+			xtriggers:{employment:gloverandglovertopjob}
+        },
+				{
+        id: "gloverandglovertopjob_tainted",
+		aspects:{job:1},
+            label: "Член совета в «Гловер и Гловер»",
+            description: "Слухи о моих эзотерических интересах достигли ушей старшего Гловера. Теперь моё будущее на этой работе туманно. [Если вы перестанете регулярно появляться на этой работе, вас могут сместить с должности.]",
+			lifetime:100,
+			decayTo:"gloverandglovertopjob_tainted_demotion",
+			xtriggers:{employment:gloverandglovertopjob_tainted}
+        },
+{
+        id: "gloverandgloverjuniorjob_demotion",
+		aspects:{job:1,demotion:1},
+            label: "Рабочие сложности: возврат к стажировке",
+			slots:[{id:"passion",label:"Убеждение",required:{passion:1},actionId:"work"}],
+            description: "Моё отсутствие в конторе заметили. Меня понизили, и чтобы остаться на работе, нужно убедительно просить.",
+			xtriggers:{plead:gloverandgloverjuniorjob}
+        },
+						{
+        id: "gloverandgloverjuniorjob_nodifficultbossa_demotion",
+		aspects:{job:1,demotion:1},
+            label: "Рабочие сложности: возврат к стажировке",
+			slots:[{id:"passion",label:"Убеждение",required:{passion:1},actionId:"work"}],
+            description: "Моё отсутствие в конторе заметили. Меня понизили, и чтобы остаться на работе, нужно убедительно просить.",
+			xtriggers:{plead:gloverandgloverjuniorjob_nodifficultbossa}
+        },
+						{
+        id: "gloverandgloverjob_demotion",
+		aspects:{job:1,demotion:1},
+            label: "Рабочие сложности: понижение",
+			slots:[{id:"passion",label:"Убеждение",required:{passion:1},actionId:"work"}],
+            description: "Моё отсутствие в конторе заметили. Меня понизили, и чтобы остаться на работе, нужно убедительно просить.",
+			xtriggers:{plead:gloverandgloverjob}
+        },
+								{
+        id: "gloverandgloverjob_youngerglovergone_demotion",
+		aspects:{job:1,demotion:1},
+            label: "Рабочие сложности, понижение",
+			slots:[{id:"passion",label:"Убеждение",required:{passion:1},actionId:"work"}],
+            description: "Моё отсутствие в конторе заметили. Меня понизили, и чтобы остаться на работе, нужно убедительно просить.",
+			xtriggers:{plead:gloverandgloverjob_youngerglovergone}
+        },
+								{
+        id: "gloverandglovertopjob_tainted_demotion",
+		aspects:{job:1,demotion:1},
+            label: "Рабочие сложности: риск понижения",
+			slots:[{id:"passion",label:"Убеждение",required:{passion:1},actionId:"work"}],
+            description: "Моя должность позволяет довольно свободное посещение, но всё же моё отсутствие в конторе заметили. Мне надо будет очаровать старшего Гловера.",
+			xtriggers:{plead:gloverandglovertopjob_tainted}
+        },
+		
+			{id: "institutephysicianjob",
+			aspects:{job:1},
+	description: "Длинные смены, но неплохо платят.",
+	label: "Место в Институте"
+},
+
+			{id: "investmentsjobc",
+			aspects:{job:1},
+	label: "Изрядный частный доход",
+	description: "Обеспечение из лучших.",
+	aspects: {benign:1},
+		xtriggers: {decline: investmentsjobb}
+	
+},
+			{id: "investmentsjobb",
+	label: "Весомый частный доход",
+		description: "Денег достаточно для комфортной жизни.",
+	aspects: {benign:1},
+	xtriggers: {decline: investmentsjoba}
+	
+},
+			{id: "investmentsjoba",
+			aspects:{job:1},
+	label: "Скромный частный доход",
+	description: "Мои вложения вполне обеспечивают траты на жизнь.",  
+	aspects: {benign:1},
+	xtriggers: {decline: jumble}
+	
+},
+
+
+		{id: "mediumjob",
+		aspects:{job:1},
+	label: "Репутация медиума",
+	description: ""
+	
+},
+
+		{id: "auctioneerjob",
+		aspects:{job:1},
+	label: "Должность в аукционном доме «Орифламма»",
+	description: ""
+	
+},
+
+		{id: "dancerjob",
+		aspects:{job:1},
+	label: "Место на сцене в «Экдисийском Клубе»",
+	description: ""
+},
+	
+		{id: "priestjob",
+		aspects:{job:1},
+	label: "Церковный труд",
+	description: ""
+	
+},
+
+
+
+
+
+]};

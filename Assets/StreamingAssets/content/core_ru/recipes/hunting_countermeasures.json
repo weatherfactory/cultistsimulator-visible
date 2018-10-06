@@ -1,0 +1,415 @@
+﻿{"recipes": [
+{id: "huntermysticsurvives",
+actionId:"talk",
+label:"Барьеры и печати",
+requirements:{mystic:1,summoned:1},
+description:"«Наш враг владеет самым опасным оружием в мире: знанием»\n
+Ваше призванное существо не справилось с мерами, принятыми врагом. Охотники-мистики знают верные способы защиты и нападения, и обычно переживают атаки призванных миньонов. Но рано или поздно они совершат ошибку.",
+effects:{notoriety:1,summoned:-1},
+   },
+   {id: "huntertenacioussurvives",
+actionId:"talk",
+label:"Готовность к бою",
+requirements:{tenacious:1},
+description:"«Но... никто не смог бы остаться в живых!..»\n
+Иногда Охотники-бойцы каким-то образом переживают нападения, в которых должны были погибнуть. Но в конце концов удача их покидает; и кроме прямых физических нападений есть и другие способы дотянуться до Охотника.",
+effects:{notoriety:1}
+   },
+      {id: "huntersurvives_becomestenacious",
+actionId:"talk",
+label:"Шрамы",
+requirements:{tenacious:-1},
+description:"«Прочнее, чем кажется...»\n
+Охотник, переживший прямое физическое нападение, иногда становится Бойцом. Охотников-бойцов сложнее убить.",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
+effects:{notoriety:1,follower:-1}
+   },
+         {id: "huntersurvives_becomesmystic",
+actionId:"talk",
+label:"Жестокая школа жизни",
+requirements:{summoned:1,mystic:-1},
+description:"«То, что их не убивает, иногда делает их страннее»\n
+Пережитое нападение призванного существа может побудить Охотника освоить контрмеры против созданий Обители и стать Мистиком. Охотники-мистики обычно переживают дальнейшие нападения призванных существ.",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
+effects:{notoriety:1,summoned:-1}
+   },
+      {id: "hunterspeakpoison",
+	   label: "Я использую против Охотника примечательный яд",
+	  actionId:"talk",
+	  requirements:{poison:1},
+	  startdescription:"«Как вам чай?»",
+	  description:"Конец некрасив, но быстр и почти безболезнен. Есть куда более тяжёлые способы умереть.",
+	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  effects:{poison:-1,notoriety:1},
+	  aspects:{killhunter:1},
+	  },
+   
+   {id: "hunterattackhighwinter",
+	   label: "Я отправлю молчаливого миньона решить вопрос Охотника",
+	  actionId:"talk",
+	  startdescription:"Вероятно, после этого Охотник нас больше не побеспокоит. [Это менее надёжно, чем атака Гранью, и внимание привлекут как успех, так и провал; но миньон скорее всего выживет.]",
+	  requirements: {hunter:1,winter:10,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:70},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+	  	   {id: "hunterattackmidwinter",
+	   label: "Я отправлю тихого миньона решить вопрос Охотника",
+	  actionId:"talk",
+	  startdescription:"Миньон будет наблюдать и ждать. Если нам повезёт, возможность избавиться от врага найдётся. [Это менее надёжно, чем атака Гранью, и внимание привлекут как успех, так и провал; но миньон скорее всего выживет.]",
+	  description:".",
+	  requirements: {hunter:1,winter:5,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:30},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "hunterattacklowwinter",
+	   label: "Я отправлю осторожного миньона решить вопрос Охотника",
+	  actionId:"talk",
+	  startdescription:"Миньон будет ждать верного момента, хотя очень вероятно, что такой момент не наступит. [Это менее надёжно, чем атака Гранью, и внимание привлекут как успех, так и провал; но миньон скорее всего выживет.]",
+	  description:".",
+	  requirements: {hunter:1,winter:1,follower:1},
+	  linked: [{id:"hunterstealthattacksuccess",chance:10},
+	  {id:"hunterstealthattackfailure",chance:100}
+	  ]
+	  },
+
+	  
+	  	  {id: "hunterstealthattacksuccess",
+	   label: "Спокойствие...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной — и с трофеем.",
+	  effects: {notoriety:1},
+	  aspects:{killhunter:1},
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30},
+	  {id:"huntermysticsurvives",chance:70}],
+	  comments:"No summoned creatures currently attack with Winter. This is in case I add one later.",
+	  warmup:10	  
+	  },
+	  
+	  	  {id: "hunterstealthattackfailure",
+	   label: "Спокойствие...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной. Момент, чтобы прервать жизнь Охотника, не наступил; и теперь, возможно, Охотник знает об опасности.",
+	  effects: {notoriety:1},
+	  warmup:10	  
+	  },
+
+
+	   {id: "hunterattackhighedge",
+	   label: "Я пошлю неостановимую силу для убийства Охотника",
+	  actionId:"talk",
+	  startdescription:"Если только у моей цели нет какой-то необычной защиты, она уже мертва. Но гибель Охотника привлечёт внимание.",
+	  description:".",
+	  requirements: {hunter:1,edge:10,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "hunterattackmidedge",
+	   label: "Я отправлю сильного миньона на убийство Охотника",
+	  actionId:"talk",
+	  startdescription:"Миньон владеет силой. Охотник вряд ли выживет. Но попытка привлечёт внимание.",
+	  description:".",
+	  requirements: {hunter:1,edge:5,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:70},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "hunterattacklowedge",
+	   label: "Я отправлю миньона на убийство Охотника",
+	  actionId:"talk",
+	  startdescription:"Навыков у моего миньона не так уж много. Охотник, вероятно, выживет, и попытка привлечёт внимание.",
+	  description:".",
+	  requirements: {hunter:1,edge:1,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:30},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	   {id: "hunterattacknoedge",
+	   label: "Я отправлю кого-то неподходящего на убийство Охотника",
+	  actionId:"talk",
+	  startdescription:"У моего миньона нет аспекта Грани; мой выбор прискорбно не подходит для нападения на Охотника. Есть маленький шанс, что атака будет успешной.",
+	  description:".",
+	  requirements: {hunter:1,follower:1},
+	  linked: [{id:"hunterattacksuccess",chance:10},
+	  {id:"hunterattackfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "hunterattacksuccess",
+	   label: "Охота за Охотником...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной — и с трофеем.",
+	  effects: {hunter:-1,corpse:1,notoriety:1},
+	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30},
+	  {id:"huntermysticsurvives",chance:70},
+	  {id:"huntercapturesuccess",chance:30}],
+	  warmup:10	  
+	  },
+	  
+	  	  {id: "huntercapturesuccess",
+	   label: "Охота за Охотником...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной — и Охотник в плену!",
+	  effects: {notoriety:1},
+	  aspects: {capturehunter:1},
+	  warmup:10	  
+	  },
+	  
+	  
+	  {id: "hunterattackfailure",
+	   label: "Охота за Охотником...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньона нет. Вероятно, задание провалено.",
+	  effects: {follower:-1,notoriety:1},
+	  alternativerecipes:[{id:"huntersurvives_becomesmystic",chance:30},
+	  {id:"huntersurvives_becomestenacious",chance:10}],	  
+	  warmup:10	  
+	  },
+	  
+	  
+	  	   {id: "evidencedestroymidmoth",
+	   label: "Я пошлю коварного миньона, чтобы уничтожить Улики",
+	  actionId:"talk",
+	  startdescription:"Мой план, очень вероятно, будет успешен. Всегда остаётся шанс, что что-то пойдёт не так.",
+	  description:".",
+	  requirements: {follower:1,moth:5,evidencelevel:1},
+	  linked: [{id:"evidencedestroysuccess",chance:70},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ],
+	  	  comments: "We don't want a 100% chance because there's no downside. This could easily change later."
+	  },
+	  	  	   {id: "evidencedestroylowmoth",
+	   label: "Я пошлю миньона, чтобы уничтожить Улики",
+	  actionId:"talk",
+	  startdescription:"Мой миньон не отличается особой изощрённостью, и это сложная задача. Вероятно, ничего не получится.",
+	  description:".",
+	  requirements: {follower:1,moth:1,evidencelevel:1},
+	  linked: [{id:"evidencedestroysuccess",chance:30},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+	   {id: "evidencedestroynomoth",
+	   label: "Я отправлю кого-то неподходящего, чтобы уничтожить Улики",
+	  actionId:"talk",
+	  startdescription:"Без аспекта Мотылька миньон даже не знает, как подступиться к этой задаче. Впрочем, остаётся маленький шанс успеха.",
+	  description:".",
+	  requirements: {evidencelevel:1},
+	  linked: [{id:"evidencedestroysuccess",chance:10},
+	  {id:"evidencedestroyfailure",chance:100}
+	  ]
+	  },
+
+	  {id: "evidencedestroysuccess",
+	   label: "Порча документов...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньон со мной. Улик больше нет. Дышать чуть легче.",
+	  effects: {evidencelevel:-1},
+	  warmup:10	  
+	  },
+	  {id: "evidencedestroyfailure",
+	   label: "Порча документов...",
+	  actionId:"talk",
+	  startdescription: "Я жду...",
+	  description:"Миньона нет. Миссия провалена, и это неумелое вмешательство могли заметить...",
+	  effects: {follower:-1,notoriety:1},
+	  warmup:10	  
+	  },
+	  	  	  {id:"hunterspeakwinterg",
+	  actionId:"talk",
+	  label:"Я поделюсь ужасающей мистерией Истрёпанного Знания",
+	  startdescription:"«Когда Кузня остыла и Слава померкла и Лес — пыль, тогда, возможно, Разделённый Волк найдёт покой, но лишь до тех пор, пока не сможет пожрать себя. Услышь меня...» [Это, скорее всего, ужаснёт Охотника, но неизбежно вызовет Страх и у вас самих.]",
+	  requirements:{winter:14,lore:1},
+	  mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:70},
+{id:"hunterspeakdread_demoralised",chance:70},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+	  	  {id:"hunterspeakwinterd",
+	  actionId:"talk",
+	  label:"Я поделюсь ледяными заклинаниями Истрёпанного Знания",
+	  startdescription:"«Есть сильный, что помнит и горюет, от которого ничего не убывает, но которого невозможно обмануть. Я скажу тебе его имя — слушай...» [Это может ужаснуть Охотника, тем более — с Мраком в душе; но неизбежно вызовет Страх и у вас самих.]",
+	  requirements:{winter:8,lore:1},
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:70},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+	  {id:"hunterspeakwinter",
+	  actionId:"talk",
+	  label:"Я намекну на Истрёпанное Знание",
+	  startdescription:"«Поговорим о завершениях. Поговорим о нисходящем солнце. Поговорим о вещах, что не вполне мертвы и не вполне умрут...» [Это может ужаснуть Охотника, но неизбежно вызовет Страх и у вас самих.]",
+	  requirements:{winter:1,lore:1},
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:30},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+},
+	  
+
+{id:"hunterspeakdread",
+actionId:"talk",
+label:"Я опишу ужасы, ждущие врага",
+requirements:{dread:1},
+startdescription:"«Кое-что, о чём стоит подумать... стоит лишь сомкнуть глаза». [Это может ужаснуть Охотника, но неизбежно вызовет Страх и у вас самих.]",
+description:"",
+linked:[{id:"hunterspeakdread_resistant",chance:100},
+{id:"hunterspeakdread_vulnerable_demoralised",chance:30},
+{id:"hunterspeakdread_demoralised",chance:30},
+{id:"hunterspeakdread_survives",chance:100}]
+
+},
+{id:"hunterspeakdread_resistant",
+actionId:"talk",
+requirements:{idealist:1},
+label:"Кошмары под кожей мира",
+startdescription:"«Пусть так. Пусть для меня всё может кончиться плохо, но цель стоит жертвы. Другие продолжат борьбу. Мы ещё встретимся». [Идеалистов нельзя деморализовать.]",
+effects:{notoriety:1,dread:1}
+
+},
+{id:"hunterspeakdread_vulnerable_demoralised",
+actionId:"talk",
+requirements:{grim:1},
+label:"Кошмары под кожей мира",
+startdescription:"Охотник не в силах вынести ваших слов. Глаза расширяются. Зубы сжимаются. Вскоре разум вашего врага соскользнёт в неумолимое отчаяние.",
+description:"",
+effects:{dread:1},
+aspects:{derangemortal:1}
+
+},
+{id:"hunterspeakdread_demoralised",
+actionId:"talk",
+requirements:{grim:-1},
+label:"Кошмары под кожей мира",
+startdescription:"Охотник ворчит, противясь, но вы видите, что слова достигли цели. [Душу Охотника наполнил Мрак.]",
+description:"",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+effects:{notoriety:1,dread:1}
+
+},
+{id:"hunterspeakdread_survives",
+actionId:"talk",
+label:"Кошмары под кожей мира",
+alternativerecipes:[{id:"hunterspeakdread_survives_becometenacious",chance:100}],
+startdescription:"",
+description:"«Да, в мире есть ужасное зло, но тем важнее противиться ему. Мне стоит поблагодарить тебя. Ты указал мне мой путь». [Сердце Охотника исполнилось Идеалами.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1,dread:1}
+
+},
+{id:"hunterspeakdread_survives_becometenacious",
+actionId:"talk",
+label:"Кошмары под кожей мира",
+requirements:{tenacious:-1},
+startdescription:"",
+description:"«Да, в мире есть ужасное зло, но тем важнее противиться ему. Мне стоит поблагодарить тебя. Ты указал мне мой путь». [Сердце Охотника исполнилось Идеалами и готовностью к Бою за них.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1},
+{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1,dread:1}
+
+},
+
+	  {id:"hunterspeaklanterng",
+	  actionId:"talk",
+	  label:"Я поделюсь ужасающей мистерией Знания Славы",
+	  startdescription:"«Есть тайная доктрина Входа-в-Глаз. Откройся...». [Это, скорее всего, очарует Охотника, но вы сами наверняка будете Очарованы.]",
+	  requirements:{lantern:14,lore:1},
+	  mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:70},
+{id:"hunterspeakfascination_fascinated",chance:70},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+	  {id:"hunterspeaklanternd",
+	  actionId:"talk",
+	  label:"Я поделюсь сияющими заклинаниями Знания Славы",
+	  startdescription:"Вход-в-Глаз указывает путь; он немилосерден, но изначально и всегда — он освещает. Слушай, и просвещайся...' [Это может очаровать Охотника, особенно Идеалиста, но вы сами наверняка будете Очарованы.]",
+	  requirements:{lantern:8,lore:1},
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:70},
+{id:"hunterspeakfascination_fascinated",chance:30},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+	  {id:"hunterspeaklantern",
+	  actionId:"talk",
+	  label:"Я намекну на Знание Славы",
+	  startdescription:"«Есть вещи тоньше, чем мы видим. Наверняка, ты и без меня чувствуешь их. Представь, что вечность открыта перед нами...» [Это может очаровать Охотника, но вы сами наверняка будете Очарованы.]",
+	  requirements:{lantern:1,lore:1},	  
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:30},
+{id:"hunterspeakfascination_fascinated",chance:30},
+{id:"hunterspeakfascination_survives",chance:100}]
+},
+
+{id:"hunterspeakfascination",
+actionId:"talk",
+label:"Я опишу врагу свои видения",
+requirements:{fascination:1},
+startdescription:"«Чем выше поднимаешься, тем больше видишь». [Это может очаровать Охотника, но вы сами наверняка будете Очарованы.]",
+description:"",
+linked:[{id:"hunterspeakfascination_resistant",chance:100},
+{id:"hunterspeakfascination_vulnerable_fascinated",chance:30},
+{id:"hunterspeakfascination_fascinated",chance:30},
+{id:"hunterspeakfascination_survives",chance:100}]
+
+},
+{id:"hunterspeakfascination_resistant",
+actionId:"talk",
+requirements:{grim:1},
+label:"Видения Славы",
+startdescription:"«Мило. Но у меня впереди много работы. Мы ещё поговорим». [Мрачную душу нельзя Очаровать.]",
+effects:{notoriety:1,fascination:1}
+
+},
+{id:"hunterspeakfascination_vulnerable_fascinated",
+actionId:"talk",
+requirements:{idealist:1},
+label:"Видения Славы",
+startdescription:"Охотник не в силах вынести ваши слов. Глаза расширяются и сияют. Улыбка становится мечтательной. Вскоре Охотник оставит в прошлом всё, что раньше казалось важным.",
+description:"",
+effects:{fascination:1},
+aspects:{derangemortal:1}
+
+},
+{id:"hunterspeakfascination_fascinated",
+actionId:"talk",
+requirements:{idealist:-1},
+label:"Видения Славы",
+startdescription:"Охотник хмурится, но вы видите, что ваш настойчивый зов разжёг искру. [Сердце Охотника исполнилось Идеалами.]",
+description:"",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
+effects:{notoriety:1,fascination:1}
+
+},
+{id:"hunterspeakfascination_survives",
+actionId:"talk",
+label:"Видения Славы",
+alternativerecipes:[{id:"hunterspeakfascination_survives_becometenacious",chance:100}],
+description:"«Да, можно было бы стать чем-то поизящнее, но кто мы такие — не так важно. Важнее — что мы делаем. Наш мир — именно здесь, и я буду защищать его до самой смерти. Если хотите, продолжайте цепляться за свои видения». [Теперь душа Охотника Мрачна.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1}],
+effects:{notoriety:1,fascination:1}
+},
+{id:"hunterspeakfascination_survives_becometenacious",
+actionId:"talk",
+label:"Видения Славы",
+requirements:{tenacious:-1},
+description:"«Да, можно было бы стать чем-то поизящнее, но кто мы такие — не так важно. Важнее — что мы делаем. Наш мир — именно здесь, и я буду защищать его до самой смерти. Если хотите, продолжайте цепляться за свои видения». [Теперь душа Охотника Мрачна и готова к Бою.]",
+mutations:[{filterOnAspectId:hunter,mutateAspectId:grim,mutationLevel:1},
+{filterOnAspectId:hunter,mutateAspectId:tenacious,mutationLevel:1}],
+effects:{notoriety:1,fascination:1}
+},
+
+]
+}

@@ -1,0 +1,143 @@
+{"elements":
+    [
+	          {
+        id: "ritetoolconsumeingredient",
+            label: "海之宴",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Instrument",actionId: "work",required: {tool:1},description: "工具为何?"},
+			{id:"Offering",actionId: "work",required: {ingredient: 1}, consumes: true,description: "放弃什么？"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "这项仪式呼唤巫与女，消除现实与可能性之间的界限。把祭品倾倒或投入水体里，最好是海里。",
+			unique:true
+        },
+								          {
+        id: "ritetoolconsumeinfluence",
+            label: "地之边缘",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Offering",actionId: "work",required: {influence:1},description: "会消耗什么影响呢？",consumes:true},
+			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "工具为何?"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "流浪者是唯一一名从未进入过居所的时枢神。这个仪式必须在正确的地点和正确的时间进行，流浪者会为了获得这些正确性而降临。",
+			unique:true
+        },
+	
+		          {
+        id: "ritetoolconsumefollower",
+            label: "坩埚魂仪",
+			comments: "终结仪式",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Victim",actionId: "work",required: {follower:1,prisoner:1}, consumes: true, description: "世间一直存在愿意奉献的血。"},
+			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "血将滴落何处？"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "这个仪式需要使用有法力的器具点燃鲜血：火焰是世界表皮上的损伤。执行此仪式的助手没有一个可以全身而退。",
+			unique:true
+        },
+		          {
+        id: "ritetoolfollowerconsumelore",
+            label: "守夜人的悲伤",
+			comments: "终结仪式",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Sacrifice",actionId: "work",required: {lore: 1}, consumes: true, description: "我们会忘记什么？"},
+			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Instrument",actionId: "work",required: {tool: 1}, description: "工具为何?"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "这个仪式会让守夜人想起失去的东西，祂常行走于无墙的房屋。（光在前，影在后。别让祂看到你。）使用法器召唤祂来取走祭品：你思维深处那珍贵的知识。必须有助手吟诵能稳定心智的话语，请选择一个值得信任的人。",
+			unique:true
+        },
+		
+		          {
+        id: "ritefollowerconsumetool",
+            label: "抗争之仪",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Offering",actionId: "work",required: {tool: 1}, consumes: true,description: "放弃什么？"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "这个仪式体现了日月之炉的一项教导：工匠只有摧毁他们最珍视的工具后，才有可能达成最高的成就。当锻狮在上校面前砸碎他的剑的时候，他觉悟了。那么我的助手也必须摧毁一件法器。",
+			unique:true
+        },
+		
+				          {
+        id: "ritefollowerconsumeingredient",
+            label: "蚁母的怜悯",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "献上什么？",consumes:true},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "助手就是献给蚁母的祭品。蚁母不光擅长治愈，也精于毒药，祂非常仁慈，愿意接受其他祭品作为替代。不过，这个过程对于助手来说就没有那么愉快了。",
+			unique:true
+        },
+						          {
+        id: "riteinfluenceconsumeingredient",
+            label: "海之婚礼",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Influence",actionId: "work",required: {influence:1},description: "展示什么样的力量？"},
+			{id:"Offering",actionId: "work",required: {ingredient: 1}, description: "献上什么？",consumes:true},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "这项仪式呼唤巫与女，消除现实与可能性之间的界限。仪式以助手作为那未知之物（最好是但也不必须是海）的配偶。",
+			unique:true
+        },
+						          {
+        id: "ritefollowerconsumeinfluence",
+            label: "日落仪式",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation",actionId: "work",required: {lore: 1}, description: "表达什么？"},
+			{id:"Assistant",actionId: "work",required: {follower:1,prisoner:1},description: "由谁来吟诵这些词语？"},
+			{id:"Offering",actionId: "work",required: {influence: 1}, consumes:true, description: "要消耗什么影响？"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "助手必须基于真实情感嚎啕大哭，泪水挥洒在影响存在的地方。如果一切按计划进行，残阳就会消耗这个影响，了解终极，并提供帮助。",
+			unique:true
+        },
+						          {
+        id: "riteinfluenceconsumefollower",
+            label: "兽性分割",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Invocation", actionId: "work", required: {lore: 1}, description: "表达什么？"},
+			{id:"Victim", actionId: "work",required: {follower:1,prisoner:1},description: "要分割谁？",consumes:true},
+			{id:"Influence", actionId: "work",required: {influence: 1}, description: "展示什么样的力量？"},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "助手的名字在法力之地或法力之时被夺去；而他们也被分割成九个部分。他们曾像动物般被猎杀，但现在已经不同了。",
+			unique:true
+        },
+						          {
+        id: "riteconsumetoolingredientfollowerinfluence",
+            label: "化闰之仪",
+            aspects:
+            {ritual:1},
+			slots: [{id:"Sacrifice",actionId: "work",required: {lore: 1}, description: "失去的东西。", consumes:true},
+			{id:"Offering",actionId: "work",required: {follower:1,prisoner:1},description: "失去的东西。", consumes:true},
+			{id:"Surrender",actionId: "work",required: {tool: 1}, description: "失去的东西。", consumes:true},
+			{id:"Dissolution",actionId: "work",required: {influence: 1}, description: "失去的东西。", consumes:true},
+			{id:"Grief",actionId: "work",required: {ingredient: 1}, description: "失去的东西。", consumes:true},
+			{id:"Desire",actionId: "work",required: {desire:6}, description: "我可能会变成什么?[这个槽只在升天的最终阶段有效。如果你已经获得了第六印记，那么把你的飞升方式放在这个槽里，完成这项伟业。]"}
+			],
+            description: "这个仪式概述了太阳那可憎的命运。在某些极端的时代曾被一些愚蠢的人使用过。",
+			unique:true
+        },
+
+		
+]
+};

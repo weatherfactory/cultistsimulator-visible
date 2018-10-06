@@ -1,0 +1,83 @@
+{
+"recipes": [
+{id: "lockfollowerincupboard",
+label: "背叛并囚禁一位从者",
+actionId: "talk",
+requirements: {hq:1,follower:1},
+startdescription: "这家伙有别的用场。滚进橱柜吧。",
+description: "把这家伙锁起来了。等他们的尖叫和咆哮停下来后，我再把他们完全制服。",
+aspects: {capturefollower:1},
+effects: {notoriety:1},
+craftable:true,
+warmup:10
+},
+
+{id: "poppyoffer",
+label:"跟波碧·拉塞尔斯对话",
+actionId: "talk",
+requirements: {poppyready: 1},
+slots: [{id:"Consent",description:"增加热情来接受，或理智来继续审问波比。",required: {passion:1,reason:1}}],
+alternativerecipes: [{id: "poppyofferaccept",chance:100},
+{id:"poppyofferquery",chance:100}],
+startdescription: "“我亲爱的，有件事我想跟你说很久了。有的时候，我资助无形之仪的学者。我想给你提供资助，很大的一笔。你唯一需要做的事是，有机会的时候，介绍我给一个会得体地完结事情的人。”她善良地笑了。[增加 <b>Passion</b>如选择接受，或增加<b>Reason</b> 如选择进一步审问。]",
+description: "我没有接受波碧的提议。",
+warmup:60,
+craftable: true
+},
+{id: "poppyofferaccept",
+label: "接受波碧的提议",
+actionId: "talk",
+requirements: {passion:1},
+startdescription: "“对，正是如此。我今晚会回来。”",
+description: "一个装着极小的宝物的小包裹：一份来自波碧的礼物。她打算在破烂季再见我一次，因为我保证过介绍人给她。",
+effects: {funds:10,compensationc:1,poppyready:-1},
+alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
+},
+{id: "poppyofferquery",
+label: "仔细讯问波碧",
+actionId: "talk",
+requirements: {reason:1},
+startdescription: "会得体完结事情的人？",
+description: "“是的。当破碎季到来时，我的资助人会需要一个人来结束一切。你可以按照偏好选择提供一个足够忠诚的人，或者你自己。我不想添麻烦。”",
+effects: {influencewinter:1}
+},
+{
+id:"poppytimebomb",
+label:"Poppy's Request",
+actionId:"poppytime",
+startdescription: "在“破碎季“，波碧会回来...",
+description: ".",
+linked: [{id:"poppysafefornow",chance:7},
+{id:"poppywantssoul",chance:100}],
+warmup:300
+},
+{id:"poppysafefornow",
+actionId: "poppytime",
+label:"波碧的沉默",
+startdescription:"波碧经常在镇里晃悠，温和地笑着协助慈善活动。",
+description: ".",
+linked: [{id: "poppytimebomb",chance:100}],
+warmup:10
+},
+
+{id:"poppywantssoul",
+label:"来自波碧的友好造访",
+actionId: "poppytime",
+slots: [{id:"Sacrifice",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
+alternativerecipes: [{id:"poppysatiated",chance:100}],
+warmup:60,
+signalEndingFlavour:Melancholy,
+ending: "wintersacrifice",
+startdescription: "“现在是时候了，亲爱的。残阳需要他的终结。承担任务的人会是你吗？还是你有个朋友？",
+description: "."
+},
+{id:"poppysatiated",
+actionId: "poppytime",
+label:"一个合适的终结",
+requirements: {follower:1},
+startdescription: "“你的朋友真是忠实！还是请你俩现在就道别。”",
+description: "我的从者离开了，但我还在。总能在这儿那儿看见波碧·拉塞尔斯。她肯定和我有更多想说的。",
+effects: {poppycommissionready:1,influencewinter:1,follower:-1}
+}
+]
+}

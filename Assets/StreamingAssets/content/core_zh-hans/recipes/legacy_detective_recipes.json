@@ -1,0 +1,271 @@
+{
+"recipes": [
+{id: "workdetectivejob_start",
+label: "在车站",
+actionId: "work",
+requirements: {legacydetectivejob:1},
+aspects: {careeradvancement:1},
+effects: {LEVER_LastFollower:1,legacydetective_plotitem:1,funds:3,health:1},
+
+alternativerecipes: [{id:"needs",chance:100,additional:true},
+{id:"detectiveopendream",chance:100,additional:true}],
+startdescription: "我再次被借调至监管局。这是一个关注密教案件的政府部门，声名狼藉。",
+description: "局里已经确定了一位棘手的犯人的身份，并要求我负责调查。当我看见这人的名字时，我不由自主地屏住了呼吸。我记得很清楚，还有另一个案子也是……",
+warmup:10,
+craftable: true,
+linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}]
+},
+
+{id: "detectiveopendream",
+label: "睡梦中……",
+actionId: "dream",
+startdescription:"监管局出版了介绍梦境危险性的备忘录，每周都会有新的版本。",
+description:"“报告有关月光的梦。报告和永夜森林相关的梦。拉开窗帘确保能够被阳光唤醒。睡前不要修剪头发。绝不要在破镜前睡着。”",
+effects: {passion:1},
+warmup:30,
+craftable: false
+},
+
+{id: "workdetectivejob_start_promote_lever_believer",
+label: "在车站",
+actionId:"work",
+aspects: {promotiontodisciple:1},
+craftable:false,
+linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:100}],
+},
+
+{id: "workdetectivejob_start_promote_lever_disciple",
+label: "在车站",
+actionId:"work",
+aspects: {promotionto_d_edge:1,
+promotionto_d_forge:1,
+promotionto_d_grail:1,
+promotionto_d_heart:1,
+promotionto_d_knock:1,
+promotionto_d_lantern:1,
+promotionto_d_moth:1,
+promotionto_d_winter:1,
+rebellion:1},
+linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
+craftable:false
+},
+{id: "workdetectivejob_start_rebellion",
+label: "在车站",
+actionId:"work",
+aspects: {rebellion:1},
+craftable:false
+},
+
+
+
+
+{id: "workdetectivejob_matured_investigate_hint",
+label: "继续推进调查吗？",
+actionId: "work",
+requirements: {legacydetectivejob_matured:1,suspicious:1},
+startdescription:"如果我运用我的理性，或许能够进一步了解我的目标。",
+hintonly:true,
+craftable:false
+},
+
+{id: "workdetectivejob_matured_pursuepromotion",
+label: "一种超脱",
+actionId: "work",
+requirements: {legacydetectivejob_matured:1,favour:1},
+startdescription: "我赢得了当局的青睐。我可以利用它来获得晋升，在局里的主席团内谋得一席之地。[这样的结局可称得上是一次微小的胜利。]",
+description: "已到达结局。",
+warmup:60,
+ending: "workvictoryb",
+		signalEndingFlavour:Grand,
+craftable: true},
+
+
+{id: "workdetectivejob_matured_investigate",
+label: "继续推进调查",
+actionId: "work",
+requirements: {legacydetectivejob_matured:1,suspicious:1,reason:1},
+alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true},
+{id:"workdetectivejob_matured_investigate_threereason_success",chance:100},
+{id:"workdetectivejob_matured_investigate_tworeason_success",chance:70},
+{id:"workdetectivejob_matured_investigate_onereason_success",chance:30}
+],
+effects: {funds:2},
+startdescription: "调查一个目标。投入的理智越多，成功的几率就越大。",
+description: "我的调查毫无进展。",
+warmup:60,
+aspects:{employment:1,fatiguing:1},
+craftable: true},
+
+
+{id: "workdetectivejob_matured_investigate_threereason_success",
+label: "取得进展！",
+actionId: "work",
+alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
+requirements: {reason:3},
+craftable: false,
+linked:[{id:"workdetectivejob_matured_attemptsolvecase",chance:100},
+{id:"workdetectivejob_matured_investigate_successresults",chance:100}]	},
+
+{id: "workdetectivejob_matured_investigate_tworeason_success",
+label: "取得进展！",
+actionId: "work",
+alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
+requirements: {reason:2},
+craftable: false,
+linked:[{id:"workdetectivejob_matured_attemptsolvecase",chance:100},
+{id:"workdetectivejob_matured_investigate_successresults",chance:100}]	},
+
+{id: "workdetectivejob_matured_investigate_onereason_success",
+label: "取得进展！",
+actionId: "work",
+alternativerecipes: [{id:detectiveopenstudy,chance:100,additional:true}],
+requirements: {reason:1},
+craftable: false,
+linked:[{id:"workdetectivejob_matured_attemptsolvecase",chance:100},
+{id:"workdetectivejob_matured_investigate_successresults",chance:100}]	},
+
+
+
+
+{id: "workdetectivejob_matured_investigate_successresults",
+label: "取得进展！",
+actionId: "work",
+effects: {funds:3,myevidence:1},
+aspects:{employment:1,fatiguing:1,investigatingsuccess:1,dreadful:1},
+description: "关门时持续不断的咔哒声，车站墙壁上的潮湿污渍，鞋油的气味和忙得没时间洗澡的我。这些东西加到一起，诞生出了如水晶般闪耀的真相。我已取得进展，还赚到了些加班费。",
+craftable: false},
+
+{id: "workdetectivejob_matured_attemptsolvecase",
+label: "解决案件",
+actionId: "work",
+requirements: {myevidenceb:1},
+slots:[{id:"Culprit",required:{independent:1},greedy:true}],
+startdescription: "我已经将收集到的证据上交给了监管局局长助理……但犯人早已逃逸，无法追捕了。",
+description: "我已经向监管局提供了充足的证据来实施追捕……然而犯人已经逃走了。",
+alternativerecipes:[{id:"workdetectivejob_matured_solvecase",chance:100}],
+warmup:60,
+aspects:{employment:1,fatiguing:1},
+effects:{funds:2,suspicious:-99},
+craftable: false	},
+{id: "workdetectivejob_matured_solvecase",
+label: "解决案件",
+actionId: "work",
+requirements: {myevidenceb:1,independent:1},
+startdescription: "我已经将收集到的证据上交给了监管局局长助理。我可以想象得到，在此时此刻，一群其貌不扬、衣着朴素的男人正冲撞着我的采石场的大门。",
+description: "监管局在秘密法庭进行了审判，并且毫无仁慈可言。我的采石场从此消失，而我则赢得了晋升。",
+effects:{funds:7,favour:1,suspicious:-99,independent:-1},
+warmup:60,
+aspects:{employment:1,fatiguing:1},
+craftable: false	},
+
+
+
+{id: "workdetectivejob_matured_plead",
+label: "恳求复职！",
+actionId: "work",
+requirements: {legacydetectivejob_suspended:1,passion:1},
+startdescription: "为什么他们不明白？",
+description: "我官复原职……但仅是暂时。",
+aspects:{plead:1},
+warmup:60,
+craftable: true	},
+
+
+{id: "workdetectivejob_epilogue",
+label: "",
+actionId: "work",
+effects: {legacydetectivejob_matured:-1},
+startdescription: "我失业了",
+description: "",
+craftable: false},
+
+
+{id: "legacydetectiveplotitem_tempt",
+label: "书页的香气",
+actionId: "craving",
+requirements: {legacydetective_plotitem:1},
+linked:[{id:"legacydetectiveplotitem_tempt_addslot",chance:100}]},
+{id: "legacydetectiveplotitem_tempt_addslot",
+label: "书页的香气",
+actionId: "craving",
+slots:[{id:"resist",label:"抵抗",description:"你难以抗拒重读文件的诱惑。你需要投入理智来加强抵抗。",required:{reason:1}}],
+startdescription: "我无法忘记自己在 #PREVIOUSCHARACTERNAME# 的档案里所看到的东西。 [你难以抗拒重读文件的诱惑。你需要投入理智来加强抵抗。]",
+description:"翻阅这些书页令人感到轻松自在，就像在给水果去皮，或拆封一份神秘的礼物。最后，我的双手沾满墨水，我的大脑恍如沸腾。我身上开始发生了什么改变吗？",
+effects:{legacydetective_plotitem:-1,LEVER_LastDesire:1,fascination:1,dread:1},
+alternativerecipes:[{id:"legacydetectiveplotitem_tempt_resist",chance:100},
+{id:"visionsrisk",chance:100,additional:true}],
+warmup:60,
+craftable: false},
+
+{id: "legacydetectiveplotitem_tempt_resist",
+label: "书页的香气",
+requirements: {reason:1},
+actionId: "craving",
+startdescription:"我服从纪律。我向来遵纪守法。我从未这么快、这么轻易地放弃过。",
+aspects:{fatiguing:1},
+description:"这种诱惑暂时消失了。"},
+
+
+
+
+{id: "detectiveopenstudy",
+label: "学习中……",
+alternativerecipes: [{id:"ascensionnotyet",chance:100,additional:true},
+{id:"detectiveopenexplore",chance:100,additional:true}],
+actionId: "study",
+startdescription:"我时不时会花点时间来提升自己。",
+description:"毫无疑问，在那里我能够找到学习的材料。",
+effects: {reason:1},
+warmup:30,
+craftable: false
+},
+
+ 
+{id: "detectiveopenexplore",
+label: "探索中……",
+actionId: "explore",
+startdescription:"我办公室的墙上挂着一张地图，上面满是黑色大头钉与密如蛛网的注释。",
+description:"我对这座城市十分了解，但要做到完全了解或许需要花费一生时间。",
+warmup:10,
+deckeffect: {citysecrets:2},
+craftable: false,
+alternativerecipes: [{id:"detectiveopentalk",chance:100,additional:true}],
+},
+
+{id: "detectiveopentalk",
+label: "交谈中……",
+actionId: "talk",
+startdescription:"我可能会建立一段友谊，也可能会从此结束与某人的关系。",
+description:"",
+effects: {},
+warmup:30,
+craftable: false
+},
+
+
+{id: "detectivestudy_plotitem",
+label: "我不应该打开密封的文件",
+actionId: "study",
+requirements: {legacydetective_plotitem:1},
+alternativerecipes: [{id:"detectiveopendream",chance:100,additional:true}],
+effects: {legacydetective_plotitem:-1,fascination:1,LEVER_LastDesire:1,dread:1},
+startdescription:"我不可以再读它。我花了好几周的时间让自己忘掉那些数字，忘掉那些指示，忘掉那些——上帝啊救救我——该死的素描。",
+description:"翻阅这些书页令人感到轻松自在，就像在给水果去皮，或拆封一份神秘的礼物。最后，我的双手沾满墨水，我的大脑恍如沸腾。我身上开始发生了什么改变吗？",
+warmup:60,
+craftable: true
+},
+{id: "detectivework_plotitem",
+label: "烧毁密封的文件",
+actionId: "work",
+requirements: {legacydetective_plotitem:1},
+effects: {legacydetective_plotitem:-1,legacydetective_plotitem_burning:1,restlessness:1,contentment:1},
+startdescription:"这是证据，而我们不应烧毁证据。但或许这样做才是最好的结局。",
+description:"书页一张张变黑、翘曲、皱缩，如紧握成拳的手。我打开办公室的窗户，让这浓烟消散，不留痕迹。我到底做了什么？",
+warmup:60,
+craftable: true
+},
+
+
+
+]
+}

@@ -1,0 +1,1037 @@
+{"elements":
+    [
+   {
+            id: "acquaintance",
+            label: "熟人",
+			description: "非友，亦非敌",
+            isAspect: true
+        },
+		        {
+            id: "independent",
+            label: "特立独行者",
+			description: "自持观点，无形之仪的学徒",
+            isAspect: true
+        }, 		
+        {
+            id: "follower",
+            label: "从者",
+			description: "你的学徒、伙伴、护卫、拥护者以及被你糊骗和当作祭品的......伙伴。",
+            isAspect: true
+        },       {
+            id: "hireling",
+            label: "雇员",
+			description: "他会暂时为我所用。",
+            isAspect: true
+        },
+		     {
+            id: "门徒",
+            label: "门徒",
+			description: "初窥真知",
+            isAspect: true
+        },
+				     {
+            id: "exalted",
+            label: "使徒",
+			description: "无法再晋升之人......至少，在你麾下无法再晋升了。",
+            isAspect: true
+        },
+		        {
+            id: "prisoner",
+            label: "囚犯",
+			description: "被我玩弄于股掌之人",
+            isAspect: true
+        },
+		        {
+            id: "hunter",
+            label: "猎人",
+			description: "虽然文明的法律比时枢神的法则更晚出现，但是它们共通之处在于必要的时刻都需要做出牺牲。这位就是代表着法律而来。",
+            isAspect: true
+        },
+				        {
+            id: "patron",
+            label: "雇主",
+			description: "整日劳碌不休，就因为这些人给我报酬。",
+            isAspect: true
+        },
+						        {
+            id: "tutor",
+            label: "导师",
+			description: "导师拥有宝贵的知识。",
+            isAspect: true
+        },
+				        {
+            id: "annoyance",
+            label: "烦恼",
+			description: "如芒刺背，或许我能想到办法摆脱它。",
+            isAspect: true
+        },
+        {
+            id: "edge",
+            label: "刃",
+			description: "一切征服都围绕刃而展开。有一位遵其准则的人虽然双目失明，但却刀枪不入。而另一位，则是勇猛无匹，且越战越勇。[刃是战争与纷争之源。]",
+            isAspect: true,
+			noartneeded:true
+			},
+        {
+            id: "forge",
+            label: "铸",
+			description: "我曾经看到过这样一句话，“火是严冬，只是带有温度。火是暖春，却会燃尽一切。” [铸是变换与毁灭之源。]",
+            isAspect: true
+        },
+		     
+        {
+            id: "grail",
+            label: "杯",
+			description: "食、色，性也。[杯是生与享之源。]",
+        isAspect: true,
+			induces:[{id:"grailinduction",chance:5}]
+        },
+        {
+            id: "heart",
+            label: "忱",
+			description: "为了维护我们所知的世界，不息之心无尽地搏动着。[忱是存与续之源。]",
+            isAspect: true,
+			induces:[{id:"heartinduction",chance:5}]
+        },
+		        {
+            id: "knock",
+            label: "启",
+			description: "启允诺封闭和孤立将不复存在。它带领我们走出无知的庇护，走向欢愉的彼方。[启是开放与大同之源。]",
+            isAspect: true
+        },
+			 {
+            id: "lantern",
+            label: "灯",
+			description: "“生命是一束纯净的火焰，我们依靠自己内心看不见的太阳而存在。”——托马斯·布朗。[灯象征着被称作日之居所的神秘之地，而光芒照耀其上。]",
+            isAspect: true,
+			induces:[{id:"lanterninduction",chance:5}]
+        },
+		        {
+        id: "moth",
+        label: "蛾",
+        isAspect: true,
+		description: "昔有一人，捉蛾群置于瓮中。趁夜， 正如此时，释之，蛾逐一扑火而亡。[蛾，狂野又充满渴望，是混沌与向往之源。]",
+			induces:[{id:"mothinduction",chance:5}]
+    },
+	        {
+            id: "secrethistories",
+            label: "秘史",
+			        description: "历史是时间在世界身上镌刻的伤痕。[秘史记载了这个世界上的各种未解之谜，以及它的许多过去。]",
+            isAspect: true
+        },
+
+		        {
+            id: "winter",
+            label: "冬",
+			description: "......[冬是沉默、终结以及将逝事物之源。]",
+            isAspect: true
+        },
+								{
+            id: "ability",
+            label: "才能",
+            isAspect: true,
+			description: "聪明的头脑、热忱的内心、灵巧的双手与明锐的双眼。对有些人来说，它们是与生俱来之物。"
+        },
+										{
+            id: "advancement",
+            label: "提升",
+            isAspect: true,
+			description: "这只是冰山一隅。[集够足量此卡牌你就可以提升你的才能。]"
+        },
+												{
+            id: "potential",
+            label: "Potential",
+            isAspect: true,
+			description: "The mark of greatness? [In the right circumstances, this follower might become even more powerful.]"
+        },
+						{
+            id: "job",
+            label: "工作",
+            isAspect: true,
+			description: "一种以健康换取财富的方式。"
+        },
+								{
+            id: "降职",
+            label: "降职",
+            isAspect: true,
+			description: "我已经很长时间没工作了。"
+        },
+		{
+            id: "ritual",
+            label: "仪式",
+            isAspect: true,
+			description: "“当我们以适当的方式和顺序做适当的事情时，神就会帮助我们。”——大概是海索说的 吧。[仪式可以让你将要素结合从而进行召唤。]"
+        },
+				{
+            id: "社团",
+            label: "社团",
+            isAspect: true,
+			description: "要想招募信徒，我必须构建一些让他们赖以信仰的东西。"
+        },
+		        {
+            id: "ingredient",
+            label: "材料",
+            isAspect: true,
+			description: "燃料、药膏、颜料以及耐心：做什么事情都需要花费时间。"
+        },
+				        {
+            id: "pigment",
+            label: "颜料",
+            isAspect: true,
+			description: "可以用在画布之上。"
+        },
+				        {
+            id: "poison",
+            label: "致命毒药",
+            isAspect: true,
+			description: "如果你想要谁活，你就千万别把这个用在对方身上。"
+        },
+				        {
+            id: "influence",
+            label: "影响",
+            isAspect: true,
+			description: "这是一种反响、一种共鸣也是一种调和。不过它会很快消失。"
+        },
+        {
+            id: "tool",
+            label: "媒介",
+            isAspect: true,
+			description: "“剑不杀人人杀人。”——塞内卡"
+        },
+		        {
+            id: "mirror",
+            label: "镜子",
+            isAspect: true,
+			description: "撕裂光芒，其血横流。"
+        },
+		{
+		id: "riddle",
+		label: "谜语",
+		isAspect: true,
+		description: "有的问题仅有一个答案；而有的问题从来就没有答案。"
+		},
+		
+		 {
+            id: "reputation",
+            label: "名声",
+            isAspect: true,
+			description: "“许多人只知道担心自己的名声，而从不过问自己的良心。”——普林尼"
+        },
+				 {
+            id: "evidencelevel",
+            label: "证据等级",
+            isAspect: true,
+			description: "有些证据更为有力。"
+        },
+						 {
+            id: "嫌疑",
+            label: "嫌疑",
+            isAspect: true,
+			description: "侦探大概会希望将其调查清楚吧。"
+        },
+						 {
+            id: "封印thskill",
+            label: "力量",
+            isAspect: true,
+			description: "我白天很强，晚上也不差。[它可能会让你在进行体力劳动时表现更出色。]"
+        },
+								 {
+            id: "passionskill",
+            label: "想象",
+            isAspect: true,
+			description: "我的脑袋瓜里充满了幻想。[它可能会让你创作出更多充满热情的画作。]"
+        },
+										 {
+            id: "时期skill",
+            label: "学问",
+            isAspect: true,
+			description: "智慧有七柱，而我就是其中之一。[它目前仅能让你提高理智。]"
+        },
+		{id: "way",
+		label: "道路",
+		isAspect: true,
+		description: "我学会了如何越过屏障，现在我要从林地前往位于其上的居所。"
+		},
+			{id: "欲望",
+		label: "欲望",
+		isAspect: true,
+		description: "我的终极目标。完成此目标势必需要付出代价。"
+		},
+				{id: "powermarks",
+		label: "塑之印记",
+		isAspect: true,
+		description: "我可以向名为日月之炉的时枢神寻求永生与力量。她的触碰能为我带来独特的欲望以及印记。"
+		},
+						{id: "sensationmarks",
+		label: "悦之印记",
+		isAspect: true,
+		description: "我可以向名为赤杯的时枢神寻求永生与愉悦。她的触碰能为我带来独特的欲望以及印记。"
+		},
+						{id: "enlightenmentmarks",
+		label: "光之印记",
+		isAspect: true,
+		description: "我可以向名为守夜人的时枢神寻求永生与启迪。他的触碰能为我带来独特的欲望以及印记。"
+		},
+		{id:"ascend",
+		label: "升",
+		isAspect:true,
+		description: "到达下一印记。",
+		comments: "配方要素",
+			noartneeded: true
+		},
+		{id:"descend",
+		label: "降",
+		isAspect:true,
+		description: "如果新的欲望未能得以满足，我的印记将会消失。",
+			noartneeded: true,
+		comments: "配方要素"},
+		
+				{
+            id: "article",
+            label: "文章",
+            isAspect: true,
+			description: "有着特定主题的原创文章。"
+        },
+		{
+            id: "text",
+            label: "文本",
+            isAspect: true,
+			description: "书是永不消散的记忆。"
+        },
+				{
+            id: "autographed",
+            label: "签名卡",
+            isAspect: true,
+			description: "上面有制作者所做的标记。"
+        },
+		{
+            id: "lore",
+            label: "学识",
+            isAspect: true,
+			description: "有关无形之仪的知识。我可以利用它来吸引从者来为我开展仪式、开启通往居所的道途或是帮我寻觅升天之法......[两个相同的学识碎片可以通过研究来升级。]"
+        },
+				{
+            id: "language",
+            label: "语言",
+            isAspect: true,
+			description: "在翻译文本方面相当有用。"
+        },
+						{
+            id: "tutorlatin",
+            label: "拉丁语学者",
+            isAspect: true,
+		description: "若你向拉丁语学者求教，你便会获得其辅导。"
+        },
+						{
+            id: "tutorgreek",
+            label: "希腊语学者",
+            isAspect: true,
+		description: "若你向希腊语学者求教，你便会获得其辅导。"
+        },
+								{
+            id: "tutoraramaic",
+            label: "亚拉姆语学者",
+            isAspect: true,
+			description: "若你向亚拉姆语学者求教，你便会获得其辅导。"
+        },
+										{
+            id: "spirittutorfucine",
+            label: "富奇诺语使用者",
+            isAspect: true,
+			description: "如果你了解相关的语言，该灵体可能会教你学习富奇诺语。"
+        },
+		
+		{
+            id: "spirittutorphrygian",
+            label: "弗里吉亚语使用者",
+            isAspect: true,
+			description: "如果你了解相关的语言，该灵体可能会教你学习弗里吉亚语。"
+        },
+		
+		{
+            id: "spirittutormandaic",
+            label: "曼达安语使用者",
+            isAspect: true,
+			description: "如果你了解相关的语言，该灵体可能会教你学习曼达安语。"
+        },
+								        {
+            id: "auctionable",
+            label: "可拍卖",
+			description: "我大概可以拍卖此物，虽然拍卖价格从来都是未知之数。",
+            isAspect: true
+        },
+						        {
+            id: "compensationvalue",
+            label: "斯宾特里亚古币面值",
+			description: "斯宾特里亚古币是隐秘世界的通行货币。有些斯宾特里亚古币的面值比其它古币都要高。不过可千万别指望你能用它来兑换金钱，这可不是什么杂货。",
+            isAspect: true
+        },
+		        {
+            id: "hq",
+            label: "指挥所",
+			description: "进行谈话与开展集会的地方。",
+        isAspect: true
+},
+        {
+            id: "location",
+            label: "地点",
+			description: "地点s! Everything must be somewhere, and this is here.",
+        isAspect: true
+},
+       {
+            id: "vaultcapital",
+            label: "首府",
+			description: "在我所居住的这个拥挤的首府城市中一处秘密之地。",
+        isAspect: true
+},
+      {
+            id: "vaultshires",
+            label: "郡县",
+			description: "这儿有绿色的田野和灰色的山丘。",
+        isAspect: true
+},
+      {
+	     id: "vaultcontinent",
+   label: "大陆",
+			description: "穿越狭窄的海路，在敌国的未知角落里。",
+        isAspect: true
+},
+      {
+            id: "vaultlandbeyondforest",
+            label: "林穷之地",
+			description: "浓雾消散，现出了远处的村落，仿佛令笼罩世界的轻纱更显单薄。",
+        isAspect: true
+},
+
+     {
+            id: "vaultrendingmountains",
+            label: "撕心山脉",
+			description: "这里有黄褐色的山脊、被雪覆盖的山顶以及叫天天不应的无助。",
+        isAspect: true
+},
+
+     {
+            id: "vaultloneandlevelsands",
+            label: "平寂沙地",
+			description: "在这个干燥又遥远之地，放眼望去只有绵延的沙丘。",
+        isAspect: true
+},
+
+     {
+            id: "vaulteveningisles",
+            label: "寂夜岛屿",
+			description: "浪花拍打着连绵的岩石海岸，一片生机勃勃的景象。",
+        isAspect: true
+},
+       {
+            id: "peril",
+            label: "危机",
+			description: "它是一种障碍、危险或是为时尚早的结论。",
+        isAspect: true
+},
+      {
+            id: "curse",
+            label: "诅咒",
+			description: "这是你必须破除的不利影响。",
+        isAspect: true
+},
+      {
+            id: "guardian",
+            label: "守卫",
+			description: "一个阻止你进入的存在。",
+        isAspect: true
+},
+      {
+            id: "封印",
+            label: "封印",
+			description: "你的前进遭到了阻碍。",
+        isAspect: true
+},
+      {
+            id: "vault",
+            label: "穹顶",
+			description: "这儿有一些珍贵之物。",
+        isAspect: true
+},
+
+
+        {
+            id: "召唤物",
+            label: "召唤物",
+			description: "这东西可不属于这个世界。",
+            isAspect: true
+        },
+		    {
+            id: "illhealth",
+            label: "身体抱恙",
+			description: "也许我可以通过休息来恢复健康。",
+            isAspect: true
+        },
+		
+		 {
+            id: "inducesdespair",
+            label: "诱发绝望",
+			description: "它可能会导致绝望。",
+            isAspect: true
+        },
+						 {
+            id: "inducesvisions",
+            label: "诱发幻觉",
+			description: "我可能会看到一些不寻常的东西。",
+            isAspect: true
+        },
+				 {
+            id: "commissiongiven",
+            label: "指定的委托",
+			description: "需要你去完成的任务。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+						 {
+            id: "commissionfulfilled",
+            label: "完成的委托",
+			description: "你已经完成了任务。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+		 {
+            id: "recruiting",
+            label: "招募",
+			description: "盲目的人无法见到光明，但有时正是光明令我们盲目。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+		{
+            id: "hiring",
+            label: "雇佣",
+			description: "延长雇员的工期。",
+            isAspect: true,
+			comments: "配方要素. Use to rehire hirelings.",
+			noartneeded: true
+        },
+		{
+            id: "promotiontodisciple",
+            label: "晋升",
+			description: "该让他们立下更加虔诚的誓言了。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_edge",
+            label: "提拔：刃",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+			 {
+            id: "promotionto_d_forge",
+            label: "提拔：铸",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_grail",
+            label: "提拔：杯",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_heart",
+            label: "提拔：忱",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_knock",
+            label: "提拔：启",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_lantern",
+            label: "提拔：灯",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_moth",
+            label: "提拔：蛾",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "promotionto_d_winter",
+            label: "提拔：冬",
+			description: "这是我们崇敬的真正奥秘。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "fatiguing",
+            label: "做出的承诺",
+			description: "已经发生的事情。",
+            isAspect: true,
+			comments: "配方要素；造成疲劳状态，或是转化需要消耗的元素，使其不会继续触发需要更多该元素的配方（例如研究所用的理智，竞价所用的金钱）。",
+			noartneeded: true
+        },
+							 {
+            id: "exhaustlocation",
+            label: "地点 Exhausted",
+			description: "这是你已经探索完毕的地点。除非重现，否则将不会再次开启。",
+            isAspect: true,
+			noartneeded: true
+        },
+			 {
+            id: "restore",
+            label: "无事发生",
+			description: "一切如常",
+            isAspect: true,
+			comments: "配方要素；当未能将场景控制元素转化成原始状态时生效。",
+			noartneeded: true
+        },
+					 {
+            id: "拒绝",
+            label: "拒绝",
+			description: "终结之物",
+            isAspect: true,
+			comments: "配方要素；当我们想要减少投入时即生效。",
+			noartneeded: true
+        },
+				 {
+            id: "restorehealth",
+            label: "恢复健康",
+			description: "健康将得以恢复。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+		
+						 {
+            id: "damagehealth",
+            label: "损害健康",
+			description: "健康将受到损害。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+							 {
+            id: "fallsick",
+            label: "生病",
+			description: "健康将转变为折磨，从而对你造成潜在的影响",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+								 {
+            id: "destroyhealth",
+            label: "损毁健康",
+			description: "健康将被彻底损毁。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+								 {
+            id: "damagereason",
+            label: "损害理智",
+			description: "理智将被转换为恐惧",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+										 {
+            id: "toreason",
+            label: "理智化",
+			description: "......将会转换成理智。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+					 {
+            id: "topassion",
+            label: "热情化",
+			description: "......将会转换成热情。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+							 {
+            id: "tohealth",
+            label: "健康化",
+			description: "......将会转换成健康。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+										 {
+            id: "恐惧化",
+            label: "恐惧化",
+			description: "有产生恐惧的危险。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true,			
+			induces:[{id:"dreadinduction",chance:30}]
+        },
+												 {
+            id: "fascinating",
+            label: "入迷化",
+			description: "有产生入迷的危险。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true,			
+			induces:[{id:"fascinationinduction",chance:30}]
+        },
+										 {
+            id: "damagepassion",
+            label: "损害热情",
+			description: "热情将转换为入迷",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+		
+						 {
+            id: "killmortal",
+            label: "杀死凡人",
+			description: "凡人将会变为死尸",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+								 {
+            id: "rebellion",
+            label: "叛变",
+			description: "从者将变为对手",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+								 {
+            id: "endannoyance",
+            label: "终结烦恼",
+			description: "烦恼就像大魔王，总有被战胜的一天。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+										 {
+            id: "careeradvancement",
+            label: "职业提升",
+			description: "晋升或是技能提升",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+								 {
+            id: "derangemortal",
+            label: "扰乱凡人",
+			description: "凡人将沦为疯子",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },								 {
+            id: "capturehunter",
+            label: "逮捕猎人",
+			description: "猎人将被囚禁。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+				 {
+            id: "killhunter",
+            label: "杀死猎人",
+			description: "猎人将变为死尸。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+									 {
+            id: "capturefollower",
+            label: "逮捕从者",
+			description: "从者将被囚禁。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded: true
+        },
+		
+				 {
+            id: "restorepassion",
+            label: "恢复热情",
+			description: "热情将得以恢复。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded:true
+        },
+						 {
+            id: "plead",
+            label: "辩护",
+			description: "可能会获得宽容。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded:true
+        },
+								 {
+            id: "employment",
+            label: "职业",
+			description: "我已经完成了一天的工作。",
+            isAspect: true,
+			comments: "配方要素。可刷新工作计时器和疲劳属性",
+			noartneeded:true
+        },
+										 {
+            id: "诽谤",
+            label: "诽谤",
+			description: "我无法被人轻易忘却。",
+            isAspect: true,
+			comments: "配方要素. Refreshes reputation timers.",
+			noartneeded:true
+        },
+										 {
+            id: "epiphany",
+            label: "顿悟",
+			description: "我的理解力提升了。",
+            isAspect: true,
+			comments: "配方要素. Upgrades lore.",
+			noartneeded:true
+        },
+												 {
+            id: "蒙昧",
+            label: "蒙昧",
+			description: "我现在理解事物的方式更简单了。",
+            isAspect: true,
+			comments: "配方要素. Downgrades and splits lore.",
+			noartneeded:true
+        },
+										 {
+            id: "investigatingsuccess",
+            label: "调查成功",
+			description: "升级证据。",
+            isAspect: true,
+			comments: "配方要素.",
+			noartneeded:true
+        },
+												 {
+            id: "investigatingsetback",
+            label: "调查受挫",
+			description: "降级证据。",
+            isAspect: true,
+			comments: "配方要素.",
+			noartneeded:true
+        },
+						 {
+            id: "crackmirror",
+            label: "打破镜子",
+			description: "镜子将会进入碎裂状态。",
+            isAspect: true,
+			comments: "配方要素",
+			noartneeded:true
+        },
+		{
+            id: "mortal",
+            label: "凡人",
+			description: "“长期的‘生存’习惯，使我们不愿意死亡。”——托马斯•布朗",
+            isAspect: true
+        },
+		{
+            id: "commission",
+            label: "委托",
+			description: "可以获得报酬的方式。我需要完成委托然后回复赞助人。",
+            isAspect: true
+        },
+		{id: "benign",
+		label: "时来运转",
+		description: "我是多么幸运啊。",
+		isAspect: true
+		},
+				{id: "malign",
+		label: "丑陋之物",
+		description: "不受欢迎的东西。",
+		isAspect: true
+		},
+		{id:"时期",
+		label:"时期",
+		description: "一些相关的事情很快就会发生",
+		isAspect: true,
+		comments:"能辨识出可能引发期间性事件的卡牌" 
+		},
+		{id: "吞噬者",
+		label: "吞噬者",
+		description: "如果它挣脱了束缚，它可能会攻击你或是你的从者。",
+		isAspect: true
+		},
+	{id: "欺诈者",
+		label: "欺诈者",
+		description: "如果它挣脱了束缚，它可能会让你或你的从者陷入疯狂。",
+		isAspect: true
+		},
+		{id:"mystic",
+		label:"神秘主义者",
+		description:"这个猎人通常能从来自居所的生物的攻击下幸存，即使这些攻击对其他人而言是不可阻挡的。",
+		isAspect:true},
+		{id:"brilliant",
+		label:"才华横溢",
+		description:"才华横溢的猎人能够观察入微，并能将邪名直接转变为确凿证据。",
+		noartneeded:true,
+		isAspect:true},
+		
+		{id:"erratic",
+		label:"古怪之人",
+		description:"这样的猎人通常难以将邪名转化为证据。不过，在没有邪名的时候，他们偶尔也会制造出证据来。",
+		isAspect:true},
+		
+		{id:"meticulous",
+		label:"一丝不苟",
+		description:"这样的猎人一旦发现邪名便会以之作为证据。",
+		isAspect:true},
+		
+		{id:"tenacious",
+		label:"坚韧之人",
+		description:"这样的猎人有三分之一的几率能从攻击中幸存，即使攻击对于其他人而言是不可阻挡的。",
+		isAspect:true},
+				{id:"grim",
+		label:"严峻之人",
+		description:"冷酷的猎手并不会因为光的诱惑而动摇......然而自身的绝望却能将他们摧毁。",
+		isAspect:true},
+						{id:"idealist",
+		label:"理想主义者",
+		description:"理想主义者不会有意志消沉的时候——虽然有时候太过理想可能成为他们的阻滞。",
+		isAspect:true},
+
+			{id: "venerationedge",
+		label: "崇敬：刃",
+		description: "这个组织的法则为“刃”。我们向上校和锻狮以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+					{id: "venerationforge",
+		label: "崇敬：铸",
+		description: "这个组织的法则为“铸”。我们向日月之炉和拂晓以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+					{id: "venerationgrail",
+		label: "崇敬：杯",
+		description: "这个组织的法则为“杯”。我们向赤杯和女与巫以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+					{id: "venerationheart",
+		label: "崇敬：忱",
+		description: "这个组织的法则为“忱”。我们向雷肤和鹄绒以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+					{id: "venerationknock",
+		label: "崇敬：启",
+		description: "这个组织的法则为“启”。我们向蚁母和幼月之弧以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+					{id: "venerationlantern",
+		label: "崇敬：灯",
+		description: "这个组织的法则为“灯”。我们向瞳中之扉和制花者以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+							{id: "venerationmoth",
+		label: "崇敬：蛾",
+		description: "这个组织的法则为“蛾”。我们向蛾和巫与女以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+					{id: "venerationwinter",
+		label: "崇敬：冬",
+		description: "这个组织的法则为“冬”。我们向残阳和双角斧以及其他神明起誓，传颂此法则。",
+		isAspect: true
+		},
+				{
+		id: "textlatin",
+		label: "以拉丁文著",
+		description: "佚失语种：虽已消亡，但仍如钻石般璀璨。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+					{
+		id: "textfucine",
+		label: "以弗齐尼语写就",
+		description: "已经消失的富奇诺湖东侧曾有过一些住户。贺拉斯曾警告说，那里是女巫之地。而这便是他们所使用的语言。有些人将之称作“干瘪之语”，另一些人则称其为“女巫之语”。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+				{
+		id: "textgreek",
+		label: "以希腊语写就",
+		description: "这是一门属于哲学家、神学家和英雄的语言。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+					{
+		id: "textphrygian",
+		label: "以弗里吉亚语写就",
+		description: "弗里吉亚人崇拜我们称之为杯的伟大之母。结索姐妹会在这片土地上诞生。而这种语言也正是雷肤在升天时所用到的。[有些书必须先翻译再阅读。]",
+		isAspect:true
+		},
+						{
+		id: "textaramaic",
+		label: "以亚拉姆语写就",
+		description: "这是亚拉姆和她这三千多年以来所养育的众多子嗣所使用的语言。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+							{
+		id: "textmandaic",
+		label: "以渊深曼达安语写就",
+		description: "这是隐藏在沙漠深处的教派仪式的秘密手稿。据说，那是蚁母与生俱来的语言。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+									{
+		id: "textsanskrit",
+		label: "以梵语写就",
+		description: "这是来自次大陆的神圣语言。只要你能克服那些如莲根般盘根错节的词汇，那四千年的诗歌、仪式和神秘都将呈现在你眼前。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+									{
+		id: "textvak",
+		label: "以神代语写就",
+		description: "早在众神兴起之前，在猿猴直立行走之前，这种语言便出现在旭日之屋。[部分书籍需翻译后方可阅读。]",
+		isAspect:true
+		},
+				{id: "follower_wound",
+		label:"Wound",
+		description:"This one has suffered in my service. [Wounded Followers don't count as Followers, and can't be used as agents or assistants. They may die in the Season of Sickness. Use <b>Talk</b> to treat them.]",
+		isAspect:true,
+		{xtriggers:{killmortal:corpse_scar}}
+		},
+		{id: "follower_scar_edge",
+		label:"Scar: Brutal Experience",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [Three Scars of the same type will kill a follower.]",
+		isAspect:true,
+		{xtriggers:{killmortal:corpse_scar}}
+		},
+		
+				{id: "follower_scar_knock",
+		label:"Scar: Half-Healed Fistula",
+		description:"Not all doors are wounds; but all wounds are doors. [Three Scars of the same type will kill a follower.]",
+		isAspect:true,
+		{xtriggers:{killmortal:corpse_scar}}
+		},
+				{id: "follower_scar_winter",
+		label:"Scar: Old Wound",
+		description:"Step closer to the sunset, and see the first stars of night. [Three Scars of the same type will kill a follower.]",
+		isAspect:true,
+		{xtriggers:{killmortal:corpse_scar}}
+		},
+						{id: "corpse_scar",
+		label:"Old Scar",
+		description:"This was someone who knew pain.",
+		isAspect:true
+		},
+		
+]
+}

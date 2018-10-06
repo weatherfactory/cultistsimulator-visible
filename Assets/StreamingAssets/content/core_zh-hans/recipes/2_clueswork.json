@@ -1,0 +1,517 @@
+ {"recipes":
+ [		{
+        id: "workfundshint",
+        label: "金钱",
+        actionId: "work",
+        requirements: {funds: 1},
+        startdescription: "没什么大用；但或许在未来的某一天，我最终能找到别的办法投资我的金钱。如果我还有未来可言。",
+        craftable: false,
+		hintonly: true
+    },
+      			{
+        id: "skillhealthhintwork",
+        label: "健康",
+        actionId: "work",
+        requirements: {healthskill:1},
+        startdescription: "我变得强壮了，但我仍然需要把我的健康奉献给工作。",
+        craftable: false,
+		hintonly: true,
+    },
+     			{
+        id: "vitalityhintwork",
+        label: "活力",
+        actionId: "work",
+        requirements: {vitality:1},
+        startdescription: "这无关工作；但研究它能让我更加健康。",
+        craftable: false,
+		hintonly: true,
+		comments: "因工作首要栏的限制而暂时无法操作。"
+    },
+	    			{
+        id: "eruditionhintwork",
+        label: "博闻",
+        actionId: "work",
+        requirements: {erudition:1},
+        startdescription: "这无关工作；但研究它能让我更加理性。",
+        craftable: false,
+		hintonly: true,
+		comments: "因工作首要栏的限制而暂时无法操作。"
+    },
+	    			{
+        id: "glimmeringhintwork",
+        label: "灵感",
+        actionId: "work",
+        requirements: {glimmering:1},
+        startdescription: "这无关工作；但研究它能让我更加热情。",
+        craftable: false,
+		hintonly: true,
+		comments: "因工作首要栏的限制而暂时无法操作。"
+    },
+   			{
+        id: "contentmenthintwork",
+        label: "安逸",
+        actionId: "work",
+        requirements: {contentment:1},
+        startdescription: "不能光靠穷开心来过日子。但是当夜色笼罩之际，我唯一能紧紧把握在手中也只有属于我自己的快乐了。",
+        craftable: false,
+		hintonly: true,
+		comments: "因工作首要栏的限制而暂时无法操作。"
+    },
+	  			{
+        id: "commissionhint_wronglore",
+        label: "履行委托",
+        actionId: "work",
+        requirements: {commission:1,lore:1},
+        startdescription: "我需要合适的知识，并在工作中投入精力。[委托下方的描述会提示你所需的知识。]",
+        craftable: false,
+		hintonly: true
+    },
+  			{
+        id: "commissionhint",
+        label: "履行委托?",
+        actionId: "work",
+        requirements: {commission:1},
+        startdescription: "如果我在工作中使用合适的知识碎片，我就能撰写所需的手稿。委托完成后，我还需与我的赞助人对话。",
+        craftable: false,
+		hintonly: true
+    },
+
+ 
+ 		{
+        id: "hint_summon_spirit_forgee_edge",
+        label: "召唤一名来自光阴之炉的强大生物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
+		effects: {spirit_forgee_edge:1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤火与荣的生物，我需要大量的铸的力量，一定的启，和一些灯。",     
+   hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_graile_edge",
+        label: "召唤来自赤杯的强大生物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,forge:1,desire:-1},
+		effects: {spirit_graile_edge:1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这血与变化的生物，我需要大量的杯，一定的启，和一些灯。",  
+   hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_lanterne_secret",
+        label: "召唤不寻常之物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,secrethistories:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。通过足够的灯，一定的启，和一丝秘密，也许我能召唤出什么有趣的东西。",
+   hintonly:true,
+        craftable: false
+    },
+		{
+        id: "hint_summon_spirit_forgec_winter",
+        label: "召唤一名来自光阴之炉的生物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,winter:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这被烟雾缭绕的狡诈之物，我需要大量的铸，和少量的冬与启。",
+      hintonly:true,
+        craftable: false
+    },
+				{
+        id: "hint_summon_spirit_grailc_moth",
+        label: "召唤来自赤杯的生物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,moth:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这怪物般的，称得上是充满着感情的，存在，我需要的高强度的杯与些许蛾和启。",
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_lanternc_edge",
+        label: "召唤镜子背后之物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,edge:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这若隐若现，脆弱而带有杀意的东西，我需要的高强度的灯与些许启和刃。",   
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_heartc_edge",
+        label: "召唤来自怒号之皮的生物？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:1,edge:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这愉悦，不羁而无情之物，我需要的高强度的忱与些许启和刃。",
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_winterd_edge",
+        label: "召唤来自残阳的生物",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,edge:1,desire:-1},
+		startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这寒冷与闪亮之物，我需要的高强度的冬与些许启和刃。",
+      hintonly:true,
+        craftable: false
+    },
+		{
+        id: "hint_summon_spirit_winterb_heart",
+        label: "召唤亡群的一员？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,heart:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。为了召唤这可怜的无声之物，我需要的至少四级的冬与些许启和忱。",
+      hintonly:true,
+        craftable: false
+    },
+		 	{
+        id: "hint_summon_spirit_wintera_edge",
+        label: "对尸体注入历痕者的力量",
+        actionId: "work",
+        requirements: {ritual:1,winter:1,edge:1,desire:-1},
+        startdescription: "我发现了一种有效的结合要素的方式，但我需要更多的力量。只需一点冬要素，再加上一点刃，与一具尸体，我也许能唤醒一位残暴的仆从。",
+  hintonly:true,
+        craftable: false,
+	
+    },
+  	{
+        id: "hint_summon_spirit_wintera_moth",
+        label: "对尸体注入环杉的力量",
+        actionId: "work",
+        requirements: {ritual:1,winter:1,moth:1,desire:-1},
+        startdescription: "只需一点冬要素，再加上些蛾，和一具尸体，我也许能唤醒一位狡猾的仆从。",
+   hintonly:true,
+        craftable: false
+    },
+	 			{
+        id: "ritehinthasknockedge",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "这里有不少的可能性，如果我添加灯，或忱，或是冬的话。",
+        craftable: false,
+		hintonly: true
+    },
+ 			{
+        id: "ritehinthasknockforge",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "这里有不少的可能性。如果我加入冬，我也许能遇到什么烟雾缭绕的东西。如果我加入灯，我也许能接触到某种耀眼的力量。",
+        craftable: false,
+		hintonly: true
+    },
+	
+	 			{
+        id: "ritehinthasknockgrail",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "这里有不少的可能性。如果我加入蛾，我也许能遇到什么无形之物。如果我加入铸，我也许能接触到某种诱人的野性力量。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknockheart",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "这里有不少的可能性。如果我加入刃，我也许能遇到什么无法压制的东西。如果我加入冬，我也许能唤醒一位死者。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknocklantern",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "这里有不少的可能性。如果我加入刃，我也许能召唤出镜子背后的东西。如果我加入铸，我也许能遇到什么耀眼的东西。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknockmoth",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
+        startdescription: "这里有不少的可能性。如果我加入铸，我也许遇到什么无形之物。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+         id: "ritehinthasknocksecrethistories",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
+        startdescription: "这里有不少的可能性。如果我加入足够的灯，谁知道我会引来什么？",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknockwinter",
+        label: "冬",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
+        startdescription: "这里有不少的可能性。如果我加入刃，或忱，或是铸的话。",
+        craftable: false,
+		hintonly: true
+    },
+
+					   {
+        label: "理性之荣？",
+        id: "arcane_lantern_edge_hint",
+		requirements: {ritual: 1,knock:-1,desire:-1,lantern:1,edge:1},
+        actionId: "work",
+		startdescription:"通过至少5点灯值和1点刃值，我能用名为理智之荣的秘律来将我的热情转换为理智。",
+		craftable:false,
+		hintonly:true
+		},
+				   {
+        label: "热情之火",
+        id: "arcane_moth_edge_hint",
+		requirements: {ritual: 1,knock:-1,desire:-1,moth:1,edge:1},
+        actionId: "work",
+		startdescription:"通过至少5点蛾值和1点刃值，我能用名为热情之火的巫术来将我的理智转换为热情。",
+		craftable:false,
+		hintonly:true
+		},
+								   {
+        label: "铸之救赎？",
+        id: "arcane_forge_grail_hint",
+        actionId: "work",
+        requirements: {ritual: 1, knock:-1,desire:-1,forge:1,grail:1},
+				startdescription:"通过至少5点铸值和1点杯值，我能用名为热情之火的巫术来将我的理智转换为热情。",
+		craftable:false,
+		hintonly:true
+		},
+	
+								   {
+        label: "唯美结局？",
+        id: "arcane_winter_lantern_hint",
+        actionId: "work",
+        requirements: {ritual: 1,knock:-1,desire:-1,winter:1,lantern:1},
+		startdescription:"通过至少5点冬值和1点灯值，我能恳请终焉之时，残阳，来摧毁一个人——但不是某个人。这仅残阳一体的决定。",
+				craftable:false,
+		hintonly:true
+		},
+		
+	
+		{
+        id: "ritehinthasedge",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "刃是纷争与战斗的要素。如果我加入启，我也许能试着召唤什么。如果我加入灯或是蛾，我也许能在我的灵魂中挑起一场战斗。",
+        craftable: false,
+		hintonly: true
+    },
+ 			{
+        id: "ritehinthasforge",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "铸是变化与毁灭的要素。如果我加入启，我也许能试着召唤什么。如果我已然衰弱的话，那么加入杯的话，也许我能重获新生。",
+        craftable: false,
+		hintonly: true
+    },
+	
+	 			{
+        id: "ritehinthasgrail",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "杯是欲望，血和分娩的的要素。如果我加入启，我也许能试着召唤什么。如果我已然衰弱的话，那么加入铸的话，也许我能重获新生。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasheart",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "忱是守护的要素，也代表着无止境的运动。如果我加入启，我也许能试着召唤什么。",
+        craftable: false,
+		hintonly: true
+    },
+				{
+        id: "ritehinthasknock",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
+        startdescription: "召唤首先需要启要素，但通常还需要其他两个要素。如果我不使用启，我也许能找到除了召唤之外的密教之式。",
+        craftable: false,
+		hintonly: true
+    },
+					{
+        id: "ritehinthasmicroknock",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
+        startdescription: "召唤首先需要启要素，但我需要再加一点启。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaslantern",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Lantern is the principle of the secret place sometimes called the House of the Sun, and of the light above it. If I add Knock, I might be able to attempt a summoning. If I add Edge, I can try to conquer my Passion with Reason. If I add Winter, I can attempt a foolish, beautiful magic.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasmoth",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
+        startdescription: "蛾是代表着混乱与渴望的狂野而危险的要素。如果我加入启，我也许能试着召唤什么。如果我加入刃，我也许能将我的理智埋没在热情中。",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+         id: "ritehinthassecrethistories",
+        label: "召唤些什么？",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
+        startdescription: "秘史描绘着世界上的未解之谜，以及其各种各样的过去。在无形之仪中，秘史通常不被使用。但如果我加入启，谁知道什么会发生呢？",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaswinter",
+        label: "冬",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
+        startdescription: "冬是沉默的要素，同时代表着所有尚未完全死去的存在。如果我加入启，我也许能试着召唤什么。如果我加入冬，我也许能尝试一种美丽而可笑的魔法。",
+        craftable: false,
+		hintonly: true
+    },
+				   {
+        id: "minorforgevictory_hint_sixth",
+        label: "第七印？",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:6},
+        effects: {},
+        startdescription: "第七印是忱的爆发。我已经如此接近，犹如蜡炬靠近烛火。我需要所有我能找到的铸之力量，至少需要36级的强度。",
+        hintonly:true
+    },
+			   {
+        id: "minorforgevictory_hint",
+        label: "第七印？",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:1},
+        effects: {},
+        startdescription: "第七印是忱的爆发。我首先需要达到第六印。",
+        hintonly:true
+    },
+					   {
+        id: "minorgrailvictory_hint_sixth",
+        label: "第七印？",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:6},
+        effects: {},
+        startdescription: "第七印是真实降生之宴。我已经如此接近，犹如血液涌入心房。我需要所有我能找到的杯之力量，至少需要36级的强度。",
+        hintonly:true
+    },
+				   {
+        id: "minorgrailvictory_hint",
+        label: "第七印？",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:1},
+        effects: {},
+        startdescription: "第七印是真实降生之宴。我首先需要达到第六印。",
+        hintonly:true
+    },
+					   {
+        id: "minorlanternvictory_hint_sixth",
+        label: "第七印？",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:6},
+        effects: {},
+        startdescription: "第七印是神掠。我已经很接近了，犹如光线照入影子的边缘。我需要所有我能找到的灯之力量，至少需要36级的强度。",
+        hintonly:true
+    },
+				   {
+        id: "minorlanternvictory_hint",
+        label: "第七印？",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:1},
+        effects: {},
+        startdescription: "第七印是神掠。我首先需要达到第六印。",
+        hintonly:true
+    },
+	
+
+
+		{
+        id: "ritehint",
+        label: "仪式",
+        actionId: "work",
+        requirements: {ritual:1,lore:-1,ingredient:-1,influence:-1,follower:-1,tool:-1,desire:-1},
+        startdescription: "每个仪式都能派上各种用处。为了召唤，我需要从呼唤启的力量开始来开辟道路。",
+        craftable: false,
+		hintonly: true
+    },
+		   {
+        id: "ascensionpower_upgradetoobsession_hint",
+        label: "还不够，还没到。",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:1},
+        startdescription: "还不够。日月之铸在她觉得我值得关注前不会理睬我。我需要至少6级的铸之力量。",
+        description: ".",
+   
+        craftable: false,
+		hintonly: true
+    },
+		   {
+        id: "ascensionsensation_upgradetoobsession_hint_m",
+        label: "还不够，还没到。",
+        actionId: "work",
+        requirements: {ascensionsensationbm:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "还不够。赤杯在她觉得我值得关注前不会理睬我。我需要至少6级的杯之力量。",
+        description: ".",
+   
+
+		hintonly: true
+    },		   {
+        id: "ascensionsensation_upgradetoobsession_hint_f",
+        label: "还不够，还没到。",
+        actionId: "work",
+        requirements: {ascensionsensationbf:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "还不够。赤杯在她觉得我值得关注前不会理睬我。我需要至少6级的杯之力量。",
+        description: ".",
+   
+
+		hintonly: true
+    },
+	
+				   {
+        id: "ascensionenlightenment_upgradetoobsession_hint",
+        label: "还不够，还没到。",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:1},
+        startdescription: "还不够。守望者在他觉得我值得关注前不会理睬我。我需要至少6级的灯之力量。",
+        description: ".",
+   
+        craftable: false,
+		hintonly: true
+    },
+	
+
+	
+	
+
+	
+]
+}

@@ -1,0 +1,143 @@
+ {"recipes": [
+ 
+ 
+	{
+        id: "explorelocationbookdealer",
+        label: "补充你的藏书",
+        actionId: "explore",
+        requirements: {locationbookdealer:1,funds:1},
+		effects: {},
+		deckeffect: {"commontomes":1},
+        startdescription: "浪里淘金，壳中拣麦，水中萃血，皆耗须臾。 如果我买下足够多的书，总应该能发现些有趣的事情吧。",
+        description: "我发现了值得注意的东西。",
+        warmup: 30,
+        craftable: true,
+		linked:[{id:"explorelocationbookdealer_exhausted",chance:100}]
+    },
+		{
+        id: "explorelocationbookdealer_exhausted",
+        label: "莫兰书屋要歇业了！",
+        actionId: "explore",
+        requirements: {genericrubbishbook:1},
+        description: "“我打算改行了，”莫兰小姐告诉你说， “我的存书已经几乎售罄，也引起了监管局的兴趣。 所以让我们就此道别吧。最后这本书充满不知所云的内容，不过我在书后面塞了一些很有趣的文章，作为对你经常光顾的感谢......“",
+		deckeffect:{oneoffrewards:1},
+        warmup: 1,
+aspects:{exhaustlocation:1]
+    },
+		{
+        id: "explorelocationauctionhouse",
+        label: "参加奥瑞福莱姆拍卖行的拍卖",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:-1},
+		effects: {},
+		deckeffect: {"auctionedcommontomes":1},
+        startdescription: "这是一间无窗的，有着鲜艳烧橙色墙壁的拍卖室，我们坐在惊人的里特维德椅子上，等待着拍卖师宣布他所提供的商品。 新油漆的气味让人大脑眩晕。 [点击开始查看提供的商品，或者添加您想要出售的物品。]",
+        description: ".",
+			
+        warmup: 5,
+        craftable: true,
+		linked:[{id:"auctionbuy",chance:100}]
+    },
+	
+		{
+        id: "explorelocationstreetsstrange",
+        label: "趁着月色，探索离奇扭曲的街道。",
+        actionId: "explore",
+        requirements: {locationstreetsstrange:1},
+		
+		deckeffect: {"streetsstrangefinds":1},
+        startdescription: "昧旦之时，街道会呈现异相。",
+        description: "幻像如跳着孔雀舞般优雅地从我身旁掠过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃女子。 回家时我心中将会充满不舍。",
+        warmup: 30,
+        craftable: true
+    },
+			 {
+        id: "explorefollower",
+        label: "探索市区",
+        actionId: "explore",
+        requirements: {follower:1,location:-1},
+		deckeffect: {exploreevents:1},
+		linked:	[
+			{id: "explorefindcriminal",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "白天熙熙攘攘的大街，在夜里化为雾气缭绕的迷宫。我将派我的仆从出去寻找机遇。",
+        description: ".",
+        warmup: 10,
+		craftable:true
+    },
+			 {
+        id: "explorerumour",
+        label: "追查流言",
+        actionId: "explore",
+        requirements: {rumour:1},
+		deckeffect: {"acquaintances":1},
+		effects: {rumour:-1,notoriety:1},
+        startdescription: "我怀疑，在这个故事的最后，我也许能找到一个人，愿意听我讲这些不得不说的话。",
+        description: "一个飘忽不定的地址：却住了一位值得信赖的人物。",
+        warmup: 60,
+		craftable:true
+    },
+	 {
+        id: "explorehealth",
+        label: "探索市区",
+        actionId: "explore",
+        requirements: {health:1},
+		deckeffect: {exploreevents:1},
+		aspects:{fatiguing:1},
+		linked:	[
+			{id: "explorefindcriminal",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "白天熙熙攘攘的大街，在夜里化为雾气缭绕的迷宫。我将沿着街道探寻秘密，直到无法前进为止。",
+        description: ".",
+        warmup: 10,
+		craftable:true
+    },
+	
+			
+					{
+        id: "explorefindcriminal",
+        label: "一次雇佣？",
+        actionId: "explore",
+        requirements: {daycriminals:1},
+		deckeffect: {"hirelings":1},
+		effects:{season:-1},
+        warmup: 0,
+		linked:[{id:"explorechoosepaycriminal",chance:100}]
+    },
+				{
+        id: "explorechoosepaycriminal",
+        label: "一次雇佣？",
+        actionId: "explore",
+        startdescription: "我找到了一个可以花钱雇佣的人，我也许可以花钱来让他们做一些可能会后悔但又不得不做的事情。 [放入金钱可以雇用他，不过这种雇佣关系只是临时的。]",
+slots:[{id:"Payment",required:{funds:1},consumes:true}],
+alternativerecipes:[{id:"explorepaycriminal",chance:100}],
+		effects:{hireling:-1},
+		 description: "最好不要。我必须小心选择同伴。",
+        warmup: 60
+    },
+					{
+        id: "explorepaycriminal",
+        label: "一次雇佣",
+		requirements: {funds:1},
+        actionId: "explore",
+        startdescription: "这可以买到他的忠诚，虽然只是一时的。",
+		effects:{funds:-1}
+    },
+
+	
+		 {
+ 
+        id: "explorefindplace",
+        label: "被忽略之处？",
+        actionId: "explore",
+        requirements: {dayplaces:1},
+        startdescription: "我可能发现了不太寻常的地方。",
+        description: ".",
+		deckeffect: {"citysecrets":1},
+		effects:{season:-1},
+        warmup: 5
+    },
+
+	
+]
+}

@@ -1,0 +1,117 @@
+﻿{
+"recipes": [
+{id: "workbytjobstart",
+label: "Золотой день ленивой работы",
+actionId: "work",
+requirements: {legacybytjob:1},
+effects: {funds: 2,legacybytjob:-1,legacybytjobmatured:1},
+alternativerecipes: [
+{id:bytopenexplore,chance:100,additional:true}],
+startdescription: "Возможно, сегодня я что-нибудь доделаю.",
+description: "Всё идёт гладко. Впрочем, Папе не лучше. [Доступен <b>Поиск</b>.]",
+warmup:10,
+craftable: true	},
+{id: "workbytjob",
+label: "Золотой день ленивой работы",
+actionId: "work",
+requirements: {legacybytjobmatured:1},
+effects: {funds: 2},
+alternativerecipes: [
+{id:workbytjobend,chance:30}],
+startdescription: "Возможно, сегодня я что-нибудь доделаю.",
+description: "Всё идёт гладко. Впрочем, Папе всё ещё не лучше.",
+warmup:30,
+craftable: true	},
+
+{id: "workbytjobend",
+label: "Облако на горизонте",
+actionId: "work",
+alternativerecipes: [
+{id:"needs",chance:100,additional:true}
+],
+effects: {},
+startdescription: ".",
+description: ".",
+craftable: false,
+linked: [
+{id:"workbytjobepilogue",chance:100}],
+comments: "this passes through to the next one, so we can spawn needs at the beginning of the legal wrangle."
+},
+
+{id: "workbytjobepilogue",
+label: "Ужасные новости",
+actionId: "work",
+alternativerecipes: [
+{id:"bytopenstudy",chance:100,additional:true}
+],
+effects: {health: 2, funds: 20,legacybytjobmatured:-1},
+startdescription: "Папа умер! Никто не говорит мне, что именно случилось. Но поместье в полном беспорядке. Моё пособие связано с завещанием и всем прочим. Остаётся надеяться, что с этим разберутся, пока не придёт время платить по счетам. [К сожалению, теперь начало идти <b>Время</b>.]",
+description: "Дела по завещанию разрешились... но бизнес Папы съеден долгами как молью. Никто не знает, на что он истратил деньги. Но душеприказчик, похоже, отправил мне какие-то документы...",
+warmup:60,
+craftable: false},
+ 
+{id: "bytopenexplore",
+label: "Целый мир возможностей!",
+actionId: "explore",
+startdescription:"Потрясающие люди открыли мне двери в потрясающие места.",
+description: "Если мне когда-нибудь будет сложно решить, на что потратить деньги, добрые люди по этим адресам несомненно мне помогут!",
+warmup:10,
+effects: {locationauctionhouse:1,locationcabaret:1},
+craftable: false
+},
+
+{id: "bytopenstudy",
+label: "Загадочные бумаги",
+actionId: "study",
+startdescription:"На пути ко мне бумаги, найденные в вещах Папы — возможно, они прольют свет на то, к каким чертям провалились все деньги.",
+alternativerecipes: [
+{id:"bytopendream",chance:100,additional:true}
+],
+description: "Бумаги у меня. Бедный Папа. Страница за страницей испещрены полными отчаяния строками о невидимом доме, о цветах сна и невидимых богах извне мира... но чем больше я читаю, тем больше это как бы... ну, не «обретает смысл». Смысла нет. Но оно начинает стыковаться. И это — дневник Папы.",
+effects: {legacydiarylastcharacter:1,LEVER_LastBook},
+warmup:30,
+craftable: false
+},
+
+
+{id: "bytstudydiary",
+label: "Изучение нервирующего дневника",
+actionId: "study",
+requirements: {legacydiarylastcharacter:1},
+
+alternativerecipes: [
+{id:"bytopentalk",chance:100,additional:true}
+],
+effects: {legacydiarylastcharacter:-1,reason:1,fragmentgrail:1},
+startdescription:"Дневник Папы. Каталог одержимостей. Но, возможно, он придаст какой-то смысл недавним событиям?",
+description: "Имя #PREVIOUSCHARACTERNAME# появляется вновь и вновь, в сопровождении эпитетов — «локус невозможности», «основа будущего»... «глаз, что рассечён». На последней странице — имя и почтовый адрес.",
+warmup:10,
+craftable: true
+},
+{id: "bytopendream",
+label: "Дом без стен",
+actionId: "dream",
+alternativerecipes:[
+{id:despairrisk,chance:100,additional:true}
+],
+startdescription:"Начались сны. Папа говорил о них, и упоминал, что его отец тоже страдал от них же. Что-то в нашей крови; мертвящая меланхолия, вонзающая клыки в саму душу.",
+description: "Я вижу сны о дрожащем свете, о солнце, под которым снег становится хрустким — но не тает. Когда я просыпаюсь, в моей комнате собачий холод.",
+warmup:30,
+effects: {passion:1,dread:1,influencewinter:1},
+craftable: false
+},
+
+
+{id: "bytopentalk",
+label: "Обращение в неизвестность",
+actionId: "talk",
+startdescription:"Я отправлю письмо личности, упомянутой в том странном документе. У меня нет особых причин полагать, что в ответ меня просветят о случившемся раньше. Но, возможно, помогут с тем, что меня ждёт.",
+description: "Мой адресат говорит о Папе с уверенностью. Он знал, что умирает. Он надеялся перед смертью испытать неведомые наслаждения - запретные ради охраны общественного здравия. Адресат предлагает мне закончить начатое Папой; если я это сделаю, я могу спастись от отчаяния, висящего над моей семьёй.",
+effects: {poppyready:1,ascensionsensationa:1},
+warmup:60,
+craftable: false
+},
+
+
+]
+}

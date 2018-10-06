@@ -1,0 +1,153 @@
+﻿{"elements":
+    [
+      
+		 {
+            id: "ascensionpowera",
+            label: "Соблазн: Сила",
+            aspects:
+            {desire: 1,powermarks:1},
+            description: "Мне стало ясно, что я держу ключ к силе. [Эта карта позволит достичь победы Силы, если вы достаточно улучшите её. Сны о ней могут развить или сменить её.]"
+        },
+				 {
+            id: "ascensionsensationa",
+            label: "Соблазн: Чувственность",
+            aspects:
+            {desire: 1,sensationmarks:1},
+            description: "Я могу познать чувственные впечатления, столь сильные, что немногие способны их даже представить. [Эта карта позволит достичь победы Чувственности, если вы достаточно улучшите её. Сны о ней могут развить или сменить её.]"
+        },
+		 {
+            id: "ascensionenlightenmenta",
+            label: "Соблазн: Просветление",
+            aspects:
+            {desire: 1,enlightenmentmarks:1},
+            description: "Мне стало ясно, что я держу ключ к мудрости. [Эта карта позволит достичь победы Просветления, если вы достаточно улучшите её. Сны о ней могут развить или сменить её.]"
+        },
+				 {
+            id: "ascensionpowerb",
+            label: "Преданность: Сила",
+            aspects:
+            {desire: 2,powermarks:2},
+            description: "Я посвящаю себя достижению вечной силы, любой ценой. [Улучшайте эту карту дальше, чтобы шагнуть ближе к победе Силы. Мне надо войти в число истинных посвящённых Обители; мне надо Трудиться с аспектом Кузни, чтобы призвать Кузню Дней и начать изменение.]",
+			slots: [{id:"Know",label:"Чтец", actionId: "work", required: {waystag_after: 1}, description: "Только истинные посвящённые, Чтецы, могут сделать этот шаг. Чтецы — те, кто прошли за Оленью Дверь в снах."},
+			{id: "Power",label:"Мощь",actionId: "work", required: {forge:1},description: "Я потребую достаточно яростного расплава Кузни."}],
+			
+        },
+				 {
+            id: "ascensionsensationbm",
+            label: "Преданность: Чувственность",
+            aspects:
+            {desire: 2,sensationmarks:2},
+            description: "Я посвящаю себя вечной погоне за чувствами. [Улучшайте эту карту дальше, чтобы шагнуть ближе к победе Чувственности. Мне надо войти в число истинных посвящённых Обители; мне надо Трудиться с аспектом Чаши, чтобы мой вкус возбудил аппетит Алой Чаши.]",
+			slots: [{id:"Know",label:"Чтец",actionId: "work", required: {waystag_after: 1}, description: "Только истинные посвящённые, Чтецы, могут сделать этот шаг. Чтецы — те, кто прошли за Оленью Дверь в снах."},
+			{id:"Power",label:"Мощь", actionId: "work", required: {grail:1},description: "Я потребую достаточно изобильного притока из Чаши."}],
+			
+        },
+						 {
+            id: "ascensionsensationbf",
+            label: "Преданность: Чувственность",
+            aspects:
+            {desire: 2,sensationmarks:2},
+            description: "Я посвящаю себя вечной погоне за чувствами. [Улучшайте эту карту дальше, чтобы шагнуть ближе к победе Чувственности. Мне надо войти в число истинных посвящённых Обители; мне надо Трудиться с аспектом Чаши, чтобы мой вкус возбудил аппетит Алой Чаши.]",
+			slots: [{id:"Know",label:"Чтец",actionId: "work", required: {waystag_after: 1}, description: "Только истинные посвящённые, Чтецы, могут сделать этот шаг. Чтецы — те, кто прошли за Оленью Дверь в снах."},
+			{id:"Power",label:"Мощь", actionId: "work", required: {grail:1},description: "Я потребую достаточно изобильного притока из Чаши."}],
+			
+        },
+		 {
+            id: "ascensionenlightenmentb",
+            label: "Преданность: Просветление",
+            aspects:
+            {desire: 2,enlightenmentmarks:2},
+            description: "Я посвящаю себя поиску глубокого понимания. Мне надо увидеть скрытое под кожей, любой ценой. [Это — шаг к победе Просветления. Мне надо войти в число истинных посвящённых Обители; мне надо Трудиться с аспектом Лампады, чтобы открыться взгляду Дозорного.]",
+						slots: [{id:"Know",label:"Чтец",actionId: "work", required: {waystag_after: 1}, description: "Только истинные посвящённые, Чтецы, могут сделать этот шаг. Чтецы — те, кто прошли за Оленью Дверь в снах."},
+			{id:"Power",label:"Мощь", actionId: "work", required: {lantern:1},description: "I will require a token of the merciless light of the Mansus."}],
+        },
+		{
+		id:"ascensionpowerc",
+		label: "Восхождение: Сила",
+		aspects: {desire:3,powermarks:3},
+		xtriggers: {ascend:ascensionpowerd},
+		description:"Кузня запалила ответную искру в моей плоти. Я стремлюсь к жару огня. Ещё немного, и я начну зажигать пожары во сне. Как другие жаждут воды, так я жажду пламени. Я знаю — это Третий Знак."
+		},
+				{
+		id:"ascensionpowerd",
+		label: "Восхождение: Сила",
+		aspects: {desire:4,powermarks:4},
+		xtriggers: {ascend:ascensionpowere,descend:ascensionpowerc},
+		description:"Я с ног до головы в шрамах от ожогов, но с каждым разом им всё сложнее опалить мою плоть. Я начинаю привыкать к пламени, как драконы или камни. Это Четвёртый Знак."
+		},
+						{
+		id:"ascensionpowere",
+		label: "Восхождение: Сила",
+		aspects: {desire:5,powermarks:5},
+		xtriggers: {ascend:ascensionpowerf,descend:ascensionpowerd},
+		description:"Пятый Знак: на моём теле больше нет волос. Моя сила потрясает. Стоит мне отойти от источника огня, и я дрожу от холода."
+		},
+						{
+		id:"ascensionpowerf",
+		label: "Восхождение: Сила",
+		aspects: {desire:6,powermarks:6},
+		xtriggers: {descend:ascensionpowere},
+		description:"Мои конечности почти не гнутся. На теле не счесть шрамов. Я избегаю посторонних глаз. Я могу держать в ладони горящий уголь и не чувствовать ничего — кроме едва уловимого аромата и шипения на грани слуха. Это Шестой Знак."
+		},		
+				{
+		id:"ascensionsensationc",
+		label: "Восхождение: Чувственность",
+		aspects: {desire:3,sensationmarks:3},
+		xtriggers:{ascend:ascensionsensationd},
+		description:"Алая Чаша согрела меня. Её жажда осушает мой рот и щекочет мои руки. Я знаю — это Третий Знак."
+		},
+				{
+		id:"ascensionsensationd",
+		label: "Восхождение: Чувственность",
+		aspects: {desire:4,sensationmarks:4},
+		xtriggers:{ascend:ascensionsensatione,descend:ascensionsensationc},
+		description:"Четвёртый Знак — моя кожа улучшается отдельными пластами. Полосами, вдоль рук или вниз от бедер, она становится чистой, мягкой, сияющей, как кожа ребёнка, только что вышедшего на берег. Но лишь отдельными пластами."
+		},
+						{
+		id:"ascensionsensatione",
+		label: "Восхождение: Чувственность",
+		aspects: {desire:5,sensationmarks:5},
+		xtriggers:{ascend:ascensionsensationf,descend:ascensionsensationd},
+		description:"«Выступы и высыпания» — так ещё называют Пятый Знак. У меня выросли два новых пальца, и только один из них на руке. На сгибе колена — свищ, и если его нажимать, это приносит тихое удовольствие. Я думаю, выпуклость внизу моей спины — новый орган."
+		},
+						{
+		id:"ascensionsensationf",
+		label: "Восхождение: Чувственность",
+		aspects: {desire:6,sensationmarks:6},
+		xtriggers:{descend:ascensionsensatione},
+		description:"Шестой Знак — я выше на ширину руки. Я разрастаюсь всеми конечностями и во все стороны. Моя кожа — сияющий бархат. Ободки плоти окружают мои глаза. Я постоянно чувствую жажду."
+		},
+		
+				{
+		id:"ascensionenlightenmentc",
+		label: "Восхождение: Просветление",
+		aspects: {desire:3,enlightenmentmarks:3},
+		xtriggers:{ascend:ascensionenlightenmentd},
+		description:"Дозорный, он же Вход-в-Глаз, коснулся меня. С каждым днём моё любопытство растёт: это такая же физическая потребность, как утоление голода. Я знаю — это Третий Знак.."
+		},
+				{
+		id:"ascensionenlightenmentd",
+		label: "Восхождение: Просветление",
+		aspects: {desire:4,enlightenmentmarks:4},
+		xtriggers:{ascend:ascensionenlightenmente,descend:ascensionenlightenmentc},
+		description:"Четвёртый Знак — свет в моих глазах, но он очень слаб. Большинство способно увидеть его лишь при погасших лампах, или очень тёмными ночами; но когда я широко открываю глаза, свет протекает сильнее. Я истончаюсь."
+		},
+						{
+		id:"ascensionenlightenmente",
+		label: "Восхождение: Просветление",
+		aspects: {desire:5,enlightenmentmarks:5},
+		xtriggers:{ascend:ascensionenlightenmentf,descend:ascensionenlightenmentd},
+		description:"Пятый знак — свет протекает везде, где кожа ушиблена или содрана. Кожа начинает виснуть на моём теле, пока процесс разъедает плоть. Моё тело истощено и постоянно голодно."
+		},
+						{
+		id:"ascensionenlightenmentf",
+		label: "Восхождение: Просветление",
+		aspects: {desire:6,enlightenmentmarks:6},
+		xtriggers:{descend:ascensionenlightenmente},
+		description:"Свидетельство Шестого Знака — кожу между большим и указательным пальцем можно дотянуть до последней фаланги этого пальца. Моя кожа свисает очень свободно. Думаю, мои кости становятся мягче. Из моих глаз ушли человеческие цвета."
+		},
+	
+
+		
+]
+};

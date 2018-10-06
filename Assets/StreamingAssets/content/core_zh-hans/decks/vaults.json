@@ -1,0 +1,92 @@
+{"decks":
+    [
+	{id: "locationscapital",
+	label:"位于首都的藏匿地点",
+	description:"近在咫尺的某处",
+	spec:
+	["vaultcapital1",
+	"vaultcapital2",
+	"vaultcapital3",
+	"vaultcapital4"
+	],
+defaultcard: "vaultcapitaldefault",
+resetonexhaustion:false	
+	},
+		{id: "vaultsshires",
+	label:"位于各郡的藏匿地点",
+	description:"或许是个在偏远乡下待一天的机会",
+	spec:
+	["vaultshires1",
+	"vaultshires2",
+	"vaultshires3",
+	"vaultshires4"
+	],
+defaultcard: "vaultshiresdefault",
+resetonexhaustion:false	
+	},
+		{id: "vaultscontinent",
+		label:"大陆内的某处藏匿地点",
+	description:"在狭海彼岸的广阔大陆。",
+	spec:
+	["vaultcontinent1",
+	"vaultcontinent2",
+	"vaultcontinent3",
+	"vaultcontinent4"
+	],
+defaultcard: "vaultcontinentdefault",
+resetonexhaustion:false	
+	},
+	
+		{id: "vaultslandbeyondforest",
+		label:"位于森林之外的某处藏匿地点",
+	description:"世上动荡不安的地区充满了各种可能性。",
+	spec:
+	["vaultlandbeyondforest1",
+	"vaultlandbeyondforest2",
+	"vaultlandbeyondforest3",
+	"vaultlandbeyondforest4"
+	],
+defaultcard: "vaultlandbeyondforestdefault",
+resetonexhaustion:false	
+	},
+	
+		{id: "vaultsrendingmountains",
+		label:"位于撕心山脉的某处藏匿地点",
+	description:"偏远而危险的墓穴与寺庙",
+	spec:
+	["vaultrendingmountains1",
+	"vaultrendingmountains2",
+	"vaultrendingmountains3",
+	"vaultrendingmountains4"
+	],
+defaultcard: "vaultrendingmountainsdefault",
+resetonexhaustion:false	
+	},
+	
+			{id: "vaultsloneandlevelsands",
+				label:"位于平寂沙地的某处藏匿地点",
+	description:"这里埋藏着古老的宝藏，能者据之。",
+	spec:
+	["vaultloneandlevelsands1",
+	"vaultloneandlevelsands2",
+	"vaultloneandlevelsands3",
+	"vaultloneandlevelsands4"
+	],
+defaultcard: "vaultloneandlevelsandsdefault",
+resetonexhaustion:false	
+	},
+	
+				{id: "vaultseveningisles",
+					label:"位于寂夜岛屿的某处藏匿地点",
+	description:"午港范围内某处未标记的小岛。",
+	spec:
+	["vaulteveningisles1",
+	"vaulteveningisles2",
+	"vaulteveningisles3",
+	"vaulteveningisles4"
+	],
+defaultcard: "vaulteveningislesdefault",
+resetonexhaustion:false	
+	},
+	]
+}

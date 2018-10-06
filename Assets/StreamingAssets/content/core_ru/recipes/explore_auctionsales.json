@@ -1,0 +1,135 @@
+﻿ {"recipes": [
+ 	{
+        id: "auctionentry6",
+        label: "Продажа чего-то великой ценности",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:6},
+        effects: {funds:20},
+	linked:[{id:"auctionsell_increasegrand",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "Мало кто из покупателей в «Орифламме» изучает незримые искусства. Но даже непрофессионал поймёт, что перед ним нечто невероятное. [Продавайте с осторожностью. Товар уходит безвозвратно.]",
+        warmup:30,
+        craftable: true
+    },
+		 	{
+        id: "auctionentry5",
+        label: "Продажа крайне примечательной редкости",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:5},
+        effects: {funds:16},
+	linked:[{id:"auctionsell_increasemajor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "Мало кто из покупателей в «Орифламме» изучает незримые искусства. Они приобретают инструменты силы как трофеи или редкости, не представляя их истинной цены. Но это несомненная редкость. [Продавайте с осторожностью. Товар уходит безвозвратно.]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry4",
+        label: "Продажа чего-то значительной редкости",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:4},
+        effects: {funds:8},
+	linked:[{id:"auctionsell_increasemajor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "Мало кто из покупателей в «Орифламме» изучает незримые искусства. Они приобретают инструменты силы как трофеи или редкости, не представляя их истинной цены. Но это привлечёт их внимание. [Продавайте с осторожностью. Товар уходит безвозвратно.]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry3",
+        label: "Продажа чего-то действительно ценного",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:3},
+        effects: {funds:4},
+	linked:[{id:"auctionsell_increaseminor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "Этот необычный предмет явно принесёт вам весомые средства. [Продавайте с осторожностью. Товар уходит безвозвратно.]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry2",
+        label: "Продажа чего-то небезынтересного",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:2},
+        effects: {funds:2},
+	linked:[{id:"auctionsell_increaseminor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "Этот необычный предмет можно обратить в средства. [Продавайте с осторожностью. Товар уходит безвозвратно.]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry1",
+        label: "Продажа чего-то минимальной ценности",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:1},
+        effects: {funds:1},
+	linked:[{id:"auctionsell_increasepetty",chance:30},
+	{id:"auctionsell_worthless",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "Эта причудливая вещичка, возможно, чего-то стоит, но уверенности нет.",
+        warmup:30,
+        craftable: true
+    },
+				  		{
+        id: "auctionsell_worthless",
+        label: "Аукцион: ни у кого ни малейшего интереса",
+        actionId: "explore",
+		startdescription: "Никто не впечатлён. Молоток аукциониста опустился. Мой товар продан, но за настолько смехотворную сумму, что её даже не стоит записывать.",
+				linked:[{id:"auctioncleanup",chance:100}],
+		 effects:{funds:-99,auctionable:-99},
+        warmup:30,
+    },
+	  		{
+        id: "auctionsell_increasepetty",
+        label: "Аукцион: шёпот среди зрителей",
+        actionId: "explore",
+		startdescription: "По какой-то странной причине мой товар привлёк интерес покупателей.",
+		linked:[{id:"auctioncleanup",chance:100}],
+		 effects:{funds:1},
+        warmup:30,
+    },
+
+		  		{
+        id: "auctionsell_increaseminor",
+        label: "Аукцион: покупатели вовлечены",
+        actionId: "explore",
+		startdescription: "Некоторые зрители поднялись на ноги. Напряжение растёт.",
+				linked:[{id:"auctioncleanup",chance:100}],
+		 effects:{funds:2},
+        warmup:30,
+    },
+			  		{
+        id: "auctionsell_increasemajor",
+        label: "Аукцион: крики восторга",
+        actionId: "explore",
+		startdescription: "Аукционисту приходится поднять голос, чтобы перекрыть шум толпы.",
+				linked:[{id:"auctioncleanup",chance:100}],
+	 effects:{funds:4},
+        warmup:30,
+    },
+					  		{
+        id: "auctionsell_increasegrand",
+        label: "Аукцион: дуэль между покупателями",
+        actionId: "explore",
+		startdescription: "Два богатых коллекционера пристально смотрят на аукциониста, подтверждая намерения короткими кивками. Не считая степенного голоса аукциониста, комната погружена в полное молчание.",
+		 effects:{funds:8},
+		 linked:[{id:"auctioncleanup",chance:100}],
+        warmup:30,
+    },
+
+
+		  		{
+        id: "auctioncleanup",
+        label: "Аукцион окончен",
+        actionId: "explore",
+		description: "Молоток аукциониста опустился. Мой товар продан.",
+		 effects:{auctionable:-99},
+        warmup:0,
+    },
+	
+ 	
+
+]
+}

@@ -1,0 +1,683 @@
+{"elements":
+    [
+	          {
+        id: "dehoris1latin",
+            unique:true, label: "《时枢志·卷一》",
+            aspects:{text:1,auctionable:1,textlatin:1},
+            description: "拉丁语著。四世纪书籍在十四世纪被翻译成拉丁语后在十九世纪的重印本。",
+			xtriggers: {scholarlatin: dehoris1}
+        },
+			          {
+        id: "dehoris2latin",
+            unique:true, label: "《时枢志·卷二》",
+            aspects:
+            {text:1,auctionable:1,textlatin:1},
+            description: "拉丁语著。四世纪书籍在十四世纪被翻译成拉丁语后在十九世纪的重印本。",
+			xtriggers: {scholarlatin: dehoris2}
+        },
+
+		{id:"debellismurorumlatin",
+		unique:true, label:"《壁面战争》",
+		aspects: {text:1,auctionable:1,textlatin:1},
+		description:"拉丁语著。十八世纪史诗，作者化名为“索利浦西斯托斯”。",
+		xtriggers: {scholarlatin:debellismurorum}},
+		
+		{id:"onwhatiscontainedbysilvergreek",
+		unique:true, label:"《银镜之内》",
+		aspects: {text:1,auctionable:1,textgreek:1},
+		description:"“波曼德”所作的动物寓言集。希腊语著。",
+			xtriggers: {scholargreek: onwhatiscontainedbysilver}},
+		{id:"truecompleteasclepiangreek",
+		unique:true, label:"《对居所之根基的阿斯克利庇之谜真实而完整的记述》",
+		aspects: {text:1,auctionable:1,textgreek:1},
+		description:"一位名为“李利·格里斯”的人所作的一部——据推测——历史久远的文献的复制本。希腊语著。",
+			xtriggers: {scholargreek: truecompleteasclepian}},
+
+				 {
+        id: "orchidtransfigurations1latin",
+            unique:true, label: "《兰花变容·卷一》",
+            aspects:
+            {text:1,auctionable:1,textlatin:1},
+            description: "因罗伯特·福路德而产生的十六世纪炼金热，经常因其插图令人意乱神迷而被禁。原为拉丁语著。",
+			xtriggers: {scholarlatin: orchidtransfigurations1}
+        },
+		 {       id: "orchidtransfigurations2latin",
+            unique:true, label: "《兰花变容·卷二》",
+            aspects:
+            {text:1,auctionable:1,textlatin:1},
+            description: "因罗伯特·福路德而产生的十六世纪炼金热，经常因其插图令人意乱神迷而被禁。原为拉丁语著。",
+			xtriggers: {scholarlatin: orchidtransfigurations2}
+        },
+		 {       id: "orchidtransfigurations3latin",
+            unique:true, label: "《兰花变容·卷三》",
+            aspects:
+            {text:1,auctionable:1,textlatin:1},
+            description: "因罗伯特·福路德而产生的十六世纪炼金热，经常因其插图令人意乱神迷而被禁。原为拉丁语著。",
+			xtriggers: {scholarlatin: orchidtransfigurations3}
+        },
+						 {
+        id: "geminiadfucine",
+            unique:true, label: "《双子之神》",
+            aspects:
+            {knock: 2,tool:1,text:1,auctionable:1,textfucine:1},
+			xtriggers: {scholarfucine: geminiad},
+            description: "一份脆弱易破的手抄书，记载了一对同体双生、光彩照人的忧郁美人形象和完整的月相。本书或许同第七世纪一样古老，但书中所用的语言——富奇诺语——则更加古老。书的封面由珊瑚装饰，书页的边缘十分锐利，足以割破咽喉。"
+        },
+
+							 {
+        id: "textbookfucinelatin",
+            unique:true, label: "《亚莱桑卓·拉克罗切的加密日记》",
+            aspects:
+            {text:1,auctionable:1,textlatin:1},
+            description: "亚莱桑卓·拉克罗切亲王耗费多年时间暗中钻研从意大利中部富奇诺沼泽中获得的碑文。阅读他的日记能让你学会解读富奇诺语……但日记是以一种简单的拉丁语密码写成的。你需要先破译它。",
+			xtriggers: {scholarlatin: textbookfucine}
+        },	
+		
+									 {
+        id: "textbookphrygiangreek",
+            unique:true, label: "《维尔朔恩铭文》",
+            aspects:
+            {text:1,auctionable:1,textgreek:1},
+            description: "抄自一面墙壁的数以百行希腊语与对应的弗里吉亚语诗歌。类似于——甚至完全同于——在哈利卡纳苏斯发现的卡尔·维尔朔恩·碑文。[如果你已掌握希腊语，可藉此物学习弗里吉亚语。]",
+			xtriggers: {scholargreek: textbookphrygian}
+        },	
+											 {
+        id: "textbookmandaicaramaic",
+            unique:true, label: "奥古斯特石",
+            aspects:
+            {text:1,auctionable:1,textaramaic:1},
+            description: "硕大的碗状物，尺寸与锣相当，由黑色的玄武岩雕刻而成，铭有亚拉姆语与曼达安语的咒文。[如果你已掌握亚拉姆语，可藉此物学习曼达安语。]",
+			xtriggers: {scholararamaic: textbookmandaic}
+        },	
+		
+											 {
+        id: "textbookvaksanskrit",
+            unique:true, label: "神秘雕塑",
+            aspects:
+            {text:1,auctionable:1,textsanskrit:1},
+            description: "一尊纹饰繁复到令人难以置信的象牙雕像。雕像表面螺旋交错地盘绕着梵语与对应的神代语的铭文。[如果你已掌握梵语，可藉此物学习神代语——世界最初的语言。]",
+			xtriggers: {scholarsanskrit: textbookvak}
+        },	
+		
+		
+								 {
+        id: "irreproachabletraditionssocietynobleendeavourlatin",
+            unique:true, label: "《高贵进步者团体……》",
+            aspects:
+            {text:1,auctionable:2,textlatin:1},
+            description: "《高贵进步者团体那完美无瑕的传统》。拉丁语著。",
+			xtriggers: {scholarlatin: irreproachabletraditionssocietynobleendeavour}
+        },						 {
+        id: "roseofnurielgreek",
+            unique:true, label: "《努瑞尔教本》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "标有一秘传的默观修会，通称结绳姐妹会的三倍形标记。希腊语著。",
+			xtriggers: {scholargreek: roseofnuriel}
+        },						 {
+        id: "roseofhypatiagreek",
+            unique:true, label: "《希帕提娅教本》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "标有一秘传的默观修会，通称结绳姐妹会的三倍形标记。希腊语著。",
+			xtriggers: {scholargreek:roseofhypatia }
+        },						 {
+        id: "roseofwazneigreek",
+            unique:true, label: "《华兹内教本》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "标有一秘传的默观修会，通称结绳姐妹会的三倍形标记……但多了第四片叶子，整个标志被破坏了。希腊语著。",
+			xtriggers: {scholargreek:roseofwaznei }
+        },						 {
+        id: "sunsetpassageslatin",
+            unique:true, label: "《日落之路》",
+            aspects:
+            {text:1,auctionable:2,textlatin:1},
+            description: "不破之日教会的经文，该教会在许多历史中被迫转入地下。拉丁语著。",
+			xtriggers: {scholarlatin: sunsetpassages}
+        },						 {
+        id: "gospelzacchaeusgreek",
+            unique:true, label: "《撒该的福音》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "失落的基督教早期文献？以希腊语书写。",
+			xtriggers: {scholargreek:gospelzacchaeus }
+        },						 {
+        id: "matthiasamethystlossaramaic",
+            unique:true, label: "《论马蒂亚斯与紫晶虫：缺失》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "里面的插图和图样，在几个世纪后依然优美精致，催人困意，偶尔还催人肉欲。亚拉姆语著。",
+			xtriggers: {scholararamaic: matthiasamethystloss}
+        },						 {
+        id: "matthiasamethysttransformationaramaic",
+            unique:true, label: "《论马蒂亚斯与紫晶虫：嬗变》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "里面的插图和图样，在几个世纪后依然优美精致，催人困意，偶尔还催人肉欲。亚拉姆语著。",
+			xtriggers: {scholararamaic:matthiasamethysttransformation }
+        },						 {
+        id: "matthiasamethystpursuitaramaic",
+            unique:true, label: "《论马蒂亚斯与紫晶虫：追寻》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "里面的插图和图样，在几个世纪后依然优美精致，催人困意，偶尔还催人肉欲。亚拉姆语著。",
+			xtriggers: {scholararamaic: matthiasamethystpursuit}
+        },						 {
+        id: "franklinbancroftdiarieslatin",
+            unique:true, label: "《富兰克林·班克罗夫特勋爵1750-1790年间的日记》",
+            aspects:
+            {text:1,auctionable:2,textlatin:1},
+            description: "一名臭名昭著的绅士所写的臭名昭著的日记，使用拉丁语写成，无疑是为了安全起见。",
+			xtriggers: {scholarlatin: franklinbancroftdiaries}
+        },						 {
+        id: "indignitiesobliviatelatin",
+            unique:true, label: "《惯于欺瞒的遗忘互助会所造成的种种侮辱伤害》",
+            aspects:
+            {text:1,auctionable:2,textlatin:1},
+            description: "这本书同时以其语调中近乎语无伦次的愤怒，以及它所包含的知识而闻名。拉丁语著。",
+			xtriggers: {scholarlatin:indignitiesobliviate }
+        },						 {
+        id: "furioustantrasanskrit",
+            unique:true, label: "《狂怒密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "由传媒业者和烟火技师雅各布·奥利弗·拓普马格斯通所抄写。据说原文是雷电在一颗橡树的树皮上烧灼而成，后被他发现。",
+			xtriggers: {scholarsanskrit: furioustantra}
+        },						 {
+        id: "devouredtantrasanskrit",
+            unique:true, label: "《暴食密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "外交官兼牧师斯坦尼斯拉夫·约翰·司考勒从某位赤杯长生者的藏馆中抄来了此书。不过，这份手稿现在成了凯里夏姆某人的私藏。",
+			xtriggers: {scholarsanskrit: devouredtantra}
+        },						 {
+        id: "ceaselesstantrasanskrit",
+            unique:true, label: "《无间密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "先锋派舞蹈编排家尼古拉斯·基尔气势汹汹的芭蕾舞中据说编入了此密宗。",
+			xtriggers: {scholarsanskrit:ceaselesstantra }
+        },						 {
+        id: "knownunknowntantrasanskrit",
+            unique:true, label: "《知不知密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "卡洛斯·加西亚·绍里，比利牛斯山中痴狂的神秘主义者，以会用三种语言背诵本书闻名，尽管他从未造访过印度次大陆。",
+			xtriggers: {scholarsanskrit:knownunknowntantra }
+        },						 {
+        id: "encirclingtantrasanskrit",
+            unique:true, label: "《环抱密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "探索家兼商业家T.艾佛里特·杜普兰提斯曾经试图劫掠这篇经文所在的寺庙。他的命运被记载在了附录里。",
+			xtriggers: {scholarsanskrit: encirclingtantra}
+        },						 {
+        id: "shavenlocktantrasanskrit",
+            unique:true, label: "《剃度密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "也被称为“剃发之人”。据说，连善于变形的瓦那拉都不承认里面的知识。",
+			xtriggers: {scholarsanskrit: shavenlocktantra}
+        },						 {
+        id: "tantrawormssanskrit",
+            unique:true, label: "《虫之密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "昆虫学家朱莉安娜·萨斯托斯基最后坚持认为这本书是由寄宿在人类体内的昆虫所写的。她从来没有为她的说法提供过证据。",
+			xtriggers: {scholarsanskrit: tantraworms}
+        },
+		{
+        id: "bookofcentipedegreek",
+            unique:true, label: "《蜈蚣之书》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "1860年代中期，某位“伊女士”曾展示过一种娱乐方式，她宣称来自本书。",
+			xtriggers: {scholargreek: bookofcentipede}
+        },
+		{
+        id: "accountkanishkspidersdooraramaic",
+            unique:true, label: "《迦腻色伽在蜘蛛之门前的解释》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "这份记录的作者是洛克·卡胡利，受迦腻色伽所害者兼他的恋人，也许是在死后写下。",
+			xtriggers: {scholararamaic: accountkanishkspidersdoor}
+        },      
+		{
+        id: "vinzantinscriptionsphrygian",
+            unique:true, label: "《文赞特铭文》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "埃弗瑞特·文赞特从安纳托利亚的一处悬崖抄来了这些用弗里吉亚语书写的铭文。在那里，他被闪电击中后依然幸存的事件广为流传。七年后的同一天，他死去了。传说，在他死后，他的骨头仍然火热。",
+			xtriggers: {scholarphrygian: vinzantinscriptions}
+        },
+		{
+        id: "larquebinecodexphrygian",
+            unique:true, label: "《拉克比写本》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "克里斯托弗·拉克比声称自己从马尔马拉海岸的一个女巫家庭买到了两本以理应断绝的弗里吉亚语手写的复制本。第三本“献给了大海”。",
+			xtriggers: {scholarphrygian: larquebinecodex}
+        },
+		{
+        id: "againstsisterhoodknotgreek",
+            unique:true, label: "《结绳姐妹会与……》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "《结绳姐妹会与其堕落习俗之批判》。“伪寻爱绮梦式”耶罗尼米斯写下了这篇狂怒的长篇大论，抨击结绳姐妹会对他所在的不破之日教会的邪恶影响。",
+			xtriggers: {scholargreek: againstsisterhoodknot}
+        },
+		{
+        id: "morphycodexaramaic",
+            unique:true, label: "《墨菲写本》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "结绳姐妹会的文献，由埃文·墨菲发掘。",
+			xtriggers: {scholararamaic: morphycodex}
+        },
+		{
+        id: "leoninetantrasanskrit",
+            unique:true, label: "《狮子密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "在最为臭名昭著的《狮子密宗》的译本中，阿什利·菲利普斯被列为翻译者，但是书的序言明确否定译者的存在。这种令人困惑之处是提及扁颈贵胄的书籍的特点。",
+			xtriggers: {scholarsanskrit: leoninetantra}
+        },
+		{
+        id: "incandescenttantrasanskrit",
+            unique:true, label: "《炽热密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "为人古怪的钢铁大亨麦克·布洛克利喜欢引用这部密宗经文中的段落。他死于工厂火灾。",
+			xtriggers: {scholarsanskrit: incandescenttantra}
+        },
+		{
+        id: "thirstingtantrasanskrit",
+            unique:true, label: "《干渴密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "C.G.布里尔，禁酒运动提倡者，在一个小册子里刊登了该密宗经文的部分内容。当这本小册子变得过于流行时，人们不得将其回收销毁。",
+			xtriggers: {scholarsanskrit: thirstingtantra}
+        },
+		{
+        id: "flayedtantrasanskrit",
+            unique:true, label: "《剥皮密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "这本密宗在记载中是由一个自称“剥皮人”的神秘人物口述的，介绍了神话中的那伽大蛇的很多习性。剥皮密宗在亚历山大·斯派洛斯写的充满偏执妄想的小册子里占很大比重。",
+			xtriggers: {scholarsanskrit: flayedtantra}
+        },
+		{
+        id: "watchfultantrasanskrit",
+            unique:true, label: "《警觉密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "因为与达菲德·乔纳斯和梅勒迪斯·布莱尼的死亡有关而闻名。1840年，这两位早期的物理学家都称只有自己拥有该书唯一的一本，最终引发了一场决斗。",
+			xtriggers: {scholarsanskrit: watchfultantra}
+        },
+		{
+        id: "twinserpenttantrasanskrit",
+            unique:true, label: "《孪蛇密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "特别晦涩的密宗文经。",
+			xtriggers: {scholarsanskrit: twinserpenttantra}
+        },
+		{
+        id: "firecircletantrasanskrit",
+            unique:true, label: "《火环密宗》",
+            aspects:
+            {text:1,auctionable:2,textsanskrit:1},
+            description: "西欧已知现存的唯一一本在1892年被人从英国图书馆偷走了。一个叫做哈维·哈丁顿的人承认这是自己的犯行，并自称已在无法控制的奇异冲动下，就着黄油和大蒜吃掉了这本书。",
+			xtriggers: {scholarsanskrit: firecircletantra}
+        },
+		{
+        id: "asthesunhiscoursearamaic",
+            unique:true, label: "《其躔如日》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "大桥上的乔伊，一位退休的士兵，偶尔会去当收费员。他写下了这首传奇诗，内容是亚历山大在与阿契美尼德王朝的战争中，在伊苏斯做出的无法解释的撤退决定，以及在那之后回到马其顿的行为。",
+			xtriggers: {scholararamaic: asthesunhiscourse}
+        },
+		{
+        id: "concursumdiariesphrygian",
+            unique:true, label: "《聚点日志》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "探险家及杀人犯，拉斯·韦斯特格伦的日志。不巧的是，他为了防人耳目将其翻译成了弗里吉亚语。",
+			xtriggers: {scholarphrygian: concursumdiaries}
+        },
+		{
+        id: "ironbookfucine",
+            unique:true, label: "《铁之书》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "河泽教团的指南书。该教团由类不死者构成，他们占据了罗马行省加拉埃西亚，里利马河源头的一块隐秘的飞地。",
+			xtriggers: {scholarfucine: ironbook}
+        },
+		{
+        id: "silverbookfucine",
+            unique:true, label: "《银之书》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "河泽教团的指南书。该教团由类不死者构成，他们占据了罗马行省加拉埃西亚，里利马河源头的一块隐秘的飞地。",
+			xtriggers: {scholarfucine: silverbook}
+        },
+		{
+        id: "ivorybookfucine",
+            unique:true, label: "《象牙之书》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "河泽教团的指南书。该教团由类不死者构成，他们占据了罗马行省加拉埃西亚，里利马河源头的一块隐秘的飞地。",
+			xtriggers: {scholarfucine: ivorybook}
+        },
+		{
+        id: "worlddoesnotweeparamaic",
+            unique:true, label: "《世界从不落泪》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "“棕色的” 约书亚在哈马斯的一口井里找到了它。虽然不太可能，但传说中这本书是亚历山大大帝在从伊苏斯撤退时遗弃的。",
+			xtriggers: {scholararamaic: worlddoesnotweep}
+        },
+		{
+        id: "deedsofthescarredcaptaingreek",
+            unique:true, label: "《刀疤船长事迹录》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "由靠做雇佣兵，也有时靠家里汇钱过活的帕威尔·舒格在希腊生活时煞费苦心地收集成书。",
+			xtriggers: {scholargreek: deedsofthescarredcaptain}
+        },
+		{
+        id: "bookofdissolutionmandaic",
+            unique:true, label: "《解离之书》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "亚历山大·普罗布斯特，在杰·威格斯沃斯·金森的基础上，修复了一本存于波斯某山中寺庙的本书。本书在其他地方也时有发现，通常是烙刻在石头上。",
+			xtriggers: {scholarmandaic: bookofdissolution}
+        },
+		{
+        id: "catalogueofunchartedpleasuresphrygian",
+            unique:true, label: "《异趣集》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "“黑暗绅士”是这本抄本众多的书唯一被指认出的，而且指认时相当大张旗鼓的作者。",
+			xtriggers: {scholarphrygian: catalogueofunchartedpleasures}
+        },
+		{
+        id: "thosewhodonotsleepfucine",
+            unique:true, label: "《不眠者》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "涉及神秘学的富奇诺语文献，署名是布罗德纳克斯。",
+			xtriggers: {scholarfucine: thosewhodonotsleep}
+        },
+		{
+        id: "theskythesoularamaic",
+            unique:true, label: "《天空与灵魂》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "卡勒的大作，一首写于无影列王的宫廷的禁欲主义诗歌。",
+			xtriggers: {scholararamaic: theskythesoul}
+        },
+		{
+        id: "onthematterandthedeedsofserpentsvak",
+            unique:true, label: "《巨蛇事迹考察》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "这大概是”那迦大蛇的预言“的英语版，由”威廉·米德奈特“在1880年代于巴黎配图，但是他和那本书又有一些不同之处。从神代语的版本来看，它的年代显然更加近一些。",
+			xtriggers: {scholarvak: onthematterandthedeedsofserpents}
+        },
+		{
+        id: "serenityofblackwoodgreek",
+            unique:true, label: "《黑林地的静谧》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+            description: "一本关于遗忘家族的寓言式的历史，暗示这个组织受到了蜈蚣的启发。时至如今，“塞雷诺·布莱克伍德（意为静谧黑林地）”一直是对密教的别称。",
+			xtriggers: {scholargreek: serenityofblackwood}
+        },
+		{
+        id: "bookofthronesphrygian",
+            unique:true, label: "《王座之书》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "一本无影帝国的传奇故事，由亚历山大·彼得汉斯抄录自安纳托利亚的一个隐秘神庙的年志。",
+			xtriggers: {scholarphrygian: bookofthrones}
+        },{
+        id: "secondglorymandaic",
+            unique:true, label: "《第二光》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "由尤赛，一名牧师兼隐世的学者所作。",
+			xtriggers: {scholarmandaic: secondglory}
+        },
+		{
+        id: "bookoftruebloodlatin",
+            unique:true, label: "《真血之书》",
+            aspects:
+            {text:1,auctionable:2,textlatin:1},
+            description: " 由圣多默派教徒卡西乌斯所作。",
+			xtriggers: {scholarlatin: bookoftrueblood}
+        },
+		{
+        id: "burningwomanphrygian",
+            unique:true, label: "《燃烧的女人》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "一部译为弗里吉亚语的戏剧抄本，带评注。署名是“胜利者”米南德，或许是这个剧本的剧作家。",
+			xtriggers: {scholarphrygian: burningwoman}
+        },
+		{
+        id: "twentysixenticementsseventormentsfucine",
+            unique:true, label: "《二十六种诱惑与七类苦痛》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "画家尼尔斯·弗雷德利克·马斯卡萨曾经做过一件臭名远扬的事：他试图以这些苦痛为主题绘画。当创作到第五种苦痛的时候，他绘画的欲望变得如此激烈，以至于因失血过多而死。所幸这本书里的插图不很详尽。",
+			xtriggers: {scholarfucine: twentysixenticementsseventorments}
+        },
+		
+		{
+        id: "historyofshadowlesskingsaramaic",
+            unique:true, label: "《真实准确的无影列王史》",
+            aspects:
+            {text:1,auctionable:2,textaramaic:1},
+            description: "卡斯的伊萨克所写的，无影帝国的历史。",
+			xtriggers: {scholararamaic: historyofshadowlesskings}
+        },
+
+				{
+        id: "highmysterieschurchsolarfucine",
+            unique:true, label: "《太阳神教核心……》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "《太阳神教核心厅室之极密》记载了不破之日教会的秘密仪式，该教至少在两个历史上掌握过权势。",
+			xtriggers: {scholarfucine: highmysterieschurchsolar }
+        },
+
+				{
+        id: "medusaslamentgreek",
+            unique:true, label: "《美杜莎的哀诗》",
+            aspects:
+            {text:1,auctionable:2,textgreek:1},
+                       description: "写于时枢神七蟠，又称“父亲的母亲”死亡之时。",
+			xtriggers: {scholargreek: medusaslament}
+        },
+
+				{
+        id: "bookofmasksphrygian",
+            unique:true, label: "《面具之书》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "雅典娜·凡娜对被称为“流浪者”的浪荡时枢神的研究手记。",
+			xtriggers: {scholarphrygian: bookofmasks}
+        },
+
+				{
+        id: "inthemountainsasupontheplainvak",
+            unique:true, label: "《山中亦如平地……》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "《山中亦如平地，许无前人未达之途》，作者是拉格什的宁阿伽娜。",
+			xtriggers: {scholarvak: inthemountainsasupontheplain}
+        },
+
+				{
+        id: "memoryofgodsfucine",
+            unique:true, label: "《诸神纪》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description:  "作者是“坟茔之子”，一位无名的高卢人学徒，曾加入名为河泽教团的组织。",
+			xtriggers: {scholarfucine: memoryofgods}
+        },
+
+				{
+        id: "sevenfoldslayingsevencoiledfucine",
+            unique:true, label: "《七蟠之七斩》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "记录了远古时枢神，一名石源之神的毁灭。",
+			xtriggers: {scholarfucine: sevenfoldslayingsevencoiled}
+        },
+
+				{
+        id: "bighufffucine",
+            unique:true, label: "《我的事迹、我的力量、我的成就……》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "《我的事迹、我的力量、我的成就以及我所面临的不公》",
+			xtriggers: {scholarfucine: bighuff}
+        },
+
+				{
+        id: "dreamconspiracyskiesphrygian",
+            unique:true, label: "《低空阴谋之梦》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "由遭谪的先知达马翁·阿谮那滕筛选蒐集而成。",
+			xtriggers: {scholarphrygian: dreamconspiracyskies}
+        },
+
+				{
+        id: "bookwhitecatphrygian",
+            unique:true, label: "《白猫之书》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "戈尔迪翁的佩涅罗佩从一只瞎眼白猫那里得到的故事。",
+			xtriggers: {scholarphrygian: bookwhitecat}
+        },
+
+				{
+        id: "focusambermandaic",
+            unique:true, label: "《论混源神》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "“炽焰”奥马尔的苦修录。",
+			xtriggers: {scholarmandaic: focusamber}
+        },
+
+				{
+        id: "songscarapacecrossmandaic",
+            unique:true, label: "《壳种之歌》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "一部时遭损毁的著作，作者是米卡·西。",
+			xtriggers: {scholarmandaic: songscarapacecross}
+        },
+						{
+        id: "originsofhoursvak",
+            unique:true, label: "《时枢神之源》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "一本用伐伽语写的书，里面可能含有关于隐秘的神明的不同起源的传闻。",
+			xtriggers: {scholarvak: originsofhours}
+        },
+						{
+        id: "wherehasshegonevak",
+            unique:true, label: "《她在何方？》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "一本用伐伽语写的书，讨论了“流浪者”的足迹。",
+			xtriggers: {scholarvak: wherehasshegone}
+        },
+						{
+        id: "bookextinguishedheartmandaic",
+            unique:true, label: "《寂灭之心》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "一本伤感预言之书。",
+			xtriggers: {scholarmandaic: bookextinguishedheart}
+        },
+						{
+        id: "howendwillbeginvak",
+            unique:true, label: "《结局如何开始》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "一本惨淡预言之书。",
+			xtriggers: {scholarvak: howendwillbegin}
+        },
+						{
+        id: "manneralchemistsparedvak",
+            unique:true, label: "《炼金术师幸存之法》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "一本类炼金术文献，用伐伽语写成。",
+			xtriggers: {scholarvak: manneralchemistspared}
+        },
+						{
+        id: "fivecreationsvak",
+            unique:true, label: "《五大起源》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "游学者肖黑讨论了五种可能的人类起源，并佐以一个带着头罩的，据他后来所称是“滩鸦”的形象。他在之后又声称那些解释全部是错误的，但是讨论本身还是被记录了下来。",
+			xtriggers: {scholarvak: fivecreations}
+        },
+						{
+        id: "commandspreservationallexistsmandaic",
+            unique:true, label: "《关于保存一切事物……》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "《关于保存一切事物的教令》。作者布莱克·艾丽为大马士革结绳姐妹会的女首领，被罗马皇帝提督斯·尤利安努斯所囚禁。据记载，她曾命人将这些秘密的教条记录成书，以保姐妹会的事物的不遭遗失。令人遗憾的是，据说提督斯·尤利安努斯将这本书和她一起葬在了一个没有标记的墓室里。",
+			xtriggers: {scholarmandaic: commandspreservationallexists}
+        },
+						{
+        id: "timedivisionmandaic",
+            unique:true, label: "《分裂之时》",
+            aspects:
+            {text:1,auctionable:2,textmandaic:1},
+            description: "阿米拉·扎拉预言了后来被人们称为“置闰”的事件： 时枢神骄阳遭到分裂。",
+			xtriggers: {scholarmandaic: timedivision}
+        },
+						{
+        id: "manualdeparturevak",
+            unique:true, label: "《脱身指南》",
+            aspects:
+            {text:1,auctionable:2,textvak:1},
+            description: "作者自称为杰卡杜，号称自己河流之地的扁颈贵胄之一。",
+			xtriggers: {scholarvak: manualdeparture}
+        },
+						{
+        id: "birdsongphrygian",
+            unique:true, label: "《伊纳姆，卡皮吉吉努皮尔，加尔基，克雷皮斯》",
+            aspects:
+            {text:1,auctionable:2,textphrygian:1},
+            description: "这本书中的四个神秘人物讲述了他们在“巢穴”，那些鸟型时枢神的聚集地，听到的故事。",
+			xtriggers: {scholarphrygian: birdsong}
+        },
+						{
+        id: "voyagesfofucine",
+            unique:true, label: "《奥莱尔的斐宁舜之远航记》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "一位晚腓尼基时期的船长的不可思议的旅行。在有记录的历史中遭到封锁：那些读过的人据说都失踪了。",
+			xtriggers: {scholarfucine: voyagesfo }
+        },
+						{
+        id: "scarskyfucine",
+            unique:true, label: "《天之伤》",
+            aspects:
+            {text:1,auctionable:2,textfucine:1},
+            description: "作者“宁”在写下本书后追悔不迭。",
+			xtriggers: {scholarfucine: scarsky }
+        },
+
+]
+};

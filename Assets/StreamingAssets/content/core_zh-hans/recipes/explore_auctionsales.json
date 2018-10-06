@@ -1,0 +1,135 @@
+ {"recipes": [
+ 	{
+        id: "auctionentry6",
+        label: "出售很有价值的东西",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:6},
+        effects: {funds:20},
+	linked:[{id:"auctionsell_increasegrand",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "奥瑞福莱姆拍卖行的顾客里几乎没有无形之仪的研究者。但即使是外行人也会承认这是件非同寻常的东西。 [谨慎出售。无法回购。]",
+        warmup:30,
+        craftable: true
+    },
+		 	{
+        id: "auctionentry5",
+        label: "出售有稀有价值的东西",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:5},
+        effects: {funds:16},
+	linked:[{id:"auctionsell_increasemajor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "奥瑞福莱姆拍卖行的顾客里几乎没有无形之仪的研究者。 他们会把力量媒介当成纪念品或者奇珍异宝买回去，却不会意识到它们的真正价值。但这件东西显然是稀有品。[谨慎出售。无法回购。]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry4",
+        label: "出售有重要价值的东西",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:4},
+        effects: {funds:8},
+	linked:[{id:"auctionsell_increasemajor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "奥瑞福莱姆拍卖行的顾客里几乎没有无形之仪的研究者。 他们会把力量媒介当成纪念品或者奇珍异宝买回去，却不会意识到它们的真正价值。但这件东西会引起他们的注意。[谨慎出售。无法回购。]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry3",
+        label: "出售有真正价值的东西",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:3},
+        effects: {funds:4},
+	linked:[{id:"auctionsell_increaseminor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "这件不同寻常的东西肯定会让你赚到些钱。[谨慎出售。无法回购。]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry2",
+        label: "出售有些价值的东西",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:2},
+        effects: {funds:2},
+	linked:[{id:"auctionsell_increaseminor",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "这件奇物会让你赚到些钱。[谨慎出售。无法回购。]",
+        warmup:30,
+        craftable: true
+    },
+			 	{
+        id: "auctionentry1",
+        label: "出售有较低价值的东西",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:1},
+        effects: {funds:1},
+	linked:[{id:"auctionsell_increasepetty",chance:30},
+	{id:"auctionsell_worthless",chance:30},
+	{id:"auctioncleanup",chance:100}],
+		startdescription: "这件怪东西可能值些钱，不过也很难讲。",
+        warmup:30,
+        craftable: true
+    },
+				  		{
+        id: "auctionsell_worthless",
+        label: "拍卖：完全缺乏兴趣",
+        actionId: "explore",
+		startdescription: "这件东西没能打动什么人。拍卖师木槌落定。我的物品已经售出，但收入微不足道。",
+				linked:[{id:"auctioncleanup",chance:100}],
+		 effects:{funds:-99,auctionable:-99},
+        warmup:30,
+    },
+	  		{
+        id: "auctionsell_increasepetty",
+        label: "拍卖：观众悄声议论",
+        actionId: "explore",
+		startdescription: "无论出于怎样不可能的原因，我的物品都获得了出价者的喜爱。",
+		linked:[{id:"auctioncleanup",chance:100}],
+		 effects:{funds:1},
+        warmup:30,
+    },
+
+		  		{
+        id: "auctionsell_increaseminor",
+        label: "拍卖：积极出价",
+        actionId: "explore",
+		startdescription: "这时有些观众站了起来。热情高涨。",
+				linked:[{id:"auctioncleanup",chance:100}],
+		 effects:{funds:2},
+        warmup:30,
+    },
+			  		{
+        id: "auctionsell_increasemajor",
+        label: "拍卖：兴奋的呐喊",
+        actionId: "explore",
+		startdescription: "拍卖师不得不提高他的声音来盖过喧闹的人群。",
+				linked:[{id:"auctioncleanup",chance:100}],
+	 effects:{funds:4},
+        warmup:30,
+    },
+					  		{
+        id: "auctionsell_increasegrand",
+        label: "拍卖：出价者的决斗",
+        actionId: "explore",
+		startdescription: "两位富有的收藏家将目光锁定在拍卖师身上，用最轻微的点头表达着他们的意图。 除了拍卖师的严肃的声音外，房间里鸦雀无声。",
+		 effects:{funds:8},
+		 linked:[{id:"auctioncleanup",chance:100}],
+        warmup:30,
+    },
+
+
+		  		{
+        id: "auctioncleanup",
+        label: "拍卖结束",
+        actionId: "explore",
+		description: "拍卖师木槌落定。我的物品已经售出。",
+		 effects:{auctionable:-99},
+        warmup:0,
+    },
+	
+ 	
+
+]
+}

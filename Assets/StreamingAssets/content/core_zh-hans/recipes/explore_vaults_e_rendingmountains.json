@@ -1,0 +1,140 @@
+ {"recipes": [
+	
+			 	{
+	id: "explore_vaultrendingmountains1_setup",
+	label: "开始探索: 猎人之陷",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains1:1},
+	effects: {peril_mountains:1,guardian_watchers:1,guardian_serpent:1},
+
+	startdescription: "撕祭部落布下了陷阱迷宫，我们唯有杀开一条血路才能突破这些部落登上山峰。等到了那里，我们自然会有所发现。",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+		 	{
+	id: "explore_vaultrendingmountains2_setup",
+	label: "开始探索: 雪守神殿",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains2:1},
+	effects: {peril_mountains:1,guardian_dead:1,curse_nowhere:1},
+
+	startdescription: "我们踏雪而行，攀山而上前往那座神殿。如果那些死者苏生过来袭击我们，我们会干掉它们。但挡在我们面前的还有一股扭曲的恶意，若是不消灭它，那它会跟着我们回去。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultrendingmountains3_setup",
+	label: "开始探索: 伊克玛维之眼",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains3:1},
+	effects: {peril_mountains:1,seal_wardeddoor:1,curse_visions:1},
+
+	startdescription: "我们与天文台之间隔着群山。那扇门会在我们面前紧闭，让我们无法入内。我们所见的那些幻象会撕碎我们的感官。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultrendingmountains4_setup",
+	label: "开始探索: 石狼寝陵",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountains4:1},
+	effects: {peril_mountains:1,seal_wardeddoor:1,guardian_dead:1},
+
+	startdescription: "自从墓主死了之后，这里是不是就变成了连太阳都未曾踏足过的地方？不过或许，说墓主已死还为时尚早。如果我们想要洗劫这座寝陵，那我们就得面对雪崩，狂灵还有被手艺精湛的建筑师们所密封的那扇墓门。让我们做好准备吧。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultrendingmountainsdefault_setup",
+	label: "开始探索: 无影列王之陵",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultrendingmountainsdefault:1},
+	effects: {peril_mountains:1,seal_hiddendoor:1,guardian_watchers:1,curse_affliction:1},
+
+	startdescription: "我们必须翻越群山，闯过守卫者们，而后解开那无影之列王的诅咒。这样我们或许才能找到宝藏。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+					{
+	id: "explorevaultrendingmountains1_success",
+	label: "战争记忆",
+	actionId: "explore",
+	requirements: {vaultrendingmountains1:1},
+	effects: {vaultrendingmountains1:-1,tooledgef:1,influenceedgee:1},
+	deckeffect: {"vaultcontentsu":2},
+	startdescription: "在猎人之陷的塌陷深处，我们找到了一个房间，房间的墙壁上绘满了战斗场景。此处是座圣坛，用以祭奠撕祭部落最伟大的猎人们。",
+	description: "这里还堆着那些猎人们所猎获的战利品。里边也有现在已经灭绝了的动物。",
+	warmup:30,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultrendingmountains2_success",
+	label: "祭坛的衣装",
+	actionId: "explore",
+	requirements: {vaultrendingmountains2:1},
+	effects: {vaultrendingmountains2:-1},
+	deckeffect: {"vaultcontentsu":2,"vaultcontentsr":1},
+	startdescription: "神殿内，某种真菌闪烁着冷光。要搜刮这个地方，我们先得戴着手套把密布在祭坛上的真菌都给剥下来。它们摸起来冰冷如霜。我们的手套现在也开始发光，我们的呼吸为这冰冷的神殿蒙上了雾气。",
+	description: "那些无名祭司们在这里留下了一堆尸骨和一堆珍宝。是献祭吗？又或者是后来者死在了这里？那些闪烁着冷光的真菌用酸腐蚀着那些尸骨。",
+	warmup:30,
+	craftable: false
+	},
+				{
+	id: "explorevaultrendingmountains3_success",
+	label: "天行有常",
+	actionId: "explore",
+	requirements: {vaultrendingmountains3:1},
+	effects: {vaultrendingmountains3:-1},
+	deckeffect: {"vaultcontentsu":2,"vaultcontentsr":1},
+	startdescription: "大望远镜生锈了，从穹顶上掉了下来。镜头崩裂。苍白色的光在地板上来回旋转，宛若有舞者举着提灯起舞一般。或许它们在效仿天体的运转，又或者它们在用此来悼念太阳的消亡。",
+	description: "居住在这里的首席天文学家一定是无形之仪的实践者。在他住处那张腐朽的床下，一只柏木箱子里，我们找到了我们想要的东西。",
+	warmup:30,
+	craftable: false
+	},in
+	
+	
+				{
+	id: "explorevaultrendingmountains4_success",
+	label: "狼的归来",
+	actionId: "explore",
+	requirements: {vaultrendingmountains4:1},
+	effects: {vaultrendingmountains4:-1,ingredientwinterd:1},
+	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":1},
+	startdescription: "死者并没未发出低语，但寝陵里回荡着另一种声音，我们听到了微弱的嚎叫声，嚎叫声渐渐低沉，就仿佛一艘船外壳上的铁皮逐渐剥落，这声音搅着我们的骨髓。尽管听起来非常像，但它绝对不是风的声音。我们不该在这里待上太久。",
+	description: "寒气逐渐加重，我们的皮肤上都结了一层薄冰。在寝陵的中央，是一个花岗岩底座，底座上方陈着一个白色大理石碗状物。里边装满着一旦触及就冰冷彻骨的雪，雪在被触及的那一刻也融化殆尽。他们在这里藏了什么吗？又或者他们在向它供奉什么吗？这里已经没有剩下任何东西了。",
+	warmup:30,
+	craftable: false
+	},
+	
+				{
+	id: "explorevaultrendingmountainsdefault_success",
+	label: "遗物",
+	actionId: "explore",
+	requirements: {vaultrendingmountainsdefault:1},
+	effects: {vaultrendingmountainsdefault:-1},
+	deckeffect: {"vaultcontentsu":2},
+	startdescription: "我们把石头移到了一边，然后用光源照亮了整座王陵。国王就躺在那里，已经只剩下一具纸一样薄而干的尸体，碎骨散落四处，他并没有坐起身来，看来国王并不是不朽者。",
+	description: "无影列王们只会将自己最为珍爱的财宝与自己随葬。他们并不打算把财富带到来世。这里就是这位国王随葬的一些小小珍宝，也是他最珍视的宝物。",
+	warmup:30,
+	craftable: false
+	},
+	
+]
+}
+

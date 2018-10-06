@@ -1,0 +1,173 @@
+{"recipes": [
+	  	  	   {id: "annoyanceseducehighgrail",
+	   label: "派出一名难以抗拒的仆从去诱惑和污名带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我想要摆脱这些带来麻烦的家伙。他们甚至会享受他们的堕落。",
+	  description:".",
+	  requirements: {annoyance:1,grail:10,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:70},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  	   {id: "annoyanceseducemidgrail",
+	   label: "派出一名诱人的仆从去诱惑和羞辱带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"每一个人都有一个格外另自己愉悦的事物，那便是弱点。我会派一名懂得很多让人愉悦的特质的仆从。他们成功的可能性很大。",
+	  description:".",
+	  requirements: {annoyance:1,grail:5,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:70},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyanceseducelowgrail",
+	   label: "派出一名诱人的仆从去诱惑和羞辱带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription: "谁知道这能不能成功？这些带来麻烦的家伙可能根本不觉得我的仆从哪里迷人。",
+	  description:".",
+	  requirements: {annoyance:1,grail:1,follower:1},
+	  linked: [{id:"annoyanceseducesuccess",chance:30},
+	  {id:"annoyanceseducefailure",chance:100}
+	  ]
+	  },
+	  
+	  {id: "annoyanceseducesuccess",
+	   label: "诱惑带来麻烦的家伙...",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从回来了。他们找到了那个带来麻烦的家伙会为之屈服的特别诱惑；我的仆从只付出了一些小小的代价，就对他们的名誉造成了彻底的毁坏。",
+	  aspects:{endannoyance:1},	  
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  {id: "annoyanceseducefailure",
+	   label: "诱惑带来麻烦的家伙...",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从带回了令人失望的消息。他们找不到能让那些给我们带来麻烦的家伙失去理智的诱惑。",
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	    {id: "annoyanceattackhighedge",
+	   label: "派一股不可抵挡的力量去谋杀带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我对这些讨厌的东西失去耐心了。除非他们有什么特殊的保护，不然他们应该已经死了。但是他们的死亡是会引起注意的。",
+	  description:".",
+	  requirements: {annoyance:1,edge:10,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:100},
+	  ]
+	  },
+	  	   {id: "annoyanceattackmidedge",
+	   label: "派一位强大的仆从去谋杀带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我对这些讨厌的东西失去耐心了。这件事应该结束了。但是他们也可能生还，而这次尝试可能会引起注意。",
+	  description:".",
+	  requirements: {annoyance:1,edge:5,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:70},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyanceattacklowedge",
+	   label: "派一位仆从去谋杀带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我想这个带来麻烦的家伙消失。但是这个方法很冒险：我的仆从的能力有限。烦人的家伙有很大可能生还，并可能会引起注意。",
+	  description:".",
+	  requirements: {annoyance:1,edge:1,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:30},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	   {id: "annoyanceattacknoedge",
+	   label: "派某个不合适的人去谋杀带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我的仆从缺失刃，很不幸，他并不适合去袭击带来麻烦的家伙。他们只有很小的概率能够成功。",
+	  description:".",
+	  requirements: {annoyance:1,follower:1},
+	  linked: [{id:"annoyanceattacksuccess",chance:10},
+	  {id:"annoyanceattackfailure",chance:100}
+	  ]
+	  },
+	  
+	  
+	  {id: "annoyanceattacksuccess",
+	   label: "结束带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从回来了，带着战利品。带来麻烦的家伙已经被消灭了。",
+	  aspects:{endannoyance:1},
+	  effects: {corpse:1,notoriety:1},
+	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}],
+	  
+	  warmup:30	  
+	  },
+	  
+	  	  {id: "annoyancecapturesuccess",
+	   label: "结束带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从回来了，带着一位囚犯！...现在他将有时间来后悔他之前的选择。",
+	  aspects: {endannoyance:1},
+	  effects: {notoriety:1,genericprisonerm:1},
+	  aspects: {endannoyance:1},
+	  
+	  warmup:10	  
+	  },
+	  
+	  
+	  {id: "annoyanceattackfailure",
+	   label: "结束带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从没有回来。他们一定是失败了。这可能会令人尴尬。",
+	  effects: {follower:-1,notoriety:1},
+	  warmup:10	  
+	  },
+	  
+	  
+	  
+	  
+	  	   {id: "annoyancederangemidmoth",
+	   label: "派一位卑鄙的仆从去逼疯带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我想让带来麻烦的家伙离开。这次计划有可能成功，但是如果失败了，可能会引起注意的。",
+	  description:".",
+	  requirements: {annoyance:1,moth:5,follower:1},
+	  linked: [{id:"annoyancederangesuccess",chance:70},
+	  {id:"annoyancederangefailure",chance:100}
+	  ]
+	  },
+	  	  	   {id: "annoyancederangelowmoth",
+	   label: "派一位卑鄙的仆从去逼疯带来麻烦的家伙",
+	  actionId:"talk",
+	  startdescription:"我想让带来麻烦的家伙消失。但是我的仆从能力有限。这很有可能失败，而如果失败了，可能会引起注意。",
+	  description:".",
+	  requirements: {annoyance:1,moth:1,follower:1},
+	  linked: [{id:"annoyancederangesuccess",chance:30},
+	  {id:"annoyancederangefailure",chance:100}
+	  ]
+	  },
+	  
+	  {id: "annoyancederangesuccess",
+	   label: "为带来麻烦的家伙安排夜靥",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从回来了。带来麻烦的家伙再也无法清楚地说话了，更别说再烦我了。",
+	  aspects:{endannoyance:1},	  
+	  warmup:30	  
+	  },
+	  
+	  
+	  
+	  {id: "annoyancederangefailure",
+	   label: "为带来麻烦的家伙安排夜靥",
+	  actionId:"talk",
+	  startdescription: "我等着消息....",
+	  description:"我的仆从回来了。带来麻烦的家伙比我们想象的更顽强。他们的精神状态完好无损。",
+	  effects: {notoriety:1},
+	  warmup:30	  
+	  },
+]
+}

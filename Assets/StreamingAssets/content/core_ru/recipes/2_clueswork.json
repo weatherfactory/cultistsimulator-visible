@@ -1,0 +1,517 @@
+﻿ {"recipes":
+ [		{
+        id: "workfundshint",
+        label: "Деньги",
+        actionId: "work",
+        requirements: {funds: 1},
+        startdescription: "Не работают; но, возможно, я смогу найти другой путь вложения средств. В будущем. Если у меня есть будущее.",
+        craftable: false,
+		hintonly: true
+    },
+      			{
+        id: "skillhealthhintwork",
+        label: "Здоровье",
+        actionId: "work",
+        requirements: {healthskill:1},
+        startdescription: "Я сильнее, но для рабочего дня всё ещё требуется моё Здоровье.",
+        craftable: false,
+		hintonly: true,
+    },
+     			{
+        id: "vitalityhintwork",
+        label: "Бодрость",
+        actionId: "work",
+        requirements: {vitality:1},
+        startdescription: "Не подходит для Труда; но я могу Изучить её, чтобы набраться Здоровья.",
+        craftable: false,
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
+    },
+	    			{
+        id: "eruditionhintwork",
+        label: "Размышление",
+        actionId: "work",
+        requirements: {erudition:1},
+        startdescription: "Не подходит для Труда; но я могу Изучить его, чтобы набраться Разума.",
+        craftable: false,
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
+    },
+	    			{
+        id: "glimmeringhintwork",
+        label: "Мечтание",
+        actionId: "work",
+        requirements: {glimmering:1},
+        startdescription: "Не подходит для Труда; но я могу Изучить его, чтобы набраться Страсти.",
+        craftable: false,
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
+    },
+   			{
+        id: "contentmenthintwork",
+        label: "Довольство",
+        actionId: "work",
+        requirements: {contentment:1},
+        startdescription: "Нельзя заработать на жизнь счастьем. Но счастье может быть поддержкой в подступающей ночи.",
+        craftable: false,
+		hintonly: true,
+		comments: "Not currently possible with restrictions on work primary slot"
+    },
+	  			{
+        id: "commissionhint_wronglore",
+        label: "Выполнить заказ",
+        actionId: "work",
+        requirements: {commission:1,lore:1},
+        startdescription: "Мне нужно правильное знание, и мне нужно приложить умения к работе. [Описание заказа напомнит, какое именно Знание вам потребуется.]",
+        craftable: false,
+		hintonly: true
+    },
+  			{
+        id: "commissionhint",
+        label: "Выполнить заказ?",
+        actionId: "work",
+        requirements: {commission:1},
+        startdescription: "Если я приложу Труд к верному оскольку Знания, я могу написать манускрипт, чтобы выполнить этот заказ. Когда манускрипт будет готов, надо будет сойтись на Разговор с Покровителем об этом заказе.",
+        craftable: false,
+		hintonly: true
+    },
+
+ 
+ 		{
+        id: "hint_summon_spirit_forgee_edge",
+        label: "Призыв могучего создания Кузни Дней?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,lantern:1,desire:-1},
+		effects: {spirit_forgee_edge:1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать существо огня и Славы, мне понадобится большая сила Кузни; значительная сила Стука; и немного Лампады.",     
+   hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_graile_edge",
+        label: "Призыв могучего создания Алой Чаши?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,forge:1,desire:-1},
+		effects: {spirit_graile_edge:1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать существо крови и перемены, мне понадобится большая сила Чаши; значительная сила Стука; и немного Кузни.",  
+   hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_lanterne_secret",
+        label: "Призыв чего-то необычного?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,secrethistories:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Набрав достаточно Лампады, значительную степень Стука и добавив дразнящий привкус секретов, возможно, я смогу призвать кого-то интересного.",
+   hintonly:true,
+        craftable: false
+    },
+		{
+        id: "hint_summon_spirit_forgec_winter",
+        label: "Призыв создания Кузни Дней?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,winter:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать эту туманную, обманчивую сущность, мне понадобится значительная сила Кузни, а также немного Зимы и Стука.",
+      hintonly:true,
+        craftable: false
+    },
+				{
+        id: "hint_summon_spirit_grailc_moth",
+        label: "Призыв создания Алой Чаши?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,moth:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать эту монструозную, пусть и привязчивую, сущность, мне понадобится значительная насыщенность Чаши, и немного Мотылька и Стука.",
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_lanternc_edge",
+        label: "Призыв сущности из-за зеркал?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,edge:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать эту незаметную, хрупкую, убийственную тварь, мне понадобится значительная насыщенность Лампады, и немного Стука и Грани.",   
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_heartc_edge",
+        label: "Призыв создания Громокожи?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:1,edge:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать эту радостную, непрестанную, безжалостную тварь, мне понадобится значительная насыщенность Сердца, и немного Стука и Грани.",
+      hintonly:true,
+        craftable: false
+    },
+			{
+        id: "hint_summon_spirit_winterd_edge",
+        label: "Призыв создания Солнца-в-Рубище?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,edge:1,desire:-1},
+		startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать эту ледяную и сияющую тварь, мне понадобится очень значительная насыщенность Зимы, и немного Стука и Грани.",
+      hintonly:true,
+        craftable: false
+    },
+		{
+        id: "hint_summon_spirit_winterb_heart",
+        label: "Призвать искру из скопления Мертвецов?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,heart:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Чтобы призвать эту несчастную, безгласную тварь, мне понадобится Зима четвёртой насыщенности, и немного Стука и Сердца.",
+      hintonly:true,
+        craftable: false
+    },
+		 	{
+        id: "hint_summon_spirit_wintera_edge",
+        label: "Напитать труп силой Картографа Шрамов?",
+        actionId: "work",
+        requirements: {ritual:1,winter:1,edge:1,desire:-1},
+        startdescription: "Мне удалось найти полезное сочетание аспектов, но нужно больше силы. Добавив чуть больше аспекта Зимы, чуть больше Грани, и труп, я могу создать слугу-бугая.",
+  hintonly:true,
+        craftable: false,
+	
+    },
+  	{
+        id: "hint_summon_spirit_wintera_moth",
+        label: "Напитать труп силой Тис-Кольцо?",
+        actionId: "work",
+        requirements: {ritual:1,winter:1,moth:1,desire:-1},
+        startdescription: "Добавив чуть больше аспекта Зимы, чуть больше Мотылька, и труп, я могу создать слугу-ловкача.",
+   hintonly:true,
+        craftable: false
+    },
+	 			{
+        id: "ritehinthasknockedge",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал, если я добавлю Лампаду, Сердце или Зиму.",
+        craftable: false,
+		hintonly: true
+    },
+ 			{
+        id: "ritehinthasknockforge",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал. Если я добавлю Зиму, я могу связаться с чем-то туманным; если добавлю Лампаду, могу связаться с раскалённой силой.",
+        craftable: false,
+		hintonly: true
+    },
+	
+	 			{
+        id: "ritehinthasknockgrail",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал. Если я добавлю Мотылька, я могу связаться с чем-то бесформенным. Если добавлю Кузню, могу связаться с соблазнительной, дикой силой.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknockheart",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал. Если я добавлю Грань, я могу связаться с чем-то неудержимым; если добавлю Зиму, могу призвать одного из Мертвецов.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknocklantern",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал. Если я добавлю Грань, я могу привести нечто из зазеркалья; если добавлю Кузню, могу связаться с чем-то раскалённым.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknockmoth",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал. Если добавлю Чашу, могу связаться с чем-то бесформенным.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+         id: "ritehinthasknocksecrethistories",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
+        startdescription: "У этой идеи есть потенциал. Если добавлю достаточно Лампады, кто знает, что может откликнуться?",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasknockwinter",
+        label: "Зима",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
+        startdescription: "У этой идеи есть потенциал, если я добавлю Грань, Сердце, или Кузню.",
+        craftable: false,
+		hintonly: true
+    },
+
+					   {
+        label: "Слава Разума?",
+        id: "arcane_lantern_edge_hint",
+		requirements: {ritual: 1,knock:-1,desire:-1,lantern:1,edge:1},
+        actionId: "work",
+		startdescription:"Набрав как минимум пятую степень Лампады и первую — Грани, я смогу применить мистическую дисциплину, Славу Разума, чтобы превратить мою Страсть в Разум.",
+		craftable:false,
+		hintonly:true
+		},
+				   {
+        label: "Вихрь Страсти?",
+        id: "arcane_moth_edge_hint",
+		requirements: {ritual: 1,knock:-1,desire:-1,moth:1,edge:1},
+        actionId: "work",
+		startdescription:"Набрав как минимум пятую степень Мотылька и первую — Грани, я смогу применить экстатическую практику, Вихрь Страсти, чтобы превратить мой Разум в Страсть.",
+		craftable:false,
+		hintonly:true
+		},
+								   {
+        label: "Искупление Кузни?",
+        id: "arcane_forge_grail_hint",
+        actionId: "work",
+        requirements: {ritual: 1, knock:-1,desire:-1,forge:1,grail:1},
+				startdescription:"Набрав как минимум пятую степень Кузни и первую — Чаши, я смогу применить запретную процедуру, Искупление Кузни, чтобы вновь обратить Изъян в Здоровье.",
+		craftable:false,
+		hintonly:true
+		},
+	
+								   {
+        label: "Восхитительный Финал?",
+        id: "arcane_winter_lantern_hint",
+        actionId: "work",
+        requirements: {ritual: 1,knock:-1,desire:-1,winter:1,lantern:1},
+		startdescription:"Набрав как минимум пятую степень Зимы и первую — Лампады, я смогу попросить Час завершений, Солнце-в-Рубище, уничтожить кого-то... но не кого-то, определённого мною. Выбор сделает само Солнце-в-Рубище.",
+				craftable:false,
+		hintonly:true
+		},
+		
+	
+		{
+        id: "ritehinthasedge",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,edge:1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Грань — аспект битвы и борьбы. Если я добавлю Стук, могу попытаться что-то призвать; если добавлю Лампаду или Мотылёк, я могу пробудить битву в собственной душе.",
+        craftable: false,
+		hintonly: true
+    },
+ 			{
+        id: "ritehinthasforge",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,forge:1,edge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Кузня — аспект, что изменяет и разрушает. Если я добавлю Стук, могу попытаться что-то призвать; или, если у меня есть Изъяны, то могу добавить Чашу и, возможно, обновиться телом.",
+        craftable: false,
+		hintonly: true
+    },
+	
+	 			{
+        id: "ritehinthasgrail",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,grail:1,edge:-1,forge:-1,heart:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Чаша — аспект желаний, крови и рождения. Если я добавлю Зиму, я могу попытаться что-то призвать; или, если у меня есть Изъяны, то могу добавить Кузню и, возможно, обновиться телом.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasheart",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,heart:1,edge:-1,forge:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Сердце — аспект сохранения, но также и неостановимого движения. Если я добавлю Стук, могу попытаться что-то призвать.",
+        craftable: false,
+		hintonly: true
+    },
+				{
+        id: "ritehinthasknock",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:2,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
+        startdescription: "Призыв начинается со Стука, но обычно вместе с ним требуется ещё два других аспекта. Если я не использую Стук, могу найти иные оккультные практики помимо призывов.",
+        craftable: false,
+		hintonly: true
+    },
+					{
+        id: "ritehinthasmicroknock",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1,winter:1},
+        startdescription: "Призыв начинается со Стука; но мне потребуется, как минимум, усилить Стук.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaslantern",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,lantern:1,edge:-1,forge:-1,heart:-1,grail:-1,moth:-1,secrethistories:-1,winter:-1},
+        startdescription: "Лампада — принцип тайного места, называемого Домом Солнца, и света над ним. Если я добавлю Стук, могу попытаться что-то призвать. Если добавлю Грань, могу попытаться победить свою Страсть Разумом. Если добавлю Зиму, могу попробовать сотворить безрассудную и прекрасную магию.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthasmoth",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,moth:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,secrethistories:-1,winter:-1},
+        startdescription: "Мотылёк — дикий и опасный принцип хаоса, стремления и тоски. Если я добавлю Стук, могу попытаться что-то призвать. Если добавлю Грань, могу попытаться утопить свой Разум в Страсти.",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+         id: "ritehinthassecrethistories",
+        label: "Призыв чего-то?",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,secrethistories:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,winter:-1},
+        startdescription: "Тайные Истории описывают неизвестные тонкости мира и множества его прошлых. Они обычно не находят прямого применения в незримых искусствах, но если я добавлю Стук, кто знает, что может получиться?",
+        craftable: false,
+		hintonly: true
+    },
+		 			{
+        id: "ritehinthaswinter",
+        label: "Зима",
+        actionId: "work",
+        requirements: {ritual:1,knock:-1,winter:1,edge:-1,forge:-1,heart:-1,grail:-1,lantern:-1,moth:-1,secrethistories:-1},
+        startdescription: "Зима — принцип тишины, завершений, и всего того, что не вполне мертво. Если я добавлю Стук, могу попытаться что-то призвать. Если добавлю Лампаду, погу попытаться сотворить безрассудную и прекрасную магию.",
+        craftable: false,
+		hintonly: true
+    },
+				   {
+        id: "minorforgevictory_hint_sixth",
+        label: "Седьмой Знак?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:6},
+        effects: {},
+        startdescription: "Седьмой Знак — Сожжение Сердца. Я близко: близко, как пламя к свече. Мне понадобится вся сила Кузни, что я могу созвать, как минимум тридцать шестой степени насыщенности.",
+        hintonly:true
+    },
+			   {
+        id: "minorforgevictory_hint",
+        label: "Седьмой Знак?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:1},
+        effects: {},
+        startdescription: "Седьмой Знак — Сожжение Сердца. Сначала мне нужно получить Шестой Знак.",
+        hintonly:true
+    },
+					   {
+        id: "minorgrailvictory_hint_sixth",
+        label: "Седьмой Знак?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:6},
+        effects: {},
+        startdescription: "Седьмой Знак — Пир Истинного Рождения. Я близко: близко, как кровь к сердцу. Мне понадобится вся сила Чаши, что я могу созвать, как минимум тридцать шестой степени насыщенности.",
+        hintonly:true
+    },
+				   {
+        id: "minorgrailvictory_hint",
+        label: "Седьмой Знак?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:1},
+        effects: {},
+        startdescription: "Седьмой Знак — Пир Истинного Рождения. Сначала мне нужно получить Шестой Знак.",
+        hintonly:true
+    },
+					   {
+        id: "minorlanternvictory_hint_sixth",
+        label: "Седьмой Знак?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:6},
+        effects: {},
+        startdescription: "Седьмой Знак — Вторжение. Я близко: близко, как свет к кромке тени. Мне понадобится вся сила Лампады, что я могу созвать, как минимум тридцать шестой степени насыщенности.",
+        hintonly:true
+    },
+				   {
+        id: "minorlanternvictory_hint",
+        label: "Седьмой Знак?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:1},
+        effects: {},
+        startdescription: "Седьмой Знак — Вторжение. Сначала мне нужно получить Шестой Знак.",
+        hintonly:true
+    },
+	
+
+
+		{
+        id: "ritehint",
+        label: "Ритуалы",
+        actionId: "work",
+        requirements: {ritual:1,lore:-1,ingredient:-1,influence:-1,follower:-1,tool:-1,desire:-1},
+        startdescription: "Каждый ритуал можно использовать для многих целей. Для призыва мне нужно обратиться к силе Стука, что откроет путь.",
+        craftable: false,
+		hintonly: true
+    },
+		   {
+        id: "ascensionpower_upgradetoobsession_hint",
+        label: "Нет, пока недостаточно",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:1},
+        startdescription: "Ешё недостаточно. Кузня Дней не откликнется, пока я не привлеку её внимание. Мне нужна сила Кузни как минимум шестой насыщенности.",
+        description: ".",
+   
+        craftable: false,
+		hintonly: true
+    },
+		   {
+        id: "ascensionsensation_upgradetoobsession_hint_m",
+        label: "Нет, пока недостаточно",
+        actionId: "work",
+        requirements: {ascensionsensationbm:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "Ешё недостаточно. Алая Чаша не откликнется, пока я не привлеку её внимание. Мне нужна сила Чаши как минимум шестой насыщенности.",
+        description: ".",
+   
+
+		hintonly: true
+    },		   {
+        id: "ascensionsensation_upgradetoobsession_hint_f",
+        label: "Нет, пока недостаточно",
+        actionId: "work",
+        requirements: {ascensionsensationbf:1,
+		waystag_after:1,
+		grail:1},
+        startdescription: "Ешё недостаточно. Алая Чаша не откликнется, пока я не привлеку её внимание. Мне нужна сила Чаши как минимум шестой насыщенности.",
+        description: ".",
+   
+
+		hintonly: true
+    },
+	
+				   {
+        id: "ascensionenlightenment_upgradetoobsession_hint",
+        label: "Нет, пока недостаточно",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:1},
+        startdescription: "Ешё недостаточно. Дозорный не откликнется, пока я не привлеку его внимание. Мне нужна сила Лампады как минимум шестой насыщенности.",
+        description: ".",
+   
+        craftable: false,
+		hintonly: true
+    },
+	
+
+	
+	
+
+	
+]
+}

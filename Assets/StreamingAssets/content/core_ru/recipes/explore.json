@@ -1,0 +1,143 @@
+﻿ {"recipes": [
+ 
+ 
+	{
+        id: "explorelocationbookdealer",
+        label: "Пополнение библиотеки",
+        actionId: "explore",
+        requirements: {locationbookdealer:1,funds:1},
+		effects: {},
+		deckeffect: {"commontomes":1},
+        startdescription: "Нужно время, чтобы отделить золото от шлака, зерно от мякины, кровь от воды. Если я куплю достаточно книг, я найду что-нибудь интересное.",
+        description: "Нашлось кое-что примечательное.",
+        warmup: 30,
+        craftable: true,
+		linked:[{id:"explorelocationbookdealer_exhausted",chance:100}]
+    },
+		{
+        id: "explorelocationbookdealer_exhausted",
+        label: "Морланд закрывает магазин!",
+        actionId: "explore",
+        requirements: {genericrubbishbook:1},
+        description: "«Я меняю профессию» — вот что сказала Морланд. «Мои запасы в основном исчерпаны, и Бюро Подавления присматривается ко мне. Так что прощайте. Последняя книга — сплошная бессмыслица, но к её обратной стороне я прикрепила несколько интересных заметок, в благодарность за ваши покупки...»",
+		deckeffect:{oneoffrewards:1},
+        warmup: 1,
+aspects:{exhaustlocation:1}
+    },
+		{
+        id: "explorelocationauctionhouse",
+        label: "Посещение аукциона в «Орифламме»",
+        actionId: "explore",
+        requirements: {locationauctionhouse:1,auctionable:-1},
+		effects: {},
+		deckeffect: {"auctionedcommontomes":1},
+        startdescription: "Мы взгромоздились на ритвельдские кресла неуютного вида в аукционном зале — без окон, но с ярко-оранжевыми стенами — и ждём, когда аукционист предъявит, что же на распродаже. От запаха свежей краски кружится голова. [Нажмите «Вперёд», чтобы увидеть, что предлагается; или предложите свой предмет на продажу.]",
+        description: ".",
+			
+        warmup: 5,
+        craftable: true,
+		linked:[{id:"auctionbuy",chance:100}]
+    },
+	
+		{
+        id: "explorelocationstreetsstrange",
+        label: "По невозможным петлям улиц в лунном свете...",
+        actionId: "explore",
+        requirements: {locationstreetsstrange:1},
+		
+		deckeffect: {"streetsstrangefinds":1},
+        startdescription: "В час Мениск улицы коварны.",
+        description: "Видения проходят сквозь меня, словно в танце паваны — окно над лесом, ледяной сад, дрожащее солнце, стеклянная женщина... Я вернусь домой с неохотой.",
+        warmup: 30,
+        craftable: true
+    },
+			 {
+        id: "explorefollower",
+        label: "Поиск в городе",
+        actionId: "explore",
+        requirements: {follower:1,location:-1},
+		deckeffect: {exploreevents:1},
+		linked:	[
+			{id: "explorefindcriminal",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "Полный толп днём, укутанный туманом лабиринт ночью. Я пошлю своих миньонов на поиск удачных возможностей.",
+        description: ".",
+        warmup: 10,
+		craftable:true
+    },
+			 {
+        id: "explorerumour",
+        label: "По следам зацепки",
+        actionId: "explore",
+        requirements: {rumour:1},
+		deckeffect: {"acquaintances":1},
+		effects: {rumour:-1,notoriety:1},
+        startdescription: "Подозреваю, что в конце истории найду кого-то, кто услышит, что я хочу сказать.",
+        description: "Обычный адрес; необычная личность.",
+        warmup: 60,
+		craftable:true
+    },
+	 {
+        id: "explorehealth",
+        label: "Поиск в городе",
+        actionId: "explore",
+        requirements: {health:1},
+		deckeffect: {exploreevents:1},
+		aspects:{fatiguing:1},
+		linked:	[
+			{id: "explorefindcriminal",chance:100},
+		{id: "explorefindplace",chance:100}],
+        startdescription: "Полный толп днём, укутанный туманом лабиринт ночью. Я буду бродить по улицам в поисках секретов, пока не свалюсь с ног.",
+        description: ".",
+        warmup: 10,
+		craftable:true
+    },
+	
+			
+					{
+        id: "explorefindcriminal",
+        label: "Наёмник?",
+        actionId: "explore",
+        requirements: {daycriminals:1},
+		deckeffect: {"hirelings":1},
+		effects:{season:-1},
+        warmup: 0,
+		linked:[{id:"explorechoosepaycriminal",chance:100}]
+    },
+				{
+        id: "explorechoosepaycriminal",
+        label: "Наёмник?",
+        actionId: "explore",
+        startdescription: "Некто может позаботиться о печальных необходимостях, за определённую плату. [Добавьте Средства для найма — на определённое время.]",
+slots:[{id:"Payment",label:"Плата",required:{funds:1},consumes:true}],
+alternativerecipes:[{id:"explorepaycriminal",chance:100}],
+		effects:{hireling:-1},
+		 description: "Не стоит. Надо соблюдать осторожность в отношении своих собеседников.",
+        warmup: 60
+    },
+					{
+        id: "explorepaycriminal",
+        label: "Наёмник",
+		requirements: {funds:1},
+        actionId: "explore",
+        startdescription: "Пока что верность куплена.",
+		effects:{funds:-1}
+    },
+
+	
+		 {
+ 
+        id: "explorefindplace",
+        label: "Незамеченное место?",
+        actionId: "explore",
+        requirements: {dayplaces:1},
+        startdescription: "Возможно, мне удалось найти что-то необычное.",
+        description: ".",
+		deckeffect: {"citysecrets":1},
+		effects:{season:-1},
+        warmup: 5
+    },
+
+	
+]
+}

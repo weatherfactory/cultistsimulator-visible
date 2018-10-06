@@ -1,0 +1,143 @@
+﻿ {"recipes": [
+	
+			 	{
+	id: "explore_vaultshires1_setup",
+	label: "Начало экспедиции: озеро Глэдвин",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,funds:1,follower:1,vaultshires1:1},
+	effects: {guardian_serpent:1},
+
+	startdescription: "Под гладью озера или в каком-то укромном скальном уголке, возможно, для нас ещё остались реликвии. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+	
+		 	{
+	id: "explore_vaultshires2_setup",
+	label: "Начало экспедиции: болото Локвуд",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultshires2:1},
+	effects: {peril_treacherousground:1,guardian_watchers:1},
+
+	startdescription: "Вперёд, в топи. Где-то, мы уверены, ждёт святыня в остатках ценных украшений. Если местные попытаются убить нас, то, вероятно, мы идём в нужную сторону. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultshires3_setup",
+	label: "Начало экспедиции: холм Клюворон",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultshires3:1},
+	effects: {seal_wardeddoor:1},
+
+	startdescription: "Те, что побывали здесь до нас, отметили дверь на склоне холма. Возможно, она до сих пор здесь, но запечатана камнем и связующим заклинанием. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultshires4_setup",
+	label: "Начало экспедиции: разрыв Кеглина",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultshires4:1},
+	effects: {peril_treacherousground:1,guardian_dead:1},
+
+	startdescription: "Мы готовимся к спуску. Мы взяли верёвки, инструменты, свет; мы вооружились против чего угодно, что может ещё двигаться внизу. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+				 	{
+	id: "explore_vaultshiresdefault_setup",
+	label: "Начало экспедиции: Керишам",
+	actionId: "explore",
+	requirements:{funds:1,follower:1,vaultshiresdefault:1},
+	effects: {seal_wardeddoor:1,guardian_watchers:1,curse_visions:1},
+
+	startdescription: "Крадучись — по улицам, к когда-то красивой ратуше. Тайком — обыскать сад на заднем дворе. Странные слухи ходят о женщине, живущей здесь. Она может быть посвящённой, коллекционером, или даже редким созданием по имени <i>эмпуза</i>. Надо быть внимательными. [Каждое из препятствий требует Средств. Приспешники будут преодолевать препятствия. Если Средства или Приспешники кончатся, экспедиция прекратится.]",
+	description: ".",
+	warmup:30,
+	craftable: true,
+	linked: [
+	{id: "explorevault_expeditionbegun",chance:100}],
+	},
+					{
+	id: "explorevaultshires1_success",
+	label: "Корни церкви",
+	actionId: "explore",
+	requirements: {vaultshires1:1},
+	effects: {vaultshires1:-1},
+	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
+	startdescription: "Руины под водой — совсем неглубоко, на глубине брода. За годы вода в озере поднялась, но не настолько, чтобы остановить нас.",
+	description: "Церковная крипта затоплена, и в густой воде плавают остатки старых трупов, но в конце концов мы нашли запечатанный воском сундук. Восемнадцатый век? Не старше. Пора взглянуть, что внутри.",
+	warmup:30,
+	craftable: false
+	},
+	
+			{
+	id: "explorevaultshires2_success",
+	label: "Храм Тис-Кольцо",
+	actionId: "explore",
+	requirements: {vaultshires2:1},
+	effects: {vaultshires2:-1},
+	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
+	startdescription: "На плоском камне, в дюймах над болотной водой, трон, вырезанный из тисового дерева, цветущий грибами, украшенный потускневшей медью. Это храм, что мы ищем.",
+	description: "Яблочно-зелёной краской на пол нанесены ритуальные круги. Останки прошлых жертв хлюпают под нашими ногами, пока мы обыскиваем храм. В маленькой нише под троном — промасленный свёрток с сокровищами.",
+	warmup:30,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultshires3_success",
+	label: "Гробница воина",
+	actionId: "explore",
+	requirements: {vaultshires3:1},
+	effects: {vaultshires3:-1,toolwinterb:1,influencewinterc:1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "Здесь почти можно стоять выпрямившись, но воздух испорчен, и наши лампы едва горят. Король-воин пронзён колом на погребальном камне, его кости перебиты, чтобы он не смог ходить. Орбиты глазниц его черепа окованы бронзой.",
+	description: "Здесь до нас побывали другие — сила ещё здесь, и, несомненно, её использовали в церемониях. Они взяли часть погребальных даров короля-воина, но оставили кое-что из своих вещей.",
+	warmup:30,
+	craftable: false
+	},
+	
+	
+				{
+	id: "explorevaultshires4_success",
+	label: "Бывшая леди",
+	actionId: "explore",
+	requirements: {vaultshires4:1},
+	effects: {vaultshires4:-1},
+	deckeffect: {"vaultcontentsc":2,"vaultcontentsu":1},
+	startdescription: "Воздух спёрт, и тревожно, что камень над нами осыпается пылью, но мёртвые лежат тихо. Эта камера, с меловыми знаками и древними метами, выглядит многообещающе.",
+	description: "В окаймлённом медью саркофаге лежит женский скелет. Её не хоронили здесь; похоже, она заползла сюда, чтобы умереть... что-то повлияло на форму её черепа — челюсть выставлена наружу, как пасть животного. Ленты гниющего шёлка окутывают её кости. Сокровища лежат среди остатков её сжатых рук, между её ребер.",
+	warmup:30,
+	craftable: false
+	},
+	
+				{
+	id: "explorevaultshiresdefault_success",
+	label: "Последний зал",
+	actionId: "explore",
+	requirements: {vaultshiresdefault:1},
+	effects: {vaultshiresdefault:-1},
+	deckeffect: {"vaultcontentsc":1,"vaultcontentsu":1},
+	startdescription: "Не осталось ничего, что преградит наш путь. Сначала обыщем подвал, потом верхние комнаты. Мы не хотим попасть в ловушку.",
+	description: "На самом верхнем этаже — алтарь Разделённого Солнца, которое может быть одним из многих Часов. Сметём предметы с алтаря в тканевый мешок, и поспешим через чёрный ход на улицы.",
+	warmup:30,
+	craftable: false
+	},
+	
+]
+}
+

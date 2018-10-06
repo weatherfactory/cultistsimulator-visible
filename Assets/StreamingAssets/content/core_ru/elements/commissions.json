@@ -1,0 +1,346 @@
+﻿{"elements":
+    [
+		 {
+        id: "commissionarticlesecrethistory",
+            label: "Заказ: Тайные Истории",
+            aspects: {},
+			description: "Мне надо ИЗМЕНИТЬСЯ",
+			lifetime:1,
+			decayTo:commissionarticlesecrethistories,
+			noartneeded:true
+        },
+				 {
+        id: "commissionarticlesecrethistoryb",
+            label: "Заказ: Тайные Истории",
+            aspects: {},
+			description: "Мне надо ИЗМЕНИТЬСЯ",
+			lifetime:1,
+			decayTo:commissionarticlesecrethistoriesb,
+			noartneeded:true
+        },
+				 {
+        id: "commissionarticlesecrethistoryc",
+            label: "Заказ: Тайные Истории",
+            aspects: {},
+			description: "Мне надо ИЗМЕНИТЬСЯ",
+			lifetime:1,
+			decayTo:commissionarticlesecrethistoriesc,
+			noartneeded:true
+        },
+				
+
+				 {
+        id: "commissionarticlesecrethistories",
+            label: "Заказ: Тайные Истории",
+            aspects: {commission:1,job:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец сделал вам заказ. Он хотел бы, чтобы вы собрали для него любые сведения о Тайных Историях мира. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+	slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+	{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+				 {
+        id: "commissionarticlesecrethistoriesb",
+            label: "Заказ: Тайные Истории (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец сделал вам заказ. Он ищет внушительные работы, посвящённые Тайным Историям мира. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+				 {
+        id: "commissionarticlesecrethistoriesc",
+            label: "Заказ: Тайные Истории (очень значительный)",
+            aspects: {commission:1,job:1,job:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец сделал вам заказ. Он ищет особенно тщательно скрытые сведения о Тайных Историях мира. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+						slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		{
+		
+		        id: "commissionarticlelantern",
+            label: "Заказ: Лампада",
+            aspects: {commission:1,job:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец сделал вам заказ. Он хотел бы, чтобы вы собрали для него любые сведения о строгих мистериях Лампады. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {aladim:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,lantern:2}}],
+						slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+						{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlelanternb",
+            label: "Заказ: Лампада (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец сделал вам заказ. Он хотел бы, чтобы вы подобрали ему внушительные дискуссии о строгих мистериях Лампады. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {aladim:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,lantern:4}}],
+						slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlelanternc",
+            label: "Заказ: Лампада (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец сделал вам заказ. Он хотел бы, чтобы вы подобрали ему очень значительные исследования строгих мистерий Лампады. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {aladim:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,lantern:6}}],
+						slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				{
+		
+		        id: "commissionarticleforge",
+            label: "Заказ: Кузня",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хотела бы увидеть что-то, вдохновлённое принципом Кузни. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,forge:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleforgeb",
+            label: "Заказ: Кузня (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хотела бы что-то более внушительное по поводу Кузни. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots:[{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,forge:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleforgec",
+            label: "Заказ: Кузня (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хотела бы что-то очень значительное, по-настоящему мощное, об изменениях и страданиях, которые несёт Кузня. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,forge:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				{
+		
+		        id: "commissionarticlegrail",
+            label: "Заказ: Чаша",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хотела бы что-то дразнящее об Алой Чаше. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,grail:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlegrailb",
+            label: "Заказ: Чаша (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она заинтересована в более внушительном отклике по поводу Алой Чаши и её соблазнов. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,grail:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlegrailc",
+            label: "Заказ: Чаша (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хочет прочесть что-то очень значительное, «бесстрашное», об Алой Чаше. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,grail:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"passion1",label:"Passion", required:{passion:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				
+				{
+		
+		        id: "commissionarticlemoth",
+            label: "Заказ: Мотылёк",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». В частности, ей нужно что-то уместно-загадочное о принципе, именуемом Мотылёк. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,moth:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlemothb",
+            label: "Заказ: Мотылёк (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хочет ознакомиться с внушительно-сложными загадками Мотылька. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,moth:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlemothc",
+            label: "Заказ: Мотылёк (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Мадам Олимпия Бекет ищет подходящие статьи для «Обзора Керишама». Она хочет очень значительную работу, объясняющую Мотылька и его тайны. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {bechet:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,moth:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"passion1",label:"Passion", required:{passion:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				
+				{
+		
+		        id: "commissionarticleheart",
+            label: "Заказ: Сердце",
+            aspects: {commission:1,job:1},
+            description: "Граф заплатит за интересующие его сведения. Сейчас он хотел бы получить заметки о плотских мистериях Сердца. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {jannings:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,heart:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleheartb",
+            label: "Заказ: Сердце (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Граф заплатит за интересующие его сведения. Сейчас он хотел бы прочесть внушительное исследование о плотских мистериях Сердца. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {jannings:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,heart:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleheartc",
+            label: "Заказ: Сердце (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Граф заплатит за интересующие его сведения. Сейчас он хотел бы прочесть очень значительное исследование о плотских мистериях Сердца. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {jannings:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,heart:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"passion1",label:"Passion", required:{passion:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+						{
+		
+		        id: "commissionarticleedge",
+            label: "Заказ: Грань",
+            aspects: {commission:1,job:1},
+            description: "Граф заплатит за интересующие его сведения. Сейчас он примет всё, что вы сможете собрать о практиках Грани. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {jannings:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,edge:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleedgeb",
+            label: "Заказ: Грань (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Граф заплатит за интересующие его сведения. Сейчас он хотел бы получить внушительную работу о практиках Грани. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {jannings:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,edge:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleedgec",
+            label: "Заказ: Грань (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Граф заплатит за интересующие его сведения. Сейчас он хочет прочесть очень значительный труд о практиках Грани. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {jannings:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,edge:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+						{
+		
+		        id: "commissionarticleknock",
+            label: "Заказ: Стук",
+            aspects: {commission:1,job:1},
+            description: "Поппи заплатит за интересующие её сведения. Сейчас она хотела бы получить собранные вами заметки о плотских мистериях Стука. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {poppy:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,knock:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleknockb",
+            label: "Заказ: Стук (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Поппи заплатит за интересующие её сведения. Сейчас она хотела бы увидеть внушительную работу о плотских мистериях Стука. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {poppy:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,knock:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleknockc",
+            label: "Заказ: Стук (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Поппи заплатит за интересующие её сведения. Сейчас она хотела бы увидеть очень значительный труд о плотских мистериях Стука. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {poppy:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,knock:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+								{
+		
+		        id: "commissionarticlewinter",
+            label: "Заказ: Зима",
+            aspects: {commission:1,job:1},
+            description: "Поппи заплатит за интересующие её сведения. Сейчас она хотела бы получить собранные вами заметки о плотских мистериях Зимы. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 2 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {poppy:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,winter:2}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	
+],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlewinterb",
+            label: "Заказ: Зима (внушительный)",
+            aspects: {commission:1,job:1},
+            description: "Поппи заплатит за интересующие её сведения. Сейчас она хотела бы увидеть внушительную работу о плотских мистериях Зимы. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 4 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {poppy:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,winter:4}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlewinterc",
+            label: "Заказ: Зима (очень значительный)",
+            aspects: {commission:1,job:1},
+            description: "Поппи заплатит за интересующие её сведения. Сейчас она хотела бы увидеть очень значительный труд о плотских мистериях Зимы. [Чтобы выполнить заказ, вам понадобится соответствующий осколок знания как минимум 6 уровня.]",
+			slots: [{id:"Patron",label:"Покровитель",actionId:"talk",required: {poppy:1}},{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1,winter:6}}],
+slots:[{id:"lore",label:"Знание", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"Разум", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"Разум", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+						
+		
+		
+]
+};

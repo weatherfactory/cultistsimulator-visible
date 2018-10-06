@@ -1,0 +1,83 @@
+﻿{
+"recipes": [
+{id: "lockfollowerincupboard",
+label: "Предать и заточить приспешника",
+actionId: "talk",
+requirements: {hq:1,follower:1},
+startdescription: "Этому телу найдётся иное применение. В чулан.",
+description: "Замок надёжен. Когда затихнут стуки и вопли, я укрощу жертву должным образом.",
+aspects: {capturefollower:1},
+effects: {notoriety:1},
+craftable:true,
+warmup:10
+},
+
+{id: "poppyoffer",
+label:"Разговор с Поппи Ласселс",
+actionId: "talk",
+requirements: {poppyready: 1},
+slots: [{id:"Consent",label:"Согласие",description:"Добавьте Страсть, чтобы принять, или Разум, чтобы тщательнее распросить Поппи.",required: {passion:1,reason:1}}],
+alternativerecipes: [{id: "poppyofferaccept",chance:100},
+{id:"poppyofferquery",chance:100}],
+startdescription: "«Дорогуша, мне надо поговорить с тобой. Временами я помогаю изучающим незримые искусства, и хотела бы предложить помощь и тебе. Сделать весомый вклад в твое дело. Всё, что потребуется от тебя — однажды познакомить меня с кем-нибудь ещё, кто правильно завершит дела». Она доброжелательно улыбается. [Добавьте <b>Страсть</b>, чтобы согласиться, или <b>Разум</b>, чтобы разузнать больше.]",
+description: "Предложение Поппи ещё не принято.",
+warmup:60,
+craftable: true
+},
+{id: "poppyofferaccept",
+label: "Принять предложение Поппи",
+actionId: "talk",
+requirements: {passion:1},
+startdescription: "«Да, отличное предложение. Я вернусь вечером»",
+description: "Маленький пакет маленьких сокровищ: подарок от Поппи. Она встретится со мной в Дни Рубищ; мне надо подготовить обещанное знакомство.",
+effects: {funds:10,compensationc:1,poppyready:-1},
+alternativerecipes: [{id:"poppytimebomb",chance:100,additional:true}]
+},
+{id: "poppyofferquery",
+label: "Тщательно расспросить Поппи",
+actionId: "talk",
+requirements: {reason:1},
+startdescription: "Кто-то, кто правильно завершит дела?",
+description: "«Да. Когда снова настанут Дни Рубищ, моему спонсору потребуется кто-то для завершения. Ты можешь предоставить услуги кого-то достаточно верного, или свои собственные. Как пожелаешь. Я не хочу тебя беспокоить».",
+effects: {influencewinter:1}
+},
+{
+id:"poppytimebomb",
+label:"Просьба Поппи",
+actionId:"poppytime",
+startdescription: "В Дни Рубищ Поппи вернётся...",
+description: ".",
+linked: [{id:"poppysafefornow",chance:7},
+{id:"poppywantssoul",chance:100}],
+warmup:300
+},
+{id:"poppysafefornow",
+actionId: "poppytime",
+label:"Молчание Поппи",
+startdescription:"Поппи можно заметить в городе; она помогает на благотворительных сборах, на её лице ласковая улыбка.",
+description: ".",
+linked: [{id: "poppytimebomb",chance:100}],
+warmup:10
+},
+
+{id:"poppywantssoul",
+label:"Дружеский визит Поппи",
+actionId: "poppytime",
+slots: [{id:"Sacrifice",label:"Жертва",required: {follower:1},forbidden:{hireling:1,summoned:1}}],
+alternativerecipes: [{id:"poppysatiated",chance:100}],
+warmup:60,
+signalEndingFlavour:Melancholy,
+ending: "wintersacrifice",
+startdescription: "«Время пришло, дорогуша. Солнцу-в-Рубище нужен его финал. Им станешь ты? Или у тебя есть друг?»",
+description: "."
+},
+{id:"poppysatiated",
+actionId: "poppytime",
+label:"Уместное завершение",
+requirements: {follower:1},
+startdescription: "«Ох, какая трогательная и верная дружба! Теперь попрощайся».",
+description: "Приспешника больше нет. Я остаюсь. Поппи Ласселс можно заметить то тут, то там. Может быть, наши беседы не закончены.",
+effects: {poppycommissionready:1,influencewinter:1,follower:-1}
+}
+]
+}

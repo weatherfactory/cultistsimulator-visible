@@ -1,0 +1,139 @@
+﻿{"elements":
+    [
+		 {
+        id: "aladim",
+            label: "Доктор Ибн аль-Адим",
+            aspects:
+            {tutoraramaic:1,tutor:1,patron:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Он сделал вам заказ.",
+unique:true,
+			xtriggers: {commissionfulfilled: aladimaway,killmortal:rumour,derangemortal:rumour},
+					slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}],
+        },
+		 {
+        id: "aladimready",
+            label: "Доктор Ибн аль-Адим",
+            aspects:
+            {tutoraramaic:1,tutor:1,patron:1},
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Ему не помешает ваша помощь.",
+			unique:true,
+			xtriggers: {commissiongiven: aladim,killmortal:rumour,derangemortal:rumour}
+        },
+					 {
+        id: "bechet",
+            label: "Мадам Бекет",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorgreek:1},
+            description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Она сделала вам заказ.",
+unique:true,
+			xtriggers: {commissionfulfilled: bechetaway,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}]
+        },
+		 {
+        id: "bechetready",
+            label: "Мадам Бекет",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorgreek:1},
+            description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Ей не помешает ваша помощь.",
+unique:true,
+			xtriggers: {commissiongiven: bechet,killmortal:corpse,derangemortal:lunatic}
+        },		 {
+        id: "jannings",
+            label: "Граф Джаннингс",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorlatin:1},
+            description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Он сделал вам заказ.",
+unique:true,
+			xtriggers: {commissionfulfilled: janningsaway,killmortal:corpse,derangemortal:lunatic},
+				slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}]
+        },
+		 {
+        id: "janningsready",
+            label: "Граф Джаннингс",
+            aspects:
+            {mortal:1,patron:1,tutor:1,tutorlatin:1},
+            description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Ему не помешает ваша помощь.",
+unique:true,
+			xtriggers: {commissiongiven: jannings,killmortal:corpse,derangemortal:lunatic}
+        },
+						 {
+        id: "poppyready",
+            label: "Поппи Ласселс",
+            aspects:
+            {mortal:1,patron:1},
+            description: "Любезная владелица. Она хотела бы поговорить с вами.",
+unique:true,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+				 {
+        id: "poppy",
+            label: "Поппи Ласселс",
+            aspects:
+            {mortal:1,patron:1},
+            description: "Любезная владелица.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic}
+        },
+						 {
+        id: "poppycommissionready",
+            label: "Поппи Ласселс",
+            aspects:
+            {mortal:1,patron:1},
+            description: "Любезная владелица. Ей не помешает помощь кое в чём.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic,commissiongiven:poppycommission},
+icon:"poppyready"
+        },
+						 {
+        id: "poppycommission",
+            label: "Поппи Ласселс",
+            aspects:
+            {mortal:1,patron:1},
+            description: "Любезная владелица. Она сделала вам заказ.",
+unique:true,
+xtriggers: {killmortal:corpse,derangemortal:lunatic,commissionfulfilled:poppyaway},
+				slots: [{id:"Commission",label:"Заказ",actionId:"talk",required: {commission:1}},
+					{id:"Manuscript",label:"Манускрипт",actionId:"talk",required:{article:1}}],
+icon:"poppy"
+        },
+		
+				 {
+        id: "aladimaway",
+            label: "Доктор Ибн аль-Адим",
+            description: "Доктор Ибн аль-Адим по прозвищу Алеппинец заинтересован в упущенных частях истории. Сейчас он отрезан от внешнего мира, но скоро вернётся.",
+lifetime:120,
+decayTo: "aladimready",
+icon:"aladim"
+        },
+					 {
+        id: "bechetaway",
+            label: "Мадам Бекет",
+            description: "Мадам Олимпия Бекет — редактор «Обзора Керишама», в котором публикуются материалы, слишком отвратительные или захватывающие для других журналов. Сейчас она занята подготовкой к выпуску, но скоро вернётся.",
+lifetime:120,
+decayTo: "bechetready",
+icon:"bechet"
+        },
+				 {
+        id: "janningsaway",
+            label: "Граф Джаннингс",
+			lifetime:120,
+			description: "Граф Готтлоб Джаннингс представляет континентальное братство физиков и дуэлянтов. Сейчас его нет в стране, но скоро он вернётся.",
+decayTo: "janningsready",
+icon:"jannings"
+        },
+		
+						 {
+        id: "poppyaway",
+            label: "Поппи Ласселс",
+            description: "Любезная владелица. Сейчас посетителей не принимает.",
+lifetime:120,
+decayTo: "poppycommissionready",
+icon:"poppy"
+        },
+		
+		
+]
+};

@@ -1,0 +1,346 @@
+{"elements":
+    [
+		 {
+        id: "commissionarticlesecrethistory",
+            label: "委托：秘史",
+            aspects: {},
+			description: "我必须<b>改变</b>",
+			lifetime:1,
+			decayTo:commissionarticlesecrethistories,
+			noartneeded:true
+        },
+				 {
+        id: "commissionarticlesecrethistoryb",
+            label: "委托：秘史",
+            aspects: {},
+			description: "我必须<b>改变</b>",
+			lifetime:1,
+			decayTo:commissionarticlesecrethistoriesb,
+			noartneeded:true
+        },
+				 {
+        id: "commissionarticlesecrethistoryc",
+            label: "委托：秘史",
+            aspects: {},
+			description: "我必须<b>改变</b>",
+			lifetime:1,
+			decayTo:commissionarticlesecrethistoriesc,
+			noartneeded:true
+        },
+				
+
+				 {
+        id: "commissionarticlesecrethistories",
+            label: "委托：秘史",
+            aspects: {commission:1,job:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，为你提供了一项委托。他希望你能为他提供任何有关世界秘史的情报。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+	slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+	{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+				 {
+        id: "commissionarticlesecrethistoriesb",
+            label: "委托：秘史 (详实)",
+            aspects: {commission:1,job:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，为你提供了一项委托。他正在寻找有关世界秘史的一篇详实的论文。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+				 {
+        id: "commissionarticlesecrethistoriesc",
+            label: "委托：秘史 (极其详实)",
+            aspects: {commission:1,job:1,job:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，为你提供了一项委托。他正在寻找一些有关世界秘史的特别晦涩的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+						slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		{
+		
+		        id: "commissionarticlelantern",
+            label: "委托：灯",
+            aspects: {commission:1,job:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，为你提供了一项委托。他希望你能为他提供任何有关灯之奥秘的情报。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:2}}],
+						slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+						{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlelanternb",
+            label: "委托：灯 (详实)",
+            aspects: {commission:1,job:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，为你提供了一项委托。他希望你能为他提供有关灯之奥秘的详实情报。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:4}}],
+						slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlelanternc",
+            label: "委托：灯 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "伊本·阿迪姆博士，外号阿勒颇人，为你提供了一项委托。他希望你能为他提供有关灯之奥秘的极其详实的调查。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {aladim:1}},{id:"Manuscript",actionId:"talk",required:{article:1,lantern:6}}],
+						slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+		{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				{
+		
+		        id: "commissionarticleforge",
+            label: "委托：铸",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找合适的文章。她想要获得一些有关铸之原理的灵感。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleforgeb",
+            label: "委托：铸 (详实)",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为“凯里夏姆的评论”寻找适合的文章。她想要获得一些有关铸之原理的详实情报。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots:[{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleforgec",
+            label: "委托：铸 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为“凯里夏姆的评论”寻找适合的文章。她想要获得一些有关铸所带来的改变和痛苦方面的极其详实的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,forge:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				{
+		
+		        id: "commissionarticlegrail",
+            label: "委托：杯",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找适合的文章。她想要获得一些令人兴奋的、有关赤杯的情报。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlegrailb",
+            label: "委托：杯 (详实)",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找适合的文章。她想要获得一些有关赤杯与其诱惑力的详实情报。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlegrailc",
+            label: "委托：杯 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找适合的文章。她想要获得一些有关赤杯的确实且极其详尽的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,grail:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"passion1",label:"热情", required:{passion:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				
+				{
+		
+		        id: "commissionarticlemoth",
+            label: "委托：蛾",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找适合的文章。她想要获得一些有关蛾之原理的有趣情报。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlemothb",
+            label: "委托：蛾 (详实)",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找适合的文章。她想要获得一些有关蛾的详实且神秘的情报。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlemothc",
+            label: "委托：蛾 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "奥林普·贝凯特夫人正在为《凯里夏姆评论》寻找适合的文章。她想要获得一些有关蛾与其神秘现象的极其详尽的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {bechet:1}},{id:"Manuscript",actionId:"talk",required:{article:1,moth:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"passion1",label:"热情", required:{passion:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+				
+				{
+		
+		        id: "commissionarticleheart",
+            label: "委托：忱",
+            aspects: {commission:1,job:1},
+            description: "伯爵愿意为他感兴趣的情报付酬。这一次，他希望能找到一些记录了忱之奥秘实质信息的笔记。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleheartb",
+            label: "委托：忱 (详实)",
+            aspects: {commission:1,job:1},
+            description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想找到一些有关忱之奥秘实质信息的详实情报。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleheartc",
+            label: "委托：忱 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想找到一些有关忱之奥秘实质信息的极其详实的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,heart:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"passion1",label:"热情", required:{passion:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+						{
+		
+		        id: "commissionarticleedge",
+            label: "委托：刃",
+            aspects: {commission:1,job:1},
+            description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想找到一些有关刃之实行的情报。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleedgeb",
+            label: "委托：刃 (详实)",
+            aspects: {commission:1,job:1},
+            description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想找到一些有关刃之实行的详实情报。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleedgec",
+            label: "委托：刃 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "伯爵愿意为他感兴趣的情报付出酬劳。这一次，他想找到一些有关刃之实行的极其详实的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {jannings:1}},{id:"Manuscript",actionId:"talk",required:{article:1,edge:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+						{
+		
+		        id: "commissionarticleknock",
+            label: "委托：启",
+            aspects: {commission:1,job:1},
+            description: "波碧愿意为她感兴趣的情报付出酬劳。这一次，她想找到一些有关启之奥秘实质信息的情报。[要完成此委任，你需要一个能与之匹配且至少2级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticleknockb",
+            label: "委托：启 (详实)",
+            aspects: {commission:1,job:1},
+            description: "波碧愿意为她感兴趣的情报付酬。这一次，她想得到一些有关启之奥秘实质信息的详实研究资料。[要完成此委任，你需要一个能与之匹配且至少4级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticleknockc",
+            label: "委托：启 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "波碧愿意为她感兴趣的情报付出酬劳。这一次，她想找到一些有关冬之奥秘实质信息的极其详实的情报。[要完成此委任，你需要一个能与之匹配且至少6级的学识碎片]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,knock:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+		
+								{
+		
+		        id: "commissionarticlewinter",
+            label: "委托：冬",
+            aspects: {commission:1,job:1},
+            description: "Poppy will pay for information of interest. This time, she'd like some notes on the corporal mysteries of the winter. [You'll need a matching Lore fragment of at least level 2 to complete this commission.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:2}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	
+],
+			xtriggers: {commissionfulfilled: compensation}
+        },
+		{
+		
+		        id: "commissionarticlewinterb",
+            label: "委托：冬 (详实)",
+            aspects: {commission:1,job:1},
+            description: "Poppy will pay for information of interest. This time, she'd like Substantial research on the corporal mysteries of the winter. [You'll need a matching Lore fragment of at least level 4 to complete this commission.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:4}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationb}
+        },
+		{
+		
+		        id: "commissionarticlewinterc",
+            label: "委托：冬 (极其详实)",
+            aspects: {commission:1,job:1},
+            description: "Poppy will pay for information of interest. This time, she'd like Very Substantial research on the corporal mysteries of the winter. [You'll need a matching Lore fragment of at least level 6 to complete this commission.]",
+			slots: [{id:"Patron",actionId:"talk",required: {poppy:1}},{id:"Manuscript",actionId:"talk",required:{article:1,winter:6}}],
+slots:[{id:"lore",label:"学识", required:{lore:1},actionId:"work"},
+{id:"reason1",label:"理智", required:{reason:1},actionId:"work"},
+{id:"reason2",label:"理智", required:{reason:1},actionId:"work"}	],
+			xtriggers: {commissionfulfilled: compensationc}
+        },
+						
+		
+		
+]
+};

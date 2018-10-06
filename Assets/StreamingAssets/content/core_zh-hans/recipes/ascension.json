@@ -1,0 +1,403 @@
+{
+"recipes": [
+
+
+	   {
+        id: "ascensionpower_upgradetoobsession",
+        label: "燃烧之匙",
+        actionId: "work",
+        requirements: {ascensionpowerb:1,
+		waystag_after:1,
+		forge:6},
+        effects: {ascensionpowerb:-1,ascensionpowerc:1},
+        startdescription: "这道仪式是令光阴之炉降临在我体内的关键。我将被永远改变。",
+        description: "仪式完成了。我身上出现了炉之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果检查我的身体，我会发现第三个印记。我因为新的需求容光焕发。",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+		
+	   {
+	   comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionm",
+        label: "叹息之匙",
+        actionId: "work",
+        requirements: {ascensionsensationbm:1,
+		waystag_after:1,
+		grail:6},
+        effects: {ascensionsensationbm:-1,ascensionsensationc:1},
+        startdescription: "这道仪式是令赤杯降临在我体内的关键。我将被永远改变。",
+        description: "仪式完成了。我身上出现了杯之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查我的身体，我会发现第三个。我因这新的欲望欢欣鼓舞。",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+		   {
+		comments: "male and female flavour; //TODO implement more elegantly",
+        id: "ascensionsensation_upgradetoobsessionf",
+        label: "叹息之匙",
+        actionId: "work",
+        requirements: {ascensionsensationbf:1,
+		waystag_after:1,
+		grail:6},
+        effects: {ascensionsensationbf:-1,ascensionsensationc:1},
+        startdescription: "这道仪式是令赤杯降临在我体内的关键。我将被永远改变。",
+        description: "仪式完成了。我身上出现了杯之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查我的身体，我会发现第三个。我因这新的欲望欢欣鼓舞。",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+			   {
+        id: "ascensionsensation_switchpolarity_mtof",
+        label: "偏好",
+        actionId: "dream",
+        requirements: {ascensionsensationbm:1},
+        effects: {ascensionsensationbm:-1,ascensionsensationbf:1},
+        startdescription: "我在梦中尽我所能达到了最远的地方。我必须执行我的<b>工作</b>。但有可能，在我思考我的需求的时候，并不总会想到男人……",
+        description: "口味会改，需求会变，想法会步入异途。",
+        warmup: 3,
+        craftable: true
+    },
+			   {
+        id: "ascensionsensation_switchpolarity_ftom",
+        label: "偏好",
+        actionId: "dream",
+        requirements: {ascensionsensationbf:1},
+        effects: {ascensionsensationbf:-1,ascensionsensationbm:1},
+        startdescription: "我在梦中尽我所能达到了最远的地方。我必须完成我的<b>工作</b>。但有可能，在我思考我的需求的时候，并不总会想到女人……",
+        description: "口味会改，需求会变，想法会步入异途。",
+        warmup: 3,
+        craftable: true
+    },
+
+	
+	   {
+        id: "ascensionenlightenment_upgradetoobsession",
+        label: "盲目之匙",
+        actionId: "work",
+        requirements: {ascensionenlightenmentb:1,
+		waystag_after:1,
+		lantern:6},
+        effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
+        startdescription: "这个仪式是令守夜人的凝视降临在我体内的关键。我将被永远改变。",
+        description: "仪式完成了。我身上出现了守夜人印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个。我的饥饿现已被精炼提纯。",
+        warmup: 60,
+        craftable: true,
+				burnimage: "flammarion"
+    },
+	   {
+        id: "majorforgevictory",
+        label: "黎明将至",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:50},
+        effects: {},
+        startdescription: "[This text is available when advanced legacies arrive.]",
+        description: "Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorforgevictory",
+        label: "忱之爆发",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:36},
+        effects: {},
+        startdescription: "我出入火海无数次。肉炉箅上的盘子层层叠叠。我对炉子施法，让热浪灼烧，从我身上烧掉从前的我。在通过三尖瓣门的时候我会死去，但死亡并不意味着结束。我会获得永生：一个长生者，受到炉的优待。",
+        description: "我快要成为火的名字。Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorforgevictory"
+    },	
+		   {
+        id: "majorgrailvictory",
+        label: "盛宴在附近",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:50},
+        effects: {},
+        startdescription: "[This text is available when advanced legacies arrive.]",
+        description: "盛宴要开始了。Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorgrailvictory",
+        label: "真实降生的盛宴",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:36},
+        effects: {},
+        startdescription: "我因他人的生命而肿胀。我身体的接缝开始破裂。现在我向赤杯祈求，她是山岳之母，她挥霍生命，她是万物之源。以她的名字我将给予我自己重生。三尖门打开了。我会获得永生：一个长生者，受到赤杯的优待。",
+        description: "我来了……",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorgrailvictory"
+    },
+		   {
+        id: "majorlanternvictory",
+        label: "灯",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:50},
+        effects: {},
+        startdescription: "[This text is available when advanced legacies arrive.]",
+        description: "I am approaching the Glory. Remember that the ending text will contain the payload.",
+        warmup: 60,
+        craftable: false
+    },
+	   {
+        id: "minorlanternvictory",
+        label: "神掠",
+        actionId: "work",
+        requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:36},
+        effects: {},
+        startdescription: "肉体所剩无几。我将穿过三尖门，一去不回。守夜人在等我。在他的足迹中，我会发现光界之光。我的灵魂无法承受更多理解，所以它会敞开。我不会得到永生：我将超越永生。",
+        description: "我来了……",
+        warmup: 60,
+        craftable: true,
+		signalEndingFlavour: Grand,
+		ending: "minorlanternvictory"
+    },
+	
+		{id:"ambition",
+		requirements: {seasonambitions:1},
+		label:"来自异域的渴求？",
+		actionId: "craving",
+		slots: [{id:"Obsessions",description: "深层的欲望。",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3}, greedy:true }],
+		startdescription: "对什么的饥渴在驱使我？",
+		description: "",
+		effects: {},
+		warmup: 10,
+		linked: [	
+		{id:"ascensioncravingpower",chance:100},
+		{id:"ascensioncravingsensation",chance:100},
+		{id:"ascensioncravingenlightenment",chance:100},
+		{id:"ascensionnotyet",chance:100}]
+		},
+		
+		{id:"ascensionnotyet",
+		label:"凡人的失意。",
+		actionId: "craving",
+		requirements: {enlightenmentmarks:-1,powermarks:-1,sensationmarks:-1},
+		slots: [{id:"Temptations",description: "火焰需要投喂。",required: {desire:1}, greedy:true }],
+		startdescription: "对什么的饥渴在驱使我？",
+		effects: {restlessness:1},
+		description: "至今，我只有其他凡人的需求和渴望。但是什么在我心中激起波澜？",
+		alternativerecipes: [
+		{id:"ascensionhintpower2",chance:100},
+		{id:"ascensionhintenlightenment2",chance:100},
+{id:"ascensionhintsensation2m",chance:100},
+		{id:"ascensionhintsensation2f",chance:100},
+		
+		{id:"ascensionhintpower1",chance:100},
+		{id:"ascensionhintenlightenment1",chance:100},
+		{id:"ascensionhintsensation1",chance:100},
+		{id:"legacydetectiveplotitem_tempt",chance:100}
+		],
+		warmup:10
+		},
+		
+		
+				{id:"ascensionhintpower2",
+		label:"炉之咆哮",
+		actionId:"craving",
+		requirements:{ascensionpowerb:1},
+		startdescription:"现在的我，从未得到过足够的温暖。",
+		description: "我曾梦见过炉，我渴望她火焰的热量。差不多是时候执行工作，带来改变了——但我必须要有足够的铸要素。 <b>探索</b> 可能会找到更多要素。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment2",
+		label:"守夜人之光",
+		actionId:"craving",
+		requirements:{ascensionenlightenmentb:1},
+		startdescription:"即使在行走的时候，我也能开始看到一些新的颜色。",
+		description: "我的好奇心开始变成了生理需求。我的眼睛将成为临界点。差不多是时候执行工作，带来改变了——但我必须要有足够的灯要素。<b>探索</b>可能会找到更多要素。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation2m",
+		label:"杯之触碰",
+		actionId:"craving",
+		requirements:{ascensionsensationbm:1},
+		startdescription:"我的欲望在改变。",
+		description: "杯中绝美的浪潮向我涌来。差不多是时候执行工作，带来改变了——但我必须要有足够的杯要素。<b>探索</b>可能会找到更多要素。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+						{id:"ascensionhintsensation2f",
+		label:"杯之触碰",
+		actionId:"craving",
+		requirements:{ascensionsensationbf:1},
+		startdescription:"我的欲望在改变。",
+		description: "杯用她绝美的手指触碰了我。差不多是时候执行工作，带来改变了——但我必须要有足够的杯要素。<b>探索</b>可能会找到更多要素。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		{id:"ascensionhintpower1",
+		label:"炉之辉光",
+		actionId:"craving",
+		requirements:{ascensionpowera:1},
+		startdescription:"饥饿在我心中燃烧——为那看不见的艺术可能带来的力量而饥饿。",
+		description: "光阴之炉在我的梦中守候着。如果我学到炉之秘识，梦见炉之诱惑，我会向目标更进一步。这份需求在侵蚀我。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+			{id:"ascensionhintenlightenment1",
+		label:"守夜人的足迹",
+		actionId:"craving",
+		requirements:{ascensionenlightenmenta:1},
+		startdescription:"饥饿在我的头脑中发热——为那看不见的艺术可能带来的知识而饥饿。",
+		description: "守夜人，作为眼中之门，在我的梦中守候着。如果我学到灯之秘识，梦见灯之诱惑，我会向目标更进一步。这份需求在侵蚀我。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+				{id:"ascensionhintsensation1",
+		label:"杯之私语",
+		actionId:"craving",
+		requirements:{ascensionsensationa:1},
+		startdescription:"饥饿在我体内游荡——为那看不见的艺术可能带来的愉悦而饥饿。",
+		description: "赤杯，淹没之杯，吞噬之杯，守候在我的梦中。如果我学到杯之秘识，梦见杯之诱惑，我会朝目标更进一步。这份渴求正在侵蚀我。",
+		effects:{restlessness:1},
+		warmup:10
+		},
+
+		{id:"ascensioncravingpower",
+		label:"有形之火",
+		actionId: "craving",
+		requirements: {powermarks:1},
+		slots: [{id:"Fuels",description: "火焰需要投喂。",required: {funds:1}, greedy:true }],
+		startdescription: "我需要更热的火。燃料稀缺又昂贵。如果我负担不起，寒冷就会压倒我。",
+		linked: [{id:"ascensionsuccesscravingpower_descend",chance:100},
+		{id:"ascensioncravingpower_ascend",chance:100}],
+		warmup:30
+		},
+		
+		{
+		id:"ascensionsuccesscravingpower_descend",
+		label:"易变之灰",		
+		actionId: "craving",
+		requirements: {funds:-1},
+		slots: [{id:"Pain",description: "我的渴求正在侵蚀我", required: {health:1,vitality:1}, greedy:true}],		
+		startdescription: "我在颤抖。一旦离开火，我的肉体将瘦削又虚弱。",
+		description: "我的力气更少了。我的血液更冷了。我甚至觉得我身上的一些伤口也在愈合。我被削弱了。",
+		aspects: {descend:1,damagehealth:1},
+		effects:{vitality:-1},
+		warmup:30
+		},
+		
+				{
+		id:"ascensioncravingpower_ascend",
+		label:"另一个印记",
+		actionId: "craving",
+		startdescription:"",
+		description: "火焰渴求我，正如我渴求火焰。火焰的触碰不仅仅只能带来疼痛。我拥有了另一个印记。",
+		effects: {vitality:2,funds:-1},
+		aspects: {ascend:1}
+		},
+		
+
+		
+		{id:"ascensioncravingsensation",
+		label:"红色的需求",
+		actionId: "craving",
+		requirements: {sensationmarks:1},
+				slots: [{id:"Sustenance",description: "新死之人，或者还活着的人。",required: {corpse:1, lunatic:-1, prisoner:1}, greedy:true }],
+				startdescription: "渴望鲜血？要是有那么简单就好了。我会一点不剩地吸吮干净。",
+		linked: [
+		{id:"ascensionsuccesscravingsensation_descend",chance:100},
+		{id:"ascensioncravingsensation_ascend",chance:100}
+		],
+		warmup:30
+		},
+
+		
+		{
+		id:"ascensionsuccesscravingsensation_descend",
+		label:"内心荒漠",		
+		actionId: "craving",
+		requirements: {corpse:-1,lunatic:-1,prisoner:-1},
+		slots: [{id:"Pain",description: "我的渴求正在侵蚀我", required: {passion:1,glimmering:1}, greedy:true}],		
+		startdescription: "没有了别人的生命，我的生命将自给自足。",
+		description: "血水变得稀薄。肉体变得干枯。蜕变的茧散开。热情随之黯淡。我离理想的自己更远了。",
+		aspects: {descend:1,fatiguing:1},
+		effects:{glimmering:-1},
+		warmup:30
+		},
+		
+		
+				{
+		id:"ascensioncravingsensation_ascend",
+		label:"另一个印记",
+		actionId: "craving",
+		effects: {glimmering:2,corpse:-1,lunatic:-1,prisoner:-1},
+		startdescription:"",
+			description: "完成之后，愉悦会如海中之月般深沉。另一个印记在我体内萌发了。",
+		aspects: {ascend:1}
+		},
+		
+		
+		
+				{id:"ascensioncravingenlightenment",
+		label:"光的猎奇",
+		actionId: "craving",
+		requirements: {enlightenmentmarks:1},
+		slots: [{id:"Conversation",description: "沉思者最后的遗言",required: {prisoner:1}, greedy:true }],
+		startdescription: "静室，安谧的时光和独处的沉思者。我只需要这些。",
+		linked: [,
+		{id:"ascensionsuccesscravingenlightenment_descend",chance:100},
+		{id:"ascensioncravingenlightenment_ascend",chance:100}],
+		warmup:30
+		},
+
+		
+		{
+		id:"ascensionsuccesscravingenlightenment_descend",
+		label:"内心荒漠",		
+		actionId: "craving",
+		requirements: {prisoner:-1},
+		slots: [{id:"Pain",description: "我的渴求正在侵蚀我", required: {reason:1,erudition:1}, greedy:true}],		
+		startdescription: "如果我不能摄入一位沉思者的思绪，我的需求会反噬我。",
+		description: "居所的光在我体内黯淡了。我退化了。我需要与人对话。我一定要得到那些特别的对话。",
+		aspects: {descend:1,fatiguing:1},
+		effects:{erudition:-1},
+		warmup:30
+		},
+		
+				{
+		id:"ascensioncravingenlightenment_ascend",
+		label:"另一个印记",
+		actionId: "craving",
+		effects: {erudition:2,prisoner:-1},
+		startdescription:"",
+		description: "我饮下了他脑中的光芒。他让我激颤而充盈。我体内的印记又亮了一层。",
+		aspects: {ascend:1}
+		},
+	
+		
+	
+	
+]
+}

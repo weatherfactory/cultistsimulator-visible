@@ -1,0 +1,151 @@
+ {"recipes":
+ [
+ 	{
+	id: "studyupgrade_downgrade_lore_hint",
+	label: "增进对无形之仪的了解？",
+	actionId: "study",
+	requirements: {lore:1,fragmentedge:-1,fragmentforge:-1,fragmentgrail:-1,fragmentheart:-1,fragmentknock:-1,fragmentlantern:-1,fragmentmoth:-1,fragmentsecrethistories:-1,fragmentwinter:-1},	
+	startdescription: "如果有两份要素相同、等级一致的学识碎片，我就能把它们放在一块研究，以此增进我的理解。如果使用理智，我就能分析学识，将其分解成级别稍低的碎片。或是用另一种学识来弱化它。",
+		craftable: false,
+		hintonly:true
+	},
+   	{
+	id: "studyupgradelore_hint",
+	label: "增进对无形之仪的了解？",
+	actionId: "study",
+	requirements: {lore:1},	
+	startdescription: "如果有两份要素相同、等级一致的学识碎片，我就能把它们放在一块研究，以此增进我的理解。或是用另一种学识来弱化它。",
+		craftable: false,
+		hintonly:true
+	},
+	
+	  
+ {id:"translatelatinhint",
+ label:"翻译拉丁文？",
+ actionId:"study",
+ requirements:{textlatin:1},
+ startdescription:"我的拉丁文水平还不足以解读它。我或许可以找本教材，或者找雇个老师。",
+ hintonly:true,
+ craftable:false
+ },
+ {id:"translategreekhint",
+ label:"翻译希腊语？",
+ actionId:"study",
+ requirements:{textgreek:1},
+ startdescription:"我的希腊语水平还不足以解读它。我或许可以找本教材，或者找雇个老师。",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ {id:"translatearamaichint",
+ label:"翻译亚拉姆语？",
+ actionId:"study",
+ requirements:{textaramaic:1},
+ startdescription:"我的亚拉姆语水平还不足以解读它。我或许可以找本教材，或者雇个老师。",
+ hintonly:true,
+ craftable:false
+ },
+ 
+   {id:"translatefucinehint",
+ label:"翻译富奇诺语？",
+ actionId:"study",
+ requirements:{textfucine:1},
+ startdescription:"我并不懂富奇诺语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
+ hintonly:true,
+ craftable:false
+ },
+   {id:"translatephrygianhint",
+ label:"翻译弗里吉亚语？",
+ actionId:"study",
+ requirements:{textphrygian:1},
+ startdescription:"我并不懂弗里吉亚语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
+ hintonly:true,
+ craftable:false
+ },
+ 
+   {id:"translatemandaichint",
+ label:"翻译深渊曼达安语？",
+ actionId:"study",
+ requirements:{textmandaic:1},
+ startdescription:"我并不懂深渊曼达安语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
+ hintonly:true,
+ craftable:false
+ },
+    {id:"translatevakh1int",
+ label:"翻译神代语？",
+ actionId:"study",
+ requirements:{textvak:1},
+ startdescription:"我并不懂神代语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
+ hintonly:true,
+ craftable:false
+ },
+ 
+ 
+	{
+        id: "increasehealthfurtherhint",
+        label: "变得更健康？",
+        actionId: "study",
+        requirements: {vitality:2},
+        startdescription: "想要变得更加健康，我需要拥有更多的活力。[使用技能：体魄能够进一步增进健康。]",
+
+        hintonly:true,
+        craftable: true
+    },
+			{
+        id: "increasereasonfurtherhint",
+        label: "变得更理性？",
+        actionId: "study",
+        requirements: {erudition:2},
+        startdescription: "想要变得更加理性，我需要拥有更多的博闻。[使用技能：学问来让自己更加理智。]",
+
+        hintonly:true,
+        craftable: true
+    },
+	
+		{
+        id: "increasepassionfurtherhint",
+        label: "变得更热情？",
+        actionId: "study",
+        requirements: {glimmering:2},
+        startdescription: "想要变得更加热情，我需要拥有更多的灵感。[使用技能：想象来让自己更富有热情。]",
+
+        hintonly:true,
+        craftable: true
+    },
+		
+		
+	{
+        id: "increasehealthfurtherhint1",
+        label: "变得更健康？",
+        actionId: "study",
+        requirements: {vitality:1},
+        startdescription: "我需要更多。",
+
+        hintonly:true,
+        craftable: true
+    },
+			{
+        id: "increasereasonfurtherhint1",
+        label: "变得更理性？",
+        actionId: "study",
+        requirements: {erudition:1},
+        startdescription: "我需要更多。",
+
+        hintonly:true,
+        craftable: true
+    },
+	
+		{
+        id: "increasepassionfurtherhint1",
+        label: "变得更热情？",
+        actionId: "study",
+        requirements: {glimmering:1},
+        startdescription: "我需要更多。",
+
+        hintonly:true,
+        craftable: true
+    },
+
+	
+]
+}

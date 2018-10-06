@@ -1,0 +1,68 @@
+﻿{"elements":
+    [
+			  
+	{id: "legacydetectivejob",
+	label: "Должность инспектора",
+	description: "Я в числе старших инспекторов столичной полиции.",
+	aspects: {job:1},
+	xtriggers: {careeradvancement:legacydetectivejob_matured}
+},
+{id: "legacydetectivejob_matured",
+	label: "Должность инспектора",
+	description: "Я в числе старших инспекторов столичной полиции, но по соглашению помогаю Бюро Подавления.",
+	aspects: {job:1},
+	slots:[{id:"target",label:"Субъект",required:{suspicious:1},description:"Пока нет улик, надо начать с непосредственного осмотра цели.",actionId:"work"},
+	{id:"meticulous",label:"Педантичность",description:"Чем больше Разума я уделю расследованию, тем выше шанс успеха.",required:{reason:1},actionId:"work"},
+	{id:"vigilant",label:"Настойчивость",description:"Чем больше Разума я уделю расследованию, тем выше шанс успеха.",required:{reason:1},actionId:"work"},
+	{id:"singleminded",label:"Сосредоточенность", description:"Чем больше Разума я уделю расследованию, тем выше шанс успеха.",required:{reason:1},actionId:"work"},],
+	xtriggers:{employment:legacydetectivejob_matured},
+	lifetime:90,
+	decayTo:"legacydetectivejob_suspended",
+	icon:"legacydetectivejob"
+	
+},
+
+{id: "legacydetectivejob_suspended",
+	label: "Должность инспектора [на грани увольнения]",
+	description: "Моё отсутствие замечено. Я на грани увольнения. [Подайте петицию о вашем случае, или навсегда утратите эту должность.]",
+	slots:[{id:"passion",label:"Страсть",required:{passion:1},actionId:"work"}],
+	aspects: {job:1},
+	xtriggers:{plead:legacydetectivejob_matured},
+	lifetime:90,
+	decayTo:"legacydetectivejob_disgraced"
+	},
+	
+	{id: "legacydetectivejob_disgraced",
+	label: "Должность инспектора [в опале]",
+	description: "Должность потеряна. Я вряд ли смогу её вернуть. Мне надо понять, как жить без своей формы.",
+	lifetime:120,
+	decayTo:"mystique"
+	},
+{id: "legacydetective_plotitem",
+label: "Запечатанная папка Бюро",
+aspects: {desire:1,text:1},
+description: "Данные по загадочному делу: #PREVIOUSCHARACTERNAME# — имя на обложке. Папка запечатана мною лично. Я слишком хорошо знаю, что в ней. Если открою её снова, могут вернуться сны."},
+											 {
+            id: "myevidence",
+            label: "Недостаточные улики",
+            description: "У меня есть свидетельства о занятиях цели.",
+			lifetime:300,
+			aspects:{suspicious:1},
+			xtriggers:{investigatingsuccess:myevidenceb}
+        },
+											 {
+            id: "myevidenceb",
+            label: "Убийственные улики",
+            description: "У меня есть точные данные о занятиях цели.",
+			lifetime:300,
+			aspects:{suspicious:1}
+        },
+		
+{id: "legacydetective_plotitem_burning",
+label: "Горящая папка Бюро",
+description: "Её почти нет.",
+lifetime: 10,
+noartneeded:true
+}
+] 
+};

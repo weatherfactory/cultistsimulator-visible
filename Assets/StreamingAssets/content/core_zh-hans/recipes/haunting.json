@@ -1,0 +1,296 @@
+ {"recipes": [
+ 
+ 
+		{id:"summoning_haunt_devourer",
+		actionId:"haunting",
+		startdescription:"它自由了！",
+		warmup:0,
+		linked: [{id: "summoning_haunt_devourer_eatsmortal",chance:50},
+		{id: "summoning_haunt_devourer_damages_health",chance:100}]
+
+},
+	
+		{id:"summoning_haunt_devourer_eatsmortal",
+	label: "潜伏的吞噬者",
+	actionId:"haunting",
+	startdescription: "那只从你那里逃走的召唤兽在这片区域游荡着，寻找并吞噬着凡人。",
+	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
+	comments: "目前尚未投入使用。我们只允许吞噬者毁灭证据，而不希望它困扰到调查人员，因此，可以想象到召唤者会很恼火。",
+	alternativerecipes:[
+{id:"devourer_haunting_mortal_highdevourer",chance:100},
+{id:"devourer_haunting_mortal_middevourer",chance:100},
+{id:"devourer_haunting_mortal_lowdevourer",chance:100}
+],
+	warmup:30
+	},
+	
+
+
+	  	   {id: "devourer_haunting_mortal_highdevourer",
+	   label: "逃脱的召唤兽接近了受害者",
+	  actionId:"haunting",
+	  startdescription:"表针每走一格它就更接近一些，像盘旋的风，像河中的波。",
+	  description:"死亡无形，但并非无声。",
+	  requirements: {mortal:1,devourer:10},
+	  linked: [{id:"devourer_haunting_mortal_success",chance:100},
+	  {id:"devourer_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+
+	  
+	  	  	   {id: "devourer_haunting_mortal_middevourer",
+	   label: "逃脱的召唤兽接近了受害者",
+	  actionId:"haunting",
+	  startdescription:"事到如今，牺牲品会注意到有些不对劲了。他们将在夜里留心响动，尝试做好准备。",
+	  description:". devourer_haunting_mortal_middevourer",
+	  requirements: {mortal:1,devourer:5},
+	  linked: [{id:"devourer_haunting_mortal_success",chance:70},
+	  {id:"devourer_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+
+	 {id: "devourer_haunting_mortal_lowdevourer",
+	   label: "逃脱的召唤兽接近了受害者",
+	  actionId:"haunting",
+	  startdescription:"这个造物只是个温和的威胁，但即使是温和的威胁有时也会致命。",
+	  description:". devourer_haunting_mortal_lowdevourer",
+	  requirements: {mortal:1,devourer:1},
+	  linked: [{id:"devourer_haunting_mortal_success",chance:30},
+	  {id:"devourer_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+	  
+	  	 {id: "devourer_haunting_mortal_success",
+	   label: "逃脱的召唤兽杀死了牺牲品",
+	  actionId:"haunting",
+	  startdescription:".",
+	  aspects: "killmortal",
+	  description: "那天的第一缕阳光将落在尸体睁开的眼睛上。这通常是一场不明智的召唤仪式的代价：但却并不总是由召唤者偿还。",
+	  aspects: {killmortal:1},
+	  effects: {notoriety:1,summoned:-1}
+	  },
+	  	  	 {id: "devourer_haunting_mortal_failure",
+	   label: "逃脱的召唤兽为牺牲品送上了恐惧",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "牺牲品幸存了下来，但有关这个夜晚的故事会像污迹一样蔓延开来。",
+	  effects: {notoriety:1,summoned:-1}
+	  },
+	
+	
+						{id:"summoning_haunt_devourer_damages_health",
+	label: "潜伏的吞噬者",
+	actionId:"haunting",
+	startdescription: "在回到地表以下之前，你那逃脱了的召唤兽将从你手里带走些什么。",
+	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	slots: [{id:"consuming",required: {health:1},greedy:true}],
+	warmup:30,
+alternativerecipes:	[
+{id:"devourer_haunting_damageshealth_highdevourer",chance:100},
+{id:"devourer_haunting_damageshealth_middevourer",chance:100},
+{id:"devourer_haunting_damageshealth_lowdevourer",chance:100}
+],
+},
+
+	
+	  	   {id: "devourer_haunting_damageshealth_highdevourer",
+	   label: "逃脱的召唤兽静候时机",
+	  actionId:"haunting",
+	  startdescription:"它是在逗弄我么？",
+	  description:".",
+	  requirements: {health:1,devourer:10},
+	  linked: [{id:"devourer_haunting_damageshealth_success",chance:100},
+	  {id:"devourer_haunting_damageshealth_failure",chance:100}
+	  ],
+	  },
+
+	  
+	  	  	   {id: "devourer_haunting_damageshealth_middevourer",
+	   label: "逃脱的召唤兽正在前方埋伏你",
+	  actionId:"haunting",
+	  startdescription:"有太多的办法可以销毁人类的肉体。我感觉自己的皮肤脆弱得犹如一道大敞的门。",
+	  description:". devourer_haunting_damageshealth_middevourer",
+	  requirements: {health:1,devourer:5},
+	  linked: [{id:"devourer_haunting_damageshealth_success",chance:70},
+	  {id:"devourer_haunting_damageshealth_failure",chance:100}
+	  ],
+	  },
+
+	 {id: "devourer_haunting_damageshealth_lowdevourer",
+	   label: "逃脱的召唤兽正在前方埋伏你",
+	  actionId:"haunting",
+	  startdescription:"我会留意窗外的动静，栓紧屋门，将橡木和银器准备在床头。这应该足够了……",
+	  description:". devourer_haunting_damageshealth_lowdevourer",
+	  requirements: {health:1,devourer:1},
+	  linked: [{id:"devourer_haunting_damageshealth_success",chance:30},
+	  {id:"devourer_haunting_damageshealth_failure",chance:100}
+	  ],
+	  },
+	  
+	  	 {id: "devourer_haunting_damageshealth_success",
+	   label: "逃脱的召唤兽残害了你",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "我会留下一个伤疤，那种可能有朝一日会被拍照在博物馆展出的疤痕。而邻居们会议论的；他们会如何议论……",
+	  aspects: {damagehealth:1},
+	 effects: {summoned:-1,notoriety:1}
+	  
+	  },
+	  	  	 {id: "devourer_haunting_damageshealth_failure",
+	   label: "逃脱的召唤兽没能战胜你",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "我比它厉害多了！但是我没法无声的解决掉它。人们会议论的。",
+	  effects: {summoned:-1,notoriety:1}
+	  },
+	  
+	  
+	
+			{id:"summoning_haunt_deceiver",
+		actionId:"haunting",
+		requirements: {deceiver:1},
+		startdescription:"它自由了！",
+		warmup:0,
+		linked: [{id: "summoning_haunt_deceiver_derangesreason",chance:100}],
+		comments: "欺诈者不会直接攻击。"
+
+},
+
+					{id:"summoning_haunt_deceiver_derangesreason",
+	label: "潜伏欺诈者",
+	actionId:"haunting",
+	startdescription: "你那逃脱了的召唤兽在困扰着你，试图使你绝望——",
+	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	slots: [{id:"Consuming",required: {reason:1},greedy:true}],
+	warmup:30,
+alternativerecipes:	[
+{id:"deceiver_haunting_reason_highdeceiver",chance:100},
+{id:"deceiver_haunting_reason_middeceiver",chance:100},
+{id:"deceiver_haunting_reason_lowdeceiver",chance:100}
+],
+},
+
+	  	   {id: "deceiver_haunting_reason_highdeceiver",
+	   label: "逃脱的召唤兽正在前方埋伏你",
+	  actionId:"haunting",
+	  startdescription:"人类的理智是脆弱的，而这东西令人无法抗拒。",
+	  description:".",
+	  requirements: {reason:1,deceiver:10},
+	  linked: [{id:"deceiver_haunting_reason_success",chance:100},
+	  {id:"deceiver_haunting_reason_failure",chance:100}
+	  ],
+	  },
+
+	  
+	  	  	   {id: "deceiver_haunting_reason_middeceiver",
+	   label: "逃脱的召唤兽正在前方埋伏你",
+	  actionId:"haunting",
+	  startdescription:"人类的理智是脆弱的，而这东西很有说服力。",
+	  description:". deceiver_haunting_reason_middeceiver",
+	  requirements: {reason:1,deceiver:5},
+	  linked: [{id:"deceiver_haunting_reason_success",chance:70},
+	  {id:"deceiver_haunting_reason_failure",chance:100}
+	  ],
+	  },
+
+	 {id: "deceiver_haunting_reason_lowdeceiver",
+	   label: "逃脱的召唤兽正在前方埋伏你",
+	  actionId:"haunting",
+	  startdescription:"人类的理智是脆弱的，但比起造成伤害这东西可能更多在是捣乱。",
+	  description:". deceiver_haunting_reason_lowedge",
+	  requirements: {reason:1,deceiver:1},
+	  linked: [{id:"deceiver_haunting_reason_success",chance:30},
+	  {id:"deceiver_haunting_reason_failure",chance:100}
+	  ],
+	  },
+	  
+	  	 {id: "deceiver_haunting_reason_success",
+	   label: "逃脱的召唤兽摧毁了你的梦",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "那晚的事情会久久地留在你的记忆之中；几天来，报社都在向当地的居民了解情况。",
+	  aspects: {damagereason:1},
+	 effects: {summoned:-1,notoriety:1}
+	  
+	  },
+	  	  	 {id: "deceiver_haunting_reason_failure",
+	   label: "逃脱的召唤兽没能击垮你的决心",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "那晚的事情会久久地留在你的记忆之中；然而那个从苏醒之上来的造物不是你的对手。但是几天来，报社都在向当地的居民了解情况。",
+	  effects: {summoned:-1,notoriety:1}
+	  },
+
+
+				{id:"summoning_haunt_deceiver_derangesmortal",
+	label: "潜伏欺诈者",
+	actionId:"haunting",
+	startdescription: "你那逃脱了的召唤兽在此地游荡，寻找并扰乱着普通人。",
+	description: "你召唤出来的造物已经回到了属于它的地方。现在，它不会再对你造成伤害了。",
+	effects: {notoriety:1},
+	aspects: {derangemortal:1},
+	slots: [{id:"Consuming",required: {mortal:1},greedy:true}],
+	comments: "目前尚未投入使用。我们只允许欺诈者毁灭证据，而不是去困扰调查人员，所以相对的，召唤者们仍然可能被打扰。",
+	alternativerecipes:[
+{id:"deceiver_haunting_mortal_highedge",chance:100},
+{id:"deceiver_haunting_mortal_midedge",chance:100},
+{id:"deceiver_haunting_mortal_lowedge",chance:100}
+],
+	warmup:30
+	},
+	
+
+
+	  	   {id: "deceiver_haunting_mortal_highedge",
+	   label: "逃脱的召唤兽接近了受害者",
+	  actionId:"haunting",
+	  startdescription:"人类的理智是脆弱的，而这东西令人无法抗拒。",
+	  description:".",
+	  requirements: {mortal:1,edge:10},
+	  linked: [{id:"deceiver_haunting_mortal_success",chance:100},
+	  {id:"deceiver_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+
+	  
+	  	  	   {id: "deceiver_haunting_mortal_midedge",
+	   label: "逃脱的召唤兽接近了受害者",
+	  actionId:"haunting",
+	  startdescription:"人类的理智是脆弱的，而这东西很有说服力。",
+	  description:". deceiver_haunting_mortal_midedge",
+	  requirements: {mortal:1,edge:5},
+	  linked: [{id:"deceiver_haunting_mortal_success",chance:70},
+	  {id:"deceiver_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+
+	 {id: "deceiver_haunting_mortal_lowedge",
+	   label: "逃脱的召唤兽接近了受害者",
+	  actionId:"haunting",
+	  startdescription:"人类的理智是脆弱的，但比起造成伤害这东西可能更多在是捣乱。",
+	  description:". deceiver_haunting_mortal_lowedge",
+	  requirements: {mortal:1,edge:1},
+	  linked: [{id:"deceiver_haunting_mortal_success",chance:30},
+	  {id:"deceiver_haunting_mortal_failure",chance:100}
+	  ],
+	  },
+	  
+	  	 {id: "deceiver_haunting_mortal_success",
+	   label: "逃脱的召唤兽为牺牲品送上了恐惧",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "只有最强大的精神才能生存下来。报社有一个奇异的故事可以刊登了。",
+	  aspects: {derangemortal:1},
+	  effects:{notoriety:1,summoned:-1}
+	  },
+	  	  	 {id: "deceiver_haunting_mortal_failure",
+	   label: "逃脱的召唤兽为牺牲品送上了恐惧",
+	  actionId:"haunting",
+	  startdescription:".",
+	  description: "牺牲品的决心依然坚定。报社有一个奇异的故事可以刊登了。",
+	  effects:{notoriety:1,summoned:-1}
+	  }
+	
+]
+}

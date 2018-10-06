@@ -1,0 +1,526 @@
+ {"recipes": [
+
+	
+	
+	{
+	id: "explorevaultperil_treacherousground_encounter",
+	actionId:"explore",
+	label: "诡变多端的地面",
+	startdescription: "拉人下陷的泥浆，欺人眼目的裂缝——大地急于吞吃我们。我们需要用灯照亮前路，或铸一盏灯。",
+	requirements: {peril_treacherousground:1},
+	slots:[{id:"Assistance", description: "我需要金钱支持我的探险，从者为我突破阻碍。",required: {follower:1,funds:1}}],
+	alternativerecipes: [
+	{id: "explorevaultperil_treacherousground_highlantern",chance:100},
+	{id: "explorevaultperil_treacherousground_highforge",chance:100},
+	{id: "explorevaultperil_treacherousground_midlantern",chance:100},
+	{id: "explorevaultperil_treacherousground_midforge",chance:100},
+	{id: "explorevaultperil_treacherousground_lowlantern",chance:100},	
+	{id: "explorevaultperil_treacherousground_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_treacherousground_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_treacherousground_highlantern",
+	actionId: "explore",
+	requirements:{lantern:10},
+	label:"我们召唤守夜人，指引前路之神。",
+	startdescription: "守夜人令我们视物清晰，不走错路。",
+		  description:".",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_treacherousground_midlantern",
+	actionId: "explore",
+	requirements:{lantern:5},
+	label:"我们召唤守夜人，照明驱暗之神。",
+	startdescription: "守夜人将美德赐给我们的灯火，令我们用其避开险境。可能成功，可能不成。",
+		  description:".",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_treacherousground_lowlantern",
+	actionId: "explore",
+	requirements:{lantern:1},
+	label:"我们召唤守夜人，无怜悯心之神。",
+		startdescription: "守夜人对我们和阻碍我们的对象两不偏袒。我们能否通过要看运气。",
+		  description:".",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_treacherousground_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"我们召唤拂晓，永葆平衡之神。",
+	startdescription:"我们祈求拂晓，铸与冬之时枢神护佑。我们将开辟一条自己的通路。我们定能成功。",
+		  description:".",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:100},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_treacherousground_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"我们召唤拂晓，靖以致静之神。",
+	startdescription:"拂晓乃铸与冬之时枢神，拥有可以平靖躁动大地的力量。也许我们能平安生还。",
+		  description:".",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:70},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_treacherousground_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"我们召唤拂晓，先于太阳之神。",
+	startdescription:"拂晓乃铸与冬之时枢神。铸带来力量，然而雾气现已升腾凝聚。也许我们能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_treacherousground_success",chance:30},
+	{id:"explorevaultperil_treacherousground_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_treacherousground_success",
+	actionId:"explore",
+	label: "平安通过诡变多端的土地",
+	startdescription: "我们身上尽是斑斑泥水和荆棘刺伤，但是我们成功了。",
+	description: ".",
+	effects: {peril_treacherousground:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_treacherousground_failure",
+	actionId:"explore",
+	label: "饥饿的大地",
+	startdescription: "这条看似安全可行的通路实为吃人的圈套。我们得绕回去再找一条路。",
+	description: ".",
+	craftable: false,
+		alternativerecipes:[{id:"explorevault_casualty",chance:70,additional:true, expulsion:{limit:1,filter:{follower:1}}}],
+	linked:	[{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	{
+	id: "explorevaultperil_forest_encounter",
+	actionId:"explore",
+	label: "危机四伏的森林",
+	startdescription: "目下树下的黑暗尚还安静，但这里不只我们存在。让蛾之要素为我指引方向，或铸之要素为我涤清道路。",
+	requirements: {peril_forest:1},
+	slots:[{id:"Assistance", description: "我需要金钱支持我的探险，从者为我突破阻碍。",required: {follower:1,funds:1}}],
+	alternativerecipes: [
+	{id: "explorevaultperil_forest_highmoth",chance:100},
+	{id: "explorevaultperil_forest_highforge",chance:100},
+	{id: "explorevaultperil_forest_midmoth",chance:100},
+	{id: "explorevaultperil_forest_midforge",chance:100},
+	{id: "explorevaultperil_forest_lowmoth",chance:100},	
+	{id: "explorevaultperil_forest_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_forest_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_forest_highmoth",
+	actionId: "explore",
+	requirements:{moth:10},
+	label:"我们召唤蛾，巡觅林地之神。",
+	startdescription: "居所下层的林地的黑暗更甚此地。蛾指引我们的脚步。",
+		  description:".",
+	linked: [{id:"explorevaultperil_forest_success",chance:100},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_forest_midmoth",
+	actionId: "explore",
+	requirements:{moth:5},
+	label:"我们召唤蛾，斑驳陆离之神。",
+	startdescription: "路上映出斑驳阴影。也许这是蛾神在为我们指路，也许。也许我们能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_forest_success",chance:70},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_forest_lowmoth",
+	actionId: "explore",
+	requirements:{moth:1},
+	label:"我们召唤蛾，颅内搏动之神。",
+		startdescription: "我们祈求蛾神护佑我于危难。森林以拍打的翅，以想象中的眼脉动着。也许我们能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_forest_success",chance:30},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_forest_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"钢铁与烈火",
+	startdescription:"精巧铸。无情铸。我们定能通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_forest_success",chance:100},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_forest_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"斧与灯",
+	startdescription:"森林将我们包裹，但我们内心务实，擅铸。也许我们能平安生还。",
+		  description:".",
+	linked: [{id:"explorevaultperil_forest_success",chance:70},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_forest_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"黄昏中的挣扎",
+	startdescription:"我们祈求铸之力护佑，助我披荆斩棘。前路艰难。也许我们能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_forest_success",chance:30},
+	{id:"explorevaultperil_forest_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_forest_success",
+	actionId:"explore",
+	label: "“穿过树林的光”",
+	startdescription: "我们看到前方有东西。我们成功穿过了森林。",
+	description: ".",
+	effects: {peril_forest:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_forest_failure",
+	actionId:"explore",
+	label: "愈加深沉的寂静",
+	startdescription: "我们迷路了。森林高耸，巨影倾倒在黄昏的天幕上。林中的野兽寂静无声，但我们时常能看到它们的眼睛。",
+	description: ".",
+	craftable: false,
+	alternativerecipes:[{id:"explorevault_casualty",chance:70,additional:true, expulsion:{limit:1,filter:{follower:1}}}],
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{
+	id: "explorevaultperil_mountains_encounter",
+	actionId:"explore",
+	label: "云中径",
+	startdescription: "高峻的山峰划破天空。让冬之要素免我受寒，或铸之要素为我开道。若两者皆无，探险必失败。",
+	requirements: {peril_mountains:1},
+	slots:[{id:"Assistance", description: "我需要金钱支持我的探险，从者为我突破阻碍。",required: {follower:1,funds:1}}],
+	alternativerecipes: [
+	{id: "explorevaultperil_mountains_highwinter",chance:100},
+	{id: "explorevaultperil_mountains_highforge",chance:100},
+	{id: "explorevaultperil_mountains_midwinter",chance:100},
+	{id: "explorevaultperil_mountains_midforge",chance:100},
+	{id: "explorevaultperil_mountains_lowwinter",chance:100},	
+	{id: "explorevaultperil_mountains_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_mountains_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_mountains_highwinter",
+	actionId: "explore",
+	requirements:{winter:10},
+	label:"我们召唤拂晓，永葆平衡之神。",
+	startdescription: "名为拂晓的时枢神惯于寒冷。祂令我们不至坠落。",
+		  description:".",
+	linked: [{id:"explorevaultperil_mountains_success",chance:100},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_mountains_midwinter",
+	actionId: "explore",
+	requirements:{winter:5},
+	label:"我们召唤拂晓，靖以致静之神。",
+	startdescription: "拂晓擅冬。祂或令我免遭雪崩。",
+		  description:".",
+	linked: [{id:"explorevaultperil_mountains_success",chance:70},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_mountains_lowwinter",
+	actionId: "explore",
+	requirements:{winter:1},
+	label:"我们召唤拂晓，先于太阳之神。",
+		startdescription: "黎明前的时辰惧怕名为拂晓，通晓严冬的时枢神。若我们奋起反抗，求祂护佑，或许祂会保我周全。",
+		  description:".",
+	linked: [{id:"explorevaultperil_mountains_success",chance:30},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_mountains_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"登山者之路",
+	startdescription:"我们精通铸之本领。我们定能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_mountains_success",chance:100},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_mountains_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"探索者之路",
+	startdescription:"我们内心务实，擅铸。也许我们能成功。",
+		  description:".",
+	linked: [{id:"explorevaultperil_mountains_success",chance:70},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_mountains_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"游荡者之路",
+	startdescription:"铸要素的从者既能干又务实，但禁不住漫漫山脊上岩石尖利，冰封雪盖。我们前路艰难。运气好的话或能通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_mountains_success",chance:30},
+	{id:"explorevaultperil_mountains_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_mountains_success",
+	actionId:"explore",
+	label: "穿过云中径",
+	startdescription: "满身冻伤，瑟瑟发抖的我们成功穿过高山。",
+	description: ".",
+	effects: {peril_mountains:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_mountains_failure",
+	actionId:"explore",
+	label: "愤怒的回响",
+	startdescription: "滑坡和雪崩将我们逼退。如果能生还，我们会换一条路走。",
+	description: ".",
+	craftable: false,
+	alternativerecipes:[{id:"explorevault_casualty",chance:70,additional:true, expulsion:{limit:1,filter:{follower:1}}}],
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	{
+	id: "explorevaultperil_desert_encounter",
+	actionId:"explore",
+	label: "荒漠",
+	startdescription: "这片广袤的土地犹如一个几达天边的土黄色火炉。到了夜晚，莽莽星空撒下冷冽的光。我门须得小心前行，或以铸铺就道路，或以杯避免干渴。",
+	requirements: {peril_desert:1},
+	slots:[{id:"Assistance", description: "我需要金钱支持我的探险，从者为我突破阻碍。",required: {follower:1,funds:1}}],
+	alternativerecipes: [
+	{id: "explorevaultperil_desert_highgrail",chance:100},
+	{id: "explorevaultperil_desert_highforge",chance:100},
+	{id: "explorevaultperil_desert_midgrail",chance:100},
+	{id: "explorevaultperil_desert_midforge",chance:100},
+	{id: "explorevaultperil_desert_lowgrail",chance:100},	
+	{id: "explorevaultperil_desert_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_desert_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_desert_highgrail",
+	actionId: "explore",
+	requirements:{grail:10},
+	label:"我们召唤女与巫，身为珍珠之神。",
+	startdescription: "女与巫护我穿过干旱地。",
+		  description:".",
+	linked: [{id:"explorevaultperil_desert_success",chance:100},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_desert_midgrail",
+	actionId: "explore",
+	requirements:{grail:5},
+	label:"我们召唤女与巫，不可触摸之神。",
+	startdescription: "我们召唤女与巫护我免遭太阳的炙烤和蜃景的迷惑。我们应能顺利通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_desert_success",chance:70},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_desert_lowgrail",
+	actionId: "explore",
+	requirements:{grail:1},
+	label:"我们召唤女与巫，不可分割之神。",
+		startdescription: "我们召唤女与巫保护我们不因旱地的沙暴失散。这样应该足够了。",
+		  description:".",
+	linked: [{id:"explorevaultperil_desert_success",chance:30},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_desert_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"炙阳之路",
+	startdescription:"我们的铸之本领可保我们平安穿过炙热的岩石路到达绿洲。我们会成功的。",
+		  description:".",
+	linked: [{id:"explorevaultperil_desert_success",chance:100},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_desert_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"干旱之路",
+	startdescription:"我们内心务实，擅铸。我们能够穿过炙热的岩石到达绿洲。",
+		  description:".",
+	linked: [{id:"explorevaultperil_desert_success",chance:70},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_desert_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"无情之路",
+	startdescription:"铸要素的从者既能干又务实，但禁不住此地险恶。我们或能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_desert_success",chance:30},
+	{id:"explorevaultperil_desert_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_desert_success",
+	actionId:"explore",
+	label: "灿烂的太阳",
+	startdescription: "太阳西沉。我们回首瞭望方才穿过的荒野，和它在暮光中显现的所有色彩。夜幕降临，群星闪烁。抚过我们的脸颊风如同冰冷的手。旅途继续。",
+	description: ".",
+	effects: {peril_desert:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_desert_failure",
+	actionId:"explore",
+	label: "愤怒的太阳",
+	startdescription: "日复一日，太阳令我们皮肤紧绷，口唇干燥，在我们的头顶倾泻毒辣的光。我们可能会迷路，也许已经迷路了。",
+	description: ".",
+	craftable: false,
+	alternativerecipes:[{id:"explorevault_casualty",chance:70,additional:true, expulsion:{limit:1,filter:{follower:1}}}],	
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+	
+	
+	
+	{
+	id: "explorevaultperil_sea_encounter",
+	actionId:"explore",
+	label: "薄暮群屿周边海域",
+	startdescription: "我们航行的海面风暴肆虐。我们要找寻的岛屿躲在没有地图上没有记载的历史中。我们需要忱或铸，或两者皆需。",
+	requirements: {peril_sea:1},
+	slots:[{id:"Assistance", description: "我需要金钱支持我的探险，从者为我突破阻碍。",required: {follower:1,funds:1}}],
+	alternativerecipes: [
+	{id: "explorevaultperil_sea_highheart",chance:100},
+	{id: "explorevaultperil_sea_highforge",chance:100},
+	{id: "explorevaultperil_sea_midheart",chance:100},
+	{id: "explorevaultperil_sea_midforge",chance:100},
+	{id: "explorevaultperil_sea_lowheart",chance:100},	
+	{id: "explorevaultperil_sea_lowforge",chance:100}],
+	warmup:30,
+	craftable: false,
+	linked: [{id:"explorevaultperil_sea_failure",chance:100}]
+	},
+	
+	{id:"explorevaultperil_sea_highheart",
+	actionId: "explore",
+	requirements:{heart:10},
+	label:"我们召唤女与巫，不可触摸之神。",
+	startdescription:"风暴因雷肤而起，又因巫与女而息。恰当的言词能够带我们平安驶过这片海域。",
+		  description:".",
+	linked: [{id:"explorevaultperil_sea_success",chance:100},
+	{id:"explorevaultperil_sea_failure",chance:100}]	  
+		  },
+		{id:"explorevaultperil_sea_midheart",
+	actionId: "explore",
+	requirements:{heart:5},
+	label:"我们召唤女与巫，不可分割之神。",
+	startdescription:"若风暴来袭，巫与女可保我们的船员和船只无虞。大概。",
+		  description:".",
+	linked: [{id:"explorevaultperil_sea_success",chance:70},
+	{id:"explorevaultperil_sea_failure",chance:100}]	  
+		  },
+		  	{id:"explorevaultperil_sea_lowheart",
+	actionId: "explore",
+	requirements:{heart:1},
+	label:"我们召唤女与巫，身为珍珠之神。",
+	startdescription:"巫与女虽并非海神，却行于海边。祂的庇护或许已足够保护我们。",
+		  description:".",
+	linked: [{id:"explorevaultperil_sea_success",chance:30},
+	{id:"explorevaultperil_sea_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_sea_highforge",
+	actionId: "explore",
+	requirements:{forge:10},
+	label:"水手的确信",
+	startdescription:"我们精通铸之本领。我们定能成功通过。",
+		  description:".",
+	linked: [{id:"explorevaultperil_sea_success",chance:100},
+	{id:"explorevaultperil_sea_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_sea_midforge",
+	actionId: "explore",
+	requirements:{forge:5},
+	label:"水手的气力",
+	startdescription:"我们内心务实，擅铸。也许我们能成功。",
+		  description:".",
+	linked: [{id:"explorevaultperil_sea_success",chance:70},
+	{id:"explorevaultperil_sea_failure",chance:100}]	  
+		  },
+		  
+		  	{id:"explorevaultperil_sea_lowforge",
+	actionId: "explore",
+	requirements:{forge:1},
+	label:"水手的希望",
+	startdescription:"铸要素的从者既能干又务实，但禁不住海况变化无常。我们得使出全身解数维持住航路。",
+		  description:".",
+	linked: [{id:"explorevaultperil_sea_success",chance:30},
+	{id:"explorevaultperil_sea_failure",chance:100}]	  
+		  },
+	
+			{
+	id: "explorevaultperil_sea_success",
+	actionId:"explore",
+	label: "平安驶过海域",
+	startdescription: "被海浪拍打，海水泼溅，阳光炙烤，盐渍粘身。但是我们到了。",
+	description: ".",
+	effects: {peril_sea:-1},
+	craftable: false,
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+				{
+	id: "explorevaultperil_sea_failure",
+	actionId:"explore",
+	label: "盐水与玄武岩的迷宫",
+	startdescription: "又是被风暴吹打的一日。我们肯定离目标不远了。然而群屿仿佛一座诱人发狂的迷宫，且我们要找的地方不存在于任何公开的海图上。",
+	description: ".",
+	craftable: false,
+	alternativerecipes:[{id:"explorevault_casualty",chance:70,additional:true, expulsion:{limit:1,filter:{follower:1}}}],	
+		linked: [{id:"explorevaulttick",chance:100}],
+		warmup:30
+	},
+	
+]
+}
+

@@ -1,0 +1,96 @@
+﻿{"elements":
+    [
+ {
+         id: "spirit_wintera_edge",
+            label: "Расколотый Восставший",
+            aspects:
+            {follower:1, summoned:1,winter:4,edge:4},
+            description: "Раздирающая сила затащила это тело назад к самому порогу жизни. Двигаясь, оно хрустит как разбитое стекло. Его кулаки во все стороны топорщатся обломками костей. Скоро оно рассыплется.",
+			lifetime: 60
+        },
+		{
+		         id: "spirit_wintera_moth",
+            label: "Цветущий Восставший",
+            aspects:
+            {follower:1, summoned:1,winter:4,moth:4},
+            description: "Ветви и корни Леса охватили члены этого мёртвого тела, раздули его голову словно тыкву, обвили его сердце. Его глаза влажно и хитро блестят, и оно двигается с рваным изяществом марионетки. Его кости — гнилое дерево; вскоре оно укоренится, но до тех пор это быстрый и тихий прислужник.",
+			lifetime: 60
+        },
+{        id: "spirit_winterb_heart",
+            label: "Безгласный Мертвец",
+            aspects:
+            {follower:1, summoned:1,winter:6,moth:6,deceiver:6},
+            description: "Иногда Мертвецы входят в Обитель через Белую Дверь. На этом пороге они навечно оставляют свою речь. Призовите их обратно в мир, и у них не будет голоса, но их пыльные покровы — в вашей власти.",
+			lifetime: 180
+        },
+		 {
+        id: "spirit_forgec_winter",
+            label: "Смог",
+            aspects:
+            {follower:1, summoned:1,forge:8,moth:8,deceiver:8},
+            description: "В углах Кузни, у самых пределов Обители, огонь Славы встречается с простыми элементами. Это коварный туман, проникающий в сны ваших врагов.",
+			lifetime: 180
+        },
+		 {
+        id: "spirit_grailc_moth",
+            label: "Сырой Пророк",
+            aspects:
+            {follower:1, summoned:1,grail:8,moth:8,deceiver:8},
+            description: "Иногда он делит, иногда объединяет, иногда предупреждает или советует о желаниях. Его пророчества — безумие, их шепот обескураживает.",
+			lifetime: 180
+        },
+		 {
+        id: "spirit_lanternc_edge",
+            label: "Блик",
+            aspects:
+            {follower:1, summoned:1,lantern:8,edge:8,devourer:8},
+            description: "Блики предпочитают таиться позади: за кулисами, за зеркалами, за вашей спиной. Они проскальзывают под дверями и убивают стеклом, но не в силах пережить взгляд живущих смертных.",
+			lifetime: 180
+        },
+		 {
+        id: "spirit_heartc_edge",
+            label: "Перкуссигант",
+            aspects:
+            {follower:1, summoned:1,heart:8,edge:8,devourer:8},
+            description: "Перкуссигант! Он ценит систра дрожь, он славит бой тимпанов, он нежно помнит, как лишился Марсий шкуры, и потому не будет
+			не будет
+			не будет свой танец прекращать.",
+			lifetime: 180
+        },
+		 {
+        id: "spirit_winterd_edge",
+            label: "Дева-в-Зеркале",
+            aspects:
+            {follower:1, summoned:1,winter:10,edge:10,devourer:10},
+            description: "«Подъём — стекло. Стены — ножи. Каждый шаг — кровь». Мертвецы, лежавшие перед свежеразбитым зеркалом, прошедшие через Павлиньи Врата, одолевшие Резкий Подъём: такие Мертвецы отправляются на службу Солнцу-в-Рубище.",
+			lifetime: 180
+        },
+		 {
+        id: "spirit_forgee_edge",
+            label: "Король Тигель",
+            aspects:
+            {follower:1, summoned:1,forge:12,edge:12,devourer:12,tutor:1,spirittutormandaic:1},
+            description: "«В ПУСТЫНЕ Я ЖДУ В РУИНАХ Я ГОРЮ — МЕТАЛЛ ВОДА — КАМЕНЬ ВОСК — ПЛОТЬ ДЫМ — ВОЙДИ В МЕНЯ И БОЛЬШЕ НЕ БУДЬ».",
+			lifetime: 180,
+			unique:true
+        },
+		 {
+        id: "spirit_graile_edge",
+            label: "Эзим, Второй Алчущий",
+            aspects:
+            {follower:1, summoned:1,grail:12,edge:12,devourer:12,tutor:1,spirittutorphrygian:1},
+            description: "«Меняй меня. Меняй меня. Меняй сильнее. А теперь: <i>мой</i> черед».",
+			lifetime: 180,
+			unique:true
+        },
+				 {
+        id: "spirit_lanterne_secret",
+            label: "Тереза",
+            aspects:
+            {follower:1, summoned:1,lantern:12,secrethistories:12,tutor:1,spirittutorfucine:1},
+            description: "«О, мир плоский; но ведь он точно плоский! Я ненадолго. Я не должна задерживаться. Расскажи мне тайну».",
+			lifetime: 180,
+			unique:true
+        }
+]
+};

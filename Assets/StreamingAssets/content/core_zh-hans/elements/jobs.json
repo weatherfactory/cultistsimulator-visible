@@ -1,0 +1,219 @@
+{elements:[
+		     {
+        id: "gloverandgloverjuniorjob",
+            label: "格洛弗父子公司的底层职位",
+            aspects:{job:1},
+            description: "我的才智必须被用到更合适的地方去！不过至少……现在的工资比干苦力的要多一些。[经常旷工会有降职之虞。]",
+			xtriggers: {careeradvancement:gloverandglover_difficultbossa_job,employment:gloverandgloverjuniorjob},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_demotion",
+        },
+				     {
+        id: "gloverandgloverjuniorjob_nodifficultbossa",
+            label: "格洛弗父子公司的底层职位",
+            aspects:{job:1},
+            description: "我的才智必须被用到更合适的地方去！不过至少……现在的工资比干苦力的要多一些。[经常旷工会有降职之虞。]",
+			xtriggers: {careeradvancement:gloverandgloverjob,employment:gloverandgloverjuniorjob_nodifficultbossa},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_demotion"
+        },
+		
+		
+								{
+		        id: "gloverandglover_difficultbossa_job",
+            label: "格洛弗父子公司的职位",
+			
+            aspects:
+            {annoyance:1,job:1},
+            description: "现在我是一名记录在案的职员，直接领导人是雅尔登先生。工资多了一点，下班也晚了一点。而雅尔登先生也一直把我看得紧紧的。[经常旷工会有降职之虞。]",
+xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvancement:gloverandgloverseniorjob,employment:gloverandglover_difficultbossa_job},
+			lifetime:59,
+			decayTo:"gloverandgloverjuniorjob_demotion"
+        },
+						     {
+        id: "gloverandglover_difficultbossa_gone_job",
+            label: "格洛弗父子公司的职位",
+            aspects:{job:1},
+            description: "那个叫雅尔登的人已经不在了，等我回到岗位上时，情况会变得更好。",
+			comments:"临时工将会立刻转正。"
+        },
+				     {
+        id: "gloverandgloverjob",
+            label: "格洛弗父子公司的职位",
+            aspects:{job:1},
+			slots: [{id:"Diligence",
+			actionId:"work",
+					required: {reason: 1},
+					description: "额外付出努力，如果我运气不错的话，就会迎来转机。"
+					}],
+            description: "工资多了一点，下班晚了一点，而坐在我先前桌位上的初阶职员，眼中正闪灭着嫉妒的火焰。[经常旷工会有降职之虞。]",
+			xtriggers: {careeradvancement:gloverandgloverseniorjob,employment:gloverandgloverjob},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_nodifficultbossa_demotion"
+        },
+						     {
+        id: "gloverandgloverjob_youngerglovergone",
+            label: "格洛弗父子公司的职位",
+            aspects:{job:1},
+			slots: [{id:"Diligence",
+			actionId:"work",
+					required: {reason: 1},
+					description: "额外付出努力，如果我运气不错的话，就会迎来转机。"
+					}],
+            description: "工资多了一点，下班晚了一点，而坐在我先前桌位上的初阶职员，眼中正闪灭着嫉妒的火焰。[经常旷工会有降职之虞。]",
+			xtriggers: {careeradvancement:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverjob_youngerglovergone},
+			lifetime:90,
+			decayTo:"gloverandgloverjuniorjob_nodifficultbossa_demotion"
+        },
+		{
+        id: "gloverandgloverseniorjob",
+            label: "格洛弗父子公司的高层职位",
+            aspects:{annoyance:1,job:1},
+			slots: [
+			{id:"Devotion",
+			required: {reason: 1},
+			actionId:"work",
+					description: "我现在的职位对人的要求十分苛刻，我必须集中精神。"
+				}],
+            description: "理论上讲，假如有上司死了，我就还能再继续升职。[经常旷工会有降职之虞。]",
+			xtriggers: {endannoyance:gloverandgloverseniorjob_youngerglovergone,employment:gloverandgloverseniorjob},
+			lifetime:60,
+			decayTo:"gloverandgloverjob_demotion"
+        },
+				{
+        id: "gloverandgloverseniorjob_youngerglovergone",
+            label: "格洛弗父子公司的高层职位",
+			aspects:{job:1},
+			slots: [
+			{id:"Devotion",
+			required: {reason: 1},
+			actionId:"work",
+					description: "我现在的职位对人的要求十分苛刻，我必须集中精神。"
+				}],
+            description: "随着小格洛弗的离去，我应该能升到更高的职位了。[经常旷工会有降职之虞。]",
+			xtriggers: {careeradvancement:gloverandglovertopjob,employment:gloverandgloverseniorjob_youngerglovergone},
+			lifetime:90,
+			decayTo:"gloverandgloverjob_youngerglovergone_demotion"
+        },
+		{
+        id: "gloverandglovertopjob",
+		aspects:{job:1},
+            label: "格洛弗父子公司董事席位",
+            description: "小格洛弗的消失在董事会中留下了空席，而我得到了它。[经常旷工会有降职之虞。]",
+			lifetime:100,
+			decayTo:"gloverandglovertopjob_tainted_demotion",
+			xtriggers:{employment:gloverandglovertopjob}
+        },
+				{
+        id: "gloverandglovertopjob_tainted",
+		aspects:{job:1},
+            label: "格洛弗父子公司董事席位",
+            description: "我对神秘事物感兴趣的流言传到了老格洛弗耳中。这可能会导致我的职位不稳。[经常旷工会有降职之虞。]",
+			lifetime:100,
+			decayTo:"gloverandglovertopjob_tainted_demotion",
+			xtriggers:{employment:gloverandglovertopjob_tainted}
+        },
+{
+        id: "gloverandgloverjuniorjob_demotion",
+		aspects:{job:1,demotion:1},
+            label: "职场困境：降为底层员工。",
+			slots:[{id:"passion",label:"说服",required:{passion:1},actionId:"work"}],
+            description: "旷工的事情暴露了。我也因此降职。我需要尽力说服上司来保住职位。",
+			xtriggers:{plead:gloverandgloverjuniorjob}
+        },
+						{
+        id: "gloverandgloverjuniorjob_nodifficultbossa_demotion",
+		aspects:{job:1,demotion:1},
+            label: "职场困境：降为底层员工。",
+			slots:[{id:"passion",label:"说服",required:{passion:1},actionId:"work"}],
+            description: "旷工的事情暴露了。我也因此降职。我需要尽力说服上司来保住职位。",
+			xtriggers:{plead:gloverandgloverjuniorjob_nodifficultbossa}
+        },
+						{
+        id: "gloverandgloverjob_demotion",
+		aspects:{job:1,demotion:1},
+            label: "职场困境：降职",
+			slots:[{id:"passion",label:"说服",required:{passion:1},actionId:"work"}],
+            description: "旷工的事情暴露了。我也因此降职。我需要尽力说服上司来保住职位。",
+			xtriggers:{plead:gloverandgloverjob}
+        },
+								{
+        id: "gloverandgloverjob_youngerglovergone_demotion",
+		aspects:{job:1,demotion:1},
+            label: "职场困境：降职",
+			slots:[{id:"passion",label:"说服",required:{passion:1},actionId:"work"}],
+            description: "旷工的事情暴露了。我也因此降职。我需要尽力说服上司来保住职位。",
+			xtriggers:{plead:gloverandgloverjob_youngerglovergone}
+        },
+								{
+        id: "gloverandglovertopjob_tainted_demotion",
+		aspects:{job:1,demotion:1},
+            label: "职场困境：降职危机",
+			slots:[{id:"passion",label:"说服",required:{passion:1},actionId:"work"}],
+            description: "公司对我这个职位的人还是比较宽容的，然而我旷工的事情已经被发觉了。我必须得想办法跟老格罗弗套套近乎了。",
+			xtriggers:{plead:gloverandglovertopjob_tainted}
+        },
+		
+			{id: "institutephysicianjob",
+			aspects:{job:1},
+	description: "工作时间长；但酬劳丰厚。",
+	label: "医疗所的职位"
+},
+
+			{id: "investmentsjobc",
+			aspects:{job:1},
+	label: "巨额外快",
+	description: "收入算得上十分丰厚了。",
+	aspects: {benign:1},
+		xtriggers: {decline: investmentsjobb}
+	
+},
+			{id: "investmentsjobb",
+	label: "大笔外快",
+		description: "这笔钱足够让我过得很舒服了。",
+	aspects: {benign:1},
+	xtriggers: {decline: investmentsjoba}
+	
+},
+			{id: "investmentsjoba",
+			aspects:{job:1},
+	label: "中等额度的外快",
+	description: "这样的收入足够支持我的日常开销，还有能结余。", 
+	aspects: {benign:1},
+	xtriggers: {decline: jumble}
+	
+},
+
+
+		{id: "mediumjob",
+		aspects:{job:1},
+	label: "作为灵媒名声远扬",
+	description: ""
+	
+},
+
+		{id: "auctioneerjob",
+		aspects:{job:1},
+	label: "奥瑞福莱姆拍卖行的职位",
+	description: ""
+	
+},
+
+		{id: "dancerjob",
+		aspects:{job:1},
+	label: "在蜕变俱乐部跳舞",
+	description: ""
+},
+	
+		{id: "priestjob",
+		aspects:{job:1},
+	label: "圣职薪俸",
+	description: ""
+	
+},
+
+
+
+
+
+]};

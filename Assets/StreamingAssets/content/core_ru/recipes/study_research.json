@@ -1,0 +1,1338 @@
+﻿ {"recipes": [
+		{
+	id: "studyknocklore",
+	label: "Изучить Знание, что Открывает",
+	actionId: "study",
+	requirements: {lore:2, knock:1},
+	effects:{project_upgrade_subvert_knock:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Есть заклинания, что снимают швы; в них молчание между словами столь же сильно, как и сами слоги. Открыв сущность, мы узнаем её суть. [Любое Знание, изученное со Стуком, становится Стуком.]",
+	description: ".",
+	warmup:30,
+	craftable: true
+	},
+
+	{
+	id: "studyupgradelore_edge",
+	label: "Изучить Знание Ножа",
+	actionId: "study",
+	requirements: {lore:2, edge:1,winter:-1,forge:-1,knock:-1},
+	effects: {project_upgrade_edge:1},
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Все величайшие конфликты заканчиваются смертью. Знание Ножа хранит уроки этих конфликтов. [Это повысит уровень знания Грани.]",
+	description: ".",
+	warmup:30,
+	craftable: true
+	},
+		{
+	id: "studysubvertlore_edgetowinter",
+	label: "Извратить Знание Ножа",
+	actionId: "study",
+	requirements: {lore:2, edge:1,winter:1},
+	effects: {project_subvert_edgetowinter:1},
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Всему приходит конец. Я буду размышлять о триумфе спокойствия над силой. [Это создаст знание Зимы вместо знания Грани.]",
+	description: ".",
+	warmup:30,
+	craftable: true
+	},
+
+	{
+	id: "studyforgelore",
+	label: "Изучить Знание, что Обжигает",
+	actionId: "study",
+	requirements: {lore:2, forge:1,edge:-1,lantern:-1,knock:-1},
+	effects:{project_upgrade_forge:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Лишь немногие знают, что кузнецы и убийцы произносят одни и те же молитвы. Я изучу эти молитвы.",
+	
+	warmup:30,
+	craftable: true
+	},
+	
+		{
+	id: "studysubvertlore_forgetoedge",
+	label: "Извратить Знание, что Обжигает",
+	actionId: "study",
+	requirements: {lore:2, forge:1,edge:1},
+	effects:{project_subvert_forgetoedge:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Час по имени Львокузнец расколол собственный меч, чтобы выйти из-под власти учителя. Всё можно преодолеть, если достанет сил. [Это создаст знание Грани вместо знания Кузни.]",
+	
+	warmup:30,
+	craftable: true
+	},
+	
+			{
+	id: "studygraillore",
+	label: "Изучить Сочное Знание",
+	actionId: "study",
+	requirements: {lore:2, grail:1,moth:-1,heart:-1,knock:-1},
+	effects:{project_upgrade_grail:1},
+
+	linked: [{id: "studyresearchtick",chance:100}],
+	startdescription: "Определённые слова умоляют, чтобы их произнесли. Соблазнительно провести время в мыслях о них — соблазнительно и, возможно, полезно.",
+	
+	warmup:30,
+	craftable: true,
+	},
+	
+		
+			{
+	id: "studysubvertlore_grailtomoth",
+	label: "Извратить Сочное Знание",
+	actionId: "study",
+	requirements: {lore:2, grail:1,moth:1},
+	effects:{project_subvert_grailtomoth:1},
+
+	linked: [{id: "studyresearchtick",chance:100}],
+	startdescription: "Говорят, что Чаша рождена из первой жертвы. Но Мотылёк знает лучше. [Это создаст знание Мотылька вместо знания Чаши.]",
+	
+	warmup:30,
+	craftable: true,
+	},
+	
+	
+				{
+	id: "studyheartlore",
+	label: "Изучить Знание Неостановимое",
+	actionId: "study",
+	requirements: {lore:2, heart:1,grail:-1,winter:-1,knock:-1},
+	effects:{project_upgrade_heart:1},
+
+	linked: [{id: "studyresearchtick",chance:100}],
+	startdescription: "Есть уроки, что познаёт каждый анатом, танцор и шаман.",
+	
+	warmup:30,
+	craftable: true,
+	},
+	
+					{
+	id: "studysubvertlore_hearttograil",
+	label: "Извратить Знание Неостановимое",
+	actionId: "study",
+	requirements: {lore:2, heart:1,grail:1},
+	effects:{project_subvert_hearttograil:1},
+
+	linked: [{id: "studyresearchtick",chance:100}],
+	startdescription: "То, что не остановится, падёт, в конце концов, пред соблазном. [Это создаст знание Чаши вместо знания Сердца.]",
+	
+	warmup:30,
+	craftable: true,
+	},
+
+
+		{
+	id: "studylanternlore",
+	label: "Изучить Знание Славы",
+	actionId: "study",
+	requirements: {lore:2, lantern:1,forge:-1,moth:-1,knock:-1},
+	effects:{project_upgrade_lantern:1},
+
+	linked: [{id: "studyresearchtick",chance:100}],
+	startdescription: "У практикующих незримые искусства есть пословица: «Слава посещает дом без стен». Я хочу знать больше о Славе.",
+	
+	warmup:30,
+	craftable: true,
+	},
+			{
+	id: "studysubvertlore_lanterntoforge",
+	label: "Извратить Знание Славы",
+	actionId: "study",
+	requirements: {lore:2, lantern:1,forge:1},
+	effects:{project_subvert_lanterntoforge:1},
+
+	linked: [{id: "studyresearchtick",chance:100}],
+	startdescription: "Маг Юлиан Коуслей утверждал, что Кузня Дней расщепила Солнце. Возможно, он был прав. [Это создаст знание Кузни вместо знания Лампады.]",
+	
+	warmup:30,
+	craftable: true,
+	},
+			{
+	id: "studymothlore",
+	label: "Изучить Знание Леса",
+	actionId: "study",
+	requirements: {lore:2, moth:1,lantern:-1,grail:-1,knock:-1},
+	effects:{project_upgrade_moth:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Когда дыхание черно на стекле, когда туман натягивает кожу, когда деревья ходят зимой, мы слышим эти слова.",
+	
+	warmup:30,
+	craftable: true
+	},
+	
+				{
+	id: "studysubvertlore_mothtolantern",
+	label: "Извратить Знание Леса",
+	actionId: "study",
+	requirements: {lore:2, moth:1,lantern:1},
+	effects:{project_subvert_mothtolantern:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Слава — это вопрос, и Мотылёк всегда отвечает «Да». [Это создаст знание Лампады вместо знания Мотылька.]",
+	
+	warmup:30,
+	craftable: true
+	},
+	
+				{
+	id: "studysecrethistorieslore",
+	label: "Изучить Истории",
+	actionId: "study",
+	requirements: {lore:2, secrethistories:1},
+	effects:{project_upgrade_secrethistories:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "История менее точна, чем нас учили. Я могу найти знания, присмотревшись к её размытым краям.",
+	
+	warmup:30,
+	craftable: true
+	},
+				{
+	id: "studywinterlore",
+	label: "Изучить Истрёпанное Знание",
+	actionId: "study",
+	requirements: {lore:2, winter:1,heart:-1,knock:-1},
+	effects:{project_upgrade_winter:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Эти слова леденят воздух и вытягивают цвет из моей кожи.",
+	
+	warmup:30,
+	craftable: true
+	},
+			{
+	id: "subvertwinterlore",
+	label: "Извратить Истрёпанное Знание",
+	actionId: "study",
+	requirements: {lore:2, winter:1,heart:1},
+	effects:{project_subvert_wintertoheart:1},
+
+	linked: [
+	{id: "studyresearchtick",chance:100}],
+	startdescription: "Даже в снегу, в молчании, в бесцветном белом, жизнь никогда не замирает полностью. [Это создаст знание Сердца вместо знания Зимы.]",
+	
+	warmup:30,
+	craftable: true
+	},
+
+					{
+	id: "studyresearchtick",
+	comments: "The lore 2 requirement means this is only available when someone has paired two lore fragments with an earlier recipe. This routes to opportunities to increase Insight.",
+	label: "Перспективный проект",
+	actionId: "study",
+	requirements:{lore:2},
+	startdescription: "Этот проект может быть успешен. Когда появятся условия для исследования, мне надо удовлетворить их, чтобы получить Озарение. Если я наберу три Озарения, я достигну успеха; в иных случаях я могу не справиться.",
+	description: ".",
+	warmup:30,
+	linked:[
+	{id: "studyresearchearlyconclusion",chance:100},
+	{id: "studyresearchneedsreason",chance:50},
+	{id: "studyresearchneedserudition",chance:50},
+	{id: "studyresearchneedsglimmering",chance:100}]
+	},
+			{
+	id: "studyresearchneedsreason",
+	label: "Тень растерянности",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:[{id:"Reason",label:"Разум",required: {reason:1}, greedy:true}],
+	alternativerecipes: [
+	{id: "studyresearchreasonsuccess",chance:100}],
+	startdescription: "Растерянность скрывает мой путь. Мне нужно больше Разума.",
+	description: "Мне нужен Разум, чтобы продолжить исследование.",
+	warmup:30,
+	craftable: false,
+		linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+				{
+	id: "studyresearchreasonsuccess",
+	label: "Сияние интеллекта!",
+	actionId: "study",
+	requirements: {reason:1},
+	effects: {insight:1},
+	craftable: false,
+	startdescription: "Задача занимает всё больше моего внимания. Но мои усилия оправданы! [Получено Озарение.].",
+	linked: [{id:"studyresearchtick",chance:100}],
+	aspects: {fatiguing:1}
+	},
+		{
+	id: "studyresearchneedserudition",
+	label: "Части головоломки",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:[{id:"Erudition",label:"Размышление",required: {erudition:1},consumes:true,greedy:true}],
+	alternativerecipes: [
+	{id: "studyresearcheruditionsuccess",chance:100}],
+	startdescription: "Моё исследование требует Размышления.",
+	description: "Моё исследование требует Размышления.",
+	warmup:30,
+	craftable: false,
+		linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+				{
+	id: "studyresearcheruditionsuccess",
+	label: "Части сочетаются!",
+	actionId: "study",
+	requirements: {erudition:1},
+	effects: {insight:1},
+	craftable: false,
+	startdescription: "Знание следует из знания. [Получено Озарение.]",
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+		{
+	id: "studyresearchneedsglimmering",
+	label: "Врата интуиции",
+	actionId: "study",
+	requirements: {},
+	effects: {},
+	slots:[{id:"Glimmering",label:"Мечтание",required: {glimmering:1},consumes:true,greedy:true}],
+	alternativerecipes: [
+	{id: "studyresearchglimmeringsuccess",chance:100}],
+	startdescription: "Моё исследование требует Мечтания.",
+	description: ".",
+	warmup:30,
+	craftable: false,
+	linked: [{id:"studyresearchconclusion",chance:100}]
+	},
+			{
+	id: "studyresearchglimmeringsuccess",
+	label: "Врата интуиции открыты!",
+	actionId: "study",
+	requirements: {glimmering:1},
+	effects: {insight:1},
+	startdescription: "Иногда Озарение приходит из неожиданных мест. [Получено Озарение.]",
+	craftable: false,
+	linked: [{id:"studyresearchtick",chance:100}]
+	},
+	{id: "studyresearchearlyconclusion",
+	actionId: "study",
+	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
+	requirements: {insight: 3},
+	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
+	},
+	{id: "studyresearchconclusion",
+	actionId: "study",
+	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
+	alternativerecipes: [
+	{id: "studyresearchmaxinsight",chance:100},
+	{id: "studyresearchmoderateinsight",chance:100},
+	{id: "studyresearchminimalinsight",chance:100},
+	{id: "studyresearchconsolation",chance:100},
+	]
+	},
+	
+						{
+	id: "studyresearchmaxinsight",
+	label: "Исследование завершено, полное озарение",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:100}],
+	actionId: "study",
+	requirements: {insight:3},
+	effects: {},
+	startdescription: "НАЧАТЬ studyresearchmaxinsight",
+	description: "ЗАВЕРШИТЬ studyresearchmaxinsight",
+	warmup:0,
+	comments: "This is currently a pass-through only; including for consistency.",
+	},
+					{
+	id: "studyresearchmoderateinsight",
+	label: "Исследование завершено, среднее озарение",
+		alternativerecipes: [
+	{id: "studyresearchsuccess",chance:70},
+	{id: "studyresearchconsolation",chance:100}],
+	actionId: "study",
+	requirements: {insight:2},
+	effects: {},
+	startdescription: "НАЧАТЬ studyresearchsomeinsight",
+	description: "ЗАВЕРШИТЬ studyresearchsomeinsight",
+	warmup:0
+	},
+						{
+	id: "studyresearchminimalinsight",
+	label: "Исследование завершено, минимальное озарение",
+	actionId: "study",
+	requirements: {insight:1},
+			alternativerecipes: [
+	{id: "studyresearchsuccess",chance:30},
+	{id: "studyresearchconsolation",chance:100}],
+	requirements: {},
+	effects: {},
+	startdescription: "НАЧАТЬ studyresearchnoinsight",
+	description: "ЗАВЕРШИТЬ studyresearchnoinsight",
+	warmup:0,
+	},
+							{
+	id: "studyresearchsuccess",
+	label: "Успех!",
+	actionId: "study",
+	requirements: {},
+	aspects: {restore:1},
+	effects: {insight:-100},
+	startdescription: ".",
+	description: "Я знаю нечто новое.",
+	warmup:0,
+	craftable: false,
+	linked: [
+	
+
+	
+		{id:"studyproject_upgrade_edge",chance:100},		
+		{id:"studyproject_upgrade_forge",chance:100},		
+		{id:"studyproject_upgrade_grail",chance:100},		
+		{id:"studyproject_upgrade_heart",chance:100},			
+		{id:"studyproject_upgrade_lantern",chance:100},		
+		{id:"studyproject_upgrade_moth",chance:100},		
+		{id:"studyproject_upgrade_secrethistories",chance:100},
+		{id:"studyproject_upgrade_winter",chance:100},
+		
+		{id:"studyproject_subvert_edgetowinter",chance:100},
+		{id:"studyproject_subvert_forgetoedge",chance:100},
+		{id:"studyproject_subvert_grailtomoth",chance:100},
+		{id:"studyproject_subvert_hearttograil",chance:100},
+		{id:"studyproject_subvert_lanterntoforge",chance:100},
+		{id:"studyproject_subvert_mothtolantern",chance:100},
+		{id:"studyproject_subvert_wintertoheart",chance:100},
+		
+		{id:"studyproject_upgrade_subvert_knock",chance:100},
+
+	
+	
+	
+	]
+	},
+	{id:"studyproject_upgrade_edge",
+	label:"Знание Ножа",
+	actionId:"study",
+	requirements:{project_upgrade_edge:1},
+	effects:{edge:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Знание Ножа, которое мы называем по аспекту: Грань."	
+	},
+
+	
+
+			{id:"studyproject_upgrade_forge",
+	label:"Знание, что Обжигает",
+	actionId:"study",
+	requirements:{project_upgrade_forge:1},
+	effects:{forge:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Знание, что Обжигает, которое мы называем по аспекту: Кузня."	
+	},
+			{id:"studyproject_upgrade_grail",
+	label:"Сочное Знание",
+	actionId:"study",
+	requirements:{project_upgrade_grail:1},
+	effects:{grail:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Сочное Знание, которое мы называем по аспекту: Чаша."	
+	},
+			{id:"studyproject_upgrade_heart",
+	label:"Знание Неостановимое",
+	actionId:"study",
+	requirements:{project_upgrade_heart:1},
+	effects:{heart:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Знание Неостановимое, которое мы называем по аспекту: Сердце."	
+	},
+			{id:"studyproject_upgrade_lantern",
+	label:"Знание Славы",
+	actionId:"study",
+	requirements:{project_upgrade_lantern:1},
+	effects:{lantern:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Знание Славы, которое мы называем по аспекту: Лампада."	
+	},
+			{id:"studyproject_upgrade_moth",
+	label:"Знание Леса",
+	actionId:"study",
+	requirements:{project_upgrade_moth:1},
+	effects:{moth:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Знание Леса, которое мы называем по аспекту: Мотылёк."	
+	},
+			{id:"studyproject_upgrade_secrethistories",
+	label:"Тайные Истории",
+	actionId:"study",
+	requirements:{project_upgrade_secrethistories:1},
+	effects:{secrethistories:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось узнать больше о Тайных Историях, скрытых за той, что нам известна."	
+	},
+			{id:"studyproject_upgrade_winter",
+	label:"Истрёпанное Знание",
+	actionId:"study",
+	requirements:{project_upgrade_winter:1},
+	effects:{winter:-1},
+	aspects:{epiphany:1},
+	description:"Мне удалось глубже вникнуть в Истрёпанное Знание, которое мы называем по аспекту: Зима."	
+	},
+
+
+	
+			{id:"studyproject_subvert_edgetowinter",
+	label:"Всему приходит конец",
+	actionId:"study",
+	requirements:{project_subvert_edgetowinter:1},
+	effects:{edge:-1},
+	aspects:{epiphany:1},
+	description:"Спокойствие побеждает силу. Моё знание Грани извращено в знание Зимы."	
+	},
+	
+			{id:"studyproject_subvert_forgetoedge",
+	label:"Сила побеждает всё",
+	actionId:"study",
+	requirements:{project_subvert_forgetoedge:1},
+	effects:{forge:-1},
+	aspects:{epiphany:1},
+	description:"Моя бывшая вера расколота. Так и моё знание Кузни извращено в знание Грани."	
+	},
+			{id:"studyproject_subvert_grailtomoth",
+	label:"Голод — это безумие",
+	actionId:"study",
+	requirements:{project_subvert_grailtomoth:1},
+	effects:{grail:-1},
+	aspects:{epiphany:1},
+	description:"Даже Алая Чаша подвержена жужжанию в мозгу. Моё знание Чаши извращено в знание Мотылька."	
+	},
+			{id:"studyproject_subvert_hearttograil",
+	label:"Что не остановится, должно стать пищей",
+	actionId:"study",
+	requirements:{project_subvert_hearttograil:1},
+	effects:{heart:-1},
+	aspects:{epiphany:1},
+	description:"Всё, что движется — уступит голоду. Моё знание Сердца извращено в знание Чаши."	
+	},
+			{id:"studyproject_subvert_lanterntoforge",
+	label:"Закат в Полдень",
+	actionId:"study",
+	requirements:{project_subvert_lanterntoforge:1},
+	effects:{lantern:-1},
+	aspects:{epiphany:1},
+	description:"Искусства Кузни в силах расщепить даже Солнце. Моё знание Лампады извращено в знание Кузни."	
+	},
+			{id:"studyproject_subvert_mothtolantern",
+	label:"Свет наверху",
+	actionId:"study",
+	requirements:{project_subvert_mothtolantern:1},
+	effects:{moth:-1},
+	aspects:{epiphany:1},
+	description:"Слава — это вопрос, и Мотылёк всегда отвечает «Да». Моё знание Мотылька извращено в знание Лампады."	
+	},
+
+			{id:"studyproject_subvert_wintertoheart",
+	label:"Жизнь внизу",
+	actionId:"study",
+	requirements:{project_subvert_wintertoheart:1},
+	effects:{winter:-1},
+	aspects:{epiphany:1},
+	description:"Приход зимы когда-то должен уступить весне. Моё знание Зимы извращено в знание Сердца."	
+	},
+	
+				{id:"studyproject_upgrade_subvert_knock",
+	label:"Всему надлежит открыться",
+	actionId:"study",
+	requirements:{project_upgrade_subvert_knock:1},
+	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
+	aspects:{epiphany:1},
+	description:"Открыв сущность, мы узнаем её суть. Мне удалось углубить понимание Знания, что Открывает, которое мы называем по аспекту: Стук.",	
+	linked:[{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",chance:100}]
+	},
+	{id:"studyproject_upgrade_subvert_knock_remove_spare_knock",
+	label:"Всему надлежит открыться",
+	comments:"This exists to remove a Knock lore, if we were combining Knock lores rather than Knock + another. Dangit Kennedy you wouldn't need hacks like this if you'd implemented OR conditions. Aspects don't *quite* always cut it.",
+	actionId:"study",
+	requirements:{lore:2},
+	effects:{knock:-1},
+	description:"."
+	},
+	
+	
+	
+								{
+	id: "studyresearchconsolation",
+	label: "Уроки опыта",
+	actionId: "study",
+	requirements: {},
+	effects: {insight:-100,erudition:1},
+	aspects: {restore:1},
+	startdescription: ".",
+	description: "Сейчас исследование закончилось провалом. Но стало полезным опытом.",
+	warmup:0,
+	craftable: false
+	},
+	
+			{
+	id: "studydowngradefragmentedgeb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentedgeb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentedgeb:-1,fragmentedge:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentedgec",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentedgec:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentedgec:-1,fragmentedgeb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentedged",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentedged:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentedged:-1,fragmentedgec:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentedgee",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentedgee:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentedgee:-1,fragmentedged:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentedgef",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentedgef:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentedgef:-1,fragmentedgee:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentedgeg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentedgeg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentedgeg:-1,fragmentedgef:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+	
+		{
+	id: "studydowngradefragmentforgeb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentforgeb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentforgeb:-1,fragmentforge:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentforgec",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentforgec:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentforgec:-1,fragmentforgeb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentforged",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentforged:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentforged:-1,fragmentforgec:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentforgee",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentforgee:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentforgee:-1,fragmentforged:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentforgef",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentforgef:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentforgef:-1,fragmentforgee:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentforgeg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentforgeg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentforgeg:-1,fragmentforgef:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+		{
+	id: "studydowngradefragmentgrailb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentgrailb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentgrailb:-1,fragmentgrail:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentgrailc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentgrailc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentgrailc:-1,fragmentgrailb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentgraild",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentgraild:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentgraild:-1,fragmentgrailc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentgraile",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentgraile:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentgraile:-1,fragmentgraild:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentgrailf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentgrailf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentgrailf:-1,fragmentgraile:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentgrailg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentgrailg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentgrailg:-1,fragmentgrailf:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+	
+		{
+	id: "studydowngradefragmentheartb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentheartb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentheartb:-1,fragmentheart:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentheartc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentheartc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentheartc:-1,fragmentheartb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentheartd",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentheartd:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentheartd:-1,fragmentheartc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmenthearte",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmenthearte:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmenthearte:-1,fragmentheartd:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentheartf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentheartf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentheartf:-1,fragmenthearte:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentheartg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentheartg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentheartg:-1,fragmentheartf:2},
+	warmup:60,
+	craftable: true
+	},
+
+
+	
+	
+	
+	
+	
+		{
+	id: "studydowngradefragmentknockb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentknockb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentknockb:-1,fragmentknock:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentknockc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentknockc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentknockc:-1,fragmentknockb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentknockd",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentknockd:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentknockd:-1,fragmentknockc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentknocke",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentknocke:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentknocke:-1,fragmentknockd:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentknockf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentknockf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentknockf:-1,fragmentknocke:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentknockg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentknockg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentknockg:-1,fragmentknockf:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+	
+	
+		{
+	id: "studydowngradefragmentlanternb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentlanternb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentlanternb:-1,fragmentlantern:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentlanternc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentlanternc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentlanternc:-1,fragmentlanternb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentlanternd",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentlanternd:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentlanternd:-1,fragmentlanternc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentlanterne",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentlanterne:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentlanterne:-1,fragmentlanternd:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentlanternf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentlanternf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentlanternf:-1,fragmentlanterne:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentlanterng",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentlanterng:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentlanterng:-1,fragmentlanternf:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+	
+		{
+	id: "studydowngradefragmentmothb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentmothb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentmothb:-1,fragmentmoth:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentmothc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentmothc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentmothc:-1,fragmentmothb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentmothd",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentmothd:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentmothd:-1,fragmentmothc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentmothe",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentmothe:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentmothe:-1,fragmentmothd:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentmothf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentmothf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentmothf:-1,fragmentmothe:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentmothg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentmothg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentmothg:-1,fragmentmothf:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+	
+	
+	
+	{
+	id: "studydowngradefragmentsecrethistoriesb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentsecrethistoriesb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentsecrethistoriesb:-1,fragmentsecrethistories:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentsecrethistoriesc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentsecrethistoriesc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentsecrethistoriesc:-1,fragmentsecrethistoriesb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentsecrethistoriesd",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentsecrethistoriesd:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentsecrethistoriesd:-1,fragmentsecrethistoriesc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentsecrethistoriese",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentsecrethistoriese:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentsecrethistoriese:-1,fragmentsecrethistoriesd:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentsecrethistoriesf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentsecrethistoriesf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentsecrethistoriesf:-1,fragmentsecrethistoriese:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentsecrethistoriesg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentsecrethistoriesg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentsecrethistoriesg:-1,fragmentsecrethistoriesf:2},
+	warmup:60,
+	craftable: true
+	},
+	
+	
+	
+	
+	
+	
+	{
+	id: "studydowngradefragmentwinterb",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentwinterb:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+	startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentwinterb:-1,fragmentwinter:2},
+	warmup:60,
+	craftable: true
+	},
+
+				{
+	id: "studydowngradefragmentwinterc",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentwinterc:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentwinterc:-1,fragmentwinterb:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentwinterd",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentwinterd:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentwinterd:-1,fragmentwinterc:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentwintere",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentwintere:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentwintere:-1,fragmentwinterd:2},
+	warmup:60,
+	craftable: true
+	},
+					{
+	id: "studydowngradefragmentwinterf",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentwinterf:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentwinterf:-1,fragmentwintere:2},
+	warmup:60,
+	craftable: true
+	},
+						{
+	id: "studydowngradefragmentwinterg",
+	label: "Назад к основам",
+	actionId: "study",
+	requirements: {fragmentwinterg:1, reason:1},
+	comments:"This doesn't participate in the research cycle - it's one-and-done.",
+	aspects:{fatiguing:1},
+		startdescription: "Иногда может понадобиться  отступить и вчитаться в основы конкретного осколка знаний. [Это разобьёт знание на два осколка меньшего уровня. Вы сможете вновь объединить их позднее, но разбить — проще, чем соединить.]",
+	description: "Анализ — род вивисекции. Разум — нож.",
+	effects:{fragmentwinterg:-1,fragmentwinterf:2},
+	warmup:60,
+	craftable: true
+	},
+]
+}

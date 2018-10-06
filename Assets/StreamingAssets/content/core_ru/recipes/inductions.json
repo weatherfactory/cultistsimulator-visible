@@ -1,0 +1,64 @@
+﻿ {"recipes": [
+	{
+        id: "heartinduction",
+        label: "Путь сердца",
+        actionId: "heartinduction",
+        effects: {vitality:1},
+		startdescription: "Когда вовлекается аспект Сердца, я могу получить Бодрость.",
+        description: "Моё собственное сердце сегодня бьётся сильнее.",
+        warmup: 30,
+        craftable: false
+    },
+		{
+        id: "lanterninduction",
+        label: "Свет в черепе",
+        actionId: "lanterninduction",
+        effects: {erudition:1},
+		startdescription: "Когда аспект Лампады проливает свет, я могу вновь подобрать затерянные крупицы знаний.",
+        description: "Разрозненные пыльные факты прояснились и соединились в моём мозгу. По крайней мере, временно.",
+        warmup: 30,
+        craftable: false
+    },
+		{
+        id: "mothinduction",
+        label: "Древнее, несчастное, дальнее",
+        actionId: "mothinduction",
+        effects: {restlessness:1},
+		startdescription: "Мотылёк находит свет в темноте. Как и я.",
+        description: "Меня томят полуосознанные влечения.",
+        warmup: 30,
+        craftable: false
+    },
+			{
+        id: "grailinduction",
+        label: "За пределами желания",
+        actionId: "grailinduction",
+        effects: {glimmering:1},
+		startdescription: "Удовлетворив желание, могу ли я усвоить хоть что-то из этого опыта?",
+        description: "Похоже на просветление.",
+        warmup: 30,
+        craftable: false
+    },
+				{
+        id: "dreadinduction",
+        label: "Ужасы ночи",
+        actionId: "dreadinduction",
+        effects: {dread:1},
+		startdescription: "Я просыпаюсь в ночи. Мои ладони, моё лицо — в крупных каплях пота.",
+        description: "Сжатые кулаки медленно расслабляются. Я вновь ускользаю в сон. Но что-то остаётся, как паутина в углах комнаты.",
+        warmup: 60,
+        craftable: false
+    },
+	
+					{
+        id: "fascinationinduction",
+        label: "Новые цвета",
+        actionId: "fascinationinduction",
+        effects: {fascination:1},
+		startdescription: "Я замечаю, что мир облекается в незнакомые мне цвета.",
+        description: "Я вижу то, что видеть не следует. Я знаю, это опасно. Но сложно сдержать влечение к этому.",
+        warmup: 60,
+        craftable: false
+    },
+]
+}

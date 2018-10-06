@@ -1,0 +1,59 @@
+    {"verbs":
+	[
+        {
+            "id": "work",
+            "label": "工作",
+            "description": "或赚钱糊口，或施行无形之仪。",
+			"atStart": true,
+						  slots: [{id:"Work",description: "或我能做的，或我了解的，或我身为的。",
+			  required:{ability:1,job:1,ritual:1,desire:1},
+			  forbidden:{reasonskill:1}
+			  }],
+			
+        },
+        {
+            "id": "dream",
+            "label": "入梦",
+            "description": "或休息，或重新思量你的追求，或冒险探索睡梦之国",
+			"atStart": false,
+			 slots: [{id:"Dream",description: "梦的方向，或待解的烦忧。",
+			  required:{ability:1,desire:1,illhealth:1,way:1,funds:1}
+			  }],
+        },
+				{
+            "id": "study",
+            "label": "研究",
+            "description": "解锁书籍和其他宝物。",
+			"atStart": false,
+						 slots: [{id:"Study",description: "研究秘术够耗尽十世人生。",
+						 required:{text:1,lore:1,ability:1, advancement:1,tutor:1,language:1}}],
+        },
+		{
+            "id": "talk",
+            "label": "谈话",
+            "description": "逼问，威胁，诱骗，教导，招募",
+				"atStart": false,
+			 slots: [{id:"Talk",description: "或仇敌，或盟友，或敌友难分之人。",
+			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1}}]
+		
+        },
+
+	  {
+            "id": "explore",
+            "label": "探索 ",
+            "description": "用健康或从者探索城市。在城中或考察某个场所，或探究新的学识。探索的成果通常是不可预料的。",
+			"atStart":false,
+			  slots: [{id:"Explore",description: "或地点，或人物，或场所，或秘密。",
+			  required:{health:1,follower:1,secrethistories:1,location:1},
+			  forbidden:{hireling:1}}],
+        },
+			  {
+            "id": "time",
+            "label": "时间",
+            "description": "日晷投下的阴影",
+			"atStart":false
+        }
+		]
+		
+    }
+	

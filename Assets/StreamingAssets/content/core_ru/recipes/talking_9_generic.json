@@ -1,0 +1,272 @@
+﻿{
+"recipes": [
+
+{id: "speakpublicly",
+label:"Речь об эзотерических материях",
+actionId: "talk",
+requirements: {society:-1,lore: 1},
+effects: {mystique:1},
+startdescription: "Разговор на публике о незримых искусствах привлечёт внимание. Возможно, именно оно мне и нужно.",
+description: ".",
+warmup: 60,
+craftable: true,
+deckeffect: {talkevents:1},
+linked:[{id: "talkfindacquaintance", chance: 100},
+		{id: "talkfindpatron",chance:100}],
+},
+
+
+	{
+        id: "talkfindacquaintance",
+        label: "Знакомство?",
+        actionId: "talk",
+        requirements: {dayacquaintances:1},
+		slots:[{id:"escalation",label:"Страсть",description:"Мои слова должны быть пылкими и убедительными.",required:{passion:1},greedy:true}],
+        startdescription: "Мне удалось найти возможную родственную душу — но сначала собеседника нужно увлечь. [Привлечение Знакомых требует Страсти.]",
+		alternativerecipes:[{id:"talkmeetacquaintance",chance:100}],
+        description: "Мне не хватило Страсти, чтобы привлечь новичка в мой круг. Возможно, в другой раз.",
+		effects:{season:-1},
+        warmup: 60
+    },
+					{
+        id: "talkfindpatron",
+        label: "Покровитель?",
+        actionId: "talk",
+        requirements: {daypatrons:1},
+		slots:[{id:"escalation",label:"Разум",description:"Мне нужно говорить ясно и уверенно.",required:{reason:1},greedy:true}],
+        startdescription: "Мне удалось найти личность, которая может открыть передо мной ценные возможности — осталось только произвести впечатление. [Чтобы впечатлить Покровителя, необходим Разум.]",
+		alternativerecipes:[{id:"talkmeetpatron",chance:100}],
+        description: "Моей ментальной энергии не хватило, чтобы убедительно показать, кто я на самом деле. Возможно, в другой раз.",
+		effects:{season:-1},
+        warmup: 60
+    },
+
+			{
+        id: "talkmeetacquaintance",
+        label: "Знакомство",
+        actionId: "talk",
+		requirements:{passion:1},
+        startdescription: "«За мной».",
+        description: ".",
+		deckeffect: {"acquaintances":1},
+				effects:{season:-1},
+        warmup: 5
+    },
+		 {
+        id: "talkmeetpatron",
+        label: "Покровитель",
+        actionId: "talk",
+		requirements:{reason:1},
+        startdescription: "«Мы можем обучиться друг у друга».",
+        description: ".",
+		deckeffect: {"scholarpatrons":1},
+				effects:{season:-1},
+        warmup: 5
+    },
+	
+	
+	{id: "talktotroublemaker",
+label:"Встреча на нейтральной территории.",
+actionId: "talk",
+requirements: {independent: 1,society:-1,ritual:-1},
+slots: [{id:"Subject",label:"Тема",description:"Тема разговора."}],
+alternativerecipes:[
+{id:"independentloreconversation",chance:100},
+{id:"independentdesireconversation",chance:100},
+],
+startdescription: "«Мы враги? Быть может, и так, но стоит ли?».",
+description: "Осмотрительный разговор в кофейне, открытой с раннего утра, промытой дождём и пронизанной прохладным ветром, что поднялся сразу после рассвета. Он не принёс знаний.",
+effects: {mystique:1},
+warmup: 60,
+craftable: true
+},
+
+	{id: "independentloreconversation",
+label:"Встреча на нейтральной территории.",
+actionId: "talk",
+requirements: {lore: 1},
+startdescription: "«Кажется, нам <i>есть</i>, что обсудить...»",
+description:"Приглушенная и полная умолчаний беседа при свете ламп; зёрна истины — словно золото в речной грязи. Кто знает? Возможно, однажды мы сможем поговорить доверительнее.",
+deckeffect: {troublemakerconversations:1}
+
+},
+
+	{id: "independentdesireconversation",
+label:"Встреча на нейтральной территории.",
+actionId: "talk",
+requirements: {desire: 1},
+startdescription: "«Вы предлагаете объединиться? Это не шутка?»",
+description:"«Возможно. Со временем. Докажите, что стоите того. Давайте обсудим...» [Если у вас есть культ, вы можете, хотя и с трудом, привлечь Смутьяна на свою сторону.]",
+deckeffect: {troublemakerconversations:1}
+},
+
+
+
+{id: "talktohunter",
+label:"Встреча с врагом",
+actionId: "talk",
+requirements: {hunter: 1},
+slots: [{id:"Subject",label:"Тема",description:"Тема разговора... или миньон, что позаботится о гибели угрозы."}],
+alternativerecipes:[
+{id:"hunterspeakpoison",chance:100},
+{id:"hunterspeakwinterg",chance:100},
+{id:"hunterspeakwinterd",chance:100},
+{id:"hunterspeakwinter",chance:100},
+{id:"hunterspeakdread",chance:100},
+{id:"hunterspeaklanterng",chance:100},
+{id:"hunterspeaklanternd",chance:100},
+{id:"hunterspeaklantern",chance:100},
+{id:"hunterspeakfascination",chance:100},
+
+
+
+
+
+{id:"hunterattackhighedge",chance:100},
+{id:"hunterattackmidedge",chance:100},
+{id:"hunterattacklowedge",chance:100},
+{id:"hunterattackhighwinter",chance:100},
+{id:"hunterattackmidwinter",chance:100},
+{id:"hunterattacklowwinter",chance:100},
+{id:"hunterattacknoedge",chance:100}
+],
+startdescription: "Возможно, мы сможем договориться. Или, возможно, я могу отправить кого-то атаковать эту цель.",
+description: "Это было опрометчиво. Возможно, мне не стоило так открываться.",
+effects: {notoriety:1},
+warmup: 60,
+craftable: true
+},
+
+
+{id: "talktospirit",
+label:"Разговор с призванным существом",
+actionId: "talk",
+requirements: {society:-1,follower: 1,summoned:1},
+slots: [{id:"Subject",label:"Тема",description:"Тема разговора... или цель."}],
+comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+alternativerecipes:[
+{id:"discussfucinespirit",chance:100},
+{id:"discussphrygianspirit",chance:100},
+{id:"discussmandaicspirit",chance:100},
+{id:"hunterattackhighedge",chance:100},
+{id:"hunterattackmidedge",chance:100},
+{id:"hunterattacklowedge",chance:100},
+{id:"hunterattacknoedge",chance:100},
+{id: "evidencedestroymidmoth",chance:100},
+{id: "evidencedestroylowmoth",chance:100},
+{id: "evidencedestroynomoth",chance:100},
+
+{id:"annoyanceseducehighgrail",chance:100},
+{id:"annoyanceattackhighedge",chance:100},
+{id:"annoyanceseducemidgrail",chance:100},
+{id:"annoyanceattackmidedge",chance:100},
+{id:"annoyancederangemidmoth",chance:100},
+{id:"annoyanceseducelowgrail",chance:100},
+{id:"annoyanceattacklowedge",chance:100},
+{id:"annoyancederangelowmoth",chance:100},
+{id:"annoyanceattacknoedge",chance:100},
+{id: "teresadiscusslocksmithsdream1",chance:100},
+{id: "teresadiscusslocksmithsdream2",chance:100},
+{id: "teresadiscusslocksmithsdream3",chance:100},
+],
+startdescription: "Не все пришельцы из Обители могут говорить, но все понимают речь смертных, даже если прошли через Белую Дверь.",
+description: "Ничего; мои слова замирают, как песок в стекле.",
+warmup: 60,
+craftable: true
+},
+
+{id: "discussfucinespirit",
+label:"Тема: обучение фуцинскому языку",
+actionId: "talk",
+requirements: {scholarlatin:1,summoned: 1,spirittutorfucine:1},
+startdescription: "«Фуцинский? Да, я знаю фуцинский. Я могу научить вас, если вы владеете латынью в качестве основы. Но позволите хоть одну остроту про „язык ведьм“, и урок окончен». [<b>ИЗУЧЕНИЕ</b> с Бальдомеровой позволит освоить фуцинский язык].",
+description: ".",
+craftable: true
+},
+{id: "discussphrygianspirit",
+label:"Тема: обучение фригийскому языку",
+actionId: "talk",
+requirements: {scholargreek:1,summoned: 1,spirittutorphrygian:1},
+startdescription: "«Фригийский! Язык Великой Матери! Конечно. Если вы достаточно знаете греческий язык, я обещаю, что учиться фригийскому будет <i>очень</i> приятно». [<b>ИЗУЧЕНИЕ</b> с Эзимом позволит освоить фригийский язык].",
+description: ".",
+craftable: true
+},
+
+{id: "discussmandaicspirit",
+label:"Тема: обучение глубокому мандейскому языку",
+actionId: "talk",
+requirements: {scholararamaic:1,summoned: 1,spirittutormandaic:1},
+startdescription: "«ВМЕСТЕ МЫ ПОМЯНЕМ ЯЗЫК НЕСГОРЕВШЕГО БОГА». [<b>ИЗУЧЕНИЕ</b> с Королём Тигелем позволит освоить глубокий мандейский язык].",
+description: ".",
+craftable: true
+},
+
+	  {id:"teresadiscusslocksmithsdream1",
+	  label:"Обсудить Сон Замочника, том 1",
+	  requirements:{spirit_lanterne_secret:1,locksmithsdream1:1,autographed:-1},
+	  actionId:"talk",
+	  startdescription:"«Хотите, я поставлю автограф? Думаю, будет очень забавно, не так ли?»",
+	  description:"«Я жила по соседству с Кэмденским шлюзом, когда начала вести эти записи. Если это совпадение — не шутка Часов, то я и не знаю, что тогда назвать шуткой. Давайте расскажу об источниках — »",
+	  effects:{erudition:1},
+	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  },
+	  	  	  {id:"teresadiscusslocksmithsdream2",
+	  label:"Обсудить Сон Замочника, том 2",
+	  requirements:{spirit_lanterne_secret:1,locksmithsdream2:1,autographed:-1},
+	  actionId:"talk",
+	  startdescription:"«Подписать? Получится даже изысканно, вам так не кажется? Всё равно никто не поверит, что автограф настоящий. Я ведь должна быть мертва».",
+	  description:"«Я всё-таки думаю, что Двери как-то связаны с работой мастеровых — с созиданием. Думаю, так мы и начали находить путь в Дом. Но, конечно, наши восхождения всегда были ограничены, пока мы не научились говорить. Я попробую объяснить...»",
+	  effects:{glimmering:1},
+	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  },
+	  	  {id:"teresadiscusslocksmithsdream3",
+	  label:"Обсудить Сон Замочника, том 3",
+	  requirements:{spirit_lanterne_secret:1,locksmithsdream3:1,autographed:-1},
+	  actionId:"talk",
+	  startdescription:"«Я напишу здесь своё имя, хорошо? Только то имя, которым меня звал Кристофер. Не то, которым пользуюсь здесь».",
+	  description:"«Ох, я была очень взволнована, когда это писала, правда? Извините. Но я была права, что смерть находится внизу. Это одна из причин, почему в Обители я обычно держусь на высоте. Попробую объяснить, о чём я, немного — »",
+	  effects:{glimmering:1},
+	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
+	  },
+
+{
+        id: "begincultfoundation",
+        label: "Основание мистической организации",
+		alternativerecipes:
+		[{id: "cultfoundation", chance:100, additional: true}],
+        actionId: "talk",
+        requirements: {acquaintance:1,society: -1,ritual:-1,location:-1},
+        effects: {notoriety:1},
+        startdescription: "У меня есть компаньон для возможной работы. Я могу надеяться на помощь, даже на послушание. Но сначала — у нас должно быть то, чему мы последуем. Общество; братство; орден; культ.",
+        description: "Истинный труд начат. Власти заинтересуются им. Мне надо быть наготове. [Вы начали создавать свой культ. Дополните его чем-то ещё, и сможете вербовать приспешников.]",
+        warmup: 10,
+        craftable: true,
+		maxexecutions: 1
+    },
+
+
+
+{id: "inspiremystique",
+actionId: "talk",
+label: "Привлечение внимания",
+effects: {mystique: 1},
+startdescription: "Час на час не приходится. Этот час — мой.",
+description: "Приоткрытые губы; блестящие глаза.",
+warmup: 10,
+craftable: false},
+
+
+	   {
+        id: "findacquaintanceopentalk",
+        label: "Знакомство",
+        actionId: "talk",
+        startdescription: "Я жду ответа на письмо.",
+        description: "Ответное письмо написано вежливыми и осторожными оборотами. Отправитель явно интересуется, откуда взят адрес для начала переписки; интересуется достаточно для личной встречи.",
+        warmup: 30,
+        craftable: false,
+		comments: "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+		deckeffect: {"acquaintances":1},
+		maxexecutions:1
+    }
+]
+}

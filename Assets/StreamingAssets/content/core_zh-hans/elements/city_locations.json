@@ -1,0 +1,73 @@
+{"elements":
+    [
+		{
+        id: "locationbookdealer",
+            label: "莫兰商店",
+            aspects:{location: 1},
+			slots: [{id:"Cost",
+					required: {funds: 1},
+					consumes: true,
+					actionId: "explore"
+					}
+				],
+            description: "这栋昏暗的小屋属于莫兰小姐所有，她出售稀有的书籍，其中有些十分危险。",
+			unique:true,
+			xtriggers:{exhaustlocation:locationbookdealer_exhausted}
+        },
+				{
+        id: "locationbookdealer_exhausted",
+            label: "莫兰商店 [Closed]",
+            aspects:{location: 1},
+            description: "这里曾是书商莫兰的旧址，但我现在必须去别的地方寻找知识了。",
+			unique:true,
+        },
+				{
+        id: "locationauctionhouse",
+            label: " 奥瑞福莱姆拍卖行",
+            aspects:{location: 1},
+            description: "奥瑞福莱姆拍卖行专注于古玩，香水，生物标本和稀有的文字资料。自从一场无法解释的大火毁了它的旧址，它现在在一栋狭小的房子里营业。[你可以在此处买卖物品。]",
+				slots:[{id:"Sell",description: "把物品放在此处来拍卖。", required: {auctionable:1},actionId:"explore"}],
+			unique:true
+        },
+										{
+        id: "locationcabaretclosed",
+            label: "蜕变俱乐部[关门中]",
+            description: "一件据传与神秘事件有关的夜总会。只在每周的特定夜晚开放；不久将会重新开始营业。",
+			unique:true,
+			lifetime:60,
+			decayTo: locationcabaret
+        },
+						{
+        id: "locationcabaret",
+            label: "蜕变俱乐部",
+            aspects:{location: 1,moth:1,grail:1},
+            description: "一件据传与神秘事件有关的夜总会。",
+			slots:[{id:"Entry", actionId: "explore", required:{funds:1},consumes:true}],
+			xtriggers:{locationcabaret:locationcabaretclosed},
+			unique:true
+        },
+
+		
+			{
+        id: "generichq",
+            label: "临时指挥所",
+            aspects:{hq: 1},
+			description: "我们的业务是保密的。我们可以使用更隐秘的地点。",
+			slots: [{id:"Cupboard",
+					description: "将一名追随者置于此处将其永久性地转化为囚徒。",
+					actionId: "talk",
+					required: {follower: 1},
+					forbidden:{summoned:-1} 
+				}],
+        unique:true
+        },
+				{
+        id: "locationstreetsstrange",
+            label: "在月光下呈现异象的街巷",
+            aspects:{location: 1},
+            description: "有时，月亮的光辉会成为开启其他空间的钥匙。我发现一个地方，有那么一两个晚上，街道会以十分离奇的方式变得扭曲。如果我走去那里，或许能洞察真知，又或许，会沾染上疯狂。",
+			lifetime:120
+        },
+
+]
+};

@@ -1,0 +1,321 @@
+{"elements":
+    [
+       
+		     {
+        id: "hunger",
+            label: "饥饿",
+            aspects:
+            {illhealth: 1,
+			  grail: 2,
+			  ingredient:1},
+			  slots: [{id:"Nourishment",actionId:"dream",description: "为了恢复，我必须进食。",required:{funds:1}}],
+            description: "为了恢复，我需要休养与食物。但是，当我涎水直淌，视线游离之际，我看见了那个赤色的杯子；它时不时便会同我讲话。[在饥饿卡牌消失前，可以通过入梦来恢复健康。]",
+			xtriggers: {restorehealth: health},
+			lifetime:60,
+			decayTo:"衰老"
+			},
+        {
+            id: "health",
+            label: "健康",
+            aspects:
+            {
+                heart: 1,
+				ingredient: 1,
+				ability:1
+            },
+            animFrames: 1,
+			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:fatigue,society:fatigue},
+			description: "属于我的这具身体。世间存在各种各样的身体，但这一具是属于我的。我的思想需要它，正如真菌需要泥土。[如果拥有足够多的活力，你可以变得更加健康。]"
+        },
+				 {
+            id: "vitality",
+            label: "活力",
+				  slots: [{id:"More Vitality",actionId:"study",description: "如果拥有足够多的活力，我还能变得更加健康。",required:{vitality:1}}],
+          aspects:
+            {advancement:1},
+            description: "锻炼，或者其他更少见的东西，令我精神振奋。[活力能够用于研究并凭之提升健康。如果未被使用，它会在三分钟后消失。]",
+		lifetime: 180
+        },
+		
+						 {
+            id: "restlessness",
+            label: "躁动",
+            aspects:
+            {influence:1, forge:3,grail:3,lantern:3},
+            description: "内心充满躁动。我似乎产生了某种……<i>企图</i>。究竟是什么样的企图呢？",
+		lifetime: 60,
+		decayTo:"恐惧"
+        },
+				{
+        id: "bloodshed",
+            label: "流血",
+			description:"鲜血涌出。",
+			lifetime:1
+			},
+			
+			{
+        id: "injury",
+            label: "伤口",
+            aspects:
+            {illhealth: 1,
+			  knock: 2,
+			  ingredient:1},
+			  			slots: [{id:"药物，或者……",actionId:"dream",description: "我需要花钱去看下医生……",required:{funds:1},actionId:"dream"},
+			{id:"……活力",description: "……但是，或许，我只要稍微休息一下，就能恢复。",required:{vitality:1},actionId:"dream"}],
+            description: "为了恢复，我需要休养与食物。但是，蚁母和善地望着你的创口。[在伤口卡牌消失前，可以通过入梦来恢复健康。]",
+			xtriggers: {restorehealth: health,rite:scar_knock,society:scar_knock},
+			lifetime: 150,
+			decayTo: "衰老"
+			},
+									{
+        id: "disillusionment",
+            label: "热情(幻灭)",
+            description: "我已经悖离了我自己的原则或偏好。[这张卡牌暂时不可用，但它会在六十秒后恢复。]",
+			lifetime: 60,
+			decayTo:"passion",
+			icon:"passion"
+			},
+												{
+        id: "passionexhausted",
+            label: "热情(耗尽)",
+            description: "我的热情逐渐褪去。[这张卡牌暂时不可用，但它会在六十秒后恢复。]",
+			lifetime: 60,
+			decayTo:"passion",
+			icon:"passion"
+			},
+						{
+        id: "fatigue",
+            label: "健康 (Fatigued)",
+            aspects:
+            {illhealth: 1},
+            description: "这张卡牌暂时不可用，但它会在六十秒后恢复。我能通过入梦让它更快地恢复。",
+			xtriggers: {restorehealth: health,damagehealth:injury},
+			lifetime: 60,
+			decayTo:"health",
+			icon:"health"
+			},
+			{
+			id: "affliction",
+            label: "苦难",
+            aspects:{illhealth: 1, winter:2,ingredient:1},
+			xtriggers: {restorehealth: health},
+						slots: [{id: "Medicine",label:"药物，或者……",actionId:"dream",description: "我需要花钱去看下医生……",required:{funds:1}},
+			{id:"活力",label:"……活力",actionId:"dream",description: "……但是，或许，我只要稍微休息一下，就能恢复。",required:{vitality:1}}],
+            description: "疾病令我虚弱。为了恢复，我需要休养和食物。[在苦难卡牌消失前，可以通过入梦来恢复健康。]",
+			lifetime: 180,
+			decayTo: "衰老"
+			},
+        {
+            id: "reason",
+            label: "理性",
+            aspects:
+            {
+                lantern: 2,
+				ingredient:1,
+				ability:1
+            },
+            animFrames: 1,
+			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
+
+[With Erudition, you can Study to gain more Reason.]",
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration}
+				
+        },
+		        {
+            id: "concentration",
+            label: "理性 [Dimmed]",
+			description: "我的头脑陷入萎靡。[这张卡牌暂不可用，但它会在六十秒后恢复。]",
+			lifetime:60,
+			decayTo:"reason",		
+icon:"reason"
+        },
+				 {
+            id: "erudition",
+            label: "博学",
+			slots: [{id:"More Erudition",actionId:"study",description: "只要足够博闻，我就能提升自己的理性。",required:{erudition:1}}],
+            aspects: {advancement:1},
+            description: "最近，我学到了很多知识。也许我离提升不远了。[博闻能够用于研究并凭之提升理性。如果未被使用，它会在三分钟后消失。]",
+lifetime: 180
+        },
+			{id: "恐惧",
+            label: "恐惧",
+            aspects:
+            {edge: 2,
+			inducesdespair: 1,
+			influence:1,
+			illhealth:1},
+			slots:	[{id:"Reminders",actionId:"dream",required: {contentment:1},description:"我需要一点点的平和，或者一刻的欣喜。[过多的恐惧会摧毁你。安逸能够平息恐惧。][Too much Dread will destroy you. Contentment can cure it.]"}],
+            description: "我已经见得太多了。不知名的恐惧正在用利齿啃噬着我的希望；那是确实存在着的恐惧。",
+			lifetime: 180
+			},
+		        {
+            id: "passion",
+            label: "热情",
+            aspects:
+            {
+                moth: 2,
+				ingredient:1,
+				ability:1
+            },
+            animFrames: 1,
+			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
+			
+[With enough Glimmering, you can Study to gain more Passion.]",
+			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason,ritual:passionexhausted,society:passionexhausted}
+        },
+		
+		
+		        {
+            id: "衰老",
+            label: "衰老",
+			description: "有些创伤永远都不会完全愈合。[没能及时处理的伤口和饥饿会转变为衰老，它们再也不会恢复为健康。衰老会在你死亡之前一直存在。]",
+			aspects: {ability:1,winter:1},
+			xtriggers: {tohealth:health}
+            },
+		
+					 {
+            id: "glimmering",
+            label: "灵感",
+			slots: [{id:"More Glimmering",actionId:"study",description: "只要有足够的灵感，我就能增加热情。",required:{glimmering:1}}],
+            aspects:
+            {advancement:1},
+            description: "我的情感比平常更为激烈。有些事物我将永远也不会理解，它们永远都那么珍贵，但如今我离它们更近了一点。[灵感能够和阅读一起使用以获得热情。若是未被使用，它只会持续三分钟。]",
+			lifetime: 180
+        },
+		{id: "fascination",
+            label: "入迷",
+            aspects:
+            {moth:2,illhealth:1,influence:1},
+			              		slots:[{id:"Reminders",required: {dread:1},actionId:"dream",description:"灰色的现实坚定了我的灵魂。"}],
+            description: "光透过裂缝漏进来。我的思想比任何时候都清晰。我升得越高，见得越多。",
+			lifetime: 180
+			},
+		{
+		id: "scholarlatin",
+		label: "学术：拉丁语",
+		aspects: {language:1},
+		slots: [{id:"Text",
+		label: "未翻译文本",
+				required: {textlatin:1},
+				actionId:"study",
+			}],
+		description: "一门已死去的语言：犹如钻石般毫无生机。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+					{
+		id: "scholarfucine",
+		label: "学术：富奇诺语",
+		aspects: {language:1},
+				slots: [{id:"Text",
+				label: "未翻译文本",
+				required: {textfucine:1},
+				actionId:"study",
+			}],
+		description: "已经消失的富奇诺湖东侧曾有过一些住户。贺拉斯曾警告说，那里是女巫之地。而这便是他们所使用的语言。有些人将之称作“干瘪之语”，另一些人则称其为“女巫之语”。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+				{
+		id: "scholargreek",
+		label: "学术：希腊语",
+		aspects: {language:1},
+						slots: [{id:"Text",
+						label: "未翻译文本",
+				required: {textgreek:1},
+				actionId:"study",
+			}],
+		description: "毫无疑问你对每一种希腊语，无论是起源时期还是拜占庭时期，都十分精通。但是，拥有那些参考书籍总归是件好事。[部分书籍需翻译后方可阅读。]",
+		unique:true		
+		},
+					{
+		id: "scholarphrygian",
+		label: "学术：弗里吉安语",
+		slots: [{id:"Text",
+		label: "未翻译文本",
+				required: {textphrygian:1},
+				actionId:"study",
+			}],
+		aspects: {language:1},
+		description: "弗里吉亚人崇拜的伟大之母就是我们所称的赤杯。他们的土地曾见证过结绳姐妹会诞生，而他们的这门语言则是当年怒号之皮飞升时祷告所使用的语言。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+						{
+		id: "scholararamaic",
+		label: "学术；亚拉姆语",
+						slots: [{id:"Text",
+						label: "未翻译文本",
+				required: {textaramaic:1},
+				actionId:"study",
+			}],
+		aspects: {language:1},
+		description: "亚拉姆，与她这三千多年以来所养育的众多孩子所使用的语言。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+							{
+		id: "scholarmandaic",
+		label: "学术：渊深曼达安语",
+						slots: [{id:"Text",
+						label: "未翻译文本",
+				required: {textmandaic:1},
+				actionId:"study",
+			}],
+		aspects: {language:1},
+		description: "深远沙漠深处最深的仪式中隐藏最深的手迹。据说，它是那门蚁母与生俱来就会说的语言。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+									{
+		id: "scholarsanskrit",
+		label: "学术：梵语",
+						slots: [{id:"Text",
+						label: "未翻译文本",
+				required: {textsanskrit:1},
+				actionId:"study",
+			}],
+		aspects: {language:1},
+		description: "次大陆的神圣语言。四千年的诗歌、仪式和神秘的大门现在在你面前打开，只要你能从它如同莲花般卷曲的词汇中挣脱出来。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+									{
+		id: "scholarvak",
+		label: "学术：神代语",
+						slots: [{id:"Text",
+						label: "未翻译文本",
+				required: {textvak:1},
+				actionId:"study",
+			}],
+		aspects: {language:1},
+		description: "在众神兴起、猿猴直立之前，这便是在日之居所中听到的语言。[部分书籍需翻译后方可阅读。]",
+		unique:true
+		},
+		
+	
+			 {
+            id: "fleeting",
+            label: "念头",
+            description: "一时之念，转瞬即逝。",
+			aspects: {secrethistories: 2,moth:2,influence:1},
+			lifetime:30
+        },
+		{id: "contentment",
+		label: "安逸",
+		aspects: {lantern:2,heart:2,influence:1},
+		description: "我很开心，大概吧。[安逸抵御住了恐惧；但安逸很难持续。]",
+		lifetime: 60
+		},
+				{id: "scar_edge",
+		label:"Scar: Brutal Experience",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,edge:2}
+		},
+		
+				{id: "scar_knock",
+		label:"Scar: Half-Healed Fistula",
+		description:"Not all doors are wounds; but all wounds are doors. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,knock:2}
+		},
+				{id: "scar_winter",
+		label:"Scar: Old Wound",
+		description:"Step closer to the sunset, and see the first stars of night.[You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,winter:2}
+		},
+]
+};
