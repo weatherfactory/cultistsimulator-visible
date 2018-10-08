@@ -3,6 +3,49 @@
  
 
 	{
+        id: "recruitindependentzachary",
+        label: "Recruit Zachary?",
+        actionId: "talk",
+        requirements: {uqzachary:1, society:1},
+        startdescription: "'If I'm not with the Bureau, I should be with you? That doesn't follow.'",
+        description: "'No. I don't trust you.'",
+
+        warmup: 5,
+        craftable: true
+    },
+		{
+        id: "recruitindependentspencer",
+        label: "Recruit Spencer?",
+        actionId: "talk",
+        requirements: {uqspencer:1, society:1},
+        startdescription: "'No. Not them. Not you. Just me.'",
+        description: "'No. I don't trust you.'",
+
+        warmup: 5,
+        craftable: true
+    },
+		{
+        id: "recruitindependentconnie",
+        label: "Recruit Connie?",
+        actionId: "talk",
+        requirements: {uqconnie:1, society:1},
+        startdescription: "I don't think so. A strange road, yes. But not that strange.",
+        description: "'No. I don't trust you.'",
+
+        warmup: 5,
+        craftable: true
+    },
+		{
+        id: "recruitindependentnatalia",
+        label: "Recruit Natalia?",
+        actionId: "talk",
+        requirements: {uqnatalia:1, society:1},
+        startdescription: "'I don't think our doctrines converge.'",
+    description: "'No. I don't trust you.'",
+        warmup: 5,
+        craftable: true
+    },
+	{
         id: "recruitindependentedge",
         label: "Recruit a Troublemaker, by invoking a great power of Edge",
         actionId: "talk",
