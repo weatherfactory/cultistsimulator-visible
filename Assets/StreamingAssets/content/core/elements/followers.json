@@ -144,7 +144,7 @@
             {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
             animFrames: 1,
 			description: "Clovette's determined happiness now borders on the fanatical.",
-			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
+			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
 			uniquenessgroup:"uqclovette"
         },
 				 {
@@ -165,6 +165,15 @@
             description: "Clovette is always in motion. She laughs easily. Her smile is the crescent at the edge of the moon.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
+			uniquenessgroup:"uqclovette"
+        },
+		        id: "connie_c",
+            label: "Connie, a Conqueress",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:5,},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:connie_p,rebellion:clovette_r},
 			uniquenessgroup:"uqclovette"
         },
 		 {
