@@ -200,7 +200,8 @@ namespace Assets.CS.TabletopUI {
                     }
                     else
                     {
-                        NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
+                        //do nothing. We used to log this, but it's an issue when we are eg adding a -1 to remove an element that was added in play.
+                        // NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
                     }
 
                 }

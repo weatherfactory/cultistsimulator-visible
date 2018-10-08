@@ -100,17 +100,28 @@
         warmup: 60,
         craftable: false
     },
+			{id:"minorforgevictory_trigger",
+	actionId:"work",
+	        label: "The Conflagration of the Heart",
+	startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.",
+        requirements: {ritual: 1,
+		ascensionpowerf:1,
+		forge:36},
+		craftable:true,
+		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+		warmup:1,
+		effects:{follower:-3},
+		linked:[{id:"minorforgevictory_overture",chance:100}]
+		},
+		
+		
 	   {
         id: "minorforgevictory_overture",
         label: "The Conflagration of the Heart",
         actionId: "work",
-        requirements: {ritual: 1,
-		ascensionpowerf:1,
-		forge:36},
-        startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.",
+
         description: "I am becoming a name of fire. Remember that the ending text will contain the payload.",
         warmup: 60,
-        craftable: true,
 	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		signalEndingFlavour: Grand,
 		linked:[{chance:100,id:"belovedfarewell"},
@@ -152,17 +163,27 @@
 		signalEndingFlavour: Grand,
 		ending:"minorgrailvictory"
     },
+	{id:"minorgrailvictory_trigger",
+	actionId:"work",
+	label: "The Feast of the True Birth",
+	startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.",
+	        requirements: {ritual: 1,
+		ascensionsensationf:1,
+		grail:36},
+		craftable:true,
+		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+		warmup:1,
+		effects:{follower:-3},
+		linked:[{id:"minorgrailvictory_overture",chance:100}]		
+		
+	}
+	
 	   {
         id: "minorgrailvictory_overture",
         label: "The Feast of the True Birth",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionsensationf:1,
-		grail:36},
-        startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.",
+        actionId: "work",        
         description: ".",
         warmup: 60,
-        craftable: true,
 		signalEndingFlavour: Grand,
 		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		linked:[{chance:100,id:"belovedfarewell"},
@@ -484,17 +505,27 @@
 	{id:"minorforgevictory",chance:100}
 	],
     },
+	
+		{id:"minorlanternvictory_trigger",
+	actionId:"work",
+	        label: "The Incursus",
+	startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that.",
+		requirements: {ritual: 1,
+		ascensionenlightenmentf:1,
+		lantern:36},
+		craftable:true,
+		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+		warmup:1,
+		effects:{follower:-3},
+		linked:[{id:"minorlanternvictory_overture",chance:100}]		
+		
+	},
 	   {
         id: "minorlanternvictory_overture",
         label: "The Incursus",
         actionId: "work",
-		requirements: {ritual: 1,
-		ascensionenlightenmentf:1,
-		lantern:36},
-        startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that.",
         description: ".",
         warmup: 60,
-        craftable: true,
 		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		signalEndingFlavour: Grand,
 		linked:[{chance:100,id:"belovedfarewell"},
