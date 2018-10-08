@@ -41,7 +41,7 @@
             label: "Vitality: a Lesson Learnt ",
           aspects:
             {advancement:1,heart:2,influence:1},
-            description: "I am ready to improve. [Use this with your Health skill to improve the skill and gain Health. It lasts up to five minutes.]",
+            description: "I am ready to improve. [Use this with your Strength skill to improve the skill and gain Health. It lasts up to five minutes.]",
 		lifetime: 300
         },
 		
@@ -152,6 +152,15 @@
             description: "I soak up knowledge as a shadow soaks up light. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180
         },
+		
+								 {
+            id: "eruditionplus",
+            label: "Erudition: a Lesson Learnt",
+          aspects:
+            {advancement:1,lantern:2,influence:1},
+            description: "I am ready to improve. [Use this with your Scholarship skill to improve the skill and gain Health. It lasts up to five minutes.]",
+		lifetime: 300
+        },
 			{id: "dread",
             label: "Dread",
             aspects:
@@ -196,6 +205,15 @@ lifetime: 180
             {advancement:1,moth:1,influence:1},
             description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can be used with Study to gain Passion. It lasts only three minutes, if unused.]",
 			lifetime: 180
+        },
+		
+										 {
+            id: "glimmeringplus",
+            label: "Glimmering: a Lesson Learnt",
+          aspects:
+            {advancement:1,moth:2,influence:1},
+            description: "I am ready to improve. [Use this with your Imagination skill to improve the skill and gain Passion. It lasts up to five minutes.]",
+		lifetime: 300
         },
 		{id: "fascination",
             label: "Fascination",
