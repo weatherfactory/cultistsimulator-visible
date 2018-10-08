@@ -174,10 +174,21 @@
             {mortal:1,follower:1, disciple:1,exalted:1,edge:5},
             description: "[Not yet.]",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
+			xtriggers: {killmortal:corpse,promotionto_d_edge:connie_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
 			uniquenessgroup:"uqconnie"
         },
-		 {
+
+		{
+		        id: "connie_d",
+            label: "Connie, a Conqueress",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_d},
+			uniquenessgroup:"uqconnie"
+        },
+		{
         id: "dorothy_a",
             label: "Dorothy, an acquaintance",
             aspects:
@@ -418,9 +429,20 @@
             {mortal:1,follower:1, disciple:1,exalted:1,lantern:5},
             description: "[Not yet.]",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
+			xtriggers: {killmortal:corpse,promotionto_d_lantern:natalia_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
 			uniquenessgroup:"uqnatalia"
         },
+						{
+		        id: "natalia_d",
+            label: "Natalia, a Sage",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse, derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_d},
+			uniquenessgroup:"uqnatalia"
+        },
+		
 				 {
         id: "neville_a",
             label: "Neville, an acquaintance",
@@ -678,7 +700,18 @@
             {mortal:1,follower:1, disciple:1,exalted:1,knock:5},
             description: "[Not yet.]",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_c},
+			xtriggers: {killmortal:corpse,promotionto_d_lantern:spencer_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
+			uniquenessgroup:"uqspencer"
+        },
+		
+						{
+		        id: "spencer_d",
+            label: "Spencer, a Herald",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:10},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
 			uniquenessgroup:"uqspencer"
         },
 		
@@ -939,9 +972,21 @@
             {mortal:1,follower:1, disciple:1,exalted:1,knock:5},
             description: "[Not yet.]",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
+			xtriggers: {killmortal:corpse,promotionto_d_winter:zachary_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
 			uniquenessgroup:"uqzachary"
         },
+				
+						{
+		        id: "zachary_d",
+            label: "Zachary, an End",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_d},
+			uniquenessgroup:"uqzachary"
+        },
+		
 					 {
         id: "auclair_p",
             label: "Auclair, a prisoner",
