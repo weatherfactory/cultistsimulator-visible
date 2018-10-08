@@ -139,14 +139,33 @@
         hintonly:true,
         craftable: false
     },
-		
+				{
+        id: "increasehealthfurtherhintpluswithskill",
+        label: "Increase my Health?",
+        actionId: "study",
+        requirements: {vitalityplus:1,healthskill:1},
+        startdescription: "I'll need more Lessons Learnt.",
+
+        hintonly:true,
+        craftable: false
+    },
+			{
+        id: "increasehealthfurtherhintplus",
+        label: "Increase my Health?",
+        actionId: "study",
+        requirements: {vitalityplus:1},
+        startdescription: "I'll need to use this with my Health skill.",
+
+        hintonly:true,
+        craftable: false
+    },
 		
 	{
         id: "increasehealthfurtherhint1",
         label: "Increase my Health?",
         actionId: "study",
         requirements: {vitality:1},
-        startdescription: "I'll need more than one.",
+        startdescription: "I'll need more.",
 
         hintonly:true,
         craftable: false

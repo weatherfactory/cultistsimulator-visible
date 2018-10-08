@@ -5,10 +5,9 @@
 	aspects: {healthskill:1,ability:1},
 	description: "I have benefited from exercise. [Use this with four Vitality to gain more Health.]",
 	slots:[{id:"Health",actionId:"work",description:"I must devote my energies to this..",required:{health:1}},
-	{id:"V1",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
-	{id:"V2",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
-	{id:"V3",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
-	{id:"V4",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"}
+	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
+	{id:"V2",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Am I ready to grow stronger?",actionId:"study"},
+
 	],
 	xtriggers:{careeradvancement:skillhealthb}
 	},
@@ -19,12 +18,9 @@
 	aspects: {healthskill:2,ability:1},
 	slots:[
 		{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
-	{id:"V1",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?[Use this with six Vitality to gain more Health.]",actionId:"study"},
-	{id:"V2",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"},
-	{id:"V3",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"},
-	{id:"V4",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"},
-	{id:"V5",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"},
-	{id:"V6",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"}
+	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?[Use this with six Vitality to gain more Health.]",actionId:"study"},
+	{id:"V2",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"},
+	{id:"V3",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Shall I grow stronger yet?",actionId:"study"}
 	],
 	},	
 			{id: "skillhealthc",
@@ -34,14 +30,10 @@
 	slots:[
 	{id:"Health",actionId:"work",description:"I must devote my energies to this.",required:{health:1}},
 	{id:"specialisation",actionId:"study",label:"Something More",required:{lore:1},description:"If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between strength and grace.",actionId:"study"},
-	{id:"V1",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still? [Use this with eight Vitality to gain more Health.]",actionId:"study"},
-	{id:"V2",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
-	{id:"V3",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
-	{id:"V4",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
-	{id:"V5",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
-	{id:"V6",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
-	{id:"V7",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
-	{id:"V8",actionId:"study",label:"Vitality",required:{vitality:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"}	
+	{id:"V1",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still? [Use this with eight Vitality to gain more Health.]",actionId:"study"},
+	{id:"V2",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
+	{id:"V3",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"},
+	{id:"V4",actionId:"study",label:"A Lesson Learnt",required:{vitalityplus:1},consumes:true,description:"Could I grow healthier still?",actionId:"study"}	
 	],
 	},
 				{id: "skillhealthd_strength",

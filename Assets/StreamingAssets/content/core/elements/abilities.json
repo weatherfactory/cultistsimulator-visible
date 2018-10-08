@@ -33,8 +33,16 @@
 				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality, I can increase my Health.",required:{vitality:1}}],
           aspects:
             {advancement:1,heart:1,influence:1},
-            description: "Exercise, or something rarer, has invigorated me. [Vitality can be used with Study to gain Health. It lasts only three minutes, if unused.]",
+            description: "Exercise, or something rarer, has invigorated me. [Use with another Vitality to improve your abilities. It lasts only three minutes, if unused.]",
 		lifetime: 180
+        },
+						 {
+            id: "vitalityplus",
+            label: "Vitality: a Lesson Learnt ",
+          aspects:
+            {advancement:1,heart:2,influence:1},
+            description: "I am ready to improve. [Use this with your Health skill to improve the skill and gain Health. It lasts up to five minutes.]",
+		lifetime: 300
         },
 		
 						 {
