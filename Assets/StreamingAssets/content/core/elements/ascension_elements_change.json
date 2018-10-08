@@ -108,10 +108,11 @@
 							      		 
  {
             id: "sendingheartg",
-            label: "Guise: Mare",
+            label: "Guise: Boar",
             aspects:
             {sending:1,way:1},
-            description: "In this form, I will surrender myself to one who holds the key of the Kingskin Gate. [Some part of you can roam as a grey mare.]",
+            description: "In this form, I will surrender myself to one who holds the key of the Kingskin Gate. [Some part of you can roam as a wild black beast.]",
+			icon:"boar",
 			unique:true
         },
 
@@ -122,7 +123,7 @@
             {sending:1},
             description: "In a silent house beside the sea, in a borrowed skin, we will seek the second change. I must find a place of power at the water's edge. Perhaps Sulochana can help, if I bring her secrets about other places. [Some part of you can roam in viper-shape. Send it to accompany your followers to a place where it can perform the dance you must dance.]",
 			unique:true
-			icon:viper
+			icon:"viper"
         },
 		      		 {
             id: "sendingmothc",
