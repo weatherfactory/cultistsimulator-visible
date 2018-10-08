@@ -144,7 +144,7 @@
             {mortal: 1, follower: 1,heart: 2,follower_lustchange:1},
             animFrames: 1,
 			description: "Clovette's determined happiness now borders on the fanatical.",
-			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
+			xtriggers: {promotiontodisciple: clovette_c,killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
 			uniquenessgroup:"uqclovette"
         },
 				 {
@@ -167,14 +167,15 @@
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:clovette_p,rebellion:clovette_r},
 			uniquenessgroup:"uqclovette"
         },
+		{
 		        id: "connie_c",
-            label: "Connie, a Conqueress",
+            label: "Connie, a Disciple",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,edge:5,},
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:5},
             description: "[Not yet.]",
 			animFrames: 1,
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:connie_p,rebellion:clovette_r},
-			uniquenessgroup:"uqclovette"
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
+			uniquenessgroup:"uqconnie"
         },
 		 {
         id: "dorothy_a",
@@ -409,6 +410,16 @@
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:leo_p,rebellion:leo_r},
 			uniquenessgroup:"uqleo"
+        },
+				{
+		        id: "natalia_c",
+            label: "Natalia, a Disciple",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:5},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
+			uniquenessgroup:"uqnatalia"
         },
 				 {
         id: "neville_a",
@@ -660,6 +671,17 @@
 			uniquenessgroup:"uqslee"
         },
 		
+				{
+		        id: "spencer_c",
+            label: "Spencer, a Disciple",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:5},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_c},
+			uniquenessgroup:"uqspencer"
+        },
+		
 					 {
         id: "sylvia_a",
             label: "Sylvia, an acquaintance",
@@ -908,6 +930,17 @@
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:ysabet_p,rebellion:ysabet_r},
 			uniquenessgroup:"uqysabet"
+        },
+		
+						{
+		        id: "zachary_c",
+            label: "Zachary, a Disciple",
+            aspects:
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:5},
+            description: "[Not yet.]",
+			animFrames: 1,
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
+			uniquenessgroup:"uqzachary"
         },
 					 {
         id: "auclair_p",
