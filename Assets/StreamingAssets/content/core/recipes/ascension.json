@@ -122,7 +122,7 @@
 
         description: "I am becoming a name of fire. Remember that the ending text will contain the payload.",
         warmup: 60,
-	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1,corpse:-1},greedy:true}],
 		signalEndingFlavour: Grand,
 		linked:[{chance:100,id:"belovedfarewell"},
 		{chance:100,id:"minorforgevictorywithrisen"},
@@ -193,7 +193,7 @@
         description: ".",
         warmup: 60,
 		signalEndingFlavour: Grand,
-		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1,corpse:-1},greedy:true}],
 		linked:[{chance:100,id:"minorgrailvictorywithrisen"},
 		{chance:100,id:"belovedfarewell"},		
 		{chance:100,id:"minorgrailvictory"}]
@@ -544,7 +544,7 @@
         actionId: "work",
         description: ".",
         warmup: 60,
-		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1,corpse:-1},greedy:true}],
 		signalEndingFlavour: Grand,
 		linked:[{chance:100,id:"minorlanternvictorywithrisen"},
 		{chance:100,id:"belovedfarewell"},

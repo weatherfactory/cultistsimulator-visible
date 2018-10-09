@@ -540,7 +540,7 @@ alternativerecipes: [
 		startdescription: "The wind rises and the roof rattles as I settle myself to sleep. There is a bitter herb that will help me pass from my body. The Wood opens around me, but with my new eyes, I see another path now. The one called Marinette waits along that path, with the Key that will end me and begin me.",
 	warmup:30,
 	craftable: true,
-		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1,corpse:-1},,greedy:true}],
 	linked:[{id:"dreamheartvictory_withrisen",chance:100},
 	{chance:100,id:"belovedfarewelldream"},
 	{id:"dreamheartvictory",chance:100}]
@@ -575,7 +575,7 @@ In the dark place beneath the trees, my dead beloved watches, with their skin wh
 		startdescription: "I drift down sleep's familiar pathways, until the Wood comes clear before me with its grasping trees and shadow-fringed paths. The Door in the Wood lies beneath the waters of the well. I know that now. I cannot pass it living and I cannot pass it dead. Medusa, who is neither living nor dead, will clear the way. I break into a trot.",
 	warmup:30,
 	craftable: true,
-	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
+	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1,corpse:-1},greedy:true}],
 	linked:[{id:"dreammothvictory_withrisen",chance:100},
 	{chance:100,id:"belovedfarewelldream"},
 	{id:"dreammothvictory",chance:100}]
