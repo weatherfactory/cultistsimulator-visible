@@ -244,12 +244,33 @@
       hintonly:true,
         craftable: false
     },
+	
+				 	{
+        id: "hint_renew_spirit_wintera_edge",
+        label: "Renew a Shattered Risen with the power of the Cartographer of Scars?",
+        actionId: "work",
+        requirements: {ritual:1,spirit_wintera_edge:1,desire:-1},
+        startdescription: "It is harder to maintain a Shattered Risen than it is to raise one. But with enough Winter aspect, and enough Edge, I might keep my Shattered Risen moving. Or I might employ it to summon a greater spirit.",
+  hintonly:true,
+        craftable: false,
+	
+    },
+  	{
+        id: "hint_renew_spirit_wintera_moth",
+        label: "Renew a Burgeoning Risen with the power of the Ring-Yew?",
+        actionId: "work",
+        requirements: {ritual:1,spirit_wintera_moth:1,desire:-1},
+        startdescription: "A Burgeoning Risen will not stay contained for long. But with enough Winter aspect, and enough Moth, I might keep my work stable a little longer. Or I might employ it to summon a greater spirit.",
+   hintonly:true,
+        craftable: false
+    },
+	
 		 	{
         id: "hint_summon_spirit_wintera_edge",
         label: "Infuse a corpse with the power of the Cartographer of Scars?",
         actionId: "work",
         requirements: {ritual:1,winter:1,edge:1,desire:-1},
-        startdescription: "I've found a useful conjunction of aspects, but I need more. With a little more Winter aspect, a little more Edge, and a Corpse, I might create a brutal servant.",
+        startdescription: "I've found a useful conjunction of aspects, but I need more. With some Winter aspect, a little Edge, and a Corpse, I might create a brutal servant.",
   hintonly:true,
         craftable: false,
 	
@@ -259,10 +280,11 @@
         label: "Infuse a corpse with the power of the Ring-Yew?",
         actionId: "work",
         requirements: {ritual:1,winter:1,moth:1,desire:-1},
-        startdescription: "With a little more Winter aspect, a little more Moth, and a Corpse, I might create a cunning servant.",
+        startdescription: "With some Winter aspect, a little Edge, and a Corpse, I might create a cunning servant.",
    hintonly:true,
         craftable: false
     },
+	
 	 			{
         id: "ritehinthasknockedge",
         label: "Summoning Something?",

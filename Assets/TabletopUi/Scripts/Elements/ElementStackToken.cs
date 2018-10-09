@@ -757,7 +757,7 @@ namespace Assets.CS.TabletopUI {
                 if (string.IsNullOrEmpty(_element.DecayTo))
                     Retire(true);
                 else
-                    ChangeTo(_element.DecayTo);
+                    ChangeThisCardOnDesktopTo(_element.DecayTo);
             }
 
             decayCountText.text = GetCardDecayTime();
@@ -840,12 +840,14 @@ namespace Assets.CS.TabletopUI {
         #endregion
 
         
-        public bool ChangeTo(string elementId) {
+        public bool ChangeThisCardOnDesktopTo(string elementId) {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
             var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
             cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+            foreach(var m in this.GetCurrentMutations())
+               cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
             cardLeftBehind.lastTablePos = lastTablePos;
             cardLeftBehind.originStack = null;
 

@@ -7,7 +7,7 @@
         label: "Call on the Cartographer of Scars to raise a corpse to half-life",
         actionId: "work",
         requirements: {ritual:1,corpse:1,winter:4,edge:2,desire:-1},
-		aspects:{raiseburgeoning:1},
+		aspects:{raiseshattered:1},
         startdescription: "A shattering force will infuse its flesh, so that it joins the Shattered Risen. I must begin the process. I will ready my hammer.",
         description: "The corpse lurches groaning to its feet: or what is left of its feet. I have conjured a Shattered Risen.",
         warmup: 60,
@@ -25,6 +25,29 @@
         warmup: 60,
         craftable: true,
 		linked: [{id:"summoninglosingcontrol",chance:30}]
+    },
+	 
+ 	{
+        id: "renew_spirit_wintera_edge",
+        label: "Call on the Cartographer of Scars to renew a corpse's half-life",
+        actionId: "work",
+        requirements: {ritual:1,spirit_wintera_edge:1,winter:8,edge:8,desire:-1},
+		aspects:{renewshattered:1},
+        startdescription: "This is not really a rite of renewal - more of deferral. Winter can be delayed, but not denied.",
+        description: "The processes of decay are retarded - the motile energies re-engaged. The corpse will walk another ten hundred steps before it fails.",
+        warmup: 60,
+        craftable: true
+    },
+  	{
+        id: "renew_spirit_wintera_moth",
+        label: "Call on the Ring-Yew to renew a corpse's half-life",
+        actionId: "work",
+        requirements: {ritual:1,spirit_wintera_moth:1,winter:8,moth:8,desire:-1},
+	aspects:{renewburgeoning:1},
+        startdescription: "The new life within the corpse struggles to be free. I will contain it a little longer.",
+        description: "The light in the corpse's eyes grows less wild. Its tendrils are quelled. For a moment, I think it will speak.",
+        warmup: 60,
+        craftable: true
     },
  
  		{
