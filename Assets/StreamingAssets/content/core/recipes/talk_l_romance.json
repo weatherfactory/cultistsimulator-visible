@@ -92,8 +92,8 @@ craftable:false
 {id:"L_checkjealousy",
 label:"Another?",
 actionId:"rose",
-requirements:{romanticinterest:1},
-comments:"re requirements: can't be another if there isn't even one",
+requirements:{romanticinterest:,summoned:-1,corpse:-1},
+comments:"re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
 slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription: "Is there another? ",
 description:".",
@@ -136,13 +136,27 @@ craftable:false
 
 {id:"L_roserouter",
 actionId:"rose",
-linked:[{id:"L_continuerose_risen",chance:100},
+linked:[{id:"L_continuerose_corpse",chance:100},
+{id:"L_continuerose_risen",chance:100},
 {id:"L_continuerose_power",chance:100},
 {id:"L_continuerose_sensation",chance:100},
 {id:"L_continuerose_change",chance:100},
 {id:"L_continuerose_enlightenment",chance:100},
 {id:"L_continuerose_noone",chance:100}],
 craftable:false,
+},
+
+{id:"L_continuerose_corpse",
+actionId:"rose",
+label:"Desolate And Sick of an Old Passion",
+requirements:{corpse:1,romanticinterest:1},
+startdescription:"I can't; not yet. Grief will have its due.",
+description:"In time, their body will be gone as their spirit now is, and I will forget.
+
+Unless...",
+effects:{dread:1},
+warmup:30,
+craftable:false
 },
 
 {id:"L_continuerose_risen",
