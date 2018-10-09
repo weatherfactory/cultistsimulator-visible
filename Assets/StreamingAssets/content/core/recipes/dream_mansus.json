@@ -541,7 +541,8 @@ alternativerecipes: [
 	warmup:30,
 	craftable: true,
 		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
-	linked:[{chance:100,id:"belovedfarewelldream"},
+	linked:[{id:"dreamheartvictory_withrisen",chance:100},
+	{chance:100,id:"belovedfarewelldream"},
 	{id:"dreamheartvictory",chance:100}]
 
 	},
@@ -562,7 +563,8 @@ alternativerecipes: [
 	warmup:30,
 	craftable: true,
 	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
-	linked:[{chance:100,id:"belovedfarewelldream"},
+	linked:[{id:"dreammothvictory_withrisen",chance:100},
+	{chance:100,id:"belovedfarewelldream"},
 	{id:"dreammothvictory",chance:100}]
 	},
 	

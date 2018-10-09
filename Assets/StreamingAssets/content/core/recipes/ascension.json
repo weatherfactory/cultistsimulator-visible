@@ -103,14 +103,14 @@
 			{id:"minorforgevictory_trigger",
 	actionId:"work",
 	        label: "The Conflagration of the Heart",
-	startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.",
+	startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge.  [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
         requirements: {ritual: 1,
 		ascensionpowerf:1,
 		forge:36},
 		craftable:true,
 		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
 		warmup:1,
-		effects:{follower:-3},
+		effects:{follower:-3,summoned:-3},
 		linked:[{id:"minorforgevictory_overture",chance:100}]
 		},
 		
@@ -125,6 +125,7 @@
 	slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		signalEndingFlavour: Grand,
 		linked:[{chance:100,id:"belovedfarewell"},
+		{chance:100,id:"minorforgevictorywithrisen"},
 		{chance:100,id:"minorforgevictory"}]
     },	
 	
@@ -166,14 +167,14 @@
 	{id:"minorgrailvictory_trigger",
 	actionId:"work",
 	label: "The Feast of the True Birth",
-	startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.",
+	startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail.  [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
 	        requirements: {ritual: 1,
 		ascensionsensationf:1,
 		grail:36},
 		craftable:true,
 		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
 		warmup:1,
-		effects:{follower:-3},
+		effects:{follower:-3,summoned:-3},
 		linked:[{id:"minorgrailvictory_overture",chance:100}]		
 		
 	}
@@ -186,7 +187,8 @@
         warmup: 60,
 		signalEndingFlavour: Grand,
 		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
-		linked:[{chance:100,id:"belovedfarewell"},
+		linked:[{chance:100,id:"minorgrailvictorywithrisen"},
+		{chance:100,id:"belovedfarewell"},		
 		{chance:100,id:"minorgrailvictory"}]
     },
 			   {
@@ -213,7 +215,7 @@
 	{id:"belovedfarewell",
 	label:"The Threshold Choice",
 	actionId:"work",
-	requirements:{romanticinterest:1},
+	requirements:{romanticinterest:1,summoned:-1},
 	startdescription:"The final farewell. They will remain, and I will ascend.",
 	slots: [{id:"decision",label:"Decision",description:"[Add Passion to turn aside from your ascent... and live as a mortal with your beloved. Do nothing to continue.]",required:{passion:1}}],
 	alternativerecipes:[{id:"auclairvictory",chance:100},
@@ -509,14 +511,14 @@
 		{id:"minorlanternvictory_trigger",
 	actionId:"work",
 	        label: "The Incursus",
-	startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that.",
+	startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
 		requirements: {ritual: 1,
 		ascensionenlightenmentf:1,
 		lantern:36},
 		craftable:true,
 		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
 		warmup:1,
-		effects:{follower:-3},
+		effects:{follower:-3,summoned:-3},
 		linked:[{id:"minorlanternvictory_overture",chance:100}]		
 		
 	},
@@ -528,7 +530,8 @@
         warmup: 60,
 		slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},greedy:true}],
 		signalEndingFlavour: Grand,
-		linked:[{chance:100,id:"belovedfarewell"},
+		linked:[{chance:100,id:"minorlanternvictorywithrisen"},
+		{chance:100,id:"belovedfarewell"},
 		{chance:100,id:"minorlanternvictory"}]
     },
 		   {
