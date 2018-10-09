@@ -175,7 +175,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_edge:connie_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
-			uniquenessgroup:"uqconnie"
+			uniquenessgroup:"uqconnie",
+			icon:"connie_r"
         },
 
 		{
@@ -186,7 +187,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_d},
-			uniquenessgroup:"uqconnie"
+			uniquenessgroup:"uqconnie",
+			icon:"connie_r"
         },
 		{
         id: "dorothy_a",
@@ -237,7 +239,8 @@
             animFrames: 1,
 			description: "Douglas has exchanged the Force for the Forge.",
 			xtriggers: {promotiontodisciple: douglas_c,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
-			uniquenessgroup:"uqdouglas"
+			uniquenessgroup:"uqdouglas",
+			icon:"douglas_r"
         },
 				 {
         id: "douglas_c",
@@ -247,7 +250,8 @@
             description: "Douglas doesn't like hammers. They remind him of an Incident. But he uses what instruments he must.",
 			animFrames: 1,
 			xtriggers: {promotionto_d_forge: douglas_d,killmortal:corpse,derangemortal:lunatic,capturefollower:douglas_p,rebellion:douglas_r},
-			uniquenessgroup:"uqdouglas"
+			uniquenessgroup:"uqdouglas",
+			icon:"douglas_r"
         },
 				 {
         id: "douglas_d",
@@ -430,7 +434,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_lantern:natalia_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
-			uniquenessgroup:"uqnatalia"
+			uniquenessgroup:"uqnatalia",
+			icon:"natalia_r"
         },
 						{
 		        id: "natalia_d",
@@ -440,7 +445,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse, derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_d},
-			uniquenessgroup:"uqnatalia"
+			uniquenessgroup:"uqnatalia",
+			icon:"natalia_r"
         },
 		
 				 {
@@ -701,7 +707,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_lantern:spencer_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
-			uniquenessgroup:"uqspencer"
+			uniquenessgroup:"uqspencer",
+			icon:"spencer_r"
         },
 		
 						{
@@ -712,7 +719,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
-			uniquenessgroup:"uqspencer"
+			uniquenessgroup:"uqspencer",
+			icon:"spencer_r"
         },
 		
 					 {
@@ -973,7 +981,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_winter:zachary_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
-			uniquenessgroup:"uqzachary"
+			uniquenessgroup:"uqzachary",
+			icon:"zachary_r"
         },
 				
 						{
@@ -984,7 +993,8 @@
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_d},
-			uniquenessgroup:"uqzachary"
+			uniquenessgroup:"uqzachary",
+			icon:"zachary_r"
         },
 		
 					 {
@@ -1052,7 +1062,8 @@
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic},
 			lifetime:600, decayTo: "corpse",
-			uniquenessgroup:"uqdouglas"
+			uniquenessgroup:"uqdouglas",
+			icon:"defaulthunterprisoner"
         },
 				 {
         id: "enid_p",
