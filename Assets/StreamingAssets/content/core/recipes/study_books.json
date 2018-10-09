@@ -98,6 +98,17 @@
         warmup: 60,
         craftable: true
     },
+			{
+	        id: "studylocksmithsdream4",
+        label: "Read this volume of the Locksmith's Dream",
+        actionId: "study",
+        requirements: {locksmithsdream4: 1},
+        effects: {locksmithsdream4:-1,fragmentmothc:1,fragmentlanternc:1,fascination:1},
+		startdescription: "'Janus is the Gatekeeper, the twin-god, the god that wounds, the presager of changes, the sun, the moon. So we identify him with the Watchman, the Twins, with the Mother, with the Forge, with the Meniscate and the Madrugad. He cannot be all these. Can be? The <i>flamines</i> knew the Church, knew the Dry Land, knew Elagabalus. Is he then synthesis? Or is he something else? In Gallaecia they called him Ianus Lamius, but the Obliviates are notorious for their slanders.'",
+        description: "'Janus has, they say, not one face but two. To which I reply: why only one? Why only two? Hersault and Coseley - according to Thomas Love Denman - once agreed that Janus was 'all the gods and none'. But later, Hersault insisted he was 'all the gods', and Coseley favoured simply 'none'. Denman was a sinister dilettante, but this rings true of them both.'",
+        warmup: 60,
+        craftable: true
+    },
 		{
         id: "studyorchidtransfigurations1",
         label: "Read this volume of the Orchid Transfigurations",
@@ -1110,7 +1121,7 @@ craftable: true
 effects:{kitlingripe:-1,fragmentmothb:1,glimmering:1},
 warmup:60,
 startdescription:"The protagonist, a speechless cat-thing called Kitling Ripe, performs a series of elaborate rites to rescue members of her extended family, culminating in the resurrection of her 'other grandmother', Moldywarp.",
-            description:"'When the Snake-Witch killed the stag, Kitling snatched one of its eyes. When the Dry-Witch killed the pig, Kitling stole a cup of its blood. Then she took them to the place Moldywarp lay buried, and she shook out her hair, and she began to dance...'",
+            description:"'When the Snake-Witch killed the stag, Kitling snatched one of its eyes. When the Dry-Witch killed the sow, Kitling stole a cup of its blood. Then she took them to the place Moldywarp lay buried, and she shook out her hair, and she began to dance...'",
 craftable: true
         },
 								{
