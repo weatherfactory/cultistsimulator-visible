@@ -279,7 +279,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "minorlanternvictorywithrisen")
             return new Ending(endingFlag, "THE INCURSUS",
-                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. My dead beloved follows me like a shadow - and in the heart of this light, shadows burn all the deeper. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
+                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. My dead beloved follows me like a shadow - and in the sanctified core of this light, shadows burn all the deeper. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
                 " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first.  Perhaps my companion and I will join her." +
                 " [Congratulations on a variant Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY_WITHRISEN");
 
