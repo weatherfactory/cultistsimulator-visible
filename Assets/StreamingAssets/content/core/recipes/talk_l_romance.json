@@ -136,13 +136,43 @@ craftable:false
 
 {id:"L_roserouter",
 actionId:"rose",
-linked:[{id:"L_continuerose_power",chance:100},
+linked:[{id:"L_continuerose_risen",chance:100},
+{id:"L_continuerose_power",chance:100},
 {id:"L_continuerose_sensation",chance:100},
 {id:"L_continuerose_change",chance:100},
 {id:"L_continuerose_enlightenment",chance:100},
 {id:"L_continuerose_noone",chance:100}],
 craftable:false,
 },
+
+{id:"L_continuerose_risen",
+actionId:"rose",
+label:"Never Let Me Go",
+requirements:{summoned:1,romanticinterest:1},
+slots: [{id:"Blood?",description:"The body's strengths",required:{health:1}}],
+startdescription:"One that loved me is not as they were. If I give them a little of my blood - just a little, but sometimes they are greedy... if I give them a little, they will remember, for a time.",
+description:"No. They were alive, and now they are dead, and with enough time, that will be all they are.",
+alternativerecipes:[
+{id:"A_continuerose_risen_success",chance:100}],
+mutations:[{filterOnAspectId:summoned,mutateAspectId:resentment,mutationLevel:1,additive:true}],
+warmup:30,
+craftable:false,
+linked:[{id:"L_roseend_risen",chance:100}]
+},
+
+{id:"A_continuerose_risen_success",
+actionId:"rose",
+label:"Never Let Me Go",
+requirements:{health:1},
+startdescription:"The colours in my once-lover's skin - what remains - grow deeper and richer. That old light kindles again in the eyes.",
+description:"@#spirit_wintera_edge|Pain, cold, misery. These are all that remain to us, and because they remain to us, perhaps they are precious.
+#spirit_wintera_moth|Their hands, their lips, are ripe with life, but it is the chilly life of apple-skin and lily-petal. Still it is their hands, and their lips.@",
+effects:{dread:1},
+deckeffect:{roserewards:1},
+aspects:{damagehealth:1},
+craftable:false
+},
+
 
 
 {id:"L_continuerose_power",
@@ -162,7 +192,6 @@ linked:[{id:"L_roseend",chance:100}]
 },
 
 
-
 {id:"A_continuerose_power_success",
 actionId:"rose",
 label:"A Liaison: the Uses of Strength"
@@ -177,6 +206,9 @@ deckeffect:{roserewards:1},
 aspects:{fatiguing:1},
 craftable:false
 },
+
+
+
 
 
 {id:"L_continuerose_sensation",
@@ -305,6 +337,19 @@ requirements:{resentment:3},
 label:"Consequences!",
 startdescription:"@#uqauclair|Auclair#uqcat|Cat#uqclovette|Clovette#uqclifton|Clifton#uqdorothy|Dorothy#uqelridge|Elridge#uqenid|Enid#uqlaidlaw|Laidlaw#uqleo|Leo#uqneville|Neville#uqporter|Porter#uqrenira|Renira#uqrose|Rose#uqsaliba|Saliba#uqslee|Slee#uqsylvia|Sylvia#uqtristan|Tristan#uqvalciane|Valciane#uqvictor|Victor#uqviolet|Violet#uqysabet|Ysabet#uq|My lover@ will tolerate my neglect no longer.",
 description:"Neither of us will remember this moment kindly.",
+slots:[{id:"glummer",label:"What Remains",required:{contentment:1},greedy:true}],
+mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
+effects:{dread:1,contentment:-1},
+warmup:10,
+craftable:false
+},
+
+{id:"L_roseend_risen",
+actionId:"rose",
+requirements:{resentment:3,summoned:1},
+label:"Consequences!",
+startdescription:"Memory survives even death. So does rage; so does contempt. Love, too? I won't find that answer here.",
+description:"These are the last moments of an ending long begun. [Even the dead will not forgive neglect.]",
 slots:[{id:"glummer",label:"What Remains",required:{contentment:1},greedy:true}],
 mutations:[{filterOnAspectId:romanticinterest,mutateAspectId:romanticinterest,mutationLevel:-1}],
 effects:{dread:1,contentment:-1},
