@@ -555,6 +555,19 @@ alternativerecipes: [
 	ending: "minorheartvictory",
 	warmup:30
 	},
+	
+			{id: "dreamheartvictory_withrisen",
+	label: "The Kingskin Gate",
+	actionId: "dream",
+	requirements: {sendingheartg:1,,summoned:1},
+	startdescription: "Marinette waits in the shadow of a pine tree, dark skin gleaming, white bone glinting, claws bright as brass. She carries a red Key that might be a bloody knife or a ruby wound. When she brings it down, the pain of it is all red.
+	
+	
+In the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
+	ending: "minorheartvictorywithrisen",
+	warmup:10
+	},
+	
 		{id: "dreammothvictoryintro",
 	label: "Drums in the Storm",
 	actionId: "dream",
@@ -575,6 +588,16 @@ alternativerecipes: [
 	startdescription: "The moonlight parts the trees to blacken what the well holds, to limn the tree-roots, to touch Medusa's twining limbs where she waits by the well. She lifts her dripping arms, which hold a pale Key, twisting like a fanged worm. I kneel, a red deer, and offer my neck. A gout of blood spills into the well; and then Medusa begins to carve my new shape.",
 	ending: "minormothvictory",
 	warmup:30
+	},
+			{id: "dreammothvictory_withrisen",
+	label: "The Door in the Wood",
+	actionId: "dream",
+	requirements: {sendingmothg:1,summoned:1},
+	startdescription: "The moonlight parts the trees to blacken what the well holds, to limn the tree-roots, to touch Medusa's twining limbs where she waits by the well. She lifts her dripping arms, which hold a pale Key, twisting like a fanged worm. I kneel, a red deer, and offer my neck. A gout of blood spills into the well; and then Medusa begins to carve my new shape. 
+	
+In the dark place beneath the trees, my dead beloved watches, with their skin which is dappled, their eyes which are lamps.",
+	ending: "minormothvictorywithrisen",
+	warmup:10
 	},
 
 		{id:"belovedfarewelldream",

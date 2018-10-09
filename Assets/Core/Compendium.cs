@@ -253,24 +253,48 @@ public class Compendium : ICompendium
                 " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first. Perhaps I will be the seventh." +
                 " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY");
 
-        if (endingFlag == "minorforgevictory_withrisen")
+        if (endingFlag == "minorheartvictory")
+            return new Ending(endingFlag, "LIFE, UNENDING",
+                "As the pain fades, so does my voice, but now my heart will speak for me. In the scales of Time shall it be weighed against a feather, and it shall not be found wanting. In my final shape I shall pass the Tricuspid Gate, and add my heart's beat to the Thunderskin's chorus. " +
+                "Our rhythm is the rhythm of the Hours: and the Hours have promised that we shall endure with the world unceasing. I move eternally through the Mansus, and in eternity is my constancy assured. " +
+                "[Congratulations on a standard Change: Feather victory. You have wrestled the game to its knees. There are other paths.] ", "thunderskin", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORHEARTVICTORY");
+
+        if (endingFlag == "minormothvictory")
+            return new Ending(endingFlag, "THINGS WITH WINGS",
+                "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are shining anthracite. I have not passed " +
+                "the Tricuspid Gate; I have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
+                "[Congratulations on a standard Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
+
+        if (endingFlag == "minorforgevictorywithrisen")
             return new Ending(endingFlag, "THE CONFLAGRATION OF THE HEART",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and my body stirs in the ashes. I am hairless and imperishable as marble, and the Forge's fire still burns within me. " +
                 "I carry the Shaping Strength... and something else besides. The flesh of my dead beloved was consumed in the flames, and now they will always be a part of me, like the tin that hardens the bronze. We will not grow old. Perhaps we shall rebel. Perhaps, one day, we will rise even higher." +
-                " [Congratulations on a standard Power victory. You have wrestled the game to its knees. There are other paths.] ", "forgeofdays", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORFORGEVICTORY_WITHRISEN");
+                " [Congratulations on a variant Power victory. You have wrestled the game to its knees. There are other paths.] ", "forgeofdays", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORFORGEVICTORY_WITHRISEN");
 
-        if (endingFlag == "minorgrailvictory_withrisen")
+        if (endingFlag == "minorgrailvictorywithrisen")
             return new Ending(endingFlag, "THE FEAST OF THE TRUE BIRTH",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and I tear free of the sticky rags of my old flesh. My new body is smooth without and red within like a sweet fruit." +
                 " My limbs are strong as cables. My senses are knives. I will not grow old. I will walk the world in the service of the Grail, feasting, growing, and my dead beloved will walk beside me, sharing in my feasts, until they become something altogether new. Perhaps we shall rebel. Perhaps, one day, we will rise even higher." +
-                " [Congratulations on a standard Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORGRAILVICTORY_WITHRISEN");
+                " [Congratulations on a variant Sensation victory. You have wrestled the game to its knees. There are other paths.] ", "redgrail", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORGRAILVICTORY_WITHRISEN");
 
-        if (endingFlag == "minorlanternvictory_withrisen")
+        if (endingFlag == "minorlanternvictorywithrisen")
             return new Ending(endingFlag, "THE INCURSUS",
                 "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. My dead beloved follows me like a shadow - and in the heart of this light, shadows burn all the deeper. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
-                " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first.  Perhaps my companion and I will join her" +
-                " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY_WITHRISEN");
+                " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first.  Perhaps my companion and I will join her." +
+                " [Congratulations on a variant Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY_WITHRISEN");
 
+
+        if (endingFlag == "minorheartvictorywithrisen")
+            return new Ending(endingFlag, "LIFE, UNENDING",
+                "As the pain fades, so does my voice, but now my heart will speak for me. In the scales of Time shall it be weighed against a feather, and it shall not be found wanting. In my final shape I shall pass the Tricuspid Gate, as my dead beloved flaps behind like a flag in a storm, and add my heart's beat to the Thunderskin's chorus. " +
+                "Our rhythm is the rhythm of the Hours: and the Hours have promised that we shall endure with the world unceasing. My once-beloved will encircle me as the Grail donned the Thunderskin, and perhaps this is always what weas intended. We move eternally through the Mansus, and in eternity is our constancy assured." +
+                "[Congratulations on a variant Change: Feather victory. You have wrestled the game to its knees. There are other paths.] ", "thunderskin", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORHEARTVICTORY_WITHRISEN");
+
+        if (endingFlag == "minormothvictorywithrisen")
+            return new Ending(endingFlag, "THINGS WITH WINGS",
+                "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are shining anthracite. My dead beloved crouches beside me: a shadow of what I have become. We have not passed " +
+                "the Tricuspid Gate; we have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
+                "[Congratulations on a variant Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY_WITHRISEN");
 
 
         if (endingFlag=="deathofthebody")
@@ -316,17 +340,7 @@ public class Compendium : ICompendium
                 "I was poor, and now I am rich. I was something common, and now I am something rare. On summer mornings the hills outside my bedroom window are green with sun and on winter mornings they are white with snow and over all of it is the sound of " +
                 "the laughter of our heirs, and the sound of the wind. The wind rattles the casements and runs into the hills and is gone. [This should be considered a minor victory.]", "moonlitcastle", EndingFlavour.Grand, "DramaticLight", "A_ENDING_WORKVICTORYMARRIAGE");
 
-        if(endingFlag=="minorheartvictory")
-            return new Ending(endingFlag,"LIFE, UNENDING",
-                "As the pain fades, so does my voice, but now my heart will speak for me. In the scales of Time shall it be weighed against a feather, and it shall not be found wanting. In my final shape I shall pass the Tricuspid Gate, and add my heart's beat to the Thunderskin's chorus. " +
-                "Our rhythm is the rhythm of the Hours: and the Hours have promised that we shall endure with the world unceasing. I move eternally through the Mansus, and in eternity is my constancy assured. " +
-                "[Congratulations on a standard Change: Feather victory. You have wrestled the game to its knees. There are other paths.] ", "thunderskin",EndingFlavour.Grand,"DramaticLight","A_ENDING_MINORHEARTVICTORY");
 
-        if (endingFlag == "minormothvictory")
-            return new Ending(endingFlag, "THINGS WITH WINGS",
-                "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are shining anthracite. I have not passed " +
-                "the Tricuspid Gate; I have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
-                "[Congratulations on a standard Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
 
         if (endingFlag == "turnasidevictory")
             return new Ending(endingFlag, "AFTER HAPPILY",

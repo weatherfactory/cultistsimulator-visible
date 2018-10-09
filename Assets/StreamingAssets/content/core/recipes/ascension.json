@@ -110,7 +110,7 @@
 		craftable:true,
 		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
 		warmup:1,
-		effects:{follower:-3,summoned:-3},
+		effects:{follower:-3,summoned:-3,passion:-3},
 		linked:[{id:"minorforgevictory_overture",chance:100}]
 		},
 		
@@ -133,6 +133,13 @@
         id: "minorforgevictory",
         label: "The Conflagration of the Heart",
 		ending: "minorforgevictory",
+        actionId: "work",
+		},
+						   {
+        id: "minorforgevictorywithrisen",
+		requirements:{summoned:1},
+        label: "The Conflagration of the Heart",
+		ending: "minorforgevictorywithrisen",
         actionId: "work",
 		},
 	
@@ -174,7 +181,7 @@
 		craftable:true,
 		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
 		warmup:1,
-		effects:{follower:-3,summoned:-3},
+		effects:{follower:-3,summoned:-3,passion:-3},
 		linked:[{id:"minorgrailvictory_overture",chance:100}]		
 		
 	}
@@ -197,6 +204,15 @@
 		ending: "minorgrailvictory",
         actionId: "work",
 		},
+		
+		{
+		        id: "minorgrailvictorywithrisen",
+				requirements:{summoned:1},
+		        label: "The Feast of the True Birth",
+		ending: "minorgrailvictorywithrisen",
+        actionId: "work",
+		},
+	
 	
 		   {
         id: "majorlanternvictory",
@@ -518,7 +534,7 @@
 		craftable:true,
 		comments:"Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
 		warmup:1,
-		effects:{follower:-3,summoned:-3},
+		effects:{follower:-3,summoned:-3,passion:-3},
 		linked:[{id:"minorlanternvictory_overture",chance:100}]		
 		
 	},
@@ -540,6 +556,15 @@
 		ending: "minorlanternvictory",
         actionId: "work",
 		},
+		
+				   {
+        id: "minorlanternvictorywithrisen",
+		requirements:{summoned:1},
+		label: "The Incursus",
+		ending: "minorlanternvictorywithrisen",
+        actionId: "work",
+		},
+	
 	
 	
 		{id:"ambition",
