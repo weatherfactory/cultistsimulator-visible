@@ -140,12 +140,20 @@
 					{id: "skillpassiond_unreason",
 	label: "Skill: Never-No",
 	description: "The more, the more, the more, the m - [Passion and Skill can increase no further.]",
-	aspects: {passionskill:4,ability:1}
+	aspects: {passionskill:4,ability:1},
+		{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
 	},
 					{id: "skillpassiond_folly",
 	label: "Skill: an Open Soul",
 	description: "'Behold, they stand at my door and knock; if I hear any voice, I will open the door, and they will come in to me, and sup with them, and they with me.' [Passion and Skill can increase no further.]",
-	aspects: {passionskill:4,ability:1}
+	aspects: {passionskill:4,ability:1},
+		{id:"painting1",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting2",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+	{id:"painting3",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"},
+{id:"painting4",label:"Art or Bread",required:{passion:1,mystique:1,notoriety:1},description:"I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",actionId:"work"}	
 	},
 ]
 };
