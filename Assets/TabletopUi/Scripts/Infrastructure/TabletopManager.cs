@@ -588,6 +588,8 @@ namespace Assets.CS.TabletopUI {
                 return false; // We're animating something into the slot.
             if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() != null)
                 return false; // It is already filled
+            if (!tokenSlotPair.RecipeSlot.GoverningSlotSpecification.Greedy)
+                return false; //it's not greedy any more; sometimes if we have a recipe with a greedy slot followed by a recipe with a non-greedy slot, the behaviour carries over for the moment the recipe changes
 
             return true;
         }

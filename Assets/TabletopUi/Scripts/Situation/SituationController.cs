@@ -227,7 +227,10 @@ namespace Assets.TabletopUi {
                 };
 
                 if (tokenAndSlot.RecipeSlot != null && !tokenAndSlot.Token.Defunct && !tokenAndSlot.RecipeSlot.Defunct)
+                {
+                    NoonUtility.Log("Adding slot to fill: " + tokenAndSlot.RecipeSlot.SlotLabel.text);
                     response.SlotsToFill.Add(tokenAndSlot);
+                }
             }
 
             return response;
