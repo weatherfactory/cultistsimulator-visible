@@ -600,6 +600,39 @@ ending: "minormothvictorywithrisen",
 warmup:10
 },
 
+	{id: "dreammeniscatevictoryintro",
+label: "Without the Walls",
+actionId: "dream",
+requirements: {sendingmothheartg:1},
+	startdescription: "I drift down sleep's familiar pathways, until the Wood comes clear before me with its grasping trees and shadow-fringed paths. But this is not the Wood I know. It is all birch trees, white as moonlight, and the moonlight is black as ink. Beneath its pressure, the white skins of the trees begin to blister, then bleed. I break into a trot, then a gallop. I must reach the Well, before I wake, or before something worse - ",
+warmup:30,
+craftable: true,
+slots:[{id:"beloved",label:"Beloved",required:{romanticinterest:1},forbidden:{corpse:1}, greedy:true}],
+linked:[{id:"dreammeniscatevictory_withrisen",chance:100},
+{chance:100,id:"belovedfarewelldream"},
+{id:"dreammeniscatevictory",chance:100}]
+},
+
+
+	{id: "dreammeniscatevictory",
+label: "Three",
+actionId: "dream",
+requirements: {sendingmothheartg:1},
+startdescription: "My skin is tattering now. The Well is ahead, but the moon is changing, is black, is gold, is pearl. The blood of the Well is a red mirror, and three of them rise, and their faces are mine, are horned like the Moon, the greatest holds a key of black sapphire and when it parts my skin my body is rent like lightning, and WHAT IS WITHIN, WITHOUT, WHAT IS WITHOUT, WITHIN -",
+ending: "minormeniscatevictory",
+warmup:30
+},
+
+	{id: "dreammeniscatevictory_withrisen",
+label: "Three",
+actionId: "dream",
+requirements: {sendingmothheartg:1,summoned:1},
+startdescription: "My skin is tattering now. The Well is ahead, but the moon is changing, is black, is gold, is pearl. The blood of the Well is a red mirror, and three of them rise, and their faces are mine, are horned like the Moon, the greatest holds a key of black sapphire and when it parts my skin my body is rent like lightning, and WHAT IS WITHIN, WITHOUT, WHAT IS WITHOUT, WITHIN -",
+ending: "minormeniscatevictory_withrisen",
+warmup:30
+},
+
+
 	{id:"belovedfarewelldream",
 label:"The Threshold Choice",
 actionId:"dream",
@@ -619,8 +652,9 @@ warmup:30
 	startdescription:"Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
 	actionId: "dream",
 	craftable: false,
-alternativerecipes:[{id:"dreammothvictory",chance:100},
-{id:"dreamheartvictory",chance:100}
+linked:[{id:"dreammothvictory",chance:100},
+{id:"dreamheartvictory",chance:100},
+{id:"dreammeniscatevictory",chance:100}
 ],
 },
 

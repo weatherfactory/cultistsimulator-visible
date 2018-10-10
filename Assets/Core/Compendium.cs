@@ -265,6 +265,12 @@ public class Compendium : ICompendium
                 "the Tricuspid Gate; I have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
                 "[Congratulations on a standard Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY");
 
+        if (endingFlag == "minormeniscatevictory")
+            return new Ending(endingFlag, "IN THE HOUSE OF THE MOON",
+                "I was balanced - too perfectly balanced - balanced between change and eternity - and so the Meniscate favoured me. So I passed the Summit Gate, into the House of the Moon which is the shadow-self of the Mansus. Here it is empty and still, but here the Wheel still turns. I am not Long - I am only a reflection -" +
+                " but sometimes I am the reflection of the Witch, and sometimes of the Sister, and when the Sun is reborn, the Meniscate will bring me home. What is within, without; what is without, within. Always." +
+                " [Congratulations on a Change: Balance victory. You have found a secret. There are other paths.] ", "meniscate", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMENISCATEVICTORY");
+
         if (endingFlag == "minorforgevictorywithrisen")
             return new Ending(endingFlag, "THE CONFLAGRATION OF THE HEART",
                 "For a little while I dwell in the high rooms of the Mansus, and then I return through the Tricuspid Gate, and my body stirs in the ashes. I am hairless and imperishable as marble, and the Forge's fire still burns within me. " +
@@ -295,6 +301,12 @@ public class Compendium : ICompendium
                 "The Carapace Cross is gone, extinct as the dodo or the dragon. Only humans remain. But still my wings unfurl, and still my skin has hardened to scales, and still the facets of my eyes are shining anthracite. My dead beloved crouches beside me: a shadow of what I have become. We have not passed " +
                 "the Tricuspid Gate; we have gone down into death and returned alive. Here in the dark we will remain, where we cannot be seen, until at last we can no longer reject the Glory. Into the fire we fly. The Cross is imaginary; the change is not. " +
                 "[Congratulations on a variant Change: Scale victory. You have wrestled the game to its knees. There are other paths.] ", "moth", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMOTHVICTORY_WITHRISEN");
+
+        if (endingFlag == "minormeniscatevictorywithrisen")
+            return new Ending(endingFlag, "IN THE HOUSE OF THE MOON",
+                "I was balanced - too perfectly balanced - balanced between change and eternity - and so the Meniscate favoured me, and my love, my shadow, my reflection. So we passed the Summit Gate, into the House of the Moon which is the shadow-self of the Mansus. Here it is empty and still, but here the Wheel still turns. I am not Long - I am only a reflection -" +
+                " but sometimes I am the reflection of the Witch, and sometimes my beloved-who-was is the Sister, and when the Sun is reborn, the Meniscate will bring us home. What is within, without; what is without, within. Always." +
+                " [Congratulations on a Change: Balance victory. You have found a secret. There are other paths.] ", "meniscate", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORMENISCATEVICTORY_WITHRISEN");
 
 
         if (endingFlag=="deathofthebody")
