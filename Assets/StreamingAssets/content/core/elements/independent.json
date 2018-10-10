@@ -7,7 +7,7 @@
             {mortal:1,independent:1,rivalmarks:2,suspicious:1},
             description: "Someone who's lost all sense of proportion.",
 			animFrames: 1,
-			icon:"generic_b",
+			icon:"generic_c_edge",
 			xtriggers: {rival_promotion:generic_r_c,killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
         },
 								 {
@@ -245,7 +245,7 @@
             {mortal:1,independent:1, disciple:1,rivalmarks:3,suspicious:1},
             description: "Someone who's lost all sense of proportion.",
 			animFrames: 1,
-			icon:"generic_b",
+			icon:"generic_c_edge",
 			xtriggers: {rival_promotion:generic_r_d,killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
         },
 								 {
@@ -313,7 +313,7 @@
         },
 						 {
         id: "douglas_r_c",
-            icon:"defaulthunter", label: "Douglas, a rival",
+            icon:"douglas_r", label: "Douglas, a rival",
             aspects:
             {mortal:1,independent:1,disciple:1,rivalmarks:3, suspicious:1},
             description: "Douglas isn't having any more of it. Time to see what all the fuss is about.",
@@ -530,7 +530,7 @@
             {mortal:1,independent:1, exalted:1,rivalmarks:4,suspicious:1},
             description: "Someone who's lost all sense of proportion.",
 			animFrames: 1,
-			icon:"generic_b",
+			icon:"generic_c_edge",
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_c_edge}
         },
 								 {
@@ -599,7 +599,7 @@
         },
 								 {
         id: "douglas_r_d",
-            icon:"defaulthunter", label: "Douglas, a Long in the Making",
+            icon:"douglas_r", label: "Douglas, a Long in the Making",
             aspects:
             {mortal:1,independent:1,disciple:1,rivalmarks:4, suspicious:1},
             description: "Douglas has found the fire.",
