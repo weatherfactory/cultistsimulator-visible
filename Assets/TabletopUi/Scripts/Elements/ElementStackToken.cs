@@ -79,6 +79,21 @@ namespace Assets.CS.TabletopUI {
             get { return _element == null ? null : _element.Label; }
         }
 
+        public bool Unique
+        {
+            get
+            {
+                if (_element == null)
+                    return false;
+                return _element.Unique;
+            }
+        }
+
+        public string UniquenessGroup
+        {
+            get { return _element == null ? null : _element.UniquenessGroup; }
+        }
+
         public bool Decays {
             get { return _element.Lifetime > 0; }
         }

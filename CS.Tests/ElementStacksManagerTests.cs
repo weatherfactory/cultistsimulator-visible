@@ -342,6 +342,8 @@ namespace Assets.Editor.Tests
         public Source StackSource { get; set; }
         public float LifetimeRemaining { get; set; }
         public IlluminateLibrarian IlluminateLibrarian { get; set; }
+        public bool Unique { get; }
+        public string UniquenessGroup { get; }
 
         public Dictionary<string, string> GetCurrentIlluminations()
         {
