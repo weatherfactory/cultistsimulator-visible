@@ -18,15 +18,40 @@ label:"A Chat with Sulochana",
 actionId:"talk",
 requirements:{sulochana:1},
 slots: [{id:"Subject",description:"A topic of conversation"}],
-startdescription:"Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'",
-description:"Is she disappointed? It's difficult to tell, with Sulochana.",
+startdescription:"@#ascensionlessonhearta|'You want to know more?'
+#ascensionlessonheartb|'You want to know more?'
+#ascensionlessonheartc|'You want to know more?'
+#ascensionlessonheartd|'You want to know more?'
+#ascensionlessonhearte|'You want to know more?'
+#ascensionlessonheartf|'You want to know more?'
+#ascensionlessonmotha|'You want to know more?'
+#ascensionlessonmothb|'You want to know more?'
+#ascensionlessonmothc|'You want to know more?'
+#ascensionlessonmothd|'You want to know more?'
+#ascensionlessonmothe|'You want to know more?'
+#ascensionlessonmothf|'You want to know more?'
+#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
+description:"@#ascensionlessonhearta|'Not mt speciality.' Sulochana smiles
+#ascensionlessonheartb|'Not mt speciality.' Sulochana shrugs like a snake.
+#ascensionlessonheartc|'Not mt speciality.' Sulochana smiles.
+#ascensionlessonheartd|'Not mt speciality.' Sulochana shrugs like a snake.
+#ascensionlessonhearte|'Not mt speciality.' Sulochana smiles.
+#ascensionlessonheartf|'Not mt speciality.' Sulochana shrugs like a snake.
+#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#|Is she disappointed? It's difficult to tell, with Sulochana.@",
 alternativerecipes:[{id:"sulochanachat_health",chance:100},
 {id:"sulochanachat_passion",chance:100},
 {id:"sulochanachat_cabaret",chance:100},
 {id:"sulochanachat_desireheart_track",chance:100},
 {id:"sulochanachat_desiremoth_track",chance:100},
 {id:"sulochanachat_desire",chance:100},
-{id:"sulochanachat_secrethistoriesrouter",chance:100}],
+{id:"sulochanachat_secrethistoriesrouter",chance:100},
+],
 warmup:60,
 craftable:true
 },
