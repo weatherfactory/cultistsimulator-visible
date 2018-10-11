@@ -99,7 +99,7 @@
         label: "Clear my Mind",
         actionId: "dream",
         requirements: {contentment: 1, dread: 1},
-        effects: {contentment:-1,dread:-1,influenceheart:1},
+        effects: {contentment:-1,dread:-1,influencewinter:1},
         startdescription: "I remember that I was different, before.",
         description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
         warmup: 60,
@@ -112,7 +112,7 @@
         actionId: "dream",
         requirements: {dread: 1, fascination: 1},
         effects: {
-			fascination:-1,dread:-1,influencewinter:1
+			fascination:-1,dread:-1,influencelantern:1
         },
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
@@ -126,7 +126,7 @@
         actionId: "dream",
         requirements: {fleeting: 1, fascination: 1},
         effects: {
-			fleeting:-1,fascination:-1,influencewinter:1
+			fleeting:-1,fascination:-1,influencelantern:1
         },
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
