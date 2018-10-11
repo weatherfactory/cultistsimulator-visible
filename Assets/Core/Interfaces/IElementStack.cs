@@ -49,6 +49,7 @@ namespace Assets.Core.Interfaces
         IlluminateLibrarian IlluminateLibrarian { get; set; }
         bool Unique { get; }
         string UniquenessGroup { get; }
+        string Icon { get; }
         Dictionary<string, string> GetCurrentIlluminations();
     }
 }

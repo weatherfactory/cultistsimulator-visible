@@ -79,6 +79,11 @@ namespace Assets.CS.TabletopUI {
             get { return _element == null ? null : _element.Label; }
         }
 
+        public string Icon
+        {
+            get { return _element == null ? null : _element.Icon; }
+        }
+
         public bool Unique
         {
             get

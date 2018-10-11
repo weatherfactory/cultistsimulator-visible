@@ -152,7 +152,7 @@ namespace Assets.CS.TabletopUI {
             Sprite sprite;
 
             if (element.IsAspect)
-                sprite = ResourcesManager.GetSpriteForAspect(element.Id);
+                sprite = ResourcesManager.GetSpriteForAspect(element.Icon);
             else
                 sprite = ResourcesManager.GetSpriteForElement(element.Icon);
 
