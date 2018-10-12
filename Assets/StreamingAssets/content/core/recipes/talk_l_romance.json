@@ -92,7 +92,7 @@ craftable:false
 {id:"L_checkjealousy",
 label:"Another?",
 actionId:"rose",
-requirements:{romanticinterest:,summoned:-1,corpse:-1},
+requirements:{romanticinterest:1,summoned:-1,corpse:-1},
 comments:"re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
 slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription: "Is there another? ",
