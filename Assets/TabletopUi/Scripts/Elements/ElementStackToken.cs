@@ -290,6 +290,7 @@ namespace Assets.CS.TabletopUI {
                 ShowCardDecayTimer(false);
                 SetCardDecay(0f);
                 LifetimeRemaining = _element.Lifetime;
+                PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
                 MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 				decayBackgroundImage = decayView.GetComponent<Image>();
 				cachedDecayBackgroundColor = decayBackgroundImage.color;

@@ -81,7 +81,9 @@ namespace Assets.Core.Services
             
             TryChronicleCultPlaced(token, tokenAspects, storefrontServicesProvider);
             
-            TryCHronicleHQPlaced(token, tokenAspects);          
+            TryCHronicleHQPlaced(token, tokenAspects);
+
+            token.PlacementAlreadyChronicled = true;
 
         }
 
@@ -167,42 +169,44 @@ namespace Assets.Core.Services
 
             if (tokenAspects.ContainsKey(EXALTED_ASPECT))
             {
-                if (tokenAspects.Keys.Contains(EDGE) && tokenAspects[EDGE]==10)
+                const int EXALT_MINIMUM_ASPECT_LEVEL = 10;
+
+                if (tokenAspects.Keys.Contains(EDGE) && tokenAspects[EDGE]>= EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_EDGE" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_EDGE", true);
 				}
-                if (tokenAspects.Keys.Contains(FORGE) && tokenAspects[FORGE] == 10)
+                if (tokenAspects.Keys.Contains(FORGE) && tokenAspects[FORGE] >=EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_FORGE" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_FORGE", true);
 				}
-                if (tokenAspects.Keys.Contains(GRAIL) && tokenAspects[GRAIL] == 10)
+                if (tokenAspects.Keys.Contains(GRAIL) && tokenAspects[GRAIL] >= EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_GRAIL" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_GRAIL", true);
 				}
-                if (tokenAspects.Keys.Contains(HEART) && tokenAspects[HEART] == 10)
+                if (tokenAspects.Keys.Contains(HEART) && tokenAspects[HEART] >= EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_HEART" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_HEART", true);
 				}
-                if (tokenAspects.Keys.Contains(KNOCK) && tokenAspects[KNOCK] == 10)
+                if (tokenAspects.Keys.Contains(KNOCK) && tokenAspects[KNOCK] >=EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_KNOCK" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_KNOCK", true);
 				}
-                if (tokenAspects.Keys.Contains(LANTERN) && tokenAspects[LANTERN] == 10)
+                if (tokenAspects.Keys.Contains(LANTERN) && tokenAspects[LANTERN] >=EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_LANTERN" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_LANTERN", true);
 				}
-                if (tokenAspects.Keys.Contains(MOTH) && tokenAspects[MOTH] == 10)
+                if (tokenAspects.Keys.Contains(MOTH) && tokenAspects[MOTH] >=EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_MOTH" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_MOTH", true);
 				}
-                if (tokenAspects.Keys.Contains(WINTER) && tokenAspects[WINTER] == 10)
+                if (tokenAspects.Keys.Contains(WINTER) && tokenAspects[WINTER] >=EXALT_MINIMUM_ASPECT_LEVEL)
 				{
 					Analytics.CustomEvent( "A_PROMOTED_EXALTED_WINTER" );
                     storefrontServicesProvider.SetAchievementForCurrentStorefronts("A_PROMOTED_EXALTED_WINTER", true);
