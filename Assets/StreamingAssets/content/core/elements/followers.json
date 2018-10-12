@@ -298,7 +298,7 @@
 				 {
         id: "elridge_d",
             label: "Elridge, an Assassin",
-            aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
+            aspects: {mortal:1,follower:1, disciple:1,exalted:1,edge:10,follower_lustpower:1},
             description: "Elridge is never seen with a spot of blood upon his person. Not a spot.",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:elridge_p,rebellion:elridge_r},
