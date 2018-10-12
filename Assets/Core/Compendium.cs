@@ -334,7 +334,7 @@ public class Compendium : ICompendium
         if (endingFlag == "rivalascension")
             return new Ending(endingFlag, "NOT LONG ENOUGH",
                 "Perhaps I waited too long. Or perhaps this victory was never meant for me. Another has ascended in my place. Where they have risen, " +
-                "I will diminish, until I am only a memory. Perhaps another will avenge my defeat. ['Heaven hath no rage like love to hatred turned.' Your one-time ally turned against you, and surpassed you.]", "lionsmith", EndingFlavour.Melancholy, "DramaticLightEvil", "A_RIVAL_ASCENSION"
+                "I will diminish, until I am only a memory. Perhaps another will avenge my defeat. [Someone else surpassed you, changed the world, and won.]", "lionsmith", EndingFlavour.Melancholy, "DramaticLightEvil", "A_RIVAL_ASCENSION"
             );
 
 

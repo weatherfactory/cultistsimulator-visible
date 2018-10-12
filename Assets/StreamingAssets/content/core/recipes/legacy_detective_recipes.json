@@ -13,7 +13,7 @@ startdescription: "Once again, I have been seconded to the Suppression Bureau, t
 description: "The Bureau has identified a troublesome individual I am to investigate. My breath tightens when I see the name. There was another case, one I remember all too well...",
 warmup:10,
 craftable: true,
-linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}]
+linked:[{id:"workdetectivejob_start_rebellion",chance:100}]
 },
 
 {id: "detectiveopendream",
@@ -26,31 +26,8 @@ warmup:30,
 craftable: false
 },
 
-{id: "workdetectivejob_start_promote_lever_believer",
-label: "At the Station",
-actionId:"work",
-aspects: {promotiontodisciple:1},
-craftable:false,
-linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:100}],
-},
-
-{id: "workdetectivejob_start_promote_lever_disciple",
-label: "At the Station",
-actionId:"work",
-aspects: {promotionto_d_edge:1,
-promotionto_d_forge:1,
-promotionto_d_grail:1,
-promotionto_d_heart:1,
-promotionto_d_knock:1,
-promotionto_d_lantern:1,
-promotionto_d_moth:1,
-promotionto_d_winter:1,
-rebellion:1},
-linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
-craftable:false
-},
 {id: "workdetectivejob_start_rebellion",
-label: "At the Station",
+label: "Be Wary...",
 actionId:"work",
 aspects: {rebellion:1},
 craftable:false
@@ -158,7 +135,65 @@ description: "The Suppression Bureau holds their trials in closed court, and the
 effects:{funds:7,favour:1,suspicious:-99,independent:-1,legacydetective_plotitem_backup:1},
 warmup:60,
 aspects:{employment:1,fatiguing:1},
-craftable: false	},
+alternativerecipes:[{id:"workdetectivejob_newrival",chance:100,additional:true}]
+craftable: false},
+
+{id: "workdetectivejob_newrival",
+label:"Another Miscreant?",
+actionId:"newrival",
+startdescription:"Will it ever end? Can we ever call the law, the city, the world 'safe'?",
+description:"There are reports - troubling reports - of this one.",
+deckeffect:{acquaintances:1},
+warmup:60,
+linked:[{id:"workdetectivejob_newrival_recruit",chance:100}],
+},
+
+{id: "workdetectivejob_newrival_recruit",
+label:"Another Miscreant?",
+actionId:"newrival",
+startdescription:".",
+description:".",
+aspects:{recruiting:1},
+linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}],
+}
+
+
+
+{id: "workdetectivejob_start_promote_lever_believer",
+comments:"left unrenamed for backwards compatibility",
+label: "Be Wary...",
+actionId:"newrival",
+aspects: {promotiontodisciple:1},
+craftable:false,
+linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:30},
+{id:"workdetectivejob_start_rebellion",chance:100}],
+},
+
+{id: "workdetectivejob_start_promote_lever_disciple",
+comments:"left unrenamed for backwards compatibility",
+label: "Be Wary...",
+actionId:"newrival",
+aspects: {promotionto_d_edge:1,
+promotionto_d_forge:1,
+promotionto_d_grail:1,
+promotionto_d_heart:1,
+promotionto_d_knock:1,
+promotionto_d_lantern:1,
+promotionto_d_moth:1,
+promotionto_d_winter:1},
+linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
+craftable:false
+},
+
+
+{id: "workdetectivejob_start_rebellion",
+comments:"left unrenamed for backwards compatibility",
+label: "Be Wary...",
+actionId:"work",
+aspects: {rebellion:1},
+craftable:false
+},
+
 
 
 
