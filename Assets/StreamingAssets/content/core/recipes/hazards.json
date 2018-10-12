@@ -216,12 +216,20 @@
 	{id: "curse_nowhere_active",
 	label:"The Worms in the World",
 	actionId: "curse_nowhere",
-	requirements: {notoriety:-1},
-	startdescription: "There are Worms in the city. One does not see Worms, but neither does one forget them. They will enter someone through the spaces in the skin and do what Worms will.",
-	description:"There is nothing that can be done. If we find what is left, we must burn and sift with the utmost care.",
-	effects:{mortal:-1,notoriety:1},
+	startdescription: "There are Worms in the city. One does not see Worms, but neither does one forget them. They will search until they find someone they can enter through the spaces in the skin, and then do what Worms will.",
 	slots: [{id:"Someone",greedy:true,required:{mortal:1}}],
-	linked: [{id: "curse_nowhere_active",chance:100}],
+	linked: [{id: "curse_nowhere_complete",chance:100},
+	{id: "curse_nowhere_active",chance:100},
+	],
+	warmup:60
+	},
+	
+		{id: "curse_nowhere_complete",
+	label:"The Worms in the World",
+	actionId: "curse_nowhere",
+	requirements: {mortal:1},
+	description:"When Worms take flesh, there is nothing to be done except destroy what remains - burn and sift with the utmost care.",
+	effects:{mortal:-1,notoriety:1,dread:1},
 	warmup:60
 	},
 
