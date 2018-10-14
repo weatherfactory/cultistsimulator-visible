@@ -27,7 +27,7 @@ requirements:{follower_lustpower:1,resentment:-1,powermarks:1},
 startdescription:"@#uqtristan|Tristan rises before I've finished speaking. 'We should go now,' he says, very calmly, but when he places a hand on my shoulder, the hand trembles. 
 #uqvalciane|Valciane inches closer as we speak together. When she takes my hand, the machine strength of her fingers is matched by the embery heat of her skin. 'I'm not light', she warns me. 'We should establish tolerances.'
 #uqelridge|Elridge listens intently to every word. His eyes never leave mine. The only thing he says is 'Yes', but by the time we reach my home, he has begun to say it even when I haven't asked a question.
-#uqlaidlaw|Laidlaw's eyes shine as you speak. He can't seem to look away. His hands are upon me before either of us quite seem clear how it happened. Just for a moment, the auctioneer falters. We leave together before we attract comment.@",
+#uqlaidlaw|Laidlaw's eyes shine as I speak. He can't seem to look away. His hands are upon me before either of us quite seem clear how it happened. Just for a moment, the auctioneer falters. We leave together before we attract comment.@",
 description:".",
 mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:1},
 {filterOnAspectId:mortal,mutateAspectId:forge,mutationLevel:1}],
@@ -92,7 +92,7 @@ craftable:false
 {id:"L_checkjealousy",
 label:"Another?",
 actionId:"rose",
-requirements:{romanticinterest:,summoned:-1,corpse:-1},
+requirements:{romanticinterest:1,summoned:-1,corpse:-1},
 comments:"re requirements: can't be another if there isn't even one. Also people don't *currently* get jealous of the dead. They're either non-viable, or kept somewhere extremely private",
 slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
 startdescription: "Is there another? ",

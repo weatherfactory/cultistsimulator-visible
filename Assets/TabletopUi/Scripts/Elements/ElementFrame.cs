@@ -44,9 +44,9 @@ public class ElementFrame : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     {
         Sprite aspectSprite;
         if (aspect.IsAspect) //it may be a concrete element rather than just an aspect
-            aspectSprite= ResourcesManager.GetSpriteForAspect(aspect.Id);
+            aspectSprite= ResourcesManager.GetSpriteForAspect(aspect.Icon);
         else
-            aspectSprite = ResourcesManager.GetSpriteForElement(aspect.Id);
+            aspectSprite = ResourcesManager.GetSpriteForElement(aspect.Icon);
 
         aspectImage.sprite = aspectSprite;
     }

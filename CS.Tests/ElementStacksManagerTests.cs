@@ -344,6 +344,7 @@ namespace Assets.Editor.Tests
         public IlluminateLibrarian IlluminateLibrarian { get; set; }
         public bool Unique { get; }
         public string UniquenessGroup { get; }
+        public string Icon { get; }
 
         public Dictionary<string, string> GetCurrentIlluminations()
         {

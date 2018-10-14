@@ -50,7 +50,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         void SetAspect(Element element) {
-            ShowImage(ResourcesManager.GetSpriteForAspect(element.Id));
+            ShowImage(ResourcesManager.GetSpriteForAspect(element.Icon));
             ShowText(aspectHeader + element.Label, element.Description);
         }
     }

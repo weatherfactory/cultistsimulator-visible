@@ -29,6 +29,7 @@
         id: "scheme_murderhunter_success",
         label: "Someone has murdered a Hunter!",
         actionId: "scheme",
+		requirements:{hunter:1},
     aspects:{killhunter:1},
 	   effects:{notoriety:1},
    startdescription:"This may give me breathing space - but it may ultimately bring the Suppression Bureau to my door.",
@@ -41,7 +42,7 @@
         id: "scheme_murderhunter_failure",
         label: "Someone has failed to murder a Hunter!",
         actionId: "scheme",
-    
+    requirements:{hunter:1},
    effects:{notoriety:1},
    startdescription:"This may ultimately bring the Suppression Bureau to my door.",
         warmup: 5,
