@@ -9,6 +9,7 @@ public class Config
 {
 	public bool skiplogo = false;
 	public int verbosity = 0;
+    public bool knock = false;
 
     // simple singleton declaration
     private static Config _instance;
@@ -44,7 +45,12 @@ public class Config
 				verbosity = 10;
 	            NoonUtility.CurrentVerbosity = 10;
 	        }
-	    }
+
+	        if (contents.Contains("knock=1"))
+	        {
+	            knock = true;
+	        }
+        }
 	    else
 	    {
 	        
