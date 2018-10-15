@@ -13,7 +13,7 @@ startdescription: "Once again, I have been seconded to the Suppression Bureau, t
 description: "The Bureau has identified a troublesome individual I am to investigate. My breath tightens when I see the name. There was another case, one I remember all too well...",
 warmup:10,
 craftable: true,
-linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}]
+linked:[{id:"workdetectivejob_start_rebellion",chance:100}]
 },
 
 {id: "detectiveopendream",
@@ -25,38 +25,6 @@ effects: {passion:1},
 warmup:30,
 craftable: false
 },
-
-{id: "workdetectivejob_start_promote_lever_believer",
-label: "At the Station",
-actionId:"work",
-aspects: {promotiontodisciple:1},
-craftable:false,
-linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:100}],
-},
-
-{id: "workdetectivejob_start_promote_lever_disciple",
-label: "At the Station",
-actionId:"work",
-aspects: {promotionto_d_edge:1,
-promotionto_d_forge:1,
-promotionto_d_grail:1,
-promotionto_d_heart:1,
-promotionto_d_knock:1,
-promotionto_d_lantern:1,
-promotionto_d_moth:1,
-promotionto_d_winter:1,
-rebellion:1},
-linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
-craftable:false
-},
-{id: "workdetectivejob_start_rebellion",
-label: "At the Station",
-actionId:"work",
-aspects: {rebellion:1},
-craftable:false
-},
-
-
 
 
 {id: "workdetectivejob_matured_investigate_hint",
@@ -140,23 +108,83 @@ label: "Solving the case",
 actionId: "work",
 requirements: {myevidenceb:1},
 slots:[{id:"Culprit",required:{independent:1},greedy:true}],
-startdescription: "I've turned over my evidence to the Assistant Director General of the Suppression Bureau.... but there's no-one to arrest.",
+startdescription: "I've turned over my evidence to the Assistant Director General of the Suppression Bureau...",
 description: "I've provided the Suspicion Bureau with enough evidence to make an arrest... but there's no-one to arrest.",
 alternativerecipes:[{id:"workdetectivejob_matured_solvecase",chance:100}],
 warmup:60,
 aspects:{employment:1,fatiguing:1},
 effects:{funds:2,suspicious:-99},
 craftable: false	},
+
+
 {id: "workdetectivejob_matured_solvecase",
 label: "Solving the case",
 actionId: "work",
 requirements: {myevidenceb:1,independent:1},
 startdescription: "I've turned over my evidence to the Assistant Director General of the Suppression Bureau. At this moment, I can assume, hard-faced men in plain clothing are pounding on the door of my quarry.",
 description: "The Suppression Bureau holds their trials in closed court, and they are not merciful. My quarry disappears from the world. I have earned myself a promotion. ",
-effects:{funds:7,favour:1,suspicious:-99,independent:-1},
+effects:{funds:7,favour:1,suspicious:-99,independent:-1,legacydetective_plotitem_backup:1},
 warmup:60,
 aspects:{employment:1,fatiguing:1},
-craftable: false	},
+alternativerecipes:[{id:"workdetectivejob_newrival",chance:100,additional:true}]
+craftable: false},
+
+{id: "workdetectivejob_newrival",
+label:"Another Miscreant?",
+actionId:"newrival",
+startdescription:"Will it ever end? Can we ever call the law, the city, the world 'safe'?",
+description:"There are reports - troubling reports - of this one.",
+deckeffect:{acquaintances:1},
+warmup:60,
+linked:[{id:"workdetectivejob_newrival_recruit",chance:100}],
+},
+
+{id: "workdetectivejob_newrival_recruit",
+label:"Another Miscreant?",
+actionId:"newrival",
+startdescription:".",
+description:".",
+aspects:{recruiting:1},
+linked:[{id:"workdetectivejob_start_promote_lever_believer",chance:100}],
+}
+
+
+
+{id: "workdetectivejob_start_promote_lever_believer",
+comments:"left unrenamed for backwards compatibility",
+label: "Be Wary...",
+actionId:"newrival",
+aspects: {promotiontodisciple:1},
+craftable:false,
+linked:[{id:"workdetectivejob_start_promote_lever_disciple",chance:30},
+{id:"workdetectivejob_start_rebellion",chance:100}],
+},
+
+{id: "workdetectivejob_start_promote_lever_disciple",
+comments:"left unrenamed for backwards compatibility",
+label: "Be Wary...",
+actionId:"newrival",
+aspects: {promotionto_d_edge:1,
+promotionto_d_forge:1,
+promotionto_d_grail:1,
+promotionto_d_heart:1,
+promotionto_d_knock:1,
+promotionto_d_lantern:1,
+promotionto_d_moth:1,
+promotionto_d_winter:1},
+linked:[{id:"workdetectivejob_start_rebellion",chance:100}],
+craftable:false
+},
+
+
+{id: "workdetectivejob_start_rebellion",
+comments:"left unrenamed for backwards compatibility",
+label: "Be Wary...",
+actionId:"work",
+aspects: {rebellion:1},
+craftable:false
+},
+
 
 
 
@@ -183,7 +211,7 @@ craftable: false},
 {id: "legacydetectiveplotitem_tempt",
 label: "The Scent of the Pages",
 actionId: "craving",
-requirements: {legacydetective_plotitem:1},
+requirements: {detectivetemptation:1},
 linked:[{id:"legacydetectiveplotitem_tempt_addslot",chance:100}]},
 {id: "legacydetectiveplotitem_tempt_addslot",
 label: "The Scent of the Pages",
@@ -244,24 +272,24 @@ craftable: false
 
 
 {id: "detectivestudy_plotitem",
-label: "I Should Not Open the Sealed File",
+label: "I Should Not Open the File",
 actionId: "study",
-requirements: {legacydetective_plotitem:1},
+requirements: {detectivetemptation:1},
 alternativerecipes: [{id:"detectiveopendream",chance:100,additional:true}],
-effects: {legacydetective_plotitem:-1,fascination:1,LEVER_LastDesire:1,dread:1},
+effects: {detectivetemptation:-1,fascination:1,LEVER_LastDesire:1,dread:1},
 startdescription:"I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
 description:"The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
 warmup:60,
 craftable: true
 },
 {id: "detectivework_plotitem",
-label: "Burn the Sealed File",
+label: "Burn the File",
 actionId: "work",
-requirements: {legacydetective_plotitem:1},
-effects: {legacydetective_plotitem:-1,legacydetective_plotitem_burning:1,restlessness:1,contentment:1},
+requirements: {detectivetemptation:1},
+effects: {detectivetemptation:-1,legacydetective_plotitem_burning:1,restlessness:1,contentment:1},
 startdescription:"This is evidence. We do not burn evidence. But perhaps it's for the best.",
 description:"The pages blacken, one by one, curling like closing fingers. I have opened the window of my office. The smoke dissipates and is lost. What exactly have I done?",
-warmup:60,
+warmup:5,
 craftable: true
 },
 

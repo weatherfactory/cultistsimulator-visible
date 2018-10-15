@@ -43,9 +43,9 @@ public class ResourcesManager: MonoBehaviour
         return sprite;
     }
 
-    public static Sprite GetSpriteForAspect(string aspectId)
+    public static Sprite GetSpriteForAspect(string imageName)
     {
-        var sprite = Resources.Load<Sprite>("icons40/aspects/" + aspectId);
+        var sprite = Resources.Load<Sprite>("icons40/aspects/" + imageName);
 
         if (sprite == null)
             sprite = Resources.Load<Sprite>("icons40/aspects/" + PLACEHOLDER_IMAGE_NAME);

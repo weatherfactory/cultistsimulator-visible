@@ -246,6 +246,7 @@ namespace Assets.CS.TabletopUI {
             var populatedCharacter =
                 Registry.Retrieve<Character>(); //should just have been set above, but let's keep this clean
             Registry.Retrieve<ICompendium>().SupplyLevers(populatedCharacter);
+            CrossSceneState.RestartedGame();
         }
 
         private void InitialiseSubControllers(SpeedController speedController,
@@ -449,6 +450,13 @@ namespace Assets.CS.TabletopUI {
             var htSave = saveGameManager.RetrieveHashedSaveFromFile();
             ClearGameState(_heart, storage, _tabletop);
             saveGameManager.ImportHashedSaveToState(_tabletop, storage, htSave);
+
+            //my early Jenga code: the gift that keeps on giving. Here, we cater for cases where a gently borked saved game just imported a null ActiveLegacy
+            /////
+            if (storage.ActiveLegacy == null)
+                storage.ActiveLegacy = compendium.GetAllLegacies().First();
+            /////
+            CrossSceneState.SetChosenLegacy(storage.ActiveLegacy); // man this is spaghetti. 'Don't forget to update the global variable after you imported it into a different object'. MY BAD. - AK
             StatusBar.UpdateCharacterDetailsView(storage);
 
 			// Reopen any windows that were open at time of saving. I think there can only be one, but checking all for robustness - CP
@@ -580,6 +588,8 @@ namespace Assets.CS.TabletopUI {
                 return false; // We're animating something into the slot.
             if (tokenSlotPair.RecipeSlot.GetElementStackInSlot() != null)
                 return false; // It is already filled
+            if (tokenSlotPair.RecipeSlot.GoverningSlotSpecification==null || !tokenSlotPair.RecipeSlot.GoverningSlotSpecification.Greedy)
+                return false; //it's not greedy any more; sometimes if we have a recipe with a greedy slot followed by a recipe with a non-greedy slot, the behaviour carries over for the moment the recipe changes
 
             return true;
         }
@@ -830,8 +840,8 @@ namespace Assets.CS.TabletopUI {
             mansusSituation = null;
         }
 
-        public void BeginNewSituation(SituationCreationCommand scc) {
-            Registry.Retrieve<Choreographer>().BeginNewSituation(scc);
+        public void BeginNewSituation(SituationCreationCommand scc,List<IElementStack> withStacksInStorage) {
+            Registry.Retrieve<Choreographer>().BeginNewSituation(scc,withStacksInStorage);
         }
 
         public void SignalImpendingDoom(ISituationAnchor situationToken) {

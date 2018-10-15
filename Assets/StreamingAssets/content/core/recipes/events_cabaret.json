@@ -1,5 +1,6 @@
  {"recipes": [
 
+
 	
 	{id:"explorecabaret",
 	actionId: "explore",
@@ -7,6 +8,7 @@
 	requirements: {locationcabaret:1,funds:1},
 	startdescription:"The entrance is lost beneath soft drapes of crimson, cinnabar and incarnadine. Above the door, the club motto: 'IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI'. It has been rendered as 'into night's circle we fly, until the fire enjoys us'.",
 	description: ".",
+	effects: {funds:-1},
 	craftable:true,
 	deckeffect: {"cabaretevents":1},
 	linked:[{id:"cabaretpleasure",chance:100},
@@ -51,7 +53,7 @@
 	label: "A Glimpse of Something More at the Ecdysis Club",
 	actionId: "explore",
 	requirements:{glimmering:1},
-	startdescription: "The backdrops for tonight's performances are painted with Piranesi's drawings of vast impossible subterranean prisons. The dancers are monster-masked, sudden as fire, each movement snapping with wicked intent.",
+	startdescription: "The backdrops for tonight's performances are painted with nightmare images out of Piranesi - vast impossible subterranean prisons. The dancers are monster-masked, sudden as fire, each movement snapping with wicked intent.",
 	description: "The dancers pass beyond the backdrops, cross them, seem to move upon their staircases and drawbridges. Their bodies become smudged with backdrop-paint. A growl arises from the audience. 'The walls of the House...'",
 	warmup:15,
 	craftable:false

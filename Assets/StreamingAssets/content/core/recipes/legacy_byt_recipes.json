@@ -4,7 +4,7 @@
 label: "A Golden Day of Occasional Work",
 actionId: "work",
 requirements: {legacybytjob:1},
-effects: {funds: 2,legacybytjob:-1,legacybytjobmatured:1},
+effects: {funds:3,legacybytjob:-1,legacybytjobmatured:1},
 alternativerecipes: [
 {id:bytopenexplore,chance:100,additional:true}],
 startdescription: "Possibly I'll get something done today.",
@@ -15,7 +15,7 @@ craftable: true	},
 label: "A Golden Day of Occasional Work",
 actionId: "work",
 requirements: {legacybytjobmatured:1},
-effects: {funds: 2},
+effects: {funds: 3},
 alternativerecipes: [
 {id:workbytjobend,chance:30}],
 startdescription: "Possibly I'll get something done today.",
@@ -26,26 +26,20 @@ craftable: true	},
 {id: "workbytjobend",
 label: "A Cloud on the Horizon",
 actionId: "work",
-alternativerecipes: [
-{id:"needs",chance:100,additional:true}
-],
-effects: {},
-startdescription: ".",
-description: ".",
+startdescription: "Papa has summoned me! I must race to his bedside. All the family affairs are suspended, for now - ",
 craftable: false,
-linked: [
-{id:"workbytjobepilogue",chance:100}],
-comments: "this passes through to the next one, so we can spawn needs at the beginning of the legal wrangle."
+effects:{legacybytjobmatured:-1,funds:2},
+alternativerecipes: [
+{id:"workbytjobepilogue",chance:100,additional:true}]
 },
 
 {id: "workbytjobepilogue",
 label: "Ghastly News",
-actionId: "work",
+actionId: "legacyeventbad",
 alternativerecipes: [
-{id:"bytopenstudy",chance:100,additional:true}
-],
-effects: {health: 2, funds: 20,legacybytjobmatured:-1},
-startdescription: "Papa is dead! No-one will tell me exactly how. But the estate is in a state. My allowance is tied up in probate and so forth. One can only hope it's resolved before the bills come due. [<b>Time</b>, regrettably, is now passing.]",
+{id:"bytopenstudy",chance:100,additional:true}],
+effects: {health: 2, funds: 20},
+startdescription: "Papa is dead! No-one will tell me exactly how. But the estate is in a state. My allowance is tied up in probate and so forth. One can only hope it's resolved before the bills come due. ",
 description: "The business of the will has been settled... but Papa's business affairs have been eaten up with debts like woodworm. No-one seems to know exactly what he spent the money on. But the solicitor is sending me some papers, apparently..",
 warmup:60,
 craftable: false},

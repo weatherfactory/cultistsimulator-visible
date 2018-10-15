@@ -6,17 +6,127 @@ thank you!
 
 - Lottie and Alexis
 
-v2018.8.b.2
-- nasty bug where closing a window *just as a card reaches a slot* destroyed the card is now fixed. Huge thanks to Chris P for fixing this fecker,
-and to everyone who's sent detailed bug reports. Or any bug reports including mad chalk scrawlings, honestly
-- Double-clicking a card in the Mansus should no longer destroy it
-- Funds should now return to stack from expedition results
-- Cards should no longer be placed beneath other cards by Collect All
-- Sound volume slider fixed AGAIN. FINALLY. It turns out it worked in the Unity editor but not the built version
-- Content and typo fixes; Unity version upgrade
+v2018.10.i.1: 'Janus'
+- Visions and Despair now give a visible and audible warning when they reach 2 F or D
+- Guises in Dancer now give a small advantage on the relevant expedition
+- Guises are mutually unique
+- Passion and Reason textbooks now work with the Lessons Learnt system
 
-v2018.8.a.1
-- Fixed a nasty bug where double-clicking to send a card would in fact disappear the card when the slot disappeared while the card was en route
+v2018.10.h.1: 'Hope'
+- When a detective defeats an independent troublemaker, a new troublemaker will appear. The struggle is real.
+- Detectives will have more temptations to resist if they burn the first file.
+- When Disciples or Exalted followers rebel, they become more powerful Rivals/Long in the making immediately.
+- Dammit Fraser stay in the credits
+- Tristan ending image shows up
+- Laidlaw romance not intermittently in second person
+- Cheevos now trigger correctly for exalts, and also won't try to trigger more than once per card
+- Elridge doesn't lose his lust: power when promoted to an Assassin
+- Jealousy only triggers when romantic interest exists
+
+
+v2018.10.g.1: 'Gravitas'
+- Fleeting Memories can be used again to address Fascination (not sure when that broke)
+- Defeating Fascination gives Lantern influence, defeating Despair gives Winter influence
+- round-up of bug fixes and typos/contumps
+- The tiniest of surprises
+
+v2018.10.f.1: 'Ferocity'
+- filled in some missing art
+- fixed soft-greedy-grab bug that sometimes made the player accidentally bin off their ain true love
+- some things are unique-r (eg: it should never be possible to have concurrent different versions of the same follower)
+- some Dancer fixes and clues
+- a small surprise
+
+v2018.10.e.1: 'Elegance'
+- bug fixes to Skills/stats
+- Corpses and Risen now retain additional aspects from life; so e.g. Winter-scarred corpses are easier to raise and more powerful
+- Risen can now be renewed to keep them active longer
+- nother book
+- a surprise
+
+v2018.10.d.1: 'Detection'
+- Nasty ascension bug fixed
+- Skills rework: Passion, Reason and Health are now all capped
+- ...but much easier to get, with the 'Lesson Learnt' mechanic.
+- A small surprise.
+
+
+v2018.10.b.1: 'Bitterness'
+- Much richer Rivals implementation. Rivals will conduct expeditions and attempt to ascend in your place. Set traps for them and whittle down their health. Treat them with caution, and hope they'll come back around to your side. Or feed Notoriety to the Suppression Bureau in the hope they'll pursue your Rivals instead.
+- a larger number of highly specialised victories, and a new loss
+- fixed bug where cult formation wasn't giving HQs
+
+v2018.10.a.1: 'Ardour'
+- Followers are now romanceable (not all followers in all circumstances)
+- Extremely minimal Rivals implementation
+- various smol fixes and content tweaks
+
+
+v2018.9.g.1
+- fixed a bug where a save created on the main branch couldn't be saved after loading it on the beta branch
+
+
+v2018.9.f.1
+- Output cards stack more helpfully
+- Weary Detective is always the first Hunter spawn
+- If you send a mortal follower to destroy evidence, and they fail, they will be wounded rather than disappearing. Summoned minions will still just disappear.
+- Fixed bug where Edge, Forge and Heart cults couldn't be founded
+- three new books!
+
+v2018.9.e.1
+- Followers may receive Gifts
+- Aspirant is now the default legacy again
+- Restlessness now also has Heart value. What does not cease, is not ceased.
+- Aspirant is now a little more generous with your starting payment
+- Aspirant Study verb now unlocks correctly, again
+- Two distinct restart bugs fixed. Restart should now behave better.
+- lots of WIP for romance and Dancer that shouldn't be visible, but may cause accidental bugs or save issues: let me know if so
+
+v2018.9.d.3
+- A very limited preview version of the Dancer legacy (one victory, no ascensions, some other features missing) is available to everyone. Honestly I just wanted to get this patch live and didn't want to fiddle around with DLC. It'll be limited to Perpetual Edition owners / new DLC purchasers next time.
+- The Season of Sickness will now also accept Fatigued Health, making Sickness a bit less menacing
+- Fatigue now has Heart value, and Restlessness now also has Moth value (I don't really know why it ever didn't)
+- Glimmering, Vitality and Erudition spawn more frequently.
+- Cult Business and Expedition challenges can no longer have a 100% chance of success - max is 90%. Don't panic! See Wounds notes from 2018.7.d.1
+
+v2018.9.c.2
+- A Sanskrit tutor is available.
+- Vitality, Erudition and Glimmering are now Influences, and may be sometimes be gained through Augury.
+- Health skill can't be used to produce Health infinitely - it tops out
+- Health skill can now be specialised as Strength or Grace
+- Vitality, Erudition and Glimmering now have Heart, Lantern and Moth aspects.
+- It's now possible to attack Hunters directly.
+- If you attack a Hunter directly and fail, they won't give you a second chance.
+
+v2018.7.g.2
+- fixed a nasty double-click issue where cards could disappear en route to a slot if the slot disappeared
+
+v2018.7.g.1
+- abating visions now gives Lantern Influence, not Fleeting Memory
+
+v2018.7.f.1
+- fixes for issues with saving and loading. Hit us up at support@weatherfactory.biz if you come across any more save/load issues!
+- fixes for double-click assign issues.
+- double-click animation is now much faster.
+- fixed an issue where the game would forget where a stack started
+- double-clicking now opens-closes info panel, so you don't have to wait another half-second on single-click
+- Augury cult business displays text on failure again
+- vsync enabled on Basic graphics level again - this may help address issues with Mac notebooks inexplicably overheating
+- [earlier hotfix] Founding Cults with Health is no longer an endless pit of consuming pain with a game-breaking bug
+
+v2018.7.e.1
+- Fleeting Memory cures Fascination! \o/
+- Early Night will occasionally create Fascination or Dread :(
+- Health, Reason and Passion still count as Ingredients, but using them with Rites or when recruiting/upgrading will convert them to their fatigued versions, instead of using them up.
+- Injury still counts as an ingredient. Using it with a Rite or recruitment converts it to a Knock-Scar. (which still has placeholder art, don't panic)
+
+v2018.7.d.1
+- Followers who become casualties in Expeditions or Cult Business are now Wounded instead of dying outright
+- Wounded Followers can still die if you don't heal them sharpish
+- Healed Followers gain Scars which can increase some Aspects
+- Three Scars of the same type will kill a Follower anyway
+- on the upside, their corpse retains the extra aspects
+- ALL THIS IS SUBJECT TO BALANCE AND REVISION AND WHATNOT
 
 v2018.7.b.3
 - Fixed a raft of horrible OSX issues
@@ -24,6 +134,7 @@ v2018.7.b.3
 v2018.7.b.2
 - bug fixes for double-click and save file issues
 - preparatory loc work - don't panic if fonts look a bit different
+
 
 v2018.7.b.1
 
@@ -54,7 +165,7 @@ v2018.6.k.2
 - Start Recipe no longer auto-starts all recipes ever ("Oh, *that's* what Gravity is for in the InputManager")
 - Tidied up hints and promotion recipes to make it clearer which followers can be Exalted.
 - Tenacious Detectives *were* surviving too often in some circumstances - there was a mistake in the proc chance. Sorry, folks. Fixed.
-- Fixed *lots* of issues with escaped summonings 
+- Fixed *lots* of issues with escaped summonings
 
 
 v2018.6.k.1
@@ -105,7 +216,7 @@ v2018.6.b.1
 
 - Audio and music no longer default to 10% volume.
 - Logo visible on Linux
-- Some crash-on-startup issues fixed 
+- Some crash-on-startup issues fixed
 - Added someone to the credits page who was incognito as House Skintwister.
 
 
@@ -161,6 +272,3 @@ v2018.5.t.1 changes:
 - Hotkeys for zooming if you don't have a mousewheel [1,2,3 and Q/E]
 - Hotkey for [S]tart
 - Lots of audio evolutions and changes
-
-
-

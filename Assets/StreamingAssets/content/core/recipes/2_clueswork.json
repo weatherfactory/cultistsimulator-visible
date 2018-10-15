@@ -1,5 +1,15 @@
  {"recipes":
- [		{
+ [		
+ 
+ 	{id:"workbenefactorhint",
+	label: "Private Performances?",
+	actionId:"work",
+	requirements:{benefactor:1},
+	startdescription:"To satisfy my benefactor, I'll need to exert my abilities, and ensure I look my best. That always has a cost.",
+	craftable:false,
+	hintonly:true
+	},
+ {
         id: "workfundshint",
         label: "Money",
         actionId: "work",
@@ -8,11 +18,12 @@
         craftable: false,
 		hintonly: true
     },
+
       			{
         id: "skillhealthhintwork",
         label: "Health",
         actionId: "work",
-        requirements: {healthskill:1},
+        requirements: {healthskill:1,job:-1},
         startdescription: "I have grown strong, but I must still devote my Health to a day's work.",
         craftable: false,
 		hintonly: true,
@@ -32,7 +43,7 @@
         label: "Erudition",
         actionId: "work",
         requirements: {erudition:1},
-        startdescription: "This isn't a matter for work;but I could Study it to increase my Reason.",
+        startdescription: "This isn't a matter for work; but I could Study it to increase my Reason.",
         craftable: false,
 		hintonly: true,
 		comments: "Not currently possible with restrictions on work primary slot"
@@ -75,7 +86,80 @@
         craftable: false,
 		hintonly: true
     },
-
+   {
+        id: "minorforgevictory_hint_sixth",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:6},
+        effects: {},
+        startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-sixth degree of intensity.",
+        hintonly:true
+    },
+			   {
+        id: "minorforgevictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		powermarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Conflagration of the Heart. I will first need to achieve the Sixth Mark.",
+        hintonly:true
+    },
+	
+					   {
+        id: "minorgrailvictory_hint_sixth_with_romantic",
+        label: "A quicker way to the Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:6,
+		romanticinterest:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need more... but the Grail once sacrificed one she had loved, and those sacrifices are precious to her. If I am willing to sacrifice a lover, I will need power to only the twenty-seventh degree of intensity.",
+        hintonly:true
+    },
+	
+					   {
+        id: "minorgrailvictory_hint_sixth",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:6},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-sixth degree of intensity.",
+        hintonly:true
+    },
+				   {
+        id: "minorgrailvictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		sensationmarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Feast of the True Birth. I will first need to achieve the Sixth Mark.",
+        hintonly:true
+    },
+					   {
+        id: "minorlanternvictory_hint_sixth",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:6},
+        effects: {},
+        startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-sixth degree of intensity.",
+        hintonly:true
+    },
+				   {
+        id: "minorlanternvictory_hint",
+        label: "The Seventh Mark?",
+        actionId: "work",
+        requirements: {ritual: 1,
+		enlightenmentmarks:1},
+        effects: {},
+        startdescription: "The Seventh Mark is the Incursus. I will first need to achieve the Sixth Mark.",
+        hintonly:true
+    },
+	
  
  		{
         id: "hint_summon_spirit_forgee_edge",
@@ -160,12 +244,33 @@
       hintonly:true,
         craftable: false
     },
+	
+				 	{
+        id: "hint_renew_spirit_wintera_edge",
+        label: "Renew a Shattered Risen with the power of the Cartographer of Scars?",
+        actionId: "work",
+        requirements: {ritual:1,spirit_wintera_edge:1,desire:-1},
+        startdescription: "It is harder to maintain a Shattered Risen than it is to raise one. But with enough Winter aspect, and enough Edge, I might keep my Shattered Risen moving. Or I might employ it to summon a greater spirit.",
+  hintonly:true,
+        craftable: false,
+	
+    },
+  	{
+        id: "hint_renew_spirit_wintera_moth",
+        label: "Renew a Burgeoning Risen with the power of the Ring-Yew?",
+        actionId: "work",
+        requirements: {ritual:1,spirit_wintera_moth:1,desire:-1},
+        startdescription: "A Burgeoning Risen will not stay contained for long. But with enough Winter aspect, and enough Moth, I might keep my work stable a little longer. Or I might employ it to summon a greater spirit.",
+   hintonly:true,
+        craftable: false
+    },
+	
 		 	{
         id: "hint_summon_spirit_wintera_edge",
         label: "Infuse a corpse with the power of the Cartographer of Scars?",
         actionId: "work",
         requirements: {ritual:1,winter:1,edge:1,desire:-1},
-        startdescription: "I've found a useful conjunction of aspects, but I need more. With a little more Winter aspect, a little more Edge, and a Corpse, I might create a brutal servant.",
+        startdescription: "I've found a useful conjunction of aspects, but I need more. With some Winter aspect, a little Edge, and a Corpse, I might create a brutal servant.",
   hintonly:true,
         craftable: false,
 	
@@ -175,10 +280,11 @@
         label: "Infuse a corpse with the power of the Ring-Yew?",
         actionId: "work",
         requirements: {ritual:1,winter:1,moth:1,desire:-1},
-        startdescription: "With a little more Winter aspect, a little more Moth, and a Corpse, I might create a cunning servant.",
+        startdescription: "With some Winter aspect, a little Edge, and a Corpse, I might create a cunning servant.",
    hintonly:true,
         craftable: false
     },
+	
 	 			{
         id: "ritehinthasknockedge",
         label: "Summoning Something?",
@@ -383,67 +489,7 @@
         craftable: false,
 		hintonly: true
     },
-				   {
-        id: "minorforgevictory_hint_sixth",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		powermarks:6},
-        effects: {},
-        startdescription: "The Seventh Mark is the Conflagration of the Heart. I am close: close as the flame is to the candle. I will need all the power of the Forge I can muster, to at least the thirty-sixth degree of intensity.",
-        hintonly:true
-    },
-			   {
-        id: "minorforgevictory_hint",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		powermarks:1},
-        effects: {},
-        startdescription: "The Seventh Mark is the Conflagration of the Heart. I will first need to achieve the Sixth Mark.",
-        hintonly:true
-    },
-					   {
-        id: "minorgrailvictory_hint_sixth",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		sensationmarks:6},
-        effects: {},
-        startdescription: "The Seventh Mark is the Feast of the True Birth. I am close: close as blood to the heart. I will need all the power of the Grail I can muster, to at least the thirty-sixth degree of intensity.",
-        hintonly:true
-    },
-				   {
-        id: "minorgrailvictory_hint",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		sensationmarks:1},
-        effects: {},
-        startdescription: "The Seventh Mark is the Feast of the True Birth. I will first need to achieve the Sixth Mark.",
-        hintonly:true
-    },
-					   {
-        id: "minorlanternvictory_hint_sixth",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		enlightenmentmarks:6},
-        effects: {},
-        startdescription: "The Seventh Mark is the Incursus. I am close: close as the light to the shadow's edge. I will need all the power of the Lantern I can muster, to at least the thirty-sixth degree of intensity.",
-        hintonly:true
-    },
-				   {
-        id: "minorlanternvictory_hint",
-        label: "The Seventh Mark?",
-        actionId: "work",
-        requirements: {ritual: 1,
-		enlightenmentmarks:1},
-        effects: {},
-        startdescription: "The Seventh Mark is the Incursus. I will first need to achieve the Sixth Mark.",
-        hintonly:true
-    },
-	
+				
 
 
 		{

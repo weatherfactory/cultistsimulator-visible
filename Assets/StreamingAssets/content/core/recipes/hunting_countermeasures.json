@@ -33,6 +33,43 @@ When a Hunter survives an attack by a summoned creature, occasionally they'll be
 mutations:[{filterOnAspectId:hunter,mutateAspectId:mystic,mutationLevel:1}],
 effects:{notoriety:1,summoned:-1}
    },
+
+            {id: "hunterfitewithextraswole",
+	   label: "A Surprise Attack on an Adversary",
+	  actionId:"talk",
+	  requirements:{murderskill:1},
+	  startdescription:"My adversary insists on a public meeting-place. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
+	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:70},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+         {id: "hunterfitewithswole",
+	   label: "A Surprise Attack on an Adversary",
+	  actionId:"talk",
+	  requirements:{healthskill:1},
+	  startdescription:"My adversary insists on a public meeting-place. They have taken all reasonable precautions, and a direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This is a very long shot indeed.]",
+	  description:"I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+	  	  alternativerecipes:[{id:"hunterfitewithswole_failure",chance:90},
+		  {id:"huntertenacioussurvives",chance:30}],
+	  effects:{notoriety:1},
+	  aspects:{killhunter:1},
+	  craftable:false
+	  },
+	  {id:"hunterfitewithswole_failure",
+	  label:"A Surprise Attack has Failed!",
+	  actionId:"talk",
+	  startdescription:".",
+	  description:"With a cry, my adversary leaps back, kicking over the table! All around us, heads turn. No-one saw me move. The only real witness is my adversary. But I must leave immediately.",
+	  craftable:false,
+	  effects:{notoriety:1},
+	  	  mutations:[{filterOnAspectId:hunter,mutateAspectId:wary,mutationLevel:1}],
+	  },
+	  
+	  
+	  
       {id: "hunterspeakpoison",
 	   label: "Employ a Remarkable Poison against a Hunter",
 	  actionId:"talk",
@@ -42,6 +79,7 @@ effects:{notoriety:1,summoned:-1}
 	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
 	  effects:{poison:-1,notoriety:1},
 	  aspects:{killhunter:1},
+	  craftable:false
 	  },
    
    {id: "hunterattackhighwinter",
@@ -51,7 +89,8 @@ effects:{notoriety:1,summoned:-1}
 	  requirements: {hunter:1,winter:10,follower:1},
 	  linked: [{id:"hunterstealthattacksuccess",chance:70},
 	  {id:"hunterstealthattackfailure",chance:100}
-	  ]
+	  ],
+	  craftable:false
 	  },
 	  	   {id: "hunterattackmidwinter",
 	   label: "Send a quiet Minion to resolve the problem of a Hunter",
@@ -110,7 +149,7 @@ effects:{notoriety:1,summoned:-1}
 	  	   {id: "hunterattackmidedge",
 	   label: "Send a Potent Minion to murder a Hunter",
 	  actionId:"talk",
-	  startdescription:"My minion is powerful. This Hunter is unlikely to survive. But the attempt will draw attention.",
+	  startdescription:"My minion is powerful. This Hunter is unlikely to survive. But the attempt will draw attention. [Failure will kill your minion.]",
 	  description:".",
 	  requirements: {hunter:1,edge:5,follower:1},
 	  linked: [{id:"hunterattacksuccess",chance:70},
@@ -120,7 +159,7 @@ effects:{notoriety:1,summoned:-1}
 	  	  	   {id: "hunterattacklowedge",
 	   label: "Send a Minion to murder a Hunter",
 	  actionId:"talk",
-	  startdescription:"My minion's skills are limited. This Hunter will probably survive, and the attempt will draw attention.",
+	  startdescription:"My minion's skills are limited. This Hunter will probably survive, and the attempt will draw attention. [Failure will kill your minion.]",
 	  description:".",
 	  requirements: {hunter:1,edge:1,follower:1},
 	  linked: [{id:"hunterattacksuccess",chance:30},
@@ -130,7 +169,7 @@ effects:{notoriety:1,summoned:-1}
 	   {id: "hunterattacknoedge",
 	   label: "Send Someone Unsuitable to Murder a Hunter",
 	  actionId:"talk",
-	  startdescription:"My minion lacks the Edge aspect, and is woefully unsuited to attacking the hunter. There's a small chance they might succeed.",
+	  startdescription:"My minion lacks the Edge aspect, and is woefully unsuited to attacking the hunter. There's a small chance they might succeed. [Failure will kill your minion.]",
 	  description:".",
 	  requirements: {hunter:1,follower:1},
 	  linked: [{id:"hunterattacksuccess",chance:10},
@@ -181,6 +220,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:".",
 	  requirements: {follower:1,moth:5,evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:70},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ],
 	  	  comments: "We don't want a 100% chance because there's no downside. This could easily change later."
@@ -192,6 +232,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:".",
 	  requirements: {follower:1,moth:1,evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:30},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
@@ -202,6 +243,7 @@ effects:{notoriety:1,summoned:-1}
 	  description:".",
 	  requirements: {evidencelevel:1},
 	  linked: [{id:"evidencedestroysuccess",chance:10},
+	    {id:"evidencedestroyfailure_mortalfollower",chance:100},
 	  {id:"evidencedestroyfailure",chance:100}
 	  ]
 	  },
@@ -222,6 +264,19 @@ effects:{notoriety:1,summoned:-1}
 	  effects: {follower:-1,notoriety:1},
 	  warmup:10	  
 	  },
+	  
+	  {id: "evidencedestroyfailure_mortalfollower",
+	   label: "Tampering with Records...",
+	  actionId:"talk",
+	  requirements:{summoned:-1},
+	  startdescription: "I await word....",
+	  description:"My minion has returned, stumblng, mumbling, clumsily bandaged. They were caught in the coils of their own plan. [Heal a fallen Follower with Talk.]",
+	  effects: {notoriety:1},
+	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+	  warmup:10	  
+	  },
+	  
 	  	  	  {id:"hunterspeakwinterg",
 	  actionId:"talk",
 	  label:"Share a terrible mystery of the Ragged Lore",
@@ -281,7 +336,7 @@ effects:{notoriety:1,dread:1}
 actionId:"talk",
 requirements:{grim:1},
 label:"The Horrors Beneath the World's Skin",
-startdescription:"Your account is too much for the Hunter. Their eyes bulge. Their jaw tightens. In the days to come, they will sink inexorably into despair.",
+startdescription:"Your account is too much for the Hunter. Their eyes bulge. Their jaw tightens. In the days to come, they will sink inexorably into despair... unless they can find a new truth to cling to.",
 description:"",
 effects:{dread:1},
 aspects:{derangemortal:1}
@@ -322,7 +377,7 @@ effects:{notoriety:1,dread:1}
 	  {id:"hunterspeaklanterng",
 	  actionId:"talk",
 	  label:"Share a terrible mystery of the Glorious Lore",
-	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...' [This will is likely to fascinate the Hunter, but will always increase your own Fascination.]",
+	  startdescription:"'This is the secret doctrine of the Door-in-the-Eye. Open your ears...' [This is likely to fascinate the Hunter, but will always increase your own Fascination.]",
 	  requirements:{lantern:14,lore:1},
 	  mutations:[{filterOnAspectId:hunter,mutateAspectId:idealist,mutationLevel:1}],
 linked:[{id:"hunterspeakfascination_resistant",chance:100},

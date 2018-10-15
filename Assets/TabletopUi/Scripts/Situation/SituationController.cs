@@ -8,6 +8,7 @@ using Assets.Core;
 using Assets.Core.Commands;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
+using Assets.Core.Services;
 using Assets.CS.TabletopUI;
 using Assets.CS.TabletopUI.Interfaces;
 using Assets.Logic;
@@ -226,7 +227,9 @@ namespace Assets.TabletopUi {
                 };
 
                 if (tokenAndSlot.RecipeSlot != null && !tokenAndSlot.Token.Defunct && !tokenAndSlot.RecipeSlot.Defunct)
+                {
                     response.SlotsToFill.Add(tokenAndSlot);
+                }
             }
 
             return response;
@@ -254,11 +257,11 @@ namespace Assets.TabletopUi {
 
         }
 
-        void StoreStacks(IEnumerable<IElementStack> stacks) {
-            var inputStacks = situationWindow.GetOngoingStacks();
+        public void StoreStacks(IEnumerable<IElementStack> inputStacks) {
+          //  var inputStacks = situationWindow.GetOngoingStacks(); //This line looked like a mistake: the parameter for inputStacks was ignored (and it was named differently). Leaving in for now in case of sinister confusion - was there a reason we couldn't accept them?
             var storageStackManager = situationWindow.GetStorageStacksManager();
             storageStackManager.AcceptStacks(inputStacks, new Context(Context.ActionSource.SituationStoreStacks));
-            situationWindow.DisplayStoredElements(); //displays the miniversion of the cards. This should 
+            situationWindow.DisplayStoredElements(); //displays the miniversion of the cards.
         }
 
         public void AddToResults(ElementStackToken stack, Context context) {
@@ -286,12 +289,36 @@ namespace Assets.TabletopUi {
             //NB we're doing this *before* we execute the command - the command may affect these elements too
             StoreStacks(situationWindow.GetOngoingStacks());
 
+            
+
             if (command.AsNewSituation) {
+
+                List<IElementStack> stacksToAddToNewSituation=new List<IElementStack>();
+                //if there's an expulsion
+                if (command.Expulsion != null)
+                {
+                    //find one or more matching stacks. Important! the limit applies to stacks, not cards. This might need to change.
+                    AspectMatchFilter filter = new AspectMatchFilter(command.Expulsion.Filter);
+                    var filteredStacks = filter.FilterElementStacks(situationWindow.GetStoredStacks()).ToList();
+                    if (filteredStacks.Any() && command.Expulsion.Limit > 0)
+                    {
+                        while (filteredStacks.Count > command.Expulsion.Limit)
+                        {
+                            filteredStacks.RemoveAt(filteredStacks.Count - 1);
+                        }
+
+                        stacksToAddToNewSituation = filteredStacks;
+                    }
+
+
+                    //nb if 2, there might be two stacks implicated
+
+                    //take this opportunity to tidy stacks??
+                }
                 IVerb verbForNewSituation = compendium.GetOrCreateVerbForCommand(command);
                 var scc = new SituationCreationCommand(verbForNewSituation, command.Recipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-                tabletopManager.BeginNewSituation(scc);
-                
-
+                tabletopManager.BeginNewSituation(scc,stacksToAddToNewSituation);
+                situationWindow.DisplayStoredElements();             //in case expulsions have removed anything
                 return;
             }
 
@@ -303,11 +330,27 @@ namespace Assets.TabletopUi {
                 var ending = compendium.GetEndingById(command.Recipe.EndingFlag);
                 tabletopManager.EndGame(ending, this);
             }
+
+
+            situationWindow.DisplayStoredElements();
         }
 
-        public void ReceiveTextNotification(INotification notification)
+        public void ReceiveAndRefineTextNotification(INotification notification)
         {
-            situationWindow.ReceiveTextNote(notification);
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspectsAvailableToSituation(true);
+            var outputAspects = situationWindow.GetAspectsFromOutputElements(true);
+            aspectsInSituation.CombineAspects(outputAspects);
+
+
+            TextRefiner tr=new TextRefiner(aspectsInSituation);
+
+
+            Notification refinedNotification=new Notification(notification.Title,
+                tr.RefineString(notification.Description));
+           
+            
+            situationWindow.ReceiveTextNote(refinedNotification);
         }
 
 
@@ -319,7 +362,7 @@ namespace Assets.TabletopUi {
             INotification notification = new Notification(SituationClock.GetTitle(), SituationClock.GetDescription());
             SetOutput(outputStacks.ToList());
 
-            ReceiveTextNotification(notification);
+            ReceiveAndRefineTextNotification(notification);
          
 
             //This must be run here: it disables (and destroys) any card tokens that have not been moved to outputs
@@ -384,7 +427,7 @@ namespace Assets.TabletopUi {
                 inducedRecipe.Label, inducedRecipe.Description);
             SituationCreationCommand inducedSituation = new SituationCreationCommand(inductionRecipeVerb,
                 inducedRecipe, SituationState.FreshlyStarted, situationToken as DraggableToken);
-            Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation);
+            Registry.Retrieve<TabletopManager>().BeginNewSituation(inducedSituation,new List<IElementStack>());
         }
 
         public void ResetSituation() {
@@ -528,6 +571,8 @@ namespace Assets.TabletopUi {
 
             //if we found a recipe, display it, and get ready to activate
             if (matchingRecipe != null) {
+
+
                 situationWindow.DisplayStartingRecipeFound(matchingRecipe);
                 return;
             }
@@ -561,6 +606,10 @@ namespace Assets.TabletopUi {
                 if ( rp.BurnImage != null)
                 BurnImageUnderToken(rp.BurnImage);
                 PossiblySignalImpendingDoom(rp.SignalEndingFlavour);
+                //Check for possible text refinements based on the aspects in context
+                var aspectsInSituation = GetAspectsAvailableToSituation(true);
+                TextRefiner tr=new TextRefiner(aspectsInSituation);
+                rp.DescriptiveText = tr.RefineString(rp.DescriptiveText);
                 situationWindow.UpdateTextForPrediction(rp);
             }
 
@@ -579,6 +628,10 @@ namespace Assets.TabletopUi {
             RecipeConductor rc = new RecipeConductor(compendium, situationWindow.GetAspectsFromAllSlottedAndStoredElements(true), Registry.Retrieve<IDice>(), currentCharacter);
 
             var nextRecipePrediction = SituationClock.GetPrediction(rc);
+            //Check for possible text refinements based on the aspects in context
+            var aspectsInSituation = GetAspectsAvailableToSituation(true);
+            TextRefiner tr = new TextRefiner(aspectsInSituation);
+            nextRecipePrediction.DescriptiveText = tr.RefineString(nextRecipePrediction.DescriptiveText);
             situationWindow.UpdateTextForPrediction(nextRecipePrediction);
             CurrentEndingFlavourToSignal = nextRecipePrediction.SignalEndingFlavour;
             PossiblySignalImpendingDoom(nextRecipePrediction.SignalEndingFlavour);

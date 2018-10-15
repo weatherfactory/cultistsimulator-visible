@@ -64,6 +64,20 @@
             {text:1,auctionable:1},
             description: "The third volume of Teresa Galmier's examination of parallels in the mystic dreams of artisans."
         },
+					 {
+        id: "locksmithsdream4",
+            unique:true, label: "The Locksmith's Dream: Stolen Reflections",
+            aspects:
+            {text:1,auctionable:2},
+            description: "The fourth volume of Teresa Galmier's expansive work - no longer a discussion of the dreams of artisans, but a valuable survey of other works. The tone is calmer than that of 'Trespasses', but occasionally fearful, even paranoid.This volume was published in 1926 but almost immediately recalled and pulped by the publisher - at the request of the author or possibly the authorities, depending which story you believe. A few copies survive. "
+        },
+							 {
+        id: "locksmithsdream5",
+            unique:true, label: "The Locksmith's Dream:",
+            aspects:
+            {text:1,auctionable:2},
+            description: "FNORD"
+        },
 		{
 		id: "humoursofagentleman",
 		unique:true, label: "The Humours of a Gentleman",
@@ -375,7 +389,7 @@ slots:[{id:"projector",unique:true, label:"Projector",description:"I'll need to 
             unique:true, label: "The Twin-Serpent Tantra",
             aspects:
             {text:1,auctionable:2},
-            description: "'Peel' was numbered among the Great Hooded Princes, but it breaks with its brethren and followed the Thunderskin in the endless dance."
+            description: "Just before the outbreak of the Great War, 'Alexander Sparrow' - almost certainly a pseudonym - published leaflets claiming the influence of 'Snake Princes' on world affairs. The text called the Twin-Serpent Tantra was his primary inspiration."
         },
 		{
         id: "firecircletantra",
@@ -689,6 +703,24 @@ slots:[{id:"projector",unique:true, label:"Projector",description:"I'll need to 
             {text:1,auctionable:2},
             description: "Nyn wrote this, and came to regret it."
         },
+				{id:"kitlingripe",
+		unique:true,
+		label:"Kitling Ripe and the Moldywarp's Grave (and Other Stories)",
+		aspects:{text:1,auctionable:1},
+		description:"A lusciously illustrated tome of loosely connected children's stories. Few of them are remotely suitable for children."
+		},
+			{id:"raptintheking",
+		unique:true,
+		label:"Rapt in the King",
+		aspects:{text:1,auctionable:1},
+		description:"Detailed accounts of secret bachanals and ecstatic dances observed in necropolises and graveyards in Southern Europe, in Egypt and in Anatolia. The author is a self-confessed ghoul, an eater of buried flesh: he claims to have witnessed the dances while at his feasting."
+		},
+			{id:"vienneseconundra",
+		unique:true,
+		label:"The Viennese Conundra",
+		aspects:{text:1,auctionable:1},
+		description:"Van Driel describes odd events in Vienna - the disappearance of children; epidemics of parasite activity; animal mutilations; nightmares of worms; the activities of a charitable organisation, the New Ligeians, that funds the burial of the poor. She proposes peculiar connections between these activities."
+		}
 
 ]
 };

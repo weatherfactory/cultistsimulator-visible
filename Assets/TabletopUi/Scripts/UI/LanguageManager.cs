@@ -51,7 +51,7 @@ public class LanguageManager : MonoBehaviour
 				// Removed - doesn't work unless Awake has been called anyway.
 				/*
 				string defaultCulture = "en";
-				if (PlayerPrefs.HasKey(CULTURE)) 
+				if (PlayerPrefs.HasKey(CULTURE))
 				{
 					defaultCulture = PlayerPrefs.GetString(CULTURE);
 				}
@@ -74,7 +74,7 @@ public class LanguageManager : MonoBehaviour
 		DontDestroyOnLoad(this.gameObject);
 
 		string defaultCulture = "en";
-		if (PlayerPrefs.HasKey(CULTURE)) 
+		if (PlayerPrefs.HasKey(CULTURE))
 		{
 			defaultCulture = PlayerPrefs.GetString(CULTURE);
 		}
@@ -155,7 +155,7 @@ public class LanguageManager : MonoBehaviour
 		int style = (int)fs;
       	if (fontStyles[style].fontMaterial != null)
 			return fontStyles[style].fontMaterial;
-		return null;		
+		return null;
 	}
 
 #if UNITY_EDITOR

@@ -447,41 +447,27 @@ maxexecutions:1
         warmup: 90
     },
 
+			{
+        id: "workhealthskilld_edge",
+        label: "Unskilled Labour: Like the Mountain",
+        actionId: "work",
+        requirements: {health: 1,skillhealthd_strength:1,ritual:-1,job:-1,benefactor:-1},
+        effects: {
+            funds: 1,vitality:1
+        },
+		aspects:{employment:1},
+        startdescription: "Once again I put my strength to use.",
+        description: "They say I can do the job of any two others together. It's not true; not quite.",
+        warmup: 40,
+        craftable: true,
+		
+		
+    },
 		{
-        id: "workhealthskilla",
-        label: "Unskilled Labour: Arms of Bronze",
-		alternativerecipes:
-		[{id: "workhealthinjury", chance:10}],
-        actionId: "work",
-        requirements: {health: 1,skillhealtha:1,ritual:-1},
-        effects: {
-            funds: 1,vitality:1
-        },
-		aspects:{employment:1},
-        startdescription: "To work, then.",
-        description: "I've finished early. Here's my pay.",
-        warmup: 55,
-        craftable: true
-    },
-			{
-        id: "workhealthskillb",
-        label: "Unskilled Labour: Arms of Iron",
-        actionId: "work",
-        requirements: {health: 1,skillhealthb:1,ritual:-1},
-        effects: {
-            funds: 1,vitality:1
-        },
-		aspects:{employment:1},
-        startdescription: "I will work with speed and in silence. I don't fear injury.",
-        description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
-        warmup: 50,
-        craftable: true
-    },
-			{
         id: "workhealthskillc",
         label: "Unskilled Labour: Arms of Steel",
         actionId: "work",
-        requirements: {health: 1,skillhealthc:1,ritual:-1},
+        requirements: {health: 1,healthskill:3,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },
@@ -491,11 +477,43 @@ maxexecutions:1
         warmup: 45,
         craftable: true
     },
+				{
+        id: "workhealthskillb",
+        label: "Unskilled Labour: Arms of Iron",
+        actionId: "work",
+        requirements: {health: 1,healthskill:2,ritual:-1,job:-1,benefactor:-1},
+        effects: {
+            funds: 1,vitality:1
+        },
+		aspects:{employment:1},
+        startdescription: "I will work with speed and in silence. I don't fear injury.",
+        description: "The others speak little to me, but now they nod when I pass. Here's my pay.",
+        warmup: 50,
+        craftable: true
+    },
+		{
+        id: "workhealthskilla",
+        label: "Unskilled Labour: Arms of Bronze",
+		alternativerecipes:
+		[{id: "workhealthinjury", chance:10}],
+        actionId: "work",
+        requirements: {health: 1,healthskill:1,ritual:-1,job:-1,benefactor:-1},
+        effects: {
+            funds: 1,vitality:1
+        },
+		aspects:{employment:1},
+        startdescription: "To work, then.",
+        description: "I've finished early. Here's my pay.",
+        warmup: 55,
+        craftable: true
+
+    },
+
 		{
         id: "workhealth_noinjurychance",
         label: "Unskilled Labour",
         actionId: "work",
-        requirements: {health: 1,ritual:-1},
+        requirements: {health: 1,ritual:-1,job:-1,benefactor:-1},
 		aspects:{employment:1},
         effects: {
           vitality:1,funds:1
@@ -513,7 +531,7 @@ maxexecutions:1
 		alternativerecipes:
 		[{id: "workhealthinjury", chance:30}],
         actionId: "work",
-        requirements: {health: 1,ritual:-1},
+        requirements: {health: 1,ritual:-1,job:-1,benefactor:-1},
         effects: {
             funds: 1,vitality:1
         },

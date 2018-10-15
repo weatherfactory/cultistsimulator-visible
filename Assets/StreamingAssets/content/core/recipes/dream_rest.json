@@ -7,9 +7,11 @@
         actionId: "dream",
         requirements: {health:1},
 		effects: {fleeting:1},
-		alternativerecipes: [{id:"dreamhealthcontentment",chance:30},
+		alternativerecipes: [{id:"dreamhealthdread",chance:10},
+		{id:"dreamhealthfascination",chance:10}
+		{id:"dreamhealthcontentment",chance:30},
 		{id:"dream_router",chance:30}]
-		startdescription: "With luck, I'll wake refreshed. [Sometimes, this will provide Contentment. Often, it will do nothing.]",
+		startdescription: "With luck, I'll wake refreshed. [Sometimes, this will provide Contentment. Often, it will do nothing. Occasionally, it will create Dread or Fascination.]",
         description: "Sometimes, I have dreamt of a tall woman in a sand-coloured coat, who stands at the foot of my bed, smiling as she watches me sleep. In that dream, she turns her head with the swiftness of a bird, and her fingers flex like talons. I do not think I dreamt of her last night. If I had, I could not have slept so soundly.",
         warmup: 60,
         craftable: true,
@@ -20,6 +22,22 @@
         actionId: "dream",
 		effects: {contentment:1},
 		description: "Sleep is a long dark ocean, but sometimes, when we reach the farther shore, there is lamp-light.",
+        craftable: false,
+    },
+		{
+        id: "dreamhealthdread",
+        label: "An Early Night",
+        actionId: "dream",
+		effects: {dread:1},
+		description: "In the land of the two rivers, in the days of Rimush and of Naram-Sin, there were stories told of a howling woman who devoured the children of other mothers. Last night there was a howling in my dreams.",
+        craftable: false,
+    },
+			{
+        id: "dreamhealthfascination",
+        label: "An Early Night",
+        actionId: "dream",
+		effects: {fascination:1},
+		description: "Imagine a box of mirrors, where each mirror contains a sweeter light. Now imagine that in the seventh mirror there is only an ordinary dawn, an ordinary bed, the dull beginnings of an ordinary day. Imagine that, and long for light.",
         craftable: false,
     },
 	{
@@ -81,7 +99,7 @@
         label: "Clear my Mind",
         actionId: "dream",
         requirements: {contentment: 1, dread: 1},
-        effects: {contentment:-1,dread:-1},
+        effects: {contentment:-1,dread:-1,influencewinter:1},
         startdescription: "I remember that I was different, before.",
         description: "The sun still moves. The wind still walks. My journals are the labyrinth clue.",
         warmup: 60,
@@ -94,7 +112,21 @@
         actionId: "dream",
         requirements: {dread: 1, fascination: 1},
         effects: {
-			fascination:-1,
+			fascination:-1,dread:-1,influencelantern:1
+        },
+        startdescription: ".",
+        description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",
+        warmup: 60,
+		craftable:true
+    },
+	
+		{
+        id: "reducefascinationfleeting",
+        label: "Composure",
+        actionId: "dream",
+        requirements: {fleeting: 1, fascination: 1},
+        effects: {
+			fleeting:-1,fascination:-1,influencelantern:1
         },
         startdescription: ".",
         description: "The air is curdled now. I am home again, in this lumpen flesh. Better, perhaps.",

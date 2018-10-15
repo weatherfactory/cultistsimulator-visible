@@ -104,19 +104,29 @@
 		effects:{reputation:-1, evidence:1},
 		warmup:30},
 			
-		
-		
 	
 				{id:"suspiciontrycreatehunter",
 		label: "The Curious Few",
 		actionId: "suspicion",
 		startdescription: "The wrong kind of reputation might awaken the interest of the curious, the puritanical, or the vengeful. [A Reputation may inspire an adversary to emerge.]",
 		slots: [{id:"Clues", required: {reputation: 1}, greedy: true}],
-		alternativerecipes:[{id:"suspicioncreatehunter",chance:100}],
+		alternativerecipes:[{id:"suspicioncreatefirsthunter",chance:100},
+		{id:"suspicioncreatehunter",chance:100}],
 		description: "My name, just now, is clear. Any guardians remain in the shadows.",
 		effects:{contentment:1},
 		warmup:30
 		},
+		
+				{id:"suspicioncreatefirsthunter",
+		actionId:"suspicion",
+		label: "An Adversary!",
+		requirements:{reputation:1},
+		startdescription: "Someone is meddling.",
+		description:"There's always someone who doesn't understand, or who understands too well. This troublemaker may seek evidence on my activities to share with the authorities.",
+		effects: {reputation:-1,defaulthunter:1},
+		maxexecutions:1,
+		warmup:0},
+
 		
 		{id:"suspicioncreatehunter",
 		actionId:"suspicion",
@@ -155,11 +165,12 @@
         id: "suspicion_questionfollower",
         label: "A Trial!",
         actionId: "suspicion",
-		slots: [{id:"Suspect",required: {follower:1}, forbidden:{summoned:1,hireling:1}, description: "The Bureau thirsts for suspects.",greedy:true}],
-        startdescription: "The Suppression Bureau is seeking a follower of mine for questioning. If they can't find one, they'll come after me directly.",
+		slots: [{id:"Suspect",required: {follower:1,independent:1}, forbidden:{summoned:1,hireling:1}, description: "The Bureau thirsts for suspects.",greedy:true}],
+        startdescription: "The Suppression Bureau is seeking an associate of mine for questioning. If they can't find one, they'll come after me directly.",
         description: ".",
         craftable: false,
 		linked:[{chance:100,id:"suspicion_attemptmitigation_follower"},
+		{chance:100,id:"suspicion_attemptmitigation_rival"},
 		{chance:100,id:"suspicion_attemptmitigation_me"}],
 		        warmup: 30
 
@@ -178,10 +189,10 @@
 	},
 	{
 	id:"suspicion_attemptmitigation_follower",
-	label: "The Suppression Bureau is bringing a follower to trial!",
+	label: "The Suppression Bureau is bringing an associate to trial!",
 	actionId:"suspicion",
 	requirements: {follower:1},
-	startdescription:"There are crimes the state does not openly recognise. My follower has been implicated in one of these. The Suppression Bureau holds its trials in closed court, and they are not merciful. Unless I can take advantage of a connection, I may lose the follower forever!",
+	startdescription:"There are crimes the state does not openly recognise. My associate has been implicated in one of these. The Suppression Bureau holds its trials in closed court, and they are not merciful. Unless I can take advantage of a connection, my associate may be gone forever... ",
 	description:".",
 	slots:[{id:"favour",label:"A Favour",required:{favour:1}}],
 		linked:[{chance:100,id:"suspicion_favourused"},
@@ -189,6 +200,21 @@
 	{chance:100,id:"suspicion_followerexonerated"}],
 	warmup:60,
 	},
+		{
+	id:"suspicion_attemptmitigation_rival",
+	label: "The Suppression Bureau is bringing a Rival to trial!",
+	actionId:"suspicion",
+	requirements: {independent:1},
+	startdescription:"There are crimes the state does not openly recognise. My rival has been implicated in one of these. The Suppression Bureau holds its trials in closed court, and they are not merciful. This may be the end for my rival... although I could try to intervene..",
+	description:".",
+	slots:[{id:"favour",label:"A Favour",required:{favour:1}}],
+		linked:[{chance:100,id:"suspicion_favourused"},
+	{chance:70,id:"suspicion_rivalimprisoned"},
+	{chance:100,id:"suspicion_rivalexonerated"}],
+	warmup:60,
+	},
+	
+	
 		{
 	id:"suspicion_favourused",
 	actionId:"suspicion",
@@ -216,7 +242,7 @@
 	id:"suspicion_followerimprisoned",
 	actionId:"suspicion",
 	label:"A Victory for the Bureau",
-	description:"My follower has been locked away in a prison where there are no visiting rights, and even the date of release is obscure. The Bureau's appetite is satisfied for the moment; but what did my follower tell them?",
+	description:"My associate has been locked away in a prison where there are no visiting rights, and even the date of release is obscure. The Bureau's appetite is satisfied for the moment; but what have they learnt?",
 		aspects:{investigatingsetback:1},
 	effects:{follower:-1}
 	},
@@ -230,13 +256,15 @@
 			signalEndingFlavour:Melancholy,
 	ending:arrest
 	},
+	
 	{
 	id:"suspicion_followerexonerated",
 	actionId:"suspicion",
 	requirements:{follower:1},
 	label:"The Bureau's Fury",
-				startdescription:"My follower has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go. The Bureau has been stymied for the moment; but what did they learn?",
-	aspects:{investigatingsetback:1}	
+				startdescription:"My associate has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go....though they may harbour a grudge against me. The Bureau has been stymied for the moment.",
+	aspects:{investigatingsetback:1},
+mutations:[{filterOnAspectId:follower,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
 	},
 	{
 	id:"suspicion_meexonerated",
@@ -254,6 +282,24 @@
         warmup: 0,
 		linked:[{id:"suspicionpretrial",chance:100}],
     },
+	
+			{
+	id:"suspicion_rivalimprisoned",
+	actionId:"suspicion",
+	label:"A Victory for the Bureau",
+	description:"My Rival will not be seen again by daylight. The Bureau's appetite is satisfied for the moment; but what have they learnt?",
+		aspects:{investigatingsetback:1},
+	effects:{independent:-1}
+	},
+	{
+	id:"suspicion_rivalexonerated",
+	actionId:"suspicion",
+	requirements:{independent:1},
+	label:"The Bureau's Fury",
+				startdescription:"My Rival has been exonerated! The evidence was not sufficiently compelling to convict them, and they're free to go....though they will no doubt blame me for their hardships.",
+	aspects:{investigatingsetback:1},
+mutations:[{filterOnAspectId:independent,mutateAspectId:resentment,mutationLevel:1,additional:true}]	
+	},
 
 
 	  {

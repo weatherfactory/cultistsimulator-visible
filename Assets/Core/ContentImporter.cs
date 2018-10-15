@@ -339,23 +339,39 @@ public class ContentImporter
                 else
                     element.IsAspect = false;
 
+                if (htElement.GetString(NoonConstants.KISHIDDEN) == "true")
+                    element.IsHidden = true;
+                else
+                    element.IsHidden = false;
+
                 if (htElement.GetString(NoonConstants.KNOARTNEEDED) == "true")
                     element.NoArtNeeded = true;
                 else
                     element.NoArtNeeded = false;
+
+                if (htElement.GetString(NoonConstants.KRESATURATE) == "true")
+                    element.Resaturate = true;
+                else
+                    element.Resaturate = false;
 
                 if (htElement.GetString(NoonConstants.KUNIQUE) == "true")
                     element.Unique = true;
                 else
                     element.Unique = false;
 
+     
+
+                element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
+
                 if (!string.IsNullOrEmpty(htElement.GetString(NoonConstants.KUNIQUENESSGROUP)))
                 {
                     element.UniquenessGroup = htElement.GetString(NoonConstants.KUNIQUENESSGROUP);
+                    //and also... uniqueness groups are now also imported as aspects
+                    //so this line needs to go below the assignment of aspects
+                    element.Aspects.Add(element.UniquenessGroup,1);
                 }
 
-                element.Aspects = NoonUtility.ReplaceConventionValues(htAspects);
-                if(alSlots!=null)
+                if (alSlots!=null)
                 element.ChildSlotSpecifications = AddSlotsFromArrayList(alSlots);
                 foreach(var css in element.ChildSlotSpecifications)
                 { 
@@ -700,11 +716,19 @@ public class ContentImporter
             }
             catch (Exception e)
             {
-                if (htEachRecipe[NoonConstants.KID] == null)
+                string rawOutput = string.Empty;
+                foreach (var v in htEachRecipe.Values)
+                    rawOutput = rawOutput + v + "||";
 
-                    LogProblem("Problem importing recipe with unknown id - " + e.Message);
+                if (htEachRecipe[NoonConstants.KID] == null)
+                {
+                 
+                    LogProblem("Problem importing recipe with unknown id - " + rawOutput + e.Message);
+                }
                 else
+                { 
                     LogProblem("Problem importing recipe '" + htEachRecipe[NoonConstants.KID] + "' - " + e.Message);
+                }
             }
 
             //REQUIREMENTS
@@ -999,7 +1023,7 @@ public class ContentImporter
 
             if (thisElement.IsAspect )
             {
-                if (!thisElement.NoArtNeeded && (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
+                if ((!thisElement.NoArtNeeded && !thisElement.IsHidden) && (ResourcesManager.GetSpriteForAspect(k) == null || ResourcesManager.GetSpriteForAspect(k).name == ResourcesManager.PLACEHOLDER_IMAGE_NAME))
                 {
                     missingAspectImages += (" " + k);
                     missingAspectImageCount++;

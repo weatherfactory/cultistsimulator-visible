@@ -6,7 +6,7 @@
             "description": "Earn a living, or practice the invisible arts.",
 			"atStart": true,
 						  slots: [{id:"Work",description: "Something I can do; something I know; or something I am.",
-			  required:{ability:1,job:1,ritual:1,desire:1},
+			  required:{ability:1,job:1,ritual:1,desire:1,benefactor:1},
 			  forbidden:{reasonskill:1}
 			  }],
 			
@@ -34,7 +34,8 @@
             "description": "Interrogate, intimidate, beguile, instruct, recruit.",
 				"atStart": false,
 			 slots: [{id:"Talk",description: "An ally, an enemy, or something in between.",
-			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1}}]
+			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1},
+			  forbidden:{wary:1}}]
 		
         },
 

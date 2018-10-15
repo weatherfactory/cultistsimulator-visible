@@ -17,11 +17,13 @@
 		{id: "ambition", chance:100,additional:true},
 		{id: "despairrisklink", chance:100,additional:true},
 		{id: "visionsrisklink", chance:100,additional:true},
-		 {id: "starvation", chance:100, additional: true}],
+		 {id: "starvation", chance:100, additional: true},
+		 {id: "rosenext", chance:100, additional: true},
+		 ],
         startdescription: "Time, the sundial's shadow, passes. I must have Funds to live, or I will become ill.",
         description: ".",
         warmup: 60,
-        craftable: false,
+        craftable: true,
 		slots: [{id:"Expenses",
 					required: {funds: 1},
 				greedy: true,
@@ -41,20 +43,40 @@
         label: "Sickness",
         actionId: "illhealth",
         requirements: {seasonsickness:1},
-        effects: {
-            health: -1,
-            affliction: 1,
-        },
+				slots: [{id:"Affliction",
+					required: {health: 1,follower_wound:1,fatigue:1},
+					greedy: true
+		}],
+		aspects:{fallsick:1},
 		alternativerecipes:
-		[{id: "deathofthebody",chance:100}],
+		[
+		{id: "deathofthewoundedfollower",chance:100},
+		{id: "deathofthebody",chance:100}],
         startdescription: "I've become unwell! [If an illness cannot consume Health, it will cause death.]",
         description: "The sickness has ravaged my body.",
-        warmup: 60,
-		slots: [{id:"Affliction",
-					required: {health: 1},
-					greedy: true
-		}]
+        warmup: 60
     },
+	
+	{id:"deathofthewoundedfollower",
+		actionId: "time",
+	label:"My Follower is dying!",
+	requirements:{follower_wound:1},
+	startdescription: "Their wounds are mortal. There's nothing to be done.",
+	description: "Perhaps their spirit walks the House. Perhaps it's lost in the Wood, to sink ever lower. Their mortal shell remains.",
+	aspects:{killmortal:1}	
+	},
+	{id:"rosenext",
+label:"Trysts and Interludes",
+actionId:"rose",
+requirements:{seasonardours:1},
+slots: [{id:"Who?",description:"Palm to palm and eye to eye.",required:{romanticinterest:1},greedy:true}],
+startdescription: "If I have a particular friend, now is the time to renew our connection.",
+description:".",
+linked:[{id:"L_roseend",chance:100},
+{id:"L_checkjealousy",chance:30},
+{id:"L_roserouter",chance:100}],
+warmup:5
+},
 		   {
         id: "pleasantday",
         label: "A Pleasant Day",
@@ -63,6 +85,7 @@
         effects: {
 		contentment: 1,
         },
+		comments:"currently unused",
         startdescription: "This morning, there is a spring in my step. I'm not sure why.",
         description: "Some days are better than others. Sometimes the sky is nothing like a filthy sheet. Sometimes the river runs clear.",
         warmup: 30,
@@ -103,6 +126,6 @@
 		slots: [{id:"Starvation",required: {health: 1},
 					greedy: true
 		}]
-    }
+    },
 ]
 }

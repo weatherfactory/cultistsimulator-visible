@@ -8,9 +8,177 @@ startdescription: "This one must serve another purpose now. Into the cupboard th
 description: "I've locked this one away safely. When their screaming and raving subsides, I will subdue them properly.",
 aspects: {capturefollower:1},
 effects: {notoriety:1},
+mutations:[{filterOnAspectId:mortal,mutateAspectId:romanticinterest,mutationLevel:-1}],
 craftable:true,
 warmup:10
 },
+
+{id:"sulochanachat",
+label:"A Chat with Sulochana",
+actionId:"talk",
+requirements:{sulochana:1},
+slots: [{id:"Subject",description:"A topic of conversation"}],
+startdescription:"@#ascensionlessonhearta|'You want to know more?'
+#ascensionlessonheartb|'You want to know more?'
+#ascensionlessonheartc|'You want to know more?'
+#ascensionlessonheartd|'You want to know more?'
+#ascensionlessonhearte|'You want to know more?'
+#ascensionlessonheartf|'You want to know more?'
+#ascensionlessonmotha|'You want to know more?'
+#ascensionlessonmothb|'You want to know more?'
+#ascensionlessonmothc|'You want to know more?'
+#ascensionlessonmothd|'You want to know more?'
+#ascensionlessonmothe|'You want to know more?'
+#ascensionlessonmothf|'You want to know more?'
+#|Sulochana stubs out her cigarette. 'Yes, if you want to study the language with me, yes, you can. Was there something else?'@",
+description:"@#ascensionlessonhearta|'Not mt speciality.' Sulochana smiles
+#ascensionlessonheartb|'Not mt speciality.' Sulochana shrugs like a snake.
+#ascensionlessonheartc|'Not mt speciality.' Sulochana smiles.
+#ascensionlessonheartd|'Not mt speciality.' Sulochana shrugs like a snake.
+#ascensionlessonhearte|'Not mt speciality.' Sulochana smiles.
+#ascensionlessonheartf|'Not mt speciality.' Sulochana shrugs like a snake.
+#ascensionlessonmotha|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothb|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothc|'The lesson is what the lesson is. I'm your employer, not your teacher.' Sulochana stretches. 'Try a little patience.'
+#ascensionlessonmothd|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#ascensionlessonmothe|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#ascensionlessonmothf|'The lesson is what the lesson is. If you want a teacher, talk to the Obliviates.' Sulochana grins with all her teeth. 'Not that they'll talk to you.'
+#|Is she disappointed? It's difficult to tell, with Sulochana.@",
+alternativerecipes:[{id:"sulochanachat_health",chance:100},
+{id:"sulochanachat_passion",chance:100},
+{id:"sulochanachat_cabaret",chance:100},
+{id:"sulochanachat_desireheart_track",chance:100},
+{id:"sulochanachat_desiremoth_track",chance:100},
+{id:"sulochanachat_desire",chance:100},
+{id:"sulochanachat_secrethistoriesrouter",chance:100},
+],
+warmup:60,
+craftable:true
+},
+
+{id:"sulochanachat_health",
+actionId:"talk",
+label:"On the Body's Strengths",
+requirements:{sulochana:1,health:1},
+startdescription:"'You're young. Congratulations.'",
+description:"'We were all of us young. Everyone. That's the only thing most of us have in common.'"
+},
+{id:"sulochanachat_passion",
+label:"On Passion",
+actionId:"talk",
+requirements:{sulochana:1,passion:1},
+startdescription:"'Yes. That will get you into trouble.'",
+description:"'You have potential. You saw me see that. Potential isn't enough. Anything else?'"
+},
+{id:"sulochanachat_cabaret",
+label:"On the Ecdysis Club",
+actionId:"talk",
+requirements:{sulochana:1,locationcabaret:1},
+startdescription:"'Yes?'",
+description:"'There's a road you can walk that begins there, in my house. If you want to talk about it, meet me there.'"
+},
+{id:"sulochanachat_desireheart_track",
+label:"On the New Form",
+actionId:"talk",
+requirements:{sulochana:1,desireheart_track:1},
+effects:{locationcabaret:1},
+startdescription:"'Looking to shed your skin, hm?'",
+description:"'The road you want to walk is what we call the New Form. Not all that new, not any more. But it has merit, if you can stand the pain. Find me in my house, and we can talk about the partner you will need in the end. Here's the address.'"
+},
+{id:"sulochanachat_desiremoth_track",
+actionId:"talk",
+label:"On the Old Form",
+requirements:{sulochana:1,desiremoth_track:1},
+effects:{locationcabaret:1},
+startdescription:"Now - now we begin to understand each other.",
+description:"The road you want to walk is what we call the Old Form. I walked it myself, and eventually it brought me here. You'll give up everything along the way. You'll need to shed your skin, and not only once... Find me in my house, and we can talk about the partner you will need in the end. Here's the address."
+},
+{id:"sulochanachat_desire",
+actionId:"talk",
+label:"On Desire",
+requirements:{sulochana:1,desire:1},
+startdescription:"That's what steers you?",
+description:"We have no common ground there. I chose my road a very long time ago."
+},
+{id:"sulochanachat_secrethistoriesrouter",
+actionId:"talk",
+label:"On Secret Places",
+requirements:{sulochana:1,lore:1,secrethistories:1},
+startdescription:"As to that...",
+description:".",
+linked:[{id:"sulochanachat_secrethistoriesg",chance:100},
+{id:"sulochanachat_secrethistoriesf",chance:100},
+{id:"sulochanachat_secrethistoriese",chance:100},
+{id:"sulochanachat_secrethistoriesd",chance:100},
+{id:"sulochanachat_secrethistoriesc",chance:100},
+{id:"sulochanachat_secrethistoriesb",chance:100},
+{id:"sulochanachat_secrethistoriesa",chance:100}
+]
+},
+
+{id:"sulochanachat_secrethistoriesg",
+actionId:"talk",
+label:"On the Road to Ivory",
+requirements:{sulochana:1,fragmentsecrethistoriesg:1},
+startdescription:"'You need to go to Noon? Hah. Sorry to hear it.' Sulochana speaks with unusual venom.",
+description:"'Here. This map will work for a little while. If any of them ask after me, tell them I'll come for their children next.'",
+effects:{lore:-1,vaulteveningislesdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesf",
+actionId:"talk",
+label:"On the Road to Pupil",
+requirements:{sulochana:1,fragmentsecrethistoriesf:1},
+startdescription:"'You need to go to Miah? Bring me back some of those dates.'",
+description:"'Here. This is the address of someone who'll guide you. If the Thief of Sights asks after me... tell her to give my regards to Kleido... you know what? Don't say anything about me. Here's your address.'",
+effects:{lore:-1,vaultloneandlevelsandsdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriese",
+actionId:"talk",
+label:"Not there - ",
+requirements:{sulochana:1,fragmentsecrethistoriese:1},
+startdescription:"'The Shadowless Kings? No - '",
+description:"'There's nothing there for my kind or yours. No dance is worth dancing in that place. You'll need to go further south.'",
+effects:{}
+},
+
+{id:"sulochanachat_secrethistoriesd",
+actionId:"talk",
+label:"On the Road to Stigma",
+requirements:{sulochana:1,fragmentsecrethistoriesd:1},
+startdescription:"'You need to go to the Meadows? Mm.'",
+description:"'This is the easiest road at this time of year. But it won't be easy. Enjoy yourself.'",
+
+effects:{lore:-1,vaultlandbeyondforestdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesc",
+actionId:"talk",
+label:"On the Road to Antumbra",
+requirements:{sulochana:1,fragmentsecrethistoriesc:1},
+startdescription:"'You want to go to the Stones?'",
+description:"'Here. This will get you to the last mile, and then you'll have to walk. There is a little auberge I used to stay at when I went. But I burnt it down.' She lights a cigarette.",
+effects:{lore:-1,vaultcontinentdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesb",
+actionId:"talk",
+label:"On the Road to Pearl",
+requirements:{sulochana:1,fragmentsecrethistoriesb:1},
+startdescription:"'You want to go to Kerisham? Yes. The trains are difficult.'",
+description:"Sulochana hands you a printed slip of paper. 'These are the numbers, this month. Be sure you get the right platform. Much easier to get there now, hm? There was a time you'd have had to pass the Wrong Door, and I have better things to do.' She chuckles richly.",
+effects:{lore:-1,vaultshiresdefault:1}
+},
+
+{id:"sulochanachat_secrethistoriesa",
+actionId:"talk",
+label:"On the Roads to Change",
+requirements:{sulochana:1,fragmentsecrethistories:1},
+startdescription:"'I can help you with that... if you want to Change.'",
+description:"'We always change at the sea first. Kerisham is a good place, these days. Then further and further afield. But not in person. Never in person. In your other self. Feel free to come back to me with more lore, if you're not sure where to go. If you're looking for anything but Change... I can't help you.'",
+},
+
 
 {id: "poppyoffer",
 label:"Speak to Poppy Lascelles",

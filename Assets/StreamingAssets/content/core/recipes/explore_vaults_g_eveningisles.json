@@ -94,7 +94,7 @@ deckeffect: {"vaultcontentsr":3},
 	requirements: {vaulteveningisles2:1},
 	effects: {vaulteveningisles2:-1},
 	deckeffect: {"vaultcontentsr":3},
-	startdescription: "The vault of Fort Geryk. A mosaic has been laid out as a game board of stupendous size and complexity: a map of the Evening Isles. The sea-tiles are lapis; the islands are neprhite and obsidian. There are toy ships and tin soldiers. The isle of St Thomas is sieged. Raven Isle is crowded with black chess-queens.",
+	startdescription: "The vault of Fort Geryk. A mosaic has been laid out as a game board of stupendous size and complexity: a map of the Evening Isles. The sea-tiles are lapis; the islands are nephrite and obsidian. There are toy ships and tin soldiers. The isle of St Thomas is sieged. Raven Isle is crowded with black chess-queens.",
 	description: "Among the game-pieces, items of true power have been used as temporary markers. Was this an attempt to hide them? Or did the Governor know nothing of their real worth?",
 	warmup:30,
 	craftable: false
@@ -133,10 +133,12 @@ deckeffect: {"vaultcontentsr":3},
 	requirements: {vaulteveningislesdefault:1},
 	effects: {vaulteveningislesdefault:-1},
 	deckeffect: {"vaultcontentsr":2},
-	startdescription: "This is the secret sub-cellar of the Hotel Ciervo. The walls are whitewashed; the floor is freshly scrubbed; shelves bulge with oddities. A caged man with a wild beard peers morosely at you from a cage in the corner. 'Again?' he says. 'Or are you a different lot? No, I don't need rescuing, thank you. It's much worse out there.' ",
+	startdescription: "This is the secret sub-cellar of the Hotel Ciervo. The walls are whitewashed; the floor is freshly scrubbed; shelves bulge with oddities. A caged man with a wild beard peers morosely at you from the corner. 'Again?' he says. 'Or are you a different lot? No, I don't need rescuing, thank you. It's much worse out there.' ",
 	description: "'Grab what you can, quickly!' the caged man hisses. 'They'll be back soon. Only please leave the gladius. I brought that all the way from Gallaecia, back in the day. There, that shelf's good. Hurry, they're coming! You can escape up the delivery stairs.'",
 	warmup:30,
-	craftable: false
+	craftable: false,
+	linked:	[{id: "expeditionascensionheartf",chance:100},
+			{id: "expeditionascensionmothf",chance:100}]
 	},
 
 	

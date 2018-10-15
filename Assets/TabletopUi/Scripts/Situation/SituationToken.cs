@@ -218,7 +218,7 @@ namespace Assets.CS.TabletopUI {
                 ongoingSlotArtImage.color = Color.black;
             }
             else {
-                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.EntityId);
+                ongoingSlotArtImage.sprite = ResourcesManager.GetSpriteForElement(stack.Icon);
                 ongoingSlotArtImage.color = Color.white;
             }
         }

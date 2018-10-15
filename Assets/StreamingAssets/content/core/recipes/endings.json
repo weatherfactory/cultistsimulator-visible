@@ -4,7 +4,7 @@
         id: "deathofthebody",
         label: "No Health is left",
         actionId: "healthend",
-        requirements: {health: -1},
+        requirements: {health: -1,fatigue:-1},
         effects: {},
         startdescription: "My life is slipping away -",
         description: "Where will they find me? I am not here.",

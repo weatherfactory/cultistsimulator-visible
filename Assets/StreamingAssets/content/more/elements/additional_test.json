@@ -12,7 +12,8 @@
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger before the card fades will allow you to recover Health.]",
 			xtriggers: {restorehealth: health},
 			lifetime:60,
-			decayTo:"decrepitude"
+			decayTo:"decrepitude",
+			noartneeded:true
 			}
 			]
 			}

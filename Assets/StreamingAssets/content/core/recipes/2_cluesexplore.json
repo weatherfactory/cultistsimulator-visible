@@ -1,6 +1,14 @@
  {"recipes":
  [
-
+  					{
+	id: "explorevault_hint_sending",
+	label: "A Second Self?",
+	actionId: "explore",
+	requirements: {vault:1,sending:1},
+	startdescription: "If this expedition succeeds, the I-that-is-not-I will be there to perform the Forms. [If you succeed, you'll reap the usual rewards, and also progress your Change ascension.]",
+	hintonly:true,
+	craftable: false,
+	},
      					{
 	id: "explorevault_hint_addfunds",
 	label: "Preparations for an Expedition?",

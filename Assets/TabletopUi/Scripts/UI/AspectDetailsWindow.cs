@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace Assets.CS.TabletopUI {
     public class AspectDetailsWindow : BaseDetailsWindow {
-        
+
 		[SerializeField] RectTransform tokenDetailsHeight;
         [SerializeField] Vector2 posNoTokenDetails = new Vector2(0f, 0f);
         [SerializeField] Vector2 posWithTokenDetails = new Vector2(0f, -220f);
@@ -41,7 +41,7 @@ namespace Assets.CS.TabletopUI {
 
 			if (_noTokenDetails)
 				(transform as RectTransform).anchoredPosition = posNoTokenDetails;
-			else 
+			else
 				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
 
 			Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
@@ -49,7 +49,7 @@ namespace Assets.CS.TabletopUI {
 
         void SetAspect(Element element)
 		{
-            ShowImage(ResourcesManager.GetSpriteForAspect(element.Id));
+            ShowImage(ResourcesManager.GetSpriteForAspect(element.Icon));
             ShowText(LanguageTable.Get("UI_ASPECT") + element.Label, element.Description);
         }
     }

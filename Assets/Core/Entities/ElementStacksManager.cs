@@ -131,7 +131,11 @@ public class ElementStacksManager : IElementStacksManager {
     public IEnumerable<IElementStack> GetStacks() {
         return _stacks.Where(s => !s.Defunct).ToList();
     }
-
+    /// <summary>
+    /// Accept a stack into this StackManager. This also notifies the related TokenContainer to accept it in the view.
+    /// </summary>
+    /// <param name="stack"></param>
+    /// <param name="context">How did it get transferred?</param>
     public void AcceptStack(IElementStack stack, Context context) {
         if (stack == null)
             return;
@@ -148,18 +152,24 @@ public class ElementStacksManager : IElementStacksManager {
         _catalogue.NotifyStacksChanged();
     }
 
-    void RemoveDuplicates(IElementStack stack) {
-        var element = Registry.Retrieve<ICompendium>().GetElementById(stack.EntityId);
-
-        if (element == null || !element.Unique)
+    void RemoveDuplicates(IElementStack incomingStack) {
+      
+        if (!incomingStack.Unique && string.IsNullOrEmpty(incomingStack.UniquenessGroup))
             return;
 
-        foreach (var existingStack in _stacks) {
+        foreach (var existingStack in new List<IElementStack>(_stacks)) {
             // not the one we dropped AND the same ID? It's a copy!
-            if (existingStack != stack && existingStack.EntityId == stack.EntityId) {
+            if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId) {
                 existingStack.Retire("hide");
                 return; // should only ever be one stack to retire!
                         // Otherwise this crashes cause Retire changes the collection we are looking at
+            }
+            else if (existingStack != incomingStack && !string.IsNullOrEmpty(incomingStack.UniquenessGroup))
+            {
+        
+                if (existingStack.UniquenessGroup == incomingStack.UniquenessGroup)
+                    existingStack.Retire("hide"); //goddammit Martin this should be a constant
+
             }
         }
     }

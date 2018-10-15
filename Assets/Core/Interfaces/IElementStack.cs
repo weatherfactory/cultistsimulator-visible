@@ -18,7 +18,7 @@ namespace Assets.Core.Interfaces
         bool Decays { get; }
         IAspectsDictionary GetAspects(bool includingSelf = true);
         Dictionary<string,int> GetCurrentMutations();
-        void SetMutation(string aspectId, int value,bool additive=true);
+        void SetMutation(string aspectId, int value,bool additive);
         Dictionary<string, string> GetXTriggers();
         //should return false if Remove has already been called on this card
         void ModifyQuantity(int change);
@@ -47,6 +47,9 @@ namespace Assets.Core.Interfaces
         Source StackSource { get; set; }
         float LifetimeRemaining { get; set; }
         IlluminateLibrarian IlluminateLibrarian { get; set; }
+        bool Unique { get; }
+        string UniquenessGroup { get; }
+        string Icon { get; }
         Dictionary<string, string> GetCurrentIlluminations();
     }
 }

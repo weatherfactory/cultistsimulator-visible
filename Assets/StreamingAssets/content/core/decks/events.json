@@ -4,7 +4,6 @@
 		label:"Seasons",
 	description:"Whenever Time Passes, an unexpected event might occur.",
 	spec:["seasonsickness",
-	"seasonserenities",
 	"seasonsuspicion",
 	"seasonsuspicion",
 	"seasondespair",
@@ -14,7 +13,7 @@
 	"seasonambitions",
 	"seasonambitions",
 	"seasonsilence",
-	"seasonsilence"
+	"seasonardours"
 	],
 	defaultcard: "contentment",
 resetonexhaustion:true	
@@ -37,7 +36,16 @@ resetonexhaustion:true
 defaultcard: "contentment",
 resetonexhaustion:true	
 	},
-	
+	{id:"roserewards",
+	label:"Romance's Reward",
+	description:"Then, now, when?",
+		spec:
+	["memorybittersweet",
+	"memorypleasant",
+	"memorypassionate",
+	"fleeting"],
+	resetonexhaustion:true	
+	},
 	{id: "dreamreasonresults",
 		label:"Dream's Hinterlands",
 	description:"Sleep usually brings rest and peace; but not always. Not always.",
@@ -114,6 +122,34 @@ resetonexhaustion:true
 "mystique"],
 resetonexhaustion:true	
 	},
+	
+		{id: "ecdysisrewards",
+					label:"The Offerings at the End",
+	description:"The Club guarantees a minimum, but the audience sometimes offer contributions of their own.",
+	spec:
+	["funds",
+	"funds",
+		"funds",
+		"funds",
+		"compensationb",
+		"compensationb",
+		"compensationc",
+		"jumble",
+		"funds",
+	"funds",
+		"funds",
+		"funds",
+		"compensationb",
+		"compensationb",
+		"compensationc",
+		"jumble",
+		"kitlingripe",
+"raptintheking",
+"vienneseconundra"
+		],
+resetonexhaustion:true	
+	},
+	
 			{id: "robberyrewards",
 					label:"The Wages of Sin",
 	description:"My minions will usually bring me back petty treasures; sometimes junk; rarely, something extraordinary.",
@@ -178,6 +214,25 @@ resetonexhaustion:true
 	],
 resetonexhaustion:true	
 	},
+	
+	
+			{id: "schemeevents",
+		label:"Potential Scheme",
+	description:"My Rival Plots...",
+	spec:[
+	"schememurder",
+	"schememurder",
+	"schemeexpedition",
+	"schemeexpedition",
+	"schemeexpedition",
+	"schemeexpedition",
+	"schemeactivities",
+	"schemeactivities",
+	"schemeactivities",
+	"schemeactivities"
+	],
+resetonexhaustion:true	
+	},
 		{id:"talkevents",
 	label:"Midnight Meetings",
 	description: "I might find recruits, allies, or rivals.",
@@ -226,7 +281,9 @@ resetonexhaustion:true
 	"glimmering",
 	"glimmering"],
 	defaultcard: "contentment"
-	}
+	},
+	
+	
 	
 	]
 }

@@ -66,7 +66,7 @@
 		{id:"explorevaultfailure_nofollowers",
 	actionId:"explore",
 	label:"No Traveller Returns",
-	startdescription:"My agents are dead, or otherwise beyond use. I must send help, or this expedition will be over.",
+	startdescription:"No expedition members remain. I must send help, or this expedition will be over.",
 	description: "No-one returns. I can attempt the expedition again. I can even reuse the supplies.",
 	requirements: {follower:-1},
 	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10,mystique:1},
@@ -87,7 +87,8 @@
 	startdescription:"Success! I'll know more soon...",
 	description:".",
 	effects:{notoriety:1},
-		linked: [{id: "explorevaultcapital1_success",chance:100},
+		linked: [
+		{id: "explorevaultcapital1_success",chance:100},
 	{id: "explorevaultcapital1_success",chance:100},
 		{id: "explorevaultcapital2_success",chance:100},
 		{id: "explorevaultcapital3_success",chance:100},
@@ -133,16 +134,23 @@
 	},
 	{
 		id: "explorevault_casualty",
-	actionId:"explore",
-	label: "An expedition member is dying!",
-	startdescription: "If we fail to pass a Peril or a Guardian, we'll usually lose one of our number.",
-	effects: {follower:-1},
-	description: "They're gone.",
+	actionId:"explorevault_casualty",
+	label: "An expedition member has fallen!",
+	startdescription: "Our numbers dwindle.",
+	description: "Their wounds are grievous. [Heal a fallen Follower with Talk.]",
+	alternativerecipes:[{id:"explorevault_casualty_summoning",chance:100}],
 	craftable: false,
-		linked: [{id: "explorevaultfailure_nofollowers",chance:100},
-		{id:"explorevaulttick",chance:100}],
-		warmup:30
+	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
+	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
+		warmup:5
 	},
+	{		id: "explorevault_casualty_summoning",
+	actionId:"explorevault_casualty",
+	requirements:{summoned:1},
+		label: "My summoning has been defeated!",
+	description:"It is banished, or destroyed.",
+	effects:{summoned:-1}
+	}
 
 
 

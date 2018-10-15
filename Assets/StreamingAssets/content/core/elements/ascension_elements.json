@@ -1,6 +1,6 @@
 {"elements":
     [
-      
+
 		 {
             id: "ascensionpowera",
             label: "Temptation: Power",
@@ -78,14 +78,14 @@
 						{
 		id:"ascensionpowere",
 		label: "Ascension: Power",
-		aspects: {desire:5,powermarks:5},
+		aspects: {desire:5,powermarks:5,murderskill:1},
 		xtriggers: {ascend:ascensionpowerf,descend:ascensionpowerd},
 		description:"The Fifth Mark: no hair remains on my body. I am strong, devilishly so. I am always shivering, every moment I am away from the fire's side."
 		},
 						{
 		id:"ascensionpowerf",
 		label: "Ascension: Power",
-		aspects: {desire:6,powermarks:6},
+		aspects: {desire:6,powermarks:6,murderskill:1},
 		xtriggers: {descend:ascensionpowere},
 		description:"It is difficult to bend my limbs. I have so many scars. I prefer not to expose my face to the public gaze. I can hold a hot coal in my hand, and I feel nothing, although there is the faintest smell and the softest sizzling. This is the Sixth Mark. "
 		},		

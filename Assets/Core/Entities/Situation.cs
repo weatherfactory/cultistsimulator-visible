@@ -156,8 +156,8 @@ namespace Assets.Core.Entities {
             if (recipeExecutionCommands.First().Recipe.Id != currentPrimaryRecipe.Id)
                 currentPrimaryRecipe = recipeExecutionCommands.First().Recipe;
 
-            foreach (var r in recipeExecutionCommands) {
-                ISituationEffectCommand ec = new SituationEffectCommand(r.Recipe, r.Recipe.ActionId != currentPrimaryRecipe.ActionId);
+            foreach (var c in recipeExecutionCommands) {
+                ISituationEffectCommand ec = new SituationEffectCommand(c.Recipe, c.Recipe.ActionId != currentPrimaryRecipe.ActionId,c.Expulsion);
                 subscriber.SituationExecutingRecipe(ec);
             }
         }
@@ -170,7 +170,7 @@ namespace Assets.Core.Entities {
             if (linkedRecipe!=null) {
                 //send the completion description before we move on
                 INotification notification = new Notification(currentPrimaryRecipe.Label, currentPrimaryRecipe.Description);
-                subscriber.ReceiveTextNotification(notification);
+                subscriber.ReceiveAndRefineTextNotification(notification);
                 currentPrimaryRecipe = linkedRecipe;
                 TimeRemaining = currentPrimaryRecipe.Warmup;
                 if(TimeRemaining>0) //don't play a sound if we loop through multiple linked ones

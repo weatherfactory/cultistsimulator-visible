@@ -10,7 +10,7 @@
 			  ingredient:1},
 			  slots: [{id:"Nourishment",actionId:"dream",description: "To recover, I must eat.",required:{funds:1}}],
             description: "I need rest and nourishment, if I am to recover. But when my mouth waters, when my vision swims, I see the red cup; and now and then it will speak to me. [Dreaming with Hunger before the card fades will allow you to recover Health.]",
-			xtriggers: {restorehealth: health},
+			xtriggers: {restorehealth: health,scar_ability:scar_heart},
 			lifetime:60,
 			decayTo:"decrepitude"
 			},
@@ -24,7 +24,7 @@
 				ability:1
             },
             animFrames: 1,
-			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue},
+			xtriggers: {damagehealth: injury,fallsick:affliction,destroyhealth:decrepitude,fatiguing:fatigue,employment:fatigue,job:fatigue,ritual:fatigue,society:fatigue,scar_ability:scar_heart},
 			description: "This is my body. There are other bodies, but this one is mine, and my mind needs it as a fungus needs soil. [With enough Vitality, you can gain more Health.]"
         },
 				 {
@@ -32,16 +32,24 @@
             label: "Vitality",
 				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality, I can increase my Health.",required:{vitality:1}}],
           aspects:
-            {advancement:1},
-            description: "Exercise, or something rarer, has invigorated me. [Vitality can be used with Study to gain Health. It lasts only three minutes, if unused.]",
+            {advancement:1,heart:1,influence:1},
+            description: "Exercise, or something rarer, has invigorated me. [Use with another Vitality to improve your abilities. It lasts only three minutes, if unused.]",
 		lifetime: 180
+        },
+						 {
+            id: "vitalityplus",
+            label: "Vitality: a Lesson Learnt ",
+          aspects:
+            {advancement:1,heart:2,influence:1},
+            description: "I am ready to improve. [Use this with your Strength skill to improve the skill and gain Health. It lasts up to five minutes.]",
+		lifetime: 300
         },
 		
 						 {
             id: "restlessness",
             label: "Restlessness",
             aspects:
-            {influence:1, forge:3,grail:3,lantern:3},
+            {influence:1, forge:2,heart:2,grail:2,lantern:2,moth:2},
             description: "A restless longing has me. I feel that I want to do... <i>something</i>. What, exactly?",
 		lifetime: 60,
 		decayTo:"dread"
@@ -63,7 +71,7 @@
 			  			slots: [{id:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1},actionId:"dream"},
 			{id:"...Vitality",description: "...but perhaps I just need a little rest.",required:{vitality:1},actionId:"dream"}],
             description: "I need rest and nourishment, if I am to recover. But the Mother of Ants looks kindly on wounds. [Dreaming with an Injury before the card fades will also allow you to recover Health.]",
-			xtriggers: {restorehealth: health},
+			xtriggers: {restorehealth: health,scar_ability:scar_heart},
 			lifetime: 150,
 			decayTo: "decrepitude"
 			},
@@ -73,7 +81,9 @@
             description: "I have gone against my own principles, or my own preferences. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion",
-			icon:"passion"
+			icon:"passion",
+			xtriggers:{scarability:scar_moth,toreason:concentration},
+			resaturate: true
 			},
 												{
         id: "passionexhausted",
@@ -81,24 +91,27 @@
             description: "My passions burn low. [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime: 60,
 			decayTo:"passion",
-			icon:"passion"
+			icon:"passion",
+			xtriggers:{scarability:scar_moth,toreason:concentration},
+			resaturate: true
 			},
 						{
         id: "fatigue",
             label: "Health (Fatigued)",
             aspects:
-            {illhealth: 1},
+            {illhealth: 1,heart:1},
             description: "This card can't be used, but it will recover after sixty seconds. I can recover it faster by Dreaming.",
-			xtriggers: {restorehealth: health},
+			xtriggers: {restorehealth: health,damagehealth:injury,fallsick:affliction,scarability:scar_heart},
 			lifetime: 60,
 			decayTo:"health",
-			icon:"health"
+			icon:"health",
+			resaturate: true
 			},
 			{
 			id: "affliction",
             label: "An Affliction",
             aspects:{illhealth: 1, winter:2,ingredient:1},
-			xtriggers: {restorehealth: health},
+			xtriggers: {restorehealth: health,,scarability:scar_heart},
 						slots: [{id: "Medicine",label:"Medicines, or...",actionId:"dream",description: "I could pay for a doctor's visit...",required:{funds:1}},
 			{id:"Vitality",label:"...Vitality",actionId:"dream",description: "...but perhaps I just need a little rest.",required:{vitality:1}}],
             description: "Disease has left me weak. I need rest and nourishment, if I am to recover. [Dream on an Affliction to transform it back to Health, before the card decays.]",
@@ -118,7 +131,7 @@
 			description: "'No live organism can continue for long to exist sanely under conditions of absolute reality.' - Shirley Jackson
 
 [With Erudition, you can Study to gain more Reason.]",
-				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion}
+				xtriggers: {damagereason: dread,fatiguing:concentration,employment:concentration,job:concentration,topassion:passion,ritual:concentration,society:concentration,scarability:scar_lantern}
 				
         },
 		        {
@@ -127,15 +140,26 @@
 			description: "My mind is weary.  [This card can't be used, but it will recover after sixty seconds.]",
 			lifetime:60,
 			decayTo:"reason",		
-icon:"reason"
+		icon:"reason",
+			xtriggers:{scarability:scar_lantern,topassion:passionexhausted},
+			resaturate: true
         },
 				 {
             id: "erudition",
             label: "Erudition",
 			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
-            aspects: {advancement:1},
-            description: "I have learnt a great deal, lately. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
+            aspects: {advancement:1,lantern:1,influence:1},
+            description: "I soak up knowledge as a shadow soaks up light. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180
+        },
+		
+								 {
+            id: "eruditionplus",
+            label: "Erudition: a Lesson Learnt",
+          aspects:
+            {advancement:1,lantern:2,influence:1},
+            description: "I am ready to improve. [Use this with your Scholarship skill to improve the skill and gain Reason. It lasts up to five minutes.]",
+		lifetime: 300
         },
 			{id: "dread",
             label: "Dread",
@@ -161,7 +185,7 @@ lifetime: 180
 			description: "'Dull minds are never either intuitive or mathematical.' - Blaise Pascal
 			
 [With enough Glimmering, you can Study to gain more Passion.]",
-			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason}
+			xtriggers: {damagepassion:fascination,plead:disillusionment,fatiguing:passionexhausted,employment:passionexhausted,job:passionexhausted,toreason:reason,ritual:passionexhausted,society:passionexhausted}
         },
 		
 		
@@ -169,7 +193,7 @@ lifetime: 180
             id: "decrepitude",
             label: "Decrepitude",
 			description: "Some wounds never quite heal. [Untreated Injuries and Hunger become Decrepitude, which does not return to Health. Decrepitude remains until you die.]",
-			aspects: {ability:1},
+			aspects: {ability:1,winter:1},
 			xtriggers: {tohealth:health}
             },
 		
@@ -178,15 +202,24 @@ lifetime: 180
             label: "Glimmering",
 			slots: [{id:"More Glimmering",actionId:"study",description: "With enough Glimmering, I can increase my Passion.",required:{glimmering:1}}],
             aspects:
-            {advancement:1},
+            {advancement:1,moth:1,influence:1},
             description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can be used with Study to gain Passion. It lasts only three minutes, if unused.]",
 			lifetime: 180
+        },
+		
+										 {
+            id: "glimmeringplus",
+            label: "Glimmering: a Lesson Learnt",
+          aspects:
+            {advancement:1,moth:2,influence:1},
+            description: "I am ready to improve. [Use this with your Imagination skill to improve the skill and gain Passion. It lasts up to five minutes.]",
+		lifetime: 300
         },
 		{id: "fascination",
             label: "Fascination",
             aspects:
             {moth:2,illhealth:1,influence:1},
-			              		slots:[{id:"Reminders",required: {dread:1},actionId:"dream",description:"Grey reality will steady my soul."}],
+			              		slots:[{id:"Reminders",required: {dread:1,fleeting:1},actionId:"dream",description:"Grey reality will steady my soul."}],
             description: "Light LEAKS through the CRACKS. My mind is BRIGHTER than it EVER was. THE HIGHER I RISE THE MORE I SEE.",
 			lifetime: 180
 			},
@@ -287,21 +320,88 @@ lifetime: 180
 		unique:true
 		},
 		
-	
-			
-		
 			 {
             id: "fleeting",
-            label: "Fleeting Memory",
+            label: "Fleeting Reminiscence",
             description: "A moment in time. In another moment, it'll be gone.",
 			aspects: {secrethistories: 2,moth:2,influence:1},
-			lifetime:30
+			lifetime:300
         },
+
 		{id: "contentment",
 		label: "Contentment",
 		aspects: {lantern:2,heart:2,influence:1},
 		description: "I'm happy, I think. [Contentment defends against Dread; but Contentment doesn't last.]",
 		lifetime: 60
-		}
+		},
+									 {
+            id: "memorybittersweet",
+            label: "Bittersweet Memory",
+            description: "I could recall a complex time.",
+			aspects: {way:1},
+			lifetime:300
+        },
+					 {
+            id: "memorypleasant",
+            label: "Pleasant Memory",
+            description: "I could recall a happier time.",
+			aspects: {way:1},
+			lifetime:300
+        },
+							 {
+            id: "memorypassionate",
+            label: "Passionate Memory",
+            description: "I could recall a warmer time.",
+			aspects: {way:1},
+			lifetime:300
+        },
+				{id: "scar_edge",
+		label:"Scar: Brutal Experience",
+		description:"FAUSTUS: I think Hell's a fable. MEPHISTOPHILIS: Ay, think so still, till experience change thy mind. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,edge:4,scar:1}
+		},
+		
+				{id: "scar_knock",
+		label:"Scar: Half-Healed Fistula",
+		description:"Not all doors are wounds; but all wounds are doors. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,knock:4,scar:1}
+		},
+				{id: "scar_winter",
+		label:"Scar: Old Wound",
+		description:"Step closer to the sunset, and see the first stars of night. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,winter:4,scar:1}
+		},
+						{id: "scar_heart",
+		label:"Scar: A Wandering Heart",
+		description:"I have so much life in me. It is difficult not to move. When I sit, my joints burn. I know that if I stop, I might stop for always. [You've made a permanent sacrifice for power. Be careful: unlike Health, this card will not satisfy Sickness or Starvation.]",
+		aspects:{tool:1,heart:4,scar:1},
+		xtriggers:{job:scar_heart_fatigued,employment:scar_heart_fatigued,ritual:scar_heart_fatigued}
+		},
+								{id: "scar_heart_fatigued",
+		label:"Scar: A Wandering Heart (Strained)",
+		description:"My arteries sing, my veins burn. I cannot push myself any further. [Wait.]",
+	decayTo: scar_heart,
+	lifetime:60,
+			resaturate: true
+		},
+					{id: "scar_moth",
+		label:"Scar: A Flexible Aspect",
+		description:"I've worn so many guises. With each new guise it is harder to recall my original face. Even the cartilage softens when my tempers are high. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,moth:4,scar:1},
+		xtriggers:{job:scar_moth_fatigued,employment:scar_moth_fatigued,ritual:scar_moth_fatigued}
+		},
+							{id: "scar_moth_fatigued",
+		label:"Scar: A Flexible Aspect (Strained)",
+		description:"With each new expression my features ripple like water. If I am not careful I shall entirely dissolve. [Wait.]",
+		decayTo: scar_moth,
+		lifetime:60,
+			resaturate: true
+		},
+		
+						{id: "scar_lantern",
+		label:"Scar: A Translucency",
+	description:"Sometimes now I am beautiful beneath my skin. When I bend to the right angle - when my garments falls aside - when the eye is keen - my shape is a perfect revelation. [You've made a permanent sacrifice for power.]",
+		aspects:{tool:1,lantern:4,scar:1}
+		},
 ]
 };

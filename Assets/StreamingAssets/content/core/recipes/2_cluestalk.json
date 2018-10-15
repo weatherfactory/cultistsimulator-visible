@@ -1,11 +1,23 @@
  {"recipes":
- [	  	  	{
-        id: "recruitindependenthint",
-        label: "Recruit a Troublemaker?",
+ [	  
+  	  	{
+        id: "recruitindependentresentmenthint",
+        label: "Recruit an Independent?",
         actionId: "talk",
-        requirements: {venerationedge: 1, independent:1, mortal:1},
+        requirements: {independent:1, mortal:1,resentment:1},
 
-        startdescription: "This one might join me... if I can muster the Aspect of our cult, to the twenty-first degree. [You can recruit a Troublemaker, even one of a different persuasion, if you can provide enough power].",
+        startdescription: "No. This one has not forgotten what occurred between us. Perhaps, some day, if I do them no further harm, their feelings might change.",
+    
+        craftable: false,
+		hintonly:true
+    },
+ {
+        id: "recruitindependenthint",
+        label: "Recruit an Independent?",
+        actionId: "talk",
+        requirements: {independent:1, mortal:1,resentment:-1},
+
+        startdescription: "This one might join me... if I can muster the Aspect of our cult, to the twenty-first degree. [You can recruit a Troublemaker, even one of a different persuasion, if you can provide enough power - but you must include at least one Tool as a gift to the independent.].",
     
         craftable: false,
 		hintonly:true
@@ -110,12 +122,20 @@
         hintonly:true,
         craftable: true
     },
-
+		  	{
+        id: "talktobenefactorhint",
+        label: "My Benefactor Insists on Discretion",
+        actionId: "talk",
+        requirements: {benefactor:1},
+        startdescription: "'We can't speak here, my dear. Let's be discreet.'",
+        craftable: false,
+		hintonly: true
+    },
 		  	{
         id: "recruitacquaintancenoculthint",
         label: "Recruit a new Follower?",
         actionId: "talk",
-        requirements: {society: -1,mortal: 1,follower:-1,patron:-1},
+        requirements: {society: -1,acquaintance:1},
         startdescription: "[Once you've established a cult, use <b>TALK</b> with the Cult to recruit an Acquaintance to your Cult's ranks.]",
         craftable: false,
 		hintonly: true
@@ -124,7 +144,7 @@
         id: "recruitacquaintancehint",
         label: "Recruit a new Follower?",
         actionId: "talk",
-        requirements: {society: 1,mortal: 1,follower:-1},
+        requirements: {society: 1,acquaintance:1},
         startdescription: "To recruit a follower, I will need a little of the power we revere. I might glean it from an Influence, or a Tool, or an Ingredient, or just the Lore of our tradition.",
         craftable: false,
 		hintonly: true
@@ -211,6 +231,16 @@ craftable: false,
 hintonly:true
 
 },
+
+	  	{
+        id: "talk_nointeraction_mortal",
+        label: "Nothing to say?",
+        actionId: "talk",
+        requirements: {mortal:1},
+        startdescription: "'I don't believe we have anything to say to each other.'",
+        craftable: false,
+		hintonly: true
+    },
 	
 ]
 }

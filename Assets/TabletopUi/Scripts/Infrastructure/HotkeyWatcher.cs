@@ -48,6 +48,13 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
             if ((Input.GetKeyDown("`") && Input.GetKey(KeyCode.LeftControl) ))
             { 
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
+                {
+                    if(Config.Instance.knock)
+                        _debugTools.btnTriggerAchievement.gameObject.SetActive(true);
+
+                }
+
+
                 var situationsCatalogue = Registry.Retrieve<SituationsCatalogue>();
                 foreach (var sc in situationsCatalogue.GetRegisteredSituations())
                 {

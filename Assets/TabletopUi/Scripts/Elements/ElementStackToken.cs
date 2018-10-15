@@ -79,6 +79,26 @@ namespace Assets.CS.TabletopUI {
             get { return _element == null ? null : _element.Label; }
         }
 
+        public string Icon
+        {
+            get { return _element == null ? null : _element.Icon; }
+        }
+
+        public bool Unique
+        {
+            get
+            {
+                if (_element == null)
+                    return false;
+                return _element.Unique;
+            }
+        }
+
+        public string UniquenessGroup
+        {
+            get { return _element == null ? null : _element.UniquenessGroup; }
+        }
+
         public bool Decays {
             get { return _element.Lifetime > 0; }
         }
@@ -146,7 +166,7 @@ namespace Assets.CS.TabletopUI {
             return IlluminateLibrarian.GetCurrentIlluminations();
         }
 
-        public void SetMutation(string aspectId, int value,bool additive=false)
+        public void SetMutation(string aspectId, int value,bool additive)
         {
             if (_currentMutations.ContainsKey(aspectId))
             {
@@ -201,7 +221,8 @@ namespace Assets.CS.TabletopUI {
                     }
                     else
                     {
-                        NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
+                        //do nothing. We used to log this, but it's an issue when we are eg adding a -1 to remove an element that was added in play.
+                        // NoonUtility.Log("Tried to mutate an aspect (" + mutation.Key + ") off an element (" + this._element.Id + ") but the aspect wasn't there.");
                     }
 
                 }
@@ -270,6 +291,8 @@ namespace Assets.CS.TabletopUI {
                 ShowCardDecayTimer(false);
                 SetCardDecay(0f);
                 LifetimeRemaining = _element.Lifetime;
+                PlacementAlreadyChronicled = false; //element has changed, so we want to relog placement
+                MarkedForConsumption = false; //If a stack has just been transformed into another element, all sins are forgiven. It won't be consumed.
 				decayBackgroundImage = decayView.GetComponent<Image>();
 				cachedDecayBackgroundColor = decayBackgroundImage.color;
 
@@ -756,7 +779,7 @@ namespace Assets.CS.TabletopUI {
                 if (string.IsNullOrEmpty(_element.DecayTo))
                     Retire(true);
                 else
-                    ChangeTo(_element.DecayTo);
+                    ChangeThisCardOnDesktopTo(_element.DecayTo);
             }
 
             decayCountText.text = GetCardDecayTime();
@@ -821,9 +844,8 @@ namespace Assets.CS.TabletopUI {
         public void SetCardDecay(float percentage)
 		{
             percentage = Mathf.Clamp01(percentage);
-            //these hardcoded ids are a launch hack. Resaturating elements should instead have a 'resaturate' property
-            //anyway they appear as cards slowly gaining, not losing, colour. Thank you the community!
-            if(_element.Id== "fatigue" || _element.Id == "passionexhausted" || _element.Id == "disillusionment" || _element.Id == "concentration" || _element.Id == "locationcabaretclosed")
+
+            if(_element.Resaturate)
             {
                 float reversePercentage = 1f - percentage;
                 artwork.color = new Color(1f - reversePercentage, 1f - reversePercentage, 1f - reversePercentage, 1f);
@@ -843,12 +865,14 @@ namespace Assets.CS.TabletopUI {
         #endregion
 
         
-        public bool ChangeTo(string elementId) {
+        public bool ChangeThisCardOnDesktopTo(string elementId) {
             // Save this, since we're retiring and that sets quantity to 0
             int quantity = Quantity;
 
             var cardLeftBehind = PrefabFactory.CreateToken<ElementStackToken>(transform.parent);
             cardLeftBehind.Populate(elementId, quantity, Source.Existing());
+            foreach(var m in this.GetCurrentMutations())
+               cardLeftBehind.SetMutation(m.Key,m.Value,false); //brand new mutation, never needs to be additive
             cardLeftBehind.lastTablePos = lastTablePos;
             cardLeftBehind.originStack = null;
 
