@@ -6,7 +6,7 @@
             aspects:
             {edge: 2,influence:1},
             description: "The senses are sharpened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceedgec}
         },
 								          {
         id: "influenceedgec",
@@ -14,7 +14,7 @@
             aspects:
             {edge: 6,influence:1},
             description: "The passions are roused. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceedgee},
 			decayTo: "bloodshed"
         },
 						          {
@@ -23,7 +23,7 @@
             aspects:
             {edge: 10,influence:1},
             description: "Anger is implicit in every shape. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceedgeg},
 			decayTo: "bloodshed"
         },
 								          {
@@ -42,7 +42,7 @@
             aspects:
             {forge: 2,influence:1},
             description: "A haze and a shimmer. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceforgec}
         },
 								          {
         id: "influenceforgec",
@@ -50,7 +50,7 @@
             aspects:
             {forge: 6,influence:1},
             description: "The possibility of sparks. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceforgee},
 			decayTo:"fascination"
         },
 						          {
@@ -59,7 +59,7 @@
             aspects:
             {forge: 10,influence:1},
             description: "This is the aura at the volcano's edge. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceforgeg},
 			decayTo:"fascination"
         },
 								          {
@@ -79,7 +79,7 @@
             aspects:
             {grail: 2,influence:1},
             description: "Every sense is heightened; every sensation, deepened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influencegrailc}
         },
 								          {
         id: "influencegrailc",
@@ -87,7 +87,7 @@
             aspects:
             {grail: 6,influence:1},
             description: "It is difficult to control oneself. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencegraile},
 			decayTo: "bloodshed"
         },
 						          {
@@ -96,7 +96,7 @@
             aspects:
             {grail: 10,influence:1},
             description: "The lips ache to savour; the fingers ache to clutch. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencegrailg},
 			decayTo: "bloodshed"
         },
 								          {
@@ -115,7 +115,7 @@
             aspects:
             {heart: 2,influence:1},
             description: "The toes tap. All is brisk and all is well. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceheartc}
         },
 								          {
         id: "influenceheartc",
@@ -123,7 +123,7 @@
             aspects:
             {heart: 6,influence:1},
             description: "A rising power; a reassuring energy. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencehearte},
 			decayTo:"vitality"
         },
 						          {
@@ -132,7 +132,7 @@
             aspects:
             {heart: 10,influence:1},
             description: "The heart moves; the world moves. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceheartg},
 			decayTo:"vitality"
         },
 								          {
@@ -151,7 +151,7 @@
             aspects:
             {knock: 2,influence:1},
             description: "Laces uncoil -- windows swing open -- locks move as if oiled. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceknockc}
         },
 								          {
         id: "influenceknockc",
@@ -159,7 +159,7 @@
             aspects:
             {knock: 6,influence:1},
             description: "Clouds part -- walls creak -- old wounds ache.[A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceknocke},
 			decayTo: "bloodshed"
         },
 						          {
@@ -168,7 +168,7 @@
             aspects:
             {knock: 10,influence:1},
             description: "Geometry contorts -- doors burst open -- snakes boil from the earth! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influenceknockg},
 			decayTo: "bloodshed"
         },
 								          {
@@ -187,7 +187,7 @@
             aspects:
             {lantern: 2,influence:1},
             description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influencelanternc}
         },
 								          {
         id: "influencelanternc",
@@ -195,7 +195,7 @@
             aspects:
             {lantern: 6,influence:1},
             description: "Light dews the skin and suffuses the air. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.  If unused, it will become Fascination.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencelanterne},
 			decayTo: "fascination"
         },
 						          {
@@ -204,7 +204,7 @@
             aspects:
             {lantern: 10,influence:1},
             description: "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions. If unused, it will become Fascination.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencelanterng},
 			decayTo: "fascination"
         },
 								          {
@@ -223,7 +223,7 @@
             aspects:
             {moth: 2,influence:1},
             description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influencemothc}
         },
 								          {
         id: "influencemothc",
@@ -231,7 +231,7 @@
             aspects:
             {moth: 6,influence:1},
             description: "Oh the friends that we played and the skins that we made; still they drive us! [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencemothe},
 			decayTo: "restlessness"
         },
 						          {
@@ -240,7 +240,7 @@
             aspects:
             {moth: 10,influence:1},
             description: "Emotions contort our thoughts. One passion yields to the next like leaves in the wind's grip! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencemothg},
 			decayTo: "restlessness"
         },
 								          {
@@ -260,7 +260,7 @@
             aspects:
             {winter: 2,influence:1},
             description: "A peculiar chill lingers in my rooms.[A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-			lifetime: 60
+			lifetime: 60,xtriggers:{upgradeinfluence:influencewinterc}
         },
 						          {
         id: "influencewinterc",
@@ -268,7 +268,7 @@
             aspects:
             {winter: 6,influence:1},
             description: "The air crisps the skin. Frost marks the glass. [A sixth-order influence: the signs are unmistakable. This can be used in some Rites to summon minions. If unused, it will become Dread.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencewintere},
 			decayTo: "dread"
         },
 						          {
@@ -277,7 +277,7 @@
             aspects:
             {winter: 10,influence:1},
             description: "Winter passes the clothes, passes the skin, nestles in the veins. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions. If unused, it will become Dread.]",
-			lifetime: 60,
+			lifetime: 60,xtriggers:{upgradeinfluence:influencewinterg},
 			decayTo: "dread"
         },
 								          {
