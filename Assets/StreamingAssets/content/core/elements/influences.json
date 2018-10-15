@@ -84,7 +84,7 @@ id: "influencegrail",
 label: "An Awareness of Appetite",
 aspects:
 {grail: 2,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influencegrail:1,influencemoth:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influencegrail:1,influencemoth:1,glimmering:1,glimmeringplus:1},actionId:"study"}],
 description: "Every sense is heightened; every sensation, deepened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencegrailc}
 },
@@ -123,7 +123,7 @@ id: "influenceheart",
 label: "Trembling Airs",
 aspects:
 {heart: 2,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Heart influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influenceheart:1,influencemoth:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Heart influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influenceheart:1,influencemoth:1,vitality:1,vitalityplus:1,glimmering:1,glimmeringplus:1},actionId:"study"}],
 description: "The toes tap. All is brisk and all is well. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influenceheartc}
 },
@@ -162,7 +162,7 @@ id: "influenceknock",
 label: "Subtle Flaw",
 aspects:
 {knock: 2,influence:1},
-slots:[{id:"with",label:"With",description:"With enough pressure, the skin of the world will tear. Add any matching influence to subvert it to a higher level Knock influence.",actionId:"study",required:{influenceedge:1,influenceforge:1,influencegrail:1,influenceheart:1,influenceknock:1,influencelantern:1,influencemoth:1,influencewinter:1}}],
+slots:[{id:"with",label:"With",description:"With enough pressure, the skin of the world will tear. Add any influence to subvert it to a higher level Knock influence.",actionId:"study",required:{influenceedge:1,influenceforge:1,influencegrail:1,influenceheart:1,influenceknock:1,influencelantern:1,influencemoth:1,influencewinter:1,erudition:1,glimmering:1,vitality:1,eruditionplus:1,glimmeringplus:1,vitalityplus:1}}],
 description: "Laces uncoil -- windows swing open -- locks move as if oiled. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influenceknockc}
 },
@@ -181,7 +181,7 @@ id: "influenceknocke",
 label: "Subtle Rupture",
 aspects:
 {knock: 10,influence:1},
-slots:[{id:"with",label:"With",description:"With enough pressure, the skin of the world will tear. Add any matching influence to subvert it to a higher level Knock influence.",actionId:"study",.required:{influenceedgee:1,influenceforgee:1,influencegraile:1,influencehearte:1,influenceknocke:1,influencelanterne:1,influencemothe:1,influencewintere:1}}],
+slots:[{id:"with",label:"With",description:"With enough pressure, the skin of the world will tear. Add any matching influence to subvert it to a higher level Knock influence.",actionId:"study",required:{influenceedgee:1,influenceforgee:1,influencegraile:1,influencehearte:1,influenceknocke:1,influencelanterne:1,influencemothe:1,influencewintere:1}}],
 description: "Geometry contorts -- doors burst open -- snakes boil from the earth! [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influenceknockg},
 decayTo: "bloodshed"
@@ -201,7 +201,7 @@ id: "influencelantern",
 label: "A Consciousness of Radiance",
 aspects:
 {lantern: 2,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelantern:1,influencemoth:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelantern:1,influenceforge:1,erudition:1,eruditionplus:1},actionId:"study"}],
 description: "There is a light behind the world, a light above the Mansus, a light that penetrates both glass and skin. It is present here. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanternc}
 },
@@ -210,7 +210,7 @@ id: "influencelanternc",
 label: "An Intensity of Radiance",
 aspects:
 {lantern: 6,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelanternc:1,influencemothc:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelanternc:1,influenceforgec:1},actionId:"study"}],
 description: "Light dews the skin and suffuses the air. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.  If unused, it will become Fascination.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanterne},
 decayTo: "fascination"
@@ -220,7 +220,7 @@ id: "influencelanterne",
 label: "A Blaze of Radiance",
 aspects:
 {lantern: 10,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelanterne:1,influencemothe:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Lantern influences to intensify them. Study how it's affected by Forge influence to subvert it, instead.",required:{influencelanterne:1,influenceforgee:1},actionId:"study"}],
 description: "Every colour has grown bright as new dye, but now all of them begin to bleed towards white. [A tenth-order influence! A gathering knot of power and peril. This can be used in some Rites to summon minions. If unused, it will become Fascination.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencelanterng},
 decayTo: "fascination"
@@ -241,7 +241,7 @@ id: "influencemoth",
 label: "A Buzzing in the Brain",
 aspects:
 {moth: 2,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Moth influences to intensify them. Study how it's affected by Lantern influence to subvert it, instead.",required:{influencemoth:1,influencelantern:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Moth influences to intensify them. Study how it's affected by Lantern influence to subvert it, instead.",required:{influencemoth:1,influencelantern:1,erudition:1,eruditionplus:1,glimmering:1,glimmeringplus:1},actionId:"study"}],
 description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencemothc}
 },
@@ -281,7 +281,7 @@ id: "influencewinter",
 label: "A Chilly Atmosphere",
 aspects:
 {winter: 2,influence:1},
-slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",required:{influencewinter:1,influenceheart:1},actionId:"study"}],
+slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",required:{influencewinter:1,influenceheart:1,vitality:1,vitalityplus:1},actionId:"study"}],
 description: "A peculiar chill lingers in my rooms.[A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencewinterc}
 },
