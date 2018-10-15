@@ -23,10 +23,24 @@
 		warmup: 60,
 		slots: [{id:"Thoughts",required: {contentment: 1,inducesdespair:1},greedy:true,noanim:true}],
         craftable: false,
+		alternativerecipes:[{id:"despairwarning",chance:100}],
 		linked:[{id:"despairabate",chance:100},
 		{id:"despairdeath",chance:100},
 		{id:"despairactive",chance:100}]
 	},
+	
+				{  id: "despairwarning",
+        label: "I Am Seeing Things!",
+        actionId: "visions",
+		requirements: {dread: 2,contentment:-1},
+		startdescription: "Despair pads close at my heels. The world is leached of light. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
+		description: ".",
+		comments: "This exists specifically for the burn image at 2 Dread.",
+		burnimage: "despair",
+		linked:[{id:"despairabate",chance:100},
+		{id:"despairdeath",chance:100},
+		{id:"despairactive",chance:100}]
+		},
 
 	{  id: "despairabate",
         label: "Despair Abates",
