@@ -280,8 +280,24 @@ effects: {detectivetemptation:-1,fascination:1,LEVER_LastDesire:1,dread:1},
 startdescription:"I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
 description:"The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I begun?",
 warmup:60,
-craftable: true
+craftable: true,
+maxexecutions:1
 },
+
+
+{id: "detectivestudy_plotitem_afterfirsttime",
+label: "I Should Not Open the File",
+actionId: "study",
+requirements: {detectivetemptation:1},
+alternativerecipes: [{id:"detectiveopendream",chance:100,additional:true}],
+effects: {detectivetemptation:-1,fascination:1,dread:1},
+startdescription:"I MUST NOT READ IT AGAIN. It took me weeks to forget the accounts, the instructions - God help me, the sketches.",
+description:"The pages turn so easily. It's like peeling a fruit, or unwrapping a secret gift. At the end of it, my hands are stained with ink. My brain boils. What have I done?",
+warmup:60,
+craftable: true,
+maxexecutions:1
+},
+
 {id: "detectivework_plotitem",
 label: "Burn the File",
 actionId: "work",
@@ -289,7 +305,7 @@ requirements: {detectivetemptation:1},
 effects: {detectivetemptation:-1,legacydetective_plotitem_burning:1,restlessness:1,contentment:1},
 startdescription:"This is evidence. We do not burn evidence. But perhaps it's for the best.",
 description:"The pages blacken, one by one, curling like closing fingers. I have opened the window of my office. The smoke dissipates and is lost. What exactly have I done?",
-warmup:5,
+warmup:30,
 craftable: true
 },
 
