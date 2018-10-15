@@ -7,7 +7,7 @@
 	effects:{project_influence_upgrade_subvert_knock:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "There are incantations of unseaming, where the space between the words is as potent as the actual syllables. When a thing is opened, we will know its nature. [Any influence studied with Knock becomes Knock.]",
 	description: ".",
 	warmup:30,
@@ -21,7 +21,7 @@
 	requirements: {influence:2, edge:1,winter:-1,forge:-1,knock-1},
 	effects: {project_influence_upgrade_edge:1},
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "All of the greatest struggles end in death. The influence of the Knife holds the lessons of those struggles. [This will upgrade your Edge influence.]",
 	description: ".",
 	warmup:30,
@@ -34,7 +34,7 @@
 	requirements: {influence:2, edge:1,winter:1},
 	effects: {project_influence_subvert_edgetowinter:1},
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "All things end. I will meditate on the triumph of patience over strength. [This will create Winter influence instead of Edge.]",
 	description: ".",
 	warmup:30,
@@ -49,7 +49,7 @@
 	effects:{project_influence_upgrade_forge:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "Very few know that smiths and murderers speak the same prayers. I will examine those prayers.",
 	
 	warmup:30,
@@ -64,7 +64,7 @@
 	effects:{project_influence_subvert_forgetoedge:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "The Hour called Lionsmith shattered his own sword to escape his master's dominion. All things can be overcome, with sufficient force. [This will create Edge influence instead of Forge.]",
 	
 	warmup:30,
@@ -78,7 +78,7 @@
 	requirements: {influence:2, grail:1,moth:-1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_grail:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "Certain words beg to be spoken. It is tempting to spend time in their consideration - tempting, and perhaps useful.",
 	
 	warmup:30,
@@ -93,7 +93,7 @@
 	requirements: {influence:2, grail:1,moth:1},
 	effects:{project_influence_subvert_grailtomoth:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "It has been claimed that Grail was born from the first sacrifice. But Moth knows better. [This will create Moth influence instead of Grail.]",
 	
 	warmup:30,
@@ -103,12 +103,12 @@
 	
 				{
 	id: "studyheartinfluence",
-	label: "Interweave the Rhythms of Life",
+	label: "Interweave the Rhythms Unceasing",
 	actionId: "xstudy",
 	requirements: {influence:2, heart:1,grail:-1,winter:-1,knock-1},
 	effects:{project_influence_upgrade_heart:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
 	
 	warmup:30,
@@ -122,7 +122,7 @@
 	requirements: {influence:2, heart:1,grail:1},
 	effects:{project_influence_subvert_hearttograil:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "What does not cease will succumb, at last, to temptation. [This will create Grail influence instead of Heart.]",
 	
 	warmup:30,
@@ -137,7 +137,7 @@
 	requirements: {influence:2, lantern:1,forge:-1,moth:-1,knock-1},
 	effects:{project_influence_upgrade_lantern:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "There is a proverb among the practitioners of the invisible arts: 'Glory visits the house without walls.' I would like to know about glory.",
 	
 	warmup:30,
@@ -150,7 +150,7 @@
 	requirements: {influence:2, lantern:1,forge:1},
 	effects:{project_influence_subvert_lanterntoforge:1},
 
-	linked: [{id: "studyresearchtick",chance:100}],
+	linked: [{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "The magus Julian Coseley claims the Forge of Days split the Sun. Perhaps he was right. [This will create Forge influence instead of Lantern.]",
 	
 	warmup:30,
@@ -164,7 +164,7 @@
 	effects:{project_influence_upgrade_moth:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "When breath is black at the glass, when mist tautens the skin, when woods walk in winter, we hear these words.",
 	
 	warmup:30,
@@ -179,7 +179,7 @@
 	effects:{project_influence_subvert_mothtolantern:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "The Glory is a question, and the Moth always answers, Yes. [This will create Lantern influence instead of Moth.]",
 	
 	warmup:30,
@@ -188,13 +188,13 @@
 	
 				{
 	id: "studywinterinfluence",
-	label: "Find the Quietest Places",
+	label: "Deepen the Silence",
 	actionId: "xstudy",
 	requirements: {influence:2, winter:1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_winter:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "These are the words which chill the air and drink the colour of my skin.",
 	
 	warmup:30,
@@ -208,7 +208,7 @@
 	effects:{project_influence_subvert_wintertoheart:1},
 
 	linked: [
-	{id: "studyresearchtick",chance:100}],
+	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "Even in the snow, in the silence, in the white without colours, life will never quite cease. [This will create Heart influence instead of Winter.]",
 	
 	warmup:30,
@@ -216,7 +216,7 @@
 	},
 
 					{
-	id: "studyresearchtick",
+	id: "studyinfluence_effectproject",
 	comments: "The influence 2 requirement means this is only available when someone has paired two influence fragments with an earlier recipe. This routes to opportunities to increase Insight.",
 	label: "Promising Research",
 	actionId: "xstudy",
@@ -225,159 +225,6 @@
 	description: ".",
 	warmup:30,
 	linked:[
-	{id: "studyresearchearlyconclusion",chance:100},
-	{id: "studyresearchneedsreason",chance:50},
-	{id: "studyresearchneedserudition",chance:50},
-	{id: "studyresearchneedsglimmering",chance:100}]
-	},
-			{
-	id: "studyresearchneedsreason",
-	label: "Confusion's Shadow",
-	actionId: "xstudy",
-	requirements: {},
-	effects: {},
-	slots:[{id:"Reason",required: {reason:1}, greedy:true}],
-	alternativerecipes: [
-	{id: "studyresearchreasonsuccess",chance:100}],
-	startdescription: "Confusion shrouds the path. I must use more of my Reason.",
-	description: "I need to use my Reason to help my research.",
-	warmup:30,
-	craftable: false,
-		linked: [{id:"studyresearchconclusion",chance:100}]
-	},
-				{
-	id: "studyresearchreasonsuccess",
-	label: "The Intellect's Light!",
-	actionId: "xstudy",
-	requirements: {reason:1},
-	effects: {insight:1},
-	craftable: false,
-	startdescription: "The task occupies ever more of my attention. But my efforts are paying off. [Gained Insight.].",
-	linked: [{id:"studyresearchtick",chance:100}],
-	aspects: {fatiguing:1}
-	},
-		{
-	id: "studyresearchneedserudition",
-	label: "The Pieces of the Puzzle",
-	actionId: "xstudy",
-	requirements: {},
-	effects: {},
-	slots:[{id:"Erudition",required: {erudition:1},consumes:true,greedy:true}],
-	alternativerecipes: [
-	{id: "studyresearcheruditionsuccess",chance:100}],
-	startdescription: "My research needs Erudition.",
-	description: "My research needs Erudition.",
-	warmup:30,
-	craftable: false,
-		linked: [{id:"studyresearchconclusion",chance:100}]
-	},
-				{
-	id: "studyresearcheruditionsuccess",
-	label: "The Pieces Fit!",
-	actionId: "xstudy",
-	requirements: {erudition:1},
-	effects: {insight:1},
-	craftable: false,
-	startdescription: "Knowledge breeds knowledge. [Gained Insight.]",
-	linked: [{id:"studyresearchtick",chance:100}]
-	},
-		{
-	id: "studyresearchneedsglimmering",
-	label: "The Gates of Intuition",
-	actionId: "xstudy",
-	requirements: {},
-	effects: {},
-	slots:[{id:"Glimmering",required: {glimmering:1},consumes:true,greedy:true}],
-	alternativerecipes: [
-	{id: "studyresearchglimmeringsuccess",chance:100}],
-	startdescription: "My research needs a Glimmering. ",
-	description: ".",
-	warmup:30,
-	craftable: false,
-	linked: [{id:"studyresearchconclusion",chance:100}]
-	},
-			{
-	id: "studyresearchglimmeringsuccess",
-	label: "The Gates of Intuition are opened!",
-	actionId: "xstudy",
-	requirements: {glimmering:1},
-	effects: {insight:1},
-	startdescription: "Sometimes, Insights are found in unexpected places. [Gained Insight.]",
-	craftable: false,
-	linked: [{id:"studyresearchtick",chance:100}]
-	},
-	{id: "studyresearchearlyconclusion",
-	actionId: "xstudy",
-	comments: "this is a passthrough / router for if Insight reaches 3,which routes directly to the conclusion",
-	requirements: {insight: 3},
-	alternativerecipes: [{id: "studyresearchconclusion",chance:100}]
-	},
-	{id: "studyresearchconclusion",
-	actionId: "xstudy",
-	comments: "this is a passthrough / router which the player sees if they don't satisfy a research requirement.",
-	alternativerecipes: [
-	{id: "studyresearchmaxinsight",chance:100},
-	{id: "studyresearchmoderateinsight",chance:100},
-	{id: "studyresearchminimalinsight",chance:100},
-	{id: "studyresearchconsolation",chance:100},
-	]
-	},
-	
-						{
-	id: "studyresearchmaxinsight",
-	label: "Research complete, max insight",
-		alternativerecipes: [
-	{id: "studyresearchsuccess",chance:100}],
-	actionId: "xstudy",
-	requirements: {insight:3},
-	effects: {},
-	startdescription: "BEGIN studyresearchmaxinsight",
-	description: "COMPLETE studyresearchmaxinsight",
-	warmup:0,
-	comments: "This is currently a pass-through only; including for consistency.",
-	},
-					{
-	id: "studyresearchmoderateinsight",
-	label: "Research complete, some insight",
-		alternativerecipes: [
-	{id: "studyresearchsuccess",chance:70},
-	{id: "studyresearchconsolation",chance:100}],
-	actionId: "xstudy",
-	requirements: {insight:2},
-	effects: {},
-	startdescription: "BEGIN studyresearchsomeinsight",
-	description: "COMPLETE studyresearchsomeinsight",
-	warmup:0
-	},
-						{
-	id: "studyresearchminimalinsight",
-	label: "Research complete, minimal insight",
-	actionId: "xstudy",
-	requirements: {insight:1},
-			alternativerecipes: [
-	{id: "studyresearchsuccess",chance:30},
-	{id: "studyresearchconsolation",chance:100}],
-	requirements: {},
-	effects: {},
-	startdescription: "BEGIN studyresearchnoinsight",
-	description: "COMPLETE studyresearchnoinsight",
-	warmup:0,
-	},
-							{
-	id: "studyresearchsuccess",
-	label: "Success!",
-	actionId: "xstudy",
-	requirements: {},
-	aspects: {restore:1},
-	effects: {insight:-100},
-	startdescription: ".",
-	description: "I've learnt something new.",
-	warmup:0,
-	craftable: false,
-	linked: [
-	
-
-	
 		{id:"studyproject_influence_upgrade_edge",chance:100},		
 		{id:"studyproject_influence_upgrade_forge",chance:100},		
 		{id:"studyproject_influence_upgrade_grail",chance:100},		
@@ -403,71 +250,64 @@
 	]
 	},
 	{id:"studyproject_influence_upgrade_edge",
-	label:"The influence of the Knife",
+	label:"An Intenser Opposition",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_edge:1},
 	effects:{edge:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the influence of the Knife, which we call by its aspect, Edge."	
+	description:""	
 	},
 
 	
 
 			{id:"studyproject_influence_upgrade_forge",
-	label:"The influence that Burns",
+	label:"A Greater Heat",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_forge:1},
 	effects:{forge:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the influence that Burns, which we call by its aspect, Forge."	
+	description:""	
 	},
 			{id:"studyproject_influence_upgrade_grail",
-	label:"The Succulent influence",
+	label:"A More Potent Appetite",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_grail:1},
 	effects:{grail:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the Succulent influence, which we call by its aspect, Grail."	
+		description:""	
 	},
 			{id:"studyproject_influence_upgrade_heart",
-	label:"The influence Unceasing",
+	label:"The Rhythms Unceasing",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_heart:1},
 	effects:{heart:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the influence Unceasing, which we call by its aspect, Heart."	
+		description:""	
 	},
 			{id:"studyproject_influence_upgrade_lantern",
-	label:"The Glorious influence",
+	label:"Luminosities Aligned",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_lantern:1},
 	effects:{lantern:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the Glorious influence, which we call by its aspect, Lantern."	
+		description:""		
 	},
 			{id:"studyproject_influence_upgrade_moth",
-	label:"The influence of the Wood",
+	label:"Closer, Closer",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_moth:1},
 	effects:{moth:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the influence of the Wood, which we call by its aspect, Moth."	
+		description:""	
 	},
-			{id:"studyproject_influence_upgrade_secrethistories",
-	label:"The Secret Histories",
-	actionId:"xstudy",
-	requirements:{project_influence_upgrade_secrethistories:1},
-	effects:{secrethistories:-1},
-	aspects:{upgradeinfluence:1},
-	description:"I've increased my knowledge of the secret histories behind the one we know."	
-	},
+
 			{id:"studyproject_influence_upgrade_winter",
-	label:"The Ragged influence",
+	label:"A Silent Place",
 	actionId:"xstudy",
 	requirements:{project_influence_upgrade_winter:1},
 	effects:{winter:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've increased my mastery of the Ragged influence, which we call by its aspect, Winter."	
+		description:""	
 	},
 
 
@@ -478,7 +318,7 @@
 	requirements:{project_influence_subvert_edgetowinter:1},
 	effects:{edge:-1},
 	aspects:{upgradeinfluence:1},
-	description:"Patience defeats strength. I've subverted my Edge influence to Winter."	
+	description:"Patience defeats strength."	
 	},
 	
 			{id:"studyproject_influence_subvert_forgetoedge",
@@ -487,7 +327,7 @@
 	requirements:{project_influence_subvert_forgetoedge:1},
 	effects:{forge:-1},
 	aspects:{upgradeinfluence:1},
-	description:"I've shattered what I believed before. Thus have I subverted my Forge influence to Edge."	
+	description:"I've shattered what was shaped."	
 	},
 			{id:"studyproject_influence_subvert_grailtomoth",
 	label:"Hunger is Folly",
@@ -495,7 +335,7 @@
 	requirements:{project_influence_subvert_grailtomoth:1},
 	effects:{grail:-1},
 	aspects:{upgradeinfluence:1},
-	description:"Even the Red Grail falls prey to the buzzing in the brain. I've subverted my Grail influence to Moth."	
+	description:"Even the Red Grail falls prey to the buzzing in the brain."	
 	},
 			{id:"studyproject_influence_subvert_hearttograil",
 	label:"What Does Not Cease Must Eventually Yield",
@@ -503,7 +343,7 @@
 	requirements:{project_influence_subvert_hearttograil:1},
 	effects:{heart:-1},
 	aspects:{upgradeinfluence:1},
-	description:"All that moves must succumb to hunger. I've subverted my Heart influence to Grail."	
+	description:"All that moves must succumb to hunger."	
 	},
 			{id:"studyproject_influence_subvert_lanterntoforge",
 	label:"Sunset at Noon",
@@ -511,7 +351,7 @@
 	requirements:{project_influence_subvert_lanterntoforge:1},
 	effects:{lantern:-1},
 	aspects:{upgradeinfluence:1},
-	description:"There are arts in Forge which may split even the sun. I've subverted my Lantern influence to Forge."	
+	description:"Light yields to Heat."	
 	},
 			{id:"studyproject_influence_subvert_mothtolantern",
 	label:"The Light Above",
@@ -519,7 +359,7 @@
 	requirements:{project_influence_subvert_mothtolantern:1},
 	effects:{moth:-1},
 	aspects:{upgradeinfluence:1},
-	description:"The Glory is a question, and Moth always answers Yes. I've subverted my Moth influence to Lantern."	
+	description:"The Glory is a question, and Moth always answers Yes."	
 	},
 
 			{id:"studyproject_influence_subvert_wintertoheart",
@@ -528,7 +368,7 @@
 	requirements:{project_influence_subvert_wintertoheart:1},
 	effects:{winter:-1},
 	aspects:{upgradeinfluence:1},
-	description:"Winter's coming must yield at last to spring. I've subverted my Winter influence to Heart."	
+	description:"Winter's coming must yield at last to spring."	
 	},
 	
 				{id:"studyproject_influence_upgrade_subvert_knock",
@@ -537,7 +377,7 @@
 	requirements:{project_influence_upgrade_subvert_knock:1},
 	effects:{edge:-1,forge:-1,grail:-1,heart:-1,lantern:-1,moth:-1,winter:-1},
 	aspects:{upgradeinfluence:1},
-	description:"When we open a thing, then we learn its nature. I've deepened my understanding of the influence that Opens, which we call by its aspect, Knock.",	
+	description:"When a thing is opened, it is no longer what it was.",	
 	linked:[{id:"studyproject_influence_upgrade_subvert_knock_remove_spare_knock",chance:100}]
 	},
 	{id:"studyproject_influence_upgrade_subvert_knock_remove_spare_knock",
