@@ -88,11 +88,29 @@
 		warmup: 60,
 		slots: [{id:"Thoughts",required: {dread: 1,fascination:1,fleeting:1},greedy:true,noanim:true}],
         craftable: false,
+		alternativerecipes:[{id:"visionswarning",chance:100}],
 		linked:[{id:"visionsabate",chance:100},
 		{id:"visionsabatefleeting",chance:100},
 		{id:"visionsdeath",chance:100},
-		{id:"visionsactive",chance:100}]
+		{id:"visionsactive",chance:100}		
+		]
 	},
+	
+			{  id: "visionswarning",
+        label: "I Am Seeing Things!",
+        actionId: "visions",
+		requirements: {fascination: 2,dread:-1,fleeting:-1},
+		startdescription: "The world is dangerously bright. [You can defeat Visions with Dread or a Fleeting Memory; otherwise, you will lose yourself completely at Fascination 3.]",
+		description: ".",
+		comments: "This exists specifically for the burn image at 2 Fascination.",
+		burnimage: "visions",
+		linked:[{id:"visionsabate",chance:100},
+		{id:"visionsabatefleeting",chance:100},
+		{id:"visionsdeath",chance:100},
+		{id:"visionsactive",chance:100}		
+		]
+		},
+	
 	   {
         id: "visionsdeath",
         label: "Help Me - ",
