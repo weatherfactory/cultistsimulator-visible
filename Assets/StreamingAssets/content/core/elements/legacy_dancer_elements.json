@@ -14,7 +14,7 @@
 	label: "A Contract at the Gaiety: Suspended",
 		description: "I've missed too many performances. If I plead convincingly enough, I might get my job back.",
 	aspects: {job:1},
-	lifetime:120,
+	lifetime:300,
 	xtriggers:{plead:legacydancerjob},
 		slots:[{id:"passion",label:"Passion",actionId:"work",required:{passion:1}}]
 },
