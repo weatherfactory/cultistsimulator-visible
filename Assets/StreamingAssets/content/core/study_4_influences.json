@@ -1,7 +1,7 @@
  {"recipes": [
 		{
-	id: "studyknockinfluence",
-	label: "Study the influence which Opens",
+	id: "studyugradeknockinfluence",
+	label: "Accelerate Fractures",
 	actionId: "xstudy",
 	requirements: {influence:2, knock:1},
 	effects:{project_influence_upgrade_subvert_knock:1},
@@ -16,7 +16,7 @@
 
 	{
 	id: "studyupgradeinfluence_edge",
-	label: "Study the influence of the Knife",
+	label: "Find the Moment of Intensest Opposition",
 	actionId: "xstudy",
 	requirements: {influence:2, edge:1,winter:-1,forge:-1,knock-1},
 	effects: {project_influence_upgrade_edge:1},
@@ -29,7 +29,7 @@
 	},
 		{
 	id: "studysubvertinfluence_edgetowinter",
-	label: "Subvert the influence of the Knife",
+	label: "Subvert Edge Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, edge:1,winter:1},
 	effects: {project_influence_subvert_edgetowinter:1},
@@ -43,7 +43,7 @@
 
 	{
 	id: "studyforgeinfluence",
-	label: "Study the influence which Burns",
+	label: "Build a Greater Heat",
 	actionId: "xstudy",
 	requirements: {influence:2, forge:1,edge:-1,lantern:-1,knock-1},
 	effects:{project_influence_upgrade_forge:1},
@@ -58,7 +58,7 @@
 	
 		{
 	id: "studysubvertinfluence_forgetoedge",
-	label: "Subvert the influence which Burns",
+	label: "Subvert Forge Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, forge:1,edge:1},
 	effects:{project_influence_subvert_forgetoedge:1},
@@ -73,7 +73,7 @@
 	
 			{
 	id: "studygrailinfluence",
-	label: "Study the Succulent influence",
+	label: "Unite Appetites",
 	actionId: "xstudy",
 	requirements: {influence:2, grail:1,moth:-1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_grail:1},
@@ -88,7 +88,7 @@
 		
 			{
 	id: "studysubvertinfluence_grailtomoth",
-	label: "Subvert the Succulent influence",
+	label: "Subvert Grail Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, grail:1,moth:1},
 	effects:{project_influence_subvert_grailtomoth:1},
@@ -103,7 +103,7 @@
 	
 				{
 	id: "studyheartinfluence",
-	label: "Study the influence Unceasing",
+	label: "Interweave the Rhythms of Life",
 	actionId: "xstudy",
 	requirements: {influence:2, heart:1,grail:-1,winter:-1,knock-1},
 	effects:{project_influence_upgrade_heart:1},
@@ -117,7 +117,7 @@
 	
 					{
 	id: "studysubvertinfluence_hearttograil",
-	label: "Subvert the influence Unceasing",
+	label: "Subvert Heart Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, heart:1,grail:1},
 	effects:{project_influence_subvert_hearttograil:1},
@@ -132,7 +132,7 @@
 
 		{
 	id: "studylanterninfluence",
-	label: "Study the Glorious influence",
+	label: "Align Luminosities",
 	actionId: "xstudy",
 	requirements: {influence:2, lantern:1,forge:-1,moth:-1,knock-1},
 	effects:{project_influence_upgrade_lantern:1},
@@ -145,7 +145,7 @@
 	},
 			{
 	id: "studysubvertinfluence_lanterntoforge",
-	label: "Subvert the Glorious influence",
+	label: "Subvert Lantern Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, lantern:1,forge:1},
 	effects:{project_influence_subvert_lanterntoforge:1},
@@ -158,7 +158,7 @@
 	},
 			{
 	id: "studymothinfluence",
-	label: "Study the influence of the Wood",
+	label: "Embrace the Possibilities of Peril",
 	actionId: "xstudy",
 	requirements: {influence:2, moth:1,lantern:-1,grail:-1,knock-1},
 	effects:{project_influence_upgrade_moth:1},
@@ -173,7 +173,7 @@
 	
 				{
 	id: "studysubvertinfluence_mothtolantern",
-	label: "Subvert the influence of the Wood",
+	label: "Subvert Moth Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, moth:1,lantern:1},
 	effects:{project_influence_subvert_mothtolantern:1},
@@ -187,22 +187,8 @@
 	},
 	
 				{
-	id: "studysecrethistoriesinfluence",
-	label: "Study the Histories",
-	actionId: "xstudy",
-	requirements: {influence:2, secrethistories:1},
-	effects:{project_influence_upgrade_secrethistories:1},
-
-	linked: [
-	{id: "studyresearchtick",chance:100}],
-	startdescription: "History is less certain than we are taught. I can learn from the study of its blurred edges.",
-	
-	warmup:30,
-	craftable: true
-	},
-				{
 	id: "studywinterinfluence",
-	label: "Study the Ragged influence",
+	label: "Find the Quietest Places",
 	actionId: "xstudy",
 	requirements: {influence:2, winter:1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_winter:1},
@@ -216,7 +202,7 @@
 	},
 			{
 	id: "subvertwinterinfluence",
-	label: "Subvert the Ragged influence",
+	label: "Subvert Winter Influence",
 	actionId: "xstudy",
 	requirements: {influence:2, winter:1,heart:1},
 	effects:{project_influence_subvert_wintertoheart:1},
