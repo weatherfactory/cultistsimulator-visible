@@ -80,6 +80,11 @@ namespace Assets.Core.Entities
             foreach (var c in StartingCards)
             { 
                 var e = compendium.GetElementById(c);
+                if (e == null)
+                {
+                    throw new ApplicationException("Can't find element " + c + " from deck id " + _id);
+                }
+
                 if (!string.IsNullOrEmpty(e.UniquenessGroup))
                 {
                     if (!_uniquenessGroupsWithCards.ContainsKey(e.UniquenessGroup))
