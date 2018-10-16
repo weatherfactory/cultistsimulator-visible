@@ -26,8 +26,9 @@ return;
 #elif UNITY_WEBGL
                 return;
 #else
-                if (Application.platform == RuntimePlatform.OSXPlayer)
-                    return;
+              //  if (Application.platform == RuntimePlatform.OSXPlayer)
+                //    return;
+                //we're integrating with GOG again
 
                 _gogClientProvider = new GOGStorefrontProvider();
                return;

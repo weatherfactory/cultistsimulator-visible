@@ -171,7 +171,7 @@
 		        id: "connie_c",
             label: "Connie, a Disciple",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,edge:5},
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:5,grail:4},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_edge:connie_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_c},
@@ -183,7 +183,7 @@
 		        id: "connie_d",
             label: "Connie, a Conqueress",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,edge:10},
+            {mortal:1,follower:1, disciple:1,exalted:1,edge:10,grail:7},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:connie_r_d},
@@ -431,7 +431,7 @@
 		        id: "natalia_c",
             label: "Natalia, a Disciple",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,lantern:5},
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:5,forge:4},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_lantern:natalia_d,derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_c},
@@ -442,7 +442,7 @@
 		        id: "natalia_d",
             label: "Natalia, a Sage",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10},
+            {mortal:1,follower:1, disciple:1,exalted:1,lantern:10,forge:7},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse, derangemortal:lunatic,capturefollower:genericprisonerf,rebellion:natalia_r_d},
@@ -704,7 +704,7 @@
 		        id: "spencer_c",
             label: "Spencer, a Disciple",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,knock:5},
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:5,moth:4},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_lantern:spencer_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_c},
@@ -716,7 +716,7 @@
 		        id: "spencer_d",
             label: "Spencer, a Herald",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,knock:10},
+            {mortal:1,follower:1, disciple:1,exalted:1,knock:10,moth:7},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:spencer_r_d},
@@ -978,7 +978,7 @@
 		        id: "zachary_c",
             label: "Zachary, a Disciple",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,knock:5},
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:5,lantern:4},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,promotionto_d_winter:zachary_d,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_c},
@@ -988,9 +988,9 @@
 				
 						{
 		        id: "zachary_d",
-            label: "Zachary, an End",
+            label: "Zachary, a Conclusion",
             aspects:
-            {mortal:1,follower:1, disciple:1,exalted:1,winter:10},
+            {mortal:1,follower:1, disciple:1,exalted:1,winter:10,lantern:7},
             description: "[Not yet.]",
 			animFrames: 1,
 			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:genericprisonerm,rebellion:zachary_r_d},

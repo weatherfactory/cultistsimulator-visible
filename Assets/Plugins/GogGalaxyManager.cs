@@ -55,11 +55,12 @@ public class GogGalaxyManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Application.platform == RuntimePlatform.OSXPlayer)
-        {
-            Debug.Log("Not currently integrating with Galaxy on OSX");
-            return;
-        }
+        //we're integrating with GOG again
+        //if (Application.platform == RuntimePlatform.OSXPlayer)
+        //{
+        //    Debug.Log("Not currently integrating with Galaxy on OSX");
+        //    return;
+        //}
         if (singleton != null)
         {
             Destroy(gameObject);
