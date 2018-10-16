@@ -46,7 +46,7 @@ namespace Assets.TabletopUi.Scripts
 
 		protected DrivenRectTransformTracker m_Tracker;
 
-		void OnEnable() {
+		new void OnEnable() {
 			UpdateTracker();
 			UpdateTargetSize();
 		}
@@ -63,7 +63,7 @@ namespace Assets.TabletopUi.Scripts
 				m_Tracker.Add(this, m_sizeTarget, DrivenTransformProperties.SizeDeltaY);
 		}
 
-		void OnDisable() {
+		new void OnDisable() {
 			m_Tracker.Clear();
 		}
 
