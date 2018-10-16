@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class RestartButton : MonoBehaviour
 {
-
+#pragma warning disable 649
     [SerializeField] private TextMeshProUGUI ButtonText;
-
+#pragma warning restore 649
     private bool clickedOnce = true;
 
     public void Awake()

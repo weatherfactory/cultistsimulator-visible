@@ -9,9 +9,9 @@ using Assets.TabletopUi.Scripts.Infrastructure;
 public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler  {
 	
 	ScrollRect scrollRect;
-	// Vector4 order is Top, Right, Bottom, Left
-
-	[Range(0.01f, 0.49f)]
+    // Vector4 order is Top, Right, Bottom, Left
+#pragma warning disable 649
+    [Range(0.01f, 0.49f)]
 	[SerializeField] float edgeAreaSize = 0.1f;
 	[SerializeField] Vector4 edgePadding;
 
@@ -20,8 +20,8 @@ public class ScrollRectMouseMover : MonoBehaviour, IBeginDragHandler, IEndDragHa
 	[SerializeField] float maxVelocity = 2000f;
 
 	[SerializeField] float timeout = 0.1f;
-
-	bool pointerInRect;
+#pragma warning restore 649
+    bool pointerInRect;
 	float pointerEnterEdgeTime = 0f;
 	bool isManualDragActive;
 	bool blockScrolling;

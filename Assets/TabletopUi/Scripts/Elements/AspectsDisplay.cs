@@ -57,7 +57,7 @@ namespace Assets.TabletopUi.Scripts
 
         public virtual void ClearCurrentlyDisplayedAspects() {
             foreach (ElementFrame a in GetComponentsInChildren<ElementFrame>())
-                DestroyObject(a.gameObject);
+                Object.Destroy(a.gameObject);
         }
 
     }

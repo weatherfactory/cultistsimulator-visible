@@ -7,13 +7,13 @@ using Assets.CS.TabletopUI.Interfaces;
 
 namespace Assets.CS.TabletopUI {
     public class SituationTokenDumpButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-
+#pragma warning disable 649
         [SerializeField] Image buttonImg;
         [SerializeField] Image iconImage;
 
         [SerializeField] Color buttonColorDefault;
         [SerializeField] Color buttonColorHover;
-
+#pragma warning restore 649
         bool isHovering;
 
         public void Show(bool show) {

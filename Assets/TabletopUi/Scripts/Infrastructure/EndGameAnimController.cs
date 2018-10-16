@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.TabletopUi.Scripts.Infrastructure {
     public class EndGameAnimController : MonoBehaviour {
-
+#pragma warning disable 649
         [SerializeField] Vector2 targetPosOffset = new Vector2(0f, -150f);
 
         [Header("Controllers")]
@@ -20,7 +20,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure {
         [SerializeField] private ScrollRect tableScroll;
         [SerializeField] private Canvas menuCanvas;
         [SerializeField] private Image fadeOverlay;
-
+#pragma warning restore 649
         bool isEnding = false;
 
         public void Initialise() {

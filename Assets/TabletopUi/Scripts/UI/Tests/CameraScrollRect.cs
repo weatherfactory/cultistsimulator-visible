@@ -14,7 +14,7 @@ namespace UnityEngine.UI {
             Elastic, // Restricted but flexible -- can go past the edges, but springs back in place
             Clamped, // Restricted movement where it's not possible to go past the edges
         }
-
+#pragma warning disable 649
         [Serializable]
         public class CameraScrollRectEvent : UnityEvent<Vector2> { }
 
@@ -60,7 +60,7 @@ namespace UnityEngine.UI {
         [SerializeField]
         private CameraScrollRectEvent m_OnValueChanged = new CameraScrollRectEvent();
         public CameraScrollRectEvent onValueChanged { get { return m_OnValueChanged; } set { m_OnValueChanged = value; } }
-
+#pragma warning restore 649
         // The offset from handle position to mouse down position
         private Vector2 m_PointerStartLocalCursor = Vector2.zero;
         protected Vector2 m_ContentStartPosition = Vector2.zero;

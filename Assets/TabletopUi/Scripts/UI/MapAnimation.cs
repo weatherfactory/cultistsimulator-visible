@@ -16,11 +16,11 @@ namespace Assets.CS.TabletopUI {
 
         bool isAnimating;
         const string uvTexName = "_FadeTex";
-
+#pragma warning disable 649
         [SerializeField] Image background;
         [SerializeField] ParticleSystem particles;
         [SerializeField] CanvasZoomTest zoom;
-
+#pragma warning restore 649
         float particleTargetRadius;
 
         public void Init() {

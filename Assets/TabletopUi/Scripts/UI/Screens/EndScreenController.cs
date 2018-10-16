@@ -21,8 +21,9 @@ namespace Assets.CS.TabletopUI {
 
         const float durationFadeIn = 1f;
         const float durationFadeOut = 2f;
-
+#pragma warning disable 649
         [SerializeField] private AudioSource audioSource;
+#pragma warning restore 649
         protected AudioClip endingMusic;
         
 

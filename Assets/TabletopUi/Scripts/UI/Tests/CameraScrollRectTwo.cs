@@ -12,10 +12,10 @@ public class CameraScrollRectTwo : UIBehaviour, IBeginDragHandler, IEndDragHandl
     }
 
 
+#pragma warning disable 649
     [SerializeField] private Camera m_ScrollCamera;
     [SerializeField] private Vector2 scrollOffset;
     [SerializeField] private float scrollSpeed;
-
     [SerializeField] private MovementType movementType = MovementType.Elastic;
 
     Vector3 startCamPos;
@@ -30,6 +30,7 @@ public class CameraScrollRectTwo : UIBehaviour, IBeginDragHandler, IEndDragHandl
     Bounds viewRectBounds;
 
     [SerializeField] private RectTransform dragRect;
+#pragma warning restore 649
 
     protected override void Start() {
         base.Start();

@@ -12,10 +12,11 @@ using UnityEngine;
 
 public class BabelfishFilter : MonoBehaviour
 {
-	[Tooltip("Language that this object's children should be visible in")]
+#pragma warning disable 649
+    [Tooltip("Language that this object's children should be visible in")]
     [SerializeField] private LanguageManager.eLanguage			language;
-
-    private void Awake()
+#pragma warning restore 649
+    private void Awake()
     {
     }
 

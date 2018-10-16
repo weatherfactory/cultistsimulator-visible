@@ -15,9 +15,10 @@ using Assets.TabletopUi.Scripts.Services;
 using Noon;
 
 public class TabletopTokenContainer : AbstractTokenContainer {
-
+#pragma warning disable 649
     [SerializeField] TabletopBackground _background;
     [SerializeField] protected CanvasGroupFader canvasGroupFader;
+    #pragma warning disable 649
 
     protected Choreographer choreo;
 

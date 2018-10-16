@@ -338,7 +338,7 @@ namespace Assets.CS.TabletopUI {
         }
 
         public bool Retire() {
-            DestroyObject(gameObject);
+          UnityEngine.Object.Destroy(gameObject);
 
             if (Defunct)
                 return false;

@@ -9,11 +9,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 {
     public class SpeedController:MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private PauseButton pauseButton;
         [SerializeField] private Button normalSpeedButton;
         [SerializeField] private Button fastForwardButton;
 		[SerializeField] private ScrollRectMouseMover scrollRectMover;
-
+#pragma warning restore 649
         private bool isLocked = false;
         private bool lastPauseState;
         private readonly Color activeSpeedColor = new Color32(147, 225, 239, 255);

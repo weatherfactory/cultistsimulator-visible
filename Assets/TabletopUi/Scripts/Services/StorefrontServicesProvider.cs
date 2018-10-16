@@ -11,7 +11,9 @@ namespace Assets.TabletopUi.Scripts.Services
    public class StorefrontServicesProvider
    {
        private IStoreFrontClientProvider _steamClientProvider;
-       private IStoreFrontClientProvider _gogClientProvider;
+#pragma warning disable 649
+       private IStoreFrontClientProvider _gogClientProvider; //it is assigned, it's just in a compile block below
+#pragma warning restore 649
         public void InitialiseForStorefrontClientType(StoreClient clientType)
         {
             if (clientType == StoreClient.Steam)

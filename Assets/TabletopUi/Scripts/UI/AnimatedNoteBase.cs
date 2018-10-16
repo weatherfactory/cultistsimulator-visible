@@ -6,11 +6,11 @@ public abstract class AnimatedNoteBase : MonoBehaviour {
 
     protected delegate void AnimResponse();
     protected enum AnimType { None, MoveRight, MoveLeft }
-
+#pragma warning disable 649
     [SerializeField] Animation anim;
 	[SerializeField] string soundIn;
 	[SerializeField] string soundOut;
-
+#pragma warning restore 649
     private bool isBusy;
 
     protected virtual void OnDisable() {

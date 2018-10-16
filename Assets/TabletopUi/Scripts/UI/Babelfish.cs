@@ -14,15 +14,15 @@ public class Babelfish : MonoBehaviour
 {
 	[Tooltip("Strings.csv label\n(if null then TextMeshPro string is left alone)")]
     [SerializeField] private string						locLabel;
-
-	[Tooltip("Which font set should this text use?\nFont sets assigned in LanguageManager")]
+#pragma warning disable 649
+    [Tooltip("Which font set should this text use?\nFont sets assigned in LanguageManager")]
 	[SerializeField] private LanguageManager.eFontStyle fontStyle;
 
-	[Tooltip("Force this string to use the font for a specific language (empty by default)")]
+    [Tooltip("Force this string to use the font for a specific language (empty by default)")]
     [SerializeField] private string						forceFontLanguage;
-
+#pragma warning restore 649
     private TMP_Text tmpText;       // text mesh pro text object.
-	private bool initComplete = false;
+	//private bool initComplete = false; //doesn't seem to be used, throwing warning; commenting out in case it's used in some unexpected Unity way
 
     private void Awake()
     {
