@@ -208,7 +208,7 @@ public class DebugTools : MonoBehaviour,IRollOverride
         rollsQueued.text = string.Empty;
         foreach(var i in QueuedRollsList)
         { 
-            if (rollsQueued.text=="")
+            if (rollsQueued.text!="")
                 rollsQueued.text += ", ";
 
             rollsQueued.text += i.ToString();
