@@ -165,14 +165,16 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 	label: "A Generous Private Income",
 	description: "I am well provided for.",
 	aspects: {benign:1},
-		xtriggers: {decline: investmentsjobb}
+		xtriggers: {decline: investmentsjobb},
+	noartneeded:true
 	
 },
 			{id: "investmentsjobb",
 	label: "A Substantial Private Income",
 		description: "Enough of an income to live in comfort.",
 	aspects: {benign:1},
-	xtriggers: {decline: investmentsjoba}
+	xtriggers: {decline: investmentsjoba},
+	noartneeded:true
 	
 },
 			{id: "investmentsjoba",
@@ -180,7 +182,8 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 	label: "A Modest Private Income",
 	description: "My investments provide more than enough to live on.", 
 	aspects: {benign:1},
-	xtriggers: {decline: jumble}
+	xtriggers: {decline: jumble},
+	noartneeded:true
 	
 },
 
@@ -188,21 +191,24 @@ xtriggers: {endannoyance:gloverandglover_difficultbossa_gone_job,careeradvanceme
 		{id: "mediumjob",
 		aspects:{job:1},
 	label: "A Reputation as a Medium",
-	description: ""
+	description: "",
+	noartneeded:true
 	
 },
 
 		{id: "auctioneerjob",
 		aspects:{job:1},
 	label: "A Position at Oriflamme's Auction House",
-	description: ""
+	description: "",
+	noartneeded:true
 	
 },
 	
 		{id: "priestjob",
 		aspects:{job:1},
 	label: "Priestly Stipend",
-	description: ""
+	description: "",
+	noartneeded:true
 	
 },
 
