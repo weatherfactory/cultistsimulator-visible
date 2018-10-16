@@ -156,7 +156,7 @@ public class ContentImporter
 						throw;
 					}
 
-					Debug.Log("Localising ["+ locFile +"]");
+					NoonUtility.Log("Localising ["+ locFile +"]", VerbosityLevel.SystemChatter);
 
 					// We now have two sets of data which SHOULD match pair for pair - english and translated.
 					// Traverse the dataset copying selected fields into the core data. Add new fields here if they need translating.

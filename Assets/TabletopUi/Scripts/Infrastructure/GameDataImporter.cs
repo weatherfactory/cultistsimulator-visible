@@ -213,7 +213,8 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 					elementStackSpecifications.RemoveAt( n );
 			}
 			float repairTime = Time.timeSinceLevelLoad - startTime;
-			Debug.Log("Repaired " + dupeCount + " duplicates in " + repairTime + "s");
+            if(dupeCount > 0)
+			NoonUtility.Log("Repaired " + dupeCount + " duplicates in " + repairTime + "s",VerbosityLevel.SystemChatter);
 			//
 			// END SAVE REPAIR
 			//

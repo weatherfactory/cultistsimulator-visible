@@ -207,7 +207,7 @@ namespace Assets.CS.TabletopUI {
             var chosenLegacy = CrossSceneState.GetChosenLegacy();
             if (chosenLegacy == null)
             {
-                NoonUtility.Log("No initial Legacy specified");
+                NoonUtility.Log("No initial Legacy specified",VerbosityLevel.Trivia);
                 chosenLegacy = Registry.Retrieve<ICompendium>().GetAllLegacies().First();
                 CrossSceneState.SetChosenLegacy(chosenLegacy);
                 Registry.Retrieve<Character>() .ActiveLegacy = chosenLegacy;

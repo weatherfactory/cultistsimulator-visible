@@ -24,7 +24,7 @@ namespace Assets.CS.TabletopUI {
             if (this.element == element && gameObject.activeSelf && _noTokenDetails == noTokenDetails)
                 return;
 
-            Debug.Log("Position" + (transform as RectTransform).anchoredPosition);
+           // Debug.Log("Position" + (transform as RectTransform).anchoredPosition);
 
             this._noTokenDetails = noTokenDetails;
             this.element = element;
@@ -44,7 +44,7 @@ namespace Assets.CS.TabletopUI {
 			else
 				(transform as RectTransform).anchoredPosition = new Vector2( 0f, -tokenDetailsHeight.sizeDelta.y - 10f);
 
-			Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
+		//	Debug.Log("tokenDetails size : "+ tokenDetailsHeight.sizeDelta.y);
         }
 
         void SetAspect(Element element)

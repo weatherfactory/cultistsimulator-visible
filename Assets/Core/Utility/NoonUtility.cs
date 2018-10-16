@@ -96,6 +96,14 @@ namespace Noon
         public const string MANSUS_DECKID_PREFIX = "mansus_";
         public const string SupportEmail = "support@weatherfactory.biz";
     }
+
+    public enum VerbosityLevel
+    {
+        Essential=1,
+        SystemChatter=8,
+        Trivia=10
+    }
+
     public class NoonUtility
     {
         public static bool UnitTestingMode { get; set; }
@@ -122,6 +130,10 @@ namespace Noon
             else
             Debug.Log(new String('>',verbosityNeeded) + " " + message);
             }
+        }
+        public static void Log(string message, VerbosityLevel verbosityNeeded)
+        {
+            Log(message,Convert.ToInt32(verbosityNeeded));
         }
 
         public static string GetGameSaveLocation()

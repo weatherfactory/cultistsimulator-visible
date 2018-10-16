@@ -85,7 +85,7 @@ public class GogGalaxyManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Galaxy SDK was initialized", this);
+        //Debug.Log("Galaxy SDK was initialized", this);
 
         isInitialized = true;
         }

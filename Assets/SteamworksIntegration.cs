@@ -17,7 +17,7 @@ public class SteamworksIntegration : MonoBehaviour
 	    try
 	    {
 
-	        NoonUtility.Log("Steamworks integration startup.", 1);
+	        NoonUtility.Log("Steamworks integration startup.", 8);
             Facepunch.Steamworks.Config.ForUnity(Application.platform.ToString());
 	        if (Client.Instance == null || !Client.Instance.IsValid)
 	          client= new Facepunch.Steamworks.Client(SteamAppId);
@@ -28,12 +28,12 @@ public class SteamworksIntegration : MonoBehaviour
 
             }
 
-            NoonUtility.Log("Initialised Facepunch Steamworks client", 1);
+            NoonUtility.Log("Initialised Facepunch Steamworks client", VerbosityLevel.SystemChatter);
 
         }
         catch (Exception e)
 	    {
-            NoonUtility.Log("Failed Steamworks integration startup with error " + e.Message + " which is fine if you're not on Steam.",1);
+            NoonUtility.Log("Failed Steamworks integration startup with error " + e.Message + " which is fine if you're not on Steam.", VerbosityLevel.SystemChatter);
 
             NoonUtility.Log(e.StackTrace);
 	    }
@@ -44,7 +44,7 @@ public class SteamworksIntegration : MonoBehaviour
     {
         if (Client.Instance != null)
         {
-            Debug.Log("Shutting down Steamworks client");
+            NoonUtility.Log("Shutting down Steamworks client",VerbosityLevel.SystemChatter);
             Client.Instance.Dispose();
         }
     }
