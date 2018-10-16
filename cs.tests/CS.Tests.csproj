@@ -74,9 +74,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\csunity.csproj">
-      <Project>{d787ece3-ec66-c960-d8cc-f8fba21763a1}</Project>
-      <Name>csunity</Name>
+    <ProjectReference Include="..\Assembly-CSharp.csproj">
+      <Project>{b7cb79b0-d2b1-f4b8-b154-ed66cc9027fb}</Project>
+      <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
