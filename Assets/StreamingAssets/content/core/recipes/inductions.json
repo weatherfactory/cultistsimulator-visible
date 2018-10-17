@@ -55,8 +55,20 @@
         actionId: "dreadinduction",
         effects: {dread:1},
 		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
-        description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something remains, like spiderwebs in the corner of the room.",
-        warmup: 60,
+        description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
+        warmup: 30,
+        craftable: false
+    },
+					{
+        id: "dreadinduction_ifdread",
+        label: "Night Terrors",
+        actionId: "dreadinduction",
+		requirements:{dread:1},
+        effects: {dread:1},
+		comments:"Only triggers if there's already Dread in whatever called this.",
+		startdescription: "I wake in the night. My palms, my face, are beaded with sweat.",
+        description: "Slowly, my clenched fists relax. I'll slide back into sleep. But something will remain, like spiderwebs in the corner of the room.",
+        warmup: 30,
         craftable: false
     },
 	
@@ -67,7 +79,18 @@
         effects: {fascination:1},
 		startdescription: "I have begun to notice colours in the world for which I have no name.",
         description: "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
-        warmup: 60,
+        warmup: 30,
+        craftable: false
+    },
+						{
+        id: "fascinationinduction_iffascination",
+        label: "New Colours",
+        actionId: "fascinationinduction",
+		requirements: {fascination:1},
+        effects: {fascination:1},
+		startdescription: "I have begun to notice colours in the world for which I have no name.",
+        description: "I am seeing things I shouldn't. I know this is dangerous. But it's difficult not to long for it.",
+        warmup: 30,
         craftable: false
     },
 ]
