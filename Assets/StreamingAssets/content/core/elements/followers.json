@@ -5,7 +5,7 @@
             label: "Auclair, an acquaintance",
             aspects:
             {mortal: 1,acquaintance:1,follower_lustenlightenment:1},
-            description: "Auclair has a scholarly aspect and a morbid streak.[You might be able to recruit this acquaintance as a follower.]",
+            description: "Auclair has a scholarly aspect and a morbid streak. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			xtriggers: {recruiting: auclair_b,killmortal:corpse,derangemortal:lunatic,rebellion:auclair_r},
 			uniquenessgroup:"uqauclair"
