@@ -99,21 +99,21 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Formula Fissive",
             aspects:
             {forge:10,lore:1},
-            description: "Break a thing, and you have fragments. Break those fragments, and you have dust. Break the dust, and then break what remains. Here is fire. [Use this in a rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
+            description: "Break a thing, and you have fragments. Break those fragments, and you have dust. Break the dust, and then break what remains. Here is fire. [Use this in a Rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
 			slots:[{id:"with",label:"With",description:"Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentforgee:1,fragmentedgee:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragment},xtriggers:{epiphany:fragmentforgef}
         },
 		{  id: "fragmentforgef",
             label: "Furnace Paean",
             aspects:
             {forge:12,lore:1},
-            description: "This is the hymn the heat sings to the iron. If we imitate it faithfully enough we will parch our lips and crisp our tongue, but O, the rewards. [Use this in a rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
+            description: "This is the hymn the heat sings to the iron. If we imitate it faithfully enough we will parch our lips and crisp our tongue, but O, the rewards. [Use this in a Rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
 			slots:[{id:"with",label:"With",description:"Study with a Forge lore fragment of the same level to upgrade to the next level. Study with Edge lore of the same level to subvert it, and get Edge lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentforgef:1,fragmentedgef:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragment},xtriggers:{epiphany:fragmentforgeg}
         },
 		{ id: "fragmentforgeg",
             label: "Mysteries of Making",
             aspects:
             {forge:14,lore:1},
-            description: "The Forge of Days, the Meniscate and the Madrugad are gods-from-Light. Mercury, silver and gold are the seeds of the Work, and here is their secret doctrine... [Use this in a rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
+            description: "The Forge of Days, the Meniscate and the Madrugad are gods-from-Light. Mercury, silver and gold are the seeds of the Work, and here is their secret doctrine... [Use this in a Rite with a Consecrated Lintel and a little Refulgin - or other resources of equal power - to summon King Crucible.]",
 			slots:[{id:"with",label:"With",description:"Study with Reason to break the lore into lower-level fragments.",required:{reason:1},actionId:"study"}],	
 			unique:true
         },
@@ -191,35 +191,35 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "A Waking Chant",
             aspects:
             {heart: 6,lore:1},
-            description: "Who could hear this and remain unmoved? The sleeping? The dead? The earth and the sky? [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            description: "Who could hear this and remain unmoved? The sleeping? The dead? The earth and the sky? [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentheartc:1,fragmentgrailc:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentheartd}
         },
 		{id: "fragmentheartd",
             label: "Geminate Invocation",
             aspects:
             {heart:8,lore:1},
-            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            description: "The Sister-and-Witch has always been invoked for protection, at crossroads and at moonrise and where the land shelters the sea. [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentheartd:1,fragmentgraild:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmenthearte}
         },
 		{ id: "fragmenthearte",
             label: "Formulae Vigilant",
             aspects:
             {heart:10,lore:1},
-            description: "One who watches does not sleep, one who sleeps watches not. <b>One who watches does not sleep, one who sleeps watches not.</b> [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            description: "One who watches does not sleep, one who sleeps watches not. <b>One who watches does not sleep, one who sleeps watches not.</b> [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmenthearte:1,fragmentgraile:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentheartf}
         },
 		{  id: "fragmentheartf",
             label: "Velvet Charm",
             aspects:
             {heart:12,lore:1},
-            description: "The Velvet always answers 'No', but we can shelter in that 'No' like beasts in the crook of a tree. [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            description: "The Velvet always answers 'No', but we can shelter in that 'No' like beasts in the crook of a tree. [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with a Heart lore fragment of the same level to upgrade to the next level. Study with Grail lore of the same level to subvert it, and get Grail lore instead. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentheartf:1,fragmentgrailf:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentheartg}
         },
 		{ id: "fragmentheartg",
             label: "Unceasing Mysteries",
             aspects:
             {heart:14,lore:1},
-            description: "The Grail ripped the Thunderskin from flesh. The Sister-and-Witch was born from two wombs. The Velvet woke when the Wood-roots tasted blood. The Heart is Blood's Drum, and here is its secret doctrine... [Use this in a rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
+            description: "The Grail ripped the Thunderskin from flesh. The Sister-and-Witch was born from two wombs. The Velvet woke when the Wood-roots tasted blood. The Heart is Blood's Drum, and here is its secret doctrine... [Use this in a Rite with Byzantine Tinct and a Meteoric Bullet - or other resources of equal power - to summon a Percussigant.]",
 			slots:[{id:"with",label:"With",description:"Study with Reason to break the lore into lower-level fragments.",required:{reason:1},actionId:"study"}],	
 			unique:true
         },
@@ -229,7 +229,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "A Locksmith's Secret",
             aspects:
             {knock: 2,lore:1},
-            description: "Sooner or later, every locksmith has the Dream. Now we recite its seven phases... [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "Sooner or later, every locksmith has the Dream. Now we recite its seven phases... [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore.",required:{fragmentedge:1,fragmentforge:1,fragmentgrail:1,fragmentheart:1,fragmentknock:1,fragmentlantern:1,fragmentmoth:1,fragmentwinter:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockb}
         },
 				 {
@@ -237,7 +237,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "An Iguvine Rite",
             aspects:
             {knock: 4,lore:1},
-            description: "Every door in the Mansus requires its sacrifice before it will open. The Iguvine Rites prescribe the manner of the sacrifice. [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "Every door in the Mansus requires its sacrifice before it will open. The Iguvine Rites prescribe the manner of the sacrifice. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgeb:1,fragmentforgeb:1,fragmentgrailb:1,fragmentheartb:1,fragmentknockb:1,fragmentlanternb:1,fragmentmothb:1,fragmentwinterb:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockc}
         },
 						          {
@@ -245,7 +245,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "A Consent of Wounds",
             aspects:
             {knock: 6,lore:1},
-            description: "To open certain Ways, one must first open oneself. This practice outlines that opening, in the name of the Mother of Ants. [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "To open certain Ways, one must first open oneself. This practice outlines that opening, in the name of the Mother of Ants. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgec:1,fragmentforgec:1,fragmentgrailc:1,fragmentheartc:1,fragmentknockc:1,fragmentlanternc:1,fragmentmothc:1,fragmentwinterc:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockd}
         },
 		{
@@ -253,28 +253,28 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Meniscate Invocation",
             aspects:
             {knock:8,lore:1},
-            description: "When the moon's face was wounded, these words appeared. [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "When the moon's face was wounded, these words appeared. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedged:1,fragmentforged:1,fragmentgraild:1,fragmentheartd:1,fragmentknockd:1,fragmentlanternd:1,fragmentmothd:1,fragmentwinterd:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknocke}
         },
 		{		        id: "fragmentknocke",
             label: "Formulae Ophidian",
             aspects:
             {knock:10,lore:1},
-            description: "Serpents are the visitors which may not be denied. [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "Serpents are the visitors which may not be denied. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgee:1,fragmentforgee:1,fragmentgraile:1,fragmenthearte:1,fragmentknocke:1,fragmentlanterne:1,fragmentmothe:1,fragmentwintere:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockf}
         },
 		{  id: "fragmentknockf",
             label: "Liminal Evocation",
             aspects:
             {knock:12,lore:1},
-            description: "One god-who-was-stone remains, and she watches all thresholds. [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "One god-who-was-stone remains, and she watches all thresholds. [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with any lore fragment of the same level (except Secret Histories) to upgrade to the higher level Knock lore. Or study with Reason to break the lore into lower-level fragments.",required:{fragmentedgef:1,fragmentforgef:1,fragmentgrailf:1,fragmentheartf:1,fragmentknockf:1,fragmentlanternf:1,fragmentmothf:1,fragmentwinterf:1,reason:1},actionId:"study"}],xtriggers:{epiphany:fragmentknockg}
         },
 			{id: "fragmentknockg",
             label: "Mysteries of Opening",
             aspects:
             {knock:14,lore:1},
-            description: "The Mother of Ants is the child of two rivers. The Horned-Axe is the last god-from-Stone. The Meniscate was born in the Moon from Light. The Wound and the Threshold and the Revelation are all the Gate's aspects, and here is their secret doctrine... [Nearly every summoning rite requires Knock influence. This lore will provide it.]",
+            description: "The Mother of Ants is the child of two rivers. The Horned-Axe is the last god-from-Stone. The Meniscate was born in the Moon from Light. The Wound and the Threshold and the Revelation are all the Gate's aspects, and here is their secret doctrine... [Nearly every summoning Rite requires Knock influence. This lore will provide it.]",
 			slots:[{id:"with",label:"With",description:"Study with Reason to break the lore into lower-level fragments.",required:{reason:1},actionId:"study"}],	
 			unique:true
         },
@@ -490,7 +490,7 @@ description: "The Colonel has been many things in many ages. He is blind; he is 
             label: "Wolf-Word",
             aspects:
             {winter:14,lore:1},
-            description: "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses the Divided One's hatred.[Speak this to a Hunter, and it might drive them insane on the spot.]",
+            description: "When the Forge is cold and the Glory is dark and the Wood is dust, perhaps the Wolf Divided will rest, but only until it can devour itself. This Word almost expresses the Divided One's hatred. [Speak this to a Hunter, and it might drive them insane on the spot.]",
 			slots:[{id:"with",label:"With",description:"Study with Reason to break the lore into lower-level fragments.",required:{reason:1},actionId:"study"}],
 			unique:true
         },

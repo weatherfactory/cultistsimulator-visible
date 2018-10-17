@@ -164,7 +164,7 @@ id: "influenceheartg",
 label: "An Imminence",
 aspects:
 {heart: 15,influence:1},
-description: "The sky is a drum; the earth is ready for its ecstacy. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
+description: "The sky is a drum; the earth is ready for its ecstasy. [A fifteenth-order influence! This might be the personal attention of an Hour. This can be used in some Rites to summon minions.]",
 lifetime: 60,
 decayTo:"vitality"
 },
@@ -186,7 +186,7 @@ aspects:
 {knock: 6,influence:1},
 slots:[{id:"with",label:"With",description:"With enough pressure, the skin of the world will tear. Add any matching influence to subvert it to a higher level Knock influence.",actionId:"study",required:{influenceedgec:1,influenceforgec:1,influencegrailc:1,influenceheartc:1,influenceknockc:1,influencelanternc:1,influencemothc:1,influencewinterc:1}},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentknockc:1,fragmentknockd:1,fragmentknocke:1,fragmentknockf:1,fragmentknockg:1},actionId:"study"}],
-description: "Clouds part -- walls creak -- old wounds ache.[A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
+description: "Clouds part -- walls creak -- old wounds ache. [A sixth-order influence: significant resonances or correspondences. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influenceknocke},
 decayTo: "bloodshed"
 },
@@ -304,7 +304,7 @@ aspects:
 {winter: 2,influence:1},
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Winter influences to intensify them. Study how it's affected by Heart influence to subvert it, instead.",required:{influencewinter:1,influenceheart:1,vitality:1,vitalityplus:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentwinterc:1,fragmentwinterd:1,fragmentwintere:1,fragmentwinterf:1,fragmentwinterg:1},actionId:"study"}],
-description: "A peculiar chill lingers in my rooms.[A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
+description: "A peculiar chill lingers in my rooms. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
 lifetime: 60,xtriggers:{upgradeinfluence:influencewinterc}
 },
 		  {
