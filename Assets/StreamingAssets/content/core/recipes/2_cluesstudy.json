@@ -122,6 +122,15 @@
         hintonly:true,
         craftable: false
     },
+	
+			{id:"studyupgradeinfluenceshint2",
+	label:"Upgrade Influences?",
+	actionId:"study",
+	requirements:{influence:2,lore:-1,healthskill:-1,reasonskill:-1,passionskill:-1},
+	startdescription:"It might be possible, with the right combination of Influences, to raise more power... but only if I have the necessary knowledge of the invisible arts.",
+	hintonly:true,
+	craftable:false
+	},
 					{
         id: "increasehealthfurtherhintpluswithskillneedslore",
         label: "Increase my Skill to something extraordinary?",
@@ -258,14 +267,7 @@
 	hintonly:true,
 	craftable:false
 	},
-		{id:"studyupgradeinfluenceshint2",
-	label:"Upgrade Influences?",
-	actionId:"study",
-	requirements:{influence:2,lore:-1},
-	startdescription:"It might be possible, with the right combination of Influences, to raise more power... but only if I have the necessary knowledge of the invisible arts.",
-	hintonly:true,
-	craftable:false
-	},
+
 	{id:"studyupgradeinfluenceshint1",
 	label:"Upgrade Influences?",
 	actionId:"study",

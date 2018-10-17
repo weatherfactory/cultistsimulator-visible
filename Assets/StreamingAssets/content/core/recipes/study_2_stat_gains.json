@@ -23,6 +23,18 @@ maxexecutions:1,
         warmup: 60,
         craftable: true
     },
+	
+			{
+        id: "studyincreasevitalitywithinfluencehearttoplus",
+        label: "Exercise the Body",
+        actionId: "study",
+        requirements: {vitality:1,influenceheart:1},
+		startdescription: "I am abrim with vitality. If I devote some time to exercise, I'll benefit.",
+        description: "I'm ready to grow stronger. [Use this Lesson Learnt with your Strength skill.]",
+		effects: {influence:-2,vitalityplus:1},
+        warmup: 60,
+        craftable: true
+    },
 			{
         id: "studyincreasehealthskilla",
         label: "Exercise the Body: Stronger...",
@@ -133,7 +145,7 @@ maxexecutions:1,
         requirements: {erudition:1,influencelantern:1},
 		startdescription: "I have picked up odd facts, here and there... and in this season of peculiar luminosity, I could increase my Reason.",
         description: "My mind, the library. [Use this Lesson Learnt with your Scholarship skill.]",
-		effects: {erudition:-1,influencelantern:-1,eruditionplus:1},
+		effects: {influence:-2,eruditionplus:1},
         warmup: 60,
         craftable: true
     },
@@ -253,6 +265,18 @@ maxexecutions:1,
 		startdescription: "'The tigers of wrath are wiser than the horses of instruction.' If I spend time studying what I've learnt, I could work towards increasing my Passion.",
         description: "There are more windows in my soul; but sunlight is not the only thing that passes through a window. [Use this Lesson Learnt with your Imagination skill.]",
 		effects: {glimmering:-2,glimmeringplus:1},
+        warmup: 60,
+        craftable: true
+    },
+	
+				{
+        id: "studyincreaseglimmeringwithmothinfluencetoplus",
+            label: "Feed my Imagination",
+        actionId: "study",
+        requirements: {glimmering:1,influencemoth:1},
+		startdescription: "'The tigers of wrath are wiser than the horses of instruction.' In this season of unheralded impulse, I could work towards increasing my Passion.",
+        description: "There are more windows in my soul; but sunlight is not the only thing that passes through a window. [Use this Lesson Learnt with your Imagination skill.]",
+		effects: {influence:-2,glimmeringplus:1},
         warmup: 60,
         craftable: true
     },

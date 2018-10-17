@@ -30,7 +30,7 @@
 				 {
             id: "vitality",
             label: "Vitality",
-				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality, I can increase my Health.",required:{vitality:1}}],
+				  slots: [{id:"More Vitality",actionId:"study",description: "With enough Vitality - or sometimes something more exotic - I can increase my Health.",required:{vitality:1,influenceheart:1}}],
           aspects:
             {advancement:1,heart:1,influence:1},
             description: "Exercise, or something rarer, has invigorated me. [Use with another Vitality to improve your abilities. It lasts only three minutes, if unused.]",
@@ -149,7 +149,7 @@
 				 {
             id: "erudition",
             label: "Erudition",
-			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1,influencelantern:1}}],
+			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition - or sometimes something more exotic -  I can increase my Reason.",required:{erudition:1,influencelantern:1}}],
             aspects: {advancement:1,lantern:1,influence:1},
             description: "I soak up knowledge as a shadow soaks up light. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180,
@@ -207,7 +207,7 @@ lifetime: 180,
 					 {
             id: "glimmering",
             label: "Glimmering",
-			slots: [{id:"More Glimmering",actionId:"study",description: "With enough Glimmering, I can increase my Passion.",required:{glimmering:1}}],
+			slots: [{id:"More Glimmering",actionId:"study",description: "With enough Glimmering - or sometimes something more exotic - I can increase my Passion.",required:{glimmering:1,influencemoth:1}}],
             aspects:
             {advancement:1,moth:1,influence:1},
             description: "My emotions run higher than usual. There are things I'll never understand, and those things will always be precious, but just now I am closer to them. [Glimmering can be used with Study to gain Passion. It lasts only three minutes, if unused.]",
