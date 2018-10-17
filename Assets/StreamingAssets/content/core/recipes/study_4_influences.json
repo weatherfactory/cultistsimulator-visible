@@ -3,7 +3,7 @@
 	id: "studyugradeknockinfluence",
 	label: "Accelerate Fractures",
 	actionId: "study",
-	requirements: {influence:2,lore:1, knock:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, knock:1},
 	effects:{project_influence_upgrade_subvert_knock:1},
 
 	linked: [
@@ -18,7 +18,7 @@
 	id: "studyupgradeinfluence_edge",
 	label: "Find the Moment of Intensest Opposition",
 	actionId: "study",
-	requirements: {influence:2,lore:1, edge:1,winter:-1,forge:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:-1,forge:-1,knock-1},
 	effects: {project_influence_upgrade_edge:1},
 	alternativerecipes:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
 	linked: [
@@ -32,7 +32,7 @@
 	id: "studysubvertinfluence_edgetowinter",
 	label: "Subvert Edge Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, edge:1,winter:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:1},
 	effects: {project_influence_subvert_edgetowinter:1},
 	alternativerecipes:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
 	linked: [
@@ -47,7 +47,7 @@
 	id: "studyforgeinfluence",
 	label: "Build a Greater Heat",
 	actionId: "study",
-	requirements: {influence:2,lore:1, forge:1,edge:-1,lantern:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, forge:1,edge:-1,lantern:-1,knock-1},
 	effects:{project_influence_upgrade_forge:1},
 
 	linked: [
@@ -62,7 +62,7 @@
 	id: "studysubvertinfluence_forgetoedge",
 	label: "Subvert Forge Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, forge:1,edge:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, forge:1,edge:1},
 	effects:{project_influence_subvert_forgetoedge:1},
 
 	linked: [
@@ -77,7 +77,7 @@
 	id: "studygrailinfluence",
 	label: "Unite Appetites",
 	actionId: "study",
-	requirements: {influence:2,lore:1, grail:1,moth:-1,heart:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, grail:1,moth:-1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_grail:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -92,7 +92,7 @@
 	id: "studysubvertinfluence_grailtomoth",
 	label: "Subvert Grail Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, grail:1,moth:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, grail:1,moth:1},
 	effects:{project_influence_subvert_grailtomoth:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -107,7 +107,7 @@
 	id: "studyheartinfluence",
 	label: "Interweave the Rhythms Unceasing",
 	actionId: "study",
-	requirements: {influence:2,lore:1, heart:1,grail:-1,winter:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, heart:1,grail:-1,winter:-1,knock-1},
 	effects:{project_influence_upgrade_heart:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -121,7 +121,7 @@
 	id: "studysubvertinfluence_hearttograil",
 	label: "Subvert Heart Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, heart:1,grail:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, heart:1,grail:1},
 	effects:{project_influence_subvert_hearttograil:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -134,7 +134,7 @@
 	id: "studylanterninfluence",
 	label: "Align Luminosities",
 	actionId: "study",
-	requirements: {influence:2,lore:1, lantern:1,forge:-1,moth:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, lantern:1,forge:-1,moth:-1,knock-1},
 	effects:{project_influence_upgrade_lantern:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -147,7 +147,7 @@
 	id: "studysubvertinfluence_lanterntoforge",
 	label: "Subvert Lantern Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, lantern:1,forge:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, lantern:1,forge:1},
 	effects:{project_influence_subvert_lanterntoforge:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -160,7 +160,7 @@
 	id: "studymothinfluence",
 	label: "Embrace the Possibilities of Peril",
 	actionId: "study",
-	requirements: {influence:2,lore:1, moth:1,lantern:-1,grail:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:-1,grail:-1,knock-1},
 	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
 	effects:{project_influence_upgrade_moth:1},
 
@@ -176,7 +176,7 @@
 	id: "studysubvertinfluence_mothtolantern",
 	label: "Subvert Moth Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, moth:1,lantern:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:1},
 	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
 	effects:{project_influence_subvert_mothtolantern:1},
 
@@ -192,7 +192,7 @@
 	id: "studywinterinfluence",
 	label: "Deepen the Silence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, winter:1,heart:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, winter:1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_winter:1},
 
 	linked: [
@@ -206,7 +206,7 @@
 	id: "subvertwinterinfluence",
 	label: "Subvert Winter Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, winter:1,heart:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, winter:1,heart:1},
 	effects:{project_influence_subvert_wintertoheart:1},
 
 	linked: [

@@ -122,6 +122,16 @@
         hintonly:true,
         craftable: false
     },
+					{
+        id: "increasehealthfurtherhintpluswithskillneedslore",
+        label: "Increase my Skill to something extraordinary?",
+        actionId: "study",
+        requirements: {vitalityplus:1,skillhealthc:1},
+        startdescription: "I'll need enough Lessons Learnt... and something more.",
+
+        hintonly:true,
+        craftable: false
+    },
 				{
         id: "increasehealthfurtherhintpluswithskill",
         label: "Increase my Health?",
@@ -154,6 +164,17 @@
         craftable: false
     },
 	
+	
+						{
+        id: "increasereasonfurtherhintpluswithskillneedslore",
+        label: "Increase my Skill to something extraordinary?",
+        actionId: "study",
+        requirements: {eruditionplus:1,skillreasonc:1},
+        startdescription: "I'll need enough Lessons Learnt... and something more.",
+
+        hintonly:true,
+        craftable: false
+    },
 					{
         id: "increasereasonfurtherhintpluswithskill",
         label: "Increase my Reason?",
@@ -181,6 +202,17 @@
         actionId: "study",
         requirements: {erudition:1},
         startdescription: "I'll need more than one.",
+
+        hintonly:true,
+        craftable: false
+    },
+	
+							{
+        id: "increasepassionfurtherhintpluswithskillneedslore",
+        label: "Increase my Skill to something extraordinary?",
+        actionId: "study",
+        requirements: {glimmeringplus:1,skillpassionc:1},
+        startdescription: "I'll need enough Lessons Learnt... and something more.",
 
         hintonly:true,
         craftable: false
@@ -225,7 +257,24 @@
 	startdescription:"To study, one must generally sit quite still. Restlessness is rarely the ally of scholarship.",
 	hintonly:true,
 	craftable:false
-	}
+	},
+		{id:"studyupgradeinfluenceshint2",
+	label:"Upgrade Influences?",
+	actionId:"study",
+	requirements:{influence:2,lore:-1},
+	startdescription:"It might be possible, with the right combination of Influences, to raise more power... but only if I have the necessary knowledge of the invisible arts.",
+	hintonly:true,
+	craftable:false
+	},
+	{id:"studyupgradeinfluenceshint1",
+	label:"Upgrade Influences?",
+	actionId:"study",
+	requirements:{influence:1},
+	startdescription:"It might be possible, with the right combination of Influences, to raise more power...",
+	hintonly:true,
+	craftable:false
+	},
+	
 
 	
 ]
