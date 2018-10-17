@@ -126,6 +126,18 @@ maxexecutions:1,
         warmup: 60,
         craftable: true
     },
+				{
+        id: "studyincreaseeruditionwithlanterninfluencetoplus",
+        label: "The Light of the Mind",
+        actionId: "study",
+        requirements: {erudition:1,influencelantern:1},
+		startdescription: "I have picked up odd facts, here and there... and in this season of peculiar luminosity, I could increase my Reason.",
+        description: "My mind, the library. [Use this Lesson Learnt with your Scholarship skill.]",
+		effects: {erudition:-1,influencelantern:-1,eruditionplus:1},
+        warmup: 60,
+        craftable: true
+    },
+	
 			{
         id: "studyincreasereasonskilla",
         label: "Exercise the Mind: Wiser...",

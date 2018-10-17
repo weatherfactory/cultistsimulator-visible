@@ -149,7 +149,7 @@
 				 {
             id: "erudition",
             label: "Erudition",
-			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1}}],
+			slots: [{id:"More Erudition",actionId:"study",description: "With enough Erudition, I can increase my Reason.",required:{erudition:1,influencelantern:1}}],
             aspects: {advancement:1,lantern:1,influence:1},
             description: "I soak up knowledge as a shadow soaks up light. I may be close to advancement. [Erudition can be used with Study to gain Reason. It lasts only three minutes, if unused.]",
 lifetime: 180,
