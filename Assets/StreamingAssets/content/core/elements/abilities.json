@@ -176,7 +176,8 @@ lifetime: 180,
 			{id:"with",label:"With",description:"Perhaps I can use my Dread to strengthen a dangerous influence.",required:{influenceedge:1,influencewinter:1},actionId:"study"},
 			{id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
             description: "I've seen too much. A nameless gnawing fear has its teeth in my hopes; an existential horror.",
-			lifetime: 180
+			lifetime: 180,
+			xtriggers:{upgradeinfluence:influenceedgec}
 			},
 		        {
             id: "passion",
@@ -231,7 +232,8 @@ lifetime: 180,
 			{id:"with",label:"With",description:"Perhaps I can use my Fascination to strengthen a tempting influence.",required:{influencemoth:1,influencelantern:1},actionId:"study"},
 			{id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
             description: "Light LEAKS through the CRACKS. My mind is BRIGHTER than it EVER was. THE HIGHER I RISE THE MORE I SEE.",
-			lifetime: 180
+			lifetime: 180,
+						xtriggers:{upgradeinfluence:influencemothc}
 			},
 		{
 		id: "scholarlatin",
@@ -335,14 +337,20 @@ lifetime: 180,
             label: "Fleeting Reminiscence",
             description: "A moment in time. In another moment, it'll be gone.",
 			aspects: {secrethistories: 2,moth:2,influence:1},
-			lifetime:300
+				slots:[{id:"with",label:"With",description:"Perhaps I can find something in my memories to strengthen a transient influence.",required:{influencemoth:1,influencelantern:1},actionId:"study"},
+			{id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentmothc:1,fragmentmothd:1,fragmentmothe:1,fragmentmothf:1,fragmentmothg:1},actionId:"study"}],
+			lifetime:300,
+			xtriggers:{upgradeinfluence:influencemothc}
         },
 
 		{id: "contentment",
 		label: "Contentment",
 		aspects: {lantern:2,heart:2,influence:1},
 		description: "I'm happy, I think. [Contentment defends against Dread; but Contentment doesn't last.]",
-		lifetime: 60
+					slots:[{id:"with",label:"With",description:"Perhaps I can use my Contentment to strengthen a positive influence.",required:{influencelantern:1,influenceheart:1,influencewinter:1,influenceforge:1},actionId:"study"},
+			{id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentheartc:1,fragmentheartd:1,fragmenthearte:1,fragmentheartf:1,fragmentheartg:1},actionId:"study"}],
+		lifetime: 60,
+			xtriggers:{upgradeinfluence:influenceheartc}
 		},
 									 {
             id: "memorybittersweet",

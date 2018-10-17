@@ -217,6 +217,15 @@
         hintonly:true,
         craftable: false
     },
+	
+	{id:"studyrestlessnesshint",
+	label:"Study Restlessness?",
+	actionId:"study",
+	requirements:{restlessness:1},
+	startdescription:"To study, one must generally sit quite still. Restlessness is rarely the ally of scholarship.",
+	hintonly:true,
+	craftable:false
+	}
 
 	
 ]
