@@ -185,13 +185,12 @@
 	
 	{id: "curse_dread_active",
 	label:"Dry Soul Curse",
-	requirements: {dread:-1},
+	requirements: {reason:-1},
 	actionId: "curse_dread",
 	startdescription: "The Dry Soul Curse settles softly, like a withered hand on the shoulder.",
-	description:"My skull creaks. The light greys.",
-	aspects: {damagereason:1},
 	slots: [{id:"Reason",label:"Reason",greedy:true,required:{reason:1}}],
-	linked: [{id: "curse_dread_active",chance:100}],
+	linked: [{id: "curse_dread_active",chance:100},
+	{id: "curse_dread_attempt_mitigation",chance:100}],
 	warmup:60
 	},
 	
@@ -200,8 +199,8 @@
 	actionId:"curse_dread",
 	slots: [{id:"Protection",label:"Protection",required:{influencehearte:1,influenceheartg:1}}],
 	alternativerecipes:[{id:"curse_dread_mitigation_successful",chance:100}],
-	startdescription: "The Curse has taken hold. Now the life-pulse slows. [With enough Heart influence, it is possible to turn aside the Curse.]",
-	description:"Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
+	startdescription: "The Curse has taken hold. Now the tunnel tightens around all I see. [Only if you have enough Heart influence will it be possible to turn aside the Curse.]",
+	description:"My skull creaks. The light greys.",
 	aspects: {damagereason:1},
 	warmup:60
 	},
@@ -210,8 +209,8 @@
 	actionId:"curse_dread",
 	requirements:{influence:1},
 	effects:{influence:-1},
-	startdescription:"Tap the drum and speak the words. Suppress the cough until the chant is done.",
-	description: "My lungs are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+	startdescription:"Tap the drum and speak the words. Keep hppe alive until the chant is done.",
+	description: "My soul swells again. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
 	},
 		{id: "curse_visions_dormant",
 	label:"Dormant Fifth Eye Curse",
@@ -239,7 +238,7 @@
 	actionId:"curse_visions",
 	slots: [{id:"Protection",label:"Protection",required:{influencehearte:1,influenceheartg:1}}],
 	alternativerecipes:[{id:"curse_visions_mitigation_successful",chance:100}],
-	startdescription: "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, it is possible to turn aside the Curse.]",
+	startdescription: "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, will it be possible to turn aside the Curse.]",
 	description:"I cannot stop seeing. If I look long enough, I will not wish to.",
 	aspects: {damagepassion:1},
 	warmup:60
@@ -278,7 +277,7 @@
 	actionId:"curse_affliction",
 	slots: [{id:"Protection",label:"Protection",required:{influencehearte:1,influenceheartg:1}}],
 	alternativerecipes:[{id:"curse_affliction_mitigation_successful",chance:100}],
-	startdescription: "The Curse has taken hold. Now the life-pulse slows. [With enough Heart influence, it is possible to turn aside the Curse.]",
+	startdescription: "The Curse has taken hold. Now the life-pulse slows. [With enough Heart influence, will it be possible to turn aside the Curse.]",
 	description:"Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
 	aspects: {destroyhealth:1},
 	warmup:60
