@@ -28,7 +28,7 @@
         requirements: {travellingatnight1: 1},
         effects: {travellingatnight1: -1, fragmentmoth:1,erudition:1},
 		startdescription: "'The Wood lies outside the walls of the Mansus. As any student of the Histories knows, the Mansus has no walls.'",
-        description: "Illopoly describes how he came to make repeated visits to a dream-Wood via what he calls silver dreams 'Trying to think your way to the Wood,' he explains, 'is like thinking your way to being in love. But I did find a Secret that helped.'",
+        description: "Illopoly describes how he came to make repeated visits to a dream-Wood via what he calls silver dreams. 'Trying to think your way to the Wood,' he explains, 'is like thinking your way to being in love. But I did find a Secret that helped.'",
         warmup: 60,
         craftable: true
     },
@@ -302,7 +302,7 @@
 effects:{chioneatabydos:-1,fragmentwinterb:1},
 warmup:60,
 startdescription:"The entity called 'Chione' arrives in a blizzard and demands the city gates are barred. As Abydos falls under her spell, the dead return, but do not speak...",
-            description:"For eight years the city is a place of slow death, frosty ecstacy and silent beauty, but in the ninth year a Conspiracy of Shouts is mounted against the quiet that Chione demands. The conspirators open the city gates, and a scarred man comes to drag Chione out by the hair. Summer returns, but the conspirators die of remorse.",
+            description:"For eight years the city is a place of slow death, frosty ecstasy and silent beauty, but in the ninth year a Conspiracy of Shouts is mounted against the quiet that Chione demands. The conspirators open the city gates, and a scarred man comes to drag Chione out by the hair. Summer returns, but the conspirators die of remorse.",
 craftable: true
         },
 								 {
@@ -322,7 +322,7 @@ craftable: true
             requirements:{roseofnuriel:1},
 effects:{roseofnuriel:-1,fragmentgrailb:1,fragmentknockb:1},
 warmup:60,
-startdescription:"St Tryphon, Nuriel explains, performed secret miracles in the name of  'She who Bleeds and Bears'' and 'She who Opens'. Thus St Tryphon opened the way to the House of the Sun; thus St Tryphon underwent the Great Birth, an ascension to immortality.",
+startdescription:"St Tryphon, Nuriel explains, performed secret miracles in the name of 'She who Bleeds and Bears' and 'She who Opens'. Thus St Tryphon opened the way to the House of the Sun; thus St Tryphon underwent the Great Birth, an ascension to immortality.",
             description:"St Tryphon began his ascension by passing the 'Horned Door'. He continued it by learning the 'Invocation Thiatic' - which Nuriel does not here record, on account of its extreme holiness. And, Nuriel explains grimly, to achieve the Seven Marks of the Great Birth, St Tryphon consumed 'both those whose soul had left them, and even those in whom the soul remained.'",
 craftable: true
         },						 {
@@ -367,7 +367,7 @@ startdescription:"'Seven were the wounds of His body, seven the doors of the Hou
 craftable: true
         },						 {
         id: "studymatthiasamethystloss",
-            label: "Read 'On Matthias and the Amethyst Imago': Loss",
+            label: "Read 'On Matthias and the Amethyst Imago: Loss'",
             actionId:"study",
             requirements:{matthiasamethystloss:1},
 effects:{matthiasamethystloss:-1,fragmentmothc:1,ritetoolconsumeinfluence:1},
@@ -377,7 +377,7 @@ startdescription:"'The laws of the House forbade Matthias to love. The customs o
 craftable: true
         },						 {
         id: "studymatthiasamethysttransformation",
-            label: "Read 'On Matthias and the Amethyst Imago': Transformation",
+            label: "Read 'On Matthias and the Amethyst Imago: Transformation'",
             actionId:"study",
             requirements:{matthiasamethysttransformation:1},
 effects:{matthiasamethysttransformation:-1,fragmentforgec:1},
@@ -387,7 +387,7 @@ startdescription:"'We cast Matthias out, and we pronounced a curse upon the Amet
 craftable: true
         },						 {
         id: "studymatthiasamethystpursuit",
-            label: "Read 'On Matthias and the Amethyst Imago': Pursuit",
+            label: "Read 'On Matthias and the Amethyst Imago: Pursuit'",
             actionId:"study",
             requirements:{matthiasamethystpursuit:1},
 effects:{matthiasamethystpursuit:-1,fragmentgrailc:1},
@@ -397,13 +397,13 @@ startdescription:"'Matthias defied us to hunt the Names of the Moth in the Wood,
 craftable: true
         },						 {
         id: "studyfranklinbancroftdiaries",
-            label: "Read 'Lord Franklin Bancroft': Diaries, 1750-1790",
+            label: "Read 'Lord Franklin Bancroft: Diaries, 1750-1790'",
             actionId:"study",
             requirements:{franklinbancroftdiaries:1},
 effects:{franklinbancroftdiaries:-1,fragmentlanternc:1},
 warmup:60,
-startdescription:"Bancroft seems to have been a talented adept, but devoted his energies to frustratingly whimsical projects:  arranging 'grape-fetching races' between Mansus-spirits, teaching Percussigants to juggle, and conjuring storms of imaginary blossoms for the rose-witch Ayrshire, who resolutely refused ever to couple with him. Bancroft spends twenty pages bemoaning this last.",
-            description:"The Mantra here recorded is a high and exacting magic which  can be used to pledge one's spirit to the Watchman, beginning an ascent to the House. Bancroft boasts of his ability to recite it when in his cups. He also had it set to music for a perfomance with fireworks at Vauxhall Gardens.",
+startdescription:"Bancroft seems to have been a talented adept, but devoted his energies to frustratingly whimsical projects: arranging 'grape-fetching races' between Mansus-spirits, teaching Percussigants to juggle, and conjuring storms of imaginary blossoms for the rose-witch Ayrshire, who resolutely refused ever to couple with him. Bancroft spends twenty pages bemoaning this last.",
+            description:"The Mantra here recorded is a high and exacting magic which can be used to pledge one's spirit to the Watchman, beginning an ascent to the House. Bancroft boasts of his ability to recite it when in his cups. He also had it set to music for a performance with fireworks at Vauxhall Gardens.",
 craftable: true
         },						 {
         id: "studyindignitiesobliviate",
@@ -447,7 +447,7 @@ startdescription:"The Ceaseless Tantra is devoted mostly to warnings about the l
 craftable: true
         },						 {
         id: "studyknownunknowntantra",
-            label: "Read 'The Known-Unknown Tantra",
+            label: "Read 'The Known-Unknown Tantra'",
             actionId:"study",
             requirements:{knownunknowntantra:1},
 effects:{knownunknowntantra:-1,fragmentlanternc:1},
@@ -467,7 +467,7 @@ startdescription:"The Encircling Tantra speaks of the Serpent Gate, that hungry 
 craftable: true
         },						 {
         id: "studyshavenlocktantra",
-            label: "Read 'The Shaven Lock Tantra '/ The One Who Has Shaven His Hair",
+            label: "Read 'The Shaven Lock Tantra'/ 'The One Who Has Shaven His Hair'",
             actionId:"study",
             requirements:{shavenlocktantra:1},
 effects:{shavenlocktantra:-1,fragmentmothc:1},
@@ -499,7 +499,7 @@ craftable: true
         },
 		{
         id: "studyaccountkanishkspidersdoor",
-            label: "Read 'The Account of Kanishk at the Spider's Door",
+            label: "Read 'The Account of Kanishk at the Spider's Door'",
             actionId:"study",
             requirements:{accountkanishkspidersdoor:1},
 effects:{accountkanishkspidersdoor:-1,fragmentedgec:1},
@@ -538,7 +538,7 @@ craftable: true
 effects:{larquebinecodex:-1,fragmentheartc:1},
 warmup:60,
 startdescription:"The Sister-and-Witch came from the West, where they were born in two wombs, one a princess, one a monster. Nevertheless they loved each other from birth, and met in secret 'to seek union'.",
-            description:"When the great drought came, the kings of that land tried to sacrifice the princess and the witch, so they sailed across the Sea. When despair took them, they flung themselves into the drowning waters... and so found the Painted River, where they entered the Mansus through the offices of the Red Grail. Nevertheless, the Codex ends with a condemnation of the Grail..",
+            description:"When the great drought came, the kings of that land tried to sacrifice the princess and the witch, so they sailed across the Sea. When despair took them, they flung themselves into the drowning waters... and so found the Painted River, where they entered the Mansus through the offices of the Red Grail. Nevertheless, the Codex ends with a condemnation of the Grail.",
 craftable: true
         },
 		{
@@ -571,7 +571,7 @@ craftable: true
 effects:{leoninetantra:-1,fragmentedged:1},
 warmup:60,
 startdescription:"The Tantra describes, elliptically, the Great Hooded Princes and the multitudinous ways in which they influenced wars against foreign invaders of the Land of the Great River, 'although in a sense they were also invaders'.",
-            description:"Lions can be created, not as children are created, nor as words are created, but as weapons are created. The Great Hooded Princes learnt to create lions from their spyings on the affairs of the Hours, and not all lions now serve the Golden General.'",
+            description:"'Lions can be created, not as children are created, nor as words are created, but as weapons are created. The Great Hooded Princes learnt to create lions from their spyings on the affairs of the Hours, and not all lions now serve the Golden General.'",
 craftable: true
         },
 		{
@@ -631,7 +631,7 @@ craftable: true
         },
 		{
         id: "studyfirecircletantra",
-            label: "Read 'The Fire'-Circle Tantra",
+            label: "Read 'The Fire-Circle Tantra'",
             actionId:"study",
             requirements:{firecircletantra:1},
 effects:{firecircletantra:-1,fragmentmothd:1},
@@ -702,7 +702,7 @@ craftable: true
             requirements:{worlddoesnotweep:1},
 effects:{worlddoesnotweep:-1,fragmentwinterd:1,riteinfluenceconsumefollower:1},
 warmup:60,
-startdescription:"The unknown adept who wrote this proclaims: the world forgets, but the Ivory Dove does not. The text contains a number of prescriptions for ensuring that certain acts are remembered, including a rite which requires a sacrifice in a particulary monstrous mode...",
+startdescription:"The unknown adept who wrote this proclaims: the world forgets, but the Ivory Dove does not. The text contains a number of prescriptions for ensuring that certain acts are remembered, including a rite which requires a sacrifice in a particularly monstrous mode...",
             description:"The Hours tried to bury the memory of what happened to the Wheel, the Flint, the Tide, and the Seven-Coiled, but the Dove won't permit it. Nor will he permit what happened to the First Egg to be forgotten, although it is perhaps the one thing that the Watchman might ever forgive...",
 craftable: true
         },
@@ -746,13 +746,13 @@ craftable: true
             requirements:{thosewhodonotsleep:1},
 effects:{thosewhodonotsleep:-1,fragmenthearte:1,ritetoolconsumeingredient:1},
 warmup:60,
-startdescription:"'The Sister-and-Witch were born in two wombs, one poor one rich, across the sea. The Sister was stronger in the aspect of Heart, and so their survival was assured; the Witch was stronger in the aspect of Grail, and so they were not satisfied....'",
+startdescription:"'The Sister-and-Witch were born in two wombs, one poor one rich, across the sea. The Sister was stronger in the aspect of Heart, and so their survival was assured; the Witch was stronger in the aspect of Grail, and so they were not satisfied...'",
             description:"'When the Sister and Witch came from the West, the Red Grail permitted their ascension, but then grew jealous of their power. It lured a great musician into the ranks of its Names, and caused him to be reborn from blood as a Heart-hour, so that the Grail might maintain dominion there also. But its victory is not assured.'",
 craftable: true
         },
 		{
         id: "studytheskythesoul",
-            label: "Read 'The Sky', the Soul",
+            label: "Read 'The Sky, the Soul'",
             actionId:"study",
             requirements:{theskythesoul:1},
 effects:{theskythesoul:-1,fragmentlanterne:1,fascination:1},
@@ -864,7 +864,7 @@ craftable: true
 
 				{
         id: "studymedusaslament",
-            label: "Read 'Medusa''s Lament",
+            label: "Read 'Medusa's Lament'",
             actionId:"study",
             requirements:{medusaslament:1},
 effects:{medusaslament:-1,fragmentknocke:1,dread:1},
@@ -917,7 +917,7 @@ craftable: true
             requirements:{sevenfoldslayingsevencoiled:1},
 effects:{sevenfoldslayingsevencoiled:-1,fragmentedgef:1,dread:1},
 warmup:60,
-startdescription:"There are twelve verses. In the first, an ascendant Hour identified as the Scarred One enumerates his justifications for destroying the Seven-Coiled: its appetites, its growth, its enmity to humanity. In the second, a priestess puts out his eyes and scars his skin to protect him against the Seven-Coiled's magics. In each of the next seven verses, he destroys one aspect of the Seven-Coiled....",
+startdescription:"There are twelve verses. In the first, an ascendant Hour identified as the Scarred One enumerates his justifications for destroying the Seven-Coiled: its appetites, its growth, its enmity to humanity. In the second, a priestess puts out his eyes and scars his skin to protect him against the Seven-Coiled's magics. In each of the next seven verses, he destroys one aspect of the Seven-Coiled...",
             description:"In the tenth verse, the Scarred One bathes his priestess-patron in the blood of the Seven-Coiled, to lend her power. In the eleventh, they assault the 'temple behind the world', entering it by force. In the twelfth, they swear a tripartite oath to protect their ancestors, their descendants, and themselves.",
 craftable: true
         },
@@ -942,7 +942,7 @@ craftable: true
 effects:{dreamconspiracyskies:-1,fragmentgrailf:1,fascination:1},
 warmup:60,
 startdescription:"Damaon insists that the Hours, far more than mortals, are subject to their passions - to hatred, and even to love. 'The seasons of famine and plenty, the turn of the Earth, the transformations of the furnace - all these are only the results of the enactment of the lesser passions of the Hours.'",
-            description:"Damaon suggests that the Hours have constrained their rivalry to avoid a war within the House of the Sun. He identifies the 'Fear of the Crime of the Sky' as the reason that Hours do not satisfy other passions. He speculates on the horrifying possibilty of Hours turned alukite. 'What then would they devour?'",
+            description:"Damaon suggests that the Hours have constrained their rivalry to avoid a war within the House of the Sun. He identifies the 'Fear of the Crime of the Sky' as the reason that Hours do not satisfy other passions. He speculates on the horrifying possibility of Hours turned alukite. 'What then would they devour?'",
 craftable: true
         },
 
@@ -1038,7 +1038,7 @@ craftable: true
         },
 						{
         id: "studyfivecreations",
-            label: "Read 'Five Creations''",
+            label: "Read 'Five Creations'",
             actionId:"study",
             requirements:{fivecreations:1},
 effects:{fivecreations:-1,fragmentgrailg:1,dread:1},

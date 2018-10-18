@@ -65,7 +65,7 @@ y{
 
 	{
         id: "A_ecdysis_cantswitchtochangefromenlightenment",
-		label: "Pursue Change, not enlightenment",
+		label: "Pursue Change, not Enlightenment",
 		requirements:{ascensionenlightenmenta:1},
 		actionId: "explore",
 		startdescription:"'Reconsidering the Watchman's path, are we? Good. But you have a way to go yet.'",
@@ -158,8 +158,8 @@ warmup:60,craftable:true,hintonly:true
 {id: "ecdysisdance_sendingheartg",
 label:"The Last Dance",
 actionId:"work",
-startdescription:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound lke an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
-description: "When the dance is done, when my body is wracked and torn, when Mr Agdistis' tears are warm on my broken flesh, then my shadow has become the shadow of a great tusked beast. 'Go quickly,' Mr Agdistis says.'Sleep quickly. My lady Sulochana has already called the lady Marinette. She will be the one to flay the skin from you.'",
+startdescription:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound like an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
+description: "When the dance is done, when my body is wracked and torn, when Mr Agdistis' tears are warm on my broken flesh, then my shadow has become the shadow of a great tusked beast. 'Go quickly,' Mr Agdistis says. 'Sleep quickly. My lady Sulochana has already called the lady Marinette. She will be the one to flay the skin from you.'",
 requirements:{ecdysijob:1,locationcabaret:1,heart:18,ascensionchangeg:1},
 effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1},
 aspects:{damagehealth:1},
@@ -198,7 +198,7 @@ warmup:60,craftable:true
 {id: "ecdysisdance_sendingheartf",
 label:"Work at the Ecdysis Club: Beyond the Pale",
 actionId:"work",
-startdescription:"This dance is performed naked. Mr Agdistis joins me in my dressing room in to paint my body the necessary white. He is weeping.",
+startdescription:"This dance is performed naked. Mr Agdistis joins me in my dressing room to paint my body the necessary white. He is weeping.",
 description:"The auditorium is dark and silent. A single spotlight follows my movements. It is possible, but unlikely, that there is no-one watching me at all - no-one to see the slow fade of the spotlight, and my final fall - no-one to see the white bird rise from my open mouth, and pass forgotten into the night.",
 requirements:{ecdysijob:1,locationcabaret:1,heart:15,ascensionchangef:1},
 effects:{funds:1,mystique:1,sendingheartf:1},deckeffect:{ecdysisrewards:1},

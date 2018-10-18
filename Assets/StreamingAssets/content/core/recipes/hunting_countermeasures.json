@@ -270,7 +270,7 @@ effects:{notoriety:1,summoned:-1}
 	  actionId:"talk",
 	  requirements:{summoned:-1},
 	  startdescription: "I await word....",
-	  description:"My minion has returned, stumblng, mumbling, clumsily bandaged. They were caught in the coils of their own plan. [Heal a fallen Follower with Talk.]",
+	  description:"My minion has returned, stumbling, mumbling, clumsily bandaged. They were caught in the coils of their own plan. [Heal a fallen Follower with Talk.]",
 	  effects: {notoriety:1},
 	  	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
 	{filterOnAspectId:mortal,mutateAspectId:follower,mutationLevel:-1,additive:false}],
