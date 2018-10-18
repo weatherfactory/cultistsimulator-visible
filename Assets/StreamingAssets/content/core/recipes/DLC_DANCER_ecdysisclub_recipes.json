@@ -122,9 +122,9 @@ craftable:true
 {id:"ecdysisjobupgrade_toc",
 label:"Prove my Abilities to Sulochana",
 actionId:"work",
-startdescription:"I believe I am ready for the dances that occur only by special arrangement. Sulochana will",
+startdescription:"I believe I am ready for the dances that occur only by special arrangement. Sulochana will invite me to the top room of the Club, the moon-windowed attic where she keeps her keys and her jewels and her trophies, and she will offer me wine from an ivory cup before I begin. The wine will be thick and sweet, and my mind will teem with new thoughts. The air will flutter like wings, but even after I disrobe, I will not be cold.",
 description: "'You'll do,' says Sulochana Amasvaya. 'Welcome to the Changing Room.' She looks me up and down in the way she often does. 'Not long now. Not long now. Perhaps it's time I mentioned you to my sister.'",
-requirements:{dancerjobecdysisb:1,healthskill:4},
+requirements:{dancerjobecdysisb:1,skillhealthd_grace:4},
 effects:{dancerjobecdysisb:-1,dancerjobecdysisc:1},
 warmup:30,
 craftable:true
