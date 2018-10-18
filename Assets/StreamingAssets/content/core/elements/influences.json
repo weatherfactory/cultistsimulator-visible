@@ -8,8 +8,7 @@ aspects:
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Edge influences to intensify them. Study how it's affected by Winter influence to subvert it, instead.",required:{influenceedge:1,influencewinter:1,dread:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentedgec:1,fragmentedged:1,fragmentedgee:1,fragmentedgef:1,fragmentedgeg:1},actionId:"study"}],
 description: "The senses are sharpened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-lifetime: 60,xtriggers:{upgradeinfluence:influenceedgec},
-decayTo: "bloodshed"
+lifetime: 60,xtriggers:{upgradeinfluence:influenceedgec}
 },
 				  {
 id: "influenceedgec",
@@ -94,8 +93,7 @@ aspects:
 slots:[{id:"with",label:"With",description:"Study the correspondences of two matching Grail influences to intensify them. Study how it's affected by Moth influence to subvert it, instead.",required:{influencegrail:1,influencemoth:1,glimmering:1,glimmeringplus:1},actionId:"study"},
 {id:"knowledge",label:"Knowledge",description:"I must understand the influences at work, if I am to strengthen or to subvert them. [You'll need a significant grounding in the relevant lore.]",required:{fragmentgrailc:1,fragmentgraild:1,fragmentgraile:1,fragmentgrailf:1,fragmentgrailg:1},actionId:"study"}],
 description: "Every sense is heightened; every sensation, deepened. [A second-order influence: apparent to the perceptive, instantly recognisable to an adept. This can be used in some Rites to summon minions.]",
-lifetime: 60,xtriggers:{upgradeinfluence:influencegrailc},
-decayTo: "bloodshed"
+lifetime: 60,xtriggers:{upgradeinfluence:influencegrailc}
 },
 				  {
 id: "influencegrailc",
