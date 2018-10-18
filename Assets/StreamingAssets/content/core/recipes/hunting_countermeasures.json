@@ -68,7 +68,17 @@ effects:{notoriety:1,summoned:-1}
 	  	  mutations:[{filterOnAspectId:hunter,mutateAspectId:wary,mutationLevel:1}],
 	  },
 	  
-	  
+	        {id: "hunterspeakpoison_glassfinger",
+	   label: "Employ Glassfinger Toxin against a Hunter",
+	  actionId:"talk",
+	  requirements:{ingredientlanternd:1},
+	  startdescription:"'Enjoying your tea?'",
+	  description:"The end is not pretty, but it's quick and almost painless. When the dissolution is complete, nothing visible remains.",
+	  	  alternativerecipes:[{id:"huntertenacioussurvives",chance:30}],
+	  effects:{ingredientlanternd:-1},
+	  aspects:{dissolution:1},
+	  craftable:false
+	  },
 	  
       {id: "hunterspeakpoison",
 	   label: "Employ a Remarkable Poison against a Hunter",
