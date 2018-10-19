@@ -60,10 +60,10 @@ lifetime:600,decayTo:"corpse"
         id: "investigator2prisoner",
             label: "Spencer Hobson: Captured!",
             aspects:
-            {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,knock:3,dissolution:influenceknockc},
+            {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,knock:3},
               description: "Hobson has been a journalist, a private detective and, rather briefly, a priest. Let us be sure he dies in captivity.",
 unique:true,
-xtriggers: {killmortal:corpse,derangemortal:spencer_r_c},
+xtriggers: {killmortal:corpse,derangemortal:spencer_r_c,dissolution:influenceknockc},
 lifetime:600,decayTo:"corpse"
         },
 		
