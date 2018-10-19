@@ -101,8 +101,17 @@ comments:"Hint appears if we have max skill and don't qualify for an ecdysijob u
 requirements:{ecdysijob:1,healthskill:4},
 craftable:true,hintonly:true
 },
-{id:"ecdysisjobupgradehint?",
-label:"Further Steps",
+{id:"ecdysisjobupgrade_toc_hint",
+label:"Demonstrate my Abilities to Sulochana?",
+actionId:"work",
+startdescription:"Sulochana examines the scope of my limbs, the rotations of my body. 'Not yet,' she says. [Increase your Health skill to the highest level, and specialise in Grace, to proceed.].",
+requirements:{dancerjobecdysisb:1,healthskill:2},
+craftable:false,
+hintonly:true
+},
+
+{id:"ecdysisjobupgradehint",
+label:"Further Steps?",
 actionId:"work",
 startdescription:"More exclusive audiences require more exacting dances. I must prove that I am physically capable before Mr Agdistis and Sulochana permit me to go higher. [Improve your Health skill to impress.]",
 requirements:{ecdysijob:1,healthskill:1},
@@ -118,6 +127,7 @@ effects:{dancerjobecdysisa:-1,dancerjobecdysisb:1},
 warmup:30,
 craftable:true
 },
+
 
 {id:"ecdysisjobupgrade_toc",
 label:"Prove my Abilities to Sulochana",
