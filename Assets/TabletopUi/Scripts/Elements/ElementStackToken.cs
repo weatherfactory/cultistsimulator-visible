@@ -766,7 +766,7 @@ namespace Assets.CS.TabletopUI {
 
             LifetimeRemaining = LifetimeRemaining - interval;
 
-            if (LifetimeRemaining < 0) {
+            if (LifetimeRemaining <= 0) {
                 // We're dragging this thing? Then return it?
                 if (DraggableToken.itemBeingDragged == this) {
                     // Set our table pos based on our current world pos

@@ -65,7 +65,7 @@ y{
 
 	{
         id: "A_ecdysis_cantswitchtochangefromenlightenment",
-		label: "Pursue Change, not enlightenment",
+		label: "Pursue Change, not Enlightenment",
 		requirements:{ascensionenlightenmenta:1},
 		actionId: "explore",
 		startdescription:"'Reconsidering the Watchman's path, are we? Good. But you have a way to go yet.'",
@@ -101,8 +101,17 @@ comments:"Hint appears if we have max skill and don't qualify for an ecdysijob u
 requirements:{ecdysijob:1,healthskill:4},
 craftable:true,hintonly:true
 },
-{id:"ecdysisjobupgradehint?",
-label:"Further Steps",
+{id:"ecdysisjobupgrade_toc_hint",
+label:"Demonstrate my Abilities to Sulochana?",
+actionId:"work",
+startdescription:"Sulochana examines the scope of my limbs, the rotations of my body. 'Not yet,' she says. [Increase your Health skill to the highest level, and specialise in Grace, to proceed.].",
+requirements:{dancerjobecdysisb:1,healthskill:2},
+craftable:false,
+hintonly:true
+},
+
+{id:"ecdysisjobupgradehint",
+label:"Further Steps?",
 actionId:"work",
 startdescription:"More exclusive audiences require more exacting dances. I must prove that I am physically capable before Mr Agdistis and Sulochana permit me to go higher. [Improve your Health skill to impress.]",
 requirements:{ecdysijob:1,healthskill:1},
@@ -119,12 +128,13 @@ warmup:30,
 craftable:true
 },
 
+
 {id:"ecdysisjobupgrade_toc",
 label:"Prove my Abilities to Sulochana",
 actionId:"work",
-startdescription:"I believe am ready for the dances that occur only by special arrangement. Sulochana will",
+startdescription:"I believe I am ready for the dances that occur only by special arrangement. Sulochana will invite me to the top room of the Club, the moon-windowed attic where she keeps her keys and her jewels and her trophies, and she will offer me wine from an ivory cup before I begin. The wine will be thick and sweet, and my mind will teem with new thoughts. The air will flutter like wings, but even after I disrobe, I will not be cold.",
 description: "'You'll do,' says Sulochana Amasvaya. 'Welcome to the Changing Room.' She looks me up and down in the way she often does. 'Not long now. Not long now. Perhaps it's time I mentioned you to my sister.'",
-requirements:{dancerjobecdysisb:1,healthskill:4},
+requirements:{dancerjobecdysisb:1,skillhealthd_grace:1},
 effects:{dancerjobecdysisb:-1,dancerjobecdysisc:1},
 warmup:30,
 craftable:true
@@ -158,8 +168,8 @@ warmup:60,craftable:true,hintonly:true
 {id: "ecdysisdance_sendingheartg",
 label:"The Last Dance",
 actionId:"work",
-startdescription:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound lke an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
-description: "When the dance is done, when my body is wracked and torn, when Mr Agdistis' tears are warm on my broken flesh, then my shadow has become the shadow of a great tusked beast. 'Go quickly,' Mr Agdistis says.'Sleep quickly. My lady Sulochana has already called the lady Marinette. She will be the one to flay the skin from you.'",
+startdescription:"On the very rare occasions that Mr Agdistis speaks, his voice is very beautiful - a mellow sound like an alto flute. 'You almost have what you need,' he says, 'to pass the Kingskin Gate. One will come to lend you the key.' He looks you in the eye. 'I beg you not to take her hand, not to look upon her feet, and not to offer her to drink.' He begins, very softly, to weep. 'It will hurt. I love her.'",
+description: "When the dance is done, when my body is wracked and torn, when Mr Agdistis' tears are warm on my broken flesh, then my shadow has become the shadow of a great tusked beast. 'Go quickly,' Mr Agdistis says. 'Sleep quickly. My lady Sulochana has already called the lady Marinette. She will be the one to flay the skin from you.'",
 requirements:{ecdysijob:1,locationcabaret:1,heart:18,ascensionchangeg:1},
 effects:{funds:1,mystique:1,sendingheartg:1},deckeffect:{ecdysisrewards:1},
 aspects:{damagehealth:1},
@@ -191,14 +201,14 @@ description:"'When the dance is done, when my mind is mazed and stumbling, when 
 requirements:{desiremoth_track:3,desireheart_track:3},
 effects:{funds:1,mystique:1,sendingmothheartg:1},deckeffect:{ecdysisrewards:1},
 alternativerecipes:[{id:"passion_expel_to_scar",chance:100,additional:true,expulsion:{limit:3,filter:{passionexhausted:1}}}],
-warmup:60,craftable:true
+warmup:60
 },
 
 
 {id: "ecdysisdance_sendingheartf",
 label:"Work at the Ecdysis Club: Beyond the Pale",
 actionId:"work",
-startdescription:"This dance is performed naked. Mr Agdistis joins me in my dressing room in to paint my body the necessary white. He is weeping.",
+startdescription:"This dance is performed naked. Mr Agdistis joins me in my dressing room to paint my body the necessary white. He is weeping.",
 description:"The auditorium is dark and silent. A single spotlight follows my movements. It is possible, but unlikely, that there is no-one watching me at all - no-one to see the slow fade of the spotlight, and my final fall - no-one to see the white bird rise from my open mouth, and pass forgotten into the night.",
 requirements:{ecdysijob:1,locationcabaret:1,heart:15,ascensionchangef:1},
 effects:{funds:1,mystique:1,sendingheartf:1},deckeffect:{ecdysisrewards:1},

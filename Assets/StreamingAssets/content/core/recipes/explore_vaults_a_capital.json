@@ -6,7 +6,7 @@
 	actionId: "explore",
 	requirements:{vaultcapital1:1,funds:1,follower:1},
 	effects: {guardian_watchers:1},
-	startdescription: "Mr Strathcoyne has forbidden entry to his library. Unfortunate. Let's see what we can do.[Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
+	startdescription: "Mr Strathcoyne has forbidden entry to his library. Unfortunate. Let's see what we can do. [Expeditions need at least one Funds per obstacle. Followers will defeat obstacles. If you run out of Funds or Followers, the Expedition ends.]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -78,7 +78,7 @@
 	effects: {vaultcapital1:-1,wainscothistories:1},
 	deckeffect: {"vaultcontentsc":3},
 	startdescription: "Strathcoyne's cosy sanctum. A fire smoulders in the grate. Glass cases display hard-won trinkets. We must seize what we can, quickly! Strathcoyne may already have telephoned the police.",
-	description: "Out into the night! We escape unseen, but the next day there are reports of a fire at Strathcoyne's. Did someone knock a live coal on to the hearth-rug? Or did Strathcoyne destroy the  place himself, as part of some larger scheme?",
+	description: "Out into the night! We escape unseen, but the next day there are reports of a fire at Strathcoyne's. Did someone knock a live coal on to the hearth-rug? Or did Strathcoyne destroy the place himself, as part of some larger scheme?",
 	warmup:30,
 	craftable: false
 	},

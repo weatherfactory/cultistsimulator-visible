@@ -45,9 +45,11 @@ resetonexhaustion:true
 				{id: "mansus_wood2",
 	spec:
 		["influenceknock",
+		"influenceheart",
 		"fragmentsecrethistoriesb",
 		"rumour"],
 				drawmessages:{influenceknock:"Last night I came in the Wood to the high jagged rock called the Temple of the Wheel. Its flank, patched with black lichen and eye-signs, opened like a mouth beneath my hands, and I walked in the whispering space within. The Gods-who-were-stone, the first of the Hours, are almost all gone now, but here their voices remain: Wheel, Flint, Tide, the others without names.",
+				influenceheart:"In the Wood beyond the walls of the Mansus, a jagged rock rears like the petrified remnants of a dancing giant. I trailed my hand along its flank, over the eye-signs and lichen and the crude graffiti of the lesser Wood-powers, and I felt the thrumming of the Wheel which has passed. It has passed, but something continues.",
 				fragmentsecrethistoriesb:"In my sleep I came to the high jagged rock which is still called the Temple of the Wheel, though the hour called Wheel is long extinct. Another hand had scratched a secret in the black lantern on its flank. I burned that secret into my memory to preserve for waking, before the Velvet came out of the velvet Wood-depths and erased it. The Velvet is jealous of her secrets.",
 				rumour:"I came to the Temple of the Wheel, that high and jagged rock, that memorial to dead gods. Those who take their own lives sometimes first cast themselves from its peak in dream. I found another sleeping soul, scratching the sign of the eye into the lichen at its peak. I do not recall what passed between us, but I will recognise their face in the waking world."},
 		defaultdrawmessages:{},
@@ -86,11 +88,11 @@ resetonexhaustion:true
 	spec:
 	["influencelanternc",
 	"glimmering",
-	"contentment",
+	"influenceheartc",
 	"fragmentsecrethistoriesc"],
 			drawmessages:{influencelanternc:"'The invisible arts,'  Christopher Illopoly is said to have remarked, 'are as profitable as macramé, as ethical as tobacco-smuggling, and in general as beneficial as roulette. Still, there is always the Orchard of Lights.' And indeed, the Orchard, with its glowing fruit and its peaceful mists, is a place to be yearned for. Last night I walked there in the peaceful hours of the deep night. Even after waking, I still carry with me a little of the glory of the old Sun.",
 	glimmering:"The Sun-in-Splendour, the Hour who once ruled the Mansus, was known to walk in the Orchard, before his terrible division. Sometimes his remnants walk here still - sometimes I see the chilly radiance of the Meniscate through the trees, or the chillier radiance of the Sun-in-Rags. Were they to come upon me, it might be my end, but to see them in the distance is a gift of insight.",
-	contentment:"The Hours have been called unmerciful, but they permit sleepers, sometimes, to walk in the Orchard of Lights, where each fruit glows like a sunset, where the roots of the trees are shaped for peaceful rest, where the mist soothes the heart. I was there last night, and the taste of the fruit lingers, sharp and sweet as the passage of spring to summer.",
+	influenceheartc:"The Hours have been called unmerciful, but they permit sleepers, sometimes, to walk in the Orchard of Lights, where each fruit glows like a sunset, where the roots of the trees are shaped for peaceful rest, where the mist soothes the heart. I was there last night, and the taste of the fruit lingers, sharp and sweet as the passage of spring to summer.",
 	fragmentsecrethistoriesc:"Last night I walked in the Orchard of Lights. I plucked the fruit (which is always ripe) and consumed it in two bites (the taste is not to be forgotten). As I licked the glowing juices from my fingers, I saw a message carved in the bark of the tree. When I woke, I recorded that message - all I could remember - in my diary."},
 		defaultdrawmessages:{},
 resetonexhaustion:true
@@ -122,10 +124,10 @@ resetonexhaustion:true
 	spec:
 		["fascination",
 		"fragmentsecrethistoriesd",
-		"erudition"],
+		"eruditionplus"],
 	drawmessages:{fascination:"I dreamt of the Mansus behind the White Door, of the great space above the Orchard, the space that overlooks the Bounds, the space where the Vagabond once painted her River. Painted ships passed upon the Painted River. I met the painted eyes of a painted captain. She saluted, and the motion was like the layered movement of clouds. The sail of the ship was amber and the captain's eyes the green of new barley and the river, aquamarine. Now that I'm awake, I see those colours still.",
 				fragmentsecrethistoriesd:"There is a great chamber in the Mansus through which a Painted River flows. The Vagabond, it is claimed, painted it from memory in the years before she left the House. Certainly there are histories concealed in its design. I traced them with my hand last night. There were fragments of aquamarine paint beneath my nails, flecks of gold leaf, when I was done.",
-				erudition:"The Painted River runs from a great chamber near the White Door, far through the Mansus, to its far edge where it enters a painted delta of far cloud. I voyaged half its length last night with a stern-faced captain beneath a rust-red sail. As the clouds rose before us, the sailors raised a yearning shanty, and close-hauled the sails to best use the painted wind. And all the while the captain and I discoursed on the secrets of the House of the Sun...."},
+				eruditionplus:"The Painted River runs from a great chamber near the White Door, far through the Mansus, to its far edge where it enters a painted delta of far cloud. I voyaged half its length last night with a stern-faced captain beneath a rust-red sail. As the clouds rose before us, the sailors raised a yearning shanty, and close-hauled the sails to best use the painted wind. And all the while the captain and I discoursed on the secrets of the House of the Sun...."},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
@@ -133,9 +135,11 @@ resetonexhaustion:true
 					{id: "mansus_spiderdoor",
 	spec:
 		["influencegraile",
+		"influencehearte",
 		"fragmentsecrethistoriesd",
 		"favour"],
-				drawmessages:{influencegraile:"The THIRST of the Spider's Door is second only to that of the Grail, or perhaps it's even the same thing. I passed it last night, but I penetrated no further into the mansus. I spent an hour last night in a dream of its gullet, and this morning I am afire with avid appetites.",
+				drawmessages:{influencegraile:"The THIRST of the Spider's Door is second only to that of the Grail, or perhaps it's even the same thing. I passed it last night, but I penetrated no further into the Mansus. I spent an hour last night in a dream of its gullet, and this morning I am afire with avid appetites.",
+				influencehearte:"Last night I roamed the clustered organs of the Spider's Door. I found a node of particular vitality - all that remains of someone brave, or someone betrayed. While the THIRST of the Spider's Door was yet quiet, I brought it home in a fold of my soul.",
 		fragmentsecrethistoriesd:"The War of the Roads extended into the Mansus. In the corridors behind the Spider's Door, the mason-witch who styled himself Hubris Glamore has chronicled its skirmishes, in miles of lines of obsessive, branching memorial-script in the Mansus' dream-stone. Last night I traced it, reading of the campaigns of the Children of the Leashed Flame, the valiant defence of the Knot Sisterhood, the alliance with the Vagabond, the furious quarrels of the Grail and the Forge...",
 		favour:"Last night behind the Spider's Door, I found an agent of order who had strayed into an unwise dream. The things that walk the Silken Sands, that greyness in which the Door is set, have an especial taste for policemen. He screamed until I freed him, but I did not free him until he had told me something useful..."},
 		defaultdrawmessages:{},
@@ -146,12 +150,12 @@ resetonexhaustion:true
 	["influenceforgeg",
 		"fragmentsecrethistoriese",
 		"ingredientforgef",
-		"fascination"],
+		"influencelanterne"],
 			drawmessages:{influenceforgeg:"Last night in the Mansus I visited the Malleary, from whose engines and avenues one does not emerge unchanged. I watched the processes of sunset and I entered the amber joy and the white joy and the blue joy and I was subjected to the enlightenments of calcination and the Forge of Days touched me with her burnished fingers and I rise from my bed with the utter knowledge that all nights, all nights, all nights must end.",
 		fragmentsecrethistoriese:"Last night in the Mansus I visited the Malleary, from whose hammers and crucibles one does not emerge unchanged, and for nine beats my heart ceased while it entered the fires of the Forge, and the passions of the Forge entered into it. I woke with the dawn, and its poor divided colours inspire memories of the Forge's passion for the Sun, of the Vagabond's curse, of the Grail's deep longing... so many half-memories.",
 		ingredientforgef:"Last night in the Mansus I visited the Malleary, from whose fires one does not emerge unchanged. The Forge's light fell upon me and my heart boiled and when I woke my blood burnt within me so that I had to shed it in a cup before it overwhelmed me
 and lo, ten drops of it were not blood, exactly, unless it be the Blood of the Sun. Perhaps I found the cup and the blood is not mine. The Forge sears memory.",
-		fascination:"Last night in the Mansus I visited the Malleary, from whose impulses and rotations one does not emerge unchanged. There are many radiances there, from the fires and the Forge and her Names and her instruments, but one radiance lingers behind them all like a fading music: the last light of the Sun-in-Splendour, shed in the moments of his Division, here where the Forge is strongest. Now that I have awoken, I see that radiance still. "},
+		influencelanterne:"Last night in the Mansus I visited the Malleary, from whose impulses and rotations one does not emerge unchanged. There are many radiances there, from the fires and the Forge and her Names and her instruments, but one radiance lingers behind them all like a fading music: the last light of the Sun-in-Splendour, shed in the moments of his Division, here where the Forge is strongest. Now that I have awoken, I see that radiance still. "},
 		defaultdrawmessages:{},
 resetonexhaustion:true
 	},
@@ -167,7 +171,7 @@ resetonexhaustion:true
 	influencelanterne:"Last night I came to the Concursum, the core of the Mansus, which has been called the Chamber of Revelations, whose mirrors are endless and whose paths all-encompassing. From here the Hours can see all that transpires in the Mansus. I saw the Watchman's light in the blue distance of the place, like a sun beneath the sea.",
 	influencemothe:"Last night I came to the Concursum, the Mansus-heart, which has been called the Chamber of Choices, where every path one does not take is a stillborn future. In the sea-sky blue of the Chamber's Light I saw the Sister-and-Witch pass, their four hands weaving two paths to one. I woke with my passions contorted to a knot. There's something I must do; there's always something I must do.",
 	influencewintere:"Last night I came to the Concursum, the place at which all the Mansus corridors end, which has been called the Chamber of Conclusions. Here the Hours meet in striving or execution or resignation. In the evening sapphire of the Chamber's light I saw the Sun-in-Rags pass with his shattered crown and his silent retinue, and this morning I woke shivering.",
-	fragmentsecrethistoriesc:"Last night I came to the Concursum, the Mansus-meridian, which has been called the chamber of Histories. I spoke there with an adept long dead. She told me of her flight through the House, these dozen decades and more, of the ways in which the dead survive outside the Hours and recall the unsanctioned histories, and this morning I recall the ending of one of her stories.",
+	fragmentsecrethistoriesc:"Last night I came to the Concursum, the Mansus-meridian, which has been called the Chamber of Histories. I spoke there with an adept long dead. She told me of her flight through the House, these dozen decades and more, of the ways in which the dead survive outside the Hours and recall the unsanctioned histories, and this morning I recall the ending of one of her stories.",
 	fascination:"Last night I came to the Concursum, the space at the centre of the Mansus, which has been called the Chamber of Mirrors. From here the Hours may pass to any place in the Mansus. I saw the Meniscate rise in the cobalt glory of the Chamber's light, dancer-lithe, moon-bright, and she reflected my face in her own and this morning that is all I can see."},
 		defaultdrawmessages:{},
 resetonexhaustion:true

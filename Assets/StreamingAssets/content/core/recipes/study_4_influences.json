@@ -3,7 +3,7 @@
 	id: "studyugradeknockinfluence",
 	label: "Accelerate Fractures",
 	actionId: "study",
-	requirements: {influence:2,lore:1, knock:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, knock:1},
 	effects:{project_influence_upgrade_subvert_knock:1},
 
 	linked: [
@@ -18,8 +18,9 @@
 	id: "studyupgradeinfluence_edge",
 	label: "Find the Moment of Intensest Opposition",
 	actionId: "study",
-	requirements: {influence:2,lore:1, edge:1,winter:-1,forge:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:-1,forge:-1,knock-1},
 	effects: {project_influence_upgrade_edge:1},
+	alternativerecipes:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "All of the greatest struggles end in death. [This will upgrade your Edge influence.]",
@@ -31,8 +32,9 @@
 	id: "studysubvertinfluence_edgetowinter",
 	label: "Subvert Edge Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, edge:1,winter:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, edge:1,winter:1},
 	effects: {project_influence_subvert_edgetowinter:1},
+	alternativerecipes:[{id:"dreadinduction_ifdread",chance:100,additional:true}],
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
 	startdescription: "All things end. I will meditate on the triumph of patience over strength. [This will create Winter influence instead of Edge.]",
@@ -45,12 +47,12 @@
 	id: "studyforgeinfluence",
 	label: "Build a Greater Heat",
 	actionId: "study",
-	requirements: {influence:2,lore:1, forge:1,edge:-1,lantern:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, forge:1,edge:-1,lantern:-1,knock-1},
 	effects:{project_influence_upgrade_forge:1},
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "Fires grow when fed.  [This will upgrade your Forge influence.]",
+	startdescription: "Fires grow when fed. [This will upgrade your Forge influence.]",
 	
 	warmup:5,
 	craftable: true
@@ -60,7 +62,7 @@
 	id: "studysubvertinfluence_forgetoedge",
 	label: "Subvert Forge Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, forge:1,edge:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, forge:1,edge:1},
 	effects:{project_influence_subvert_forgetoedge:1},
 
 	linked: [
@@ -75,11 +77,11 @@
 	id: "studygrailinfluence",
 	label: "Unite Appetites",
 	actionId: "study",
-	requirements: {influence:2,lore:1, grail:1,moth:-1,heart:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, grail:1,moth:-1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_grail:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "When we follow desires to their roots, we find the desires that lie beneath.  [This will upgrade your Grail influence.]",
+	startdescription: "When we follow desires to their roots, we find the desires that lie beneath. [This will upgrade your Grail influence.]",
 	
 	warmup:5,
 	craftable: true,
@@ -90,7 +92,7 @@
 	id: "studysubvertinfluence_grailtomoth",
 	label: "Subvert Grail Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, grail:1,moth:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, grail:1,moth:1},
 	effects:{project_influence_subvert_grailtomoth:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -105,11 +107,11 @@
 	id: "studyheartinfluence",
 	label: "Interweave the Rhythms Unceasing",
 	actionId: "study",
-	requirements: {influence:2,lore:1, heart:1,grail:-1,winter:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, heart:1,grail:-1,winter:-1,knock-1},
 	effects:{project_influence_upgrade_heart:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn.",
+	startdescription: "There are lessons the anatomist, the dancer and the shaman all learn. [This will upgrade your Heart influence.]",
 	
 	warmup:5,
 	craftable: true,
@@ -119,7 +121,7 @@
 	id: "studysubvertinfluence_hearttograil",
 	label: "Subvert Heart Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, heart:1,grail:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, heart:1,grail:1},
 	effects:{project_influence_subvert_hearttograil:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -128,17 +130,15 @@
 	warmup:5,
 	craftable: true,
 	},
-
-
 		{
 	id: "studylanterninfluence",
 	label: "Align Luminosities",
 	actionId: "study",
-	requirements: {influence:2,lore:1, lantern:1,forge:-1,moth:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, lantern:1,forge:-1,moth:-1,knock-1},
 	effects:{project_influence_upgrade_lantern:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "Where mirrors cross, where shadows part, where the Sun's golden blood pools thickest.  [This will upgrade your Lantern influence.]",
+	startdescription: "Where mirrors cross, where shadows part, where the Sun's golden blood pools thickest. [This will upgrade your Lantern influence.]",
 	
 	warmup:5,
 	craftable: true,
@@ -147,7 +147,7 @@
 	id: "studysubvertinfluence_lanterntoforge",
 	label: "Subvert Lantern Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, lantern:1,forge:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, lantern:1,forge:1},
 	effects:{project_influence_subvert_lanterntoforge:1},
 
 	linked: [{id: "studyinfluence_effectproject",chance:100}],
@@ -160,12 +160,13 @@
 	id: "studymothinfluence",
 	label: "Embrace the Possibilities of Peril",
 	actionId: "study",
-	requirements: {influence:2,lore:1, moth:1,lantern:-1,grail:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:-1,grail:-1,knock-1},
+	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
 	effects:{project_influence_upgrade_moth:1},
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "Now I turn my back on the things I understand.  [This will upgrade your Moth influence.]",
+	startdescription: "Now I turn my back on the things I understand. [This will upgrade your Moth influence.]",
 	
 	warmup:5,
 	craftable: true
@@ -175,7 +176,8 @@
 	id: "studysubvertinfluence_mothtolantern",
 	label: "Subvert Moth Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, moth:1,lantern:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, moth:1,lantern:1},
+	alternativerecipes:[{id:"fascinationinduction_iffascination",chance:100,additional:true}],
 	effects:{project_influence_subvert_mothtolantern:1},
 
 	linked: [
@@ -190,12 +192,12 @@
 	id: "studywinterinfluence",
 	label: "Deepen the Silence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, winter:1,heart:-1,knock-1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, winter:1,heart:-1,knock-1},
 	effects:{project_influence_upgrade_winter:1},
 
 	linked: [
 	{id: "studyinfluence_effectproject",chance:100}],
-	startdescription: "Silence waits west of the world, but not forever. [This will upgrade your Winter influence.].",
+	startdescription: "Silence waits west of the world, but not forever. [This will upgrade your Winter influence.]",
 	
 	warmup:5,
 	craftable: true
@@ -204,7 +206,7 @@
 	id: "subvertwinterinfluence",
 	label: "Subvert Winter Influence",
 	actionId: "study",
-	requirements: {influence:2,lore:1, winter:1,heart:1},
+	requirements: {influence:2,healthskill:-1,reasonskill:-1,passionskill:-1,lore:1, winter:1,heart:1},
 	effects:{project_influence_subvert_wintertoheart:1},
 
 	linked: [

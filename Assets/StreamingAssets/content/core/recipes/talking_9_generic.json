@@ -156,6 +156,7 @@ slots: [{id:"Subject",description:"A topic of conversation... or a minion who wi
 alternativerecipes:[
 {id:"hunterfitewithextraswole",chance:100},
 {id:"hunterfitewithswole",chance:100},
+{id:"hunterspeakpoison_glassfinger",chance:100},
 {id:"hunterspeakpoison",chance:100},
 {id:"hunterspeakwinterg",chance:100},
 {id:"hunterspeakwinterd",chance:100},
@@ -165,11 +166,6 @@ alternativerecipes:[
 {id:"hunterspeaklanternd",chance:100},
 {id:"hunterspeaklantern",chance:100},
 {id:"hunterspeakfascination",chance:100},
-
-
-
-
-
 {id:"hunterattackhighedge",chance:100},
 {id:"hunterattackmidedge",chance:100},
 {id:"hunterattacklowedge",chance:100},
@@ -229,7 +225,7 @@ craftable: true
 label:"The matter of learning Fucine",
 actionId: "talk",
 requirements: {scholarlatin:1,summoned: 1,spirittutorfucine:1},
-startdescription: "'Fucine? Yes, I get by in Fucine. I can teach you, if you have Latin as a grounding. But if I hear one crack about the 'tongue of witches', it's off.'[Use <b>STUDY</b> with the Baldomerian to learn Fucine].",
+startdescription: "'Fucine? Yes, I get by in Fucine. I can teach you, if you have Latin as a grounding. But if I hear one crack about the 'tongue of witches', it's off.' [Use <b>STUDY</b> with the Baldomerian to learn Fucine].",
 description: ".",
 craftable: true
 },
