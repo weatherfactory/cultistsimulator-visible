@@ -24,7 +24,7 @@ public class ElementStacksManager : IElementStacksManager {
     private StackManagersCatalogue _catalogue;
 
     public string Name { get; set; }
-    public bool EnforceUniqueStacks { get; set; }
+    public bool EnforceUniqueStacksInThisStackManager { get; set; }
 
     public ElementStacksManager(ITokenContainer container, string name) {
         Name = name;
@@ -143,7 +143,7 @@ public class ElementStacksManager : IElementStacksManager {
         NoonUtility.Log("Reassignment: " + stack.EntityId + " to " + this.Name, 10);
 
         // Check if we're dropping a unique stack? Then kill all other copies of it on the tabletop
-        if (EnforceUniqueStacks) 
+        if (EnforceUniqueStacksInThisStackManager) 
             RemoveDuplicates(stack);
 
         stack.SetStackManager(this);
@@ -156,17 +156,17 @@ public class ElementStacksManager : IElementStacksManager {
       
         if (!incomingStack.Unique && string.IsNullOrEmpty(incomingStack.UniquenessGroup))
             return;
-
+        
         foreach (var existingStack in new List<IElementStack>(_stacks)) {
-            // not the one we dropped AND the same ID? It's a copy!
+            
             if (existingStack != incomingStack && existingStack.EntityId == incomingStack.EntityId) {
+                NoonUtility.Log("Not the stack that got accepted, but has the same ID as the stack that got accepted? It's a copy!",10);
                 existingStack.Retire("hide");
                 return; // should only ever be one stack to retire!
-                        // Otherwise this crashes cause Retire changes the collection we are looking at
+                        // Otherwise this crashes because Retire changes the collection we are looking at
             }
             else if (existingStack != incomingStack && !string.IsNullOrEmpty(incomingStack.UniquenessGroup))
             {
-        
                 if (existingStack.UniquenessGroup == incomingStack.UniquenessGroup)
                     existingStack.Retire("hide"); //goddammit Martin this should be a constant
 
