@@ -140,6 +140,9 @@ namespace Assets.CS.TabletopUI {
                 Retire(true);
                 return;
             }
+
+            if (quantity > 1 && (Unique || !string.IsNullOrEmpty(UniquenessGroup)))
+                _quantity = 1;
             DisplayInfo();
         }
 
