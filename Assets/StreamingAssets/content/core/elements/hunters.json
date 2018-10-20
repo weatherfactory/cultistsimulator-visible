@@ -71,10 +71,10 @@ lifetime:600,decayTo:"corpse"
         id: "investigator3prisoner",
             label: "Connie Lee: Captured!",
             aspects:
-            {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,edge:3,dissolution:influenceedgee},
+            {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,edge:3},
             description: "The heiress, suffragist and adventurer. Let us be sure she dies in captivity.",
 unique:true,
-xtriggers: {killmortal:corpse,derangemortal:connie_r_c},
+xtriggers: {killmortal:corpse,derangemortal:connie_r_c,dissolution:influenceedgee},
 lifetime:600,decayTo:"corpse"
         },
 		
@@ -82,19 +82,19 @@ lifetime:600,decayTo:"corpse"
         id: "investigator4prisoner",
             label: "Doctor Natalia Dragon: Captured!",
             aspects:
-            {prisoner:1,mortal:1,lantern:5,grail:3,heart:3,dissolution:influencelanterne},
+            {prisoner:1,mortal:1,lantern:5,grail:3,heart:3},
             description: "She was laughed out of academia for her analyses of alternate histories, and it only made her more resolute.  Let us be sure she dies in captivity.",
 unique:true,
-xtriggers: {killmortal:corpse,derangemortal:natalia_r_c},
+xtriggers: {killmortal:corpse,derangemortal:natalia_r_c,dissolution:influencelanterne},
 lifetime:600,decayTo:"corpse"
         },
 				 {
         id: "defaulthunterprisoner",
             label: "Weary Detective Captured!",
             aspects:
-            {mortal:1,prisoner:1,lantern:5,grail:3,heart:3,dissolution:influenceforgec},
+            {mortal:1,prisoner:1,lantern:5,grail:3,heart:3},
             description: "This gentleman would much rather be left alone with his pipe and his Illustrated London News, but now he is mewed up in some wretched hole in the ground.",
-xtriggers: {killmortal:corpse,derangemortal:douglas_r,capturehunter:defaulthunterprisoner},
+xtriggers: {killmortal:corpse,derangemortal:douglas_r,capturehunter:defaulthunterprisoner,dissolution:influenceforgec},
 lifetime:600,decayTo:"corpse"
         }
 ]
