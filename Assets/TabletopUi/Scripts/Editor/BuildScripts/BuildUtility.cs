@@ -23,10 +23,12 @@ namespace Assets.Core.Utility
         private const string CONST_DECKS = "decks";
         private const string CONST_LEGACIES = "legacies";
         private const string CONST_DLC = "DLC";
+        private const string CONST_PERPETUALEDITIONLOCATION = "PERPETUAL_ALLDLC";
         private const string CONST_CORE_CONTENT_LOCATION = "StreamingAssets/content/core";
         private const string CONST_DATA_FOLDER_SUFFIX = "_Data";
         private const char CONST_NAME_SEPARATOR_CHAR = '_';
         private const char CONST_SLASH_CHAR = '/';
+        
         
 
         private static string[] GetScenes()
@@ -79,7 +81,7 @@ namespace Assets.Core.Utility
                     string dlcDestinationDir =
                         getBuildRootPath() + CONST_SLASH_CHAR + CONST_DLC + CONST_SLASH_CHAR +
                         dlctitle + CONST_SLASH_CHAR +
-                        platformFolderForTarget(target) + CONST_SLASH_CHAR +
+                        getPlatformFolderForTarget(target) + CONST_SLASH_CHAR +
                         dataFolderForTarget(exeNameForTarget(target)) + CONST_SLASH_CHAR +
                         CONST_CORE_CONTENT_LOCATION + CONST_SLASH_CHAR +
                         contentOfType;
@@ -142,7 +144,7 @@ namespace Assets.Core.Utility
             return exeName.Split('.')[0] + CONST_DATA_FOLDER_SUFFIX;
         }
 
-        private static string platformFolderForTarget(BuildTarget target)
+        private static string getPlatformFolderForTarget(BuildTarget target)
         {
             if (target == BuildTarget.StandaloneWindows)
                 return "Windows";
@@ -164,9 +166,18 @@ namespace Assets.Core.Utility
             CopySteamLibraries.Copy(target, pathToBuiltProject);
             Console.WriteLine(">>>>> Copying Galaxy libraries");
             CopyGalaxyLibraries.Copy(target, pathToBuiltProject + "/"); //we need the extra slash; we've been avoiding using it elsewhere in this code, but the GOG code expects it, and I don't want to edit it
-            //It belatedly occurs to me that there's a reason for using trailing slashes to indicate folders.
+                                                                        //It belatedly occurs to me that there's a reason for using trailing slashes to indicate folders.
 
+            Console.WriteLine(">>>>> Adding version number");
             AddVersionNumber(pathToBuiltProject);
+
+            string perpetualEditionLocation = getBuildRootPath() + CONST_SLASH_CHAR + CONST_PERPETUALEDITIONLOCATION + CONST_SLASH_CHAR + getPlatformFolderForTarget(target);
+
+            Console.WriteLine(">>>>> Copying whole project with DLC from " + pathToBuiltProject + " to Perpetual Edition location at " + perpetualEditionLocation);
+
+            DeleteContentsOfDirectory(perpetualEditionLocation);
+
+            CopyDirectoryWithContents(pathToBuiltProject, perpetualEditionLocation, true);
 
             Console.WriteLine(">>>>> Moving DLC content to individual DLC locations");
 
@@ -191,7 +202,7 @@ namespace Assets.Core.Utility
         private static string getBuildOutputPathForPlatform(BuildTarget target)
         {
 
-                return getBuildRootPath() + CONST_SLASH_CHAR + platformFolderForTarget(target);
+                return getBuildRootPath() + CONST_SLASH_CHAR + getPlatformFolderForTarget(target);
         }
 
         public static void PerformWindowsBuild()
@@ -284,6 +295,74 @@ namespace Assets.Core.Utility
         }
 
 
+        private static void DeleteContentsOfDirectory(string perpetualEditionLocation)
+        {
+
+            System.IO.DirectoryInfo di = new DirectoryInfo(perpetualEditionLocation);
+            if (!di.Exists)
+            {
+                Console.WriteLine(">>>>> Couldn't find " + perpetualEditionLocation + " to delete");
+                return;
+                ;
+            }
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+        }
+
+        private static void CopyDirectoryWithContents(string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+            // If the destination directory doesn't exist, create it.
+            if (!Directory.Exists(destDirName))
+            {
+                Directory.CreateDirectory(destDirName);
+            }
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                if (isPermittedFileToCopy(file))
+                {
+                    string temppath = Path.Combine(destDirName, file.Name);
+                    file.CopyTo(temppath, false);
+                }
+
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string temppath = Path.Combine(destDirName, subdir.Name);
+                    CopyDirectoryWithContents(subdir.FullName, temppath, copySubDirs);
+                }
+            }
+        }
+
+        private static bool isPermittedFileToCopy(FileInfo file)
+        {
+            return file.Name != ".dropbox";
+        }
+
 
         //[PostProcessBuild]
         //public static void PostProcessHook(BuildTarget target, string pathToBuiltProject)
@@ -293,7 +372,7 @@ namespace Assets.Core.Utility
 
         //    CopySteamLibraries.Copy(target, pathToBuiltProject);
         //    CopyGalaxyLibraries.Copy(target, pathToBuiltProject);
-            
+
         //    string exeFolder = Path.GetDirectoryName(pathToBuiltProject);
         //    AddVersionNumber(exeFolder);
         //    }
@@ -306,6 +385,6 @@ namespace Assets.Core.Utility
         //}
 
 
-        }
+    }
     }
 
