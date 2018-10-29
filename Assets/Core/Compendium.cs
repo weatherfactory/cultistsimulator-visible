@@ -315,13 +315,9 @@ public class Compendium : ICompendium
             return new Ending(endingFlag, title, desc, "suninrags", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DEATHOFTHEBODY");
 
         if (endingFlag == "despairending")
-<<<<<<< HEAD
-            return new Ending(endingFlag, title, desc, "despair", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DESPAIRENDING");
 
-=======
             return new Ending(endingFlag, "NO MORE",
                 "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DESPAIRENDING");
->>>>>>> gateofhorn
         if (endingFlag == "visionsending")
             return new Ending(endingFlag, title, desc, "madness", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VISIONSENDING");
 
