@@ -249,7 +249,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "minorlanternvictory")
             return new Ending(endingFlag, "THE INCURSUS",
-                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
+                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. The Glory is very close here. It leaks through the fabric of the House to contribute its light." +
                 " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first. Perhaps I will be the seventh." +
                 " [Congratulations on a standard Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY");
 
@@ -285,15 +285,15 @@ public class Compendium : ICompendium
 
         if (endingFlag == "minorlanternvictorywithrisen")
             return new Ending(endingFlag, "THE INCURSUS",
-                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. My dead beloved follows me like a shadow - and in the sanctified core of this light, shadows burn all the deeper. The Glory is very close here. It leaks through the fabric of the House to contribute its light. " +
-                " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first.  Perhaps my companion and I will join her." +
+                "I have passed through the Tricuspid Gate, and entered the high rooms of the Mansus. I will not live, but neither will I die. My dead beloved follows me like a shadow - and in the sanctified core of this light, shadows burn all the deeper. The Glory is very close here. It leaks through the fabric of the House to contribute its light." +
+                " One day - perhaps one day soon - the Pilgrimage will conclude, and the Watchman will permit seven souls to ascend further. The Hour called Vagabond will be the first. Perhaps my companion and I will join her." +
                 " [Congratulations on a variant Enlightenment victory. You have wrestled the game to its knees. There are other paths.] ", "doorintheeye", EndingFlavour.Grand, "DramaticLightCool", "A_ENDING_MINORLANTERNVICTORY_WITHRISEN");
 
 
         if (endingFlag == "minorheartvictorywithrisen")
             return new Ending(endingFlag, "LIFE, UNENDING",
                 "As the pain fades, so does my voice, but now my heart will speak for me. In the scales of Time shall it be weighed against a feather, and it shall not be found wanting. In my final shape I shall pass the Tricuspid Gate, as my dead beloved flaps behind like a flag in a storm, and add my heart's beat to the Thunderskin's chorus. " +
-                "Our rhythm is the rhythm of the Hours: and the Hours have promised that we shall endure with the world unceasing. My once-beloved will encircle me as the Grail donned the Thunderskin, and perhaps this is always what weas intended. We move eternally through the Mansus, and in eternity is our constancy assured." +
+                "Our rhythm is the rhythm of the Hours: and the Hours have promised that we shall endure with the world unceasing. My once-beloved will encircle me as the Grail donned the Thunderskin, and perhaps this is always what was intended. We move eternally through the Mansus, and in eternity is our constancy assured." +
                 "[Congratulations on a variant Change: Feather victory. You have wrestled the game to its knees. There are other paths.] ", "thunderskin", EndingFlavour.Grand, "DramaticLight", "A_ENDING_MINORHEARTVICTORY_WITHRISEN");
 
         if (endingFlag == "minormothvictorywithrisen")
@@ -316,7 +316,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "despairending")
             return new Ending(endingFlag, "NO MORE",
-                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread or Injury.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DESPAIRENDING");
+                "Despair, the wolf that devours thought. Am I alive, or am I dead? It no longer matters. [I allowed the Despair token to reach 3 Dread.]", "despair", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_DESPAIRENDING");
         if (endingFlag == "visionsending")
             return new Ending(endingFlag, "GLORY",
                 "First it was the dreams. Then it was the visions. Now it's everything. I no longer have any idea what is real, and what is not. [I allowed the Visions token to reach 3 Fascination.]", "madness", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_VISIONSENDING");
@@ -328,7 +328,7 @@ public class Compendium : ICompendium
         if (endingFlag == "arrest") 
             return new Ending(endingFlag, "BARS ACROSS THE SUN",
                 "The nature of my crimes was vague, and the trial contentious. But there is a consensus that I have done something I should not. I wish it could have been different. I wish " +
-                " that I could have done <i>everything</i> I should not. [Many Hunters have specific weaknesses. Perhaps you can use those weaknesses to stop them before they bring you to trial.]", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_ARREST"
+                "that I could have done <i>everything</i> I should not. [Many Hunters have specific weaknesses. Perhaps you can use those weaknesses to stop them before they bring you to trial.]", "notorious", EndingFlavour.Melancholy, "DramaticLightEvil", "A_ENDING_ARREST"
                 );
 
         if (endingFlag == "rivalascension")
@@ -345,7 +345,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "workvictoryb")
             return new Ending(endingFlag, "AMBITION'S TIDE",
-                "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my  rivals. I will grow " +
+                "I will rise high, and higher yet. My affairs will prosper. I will fill a fine house with elegant things. I will be honoured by my peers and slandered by my rivals. I will grow " +
                 "used to the sound of my name. Then one day, I will die, and some time after that, my name will be heard no more. [This should be considered a minor victory.]", "finehouse", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_WORKVICTORYB");
         if (endingFlag == "workvictorymarriage")
             return new Ending(endingFlag, "A NEW LIFE",
@@ -445,7 +445,7 @@ public class Compendium : ICompendium
 
         if (endingFlag == "sylviavictory")
             return new Ending(endingFlag, "EVER AFTER: SYLVIA",
-                "Life is not easy with her. There are arguments. There are times when I roam the streets, seeking whichever bright window -  that night - frames her and another. But she is unmercifully charming when she returns. There is always cause. We are drawn back together, again and again, and blot out the world with desire." +
+                "Life is not easy with her. There are arguments. There are times when I roam the streets, seeking whichever bright window - that night - frames her and another. But she is unmercifully charming when she returns. There is always cause. We are drawn back together, again and again, and blot out the world with desire." +
                 " [This might be considered a victory. But the House is no place for lovers.]", "sylvia", EndingFlavour.Melancholy, "DramaticLight", "A_ENDING_SYLVIAVICTORY");
 
         if (endingFlag == "clovettevictory")
