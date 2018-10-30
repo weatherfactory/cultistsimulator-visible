@@ -45,7 +45,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
 			if (IsInInputField())
 				return;
 
-            if ((Input.GetKeyDown("`") && Input.GetKey(KeyCode.LeftControl) ))
+            if (((Input.GetKeyDown("`") || Input.GetKeyDown(KeyCode.Quote)) && Input.GetKey(KeyCode.LeftControl) ))
             { 
                 _debugTools.gameObject.SetActive(!_debugTools.isActiveAndEnabled);
                 {
