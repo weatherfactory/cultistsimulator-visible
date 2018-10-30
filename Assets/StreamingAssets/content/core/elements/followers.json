@@ -1253,7 +1253,7 @@
             description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
 			animFrames: 1,
 			comments:"legacy element to keep saves valid",
-			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic}
+			xtriggers: {recruiting: generic_b,killmortal:corpse,derangemortal:lunatic,rebellion:generic_r}
         },
 									 {
         id: "generic_a_edge",
@@ -1262,7 +1262,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_edge}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_edge}
         },
 										 {
         id: "generic_a_forge",
@@ -1271,7 +1271,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_forge}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_forge}
         },
 										 {
         id: "generic_a_grail",
@@ -1280,7 +1280,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting: generic_b_grail}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting: generic_b_grail}
         },
 										 {
         id: "generic_a_heart",
@@ -1289,7 +1289,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_heart}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_heart}
         },
 										 {
         id: "generic_a_knock",
@@ -1298,7 +1298,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_knock}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_knock}
         },
 										 {
         id: "generic_a_lantern",
@@ -1307,7 +1307,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_lantern}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_lantern}
         },
 										 {
         id: "generic_a_moth",
@@ -1316,7 +1316,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,recruiting:generic_b_moth}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,recruiting:generic_b_moth}
         },
 										 {
         id: "generic_a_winter",
@@ -1325,7 +1325,7 @@
             {mortal: 1,acquaintance:1},
             animFrames: 1,
 		description: "Usefully malleable, but they'll probably never amount to much. [You might be able to recruit this acquaintance as a follower.]",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,recruiting:generic_b_winter}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,recruiting:generic_b_winter}
         },
 		{
         id: "generic_b",
@@ -1335,7 +1335,7 @@
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
 			comments: "This is a legacy element to support older saves.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
         },
 								 {
         id: "generic_b_edge",
@@ -1344,7 +1344,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_edge}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_edge}
         },
 										 {
         id: "generic_b_forge",
@@ -1353,7 +1353,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_forge}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_forge}
         },
 										 {
         id: "generic_b_grail",
@@ -1362,7 +1362,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_grail}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_grail}
         },
 										 {
         id: "generic_b_heart",
@@ -1371,7 +1371,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_heart}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_heart}
         },
 										 {
         id: "generic_b_knock",
@@ -1380,7 +1380,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_knock}
         },
 										 {
         id: "generic_b_lantern",
@@ -1389,7 +1389,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_lantern}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_lantern}
         },
 										 {
         id: "generic_b_moth",
@@ -1398,7 +1398,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_moth}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_moth}
         },
 										 {
         id: "generic_b_winter",
@@ -1407,7 +1407,7 @@
             {mortal: 1, follower: 1,edge:1},
             animFrames: 1,
 			description: "This one is loyal, but lacks initiative.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,promotiontodisciple:generic_c_winter}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,promotiontodisciple:generic_c_winter}
         },
 										 {
         id: "generic_c_edge",
@@ -1416,7 +1416,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:2},
             animFrames: 1,
 			description: "Loyalty,and muscles.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 										 {
         id: "generic_c_forge",
@@ -1425,7 +1425,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,forge:2},
             animFrames: 1,
 			description: "Loyal, and good with their hands.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 										 {
         id: "generic_c_grail",
@@ -1434,7 +1434,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,grail:2},
             animFrames: 1,
 			description: "Loyal, but greedy.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 										 {
         id: "generic_c_heart",
@@ -1443,7 +1443,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,heart:2},
             animFrames: 1,
 			description: "Loyal, and always ready with a song.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 								 {
         id: "generic_c_knock",
@@ -1452,7 +1452,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,knock:2},
             animFrames: 1,
 			description: "Loyal, and clever with locks.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 
 										 {
@@ -1462,7 +1462,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,lantern:2},
             animFrames: 1,
 			description: "Loyal, and keen-sighted.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 												 {
         id: "generic_c_moth",
@@ -1471,7 +1471,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,moth:2},
             animFrames: 1,
 			description: "Loyal, if peculiar; peculiar even for one of our kind.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r},
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r},
 			lifetime:600,
 			decayTo: lunatic
         },
@@ -1482,7 +1482,7 @@
             {mortal: 1, follower: 1,disciple:1,edge:1,winter:2},
             animFrames: 1,
 			description: "Loyal, and quiet as falling snow.",
-			xtriggers: {killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p,rebellion:generic_r}
+			xtriggers: {killmortal:corpse,derangemortal:lunatic,rebellion:generic_r,capturefollower:generic_p,rebellion:generic_r}
         },
 
 						 {
