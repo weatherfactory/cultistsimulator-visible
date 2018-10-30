@@ -6,6 +6,7 @@
 // Licensed under GNU General Public License v3.0
 // http://www.gnu.org/licenses/gpl-3.0.txt
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -28,7 +29,7 @@ public class MenuScreenController : MonoBehaviour {
     public Button newGameButton;
     public Button continueGameButton;
     public Button purgeButton;
-    public GameObject languageButton;
+    public Button languageButton;
 
     [Header("Overlays")]
     public CanvasGroupFader modal;
@@ -127,8 +128,6 @@ public class MenuScreenController : MonoBehaviour {
         continueGameButton.interactable = isLegalSaveGame;
         purgeButton.gameObject.SetActive(hasSavegame);
 
-        languageButton.gameObject.SetActive(CrossSceneState.LocEnabled);
-
         //update subtitle text
         SetEditionStatus();
         if (NoonUtility.PerpetualEdition)
@@ -164,6 +163,8 @@ public class MenuScreenController : MonoBehaviour {
 
 		// now we can take input
 		canTakeInput = true;
+
+        languageButton.gameObject.SetActive(CrossSceneState.LocEnabled);
     }
 
     void UpdateVersionNumber(bool hasNews) {

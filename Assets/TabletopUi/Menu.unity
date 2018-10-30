@@ -1207,11 +1207,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   newGameButton: {fileID: 951516272}
   continueGameButton: {fileID: 861245261}
   purgeButton: {fileID: 1079870540}
-  languageButton: {fileID: 945168196}
+  languageButton: {fileID: 945168199}
   modal: {fileID: 11293131}
   purgeConfirm: {fileID: 733228548}
   credits: {fileID: 1081729472}
@@ -39034,11 +39034,11 @@ GameObject:
   - component: {fileID: 945168198}
   m_Layer: 5
   m_Name: LanguageBtn
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &945168197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40790,7 +40790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -9.999954, y: 9.999939}
+  m_AnchoredPosition: {x: -9.999954, y: 9.999878}
   m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1082747527
@@ -55300,7 +55300,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1702584795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
