@@ -29,6 +29,7 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         private static Character _defunctCharacter;
         private static MetaInfo _metaInfo;
         private static GameState _gameState;
+        private static bool _locEnabled = false;
 
 
         /// <summary>
@@ -49,6 +50,12 @@ namespace Assets.TabletopUi.Scripts.Infrastructure
         public static GameState GameState
         {
             get { return _gameState; }
+        }
+
+        public static bool LocEnabled
+        {
+            get { return _locEnabled; }
+            set { _locEnabled = value; }
         }
 
         public static void RestartingGame()

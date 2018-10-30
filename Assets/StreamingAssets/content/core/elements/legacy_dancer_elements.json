@@ -30,7 +30,7 @@ aspects:{text:1}},
 	label: "A Contract at the Ecdysis Club",
 	description: "I perform at the Ecdysis Club, on the nights when it's open.",
 slots:[{id:"location",label:"The Ecdysis Club",description:"The Ecdysis Club, where I enact revelations before witnesses",actionId:work,required:{locationcabaret:1}},
-{id:"purpose",label:"Purpose",actionId:work,required:{changemarks:1,healthskill:1},description:"Use my Desire to pursue Change."}
+{id:"purpose",label:"Purpose",actionId:work,required:{changemarks:1,healthskill:1},description:"Show my Skill to gain access to more complex dances; or use my Desire to pursue Change; or leave empty if I'm just earning money."}
 {id:"abilityfirst",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{health:1,passion:1,scar:1}},
 {id:"influence",label:"Influence",description:"What stirs me today?",actionId:work,required:{influence:1},consumes:true},
 
@@ -41,7 +41,7 @@ slots:[{id:"location",label:"The Ecdysis Club",description:"The Ecdysis Club, wh
 	label: "A Superior Contract at the Ecdysis Club",
 	description: "I perform the more exacting dances at the Ecdysis Club.",
 slots:[{id:"location",label:"The Ecdysis Club",label:"The Ecdysis Club",description:"The Ecdysis Club, where I enact revelations before witnesses",actionId:work,required:{locationcabaret:1}},
-	{id:"purpose",label:"Purpose",actionId:work,required:{changemarks:1,healthskill:1},description:"Show my Skill to gain access to more complex dances; or use my Desire to pursue Change."},
+	{id:"purpose",label:"Purpose",actionId:work,required:{changemarks:1,healthskill:1},description:"Show my Skill to gain access to more complex dances; or use my Desire to pursue Change; or leave empty if I'm just earning money."},
 {id:"abilityfirst",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{health:1,passion:1,scar:1}},
 	{id:"abilitysecond",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{health:1,passion:1,scar:1}},
 	{id:"influence",label:"Influence",description:"What stirs me today?",actionId:work,required:{influence:1},consumes:true},
@@ -53,7 +53,7 @@ slots:[{id:"location",label:"The Ecdysis Club",label:"The Ecdysis Club",descript
 	label: "A Particular Arrangement with the Ecdysis Club",
 	description: "I am occasionally paid a generous consideration to perform very specific dances for very particular connoisseurs.",
 	slots:[{id:"location",label:"The Ecdysis Club",description:"The Ecdysis Club, where I enact revelations before witnesses",actionId:work,required:{locationcabaret:1}},
-	{id:"purpose",label:"Purpose",actionId:work,required:{changemarks:1,healthskill:1},description:"Show my Skill to gain access to more complex dances; or use my Desire to pursue Change."},
+	{id:"purpose",label:"Purpose",actionId:work,required:{changemarks:1,healthskill:1},description:"Use my Desire to pursue Change; or leave empty if I'm just earning money."},
 	{id:"abilityfirst",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{health:1,passion:1,scar:1}},
 	{id:"abilitysecond",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{health:1,passion:1,scar:1}},
 	{id:"abilitythird",label:"Ability, or Scar",description:"What of myself shall I commit?",actionId:work,required:{health:1,passion:1,scar:1}},

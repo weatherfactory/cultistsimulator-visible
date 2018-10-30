@@ -6,6 +6,7 @@
 // Licensed under GNU General Public License v3.0
 // http://www.gnu.org/licenses/gpl-3.0.txt
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -28,6 +29,7 @@ public class MenuScreenController : MonoBehaviour {
     public Button newGameButton;
     public Button continueGameButton;
     public Button purgeButton;
+    public Button languageButton;
 
     [Header("Overlays")]
     public CanvasGroupFader modal;
@@ -126,7 +128,6 @@ public class MenuScreenController : MonoBehaviour {
         continueGameButton.interactable = isLegalSaveGame;
         purgeButton.gameObject.SetActive(hasSavegame);
 
-
         //update subtitle text
         SetEditionStatus();
         if (NoonUtility.PerpetualEdition)
@@ -147,7 +148,13 @@ public class MenuScreenController : MonoBehaviour {
         LinuxHints.gameObject.SetActive(false);
 #endif
 
-
+        //The TextFromTextAsset script which is attached to the MenuScreenController object in the scene
+        //loads VersionNews.txt and puts the contents in the ContentText in the VersionNews overlay.
+        //This currently has a 'Version News failed to load!' default value and an attached Babelfish object
+        //which is *disabled*, because otherwise it overwrites our loaded Version News value.
+        //Ultimately we should re-enable this and do loc versions of Version News - we're not right now
+        //just because with regular updates it's much easier to write the version news in a text editor
+        //and paste into Steam, Twitter, Reddit etc
 
 
         UpdateVersionNumber(!isLegalSaveGame);
@@ -156,6 +163,8 @@ public class MenuScreenController : MonoBehaviour {
 
 		// now we can take input
 		canTakeInput = true;
+
+        languageButton.gameObject.SetActive(CrossSceneState.LocEnabled);
     }
 
     void UpdateVersionNumber(bool hasNews) {

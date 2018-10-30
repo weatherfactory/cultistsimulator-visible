@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Assets.TabletopUi.Scripts.Infrastructure;
 using Noon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -49,6 +50,10 @@ public class Config
 	        if (contents.Contains("knock=1"))
 	        {
 	            knock = true;
+	        }
+	        if (contents.Contains("loc=1"))
+	        {
+	            CrossSceneState.LocEnabled = true;
 	        }
         }
 	    else
