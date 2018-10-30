@@ -147,7 +147,13 @@ public class MenuScreenController : MonoBehaviour {
         LinuxHints.gameObject.SetActive(false);
 #endif
 
-
+        //The TextFromTextAsset script which is attached to the MenuScreenController object in the scene
+        //loads VersionNews.txt and puts the contents in the ContentText in the VersionNews overlay.
+        //This currently has a 'Version News failed to load!' default value and an attached Babelfish object
+        //which is *disabled*, because otherwise it overwrites our loaded Version News value.
+        //Ultimately we should re-enable this and do loc versions of Version News - we're not right now
+        //just because with regular updates it's much easier to write the version news in a text editor
+        //and paste into Steam, Twitter, Reddit etc
 
 
         UpdateVersionNumber(!isLegalSaveGame);
