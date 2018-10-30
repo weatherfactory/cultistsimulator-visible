@@ -28,6 +28,7 @@ public class MenuScreenController : MonoBehaviour {
     public Button newGameButton;
     public Button continueGameButton;
     public Button purgeButton;
+    public GameObject languageButton;
 
     [Header("Overlays")]
     public CanvasGroupFader modal;
@@ -126,6 +127,7 @@ public class MenuScreenController : MonoBehaviour {
         continueGameButton.interactable = isLegalSaveGame;
         purgeButton.gameObject.SetActive(hasSavegame);
 
+        languageButton.gameObject.SetActive(CrossSceneState.LocEnabled);
 
         //update subtitle text
         SetEditionStatus();
