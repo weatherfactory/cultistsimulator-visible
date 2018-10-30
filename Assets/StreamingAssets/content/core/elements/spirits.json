@@ -7,7 +7,7 @@
             {follower:1, summoned:1,winter:4,edge:4},
             description: "A rending force has dragged this corpse back to near-life. When it moves, it crunches like broken glass. Its fists are claw-nests of bone-shards. It won't hold together for long.",
 			xtriggers:{renewshattered:spirit_wintera_edge},
-			lifetime: 60
+			lifetime: 120
         },
 		{
 		         id: "spirit_wintera_moth",
@@ -16,7 +16,7 @@
             {follower:1, summoned:1,winter:4,moth:4},
             description: "The growths of the Wood have encompassed the corpse's organs, swelled its skull like a gourd, twined around its heart. It eyes are moist with cunning, and it moves with jerky puppet grace. Its bones are rotten wood, and soon it will take root, but until then it will be a swift and subtle servant.",
 			xtriggers:{renewburgeoning:spirit_wintera_moth},
-			lifetime: 60
+			lifetime: 120
         },
 {        id: "spirit_winterb_heart",
             label: "Voiceless Dead",
