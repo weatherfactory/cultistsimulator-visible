@@ -100,8 +100,11 @@ namespace Assets.Core.Entities
             if(cardsList.Contains(elementId))
             {
                 RemoveCardFromDeckInstance(elementId, cardsList);
-                TryAddToEliminatedCardsList(elementId); //if the card isn't in the list, it's either (a) already been drawn or (b) isn't in the deck to begin with. If it's already been drawn, then it itself should be the sole non-eliminated card.
             }
+
+            if(_deckSpec.StartingCards.Contains(elementId))
+                TryAddToEliminatedCardsList(elementId); //if the card isn't in the list, it's either (a) already been drawn or (b) isn't in the deck to begin with. If it's already been drawn, then it itself should be the sole non-eliminated card.
+
         }
         ///remove this from the undrawn cards. This won't affect default draws.
         private void RemoveCardFromDeckInstance(string elementId, List<string> cardsList)
