@@ -12,7 +12,8 @@
         description: "The corpse lurches groaning to its feet: or what is left of its feet. I have conjured a Shattered Risen.",
         warmup: 60,
         craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
+		comments:"it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+		mutations:[{filterOnAspectId:corpse,mutateAspectId:follower,mutationLevel:0}],
     },
   	{
         id: "summon_spirit_wintera_moth",
@@ -24,7 +25,8 @@
         description: "The corpse sways to its feet. Its eyes struggle open. Sap trickles from its mouth. It burgeons; it has risen.",
         warmup: 60,
         craftable: true,
-		linked: [{id:"summoninglosingcontrol",chance:30}]
+		comments:"it's possible for a corpse to have a negative follower mutation - eg, if the follower is wounded. Let's strip it out, just in case. We could add a mutation to lose any outstanding wounds too, but I'm leery of messing too much.",
+		mutations:[{filterOnAspectId:corpse,mutateAspectId:follower,mutationLevel:0}]
     },
 	 
  	{
