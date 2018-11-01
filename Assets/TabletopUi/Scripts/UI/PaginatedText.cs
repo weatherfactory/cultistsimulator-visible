@@ -37,6 +37,15 @@ namespace Assets.CS.TabletopUI {
             nextPage.onClick.RemoveListener(ShowNextPage);
         }
 
+		public void Reset()
+		{
+			targetPage = currentPage;
+			var animOut = AnimatedNoteBase.AnimType.None;
+			var animIn = AnimatedNoteBase.AnimType.MoveRight;
+
+			TriggerAnim(animOut, animIn, SetPageToTargetPage, null);	
+		}
+
         public void SetText(string description) {
             //we often add a . to indicate that the description is intentionally empty.
             //if we do that, or if it's a mistaken empty string, just go back.
@@ -94,11 +103,13 @@ namespace Assets.CS.TabletopUI {
 			SoundManager.PlaySfx("SituationWindowTextMove");
         }
 
-		void ShowPage(int offset, AnimDirection anim) {
+		void ShowPage(int offset, AnimDirection anim)
+		{
 			if (IsBusy())
 				return;
 
-			if (gameObject.activeInHierarchy) {
+			if (gameObject.activeInHierarchy)
+			{
                 targetPage = currentPage + offset;
 
                 var animOut = (anim != AnimDirection.MoveLeft ? AnimatedNoteBase.AnimType.MoveLeft : AnimatedNoteBase.AnimType.MoveRight);
@@ -106,7 +117,8 @@ namespace Assets.CS.TabletopUI {
 
                 TriggerAnim(animOut, animIn, SetPageToTargetPage, null);
             }
-			else { 
+			else
+			{
 				SetPage(currentPage + offset);
             }
         }
