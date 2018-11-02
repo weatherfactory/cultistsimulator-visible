@@ -1,8 +1,8 @@
 {"recipes": [
 	  	  	   {id: "annoyanceseducehighgrail",
-	   label: "派出一名难以抗拒的仆从去诱惑和污名带来麻烦的家伙",
+	   label: "派出一名难以抗拒的手下去诱惑和玷污那位眼中钉",
 	  actionId:"talk",
-	  startdescription:"我想要摆脱这些带来麻烦的家伙。他们甚至会享受他们的堕落。",
+	  startdescription:"我想要摆脱我的这些眼中钉。他们或许甚至会享受他们的堕落吧。",
 	  description:".",
 	  requirements: {annoyance:1,grail:10,follower:1},
 	  linked: [{id:"annoyanceseducesuccess",chance:70},
@@ -10,9 +10,9 @@
 	  ]
 	  },
 	  	   {id: "annoyanceseducemidgrail",
-	   label: "派出一名诱人的仆从去诱惑和羞辱带来麻烦的家伙",
+	   label: "派出一名诱人的手下去诱惑和玷污那位眼中钉",
 	  actionId:"talk",
-	  startdescription:"每一个人都有一个格外另自己愉悦的事物，那便是弱点。我会派一名懂得很多让人愉悦的特质的仆从。他们成功的可能性很大。",
+	  startdescription:"每个人都会因为特殊的偏好而具有弱点。我会派出一名熟悉这些偏爱特点的手下。他很有可能成功。",
 	  description:".",
 	  requirements: {annoyance:1,grail:5,follower:1},
 	  linked: [{id:"annoyanceseducesuccess",chance:70},
@@ -20,9 +20,9 @@
 	  ]
 	  },
 	  	  	   {id: "annoyanceseducelowgrail",
-	   label: "派出一名诱人的仆从去诱惑和羞辱带来麻烦的家伙",
+	   label: "派出一名有些诱人的手下去诱惑和玷污那位眼中钉",
 	  actionId:"talk",
-	  startdescription: "谁知道这能不能成功？这些带来麻烦的家伙可能根本不觉得我的仆从哪里迷人。",
+	  startdescription: "谁知道这能不能成功？我的那位眼中钉可能根本不觉得我的手下哪里迷人。",
 	  description:".",
 	  requirements: {annoyance:1,grail:1,follower:1},
 	  linked: [{id:"annoyanceseducesuccess",chance:30},
@@ -31,10 +31,10 @@
 	  },
 	  
 	  {id: "annoyanceseducesuccess",
-	   label: "诱惑带来麻烦的家伙...",
+	   label: "正在诱惑眼中钉……",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从回来了。他们找到了那个带来麻烦的家伙会为之屈服的特别诱惑；我的仆从只付出了一些小小的代价，就对他们的名誉造成了彻底的毁坏。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下回来了。他找到了那个眼中钉会为之屈服的特别诱惑；我的手下只付出了一些小小的代价，就对他的名誉造成了彻底的毁坏。",
 	  aspects:{endannoyance:1},	  
 	  warmup:30	  
 	  },
@@ -42,28 +42,28 @@
 	  
 	  
 	  {id: "annoyanceseducefailure",
-	   label: "诱惑带来麻烦的家伙...",
+	   label: "正在诱惑眼中钉……",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从带回了令人失望的消息。他们找不到能让那些给我们带来麻烦的家伙失去理智的诱惑。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下带回了令人失望的消息。他找不到能让那些眼中钉不能自己的诱惑。",
 	  warmup:30	  
 	  },
 	  
 	  
 	  
 	    {id: "annoyanceattackhighedge",
-	   label: "派一股不可抵挡的力量去谋杀带来麻烦的家伙",
+	   label: "派一股不可抵挡的力量去谋杀眼中钉",
 	  actionId:"talk",
-	  startdescription:"我对这些讨厌的东西失去耐心了。除非他们有什么特殊的保护，不然他们应该已经死了。但是他们的死亡是会引起注意的。",
+	  startdescription:"我对那个惹我嫌厌的家伙彻底失去了耐心。除非他们有什么特殊的保护，不然他们早就该死掉了。但是，他们的死亡会引起别人的关注。",
 	  description:".",
 	  requirements: {annoyance:1,edge:10,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:100},
 	  ]
 	  },
 	  	   {id: "annoyanceattackmidedge",
-	   label: "派一位强大的仆从去谋杀带来麻烦的家伙",
+	   label: "派一位强大的手下去谋杀眼中钉",
 	  actionId:"talk",
-	  startdescription:"我对这些讨厌的东西失去耐心了。这件事应该结束了。但是他们也可能生还，而这次尝试可能会引起注意。",
+	  startdescription:"我对那个惹我嫌厌的家伙彻底失去了耐心。这件事早就应该结束了。但他们说不定能够逃过一劫，而我的这次尝试很可能会引起别人的关注。",
 	  description:".",
 	  requirements: {annoyance:1,edge:5,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:70},
@@ -71,9 +71,9 @@
 	  ]
 	  },
 	  	  	   {id: "annoyanceattacklowedge",
-	   label: "派一位仆从去谋杀带来麻烦的家伙",
+	   label: "派一位手下去谋杀眼中钉",
 	  actionId:"talk",
-	  startdescription:"我想这个带来麻烦的家伙消失。但是这个方法很冒险：我的仆从的能力有限。烦人的家伙有很大可能生还，并可能会引起注意。",
+	  startdescription:"我想让那位眼中钉消失。但这个方法很冒险：我的手下能力有限。那位眼中钉有很大的可能生还，而我的尝试则可能会引起别人的关注。",
 	  description:".",
 	  requirements: {annoyance:1,edge:1,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:30},
@@ -81,9 +81,9 @@
 	  ]
 	  },
 	   {id: "annoyanceattacknoedge",
-	   label: "派某个不合适的人去谋杀带来麻烦的家伙",
+	   label: "派某个能力不够的人去谋杀眼中钉",
 	  actionId:"talk",
-	  startdescription:"我的仆从缺失刃，很不幸，他并不适合去袭击带来麻烦的家伙。他们只有很小的概率能够成功。",
+	  startdescription:"我的手下缺失<b>刃</b>的属性，很不幸，他并不适合用来谋杀眼中钉。他只有非常小的概率能够成功。",
 	  description:".",
 	  requirements: {annoyance:1,follower:1},
 	  linked: [{id:"annoyanceattacksuccess",chance:10},
@@ -93,10 +93,10 @@
 	  
 	  
 	  {id: "annoyanceattacksuccess",
-	   label: "结束带来麻烦的家伙",
+	   label: "正在谋杀眼中钉……",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从回来了，带着战利品。带来麻烦的家伙已经被消灭了。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下回来了，带着战利品。那位眼中钉已经被除掉了。",
 	  aspects:{endannoyance:1},
 	  effects: {corpse:1,notoriety:1},
 	  alternativerecipes: [{id:"annoyancecapturesuccess",chance:30}],
@@ -105,10 +105,10 @@
 	  },
 	  
 	  	  {id: "annoyancecapturesuccess",
-	   label: "结束带来麻烦的家伙",
+	   label: "正在谋杀眼中钉……",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从回来了，带着一位囚犯！...现在他将有时间来后悔他之前的选择。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下回来了，带着一位囚犯！……现在他倒是有很长的时间来后悔之前的选择了。",
 	  aspects: {endannoyance:1},
 	  effects: {notoriety:1,genericprisonerm:1},
 	  aspects: {endannoyance:1},
@@ -118,10 +118,10 @@
 	  
 	  
 	  {id: "annoyanceattackfailure",
-	   label: "结束带来麻烦的家伙",
+	   label: "正在谋杀眼中钉……",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从没有回来。他们一定是失败了。这可能会令人尴尬。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下没能回来。他一定是失败了。情况很可能会变得很尴尬。",
 	  effects: {follower:-1,notoriety:1},
 	  warmup:10	  
 	  },
@@ -130,9 +130,9 @@
 	  
 	  
 	  	   {id: "annoyancederangemidmoth",
-	   label: "派一位卑鄙的仆从去逼疯带来麻烦的家伙",
+	   label: "派一位卑鄙的手下去逼疯那位眼中钉",
 	  actionId:"talk",
-	  startdescription:"我想让带来麻烦的家伙离开。这次计划有可能成功，但是如果失败了，可能会引起注意的。",
+	  startdescription:"我想让那位眼中钉离开。这次的计划有可能成功，但如果失败了，可能会引起别人的关注。",
 	  description:".",
 	  requirements: {annoyance:1,moth:5,follower:1},
 	  linked: [{id:"annoyancederangesuccess",chance:70},
@@ -140,9 +140,9 @@
 	  ]
 	  },
 	  	  	   {id: "annoyancederangelowmoth",
-	   label: "派一位卑鄙的仆从去逼疯带来麻烦的家伙",
+	   label: "派一位卑鄙的手下去逼疯那位眼中钉",
 	  actionId:"talk",
-	  startdescription:"我想让带来麻烦的家伙消失。但是我的仆从能力有限。这很有可能失败，而如果失败了，可能会引起注意。",
+	  startdescription:"我想让那位眼中钉消失。但是我的手下能力有限。这很有可能失败，而且一旦失败了，可能会引起别人的关注。",
 	  description:".",
 	  requirements: {annoyance:1,moth:1,follower:1},
 	  linked: [{id:"annoyancederangesuccess",chance:30},
@@ -151,10 +151,10 @@
 	  },
 	  
 	  {id: "annoyancederangesuccess",
-	   label: "为带来麻烦的家伙安排夜靥",
+	   label: "为眼中钉安排噩梦",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从回来了。带来麻烦的家伙再也无法清楚地说话了，更别说再烦我了。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下回来了。那位眼中钉再也无法清晰地说话了，更别说再烦我了。",
 	  aspects:{endannoyance:1},	  
 	  warmup:30	  
 	  },
@@ -162,10 +162,10 @@
 	  
 	  
 	  {id: "annoyancederangefailure",
-	   label: "为带来麻烦的家伙安排夜靥",
+	   label: "为眼中钉安排噩梦",
 	  actionId:"talk",
-	  startdescription: "我等着消息....",
-	  description:"我的仆从回来了。带来麻烦的家伙比我们想象的更顽强。他们的精神状态完好无损。",
+	  startdescription: "我等待着消息……",
+	  description:"我的手下回来了。那位眼中钉比我们想象得更顽强。他的精神状态完好无损。",
 	  effects: {notoriety:1},
 	  warmup:30	  
 	  },

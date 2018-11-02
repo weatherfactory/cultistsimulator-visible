@@ -1,403 +1,2284 @@
-{
-"recipes": [
-
-
-	   {
-        id: "ascensionpower_upgradetoobsession",
-        label: "燃烧之匙",
-        actionId: "work",
-        requirements: {ascensionpowerb:1,
-		waystag_after:1,
-		forge:6},
-        effects: {ascensionpowerb:-1,ascensionpowerc:1},
-        startdescription: "这道仪式是令光阴之炉降临在我体内的关键。我将被永远改变。",
-        description: "仪式完成了。我身上出现了炉之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果检查我的身体，我会发现第三个印记。我因为新的需求容光焕发。",
-        warmup: 60,
-        craftable: true,
-				burnimage: "flammarion"
-    },
-		
-	   {
-	   comments: "male and female flavour; //TODO implement more elegantly",
-        id: "ascensionsensation_upgradetoobsessionm",
-        label: "叹息之匙",
-        actionId: "work",
-        requirements: {ascensionsensationbm:1,
-		waystag_after:1,
-		grail:6},
-        effects: {ascensionsensationbm:-1,ascensionsensationc:1},
-        startdescription: "这道仪式是令赤杯降临在我体内的关键。我将被永远改变。",
-        description: "仪式完成了。我身上出现了杯之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查我的身体，我会发现第三个。我因这新的欲望欢欣鼓舞。",
-        warmup: 60,
-        craftable: true,
-				burnimage: "flammarion"
-    },
-		   {
+﻿{
+recipes: [
+	{
+		requirements: 
+		{
+			ascensionpowerb: "1",
+			waystag_after: "1",
+			forge: "6",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "燃烧之钥",
+		startdescription: "这道仪式是钥匙，令光阴之炉进入我的身体。我将永久地改变。",
+		id: "ascensionpower_upgradetoobsession",
+		actionId: "work",
+		description: "仪式完成了。我身上出现了<b>炉</b>之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我精神振奋，焕发出新的需求。",
+		effects: 
+		{
+			ascensionpowerb: "-1",
+			ascensionpowerc: "1",
+		},
+		burnimage: "flammarion",
+	},
+	{
+		requirements: 
+		{
+			waystag_after: "1",
+			ascensionsensationbm: "1",
+			grail: "6",
+		},
+		craftable: "true",
 		comments: "male and female flavour; //TODO implement more elegantly",
-        id: "ascensionsensation_upgradetoobsessionf",
-        label: "叹息之匙",
-        actionId: "work",
-        requirements: {ascensionsensationbf:1,
-		waystag_after:1,
-		grail:6},
-        effects: {ascensionsensationbf:-1,ascensionsensationc:1},
-        startdescription: "这道仪式是令赤杯降临在我体内的关键。我将被永远改变。",
-        description: "仪式完成了。我身上出现了杯之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查我的身体，我会发现第三个。我因这新的欲望欢欣鼓舞。",
-        warmup: 60,
-        craftable: true,
-				burnimage: "flammarion"
-    },
-			   {
-        id: "ascensionsensation_switchpolarity_mtof",
-        label: "偏好",
-        actionId: "dream",
-        requirements: {ascensionsensationbm:1},
-        effects: {ascensionsensationbm:-1,ascensionsensationbf:1},
-        startdescription: "我在梦中尽我所能达到了最远的地方。我必须执行我的<b>工作</b>。但有可能，在我思考我的需求的时候，并不总会想到男人……",
-        description: "口味会改，需求会变，想法会步入异途。",
-        warmup: 3,
-        craftable: true
-    },
-			   {
-        id: "ascensionsensation_switchpolarity_ftom",
-        label: "偏好",
-        actionId: "dream",
-        requirements: {ascensionsensationbf:1},
-        effects: {ascensionsensationbf:-1,ascensionsensationbm:1},
-        startdescription: "我在梦中尽我所能达到了最远的地方。我必须完成我的<b>工作</b>。但有可能，在我思考我的需求的时候，并不总会想到女人……",
-        description: "口味会改，需求会变，想法会步入异途。",
-        warmup: 3,
-        craftable: true
-    },
-
-	
-	   {
-        id: "ascensionenlightenment_upgradetoobsession",
-        label: "盲目之匙",
-        actionId: "work",
-        requirements: {ascensionenlightenmentb:1,
-		waystag_after:1,
-		lantern:6},
-        effects: {ascensionenlightenmentb:-1,ascensionenlightenmentc:1},
-        startdescription: "这个仪式是令守夜人的凝视降临在我体内的关键。我将被永远改变。",
-        description: "仪式完成了。我身上出现了守夜人印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个。我的饥饿现已被精炼提纯。",
-        warmup: 60,
-        craftable: true,
-				burnimage: "flammarion"
-    },
-	   {
-        id: "majorforgevictory",
-        label: "黎明将至",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionpowerf:1,
-		forge:50},
-        effects: {},
-        startdescription: "[This text is available when advanced legacies arrive.]",
-        description: "Remember that the ending text will contain the payload.",
-        warmup: 60,
-        craftable: false
-    },
-	   {
-        id: "minorforgevictory",
-        label: "忱之爆发",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionpowerf:1,
-		forge:36},
-        effects: {},
-        startdescription: "我出入火海无数次。肉炉箅上的盘子层层叠叠。我对炉子施法，让热浪灼烧，从我身上烧掉从前的我。在通过三尖瓣门的时候我会死去，但死亡并不意味着结束。我会获得永生：一个长生者，受到炉的优待。",
-        description: "我快要成为火的名字。Remember that the ending text will contain the payload.",
-        warmup: 60,
-        craftable: true,
-		signalEndingFlavour: Grand,
-		ending: "minorforgevictory"
-    },	
-		   {
-        id: "majorgrailvictory",
-        label: "盛宴在附近",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionsensationf:1,
-		grail:50},
-        effects: {},
-        startdescription: "[This text is available when advanced legacies arrive.]",
-        description: "盛宴要开始了。Remember that the ending text will contain the payload.",
-        warmup: 60,
-        craftable: false
-    },
-	   {
-        id: "minorgrailvictory",
-        label: "真实降生的盛宴",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionsensationf:1,
-		grail:36},
-        effects: {},
-        startdescription: "我因他人的生命而肿胀。我身体的接缝开始破裂。现在我向赤杯祈求，她是山岳之母，她挥霍生命，她是万物之源。以她的名字我将给予我自己重生。三尖门打开了。我会获得永生：一个长生者，受到赤杯的优待。",
-        description: "我来了……",
-        warmup: 60,
-        craftable: true,
-		signalEndingFlavour: Grand,
-		ending: "minorgrailvictory"
-    },
-		   {
-        id: "majorlanternvictory",
-        label: "灯",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionenlightenmentf:1,
-		lantern:50},
-        effects: {},
-        startdescription: "[This text is available when advanced legacies arrive.]",
-        description: "I am approaching the Glory. Remember that the ending text will contain the payload.",
-        warmup: 60,
-        craftable: false
-    },
-	   {
-        id: "minorlanternvictory",
-        label: "神掠",
-        actionId: "work",
-        requirements: {ritual: 1,
-		ascensionenlightenmentf:1,
-		lantern:36},
-        effects: {},
-        startdescription: "肉体所剩无几。我将穿过三尖门，一去不回。守夜人在等我。在他的足迹中，我会发现光界之光。我的灵魂无法承受更多理解，所以它会敞开。我不会得到永生：我将超越永生。",
-        description: "我来了……",
-        warmup: 60,
-        craftable: true,
-		signalEndingFlavour: Grand,
-		ending: "minorlanternvictory"
-    },
-	
-		{id:"ambition",
-		requirements: {seasonambitions:1},
-		label:"来自异域的渴求？",
-		actionId: "craving",
-		slots: [{id:"Obsessions",description: "深层的欲望。",required: {enlightenmentmarks:3,powermarks:3,sensationmarks:3}, greedy:true }],
-		startdescription: "对什么的饥渴在驱使我？",
-		description: "",
-		effects: {},
-		warmup: 10,
-		linked: [	
-		{id:"ascensioncravingpower",chance:100},
-		{id:"ascensioncravingsensation",chance:100},
-		{id:"ascensioncravingenlightenment",chance:100},
-		{id:"ascensionnotyet",chance:100}]
+		warmup: "60",
+		label: "叹息之钥",
+		startdescription: "这道仪式是钥匙，令赤杯进入我的身体。我将永久地改变。",
+		id: "ascensionsensation_upgradetoobsessionm",
+		actionId: "work",
+		description: "仪式完成了。我身上出现了<b>杯</b>之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我战栗不已，焕发出新的欲望。",
+		effects: 
+		{
+			ascensionsensationc: "1",
+			ascensionsensationbm: "-1",
 		},
-		
-		{id:"ascensionnotyet",
-		label:"凡人的失意。",
-		actionId: "craving",
-		requirements: {enlightenmentmarks:-1,powermarks:-1,sensationmarks:-1},
-		slots: [{id:"Temptations",description: "火焰需要投喂。",required: {desire:1}, greedy:true }],
-		startdescription: "对什么的饥渴在驱使我？",
-		effects: {restlessness:1},
-		description: "至今，我只有其他凡人的需求和渴望。但是什么在我心中激起波澜？",
-		alternativerecipes: [
-		{id:"ascensionhintpower2",chance:100},
-		{id:"ascensionhintenlightenment2",chance:100},
-{id:"ascensionhintsensation2m",chance:100},
-		{id:"ascensionhintsensation2f",chance:100},
-		
-		{id:"ascensionhintpower1",chance:100},
-		{id:"ascensionhintenlightenment1",chance:100},
-		{id:"ascensionhintsensation1",chance:100},
-		{id:"legacydetectiveplotitem_tempt",chance:100}
+		burnimage: "flammarion",
+	},
+	{
+		requirements: 
+		{
+			waystag_after: "1",
+			ascensionsensationbf: "1",
+			grail: "6",
+		},
+		craftable: "true",
+		comments: "male and female flavour; //TODO implement more elegantly",
+		warmup: "60",
+		label: "叹息之钥",
+		startdescription: "这道仪式是钥匙，令赤杯进入我的身体。我将永久地改变。",
+		id: "ascensionsensation_upgradetoobsessionf",
+		actionId: "work",
+		description: "仪式完成了。我身上出现了<b>杯</b>之印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我战栗不已，焕发出新的欲望。",
+		effects: 
+		{
+			ascensionsensationc: "1",
+			ascensionsensationbf: "-1",
+		},
+		burnimage: "flammarion",
+	},
+	{
+		requirements: 
+		{
+			ascensionsensationbm: "1",
+		},
+		craftable: "true",
+		warmup: "3",
+		label: "偏好",
+		startdescription: "我在梦中尽我所能达到了最远的地方。我必须完成我的<b>工作</b>。但有可能，在我思考我的欲望的时候，想到的不是男人……",
+		id: "ascensionsensation_switchpolarity_mtof",
+		actionId: "dream",
+		description: "口味会改，需求会变，想法会改弦易辙。",
+		effects: 
+		{
+			ascensionsensationbm: "-1",
+			ascensionsensationbf: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionsensationbf: "1",
+		},
+		craftable: "true",
+		warmup: "3",
+		label: "偏好",
+		startdescription: "我在梦中尽我所能达到了最远的地方。我必须完成我的<b>工作</b>。但有可能，在我思考我的需求的时候，想到的不是女人……",
+		id: "ascensionsensation_switchpolarity_ftom",
+		actionId: "dream",
+		description: "口味会改，需求会变，想法会改弦易辙。",
+		effects: 
+		{
+			ascensionsensationbm: "1",
+			ascensionsensationbf: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			waystag_after: "1",
+			ascensionenlightenmentb: "1",
+			lantern: "6",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "致盲之钥",
+		startdescription: "这道仪式是钥匙，令守夜人的凝视进入我的身体。我将永久地改变。",
+		id: "ascensionenlightenment_upgradetoobsession",
+		actionId: "work",
+		description: "仪式完成了。我身上出现了守夜人印记。第一个印记是我说过的话，第二个印记是我做过的事。如果我检查自己的身体，还会发现第三个印记。我会发现第三个印记。我的饥饿现在变得更加精纯。",
+		effects: 
+		{
+			ascensionenlightenmentb: "-1",
+			ascensionenlightenmentc: "1",
+		},
+		burnimage: "flammarion",
+	},
+	{
+		requirements: 
+		{
+			ritual: "1",
+			forge: "50",
+			ascensionpowerf: "1",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "黎明将至",
+		startdescription: "[This text is available when advanced legacies arrive.]",
+		id: "majorforgevictory",
+		actionId: "work",
+		description: "Remember that the ending text will contain the payload.",
+		effects: 
+		{
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "minorforgevictory_overture",
+				chance: "100",
+			},
 		],
-		warmup:10
-		},
-		
-		
-				{id:"ascensionhintpower2",
-		label:"炉之咆哮",
-		actionId:"craving",
-		requirements:{ascensionpowerb:1},
-		startdescription:"现在的我，从未得到过足够的温暖。",
-		description: "我曾梦见过炉，我渴望她火焰的热量。差不多是时候执行工作，带来改变了——但我必须要有足够的铸要素。 <b>探索</b> 可能会找到更多要素。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-			{id:"ascensionhintenlightenment2",
-		label:"守夜人之光",
-		actionId:"craving",
-		requirements:{ascensionenlightenmentb:1},
-		startdescription:"即使在行走的时候，我也能开始看到一些新的颜色。",
-		description: "我的好奇心开始变成了生理需求。我的眼睛将成为临界点。差不多是时候执行工作，带来改变了——但我必须要有足够的灯要素。<b>探索</b>可能会找到更多要素。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-				{id:"ascensionhintsensation2m",
-		label:"杯之触碰",
-		actionId:"craving",
-		requirements:{ascensionsensationbm:1},
-		startdescription:"我的欲望在改变。",
-		description: "杯中绝美的浪潮向我涌来。差不多是时候执行工作，带来改变了——但我必须要有足够的杯要素。<b>探索</b>可能会找到更多要素。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-						{id:"ascensionhintsensation2f",
-		label:"杯之触碰",
-		actionId:"craving",
-		requirements:{ascensionsensationbf:1},
-		startdescription:"我的欲望在改变。",
-		description: "杯用她绝美的手指触碰了我。差不多是时候执行工作，带来改变了——但我必须要有足够的杯要素。<b>探索</b>可能会找到更多要素。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		{id:"ascensionhintpower1",
-		label:"炉之辉光",
-		actionId:"craving",
-		requirements:{ascensionpowera:1},
-		startdescription:"饥饿在我心中燃烧——为那看不见的艺术可能带来的力量而饥饿。",
-		description: "光阴之炉在我的梦中守候着。如果我学到炉之秘识，梦见炉之诱惑，我会向目标更进一步。这份需求在侵蚀我。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-			{id:"ascensionhintenlightenment1",
-		label:"守夜人的足迹",
-		actionId:"craving",
-		requirements:{ascensionenlightenmenta:1},
-		startdescription:"饥饿在我的头脑中发热——为那看不见的艺术可能带来的知识而饥饿。",
-		description: "守夜人，作为眼中之门，在我的梦中守候着。如果我学到灯之秘识，梦见灯之诱惑，我会向目标更进一步。这份需求在侵蚀我。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-				{id:"ascensionhintsensation1",
-		label:"杯之私语",
-		actionId:"craving",
-		requirements:{ascensionsensationa:1},
-		startdescription:"饥饿在我体内游荡——为那看不见的艺术可能带来的愉悦而饥饿。",
-		description: "赤杯，淹没之杯，吞噬之杯，守候在我的梦中。如果我学到杯之秘识，梦见杯之诱惑，我会朝目标更进一步。这份渴求正在侵蚀我。",
-		effects:{restlessness:1},
-		warmup:10
-		},
-
-		{id:"ascensioncravingpower",
-		label:"有形之火",
-		actionId: "craving",
-		requirements: {powermarks:1},
-		slots: [{id:"Fuels",description: "火焰需要投喂。",required: {funds:1}, greedy:true }],
-		startdescription: "我需要更热的火。燃料稀缺又昂贵。如果我负担不起，寒冷就会压倒我。",
-		linked: [{id:"ascensionsuccesscravingpower_descend",chance:100},
-		{id:"ascensioncravingpower_ascend",chance:100}],
-		warmup:30
-		},
-		
+		requirements: 
 		{
-		id:"ascensionsuccesscravingpower_descend",
-		label:"易变之灰",		
-		actionId: "craving",
-		requirements: {funds:-1},
-		slots: [{id:"Pain",description: "我的渴求正在侵蚀我", required: {health:1,vitality:1}, greedy:true}],		
-		startdescription: "我在颤抖。一旦离开火，我的肉体将瘦削又虚弱。",
-		description: "我的力气更少了。我的血液更冷了。我甚至觉得我身上的一些伤口也在愈合。我被削弱了。",
-		aspects: {descend:1,damagehealth:1},
-		effects:{vitality:-1},
-		warmup:30
+			ritual: "1",
+			forge: "36",
+			ascensionpowerf: "1",
 		},
-		
-				{
-		id:"ascensioncravingpower_ascend",
-		label:"另一个印记",
-		actionId: "craving",
-		startdescription:"",
-		description: "火焰渴求我，正如我渴求火焰。火焰的触碰不仅仅只能带来疼痛。我拥有了另一个印记。",
-		effects: {vitality:2,funds:-1},
-		aspects: {ascend:1}
+		craftable: "true",
+		comments: "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+		effects: 
+		{
+			summoned: "-3",
+			follower: "-3",
+			passion: "-3",
 		},
-		
-
-		
-		{id:"ascensioncravingsensation",
-		label:"红色的需求",
-		actionId: "craving",
-		requirements: {sensationmarks:1},
-				slots: [{id:"Sustenance",description: "新死之人，或者还活着的人。",required: {corpse:1, lunatic:-1, prisoner:1}, greedy:true }],
-				startdescription: "渴望鲜血？要是有那么简单就好了。我会一点不剩地吸吮干净。",
-		linked: [
-		{id:"ascensionsuccesscravingsensation_descend",chance:100},
-		{id:"ascensioncravingsensation_ascend",chance:100}
+		warmup: "1",
+		label: "The Conflagration of the Heart",
+		startdescription: "I have been in the flame so many times. The plates of my flesh grate one against another. I conjure now the heat of the Forge, which will sear from me what I was. I will die as I pass the Tricuspid Gate, but death is not the end. I will be immortal: a Long, favoured of the Forge. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
+		id: "minorforgevictory_trigger",
+		comment: "NEW",
+		actionId: "work",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "belovedfarewell",
+				chance: "100",
+			},
+			{
+				id: "minorforgevictorywithrisen",
+				chance: "100",
+			},
+			{
+				id: "minorforgevictory",
+				chance: "100",
+			},
 		],
-		warmup:30
-		},
-
-		
-		{
-		id:"ascensionsuccesscravingsensation_descend",
-		label:"内心荒漠",		
-		actionId: "craving",
-		requirements: {corpse:-1,lunatic:-1,prisoner:-1},
-		slots: [{id:"Pain",description: "我的渴求正在侵蚀我", required: {passion:1,glimmering:1}, greedy:true}],		
-		startdescription: "没有了别人的生命，我的生命将自给自足。",
-		description: "血水变得稀薄。肉体变得干枯。蜕变的茧散开。热情随之黯淡。我离理想的自己更远了。",
-		aspects: {descend:1,fatiguing:1},
-		effects:{glimmering:-1},
-		warmup:30
-		},
-		
-		
+		comment: "NEW",
+		warmup: "60",
+		label: "The Conflagration of the Heart",
+		signalEndingFlavour: "Grand",
+		id: "minorforgevictory_overture",
+		actionId: "work",
+		description: "I am becoming a name of fire. Remember that the ending text will contain the payload.",
+		slots: 
+		[
+			{
+				id: "beloved",
+				required: 
 				{
-		id:"ascensioncravingsensation_ascend",
-		label:"另一个印记",
-		actionId: "craving",
-		effects: {glimmering:2,corpse:-1,lunatic:-1,prisoner:-1},
-		startdescription:"",
-			description: "完成之后，愉悦会如海中之月般深沉。另一个印记在我体内萌发了。",
-		aspects: {ascend:1}
-		},
-		
-		
-		
-				{id:"ascensioncravingenlightenment",
-		label:"光的猎奇",
-		actionId: "craving",
-		requirements: {enlightenmentmarks:1},
-		slots: [{id:"Conversation",description: "沉思者最后的遗言",required: {prisoner:1}, greedy:true }],
-		startdescription: "静室，安谧的时光和独处的沉思者。我只需要这些。",
-		linked: [,
-		{id:"ascensionsuccesscravingenlightenment_descend",chance:100},
-		{id:"ascensioncravingenlightenment_ascend",chance:100}],
-		warmup:30
-		},
-
-		
-		{
-		id:"ascensionsuccesscravingenlightenment_descend",
-		label:"内心荒漠",		
-		actionId: "craving",
-		requirements: {prisoner:-1},
-		slots: [{id:"Pain",description: "我的渴求正在侵蚀我", required: {reason:1,erudition:1}, greedy:true}],		
-		startdescription: "如果我不能摄入一位沉思者的思绪，我的需求会反噬我。",
-		description: "居所的光在我体内黯淡了。我退化了。我需要与人对话。我一定要得到那些特别的对话。",
-		aspects: {descend:1,fatiguing:1},
-		effects:{erudition:-1},
-		warmup:30
-		},
-		
+					romanticinterest: "1",
+				},
+				greedy: "true",
+				forbidden: 
 				{
-		id:"ascensioncravingenlightenment_ascend",
-		label:"另一个印记",
-		actionId: "craving",
-		effects: {erudition:2,prisoner:-1},
-		startdescription:"",
-		description: "我饮下了他脑中的光芒。他让我激颤而充盈。我体内的印记又亮了一层。",
-		aspects: {ascend:1}
+					corpse: "1",
+					notoriety: "1",
+				},
+				label: "Beloved",
+			},
+		],
+	},
+	{
+		id: "minorforgevictory",
+		requirements: 
+		{
+			ascensionpowerf: "1",
 		},
-	
-		
-	
-	
+		actionId: "work",
+		label: "心中之焰",
+		ending: "minorforgevictory",
+	},
+	{
+		id: "minorforgevictorywithrisen",
+		requirements: 
+		{
+			summoned: "1",
+			ascensionpowerf: "1",
+		},
+		actionId: "work",
+		comment: "NEW",
+		label: "The Conflagration of the Heart",
+		ending: "minorforgevictorywithrisen",
+	},
+	{
+		requirements: 
+		{
+			ritual: "1",
+			ascensionsensationf: "1",
+			grail: "50",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "<b>盛宴将启</b>",
+		startdescription: "[This text is available when advanced legacies arrive.]",
+		id: "majorgrailvictory",
+		actionId: "work",
+		description: "The Feast is beginning. Remember that the ending text will contain the payload.",
+		effects: 
+		{
+		},
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			ritual: "1",
+			ascensionsensationf: "1",
+			grail: "27",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "60",
+		ending: "minorgrailvictory",
+		label: "The Feast of the Heart's Remembrance",
+		startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. One is here who loved me and whom perhaps I have loved, as perhaps the Red Grail loved the Thunderskin before his end. With this sacrifice, the invocation is both easier and more terrible. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail, and one who loved me will be remembered as long as I endure.",
+		signalEndingFlavour: "Grand",
+		id: "minorgrailvictory_withromanticsacrifice",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "minorgrailvictory_overture",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			ascensionsensationf: "1",
+			grail: "36",
+		},
+		craftable: "true",
+		comments: "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+		effects: 
+		{
+			summoned: "-3",
+			follower: "-3",
+			passion: "-3",
+		},
+		warmup: "1",
+		label: "The Feast of the True Birth",
+		startdescription: "I am swollen with the lives of others. The seams of my body begin to rupture. Now I invoke the Red Grail, who is the Mother of Mountains, who Consumes, who is the Source. In Her Name I will give birth to myself. The Tricuspid Gate opens. I will be immortal: a Long, favoured of the Grail. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
+		id: "minorgrailvictory_trigger",
+		comment: "NEW",
+		actionId: "work",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "minorgrailvictorywithrisen",
+				chance: "100",
+			},
+			{
+				id: "belovedfarewell",
+				chance: "100",
+			},
+			{
+				id: "minorgrailvictory",
+				chance: "100",
+			},
+		],
+		comment: "NEW",
+		warmup: "60",
+		label: "The Feast of the True Birth",
+		signalEndingFlavour: "Grand",
+		id: "minorgrailvictory_overture",
+		actionId: "work",
+		description: ".",
+		slots: 
+		[
+			{
+				id: "beloved",
+				required: 
+				{
+					romanticinterest: "1",
+				},
+				greedy: "true",
+				forbidden: 
+				{
+					corpse: "1",
+					notoriety: "1",
+				},
+				label: "Beloved",
+			},
+		],
+	},
+	{
+		id: "minorgrailvictory",
+		requirements: 
+		{
+			ascensionsensationf: "1",
+		},
+		actionId: "work",
+		label: "真实诞生的宴席",
+		ending: "minorgrailvictory",
+	},
+	{
+		id: "minorgrailvictorywithrisen",
+		requirements: 
+		{
+			summoned: "1",
+			ascensionsensationf: "1",
+		},
+		actionId: "work",
+		comment: "NEW",
+		label: "The Feast of the True Birth",
+		ending: "minorgrailvictorywithrisen",
+	},
+	{
+		requirements: 
+		{
+			ritual: "1",
+			lantern: "50",
+			ascensionenlightenmentf: "1",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "<b>灯</b>",
+		startdescription: "[This text is available when advanced legacies arrive.]",
+		id: "majorlanternvictory",
+		actionId: "work",
+		description: "I am approaching the Glory. Remember that the ending text will contain the payload.",
+		effects: 
+		{
+		},
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			summoned: "-1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "The Threshold Choice",
+		startdescription: "The final farewell. They will remain, and I will ascend.",
+		id: "belovedfarewell",
+		actionId: "work",
+		slots: 
+		[
+			{
+				id: "decision",
+				required: 
+				{
+					passion: "1",
+				},
+				description: "[Add Passion to turn aside from your ascent... and live as a mortal with your beloved. Do nothing to continue.]",
+				label: "Decision",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "auclairvictory",
+				chance: "100",
+			},
+			{
+				id: "catvictory",
+				chance: "100",
+			},
+			{
+				id: "clovettevictory",
+				chance: "100",
+			},
+			{
+				id: "cliftonvictory",
+				chance: "100",
+			},
+			{
+				id: "dorothyvictory",
+				chance: "100",
+			},
+			{
+				id: "elridgevictory",
+				chance: "100",
+			},
+			{
+				id: "enidvictory",
+				chance: "100",
+			},
+			{
+				id: "laidlawvictory",
+				chance: "100",
+			},
+			{
+				id: "leovictory",
+				chance: "100",
+			},
+			{
+				id: "nevillevictory",
+				chance: "100",
+			},
+			{
+				id: "portervictory",
+				chance: "100",
+			},
+			{
+				id: "reniravictory",
+				chance: "100",
+			},
+			{
+				id: "rosevictory",
+				chance: "100",
+			},
+			{
+				id: "salibavictory",
+				chance: "100",
+			},
+			{
+				id: "sleevictory",
+				chance: "100",
+			},
+			{
+				id: "sylviavictory",
+				chance: "100",
+			},
+			{
+				id: "tristanvictory",
+				chance: "100",
+			},
+			{
+				id: "valcianevictory",
+				chance: "100",
+			},
+			{
+				id: "victorvictory",
+				chance: "100",
+			},
+			{
+				id: "violetvictory",
+				chance: "100",
+			},
+			{
+				id: "ysabetvictory",
+				chance: "100",
+			},
+			{
+				id: "imnotinlove",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqauclair: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "auclairvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with your beloved Auclair.]",
+		signalEndingFlavour: "Grand",
+		id: "auclairvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqcat: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "catvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Cat Caro.]",
+		signalEndingFlavour: "Grand",
+		id: "catvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqclovette: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "clovettevictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Clovette.]",
+		signalEndingFlavour: "Grand",
+		id: "clovettevictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqclifton: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "cliftonvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Clifton.]",
+		signalEndingFlavour: "Grand",
+		id: "cliftonvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqdorothy: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "dorothyvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Dorothy.]",
+		signalEndingFlavour: "Grand",
+		id: "dorothyvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqelridge: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "elridgevictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Elridge.]",
+		signalEndingFlavour: "Grand",
+		id: "elridgevictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqenid: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "enidvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Enid.]",
+		signalEndingFlavour: "Grand",
+		id: "enidvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqlaidlaw: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "laidlawvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Laidlaw.]",
+		signalEndingFlavour: "Grand",
+		id: "laidlawvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			uqleo: "1",
+			romanticinterest: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "leovictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Leo.]",
+		signalEndingFlavour: "Grand",
+		id: "leovictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqneville: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "nevillevictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Neville.]",
+		signalEndingFlavour: "Grand",
+		id: "nevillevictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqporter: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "portervictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Porter.]",
+		signalEndingFlavour: "Grand",
+		id: "portervictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqrenira: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "reniravictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Renira.]",
+		signalEndingFlavour: "Grand",
+		id: "reniravictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqrose: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "rosevictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Rose.]",
+		signalEndingFlavour: "Grand",
+		id: "rosevictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqsaliba: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "salibavictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Saliba.]",
+		signalEndingFlavour: "Grand",
+		id: "salibavictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqslee: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "sleevictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Slee.]",
+		signalEndingFlavour: "Grand",
+		id: "sleevictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqsylvia: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "sylviavictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Sylvia.]",
+		signalEndingFlavour: "Grand",
+		id: "sylviavictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqtristan: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "tristanvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Tristan.]",
+		signalEndingFlavour: "Grand",
+		id: "tristanvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqvalciane: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "valcianevictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Valciane.]",
+		signalEndingFlavour: "Grand",
+		id: "valcianevictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqvictor: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "victorvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Victor.]",
+		signalEndingFlavour: "Grand",
+		id: "victorvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			passion: "1",
+			uqviolet: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "violetvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Violet.]",
+		signalEndingFlavour: "Grand",
+		id: "violetvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		requirements: 
+		{
+			romanticinterest: "1",
+			uqysabet: "1",
+			passion: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		ending: "ysabetvictory",
+		label: "Love?",
+		startdescription: "I heard a story once: of scales where one pan held a heart, and the other a feather. This the choice I now make, though the feather be eternity. [This choice will abort your Ascension, and make the choice to live as a mortal with Ysabet.]",
+		signalEndingFlavour: "Grand",
+		id: "ysabetvictory",
+		description: ".",
+		actionId: "work",
+	},
+	{
+		id: "imnotinlove",
+		craftable: "false",
+		alternativerecipes: 
+		[
+			{
+				id: "minorlanternvictory",
+				chance: "100",
+			},
+			{
+				id: "minorgrailvictory",
+				chance: "100",
+			},
+			{
+				id: "minorforgevictory",
+				chance: "100",
+			},
+		],
+		actionId: "work",
+		comment: "NEW",
+		label: "Dedication",
+		startdescription: "Perhaps they love me. Perhaps I love them. Perhaps none of that matters.",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "minorlanternvictory_overture",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ritual: "1",
+			lantern: "36",
+			ascensionenlightenmentf: "1",
+		},
+		craftable: "true",
+		comments: "Cleanup pre-recipe; remove any extraneous elements that might confuse final triggers",
+		effects: 
+		{
+			summoned: "-3",
+			follower: "-3",
+			passion: "-3",
+		},
+		warmup: "1",
+		label: "The Incursus",
+		startdescription: "Little of this flesh remains. I will pass through the Tricuspid Gate and I will not return. The Watchman awaits me. In His footsteps, I will find the Glory's light. The understanding is too much for my soul to hold, and so my soul will open. I will not be immortal: I will be more than that. [Any Follower used in the ritual will be consumed. If you care about whom you might leave behind, be careful.]",
+		id: "minorlanternvictory_trigger",
+		comment: "NEW",
+		actionId: "work",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "minorlanternvictorywithrisen",
+				chance: "100",
+			},
+			{
+				id: "belovedfarewell",
+				chance: "100",
+			},
+			{
+				id: "minorlanternvictory",
+				chance: "100",
+			},
+		],
+		comment: "NEW",
+		warmup: "60",
+		label: "The Incursus",
+		signalEndingFlavour: "Grand",
+		id: "minorlanternvictory_overture",
+		actionId: "work",
+		description: ".",
+		slots: 
+		[
+			{
+				id: "beloved",
+				required: 
+				{
+					romanticinterest: "1",
+				},
+				greedy: "true",
+				forbidden: 
+				{
+					corpse: "1",
+					notoriety: "1",
+				},
+				label: "Beloved",
+			},
+		],
+	},
+	{
+		id: "minorlanternvictory",
+		requirements: 
+		{
+			ascensionenlightenmentf: "1",
+		},
+		actionId: "work",
+		label: "神掠",
+		ending: "minorlanternvictory",
+	},
+	{
+		id: "minorlanternvictorywithrisen",
+		requirements: 
+		{
+			summoned: "1",
+			ascensionenlightenmentf: "1",
+		},
+		actionId: "work",
+		comment: "NEW",
+		label: "The Incursus",
+		ending: "minorlanternvictorywithrisen",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "L_ascension_rival",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "L_independent",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "L_rebellion_activate",
+				comment: "NEW",
+				chance: "70",
+			},
+			{
+				id: "L_rebellion_noactivation",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingpower",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingsensation",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingenlightenment",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfromg",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfromf",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfrome",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfromd",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfromc",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfromb",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_tryascendfroma",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "ascensionnotyet",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			seasonambitions: "1",
+		},
+		effects: 
+		{
+		},
+		warmup: "10",
+		label: "来自异域的渴求？",
+		startdescription: "对什么的饥渴在驱使我？",
+		id: "ambition",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Obsessions",
+				required: 
+				{
+					changemarks: "1",
+					powermarks: "3",
+					resentment: "3",
+					sensationmarks: "3",
+					independent: "1",
+					enlightenmentmarks: "3",
+				},
+				description: "更深层的欲望。",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		id: "L_independent",
+		comment: "NEW",
+		deckeffect: 
+		{
+			schemeevents: "1",
+		},
+		requirements: 
+		{
+			independent: "1",
+		},
+		linked: 
+		[
+			{
+				id: "L_independent_router",
+				chance: "100",
+			},
+		],
+		label: "Rivalry!",
+		actionId: "ambition",
+	},
+	{
+		id: "L_independent_router",
+		comments: "That requirement is strictly unnecessary, but leaving it here just in case we move recipe connections again - it's an important filter",
+		startdescription: "Here is another who would ascend before me. [Independent occultists will try to monopolise the attention of the Hours. They may also conduct other schemes, whether you like it or not.]",
+		requirements: 
+		{
+			independent: "1",
+		},
+		comment: "NEW",
+		label: "Rivalry!",
+		alternativerecipes: 
+		[
+			{
+				id: "scheme_murderhunter",
+				expulsion: 
+				{
+					filter: 
+					{
+						independent: "1",
+					},
+					limit: "1",
+				},
+				chance: "100",
+				additional: "true",
+			},
+			{
+				id: "scheme_expedition_grab",
+				expulsion: 
+				{
+					filter: 
+					{
+						independent: "1",
+					},
+					limit: "1",
+				},
+				chance: "100",
+				additional: "true",
+			},
+			{
+				id: "scheme_activities",
+				expulsion: 
+				{
+					filter: 
+					{
+						independent: "1",
+					},
+					limit: "1",
+				},
+				chance: "100",
+				additional: "true",
+			},
+		],
+		actionId: "ambition",
+	},
+	{
+		requirements: 
+		{
+			rivalmarks: "7",
+		},
+		comment: "NEW",
+		ending: "rivalascension",
+		label: "A Pretender Victorious",
+		startdescription: "My Rival's achievements eclipse my own. Now they will ascend to a place in the House of the Sun, while here, in the world, I will remain alone with my frustrations.",
+		signalEndingFlavour: "Melancholy",
+		id: "L_ascension_rival",
+		warmup: "60",
+		actionId: "ambition",
+	},
+	{
+		requirements: 
+		{
+			resentment: "3",
+		},
+		comment: "NEW",
+		warmup: "30",
+		aspects: 
+		{
+			rebellion: "1",
+		},
+		label: "Rebellion!",
+		startdescription: "Too much, or not enough? Whatever I've done, it's angered someone beyond forbearance.",
+		id: "L_rebellion_activate",
+		description: "An ally has broken away from me. They might not be an enemy - not yet - not exactly - but they will no longer serve me.",
+		actionId: "ambition",
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "follower",
+				mutateAspectId: "resentment",
+				mutationLevel: "-1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "30",
+		label: "Discontent",
+		startdescription: "Too much, or not enough? Whatever I've done, it's angered an ally.",
+		id: "L_rebellion_noactivation",
+		description: "This one has spent some time in sulky solitude. For now, they'll return to the fold.",
+		actionId: "ambition",
+		requirements: 
+		{
+			resentment: "3",
+		},
+	},
+	{
+		requirements: 
+		{
+			powermarks: "-1",
+			sensationmarks: "-1",
+			enlightenmentmarks: "-1",
+		},
+		effects: 
+		{
+			restlessness: "1",
+		},
+		warmup: "10",
+		label: "凡人的失意",
+		startdescription: "对什么的饥渴在驱使我？",
+		id: "ascensionnotyet",
+		actionId: "craving",
+		description: "至今为止，我所有的，不过是其他凡人都拥有的需求和渴望。但是，究竟是什么在我的内心激起波澜？",
+		slots: 
+		[
+			{
+				id: "Temptations",
+				required: 
+				{
+					desire: "1",
+				},
+				description: "火焰需要投喂。",
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "ascensionhintpower2",
+				chance: "100",
+			},
+			{
+				id: "ascensionhintenlightenment2",
+				chance: "100",
+			},
+			{
+				id: "ascensionhintsensation2m",
+				chance: "100",
+			},
+			{
+				id: "ascensionhintsensation2f",
+				chance: "100",
+			},
+			{
+				id: "ascensionhintpower1",
+				chance: "100",
+			},
+			{
+				id: "ascensionhintenlightenment1",
+				chance: "100",
+			},
+			{
+				id: "ascensionhintsensation1",
+				chance: "100",
+			},
+			{
+				id: "legacydetectiveplotitem_tempt",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			ascensionpowerb: "1",
+		},
+		warmup: "10",
+		label: "炉之咆哮",
+		startdescription: "现在的我，从未得到过足够的温暖。",
+		id: "ascensionhintpower2",
+		actionId: "craving",
+		description: "我曾梦见炉，我渴望她火焰的热量。差不多是时候开始工作，带来改变了——但我必须要有足够的<b>铸</b>属性。<b>探索</b>可能会帮我找到更多。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionenlightenmentb: "1",
+		},
+		warmup: "10",
+		label: "守夜人之光",
+		startdescription: "即使在清醒时，我也开始看见新的颜色。",
+		id: "ascensionhintenlightenment2",
+		actionId: "craving",
+		description: "好奇心开始变成我的生理需求。我的双眼将会成为入口。差不多是时候开始工作，带来改变了——但我必须拥有足够多的<b>灯</b>属性。<b>探索</b>可能会帮我找到更多。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionsensationbm: "1",
+		},
+		warmup: "10",
+		label: "杯之触碰",
+		startdescription: "我的欲望在改变。",
+		id: "ascensionhintsensation2m",
+		actionId: "craving",
+		description: "杯美妙的浪潮向我涌来。差不多是时候开始工作，带来改变了——但我必须要有足够的<b>杯</b>属性。<b>探索</b>可能会帮我找到更多。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionsensationbf: "1",
+		},
+		warmup: "10",
+		label: "杯之触碰",
+		startdescription: "我的欲望在改变。",
+		id: "ascensionhintsensation2f",
+		actionId: "craving",
+		description: "<b>杯</b>用她美妙的手指触碰了我。差不多是时候执行工作，带来改变了——但我必须要有足够的<b>杯</b>属性。<b>探索</b>可能会帮我找到更多。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionpowera: "1",
+		},
+		warmup: "10",
+		label: "炉之火光",
+		startdescription: "我心中燃烧着渴求——渴求那无形之仪将会带来的力量。",
+		id: "ascensionhintpower1",
+		actionId: "craving",
+		description: "光阴之炉在我的梦中守候着。如果我学到<b>铸</b>之知识，并以此诱惑入梦，我会向目标更进一步。这份需求在侵蚀着我。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionenlightenmenta: "1",
+		},
+		warmup: "10",
+		label: "守夜人的足迹",
+		startdescription: "我脑中满溢着渴求——渴求那无形之仪将会带来的知识。",
+		id: "ascensionhintenlightenment1",
+		actionId: "craving",
+		description: "守夜人，即瞳中之扉，在我的梦中等候着。如果我学到<b>灯</b>之知识，并以此诱惑入梦，我会向目标更进一步。这份需求在侵蚀着我。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionsensationa: "1",
+		},
+		warmup: "10",
+		label: "杯之私语",
+		startdescription: "我身上缠绕着渴求——渴求那无形之仪带来的愉悦。",
+		id: "ascensionhintsensation1",
+		actionId: "craving",
+		description: "赤杯，淹没之杯，吞噬之杯，在我的梦中等候着。如果我学到<b>杯</b>之知识，并以此诱惑入梦，我会向目标更进一步。这份渴求正在侵蚀着我。",
+		effects: 
+		{
+			restlessness: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensionsuccesscravingpower_descend",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingpower_ascend",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			powermarks: "1",
+		},
+		warmup: "30",
+		label: "塑形之火",
+		startdescription: "我需要更热的火。现今燃料稀缺又昂贵。如果我无法负担，寒冷就会拖垮我。",
+		id: "ascensioncravingpower",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Fuels",
+				required: 
+				{
+					funds: "1",
+				},
+				description: "火焰需要添喂燃料",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			funds: "-1",
+		},
+		effects: 
+		{
+			vitality: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			damagehealth: "1",
+			descend: "1",
+		},
+		label: "易变之灰",
+		startdescription: "我在颤抖。一旦离开火，我的肉体将变得瘦削而虚弱。",
+		id: "ascensionsuccesscravingpower_descend",
+		actionId: "craving",
+		description: "我的力气所剩无几。我的血液变凉了。我甚至觉得身上的一些伤口正在愈合。我被削弱了。",
+		slots: 
+		[
+			{
+				id: "Pain",
+				required: 
+				{
+					vitality: "1",
+					health: "1",
+				},
+				description: "我的渴求正在侵蚀着我",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		id: "ascensioncravingpower_ascend",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		description: "火焰渴求我，正如我渴求火焰。火焰的触碰带来的绝不仅是疼痛。我拥有了另一个印记。",
+		effects: 
+		{
+			vitality: "2",
+			funds: "-1",
+		},
+		label: "另一个印记",
+		actionId: "craving",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensionsuccesscravingsensation_descend",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingsensation_ascend",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			sensationmarks: "1",
+		},
+		warmup: "30",
+		label: "赤红的需求",
+		startdescription: "渴望鲜血？要是有那么简单就好了。我会更彻底地将他们吸吮至尽。",
+		id: "ascensioncravingsensation",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Sustenance",
+				required: 
+				{
+					lunatic: "-1",
+					corpse: "1",
+					prisoner: "1",
+				},
+				description: "刚死之人，或者活着的人。",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			lunatic: "-1",
+			corpse: "-1",
+			prisoner: "-1",
+		},
+		effects: 
+		{
+			glimmering: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			fatiguing: "1",
+			descend: "1",
+		},
+		label: "内心的荒漠",
+		startdescription: "若离了别人的生命，我的生命将开始消耗自身。",
+		id: "ascensionsuccesscravingsensation_descend",
+		actionId: "craving",
+		description: "我的体液变得稀薄；肉体变得干枯；变化褪去；热情随之黯淡。我离理想的自己更远了。",
+		slots: 
+		[
+			{
+				id: "Pain",
+				required: 
+				{
+					passion: "1",
+					glimmering: "1",
+				},
+				description: "我的渴求正在侵蚀着我",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		id: "ascensioncravingsensation_ascend",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		effects: 
+		{
+			lunatic: "-1",
+			corpse: "-1",
+			prisoner: "-1",
+			glimmering: "2",
+		},
+		description: "完成之后，满足感会如海中之月般深沉。另一个印记在我体内萌发了。",
+		label: "另一个印记",
+		actionId: "craving",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensionsuccesscravingenlightenment_descend",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingenlightenment_ascend",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			enlightenmentmarks: "1",
+		},
+		warmup: "30",
+		label: "对光的好奇心",
+		startdescription: "能与鲜活的心灵独处一段时间的安静房间。我只需要这些。",
+		id: "ascensioncravingenlightenment",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Conversation",
+				required: 
+				{
+					prisoner: "1",
+				},
+				description: "一颗鲜活的心灵的最后的遗言。",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			prisoner: "-1",
+		},
+		effects: 
+		{
+			erudition: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			fatiguing: "1",
+			descend: "1",
+		},
+		label: "内心的荒漠",
+		startdescription: "如果我不能从鲜活的心灵中摄取思绪，我的需求会反噬它自己。",
+		id: "ascensionsuccesscravingenlightenment_descend",
+		actionId: "craving",
+		description: "漫索之光在我体内黯淡下来。我失去了某些力量。我需要交谈。我需要进行一些特别的交谈。",
+		slots: 
+		[
+			{
+				id: "Pain",
+				required: 
+				{
+					reason: "1",
+					erudition: "1",
+				},
+				description: "我的渴求正在侵蚀着我",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		id: "ascensioncravingenlightenment_ascend",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		effects: 
+		{
+			erudition: "2",
+			prisoner: "-1",
+		},
+		description: "我饮下了此人思想中的光芒。它让我战栗而充盈。我体内的印记又亮了一层。",
+		label: "另一个印记",
+		actionId: "craving",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensioncravingchange_heartlessonascendfroma",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_mothlessonascendfroma",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_noascension",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ascensionchangea: "1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "The Temptation of Change",
+		startdescription: "I long to be something else, but have I learnt the lesson I need before the witnesses I must have?",
+		id: "ascensioncravingchange_tryascendfroma",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonhearta: "1",
+					ascensionlessonmotha: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desireheart_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Garments, Surrendered",
+		id: "ascensioncravingchange_heartlessonascendfroma",
+		actionId: "craving",
+		description: "When I surrender the choices I have made, when the tree-filtered moon walks my surfaces, I grow light as a leaf.",
+		effects: 
+		{
+			ascensionlessonhearta: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonhearta: "1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desiremoth_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Garments, Surrendered",
+		id: "ascensioncravingchange_mothlessonascendfroma",
+		actionId: "craving",
+		description: "I shuck my husk to grow. Here is the moon and here am I in its eye -",
+		effects: 
+		{
+			ascensionlessonmotha: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonmotha: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensioncravingchange_heartlessonascendfromb",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_mothlessonascendfromb",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_noascension",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ascensionchangeb: "1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "Toward the Second Change",
+		startdescription: "The skin I bear will grow too small, and so I must begin to abandon it. I will need to send a part of myself to learn how.",
+		id: "ascensioncravingchange_tryascendfromb",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonheartb: "1",
+					ascensionlessonmothb: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desireheart_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Integument, Surrendered",
+		id: "ascensioncravingchange_heartlessonascendfromb",
+		actionId: "craving",
+		description: "My outermost skin comes free in shreds and patches, and so do I.",
+		effects: 
+		{
+			ascensionlessonheartb: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonheartb: "1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desiremoth_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Integument, Surrendered",
+		id: "ascensioncravingchange_mothlessonascendfromb",
+		actionId: "craving",
+		description: "We all are layers
+
+but not so much I",
+		effects: 
+		{
+			ascensionlessonmothb: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonmothb: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensioncravingchange_heartlessonascendfromc",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_mothlessonascendfromc",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_noascension",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ascensionchangec: "1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "Toward the Third Change",
+		startdescription: "One reveals, one conceals, one reveals. To proceed, I must learn a lesson of concealment.",
+		id: "ascensioncravingchange_tryascendfromc",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonheartc: "1",
+					ascensionlessonmothc: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desireheart_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Steps, Surrendered",
+		id: "ascensioncravingchange_heartlessonascendfromc",
+		actionId: "craving",
+		description: "Without footsteps to follow, who will know our destination? I wish so very much to go.",
+		effects: 
+		{
+			ascensionlessonheartc: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonheartc: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ascensionlessonmothc: "1",
+		},
+		comments: "lack of full stop intentional",
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Steps, Surrendered",
+		id: "ascensioncravingchange_mothlessonascendfromc",
+		actionId: "craving",
+		description: "Moldywarp's oldest lesson: between music, silence",
+		effects: 
+		{
+			ascensionlessonmothc: "-1",
+		},
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desiremoth_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensioncravingchange_heartlessonascendfromd",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_mothlessonascendfromd",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_noascension",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ascensionchanged: "1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "Toward the Fourth Change",
+		startdescription: "For the next change, I must soften myself to receive the agencies of alteration.",
+		id: "ascensioncravingchange_tryascendfromd",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonheartd: "1",
+					ascensionlessonmothd: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desireheart_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Hues Surrendered",
+		id: "ascensioncravingchange_heartlessonascendfromd",
+		actionId: "craving",
+		description: "My newly paling flesh is rich with the juices of dissolution.",
+		effects: 
+		{
+			ascensionlessonheartd: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonheartd: "1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desiremoth_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Hues, Surrendered",
+		id: "ascensioncravingchange_mothlessonascendfromd",
+		actionId: "craving",
+		description: "When I go into the last skin, all this me will dissolve, dapple dapple. So soon, dapple dapple.",
+		effects: 
+		{
+			ascensionlessonmothd: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonmothd: "1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensioncravingchange_heartlessonascendfrome",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_mothlessonascendfrome",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_noascension",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ascensionchangee: "1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "Toward the Fifth Change",
+		startdescription: "The door I will pass is never visible to either the waking eye, or the eye that is closed. I must surrender those eyes to one who knows the way, so that I can see.",
+		id: "ascensioncravingchange_tryascendfrome",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonmothe: "1",
+					ascensionlessonhearte: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desireheart_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Sight, Surrendered",
+		id: "ascensioncravingchange_heartlessonascendfrome",
+		actionId: "craving",
+		description: "Sometimes, the citrine eyes of one who has undergone this change are mistaken for the illumined eyes of one approaching the Incursus. But never for long. ",
+		effects: 
+		{
+			ascensionlessonhearte: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonhearte: "1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desiremoth_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Sight, Surrendered",
+		id: "ascensioncravingchange_mothlessonascendfrome",
+		actionId: "craving",
+		description: "Now I enter my final skin.",
+		effects: 
+		{
+			ascensionlessonmothe: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonmothe: "1",
+		},
+	},
+	{
+		id: "ascensioncravingchange_tryascendfromg",
+		startdescription: "I must dream soon, before my soul bursts.",
+		warmup: "10",
+		requirements: 
+		{
+			ascensionchangeg: "1",
+		},
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonmothf: "1",
+					ascensionlessonheartf: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+		comment: "NEW",
+		label: "The Pulse Inside",
+		actionId: "craving",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "ascensioncravingchange_heartlessonascendfromf",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_mothlessonascendfromf",
+				chance: "100",
+			},
+			{
+				id: "ascensioncravingchange_noascension",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			ascensionchangef: "1",
+		},
+		comment: "NEW",
+		warmup: "30",
+		label: "Toward the Sixth Change",
+		startdescription: "The bones are always last. When I have learnt how they change, I will be ready.",
+		id: "ascensioncravingchange_tryascendfromf",
+		actionId: "craving",
+		slots: 
+		[
+			{
+				id: "Lesson",
+				required: 
+				{
+					ascensionlessonmothf: "1",
+					ascensionlessonheartf: "1",
+				},
+				description: "Surrender, to become",
+				greedy: "true",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desireheart_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Bones, Surrendered",
+		id: "ascensioncravingchange_heartlessonascendfromf",
+		actionId: "craving",
+		description: "Now that sun has set and the shadows are extinguished, it's time to remember, and I will remember with my bones, as I have been taught. I am almost ready.",
+		effects: 
+		{
+			ascensionlessonheartf: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonheartf: "1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "desire",
+				mutateAspectId: "desiremoth_track",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		comment: "NEW",
+		warmup: "10",
+		aspects: 
+		{
+			ascend: "1",
+		},
+		label: "Bones, Surrendered",
+		id: "ascensioncravingchange_mothlessonascendfromf",
+		actionId: "craving",
+		description: "Now that sun has fallen and the shadows have spread like oil, my bones know what must happen at the end. The end is very near.",
+		effects: 
+		{
+			ascensionlessonmothf: "-1",
+		},
+		requirements: 
+		{
+			ascensionlessonmothf: "1",
+		},
+	},
+	{
+		id: "ascensioncravingchange_noascension",
+		comment: "NEW",
+		description: "I am no further along my path of change. In the movements of the secret Forms must I find my lesson.",
+		effects: 
+		{
+			restlessness: "1",
+		},
+		label: "The Same Self",
+		actionId: "craving",
+	},
 ]
 }

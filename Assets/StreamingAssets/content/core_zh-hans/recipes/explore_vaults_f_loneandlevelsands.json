@@ -2,12 +2,12 @@
 	
 			 	{
 	id: "explore_vaultloneandlevelsands1_setup",
-	label: "开始探索: 星陨神殿",
+	label: "探险开始：星陨神殿",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultloneandlevelsands1:1},
 	effects: {peril_desert:1, seal_hiddendoor:1, curse_visions:1},
-	startdescription: "一颗星辰坠入沙漠深处。它并没有完全摧毁它所击中的圣所。古老的祭坛的宝藏也许仍然埋藏在星辰的墓穴之下。但我们必须谨慎地接近星辰: 它仍然与不属于这个世界的能量产生共鸣。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
-	description: "",
+	startdescription: "一颗星辰坠落在沙漠深处。它没能完全摧毁它击中的圣所。古老祭坛的宝藏或许仍然埋藏在星辰的墓穴之下。但我们必须谨慎地靠近星辰：它仍然会与不属于这个世界的能量产生共鸣。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
 	warmup:30,
 	craftable: true,
 	linked: [
@@ -15,13 +15,13 @@
 	},
 	{
 	id: "explore_vaultloneandlevelsands2_setup",
-	label: "开始探索:拉贡之墓",
+	label: "探险开始：拉贡之墓",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultloneandlevelsands2:1},
 	effects: {peril_desert:1, seal_wardeddoor:1,curse_dread:1},
 
-	startdescription: "拉贡之墓位于沙漠中，难以发现。我们必须借助群星进行导航。墓门经受住了盗墓者长久以来的攻击。我们必须配备我们所拥有的一切力量。那里宛如诅咒。我们必须做好万全的准备。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
-	description: "",
+	startdescription: "拉贡之墓位于沙漠之中，难以发现。我们必须借助群星进行导航。墓门经受住了盗墓者长久以来的攻击。我们必须配备我们所拥有的一切力量。那里宛如诅咒。我们必须做好万全的准备。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
 	warmup:30,
 	craftable: true,
 	linked: [
@@ -29,12 +29,12 @@
 	},
 				 	{
 	id: "explore_vaultloneandlevelsands3_setup",
-	label: "开始探索: 墨西拿",
+	label: "开始探索：墨西拿",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultloneandlevelsands3:1},
 	effects: {peril_desert:1,guardian_watchers:1,curse_affliction:1},
-	startdescription: "墨西拿的村民在过去百年保持着强健的体魄和充沛的活力。他们会阻止任何挖掘他们秘密的企图，甚至很可能可以操纵诅咒 - 前提是我们得先设法穿过沙漠，与他们接触。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
-	description: "",
+	startdescription: "墨西拿的村民在过去百年都保持着强健的体魄和充沛的活力。他们会阻止任何挖掘他们秘密的企图，甚至很可能拥有操纵诅咒的能力——前提是我们得先设法穿过沙漠，与他们接触。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
 	warmup:30,
 	craftable: true,
 	linked: [
@@ -42,13 +42,13 @@
 	},
 				 	{
 	id: "explore_vaultloneandlevelsands4_setup",
-	label: "开始探索:七蟠祠",
+	label: "开始探索：七蟠寺",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultloneandlevelsands4:1},
 	effects: {peril_desert:1,seal_wardeddoor:1,curse_nowhere:1},
 
-	startdescription: "'这个地方禁止生命的存在'，赞恩·马克·甘提斯的日志中如是说。因此我们不会在那里发现蛇。但听起来那个地方被诅咒了，此外甘提斯记录了他在探索中遇到的被封住的门。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
-	description: "",
+	startdescription: "“这个地方禁止生命的存在”，赞恩·马克·甘提斯在日志中如是写道。因此我们不会在那里发现巨蛇。此外那个地方听起来被诅咒了，并且甘提斯记录了他在探索中没能打开的门。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
 	warmup:30,
 	craftable: true,
 	linked: [
@@ -56,13 +56,13 @@
 	},
 				 	{
 	id: "explore_vaultloneandlevelsandsdefault_setup",
-	label: "开始探索: 弥迦",
+	label: "开始探索：弥阿",
 	actionId: "explore",
 	requirements:{funds:1,follower:1,vaultloneandlevelsandsdefault:1},
 	effects: {peril_desert:1,seal_hiddendoor:1,guardian_dead:1,curse_affliction:1},
 
-	startdescription: "弥迦，陷落于沙漠中的城市。街上仅有百鬼横行。任何留存其中的东西都会被精心掩藏。流浪者的诅咒笼罩着这座城市: 这是她对如此恶劣地对待她的城市的复仇。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
-	description: "",
+	startdescription: "弥阿，陷落沙漠已久的城市。仅有幽灵还在街上徘徊。任何留存其中的东西都会被精心掩藏。流浪者的诅咒笼罩着整座城市：这座城市曾亏待她，而这就是她的复仇。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
+	description: ".",
 	warmup:30,
 	craftable: true,
 	linked: [
@@ -75,21 +75,21 @@
 	requirements: {vaultloneandlevelsands1:1},
 	effects: {vaultloneandlevelsands1:-1},
 	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":2},
-	startdescription: "陨石位于分崩离析的神庙中，蜿蜒如海洋生物，表面在穿过大气层的过程中变得平滑。早在几个世纪前旧祭坛肯定已然坍塌，但陨石仍然回应着我们的触摸。在风中它发出电线般的嗡嗡声。它的表面不断变换，如眼睛般张开 - ",
-	description: "发生了什么？陨石已经合上，冰冷而沉默。沙土堆积其上，显示这数百年来从未有人碰触过它。但此刻在我们的手中的，是我们在陨石中发现的宝藏。",
+	startdescription: "陨石位于分崩离析的神庙中，蜿蜒如海洋生物，表面在穿过大气层的过程中变得平滑。早在几个世纪前古老祭坛肯定已然坍塌，但陨石仍然回应着我们的触摸。在风中它发出电线般的嗡嗡声。它的表面不断变换，如眼睛般张开……",
+	description: "发生了什么？陨石已经合上，冰冷而沉默。沙土堆积其上，显示这数百年来从未有人碰触过它。但此刻在我们的手中的，是我们在陨石之中发现的宝藏。",
 	warmup:30,
 	craftable: false
 	},
 	
 			{
 	id: "explorevaultloneandlevelsands2_success",
-	label: "拉贡终末",
+	label: "拉贡的结末",
 	actionId: "explore",
 	requirements: {vaultloneandlevelsands2:1},
 	effects: {vaultloneandlevelsands2:-1,toolsecrethistoriesd:1},
 	deckeffect: {"vaultcontentsr":2},
-	startdescription: "在中央大厅中，拉贡，那位曾经不朽的长生者，赤裸而平静地横躺在檀香制成的棺枢之上。他被保存得很好 - 修长、深色皮肤、身体无比健康 - 但当我们靠近时，他化为黑色的碎片，宛如落叶般分崩离析。在余烬中有东西发出微光。",
-	description: "我们发现一个怀表，一本书，一些阿尔及利亚货币 - 都是我们这个时代的产物。他在选择最后的安息之前，一定多次折返此处。在怀表的背面，我们发现它雕刻着被称为忘却会的长生者社团的标志 - 闭上的眼睛。",
+	startdescription: "在中央大厅中，拉贡，那位曾经不朽的长生者，赤裸而平静地横躺在檀香制成的棺枢之上。他被保存得很好 ——身形修长、皮肤黝黑、无比健康——但当我们靠近时，他化为黑色的碎片，宛如落叶般分崩离析。在残渣中有东西发出微光。",
+	description: "我们发现一块怀表，一本书，一些阿尔及利亚货币——都是我们这个时代的产物。他在听任自己最终安息之前，一定多次往返此处。在怀表的背面，我们发现它雕刻着被称为忘却会的长生者社团的标志——闭合的眼睛。",
 	warmup:30,
 	craftable: false
 	},
@@ -100,8 +100,8 @@
 	requirements: {vaultloneandlevelsands3:1},
 	effects: {vaultloneandlevelsands3:-1},
 	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":2},
-	startdescription: "在粮仓下方，我们发现了墨西拿最大的秘密: 摆放着做过防腐处理的人类躯体的残肢断臂的祭坛。仅有很少的部分得以留存。数年来访客们一定在品尝着这副肉躯。这是长生者的肉吗？这也许能解释他们的长寿。",
-	description: "墙上陈列着值得注意的物品。它们也许是从不明智的旅客身上取下的纪念品，也许是长生者的所有物。无法得知那位长生者是否自愿的牺牲者、祖先，或者是阶下囚，现在我们也无法从村民处得知更多。祭坛上以希腊文写就铭文：为了献血。",
+	startdescription: "在粮仓下方，我们发现了墨西拿最深的秘密：一座祭坛，上面摆放着人类尸体的残肢断臂，已做过防腐处理。仅有很少的部分得以留存。数年来访客们一定在品尝着这副肉躯。这是长生者的肉吗？这也许能解释他们的长寿。",
+	description: "墙上陈列着值得注意的物品。它们可能是从不明智的旅客身上取下的战利品，或者可能曾是长生者的所有物。没有迹象表明那位长生者究竟是自愿的牺牲者、祖先，还是阶下囚，现在我们也无法从村民处得知更多。祭坛上以希腊文写就铭文：<b>为了献血</b>。",
 	warmup:30,
 	craftable: false
 	},
@@ -114,21 +114,21 @@
 	requirements: {vaultloneandlevelsands4:1},
 	effects: {vaultloneandlevelsands4:-1,ingredientwinterf:1,influencewintere:1},
 	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":1},
-	startdescription: "'七蟠祠'，甘提斯如此称呼它，位于其中的偶像是由石头奇迹般堆叠而成的石蛇 - 一重又一重，形成了令灵魂晕眩的蛇结。不安的预感蔓延至祠堂的每个角落。在这种感觉压垮我们之前，我们应迅速搜查这个地方。",
-	description: "神庙干净得如同刚刚清扫过。门槛上没有沙土，恐怖而盘旋回转的石蛇上亦一尘不染。在盘蛇中我们不时找到一些藏品，仿佛它们是调皮地留给我们找到，亦或偶像盘旋在它们之上。",
+	startdescription: "“七蟠寺”，甘提斯在日志中如此称呼它，位于其中的偶像是由石头奇迹般堆叠而成的石蛇——一重又一重，形成了令灵魂晕眩的蛇结。不安的预感蔓延至庙宇的每个角落。在这种感觉压垮我们之前，我们应迅速搜查这个地方。",
+	description: "寺庙干净得如同刚刚清扫过。门槛上没有沙土，恐怖而盘旋回转的石蛇上亦一尘不染。在其回旋之中我们不时找到一些藏品，仿佛它们是调皮地留给我们找到，亦或是偶像盘旋在它们之上。",
 	warmup:30,
 	craftable: false
 	},
 	
 				{
 	id: "explorevaultloneandlevelsandsdefault_success",
-	label: "未见城",
+	label: "往昔不再之城",
 	actionId: "explore",
 	requirements: {vaultloneandlevelsandsdefault:1},
 	effects: {vaultloneandlevelsandsdefault:-1},
 	deckeffect: {"vaultcontentsu":1,"vaultcontentsr":1},
-	startdescription: "弥迦的风喜怒无常。它宛如贪婪的孩童拉扯着我们的衣服; 它向我们的脸上投掷沙土; 它在布满尘土的石块中哀鸣。这个城市没有那么荒凉。有柱子、拱门、被沙子掩埋的雕像，及通往未知之地的脚印",
-	description: "我们在一个被遗弃的、可能是地窖或神殿的房间里发现了遗迹。 房间的墙壁开裂，裂缝中流出沙土。当我们回到地面时， 风正在上行，几乎将我们吹至空中。 也许它很是想念我们。",
+	startdescription: "弥阿的风十分任性。它像个穷孩子一样拉扯着我们的衣服；向我们的脸上投掷沙土；在布满尘土的石块中哀鸣。这个城市没有那么荒凉，有柱子、拱门、被沙子掩埋的雕像，及通往未知之地的脚印。",
+	description: "我们在一个可能是地窖或神殿的废弃房间里发现了遗迹。 房间的墙壁开裂，裂缝中流出沙土。当我们回到地面时， 风正在上行，几乎将我们吹至空中。 也许它很是想念我们。",
 	warmup:30,
 	craftable: false
 	},

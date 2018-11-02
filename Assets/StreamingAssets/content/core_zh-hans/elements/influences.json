@@ -2,63 +2,63 @@
     [
 								          {
         id: "influenceedge",
-            label: "恐惧气",
+            label: "震颤的气息",
             aspects:
             {edge: 2,influence:1},
-            description: "感觉变得敏锐。[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "感知变得敏锐了。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influenceedgec",
-            label: "兴奋气",
+            label: "激昂的气息",
             aspects:
             {edge: 6,influence:1},
-            description: "热情被点燃。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "热情被点燃。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 						          {
         id: "influenceedgee",
-            label: "怒气",
+            label: "狂怒的气息",
             aspects:
             {edge: 10,influence:1},
-            description: "愤怒以任何形状潜伏着。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "愤怒以各种形态彰显。[十阶的影响！力量与危险的组合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 								          {
         id: "influenceedgeg",
-            label: "判决",
+            label: "决议",
             aspects:
             {edge: 15,influence:1},
-            description: "谁能扭转最终战局？[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "谁能扭转最终战局？[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 		
 								          {
         id: "influenceforge",
-            label: "上升之热",
+            label: "兴起的热力",
             aspects:
             {forge: 2,influence:1},
-            description: "薄雾，微光[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "薄雾与微光。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influenceforgec",
-            label: "战栗之热",
+            label: "战栗的热力",
             aspects:
             {forge: 6,influence:1},
-            description: "潜在的火花。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "迸出火花的可能性。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo:"fascination"
         },
 						          {
         id: "influenceforgee",
-            label: "喜悦之热",
+            label: "擢升的热力",
             aspects:
             {forge: 10,influence:1},
-            description: "只是濒临爆发的预兆。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "这是火山的边缘散发出的气息。[十阶的影响！力量与危险的组合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo:"fascination"
         },
@@ -67,7 +67,7 @@
             label: "炽热",
             aspects:
             {forge: 15,influence:1},
-            description: "改变伴随之火。[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "改变随着火焰而来。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo:"fascination"
         },
@@ -75,99 +75,99 @@
 		
 							          {
         id: "influencegrail",
-            label: "欲望觉醒",
+            label: "欲望的醒觉",
             aspects:
             {grail: 2,influence:1},
-            description: "所有感知都得到了增强；所有情感都被加深。[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "所有知觉都被增强；所有感情都被加深。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influencegrailc",
-            label: "强烈欲望",
+            label: "欲望的促进",
             aspects:
             {grail: 6,influence:1},
-            description: "难以控制自己。[第六阶影响：]",
+            description: "难以控制自己。[六阶的影响：显著的共鸣和关联。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 						          {
         id: "influencegraile",
-            label: "迫切欲望",
+            label: "欲望的势在必行",
             aspects:
             {grail: 10,influence:1},
-            description: "舌头渴望美味，双手渴望掌握。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "唇舌渴望着品尝，十指渴望着抓扼。[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 								          {
         id: "influencegrailg",
-            label: "炽热",
+            label: "转生而诞",
             aspects:
             {grail: 15,influence:1},
-            description: "[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "那气息似乎非常鲜美多汁。一旦刺破，可能会鲜血直流。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 		
 							          {
         id: "influenceheart",
-            label: "战栗之气",
+            label: "战栗的气息",
             aspects:
             {heart: 2,influence:1},
-            description: "轻拍脚趾。轻快又舒适。[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "轻点脚尖。轻快又舒适。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influenceheartc",
-            label: "节奏气",
+            label: "脉动的气息",
             aspects:
             {heart: 6,influence:1},
-            description: "力量提升，精力充沛。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "力量提升，精力充沛。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo:"vitality"
         },
 						          {
         id: "influencehearte",
-            label: "重击气",
+            label: "重震的气息",
             aspects:
             {heart: 10,influence:1},
-            description: "世界随心而动。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "世界随心而动。[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo:"vitality"
         },
 								          {
         id: "influenceheartg",
-            label: "危急",
+            label: "急迫",
             aspects:
             {heart: 15,influence:1},
-            description: "天空为鼓，世界已经为狂欢做好了准备。[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "天空为鼓，大地已经准备好接受它的狂喜。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo:"vitality"
         },
 		
 								          {
         id: "influenceknock",
-            label: "微妙瑕疵",
+            label: "细微瑕疵",
             aspects:
             {knock: 2,influence:1},
-            description: "[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "蕾丝展平，窗户转开，锁芯像被润滑过那样动作。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influenceknockc",
-            label: "微小破损",
+            label: "轻微破损",
             aspects:
             {knock: 6,influence:1},
-            description: "云开，墙裂，旧伤复发。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "云彩分块，墙壁裂开，旧伤作痛。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 						          {
         id: "influenceknocke",
-            label: "微小破裂",
+            label: "轻微撕裂",
             aspects:
             {knock: 10,influence:1},
-            description: "几何扭曲，门爆开，蛇从地球上蒸发了。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "几何扭曲，门扇爆开，蛇群在地上沸腾！[十阶的影响！力量与危险的结合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
@@ -176,116 +176,115 @@
             label: "错误的门",
             aspects:
             {knock: 15,influence:1},
-            description: "那里有一扇不应该开启的门，即使现在它的铰链还是锈迹斑斑。[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "那里有一扇不应该开启的门，即使现在它的合页正摇摇欲动。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "bloodshed"
         },
 		
 								          {
         id: "influencelantern",
-            label: "光辉觉醒",
+            label: "光辉的觉悟",
             aspects:
             {lantern: 2,influence:1},
-            description: "世界之后有一道光，它在Mansus之上，能够穿透玻璃和皮肤。它在这里出现了。[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "在世界背后，有这样一道光，凌驾于漫索之上，能够刺透玻璃与皮肤。它出现在了这里。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influencelanternc",
-            label: "光辉增强",
+            label: "光辉的强度",
             aspects:
             {lantern: 6,influence:1},
-            description: "光沾湿你的皮肤，弥漫在空气中。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "光滴落在皮肤上，弥漫在空气中。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "fascination"
         },
 						          {
         id: "influencelanterne",
-            label: "光辉闪耀",
+            label: "光辉的炽烈",
             aspects:
             {lantern: 10,influence:1},
-            description: "所有颜色都变得更亮就是新染的一样，但是渗出了白光。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "所有的颜色都变得更明亮，仿佛新染过一样，但是，现在它们全都开始流失色彩漂向纯白。[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "fascination"
         },
 								          {
         id: "influencelanterng",
-            label: "五彩斑斓",
+            label: "璀璨",
             aspects:
             {lantern: 15,influence:1},
-            description: "如果你喜欢，色彩能够遮盖你的眼睛。全心全意为您服务。[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "如果你喜欢，它能遮蔽你的双眼。它纯然而无目的。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "fascination"
         },
 		
 						          {
         id: "influencemoth",
-            label: "脑鸣",
+            label: "脑中的嗡鸣",
             aspects:
             {moth: 2,influence:1},
-            description: "in gi rum imus noc te et con sumi <b>snip snip snip</b> [第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "IN GI RUM IMUS NOC TE ET CON SUMI MUR IGNI <b>飞旋 飞旋 飞旋</b>[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于某些仪式中召唤手下。]",
 			lifetime: 60
         },
 								          {
         id: "influencemothc",
-            label: "极乐灵魂",
+            label: "灵魂的躁动",
             aspects:
             {moth: 6,influence:1},
-            description: "噢，我们依旧被我们交的朋友和创造的皮肤所驱使。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "噢，我们玩弄于鼓掌间的朋友，我们制造的虚假皮囊，依然在驱策着我们！[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "restlessness"
         },
 						          {
         id: "influencemothe",
-            label: "空心",
+            label: "心灵的长啸",
             aspects:
             {moth: 10,influence:1},
-            description: "情感控制了思想。热情就像被风轻松卷起的叶子一样！[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "情感歪曲了我们的思想。一种热情轻易转化为另一种，就像被风卷起的叶子！[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "restlessness"
         },
 								          {
         id: "influencemothg",
-            label: "旧日向往",
+            label: "旧日的向往",
             aspects:
             {moth: 15,influence:1},
-            description: "			
-			please",		
+            description: "“踏哒请来吧踏哒”",
 			lifetime: 60,
 			decayTo: "restlessness"
         },
 		
 				          {
         id: "influencewinter",
-            label: "寒气",
+            label: "寒凉的气场",
             aspects:
             {winter: 2,influence:1},
-            description: "一股怪异寒风直入我的房间。[第二阶影响: 感知升级，立马就能识别出周边变化. 可用于某些仪式中召唤手下。]",
+            description: "一股特别的寒意徘徊于我的房间。[二阶的影响：对于有洞察力的学徒来说很明显，立刻能被辨别出来。可用于在某些仪式中召唤手下。]",
 			lifetime: 60
         },
 						          {
         id: "influencewinterc",
-            label: "冰气",
+            label: "冰冻的气场",
             aspects:
             {winter: 6,influence:1},
-            description: "空气冻住我的皮肤。[第六阶影响：明显的标志。可用于某些仪式中召唤手下。]",
+            description: "空气冻得皮肤发脆。霜结上了玻璃。[六阶的影响：迹象显而易见。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "dread"
         },
 						          {
         id: "influencewintere",
-            label: "苦气",
+            label: "刺骨的气场",
             aspects:
             {winter: 10,influence:1},
-            description: "冬天穿透我的衣服，我的皮肤，直达我的血管。[第十阶影响：收集危险的力量。可用于某些仪式中召唤手下。]",
+            description: "冬穿透了衣物，穿透了皮肤，宿居在血管里。[十阶的影响！力量与危险的集合。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "dread"
         },
 								          {
         id: "influencewinterg",
-            label: "完美森林",
+            label: "完美霜冻",
             aspects:
             {winter: 15,influence:1},
-            description: "这个世界依然被冰封，每一步都是一段旅程。[第十五阶影响：这可能是神的个人关注。可用于某些仪式中召唤手下。]",
+            description: "这个世界死寂如冰，每一步都是一段旅程。[十五阶的影响！这可能是时枢神的亲身关注。可用于在某些仪式中召唤手下。]",
 			lifetime: 60,
 			decayTo: "dread"
         },

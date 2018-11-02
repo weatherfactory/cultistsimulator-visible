@@ -1,272 +1,806 @@
-{
-"recipes": [
-
--{id: "speakpublicly",
-label:"讨论内行人才懂的话题",
-actionId: "talk",
-requirements: {society:-1,lore: 1},
-effects: {mystique:1},
-startdescription: "公开讨论无形之仪会引人注意。这也许正是我想要的效果。",
-description: ".",
-warmup: 60,
-craftable: true,
-deckeffect: {talkevents:1},
-linked:[{id: "talkfindacquaintance", chance: 100},
-		{id: "talkfindpatron",chance:100}],
-},
-
-
+﻿{
+recipes: [
 	{
-        id: "talkfindacquaintance",
-        label: "熟人？",
-        actionId: "talk",
-        requirements: {dayacquaintances:1},
-		slots:[{id:"escalation",label:"热情",description:"我须得表现得满腔热忱，有说服力。",required:{passion:1},greedy:true}],
-        startdescription: "我发现了与我志趣相合之人——不过我得能说服他才行。[说服熟人入伙需花费热情]",
-		alternativerecipes:[{id:"talkmeetacquaintance",chance:100}],
-        description: "我缺少足够的热情，没法让他加入我的圈子。等下一次吧。",
-		effects:{season:-1},
-        warmup: 60
-    },
-					{
-        id: "talkfindpatron",
-        label: "赞助人？",
-        actionId: "talk",
-        requirements: {daypatrons:1},
-		slots:[{id:"escalation",label:"理智",description:"我须得表现得口齿清晰，有理有据。",required:{reason:1},greedy:true}],
-        startdescription: "我发现了能为我提供资金之人——不过我得能说服他才行。[说服赞助人解囊需花费理智]",
-		alternativerecipes:[{id:"talkmeetpatron",chance:100}],
-        description: "我缺少足够的精力，没法让他理解我的事业。等下一次吧。",
-		effects:{season:-1},
-        warmup: 60
-    },
-
+		linked: 
+		[
 			{
-        id: "talkmeetacquaintance",
-        label: "熟人",
-        actionId: "talk",
-		requirements:{passion:1},
-        startdescription: "“跟我来。”",
-        description: ".",
-		deckeffect: {"acquaintances":1},
-				effects:{season:-1},
-        warmup: 5
-    },
-		 {
-        id: "talkmeetpatron",
-        label: "赞助人",
-        actionId: "talk",
-		requirements:{reason:1},
-        startdescription: "“我们都在对方身上找到了值得学习的东西。”",
-        description: ".",
-		deckeffect: {"scholarpatrons":1},
-				effects:{season:-1},
-        warmup: 5
-    },
-	
-	
-	{id: "talktotroublemaker",
-label:"在中立地带安排会面。",
-actionId: "talk",
-requirements: {independent: 1,society:-1,ritual:-1},
-slots: [{id:"Subject",description:"选择谈资"}],
-alternativerecipes:[
-{id:"independentloreconversation",chance:100},
-{id:"independentdesireconversation",chance:100},
-],
-startdescription: "“我们是彼此的敌人么？或许没有这个必要。”",
-description: "天光刚亮便顶风冒雨到刚开门的咖啡店赴一场枕戈坐甲的会面。我还是不吸取教训。",
-effects: {mystique:1},
-warmup: 60,
-craftable: true
-},
-
-	{id: "independentloreconversation",
-label:"在中立地带安排会面。",
-actionId: "talk",
-requirements: {lore: 1},
-startdescription: "“看来我们<i>确实</i>有些可谈的……”",
-description:"就着灯光，我们压低声音交谈，拐弯抹角的对话里夹杂着零星实情，像河泥里的金砂。谁知道呢。也许终一天我们不必再如此戒备地交谈。",
-deckeffect: {troublemakerconversations:1}
-
-},
-
-	{id: "independentdesireconversation",
-label:"在中立地带安排会面。",
-actionId: "talk",
-requirements: {desire: 1},
-startdescription: "“你是说让我跟你握手言和，利益一致吗？你认真的？”",
-description:"“不是不可能。这得看你有多少斤两。我们先谈谈……”[如果你已成立教派，你有可能成功说服捣乱分子加入，虽然难度较高。]",
-deckeffect: {troublemakerconversations:1}
-},
-
-
-
-{id: "talktohunter",
-label:"与对头安排会面",
-actionId: "talk",
-requirements: {hunter: 1},
-slots: [{id:"Subject",description:"选择谈资……或选择一个手下去消灭对方。"}],
-alternativerecipes:[
-{id:"hunterspeakpoison",chance:100},
-{id:"hunterspeakwinterg",chance:100},
-{id:"hunterspeakwinterd",chance:100},
-{id:"hunterspeakwinter",chance:100},
-{id:"hunterspeakdread",chance:100},
-{id:"hunterspeaklanterng",chance:100},
-{id:"hunterspeaklanternd",chance:100},
-{id:"hunterspeaklantern",chance:100},
-{id:"hunterspeakfascination",chance:100},
-
-
-
-
-
-{id:"hunterattackhighedge",chance:100},
-{id:"hunterattackmidedge",chance:100},
-{id:"hunterattacklowedge",chance:100},
-{id:"hunterattackhighwinter",chance:100},
-{id:"hunterattackmidwinter",chance:100},
-{id:"hunterattacklowwinter",chance:100},
-{id:"hunterattacknoedge",chance:100}
-],
-startdescription: "我们可以跟对方谈判，也可以派谁去埋伏对方。",
-description: "太草率了。或许我不该暴露自己。",
-effects: {notoriety:1},
-warmup: 60,
-craftable: true
-},
-
-
-{id: "talktospirit",
-label:"与我召唤出的“谁”交谈",
-actionId: "talk",
-requirements: {society:-1,follower: 1,summoned:1},
-slots: [{id:"Subject",description:"……或袭击的对象"}],
-comments: "我们有向上传递招人/宣传消息的渠道，我们不想挤占现有的渠道，也不想打破社会常规。",
-alternativerecipes:[
-{id:"discussfucinespirit",chance:100},
-{id:"discussphrygianspirit",chance:100},
-{id:"discussmandaicspirit",chance:100},
-{id:"hunterattackhighedge",chance:100},
-{id:"hunterattackmidedge",chance:100},
-{id:"hunterattacklowedge",chance:100},
-{id:"hunterattacknoedge",chance:100},
-{id: "evidencedestroymidmoth",chance:100},
-{id: "evidencedestroylowmoth",chance:100},
-{id: "evidencedestroynomoth",chance:100},
-
-{id:"annoyanceseducehighgrail",chance:100},
-{id:"annoyanceattackhighedge",chance:100},
-{id:"annoyanceseducemidgrail",chance:100},
-{id:"annoyanceattackmidedge",chance:100},
-{id:"annoyancederangemidmoth",chance:100},
-{id:"annoyanceseducelowgrail",chance:100},
-{id:"annoyanceattacklowedge",chance:100},
-{id:"annoyancederangelowmoth",chance:100},
-{id:"annoyanceattacknoedge",chance:100},
-{id: "teresadiscusslocksmithsdream1",chance:100},
-{id: "teresadiscusslocksmithsdream2",chance:100},
-{id: "teresadiscusslocksmithsdream3",chance:100},
-],
-startdescription: "并非来自居所的所有存在都能说话，不过他们都能理解凡人的语言，哪怕透过纯白之门。",
-description: "什么反应都没有。我的话像沙漏里的沙子一样停住了。",
-warmup: 60,
-craftable: true
-},
-
-{id: "discussfucinespirit",
-label:"学习富奇诺语",
-actionId: "talk",
-requirements: {scholarlatin:1,summoned: 1,spirittutorfucine:1},
-startdescription: "“富奇诺语？对，我的富奇诺语还行。你要是会拉丁语做基础的话我可以教你。不过要是让我听到了一丝‘女巫的语言’的风儿，这件事就免谈。”[将巴尔德蒙人放入<b>研究</b>槽学习富奇诺语]",
-description: ".",
-craftable: true
-},
-{id: "discussphrygianspirit",
-label:"学习弗里吉亚语",
-actionId: "talk",
-requirements: {scholargreek:1,summoned: 1,spirittutorphrygian:1},
-startdescription: "“弗里吉亚语！我们伟大的母语！当然，如果你希腊语不错的话，我保证你学弗里吉亚语会<i>非常</i>省心。”[将依齐姆放入<b>研究</b>槽学习弗里吉亚语]",
-description: ".",
-craftable: true
-},
-
-{id: "discussmandaicspirit",
-label:"学习渊深曼达安语",
-actionId: "talk",
-requirements: {scholararamaic:1,summoned: 1,spirittutormandaic:1},
-startdescription: "“我等于此一同祝颂不焚之神的神言。”[将坩埚之王放入<b>研究</b>槽学习渊深曼达安语]",
-description: ".",
-craftable: true
-},
-
-	  {id:"teresadiscusslocksmithsdream1",
-	  label:"探讨《锁匠之梦·卷一》",
-	  requirements:{spirit_lanterne_secret:1,locksmithsdream1:1,autographed:-1},
-	  actionId:"talk",
-	  startdescription:"我要在书上签名么？签一个还挺有意思的，不是么？",
-	  description:"“我刚开始写这本书，当时我住在卡姆登锁水闸区。这不是时枢神对我开的玩笑还能是什么。让我跟你讲讲我的创作来源——”",
-	  effects:{erudition:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
-	  },
-	  	  	  {id:"teresadiscusslocksmithsdream2",
-	  label:"探讨《锁匠之梦·卷二》",
-	  requirements:{spirit_lanterne_secret:1,locksmithsdream2:1,autographed:-1},
-	  actionId:"talk",
-	  startdescription:"“我要在书上签名么？会不会显得有点假模假式？反正也没人会相信是真的。别人都以为我死了。”",
-	  description:"“我始终认为'门'和工匠的作品有关——和打造过程有关。我认为我们就是在这里找到入‘境’的门道的。当然我们先祖是有其极限的，直到我们学会说话。我来给你解释……”",
-	  effects:{glimmering:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
-	  },
-	  	  {id:"teresadiscusslocksmithsdream3",
-	  label:"探讨《锁匠之梦·卷三》",
-	  requirements:{spirit_lanterne_secret:1,locksmithsdream3:1,autographed:-1},
-	  actionId:"talk",
-	  startdescription:"“我要在上面写名字，行么？只写克里斯托弗喊我用的名字，不是我在这儿用的名字。”",
-	  description:"哦，天哪，我写到这儿的时候脑子是乱的，对吧？我很抱歉。但是关于死亡在下层这点我是对的。这也是我在居所时一般都往高层去的原因之一。我再稍微具体解释一下——",
-	  effects:{glimmering:1},
-	  mutations:[{filterOnAspectId:text,mutateAspectId:autographed,mutationLevel:1}]	  
-	  },
-
-{
-        id: "begincultfoundation",
-        label: "发现神秘组织",
-		alternativerecipes:
-		[{id: "cultfoundation", chance:100, additional: true}],
-        actionId: "talk",
-        requirements: {acquaintance:1,society: -1,ritual:-1,location:-1},
-        effects: {notoriety:1},
-        startdescription: "此地有一个能与我共事之人。可以做伙伴，也可以做从者。我得给对方一个能够追从的东西：或社团，或命令，或教派。",
-        description: "我开始开创我真正的事业。当局一定会来打探的，我须得准备好怎么对付他们。[现在开始创建教派，再一段时间后才能招募从者]",
-        warmup: 10,
-        craftable: true,
-		maxexecutions: 1
-    },
-
-
-
-{id: "inspiremystique",
-actionId: "talk",
-label: "引起注意",
-effects: {mystique: 1},
-startdescription: "二十四时，二十四神，此时是我的时。",
-description: "双唇开启，双眸闪烁。",
-warmup: 10,
-craftable: false},
-
-
-	   {
-        id: "findacquaintanceopentalk",
-        label: "熟人",
-        actionId: "talk",
-        startdescription: "我等待回信。",
-        description: "我收到的回信措辞恭敬，像是心有提防。对方对你从何渠道获知其名很感兴趣：对方提议与你见面。",
-        warmup: 30,
-        craftable: false,
-		comments: "这几轮是附加的，也是“谈话”开启的原因。我想要移走maxexecution，但是安全起见我还是把它放在这里。",
-		deckeffect: {"acquaintances":1},
-		maxexecutions:1
-    }
+				id: "talkfindacquaintance",
+				chance: "100",
+			},
+			{
+				id: "talkfindpatron",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			lore: "1",
+			society: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		label: "讨论怪力乱神",
+		startdescription: "公开讨论无形之仪会引起人们的注意。但这也许正是我想要的效果。",
+		id: "speakpublicly",
+		actionId: "talk",
+		deckeffect: 
+		{
+			talkevents: "1",
+		},
+		description: ".",
+		effects: 
+		{
+			mystique: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			dayacquaintances: "1",
+		},
+		effects: 
+		{
+			season: "-1",
+		},
+		warmup: "60",
+		label: "一位熟人？",
+		startdescription: "我发现了与我志趣相合之人——不过我得能说服他才行。[说服熟人入伙需花费热情]",
+		id: "talkfindacquaintance",
+		actionId: "talk",
+		description: "我缺少足够的热情，没法让他加入我的圈子。等下一次吧。",
+		slots: 
+		[
+			{
+				id: "escalation",
+				required: 
+				{
+					passion: "1",
+				},
+				description: "我必须表现得满腔热忱，充满说服力。",
+				label: "热情",
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "talkmeetacquaintance",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			daypatrons: "1",
+		},
+		effects: 
+		{
+			season: "-1",
+		},
+		warmup: "60",
+		label: "主顾？",
+		startdescription: "我已经找到了一些能提供为我所用的资源的人——不过我需要先打动他们。[投入理性来试图打动主顾。]",
+		id: "talkfindpatron",
+		actionId: "talk",
+		description: "我缺少足够的精力，没法让他理解我的事业。等下一次吧。",
+		slots: 
+		[
+			{
+				id: "escalation",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "我需要表现得口才敏捷，有理有据。",
+				label: "理性",
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "talkmeetpatron",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			passion: "1",
+		},
+		warmup: "5",
+		label: "一位熟人",
+		startdescription: "“随我来。”",
+		id: "talkmeetacquaintance",
+		actionId: "talk",
+		deckeffect: 
+		{
+			acquaintances: "1",
+		},
+		description: ".",
+		effects: 
+		{
+			season: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			reason: "1",
+		},
+		warmup: "5",
+		label: "主顾",
+		startdescription: "“我们都在对方身上找到了值得学习的东西。”",
+		id: "talkmeetpatron",
+		actionId: "talk",
+		deckeffect: 
+		{
+			scholarpatrons: "1",
+		},
+		description: ".",
+		effects: 
+		{
+			season: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			ritual: "-1",
+			independent: "1",
+			society: "-1",
+		},
+		craftable: "true",
+		effects: 
+		{
+			mystique: "1",
+		},
+		warmup: "60",
+		label: "在中立地带安排会面。",
+		startdescription: "“我们是敌人吗？我们或许并不需要成为敌人。”",
+		id: "talktotroublemaker",
+		actionId: "talk",
+		description: "天光刚亮，便顶风冒雨，前往刚开门的咖啡店赶赴枕戈坐甲的会面。我还是没吸取到教训。",
+		slots: 
+		[
+			{
+				id: "Subject",
+				description: "选择谈话主题",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "A_follower_settrap_independent",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "independentloreconversation",
+				chance: "100",
+			},
+			{
+				id: "independentdesireconversation",
+				chance: "100",
+			},
+			{
+				id: "independentfitewithextraswole",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "independentfitewithswole",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "independentspeakpoison",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "independentloreconversation",
+		startdescription: "“看起来，我们<i>的确</i>应该聊一聊……”",
+		deckeffect: 
+		{
+			troublemakerconversations: "1",
+		},
+		requirements: 
+		{
+			lore: "1",
+		},
+		description: "就着灯光，我们压低声音交谈，拐弯抹角的对话里夹杂着零星的实情，犹如河泥里的金砂。谁知道呢？也许终一天我们不必再如此戒备地交谈。",
+		label: "在中立地带安排会面。",
+		actionId: "talk",
+	},
+	{
+		id: "independentdesireconversation",
+		startdescription: "“你是说让我跟你握手言和，达成利益一致吗？你认真的？”",
+		deckeffect: 
+		{
+			troublemakerconversations: "1",
+		},
+		requirements: 
+		{
+			desire: "1",
+		},
+		description: "“不是不可能。这得看你有多少斤两。我们先谈谈……”[如果你已成立教派，你有可能成功说服捣乱分子加入，虽然难度较高。]",
+		label: "在中立地带安排会面。",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			murderskill: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		aspects: 
+		{
+			killmortal: "1",
+		},
+		label: "A Surprise Attack on a Rival",
+		startdescription: "We are meeting on neutral ground. They have taken all reasonable precautions. But there are no reasonable precautions against one such as I. A direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This might succeed, against the odds.]",
+		id: "independentfitewithextraswole",
+		actionId: "talk",
+		description: "I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+		effects: 
+		{
+			notoriety: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "independentfitewithswole_failure",
+				chance: "70",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			healthskill: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		aspects: 
+		{
+			killmortal: "1",
+		},
+		label: "A Surprise Attack on a Rival",
+		startdescription: "We are meeting on neutral ground. They have taken all reasonable precautions, and a direct personal assault would be a considerable risk... but perhaps that's what we've come to. [This is a very long shot indeed.]",
+		id: "independentfitewithswole",
+		actionId: "talk",
+		description: "I have their head between my hands. I snap their neck. I'm gone before the body hits the ground.",
+		effects: 
+		{
+			notoriety: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "independentfitewithswole_failure",
+				chance: "90",
+			},
+		],
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "independent",
+				mutateAspectId: "wary",
+				mutationLevel: "1",
+			},
+			{
+				filterOnAspectId: "independent",
+				mutateAspectId: "resentment",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		craftable: "false",
+		comment: "NEW",
+		label: "A Surprise Attack has Failed!",
+		startdescription: ".",
+		id: "independentfitewithswole_failure",
+		actionId: "talk",
+		description: "With a cry, they leap back, kicking over the table! All around us, heads turn. No-one saw me move. The only real witness is my rival. But I must leave immediately.",
+		effects: 
+		{
+			notoriety: "1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "independent",
+				mutateAspectId: "wary",
+				mutationLevel: "1",
+			},
+			{
+				filterOnAspectId: "independent",
+				mutateAspectId: "resentment",
+				mutationLevel: "1",
+				additive: "true",
+			},
+		],
+		craftable: "false",
+		comment: "NEW",
+		label: "Employ a Remarkable Poison against a Rival",
+		startdescription: "'Do you like tea?'",
+		id: "independentspeakpoison",
+		description: "Your rival shakes their head in disappointment. 'Really?' They leave without another word, leaving their tea untouched on the table.",
+		actionId: "talk",
+		requirements: 
+		{
+			poison: "1",
+		},
+	},
+	{
+		requirements: 
+		{
+			hunter: "1",
+		},
+		craftable: "true",
+		effects: 
+		{
+			notoriety: "1",
+		},
+		warmup: "60",
+		label: "与对头安排会面",
+		startdescription: "或许我们可以跟对方谈判。或许，我们能派人去埋伏对方。",
+		id: "talktohunter",
+		actionId: "talk",
+		description: "太草率了。或许我不该那样暴露自己。",
+		slots: 
+		[
+			{
+				id: "Subject",
+				description: "选择谈话主题……或派出一名消灭他的喽啰。",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "hunterfitewithextraswole",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "hunterfitewithswole",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakpoison_glassfinger",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakpoison",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakwinterg",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakwinterd",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakwinter",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakdread",
+				chance: "100",
+			},
+			{
+				id: "hunterspeaklanterng",
+				chance: "100",
+			},
+			{
+				id: "hunterspeaklanternd",
+				chance: "100",
+			},
+			{
+				id: "hunterspeaklantern",
+				chance: "100",
+			},
+			{
+				id: "hunterspeakfascination",
+				chance: "100",
+			},
+			{
+				id: "hunterattackhighedge",
+				chance: "100",
+			},
+			{
+				id: "hunterattackhighwinter",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "hunterattackmidedge",
+				chance: "100",
+			},
+			{
+				id: "hunterattackmidwinter",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "hunterattacklowedge",
+				chance: "100",
+			},
+			{
+				id: "hunterattacklowwinter",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "hunterattacknoedge",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+	},
+	{
+		requirements: 
+		{
+			summoned: "1",
+			follower: "1",
+			society: "-1",
+		},
+		craftable: "true",
+		comments: "We have clues upstream for recruitment/promotion, and we don't want this to override them, hence the society limitation.",
+		warmup: "60",
+		label: "与我召唤出的对象交谈",
+		startdescription: "并非来自漫索的所有存在都能说话，不过他们都能理解凡人的语言，哪怕透过纯白之门。",
+		id: "talktospirit",
+		actionId: "talk",
+		description: "什么反应都没有。我的话像沙漏里的沙子一样停住了。",
+		slots: 
+		[
+			{
+				id: "Subject",
+				description: "选择谈话主题……或目标。",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "discussfucinespirit",
+				chance: "100",
+			},
+			{
+				id: "discussphrygianspirit",
+				chance: "100",
+			},
+			{
+				id: "discussmandaicspirit",
+				chance: "100",
+			},
+			{
+				id: "hunterattackhighedge",
+				chance: "100",
+			},
+			{
+				id: "hunterattackmidedge",
+				chance: "100",
+			},
+			{
+				id: "hunterattacklowedge",
+				chance: "100",
+			},
+			{
+				id: "hunterattacknoedge",
+				chance: "100",
+			},
+			{
+				id: "evidencedestroymidmoth",
+				chance: "100",
+			},
+			{
+				id: "evidencedestroylowmoth",
+				chance: "100",
+			},
+			{
+				id: "evidencedestroynomoth",
+				chance: "100",
+			},
+			{
+				id: "annoyanceseducehighgrail",
+				chance: "100",
+			},
+			{
+				id: "annoyanceattackhighedge",
+				chance: "100",
+			},
+			{
+				id: "annoyanceseducemidgrail",
+				chance: "100",
+			},
+			{
+				id: "annoyanceattackmidedge",
+				chance: "100",
+			},
+			{
+				id: "annoyancederangemidmoth",
+				chance: "100",
+			},
+			{
+				id: "annoyanceseducelowgrail",
+				chance: "100",
+			},
+			{
+				id: "annoyanceattacklowedge",
+				chance: "100",
+			},
+			{
+				id: "annoyancederangelowmoth",
+				chance: "100",
+			},
+			{
+				id: "annoyanceattacknoedge",
+				chance: "100",
+			},
+			{
+				id: "teresadiscusslocksmithsdream1",
+				chance: "100",
+			},
+			{
+				id: "teresadiscusslocksmithsdream2",
+				chance: "100",
+			},
+			{
+				id: "teresadiscusslocksmithsdream3",
+				chance: "100",
+			},
+			{
+				id: "teresadiscusslocksmithsdream4",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "teresadiscusslocksmithsdream5",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "discussfucinespirit",
+		craftable: "true",
+		startdescription: "“富奇诺语？对，我的富奇诺语还行。你要是会拉丁语做基础的话我可以教你。不过要是让我听到了一丝‘女巫的语言’的风儿，这件事就免谈。”[<b>研究</b> 巴尔多梅人以学习富奇诺语]",
+		requirements: 
+		{
+			summoned: "1",
+			spirittutorfucine: "1",
+			scholarlatin: "1",
+		},
+		description: ".",
+		label: "学习富奇诺语",
+		actionId: "talk",
+	},
+	{
+		id: "discussphrygianspirit",
+		craftable: "true",
+		startdescription: "“弗里吉亚语！伟大之母的语言！当然，如果你希腊语不错的话，我保证你学弗里吉亚语会<i>非常</i>省心。”[<b>研究</b>伊泽姆以学习弗里吉亚语]",
+		requirements: 
+		{
+			spirittutorphrygian: "1",
+			scholargreek: "1",
+			summoned: "1",
+		},
+		description: ".",
+		label: "学习弗里吉亚语",
+		actionId: "talk",
+	},
+	{
+		id: "discussmandaicspirit",
+		craftable: "true",
+		startdescription: "“我等于此一同祝颂不焚之神的神言。”[<b>研究</b>坩埚王以学习渊深曼达安语]",
+		requirements: 
+		{
+			scholararamaic: "1",
+			summoned: "1",
+			spirittutormandaic: "1",
+		},
+		description: ".",
+		label: "学习渊深曼达安语",
+		actionId: "talk",
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "text",
+				mutateAspectId: "autographed",
+				mutationLevel: "1",
+			},
+		],
+		label: "探讨《锁匠的梦境·卷一》",
+		startdescription: "'"'我要在书上签名吗？签一个还挺有意思的，不是吗？"",
+		id: "teresadiscusslocksmithsdream1",
+		actionId: "talk",
+		description: "“我刚开始写这本书，当时我住在卡姆登锁水闸区。这不是时枢神对我开的玩笑还能是什么。让我跟你讲讲我的创作来源——”",
+		effects: 
+		{
+			erudition: "1",
+		},
+		requirements: 
+		{
+			spirit_lanterne_secret: "1",
+			locksmithsdream1: "1",
+			autographed: "-1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "text",
+				mutateAspectId: "autographed",
+				mutationLevel: "1",
+			},
+		],
+		label: "探讨《锁匠的梦境·卷二》",
+		startdescription: "“我要在书上签名么？会不会显得有点假模假式？反正也没人会相信是真的。别人都以为我死了。”",
+		id: "teresadiscusslocksmithsdream2",
+		actionId: "talk",
+		description: "“我始终认为'门'和工匠的作品有关——和打造过程有关。我认为我们就是在这里找到入‘境’的门道的。当然我们先祖是有其极限的，直到我们学会说话。我来给你解释……”",
+		effects: 
+		{
+			glimmering: "1",
+		},
+		requirements: 
+		{
+			spirit_lanterne_secret: "1",
+			locksmithsdream2: "1",
+			autographed: "-1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "text",
+				mutateAspectId: "autographed",
+				mutationLevel: "1",
+			},
+		],
+		label: "探讨《锁匠的梦境·卷三》",
+		startdescription: "“我要在上面写名字，行吗？只写克里斯托弗喊我用的名字，不是我在这儿用的名字。”",
+		id: "teresadiscusslocksmithsdream3",
+		actionId: "talk",
+		description: "哦，天哪，我写到这儿的时候脑子是乱的，对吧？我很抱歉。但是关于死亡在下层这点我是对的。这也是我在漫索时一般都往高层去的原因之一。我再稍微具体解释一下——",
+		effects: 
+		{
+			glimmering: "1",
+		},
+		requirements: 
+		{
+			spirit_lanterne_secret: "1",
+			locksmithsdream3: "1",
+			autographed: "-1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "text",
+				mutateAspectId: "autographed",
+				mutationLevel: "1",
+			},
+		],
+		comment: "NEW",
+		label: "Discuss the Locksmith's Dream, Volume 4",
+		startdescription: "'I'll definitely sign that one. But I'm afraid no one will see the signature unless they're dreaming of the book.'",
+		id: "teresadiscusslocksmithsdream4",
+		actionId: "talk",
+		description: "'I got very excited about Janus, back then. Now I think that if Janus is anyone, that anyone must be the Watchman or the Meniscate. Riddles tend to expand, puzzles tend to resolve.'",
+		effects: 
+		{
+			glimmering: "1",
+		},
+		requirements: 
+		{
+			spirit_lanterne_secret: "1",
+			locksmithsdream4: "1",
+			autographed: "-1",
+		},
+	},
+	{
+		mutations: 
+		[
+			{
+				filterOnAspectId: "text",
+				mutateAspectId: "autographed",
+				mutationLevel: "1",
+			},
+		],
+		comment: "NEW",
+		label: "Discuss the Locksmith's Dream, Volume 5",
+		startdescription: "'FNORD.'",
+		id: "teresadiscusslocksmithsdream5",
+		actionId: "talk",
+		description: "'FNORD.'",
+		effects: 
+		{
+			glimmering: "1",
+		},
+		requirements: 
+		{
+			spirit_lanterne_secret: "1",
+			locksmithsdream5: "1",
+			autographed: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			ritual: "-1",
+			society: "-1",
+			location: "-1",
+		},
+		craftable: "true",
+		warmup: "10",
+		label: "发现神秘组织",
+		startdescription: "此地有一个能与我共事之人。可以做伙伴，也可以做追随者。我得给对方一个能够追从的东西：或社团，或帮会，或组织，或教派。",
+		id: "begincultfoundation",
+		actionId: "talk",
+		description: "我开始开创我真正的事业。当局一定会来打探的，我必须准备好怎么对付他们。[现在开始创建教派，再一段时间后才能招募追随者]",
+		maxexecutions: "1",
+		effects: 
+		{
+			notoriety: "1",
+		},
+		alternativerecipes: 
+		[
+			{
+				id: "cultfoundation",
+				chance: "100",
+				additional: "true",
+			},
+		],
+	},
+	{
+		craftable: "false",
+		warmup: "10",
+		label: "引起注意",
+		startdescription: "二十四时，皆对应有时枢神。吾即此时所应之神。",
+		id: "inspiremystique",
+		actionId: "talk",
+		description: "双唇开启，双眸闪烁。",
+		effects: 
+		{
+			mystique: "1",
+		},
+	},
+	{
+		craftable: "false",
+		comments: "this runs as an additional, and is how Talk is opened. I'd like to remove maxexecutions, but it's in here now for safety.",
+		warmup: "30",
+		label: "一位熟人",
+		startdescription: "我等待回信。",
+		id: "findacquaintanceopentalk",
+		maxexecutions: "1",
+		deckeffect: 
+		{
+			acquaintances: "1",
+		},
+		description: "我收到的回信措辞恭敬，像是心有提防。对方对你从何渠道获知其名很感兴趣：对方提议与你见面。",
+		actionId: "talk",
+	},
 ]
 }

@@ -63,7 +63,7 @@
         requirements: {compensationvalue:2},
 			effects: {scholararamaic:1,compensationvalue:-2},
 		startdescription: "这样就够了。我会认真听讲。",
-        description: "《但以理书》中的《暗兰的异象》、《迦腻色伽在蜘蛛之门前的解释》都是由这一语言写就的。" 
+        description: "《但以理书》中的《暗兰的异象》、《迦腻色伽在蜘蛛之门前的报告》都是由这一语言写就的。" 
     },
 	
 			{
@@ -73,7 +73,7 @@
         requirements: {spirittutorfucine:1,summoned:1},
 			slots:[{id:"Background",required: {scholarlatin: 1}}],
 				alternativerecipes: [{id:"studyfucinetutoringsuccessful",chance:100}],
-		startdescription: "“富奇诺语？没错，我的富奇诺语还过得去。你要是有拉丁文基础的话，我可以教你。但要是谁开玩笑说‘这是女巫语吧’，那一切就到此结束。”",
+		startdescription: "“富奇诺语？对，我的富奇诺语还行。你要是会拉丁语做基础的话我可以教你。不过要是让我听到了一丝‘女巫的语言’的风儿，这件事就免谈。”",
         description: "我没有必需的基础。",
         warmup: 60,
         craftable: true,
@@ -96,7 +96,7 @@
         requirements: {spirittutorphrygian:1,summoned:1},
 			slots:[{id:"Background",required: {scholargreek: 1}}],
 				alternativerecipes: [{id:"studyphrygiantutoringsuccessful",chance:100}],
-		startdescription: "“弗里吉亚语！伟大之母的语言！当然！要是你希腊语够好，我保证学习弗里吉亚语会是<i>极其</i>美妙的体验。”",
+		startdescription: "“弗里吉亚语！伟大之母的语言！当然，如果你希腊语不错的话，我保证你学弗里吉亚语会<i>非常</i>省心。”",
         description: "我没有必需的基础。",
         warmup: 60,
         craftable: true,
@@ -108,7 +108,7 @@
         requirements: {scholargreek:1},
 			effects: {scholarphrygian:1},
 		startdescription: "希腊语会是我学习的基础，只要是能学的我都会去学。",
-        description: "希罗多德讲了一个随性的故事，说法老王发现弗里吉亚语是人类最先开口讲的语言。当然了，这不对，应该是神代语才对。不过每个人都喜欢这个故事。",
+        description: "希罗多德讲了一个随性的故事，说法老王发现弗里吉亚语是人类最先开口讲的语言。当然了，这不对，应该是伐伽语才对。不过每个人都喜欢听这个故事。",
     },
 	
 			{
@@ -118,7 +118,7 @@
         requirements: {spirittutormandaic:1,summoned:1},
 			slots:[{id:"Background",required: {scholararamaic: 1}}],
 				alternativerecipes: [{id:"studymandaictutoringsuccessful",chance:100}],
-		startdescription: "“聚首于此，为不焚之神的语言献上我等的追思！”",
+		startdescription: "<b>“聚首于此，为不焚之神的语言献上我等的追思！”</b>",
         description: "我没有必需的基础。",
         warmup: 60,
         craftable: true,

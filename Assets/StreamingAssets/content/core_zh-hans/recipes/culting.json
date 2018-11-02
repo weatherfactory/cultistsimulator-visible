@@ -1,615 +1,1407 @@
- {"recipes":
- [
- 
-
+﻿{
+recipes: [
 	{
-        id: "recruitindependentedge",
-        label: "唤起刃的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationedge: 1, independent:1, mortal:1,edge:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting:1},
-        startdescription: "这位已经准备好加入我们。",
-    description: "我们已经为这一刻备好了刀子。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitindependentforge",
-        label: "唤起铸的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationforge: 1,independent:1, mortal:1,forge:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这位已经准备好加入我们。",
-        description: "火必熊燃，足以烧焦观者的皮肤。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitindependentgrail",
-        label: "唤起杯的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationgrail: 1, independent:1, mortal:1,grail:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这位已经准备好加入我们。",
-        description: "我们会紧紧相连的；噢当然了，我们将合而为一。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-			  	{
-        id: "recruitindependentheart",
-        label: "唤起忱的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationheart: 1, independent:1, mortal:1,heart:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这位已经准备好加入我们。",
-        description: "无终之业，现已起始。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-				  	{
-        id: "recruitindependentknock",
-        label: "唤起启的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationknock: 1, independent:1, mortal:1,knock:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "这位已经准备好加入我们。",
-        description: "这是我们所有人都将铭记的开始。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-					  	{
-        id: "recruitindependentlantern",
-        label: "唤起灯的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationlantern: 1, independent:1, mortal:1,lantern:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-               startdescription: "这位已经准备好加入我们。",
-        description: "先有光芒万丈，后生黑暗无疆。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-						  	{
-        id: "recruitindependentmoth",
-        label: "唤起蛾的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationmoth: 1,independent:1, mortal:1,moth:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "这位已经准备好加入我们。",
-        description: "我们都已褪下了外皮。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-
-							  	{
-        id: "recruitindependentwinter",
-        label: "唤起冬的伟力来雇佣捣乱分子",
-        actionId: "talk",
-        requirements: {venerationwinter: 1, independent:1, mortal:1,winter:21},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这位已经准备好加入我们。",
-        description: "这场仪式无需言语。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-	 	{
-        id: "recruitacquaintanceedge",
-        label: "通过唤起刃，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationedge: 1,acquaintance:1, follower:-1, mortal:1,edge:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting:1},
-        startdescription: "这一位已经准备好了。",
-    description: "宣读咒言之前，新信徒必须将刀磨利，使其能够断开水中漂过的丝线。要是锋利不足的话，对他们自己可不是好事。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitacquaintanceforge",
-        label: "通过唤起铸，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationforge: 1,acquaintance:1,  follower:-1, mortal:1,forge:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这一位已经准备好了。",
-        description: "这场仪式需要灼烧。只需要一小块，但信徒会终生带着这份印记。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-		  	{
-        id: "recruitacquaintancegrail",
-        label: "通过唤起杯，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationgrail: 1, acquaintance:1, follower:-1, mortal:1,grail:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这一位已经准备好了。",
-        description: "我所给予的滋味将令人永生难忘。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-			  	{
-        id: "recruitacquaintanceheart",
-        label: "通过唤起忱，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationheart: 1, acquaintance:1, follower:-1, mortal:1,heart:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这一位已经准备好了。",
-        description: "仪式上的回响如同在教堂中听见雷鸣。我了解它，它是我亲笔写就。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-				  	{
-        id: "recruitacquaintanceknock",
-        label: "通过唤起启，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationknock: 1, acquaintance:1, follower:-1, mortal:1,knock:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "这一位已经准备好了。",
-        description: "只要一个小伤口。能向开启之力献上敬意便足够。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-					  	{
-        id: "recruitacquaintancelantern",
-        label: "通过唤起灯，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationlantern: 1, acquaintance:1, follower:-1, mortal:1,lantern:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-               startdescription: "这一位已经准备好了。",
-        description: "十二盏灯通明。在这些仪式中容不得阴影，亦容不得怜悯。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-						  	{
-        id: "recruitacquaintancemoth",
-        label: "通过唤起蛾，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationmoth: 1,acquaintance:1,  follower:-1, mortal:1,moth:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-             startdescription: "这一位已经准备好了。",
-        description: "蛾蜕了皮。新信徒必须褪去衣着，剥离过往。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-
-							  	{
-        id: "recruitacquaintancewinter",
-        label: "通过唤起冬，将熟人吸纳入教",
-        actionId: "talk",
-        requirements: {venerationwinter: 1, acquaintance:1, follower:-1, mortal:1,winter:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {recruiting: 1},
-        startdescription: "这一位已经准备好了。",
-        description: "我将要说的词有九个，而新信徒须沉默始终。",
-        warmup: 30,
-        craftable: true,
-		burnimage: freemasons
-    },
-	
-	
-	  	{
-        id: "promotetodiscipleedge",
-        label: "通过唤起冬来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationedge: 1,follower:1, disciple:-1, independent:-1,mortal:1,edge:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple:1},
-        startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“伤痕即武器，通过厮杀我抵达胜利。不存在击败，只存在消灭，在刃的锋芒中真我得见。我将自身献与最强者的事业。”",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promotetodiscipleforge",
-        label: "通过唤起铸来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationforge: 1,follower:1, disciple:-1, independent:-1,mortal:1,forge:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“我毁灭，我再生。现在我将皮肤烧灼，而印痕会使真我显现。我将自身献与烈焰；面对重铸，无所畏惧。”",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promotetodisciplegrail",
-        label: "通过唤起杯来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationgrail: 1,follower:1, disciple:-1, independent:-1,mortal:1,grail:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "我们生于痛苦，相拥于渴望，吞噬于欢欣。人的躯体上有门，而这就是她的承诺：并非一切诞生都会衰亡。我们将自身献与盛宴，以纪念那份承诺。",
-        warmup: 60,
-        craftable: true
-    },
-			  	{
-        id: "promotetodiscipleheart",
-        label: "通过唤起忱来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationheart: 1,follower:1, disciple:-1, independent:-1,mortal:1,heart:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“我们将口舌交与雷霆，将双脚交与舞蹈，将皮肤交与黑夜。我们永不停歇、永不停歇、永不停歇。”",
-        warmup: 60,
-        craftable: true
-    },
-				  	{
-        id: "promotetodiscipleknock",
-        label: "通过唤起启来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationknock: 1,follower:1, disciple:-1, independent:-1,mortal:1,knock:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-             startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“对肉身的她，我给予我的伤。对磐石一般的她，我给予旧的自我与新的自我彼此分隔的那一瞬间。对来自光芒的她，我给予我的秘密。门扉从不紧闭。”",
-        warmup: 60,
-        craftable: true
-    },
-					  	{
-        id: "promotetodisciplelantern",
-        label: "通过唤起灯来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationlantern: 1,follower:1, disciple:-1, independent:-1,mortal:1,lantern:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-               startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“他指引方向，现在你即是地图。他照亮四方，而你曾是黑暗。他从不怜悯，你将毫不同情。我们的罗盘乃知识，我们的终点是光界。”",
-        warmup: 60,
-        craftable: true
-    },
-						  	{
-        id: "promotetodisciplemoth",
-        label: "通过唤起蛾来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationmoth: 1,follower:1, disciple:-1, independent:-1,mortal:1,moth:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-             startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“刚才是剪子，现在是小刀。刚才是树，现在是骨。刚刚是颤动的月，现在是斑驳的魂。他曾是血，而我们也将成为血。”",
-        warmup: 60,
-        craftable: true
-    },
-
-							  	{
-        id: "promotetodisciplewinter",
-        label: "通过唤起冬来晋升一位信徒",
-        actionId: "talk",
-        requirements: {venerationwinter: 1,follower:1, disciple:-1, independent:-1,mortal:1,winter:7},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotiontodisciple: 1},
-        startdescription: "我的追随者将以信众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
-        description: "“现在你流出了血，如同太阳在流血。现在你的过往与将来分离，如同狼的分裂。你并未诞生。你献身，直至肉身分解。保持缄默，起身。”",
-        warmup: 60,
-        craftable: true
-    },
-	
-	
+		requirements: 
 		{
-        id: "promoteto_d_edge",
-        label: "尝试将一名门徒提拔成暗杀者",
-        actionId: "talk",
-        requirements: {cultedge_1: 1,follower:1,edge:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_edge:1},
-        startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“锻狮在上校面前跪拜，如今我也臣服。我将献身，矢志不渝，不死不休。”",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promoteto_d_forge",
-        label: "尝试将一名门徒提拔成赋形者",
-        actionId: "talk",
-        requirements: {cultforge_1: 1,follower:1,forge:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_forge: 1},
-        startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“我既是榔搥，也是铁砧；既是火舌，也是钢铁的祝福。我将自身献与终末的燎原烈焰。”",
-        warmup: 60,
-        craftable: true
-    },
-		  	{
-        id: "promoteto_d_grail",
-        label: "尝试将一名门徒提拔成塞浦路斯人",
-        actionId: "talk",
-        requirements: {cultgrail_1: 1,follower:1,grail:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_grail: 1},
-        startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“以铜与鸽之名，以我们渴求、同时也渴求我们的她之名，我将自身献上，我既是享宴之人，又是盛宴本身。我将被吞噬，我亦将去吞噬。”",
-        warmup: 60,
-        craftable: true
-    },
-			  	{
-        id: "promoteto_d_heart",
-        label: "尝试将一名门徒提拔成塔兰泰拉舞者",
-        actionId: "talk",
-        requirements: {cultheart_1: 1,follower:1,heart:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_heart: 1},
-        startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“以松木与刀之名，以鼓与圆之名，我将自身献出，领跳永不停歇的舞。舞是我的礼献，但最终留下的，将只有我礼献的舞。”",
-        warmup: 60,
-        craftable: true
-    },
-				  	{
-        id: "promoteto_d_knock",
-        label: "尝试将一名门徒提拔成灵钥",
-        actionId: "talk",
-        requirements: {cultknock_1: 1,follower:1,knock:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_knock: 1},
-             startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“锁终将解开，门终将打开；入口终将展开，墙壁终将消融。所有的要塞我来去自如，所有的国度我出入无碍。除了蚁母的律法，没有律法能将我约束。我乃灵钥，化身钥匙便是我的归宿。”",
-        warmup: 60,
-        craftable: true
-    },
-					  	{
-        id: "promoteto_d_lantern",
-        label: "尝试将一名门徒提拔成预言者",
-        actionId: "talk",
-        requirements: {cultlantern_1: 1,follower:1,lantern:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_lantern: 1},
-               startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“我将自身献出，去点亮路途，点亮那乐意接受之人的，也点亮那不情愿之人的。我将自身献出，去指引方向。我将自身献出，去照耀。我将自身献出，拒绝宽恕。我将踏上显现的路，无论欢喜或愁苦。”",
-        warmup: 60,
-        craftable: true
-    },
-						  	{
-        id: "promoteto_d_moth",
-        label: "尝试将一名门徒提拔成易容师",
-        actionId: "talk",
-        requirements: {cultmoth_1: 1,follower:1,moth:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_moth: 1},
-             startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "“我曾如此，但现在我已改变。这些是我的外衣，我已将之留下。这是我的皮肤，但不过是借来之物。这是我的姓名，它只是障眼之物。这是林地，是我们扼杀光明的地方。我曾在这里，而今我已不在。”",
-        warmup: 60,
-        craftable: true
-    },
-
-							  	{
-        id: "promoteto_d_winter",
-        label: "尝试提拔一名门徒",
-        actionId: "talk",
-        requirements: {cultwinter_1: 1,follower:1,winter:21,exalted:-1,potential:1},
-        effects: {ingredient:-1,influence:-1},
-		aspects: {promotionto_d_winter: 1},
-        startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
-        description: "'...?' '...?' '...?'
+			uqzachary: "1",
+			society: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Zachary?",
+		startdescription: "'If I'm not with the Bureau, I should be with you? That doesn't follow.'",
+		id: "recruitindependentzachary",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			uqspencer: "1",
+			society: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Spencer?",
+		startdescription: "'No. Not them. Not you. Just me.'",
+		id: "recruitindependentspencer",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			uqconnie: "1",
+			society: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Connie?",
+		startdescription: "I don't think so. A strange road, yes. But not that strange.",
+		id: "recruitindependentconnie",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			society: "1",
+			uqnatalia: "1",
+		},
+		craftable: "true",
+		comment: "NEW",
+		warmup: "5",
+		label: "Recruit Natalia?",
+		startdescription: "'I don't think our doctrines converge.'",
+		id: "recruitindependentnatalia",
+		description: "'No. I don't trust you.'",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			mortal: "1",
+			resentment: "-1",
+			venerationedge: "1",
+			independent: "1",
+			tool: "1",
+			edge: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>刃</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentedge",
+		actionId: "talk",
+		description: "我们已经为这一刻备好了刀子。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			forge: "21",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			venerationforge: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起铸的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentforge",
+		actionId: "talk",
+		description: "火必熊燃，足以烧焦观者的皮肤。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationgrail: "1",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			grail: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>杯</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentgrail",
+		actionId: "talk",
+		description: "我们会紧紧相连的；噢当然了，我们将合而为一。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationheart: "1",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			heart: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>心</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentheart",
+		actionId: "talk",
+		description: "我们已开始了永不结束的事业。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationknock: "1",
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			knock: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>启</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentknock",
+		actionId: "talk",
+		description: "这是我们所有人都将铭记的开始。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			resentment: "-1",
+			mortal: "1",
+			independent: "1",
+			tool: "1",
+			venerationlantern: "1",
+			lantern: "21",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>灯</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentlantern",
+		actionId: "talk",
+		description: "先有光芒万丈，后生黑暗无疆。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			moth: "21",
+			resentment: "-1",
+			mortal: "1",
+			venerationmoth: "1",
+			independent: "1",
+			tool: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>蛾</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentmoth",
+		actionId: "talk",
+		description: "我们都已褪下了外皮。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			winter: "21",
+			mortal: "1",
+			resentment: "-1",
+			tool: "1",
+			independent: "1",
+			venerationwinter: "1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "唤起<b>冬</b>的伟力来雇佣捣乱分子",
+		startdescription: "这位已经准备好加入我们。",
+		id: "recruitindependentwinter",
+		actionId: "talk",
+		description: "这场仪式无需言语。",
+		effects: 
+		{
+			tool: "-1",
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			venerationedge: "1",
+			mortal: "1",
+			edge: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>刃</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintanceedge",
+		actionId: "talk",
+		description: "宣读咒言之前，新信徒必须将刀磨利，使其能够断开水中漂过的丝线。要是锋利不足的话，对他们自己可不是好事。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			forge: "1",
+			mortal: "1",
+			venerationforge: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起铸，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintanceforge",
+		actionId: "talk",
+		description: "这场仪式需要铭刻。印记很小，但信徒会终生带着这份印记。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationgrail: "1",
+			acquaintance: "1",
+			grail: "1",
+			mortal: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>杯</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintancegrail",
+		actionId: "talk",
+		description: "我所给予的滋味将令人永生难忘。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationheart: "1",
+			acquaintance: "1",
+			mortal: "1",
+			heart: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>心</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintanceheart",
+		actionId: "talk",
+		description: "仪式上的回响如同在教堂中听见雷鸣。我了解它，它是我亲笔写就。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			venerationknock: "1",
+			acquaintance: "1",
+			mortal: "1",
+			knock: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>启</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintanceknock",
+		actionId: "talk",
+		description: "只需一处小伤口。能向开启之力献上敬意便足够。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			venerationlantern: "1",
+			lantern: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>灯</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintancelantern",
+		actionId: "talk",
+		description: "十二盏灯通明。在这些仪式中容不得阴影，亦容不得怜悯。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			moth: "1",
+			acquaintance: "1",
+			venerationmoth: "1",
+			mortal: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>蛾</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintancemoth",
+		actionId: "talk",
+		description: "蛾蜕了皮。新信徒必须褪去衣着，剥离过往。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			acquaintance: "1",
+			mortal: "1",
+			winter: "1",
+			venerationwinter: "1",
+			follower: "-1",
+		},
+		craftable: "true",
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "通过唤起<b>冬</b>，将熟人吸纳入教",
+		startdescription: "这一位已经准备好了。",
+		id: "recruitacquaintancewinter",
+		actionId: "talk",
+		description: "我将要说的词有且仅有九个，而新信徒须沉默始终。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+		burnimage: "freemasons",
+	},
+	{
+		requirements: 
+		{
+			mortal: "1",
+			follower: "1",
+			venerationedge: "1",
+			disciple: "-1",
+			independent: "-1",
+			edge: "7",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>刃</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodiscipleedge",
+		actionId: "talk",
+		description: "“伤痕即武器，通过厮杀我抵达胜利。不存在击败，只存在消灭，在辉刃的锋芒中真我得见。我将自身献与最强者的事业。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			forge: "7",
+			follower: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			venerationforge: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起铸来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodiscipleforge",
+		actionId: "talk",
+		description: "“我毁灭，我再生。现在我将皮肤烧灼，而印痕会使真我显现。我将自身献与烈焰；面对重铸，无所畏惧。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			venerationgrail: "1",
+			mortal: "1",
+			grail: "7",
+			disciple: "-1",
+			independent: "-1",
+			follower: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>杯</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodisciplegrail",
+		actionId: "talk",
+		description: "我们生于痛苦，相拥于渴望，吞噬于欢欣。人的躯体上有门，而这就是她的承诺：并非一切诞生都会衰亡。我们将自身献与盛宴，以纪念那份承诺。",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			venerationheart: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			heart: "7",
+			follower: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>心</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodiscipleheart",
+		actionId: "talk",
+		description: "“我们将口舌交与雷霆，将双脚交与舞蹈，将皮肤交与黑夜。我们永不停歇、永不停歇、永不停歇。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			venerationknock: "1",
+			follower: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			knock: "7",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>启</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodiscipleknock",
+		actionId: "talk",
+		description: "“对肉身的她，我给予我的伤。对磐石一般的她，我给予旧的自我与新的自我彼此分隔的那一瞬间。对来自光芒的她，我给予我的秘密。门扉从不紧闭。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			mortal: "1",
+			disciple: "-1",
+			independent: "-1",
+			venerationlantern: "1",
+			lantern: "7",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>灯</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodisciplelantern",
+		actionId: "talk",
+		description: "“他指引方向，现在你即是地图。他照亮四方，而你曾是黑暗。他从不怜悯，你将毫不同情。我们的罗盘乃知识，我们的终点是光界。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			moth: "7",
+			follower: "1",
+			mortal: "1",
+			venerationmoth: "1",
+			disciple: "-1",
+			independent: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>蛾</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodisciplemoth",
+		actionId: "talk",
+		description: "“刚才是剪子，现在是小刀。刚才是树，现在是骨。刚刚是颤动的月，现在是斑驳的魂。他曾是血，而我们也将成为血。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			winter: "7",
+			mortal: "1",
+			disciple: "-1",
+			venerationwinter: "1",
+			independent: "-1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotiontodisciple: "1",
+		},
+		label: "通过唤起<b>冬</b>来晋升一位信徒",
+		startdescription: "我的追随者将以大众之身跪拜，以信徒之身站起。我将亲自颂唱必要的祷词。",
+		id: "promotetodisciplewinter",
+		actionId: "talk",
+		description: "“现在，你在流血，如同太阳在流血。现在，你将过去与未来分割，就如狼之分裂。你从未诞生。只有死亡才会结束你的祀奉。你将在缄默中得到晋升。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			cultedge_1: "1",
+			edge: "21",
+			exalted: "-1",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_edge: "1",
+		},
+		label: "尝试将一名门徒擢升为暗杀者",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_edge",
+		actionId: "talk",
+		description: "“锻狮在上校面前跪拜，如今我也臣服。我将献身，矢志不渝，不死不休。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			forge: "21",
+			cultforge_1: "1",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_forge: "1",
+		},
+		label: "尝试将一名门徒擢升为赋形者",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_forge",
+		actionId: "talk",
+		description: "“我既是榔搥，也是铁砧；既是火舌，也是钢铁的祝福。我将自身献与终末的燎原烈焰。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			cultgrail_1: "1",
+			follower: "1",
+			exalted: "-1",
+			potential: "1",
+			grail: "21",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_grail: "1",
+		},
+		label: "尝试将一名门徒擢升为引蝶人",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_grail",
+		actionId: "talk",
+		description: "“以铜与鸽之名，以我们渴求、同时也渴求我们的她之名，我将自身献上，我既是享宴之人，又是盛宴本身。我将被吞噬，我亦将去吞噬。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			potential: "1",
+			cultheart_1: "1",
+			heart: "21",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_heart: "1",
+		},
+		label: "尝试将一名门徒擢升为蛊舞者",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_heart",
+		actionId: "talk",
+		description: "“以松木与刀之名，以鼓与圆之名，我将自身献出，领跳永不停歇的舞。舞是我的礼献，但最终留下的，将只有我礼献的舞。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			potential: "1",
+			knock: "21",
+			cultknock_1: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_knock: "1",
+		},
+		label: "尝试将一名门徒擢升为灵钥",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_knock",
+		actionId: "talk",
+		description: "“再也没有锁。再也没有扉。大门皆敞开。围墙亦不再。所有的堡垒都不再对我封锁。所有的国度我都出入无碍。除了蚁母的律法，不会再有约束我的律法。我乃灵钥，洞开一切门扉。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			cultlantern_1: "1",
+			lantern: "21",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_lantern: "1",
+		},
+		label: "尝试将一名门徒擢升为预言家",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_lantern",
+		actionId: "talk",
+		description: "“我将自身献出，去点亮路途，既指引那乐意接受之人的，也指引那些不情愿之人。我将自身献出，引导方向。我将自身献出，照亮前路。我将自身献出，拒绝宽恕。我将踏上已经显现的道路，无论代价为何。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			moth: "21",
+			cultmoth_1: "1",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_moth: "1",
+		},
+		label: "尝试将一名门徒擢升为易皮师",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_moth",
+		actionId: "talk",
+		description: "“那是我的过去，但现在的我已经改变。这些是我的外衣，但我将其置之高阁。这是我的皮肤，但不过只是借来之物。这是我的姓名，但不过只是障眼之物。这是林地，是我们扼死光明的地方。我曾在这里，而今我已离开。”",
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			follower: "1",
+			exalted: "-1",
+			cultwinter_1: "1",
+			winter: "21",
+			potential: "1",
+		},
+		craftable: "true",
+		warmup: "60",
+		aspects: 
+		{
+			promotionto_d_winter: "1",
+		},
+		label: "尝试提拔一名门徒",
+		startdescription: "只有少数几人——最适合我玄秘事业的人——才可能达到这一境界。",
+		id: "promoteto_d_winter",
+		actionId: "talk",
+		description: "'...?' '...?' '...?'
 		
 		'...'",
-        warmup: 60,
-        craftable: true
-    },
-	
-	
-	
-	
-	
-	
-	
-	  	{
-        id: "recruitacquaintanceclue",
-        label: "吸纳一名熟人？",
-        actionId: "talk",
-        requirements: {society: 1,mortal: 1,follower:-1},
-        startdescription: "如果我能多提供一点，这一位或许可以达到下一级别了。",
-        craftable: false,
-		hintonly: true
-    },
- 	
-	 	{
-        id: "cultfoundation",
-        label: "选择根本信条",
-		alternativerecipes:
-		[{id: "cultfoundationedge", chance:100},
-		{id: "cultfoundationforge", chance:100},
-		{id: "cultfoundationgrail", chance:100},
-		{id: "cultfoundationheart", chance:100},
-		{id: "cultfoundationknock", chance:100},
-		{id: "cultfoundationlantern", chance:100},
-		{id: "cultfoundationmoth", chance:100},
-		{id: "cultfoundationsecrethistories", chance:100},
-		{id: "cultfoundationwinter", chance:100}],
-        actionId: "cult",
-        requirements: {},
-        effects: {},
-		slots: [{id:"Doctrine",required: {lore: 1},description: "我们所求为何？"}],
-        startdescription: "传统与强制——旧的，新的，或兼而有之。[添加学识来决定你教派的根本信条。]",
-        description: "",
-        warmup: 30,
-        craftable: false,
-		linked:[{id:"cultfoundation",chance:100}]
-    },
-			{
-	id: "cultfoundationedge",
-	label: "创建辉刃教派",
-	actionId: "establishcult",
-	requirements: {edge: 1},
-	effects: {cultedge_1: 1},
-	startdescription: "密教团体，献身于斗争与征服的时枢神。",
-		linked: [{id: "cultfoundation_health",chance:100}],
-	},
-			{
-	id: "cultfoundationforge",
-	label: "创建无畏教团",
-	actionId: "establishcult",
-	requirements: {forge: 1},
-	effects: {cultforge_1: 1},
-	startdescription: "密教团体，献身于变化与重铸之火。",
-		linked: [{id: "cultfoundation_health",chance:100}],
+		effects: 
+		{
+			influence: "-1",
+			ingredient: "-1",
+		},
 	},
 	{
-	id: "cultfoundationgrail",
-	label: "创建血杯教团",
-	actionId: "establishcult",
-	requirements: {grail: 1},
-	effects: {cultgrail_1: 1},
-	startdescription: "密教团体，献身于诞生、鲜血、欲求的奥秘。",
-		linked: [{id: "cultfoundation_passion",chance:100}],
-	},
+		id: "recruitacquaintanceclue",
+		craftable: "false",
+		startdescription: "如果我能多提供一点，这一位或许可以达到下一级别了。",
+		requirements: 
 		{
-	id: "cultfoundationheart",
-	label: "创建不休圣堂",
-	actionId: "establishcult",
-	requirements: {heart: 1},
-	effects: {cultheart_1: 1},
-	startdescription: "密教团体，献身于永远无法停息的鼓点。",
-		linked: [{id: "cultfoundation_passion",chance:100}],
+			follower: "-1",
+			society: "1",
+			mortal: "1",
+		},
+		label: "吸纳一名熟人吗？",
+		hintonly: "true",
+		actionId: "talk",
 	},
+	{
+		linked: 
+		[
 			{
-	id: "cultfoundationknock",
-	label: "创建圣伤教会",
-	actionId: "establishcult",
-	requirements: {knock: 1},
-	effects: {cultknock_1: 1},
-
-	startdescription: "密教团体，献身于开启门扉的时枢神。",
-		linked: [{id: "cultfoundation_health",chance:100}],
-	},
+				id: "cultfoundation",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		effects: 
+		{
+		},
+		warmup: "30",
+		label: "选择根本信条",
+		startdescription: "传统与强制——旧的，新的，或兼而有之。[添加知识来决定你教派的根本信条。]",
+		id: "cultfoundation",
+		actionId: "cult",
+		slots: 
+		[
+			{
+				id: "Doctrine",
+				required: 
 				{
-	id: "cultfoundationlantern",
-	label: "创建光界之镜",
-	actionId: "establishcult",
-	requirements: {lantern: 1},
-	effects: {cultlantern_1: 1},
-	startdescription: "密教团体，献身于理解更激烈的地方所溢出的光。",
-		linked: [{id: "cultfoundation_reason",chance:100}],
+					lore: "1",
+				},
+				description: "我们所求为何？",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "cultfoundationedge",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationforge",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationgrail",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationheart",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationknock",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationlantern",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationmoth",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationsecrethistories",
+				chance: "100",
+			},
+			{
+				id: "cultfoundationwinter",
+				chance: "100",
+			},
+		],
 	},
-					{
-	id: "cultfoundationmoth",
-	label: "创建野木社",
-	actionId: "establishcult",
-	requirements: {moth: 1},
-	effects: {cultmoth_1: 1},
-	startdescription: "密教团体，献身于混沌，以及变幻莫测的时枢神。",
-		linked: [{id: "cultfoundation_passion",chance:100}],
+	{
+		id: "cultfoundationedge",
+		linked: 
+		[
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于斗争与征服的时枢神。",
+		requirements: 
+		{
+			edge: "1",
+		},
+		effects: 
+		{
+			cultedge_1: "1",
+		},
+		label: "创建辉刃教派",
+		actionId: "establishcult",
 	},
-						{
-	id: "cultfoundationsecrethistories",
-	label: "创建九头神蛇教会",
-	actionId: "establishcult",
-	requirements: {secrethistories: 1},
-	effects: {cultsecrethistories_1: 1},
-	startdescription: "密教团体，献身于有关五支历史及其下千万条亦虚亦实之分支的研究。",
-		linked: [{id: "cultfoundation_reason",chance:100}],
+	{
+		id: "cultfoundationforge",
+		linked: 
+		[
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于变化与重铸之火。",
+		requirements: 
+		{
+			forge: "1",
+		},
+		effects: 
+		{
+			cultforge_1: "1",
+		},
+		label: "创建无畏教团",
+		actionId: "establishcult",
 	},
-							{
-	id: "cultfoundationwinter",
-	label: "创建缄默之子教会",
-	actionId: "establishcult",
-	requirements: {winter: 1},
-	effects: {cultwinter_1: 1},
-	startdescription: "密教团体，致力于降临的无声与终结的冰冷。",
-		linked: [{id: "cultfoundation_reason",chance:100}],
+	{
+		id: "cultfoundationgrail",
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于诞生、鲜血、欲求的奥秘。",
+		requirements: 
+		{
+			grail: "1",
+		},
+		effects: 
+		{
+			cultgrail_1: "1",
+		},
+		label: "创建血杯教团",
+		actionId: "establishcult",
 	},
-								{
-	id: "cultfoundation_health",
-	label: "献祭苦痛",
-	actionId: "establishcult",
-	requirements: {injury:-1},
-	slots: [{id:"Health",label: "我的健康",required: {health: 1},description: "我必须献上自身，荣耀我们将要侍奉的伟力。"}],
-	aspects: {damagehealth:1},
-	warmup:30,
-	startdescription: "我们将要侍奉的时枢神要求苦痛，我必须献出自己的那份。",
-	description: "",
-	linked: [{id: "cultfoundation_fatigue",chance:100},
-	{id: "cultfoundation_health",chance:100},
-	{id: "cultfoundation_firstrecruit",chance:100},
-	]
+	{
+		id: "cultfoundationheart",
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于永远无法停息的鼓点。",
+		requirements: 
+		{
+			heart: "1",
+		},
+		effects: 
+		{
+			cultheart_1: "1",
+		},
+		label: "创建不休圣堂",
+		actionId: "establishcult",
 	},
-	{id:"cultfoundation_fatigue",
-	label: "献祭苦痛",
-	requirements:{fatigue:1},
-	actionId:"establishcult",
-	aspects: {damagehealth:1},
-	comments: "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
-	linked: [{id: "cultfoundation_firstrecruit",chance:100}]
+	{
+		id: "cultfoundationknock",
+		linked: 
+		[
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于开启门扉的时枢神。",
+		requirements: 
+		{
+			knock: "1",
+		},
+		effects: 
+		{
+			cultknock_1: "1",
+		},
+		label: "创建圣伤教会",
+		actionId: "establishcult",
 	},
-									{
-	id: "cultfoundation_reason",
-	label: "骇人的纯净",
-	actionId: "establishcult",
-	requirements: {concentration:-1},
-	slots: [{id:"Reason",label: "我的理智",required: {reason: 1},description: "我必须献上自身，荣耀我们将要侍奉的伟力。"}],
-	aspects: {fatiguing:1},
-	warmup:30,
-	startdescription: "要达成我们的目标，就需要辨别出使心灵发颤的真相。我必须献出自己的那份。",
-	description: "",
-	linked: [{id: "cultfoundation_reason",chance:100},
-	{id: "cultfoundation_firstrecruit",chance:100},
-	]
+	{
+		id: "cultfoundationlantern",
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于理解更激烈的地方所溢出的光。",
+		requirements: 
+		{
+			lantern: "1",
+		},
+		effects: 
+		{
+			cultlantern_1: "1",
+		},
+		label: "创建光界之镜",
+		actionId: "establishcult",
 	},
-	
-									{
-	id: "cultfoundation_passion",
-	label: "奉献的诺言",
-	actionId: "establishcult",
-	requirements: {passionexhausted:-1},
-	slots: [{id:"Passion",label: "我的热情",required: {passion: 1},description: "我必须献上自身，荣耀我们将要侍奉的伟力。"}],
-	aspects: {fatiguing:1},
-	warmup:30,
-	startdescription: "我们将要侍奉的那位时枢神要求将热情投入到它的目的里。我必须献出自己的那份。",
-	description: "",
-	linked: [{id: "cultfoundation_passion",chance:100},
-	{id: "cultfoundation_firstrecruit",chance:100},
-	]
+	{
+		id: "cultfoundationmoth",
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于混沌，以及变幻莫测的时枢神。",
+		requirements: 
+		{
+			moth: "1",
+		},
+		effects: 
+		{
+			cultmoth_1: "1",
+		},
+		label: "创建野木社",
+		actionId: "establishcult",
 	},
-	
-	
-						{
-	id: "cultfoundation_firstrecruit",
-	label: "第一位信众",
-	actionId: "establishcult",
-	requirements: {follower:-1},
-	slots: [{id:"Recruit",label:"第一位信众",required: {mortal: 1},forbidden:{independent:1,prisoner:1,hunter:1,patron:1,hireling:1},description: "准备妥当之人。"}],
-	warmup:30,
-	startdescription: "一个人的教派只不过是习惯古怪而已。我必须吸纳信众。",
-	aspects:{recruiting:1},
-	linked: [{id: "cultfoundation_firstrecruit",chance:100},
-	{id: "cultfoundation_complete",chance:100},
-	]
+	{
+		id: "cultfoundationsecrethistories",
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，献身于有关五支历史及其下千万条亦虚亦实之分支的研究。",
+		requirements: 
+		{
+			secrethistories: "1",
+		},
+		effects: 
+		{
+			cultsecrethistories_1: "1",
+		},
+		label: "创建九头神蛇教会",
+		actionId: "establishcult",
 	},
-	
-					{
-	id: "cultfoundation_complete",
-	label: "我等的伟业就此展开。",
-	actionId: "establishcult",
-	effects: {generichq:1},
-	description: "我已经创建了自己的教派，这是通向伟力的一步。[使用你的教派来招募或提拔从者。和从者就教派进行谈话，让他们执行教派事务。]"
+	{
+		id: "cultfoundationwinter",
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+		],
+		startdescription: "密教团体，致力于降临的无声与终结的冰冷。",
+		requirements: 
+		{
+			winter: "1",
+		},
+		effects: 
+		{
+			cultwinter_1: "1",
+		},
+		label: "创建缄默之子",
+		actionId: "establishcult",
 	},
-	
-	
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_fatigue",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_health",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			injury: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			damagehealth: "1",
+		},
+		label: "献祭苦痛",
+		startdescription: "我们将要侍奉的时枢神要求苦痛，我必须献出自己的那份。",
+		id: "cultfoundation_health",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "我必须献上自身，荣耀我们将要侍奉的伟力。",
+				label: "我的健康",
+			},
+		],
+	},
+	{
+		id: "cultfoundation_fatigue",
+		comments: "most explicit way to resolve the damagehealth/injury/ingredient/fatigue society/cult inconsistency",
+		aspects: 
+		{
+			damagehealth: "1",
+		},
+		requirements: 
+		{
+			fatigue: "1",
+		},
+		linked: 
+		[
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		label: "献祭苦痛",
+		actionId: "establishcult",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_reason",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			concentration: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "骇人的纯净",
+		startdescription: "要达成我们的目标，就需要辨别出使心灵发颤的真相。我必须献出自己的那份。",
+		id: "cultfoundation_reason",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Reason",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "我必须献上自身，荣耀我们将要侍奉的伟力。",
+				label: "我的理性",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_passion",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			passionexhausted: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			fatiguing: "1",
+		},
+		label: "奉献的诺言",
+		startdescription: "我们将要侍奉的那位时枢神要求将热情投入到它的目的里。我必须献出自己的那份。",
+		id: "cultfoundation_passion",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Passion",
+				required: 
+				{
+					passion: "1",
+				},
+				description: "我必须献上自身，荣耀我们将要侍奉的伟力。",
+				label: "我的热情",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "cultfoundation_firstrecruit",
+				chance: "100",
+			},
+			{
+				id: "cultfoundation_complete",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			follower: "-1",
+		},
+		warmup: "30",
+		aspects: 
+		{
+			recruiting: "1",
+		},
+		label: "第一位信众",
+		startdescription: "只有一名成员的教团只能算是个人怪癖。我必须吸纳信众。",
+		id: "cultfoundation_firstrecruit",
+		actionId: "establishcult",
+		slots: 
+		[
+			{
+				id: "Recruit",
+				required: 
+				{
+					acquaintance: "1",
+				},
+				description: "准备妥当之人。",
+				forbidden: 
+				{
+					patron: "1",
+					hireling: "1",
+					prisoner: "1",
+					independent: "1",
+					hunter: "1",
+				},
+				label: "第一位信众",
+			},
+		],
+	},
+	{
+		id: "cultfoundation_complete",
+		effects: 
+		{
+			generichq: "1",
+		},
+		description: "我已经创建了自己的教派，这是通向伟力的一步。[使用你的教派来招募或提拔追随者。和追随者就教派进行谈话，让他们执行教派事务。]",
+		label: "<b>吾等的崛起就此开始。</b>",
+		actionId: "establishcult",
+	},
 ]
 }

@@ -16,7 +16,7 @@
 
 		{
 	id: "explorevaulttick",
-	comments: "如果所有资源均消耗殆尽，探险将失败。只要不存在阻碍且追随者和金钱均未耗尽探险即可继续。",
+	comments: "Can't reach success until all the alternatives are unavailable. That means no obstacles, >0 followers and >0 funds.",
 	label: "探险进行中",
 	actionId: "explore",
 		slots:[{id:"Assistance",description: "金钱对于探险来说必不可少，而阻碍则由追随者负责突破。", required: {follower:1,funds:1}}],
@@ -56,7 +56,7 @@
 		{id:"explorevaultfailure_nofunds",
 	actionId:"explore",
 	label:"后勤问题",
-	startdescription:"补给开始紧缺。除非投入更多金钱，否则我只能被迫放弃这次探险了。",
+	startdescription:"补给开始紧缺。除非投入更多金钱，否则我们只能被迫放弃这次探险了。",
 	description: "尘埃落定后，我们可以再试一次。",
 	requirements: {funds:-1},
 	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10,mystique:1},
@@ -66,7 +66,7 @@
 		{id:"explorevaultfailure_nofollowers",
 	actionId:"explore",
 	label:"无人归来",
-	startdescription:"No expedition members remain. I must send help, or this expedition will be over.",
+	startdescription:"我的追随者可能已经死亡，或者陷入了困境。我必须派人过去帮忙，不然这次探险就到此结束了。",
 	description: "无人归来。我可以再试一次，甚至可以重复利用之前的补给。",
 	requirements: {follower:-1},
 	effects: {dread:1,peril:-10,seal:-10,guardian:-10,curse:-10,mystique:1},
@@ -134,9 +134,9 @@
 	{
 		id: "explorevault_casualty",
 	actionId:"explorevault_casualty",
-	label: "An expedition member has fallen!",
-	startdescription: "Our numbers dwindle.",
-	description: "Their wounds are grievous. [Heal a fallen Follower with Talk.]",
+	label: "一名探险队成员已经倒下了！",
+	startdescription: "队伍缩减了。",
+	description: "他们的伤势十分危急。[通过谈话来治愈倒下的追随者。]",
 	alternativerecipes:[{id:"explorevault_casualty_summoning",chance:100}],
 	craftable: false,
 	mutations:[{filterOnAspectId:mortal,mutateAspectId:follower_wound,mutationLevel:1,additive:false},
@@ -146,8 +146,8 @@
 	{		id: "explorevault_casualty_summoning",
 	actionId:"explorevault_casualty",
 	requirements:{summoned:1},
-		label: "My summoning has been defeated!",
-	description:"It is banished, or destroyed.",
+		label: "我的召唤物被击败了。",
+	description:"它被放逐或者被消灭了。",
 	effects:{summoned:-1}
 	}
 

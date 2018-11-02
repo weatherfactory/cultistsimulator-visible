@@ -2,28 +2,28 @@
     [
 		 {
         id: "lunatic",
-            label: "一个可怜的疯子",
+            label: "一位可怜的疯子",
             aspects:
             {mortal:1,prisoner:1,moth:3,grail:3,heart:3},
-            description: "过于强烈的体验夺走了此人的心智。他很快就会没了踪影，再也没人见过。",
+            description: "被过于强烈的感受攫夺了心智，这些人不久就会消失，永远地离开人们的视线。",
 			lifetime:60,
 xtriggers: {killmortal:corpse}
         },
 		{
 		        id: "genericprisonerm",
-            label: "一个不幸的囚徒",
+            label: "一位不幸的囚徒",
             aspects:
             {mortal:1,prisoner:1,lantern:3,grail:3,heart:3},
-            description: "你股掌之上的他，死亡是早晚的事。",
+            description: "被你玩弄于股掌的家伙，迟早要完。",
 			lifetime:600,decayTo:"corpse",
 xtriggers: {killmortal:corpse,derangemortal:lunatic}
         },
 				{
 		        id: "genericprisonerf",
-            label: "一个不幸的囚徒",
+            label: "一位不幸的囚徒",
             aspects:
             {mortal:1,prisoner:1,lantern:3,grail:3,heart:3},
-            description: "你股掌之上的他，死亡是早晚的事。",
+            description: "被你玩弄于股掌的家伙，迟早要完。",
 			lifetime:600,decayTo:"corpse",
 xtriggers: {killmortal:corpse,derangemortal:lunatic}
         },

@@ -5,7 +5,7 @@
             label: "一名大块头",
             aspects:
             {mortal: 1,hireling:1,follower:1,edge:3},
-              description: "“我搞定了工作。”[该雇员可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
+              description: "“我搞定了工作。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
 			xtriggers: {hiring: thugedgeminor,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
@@ -14,7 +14,7 @@
             label: "一名狡猾的女子",
             aspects:
             {mortal: 1,hireling:1,follower:1,moth:3},
-              description: "“我搞定了工作。”[该雇员可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
+              description: "“我搞定了工作。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
 			xtriggers: {hiring: thugmothminor,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
@@ -23,7 +23,7 @@
             label: "肌肉专家",
             aspects:
             {mortal: 1,hireling:1,follower:1,edge:5},
-              description: "“我要把他们劈成两半。”[该雇员可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
+              description: "“我要把他们劈成两半。”[该雇工可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
 			xtriggers: {hiring: thugedge,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
@@ -32,7 +32,7 @@
             label: "炸弹制造师",
             aspects:
             {mortal: 1,hireling:1,follower:1,forge:5,edge:3},
-            description: "“也许我们这会儿不应该谈论政治。”[该雇员可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙]",
+            description: "“也许我们这会儿不应该谈论政治。”[该雇工可以用于探险，并且可以可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙]",
 			xtriggers: {hiring:thugforgeedge,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
@@ -41,7 +41,7 @@
             label: "一位入口顾问",
             aspects:
             {mortal: 1,hireling:1,follower:1,knock:5},
-            description: "“我对门很在行哦。”[该雇员可以用于探险。]",
+            description: "“我对门很在行哦。”[该雇工可以用于探险。]",
 			xtriggers: {hiring:thugknock,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
@@ -50,7 +50,7 @@
             label: "一名占卜师",
             aspects:
             {mortal: 1,hireling:1,follower:1,lantern:5,moth:3},
-            description: "“我感受到了。我感受到了你的与众不同。”[该雇员可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
+            description: "“我感受到了。我感受到了你的与众不同。”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
 			xtriggers: {hiring:thuglanternmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },
@@ -59,7 +59,7 @@
             label: "一位经验丰富的骗子",
             aspects:
             {mortal: 1,hireling:1,follower:1,moth:5,grail:1},
-            description: "“很高兴与您共事！”[该雇员可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
+            description: "“很高兴与您共事！”[该雇工可以用于探险，并且可以帮你解决来寻找你犯罪证据的猎手和找你麻烦的家伙。]",
 			xtriggers: {hiring:thugmoth,killmortal:corpse,derangemortal:lunatic,capturefollower:generic_p},
 			lifetime:120
         },

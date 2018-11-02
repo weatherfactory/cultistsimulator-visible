@@ -5,7 +5,7 @@
             label: "监督员威克菲尔德",
             aspects:
             {hunter:1,mortal:1,meticulous:1,grim:1},
-            description: "扎迦利·威克菲尔德：一个愁容满面而又冷酷无情的警方监督员。他最近被分配到了监管局。",
+            description: "扎迦利·威克菲尔德：一名愁容满面而又冷酷无情的警探。他最近被分配到了监管局。",
 unique:true,
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator1prisoner}
         },
@@ -33,32 +33,32 @@ xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehun
             label: " 纳丽塔娅·娇龙博士",
             aspects:
             {hunter:1,mortal:1,idealist:1,meticulous:1},
-            description: "她在研究其他历史线时遭到了嘲笑，被排挤出了学术界，但那只是让她变得更加坚定了。她现在为监管局工作。",
+            description: "她在研究其他历史的可能性时遭到了嘲笑，被排挤出了学术界，但那只是让她变得更加坚定了。她现在为监管局工作。",
 unique:true,
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:investigator4prisoner}
         },
 				 {
         id: "defaulthunter",
-            label: "讨人嫌的侦探",
+            label: "讨人嫌的警探",
             aspects:
             {hunter:1,mortal:1},
-            description: "这位绅士绝对更愿意跟他的烟斗和《伦敦新闻》画报待在一起，但他没能如此。<i>显然</i>有些半路杀出的讨厌事物需要有人化身疯狗去猎杀一下；而且<i>显然</i>，没有其他人有时间来做这些。",
+            description: "这位绅士绝对更愿意跟他的烟斗和《伦敦新闻画报》待在一起，但他没能如此。<i>显然</i>有些半路杀出的讨厌事物需要有人化身疯狗去猎杀一下；而且<i>显然</i>，没有其他人有时间来做这些。",
 xtriggers: {killmortal:corpse,killhunter:corpse,derangemortal:lunatic,capturehunter:defaulthunterprisoner}
         },
 		
 				 {
         id: "investigator1prisoner",
-            label: "监督员威克菲尔德: Captured!",
+            label: "监督员威克菲尔德: 已被捕！",
             aspects:
             {mortal:1,prisoner:1,lantern:4,grail:3,heart:3,winter:3},
-            description: "扎迦利·威克菲尔德：一个愁容满面而又冷酷无情的警方监督员。让我们确保他会死在牢中。",
+            description: "扎迦利·威克菲尔德：一名愁容满面而又冷酷无情的警探。让我们确保他会死在牢中。",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic},
 lifetime:600,decayTo:"corpse"
         },
 								 {
         id: "investigator2prisoner",
-            label: "斯宾塞·霍布森: Captured!",
+            label: "斯宾塞·霍布森: 已被捕！",
             aspects:
             {prisoner:1,mortal:1,lantern:3,grail:3,heart:3},
               description: "霍布森曾经当过记者，私家侦探和——简要来说，神职人员。让我们确保他会死在牢中。",
@@ -69,7 +69,7 @@ lifetime:600,decayTo:"corpse"
 		
 						 {
         id: "investigator3prisoner",
-            label: "康妮·李: Captured!",
+            label: "康妮·李: 已被捕！",
             aspects:
             {prisoner:1,mortal:1,lantern:3,grail:3,heart:3,edge:3},
             description: "女继承人，女性参政论者兼冒险家。让我们确保他会死在牢中。",
@@ -80,17 +80,17 @@ lifetime:600,decayTo:"corpse"
 		
 						 {
         id: "investigator4prisoner",
-            label: " 纳丽塔娅·娇龙博士: Captured!",
+            label: " 纳丽塔娅·娇龙博士: 已被捕！",
             aspects:
             {prisoner:1,mortal:1,lantern:5,grail:3,heart:3},
-            description: "她在研究其他历史线时遭到了嘲笑，被排挤出了学术界。但那只是让她更加坚定了。让我们确保他会死在牢中。",
+            description: "她在研究其他历史的可能性时遭到了嘲笑，被排挤出了学术界。但那只是让她更加坚定了。让我们确保他会死在牢中。",
 unique:true,
 xtriggers: {killmortal:corpse,derangemortal:lunatic},
 lifetime:600,decayTo:"corpse"
         },
 				 {
         id: "defaulthunterprisoner",
-            label: "讨人嫌的侦探 Captured!",
+            label: "讨人嫌的警探 已被捕！",
             aspects:
             {mortal:1,prisoner:1,,lantern:5,grail:3,heart:3},
             description: "这位绅士绝对更愿意跟他的烟斗和《伦敦新闻》画报待在一起，不过现在的他被关进了某个环境糟糕的地洞里。",

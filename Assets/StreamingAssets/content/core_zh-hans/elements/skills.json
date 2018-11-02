@@ -1,137 +1,816 @@
-{"elements":
-    [
-	{id: "skillhealtha",
-	label: "技能：强健体魄",
-	aspects: {healthskill:1,ability:1},
-	description: "锻炼的好处已然在我身上得到了体现。[将此技能和四张活力一起用于研究，来获得一张额外的健康]",
-	slots:[{id:"Health",actionId:"work",description:"我必须为此消耗体力。",required:{health:1}},
-	{id:"V1",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要让自己变得更强壮么？",actionId:"study"},
-	{id:"V2",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要让自己变得更强壮么？",actionId:"study"},
-	{id:"V3",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要让自己变得更强壮么？",actionId:"study"},
-	{id:"V4",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要让自己变得更强壮么？",actionId:"study"}
-	],
-	xtriggers:{careeradvancement:skillhealthb}
+﻿{
+elements: [
+	{
+		id: "skillhealtha",
+		aspects: 
+		{
+			healthskill: "1",
+			ability: "1",
+		},
+		description: "锻炼的好处已然在我身上得到了体现。[将此技能和四份活力一起用于研究来获得一份额外的健康。]",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "我必须为此消耗体力。",
+				actionId: "work",
+			},
+			{
+				id: "V1",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要让自己变得更强壮吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+			{
+				id: "V2",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要让自己变得更强壮吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+		],
+		label: "技能：强健体魄",
+		xtriggers: 
+		{
+			careeradvancement: "skillhealthb",
+		},
 	},
-		{id: "skillhealthb",
-	label: "技能：炼磨之身",
-	description: "我的肉体已如铁匠或者战士一般精悍。",
-	xtriggers:{careeradvancement:skillhealthc},
-	aspects: {healthskill:2,ability:1},
-	slots:[
-		{id:"Health",actionId:"work",description:"我必须为此消耗体力。",required:{health:1}},
-	{id:"V1",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？[将此技能和六张活力一起用于研究，来获得一张额外的健康]",actionId:"study"},
-	{id:"V2",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V3",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V4",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V5",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V6",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"}
-	],
-	},	
-			{id: "skillhealthc",
-	label: "技能：钢筋铁骨",
-	description: "现在，我可以用我的拳头来“解决”很多事体了。",
-	aspects: {healthskill:3,ability:1},
-	slots:[
-	{id:"Health",actionId:"work",description:"我必须为此消耗体力。",required:{health:1}},
-	{id:"V1",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？[将此技能和八张活力一起用于研究，来获得一张额外的健康]",actionId:"study"},
-	{id:"V2",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V3",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V4",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V5",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V6",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V7",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	{id:"V8",actionId:"study",label:"活力",required:{vitality:1},consumes:true,description:"要继续强化自己的肉体么？",actionId:"study"},
-	],
-	},	
-	
-	
-		{id: "skillreasona",
-	label: "技能：学有所成",
-	aspects: {reasonskill:1,ability:1},
-	description: "引据清越，文思泉涌。[将此技能和四张博闻一起用于研究，来获得一张额外的理性]",
-	slots:[{id:"e1",label:"博学",required:{erudition:1},consumes:true,description:"要用更多的知识充实自己的头脑么？",actionId:"study"},
-	{id:"e2",label:"博学",required:{erudition:1},consumes:true,description:"要用更多的知识充实自己的头脑么？",actionId:"study"},
-	{id:"e3",label:"博学",required:{erudition:1},consumes:true,description:"要用更多的知识充实自己的头脑么？",actionId:"study"},
-	{id:"e4",label:"博学",required:{erudition:1},consumes:true,description:"要用更多的知识充实自己的头脑么？",actionId:"study"}
-	],
-	xtriggers:{careeradvancement:skillreasonb}
+	{
+		id: "skillhealthb",
+		aspects: 
+		{
+			healthskill: "2",
+			ability: "1",
+		},
+		description: "我的肉体已如铁匠或者战士一般精悍。",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "我必须为此消耗体力。",
+				actionId: "work",
+			},
+			{
+				id: "V1",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？[将此技能和六份活力一起用于研究，来获得一份额外的健康。]",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+			{
+				id: "V2",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+			{
+				id: "V3",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+		],
+		label: "技能：磨练体魄",
+		xtriggers: 
+		{
+			careeradvancement: "skillhealthc",
+		},
 	},
-		{id: "skillreasonb",
-	label: "技能：知名彰著",
-	description: "学之弥多，愈觉知之弥少。[将此技能和六张博闻一起用于研究，来获得一张额外的理性]",
-	xtriggers:{careeradvancement:skillreasonc},
-	aspects: {reasonskill:2,ability:1},
-	slots:[{id:"e1",label:"博学",required:{erudition:1},consumes:true,description:"我还能在学海中继续深潜么？",actionId:"study"},
-	{id:"e2",label:"博学",required:{erudition:1},consumes:true,description:"我还能在学海中继续深潜么？",actionId:"study"},
-	{id:"e3",label:"博学",required:{erudition:1},consumes:true,description:"我还能在学海中继续深潜么？",actionId:"study"},
-	{id:"e4",label:"博学",required:{erudition:1},consumes:true,description:"我还能在学海中继续深潜么？",actionId:"study"},
-	{id:"e5",label:"博学",required:{erudition:1},consumes:true,description:"我还能在学海中继续深潜么？",actionId:"study"},
-	{id:"e6",label:"博学",required:{erudition:1},consumes:true,description:"我还能在学海中继续深潜么？",actionId:"study"}
-	],
-	},	
-			{id: "skillreasonc",
-	label: "技能：智通幽玄",
-	description: "知识在脑海中满溢，我头颅的诸多角落因此时时作响。[将此技能和八张博闻一起用于研究，来获得一张额外的理性康]",
-	aspects: {reasonskill:3,ability:1},
-	slots:[{id:"e1",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e2",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e3",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e4",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e5",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e6",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e7",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	{id:"e8",label:"博学",required:{erudition:1},consumes:true,description:"我该继续磨砺自己的理性么？",actionId:"study"},
-	],
-	},	
-	
-	
-
-		{id: "skillpassiona",
-	label: "技能：蝶梦栩然",
-	aspects: {passionskill:1,ability:1},
-	description: "我的白日梦有时会比睡梦更加光怪陆离。[使用此技能来工作可以进行绘画，或者使用此技能和四张灵感来研究以获得更多的激情]",
-	slots:[{id:"G1",label:"灵感",required:{glimmering:1},consumes:true,description:"我要继续为自己的热情提供燃料么？",actionId:"study"},
-	{id:"G2",label:"灵感",required:{glimmering:1},consumes:true,description:"我要继续为自己的热情提供燃料么？",actionId:"study"},
-	{id:"G3",label:"灵感",required:{glimmering:1},consumes:true,description:"我要继续为自己的热情提供燃料么？",actionId:"study"},
-	{id:"G4",label:"灵感",required:{glimmering:1},consumes:true,description:"我要继续为自己的热情提供燃料么？",actionId:"study"},
-{id:"painting1",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"},
-	{id:"painting2",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"}
-	],
-	xtriggers:{careeradvancement:skillpassionb}
+	{
+		id: "skillhealthc",
+		aspects: 
+		{
+			healthskill: "3",
+			ability: "1",
+		},
+		description: "现在，我可以用我的拳头来“解决”很多事体了。",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "我必须为此消耗体力。",
+				actionId: "work",
+			},
+			{
+				id: "specialisation",
+				required: 
+				{
+					lore: "1",
+				},
+				description: "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between strength and grace.",
+				comment: "NEW",
+				label: "Something More",
+				actionId: "study",
+			},
+			{
+				id: "V1",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？[将此技能和八份活力一起用于研究，来获得一份额外的健康。]",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+			{
+				id: "V2",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+			{
+				id: "V3",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+			{
+				id: "V4",
+				required: 
+				{
+					vitalityplus: "1",
+				},
+				description: "要继续强化自己的肉体吗？",
+				consumes: "true",
+				label: "活力",
+				actionId: "study",
+			},
+		],
+		label: "技能：钢筋铁骨",
 	},
-		{id: "skillpassionb",
-	label: "技能：不羁狂想",
-	description: "我一天能用掉六根铅笔——这是众所周知的事情。[使用此技能来工作可以进行绘画，或者使用此技能和六张灵感来研究以获得更多的激情]",
-	xtriggers:{careeradvancement:skillpassionc},
-	aspects: {passionskill:2,ability:1},
-	slots:[{id:"G1",label:"灵感",required:{glimmering:1},consumes:true,description:"何物将映我目，何物将成我形？ [使用此技能和六张灵感来研究以获得更多的激情]",actionId:"study"},
-	{id:"G2",label:"灵感",required:{glimmering:1},consumes:true,description:"何物将映我目，何物将成我形？",actionId:"study"},
-	{id:"G3",label:"灵感",required:{glimmering:1},consumes:true,description:"何物将映我目，何物将成我形？",actionId:"study"},
-	{id:"G4",label:"灵感",required:{glimmering:1},consumes:true,description:"何物将映我目，何物将成我形？",actionId:"study"},
-	{id:"G5",label:"灵感",required:{glimmering:1},consumes:true,description:"何物将映我目，何物将成我形？",actionId:"study"},
-	{id:"G6",label:"灵感",required:{glimmering:1},consumes:true,description:"何物将映我目，何物将成我形？",actionId:"study"},
-	{id:"painting1",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"},
-	{id:"painting2",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"},
-{id:"painting3",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"}	
-	],
-	},	
-			{id: "skillpassionc",
-	label: "技能：幻想激荡",
-	description: "我醒觉时，意识中有鬼灵依附。[使用此技能和八张灵感来研究以获得更多的激情]",
-	aspects: {passionskill:3,ability:1},
-	slots:[{id:"G1",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？[使用此技能来工作可以进行绘画，或者使用此技能和八张灵感来研究以获得更多的激情]",actionId:"study"},
-	{id:"G2",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"G3",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"G4",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"G5",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"G6",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"G7",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"G8",label:"灵感",required:{glimmering:1},consumes:true,description:"会有何等狂乱的视象存留下来呢？",actionId:"study"},
-	{id:"painting1",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"},
-	{id:"painting2",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"},
-	{id:"painting3",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"},
-{id:"painting4",label:"艺术还是面包？",required:{passion:1,mystique:1,notoriety:1},description:"我可以竭力驱策自己的热情，来画出最好的作品；或者，如若我有一定的声名，也可以画些东西来博取眼球……",actionId:"work"}	
-	],
-	},	
+	{
+		id: "skillhealthd_strength",
+		aspects: 
+		{
+			healthskill: "4",
+			ability: "1",
+			murderskill: "1",
+		},
+		description: "I move like a mountain and strike like the sky. 'To master others is strength. To master yourself is power.' [Health and Skill can increase no further.]",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "I must devote my energies to this.",
+				actionId: "work",
+			},
+		],
+		comment: "NEW",
+		label: "Skill: a Matchless Physique",
+	},
+	{
+		id: "skillhealthd_grace",
+		aspects: 
+		{
+			healthskill: "4",
+			ability: "1",
+		},
+		description: "Machine perfection. Sinew-bound ivory, tight in satin skin. 'From here, I can only deteriorate.' [Health and Skill can increase no further.]",
+		slots: 
+		[
+			{
+				id: "Health",
+				required: 
+				{
+					health: "1",
+				},
+				description: "I must devote my energies to this.",
+				actionId: "work",
+			},
+		],
+		comment: "NEW",
+		label: "Skill: a Flawless Physique",
+	},
+	{
+		id: "skillreasona",
+		aspects: 
+		{
+			reasonskill: "1",
+			ability: "1",
+		},
+		description: "我为那些精妙的摘引振奋不已。[将此技能和四份博闻一起用于研究，来获得一份额外的理性。]",
+		slots: 
+		[
+			{
+				id: "e1",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "要用更多的知识充实自己的头脑吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+			{
+				id: "e2",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "要用更多的知识充实自己的头脑吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+		],
+		label: "技能：学有所成",
+		xtriggers: 
+		{
+			careeradvancement: "skillreasonb",
+		},
+	},
+	{
+		id: "skillreasonb",
+		aspects: 
+		{
+			reasonskill: "2",
+			ability: "1",
+		},
+		description: "学之弥多，愈觉知之弥少。[将此技能和六份博闻一起用于研究，来获得一份额外的理性。]",
+		slots: 
+		[
+			{
+				id: "e1",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我还能在学海中继续深潜吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+			{
+				id: "e2",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我还能在学海中继续深潜吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+			{
+				id: "e3",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我还能在学海中继续深潜吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+		],
+		label: "技能：显著学识",
+		xtriggers: 
+		{
+			careeradvancement: "skillreasonc",
+		},
+	},
+	{
+		id: "skillreasonc",
+		aspects: 
+		{
+			reasonskill: "3",
+			ability: "1",
+		},
+		description: "知识在脑海中满溢，我头颅的诸多角落因此时时作响。[将此技能和八份博闻一起用于研究，来获得一份额外的理性。]",
+		slots: 
+		[
+			{
+				id: "specialisation",
+				required: 
+				{
+					lore: "1",
+				},
+				description: "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between illumination and concentration.",
+				comment: "NEW",
+				label: "Something More",
+				actionId: "study",
+			},
+			{
+				id: "e1",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我该继续磨砺自己的理性吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+			{
+				id: "e2",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我该继续磨砺自己的理性吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+			{
+				id: "e3",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我该继续磨砺自己的理性吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+			{
+				id: "e4",
+				required: 
+				{
+					eruditionplus: "1",
+				},
+				description: "我该继续磨砺自己的理性吗？",
+				consumes: "true",
+				label: "博闻",
+				actionId: "study",
+			},
+		],
+		label: "技能：智通幽玄",
+	},
+	{
+		id: "skillreasond_illumination",
+		aspects: 
+		{
+			reasonskill: "4",
+			ability: "1",
+		},
+		description: "My mind is glass, and my memory light. [Reason and Skill can increase no further.]",
+		icon: "skillreasonc",
+		comment: "NEW",
+		label: "Skill: a Rarefied Mind",
+	},
+	{
+		id: "skillreasond_concentration",
+		aspects: 
+		{
+			reasonskill: "4",
+			ability: "1",
+		},
+		description: "This chilly stillness is the stillness of certainty. [Reason and Skill can increase no further.]",
+		icon: "skillreasonc",
+		comment: "NEW",
+		label: "Skill: a Silent Intensity",
+	},
+	{
+		id: "skillpassiona",
+		aspects: 
+		{
+			passionskill: "1",
+			ability: "1",
+		},
+		description: "我的白日梦有时会比睡梦更加光怪陆离。[使用此技能来工作可以进行绘画，或者使用此技能和四份灵感来研究以获得更多的热情。]",
+		slots: 
+		[
+			{
+				id: "G1",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "我要继续为自己的热情提供燃料吗？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "G2",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "我要继续为自己的热情提供燃料吗？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "painting1",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting2",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+		],
+		label: "技能：栩栩如生的想象力",
+		xtriggers: 
+		{
+			careeradvancement: "skillpassionb",
+		},
+	},
+	{
+		id: "skillpassionb",
+		aspects: 
+		{
+			passionskill: "2",
+			ability: "1",
+		},
+		description: "我一天能用掉六根铅笔——这是众所周知的事情。[使用此技能来工作可以进行绘画，或者使用此技能和六份灵感来研究以获得更多的热情。]",
+		slots: 
+		[
+			{
+				id: "G1",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "何物将映我目，何物将成我形？ [使用此技能和六份灵感来研究以获得更多的热情。]",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "G2",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "何物将映我目，何物将成我形？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "G3",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "何物将映我目，何物将成我形？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "painting1",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting2",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting3",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+		],
+		label: "技能：天马行空的想象力",
+		xtriggers: 
+		{
+			careeradvancement: "skillpassionc",
+		},
+	},
+	{
+		id: "skillpassionc",
+		aspects: 
+		{
+			passionskill: "3",
+			ability: "1",
+		},
+		description: "我醒觉时，意识中有鬼灵依附。[使用此技能和八份灵感来研究以获得更多的热情。]",
+		slots: 
+		[
+			{
+				id: "specialisation",
+				required: 
+				{
+					lore: "1",
+				},
+				description: "If I know the right Lore, I can employ the invisible arts to reach an even higher summit. I must choose between unreason and folly.",
+				comment: "NEW",
+				label: "Something More",
+				actionId: "study",
+			},
+			{
+				id: "G1",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "会有何等狂乱的视象存留下来呢？[使用此技能来工作可以进行绘画，或者使用此技能和八份灵感来研究以获得更多的热情。]",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "G2",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "会有何等狂乱的视象存留下来呢？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "G3",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "会有何等狂乱的视象存留下来呢？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "G4",
+				required: 
+				{
+					glimmeringplus: "1",
+				},
+				description: "会有何等狂乱的视象存留下来呢？",
+				consumes: "true",
+				label: "灵感",
+				actionId: "study",
+			},
+			{
+				id: "painting1",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting2",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting3",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting4",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				comment: "NEW",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+		],
+		label: "技能：幻想激荡",
+	},
+	{
+		id: "skillpassiond_unreason",
+		icon: "skillpassionc",
+		aspects: 
+		{
+			passionskill: "4",
+			ability: "1",
+		},
+		description: "The more, the more, the more, the m - [Passion and Skill can increase no further.]",
+		slots: 
+		[
+			{
+				id: "painting1",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting2",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting3",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting4",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+		],
+		comment: "NEW",
+		label: "Skill: Never-No",
+	},
+	{
+		id: "skillpassiond_folly",
+		icon: "skillpassionc",
+		aspects: 
+		{
+			passionskill: "4",
+			ability: "1",
+		},
+		description: "'Behold, they stand at my door and knock; if I hear any voice, I will open the door, and they will come in to me, and sup with them, and they with me.' [Passion and Skill can increase no further.]",
+		slots: 
+		[
+			{
+				id: "painting1",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting2",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting3",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+			{
+				id: "painting4",
+				required: 
+				{
+					mystique: "1",
+					passion: "1",
+					notoriety: "1",
+				},
+				description: "I can employ Passion to do the best work I can; or if I have a reputation, I can paint something to win attention..",
+				label: "Art or Bread",
+				actionId: "work",
+			},
+		],
+		comment: "NEW",
+		label: "Skill: an Open Soul",
+	},
 ]
-};
+}

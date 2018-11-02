@@ -1,65 +1,131 @@
-{"elements":
-    [
-	{id: "rumour",
-	label: "古怪的流言",
-	description: "这或许能让我找到所需的人才，或者意味着完全不同的其他东西。[跟随流言的指引，继续探索。]",
-	aspects:{ingredient:1, secrethistories:1,moth:1},
-	lifetime: 60
-	},
-		{id: "favour",
-	label: "权贵的支持",
-	description: "我掌握了某样能帮我渡过一次难关的东西。[这会保护你或你的一位支持者免除牢狱之灾……但并不够可靠。] ",
-	aspects:{suspicious:1},
-	lifetime: 300
-	},
-		{id: "mistakenidentity",
-	label: "张冠李戴，误认身份",
-	aspects: {mortal:1},
-	description: "到头来，这并不是你要寻找的人。他们无足轻重，不会让你留下任何印象。或许已经没有什么人值得去见了。",
-	lifetime: 10
-	},
-          {
-        id: "funds",
-            label: "获得金钱",
-            aspects:
-            {ingredient: 1},
-            description: "这足够让我舒舒服服地度过一段时间。",
-        },
-		          {
-        id: "compensation",
-            label: "古铁币",
-			aspects: {edge:2, secrethistories:1,compensationvalue:2,ingredient:1,auctionable:2},
-            description: "隐秘世界的成员需要使用古币来支付服务费用。古铁币是最低的面额，反面刻绘着谋杀的情景。[古币可以在拍卖行换取更多普通的金钱。]"
-        },
-		          {
-        id: "compensationb",
-            label: "古铜币",
-            aspects: {forge:4, secrethistories:1,compensationvalue:4,ingredient:1,auctionable:3},
-			description: "隐秘世界的成员需要使用古币来支付服务费用。古铜币的反面通常展示着塑造的过程。[古币可以在拍卖行换取更多普通的金钱。]"
-        },
+﻿{
+elements: [
+	{
+		id: "rumour",
+		aspects: 
 		{
-        id: "compensationc",
-            label: "古银币",
-			aspects: {grail:6, secrethistories:1,compensationvalue:8,ingredient:1,auctionable:4},
-            description: "隐秘世界的成员需要使用古币来支付服务费用。它们能够轻松地换成更多金钱。古银币更具价值，通常在背面展示放荡的情景。[古币可以在拍卖行换取更多普通的金钱。]"
-        },
-				{
-        id: "compensationd",
-            label: "古金币",
-			aspects: {lantern:8, secrethistories:1,compensationvalue:16,ingredient:1,auctionable:5},
-            description: "隐秘世界的成员需要使用古币来支付服务费用。它们能够轻松地换成更多金钱。古金币反面展示了凡夫俗子无法看见的场景。[古币可以在拍卖行换取更多普通的金钱。]"
-
-        },
+			secrethistories: "1",
+			moth: "1",
+			ingredient: "1",
+		},
+		description: "这或许能让我找到所需的人，或者这意味着某种完全不同的东西。[跟随流言的指引，继续探索。]",
+		label: "古怪的流言",
+		lifetime: "60",
+	},
+	{
+		id: "favour",
+		aspects: 
 		{
-        id: "mapbookdealer",
-            label: "前往莫兰书屋的路线",
-            aspects:{text:1},
-            description: "通往隐秘的莫兰书屋的加密路线。莫兰是贩卖某类稀有书籍的商人"
-        },		{
-        id: "jumble",
-            label: "杂物堆",
-            aspects:{auctionable:1},
-            description: "一堆旧衣服与一些没有什么价值的首饰。或许它们能在哪换几个便士，但对我没有什么用处。"
-        }
+			suspicious: "1",
+		},
+		description: "我掌握了某样能帮我渡过一次难关的东西。[这会使你或你的一位追随者免受牢狱之灾……但并不够可靠。] ",
+		label: "当权者的偏袒",
+		lifetime: "300",
+	},
+	{
+		id: "mistakenidentity",
+		comments: "This xtrigger is here specifically in case someone runs through all the possible rivals as a Detective",
+		aspects: 
+		{
+			mortal: "1",
+		},
+		lifetime: "10",
+		description: "到头来，这并不是你要寻找的人。他无足轻重，不会让你留下任何印象。或许已经没有什么人值得去见了。",
+		label: "误认身份",
+		xtriggers: 
+		{
+			rebellion: "generic_r",
+		},
+	},
+	{
+		id: "funds",
+		aspects: 
+		{
+			ingredient: "1",
+		},
+		description: "这足够支撑我舒舒服服度过一段时间。",
+		label: "金钱",
+	},
+	{
+		id: "compensation",
+		aspects: 
+		{
+			auctionable: "2",
+			secrethistories: "1",
+			edge: "2",
+			compensationvalue: "2",
+			ingredient: "1",
+		},
+		description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。古铁币是最低的面额，反面刻绘着谋杀的情景。[斯宾特里亚古币可以在拍卖行换取更多普通的金钱。]",
+		label: "古铁币",
+	},
+	{
+		id: "compensationb",
+		aspects: 
+		{
+			auctionable: "3",
+			secrethistories: "1",
+			compensationvalue: "4",
+			forge: "4",
+			ingredient: "1",
+		},
+		description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。古铜币的反面通常展示着塑造的过程。[斯宾特里亚古币可以在拍卖行换取更多普通的金钱。]",
+		label: "古铜币",
+	},
+	{
+		id: "compensationc",
+		aspects: 
+		{
+			auctionable: "4",
+			secrethistories: "1",
+			compensationvalue: "8",
+			ingredient: "1",
+			grail: "6",
+		},
+		description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。它们能够轻松地换成更多的普通金钱。古银币更具价值，通常在背面展示放荡的情景。[斯宾特里亚古币古币可以在拍卖行换取更多普通的金钱。]",
+		label: "古银币",
+	},
+	{
+		id: "compensationd",
+		aspects: 
+		{
+			auctionable: "5",
+			secrethistories: "1",
+			compensationvalue: "16",
+			lantern: "8",
+			ingredient: "1",
+		},
+		description: "隐秘世界的成员需要使用斯宾特里亚古币来支付服务费用。它们能够轻松地换成更多金钱。古金币反面展示了凡人无法看见的场景。[斯宾特里亚古币可以在拍卖行换取更多普通的金钱。]",
+		label: "古金币",
+	},
+	{
+		id: "mapbookdealer",
+		aspects: 
+		{
+			text: "1",
+		},
+		description: "通往莫兰书屋的神秘地址的隐秘路线。莫兰是贩卖某类稀有书籍的商人。",
+		label: "前往莫兰书屋的路线",
+	},
+	{
+		id: "jumble",
+		aspects: 
+		{
+			auctionable: "1",
+		},
+		description: "一堆旧衣服与一些没有什么价值的首饰。或许它们能在哪换几个便士，但对我没有什么用处。",
+		label: "杂物堆",
+	},
+	{
+		id: "snare",
+		aspects: 
+		{
+			snarelevel: "1",
+		},
+		description: "I have prepared an ambush for a rival. [A Snare can be used on any Independent, or to defeat an Independent's attempt on any Vault.]",
+		comment: "NEW",
+		label: "Snare",
+		lifetime: "300",
+	},
 ]
-};
+}

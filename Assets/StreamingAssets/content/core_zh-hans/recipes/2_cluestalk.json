@@ -1,216 +1,320 @@
- {"recipes":
- [	  	  	{
-        id: "recruitindependenthint",
-        label: "雇佣捣乱分子？",
-        actionId: "talk",
-        requirements: {venerationedge: 1, independent:1, mortal:1},
-
-        startdescription: "如果我能收集我们教派的要素，将其提升到21级的话……这个人可能会入伙。[即便是与你信仰不同的捣乱分子，你也可以雇佣，只要你能提供足够的力量就行。]",
-    
-        craftable: false,
-		hintonly:true
-    },
+﻿{
+recipes: [
 	{
-        id: "promoteto_d_edgehint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultedge_1:1,follower:1, disciple:1},
-
-        startdescription: "要将门徒提拔成暗杀者，我需要至少21级的刃。无论如何，适格之人必须穷凶极恶。",
-
-        hintonly:true,
-        craftable: true
-    },
-		  	{
-        id: "promoteto_d_forgehint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultforge_1:1,follower:1, disciple:1},
-
-        startdescription: "要将门徒提拔成赋形者，我需要至少21级的铸。无论如何，适格之人必须独具匠心、手艺精湛。",
-        hintonly:true,
-        craftable: true
-    },
-		  	{
-        id: "promoteto_d_grailhint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultgrail_1:1,follower:1, disciple:1},
-        startdescription: "要将门徒提拔成引蝶人，我需要至少21级的杯。无论如何，适格之人必须欲壑难填。",
-
-        hintonly:true,
-        craftable: true
-    },
-			  	{
-        id: "promoteto_d_hearthint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultheart_1: 1,follower:1, disciple:1},
- 
-		
-        startdescription: "要将门徒提拔成蛊舞者，我需要至少21级的忱。无论如何，适格之人必须活泼灵动。",
-        hintonly:true,
-        craftable: true
-    },
-				  	{
-        id: "promoteto_d_knockhint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultknock_1: 1,follower:1, disciple:1},
- 
-             startdescription: "要将门徒提拔成灵钥，我需要至少21级的启。无论如何，适格之人必须天资独到。",
-        hintonly:true,
-        craftable: true
-    },
-					  	{
-        id: "promoteto_d_lanternhint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultlantern_1: 1,follower:1, disciple:1},
- 
-		
-               startdescription: "要将门徒提拔成预言者，我需要至少21级的灯。无论如何，适格之人必须慧眼澄澈。",
-
-        hintonly:true,
-        craftable: true
-    },
-						  	{
-        id: "promoteto_d_mothhint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultmoth_1: 1,follower:1, disciple:1},
- 
-		
-             startdescription: "要将门徒提拔成易容师，我需要至少21级的蛾。无论如何，适格之人必须百年难遇。",
-        hintonly:true,
-        craftable: true
-    },
-	
-	
-							  	{
-        id: "promoteto_d_winterhint",
-        label: "提拔门徒？",
-        actionId: "talk",
-        requirements: {cultwinter_1: 1,follower:1, disciple:1},
- 
-		
-        startdescription: "要将门徒提拔到无名之阶，我需要至少21级的冬。无论如何，适格之人必须心如死灰。",
-        hintonly:true,
-        craftable: true
-    },
-	
-								  	{
-        id: "promotetodisciplehint",
-        label: "晋升信徒？",
-        actionId: "talk",
-        requirements: {society:1,follower:1,disciple:-1,summoned:-11},
- 
-		
-        startdescription: "要将信徒晋升到门徒，我需要为其提供恰当的要素，且至少要达到7级。",
-        hintonly:true,
-        craftable: true
-    },
-
-		  	{
-        id: "recruitacquaintancenoculthint",
-        label: "吸纳新的追随者？",
-        actionId: "talk",
-        requirements: {society: -1,mortal: 1,follower:-1,patron:-1},
-        startdescription: "[建立教派之后，对异教徒使用<b>谈话</b>来将熟人吸纳进教派之中。]",
-        craftable: false,
-		hintonly: true
-    },
-	  	{
-        id: "recruitacquaintancehint",
-        label: "吸纳新的追随者？",
-        actionId: "talk",
-        requirements: {society: 1,mortal: 1,follower:-1},
-        startdescription: "要吸纳追随者，我需要一点我们所崇敬的力量。我可以从影响、媒介、材料，或者我们信仰的学识中获得这种力量。",
-        craftable: false,
-		hintonly: true
-    },
-	
-		  	{
-        id: "talk_aladim_wantscommission",
-        label: "委托？",
-        actionId: "talk",
-        requirements: {aladim:1},
-        startdescription: "“那份委托进展如何？我很想听听你的想法。”",
-        hintonly:true,
-        craftable: true
-    },
-			  	{
-        id: "talk_bechet_wantscommission",
-        label: "委托？",
-        actionId: "talk",
-        requirements: {bechet:1},
-        startdescription: "“哈喽，有什么要给我的吗？委托如何了？”",
-        hintonly:true,
-        craftable: true
-    },
-			  	{
-        id: "talk_jannings_wantscommission",
-        label: "委托？",
-        actionId: "talk",
-        requirements: {jannings:1},
-        startdescription: "“拜托了，你会完成委托吗？我的同僚十分需要这份信息。”",
-        hintonly:true,
-        craftable: true
-    },
-			  	{
-        id: "talk_poppy_wantscommission",
-        label: "委托？",
-        actionId: "talk",
-        requirements: {poppycommission:1},
-        startdescription: "“噢，快点完成委托啊！我可等不及了。”",
-        hintonly:true,
-        craftable: true
-    },
-	
-	{id: "fulfilcommission_aladimhint",
-label:"完成博士的委托？",
-actionId: "talk",
-requirements: {commission: 1,aladim:1,article:1},
-startdescription: "“唔，我想要的可不止这些。”[检查委托细节。]",
-warmup: 10,
-craftable: false,
-hintonly:true
-
-},
-
-{id: "fulfilcommission_bechethint",
-label:"完成贝赛夫人的委托？",
-actionId: "talk",
-requirements: {commission: 1,bechet:1,article:1},
-startdescription: "“抱歉，不太对。和我想要的有些不一样。”[检查委托细节。]",
-warmup: 10,
-craftable: false,
-hintonly:true
-
-},
-
-
-{id: "fulfilcommission_janningshint",
-label:"完成伯爵的委托？",
-actionId: "talk",
-requirements: {commission: 1,jannings:1,article:1},
-startdescription: "“不对不对不对，这可不行。我的要求可是相当具体的。”[检查委托细节。]",
-warmup: 10,
-craftable: false,
-hintonly:true
-
-},
-
-{id: "fulfilcommission_poppyhint",
-label:"完成波碧的委托？",
-actionId: "talk",
-requirements: {commission: 1,poppycommission:1,article:1},
-startdescription: "“噢亲爱的，我很抱歉。但我需要更多的……真知灼见。”[检查委托细节。]",
-warmup: 10,
-craftable: false,
-hintonly:true
-
-},
-	
+		id: "recruitindependentresentmenthint",
+		craftable: "false",
+		startdescription: "No. This one has not forgotten what occurred between us. Perhaps, some day, if I do them no further harm, their feelings might change.",
+		requirements: 
+		{
+			resentment: "1",
+			independent: "1",
+			mortal: "1",
+		},
+		comment: "NEW",
+		label: "Recruit an Independent?",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "recruitindependenthint",
+		craftable: "false",
+		startdescription: "如果我能收集我们教派的属性，将其提升到21级的话……这个人可能会入伙。[即便是与你信仰不同的捣乱分子，你也可以雇佣，只要你能提供足够的力量就行。]",
+		requirements: 
+		{
+			resentment: "-1",
+			independent: "1",
+			mortal: "1",
+		},
+		label: "雇佣捣乱分子？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_edgehint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为暗杀者，我需要至少21级的<b>刃</b>。无论如何，适格之人必须穷凶极恶。",
+		requirements: 
+		{
+			follower: "1",
+			cultedge_1: "1",
+			disciple: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_forgehint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为赋形者，我需要至少21级的<b>铸</b>。无论如何，适格之人必须独具匠心、手艺精湛。",
+		requirements: 
+		{
+			disciple: "1",
+			follower: "1",
+			cultforge_1: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_grailhint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为引蝶人，我需要至少21级的<b>杯</b>。无论如何，适格之人必须欲壑难填。",
+		requirements: 
+		{
+			cultgrail_1: "1",
+			follower: "1",
+			disciple: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_hearthint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为蛊舞者，我需要至少21级的<b>心</b>。无论如何，适格之人必须活泼灵动。",
+		requirements: 
+		{
+			follower: "1",
+			disciple: "1",
+			cultheart_1: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_knockhint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为灵钥，我需要至少21级的<b>启</b>。无论如何，适格之人必须天资独到。",
+		requirements: 
+		{
+			follower: "1",
+			disciple: "1",
+			cultknock_1: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_lanternhint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为预言家，我需要至少21级的<b>灯</b>。无论如何，适格之人必须慧眼澄澈。",
+		requirements: 
+		{
+			follower: "1",
+			disciple: "1",
+			cultlantern_1: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_mothhint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为易皮师，我需要至少21级的<b>蛾</b>。无论如何，适格之人必须百年难遇。",
+		requirements: 
+		{
+			follower: "1",
+			disciple: "1",
+			cultmoth_1: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promoteto_d_winterhint",
+		craftable: "true",
+		startdescription: "要将门徒擢升为无名之阶，我需要至少21级的<b>冬</b>。无论如何，适格之人必须心如死灰。",
+		requirements: 
+		{
+			follower: "1",
+			cultwinter_1: "1",
+			disciple: "1",
+		},
+		label: "擢升门徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "promotetodisciplehint",
+		craftable: "true",
+		startdescription: "要将信徒晋升到门徒，我需要为其提供恰当的属性，且至少要达到7级。",
+		requirements: 
+		{
+			disciple: "-1",
+			summoned: "-11",
+			follower: "1",
+			society: "1",
+		},
+		label: "晋升信徒？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "talktobenefactorhint",
+		craftable: "false",
+		startdescription: "'We can't speak here, my dear. Let's be discreet.'",
+		requirements: 
+		{
+			benefactor: "1",
+		},
+		comment: "NEW",
+		label: "My Benefactor Insists on Discretion",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "recruitacquaintancenoculthint",
+		craftable: "false",
+		startdescription: "[一旦你建立了一个教派，可使用异教徒进行<b>谈话</b>来将熟人吸纳进教派之中。]",
+		requirements: 
+		{
+			acquaintance: "1",
+			society: "-1",
+		},
+		label: "吸纳新的追随者？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "recruitacquaintancehint",
+		craftable: "false",
+		startdescription: "要吸纳追随者，我需要一点我们所崇敬的力量。我可以从影响、媒介、材料，或者我们信仰的知识中获得这种力量。",
+		requirements: 
+		{
+			acquaintance: "1",
+			society: "1",
+		},
+		label: "吸纳新的追随者？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "talk_aladim_wantscommission",
+		craftable: "true",
+		startdescription: "“那份委托进展如何？我很想听听你的想法。”",
+		requirements: 
+		{
+			aladim: "1",
+		},
+		label: "委托？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "talk_bechet_wantscommission",
+		craftable: "true",
+		startdescription: "“哈喽，有什么要给我的吗？委托如何了？”",
+		requirements: 
+		{
+			bechet: "1",
+		},
+		label: "委托？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "talk_jannings_wantscommission",
+		craftable: "true",
+		startdescription: "“拜托了，你会完成委托吗？我的同僚十分需要这份信息。”",
+		requirements: 
+		{
+			jannings: "1",
+		},
+		label: "委托？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		id: "talk_poppy_wantscommission",
+		craftable: "true",
+		startdescription: "“噢，快点完成委托啊！我可等不及了。”",
+		requirements: 
+		{
+			poppycommission: "1",
+		},
+		label: "委托？",
+		hintonly: "true",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			article: "1",
+			commission: "1",
+			aladim: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		hintonly: "true",
+		label: "完成博士的委托？",
+		startdescription: "“唔，我想要的可不止这些。”[检查委托细节。]",
+		id: "fulfilcommission_aladimhint",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			article: "1",
+			commission: "1",
+			bechet: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		hintonly: "true",
+		label: "完成贝赛女士的委托？",
+		startdescription: "“抱歉，不太对。和我想要的有些不一样。”[检查委托细节。]",
+		id: "fulfilcommission_bechethint",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			article: "1",
+			commission: "1",
+			jannings: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		hintonly: "true",
+		label: "完成伯爵的委托？",
+		startdescription: "“不对不对不对，这可不行。我的要求可是相当具体的。”[检查委托细节。]",
+		id: "fulfilcommission_janningshint",
+		actionId: "talk",
+	},
+	{
+		requirements: 
+		{
+			article: "1",
+			commission: "1",
+			poppycommission: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		hintonly: "true",
+		label: "完成波碧的委托？",
+		startdescription: "“噢亲爱的，我很抱歉。但我需要更多的……真知灼见。”[检查委托细节。]",
+		id: "fulfilcommission_poppyhint",
+		actionId: "talk",
+	},
+	{
+		id: "talk_nointeraction_mortal",
+		craftable: "false",
+		startdescription: "'I don't believe we have anything to say to each other.'",
+		requirements: 
+		{
+			mortal: "1",
+		},
+		comment: "NEW",
+		label: "Nothing to say?",
+		hintonly: "true",
+		actionId: "talk",
+	},
 ]
 }

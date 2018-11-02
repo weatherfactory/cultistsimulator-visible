@@ -1,151 +1,375 @@
- {"recipes":
- [
- 	{
-	id: "studyupgrade_downgrade_lore_hint",
-	label: "增进对无形之仪的了解？",
-	actionId: "study",
-	requirements: {lore:1,fragmentedge:-1,fragmentforge:-1,fragmentgrail:-1,fragmentheart:-1,fragmentknock:-1,fragmentlantern:-1,fragmentmoth:-1,fragmentsecrethistories:-1,fragmentwinter:-1},	
-	startdescription: "如果有两份要素相同、等级一致的学识碎片，我就能把它们放在一块研究，以此增进我的理解。如果使用理智，我就能分析学识，将其分解成级别稍低的碎片。或是用另一种学识来弱化它。",
-		craftable: false,
-		hintonly:true
-	},
-   	{
-	id: "studyupgradelore_hint",
-	label: "增进对无形之仪的了解？",
-	actionId: "study",
-	requirements: {lore:1},	
-	startdescription: "如果有两份要素相同、等级一致的学识碎片，我就能把它们放在一块研究，以此增进我的理解。或是用另一种学识来弱化它。",
-		craftable: false,
-		hintonly:true
-	},
-	
-	  
- {id:"translatelatinhint",
- label:"翻译拉丁文？",
- actionId:"study",
- requirements:{textlatin:1},
- startdescription:"我的拉丁文水平还不足以解读它。我或许可以找本教材，或者找雇个老师。",
- hintonly:true,
- craftable:false
- },
- {id:"translategreekhint",
- label:"翻译希腊语？",
- actionId:"study",
- requirements:{textgreek:1},
- startdescription:"我的希腊语水平还不足以解读它。我或许可以找本教材，或者找雇个老师。",
- hintonly:true,
- craftable:false
- },
- 
- {id:"translatearamaichint",
- label:"翻译亚拉姆语？",
- actionId:"study",
- requirements:{textaramaic:1},
- startdescription:"我的亚拉姆语水平还不足以解读它。我或许可以找本教材，或者雇个老师。",
- hintonly:true,
- craftable:false
- },
- 
-   {id:"translatefucinehint",
- label:"翻译富奇诺语？",
- actionId:"study",
- requirements:{textfucine:1},
- startdescription:"我并不懂富奇诺语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
- hintonly:true,
- craftable:false
- },
-   {id:"translatephrygianhint",
- label:"翻译弗里吉亚语？",
- actionId:"study",
- requirements:{textphrygian:1},
- startdescription:"我并不懂弗里吉亚语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
- hintonly:true,
- craftable:false
- },
- 
-   {id:"translatemandaichint",
- label:"翻译深渊曼达安语？",
- actionId:"study",
- requirements:{textmandaic:1},
- startdescription:"我并不懂深渊曼达安语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
- hintonly:true,
- craftable:false
- },
-    {id:"translatevakh1int",
- label:"翻译神代语？",
- actionId:"study",
- requirements:{textvak:1},
- startdescription:"我并不懂神代语，恐怕现如今还存活的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……或许我可以找一名算不上是活人的老师。",
- hintonly:true,
- craftable:false
- },
- 
- 
+﻿{
+recipes: [
 	{
-        id: "increasehealthfurtherhint",
-        label: "变得更健康？",
-        actionId: "study",
-        requirements: {vitality:2},
-        startdescription: "想要变得更加健康，我需要拥有更多的活力。[使用技能：体魄能够进一步增进健康。]",
-
-        hintonly:true,
-        craftable: true
-    },
-			{
-        id: "increasereasonfurtherhint",
-        label: "变得更理性？",
-        actionId: "study",
-        requirements: {erudition:2},
-        startdescription: "想要变得更加理性，我需要拥有更多的博闻。[使用技能：学问来让自己更加理智。]",
-
-        hintonly:true,
-        craftable: true
-    },
-	
+		id: "studyupgrade_downgrade_lore_hint",
+		craftable: "false",
+		startdescription: "如果有两份相同属性种类和等级的知识碎片，我就能把它们放在一块儿研究，以此增进我的理解。如果使用理性，我就能分析知识，将其分解成级别稍低的碎片。或者我可以用另一种知识来转换它……",
+		requirements: 
 		{
-        id: "increasepassionfurtherhint",
-        label: "变得更热情？",
-        actionId: "study",
-        requirements: {glimmering:2},
-        startdescription: "想要变得更加热情，我需要拥有更多的灵感。[使用技能：想象来让自己更富有热情。]",
-
-        hintonly:true,
-        craftable: true
-    },
-		
-		
+			secrethistories: "-1",
+			lantern: "-1",
+			heart: "-1",
+			forge: "-1",
+			winter: "-1",
+			grail: "-1",
+			knock: "-1",
+			moth: "-1",
+			edge: "-1",
+			lore: "1",
+		},
+		label: "增进对无形之仪的了解？",
+		hintonly: "true",
+		actionId: "study",
+	},
 	{
-        id: "increasehealthfurtherhint1",
-        label: "变得更健康？",
-        actionId: "study",
-        requirements: {vitality:1},
-        startdescription: "我需要更多。",
-
-        hintonly:true,
-        craftable: true
-    },
-			{
-        id: "increasereasonfurtherhint1",
-        label: "变得更理性？",
-        actionId: "study",
-        requirements: {erudition:1},
-        startdescription: "我需要更多。",
-
-        hintonly:true,
-        craftable: true
-    },
-	
+		id: "studyupgradelore_hint",
+		craftable: "false",
+		startdescription: "如果有两份相同属性种类和等级的知识碎片，我就能把它们放在一块儿研究，以此增进我的理解。或者我可以用另一种知识来转换它……",
+		requirements: 
 		{
-        id: "increasepassionfurtherhint1",
-        label: "变得更热情？",
-        actionId: "study",
-        requirements: {glimmering:1},
-        startdescription: "我需要更多。",
-
-        hintonly:true,
-        craftable: true
-    },
-
-	
+			healthskill: "-1",
+			lore: "1",
+		},
+		label: "增进对无形之仪的了解？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatelatinhint",
+		craftable: "false",
+		startdescription: "我的拉丁文水平还不足以解读它。我或许可以找本教材，或者找雇个导师。",
+		requirements: 
+		{
+			textlatin: "1",
+		},
+		label: "翻译拉丁文？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translategreekhint",
+		craftable: "false",
+		startdescription: "我的希腊语水平还不足以解读它。我或许可以找本教材，或者找雇个导师。",
+		requirements: 
+		{
+			textgreek: "1",
+		},
+		label: "翻译希腊语？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatearamaichint",
+		craftable: "false",
+		startdescription: "我的亚拉姆语水平还不足以解读它。我或许可以找本教材，或者雇个导师。",
+		requirements: 
+		{
+			textaramaic: "1",
+		},
+		label: "翻译亚拉姆语？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatefucinehint",
+		craftable: "false",
+		startdescription: "我并不懂富奇诺语，恐怕现如今活着的人也没有谁懂得这门语言了。或许哪里能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+		requirements: 
+		{
+			textfucine: "1",
+		},
+		label: "翻译富奇诺语？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatephrygianhint",
+		craftable: "false",
+		startdescription: "我并不懂弗里吉亚语，恐怕现如今活着的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+		requirements: 
+		{
+			textphrygian: "1",
+		},
+		label: "翻译弗里吉亚语？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatemandaichint",
+		craftable: "false",
+		startdescription: "我并不懂渊深曼达安语，恐怕现如今活着的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+		requirements: 
+		{
+			textmandaic: "1",
+		},
+		label: "翻译渊深曼达安语？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "translatevakhint",
+		craftable: "false",
+		startdescription: "我并不懂伐伽语，恐怕现如今活着的人也没有谁懂得这门语言了。附近或许能发现罗塞塔石碑……也许我可以找一个不算是活人的导师。",
+		requirements: 
+		{
+			textvak: "1",
+		},
+		label: "翻译伐伽语？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyincreasehealthskilld_wronglore",
+		craftable: "false",
+		startdescription: "Nothing in this lore will be of use here. I must choose something else.",
+		requirements: 
+		{
+			lore: "1",
+			skillhealthc: "1",
+			vitalityplus: "4",
+		},
+		comment: "NEW",
+		label: "Exercise the Body: Secret Techniques?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhint",
+		craftable: "false",
+		startdescription: "想要变得更加健康，我需要拥有更多的活力。[研究体魄相关的技能来让自己更加健康。]",
+		requirements: 
+		{
+			vitality: "2",
+		},
+		label: "变得更健康？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhint",
+		craftable: "false",
+		startdescription: "想要变得更加理性，我需要拥有更多的博闻。[研究学问相关的技能来让自己更加理性。]",
+		requirements: 
+		{
+			erudition: "2",
+		},
+		label: "变得更理性？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhint",
+		craftable: "false",
+		startdescription: "想要变得更加热情，我需要拥有更多的灵感。[研究想象相关的技能来让自己更加热情。]",
+		requirements: 
+		{
+			glimmering: "2",
+		},
+		label: "变得更热情？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyupgradeinfluenceshint2",
+		craftable: "false",
+		startdescription: "It might be possible, with the right combination of Influences, to raise more power... but only if I have the necessary knowledge of the invisible arts.",
+		requirements: 
+		{
+			healthskill: "-1",
+			reasonskill: "-1",
+			passionskill: "-1",
+			lore: "-1",
+			influence: "2",
+		},
+		comment: "NEW",
+		label: "Upgrade Influences?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhintpluswithskillneedslore",
+		craftable: "false",
+		startdescription: "I'll need enough Lessons Learnt... and something more.",
+		requirements: 
+		{
+			skillhealthc: "1",
+			vitalityplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Skill to something extraordinary?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhintpluswithskill",
+		craftable: "false",
+		startdescription: "I'll need more Lessons Learnt.",
+		requirements: 
+		{
+			healthskill: "1",
+			vitalityplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Health?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhintplus",
+		craftable: "false",
+		startdescription: "I'll need to use this with my Strength skill.",
+		requirements: 
+		{
+			vitalityplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Health?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasehealthfurtherhint1",
+		craftable: "false",
+		startdescription: "我需要更多。",
+		requirements: 
+		{
+			vitality: "1",
+		},
+		label: "变得更健康？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhintpluswithskillneedslore",
+		craftable: "false",
+		startdescription: "I'll need enough Lessons Learnt... and something more.",
+		requirements: 
+		{
+			eruditionplus: "1",
+			skillreasonc: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Skill to something extraordinary?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhintpluswithskill",
+		craftable: "false",
+		startdescription: "I'll need more Lessons Learnt.",
+		requirements: 
+		{
+			reasonskill: "1",
+			eruditionplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Reason?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhintplus",
+		craftable: "false",
+		startdescription: "I'll need to use this with my Scholarship skill.",
+		requirements: 
+		{
+			eruditionplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Reason?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasereasonfurtherhint1",
+		craftable: "false",
+		startdescription: "我需要更多。",
+		requirements: 
+		{
+			erudition: "1",
+		},
+		label: "变得更理性？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhintpluswithskillneedslore",
+		craftable: "false",
+		startdescription: "I'll need enough Lessons Learnt... and something more.",
+		requirements: 
+		{
+			skillpassionc: "1",
+			glimmeringplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my Skill to something extraordinary?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhintpluswithskill",
+		craftable: "false",
+		startdescription: "I'll need more Lessons Learnt.",
+		requirements: 
+		{
+			passionskill: "1",
+			glimmeringplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhintplus",
+		craftable: "false",
+		startdescription: "I'll need to use this with my Imagination skill.",
+		requirements: 
+		{
+			glimmeringplus: "1",
+		},
+		comment: "NEW",
+		label: "Increase my passion?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "increasepassionfurtherhint1",
+		craftable: "false",
+		startdescription: "我需要更多。",
+		requirements: 
+		{
+			glimmering: "1",
+		},
+		label: "变得更热情？",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyrestlessnesshint",
+		craftable: "false",
+		startdescription: "To study, one must generally sit quite still. Restlessness is rarely the ally of scholarship.",
+		requirements: 
+		{
+			restlessness: "1",
+		},
+		comment: "NEW",
+		label: "Study Restlessness?",
+		hintonly: "true",
+		actionId: "study",
+	},
+	{
+		id: "studyupgradeinfluenceshint1",
+		craftable: "false",
+		startdescription: "It might be possible, with the right combination of Influences, to raise more power...",
+		requirements: 
+		{
+			influence: "1",
+		},
+		comment: "NEW",
+		label: "Upgrade Influences?",
+		hintonly: "true",
+		actionId: "study",
+	},
 ]
 }

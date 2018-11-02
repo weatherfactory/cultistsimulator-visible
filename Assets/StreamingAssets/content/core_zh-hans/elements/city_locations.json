@@ -2,7 +2,7 @@
     [
 		{
         id: "locationbookdealer",
-            label: "莫兰商店",
+            label: "莫兰书屋",
             aspects:{location: 1},
 			slots: [{id:"Cost",
 					required: {funds: 1},
@@ -16,7 +16,7 @@
         },
 				{
         id: "locationbookdealer_exhausted",
-            label: "莫兰商店 [Closed]",
+            label: "莫兰书屋 [歇业中]",
             aspects:{location: 1},
             description: "这里曾是书商莫兰的旧址，但我现在必须去别的地方寻找知识了。",
 			unique:true,
@@ -31,8 +31,8 @@
         },
 										{
         id: "locationcabaretclosed",
-            label: "蜕变俱乐部[关门中]",
-            description: "一件据传与神秘事件有关的夜总会。只在每周的特定夜晚开放；不久将会重新开始营业。",
+            label: "蜕变俱乐部[歇业中]",
+            description: "一件据传与密教有关的夜总会。只在每周的特定夜晚开放；不久将会重新开始营业。",
 			unique:true,
 			lifetime:60,
 			decayTo: locationcabaret
@@ -41,7 +41,7 @@
         id: "locationcabaret",
             label: "蜕变俱乐部",
             aspects:{location: 1,moth:1,grail:1},
-            description: "一件据传与神秘事件有关的夜总会。",
+            description: "一件据传与密教有关的夜总会。",
 			slots:[{id:"Entry", actionId: "explore", required:{funds:1},consumes:true}],
 			xtriggers:{locationcabaret:locationcabaretclosed},
 			unique:true
@@ -50,7 +50,7 @@
 		
 			{
         id: "generichq",
-            label: "临时指挥所",
+            label: "临时总部",
             aspects:{hq: 1},
 			description: "我们的业务是保密的。我们可以使用更隐秘的地点。",
 			slots: [{id:"Cupboard",

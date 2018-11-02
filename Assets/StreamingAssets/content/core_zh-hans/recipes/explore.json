@@ -3,7 +3,7 @@
  
 	{
         id: "explorelocationbookdealer",
-        label: "补充你的藏书",
+        label: "扩充你的藏书",
         actionId: "explore",
         requirements: {locationbookdealer:1,funds:1},
 		effects: {},
@@ -19,7 +19,7 @@
         label: "莫兰书屋要歇业了！",
         actionId: "explore",
         requirements: {genericrubbishbook:1},
-        description: "“我打算改行了，”莫兰小姐告诉你说， “我的存书已经几乎售罄，也引起了监管局的兴趣。 所以让我们就此道别吧。最后这本书充满不知所云的内容，不过我在书后面塞了一些很有趣的文章，作为对你经常光顾的感谢......“",
+        description: "“我打算改行了，”莫兰小姐告诉你说， “我的存书已经几乎售罄，也引起了监管局的兴趣。 所以让我们就此道别吧。最后这本书充满不知所云的内容，不过我在书后面塞了一些很有趣的文章，作为对你经常光顾的感谢……”",
 		deckeffect:{oneoffrewards:1},
         warmup: 1,
 aspects:{exhaustlocation:1]
@@ -31,7 +31,7 @@ aspects:{exhaustlocation:1]
         requirements: {locationauctionhouse:1,auctionable:-1},
 		effects: {},
 		deckeffect: {"auctionedcommontomes":1},
-        startdescription: "这是一间无窗的，有着鲜艳烧橙色墙壁的拍卖室，我们坐在惊人的里特维德椅子上，等待着拍卖师宣布他所提供的商品。 新油漆的气味让人大脑眩晕。 [点击开始查看提供的商品，或者添加您想要出售的物品。]",
+        startdescription: "这是一间无窗的，有着鲜艳烧橙色墙壁的拍卖室，我们坐在惊人的里特维德椅子上，等待着拍卖师宣布他所提供的商品。 新油漆的气味让人大脑眩晕。 [点击开始查看提供的商品，或者添加你想要出售的物品。]",
         description: ".",
 			
         warmup: 5,
@@ -46,7 +46,7 @@ aspects:{exhaustlocation:1]
         requirements: {locationstreetsstrange:1},
 		
 		deckeffect: {"streetsstrangefinds":1},
-        startdescription: "昧旦之时，街道会呈现异相。",
+        startdescription: "名为痕月的时枢神所对应的时辰里，街道会呈现异相。",
         description: "幻像如跳着孔雀舞般优雅地从我身旁掠过——一扇俯视树林的窗户，一座冰雪花园，一轮颤抖的太阳，和一位玻璃女子。 回家时我心中将会充满不舍。",
         warmup: 30,
         craftable: true
@@ -60,7 +60,7 @@ aspects:{exhaustlocation:1]
 		linked:	[
 			{id: "explorefindcriminal",chance:100},
 		{id: "explorefindplace",chance:100}],
-        startdescription: "白天熙熙攘攘的大街，在夜里化为雾气缭绕的迷宫。我将派我的仆从出去寻找机遇。",
+        startdescription: "白天熙熙攘攘的大街，在夜里化为雾气缭绕的迷宫。我将派我的手下出去寻找机遇。",
         description: ".",
         warmup: 10,
 		craftable:true
@@ -96,7 +96,7 @@ aspects:{exhaustlocation:1]
 			
 					{
         id: "explorefindcriminal",
-        label: "一次雇佣？",
+        label: "一位雇工？",
         actionId: "explore",
         requirements: {daycriminals:1},
 		deckeffect: {"hirelings":1},
@@ -106,9 +106,9 @@ aspects:{exhaustlocation:1]
     },
 				{
         id: "explorechoosepaycriminal",
-        label: "一次雇佣？",
+        label: "一位雇工？",
         actionId: "explore",
-        startdescription: "我找到了一个可以花钱雇佣的人，我也许可以花钱来让他们做一些可能会后悔但又不得不做的事情。 [放入金钱可以雇用他，不过这种雇佣关系只是临时的。]",
+        startdescription: "我找到了一个可以花钱雇佣的人，我也许可以花钱来让他们做一些可能会后悔但又不得不做的事情。 [放入金钱可以临时雇用他。]",
 slots:[{id:"Payment",required:{funds:1},consumes:true}],
 alternativerecipes:[{id:"explorepaycriminal",chance:100}],
 		effects:{hireling:-1},
@@ -117,7 +117,7 @@ alternativerecipes:[{id:"explorepaycriminal",chance:100}],
     },
 					{
         id: "explorepaycriminal",
-        label: "一次雇佣",
+        label: "一位雇工",
 		requirements: {funds:1},
         actionId: "explore",
         startdescription: "这可以买到他的忠诚，虽然只是一时的。",

@@ -1,229 +1,860 @@
-{"recipes": [
-
-	    {
-        id: "despairrisk",
-        label: "心神暗淡",
-        actionId: "despair",
-        requirements: {},
-        effects: {},
-		slots: [{id:"Shadows", required: {inducesdespair:1}, greedy: true}],
-        startdescription: "天黑沉沉的。我必须小心，别让疑虑滋生。[恐惧可能会引发无边的绝望。]",
-        description: ".",
-        warmup: 60,
-        craftable: false,
-		linked:[{id:"despairactive",chance:100},
-		{id:"despairdefeated",chance:100}]
-    },
-	{  id: "despairactive",
-        label: "绝望",
-        actionId: "despair",
-		requirements: {inducesdespair: 1},
-		startdescription: "绝望是狼，吞噬思想。[你能通过投喂满足感来击败绝望，不然，它就会在恐惧积累到3的时候毁掉你。]",
+﻿{
+recipes: [
+	{
+		linked: 
+		[
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+			{
+				id: "despairdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		effects: 
+		{
+		},
+		warmup: "60",
+		label: "阴暗思绪",
+		startdescription: "阴沉沉的日子。我必须小心，别让疑虑滋生。[恐惧可能会引发无边的绝望。]",
+		id: "despairrisk",
+		actionId: "despair",
 		description: ".",
-		warmup: 60,
-		slots: [{id:"Thoughts",required: {contentment: 1,inducesdespair:1},greedy:true,noanim:true}],
-        craftable: false,
-		linked:[{id:"despairabate",chance:100},
-		{id:"despairdeath",chance:100},
-		{id:"despairactive",chance:100}]
+		slots: 
+		[
+			{
+				id: "Shadows",
+				required: 
+				{
+					inducesdespair: "1",
+				},
+				greedy: "true",
+			},
+		],
 	},
-
-	{  id: "despairabate",
-        label: "绝望减轻",
-        actionId: "despair",
-		requirements: {contentment:1},
-		effects: {inducesdespair: -1,contentment:-1},
-		startdescription: "美好的记忆将狂狼拒之门外。[一份满足感摧毁一份恐惧。]",
+	{
+		linked: 
+		[
+			{
+				id: "despairabate",
+				chance: "100",
+			},
+			{
+				id: "despairdeath",
+				chance: "100",
+			},
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			inducesdespair: "1",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "绝望",
+		startdescription: "绝望是狼，吞噬思想。[你可以通过投喂安逸来战胜绝望，否则，一旦累积了三份恐惧，它就会将你摧毁。]",
+		id: "despairactive",
+		actionId: "despair",
 		description: ".",
-		warmup: 10,
-        craftable: false,
-		linked:[{id:"despairactive",chance:100},
-		{id:"despairdefeated",chance:100}]
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					contentment: "1",
+					inducesdespair: "1",
+				},
+				greedy: "true",
+				noanim: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "despairwarning",
+				chance: "100",
+			},
+		],
 	},
-		   {
-        id: "despairdeath",
-        label: "绝望将我淹没",
-        actionId: "despair",
-        requirements: {inducesdespair: 3},
-		slots: [{id:"Thoughts",required: {contentment: 1},greedy:true}],
-        effects: {},
-        startdescription: "差不多到头了——[立刻找来满足感，否则就完了。]",
-        description: "他们会在哪找到我？我并不在此处。",
-        warmup: 60,
-        craftable: false,
-		alternativerecipes: [{id:"despairabate",chance:100}],
-		ending:"despairending",
-				signalEndingFlavour:Melancholy,
-		comments:"Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated.","Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated."
-	
-    },
-	{  id: "despairdefeated",
-        label: "疑云残影",
-        actionId: "despair",
-		effects: {fleeting:1},
+	{
+		linked: 
+		[
+			{
+				id: "despairabate",
+				chance: "100",
+			},
+			{
+				id: "despairdeath",
+				chance: "100",
+			},
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			contentment: "-1",
+			dread: "2",
+		},
+		comments: "This exists specifically for the burn image at 2 Dread.",
+		comment: "NEW",
+		label: "I Am Seeing Things!",
+		startdescription: "Despair pads close at my heels. The world is leached of light. [You can defeat Despair by feeding it Contentment; otherwise, it will destroy you when it reaches 3 Dread.]",
+		id: "despairwarning",
+		description: ".",
+		actionId: "visions",
+		burnimage: "despair",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "despairactive",
+				chance: "100",
+			},
+			{
+				id: "despairdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			contentment: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		label: "绝望缓解",
+		startdescription: "美好的记忆将狂狼拒之门外。[一份安逸可以消灭一份恐惧。]",
+		id: "despairabate",
+		actionId: "despair",
+		description: ".",
+		effects: 
+		{
+			contentment: "-1",
+			inducesdespair: "-1",
+		},
+	},
+	{
+		requirements: 
+		{
+			inducesdespair: "3",
+		},
+		craftable: "false",
+		comments: ""Consider (1) allowing the threshold to grab Dread too. (2) allowing the active step to have a low-risk possibility of increasing Dread (3) providing a reward when Despair is defeated".",
+		effects: 
+		{
+		},
+		warmup: "60",
+		ending: "despairending",
+		label: "<b>绝望将我淹没</b>",
+		startdescription: "差不多快要结束了——[立刻寻求安逸，否则一切都将终结。]",
+		signalEndingFlavour: "Melancholy",
+		id: "despairdeath",
+		actionId: "despair",
+		description: "他们会在哪里找到我呢？我并不在此处。",
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					contentment: "1",
+				},
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "despairabate",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "despairdefeated",
+		craftable: "false",
 		startdescription: ".",
-		description: "绝望之狼去了别处。[没有恐惧使之恶化，这份绝望目前是消散了。]",
-        craftable: false
+		effects: 
+		{
+			fleeting: "1",
+		},
+		description: "绝望之狼去了别处。[没有恐惧使之恶化，这份绝望目前是消退了。]",
+		label: "云开雾散",
+		actionId: "despair",
 	},
-
-		    {
-        id: "visionsrisk",
-        label: "颤栗的空气",
-        actionId: "visions",
-        requirements: {},
-        effects: {fleeting:1},
-		slots: [{id:"Shadows",required: {fascination:1}, greedy: true}],
-        startdescription: "阳光闪烁，犹如幽影，而梦在镜面之下荡出涟漪。我必须小心，不要迷失在了沉眠的世界。[入迷有可能引发幻象]",
-        description: ".",
-        warmup: 60,
-        craftable: false,
-		linked:[{id:"visionsactive",chance:100},
-		{id:"visionsdefeated",chance:100}]
-    },
-	{  id: "visionsactive",
-        label: "有东西在我眼前",
-        actionId: "visions",
-		requirements: {fascination: 1},
-		startdescription: "画在低语，窗在闪烁。我知道这都不是真的，但又怎么才能确定那不是真的？[你能用恐惧来击败幻象，不然，你就会在入迷积累到3的时候彻底迷失自我。]",
+	{
+		linked: 
+		[
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+			{
+				id: "visionsdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "空气中的颤栗",
+		startdescription: "阳光闪烁，犹如幽影，而梦在镜面之下荡出涟漪。我必须小心，不要迷失在了沉眠的世界。[入迷有可能引发幻象]",
+		id: "visionsrisk",
+		actionId: "visions",
 		description: ".",
-		warmup: 60,
-		slots: [{id:"Thoughts",required: {dread: 1,fleeting:1,fascination:1},greedy:true,noanim:true}],
-        craftable: false,
-		linked:[{id:"visionsabate",chance:100},
-		{id:"visionsabatewithfleeting",chance:100},
-		{id:"visionsdeath",chance:100},
-		{id:"visionsactive",chance:100}]
+		slots: 
+		[
+			{
+				id: "Shadows",
+				required: 
+				{
+					fascination: "1",
+				},
+				greedy: "true",
+			},
+		],
 	},
-	   {
-        id: "visionsdeath",
-        label: "救我——",
-        actionId: "visions",
-        requirements: {fascination: 3},
-		slots: [{id:"Thoughts",required: {dread: 1},greedy:true}],
-        effects: {},
-        startdescription: "盖满每件事物表面的那些光是什么啊？光界来了，但我在这里可见不到它——[立刻找来恐惧，否则就完了。]",
-        description: "他们会在哪找到我？我并不在此处。",
-        warmup: 60,
-        craftable: false,
-		alternativerecipes: [{id:"visionsabate",chance:100}],
-				signalEndingFlavour:Melancholy,
-		ending:"visionsending"
-	
-    },
-	{  id: "visionsabate",
-        label: "异象减轻",
-        actionId: "visions",
-		requirements: {dread:1},
-		effects: {fascination: -1,dread:-1},
-		startdescription: "踏实可靠的日常能消除幻影，而我将自己与日常牢牢系紧。[一份恐惧缓解一份入迷。]",
+	{
+		linked: 
+		[
+			{
+				id: "visionsabate",
+				chance: "100",
+			},
+			{
+				id: "visionsabatefleeting",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "visionsdeath",
+				comment: "NEW",
+				chance: "100",
+			},
+			{
+				id: "visionsactive",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			fascination: "1",
+		},
+		craftable: "false",
+		warmup: "60",
+		label: "我看见了什么",
+		startdescription: "画在低语，窗在眨眼。我知道这些都是假的，但我又如何确信呢？[你能用恐惧或念头消除幻象，不然，入迷积累到3时你就会彻底迷失。]",
+		id: "visionsactive",
+		actionId: "visions",
 		description: ".",
-		warmup: 10,
-        craftable: false,
-		linked:[{id:"visionsactive",chance:100},
-		{id:"visionsdefeated",chance:100}]
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					fascination: "1",
+					dread: "1",
+					fleeting: "1",
+				},
+				greedy: "true",
+				noanim: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "visionswarning",
+				chance: "100",
+			},
+		],
 	},
-		{  id: "visionsabatewithfleeting",
-        label: "异象减轻",
-        actionId: "visions",
-		requirements: {fleeting:1},
-		effects: {fascination: -1,fleeting:-1},
-		startdescription: "The future is a greedy blaze of light, however tightly I close my eyes against it.. The past is the rock I cling to.[Each Fleeting Memory quells one Fascination.]",
+	{
+		linked: 
+		[
+			{
+				id: "visionsabate",
+				chance: "100",
+			},
+			{
+				id: "visionsabatefleeting",
+				chance: "100",
+			},
+			{
+				id: "visionsdeath",
+				chance: "100",
+			},
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			fascination: "2",
+			dread: "-1",
+			fleeting: "-1",
+		},
+		comments: "This exists specifically for the burn image at 2 Fascination.",
+		comment: "NEW",
+		label: "I Am Seeing Things!",
+		startdescription: "The world is dangerously bright. [You can defeat Visions with Dread or a Fleeting Memory; otherwise, you will lose yourself completely at Fascination 3.]",
+		id: "visionswarning",
 		description: ".",
-		warmup: 10,
-        craftable: false,
-		linked:[{id:"visionsactive",chance:100},
-		{id:"visionsdefeated",chance:100}]
+		actionId: "visions",
+		burnimage: "visions",
 	},
-	{  id: "visionsdefeated",
-        label: "世界平和如初",
-        actionId: "visions",
-		effects: {influencelantern:1},
+	{
+		requirements: 
+		{
+			fascination: "3",
+		},
+		craftable: "false",
+		effects: 
+		{
+		},
+		warmup: "60",
+		ending: "visionsending",
+		label: "救救我——",
+		startdescription: "那些盖满了事物表面的光都是什么？光界来了，但我在这里可看不见它——[去找恐惧或念头，现在就去。]",
+		signalEndingFlavour: "Melancholy",
+		id: "visionsdeath",
+		actionId: "visions",
+		description: "他们会在哪里找到我呢？我并不在此处。",
+		slots: 
+		[
+			{
+				id: "Thoughts",
+				required: 
+				{
+					dread: "1",
+					fleeting: "1",
+				},
+				greedy: "true",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "visionsabate",
+				chance: "100",
+			},
+			{
+				id: "visionsabatefleeting",
+				comment: "NEW",
+				chance: "100",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+			{
+				id: "visionsdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			dread: "1",
+		},
+		craftable: "false",
+		warmup: "10",
+		label: "异象缓解",
+		startdescription: "踏实可靠的日常能消除幻影，而我将自己与日常牢牢系紧。[恐惧能够缓解入迷。]",
+		id: "visionsabate",
+		actionId: "visions",
+		description: ".",
+		effects: 
+		{
+			fascination: "-1",
+			dread: "-1",
+		},
+	},
+	{
+		linked: 
+		[
+			{
+				id: "visionsactive",
+				chance: "100",
+			},
+			{
+				id: "visionsdefeated",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			fleeting: "1",
+		},
+		craftable: "false",
+		comment: "NEW",
+		warmup: "10",
+		label: "Visions Abate",
+		startdescription: "The solidity of the everyday banishes phantoms. I tether myself to the everyday. [Each Fleeting Memory quells one Fascination.]",
+		id: "visionsabatefleeting",
+		actionId: "visions",
+		description: ".",
+		effects: 
+		{
+			fascination: "-1",
+			fleeting: "-1",
+		},
+	},
+	{
+		id: "visionsdefeated",
+		craftable: "false",
 		startdescription: ".",
-		description: "镜面平静了，太阳稳定了。光界渐渐远去。如果这有什么意义的话，那就是我神智清醒了。[没有入迷来推动，你的幻象目前是消散了。]",
-        craftable: false
+		effects: 
+		{
+			fleeting: "1",
+		},
+		description: "Mirrors are calm. The sun is steady. The Glory recedes. I am sane, if that means anything. [No Fascination drives your Visions. It's over, for now.]",
+		comment: "NEW",
+		label: "The World as it Is",
+		actionId: "visions",
 	},
-	{id: "curse_dread_dormant",
-	label:"蜇伏的吸魂诅咒",
-	actionId: "curse_dread",
-	startdescription: "吸魂诅咒尚未生效。",
-	alternativerecipes: [{id: "curse_dread_active",chance:30}],
-	linked: [{id: "curse_dread_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_dread_active",
-	label:"吸魂诅咒",
-	requirements: {dread:-1},
-	actionId: "curse_dread",
-	startdescription: "吸魂诅咒形态轻柔，像是置于肩上的干枯的手。",
-	description:"我的头骨嘎吱作响。光线发灰。",
-	aspects: {damagereason:1},
-	slots: [{id:"Reason",greedy:true,required:{reason:1}}],
-	linked: [{id: "curse_dread_active",chance:100}],
-	warmup:60
+	{
+		linked: 
+		[
+			{
+				id: "curse_dread_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		label: "Dormant Dry Soul Curse",
+		startdescription: "The Dry Soul Curse has not yet taken effect.",
+		id: "curse_dread_dormant",
+		actionId: "curse_dread",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_dread_active",
+				chance: "30",
+			},
+		],
 	},
-		{id: "curse_visions_dormant",
-	label:"蜇伏的第五目诅咒",
-	actionId: "curse_visions",
-	startdescription: "第五目诅咒尚未生效。",
-	alternativerecipes: [{id: "curse_visions_active",chance:30}],
-	linked: [{id: "curse_visions_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_visions_active",
-	label:"第五目诅咒",
-	actionId: "curse_visions",
-	requirements: {fascination:-1},
-	startdescription: "第三目是假的，它其实是松果体。第四目，则是某些飞升过程中的标记。而第五眼，如今在我面前显现。",
-	description:"我没法不去看。如果看的时间够久，我就会希望别看。",
-	aspects: {damagepassion:1},
-	slots: [{id:"Passion",greedy:true,required:{passion:1}}],
-	linked: [{id: "curse_visions_active",chance:100}],
-	warmup:60
+	{
+		linked: 
+		[
+			{
+				id: "curse_dread_active",
+				chance: "100",
+			},
+			{
+				id: "curse_dread_attempt_mitigation",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			reason: "-1",
+		},
+		comment: "NEW",
+		warmup: "60",
+		label: "Dry Soul Curse",
+		startdescription: "The Dry Soul Curse settles softly, like a withered hand on the shoulder.",
+		id: "curse_dread_active",
+		actionId: "curse_dread",
+		slots: 
+		[
+			{
+				id: "Reason",
+				greedy: "true",
+				required: 
+				{
+					reason: "1",
+				},
+				label: "Reason",
+			},
+		],
 	},
-			{id: "curse_affliction_dormant",
-	label:"蜇伏的蠕息诅咒",
-	actionId: "curse_health",
-	startdescription: "蠕息诅咒尚未生效。",
-	alternativerecipes: [{id: "curse_affliction_active",chance:30}],
-	linked: [{id: "curse_affliction_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_affliction_active",
-	label:"蠕息诅咒",
-	actionId: "curse_affliction",
-	requirements: {decrepitude:-1},
-	startdescription:"蠕息诅咒先是让人咳嗽——它像讨债人一样，游荡在你的喉咙里。",
-	description:"我们的每次呼吸都比上一次弱，直到我们咽下最后一口气。这个过程如此缓慢，慢到让人无法察觉……直到蠕息诅咒缠上你。",
-	aspects: {destroyhealth:1},
-	slots: [{id:"Health",greedy:true,required:{health:1}}],
-	linked: [{id: "curse_affliction_active",chance:100}],
-	warmup:60
+	{
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			damagereason: "1",
+		},
+		label: "The Dry Soul Curse: A Last Chance",
+		startdescription: "The Curse has taken hold. Now the tunnel tightens around all I see. [Only if you have enough Heart influence will it be possible to turn aside the Curse.]",
+		id: "curse_dread_attempt_mitigation",
+		actionId: "curse_dread",
+		description: "My skull creaks. The light greys.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influencehearte: "1",
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_dread_mitigation_successful",
+				chance: "100",
+			},
+		],
 	},
-	
-	
-	{id: "curse_nowhere_dormant",
-	label:"有什么跟着我们回来了",
-	actionId: "curse_nowhere",
-	startdescription: "我有瞥见微妙的移动——就像眼前时不时滑过的飘浮物，但比它们要狡诈。有些时候，我也听见它们的声音。",
-	alternativerecipes: [{id: "curse_nowhere_active",chance:30}],
-	linked: [{id: "curse_nowhere_dormant",chance:100}],
-	warmup:60,
-	craftable: false},
-	
-	{id: "curse_nowhere_active",
-	label:"世间之虫",
-	actionId: "curse_nowhere",
-	requirements: {notoriety:-1},
-	startdescription: "城市里有虫。它们没人看见，但也没人会忘记。它们会通过皮肤的空隙进入人体，然后做虫子会做的事。",
-	description:"能做的都已经做了。要是发现任何遗漏，我们就必须以最高级别的警戒进行焚烧与筛查。",
-	effects:{mortal:-1,notoriety:1},
-	slots: [{id:"Someone",greedy:true,required:{mortal:1}}],
-	linked: [{id: "curse_nowhere_active",chance:100}],
-	warmup:60
+	{
+		id: "curse_dread_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Tap the drum and speak the words. Keep hppe alive until the chant is done.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "My soul swells again. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_dread",
 	},
-
+	{
+		linked: 
+		[
+			{
+				id: "curse_visions_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		label: "Dormant Fifth Eye Curse",
+		startdescription: "The Fifth Eye Curse has not yet taken effect.",
+		id: "curse_visions_dormant",
+		actionId: "curse_visions",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_visions_active",
+				chance: "30",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_visions_active",
+				chance: "100",
+			},
+			{
+				id: "curse_visions_attempt_mitigation",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			passion: "-1",
+		},
+		comment: "NEW",
+		warmup: "60",
+		label: "Fifth Eye Curse",
+		startdescription: "The Third Eye is a myth, or the pineal gland. The Fourth Eye is a Mark in certain processes of ascension. The Fifth Eye now opens before me.",
+		id: "curse_visions_active",
+		actionId: "curse_visions",
+		slots: 
+		[
+			{
+				id: "Passion",
+				greedy: "true",
+				required: 
+				{
+					passion: "1",
+				},
+				label: "Passion",
+			},
+		],
+	},
+	{
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			damagepassion: "1",
+		},
+		label: "The Fifth Eye Curse: A Last Chance",
+		startdescription: "The Curse has taken hold. Now the world, rotting, leaks light. [With enough Heart influence, will it be possible to turn aside the Curse.]",
+		id: "curse_visions_attempt_mitigation",
+		actionId: "curse_visions",
+		description: "I cannot stop seeing. If I look long enough, I will not wish to.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influencehearte: "1",
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_visions_mitigation_successful",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "curse_visions_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Tap the drum and speak the words. I will close all my eyes until the chant is done.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "My eyes are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_visions",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_affliction_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		label: "Dormant Creeping Breath Curse",
+		startdescription: "The Creeping Breath curse has not yet come due.",
+		id: "curse_affliction_dormant",
+		actionId: "curse_health",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_affliction_active",
+				chance: "30",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_affliction_active",
+				chance: "100",
+			},
+			{
+				id: "curse_affliction_attempt_mitigation",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			health: "-1",
+		},
+		comment: "NEW",
+		warmup: "60",
+		label: "Creeping Breath Curse",
+		startdescription: "The Creeping Breath Curse begins with a cough - a cough that loiters in one's throat like a debt-collector.",
+		id: "curse_affliction_active",
+		actionId: "curse_affliction",
+		slots: 
+		[
+			{
+				id: "Health",
+				greedy: "true",
+				required: 
+				{
+					health: "1",
+				},
+				label: "Health",
+			},
+		],
+	},
+	{
+		comment: "NEW",
+		warmup: "60",
+		aspects: 
+		{
+			destroyhealth: "1",
+		},
+		label: "The Creeping Breath Curse: A Last Chance",
+		startdescription: "The Curse has taken hold. Now the life-pulse slows. [With enough Heart influence, will it be possible to turn aside the Curse.]",
+		id: "curse_affliction_attempt_mitigation",
+		actionId: "curse_affliction",
+		description: "Each breath we take in this life is weaker than the last, until we come to the final breath of all. The process is so slow as to be imperceptible... until one is touched by the Creeping Breath Curse.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influencehearte: "1",
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_affliction_mitigation_successful",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "curse_affliction_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Tap the drum and speak the words. Suppress the cough until the chant is done.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "My lungs are clear. The Curse has passed. Far off, on the horizon, the storm moves like a watchful beast.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_affliction",
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_nowhere_dormant",
+				chance: "100",
+			},
+		],
+		craftable: "false",
+		comment: "NEW",
+		warmup: "60",
+		label: "Something's Come Back With Us",
+		startdescription: "I glimpse subtle movement in the world - like the floaters which sometimes move through the eye, but slyer. Sometimes, too, I hear them.",
+		id: "curse_nowhere_dormant",
+		actionId: "curse_nowhere",
+		alternativerecipes: 
+		[
+			{
+				id: "curse_nowhere_active",
+				chance: "30",
+			},
+		],
+	},
+	{
+		linked: 
+		[
+			{
+				id: "curse_nowhere_active",
+				chance: "100",
+			},
+			{
+				id: "curse_nowhere_attempt_mitigation",
+				chance: "100",
+			},
+		],
+		requirements: 
+		{
+			mortal: "-1",
+		},
+		comment: "NEW",
+		warmup: "60",
+		label: "The Worms in the World",
+		startdescription: "There are Worms in the city. One does not see Worms, but neither does one forget them. They will search until they find someone they can enter through the spaces in the skin, and then do what Worms will.",
+		id: "curse_nowhere_active",
+		actionId: "curse_nowhere",
+		slots: 
+		[
+			{
+				id: "Someone",
+				greedy: "true",
+				required: 
+				{
+					mortal: "1",
+				},
+			},
+		],
+	},
+	{
+		comment: "NEW",
+		effects: 
+		{
+			mortal: "-1",
+			dread: "1",
+			notoriety: "1",
+		},
+		warmup: "60",
+		label: "The Worms in the World: A Last Chance",
+		startdescription: "The Worms have found their way beneath the skin. This is the end. [It's possible to save this one only if you have a tremendous degree of Heart influence at your disposal.]",
+		id: "curse_nowhere_attempt_mitigation",
+		actionId: "curse_nowhere",
+		description: "When Worms take flesh, there is nothing to be done except destroy what remains - burn and sift with the utmost care.",
+		slots: 
+		[
+			{
+				id: "Protection",
+				required: 
+				{
+					influenceheartg: "1",
+				},
+				label: "Protection",
+			},
+		],
+		alternativerecipes: 
+		[
+			{
+				id: "curse_nowhere_mitigation_successful",
+				chance: "100",
+			},
+		],
+	},
+	{
+		id: "curse_nowhere_mitigation_successful",
+		comment: "NEW",
+		startdescription: "Implore the lightning. Only the storm's own breath can save this one now.",
+		requirements: 
+		{
+			influence: "1",
+		},
+		description: "The absence of the Worms is like a curtain flung open. The air is rain-scent and ozone. Our fingers still tap to the Thunderskin's rhythms.",
+		effects: 
+		{
+			influence: "-1",
+		},
+		label: "The Thunderskin's Favour",
+		actionId: "curse_nowhere",
+	},
 ]
 }

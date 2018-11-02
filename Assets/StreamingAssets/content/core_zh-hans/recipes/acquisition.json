@@ -2,7 +2,7 @@
 
 		{
         id: "auctionbuy",
-        label: "在拍卖会中竞价",
+        label: "在拍卖中竞价",
         actionId: "explore",
 		effects: {},
 		slots:[{id:"Bid",required: {funds:1}}],
@@ -18,7 +18,7 @@
 	   actionId:"explore",
 	   label:"我出价了！",
 	   requirements:{funds:1},
-	   startdescription: "我举起了手。拍卖人将木槌敲下向我致意。会有人跟价吗？",
+	   startdescription: "我举起了手。拍卖师敲下木槌向我致意。会有人跟价吗？",
 	   description:".",
 	   effects:{funds:-1,bid:1}
 	   warmup:0,
@@ -28,7 +28,7 @@
 	   ]
 	   },
 	   {id:"auctionbidmatched",
-	   label: "另一位竞价者！",
+	   label: "另一位竞拍者！",
 	   actionId:"explore",
 	   startdescription:"有人跟价了！我必须花更多的金钱追价，不然我只能放弃我的拍品了。",
 	   description:".",
@@ -52,7 +52,7 @@
         actionId: "explore",
 		effects: {funds:-100,bid:-100},
         startdescription: ".",
-        description: "拍卖人记下了我的名字，并对助手示意。我得到了奖品。但愿它值得我的付出。",
+        description: "拍卖师记下了我的名字，并朝助手示意。我得到了奖品。但愿它值得我的付出。",
         warmup: 0,
         craftable: false,
 		comments: "The auction item should be inherited from the linking recipe."

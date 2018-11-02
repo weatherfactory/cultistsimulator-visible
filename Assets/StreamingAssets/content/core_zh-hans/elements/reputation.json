@@ -3,9 +3,9 @@
 
 	 {
             id: "mystique",
-            label: "秘氛",
+            label: "神秘",
             aspects: {reputation: 1},
-            description: "他们会记住我是谁。 [秘氛可能会引起猎人的注意。他们没办法利用它来找到针对你的证据，但这能够促使他们更努力地去寻找。]",
+            description: "他们会记住我是谁。 [神秘可能会引起猎人的注意。他们没办法利用它来找到针对你的证据，但这能够促使他们更努力地去寻找。]",
 		lifetime: 300
         },
 							 {
@@ -29,8 +29,8 @@
 											 {
             id: "evidenceb",
 			aspects:{evidencelevel:2},
-            label: "毁灭性的证据",
-            description: "“大地，瞪大眼睛看看吧！哦，不，它不让我在此留存。”[掌握了毁灭性的证据后，监管局就能凭之给你定罪。证据可能会在当初发现它的猎人死后继续留存。]",
+            label: "确凿证据",
+            description: "“大地，瞪大眼睛看看吧！哦，不，它不让我在此留存。”[掌握了确凿证据后，监管局就能凭之给你定罪。证据可能会在当初发现它的猎人死后继续留存。]",
 			xtriggers:{investigatingsetback:evidence},
 			lifetime: 600,
 			decayTo: "evidence"

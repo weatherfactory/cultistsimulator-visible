@@ -1,68 +1,171 @@
-{"elements":
-    [
-			  
-	{id: "legacydetectivejob",
-	label: "检察官的职位",
-	description: "我是首都警察局的高级职员。",
-	aspects: {job:1},
-	xtriggers: {careeradvancement:legacydetectivejob_matured}
-},
-{id: "legacydetectivejob_matured",
-	label: "检察官的职位",
-	description: "我是首都警察局的高级职员，但我被临时调派到了监管局。",
-	aspects: {job:1},
-	slots:[{id:"target",label:"案件",required:{suspicious:1},description:"在取得证据前，我需要直接监管我的猎物。",actionId:"work"},
-	{id:"meticulous",label:"一丝不苟",description:"更多的理性能提高我调查的成功率。",required:{reason:1},actionId:"work"},
-	{id:"vigilant",label:"机警",description:"更多的理性能提高我调查的成功率。",required:{reason:1},actionId:"work"},
-	{id:"专一",label:"专一", description:"更多的理性能提高我调查的成功率。",required:{reason:1},actionId:"work"},],
-	xtriggers:{employment:legacydetectivejob_matured},
-	lifetime:90,
-	decayTo:"legacydetectivejob_suspended",
-	icon:"legacydetectivejob"
-	
-},
-
-{id: "legacydetectivejob_suspended",
-	label: "警方检察官  [停职]",
-	description: "我旷工的事情被注意到了。我已因此被停职。[尽快申辩你的情况，否则会永久失去工作。]",
-	slots:[{id:"passion",label:"热情",required:{passion:1},actionId:"work"}],
-	aspects: {job:1},
-	xtriggers:{plead:legacydetectivejob_matured},
-	lifetime:90,
-	decayTo:"legacydetectivejob_disgraced"
+﻿{
+elements: [
+	{
+		id: "legacydetectivejob",
+		aspects: 
+		{
+			job: "1",
+		},
+		description: "我是首都警察局的高级职员。",
+		label: "警探的职位",
+		xtriggers: 
+		{
+			careeradvancement: "legacydetectivejob_matured",
+		},
 	},
-	
-	{id: "legacydetectivejob_disgraced",
-	label: "警方检察官  [颜面尽失]",
-	description: "我丢掉了工作，我不太可能重新回去上班了。我需要在这个文明的世界里自谋出路。",
-	lifetime:120,
-	decayTo:"mystique"
+	{
+		icon: "legacydetectivejob",
+		aspects: 
+		{
+			job: "1",
+		},
+		xtriggers: 
+		{
+			employment: "legacydetectivejob_matured",
+		},
+		decayTo: "legacydetectivejob_suspended",
+		label: "警探的职位",
+		id: "legacydetectivejob_matured",
+		lifetime: "90",
+		description: "我是首都警察局的高级职员，但我被临时调派到了监管局。",
+		slots: 
+		[
+			{
+				id: "target",
+				required: 
+				{
+					suspicious: "1",
+				},
+				description: "在取得证据前，我需要直接监管我的猎物。",
+				label: "调查目标",
+				actionId: "work",
+			},
+			{
+				id: "meticulous",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "更多的理性能提高我调查的成功率。",
+				label: "细致",
+				actionId: "work",
+			},
+			{
+				id: "vigilant",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "更多的理性能提高我调查的成功率。",
+				label: "机警",
+				actionId: "work",
+			},
+			{
+				id: "singleminded",
+				required: 
+				{
+					reason: "1",
+				},
+				description: "更多的理性能提高我调查的成功率。",
+				label: "专一",
+				actionId: "work",
+			},
+		],
 	},
-{id: "legacydetective_plotitem",
-label: "加封的监管局文件",
-aspects: {desire:1,text:1},
-description: "一份有关神秘的#PREVIOUSCHARACTERNAME#的档案文件。 我亲自将其加封。我对它内容再熟悉不过了。如果我再去读它，很可能又会做梦。"},
-											 {
-            id: "myevidence",
-            label: "不确定的证据",
-            description: "我掌握了我的猎物所进行活动的某些证据。",
-			lifetime:300,
-			aspects:{suspicious:1},
-			xtriggers:{investigatingsuccess:myevidenceb}
-        },
-											 {
-            id: "myevidenceb",
-            label: "毁灭性的证据",
-            description: "我掌握了某些令人信服的证据，直指我的猎物进行的某些活动。",
-			lifetime:300,
-			aspects:{suspicious:1}
-        },
-		
-{id: "legacydetective_plotitem_burning",
-label: "烧毁的监管局文件",
-description: "几乎没了。",
-lifetime: 10,
-noartneeded:true
+	{
+		aspects: 
+		{
+			job: "1",
+		},
+		xtriggers: 
+		{
+			plead: "legacydetectivejob_matured",
+		},
+		decayTo: "legacydetectivejob_disgraced",
+		label: "警探[停职]",
+		id: "legacydetectivejob_suspended",
+		lifetime: "90",
+		description: "我旷工的事情被注意到了。我已因此被停职。[尽快申辩你的情况，否则会永久失去工作。]",
+		slots: 
+		[
+			{
+				id: "passion",
+				required: 
+				{
+					passion: "1",
+				},
+				label: "热情",
+				actionId: "work",
+			},
+		],
+	},
+	{
+		id: "legacydetectivejob_disgraced",
+		description: "我丢掉了职位，我不太可能重新回去上班了。我需要在这个文明的世界里自谋出路。",
+		decayTo: "mystique",
+		label: "警探[罢免]",
+		lifetime: "120",
+	},
+	{
+		id: "legacydetective_plotitem",
+		aspects: 
+		{
+			text: "1",
+			detectivetemptation: "1",
+			desire: "1",
+		},
+		description: "一份有关神秘的#PREVIOUSCHARACTERNAME#的档案文件。 我亲自将其加封。我对它的内容再熟悉不过了。如果我再去读它，很可能又会做梦。",
+		label: "加封的监管局文件",
+	},
+	{
+		id: "myevidence",
+		xtriggers: 
+		{
+			investigatingsuccess: "myevidenceb",
+		},
+		aspects: 
+		{
+			suspicious: "1",
+		},
+		description: "我掌握了我的猎物所进行活动的某些证据。",
+		label: "不确定的证据",
+		lifetime: "300",
+	},
+	{
+		id: "myevidenceb",
+		aspects: 
+		{
+			suspicious: "1",
+		},
+		description: "我掌握了某些令人信服的证据，直指我的猎物进行的某些活动。",
+		label: "确凿证据",
+		lifetime: "300",
+	},
+	{
+		id: "legacydetective_plotitem_burning",
+		aspects: 
+		{
+			text: "1",
+			detectivetemptation: "1",
+			desire: "1",
+		},
+		description: "几乎什么也没剩下。",
+		icon: "legacydetective_plotitem",
+		label: "烧毁的监管局文件",
+		lifetime: "10",
+	},
+	{
+		id: "legacydetective_plotitem_backup",
+		aspects: 
+		{
+			text: "1",
+			detectivetemptation: "1",
+			desire: "1",
+		},
+		description: "The evidence includes the kind of details that might make one lick one's lips, if one were interested in such things. I should not read it. The dreams might begin again.",
+		icon: "legacydetective_plotitem",
+		comment: "NEW",
+		label: "Troubling Bureau File",
+	},
+]
 }
-] 
-};

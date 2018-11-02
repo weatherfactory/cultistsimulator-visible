@@ -6,7 +6,7 @@
 	actionId: "explore",
 	requirements:{vaultcapital1:1,funds:1,follower:1},
 	effects: {guardian_watchers:1},
-	startdescription: "很遗憾，斯特拉思科因先生禁止他人进入他的藏书室。我们看看有何办法可想。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	startdescription: "很遗憾，斯特拉思科因先生禁止他人进入他的藏书室。我们看看有何办法可想。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -21,7 +21,7 @@
 	requirements:{funds:1,follower:1,vaultcapital2:1},
 	effects: {seal_hiddendoor:1},
 
-	startdescription: "我相信密特拉寺仍保有未被发掘的秘密。搜寻工作虽无甚危险，却需要金钱的支持。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	startdescription: "我相信这座密特拉寺仍保有未被发掘的秘密。搜寻工作虽无甚危险，却需要金钱的支持。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -35,7 +35,7 @@
 	requirements:{vaultcapital3:1,funds:1,follower:1},
 	effects: {peril_treacherousground:1},
 
-	startdescription: "工厂的残垣断壁摇摇欲倒。熏成黑色的梁木咯吱作响，发出痛苦的声音。我们须得装备妥当，并提心吊胆，极其谨慎地前行。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	startdescription: "工厂的残垣断壁摇摇欲倒。熏成黑色的梁木咯吱作响，发出痛苦的声音。我们需要装备妥当，并且提心吊胆，极其谨慎地前行。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -49,7 +49,7 @@
 	requirements:{funds:1,follower:1,vaultcapital4:1},
 	effects: {curse_dread:1},
 
-	startdescription: "如今的医院大厅只剩往日余音徘徊其内，空气中的恶意却迟迟不肯离去。我们的调查须得细致入微，不放过一个房间。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	startdescription: "如今的医院大厅只剩往日余音徘徊其内，空气中的恶意却迟迟不肯离去。我们的调查必须细致入微，不放过一个房间。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -63,7 +63,7 @@
 	requirements:{funds:1,follower:1,vaultcapitaldefault:1},
 	effects: {peril_treacherousground:1,guardian_watchers:1},
 
-	startdescription: "法律约束不了这片衰落的城市边缘地带。这里的淤泥已吞噬了许多性命，这间仓库无疑也盘踞着可鄙的罪犯或此类人等。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部牺牲时，探索将终止。]",
+	startdescription: "法律约束不了这片衰落的城市边缘地带。这里的淤泥已吞噬了许多性命，这间仓库无疑也盘踞着可鄙的罪犯或此类人等。[每突破一个阻碍需消耗至少一份金钱。追随者会负责突破阻碍。当金钱耗尽或者追随者全部倒下时，探索将终止。]",
 	description: ".",
 	warmup:30,
 	craftable: true,
@@ -77,7 +77,7 @@
 	requirements: {vaultcapital1:1},
 	effects: {vaultcapital1:-1,wainscothistories:1},
 	deckeffect: {"vaultcontentsc":3},
-	startdescription: "这里是斯特拉思科因布置舒适的密室。壁炉里的火忽明忽暗，玻璃展柜里摆放着各种稀奇的小玩意。我们必须抓紧时间，能拿多少拿多少！斯特拉思科因可能已经通电话报警了。",
+	startdescription: "这里是斯特拉思科因布置的舒适密室。壁炉里的火忽明忽暗，玻璃展柜里摆放着各种稀奇的小玩意。我们必须抓紧时间，能拿多少拿多少！斯特拉思科因可能已经通过电话报警了。",
 	description: "逃出生天，投入黑夜！我们逃离时并没有被人看见，然而第二天报上却刊登了斯特拉思科因家遭火灾的消息。是有人把烧红的煤块碰到壁炉前的地毯上了？或者是斯特拉思科因自己烧毁了住处，为了实施一场更大的阴谋？",
 	warmup:30,
 	craftable: false

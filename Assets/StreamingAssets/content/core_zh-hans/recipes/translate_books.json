@@ -1,20 +1,20 @@
  {"recipes": [
   	{
         id: "translatehint",
-        label: "尝试翻译文本？",
+        label: "尝试翻译文献？",
         actionId: "study",
         requirements: {language:1},
-		startdescription: "如果能有以这种语言书写的文本，我就能开始翻译它。",
+		startdescription: "如果能有以这种语言书写的文献，我就能开始翻译它。",
         craftable: false,
 		hintonly:true
     },
  	{
         id: "translate",
-        label: "开始翻译文本",
+        label: "开始翻译文献",
         actionId: "study",
         requirements: {language:1,text:1},
 		startdescription: "锁紧房门。开始研究。",
-        description: "我已经准备好了用以研究的文本。",
+        description: "我已经准备好了用以研究的文献。",
         warmup: 60,
         craftable: true
     }

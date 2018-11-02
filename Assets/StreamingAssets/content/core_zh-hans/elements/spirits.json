@@ -2,25 +2,25 @@
     [
  {
          id: "spirit_wintera_edge",
-            label: "破碎之骸",
+            label: "残破行尸",
             aspects:
             {follower:1, summoned:1,winter:4,edge:4},
-            description: "这具尸体因一种狂暴的力量而苏醒。它每一次移动，都会发出类似玻璃破碎的声音，而它的双手则是骨头碎片组成的利爪。它看起来坚持不了多久，随时都有可能再次倒下。",
+            description: "某种狂暴的力量将这具尸骸暂时拖回了人世。它每一次移动，身体都会犹如碎裂的玻璃般嘎吱作响，而它的拳掌也已经化为骨片构成的利爪。它看起来随时都有可能再次倒下。",
 			lifetime: 60
         },
 		{
 		         id: "spirit_wintera_moth",
-            label: "发芽木骸",
+            label: "发芽行尸",
             aspects:
             {follower:1, summoned:1,winter:4,moth:4},
-            description: "林中的生长之力覆盖了这具尸体的器官，充满了它的头骨，缠绕着它的心脏。它的双眼中透着狡诈，行动起来就像一个提线木偶一般，骨头化成了腐烂的木头，仿佛即将就地扎根。不过在它扎根之前，它可以称得上是一名迅速而精明的仆从。",
+            description: "林地中的生长之力覆盖了这具尸体的器官，充满了它的头骨，缠绕着它的心脏。它的双眼中透着狡诈，行动起来就像一个提线木偶一般，骨头化成了腐烂的木头，仿佛即将就地扎根。不过在它扎根之前，它可以称得上是一名迅速而精明的仆从。",
 			lifetime: 60
         },
 {        id: "spirit_winterb_heart",
-            label: "无声亡者",
+            label: "沉默亡者",
             aspects:
             {follower:1, summoned:1,winter:6,moth:6,deceiver:6},
-            description: "有时，亡者会通过纯白之门进入漫索界。它们声音会永远的留在门扉之处。被召回现世的它们，即使无法发出声音，也依旧会忠诚执行您的命令。",
+            description: "有时，亡者会通过纯白之门进入漫索。它们声音会永远的留在门扉之处。被召回现世的它们，即使无法发出声音，也依旧会忠诚执行您的命令。",
 			lifetime: 180
         },
 		 {
@@ -28,7 +28,7 @@
             label: "烟雾幽魂",
             aspects:
             {follower:1, summoned:1,forge:8,moth:8,deceiver:8},
-            description: "居所边界，铸之一隅，光界之火烧灼原始元素之处。一团狡猾的蒸气将会侵染你的敌人的梦境。",
+            description: "漫索边界，<b>铸</b>之一隅，光界之火烧灼原始元素之处。一团狡猾的蒸气将会侵染你的敌人的梦境。",
 			lifetime: 180
         },
 		 {
@@ -52,7 +52,7 @@
             label: "律动者",
             aspects:
             {follower:1, summoned:1,heart:8,edge:8,devourer:8},
-            description: "律动者！它热爱叉铃的震颤，热爱敲打定音鼓的声音。它的行动展现了对《被剥皮的马西亚斯》的喜爱，而且它绝对绝对绝对不会停止舞蹈。",
+            description: "律动者！它热爱叉铃的震颤，热爱敲打定音鼓的声音。它的行动展现了对《被剥皮的马西亚斯》的喜爱，而且它绝对绝对<b>绝对</b>不会停止舞蹈。",
 			lifetime: 180
         },
 		 {
@@ -60,15 +60,15 @@
             label: "镜中淑女",
             aspects:
             {follower:1, summoned:1,winter:10,edge:10,devourer:10},
-            description: "'玻璃为路，刀刃为墙，步步染血。'在新近碎裂的镜子前休憩，穿过孔雀之门，征服利刃阶梯的亡者：那些亡者将为残阳服务。",
+            description: "“玻璃为阶，刀刃为墙，步步染血。”在新近碎裂的镜子前休憩，穿过孔雀之门，征服利刃阶梯的亡者：那些亡者将为残阳服务。",
 			lifetime: 180
         },
 		 {
         id: "spirit_forgee_edge",
-            label: "熔炉之王",
+            label: "坩埚王",
             aspects:
             {follower:1, summoned:1,forge:12,edge:12,devourer:12,tutor:1,spirittutormandaic:1},
-            description: "'我在沙漠中等待，在废墟中燃烧，金属成水，岩石成蜡，肉体成烟。进入我，你将重获新生。'",
+            description: "<b>“我在沙漠中等待，在废墟中燃烧，金属成水，岩石成蜡，肉身成烟。进入我，化为无。”</b>",
 			lifetime: 180,
 			unique:true
         },
@@ -77,7 +77,7 @@
             label: "伊泽姆，第二位干渴者",
             aspects:
             {follower:1, summoned:1,grail:12,edge:12,devourer:12,tutor:1,spirittutorphrygian:1},
-            description: "'改变我。改变我。更用力地改变我。现在：轮到<i>我</i>了。'",
+            description: "“改变我。改变我。用力改变我。现在：轮到<i>我</i>。”",
 			lifetime: 180,
 			unique:true
         },
@@ -86,7 +86,7 @@
             label: "特蕾莎",
             aspects:
             {follower:1, summoned:1,lantern:12,secrethistories:12,tutor:1,spirittutorfucine:1},
-            description: "'噢，世界是平的；噢，可是它是平的！我不能久留，我不该久留。告诉我一个秘密。'",
+            description: "“噢，世界是平的；噢，可是它是平的！我不能久留，我不该久留。告诉我一个秘密。”",
 			lifetime: 180,
 			unique:true
         }

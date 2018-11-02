@@ -3,9 +3,9 @@
         {
             "id": "work",
             "label": "工作",
-            "description": "或赚钱糊口，或施行无形之仪。",
+            "description": "或赚钱糊口，或施展无形之仪。",
 			"atStart": true,
-						  slots: [{id:"Work",description: "或我能做的，或我了解的，或我身为的。",
+						  slots: [{id:"work",label: "工作",description: "我能做的；我知道的；或者我身为的。",
 			  required:{ability:1,job:1,ritual:1,desire:1},
 			  forbidden:{reasonskill:1}
 			  }],
@@ -14,9 +14,9 @@
         {
             "id": "dream",
             "label": "入梦",
-            "description": "或休息，或重新思量你的追求，或冒险探索睡梦之国",
+            "description": "休息；重新考虑你的目标；或者冒着风险探索睡梦中的国度。",
 			"atStart": false,
-			 slots: [{id:"Dream",description: "梦的方向，或待解的烦忧。",
+			 slots: [{id:"dream",label: "入梦",description: "做梦的方向；或是待解的烦忧。",
 			  required:{ability:1,desire:1,illhealth:1,way:1,funds:1}
 			  }],
         },
@@ -25,15 +25,15 @@
             "label": "研究",
             "description": "解锁书籍和其他宝物。",
 			"atStart": false,
-						 slots: [{id:"Study",description: "研究秘术够耗尽十世人生。",
+						 slots: [{id:"study",label: "研究",description: "研究无形之仪足够耗尽十世人生。",
 						 required:{text:1,lore:1,ability:1, advancement:1,tutor:1,language:1}}],
         },
 		{
             "id": "talk",
             "label": "谈话",
-            "description": "逼问，威胁，诱骗，教导，招募",
+            "description": "逼问，威胁，诱骗，教导，招募。",
 				"atStart": false,
-			 slots: [{id:"Talk",description: "或仇敌，或盟友，或敌友难分之人。",
+			 slots: [{id:"talk",label: "谈话",description: "盟友，仇敌，或者敌友难辨之人。",
 			  required:{mortal:1,summoned:1,patron:1,society:1,hq:1,lore:1}}]
 		
         },
@@ -41,16 +41,16 @@
 	  {
             "id": "explore",
             "label": "探索 ",
-            "description": "用健康或从者探索城市。在城中或考察某个场所，或探究新的学识。探索的成果通常是不可预料的。",
+            "description": "投入健康或者追随者来探索城市；调查各个地点；探究新的知识。探索的结果通常难以预期。",
 			"atStart":false,
-			  slots: [{id:"Explore",description: "或地点，或人物，或场所，或秘密。",
+			  slots: [{id:"explore",label: "探索 ",description: "地点；人物；场所；秘密。",
 			  required:{health:1,follower:1,secrethistories:1,location:1},
 			  forbidden:{hireling:1}}],
         },
 			  {
             "id": "time",
             "label": "时间",
-            "description": "日晷投下的阴影",
+            "description": "日晷之影。",
 			"atStart":false
         }
 		]

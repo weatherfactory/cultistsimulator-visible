@@ -1,72 +1,162 @@
-{"elements":
-    [
-		{id: "dayacquaintances",
-	label: "熟人出现的一天",
-	description: "我或许能够找到志同道合的灵魂。",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	
-			{id: "daypatrons",
-	label: "新主顾出现的一天",
-	description: "我或许能够找到提供资质的人。",
-	aspects: {season:1},
-	lifetime:1
-	},	
-				{id: "daycriminals",
-	label: "勾结联络的一天",
-	description: "我或许能够找到一位准备好弄脏自己双手的人。",
-	aspects: {season:1},
-	lifetime:1
-	},	
-				{id: "dayplaces",
-	label: "地图测绘师的一天",
-	description: "今日，我或许能路过一些有趣的地方。",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	
-	{id: "seasonsickness",
-	label: "多病的时节",
-	description: "Malign influences taint the night air. [My Health may soon suffer. Wounded Followers may die.]",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	{id: "seasonserenities",
-	label: "平静的时节",
-	description: "明天或许会是更好的一天。",
-	aspects: {season:1},
-	lifetime:1
+﻿{
+elements: [
+	{
+		id: "dayacquaintances",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "我或许能够找到志同道合的灵魂。",
+		label: "结识新朋友的一天",
+		lifetime: "1",
 	},
-		{id: "seasonsuspicion",
-	label: "疑神疑鬼的时节",
-	description: "我是不是正被谁注视着？",
-	aspects: {season:1},
-	lifetime:1
+	{
+		id: "daypatrons",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "我或许能够找到提供资助的人。",
+		label: "新主顾出现的一天",
+		lifetime: "1",
 	},
-			{id: "seasondespair",
-	label: "绝望的时节",
-	description: "夜色在等待我。",
-	aspects: {season:1},
-	lifetime:1
+	{
+		id: "daycriminals",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "我或许能够找到一位准备好弄脏自己双手的人。",
+		label: "勾结联络的一天",
+		lifetime: "1",
 	},
-{id: "seasonvisions",
-	label: "幻象四起的时节",
-	description: "何等的奇观！",
-	aspects: {season:1},
-	lifetime:1
+	{
+		id: "dayplaces",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "今日，我或许能路过一些有趣的地方。",
+		label: "地图测绘师的一天",
+		lifetime: "1",
 	},
-	{id: "seasonambitions",
-	label: "野心勃发的时节",
-	description: "正值林地的风逆刮的时节：欲望开始升腾，凡人有望超脱。",
-	aspects: {season:1},
-	lifetime:1
-	},	
-		{id: "seasonsilence",
-	label: "沉默的时节",
-	description: "这个时节属于未雨绸缪的人。",
-	aspects: {season:1},
-	lifetime:1
-	},	
-	]
-};
+	{
+		id: "seasonsickness",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "我感觉不太舒服。",
+		label: "多病的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasonserenities",
+		comments: "currently unused",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "明天或许会是更好的一天。",
+		label: "平静的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasonsuspicion",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "我是不是正被谁注视着？",
+		label: "疑神疑鬼的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasondespair",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "夜色在等待我。",
+		label: "绝望的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasonvisions",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "何等的奇观！",
+		label: "幻象四起的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasonambitions",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "正值林地的风逆刮的时节：欲望开始升腾，凡人有望超脱。",
+		label: "野心勃发的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasonsilence",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "这个时节属于未雨绸缪的人。",
+		label: "沉默的时节",
+		lifetime: "1",
+	},
+	{
+		id: "seasonardours",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "We are all of us both ape and angel.",
+		comment: "NEW",
+		label: "A Season of Ardours",
+		lifetime: "1",
+	},
+	{
+		id: "schememurder",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Traces left by a rival's decision to move against an enemy.",
+		icon: "bloodshed",
+		comment: "NEW",
+		label: "A Murderous Scheme",
+		lifetime: "1",
+	},
+	{
+		id: "schemeexpedition",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Traces left by a rival's decision to move boldly.",
+		icon: "vaultrendingmountainsdefault",
+		comment: "NEW",
+		label: "A Bold Scheme",
+		lifetime: "1",
+	},
+	{
+		id: "schemeactivities",
+		aspects: 
+		{
+			season: "1",
+		},
+		description: "Traces left by a rival's decision to move cautiously.",
+		icon: "contentment",
+		comment: "NEW",
+		label: "A Cautious Scheme",
+		lifetime: "1",
+	},
+]
+}
