@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿
+//#define LOC_AUTO_REPAIR		// Useful for importing fresh loc data into game. Merges current data with localised strings and outputs partially localised files with new data annotated - CP
+								// NB. Running autorepair repeatedly will flush the "NEW" comments out because it modifies the source data in-place,
+								// so on the second run the added hashtables are not considered new.
+								// Enable this #define...run ONCE on target language, then turn it off again to test the autorepaired data.
+
+using UnityEngine;
 using System;
 using Noon;
 using System.Collections;
@@ -9,6 +15,9 @@ using Assets.Core;
 using Assets.Core.Entities;
 using Assets.Core.Interfaces;
 using OrbCreationExtensions;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class ContentImporter
 {
@@ -156,12 +165,48 @@ public class ContentImporter
 						throw;
 					}
 
-					NoonUtility.Log("Localising ["+ locFile +"]", VerbosityLevel.SystemChatter);
+					NoonUtility.Log("Localising ["+ locFile +"]");
 
+					bool repair = false;
+					bool changed = false;
+#if UNITY_EDITOR && LOC_AUTO_REPAIR
+					//if (locFile.EndsWith("events.json"))
+						repair = true;
+#endif			
 					// We now have two sets of data which SHOULD match pair for pair - english and translated.
-					// Traverse the dataset copying selected fields into the core data. Add new fields here if they need translating.
-					string[] fieldsToTranslate = { "label", "description", "startdescription" };
-					CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate );
+					// Traverse the dataset copying the following fields into the core data. Add new fields here if they need translating.
+					// If the field is a list it will have ALL contents inside localised
+					string[] fieldsToTranslate = { "label", "description", "startdescription", "drawmessages" };
+
+					//
+					// COPY LOCALISATION DATA INTO originalArrayList
+					//
+					CopyFields( originalArrayList, localisedArrayList, fieldsToTranslate, false, repair, ref changed );
+
+#if UNITY_EDITOR && LOC_AUTO_REPAIR
+					if (changed)
+					{
+						bool testOutput = false;
+						if (testOutput)
+						{
+							/*
+							string backupFile = locFile.Replace( ".json", "_backup.json" );
+							if (!File.Exists(backupFile))
+							{
+								FileUtil.CopyFileOrDirectory(locFile,backupFile);	// Soft backup - skip if already there
+							}
+							*/
+							string outputFile = locFile.Replace( ".json", "_out.json" );
+							Export( outputFile, contentOfType, originalArrayList );
+							FileUtil.ReplaceFile(outputFile,locFile);			// Hard replace
+						}
+						else
+						{
+							Export( locFile, contentOfType, originalArrayList );
+						}
+						NoonUtility.Log("Exported ["+ locFile +"]");
+					}
+#endif
 				}
 			}
 
@@ -173,14 +218,19 @@ public class ContentImporter
     
     }
 
-	private bool CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate )
+	private bool CopyFields( ArrayList dest, ArrayList src, string[] fieldsToTranslate, bool forceTranslate, bool autorepair, ref bool changedDst )
 	{
 		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
 		
 		// First : Validation!
+		if (dest == null || src == null)
+		{
+			return false;
+		}
 		if (dest.Count != src.Count)
 		{
-			Debug.LogWarning("Native entries=" + dest.Count + " but loc entries=" + src.Count);
+			NoonUtility.Log("Native entries=" + dest.Count + " but loc entries=" + src.Count);
+			changedDst = true;		// Force a reexport
 		}
 		if (dest.Count == 0 || src.Count == 0)
 		{
@@ -194,37 +244,83 @@ public class ContentImporter
 
 		do
 		{
-			Debug.Assert(src[srcIdx].GetType()==dest[destIdx].GetType(), "Type mismatch in JSON original vs. translated");
+			if (srcIdx<src.Count)
+			{
+				Debug.Assert(src[srcIdx].GetType()==dest[destIdx].GetType(), "Type mismatch in JSON original vs. translated");
 
-			if (dest[destIdx].GetType()==typeof(ArrayList))
-			{
-				CopyFields( dest[destIdx] as ArrayList, src[srcIdx] as ArrayList, fieldsToTranslate );
+				bool localForceTranslate = forceTranslate;
+				for (int j=0; j<fieldsToTranslate.Length; j++)
+				{
+					if (dest[destIdx].ToString().Equals(fieldsToTranslate[j]))
+					{
+						localForceTranslate = true;
+					}
+				}
+
+				if (dest[destIdx].GetType()==typeof(ArrayList))
+				{
+					CopyFields( dest[destIdx] as ArrayList, src[srcIdx] as ArrayList, fieldsToTranslate, localForceTranslate, autorepair, ref changedDst );
+				}
+				else if (dest[destIdx].GetType()==typeof(Hashtable))
+				{
+					if (!CopyFields( dest[destIdx] as Hashtable, src[srcIdx] as Hashtable, fieldsToTranslate, localForceTranslate, autorepair, ref changedDst ))
+					{
+						// Auto-repair loc data
+						if (autorepair)
+						{
+							Hashtable hash = dest[destIdx] as Hashtable;
+							if (hash != null)
+							{
+								hash.Add("comment", "NEW");
+								changedDst = true;
+								srcIdx--;   // Step back so that the increment at end of loop leaves us in the same place
+							}
+						}
+					}
+				}
 			}
-			else if (dest[destIdx].GetType()==typeof(Hashtable))
+			else
 			{
-				CopyFields( dest[destIdx] as Hashtable, src[srcIdx] as Hashtable, fieldsToTranslate );
+				// Auto-repair loc data
+				if (autorepair)
+				{
+					Hashtable hash = dest[destIdx] as Hashtable;
+					if (hash != null)
+					{
+						hash.Add("comment", "NEW");
+						changedDst = true;
+					}
+				}
 			}
 
 			srcIdx++;
 			destIdx++;
 		}
-		while (srcIdx<src.Count && destIdx<dest.Count);	// Bail as soon as either list runs out of elements
+		while (destIdx<dest.Count);
 
 		return true;
 	}
 
-	private bool CopyFields( Hashtable dest, Hashtable src, string[] fieldsToTranslate )
+	private bool CopyFields( Hashtable dest, Hashtable src, string[] fieldsToTranslate, bool forceTranslate, bool autorepair, ref bool changedDst )
 	{
 		// Copy localised language feilds from one dataset to the other
 		// Every field in dest that matches one of the names in fieldsToTranslate should be replaced by the equivalent field from src
 		
-		// First : Validation!
-		if (dest["id"].MakeString().CompareTo( src["id"].MakeString() ) != 0)
+		if (dest == null || src == null)
 		{
-			Debug.LogWarning("Localisation expected ["+ dest["id"].MakeString() +"] but found ["+ src["id"].MakeString() +"]");
-
-			//Debug.LogWarning("JSON original and translated don't match!");
 			return false;
+		}
+
+		// First : Validation!
+		if (dest["id"] != null && src["id"]!=null)
+		{
+			if (dest["id"].MakeString().CompareTo( src["id"].MakeString() ) != 0)
+			{
+				NoonUtility.Log("ERROR: Localisation expected ["+ dest["id"].MakeString() +"] but found ["+ src["id"].MakeString() +"]");
+
+				//Debug.LogWarning("JSON original and translated don't match!");
+				return false;
+			}
 		}
 
 		//Debug.Log("Localising ["+ dest["id"].MakeString() +"]");		// Commented out, too much spam!
@@ -232,19 +328,23 @@ public class ContentImporter
 		// Prep array lists so we can iterate in sync
 		ArrayList destList = new ArrayList(dest.Values);
 		ArrayList srcList = new ArrayList(src.Values);
+		ArrayList destKeys = new ArrayList(dest.Keys);
 
-		// Check for our fields of interest
-		for (int j=0; j<fieldsToTranslate.Length; j++)
+		if (!forceTranslate)
 		{
-			if (dest.ContainsKey(fieldsToTranslate[j]))
+			// Check for our fields of interest
+			for (int j=0; j<fieldsToTranslate.Length; j++)
 			{
-				if (src.ContainsKey(fieldsToTranslate[j]))
+				if (dest.ContainsKey(fieldsToTranslate[j]))
 				{
-					dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
-				}
-				else
-				{
-					Debug.LogWarning("Missing field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
+					if (src.ContainsKey(fieldsToTranslate[j]))
+					{
+						dest[fieldsToTranslate[j]] = src[fieldsToTranslate[j]].ToString();
+					}
+					else
+					{
+						Debug.LogWarning("Missing field ["+ fieldsToTranslate[j] +"] in set ["+ dest["id"].MakeString() +"]");
+					}
 				}
 			}
 		}
@@ -252,22 +352,118 @@ public class ContentImporter
 		// Now recurse into any nested lists
 		for (int i=0; i<destList.Count; i++)
         {
-			/*
-			if (dest.Keys. GetType()==typeof(ArrayList))
+			bool localForceTranslate = forceTranslate;
+			for (int j=0; j<fieldsToTranslate.Length; j++)
 			{
-				Debug.Assert(src[i].GetType()==dest[i].GetType(), "Type mismatch in JSON original vs. translated");
-				// Recurse
-				CopyFields( dest[i] as ArrayList, src[i] as ArrayList, fieldsToTranslate );
+				if (destKeys[i].ToString().Equals(fieldsToTranslate[j]))
+				{
+					localForceTranslate = true;
+				}
 			}
-			else if (dest[i].GetType()==typeof(Hashtable))
+
+			if (destList[i].GetType()==typeof(ArrayList))
 			{
-				//((Hashtable)dest[i]).
+				CopyFields( dest[destKeys[i]] as ArrayList, src[destKeys[i]] as ArrayList, fieldsToTranslate, localForceTranslate, autorepair, ref changedDst );
 			}
-			*/
+			else if (destList[i].GetType()==typeof(Hashtable))
+			{
+				CopyFields( dest[destKeys[i]] as Hashtable, src[destKeys[i]] as Hashtable, fieldsToTranslate, localForceTranslate, autorepair, ref changedDst );
+			}
+			else if (forceTranslate)
+			{
+				// Translate all fields except "id"
+				if (destKeys[i].ToString().Equals( "id" ) == false)
+				{
+					dest[destKeys[i]] = src[destKeys[i]].ToString();
+				}
+			}
 		}
 		return true;
 	}
 
+	void Export( string fname, string contentType, ArrayList list )
+	{
+		int indent = 0;
+		StreamWriter writer = new StreamWriter(fname, false, System.Text.Encoding.UTF8);
+        writer.WriteLine("{\n" + contentType + ": [");
+		ExportRecurse( writer, list, ref indent );
+		writer.WriteLine("]\n}");
+		writer.Close();
+	}
+
+	void ExportRecurse( StreamWriter writer, ArrayList list, ref int indent )
+	{
+		indent++;
+		string margin = "";
+		for (int n=0; n<indent; n++)
+		{
+			margin += "\t";
+		}
+
+		int i = 0;
+		do
+		{
+			if (list[i].GetType()==typeof(ArrayList))
+			{
+				writer.WriteLine( margin +"[" );
+				ExportRecurse( writer, list[i] as ArrayList, ref indent );
+				writer.WriteLine( margin +"]," );
+			}
+			else if (list[i].GetType()==typeof(Hashtable))
+			{
+				writer.WriteLine( margin +"{" );
+				ExportRecurse( writer, list[i] as Hashtable, ref indent );
+				writer.WriteLine( margin +"}," );
+			}
+			else
+			{
+				writer.WriteLine( margin + "\t" + list[i].ToString() + "," );
+			}
+
+			i++;
+		}
+		while (i<list.Count);
+
+		indent--;
+	}
+
+	void ExportRecurse( StreamWriter writer, Hashtable ht, ref int indent )
+	{
+		indent++;
+		string margin = "";
+		for (int n=0; n<indent; n++)
+		{
+			margin += "\t";
+		}
+
+		foreach (DictionaryEntry item in ht)
+		{
+			if (item.Value.GetType() == typeof(ArrayList))
+			{
+				writer.WriteLine( margin + item.Key + ": " );
+				writer.WriteLine( margin + "[" );
+				ExportRecurse(writer, item.Value as ArrayList, ref indent);
+				writer.WriteLine( margin + "]," );
+			}
+			else if (item.Value.GetType() == typeof(Hashtable))
+			{
+				writer.WriteLine( margin + item.Key + ": " );
+				writer.WriteLine( margin + "{" );
+				ExportRecurse(writer, item.Value as Hashtable, ref indent);
+				writer.WriteLine( margin + "}," );
+			}
+			else if (item.Value.GetType() == typeof(string))
+			{
+				writer.WriteLine( margin + item.Key + ": \"" + item.Value + "\"," );
+			}
+			else
+			{
+				writer.WriteLine( margin + item.Key + ": " + item.Value + "," );
+			}
+		}
+
+		indent--;
+	}
 
     public void ImportElements()
     {
@@ -943,6 +1139,7 @@ public class ContentImporter
             //Finished! Import, tidy up.
             Recipes.Add(r);
 
+			htEachRecipe.Remove("comment"); //this should be the only nonprocessed property at this point
             htEachRecipe.Remove("comments"); //this should be the only nonprocessed property at this point
 
             foreach (var k in htEachRecipe.Keys)
